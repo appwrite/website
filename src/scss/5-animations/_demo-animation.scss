@@ -1,13 +1,13 @@
 @use '../abstract' as *;
 
 /* usage class */
-.#{$prefix-website}-animation-bounce   {
+.#{$p}-animation-bounce   {
   animation:bounce infinite 2s;
   @media (prefers-reduced-motion) { animation:none; }
 }
 
 /** Bounce Animation **/
-@keyframes #{$prefix-website}-bounce {
+@keyframes #{$p}-bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(pxToRem(0));
   }
