@@ -1,6 +1,6 @@
 @use 'sass:meta';
 
-@layer pink, css-variables, resets, icons, animations, elements, components, grids, utilities;
+@layer pink, css-variables, resets, icons, animations, elements, components, grids, pages, utilities;
 
 @import url("https://unpkg.com/@appwrite.io/pink") layer(pink); /* temp location */
 
@@ -32,6 +32,10 @@
   @include meta.load-css('8-grids');
 }
 
+@layer pages {
+  @include meta.load-css('9-pages');
+}
+
 @layer utilities {
-  @include meta.load-css('9-utilities');
+  @include meta.load-css('10-utilities');
 }

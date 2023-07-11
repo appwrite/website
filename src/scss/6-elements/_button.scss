@@ -1,0 +1,15 @@
+@use '../abstract' as *;
+
+.#{$p}-button {
+  background: linear-gradient(163deg, hsl(var(--aw-color-primary-100)) 0%, hsl(var(--aw-color-secondary-100)) 100%);
+  background-origin: border-box;
+  padding-inline:pxToRem(16); padding-block:pxToRem(10);
+  border-radius: var(--border-radius-small);
+  border:solid pxToRem(1) transparent;
+
+  &.is-secondary {
+    background-image:none;
+    background-color: rgba(253, 54, 110, 0.04);
+    border-color:hsl(var(--aw-color-primary-100));
+  }
+}
