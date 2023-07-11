@@ -1,4 +1,15 @@
 @use '../abstract' as *;
 :root {
-  --color-temp: #ccc;
+    /* primary */
+  --#{$prefix-website}-color-primary-hue: 343;
+  --#{$prefix-website}-color-primary-100: var(--#{$prefix-website}-color-primary-hue) 98% 60%; /* #FD366E */
+
+  /* secondary */
+  --#{$prefix-website}-color-secondary-hue: 18;
+  --#{$prefix-website}-color-secondary-100: var(--#{$prefix-website}-color-secondary-hue) 99% 70%; /* #FE9567 */
+
+  /* neutral */
+  --#{$prefix-website}-color-neutral-0:   0 0% 100%;    /* #EDEDF0 */
+  --#{$prefix-website}-color-neutral-500: 240 7% 12%;   /* #19191D */
+
 }
