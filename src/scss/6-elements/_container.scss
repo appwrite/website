@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+.#{$prefix-website}-container {
+  box-sizing: content-box;
+  inline-size: var(--container-size-large);
+  padding-inline: pxToRem(32);
+  margin-inline: auto;
+}

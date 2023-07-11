@@ -1,0 +1,4 @@
+@use '../abstract' as *;
+:root {
+  --container-size-large: #{pxToRem(1504)};
+}
