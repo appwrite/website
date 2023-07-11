@@ -1,6 +1,8 @@
 @use 'sass:meta';
 
-@layer css-variables, resets, icons, animations, elements, components, grids, utilities;
+@layer pink, css-variables, resets, icons, animations, elements, components, grids, utilities;
+
+@import url("https://unpkg.com/@appwrite.io/pink") layer(pink); /* temp location */
 
 @layer css-variables {
   @include meta.load-css('1-css-variables');
