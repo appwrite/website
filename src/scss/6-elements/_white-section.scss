@@ -1,0 +1,7 @@
+@use '../abstract' as *;
+
+.#{$p}-white-section {
+  padding-block: pxToRem(84);
+  background-color: hsl(var(--aw-color-neutral-100));
+  color: hsl(var(--aw-color-neutral-600));
+}
