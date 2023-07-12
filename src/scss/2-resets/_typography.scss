@@ -20,6 +20,8 @@ body {
 [class*="#{$p}-heading-"] {
   --p-aw-heading-text-color: var(--aw-heading-text-color, var(--aw-color-neutral-100));
   color: hsl(var(--p-aw-heading-text-color));
+
+  #{$white-section} & { --p-aw-heading-text-color:var(--aw-color-neutral-900); }
 }
 
 [class*="#{$p}-heading-level"] {

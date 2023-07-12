@@ -6,3 +6,8 @@
   padding-inline: pxToRem(32);
   margin-inline: auto;
 }
+
+.main-section {
+  > * { padding-block:pxToRem(24); }
+  >:first-child { padding-block-start:0; }
+}
