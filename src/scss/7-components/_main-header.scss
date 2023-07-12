@@ -1,7 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
-  display:flex; flex-direction:column; gap:pxToRem(14); padding-block-start:pxToRem(20); padding-block-end:pxToRem(24);
+  padding-block-start:pxToRem(20); padding-block-end:pxToRem(24);
+  &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
   &-row { display:flex; }
   &-start { display:flex; }
   &-end { display:flex; margin-inline-start:auto; }
