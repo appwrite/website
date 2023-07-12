@@ -1,0 +1,7 @@
+@use '../abstract' as *;
+
+.#{$p}-hero {
+  display:flex; flex-direction:column; gap:pxToRem(16); text-align:center;
+  .#{$p}-sub-title { margin-block-end:pxToRem(4); }
+  p { color:hsl(var(--aw-color-neutral-500)); font-size:pxToRem(22); }
+}

@@ -1,3 +1,7 @@
 @use "abstract" as *;
 
-.#{$p}-u-demo {  }
+.#{$p}-u-text-color-primary-100    { color:hsl(var(--aw-color-primary-100));   }
+.#{$p}-u-text-color-secondary-100  { color:hsl(var(--aw-color-secondary-100)); }
+.#{$p}-u-text-color-neutral-100    { color:hsl(var(--aw-color-neutral-100));   }
+.#{$p}-u-text-color-neutral-500    { color:hsl(var(--aw-color-neutral-500));   }
+.#{$p}-u-text-color-neutral-900    { color:hsl(var(--aw-color-neutral-900));   }
