@@ -1,14 +1,18 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
-  display:flex; padding-block-start:pxToRem(20); padding-block-end:pxToRem(24); font-size:pxToRem(16);
+  display:flex; flex-direction:column; gap:pxToRem(14); padding-block-start:pxToRem(20); padding-block-end:pxToRem(24);
+  &-row { display:flex; }
   &-start { display:flex; }
-  &-end { display:flex;  margin-inline-start:auto; }
+  &-end { display:flex; margin-inline-start:auto; }
 
   .aw-logo { margin-inline-end:pxToRem(40); }
   &-nav {
     align-self:center; font-size:pxToRem(16);
     &-list { display:flex; gap:pxToRem(32); }
     &-item {}
+  }
+  &-more {
+    &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 }
