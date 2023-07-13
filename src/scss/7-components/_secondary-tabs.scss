@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+
+.#{$p}-secondary-tabs {
+  display:flex; gap:pxToRem(4); padding:pxToRem(4); border-radius:pxToRem(12);
+  background:rgba(255 255 255 / 0.12); line-height:1.5;
+  &-item { }
+  &-button {
+    padding-inline:pxToRem(12); padding-block:pxToRem(6); color:rgba(255, 255, 255, 0.32);
+    border-radius:var(--border-radius-small); border-width:0;
+    &.is-selected {
+      background:rgba(255, 255, 255, 0.12); color:hsl(var(--aw-color-neutral-100));
+    }
+  }
+}

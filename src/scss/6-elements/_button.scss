@@ -6,10 +6,14 @@
   padding-inline:pxToRem(16); padding-block:pxToRem(10);
   border-radius: var(--border-radius-small);
   border:solid pxToRem(1) transparent;
+  text-align:center;
 
   &.is-secondary {
     background-image:none;
     background-color: rgba(253, 54, 110, 0.04);
     border-color:hsl(var(--aw-color-primary-100));
+  }
+  &.is-transparent {
+    background: rgba(237, 237, 240, 0.16); border-width:0;
   }
 }

@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.#{$p}-strip-plans {
+  &-item {
+    display:flex; justify-content:space-between;  align-items:end; gap:pxToRem(48);
+    padding-block:pxToRem(32);
+    &:nth-child(n + 2) { border-block-start:solid pxToRem(1) rgba(255, 255, 255, 0.12); }
+  }
+  &-plan {
+    flex:1;
+    .title { color:rgb(255 255 255 / 0.64); font-size:pxToRem(24); font-weight:500; }
+    .price { color:hsl(var(--aw-color-neutral-100)); font-size:pxToRem(44); letter-spacing: -0.88px; }
+    .info  { color:rgb(255 255 255 / 0.64); font-size:pxToRem(14); font-weight:500; }
+  }
+  &-info { flex:2.5; }
+  .#{$p}-button { flex:1;  white-space:nowrap; }
+}
