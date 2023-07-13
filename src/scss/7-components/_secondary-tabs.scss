@@ -6,7 +6,7 @@
   &-item { }
   &-button {
     padding-inline:pxToRem(12); padding-block:pxToRem(6); color:rgba(255, 255, 255, 0.32);
-    border-radius:var(--border-radius-small); border-width:0;
+    border-radius:var(--border-radius-small); border-width:0; transition:var(--transition);
     &.is-selected {
       background:rgba(255, 255, 255, 0.12); color:hsl(var(--aw-color-neutral-100));
     }
