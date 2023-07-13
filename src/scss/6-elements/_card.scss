@@ -1,0 +1,11 @@
+@use '../abstract' as *;
+
+.#{$p}-card {
+  &.is-transparent {
+    padding:pxToRem(40);
+    border:solid pxToRem(1) rgba(255 255 255 / 0.12);
+    border-radius:pxToRem(16);
+    backdrop-filter:blur(100px);
+    background: linear-gradient(136deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 30.91%, rgba(255, 255, 255, 0.00) 100%, rgba(255, 255, 255, 0.01) 100%);
+  }
+}
