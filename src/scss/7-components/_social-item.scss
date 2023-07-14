@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+.#{$p}-social-item {
+  &-icon {
+    color:hsl(var(--aw-color-neutral-300));
+    &::before { font-size:pxToRem(32); }
+  }
+}

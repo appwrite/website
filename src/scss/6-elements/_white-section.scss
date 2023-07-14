@@ -2,6 +2,6 @@
 
 .#{$p}-white-section {
   padding-block: pxToRem(84);
-  background-color: hsl(var(--aw-color-neutral-100));
+  background-color: #EDEDF0; /* TODO update to variable */
   color: hsl(var(--aw-color-neutral-600));
 }

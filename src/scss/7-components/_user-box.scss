@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+.#{$p}-user-box {
+  display:grid; column-gap:pxToRem(16); grid-template-columns:auto 1fr;
+  font-size:pxToRem(18); line-height:pxToRem(24);
+
+  &-image    { grid-row:span 2; display:block; inline-size:pxToRem(48); block-size:pxToRem(48); }
+  &-name     { color:hsl(var(--aw-color-neutral-700)); }
+  &-username { color:hsl(var(--aw-color-neutral-600)); }
+}
