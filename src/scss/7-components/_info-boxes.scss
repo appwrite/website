@@ -3,13 +3,19 @@
 .#{$p}-info-boxes {
   --p-info-boxes-backfround-color: var(--info-boxes-backfround-color, var(--aw-color-neutral-100));
   --p-info-boxes-border-color: var(--info-boxes-border-color, 0 0% 0%/ 0.08);
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(332), 1fr));
   gap: pxToRem(1);
   background-color: hsl(var(--p-info-boxes-border-color));
+  font-size:pxToRem(18); font-weight:500;
+  margin-inline-start:pxToRem(-32); margin-block-start:pxToRem(-32);
 
   &-item {
     background-color: hsl(var(--p-info-boxes-backfround-color));
-    padding-inline-start:pxToRem(32); padding-inline-end:pxToRem(64); padding-block-end:pxToRem(32);
+    padding-inline-start:pxToRem(32); padding-inline-end:pxToRem(64);
+    padding-block-start:pxToRem(32); padding-block-end:pxToRem(32);
   }
+  &-title { margin-block-start:pxToRem(16); color:hsl(var(--aw-color-neutral-900)); }
+  &-content { margin-block-start:pxToRem(6); color:hsl(var(--aw-color-neutral-600)); }
 }
