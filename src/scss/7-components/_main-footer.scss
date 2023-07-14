@@ -1,0 +1,7 @@
+@use '../abstract' as *;
+
+.#{$p}-main-footer {
+  display:flex; justify-content:space-between; gap:pxToRem(16);
+  padding-block-start:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--aw-color-neutral-700));
+  color:hsl(var(--aw-color-neutral-500));
+}
