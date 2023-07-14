@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+.#{$p}-social-button {
+  display:grid; place-content:center;
+  inline-size:pxToRem(28); block-size:pxToRem(28);
+  background:rgba(255 255 255 / 0.10); border-radius:pxToRem(6);
+  [class*="icon-"]{
+    &::before { font-size:pxToRem(20); line-height:1; color:hsl(var(--aw-color-neutral-100)); }
+  }
+}
