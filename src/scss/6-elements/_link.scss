@@ -1,0 +1,5 @@
+@use '../abstract' as *;
+
+.#{$p}-link-1 {
+  color: hsl(var(--aw-color-primary-100));
+}
