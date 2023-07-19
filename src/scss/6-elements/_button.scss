@@ -16,4 +16,10 @@
   &.is-transparent {
     background: rgba(237, 237, 240, 0.16); border-width:0;
   }
+
+  &.is-full-width-mobile {
+    @media #{$break1} {
+      inline-size:100%;
+    }
+  }
 }
