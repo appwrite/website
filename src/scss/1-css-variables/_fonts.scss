@@ -3,26 +3,50 @@
   --aw-heading-font: 'Aenoik Pro', 'Poppins', arial, sans-serif;
   --aw-content-font: 'Inter', arial, sans-serif;
   --aw-code-font: 'Aenoik Fono', monospace;
+}
+:root {
+  --aw-font-size-micro:  #{pxToRem(12)};
+  --aw-font-size-tiny:   #{pxToRem(14)};
+  --aw-font-size-small:  #{pxToRem(16)};
+  --aw-font-size-medium: #{pxToRem(18)};
+  --aw-font-size-large:  #{pxToRem(20)};
+  --aw-font-size-xl:     #{pxToRem(24)};
+  --aw-font-size-xxl:    #{pxToRem(40)};
+  --aw-font-size-big:    #{pxToRem(48)};
+  --aw-font-size-huge:   #{pxToRem(56)};
+  --aw-font-size-super:  #{pxToRem(64)};
+  --aw-font-size-giant:  #{pxToRem(88)};
+}
 
-  $font-size-00:  pxToRem(12);
-  $font-size-0:   pxToRem(14);
-  $font-size-1:   pxToRem(16);
-  $font-size-2:   pxToRem(18);
-  $font-size-3:   pxToRem(20);
-  $font-size-4:   pxToRem(24);
-  $font-size-5:   pxToRem(28);
-  $font-size-6:   pxToRem(32);
-  $font-size-7:   pxToRem(36);
-  $font-size-8:   pxToRem(40);
+:root {
+  --aw-line-height-micro:  0.875;
+  --aw-line-height-tiny:   1;
+  --aw-line-height-xs:     1.375;
+  --aw-line-height-sm:     1.625;
+  --aw-line-height-md:     1.875;
+  --aw-line-height-lg:     2.125;
+  --aw-line-height-big:    2.75;
+  --aw-line-height-xl:     3.125;
+  --aw-line-height-xxl:    3.5;
+  --aw-line-height-xxxl:   4.25;
+  --aw-line-height-xxxxl:  5.5;
+}
 
-  --font-size-00: #{$font-size-00};
-  --font-size-0:  #{$font-size-0};
-  --font-size-1:  #{$font-size-1};
-  --font-size-2:  #{$font-size-2};
-  --font-size-3:  #{$font-size-3};
-  --font-size-4:  #{$font-size-4};
-  --font-size-5:  #{$font-size-5};
-  --font-size-6:  #{$font-size-6};
-  --font-size-7:  #{$font-size-7};
-  --font-size-8:  #{$font-size-8};
+:root {
+  --aw-letter-spacing-compressed:  -0.022em;
+  --aw-letter-spacing-squeezed:    -0.01em;
+  --aw-letter-spacing-tighter:     -0.018em;
+  --aw-letter-spacing-tight:       -0.0045em;
+  --aw-letter-spacing-none:        0em;
+  --aw-letter-spacing-loose:       0.08em;
+}
+
+:root {
+  --aw-font-weight-air:     100;
+  --aw-font-weight-thin:    200;
+  --aw-font-weight-light:   300;
+  --aw-font-weight-regular: 400;
+  --aw-font-weight-medium:  500;
+  --aw-font-weight-bold:    600;
+  --aw-font-weight-black:   700;
 }
