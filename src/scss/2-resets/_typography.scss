@@ -11,10 +11,8 @@ body {
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
 }
+/** heading **
 
-
-
-/** heading **/
 
 /* color for both heading */
 [class*="#{$p}-heading-"] {
@@ -25,7 +23,7 @@ body {
 }
 
 [class*="#{$p}-heading-level"] {
-  font-family: var(--aw-heading-font, arial);
+  font-family: var(--aw-font-family-aeonik-pro, arial);
   line-height: 1.05;
 }
 
@@ -49,25 +47,3 @@ body {
     &-7 { font-size:var(--font-size-2); font-weight:500; }
   }
 }
-//
-//[class*="eyebrow-heading"] {
-//  text-transform: uppercase;
-//  font-weight: 600;
-//  line-height: 1.5;
-//}
-//
-//.eyebrow-heading {
-//  &-1 { font-size:var(--font-size-1);  letter-spacing:0.08em; }
-//  &-2 { font-size:var(--font-size-0);  letter-spacing:0.08em; }
-//  &-3 { font-size:var(--font-size-00); letter-spacing:0.12em; }
-//}
-//
-//.body-text {
-//  &-1 { font-size:var(--font-size-1); }
-//  &-2 { font-size:var(--font-size-0); }
-//}
-//
-//:where(body) :focus-visible {
-//  /* focus styles */
-//  box-shadow: var(--focus-box-shadow);
-//}
