@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 :root {
-  --aw-heading-font: 'Aenoik Pro', 'Poppins', arial, sans-serif;
-  --aw-content-font: 'Inter', arial, sans-serif;
-  --aw-code-font: 'Aenoik Fono', monospace;
+  --aw-font-family-aeonik-pro: 'Aeonik Pro', 'Poppins', arial, sans-serif;
+  --aw-font-family-inter: 'Inter', arial, sans-serif;
+  --aw-font-family-aeonik-fono: 'Aenoik Fono', monospace;
 }
 :root {
   --aw-font-size-micro:  #{pxToRem(12)};
