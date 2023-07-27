@@ -4,15 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.4.0"
+    "@parcel/transformer-sass": "^2.9.3",
+    "parcel": "^2.9.3"
   },
   "dependencies": {
-    "sass": "^1.63.6"
+    "@appwrite.io/pink": "^0.0.6-rc.15"
   }
 }
