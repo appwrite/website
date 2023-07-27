@@ -10,3 +10,7 @@
 .#{$p}-u-text-color-neutral-500     { color:hsl(var(--aw-color-neutral-500));   }
 .#{$p}-u-text-color-neutral-700     { color:hsl(var(--aw-color-neutral-700));   }
 .#{$p}-u-text-color-neutral-900     { color:hsl(var(--aw-color-neutral-900));   }
+
+.#{$p}-u-font-size-40               { font-size:#{pxToRem(40)}!important; }
+
+.#{$p}-u-min-block-size-320         { min-block-size:#{pxToRem(320)}!important; }
