@@ -3,7 +3,7 @@
 .#{$p}-button {
   background: linear-gradient(163deg, hsl(var(--aw-color-primary-100)) 0%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
-  display:flex; gap:pxToRem(8); align-items:center;
+  display:flex; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(16); padding-block:pxToRem(10);
   border-radius: var(--border-radius-small);
   border:solid pxToRem(1) transparent;
