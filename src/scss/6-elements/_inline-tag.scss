@@ -1,0 +1,6 @@
+@use '../abstract' as *;
+.#{$p}-inline-tag {
+  padding-block:pxToRem(3); padding-inline:pxToRem(4); border-radius:pxToRem(4);;
+  line-height:1; color:hsl(var(--color-neutral-0));
+  background-color:hsl(var(--color-neutral-0) / 0.08);
+}
