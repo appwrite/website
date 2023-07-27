@@ -1,14 +1,54 @@
 @use '../abstract' as *;
 
 .#{$p}-secondary-tabs {
-  display:flex; gap:pxToRem(4); padding:pxToRem(4); border-radius:pxToRem(12);
-  background:rgba(255 255 255 / 0.12); line-height:1.5;
+  --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
+  --p-secondary-tabs-text-color-default: var(--aw-color-neutral-200) / 0.48;
+  --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-100);
+  --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-100);
+  --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-200) / 0.48;
+  --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-200) / 0.48;
+
+  --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
+  --p-secondary-tabs-bg-color-default: var(--transparent);
+  --p-secondary-tabs-bg-color-hover: var(--color-neutral-0) / 0.04;
+  --p-secondary-tabs-bg-color-selected: var(--color-neutral-0) / 0.08;
+  --p-secondary-tabs-bg-color-disabled: var(--transparent);
+  --p-secondary-tabs-bg-color-focus: var(--p-secondary-tabs-bg-color-default);
+
+  --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-defalut);
+  --p-secondary-tabs-shadow-color-defalut: var(--transparent);
+  --p-secondary-tabs-shadow-color-focus: var(--color-neutral-0) / 0.16;
+
+  display:flex; gap:pxToRem(4); padding:pxToRem(4); border-radius:pxToRem(12); line-height:1.5;
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 52.97%, rgba(255, 255, 255, 0.08) 100%, rgba(255, 255, 255, 0.00) 100%);
+  backdrop-filter: blur(7.5px);
   &-item { }
   &-button {
-    padding-inline:pxToRem(12); padding-block:pxToRem(6); color:rgba(255, 255, 255, 0.32);
+    color:hsl(var(--p-secondary-tabs-text-color));
+    background-color: hsl(var(--p-secondary-tabs-bg-color));
+    box-shadow:0 0 0 pxToRem(4) hsl(var(--p-secondary-tabs-shadow-color));
+
+    padding-inline:pxToRem(12); padding-block:pxToRem(6); user-select:none;
     border-radius:var(--border-radius-small); border-width:0; transition:var(--transition);
+    &:focus {
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-focus);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-focus);
+      --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-focus);
+    }
+    &:hover {
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-hover);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-hover);
+    }
+
     &.is-selected {
-      background:rgba(255, 255, 255, 0.12); color:hsl(var(--aw-color-neutral-100));
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-selected);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-selected);
+    }
+    &:is(#{$disabled}) {
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-disabled);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-disabled);
+      opacity: 0.4;
+      cursor: initial;
     }
   }
 }
