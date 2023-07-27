@@ -16,4 +16,8 @@
   &-more {
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
+
+  @media #{$break1}, #{$break2} {
+    display:none;
+  }
 }
