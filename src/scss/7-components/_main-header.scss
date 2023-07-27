@@ -4,7 +4,7 @@
   padding-block-start:pxToRem(20); padding-block-end:pxToRem(24);
   &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
   &-row { display:flex; }
-  &-start { display:flex; }
+  &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; }
 
   .aw-logo { margin-inline-end:pxToRem(40); }
