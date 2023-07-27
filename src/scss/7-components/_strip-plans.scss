@@ -1,10 +1,19 @@
 @use '../abstract' as *;
 
 .#{$p}-strip-plans {
+  &-header {
+    container-name:strip-plans; container-type:inline-size;
+    &-wrapper {
+      display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
+    }
+  }
   &-item {
-    display:flex; justify-content:space-between;  align-items:end; gap:pxToRem(48);
+    container-name:strip-plans; container-type:inline-size;
     padding-block:pxToRem(32);
     &:nth-child(n + 2) { border-block-start:solid pxToRem(1) rgba(255, 255, 255, 0.12); }
+    &-wrapper {
+      display:flex; justify-content:space-between; align-items:end; gap:pxToRem(48);
+    }
   }
   &-plan {
     flex:1;
@@ -14,4 +23,13 @@
   }
   &-info { flex:2.5; }
   .#{$p}-button { flex:1;  white-space:nowrap; }
+
+  /* responsive according container size */
+  @container strip-plans (max-inline-size: #{pxToRem(500)}) {
+    &-header-wrapper { flex-direction:column; align-items:start; }
+    &-item-wrapper {
+      flex-direction:column; align-items:revert; gap:pxToRem(16);
+      .#{$p}-button {margin-block-start:pxToRem(4); }
+    }
+  }
 }

@@ -366,7 +366,7 @@
             </svg>
 
             <div class="aw-container u-position-relative">
-              <div class="grid-1-1">
+              <div class="grid-1-1 u-gap-32">
                 <section class="aw-hero u-flex u-main-center u-cross-center">
                   <h2 class="aw-heading-level-2 u-max-width-600">Start building with Appwrite today</h2>
                   <button class="aw-button is-transparent">
@@ -374,53 +374,61 @@
                   </button>
                 </section>
                 <section class="aw-card is-transparent">
-                  <header class="u-flex u-main-space-between u-cross-center u-gap-16">
-                    <h3 class="aw-heading-level-3">Our Plans</h3>
-                    <ul class="aw-secondary-tabs">
-                      <li class="aw-secondary-tabs-item">
-                        <button class="aw-secondary-tabs-button is-selected">
-                          <span class="aw-main-body-500">Cloud</span>
-                        </button>
-                      </li>
-                      <li class="aw-secondary-tabs-item">
-                        <button class="aw-secondary-tabs-button">
-                          <span class="aw-main-body-500">Self-Hosted</span>
-                        </button>
-                      </li>
-                      <li class="aw-secondary-tabs-item">
-                        <button class="aw-secondary-tabs-button" disabled>
-                          <span class="aw-main-body-500">Future</span>
-                        </button>
-                      </li>
-                    </ul>
+                  <header class="aw-strip-plans-header">
+                    <div class="aw-strip-plans-header-wrapper">
+                      <h3 class="aw-title">Our Plans</h3>
+                      <ul class="aw-secondary-tabs">
+                        <li class="aw-secondary-tabs-item">
+                          <button class="aw-secondary-tabs-button is-selected">
+                            <span class="aw-main-body-500">Cloud</span>
+                          </button>
+                        </li>
+                        <li class="aw-secondary-tabs-item">
+                          <button class="aw-secondary-tabs-button">
+                            <span class="aw-main-body-500">Self-Hosted</span>
+                          </button>
+                        </li>
+                        <li class="aw-secondary-tabs-item">
+                          <button class="aw-secondary-tabs-button" disabled>
+                            <span class="aw-main-body-500">Future</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
                   </header>
                   <ul class="aw-strip-plans">
-                    <li class="aw-strip-plans-item">
-                      <div class="aw-strip-plans-plan">
-                        <h4 class="title">Free</h4>
-                        <div class="price">$0</div>
-                        <div class="info"></div>
+                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                      <div class="aw-strip-plans-item-wrapper">
+                        <div class="aw-strip-plans-plan">
+                          <h4 class="title">Free</h4>
+                          <div class="price">$0</div>
+                          <div class="info"></div>
+                        </div>
+                        <p class="aw-strip-plans-info">For personal, passion projects and non-commercial use.</p>
+                        <button class="aw-button"><span class="text">Get Started</span></button>
                       </div>
-                      <p class="aw-strip-plans-info">For personal, passion projects and non-commercial use.</p>
-                      <button class="aw-button"><span class="text">Get Started</span></button>
                     </li>
-                    <li class="aw-strip-plans-item">
-                      <div class="aw-strip-plans-plan">
-                        <h4 class="title">Starter</h4>
-                        <div class="price">$10</div>
-                        <div class="info">per user/month</div>
+                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                      <div class="aw-strip-plans-item-wrapper">
+                        <div class="aw-strip-plans-plan">
+                          <h4 class="title">Starter</h4>
+                          <div class="price">$10</div>
+                          <div class="info">per user/month</div>
+                        </div>
+                        <p class="aw-strip-plans-info">For small projects and teams that need more flexibility.</p>
+                        <button class="aw-button is-secondary"><span class="text">Learn More</span></button>
                       </div>
-                      <p class="aw-strip-plans-info">For small projects and teams that need more flexibility.</p>
-                      <button class="aw-button is-secondary"><span class="text">Learn More</span></button>
                     </li>
-                    <li class="aw-strip-plans-item">
-                      <div class="aw-strip-plans-plan">
-                        <h4 class="title">Pro</h4>
-                        <div class="price">$20</div>
-                        <div class="info">per user/month</div>
+                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                      <div class="aw-strip-plans-item-wrapper">
+                        <div class="aw-strip-plans-plan">
+                          <h4 class="title">Pro</h4>
+                          <div class="price">$20</div>
+                          <div class="info">per user/month</div>
+                        </div>
+                        <p class="aw-strip-plans-info">Pro teams and production projects that need the ability to scale.</p>
+                        <button class="aw-button is-secondary"><span class="text">Learn More</span></button>
                       </div>
-                      <p class="aw-strip-plans-info">Pro teams and production projects that need the ability to scale.</p>
-                      <button class="aw-button is-secondary"><span class="text">Learn More</span></button>
                     </li>
                   </ul>
                 </section>
