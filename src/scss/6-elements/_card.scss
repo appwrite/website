@@ -2,7 +2,7 @@
 
 .#{$p}-card {
   &.is-white {
-    padding:pxToRem(32);
+    padding:pxToRem(24);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     backdrop-filter: blur(12px);
     border-radius: var(--border-radius-medium);
