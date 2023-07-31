@@ -2,5 +2,5 @@
 
 .#{$p}-multi-columns-1 {
   column-width:pxToRem(380); column-gap:pxToRem(32);
-  > * {margin-block-end:pxToRem(32); }
+  > * { break-inside:avoid; margin-block-end:pxToRem(32); }
 }
