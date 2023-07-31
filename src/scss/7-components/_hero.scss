@@ -12,6 +12,8 @@
     .#{$p}-sub-title { align-self:start; }
   }
   &.is-horizontal {
+    display:flex; flex-direction:column; max-inline-size:pxToRem(650); margin-inline:initial;
+    text-align:start;
     @media #{$break3open} {
       flex-direction:row; gap:pxToRem(32); text-align:start; margin-inline:0; max-inline-size:none;
       >:nth-child(1) { flex:1.3; }

@@ -13,7 +13,7 @@
   font-weight: var(--p-font-weight);
   text-transform: uppercase; /* optional */
 
-  @media #{$break3open} {
+  @media #{$break2open} {
     --p-font-size: var(--aw-font-size-tiny);
   }
 }
