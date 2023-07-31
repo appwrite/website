@@ -5,5 +5,5 @@
   padding:pxToRem(20); padding-inline-end:0;
   &-start { display:flex; }
   &-end   { display:flex; }
-  @media #{$break3open} { display:none; }
+  @media #{$break2open} { display:none; }
 }
