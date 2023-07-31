@@ -19,17 +19,17 @@
 }
 
 :root {
-  --aw-line-height-micro:  0.875;
-  --aw-line-height-tiny:   1;
-  --aw-line-height-xs:     1.375;
-  --aw-line-height-sm:     1.625;
-  --aw-line-height-md:     1.875;
-  --aw-line-height-lg:     2.125;
-  --aw-line-height-big:    2.75;
-  --aw-line-height-xl:     3.125;
-  --aw-line-height-xxl:    3.5;
-  --aw-line-height-xxxl:   4.25;
-  --aw-line-height-xxxxl:  5.5;
+  --aw-line-height-micro:  #{pxToRem(14)};
+  --aw-line-height-tiny:   #{pxToRem(16)};
+  --aw-line-height-xs:     #{pxToRem(22)};
+  --aw-line-height-sm:     #{pxToRem(26)};
+  --aw-line-height-md:     #{pxToRem(30)};
+  --aw-line-height-lg:     #{pxToRem(34)};
+  --aw-line-height-big:    #{pxToRem(44)};
+  --aw-line-height-xl:     #{pxToRem(50)};
+  --aw-line-height-xxl:    #{pxToRem(56)};
+  --aw-line-height-xxxl:   #{pxToRem(68)};
+  --aw-line-height-xxxxl:  #{pxToRem(88)};
 }
 
 :root {
