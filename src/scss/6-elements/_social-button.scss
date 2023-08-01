@@ -6,6 +6,7 @@
 
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%);
   backdrop-filter: blur(7.5px);
+  user-select: none;
 
   [class*="icon-"]{
     &::before { font-size:pxToRem(20); line-height:1; color:hsl(var(--aw-color-neutral-100)); }
