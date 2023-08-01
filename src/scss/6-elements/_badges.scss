@@ -1,11 +1,26 @@
 @use '../abstract' as *;
 
 .#{$p}-badges {
-  align-self: center;
+  --p-badges-shadow-bg-color: #f2c8d6;
+  --p-badges-shadow-border-color: #f69db7;
+  --p-badges-shadowopacity: 0.4;
+
+  align-self:center; color:hsl(var(--color-neutral-0));
   padding-block:pxToRem(6); padding-inline:pxToRem(12); border-radius:pxToRem(6);
   background: linear-gradient(175deg, hsl(var(--aw-color-primary-100)) 25.03%, hsl(var(--aw-color-secondary-100)) 100%);
-  backdrop-filter:blur(41.45833206176758px); font-size:pxToRem(14); text-transform:uppercase;
-  #{$white-section} & {
-    color: hsl(var(--color-neutral-0));
+  backdrop-filter:blur(41.45833206176758px);
+  box-shadow:
+          pxToRem(3) pxToRem(3) var(--p-badges-shadow-bg-color),
+          pxToRem(4) pxToRem(3) var(--p-badges-shadow-border-color),
+          pxToRem(3) pxToRem(4) var(--p-badges-shadow-border-color),
+          pxToRem(2) pxToRem(3) var(--p-badges-shadow-border-color),
+          pxToRem(3) pxToRem(2) var(--p-badges-shadow-border-color);
+
+
+  #{$theme-dark} & {
+    --p-badges-shadow-bg-color: #2c2c2f;
+    --p-badges-shadow-border-color: #39393c;
+    --p-badges-shadowopacity: 0.13;
   }
+
 }
