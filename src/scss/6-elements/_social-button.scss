@@ -2,9 +2,34 @@
 
 .#{$p}-social-button {
   display:grid; place-content:center;
-  inline-size:pxToRem(28); block-size:pxToRem(28);
-  background:rgba(255 255 255 / 0.10); border-radius:pxToRem(6);
+  inline-size:pxToRem(28); block-size:pxToRem(28); border-radius:pxToRem(8); transition:var(--transition);
+
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%);
+  backdrop-filter: blur(7.5px);
+
   [class*="icon-"]{
     &::before { font-size:pxToRem(20); line-height:1; color:hsl(var(--aw-color-neutral-100)); }
+  }
+
+  &:where(:is(:hover):not(#{$disabled})) {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%);
+  }
+  &:where(:is(:active):not(#{$disabled})) {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%);
+
+  }
+  &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
+  &:where(:focus) {  background:rgba(255, 255, 255, 0.08); outline:pxToRem(4) solid hsl(var(--aw-color-primary-100) / 0.16); }
+
+  #{$theme-dark} & {
+    background: rgba(255, 255, 255, 0.08);
+    &:where(:is(:hover):not(#{$disabled})) {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.15) 54.74%, rgba(255, 255, 255, 0.09) 100%);
+    }
+    &:where(:is(:active):not(#{$disabled})) {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.15) 54.74%, rgba(255, 255, 255, 0.09) 100%);
+    }
+    &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
+    &:where(:focus) {  background:rgba(255, 255, 255, 0.08); outline:pxToRem(1) solid hsl(var(--aw-color-neutral-0) / 0.16); }
   }
 }
