@@ -9,7 +9,7 @@
 
   &.is-align-start {
     text-align:start; margin-inline:0;
-    .#{$p}-sub-title { align-self:start; }
+    .#{$p}-badges { align-self:start; }
   }
   &.is-horizontal {
     display:flex; flex-direction:column; margin-inline:initial;
