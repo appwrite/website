@@ -6,7 +6,7 @@
   display:flex; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(16); padding-block:pxToRem(10);
   border-radius:var(--border-radius-small); border:solid pxToRem(1) transparent;
-  text-align:center; transition:var(--transition);
+  text-align:center; transition:var(--transition); user-select:none;
 
   &:where(:hover,:active):where(:not(#{$disabled})) {
     box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.32);
