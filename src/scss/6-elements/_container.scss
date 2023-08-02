@@ -1,8 +1,9 @@
 @use '../abstract' as *;
 
 .#{$p}-container {
+  --p-container-size: var(--container-size, var(--container-size-normal));
   box-sizing: content-box;
-  max-inline-size: var(--container-size-large);
+  max-inline-size: var(--p-container-size);
   padding-inline: pxToRem(32);
   margin-inline: auto;
 }
