@@ -1,5 +1,6 @@
 @use "abstract" as *;
 
+.#{$p}-u-padding-inline-start-20    { padding-inline-start:pxToRem(20); }
 .#{$p}-u-padding-block-end-56       { padding-block:pxToRem(56); }
 .#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
 .#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
