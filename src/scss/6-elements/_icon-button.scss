@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 
-.#{$p}-social-button {
+.#{$p}-icon-button {
   display:grid; place-content:center;
   inline-size:pxToRem(28); block-size:pxToRem(28); border-radius:pxToRem(8); transition:var(--transition);
 
