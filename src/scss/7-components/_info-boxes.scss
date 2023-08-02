@@ -4,7 +4,7 @@
   --p-info-boxes-sep-color: var(--aw-color-neutral-300);
 
   display:grid; gap:pxToRem(1);
-  grid-template-columns: repeat(auto-fill, minmax(pxToRem(332), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(pxToRem(306), 1fr));
 
   font-size:pxToRem(18); font-weight:500;
   margin-inline-start:pxToRem(-32); margin-block-start:pxToRem(-32);
