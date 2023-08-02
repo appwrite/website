@@ -1,5 +1,10 @@
+/* always appear */
 @forward "mobile-header";
 @forward "main-header";
+@forward "footer-nav";
+@forward "main-footer";
+
+/* inner partials */
 @forward "hero";
 @forward "info-boxes";
 @forward "user-box";
@@ -7,5 +12,4 @@
 @forward "big-list-info";
 @forward "secondary-tabs";
 @forward "strip-plans";
-@forward "footer-nav";
-@forward "main-footer";
+@forward "code-snippet";
