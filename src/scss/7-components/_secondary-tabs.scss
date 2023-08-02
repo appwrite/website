@@ -32,10 +32,6 @@
 
     padding-inline:pxToRem(12); padding-block:pxToRem(6); user-select:none;
     border-radius:var(--border-radius-small); border-width:0; transition:var(--transition);
-    &:active {
-      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-active);
-      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-active);
-    }
     &:focus-visible {
       --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-focus);
       --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-focus);
@@ -45,7 +41,10 @@
       --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-hover);
       --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-hover);
     }
-
+    &:active {
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-active);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-active);
+    }
     &.is-selected {
       --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-selected);
       --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-selected);
