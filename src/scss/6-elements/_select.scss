@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+.#{$p}-select {
+  all:unset; display:flex; align-items:center; position:relative; line-height:1;
+  select { all:unset; display:block; padding-inline-end:pxToRem(32); }
+  .icon-cheveron-down {
+    position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
+    display:grid; place-content:center;
+  }
+}
