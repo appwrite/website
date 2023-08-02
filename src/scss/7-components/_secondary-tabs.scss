@@ -4,6 +4,7 @@
   --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
   --p-secondary-tabs-text-color-default: var(--aw-color-neutral-200) / 0.48;
   --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-100);
+  --p-secondary-tabs-text-color-active: var(--aw-color-neutral-50);
   --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-100);
   --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-200) / 0.48;
   --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-200) / 0.48;
@@ -11,6 +12,7 @@
   --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
   --p-secondary-tabs-bg-color-default: var(--transparent);
   --p-secondary-tabs-bg-color-hover: var(--color-neutral-0) / 0.04;
+  --p-secondary-tabs-bg-color-active: var(--color-neutral-0) / 0.08;
   --p-secondary-tabs-bg-color-selected: var(--color-neutral-0) / 0.08;
   --p-secondary-tabs-bg-color-disabled: var(--transparent);
   --p-secondary-tabs-bg-color-focus: var(--p-secondary-tabs-bg-color-default);
@@ -30,7 +32,11 @@
 
     padding-inline:pxToRem(12); padding-block:pxToRem(6); user-select:none;
     border-radius:var(--border-radius-small); border-width:0; transition:var(--transition);
-    &:focus {
+    &:active {
+      --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-active);
+      --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-active);
+    }
+    &:focus-visible {
       --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-focus);
       --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-focus);
       --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-focus);
