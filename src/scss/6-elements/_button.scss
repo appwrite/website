@@ -8,6 +8,8 @@
   border-radius:var(--border-radius-small); border:solid pxToRem(1) transparent;
   text-align:center; transition:var(--transition); user-select:none;
 
+  .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
+
   &:where(:hover,:active):where(:not(#{$disabled})) {
     box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.32);
   }
@@ -25,6 +27,7 @@
     border-color:hsl(var(--aw-color-primary-100));
     box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
     color: hsl(var(--aw-color-primary-100));
+    .#{$p}-inline-tag { background:rgba(255, 64, 120, 0.10); }
     &:where(:focus) {
       box-shadow:none;
       outline: 4px solid rgba(253, 54, 110, 0.24);
@@ -36,6 +39,7 @@
     #{$theme-dark} & {
       color: hsl(var(--aw-color-neutral-100));
       box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+      .#{$p}-inline-tag { background:rgba(255, 64, 120, 0.24); }
     }
   }
   &.is-transparent {
@@ -45,11 +49,12 @@
   &.is-text {
     color:hsl(var(--aw-color-neutral-700)); background:hsl(var(--transparent)); border-width:0;
     transition: none;
+    .#{$p}-inline-tag { background:rgba(0, 0, 0, 0.08); }
     &:where(:focus) {
       box-shadow:none;
       outline: 4px solid rgba(0, 0, 0, 0.14);
       #{$theme-dark} & {
-        outline: 4px solid rgba(255, 255, 255, 0.16);;
+        outline: 4px solid rgba(255, 255, 255, 0.16);
       }
     }
 
@@ -62,8 +67,9 @@
     #{$theme-dark} & {
       color:hsl(var(--color-neutral-0));
       &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.10) 54.74%, rgba(255, 255, 255, 0.06) 100%); }
-      &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.15) 54.74%, rgba(255, 255, 255, 0.09) 100%);
-      }
+      &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.15) 54.74%, rgba(255, 255, 255, 0.09) 100%); }
+
+      .#{$p}-inline-tag { background:rgba(255, 255, 255, 0.12); }
     }
   }
 
