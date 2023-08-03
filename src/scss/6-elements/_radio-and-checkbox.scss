@@ -10,6 +10,11 @@
   --p-bg-color-checked: var(--aw-color-neutral-750);
   --p-border-color-checked: var(--aw-color-neutral-750);
 
+  &:where(.is-checked)   {
+    --p-bg-color:     var(--p-bg-color-checked);
+    --p-border-color: var(--p-border-color-checked);
+  }
+
   /* Same here to be sure Pink can't override dark-mode */
   #{$theme-dark} & {
     --p-icon-color-default:     var(--aw-color-neutral-100);
