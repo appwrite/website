@@ -1,0 +1,5 @@
+@use '../abstract' as *;
+
+.#{$p}-numeric-badge {
+  @include numeric-badge;
+}
