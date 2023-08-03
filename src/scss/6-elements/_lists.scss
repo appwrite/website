@@ -1,0 +1,48 @@
+@use '../abstract' as *;
+
+.#{$p}-list {
+  --p-list-text-color: var(--aw-color-neutral-700);
+  color: hsl(var(--p-list-text-color));
+
+  display:flex; flex-direction:column; gap:pxToRem(4);
+  li {
+    display:flex;
+    &::before {
+      content:""; align-self:start;
+      inline-size:pxToRem(8); block-size:pxToRem(1);
+      margin-inline:pxToRem(6); margin-block-start:pxToRem(12);
+      background-color:currentColor;
+    }
+  }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+}
+
+.#{$p}-numeric-list {
+  --p-list-text-color: var(--aw-color-neutral-700);
+  color: hsl(var(--p-list-text-color));
+
+  display:flex; flex-direction:column; gap:pxToRem(8);
+  counter-reset: numeric-list;
+  li {
+    display:flex; gap:pxToRem(8);
+    &::before {
+      counter-increment: numeric-list;
+      content:counter(numeric-list); align-self:start;
+      @include numeric-badge;
+    }
+  }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+}
+
+.#{$p}-checked-list {
+  --p-list-text-color: var(--aw-color-neutral-700);
+  color: hsl(var(--p-list-text-color));
+
+  display:flex; flex-direction:column; gap:pxToRem(8);
+  counter-reset: numeric-list;
+  li {
+    display:flex; gap:pxToRem(8);
+  }
+  [type="checkbox"] { cursor:initial; }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+}
