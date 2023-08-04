@@ -1,0 +1,22 @@
+@use '../abstract' as *;
+
+.#{$p}-input-text {
+  --p-text-color: var(--aw-color-neutral-700);
+  --p-input-bg-color: var(--aw-color-neutral-0);
+  --p-input-border-color: var(--aw-color-neutral-50);
+
+  color: hsl(var(--p-text-color));
+  background-color: hsl(var(--p-input-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-input-bg-color));
+
+  display:flex; align-items:center; gap:pxToRem(4);
+  padding-inline:pxToRem(12); padding-block:pxToRem(8);
+  border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
+  white-space:nowrap;
+
+  #{$theme-dark} & {
+    --p-text-color: var(--aw-color-neutral-300);
+    --p-input-bg-color: var(--aw-color-neutral-0) / 0.08;
+    --p-input-border-color: var(--aw-color-neutral-0) / 0.16;
+  }
+}
