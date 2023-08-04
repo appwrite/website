@@ -16,6 +16,7 @@
 
 .#{$p}-u-min-block-size-320         { min-block-size:#{pxToRem(320)}!important; }
 
+.#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 
 
 /* responsive global state classes */

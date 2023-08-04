@@ -7,7 +7,7 @@
   &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; }
 
-  .aw-logo { margin-inline-end:pxToRem(40); }
+  .aw-logo { margin-inline-end:pxToRem(32); }
   &-nav {
     align-self:center; font-size:pxToRem(16);
     &-list { display:flex; gap:pxToRem(32); }
