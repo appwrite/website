@@ -7,7 +7,7 @@
 
   color: hsl(var(--p-text-color));
   background-color: hsl(var(--p-input-bg-color));
-  border: solid pxToRem(1) hsl(var(--p-input-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
   display:flex; align-items:center; gap:pxToRem(4);
   padding-inline:pxToRem(12); padding-block:pxToRem(8);
