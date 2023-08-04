@@ -1,0 +1,19 @@
+@use '../abstract' as *;
+
+.#{$p}-kbd {
+  --p-kbd-text-color: var(--aw-color-neutral-700);
+  --p-kbd-bg-color: var(--aw-color-neutral-1000) / 0.08;
+
+  color: hsl(var(--p-kbd-text-color));
+  background-color: hsl(var(--p-kbd-bg-color));
+
+  display:inline-flex; justify-content:center; align-items:center;
+  min-inline-size:pxToRem(24); block-size:pxToRem(24);
+  border-radius:pxToRem(4); flex-shrink:0;
+  -webkit-user-select:none; user-select:none;
+
+  #{$theme-dark} & {
+    --p-kbd-text-color: var(--aw-color-neutral-100);
+    --p-kbd-bg-color: var(--aw-color-neutral-1000) / 0.18;
+  }
+}
