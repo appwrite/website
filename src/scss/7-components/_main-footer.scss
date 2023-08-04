@@ -4,4 +4,15 @@
   display:flex; justify-content:space-between; gap:pxToRem(16);
   padding-block-start:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--aw-color-neutral-700));
   color:hsl(var(--aw-color-neutral-500));
+
+  &-links {
+    @media #{$break3open} { display:flex; gap:pxToRem(16); }
+  }
+
+  &-grid-1 {
+    @media #{$break3open} {
+      display:flex; align-items:center; gap:pxToRem(24); inline-size:100%;
+      &-column-1 { margin-inline-end:auto; }
+    }
+  }
 }
