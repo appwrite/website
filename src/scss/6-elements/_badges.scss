@@ -23,4 +23,10 @@
     --p-badges-shadowopacity: 0.13;
   }
 
+  #{$theme-light} &{
+    --p-badges-shadow-bg-color: #f2c8d6;
+    --p-badges-shadow-border-color: #f69db7;
+    --p-badges-shadowopacity: 0.4;
+  }
+
 }
