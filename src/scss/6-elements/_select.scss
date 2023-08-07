@@ -1,10 +1,27 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
-  all:unset; display:flex; align-items:center; position:relative; line-height:1;
-  select { all:unset; display:block; padding-inline-end:pxToRem(32); }
+  all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none;
+  select {
+    all:unset; display:block; padding-inline-end:pxToRem(32);
+    &:focus-visible { }
+  }
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center;
+  }
+  &.is-colored {
+    --p-select-bg-color: var(--aw-color-neutral-0);
+    --p-select-border-color: var(--aw-color-neutral-50);
+
+    background-color: hsl(var(--p-select-bg-color));
+    border: solid pxToRem(1) hsl(var(--p-select-border-color));
+
+    padding-inline:pxToRem(12); padding-block:pxToRem(3); border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1.2;
+
+    #{$theme-dark} & {
+      --p-select-bg-color: var(--aw-color-neutral-0) / 0.08;
+      --p-select-border-color: var(--aw-color-neutral-50) / 0.08;
+    }
   }
 }
