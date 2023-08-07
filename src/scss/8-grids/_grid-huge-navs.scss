@@ -1,0 +1,75 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-huge-navs {
+  max-inline-size:var(--container-size-huge); margin-inline:auto;
+  .#{$p}-mobile-header    { grid-area:header; }
+  .#{$p}-main-header      { grid-area:header; padding-inline:pxToRem(28); }
+  .#{$p}-side-nav         { grid-area:side-a; }
+  .#{$p}-main-section     { grid-area:main;   }
+  .#{$p}-references-menu  { grid-area:side-b; }
+  .#{$p}-main-footer      { grid-area:footer; }
+
+
+  @media #{$break1} {
+    &:not(is-open){
+      > *:not(.#{$p}-mobile-header) { display:none!important; }
+    }
+    &.is-open {
+      .#{$p}-side-nav { display:block!important; }
+    }
+    .#{$p}-side-nav { max-inline-size:none; }
+  }
+
+  @media #{$break1}, #{$break2}, #{$break6open} {
+    .#{$p}-icon-button {display:none; }
+  }
+
+  @media #{$break2} {
+    display: grid;
+    grid-template-columns: 1fr auto; column-gap:pxToRem(32);
+    grid-template-areas:  "header header"
+                          "main side-b"
+                          "footer footer";
+    .#{$p}-side-nav       {
+      display:none;
+      position:absolute; inset-inline-start:pxToRem(0); inset-block-start:pxToRem(80); inset-block-end:0;
+      inline-size:pxToRem(280);
+    }
+    &.is-open {
+      .#{$p}-side-nav { display:block!important; }
+    }
+  }
+  @media #{$break2open} {
+    .#{$p}-side-nav-wrapper { border-inline-end:solid pxToRem(1) hsl(var(--color-border)); }
+  }
+  @media #{$break3open} {
+    display: grid;
+    grid-template-columns: auto 1fr auto; column-gap:pxToRem(32);
+    grid-template-areas:  "header header header"
+                          "side-a main side-b"
+                          "side-a footer footer";
+  }
+  @media #{$break3}, #{$break4}, #{$break5} {
+    .#{$p}-side-nav {
+      max-inline-size:pxToRem(73);
+      &-wrapper { inline-size:pxToRem(73); max-inline-size:pxToRem(73); }
+      &-header { opacity:0; transition:var(--transition); }
+      &-button {
+        > *:not(:first-child) { opacity:0; transition:var(--transition); }
+      }
+    }
+    &.is-open {
+      .#{$p}-side-nav {
+        &-wrapper { max-inline-size:pxToRem(280); inline-size:pxToRem(280); }
+        &-header { opacity:1; }
+        &-button {
+          > *:not(:first-child) { opacity:1; }
+        }
+      }
+      .#{$p}-icon-button [class*="icon"]{ rotate:180deg; }
+    }
+  }
+  @media #{$break6open} {
+    .#{$p}-side-nav { inline-size:pxToRem(280); }
+  }
+}

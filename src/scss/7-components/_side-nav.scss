@@ -1,0 +1,24 @@
+@use '../abstract' as *;
+
+.#{$p}-side-nav {
+  --p-side-nav-icon-item-color: var(--aw-color-neutral-250);
+
+  position:sticky; z-index:10; inset-block-start:pxToRem(80); inset-block-end:0;
+  block-size:calc(100vh - pxToRem(80)); padding-block-end:pxToRem(32);
+  .#{$p}-icon-button { transition:var(--transition); }
+  &-wrapper {
+    display:flex; flex-direction:column; block-size:100%;
+    padding:pxToRem(16);
+    background-color:hsl(var(--p-body-bg-color)); transition:var(--transition);
+  }
+  &-scroll {
+    flex:1; overflow-y:scroll; overflow-x:hidden;
+    display:flex; flex-direction:column; gap:pxToRem(24);
+  }
+  &-header { font-size:pxToRem(10); line-height:1.6; margin-block-end:pxToRem(8); }
+  &-button {
+    display:flex; inline-size:100%; align-items:center; gap:pxToRem(8);
+    padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
+    [class*="icon"]:first-child { color:hsl(var(--p-side-nav-icon-item-color)); }
+  }
+}

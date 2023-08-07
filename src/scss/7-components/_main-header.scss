@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
+  position:sticky; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   padding-block-start:pxToRem(20); padding-block-end:pxToRem(24);
   &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
   &-row { display:flex; }
@@ -17,7 +18,7 @@
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2}{
     display:none;
   }
 }
