@@ -1,9 +1,10 @@
 @use '../abstract' as *;
 
 .#{$p}-mobile-header {
+  position:sticky; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
   padding:pxToRem(20); padding-inline-end:0;
   &-start { display:flex; }
   &-end   { display:flex; }
-  @media #{$break2open} { display:none; }
+  @media #{$break3open} { display:none; }
 }
