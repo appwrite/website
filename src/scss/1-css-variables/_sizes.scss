@@ -1,4 +1,5 @@
 @use '../abstract' as *;
 :root {
   --container-size-normal: #{pxToRem(1264)};
+  --container-size-huge: #{pxToRem(1920)};
 }
