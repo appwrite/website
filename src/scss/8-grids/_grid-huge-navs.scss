@@ -4,7 +4,7 @@
   --p-grid-huge-navs-padding-inline: #{pxToRem(32)};
   --p-grid-huge-navs-main-header-height: #{pxToRem(80)};
   --p-grid-huge-navs-secondary-header-height: #{pxToRem(116)};
-  --p-grid-huge-navs-secondary-sticky-position: #{pxToRem(196)};
+  --p-grid-huge-navs-secondary-sticky-position: #{pxToRem(220)}; /* 80 + 116 + 24 (margin) */
 
   --p-grid-huge-navs-side-nav-width-closed: #{pxToRem(73)};
   --p-grid-huge-navs-side-nav-width-opened: #{pxToRem(280)};
@@ -12,10 +12,10 @@
   max-inline-size:var(--container-size-huge); margin-inline:auto;
   .#{$p}-mobile-header    { grid-area:header; block-size:var(--p-grid-huge-navs-main-header-height); }
   .#{$p}-main-header      { grid-area:header; block-size:var(--p-grid-huge-navs-main-header-height); padding-inline:var(--p-grid-huge-navs-padding-inline); }
-  .#{$p}-article-header   { grid-area:a-header; block-size:var(--p-grid-huge-navs-secondary-header-height);}
+  .#{$p}-article-header   { grid-area:a-header; }
   .#{$p}-side-nav         { grid-area:side-a; }
   .#{$p}-main-section     { grid-area:main;   }
-  .#{$p}-references-menu  { grid-area:side-b; padding-inline-end:var(--p-grid-huge-navs-padding-inline); }
+  .#{$p}-references-menu  { grid-area:side-b; padding-inline-end:var(--p-grid-huge-navs-padding-inline); margin-block-start:pxToRem(24); }
   .#{$p}-main-footer      { grid-area:footer; }
 
   .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
@@ -76,7 +76,11 @@
   @media #{$break2open} {
     .#{$p}-side-nav-wrapper { border-inline-end:solid pxToRem(1) hsl(var(--color-border)); }
     .#{$p}-article {
-      &-header  { padding-inline:var(--p-grid-huge-navs-padding-inline); }
+      &-header  {
+        block-size:var(--p-grid-huge-navs-secondary-header-height);
+        padding-inline:var(--p-grid-huge-navs-padding-inline);
+        inset-block-start:var(--p-grid-huge-navs-main-header-height);
+      }
       &-content { padding-inline:var(--p-grid-huge-navs-padding-inline); }
     }
     .#{$p}-references-menu  { border-inline-start:solid pxToRem(1) hsl(var(--color-border)); }
