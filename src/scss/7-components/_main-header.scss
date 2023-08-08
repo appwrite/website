@@ -18,6 +18,8 @@
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
+  &.is-transparent { background-color:transparent; backdrop-filter:blur(7.5px); }
+
   @media #{$break1}, #{$break2}{
     display:none;
   }
