@@ -2,11 +2,21 @@
 
 .#{$p}-article {
   &-header {
-    position:sticky; z-index:20; inset-block-start:pxToRem(80);
+    position:sticky; z-index:20; background-color:red;
     display:flex; justify-content:space-between; gap:pxToRem(32);
     padding-block-start:pxToRem(40); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
+    border-block-end:solid pxToRem(1) hsl(var(--color-border)); margin-block-end:pxToRem(24);
     &-start { display:flex; align-items:baseline; gap:pxToRem(16); }
     &-end { align-self:center; }
+  }
+  &-content {
+    padding-block-start:pxToRem(24);
+  }
+  @media #{$break1} {
+    &-header {
+      position:relative; z-index:1; flex-direction:column-reverse; padding-block-start:pxToRem(16);
+      &-end { align-self:initial; }
+    }
   }
 }
