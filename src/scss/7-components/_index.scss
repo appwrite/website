@@ -1,9 +1,10 @@
-/* always appear */
+/* Layout partials */
 @forward "mobile-header";
 @forward "main-header";
 @forward "footer-nav";
 @forward "main-footer";
 @forward "side-nav";
+@forward "references-menu";
 
 /* inner partials */
 @forward "hero";
@@ -14,3 +15,4 @@
 @forward "secondary-tabs";
 @forward "strip-plans";
 @forward "code-snippet";
+@forward "article";

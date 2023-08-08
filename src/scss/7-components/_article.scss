@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+
+.#{$p}-article {
+  &-header {
+    position:sticky; z-index:20; inset-block-start:pxToRem(80);
+    display:flex; justify-content:space-between; gap:pxToRem(32);
+    padding-block-start:pxToRem(40); padding-block-end:pxToRem(32);
+    background-color:hsl(var(--p-body-bg-color));
+    &-start { display:flex; align-items:baseline; gap:pxToRem(16); }
+    &-end { align-self:center; }
+  }
+}
