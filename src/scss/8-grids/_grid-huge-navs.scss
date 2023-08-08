@@ -9,7 +9,7 @@
   .#{$p}-references-menu  { grid-area:side-b; }
   .#{$p}-main-footer      { grid-area:footer; }
 
-
+  .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
   @media #{$break1} {
     &:not(is-open){
       > *:not(.#{$p}-mobile-header) { display:none!important; }
