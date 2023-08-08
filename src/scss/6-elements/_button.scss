@@ -5,7 +5,7 @@
   background: linear-gradient(135deg, hsl(var(--aw-color-primary-100)) 0%, hsl(var(--aw-color-primary-100)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
   display:flex; justify-content:center; align-items:center; gap:pxToRem(8);
-  padding-inline:pxToRem(16); padding-block:pxToRem(10);
+  padding-inline:pxToRem(16); padding-block:pxToRem(8);
   border-radius:var(--border-radius-small); border:solid pxToRem(1) transparent;
   text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-neutral-0));
 
