@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 body {
-  --p-body-text-color: var(--aw-color-neutral-900);
+  --p-body-text-color: var(--aw-color-neutral-700);
   --p-body-bg-color: var(--aw-color-neutral-25);
 
   font-family: var(--aw-font-family-inter);
@@ -12,7 +12,7 @@ body {
   background-color: hsl(var(--p-body-bg-color));
 
   &#{$theme-dark}{
-    --p-body-text-color: var(--aw-color-neutral-100);
+    --p-body-text-color: var(--aw-color-neutral-300);
     --p-body-bg-color: var(--aw-color-neutral-900);
   }
 }

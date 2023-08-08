@@ -3,7 +3,7 @@
 .#{$p}-select {
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none;
   select {
-    all:unset; display:block; padding-inline-end:pxToRem(32);
+    all:unset; display:block; padding-inline-end:pxToRem(32); cursor:pointer;
     &:focus-visible { }
   }
   .icon-cheveron-down {
