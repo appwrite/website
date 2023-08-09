@@ -1,9 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-main-footer {
-  --p-footer-border-color: var(--aw-color-neutral-50);
   display:flex; justify-content:space-between; gap:pxToRem(16);
-  padding-block-start:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--p-footer-border-color));
+  padding-block:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--color-border));
   color:hsl(var(--aw-color-neutral-500));
 
   &-links {
@@ -14,7 +13,7 @@
 
 
   @media #{$break1}, #{$break2} {
-    display:block; inline-size:100%;
+    flex-direction: column;
     &-grid-1 {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -35,9 +34,4 @@
       &-column-1 { margin-inline-end:auto; }
     }
   }
-
-  #{$theme-dark} & {
-    --p-footer-border-color: var(--aw-color-neutral-700);
-  }
-
 }

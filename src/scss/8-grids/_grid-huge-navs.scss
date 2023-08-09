@@ -16,7 +16,7 @@
   .#{$p}-side-nav         { grid-area:side-a; }
   .#{$p}-main-section     { grid-area:main;   }
   .#{$p}-references-menu  { grid-area:side-b; padding-inline-end:var(--p-grid-huge-navs-padding-inline); }
-  .#{$p}-main-footer      { grid-area:footer; }
+  .#{$p}-main-footer      { grid-area:footer; margin-inline:var(--p-grid-huge-navs-padding-inline); }
 
   .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
 

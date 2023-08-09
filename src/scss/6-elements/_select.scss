@@ -2,10 +2,11 @@
 
 .#{$p}-select {
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none;
-  select {
+  select, .physical-select {
     all:unset; display:block; padding-inline-end:pxToRem(32); cursor:pointer;
     &:focus-visible { }
   }
+  [class*="icon"]:first-child {margin-inline-end:pxToRem(4); }
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center;
