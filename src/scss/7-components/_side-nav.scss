@@ -2,6 +2,7 @@
 
 .#{$p}-side-nav {
   --p-side-nav-icon-item-color: var(--aw-color-neutral-250);
+  --p-side-nav-bg-color: var(--p-body-bg-color);
 
   position:sticky; z-index:25; inset-block-start:pxToRem(80); inset-block-end:0;
   block-size:calc(100vh - pxToRem(80));
@@ -9,7 +10,7 @@
   &-wrapper {
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
     padding:pxToRem(16); padding-block-end:pxToRem(32);
-    background-color:hsl(var(--p-body-bg-color)); transition:var(--transition);
+    background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
   }
   &-scroll {
     flex:1; overflow-y:scroll; overflow-x:hidden;
@@ -20,5 +21,8 @@
     display:flex; inline-size:100%; align-items:center; gap:pxToRem(8);
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
     [class*="icon"]:first-child { color:hsl(var(--p-side-nav-icon-item-color)); }
+  }
+  &.is-transparent {
+    --p-side-nav-bg-color: var(--transparent);
   }
 }

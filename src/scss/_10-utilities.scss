@@ -2,6 +2,11 @@
 
 .#{$p}-u-padding-inline-start-20    { padding-inline-start:pxToRem(20); }
 .#{$p}-u-padding-block-end-56       { padding-block:pxToRem(56); }
+
+.#{$p}-u-margin-block-32-mobile     { @media #{$break1} { margin-block:pxToRem(32);} }
+.#{$p}-u-margin-block-40-not-mobile { @media #{$break2open} { margin-block:pxToRem(40);} }
+
+
 .#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
 .#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
 .#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }
