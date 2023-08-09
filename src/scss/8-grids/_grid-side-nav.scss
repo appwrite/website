@@ -1,0 +1,34 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-side-nav {
+  .#{$p}-mobile-header    { grid-area:header; }
+  .#{$p}-main-header      { grid-area:header; }
+  .#{$p}-side-nav         { grid-area:side;   }
+  .#{$p}-main-section     { grid-area:main;   }
+  //.#{$p}-main-footer      { grid-area:footer; }
+
+  @media #{$break1}, #{$break2} {
+    &.#{$p}-container { padding-inline:pxToRem(20); }
+    .#{$p}-side-nav { display:none;  max-inline-size:none; }
+    &.is-open {
+      > *:not(.#{$p}-mobile-header, .#{$p}-side-nav) { display:none!important; }
+      .#{$p}-side-nav { display:block!important; }
+    }
+  }
+  @media #{$break2open} {
+    .#{$p}-main-section {
+      inline-size:100%; max-inline-size:pxToRem(1102); padding-inline:pxToRem(24); margin-inline:auto;
+      .#{$p}-hero:first-child {
+        margin-block-start:pxToRem(100); margin-block-end:pxToRem(80);
+      }
+      > *:not(:first-child) { margin-block-start:pxToRem(160); }
+    }
+  }
+  @media #{$break3open} {
+    display:grid; grid-template-columns: pxToRem(280) 1fr;
+    grid-template-areas:  "header header"
+                          "side   main";
+    .#{$p}-side-nav { border-inline-end:solid pxToRem(1) hsl(var(--color-border));}
+
+  }
+}
