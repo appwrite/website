@@ -15,4 +15,13 @@
     backdrop-filter:blur(100px);
     background: linear-gradient(136deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 30.91%, rgba(255, 255, 255, 0.00) 100%, rgba(255, 255, 255, 0.01) 100%);
   }
+  &.is-full-color {
+    --card-bg-color: var(--aw-color-neutral-0);
+    padding:pxToRem(20); border-radius:pxToRem(16);
+    background-color:hsl(var(--card-bg-color)); backdrop-filter:blur(pxToRem(8));
+
+    #{$theme-dark} & {
+      --card-bg-color: var(--aw-color-neutral-850);
+    }
+  }
 }

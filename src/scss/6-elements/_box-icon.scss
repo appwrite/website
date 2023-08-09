@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.#{$p}-box-icon {
+  --p-box-icon-bg-color: var(--aw-color-neutral-0);
+  --p-box-icon-shadow: 0px 5.352085113525391px 10.704170227050781px 0px rgba(0, 0, 0, 0.02);
+
+  background-color: hsl(var(--p-box-icon-bg-color));
+  box-shadow: var(--p-box-icon-shadow);
+
+  display:grid; place-items:center; inline-size:pxToRem(56); block-size:pxToRem(56);
+  border-radius:pxToRem(8); backdrop-filter:blur(16.72526741027832px);
+
+  #{$theme-dark} & {
+    --p-box-icon-bg-color: var(--aw-color-neutral-850);
+  }
+
+}
