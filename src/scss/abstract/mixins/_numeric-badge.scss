@@ -2,14 +2,14 @@
 @use '../../abstract/variables/common' as *;
 
 @mixin numeric-badge {
-  --p-numeric-badge-text-color: var(--aw-color-primary-100);
+  --p-numeric-badge-text-color: var(--aw-color-primary-500);
 
   color: hsl(var(--p-numeric-badge-text-color));
 
   display:grid; place-content:center; user-select:none;
   min-inline-size:pxToRem(24); block-size:pxToRem(24); padding-inline:pxToRem(6);
-  background:hsl(var(--aw-color-primary-100) / 0.08);
-  border:pxToRem(1) solid hsl(var(--aw-color-primary-100) / 0.32); border-radius:pxToRem(6);
+  background:hsl(var(--aw-color-primary-500) / 0.08);
+  border:pxToRem(1) solid hsl(var(--aw-color-primary-500) / 0.32); border-radius:pxToRem(6);
 
   #{$theme-dark} & {
     --p-numeric-badge-text-color: var(--aw-color-neutral-100);

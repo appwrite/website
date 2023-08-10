@@ -20,7 +20,7 @@
 
   }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus) {  background:rgba(255, 255, 255, 0.08); outline:pxToRem(4) solid hsl(var(--aw-color-primary-100) / 0.16); }
+  &:where(:focus) {  background:rgba(255, 255, 255, 0.08); outline:pxToRem(4) solid hsl(var(--aw-color-primary-500) / 0.16); }
 
   #{$theme-dark} & {
     background: rgba(255, 255, 255, 0.08);
