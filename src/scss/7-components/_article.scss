@@ -2,16 +2,18 @@
 
 .#{$p}-article {
   &-header {
-    position:sticky; z-index:20; background-color:red;
+    position:sticky; z-index:20;
     display:flex; justify-content:space-between; gap:pxToRem(32);
     padding-block-start:pxToRem(40); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
-    border-block-end:solid pxToRem(1) hsl(var(--color-border)); margin-block-end:pxToRem(24);
-    &-start { display:flex; align-items:baseline; gap:pxToRem(16); }
+    border-block-end:solid pxToRem(1) hsl(var(--aw-color-border)); margin-block-end:pxToRem(24);
+    &-start { display:flex; align-items:end; gap:pxToRem(16); }
     &-end { align-self:center; }
+    .#{$p}-title { color:hsl(var(--aw-color-primary)); }
+
   }
   &-content {
-    display:flex; flex-direction:column; gap:pxToRem(60);
+    display:flex; flex-direction:column; gap:pxToRem(60); color:hsl(var(--aw-color-secondary));
     &-grid-6-4 {
       @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
       @media #{$break2open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }

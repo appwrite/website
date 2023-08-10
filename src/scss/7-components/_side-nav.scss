@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-side-nav {
+  --p-side-nav-text-item-color: var(--aw-color-neutral-900);
   --p-side-nav-icon-item-color: var(--aw-color-neutral-250);
   --p-side-nav-bg-color: var(--p-body-bg-color);
 
@@ -20,9 +21,14 @@
   &-button {
     display:flex; inline-size:100%; align-items:center; gap:pxToRem(8);
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
+    color:hsl(var(--p-side-nav-text-item-color));
     [class*="icon"]:first-child { color:hsl(var(--p-side-nav-icon-item-color)); }
   }
   &.is-transparent {
     --p-side-nav-bg-color: var(--transparent);
+  }
+
+  #{$theme-dark} & {
+    --p-side-nav-text-item-color: var(--aw-color-neutral-100);
   }
 }
