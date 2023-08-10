@@ -2,6 +2,7 @@
 
 .#{$p}-grid-row-4 {
   display:grid; gap:pxToRem(32);
+  li > * { min-block-size:100%; }
   @media #{$break1} {}
   @media #{$break2open} {
     grid-template-columns: repeat(4, 1fr);
