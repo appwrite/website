@@ -7,11 +7,21 @@
   .#{$p}-main-section     { grid-area:main;   }
   //.#{$p}-main-footer      { grid-area:footer; }
 
-  @media #{$break1}, #{$break2} {
+  @media #{$break1} {
     &.#{$p}-container { padding-inline:pxToRem(20); }
-    .#{$p}-side-nav { display:none;  max-inline-size:none; }
+    .#{$p}-side-nav { display:none;  max-inline-size:none; margin-inline:pxToRem(-20); }
     &.is-open {
+      background:hsl(var(--aw-color-background));
       > *:not(.#{$p}-mobile-header, .#{$p}-side-nav) { display:none!important; }
+      .#{$p}-side-nav { display:block!important; }
+    }
+  }
+  @media #{$break2} {
+    .#{$p}-side-nav {
+      display:none; position:fixed; inset-inline-start:0; inset-block:0; background:hsl(var(--aw-color-background));
+      inline-size:pxToRem(280); block-size:initial; border-inline-end:solid pxToRem(1) hsl(var(--color-border));
+    }
+    &.is-open {
       .#{$p}-side-nav { display:block!important; }
     }
   }
