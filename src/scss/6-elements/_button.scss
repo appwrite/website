@@ -2,7 +2,7 @@
 
 .#{$p}-button {
 
-  background: linear-gradient(135deg, hsl(var(--aw-color-primary-100)) 0%, hsl(var(--aw-color-primary-100)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
+  background: linear-gradient(135deg, hsl(var(--aw-color-primary-500)) 0%, hsl(var(--aw-color-primary-500)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
   display:flex; justify-content:center; align-items:center; align-self:start; gap:pxToRem(8);
   padding-inline:pxToRem(16); padding-block:pxToRem(8);
@@ -25,12 +25,12 @@
   &.is-secondary {
     background-image:none;
     background: rgba(253, 54, 110, 0.08);
-    border-color:hsl(var(--aw-color-primary-100));
+    border-color:hsl(var(--aw-color-primary-500));
     box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-    color: hsl(var(--aw-color-primary-100));
+    color: hsl(var(--aw-color-primary-500));
     .#{$p}-inline-tag {
       background:rgba(255, 64, 120, 0.10);
-      color:hsl(var(--aw-color-primary-100));
+      color:hsl(var(--aw-color-primary-500));
     }
     &:where(:focus) {
       box-shadow:none;
