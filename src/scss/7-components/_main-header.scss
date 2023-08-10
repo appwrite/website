@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
+  --p-main-header-link-color: var(--aw-color-neutral-900);
   position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   padding-block:pxToRem(20);
   &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
@@ -13,12 +14,19 @@
     align-self:center; font-size:pxToRem(16);
     &-list { display:flex; gap:pxToRem(32); }
     &-item {}
+    &-link {
+      &.is-selected { color:hsl(var(--p-main-header-link-color)); }
+    }
   }
   &-more {
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
   &.is-transparent { background-color:transparent; backdrop-filter:blur(7.5px); }
+
+  #{$theme-dark} & {
+    --p-main-header-link-color: var(--aw-color-neutral-100);
+  }
 
   @media #{$break1}, #{$break2}{
     display:none;
