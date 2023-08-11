@@ -18,7 +18,15 @@
       position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16);
       .#{$p}-numeric-badge { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
     }
-    &-section {display:flex; flex-direction:column; gap:pxToRem(8); }
+    &-section {
+      position:relative; display:flex; flex-direction:column; gap:pxToRem(8);
+      &.is-with-line::before {
+        content:""; display:block;
+        position:absolute; inset-block-start:pxToRem(24); inset-inline-start:pxToRem(-30);
+        inline-size:pxToRem(2); block-size:calc( 100% + pxToRem(8) ); background-color:hsl(var(--aw-color-border));
+      }
+    }
+    .#{$p}-code-snippet:not(:last-child) { margin-block-end:pxToRem(24); }
     .#{$p}-code-snippet:not(:first-child) { margin-block-start:pxToRem(8); }
     &-grid-6-4 {
       @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
