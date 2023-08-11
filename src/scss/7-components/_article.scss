@@ -2,7 +2,7 @@
 
 .#{$p}-article {
   &-header {
-    position:sticky; z-index:20;
+    position:sticky; z-index:18;
     display:flex; justify-content:space-between; gap:pxToRem(32);
     padding-block-start:pxToRem(40); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
