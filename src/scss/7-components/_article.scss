@@ -16,14 +16,18 @@
     display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
     &-header {
       position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16);
-      .#{$p}-numeric-badge { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
+      .#{$p}-numeric-badge {
+        @media #{$break2open} { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) ));  }
+      }
     }
     &-section {
       position:relative; display:flex; flex-direction:column; gap:pxToRem(8);
-      &.is-with-line::before {
-        content:""; display:block;
-        position:absolute; inset-block-start:pxToRem(24); inset-inline-start:pxToRem(-30);
-        inline-size:pxToRem(2); block-size:calc( 100% + pxToRem(8) ); background-color:hsl(var(--aw-color-border));
+      @media #{$break2open} {
+        &.is-with-line::before {
+          content:""; display:block;
+          position:absolute; inset-block-start:pxToRem(24); inset-inline-start:pxToRem(-30);
+          inline-size:pxToRem(2); block-size:calc( 100% + pxToRem(8) ); background-color:hsl(var(--aw-color-border));
+        }
       }
     }
     .#{$p}-code-snippet:not(:last-child) { margin-block-end:pxToRem(24); }
