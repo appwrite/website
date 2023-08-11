@@ -30,8 +30,8 @@
         }
       }
     }
-    .#{$p}-code-snippet:not(:last-child) { margin-block-end:pxToRem(24); }
-    .#{$p}-code-snippet:not(:first-child) { margin-block-start:pxToRem(8); }
+    :where(.#{$p}-code-snippet, .#{$p}-media):not(:last-child) { margin-block-end:pxToRem(24); }
+    :where(.#{$p}-code-snippet, .#{$p}-media):not(:first-child) { margin-block-start:pxToRem(8); }
     &-grid-6-4 {
       @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
       @media #{$break2open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }
