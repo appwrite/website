@@ -13,12 +13,19 @@
 
   }
   &-content {
-    display:flex; flex-direction:column; gap:pxToRem(60); color:hsl(var(--aw-color-secondary));
+    display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
+    &-header {
+      position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16); margin-block-end:pxToRem(8);
+      .#{$p}-numeric-badge { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
+    }
+    &-section {display:flex; flex-direction:column; }
     &-grid-6-4 {
       @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
       @media #{$break2open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }
     }
   }
+  .aw-main-body-500 { color:hsl(var(--aw-color-primary)); }
+
   @media #{$break1} {
     &-header {
       position:relative; z-index:1; flex-direction:column-reverse; padding-block-start:pxToRem(16);
