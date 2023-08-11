@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.#{$p}-media {
+  --p-media-border-color:var(--aw-color-border);
+  --p-media-bg: linear-gradient(143deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+
+  background: var(--p-media-bg);
+  backdrop-filter: blur(30px);
+  padding:pxToRem(8);
+  border:solid pxToRem(1) hsl(var(--p-media-border-color));
+  border-radius:pxToRem(16);
+  > * { display:block; border-radius:pxToRem(12); }
+
+  #{$theme-dark} & {
+    --media-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.06) 61.12%, rgba(255, 255, 255, 0.10) 100%);
+  }
+}
