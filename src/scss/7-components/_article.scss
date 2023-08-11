@@ -15,10 +15,11 @@
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
     &-header {
-      position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16); margin-block-end:pxToRem(8);
+      position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16);
       .#{$p}-numeric-badge { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
     }
-    &-section {display:flex; flex-direction:column; }
+    &-section {display:flex; flex-direction:column; gap:pxToRem(8); }
+    .#{$p}-code-snippet:not(:first-child) { margin-block-start:pxToRem(8); }
     &-grid-6-4 {
       @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
       @media #{$break2open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }
