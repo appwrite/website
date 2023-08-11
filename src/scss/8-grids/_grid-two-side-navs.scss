@@ -29,6 +29,7 @@
       > *:not(.#{$p}-mobile-header, .#{$p}-side-nav) { display:none!important; }
       .#{$p}-side-nav { display:block!important; }
     }
+    .#{$p}-article-header { gap:0; }
     .#{$p}-references-menu { display:none!important; }
   }
 
