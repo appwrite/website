@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 body {
-  --p-body-text-color: var(--aw-color-neutral-700);
-  --p-body-bg-color: var(--aw-color-neutral-25);
+  --p-body-text-color: var(--aw-color-secondary);
+  --p-body-bg-color: var(--aw-color-background-docs);
 
   font-family: var(--aw-font-family-inter);
   font-weight: 400;
@@ -10,11 +10,6 @@ body {
 
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
-
-  &#{$theme-dark}{
-    --p-body-text-color: var(--aw-color-neutral-300);
-    --p-body-bg-color: var(--aw-color-neutral-900);
-  }
 }
 
 :where(body) :focus-visible {
