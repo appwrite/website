@@ -11,10 +11,11 @@
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(28); inline-size:pxToRem(255);
   }
-  &-title {}
+  &-title { color:hsl(var(--aw-color-primary)); }
   &-list { display:flex; flex-direction:column; gap:pxToRem(16); }
   &-item {}
   &-link {
+    display:flex; gap:pxToRem(8);
     color:hsl(var(--p-references-menu-link-color-text));
     &.is-selected { --p-references-menu-link-color-text:var(--p-references-menu-link-color-text-selected); }
   }
