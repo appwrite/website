@@ -31,6 +31,8 @@
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
+.#{$p}-u-gap-80        { gap:pxToRem(80);  }
+
 
 /* responsive global state classes */
 .#{$p}-is-only-mobile {
