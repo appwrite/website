@@ -75,8 +75,8 @@
 			</div>
 		</section>
 		<section class="aw-container" style="--container-size:82rem">
-			<div class="aw-u-margin-block-start-88">
-				<img src="/images/pages/homepage/dashboard.svg" alt="console dashboard" />
+			<div class="aw-media-container aw-u-margin-block-start-88">
+				<img class="u-block" src="/images/pages/homepage/dashboard.svg" alt="console dashboard" />
 			</div>
 			<div class="aw-hero u-margin-block-start-200">
 				<span class="aw-badges aw-eyebrow">Products_</span>
