@@ -108,4 +108,4 @@
 }
 
 .#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary)); }
-.#{$p}-u-color-text-accent { color:hsl(var(--aw-color-accent)); }
+.#{$p}-u-color-text-accent { -webkit-text-fill-color: hsl(var(--aw-color-accent)); color:hsl(var(--aw-color-accent)); }
