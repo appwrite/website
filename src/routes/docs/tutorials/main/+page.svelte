@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/logos//logo.svg" />
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Appwrite Next</title>
-    <script
-            src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
-            integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE="
-            crossorigin="anonymous"></script>
-</head>
-<body class="aw-docs theme-dark">
+
 <div id="app" class="u-position-relative">
     <div class="aw-grid-side-nav aw-container" style="--container-size:var(--container-size-large);">
         <section class="aw-mobile-header is-transparent">
@@ -423,7 +410,7 @@
 </div>
 
 
-<script type="module" src="/src/main.ts"></script>
+<!-- <script type="module" src="/src/main.ts"></script>
 
 <script>
     $(document).ready(function() {
@@ -431,6 +418,4 @@
             $(".aw-grid-side-nav").toggleClass("is-open");
         });
     });
-</script>
-</body>
-</html>
+</script> -->
