@@ -1,5 +1,6 @@
 <script lang="ts">
-	export let expanded = false;
+	type Variant = 'default' | 'expanded' | 'two-side-navs';
+	export let variant: Variant = 'default';
 
 	const handleMenuClick = () => {
 		const gridHugeNavs = document.querySelector('.aw-grid-huge-navs');
@@ -10,12 +11,20 @@
 		gridSideNavs?.classList.toggle('is-open');
 		referencesMenu?.classList.remove('is-open');
 	};
+
+	const variantClasses: Record<Variant, string> = {
+		default: 'aw-grid-side-nav aw-container',
+		expanded: 'aw-grid-huge-navs',
+		'two-side-navs': 'aw-grid-two-side-navs'
+	};
+
+	$: variantClass = variantClasses[variant];
 </script>
 
 <div id="app" class="u-position-relative">
 	<div
-		class={expanded ? 'aw-grid-huge-navs' : 'aw-grid-side-nav aw-container'}
-		style:--container-size={expanded ? undefined : 'var(--container-size-large)'}
+		class={variantClass}
+		style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
 	>
 		<section class="aw-mobile-header is-transparent">
 			<div class="aw-mobile-header-start">
@@ -52,7 +61,7 @@
 				</button>
 			</div>
 		</section>
-		<header class="aw-main-header is-transparent" class:is-transparent={!expanded}>
+		<header class="aw-main-header is-transparent" class:is-transparent={variant !== 'expanded'}>
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
 					<div class="aw-main-header-start u-stretch">

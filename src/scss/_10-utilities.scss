@@ -34,6 +34,9 @@
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }
 
 
+.#{$p}-u-text-align-start { text-align:start!important; }
+.#{$p}-u-padding-inline-0 {padding-inline:0!important;}
+
 /* responsive global state classes */
 .#{$p}-is-only-mobile {
   @media #{$break2open} { display:none!important; }

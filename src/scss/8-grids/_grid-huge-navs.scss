@@ -21,7 +21,7 @@
   .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
 
   @media #{$break1} {
-    --p-grid-huge-navs-padding-inline: #{pxToRem(16)};
+    --p-grid-huge-navs-padding-inline: #{pxToRem(20)};
     padding-inline:var(--p-grid-huge-navs-padding-inline);
     .#{$p}-mobile-header { margin-inline: calc(var(--p-grid-huge-navs-padding-inline) * -1); }
     .#{$p}-side-nav {display:none;  max-inline-size:none; }
