@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { portal } from '$lib/actions/portal';
-	import Homepage from '$lib/layouts/Homepage.svelte';
+	import { Homepage } from '$lib/layouts';
 </script>
 
 <div class="u-position-absolute" style="margin-block-start:-36%;pointer-events:none;">
