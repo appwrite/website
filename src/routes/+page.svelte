@@ -47,7 +47,7 @@
                     backdrop-filter: blur(8px);">Build like a team of hundreds</span><span class="aw-u-color-text-accent">_</span>
 				</h1>
 				<div class="u-cross-child-end">
-					<p>
+					<p class="aw-description">
 						Appwrite is the open-source development platform where developers can build any
 						application at any scale, using the language they want.
 					</p>

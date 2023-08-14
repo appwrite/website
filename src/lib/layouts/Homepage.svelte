@@ -33,10 +33,10 @@
 						>
 						<nav class="aw-main-header-nav">
 							<ul class="aw-main-header-nav-list">
-								<li class="aw-main-header-nav-item"><a href="">Community</a></li>
-								<li class="aw-main-header-nav-item"><a href="/docs">Docs</a></li>
-								<li class="aw-main-header-nav-item"><a href="">Blog</a></li>
-								<li class="aw-main-header-nav-item"><a href="">Pricing</a></li>
+								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Community</a></li>
+								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="/docs">Docs</a></li>
+								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Blog</a></li>
+								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Pricing</a></li>
 							</ul>
 						</nav>
 					</div>
