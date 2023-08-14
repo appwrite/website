@@ -55,6 +55,7 @@
   &.is-text {
     color:hsl(var(--aw-color-neutral-700)); background:hsl(var(--transparent)); border-width:0;
     transition: none;
+    [class*="icon"] { opacity:0.4; }
     .#{$p}-inline-tag {
       background:rgba(0, 0, 0, 0.08);
       color:hsl(var(--aw-color-neutral-900));
