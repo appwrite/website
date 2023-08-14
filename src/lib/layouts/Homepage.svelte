@@ -71,17 +71,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="aw-main-header-row">
-					<div class="aw-main-header-start" />
-					<div class="aw-main-header-end">
-						<div class="aw-main-header-more u-flex u-main-end">
-							<ul class="u-flex u-gap-24">
-								<li><a class="aw-main-header-more-link" href="">Changelog</a></li>
-								<li><a class="aw-main-header-more-link" href="">Roadmap</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</header>
