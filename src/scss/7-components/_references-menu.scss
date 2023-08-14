@@ -1,12 +1,12 @@
 @use '../abstract' as *;
 
 .#{$p}-references-menu {
-  --p-references-menu-header-color-text: var(--aw-color-neutral-900);
-  --p-references-menu-link-color-text: var(--aw-color-neutral-700);
-  --p-references-menu-link-color-text-selected: var(--aw-color-neutral-900);
+  --p-references-menu-header-color-text: var(--aw-color-primary);
+  --p-references-menu-link-color-text: var(--aw-color-secondary);
+  --p-references-menu-link-color-text-selected: var(--aw-color-primary);
 
   position:relative; z-index:10;
-  display:flex; flex-direction:column; padding-inline:pxToRem(16);
+  display:flex; flex-direction:column; align-self:start; padding-inline:pxToRem(16);
 
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(28); inline-size:pxToRem(255);
@@ -18,11 +18,5 @@
     display:flex; gap:pxToRem(8);
     color:hsl(var(--p-references-menu-link-color-text));
     &.is-selected { --p-references-menu-link-color-text:var(--p-references-menu-link-color-text-selected); }
-  }
-
-  #{$theme-dark} & {
-    --p-references-menu-header-color-text: var(--aw-color-neutral-100);
-    --p-references-menu-link-color-text: var(--aw-color-neutral-300);
-    --p-references-menu-link-color-text-selected: var(--aw-color-neutral-100);
   }
 }

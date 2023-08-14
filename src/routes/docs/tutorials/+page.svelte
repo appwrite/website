@@ -505,7 +505,7 @@
 							</li>
 						</ol>
 						<div class="u-sep-block-start u-padding-block-start-20">
-							<a class="aw-button is-text" href="#">
+							<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
 								<span class="icon-arrow-up" aria-hidden="true" />
 								<span class="aw-sub-body-500">Back to top</span>
 							</a>
