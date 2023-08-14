@@ -1,520 +1,187 @@
-<div id="app">
-	<div class="aw-grid-two-side-navs">
-		<section class="aw-mobile-header">
-			<div class="aw-mobile-header-start">
-				<a href="">
-					<img
-						class="aw-logo u-only-dark"
-						src="/images/logos/appwrite.svg"
-						alt="appwrite"
-						width="130"
-					/>
-					<img
-						class="aw-logo u-only-light"
-						src="/images/logos/appwrite-light.svg"
-						alt="appwrite"
-						width="130"
-					/>
-				</a>
-			</div>
-			<div class="aw-mobile-header-end">
-				<button class="aw-button">
-					<span class="aw-sub-body-500">Go to console</span>
-				</button>
-				<button id="MenuButton" class="aw-button is-text" aria-label="open navigation">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-					>
-						<path d="M3 5.5H17" stroke="#E4E4E7" stroke-width="1.2" stroke-linecap="round" />
-						<path d="M3 14.5H17" stroke="#E4E4E7" stroke-width="1.2" stroke-linecap="round" />
-					</svg>
-				</button>
-			</div>
-		</section>
-		<header class="aw-main-header">
-			<div class="aw-main-header-wrapper">
-				<div class="aw-main-header-row">
-					<div class="aw-main-header-start u-stretch">
-						<a href="/">
-							<img
-								class="aw-logo u-only-dark"
-								src="/images/logos/appwrite.svg"
-								alt="appwrite"
-								width="130"
-							/>
-							<img
-								class="aw-logo u-only-light"
-								src="/images/logos/appwrite-light.svg"
-								alt="appwrite"
-								width="130"
-							/>
-						</a>
-						<nav class="aw-main-header-nav">
-							<ul class="aw-main-header-nav-list">
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link is-selected" href="docs-homepage.html">Docs</a>
-								</li>
-							</ul>
-						</nav>
-						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-text aw-u-flex-basis-400">
-								<span class="icon-search" />
-								<span class="text">Search in docs</span>
+<script lang="ts">
+	import { Docs } from '$lib/layouts';
+	import Sidebar from '../Sidebar.svelte';
+</script>
 
-								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
-									<span class="aw-kbd" aria-label="command">⌘</span>
-									<span class="aw-kbd">k</span>
-								</div>
-							</button>
-						</div>
-					</div>
-					<div class="aw-main-header-end">
-						<div class="u-flex u-gap-8">
-							<button class="aw-button is-text">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="18"
-									height="16"
-									viewBox="0 0 18 16"
-									fill="none"
-								>
-									<path
-										d="M8.55214 0.894436C8.73682 0.525615 9.26319 0.525617 9.44786 0.894438L11.3548 4.70276C11.4282 4.84944 11.5688 4.95086 11.7312 4.97425L15.9844 5.5871C16.3973 5.64659 16.5607 6.15521 16.2598 6.44413L13.1922 9.38955C13.0721 9.50495 13.0171 9.67255 13.0457 9.83669L13.7708 14.0043C13.8418 14.4126 13.4147 14.7256 13.0468 14.5349L9.23053 12.5564C9.08598 12.4815 8.91402 12.4815 8.76948 12.5564L4.95321 14.5349C4.58534 14.7256 4.1582 14.4126 4.22923 14.0044L4.95432 9.83669C4.98288 9.67255 4.92794 9.50495 4.80776 9.38955L1.74017 6.44413C1.43926 6.15521 1.60274 5.64659 2.01564 5.5871L6.26881 4.97425C6.43118 4.95086 6.5718 4.84944 6.64524 4.70276L8.55214 0.894436Z"
-										stroke="white"
-										stroke-opacity="0.48"
-										stroke-width="1.20208"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									/>
-								</svg>
-								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-							</button>
-							<button class="aw-button">
-								<span class="aw-sub-body-500">Go to console</span>
-							</button>
-						</div>
+<Docs>
+	<Sidebar />
+	<main class="aw-main-section">
+		<article class="aw-article">
+			<header class="aw-article-header">
+				<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
+					<div class="u-position-relative u-flex u-cross-center">
+						<h1 class="aw-title">Quick start</h1>
 					</div>
 				</div>
+				<div class="aw-article-header-end" />
+			</header>
+			<div class="aw-article-content aw-u-gap-80">
+				<section class="u-flex-vertical u-gap-24">
+					<h2 class="aw-eyebrow">Client</h2>
+					<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+					</ul>
+				</section>
+				<section class="u-flex-vertical u-gap-24">
+					<h2 class="aw-eyebrow">Server</h2>
+					<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="is-mobile-col-span-2">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+								<p class="aw-sub-body-400 u-margin-block-start-4">
+									Lorem ipsum dolor sit amet consectetur.
+								</p>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+						<li class="">
+							<article class="aw-card is-full-color">
+								<header class="u-flex u-cross-baseline u-gap-4">
+									<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
+									<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								</header>
+							</article>
+						</li>
+					</ul>
+				</section>
 			</div>
-		</header>
-		<nav class="aw-side-nav">
-			<div class="aw-side-nav-wrapper">
-				<div class="aw-side-nav-scroll">
-					<section>
-						<ul>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-play" aria-hidden="true" />
-									<span class="aw-caption-400">Quick Start</span>
-								</a>
-							</li>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-book-open" aria-hidden="true" />
-									<span class="aw-caption-400">Tutorials</span>
-								</a>
-							</li>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-cog" aria-hidden="true" />
-									<span class="aw-caption-400">SDKs</span>
-								</a>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-terminal" aria-hidden="true" />
-									<span class="aw-caption-400">Command Line</span>
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-document" aria-hidden="true" />
-									<span class="aw-caption-400">References</span>
-								</button>
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h4 class="aw-side-nav-header aw-eyebrow">Products</h4>
-						<ul>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-user-group" aria-hidden="true" />
-									<span class="aw-caption-400">Auth</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-database" aria-hidden="true" />
-									<span class="aw-caption-400">Databases</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-lightning-bolt" aria-hidden="true" />
-									<span class="aw-caption-400">Functions</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-folder" aria-hidden="true" />
-									<span class="aw-caption-400">Storage</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h4 class="aw-side-nav-header aw-eyebrow">APIS</h4>
-						<ul>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-clock" aria-hidden="true" />
-									<span class="aw-caption-400">Realtime</span>
-								</a>
-							</li>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-play" aria-hidden="true" />
-									<span class="aw-caption-400">REST</span>
-								</a>
-							</li>
-							<li>
-								<a class="aw-side-nav-button" href="">
-									<span class="icon-play" aria-hidden="true" />
-									<span class="aw-caption-400">GraphQL</span>
-								</a>
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h4 class="aw-side-nav-header aw-eyebrow">Advanced</h4>
-						<ul>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-puzzle" aria-hidden="true" />
-									<span class="aw-caption-400">Integration</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-play" aria-hidden="true" />
-									<span class="aw-caption-400">Platform</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-side-nav-button">
-									<span class="icon-refresh" aria-hidden="true" />
-									<span class="aw-caption-400">Migrations</span>
-									<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
-								</button>
-							</li>
-						</ul>
-					</section>
-				</div>
-			</div>
-		</nav>
-		<main class="u-contents">
-			<article class="aw-article u-contents">
-				<header class="aw-article-header">
-					<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
-						<button
-							class="
-                            aw-button is-text aw-is-only-mobile
-                            aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
-							aria-label="previous page"
-						>
-							<span class="icon-cheveron-left" aria-hidden="true" />
-						</button>
-						<ul class="aw-metadata aw-caption-400">
-							<li>[level-of-difficulty]</li>
-							<li>[time-to-read] min</li>
-						</ul>
-						<div class="u-position-relative u-flex u-cross-center">
-							<button
-								class="
-                            aw-button is-text u-height-100-percent aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12
-                            u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
-								aria-label="previous page"
-							>
-								<span class="icon-cheveron-left aw-u-font-size-24" aria-hidden="true" />
-							</button>
-							<h1 class="aw-title">Header</h1>
-						</div>
-					</div>
-					<div class="aw-article-header-end" />
-				</header>
-				<div class="aw-article-content">
-					<section class="aw-article-content-section">
-						<header class="aw-article-content-header">
-							<h2 class="aw-main-body-500">Prerequisites</h2>
-						</header>
-						<ul class="aw-list">
-							<li>Lorem ipsum dolor sit amet consectetur.</li>
-							<li>Lorem ipsum dolor sit amet consectetur. Cras laoreet dolor ultrices ligula.</li>
-							<li>
-								Quam pretium blandit egestas nec diam lacus volutpat a lorem. Porta augue proin.
-							</li>
-						</ul>
-						<div class="aw-media">
-							<img
-								class=""
-								src="https://pink.appwrite.io/articles/announcement.png"
-								alt=""
-								loading="lazy"
-							/>
-						</div>
-					</section>
+		</article>
 
-					<section class="aw-article-content-section">
-						<header class="aw-article-content-header">
-							<h2 class="aw-main-body-500">Featured products</h2>
-							<ul class="u-flex u-flex-wrap u-gap-8">
-								<li><div class="aw-tag">product</div></li>
-								<li><div class="aw-tag">product</div></li>
-								<li><div class="aw-tag">product</div></li>
-							</ul>
-						</header>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris
-							rhoncus arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper.
-							Vulputate quis odio velit fames tristique sit magna nec ut.
-						</p>
-					</section>
-
-					<section class="aw-article-content-section is-with-line">
-						<header class="aw-article-content-header">
-							<span class="aw-numeric-badge">1</span>
-							<h2 class="aw-main-body-500">Featured products</h2>
-						</header>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-						</p>
-						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-							<header class="aw-code-snippet-header">
-								<div class="aw-code-snippet-header-start">
-									<div class="u-flex u-gap-16">
-										<div class="aw-tag">
-											<span class="text">Default</span>
-										</div>
-									</div>
-								</div>
-								<div class="aw-code-snippet-header-end">
-									<ul class="buttons-list u-flex u-gap-8">
-										<li class="buttons-list-item u-flex u-cross-child-scenter">
-											<div class="aw-select">
-												<select>
-													<option>Web SDK</option>
-													<option>Android SDK</option>
-												</select>
-												<span class="icon-cheveron-down" aria-hidden="true" />
-											</div>
-										</li>
-										<li class="buttons-list-item aw-u-padding-inline-start-20">
-											<button class="aw-icon-button" aria-label="copy code from code-snippet">
-												<span class="icon-duplicate" aria-hidden="true" />
-											</button>
-										</li>
-									</ul>
-								</div>
-							</header>
-							<div class="aw-code-snippet-content">CONTENT</div>
-						</section>
-					</section>
-
-					<section class="aw-article-content-section is-with-line">
-						<header class="aw-article-content-header">
-							<span class="aw-numeric-badge">2</span>
-							<h2 class="aw-main-body-500">Featured products</h2>
-						</header>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-						</p>
-						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-							<header class="aw-code-snippet-header">
-								<div class="aw-code-snippet-header-start">
-									<div class="u-flex u-gap-16">
-										<div class="aw-tag">
-											<span class="text">Default</span>
-										</div>
-									</div>
-								</div>
-								<div class="aw-code-snippet-header-end">
-									<ul class="buttons-list u-flex u-gap-8">
-										<li class="buttons-list-item u-flex u-cross-child-scenter">
-											<div class="aw-select">
-												<select>
-													<option>Web SDK</option>
-													<option>Android SDK</option>
-												</select>
-												<span class="icon-cheveron-down" aria-hidden="true" />
-											</div>
-										</li>
-										<li class="buttons-list-item aw-u-padding-inline-start-20">
-											<button class="aw-icon-button" aria-label="copy code from code-snippet">
-												<span class="icon-duplicate" aria-hidden="true" />
-											</button>
-										</li>
-									</ul>
-								</div>
-							</header>
-							<div class="aw-code-snippet-content">CONTENT</div>
-						</section>
-						<h2 class="aw-main-body-500">Featured products</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-						</p>
-						<h2 class="aw-main-body-500">Featured products</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-						</p>
-						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-							<header class="aw-code-snippet-header">
-								<div class="aw-code-snippet-header-start">
-									<div class="u-flex u-gap-16">
-										<div class="aw-tag">
-											<span class="text">Default</span>
-										</div>
-									</div>
-								</div>
-								<div class="aw-code-snippet-header-end">
-									<ul class="buttons-list u-flex u-gap-8">
-										<li class="buttons-list-item u-flex u-cross-child-scenter">
-											<div class="aw-select">
-												<select>
-													<option>Web SDK</option>
-													<option>Android SDK</option>
-												</select>
-												<span class="icon-cheveron-down" aria-hidden="true" />
-											</div>
-										</li>
-										<li class="buttons-list-item aw-u-padding-inline-start-20">
-											<button class="aw-icon-button" aria-label="copy code from code-snippet">
-												<span class="icon-duplicate" aria-hidden="true" />
-											</button>
-										</li>
-									</ul>
-								</div>
-							</header>
-							<div class="aw-code-snippet-content">CONTENT</div>
-						</section>
-					</section>
-
-					<section class="aw-article-content-section">
-						<header class="aw-article-content-header">
-							<span class="aw-numeric-badge">3</span>
-							<h2 class="aw-main-body-500">Featured products</h2>
-						</header>
-						<p>
-							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-						</p>
-						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-							<header class="aw-code-snippet-header">
-								<div class="aw-code-snippet-header-start">
-									<div class="u-flex u-gap-16">
-										<div class="aw-tag">
-											<span class="text">Default</span>
-										</div>
-									</div>
-								</div>
-								<div class="aw-code-snippet-header-end">
-									<ul class="buttons-list u-flex u-gap-8">
-										<li class="buttons-list-item u-flex u-cross-child-scenter">
-											<div class="aw-select">
-												<select>
-													<option>Web SDK</option>
-													<option>Android SDK</option>
-												</select>
-												<span class="icon-cheveron-down" aria-hidden="true" />
-											</div>
-										</li>
-										<li class="buttons-list-item aw-u-padding-inline-start-20">
-											<button class="aw-icon-button" aria-label="copy code from code-snippet">
-												<span class="icon-duplicate" aria-hidden="true" />
-											</button>
-										</li>
-									</ul>
-								</div>
-							</header>
-							<div class="aw-code-snippet-content">CONTENT</div>
-						</section>
-					</section>
-				</div>
-				<aside class="aw-references-menu aw-u-padding-inline-start-24">
-					<div class="aw-references-menu-content">
-						<div class="u-flex u-main-space-between u-cross-center u-gap-16">
-							<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-						</div>
-						<ol class="aw-references-menu-list">
-							<li class="aw-references-menu-item">
-								<a href="" class="aw-references-menu-link is-selected">
-									<span class="aw-caption-400">Prerequisites</span>
-								</a>
-							</li>
-							<li class="aw-references-menu-item">
-								<a href="" class="aw-references-menu-link">
-									<span class="aw-caption-400">Featured products</span>
-								</a>
-							</li>
-							<li class="aw-references-menu-item">
-								<a href="" class="aw-references-menu-link">
-									<span class="aw-numeric-badge">1</span>
-									<span class="aw-caption-400">Title</span>
-								</a>
-							</li>
-							<li class="aw-references-menu-item">
-								<a href="" class="aw-references-menu-link">
-									<span class="aw-numeric-badge">2</span>
-									<span class="aw-caption-400">Title</span>
-								</a>
-								<ol
-									class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-								>
-									<li class="aw-references-menu-item">
-										<a href="" class="aw-references-menu-link">
-											<span class="aw-caption-400">Subtitle</span>
-										</a>
-									</li>
-									<li class="aw-references-menu-item">
-										<a href="" class="aw-references-menu-link">
-											<span class="aw-caption-400">Subtitle</span>
-										</a>
-									</li>
-								</ol>
-							</li>
-							<li class="aw-references-menu-item">
-								<a href="" class="aw-references-menu-link">
-									<span class="aw-numeric-badge">3</span>
-									<span class="aw-caption-400">Title</span>
-								</a>
-							</li>
-						</ol>
-						<div class="u-sep-block-start u-padding-block-start-20">
-							<a class="aw-button is-text" href="#">
-								<span class="icon-arrow-up" aria-hidden="true" />
-								<span class="aw-sub-body-500">Back to top</span>
-							</a>
-						</div>
-					</div>
-				</aside>
-			</article>
-		</main>
-		<footer class="aw-main-footer u-margin-block-start-48 u-small">
+		<footer class="aw-main-footer is-with-bg-color u-margin-block-start-48 u-small">
 			<div class="aw-main-footer-grid-1">
 				<ul class="aw-main-footer-grid-1-column-1 u-flex u-gap-8">
 					<li>
@@ -568,22 +235,5 @@
 				</div>
 			</div>
 		</footer>
-	</div>
-</div>
-
-<!-- <script type="module" src="/src/main.ts"></script>
-
-<script>
-    $(document).ready(function() {
-        $("#MenuButton, #ToggleMenu").on("click", function(){
-            $(".aw-grid-two-side-navs").toggleClass("is-open");
-            $(".aw-references-menu").removeClass("is-open");
-        });
-
-
-        $("#refOpen, #refClose").on("click", function(){
-            $(".aw-references-menu").toggleClass("is-open");
-            $(".aw-grid-two-side-navs").removeClass("is-open");
-        });
-    });
-</script> -->
+	</main>
+</Docs>

@@ -34,7 +34,7 @@
 						<nav class="aw-main-header-nav">
 							<ul class="aw-main-header-nav-list">
 								<li class="aw-main-header-nav-item"><a href="">Community</a></li>
-								<li class="aw-main-header-nav-item"><a href="">Docs</a></li>
+								<li class="aw-main-header-nav-item"><a href="/docs">Docs</a></li>
 								<li class="aw-main-header-nav-item"><a href="">Blog</a></li>
 								<li class="aw-main-header-nav-item"><a href="">Pricing</a></li>
 							</ul>
