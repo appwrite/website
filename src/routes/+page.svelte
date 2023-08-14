@@ -39,16 +39,12 @@
 	<div class="theme-dark">
 		<section class="aw-container">
 			<div class="aw-hero is-horizontal">
-				<h1
-					class="aw-headline"
-					style="
-                    background: radial-gradient(251.85% 67.77% at 4.95% 100.00%, #F8A1BA 0%, #FFF 100%);
+				<h1 class="aw-headline">
+					<span style=" background: radial-gradient(251.85% 67.77% at 4.95% 100.00%, #F8A1BA 0%, #FFF 100%);
                     background-clip:text;
                     -webkit-background-clip:text;
                     -webkit-text-fill-color:transparent;
-                    backdrop-filter: blur(8px);"
-				>
-					Build like a team of hundreds_
+                    backdrop-filter: blur(8px);">Build like a team of hundreds</span><span class="aw-u-color-text-accent">_</span>
 				</h1>
 				<div class="u-cross-child-end">
 					<p>
