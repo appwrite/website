@@ -69,9 +69,11 @@
       }
     }
     .#{$p}-references-menu  {
-      position:sticky; inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);
       border-inline-start: solid pxToRem(1) hsl(var(--aw-color-border));
       margin-block-start: var(--p-grid-huge-navs--margin-top-content-side-b);
+      &-content {
+        position:sticky; inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);
+      }
     }
   }
   @media #{$break3open} {
