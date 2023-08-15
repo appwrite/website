@@ -12,6 +12,7 @@
 
 .#{$p}-u-cross-start { align-items:start!important; }
 
+.#{$p}-u-margin-block-start-2       { margin-block-start:pxToRem(2); }
 .#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
 .#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
 .#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }

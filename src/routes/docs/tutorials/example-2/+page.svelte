@@ -1,0 +1,320 @@
+<script>
+	import { Docs } from '$lib/layouts';
+	import Sidebar from '$routes/docs/Sidebar.svelte';
+</script>
+
+<Docs variant="two-side-navs">
+	<Sidebar />
+	<main class="u-contents">
+		<article class="aw-article u-contents">
+			<header class="aw-article-header">
+				<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
+					<button
+						class="
+                            aw-button is-text aw-is-only-mobile
+                            aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
+						aria-label="previous page"
+					>
+						<span class="icon-cheveron-left" aria-hidden="true" />
+					</button>
+					<ul class="aw-metadata aw-caption-400">
+						<li>[level-of-difficulty]</li>
+						<li>[time-to-read] min</li>
+					</ul>
+					<div class="u-position-relative u-flex u-cross-center">
+						<button
+							class="
+                            aw-button is-text u-height-100-percent aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12
+                            u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
+							aria-label="previous page"
+						>
+							<span class="icon-cheveron-left aw-u-font-size-24" aria-hidden="true" />
+						</button>
+						<h1 class="aw-title">Header</h1>
+					</div>
+				</div>
+				<div class="aw-article-header-end" />
+			</header>
+			<div class="aw-article-content">
+				<section class="aw-article-content-section">
+					<header class="aw-article-content-header">
+						<div class="u-flex u-gap-16">
+							<span class="aw-numeric-badge aw-u-margin-block-start-2">2</span>
+							<h1 class="aw-label aw-u-color-text-primary">Prerequisites</h1>
+						</div>
+
+					</header>
+					<p>Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate quis odio velit fames tristique sit magna nec ut.</p>
+				</section>
+				<section class="aw-article-content-section">
+					<header class="aw-article-content-header">
+						<h2 class="aw-main-body-500 aw-u-color-text-primary">Title</h2>
+					</header>
+					<p>Lorem ipsum dolor sit amet consectetur. Cursus gravida nisl dictum et sit. Eu gravida vel velit ac tempor eu a ullamcorper.</p>
+					<div class="aw-media">
+						<img
+							class=""
+							src="https://pink.appwrite.io/articles/announcement.png"
+							alt=""
+							loading="lazy"
+						/>
+					</div>
+				</section>
+				<section class="aw-article-content-section">
+					<header class="aw-article-content-header">
+						<h2 class="aw-main-body-500 aw-u-color-text-primary">Title</h2>
+					</header>
+					<ul class="aw-list">
+						<li>Lorem ipsum dolor sit amet consectetur.</li>
+						<li>Lorem ipsum dolor sit amet consectetur. Cras laoreet dolor ultrices ligula.</li>
+						<li>
+							Quam pretium blandit egestas nec diam lacus volutpat a lorem. Porta augue proin.
+						</li>
+					</ul>
+				</section>
+
+				<section class="aw-article-content-section">
+					<header class="aw-article-content-header">
+						<h2 class="aw-main-body-500 aw-u-color-text-primary">Featured products</h2>
+					</header>
+					<p>
+						Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus
+						arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate
+						quis odio velit fames tristique sit magna nec ut.
+					</p>
+					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+						<header class="aw-code-snippet-header">
+							<div class="aw-code-snippet-header-start">
+								<div class="u-flex u-gap-16">
+									<div class="aw-tag">
+										<span class="text">Default</span>
+									</div>
+								</div>
+							</div>
+							<div class="aw-code-snippet-header-end">
+								<ul class="buttons-list u-flex u-gap-8">
+									<li class="buttons-list-item u-flex u-cross-child-scenter">
+										<div class="aw-select">
+											<select>
+												<option>Web SDK</option>
+												<option>Android SDK</option>
+											</select>
+											<span class="icon-cheveron-down" aria-hidden="true" />
+										</div>
+									</li>
+									<li class="buttons-list-item aw-u-padding-inline-start-20">
+										<button class="aw-icon-button" aria-label="copy code from code-snippet">
+											<span class="icon-duplicate" aria-hidden="true" />
+										</button>
+									</li>
+								</ul>
+							</div>
+						</header>
+						<div class="aw-code-snippet-content">CONTENT</div>
+					</section>
+				</section>
+
+				<section class="aw-article-content-section">
+					<header class="aw-article-content-header">
+						<h2 class="aw-main-body-500">Featured products</h2>
+					</header>
+					<p>
+						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+					</p>
+					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+						<header class="aw-code-snippet-header">
+							<div class="aw-code-snippet-header-start">
+								<div class="u-flex u-gap-16">
+									<div class="aw-tag">
+										<span class="text">Default</span>
+									</div>
+								</div>
+							</div>
+							<div class="aw-code-snippet-header-end">
+								<ul class="buttons-list u-flex u-gap-8">
+									<li class="buttons-list-item u-flex u-cross-child-scenter">
+										<div class="aw-select">
+											<select>
+												<option>Web SDK</option>
+												<option>Android SDK</option>
+											</select>
+											<span class="icon-cheveron-down" aria-hidden="true" />
+										</div>
+									</li>
+									<li class="buttons-list-item aw-u-padding-inline-start-20">
+										<button class="aw-icon-button" aria-label="copy code from code-snippet">
+											<span class="icon-duplicate" aria-hidden="true" />
+										</button>
+									</li>
+								</ul>
+							</div>
+						</header>
+						<div class="aw-code-snippet-content">CONTENT</div>
+					</section>
+					<p>
+						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+					</p>
+					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+						<header class="aw-code-snippet-header">
+							<div class="aw-code-snippet-header-start">
+								<div class="u-flex u-gap-16">
+									<div class="aw-tag">
+										<span class="text">Default</span>
+									</div>
+								</div>
+							</div>
+							<div class="aw-code-snippet-header-end">
+								<ul class="buttons-list u-flex u-gap-8">
+									<li class="buttons-list-item u-flex u-cross-child-scenter">
+										<div class="aw-select">
+											<select>
+												<option>Web SDK</option>
+												<option>Android SDK</option>
+											</select>
+											<span class="icon-cheveron-down" aria-hidden="true" />
+										</div>
+									</li>
+									<li class="buttons-list-item aw-u-padding-inline-start-20">
+										<button class="aw-icon-button" aria-label="copy code from code-snippet">
+											<span class="icon-duplicate" aria-hidden="true" />
+										</button>
+									</li>
+								</ul>
+							</div>
+						</header>
+						<div class="aw-code-snippet-content">CONTENT</div>
+					</section>
+				</section>
+
+				<div class="u-flex u-main-space-between">
+					<button class="aw-button is-text">
+						<span class="icon-cheveron-left" aria-hidden="true"></span>
+						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
+					</button>
+					<button class="aw-button is-secondary">
+						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
+						<span class="icon-cheveron-right" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+			<aside class="aw-references-menu aw-u-padding-inline-start-24">
+				<div class="aw-references-menu-content">
+					<div class="u-flex u-main-space-between u-cross-center u-gap-16">
+						<h5 class="aw-references-menu-title aw-eyebrow">Tutorial Steps</h5>
+					</div>
+					<ol class="aw-references-menu-list">
+						<li class="aw-references-menu-item">
+							<a href="" class="aw-references-menu-link">
+								<span class="aw-numeric-badge">1</span>
+								<span class="aw-caption-400">Title</span>
+							</a>
+						</li>
+						<li class="aw-references-menu-item">
+							<a href="" class="aw-references-menu-link is-selected">
+								<span class="aw-numeric-badge">2</span>
+								<span class="aw-caption-400">Title</span>
+							</a>
+							<ol class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32">
+								<li class="aw-references-menu-item">
+									<a href="" class="aw-references-menu-link is-selected">
+										<span class="aw-caption-400">Subtitle</span>
+									</a>
+								</li>
+								<li class="aw-references-menu-item">
+									<a href="" class="aw-references-menu-link is-selected">
+										<span class="aw-caption-400">Subtitle</span>
+									</a>
+								</li>
+							</ol>
+						</li>
+						<li class="aw-references-menu-item">
+							<a href="" class="aw-references-menu-link">
+								<span class="aw-numeric-badge">3</span>
+								<span class="aw-caption-400">Title</span>
+							</a>
+						</li>
+					</ol>
+					<div class="u-sep-block-start u-padding-block-start-20">
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
+							<span class="icon-arrow-up" aria-hidden="true" />
+							<span class="aw-sub-body-500">Back to top</span>
+						</a>
+					</div>
+				</div>
+			</aside>
+		</article>
+	</main>
+	<footer class="aw-main-footer u-margin-block-start-48 u-small">
+		<div class="aw-main-footer-grid-1">
+			<ul class="aw-main-footer-grid-1-column-1 u-flex u-gap-8">
+				<li>
+					<button class="aw-icon-button" aria-label="Appwrite on Discord">
+						<span class="icon-discord" aria-hidden="true" />
+					</button>
+				</li>
+				<li>
+					<button class="aw-icon-button" aria-label="Appwrite GitHub">
+						<span class="icon-github" aria-hidden="true" />
+					</button>
+				</li>
+				<li>
+					<button class="aw-icon-button" aria-label="Appwrite on Twitter">
+						<span class="icon-twitter" aria-hidden="true" />
+					</button>
+				</li>
+				<li>
+					<button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
+						<span class="icon-linkedin" aria-hidden="true" />
+					</button>
+				</li>
+				<li>
+					<button class="aw-icon-button" aria-label="Appwrite YouTube">
+						<span class="icon-youtube" aria-hidden="true" />
+					</button>
+				</li>
+			</ul>
+			<div class="aw-main-footer-grid-1-column-2">
+				<div class="aw-select is-colored">
+					<button class="physical-select">
+						<span class="icon-moon" aria-hidden="true" />
+						<span>Dark</span>
+					</button>
+					<span class="icon-cheveron-down" aria-hidden="true" />
+				</div>
+			</div>
+			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
+				<li>
+					<a href="">Supports</a>
+				</li>
+				<li>
+					<a href="">Status</a>
+				</li>
+				<li>
+					<a href="">Changelog</a>
+				</li>
+			</ul>
+			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
+				Copyright © 2023 Appwrite • Version 0.30.13.504
+			</div>
+		</div>
+	</footer>
+</Docs>
+
+<!-- <script type="module" src="/src/main.ts"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#MenuButton, #ToggleMenu").on("click", function(){
+            $(".aw-grid-two-side-navs").toggleClass("is-open");
+            $(".aw-references-menu").removeClass("is-open");
+        });
+
+
+        $("#refOpen, #refClose").on("click", function(){
+            $(".aw-references-menu").toggleClass("is-open");
+            $(".aw-grid-two-side-navs").removeClass("is-open");
+        });
+    });
+</script> -->
