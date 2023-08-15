@@ -18,7 +18,8 @@
   &.is-full-color {
     --card-bg-color: var(--aw-color-neutral-0);
     padding:pxToRem(20); border-radius:pxToRem(16);
-    background-color:hsl(var(--card-bg-color)); backdrop-filter:blur(pxToRem(8));
+    background-color:hsl(var(--card-bg-color)) / 0.9; backdrop-filter:blur(pxToRem(8));
+    border:solid pxToRem(1) hsl(var(--aw-color-subtle));
 
     #{$theme-dark} & {
       --card-bg-color: var(--aw-color-neutral-850);
