@@ -37,6 +37,7 @@
 								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="/docs">Docs</a></li>
 								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Blog</a></li>
 								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Pricing</a></li>
+								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Roadmap</a></li>
 							</ul>
 						</nav>
 					</div>
