@@ -16,12 +16,13 @@
     }
   }
   &-plan {
-    flex:1;
-    .title { color:rgb(255 255 255 / 0.64); font-size:pxToRem(24); font-weight:500; }
-    .price { color:hsl(var(--aw-color-neutral-100)); font-size:pxToRem(44); letter-spacing: -0.88px; }
-    .info  { color:rgb(255 255 255 / 0.64); font-size:pxToRem(14); font-weight:500; }
+    display:flex; flex-direction:column; gap:pxToRem(4);
+    flex:1; flex-basis:pxToRem(103);
+    .title { color:rgb(255 255 255 / 0.64); }
+    .price {  }
+    .info  { color:rgb(255 255 255 / 0.64); }
   }
-  &-info { flex:2.5; }
+  &-info { flex:2.5; flex-basis:pxToRem(230); }
   .#{$p}-button { flex:1;  white-space:nowrap; }
 
   /* responsive according container size */
@@ -31,5 +32,7 @@
       flex-direction:column; align-items:revert; gap:pxToRem(16);
       .#{$p}-button {margin-block-start:pxToRem(4); }
     }
+    &-plan,
+    &-info { flex:initial; flex-basis:0; }
   }
 }

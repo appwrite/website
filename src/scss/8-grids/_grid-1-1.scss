@@ -1,0 +1,9 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-1-1 {
+  display: grid;
+  @media #{$break3open} {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
