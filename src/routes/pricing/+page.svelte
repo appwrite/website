@@ -164,6 +164,36 @@
                     <h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
                     <p class="aw-main-body-500 u-margin-block-start-16">Discover our plans and find the one that fits your project’s needs.</p>
                 </header>
+                <div class="aw-u-grid-auto-column-1fr u-gap-32 aw-u-margin-block-start-64">
+                            <div></div>
+                            <div class="aw-mini-card">
+                                <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
+                                    <h4 class="aw-label">Free</h4>
+                                    <button class="aw-button is-secondary">
+                                        <span class="aw-sub-body-500">Start building</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="aw-mini-card">
+                                <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
+                                    <h4 class="aw-label">Pro</h4>
+                                    <button class="aw-button">
+                                        <span class="aw-sub-body-500">Go Pro</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="aw-mini-card">
+                                <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
+                                    <h4 class="aw-label">Scale</h4>
+                                    <button class="aw-button is-secondary">
+                                        <span class="aw-sub-body-500">Get Scale</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                </div>
+                <div class="stretch-sep"></div>
             </div>
         </article>
     </div>

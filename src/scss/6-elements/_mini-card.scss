@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+
+.#{$p}-mini-card {
+  --p-mini-card-bg-color: var(--aw-color-neutral-0);
+  --p-mini-card-border-color: var(--aw-color-neutral-100);
+
+  padding:pxToRem(10); padding-inline-start:pxToRem(16);
+
+  background-color: hsl(var(--p-mini-card-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-mini-card-border-color));
+  border-radius: pxToRem(16);
+}

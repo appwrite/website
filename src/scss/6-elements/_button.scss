@@ -48,6 +48,13 @@
         color:hsl(var(--aw-color-neutral-50));
       }
     }
+    #{$theme-light} & {
+      color: hsl(var(--aw-color-primary-500));
+      .#{$p}-inline-tag {
+        background:rgba(255, 64, 120, 0.10);
+        color:hsl(var(--aw-color-primary-500));
+      }
+    }
   }
   &.is-transparent {
     background: rgba(237, 237, 240, 0.16); border-width:0;
