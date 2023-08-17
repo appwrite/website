@@ -855,7 +855,7 @@
 						</button>
 					</li>
 				</ul>
-				<div>Copyright © 2023 Appwrite • Version 0.30.13.504</div>
+				<div>Copyright © 2023 Appwrite</div>
 			</footer>
 		</div>
 	</div>
