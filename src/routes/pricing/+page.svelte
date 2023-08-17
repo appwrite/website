@@ -51,7 +51,7 @@
                                 <header class="aw-pricing-cards-header">
                                     <h2 class="aw-label">Free</h2>
                                     <div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
-                                    <div class="u-margin-block-start-4">per user/month</div>
+                                    <div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
                                     <p class="aw-main-body-500 u-margin-block-start-16">For personal passion projects and non-commercial use</p>
                                     <button class="aw-button is-secondary is-full-width u-margin-block-start-32">
                                         <span class="aw-sub-body-500">Start building</span>
@@ -78,7 +78,7 @@
                             <div class="aw-pricing-cards-item">
                                 <header class="aw-pricing-cards-header">
                                     <h2 class="aw-label">Pro</h2>
-                                    <div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
+                                    <div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$15</div>
                                     <div class="u-margin-block-start-4">per user/month</div>
                                     <p class="aw-main-body-500 u-margin-block-start-16">For pro teams and production projects that need to scale</p>
                                     <button class="aw-button is-full-width u-margin-block-start-32">
@@ -156,5 +156,15 @@
             </ul>
 
         </section>
+    </div>
+    <div class="u-position-relative aw-white-section theme-light">
+        <article>
+            <div class="aw-container">
+                <header class="aw-u-text-align-center">
+                    <h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
+                    <p class="aw-main-body-500 u-margin-block-start-16">Discover our plans and find the one that fits your project’s needs.</p>
+                </header>
+            </div>
+        </article>
     </div>
 </Homepage>
