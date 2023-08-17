@@ -20,6 +20,9 @@
       border-inline-end:solid pxToRem(1) hsl(var(--p-info-boxes-sep-color));
     }
   }
-  &-title { margin-block-start:pxToRem(16); color:hsl(var(--aw-color-primary)); }
+  &-title {
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(12);
+    margin-block-start:pxToRem(16); color:hsl(var(--aw-color-primary));
+  }
   &-content { margin-block-start:pxToRem(4); color:hsl(var(--aw-color-secondary)); }
 }
