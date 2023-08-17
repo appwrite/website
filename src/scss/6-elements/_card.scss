@@ -16,7 +16,7 @@
     background: linear-gradient(136deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 30.91%, rgba(255, 255, 255, 0.00) 100%, rgba(255, 255, 255, 0.01) 100%);
     &-pink {
       background: linear-gradient(180deg, rgba(253, 54, 110, 0.04) 61.28%, rgba(253, 54, 110, 0.00) 100%);
-      border-color:hsl(var(--aw-color-primary-500));
+      border-color:hsl(var(--aw-color-primary-500) / 0.5);
     }
   }
   &.is-full-color {
