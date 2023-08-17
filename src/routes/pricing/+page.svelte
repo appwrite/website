@@ -129,6 +129,32 @@
                 </ul>
             </div>
 
+            <ul class="aw-grid-1-1-opt-2 u-gap-32 aw-u-margin-block-start-80">
+                <li>
+                    <article class="aw-card is-transparent">
+                        <header class="u-flex u-gap-12">
+                            <h3 class="aw-main-body-500 aw-u-color-text-primary">Enterprises</h3>
+                            <div class="aw-inline-tag">Coming Soon</div>
+                        </header>
+                        <p class="u-margin-block-start-8">Large scale projects seeking greater performance, collaboration and security.</p>
+                        <button class="aw-button is-secondary u-margin-block-start-32">
+                            <span>Contact Us</span>
+                        </button>
+                    </article>
+                </li>
+                <li>
+                    <article class="aw-card is-transparent">
+                        <header class="u-flex u-gap-12">
+                            <h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
+                        </header>
+                        <p class="u-margin-block-start-8">We support OSS companies with a free Pro Plan. Get in touch to find out.</p>
+                        <button class="aw-button is-secondary u-margin-block-start-32">
+                            <span>Contact Us</span>
+                        </button>
+                    </article>
+                </li>
+            </ul>
+
         </section>
     </div>
 </Homepage>
