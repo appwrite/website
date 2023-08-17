@@ -542,7 +542,7 @@
 					</li>
 				</ul>
 				<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
-					Copyright © 2023 Appwrite • Version 0.30.13.504
+					Copyright © 2023 Appwrite
 				</div>
 			</div>
 		</footer>
