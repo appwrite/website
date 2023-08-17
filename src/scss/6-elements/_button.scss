@@ -84,9 +84,6 @@
     }
   }
 
-  &.is-full-width-mobile {
-    @media #{$break1} {
-      inline-size:100%;
-    }
-  }
+  &.is-full-width { inline-size:100%; }
+  &.is-full-width-mobile { @media #{$break1} { inline-size:100%;} }
 }
