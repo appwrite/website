@@ -177,8 +177,8 @@
 
 
                 <div
-                        class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky"
-                        style="--inset-block-start:5rem">
+                        class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
+                        style="--inset-block-start:2rem">
                     <ul class="aw-secondary-tabs aw-is-only-mobile"
                         style="
                 --p-secondary-tabs-bg-color-default:var(--aw-color-neutral-0);
@@ -204,7 +204,7 @@
 
                 <div
                         class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
-                         aw-u-filter-blur-8 u-position-sticky"
+                         aw-u-filter-blur-8 u-position-sticky u-z-index-5"
                         style="--inset-block-start:1rem">
                     <div class="aw-label aw-u-cross-child-center">Compare plans</div>
                     <div class="aw-mini-card">
@@ -235,7 +235,7 @@
                 <div class="aw-u-stretch-sep-full-screen"></div>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Resources</caption>
+                    <caption class="aw-description aw-compare-table-sticky-header">Resources</caption>
                     <tbody>
                         <tr>
                             <th class="aw-sub-body-500">Bandwidth</th>

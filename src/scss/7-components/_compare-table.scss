@@ -2,7 +2,11 @@
 
 .#{$p}-compare-table {
   inline-size: 100%;
-  caption { padding-block:pxToRem(16); }
+  caption {
+    position:sticky; inset-block-start:pxToRem(152); backdrop-filter:blur(#{pxToRem(8)});
+    padding-block:pxToRem(16);  padding-inline:pxToRem(8); margin-inline:pxToRem(-8);
+    @media #{$break1} { inset-block-start:pxToRem(120); }
+  }
   tr {
     display:grid; gap:pxToRem(32); grid-auto-columns:1fr; grid-auto-flow:column; border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));
     &:last-child { border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth)); }
