@@ -164,9 +164,37 @@
                     <h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
                     <p class="aw-main-body-500 u-margin-block-start-16">Discover our plans and find the one that fits your project’s needs.</p>
                 </header>
+
+
+                <div
+                        class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky"
+                        style="--inset-block-start:5rem">
+                    <ul class="aw-secondary-tabs aw-is-only-mobile"
+                        style="
+                --p-secondary-tabs-bg-color-default:var(--aw-color-neutral-0);
+                --p-secondary-tabs-text-color-selected:var(--aw-color-accent);
+                --p-secondary-tabs-bg-color-selected:var(--aw-color-accent) / 0.08;">
+                        <li class="aw-secondary-tabs-item u-stretch">
+                            <button class="aw-secondary-tabs-button is-selected u-width-full-line">
+                                <span class="aw-main-body-500">Free</span>
+                            </button>
+                        </li>
+                        <li class="aw-secondary-tabs-item u-stretch">
+                            <button class="aw-secondary-tabs-button u-width-full-line">
+                                <span class="aw-main-body-500">Pro</span>
+                            </button>
+                        </li>
+                        <li class="aw-secondary-tabs-item u-stretch">
+                            <button class="aw-secondary-tabs-button u-width-full-line">
+                                <span class="aw-main-body-500">Scale</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
                 <div
                         class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
-                         aw-u-filter-blur-8 u-position-sticky "
+                         aw-u-filter-blur-8 u-position-sticky"
                         style="--inset-block-start:5rem">
                     <div class="aw-label">Compare plans</div>
                     <div class="aw-mini-card">
