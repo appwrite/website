@@ -48,7 +48,10 @@
             <div class="aw-pricing-cards">
                 <ul class="aw-pricing-cards-list">
                     <li>
-                        <article class="aw-card is-transparent u-height-100-percent">
+                        <article
+                                class="aw-card is-transparent u-height-100-percent"
+                                style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                        >
                             <div class="aw-pricing-cards-item">
                                 <header class="aw-pricing-cards-header">
                                     <h2 class="aw-label">Free</h2>
@@ -106,7 +109,10 @@
                         </article>
                     </li>
                     <li>
-                        <article class="aw-card is-transparent u-height-100-percent">
+                        <article
+                                class="aw-card is-transparent u-height-100-percent"
+                                style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                        >
                             <div class="aw-pricing-cards-item">
                                 <header class="aw-pricing-cards-header">
                                     <h2 class="aw-label">Scale</h2>
