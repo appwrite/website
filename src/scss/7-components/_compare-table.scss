@@ -9,4 +9,11 @@
   }
   th, td {  padding-block:pxToRem(16);  }
   td:nth-child(n + 2) { padding-inline-start:pxToRem(8); }
+  @media #{$break1} {
+    th, td {  width:50%; }
+    [class*="level-"] {
+      display:none;
+      &.is-selected { display:table-cell; }
+    }
+  }
 }
