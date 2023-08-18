@@ -139,7 +139,8 @@
 
             <ul class="aw-grid-1-1-opt-2 u-gap-32 aw-u-margin-block-start-80">
                 <li>
-                    <article class="aw-card is-transparent">
+                    <article class="aw-card is-transparent"
+                    style="background:rgba(35, 35, 37, 0.90);">
                         <header class="u-flex u-gap-12">
                             <h3 class="aw-main-body-500 aw-u-color-text-primary">Enterprises</h3>
                             <div class="aw-inline-tag">Coming Soon</div>
@@ -151,7 +152,8 @@
                     </article>
                 </li>
                 <li>
-                    <article class="aw-card is-transparent">
+                    <article class="aw-card is-transparent"
+                             style="background:rgba(35, 35, 37, 0.90);">
                         <header class="u-flex u-gap-12">
                             <h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
                         </header>
@@ -206,10 +208,10 @@
                         class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
                          aw-u-filter-blur-8 u-position-sticky u-z-index-5"
                         style="--inset-block-start:1rem">
-                    <div class="aw-label aw-u-cross-child-center">Compare plans</div>
+                    <div class="aw-label aw-u-color-text-primary aw-u-cross-child-center">Compare plans</div>
                     <div class="aw-mini-card">
                         <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
-                            <h4 class="aw-label">Free</h4>
+                            <h4 class="aw-label aw-u-color-text-primary">Free</h4>
                             <button class="aw-button is-secondary">
                                 <span class="aw-sub-body-500">Start building</span>
                             </button>
@@ -217,7 +219,7 @@
                     </div>
                     <div class="aw-mini-card">
                         <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
-                            <h4 class="aw-label">Pro</h4>
+                            <h4 class="aw-label aw-u-color-text-primary">Pro</h4>
                             <button class="aw-button">
                                 <span class="aw-sub-body-500">Go Pro</span>
                             </button>
@@ -225,7 +227,7 @@
                     </div>
                     <div class="aw-mini-card">
                         <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
-                            <h4 class="aw-label">Scale</h4>
+                            <h4 class="aw-label aw-u-color-text-primary">Scale</h4>
                             <button class="aw-button is-secondary">
                                 <span class="aw-sub-body-500">Get Scale</span>
                             </button>
@@ -235,7 +237,7 @@
                 <div class="aw-u-stretch-sep-full-screen"></div>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description aw-compare-table-sticky-header">Resources</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Resources</caption>
                     <tbody>
                         <tr>
                             <th class="aw-sub-body-500">Bandwidth</th>
@@ -271,7 +273,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Platform</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Platform</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Number of projects</th>
@@ -349,7 +351,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Auth</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Auth</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Users</th>
@@ -379,7 +381,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Databases</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Databases</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Databases</th>
@@ -409,7 +411,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Storage</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Storage</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Buckets</th>
@@ -433,7 +435,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Functions</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Functions</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Functions</th>
@@ -457,7 +459,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Realtime</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Realtime</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Concurrent connections</th>
@@ -481,7 +483,7 @@
                 </table>
 
                 <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                    <caption class="aw-description">Support</caption>
+                    <caption class="aw-description aw-u-color-text-primary">Support</caption>
                     <tbody>
                     <tr>
                         <th class="aw-sub-body-500">Community</th>
