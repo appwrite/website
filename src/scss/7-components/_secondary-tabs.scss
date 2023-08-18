@@ -30,7 +30,7 @@
     background-color: hsl(var(--p-secondary-tabs-bg-color));
     box-shadow:0 0 0 pxToRem(4) hsl(var(--p-secondary-tabs-shadow-color));
 
-    padding-inline:pxToRem(12); padding-block:pxToRem(6); user-select:none;
+    padding-inline:pxToRem(12); padding-block:pxToRem(6); user-select:none; text-align:center;
     border-radius:var(--border-radius-small); border-width:0; transition:var(--transition);
     &:focus-visible {
       --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-focus);
@@ -77,5 +77,28 @@
     --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-defalut);
     --p-secondary-tabs-shadow-color-defalut: var(--transparent);
     --p-secondary-tabs-shadow-color-focus: var(--color-neutral-0) / 0.16;
+  }
+
+  #{$theme-light} & {
+    --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
+    --p-secondary-tabs-text-color-default: var(--aw-color-neutral-700);
+    --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-900);
+    --p-secondary-tabs-text-color-active: var(--aw-color-neutral-900);
+    --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-900);
+    --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-900) / 0.48;
+    --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-700);
+
+    --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
+    --p-secondary-tabs-bg-color-default: var(--transparent);
+    --p-secondary-tabs-bg-color-hover: var(--aw-color-neutral-50);
+    --p-secondary-tabs-bg-color-active: var(--aw-color-neutral-100);
+    --p-secondary-tabs-bg-color-selected: var(--aw-color-neutral-100);
+    --p-secondary-tabs-bg-color-disabled: var(--transparent);
+    --p-secondary-tabs-bg-color-focus: var(--p-secondary-tabs-bg-color-default);
+
+    --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-defalut);
+    --p-secondary-tabs-shadow-color-defalut: var(--transparent);
+    --p-secondary-tabs-shadow-color-focus: var(--color-neutral-1000) / 0.16;
+    background: hsl(var(--aw-color-neutral-0));
   }
 }
