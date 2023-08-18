@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+
+.#{$p}-compare-table {
+  inline-size: 100%;
+  caption { padding-block:pxToRem(16); }
+  tr {
+    display:grid; gap:pxToRem(32); grid-auto-columns:1fr; grid-auto-flow:column; border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    &:last-child { border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth)); }
+  }
+  th, td {  padding-block:pxToRem(16);  }
+  td:nth-child(n + 2) { padding-inline-start:pxToRem(8); }
+}

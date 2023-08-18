@@ -2,11 +2,15 @@
 
 .#{$p}-u-opacity-90     { opacity:0.9!important; }
 
+.#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
+.#{$p}-u-margin-inline-8-negative   { margin-inline:pxToRem(-8); }
 .#{$p}-u-padding-inline-start-0     { padding-inline-start:0!important; }
 .#{$p}-u-padding-inline-start-20    { padding-inline-start:pxToRem(20)!important; }
 .#{$p}-u-padding-inline-start-24    { padding-inline-start:pxToRem(24)!important; }
 .#{$p}-u-padding-inline-end-12      { padding-inline-end:12px!important; }
 .#{$p}-u-padding-block-0            { padding-block:0!important; }
+.#{$p}-u-padding-block-start-64     { padding-block-start:pxToRem(64)!important; }
+.#{$p}-u-padding-block-start-80     { padding-block-start:pxToRem(80)!important; }
 .#{$p}-u-padding-block-end-56       { padding-block:pxToRem(56); }
 
 .#{$p}-u-padding-block-end-136-not-mobile { padding-block-end:pxToRem(136)!important; }
@@ -63,6 +67,8 @@
 .#{$p}-u-cross-child-end { align-self:end!important;  }
 
 .#{$p}-u-grid-auto-column-1fr { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; }
+
+.#{$p}-u-filter-blur-8  { backdrop-filter:blur(#{pxToRem(8)}); }
 
 /* responsive global state classes */
 .#{$p}-is-only-mobile {
