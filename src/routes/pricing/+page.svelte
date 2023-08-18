@@ -199,8 +199,8 @@
                 <div
                         class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
                          aw-u-filter-blur-8 u-position-sticky"
-                        style="--inset-block-start:5rem">
-                    <div class="aw-label">Compare plans</div>
+                        style="--inset-block-start:1rem">
+                    <div class="aw-label aw-u-cross-child-center">Compare plans</div>
                     <div class="aw-mini-card">
                         <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
                             <h4 class="aw-label">Free</h4>
