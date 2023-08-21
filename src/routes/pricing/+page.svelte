@@ -2,35 +2,45 @@
     import { Homepage } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute" style="margin-block-start:-36%;pointer-events:none;">
-    <svg
-            style="width:1466.685px; height:804.009px; transform:rotate(150.348deg); fill: var(--appwrite-pink, #FD366E); opacity: 0.6499999761581421; filter: blur(127.51104736328125px);"
-            xmlns="http://www.w3.org/2000/svg"
-            width="1727"
-            height="520"
-            viewBox="0 0 1727 520"
-            fill="none"
-    >
-        <g opacity="0.65" filter="url(#filter0_f_278_15509)">
-            <path
-                    d="M887.773 -394.667L-52.2142 167.684L842.622 381.131L1616.37 124.584L887.773 -394.667Z"
-                    fill="#FD366E"
-            />
+<div class="u-position-absolute" style="pointer-events:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1389" height="714" viewBox="0 0 1389 714" fill="none">
+        <g filter="url(#filter0_f_1330_36480)">
+            <ellipse cx="519.417" cy="351.062" rx="156.5" ry="468.5" transform="rotate(61.5107 519.417 351.062)" fill="url(#paint0_radial_1330_36480)" fill-opacity="0.5"/>
+        </g>
+        <g filter="url(#filter1_f_1330_36480)">
+            <ellipse cx="855.777" cy="337.091" rx="156.5" ry="468.5" transform="rotate(66.0796 855.777 337.091)" fill="url(#paint1_radial_1330_36480)" fill-opacity="0.5"/>
+        </g>
+        <g filter="url(#filter2_f_1330_36480)">
+            <ellipse cx="757.509" cy="316.973" rx="92.2783" ry="276.245" transform="rotate(66.0796 757.509 316.973)" fill="url(#paint2_radial_1330_36480)" fill-opacity="0.5"/>
         </g>
         <defs>
-            <filter
-                    id="filter0_f_278_15509"
-                    x="-307.237"
-                    y="-649.69"
-                    width="2178.63"
-                    height="1285.84"
-                    filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_278_15509" />
+            <filter id="filter0_f_1330_36480" x="0.865417" y="-11.3857" width="1037.1" height="724.895" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_1330_36480"/>
             </filter>
+            <filter id="filter1_f_1330_36480" x="322.783" y="-0.727051" width="1065.99" height="675.636" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_1330_36480"/>
+            </filter>
+            <filter id="filter2_f_1330_36480" x="402.199" y="76.7461" width="710.619" height="480.453" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_1330_36480"/>
+            </filter>
+            <radialGradient id="paint0_radial_1330_36480" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(519.417 351.062) rotate(90) scale(468.5 156.5)">
+                <stop stop-color="#F02E65"/>
+                <stop offset="1" stop-color="#F02E65" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="paint1_radial_1330_36480" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(855.777 337.091) rotate(90) scale(468.5 156.5)">
+                <stop stop-color="#FE9567"/>
+                <stop offset="1" stop-color="#F02E65" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="paint2_radial_1330_36480" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(757.509 316.973) rotate(90) scale(276.245 92.2783)">
+                <stop stop-color="#FFEAE1"/>
+                <stop offset="1" stop-color="#F02E65" stop-opacity="0"/>
+            </radialGradient>
         </defs>
     </svg>
 </div>
@@ -143,7 +153,7 @@
                     style="background:rgba(35, 35, 37, 0.90);">
                         <header class="u-flex u-gap-12">
                             <h3 class="aw-main-body-500 aw-u-color-text-primary">Enterprises</h3>
-                            <div class="aw-inline-tag">Coming Soon</div>
+                            <div class="aw-inline-tag is-pink">Coming Soon</div>
                         </header>
                         <p class="u-margin-block-start-8">Large scale projects seeking greater performance, collaboration and security.</p>
                         <button class="aw-button is-secondary u-margin-block-start-32">
