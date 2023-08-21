@@ -188,6 +188,17 @@
 					</section>
 				</section>
 
+				<div class="u-flex u-main-space-between">
+					<button class="aw-button is-text">
+						<span class="icon-cheveron-left" aria-hidden="true"></span>
+						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
+					</button>
+					<button class="aw-button is-secondary">
+						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
+						<span class="icon-cheveron-right" aria-hidden="true"></span>
+					</button>
+				</div>
+
 				<section class="aw-content-footer">
 					<header class="aw-content-footer-header">
 						<div class="aw-content-footer-header-start">
@@ -227,16 +238,6 @@
 					</div>
 				</section>
 
-				<div class="u-flex u-main-space-between">
-					<button class="aw-button is-text">
-						<span class="icon-cheveron-left" aria-hidden="true"></span>
-						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
-					</button>
-					<button class="aw-button is-secondary">
-						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
-						<span class="icon-cheveron-right" aria-hidden="true"></span>
-					</button>
-				</div>
 			</div>
 			<aside class="aw-references-menu aw-u-padding-inline-start-24">
 				<div class="aw-references-menu-content">
