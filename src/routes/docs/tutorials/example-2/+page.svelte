@@ -210,6 +210,21 @@
 							</ul>
 						</div>
 					</header>
+					<div class="aw-card is-transparent" style="--card-padding:1rem">
+						<label for="message">
+							<span class="aw-u-color-text-primary">What did you like?</span>
+							<span class="">(optional)</span>
+						</label>
+						<textarea class="aw-input-text u-margin-block-start-8" id="message" placeholder="Write your message"></textarea>
+						<div class="u-flex u-main-end u-margin-block-start-16">
+							<button class="aw-button is-text">
+								<span class="">Cancel</span>
+							</button>
+							<button class="aw-button">
+								<span class="">Submit</span>
+							</button>
+						</div>
+					</div>
 				</section>
 
 				<div class="u-flex u-main-space-between">
