@@ -9,4 +9,9 @@
     @media #{$break1} { flex-direction:column-reverse; }
     @media #{$break2open} { justify-items:center; }
   }
+
+  .#{$p}-card {
+    @media #{$break1} { margin-block-start:pxToRem(16); }
+    @media #{$break2open} { margin-block-start:pxToRem(32); }
+  }
 }

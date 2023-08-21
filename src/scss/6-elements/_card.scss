@@ -9,7 +9,8 @@
     border-radius: var(--border-radius-medium);
   }
   &.is-transparent {
-    padding:pxToRem(32);
+    --p-card-padding: var(--card-padding, #{pxToRem(32)});
+    padding: var(--p-card-padding);
     border:solid pxToRem(1) rgba(255 255 255 / 0.12);
     border-radius:pxToRem(16);
     backdrop-filter:blur(100px);
