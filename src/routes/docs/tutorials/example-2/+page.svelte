@@ -188,6 +188,28 @@
 					</section>
 				</section>
 
+				<section>
+					<div class="u-flex u-main-space-between u-gap-16">
+						<div class="u-flex u-gap-16">
+							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
+							<div class="u-flex u-gap-8">
+								<input class="aw-radio-button is-like" type="radio" aria-label="Helpful" name="happy">
+								<input class="aw-radio-button is-dislike" type="radio" aria-label="UnHelpful" name="happy">
+							</div>
+						</div>
+						<ul class="aw-metadata aw-caption-400">
+							<li>Last updated on July 16, 2023</li>
+							<li>
+								<button class="">
+									<!-- TODO: wait for implement icons in website -->
+									<span class="icon-edit" aria-hidden="true"></span>
+									<span>Update on GitHub</span>
+								</button>
+							</li>
+						</ul>
+					</div>
+				</section>
+
 				<div class="u-flex u-main-space-between">
 					<button class="aw-button is-text">
 						<span class="icon-cheveron-left" aria-hidden="true"></span>
