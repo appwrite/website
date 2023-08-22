@@ -149,7 +149,7 @@
 
             <ul class="aw-grid-1-1-opt-2 u-gap-32 aw-u-margin-block-start-80">
                 <li>
-                    <article class="aw-card is-transparent"
+                    <article class="aw-card is-transparent u-min-height-100-percent"
                     style="background:rgba(35, 35, 37, 0.90);">
                         <header class="u-flex u-gap-12">
                             <h3 class="aw-main-body-500 aw-u-color-text-primary">Enterprises</h3>
@@ -162,7 +162,7 @@
                     </article>
                 </li>
                 <li>
-                    <article class="aw-card is-transparent"
+                    <article class="aw-card is-transparent u-min-height-100-percent"
                              style="background:rgba(35, 35, 37, 0.90);">
                         <header class="u-flex u-gap-12">
                             <h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
