@@ -5,6 +5,9 @@
   --p-side-nav-icon-item-color: var(--aw-color-neutral-250);
   --p-side-nav-bg-color: var(--p-body-bg-color);
 
+  --p-side-nav-bg-item-color: var(--transparent);
+  --p-side-nav-bg-item-color-selected: var(--aw-color-neutral-50);
+
   position:sticky; z-index:25; inset-block-start:pxToRem(80); inset-block-end:0;
   block-size:calc(100vh - pxToRem(80));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
@@ -22,8 +25,14 @@
   &-button {
     display:flex; inline-size:100%; align-items:center; gap:pxToRem(8);
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
-    color:hsl(var(--p-side-nav-text-item-color));
+    color:hsl(var(--p-side-nav-text-item-color)); background-color:hsl(var(--p-side-nav-bg-item-color));
+    border-radius:pxToRem(8);
     [class*="icon"]:first-child { color:hsl(var(--p-side-nav-icon-item-color)); }
+    [class*="icon"]:last-child { transition:var(--transiton); }
+    &.is-selected {
+      --p-side-nav-bg-item-color: var(--p-side-nav-bg-item-color-selected);
+      [class*="icon"]:last-child { rotate:180deg; }
+    }
   }
   &.is-transparent {
     --p-side-nav-bg-color: var(--transparent);
@@ -31,5 +40,6 @@
 
   #{$theme-dark} & {
     --p-side-nav-text-item-color: var(--aw-color-neutral-100);
+    --p-side-nav-bg-item-color-selected: var(--aw-color-neutral-0) / 0.08;
   }
 }
