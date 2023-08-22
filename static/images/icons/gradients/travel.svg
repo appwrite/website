@@ -1,0 +1,14 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon=travel">
+<path id="Line" d="M10.5 12V32" stroke="#FD366E" stroke-width="1.2" stroke-linecap="square"/>
+<path id="Line_2" d="M29.5 12V32" stroke="#FD366E" stroke-width="1.2" stroke-linecap="square"/>
+<path id="Body" d="M30.8889 11H9.11111C7.39289 11 6 12.7909 6 15V29C6 31.2091 7.39289 33 9.11111 33H30.8889C32.6071 33 34 31.2091 34 29V15C34 12.7909 32.6071 11 30.8889 11Z" fill="url(#paint0_linear_1025_2521)" stroke="#FD366E" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Handle" d="M14 10.5L14.2784 9.10777C14.4654 8.17292 15.2862 7.5 16.2396 7.5H23.7604C24.7138 7.5 25.5346 8.17292 25.7216 9.10777L26 10.5" stroke="#FD366E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1025_2521" x1="20.0017" y1="11" x2="20.0017" y2="33" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FD366E" stop-opacity="0"/>
+<stop offset="1" stop-color="#FD366E" stop-opacity="0.4"/>
+</linearGradient>
+</defs>
+</svg>
