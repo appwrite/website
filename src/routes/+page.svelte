@@ -119,33 +119,33 @@
 			<div class="u-overflow-hidden aw-u-margin-block-start-80">
 				<ul class="aw-info-boxes aw-sub-body-500">
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/home.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/self-hosted.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">Self-Hosted</h3>
 						<p class="aw-info-boxes-content">Own your data or host it on a region of choice.</p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/lock.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/lock.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">Encryption</h3>
 						<p class="aw-info-boxes-content">
                             Built-in data encryption both in rest and in transit.
                         </p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/shield.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/shield.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">Abuse Protection</h3>
 						<p class="aw-info-boxes-content">
                             Protect users from abuse with built-in protection.
 						</p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/database.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/database.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">Data Migrations</h3>
 						<p class="aw-info-boxes-content">
                             Move data between 3rd parties, cloud or self-hosting.
 						</p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/star.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/star.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">
                             <span class="">GDPR</span>
                             <span class="aw-inline-tag is-pink">Coming Soon</span>
@@ -155,7 +155,7 @@
 						</p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/minimize-2.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/soc-2.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">
                             <span class="">SOC-2</span>
                             <span class="aw-inline-tag is-pink">Coming Soon</span>
@@ -165,7 +165,7 @@
 						</p>
 					</li>
 					<li class="aw-info-boxes-item">
-						<img src="/images/icons/pink/hipaa.svg" width="40" height="40" />
+						<img src="/images/icons/gradients/hipaa.svg" width="40" height="40" />
 						<h3 class="aw-info-boxes-title">
                             <span class="">HIPAA</span>
                             <span class="aw-inline-tag is-pink">Coming Soon</span>

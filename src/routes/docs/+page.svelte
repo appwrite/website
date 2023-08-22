@@ -351,7 +351,7 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/pink/auth.svg" alt="" />
+							<img src="/images/icons/illustrated/auth.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -360,7 +360,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/pink/databases.svg" alt="" />
+							<img src="/images/icons/illustrated/databases.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Databases</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store your application and users' data.
@@ -369,7 +369,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/pink/functions.svg" alt="" />
+							<img src="/images/icons/illustrated/functions.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Functions</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Extend and customize your server’s functionality.
@@ -378,7 +378,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/pink/storage.svg" alt="" />
+							<img src="/images/icons/illustrated/storage.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Storage</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store images, videos, documents, and files.
@@ -387,7 +387,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/pink/realtime.svg" alt="" />
+							<img src="/images/icons/illustrated/realtime.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Realtime</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Listen to any events on the server-side in realtime.
@@ -396,7 +396,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/pink/messaging.svg" alt="" />
+							<img src="/images/icons/illustrated/messaging.svg" alt="" />
 							<h4 class="aw-sub-body-500 u-margin-block-start-8">Messaging</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
