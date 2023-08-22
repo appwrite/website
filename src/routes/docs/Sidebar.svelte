@@ -20,7 +20,7 @@
 			<section>
 				<ul>
 					<li>
-						<a class="aw-side-nav-button" href="/docs/quick-start">
+						<a class="aw-side-nav-button is-selected" href="/docs/quick-start">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">Quick Start</span>
 						</a>
@@ -55,7 +55,7 @@
 				<h4 class="aw-side-nav-header aw-eyebrow">Products</h4>
 				<ul>
 					<li>
-						<button class="aw-side-nav-button">
+						<button class="aw-side-nav-button is-selected">
 							<span class="icon-user-group" aria-hidden="true" />
 							<span class="aw-caption-400">Auth</span>
 							<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
