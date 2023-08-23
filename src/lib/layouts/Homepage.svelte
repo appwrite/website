@@ -2,7 +2,8 @@
 	<section class="aw-mobile-header is-transparent theme-dark">
 		<div class="aw-mobile-header-start">
 			<a href="/">
-				<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+				<img class="aw-logo aw-u-only-dark" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+				<img class="aw-logo aw-u-only-light" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
 			</a>
 		</div>
 		<div class="aw-mobile-header-end">
@@ -29,8 +30,9 @@
 				<div class="aw-main-header-row">
 					<div class="aw-main-header-start">
 						<a href="/">
-							<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" /></a
-						>
+							<img class="aw-logo aw-u-only-dark" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+							<img class="aw-logo aw-u-only-light" src="/images/logos/appwrite-light.svg" alt="appwrite" width="130" />
+						</a>
 						<nav class="aw-main-header-nav">
 							<ul class="aw-main-header-nav-list">
 								<li class="aw-main-header-nav-item"><a class="aw-main-header-nav-link" href="">Community</a></li>

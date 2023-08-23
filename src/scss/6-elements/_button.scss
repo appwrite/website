@@ -89,6 +89,20 @@
 
       .#{$p}-inline-tag { background:rgba(255, 255, 255, 0.12); }
     }
+    #{$theme-light} & {
+      color:hsl(var(--aw-color-neutral-700));
+      &:where(:hover, :active):where(:not(#{$disabled})) {
+        box-shadow:none; backdrop-filter:blur(7.5px); color:hsl(var(--aw-color-neutral-900));
+        #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
+      }
+      &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
+      &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%); }
+
+      .#{$p}-inline-tag {
+        background:rgba(0, 0, 0, 0.08); color:hsl(var(--aw-color-neutral-900));
+      }
+
+    }
   }
 
   &.is-full-width { inline-size:100%; }
