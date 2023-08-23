@@ -77,6 +77,19 @@
 
 .#{$p}-u-filter-blur-8  { backdrop-filter:blur(#{pxToRem(8)}); }
 
+
+/* only light / only dark */
+.#{$p}-u-only-light,
+.#{$p}-u-only-dark   { display:none; }
+
+#{$theme-dark} {
+  .#{$p}-u-only-dark   { display:block; }
+}
+#{$theme-light} {
+  .#{$p}-u-only-dark   { display:none; }
+  .#{$p}-u-only-light { display:block; }
+}
+
 /* responsive global state classes */
 .#{$p}-is-only-mobile {
   @media #{$break2open} { display:none!important; }
