@@ -1,4 +1,38 @@
 @use '../abstract' as *;
+@mixin color-light {
+  --aw-color-background: var(--aw-color-neutral-50);
+  --aw-color-background-docs: var(--aw-color-neutral-25);
+  --aw-color-primary: var(--aw-color-neutral-900);
+  --aw-color-secondary: var(--aw-color-neutral-700);
+  --aw-color-tertiary: var(--aw-color-neutral-600);
+  --aw-color-accent: var(--aw-color-primary-500);
+  --aw-color-accent-darker: var(--aw-color-primary-600);
+  --aw-color-accent-click: var(--aw-color-primary-500);
+  --aw-color-card: var(--aw-color-neutral-0) / 0.9;
+  --aw-color-smooth: var(--aw-color-neutral-100);
+  --aw-color-subtle: var(--aw-color-neutral-50);
+  --aw-color-offset: var(--aw-color-neutral-1000) / 0.06;
+
+  --aw-color-border: var(--aw-color-neutral-50);
+}
+
+@mixin color-dark {
+  --aw-color-background: var(--aw-color-neutral-900);
+  --aw-color-background-docs: var(--aw-color-neutral-900);
+  --aw-color-primary: var(--aw-color-neutral-100);
+  --aw-color-secondary: var(--aw-color-neutral-300);
+  --aw-color-tertiary: var(--aw-color-neutral-600);
+  --aw-color-accent: var(--aw-color-primary-500);
+  --aw-color-accent-darker: var(--aw-color-primary-600);
+  --aw-color-accent-click: var(--aw-color-neutral-50);
+  --aw-color-card: var(--aw-color-neutral-850) / 0.9;
+  --aw-color-smooth: var(--aw-color-neutral-800);
+  --aw-color-subtle: var(--aw-color-neutral-850);
+  --aw-color-offset: var(--aw-color-neutral-0) / 0.1;
+
+  /* call other color variable */
+  --aw-color-border: var(--aw-color-subtle);
+}
 :root {
     /* primary */
   --aw-color-primary-hue: 343;
@@ -65,51 +99,14 @@
   --aw-color-neutral-900:   240 6% 10%;
   --aw-color-neutral-1000:  0 0% 0%;
 
-  --aw-color-background: var(--aw-color-neutral-50);
-  --aw-color-background-docs: var(--aw-color-neutral-25);
-  --aw-color-primary: var(--aw-color-neutral-900);
-  --aw-color-secondary: var(--aw-color-neutral-700);
-  --aw-color-tertiary: var(--aw-color-neutral-600);
-  --aw-color-accent: var(--aw-color-primary-500);
-  --aw-color-accent-darker: var(--aw-color-primary-600);
-  --aw-color-accent-click: var(--aw-color-primary-500);
-  --aw-color-card: var(--aw-color-neutral-0) / 0.9;
-  --aw-color-smooth: var(--aw-color-neutral-100);
-  --aw-color-subtle: var(--aw-color-neutral-50);
-
-  --aw-color-border: var(--aw-color-neutral-50);
+  @include color-light; /* default */
 
   #{$theme-light} {
-    --aw-color-background: var(--aw-color-neutral-50);
-    --aw-color-background-docs: var(--aw-color-neutral-25);
-    --aw-color-primary: var(--aw-color-neutral-900);
-    --aw-color-secondary: var(--aw-color-neutral-700);
-    --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
-    --aw-color-accent-click: var(--aw-color-primary-500);
-    --aw-color-card: var(--aw-color-neutral-0) / 0.9;
-    --aw-color-smooth: var(--aw-color-neutral-100);
-    --aw-color-subtle: var(--aw-color-neutral-50);
-
-    --aw-color-border: var(--aw-color-neutral-50);
+    @include color-light;
   }
 
   #{$theme-dark} {
-    --aw-color-background: var(--aw-color-neutral-900);
-    --aw-color-background-docs: var(--aw-color-neutral-900);
-    --aw-color-primary: var(--aw-color-neutral-100);
-    --aw-color-secondary: var(--aw-color-neutral-300);
-    --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
-    --aw-color-accent-click: var(--aw-color-neutral-50);
-    --aw-color-card: var(--aw-color-neutral-850) / 0.9;
-    --aw-color-smooth: var(--aw-color-neutral-800);
-    --aw-color-subtle: var(--aw-color-neutral-850);
-
-    /* call other color variable */
-    --aw-color-border: var(--aw-color-subtle);
+    @include color-dark;
   }
 }
 
