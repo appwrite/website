@@ -1,0 +1,3 @@
+<script type="module" src="/src/main.ts"></script>
+
+
