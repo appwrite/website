@@ -12,3 +12,34 @@
   > * { padding-block:pxToRem(24); }
   >:first-child { padding-block-start:0; }
 }
+
+.#{$p}-big-padding-section {
+  display:grid;
+
+  &-level-1 {
+    @media #{$break1} {
+      padding-block:pxToRem(0);
+      &:first-child { padding-block-start:pxToRem(0); }
+    }
+    @media #{$break2open} {
+      padding-block:pxToRem(40);
+      &:first-child { padding-block-start:pxToRem(0); }
+    }
+    &:last-child {
+      padding-block-end:0!important;
+      .#{$p}-big-padding-section-level-2:last-child { padding-block-end:0!important; }
+    }
+  }
+  &-level-2 {
+    /* level 2 */
+    @media #{$break1} { margin-block:pxToRem(48); }
+    @media #{$break2open} { margin-block:pxToRem(120); }
+
+    &.is-margin-replace-padding {
+      margin-block:0;
+      @media #{$break1} { padding-block:pxToRem(48); }
+      @media #{$break2open} { padding-block:pxToRem(120); }
+    }
+  }
+
+}

@@ -1,14 +1,13 @@
 @use '../abstract' as *;
 
 .#{$p}-hero {
-
   display:flex; flex-direction:column; gap:pxToRem(12); text-align:center;
   max-inline-size:pxToRem(855); margin-inline:auto;
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
 
-  .#{$p}-title,
-  .#{$p}-display,
-  .#{$p}-headline { color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8); }
+  :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
+    color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8);
+  }
 
   .#{$p}aw-description { color:hsl(var(--aw-color-secondary)); }
 
@@ -22,7 +21,8 @@
     @media #{$break1}     { max-inline-size:initial; }
     @media #{$break2open} { max-inline-size:pxToRem(650); }
     @media #{$break3open} {
-      flex-direction:row; gap:pxToRem(32); text-align:start; margin-inline:0; max-inline-size:none;
+      flex-direction:row; gap:pxToRem(32); text-align:start;
+      margin-inline:0; max-inline-size:none;
       >:nth-child(1) { flex:1.3; }
       >:nth-child(2) { flex:1;   }
     }
