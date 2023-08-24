@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 
-.#{$p}-input-text {
+@mixin input-light-mode {
   --p-input-placeholder-text-color: var(--aw-color-secondary);
   --p-input-focus-box-shadow-color: var(--aw-color-neutral-0) / 0.16;
 
@@ -9,24 +9,52 @@
   --p-input-border-color: var(--p-input-border-color-default);
 
   --p-input-text-color-default: var(--aw-color-primary);
-  --p-input-bg-color-default: var(--aw-color-neutral-0);
-  --p-input-border-color-default: var(--aw-color-smooth);
+  --p-input-bg-color-default: var(--aw-color-neutral-100);
+  --p-input-border-color-default: var(--aw-color-neutral-1000) / 0.06;
 
   //--p-input-text-color-hover: var(--aw-color-neutral-700);
   //--p-input-bg-color-hover: var(--aw-color-neutral-0);
-  --p-input-border-color-hover: var(--aw-color-accent-click);
+  --p-input-border-color-hover: var(--aw-color-neutral-900);
 
   //--p-input-text-color-focus: var(--aw-color-neutral-700);
-  --p-input-bg-color-focus: var(--aw-color-smooth) / 0.08;
-  --p-input-border-color-focus: var(--aw-color-neutral-50);
+  --p-input-bg-color-focus: var(--aw-color-neutral-100);
+  --p-input-border-color-focus: var(--aw-color-neutral-900);
 
   --p-input-text-color-disabled: var(--aw-color-secondary);
   --p-input-bg-color-disabled: var(--aw-color-neutral-0) / 0.04;
-  --p-input-border-color-disabled: var(--aw-color-smooth) / 0.08;
+  --p-input-border-color-disabled: var(--aw-color-neutral-1000) / 0.06;
 
   //--p-input-text-color-error: var(--aw-color-neutral-700);
   //--p-input-bg-color-error: var(--aw-color-neutral-0);
   --p-input-border-color-error: var(--aw-color-red-500);
+}
+
+.#{$p}-input-text {
+  @include input-light-mode;
+  #{$theme-dark} & {
+    --p-input-bg-color-default: var(--aw-color-neutral-0) / 0.04;
+    --p-input-border-color-default: var(--aw-color-neutral-0) / 0.08;
+    --p-input-border-color-error-default: var(--aw-color-red-500);
+
+    //--p-input-text-color-hover: var(--aw-color-neutral-700);
+    //--p-input-bg-color-hover: var(--aw-color-neutral-0);
+    --p-input-border-color-hover: var(--aw-color-primary);
+
+    //--p-input-text-color-focus: var(--aw-color-neutral-700);
+    //--p-input-bg-color-focus: var(--aw-color-smooth) / 0.08;
+    --p-input-border-color-focus: var(--aw-color-neutral-50);
+
+    --p-input-text-color-disabled: var(--aw-color-secondary);
+    --p-input-bg-color-disabled: var(--aw-color-neutral-0) / 0.04;
+    --p-input-border-color-disabled: var(--aw-color-smooth) / 0.08;
+
+    //--p-input-text-color-error: var(--aw-color-neutral-700);
+    //--p-input-bg-color-error: var(--aw-color-neutral-0);
+    --p-input-border-color-error: var(--aw-color-red-500);
+  }
+  #{$theme-light} & {
+    @include input-light-mode;
+  }
 
   color: hsl(var(--p-input-text-color));
   background-color: hsl(var(--p-input-bg-color));
@@ -38,28 +66,28 @@
   white-space:nowrap;
 
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
+
+  /* reset pink box-shadow */
+  &.is-error,
+  &.is-warning,
+  &.is-success        { box-shadow:none; }
+
   &:hover:where(:not(#{$disabled})) { --p-input-border-color: var(--p-input-border-color-hover); }
-  &:where(:focus) {
-    --p-bg-color: var(--p-input-bg-color-focus);
-    --p-border-color: var(--p-input-border-color-focus);
-    box-shadow: var(--p-input-focus-box-shadow-color);
+  &:is(:focus) {
+    --p-input-bg-color: var(--p-input-bg-color-focus);
+    --p-input-border-color: var(--p-input-border-color-focus);
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
   }
-  &:where(#{$disabled}) {
+  &:is(#{$disabled}) {
     --p-input-text-color: var(--p-input-text-color-disabled);
     --p-input-bg-color: var(--p-input-bg-color-disabled);
     --p-input-border-color: var(--p-input-border-color-disabled);
     opacity: 0.4;
   }
 
-  &.is-error          { --p-border-color:var(--p-input-border-color-error); }
+  &.is-error          { --p-input-border-color: var(--p-input-border-color-error); }
   &.is-warning        {  }
   &.is-success        {  }
-
-
-  #{$theme-dark} & {
-    --p-input-bg-color-default: var(--aw-color-neutral-0) / 0.04;
-    --p-input-border-color-default: var(--aw-color-neutral-0) / 0.08;
-  }
 }
 
 textarea.#{$p}-input-text {
