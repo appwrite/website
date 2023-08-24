@@ -100,14 +100,8 @@
   --aw-color-neutral-1000:  0 0% 0%;
 
   @include color-light; /* default */
-
-  #{$theme-light} {
-    @include color-light;
-  }
-
-  #{$theme-dark} {
-    @include color-dark;
-  }
+  #{$theme-light} { @include color-light; }
+  #{$theme-dark} { @include color-dark; }
 }
 
 .#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary)); }
