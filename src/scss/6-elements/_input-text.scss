@@ -12,11 +12,11 @@
   --p-input-bg-color-default: var(--aw-color-neutral-100);
   --p-input-border-color-default: var(--aw-color-neutral-1000) / 0.06;
 
-  //--p-input-text-color-hover: var(--aw-color-neutral-700);
-  //--p-input-bg-color-hover: var(--aw-color-neutral-0);
+  --p-input-text-color-hover: var(--p-input-text-color-default);
+  --p-input-bg-color-hover: var(--p-input-bg-color-default);
   --p-input-border-color-hover: var(--aw-color-neutral-900);
 
-  //--p-input-text-color-focus: var(--aw-color-neutral-700);
+  --p-input-text-color-focus: var(--p-input-text-color-default);
   --p-input-bg-color-focus: var(--aw-color-neutral-100);
   --p-input-border-color-focus: var(--aw-color-neutral-900);
 
@@ -32,16 +32,17 @@
 .#{$p}-input-text {
   @include input-light-mode;
   #{$theme-dark} & {
+    --p-input-text-color-default: var(--aw-color-neutral-100);
     --p-input-bg-color-default: var(--aw-color-neutral-0) / 0.04;
     --p-input-border-color-default: var(--aw-color-neutral-0) / 0.08;
     --p-input-border-color-error-default: var(--aw-color-red-500);
 
-    //--p-input-text-color-hover: var(--aw-color-neutral-700);
-    //--p-input-bg-color-hover: var(--aw-color-neutral-0);
+    --p-input-text-color-hover: var(--p-input-text-color-default);
+    --p-input-bg-color-hover: var(--p-input-bg-color-default);
     --p-input-border-color-hover: var(--aw-color-primary);
 
-    //--p-input-text-color-focus: var(--aw-color-neutral-700);
-    //--p-input-bg-color-focus: var(--aw-color-smooth) / 0.08;
+    --p-input-text-color-focus: var(--p-input-text-color-default);
+    --p-input-bg-color-focus: var(--p-input-bg-color-default);
     --p-input-border-color-focus: var(--aw-color-neutral-50);
 
     --p-input-text-color-disabled: var(--aw-color-secondary);
