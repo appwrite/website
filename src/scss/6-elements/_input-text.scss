@@ -1,11 +1,34 @@
 @use '../abstract' as *;
 
 .#{$p}-input-text {
-  --p-text-color: var(--aw-color-neutral-700);
-  --p-input-bg-color: var(--aw-color-neutral-0);
-  --p-input-border-color: var(--aw-color-neutral-50);
+  --p-input-placeholder-text-color: var(--aw-color-secondary);
+  --p-input-focus-box-shadow-color: var(--aw-color-neutral-0) / 0.16;
 
-  color: hsl(var(--p-text-color));
+  --p-input-text-color: var(--p-input-text-color-default);
+  --p-input-bg-color: var(--p-input-bg-color-default);
+  --p-input-border-color: var(--p-input-border-color-default);
+
+  --p-input-text-color-default: var(--aw-color-primary);
+  --p-input-bg-color-default: var(--aw-color-neutral-0);
+  --p-input-border-color-default: var(--aw-color-smooth);
+
+  //--p-input-text-color-hover: var(--aw-color-neutral-700);
+  //--p-input-bg-color-hover: var(--aw-color-neutral-0);
+  --p-input-border-color-hover: var(--aw-color-accent-click);
+
+  //--p-input-text-color-focus: var(--aw-color-neutral-700);
+  --p-input-bg-color-focus: var(--aw-color-smooth) / 0.08;
+  --p-input-border-color-focus: var(--aw-color-neutral-50);
+
+  --p-input-text-color-disabled: var(--aw-color-secondary);
+  --p-input-bg-color-disabled: var(--aw-color-neutral-0) / 0.04;
+  --p-input-border-color-disabled: var(--aw-color-smooth) / 0.08;
+
+  //--p-input-text-color-error: var(--aw-color-neutral-700);
+  //--p-input-bg-color-error: var(--aw-color-neutral-0);
+  --p-input-border-color-error: var(--aw-color-red-500);
+
+  color: hsl(var(--p-input-text-color));
   background-color: hsl(var(--p-input-bg-color));
   border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
@@ -14,9 +37,32 @@
   border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
   white-space:nowrap;
 
-  #{$theme-dark} & {
-    --p-text-color: var(--aw-color-neutral-300);
-    --p-input-bg-color: var(--aw-color-neutral-0) / 0.08;
-    --p-input-border-color: var(--aw-color-neutral-0) / 0.16;
+  &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
+  &:hover:where(:not(#{$disabled})) { --p-input-border-color: var(--p-input-border-color-hover); }
+  &:where(:focus) {
+    --p-bg-color: var(--p-input-bg-color-focus);
+    --p-border-color: var(--p-input-border-color-focus);
+    box-shadow: var(--p-input-focus-box-shadow-color);
   }
+  &:where(#{$disabled}) {
+    --p-input-text-color: var(--p-input-text-color-disabled);
+    --p-input-bg-color: var(--p-input-bg-color-disabled);
+    --p-input-border-color: var(--p-input-border-color-disabled);
+    opacity: 0.4;
+  }
+
+  &.is-error          { --p-border-color:var(--p-input-border-color-error); }
+  &.is-warning        {  }
+  &.is-success        {  }
+
+
+  #{$theme-dark} & {
+    --p-input-bg-color-default: var(--aw-color-neutral-0) / 0.04;
+    --p-input-border-color-default: var(--aw-color-neutral-0) / 0.08;
+  }
+}
+
+textarea.#{$p}-input-text {
+  padding-inline: pxToRem(16);
+  padding-block: pxToRem(12);
 }

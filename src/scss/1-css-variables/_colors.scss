@@ -8,6 +8,12 @@
   --aw-color-primary-700: var(--aw-color-primary-hue) 65% 36%;
 
   /* orange */
+  --aw-color-red-hue: 3;
+  --aw-color-red-200: calc(var(--aw-color-orange-hue) - 2) 100% 92%;
+  --aw-color-red-500: var(--aw-color-orange-hue) 100% 61%;
+  --aw-color-red-700: calc(var(--aw-color-orange-hue) - 3) 82%  39%;
+
+  /* orange */
   --aw-color-orange-hue: 18;
   --aw-color-orange-200: var(--aw-color-orange-hue) 100% 88%;
   --aw-color-orange-500: var(--aw-color-orange-hue) 99%  70%;
