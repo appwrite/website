@@ -1,0 +1,7 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-120-1fr {
+  @media #{$break2open} {
+    display:grid; grid-template-columns:pxToRem(120) 1fr; gap:pxToRem(80);
+  }
+}
