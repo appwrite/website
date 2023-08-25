@@ -22,6 +22,7 @@
 
 .#{$p}-u-padding-block-end-136-not-mobile { @media #{$break2open} { padding-block-end:pxToRem(136)!important;} }
 
+.#{$p}-u-max-width-600              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-700              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
 
