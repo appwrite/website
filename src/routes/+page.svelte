@@ -125,15 +125,17 @@
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-hero aw-u-max-width-993">
-                        <span class="aw-badges aw-eyebrow">Products_</span>
-                        <h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
-                        <p class="aw-description aw-u-max-width-700 u-margin-inline-auto">
-                            Build secure and scalable applications faster with Appwrite’s core backend products and spend more time building the best products.
-                        </p>
-                    </div>
+
+        </div>
+
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-container">
+                <div class="aw-hero aw-u-max-width-993">
+                    <span class="aw-badges aw-eyebrow">Products_</span>
+                    <h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
+                    <p class="aw-description aw-u-max-width-700 u-margin-inline-auto">
+                        Build secure and scalable applications faster with Appwrite’s core backend products and spend more time building the best products.
+                    </p>
                 </div>
             </div>
         </div>
