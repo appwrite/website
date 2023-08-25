@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-3c-4c-6c {
+  display: grid;
+  @media #{$break1}     { grid-template-columns: repeat(3, 1fr); gap:pxToRem(20); }
+  @media #{$break2}     { grid-template-columns: repeat(4, 1fr); gap:pxToRem(32); }
+  @media #{$break3open} { grid-template-columns: repeat(6, 1fr); gap:pxToRem(32); }
+
+  &.is-for-logos {
+    text-align:center;
+    > li { display:grid; place-content:center; }
+    img { inline-size:100%; block-size:100%; object-fit:contain; object-position:center; }
+  }
+}

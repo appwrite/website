@@ -84,9 +84,52 @@
             </div>
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
+                    <h3 class="aw-title aw-u-color-text-primary aw-u-text-align-center">Trusted by developers from the world's leading organizations</h3>
+                    <ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
+                        <li>
+                            <img src="/images/logos/trusted-by/apple.svg" alt="Apple">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/intel.svg" alt="intel">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/ibm.svg" alt="IBM">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte.">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/gm.svg" alt="GM">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/ey.svg" alt="EY">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/nestle.svg" alt="Nestle">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH">
+                        </li>
+                        <li>
+                            <img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-993">
                         <span class="aw-badges aw-eyebrow">Products_</span>
-                        <h2 class="aw-display">Your backend, minus the hassle</h2>
+                        <h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
                         <p class="aw-description aw-u-max-width-700 u-margin-inline-auto">
                             Build secure and scalable applications faster with Appwrite’s core backend products and spend more time building the best products.
                         </p>
