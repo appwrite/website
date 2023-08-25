@@ -84,7 +84,7 @@
             </div>
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
-                    <h3 class="aw-title aw-u-color-text-primary aw-u-text-align-center">Trusted by developers from the world's leading organizations</h3>
+                    <h3 class="aw-title aw-u-color-text-primary aw-u-text-align-center aw-u-max-width-600 u-margin-inline-auto">Trusted by developers from the world's leading organizations</h3>
                     <ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
                         <li>
                             <img src="/images/logos/trusted-by/apple.svg" alt="Apple">
