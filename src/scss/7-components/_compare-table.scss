@@ -6,8 +6,8 @@
     position:sticky;
     z-index:5; inset-block-start:pxToRem(100); backdrop-filter:blur(#{pxToRem(8)});
     padding-block:pxToRem(16);  padding-inline:pxToRem(8); margin-inline:pxToRem(-8);
-    max-inline-size:pxToRem(276);
     @media #{$break1} { inset-block-start:pxToRem(120); }
+    @media #{$break2open} { max-inline-size:pxToRem(276); }
   }
   tr {
     display:grid; gap:pxToRem(32); grid-auto-columns:1fr; grid-auto-flow:column; border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));

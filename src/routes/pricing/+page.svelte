@@ -2,8 +2,9 @@
     import { Homepage } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute" style="pointer-events:none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="1369" height="714" viewBox="0 0 1369 714" fill="none">
+<div class="u-position-absolute u-overflow-hidden" style="pointer-events:none;">
+    <svg  class="aw-u-gradient-mobile-align"
+            xmlns="http://www.w3.org/2000/svg" width="1369" height="714" viewBox="0 0 1369 714" fill="none">
         <g filter="url(#filter0_f_1330_36780)">
             <ellipse cx="499.417" cy="351.062" rx="156.5" ry="468.5" transform="rotate(61.5107 499.417 351.062)" fill="url(#paint0_radial_1330_36780)" fill-opacity="0.5"/>
         </g>
@@ -53,7 +54,7 @@
 
             <div class="aw-hero aw-u-margin-block-120w-80s">
                 <h1
-                        class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90"
+                        class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90 aw-u-mobile-align-text-center"
                         style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                 >Simple, transparent pricing with no surprises</h1>

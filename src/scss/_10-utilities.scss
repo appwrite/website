@@ -70,6 +70,7 @@
 
 .#{$p}-u-text-align-start { text-align:start!important; }
 .#{$p}-u-text-align-center { text-align:center!important; }
+.#{$p}-u-mobile-align-text-center { @media #{$break1} { text-align:center!important;} }
 .#{$p}-u-padding-inline-0 {padding-inline:0!important;}
 
 .#{$p}-u-cross-child-center { align-self:center!important;  }
@@ -121,4 +122,11 @@
 
 .collapsible-button {
   padding-block:pxToRem(24);
+}
+
+.#{$p}-u-gradient-mobile-align {
+  @media #{$break1} {width: 230%;
+    margin-left: -50%;
+    margin-top: -25%;}
+
 }
