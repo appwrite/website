@@ -593,112 +593,108 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1">
-            <div class="theme-dark u-position-relative u-overflow-hidden">
-
-
-                <svg class="u-position-absolute aw-u-gradient-mobile-align-2"
-                     style="inset:0; inset-block-start:0%; width:100%;"
-                     xmlns="http://www.w3.org/2000/svg" width="1440" height="2300" viewBox="0 0 1440 2300" fill="none">
-                    <g opacity="0.55" filter="url(#filter0_f_2550_1517)">
-                        <path d="M-908.693 1831.66L877.738 1399L-71.499 1096.96L-908.693 1831.66Z" fill="#FD366E"/>
-                    </g>
-                    <g opacity="0.55" filter="url(#filter1_f_2550_1517)">
-                        <path d="M-124.496 1850.46L655.151 1210.87L233.003 992.957L-124.496 1850.46Z" fill="#FE9567"/>
-                    </g>
-                    <g opacity="0.55" filter="url(#filter2_f_2550_1517)">
-                        <path d="M-679.999 1612.92L805.855 1252.73L-99.9986 1235.46L-679.999 1612.92Z" fill="url(#paint0_linear_2550_1517)"/>
-                    </g>
-                    <g opacity="0.4" filter="url(#filter3_f_2550_1517)">
-                        <path d="M141.001 1242.56L739.933 1239.28C818.738 1238.85 858.139 1167.14 804.013 1122.66L571.976 931.956L141.001 1242.56Z" fill="white"/>
-                    </g>
-                    <g filter="url(#filter4_f_2550_1517)">
-                        <path d="M123.89 1069.16L-367.74 1636.34L467.654 1851.09L735.723 1369.09L123.89 1069.16Z" fill="#FD366E" fill-opacity="0.6"/>
-                    </g>
-                    <g opacity="0.4" filter="url(#filter5_f_2550_1517)">
-                        <path d="M786.457 500.601L151.824 1232.76L1230.21 1509.98L1576.26 887.775L786.457 500.601Z" fill="#FD366E" fill-opacity="0.6"/>
-                    </g>
-                    <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter6_f_2550_1517)">
-                        <ellipse cx="479.672" cy="45.906" rx="479.672" ry="45.906" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 469.184 1238.02)" fill="#EDEDF0"/>
-                    </g>
-                    <g style="mix-blend-mode:overlay" opacity="0.35" filter="url(#filter7_f_2550_1517)">
-                        <ellipse cx="376.561" cy="45.906" rx="376.561" ry="45.906" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 190.762 1323.04)" fill="#EDEDF0"/>
-                    </g>
-                    <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter8_f_2550_1517)">
-                        <ellipse cx="376.561" cy="37.9305" rx="376.561" ry="37.9305" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 665.875 1332.17)" fill="#EDEDF0"/>
-                    </g>
-                    <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter9_f_2550_1517)">
-                        <ellipse cx="328.236" cy="37.9305" rx="328.236" ry="37.9305" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 509.973 1548.46)" fill="#EDEDF0"/>
-                    </g>
-                    <g opacity="0.65" filter="url(#filter10_f_2550_1517)">
-                        <path d="M-432.996 1187.46L1269 1063.5L-162.5 927L-432.996 1187.46Z" fill="#FE9567" fill-opacity="0.5"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_2550_1517" x="-1269.11" y="736.544" width="2507.26" height="1455.53" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="180.206" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter1_f_2550_1517" x="-389.922" y="727.531" width="1310.5" height="1388.35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter2_f_2550_1517" x="-945.424" y="970.032" width="2016.71" height="908.311" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter3_f_2550_1517" x="-75.2467" y="715.708" width="1120.51" height="743.103" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter4_f_2550_1517" x="-867.936" y="568.962" width="2103.86" height="1782.33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter5_f_2550_1517" x="-348.373" y="0.403961" width="2424.83" height="2009.77" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter6_f_2550_1517" x="-602.67" y="1073.11" width="1168.89" height="550.144" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter7_f_2550_1517" x="-658.661" y="1183.16" width="920.626" height="437.824" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="50.0197" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter8_f_2550_1517" x="-204.015" y="1173.82" width="972.026" height="486.801" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter9_f_2550_1517" x="-267.905" y="1389.61" width="880.141" height="458.628" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <filter id="filter10_f_2550_1517" x="-649.243" y="710.752" width="2134.49" height="692.952" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_2550_1517"/>
-                        </filter>
-                        <linearGradient id="paint0_linear_2550_1517" x1="537.714" y1="1265.14" x2="176.653" y2="1782.55" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FE9567"/>
-                            <stop offset="1" stop-color="#F02E65"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                <div class="aw-container u-position-relative">
-
-                    <section class="aw-grid-4-6 aw-u-margin-block-120w-80s">
+        <div class="aw-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden">
+            <svg class="u-position-absolute aw-u-gradient-mobile-align-2"
+                 style="inset:0; inset-block-start:0%; width:100%;"
+                 xmlns="http://www.w3.org/2000/svg" width="1440" height="2300" viewBox="0 0 1440 2300" fill="none">
+                <g opacity="0.55" filter="url(#filter0_f_2550_1517)">
+                    <path d="M-908.693 1831.66L877.738 1399L-71.499 1096.96L-908.693 1831.66Z" fill="#FD366E"/>
+                </g>
+                <g opacity="0.55" filter="url(#filter1_f_2550_1517)">
+                    <path d="M-124.496 1850.46L655.151 1210.87L233.003 992.957L-124.496 1850.46Z" fill="#FE9567"/>
+                </g>
+                <g opacity="0.55" filter="url(#filter2_f_2550_1517)">
+                    <path d="M-679.999 1612.92L805.855 1252.73L-99.9986 1235.46L-679.999 1612.92Z" fill="url(#paint0_linear_2550_1517)"/>
+                </g>
+                <g opacity="0.4" filter="url(#filter3_f_2550_1517)">
+                    <path d="M141.001 1242.56L739.933 1239.28C818.738 1238.85 858.139 1167.14 804.013 1122.66L571.976 931.956L141.001 1242.56Z" fill="white"/>
+                </g>
+                <g filter="url(#filter4_f_2550_1517)">
+                    <path d="M123.89 1069.16L-367.74 1636.34L467.654 1851.09L735.723 1369.09L123.89 1069.16Z" fill="#FD366E" fill-opacity="0.6"/>
+                </g>
+                <g opacity="0.4" filter="url(#filter5_f_2550_1517)">
+                    <path d="M786.457 500.601L151.824 1232.76L1230.21 1509.98L1576.26 887.775L786.457 500.601Z" fill="#FD366E" fill-opacity="0.6"/>
+                </g>
+                <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter6_f_2550_1517)">
+                    <ellipse cx="479.672" cy="45.906" rx="479.672" ry="45.906" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 469.184 1238.02)" fill="#EDEDF0"/>
+                </g>
+                <g style="mix-blend-mode:overlay" opacity="0.35" filter="url(#filter7_f_2550_1517)">
+                    <ellipse cx="376.561" cy="45.906" rx="376.561" ry="45.906" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 190.762 1323.04)" fill="#EDEDF0"/>
+                </g>
+                <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter8_f_2550_1517)">
+                    <ellipse cx="376.561" cy="37.9305" rx="376.561" ry="37.9305" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 665.875 1332.17)" fill="#EDEDF0"/>
+                </g>
+                <g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter9_f_2550_1517)">
+                    <ellipse cx="328.236" cy="37.9305" rx="328.236" ry="37.9305" transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 509.973 1548.46)" fill="#EDEDF0"/>
+                </g>
+                <g opacity="0.65" filter="url(#filter10_f_2550_1517)">
+                    <path d="M-432.996 1187.46L1269 1063.5L-162.5 927L-432.996 1187.46Z" fill="#FE9567" fill-opacity="0.5"/>
+                </g>
+                <defs>
+                    <filter id="filter0_f_2550_1517" x="-1269.11" y="736.544" width="2507.26" height="1455.53" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="180.206" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter1_f_2550_1517" x="-389.922" y="727.531" width="1310.5" height="1388.35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter2_f_2550_1517" x="-945.424" y="970.032" width="2016.71" height="908.311" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter3_f_2550_1517" x="-75.2467" y="715.708" width="1120.51" height="743.103" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter4_f_2550_1517" x="-867.936" y="568.962" width="2103.86" height="1782.33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter5_f_2550_1517" x="-348.373" y="0.403961" width="2424.83" height="2009.77" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter6_f_2550_1517" x="-602.67" y="1073.11" width="1168.89" height="550.144" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter7_f_2550_1517" x="-658.661" y="1183.16" width="920.626" height="437.824" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="50.0197" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter8_f_2550_1517" x="-204.015" y="1173.82" width="972.026" height="486.801" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter9_f_2550_1517" x="-267.905" y="1389.61" width="880.141" height="458.628" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <filter id="filter10_f_2550_1517" x="-649.243" y="710.752" width="2134.49" height="692.952" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_2550_1517"/>
+                    </filter>
+                    <linearGradient id="paint0_linear_2550_1517" x1="537.714" y1="1265.14" x2="176.653" y2="1782.55" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FE9567"/>
+                        <stop offset="1" stop-color="#F02E65"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="aw-big-padding-section-level-2 u-position-relative">
+                <div class="aw-container">
+                    <section class="aw-grid-4-6">
                         <header>
                             <div class="aw-display aw-u-color-text-primary">FAQ</div>
                         </header>
@@ -706,9 +702,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper" open>
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                        When will Appwrite’s paid plans be available?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                    When will Appwrite’s paid plans be available?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -723,9 +719,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                       Can I still self-host Appwrite for free?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                   Can I still self-host Appwrite for free?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -740,9 +736,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                        What will happen to my current account when pricing is available?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                    What will happen to my current account when pricing is available?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -757,9 +753,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                        Does Appwrite have a trial period?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                    Does Appwrite have a trial period?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -774,9 +770,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                        What payment methods does Appwrite support?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                    What payment methods does Appwrite support?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -791,9 +787,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                       What happens if I reach the storage limit in my Pro plan?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                   What happens if I reach the storage limit in my Pro plan?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -808,9 +804,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                       How can I get the OSS plan?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                   How can I get the OSS plan?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -825,9 +821,9 @@
                             <li class="collapsible-item">
                                 <details class="collapsible-wrapper">
                                     <summary class="collapsible-button">
-                                    <span class="aw-label aw-u-color-text-primary">
-                                       I have a Free Plan account, how do I upgrade to a paid plan?
-                                    </span>
+                                <span class="aw-label aw-u-color-text-primary">
+                                   I have a Free Plan account, how do I upgrade to a paid plan?
+                                </span>
                                         <div class="icon aw-u-color-text-primary">
                                             <span class="icon-cheveron-down" aria-hidden="true"></span>
                                         </div>
@@ -841,208 +837,203 @@
                             </li>
                         </ul>
                     </section>
-
-                    <div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 aw-u-margin-block-120w-80s aw-u-margin-block-start-160">
-                        <section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-                            <h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">Start building with Appwrite today</h2>
-                            <button class="aw-button is-transparent aw-u-cross-child-center">
-                                <span class="text">Get Started</span>
-                            </button>
-                        </section>
-                        <section class="aw-card is-transparent aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile">
-                            <header class="aw-strip-plans-header">
-                                <div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-                                    <h3 class="aw-title aw-u-color-text-primary">Our Plans</h3>
-                                    <ul class="aw-secondary-tabs">
-                                        <li class="aw-secondary-tabs-item">
-                                            <button class="aw-secondary-tabs-button is-selected">
-                                                <span class="aw-main-body-500">Cloud</span>
-                                            </button>
-                                        </li>
-                                        <li class="aw-secondary-tabs-item">
-                                            <button class="aw-secondary-tabs-button">
-                                                <span class="aw-main-body-500">Self-Hosted</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </header>
-                            <ul class="aw-strip-plans">
-                                <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                                    <div class="aw-strip-plans-item-wrapper">
-                                        <div class="aw-strip-plans-plan">
-                                            <h4 class="title aw-description">Free</h4>
-                                            <div class="aw-title aw-u-color-text-primary">$0</div>
-                                            <div class="info aw-caption-500" />
-                                        </div>
-                                        <p class="aw-strip-plans-info aw-caption-500">
-                                            For personal, passion projects and non-commercial use.
-                                        </p>
-                                        <button class="aw-button is-full-width-mobile aw-u-cross-child-end"><span class="text">Get Started</span></button>
-                                    </div>
-                                </li>
-                                <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                                    <div class="aw-strip-plans-item-wrapper">
-                                        <div class="aw-strip-plans-plan">
-                                            <h4 class="title aw-description">Pro</h4>
-                                            <div class="aw-title aw-u-color-text-primary">$15</div>
-                                            <div class="info aw-caption-500">per user/month</div>
-                                        </div>
-                                        <p class="aw-strip-plans-info aw-caption-500">
-                                            For pro developers and production projects that need the ability to scale.
-                                        </p>
-                                        <button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"><span class="text">Learn More</span></button>
-                                    </div>
-                                </li>
-                                <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                                    <div class="aw-strip-plans-item-wrapper">
-                                        <div class="aw-strip-plans-plan">
-                                            <h4 class="title aw-description">Scale</h4>
-                                            <div class="aw-title aw-u-color-text-primary">$685</div>
-                                            <div class="info aw-caption-500">per org/month</div>
-                                        </div>
-                                        <p class="aw-strip-plans-info aw-caption-500">
-                                            For pro developers and production projects that need the ability to scale.
-                                        </p>
-                                        <button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"><span class="text">Learn More</span></button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-
-                    <nav class="aw-footer-nav u-margin-block-start-100">
-                        <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
-                        <ul class="aw-footer-nav-main-list">
-                            <li class="aw-footer-nav-main-item">
-                                <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Product</a></h5>
-                                <button class="aw-footer-nav-button aw-is-only-mobile">
-                                    <span class="aw-caption-500">Product</span>
-                                    <svg
-                                            class="aw-footer-nav-button-arrow"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 20 20"
-                                            fill="none"
-                                    >
-                                        <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-                                                fill="#ADADB0"
-                                        />
-                                    </svg>
-                                </button>
-                                <ul class="aw-footer-nav-secondary-list">
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Docs</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Auth</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Databases</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Functions</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Storage</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Realtime</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Localization</a></li>
-                                </ul>
-                            </li>
-                            <li class="aw-footer-nav-main-item">
-                                <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">About</a></h5>
-                                <button class="aw-footer-nav-button is-open aw-is-only-mobile">
-                                    <span class="aw-caption-500">About</span>
-                                    <svg
-                                            class="aw-footer-nav-button-arrow"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 20 20"
-                                            fill="none"
-                                    >
-                                        <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-                                                fill="#ADADB0"
-                                        />
-                                    </svg>
-                                </button>
-                                <ul class="aw-footer-nav-secondary-list">
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Company</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Community</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Blog</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Careers</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
-                                </ul>
-                            </li>
-                            <li class="aw-footer-nav-main-item">
-                                <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Legal</a></h5>
-                                <button class="aw-footer-nav-button aw-is-only-mobile">
-                                    <span class="aw-caption-500">Legal</span>
-                                    <svg
-                                            class="aw-footer-nav-button-arrow"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 20 20"
-                                            fill="none"
-                                    >
-                                        <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-                                                fill="#ADADB0"
-                                        />
-                                    </svg>
-                                </button>
-                                <ul class="aw-footer-nav-secondary-list">
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Status</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Terms</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Privacy</a></li>
-                                    <li class="aw-footer-nav-secondary-item"><a href="">Security</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <footer class="aw-main-footer u-margin-block-start-48">
-                        <ul class="u-flex u-gap-8">
-                            <li>
-                                <button class="aw-icon-button" aria-label="Appwrite on Discord">
-                                    <span class="icon-discord" aria-hidden="true" />
-                                </button>
-                            </li>
-                            <li>
-                                <button class="aw-icon-button" aria-label="Appwrite GitHub">
-                                    <span class="icon-github" aria-hidden="true" />
-                                </button>
-                            </li>
-                            <li>
-                                <button class="aw-icon-button" aria-label="Appwrite on Twitter">
-                                    <span class="icon-twitter" aria-hidden="true" />
-                                </button>
-                            </li>
-                            <li>
-                                <button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
-                                    <span class="icon-linkedin" aria-hidden="true" />
-                                </button>
-                            </li>
-                            <li>
-                                <button class="aw-icon-button" aria-label="Appwrite YouTube">
-                                    <span class="icon-youtube" aria-hidden="true" />
-                                </button>
-                            </li>
-                        </ul>
-                        <div>Copyright © 2023 Appwrite</div>
-                    </footer>
                 </div>
             </div>
+            <div class="aw-big-padding-section-level-2 u-position-relative">
+                    <div class="aw-container">
+                        <div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80">
+                            <section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
+                                <h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">Start building with Appwrite today</h2>
+                                <button class="aw-button is-transparent aw-u-cross-child-center">
+                                    <span class="text">Get Started</span>
+                                </button>
+                            </section>
+                            <section class="aw-card is-transparent aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile">
+                                <header class="aw-strip-plans-header">
+                                    <div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
+                                        <h3 class="aw-title aw-u-color-text-primary">Our Plans</h3>
+                                        <ul class="aw-secondary-tabs">
+                                            <li class="aw-secondary-tabs-item">
+                                                <button class="aw-secondary-tabs-button is-selected">
+                                                    <span class="aw-main-body-500">Cloud</span>
+                                                </button>
+                                            </li>
+                                            <li class="aw-secondary-tabs-item">
+                                                <button class="aw-secondary-tabs-button">
+                                                    <span class="aw-main-body-500">Self-Hosted</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </header>
+                                <ul class="aw-strip-plans">
+                                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                                        <div class="aw-strip-plans-item-wrapper">
+                                            <div class="aw-strip-plans-plan">
+                                                <h4 class="title aw-description">Free</h4>
+                                                <div class="aw-title aw-u-color-text-primary">$0</div>
+                                                <div class="info aw-caption-500" />
+                                            </div>
+                                            <p class="aw-strip-plans-info aw-caption-500">
+                                                For personal, passion projects and non-commercial use.
+                                            </p>
+                                            <button class="aw-button is-full-width-mobile aw-u-cross-child-end"><span class="text">Get Started</span></button>
+                                        </div>
+                                    </li>
+                                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                                        <div class="aw-strip-plans-item-wrapper">
+                                            <div class="aw-strip-plans-plan">
+                                                <h4 class="title aw-description">Pro</h4>
+                                                <div class="aw-title aw-u-color-text-primary">$15</div>
+                                                <div class="info aw-caption-500">per user/month</div>
+                                            </div>
+                                            <p class="aw-strip-plans-info aw-caption-500">
+                                                For pro developers and production projects that need the ability to scale.
+                                            </p>
+                                            <button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"><span class="text">Learn More</span></button>
+                                        </div>
+                                    </li>
+                                    <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                                        <div class="aw-strip-plans-item-wrapper">
+                                            <div class="aw-strip-plans-plan">
+                                                <h4 class="title aw-description">Scale</h4>
+                                                <div class="aw-title aw-u-color-text-primary">$685</div>
+                                                <div class="info aw-caption-500">per org/month</div>
+                                            </div>
+                                            <p class="aw-strip-plans-info aw-caption-500">
+                                                For pro developers and production projects that need the ability to scale.
+                                            </p>
+                                            <button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"><span class="text">Learn More</span></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                        <nav class="aw-footer-nav u-margin-block-start-100">
+                            <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+                            <ul class="aw-footer-nav-main-list">
+                                <li class="aw-footer-nav-main-item">
+                                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Product</a></h5>
+                                    <button class="aw-footer-nav-button aw-is-only-mobile">
+                                        <span class="aw-caption-500">Product</span>
+                                        <svg
+                                                class="aw-footer-nav-button-arrow"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 20 20"
+                                                fill="none"
+                                        >
+                                            <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                                    fill="#ADADB0"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <ul class="aw-footer-nav-secondary-list">
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Docs</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Auth</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Databases</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Functions</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Storage</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Realtime</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Localization</a></li>
+                                    </ul>
+                                </li>
+                                <li class="aw-footer-nav-main-item">
+                                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">About</a></h5>
+                                    <button class="aw-footer-nav-button is-open aw-is-only-mobile">
+                                        <span class="aw-caption-500">About</span>
+                                        <svg
+                                                class="aw-footer-nav-button-arrow"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 20 20"
+                                                fill="none"
+                                        >
+                                            <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                                    fill="#ADADB0"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <ul class="aw-footer-nav-secondary-list">
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Company</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Community</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Blog</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Careers</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
+                                    </ul>
+                                </li>
+                                <li class="aw-footer-nav-main-item">
+                                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Legal</a></h5>
+                                    <button class="aw-footer-nav-button aw-is-only-mobile">
+                                        <span class="aw-caption-500">Legal</span>
+                                        <svg
+                                                class="aw-footer-nav-button-arrow"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 20 20"
+                                                fill="none"
+                                        >
+                                            <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                                    fill="#ADADB0"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <ul class="aw-footer-nav-secondary-list">
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Status</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Terms</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Privacy</a></li>
+                                        <li class="aw-footer-nav-secondary-item"><a href="">Security</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <footer class="aw-main-footer u-margin-block-start-48">
+                            <ul class="u-flex u-gap-8">
+                                <li>
+                                    <button class="aw-icon-button" aria-label="Appwrite on Discord">
+                                        <span class="icon-discord" aria-hidden="true" />
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="aw-icon-button" aria-label="Appwrite GitHub">
+                                        <span class="icon-github" aria-hidden="true" />
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="aw-icon-button" aria-label="Appwrite on Twitter">
+                                        <span class="icon-twitter" aria-hidden="true" />
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
+                                        <span class="icon-linkedin" aria-hidden="true" />
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="aw-icon-button" aria-label="Appwrite YouTube">
+                                        <span class="icon-youtube" aria-hidden="true" />
+                                    </button>
+                                </li>
+                            </ul>
+                            <div>Copyright © 2023 Appwrite</div>
+                        </footer>
+                    </div>
+                </div>
         </div>
     </div>
-    <!-- theme dark section -->
-
-    <!-- theme light section -->
-
-
-    <!-- theme dark section -->
 
 </Homepage>
