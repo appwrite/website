@@ -199,8 +199,8 @@
 
 
                         <div
-                                class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
-                                style="--inset-block-start:2rem">
+                                class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                                style="/--inset-block-start:2rem">
                             <ul class="aw-secondary-tabs aw-is-only-mobile aw-u-mobile-divider"
                                 style="
                 --p-secondary-tabs-bg-color-default:var(--aw-color-neutral-0);
@@ -225,7 +225,7 @@
                         </div>
 
                         <div
-                                class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
+                                class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
                          aw-u-filter-blur-8 u-position-sticky u-z-index-5"
                                 style="--inset-block-start:1rem">
                             <div class="aw-label aw-u-color-text-primary aw-u-cross-child-center" style="opacity:0">Compare plans</div>
@@ -256,9 +256,14 @@
                         </div>
                         <div class="aw-u-stretch-sep-full-screen"></div>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Resources</caption>
-                            <tbody>
+                        <table class="aw-compare-table is-open-in-mobile aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Resources</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Bandwidth</th>
                                 <td class="level-0 is-selected">10GB</td>
@@ -292,9 +297,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Platform</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Platform</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Number of projects</th>
                                 <td class="level-0 is-selected">Unlimited</td>
@@ -370,9 +380,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Auth</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Auth</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Users</th>
                                 <td class="level-0 is-selected">75,000 Monthly active users</td>
@@ -400,9 +415,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Databases</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Databases</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Databases</th>
                                 <td class="level-0 is-selected">1 per project</td>
@@ -430,9 +450,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Storage</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Storage</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Buckets</th>
                                 <td class="level-0 is-selected">3 per project</td>
@@ -454,9 +479,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Functions</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Functions</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Functions</th>
                                 <td class="level-0 is-selected">5 per project</td>
@@ -478,9 +508,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Realtime</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Realtime</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Concurrent connections</th>
                                 <td class="level-0 is-selected">250</td>
@@ -502,9 +537,14 @@
                             </tbody>
                         </table>
 
-                        <table class="aw-compare-table aw-sub-body-400 aw-u-margin-block-start-64">
-                            <caption class="aw-description aw-u-color-text-primary">Support</caption>
-                            <tbody>
+                        <table class="aw-compare-table aw-sub-body-400">
+                            <caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
+                                <button class="aw-compare-table-caption-button">
+                                    <span>Support</span>
+                                    <span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true"></span>
+                                </button>
+                            </caption>
+                            <tbody class="aw-compare-table-body">
                             <tr>
                                 <th class="aw-sub-body-500">Community</th>
                                 <td class="level-0 is-selected">
