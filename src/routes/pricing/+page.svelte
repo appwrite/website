@@ -56,7 +56,7 @@
                         <h1
                                 class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90 aw-u-mobile-align-text-center"
                                 style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
-                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >Simple, transparent pricing with no surprises</h1>
                     </div>
                 </section>
