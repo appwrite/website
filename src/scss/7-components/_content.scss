@@ -1,0 +1,20 @@
+@use '../abstract' as *;
+
+.#{$p}-content {
+  --p-section-gap: #{pxToRem(48)};
+  --p-content-gap: #{pxToRem(32)};
+  display:flex; flex-direction:column; gap:var(--p-section-gap);
+  section {
+    display:flex; flex-direction:column; gap:var(--p-content-gap);
+  }
+  &.is-count-headers {
+    counter-reset: headers;
+    .#{$p}-title {
+      &::before { counter-increment:headers; content:counter(headers) ". "; }
+    }
+  }
+  @media #{$break1} {
+    --p-section-gap: #{pxToRem(24)};
+    --p-content-gap: #{pxToRem(16)};
+  }
+}
