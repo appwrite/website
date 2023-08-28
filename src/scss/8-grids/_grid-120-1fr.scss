@@ -1,7 +1,23 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-120-1fr {
+
+  display: grid;
+  &-header { grid-area:header; }
+  &-side   { grid-area:side;   }
+  &-main   { grid-area:main;   }
+
+  @media #{$break1} {
+    padding-block-start:pxToRem(40);
+    &-header { padding-block-end:pxToRem(24); }
+  }
   @media #{$break2open} {
-    display:grid; grid-template-columns:pxToRem(120) 1fr; gap:pxToRem(80);
+    grid-template-columns:pxToRem(276) max(#{pxToRem(680)}) auto;
+    grid-template-areas:  ".    header header"
+                          "side main .";
+    column-gap:pxToRem(55);
+    row-gap:pxToRem(48);
+    padding-block-start:pxToRem(80);
+    &-header { }
   }
 }

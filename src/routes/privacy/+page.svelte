@@ -5,11 +5,14 @@
 <Homepage>
     <div class="aw-container">
         <div class="aw-grid-120-1fr">
-            <aside>
+            <header class="aw-grid-120-1fr-header">
+                <h1 class="aw-title aw-u-color-text-primary">Privacy Policy</h1>
+            </header>
+            <aside class="aw-grid-120-1fr-side">
                 [SIDE-CONTENT]
             </aside>
-            <main>
-                <h1 class="aw-title">Privacy Policy</h1>
+            <main class="aw-grid-120-1fr-main">
+
                 <p>
                     This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
                 </p>
