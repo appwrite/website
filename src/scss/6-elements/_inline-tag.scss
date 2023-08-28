@@ -4,7 +4,7 @@
   --p-inline-tag-bg: var(--aw-color-primary);
   --p-inline-tag-bg-opacity: 0.08;
 
-  display:grid; justify-content:center;
+  display:grid; place-items:center;
   padding-block:pxToRem(3); padding-inline:pxToRem(4); border-radius:pxToRem(4);
   line-height:1; color:hsl(var(--p-inline-tag-text));
   background-color:hsl(var(--p-inline-tag-bg) / var(--p-inline-tag-bg-opacity));
