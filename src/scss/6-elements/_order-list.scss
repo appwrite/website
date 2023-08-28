@@ -1,0 +1,13 @@
+@use '../abstract' as *;
+
+.#{$p}-order-list {
+  &-level-1 {
+    counter-reset: level-1;
+    li::before { counter-increment:level-1; content:counter(level-1) ". "; }
+  }
+  &-level-2 {
+    padding-inline-start:pxToRem(24);
+    counter-reset: level-2;
+    li::before { counter-increment:level-2; content:counter(level-2, lower-alpha) ". "; }
+  }
+}

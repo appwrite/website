@@ -1,0 +1,13 @@
+@use '../abstract' as *;
+
+.#{$p}-info-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-style: hidden;
+  &-wrapper { border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--aw-color-smooth)); }
+
+  &-col,
+  &-col-header { padding-block:pxToRem(18); padding-inline:pxToRem(12); border:solid pxToRem(1) hsl(var(--aw-color-smooth)); }
+  &-col {  }
+  &-col-header { background-color:hsl(var(--aw-color-neutral-850)); text-align:start; }
+}
