@@ -3,8 +3,10 @@
 .#{$p}-compare-table {
   inline-size: 100%;
   caption {
-    position:sticky; inset-block-start:pxToRem(152); backdrop-filter:blur(#{pxToRem(8)});
+    position:sticky;
+    z-index:5; inset-block-start:pxToRem(100); backdrop-filter:blur(#{pxToRem(8)});
     padding-block:pxToRem(16);  padding-inline:pxToRem(8); margin-inline:pxToRem(-8);
+    max-inline-size:pxToRem(276);
     @media #{$break1} { inset-block-start:pxToRem(120); }
   }
   tr {

@@ -75,9 +75,15 @@
 .#{$p}-u-cross-child-center { align-self:center!important;  }
 .#{$p}-u-cross-child-end { align-self:end!important;  }
 
-.#{$p}-u-grid-auto-column-1fr { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; }
+.#{$p}-u-grid-auto-column-1fr {
+  display:grid; grid-auto-flow:column; grid-auto-columns:1fr; padding-block-end:40px;
+  &::after {
+    content:""; display:block; block-size:pxToRem(1);
+    inline-size:200vw; position:absolute; inset-inline-start:-500px; inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
+  }
+}
 
-.#{$p}-u-filter-blur-8  { backdrop-filter:blur(#{pxToRem(8)}); }
+.#{$p}-u-filter-blur-8  { backdrop-filter:blur(#{pxToRem(8)}); background-color:hsl(var(--aw-color-neutral-50) / 0.7);}
 
 
 /* only light / only dark */

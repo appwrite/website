@@ -52,7 +52,11 @@
         <section class="aw-container">
 
             <div class="aw-hero aw-u-margin-block-120w-80s">
-                <h1 class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90">Simple, transparent pricing with no surprises</h1>
+                <h1
+                        class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90"
+                        style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                >Simple, transparent pricing with no surprises</h1>
             </div>
 
             <div class="aw-pricing-cards">
@@ -130,7 +134,7 @@
                                     <div class="u-margin-block-start-4">per organiztion/month</div>
                                     <p class="aw-main-body-500 u-margin-block-start-16">For scaling teams and agencies that need dedicated support.</p>
                                     <button class="aw-button is-secondary is-full-width u-margin-block-start-32">
-                                        <span class="aw-sub-body-500">SGet Scale</span>
+                                        <span class="aw-sub-body-500">Get Scale</span>
                                     </button>
                                 </header>
                                 <div class="aw-pricing-cards-content">
@@ -218,7 +222,7 @@
                         class="aw-is-not-mobile aw-u-grid-auto-column-1fr u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
                          aw-u-filter-blur-8 u-position-sticky u-z-index-5"
                         style="--inset-block-start:1rem">
-                    <div class="aw-label aw-u-color-text-primary aw-u-cross-child-center">Compare plans</div>
+                    <div class="aw-label aw-u-color-text-primary aw-u-cross-child-center" style="opacity:0">Compare plans</div>
                     <div class="aw-mini-card">
                         <div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
                             <h4 class="aw-label aw-u-color-text-primary">Free</h4>
@@ -324,7 +328,7 @@
                     <tr>
                         <th class="aw-sub-body-500">Appwrite branding on emails</th>
                         <td class="level-0 is-selected">
-                            <img src="/images/icons/pink/v-icon.svg" alt="has">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="has">
                         </td>
                         <td class="level-1">-</td>
                         <td class="level-2">-</td>
@@ -345,10 +349,10 @@
                         <th class="aw-sub-body-500">Budget caps and alerts</th>
                         <td class="level-0 is-selected">Not needed</td>
                         <td class="level-1">
-                            <img src="/images/icons/pink/v-icon.svg" alt="available">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="available">
                         </td>
                         <td class="level-2">
-                            <img src="/images/icons/pink/v-icon.svg" alt="available">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="available">
                         </td>
                     </tr>
                     <tr>
@@ -498,23 +502,23 @@
                     <tr>
                         <th class="aw-sub-body-500">Community</th>
                         <td class="level-0 is-selected">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                         <td class="level-1">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                         <td class="level-2">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                     </tr>
                     <tr>
                         <th class="aw-sub-body-500">Email</th>
                         <td class="level-0 is-selected">-</td>
                         <td class="level-1">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                         <td class="level-2">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                     </tr>
                     <tr>
@@ -522,7 +526,7 @@
                         <td class="level-0 is-selected">-</td>
                         <td class="level-1">-</td>
                         <td class="level-2">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                     </tr>
                     <tr>
@@ -530,7 +534,7 @@
                         <td class="level-0 is-selected">-</td>
                         <td class="level-1">-</td>
                         <td class="level-2">
-                            <img src="/images/icons/pink/v-icon.svg" alt="yes">
+                            <img src="/images/icons/gradients/v-icon.svg" alt="yes">
                         </td>
                     </tr>
                     </tbody>
