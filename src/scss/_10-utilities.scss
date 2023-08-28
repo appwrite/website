@@ -118,3 +118,7 @@
 .#{$p}-is-not-desktop {
   @media #{$break3open} { display:none!important; }
 }
+
+.collapsible-button {
+  padding-block:pxToRem(24);
+}
