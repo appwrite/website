@@ -595,7 +595,7 @@
 
         <div class="aw-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden">
             <svg class="u-position-absolute aw-u-gradient-mobile-align-2"
-                 style="inset:0; inset-block-start:0%; width:100%;"
+                 style="inset:0; inset-block-start:0%; inline-size:100%;"
                  xmlns="http://www.w3.org/2000/svg" width="1440" height="2300" viewBox="0 0 1440 2300" fill="none">
                 <g opacity="0.55" filter="url(#filter0_f_2550_1517)">
                     <path d="M-908.693 1831.66L877.738 1399L-71.499 1096.96L-908.693 1831.66Z" fill="#FD366E"/>

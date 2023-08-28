@@ -131,10 +131,6 @@
   @media #{$break3open} { display:none!important; }
 }
 
-.collapsible-button {
-  padding-block:pxToRem(24);
-}
-
 .#{$p}-u-gradient-mobile-align {
   @media #{$break1} {width: 230%!important;
     margin-left: -50%!important;
@@ -145,4 +141,9 @@
   @media #{$break1} {width: 230%!important;
     margin-left: -25%!important;
     margin-top: 100%!important;}
+}
+
+/* override partial styles */
+.collapsible-button {
+  padding-block:pxToRem(24);
 }
