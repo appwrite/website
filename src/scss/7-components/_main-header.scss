@@ -4,6 +4,7 @@
   --p-main-header-link-color: var(--aw-color-neutral-900);
   position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   padding-block:pxToRem(20);
+  border-block-end: solid 1px rgb(255,255,255, 0.1);
   &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
   &-row { display:flex; }
   &-start { display:flex; align-items:center; }
@@ -23,7 +24,7 @@
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
-  &.is-transparent { background-color:transparent; backdrop-filter:blur(7.5px); }
+  &.is-transparent { background-color:transparent; backdrop-filter:blur(10px); }
 
   #{$theme-dark} & {
     --p-main-header-link-color: var(--aw-color-neutral-100);

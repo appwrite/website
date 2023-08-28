@@ -125,8 +125,21 @@
 }
 
 .#{$p}-u-gradient-mobile-align {
-  @media #{$break1} {width: 230%;
-    margin-left: -50%;
-    margin-top: -25%;}
+  @media #{$break1} {width: 230%!important;
+    margin-left: -50%!important;
+    margin-top: -25%!important;}
+}
 
+.#{$p}-u-gradient-mobile-align-2 {
+  @media #{$break1} {width: 230%!important;
+    margin-left: -25%!important;
+    margin-top: 100%!important;}
+}
+
+.aw-u-mobile-divider {
+  &::after {
+    content:""; display:block; block-size:pxToRem(1);
+    inline-size:200vw; position:absolute; inset-inline-start:-500px; inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
+
+  }
 }
