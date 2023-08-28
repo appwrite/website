@@ -196,7 +196,7 @@
                 <div
                         class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
                         style="--inset-block-start:2rem">
-                    <ul class="aw-secondary-tabs aw-is-only-mobile"
+                    <ul class="aw-secondary-tabs aw-is-only-mobile aw-u-mobile-divider"
                         style="
                 --p-secondary-tabs-bg-color-default:var(--aw-color-neutral-0);
                 --p-secondary-tabs-text-color-selected:var(--aw-color-accent);
@@ -550,7 +550,7 @@
     <div class="theme-dark u-position-relative u-overflow-hidden">
 
 
-        <svg class="u-position-absolute"
+        <svg class="u-position-absolute aw-u-gradient-mobile-align-2"
              style="inset:0; inset-block-start:0%; width:100%;"
                 xmlns="http://www.w3.org/2000/svg" width="1440" height="2300" viewBox="0 0 1440 2300" fill="none">
             <g opacity="0.55" filter="url(#filter0_f_2550_1517)">
