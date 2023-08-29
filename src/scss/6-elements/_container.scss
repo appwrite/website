@@ -9,6 +9,7 @@
 }
 
 .#{$p}-main-section {
+  overflow:hidden;
   > * { padding-block:pxToRem(24); }
   >:first-child { padding-block-start:0; }
   >:last-child  { padding-block-end:0; }
