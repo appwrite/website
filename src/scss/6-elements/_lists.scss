@@ -54,3 +54,7 @@
     &::before { @include checked-badge; }
   }
 }
+
+.#{$p}-pink-dots {
+  ::marker { color:hsl(var(--aw-color-primary-500)); }
+}
