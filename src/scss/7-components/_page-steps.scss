@@ -1,0 +1,23 @@
+@use '../abstract' as *;
+
+.#{$p}-page-steps {
+  display:flex; gap:pxToRem(24);
+  &-location {
+    --p-location:var(--location, 0%);
+    position:relative; inline-size:pxToRem(16); margin-block:pxToRem(12); flex-shrink:0;
+    &::before {
+      content:""; display:block; inline-size:pxToRem(2); block-size:100%; margin-inline:auto;
+      background-color:hsl(var(--aw-color-neutral-700));
+    }
+    &-button {
+      position:absolute; inset-block-start:var(--p-location); margin-block-start:pxToRem(-8);
+    }
+  }
+  &-list { display:flex; flex-direction:column; gap:pxToRem(20); }
+  .is-selected { color:hsl(var(--aw-color-primary)); }
+  @media #{$break1} {}
+  @media #{$break2open} {
+    position:sticky; inset-block-start: pxToRem(110);
+    inline-size:pxToRem(280); /* was 236px. But to small for privacy page*/
+  }
+}
