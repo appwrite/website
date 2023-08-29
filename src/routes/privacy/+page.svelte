@@ -2,18 +2,114 @@
 	import { Homepage } from '$lib/layouts';
 </script>
 
+<div class="u-position-absolute" style="pointer-events:none;">
+    <svg class="aw-is-not-mobile" xmlns="http://www.w3.org/2000/svg" width="1728" height="518" viewBox="0 0 1728 518" fill="none">
+        <g opacity="0.12" filter="url(#filter0_f_1684_10385)">
+            <ellipse cx="864" rx="805" ry="262" fill="#FD366E"/>
+        </g>
+        <defs>
+            <filter id="filter0_f_1684_10385" x="-196.022" y="-517.022" width="2120.04" height="1034.04" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_1684_10385"/>
+            </filter>
+        </defs>
+    </svg>
+</div>
+
 <Homepage>
     <div class="aw-container">
         <div class="aw-grid-120-1fr-auto">
             <header class="aw-grid-120-1fr-auto-header">
                 <h1 class="aw-title aw-u-color-text-primary">Privacy Policy</h1>
+                <button
+                        class="u-flex u-width-full-line u-main-space-between u-cross-center
+                        aw-u-padding-20 aw-u-color-text-primary aw-is-only-mobile
+                       aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block" style="inline-size:100vw">
+                    <span class="aw-description">Table of contents</span>
+                    <span class="icon-menu-alt-4" aria-hidden="true"></span>
+                </button>
             </header>
-            <aside class="aw-grid-120-1fr-auto-side">
-                [SIDE-CONTENT]
+            <aside class="aw-grid-120-1fr-auto-side aw-is-mobile-closed">
+                <div class="aw-page-steps">
+                    <div class="aw-page-steps-location aw-is-not-mobile" style="--location:0%;">
+                        <button class="aw-page-steps-location-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <g clip-path="url(#clip0_1684_10747)">
+                                    <g filter="url(#filter0_b_1684_10747)">
+                                        <circle cx="8" cy="8" r="8" fill="url(#paint0_linear_1684_10747)" fill-opacity="0.32"/>
+                                        <circle cx="8" cy="8" r="7.75" stroke="url(#paint1_linear_1684_10747)" stroke-width="0.5"/>
+                                    </g>
+                                    <circle cx="8" cy="7.99219" r="3" fill="white"/>
+                                </g>
+                                <defs>
+                                    <filter id="filter0_b_1684_10747" x="-200" y="-200" width="416" height="416" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="100"/>
+                                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1684_10747"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1684_10747" result="shape"/>
+                                    </filter>
+                                    <linearGradient id="paint0_linear_1684_10747" x1="2.02105" y1="1.10843" x2="16.3872" y2="17.2901" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0.4"/>
+                                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_1684_10747" x1="7.45643" y1="-1.10615" x2="5.53812" y2="17.9973" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="white" stop-opacity="0.16"/>
+                                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <clipPath id="clip0_1684_10747">
+                                        <rect width="16" height="16" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="aw-page-steps-list aw-sub-body-500">
+                        <li>
+                            <a href="#introduction" class="is-selected">Introduction</a>
+                        </li>
+                        <li>
+                            <a href="#personalData">What Personal Data we collect, why we collect it, and how it is used</a>
+                        </li>
+                        <li>
+                            <a href="#protect">How we protect and retain your Personal Data</a>
+                        </li>
+                        <li>
+                            <a href="#share">How we share your Personal Data</a>
+                        </li>
+                        <li>
+                            <a href="#additional">Additional information regarding transfers of Personal Data</a>
+                        </li>
+                        <li>
+                            <a href="#privacy">Your privacy rights. How to delete your account</a>
+                        </li>
+                        <li>
+                            <a href="#children">Use by children</a>
+                        </li>
+                        <li>
+                            <a href="#interaction">Interaction with third party products</a>
+                        </li>
+                        <li>
+                            <a href="#log">Log files</a>
+                        </li>
+                        <li>
+                            <a href="#analytic">Analytic tools</a>
+                        </li>
+                        <li>
+                            <a href="#payments">Payments</a>
+                        </li>
+                        <li>
+                            <a href="#privacyLaw">Specific provisions applicable under California privacy law</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
             </aside>
-            <main class="aw-grid-120-1fr-auto-main">
+            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed">
                 <div class="aw-content is-count-headers">
-                    <section>
+                    <section id="introduction">
                         <div>
                             <p>
                                 This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
@@ -49,7 +145,7 @@
                             Please read this Privacy Policy carefully, so you can understand our practices and your rights in relation to personal data. “Personal Data” or “Personal Information” means any information that can be used, alone or together with other data, to uniquely identify any living human being and any information deemed as Personally Identifiable Information by privacy laws. Please note that this is a master privacy policy and some of its provisions only apply to individuals in certain jurisdictions. For example, the legal basis in the table below is only relevant to GDPR-protected individuals. Important note: Nothing in this Privacy Policy is intended to limit in any way your statutory right, including your rights to a remedy or means of enforcement. </p>
                         <p>This Privacy Policy can be updated from time to time and, therefore, we ask you to check back periodically for the latest version of this Privacy Policy.  If we implement significant changes to the use of your Personal Data in a manner different from that stated at the time of collection, we will notify you by posting a notice on our Website or by other means.</p>
                     </section>
-                    <section>
+                    <section id="personalData">
                         <h2 class="aw-title aw-u-color-text-primary">What personal data we collect, why we collect it, and how it is used</h2>
                         <p>When you browse or visit our website</p>
                         <div class="aw-info-table-scroll">
@@ -649,7 +745,7 @@
                             Finally, please note that some of the abovementioned Personal Data will be used for detecting, taking steps to prevent, and prosecution of fraud or other illegal activity, to identify and repair errors, to conduct audits, and for security purposes. Personal Data may also be used to comply with applicable laws, with investigations performed by the relevant authorities, law enforcement purposes, and/or to exercise or defend legal claims. In certain cases, we may or will anonymize or de-identify your Personal Data and further use it for internal and external purposes, including, without limitation, to improve the services and for research purposes. “Anonymous Information” means information which does not enable identification of an individual user, such as aggregated information about the use of our services. We may use Anonymous Information and/or disclose it to third parties without restrictions (for example, in order to improve our services and enhance your experience with them).
                         </p>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="protect">
                         <h2 class="aw-title aw-u-color-text-primary">How we protect and retain your personal data</h2>
                         <div class="u-flex u-flex-vertical u-gap-8">
                             <h3 class="aw-sub-body-500 aw-u-color-text-primary">Security</h3>
@@ -658,7 +754,7 @@
                             <p>Your Personal Data will be stored until we delete the record and we proactively delete it or you send a valid deletion request, please note that in some circumstances we may store your Personal Data for longer periods of time, for example (i) where we are required to do so in accordance with legal, regulatory, tax or accounting requirements, or (ii) for us to have an accurate record of your dealings with us in the event of any complaints or challenges, or (iii) if we reasonably believe there is a prospect of litigation relating to your Personal Data or dealings. Regarding retention of cookies, you can read more in our cookie policy https://appwrite.io/policy/cookies. </p>
                         </div>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="share">
                         <h2 class="aw-title aw-u-color-text-primary">How we share your personal data</h2>
                         <div class="u-flex u-flex-vertical u-gap-8">
                             <p>In addition to the recipients described above, we may share your Personal Data as follows:</p>
@@ -674,14 +770,14 @@
                             <p>Where you have provided your consent to us sharing or transferring your Personal Data (e.g., where you provide us with marketing consents or opt-in to optional additional services or functionality).</p>
                         </div>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="additional">
                         <h2 class="aw-title aw-u-color-text-primary">Additional information regarding transfers or personal data</h2>
                         <div class="u-flex u-flex-vertical u-gap-8">
                             <h3 class="aw-sub-body-500 aw-u-color-text-primary">External transfers</h3>
                             <p>Where we transfer your Personal Data outside of EU/EEA (for example to third parties who provide us with services), we will generally obtain contractual commitments from them to protect your Personal Data. When Appwrite engages in such transfers of Personal Data, it relies on i) Adequacy Decisions as adopted by European Commission on the basis of Article 45 of Regulation (EU) 2016/679 (GDPR) (for example, when we access from Israel), or ii) Standard Contractual Clauses issued by the European Commission. Appwrite also continually monitors the circumstances surrounding such transfers in order to ensure that these maintain, in practice, a level of protection that is essentially equivalent to the one guaranteed by the GDPR.</p>
                         </div>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="privacy">
                         <h2 class="aw-title aw-u-color-text-primary">Your privacy rights. How to delete your account</h2>
                         <div class="u-flex u-flex-vertical u-gap-8">
                             <h3 class="aw-sub-body-500 aw-u-color-text-primary">Rights</h3>
@@ -705,19 +801,19 @@
                             <p>Deleting your account: Should you ever decide to delete your account, you may do so by emailing privacy@appwrite.io. If you terminate your account, any association between your account and Personal Data we store will no longer be accessible through your account. However, given the nature of sharing on certain services, any public activity on your account prior to deletion will remain stored on our servers and will remain accessible to the public.</p>
                         </div>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="children">
                         <h2 class="aw-title aw-u-color-text-primary">Use by children</h2>
                         <p>We do not offer our products or services for use by children and, therefore, we do not knowingly collect Personal Data from, and/or about children under the age of eighteen (18). If you are under the age of eighteen (18), do not provide any Personal Data to us without involvement of a parent or a guardian. For the purposes of the GDPR, we do not intend to offer information society services directly to children. In the event that we become aware that you provide Personal Data in violation of applicable privacy laws, we reserve the right to delete it. If you believe that we might have any such information, please contact us at privacy@appwrite.io.</p>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="interaction">
                         <h2 class="aw-title aw-u-color-text-primary">Interaction with third party products</h2>
                         <p>We enable you to interact with third party websites, mobile software applications and products or services that are not owned or controlled by us (each a “Third Party Service”). We are not responsible for the privacy practices or the content of such Third Party Services. Please be aware that Third Party Services can collect Personal Data from you. Accordingly, we encourage you to read the terms and conditions and privacy policies of each Third Party Service.</p>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="log">
                         <h2 class="aw-title aw-u-color-text-primary">Log files</h2>
                         <p>We use log files. We use such information to analyze trends, administer the Website, track users’ movement around the Website, and gather demographic information.</p>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="analytic">
                         <h2 class="aw-title aw-u-color-text-primary">Analytic tools</h2>
                         <p>WWe use log files. We use such information to analyze trends, administer the Website, track users’ movement around the Website, and gather demographic information.</p>
                         <ul class="u-flex u-flex-vertical u-gap-24">
@@ -759,7 +855,7 @@
                             </li>
                         </ul>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="payments">
                         <h2 class="aw-title aw-u-color-text-primary">Payments</h2>
                         <p>We may provide paid products and/or services within the Service. In that case, we use third-party services for payment processing (e.g. payment processors). We will not store or collect your payment card details. That information is provided directly to our third-party payment processors whose use of your Personal Data is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, MasterCard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information. The payment processors we work with are:</p>
                         <ul class="aw-pink-dots u-flex u-flex-vertical u-gap-24">
@@ -781,7 +877,7 @@
                             </li>
                         </ul>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="privacyLaw">
                         <h2 class="aw-title aw-u-color-text-primary">
                             Specific provisions applicable under California Privacy Law
                         </h2>
@@ -792,7 +888,7 @@
                             <p>Do Not Track (“DNT”) is a privacy preference that users can set in certain web browsers. Please note that we do not respond to or honor DNT signals or similar mechanisms transmitted by web browsers, but we may allow third parties, such as companies that provide us with analytics tools, to collect personally identifiable information about an individual consumer’s online activities over time and across different web sites when a consumer uses the Services.</p>
                         </div>
                     </section>
-                    <section class="count-secondary-title">
+                    <section class="count-secondary-title" id="contact">
                         <h2 class="aw-title aw-u-color-text-primary">
                             Contact us
                         </h2>
@@ -806,5 +902,129 @@
 
             </main>
         </div>
+
+        <nav class="aw-footer-nav u-margin-block-start-100">
+            <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+            <ul class="aw-footer-nav-main-list">
+                <li class="aw-footer-nav-main-item">
+                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Product</a></h5>
+                    <button class="aw-footer-nav-button aw-is-only-mobile">
+                        <span class="aw-caption-500">Product</span>
+                        <svg
+                                class="aw-footer-nav-button-arrow"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                        >
+                            <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                    fill="#ADADB0"
+                            />
+                        </svg>
+                    </button>
+                    <ul class="aw-footer-nav-secondary-list">
+                        <li class="aw-footer-nav-secondary-item"><a href="">Docs</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Auth</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Databases</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Functions</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Storage</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Realtime</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Localization</a></li>
+                    </ul>
+                </li>
+                <li class="aw-footer-nav-main-item">
+                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">About</a></h5>
+                    <button class="aw-footer-nav-button is-open aw-is-only-mobile">
+                        <span class="aw-caption-500">About</span>
+                        <svg
+                                class="aw-footer-nav-button-arrow"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                        >
+                            <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                    fill="#ADADB0"
+                            />
+                        </svg>
+                    </button>
+                    <ul class="aw-footer-nav-secondary-list">
+                        <li class="aw-footer-nav-secondary-item"><a href="">Company</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Community</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Blog</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Careers</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
+                    </ul>
+                </li>
+                <li class="aw-footer-nav-main-item">
+                    <h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Legal</a></h5>
+                    <button class="aw-footer-nav-button aw-is-only-mobile">
+                        <span class="aw-caption-500">Legal</span>
+                        <svg
+                                class="aw-footer-nav-button-arrow"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                        >
+                            <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
+                                    fill="#ADADB0"
+                            />
+                        </svg>
+                    </button>
+                    <ul class="aw-footer-nav-secondary-list">
+                        <li class="aw-footer-nav-secondary-item"><a href="">Status</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Terms</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Privacy</a></li>
+                        <li class="aw-footer-nav-secondary-item"><a href="">Security</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <footer class="aw-main-footer u-margin-block-start-48">
+            <ul class="u-flex u-gap-8">
+                <li>
+                    <button class="aw-icon-button" aria-label="Appwrite on Discord">
+                        <span class="icon-discord" aria-hidden="true" />
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-icon-button" aria-label="Appwrite GitHub">
+                        <span class="icon-github" aria-hidden="true" />
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-icon-button" aria-label="Appwrite on Twitter">
+                        <span class="icon-twitter" aria-hidden="true" />
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
+                        <span class="icon-linkedin" aria-hidden="true" />
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-icon-button" aria-label="Appwrite YouTube">
+                        <span class="icon-youtube" aria-hidden="true" />
+                    </button>
+                </li>
+            </ul>
+            <div>Copyright © 2023 Appwrite</div>
+        </footer>
+
     </div>
 </Homepage>

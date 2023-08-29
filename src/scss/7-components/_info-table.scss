@@ -22,7 +22,7 @@
     border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--aw-color-smooth));
     @media #{$break1} {
       overflow-x:auto;
-      max-inline-size: calc(100vw - pxToRem(32));
+      min-inline-size: calc(100vw - pxToRem(32));
       border-start-end-radius:0;
       border-end-end-radius:0;
     }
