@@ -52,7 +52,7 @@
                     <section>
                         <h2 class="aw-title">What personal data we collect, why we collect it, and how it is used</h2>
                         <p>When you browse or visit our website</p>
-                        <div class="u-overflow-x">
+                        <div class="aw-info-table-scroll">
                             <div class="aw-info-table-wrapper">
                                 <table class="aw-info-table">
                                 <tbody class="aw-info-table-tbody">
@@ -88,11 +88,111 @@
                             </table>
                             </div>
                         </div>
+                        <div>
+                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                When you make use of, or interact with, our Website
+                            </h3>
+                            <p>When you create an account and when you log in</p>
+                        </div>
+
+                        <div class="aw-info-table-scroll">
+                            <div class="aw-info-table-wrapper">
+                                <table class="aw-info-table">
+                                <thead class="aw-info-table-thead">
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header"></th>
+                                        <th class="aw-info-table-col-header">Product development purposes</th>
+                                        <th class="aw-info-table-col-header">Marketing purposes</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="aw-info-table-tbody">
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header">Specific personal data we collect</th>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>Full name</li>
+                                                <li>Email address</li>
+                                                <li>IP address</li>
+                                                <li>Country</li>
+                                                <li>User-agent (info about the browser)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>Full name</li>
+                                                <li>Email address</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header">What is the personal data collected and for what purpose?</th>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>To be able to create an account</li>
+                                                <li>To be able to log in</li>
+                                                <li>To be able to enjoy features available to registered users</li>
+                                                <li>To collect Informative reason for the administrator.</li>
+                                                <li>To better project development (identify reported problem)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>To send you marketing communications and product update</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header">Legal basis (GDPR only, if applicable)</th>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract</li>
+                                                <li>Legitimate interest (e.g. to allow you to create an account and log-in)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="aw-info-table-col">Consent</td>
+                                    </tr>
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header">Third parties with whom we share your personal data</th>
+                                        <td class="aw-info-table-col">
+                                            3rd party platforms such as for the following purposes:
+                                            <ul>
+                                                <li>Orbit</li>
+                                                <li>Google analytics</li>
+                                            </ul>
+                                        </td>
+                                        <td class="aw-info-table-col">
+                                            3rd party platforms such as for the following purposes:
+                                            <ul>
+                                                <li>Mailgun</li>
+                                                <li>Orbit</li>
+                                                <li>Hubspot</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="aw-info-table-col-row">
+                                        <th class="aw-info-table-col-header">Consequences of not providing the personal data</th>
+                                        <td class="aw-info-table-col">
+                                            <ul>
+                                                <li>Cannot be able to create an account</li>
+                                                <li>Cannot be able to log in</li>
+                                                <li>Cannot be able to enjoy features available to registered users</li>
+                                                <li>Cannot collect Informative reason for the administrator.</li>
+                                                <li>Cannot better project development (identify reported problem)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="aw-info-table-col">
+                                            Cannot send you marketing communications
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
 
 
-
-                        <div class="u-overflow-x">
-                            <table class="aw-info-table">
+                        <div class="aw-info-table-scroll">
+                            <div class="aw-info-table-wrapper">
+                                <table class="aw-info-table">
                                 <tbody class="aw-info-table-tbody">
                                 <tr class="aw-info-table-col-row">
                                     <th class="aw-info-table-col-header"></th>
@@ -100,6 +200,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </section>
                 </div>
