@@ -7,6 +7,10 @@
   section {
     display:flex; flex-direction:column; gap:var(--p-content-gap);
   }
+  a {
+    @include break-word();   word-break:break-all; color:hsl(var(--aw-color-primary));
+    &:where(:hover, :focus) { text-decoration:underline; }
+  }
   ul {
     list-style: disc; padding-inline-start:pxToRem(24);
     > li {
@@ -19,6 +23,13 @@
     .#{$p}-title {
       &::before { counter-increment:headers; content:counter(headers) ". "; }
     }
+  }
+  .count-secondary-title {
+    counter-reset: inner-title;
+    .#{$p}-sub-body-500 {
+      &::before { counter-increment:inner-title; content:counter(headers) "." counter(inner-title) " "; }
+    }
+
   }
   @media #{$break1} {
     --p-section-gap: #{pxToRem(24)};
