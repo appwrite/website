@@ -4,14 +4,14 @@
 
 <Homepage>
     <div class="aw-container">
-        <div class="aw-grid-120-1fr">
-            <header class="aw-grid-120-1fr-header">
+        <div class="aw-grid-120-1fr-auto">
+            <header class="aw-grid-120-1fr-auto-header">
                 <h1 class="aw-title aw-u-color-text-primary">Privacy Policy</h1>
             </header>
-            <aside class="aw-grid-120-1fr-side">
+            <aside class="aw-grid-120-1fr-auto-side">
                 [SIDE-CONTENT]
             </aside>
-            <main class="aw-grid-120-1fr-main">
+            <main class="aw-grid-120-1fr-auto-main">
                 <div class="aw-content is-count-headers">
                     <section>
                         <div>

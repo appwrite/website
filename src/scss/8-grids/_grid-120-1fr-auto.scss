@@ -1,8 +1,7 @@
 @use '../abstract' as *;
 
-.#{$p}-grid-120-1fr {
+.#{$p}-grid-120-1fr-auto {
 
-  display: grid;
   &-header { grid-area:header; }
   &-side   { grid-area:side;   }
   &-main   { grid-area:main;   }
@@ -12,6 +11,7 @@
     &-header { padding-block-end:pxToRem(24); }
   }
   @media #{$break2open} {
+    display: grid;
     grid-template-columns:pxToRem(276) max(#{pxToRem(680)}) auto;
     grid-template-areas:  ".    header header"
                           "side main .";
