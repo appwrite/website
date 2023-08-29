@@ -2,8 +2,9 @@
     import { Homepage } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute u-overflow-hidden" style="pointer-events:none;">
+<div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
     <svg  class="aw-u-gradient-mobile-align"
+          style="margin-inline:auto; display:block;"
             xmlns="http://www.w3.org/2000/svg" width="1369" height="714" viewBox="0 0 1369 714" fill="none">
         <g filter="url(#filter0_f_1330_36780)">
             <ellipse cx="499.417" cy="351.062" rx="156.5" ry="468.5" transform="rotate(61.5107 499.417 351.062)" fill="url(#paint0_radial_1330_36780)" fill-opacity="0.5"/>
