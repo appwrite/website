@@ -97,17 +97,21 @@
 							<h2 class="aw-main-body-500">Featured products</h2>
 						</header>
 						<p class="aw-sub-body-400">
-							Lorem ipsum dolor sit amet consectetur. Bibendum sed ultrices sit aenean. Vel posuere arcu venenatis hendrerit at facilisis. Consequat consectetur phasellus magna pulvinar nisi mi aliquam. Id non imperdiet fringilla duis eu neque fames dui feugiat. Neque nunc elit cursus dignissim ornare sem lectus.
+							Lorem ipsum dolor sit amet consectetur. Bibendum sed ultrices sit aenean. Vel posuere
+							arcu venenatis hendrerit at facilisis. Consequat consectetur phasellus magna pulvinar
+							nisi mi aliquam. Id non imperdiet fringilla duis eu neque fames dui feugiat. Neque
+							nunc elit cursus dignissim ornare sem lectus.
 						</p>
-						<ul class="collapsible u-width-full-line" style="--p-toggle-border-color: var(--aw-color-border);">
+						<ul
+							class="collapsible u-width-full-line"
+							style="--p-toggle-border-color: var(--aw-color-border);"
+						>
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper" open>
 									<summary class="collapsible-button">
-										<span class="text">
-										  Request
-										</span>
+										<span class="text"> Request </span>
 										<div class="icon aw-u-color-text-primary">
-											<span class="icon-cheveron-down" aria-hidden="true"></span>
+											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
 									</summary>
 									<div class="collapsible-content">
@@ -121,23 +125,27 @@
 															<div class="aw-tag">required</div>
 														</header>
 														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and underscore. Can't start with a special char. Max length is 36 chars.
+															Choose your own unique ID or pass the string ID.unique() to auto
+															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
+															underscore. Can't start with a special char. Max length is 36 chars.
 														</p>
 													</article>
 												</li>
-												<li class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16">
+												<li
+													class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16"
+												>
 													<article>
 														<header class="u-flex u-cross-baseline u-gap-8">
 															<h3 class="aw-eyebrow aw-u-color-text-primary">email</h3>
 															<span class="aw-caption-400">string</span>
 															<div class="aw-tag">required</div>
 														</header>
-														<p class="aw-sub-body-400 u-margin-block-start-16">
-															User emails.
-														</p>
+														<p class="aw-sub-body-400 u-margin-block-start-16">User emails.</p>
 													</article>
 												</li>
-												<li class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16">
+												<li
+													class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16"
+												>
 													<article>
 														<header class="u-flex u-cross-baseline u-gap-8">
 															<h3 class="aw-eyebrow aw-u-color-text-primary">password</h3>
@@ -149,7 +157,9 @@
 														</p>
 													</article>
 												</li>
-												<li class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16">
+												<li
+													class="u-sep-block-start u-padding-block-start-16 u-margin-block-start-16"
+												>
 													<article>
 														<header class="u-flex u-cross-baseline u-gap-8">
 															<h3 class="aw-eyebrow aw-u-color-text-primary">name</h3>
@@ -168,11 +178,9 @@
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper">
 									<summary class="collapsible-button">
-										<span class="text">
-										  Responnse
-										</span>
+										<span class="text"> Responnse </span>
 										<div class="icon aw-u-color-text-primary">
-											<span class="icon-cheveron-down" aria-hidden="true"></span>
+											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
 									</summary>
 									<div class="collapsible-content">
@@ -186,7 +194,9 @@
 															<div class="aw-tag">required</div>
 														</header>
 														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and underscore. Can't start with a special char. Max length is 36 chars.
+															Choose your own unique ID or pass the string ID.unique() to auto
+															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
+															underscore. Can't start with a special char. Max length is 36 chars.
 														</p>
 													</article>
 												</li>
@@ -198,11 +208,9 @@
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper">
 									<summary class="collapsible-button">
-										<span class="text">
-										  Errors
-										</span>
+										<span class="text"> Errors </span>
 										<div class="icon aw-u-color-text-primary">
-											<span class="icon-cheveron-down" aria-hidden="true"></span>
+											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
 									</summary>
 									<div class="collapsible-content">
@@ -216,7 +224,9 @@
 															<div class="aw-tag">required</div>
 														</header>
 														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and underscore. Can't start with a special char. Max length is 36 chars.
+															Choose your own unique ID or pass the string ID.unique() to auto
+															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
+															underscore. Can't start with a special char. Max length is 36 chars.
 														</p>
 													</article>
 												</li>
@@ -229,13 +239,11 @@
 					</div>
 					<div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
 						<div class="u-contents theme-dark">
-							<div class="u-position-sticky"
-								 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
+							<div
+								class="u-position-sticky"
+								style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
 							>
-								<section
-										class="aw-code-snippet"
-										aria-label="code-snippet panel"
-								>
+								<section class="aw-code-snippet" aria-label="code-snippet panel">
 									<header class="aw-code-snippet-header">
 										<div class="aw-code-snippet-header-start">
 											<div class="u-flex u-gap-16">
@@ -265,10 +273,7 @@
 									</header>
 									<div class="aw-code-snippet-content">CONTENT</div>
 								</section>
-								<section
-										class="aw-code-snippet"
-										aria-label="code-snippet panel"
-								>
+								<section class="aw-code-snippet" aria-label="code-snippet panel">
 									<header class="aw-code-snippet-header">
 										<div class="aw-code-snippet-header-start">
 											<div class="u-flex u-gap-16">
@@ -316,16 +321,16 @@
 					</div>
 					<ul class="aw-references-menu-list">
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link is-selected aw-caption-400">Title</a>
+							<a href="." class="aw-references-menu-link is-selected aw-caption-400">Title</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link aw-caption-400">Title</a>
+							<a href="." class="aw-references-menu-link aw-caption-400">Title</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link aw-caption-400">Title</a>
+							<a href="." class="aw-references-menu-link aw-caption-400">Title</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link aw-caption-400">Title</a>
+							<a href="." class="aw-references-menu-link aw-caption-400">Title</a>
 						</li>
 					</ul>
 					<div class="u-sep-block-start u-padding-block-start-20">
@@ -378,13 +383,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href="">Supports</a>
+					<a href=".">Supports</a>
 				</li>
 				<li>
-					<a href="">Status</a>
+					<a href=".">Status</a>
 				</li>
 				<li>
-					<a href="">Changelog</a>
+					<a href=".">Changelog</a>
 				</li>
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
