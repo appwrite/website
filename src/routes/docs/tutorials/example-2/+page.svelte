@@ -42,15 +42,21 @@
 							<span class="aw-numeric-badge aw-u-margin-block-start-2">2</span>
 							<h1 class="aw-label aw-u-color-text-primary">Prerequisites</h1>
 						</div>
-
 					</header>
-					<p>Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate quis odio velit fames tristique sit magna nec ut.</p>
+					<p>
+						Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus
+						arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate
+						quis odio velit fames tristique sit magna nec ut.
+					</p>
 				</section>
 				<section class="aw-article-content-section">
 					<header class="aw-article-content-header">
 						<h2 class="aw-main-body-500 aw-u-color-text-primary">Title</h2>
 					</header>
-					<p>Lorem ipsum dolor sit amet consectetur. Cursus gravida nisl dictum et sit. Eu gravida vel velit ac tempor eu a ullamcorper.</p>
+					<p>
+						Lorem ipsum dolor sit amet consectetur. Cursus gravida nisl dictum et sit. Eu gravida
+						vel velit ac tempor eu a ullamcorper.
+					</p>
 					<div class="aw-media">
 						<img
 							class=""
@@ -190,12 +196,12 @@
 
 				<div class="u-flex u-main-space-between">
 					<button class="aw-button is-text">
-						<span class="icon-cheveron-left" aria-hidden="true"></span>
+						<span class="icon-cheveron-left" aria-hidden="true" />
 						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
 					</button>
 					<button class="aw-button is-secondary">
 						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
-						<span class="icon-cheveron-right" aria-hidden="true"></span>
+						<span class="icon-cheveron-right" aria-hidden="true" />
 					</button>
 				</div>
 
@@ -204,8 +210,18 @@
 						<div class="aw-content-footer-header-start">
 							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 							<div class="u-flex u-gap-8">
-								<input class="aw-radio-button is-like" type="radio" aria-label="Helpful" name="happy">
-								<input class="aw-radio-button is-dislike" type="radio" aria-label="UnHelpful" name="happy">
+								<input
+									class="aw-radio-button is-like"
+									type="radio"
+									aria-label="Helpful"
+									name="happy"
+								/>
+								<input
+									class="aw-radio-button is-dislike"
+									type="radio"
+									aria-label="UnHelpful"
+									name="happy"
+								/>
 							</div>
 						</div>
 						<div class="aw-content-footer-header-end">
@@ -214,7 +230,7 @@
 								<li>
 									<button class="">
 										<!-- TODO: wait for implement icons in website -->
-										<span class="icon-edit" aria-hidden="true"></span>
+										<span class="icon-edit" aria-hidden="true" />
 										<span>Update on GitHub</span>
 									</button>
 								</li>
@@ -226,7 +242,11 @@
 							<span class="aw-u-color-text-primary">What did you like?</span>
 							<span class="">(optional)</span>
 						</label>
-						<textarea class="aw-input-text u-margin-block-start-8" id="message" placeholder="Write your message"></textarea>
+						<textarea
+							class="aw-input-text u-margin-block-start-8"
+							id="message"
+							placeholder="Write your message"
+						/>
 						<div class="u-flex u-main-end u-margin-block-start-16">
 							<button class="aw-button is-text">
 								<span class="">Cancel</span>
@@ -237,7 +257,6 @@
 						</div>
 					</div>
 				</section>
-
 			</div>
 			<aside class="aw-references-menu aw-u-padding-inline-start-24">
 				<div class="aw-references-menu-content">
@@ -246,31 +265,31 @@
 					</div>
 					<ol class="aw-references-menu-list">
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-numeric-badge">1</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link is-selected">
+							<a href="." class="aw-references-menu-link is-selected">
 								<span class="aw-numeric-badge">2</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
 							<ol class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32">
 								<li class="aw-references-menu-item">
-									<a href="" class="aw-references-menu-link is-selected">
+									<a href="." class="aw-references-menu-link is-selected">
 										<span class="aw-caption-400">Subtitle</span>
 									</a>
 								</li>
 								<li class="aw-references-menu-item">
-									<a href="" class="aw-references-menu-link is-selected">
+									<a href="." class="aw-references-menu-link is-selected">
 										<span class="aw-caption-400">Subtitle</span>
 									</a>
 								</li>
 							</ol>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-numeric-badge">3</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
@@ -326,13 +345,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href="">Supports</a>
+					<a href=".">Supports</a>
 				</li>
 				<li>
-					<a href="">Status</a>
+					<a href=".">Status</a>
 				</li>
 				<li>
-					<a href="">Changelog</a>
+					<a href=".">Changelog</a>
 				</li>
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">

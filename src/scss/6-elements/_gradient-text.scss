@@ -1,10 +1,9 @@
 @use '../abstract' as *;
 
 .#{$p}-gradient-text {
-  display:block;
-  background: radial-gradient(circle at bottom -80% left 0, #F8A1BA 0%, #fff);
-  -webkit-background-clip:text;
-  background-clip: text;
-  -webkit-text-fill-color:transparent;
-  backdrop-filter: blur(8px);
+	display: block;
+	background: radial-gradient(251.85% 67.77% at 4.95% 100%, #f8a1ba 0%, #fff 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }

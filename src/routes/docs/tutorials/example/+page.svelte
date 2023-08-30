@@ -243,41 +243,41 @@
 					</div>
 					<ol class="aw-references-menu-list">
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link is-selected">
+							<a href="." class="aw-references-menu-link is-selected">
 								<span class="aw-caption-400">Prerequisites</span>
 							</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-caption-400">Featured products</span>
 							</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-numeric-badge">1</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-numeric-badge">2</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
 							<ol class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32">
 								<li class="aw-references-menu-item">
-									<a href="" class="aw-references-menu-link">
+									<a href="." class="aw-references-menu-link">
 										<span class="aw-caption-400">Subtitle</span>
 									</a>
 								</li>
 								<li class="aw-references-menu-item">
-									<a href="" class="aw-references-menu-link">
+									<a href="." class="aw-references-menu-link">
 										<span class="aw-caption-400">Subtitle</span>
 									</a>
 								</li>
 							</ol>
 						</li>
 						<li class="aw-references-menu-item">
-							<a href="" class="aw-references-menu-link">
+							<a href="." class="aw-references-menu-link">
 								<span class="aw-numeric-badge">3</span>
 								<span class="aw-caption-400">Title</span>
 							</a>
@@ -333,13 +333,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href="">Supports</a>
+					<a href=".">Supports</a>
 				</li>
 				<li>
-					<a href="">Status</a>
+					<a href=".">Status</a>
 				</li>
 				<li>
-					<a href="">Changelog</a>
+					<a href=".">Changelog</a>
 				</li>
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
