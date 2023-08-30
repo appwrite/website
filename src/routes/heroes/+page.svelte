@@ -16,7 +16,7 @@
                             Appwrite Heroes
                         </h1>
                         <div class="">
-                            <p class="aw-description">
+                            <p class="aw-main-body-500">
                                 If you love building, writing, speaking, and helping other developers build with Appwrite, help us support you by joining the Appwrite Heroes program and becoming a leader in our developer community.
                             </p>
                             <button class="aw-button is-secondary is-full-width-mobile u-margin-block-start-32">
