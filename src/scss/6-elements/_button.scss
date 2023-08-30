@@ -1,12 +1,14 @@
 @use '../abstract' as *;
 
 .#{$p}-button {
+  --p-button-border-radius: var(--border-radius-small);
+  --p-button-border-size: #{pxToRem(1)};
 
   background: linear-gradient(135deg, hsl(var(--aw-color-primary-500)) 0%, hsl(var(--aw-color-primary-500)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
   display:flex; justify-content:center; align-items:center; align-self:start; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
-  border-radius:var(--border-radius-small); border:solid pxToRem(1) transparent;
+  border-radius:var(--p-button-border-radius); border:solid var(--p-button-border-size) transparent;
   text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-neutral-0));
 
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
@@ -18,16 +20,31 @@
     box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
     #{$theme-dark} {
       box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.48);
-    }
+    }   
   }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
 
   &.is-secondary {
     background-image:none;
     background: rgba(253, 54, 110, 0.08);
-    border-color:hsl(var(--aw-color-primary-500));
     box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
     color: hsl(var(--aw-color-primary-500));
+    position: relative;
+    border-width: 0;
+
+    &::before,
+	  &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--p-button-border-radius);
+      border: var(--p-button-border-size) solid transparent;
+      background: var(--p-button-border-gradient) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
     
     .#{$p}-inline-tag {
       background:rgba(255, 64, 120, 0.10);
@@ -47,6 +64,22 @@
       .#{$p}-inline-tag {
         background:rgba(255, 64, 120, 0.24);
         color:hsl(var(--aw-color-neutral-50));
+      }
+
+      &::before {
+        --p-button-border-gradient: linear-gradient(
+          to bottom,
+          rgba(253, 54, 110, 0.48) 0%,
+          rgba(253, 54, 110, 0) 180%
+        );
+      }
+    
+      &::after {
+        --p-button-border-gradient: radial-gradient(
+          42.86% 42.86% at 50.55% -0%,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
       }
     }
     #{$theme-light} & {
