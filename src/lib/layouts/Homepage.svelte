@@ -1,3 +1,7 @@
+<script>
+	import GradientButton from '$lib/UI/GradientButton.svelte';
+</script>
+
 <div id="app" class="u-position-relative">
 	<section class="aw-mobile-header is-transparent theme-dark">
 		<div class="aw-mobile-header-start">
@@ -95,9 +99,7 @@
 								<span class="text">Star on GitHub</span>
 								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 							</button>
-							<button class="aw-button is-secondary">
-								<span class="text">Sign Up</span>
-							</button>
+							<GradientButton>Sign Up</GradientButton>
 							<button class="aw-button">
 								<span class="text">Get Started</span>
 							</button>
