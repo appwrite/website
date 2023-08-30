@@ -1,7 +1,3 @@
-<script>
-	import GradientButton from '$lib/UI/GradientButton.svelte';
-</script>
-
 <div id="app" class="u-position-relative">
 	<section class="aw-mobile-header is-transparent theme-dark">
 		<div class="aw-mobile-header-start">
