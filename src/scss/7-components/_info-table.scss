@@ -20,11 +20,18 @@
 
   &-scroll {
     border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    overflow-x:auto;
     @media #{$break1} {
-      overflow-x:auto;
       min-inline-size: calc(100vw - pxToRem(32));
       border-start-end-radius:0;
       border-end-end-radius:0;
+    }
+  }
+
+  &.is-4-equals-columns {
+    .#{$p}-info-table {
+      &-col,
+      &-col-header { inline-size:25%; min-inline-size:pxToRem(165); }
     }
   }
 }
