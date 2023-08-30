@@ -315,13 +315,23 @@
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="twitter">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="twitter"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
 								Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="discord">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="discord"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
 									href=".">@ultrices lacus</a
@@ -329,19 +339,34 @@
 							</DeveloperCard>
 						</li>
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="twitter">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="twitter"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
 								Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="linkedin">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="linkedin"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
 								Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="twitter">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="twitter"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
 									href=".">@ultrices lacus</a
@@ -349,7 +374,12 @@
 							</DeveloperCard>
 						</li>
 						<li>
-							<DeveloperCard name="Eldad Fux" tag="@eldadfux" icon="linkedin">
+							<DeveloperCard
+								name="Eldad Fux"
+								tag="@eldadfux"
+								icon="linkedin"
+								avatarSrc="/images/avatars/eldad.png"
+							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
 								Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
