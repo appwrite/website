@@ -80,4 +80,5 @@
 	<main class="aw-main-section">
 		<slot />
 	</main>
+
 </div>
