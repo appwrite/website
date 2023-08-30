@@ -27,8 +27,10 @@
 
 .#{$p}-u-padding-block-end-136-not-mobile { @media #{$break2open} { padding-block-end:pxToRem(136)!important;} }
 
+.#{$p}-u-max-width-480              { max-inline-size:pxToRem(480); }
 .#{$p}-u-max-width-600              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-700              { max-inline-size:pxToRem(700); }
+.#{$p}-u-max-width-800              { max-inline-size:pxToRem(800); }
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
 
 .#{$p}-u-inline-width-100-percent-mobile { @media #{$break1}, #{$break2} { inline-size:100%; } }
