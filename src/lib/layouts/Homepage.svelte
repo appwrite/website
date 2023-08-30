@@ -99,7 +99,7 @@
 								<span class="text">Star on GitHub</span>
 								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 							</button>
-							<GradientButton>Sign Up</GradientButton>
+							<button class="aw-button is-secondary">Sign Up</button>
 							<button class="aw-button">
 								<span class="text">Get Started</span>
 							</button>
