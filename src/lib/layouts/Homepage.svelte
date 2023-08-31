@@ -65,7 +65,7 @@
 									<a class="aw-main-header-nav-link" href=".">Blog</a>
 								</li>
 								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href=".">Pricing</a>
+									<a class="aw-main-header-nav-link" href="/pricing">Pricing</a>
 								</li>
 								<li class="aw-main-header-nav-item">
 									<a class="aw-main-header-nav-link" href=".">Roadmap</a>
@@ -108,5 +108,4 @@
 	<main class="aw-main-section">
 		<slot />
 	</main>
-
 </div>

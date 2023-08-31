@@ -3,6 +3,7 @@
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
+	import { Tabs } from '$lib/UI';
 </script>
 
 <div class="u-position-absolute" style="margin-block-start:-36%; pointer-events:none; z-index: 10">
@@ -694,70 +695,114 @@
 						<section
 							class="aw-card is-transparent aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
 						>
-							<header class="aw-strip-plans-header">
-								<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-									<h3 class="aw-title">Our Plans</h3>
-									<ul class="aw-secondary-tabs">
-										<li class="aw-secondary-tabs-item">
-											<button class="aw-secondary-tabs-button is-selected">
-												<span class="aw-main-body-500">Cloud</span>
-											</button>
+							<Tabs let:TabsList let:TabContent tabs={['Cloud', 'Self-Hosted']}>
+								<header class="aw-strip-plans-header">
+									<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
+										<h3 class="aw-title">Our Plans</h3>
+										<TabsList />
+									</div>
+								</header>
+								<TabContent tab="Cloud">
+									<ul class="aw-strip-plans">
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Free</h4>
+													<div class="aw-title aw-u-color-text-primary">$0</div>
+													<div class="info aw-caption-500" />
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For personal, passion projects and non-commercial use.
+												</p>
+												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
+													><span class="text">Get Started</span></button
+												>
+											</div>
 										</li>
-										<li class="aw-secondary-tabs-item">
-											<button class="aw-secondary-tabs-button">
-												<span class="aw-main-body-500">Self-Hosted</span>
-											</button>
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Pro</h4>
+													<div class="aw-title aw-u-color-text-primary">$15</div>
+													<div class="info aw-caption-500">per user/month</div>
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For pro developers and production projects that need the ability to scale.
+												</p>
+												<button
+													class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
+													><span class="text">Learn More</span></button
+												>
+											</div>
+										</li>
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Scale</h4>
+													<div class="aw-title aw-u-color-text-primary">$685</div>
+													<div class="info aw-caption-500">per org/month</div>
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For pro developers and production projects that need the ability to scale.
+												</p>
+												<button
+													class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
+													><span class="text">Learn More</span></button
+												>
+											</div>
 										</li>
 									</ul>
-								</div>
-							</header>
-							<ul class="aw-strip-plans">
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Free</h4>
-											<div class="aw-title aw-u-color-text-primary">$0</div>
-											<div class="info aw-caption-500" />
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For personal, passion projects and non-commercial use.
-										</p>
-										<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-											><span class="text">Get Started</span></button
-										>
-									</div>
-								</li>
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Pro</h4>
-											<div class="aw-title aw-u-color-text-primary">$15</div>
-											<div class="info aw-caption-500">per user/month</div>
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For pro developers and production projects that need the ability to scale.
-										</p>
-										<button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-											><span class="text">Learn More</span></button
-										>
-									</div>
-								</li>
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Scale</h4>
-											<div class="aw-title aw-u-color-text-primary">$685</div>
-											<div class="info aw-caption-500">per org/month</div>
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For pro developers and production projects that need the ability to scale.
-										</p>
-										<button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-											><span class="text">Learn More</span></button
-										>
-									</div>
-								</li>
-							</ul>
+								</TabContent>
+								<TabContent tab="Self-Hosted">
+									<ul class="aw-strip-plans">
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Free</h4>
+													<div class="aw-title aw-u-color-text-primary">$0</div>
+													<div class="info aw-caption-500" />
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For personal, passion projects and non-commercial use.
+												</p>
+												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
+													><span class="text">Get Started</span></button
+												>
+											</div>
+										</li>
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Free</h4>
+													<div class="aw-title aw-u-color-text-primary">$0</div>
+													<div class="info aw-caption-500" />
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For personal, passion projects and non-commercial use.
+												</p>
+												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
+													><span class="text">Get Started</span></button
+												>
+											</div>
+										</li>
+										<li class="aw-strip-plans-item aw-strip-plans-container-query">
+											<div class="aw-strip-plans-item-wrapper">
+												<div class="aw-strip-plans-plan">
+													<h4 class="title aw-description">Free</h4>
+													<div class="aw-title aw-u-color-text-primary">$0</div>
+													<div class="info aw-caption-500" />
+												</div>
+												<p class="aw-strip-plans-info aw-caption-500">
+													For personal, passion projects and non-commercial use.
+												</p>
+												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
+													><span class="text">Get Started</span></button
+												>
+											</div>
+										</li>
+									</ul>
+								</TabContent>
+							</Tabs>
 						</section>
 					</div>
 
