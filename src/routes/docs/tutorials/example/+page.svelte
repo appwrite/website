@@ -37,174 +37,184 @@
 			</header>
 			<div class="aw-article-content">
 				<section class="aw-article-content-section">
-					<header class="aw-article-content-header">
-						<h2 class="aw-main-body-500">Prerequisites</h2>
-					</header>
-					<ul class="aw-list">
-						<li>Lorem ipsum dolor sit amet consectetur.</li>
-						<li>Lorem ipsum dolor sit amet consectetur. Cras laoreet dolor ultrices ligula.</li>
-						<li>
-							Quam pretium blandit egestas nec diam lacus volutpat a lorem. Porta augue proin.
-						</li>
-					</ul>
-					<div class="aw-media">
-						<img
-							class=""
-							src="https://pink.appwrite.io/articles/announcement.png"
-							alt=""
-							loading="lazy"
-						/>
-					</div>
-				</section>
-
-				<section class="aw-article-content-section">
-					<header class="aw-article-content-header">
-						<h2 class="aw-main-body-500">Featured products</h2>
-						<ul class="u-flex u-flex-wrap u-gap-8">
-							<li><div class="aw-tag">product</div></li>
-							<li><div class="aw-tag">product</div></li>
-							<li><div class="aw-tag">product</div></li>
+					<section class="aw-article-content-sub-section">
+						<header class="aw-article-content-header">
+							<h2 class="aw-main-body-500">Prerequisites</h2>
+						</header>
+						<ul class="aw-list">
+							<li>Lorem ipsum dolor sit amet consectetur.</li>
+							<li>Lorem ipsum dolor sit amet consectetur. Cras laoreet dolor ultrices ligula.</li>
+							<li>
+								Quam pretium blandit egestas nec diam lacus volutpat a lorem. Porta augue proin.
+							</li>
 						</ul>
-					</header>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus
-						arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate
-						quis odio velit fames tristique sit magna nec ut.
-					</p>
+						<div class="aw-media">
+							<img
+									class=""
+									src="https://pink.appwrite.io/articles/announcement.png"
+									alt=""
+									loading="lazy"
+							/>
+						</div>
+
+						<header class="aw-article-content-header">
+							<h2 class="aw-main-body-500">Featured products</h2>
+							<ul class="u-flex u-flex-wrap u-gap-8">
+								<li><div class="aw-tag">product</div></li>
+								<li><div class="aw-tag">product</div></li>
+								<li><div class="aw-tag">product</div></li>
+							</ul>
+						</header>
+						<p>
+							Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus
+							arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate
+							quis odio velit fames tristique sit magna nec ut.
+						</p>
+					</section>
+
+				</section>
+
+
+				<section class="aw-article-content-section is-with-line">
+					<section class="aw-article-content-sub-section">
+						<header class="aw-article-content-header">
+							<span class="aw-numeric-badge">1</span>
+							<h2 class="aw-main-body-500">Featured products</h2>
+						</header>
+						<p>
+							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+						</p>
+						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+							<header class="aw-code-snippet-header">
+								<div class="aw-code-snippet-header-start">
+									<div class="u-flex u-gap-16">
+										<div class="aw-tag">
+											<span class="text">Default</span>
+										</div>
+									</div>
+								</div>
+								<div class="aw-code-snippet-header-end">
+									<ul class="buttons-list u-flex u-gap-8">
+										<li class="buttons-list-item u-flex u-cross-child-scenter">
+											<div class="aw-select">
+												<select>
+													<option>Web SDK</option>
+													<option>Android SDK</option>
+												</select>
+												<span class="icon-cheveron-down" aria-hidden="true" />
+											</div>
+										</li>
+										<li class="buttons-list-item aw-u-padding-inline-start-20">
+											<button class="aw-icon-button" aria-label="copy code from code-snippet">
+												<span class="icon-duplicate" aria-hidden="true" />
+											</button>
+										</li>
+									</ul>
+								</div>
+							</header>
+							<div class="aw-code-snippet-content">CONTENT</div>
+						</section>
+					</section>
 				</section>
 
 				<section class="aw-article-content-section is-with-line">
-					<header class="aw-article-content-header">
-						<span class="aw-numeric-badge">1</span>
-						<h2 class="aw-main-body-500">Featured products</h2>
-					</header>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-					</p>
-					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-						<header class="aw-code-snippet-header">
-							<div class="aw-code-snippet-header-start">
-								<div class="u-flex u-gap-16">
-									<div class="aw-tag">
-										<span class="text">Default</span>
+					<section class="aw-article-content-sub-section">
+						<header class="aw-article-content-header">
+							<span class="aw-numeric-badge">2</span>
+							<h2 class="aw-main-body-500">Featured products</h2>
+						</header>
+						<p>
+							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+						</p>
+						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+							<header class="aw-code-snippet-header">
+								<div class="aw-code-snippet-header-start">
+									<div class="u-flex u-gap-16">
+										<div class="aw-tag">
+											<span class="text">Default</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="aw-code-snippet-header-end">
-								<ul class="buttons-list u-flex u-gap-8">
-									<li class="buttons-list-item u-flex u-cross-child-scenter">
-										<div class="aw-select">
-											<select>
-												<option>Web SDK</option>
-												<option>Android SDK</option>
-											</select>
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</li>
-									<li class="buttons-list-item aw-u-padding-inline-start-20">
-										<button class="aw-icon-button" aria-label="copy code from code-snippet">
-											<span class="icon-duplicate" aria-hidden="true" />
-										</button>
-									</li>
-								</ul>
-							</div>
-						</header>
-						<div class="aw-code-snippet-content">CONTENT</div>
-					</section>
-				</section>
+								<div class="aw-code-snippet-header-end">
+									<ul class="buttons-list u-flex u-gap-8">
+										<li class="buttons-list-item u-flex u-cross-child-scenter">
+											<div class="aw-select">
+												<select>
+													<option>Web SDK</option>
+													<option>Android SDK</option>
+												</select>
+												<span class="icon-cheveron-down" aria-hidden="true" />
+											</div>
+										</li>
+										<li class="buttons-list-item aw-u-padding-inline-start-20">
+											<button class="aw-icon-button" aria-label="copy code from code-snippet">
+												<span class="icon-duplicate" aria-hidden="true" />
+											</button>
+										</li>
+									</ul>
+								</div>
+							</header>
+							<div class="aw-code-snippet-content">CONTENT</div>
+						</section>
 
-				<section class="aw-article-content-section is-with-line">
-					<header class="aw-article-content-header">
-						<span class="aw-numeric-badge">2</span>
-						<h2 class="aw-main-body-500">Featured products</h2>
-					</header>
-					<p>
+						<h2 class="aw-main-body-500">Sub title</h2>
+						<p>
 						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
 						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-					</p>
-					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-						<header class="aw-code-snippet-header">
-							<div class="aw-code-snippet-header-start">
-								<div class="u-flex u-gap-16">
-									<div class="aw-tag">
-										<span class="text">Default</span>
+						</p>
+
+						<h2 class="aw-main-body-500">Sub title</h2>
+						<p>
+							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+						</p>
+						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+							<header class="aw-code-snippet-header">
+								<div class="aw-code-snippet-header-start">
+									<div class="u-flex u-gap-16">
+										<div class="aw-tag">
+											<span class="text">Default</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="aw-code-snippet-header-end">
-								<ul class="buttons-list u-flex u-gap-8">
-									<li class="buttons-list-item u-flex u-cross-child-scenter">
-										<div class="aw-select">
-											<select>
-												<option>Web SDK</option>
-												<option>Android SDK</option>
-											</select>
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</li>
-									<li class="buttons-list-item aw-u-padding-inline-start-20">
-										<button class="aw-icon-button" aria-label="copy code from code-snippet">
-											<span class="icon-duplicate" aria-hidden="true" />
-										</button>
-									</li>
-								</ul>
-							</div>
-						</header>
-						<div class="aw-code-snippet-content">CONTENT</div>
-					</section>
-					<h2 class="aw-main-body-500">Featured products</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-					</p>
-					<h2 class="aw-main-body-500">Featured products</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-					</p>
-					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-						<header class="aw-code-snippet-header">
-							<div class="aw-code-snippet-header-start">
-								<div class="u-flex u-gap-16">
-									<div class="aw-tag">
-										<span class="text">Default</span>
-									</div>
+								<div class="aw-code-snippet-header-end">
+									<ul class="buttons-list u-flex u-gap-8">
+										<li class="buttons-list-item u-flex u-cross-child-scenter">
+											<div class="aw-select">
+												<select>
+													<option>Web SDK</option>
+													<option>Android SDK</option>
+												</select>
+												<span class="icon-cheveron-down" aria-hidden="true" />
+											</div>
+										</li>
+										<li class="buttons-list-item aw-u-padding-inline-start-20">
+											<button class="aw-icon-button" aria-label="copy code from code-snippet">
+												<span class="icon-duplicate" aria-hidden="true" />
+											</button>
+										</li>
+									</ul>
 								</div>
-							</div>
-							<div class="aw-code-snippet-header-end">
-								<ul class="buttons-list u-flex u-gap-8">
-									<li class="buttons-list-item u-flex u-cross-child-scenter">
-										<div class="aw-select">
-											<select>
-												<option>Web SDK</option>
-												<option>Android SDK</option>
-											</select>
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</li>
-									<li class="buttons-list-item aw-u-padding-inline-start-20">
-										<button class="aw-icon-button" aria-label="copy code from code-snippet">
-											<span class="icon-duplicate" aria-hidden="true" />
-										</button>
-									</li>
-								</ul>
-							</div>
-						</header>
-						<div class="aw-code-snippet-content">CONTENT</div>
+							</header>
+							<div class="aw-code-snippet-content">CONTENT</div>
+						</section>
 					</section>
+
 				</section>
 
 				<section class="aw-article-content-section">
-					<header class="aw-article-content-header">
-						<span class="aw-numeric-badge">3</span>
-						<h2 class="aw-main-body-500">Featured products</h2>
-					</header>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
-					</p>
-					<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+					<section class="aw-article-content-sub-section">
+						<header class="aw-article-content-header">
+							<span class="aw-numeric-badge">3</span>
+							<h2 class="aw-main-body-500">Featured products</h2>
+						</header>
+						<p>
+							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+						</p>
+						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
 						<header class="aw-code-snippet-header">
 							<div class="aw-code-snippet-header-start">
 								<div class="u-flex u-gap-16">
@@ -233,6 +243,7 @@
 							</div>
 						</header>
 						<div class="aw-code-snippet-content">CONTENT</div>
+					</section>
 					</section>
 				</section>
 
