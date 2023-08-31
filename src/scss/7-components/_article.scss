@@ -32,7 +32,6 @@
     }
     &-sub-section {
       display:flex; flex-direction:column; gap:pxToRem(8);
-      :where(.#{$p}-code-snippet, .#{$p}-media):not(:last-child) { margin-block-end:pxToRem(24); }
       :where(.#{$p}-code-snippet, .#{$p}-media):not(:first-child) { margin-block-start:pxToRem(8); }
     }
     &-grid-6-4 {
