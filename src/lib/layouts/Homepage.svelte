@@ -1,6 +1,68 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	let theme: 'light' | 'dark' | null = 'dark';
+
+	function setupThemeObserver() {
+		const observer = new MutationObserver(() => {
+			theme = getVisibleTheme();
+		});
+		observer.observe(document.body, { childList: true, subtree: true });
+
+		const onScroll = () => {
+			theme = getVisibleTheme();
+		};
+		window.addEventListener('scroll', onScroll);
+
+		return () => {
+			observer.disconnect();
+			window.removeEventListener('scroll', onScroll);
+		};
+	}
+
+	const isVisible = (element: Element) => {
+		const rect = element.getBoundingClientRect();
+		const elemTop = rect.top;
+		const elemBottom = rect.bottom;
+
+		// Only completely visible elements return true:
+		const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
+		// Partially visible elements return true:
+		//isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+		return isVisible;
+	};
+
+	function getVisibleTheme() {
+		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
+			({ classList }) => {
+				if (classList.contains('aw-mobile-header') || classList.contains('aw-main-header')) {
+					return false;
+				}
+				return true;
+			}
+		);
+
+		for (const theme of themes) {
+			if (isVisible(theme)) {
+				console.log('VISIBLE', theme);
+				return theme.classList.contains('theme-light') ? 'light' : 'dark';
+			}
+		}
+
+		return 'dark';
+	}
+
+	onMount(() => {
+		return setupThemeObserver();
+	});
+
+	$: console.log(theme);
+</script>
+
 <div id="app" class="u-position-relative">
-	<section class="aw-mobile-header is-transparent theme-dark">
+	<section class="aw-mobile-header is-transparent theme-{theme}">
 		<div class="aw-mobile-header-start">
+			{theme}
 			<a href="/">
 				<img
 					class="aw-logo aw-u-only-dark"
@@ -10,7 +72,7 @@
 				/>
 				<img
 					class="aw-logo aw-u-only-light"
-					src="/images/logos/appwrite.svg"
+					src="/images/logos/appwrite-light.svg"
 					alt="appwrite"
 					width="130"
 				/>
@@ -34,7 +96,7 @@
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header is-transparent theme-dark">
+	<header class="aw-main-header is-transparent theme-{theme}">
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
