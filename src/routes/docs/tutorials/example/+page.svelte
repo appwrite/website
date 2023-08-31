@@ -56,7 +56,8 @@
 									loading="lazy"
 							/>
 						</div>
-
+					</section>
+					<section class="aw-article-content-sub-section">
 						<header class="aw-article-content-header">
 							<h2 class="aw-main-body-500">Featured products</h2>
 							<ul class="u-flex u-flex-wrap u-gap-8">
@@ -158,13 +159,15 @@
 							</header>
 							<div class="aw-code-snippet-content">CONTENT</div>
 						</section>
-
+					</section>
+					<section class="aw-article-content-sub-section">
 						<h2 class="aw-main-body-500">Sub title</h2>
 						<p>
 						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
 						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
 						</p>
-
+					</section>
+					<section class="aw-article-content-sub-section">
 						<h2 class="aw-main-body-500">Sub title</h2>
 						<p>
 							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
