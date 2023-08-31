@@ -21,7 +21,7 @@
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding-inline:pxToRem(16); margin-inline:pxToRem(-16);
   }
-  &-header { font-size:pxToRem(10); line-height:1.6; margin-block-end:pxToRem(8); }
+  &-header { margin-block-end:pxToRem(8); }
   &-button {
     display:flex; inline-size:100%; align-items:center; gap:pxToRem(8);
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
