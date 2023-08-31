@@ -23,12 +23,12 @@
 					</ul>
 					<div class="u-position-relative u-flex u-cross-center">
 						<button
-							class="
-                            aw-button is-text u-height-100-percent aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12
+								class="
+                            aw-button is-text is-icon aw-u-cross-center aw-u-size-40
                             u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
-							aria-label="previous page"
+								aria-label="previous page"
 						>
-							<span class="icon-cheveron-left aw-u-font-size-24" aria-hidden="true" />
+							<span class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary" aria-hidden="true" />
 						</button>
 						<h1 class="aw-title">Header</h1>
 					</div>

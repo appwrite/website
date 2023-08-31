@@ -15,7 +15,7 @@
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
     &-header {
-      position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(16);
+      position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:pxToRem(16);
       .#{$p}-numeric-badge {
         @media #{$break2open} { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) ));  }
       }

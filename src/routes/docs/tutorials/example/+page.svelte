@@ -24,11 +24,11 @@
 					<div class="u-position-relative u-flex u-cross-center">
 						<button
 							class="
-                            aw-button is-text u-height-100-percent aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12
+                            aw-button is-text is-icon aw-u-cross-center aw-u-size-40
                             u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
 							aria-label="previous page"
 						>
-							<span class="icon-cheveron-left aw-u-font-size-24" aria-hidden="true" />
+							<span class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary" aria-hidden="true" />
 						</button>
 						<h1 class="aw-title">Header</h1>
 					</div>
@@ -234,6 +234,59 @@
 						</header>
 						<div class="aw-code-snippet-content">CONTENT</div>
 					</section>
+				</section>
+
+				<section class="aw-content-footer">
+					<header class="aw-content-footer-header">
+						<div class="aw-content-footer-header-start">
+							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
+							<div class="u-flex u-gap-8">
+								<input
+										class="aw-radio-button is-like"
+										type="radio"
+										aria-label="Helpful"
+										name="happy"
+								/>
+								<input
+										class="aw-radio-button is-dislike"
+										type="radio"
+										aria-label="UnHelpful"
+										name="happy"
+								/>
+							</div>
+						</div>
+						<div class="aw-content-footer-header-end">
+							<ul class="aw-metadata aw-caption-400">
+								<li>Last updated on July 16, 2023</li>
+								<li>
+									<button class="">
+										<!-- TODO: wait for implement icons in website -->
+										<span class="icon-edit" aria-hidden="true" />
+										<span>Update on GitHub</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</header>
+					<div class="aw-card is-transparent" style="--card-padding:1rem">
+						<label for="message">
+							<span class="aw-u-color-text-primary">What did you like?</span>
+							<span class="">(optional)</span>
+						</label>
+						<textarea
+								class="aw-input-text u-margin-block-start-8"
+								id="message"
+								placeholder="Write your message"
+						/>
+						<div class="u-flex u-main-end u-margin-block-start-16">
+							<button class="aw-button is-text">
+								<span class="">Cancel</span>
+							</button>
+							<button class="aw-button">
+								<span class="">Submit</span>
+							</button>
+						</div>
+					</div>
 				</section>
 			</div>
 			<aside class="aw-references-menu aw-u-padding-inline-start-24">

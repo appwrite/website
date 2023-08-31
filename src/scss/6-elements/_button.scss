@@ -139,6 +139,8 @@
     }
   }
 
+  &.is-icon { padding-inline:pxToRem(10); }
+
   &.is-full-width { inline-size:100%; }
   &.is-full-width-mobile { @media #{$break1} { inline-size:100%;} }
 }
