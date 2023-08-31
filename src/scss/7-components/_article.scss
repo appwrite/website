@@ -21,7 +21,7 @@
       }
     }
     &-section {
-      position:relative; display:flex; flex-direction:column; gap:pxToRem(8);
+      position:relative; display:flex; flex-direction:column; gap:pxToRem(24);
       @media #{$break2open} {
         &.is-with-line::before {
           content:""; display:block;
