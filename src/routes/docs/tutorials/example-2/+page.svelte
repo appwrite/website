@@ -23,12 +23,15 @@
 					</ul>
 					<div class="u-position-relative u-flex u-cross-center">
 						<button
-								class="
+							class="
                             aw-button is-text is-only-icon aw-u-cross-center aw-u-size-40
                             u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
-								aria-label="previous page"
+							aria-label="previous page"
 						>
-							<span class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary" aria-hidden="true" />
+							<span
+								class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary"
+								aria-hidden="true"
+							/>
 						</button>
 						<h1 class="aw-title">Header</h1>
 					</div>
@@ -296,7 +299,7 @@
 						</li>
 					</ol>
 					<div class="u-sep-block-start u-padding-block-start-20">
-						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href=".">
 							<span class="icon-arrow-up" aria-hidden="true" />
 							<span class="aw-sub-body-500">Back to top</span>
 						</a>
@@ -371,9 +374,6 @@
         });
 
 
-        $("#refOpen, #refClose").on("click", function(){
-            $(".aw-references-menu").toggleClass("is-open");
-            $(".aw-grid-two-side-navs").removeClass("is-open");
-        });
+      
     });
 </script> -->
