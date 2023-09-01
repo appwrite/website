@@ -1,0 +1,18 @@
+@mixin border-gradient {
+  position: relative;
+  
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--m-border-radius);
+    border: var(--m-border-size) solid transparent;
+    background: var(--m-border-gradient) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
