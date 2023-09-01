@@ -1,0 +1,44 @@
+@use '../abstract' as *;
+
+.#{$p}-table {
+  /* color variable mixins */
+  @mixin light-mode {
+    --p-table-header-bg-color:    var(--aw-color-neutral-0);
+    --p-table-row-bg-odd-color:   var(--aw-color-neutral-25);
+    --p-table-row-bg-even-color:  var(--aw-color-neutral-0);
+    --p-table-border-color:       var(--aw-color-neutral-50);
+  }
+  @mixin dark-mode {
+    --p-table-header-bg-color:    var(--aw-color-neutral-850);
+    --p-table-row-bg-odd-color:   var(--aw-color-neutral-900);
+    --p-table-row-bg-even-color:  var(--aw-color-neutral-850);
+    --p-table-border-color:       var(--aw-color-neutral-800);
+  }
+
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-style: hidden;
+  min-inline-size:100%;
+
+  &-wrapper {
+    @include light-mode();
+    #{$theme-dark} & {
+      @include dark-mode();
+    }
+  }
+  &-scroll {
+    overflow-x:auto;
+    border:solid pxToRem(1) hsl(var(--p-table-border-color)); border-radius:pxToRem(8);
+    @media #{$break1} { border-width:0; }
+  }
+  &-header { background-color:hsl(var(--p-table-header-bg-color)); line-height:1; }
+  &-body {
+    .#{$p}-table-row {
+      > * { border-block-start:solid pxToRem(1) hsl(var(--p-table-border-color)); }
+      &:nth-child(odd)  { background-color:hsl(var(--p-table-row-bg-odd-color)); }
+      &:nth-child(even) { background-color:hsl(var(--p-table-row-bg-even-color)); }
+    }
+  }
+  &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
+  &-col      { padding-block:pxToRem(19); padding-inline:pxToRem(12); }
+}
