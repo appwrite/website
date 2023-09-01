@@ -1,6 +1,11 @@
 <script>
 	import { Docs } from '$lib/layouts';
 	import Sidebar from '../Sidebar.svelte';
+
+	const handleRefClick = () => {
+		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
+		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
+	};
 </script>
 
 <Docs variant="expanded">
@@ -309,13 +314,13 @@
 				</section>
 			</div>
 			<aside class="aw-references-menu">
-				<button class="aw-icon-button" id="refOpen">
+				<button class="aw-icon-button" id="refOpen" on:click={handleRefClick}>
 					<span class="icon-menu-alt-4" aria-hidden="true" />
 				</button>
 				<div class="aw-references-menu-content">
 					<div class="u-flex u-main-space-between u-cross-center u-gap-16">
 						<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-						<button class="aw-icon-button" id="refClose">
+						<button class="aw-icon-button" id="refClose" on:click={handleRefClick}>
 							<span class="icon-x" aria-hidden="true" />
 						</button>
 					</div>
@@ -334,7 +339,7 @@
 						</li>
 					</ul>
 					<div class="u-sep-block-start u-padding-block-start-20">
-						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href=".">
 							<span class="icon-arrow-up" aria-hidden="true" />
 							<span class="aw-sub-body-500">Back to top</span>
 						</a>
