@@ -24,6 +24,7 @@
 .#{$p}-u-margin-inline-32-negative   { margin-inline:pxToRem(-32); }
 
 .#{$p}-u-sep-block                  { border-block:solid pxToRem(1) hsl(var(--aw-color-smooth));}
+.#{$p}-u-sep-block-start            { border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));}
 
 .#{$p}-u-padding-block-end-136-not-mobile { @media #{$break2open} { padding-block-end:pxToRem(136)!important;} }
 

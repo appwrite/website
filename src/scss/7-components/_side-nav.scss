@@ -38,6 +38,16 @@
     --p-side-nav-bg-color: var(--transparent);
   }
 
+  &-mobile-footer-buttons { display:none; }
+  @media #{$break1} {
+    &-wrapper { padding-inline:0; }
+    &-mobile-footer-buttons {
+      display:flex; flex-direction:column; gap:pxToRem(8);
+      padding-block-start:pxToRem(16); border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));
+      padding-inline:pxToRem(16); margin-inline:pxToRem(-16);
+    }
+  }
+
   #{$theme-dark} & {
     --p-side-nav-text-item-color: var(--aw-color-neutral-100);
     --p-side-nav-bg-item-color-selected: var(--aw-color-neutral-0) / 0.08;
