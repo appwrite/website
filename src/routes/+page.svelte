@@ -376,7 +376,7 @@
 							</button>
 						</section>
 						<section
-							class="aw-card is-transparent aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
+							class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
 						>
 							<Tabs let:TabsList let:TabContent tabs={['Cloud', 'Self-Hosted']}>
 								<header class="aw-strip-plans-header">
