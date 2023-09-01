@@ -2,14 +2,14 @@ import svgtofont from 'svgtofont';
 import SVGFixer from 'oslllo-svg-fixer';
 import { resolve } from 'path';
 
-const src = resolve(process.cwd(), 'svg');
+const src = resolve(process.cwd(), 'src/icons/svg');
 
 export const generateIcons = async () => {
 	await svgtofont({
-		classNamePrefix: 'aw-',
+		classNamePrefix: 'aw-icon',
 		src: src,
 		dist: resolve(process.cwd(), 'static/icon-font'),
-		fontName: 'icon',
+		fontName: 'aw-icon',
 		styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
 		css: {
 			fontSize: '16px'
