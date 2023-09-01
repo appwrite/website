@@ -69,6 +69,8 @@
 .#{$p}-u-font-size-24               { font-size:#{pxToRem(24)}!important; }
 .#{$p}-u-font-size-40               { font-size:#{pxToRem(40)}!important; }
 
+.#{$p}-u-border-radius-12           { border-radius:pxToRem(12); }
+
 .#{$p}-u-min-block-size-320         { min-block-size:#{pxToRem(320)}!important; }
 
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
