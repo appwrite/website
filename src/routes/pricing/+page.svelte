@@ -34,7 +34,7 @@
 						<ul class="aw-pricing-cards-list">
 							<li>
 								<article
-									class="aw-card is-transparent u-height-100-percent"
+									class="aw-card is-transparent has-border-gradient u-height-100-percent"
 									style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
 								>
 									<div class="aw-pricing-cards-item">
@@ -66,7 +66,9 @@
 								</article>
 							</li>
 							<li>
-								<article class="aw-card is-transparent is-transparent-pink u-height-100-percent">
+								<article
+									class="aw-card is-transparent is-transparent-pink has-border-gradient u-height-100-percent"
+								>
 									<div class="aw-pricing-cards-item">
 										<header class="aw-pricing-cards-header">
 											<h2 class="aw-label">Pro</h2>
@@ -101,7 +103,7 @@
 							</li>
 							<li>
 								<article
-									class="aw-card is-transparent u-height-100-percent"
+									class="aw-card is-transparent has-border-gradient u-height-100-percent"
 									style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
 								>
 									<div class="aw-pricing-cards-item">
@@ -135,7 +137,7 @@
 					<ul class="aw-grid-1-1-opt-2 u-gap-32 aw-u-margin-block-start-80">
 						<li>
 							<article
-								class="aw-card is-transparent u-min-height-100-percent"
+								class="aw-card is-transparent has-border-gradient u-min-height-100-percent"
 								style="background:rgba(35, 35, 37, 0.90);"
 							>
 								<header class="u-flex u-gap-12">
@@ -152,7 +154,7 @@
 						</li>
 						<li>
 							<article
-								class="aw-card is-transparent u-min-height-100-percent"
+								class="aw-card is-transparent has-border-gradient u-min-height-100-percent"
 								style="background:rgba(35, 35, 37, 0.90);"
 							>
 								<header class="u-flex u-gap-12">
@@ -613,7 +615,7 @@
 							</button>
 						</section>
 						<section
-							class="aw-card is-transparent aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
+							class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
 						>
 							<header class="aw-strip-plans-header">
 								<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
