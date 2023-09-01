@@ -24,7 +24,7 @@
 					<div class="u-position-relative u-flex u-cross-center">
 						<button
 								class="
-                            aw-button is-text is-icon aw-u-cross-center aw-u-size-40
+                            aw-button is-text is-only-icon aw-u-cross-center aw-u-size-40
                             u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
 								aria-label="previous page"
 						>
