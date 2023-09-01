@@ -28,7 +28,6 @@
 		const rect = element.getBoundingClientRect();
 		const windowWidth = window.innerWidth || document.documentElement.clientWidth;
 		const vertInView = rect.top <= 32 && rect.bottom >= 32;
-		console.log({ top: rect.top, bottom: rect.bottom });
 		const horInView = rect.left <= windowWidth && rect.right >= 0;
 
 		return vertInView && horInView;
