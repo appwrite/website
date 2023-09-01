@@ -1,5 +1,69 @@
+<script lang="ts">
+	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
+	import { onMount } from 'svelte';
+
+	let theme: 'light' | 'dark' | null = 'dark';
+
+	function setupThemeObserver() {
+		const handleVisibility = () => {
+			theme = getVisibleTheme();
+		};
+
+		const observer = new MutationObserver(handleVisibility);
+		observer.observe(document.body, { childList: true, subtree: true });
+
+		const callbacks = [
+			addEventListener(window, 'scroll', handleVisibility),
+			addEventListener(window, 'resize', handleVisibility)
+		];
+
+		return () => {
+			observer.disconnect();
+			callbacks.forEach((callback) => callback());
+		};
+	}
+
+	function isInViewport(element: Element): boolean {
+		const rect = element.getBoundingClientRect();
+		const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+		const vertInView = rect.top <= 32 && rect.bottom >= 32;
+		console.log({ top: rect.top, bottom: rect.bottom });
+		const horInView = rect.left <= windowWidth && rect.right >= 0;
+
+		return vertInView && horInView;
+	}
+
+	function getVisibleTheme() {
+		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
+			(element) => {
+				const { classList } = element;
+				if (
+					classList.contains('aw-mobile-header') ||
+					classList.contains('aw-main-header') ||
+					element === document.body
+				) {
+					return false;
+				}
+				return true;
+			}
+		);
+
+		for (const theme of themes) {
+			if (isInViewport(theme)) {
+				return theme.classList.contains('theme-light') ? 'light' : 'dark';
+			}
+		}
+
+		return 'dark';
+	}
+
+	onMount(() => {
+		return setupThemeObserver();
+	});
+</script>
+
 <div id="app" class="u-position-relative">
-	<section class="aw-mobile-header is-transparent theme-dark">
+	<section class="aw-mobile-header is-transparent theme-{theme}">
 		<div class="aw-mobile-header-start">
 			<a href="/">
 				<img
@@ -10,7 +74,7 @@
 				/>
 				<img
 					class="aw-logo aw-u-only-light"
-					src="/images/logos/appwrite.svg"
+					src="/images/logos/appwrite-light.svg"
 					alt="appwrite"
 					width="130"
 				/>
@@ -34,7 +98,7 @@
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header is-transparent theme-dark">
+	<header class="aw-main-header is-transparent theme-{theme}">
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
