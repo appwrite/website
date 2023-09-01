@@ -1,41 +1,46 @@
 <script lang="ts">
+	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
 	let theme: 'light' | 'dark' | null = 'dark';
 
 	function setupThemeObserver() {
-		const observer = new MutationObserver(() => {
-			theme = getVisibleTheme();
-		});
-		observer.observe(document.body, { childList: true, subtree: true });
-
-		const onScroll = () => {
+		const handleVisibility = () => {
 			theme = getVisibleTheme();
 		};
-		window.addEventListener('scroll', onScroll);
+
+		const observer = new MutationObserver(handleVisibility);
+		observer.observe(document.body, { childList: true, subtree: true });
+
+		const callbacks = [
+			addEventListener(window, 'scroll', handleVisibility),
+			addEventListener(window, 'resize', handleVisibility)
+		];
 
 		return () => {
 			observer.disconnect();
-			window.removeEventListener('scroll', onScroll);
+			callbacks.forEach((callback) => callback());
 		};
 	}
 
-	const isVisible = (element: Element) => {
+	function isInViewport(element: Element): boolean {
 		const rect = element.getBoundingClientRect();
-		const elemTop = rect.top;
-		const elemBottom = rect.bottom;
+		const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+		const vertInView = rect.top <= 32 && rect.bottom >= 0;
+		const horInView = rect.left <= windowWidth && rect.right >= 0;
 
-		// Only completely visible elements return true:
-		const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
-		// Partially visible elements return true:
-		//isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-		return isVisible;
-	};
+		return vertInView && horInView;
+	}
 
 	function getVisibleTheme() {
 		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
-			({ classList }) => {
-				if (classList.contains('aw-mobile-header') || classList.contains('aw-main-header')) {
+			(element) => {
+				const { classList } = element;
+				if (
+					classList.contains('aw-mobile-header') ||
+					classList.contains('aw-main-header') ||
+					element === document.body
+				) {
 					return false;
 				}
 				return true;
@@ -43,8 +48,7 @@
 		);
 
 		for (const theme of themes) {
-			if (isVisible(theme)) {
-				console.log('VISIBLE', theme);
+			if (isInViewport(theme)) {
 				return theme.classList.contains('theme-light') ? 'light' : 'dark';
 			}
 		}
@@ -55,14 +59,11 @@
 	onMount(() => {
 		return setupThemeObserver();
 	});
-
-	$: console.log(theme);
 </script>
 
 <div id="app" class="u-position-relative">
 	<section class="aw-mobile-header is-transparent theme-{theme}">
 		<div class="aw-mobile-header-start">
-			{theme}
 			<a href="/">
 				<img
 					class="aw-logo aw-u-only-dark"
