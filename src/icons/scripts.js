@@ -6,11 +6,11 @@ const src = resolve(process.cwd(), 'svg');
 
 export const generateIcons = async () => {
 	await svgtofont({
-		classNamePrefix: 'aw',
+		classNamePrefix: 'aw-',
 		src: src,
-		dist: resolve(process.cwd(), 'dist'),
+		dist: resolve(process.cwd(), 'static/icon-font'),
 		fontName: 'icon',
-		styleTemplates: resolve(process.cwd(), 'templates'),
+		styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
 		css: {
 			fontSize: '16px'
 		},
