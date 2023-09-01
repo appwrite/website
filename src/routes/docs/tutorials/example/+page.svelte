@@ -28,7 +28,10 @@
                             u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
 							aria-label="previous page"
 						>
-							<span class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary" aria-hidden="true" />
+							<span
+								class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary"
+								aria-hidden="true"
+							/>
 						</button>
 						<h1 class="aw-title">Header</h1>
 					</div>
@@ -50,10 +53,10 @@
 						</ul>
 						<div class="aw-media">
 							<img
-									class=""
-									src="https://pink.appwrite.io/articles/announcement.png"
-									alt=""
-									loading="lazy"
+								class=""
+								src="https://pink.appwrite.io/articles/announcement.png"
+								alt=""
+								loading="lazy"
 							/>
 						</div>
 					</section>
@@ -67,14 +70,12 @@
 							</ul>
 						</header>
 						<p>
-							Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris rhoncus
-							arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper. Vulputate
-							quis odio velit fames tristique sit magna nec ut.
+							Lorem ipsum dolor sit amet consectetur. Ullamcorper tincidunt ut egestas mauris
+							rhoncus arcu. Habitant est leo maecenas et. Tempus elementum eget rutrum eget semper.
+							Vulputate quis odio velit fames tristique sit magna nec ut.
 						</p>
 					</section>
-
 				</section>
-
 
 				<section class="aw-article-content-section is-with-line">
 					<section class="aw-article-content-sub-section">
@@ -163,8 +164,8 @@
 					<section class="aw-article-content-sub-section">
 						<h2 class="aw-main-body-500">Sub title</h2>
 						<p>
-						Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
-						ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
+							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
 						</p>
 					</section>
 					<section class="aw-article-content-sub-section">
@@ -204,7 +205,6 @@
 							<div class="aw-code-snippet-content">CONTENT</div>
 						</section>
 					</section>
-
 				</section>
 
 				<section class="aw-article-content-section">
@@ -218,35 +218,35 @@
 							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
 						</p>
 						<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
-						<header class="aw-code-snippet-header">
-							<div class="aw-code-snippet-header-start">
-								<div class="u-flex u-gap-16">
-									<div class="aw-tag">
-										<span class="text">Default</span>
+							<header class="aw-code-snippet-header">
+								<div class="aw-code-snippet-header-start">
+									<div class="u-flex u-gap-16">
+										<div class="aw-tag">
+											<span class="text">Default</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="aw-code-snippet-header-end">
-								<ul class="buttons-list u-flex u-gap-8">
-									<li class="buttons-list-item u-flex u-cross-child-scenter">
-										<div class="aw-select">
-											<select>
-												<option>Web SDK</option>
-												<option>Android SDK</option>
-											</select>
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</li>
-									<li class="buttons-list-item aw-u-padding-inline-start-20">
-										<button class="aw-icon-button" aria-label="copy code from code-snippet">
-											<span class="icon-duplicate" aria-hidden="true" />
-										</button>
-									</li>
-								</ul>
-							</div>
-						</header>
-						<div class="aw-code-snippet-content">CONTENT</div>
-					</section>
+								<div class="aw-code-snippet-header-end">
+									<ul class="buttons-list u-flex u-gap-8">
+										<li class="buttons-list-item u-flex u-cross-child-scenter">
+											<div class="aw-select">
+												<select>
+													<option>Web SDK</option>
+													<option>Android SDK</option>
+												</select>
+												<span class="icon-cheveron-down" aria-hidden="true" />
+											</div>
+										</li>
+										<li class="buttons-list-item aw-u-padding-inline-start-20">
+											<button class="aw-icon-button" aria-label="copy code from code-snippet">
+												<span class="icon-duplicate" aria-hidden="true" />
+											</button>
+										</li>
+									</ul>
+								</div>
+							</header>
+							<div class="aw-code-snippet-content">CONTENT</div>
+						</section>
 					</section>
 				</section>
 
@@ -256,16 +256,16 @@
 							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 							<div class="u-flex u-gap-8">
 								<input
-										class="aw-radio-button is-like"
-										type="radio"
-										aria-label="Helpful"
-										name="happy"
+									class="aw-radio-button is-like"
+									type="radio"
+									aria-label="Helpful"
+									name="happy"
 								/>
 								<input
-										class="aw-radio-button is-dislike"
-										type="radio"
-										aria-label="UnHelpful"
-										name="happy"
+									class="aw-radio-button is-dislike"
+									type="radio"
+									aria-label="UnHelpful"
+									name="happy"
 								/>
 							</div>
 						</div>
@@ -288,9 +288,9 @@
 							<span class="">(optional)</span>
 						</label>
 						<textarea
-								class="aw-input-text u-margin-block-start-8"
-								id="message"
-								placeholder="Write your message"
+							class="aw-input-text u-margin-block-start-8"
+							id="message"
+							placeholder="Write your message"
 						/>
 						<div class="u-flex u-main-end u-margin-block-start-16">
 							<button class="aw-button is-text">
@@ -351,7 +351,7 @@
 						</li>
 					</ol>
 					<div class="u-sep-block-start u-padding-block-start-20">
-						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href=".">
 							<span class="icon-arrow-up" aria-hidden="true" />
 							<span class="aw-sub-body-500">Back to top</span>
 						</a>
@@ -426,9 +426,6 @@
         });
 
 
-        $("#refOpen, #refClose").on("click", function(){
-            $(".aw-references-menu").toggleClass("is-open");
-            $(".aw-grid-two-side-navs").removeClass("is-open");
-        });
+       
     });
 </script> -->

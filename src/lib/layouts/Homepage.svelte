@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
@@ -27,7 +28,6 @@
 		const rect = element.getBoundingClientRect();
 		const windowWidth = window.innerWidth || document.documentElement.clientWidth;
 		const vertInView = rect.top <= 32 && rect.bottom >= 32;
-		console.log({ top: rect.top, bottom: rect.bottom });
 		const horInView = rect.left <= windowWidth && rect.right >= 0;
 
 		return vertInView && horInView;
@@ -63,7 +63,7 @@
 </script>
 
 <div id="app" class="u-position-relative">
-	<section class="aw-mobile-header is-transparent theme-{theme}">
+	<section class="aw-mobile-header theme-{theme}" class:is-transparent={browser}>
 		<div class="aw-mobile-header-start">
 			<a href="/">
 				<img
@@ -98,7 +98,7 @@
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header is-transparent theme-{theme}">
+	<header class="aw-main-header theme-{theme}" class:is-transparent={browser}>
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">

@@ -9,14 +9,14 @@
   display:flex; justify-content:center; align-items:center; align-self:start; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
   border-radius:var(--p-button-border-radius); border:solid var(--p-button-border-size) transparent;
-  text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-neutral-0));
+  text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-neutral-0)); font-weight: 500;
 
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
 
   &:where(:hover,:active):where(:not(#{$disabled})) {
     box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.32);
   }
-  &:where(:focus) {
+  &:where(:focus-visible) {
     box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
     #{$theme-dark} {
       box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.48);
@@ -26,11 +26,10 @@
 
   &.is-secondary {
     background-image:none;
-    background: rgba(253, 54, 110, 0.08);
-    box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-    color: hsl(var(--aw-color-primary-500));
     position: relative;
     border-width: 0;
+    
+
 
     &::before,
 	  &::after {
@@ -50,15 +49,10 @@
       background:rgba(255, 64, 120, 0.10);
       color:hsl(var(--aw-color-primary-500));
     }
-    &:where(:focus) {
-      box-shadow:none;
-      outline: 4px solid rgba(253, 54, 110, 0.24);
-      #{$theme-dark} {
-        outline: 4px solid rgba(253, 54, 110, 0.16);
-      }
-    }
 
+    
     #{$theme-dark} & {
+      background: rgba(253, 54, 110, 0.04);
       color: hsl(var(--aw-color-neutral-100));
       box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
       .#{$p}-inline-tag {
@@ -81,12 +75,80 @@
           rgba(255, 255, 255, 0) 100%
         );
       }
+
+      &:where(:hover) {
+        background: rgba(253, 54, 110, 0.10);
+        box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+
+        
+        &::before {
+          --p-button-border-gradient: linear-gradient(
+            180deg, rgba(253, 54, 110, 0.64) 0%,
+            rgba(253, 54, 110, 0.00) 163.1%
+            );
+          }
+
+          &::after {
+            --p-button-border-gradient: radial-gradient(
+              42.86% 42.86% at 50.55% 0%,
+              rgba(255, 255, 255, 0.20) 0%,
+              rgba(255, 255, 255, 0.00) 100%
+            );
+          }
+      }
+
+      &:where(:active) {
+        background: rgba(253, 54, 110, 0.16);
+        box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+
+        &::before {
+          --p-button-border-gradient: 
+          linear-gradient(180deg, rgba(253, 54, 110, 0.64) 0%, rgba(253, 54, 110, 0.00) 163.1%);
+        }
+
+        &::after {
+          --p-button-border-gradient: 
+          radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.00) 100%);
+        }
+
+      }
+
+      &:where(:focus-visible) {
+        background: rgba(253, 54, 110, 0.04);
+        box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.16), 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+
+      }
     }
+
     #{$theme-light} & {
-      color: hsl(var(--aw-color-primary-500));
+      background: rgba(253, 54, 110, 0.08);
+      box-shadow: none;
+      color: hsl(var(--aw-color-accent-click));
       .#{$p}-inline-tag {
         background:rgba(255, 64, 120, 0.10);
         color:hsl(var(--aw-color-primary-500));
+      }
+
+      &::before {
+        --p-button-border-gradient: 
+        linear-gradient(180deg, rgba(253, 54, 110, 0.19) 0%, rgba(253, 54, 110, 0.48) 100%);
+      }
+    
+      &::after {
+        --p-button-border-gradient: 
+        radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
+      }
+
+      &:where(:hover) {
+        background: rgba(253, 54, 110, 0.10);
+      }
+
+      &:where(:active) {
+        background: rgba(253, 54, 110, 0.12);
+      }
+
+      &:where(:focus-visible) {
+        box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.24);
       }
     }
   }
