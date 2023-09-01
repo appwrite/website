@@ -2,11 +2,12 @@
 
 .#{$p}-card {
   --p-card-padding: var(--card-padding, #{pxToRem(24)});
+  --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
   &.is-white {
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     backdrop-filter: blur(12px);
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--p-card-border-radius);
   }
   &.is-transparent {
     --p-card-padding: var(--card-padding, #{pxToRem(32)});
