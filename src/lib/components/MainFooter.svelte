@@ -45,6 +45,7 @@
 						href={social.link}
 						class="aw-icon-button"
 						aria-label="Appwrite on {getSocialLabel(social)}"
+						target="_blank"
 					>
 						<span class={social.icon} aria-hidden="true" />
 					</a>
@@ -65,8 +66,9 @@
 							href={social.link}
 							class="aw-icon-button"
 							aria-label="Appwrite on {getSocialLabel(social)}"
+							target="_blank"
 						>
-							<i class={social.icon} aria-hidden="true" />
+							<span class={social.icon} aria-hidden="true" />
 						</a>
 					</li>
 				{/each}
