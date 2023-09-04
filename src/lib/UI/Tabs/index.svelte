@@ -2,7 +2,7 @@
 	const CTX_KEY = 'tabs';
 
 	type Context = Tabs & {
-		tabs: string[];
+		tabs: readonly string[];
 	};
 
 	const setTabsContext = (ctx: Context) => {
@@ -21,16 +21,23 @@
 	import Content from './Content.svelte';
 
 	export let tabs: Context['tabs'];
+	export let tab = tabs[0];
 
 	const ctx = createTabs({
-		defaultValue: tabs[0]
+		defaultValue: tab,
+		onValueChange({ next }) {
+			tab = next;
+			return next;
+		}
 	});
 
 	setTabsContext({ ...ctx, tabs });
 
 	const {
-		elements: { root }
+		elements: { root },
+		states: { value }
 	} = ctx;
+	$: value.set(tab);
 </script>
 
 <div use:melt={$root}>
