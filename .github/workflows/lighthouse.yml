@@ -9,7 +9,8 @@ jobs:
         with:
           node-version: 16
       - uses: pnpm/action-setup@v2
-        name: Install pnpm
+        with:
+          version: 8
       - run: npm install && npm install -g @lhci/cli
       - run: npm run build
       - run: lhci autorun
