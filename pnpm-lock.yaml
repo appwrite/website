@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^3.4.3
     version: 3.5.0(postcss@8.4.27)(sass@1.65.1)(svelte@4.2.0)
   svelte-markdoc-preprocess:
-    specifier: ^0.3.0
-    version: 0.3.0
+    specifier: ^0.3.1
+    version: 0.3.1
   svelte-sequential-preprocessor:
     specifier: ^2.0.1
     version: 2.0.1
@@ -4508,8 +4508,8 @@ packages:
       svelte: 4.2.0
     dev: true
 
-  /svelte-markdoc-preprocess@0.3.0:
-    resolution: {integrity: sha512-o1VisVNqRdeCTjYbhxtpsxGquujKT3Ksnk4ttdPxi2dWKFBO1IvtxGKiDudVMMI+s3mcsbu/uA/0bYfeqsf+DQ==}
+  /svelte-markdoc-preprocess@0.3.1:
+    resolution: {integrity: sha512-xWUbZf2cfrcaocyPB68UA/3clcNf1Tfv+V4JTGlQ0hKLtTE8HN2uL6BDOY6R6Bvcz1KTLE8QK9G9T0LJGS32Dw==}
     dependencies:
       '@markdoc/markdoc': 0.3.2
       html-escaper: 3.0.3
