@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { Tabs } from '$lib/UI';
+	import { MainFooter, FooterNav, PreFooter } from '$lib/components';
+
 	import { Homepage } from '$lib/layouts';
 	import Faq from './faq.svelte';
 </script>
@@ -588,11 +591,11 @@
 
 		<div class="aw-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden">
 			<img
-				src="/images/bgs/footer-2.svg"
+				src="/images/bgs/pre-footer.svg"
 				alt=""
-				class="u-position-absolute aw-u-gradient-mobile-align-2"
-				style="inset:0; inset-block-start:0%; inline-size:100%;"
+				class="pre-footer-bg u-gradient-mobile-align-2"
 			/>
+
 			<div class="aw-big-padding-section-level-2 u-position-relative">
 				<div class="aw-container">
 					<section class="aw-grid-4-6">
@@ -604,209 +607,25 @@
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
-				<div class="aw-container">
-					<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80">
-						<section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-							<h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">
-								Start building with Appwrite today
-							</h2>
-							<button class="aw-button is-transparent aw-u-cross-child-center">
-								<span class="text">Get Started</span>
-							</button>
-						</section>
-						<section
-							class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
-						>
-							<header class="aw-strip-plans-header">
-								<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-									<h3 class="aw-title aw-u-color-text-primary">Our Plans</h3>
-									<ul class="aw-secondary-tabs">
-										<li class="aw-secondary-tabs-item">
-											<button class="aw-secondary-tabs-button is-selected">
-												<span class="aw-main-body-500">Cloud</span>
-											</button>
-										</li>
-										<li class="aw-secondary-tabs-item">
-											<button class="aw-secondary-tabs-button">
-												<span class="aw-main-body-500">Self-Hosted</span>
-											</button>
-										</li>
-									</ul>
-								</div>
-							</header>
-							<ul class="aw-strip-plans">
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Free</h4>
-											<div class="aw-title aw-u-color-text-primary">$0</div>
-											<div class="info aw-caption-500" />
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For personal, passion projects and non-commercial use.
-										</p>
-										<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-											><span class="text">Get Started</span></button
-										>
-									</div>
-								</li>
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Pro</h4>
-											<div class="aw-title aw-u-color-text-primary">$15</div>
-											<div class="info aw-caption-500">per user/month</div>
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For pro developers and production projects that need the ability to scale.
-										</p>
-										<button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-											><span class="text">Learn More</span></button
-										>
-									</div>
-								</li>
-								<li class="aw-strip-plans-item aw-strip-plans-container-query">
-									<div class="aw-strip-plans-item-wrapper">
-										<div class="aw-strip-plans-plan">
-											<h4 class="title aw-description">Scale</h4>
-											<div class="aw-title aw-u-color-text-primary">$685</div>
-											<div class="info aw-caption-500">per org/month</div>
-										</div>
-										<p class="aw-strip-plans-info aw-caption-500">
-											For pro developers and production projects that need the ability to scale.
-										</p>
-										<button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-											><span class="text">Learn More</span></button
-										>
-									</div>
-								</li>
-							</ul>
-						</section>
-					</div>
-					<nav class="aw-footer-nav u-margin-block-start-100">
-						<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
-						<ul class="aw-footer-nav-main-list">
-							<li class="aw-footer-nav-main-item">
-								<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Product</a></h5>
-								<button class="aw-footer-nav-button aw-is-only-mobile">
-									<span class="aw-caption-500">Product</span>
-									<svg
-										class="aw-footer-nav-button-arrow"
-										xmlns="http://www.w3.org/2000/svg"
-										width="20"
-										height="20"
-										viewBox="0 0 20 20"
-										fill="none"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-											fill="#ADADB0"
-										/>
-									</svg>
-								</button>
-								<ul class="aw-footer-nav-secondary-list">
-									<li class="aw-footer-nav-secondary-item"><a href=".">Docs</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Auth</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Databases</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Functions</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Storage</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Realtime</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Localization</a></li>
-								</ul>
-							</li>
-							<li class="aw-footer-nav-main-item">
-								<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">About</a></h5>
-								<button class="aw-footer-nav-button is-open aw-is-only-mobile">
-									<span class="aw-caption-500">About</span>
-									<svg
-										class="aw-footer-nav-button-arrow"
-										xmlns="http://www.w3.org/2000/svg"
-										width="20"
-										height="20"
-										viewBox="0 0 20 20"
-										fill="none"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-											fill="#ADADB0"
-										/>
-									</svg>
-								</button>
-								<ul class="aw-footer-nav-secondary-list">
-									<li class="aw-footer-nav-secondary-item"><a href=".">Company</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Community</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Blog</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Careers</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Contact Us</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Roadmap</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Changelog</a></li>
-								</ul>
-							</li>
-							<li class="aw-footer-nav-main-item">
-								<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Legal</a></h5>
-								<button class="aw-footer-nav-button aw-is-only-mobile">
-									<span class="aw-caption-500">Legal</span>
-									<svg
-										class="aw-footer-nav-button-arrow"
-										xmlns="http://www.w3.org/2000/svg"
-										width="20"
-										height="20"
-										viewBox="0 0 20 20"
-										fill="none"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-											fill="#ADADB0"
-										/>
-									</svg>
-								</button>
-								<ul class="aw-footer-nav-secondary-list">
-									<li class="aw-footer-nav-secondary-item"><a href=".">Status</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Terms</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Privacy</a></li>
-									<li class="aw-footer-nav-secondary-item"><a href=".">Security</a></li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-					<footer class="aw-main-footer u-margin-block-start-48">
-						<ul class="u-flex u-gap-8">
-							<li>
-								<button class="aw-icon-button" aria-label="Appwrite on Discord">
-									<span class="icon-discord" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-icon-button" aria-label="Appwrite GitHub">
-									<span class="icon-github" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-									<span class="icon-twitter" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
-									<span class="icon-linkedin" aria-hidden="true" />
-								</button>
-							</li>
-							<li>
-								<button class="aw-icon-button" aria-label="Appwrite YouTube">
-									<span class="icon-youtube" aria-hidden="true" />
-								</button>
-							</li>
-						</ul>
-						<div>Copyright © 2023 Appwrite</div>
-					</footer>
+				<div class="aw-container u-position-relative">
+					<PreFooter />
+					<FooterNav />
+					<MainFooter />
 				</div>
 			</div>
 		</div>
 	</div>
 </Homepage>
+
+<style lang="scss">
+	.pre-footer-bg {
+		position: absolute;
+		top: 55%;
+		left: calc(50% - 300px);
+		transform: translate(-50%, -50%);
+		width: 3000px;
+		height: auto;
+		max-inline-size: unset;
+		max-block-size: unset;
+	}
+</style>
