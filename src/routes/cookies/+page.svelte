@@ -40,13 +40,15 @@
 			<header class="aw-grid-120-1fr-auto-header">
 				<h1 class="aw-title aw-u-color-text-primary">Cookies Policy</h1>
 				<button
-					class="u-flex u-width-full-line u-main-space-between u-cross-center
-                        aw-u-padding-20 aw-u-color-text-primary aw-is-only-mobile
+					class="u-flex u-width-full-line aw-u-padding-block-20
+                        aw-u-color-text-primary aw-is-only-mobile
                        aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block"
 					style="inline-size:100vw"
 				>
-					<span class="aw-description">Table of contents</span>
-					<span class="icon-menu-alt-4" aria-hidden="true" />
+					<span class="aw-container u-flex u-width-full-line u-main-space-between u-cross-center">
+						<span class="aw-description">Table of contents</span>
+						<span class="icon-menu-alt-4" aria-hidden="true" />
+					</span>
 				</button>
 			</header>
 			<aside class="aw-grid-120-1fr-auto-side aw-is-mobile-closed">
@@ -911,12 +913,7 @@
 							<h3 class="sub-body-500 aw-u-color-text-primary">
 								Need more information?
 							</h3>
-							<p>If you would like to find out more about cookies and their use on the Internet, you may find the following link useful:</p>
-							<ul>
-								<li>
-									<a href="https://allaboutcookies.org/" target="_blank">All About Cookies</a>
-								</li>
-							</ul>
+							<p>If you would like to find out more about cookies and their use on the Internet, you may find the following link useful: <a href="https://allaboutcookies.org/" target="_blank">All about cookies</a>.</p>
 						</div>
 					</section>
 
