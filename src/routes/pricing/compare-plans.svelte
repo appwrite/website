@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Tabs } from '$lib/UI';
+	import { createAccordion, melt } from '@melt-ui/svelte';
+	import { slide } from 'svelte/transition';
 
 	type Table = {
 		title: string;
@@ -279,12 +281,21 @@
 	] satisfies Table[];
 
 	let tab = 'free';
+
+	const {
+		elements: { root, trigger, content, heading, item },
+		states: { value }
+	} = createAccordion({
+		defaultValue: ['Resources'],
+		multiple: true,
+		forceVisible: true
+	});
 </script>
 
 <div class="aw-big-padding-section-level-1 aw-white-section theme-light">
 	<div class="aw-big-padding-section-level-2">
 		<div class="u-position-relative">
-			<article>
+			<article use:melt={$root}>
 				<div class="aw-container">
 					<header class="aw-u-text-align-center">
 						<h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
@@ -312,8 +323,8 @@
 					</div>
 
 					<div
-						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-padding-block-start-80
-                     aw-u-filter-blur-8 u-position-sticky u-z-index-5"
+						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative
+						aw-u-padding-block-start-80 aw-u-filter-blur-8 u-position-sticky u-z-index-5"
 						style="--inset-block-start:1rem"
 					>
 						<div class="aw-label aw-u-color-text-primary aw-u-cross-child-center" style="opacity:0">
@@ -347,14 +358,26 @@
 					<div class="aw-u-stretch-sep-full-screen" />
 
 					{#each tables as table}
-						<table class="aw-compare-table is-open-in-mobile aw-sub-body-400">
-							<caption class="aw-compare-table-caption aw-description aw-u-color-text-primary">
-								<button class="aw-compare-ta ble-caption-button">
+						{@const isOpen = $value?.includes(table.title)}
+						<table
+							class="aw-compare-table aw-sub-body-400"
+							class:is-open-in-mobile={isOpen}
+							use:melt={$item(table.title)}
+						>
+							<caption
+								class="aw-compare-table-caption aw-description aw-u-color-text-primary"
+								use:melt={$heading({ level: 3 })}
+							>
+								<button class="aw-compare-table-caption-button" use:melt={$trigger(table.title)}>
 									<span>{table.title}</span>
-									<span class="icon-cheveron-down aw-is-only-mobile" aria-hidden="true" />
+									<span
+										class="icon-cheveron-down aw-is-only-mobile aw-u-inline-block"
+										aria-hidden="true"
+									/>
 								</button>
 							</caption>
-							<tbody class="aw-compare-table-body">
+
+							<tbody class="aw-compare-table-body" use:melt={$content(table.title)}>
 								{#each table.rows as row}
 									<tr>
 										<th class="aw-sub-body-500">{row.title}</th>
