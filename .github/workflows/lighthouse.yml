@@ -11,6 +11,6 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - run: npm install && npm install -g @lhci/cli
-      - run: npm run build
+      - run: pnpm install && pnpm install -g @lhci/cli
+      - run: pnpm run build
       - run: lhci autorun
