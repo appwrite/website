@@ -11,4 +11,6 @@
 	import '$scss/index.scss';
 </script>
 
-<slot />
+<div class="u-overflow-hidden u-position-relative">
+	<slot />
+</div>

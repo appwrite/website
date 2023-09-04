@@ -53,8 +53,8 @@
 		elements: { root, heading, content, item, trigger },
 		helpers: { isSelected }
 	} = createAccordion({
-		defaultValue: ['0'],
-		multiple: true,
+		defaultValue: '0',
+		multiple: false,
 		forceVisible: true
 	});
 </script>
