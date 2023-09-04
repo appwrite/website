@@ -1,0 +1,1 @@
+<p class="aw-paragraph-md"><slot /></p>
