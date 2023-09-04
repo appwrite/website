@@ -5,7 +5,7 @@ node_modules
 /package
 .env
 .env.*
-.lighohuseci
+.lighthouseci
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
