@@ -532,7 +532,7 @@
 				</div>
 				<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 					<li>
-						<a href=".">Supports</a>
+						<a href=".">Support</a>
 					</li>
 					<li>
 						<a href=".">Status</a>

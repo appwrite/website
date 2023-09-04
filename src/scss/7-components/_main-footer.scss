@@ -3,7 +3,7 @@
 .#{$p}-main-footer {
   display:flex; justify-content:space-between; gap:pxToRem(16);
   padding-block:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--aw-color-border));
-  color:hsl(var(--aw-color-neutral-500));
+  color:hsl(var(--aw-color-secondary));
 
   &-links {
     display:flex; gap:pxToRem(16);
@@ -31,7 +31,7 @@
 
   @media #{$break3open} {
     &-grid-1 {
-      display:flex; align-items:center; gap:pxToRem(24); inline-size:100%;
+      display:flex; align-items:center; gap:pxToRem(32); inline-size:100%;
       &-column-1 { margin-inline-end:auto; }
     }
   }
