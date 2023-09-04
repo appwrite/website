@@ -1,0 +1,410 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "aria-required-children",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Elements with an ARIA `[role]` that require children to contain a specific `[role]` are missing some or all of those required children.",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/aria-required-children"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "aria-required-parent",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "`[role]`s are not contained by their required parent element",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/aria-required-parent"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "bf-cache",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Page prevented back/forward cache restoration",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/bf-cache/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "color-contrast",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Background and foreground colors do not have a sufficient contrast ratio.",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/color-contrast"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "crawlable-anchors",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Links are not crawlable",
+    "auditDocumentationLink": "https://support.google.com/webmasters/answer/9112205"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "csp-xss",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Ensure CSP is effective against XSS attacks",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "font-display",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Ensure text remains visible during webfont load",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/font-display/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "heading-order",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Heading elements are not in a sequentially-descending order",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/heading-order"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "installable-manifest",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Web app manifest or service worker do not meet the installability requirements",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/installable-manifest/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.89,
+    "values": [
+      0.87,
+      0.89,
+      0.86
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "mainthread-work-breakdown",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Minimize main-thread work",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "maskable-icon",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Manifest doesn't have a maskable icon",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/maskable-icon-audit/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "max-potential-fid",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Max Potential First Input Delay",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-max-potential-fid/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "meta-description",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Document does not have a meta description",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/seo/meta-description/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 3,
+    "values": [
+      3,
+      3,
+      3
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "modern-image-formats",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Serve images in next-gen formats",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/uses-webp-images/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 1,
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "render-blocking-resources",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Eliminate render-blocking resources",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "service-worker",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Does not register a service worker that controls page and `start_url`",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/service-worker/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.85,
+    "values": [
+      0.02,
+      0.85,
+      0.84
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "speed-index",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Speed Index",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/speed-index/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "splash-screen",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Is not configured for a custom splash screen",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/splash-screen/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "themed-omnibox",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Does not set a theme color for the address bar.",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/themed-omnibox/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "unsized-images",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Image elements do not have explicit `width` and `height`",
+    "auditDocumentationLink": "https://web.dev/optimize-cls/#images-without-dimensions"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 1,
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unused-css-rules",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Reduce unused CSS",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 31,
+    "values": [
+      31,
+      31,
+      31
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "uses-long-cache-ttl",
+    "level": "warn",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Serve static assets with an efficient cache policy",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 3,
+    "values": [
+      3,
+      3,
+      3
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "uses-responsive-images",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "Properly size images",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/uses-responsive-images/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "listitem",
+    "level": "error",
+    "url": "http://localhost:4173/",
+    "auditTitle": "List items (`<li>`) are not contained within `<ul>`, `<ol>` or `<menu>` parent elements.",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/listitem"
+  }
+]
