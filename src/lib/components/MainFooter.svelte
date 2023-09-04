@@ -9,23 +9,23 @@
 
 	const socials: Array<Social> = [
 		{
-			icon: 'discord',
+			icon: 'aw-icon-discord',
 			link: 'https://appwrite.io/discord'
 		},
 		{
-			icon: 'github',
+			icon: 'aw-icon-github',
 			link: 'https://github.com/appwrite'
 		},
 		{
-			icon: 'twitter',
+			icon: 'aw-icon-twitter',
 			link: 'https://twitter.com/appwrite'
 		},
 		{
-			icon: 'aw-linkedin',
+			icon: 'aw-icon-linkedin',
 			link: '.'
 		},
 		{
-			icon: 'youtube',
+			icon: 'aw-icon-youtube',
 			label: 'YouTube',
 			link: '.'
 		}
@@ -46,7 +46,7 @@
 						class="aw-icon-button"
 						aria-label="Appwrite on {getSocialLabel(social)}"
 					>
-						<span class="icon-{social.icon}" aria-hidden="true" />
+						<span class={social.icon} aria-hidden="true" />
 					</a>
 				</li>
 			{/each}
@@ -66,7 +66,7 @@
 							class="aw-icon-button"
 							aria-label="Appwrite on {getSocialLabel(social)}"
 						>
-							<span class="icon-{social.icon}" aria-hidden="true" />
+							<i class={social.icon} aria-hidden="true" />
 						</a>
 					</li>
 				{/each}
