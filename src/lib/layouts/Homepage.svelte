@@ -169,7 +169,7 @@
 			</div>
 		</div>
 	</header>
-	<main class="aw-main-section">
+	<main class="aw-main-section u-position-relative u-overflow-hidden">
 		<slot />
 	</main>
 </div>

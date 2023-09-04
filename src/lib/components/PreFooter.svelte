@@ -2,7 +2,9 @@
 	import { Tabs } from '$lib/UI';
 </script>
 
-<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80">
+<img src="/images/bgs/pre-footer.svg" alt="" class="pre-footer-bg" />
+
+<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
 	<section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
 		<h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">
 			Start building with Appwrite today
@@ -122,3 +124,16 @@
 		</Tabs>
 	</section>
 </div>
+
+<style lang="scss">
+	.pre-footer-bg {
+		position: absolute;
+		top: clamp(300px, 50vw, 50%);
+		left: clamp(300px, 50vw, 50%);
+		transform: translate(-50%, -70%);
+		width: clamp(1200px, 200vw, 3000px);
+		height: auto;
+		max-inline-size: unset;
+		max-block-size: unset;
+	}
+</style>
