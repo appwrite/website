@@ -324,47 +324,48 @@
 		</div>
 
 		<div class="aw-big-padding-section-level-1">
-			<div class="aw-big-padding-section-level-2">
-				<div class="u-position-relative">
-					<img
-						class="u-position-absolute u-z-index-0"
-						src="/images/bgs/diagonal-lines.png"
-						alt=""
-					/>
-					<div class="aw-container u-position-relative">
-						<div class="grid-1-1">
-							<section class="aw-hero is-align-start">
-								<span class="aw-badges aw-eyebrow">Scale_</span>
-								<h2 class="aw-display u-max-width-600">We scale for you</h2>
-							</section>
-							<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">12</div>
-									<div class="text">Regions served</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">900TB</div>
-									<div class="text">of data served</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">1 million</div>
-									<div class="text">end users</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">999</div>
-									<div class="text">total compute time</div>
-								</li>
-							</ul>
-						</div>
+			<div
+				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+			>
+				<img
+					class="u-position-absolute u-z-index-0"
+					src="/images/bgs/diagonal-lines.png"
+					alt=""
+					style="width: 1450px; height:auto; left: calc(50% - 40rem);
+					transform: translate(-50%);
+					max-inline-size: unset; max-block-size: unset;"
+				/>
+				<div class="aw-container u-position-relative">
+					<div class="grid-1-1">
+						<section class="aw-hero is-align-start">
+							<span class="aw-badges aw-eyebrow">Scale_</span>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you</h2>
+						</section>
+						<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">12</div>
+								<div class="text">Regions served</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">900TB</div>
+								<div class="text">of data served</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">1 million</div>
+								<div class="text">end users</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">999</div>
+								<div class="text">total compute time</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 			<div
 				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
 			>
-				<img src="/images/bgs/pre-footer.svg" alt="" class="pre-footer-bg" />
-
-				<div class="aw-container u-position-relative">
+				<div class="aw-container">
 					<PreFooter />
 					<FooterNav />
 					<MainFooter />
@@ -373,16 +374,3 @@
 		</div>
 	</div>
 </Homepage>
-
-<style lang="scss">
-	.pre-footer-bg {
-		position: absolute;
-		top: 20%;
-		left: calc(50% - 300px);
-		transform: translate(-50%, -50%);
-		width: 3000px;
-		height: auto;
-		max-inline-size: unset;
-		max-block-size: unset;
-	}
-</style>

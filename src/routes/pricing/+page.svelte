@@ -589,15 +589,9 @@
 			</div>
 		</div>
 
-		<div class="aw-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden">
-			<img
-				src="/images/bgs/pre-footer.svg"
-				alt=""
-				class="pre-footer-bg u-gradient-mobile-align-2"
-			/>
-
+		<div class="aw-big-padding-section-level-1 theme-dark u-position-relative">
 			<div class="aw-big-padding-section-level-2 u-position-relative">
-				<div class="aw-container">
+				<div class="aw-container u-position-relative" style:z-index="10">
 					<section class="aw-grid-4-6">
 						<header>
 							<div class="aw-display aw-u-color-text-primary">FAQ</div>
@@ -607,7 +601,7 @@
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
-				<div class="aw-container u-position-relative">
+				<div class="aw-container">
 					<PreFooter />
 					<FooterNav />
 					<MainFooter />
@@ -616,16 +610,3 @@
 		</div>
 	</div>
 </Homepage>
-
-<style lang="scss">
-	.pre-footer-bg {
-		position: absolute;
-		top: 55%;
-		left: calc(50% - 300px);
-		transform: translate(-50%, -50%);
-		width: 3000px;
-		height: auto;
-		max-inline-size: unset;
-		max-block-size: unset;
-	}
-</style>
