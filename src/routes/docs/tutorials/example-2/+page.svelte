@@ -200,17 +200,17 @@
 				<div class="u-flex u-main-space-between">
 					<button class="aw-button is-text">
 						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
+						<span class="aw-sub-body-500">Step 1<span class="aw-is-not-mobile">: Setting up the environment</span></span>
 					</button>
 					<button class="aw-button is-secondary">
-						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
+						<span class="aw-sub-body-500">Step 3<span class="aw-is-not-mobile">: Creating a login page</span></span>
 						<span class="icon-cheveron-right" aria-hidden="true" />
 					</button>
 				</div>
 
 				<section class="aw-content-footer">
-					<header class="aw-content-footer-header">
-						<div class="aw-content-footer-header-start">
+					<header class="aw-content-footer-header u-cross-center">
+						<div class="aw-content-footer-header-start u-cross-center">
 							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 							<div class="u-flex u-gap-8">
 								<input
@@ -229,11 +229,10 @@
 						</div>
 						<div class="aw-content-footer-header-end">
 							<ul class="aw-metadata aw-caption-400">
-								<li>Last updated on July 16, 2023</li>
+								<li>Last updated: July 16, 2023</li>
 								<li>
-									<button class="">
-										<!-- TODO: wait for implement icons in website -->
-										<span class="icon-edit" aria-hidden="true" />
+									<button class="u-flex u-gap-4 u-cross-baseline">
+										<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 										<span>Update on GitHub</span>
 									</button>
 								</li>
@@ -242,15 +241,15 @@
 					</header>
 					<div class="aw-card is-transparent" style="--card-padding:1rem">
 						<label for="message">
-							<span class="aw-u-color-text-primary">What did you like?</span>
-							<span class="">(optional)</span>
+							<span class="aw-caption-400 aw-u-color-text-primary">What did you like?</span>
+							<span class="aw-caption-400">(optional)</span>
 						</label>
 						<textarea
 							class="aw-input-text u-margin-block-start-8"
 							id="message"
 							placeholder="Write your message"
 						/>
-						<div class="u-flex u-main-end u-margin-block-start-16">
+						<div class="u-flex u-gap-8 u-main-end u-margin-block-start-16">
 							<button class="aw-button is-text">
 								<span class="">Cancel</span>
 							</button>
@@ -348,7 +347,7 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href=".">Supports</a>
+					<a href=".">Support</a>
 				</li>
 				<li>
 					<a href=".">Status</a>

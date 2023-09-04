@@ -1,6 +1,7 @@
 <script>
 	import { Docs } from '$lib/layouts';
 	import Sidebar from '$routes/docs/Sidebar.svelte';
+	import MainFooter from "../../../../lib/components/MainFooter.svelte";
 </script>
 
 <Docs variant="two-side-navs">
@@ -162,14 +163,14 @@
 						</section>
 					</section>
 					<section class="aw-article-content-sub-section">
-						<h2 class="aw-main-body-500">Sub title</h2>
+						<h2 class="aw-sub-body-500 aw-u-color-text-primary">Sub title</h2>
 						<p>
 							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
 							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
 						</p>
 					</section>
 					<section class="aw-article-content-sub-section">
-						<h2 class="aw-main-body-500">Sub title</h2>
+						<h2 class="aw-sub-body-500 aw-u-color-text-primary">Sub title</h2>
 						<p>
 							Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas
 							ut. Dictum tortor arcu feugiat metus pellentesque posuere.
@@ -380,7 +381,7 @@
 				</li>
 				<li>
 					<button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
-						<span class="icon-linkedin" aria-hidden="true" />
+						<span class="aw-icon-linkedin" aria-hidden="true" />
 					</button>
 				</li>
 				<li>
@@ -400,7 +401,7 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href=".">Supports</a>
+					<a href=".">Support</a>
 				</li>
 				<li>
 					<a href=".">Status</a>

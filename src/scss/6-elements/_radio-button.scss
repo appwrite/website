@@ -4,7 +4,7 @@
   --pr-adio-text-color: var(--aw-color-neutral-700);
   --p-radio-bg-color: var(--aw-color-neutral-50);
 
-  all:unset;
+  all:unset; cursor:pointer;
 
   color: hsl(var(--pr-adio-text-color));
   background-color: hsl(var(--p-radio-bg-color));
