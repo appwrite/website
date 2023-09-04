@@ -168,3 +168,15 @@
 .collapsible-button {
   padding-block:pxToRem(24);
 }
+
+.#{$p}-u-flip-x {
+  transform:scaleX(-1);
+}
+
+.#{$p}-u-flip-y {
+  transform:scaleY(-1);
+}
+
+.#{$p}-u-inline-block {
+  display:inline-block;
+}
