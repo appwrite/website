@@ -302,7 +302,7 @@
 	})[0];
 
 	let scrollDir = 'down';
-	$: console.log(scrollDir);
+	let shouldShowTable = false;
 </script>
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
@@ -312,7 +312,13 @@
 		<div class="u-position-relative">
 			<article use:melt={$root}>
 				<div class="aw-container">
-					<header class="aw-u-text-align-center">
+					<header
+						class="aw-u-text-align-center"
+						use:visible
+						on:visible={(e) => {
+							shouldShowTable = !e.detail;
+						}}
+					>
 						<h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
 						<p class="aw-main-body-500 u-margin-block-start-16">
 							Discover our plans and find the one that fits your project’s needs.
@@ -320,12 +326,12 @@
 					</header>
 
 					<div
-						class="aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+						class="aw-is-only-mobile aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 /u-position-sticky /u-z-index-5"
 						style="/--inset-block-start:2rem"
 					>
 						<Tabs bind:tab tabs={cols} let:TabsList>
 							<TabsList
-								class="aw-is-only-mobile aw-u-mobile-divider"
+								class=" aw-u-mobile-divider"
 								stretch
 								style="--p-secondary-tabs-bg-color-default: var(--aw-color-neutral-0);
 								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
@@ -340,19 +346,23 @@
 					<div
 						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative
 						aw-u-padding-block-start-80 aw-u-filter-blur-8 u-position-sticky u-z-index-5"
-						style="--inset-block-start:1rem"
+						style="--inset-block-start:3rem"
 					>
 						<div
-							class="aw-label aw-u-color-text-primary aw-u-cross-child-center aw-u-relative"
+							class="aw-description aw-u-color-text-primary aw-u-cross-child-center"
 							style:opacity={browser ? 1 : 0}
+							style:position={browser ? 'relative' : undefined}
 						>
-							{#key activeTable}
+							<span style="opacity: 0;">{activeTable}</span>
+							{#key `${activeTable}-${shouldShowTable}`}
 								<div
-									style="position: absolute; top: 50%; "
-									in:fly={{ y: scrollDir === 'down' ? 16 : -16, delay: 500, duration: 500 }}
-									out:fly={{ y: scrollDir === 'down' ? -16 : 16, duration: 500 }}
+									style="position: absolute; top: 50%; transform: translateY(-50%);"
+									in:fly={{ y: scrollDir === 'down' ? 16 : -16, delay: 250, duration: 250 }}
+									out:fly={{ y: scrollDir === 'down' ? -16 : 16, duration: 250 }}
 								>
-									{activeTable ?? ''}
+									{#if shouldShowTable && activeTable}
+										{activeTable}
+									{/if}
 								</div>
 							{/key}
 						</div>
