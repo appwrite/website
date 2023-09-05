@@ -83,7 +83,10 @@ This is a nice table:
 
 ### Image
 
-![](https://pink.appwrite.io/articles/announcement.png)
+
+![](https://pink.appwrite.io/articles/announcement.png){% .u-only-light %}
+
+![](https://pink.appwrite.io/articles/announcement.png){% .u-only-dark %}
 
 {% section #featured-products-1 step=1 title="Featured products 1" %}
 Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas ut. Dictum tortor arcu feugiat metus pellentesque posuere.
