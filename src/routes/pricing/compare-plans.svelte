@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { Tabs } from '$lib/UI';
+	import { visible } from '$lib/actions/visible';
+	import { getScrollDir } from '$lib/utils/getScrollDir';
+	import { isVisible } from '$lib/utils/isVisible';
 	import { createAccordion, melt } from '@melt-ui/svelte';
-	import { slide } from 'svelte/transition';
+	import { writable } from 'svelte/store';
+	import { fly } from 'svelte/transition';
 
 	type Table = {
 		title: string;
@@ -290,7 +295,17 @@
 		multiple: true,
 		forceVisible: true
 	});
+
+	const visibleTables = writable([] as string[]);
+	$: activeTable = $visibleTables.sort((a, b) => {
+		return tables.findIndex((t) => t.title === a) - tables.findIndex((t) => t.title === b);
+	})[0];
+
+	let scrollDir = 'down';
+	$: console.log(scrollDir);
 </script>
+
+<svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
 <div class="aw-big-padding-section-level-1 aw-white-section theme-light">
 	<div class="aw-big-padding-section-level-2">
@@ -327,8 +342,19 @@
 						aw-u-padding-block-start-80 aw-u-filter-blur-8 u-position-sticky u-z-index-5"
 						style="--inset-block-start:1rem"
 					>
-						<div class="aw-label aw-u-color-text-primary aw-u-cross-child-center" style="opacity:0">
-							Compare plans
+						<div
+							class="aw-label aw-u-color-text-primary aw-u-cross-child-center aw-u-relative"
+							style:opacity={browser ? 1 : 0}
+						>
+							{#key activeTable}
+								<div
+									style="position: absolute; top: 50%; "
+									in:fly={{ y: scrollDir === 'down' ? 16 : -16, delay: 500, duration: 500 }}
+									out:fly={{ y: scrollDir === 'down' ? -16 : 16, duration: 500 }}
+								>
+									{activeTable ?? ''}
+								</div>
+							{/key}
 						</div>
 						<div class="aw-mini-card">
 							<div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
@@ -363,10 +389,24 @@
 							class="aw-compare-table aw-sub-body-400"
 							class:is-open-in-mobile={isOpen}
 							use:melt={$item(table.title)}
+							use:visible={{
+								top: 128
+							}}
+							on:visible={(e) => {
+								const isVisible = e.detail;
+								visibleTables.update((p) => {
+									if (isVisible) {
+										return [...p, table.title];
+									} else {
+										return p.filter((t) => t !== table.title);
+									}
+								});
+							}}
 						>
 							<caption
 								class="aw-compare-table-caption aw-description aw-u-color-text-primary"
 								use:melt={$heading({ level: 3 })}
+								style:position={browser ? 'unset' : undefined}
 							>
 								<button class="aw-compare-table-caption-button" use:melt={$trigger(table.title)}>
 									<span>{table.title}</span>
