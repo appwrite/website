@@ -21,7 +21,9 @@ const config = {
 			nodes: absoulute('./src/markdoc/nodes/_Module.svelte'),
 			tags: absoulute('./src/markdoc/tags/_Module.svelte'),
 			layouts: {
-				default: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
+				default: absoulute('./src/markdoc/layouts/Article.svelte'),
+				article: absoulute('./src/markdoc/layouts/Article.svelte'),
+				tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte')
 			}
 		}),
 		preprocessMeltUI()

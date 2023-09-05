@@ -73,16 +73,6 @@
 			</header>
 			<div class="aw-article-content">
 				<slot />
-				<div class="u-flex u-main-space-between">
-					<button class="aw-button is-text">
-						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
-					</button>
-					<button class="aw-button is-secondary">
-						<span class="aw-sub-body-500"> Step 3: Creating a login page</span>
-						<span class="icon-cheveron-right" aria-hidden="true" />
-					</button>
-				</div>
 				<section class="aw-content-footer">
 					<header class="aw-content-footer-header">
 						<div class="aw-content-footer-header-start">
@@ -136,49 +126,28 @@
 					</div>
 				</section>
 			</div>
-
 			<aside class="aw-references-menu aw-u-padding-inline-start-24">
 				<div class="aw-references-menu-content">
 					<div class="u-flex u-main-space-between u-cross-center u-gap-16">
-						<h5 class="aw-references-menu-title aw-eyebrow">Tutorial Steps</h5>
+						<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
 					</div>
 					<ol class="aw-references-menu-list">
-						<li class="aw-references-menu-item">
-							<a href="." class="aw-references-menu-link"
-								><span class="aw-numeric-badge">1</span>
-								<span class="aw-caption-400">Title</span></a
-							>
-						</li>
-						<li class="aw-references-menu-item">
-							<a href="." class="aw-references-menu-link is-selected"
-								><span class="aw-numeric-badge">2</span>
-								<span class="aw-caption-400">Title</span></a
-							>
-							<ol class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32">
-								<li class="aw-references-menu-item">
-									<a href="." class="aw-references-menu-link is-selected"
-										><span class="aw-caption-400">Subtitle</span></a
-									>
-								</li>
-								<li class="aw-references-menu-item">
-									<a href="." class="aw-references-menu-link is-selected"
-										><span class="aw-caption-400">Subtitle</span></a
-									>
-								</li>
-							</ol>
-						</li>
-						<li class="aw-references-menu-item">
-							<a href="." class="aw-references-menu-link"
-								><span class="aw-numeric-badge">3</span>
-								<span class="aw-caption-400">Title</span></a
-							>
-						</li>
+						{#each Object.entries($headings) as [id, heading]}
+							<li class="aw-references-menu-item">
+								<a href={`#${id}`} class="aw-references-menu-link">
+									{#if heading.step !== undefined}
+										<span class="aw-numeric-badge">{heading.step}</span>
+									{/if}
+									<span class="aw-caption-400">{heading.text}</span>
+								</a>
+							</li>
+						{/each}
 					</ol>
 					<div class="u-sep-block-start u-padding-block-start-20">
-						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top"
-							><span class="icon-arrow-up" aria-hidden="true" />
-							<span class="aw-sub-body-500">Back to top</span></a
-						>
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
+							<span class="icon-arrow-up" aria-hidden="true" />
+							<span class="aw-sub-body-500">Back to top</span>
+						</a>
 					</div>
 				</div>
 			</aside>
