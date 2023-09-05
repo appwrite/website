@@ -1,7 +1,7 @@
 <script>
 	import { Docs } from '$lib/layouts';
 	import Sidebar from '$routes/docs/Sidebar.svelte';
-	import MainFooter from "../../../../lib/components/MainFooter.svelte";
+	import MainFooter from '../../../../lib/components/MainFooter.svelte';
 </script>
 
 <Docs variant="two-side-navs">
@@ -201,10 +201,14 @@
 				<div class="u-flex u-main-space-between">
 					<button class="aw-button is-text">
 						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-sub-body-500">Step 1<span class="aw-is-not-mobile">: Setting up the environment</span></span>
+						<span class="aw-sub-body-500"
+							>Step 1<span class="aw-is-not-mobile">: Setting up the environment</span></span
+						>
 					</button>
 					<button class="aw-button is-secondary">
-						<span class="aw-sub-body-500">Step 3<span class="aw-is-not-mobile">: Creating a login page</span></span>
+						<span class="aw-sub-body-500"
+							>Step 3<span class="aw-is-not-mobile">: Creating a login page</span></span
+						>
 						<span class="icon-cheveron-right" aria-hidden="true" />
 					</button>
 				</div>
@@ -233,7 +237,7 @@
 								<li>Last updated: July 16, 2023</li>
 								<li>
 									<button class="u-flex u-gap-4 u-cross-baseline">
-										<span class="icon-pencil-alt=""u-contents" aria-hidden="true" />
+										<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 										<span>Update on GitHub</span>
 									</button>
 								</li>
