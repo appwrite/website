@@ -1,11 +1,20 @@
 <script lang="ts">
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
 	import { Tabs } from '$lib/UI';
+	import PreFooter from '$lib/components/PreFooter.svelte';
 </script>
 
+<!-- <div
+	class="u-position-absolute"
+	style="
+	width: 100vw;
+	max-width: 100%; overflow: hidden;
+	height: 1000px;
+"
+> -->
 <div class="u-position-absolute" style="margin-block-start:-36%; pointer-events:none; z-index: 10">
 	<img
 		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);"
@@ -20,8 +29,9 @@
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
+<!-- </div> -->
 
-<Homepage>
+<Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
@@ -323,176 +333,53 @@
 		</div>
 
 		<div class="aw-big-padding-section-level-1">
-			<div class="aw-big-padding-section-level-2">
-				<div class="u-position-relative">
-					<img
-						class="u-position-absolute u-z-index-0"
-						src="/images/bgs/diagonal-lines.png"
-						alt=""
-					/>
-					<div class="aw-container u-position-relative">
-						<div class="grid-1-1">
-							<section class="aw-hero is-align-start">
-								<span class="aw-badges aw-eyebrow">Scale_</span>
-								<h2 class="aw-display u-max-width-600">We scale for you</h2>
-							</section>
-							<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">12</div>
-									<div class="text">Regions served</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">900TB</div>
-									<div class="text">of data served</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">1 million</div>
-									<div class="text">end users</div>
-								</li>
-								<li class="aw-big-list-info-item">
-									<div class="aw-headline aw-u-color-text-primary">999</div>
-									<div class="text">total compute time</div>
-								</li>
-							</ul>
-						</div>
+			<div
+				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+			>
+				<img
+					class="u-position-absolute u-z-index-0"
+					src="/images/bgs/diagonal-lines.png"
+					alt=""
+					style="width: 1450px; height:auto; left: calc(50% - 40rem);
+					transform: translate(-50%);
+					max-inline-size: unset; max-block-size: unset;"
+				/>
+				<div class="aw-container u-position-relative">
+					<div class="grid-1-1">
+						<section class="aw-hero is-align-start">
+							<span class="aw-badges aw-eyebrow">Scale_</span>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you</h2>
+						</section>
+						<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">12</div>
+								<div class="text">Regions served</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">900TB</div>
+								<div class="text">of data served</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">1 million</div>
+								<div class="text">end users</div>
+							</li>
+							<li class="aw-big-list-info-item">
+								<div class="aw-headline aw-u-color-text-primary">999</div>
+								<div class="text">total compute time</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative">
-				<img
-					src="/images/bgs/footer-1.svg"
-					alt=""
-					class="u-position-absolute"
-					style="inset:0; inline-size:100%; max-block-size:100%;"
-				/>
-				<div class="aw-container u-position-relative">
-					<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80">
-						<section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-							<h2 class="aw-display u-max-width-600 aw-u-text-align-center">
-								Start building with Appwrite today
-							</h2>
-							<button class="aw-button is-transparent aw-u-cross-child-center">
-								<span class="text">Get Started</span>
-							</button>
-						</section>
-						<section
-							class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
-						>
-							<Tabs let:TabsList let:TabContent tabs={['Cloud', 'Self-Hosted']}>
-								<header class="aw-strip-plans-header">
-									<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-										<h3 class="aw-title">Our Plans</h3>
-										<TabsList />
-									</div>
-								</header>
-								<TabContent tab="Cloud">
-									<ul class="aw-strip-plans">
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Free</h4>
-													<div class="aw-title aw-u-color-text-primary">$0</div>
-													<div class="info aw-caption-500" />
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For personal, passion projects and non-commercial use.
-												</p>
-												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-													><span class="text">Get Started</span></button
-												>
-											</div>
-										</li>
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Pro</h4>
-													<div class="aw-title aw-u-color-text-primary">$15</div>
-													<div class="info aw-caption-500">per user/month</div>
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For pro developers and production projects that need the ability to scale.
-												</p>
-												<button
-													class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-													><span class="text">Learn More</span></button
-												>
-											</div>
-										</li>
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Scale</h4>
-													<div class="aw-title aw-u-color-text-primary">$685</div>
-													<div class="info aw-caption-500">per org/month</div>
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For pro developers and production projects that need the ability to scale.
-												</p>
-												<button
-													class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-													><span class="text">Learn More</span></button
-												>
-											</div>
-										</li>
-									</ul>
-								</TabContent>
-								<TabContent tab="Self-Hosted">
-									<ul class="aw-strip-plans">
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Free</h4>
-													<div class="aw-title aw-u-color-text-primary">$0</div>
-													<div class="info aw-caption-500" />
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For personal, passion projects and non-commercial use.
-												</p>
-												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-													><span class="text">Get Started</span></button
-												>
-											</div>
-										</li>
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Free</h4>
-													<div class="aw-title aw-u-color-text-primary">$0</div>
-													<div class="info aw-caption-500" />
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For personal, passion projects and non-commercial use.
-												</p>
-												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-													><span class="text">Get Started</span></button
-												>
-											</div>
-										</li>
-										<li class="aw-strip-plans-item aw-strip-plans-container-query">
-											<div class="aw-strip-plans-item-wrapper">
-												<div class="aw-strip-plans-plan">
-													<h4 class="title aw-description">Free</h4>
-													<div class="aw-title aw-u-color-text-primary">$0</div>
-													<div class="info aw-caption-500" />
-												</div>
-												<p class="aw-strip-plans-info aw-caption-500">
-													For personal, passion projects and non-commercial use.
-												</p>
-												<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-													><span class="text">Get Started</span></button
-												>
-											</div>
-										</li>
-									</ul>
-								</TabContent>
-							</Tabs>
-						</section>
-					</div>
-
+			<div
+				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+			>
+				<div class="aw-container">
+					<PreFooter />
 					<FooterNav />
 					<MainFooter />
 				</div>
 			</div>
 		</div>
 	</div>
-</Homepage>
+</Main>

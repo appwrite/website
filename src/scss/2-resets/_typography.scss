@@ -11,7 +11,7 @@ body {
 	font-size: 100%; /* default equal to 16px */
 	line-height: 1.5;
 
-	color: hsl(var(--p-body-text-color));
+	color: hsl(var(--p-body-text-color)) !important;
 	background-color: hsl(var(--p-body-bg-color));
 }
 

@@ -9,23 +9,23 @@
 
 	const socials: Array<Social> = [
 		{
-			icon: 'discord',
+			icon: 'aw-icon-discord',
 			link: 'https://appwrite.io/discord'
 		},
 		{
-			icon: 'github',
+			icon: 'aw-icon-github',
 			link: 'https://github.com/appwrite'
 		},
 		{
-			icon: 'twitter',
+			icon: 'aw-icon-twitter',
 			link: 'https://twitter.com/appwrite'
 		},
 		{
-			icon: 'linkedin',
+			icon: 'aw-icon-linkedin',
 			link: '.'
 		},
 		{
-			icon: 'youtube',
+			icon: 'aw-icon-youtube',
 			label: 'YouTube',
 			link: '.'
 		}
@@ -37,7 +37,7 @@
 </script>
 
 {#if variant === 'homepage'}
-	<footer class="aw-main-footer u-margin-block-start-48">
+	<footer class="aw-main-footer u-position-relative u-margin-block-start-48">
 		<ul class="u-flex u-gap-8">
 			{#each socials as social}
 				<li>
@@ -45,8 +45,9 @@
 						href={social.link}
 						class="aw-icon-button"
 						aria-label="Appwrite on {getSocialLabel(social)}"
+						target="_blank"
 					>
-						<span class="icon-{social.icon}" aria-hidden="true" />
+						<span class={social.icon} aria-hidden="true" />
 					</a>
 				</li>
 			{/each}
@@ -54,7 +55,9 @@
 		<div>Copyright © 2023 Appwrite</div>
 	</footer>
 {:else if variant === 'docs'}
-	<footer class="aw-main-footer is-with-bg-color u-margin-block-start-48 u-small">
+	<footer
+		class="aw-main-footer is-with-bg-color u-margin-block-start-48 u-small u-position-relative"
+	>
 		<div class="aw-main-footer-grid-1">
 			<ul class="aw-main-footer-grid-1-column-1 u-flex u-gap-8">
 				{#each socials as social}
@@ -63,8 +66,9 @@
 							href={social.link}
 							class="aw-icon-button"
 							aria-label="Appwrite on {getSocialLabel(social)}"
+							target="_blank"
 						>
-							<span class="icon-{social.icon}" aria-hidden="true" />
+							<span class={social.icon} aria-hidden="true" />
 						</a>
 					</li>
 				{/each}
@@ -80,7 +84,7 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href=".">Supports</a>
+					<a href=".">Support</a>
 				</li>
 				<li>
 					<a href=".">Status</a>

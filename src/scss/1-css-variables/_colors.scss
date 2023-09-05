@@ -105,4 +105,8 @@
 }
 
 .#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary))!important; }
+.#{$p}-u-color-text-secondary { color:hsl(var(--aw-color-secondary))!important; }
+.#{$p}-u-color-text-tertiary { color:hsl(var(--aw-color-tertiary))!important; }
 .#{$p}-u-color-text-accent { -webkit-text-fill-color: hsl(var(--aw-color-accent))!important; color:hsl(var(--aw-color-accent))!important; }
+.#{$p}-u-color-text-accent-darker { color:hsl(var(--aw-color-accent-darker))!important; }
+.#{$p}-u-color-text-accent-click { color:hsl(var(--aw-color-accent-click))!important; }
