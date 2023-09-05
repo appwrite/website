@@ -3,16 +3,16 @@
 .#{$p}-table {
   /* color variable mixins */
   @mixin light-mode {
-    --p-table-header-bg-color:    var(--aw-color-neutral-0);
-    --p-table-row-bg-odd-color:   var(--aw-color-neutral-25);
-    --p-table-row-bg-even-color:  var(--aw-color-neutral-0);
-    --p-table-border-color:       var(--aw-color-neutral-50);
+    --p-table-header-bg-color:    var(--aw-color-white);
+    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-25);
+    --p-table-row-bg-even-color:  var(--aw-color-white);
+    --p-table-border-color:       var(--aw-color-greyscale-50);
   }
   @mixin dark-mode {
-    --p-table-header-bg-color:    var(--aw-color-neutral-850);
-    --p-table-row-bg-odd-color:   var(--aw-color-neutral-900);
-    --p-table-row-bg-even-color:  var(--aw-color-neutral-850);
-    --p-table-border-color:       var(--aw-color-neutral-800);
+    --p-table-header-bg-color:    var(--aw-color-greyscale-850);
+    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-900);
+    --p-table-row-bg-even-color:  var(--aw-color-greyscale-850);
+    --p-table-border-color:       var(--aw-color-greyscale-800);
   }
 
   table-layout: fixed;

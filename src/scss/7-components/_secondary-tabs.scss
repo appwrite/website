@@ -2,18 +2,18 @@
 
 .#{$p}-secondary-tabs {
   --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
-  --p-secondary-tabs-text-color-default: var(--aw-color-neutral-700);
-  --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-900);
-  --p-secondary-tabs-text-color-active: var(--aw-color-neutral-900);
-  --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-900);
-  --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-900) / 0.48;
-  --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-700);
+  --p-secondary-tabs-text-color-default: var(--aw-color-greyscale-700);
+  --p-secondary-tabs-text-color-hover: var(--aw-color-greyscale-900);
+  --p-secondary-tabs-text-color-active: var(--aw-color-greyscale-900);
+  --p-secondary-tabs-text-color-selected: var(--aw-color-greyscale-900);
+  --p-secondary-tabs-text-color-disabled: var(--aw-color-greyscale-900) / 0.48;
+  --p-secondary-tabs-text-color-focus: var(--aw-color-greyscale-700);
 
   --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
   --p-secondary-tabs-bg-color-default: var(--transparent);
-  --p-secondary-tabs-bg-color-hover: var(--aw-color-neutral-50);
-  --p-secondary-tabs-bg-color-active: var(--aw-color-neutral-100);
-  --p-secondary-tabs-bg-color-selected: var(--aw-color-neutral-100);
+  --p-secondary-tabs-bg-color-hover: var(--aw-color-greyscale-50);
+  --p-secondary-tabs-bg-color-active: var(--aw-color-greyscale-100);
+  --p-secondary-tabs-bg-color-selected: var(--aw-color-greyscale-100);
   --p-secondary-tabs-bg-color-disabled: var(--transparent);
   --p-secondary-tabs-bg-color-focus: var(--p-secondary-tabs-bg-color-default);
 
@@ -59,12 +59,12 @@
 
   #{$theme-dark} & {
     --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
-    --p-secondary-tabs-text-color-default: var(--aw-color-neutral-200) / 0.48;
-    --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-100);
-    --p-secondary-tabs-text-color-active: var(--aw-color-neutral-50);
-    --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-100);
-    --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-200) / 0.48;
-    --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-200) / 0.48;
+    --p-secondary-tabs-text-color-default: var(--aw-color-greyscale-200) / 0.48;
+    --p-secondary-tabs-text-color-hover: var(--aw-color-greyscale-100);
+    --p-secondary-tabs-text-color-active: var(--aw-color-greyscale-50);
+    --p-secondary-tabs-text-color-selected: var(--aw-color-greyscale-100);
+    --p-secondary-tabs-text-color-disabled: var(--aw-color-greyscale-200) / 0.48;
+    --p-secondary-tabs-text-color-focus: var(--aw-color-greyscale-200) / 0.48;
 
     --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
     --p-secondary-tabs-bg-color-default: var(--transparent);
@@ -81,24 +81,24 @@
 
   #{$theme-light} & {
     --p-secondary-tabs-text-color: var(--p-secondary-tabs-text-color-default);
-    --p-secondary-tabs-text-color-default: var(--aw-color-neutral-700);
-    --p-secondary-tabs-text-color-hover: var(--aw-color-neutral-900);
-    --p-secondary-tabs-text-color-active: var(--aw-color-neutral-900);
-    --p-secondary-tabs-text-color-selected: var(--aw-color-neutral-900);
-    --p-secondary-tabs-text-color-disabled: var(--aw-color-neutral-900) / 0.48;
-    --p-secondary-tabs-text-color-focus: var(--aw-color-neutral-700);
+    --p-secondary-tabs-text-color-default: var(--aw-color-greyscale-700);
+    --p-secondary-tabs-text-color-hover: var(--aw-color-greyscale-900);
+    --p-secondary-tabs-text-color-active: var(--aw-color-greyscale-900);
+    --p-secondary-tabs-text-color-selected: var(--aw-color-greyscale-900);
+    --p-secondary-tabs-text-color-disabled: var(--aw-color-greyscale-900) / 0.48;
+    --p-secondary-tabs-text-color-focus: var(--aw-color-greyscale-700);
 
     --p-secondary-tabs-bg-color: var(--p-secondary-tabs-bg-color-default);
     --p-secondary-tabs-bg-color-default: var(--transparent);
-    --p-secondary-tabs-bg-color-hover: var(--aw-color-neutral-50);
-    --p-secondary-tabs-bg-color-active: var(--aw-color-neutral-100);
-    --p-secondary-tabs-bg-color-selected: var(--aw-color-neutral-100);
+    --p-secondary-tabs-bg-color-hover: var(--aw-color-greyscale-50);
+    --p-secondary-tabs-bg-color-active: var(--aw-color-greyscale-100);
+    --p-secondary-tabs-bg-color-selected: var(--aw-color-greyscale-100);
     --p-secondary-tabs-bg-color-disabled: var(--transparent);
     --p-secondary-tabs-bg-color-focus: var(--p-secondary-tabs-bg-color-default);
 
     --p-secondary-tabs-shadow-color: var(--p-secondary-tabs-shadow-color-defalut);
     --p-secondary-tabs-shadow-color-defalut: var(--transparent);
     --p-secondary-tabs-shadow-color-focus: var(--color-neutral-1000) / 0.16;
-    background: hsl(var(--aw-color-neutral-0));
+    background: hsl(var(--aw-color-white));
   }
 }

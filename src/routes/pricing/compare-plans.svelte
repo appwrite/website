@@ -333,7 +333,7 @@
 							<TabsList
 								class=" aw-u-mobile-divider"
 								stretch
-								style="--p-secondary-tabs-bg-color-default: var(--aw-color-neutral-0);
+								style="--p-secondary-tabs-bg-color-default: var(--aw-color-white);
 								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
 								--p-secondary-tabs-bg-color-selected: var(--aw-color-accent) / 0.08;"
 								let:tab
