@@ -3,8 +3,8 @@
 .#{$p}-link {
   --p-link-color-text: var(--p-link-color-text-default);
   --p-link-color-text-default: var(--aw-color-neutral-900);
-  --p-link-color-text-hover: var(--aw-color-primary-500);
-  --p-link-color-text-active: var(--aw-color-primary-600);
+  --p-link-color-text-hover: var(--aw-color-pink-500);
+  --p-link-color-text-active: var(--aw-color-pink-600);
 
   color: hsl(var(--p-link-color-text));
   border-radius: pxToRem(8);
@@ -13,7 +13,7 @@
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus) { outline:pxToRem(1) solid hsl(var(--aw-color-primary-500)); }
+  &:where(:focus) { outline:pxToRem(1) solid hsl(var(--aw-color-pink-500)); }
 
   #{$theme-dark} & {
     --p-link-color-text-default: var(--aw-color-neutral-100);
@@ -21,5 +21,5 @@
 }
 
 .#{$p}-link-1 {
-  color: hsl(var(--aw-color-primary-500));
+  color: hsl(var(--aw-color-pink-500));
 }

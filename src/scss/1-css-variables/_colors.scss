@@ -6,9 +6,9 @@
     --aw-color-primary: var(--aw-color-neutral-900);
     --aw-color-secondary: var(--aw-color-neutral-700);
     --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
-    --aw-color-accent-click: var(--aw-color-primary-500);
+    --aw-color-accent: var(--aw-color-pink-500);
+    --aw-color-accent-darker: var(--aw-color-pink-600);
+    --aw-color-accent-click: var(--aw-color-pink-500);
     --aw-color-card: var(--aw-color-neutral-0) / 0.9;
     --aw-color-smooth: var(--aw-color-neutral-100);
     --aw-color-subtle: var(--aw-color-neutral-50);
@@ -23,11 +23,11 @@
     --aw-color-primary: var(--aw-color-neutral-100);
     --aw-color-secondary: var(--aw-color-neutral-300);
     --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
+    --aw-color-accent: var(--aw-color-pink-500);
+    --aw-color-accent-darker: var(--aw-color-pink-600);
     --aw-color-accent-click: var(--aw-color-neutral-50);
     --aw-color-card: var(--aw-color-neutral-850) / 0.9;
-    --aw-color-smooth: var(--aw-color-neutral-800);
+    --aw-color-smooth: var(--aw-color-neutral-0);
     --aw-color-subtle: var(--aw-color-neutral-850);
     --aw-color-offset: var(--aw-color-neutral-0) / 0.1;
 
@@ -35,11 +35,11 @@
     --aw-color-border: var(--aw-color-subtle);
   }
     /* primary */
-  --aw-color-primary-hue: 343;
-  --aw-color-primary-200: var(--aw-color-primary-hue) 98% 84%;
-  --aw-color-primary-500: var(--aw-color-primary-hue) 98% 60%; /* #FD366E */
-  --aw-color-primary-600: var(--aw-color-primary-hue) 65% 48%;
-  --aw-color-primary-700: var(--aw-color-primary-hue) 65% 36%;
+  --aw-color-pink-hue: 343;
+  --aw-color-pink-200: var(--aw-color-pink-hue) 98% 84%;
+  --aw-color-pink-500: var(--aw-color-pink-hue) 98% 60%; /* #FD366E */
+  --aw-color-pink-600: var(--aw-color-pink-hue) 65% 48%;
+  --aw-color-pink-700: var(--aw-color-pink-hue) 65% 36%;
 
   /* red */
   --aw-color-red-hue: 3;
