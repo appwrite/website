@@ -78,6 +78,7 @@
 
 .#{$p}-u-min-block-size-320         { min-block-size:#{pxToRem(320)}!important; }
 
+.#{$p}-u-flex-direction-column-mobile { @media #{$break1} { flex-direction:column; } }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 

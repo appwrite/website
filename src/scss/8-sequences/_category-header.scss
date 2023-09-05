@@ -1,0 +1,13 @@
+@use '../abstract' as *;
+
+.#{$p}-category-header {
+  display:flex; gap:pxToRem(24);
+
+  @media #{$break1} {
+    flex-direction:column;
+  }
+  @media #{$break2open} {
+    justify-content:space-between;
+    .#{$p}-input-text-search-wrapper { align-self:end; }
+  }
+}
