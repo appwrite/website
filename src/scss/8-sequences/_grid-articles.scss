@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
+  &-item {
+    display:flex; flex-direction:column; gap:pxToRem(24);
+    &-content { display:flex; flex-direction:column; gap:pxToRem(16); }
+  }
+  @media #{$break1} {
+    gap:pxToRem(32);
+  }
+  @media #{$break2open} {
+    gap:pxToRem(48);
+  }
+}
