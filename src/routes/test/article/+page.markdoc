@@ -1,5 +1,7 @@
 ---
-title: Hello world
+layout: article
+title: Hello World :)
+description: This is the description used for SEO.
 difficulty: beginner
 readtime: 3
 ---
@@ -38,9 +40,9 @@ And you can also have `inline code`.
 
 #### Header 4
 
-* This is an unordered list following a header.
-* This is an unordered list following a header.
-* This is an unordered list following a header.
+- This is an unordered list following a header.
+- This is an unordered list following a header.
+- This is an unordered list following a header.
 
 ##### Header 5
 
