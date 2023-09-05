@@ -5,6 +5,7 @@
 	export { default as List } from './List.svelte';
 	export { default as Paragraph } from './Paragraph.svelte';
 	export { default as Image } from './Image.svelte';
+	export { default as Item } from './Item.svelte';
 	export { default as Link } from './Link.svelte';
 	export { default as Table } from './Table.svelte';
 	export { default as Tbody } from './Tbody.svelte';
