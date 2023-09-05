@@ -30,7 +30,7 @@
 			<div class="aw-container">
 				<div class="aw-author-section">
                     <div class="aw-author-section-image">
-                        <img src="" width="112" height="112" />
+                        <img src="" width="112" height="112" alt="" />
                     </div>
                     <h1 class="aw-title aw-u-color-text-primary">Guy Hawkins</h1>
                     <div class="aw-label u-margin-block-start-8">DevRel & DX</div>
