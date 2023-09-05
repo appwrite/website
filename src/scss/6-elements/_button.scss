@@ -41,6 +41,7 @@
       background: rgba(253, 54, 110, 0.04);
       color: hsl(var(--aw-color-neutral-100));
       box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+      [class*="icon"] { color:hsl(var(--aw-color-primary-500)); }
       .#{$p}-inline-tag {
         background:rgba(255, 64, 120, 0.24);
         color:hsl(var(--aw-color-neutral-50));
