@@ -1,1 +1,1 @@
-<p class="aw-paragraph-md"><slot /></p>
+<p class={`aw-paragraph-md${$$props.class ? ` ${$$props.class}` : ''}`}><slot /></p>
