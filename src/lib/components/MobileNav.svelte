@@ -16,7 +16,7 @@
 <svelte:window on:resize={() => (open = false)} />
 
 <nav class="aw-side-nav aw-is-only-mobile" class:u-hide={!open}>
-	<div class="aw-side-nav-wrapper">
+	<div class="aw-side-nav-wrapper aw-u-padding-inline-16">
 		<div class="aw-side-nav-scroll">
 			<section>
 				<ul>
