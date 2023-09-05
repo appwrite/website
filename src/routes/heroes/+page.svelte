@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute aw-is-not-mobile" style="pointer-events:none; inset-inline-start:822px;">
+<div
+	class="u-position-absolute aw-is-not-mobile"
+	style="pointer-events:none; inset-inline-start:822px;"
+>
 	<img src="/images/temp/bg-side-heroes.png" width="" alt="" />
 </div>
 
-<Homepage>
+<Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
@@ -75,12 +78,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -109,12 +112,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -144,12 +147,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -178,12 +181,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -212,12 +215,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -246,12 +249,12 @@
 									<ul class="u-flex u-gap-12">
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite GitHub">
-												<span class="icon-github" aria-hidden="true"></span>
+												<span class="icon-github" aria-hidden="true" />
 											</button>
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true"></span>
+												<span class="icon-twitter" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -264,65 +267,140 @@
 			<div class="aw-big-padding-section-level-2">
 				<ul class="aw-scroll-carousel">
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2022/12/img_6246-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2022/12/img_6246-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
 					<li>
-						<div class="aw-card is-white" style="--p-card-padding:0.5rem; --card-border-radius:1.25rem">
-							<img class="u-block aw-u-border-radius-12" src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg" width="362" alt />
+						<div
+							class="aw-card is-white"
+							style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+						>
+							<img
+								class="u-block aw-u-border-radius-12"
+								src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg"
+								width="362"
+								alt
+							/>
 						</div>
 					</li>
-
 				</ul>
 			</div>
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<section class="aw-hero is-align-start">
-						<h2 class="aw-display aw-u-color-text-primary u-max-width-700">How Appwrite Heroes can benefit you</h2>
+						<h2 class="aw-display aw-u-color-text-primary u-max-width-700">
+							How Appwrite Heroes can benefit you
+						</h2>
 					</section>
 					<div class="u-overflow-hidden aw-u-margin-block-start-80">
 						<ul class="aw-info-boxes aw-sub-body-500">
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/discussion.svg" width="40" height="40" alt />
 								<h3 class="aw-info-boxes-title">Channel access</h3>
-								<p class="aw-info-boxes-content">Access to internal channel with Appwrite’s Engineering and DevRel team</p>
+								<p class="aw-info-boxes-content">
+									Access to internal channel with Appwrite’s Engineering and DevRel team
+								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/community.svg" width="40" height="40" alt />
@@ -350,18 +428,14 @@
 								<h3 class="aw-info-boxes-title">
 									<span class="">Beta-test</span>
 								</h3>
-								<p class="aw-info-boxes-content">
-									Opportunity to beta-test Appwrite releases
-								</p>
+								<p class="aw-info-boxes-content">Opportunity to beta-test Appwrite releases</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/unlock.svg" width="40" height="40" alt />
 								<h3 class="aw-info-boxes-title">
 									<span class="">Roadmap access</span>
 								</h3>
-								<p class="aw-info-boxes-content">
-									Special access to a more in-depth roadmap
-								</p>
+								<p class="aw-info-boxes-content">Special access to a more in-depth roadmap</p>
 							</li>
 						</ul>
 					</div>
@@ -371,252 +445,252 @@
 
 		<div class="aw-big-padding-section-level-1 u-position-relative">
 			<svg
-					class="u-position-absolute"
-					style="inset:0; inline-size:100%; max-block-size:100%;"
-					xmlns="http://www.w3.org/2000/svg"
-					width="1728"
-					height="1362"
-					viewBox="0 0 1728 1362"
-					fill="none"
+				class="u-position-absolute"
+				style="inset:0; inline-size:100%; max-block-size:100%;"
+				xmlns="http://www.w3.org/2000/svg"
+				width="1728"
+				height="1362"
+				viewBox="0 0 1728 1362"
+				fill="none"
 			>
 				<g opacity="0.72">
 					<g opacity="0.55" filter="url(#filter0_f_305_20517)">
 						<path
-								d="M-762.693 895.657L1023.74 463.004L74.501 160.957L-762.693 895.657Z"
-								fill="#FD366E"
+							d="M-762.693 895.657L1023.74 463.004L74.501 160.957L-762.693 895.657Z"
+							fill="#FD366E"
 						/>
 					</g>
 					<g opacity="0.55" filter="url(#filter1_f_305_20517)">
 						<path
-								d="M21.5016 914.457L801.149 274.875L379.001 56.9565L21.5016 914.457Z"
-								fill="#FE9567"
+							d="M21.5016 914.457L801.149 274.875L379.001 56.9565L21.5016 914.457Z"
+							fill="#FE9567"
 						/>
 					</g>
 					<g opacity="0.55" filter="url(#filter2_f_305_20517)">
 						<path
-								d="M-533.999 676.917L951.855 316.73L46.0014 299.457L-533.999 676.917Z"
-								fill="url(#paint0_linear_305_20517)"
+							d="M-533.999 676.917L951.855 316.73L46.0014 299.457L-533.999 676.917Z"
+							fill="url(#paint0_linear_305_20517)"
 						/>
 					</g>
 					<g filter="url(#filter3_f_305_20517)">
 						<path
-								d="M269.89 133.159L-221.74 700.337L613.654 915.093L881.723 433.09L269.89 133.159Z"
-								fill="#FD366E"
-								fill-opacity="0.6"
+							d="M269.89 133.159L-221.74 700.337L613.654 915.093L881.723 433.09L269.89 133.159Z"
+							fill="#FD366E"
+							fill-opacity="0.6"
 						/>
 					</g>
 					<g opacity="0.4" filter="url(#filter4_f_305_20517)">
 						<path
-								d="M932.457 -435.399L297.824 296.757L1376.21 573.98L1722.26 -48.2245L932.457 -435.399Z"
-								fill="#FD366E"
-								fill-opacity="0.6"
+							d="M932.457 -435.399L297.824 296.757L1376.21 573.98L1722.26 -48.2245L932.457 -435.399Z"
+							fill="#FD366E"
+							fill-opacity="0.6"
 						/>
 					</g>
 					<g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter5_f_305_20517)">
 						<ellipse
-								cx="479.672"
-								cy="45.906"
-								rx="479.672"
-								ry="45.906"
-								transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 615.184 302.02)"
-								fill="#EDEDF0"
+							cx="479.672"
+							cy="45.906"
+							rx="479.672"
+							ry="45.906"
+							transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 615.184 302.02)"
+							fill="#EDEDF0"
 						/>
 					</g>
 					<g style="mix-blend-mode:overlay" opacity="0.35" filter="url(#filter6_f_305_20517)">
 						<ellipse
-								cx="376.561"
-								cy="45.906"
-								rx="376.561"
-								ry="45.906"
-								transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 336.76 387.043)"
-								fill="#EDEDF0"
+							cx="376.561"
+							cy="45.906"
+							rx="376.561"
+							ry="45.906"
+							transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 336.76 387.043)"
+							fill="#EDEDF0"
 						/>
 					</g>
 					<g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter7_f_305_20517)">
 						<ellipse
-								cx="376.561"
-								cy="37.9305"
-								rx="376.561"
-								ry="37.9305"
-								transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 811.873 396.168)"
-								fill="#EDEDF0"
+							cx="376.561"
+							cy="37.9305"
+							rx="376.561"
+							ry="37.9305"
+							transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 811.873 396.168)"
+							fill="#EDEDF0"
 						/>
 					</g>
 					<g style="mix-blend-mode:soft-light" opacity="0.45" filter="url(#filter8_f_305_20517)">
 						<ellipse
-								cx="328.236"
-								cy="37.9305"
-								rx="328.236"
-								ry="37.9305"
-								transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 655.973 612.457)"
-								fill="#EDEDF0"
+							cx="328.236"
+							cy="37.9305"
+							rx="328.236"
+							ry="37.9305"
+							transform="matrix(-0.953344 0.301888 -0.656066 -0.754703 655.973 612.457)"
+							fill="#EDEDF0"
 						/>
 					</g>
 					<g opacity="0.4" filter="url(#filter9_f_305_20517)">
 						<path
-								d="M187.001 436.564L785.933 433.285C864.738 432.853 904.139 361.142 850.013 316.658L617.976 125.956L187.001 436.564Z"
-								fill="white"
+							d="M187.001 436.564L785.933 433.285C864.738 432.853 904.139 361.142 850.013 316.658L617.976 125.956L187.001 436.564Z"
+							fill="white"
 						/>
 					</g>
 					<g opacity="0.65" filter="url(#filter10_f_305_20517)">
 						<path
-								d="M-286.996 251.457L1415 127.5L-16.5 -9L-286.996 251.457Z"
-								fill="#FE9567"
-								fill-opacity="0.5"
+							d="M-286.996 251.457L1415 127.5L-16.5 -9L-286.996 251.457Z"
+							fill="#FE9567"
+							fill-opacity="0.5"
 						/>
 					</g>
 				</g>
 				<defs>
 					<filter
-							id="filter0_f_305_20517"
-							x="-1123.11"
-							y="-199.456"
-							width="2507.26"
-							height="1455.52"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter0_f_305_20517"
+						x="-1123.11"
+						y="-199.456"
+						width="2507.26"
+						height="1455.52"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="180.206" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter1_f_305_20517"
-							x="-243.923"
-							y="-208.468"
-							width="1310.5"
-							height="1388.35"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter1_f_305_20517"
+						x="-243.923"
+						y="-208.468"
+						width="1310.5"
+						height="1388.35"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter2_f_305_20517"
-							x="-799.425"
-							y="34.0316"
-							width="2016.71"
-							height="908.312"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter2_f_305_20517"
+						x="-799.425"
+						y="34.0316"
+						width="2016.71"
+						height="908.312"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="132.713" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter3_f_305_20517"
-							x="-721.937"
-							y="-367.036"
-							width="2103.86"
-							height="1782.33"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter3_f_305_20517"
+						x="-721.937"
+						y="-367.036"
+						width="2103.86"
+						height="1782.33"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter4_f_305_20517"
-							x="-202.372"
-							y="-935.595"
-							width="2424.83"
-							height="2009.77"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter4_f_305_20517"
+						x="-202.372"
+						y="-935.595"
+						width="2424.83"
+						height="2009.77"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="250.098" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter5_f_305_20517"
-							x="-456.67"
-							y="137.109"
-							width="1168.89"
-							height="550.144"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter5_f_305_20517"
+						x="-456.67"
+						y="137.109"
+						width="1168.89"
+						height="550.144"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter6_f_305_20517"
-							x="-512.662"
-							y="247.164"
-							width="920.626"
-							height="437.825"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter6_f_305_20517"
+						x="-512.662"
+						y="247.164"
+						width="920.626"
+						height="437.825"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="50.0197" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter7_f_305_20517"
-							x="-58.0175"
-							y="237.82"
-							width="972.025"
-							height="486.801"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter7_f_305_20517"
+						x="-58.0175"
+						y="237.82"
+						width="972.025"
+						height="486.801"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter8_f_305_20517"
-							x="-121.904"
-							y="453.609"
-							width="880.141"
-							height="458.625"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter8_f_305_20517"
+						x="-121.904"
+						y="453.609"
+						width="880.141"
+						height="458.625"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="63.0722" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter9_f_305_20517"
-							x="-29.2457"
-							y="-90.2906"
-							width="1120.51"
-							height="743.101"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter9_f_305_20517"
+						x="-29.2457"
+						y="-90.2906"
+						width="1120.51"
+						height="743.101"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<filter
-							id="filter10_f_305_20517"
-							x="-503.244"
-							y="-225.248"
-							width="2134.49"
-							height="692.952"
-							filterUnits="userSpaceOnUse"
-							color-interpolation-filters="sRGB"
+						id="filter10_f_305_20517"
+						x="-503.244"
+						y="-225.248"
+						width="2134.49"
+						height="692.952"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
 					>
 						<feFlood flood-opacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="108.124" result="effect1_foregroundBlur_305_20517" />
 					</filter>
 					<linearGradient
-							id="paint0_linear_305_20517"
-							x1="683.714"
-							y1="329.135"
-							x2="322.653"
-							y2="846.55"
-							gradientUnits="userSpaceOnUse"
+						id="paint0_linear_305_20517"
+						x1="683.714"
+						y1="329.135"
+						x2="322.653"
+						y2="846.55"
+						gradientUnits="userSpaceOnUse"
 					>
 						<stop stop-color="#FE9567" />
 						<stop offset="1" stop-color="#F02E65" />
@@ -627,8 +701,8 @@
 				<div class="aw-hero aw-u-max-width-800">
 					<h5 class="aw-display aw-u-color-text-primary">Become a Hero</h5>
 					<p class="aw-description">
-						Have you been actively providing value for the Appwrite community?
-						Apply now to join our hero program! Applications are open every three months.
+						Have you been actively providing value for the Appwrite community? Apply now to join our
+						hero program! Applications are open every three months.
 					</p>
 					<button class="aw-button is-transparent aw-u-cross-child-center u-margin-block-start-20">
 						Become a Hero
@@ -764,4 +838,4 @@
 			</div>
 		</div>
 	</div>
-</Homepage>
+</Main>
