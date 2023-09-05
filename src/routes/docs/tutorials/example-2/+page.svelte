@@ -233,7 +233,7 @@
 								<li>Last updated: July 16, 2023</li>
 								<li>
 									<button class="u-flex u-gap-4 u-cross-baseline">
-										<span class="icon-pencil-alt u-contents" aria-hidden="true" />
+										<span class="icon-pencil-alt=""u-contents" aria-hidden="true" />
 										<span>Update on GitHub</span>
 									</button>
 								</li>

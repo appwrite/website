@@ -16,7 +16,7 @@
 	/>
 </div>
 
-<Homepage>
+<Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1 theme-dark">
 			<div class="aw-big-padding-section-level-2">
@@ -198,4 +198,4 @@
 			</div>
 		</div>
 	</div>
-</Homepage>
+</Main>
