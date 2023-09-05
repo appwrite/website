@@ -13,6 +13,6 @@
   font-size:pxToRem(14);
 
   #{$theme-dark} & {
-    --p-numeric-badge-text-color: var(--aw-color-neutral-100);
+    --p-numeric-badge-text-color: var(--aw-color-greyscale-100);
   }
 }

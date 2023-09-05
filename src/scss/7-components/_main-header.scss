@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
-  --p-main-header-link-color: var(--aw-color-neutral-900);
+  --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
   position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
@@ -30,13 +30,13 @@
 
   #{$theme-dark} &,
   &#{$theme-dark} {
-    --p-main-header-link-color: var(--aw-color-neutral-100);
+    --p-main-header-link-color: var(--aw-color-greyscale-100);
     --p-main-header-border-color: rgb(255,255,255, 0.1);
   }
 
   #{$theme-light} &,
   &#{$theme-light} {
-    --p-main-header-link-color: var(--aw-color-neutral-900);
+    --p-main-header-link-color: var(--aw-color-greyscale-900);
     --p-main-header-border-color: rgb(0,0,0, 0.1);
   }
 

@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-radio-button {
-  --pr-adio-text-color: var(--aw-color-neutral-700);
-  --p-radio-bg-color: var(--aw-color-neutral-50);
+  --pr-adio-text-color: var(--aw-color-greyscale-700);
+  --p-radio-bg-color: var(--aw-color-greyscale-50);
 
   all:unset; cursor:pointer;
 
@@ -28,7 +28,7 @@
   }
 
   #{$theme-dark} & {
-    --pr-adio-text-color: var(--aw-color-neutral-50);
-    --p-radio-bg-color: var(--aw-color-neutral-0) / 0.18;
+    --pr-adio-text-color: var(--aw-color-greyscale-50);
+    --p-radio-bg-color: var(--aw-color-white) / 0.18;
   }
 }
