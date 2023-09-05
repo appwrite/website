@@ -1,13 +1,35 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-articles {
+  --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-default);
+  --p-grid-articles-item-border-color-default: var(--transparent);
+  --p-grid-articles-item-border-color-hover: var(--aw-color-smooth);
+
+  --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-default);
+  --p-grid-articles-item-bg-color-default: var(--transparent);
+  --p-grid-articles-item-bg-color-hover: var(--aw-color-white);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
   &-item {
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding:pxToRem(8); padding-block-end:pxToRem(12);
+
+    background-color:hsl(var(--p-grid-articles-item-bg-color));
+    border:solid pxToRem(1) hsl(var(--p-grid-articles-item-border-color));
+    transition:var(--transition); border-radius:pxToRem(16);
+
     &-content { display:flex; flex-direction:column; gap:pxToRem(16); }
+    &:where(:hover, :focus) {
+      --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-hover);
+      --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-hover);
+    }
+
   }
+  #{$theme-dark} & {
+    --p-grid-articles-item-border-color-hover: var(--aw-color-white)  / 0.2;
+    --p-grid-articles-item-bg-color-hover: var(--aw-color-white)  / 0.06;
+  }
+
   @media #{$break1} {
     gap:pxToRem(32);
   }

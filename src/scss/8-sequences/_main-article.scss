@@ -1,0 +1,15 @@
+@use '../abstract' as *;
+
+.#{$p}-main-article {
+  &-header {
+    display:flex; flex-direction:column; gap:pxToRem(8);
+    margin-block-end:pxToRem(48);
+    @media #{$break2open} {
+      padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--aw-color-border));
+    }
+  }
+
+  @media #{$break2open} {
+    .#{$p}-media-container { margin-inline:pxToRem(-55); }
+  }
+}
