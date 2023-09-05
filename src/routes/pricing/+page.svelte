@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { Tabs } from '$lib/UI';
-	import { MainFooter, FooterNav, PreFooter } from '$lib/components';
+	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
 
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
 </script>
