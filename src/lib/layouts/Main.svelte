@@ -1,5 +1,13 @@
+<script lang="ts" context="module">
+	export type NavLink = {
+		label: string;
+		href: string;
+	};
+</script>
+
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { MobileNav } from '$lib/components';
 	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
@@ -60,10 +68,40 @@
 	onMount(() => {
 		return setupThemeObserver();
 	});
+
+	let mobileNavOpen = false;
+
+	let navLinks: NavLink[] = [
+		{
+			label: 'Community',
+			href: '/community'
+		},
+		{
+			label: 'Docs',
+			href: '/docs'
+		},
+		{
+			label: 'Blog',
+			href: '/blog'
+		},
+		{
+			label: 'Pricing',
+			href: '/pricing'
+		},
+		{
+			label: 'Roadmap',
+			href: '/roadmap'
+		}
+	];
+
+	$: resolvedTheme = mobileNavOpen ? 'dark' : theme;
 </script>
 
 <div id="app" class="u-position-relative">
-	<section class="aw-mobile-header theme-{theme}" class:is-transparent={browser}>
+	<section
+		class="aw-mobile-header theme-{resolvedTheme}"
+		class:is-transparent={browser && !mobileNavOpen}
+	>
 		<div class="aw-mobile-header-start">
 			<a href="/">
 				<img
@@ -84,12 +122,20 @@
 			<button class="aw-button">
 				<span class="text">Get Started</span>
 			</button>
-			<button class="aw-button is-text" aria-label="open navigation">
-				<i class="aw-icon-hamburger-menu" />
+			<button
+				class="aw-button is-text"
+				aria-label="open navigation"
+				on:click={() => (mobileNavOpen = !mobileNavOpen)}
+			>
+				{#if mobileNavOpen}
+					<span aria-hidden="true" class="aw-icon-close" />
+				{:else}
+					<span aria-hidden="true" class="aw-icon-hamburger-menu" />
+				{/if}
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header theme-{theme}" class:is-transparent={browser}>
+	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
@@ -110,28 +156,18 @@
 						</a>
 						<nav class="aw-main-header-nav">
 							<ul class="aw-main-header-nav-list">
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href=".">Community</a>
-								</li>
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href="/docs">Docs</a>
-								</li>
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href=".">Blog</a>
-								</li>
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href="/pricing">Pricing</a>
-								</li>
-								<li class="aw-main-header-nav-item">
-									<a class="aw-main-header-nav-link" href=".">Roadmap</a>
-								</li>
+								{#each navLinks as { label, href }}
+									<li class="aw-main-header-nav-item">
+										<a class="aw-main-header-nav-link" {href}>{label}</a>
+									</li>
+								{/each}
 							</ul>
 						</nav>
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
 							<button class="aw-button is-text">
-								<i class="aw-icon-star" />
+								<span aria-hidden="true" class="aw-icon-star" />
 								<span class="text">Star on GitHub</span>
 								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 							</button>
@@ -145,6 +181,8 @@
 			</div>
 		</div>
 	</header>
+	<MobileNav bind:open={mobileNavOpen} links={navLinks} />
+
 	<main class="aw-main-section">
 		<slot />
 	</main>
