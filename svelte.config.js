@@ -6,7 +6,7 @@ import { markdoc } from 'svelte-markdoc-preprocess';
 import sequence from 'svelte-sequential-preprocessor';
 import adapter from '@sveltejs/adapter-auto';
 
-function absoulute (path) {
+function absoulute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path)
 }
 
