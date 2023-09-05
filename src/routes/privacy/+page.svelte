@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 
-	import FooterNav from "../../lib/components/FooterNav.svelte";
-	import MainFooter from "../../lib/components/MainFooter.svelte";
+	import FooterNav from '../../lib/components/FooterNav.svelte';
+	import MainFooter from '../../lib/components/MainFooter.svelte';
 </script>
 
 <div class="u-position-absolute" style="pointer-events:none;">
@@ -35,7 +35,7 @@
 	</svg>
 </div>
 
-<Homepage>
+<Main>
 	<div class="aw-container">
 		<div class="aw-grid-120-1fr-auto">
 			<header class="aw-grid-120-1fr-auto-header">
@@ -1341,4 +1341,4 @@
 		<FooterNav />
 		<MainFooter />
 	</div>
-</Homepage>
+</Main>

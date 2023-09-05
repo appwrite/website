@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
@@ -22,7 +22,7 @@
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
 
-<Homepage>
+<Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
@@ -373,4 +373,4 @@
 			</div>
 		</div>
 	</div>
-</Homepage>
+</Main>
