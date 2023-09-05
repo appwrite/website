@@ -91,7 +91,7 @@
   &.is-success        {  }
 
   &-search-wrapper {
-    position:relative; flex-basis:pxToRem(350);
+    position:relative; min-inline-size:pxToRem(350);
     input { block-size:pxToRem(48); padding-inline-start:pxToRem(40);  }
     .icon-search {
       position:absolute; inset-block-start:pxToRem(16);  inset-inline-start:pxToRem(16);

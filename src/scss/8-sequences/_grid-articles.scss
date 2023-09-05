@@ -5,6 +5,7 @@
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
   &-item {
     display:flex; flex-direction:column; gap:pxToRem(24);
+    padding:pxToRem(8); padding-block-end:pxToRem(12);
     &-content { display:flex; flex-direction:column; gap:pxToRem(16); }
   }
   @media #{$break1} {
