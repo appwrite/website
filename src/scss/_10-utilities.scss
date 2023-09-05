@@ -21,8 +21,9 @@
 }
 
 .#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
+.#{$p}-u-padding-inline-16          { padding-inline:pxToRem(16); }
 .#{$p}-u-margin-inline-8-negative   { margin-inline:pxToRem(-8); }
-.#{$p}-u-margin-inline-32-negative   { margin-inline:pxToRem(-32); }
+.#{$p}-u-margin-inline-32-negative  { margin-inline:pxToRem(-32); }
 
 .#{$p}-u-sep-block                  { border-block:solid pxToRem(1) hsl(var(--aw-color-smooth));}
 .#{$p}-u-sep-block-start            { border-block-start:solid pxToRem(1) hsl(var(--aw-color-smooth));}
