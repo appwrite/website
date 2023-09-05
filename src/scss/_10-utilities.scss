@@ -1,5 +1,6 @@
 @use "abstract" as *;
 
+.#{$p}-u-hide-mobile  { @media #{$break1}{ display:none!important; } }
 .#{$p}-u-opacity-90                 { opacity:0.9!important; }
 
 .#{$p}-u-padding-20                 { padding:pxToRem(20); }
