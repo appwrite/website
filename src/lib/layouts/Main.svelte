@@ -69,7 +69,7 @@
 		return setupThemeObserver();
 	});
 
-	let mobileNavOpen = false;
+	let isMobileNavOpen = false;
 
 	let navLinks: NavLink[] = [
 		{
@@ -94,13 +94,13 @@
 		}
 	];
 
-	$: resolvedTheme = mobileNavOpen ? 'dark' : theme;
+	$: resolvedTheme = isMobileNavOpen ? 'dark' : theme;
 </script>
 
 <div id="app" class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
-		class:is-transparent={browser && !mobileNavOpen}
+		class:is-transparent={browser && !isMobileNavOpen}
 	>
 		<div class="aw-mobile-header-start">
 			<a href="/">
@@ -125,9 +125,9 @@
 			<button
 				class="aw-button is-text"
 				aria-label="open navigation"
-				on:click={() => (mobileNavOpen = !mobileNavOpen)}
+				on:click={() => (isMobileNavOpen = !isMobileNavOpen)}
 			>
-				{#if mobileNavOpen}
+				{#if isMobileNavOpen}
 					<span aria-hidden="true" class="aw-icon-close" />
 				{:else}
 					<span aria-hidden="true" class="aw-icon-hamburger-menu" />
@@ -181,9 +181,9 @@
 			</div>
 		</div>
 	</header>
-	<MobileNav bind:open={mobileNavOpen} links={navLinks} />
+	<MobileNav bind:open={isMobileNavOpen} links={navLinks} />
 
-	<main class="aw-main-section">
+	<main class="aw-main-section" class:aw-u-hide-mobile={isMobileNavOpen}>
 		<slot />
 	</main>
 </div>
