@@ -1,6 +1,7 @@
 <script>
 	import { Docs } from '$lib/layouts';
 	import Sidebar from '$routes/docs/Sidebar.svelte';
+	import MainFooter from '../../../../lib/components/MainFooter.svelte';
 </script>
 
 <Docs variant="two-side-navs">
@@ -200,17 +201,21 @@
 				<div class="u-flex u-main-space-between">
 					<button class="aw-button is-text">
 						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-sub-body-500">Step 1: Setting up the environment</span>
+						<span class="aw-sub-body-500"
+							>Step 1<span class="aw-is-not-mobile">: Setting up the environment</span></span
+						>
 					</button>
 					<button class="aw-button is-secondary">
-						<span class="aw-sub-body-500">Step 3: Creating a login page</span>
+						<span class="aw-sub-body-500"
+							>Step 3<span class="aw-is-not-mobile">: Creating a login page</span></span
+						>
 						<span class="icon-cheveron-right" aria-hidden="true" />
 					</button>
 				</div>
 
 				<section class="aw-content-footer">
-					<header class="aw-content-footer-header">
-						<div class="aw-content-footer-header-start">
+					<header class="aw-content-footer-header u-cross-center">
+						<div class="aw-content-footer-header-start u-cross-center">
 							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 							<div class="u-flex u-gap-8">
 								<input
@@ -229,11 +234,10 @@
 						</div>
 						<div class="aw-content-footer-header-end">
 							<ul class="aw-metadata aw-caption-400">
-								<li>Last updated on July 16, 2023</li>
+								<li>Last updated: July 16, 2023</li>
 								<li>
-									<button class="">
-										<!-- TODO: wait for implement icons in website -->
-										<span class="icon-edit" aria-hidden="true" />
+									<button class="u-flex u-gap-4 u-cross-baseline">
+										<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 										<span>Update on GitHub</span>
 									</button>
 								</li>
@@ -242,15 +246,15 @@
 					</header>
 					<div class="aw-card is-transparent" style="--card-padding:1rem">
 						<label for="message">
-							<span class="aw-u-color-text-primary">What did you like?</span>
-							<span class="">(optional)</span>
+							<span class="aw-caption-400 aw-u-color-text-primary">What did you like?</span>
+							<span class="aw-caption-400">(optional)</span>
 						</label>
 						<textarea
 							class="aw-input-text u-margin-block-start-8"
 							id="message"
 							placeholder="Write your message"
 						/>
-						<div class="u-flex u-main-end u-margin-block-start-16">
+						<div class="u-flex u-gap-8 u-main-end u-margin-block-start-16">
 							<button class="aw-button is-text">
 								<span class="">Cancel</span>
 							</button>
@@ -308,60 +312,7 @@
 			</aside>
 		</article>
 	</main>
-	<footer class="aw-main-footer u-margin-block-start-48 u-small">
-		<div class="aw-main-footer-grid-1">
-			<ul class="aw-main-footer-grid-1-column-1 u-flex u-gap-8">
-				<li>
-					<button class="aw-icon-button" aria-label="Appwrite on Discord">
-						<span class="icon-discord" aria-hidden="true" />
-					</button>
-				</li>
-				<li>
-					<button class="aw-icon-button" aria-label="Appwrite GitHub">
-						<span class="icon-github" aria-hidden="true" />
-					</button>
-				</li>
-				<li>
-					<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-						<span class="icon-twitter" aria-hidden="true" />
-					</button>
-				</li>
-				<li>
-					<button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
-						<span class="icon-linkedin" aria-hidden="true" />
-					</button>
-				</li>
-				<li>
-					<button class="aw-icon-button" aria-label="Appwrite YouTube">
-						<span class="icon-youtube" aria-hidden="true" />
-					</button>
-				</li>
-			</ul>
-			<div class="aw-main-footer-grid-1-column-2">
-				<div class="aw-select is-colored">
-					<button class="physical-select">
-						<span class="icon-moon" aria-hidden="true" />
-						<span>Dark</span>
-					</button>
-					<span class="icon-cheveron-down" aria-hidden="true" />
-				</div>
-			</div>
-			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
-				<li>
-					<a href=".">Supports</a>
-				</li>
-				<li>
-					<a href=".">Status</a>
-				</li>
-				<li>
-					<a href=".">Changelog</a>
-				</li>
-			</ul>
-			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
-				Copyright © 2023 Appwrite
-			</div>
-		</div>
-	</footer>
+	<MainFooter variant="docs" />
 </Docs>
 
 <!-- <script type="module" src="/src/main.ts"></script>

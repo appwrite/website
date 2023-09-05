@@ -16,7 +16,7 @@
   .#{$p}-article-header   { grid-area:a-header; block-size:auto; padding-block-start:0; }
   .#{$p}-side-nav         { grid-area:side-a; }
   .#{$p}-article          { grid-area:main;   }
-  .#{$p}-references-menu  { grid-area:side-b; padding-inline-end:var(--p-grid-huge-navs-padding-inline); }
+  .#{$p}-references-menu  { grid-area:side-b; }
   .#{$p}-main-footer      { grid-area:footer; margin-inline:var(--p-grid-huge-navs-padding-inline); }
 
   .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
