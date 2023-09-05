@@ -624,17 +624,16 @@
 				</defs>
 			</svg>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
-				<div class="aw-container">
-					<div class="aw-hero aw-u-max-width-800">
-						<h5 class="aw-display aw-u-color-text-primary">Become a Hero</h5>
-						<p class="aw-description aw-u-color-text-primary" style="opacity:0.64">
-							Have you been actively providing value for the Appwrite community?
-							Apply now to join our hero program! Applications are open every three months.
-						</p>
-						<button class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20">
-							Become a Hero
-						</button>
-					</div>
+				<div class="aw-hero aw-u-max-width-800">
+					<h5 class="aw-display aw-u-color-text-primary">Become a Hero</h5>
+					<p class="aw-description">
+						Have you been actively providing value for the Appwrite community?
+						Apply now to join our hero program! Applications are open every three months.
+					</p>
+					<button class="aw-button is-transparent aw-u-cross-child-center u-margin-block-start-20">
+						Become a Hero
+					</button>
+				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
 				<div class="aw-container u-position-relative">
