@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Homepage } from '$lib/layouts';
+	import { Main } from '$lib/layouts';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
@@ -7,6 +7,14 @@
 	import PreFooter from '$lib/components/PreFooter.svelte';
 </script>
 
+<!-- <div
+	class="u-position-absolute"
+	style="
+	width: 100vw;
+	max-width: 100%; overflow: hidden;
+	height: 1000px;
+"
+> -->
 <div class="u-position-absolute" style="margin-block-start:-36%; pointer-events:none; z-index: 10">
 	<img
 		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);"
@@ -21,8 +29,9 @@
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
+<!-- </div> -->
 
-<Homepage>
+<Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
@@ -373,4 +382,4 @@
 			</div>
 		</div>
 	</div>
-</Homepage>
+</Main>
