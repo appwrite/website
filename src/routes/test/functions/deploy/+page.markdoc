@@ -1,22 +1,20 @@
 ---
 layout: article
-title: Hello World :)
+title: Deploy
 description: This is the description used for SEO.
-difficulty: beginner
-readtime: 3
+difficulty: intermediate
+readtime: 10
 ---
-
-# Appwrite Functions
 
 Appwrite Functions are mini-applications in Appwrite with their own endpoints. Each function can have many deployments, which can be thought of as versions of the mini-application.
 
 Functions can be created and deployed in different ways to meet your unique development habits. You can automatically deploy Appwrite Functions from source control, build your own deployment pipelines using the Appwrite CLI, or upload code files manually. Here's everything you need to know to deploy your first Appwrite Function.
 
-## [Git](#git)
+# [Git](#git)
 
 The recommended way to manage your Appwrite Function deployments is to use a version control system, like Git. This offers simple versioning and collaboration that will easily fit into the rest of your development workflow.
 
-### Create Function
+## Create Function
 
 Before deploying your function with Git, create a new function attached to your Git repo.
 
@@ -28,20 +26,19 @@ Before deploying your function with Git, create a new function attached to your 
 6. Input the root directory of the function inside the repository. 
 7. If you don't want deploy comments to be made on your pull requests or commits, select **Silent mode**.
 8. Name your function, select a runtime that matches your function, and enter entrypoint.
-9. If you have build steps, like installing dependencies, input the commands into the **Build settings** heading's **Command** field. 
-   - For example, `npm install && npm build`.
+9. If you have build steps, like installing dependencies, input the commands into the **Build settings** heading's **Command** field. For example, `npm install && npm build`.
 10. Finally, configure the execute permissions of the function.
 
-### Deploy
+## Deploy
 
 1. Using Git, checkout the branch you configured as the production branch when creating the Appwrite Function.
 2. Create a new commit.
 3. Push your new commit.
 4. A new deployment will be automatically created, built and activated.
 
-## [CLI](#cli)
+# [CLI](#cli)
 
-### CLI Setup
+## CLI Setup
 
 Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/command-line) the CLI.
 
@@ -57,15 +54,15 @@ Edit the generated code, add dependencies, and deploy the function using the fol
 appwrite deploy function
 ```
 
-### Overwrite Warning
+## Overwrite Warning
 
 If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
-### Manual Deployment
+## Manual Deployment
 
 You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.
 
-```plaintext
+```text
 .
 ├── package.json
 └── index.js
@@ -73,20 +70,18 @@ You can upload your functions to be deployed using the Appwrite Console. The exa
 
 First, navigate inside the folder that contains your dependency file. Package your code files into the `.tar.gz` format:
 
-- **Unix**: 
+{% multicode %}
   ```bash
   tar --exclude code.tar.gz -czf code.tar.gz .
   ```
+  ```cmd
+  tar --exclude code.tar.gz -czf code.tar.gz .
+  ```
+  ```powershell
+  tar --exclude code.tar.gz -czf code.tar.gz .
+  ```
+{% /multicode %}
 
-- **CMD**: 
-  ```bash
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-
-- **PowerShell**: 
-  ```bash
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
 
 Next, navigate to your Appwrite Console and upload the function.
 
@@ -98,7 +93,7 @@ Next, navigate to your Appwrite Console and upload the function.
 6. Select **Activate deployment after build**.
 7. Click **Create**.
 
-## [Domains](#domains)
+# [Domains](#domains)
 
 Each deployed function can have its own domain. By default, one is generated for each of your functions.
 
@@ -111,9 +106,9 @@ To find or add a domain:
 5. Copy the **CNAME** record and add it to your domain registrar.
 6. Click **Go to console** and wait for verification and certificate generation.
 
-Note: DNS records can take up to 48 hours to propagate.
+DNS records can take up to 48 hours to propagate.
 
-## [Debugging Build](#debugging)
+# [Debugging Build](#debugging)
 
 After deploying a function, you can find the status and build logs in the Appwrite Console.
 
@@ -122,7 +117,7 @@ After deploying a function, you can find the status and build logs in the Appwri
 3. Under the **Deployments** tab, find the status of the current and previous deployments.
 4. Access build logs by clicking the **Build logs** button.
 
-## [Redeploy Builds](#redeploy)
+# [Redeploy Builds](#redeploy)
 
 After updating the configuration, redeploy your function for changes to take effect. You can also redeploy to retry failed builds.
 
@@ -132,7 +127,3 @@ After updating the configuration, redeploy your function for changes to take eff
 4. Redeploy by clicking the triple-dots beside an execution, and hitting the **Redeploy** button.
 
 Redeployment behavior varies depending on how the initial deployment was created.
-
----
-
-kjahsdlkjghasldjkf

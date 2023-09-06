@@ -1915,6 +1915,8 @@ As your functions grow, you may find yourself needing to split your code into mu
 This helps you keep your codebase maintainable and easy to read. 
 Here's how you can accomplish code splitting.
 TODO TABS
+
+{% multicode %}
 ```js
 // src/utils.js
 

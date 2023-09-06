@@ -16,6 +16,10 @@
 	import java from 'highlight.js/lib/languages/java';
 	import csharp from 'highlight.js/lib/languages/csharp';
 	import cpp from 'highlight.js/lib/languages/cpp';
+	import bash from 'highlight.js/lib/languages/bash';
+	import powershell from 'highlight.js/lib/languages/powershell';
+	import dos from 'highlight.js/lib/languages/dos';
+	import yaml from 'highlight.js/lib/languages/yaml';
 
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
@@ -38,6 +42,10 @@
 	hljs.registerLanguage('java', java);
 	hljs.registerLanguage('dart', dart);
 	hljs.registerLanguage('deno', javascript);
+	hljs.registerLanguage('bash', bash);
+	hljs.registerLanguage('powershell', powershell);
+	hljs.registerLanguage('cmd', dos);
+	hljs.registerLanguage('yaml', yaml);	
 </script>
 
 <script lang="ts">
