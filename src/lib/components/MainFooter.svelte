@@ -74,13 +74,13 @@
 				{/each}
 			</ul>
 			<div class="aw-main-footer-grid-1-column-2">
-				<div class="aw-select is-colored">
-					<button class="physical-select">
-						<span class="icon-moon" aria-hidden="true" />
+				<button class="aw-select is-colored">
+					<div class="physical-select">
+						<span class="aw-icon-dark" aria-hidden="true" />
 						<span>Dark</span>
-					</button>
+					</div>
 					<span class="icon-cheveron-down" aria-hidden="true" />
-				</div>
+				</button>
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>

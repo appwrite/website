@@ -9,32 +9,32 @@
 
     /* icon */
     --p-icon-button-icon-color-default: var(--aw-color-secondary);
-    --p-icon-button-icon-color-hover: var(--aw-color-primary-500);
+    --p-icon-button-icon-color-hover: var(--aw-color-pink-500);
 
     /* background color */
-    --p-icon-button-bg-color-default: var(--aw-color-neutral-0) / 0.64;
+    --p-icon-button-bg-color-default: var(--aw-color-white) / 0.64;
 
     /* border color */
     --p-icon-button-border-color-default: var(--transparent);
-    --p-icon-button-border-color-focus: var(--aw-color-primary-500);
+    --p-icon-button-border-color-focus: var(--aw-color-pink-500);
 
     /* box shadow color */
     --p-icon-button-shadow-color-default: var(--transparent);
-    --p-icon-button-shadow-color-focus: var(--aw-color-primary-500) / 0.16;
+    --p-icon-button-shadow-color-focus: var(--aw-color-pink-500) / 0.16;
   }
   @mixin dark-mode() {
     /* icon */
-    --p-icon-button-icon-color-hover: var(--aw-color-neutral-50);
+    --p-icon-button-icon-color-hover: var(--aw-color-greyscale-50);
 
     /* background color */
-    --p-icon-button-bg-color-default: var(--aw-color-neutral-0) / 0.08;
+    --p-icon-button-bg-color-default: var(--aw-color-white) / 0.08;
 
     /* border color */
-    --p-icon-button-border-color-focus: var(--aw-color-neutral-50);
+    --p-icon-button-border-color-focus: var(--aw-color-greyscale-50);
 
     /* box shadow color */
     --p-icon-button-shadow-color-default: var(--transparent);
-    --p-icon-button-shadow-color-focus: var(--aw-color-neutral-0) / 0.16;
+    --p-icon-button-shadow-color-focus: var(--aw-color-white) / 0.16;
   }
   @include light-mode();
   display:grid; place-content:center;

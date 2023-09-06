@@ -62,16 +62,16 @@
 						</button>
 						<ul class="aw-side-nav-inner">
 							<li>
-								<button class="aw-side-nav-button is-selected">
+								<a href="/docs/product/auth" class="aw-side-nav-button" data-sveltekit-noscroll>
 									<span class="aw-icon-holder" />
-									<span class="aw-caption-400">Inner item</span>
-								</button>
+									<span class="aw-caption-400">Getting started</span>
+								</a>
 							</li>
 							<li>
-								<button class="aw-side-nav-button">
+								<a href="/docs/product/auth/email-password" class="aw-side-nav-button" data-sveltekit-noscroll>
 									<span class="aw-icon-holder" />
-									<span class="aw-caption-400">Inner item</span>
-								</button>
+									<span class="aw-caption-400">Email and Password</span>
+								</a>
 							</li>
 						</ul>
 					</li>

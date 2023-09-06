@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-list {
-  --p-list-text-color: var(--aw-color-neutral-700);
+  --p-list-text-color: var(--aw-color-greyscale-700);
   color: hsl(var(--p-list-text-color));
 
   display:flex; flex-direction:column; gap:pxToRem(4);
@@ -14,11 +14,11 @@
       background-color:currentColor;
     }
   }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
 }
 
 .#{$p}-numeric-list {
-  --p-list-text-color: var(--aw-color-neutral-700);
+  --p-list-text-color: var(--aw-color-greyscale-700);
   color: hsl(var(--p-list-text-color));
 
   display:flex; flex-direction:column; gap:pxToRem(8);
@@ -31,11 +31,11 @@
       @include numeric-badge;
     }
   }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
 }
 
 .#{$p}-checked-list {
-  --p-list-text-color: var(--aw-color-neutral-700);
+  --p-list-text-color: var(--aw-color-greyscale-700);
   color: hsl(var(--p-list-text-color));
 
   display:flex; flex-direction:column; gap:pxToRem(8);
@@ -44,7 +44,7 @@
     display:flex; gap:pxToRem(8);
   }
   [type="checkbox"] { cursor:initial; }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-neutral-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
 }
 
 .#{$p}-checked-list-circle {
@@ -56,5 +56,5 @@
 }
 
 .#{$p}-pink-dots {
-  ::marker { color:hsl(var(--aw-color-primary-500)); }
+  ::marker { color:hsl(var(--aw-color-pink-500)); }
 }
