@@ -1,7 +1,7 @@
 <script>
 	import { Docs } from '$lib/layouts';
 	import Sidebar from '$routes/docs/Sidebar.svelte';
-	import MainFooter from "../../../../lib/components/MainFooter.svelte";
+	import MainFooter from "$lib/components/MainFooter.svelte";
 </script>
 
 <Docs variant="two-side-navs">
@@ -363,19 +363,4 @@
 	</main>
 
 	<MainFooter variant="docs"/>
-
 </Docs>
-
-<!-- <script type="module" src="/src/main.ts"></script>
-
-<script>
-    $(document).ready(function() {
-        $("#MenuButton, #ToggleMenu").on("click", function(){
-            $(".aw-grid-two-side-navs").toggleClass("is-open");
-            $(".aw-references-menu").removeClass("is-open");
-        });
-
-
-       
-    });
-</script> -->

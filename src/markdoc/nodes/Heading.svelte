@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getContext, hasContext, onMount } from 'svelte';
-	import type { LayoutContext } from '../layouts/Tutorial.svelte';
+	import { getContext, hasContext } from 'svelte';
+	import type { LayoutContext } from '../layouts/Article.svelte';
 
 	export let level: number;
 	export let id: string | undefined = undefined;
@@ -16,7 +16,7 @@
 			}
 			n[id] = {
 				step,
-				text: element?.textContent ?? ''
+				title: element?.textContent ?? ''
 			};
 
 			return n;
