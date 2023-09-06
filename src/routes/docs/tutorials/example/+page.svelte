@@ -251,6 +251,20 @@
 					</section>
 				</section>
 
+				<section class="aw-article-content-section">
+					<section class="aw-article-content-sub-section">
+						<blockquote class="aw-blockquote">
+							<p class="aw-description">
+								“Lorem ipsum dolor sit amet consectetur. Diam fermentum tellus ante purus nullam eget sit id ac. Purus viverra ultrices fusce posuere sed enim duis aliquam sit. Vitae fames potenti donec ultricies in. Quis sed iaculis consectetur cras feugiat nibh gravida tincidunt volutpat. Eleifend vel blandit cras tempor sed nam quis aliquet. Facilisi tempor amet id integer gravida duis. Aliquet nulla tellus risus tortor neque vestibulum arcu.”
+							</p>
+							<footer class="aw-blockquote-footer">
+								<div class="aw-sub-body-400 aw-u-color-text-primary" role="">[quoted name]</div>
+								<div class="aw-caption-400">[role - optional]</div>
+							</footer>
+						</blockquote>
+					</section>
+				</section>
+
 				<section class="aw-content-footer">
 					<header class="aw-content-footer-header">
 						<div class="aw-content-footer-header-start">
