@@ -65,6 +65,16 @@ This is a nice table:
 
 ---
 
+### Lifecycle {% #life-cycle %}
+
+There is a clear lifecycle for all Appwrite Functions, from beginning to end.
+Here's everything that happens during a function execution.
+
+1. The function is invoked.
+2. Appwrite passes in request information like headers, body or path through the `context.req` object.
+3. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
+4. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
+
 ### And a nested list:
 
 - level 1 item
@@ -82,7 +92,6 @@ This is a nice table:
 - level 1 item
 
 ### Image
-
 
 ![](https://pink.appwrite.io/articles/announcement.png){% .u-only-light %}
 
