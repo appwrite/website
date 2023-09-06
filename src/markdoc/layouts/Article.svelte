@@ -7,6 +7,7 @@
 			{
 				title: string;
 				step?: number;
+				visible: boolean;
 			}
 		>
 	>;
@@ -28,8 +29,9 @@
 	const headings = getContext<LayoutContext>('headings');
 
 	$: toc = Object.entries($headings).map(([id, heading]) => ({
-		...heading,
 		href: `#${id}`,
+		title: heading.title,
+		step: heading.step,
 	}));
 </script>
 

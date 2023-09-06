@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, hasContext } from 'svelte';
+	import { getContext, hasContext, onMount } from 'svelte';
 	import type { LayoutContext } from '../layouts/Article.svelte';
 
 	export let level: number;
@@ -7,21 +7,37 @@
 	export let step: number | undefined = undefined;
 
 	const tag = `h${level}`;
+	const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 	let element: HTMLElement | undefined;
 
-	$: if (element && hasContext('headings')) {
-		getContext<LayoutContext>('headings').update((n) => {
-			if (id === undefined) {
-				return n;
-			}
-			n[id] = {
-				step,
-				title: element?.textContent ?? ''
-			};
+	onMount(() => {
+		if (!element || !$ctx || !id) {
+			return;
+		}
 
-			return n;
+		$ctx = {
+			...$ctx,
+			[id]: {
+				step,
+				title: element?.textContent ?? '',
+				visible: false
+			}
+		};
+
+		const callback = (entries: IntersectionObserverEntry[]) => {
+			entries.forEach((entry) => {
+				if (id && $ctx && id in $ctx) {
+					$ctx[id].visible = entry.isIntersecting;
+				}
+			});
+		};
+		const observer = new IntersectionObserver(callback, {
+			root: null,
+			threshold: 1
 		});
-	}
+
+		observer.observe(element);
+	});
 </script>
 
 <svelte:element
