@@ -263,6 +263,13 @@
 							</footer>
 						</blockquote>
 					</section>
+					<section class="aw-article-content-sub-section">
+						<div class="aw-inline-info">
+							<span class="icon-info" aria-hidden="true"></span>
+							<h5 class="aw-sub-body-500 aw-u-color-text-primary">Lorem ipsum dolor sit amet consectetur</h5>
+							<p class="aw-paragraph-md">Lorem ipsum dolor sit amet consectetur. Sed volutpat nec pharetra nisl dis. Donec accumsan in orci volutpat augue sed sit sollicitudin. Nunc nec nunc nisl faucibus cursus diam tellus aliquet. Ac blandit et varius egestas.</p>
+						</div>
+					</section>
 				</section>
 
 				<section class="aw-content-footer">
