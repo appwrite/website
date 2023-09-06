@@ -3,49 +3,55 @@
 .#{$p}-input-text {
   @mixin input-light-mode {
     --p-input-placeholder-text-color: var(--aw-color-secondary);
-    --p-input-focus-box-shadow-color: var(--aw-color-white) / 0.16;
-
-    --p-input-text-color: var(--p-input-text-color-default);
-    --p-input-bg-color: var(--p-input-bg-color-default);
-    --p-input-border-color: var(--p-input-border-color-default);
+    --p-input-focus-box-shadow-color: var(--aw-color-black) / 0.10;
 
     --p-input-text-color-default: var(--aw-color-primary);
-    --p-input-bg-color-default: var(--aw-color-greyscale-100);
+    --p-input-bg-color-default: var(--aw-color-white);
     --p-input-border-color-default: var(--aw-color-black) / 0.06;
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--p-input-bg-color-default);
-    --p-input-border-color-hover: var(--aw-color-greyscale-900);
+    --p-input-bg-color-hover: var(--aw-color-greyscale-25);
+    --p-input-border-color-hover: var(--aw-color-black) / 0.06;
 
-    --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus: var(--aw-color-greyscale-100);
-    --p-input-border-color-focus: var(--aw-color-greyscale-900);
+    --p-input-text-active: var(--p-input-text-color-default);
+    --p-input-bg-active: var(--aw-color-white);
+    --p-input-border-active: var(--p-input-border-color-default);
 
     --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-white) / 0.04;
+    --p-input-bg-color-disabled: var(--aw-color-white);
     --p-input-border-color-disabled: var(--aw-color-black) / 0.06;
+
+    --p-input-text-color-focus: var(--p-input-text-color-default);
+    --p-input-bg-color-focus: var(--aw-color-white);
+    --p-input-border-color-focus: var(--aw-color-greyscale-900);
 
     //--p-input-text-color-error: var(--aw-color-greyscale-700);
     //--p-input-bg-color-error: var(--aw-color-white);
     --p-input-border-color-error: var(--aw-color-red-500);
   }
   @mixin input-dark-mode {
+    --p-input-focus-box-shadow-color: var(--aw-color-white) / 0.16;
+
     --p-input-text-color-default: var(--aw-color-greyscale-100);
-    --p-input-bg-color-default: var(--aw-color-white) / 0.04;
-    --p-input-border-color-default: var(--aw-color-white) / 0.08;
+    --p-input-bg-color-default: var(--aw-color-white) / 0.08;
+    --p-input-border-color-default: var(--aw-color-white) / 0.10;
     --p-input-border-color-error-default: var(--aw-color-red-500);
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--p-input-bg-color-default);
-    --p-input-border-color-hover: var(--aw-color-primary);
+    --p-input-bg-color-hover: var(--aw-color-white) / 0.12;
+    --p-input-border-color-hover: var(--aw-color-white) / 0.10;
 
-    --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus: var(--p-input-bg-color-default);
-    --p-input-border-color-focus: var(--aw-color-greyscale-50);
+    --p-input-text-color-active: var(--p-input-text-color-default);
+    --p-input-bg-color-active: var(--aw-color-white) / 0.08;
+    --p-input-border-color-active: var(--aw-color-white) / 0.10;
 
     --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-white) / 0.04;
-    --p-input-border-color-disabled: var(--aw-color-smooth) / 0.08;
+    --p-input-bg-color-disabled: var(--aw-color-white) / 0.08;
+    --p-input-border-color-disabled: var(--aw-color-white) / 0.10;
+
+    --p-input-text-color-focus: var(--p-input-text-color-default);
+    --p-input-bg-color-focus: var(--aw-color-white) / 0.08;
+    --p-input-border-color-focus: var(--aw-color-greyscale-100);
 
     //--p-input-text-color-error: var(--aw-color-greyscale-700);
     //--p-input-bg-color-error: var(--aw-color-white);
@@ -53,6 +59,9 @@
   }
 
   @include input-light-mode;
+  --p-input-text-color: var(--p-input-text-color-default);
+  --p-input-bg-color: var(--p-input-bg-color-default);
+  --p-input-border-color: var(--p-input-border-color-default);
 
   #{$theme-dark} & {
     @include input-dark-mode();
@@ -77,11 +86,20 @@
   &.is-warning,
   &.is-success        { box-shadow:none; }
 
-  &:hover:where(:not(#{$disabled})) { --p-input-border-color: var(--p-input-border-color-hover); }
+  &:hover:where(:not(#{$disabled})) {
+    --p-input-bg-color: var(--p-input-bg-color-hover);
+    --p-input-border-color: var(--p-input-border-color-hover);
+  }
   &:is(:focus) {
     --p-input-bg-color: var(--p-input-bg-color-focus);
     --p-input-border-color: var(--p-input-border-color-focus);
     box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
+  }
+  &:is(:active) {
+    --p-input-bg-color: var(--p-input-bg-color-active);
+    --p-input-border-color: var(--p-input-border-color-active);
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
+    border-width:pxToRem(1);
   }
   &:is(#{$disabled}) {
     --p-input-text-color: var(--p-input-text-color-disabled);
