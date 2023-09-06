@@ -1,0 +1,63 @@
+---
+layout: article
+title: Migrate from Firebase
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 20
+---
+
+If you're looking to migrate your project from Firebase to Appwrite, the Appwrite Migrations tool can help streamline the process. Here's everything you need to know to get started.
+
+# Things to keep in mind
+
+- Appwrite will not incur usage charges during migrations, but Firebase may still incur service charges.
+- Appwrite Migrations only supports Firestore as a database source; Realtime Database is currently not supported.
+- At the moment, only top-level document migration is supported. Nested documents will not be migrated automatically.
+- OAuth users will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
+- Functions are not automatically migrated because of syntax and runtime differences.
+
+# Migrating to Appwrite from Firebase
+
+To begin migrating to Appwrite, follow these steps.
+
+{% section #create-service-account step=1 title="Create service account" %}
+1. Open your Firebase console.
+
+2. Access your **Project Settings** by clicking the gear icon.
+
+3. Click on **Service Accounts**, then click on the **Manage service account permissions** link, which will redirect you to the Google Cloud Console.
+
+4. Click on **Create Service Account**, provide a name, ID, and description, and click **Continue**.
+
+5. Grant the service account the following roles
+
+| Role                    | Description                                                                  |
+|-------------------------|------------------------------------------------------------------------------|
+| Firebase Viewer         | Read access to your entire Firebase project, including Database and Storage. |
+| Identity Toolkit Viewer | Read access to your users, including their hash config.                      |
+
+{% /section %}
+
+
+{% section #create-api-key step=2 title="Create API key" %}
+
+1. Find the service account you just created.
+
+1. Click the triple-dot icon to the right to see more options and click the **Manage keys** botton.
+
+1. Click **Add Key** and select **Create new key**. Choose **JSON** as the key type and click **Create**. This will download a JSON file to your computer.
+
+{% /section %}
+
+{% section #start-migration step=3 title="Start Migration" %}
+
+1. Create a new project and navigate to the **Migrations** tab in **Project Settings**.
+
+1. Click on the **Create Migration** button and select **Firebase** as your source.
+
+1. Upload the JSON file to Appwrite and follow the migration wizard to select which resources you need to migrate.
+
+1. After completing the migration wizard, the migration will begin and run in the background. You can close the browser.
+
+1. Finally, add the platforms for your [Web](/docs/getting-started-for-web), [Flutter](/docs/getting-started-for-flutter), [Android](/docs/getting-started-for-android), and [iOS](/docs/getting-started-for-apple) apps. Also, remember to [add appropriate permissions](/docs/permissions) to the migrated resources to protect user data and privacy.
+{% /section %}
