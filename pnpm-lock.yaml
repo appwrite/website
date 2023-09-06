@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@appwrite.io/pink':
+    specifier: 0.0.7-sl10.0
+    version: 0.0.7-sl10.0
   '@fontsource/inter':
     specifier: ^5.0.8
     version: 5.0.8
@@ -97,6 +100,18 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
     dev: true
+
+  /@appwrite.io/pink-icons@0.0.7-sl10.0:
+    resolution: {integrity: sha512-lEC79/0YEWVbwtIFgwONbBelNX07I2d3q2fmzub3X3DR/0ZB4JMy5zyO0h8EMbOB00DxkI8rW7KlwDSstQ3fGw==}
+    dev: false
+
+  /@appwrite.io/pink@0.0.7-sl10.0:
+    resolution: {integrity: sha512-vAwXT9XAM9K5m7c0wU2+eCBxwEEg6974Y2lw9qW2iHN+0mKABBDh+7UVCuIHn3pbgVY/UYL0Vo0M0GrQIlmZMQ==}
+    dependencies:
+      '@appwrite.io/pink-icons': 0.0.7-sl10.0
+      normalize.css: 8.0.1
+      the-new-css-reset: 1.9.0
+    dev: false
 
   /@babel/runtime@7.22.15:
     resolution: {integrity: sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==}
@@ -3624,6 +3639,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /normalize.css@8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
+
   /npmlog@6.0.2:
     resolution: {integrity: sha512-/vBvz5Jfr9dT/aFWd0FIRf+T/Q2WBsLENygUaFUqstqsycmZAP/t5BvFJTK0viFmSUxiUKTUplWy5vt+rvKIxg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
@@ -4726,6 +4745,10 @@ packages:
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
+
+  /the-new-css-reset@1.9.0:
+    resolution: {integrity: sha512-bKM9xgiVFTqSuWle952Xu/YWE7qYMzPHWxerO0edxjBfPIm2T4k2tRpIJ45IU7knY35Jr6Fb5P/TVm2RIsB//Q==}
+    dev: false
 
   /thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
