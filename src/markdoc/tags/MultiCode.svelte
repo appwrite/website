@@ -17,11 +17,11 @@
 
 	const { snippets, selected } = getContext<CodeContext>('multi-code');
 
-	snippets.subscribe(n => {
+	snippets.subscribe((n) => {
 		if ($selected === null && n.size > 0) {
 			$selected = Array.from(n)[0];
 		}
-	})
+	});
 </script>
 
 <section class="aw-code-snippet" aria-label="code-snippet panel">

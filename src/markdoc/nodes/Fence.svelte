@@ -58,14 +58,6 @@
 			</div>
 			<div class="aw-code-snippet-header-end">
 				<ul class="buttons-list u-flex u-gap-8">
-					<li class="buttons-list-item u-flex u-cross-child-scenter">
-						<div class="aw-select">
-							<select>
-								<option value="Web SDK">Web SDK</option>
-							</select>
-							<span class="icon-cheveron-down" aria-hidden="true" />
-						</div>
-					</li>
 					<li class="buttons-list-item aw-u-padding-inline-start-20">
 						<button class="aw-icon-button" aria-label="copy code from code-snippet"
 							><span class="icon-duplicate" aria-hidden="true" /></button
