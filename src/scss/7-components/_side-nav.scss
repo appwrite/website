@@ -5,11 +5,11 @@
   --p-side-nav-item-icon-color: var(--p-side-nav-icon-item-color-default);
   --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-default);
 
-  --p-side-nav-text-item-color-default: var(--aw-color-neutral-900);
-  --p-side-nav-icon-item-color-default: var(--aw-color-neutral-250);
+  --p-side-nav-text-item-color-default: var(--aw-color-greyscale-900);
+  --p-side-nav-icon-item-color-default: var(--aw-color-greyscale-250);
   --p-side-nav-item-bg-color-default:  var(--transparent);
 
-  --p-side-nav-item-bg-color-hover: var(--aw-color-neutral-50);
+  --p-side-nav-item-bg-color-hover: var(--aw-color-greyscale-50);
 
   --p-side-nav-item-icon-color-selected: linear-gradient( hsla(343, 98%, 60%, 1), hsla(22, 98%, 60%, 1) );
 
@@ -73,7 +73,7 @@
   }
 
   #{$theme-dark} & {
-    --p-side-nav-text-item-color-default: var(--aw-color-neutral-100);
-    --p-side-nav-item-bg-color-hover: var(--aw-color-neutral-0) / 0.08;
+    --p-side-nav-text-item-color-default: var(--aw-color-greyscale-100);
+    --p-side-nav-item-bg-color-hover: var(--aw-color-white) / 0.08;
   }
 }

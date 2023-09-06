@@ -1,20 +1,21 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
-  all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none;
+  all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
   color:hsl(var(--aw-color-primary)); font-size:pxToRem(14);
   select, .physical-select {
     all:unset; display:block; padding-inline-end:pxToRem(32); cursor:pointer;
+    inline-size:100%;
     &:focus-visible { }
   }
   [class*="icon"]:first-child {margin-inline-end:pxToRem(4); }
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
-    display:grid; place-content:center;
+    display:grid; place-content:center; pointer-events:none;
   }
   &.is-colored {
-    --p-select-bg-color: var(--aw-color-neutral-0);
-    --p-select-border-color: var(--aw-color-neutral-50);
+    --p-select-bg-color: var(--aw-color-white);
+    --p-select-border-color: var(--aw-color-greyscale-50);
 
     background-color: hsl(var(--p-select-bg-color));
     border: solid pxToRem(1) hsl(var(--p-select-border-color));
@@ -22,8 +23,8 @@
     padding-inline:pxToRem(8); padding-block:pxToRem(7); border-radius:pxToRem(8); line-height:1.2;
 
     #{$theme-dark} & {
-      --p-select-bg-color: var(--aw-color-neutral-0) / 0.08;
-      --p-select-border-color: var(--aw-color-neutral-50) / 0.08;
+      --p-select-bg-color: var(--aw-color-white) / 0.08;
+      --p-select-border-color: var(--aw-color-greyscale-50) / 0.08;
     }
   }
 }

@@ -8,6 +8,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { MobileNav } from '$lib/components';
+	import { isVisible } from '$lib/utils/isVisible';
 	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
@@ -33,12 +34,12 @@
 	}
 
 	function isInViewport(element: Element): boolean {
-		const rect = element.getBoundingClientRect();
-		const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-		const vertInView = rect.top <= 32 && rect.bottom >= 32;
-		const horInView = rect.left <= windowWidth && rect.right >= 0;
-
-		return vertInView && horInView;
+		return isVisible(element, {
+			top: 32,
+			bottom: 32,
+			left: 0,
+			right: window.innerWidth
+		});
 	}
 
 	function getVisibleTheme() {

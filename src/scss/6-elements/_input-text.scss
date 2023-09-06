@@ -1,40 +1,38 @@
 @use '../abstract' as *;
 
-@mixin input-light-mode {
-  --p-input-placeholder-text-color: var(--aw-color-secondary);
-  --p-input-focus-box-shadow-color: var(--aw-color-neutral-0) / 0.16;
-
-  --p-input-text-color: var(--p-input-text-color-default);
-  --p-input-bg-color: var(--p-input-bg-color-default);
-  --p-input-border-color: var(--p-input-border-color-default);
-
-  --p-input-text-color-default: var(--aw-color-primary);
-  --p-input-bg-color-default: var(--aw-color-neutral-100);
-  --p-input-border-color-default: var(--aw-color-neutral-1000) / 0.06;
-
-  --p-input-text-color-hover: var(--p-input-text-color-default);
-  --p-input-bg-color-hover: var(--p-input-bg-color-default);
-  --p-input-border-color-hover: var(--aw-color-neutral-900);
-
-  --p-input-text-color-focus: var(--p-input-text-color-default);
-  --p-input-bg-color-focus: var(--aw-color-neutral-100);
-  --p-input-border-color-focus: var(--aw-color-neutral-900);
-
-  --p-input-text-color-disabled: var(--aw-color-secondary);
-  --p-input-bg-color-disabled: var(--aw-color-neutral-0) / 0.04;
-  --p-input-border-color-disabled: var(--aw-color-neutral-1000) / 0.06;
-
-  //--p-input-text-color-error: var(--aw-color-neutral-700);
-  //--p-input-bg-color-error: var(--aw-color-neutral-0);
-  --p-input-border-color-error: var(--aw-color-red-500);
-}
-
 .#{$p}-input-text {
-  @include input-light-mode;
-  #{$theme-dark} & {
-    --p-input-text-color-default: var(--aw-color-neutral-100);
-    --p-input-bg-color-default: var(--aw-color-neutral-0) / 0.04;
-    --p-input-border-color-default: var(--aw-color-neutral-0) / 0.08;
+  @mixin input-light-mode {
+    --p-input-placeholder-text-color: var(--aw-color-secondary);
+    --p-input-focus-box-shadow-color: var(--aw-color-white) / 0.16;
+
+    --p-input-text-color: var(--p-input-text-color-default);
+    --p-input-bg-color: var(--p-input-bg-color-default);
+    --p-input-border-color: var(--p-input-border-color-default);
+
+    --p-input-text-color-default: var(--aw-color-primary);
+    --p-input-bg-color-default: var(--aw-color-greyscale-100);
+    --p-input-border-color-default: var(--aw-color-black) / 0.06;
+
+    --p-input-text-color-hover: var(--p-input-text-color-default);
+    --p-input-bg-color-hover: var(--p-input-bg-color-default);
+    --p-input-border-color-hover: var(--aw-color-greyscale-900);
+
+    --p-input-text-color-focus: var(--p-input-text-color-default);
+    --p-input-bg-color-focus: var(--aw-color-greyscale-100);
+    --p-input-border-color-focus: var(--aw-color-greyscale-900);
+
+    --p-input-text-color-disabled: var(--aw-color-secondary);
+    --p-input-bg-color-disabled: var(--aw-color-white) / 0.04;
+    --p-input-border-color-disabled: var(--aw-color-black) / 0.06;
+
+    //--p-input-text-color-error: var(--aw-color-greyscale-700);
+    //--p-input-bg-color-error: var(--aw-color-white);
+    --p-input-border-color-error: var(--aw-color-red-500);
+  }
+  @mixin input-dark-mode {
+    --p-input-text-color-default: var(--aw-color-greyscale-100);
+    --p-input-bg-color-default: var(--aw-color-white) / 0.04;
+    --p-input-border-color-default: var(--aw-color-white) / 0.08;
     --p-input-border-color-error-default: var(--aw-color-red-500);
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
@@ -43,15 +41,21 @@
 
     --p-input-text-color-focus: var(--p-input-text-color-default);
     --p-input-bg-color-focus: var(--p-input-bg-color-default);
-    --p-input-border-color-focus: var(--aw-color-neutral-50);
+    --p-input-border-color-focus: var(--aw-color-greyscale-50);
 
     --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-neutral-0) / 0.04;
+    --p-input-bg-color-disabled: var(--aw-color-white) / 0.04;
     --p-input-border-color-disabled: var(--aw-color-smooth) / 0.08;
 
-    //--p-input-text-color-error: var(--aw-color-neutral-700);
-    //--p-input-bg-color-error: var(--aw-color-neutral-0);
+    //--p-input-text-color-error: var(--aw-color-greyscale-700);
+    //--p-input-bg-color-error: var(--aw-color-white);
     --p-input-border-color-error: var(--aw-color-red-500);
+  }
+
+  @include input-light-mode;
+
+  #{$theme-dark} & {
+    @include input-dark-mode();
   }
   #{$theme-light} & {
     @include input-light-mode;
@@ -89,9 +93,27 @@
   &.is-error          { --p-input-border-color: var(--p-input-border-color-error); }
   &.is-warning        {  }
   &.is-success        {  }
+
+  &-search-wrapper {
+    position:relative; min-inline-size:pxToRem(350);
+    input { block-size:pxToRem(48); padding-inline-start:pxToRem(40);  }
+    .icon-search {
+      position:absolute; inset-block-start:pxToRem(16);  inset-inline-start:pxToRem(16);
+      line-height:1;
+    }
+  }
+
+  &.is-reset-input-inside {
+    input { all:unset; display:block; inline-size:100%; text-align:left; }
+  }
+
 }
 
 textarea.#{$p}-input-text {
   padding-inline: pxToRem(16);
   padding-block: pxToRem(12);
+}
+
+.#{$p}-subscribe-input {
+  ::placeholder      { color:hsl(var(--aw-color-primary)); opacity:0.64; }
 }
