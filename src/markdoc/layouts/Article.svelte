@@ -16,6 +16,7 @@
 	import { Docs, DocsArticle } from '$lib/layouts';
 	import { getContext, setContext } from 'svelte';
 	import Sidebar from '$routes/docs/Sidebar.svelte';
+	import { MainFooter } from '$lib/components';
 
 	export let title: string;
 	export let description: string;
@@ -50,4 +51,5 @@
 		</svelte:fragment>
 		<slot />
 	</DocsArticle>
+	<MainFooter variant="docs"/>
 </Docs>
