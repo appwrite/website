@@ -10,6 +10,13 @@
 	import json from 'highlight.js/lib/languages/json';
 	import swift from 'highlight.js/lib/languages/swift';
 	import php from 'highlight.js/lib/languages/php';
+	import python from 'highlight.js/lib/languages/python';
+	import ruby from 'highlight.js/lib/languages/ruby';
+	import kotlin from 'highlight.js/lib/languages/kotlin';
+	import java from 'highlight.js/lib/languages/java';
+	import csharp from 'highlight.js/lib/languages/csharp';
+	import cpp from 'highlight.js/lib/languages/cpp';
+
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
 
@@ -22,7 +29,15 @@
 	hljs.registerLanguage('md', markdown);
 	hljs.registerLanguage('json', json);
 	hljs.registerLanguage('swift', swift);
+	hljs.registerLanguage('ruby', ruby);
 	hljs.registerLanguage('php', php);
+	hljs.registerLanguage('python', python);
+	hljs.registerLanguage('csharp', csharp);
+	hljs.registerLanguage('cpp', cpp);
+	hljs.registerLanguage('kotlin', kotlin);
+	hljs.registerLanguage('java', java);
+	hljs.registerLanguage('dart', dart);
+	hljs.registerLanguage('deno', javascript);
 </script>
 
 <script lang="ts">
