@@ -1126,7 +1126,7 @@ Create an environment variable by clicking **Create variable**, using the **Edit
 You can access the environment variables through the systems library of each language.
 
 {% multicode %}
-```node
+```js
 export default async ({ req, res, log }) => {
     return res.send(process.env.MY_VAR);
 }
