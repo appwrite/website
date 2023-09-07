@@ -346,7 +346,7 @@
 					<div
 						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative
 						aw-u-padding-block-start-80 aw-u-filter-blur-8 u-position-sticky u-z-index-5"
-						style="--inset-block-start:3rem"
+						style="--inset-block-start:5rem"
 					>
 						<div
 							class="aw-description aw-u-color-text-primary aw-u-cross-child-center"
@@ -399,9 +399,7 @@
 							class="aw-compare-table aw-sub-body-400"
 							class:is-open-in-mobile={isOpen}
 							use:melt={$item(table.title)}
-							use:visible={{
-								top: 128
-							}}
+							use:visible
 							on:visible={(e) => {
 								const isVisible = e.detail;
 								visibleTables.update((p) => {
