@@ -36,7 +36,7 @@
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-end-0">
-					<button class="aw-hero-banner-button">
+					<button class="aw-hero-banner-button aw-u-margin-block-end-24">
 						<span class="aw-icon-star" aria-hidden="true"></span>
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep"></div>
