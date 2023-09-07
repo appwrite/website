@@ -32,10 +32,11 @@
   &-scroll {
     flex:1; overflow-y:scroll; overflow-x:hidden;
     display:flex; flex-direction:column; gap:pxToRem(24);
-    padding-inline:pxToRem(16); margin-inline:pxToRem(-16); padding-block-start: pxToRem(32);
+    padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
 
     .#{$p}-is-only-mobile  & {
       border-block-start: 1px solid hsl(var(--aw-color-smooth));
+      padding-block-start: pxToRem(32);
     }
   }
   &-header { margin-block-end:pxToRem(8); }
