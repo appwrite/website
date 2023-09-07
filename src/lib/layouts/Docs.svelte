@@ -1,7 +1,8 @@
-<script lang="ts">
-	type Variant = 'default' | 'expanded' | 'two-side-navs';
-	export let variant: Variant = 'default';
+<script lang="ts" context="module">
+	export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
+</script>
 
+<script lang="ts">
 	const handleMenuClick = () => {
 		const gridHugeNavs = document.querySelector('.aw-grid-huge-navs');
 		const gridSideNavs = document.querySelector('.aw-grid-side-nav');
@@ -12,7 +13,8 @@
 		referencesMenu?.classList.remove('is-open');
 	};
 
-	const variantClasses: Record<Variant, string> = {
+	export let variant: DocsLayoutVariant = 'default';
+	const variantClasses: Record<DocsLayoutVariant, string> = {
 		default: 'aw-grid-side-nav aw-container',
 		expanded: 'aw-grid-huge-navs',
 		'two-side-navs': 'aw-grid-two-side-navs'
