@@ -13,9 +13,14 @@
 
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
 
-  &:where(:hover,:active):where(:not(#{$disabled})) {
+  &:where(:hover):where(:not(#{$disabled})) {
     box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.32);
   }
+
+  &:where(:active):where(:not(#{$disabled})) {
+    box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.24);
+  }
+
   &:where(:focus-visible) {
     box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
     #{$theme-dark} {

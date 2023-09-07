@@ -2,13 +2,13 @@
 
 .#{$p}-select {
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
-  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14);
+  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: pxToRem(120);
   select, .physical-select {
     all:unset; display:flex; align-items:center;
     padding-inline-end:pxToRem(32); cursor:pointer; inline-size:100%;
     &:focus-visible { }
   }
-  [class*="icon"]:first-child {margin-inline-end:pxToRem(8); }
+  [class*="icon"]:first-child {margin-inline-end:pxToRem(8); font-size: 20px !important; }
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center; pointer-events:none;
@@ -75,3 +75,71 @@
     }
   }
 }
+
+
+.#{$p}-select-menu {
+	all: unset;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	line-height: 1;
+	user-select: none;
+	cursor: pointer;
+	color: hsl(var(--aw-color-primary));
+	font-size: pxToRem(14);
+	
+	border-radius: pxToRem(8);
+	line-height: 1.2;
+  padding-inline: pxToRem(4);
+  padding-block: pxToRem(4);
+  box-sizing: border-box;
+
+  @mixin light-mode() {
+    --p-select-menu-bg-color: var(--aw-color-white);
+    --p-select-menu-border-color: var(--aw-color-black) / 0.06;
+    --p-select-menu-box-shadow-color: var(--transparent);
+  }
+  @mixin dark-mode() {
+    --p-select-menu-bg-color: var(--aw-color-white) / 0.08;
+    --p-select-menu-border-color: var(--aw-color-white) / 0.10;
+    --p-select-menu-box-shadow-color: var(--transparent);
+  }
+  @include light-mode();
+  #{$theme-dark} & {
+    @include dark-mode();
+  }
+
+  background-color: hsl(var(--p-select-menu-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-select-menu-border-color));
+  box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-menu-box-shadow-color));
+}
+
+.#{$p}-select-option { 
+  display: flex;
+  align-items: center;
+  gap: pxToRem(8);
+
+  padding-block: pxToRem(4);
+  padding-inline: pxToRem(4);
+  border-radius: pxToRem(6);
+
+  @mixin light-mode() {
+    --p-select-option-bg-color-hover: var(--aw-color-greyscale-25);
+  }
+  @mixin dark-mode() {
+    --p-select-option-bg-color-hover: var(--aw-color-white) / 0.12;
+  }
+  @include light-mode();
+  #{$theme-dark} & {
+    @include dark-mode();
+  }
+
+  &:where(:hover, :focus) {
+    background-color: hsl(var(--p-select-option-bg-color-hover));
+  }
+
+  &  [class*="icon"] {
+   font-size: 20px !important;
+  }
+}
+
