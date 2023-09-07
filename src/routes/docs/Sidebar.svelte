@@ -66,11 +66,11 @@
 			items: [
 				{
 					label: 'Auth',
-					href: '#',
+					href: '/docs/products/auth',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
+							label: 'Email and Password',
+							href: '/docs/products/auth/email-password'
 						}
 					]
 				},

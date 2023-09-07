@@ -12,6 +12,10 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
+{% info title="Public Service Announcement" %}
+We've got some pretty cool components here now.
+{% /info %}
+
 # Header 1 {% #header-1 %}
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
@@ -37,6 +41,10 @@ for (let x of cars) {
 ```
 
 And you can also have `inline code`.
+
+But of course you can also have a quote:
+
+> Thy shall not see me.
 
 #### Header 4
 
