@@ -323,11 +323,9 @@
 					</div>
 					<div class="aw-content-footer-header-end">
 						<ul class="aw-metadata aw-caption-400">
-							<li>Last updated on July 16, 2023</li>
+							<li>Last updated: July 16, 2023</li>
 							<li>
-								<button class="">
-									<!-- TODO: wait for implement icons in website -->
-									<span class="icon-edit" aria-hidden="true" />
+								<button class="aw-u-color-text-accent-click">
 									<span>Update on GitHub</span>
 								</button>
 							</li>
