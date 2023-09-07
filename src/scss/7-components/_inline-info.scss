@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+.#{$p}-inline-info {
+  display:flex; flex-direction:column; gap:pxToRem(8);
+  padding:pxToRem(16); border:pxToRem(1) solid hsl(var(--aw-color-white) / 0.6);
+  background:hsl(var(--aw-color-white) / 0.04); border-radius:pxToRem(8);
+  [class*="icon"]:first-child { color:hsl(var(--aw-color-primary)); }
+}
