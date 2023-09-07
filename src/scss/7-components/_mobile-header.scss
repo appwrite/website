@@ -7,9 +7,9 @@
   position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
   border-block-end: solid 1px var(--p-mobile-header-border-color);
-  padding:pxToRem(20); padding-inline-end:0; 
-  &-start { display:flex; }
-  &-end   { display:flex; }
+  padding:pxToRem(20); 
+  &-start { display:flex; align-items: center; }
+  &-end   { display:flex; align-items: center; gap: pxToRem(8) }
   &.is-transparent { background-color:transparent; backdrop-filter:blur(7.5px); }
   @media #{$break3open} { display:none; }
 
