@@ -42,7 +42,6 @@
 			}
 		}
 	});
-	$: console.log(selected);
 
 	$: entries = Object.entries($headings);
 	$: toc = entries.reduce<Array<TocItem>>((carry, [id, heading]) => {
