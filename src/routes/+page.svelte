@@ -5,6 +5,7 @@
 	import DeveloperCard from './DeveloperCard.svelte';
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
+	import OpenSource from '$lib/animations/OpenSource.svelte';
 </script>
 
 <!-- <div
@@ -210,55 +211,9 @@
 							</li>
 						</ul>
 					</div>
-					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-					</ul>
 				</div>
 			</div>
+			<OpenSource />
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
