@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Docs } from '$lib/layouts';
 	import Sidebar from './Sidebar.svelte';
-	import MainFooter from "../../lib/components/MainFooter.svelte";
+	import MainFooter from '../../lib/components/MainFooter.svelte';
 </script>
 
 <div class="u-position-absolute" style="margin-block-start:-36%; margin-inline-start:0;">
@@ -197,7 +197,7 @@
 					</div>
 				</li>
 			</ul>
-			<button class="aw-button is-secondary">
+			<button class="aw-button is-secondary" style:align-self="start">
 				<span class="aw-sub-body-500">Explore all technologies</span>
 			</button>
 		</section>
@@ -493,6 +493,6 @@
 			</div>
 		</section>
 
-		<MainFooter variant="docs"/>
+		<MainFooter variant="docs" />
 	</main>
 </Docs>
