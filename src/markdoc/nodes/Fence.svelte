@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import 'highlight.js/styles/panda-syntax-dark.css';
+	import './Fence.css';
 	import hljs from 'highlight.js/lib/core';
 	import dart from 'highlight.js/lib/languages/dart';
 	import javascript from 'highlight.js/lib/languages/javascript';
@@ -10,6 +10,7 @@
 	import json from 'highlight.js/lib/languages/json';
 	import swift from 'highlight.js/lib/languages/swift';
 	import php from 'highlight.js/lib/languages/php';
+	import diff from 'highlight.js/lib/languages/diff';
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
 
@@ -23,6 +24,7 @@
 	hljs.registerLanguage('json', json);
 	hljs.registerLanguage('swift', swift);
 	hljs.registerLanguage('php', php);
+	hljs.registerLanguage('diff', diff);
 </script>
 
 <script lang="ts">
@@ -49,7 +51,7 @@
 		<pre><code class={`language-${language}`}>{@html result}</code></pre>
 	{/if}
 {:else}
-	<section class="aw-code-snippet" aria-label="code-snippet panel">
+	<section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
 		<header class="aw-code-snippet-header">
 			<div class="aw-code-snippet-header-start">
 				<div class="u-flex u-gap-16">
@@ -71,3 +73,7 @@
 		</div>
 	</section>
 {/if}
+
+<style lang="scss">
+
+</style>
