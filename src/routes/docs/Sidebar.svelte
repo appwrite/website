@@ -207,6 +207,8 @@
 											class="aw-side-nav-button"
 											use:melt={$item({ id, hasChildren: true })}
 											href={groupItem.href}
+											class:is-selected={groupItem.href &&
+												$page.url?.pathname.includes(groupItem.href)}
 										>
 											<span class={groupItem.icon} aria-hidden="true" />
 											<span class="aw-caption-400">{groupItem.label}</span>
@@ -221,6 +223,7 @@
 												<li>
 													<a
 														class="aw-side-nav-button"
+														class:is-selected={$page.url?.pathname === subItem.href}
 														use:melt={$item({ id: subId })}
 														href={subItem.href}
 													>
