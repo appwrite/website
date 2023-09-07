@@ -251,6 +251,48 @@
 					</section>
 				</section>
 
+				<section class="aw-article-content-section">
+					<section class="aw-article-content-sub-section">
+						<blockquote class="aw-blockquote">
+							<p class="aw-description">
+								“Lorem ipsum dolor sit amet consectetur. Diam fermentum tellus ante purus nullam eget sit id ac. Purus viverra ultrices fusce posuere sed enim duis aliquam sit. Vitae fames potenti donec ultricies in. Quis sed iaculis consectetur cras feugiat nibh gravida tincidunt volutpat. Eleifend vel blandit cras tempor sed nam quis aliquet. Facilisi tempor amet id integer gravida duis. Aliquet nulla tellus risus tortor neque vestibulum arcu.”
+							</p>
+							<footer class="aw-blockquote-footer">
+								<div class="aw-sub-body-400 aw-u-color-text-primary" role="">[quoted name]</div>
+								<div class="aw-caption-400">[role - optional]</div>
+							</footer>
+						</blockquote>
+					</section>
+					<section class="aw-article-content-sub-section">
+						<div class="aw-inline-info">
+							<span class="icon-info" aria-hidden="true"></span>
+							<h5 class="aw-sub-body-500 aw-u-color-text-primary">Lorem ipsum dolor sit amet consectetur</h5>
+							<p class="aw-paragraph-md">Lorem ipsum dolor sit amet consectetur. Sed volutpat nec pharetra nisl dis. Donec accumsan in orci volutpat augue sed sit sollicitudin. Nunc nec nunc nisl faucibus cursus diam tellus aliquet. Ac blandit et varius egestas.</p>
+						</div>
+					</section>
+					<section class="aw-article-content-sub-section">
+						<ul class="aw-pink-dots">
+							<li>aaa</li>
+							<li>bbb</li>
+							<li>
+								ccc
+								<ul class="aw-pink-dots">
+									<li>aaa</li>
+									<li>bbb</li>
+									<li>
+										ccc
+										<ul class="aw-pink-dots">
+											<li>aaa</li>
+											<li>bbb</li>
+											<li>ccc</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</section>
+
 				<section class="aw-content-footer">
 					<header class="aw-content-footer-header">
 						<div class="aw-content-footer-header-start">

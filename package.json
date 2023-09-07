@@ -42,6 +42,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@appwrite.io/pink": "0.0.7-sl10.0",
 		"@fontsource/inter": "^5.0.8"
 	}
 }
