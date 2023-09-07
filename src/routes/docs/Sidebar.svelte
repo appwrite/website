@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { createTreeView, melt } from '@melt-ui/svelte';
 
 	export let expandable = false;
@@ -160,9 +161,21 @@
 		}
 	];
 
+	const getGroupItemId = (group: NavGroup, item: NavLink | NavGroup) => {
+		return `${group.label}/${item.label}`.toLowerCase().replace(/\s/g, '-');
+	};
+
+	const currentGroup = $page.url.pathname.split('/')[2] ?? undefined;
+	const currentItem = $page.url.pathname.split('/')[3] ?? undefined;
+	const currentId =
+		currentGroup && currentItem
+			? getGroupItemId({ label: currentGroup, items: [] }, { label: currentItem, href: '' })
+			: undefined;
+
 	const {
 		elements: { tree, group, item }
 	} = createTreeView({
+		defaultExpanded: currentId ? [currentId] : [],
 		forceVisible: false
 	});
 </script>
@@ -181,7 +194,7 @@
 					{/if}
 					<ul>
 						{#each navGroup.items as groupItem}
-							{@const id = `${navGroup.label}-${groupItem?.label}`}
+							{@const id = getGroupItemId(navGroup, groupItem)}
 							<li>
 								{#if isNavLink(groupItem)}
 									<a class="aw-side-nav-button" href={groupItem.href} use:melt={$item({ id })}>
