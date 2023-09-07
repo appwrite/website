@@ -60,18 +60,15 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<Docs variant="two-side-navs">
-	<Sidebar />
-	<DocsArticle {title} {toc}>
-		<svelte:fragment slot="metadata">
-			{#if difficulty}
-				<li>{difficulty}</li>
-			{/if}
-			{#if readtime}
-				<li>{readtime} min</li>
-			{/if}
-		</svelte:fragment>
-		<slot />
-	</DocsArticle>
-	<MainFooter variant="docs" />
-</Docs>
+<DocsArticle {title} {toc}>
+	<svelte:fragment slot="metadata">
+		{#if difficulty}
+			<li>{difficulty}</li>
+		{/if}
+		{#if readtime}
+			<li>{readtime} min</li>
+		{/if}
+	</svelte:fragment>
+	<slot />
+</DocsArticle>
+<MainFooter variant="docs" />
