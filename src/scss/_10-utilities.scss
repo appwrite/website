@@ -38,6 +38,7 @@
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
 
 .#{$p}-u-size-40                  { inline-size:pxToRem(40); block-size:pxToRem(40); }
+.#{$p}-u-block-size-48            { block-size:pxToRem(48); }
 
 .#{$p}-u-inline-width-100-percent-mobile { @media #{$break1}, #{$break2} { inline-size:100%; } }
 .#{$p}-u-max-inline-width-584-mobile{ @media #{$break1}, #{$break2} { max-inline-size:pxToRem(584); } }
