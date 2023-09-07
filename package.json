@@ -43,9 +43,10 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@readme/openapi-parser": "^2.5.0",
 		"@appwrite.io/pink": "0.0.7-sl10.0",
 		"@fontsource/inter": "^5.0.8",
-		"highlight.js": "^11.8.0"
+		"@readme/openapi-parser": "^2.5.0",
+		"highlight.js": "^11.8.0",
+		"motion": "^10.16.2"
 	}
 }
