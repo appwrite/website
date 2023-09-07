@@ -24,7 +24,7 @@
 	});
 </script>
 
-<section class="aw-code-snippet" aria-label="code-snippet panel">
+<section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
 	<header class="aw-code-snippet-header">
 		<div class="aw-code-snippet-header-start">
 			<div class="u-flex u-gap-16">
