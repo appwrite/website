@@ -78,12 +78,12 @@
 				},
 				{
 					label: 'Databases',
-					href: '#',
+					href: '/docs/products/databases',
 					icon: 'icon-database',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
+							label: 'Queries',
+							href: '/docs/products/databases/queries'
 						}
 					]
 				},
