@@ -225,7 +225,12 @@
 							{@const id = getGroupItemId(navGroup, groupItem)}
 							<li>
 								{#if isNavLink(groupItem)}
-									<a class="aw-side-nav-button" href={groupItem.href} use:melt={$item({ id })}>
+									<a
+										class="aw-side-nav-button"
+										class:is-selected={$page.url?.pathname === groupItem.href}
+										href={groupItem.href}
+										use:melt={$item({ id })}
+									>
 										<span class={groupItem.icon} aria-hidden="true" />
 										<span class="aw-caption-400">{groupItem.label}</span>
 									</a>
