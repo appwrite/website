@@ -1,14 +1,19 @@
-<script lang="ts">
-	export let title: string;
-	export let toc: Array<{
+<script lang="ts" context="module">
+	export type TocItem = {
 		title: string;
 		href: string;
 		step?: number;
+		selected?: boolean;
 		children?: Array<{
 			title: string;
 			href: string;
 		}>;
-	}>;
+	};
+</script>
+
+<script lang="ts">
+	export let title: string;
+	export let toc: Array<TocItem>;
 </script>
 
 <main class="u-contents">
@@ -106,7 +111,7 @@
 				<ol class="aw-references-menu-list">
 					{#each toc as parent}
 						<li class="aw-references-menu-item">
-							<a href={parent.href} class="aw-references-menu-link">
+							<a href={parent.href} class="aw-references-menu-link" class:is-selected={parent.selected}>
 								{#if parent?.step}
 									<span class="aw-numeric-badge">{parent.step}</span>
 								{/if}
