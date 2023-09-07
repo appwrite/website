@@ -7,6 +7,7 @@
 		children?: Array<{
 			title: string;
 			href: string;
+			selected: boolean;
 		}>;
 	};
 </script>
