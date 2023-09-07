@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+/* class using for link inside a page.
+   Done in order to animate and to keep it without override sticky header */
+.#{$p}-snap-location {
+  scroll-snap-align: start;
+  scroll-margin-top: 7.5rem;
+}

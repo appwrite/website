@@ -31,6 +31,7 @@
 
 .#{$p}-u-padding-block-end-136-not-mobile { @media #{$break2open} { padding-block-end:pxToRem(136)!important;} }
 
+.#{$p}-u-max-width-380              { max-inline-size:pxToRem(380); }
 .#{$p}-u-max-width-480              { max-inline-size:pxToRem(480); }
 .#{$p}-u-max-width-600              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-700              { max-inline-size:pxToRem(700); }
@@ -78,6 +79,7 @@
 
 .#{$p}-u-min-block-size-320         { min-block-size:#{pxToRem(320)}!important; }
 
+.#{$p}-u-flex-direction-column-mobile { @media #{$break1} { flex-direction:column; } }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
