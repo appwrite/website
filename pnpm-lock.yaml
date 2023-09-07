@@ -18,33 +18,33 @@ dependencies:
 devDependencies:
   '@melt-ui/pp':
     specifier: ^0.1.2
-    version: 0.1.2(@melt-ui/svelte@0.40.0)(svelte@4.2.0)
+    version: 0.1.2(@melt-ui/svelte@0.47.1)(svelte@4.2.0)
   '@melt-ui/svelte':
-    specifier: ^0.40.0
-    version: 0.40.0(svelte@4.2.0)
+    specifier: ^0.47.0
+    version: 0.47.1(svelte@4.2.0)
   '@playwright/test':
-    specifier: ^1.37.1
+    specifier: ^1.28.1
     version: 1.37.1
   '@sveltejs/adapter-auto':
-    specifier: ^2.1.0
+    specifier: ^2.0.0
     version: 2.1.0(@sveltejs/kit@1.24.1)
   '@sveltejs/kit':
-    specifier: ^1.24.1
+    specifier: ^1.20.4
     version: 1.24.1(svelte@4.2.0)(vite@4.4.9)
   '@typescript-eslint/eslint-plugin':
-    specifier: ^5.62.0
+    specifier: ^5.45.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.48.0)(typescript@5.2.2)
   '@typescript-eslint/parser':
-    specifier: ^5.62.0
+    specifier: ^5.45.0
     version: 5.62.0(eslint@8.48.0)(typescript@5.2.2)
   eslint:
-    specifier: ^8.48.0
+    specifier: ^8.28.0
     version: 8.48.0
   eslint-config-prettier:
-    specifier: ^8.10.0
+    specifier: ^8.5.0
     version: 8.10.0(eslint@8.48.0)
   eslint-plugin-svelte:
-    specifier: ^2.33.0
+    specifier: ^2.30.0
     version: 2.33.0(eslint@8.48.0)(svelte@4.2.0)
   oslllo-svg-fixer:
     specifier: ^2.2.0
@@ -835,19 +835,19 @@ packages:
       '@types/markdown-it': 12.2.3
     dev: true
 
-  /@melt-ui/pp@0.1.2(@melt-ui/svelte@0.40.0)(svelte@4.2.0):
+  /@melt-ui/pp@0.1.2(@melt-ui/svelte@0.47.1)(svelte@4.2.0):
     resolution: {integrity: sha512-GZeqp7UWLNZUC2dJpREnZrWMR88vy27WO7C3cIBz4KW3/CFD19FjNkd3VbSRfcRryrMkdnEs9nu2VUa8/0u58w==}
     engines: {pnpm: '>=8.6.3'}
     peerDependencies:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
-      '@melt-ui/svelte': 0.40.0(svelte@4.2.0)
+      '@melt-ui/svelte': 0.47.1(svelte@4.2.0)
       svelte: 4.2.0
     dev: true
 
-  /@melt-ui/svelte@0.40.0(svelte@4.2.0):
-    resolution: {integrity: sha512-kVW8ISLlUTpqvRbVXqwWIiS7YuvKAKqbBgCV7BCmbfricvW8M3VqpIOezlu/FRZH30Oqm/nBzeJAgLXc+Y+s3A==}
+  /@melt-ui/svelte@0.47.1(svelte@4.2.0):
+    resolution: {integrity: sha512-03/KQreWQYbZ16kAfhy+EWoMYfvhlJgxoggm414RUKGEKy571pNGO3BCGt4qKY3swqn0UtqsH8yX25y3jrawQg==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:

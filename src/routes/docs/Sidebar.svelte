@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { createTreeView, melt } from '@melt-ui/svelte';
+
 	export let expandable = false;
 
 	const handleMenuClick = () => {
@@ -8,50 +10,185 @@
 		gridHugeNavs?.classList.toggle('is-open');
 		referencesMenu?.classList.remove('is-open');
 	};
+
+	type NavLink = {
+		label: string;
+		href: string;
+		icon?: string;
+	};
+
+	type NavGroup = {
+		label?: string;
+		href?: string;
+		icon?: string;
+		items: Array<NavLink | NavGroup>;
+	};
+
+	function isNavLink(item: NavLink | NavGroup): item is NavLink {
+		return !('items' in item);
+	}
+
+	type NavTree = Array<NavGroup>;
+
+	const navTree: NavTree = [
+		{
+			items: [
+				{
+					label: 'Quick Start',
+					href: '/docs/quick-start',
+					icon: 'icon-play'
+				},
+				{
+					label: 'Tutorials',
+					href: '/docs/tutorials',
+					icon: 'icon-book-open'
+				},
+				{
+					label: 'SDKs',
+					href: '#',
+					icon: 'icon-cog'
+				},
+				{
+					label: 'Command Line',
+					href: '#',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'References',
+					href: '/docs/reference',
+					icon: 'icon-document'
+				}
+			]
+		},
+		{
+			label: 'Products',
+			href: '/docs/products',
+			items: [
+				{
+					label: 'Auth',
+					href: '#',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				},
+				{
+					label: 'Databases',
+					href: '#',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				}
+			]
+		},
+		{
+			label: 'APIS',
+			href: '#',
+			items: [
+				{
+					label: 'Realtime',
+					href: '#'
+				},
+				{
+					label: 'REST',
+					href: '#'
+				},
+				{
+					label: 'GraphQL',
+					href: '#'
+				}
+			]
+		},
+		{
+			label: 'Advanced',
+			href: '#',
+			items: [
+				{
+					label: 'Integration',
+					href: '#'
+				},
+				{
+					label: 'Platform',
+					href: '#'
+				},
+				{
+					label: 'Migrations',
+					href: '#'
+				}
+			]
+		}
+	];
+
+	const {
+		elements: { tree, group, item }
+	} = createTreeView({
+		forceVisible: false
+	});
 </script>
 
-<nav class="aw-side-nav" class:is-transparent={!expandable}>
+<nav class="aw-side-nav" class:is-transparent={!expandable} use:melt={$tree}>
 	<div class="aw-side-nav-wrapper">
 		<button class="aw-input-text aw-is-not-desktop">
 			<span class="icon-search" />
 			<span class="text">Search in docs</span>
 		</button>
 		<div class="aw-side-nav-scroll">
-			<section>
-				<ul>
-					<li>
-						<a class="aw-side-nav-button" href="/docs/quick-start">
-							<span class="icon-play" aria-hidden="true" />
-							<span class="aw-caption-400">Quick Start</span>
-						</a>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href="/docs/tutorials">
-							<span class="icon-book-open" aria-hidden="true" />
-							<span class="aw-caption-400">Tutorials</span>
-						</a>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href=".">
-							<span class="icon-cog" aria-hidden="true" />
-							<span class="aw-caption-400">SDKs</span>
-						</a>
-					</li>
-					<li>
-						<button class="aw-side-nav-button">
-							<span class="icon-terminal" aria-hidden="true" />
-							<span class="aw-caption-400">Command Line</span>
-						</button>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href="/docs/reference">
-							<span class="icon-document" aria-hidden="true" />
-							<span class="aw-caption-400">References</span>
-						</a>
-					</li>
-				</ul>
-			</section>
-			<section>
+			{#each navTree as navGroup}
+				<section>
+					{#if navGroup.label}
+						<h4 class="aw-side-nav-header aw-eyebrow">{navGroup.label}</h4>
+					{/if}
+					<ul>
+						{#each navGroup.items as groupItem}
+							{@const id = `${navGroup.label}-${groupItem?.label}`}
+							<li>
+								{#if isNavLink(groupItem)}
+									<a class="aw-side-nav-button" href={groupItem.href} use:melt={$item({ id })}>
+										<span class={groupItem.icon} aria-hidden="true" />
+										<span class="aw-caption-400">{groupItem.label}</span>
+									</a>
+								{:else}
+									<li>
+										<a
+											class="aw-side-nav-button"
+											use:melt={$item({ id, hasChildren: true })}
+											href={groupItem.href}
+										>
+											<span class="icon-user-group" aria-hidden="true" />
+											<span class="aw-caption-400">{groupItem.label}</span>
+											<span
+												class="icon-cheveron-down u-margin-inline-start-auto"
+												aria-hidden="true"
+											/>
+										</a>
+										<ul class="aw-side-nav-inner" use:melt={$group({ id })}>
+											{#each groupItem.items as subItem}
+												{@const subId = `${navGroup.label}-${groupItem?.label}-${subItem?.label}}`}
+												<li>
+													<a
+														class="aw-side-nav-button"
+														use:melt={$item({ id: subId })}
+														href={subItem.href}
+													>
+														<span class="aw-icon-holder" />
+														<span class="aw-caption-400">{subItem.label}</span>
+													</a>
+												</li>
+											{/each}
+										</ul>
+									</li>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/each}
+			<!-- <section>
 				<h4 class="aw-side-nav-header aw-eyebrow">Products</h4>
 				<ul>
 					<li>
@@ -146,7 +283,7 @@
 						</button>
 					</li>
 				</ul>
-			</section>
+			</section> -->
 		</div>
 		{#if expandable}
 			<button
