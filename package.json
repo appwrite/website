@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@melt-ui/pp": "^0.1.2",
-		"@melt-ui/svelte": "^0.47.0",
+		"@melt-ui/svelte": "^0.47.4",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
