@@ -67,6 +67,8 @@
 				{
 					label: 'Auth',
 					href: '/docs/products/auth',
+					icon: 'icon-user-group',
+
 					items: [
 						{
 							label: 'Email and Password',
@@ -77,6 +79,29 @@
 				{
 					label: 'Databases',
 					href: '#',
+					icon: 'icon-database',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				},
+				{
+					label: 'Functions',
+					href: '#',
+					icon: 'icon-lightning-bolt',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				},
+				{
+					label: 'Storage',
+					href: '#',
+					icon: 'icon-folder',
 					items: [
 						{
 							label: 'Inner item',
@@ -92,15 +117,18 @@
 			items: [
 				{
 					label: 'Realtime',
-					href: '#'
+					href: '#',
+					icon: 'icon-clock'
 				},
 				{
 					label: 'REST',
-					href: '#'
+					href: '#',
+					icon: 'icon-play'
 				},
 				{
 					label: 'GraphQL',
-					href: '#'
+					href: '#',
+					icon: 'icon-play'
 				}
 			]
 		},
@@ -110,15 +138,23 @@
 			items: [
 				{
 					label: 'Integration',
-					href: '#'
+					href: '#',
+					icon: 'icon-puzzle'
 				},
 				{
 					label: 'Platform',
-					href: '#'
+					href: '#',
+					icon: 'icon-play'
 				},
 				{
 					label: 'Migrations',
-					href: '#'
+					href: '#',
+					icon: 'icon-refresh'
+				},
+				{
+					label: 'Self-hosting',
+					href: '#',
+					icon: 'icon-server'
 				}
 			]
 		}
@@ -159,7 +195,7 @@
 											use:melt={$item({ id, hasChildren: true })}
 											href={groupItem.href}
 										>
-											<span class="icon-user-group" aria-hidden="true" />
+											<span class={groupItem.icon} aria-hidden="true" />
 											<span class="aw-caption-400">{groupItem.label}</span>
 											<span
 												class="icon-cheveron-down u-margin-inline-start-auto"

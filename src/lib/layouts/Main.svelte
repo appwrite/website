@@ -137,6 +137,16 @@
 		</div>
 	</section>
 	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
+		<div class="aw-top-banner">
+			<div class="aw-top-banner-content aw-u-color-text-primary">
+				<span class="aw-caption-500">We are having lots of fun on</span>
+				<span class="aw-icon-discord" aria-hidden="true"></span>
+				<span class="aw-caption-500">Discord. Come and join us!</span>
+				<button class="aw-top-banner-button" aria-label="close discord message">
+					<span class="aw-icon-close" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
