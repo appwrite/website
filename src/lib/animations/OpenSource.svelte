@@ -4,37 +4,70 @@
 		timeline,
 		type AnimationListOptions,
 		type SpringOptions,
-		type TimelineDefinition
+		type TimelineDefinition,
+		scroll,
+		animate
 	} from 'motion';
 	import { onMount } from 'svelte';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
-	const timelineOptions: AnimationListOptions = {
+	const animationOptions: AnimationListOptions = {
 		x: { easing: spring(springOptions) },
 		y: { easing: spring(springOptions) }
 	};
 
-	const sequence: TimelineDefinition = [
-		['#oss-discord', { x: [0, 100], y: [0, '-80vh'], rotate: 15 }, timelineOptions],
-		['#oss-github', { rotate: 6.26, x: [0, 100], y: [0, '-55vh'] }, timelineOptions],
-		['#oss-twitter', { rotate: -15, x: [0, 100], y: [0, '-70vh'] }, timelineOptions],
-		['#oss-commits', { rotate: -10.2, x: [0, 100], y: [0, '-80vh'] }, timelineOptions]
-	];
+	let animated = [] as string[];
+	const animateDiscord = () => {
+		if (animated.includes('discord')) return;
+		animated.push('discord');
+		animate('#oss-discord', { x: [0, 100], y: [0, '-80vh'], rotate: 15 }, animationOptions);
+	};
+	const animateGithub = () => {
+		if (animated.includes('github')) return;
+		animated.push('github');
+		animate('#oss-github', { rotate: 6.26, x: [0, 100], y: [0, '-55vh'] }, animationOptions);
+	};
+	const animateTwitter = () => {
+		if (animated.includes('twitter')) return;
+		animated.push('twitter');
+		animate('#oss-twitter', { rotate: -15, x: [0, 100], y: [0, '-70vh'] }, animationOptions);
+	};
+	const animateCommits = () => {
+		if (animated.includes('commits')) return;
+		animated.push('commits');
+		animate('#oss-commits', { rotate: -10.2, x: [0, 100], y: [0, '-80vh'] }, animationOptions);
+	};
 
-	onMount(() => {
-		timeline(sequence, { delay: 1 });
-		// animate(
-		// 	'#oss-discord',
-		// 	{ x: 0, y: 0, rotate: 15 },
-		// 	{
-		// 		x: { easing: glide({ velocity: 50 }) },
-		// 		y: { easing: glide({ velocity: -1200 }) }
-		// 	}
-		// );
-	});
+	let wrapper: HTMLElement;
 </script>
 
-<div id="open-source">
+<svelte:window
+	on:scroll={() => {
+		const { top, height } = wrapper.getBoundingClientRect();
+		const { innerHeight } = window;
+
+		const scrollHeight = height - innerHeight;
+		const scrollPercentage = (-1 * top) / scrollHeight;
+
+		if (scrollPercentage > 0.05) {
+			animateDiscord();
+		}
+
+		if (scrollPercentage > 0.3) {
+			animateGithub();
+		}
+
+		if (scrollPercentage > 0.55) {
+			animateTwitter();
+		}
+
+		if (scrollPercentage > 0.8) {
+			animateCommits();
+		}
+	}}
+/>
+
+<div id="open-source" bind:this={wrapper}>
 	<div class="sticky-wrapper">
 		<h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
 		<p class="aw-description">
@@ -92,7 +125,7 @@
 
 <style lang="scss">
 	#open-source {
-		height: 4000px;
+		height: 3200px;
 		position: relative;
 	}
 
