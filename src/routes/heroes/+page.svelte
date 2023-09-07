@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { MainFooter } from '$lib/components';
 	import { Main } from '$lib/layouts';
 </script>
 
@@ -807,36 +808,7 @@
 							</ul>
 						</nav>
 
-						<footer class="aw-main-footer u-margin-block-start-48">
-							<ul class="u-flex u-gap-8">
-								<li>
-									<button class="aw-icon-button" aria-label="Appwrite on Discord">
-										<span class="icon-discord" aria-hidden="true" />
-									</button>
-								</li>
-								<li>
-									<button class="aw-icon-button" aria-label="Appwrite GitHub">
-										<span class="icon-github" aria-hidden="true" />
-									</button>
-								</li>
-								<li>
-									<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-										<span class="icon-twitter" aria-hidden="true" />
-									</button>
-								</li>
-								<li>
-									<button class="aw-icon-button" aria-label="Appwrite on LinkedIn">
-										<span class="icon-linkedin" aria-hidden="true" />
-									</button>
-								</li>
-								<li>
-									<button class="aw-icon-button" aria-label="Appwrite YouTube">
-										<span class="icon-youtube" aria-hidden="true" />
-									</button>
-								</li>
-							</ul>
-							<div>Copyright © 2023 Appwrite</div>
-						</footer>
+						<MainFooter />
 					</div>
 				</div>
 			</div>
