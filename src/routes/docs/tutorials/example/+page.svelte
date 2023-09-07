@@ -300,6 +300,74 @@
 						</li>
 					</ul>
 				</section>
+				<section class="aw-article-content-sub-section">
+					<div class="aw-card is-normal">
+						<nav class="tabs u-flex u-gap-16">
+							<ul class="tabs-list">
+								<li class="tabs-item">
+									<button class="tabs-button is-selected">item</button>
+								</li>
+								<li class="tabs-item">
+									<button class="tabs-button">item</button>
+								</li>
+								<li class="tabs-item">
+									<button class="tabs-button">item</button>
+								</li>
+								<li class="tabs-item">
+									<button class="tabs-button">item</button>
+								</li>
+							</ul>
+							<button class="aw-button is-text u-margin-inline-start-auto" aria-label="More options">
+								<span class="icon-dots-horizontal" aria-hidden="true"></span>
+							</button>
+						</nav>
+						<div class="aw-u-sep-block-start u-padding-block-start-16">
+
+							<section class="aw-code-snippet theme-dark" aria-label="code-snippet panel">
+								<header class="aw-code-snippet-header">
+									<div class="aw-code-snippet-header-start">
+										<div class="u-flex u-gap-16">
+											<div class="aw-tag">
+												<span class="text">Default</span>
+											</div>
+										</div>
+									</div>
+									<div class="aw-code-snippet-header-end">
+										<ul class="buttons-list u-flex u-gap-8">
+											<li class="buttons-list-item u-flex u-cross-child-scenter">
+												<div class="aw-select">
+													<select>
+														<option>Web SDK</option>
+														<option>Android SDK</option>
+													</select>
+													<span class="icon-cheveron-down" aria-hidden="true" />
+												</div>
+											</li>
+											<li class="buttons-list-item aw-u-padding-inline-start-20">
+												<button class="aw-icon-button" aria-label="copy code from code-snippet">
+													<span class="icon-duplicate" aria-hidden="true" />
+												</button>
+											</li>
+										</ul>
+									</div>
+								</header>
+								<div class="aw-code-snippet-content">CONTENT</div>
+							</section>
+							<div class="aw-article-content-spacing-logic u-margin-block-start-32">
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">
+									Lorem ipsum dolor sit
+								</h4>
+								<p class="aw-sub-body-400">
+									Lorem act <code class="aw-inline-code">inline-code</code> consectetur. Feugiat ac aliquam nunc nunc habitant.
+								</p>
+								<p class="aw-paragraph-md">
+									Lorem ipsum dolor sit amet consectetur. Sagittis dui nullam  <code class="aw-inline-code">inline-code</code>  Augue quis massa mattis hendrerit in. Maecenas odio vulputate nulla id ultricies lobortis sit. Quis elit sed leo ultrices sapien etiam praesent fermentum. Sit erat duis ac feugiat augue ultrices dolor. Facilisis bibendum bibendum cras sodales id.
+								</p>
+							</div>
+
+						</div>
+					</div>
+				</section>
 			</section>
 
 			<section class="aw-content-footer">
@@ -332,7 +400,7 @@
 						</ul>
 					</div>
 				</header>
-				<div class="aw-card is-transparent" style="--card-padding:1rem">
+				<div class="aw-card is-normal">
 					<label for="message">
 						<span class="aw-u-color-text-primary">What did you like?</span>
 						<span class="">(optional)</span>
