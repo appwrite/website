@@ -79,9 +79,9 @@ There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
 1. The function is invoked.
-2. Appwrite passes in request information like headers, body or path through the `context.req` object.
-3. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
-4. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
+1. Appwrite passes in request information like headers, body or path through the `context.req` object.
+1. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
+1. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
 
 ### And a nested list:
 
@@ -98,6 +98,20 @@ Here's everything that happens during a function execution.
   - level 2 item
   - level 2 item
 - level 1 item
+
+### Tabs
+
+{% tabs %}
+{% tabsitem #a title="lorem" %}
+lorem
+{% /tabsitem %}
+
+{% tabsitem #b title="ipsum" %}
+```js
+console.log('asd');
+```
+{% /tabsitem %}
+{% /tabs %}
 
 ### Image
 
