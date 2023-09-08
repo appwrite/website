@@ -5,8 +5,13 @@
 		spring,
 		type AnimationControls,
 		type AnimationListOptions,
-		type SpringOptions
+		type SpringOptions,
+		type MotionKeyframesDefinition,
+		type AnimationOptions
 	} from 'motion';
+	import anime from 'animejs';
+	import { noop } from '@melt-ui/svelte/internal/helpers';
+	import type { Writable } from 'svelte/store';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -14,75 +19,50 @@
 		y: { easing: spring(springOptions) }
 	};
 
-	let animated = [] as AnimationControls[];
+	let animated = [] as [string, AnimationControls][];
 
 	type Animation = {
-		mobile?: () => AnimationControls;
-		desktop: () => AnimationControls;
+		mobile?: [MotionKeyframesDefinition, AnimationOptions];
+		desktop: [MotionKeyframesDefinition, AnimationOptions];
+		target: string;
 	};
 
 	const animations: Animation[] = [
 		{
-			mobile() {
-				return animate(
-					'#oss-discord',
-					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
-					animationOptions
-				);
-			},
-			desktop() {
-				return animate(
-					'#oss-discord',
-					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
-					animationOptions
-				);
-			}
+			target: '#oss-discord',
+			mobile: [{ x: [-1200, 0], y: 0, rotate: 1 }, animationOptions],
+			desktop: [{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 }, animationOptions]
 		},
 		{
-			desktop: function () {
-				return animate(
-					'#oss-github',
-					{ rotate: 6.26, x: [0, -100], y: [0, '-55vh'] },
-					animationOptions
-				);
-			}
+			target: '#oss-github',
+			mobile: [{ x: [-1200, 0], y: -10, rotate: -2 }, animationOptions],
+			desktop: [{ rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }, animationOptions]
 		},
 		{
-			desktop: function () {
-				return animate(
-					'#oss-twitter',
-					{ rotate: -15, x: [0, 100], y: [0, '-70vh'] },
-					animationOptions
-				);
-			}
+			target: '#oss-twitter',
+			mobile: [{ x: [-1200, 0], y: 10, rotate: -3 }, animationOptions],
+			desktop: [{ rotate: -15, x: [0, 100], y: [0, '-70vh'] }, animationOptions]
 		},
 		{
-			desktop: function () {
-				return animate(
-					'#oss-youtube',
-					{ rotate: -3.77, x: [0, -100], y: [0, '-60vh'] },
-					animationOptions
-				);
-			}
+			target: '#oss-youtube',
+			mobile: [{ x: [-1200, 0], y: 5, rotate: 2 }, animationOptions],
+			desktop: [{ rotate: -3.77, x: [0, -100], y: [0, '-60vh'] }, animationOptions]
 		},
 		{
-			desktop: function () {
-				return animate(
-					'#oss-commits',
-					{ rotate: -10.2, x: [0, 100], y: [0, '-80vh'] },
-					animationOptions
-				);
-			}
+			target: '#oss-commits',
+			mobile: [{ x: [-1200, 0], y: -4, rotate: -1 }, animationOptions],
+			desktop: [{ rotate: -10.2, x: [0, 100], y: [0, '-80vh'] }, animationOptions]
 		}
 	];
 
 	const executeAnimation = (index: number) => {
 		if (animated[index]) return;
-		const { mobile, desktop } = animations[index];
-		if (isMobile()) {
-			animated[index] = mobile ? mobile() : desktop();
+		const { mobile, desktop, target } = animations[index];
+
+		if (isMobile() && mobile) {
+			animated[index] = [target, animate(target, mobile[0], mobile[1])];
 		} else {
-			animated[index] = desktop();
+			animated[index] = [target, animate(target, desktop[0], desktop[1])];
 		}
 	};
 
@@ -94,11 +74,19 @@
 	const isMobile = () => {
 		return window.innerWidth < 1024;
 	};
+
+	import type { Tabs } from '@melt-ui/svelte';
+	type TabsContext = Writable<{
+		content: Tabs['elements']['content'];
+	}>;
 </script>
 
 <svelte:window
 	on:resize={() => {
-		animated.forEach((animation) => animation.cancel());
+		animated.forEach(([target, animation]) => {
+			animation.cancel();
+			document.querySelector(target)?.removeAttribute('style');
+		});
 		animated = [];
 	}}
 	on:scroll={() => {
@@ -225,6 +213,7 @@
 		.cards-wrapper {
 			position: relative;
 			height: 22.5rem;
+			margin-top: 80px;
 		}
 
 		@media (min-width: 1024px) {
@@ -239,6 +228,7 @@
 				top: 0;
 				left: 50%;
 				transform: translateX(-50%);
+				margin-top: 0;
 			}
 		}
 	}
@@ -252,58 +242,49 @@
 		);
 		backdrop-filter: blur(10px);
 
-		width: 22.125rem;
-		height: 20.125rem;
+		--w: clamp(306px, 50vw, 22.125rem);
+		--h: 20.125rem;
+		width: var(--w);
+		height: var(--h);
 		text-align: left;
+
+		position: absolute;
+		left: calc(50% - calc(var(--w) / 2));
+		transform: translateX(-1200px);
 
 		[class*='icon'] {
 			opacity: 48%;
 		}
 	}
 
-	#oss-discord {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-200vw);
+	@media (min-width: 1024px) {
+		.oss-card {
+			left: unset;
+			transform: unset;
+		}
 
-		@media (min-width: 1024px) {
+		#oss-discord {
 			bottom: -400px;
 			left: 1%;
 			transform: rotate(15deg);
 		}
-	}
 
-	#oss-github {
-		position: absolute;
-		opacity: 0;
-		@media (min-width: 1024px) {
+		#oss-github {
 			bottom: -400px;
 			left: 19%;
 		}
-	}
 
-	#oss-twitter {
-		position: absolute;
-		opacity: 0;
-		@media (min-width: 1024px) {
+		#oss-twitter {
 			bottom: -400px;
 			left: clamp(20%, 22vw, 29%);
 		}
-	}
 
-	#oss-youtube {
-		position: absolute;
-		opacity: 0;
-		@media (min-width: 1024px) {
+		#oss-youtube {
 			bottom: -400px;
 			left: clamp(64%, calc(1024px - 10vw), 70%);
 		}
-	}
 
-	#oss-commits {
-		position: absolute;
-		opacity: 0;
-		@media (min-width: 1024px) {
+		#oss-commits {
 			bottom: -400px;
 			right: 10%;
 		}
