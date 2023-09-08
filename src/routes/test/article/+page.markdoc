@@ -103,13 +103,35 @@ Here's everything that happens during a function execution.
 
 {% tabs %}
 {% tabsitem #a title="lorem" %}
-lorem
+Lorem act `inline-code` consectetur. Feugiat ac aliquam nunc nunc habitant.
+
+Lorem ipsum dolor sit amet consectetur. Sagittis dui nullam inline-code Augue quis massa mattis hendrerit in. Maecenas odio vulputate nulla id ultricies lobortis sit. Quis elit sed leo ultrices sapien etiam praesent fermentum. Sit erat duis ac feugiat augue ultrices dolor. Facilisis bibendum bibendum cras sodales id.
 {% /tabsitem %}
 
 {% tabsitem #b title="ipsum" %}
+Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas ut. Dictum tortor arcu feugiat metus pellentesque posuere.
+
 ```js
-console.log('asd');
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client();
+const users = new sdk.Users(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('5df5acd0d48c2')
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2');
+
+const promise = users.create('[USER_ID]');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
+
+Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh egestas ut. Dictum tortor arcu feugiat metus pellentesque posuere.
 {% /tabsitem %}
 {% /tabs %}
 
