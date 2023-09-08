@@ -378,7 +378,7 @@
 							<button
 								class="aw-radio-button is-like"
 								type="radio"
-								aria-label="Helpful"
+								aria-label="Helpful Selected"
 								name="happy"
 							>
 								<span class="icon-thumb-up" aria-hidden="true"></span>
