@@ -128,11 +128,11 @@ These are the fundamental Markdown syntax elements you'll need to create well-st
 ```md
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
-...
+Lorem ipsum dolor sit amet consectetur.
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
-...
+Lorem ipsum dolor sit amet consectetur.
 {% /tabsitem %}
 {% /tabs %}
 ```
@@ -161,9 +161,11 @@ print('test');
 {% section #featured-products-1 step=1 title="Title" %}
 Lorem ipsum dolor sit amet consectetur.
 {% /section %}
+
 {% section #featured-products-2 step=2 title="Title" %}
 Lorem ipsum dolor sit amet consectetur.
 {% /section %}
+
 {% section #featured-products-3 step=3 title="Title" %}
 Lorem ipsum dolor sit amet consectetur.
 {% /section %}
