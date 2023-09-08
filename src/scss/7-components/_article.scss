@@ -21,7 +21,9 @@
       &-paragraph-md  { margin-block-end:pxToRem(16); }
       &-code-snippet  { margin-block-start:pxToRem(16); margin-block-end:pxToRem(32); }
       &-list,
-      &-numeric-list  { margin-block:pxToRem(16); }
+      &-numeric-list,
+      &-pink-dots,
+      &-blockquote    { margin-block:pxToRem(16); }
       &-table-wrapper { margin-block-start:pxToRem(8); margin-block-end:pxToRem(32); }
       &-media         { margin-block-start:pxToRem(16); margin-block-end:pxToRem(48); }
     }
