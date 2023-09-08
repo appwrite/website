@@ -25,7 +25,27 @@
 	};
 
 	const animations = [
-		getAnimateFn('#oss-discord', { x: [0, 100], y: [0, '-80vh'], rotate: 15 }),
+		getAnimateFn('#oss-discord', { x: [-100, 20], y: [0, '-80vh'], rotate: 15 }),
+		getAnimateFn('#oss-github', { rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }),
+		getAnimateFn('#oss-twitter', {
+			rotate: -15,
+			x: [0, 100],
+			y: [0, '-70vh']
+		}),
+		getAnimateFn('#oss-youtube', {
+			rotate: -3.77,
+			x: [0, -100],
+			y: [0, '-60vh']
+		}),
+		getAnimateFn('#oss-commits', {
+			rotate: -10.2,
+			x: [0, 100],
+			y: [0, '-80vh']
+		})
+	];
+
+	const mobileAnimations = [
+		getAnimateFn('#oss-discord', { x: ['-100%', 0], rotate: 15 }),
 		getAnimateFn('#oss-github', { rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }),
 		getAnimateFn('#oss-twitter', {
 			rotate: -15,
@@ -53,10 +73,12 @@
 <svelte:window
 	on:scroll={() => {
 		const { top, height } = wrapper.getBoundingClientRect();
-		const { innerHeight } = window;
+		const { innerHeight, innerWidth } = window;
 
 		const scrollHeight = height - innerHeight;
 		const scrollPercentage = (-1 * top) / scrollHeight;
+
+		const isMobile = innerWidth < 1024;
 
 		for (let i = 0; i < animations.length; i++) {
 			const animation = animations[i];
@@ -72,8 +94,6 @@
 					upper: endPercentage
 				}
 			);
-
-			console.log(i, animStartPercentage);
 
 			if (scrollPercentage >= animStartPercentage) {
 				animation();
@@ -182,7 +202,7 @@
 		.cards-wrapper {
 			position: absolute;
 			height: 100vh;
-			width: 1440px;
+			width: clamp(1024px, 90vw, 1440px);
 			top: 0;
 			left: 50%;
 			transform: translateX(-50%);
@@ -210,31 +230,31 @@
 	#oss-discord {
 		position: absolute;
 		bottom: -400px;
-		left: 20px;
+		left: 1%;
 		transform: rotate(15deg);
 	}
 
 	#oss-github {
 		position: absolute;
 		bottom: -400px;
-		left: 270px;
+		left: 19%;
 	}
 
 	#oss-twitter {
 		position: absolute;
 		bottom: -400px;
-		left: 420px;
+		left: clamp(20%, 22vw, 29%);
 	}
 
 	#oss-youtube {
 		position: absolute;
 		bottom: -400px;
-		left: 920px;
+		left: clamp(64%, calc(1024px - 10vw), 70%);
 	}
 
 	#oss-commits {
 		position: absolute;
 		bottom: -400px;
-		left: 950px;
+		right: 10%;
 	}
 </style>
