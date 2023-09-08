@@ -3,8 +3,8 @@
 	import {
 		animate,
 		spring,
+		type AnimationControls,
 		type AnimationListOptions,
-		type MotionKeyframesDefinition,
 		type SpringOptions
 	} from 'motion';
 
@@ -14,75 +14,101 @@
 		y: { easing: spring(springOptions) }
 	};
 
-	let animated = [] as string[];
+	let animated = [] as AnimationControls[];
 
-	const getAnimateFn = (id: string, keyframes: MotionKeyframesDefinition) => {
-		return () => {
-			if (animated.includes(id)) return;
-			animated.push(id);
-			return animate(id, keyframes, animationOptions);
-		};
+	type Animation = {
+		mobile?: () => AnimationControls;
+		desktop: () => AnimationControls;
 	};
 
-	const animations = [
-		getAnimateFn('#oss-discord', { x: [-100, 20], y: [0, '-80vh'], rotate: 15 }),
-		getAnimateFn('#oss-github', { rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }),
-		getAnimateFn('#oss-twitter', {
-			rotate: -15,
-			x: [0, 100],
-			y: [0, '-70vh']
-		}),
-		getAnimateFn('#oss-youtube', {
-			rotate: -3.77,
-			x: [0, -100],
-			y: [0, '-60vh']
-		}),
-		getAnimateFn('#oss-commits', {
-			rotate: -10.2,
-			x: [0, 100],
-			y: [0, '-80vh']
-		})
+	const animations: Animation[] = [
+		{
+			mobile() {
+				return animate(
+					'#oss-discord',
+					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
+					animationOptions
+				);
+			},
+			desktop() {
+				return animate(
+					'#oss-discord',
+					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
+					animationOptions
+				);
+			}
+		},
+		{
+			desktop: function () {
+				return animate(
+					'#oss-github',
+					{ rotate: 6.26, x: [0, -100], y: [0, '-55vh'] },
+					animationOptions
+				);
+			}
+		},
+		{
+			desktop: function () {
+				return animate(
+					'#oss-twitter',
+					{ rotate: -15, x: [0, 100], y: [0, '-70vh'] },
+					animationOptions
+				);
+			}
+		},
+		{
+			desktop: function () {
+				return animate(
+					'#oss-youtube',
+					{ rotate: -3.77, x: [0, -100], y: [0, '-60vh'] },
+					animationOptions
+				);
+			}
+		},
+		{
+			desktop: function () {
+				return animate(
+					'#oss-commits',
+					{ rotate: -10.2, x: [0, 100], y: [0, '-80vh'] },
+					animationOptions
+				);
+			}
+		}
 	];
 
-	const mobileAnimations = [
-		getAnimateFn('#oss-discord', { x: ['-100%', 0], rotate: 15 }),
-		getAnimateFn('#oss-github', { rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }),
-		getAnimateFn('#oss-twitter', {
-			rotate: -15,
-			x: [0, 100],
-			y: [0, '-70vh']
-		}),
-		getAnimateFn('#oss-youtube', {
-			rotate: -3.77,
-			x: [0, -100],
-			y: [0, '-60vh']
-		}),
-		getAnimateFn('#oss-commits', {
-			rotate: -10.2,
-			x: [0, 100],
-			y: [0, '-80vh']
-		})
-	];
+	const executeAnimation = (index: number) => {
+		if (animated[index]) return;
+		const { mobile, desktop } = animations[index];
+		if (isMobile()) {
+			animated[index] = mobile ? mobile() : desktop();
+		} else {
+			animated[index] = desktop();
+		}
+	};
 
 	const startPercentage = 0.05;
 	const endPercentage = 0.8;
 
 	let wrapper: HTMLElement;
+
+	const isMobile = () => {
+		return window.innerWidth < 1024;
+	};
 </script>
 
 <svelte:window
+	on:resize={() => {
+		animated.forEach((animation) => animation.cancel());
+		animated = [];
+	}}
 	on:scroll={() => {
 		const { top, height } = wrapper.getBoundingClientRect();
-		const { innerHeight, innerWidth } = window;
+		const { innerHeight } = window;
 
 		const scrollHeight = height - innerHeight;
 		const scrollPercentage = (-1 * top) / scrollHeight;
 
-		const isMobile = innerWidth < 1024;
-
 		for (let i = 0; i < animations.length; i++) {
-			const animation = animations[i];
-
 			const animStartPercentage = toScale(
 				i,
 				{
@@ -96,7 +122,7 @@
 			);
 
 			if (scrollPercentage >= animStartPercentage) {
-				animation();
+				executeAnimation(i);
 			}
 		}
 	}}
@@ -185,27 +211,35 @@
 		align-items: center;
 		justify-content: center;
 		gap: 1.25rem;
+		padding-inline: 1.25rem;
 
 		width: 100%;
 		height: 100vh;
 
 		text-align: center;
 
-		h3 {
-			max-width: 61.375rem;
-		}
-
 		p {
 			max-width: 48.875rem;
 		}
 
 		.cards-wrapper {
-			position: absolute;
-			height: 100vh;
-			width: clamp(1024px, 90vw, 1440px);
-			top: 0;
-			left: 50%;
-			transform: translateX(-50%);
+			position: relative;
+			height: 22.5rem;
+		}
+
+		@media (min-width: 1024px) {
+			h3 {
+				max-width: 61.375rem;
+			}
+
+			.cards-wrapper {
+				position: absolute;
+				height: 100vh;
+				width: clamp(1024px, 90vw, 1440px);
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}
 		}
 	}
 
@@ -229,32 +263,49 @@
 
 	#oss-discord {
 		position: absolute;
-		bottom: -400px;
-		left: 1%;
-		transform: rotate(15deg);
+		left: 50%;
+		transform: translateX(-200vw);
+
+		@media (min-width: 1024px) {
+			bottom: -400px;
+			left: 1%;
+			transform: rotate(15deg);
+		}
 	}
 
 	#oss-github {
 		position: absolute;
-		bottom: -400px;
-		left: 19%;
+		opacity: 0;
+		@media (min-width: 1024px) {
+			bottom: -400px;
+			left: 19%;
+		}
 	}
 
 	#oss-twitter {
 		position: absolute;
-		bottom: -400px;
-		left: clamp(20%, 22vw, 29%);
+		opacity: 0;
+		@media (min-width: 1024px) {
+			bottom: -400px;
+			left: clamp(20%, 22vw, 29%);
+		}
 	}
 
 	#oss-youtube {
 		position: absolute;
-		bottom: -400px;
-		left: clamp(64%, calc(1024px - 10vw), 70%);
+		opacity: 0;
+		@media (min-width: 1024px) {
+			bottom: -400px;
+			left: clamp(64%, calc(1024px - 10vw), 70%);
+		}
 	}
 
 	#oss-commits {
 		position: absolute;
-		bottom: -400px;
-		right: 10%;
+		opacity: 0;
+		@media (min-width: 1024px) {
+			bottom: -400px;
+			right: 10%;
+		}
 	}
 </style>
