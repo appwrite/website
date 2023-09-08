@@ -154,3 +154,25 @@ print('test');
 ```
 {% /multicode %}
 </pre>
+
+#### Sections
+
+```md
+{% section #featured-products-1 step=1 title="Title" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /section %}
+{% section #featured-products-2 step=2 title="Title" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /section %}
+{% section #featured-products-3 step=3 title="Title" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /section %}
+```
+
+#### Info
+
+```
+{% info title="Public Service Announcement" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /info %}
+```
