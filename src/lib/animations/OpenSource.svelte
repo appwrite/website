@@ -1,17 +1,13 @@
 <script lang="ts">
 	import { toScale } from '$lib/utils/toScale';
 	import {
-		animate,
 		spring,
-		type AnimationControls,
 		type AnimationListOptions,
-		type SpringOptions,
+		type AnimationOptions,
 		type MotionKeyframesDefinition,
-		type AnimationOptions
+		type SpringOptions
 	} from 'motion';
-	import anime from 'animejs';
-	import { noop } from '@melt-ui/svelte/internal/helpers';
-	import type { Writable } from 'svelte/store';
+	import { animate, type AnimateReturn } from '.';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -19,7 +15,7 @@
 		y: { easing: spring(springOptions) }
 	};
 
-	let animated = [] as [string, AnimationControls][];
+	let animated = [] as AnimateReturn[];
 
 	type Animation = {
 		mobile?: [MotionKeyframesDefinition, AnimationOptions];
@@ -60,9 +56,9 @@
 		const { mobile, desktop, target } = animations[index];
 
 		if (isMobile() && mobile) {
-			animated[index] = [target, animate(target, mobile[0], mobile[1])];
+			animated[index] = animate(target, mobile[0], mobile[1]);
 		} else {
-			animated[index] = [target, animate(target, desktop[0], desktop[1])];
+			animated[index] = animate(target, desktop[0], desktop[1]);
 		}
 	};
 
@@ -74,19 +70,11 @@
 	const isMobile = () => {
 		return window.innerWidth < 1024;
 	};
-
-	import type { Tabs } from '@melt-ui/svelte';
-	type TabsContext = Writable<{
-		content: Tabs['elements']['content'];
-	}>;
 </script>
 
 <svelte:window
 	on:resize={() => {
-		animated.forEach(([target, animation]) => {
-			animation.cancel();
-			document.querySelector(target)?.removeAttribute('style');
-		});
+		animated.forEach(({ cancel }) => cancel());
 		animated = [];
 	}}
 	on:scroll={() => {
