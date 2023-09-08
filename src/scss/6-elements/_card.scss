@@ -3,6 +3,25 @@
 .#{$p}-card {
   --p-card-padding: var(--card-padding, #{pxToRem(24)});
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
+  &.is-normal {
+    --p-card-bg-color: var(--p-card-bg-color-default);
+    --p-card-bg-color-default: var(--aw-color-greyscale-900) / 0.04;
+
+    --p-card-border-color: var(--p-card-border-color-default);
+    --p-card-border-color-default: var(--aw-color-black) / 0.08;
+
+    --card-padding: #{pxToRem(16)};
+
+    background-color: hsl(var(--p-card-bg-color));
+    border: solid pxToRem(1) hsl(var(--p-card-border-color));
+    padding: var(--p-card-padding);
+    border-radius: var(--p-card-border-radius);
+
+    #{$theme-dark} & {
+      --p-card-bg-color-default: var(--aw-color-white) / 0.06;
+      --p-card-border-color-default: var(--aw-color-white) / 0.10;
+    }
+  }
   &.is-white {
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
