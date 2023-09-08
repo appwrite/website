@@ -1,14 +1,12 @@
 <script lang="ts">
+	import { toScale } from '$lib/utils/toScale';
 	import {
+		animate,
 		spring,
-		timeline,
 		type AnimationListOptions,
-		type SpringOptions,
-		type TimelineDefinition,
-		scroll,
-		animate
+		type MotionKeyframesDefinition,
+		type SpringOptions
 	} from 'motion';
-	import { onMount } from 'svelte';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -17,26 +15,37 @@
 	};
 
 	let animated = [] as string[];
-	const animateDiscord = () => {
-		if (animated.includes('discord')) return;
-		animated.push('discord');
-		animate('#oss-discord', { x: [0, 100], y: [0, '-80vh'], rotate: 15 }, animationOptions);
+
+	const getAnimateFn = (id: string, keyframes: MotionKeyframesDefinition) => {
+		return () => {
+			if (animated.includes(id)) return;
+			animated.push(id);
+			return animate(id, keyframes, animationOptions);
+		};
 	};
-	const animateGithub = () => {
-		if (animated.includes('github')) return;
-		animated.push('github');
-		animate('#oss-github', { rotate: 6.26, x: [0, 100], y: [0, '-55vh'] }, animationOptions);
-	};
-	const animateTwitter = () => {
-		if (animated.includes('twitter')) return;
-		animated.push('twitter');
-		animate('#oss-twitter', { rotate: -15, x: [0, 100], y: [0, '-70vh'] }, animationOptions);
-	};
-	const animateCommits = () => {
-		if (animated.includes('commits')) return;
-		animated.push('commits');
-		animate('#oss-commits', { rotate: -10.2, x: [0, 100], y: [0, '-80vh'] }, animationOptions);
-	};
+
+	const animations = [
+		getAnimateFn('#oss-discord', { x: [0, 100], y: [0, '-80vh'], rotate: 15 }),
+		getAnimateFn('#oss-github', { rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }),
+		getAnimateFn('#oss-twitter', {
+			rotate: -15,
+			x: [0, 100],
+			y: [0, '-70vh']
+		}),
+		getAnimateFn('#oss-youtube', {
+			rotate: -3.77,
+			x: [0, -100],
+			y: [0, '-60vh']
+		}),
+		getAnimateFn('#oss-commits', {
+			rotate: -10.2,
+			x: [0, 100],
+			y: [0, '-80vh']
+		})
+	];
+
+	const startPercentage = 0.05;
+	const endPercentage = 0.8;
 
 	let wrapper: HTMLElement;
 </script>
@@ -49,20 +58,26 @@
 		const scrollHeight = height - innerHeight;
 		const scrollPercentage = (-1 * top) / scrollHeight;
 
-		if (scrollPercentage > 0.05) {
-			animateDiscord();
-		}
+		for (let i = 0; i < animations.length; i++) {
+			const animation = animations[i];
 
-		if (scrollPercentage > 0.3) {
-			animateGithub();
-		}
+			const animStartPercentage = toScale(
+				i,
+				{
+					lower: 0,
+					upper: animations.length - 1
+				},
+				{
+					lower: startPercentage,
+					upper: endPercentage
+				}
+			);
 
-		if (scrollPercentage > 0.55) {
-			animateTwitter();
-		}
+			console.log(i, animStartPercentage);
 
-		if (scrollPercentage > 0.8) {
-			animateCommits();
+			if (scrollPercentage >= animStartPercentage) {
+				animation();
+			}
 		}
 	}}
 />
@@ -111,6 +126,17 @@
 
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
+				id="oss-youtube"
+				style="--card-padding:2rem"
+			>
+				<div class="u-flex-vertical u-main-space-between u-gap-32">
+					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
+				</div>
+				<div class="aw-title u-margin-block-start-auto">16k+ Youtube Subscribers</div>
+			</div>
+
+			<div
+				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-commits"
 				style="--card-padding:2rem"
 			>
@@ -125,7 +151,7 @@
 
 <style lang="scss">
 	#open-source {
-		height: 3200px;
+		height: 3500px;
 		position: relative;
 	}
 
@@ -160,7 +186,6 @@
 			top: 0;
 			left: 50%;
 			transform: translateX(-50%);
-			// background: hsl(0 0 0 / 0.5);
 		}
 	}
 
@@ -192,13 +217,19 @@
 	#oss-github {
 		position: absolute;
 		bottom: -400px;
-		left: 170px;
+		left: 270px;
 	}
 
 	#oss-twitter {
 		position: absolute;
 		bottom: -400px;
-		left: 520px;
+		left: 420px;
+	}
+
+	#oss-youtube {
+		position: absolute;
+		bottom: -400px;
+		left: 920px;
 	}
 
 	#oss-commits {
