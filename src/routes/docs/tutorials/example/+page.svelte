@@ -375,18 +375,22 @@
 					<div class="aw-content-footer-header-start">
 						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 						<div class="u-flex u-gap-8">
-							<input
+							<button
 								class="aw-radio-button is-like"
 								type="radio"
 								aria-label="Helpful"
 								name="happy"
-							/>
-							<input
-								class="aw-radio-button is-dislike"
+							>
+								<span class="icon-thumb-up" aria-hidden="true"></span>
+							</button>
+							<button
+								class="aw-radio-button is-dislike is-selected"
 								type="radio"
 								aria-label="UnHelpful"
 								name="happy"
-							/>
+							>
+								<span class="icon-thumb-dowm" aria-hidden="true"></span>
+							</button>
 						</div>
 					</div>
 					<div class="aw-content-footer-header-end">
