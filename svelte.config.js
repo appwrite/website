@@ -20,6 +20,7 @@ const config = {
 			generateSchema: true,
 			nodes: absoulute('./src/markdoc/nodes/_Module.svelte'),
 			tags: absoulute('./src/markdoc/tags/_Module.svelte'),
+			partials: absoulute('./src/partials'),
 			layouts: {
 				default: absoulute('./src/markdoc/layouts/Article.svelte'),
 				article: absoulute('./src/markdoc/layouts/Article.svelte'),

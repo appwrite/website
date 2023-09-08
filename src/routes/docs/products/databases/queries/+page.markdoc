@@ -1,0 +1,7 @@
+---
+layout: article
+title: Queries
+description: This is the description used for SEO.
+---
+
+Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.

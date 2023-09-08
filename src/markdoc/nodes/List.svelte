@@ -5,5 +5,5 @@
 <svelte:element
 	this={ordered ? 'ol' : 'ul'}
 	class:aw-numeric-list={ordered}
-	class:aw-list={!ordered}><slot /></svelte:element
+	class:aw-pink-dots={!ordered}><slot /></svelte:element
 >

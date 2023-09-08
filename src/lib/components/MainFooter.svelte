@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ThemeSelect from './ThemeSelect.svelte';
+
 	export let variant: 'homepage' | 'docs' = 'homepage';
 
 	type Social = {
@@ -74,13 +76,7 @@
 				{/each}
 			</ul>
 			<div class="aw-main-footer-grid-1-column-2">
-				<button class="aw-select is-colored">
-					<div class="physical-select">
-						<span class="aw-icon-dark" aria-hidden="true" />
-						<span>Dark</span>
-					</div>
-					<span class="icon-cheveron-down" aria-hidden="true" />
-				</button>
+				<ThemeSelect />
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>

@@ -62,6 +62,9 @@
 .#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
 .#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
 .#{$p}-u-margin-block-start-160     { margin-block-start:pxToRem(160)!important; }
+
+.#{$p}-u-margin-block-end-24       { margin-block-end:pxToRem(24); }
+
 .#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }
 
 .#{$p}-u-text-color-primary-500     { color:hsl(var(--aw-color-pink-500));   }
