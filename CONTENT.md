@@ -139,5 +139,18 @@ These are the fundamental Markdown syntax elements you'll need to create well-st
 
 #### Multicode Examples
 
-```md
+<pre>
+{% multicode %}
+```js
+console.log('test');
 ```
+
+```php
+echo 'test';
+```
+
+```dart
+print('test');
+```
+{% /multicode %}
+</pre>
