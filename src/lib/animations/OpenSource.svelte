@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { toScale } from '$lib/utils/toScale';
+	import { toScale, type Scale } from '$lib/utils/toScale';
 	import {
 		spring,
 		type AnimationListOptions,
@@ -7,7 +7,7 @@
 		type MotionKeyframesDefinition,
 		type SpringOptions
 	} from 'motion';
-	import { animate, type AnimateReturn } from '.';
+	import { animate, scroll, type AnimateReturn, createScrollHandler } from '.';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -51,21 +51,28 @@
 		}
 	];
 
-	const executeAnimation = (index: number) => {
-		if (animated[index]) return;
-		const { mobile, desktop, target } = animations[index];
+	const animScale: Scale = [0, animations.length - 1];
+	const percentScale: Scale = [0.05, 0.8];
 
-		if (isMobile() && mobile) {
-			animated[index] = animate(target, mobile[0], mobile[1]);
-		} else {
-			animated[index] = animate(target, desktop[0], desktop[1]);
+	const scrollHandler = createScrollHandler([
+		{
+			percentage: toScale(0, animScale, percentScale),
+			whenAfter() {
+				if (isMobile()) {
+					animate('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions);
+				} else {
+					animate('#oss-discord', { x: [-100, 20], y: [0, '-80vh'], rotate: 15 }, animationOptions);
+				}
+			},
+			whenBefore() {
+				animate(
+					'#oss-discord',
+					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
+					{ ...animationOptions, direction: 'reverse' }
+				);
+			}
 		}
-	};
-
-	const startPercentage = 0.05;
-	const endPercentage = 0.8;
-
-	let wrapper: HTMLElement;
+	]);
 
 	const isMobile = () => {
 		return window.innerWidth < 1024;
@@ -77,34 +84,16 @@
 		animated.forEach(({ cancel }) => cancel());
 		animated = [];
 	}}
-	on:scroll={() => {
-		const { top, height } = wrapper.getBoundingClientRect();
-		const { innerHeight } = window;
-
-		const scrollHeight = height - innerHeight;
-		const scrollPercentage = (-1 * top) / scrollHeight;
-
-		for (let i = 0; i < animations.length; i++) {
-			const animStartPercentage = toScale(
-				i,
-				{
-					lower: 0,
-					upper: animations.length - 1
-				},
-				{
-					lower: startPercentage,
-					upper: endPercentage
-				}
-			);
-
-			if (scrollPercentage >= animStartPercentage) {
-				executeAnimation(i);
-			}
-		}
-	}}
 />
 
-<div id="open-source" bind:this={wrapper}>
+<div
+	id="open-source"
+	use:scroll
+	on:aw-scroll={({ detail }) => {
+		const { scrollPercentage } = detail;
+		scrollHandler(scrollPercentage);
+	}}
+>
 	<div class="sticky-wrapper">
 		<h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
 		<p class="aw-description">

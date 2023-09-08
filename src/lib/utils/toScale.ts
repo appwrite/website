@@ -1,7 +1,4 @@
-export type Scale = {
-	lower: number;
-	upper: number;
-};
+export type Scale = [number, number];
 
 /**
  * Function that, given a number and two scales,
@@ -11,5 +8,5 @@ export type Scale = {
  * `to` { lower: 0, upper: 100 } => `number` 30
  */
 export function toScale(value: number, from: Scale, to: Scale): number {
-	return ((value - from.lower) * (to.upper - to.lower)) / (from.upper - from.lower) + to.lower;
+	return ((value - from[0]) * (to[1] - to[0])) / (from[1] - from[0]) + to[0];
 }
