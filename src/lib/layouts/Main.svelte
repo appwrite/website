@@ -120,9 +120,11 @@
 			</a>
 		</div>
 		<div class="aw-mobile-header-end">
-			<button class="aw-button">
-				<span class="text">Get Started</span>
-			</button>
+			{#if !isMobileNavOpen}
+				<button class="aw-button">
+					<span class="text">Get Started</span>
+				</button>
+			{/if}
 			<button
 				class="aw-button is-text"
 				aria-label="open navigation"
@@ -137,6 +139,16 @@
 		</div>
 	</section>
 	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
+		<div class="aw-top-banner">
+			<div class="aw-top-banner-content aw-u-color-text-primary">
+				<span class="aw-caption-500">We are having lots of fun on</span>
+				<span class="aw-icon-discord" aria-hidden="true" />
+				<span class="aw-caption-500">Discord. Come and join us!</span>
+				<button class="aw-top-banner-button" aria-label="close discord message">
+					<span class="aw-icon-close" aria-hidden="true" />
+				</button>
+			</div>
+		</div>
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
@@ -166,17 +178,15 @@
 						</nav>
 					</div>
 					<div class="aw-main-header-end">
-						<div class="u-flex u-gap-8">
-							<button class="aw-button is-text">
-								<span aria-hidden="true" class="aw-icon-star" />
-								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-							</button>
-							<button class="aw-button is-secondary">Sign Up</button>
-							<button class="aw-button">
-								<span class="text">Get Started</span>
-							</button>
-						</div>
+						<button class="aw-button is-text">
+							<span aria-hidden="true" class="aw-icon-star" />
+							<span class="text">Star on GitHub</span>
+							<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
+						</button>
+						<button class="aw-button is-secondary">Sign Up</button>
+						<button class="aw-button">
+							<span class="text">Get Started</span>
+						</button>
 					</div>
 				</div>
 			</div>

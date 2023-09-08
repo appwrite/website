@@ -1,14 +1,6 @@
 <script lang="ts">
 	import type { NavLink } from '$lib/layouts/Main.svelte';
 
-	const handleMenuClick = () => {
-		const gridHugeNavs = document.querySelector('.aw-grid-huge-navs');
-		const referencesMenu = document.querySelector('.aw-references-menu');
-
-		gridHugeNavs?.classList.toggle('is-open');
-		referencesMenu?.classList.remove('is-open');
-	};
-
 	export let open = false;
 	export let links: NavLink[];
 </script>
@@ -17,6 +9,11 @@
 
 <nav class="aw-side-nav aw-is-only-mobile" class:u-hide={!open}>
 	<div class="aw-side-nav-wrapper aw-u-padding-inline-16">
+		<div class="u-flex items-center u-gap-8">
+			<button class="aw-button is-secondary u-width-full-line">Sign Up</button>
+
+			<button class="aw-button u-width-full-line">Get Started</button>
+		</div>
 		<div class="aw-side-nav-scroll">
 			<section>
 				<ul>

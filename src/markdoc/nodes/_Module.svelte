@@ -1,4 +1,5 @@
 <script context="module">
+	export { default as Blockquote } from './Blockquote.svelte';
     export { default as Code } from './Code.svelte';
     export { default as Fence } from './Fence.svelte';
 	export { default as Heading } from './Heading.svelte';

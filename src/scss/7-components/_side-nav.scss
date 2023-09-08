@@ -19,15 +19,25 @@
   position:sticky; z-index:25; inset-block-start:pxToRem(80); inset-block-end:0;
   block-size:calc(100vh - pxToRem(80));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
+
+
+
   &-wrapper {
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
     padding:pxToRem(16); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
+    
+    
   }
   &-scroll {
     flex:1; overflow-y:scroll; overflow-x:hidden;
     display:flex; flex-direction:column; gap:pxToRem(24);
-    padding-inline:pxToRem(16); margin-inline:pxToRem(-16);
+    padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
+
+    .#{$p}-is-only-mobile  & {
+      border-block-start: 1px solid hsl(var(--aw-color-smooth));
+      padding-block-start: pxToRem(32);
+    }
   }
   &-header { margin-block-end:pxToRem(8); }
   &-button {
