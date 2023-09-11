@@ -3,3 +3,86 @@ layout: article
 title: Anonymous
 description: This is the description used for SEO.
 ---
+
+Anonymous sessions allow you to implement guest users. Guest users let you store user information like items in their cart or theme preferences before they create an account. This reduces the friction for your users to get started with your app.
+
+**If a user later creates an account**, their information will be inherited by the newly created account.
+
+## [Create Anonymous Session](#createSession)
+
+Create an anonymous session with [Create Anonymous Session](/docs/client/account#accountCreateAnonymousSession) route.
+
+{% multicode %}
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('[PROJECT_ID]');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createAnonymousSession();
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('[PROJECT_ID]');                 // Your project ID
+
+final account = Account(client);
+
+final user = await account.createAnonymousSession();
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("[PROJECT_ID]")                  // Your project ID
+
+val account = Account(client)
+
+val user = account.createAnonymousSession()
+```
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("[PROJECT_ID]")                  // Your project ID
+
+let account = Account(client)
+
+let user = try await account.createAnonymousSession()
+```
+```graphql
+mutation {
+    accountCreateAnonymousSession {
+        _id
+        userId
+        provider
+        expire
+    }
+}
+```
+{% /multicode %}
+
+## [Attaching an Account](#attach-account)
+
+Anonymous users cannot sign back in. If the session expires, they move to another computer, or they clear their browser data, they won't be able to log in again. Remember to prompt the user to create an account to not lose their data.
+
+Create an account with any of these methods to transition from an anonymous session to a user account session.
+
+- [Email and password](/docs/authentication-email-pass)
+- [Phone (SMS)](/docs/authentication-sms)
+- [Magic URL](/docs/authentication-magic)
+- [OAuth2](/docs/authentication-oauth)

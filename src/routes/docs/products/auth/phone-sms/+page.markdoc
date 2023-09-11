@@ -3,3 +3,179 @@ layout: article
 title: Phone and SMS
 description: This is the description used for SEO.
 ---
+
+Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
+
+## [Send SMS Message](#init) {% #init %}
+
+Phone authentication is done using a two-step authentication process. When using phone authentication, the authentication request is initiated from the client application and an SMS message is sent to the user's phone. The SMS message will contain a secret the user can use to log in.
+
+Send an SMS message to initiate the authentication process. A **new account** will be created for this phone number if it has never been used before.
+
+{% multicode %}
+
+```js
+import { Client, Account, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('[PROJECT_ID]');
+
+const account = new Account(client);
+
+const sessionToken = await account.createPhoneSession(
+    ID.unique(),
+    '+14255550123'
+);
+
+const userId = sessionToken.userId;
+```
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('[PROJECT_ID]');
+
+final account = Account(client);
+
+final sessionToken = await account.createPhoneSession(
+    userId: ID.unique(),
+    phone: '+14255550123'
+);
+
+final userId = sessionToken.userId;
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+import io.appwrite.ID
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("[PROJECT_ID]");
+
+val account = Account(client);
+
+val sessionToken = account.createPhoneSession(
+    userId = ID.unique(),
+    phone = "+14255550123"
+);
+
+val userId = sessionToken.userId;
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("[PROJECT_ID]");
+
+let account = Account(client);
+
+let sessionToken = try await account.createPhoneSession(
+    userId: ID.unique(),
+    phone: "+14255550123"
+);
+
+let userId = sessionToken.userId;
+```
+
+```graphql
+mutation {
+    accountCreatePhoneSession(userId: "unique()", phone: "+14255550123") {
+        _id
+        userId
+        secret
+        expire
+    }
+}
+```
+
+{% /multicode %}
+
+## [Log In](#login) {% #login %}
+
+After initiating the phone authentication process, the returned user ID and secret are used to confirm the user. The secret will usually be a 6-digit number in the SMS message sent to the user.
+
+{% multicode %}
+
+```js
+import { Client, Account, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('[PROJECT_ID]');
+
+const account = new Account(client);
+
+const session = await account.updatePhoneSession(
+    userId,
+    '[SECRET]'
+);
+```
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('[PROJECT_ID]');
+
+final account = Account(client);
+
+final session = await account.updatePhoneSession(
+    userId: userId,
+    secret: '[SECRET]'
+);
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+import io.appwrite.ID
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("[PROJECT_ID]");
+
+val account = Account(client);
+
+val session = account.updatePhoneSession(
+    userId = userId,
+    secret = "[SECRET]"
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("[PROJECT_ID]");
+
+let account = Account(client);
+
+let session = try await account.updatePhoneSession(
+    userId: userId,
+    secret: "[SECRET]"
+);
+```
+
+```graphql
+mutation {
+    accountUpdatePhoneSession(userId: "[USER_ID]", secret: "[SECRET]") {
+        _id
+        userId
+        provider
+        expire
+    }
+}
+```
+
+{% /multicode %}
+
+After the secret is verified, a session will be created.
