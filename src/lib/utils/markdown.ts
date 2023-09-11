@@ -23,6 +23,8 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
 				if (token.attrGet('href')?.startsWith('http')) {
 					token.attrPush(['target', '_blank']);
 				}
+				// disable links for now
+				token.attrSet('href', '#');
 				token.attrPush(['class', 'aw-link']);
 				break;
 		}
