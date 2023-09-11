@@ -1,98 +1,21 @@
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
-	import { animation, createScrollHandler, scroll, type Animation, type ScrollInfo } from '.';
-	import { fly, slide } from 'svelte/transition';
 	import { Phone } from '$lib/components';
+	import { clamp } from '$lib/utils/clamp';
+	import { fly, slide } from 'svelte/transition';
+	import { scroll, type ScrollInfo } from '.';
+	import ScrollIndicator from './scroll-indicator.svelte';
 
-	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
-	const animationOptions: AnimationListOptions = {
-		x: { easing: spring(springOptions) },
-		y: { easing: spring(springOptions) }
-	};
-	const animations: {
-		mobile: {
-			main: Animation;
-			reversed: Animation;
-		};
-		desktop: {
-			main: Animation;
-			reversed: Animation;
-		};
-	}[] = [
-		// {
-		// 	mobile: {
-		// 		main: animation('#oss-discord', { x: 0, y: 0, rotate: 1 }, animationOptions),
-		// 		reversed: animation('#oss-discord', { x: -1200, y: 0, rotate: 1 }, animationOptions)
-		// 	},
-		// 	desktop: {
-		// 		main: animation('#oss-discord', { x: 20, y: '-80vh', rotate: 15 }, animationOptions),
-		// 		reversed: animation('#oss-discord', { x: -100, y: '0vh', rotate: 15 }, animationOptions)
-		// 	}
-		// },
-		// {
-		// 	mobile: {
-		// 		main: animation('#oss-github', { x: 0, y: -10, rotate: -2 }, animationOptions),
-		// 		reversed: animation('#oss-github', { x: -1200, y: 10, rotate: -2 }, animationOptions)
-		// 	},
-		// 	desktop: {
-		// 		main: animation('#oss-github', { x: -100, y: '-55vh', rotate: 6.26 }, animationOptions),
-		// 		reversed: animation('#oss-github', { x: 0, y: '0vh', rotate: 6.26 }, animationOptions)
-		// 	}
-		// },
-		// {
-		// 	mobile: {
-		// 		main: animation('#oss-twitter', { x: 0, y: 10, rotate: -3 }, animationOptions),
-		// 		reversed: animation('#oss-twitter', { x: -1200, y: -10, rotate: -3 }, animationOptions)
-		// 	},
-		// 	desktop: {
-		// 		main: animation('#oss-twitter', { x: 100, y: '-70vh', rotate: -15 }, animationOptions),
-		// 		reversed: animation('#oss-twitter', { x: 0, y: '0vh', rotate: -15 }, animationOptions)
-		// 	}
-		// },
-		// {
-		// 	mobile: {
-		// 		main: animation('#oss-youtube', { x: 0, y: 5, rotate: 2 }, animationOptions),
-		// 		reversed: animation('#oss-youtube', { x: -1200, y: -5, rotate: 2 }, animationOptions)
-		// 	},
-		// 	desktop: {
-		// 		main: animation('#oss-youtube', { x: -100, y: '-55vh', rotate: -3.77 }, animationOptions),
-		// 		reversed: animation('#oss-youtube', { x: 0, y: '0vh', rotate: -3.77 }, animationOptions)
-		// 	}
-		// },
-		// {
-		// 	mobile: {
-		// 		main: animation('#oss-commits', { x: 0, y: -4, rotate: -1 }, animationOptions),
-		// 		reversed: animation('#oss-commits', { x: -1200, y: 4, rotate: -1 }, animationOptions)
-		// 	},
-		// 	desktop: {
-		// 		main: animation('#oss-commits', { x: 100, y: '-80vh', rotate: -10.2 }, animationOptions),
-		// 		reversed: animation('#oss-commits', { x: 0, y: '0vh', rotate: -10.2 }, animationOptions)
-		// 	}
-		// }
-	];
+	const sections = ['auth', 'databases', 'storage', 'functions', 'realtime'];
 
-	const animScale: Scale = [0, animations.length - 1];
-	const percentScale: Scale = [0.1, 0.8];
-
-	const scrollHandler = createScrollHandler(
-		animations.map(({ mobile, desktop }, i) => {
-			return {
-				percentage: toScale(i, animScale, percentScale),
-				whenAfter() {
-					const { main, reversed } = isMobile() ? mobile : desktop;
-
-					main.play();
-					return reversed.play;
-				}
-			};
-		})
+	const animScale: Scale = [0, sections.length];
+	const percentScale: Scale = [0.25, 0.9];
+	$: sectionIndex = Math.floor(
+		clamp(0, toScale(scrollInfo.percentage, percentScale, animScale), sections.length - 1)
 	);
-
-	const isMobile = () => {
-		return window.innerWidth < 1024;
-	};
+	$: section = sections[sectionIndex];
+	$: console.log(section);
 
 	let scrollInfo: ScrollInfo = {
 		percentage: 0,
@@ -107,28 +30,19 @@
 	on:aw-scroll={({ detail }) => {
 		const { percentage } = detail;
 		scrollInfo = detail;
-		console.log(detail);
-		scrollHandler(percentage);
-	}}
-	on:aw-resize={({ detail }) => {
-		scrollHandler.reset();
-		const { percentage: scrollPercentage } = detail;
-		console.log('resize', scrollPercentage);
-
-		scrollHandler(scrollPercentage);
 	}}
 >
 	<div class="sticky-wrapper">
 		<div class="text">
-			{#if scrollInfo.traversed > 0}
+			{#if scrollInfo.percentage > 0}
 				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 			{/if}
-			{#if scrollInfo.traversed > 600}
+			{#if scrollInfo.percentage > 0.075}
 				<h2 class="aw-display aw-u-color-text-primary" transition:slide={{ axis: 'x' }}>
 					Your backend, minus the hassle
 				</h2>
 			{/if}
-			{#if scrollInfo.traversed > 1500}
+			{#if scrollInfo.percentage > 0.15}
 				<p
 					class="aw-description aw-u-max-width-700 u-margin-inline-auto"
 					transition:fly={{
@@ -140,13 +54,56 @@
 				</p>
 			{/if}
 		</div>
-		<Phone />
+
+		{#if scrollInfo.percentage > 0.25}
+			<div class="products" transition:fly={{ y: 16 }}>
+				<div class="u-flex">
+					<ScrollIndicator percentage={toScale(scrollInfo.percentage, [0.25, 1], [0, 1])} />
+					<ul class="descriptions">
+						<li>
+							<h3>
+								<img src="./images/icons/illustrated/auth.svg" alt="" />
+								<span class="aw-label aw-u-color-text-primary">Auth</span>
+							</h3>
+							<h4 class="aw-title">Secure login for all your users</h4>
+							<p>Sign in users with multiple OAuth providers and multi factor authentication.</p>
+							<ul class="features">
+								<li>Two-Factor Authentication support</li>
+								<li>30+ login methods</li>
+								<li>State-of-the-art password hashing support</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<Phone id="products-phone">
+					<div class="phone-auth theme-light">
+						<p class="title">Create an Account</p>
+						<p class="subtitle">Please enter your details</p>
+						<div class="inputs">
+							<fieldset>
+								<label for="name">Your Name</label>
+								<input type="name" id="name" placeholder="Enter your name" />
+							</fieldset>
+							<fieldset>
+								<label for="email">Your Email</label>
+								<input type="email" id="email" placeholder="Enter your email" />
+							</fieldset>
+							<fieldset>
+								<label for="password">Create Password</label>
+								<input type="password" id="password" placeholder="Enter Password" />
+							</fieldset>
+						</div>
+						<button class="sign-up">Sign Up</button>
+					</div>
+				</Phone>
+			</div>
+		{/if}
 	</div>
 </div>
 
 <style lang="scss">
 	#products {
-		height: 10000px;
+		height: 7500px;
 		position: relative;
 	}
 
@@ -192,6 +149,157 @@
 					max-width: 61.375rem;
 				}
 			}
+		}
+	}
+
+	.products {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 1244px;
+
+		.descriptions {
+			margin-inline-start: 2rem;
+			text-align: left;
+
+			h3 {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+
+				.aw-label {
+					margin-block-start: 0.25rem;
+				}
+			}
+
+			h4 {
+				color: hsl(var(--aw-color-primary));
+				margin-block-start: 0.75rem;
+			}
+
+			p {
+				margin-block-start: 1rem;
+			}
+
+			.features {
+				display: flex;
+				flex-direction: column;
+				gap: 0.75rem;
+				margin-block-start: 2rem;
+
+				li {
+					--marker-size: 1.25rem;
+					--margin-left: calc(var(--marker-size) + 0.75rem);
+					position: relative;
+					margin-inline-start: var(--margin-left);
+
+					&::before {
+						content: '';
+						position: absolute;
+
+						left: calc(var(--margin-left) * -1);
+						top: 50%;
+						width: var(--marker-size);
+						height: var(--marker-size);
+
+						transform: translateY(-50%);
+
+						background: url('./images/icons/colored/check.svg') no-repeat;
+					}
+				}
+			}
+		}
+	}
+
+	.phone-auth {
+		padding-block: 3rem;
+		padding-inline: 1rem;
+
+		color: rgba(67, 67, 71, 1);
+		text-align: left;
+
+		.title {
+			color: #434347;
+			font-family: Inter;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 22px; /* 137.5% */
+			letter-spacing: -0.224px;
+		}
+
+		.subtitle {
+			color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
+			font-family: Inter;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 20px; /* 142.857% */
+			letter-spacing: -0.196px;
+		}
+
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			margin-block-start: 4rem;
+
+			fieldset {
+				display: flex;
+				flex-direction: column;
+				gap: 0.3125rem;
+				width: 100%;
+
+				label {
+					color: var(--color-greyscale-700, #56565c);
+					font-family: Inter;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 16px; /* 133.333% */
+					letter-spacing: -0.168px;
+				}
+
+				input {
+					all: unset;
+					display: flex;
+					padding: 8px 12px;
+					align-items: flex-start;
+					align-self: stretch;
+					border-radius: 8px;
+					border: 1px solid #d8d8db;
+
+					color: #434347;
+					font-family: Inter;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 16px; /* 133.333% */
+					letter-spacing: -0.168px;
+				}
+			}
+		}
+
+		.sign-up {
+			padding: 0.375rem 0.75rem;
+			text-align: center;
+			width: 100%;
+			margin-block-start: 1.25rem;
+
+			border-radius: 0.5rem;
+			background: var(--appwrite-purple, #7c67fe);
+			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+
+			color: var(--color-bw-white, #fff);
+			text-align: center;
+
+			/* Responsive/SubBody-500 */
+			font-family: Inter;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 22px; /* 157.143% */
+			letter-spacing: -0.07px;
 		}
 	}
 </style>
