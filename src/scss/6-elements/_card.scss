@@ -12,6 +12,7 @@
 
     --card-padding: #{pxToRem(16)};
 
+    display:block;
     background-color: hsl(var(--p-card-bg-color));
     border: solid pxToRem(1) hsl(var(--p-card-border-color));
     padding: var(--p-card-padding);
@@ -23,6 +24,7 @@
     }
   }
   &.is-white {
+    display:block;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     backdrop-filter: blur(12px);
