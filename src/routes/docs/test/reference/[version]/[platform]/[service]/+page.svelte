@@ -1,8 +1,7 @@
 <script>
-	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
-	import { Docs } from '$lib/layouts';
-	import Sidebar from '$routes/docs/Sidebar.svelte';
+	import { parse } from '$lib/utils/markdown';
+	import { Fence } from '../../../../../../../markdoc/nodes/_Module.svelte';
 
 	const handleRefClick = () => {
 		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
@@ -57,7 +56,7 @@
 							<h2 id={method.id} class="aw-main-body-500">{method.title}</h2>
 						</header>
 						<p class="aw-sub-body-400">
-							{method.description}
+							{@html parse(method.description)}
 						</p>
 						<ul
 							class="collapsible u-width-full-line"
@@ -88,7 +87,7 @@
 																	{/if}
 																</header>
 																<p class="aw-sub-body-400 u-margin-block-start-16">
-																	{parameter.description}
+																	{@html parse(parameter.description)}
 																</p>
 															</article>
 														</li>
@@ -102,7 +101,7 @@
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper">
 									<summary class="collapsible-button">
-										<span class="text"> Responnse </span>
+										<span class="text"> Response </span>
 										<div class="icon aw-u-color-text-primary">
 											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
@@ -167,27 +166,7 @@
 								class="u-position-sticky"
 								style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
 							>
-								<section class="aw-code-snippet" aria-label="code-snippet panel">
-									<header class="aw-code-snippet-header">
-										<div class="aw-code-snippet-header-start">
-											<div class="u-flex u-gap-16">
-												<div class="aw-tag">
-													<span class="text">Default</span>
-												</div>
-											</div>
-										</div>
-										<div class="aw-code-snippet-header-end">
-											<ul class="buttons-list u-flex u-gap-8">
-												<li class="buttons-list-item aw-u-padding-inline-start-20">
-													<button class="aw-icon-button" aria-label="copy code from code-snippet">
-														<span class="icon-duplicate" aria-hidden="true" />
-													</button>
-												</li>
-											</ul>
-										</div>
-									</header>
-									<div class="aw-code-snippet-content">CONTENT</div>
-								</section>
+								<Fence language="js" content={method.demo} process />
 							</div>
 						</div>
 					</div>
