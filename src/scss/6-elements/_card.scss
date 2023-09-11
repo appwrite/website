@@ -70,4 +70,8 @@
       }
     }
   }
+
+  @media #{$break1} {
+    --p-card-padding: var(--card-padding-mobile, var(--card-padding));
+  }
 }
