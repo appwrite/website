@@ -195,7 +195,7 @@
 								>https://appwrite.io/policy/privacy</a
 							>.
 						</p>
-						<div class="u-flex u-flex-vertical u-gap-8" id="whatIsCookie">
+						<section class="u-flex u-flex-vertical u-gap-8" id="whatIsCookie">
 							<h3 class="aw-sub-body-500 aw-u-color-text-primary">What is a cookie?</h3>
 							<p>
 								Cookies are computer files containing small amounts of information which are
@@ -205,7 +205,7 @@
 								websites work, or to work more efficiently, as well as to provide information to the
 								owners of the website.
 							</p>
-						</div>
+						</section>
 						<p>
 							Cookies do lots of different jobs, like letting you navigate between pages
 							efficiently, remembering your preferences, and generally improving the user
@@ -269,7 +269,7 @@
 					</section>
 					<section id="targeted">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">Targeted advertising</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">Targeted advertising</h3>
 							<p>
 								Third parties may drop cookies on your computer or mobile device to serve
 								advertising through our website. These companies may use information about your
@@ -284,7 +284,7 @@
 					</section>
 					<section id="useCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">How do we use cookies?</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">How do we use cookies?</h3>
 							<p>We use cookies to:</p>
 							<ul>
 								<li>Track traffic flow and patterns of travel in connection with our Site;</li>
@@ -300,7 +300,7 @@
 					</section>
 					<section id="typeCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">What types of cookies do we use?</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">What types of cookies do we use?</h3>
 							<p>
 								The types of cookies used by us in connection with the Site can be considered
 								'essential website cookies', 'functionality cookies', 'analytics and performance
@@ -960,7 +960,7 @@
 					</section>
 					<section id="controlCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">How to control or delete cookies</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">How to control or delete cookies</h3>
 							<p>
 								You may have the right to decide whether to accept or reject cookies. When you
 								access our Site, you are presented with a cookie consent mechanism that allows you
@@ -1060,7 +1060,7 @@
 					</section>
 					<section id="thirdCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">Third party websites' cookies</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">Third party websites' cookies</h3>
 							<p>
 								When using our website, you may be directed to other websites for such activities as
 								surveys, to make payment in currency other than U.S. dollars, or for job
@@ -1131,7 +1131,7 @@
 					</section>
 					<section id="moreInfo">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">Need more information?</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">Need more information?</h3>
 							<p>
 								If you would like to find out more about cookies and their use on the Internet, you
 								may find the following link useful: <a
@@ -1144,7 +1144,7 @@
 
 					<section id="pastCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">
 								Cookies that have been set in the past
 							</h3>
 							<p>
@@ -1157,7 +1157,7 @@
 
 					<section id="contact">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="sub-body-500 aw-u-color-text-primary">Contact us</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">Contact us</h3>
 							<p>
 								If you have any questions or comments about this cookies policy, or privacy matters
 								generally, please contact us via email at
