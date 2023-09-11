@@ -1,90 +1,88 @@
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
-	import {
-		spring,
-		type AnimationListOptions,
-		type AnimationOptions,
-		type MotionKeyframesDefinition,
-		type SpringOptions
-	} from 'motion';
-	import { animate, scroll, type AnimateReturn, createScrollHandler } from '.';
+
+	import { browser } from '$app/environment';
+	import { animation, createScrollHandler, scroll, type Animation } from '.';
+	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
 		x: { easing: spring(springOptions) },
 		y: { easing: spring(springOptions) }
 	};
-
-	let animated = [] as AnimateReturn[];
-
-	type Animation = {
-		mobile?: [MotionKeyframesDefinition, AnimationOptions];
-		desktop: [MotionKeyframesDefinition, AnimationOptions];
-		target: string;
-	};
-
-	const animations: Animation[] = [
-		{
-			target: '#oss-discord',
-			mobile: [{ x: [-1200, 0], y: 0, rotate: 1 }, animationOptions],
-			desktop: [{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 }, animationOptions]
-		},
-		{
-			target: '#oss-github',
-			mobile: [{ x: [-1200, 0], y: -10, rotate: -2 }, animationOptions],
-			desktop: [{ rotate: 6.26, x: [0, -100], y: [0, '-55vh'] }, animationOptions]
-		},
-		{
-			target: '#oss-twitter',
-			mobile: [{ x: [-1200, 0], y: 10, rotate: -3 }, animationOptions],
-			desktop: [{ rotate: -15, x: [0, 100], y: [0, '-70vh'] }, animationOptions]
-		},
-		{
-			target: '#oss-youtube',
-			mobile: [{ x: [-1200, 0], y: 5, rotate: 2 }, animationOptions],
-			desktop: [{ rotate: -3.77, x: [0, -100], y: [0, '-60vh'] }, animationOptions]
-		},
-		{
-			target: '#oss-commits',
-			mobile: [{ x: [-1200, 0], y: -4, rotate: -1 }, animationOptions],
-			desktop: [{ rotate: -10.2, x: [0, 100], y: [0, '-80vh'] }, animationOptions]
-		}
-	];
+	const animations: {
+		mobile: Animation;
+		desktop: Animation;
+	}[] = browser
+		? [
+				{
+					mobile: animation('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions),
+					desktop: animation(
+						'#oss-discord',
+						{ x: [-100, 20], y: ['0', '-80vh'], rotate: 15 },
+						animationOptions
+					)
+				},
+				{
+					mobile: animation('#oss-github', { x: [-1200, 0], y: -10, rotate: -2 }, animationOptions),
+					desktop: animation(
+						'#oss-github',
+						{ rotate: 6.26, x: [0, -100], y: ['0', '-55vh'] },
+						animationOptions
+					)
+				},
+				{
+					mobile: animation('#oss-twitter', { x: [-1200, 0], y: 10, rotate: -3 }, animationOptions),
+					desktop: animation(
+						'#oss-twitter',
+						{ rotate: -15, x: [0, 100], y: ['0', '-70vh'] },
+						animationOptions
+					)
+				},
+				{
+					mobile: animation('#oss-youtube', { x: [-1200, 0], y: 5, rotate: 2 }, animationOptions),
+					desktop: animation(
+						'#oss-youtube',
+						{ rotate: -3.77, x: [0, -100], y: ['0', '-60vh'] },
+						animationOptions
+					)
+				},
+				{
+					mobile: animation('#oss-commits', { x: [-1200, 0], y: -4, rotate: -1 }, animationOptions),
+					desktop: animation(
+						'#oss-commits',
+						{ rotate: -10.2, x: [0, 100], y: ['0', '-80vh'] },
+						animationOptions
+					)
+				}
+		  ]
+		: [];
 
 	const animScale: Scale = [0, animations.length - 1];
 	const percentScale: Scale = [0.05, 0.8];
 
-	const scrollHandler = createScrollHandler([
-		{
-			percentage: toScale(0, animScale, percentScale),
-			whenAfter() {
-				if (isMobile()) {
-					animate('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions);
-				} else {
-					animate('#oss-discord', { x: [-100, 20], y: [0, '-80vh'], rotate: 15 }, animationOptions);
+	const scrollHandler = createScrollHandler(
+		animations.map(({ mobile, desktop }, i) => {
+			return {
+				percentage: toScale(i, animScale, percentScale),
+				whenAfter({ executedCount }) {
+					if (isMobile()) {
+						mobile?.play();
+						return mobile?.reverse;
+					} else if (executedCount === 0) {
+						desktop?.play();
+					}
 				}
-			},
-			whenBefore() {
-				animate(
-					'#oss-discord',
-					{ x: [-100, 20], y: [0, '-80vh'], rotate: 15 },
-					{ ...animationOptions, direction: 'reverse' }
-				);
-			}
-		}
-	]);
+			};
+		})
+	);
 
 	const isMobile = () => {
 		return window.innerWidth < 1024;
 	};
 </script>
 
-<svelte:window
-	on:resize={() => {
-		animated.forEach(({ cancel }) => cancel());
-		animated = [];
-	}}
-/>
+<svelte:window on:resize={scrollHandler.reset} />
 
 <div
 	id="open-source"
