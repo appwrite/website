@@ -84,39 +84,40 @@ export function createScrollHandler(callbacks: ScrollCallback[]) {
 	return handler;
 }
 
-type ScrollDetail = {
-	scrollPercentage: number;
-	scrollY: number;
-	scrollHeight: number;
-	top: number;
+export type ScrollInfo = {
+	percentage: number;
+	traversed: number;
+	remaning: number;
 };
 
 export const scroll: Action<
 	HTMLElement,
 	undefined,
 	{
-		'on:aw-scroll': (e: CustomEvent<ScrollDetail>) => void;
-		'on:aw-resize': (e: CustomEvent<ScrollDetail>) => void;
+		'on:aw-scroll': (e: CustomEvent<ScrollInfo>) => void;
+		'on:aw-resize': (e: CustomEvent<ScrollInfo>) => void;
 	}
 > = (node) => {
-	const getScrollInfo = () => {
+	function getScrollInfo(): ScrollInfo {
 		const { top, height } = node.getBoundingClientRect();
-		const { innerHeight, scrollY } = window;
+		const { innerHeight } = window;
 
 		const scrollHeight = height - innerHeight;
 		const scrollPercentage = (-1 * top) / scrollHeight;
 
+		const traversed = scrollPercentage * scrollHeight;
+		const remaning = scrollHeight - traversed;
+
 		return {
-			scrollPercentage,
-			scrollY,
-			scrollHeight,
-			top
+			percentage: scrollPercentage,
+			traversed,
+			remaning
 		};
-	};
+	}
 
 	const handleScroll = () => {
 		node.dispatchEvent(
-			new CustomEvent<ScrollDetail>('aw-scroll', {
+			new CustomEvent<ScrollInfo>('aw-scroll', {
 				detail: getScrollInfo()
 			})
 		);
@@ -124,7 +125,7 @@ export const scroll: Action<
 
 	const handleResize = () => {
 		node.dispatchEvent(
-			new CustomEvent<ScrollDetail>('aw-resize', {
+			new CustomEvent<ScrollInfo>('aw-resize', {
 				detail: getScrollInfo()
 			})
 		);
