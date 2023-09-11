@@ -75,7 +75,7 @@
   border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
   display:flex; align-items:center; gap:pxToRem(4);
-  padding-inline:pxToRem(12); padding-block:pxToRem(7);
+  padding-inline:pxToRem(16); padding-block:pxToRem(12);
   border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
   white-space:nowrap;
 
@@ -134,4 +134,20 @@ textarea.#{$p}-input-text {
 
 .#{$p}-subscribe-input {
   ::placeholder      { color:hsl(var(--aw-color-primary)); opacity:0.64; }
+}
+
+.#{$p}-form {
+  &-list {
+    display:grid;
+    &.is-two-columns {
+      @media #{$break2open} {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+  &-item {
+    @media #{$break2open} {
+      &.is-column-span-2 { grid-column:span 2;}
+    }
+  }
 }

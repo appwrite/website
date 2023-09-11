@@ -1,0 +1,165 @@
+import SwaggerParser from '@apidevtools/swagger-parser';
+import specsClient from '$lib/specs/open-api3-1.3.x-client.json';
+import specsServer from '$lib/specs/open-api3-1.3.x-server.json';
+import { OpenAPIV3 } from 'openapi-types';
+
+type SDKMethod = {
+	id: string;
+	title: string;
+	description: string;
+	demo: string;
+	parameters: Array<{
+		name: string;
+		description: string;
+		required: boolean;
+		type: string;
+		example: string;
+	}>;
+};
+
+type AppwriteOperationObject = OpenAPIV3.OperationObject & {
+	'x-appwrite': {
+		method: string;
+		weight: number;
+		cookies: boolean;
+		type: string;
+		demo: string;
+		edit: string;
+		'rate-limit': number;
+		'rate-time': number;
+		'rate-key': string;
+		scope: string;
+		platforms: string[];
+		packaging: boolean;
+	};
+};
+
+type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
+	'x-example': string;
+};
+
+function getExamples(version: string) {
+	switch (version) {
+		case '1.3.x':
+			return import.meta.glob('$appwrite/examples/1.3.x/**/*.md', {
+				as: 'raw',
+				eager: true
+			});
+	}
+}
+
+function* iterateAllMethods(
+	api: OpenAPIV3.Document,
+	service: string
+): Generator<[OpenAPIV3.HttpMethods, OpenAPIV3.OperationObject]> {
+	for (const url in api.paths) {
+		const methods = api.paths[url];
+		if (methods?.get?.tags?.includes(service)) {
+			yield [OpenAPIV3.HttpMethods.GET, methods.get];
+		}
+		if (methods?.post?.tags?.includes(service)) {
+			yield [OpenAPIV3.HttpMethods.POST, methods.post];
+		}
+		if (methods?.put?.tags?.includes(service)) {
+			yield [OpenAPIV3.HttpMethods.PUT, methods.put];
+		}
+		if (methods?.patch?.tags?.includes(service)) {
+			yield [OpenAPIV3.HttpMethods.PATCH, methods.patch];
+		}
+		if (methods?.delete?.tags?.includes(service)) {
+			yield [OpenAPIV3.HttpMethods.DELETE, methods.delete];
+		}
+	}
+}
+
+function getParameters(
+	method: OpenAPIV3.HttpMethods,
+	operation: AppwriteOperationObject
+): SDKMethod['parameters'] {
+	const parameters: ReturnType<typeof getParameters> = [];
+	if (method === OpenAPIV3.HttpMethods.GET) {
+		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[]) ?? []) {
+			const schema = parameter.schema as OpenAPIV3.SchemaObject;
+
+			parameters.push({
+				name: parameter.name,
+				description: parameter.description ?? '',
+				required: parameter.required ?? false,
+				type: schema?.type ?? '',
+				example: schema?.example
+			});
+		}
+	} else {
+		const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
+		const schema = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
+		for (const [key, value] of Object.entries(schema?.properties ?? {})) {
+			const property = value as AppwriteSchemaObject;
+			parameters.push({
+				name: key,
+				description: property.description ?? '',
+				required: schema?.required?.includes(key) ?? false,
+				type: property.type ?? '',
+				example: property['x-example'] ?? ''
+			});
+		}
+	}
+
+	return parameters;
+}
+
+export async function getService(
+	version: string,
+	platform: string,
+	service: string
+): Promise<{
+	service: {
+		name: string;
+		description: string;
+	};
+	methods: SDKMethod[];
+}> {
+	const spec = platform.startsWith('client-') ? specsClient : specsServer;
+	const examples = getExamples(version);
+	if (!examples) {
+		throw new Error("Examples doesn't exist");
+	}
+	const data: {
+		service: {
+			name: string;
+			description: string;
+		};
+		methods: SDKMethod[];
+	} = {
+		service: {
+			name: '',
+			description: ''
+		},
+		methods: []
+	};
+	const parser = new SwaggerParser();
+	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
+	const tag = api.tags?.find((n) => n.name === service);
+
+	data.service = {
+		name: tag?.name ?? '',
+		description: tag?.description ?? ''
+	};
+
+	for (const [method, value] of iterateAllMethods(api, service)) {
+		const operation = value as AppwriteOperationObject;
+		const parameters = getParameters(method, operation);
+		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+		if (!(path in examples)) {
+			throw new Error("Example doesn't exist");
+		}
+		data.methods.push({
+			id: operation['x-appwrite'].method,
+			demo: examples[path],
+			title: operation.summary ?? '',
+			description: operation.description ?? '',
+			parameters: parameters ?? []
+		});
+	}
+
+	return data;
+}

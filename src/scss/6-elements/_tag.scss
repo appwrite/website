@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .#{$p}-tag {
-  --p-tag-text-color: var(--aw-color-greyscale-700);
+  --p-tag-text-color: var(--aw-color-primary);
   --p-tag-bg-color: var(--aw-color-greyscale-100);
 
   color: hsl(var(--p-tag-text-color));
@@ -10,7 +10,6 @@
   font-size:var(--aw-font-size-micro); line-height:var(--aw-line-height-tiny);
 
   #{$theme-dark} & {
-    --p-tag-text-color: var(--aw-color-greyscale-300);
     --p-tag-bg-color: var(--aw-color-greyscale-750);
   }
 }
