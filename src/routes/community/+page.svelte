@@ -36,15 +36,59 @@
 				</section>
 			</div>
 			<div class="aw-big-padding-section-level-2">
-				<section class="aw-container aw-u-padding-block-0" style="--container-size:78.75rem">
-					<div class="aw-media-container">
-						<img
-							class="u-block"
-							src="/images/pages/homepage/dashboard.svg"
-							alt="console dashboard"
-							style="aspect-ratio: 16 / 9"
-						/>
-					</div>
+				<section class="aw-container">
+					<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2"
+						style="--gap-mobile:1.5rem;">
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">32k+</div>
+								<div class="aw-description">GitHub Stars</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">8k+</div>
+								<div class="aw-description">Pull Requests</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">15k+</div>
+								<div class="aw-description">Commits</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">2.5k+</div>
+								<div class="aw-description">Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">625</div>
+								<div class="aw-description">Open Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">1.9k+</div>
+								<div class="aw-description">Closed Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">4.9k+</div>
+								<div class="aw-description">Forks</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">20k+</div>
+								<div class="aw-description">Contributors</div>
+							</div>
+						</li>
+
+					</ul>
 				</section>
 			</div>
 			<div class="aw-big-padding-section-level-2">
