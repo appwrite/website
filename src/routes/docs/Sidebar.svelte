@@ -57,7 +57,17 @@
 				{
 					label: 'References',
 					href: '/docs/reference',
-					icon: 'icon-document'
+					icon: 'icon-document',
+					items: [
+						{
+							label: 'Account',
+							href: '/docs/test/reference/1.3.x/client-flutter/account'
+						},
+						{
+							label: 'Avatars',
+							href: '/docs/test/reference/1.3.x/client-flutter/avatars'
+						}
+					]
 				}
 			]
 		},

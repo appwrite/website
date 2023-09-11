@@ -29,7 +29,7 @@ const config = {
 		}),
 		preprocessMeltUI()
 	]),
-	extensions: ['.markdoc', '.svelte'],
+	extensions: ['.markdoc', '.svelte', '.md'],
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
@@ -37,7 +37,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$routes: './src/routes',
-			$scss: './src/scss'
+			$scss: './src/scss',
+			$appwrite: './node_modules/appwrite/docs',
 		}
 	}
 };
