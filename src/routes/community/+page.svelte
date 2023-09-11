@@ -1,87 +1,94 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
-	import MainFooter from '../lib/components/MainFooter.svelte';
-	import FooterNav from '../lib/components/FooterNav.svelte';
-	import DeveloperCard from './DeveloperCard.svelte';
+	import MainFooter from '$lib/components/MainFooter.svelte';
+	import FooterNav from '$lib/components/FooterNav.svelte';
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
-	import OpenSource from '$lib/animations/OpenSource.svelte';
 </script>
 
-<!-- <div
-	class="u-position-absolute"
-	style="
-	width: 100vw;
-	max-width: 100%; overflow: hidden;
-	height: 1000px;
-"
-> -->
-<div
-	class="u-position-absolute"
-	style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
->
-	<img
-		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
-		max-block-size: unset; max-inline-size: unset;"
-		src="/images/bgs/top-page-dark.svg"
-		alt=""
-	/>
-</div>
-
-<div
-	class="u-position-absolute"
-	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
->
-	<img src="/images/bgs/hero-lines-1.png" alt="" />
-</div>
-
-<div
-	class="u-position-absolute"
-	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
->
-	<img src="/images/bgs/hero-lines-2.png" alt="" />
-</div>
 
 <Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-end-0">
-					<button class="aw-hero-banner-button aw-u-margin-block-end-24">
-						<span class="aw-icon-star" aria-hidden="true" />
-						<span class="aw-caption-500">New</span>
-						<div class="aw-hero-banner-button-sep" />
-						<span class="aw-caption-400">Pricing Plans announced</span>
-						<span class="aw-icon-arrow-right" aria-hidden="true" />
-					</button>
-					<div class="aw-hero is-horizontal">
-						<h1 class="aw-headline">
-							<span class="aw-gradient-text">
-								Build like a team of hundreds<span class="aw-u-color-text-accent">_</span>
-							</span>
+					<div class="aw-hero is-align-start aw-u-max-width-580">
+						<h1 class="aw-display aw-u-color-text-primary">
+							Built by a community of 700+ contributors
 						</h1>
-						<div class="u-cross-child-end">
+						<div class="">
 							<p class="aw-description">
 								Appwrite is the open-source development platform where developers can build any
 								application at any scale, using the language they want.
 							</p>
-							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
-								<span class="text">Get Started</span>
-							</button>
+							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
+								<button class="aw-button is-full-width-mobile">
+									<span class="text">Join our Discord</span>
+								</button>
+								<button class="aw-button is-secondary is-full-width-mobile">
+									<span aria-hidden="true" class="aw-icon-star"></span>
+									<span>Star on GitHub</span>
+									<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</section>
 			</div>
 			<div class="aw-big-padding-section-level-2">
-				<section class="aw-container aw-u-padding-block-0" style="--container-size:78.75rem">
-					<div class="aw-media-container">
-						<img
-							class="u-block"
-							src="/images/pages/homepage/dashboard.svg"
-							alt="console dashboard"
-							style="aspect-ratio: 16 / 9"
-						/>
-					</div>
+				<section class="aw-container">
+					<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2"
+						style="--gap-mobile:1.5rem;">
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">32k+</div>
+								<div class="aw-description">GitHub Stars</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">8k+</div>
+								<div class="aw-description">Pull Requests</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">15k+</div>
+								<div class="aw-description">Commits</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">2.5k+</div>
+								<div class="aw-description">Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">625</div>
+								<div class="aw-description">Open Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">1.9k+</div>
+								<div class="aw-description">Closed Issues</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">4.9k+</div>
+								<div class="aw-description">Forks</div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal">
+								<div class="aw-title aw-u-color-text-primary">20k+</div>
+								<div class="aw-description">Contributors</div>
+							</div>
+						</li>
+
+					</ul>
 				</section>
 			</div>
 			<div class="aw-big-padding-section-level-2">
@@ -221,92 +228,61 @@
 							</li>
 						</ul>
 					</div>
+					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
+						<li>
+							<div
+								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+								style="--card-padding:2rem"
+							>
+								<div class="u-flex-vertical u-main-space-between u-gap-32">
+									<span
+										class="icon-github aw-u-font-size-40"
+										aria-hidden="true"
+										aria-label="GitHub"
+									/>
+								</div>
+								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
+							</div>
+						</li>
+						<li>
+							<div
+								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+								style="--card-padding:2rem"
+							>
+								<div class="u-flex-vertical u-main-space-between u-gap-32">
+									<span
+										class="icon-github aw-u-font-size-40"
+										aria-hidden="true"
+										aria-label="GitHub"
+									/>
+								</div>
+								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
+							</div>
+						</li>
+						<li>
+							<div
+								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+								style="--card-padding:2rem"
+							>
+								<div class="u-flex-vertical u-main-space-between u-gap-32">
+									<span
+										class="icon-github aw-u-font-size-40"
+										aria-hidden="true"
+										aria-label="GitHub"
+									/>
+								</div>
+								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<OpenSource />
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div
-							class="aw-display aw-u-color-text-primary"
-							style:z-index="1000"
-							style:position="relative"
-						>
-							Loved by developers
-						</div>
+						<div class="aw-display">Loved by developers</div>
 					</div>
-					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="twitter"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="discord"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href=".">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="twitter"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="twitter"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href=".">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-					</ul>
+
 				</div>
 			</div>
 		</div>
