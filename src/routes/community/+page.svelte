@@ -91,51 +91,73 @@
 					</ul>
 				</section>
 			</div>
+		</div>
+
+		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<h3
-						class="aw-title aw-u-color-text-primary aw-u-text-align-center aw-u-max-width-600 u-margin-inline-auto"
-					>
-						Trusted by developers from the world's leading organizations
-					</h3>
-					<ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
-						<li>
-							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/intel.svg" alt="intel" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte." />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/gm.svg" alt="GM" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/ey.svg" alt="EY" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON" />
-						</li>
-					</ul>
+					<div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-800">
+						<h1 class="aw-headline aw-u-color-text-primary">
+							Appwrite is built by active contributors
+						</h1>
+						<div class="">
+							<p class="aw-description">
+								Inspire and get inspired. Join our community of maintainers and contributors and help us make Appwrite better for developers all around the world.
+							</p>
+							<div class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32">
+								<button class="aw-button is-secondary is-full-width-mobile">
+									<span>View all contributors</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="aw-big-padding-section-level-1">
+			<div class="aw-big-padding-section-level-2">
+				<div class="aw-container">
+					<div class="aw-hero is-align-start">
+						<h2 class="aw-display aw-u-color-text-primary">
+							Get Involved
+						</h2>
+						<div class="">
+							<p class="aw-description">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis pellentesque quis purus in posuere.
+							</p>
+						</div>
+					</div>
+
+					<div class="aw-card is-normal">
+						<div class="u-flex aw-u-flex-direction-column-mobile
+									aw-u-gap-80 aw-u-row-gap-48">
+							<div>
+								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
+								<p class="aw-main-body-500 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<button class="aw-button is-secondary u-margin-block-start-32">
+									<span class="aw-icon-github" aria-hidden="true"></span>
+									<span clas="">View all Open Issues</span>
+								</button>
+							</div>
+							<div>
+								<table>
+									<thead>
+									<tr>
+										<th>Issue #</th>
+										<th>Title</th>
+									</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
