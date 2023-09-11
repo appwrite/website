@@ -118,6 +118,53 @@
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
+					<div class="aw-hero is-align-start">
+						<h2 class="aw-display aw-u-color-text-primary">
+							Get Involved
+						</h2>
+						<div class="">
+							<p class="aw-description">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis pellentesque quis purus in posuere.
+							</p>
+						</div>
+					</div>
+
+					<div class="aw-card is-normal">
+						<div class="u-flex aw-u-flex-direction-column-mobile
+									aw-u-gap-80 aw-u-row-gap-48">
+							<div>
+								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
+								<p class="aw-main-body-500 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<button class="aw-button is-secondary u-margin-block-start-32">
+									<span class="aw-icon-github" aria-hidden="true"></span>
+									<span clas="">View all Open Issues</span>
+								</button>
+							</div>
+							<div>
+								<table>
+									<thead>
+									<tr>
+										<th>Issue #</th>
+										<th>Title</th>
+									</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="aw-big-padding-section-level-1">
+			<div class="aw-big-padding-section-level-2">
+				<div class="aw-container">
 					<div class="aw-hero aw-u-max-width-993">
 						<span class="aw-badges aw-eyebrow">Products_</span>
 						<h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
