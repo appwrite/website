@@ -19,7 +19,7 @@
 					mobile: animation('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions),
 					desktop: animation(
 						'#oss-discord',
-						{ x: [-100, 20], y: ['0', '-80vh'], rotate: 15 },
+						{ x: [-100, 20], y: ['0', -1030], rotate: 15 },
 						animationOptions
 					)
 				},
@@ -27,7 +27,7 @@
 					mobile: animation('#oss-github', { x: [-1200, 0], y: -10, rotate: -2 }, animationOptions),
 					desktop: animation(
 						'#oss-github',
-						{ rotate: 6.26, x: [0, -100], y: ['0', '-55vh'] },
+						{ rotate: 6.26, x: [0, -100], y: [0, -707] },
 						animationOptions
 					)
 				},
@@ -35,7 +35,7 @@
 					mobile: animation('#oss-twitter', { x: [-1200, 0], y: 10, rotate: -3 }, animationOptions),
 					desktop: animation(
 						'#oss-twitter',
-						{ rotate: -15, x: [0, 100], y: ['0', '-70vh'] },
+						{ rotate: -15, x: [0, 100], y: [0, -900] },
 						animationOptions
 					)
 				},
@@ -43,7 +43,7 @@
 					mobile: animation('#oss-youtube', { x: [-1200, 0], y: 5, rotate: 2 }, animationOptions),
 					desktop: animation(
 						'#oss-youtube',
-						{ rotate: -3.77, x: [0, -100], y: ['0', '-60vh'] },
+						{ rotate: -3.77, x: [0, -100], y: [0, -770] },
 						animationOptions
 					)
 				},
@@ -51,7 +51,7 @@
 					mobile: animation('#oss-commits', { x: [-1200, 0], y: -4, rotate: -1 }, animationOptions),
 					desktop: animation(
 						'#oss-commits',
-						{ rotate: -10.2, x: [0, 100], y: ['0', '-80vh'] },
+						{ rotate: -10.2, x: [0, 100], y: [0, -1030] },
 						animationOptions
 					)
 				}
@@ -65,13 +65,10 @@
 		animations.map(({ mobile, desktop }, i) => {
 			return {
 				percentage: toScale(i, animScale, percentScale),
-				whenAfter({ executedCount }) {
-					if (isMobile()) {
-						mobile?.play();
-						return mobile?.reverse;
-					} else if (executedCount === 0) {
-						desktop?.play();
-					}
+				whenAfter() {
+					const anim = isMobile() ? mobile : desktop;
+					anim.play();
+					return anim.reverse;
 				}
 			};
 		})
