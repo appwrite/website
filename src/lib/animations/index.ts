@@ -74,7 +74,7 @@ export function createScrollHandler(callbacks: ScrollCallback[]) {
 
 	handler.reset = () => {
 		states.forEach((state) => {
-			state.unsubscribe?.();
+			// state.unsubscribe?.();
 			state.unsubscribe = undefined;
 			state.previous = undefined;
 			state.executedCount = 0;
@@ -94,32 +94,49 @@ type ScrollDetail = {
 export const scroll: Action<
 	HTMLElement,
 	undefined,
-	{ 'on:aw-scroll': (e: CustomEvent<ScrollDetail>) => void }
+	{
+		'on:aw-scroll': (e: CustomEvent<ScrollDetail>) => void;
+		'on:aw-resize': (e: CustomEvent<ScrollDetail>) => void;
+	}
 > = (node) => {
-	const handleScroll = () => {
+	const getScrollInfo = () => {
 		const { top, height } = node.getBoundingClientRect();
 		const { innerHeight, scrollY } = window;
 
 		const scrollHeight = height - innerHeight;
 		const scrollPercentage = (-1 * top) / scrollHeight;
 
+		return {
+			scrollPercentage,
+			scrollY,
+			scrollHeight,
+			top
+		};
+	};
+
+	const handleScroll = () => {
 		node.dispatchEvent(
 			new CustomEvent<ScrollDetail>('aw-scroll', {
-				detail: {
-					scrollPercentage,
-					scrollY,
-					scrollHeight,
-					top
-				}
+				detail: getScrollInfo()
+			})
+		);
+	};
+
+	const handleResize = () => {
+		node.dispatchEvent(
+			new CustomEvent<ScrollDetail>('aw-resize', {
+				detail: getScrollInfo()
 			})
 		);
 	};
 
 	window.addEventListener('scroll', handleScroll);
+	window.addEventListener('resize', handleResize);
 
 	return {
 		destroy() {
 			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleResize);
 		}
 	};
 };

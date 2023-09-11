@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import { browser } from '$app/environment';
-	import { animation, createScrollHandler, scroll, type Animation } from '.';
 	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
+	import { animation, createScrollHandler, scroll, type Animation } from '.';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -82,11 +81,8 @@
 				whenAfter() {
 					const { main, reversed } = isMobile() ? mobile : desktop;
 
-					const { stop } = main.play();
-					return () => {
-						stop();
-						reversed.play();
-					};
+					main.play();
+					return reversed.play;
 				}
 			};
 		})
@@ -97,13 +93,18 @@
 	};
 </script>
 
-<svelte:window on:resize={scrollHandler.reset} />
-
 <div
 	id="open-source"
 	use:scroll
 	on:aw-scroll={({ detail }) => {
 		const { scrollPercentage } = detail;
+		scrollHandler(scrollPercentage);
+	}}
+	on:aw-resize={({ detail }) => {
+		scrollHandler.reset();
+		const { scrollPercentage } = detail;
+		console.log('resize', scrollPercentage);
+
 		scrollHandler(scrollPercentage);
 	}}
 >
@@ -190,6 +191,17 @@
 		height: 100vh;
 
 		text-align: center;
+
+		&::after {
+			background: linear-gradient(
+				to top,
+				hsl(var(--aw-color-background)) 0%,
+				hsl(var(--aw-color-background) / 0) 10%
+			);
+			content: '';
+			position: absolute;
+			inset: 0;
+		}
 
 		p {
 			max-width: 48.875rem;
