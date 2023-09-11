@@ -82,6 +82,10 @@
 
 					items: [
 						{
+							label: 'Quick start',
+							href: '/docs/products/auth/quick-start'
+						},
+						{
 							label: 'Email and Password',
 							href: '/docs/products/auth/email-password'
 						},
