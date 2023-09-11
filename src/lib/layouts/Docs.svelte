@@ -23,7 +23,7 @@
 	$: variantClass = variantClasses[variant];
 </script>
 
-<div class="u-position-relative">
+<div id="top" class="u-position-relative">
 	<div
 		class={variantClass}
 		style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}

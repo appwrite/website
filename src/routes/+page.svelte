@@ -5,6 +5,7 @@
 	import DeveloperCard from './DeveloperCard.svelte';
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
+	import OpenSource from '$lib/animations/OpenSource.svelte';
 </script>
 
 <!-- <div
@@ -15,9 +16,13 @@
 	height: 1000px;
 "
 > -->
-<div class="u-position-absolute" style="margin-block-start:-36%; pointer-events:none; z-index: 10">
+<div
+	class="u-position-absolute"
+	style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+>
 	<img
-		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);"
+		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
+		max-block-size: unset; max-inline-size: unset;"
 		src="/images/bgs/top-page-dark.svg"
 		alt=""
 	/>
@@ -25,11 +30,17 @@
 
 <div
 	class="u-position-absolute"
-	style="margin-block-start: 4.5rem; left: -40rem; width: 75.9375rem;"
+	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
-<!-- </div> -->
+
+<div
+	class="u-position-absolute"
+	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
+>
+	<img src="/images/bgs/hero-lines-2.png" alt="" />
+</div>
 
 <Main>
 	<div class="aw-big-padding-section">
@@ -210,59 +221,19 @@
 							</li>
 						</ul>
 					</div>
-					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-						<li>
-							<div
-								class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-								style="--card-padding:2rem"
-							>
-								<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-										class="icon-github aw-u-font-size-40"
-										aria-hidden="true"
-										aria-label="GitHub"
-									/>
-								</div>
-								<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-							</div>
-						</li>
-					</ul>
 				</div>
 			</div>
+			<OpenSource />
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display">Loved by developers</div>
+						<div
+							class="aw-display aw-u-color-text-primary"
+							style:z-index="1000"
+							style:position="relative"
+						>
+							Loved by developers
+						</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
