@@ -97,15 +97,15 @@
 	id="open-source"
 	use:scroll
 	on:aw-scroll={({ detail }) => {
-		const { scrollPercentage } = detail;
-		scrollHandler(scrollPercentage);
+		const { percentage } = detail;
+		scrollHandler(percentage);
 	}}
 	on:aw-resize={({ detail }) => {
 		scrollHandler.reset();
-		const { scrollPercentage } = detail;
-		console.log('resize', scrollPercentage);
+		const { percentage } = detail;
+		console.log('resize', percentage);
 
-		scrollHandler(scrollPercentage);
+		scrollHandler(percentage);
 	}}
 >
 	<div class="sticky-wrapper">
