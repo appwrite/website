@@ -236,7 +236,171 @@
 					</div>
 				</div>
 			</div>
+			<div class="aw-big-padding-section-level-2">
+				<section class="aw-container">
+					<h4 class="aw-label aw-u-color-text-primary">Other ways to help</h4>
+					<ul class="grid-box u-gap-32 aw-u-gap-20-mobile u-margin-block-start-20" style="--grid-item-size:15rem">
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Blogging & Speaking</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Presenting at Meetups</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Reporting Bugs</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Submitting New Ideas</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Improving documentation</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping other contributors</div>
+								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<div class="aw-big-padding-section-level-2">
+				<section class="aw-container">
+					<div class="u-flex u-gap-16 u-main-space-between">
+						<h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
+						<div class="u-flex u-gap-12">
+							<button class="aw-icon-button" aria-label="Move carousel backward" disabled>
+								<span class="aw-icon-arrow-left" aria-hidden="true"></span>
+							</button>
+							<button class="aw-icon-button" aria-label="Move carousel forward">
+								<span class="aw-icon-arrow-right" aria-hidden="true"></span>
+							</button>
+						</div>
+					</div>
+
+					<div class="aw-grid-articles-scroll">
+						<ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32">
+							<li>
+								<a class="aw-grid-articles-item aw-u-gap-20" href="">
+									<div class="aw-grid-articles-item-image">
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-image-ratio-4/3" alt="">
+									</div>
+									<div class="aw-grid-articles-item-content is-no-gap">
+										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<time class="">June 26, 2023</time>
+											</li>
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<span class="">Appwrite Discord</span>
+											</li>
+										</ul>
+										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
+											Appwrite Office Hours
+										</h5>
+										<p class="aw-sub-body-500 u-margin-block-start-4">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										</p>
+										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-20">
+											<button class="aw-button is-secondary">
+												<span>View event</span>
+											</button>
+											<button class="aw-button is-text">
+												<span>Add to calendar</span>
+											</button>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a class="aw-grid-articles-item aw-u-gap-20" href="">
+									<div class="aw-grid-articles-item-image">
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-image-ratio-4/3" alt="">
+									</div>
+									<div class="aw-grid-articles-item-content is-no-gap">
+										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<time class="">June 26, 2023</time>
+											</li>
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<span class="">Appwrite Discord</span>
+											</li>
+										</ul>
+										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
+											Appwrite Office Hours
+										</h5>
+										<p class="aw-sub-body-500 u-margin-block-start-4">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										</p>
+										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-20">
+											<button class="aw-button is-secondary">
+												<span>View event</span>
+											</button>
+											<button class="aw-button is-text">
+												<span>Add to calendar</span>
+											</button>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a class="aw-grid-articles-item aw-u-gap-20" href="">
+									<div class="aw-grid-articles-item-image">
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-image-ratio-4/3" alt="">
+									</div>
+									<div class="aw-grid-articles-item-content is-no-gap">
+										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<time class="">June 26, 2023</time>
+											</li>
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<span class="">Appwrite Discord</span>
+											</li>
+										</ul>
+										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
+											Appwrite Office Hours
+										</h5>
+										<p class="aw-sub-body-500 u-margin-block-start-4">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										</p>
+										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-20">
+											<button class="aw-button is-secondary">
+												<span>View event</span>
+											</button>
+											<button class="aw-button is-text">
+												<span>Add to calendar</span>
+											</button>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+				</section>
+			</div>
 		</div>
+
 
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
