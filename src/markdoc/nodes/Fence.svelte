@@ -22,6 +22,8 @@
 	import yaml from 'highlight.js/lib/languages/yaml';
 	import plaintext from 'highlight.js/lib/languages/plaintext';
 	import diff from 'highlight.js/lib/languages/diff';
+	import graphql from 'highlight.js/lib/languages/graphql';
+	
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
 
@@ -49,6 +51,7 @@
 	hljs.registerLanguage('yaml', yaml);	
 	hljs.registerLanguage('diff', diff);
 	hljs.registerLanguage('text', plaintext);
+	hljs.registerLanguage('graphql', graphql);
 </script>
 
 <script lang="ts">
