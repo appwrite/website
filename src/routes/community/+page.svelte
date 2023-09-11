@@ -91,51 +91,26 @@
 					</ul>
 				</section>
 			</div>
+		</div>
+
+		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<h3
-						class="aw-title aw-u-color-text-primary aw-u-text-align-center aw-u-max-width-600 u-margin-inline-auto"
-					>
-						Trusted by developers from the world's leading organizations
-					</h3>
-					<ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
-						<li>
-							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/intel.svg" alt="intel" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte." />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/gm.svg" alt="GM" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/ey.svg" alt="EY" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" />
-						</li>
-						<li>
-							<img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON" />
-						</li>
-					</ul>
+					<div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-800">
+						<h1 class="aw-headline aw-u-color-text-primary">
+							Appwrite is built by active contributors
+						</h1>
+						<div class="">
+							<p class="aw-description">
+								Inspire and get inspired. Join our community of maintainers and contributors and help us make Appwrite better for developers all around the world.
+							</p>
+							<div class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32">
+								<button class="aw-button is-secondary is-full-width-mobile">
+									<span>View all contributors</span>
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
