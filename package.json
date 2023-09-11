@@ -51,6 +51,7 @@
 		"@fontsource/inter": "^5.0.8",
 		"highlight.js": "^11.8.0",
 		"markdown-it": "^13.0.1",
+		"motion": "^10.16.2",
 		"vite-plugin-dynamic-import": "^1.5.0"
 	}
 }
