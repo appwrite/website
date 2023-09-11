@@ -118,13 +118,30 @@
 				},
 				{
 					label: 'Functions',
-					href: '#',
+					href: '/docs/products/functions',
 					icon: 'icon-lightning-bolt',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
-						}
+							label: 'Develop',
+							href: '/docs/products/functions/develop'
+						},
+						{
+							label: 'Deploy',
+							href: '/docs/products/functions/deploy'
+						},
+						{
+							label: 'Execute',
+							href: '/docs/products/functions/execute'
+						},
+						{
+							label: 'Runtimes',
+							href: '/docs/products/functions/runtimes'
+						},
+						{
+							label: 'Examples',
+							href: '/docs/products/functions/examples'
+						},
+
 					]
 				},
 				{

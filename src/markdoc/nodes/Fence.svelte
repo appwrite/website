@@ -20,7 +20,7 @@
 	import powershell from 'highlight.js/lib/languages/powershell';
 	import dos from 'highlight.js/lib/languages/dos';
 	import yaml from 'highlight.js/lib/languages/yaml';
-
+	import plaintext from 'highlight.js/lib/languages/plaintext';
 	import diff from 'highlight.js/lib/languages/diff';
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
@@ -48,6 +48,7 @@
 	hljs.registerLanguage('cmd', dos);
 	hljs.registerLanguage('yaml', yaml);	
 	hljs.registerLanguage('diff', diff);
+	hljs.registerLanguage('text', plaintext);
 </script>
 
 <script lang="ts">
