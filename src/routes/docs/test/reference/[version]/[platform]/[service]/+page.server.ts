@@ -8,6 +8,7 @@ export const entries: EntryGenerator = () => {
 		{ service: 'account', version: '1.3.x', platform: 'client-flutter' },
 		{ service: 'avatars', version: '1.3.x', platform: 'client-web' },
 		{ service: 'avatars', version: '1.3.x', platform: 'client-flutter' },
+		{ service: 'databases', version: '1.3.x', platform: 'server-nodejs' },
 	];
 };
 
