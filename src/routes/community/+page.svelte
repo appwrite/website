@@ -402,21 +402,6 @@
 		</div>
 
 
-		<div class="aw-big-padding-section-level-1">
-			<div class="aw-big-padding-section-level-2">
-				<div class="aw-container">
-					<div class="aw-hero aw-u-max-width-993">
-						<span class="aw-badges aw-eyebrow">Products_</span>
-						<h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
-						<p class="aw-description aw-u-max-width-700 u-margin-inline-auto">
-							Build secure and scalable applications faster with Appwrite’s core backend products
-							and spend more time building the best products.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
 				<img class="u-block u-width-full-line" src="/images/bgs/padding-section-1.svg" alt="" />
@@ -424,13 +409,14 @@
 
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<section class="aw-hero is-align-start">
-						<span class="aw-badges aw-eyebrow">PRIVACY & SECURITY_</span>
-						<h2 class="aw-display u-max-width-700">Self-host your data or take it to the Cloud</h2>
-						<p class="aw-description u-max-width-700">
-							Migrate your data from and to any platform at any time with Appwrite’s migrations API.
-							With built-in security and privacy for peace of mind.
+					<section class="aw-hero is-center">
+						<h2 class="aw-display aw-u-color-text-primary">Inspire and get inspired</h2>
+						<p class="aw-description">
+							Visit our showcase website Built with Appwrite to find inspiration for your projects or to showcase what you have built. Join hundreds of developers.
 						</p>
+						<button class="aw-button is-secondary aw-u-cross-child-center u-margin-block-start-16">
+							<span>View all projects</span>
+						</button>
 					</section>
 					<div class="u-overflow-hidden aw-u-margin-block-start-80">
 						<ul class="aw-info-boxes aw-sub-body-500">
