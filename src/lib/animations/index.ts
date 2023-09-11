@@ -1,77 +1,87 @@
+import type { Action } from 'svelte/action';
 import {
+	animate as motionAnimate,
 	type ElementOrSelector,
 	type MotionKeyframesDefinition,
-	type AnimationOptionsWithOverrides,
-	type AnimationControls,
-	animate as motionAnimate
+	type AnimationOptionsWithOverrides
 } from 'motion';
-import type { Action } from 'svelte/action';
 
-export type AnimateReturn = AnimationControls & {
-	elementOrSelector: ElementOrSelector;
-};
-
-export function animate(
+export function animation(
 	elementOrSelector: ElementOrSelector,
 	keyframes: MotionKeyframesDefinition,
 	options?: AnimationOptionsWithOverrides
-): AnimateReturn {
-	const returned = motionAnimate(elementOrSelector, keyframes, options);
+) {
+	const play = () => {
+		const played = motionAnimate(elementOrSelector, keyframes, options);
+		return played;
+	};
+
+	const reverse = () => {
+		const reversedKeyframes = Object.fromEntries(
+			Object.entries(keyframes).map(([key, keyframe]) => {
+				return [key, Array.isArray(keyframe) ? [...keyframe].reverse() : keyframe];
+			})
+		) as typeof keyframes;
+		const reversed = motionAnimate(elementOrSelector, reversedKeyframes, options);
+		return reversed;
+	};
 
 	return {
-		...returned,
-		cancel() {
-			returned.cancel();
-			if (Array.isArray(elementOrSelector) || elementOrSelector instanceof NodeList) {
-				elementOrSelector.forEach((element) => {
-					element.removeAttribute('style');
-				});
-			} else if (typeof elementOrSelector === 'string') {
-				const elementsArray = document.querySelectorAll(elementOrSelector);
-				elementsArray.forEach((element) => {
-					element.removeAttribute('style');
-				});
-			} else {
-				elementOrSelector.removeAttribute('style');
-			}
-		},
-		elementOrSelector
+		play,
+		reverse
 	};
 }
 
+export type Animation = ReturnType<typeof animation>;
+
 type Unsubscriber = () => void;
+
+type PreviousScroll = 'before' | 'after' | undefined;
+
+type ScrollCallbackState = {
+	previous?: PreviousScroll;
+	unsubscribe?: Unsubscriber;
+	executedCount: number;
+};
 
 export type ScrollCallback = {
 	percentage: number;
-	whenAfter?: () => Unsubscriber | void;
-	whenBefore?: () => Unsubscriber | void;
-};
-
-type ScrollCallbackState = {
-	previous: 'before' | 'after';
-	unsubscribe?: Unsubscriber;
+	whenAfter?: (args: Omit<ScrollCallbackState, 'unsubscribe'>) => Unsubscriber | void;
 };
 
 export function createScrollHandler(callbacks: ScrollCallback[]) {
-	const states = callbacks.map(() => ({ previous: 'after' } as ScrollCallbackState));
+	const states: ScrollCallbackState[] = callbacks.map(() => ({ executedCount: 0 }));
 
-	return function (scrollPercentage: number) {
+	const handler = function (scrollPercentage: number) {
 		callbacks.forEach((callback, i) => {
-			const { percentage, whenAfter, whenBefore } = callback;
-			const { previous, unsubscribe } = states[i];
+			const { percentage, whenAfter } = callback;
+			const { previous, unsubscribe, executedCount } = states[i];
 
-			if (scrollPercentage >= percentage && previous === 'before') {
-				unsubscribe?.();
-				states[i].unsubscribe = whenAfter?.() ?? undefined;
+			if (scrollPercentage >= percentage && previous !== 'after') {
+				// Execute whenAfter
+				states[i].unsubscribe = whenAfter?.({ previous, executedCount }) ?? undefined;
 				states[i].previous = 'after';
-				console.log('after', states[i]);
+				if (whenAfter) {
+					states[i].executedCount++;
+				}
 			} else if (scrollPercentage < percentage && previous === 'after') {
 				unsubscribe?.();
-				states[i].unsubscribe = whenBefore?.() ?? undefined;
+				states[i].unsubscribe = undefined;
 				states[i].previous = 'before';
 			}
 		});
 	};
+
+	handler.reset = () => {
+		states.forEach((state) => {
+			state.unsubscribe?.();
+			state.unsubscribe = undefined;
+			state.previous = undefined;
+			state.executedCount = 0;
+		});
+	};
+
+	return handler;
 }
 
 type ScrollDetail = {
