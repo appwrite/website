@@ -129,7 +129,7 @@
 						</div>
 					</div>
 
-					<div class="aw-card is-normal">
+					<div class="aw-card is-normal u-margin-block-start-32" style="--card-padding:2rem; --card-padding-mobile:1.25rem;">
 						<div class="u-flex aw-u-flex-direction-column-mobile
 									aw-u-gap-80 aw-u-row-gap-48">
 							<div>
@@ -137,21 +137,97 @@
 								<p class="aw-main-body-500 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 								<button class="aw-button is-secondary u-margin-block-start-32">
 									<span class="aw-icon-github" aria-hidden="true"></span>
-									<span clas="">View all Open Issues</span>
+									<span class="">View all Open Issues</span>
 								</button>
 							</div>
-							<div>
-								<table>
-									<thead>
-									<tr>
-										<th>Issue #</th>
-										<th>Title</th>
+							<div class="u-stretch">
+								<table class="aw-table-line">
+									<thead class="aw-table-line-head">
+									<tr class="aw-table-line-row">
+										<th class="aw-table-line-cell aw-u-color-text-primary u-un-break-text">Issue #</th>
+										<th class="aw-table-line-cell aw-u-color-text-primary">Title</th>
 									</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td></td>
-											<td></td>
+									<tbody class="aw-table-line-body">
+										<tr class="aw-table-line-row">
+											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell">
+												<div>
+													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span>(appwrite/appwrite)</span>
+												</div>
+												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
+													<li>
+														<div class="aw-tag">Enhancement</div>
+													</li>
+													<li>
+														<div class="aw-tag">Help Wanted</div>
+													</li>
+													<li>
+														<div class="aw-tag">Discussion</div>
+													</li>
+												</ul>
+											</td>
+										</tr>
+										<tr class="aw-table-line-row">
+											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell">
+												<div>
+													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span>(appwrite/appwrite)</span>
+												</div>
+												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
+													<li>
+														<div class="aw-tag">Enhancement</div>
+													</li>
+													<li>
+														<div class="aw-tag">Help Wanted</div>
+													</li>
+													<li>
+														<div class="aw-tag">Discussion</div>
+													</li>
+												</ul>
+											</td>
+										</tr>
+										<tr class="aw-table-line-row">
+											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell">
+												<div>
+													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span>(appwrite/appwrite)</span>
+												</div>
+												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
+													<li>
+														<div class="aw-tag">Enhancement</div>
+													</li>
+													<li>
+														<div class="aw-tag">Help Wanted</div>
+													</li>
+													<li>
+														<div class="aw-tag">Discussion</div>
+													</li>
+												</ul>
+											</td>
+										</tr>
+										<tr class="aw-table-line-row">
+											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell">
+												<div>
+													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span>(appwrite/appwrite)</span>
+												</div>
+												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
+													<li>
+														<div class="aw-tag">Enhancement</div>
+													</li>
+													<li>
+														<div class="aw-tag">Help Wanted</div>
+													</li>
+													<li>
+														<div class="aw-tag">Discussion</div>
+													</li>
+												</ul>
+											</td>
 										</tr>
 									</tbody>
 								</table>
