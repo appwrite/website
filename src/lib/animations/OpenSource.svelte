@@ -196,7 +196,7 @@
 			background: linear-gradient(
 				to top,
 				hsl(var(--aw-color-background)) 0%,
-				hsl(var(--aw-color-background) / 0) 10%
+				hsl(var(--aw-color-background) / 0) 5%
 			);
 			content: '';
 			position: absolute;
