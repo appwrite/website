@@ -29,9 +29,4 @@
   }
 
   &.is-no-max-width { max-inline-size:initial; }
-
-  @media #{$break1} {
-    text-align:start;
-    .#{$p}-sub-title { align-self:start; }
-  }
 }
