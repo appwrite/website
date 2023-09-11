@@ -137,9 +137,7 @@ export async function getService(
 		methods: []
 	};
 	const parser = new SwaggerParser();
-	const api = (await parser.dereference(
-		spec as unknown as OpenAPIV3.Document
-	)) as OpenAPIV3.Document;
+	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
 	const tag = api.tags?.find((n) => n.name === service);
 
 	data.service = {
@@ -147,24 +145,20 @@ export async function getService(
 		description: tag?.description ?? ''
 	};
 
-	for (const url in api.paths) {
-		const methods = api.paths[url];
-		if (!methods) continue;
-		for (const [method, value] of iterateAllMethods(api, service)) {
-			const operation = value as AppwriteOperationObject;
-			const parameters = getParameters(method, operation);
-			const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
-			if (!(path in examples)) {
-				throw new Error("Example doesn't exist");
-			}
-			data.methods.push({
-				id: operation['x-appwrite'].method,
-				demo: examples[path],
-				title: operation.summary ?? '',
-				description: operation.description ?? '',
-				parameters: parameters ?? []
-			});
+	for (const [method, value] of iterateAllMethods(api, service)) {
+		const operation = value as AppwriteOperationObject;
+		const parameters = getParameters(method, operation);
+		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+		if (!(path in examples)) {
+			throw new Error("Example doesn't exist");
 		}
+		data.methods.push({
+			id: operation['x-appwrite'].method,
+			demo: examples[path],
+			title: operation.summary ?? '',
+			description: operation.description ?? '',
+			parameters: parameters ?? []
+		});
 	}
 
 	return data;
