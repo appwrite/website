@@ -545,11 +545,17 @@
 						<h3 class="aw-display aw-u-color-text-primary">Appwrite insights</h3>
 						<p>Sign up to our blog and get the latest insights from Appwrite. Learn more about engineering, product design, building community, and tips & tricks for using Appwrite.</p>
 					</div>
+					<div
+							class="aw-subscribe-input aw-input-text is-reset-input-inside u-width-full-line aw-u-max-width-380 u-margin-inline-auto u-margin-block-start-32"
+					>
+						<input type="email" placeholder="Enter your email" />
+						<button class="aw-button">Sign up</button>
+					</div>
 				</div>
 			</div>
 
 			<div
-				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
 			>
 				<div class="aw-container">
 					<PreFooter />
