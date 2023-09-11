@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-4-6 {
+  > * { min-inline-size:0; }
   @media #{$break1}, #{$break2} {
     display:flex; flex-direction:column; gap:pxToRem(64);
   }
