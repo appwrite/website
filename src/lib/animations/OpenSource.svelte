@@ -19,7 +19,7 @@
 					mobile: animation('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions),
 					desktop: animation(
 						'#oss-discord',
-						{ x: [-100, 20], y: ['0', -1030], rotate: 15 },
+						{ x: [-100, 20], y: [0, -1030], rotate: 15 },
 						animationOptions
 					)
 				},
@@ -59,7 +59,7 @@
 		: [];
 
 	const animScale: Scale = [0, animations.length - 1];
-	const percentScale: Scale = [0.05, 0.8];
+	const percentScale: Scale = [0.1, 0.8];
 
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
