@@ -208,8 +208,31 @@
 				},
 				{
 					label: 'Migrations',
-					href: '#',
-					icon: 'icon-refresh'
+					href: '/docs/products/migrations',
+					icon: 'icon-refresh',
+					items: [
+						{
+							label: 'From Firebase',
+							href: '/docs/products/migrations/firebase'
+						},
+						{
+							label: 'From Supabase',
+							href: '/docs/products/migrations/supabase'
+						},
+						{
+							label: 'From NHost',
+							href: '/docs/products/migrations/nhost'
+						},
+						{
+							label: 'From Cloud',
+							href: '/docs/products/migrations/cloud'
+						},
+						{
+							label: 'From self-hosted',
+							href: '/docs/products/migrations/self-hosted'
+						},
+
+					]
 				},
 				{
 					label: 'Self-hosting',
