@@ -13,6 +13,8 @@
   &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; align-items: center; gap: pxToRem(8) }
 
+  .#{$p}-input-text { padding-block:pxToRem(8); padding-inline-end:pxToRem(8); }
+
   .aw-logo { margin-inline-end:pxToRem(32); }
   .#{$p}-top-banner { position:relative; inset-block-start: calc(var(--p-main-header-padding-block) * -1); }
   &-nav {
