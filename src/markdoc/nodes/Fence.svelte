@@ -10,7 +10,11 @@
 	import json from 'highlight.js/lib/languages/json';
 	import swift from 'highlight.js/lib/languages/swift';
 	import php from 'highlight.js/lib/languages/php';
+	import python from 'highlight.js/lib/languages/python';
 	import diff from 'highlight.js/lib/languages/diff';
+	import ruby from 'highlight.js/lib/languages/ruby';
+	import csharp from 'highlight.js/lib/languages/csharp';
+	
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
 
@@ -24,6 +28,9 @@
 	hljs.registerLanguage('json', json);
 	hljs.registerLanguage('swift', swift);
 	hljs.registerLanguage('php', php);
+	hljs.registerLanguage('py', python);
+	hljs.registerLanguage('rb', ruby);
+	hljs.registerLanguage('cs', csharp);
 	hljs.registerLanguage('diff', diff);
 </script>
 
@@ -43,7 +50,7 @@
 		});
 	}
 
-	const result = process ? hljs.highlight(content, { language: language ?? 'sh' }).value : content;
+	$: result = process ? hljs.highlight(content, { language: language ?? 'sh' }).value : content;
 </script>
 
 {#if insideMultiCode}

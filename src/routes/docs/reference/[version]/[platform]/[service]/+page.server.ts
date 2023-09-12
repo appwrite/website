@@ -1,19 +1,10 @@
 import type { EntryGenerator, PageServerLoad } from './$types';
 import { getService } from '$lib/utils/specs';
+import { Platform, Service, versions } from '$lib/utils/references';
+import { error } from '@sveltejs/kit';
 
-const services = [
-	'account',
-	'avatars',
-	'database',
-	'functions',
-	'health',
-	'locale',
-	'storage',
-	'teams'
-];
-const versions = ['1.3.x'];
-const platforms = ['client-web', 'client-flutter'];
-
+const services = Object.values(Service);
+const platforms = Object.values(Platform);
 export const prerender = true;
 export const entries: EntryGenerator = () => {
 	return versions.flatMap((version) => {
@@ -27,6 +18,9 @@ export const entries: EntryGenerator = () => {
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { version, platform, service } = params;
+	if (!versions.includes(version)) throw error(404, 'Invalid version');
+	if (!services.includes(service as Service)) throw error(404, 'Invalid service');
+	if (!platforms.includes(platform as Platform)) throw error(404, 'Invalid platform');
 	const data = getService(version, platform, service);
 	return data;
 };
