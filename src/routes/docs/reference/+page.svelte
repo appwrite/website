@@ -113,13 +113,13 @@
 						<li class="collapsible-item">
 							<details class="collapsible-wrapper" open>
 								<summary class="collapsible-button">
-									<span class="text"> Request </span>
+									<span class="aw-sub-body-500 aw-u-color-text-primary"> Request </span>
 									<div class="icon aw-u-color-text-primary">
 										<span class="icon-cheveron-down" aria-hidden="true" />
 									</div>
 								</summary>
 								<div class="collapsible-content">
-									<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
+									<div class="aw-card is-normal u-padding-16 u-margin-block-start-16">
 										<ul class="u-flex-vertical">
 											<li>
 												<article>
@@ -182,13 +182,13 @@
 						<li class="collapsible-item">
 							<details class="collapsible-wrapper">
 								<summary class="collapsible-button">
-									<span class="text"> Responnse </span>
+									<span class="aw-sub-body-500 aw-u-color-text-primary"> Responnse </span>
 									<div class="icon aw-u-color-text-primary">
 										<span class="icon-cheveron-down" aria-hidden="true" />
 									</div>
 								</summary>
 								<div class="collapsible-content">
-									<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
+									<div class="aw-card is-normal u-padding-16 u-margin-block-start-16">
 										<ul>
 											<li>
 												<article>
@@ -212,18 +212,18 @@
 						<li class="collapsible-item">
 							<details class="collapsible-wrapper">
 								<summary class="collapsible-button">
-									<span class="text"> Errors </span>
+									<span class="aw-sub-body-500 aw-u-color-text-primary"> Errors </span>
 									<div class="icon aw-u-color-text-primary">
 										<span class="icon-cheveron-down" aria-hidden="true" />
 									</div>
 								</summary>
 								<div class="collapsible-content">
-									<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
+									<div class="aw-card is-normal u-padding-16 u-margin-block-start-16">
 										<ul>
 											<li>
 												<article>
 													<header class="u-flex u-cross-baseline u-gap-8">
-														<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
+													 	<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
 														<span class="aw-caption-400">string</span>
 														<div class="aw-tag">required</div>
 													</header>
