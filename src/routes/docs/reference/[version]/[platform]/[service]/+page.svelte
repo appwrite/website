@@ -42,7 +42,7 @@
 					<div class="u-flex u-cross-center u-gap-8">
 						<label class="u-small" for="platform">Platform</label>
 						<div class="aw-select is-colored">
-							<select id="platform" on:change={selectPlatform}>
+							<select id="platform" on:change={selectPlatform} value={platform}>
 								<optgroup label="Client">
 									{#each Object.values(Platform).filter((p) => p.startsWith('client-')) as platform}
 										<option>{platform}</option>
@@ -60,7 +60,7 @@
 					<div class="u-flex u-cross-center u-gap-8">
 						<label class="u-small" for="version">Version</label>
 						<div class="aw-select is-colored">
-							<select id="version" on:change={selectVersion}>
+							<select id="version" on:change={selectVersion} value={$page.params.version}>
 								<option value="cloud">Cloud</option>
 								{#each versions as version}
 									<option value={version}>{version}</option>
