@@ -3,7 +3,7 @@ export const versions = ['1.3.x'];
 export enum Service {
 	Account = 'account',
 	Avatars = 'avatars',
-	Database = 'database',
+	Databases = 'databases',
 	Functions = 'functions',
 	Health = 'health',
 	Locale = 'locale',
