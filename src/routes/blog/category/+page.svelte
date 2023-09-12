@@ -14,8 +14,11 @@
                     <span class="aw-icon-chevron-left" aria-hidden="true"></span>
                     <span class="">Back to blog</span>
                 </a>
-                <div class="aw-category-header">
-                    <h1 class="aw-display aw-u-color-text-primary">Category</h1>
+                <div class="aw-category-header u-margin-block-start-24">
+                    <div class="aw-category-header-content">
+                        <h1 class="aw-display aw-u-color-text-primary">Category</h1>
+                        <p class="aw-category-header-description aw-description">Lorem ipsum dolor sit amet consectetur. Dictumst arcu sagittis vel tincidunt gravida posuere sed volutpat fermentum. Quam pellentesque nunc tempus proin blandit aliquam. Augue fermentum volutpat mi massa tempor amet facilisi massa malesuada ridiculus.</p>
+                    </div>
                     <div class="aw-input-text-search-wrapper u-inline-width-100-percent-mobile">
                         <span class="icon-search" aria-hidden="true"></span>
                         <input class="aw-input-text aw-u-block-size-48" type="search" placeholder="Search">
