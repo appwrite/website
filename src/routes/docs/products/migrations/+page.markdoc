@@ -16,11 +16,11 @@ You can transfer from these sources to an Appwrite project. Resources marked **e
 
 | Source | Users | Databases | Documents | Files | Functions |
 |--------|-------|-----------|-----------|-------|-----------|
-| [Firebase](/docs/migrations-firebase) | enabled | enabled | partial | enabled | manual |
-| [Supabase](/docs/migrations-supabase) | enabled | enabled | partial | enabled | manual |
-| [NHost](/docs/migrations-nhost) | enabled | enabled | partial | enabled | manual |
-| [Cloud to Self-hosted](/docs/migrations-cloud-to-self-hosted) | enabled | enabled | enabled | enabled | enabled |
-| [Self-hosted to Cloud](/docs/migrations-self-hosted-to-cloud) | enabled | enabled | enabled | enabled | enabled |
+| [Firebase](/docs/products/migrations/firebase) | enabled | enabled | partial | enabled | manual |
+| [Supabase](/docs/products/migrations/supabase) | enabled | enabled | partial | enabled | manual |
+| [NHost](/docs/products/migrations/nhost) | enabled | enabled | partial | enabled | manual |
+| [Cloud](/docs/products/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
+| [Self-hosted](/docs/products/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
 
 ## Limitations
 
