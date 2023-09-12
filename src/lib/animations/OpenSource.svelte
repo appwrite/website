@@ -22,7 +22,7 @@
 		{
 			mobile: {
 				main: animation('#oss-discord', { x: 0, y: 0, rotate: 1 }, animationOptions),
-				reversed: animation('#oss-discord', { x: -1200, y: 0, rotate: 1 }, animationOptions)
+				reversed: animation('#oss-discord', { y: 1200, x: 0, rotate: 1 }, animationOptions)
 			},
 			desktop: {
 				main: animation('#oss-discord', { x: 20, y: '-80vh', rotate: 15 }, animationOptions),
@@ -32,7 +32,7 @@
 		{
 			mobile: {
 				main: animation('#oss-github', { x: 0, y: -10, rotate: -2 }, animationOptions),
-				reversed: animation('#oss-github', { x: -1200, y: 10, rotate: -2 }, animationOptions)
+				reversed: animation('#oss-github', { y: 1200, x: 10, rotate: -2 }, animationOptions)
 			},
 			desktop: {
 				main: animation('#oss-github', { x: -100, y: '-55vh', rotate: 6.26 }, animationOptions),
@@ -42,7 +42,7 @@
 		{
 			mobile: {
 				main: animation('#oss-twitter', { x: 0, y: 10, rotate: -3 }, animationOptions),
-				reversed: animation('#oss-twitter', { x: -1200, y: -10, rotate: -3 }, animationOptions)
+				reversed: animation('#oss-twitter', { y: 1200, x: -10, rotate: -3 }, animationOptions)
 			},
 			desktop: {
 				main: animation('#oss-twitter', { x: 100, y: '-70vh', rotate: -15 }, animationOptions),
@@ -52,7 +52,7 @@
 		{
 			mobile: {
 				main: animation('#oss-youtube', { x: 0, y: 5, rotate: 2 }, animationOptions),
-				reversed: animation('#oss-youtube', { x: -1200, y: -5, rotate: 2 }, animationOptions)
+				reversed: animation('#oss-youtube', { y: 1200, x: -5, rotate: 2 }, animationOptions)
 			},
 			desktop: {
 				main: animation('#oss-youtube', { x: -100, y: '-55vh', rotate: -3.77 }, animationOptions),
@@ -62,7 +62,7 @@
 		{
 			mobile: {
 				main: animation('#oss-commits', { x: 0, y: -4, rotate: -1 }, animationOptions),
-				reversed: animation('#oss-commits', { x: -1200, y: 4, rotate: -1 }, animationOptions)
+				reversed: animation('#oss-commits', { y: 1200, x: 4, rotate: -1 }, animationOptions)
 			},
 			desktop: {
 				main: animation('#oss-commits', { x: 100, y: '-80vh', rotate: -10.2 }, animationOptions),

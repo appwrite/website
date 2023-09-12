@@ -1,8 +1,8 @@
 @use '../../abstract' as *;
 .#{$p}-title {
   --p-font-family: var(--aw-font-family-aeonik-pro);
-  --p-font-size: var(--aw-font-size-big);
-  --p-line-height: var(--aw-line-height-lg);
+  --p-font-size: var(--aw-font-size-xxl);
+  --p-line-height: var(--aw-line-height-big);
   --p-letter-spacing: var(--aw-letter-spacing-squeezed);
   --p-font-weight: var(--aw-font-weight-regular);
 
