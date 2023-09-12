@@ -36,7 +36,9 @@
 <style lang="scss">
 	.scroll-indicator {
 		position: relative;
+
 		width: 1px;
+		flex-shrink: 0;
 		height: 100%;
 		background: linear-gradient(
 			to bottom,
