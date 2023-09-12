@@ -15,6 +15,14 @@ type SDKMethod = {
 		type: string;
 		example: string;
 	}>;
+	responses: Array<{
+		code: number;
+		contentType?: string;
+		model?: {
+			id: string;
+			name: string;
+		};
+	}>;
 };
 
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
@@ -107,6 +115,14 @@ function getParameters(
 	return parameters;
 }
 
+function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject {
+	const schema = api.components?.schemas?.[id] as OpenAPIV3.SchemaObject;
+	if (schema) {
+		return schema;
+	}
+	throw new Error("Schema doesn't exist");
+}
+
 export async function getService(
 	version: string,
 	platform: string,
@@ -148,6 +164,29 @@ export async function getService(
 	for (const [method, value] of iterateAllMethods(api, service)) {
 		const operation = value as AppwriteOperationObject;
 		const parameters = getParameters(method, operation);
+		const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
+			(tuple) => {
+				const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
+				const id = (
+					response?.content?.['application/json']?.schema as OpenAPIV3.ReferenceObject
+				)?.$ref
+					?.split('/')
+					.pop();
+				const schema = id ? getSchema(id, api) : undefined;
+
+				return {
+					code: Number(code),
+					contentType: response?.content ? Object.keys(response.content)[0] : undefined,
+					model: id
+						? {
+								id,
+								name: schema?.description ?? ''
+						  }
+						: undefined
+				};
+			}
+		);
+
 		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
 			throw new Error("Example doesn't exist");
@@ -157,7 +196,8 @@ export async function getService(
 			demo: examples[path],
 			title: operation.summary ?? '',
 			description: operation.description ?? '',
-			parameters: parameters ?? []
+			parameters: parameters ?? [],
+			responses: responses ?? []
 		});
 	}
 

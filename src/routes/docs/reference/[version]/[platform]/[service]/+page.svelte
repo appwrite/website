@@ -1,7 +1,7 @@
 <script>
 	import { MainFooter } from '$lib/components';
 	import { parse } from '$lib/utils/markdown';
-	import { Fence } from '../../../../../../../markdoc/nodes/_Module.svelte';
+	import { Fence } from '$markdoc/nodes/_Module.svelte';
 
 	const handleRefClick = () => {
 		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
@@ -49,7 +49,7 @@
 					</p>
 				</div>
 			</section>
-			{#each data.methods as method}
+			{#each data.methods as method (method.id)}
 				<section class="aw-article-content-grid-6-4">
 					<div class="-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
@@ -109,50 +109,19 @@
 									<div class="collapsible-content">
 										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 											<ul>
-												<li>
-													<article>
-														<header class="u-flex u-cross-baseline u-gap-8">
-															<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
-															<span class="aw-caption-400">string</span>
-															<div class="aw-tag">required</div>
-														</header>
-														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto
-															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
-															underscore. Can't start with a special char. Max length is 36 chars.
-														</p>
-													</article>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</details>
-							</li>
-							<li class="collapsible-item">
-								<details class="collapsible-wrapper">
-									<summary class="collapsible-button">
-										<span class="text"> Errors </span>
-										<div class="icon aw-u-color-text-primary">
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</summary>
-									<div class="collapsible-content">
-										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
-											<ul>
-												<li>
-													<article>
-														<header class="u-flex u-cross-baseline u-gap-8">
-															<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
-															<span class="aw-caption-400">string</span>
-															<div class="aw-tag">required</div>
-														</header>
-														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto
-															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
-															underscore. Can't start with a special char. Max length is 36 chars.
-														</p>
-													</article>
-												</li>
+												{#each method.responses as response}
+													<li>
+														<article>
+															<header class="u-flex u-cross-baseline u-gap-8">
+																<h3 class="aw-eyebrow aw-u-color-text-primary">{response.code}</h3>
+																<span class="aw-caption-400">{response.contentType}</span>
+															</header>
+															<p class="aw-sub-body-400 u-margin-block-start-16">
+																{response.model?.name}
+															</p>
+														</article>
+													</li>
+												{/each}
 											</ul>
 										</div>
 									</div>
