@@ -299,6 +299,27 @@
 							</ul>
 						</li>
 					</ul>
+					<ul class="aw-numeric-list">
+						<li>aaa</li>
+						<li>bbb</li>
+						<li>
+							ccc
+							<ul class="aw-numeric-list">
+								<li>aaa</li>
+								<li>bbb</li>
+								<li>
+									ccc
+									<ul class="aw-numeric-list">
+										<li>aaa</li>
+										<li>bbb</li>
+										<li>
+											ccc
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section class="aw-article-content-sub-section">
 					<div class="aw-card is-normal">
