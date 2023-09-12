@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './Fence.css';
+	import '$scss/hljs.css';
 	import { getContext, hasContext } from 'svelte';
 	import { platformMap } from '$lib/utils/references';
 	import { Tooltip } from '$lib/components';

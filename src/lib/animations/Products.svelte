@@ -24,12 +24,10 @@
 	import { clamp } from '$lib/utils/clamp';
 	import { getContext, setContext } from 'svelte';
 	import { writable, type Readable, type Writable } from 'svelte/store';
-	import { crossfade, fly, slide } from 'svelte/transition';
+	import { fly, slide } from 'svelte/transition';
 	import { scroll, type ScrollInfo } from '.';
-	import Auth from './products/auth';
-	import Databases from './products/databases';
+	import Auth from './products/auth.svelte';
 	import ScrollIndicator from './scroll-indicator.svelte';
-	import Phone from '$lib/components/Phone.svelte';
 
 	let scrollInfo: Writable<ScrollInfo> = writable({
 		percentage: 0,
@@ -107,13 +105,13 @@
 				</div>
 
 				<div class="animated">
-					<Auth.Content />
-					<div class="phone-wrapper">
+					<Auth />
+					<!-- <div class="phone-wrapper">
 						<Phone id="products-phone">
 							<Auth.Phone />
 							<Databases.Phone />
 						</Phone>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		{/if}
@@ -124,6 +122,8 @@
 	#products {
 		height: 7500px;
 		position: relative;
+
+		--debug-bg: transparent;
 	}
 
 	.sticky-wrapper {
@@ -172,7 +172,7 @@
 	}
 
 	.products {
-		background: hsl(250 50 50 / 0.25);
+		background: var(--debug-bg, hsl(250 50 50 / 0.25));
 
 		display: flex;
 		justify-content: space-between;
@@ -180,8 +180,8 @@
 		max-width: 77.75rem;
 
 		.text {
+			background: var(--debug-bg, hsl(200 50 50 / 0.25));
 			display: flex;
-			background: hsl(200 50 50 / 0.25);
 			max-width: 25rem;
 
 			.descriptions {
@@ -239,18 +239,10 @@
 	}
 
 	.animated {
-		background: hsl(100 50 50 / 0.25);
+		background: var(--debug-bg, hsl(100 50 50 / 0.25));
 		width: min(42rem, 50vw);
 		height: min(38.75rem, 90vh);
 
 		position: relative;
-		--z-behind-phone: 10;
-		--z-phone: 20;
-		--z-infront-phone: 30;
-	}
-
-	.phone-wrapper {
-		position: absolute;
-		z-index: var(--z-phone);
 	}
 </style>

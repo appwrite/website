@@ -1,22 +1,23 @@
 <script lang="ts">
-	import { code } from '$lib/actions/code';
-	import { ctx } from '$lib/animations/Products.svelte';
+	import '$scss/hljs.css';
 
-	const { active } = ctx.get();
+	import { getCodeHtml } from '$lib/utils/code';
 
-	const content = `const result = account.create(\n\tID.unique(),\n\t'walterobrian@example.com',\n\t'password',\n\t"Walter O'Brian"\n);`;
+	export let content: string;
+	$: codeHtml = getCodeHtml({ content, language: 'js' });
 </script>
 
-{#if $active}
-	<div class="code-console">
-		<div class="header">
-			<div class="ellipse" />
-			<div class="ellipse-2" />
-			<div class="ellipse-3" />
-		</div>
-		<div class="block" use:code={{ content, language: 'js' }} />
+<div class="code-console">
+	<div class="header">
+		<div class="ellipse" />
+		<div class="ellipse-2" />
+		<div class="ellipse-3" />
 	</div>
-{/if}
+	<div class="block">
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html codeHtml}
+	</div>
+</div>
 
 <style lang="scss">
 	.code-console {
@@ -34,30 +35,21 @@
 			rgba(255, 255, 255, 0.12) 0%,
 			rgba(255, 255, 255, 0) 125.11%
 		);
-		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-			-8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-			-33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
 		backdrop-filter: blur(8px);
 
-		width: 334px;
-		height: 202px;
+		min-width: 330px;
+		width: fit-content;
 		padding: 0 0.25rem 0.25rem;
 	}
 
 	.block {
-		// position: absolute;
-		// width: 326px;
-		// height: 166px;
-		// top: 32px;
-		// left: 4px;
-		// border-radius: 12px;
-		// overflow: hidden;
 		width: 100%;
 		flex-grow: 1;
 		text-align: left;
 
 		border-radius: 12px;
 		background: linear-gradient(129deg, rgba(0, 0, 0, 0.48) 22.38%, rgba(0, 0, 0, 0) 136.5%);
+		padding: 20px;
 	}
 
 	.header {
