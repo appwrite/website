@@ -92,7 +92,9 @@
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
-.#{$p}-u-gap-20        { gap:pxToRem(20);  }
+.#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
+.#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
+.#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }
 .#{$p}-u-row-gap-24   { row-gap: pxToRem(24)!important; }
 .#{$p}-u-row-gap-32    { row-gap: pxToRem(32)!important; }
@@ -106,6 +108,10 @@
 
 .#{$p}-u-cross-child-center { align-self:center!important;  }
 .#{$p}-u-cross-child-end { align-self:end!important;  }
+
+.#{$p}-u-list-inline-dot-sep {
+  >li:nth-child(n + 2)::before { content:"·"; margin-inline-start:pxToRem(8); }
+}
 
 .#{$p}-u-grid-auto-column-1fr {
   display:grid; grid-auto-flow:column; grid-auto-columns:1fr;

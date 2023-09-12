@@ -133,6 +133,7 @@ textarea.#{$p}-input-text {
 }
 
 .#{$p}-subscribe-input {
+  padding: pxToRem(4); padding-inline-start:pxToRem(16);
   ::placeholder      { color:hsl(var(--aw-color-primary)); opacity:0.64; }
 }
 

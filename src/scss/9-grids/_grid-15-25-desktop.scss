@@ -1,0 +1,9 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-15-25-desktop {
+  @media #{$break2open} {
+    display:flex;
+    >:nth-child(1) {flex:1.5; }
+    >:nth-child(2) {flex:2.5; }
+  }
+}

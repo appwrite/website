@@ -12,6 +12,7 @@
 
     --card-padding: #{pxToRem(16)};
 
+    display:block;
     background-color: hsl(var(--p-card-bg-color));
     border: solid pxToRem(1) hsl(var(--p-card-border-color));
     padding: var(--p-card-padding);
@@ -23,6 +24,7 @@
     }
   }
   &.is-white {
+    display:block;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     backdrop-filter: blur(12px);
@@ -69,5 +71,9 @@
         --m-border-gradient: radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
       }
     }
+  }
+
+  @media #{$break1} {
+    --p-card-padding: var(--card-padding-mobile, var(--card-padding));
   }
 }
