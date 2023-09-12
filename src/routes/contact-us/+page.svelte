@@ -71,7 +71,7 @@
 					</div>
 
 					<div class="u-flex u-main-end">
-						<ul class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-480  aw-u-max-inline-size-none-mobile">
+						<ul class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-580  aw-u-max-inline-size-none-mobile">
 							<li class="aw-form-item">
 								<input class="aw-input-text" type="text" placeholder="Name" aria-label="Name">
 							</li>
