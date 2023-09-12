@@ -1,12 +1,11 @@
 <script lang="ts">
 	import './Fence.css';
-	import { getCodeHtml, type Language } from '$lib/utils/code';
 	import { getContext, hasContext } from 'svelte';
 	import { platformMap } from '$lib/utils/references';
 	import { Tooltip } from '$lib/components';
 	import { copy } from '$lib/utils/copy';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
-
+	import { getCodeHtml, type Language } from '$lib/utils/code';
 	export let content: string;
 	export let language: Language;
 	export let process: boolean;
@@ -45,13 +44,12 @@
 		});
 	}
 
-	$: result = process
-		? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers })
-		: content;
+	const result = process ? getCodeHtml({ content, language: language ?? 'sh' }) : content;
 </script>
 
 {#if insideMultiCode}
 	{#if $selected === language}
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html result}
 	{/if}
 {:else}
@@ -82,6 +80,7 @@
 			</div>
 		</header>
 		<div class="aw-code-snippet-content">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html result}
 		</div>
 	</section>
