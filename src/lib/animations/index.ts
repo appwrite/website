@@ -141,3 +141,26 @@ export const scroll: Action<
 		}
 	};
 };
+
+type TimelineEvent = {
+	at: number;
+	callback: () => void;
+};
+
+export function createTimeline(events: TimelineEvent[]) {
+	let timeoutIds: NodeJS.Timeout[] = [];
+
+	const play = () => {
+		events.forEach((event) => {
+			const timeoutId = setTimeout(event.callback, event.at);
+			timeoutIds.push(timeoutId);
+		});
+	};
+
+	const cancel = () => {
+		timeoutIds.forEach(clearTimeout);
+		timeoutIds = [];
+	};
+
+	return { play, cancel };
+}
