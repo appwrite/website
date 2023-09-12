@@ -16,14 +16,16 @@
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;
 		goto(`/docs/reference/${version}/${event.currentTarget.value}/${service}`, {
-			invalidateAll: true
+			noScroll: true
 		});
 	}
 
 	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { platform, service } = $page.params;
 		const version = event.currentTarget.value === 'cloud' ? '1.3.x' : event.currentTarget.value;
-		goto(`/docs/reference/${version}/${platform}/${service}`);
+		goto(`/docs/reference/${version}/${platform}/${service}`, {
+			noScroll: true
+		});
 	}
 
 	$: platform = $page.params.platform as Platform;
