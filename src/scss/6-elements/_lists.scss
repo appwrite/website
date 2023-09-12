@@ -19,16 +19,34 @@
 
 .#{$p}-numeric-list {
   --p-list-text-color: var(--aw-color-greyscale-700);
-  color: hsl(var(--p-list-text-color));
-
   display:flex; flex-direction:column; gap:pxToRem(8);
+  padding-inline-start: pxToRem(24);
+  color: hsl(var(--p-list-text-color));
   counter-reset: numeric-list;
+  li::before { color:hsl(var(--aw-color-accent-click)); padding-inline-end:pxToRem(12); }
   li {
-    display:flex; gap:pxToRem(8);
     &::before {
       counter-increment: numeric-list;
       content:counter(numeric-list); align-self:start;
-      @include numeric-badge;
+    }
+  }
+  .#{$p}-numeric-list {
+    counter-reset: numeric-list-level-2;
+    li {
+      &::before {
+        color:revert;
+        counter-increment: numeric-list-level-2;
+        content:counter(numeric-list-level-2, upper-latin);
+      }
+    }
+    .#{$p}-numeric-list {
+      counter-reset: numeric-list-level-3;
+      li {
+        &::before {
+          counter-increment: numeric-list-level-3;
+          content:counter(numeric-list-level-3, lower-latin);
+        }
+      }
     }
   }
   #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
@@ -56,6 +74,7 @@
 }
 
 .#{$p}-pink-dots {
+  display:flex; flex-direction:column; gap:pxToRem(8);
   list-style:disc; padding-inline-start:pxToRem(24);
   > li {
     display:list-item; list-style-type:disc;

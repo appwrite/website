@@ -61,11 +61,35 @@
 					items: [
 						{
 							label: 'Account',
-							href: '/docs/test/reference/1.3.x/client-flutter/account'
+							href: '/docs/reference/1.3.x/client-web/account'
+						},
+						{
+							label: 'Users',
+							href: '/docs/reference/1.3.x/client-web/users'
+						},
+						{
+							label: 'Teams',
+							href: '/docs/reference/1.3.x/client-web/teams'
+						},
+						{
+							label: 'Databases',
+							href: '/docs/reference/1.3.x/client-web/databases'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/reference/1.3.x/client-web/storage'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/reference/1.3.x/client-web/functions'
+						},
+						{
+							label: 'Localization',
+							href: '/docs/reference/1.3.x/client-web/locale'
 						},
 						{
 							label: 'Avatars',
-							href: '/docs/test/reference/1.3.x/client-flutter/avatars'
+							href: '/docs/reference/1.3.x/client-web/avatars'
 						}
 					]
 				}
