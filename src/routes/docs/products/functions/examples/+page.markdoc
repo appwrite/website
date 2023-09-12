@@ -9,75 +9,105 @@ readtime: 3
 
 Appwrite Functions is all about flexibility. Behind the simple workflow hides some useful examples that can help you accomplish your goals faster. Take a look at the following.
 
-# Currency conversion API
+{% section #currency-conversion step=1 title="Currency conversion API" %}
 
 Here's a currency conversion API that converts from Euros and Indian Rupees to US Dollars. We'll use an external API to get the latest exchange rates and query it using a dependency specific to each runtime.
 
-## Prerequisites
+### Prerequisites
 
-### Node.js
-1. Run the following bash command to create a `package.json` file. This file is used to manage your Node.js project's dependencies.
+{% tabs %}
+{% tabsitem #node title="Node.js" %}
+Run the following bash command to create a `package.json` file. This file is used to manage your Node.js project's dependencies.
 ```bash
 npm init -y
 ```
-2. Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
+Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
     
 ```bash
 npm install undici
 ```
-3. Finally, add `npm install` to your function's build commands in the Appwrite Console.
+Finally, add `npm install` to your function's build commands in the Appwrite Console.
+{% /tabsitem %}
 
-- **PHP**
-  - Run the following bash command to create a `composer.json` file. This file is used to manage your PHP project's dependencies.
-    ```bash
-    composer init -y
-    ```
-  - Install the `guzzlehttp/guzzle` library. This library includes a `get` function that you can use to make HTTP requests.
-    ```bash
-    composer require guzzlehttp/guzzle
-    ```
-  - Finally, add `composer install` to your function's build commands in the Appwrite Console.
+{% tabsitem #php title="PHP" %}
+Run the following bash command to create a `composer.json` file. This file is used to manage your PHP project's dependencies.
 
-- **Python**
-  - Run the following bash command to create a `requirements.txt` file. This file is used to manage your Python project's dependencies.
-    ```bash
-    touch requirements.txt
-    ```
-  - Install the `requests` library. This library includes a `get` function that you can use to make HTTP requests.
-    ```bash
-    echo "requests" >> requirements.txt
-    pip install -r requirements.txt
-    ```
-  - Finally, add `pip install -r requirements.txt` to your function's build commands in the Appwrite Console.
+```bash
+composer init -y
+```
 
-- **Dart**
-  - Create a `pubspec.yaml` file with the following contents. This file is used to manage your Dart project's dependencies.
-    ```yaml
-    name: appwrite_function
-    description: Appwrite Function
-    version: 1.0.0
-    environment:
-      sdk: '>=2.12.0 <3.0.0'
-    ```
-  - Install the `http` library. This library includes a `get` function that you can use to make HTTP requests.
-    ```bash
-    pub install http
-    ```
-  - Finally, add `pub get` to your function's build commands in the Appwrite Console.
+Install the `guzzlehttp/guzzle` library. This library includes a `get` function that you can use to make HTTP requests.
 
-- **Ruby**
-  - Create a `Gemfile` file with the following contents. This file is used to manage your Ruby project's dependencies.
-    ```ruby
-    source 'https://rubygems.org'
-    ```
-  - Install the `httparty` library. This library includes a `get` function that you can use to make HTTP requests.
-    ```bash
-    echo "gem 'httparty'" >> Gemfile
-    bundle install
-    ```
-  - Finally, add `bundle install` to your function's build commands in the Appwrite Console.
+```bash
+composer require guzzlehttp/guzzle
+```
 
-## Code
+Finally, add `composer install` to your function's build commands in the Appwrite Console.
+
+{% /tabsitem %}
+
+{% tabsitem #python title="Python" %}
+
+Run the following bash command to create a `requirements.txt` file. This file is used to manage your Python project's dependencies.
+
+```bash
+touch requirements.txt
+```
+
+Install the `requests` library. This library includes a `get` function that you can use to make HTTP requests.
+
+```bash
+echo "requests" >> requirements.txt
+pip install -r requirements.txt
+```
+
+Finally, add `pip install -r requirements.txt` to your function's build commands in the Appwrite Console.
+
+{% /tabsitem %}
+{% tabsitem #dart title="Dart" %}
+
+Create a `pubspec.yaml` file with the following contents. This file is used to manage your Dart project's dependencies.
+
+```yaml
+name: appwrite_function
+description: Appwrite Function
+version: 1.0.0
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+```
+
+Install the `http` library. This library includes a `get` function that you can use to make HTTP requests.
+
+```bash
+pub install http
+```
+
+Finally, add `pub get` to your function's build commands in the Appwrite Console.
+
+{% /tabsitem %}
+{% tabsitem #ruby title="Ruby" %}
+
+Create a `Gemfile` file with the following contents. This file is used to manage your Ruby project's dependencies.
+
+```ruby
+source 'https://rubygems.org'
+```
+
+Install the `httparty` library. This library includes a `get` function that you can use to make HTTP requests.
+
+```bash
+echo "gem 'httparty'" >> Gemfile
+bundle install
+```
+
+Finally, add `bundle install` to your function's build commands in the Appwrite Console.
+{% /tabsitem %}
+
+{% /tabs %}
+
+
+### Code
+{% multicode %}
 ```js
 import { fetch } from 'undici';
 
@@ -118,18 +148,16 @@ return function ($context) {
         $amountInEuros = floatval($context->req->query['amount']);
         $response = $client->get('https://api.exchangerate.host/latest?base=EUR&symbols=USD');
         $data = $response->json();
-        $amountInDollars = $amountInEuros * $data['rates']['USD
-
-'];
-        return $context->res->send((string) $amountInDollars);
+        $amountInDollars = $amountInEuros * $data['rates']['USD'];
+        return $context->res->send(strval($amountInDollars));
     }
 
     if ($context->req->path === '/inr') {
         $amountInRupees = floatval($context->req->query['amount']);
         $response = $client->get('https://api.exchangerate.host/latest?base=INR&symbols=USD');
         $data = $response->json();
-        $amountInDollars = $amountInRupees * $data['rates']['USD'];
-        return $context->res->send((string) $amountInDollars);
+        $amountInDollars = amountInRupees * $data['rates']['USD'];
+        return $context->res->send(strval($amountInDollars));
     }
 
     return $context->res->send('Invalid path');
@@ -138,42 +166,42 @@ return function ($context) {
 ```python
 import requests
 
-def handler(context):
-    if context['req']['path'] == '/eur':
-        amount_in_euros = float(context['req']['query']['amount'])
-        response = requests.get('https://api.exchangerate.host/latest?base=EUR&symbols=USD')
-        data = response.json()
-        amount_in_dollars = amount_in_euros * data['rates']['USD']
-        return str(amount_in_dollars)
+def main(context):
+  if context.req.path == '/eur':
+    amount_in_euros = float(context.req.query['amount'])
+    response = requests.get('https://api.exchangerate.host/latest?base=EUR&symbols=USD')
+    data = response.json()
+    amount_in_dollars = amount_in_euros * data['rates']['USD']
+    return context.res.send(str(amount_in_dollars))
 
-    if context['req']['path'] == '/inr':
-        amount_in_rupees = float(context['req']['query']['amount'])
-        response = requests.get('https://api.exchangerate.host/latest?base=INR&symbols=USD')
-        data = response.json()
-        amount_in_dollars = amount_in_rupees * data['rates']['USD']
-        return str(amount_in_dollars)
+  if context.req.path == '/inr':
+    amount_in_rupees = float(context.req.query['amount'])
+    response = requests.get('https://api.exchangerate.host/latest?base=INR&symbols=USD')
+    data = response.json()
+    amount_in_dollars = amount_in_rupees * data['rates']['USD']
+    return context.res.send(str(amount_in_dollars))
 
-    return 'Invalid path'
+  return 'Invalid path'
 ```
 ```dart
-import 'dart:convert';
+import 'dart:async';
 import 'package:http/http.dart' as http;
 
-Future<String> handler(Map<String, dynamic> context) async {
-  if (context['req']['path'] == '/eur') {
-    double amountInEuros = double.parse(context['req']['query']['amount']);
+Future<dynamic> main(final context) async {
+  if (context.req.path == '/eur') {
+    final amountInEuros = double.parse(context.req.query['amount'])
     final response = await http.get(Uri.parse('https://api.exchangerate.host/latest?base=EUR&symbols=USD'));
     final data = json.decode(response.body);
-    double amountInDollars = amountInEuros * data['rates']['USD'];
-    return amountInDollars.toString();
+    final amountInDollars = amountInEuros * data['rates']['USD'];
+    return context.res.send(amountInDollars.toString());
   }
 
-  if (context['req']['path'] == '/inr') {
-    double amountInRupees = double.parse(context['req']['query']['amount']);
+  if (context.req.path == '/inr') {
+    final amountInRupees = double.parse(context.req.query['amount'])
     final response = await http.get(Uri.parse('https://api.exchangerate.host/latest?base=INR&symbols=USD'));
     final data = json.decode(response.body);
-    double amountInDollars = amountInRupees * data['rates']['USD'];
-    return amountInDollars.toString();
+    final amountInDollars = amountInRupees * data['rates']['USD'];
+    return context.res.send(amountInDollars.toString());
   }
 
   return 'Invalid path';
@@ -182,106 +210,137 @@ Future<String> handler(Map<String, dynamic> context) async {
 ```ruby
 require 'httparty'
 
-def handler(context)
-  if context['req']['path'] == '/eur'
-    amount_in_euros = context['req']['query']['amount'].to_f
+def main(context)
+  if context.req.path == '/eur'
+    amount_in_euros = context.req.query['amount'].to_f
     response = HTTParty.get('https://api.exchangerate.host/latest?base=EUR&symbols=USD')
     data = JSON.parse(response.body)
     amount_in_dollars = amount_in_euros * data['rates']['USD']
-    return amount_in_dollars.to_s
+    return context.res.send(amount_in_dollars.to_s)
   end
 
-  if context['req']['path'] == '/inr'
-    amount_in_rupees = context['req']['query']['amount'].to_f
+  if context.req.path == '/inr'
+    amount_in_rupees = context.req.query['amount'].to_f
     response = HTTParty.get('https://api.exchangerate.host/latest?base=INR&symbols=USD')
     data = JSON.parse(response.body)
     amount_in_dollars = amount_in_rupees * data['rates']['USD']
-    return amount_in_dollars.to_s
+    return context.res.send(amount_in_dollars.to_s)
   end
 
-  'Invalid path'
+  return 'Invalid path'
 end
 ```
-{% multicode %}
+{% /multicode %}
 
-# Custom URL Shortener {% #url-shortener) %}
+{% /section %}
 
-Here's a custom URL shortener API that uses a Redis database to generate and store short URLs. 
-You'll need to set up a Redis instance and use a Redis client to interact with it.
+{% section #voting-system step=2 title="Voting system" %}
 
-## Prerequisites
+Here's a simple voting system that allows users to vote on various topics. Appwrite Functions and the server SDK are used to enforce voting rules and prevent multiple votes from the same user for a single topic.
 
-### Node.js
-Make sure you have Redis installed and running on your system.
-Install the `ioredis` library, a Redis client for Node.js.
-```bash
-npm install ioredis
-```
-Finally, add `npm install` to your function's build commands in the Appwrite Console.
+### Prerequisites
 
-### PHP
-1. Make sure you have Redis installed and running on your system.
-2. Install the `predis/predis` library, a Redis client for PHP.
-```bash
-composer require predis/predis
-```
-3. Finally, add `composer install` to your function's build commands in the Appwrite Console.
+Create a Topics collection with the following attributes:
 
-### Python
-1. Make sure you have Redis installed and running on your system.
-2. Install the `redis` library, a Redis client for Python.
-```bash
-pip install redis
-```
-3. Finally, add `pip install redis` to your function's build commands in the Appwrite Console.
+| Name          | Type   | Description                      |
+|---------------|--------|----------------------------------|
+| `title`       | string | The name of the topic            |
+| `description` | string | Long form description of the topic|
 
-### Dart
-1. Make sure you have Redis installed and running on your system.
-2. Install the `pub_redis_client` library, a Redis client for Dart.
-```bash
-pub global activate pub_redis_client
-```
-3. Finally, add `pub global run pub_redis_client:install` to your function's build commands in the Appwrite Console.
+Create a Votes collection with the following attributes:
 
-### Ruby
-1. Make sure you have Redis installed and running on your system.
-2. Install the `redis-rb` library, a Redis client for Ruby.
-    ```bash
-    echo "gem 'redis-rb'" >> Gemfile
-    bundle install
-    ```
-3. Finally, add `bundle install` to your function's build commands in the Appwrite Console.
+| Name          | Type   | Description                              |
+|---------------|--------|------------------------------------------|
+| `userId`      | string | The ID of the user who cast the vote     |
+| `topicId`     | string | The ID of the topic that was voted on    |
+| `vote`        | string | The vote cast by the user. Must be either "yes" or "no" |
 
-## Code
 
+### Code
 {% multicode %}
 ```js
-import { createClient } from 'ioredis';
+import { Client, Databases, Query } from 'node-appwrite';
 
 export default async function ({ req, res }) {
-  const redis = createClient();
+  const vote = {
+    userId: req.query.userId,
+    topicId: req.query.topicId,
+    vote: req.query.vote
+  };
 
-  if (req.method === 'POST') {
-    const url = req.body.url;
-    const shortId = generateShortId();
-    await redis.set(shortId, url);
-    return res.json({ shortId });
-  } else if (req.method === 'GET') {
-    const shortId = req.query.shortId;
-    const url = await redis.get(shortId);
-    if (url) {
-      return res.json({ url });
-    } else {
-      return res.status(404).json({ message: 'URL not found' });
-    }
-  } else {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (vote.vote !== 'yes' && vote.vote !== 'no') {
+    return res.json({ ok: false, message: 'You must vote yes or no.' }, 400);
   }
-}
 
-function generateShortId() {
-  // Generate a short ID logic here
-}
+  const client = new Client();
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setKey(process.env.APPWRITE_API_KEY);
+
+  const database = new Database(client);
+  
+  const existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
+    Query.equals('userId', vote.userId),
+    Query.equals('topicId', vote.topicId)
+  ]);
+
+  if (existingVotes.total > 0) {
+    return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
+  }
+
+  const voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
+    userId,
+    topicId,
+    vote,
+  });
+
+  return res.json({ ok: true, message: 'Vote cast.', vote: voteDocument });
+};
+```
+```python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.query import Query
+import os
+
+def main(context):
+    vote = {
+        'userId': context.req.query['userId'],
+        'topicId': context.req.query['topicId'],
+        'vote': context.req.query['vote']
+    }
+
+    if vote['vote'] != 'yes' and vote['vote'] != 'no':
+        return context.res.json({'ok': False, 'message': 'You must vote yes or no.'}, 400)
+
+    client = (
+        Client()
+        .set_endpoint("https://cloud.appwrite.io/v1")
+        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+        .set_key(os.environ["APPWRITE_API_KEY"])
+    )
+
+    database = Databases(client)
+    
+    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
+        Query.equals('userId', vote['userId']),
+        Query.equals('topicId', vote['topicId'])
+    ])
+
+    if existing_votes['total'] > 0:
+        return context.res.json({
+          'ok': False, 
+          'message': 'You have already voted on this topic.'
+        }, 400)
+
+    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+        'userId': vote['userId'],
+        'topicId': vote['topicId'],
+        'vote': vote['vote'],
+    })
+
+    return context.res.json({'ok': True, 'message': 'Vote cast.', 'vote': vote_document})
 ```
 ```php
 <?php
@@ -291,115 +350,429 @@ require(__DIR__ . '/../vendor/autoload.php');
 use Appwrite\Client;
 use Appwrite\Exception;
 use Appwrite\Services\Database;
-use Predis\Client as PredisClient;
+use Appwrite\Query;
 
 return function ($context) {
-    $redis = new PredisClient();
+    $vote = [
+        'userId' => $context->req->query['userId'],
+        'topicId' => $context->req->query['topicId'],
+        'vote' => $context->req->query['vote']
+    ];
 
-    if ($context->req->getMethod() === 'POST') {
-        $url = $context->req->data['url'];
-        $shortId = generateShortId();
-        $redis->set($shortId, $url);
-        return $context->res->json(['shortId' => $shortId]);
-    } elseif ($context->req->getMethod() === 'GET
-
-') {
-        $shortId = $context->req->getQuery('shortId');
-        $url = $redis->get($shortId);
-        if ($url) {
-            return $context->res->json(['url' => $url]);
-        } else {
-            return $context->res->setStatus(404)->json(['message' => 'URL not found']);
-        }
-    } else {
-        return $context->res->setStatus(405)->json(['message' => 'Method not allowed']);
+    if ($vote['vote'] !== 'yes' && $vote['vote'] !== 'no') {
+        return $context->res->json(['ok' => false, 'message' => 'You must vote yes or no.'], 400);
     }
+
+    $client = new Client();
+    $client
+        ->setEndpoint('https://cloud.appwrite.io/v1')
+        ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
+        ->setKey(getenv('APPWRITE_API_KEY'));
+
+    $database = new Database($client);
+
+    $existingVotes = $database->listDocuments('[VOTES_COLLECTION_ID]', [
+        Query->equal('userId', $vote['userId']),
+        Query->equal('topicId', $vote['topicId'])
+    ]);
+
+    if ($existingVotes['total'] > 0) {
+        return $context->res->json([
+          'ok' => false, 
+          'message' => 'You have already voted on this topic.'
+        ], 400);
+    }
+
+    $voteDocument = $database->createDocument('[VOTES_COLLECTION_ID]', [
+        'userId' => $vote['userId'],
+        'topicId' => $vote['topicId'],
+        'vote' => $vote['vote'],
+    ]);
+
+    return $context->res->json([
+      'ok' => true, 
+      'message' => 'Vote cast.', 
+      'vote' => $voteDocument
+    ]);
 };
-
-function generateShortId()
-{
-    // Generate a short ID logic here
-}
-```
-```python
-import redis
-
-def handler(context):
-    r = redis.Redis(host='localhost', port=6379, db=0)
-
-    if context['req']['method'] == 'POST':
-        url = context['req']['data']['url']
-        short_id = generate_short_id()
-        r.set(short_id, url)
-        return {'shortId': short_id}
-    elif context['req']['method'] == 'GET':
-        short_id = context['req']['query']['shortId']
-        url = r.get(short_id)
-        if url:
-            return {'url': url.decode('utf-8')}
-        else:
-            return {'message': 'URL not found'}, 404
-    else:
-        return {'message': 'Method not allowed'}, 405
-
-def generate_short_id():
-    # Generate a short ID logic here
 ```
 ```dart
-import 'dart:convert';
-import 'package:pub_redis_client/pub_redis_client.dart';
+import 'dart:async';
+import 'package:dart_appwrite/dart_appwrite.dart';
 
-Future<Map<String, dynamic>> handler(Map<String, dynamic> context) async {
-  final redis = await PubRedisClient.connect('redis://localhost:6379/0');
+Future main(final context) async {
+    final vote = {
+        'userId': context.req.query['userId'],
+        'topicId': context.req.query['topicId'],
+        'vote': context.req.query['vote']
+    };
 
-  if (context['req']['method'] == 'POST') {
-    final url = context['req']['data']['url'];
-    final shortId = generateShortId();
-    await redis.set(shortId, url);
-    return {'shortId': shortId};
-  } else if (context['req']['method'] == 'GET') {
-    final shortId = context['req']['query']['shortId'];
-    final url = await redis.get(shortId);
-    if (url != null) {
-      return {'url': url};
-    } else {
-      return {'message': 'URL not found'};
+    if (vote['vote'] != 'yes' && vote['vote'] != 'no') {
+        return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400);
     }
-  } else {
-    return {'message': 'Method not allowed'};
-  }
-}
 
-String generateShortId() {
-  // Generate a short ID logic here
+    final client = Client()
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+        .setKey(process.env.APPWRITE_API_KEY);
+
+    final database = Database(client);
+
+    final existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
+        Query.equals('userId', vote['userId']),
+        Query.equals('topicId', vote['topicId'])
+    ]);
+
+    if (existingVotes['total'] > 0) {
+        return context.res.json({
+          'ok': false, 
+          'message': 'You have already voted on this topic.'
+        }, 400);
+    }
+
+    final voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
+        'userId': vote['userId'],
+        'topicId': vote['topicId'],
+        'vote': vote['vote'],
+    });
+
+    return context.res.json({
+      'ok': true, 
+      'message': 'Vote cast.', 
+      'vote': voteDocument
+    });
 }
 ```
 ```ruby
-require 'redis'
+require "appwrite"
 
-def handler(context)
-  r = Redis.new(host: 'localhost', port: 6379, db: 0)
+def main(context)
+    vote = {
+        'userId' => context.req.query['userId'],
+        'topicId' => context.req.query['topicId'],
+        'vote' => context.req.query['vote']
+    }
 
-  if context['req']['method'] == 'POST'
-    url = context['req']['data']['url']
-    short_id = generate_short_id
-    r.set(short_id, url)
-    { 'shortId' => short_id }
-  elsif context['req']['method'] == 'GET'
-    short_id = context['req']['query']['shortId']
-    url = r.get(short_id)
-    if url
-      { 'url' => url }
-    else
-      { 'message' => 'URL not found' }
+    if vote['vote'] != 'yes' and vote['vote'] != 'no'
+        return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400)
     end
-  else
-    { 'message' => 'Method not allowed' }
-  end
-end
 
-def generate_short_id
-  # Generate a short ID logic here
+    client = Appwrite::Client.new()
+    client
+        .set_endpoint('https://cloud.appwrite.io/v1')
+        .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
+        .set_key(ENV['APPWRITE_API_KEY'])
+
+    database = Appwrite::Database.new(client)
+    
+    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
+        Appwrite::Query.new('userId', '=', vote['userId']),
+        Appwrite::Query.new('topicId', '=', vote['topicId'])
+    ])
+
+    if existing_votes['total'] > 0
+        return context.res.json({
+          'ok': false, 
+          'message': 'You have already voted on this topic.'
+        }, 400)
+    end
+
+    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+        'userId': vote['userId'],
+        'topicId': vote['topicId'],
+        'vote': vote['vote'],
+    })
+
+    return context.res.json({
+      'ok': true, 
+      'message': 'Vote cast.', 
+      'vote': vote_document
+    })
 end
 ```
 {% /multicode %}
+Use the function by navigating to the function URL in the browser. 
+The URL should contain the required parameters. 
+For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes` to cast a vote.
+{% /section %}
+
+{% section #form-submission step=3 title="HTML contact form" %}
+Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection. 
+The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
+
+### Prerequisites
+Create a Messages collection with the following attributes:
+
+| Name       | Type   | Description                      |
+|------------|--------|----------------------------------|
+| `name`     | string | The name of the message author   |
+| `email`    | string | The email of the message author  |
+| `content`  | string | The content of the message       |
+
+### Code 
+
+{% multicode %}
+
+```js
+import { Client, Databases, Query, ID } from 'node-appwrite';
+import querystring from 'node:querystring';
+
+const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>`
+
+export default async function ({ req, res }) {
+  if (req.method === 'GET') {
+    return res.send(html, 200, {'content-type': 'text/html'});
+  }
+
+  if (req.method === 'POST' && req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+    const formData = querystring.parse(req.body);
+
+    const message = {
+      name: formData.name,
+      email: formData.email,
+      content: formData.content
+    };
+
+    const client = new Client();
+    client
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
+
+    const databases = new Databases(client);
+    const document = await databases.createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+
+    return res.send("Message sent");
+  }
+
+  return res.send('Not found', 404);
+}
+```
+
+```python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.query import Query
+from urllib.parse import parse_qs
+import os
+
+html = '''<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+'''
+
+def main(context):
+    if context.req.method == 'GET':
+        return context.res.send(html, 200, {'content-type': 'text/html'})
+
+    if context.req.method == 'POST' and context.req.headers['content-type'] == 'application/x-www-form-urlencoded':
+        formData = parse_qs(context.req.body)
+
+        message = {
+            'name': formData['name'][0],
+            'email': formData['email'][0],
+            'content': formData['content'][0]
+        }
+
+        client = (
+            Client()
+            .set_endpoint("https://cloud.appwrite.io/v1")
+            .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+            .set_key(os.environ["APPWRITE_API_KEY"])
+        )
+
+        databases = Databases(client)
+        document = databases.create_document('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+
+        return context.res.send("Message sent")
+
+    return context.res.send('Not found', 404)
+```
+
+```php
+<?php
+
+require(__DIR__ . '/../vendor/autoload.php');
+
+use Appwrite\Client;
+use Appwrite\Exception;
+use Appwrite\Services\Databases;
+
+$html = '<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>';
+
+return function ($context) {
+  global $html;
+
+  if ($context->req->method === 'GET') {
+    return $context->res->send($html, 200, ['content-type' => 'text/html']);
+  }
+
+  if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
+    \parse_str($context->req->body, $formData);
+    
+    $message = [
+      'name' => $formData['name'],
+      'email' => $formData['email'],
+      'content' => $formData['content']
+    ];
+
+    $client = new Client();
+    $client
+      ->setEndpoint('https://cloud.appwrite.io/v1')
+      ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
+      ->setKey(getenv('APPWRITE_API_KEY'));
+
+    $databases = new Databases($client);
+    $document = $databases->createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
+
+    return $context->res->send("Message sent");
+  }
+
+  return $context->res->send('Not found', 404);
+};
+```
+
+```ruby
+require "appwrite"
+
+html = '''<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+'''
+
+def main(context)
+    if context.req.method == 'GET'
+        return context.res.send(html, 200, {'content-type': 'text/html'})
+    end
+
+    if context.req.method == 'POST' and context.req.headers['content-type'] == 'application/x-www-form-urlencoded'
+        formData = URI.decode_www_form(context.req.body).to_h
+
+        message = {
+            'name' => formData['name'],
+            'email' => formData['email'],
+            'content' => formData['content']
+        }
+
+        client = Appwrite::Client.new()
+        client
+            .set_endpoint('https://cloud.appwrite.io/v1')
+            .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
+            .set_key(ENV['APPWRITE_API_KEY'])
+
+        databases = Appwrite::Database.new(client)
+        document = databases.create_document('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+
+        return context.res.send("Message sent")
+    end
+
+    return context.res.send('Not found', 404)
+end
+```
+
+```dart
+import 'dart:async';
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Future main(final context) async {
+    final html = '''<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+''';
+
+    if (context.req.method == 'GET') {
+        return context.res.send(html, 200, {'content-type': 'text/html'});
+    }
+
+    if (context.req.method == 'POST' && context.req.headers['content-type'] == 'application/x-www-form-urlencoded') {
+        final formData = Uri.splitQueryString(context.req.body);
+
+        final message = {
+            'name': formData['name'],
+            'email': formData['email'],
+            'content': formData['content']
+        };
+
+        final client = Client()
+            .setEndpoint('https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
+
+        final databases = Database(client);
+        final document = await databases.createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+
+        return context.res.send("Message sent");
+    }
+
+    return context.res.send('Not found', 404);
+}
+```
+
+{% /multicode %}
+
+Use the function by navigating to the function URL in the browser. Submit the form to store the message in the collection.
+{% /section %}

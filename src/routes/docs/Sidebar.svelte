@@ -136,6 +136,10 @@
 					icon: 'icon-lightning-bolt',
 					items: [
 						{
+							label: 'Quick start',
+							href: '/docs/products/functions/quick-start'
+						},
+						{
 							label: 'Develop',
 							href: '/docs/products/functions/develop'
 						},
