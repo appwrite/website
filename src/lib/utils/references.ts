@@ -8,7 +8,8 @@ export enum Service {
 	Health = 'health',
 	Locale = 'locale',
 	Storage = 'storage',
-	Teams = 'teams'
+	Teams = 'teams',
+	Users = 'users'
 }
 
 export enum Platform {
