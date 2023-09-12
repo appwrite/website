@@ -1,27 +1,57 @@
+<script lang="ts" context="module">
+	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
+	type Product = (typeof products)[number];
+
+	type ProductsContext = {
+		scrollInfo: Readable<ScrollInfo>;
+		active: Readable<Product>;
+	};
+
+	const ctx_key = Symbol();
+	export const ctx = {
+		set: (v: ProductsContext) => {
+			setContext(ctx_key, v);
+		},
+		get: () => {
+			return getContext<ProductsContext>(ctx_key);
+		}
+	};
+</script>
+
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import { Phone } from '$lib/components';
 	import { clamp } from '$lib/utils/clamp';
-	import { fly, slide } from 'svelte/transition';
+	import { getContext, setContext } from 'svelte';
+	import { writable, type Readable, type Writable } from 'svelte/store';
+	import { crossfade, fly, slide } from 'svelte/transition';
 	import { scroll, type ScrollInfo } from '.';
+	import Auth from './products/auth';
+	import Databases from './products/databases';
 	import ScrollIndicator from './scroll-indicator.svelte';
+	import Phone from '$lib/components/Phone.svelte';
 
-	const sections = ['auth', 'databases', 'storage', 'functions', 'realtime'];
-
-	const animScale: Scale = [0, sections.length];
-	const percentScale: Scale = [0.25, 0.9];
-	$: sectionIndex = Math.floor(
-		clamp(0, toScale(scrollInfo.percentage, percentScale, animScale), sections.length - 1)
-	);
-	$: section = sections[sectionIndex];
-	$: console.log(section);
-
-	let scrollInfo: ScrollInfo = {
+	let scrollInfo: Writable<ScrollInfo> = writable({
 		percentage: 0,
 		traversed: 0,
 		remaning: Infinity
-	};
+	});
+
+	const animScale: Scale = [0, products.length];
+	const percentScale: Scale = [0.25, 0.9];
+	$: activeProductIdx = Math.floor(
+		clamp(0, toScale($scrollInfo.percentage, percentScale, animScale), products.length - 1)
+	);
+
+	const activeProduct = writable<Product>(products[0]);
+	$: {
+		activeProduct.set(products[activeProductIdx]);
+	}
+
+	ctx.set({
+		scrollInfo,
+		active: activeProduct
+	});
 </script>
 
 <div
@@ -29,20 +59,20 @@
 	use:scroll
 	on:aw-scroll={({ detail }) => {
 		const { percentage } = detail;
-		scrollInfo = detail;
+		scrollInfo.set(detail);
 	}}
 >
 	<div class="sticky-wrapper">
 		<div class="text">
-			{#if scrollInfo.percentage > 0}
+			{#if $scrollInfo.percentage > 0}
 				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 			{/if}
-			{#if scrollInfo.percentage > 0.075}
-				<h2 class="aw-display aw-u-color-text-primary" transition:slide={{ axis: 'x' }}>
+			{#if $scrollInfo.percentage > 0.075}
+				<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16 }}>
 					Your backend, minus the hassle
 				</h2>
 			{/if}
-			{#if scrollInfo.percentage > 0.15}
+			{#if $scrollInfo.percentage > 0.15}
 				<p
 					class="aw-description aw-u-max-width-700 u-margin-inline-auto"
 					transition:fly={{
@@ -55,10 +85,10 @@
 			{/if}
 		</div>
 
-		{#if scrollInfo.percentage > 0.25}
+		{#if $scrollInfo.percentage > 0.25}
 			<div class="products" transition:fly={{ y: 16 }}>
-				<div class="u-flex">
-					<ScrollIndicator percentage={toScale(scrollInfo.percentage, [0.25, 1], [0, 1])} />
+				<div class="text">
+					<ScrollIndicator percentage={toScale($scrollInfo.percentage, [0.25, 1], [0, 1])} />
 					<ul class="descriptions">
 						<li>
 							<h3>
@@ -75,27 +105,16 @@
 						</li>
 					</ul>
 				</div>
-				<Phone id="products-phone">
-					<div class="phone-auth theme-light">
-						<p class="title">Create an Account</p>
-						<p class="subtitle">Please enter your details</p>
-						<div class="inputs">
-							<fieldset>
-								<label for="name">Your Name</label>
-								<input type="name" id="name" placeholder="Enter your name" />
-							</fieldset>
-							<fieldset>
-								<label for="email">Your Email</label>
-								<input type="email" id="email" placeholder="Enter your email" />
-							</fieldset>
-							<fieldset>
-								<label for="password">Create Password</label>
-								<input type="password" id="password" placeholder="Enter Password" />
-							</fieldset>
-						</div>
-						<button class="sign-up">Sign Up</button>
+
+				<div class="animated">
+					<Auth.Content />
+					<div class="phone-wrapper">
+						<Phone id="products-phone">
+							<Auth.Phone />
+							<Databases.Phone />
+						</Phone>
 					</div>
-				</Phone>
+				</div>
 			</div>
 		{/if}
 	</div>
@@ -121,7 +140,7 @@
 
 		padding-inline: 1.25rem;
 		--navbar-height: 8rem;
-		--padding-block: 7.5rem;
+		--padding-block: 7.5rem; // TODO: Improve padding responsiveness
 		padding-block: calc(var(--navbar-height) + var(--padding-block)) var(--padding-block);
 
 		width: 100%;
@@ -129,7 +148,7 @@
 
 		text-align: center;
 
-		.text {
+		> .text {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -153,153 +172,85 @@
 	}
 
 	.products {
+		background: hsl(250 50 50 / 0.25);
+
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		max-width: 1244px;
+		max-width: 77.75rem;
 
-		.descriptions {
-			margin-inline-start: 2rem;
-			text-align: left;
+		.text {
+			display: flex;
+			background: hsl(200 50 50 / 0.25);
+			max-width: 25rem;
 
-			h3 {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
+			.descriptions {
+				margin-inline-start: 2rem;
+				text-align: left;
 
-				.aw-label {
-					margin-block-start: 0.25rem;
+				h3 {
+					display: flex;
+					align-items: center;
+					gap: 0.75rem;
+
+					.aw-label {
+						margin-block-start: 0.25rem;
+					}
 				}
-			}
 
-			h4 {
-				color: hsl(var(--aw-color-primary));
-				margin-block-start: 0.75rem;
-			}
+				h4 {
+					color: hsl(var(--aw-color-primary));
+					margin-block-start: 0.75rem;
+				}
 
-			p {
-				margin-block-start: 1rem;
-			}
+				p {
+					margin-block-start: 1rem;
+				}
 
-			.features {
-				display: flex;
-				flex-direction: column;
-				gap: 0.75rem;
-				margin-block-start: 2rem;
+				.features {
+					display: flex;
+					flex-direction: column;
+					gap: 0.75rem;
+					margin-block-start: 2rem;
 
-				li {
-					--marker-size: 1.25rem;
-					--margin-left: calc(var(--marker-size) + 0.75rem);
-					position: relative;
-					margin-inline-start: var(--margin-left);
+					li {
+						--marker-size: 1.25rem;
+						--margin-left: calc(var(--marker-size) + 0.75rem);
+						position: relative;
+						margin-inline-start: var(--margin-left);
 
-					&::before {
-						content: '';
-						position: absolute;
+						&::before {
+							content: '';
+							position: absolute;
 
-						left: calc(var(--margin-left) * -1);
-						top: 50%;
-						width: var(--marker-size);
-						height: var(--marker-size);
+							left: calc(var(--margin-left) * -1);
+							top: 50%;
+							width: var(--marker-size);
+							height: var(--marker-size);
 
-						transform: translateY(-50%);
+							transform: translateY(-50%);
 
-						background: url('./images/icons/colored/check.svg') no-repeat;
+							background: url('./images/icons/colored/check.svg') no-repeat;
+						}
 					}
 				}
 			}
 		}
 	}
 
-	.phone-auth {
-		padding-block: 3rem;
-		padding-inline: 1rem;
+	.animated {
+		background: hsl(100 50 50 / 0.25);
+		width: min(42rem, 50vw);
+		height: min(38.75rem, 90vh);
 
-		color: rgba(67, 67, 71, 1);
-		text-align: left;
+		position: relative;
+		--z-behind-phone: 10;
+		--z-phone: 20;
+		--z-infront-phone: 30;
+	}
 
-		.title {
-			color: #434347;
-			font-family: Inter;
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 600;
-			line-height: 22px; /* 137.5% */
-			letter-spacing: -0.224px;
-		}
-
-		.subtitle {
-			color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
-			font-family: Inter;
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 20px; /* 142.857% */
-			letter-spacing: -0.196px;
-		}
-
-		.inputs {
-			display: flex;
-			flex-direction: column;
-			gap: 0.75rem;
-			margin-block-start: 4rem;
-
-			fieldset {
-				display: flex;
-				flex-direction: column;
-				gap: 0.3125rem;
-				width: 100%;
-
-				label {
-					color: var(--color-greyscale-700, #56565c);
-					font-family: Inter;
-					font-size: 12px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 16px; /* 133.333% */
-					letter-spacing: -0.168px;
-				}
-
-				input {
-					all: unset;
-					display: flex;
-					padding: 8px 12px;
-					align-items: flex-start;
-					align-self: stretch;
-					border-radius: 8px;
-					border: 1px solid #d8d8db;
-
-					color: #434347;
-					font-family: Inter;
-					font-size: 12px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 16px; /* 133.333% */
-					letter-spacing: -0.168px;
-				}
-			}
-		}
-
-		.sign-up {
-			padding: 0.375rem 0.75rem;
-			text-align: center;
-			width: 100%;
-			margin-block-start: 1.25rem;
-
-			border-radius: 0.5rem;
-			background: var(--appwrite-purple, #7c67fe);
-			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
-
-			color: var(--color-bw-white, #fff);
-			text-align: center;
-
-			/* Responsive/SubBody-500 */
-			font-family: Inter;
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 22px; /* 157.143% */
-			letter-spacing: -0.07px;
-		}
+	.phone-wrapper {
+		position: absolute;
+		z-index: var(--z-phone);
 	}
 </style>
