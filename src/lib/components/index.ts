@@ -4,3 +4,4 @@ export { default as PreFooter } from './PreFooter.svelte';
 export { default as MobileNav } from './MobileNav.svelte';
 export { default as Phone } from './Phone.svelte';
 export { default as CodeWindow } from './CodeWindow.svelte';
+export { default as Switch } from './Switch.svelte';

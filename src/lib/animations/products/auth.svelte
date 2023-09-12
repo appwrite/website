@@ -2,7 +2,7 @@
 	import '$scss/hljs.css';
 
 	import { ctx } from '$lib/animations/Products.svelte';
-	import { CodeWindow, Phone } from '$lib/components';
+	import { CodeWindow, Phone, Switch } from '$lib/components';
 
 	const { active } = ctx.get() ?? {};
 
@@ -13,6 +13,7 @@
 <div class="code-window">
 	<CodeWindow {content} />
 </div>
+
 <div class="phone">
 	<Phone>
 		<div class="phone-auth theme-light">
@@ -36,6 +37,7 @@
 		</div>
 	</Phone>
 </div>
+
 <div class="pseudo-table">
 	<p class="title">Users</p>
 	<div class="content">
@@ -50,6 +52,32 @@
 			</div>
 			<span>eldad@appwrite.io, +447125533</span>
 		</div>
+	</div>
+</div>
+
+<div class="controls">
+	<div>
+		<span class="aw-icon-github" />
+		<span>GitHub</span>
+		<Switch />
+	</div>
+	<div class="sep" />
+	<div>
+		<span class="aw-icon-github" />
+		<span>GitHub</span>
+		<Switch />
+	</div>
+	<div class="sep" />
+	<div>
+		<span class="aw-icon-github" />
+		<span>GitHub</span>
+		<Switch />
+	</div>
+	<div class="sep" />
+	<div>
+		<span class="aw-icon-github" />
+		<span>GitHub</span>
+		<Switch />
 	</div>
 </div>
 
@@ -241,6 +269,60 @@
 					gap: 0.75rem;
 				}
 			}
+		}
+	}
+
+	.controls {
+		@include border-gradient;
+		--m-border-radius: 1rem;
+		--m-border-gradient-before: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.12) 0%,
+			rgba(255, 255, 255, 0) 125.11%
+		);
+
+		position: absolute;
+		top: 0;
+		right: 2rem;
+		z-index: 30;
+
+		padding: 0.75rem;
+
+		display: flex;
+		flex-direction: column;
+
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+			-8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+			-33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+		backdrop-filter: blur(20px);
+
+		> div {
+			display: flex;
+			align-items: center;
+
+			> :nth-child(2) {
+				margin-left: 0.5rem;
+				color: var(--color-bw-white, #fff);
+
+				font-family: Inter;
+				font-size: 0.875rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 1.375rem; /* 157.143% */
+				letter-spacing: -0.00394rem;
+			}
+
+			> :global(:nth-child(3)) {
+				margin-left: 3rem;
+			}
+		}
+
+		.sep {
+			width: 100%;
+			height: 1px;
+			background-color: rgba(255, 255, 255, 0.12);
+			margin-block: 0.5rem;
 		}
 	}
 </style>
