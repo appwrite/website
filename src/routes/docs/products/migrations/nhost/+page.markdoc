@@ -1,0 +1,59 @@
+---
+layout: article
+title: Migrate from NHost
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 20
+---
+
+Moving your project from NHost to Appwrite? Appwrite Migrations can help you streamline the process.
+
+Here's what you need to know to get started.
+
+{% section #notices step=1 title="Things to keep in mind" %}
+
+1. Appwrite will not incur usage charges during migrations, but NHost may still incur service charges.
+2. Appwrite's Database doesn't support all the features of the PostgreSQL database so more advanced postgres centric things like advanced indexes, PostgreSQL functions and scheduling will not be migrated.
+3. OAuth users will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
+4. Functions are not automatically migrated because of syntax and runtime differences.
+
+{% /section %}
+
+{% section #obtain-credentials step=2 title="Obtain credentials" %}
+Find all of the following credentials from your NHost project.
+
+| Field               | Description                                                                                                    |
+| ---------------     | -------------------------------------------------------------------------------------------------------------- |
+| **Region**          | The region your NHost project is hosted in. This can be found in your NHost project environment variables as `NHOST_REGION`. |
+| **Subdomain**       | The subdomain of your NHost project. This can be found in your NHost project environment variables as `NHOST_SUBDOMAIN`. |
+| **Database**        | The name of your NHost database. This can be found in your NHost project Database settings. |
+| **Username**        | The username of your NHost database. This can be found in your NHost project Database settings. |
+| **Password**        | The password of your NHost database. You set this when you created your NHost project, if you don't remember it you can reset it from your NHost project Database settings. |
+| **Admin Secret**    | The admin secret of your NHost project. This can be found in your NHost project environment variables as `NHOST_ADMIN_SECRET`. We use this to transfer your NHost files to Appwrite. |
+{% /section %}
+
+{% section #migration-process step=3 title="Migrating to Appwrite from NHost" %}
+
+To begin migrating to Appwrite make sure to read the [migration overview](/docs/migrations) and [things to keep in mind](#notices) sections above.
+
+1. Create a new project and click on the **Migrations** tab in **Project Settings**.
+
+1. Click on the **Create Migration** button and select **NHost** as your source.
+
+1. Enter the credentials following the [instructions below](#credentials) and click **Next**.
+
+1. Select the resources you want to migrate and finally click **Start migration** to begin the migration process.
+
+{% /section %}
+
+{% section #next-steps step=4 title="Next steps" %}
+
+1. Add the platforms for your [Web](/docs/getting-started-for-web), [Flutter](getting-started-for-flutter/docs/getting-started-for-flutter), [Android](/docs/getting-started-for-android), and [iOS](/docs/getting-started-for-apple) apps. Appwrite will reject requests from unknown web, Flutter, and mobile apps to protect from malicious attacks. You app **must be added as a platform** for Appwrite to accept requests.
+
+1. Remember to [add appropriate permissions](/docs/permissions) to the migrated resources to protect user data and privacy.
+
+1. Migrate functions manually, by [pick a runtime](TODO) and [learn to develop Appwrite Functions](TODO).
+
+1. Explore Appwrite's unique feature by exploring the [TODO]
+
+{% /section %}
