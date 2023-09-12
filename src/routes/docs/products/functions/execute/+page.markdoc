@@ -11,20 +11,18 @@ Appwrite Functions can be executed in several ways.
 Executions can be invoked through the Appwrite SDK and visiting its REST endpoint. Functions can also be triggered by events and scheduled executions.
 Here are all the different ways to consume your Appwrite Functions.
 
-# [Domains](#domains)
+# Domains {% #domains %}
 
-Each Appwrite function has its own domain.
-You can find this in the Appwrite Console, under the Function overview.
-
-The generated domains will look like this.
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains.
 
 ```bash
 https://64d4d22db370ae41a32e.appwrite.global
 ```
 
-Alternatively you can [add a custom domain](/docs/functions-deploy#domain) to your Appwrite Function.
+[Learn about adding a custom domain](/docs/functions-deploy#domain).
 
-# [REST API](#rest)
+## REST API  {% #rest %}
 
 When requests are made to this domain, whether through a browser or through an HTTP requests,
 the request information like request URL, request headers, and request body will be passed to the function.
@@ -37,13 +35,14 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 -d '{"data":"this is json data"}'
 ```
 
-## [SDK](#sdk)
+## SDK {% #sdk %}
 
 You can invoke your Appwrite Functions directly from the Appwrite SDKs.
 
 [Learn more about using the Appwrite SDKs](/docs/sdks)
 
-## Client SDKs
+{% tabs %}
+{% tabsitem #client title="Client SDKs" %}
 
 {% multicode %}
 ```js
@@ -151,8 +150,9 @@ do {
 }
 ```
 {% /multicode %}
+{% /tabsitem %}
 
-## Server SDKs
+{% tabsitem #server title="Server SDKs" %}
 {% multicode %}
 ```js
 import { Client, Functions } from 'node-appwrite';  
@@ -447,8 +447,10 @@ functions.createExecution(
 );
 ```
 {% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 
-# Console {% #console %}
+## Console {% #console %}
 Another easy way to test a function is directly in the Appwrite Console. 
 You test a function by hitting the **Execute now** button, which will display with modal below. 
 
@@ -456,7 +458,7 @@ You'll be able to mock executions by configuring the path, method, headers, and 
 
 ![](https://appwrite.io/images-ee/docs/functions-execute-dark.png)
 
-# Events {% events %}
+## Events {% #events %}
 
 Changes in Appwrite emit events. You can configure Functions to be executed in response to these events.
 
@@ -466,7 +468,7 @@ Changes in Appwrite emit events. You can configure Functions to be executed in r
 4. Add one or multiple events as triggers for the function.
 5. Be careful to avoid selecting events that can be caused by the function itself. This can cause the function to trigger its own execution, resulting in infinite recursions.
 
-# Schedule {% schedule %}
+## Schedule {% #schedule %}
 
 Appwrite supports scheduled function executions. You can schedule executions using [cron expressions](https://en.wikipedia.org/wiki/Cron) in the settings of your function. Cron supports recurring executions as frequently as **every minute**.
 
@@ -480,7 +482,7 @@ Here are some cron expressions for common intervals:
 | `0 0 * * 1`      | Every Monday at 00:00 |
 
 
-# Permissions {% permission %}
+## Permissions {% #permission %}
 
 
 Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/permissions) on the function's settings page. Server SDKs require an API key with the correct scopes.
@@ -488,7 +490,7 @@ Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must
 If your function has a generated or custom domain, executions are not authenticated. Anyone visiting the configured domains will be considered a guest, so make sure to give `Any` execute permission in order for domain executions to work. If you need to enforce permissions for functions with a domain, use authentication methods like JWT.
 
 
-# Logs and results {% logs %}
+## Logs and results {% #logs %}
 
 You can view the logs of your function executions in the Appwrite Console. Navigate to **Functions** and click on a function to view its executions.
 

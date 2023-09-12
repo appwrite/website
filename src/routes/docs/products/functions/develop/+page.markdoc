@@ -9,7 +9,7 @@ readtime: 3
 Appwrite Functions offer a familiar interface if you've developed REST endpoints.
 Each function is handled following a request and response pattern.
 
-# Lifecycle {% #life-cycle %}
+## Lifecycle {% #life-cycle %}
 There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
@@ -411,7 +411,7 @@ public class Handler {
 
 If you prefer to learn through more examples like this, explore the [examples page](/docs/functions/examples).
 
-# Context object
+## Context object {% #context-object %}
 Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console. 
 All input, output, and logging **must be handled through the context object** passed in.
 
@@ -424,8 +424,7 @@ You'll find these properties in the context object.
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [here](TODO). |
 | error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [here](TODO).    |
 
-
-## Destructuring assignment
+#### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 
 You'll see us use destructuring in examples, which has the following syntax. 
 
@@ -459,7 +458,7 @@ export default async function ({ req, res, log, error }: any) {
 ```
 {% /multicode %}
 
-## Request
+### Request {% #request %}
 
 If you pass data into an Appwrite Function, it'll be found in the request object. 
 This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
@@ -674,21 +673,22 @@ public class Main {
 ```
 {% /multicode %}
 
-### Headers
+#### Headers {% #headers %}
+
 Appwrite Functions will always receive a set of headers that provide meta data about the function execution. 
 These are provided alongside any custom headers sent to the function.
 
 | Variable                  | Description                                                                                                                                          |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-appwrite-trigger        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
-| x-appwrite-event          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
-| x-appwrite-user-id        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
-| x-appwrite-user-jwt       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](TODO).  |
-| x-appwrite-country-code   |  Displays the country code of the configured locale.                                                                                                 |
-| x-appwrite-continent-code |  Displays the continent code of the configured locale.                                                                                               |
-| x-appwrite-continent-eu   |  Describes if the configured local is within the EU.                                                                                                 |
+| `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
+| `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
+| `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
+| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](TODO).  |
+| `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
+| `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
+| `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
 
-## Response
+### Response {% #response %}
 If you need to send a response to the invoker of the function, such as a user, client app, or an integration, use the response object. 
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
@@ -928,7 +928,7 @@ namespace runtime {
 ```
 {% /multicode %}
 
-To get the different response types, set one of the following query parameters in the [generated domain]() of your function.
+To get the different response types, set one of the following query parameters in the [generated domain](TODO) of your function.
 
 | Type     | Query Param     | Example                                                     |
 |----------|-----------------|-------------------------------------------------------------|
@@ -938,8 +938,7 @@ To get the different response types, set one of the following query parameters i
 | `html`     | `/?type=html`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=html`     |
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
-
-## Logging
+### Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
 This means, to see logs or debug function executions you need to use the `log()` and `error()` methods. 
 These logs are only visible to developers with access to the Appwrite Console.
@@ -1089,24 +1088,23 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-# Accessing Environment Variables {% #environment-variables %} 
+## Accessing Environment Variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 Environmental variables can be global, or function-specific.
 
-[TODO]
-> ## Appwrite API keys
+> ### Appwrite API keys
 > If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
 
 | Variable                          | Description                                    |
 |-----------------------------------|------------------------------------------------|
-| APPWRITE_FUNCTION_ID              |  The ID of the running function.               |
-| APPWRITE_FUNCTION_NAME            |  The Name of the running function.             |
-| APPWRITE_FUNCTION_DEPLOYMENT      |  The deployment ID of the running function.    |
-| APPWRITE_FUNCTION_PROJECT_ID      |  The project ID of the running function.       |
-| APPWRITE_FUNCTION_RUNTIME_NAME    |  The runtime of the running function.          |
-| APPWRITE_FUNCTION_RUNTIME_VERSION |  The runtime version of the running function.  |
+| `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               |
+| `APPWRITE_FUNCTION_NAME`            |  The Name of the running function.             |
+| `APPWRITE_FUNCTION_DEPLOYMENT`      |  The deployment ID of the running function.    |
+| `APPWRITE_FUNCTION_PROJECT_ID`      |  The project ID of the running function.       |
+| `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
+| `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
 
-## Function-level environment variables {% #function-variables %} 
+### Function-level environment variables {% #function-variables %} 
 Function-level environment variables will only be accessible in the function they belong to. 
 Function-level environment variables will override project-level variables when they have conflicting names.
 
@@ -1115,7 +1113,7 @@ Function-level environment variables will override project-level variables when 
 3. Under the **Settings** tab, navigate to **Environment variables**.
 4. Create an environment variable by clicking **Create variable**, using the **Editor**, or import new variables through a `.env` file.
 
-## Project-level variables {% #project-variables %} 
+### Project-level variables {% #project-variables %} 
 Project-level variables are accessible to all Appwrite Functions in your project. 
 Function-level environment variables will override project-level variables when they have conflicting names.
 
@@ -1222,17 +1220,17 @@ Your function's dependencies should be managed by the package manager of each la
 By default, we include the following package managers in each runtime.
 | Language | Package Manager | Commands              |                                    |
 |----------|-----------------|-----------------------|------------------------------------|
-|          | Node.js         | npm                   | npm install                        |
-|          | PHP             | Composer              | composer install                   |
-|          | Python          | pip                   | pip install -r requirements.txt    |
-|          | Ruby            | Bundler               | bundle install                     |
-|          | Deno            | deno                  | deno cache <ENTRYPOINT_FILE>       |
-|          | Dart            | pub                   | pub get                            |
-|          | Swift           | Swift Package Manager | swift package resolve              |
-|          | .NET            | NuGet                 | dotnet restore                     |
-|          | Kotlin          | Gradle                | N/A                                |
-|          | Java            | Gradle                | N/A                                |
-|          | C++             | None                  | N/A                                |
+|     [TODO]        | Node.js         | npm                   | npm install                        |
+|     [TODO]        | PHP             | Composer              | composer install                   |
+|     [TODO]        | Python          | pip                   | pip install -r requirements.txt    |
+|     [TODO]        | Ruby            | Bundler               | bundle install                     |
+|     [TODO]        | Deno            | deno                  | deno cache <ENTRYPOINT_FILE>       |
+|     [TODO]        | Dart            | pub                   | pub get                            |
+|     [TODO]        | Swift           | Swift Package Manager | swift package resolve              |
+|     [TODO]        | .NET            | NuGet                 | dotnet restore                     |
+|     [TODO]        | Kotlin          | Gradle                | N/A                                |
+|     [TODO]        | Java            | Gradle                | N/A                                |
+|     [TODO]        | C++             | None                  | N/A                                |
 
 To install your dependencies before your function is built, you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 
@@ -1911,117 +1909,134 @@ public class Main {
 {% /multicode %}
 
 # Code splitting
-As your functions grow, you may find yourself needing to split your code into multiple files. 
-This helps you keep your codebase maintainable and easy to read. 
-Here's how you can accomplish code splitting.
-TODO TABS
 
-{% multicode %}
+As your functions grow, you may find yourself needing to split your code into multiple files. This helps you keep your codebase maintainable and easy to read. Here's how you can accomplish code splitting.
+
+{% tabs %}
+{% tabsitem #nodejs title="Node.js" %}
 ```js
 // src/utils.js
-
 export function add(a, b) {
     return a + b;
 }
-            
+```
+```js
 // src/main.js
-
 import { add } from './utils.js';
 
 export default function ({ res }) {
     return res.send(add(1, 2));
 }
 ```
-```php
-// src/utils.php
+{% /tabsitem %}
 
+{% tabsitem #php title="PHP" %}
+```php
+<?php
+// src/utils.php
 function add($a, $b) {
     return $a + $b;
 }
-
+```
+```php
+<?php
 // src/main.php
-
-include 'utils.php';
+require_once(__DIR__ . '/utils.php');
 
 return function ($context) {
     return $context->res->send(add(1, 2));
 };
 ```
+{% /tabsitem %}
+
+{% tabsitem #python title="Python" %}
 ```python
-// src/utils.py
-
+# src/utils.py
 def add(a, b):
-    return a + b;
-
-// src/main.py
-
+    return a + b
+```
+```python
+# src/main.py
 from .utils import add
 
 def main(context):
     return context.res.send(add(1, 2))
 ```
+{% /tabsitem %}
+
+{% tabsitem #ruby title="Ruby" %}
 ```ruby
 # lib/utils.rb
-
 def add(a, b)
     return a + b
 end
-
+```
+```ruby
 # lib/main.rb
-
 require_relative 'utils'
 
 def main(context)
     return context.res.send(add(1, 2))
 end
 ```
+{% /tabsitem %}
+
+{% tabsitem #deno title="Deno" %}
 ```deno
 // src/utils.ts
-
 export function add(a: number, b: number): number {
     return a + b;
 }
-
+```
+```deno
 // src/main.ts
-
 import { add } from './utils.ts';
 
 export default function ({res}: {res: any}) {
     return res.send(add(1, 2));
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #dart title="Dart" %}
 ```dart
 // lib/utils.dart
-
 int add(int a, int b) {
     return a + b;
 }
-
+```
+```dart
 // lib/main.dart
 import 'dart:async';
+
+import 'package:package_name/utils.dart';
 
 Future<dynamic> main(final context) async {
     return context.res.send(add(1, 2));
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #swift title="Swift" %}
 ```swift
 // Sources/utils.swift
-
 func add(_ a: Int, _ b: Int) -> Int {
     return a + b
-}    
-            
+}
+```
+```swift
 // Sources/index.swift
-
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send(add(1, 2))
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #dotnet title=".NET" %}
 ```csharp
 // src/Utils.cs
-
 namespace DotNetRuntime
 {
     public static class Utils
@@ -2032,22 +2047,24 @@ namespace DotNetRuntime
         }
     }
 }
-
+```
+```csharp
 // src/Index.cs
-
 namespace DotNetRuntime
 {
     public class Handler {
-        public async Task Main(RuntimeContext Context)
+        public async Task<RuntimeOutput> Main(RuntimeContext Context)
         {
             return Context.Res.Send(Utils.Add(1, 2));
         }
     }
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #kotlin title="Kotlin" %}
 ```kotlin
 // src/Utils.kt
-
 package io.openruntimes.kotlin.src
 
 object Utils {
@@ -2055,9 +2072,9 @@ object Utils {
         return a + b
     }
 }
-
+```
+```kotlin
 // src/Main.kt
-
 package io.openruntimes.kotlin.src
 
 import io.openruntimes.kotlin.RuntimeContext
@@ -2070,9 +2087,11 @@ class Main {
     }
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #java title="Java" %}
 ```java
 // src/Utils.java
-
 package io.openruntimes.java.src;
 
 class Utils {
@@ -2080,8 +2099,8 @@ class Utils {
         return a + b;
     }
 }
-
-// src/Main.java
+```
+```java
 package io.openruntimes.java.src;
 
 import io.openruntimes.java.RuntimeContext;
@@ -2094,7 +2113,8 @@ public class Main {
     }
 }
 ```
-{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 
 # Upgrade
 
