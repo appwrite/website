@@ -189,7 +189,7 @@ export async function getService(
 
 		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
-			throw new Error("Example doesn't exist");
+			throw new Error("Example doesn't exist: " + path);
 		}
 		data.methods.push({
 			id: operation['x-appwrite'].method,
