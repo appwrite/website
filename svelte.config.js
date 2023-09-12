@@ -39,6 +39,7 @@ const config = {
 			$routes: './src/routes',
 			$scss: './src/scss',
 			$appwrite: './node_modules/appwrite/docs',
+			$markdoc: './src/markdoc'
 		}
 	}
 };
