@@ -1,75 +1,48 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { CodeWindow, Phone, Switch } from '$lib/components';
-	import { createTimeline } from '..';
-
 	import '$scss/hljs.css';
-	import { fly } from 'svelte/transition';
+
+	import { ctx } from '$lib/animations/Products.svelte';
+	import { CodeWindow, Phone, Switch } from '$lib/components';
+
+	const { active } = ctx.get() ?? {};
+
 	const content = `const result = account.create(\n\tID.unique(),\n\t'walterobrian@example.com',\n\t'password',\n\t"Walter O'Brian"\n);`;
-
-	let phoneVisible = false;
-	let codeVisible = false;
-	let tableVisible = false;
-	let controlsVisible = false;
-
-	const timeline = createTimeline([
-		{
-			at: 500,
-			callback: () => {
-				phoneVisible = true;
-			}
-		},
-		{
-			at: 1000,
-			callback: () => {
-				codeVisible = true;
-			}
-		}
-	]);
-
-	onMount(() => {
-		timeline.play();
-		return timeline.cancel;
-	});
 </script>
 
-{#if phoneVisible}
-	<div class="phone" transition:fly={{ y: 16 }}>
-		<Phone>
-			<div class="phone-auth theme-light">
-				<p class="title">Create an Account</p>
-				<p class="subtitle">Please enter your details</p>
-				<div class="inputs">
-					<fieldset>
-						<label for="name">Your Name</label>
-						<input
-							type="name"
-							id="name"
-							placeholder="Enter your name"
-							value="Walter O'Brian"
-							disabled
-						/>
-					</fieldset>
-					<fieldset>
-						<label for="email">Your Email</label>
-						<input type="email" id="email" placeholder="Enter your email" />
-					</fieldset>
-					<fieldset>
-						<label for="password">Create Password</label>
-						<input type="password" id="password" placeholder="Enter Password" />
-					</fieldset>
-				</div>
-				<button class="sign-up">Sign Up</button>
-			</div>
-		</Phone>
-	</div>
-{/if}
+<!-- {#if $active === 'auth'} -->
+<div class="code-window">
+	<CodeWindow {content} />
+</div>
 
-{#if codeVisible}
-	<div class="code-window" transition:fly={{ y: 16 }}>
-		<CodeWindow {content} />
-	</div>
-{/if}
+<div class="phone">
+	<Phone>
+		<div class="phone-auth theme-light">
+			<p class="title">Create an Account</p>
+			<p class="subtitle">Please enter your details</p>
+			<div class="inputs">
+				<fieldset>
+					<label for="name">Your Name</label>
+					<input
+						type="name"
+						id="name"
+						placeholder="Enter your name"
+						value="Walter O'Brian"
+						disabled
+					/>
+				</fieldset>
+				<fieldset>
+					<label for="email">Your Email</label>
+					<input type="email" id="email" placeholder="Enter your email" />
+				</fieldset>
+				<fieldset>
+					<label for="password">Create Password</label>
+					<input type="password" id="password" placeholder="Enter Password" />
+				</fieldset>
+			</div>
+			<button class="sign-up">Sign Up</button>
+		</div>
+	</Phone>
+</div>
 
 <div class="pseudo-table">
 	<p class="title">Users</p>
@@ -127,6 +100,8 @@
 	.phone {
 		position: absolute;
 		z-index: 10;
+		top: 1rem;
+		left: 5rem;
 
 		.phone-auth {
 			padding-block: 3rem;
