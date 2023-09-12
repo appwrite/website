@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './Fence.css';
+	import '$scss/hljs.css';
 	import { getContext, hasContext } from 'svelte';
 	import type { CodeContext } from '../tags/MultiCode.svelte';
 	import { getCodeHtml, type Language } from '$lib/utils/code';
