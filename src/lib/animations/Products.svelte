@@ -28,6 +28,7 @@
 	import { scroll, type ScrollInfo } from '.';
 	import Auth from './products/auth.svelte';
 	import ScrollIndicator from './scroll-indicator.svelte';
+	import Database from './products/database.svelte';
 
 	let scrollInfo: Writable<ScrollInfo> = writable({
 		percentage: 0,
@@ -105,13 +106,11 @@
 				</div>
 
 				<div class="animated">
-					<Auth />
-					<!-- <div class="phone-wrapper">
-						<Phone id="products-phone">
-							<Auth.Phone />
-							<Databases.Phone />
-						</Phone>
-					</div> -->
+					{#if $activeProduct === 'auth'}
+						<Auth />
+					{:else if $activeProduct === 'databases'}
+						<Database />
+					{/if}
 				</div>
 			</div>
 		{/if}
