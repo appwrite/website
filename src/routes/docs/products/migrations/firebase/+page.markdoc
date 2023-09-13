@@ -8,17 +8,15 @@ readtime: 20
 
 If you're looking to migrate your project from Firebase to Appwrite, the Appwrite Migrations tool can help streamline the process. Here's everything you need to know to get started.
 
-{% section #notice step=1 title="Things to keep in mind" %}
-
+{% info title="Things to keep in mind" %}
 - Appwrite will not incur usage charges during migrations, but Firebase may still incur service charges.
 - Appwrite Migrations only supports Firestore as a database source; Realtime Database is currently not supported.
 - At the moment, only top-level document migration is supported. Nested documents will not be migrated automatically.
 - OAuth users will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
 - Functions are not automatically migrated because of syntax and runtime differences.
+{% /info %}
 
-{% /section %}
-
-{% section #create-service-account step=2 title="Create service account" %}
+{% section #create-service-account step=1 title="Create service account" %}
 
 To begin migrating to Appwrite, follow these steps.
 
@@ -39,7 +37,7 @@ To begin migrating to Appwrite, follow these steps.
 
 {% /section %}
 
-{% section #create-api-key step=3 title="Create API key" %}
+{% section #create-api-key step=2 title="Create API key" %}
 
 1. Find the service account you just created.
 
@@ -49,7 +47,7 @@ To begin migrating to Appwrite, follow these steps.
 
 {% /section %}
 
-{% section #start-migration step=4 title="Start Migration" %}
+{% section #start-migration step=3 title="Start Migration" %}
 
 1. Create a new project and navigate to the **Migrations** tab in **Project Settings**.
 
