@@ -8,6 +8,9 @@ dependencies:
   '@appwrite.io/pink':
     specifier: 0.0.7-sl10.0
     version: 0.0.7-sl10.0
+  '@appwrite.io/pink-icons':
+    specifier: 0.0.7-sl10.0
+    version: 0.0.7-sl10.0
   '@fontsource/inter':
     specifier: ^5.0.8
     version: 5.0.8
