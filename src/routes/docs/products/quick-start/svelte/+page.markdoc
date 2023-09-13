@@ -3,13 +3,23 @@ layout: article
 title: Start with Svelte
 description: This is the description used for SEO.
 ---
-
+Learn to setup your first SvelteKit project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
-Create a new project using Appwrite console. To get started quickly Appwrite Cloud at https://appwrite.io/console. 
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+![Create project screen](/images/docs/databases/quick-start/create-project.png)
+
+If this is your first time using Appwrite, create an accout and create your first project.
+
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+
+![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+
+You can skip optional steps.
 
 {% /section %}
 {% section #step-2 step=2 title="Create SvelteKit project" %}
-Create a SvelteKit project with the `npm create` command.
+Create a SvelteKit project with the `npm create` command and select `Skeleton project`
 
 ```sh
 npm create svelte@next my-app && cd my-app
@@ -93,7 +103,7 @@ Create a new file `src/routes/index.svelte` and add the following code to it.
 ```
 {% /section %}
 
-{% section #featured-products- step=6 title="Checkout what you've built" %}
+{% section #step-6 step=6 title="Checkout what you've built" %}
 Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
 {% /section %}
 
