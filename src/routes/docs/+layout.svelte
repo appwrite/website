@@ -6,9 +6,10 @@
 	function getDocsVariant(pathname: string): DocsLayoutVariant {
 		const isTutorial = pathname.includes('/tutorials/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
+		const isTooling = pathname.includes('/tooling');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct) {
+		if (isTutorial || isProduct || isTooling) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
