@@ -296,21 +296,21 @@
 									{#if controlsEnabled}
 										<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span
 										>
+										<div class="oauth-btns" transition:fade={{ duration: 100 }}>
+											{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
+												<button
+													class="oauth"
+													transition:fade={{ duration: 100 }}
+													animate:flip={{ duration: 250 }}
+												>
+													<div class="inner">
+														<span class="aw-icon-{provider.toLowerCase()}" />
+														<span>{provider}</span>
+													</div>
+												</button>
+											{/each}
+										</div>
 									{/if}
-									<div class="oauth-btns">
-										{#each objectKeys(controls).filter((p) => controlsEnabled && controls[p]) as provider (provider)}
-											<button
-												class="oauth"
-												transition:fade={{ duration: 100 }}
-												animate:flip={{ duration: 250 }}
-											>
-												<div class="inner">
-													<span class="aw-icon-{provider.toLowerCase()}" />
-													<span>{provider}</span>
-												</div>
-											</button>
-										{/each}
-									</div>
 								</div>
 							</Phone>
 						</div>
