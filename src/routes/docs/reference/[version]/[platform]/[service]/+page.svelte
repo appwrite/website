@@ -85,7 +85,7 @@
 				<section class="aw-article-content-grid-6-4">
 					<div class="-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
-							<h2 id={method.id} class="aw-main-body-500">{method.title}</h2>
+							<h2 id={method.id} class="aw-main-body-500 aw-snap-location">{method.title}</h2>
 						</header>
 						<p class="aw-sub-body-400">
 							{@html parse(method.description)}
