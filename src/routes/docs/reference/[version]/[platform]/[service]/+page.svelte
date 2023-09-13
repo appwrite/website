@@ -22,8 +22,7 @@
 
 	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { platform, service } = $page.params;
-		const version = event.currentTarget.value === 'cloud' ? '1.3.x' : event.currentTarget.value;
-		goto(`/docs/reference/${version}/${platform}/${service}`, {
+		goto(`/docs/reference/${event.currentTarget.value}/${platform}/${service}`, {
 			noScroll: true
 		});
 	}
