@@ -17,7 +17,8 @@ export const entries: EntryGenerator = () => {
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-	const { version, platform, service } = params;
+	const { platform, service } = params;
+	const version = params.version === 'cloud' ? '1.3.x' : params.version;
 	if (!versions.includes(version)) throw error(404, 'Invalid version');
 	if (!services.includes(service as Service)) throw error(404, 'Invalid service');
 	if (!platforms.includes(platform as Platform)) throw error(404, 'Invalid platform');
