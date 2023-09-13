@@ -1,10 +1,5 @@
-<script lang="ts">
-	import '$scss/hljs.css';
-
-	import { getCodeHtml } from '$lib/utils/code';
-
-	export let content: string;
-	$: codeHtml = getCodeHtml({ content, language: 'js' });
+<script>
+	import Code from './Code.svelte';
 </script>
 
 <div class="code-console">
@@ -14,8 +9,7 @@
 		<div class="ellipse-3" />
 	</div>
 	<div class="block">
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		{@html codeHtml}
+		<slot {Code} />
 	</div>
 </div>
 

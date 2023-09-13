@@ -164,3 +164,36 @@ export function createTimeline(events: TimelineEvent[]) {
 
 	return { play, cancel };
 }
+
+type ProgressEvent = {
+	percentage: number;
+	callback: () => void;
+};
+
+/**
+ * Given a list of events, create a sequence of events that will be executed
+ * when a given percentage is greater than the event percentage, and before
+ * the next event percentage.
+ * e.g. const handler = createProgressSequence(events) // where there's an event for each 0.1 percentage
+ * handler(0.45) // will execute the event with percentage 0.4.
+ */
+export function createProgressSequence(events: ProgressEvent[]) {
+	// Sort from highest to lowest percentage
+	const sortedEvents = [...events].sort((a, b) => b.percentage - a.percentage);
+
+	let lastEventIdx = -1;
+
+	const handler = (percentage: number) => {
+		const idx = sortedEvents.findIndex((event) => event.percentage <= percentage);
+		if (idx === lastEventIdx) {
+			return;
+		}
+		const event = sortedEvents[idx];
+		event?.callback();
+		lastEventIdx = idx;
+	};
+
+	return handler;
+}
+
+export type ProgressSequence = ReturnType<typeof createProgressSequence>;
