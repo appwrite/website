@@ -4,4 +4,5 @@
 	export { default as Info } from './Info.svelte';
 	export { default as Tabs } from './Tabs.svelte';
 	export { default as TabsItem } from './TabsItem.svelte';
+	export { default as Icon } from './Icon.svelte';
 </script>
