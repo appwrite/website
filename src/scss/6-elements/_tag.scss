@@ -8,8 +8,4 @@
 
   padding-block:pxToRem(4); padding-inline:pxToRem(8); border-radius:pxToRem(12);
   font-size:var(--aw-font-size-micro); line-height:var(--aw-line-height-tiny);
-
-  #{$theme-dark} & {
-    --p-tag-bg-color: var(--aw-color-greyscale-750);
-  }
 }

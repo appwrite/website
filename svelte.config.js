@@ -38,7 +38,7 @@ const config = {
 		alias: {
 			$routes: './src/routes',
 			$scss: './src/scss',
-			$appwrite: './node_modules/appwrite/docs',
+			$appwrite: './node_modules/appwrite',
 			$markdoc: './src/markdoc'
 		}
 	}

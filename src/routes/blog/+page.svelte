@@ -5,7 +5,6 @@
 </script>
 
 <Main>
-
 	<div class="aw-big-padding-section-level-1 u-position-relative">
 		<div class="u-position-absolute" style="pointer-events:none;inset-inline-start:0; inset-block-end:0;">
 			<svg xmlns="http://www.w3.org/2000/svg" width="660" height="497" viewBox="0 0 660 497" fill="none">
