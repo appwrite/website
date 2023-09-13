@@ -48,7 +48,7 @@
 		"@apidevtools/json-schema-ref-parser": "^11.1.0",
 		"@apidevtools/swagger-parser": "^10.1.0",
 		"@appwrite.io/pink": "0.0.7-sl10.0",
-		"@appwrite.io/repo": "github:appwrite/appwrite",
+		"@appwrite.io/pink-icons": "0.0.7-sl10.0",
 		"@fontsource/inter": "^5.0.8",
 		"highlight.js": "^11.8.0",
 		"markdown-it": "^13.0.1",

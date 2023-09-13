@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import Phone from '$lib/animations/Phone.svelte';
-	import { fly, slide } from 'svelte/transition';
-	import { createProgressSequence, scroll, type ProgressSequence } from '.';
-	import ScrollIndicator from './scroll-indicator.svelte';
 	import CodeWindow from '$lib/animations/CodeWindow/index.svelte';
-	import PseudoTable from './PseudoTable.svelte';
+	import Phone from '$lib/animations/Phone.svelte';
+	import { Switch } from '$lib/components';
+	import { objectKeys } from '$lib/utils/object';
 	import { flip } from 'svelte/animate';
+	import { fade, fly, slide } from 'svelte/transition';
+	import { createProgressSequence, scroll, type ProgressSequence } from '.';
+	import PseudoTable from './PseudoTable.svelte';
+	import ScrollIndicator from './scroll-indicator.svelte';
 
 	/* Utils */
 	function write(text: string, cb: (v: string) => void, duration = 500) {
@@ -30,6 +32,14 @@
 		});
 	}
 
+	function getInitials(name: string) {
+		return name
+			.split(' ')
+			.map((word) => word?.[0]?.toUpperCase() ?? '')
+			.join('')
+			.slice(0, 2);
+	}
+
 	/* Basic Animation setup */
 	let scrollInfo = {
 		percentage: 0,
@@ -40,11 +50,11 @@
 	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
 	type Product = (typeof products)[number];
 
-	const percentScale: Scale = [0.25, 0.9];
+	const animScale: Scale = [0.1, 0.95];
 	const productsScales = products.map((_, idx) => {
-		const diff = percentScale[1] - percentScale[0];
+		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
-		return [percentScale[0] + step * idx, percentScale[0] + step * (idx + 1)] as Scale;
+		return [animScale[0] + step * idx, animScale[0] + step * (idx + 1)] as Scale;
 	});
 
 	/* Animation constants */
@@ -58,9 +68,17 @@
 	let showTable = false;
 
 	// Auth
+	let nameInput = "Walter O'Brian";
 	let emailInput = '';
 	let passwordInput = '';
 	let authSubmitted = false;
+	let showControls = false;
+	let controls = {
+		GitHub: true,
+		Google: false,
+		Apple: false,
+		Microsoft: false
+	};
 
 	/* Animation sequences */
 	const sequences: Record<Product, ProgressSequence> = {
@@ -69,53 +87,51 @@
 				percentage: -0.05,
 				callback() {
 					showPhone = false;
-					showCode = false;
-					showTable = false;
-
-					emailInput = '';
-					passwordInput = '';
 				}
 			},
 			{
-				percentage: 0.1,
+				percentage: 0,
 				callback() {
 					showPhone = true;
-					showCode = false;
 					showTable = false;
 				}
 			},
 			{
-				percentage: 0.2,
+				percentage: 0.15,
 				async callback() {
-					showPhone = true;
-					showCode = false;
 					showTable = true;
 				}
 			},
 			{
-				percentage: 0.25,
+				percentage: 0.3,
 				async callback() {
-					showPhone = true;
 					showCode = false;
-					showTable = true;
-					authSubmitted = false;
-
-					if (emailInput !== authEmail) {
+					if (!emailInput) {
 						await write(authEmail, (v) => (emailInput = v), 150);
 					}
-
-					if (passwordInput !== authPassword) {
+					if (!passwordInput) {
 						write(authPassword, (v) => (passwordInput = v), 150);
 					}
 				}
 			},
 			{
-				percentage: 0.4,
+				percentage: 0.45,
 				callback() {
-					showPhone = true;
+					authSubmitted = false;
 					showCode = true;
-					showTable = true;
+				}
+			},
+			{
+				percentage: 0.6,
+				callback() {
+					showControls = false;
 					authSubmitted = true;
+				}
+			},
+			{
+				percentage: 0.75,
+				callback() {
+					showControls = true;
 				}
 			}
 		]),
@@ -124,41 +140,6 @@
 		functions: createProgressSequence([]),
 		realtime: createProgressSequence([])
 	};
-
-	/* Reactive variables */
-	$: authCode = `const result = account.create(\n\tID.unique(),\n\t'${emailInput}',\n\t'${passwordInput}',\n\t"Walter O'Brian"\n);`;
-
-	type AuthEntry = {
-		avatar: string;
-		name: string;
-		email: string;
-	};
-	$: authData = [
-		authSubmitted
-			? {
-					avatar: 'WO',
-					name: "Walter O'Brian",
-					email: emailInput
-			  }
-			: undefined,
-		{
-			avatar: 'BD',
-			name: 'Benjamin Davis',
-			email: 'benjamin.davis@example.com'
-		},
-		{
-			avatar: 'OS',
-			name: 'Olivia Smith',
-			email: 'olivia.smith@example.com'
-		},
-		{
-			avatar: 'EW',
-			name: 'Ethan Wilson',
-			email: 'ethan.wilson@example.com'
-		}
-	].filter(Boolean) as AuthEntry[];
-
-	$: console.log(showCode);
 
 	$: active = (function getActiveInfo() {
 		const activeIdx = productsScales.findIndex(([min, max], i) => {
@@ -178,33 +159,70 @@
 			sequence
 		};
 	})();
-
 	$: active.sequence?.(active.percent);
+
+	/* Reactive variables */
+	$: authCode = `const result = account.create(\n\tID.unique(),\n\t'${emailInput}',\n\t'${passwordInput}',\n\t"${nameInput}"\n);`;
+
+	type AuthEntry = {
+		avatar: string;
+		name: string;
+		email: string;
+		id: number;
+	};
+	$: authData = [
+		authSubmitted
+			? {
+					avatar: getInitials(nameInput),
+					name: nameInput,
+					email: emailInput,
+					id: 0
+			  }
+			: undefined,
+		{
+			avatar: 'BD',
+			name: 'Benjamin Davis',
+			email: 'benjamin.davis@example.com',
+			id: 1
+		},
+		{
+			avatar: 'OS',
+			name: 'Olivia Smith',
+			email: 'olivia.smith@example.com',
+			id: 2
+		},
+		{
+			avatar: 'EW',
+			name: 'Ethan Wilson',
+			email: 'ethan.wilson@example.com',
+			id: 3
+		}
+	].filter(Boolean) as AuthEntry[];
+
+	$: controlsEnabled = showControls && Object.values(controls).some(Boolean);
 </script>
 
 <div
 	id="products"
 	use:scroll
 	on:aw-scroll={({ detail }) => {
-		const { percentage } = detail;
 		scrollInfo = detail;
 	}}
 >
 	<div class="sticky-wrapper">
 		<div class="debug">
-			<pre>{JSON.stringify({ ...active, authSubmitted })}</pre>
-			<button on:click={() => (showCode = !showCode)}>Toggle showCode</button>
+			<pre>{JSON.stringify({ ...active })}</pre>
 		</div>
 		<div class="text">
 			{#if scrollInfo.percentage > 0}
 				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 			{/if}
-			{#if scrollInfo.percentage > 0.075}
+			{#if scrollInfo.percentage > 0.025}
 				<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16 }}>
 					Your backend, minus the hassle
 				</h2>
 			{/if}
-			{#if scrollInfo.percentage > 0.15}
+			{#if scrollInfo.percentage > 0.075}
 				<p
 					class="aw-description aw-u-max-width-700 u-margin-inline-auto"
 					transition:fly={{
@@ -217,10 +235,10 @@
 			{/if}
 		</div>
 
-		{#if scrollInfo.percentage > 0.25}
+		{#if scrollInfo.percentage > 0.1}
 			<div class="products" transition:fly={{ y: 16 }}>
 				<div class="text">
-					<ScrollIndicator percentage={toScale(scrollInfo.percentage, [0.25, 1], [0, 1])} />
+					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
 					<ul class="descriptions">
 						<li>
 							<h3>
@@ -252,8 +270,7 @@
 												type="name"
 												id="name"
 												placeholder="Enter your name"
-												value="Walter O'Brian"
-												disabled
+												bind:value={nameInput}
 											/>
 										</fieldset>
 										<fieldset>
@@ -276,10 +293,27 @@
 										</fieldset>
 									</div>
 									<button class="sign-up">Sign Up</button>
+									{#if controlsEnabled}
+										<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span
+										>
+									{/if}
+									<div class="oauth-btns">
+										{#each objectKeys(controls).filter((p) => controlsEnabled && controls[p]) as provider (provider)}
+											<button
+												class="oauth"
+												transition:fade={{ duration: 100 }}
+												animate:flip={{ duration: 250 }}
+											>
+												<span class="aw-icon-{provider.toLowerCase()}" />
+												<span>{provider}</span>
+											</button>
+										{/each}
+									</div>
 								</div>
 							</Phone>
 						</div>
 					{/if}
+
 					{#if showCode}
 						<div class="code-window" transition:fly={{ y: 16 }}>
 							<CodeWindow let:Code>
@@ -293,16 +327,37 @@
 					{#if showTable}
 						<div class="pseudo-table" transition:fly={{ y: 16 }}>
 							<PseudoTable title="Users" columns={['Name', 'identifier']} let:rowClass>
-								{#each authData as user, i (i)}
-									<div class={rowClass} animate:flip>
+								{#each authData as user (user.id)}
+									<div
+										class={rowClass}
+										in:fly={{ duration: 100, x: -16, delay: 100 }}
+										out:fly={{ duration: 100, x: -16 }}
+										animate:flip={{ duration: 250 }}
+									>
 										<div class="u-flex u-cross-center u-gap-12">
 											<div class="avatar is-size-small">{user.avatar}</div>
-											<span>{user.name}</span>
+											<span class="truncated">{user.name}</span>
 										</div>
-										<span class="truncated">eldad@appwrite.io, +447125533</span>
+										<span class="truncated">{user.email}</span>
 									</div>
 								{/each}
 							</PseudoTable>
+						</div>
+					{/if}
+
+					{#if showControls}
+						<div class="auth-controls" transition:fly={{ y: 16 }}>
+							{#each objectKeys(controls) as provider, i}
+								{@const isLast = i === objectKeys(controls).length - 1}
+								<div>
+									<span class="aw-icon-{provider.toLowerCase()}" />
+									<span>{provider}</span>
+									<Switch bind:checked={controls[provider]} />
+								</div>
+								{#if !isLast}
+									<div class="sep" />
+								{/if}
+							{/each}
 						</div>
 					{/if}
 				</div>
@@ -314,7 +369,7 @@
 <style lang="scss">
 	/* Auth */
 	.auth-phone {
-		padding-block: 3rem;
+		padding-block: 2rem 3rem;
 		padding-inline: 1rem;
 
 		color: rgba(67, 67, 71, 1);
@@ -343,8 +398,8 @@
 		.inputs {
 			display: flex;
 			flex-direction: column;
-			gap: 0.75rem;
-			margin-block-start: 4rem;
+			gap: 0.5rem;
+			margin-block-start: 1.5rem;
 
 			fieldset {
 				display: flex;
@@ -403,11 +458,144 @@
 			line-height: 22px; /* 157.143% */
 			letter-spacing: -0.07px;
 		}
+
+		.with-sep {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+
+			font-family: Inter;
+			font-size: 0.75rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.25rem; /* 166.667% */
+			letter-spacing: -0.0105rem;
+			color: hsl(var(--aw-color-greyscale-500));
+
+			margin-block-start: 0.75rem;
+
+			&::before,
+			&::after {
+				content: '';
+				height: 1px;
+				flex-grow: 1;
+				background-color: hsl(var(--aw-color-greyscale-200));
+			}
+		}
+
+		.oauth-btns {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-block-start: 0.75rem;
+		}
+
+		.oauth {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			width: 40%;
+
+			border-radius: 0.5rem;
+			border: 1px solid #d9d9d9;
+			color: hsl(var(--aw-color-greyscale-750));
+			text-align: center;
+			/* Responsive/Caption-500 */
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 1.375rem; /* 157.143% */
+			letter-spacing: -0.01575rem;
+
+			flex-grow: 1;
+			padding: 0.375rem 1rem;
+		}
 	}
 
 	.pseudo-table .avatar {
 		background-color: hsl(var(--aw-color-greyscale-700));
 		border-color: hsl(var(--aw-color-greyscale-700));
+	}
+
+	.pseudo-table .truncated {
+		display: block;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	.auth-controls {
+		@include border-gradient;
+		--m-border-radius: 1rem;
+		--m-border-gradient-before: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.12) 0%,
+			rgba(255, 255, 255, 0) 125.11%
+		);
+
+		display: flex;
+		flex-direction: column;
+
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+			-8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+			-33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+		backdrop-filter: blur(20px);
+		padding: 0.75rem;
+
+		position: absolute;
+		top: 0;
+		right: 2rem;
+		z-index: 30;
+
+		width: 12.5rem;
+
+		> div {
+			display: flex;
+			align-items: center;
+
+			> :nth-child(2) {
+				margin-left: 0.75rem;
+				color: hsl(var(--aw-color-white));
+
+				font-family: Inter;
+				font-size: 0.875rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 1.375rem; /* 157.143% */
+				letter-spacing: -0.00394rem;
+			}
+
+			> :global(:nth-child(3)) {
+				margin-left: auto;
+			}
+		}
+
+		.sep {
+			width: 100%;
+			height: 1px;
+			background-color: rgba(255, 255, 255, 0.12);
+			margin-block: 0.5rem;
+		}
+
+		[class*='icon-'] {
+			--size: 2rem;
+			font-size: var(--size);
+			width: var(--size);
+			height: var(--size);
+			color: hsl(var(--aw-color-greayscale-50));
+
+			position: relative;
+
+			&::before {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
 	}
 
 	/* General */

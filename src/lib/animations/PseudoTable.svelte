@@ -1,6 +1,11 @@
 <script lang="ts">
+	import { rect } from '$lib/actions';
+	import { writable } from 'svelte/store';
+
 	export let title: string;
 	export let columns: string[];
+
+	const bodyRect = writable<DOMRect | null>(null);
 </script>
 
 <div class="pseudo-table">
@@ -11,8 +16,11 @@
 				<span>{column}</span>
 			{/each}
 		</div>
-		<div class="body">
-			<slot rowClass="row" />
+		<div class="body-wrapper">
+			<div class="true-body" style:height={`${$bodyRect?.height}px`} />
+			<div class="body" use:rect={bodyRect}>
+				<slot rowClass="row" />
+			</div>
 		</div>
 	</div>
 </div>
@@ -76,16 +84,29 @@
 				padding: 1rem;
 			}
 
-			.body {
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				padding: 1rem;
+			.body-wrapper {
+				position: relative;
 
-				> :global(*) {
-					white-space: nowrap;
-					text-overflow: ellipsis;
-					overflow: hidden;
+				.body {
+					position: absolute;
+					width: 100%;
+					top: 0;
+					left: 0;
+
+					display: flex;
+					flex-direction: column;
+					gap: 1rem;
+					padding: 1rem;
+
+					> :global(*) {
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					}
+				}
+
+				.true-body {
+					transition: height 0.2s ease;
 				}
 			}
 		}
