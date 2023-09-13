@@ -7,7 +7,7 @@
 		elements: { root },
 		states: { checked: meltChecked }
 	} = createSwitch({
-		onCheckedChange({ curr, next }) {
+		onCheckedChange({ next }) {
 			checked = next;
 			return next;
 		}
@@ -29,9 +29,12 @@
 	}
 
 	button {
+		--padding: 0.125rem;
+		--width: 2.25rem;
+
 		position: relative;
 		height: 1.5rem;
-		width: 2.75rem;
+		width: var(--width);
 		cursor: default;
 		border-radius: 9999px;
 		background-color: #19191d;
@@ -43,20 +46,23 @@
 	}
 
 	.thumb {
+		--thumb-size: 1.25rem;
+
 		position: absolute;
 		top: 50%;
 
 		display: block;
-		height: 1.25rem;
-		width: 1.25rem;
+		height: var(--thumb-size);
+		width: var(--thumb-size);
 		border-radius: 9999px;
 		background-color: #ffffff;
-		transform: translateX(2px) translateY(-50%);
+		transform: translateX(var(--padding)) translateY(-50%);
 
 		transition: ease 150ms;
 	}
 
 	:global(button[data-state='checked']) .thumb {
-		transform: translateX(22px) translateY(-50%);
+		--x: calc(var(--width) - var(--thumb-size) - var(--padding));
+		transform: translateX(var(--x)) translateY(-50%);
 	}
 </style>
