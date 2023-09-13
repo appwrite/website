@@ -74,12 +74,12 @@
 
 	let navLinks: NavLink[] = [
 		{
-			label: 'Community',
-			href: '/community'
-		},
-		{
 			label: 'Docs',
 			href: '/docs'
+		},
+		{
+			label: 'Community',
+			href: '/community'
 		},
 		{
 			label: 'Blog',
