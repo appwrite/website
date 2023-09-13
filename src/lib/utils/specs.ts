@@ -1,6 +1,5 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
-import specsClient from '$lib/specs/open-api3-1.3.x-client.json';
-import specsServer from '$lib/specs/open-api3-1.3.x-server.json';
+import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 
 type SDKMethod = {
@@ -49,7 +48,12 @@ type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
 function getExamples(version: string) {
 	switch (version) {
 		case '1.3.x':
-			return import.meta.glob('$appwrite/examples/1.3.x/**/*.md', {
+			return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
+				as: 'raw',
+				eager: true
+			});
+		case '1.4.x':
+			return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
 				as: 'raw',
 				eager: true
 			});
@@ -123,6 +127,15 @@ function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject 
 	throw new Error("Schema doesn't exist");
 }
 
+const specs = import.meta.glob('$appwrite/app/config/specs/open-api3*-(client|server).json');
+async function getSpec(version: string, platform: string) {
+	const isServer = platform.startsWith('server-');
+	const target = `/node_modules/appwrite/app/config/specs/open-api3-${version}-${
+		isServer ? 'server' : 'client'
+	}.json`;
+	return specs[target]();
+}
+
 export async function getService(
 	version: string,
 	platform: string,
@@ -134,10 +147,10 @@ export async function getService(
 	};
 	methods: SDKMethod[];
 }> {
-	const spec = platform.startsWith('client-') ? specsClient : specsServer;
+	const spec = await getSpec(version, platform);
 	const examples = getExamples(version);
 	if (!examples) {
-		throw new Error("Examples doesn't exist");
+		throw error(404, "Examples doesn't exist");
 	}
 	const data: {
 		service: {
@@ -189,7 +202,7 @@ export async function getService(
 
 		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
-			throw new Error("Example doesn't exist: " + path);
+			throw error(404, "Example doesn't exist: " + path);
 		}
 		data.methods.push({
 			id: operation['x-appwrite'].method,

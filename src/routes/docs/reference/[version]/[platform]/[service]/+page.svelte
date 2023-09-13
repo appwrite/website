@@ -106,8 +106,13 @@
 										<div class="collapsible-content">
 											<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 												<ul class="u-flex-vertical">
-													{#each method.parameters as parameter}
-														<li>
+													{#each method.parameters as parameter, i}
+														{@const first = i === 0}
+														<li
+															class:u-sep-block-start={!first}
+															class:u-padding-block-start-16={!first}
+															class="u-margin-block-start-16"
+														>
 															<article>
 																<header class="u-flex u-cross-baseline u-gap-8">
 																	<h3 class="aw-eyebrow aw-u-color-text-primary">

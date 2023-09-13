@@ -1,4 +1,6 @@
-export const versions = ['1.3.x'];
+import type { Language } from './code';
+
+export const versions = ['1.4.x', '1.3.x'];
 
 export enum Service {
 	Account = 'account',
@@ -26,7 +28,7 @@ export enum Platform {
 	ServerSwift = 'server-swift'
 }
 
-export const languageMap: Record<Platform, string> = {
+export const languageMap: Record<Platform, Language> = {
 	[Platform.ClientApple]: 'swift',
 	[Platform.ClientFlutter]: 'dart',
 	[Platform.ClientWeb]: 'js',
