@@ -1,10 +1,7 @@
 <script lang="ts">
 	import '$scss/hljs.css';
 
-	import { ctx } from '$lib/animations/Products.svelte';
 	import { CodeWindow, Phone, Switch } from '$lib/components';
-
-	const { active } = ctx.get() ?? {};
 
 	const content = `const result = account.create(\n\tID.unique(),\n\t'walterobrian@example.com',\n\t'password',\n\t"Walter O'Brian"\n);`;
 </script>

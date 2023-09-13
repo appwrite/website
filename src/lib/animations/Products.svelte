@@ -1,56 +1,185 @@
-<script lang="ts" context="module">
-	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
-	type Product = (typeof products)[number];
-
-	type ProductsContext = {
-		scrollInfo: Readable<ScrollInfo>;
-		active: Readable<Product>;
-	};
-
-	const ctx_key = Symbol();
-	export const ctx = {
-		set: (v: ProductsContext) => {
-			setContext(ctx_key, v);
-		},
-		get: () => {
-			return getContext<ProductsContext>(ctx_key);
-		}
-	};
-</script>
-
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import { clamp } from '$lib/utils/clamp';
-	import { getContext, setContext } from 'svelte';
-	import { writable, type Readable, type Writable } from 'svelte/store';
+	import Phone from '$lib/animations/Phone.svelte';
 	import { fly, slide } from 'svelte/transition';
-	import { scroll, type ScrollInfo } from '.';
-	import Auth from './products/auth.svelte';
+	import { createProgressSequence, scroll, type ProgressSequence } from '.';
 	import ScrollIndicator from './scroll-indicator.svelte';
-	import Database from './products/database.svelte';
+	import CodeWindow from '$lib/animations/CodeWindow/index.svelte';
+	import PseudoTable from './PseudoTable.svelte';
+	import { flip } from 'svelte/animate';
 
-	let scrollInfo: Writable<ScrollInfo> = writable({
+	/* Utils */
+	function write(text: string, cb: (v: string) => void, duration = 500) {
+		const step = duration / text.length;
+		let i = 0;
+		return new Promise((resolve) => {
+			const interval = setInterval(() => {
+				cb(text.slice(0, ++i));
+				if (i === text.length) {
+					clearInterval(interval);
+					resolve(undefined);
+				}
+			}, step);
+		});
+	}
+
+	function sleep(duration: number) {
+		return new Promise((resolve) => {
+			setTimeout(resolve, duration);
+		});
+	}
+
+	/* Basic Animation setup */
+	let scrollInfo = {
 		percentage: 0,
 		traversed: 0,
 		remaning: Infinity
-	});
+	};
 
-	const animScale: Scale = [0, products.length];
+	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
+	type Product = (typeof products)[number];
+
 	const percentScale: Scale = [0.25, 0.9];
-	$: activeProductIdx = Math.floor(
-		clamp(0, toScale($scrollInfo.percentage, percentScale, animScale), products.length - 1)
-	);
-
-	const activeProduct = writable<Product>(products[0]);
-	$: {
-		activeProduct.set(products[activeProductIdx]);
-	}
-
-	ctx.set({
-		scrollInfo,
-		active: activeProduct
+	const productsScales = products.map((_, idx) => {
+		const diff = percentScale[1] - percentScale[0];
+		const step = diff / products.length;
+		return [percentScale[0] + step * idx, percentScale[0] + step * (idx + 1)] as Scale;
 	});
+
+	/* Animation constants */
+	const authEmail = 'walterobrian@example.com';
+	const authPassword = 'password';
+
+	/* Animation variables */
+	// General vars
+	let showPhone = false;
+	let showCode = false;
+	let showTable = false;
+
+	// Auth
+	let emailInput = '';
+	let passwordInput = '';
+	let authSubmitted = false;
+
+	/* Animation sequences */
+	const sequences: Record<Product, ProgressSequence> = {
+		auth: createProgressSequence([
+			{
+				percentage: -0.05,
+				callback() {
+					showPhone = false;
+					showCode = false;
+					showTable = false;
+
+					emailInput = '';
+					passwordInput = '';
+				}
+			},
+			{
+				percentage: 0.1,
+				callback() {
+					showPhone = true;
+					showCode = false;
+					showTable = false;
+				}
+			},
+			{
+				percentage: 0.2,
+				async callback() {
+					showPhone = true;
+					showCode = false;
+					showTable = true;
+				}
+			},
+			{
+				percentage: 0.25,
+				async callback() {
+					showPhone = true;
+					showCode = false;
+					showTable = true;
+					authSubmitted = false;
+
+					if (emailInput !== authEmail) {
+						await write(authEmail, (v) => (emailInput = v), 150);
+					}
+
+					if (passwordInput !== authPassword) {
+						write(authPassword, (v) => (passwordInput = v), 150);
+					}
+				}
+			},
+			{
+				percentage: 0.4,
+				callback() {
+					showPhone = true;
+					showCode = true;
+					showTable = true;
+					authSubmitted = true;
+				}
+			}
+		]),
+		databases: createProgressSequence([]),
+		storage: createProgressSequence([]),
+		functions: createProgressSequence([]),
+		realtime: createProgressSequence([])
+	};
+
+	/* Reactive variables */
+	$: authCode = `const result = account.create(\n\tID.unique(),\n\t'${emailInput}',\n\t'${passwordInput}',\n\t"Walter O'Brian"\n);`;
+
+	type AuthEntry = {
+		avatar: string;
+		name: string;
+		email: string;
+	};
+	$: authData = [
+		authSubmitted
+			? {
+					avatar: 'WO',
+					name: "Walter O'Brian",
+					email: emailInput
+			  }
+			: undefined,
+		{
+			avatar: 'BD',
+			name: 'Benjamin Davis',
+			email: 'benjamin.davis@example.com'
+		},
+		{
+			avatar: 'OS',
+			name: 'Olivia Smith',
+			email: 'olivia.smith@example.com'
+		},
+		{
+			avatar: 'EW',
+			name: 'Ethan Wilson',
+			email: 'ethan.wilson@example.com'
+		}
+	].filter(Boolean) as AuthEntry[];
+
+	$: console.log(showCode);
+
+	$: active = (function getActiveInfo() {
+		const activeIdx = productsScales.findIndex(([min, max], i) => {
+			if (i === 0 && scrollInfo.percentage < min) return true;
+			return scrollInfo.percentage >= min && scrollInfo.percentage < max;
+		});
+
+		const product = products[activeIdx] as Product | undefined;
+		const scale = productsScales[activeIdx] as Scale | undefined;
+		const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
+		const sequence = product ? sequences[product] : undefined;
+
+		return {
+			product,
+			scale,
+			percent,
+			sequence
+		};
+	})();
+
+	$: active.sequence?.(active.percent);
 </script>
 
 <div
@@ -58,20 +187,24 @@
 	use:scroll
 	on:aw-scroll={({ detail }) => {
 		const { percentage } = detail;
-		scrollInfo.set(detail);
+		scrollInfo = detail;
 	}}
 >
 	<div class="sticky-wrapper">
+		<div class="debug">
+			<pre>{JSON.stringify({ ...active, authSubmitted })}</pre>
+			<button on:click={() => (showCode = !showCode)}>Toggle showCode</button>
+		</div>
 		<div class="text">
-			{#if $scrollInfo.percentage > 0}
+			{#if scrollInfo.percentage > 0}
 				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 			{/if}
-			{#if $scrollInfo.percentage > 0.075}
+			{#if scrollInfo.percentage > 0.075}
 				<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16 }}>
 					Your backend, minus the hassle
 				</h2>
 			{/if}
-			{#if $scrollInfo.percentage > 0.15}
+			{#if scrollInfo.percentage > 0.15}
 				<p
 					class="aw-description aw-u-max-width-700 u-margin-inline-auto"
 					transition:fly={{
@@ -84,10 +217,10 @@
 			{/if}
 		</div>
 
-		{#if $scrollInfo.percentage > 0.25}
+		{#if scrollInfo.percentage > 0.25}
 			<div class="products" transition:fly={{ y: 16 }}>
 				<div class="text">
-					<ScrollIndicator percentage={toScale($scrollInfo.percentage, [0.25, 1], [0, 1])} />
+					<ScrollIndicator percentage={toScale(scrollInfo.percentage, [0.25, 1], [0, 1])} />
 					<ul class="descriptions">
 						<li>
 							<h3>
@@ -106,10 +239,71 @@
 				</div>
 
 				<div class="animated">
-					{#if $activeProduct === 'auth'}
-						<Auth />
-					{:else if $activeProduct === 'databases'}
-						<Database />
+					{#if showPhone}
+						<div class="phone" transition:fly={{ y: 16, duration: 150 }}>
+							<Phone>
+								<div class="auth-phone theme-light">
+									<p class="title">Create an Account</p>
+									<p class="subtitle">Please enter your details</p>
+									<div class="inputs">
+										<fieldset>
+											<label for="name">Your Name</label>
+											<input
+												type="name"
+												id="name"
+												placeholder="Enter your name"
+												value="Walter O'Brian"
+												disabled
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="email">Your Email</label>
+											<input
+												type="email"
+												id="email"
+												placeholder="Enter your email"
+												bind:value={emailInput}
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="password">Create Password</label>
+											<input
+												type="password"
+												id="password"
+												placeholder="Enter Password"
+												bind:value={passwordInput}
+											/>
+										</fieldset>
+									</div>
+									<button class="sign-up">Sign Up</button>
+								</div>
+							</Phone>
+						</div>
+					{/if}
+					{#if showCode}
+						<div class="code-window" transition:fly={{ y: 16 }}>
+							<CodeWindow let:Code>
+								<div>
+									<Code content={authCode} />
+								</div>
+							</CodeWindow>
+						</div>
+					{/if}
+
+					{#if showTable}
+						<div class="pseudo-table" transition:fly={{ y: 16 }}>
+							<PseudoTable title="Users" columns={['Name', 'identifier']} let:rowClass>
+								{#each authData as user, i (i)}
+									<div class={rowClass} animate:flip>
+										<div class="u-flex u-cross-center u-gap-12">
+											<div class="avatar is-size-small">{user.avatar}</div>
+											<span>{user.name}</span>
+										</div>
+										<span class="truncated">eldad@appwrite.io, +447125533</span>
+									</div>
+								{/each}
+							</PseudoTable>
+						</div>
 					{/if}
 				</div>
 			</div>
@@ -118,11 +312,116 @@
 </div>
 
 <style lang="scss">
+	/* Auth */
+	.auth-phone {
+		padding-block: 3rem;
+		padding-inline: 1rem;
+
+		color: rgba(67, 67, 71, 1);
+		text-align: left;
+
+		.title {
+			color: #434347;
+			font-family: Inter;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 22px; /* 137.5% */
+			letter-spacing: -0.224px;
+		}
+
+		.subtitle {
+			color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
+			font-family: Inter;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 20px; /* 142.857% */
+			letter-spacing: -0.196px;
+		}
+
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			margin-block-start: 4rem;
+
+			fieldset {
+				display: flex;
+				flex-direction: column;
+				gap: 0.3125rem;
+				width: 100%;
+
+				label {
+					color: var(--color-greyscale-700, #56565c);
+					font-family: Inter;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 16px; /* 133.333% */
+					letter-spacing: -0.168px;
+				}
+
+				input {
+					all: unset;
+					display: flex;
+					padding: 8px 12px;
+					align-items: flex-start;
+					align-self: stretch;
+					border-radius: 8px;
+					border: 1px solid #d8d8db;
+
+					color: #434347;
+					font-family: Inter;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 16px; /* 133.333% */
+					letter-spacing: -0.168px;
+				}
+			}
+		}
+
+		.sign-up {
+			padding: 0.375rem 0.75rem;
+			text-align: center;
+			width: 100%;
+			margin-block-start: 1.25rem;
+
+			border-radius: 0.5rem;
+			background: var(--appwrite-purple, #7c67fe);
+			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+
+			color: var(--color-bw-white, #fff);
+			text-align: center;
+
+			/* Responsive/SubBody-500 */
+			font-family: Inter;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 22px; /* 157.143% */
+			letter-spacing: -0.07px;
+		}
+	}
+
+	.pseudo-table .avatar {
+		background-color: hsl(var(--aw-color-greyscale-700));
+		border-color: hsl(var(--aw-color-greyscale-700));
+	}
+
+	/* General */
 	#products {
-		height: 7500px;
+		height: 30000px;
 		position: relative;
 
 		--debug-bg: transparent;
+	}
+
+	.debug {
+		position: absolute;
+		top: 8rem;
+		left: 0;
 	}
 
 	.sticky-wrapper {
@@ -243,5 +542,23 @@
 		height: min(38.75rem, 90vh);
 
 		position: relative;
+
+		--z-beneath-phone: 0;
+		--z-phone: 10;
+		--z-above-phone: 20;
+
+		.phone {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: var(--z-phone);
+		}
+
+		.code-window {
+			position: absolute;
+			z-index: var(--z-above-phone);
+			bottom: 0;
+			left: 15rem;
+		}
 	}
 </style>
