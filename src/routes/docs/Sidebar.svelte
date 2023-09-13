@@ -110,7 +110,7 @@
 							href: '/docs/products/auth/quick-start'
 						},
 						{
-							label: 'Email and Password',
+							label: 'Email and password',
 							href: '/docs/products/auth/email-password'
 						},
 						{
@@ -130,11 +130,11 @@
 							href: '/docs/products/auth/anonymous'
 						},
 						{
-							label: 'User Management',
+							label: 'User management',
 							href: '/docs/products/auth/user-management'
 						},
 						{
-							label: 'Server Integrations',
+							label: 'Server integrations',
 							href: '/docs/products/auth/server-integrations'
 						},
 						{
@@ -148,6 +148,10 @@
 					href: '/docs/products/databases',
 					icon: 'icon-database',
 					items: [
+						{
+							label: 'Quick start',
+							href: '/docs/products/databases/quick-start'
+						},
 						{
 							label: 'Queries',
 							href: '/docs/products/databases/queries'
