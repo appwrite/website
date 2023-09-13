@@ -5,7 +5,7 @@
 	import Phone from '$lib/animations/Phone.svelte';
 	import { Switch } from '$lib/components';
 	import { objectKeys } from '$lib/utils/object';
-	import { flip } from 'svelte/animate';
+	import { flip } from '$lib/utils/flip.js';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { createProgressSequence, scroll, type ProgressSequence } from '.';
 	import PseudoTable from './PseudoTable.svelte';
@@ -304,8 +304,10 @@
 												transition:fade={{ duration: 100 }}
 												animate:flip={{ duration: 250 }}
 											>
-												<span class="aw-icon-{provider.toLowerCase()}" />
-												<span>{provider}</span>
+												<div class="inner">
+													<span class="aw-icon-{provider.toLowerCase()}" />
+													<span>{provider}</span>
+												</div>
 											</button>
 										{/each}
 									</div>
@@ -332,7 +334,7 @@
 										class={rowClass}
 										in:fly={{ duration: 100, x: -16, delay: 100 }}
 										out:fly={{ duration: 100, x: -16 }}
-										animate:flip={{ duration: 250 }}
+										animate:flip={{ duration: 150 }}
 									>
 										<div class="u-flex u-cross-center u-gap-12">
 											<div class="avatar is-size-small">{user.avatar}</div>
@@ -369,7 +371,7 @@
 <style lang="scss">
 	/* Auth */
 	.auth-phone {
-		padding-block: 2rem 3rem;
+		padding-block: 3rem;
 		padding-inline: 1rem;
 
 		color: rgba(67, 67, 71, 1);
@@ -398,7 +400,7 @@
 		.inputs {
 			display: flex;
 			flex-direction: column;
-			gap: 0.5rem;
+			gap: 0.75rem;
 			margin-block-start: 1.5rem;
 
 			fieldset {
@@ -485,9 +487,10 @@
 		}
 
 		.oauth-btns {
+			--gap: 0.5rem;
 			display: flex;
 			flex-wrap: wrap;
-			gap: 0.5rem;
+			gap: var(--gap);
 			margin-block-start: 0.75rem;
 		}
 
@@ -495,13 +498,12 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			gap: 0.5rem;
-			width: 40%;
 
 			border-radius: 0.5rem;
 			border: 1px solid #d9d9d9;
 			color: hsl(var(--aw-color-greyscale-750));
 			text-align: center;
+
 			/* Responsive/Caption-500 */
 			font-family: Inter;
 			font-size: 0.875rem;
@@ -510,8 +512,22 @@
 			line-height: 1.375rem; /* 157.143% */
 			letter-spacing: -0.01575rem;
 
-			flex-grow: 1;
-			padding: 0.375rem 1rem;
+			flex: 1 1 calc(50% - var(--gap));
+			padding-block: 0.375rem;
+			position: relative;
+			height: 2.125rem;
+
+			.inner {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 0.5rem;
+				transform: translate(-50%, -50%) scale(var(--inverse-sx, 1), var(--inverse-sy, 1));
+			}
 		}
 	}
 
