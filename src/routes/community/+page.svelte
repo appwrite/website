@@ -131,7 +131,7 @@
 
 					<div class="aw-card is-normal u-margin-block-start-32" style="--card-padding:2rem; --card-padding-mobile:1.25rem;">
 						<div class="u-flex aw-u-flex-direction-column-mobile
-									aw-u-gap-80 aw-u-row-gap-48">
+									aw-u-gap-96 aw-u-row-gap-48">
 							<div>
 								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
 								<p class="aw-main-body-500 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -150,10 +150,12 @@
 									</thead>
 									<tbody class="aw-table-line-body">
 										<tr class="aw-table-line-row">
-											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell u-un-break-text">
+												<span class="aw-caption-400">#24</span>
+											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">Create a Helm Chart for Appwrite</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -170,10 +172,12 @@
 											</td>
 										</tr>
 										<tr class="aw-table-line-row">
-											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell u-un-break-text">
+												<span class="aw-caption-400">#24</span>
+											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">Create a Helm Chart for Appwrite</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -190,10 +194,12 @@
 											</td>
 										</tr>
 										<tr class="aw-table-line-row">
-											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell u-un-break-text">
+												<span class="aw-caption-400">#24</span>
+											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">Create a Helm Chart for Appwrite</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -210,10 +216,12 @@
 											</td>
 										</tr>
 										<tr class="aw-table-line-row">
-											<td class="aw-table-line-cell u-un-break-text">#24</td>
+											<td class="aw-table-line-cell u-un-break-text">
+												<span class="aw-caption-400">#24</span>
+											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-primary">Create a Helm Chart for Appwrite</span>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">Create a Helm Chart for Appwrite</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -241,37 +249,37 @@
 					<h4 class="aw-label aw-u-color-text-primary">Other ways to help</h4>
 					<ul class="grid-box u-gap-32 aw-u-gap-20-mobile u-margin-block-start-20" style="--grid-item-size:15rem">
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Blogging & Speaking</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
 						</li>
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Presenting at Meetups</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
 						</li>
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Reporting Bugs</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
 						</li>
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Submitting New Ideas</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
 						</li>
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Improving documentation</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
 						</li>
 						<li>
-							<div class="aw-card is-normal u-flex-vertical u-gap-8" style="--card-padding:1.25rem;">
+							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping other contributors</div>
 								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
 							</div>
@@ -280,7 +288,7 @@
 				</section>
 			</div>
 			<div class="aw-big-padding-section-level-2">
-				<section class="aw-container">
+				<section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
 					<div class="u-flex u-gap-16 u-main-space-between">
 						<h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
 						<div class="u-flex u-gap-12">
@@ -419,39 +427,39 @@
 					<div class="aw-container">
 						<ul class="aw-grid-3-desktop-1-mobile">
 							<li>
-								<a class="aw-card is-white" href="/">
+								<a class="aw-card is-white" href="/" style="--card-padding:0.5rem;">
 									<div class="u-padding-12">
-										<h3 class="aw-main-body-500">Glitch</h3>
+										<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
 										<p class="u-trim-2">
 											Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 										</p>
 									</div>
 									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
-										 class="aw-image-ratio-9-4" alt="">
+										 class="u-width-full-line aw-u-block-size-160 aw-u-media-cover" alt="">
 								</a>
 							</li>
 							<li>
-								<a class="aw-card is-white" href="/">
+								<a class="aw-card is-white" href="/"  style="--card-padding:0.5rem;">
 									<div class="u-padding-12">
-										<h3 class="aw-main-body-500">Glitch</h3>
+										<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
 										<p class="u-trim-2">
 											Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 										</p>
 									</div>
 									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
-										 class="aw-image-ratio-9-4" alt="">
+										 class="u-width-full-line aw-u-block-size-160 aw-u-media-cover" alt="">
 								</a>
 							</li>
 							<li>
-								<a class="aw-card is-white" href="/">
+								<a class="aw-card is-white" href="/"  style="--card-padding:0.5rem;">
 									<div class="u-padding-12">
-										<h3 class="aw-main-body-500">Glitch</h3>
+										<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
 										<p class="u-trim-2">
 											Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 										</p>
 									</div>
 									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
-										 class="aw-image-ratio-9-4" alt="">
+										 class="u-width-full-line aw-u-block-size-160 aw-u-media-cover" alt="">
 								</a>
 							</li>
 
@@ -543,7 +551,7 @@
 				<div class="aw-container">
 					<div class="aw-hero is-center aw-u-max-width-800">
 						<h3 class="aw-display aw-u-color-text-primary">Appwrite insights</h3>
-						<p>Sign up to our blog and get the latest insights from Appwrite. Learn more about engineering, product design, building community, and tips & tricks for using Appwrite.</p>
+						<p class="aw-main-body-400">Sign up to our blog and get the latest insights from Appwrite. Learn more about engineering, product design, building community, and tips & tricks for using Appwrite.</p>
 					</div>
 					<div
 							class="aw-subscribe-input aw-input-text is-reset-input-inside u-width-full-line aw-u-max-width-380 u-margin-inline-auto u-margin-block-start-32"
