@@ -11,4 +11,15 @@
 	import '$scss/index.scss';
 </script>
 
+<svelte:head>
+	<script
+		src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+		type="text/javascript"
+		charset="UTF-8"
+		data-domain-script="810f5713-9b46-4c38-b56a-ed1018cbabc2-test"
+	></script>
+	<script type="text/javascript">
+		function OptanonWrapper() {}
+	</script>
+</svelte:head>
 <slot />

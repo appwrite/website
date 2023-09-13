@@ -59,6 +59,7 @@
 				<li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
+				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>cookie settings</li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">

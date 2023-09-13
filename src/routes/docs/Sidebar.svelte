@@ -61,31 +61,31 @@
 					items: [
 						{
 							label: 'Account',
-							href: '/docs/reference/1.3.x/client-web/account'
+							href: '/docs/reference/cloud/client-web/account'
 						},
 						{
 							label: 'Users',
-							href: '/docs/reference/1.3.x/client-web/users'
+							href: '/docs/reference/cloud/client-web/users'
 						},
 						{
 							label: 'Teams',
-							href: '/docs/reference/1.3.x/client-web/teams'
+							href: '/docs/reference/cloud/client-web/teams'
 						},
 						{
 							label: 'Databases',
-							href: '/docs/reference/1.3.x/client-web/databases'
+							href: '/docs/reference/cloud/client-web/databases'
 						},
 						{
 							label: 'Storage',
-							href: '/docs/reference/1.3.x/client-web/storage'
+							href: '/docs/reference/cloud/client-web/storage'
 						},
 						{
 							label: 'Functions',
-							href: '/docs/reference/1.3.x/client-web/functions'
+							href: '/docs/reference/cloud/client-web/functions'
 						},
 						{
 							label: 'Localization',
-							href: '/docs/reference/1.3.x/client-web/locale'
+							href: '/docs/reference/cloud/client-web/locale'
 						},
 						{
 							label: 'Avatars',
