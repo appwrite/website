@@ -52,7 +52,7 @@ client
 export const account = new Account(client);
 ```
 {% /section %}
-{% section #featured-products- step=5 title="Create a login page" %}
+{% section #step-5 step=5 title="Create a login page" %}
 Create a new file `src/routes/index.svelte` and add the following code to it.
 
 ```html
