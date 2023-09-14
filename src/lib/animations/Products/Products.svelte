@@ -65,8 +65,8 @@
 
 	/* Animation variables */
 	let showPhone = true;
-	let showCode = true;
-	let showTable = true;
+	let showCode = false;
+	let showTable = false;
 
 	// Auth
 	let nameInput = "Walter O'Brian";
@@ -393,7 +393,7 @@ const result = databases.createDocument(
 		<div class="debug">
 			<pre>{JSON.stringify({ ...active })}</pre>
 		</div>
-		<div class="text">
+		<div class="main-text">
 			{#if scrollInfo.percentage > 0}
 				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 			{/if}
@@ -415,218 +415,219 @@ const result = databases.createDocument(
 			{/if}
 		</div>
 
-		{#if scrollInfo.percentage > 0.1}
-			<div class="products" transition:fly={{ y: 16 }}>
-				<div class="text">
-					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
-					<ul class="descriptions">
-						{#each products as product}
-							{@const copy = infos[product]}
-							{@const isActive = active.product === product}
+		<div
+			class="products"
+			transition:fly={{ y: 16 }}
+			data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
+		>
+			<div class="text">
+				<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
+				<ul class="descriptions">
+					{#each products as product}
+						{@const copy = infos[product]}
+						{@const isActive = active.product === product}
 
-							<li data-active={isActive ? '' : undefined}>
-								<h3>
-									<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
-									<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
-								</h3>
-								{#if isActive}
-									<div transition:slide>
-										<h4 class="aw-title">{copy.subtitle}</h4>
-										<p>
-											{copy.description}
-										</p>
-										<ul class="features">
-											{#each copy.features as feature}
-												<li>{feature}</li>
-											{/each}
-										</ul>
-									</div>
-								{/if}
-							</li>
-						{/each}
-					</ul>
-				</div>
-
-				<div class="animated">
-					{#if showPhone}
-						<div class="phone" id="products-phone" transition:fly={{ y: 16, duration: 150 }}>
-							<Phone>
-								{#if active.product === 'auth'}
-									<div class="AUTH-phone theme-light">
-										<p class="title">Create an Account</p>
-										<p class="subtitle">Please enter your details</p>
-										<div class="inputs">
-											<fieldset>
-												<label for="name">Your Name</label>
-												<input
-													type="name"
-													id="name"
-													placeholder="Enter your name"
-													bind:value={nameInput}
-												/>
-											</fieldset>
-											<fieldset>
-												<label for="email">Your Email</label>
-												<input
-													type="email"
-													id="email"
-													placeholder="Enter your email"
-													bind:value={emailInput}
-												/>
-											</fieldset>
-											<fieldset>
-												<label for="password">Create Password</label>
-												<input
-													type="password"
-													id="password"
-													placeholder="Enter Password"
-													bind:value={passwordInput}
-												/>
-											</fieldset>
-										</div>
-										<button class="sign-up">Sign Up</button>
-										{#if controlsEnabled}
-											<span class="with-sep" transition:fade={{ duration: 100 }}
-												>or sign up with</span
-											>
-											<div class="oauth-btns" transition:fade={{ duration: 100 }}>
-												{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
-													<button
-														class="oauth"
-														transition:fade={{ duration: 100 }}
-														animate:flip={{ duration: 250 }}
-													>
-														<div class="inner">
-															<span class="aw-icon-{provider.toLowerCase()}" />
-															<span>{provider}</span>
-														</div>
-													</button>
-												{/each}
-											</div>
-										{/if}
-									</div>
-								{:else if active.product === 'databases'}
-									<div class="DATABASES-phone theme-light">
-										<div class="header">
-											<p class="title">Your tasks</p>
-											<span class="icon-menu" aria-label="menu" />
-										</div>
-
-										<div class="date">Today</div>
-										<div class="tasks">
-											{#each dbTasks as task (task.id)}
-												<div class="task" data-checked={task.checked ? '' : undefined}>
-													<TaskCheckbox bind:checked={task.checked} />
-													<span class="title">Research user needs</span>
-												</div>
-											{/each}
-										</div>
-
-										<button class="add-btn">
-											<span class="aw-icon-plus" />
-										</button>
-									</div>
-								{/if}
-							</Phone>
-						</div>
-					{/if}
-
-					{#if showTable}
-						<div
-							class="box-wrapper"
-							id="products-box"
-							in:fly={{ y: 16 }}
-							out:fly={{ y: 16, duration: 150 }}
-						>
-							<AnimatedBox>
-								<div class="top" slot="top">
-									<p class="title">
-										{#if active.product === 'auth'}
-											Users
-										{:else if active.product === 'databases'}
-											Tasks
-										{/if}
+						<li data-active={isActive ? '' : undefined}>
+							<h3>
+								<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
+								<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
+							</h3>
+							{#if isActive}
+								<div transition:slide>
+									<h4 class="aw-title">{copy.subtitle}</h4>
+									<p>
+										{copy.description}
 									</p>
+									<ul class="features">
+										{#each copy.features as feature}
+											<li>{feature}</li>
+										{/each}
+									</ul>
 								</div>
-								{#if active.product === 'auth'}
-									<div class="pseudo-table">
-										<div class="header">
-											<span>Name</span>
-											<span>Identifier</span>
-										</div>
-										{#each authData as user (user.id)}
-											<div
-												class="row"
-												in:fly={{ duration: 100, x: -16, delay: 100 }}
-												out:fly={{ duration: 100, x: -16 }}
-												animate:flip={{ duration: 150 }}
-											>
-												<div class="u-flex u-cross-center u-gap-12">
-													<div class="avatar is-size-small">{user.avatar}</div>
-													<span class="truncated">{user.name}</span>
-												</div>
-												<span class="truncated">{user.email}</span>
-											</div>
-										{/each}
-									</div>
-								{:else if active.product === 'databases'}
-									<div class="pseudo-table">
-										<div class="header">
-											<span>Document ID</span>
-											<span>Task</span>
-										</div>
-										{#each dbTasks.slice(0, 1) as task (task.id)}
-											<div
-												class="row"
-												in:fly={{ duration: 100, x: -16, delay: 100 }}
-												out:fly={{ duration: 100, x: -16 }}
-												animate:flip={{ duration: 150 }}
-											>
-												<div class="copy-button">
-													<span class="aw-icon-copy" />
-													<span>{task.id}</span>
-												</div>
-												<span class="truncated">{task.title}</span>
-											</div>
-										{/each}
-									</div>
-								{/if}
-							</AnimatedBox>
-						</div>
-					{/if}
+							{/if}
+						</li>
+					{/each}
+				</ul>
+			</div>
 
-					{#if showCode}
-						<div class="code-window" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-							<CodeWindow let:Code>
-								<div>
-									{#if active.product === 'auth'}
-										<Code content={authCode} />
-									{:else if active.product === 'databases'}
-										<Code content={dbCode} />
+			<div class="animated">
+				{#if showPhone}
+					<div class="phone" id="products-phone" transition:fly={{ y: 16, duration: 150 }}>
+						<Phone>
+							{#if active.product === 'auth'}
+								<div class="AUTH-phone theme-light">
+									<p class="title">Create an Account</p>
+									<p class="subtitle">Please enter your details</p>
+									<div class="inputs">
+										<fieldset>
+											<label for="name">Your Name</label>
+											<input
+												type="name"
+												id="name"
+												placeholder="Enter your name"
+												bind:value={nameInput}
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="email">Your Email</label>
+											<input
+												type="email"
+												id="email"
+												placeholder="Enter your email"
+												bind:value={emailInput}
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="password">Create Password</label>
+											<input
+												type="password"
+												id="password"
+												placeholder="Enter Password"
+												bind:value={passwordInput}
+											/>
+										</fieldset>
+									</div>
+									<button class="sign-up">Sign Up</button>
+									{#if controlsEnabled}
+										<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span
+										>
+										<div class="oauth-btns" transition:fade={{ duration: 100 }}>
+											{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
+												<button
+													class="oauth"
+													transition:fade={{ duration: 100 }}
+													animate:flip={{ duration: 250 }}
+												>
+													<div class="inner">
+														<span class="aw-icon-{provider.toLowerCase()}" />
+														<span>{provider}</span>
+													</div>
+												</button>
+											{/each}
+										</div>
 									{/if}
 								</div>
-							</CodeWindow>
-						</div>
-					{/if}
+							{:else if active.product === 'databases'}
+								<div class="DATABASES-phone theme-light">
+									<div class="header">
+										<p class="title">Your tasks</p>
+										<span class="icon-menu" aria-label="menu" />
+									</div>
 
-					{#if showControls}
-						<div class="AUTH-controls" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-							{#each objectKeys(controls) as provider, i}
-								{@const isLast = i === objectKeys(controls).length - 1}
-								<div>
-									<span class="aw-icon-{provider.toLowerCase()}" />
-									<span>{provider}</span>
-									<Switch bind:checked={controls[provider]} />
+									<div class="date">Today</div>
+									<div class="tasks">
+										{#each dbTasks as task (task.id)}
+											<div class="task" data-checked={task.checked ? '' : undefined}>
+												<TaskCheckbox bind:checked={task.checked} />
+												<span class="title">Research user needs</span>
+											</div>
+										{/each}
+									</div>
+
+									<button class="add-btn">
+										<span class="aw-icon-plus" />
+									</button>
 								</div>
-								{#if !isLast}
-									<div class="sep" />
+							{/if}
+						</Phone>
+					</div>
+				{/if}
+
+				{#if showTable}
+					<div
+						class="box-wrapper"
+						id="products-box"
+						in:fly={{ y: 16 }}
+						out:fly={{ y: 16, duration: 150 }}
+					>
+						<AnimatedBox>
+							<div class="top" slot="top">
+								<p class="title">
+									{#if active.product === 'auth'}
+										Users
+									{:else if active.product === 'databases'}
+										Tasks
+									{/if}
+								</p>
+							</div>
+							{#if active.product === 'auth'}
+								<div class="pseudo-table">
+									<div class="header">
+										<span class="aw-eyebrow">Name</span>
+										<span class="aw-eyebrow">Identifier</span>
+									</div>
+									{#each authData as user (user.id)}
+										<div
+											class="row"
+											in:fly={{ duration: 100, x: -16, delay: 100 }}
+											out:fly={{ duration: 100, x: -16 }}
+											animate:flip={{ duration: 150 }}
+										>
+											<div class="u-flex u-cross-center u-gap-12">
+												<div class="avatar is-size-small">{user.avatar}</div>
+												<span class="truncated">{user.name}</span>
+											</div>
+											<span class="truncated">{user.email}</span>
+										</div>
+									{/each}
+								</div>
+							{:else if active.product === 'databases'}
+								<div class="pseudo-table">
+									<div class="header">
+										<span class="aw-eyebrow">Document ID</span>
+										<span class="aw-eyebrow">Task</span>
+									</div>
+									{#each dbTasks.slice(0, 1) as task (task.id)}
+										<div
+											class="row"
+											in:fly={{ duration: 100, x: -16, delay: 100 }}
+											out:fly={{ duration: 100, x: -16 }}
+											animate:flip={{ duration: 150 }}
+										>
+											<div class="copy-button">
+												<span class="aw-icon-copy" />
+												<span>{task.id}</span>
+											</div>
+											<span class="truncated">{task.title}</span>
+										</div>
+									{/each}
+								</div>
+							{/if}
+						</AnimatedBox>
+					</div>
+				{/if}
+
+				{#if showCode}
+					<div class="code-window" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
+						<CodeWindow let:Code>
+							<div>
+								{#if active.product === 'auth'}
+									<Code content={authCode} />
+								{:else if active.product === 'databases'}
+									<Code content={dbCode} />
 								{/if}
-							{/each}
-						</div>
-					{/if}
-				</div>
+							</div>
+						</CodeWindow>
+					</div>
+				{/if}
+
+				{#if showControls}
+					<div class="AUTH-controls" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
+						{#each objectKeys(controls) as provider, i}
+							{@const isLast = i === objectKeys(controls).length - 1}
+							<div>
+								<span class="aw-icon-{provider.toLowerCase()}" />
+								<span>{provider}</span>
+								<Switch bind:checked={controls[provider]} />
+							</div>
+							{#if !isLast}
+								<div class="sep" />
+							{/if}
+						{/each}
+					</div>
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</div>
 </div>
 
@@ -1001,10 +1002,11 @@ const result = databases.createDocument(
 
 		text-align: center;
 
-		> .text {
+		> .main-text {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			// min-height: 15rem;
 
 			h2 {
 				white-space: nowrap;
@@ -1024,6 +1026,14 @@ const result = databases.createDocument(
 		}
 	}
 
+	.products:not([data-active]) {
+		opacity: 0;
+	}
+
+	.products[data-active] {
+		opacity: 1;
+	}
+
 	.products {
 		background: var(--debug-bg, hsl(250 50 50 / 0.25));
 
@@ -1031,6 +1041,8 @@ const result = databases.createDocument(
 		justify-content: space-between;
 		width: 100%;
 		max-width: 77.75rem;
+
+		transition: 200ms ease;
 
 		.text {
 			background: var(--debug-bg, hsl(200 50 50 / 0.25));
@@ -1156,14 +1168,9 @@ const result = databases.createDocument(
 		.header {
 			border-bottom: 1px solid hsl(var(--aw-color-greyscale-700));
 			color: var(--greyscale-400, #adadb1);
-			font-family: Inter;
-			font-size: 0.875rem;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 1.25rem; /* 142.857% */
+
 			text-transform: uppercase;
 			padding: 1rem;
-			padding-block-end: 0.75rem;
 		}
 
 		.row {
