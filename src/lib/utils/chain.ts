@@ -26,6 +26,90 @@ interface ChainFn {
 		fn3: (args: Args<B>) => C,
 		fn4: (args: Args<C>) => D
 	): Chain;
+	<A, B, C, D, E>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E
+	): Chain;
+	<A, B, C, D, E, F>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F
+	): Chain;
+	<A, B, C, D, E, F, G>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G
+	): Chain;
+	<A, B, C, D, E, F, G, H>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G,
+		fn8: (args: Args<G>) => H
+	): Chain;
+	<A, B, C, D, E, F, G, H, I>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G,
+		fn8: (args: Args<G>) => H,
+		fn9: (args: Args<H>) => I
+	): Chain;
+	<A, B, C, D, E, F, G, H, I, J>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G,
+		fn8: (args: Args<G>) => H,
+		fn9: (args: Args<H>) => I,
+		fn10: (args: Args<I>) => J
+	): Chain;
+	<A, B, C, D, E, F, G, H, I, J, K>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G,
+		fn8: (args: Args<G>) => H,
+		fn9: (args: Args<H>) => I,
+		fn10: (args: Args<I>) => J,
+		fn11: (args: Args<J>) => K
+	): Chain;
+	<A, B, C, D, E, F, G, H, I, J, K, L>(
+		fn1: (args: Args<undefined>) => A,
+		fn2: (args: Args<A>) => B,
+		fn3: (args: Args<B>) => C,
+		fn4: (args: Args<C>) => D,
+		fn5: (args: Args<D>) => E,
+		fn6: (args: Args<E>) => F,
+		fn7: (args: Args<F>) => G,
+		fn8: (args: Args<G>) => H,
+		fn9: (args: Args<H>) => I,
+		fn10: (args: Args<I>) => J,
+		fn11: (args: Args<J>) => K,
+		fn12: (args: Args<K>) => L
+	): Chain;
 	// So on...
 }
 
