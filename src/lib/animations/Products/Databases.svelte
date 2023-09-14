@@ -1,72 +1,10 @@
 <script lang="ts">
-	import { toScale, type Scale } from '$lib/utils/toScale';
-
 	import CodeWindow from '$lib/animations/CodeWindow/CodeWindow.svelte';
 	import Phone from '$lib/animations/Phone.svelte';
-	import { Switch } from '$lib/components';
 	import { flip } from '$lib/utils/flip.js';
-	import { objectKeys } from '$lib/utils/object';
-	import { fade, fly, slide } from 'svelte/transition';
-	import { createProgressSequence, safeAnimate, scroll, type ProgressSequence } from '..';
-	import ScrollIndicator from '../scroll-indicator.svelte';
+	import { fly } from 'svelte/transition';
 	import AnimatedBox from './AnimatedBox.svelte';
 	import TaskCheckbox from './TaskCheckbox.svelte';
-	import { animate } from 'motion';
-	import { tick } from 'svelte';
-	import { chain, type Chain } from '$lib/utils/chain';
-	import { noop } from '$lib/utils/noop';
-	import Auth from './Auth.svelte';
-	import Databases from './Databases.svelte';
-
-	/* Utils */
-	function write(text: string, cb: (v: string) => void, duration = 500) {
-		const step = duration / text.length;
-		let i = 0;
-		return new Promise((resolve) => {
-			const interval = setInterval(() => {
-				cb(text.slice(0, ++i));
-				if (i === text.length) {
-					clearInterval(interval);
-					resolve(undefined);
-				}
-			}, step);
-		});
-	}
-
-	function sleep(duration: number) {
-		return new Promise((resolve) => {
-			setTimeout(resolve, duration);
-		});
-	}
-
-	function getInitials(name: string) {
-		return name
-			.split(' ')
-			.map((word) => word?.[0]?.toUpperCase() ?? '')
-			.join('')
-			.slice(0, 2);
-	}
-
-	/* Basic Animation setup */
-	let scrollInfo = {
-		percentage: 0,
-		traversed: 0,
-		remaning: Infinity
-	};
-
-	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
-	type Product = (typeof products)[number];
-
-	const animScale: Scale = [0.2, 0.95];
-	const productsScales = products.map((_, idx) => {
-		const diff = animScale[1] - animScale[0];
-		const step = diff / products.length;
-		return [animScale[0] + step * idx, animScale[0] + step * (idx + 1)] as Scale;
-	});
-
-	/* Animation constants */
-	const authEmail = 'walterobrian@example.com';
-	const authPassword = 'password';
 
 	/* Animation variables */
 	let elements = {
@@ -74,23 +12,6 @@
 		box: undefined as HTMLElement | undefined,
 		code: undefined as HTMLElement | undefined,
 		controls: undefined as HTMLElement | undefined
-	};
-
-	const areValuesDefined = (obj: Record<string, unknown>): obj is Record<string, unknown> => {
-		return Object.values(obj).every((v) => v !== undefined);
-	};
-
-	// Auth
-	let nameInput = "Walter O'Brian";
-	let emailInput = '';
-	let passwordInput = '';
-	let authSubmitted = false;
-	let showControls = false;
-	let controls = {
-		GitHub: true,
-		Google: false,
-		Apple: false,
-		Microsoft: false
 	};
 
 	// Database
@@ -118,324 +39,68 @@ const result = databases.createDocument(
 		'tags': ['UX', 'design'],  
 	}
 );`.trim();
-
-	/* Animation functions */
-	const animationes: Record<Product, Chain> = {
-		auth: chain(
-			async ({ cancel }) => {
-				await tick();
-				const { phone, box, code, controls } = elements;
-				if (!phone || !box || !code || !controls) {
-					cancel();
-				}
-
-				return {
-					phone: phone as HTMLElement,
-					box: box as HTMLElement,
-					code: code as HTMLElement,
-					controls: controls as HTMLElement
-				};
-			},
-			async ({ returned: elements }) => {
-				// Reset
-				await animate(elements.phone, { x: 0, y: 0 }, { duration: 0 }).finished;
-				await animate(elements.box, { x: 260, y: 32, opacity: 0 }, { duration: 0 }).finished;
-				await animate(elements.code, { x: 200, y: 460, opacity: 0 }, { duration: 0 }).finished;
-				await animate(elements.controls, { x: 420, y: 0, opacity: 0 }, { duration: 0 }).finished;
-				authSubmitted = false;
-				showControls = false;
-				emailInput = '';
-				passwordInput = '';
-
-				// Start
-				await animate(
-					elements.box,
-					{ x: [260, 260], y: [48, 32], opacity: 1 },
-					{ duration: 0.25, delay: 1 }
-				).finished;
-
-				await sleep(150);
-
-				return elements;
-			},
-			async ({ returned: elements }) => {
-				await write(authEmail, (v) => (emailInput = v), 300);
-				await sleep(150);
-
-				return elements;
-			},
-			async ({ returned: elements }) => {
-				await write(authPassword, (v) => (passwordInput = v), 300);
-				await sleep(500);
-
-				return elements;
-			},
-			async ({ returned: elements }) => {
-				animate(
-					elements.code,
-					{ x: [200, 200], y: [460 + 16, 460], opacity: 1 },
-					{ duration: 0.25 }
-				);
-
-				await sleep(500);
-
-				return elements;
-			},
-			async ({ returned: elements }) => {
-				authSubmitted = true;
-
-				await sleep(1000);
-
-				return elements;
-			},
-			async ({ returned: elements }) => {
-				showControls = true;
-				animate(elements.controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
-			}
-		),
-		databases: chain(noop),
-		storage: chain(noop),
-		functions: chain(noop),
-		realtime: chain(noop)
-	};
-
-	$: active = (function getActiveInfo() {
-		let activeIdx = productsScales.findIndex(([min, max], i) => {
-			return scrollInfo.percentage >= min && scrollInfo.percentage < max;
-		});
-
-		const product = products[activeIdx] as Product | undefined;
-		const scale = productsScales[activeIdx] as Scale | undefined;
-		const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
-		const animatione = product ? animationes[product] : undefined;
-
-		return {
-			product,
-			scale,
-			percent,
-			animatione
-		};
-	})();
-
-	// eslint-disable-next-line @typescript-eslint/ban-types
-	// let lastAnim: Chain | undefined = undefined;
-	// $: {
-	// 	if (lastAnim !== active.animatione) {
-	// 		Object.values(animationes).forEach(({ cancel }) => {
-	// 			cancel();
-	// 		});
-
-	// 		active.animatione?.execute();
-	// 		lastAnim = active.animatione;
-	// 	}
-	// }
-
-	/* Reactive variables */
-	$: authCode = `const result = account.create(\n\tID.unique(),\n\t'${emailInput}',\n\t'${passwordInput}',\n\t"${nameInput}"\n);`;
-
-	type AuthEntry = {
-		avatar: string;
-		name: string;
-		email: string;
-		id: number;
-	};
-	$: authData = [
-		authSubmitted
-			? {
-					avatar: getInitials(nameInput),
-					name: nameInput,
-					email: emailInput,
-					id: 0
-			  }
-			: undefined,
-		{
-			avatar: 'BD',
-			name: 'Benjamin Davis',
-			email: 'benjamin.davis@example.com',
-			id: 1
-		},
-		{
-			avatar: 'OS',
-			name: 'Olivia Smith',
-			email: 'olivia.smith@example.com',
-			id: 2
-		},
-		{
-			avatar: 'EW',
-			name: 'Ethan Wilson',
-			email: 'ethan.wilson@example.com',
-			id: 3
-		}
-	].filter(Boolean) as AuthEntry[];
-
-	$: controlsEnabled = showControls && Object.values(controls).some(Boolean);
-
-	/* Products infos */
-	type ProductInfo = {
-		icon: {
-			active: string;
-			inactive: string;
-		};
-		title: string;
-		subtitle: string;
-		description: string;
-		features: string[];
-	};
-	const infos: Record<Product, ProductInfo> = {
-		auth: {
-			icon: {
-				active: './images/icons/illustrated/auth.svg',
-				inactive: './images/icons/illustrated/auth-gray.svg'
-			},
-			title: 'Auth',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		databases: {
-			icon: {
-				active: './images/icons/illustrated/databases.svg',
-				inactive: './images/icons/illustrated/databases-gray.svg'
-			},
-			title: 'Databases',
-			subtitle: 'Store, query and manage your data',
-			description:
-				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
-			features: ['Relationships are a big deal']
-		},
-		storage: {
-			icon: {
-				active: './images/icons/illustrated/storage.svg',
-				inactive: './images/icons/illustrated/storage-gray.svg'
-			},
-			title: 'Storage',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		functions: {
-			icon: {
-				active: './images/icons/illustrated/functions.svg',
-				inactive: './images/icons/illustrated/functions-gray.svg'
-			},
-			title: 'Functions',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		realtime: {
-			icon: {
-				active: './images/icons/illustrated/realtime.svg',
-				inactive: './images/icons/illustrated/realtime-gray.svg'
-			},
-			title: 'Realtime',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		}
-	};
 </script>
 
-<div
-	id="products"
-	use:scroll
-	on:aw-scroll={({ detail }) => {
-		scrollInfo = detail;
-	}}
->
-	<div class="sticky-wrapper">
-		<div class="debug">
-			<pre>{JSON.stringify({ active })}</pre>
-			<pre>{JSON.stringify({ scrollInfo })}</pre>
+<div class="phone" bind:this={elements.phone}>
+	<Phone>
+		<div class="DATABASES-phone theme-light">
+			<div class="header">
+				<p class="title">Your tasks</p>
+				<span class="icon-menu" aria-label="menu" />
+			</div>
+
+			<div class="date">Today</div>
+			<div class="tasks">
+				{#each dbTasks as task (task.id)}
+					<div class="task" data-checked={task.checked ? '' : undefined}>
+						<TaskCheckbox bind:checked={task.checked} />
+						<span class="title">Research user needs</span>
+					</div>
+				{/each}
+			</div>
+
+			<button class="add-btn">
+				<span class="aw-icon-plus" />
+			</button>
+		</div>
+	</Phone>
+</div>
+
+<div class="box-wrapper" bind:this={elements.box}>
+	<AnimatedBox>
+		<div class="top" slot="top">
+			<p class="title">Tasks</p>
 		</div>
 
-		{#if scrollInfo.percentage < 0.2}
-			<div
-				class="main-text"
-				out:fly={{ duration: 250, y: -300 }}
-				in:fly={{ duration: 250, delay: 250, y: -300 }}
-			>
-				{#if scrollInfo.percentage > 0}
-					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
-
-					<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16, delay: 250 }}>
-						Your backend, minus the hassle
-					</h2>
-					<p
-						class="aw-description aw-u-max-width-700 u-margin-inline-auto"
-						transition:fly={{
-							y: 16,
-							delay: 400
-						}}
-					>
-						Build secure and scalable applications faster with Appwrite's core backend products and
-						spend more time building the best products.
-					</p>
-				{/if}
+		<div class="pseudo-table">
+			<div class="header">
+				<span class="aw-eyebrow">Document ID</span>
+				<span class="aw-eyebrow">Task</span>
 			</div>
-		{:else}
-			<div
-				class="products"
-				out:fly={{ duration: 250, y: 300 }}
-				in:fly={{ duration: 500, delay: 250, y: 300 }}
-				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
-			>
-				<div class="text">
-					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
-					<ul class="descriptions">
-						{#each products as product}
-							{@const copy = infos[product]}
-							{@const isActive = active.product === product}
-
-							<li data-active={isActive ? '' : undefined}>
-								<h3>
-									<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
-									<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
-								</h3>
-								{#if isActive}
-									<div transition:slide>
-										<h4 class="aw-title">{copy.subtitle}</h4>
-										<p>
-											{copy.description}
-										</p>
-										<ul class="features">
-											{#each copy.features as feature}
-												<li>{feature}</li>
-											{/each}
-										</ul>
-									</div>
-								{/if}
-							</li>
-						{/each}
-					</ul>
+			{#each dbTasks.slice(0, 1) as task (task.id)}
+				<div
+					class="row"
+					in:fly={{ duration: 100, x: -16, delay: 100 }}
+					out:fly={{ duration: 100, x: -16 }}
+					animate:flip={{ duration: 150 }}
+				>
+					<div class="copy-button">
+						<span class="aw-icon-copy" />
+						<span>{task.id}</span>
+					</div>
+					<span class="truncated">{task.title}</span>
 				</div>
+			{/each}
+		</div>
+	</AnimatedBox>
+</div>
 
-				<div class="animated">
-					{#if active.product === 'auth'}
-						<Auth />
-					{:else if active.product === 'databases'}
-						<Databases />
-					{/if}
-				</div>
-			</div>
-		{/if}
-	</div>
+<div class="code-window" bind:this={elements.code}>
+	<CodeWindow let:Code>
+		<div>
+			<Code content={dbCode} />
+		</div>
+	</CodeWindow>
 </div>
 
 <style lang="scss">
