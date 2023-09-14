@@ -4,14 +4,17 @@
 	import CodeWindow from '$lib/animations/CodeWindow/CodeWindow.svelte';
 	import Phone from '$lib/animations/Phone.svelte';
 	import { Switch } from '$lib/components';
-	import { objectKeys } from '$lib/utils/object';
 	import { flip } from '$lib/utils/flip.js';
+	import { objectKeys } from '$lib/utils/object';
 	import { fade, fly, slide } from 'svelte/transition';
-	import { createProgressSequence, scroll, type ProgressSequence, safeAnimate } from '..';
-	import AnimatedBox from './AnimatedBox.svelte';
+	import { createProgressSequence, safeAnimate, scroll, type ProgressSequence } from '..';
 	import ScrollIndicator from '../scroll-indicator.svelte';
-	import { animate } from 'motion';
+	import AnimatedBox from './AnimatedBox.svelte';
 	import TaskCheckbox from './TaskCheckbox.svelte';
+	import { animate } from 'motion';
+	import { tick } from 'svelte';
+	import { chain, type Chain } from '$lib/utils/chain';
+	import { noop } from '$lib/utils/noop';
 
 	/* Utils */
 	function write(text: string, cb: (v: string) => void, duration = 500) {
@@ -52,7 +55,7 @@
 	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
 	type Product = (typeof products)[number];
 
-	const animScale: Scale = [0.1, 0.95];
+	const animScale: Scale = [0.2, 0.95];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -64,9 +67,16 @@
 	const authPassword = 'password';
 
 	/* Animation variables */
-	let showPhone = true;
-	let showCode = false;
-	let showTable = false;
+	let elements = {
+		phone: undefined as HTMLElement | undefined,
+		box: undefined as HTMLElement | undefined,
+		code: undefined as HTMLElement | undefined,
+		controls: undefined as HTMLElement | undefined
+	};
+
+	const areValuesDefined = (obj: Record<string, unknown>): obj is Record<string, unknown> => {
+		return Object.values(obj).every((v) => v !== undefined);
+	};
 
 	// Auth
 	let nameInput = "Walter O'Brian";
@@ -107,157 +117,183 @@ const result = databases.createDocument(
 	}
 );`.trim();
 
-	/* Animation sequences */
-	let animatedBox = false;
+	/* Animation functions */
+	const animationes: Record<Product, Chain> = {
+		auth: chain(
+			async ({ cancel }) => {
+				await tick();
+				const { phone, box, code, controls } = elements;
+				if (!phone || !box || !code || !controls) {
+					cancel();
+				}
 
-	const sequences: Record<Product, ProgressSequence> = {
-		auth: createProgressSequence([
-			{
-				percentage: -0.05,
-				callback() {
-					showPhone = false;
-				}
+				return {
+					phone: phone as HTMLElement,
+					box: box as HTMLElement,
+					code: code as HTMLElement,
+					controls: controls as HTMLElement
+				};
 			},
-			{
-				percentage: 0,
-				callback() {
-					showPhone = true;
-					showTable = false;
-				}
-			},
-			{
-				percentage: 0.15,
-				async callback() {
-					showTable = true;
-				}
-			},
-			{
-				percentage: 0.3,
-				async callback() {
-					showCode = false;
-					if (!emailInput) {
-						await write(authEmail, (v) => (emailInput = v), 150);
-					}
-					if (!passwordInput) {
-						write(authPassword, (v) => (passwordInput = v), 150);
-					}
-				}
-			},
-			{
-				percentage: 0.45,
-				callback() {
-					authSubmitted = false;
-					showCode = true;
-				}
-			},
-			{
-				percentage: 0.6,
-				callback() {
-					showControls = false;
-					authSubmitted = true;
-				}
-			},
-			{
-				percentage: 0.75,
-				callback() {
-					showControls = true;
-				}
-			},
-			{
-				percentage: 0.9,
-				callback() {
-					showControls = true;
-					safeAnimate(
-						'#products-phone',
-						{ x: 0 },
-						{
-							easing: 'ease',
-							duration: 0.25
-						}
-					);
+			async ({ returned: elements }) => {
+				// Reset
+				await animate(elements.phone, { x: 0, y: 0 }, { duration: 0 }).finished;
+				await animate(elements.box, { x: 260, y: 32, opacity: 0 }, { duration: 0 }).finished;
+				await animate(elements.code, { x: 200, y: 460, opacity: 0 }, { duration: 0 }).finished;
+				await animate(elements.controls, { x: 420, y: 0, opacity: 0 }, { duration: 0 }).finished;
+				authSubmitted = false;
+				showControls = false;
+				emailInput = '';
+				passwordInput = '';
 
-					if (animatedBox) {
-						safeAnimate(
-							'#products-box',
-							{ x: 264, y: 32 },
-							{
-								easing: 'ease',
-								duration: 0.25
-							}
-						);
-						animatedBox = false;
-					}
-				}
+				// Start
+				await animate(
+					elements.box,
+					{ x: [260, 260], y: [48, 32], opacity: 1 },
+					{ duration: 0.25, delay: 1 }
+				).finished;
+
+				await sleep(150);
+
+				return elements;
+			},
+			async ({ returned: elements }) => {
+				await write(authEmail, (v) => (emailInput = v), 300);
+				await sleep(150);
+				await write(authPassword, (v) => (passwordInput = v), 300);
+				await sleep(500);
+
+				return elements;
+			},
+			async ({ returned: elements }) => {
+				animate(
+					elements.code,
+					{ x: [200, 200], y: [460 + 16, 460], opacity: 1 },
+					{ duration: 0.25 }
+				);
+
+				await sleep(500);
+
+				// authSubmitted = true;
+
+				// await sleep(1000);
+
+				// showControls = true;
+				// animate(elements.controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
 			}
-		]),
-		databases: createProgressSequence([
-			{
-				percentage: 0,
-				callback() {
-					showPhone = true;
-					showTable = true;
-					showCode = true;
+		),
 
-					showControls = false;
-					safeAnimate(
-						'#products-phone',
-						{ x: 500 },
-						{
-							easing: 'ease',
-							duration: 0.25
-						}
-					);
+		// {
+		// 	percentage: -0.05,
+		// 	callback() {
+		// 		showPhone = false;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0,
+		// 	callback() {
+		// 		showPhone = true;
+		// 		showTable = false;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.15,
+		// 	async callback() {
+		// 		showTable = true;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.3,
+		// 	async callback() {
+		// 		showCode = false;
+		// 		if (!emailInput) {
+		// 			await write(authEmail, (v) => (emailInput = v), 150);
+		// 		}
+		// 		if (!passwordInput) {
+		// 			write(authPassword, (v) => (passwordInput = v), 150);
+		// 		}
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.45,
+		// 	callback() {
+		// 		authSubmitted = false;
+		// 		showCode = true;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.6,
+		// 	callback() {
+		// 		showControls = false;
+		// 		authSubmitted = true;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.75,
+		// 	callback() {
+		// 		showControls = true;
+		// 	}
+		// },
+		// {
+		// 	percentage: 0.9,
+		// 	callback() {
+		// 		showControls = true;
+		// 		safeAnimate(
+		// 			'#products-phone',
+		// 			{ x: 0 },
+		// 			{
+		// 				easing: 'ease',
+		// 				duration: 0.25
+		// 			}
+		// 		);
 
-					safeAnimate(
-						'#products-box',
-						{ x: 0, y: 32 },
-						{
-							easing: 'ease',
-							duration: 0.25
-						}
-					);
-					animatedBox = true;
-				}
-			},
-			{
-				percentage: 0.1,
-				callback() {
-					// no-op
-				}
-			}
-		]),
-		storage: createProgressSequence([]),
-		functions: createProgressSequence([]),
-		realtime: createProgressSequence([])
+		// 		if (animatedBox) {
+		// 			safeAnimate(
+		// 				'#products-box',
+		// 				{ x: 264, y: 32 },
+		// 				{
+		// 					easing: 'ease',
+		// 					duration: 0.25
+		// 				}
+		// 			);
+		// 			animatedBox = false;
+		// 		}
+		// 	}
+		// }
+		databases: chain(noop),
+		storage: chain(noop),
+		functions: chain(noop),
+		realtime: chain(noop)
 	};
 
 	$: active = (function getActiveInfo() {
 		let activeIdx = productsScales.findIndex(([min, max], i) => {
-			if (i === 0 && scrollInfo.percentage < min) return true;
 			return scrollInfo.percentage >= min && scrollInfo.percentage < max;
 		});
-
-		activeIdx = activeIdx === -1 ? products.length - 1 : activeIdx;
 
 		const product = products[activeIdx] as Product | undefined;
 		const scale = productsScales[activeIdx] as Scale | undefined;
 		const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
-		const sequence = product ? sequences[product] : undefined;
+		const animatione = product ? animationes[product] : undefined;
 
 		return {
 			product,
 			scale,
 			percent,
-			sequence
+			animatione
 		};
 	})();
-	$: active.sequence?.(active.percent);
 
+	// eslint-disable-next-line @typescript-eslint/ban-types
+	let lastAnim: Chain | undefined = undefined;
 	$: {
-		Object.values(sequences).forEach((sequence) => {
-			if (sequence === active.sequence) return;
-			sequence.resetLastEventIdx();
-		});
+		if (lastAnim !== active.animatione) {
+			Object.values(animationes).forEach(({ cancel }) => {
+				cancel();
+			});
+
+			active.animatione?.execute();
+			lastAnim = active.animatione;
+		}
 	}
 
 	/* Reactive variables */
@@ -390,12 +426,12 @@ const result = databases.createDocument(
 	}}
 >
 	<div class="sticky-wrapper">
-		<!-- <div class="debug">
+		<div class="debug">
 			<pre>{JSON.stringify({ active })}</pre>
 			<pre>{JSON.stringify({ scrollInfo })}</pre>
-		</div> -->
+		</div>
 
-		{#if scrollInfo.percentage < 0.1}
+		{#if scrollInfo.percentage < 0.2}
 			<div
 				class="main-text"
 				out:fly={{ duration: 250, y: -300 }}
@@ -457,182 +493,168 @@ const result = databases.createDocument(
 				</div>
 
 				<div class="animated">
-					{#if showPhone}
-						<div class="phone" id="products-phone" transition:fly={{ y: 16, duration: 150 }}>
-							<Phone>
-								{#if active.product === 'auth'}
-									<div class="AUTH-phone theme-light">
-										<p class="title">Create an Account</p>
-										<p class="subtitle">Please enter your details</p>
-										<div class="inputs">
-											<fieldset>
-												<label for="name">Your Name</label>
-												<input
-													type="name"
-													id="name"
-													placeholder="Enter your name"
-													bind:value={nameInput}
-												/>
-											</fieldset>
-											<fieldset>
-												<label for="email">Your Email</label>
-												<input
-													type="email"
-													id="email"
-													placeholder="Enter your email"
-													bind:value={emailInput}
-												/>
-											</fieldset>
-											<fieldset>
-												<label for="password">Create Password</label>
-												<input
-													type="password"
-													id="password"
-													placeholder="Enter Password"
-													bind:value={passwordInput}
-												/>
-											</fieldset>
-										</div>
-										<button class="sign-up">Sign Up</button>
-										{#if controlsEnabled}
-											<span class="with-sep" transition:fade={{ duration: 100 }}
-												>or sign up with</span
-											>
-											<div class="oauth-btns" transition:fade={{ duration: 100 }}>
-												{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
-													<button
-														class="oauth"
-														transition:fade={{ duration: 100 }}
-														animate:flip={{ duration: 250 }}
-													>
-														<div class="inner">
-															<span class="aw-icon-{provider.toLowerCase()}" />
-															<span>{provider}</span>
-														</div>
-													</button>
-												{/each}
-											</div>
-										{/if}
+					<div class="phone" bind:this={elements.phone}>
+						<Phone>
+							{#if active.product === 'auth'}
+								<div class="AUTH-phone theme-light">
+									<p class="title">Create an Account</p>
+									<p class="subtitle">Please enter your details</p>
+									<div class="inputs">
+										<fieldset>
+											<label for="name">Your Name</label>
+											<input
+												type="name"
+												id="name"
+												placeholder="Enter your name"
+												bind:value={nameInput}
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="email">Your Email</label>
+											<input
+												type="email"
+												id="email"
+												placeholder="Enter your email"
+												bind:value={emailInput}
+											/>
+										</fieldset>
+										<fieldset>
+											<label for="password">Create Password</label>
+											<input
+												type="password"
+												id="password"
+												placeholder="Enter Password"
+												bind:value={passwordInput}
+											/>
+										</fieldset>
 									</div>
-								{:else if active.product === 'databases'}
-									<div class="DATABASES-phone theme-light">
-										<div class="header">
-											<p class="title">Your tasks</p>
-											<span class="icon-menu" aria-label="menu" />
-										</div>
-
-										<div class="date">Today</div>
-										<div class="tasks">
-											{#each dbTasks as task (task.id)}
-												<div class="task" data-checked={task.checked ? '' : undefined}>
-													<TaskCheckbox bind:checked={task.checked} />
-													<span class="title">Research user needs</span>
-												</div>
+									<button class="sign-up">Sign Up</button>
+									{#if controlsEnabled}
+										<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span
+										>
+										<div class="oauth-btns" transition:fade={{ duration: 100 }}>
+											{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
+												<button
+													class="oauth"
+													transition:fade={{ duration: 100 }}
+													animate:flip={{ duration: 250 }}
+												>
+													<div class="inner">
+														<span class="aw-icon-{provider.toLowerCase()}" />
+														<span>{provider}</span>
+													</div>
+												</button>
 											{/each}
 										</div>
-
-										<button class="add-btn">
-											<span class="aw-icon-plus" />
-										</button>
-									</div>
-								{/if}
-							</Phone>
-						</div>
-					{/if}
-
-					{#if showTable}
-						<div
-							class="box-wrapper"
-							id="products-box"
-							in:fly={{ y: 16 }}
-							out:fly={{ y: 16, duration: 150 }}
-						>
-							<AnimatedBox>
-								<div class="top" slot="top">
-									<p class="title">
-										{#if active.product === 'auth'}
-											Users
-										{:else if active.product === 'databases'}
-											Tasks
-										{/if}
-									</p>
-								</div>
-								{#if active.product === 'auth'}
-									<div class="pseudo-table">
-										<div class="header">
-											<span class="aw-eyebrow">Name</span>
-											<span class="aw-eyebrow">Identifier</span>
-										</div>
-										{#each authData as user (user.id)}
-											<div
-												class="row"
-												in:fly={{ duration: 100, x: -16, delay: 100 }}
-												out:fly={{ duration: 100, x: -16 }}
-												animate:flip={{ duration: 150 }}
-											>
-												<div class="u-flex u-cross-center u-gap-12">
-													<div class="avatar is-size-small">{user.avatar}</div>
-													<span class="truncated">{user.name}</span>
-												</div>
-												<span class="truncated">{user.email}</span>
-											</div>
-										{/each}
-									</div>
-								{:else if active.product === 'databases'}
-									<div class="pseudo-table">
-										<div class="header">
-											<span class="aw-eyebrow">Document ID</span>
-											<span class="aw-eyebrow">Task</span>
-										</div>
-										{#each dbTasks.slice(0, 1) as task (task.id)}
-											<div
-												class="row"
-												in:fly={{ duration: 100, x: -16, delay: 100 }}
-												out:fly={{ duration: 100, x: -16 }}
-												animate:flip={{ duration: 150 }}
-											>
-												<div class="copy-button">
-													<span class="aw-icon-copy" />
-													<span>{task.id}</span>
-												</div>
-												<span class="truncated">{task.title}</span>
-											</div>
-										{/each}
-									</div>
-								{/if}
-							</AnimatedBox>
-						</div>
-					{/if}
-
-					{#if showCode}
-						<div class="code-window" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-							<CodeWindow let:Code>
-								<div>
-									{#if active.product === 'auth'}
-										<Code content={authCode} />
-									{:else if active.product === 'databases'}
-										<Code content={dbCode} />
 									{/if}
 								</div>
-							</CodeWindow>
-						</div>
-					{/if}
+							{:else if active.product === 'databases'}
+								<div class="DATABASES-phone theme-light">
+									<div class="header">
+										<p class="title">Your tasks</p>
+										<span class="icon-menu" aria-label="menu" />
+									</div>
 
-					{#if showControls}
-						<div class="AUTH-controls" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-							{#each objectKeys(controls) as provider, i}
-								{@const isLast = i === objectKeys(controls).length - 1}
-								<div>
-									<span class="aw-icon-{provider.toLowerCase()}" />
-									<span>{provider}</span>
-									<Switch bind:checked={controls[provider]} />
+									<div class="date">Today</div>
+									<div class="tasks">
+										{#each dbTasks as task (task.id)}
+											<div class="task" data-checked={task.checked ? '' : undefined}>
+												<TaskCheckbox bind:checked={task.checked} />
+												<span class="title">Research user needs</span>
+											</div>
+										{/each}
+									</div>
+
+									<button class="add-btn">
+										<span class="aw-icon-plus" />
+									</button>
 								</div>
-								{#if !isLast}
-									<div class="sep" />
+							{/if}
+						</Phone>
+					</div>
+
+					<div class="box-wrapper" bind:this={elements.box}>
+						<AnimatedBox>
+							<div class="top" slot="top">
+								<p class="title">
+									{#if active.product === 'auth'}
+										Users
+									{:else if active.product === 'databases'}
+										Tasks
+									{/if}
+								</p>
+							</div>
+							{#if active.product === 'auth'}
+								<div class="pseudo-table">
+									<div class="header">
+										<span class="aw-eyebrow">Name</span>
+										<span class="aw-eyebrow">Identifier</span>
+									</div>
+									{#each authData as user (user.id)}
+										<div
+											class="row"
+											in:fly={{ duration: 100, x: -16, delay: 100 }}
+											out:fly={{ duration: 100, x: -16 }}
+											animate:flip={{ duration: 150 }}
+										>
+											<div class="u-flex u-cross-center u-gap-12">
+												<div class="avatar is-size-small">{user.avatar}</div>
+												<span class="truncated">{user.name}</span>
+											</div>
+											<span class="truncated">{user.email}</span>
+										</div>
+									{/each}
+								</div>
+							{:else if active.product === 'databases'}
+								<div class="pseudo-table">
+									<div class="header">
+										<span class="aw-eyebrow">Document ID</span>
+										<span class="aw-eyebrow">Task</span>
+									</div>
+									{#each dbTasks.slice(0, 1) as task (task.id)}
+										<div
+											class="row"
+											in:fly={{ duration: 100, x: -16, delay: 100 }}
+											out:fly={{ duration: 100, x: -16 }}
+											animate:flip={{ duration: 150 }}
+										>
+											<div class="copy-button">
+												<span class="aw-icon-copy" />
+												<span>{task.id}</span>
+											</div>
+											<span class="truncated">{task.title}</span>
+										</div>
+									{/each}
+								</div>
+							{/if}
+						</AnimatedBox>
+					</div>
+
+					<div class="code-window" bind:this={elements.code}>
+						<CodeWindow let:Code>
+							<div>
+								{#if active.product === 'auth'}
+									<Code content={authCode} />
+								{:else if active.product === 'databases'}
+									<Code content={dbCode} />
 								{/if}
-							{/each}
-						</div>
-					{/if}
+							</div>
+						</CodeWindow>
+					</div>
+
+					<div class="AUTH-controls" bind:this={elements.controls}>
+						{#each objectKeys(controls) as provider, i}
+							{@const isLast = i === objectKeys(controls).length - 1}
+							<div>
+								<span class="aw-icon-{provider.toLowerCase()}" />
+								<span>{provider}</span>
+								<Switch bind:checked={controls[provider]} />
+							</div>
+							{#if !isLast}
+								<div class="sep" />
+							{/if}
+						{/each}
+					</div>
 				</div>
 			</div>
 		{/if}
@@ -823,7 +845,7 @@ const result = databases.createDocument(
 
 		position: absolute;
 		top: 0;
-		right: 2rem;
+		left: 0;
 		z-index: 30;
 
 		width: 12.5rem;
@@ -973,7 +995,8 @@ const result = databases.createDocument(
 
 	/* General */
 	#products {
-		height: 20000px;
+		min-height: 500vh;
+		height: 5000px;
 		position: relative;
 
 		--debug-bg: transparent;
@@ -1148,8 +1171,8 @@ const result = databases.createDocument(
 		.code-window {
 			position: absolute;
 			z-index: var(--z-above-phone);
-			bottom: 0;
-			left: 12rem;
+			top: 0;
+			left: 0;
 		}
 	}
 
