@@ -390,244 +390,252 @@ const result = databases.createDocument(
 	}}
 >
 	<div class="sticky-wrapper">
-		<div class="debug">
-			<pre>{JSON.stringify({ ...active })}</pre>
-		</div>
-		<div class="main-text">
-			{#if scrollInfo.percentage > 0}
-				<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
-			{/if}
-			{#if scrollInfo.percentage > 0.025}
-				<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16 }}>
-					Your backend, minus the hassle
-				</h2>
-			{/if}
-			{#if scrollInfo.percentage > 0.075}
-				<p
-					class="aw-description aw-u-max-width-700 u-margin-inline-auto"
-					transition:fly={{
-						y: 16
-					}}
-				>
-					Build secure and scalable applications faster with Appwrite's core backend products and
-					spend more time building the best products.
-				</p>
-			{/if}
-		</div>
+		<!-- <div class="debug">
+			<pre>{JSON.stringify({ active })}</pre>
+			<pre>{JSON.stringify({ scrollInfo })}</pre>
+		</div> -->
 
-		<div
-			class="products"
-			transition:fly={{ y: 16 }}
-			data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
-		>
-			<div class="text">
-				<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
-				<ul class="descriptions">
-					{#each products as product}
-						{@const copy = infos[product]}
-						{@const isActive = active.product === product}
+		{#if scrollInfo.percentage < 0.1}
+			<div
+				class="main-text"
+				out:fly={{ duration: 250, y: -300 }}
+				in:fly={{ duration: 250, delay: 250, y: -300 }}
+			>
+				{#if scrollInfo.percentage > 0}
+					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
-						<li data-active={isActive ? '' : undefined}>
-							<h3>
-								<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
-								<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
-							</h3>
-							{#if isActive}
-								<div transition:slide>
-									<h4 class="aw-title">{copy.subtitle}</h4>
-									<p>
-										{copy.description}
-									</p>
-									<ul class="features">
-										{#each copy.features as feature}
-											<li>{feature}</li>
-										{/each}
-									</ul>
-								</div>
-							{/if}
-						</li>
-					{/each}
-				</ul>
+					<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16, delay: 250 }}>
+						Your backend, minus the hassle
+					</h2>
+					<p
+						class="aw-description aw-u-max-width-700 u-margin-inline-auto"
+						transition:fly={{
+							y: 16,
+							delay: 400
+						}}
+					>
+						Build secure and scalable applications faster with Appwrite's core backend products and
+						spend more time building the best products.
+					</p>
+				{/if}
 			</div>
+		{:else}
+			<div
+				class="products"
+				out:fly={{ duration: 250, y: 300 }}
+				in:fly={{ duration: 500, delay: 250, y: 300 }}
+				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
+			>
+				<div class="text">
+					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
+					<ul class="descriptions">
+						{#each products as product}
+							{@const copy = infos[product]}
+							{@const isActive = active.product === product}
 
-			<div class="animated">
-				{#if showPhone}
-					<div class="phone" id="products-phone" transition:fly={{ y: 16, duration: 150 }}>
-						<Phone>
-							{#if active.product === 'auth'}
-								<div class="AUTH-phone theme-light">
-									<p class="title">Create an Account</p>
-									<p class="subtitle">Please enter your details</p>
-									<div class="inputs">
-										<fieldset>
-											<label for="name">Your Name</label>
-											<input
-												type="name"
-												id="name"
-												placeholder="Enter your name"
-												bind:value={nameInput}
-											/>
-										</fieldset>
-										<fieldset>
-											<label for="email">Your Email</label>
-											<input
-												type="email"
-												id="email"
-												placeholder="Enter your email"
-												bind:value={emailInput}
-											/>
-										</fieldset>
-										<fieldset>
-											<label for="password">Create Password</label>
-											<input
-												type="password"
-												id="password"
-												placeholder="Enter Password"
-												bind:value={passwordInput}
-											/>
-										</fieldset>
+							<li data-active={isActive ? '' : undefined}>
+								<h3>
+									<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
+									<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
+								</h3>
+								{#if isActive}
+									<div transition:slide>
+										<h4 class="aw-title">{copy.subtitle}</h4>
+										<p>
+											{copy.description}
+										</p>
+										<ul class="features">
+											{#each copy.features as feature}
+												<li>{feature}</li>
+											{/each}
+										</ul>
 									</div>
-									<button class="sign-up">Sign Up</button>
-									{#if controlsEnabled}
-										<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span
-										>
-										<div class="oauth-btns" transition:fade={{ duration: 100 }}>
-											{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
-												<button
-													class="oauth"
-													transition:fade={{ duration: 100 }}
-													animate:flip={{ duration: 250 }}
-												>
-													<div class="inner">
-														<span class="aw-icon-{provider.toLowerCase()}" />
-														<span>{provider}</span>
-													</div>
-												</button>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				</div>
+
+				<div class="animated">
+					{#if showPhone}
+						<div class="phone" id="products-phone" transition:fly={{ y: 16, duration: 150 }}>
+							<Phone>
+								{#if active.product === 'auth'}
+									<div class="AUTH-phone theme-light">
+										<p class="title">Create an Account</p>
+										<p class="subtitle">Please enter your details</p>
+										<div class="inputs">
+											<fieldset>
+												<label for="name">Your Name</label>
+												<input
+													type="name"
+													id="name"
+													placeholder="Enter your name"
+													bind:value={nameInput}
+												/>
+											</fieldset>
+											<fieldset>
+												<label for="email">Your Email</label>
+												<input
+													type="email"
+													id="email"
+													placeholder="Enter your email"
+													bind:value={emailInput}
+												/>
+											</fieldset>
+											<fieldset>
+												<label for="password">Create Password</label>
+												<input
+													type="password"
+													id="password"
+													placeholder="Enter Password"
+													bind:value={passwordInput}
+												/>
+											</fieldset>
+										</div>
+										<button class="sign-up">Sign Up</button>
+										{#if controlsEnabled}
+											<span class="with-sep" transition:fade={{ duration: 100 }}
+												>or sign up with</span
+											>
+											<div class="oauth-btns" transition:fade={{ duration: 100 }}>
+												{#each objectKeys(controls).filter((p) => controls[p]) as provider (provider)}
+													<button
+														class="oauth"
+														transition:fade={{ duration: 100 }}
+														animate:flip={{ duration: 250 }}
+													>
+														<div class="inner">
+															<span class="aw-icon-{provider.toLowerCase()}" />
+															<span>{provider}</span>
+														</div>
+													</button>
+												{/each}
+											</div>
+										{/if}
+									</div>
+								{:else if active.product === 'databases'}
+									<div class="DATABASES-phone theme-light">
+										<div class="header">
+											<p class="title">Your tasks</p>
+											<span class="icon-menu" aria-label="menu" />
+										</div>
+
+										<div class="date">Today</div>
+										<div class="tasks">
+											{#each dbTasks as task (task.id)}
+												<div class="task" data-checked={task.checked ? '' : undefined}>
+													<TaskCheckbox bind:checked={task.checked} />
+													<span class="title">Research user needs</span>
+												</div>
 											{/each}
 										</div>
-									{/if}
-								</div>
-							{:else if active.product === 'databases'}
-								<div class="DATABASES-phone theme-light">
-									<div class="header">
-										<p class="title">Your tasks</p>
-										<span class="icon-menu" aria-label="menu" />
-									</div>
 
-									<div class="date">Today</div>
-									<div class="tasks">
-										{#each dbTasks as task (task.id)}
-											<div class="task" data-checked={task.checked ? '' : undefined}>
-												<TaskCheckbox bind:checked={task.checked} />
-												<span class="title">Research user needs</span>
+										<button class="add-btn">
+											<span class="aw-icon-plus" />
+										</button>
+									</div>
+								{/if}
+							</Phone>
+						</div>
+					{/if}
+
+					{#if showTable}
+						<div
+							class="box-wrapper"
+							id="products-box"
+							in:fly={{ y: 16 }}
+							out:fly={{ y: 16, duration: 150 }}
+						>
+							<AnimatedBox>
+								<div class="top" slot="top">
+									<p class="title">
+										{#if active.product === 'auth'}
+											Users
+										{:else if active.product === 'databases'}
+											Tasks
+										{/if}
+									</p>
+								</div>
+								{#if active.product === 'auth'}
+									<div class="pseudo-table">
+										<div class="header">
+											<span class="aw-eyebrow">Name</span>
+											<span class="aw-eyebrow">Identifier</span>
+										</div>
+										{#each authData as user (user.id)}
+											<div
+												class="row"
+												in:fly={{ duration: 100, x: -16, delay: 100 }}
+												out:fly={{ duration: 100, x: -16 }}
+												animate:flip={{ duration: 150 }}
+											>
+												<div class="u-flex u-cross-center u-gap-12">
+													<div class="avatar is-size-small">{user.avatar}</div>
+													<span class="truncated">{user.name}</span>
+												</div>
+												<span class="truncated">{user.email}</span>
 											</div>
 										{/each}
 									</div>
-
-									<button class="add-btn">
-										<span class="aw-icon-plus" />
-									</button>
-								</div>
-							{/if}
-						</Phone>
-					</div>
-				{/if}
-
-				{#if showTable}
-					<div
-						class="box-wrapper"
-						id="products-box"
-						in:fly={{ y: 16 }}
-						out:fly={{ y: 16, duration: 150 }}
-					>
-						<AnimatedBox>
-							<div class="top" slot="top">
-								<p class="title">
-									{#if active.product === 'auth'}
-										Users
-									{:else if active.product === 'databases'}
-										Tasks
-									{/if}
-								</p>
-							</div>
-							{#if active.product === 'auth'}
-								<div class="pseudo-table">
-									<div class="header">
-										<span class="aw-eyebrow">Name</span>
-										<span class="aw-eyebrow">Identifier</span>
-									</div>
-									{#each authData as user (user.id)}
-										<div
-											class="row"
-											in:fly={{ duration: 100, x: -16, delay: 100 }}
-											out:fly={{ duration: 100, x: -16 }}
-											animate:flip={{ duration: 150 }}
-										>
-											<div class="u-flex u-cross-center u-gap-12">
-												<div class="avatar is-size-small">{user.avatar}</div>
-												<span class="truncated">{user.name}</span>
-											</div>
-											<span class="truncated">{user.email}</span>
-										</div>
-									{/each}
-								</div>
-							{:else if active.product === 'databases'}
-								<div class="pseudo-table">
-									<div class="header">
-										<span class="aw-eyebrow">Document ID</span>
-										<span class="aw-eyebrow">Task</span>
-									</div>
-									{#each dbTasks.slice(0, 1) as task (task.id)}
-										<div
-											class="row"
-											in:fly={{ duration: 100, x: -16, delay: 100 }}
-											out:fly={{ duration: 100, x: -16 }}
-											animate:flip={{ duration: 150 }}
-										>
-											<div class="copy-button">
-												<span class="aw-icon-copy" />
-												<span>{task.id}</span>
-											</div>
-											<span class="truncated">{task.title}</span>
-										</div>
-									{/each}
-								</div>
-							{/if}
-						</AnimatedBox>
-					</div>
-				{/if}
-
-				{#if showCode}
-					<div class="code-window" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-						<CodeWindow let:Code>
-							<div>
-								{#if active.product === 'auth'}
-									<Code content={authCode} />
 								{:else if active.product === 'databases'}
-									<Code content={dbCode} />
+									<div class="pseudo-table">
+										<div class="header">
+											<span class="aw-eyebrow">Document ID</span>
+											<span class="aw-eyebrow">Task</span>
+										</div>
+										{#each dbTasks.slice(0, 1) as task (task.id)}
+											<div
+												class="row"
+												in:fly={{ duration: 100, x: -16, delay: 100 }}
+												out:fly={{ duration: 100, x: -16 }}
+												animate:flip={{ duration: 150 }}
+											>
+												<div class="copy-button">
+													<span class="aw-icon-copy" />
+													<span>{task.id}</span>
+												</div>
+												<span class="truncated">{task.title}</span>
+											</div>
+										{/each}
+									</div>
 								{/if}
-							</div>
-						</CodeWindow>
-					</div>
-				{/if}
+							</AnimatedBox>
+						</div>
+					{/if}
 
-				{#if showControls}
-					<div class="AUTH-controls" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
-						{#each objectKeys(controls) as provider, i}
-							{@const isLast = i === objectKeys(controls).length - 1}
-							<div>
-								<span class="aw-icon-{provider.toLowerCase()}" />
-								<span>{provider}</span>
-								<Switch bind:checked={controls[provider]} />
-							</div>
-							{#if !isLast}
-								<div class="sep" />
-							{/if}
-						{/each}
-					</div>
-				{/if}
+					{#if showCode}
+						<div class="code-window" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
+							<CodeWindow let:Code>
+								<div>
+									{#if active.product === 'auth'}
+										<Code content={authCode} />
+									{:else if active.product === 'databases'}
+										<Code content={dbCode} />
+									{/if}
+								</div>
+							</CodeWindow>
+						</div>
+					{/if}
+
+					{#if showControls}
+						<div class="AUTH-controls" in:fly={{ y: 16 }} out:fly={{ y: 16, duration: 150 }}>
+							{#each objectKeys(controls) as provider, i}
+								{@const isLast = i === objectKeys(controls).length - 1}
+								<div>
+									<span class="aw-icon-{provider.toLowerCase()}" />
+									<span>{provider}</span>
+									<Switch bind:checked={controls[provider]} />
+								</div>
+								{#if !isLast}
+									<div class="sep" />
+								{/if}
+							{/each}
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
+		{/if}
 	</div>
 </div>
 
@@ -992,21 +1000,21 @@ const result = databases.createDocument(
 		overflow: hidden;
 
 		padding-inline: 1.25rem;
-		--navbar-height: 8rem;
-		// --padding-block: 7.5rem; // TODO: Improve padding responsiveness
-		// padding-block: calc(var(--navbar-height) + var(--padding-block)) var(--padding-block);
-		padding-block-start: var(--navbar-height);
 
 		width: 100%;
 		height: 100vh;
 
-		text-align: center;
-
 		> .main-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			// min-height: 15rem;
+			min-height: 15rem;
+			text-align: center;
 
 			h2 {
 				white-space: nowrap;
