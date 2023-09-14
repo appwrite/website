@@ -144,6 +144,9 @@ export const scroll: Action<
 		);
 	};
 
+	handleScroll();
+	handleResize();
+
 	window.addEventListener('scroll', handleScroll);
 	window.addEventListener('resize', handleResize);
 
