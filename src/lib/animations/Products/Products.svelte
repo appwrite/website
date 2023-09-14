@@ -159,6 +159,10 @@ const result = databases.createDocument(
 			async ({ returned: elements }) => {
 				await write(authEmail, (v) => (emailInput = v), 300);
 				await sleep(150);
+
+				return elements;
+			},
+			async ({ returned: elements }) => {
 				await write(authPassword, (v) => (passwordInput = v), 300);
 				await sleep(500);
 
@@ -173,92 +177,20 @@ const result = databases.createDocument(
 
 				await sleep(500);
 
-				// authSubmitted = true;
+				return elements;
+			},
+			async ({ returned: elements }) => {
+				authSubmitted = true;
 
-				// await sleep(1000);
+				await sleep(1000);
 
-				// showControls = true;
-				// animate(elements.controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
+				return elements;
+			},
+			async ({ returned: elements }) => {
+				showControls = true;
+				animate(elements.controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
 			}
 		),
-
-		// {
-		// 	percentage: -0.05,
-		// 	callback() {
-		// 		showPhone = false;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0,
-		// 	callback() {
-		// 		showPhone = true;
-		// 		showTable = false;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.15,
-		// 	async callback() {
-		// 		showTable = true;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.3,
-		// 	async callback() {
-		// 		showCode = false;
-		// 		if (!emailInput) {
-		// 			await write(authEmail, (v) => (emailInput = v), 150);
-		// 		}
-		// 		if (!passwordInput) {
-		// 			write(authPassword, (v) => (passwordInput = v), 150);
-		// 		}
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.45,
-		// 	callback() {
-		// 		authSubmitted = false;
-		// 		showCode = true;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.6,
-		// 	callback() {
-		// 		showControls = false;
-		// 		authSubmitted = true;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.75,
-		// 	callback() {
-		// 		showControls = true;
-		// 	}
-		// },
-		// {
-		// 	percentage: 0.9,
-		// 	callback() {
-		// 		showControls = true;
-		// 		safeAnimate(
-		// 			'#products-phone',
-		// 			{ x: 0 },
-		// 			{
-		// 				easing: 'ease',
-		// 				duration: 0.25
-		// 			}
-		// 		);
-
-		// 		if (animatedBox) {
-		// 			safeAnimate(
-		// 				'#products-box',
-		// 				{ x: 264, y: 32 },
-		// 				{
-		// 					easing: 'ease',
-		// 					duration: 0.25
-		// 				}
-		// 			);
-		// 			animatedBox = false;
-		// 		}
-		// 	}
-		// }
 		databases: chain(noop),
 		storage: chain(noop),
 		functions: chain(noop),
