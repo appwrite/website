@@ -1,5 +1,4 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
-import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 
 type SDKMethod = {
@@ -47,15 +46,25 @@ type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
 
 function getExamples(version: string) {
 	switch (version) {
+		case '1.0.x':
+			return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
+				as: 'raw'
+			});
+		case '1.1.x':
+			return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
+				as: 'raw'
+			});
+		case '1.2.x':
+			return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
+				as: 'raw'
+			});
 		case '1.3.x':
 			return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
-				as: 'raw',
-				eager: true
+				as: 'raw'
 			});
 		case '1.4.x':
 			return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
-				as: 'raw',
-				eager: true
+				as: 'raw'
 			});
 	}
 }
@@ -148,10 +157,6 @@ export async function getService(
 	methods: SDKMethod[];
 }> {
 	const spec = await getSpec(version, platform);
-	const examples = getExamples(version);
-	if (!examples) {
-		throw error(404, "Examples doesn't exist");
-	}
 	const data: {
 		service: {
 			name: string;
@@ -173,6 +178,12 @@ export async function getService(
 		name: tag?.name ?? '',
 		description: tag?.description ?? ''
 	};
+
+	const examples = getExamples(version);
+
+	if (!examples) {
+		return data;
+	}
 
 	for (const [method, value] of iterateAllMethods(api, service)) {
 		const operation = value as AppwriteOperationObject;
@@ -202,11 +213,11 @@ export async function getService(
 
 		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
-			throw error(404, "Example doesn't exist: " + path);
+			continue;
 		}
 		data.methods.push({
 			id: operation['x-appwrite'].method,
-			demo: examples[path],
+			demo: await examples[path](),
 			title: operation.summary ?? '',
 			description: operation.description ?? '',
 			parameters: parameters ?? [],
