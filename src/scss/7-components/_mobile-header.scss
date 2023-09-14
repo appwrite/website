@@ -22,4 +22,9 @@
   &#{$theme-light} {
     --p-mobile-header-border-color: rgb(0,0,0, 0.1);
   }
+
+  transition: transform 0.3s ease;
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 }

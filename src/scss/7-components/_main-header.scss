@@ -45,4 +45,10 @@
   @media #{$break1}, #{$break2}{
     display:none;
   }
+  
+
+  transition: transform 0.3s ease;
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 }
