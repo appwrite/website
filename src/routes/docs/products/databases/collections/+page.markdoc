@@ -14,13 +14,11 @@ That said, Appwrite is designed to support both SQL and NoSQL database adapters 
 You can create collections using the Appwrite Console or a [Server SDK](TODO).
 {% tabs %}
 {% tabsitem #console title="Console" %}
-### Create a collection in Console
 You can create a collection by heading to the **Databases** page, navigate to a [database](TODO), and click **Create collection**.
 
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-### Create a collection in Server SDK
 You can also create collections programmatically using a [Server SDK](TODO). Appwrite [Server SDKs](TODO) require an [API key](TODO).
 
 {% multicode %}
