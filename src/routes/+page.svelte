@@ -6,7 +6,7 @@
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
-	import Products from '$lib/animations/Products.svelte';
+	import Products from '$lib/animations/Products/Products.svelte';
 </script>
 
 <!-- <div
