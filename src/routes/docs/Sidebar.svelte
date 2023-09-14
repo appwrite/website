@@ -182,7 +182,7 @@
 						},
 						{
 							label: 'Relationships',
-							href: '/docs/products/databases/Relationships'
+							href: '/docs/products/databases/relationships'
 						},
 					]
 				},
