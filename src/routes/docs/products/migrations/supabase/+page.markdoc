@@ -59,5 +59,5 @@ and [things to keep in mind](#notices) sections above.
 Not all vendors make their APIs publicly accessible or easy to use for extracting and fully owning your data. Furthermore, due to varying design philosophies, certain resources cannot be migrated on a one-to-one basis. Below, you'll find a list of some known limitations when migrating data from Supabase to Appwrite. It's advisable to review this list before initiating your migration or deploying your product in a production environment.
 
 - Appwrite's Databases services support a different set of features as PostgreSQL. Some features like advanced indexes, Postgres functions, and scheduling will not be migrated.
-- OAuth user sessions will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
+- OAuth users will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
 - Functions are not automatically migrated because of syntax and runtime differences.

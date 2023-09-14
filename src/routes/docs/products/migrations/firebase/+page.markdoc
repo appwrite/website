@@ -67,5 +67,5 @@ Not all vendors make their APIs publicly accessible or easy to use for extractin
 
 - Appwrite Migrations only supports Firestore as a database source; Realtime Database is currently not supported.
 - At the moment, only top-level document migration is supported. Nested documents will not be migrated automatically.
-- OAuth user sessions will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
+- OAuth users will not be migrated because the sessions are managed by the third-party OAuth provider. Users will need to re-authenticate with your OAuth provider after the migration is complete.
 - Functions are not automatically migrated because of syntax and runtime differences.
