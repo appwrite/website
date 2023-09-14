@@ -8,33 +8,77 @@ Appwrite provides SDK libraries for major programming languages and platforms so
 
 We're always working on improving and extending the current stack of available platforms and SDKs, listed below is a list of official libraries the Appwrite team is maintaining.
 
-## Client SDKs {% #client-sdks %}
+## Client Side {% #client-side %}
 
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick start](/docs/quick-start) guides for your framework of choice to start building your first application.
 
-|   | Platform             | GitHub Repository        |
-| :- | :-------------------| :----------------------- |
-| x | Web SDK `13.0.0`     | [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web) 	        |
-| x | Flutter SDK `11.0.0` | [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter) 	|
-| x | Apple SDK `4.0.0`    | [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple) 	    |
-| x | Android SDK `4.0.0`  | [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android) 	|
+{% table %}
+* {% align="center" %}
+* Platform
+* GitHub Repository {% style="width:10px" %}
+---
+* x {% align="center" %}
+* Web SDK `13.0.0`
+* [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
+---
+* ![Flutter](https://appwrite.io/images-ee/platforms/flutter.svg)
+* Flutter SDK `11.0.0`
+* [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
+---
+* x
+* Apple SDK `4.0.0`
+* [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple)
+---
+* x
+* Android SDK `4.0.0`
+* [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
+{% /table %}
 
-## Server SDKs {% #server-sdks %}
+## Server Side {% #server-side %}
 
 Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick start](/docs/quick-start) guides for your language/runtime of choice to start building your first server integration.
 
-|    | Platform               | GitHub Repository       |
-| :- | :-------------------- | :----------------------- |
-| x  |	Node.js SDK `11.0.0` | [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node) 	|
-| x  |	Dart SDK `10.0.0`	 | [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart) 	|
-| x  |	Deno SDK `9.0.0`     | [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno) 	|
-| x  |	PHP SDK `10.0.0`	 | [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php) 	|
-| x  |	Python SDK `4.0.0`	 | [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python) 	|
-| x  |	Ruby SDK `10.0.0`	 | [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby) 	|
-| x  |	.NET SDK `0.6.0`	 | [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet) 	|
-| x  |	Kotlin SDK `4.0.0`	 | [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin) 	|
-| x  |	Swift SDK `4.0.0`	 | [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift) 	|
-
+{% table %}
+* {% align="center" %}
+* Platform
+* GitHub Repository {% style="width:10px" %}
+---
+* x {% align="center" %}
+* Node.js SDK `11.0.0`
+* [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
+---
+* x {% align="center" %}
+* Dart SDK `10.0.0`
+* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
+---
+* x {% align="center" %}
+* Python SDK `4.0.0`
+* [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
+---
+* x {% align="center" %}
+* PHP SDK `10.0.0`
+* [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php)
+---
+* x {% align="center" %}
+* Ruby SDK `10.0.0`
+* [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby)
+---
+* x {% align="center" %}
+* .NET SDK `0.6.0`
+* [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet)
+---
+* x {% align="center" %}
+* Deno SDK `9.0.0`
+* [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
+---
+* x {% align="center" %}
+* Kotlin SDK `4.0.0`
+* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
+---
+* x {% align="center" %}
+* Swift SDK `4.0.0`
+* [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift)
+{% /table %}
 
 If you would like to help us extend our platforms and SDKs stack, you are more than welcome to contact us or check out our Appwrite SDK Generator project GitHub repository and read our contribution guide.
 
