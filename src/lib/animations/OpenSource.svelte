@@ -72,7 +72,7 @@
 	];
 
 	const animScale: Scale = [0, animations.length - 1];
-	const percentScale: Scale = [0.1, 0.8];
+	const percentScale: Scale = [0.1, 0.9];
 
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
