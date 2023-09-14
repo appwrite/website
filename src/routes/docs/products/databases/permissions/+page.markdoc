@@ -1,0 +1,35 @@
+---
+layout: article
+title: Permissions
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 5
+---
+## Permissions
+Permissions define who can access documents in a collection. By default **no permissions** are granted to any users, so no user can access any documents.
+Permissions exist at two levels, collection level and document level permissions. 
+
+In Appwrite, permissions are **granted**, meaning a user has no access by default and receive access when granted. 
+A user with access granted at either collection level or document level will be able to access a document.
+Users **don't need access at both levels** to access documents.
+
+## Collection Level Permissions
+Collection level permissions apply to every document in the collection. 
+If a user has read, create, update, or delete permissions at the collection level, the user can access **all documents** inside the collection.
+
+Configure collection level permissions by navigating to **You collection** > **Settings** > **Permissions**.
+
+[Learn more about permissions and roles](TODO)
+
+## Document Level Permissions
+Document level permissions grant access to individual documents.
+If a user has read, create, update, or delete permissions at the document level, the user can access the **individual document**.
+
+Document level permissions are only applied if Document Security is enabled in the settings of your collection.
+Enable document level permissions by navigating to **You collection** > **Settings** > **Document security**.
+
+Document level permissions are configured in individual [documents](TODO).
+
+[Learn more about permissions and roles](TODO)
+
+
