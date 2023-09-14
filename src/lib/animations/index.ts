@@ -3,7 +3,8 @@ import {
 	animate as motionAnimate,
 	type ElementOrSelector,
 	type MotionKeyframesDefinition,
-	type AnimationOptionsWithOverrides
+	type AnimationOptionsWithOverrides,
+	animate
 } from 'motion';
 
 export function animation(
@@ -33,6 +34,18 @@ export function animation(
 }
 
 export type Animation = ReturnType<typeof animation>;
+
+export const safeAnimate = (
+	elementOrSelector: ElementOrSelector,
+	keyframes: MotionKeyframesDefinition,
+	options?: AnimationOptionsWithOverrides
+) => {
+	try {
+		return animate(elementOrSelector, keyframes, options);
+	} catch {
+		// do nothing lol
+	}
+};
 
 type Unsubscriber = () => void;
 
@@ -191,6 +204,10 @@ export function createProgressSequence(events: ProgressEvent[]) {
 		const event = sortedEvents[idx];
 		event?.callback();
 		lastEventIdx = idx;
+	};
+
+	handler.resetLastEventIdx = () => {
+		lastEventIdx = -1;
 	};
 
 	return handler;

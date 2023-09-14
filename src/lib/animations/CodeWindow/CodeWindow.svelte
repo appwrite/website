@@ -1,4 +1,5 @@
 <script>
+	import AutoBox from '../AutoBox.svelte';
 	import Code from './Code.svelte';
 </script>
 
@@ -9,7 +10,9 @@
 		<div class="ellipse-3" />
 	</div>
 	<div class="block">
-		<slot {Code} />
+		<AutoBox>
+			<slot {Code} />
+		</AutoBox>
 	</div>
 </div>
 
@@ -44,6 +47,8 @@
 		border-radius: 12px;
 		background: linear-gradient(129deg, rgba(0, 0, 0, 0.48) 22.38%, rgba(0, 0, 0, 0) 136.5%);
 		padding: 20px;
+
+		position: relative;
 	}
 
 	.header {
@@ -79,5 +84,9 @@
 			top: 12px;
 			border-radius: 4px;
 		}
+	}
+
+	.code-console :global(code) {
+		white-space: pre;
 	}
 </style>
