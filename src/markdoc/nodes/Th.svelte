@@ -5,7 +5,13 @@
 	export let width: HTMLTdAttributes['width'] = undefined;
 </script>
 
-<td role="columnheader" class="aw-table-head-col" {align} {width}>
+<td
+	style:min-inline-size={width ? 'unset' : undefined}
+	role="columnheader"
+	class="aw-table-head-col"
+	{align}
+	{width}
+>
 	<span class="aw-eyebrow">
 		<slot />
 	</span>
