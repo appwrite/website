@@ -46,7 +46,7 @@
 				},
 				{
 					label: 'SDKs',
-					href: '#',
+					href: '/docs/sdks',
 					icon: 'icon-cog'
 				},
 				{
@@ -253,17 +253,17 @@
 			items: [
 				{
 					label: 'Realtime',
-					href: '#',
+					href: '/docs/apis/realtime',
 					icon: 'icon-clock'
 				},
 				{
 					label: 'REST',
-					href: '#',
+					href: '/docs/apis/rest',
 					icon: 'icon-play'
 				},
 				{
 					label: 'GraphQL',
-					href: '#',
+					href: '/docs/apis/graphql',
 					icon: 'icon-play'
 				}
 			]
