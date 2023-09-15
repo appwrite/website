@@ -4,8 +4,11 @@
 	import { fly, slide } from 'svelte/transition';
 	import { scroll } from '..';
 	import ScrollIndicator from '../scroll-indicator.svelte';
-	import Auth from './Auth.svelte';
-	import Databases from './Databases.svelte';
+	import { Auth, authController } from './auth';
+	import Phone from '../Phone.svelte';
+	import AnimatedBox from './AnimatedBox.svelte';
+	import { tick } from 'svelte';
+	import CodeWindow from '../CodeWindow/CodeWindow.svelte';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -24,8 +27,17 @@
 		return [animScale[0] + step * idx, animScale[0] + step * (idx + 1)] as Scale;
 	});
 
+	/* Animation constants */
+	/* Animation variables */
+	let elements = {
+		phone: undefined as HTMLElement | undefined,
+		box: undefined as HTMLElement | undefined,
+		code: undefined as HTMLElement | undefined,
+		controls: undefined as HTMLElement | undefined
+	};
+
 	$: active = (function getActiveInfo() {
-		let activeIdx = productsScales.findIndex(([min, max], i) => {
+		let activeIdx = productsScales.findIndex(([min, max]) => {
 			return scrollInfo.percentage >= min && scrollInfo.percentage < max;
 		});
 
@@ -38,6 +50,18 @@
 			scale,
 			percent
 		};
+	})();
+
+	let lastActive: Product | undefined = undefined;
+	$: (async () => {
+		const fixedLast = lastActive;
+		lastActive = active.product;
+		if (active.product === 'auth' && fixedLast !== 'auth') {
+			await tick();
+			authController.execute({
+				elements
+			});
+		}
 	})();
 
 	/* Products infos */
@@ -196,13 +220,44 @@
 					</ul>
 				</div>
 
-				<div class="animated">
-					{#if active.product === 'auth'}
-						<Auth />
-					{:else if active.product === 'databases'}
-						<Databases />
-					{/if}
-				</div>
+				<!-- Key is needed to forcibly change the elements reference -->
+				{#key active.product}
+					<div class="animated">
+						<div class="phone" bind:this={elements.phone}>
+							<Phone>
+								{#if active.product === 'auth'}
+									<Auth.Phone />
+								{/if}
+							</Phone>
+						</div>
+
+						<div class="box-wrapper" bind:this={elements.box}>
+							<AnimatedBox>
+								<div class="top" slot="top">
+									<p class="title">Users</p>
+								</div>
+
+								{#if active.product === 'auth'}
+									<Auth.Box />
+								{/if}
+							</AnimatedBox>
+						</div>
+
+						<div class="code-window" bind:this={elements.code}>
+							<CodeWindow>
+								{#if active.product === 'auth'}
+									<Auth.Code />
+								{/if}
+							</CodeWindow>
+						</div>
+
+						{#if active.product === 'auth'}
+							<div class="controls" bind:this={elements.controls}>
+								<Auth.Controls />
+							</div>
+						{/if}
+					</div>
+				{/key}
 			</div>
 		{/if}
 	</div>
@@ -371,9 +426,96 @@
 		height: min(38.75rem, 90vh);
 
 		position: relative;
+	}
 
-		--z-beneath-phone: 0;
-		--z-phone: 10;
-		--z-above-phone: 20;
+	.phone {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		opacity: 1;
+	}
+
+	.box-wrapper {
+		position: absolute;
+		top: 0;
+		z-index: 0;
+		opacity: 0;
+
+		width: 25rem;
+
+		transform: translateX(16.5rem) translateY(2rem);
+	}
+
+	.box-wrapper :global(.pseudo-table) {
+		:global(.header),
+		:global(.row) {
+			display: grid;
+			grid-template-columns: 10rem 1fr;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1.5rem 3rem;
+		}
+
+		:global(.header) {
+			border-bottom: 1px solid hsl(var(--aw-color-greyscale-700));
+			color: var(--greyscale-400, #adadb1);
+
+			text-transform: uppercase;
+			padding: 1rem;
+		}
+
+		:global(.row) {
+			padding-block: 0.5rem;
+			padding-inline: 1rem;
+
+			color: var(--greyscale-400, #adadb1);
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.25rem; /* 142.857% */
+		}
+
+		:global(.avatar) {
+			background-color: hsl(var(--aw-color-greyscale-700));
+			border-color: hsl(var(--aw-color-greyscale-700));
+		}
+
+		:global(.truncated) {
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	}
+
+	.code-window {
+		position: absolute;
+		z-index: 20;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+	.controls {
+		@include border-gradient;
+		--m-border-radius: 1rem;
+		--m-border-gradient-before: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.12) 0%,
+			rgba(255, 255, 255, 0) 125.11%
+		);
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+			-8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+			-33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+		backdrop-filter: blur(20px);
 	}
 </style>
