@@ -13,7 +13,6 @@ import python from 'highlight.js/lib/languages/python';
 import diff from 'highlight.js/lib/languages/diff';
 import ruby from 'highlight.js/lib/languages/ruby';
 import csharp from 'highlight.js/lib/languages/csharp';
-<<<<<<< HEAD
 import kotlin from 'highlight.js/lib/languages/kotlin';
 import java from 'highlight.js/lib/languages/java';
 import cpp from 'highlight.js/lib/languages/cpp';
@@ -23,8 +22,6 @@ import dos from 'highlight.js/lib/languages/dos';
 import yaml from 'highlight.js/lib/languages/yaml';
 import plaintext from 'highlight.js/lib/languages/plaintext';
 import graphql from 'highlight.js/lib/languages/graphql';
-=======
->>>>>>> feat-markdoc
 import http from 'highlight.js/lib/languages/http';
 
 const languages = {
