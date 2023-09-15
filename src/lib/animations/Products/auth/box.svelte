@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getInitials } from '$lib/animations';
 	import { fly } from 'svelte/transition';
-	import { authController } from './controller';
+	import { authController } from '.';
 	import { flip } from '$lib/utils/flip';
 
 	const { state } = authController;
