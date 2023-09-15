@@ -217,3 +217,31 @@ export function createProgressSequence(events: ProgressEvent[]) {
 }
 
 export type ProgressSequence = ReturnType<typeof createProgressSequence>;
+
+export function write(text: string, cb: (v: string) => void, duration = 500) {
+	const step = duration / text.length;
+	let i = 0;
+	return new Promise((resolve) => {
+		const interval = setInterval(() => {
+			cb(text.slice(0, ++i));
+			if (i === text.length) {
+				clearInterval(interval);
+				resolve(undefined);
+			}
+		}, step);
+	});
+}
+
+export function sleep(duration: number) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, duration);
+	});
+}
+
+export function getInitials(name: string) {
+	return name
+		.split(' ')
+		.map((word) => word?.[0]?.toUpperCase() ?? '')
+		.join('')
+		.slice(0, 2);
+}
