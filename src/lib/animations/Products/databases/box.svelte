@@ -1,64 +1,54 @@
 <script lang="ts">
-	import { getInitials } from '$lib/animations';
-	import { fly } from 'svelte/transition';
-	import { authController } from './controller';
+	import { slide } from 'svelte/transition';
+	import { databasesController } from '.';
 	import { flip } from '$lib/utils/flip';
 
-	const { state } = authController;
-
-	type AuthEntry = {
-		avatar: string;
-		name: string;
-		email: string;
-		id: number;
-	};
-	$: authData = [
-		$state.submitted
-			? {
-					avatar: getInitials($state.name),
-					name: $state.name,
-					email: $state.email,
-					id: 0
-			  }
-			: undefined,
-		{
-			avatar: 'BD',
-			name: 'Benjamin Davis',
-			email: 'benjamin.davis@example.com',
-			id: 1
-		},
-		{
-			avatar: 'OS',
-			name: 'Olivia Smith',
-			email: 'olivia.smith@example.com',
-			id: 2
-		},
-		{
-			avatar: 'EW',
-			name: 'Ethan Wilson',
-			email: 'ethan.wilson@example.com',
-			id: 3
-		}
-	].filter(Boolean) as AuthEntry[];
+	const { state } = databasesController;
 </script>
 
 <div class="pseudo-table">
 	<div class="header">
-		<span class="aw-eyebrow">Name</span>
-		<span class="aw-eyebrow">Identifier</span>
+		<span class="aw-eyebrow">Document ID</span>
+		<span class="aw-eyebrow">Task</span>
 	</div>
-	{#each authData as user (user.id)}
-		<div
-			class="row"
-			in:fly={{ duration: 100, x: -16, delay: 100 }}
-			out:fly={{ duration: 100, x: -16 }}
-			animate:flip={{ duration: 150 }}
-		>
-			<div class="u-flex u-cross-center u-gap-12">
-				<div class="avatar is-size-small">{user.avatar}</div>
-				<span class="truncated">{user.name}</span>
+	{#each $state.tasks.slice(0, $state.tableSlice) as task (task.id)}
+		<div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
+			<div class="copy-button">
+				<span class="aw-icon-copy" />
+				<span>{task.id}</span>
 			</div>
-			<span class="truncated">{user.email}</span>
+			<span class="truncated">{task.title}</span>
 		</div>
 	{/each}
 </div>
+
+<style lang="scss">
+	.copy-button {
+		display: flex;
+		padding: 0.25rem 0.5rem;
+		align-items: center;
+		gap: 0.375rem;
+
+		border-radius: 62.4375rem;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		background: rgba(255, 255, 255, 0.04);
+		backdrop-filter: blur(2.6666667461395264px);
+
+		[class*='icon-'] {
+			font-size: 1.25rem;
+			color: hsl(var(--aw-color-greyscale-600));
+		}
+
+		span:not([class*='icon-']) {
+			color: var(--greyscale-400, #adadb1);
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.25rem; /* 142.857% */
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+</style>

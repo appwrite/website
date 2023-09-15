@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Switch } from '$lib/components';
 	import { objectKeys } from '$lib/utils/object';
-	import { authController } from './controller';
+	import { authController } from '.';
 
 	const { state } = authController;
 </script>
