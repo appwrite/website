@@ -38,15 +38,6 @@
 		return [animScale[0] + step * idx, animScale[0] + step * (idx + 1)] as Scale;
 	});
 
-	/* Animation constants */
-	/* Animation variables */
-	let elements = {
-		phone: undefined as HTMLElement | undefined,
-		box: undefined as HTMLElement | undefined,
-		code: undefined as HTMLElement | undefined,
-		controls: undefined as HTMLElement | undefined
-	};
-
 	$: active = (function getActiveInfo() {
 		let activeIdx = productsScales.findIndex(([min, max]) => {
 			return scrollInfo.percentage >= min && scrollInfo.percentage < max;
@@ -78,12 +69,7 @@
 			if (active.product === key && fixedLast !== key) {
 				elId.update((n) => n + 1);
 				await tick();
-				await tick();
-				await tick();
-				await tick();
-				controller.execute({
-					elements
-				});
+				controller.execute();
 			}
 		});
 	})();
@@ -245,7 +231,7 @@
 				</div>
 
 				<div class="animated">
-					<div class="phone" id="phone-{$elId}" bind:this={elements.phone}>
+					<div class="phone" id="phone-{$elId}">
 						<Phone>
 							{#if active.product === 'auth'}
 								<Auth.Phone />
@@ -255,7 +241,7 @@
 						</Phone>
 					</div>
 
-					<div class="box-wrapper" id="box-{$elId}" bind:this={elements.box}>
+					<div class="box-wrapper" id="box-{$elId}">
 						<AnimatedBox>
 							<div class="top" slot="top">
 								<p class="title">Users</p>
@@ -269,7 +255,7 @@
 						</AnimatedBox>
 					</div>
 
-					<div class="code-window" id="code-{$elId}" bind:this={elements.code}>
+					<div class="code-window" id="code-{$elId}">
 						<CodeWindow>
 							{#if active.product === 'auth'}
 								<Auth.Code />
@@ -280,7 +266,7 @@
 					</div>
 
 					{#if active.product === 'auth'}
-						<div class="controls" id="controls-{$elId}" bind:this={elements.controls}>
+						<div class="controls" id="controls-{$elId}">
 							<Auth.Controls />
 						</div>
 					{/if}

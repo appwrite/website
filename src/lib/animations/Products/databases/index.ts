@@ -2,9 +2,9 @@ import Box from './box.svelte';
 import Code from './code.svelte';
 import Phone from './phone.svelte';
 
-import { sleep } from '$lib/animations';
+import { safeAnimate, sleep } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
-import { animate } from 'motion';
+import { getElSelector } from '../Products.svelte';
 
 type Task = {
 	id: string;
@@ -28,40 +28,17 @@ const state = createResettable<State>({
 	tableSlice: 1
 });
 
-type ExecuteArgs = {
-	elements: {
-		phone: HTMLElement | undefined;
-		box: HTMLElement | undefined;
-		code: HTMLElement | undefined;
-	};
-};
-
-const execute = async ({ elements }: ExecuteArgs) => {
+const execute = async () => {
 	try {
-		const { phone, box, code } = elements;
-		if (!phone || !box || !code) {
-			return;
-		}
+		const phone = getElSelector('phone');
+		const box = getElSelector('box');
+		const code = getElSelector('code');
 		const { update } = state.reset();
 
 		await Promise.all([
-			animate(
-				phone,
-				{
-					x: [0, 390],
-					y: [0, 0]
-				},
-				{ duration: 0.5 }
-			).finished,
-			animate(box, {
-				x: [260, 0],
-				y: [32, 32],
-				opacity: [0, 1]
-			}).finished,
-
-			animate(code, { x: 200, y: 460, opacity: [0] }, { duration: 0 }).finished.then(() => {
-				animate(code, { x: 80, y: 460, opacity: [1, 1] }, { duration: 0.5 });
-			})
+			safeAnimate(phone, { x: 390, y: 0 }, { duration: 0.5 })?.finished,
+			safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
+			safeAnimate(code, { x: 80, y: 460, opacity: 1 }, { duration: 0.5 })?.finished
 		]);
 
 		await sleep(1000);
