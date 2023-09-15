@@ -20,6 +20,7 @@
 	import { Databases, databasesController } from './databases';
 	import { objectKeys } from '$lib/utils/object';
 	import { get, writable } from 'svelte/store';
+	import { Storage, storageController } from './storage';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -58,7 +59,8 @@
 
 	const controllers = {
 		auth: authController,
-		databases: databasesController
+		databases: databasesController,
+		storage: storageController
 	};
 	$: (async () => {
 		const fixedLast = lastActive;
@@ -164,10 +166,10 @@
 	}}
 >
 	<div class="sticky-wrapper">
-		<div class="debug">
+		<!-- <div class="debug">
 			<pre>{JSON.stringify({ active })}</pre>
 			<pre>{JSON.stringify({ scrollInfo })}</pre>
-		</div>
+		</div> -->
 
 		{#if scrollInfo.percentage < 0.2}
 			<div
@@ -237,6 +239,12 @@
 								<Auth.Phone />
 							{:else if active.product === 'databases'}
 								<Databases.Phone />
+							{:else if active.product === 'storage'}
+								<Storage.Phone />
+								<!-- {:else if active.product === 'functions'}
+								<Functions.Phone />
+							{:else if active.product === 'realtime'}
+								<Realtime.Phone /> -->
 							{/if}
 						</Phone>
 					</div>
@@ -244,13 +252,31 @@
 					<div class="box-wrapper" id="box-{$elId}">
 						<AnimatedBox>
 							<div class="top" slot="top">
-								<p class="title">Users</p>
+								<p class="title">
+									{#if active.product === 'auth'}
+										Users
+									{:else if active.product === 'databases'}
+										Tasks
+									{:else if active.product === 'storage'}
+										Files
+									{:else if active.product === 'functions'}
+										Functions
+									{:else if active.product === 'realtime'}
+										Realtime
+									{/if}
+								</p>
 							</div>
 
 							{#if active.product === 'auth'}
 								<Auth.Box />
 							{:else if active.product === 'databases'}
 								<Databases.Box />
+							{:else if active.product === 'storage'}
+								<Storage.Box />
+								<!-- {:else if active.product === 'functions'}
+								<Functions.Box />
+							{:else if active.product === 'realtime'}
+								<Realtime.Box /> -->
 							{/if}
 						</AnimatedBox>
 					</div>
@@ -261,6 +287,8 @@
 								<Auth.Code />
 							{:else if active.product === 'databases'}
 								<Databases.Code />
+							{:else if active.product === 'storage'}
+								<Storage.Code />
 							{/if}
 						</CodeWindow>
 					</div>

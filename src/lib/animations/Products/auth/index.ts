@@ -75,7 +75,6 @@ const execute = async () => {
 	await write(passwordToSet, (v) => update((p) => ({ ...p, password: v })), 300);
 	await sleep(500);
 
-	console.log('animating code');
 	await safeAnimate(
 		code,
 		{ x: [200, 200], y: [460 + 16, 460], opacity: [0, 1] },
