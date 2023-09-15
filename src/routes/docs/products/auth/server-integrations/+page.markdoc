@@ -28,7 +28,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
 
@@ -39,7 +39,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);
 
@@ -51,7 +51,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
 
 val account = Account(client)
 
@@ -62,7 +62,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
 
 let account = Account(client)
 
@@ -85,7 +85,7 @@ const { Client } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
 ```
 
@@ -94,7 +94,7 @@ use Appwrite\Client;
 
 $client = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1')            // Your API Endpoint
-    ->setProject('[PROJECT_ID]')                             // Your project ID
+    ->setProject('<PROJECT_ID>')                             // Your project ID
     ->setJWT('eyJJ9.eyJ...886ca');                           // Your secret JSON Web Token
 ```
 
@@ -105,7 +105,7 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('[PROJECT_ID]')                  # Your project ID
+  .set_project('<PROJECT_ID>')                  # Your project ID
   .set_jwt('eyJJ9.eyJ...886ca')                 # Your secret JSON Web Token
 )
 ```
@@ -117,7 +117,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
-    .set_project('[PROJECT_ID]')                    # Your project ID
+    .set_project('<PROJECT_ID>')                    # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                   # Your secret JSON Web Token
 ```
 
@@ -126,7 +126,7 @@ import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('[PROJECT_ID]')                     // Your project ID
+    .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 ```
 
@@ -135,7 +135,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('[PROJECT_ID]')                     // Your project ID
+    .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 ```
 
@@ -144,7 +144,7 @@ import io.appwrite.Client
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("[PROJECT_ID]")                     // Your project ID
+    .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
 ```
 
@@ -153,7 +153,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("[PROJECT_ID]")                     // Your project ID
+    .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
 ```
 
@@ -162,7 +162,7 @@ using Appwrite;
 
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("[PROJECT_ID]")                     // Your project ID
+    .SetProject("<PROJECT_ID>")                     // Your project ID
     .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
 ```
 {% /multicode %}
@@ -194,7 +194,7 @@ const { Client } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
 
 const databases = new sdk.Databases(client);
@@ -210,7 +210,7 @@ use Appwrite\Client;
 
 $client = (new Client())
     .setEndpoint('https://cloud.appwrite.io/v1')            // Your API Endpoint
-    .setProject('[PROJECT_ID]')                           // Your project ID
+    .setProject('<PROJECT_ID>')                           // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
 
 $databases = new Databases($client);
@@ -228,7 +228,7 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1')              # Your API Endpoint
-  .set_project('[PROJECT_ID]')                             # Your project ID
+  .set_project('<PROJECT_ID>')                             # Your project ID
   .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
 )
 
@@ -247,7 +247,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1')            # Your API Endpoint
-    .set_project('[PROJECT_ID]')                           # Your project ID
+    .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
 
 databases = Databases.new(client)
@@ -263,7 +263,7 @@ import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('[PROJECT_ID]')                     // Your project ID
+    .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
 let databases = new sdk.Databases(client);
@@ -279,7 +279,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('[PROJECT_ID]')                     // Your project ID
+    .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
 final databases = Databases(client);
@@ -295,7 +295,7 @@ import io.appwrite.Client
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("[PROJECT_ID]")                     // Your project ID
+    .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
 
 val databases = Databases(client)
@@ -311,7 +311,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("[PROJECT_ID]")                     // Your project ID
+    .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
     
 let databases = Databases(client)
@@ -329,7 +329,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("[PROJECT_ID]")                     // Your project ID
+    .SetProject("<PROJECT_ID>")                     // Your project ID
     .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
 
 var databases = new Databases(client);
@@ -372,7 +372,7 @@ const { Client } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
 const databases = new sdk.Databases(client);
@@ -389,7 +389,7 @@ use Appwrite\Client;
 
 $client = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('[PROJECT_ID]')                  // Your project ID
+    ->setProject('<PROJECT_ID>')                  // Your project ID
     ->setKey('98fd4...a2ad2');                    // Your secret API key
 
 $databases = new Databases($client);
@@ -407,7 +407,7 @@ from appwrite.client import Client
 client = Client()
 (client
     .set_endpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .set_project('[PROJECT_ID]')                  // Your project ID
+    .set_project('<PROJECT_ID>')                  // Your project ID
     .set_key('98fd4...a2ad2')                     // Your secret API key
 )
 
@@ -426,7 +426,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('[PROJECT_ID]')                  # Your project ID
+    .set_project('<PROJECT_ID>')                  # Your project ID
     .set_key('98fd4...a2ad2')                     # Your secret API key
 
 databases = Databases.new(client)
@@ -442,7 +442,7 @@ import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
 let databases = new sdk.Databases(client);
@@ -458,7 +458,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
 final databases = Databases(client);
@@ -474,7 +474,7 @@ import io.appwrite.Client
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
 val databases = Databases(client)
@@ -490,7 +490,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
 let databases = Databases(client)
@@ -508,7 +508,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("[PROJECT_ID]")                  // Your project ID
+    .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey('98fd4...a2ad2');                    // Your secret API key
 
 var databases = new Databases(client);

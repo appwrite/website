@@ -178,3 +178,9 @@ Lorem ipsum dolor sit amet consectetur.
 Lorem ipsum dolor sit amet consectetur.
 {% /info %}
 ```
+
+#### Icon
+
+```
+{% icon icon="github" /%}
+```
