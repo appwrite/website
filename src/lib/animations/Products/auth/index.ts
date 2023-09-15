@@ -55,10 +55,13 @@ const execute = async () => {
 
 	// Reset
 	const { update } = state.reset();
-	safeAnimate(box, { x: 260, y: 32, opacity: 0 }, { duration: 0.25 });
-	safeAnimate(code, { x: 200, y: 460, opacity: 0 }, { duration: 0.25 });
-	safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.25 });
-	await safeAnimate(controls, { x: 420, y: 0, opacity: 0 }, { duration: 0.25 })?.finished;
+
+	await Promise.all([
+		safeAnimate(box, { x: 260, y: 32, opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(code, { x: 200, y: 460, opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(controls, { x: 420, y: 0, opacity: 0 }, { duration: 0.5 })?.finished
+	]);
 
 	// Start
 	await safeAnimate(box, { x: [260, 260], y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 1 })
