@@ -7,7 +7,7 @@ export default defineConfig({
 		sveltekit(),
 		dynamicImport({
 			filter(id) {
-				if (id.includes('/node_modules/appwrite/docs')) {
+				if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
 					return true;
 				}
 			}
