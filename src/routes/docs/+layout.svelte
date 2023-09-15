@@ -9,9 +9,10 @@
 		const isTutorial = pathname.includes('/tutorials/');
 		const isQuickstart = pathname.includes('/quick-start/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
+		const isTooling = pathname.includes('/tooling');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickstart) {
+		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickstart || isTooling) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
