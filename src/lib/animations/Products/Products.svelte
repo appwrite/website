@@ -1,3 +1,11 @@
+<script lang="ts" context="module">
+	export const elId = writable(0);
+
+	export function getElSelector(el: string) {
+		return `#${el}-${get(elId)}`;
+	}
+</script>
+
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
@@ -11,6 +19,7 @@
 	import CodeWindow from '../CodeWindow/CodeWindow.svelte';
 	import { Databases, databasesController } from './databases';
 	import { objectKeys } from '$lib/utils/object';
+	import { get, writable } from 'svelte/store';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -67,6 +76,10 @@
 		objectKeys(controllers).forEach(async (key) => {
 			const controller = controllers[key];
 			if (active.product === key && fixedLast !== key) {
+				elId.update((n) => n + 1);
+				await tick();
+				await tick();
+				await tick();
 				await tick();
 				controller.execute({
 					elements
@@ -232,7 +245,7 @@
 				</div>
 
 				<div class="animated">
-					<div class="phone" bind:this={elements.phone}>
+					<div class="phone" id="phone-{$elId}" bind:this={elements.phone}>
 						<Phone>
 							{#if active.product === 'auth'}
 								<Auth.Phone />
@@ -242,7 +255,7 @@
 						</Phone>
 					</div>
 
-					<div class="box-wrapper" bind:this={elements.box}>
+					<div class="box-wrapper" id="box-{$elId}" bind:this={elements.box}>
 						<AnimatedBox>
 							<div class="top" slot="top">
 								<p class="title">Users</p>
@@ -256,7 +269,7 @@
 						</AnimatedBox>
 					</div>
 
-					<div class="code-window" bind:this={elements.code}>
+					<div class="code-window" id="code-{$elId}" bind:this={elements.code}>
 						<CodeWindow>
 							{#if active.product === 'auth'}
 								<Auth.Code />
@@ -267,7 +280,7 @@
 					</div>
 
 					{#if active.product === 'auth'}
-						<div class="controls" bind:this={elements.controls}>
+						<div class="controls" id="controls-{$elId}" bind:this={elements.controls}>
 							<Auth.Controls />
 						</div>
 					{/if}
