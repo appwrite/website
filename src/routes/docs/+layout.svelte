@@ -5,11 +5,12 @@
 
 	function getDocsVariant(pathname: string): DocsLayoutVariant {
 		const isSDKs = pathname.includes('/sdks');
+		const isAPIs = pathname.includes('/apis/');
 		const isTutorial = pathname.includes('/tutorials/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct || isSDKs) {
+		if (isTutorial || isProduct || isAPIs || isSDKs) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
