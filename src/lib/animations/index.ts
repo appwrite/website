@@ -44,7 +44,6 @@ export const safeAnimate = (
 		return animate(elementOrSelector, keyframes, options);
 	} catch {
 		// do nothing lol
-		console.log('Failed to animate', elementOrSelector);
 	}
 };
 

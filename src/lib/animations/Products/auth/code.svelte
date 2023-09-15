@@ -4,7 +4,13 @@
 
 	const { state } = authController;
 
-	$: content = `const result = account.create(\n\tID.unique(),\n\t'${$state.email}',\n\t'${$state.password}',\n\t"${$state.name}"\n);`;
+	$: content = `
+const result = account.create(
+	ID.unique(),
+	'${$state.email}',	
+	'${$state.password}',
+	"${$state.name}"
+);`.trim();
 </script>
 
 <Code {content} />
