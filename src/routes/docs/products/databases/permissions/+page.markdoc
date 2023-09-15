@@ -17,7 +17,7 @@ Users **don't need access at both levels** to access documents.
 Collection level permissions apply to every document in the collection. 
 If a user has read, create, update, or delete permissions at the collection level, the user can access **all documents** inside the collection.
 
-Configure collection level permissions by navigating to **You collection** > **Settings** > **Permissions**.
+Configure collection level permissions by navigating to **Your collection** > **Settings** > **Permissions**.
 
 [Learn more about permissions and roles](TODO)
 
@@ -26,7 +26,7 @@ Document level permissions grant access to individual documents.
 If a user has read, create, update, or delete permissions at the document level, the user can access the **individual document**.
 
 Document level permissions are only applied if Document Security is enabled in the settings of your collection.
-Enable document level permissions by navigating to **You collection** > **Settings** > **Document security**.
+Enable document level permissions by navigating to **Your collection** > **Settings** > **Document security**.
 
 Document level permissions are configured in individual [documents](TODO).
 

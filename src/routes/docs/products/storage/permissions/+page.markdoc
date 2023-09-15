@@ -1,0 +1,35 @@
+---
+layout: article
+title: Permissions
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 5
+---
+## Permissions
+Permissions define who can access files within a bucket. By default **no permissions** are granted to any users, so no user can access any files.
+Permissions exist at two levels, bucket level and file level permissions. 
+
+In Appwrite, permissions are **granted**, meaning a user has no access by default and receive access when granted. 
+A user with access granted at either bucket level or file level will be able to access a file.
+Users **don't need access at both levels** to access files.
+
+## Bucket Level Permissions
+Bucket level permissions apply to every file in the bucket. 
+If a user has read, create, update, or delete permissions at the bucket level, the user can access **all files** inside the bucket.
+
+Configure bucket level permissions by navigating to **Your bucket** > **Settings** > **Permissions**.
+
+[Learn more about permissions and roles](TODO)
+
+## File Level Permissions
+File level permissions grant access to individual files.
+If a user has read, create, update, or delete permissions at the file level, the user can access the **individual file**.
+
+File level permissions are only applied if File Security is enabled in the settings of your bucket.
+Enable file level permissions by navigating to **Your bucket** > **Settings** > **File security**.
+
+File level permissions are configured in individual [files](TODO).
+
+[Learn more about permissions and roles](TODO)
+
+
