@@ -50,11 +50,6 @@
 					icon: 'icon-cog'
 				},
 				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
-				},
-				{
 					label: 'References',
 					href: '/docs/reference',
 					icon: 'icon-document',
@@ -265,6 +260,22 @@
 					label: 'GraphQL',
 					href: '/docs/apis/graphql',
 					icon: 'icon-play'
+				}
+			]
+		},
+		{
+			label: 'Tooling',
+			href: '#',
+			items: [
+				{
+					label: 'Command Line',
+					href: '#',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'Assistant',
+					href: '/docs/tooling/assistant',
+					icon: 'icon-magic-wand'
 				}
 			]
 		},
