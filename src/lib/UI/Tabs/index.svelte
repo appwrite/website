@@ -30,6 +30,7 @@
 			return next;
 		}
 	});
+	$: value.set(tab);
 
 	setTabsContext({ ...ctx, tabs });
 
@@ -37,7 +38,6 @@
 		elements: { root },
 		states: { value }
 	} = ctx;
-	$: value.set(tab);
 </script>
 
 <div use:melt={$root}>
