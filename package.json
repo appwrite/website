@@ -25,7 +25,6 @@
 		"@types/markdown-it": "^13.0.1",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
-		"appwrite": "github:appwrite/appwrite",
 		"eslint": "^8.49.0",
 		"eslint-config-prettier": "^8.10.0",
 		"eslint-plugin-svelte": "^2.33.1",
@@ -48,6 +47,7 @@
 	"dependencies": {
 		"@apidevtools/swagger-parser": "^10.1.0",
 		"@appwrite.io/pink": "0.0.7-sl10.0",
+		"@appwrite.io/repo": "github:appwrite/appwrite",
 		"@fontsource/inter": "^5.0.8",
 		"highlight.js": "^11.8.0",
 		"markdown-it": "^13.0.1",

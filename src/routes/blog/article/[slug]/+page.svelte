@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { MainFooter } from '$lib/components';
 	import { Main } from '$lib/layouts';
+
+	export let data;
 </script>
 
 <Main>
@@ -10,7 +12,7 @@
 				<div class="aw-container" style="--container-size:42.5rem">
 					<article class="aw-main-article">
 						<header class="aw-main-article-header">
-							<a class="aw-link aw-u-color-text-secondary" href="/">
+							<a class="aw-link aw-u-color-text-secondary" href="/blog">
 								<span class="aw-icon-chevron-left" aria-hidden="true" />
 								<span class="">Back to blog</span>
 							</a>
@@ -20,16 +22,15 @@
 								</li>
 								<li>8 min</li>
 							</ul>
-							<h1 class="aw-title aw-u-color-text-primary">Accessibility in Pink Design</h1>
+							<h1 class="aw-title aw-u-color-text-primary">{data.frontmatter.title}</h1>
 							<p class="aw-description u-margin-block-start-8">
-								Lorem ipsum dolor sit amet consectetur. In diam urna vestib dolor. Sit eu faucibus
-								aliquet non.
+								{data.frontmatter.description}
 							</p>
 							<div class="aw-author u-margin-block-start-16">
 								<div class="u-flex u-cross-center u-gap-8">
-									<img class="aw-author-image" src="." width="44" height="44" alt="" />
+									<img class="aw-author-image" src="/images/blog/placeholder.png" width="44" height="44" alt="" />
 									<div class="aw-author-info">
-										<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
+										<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author's name</h4>
 										<p class="aw-caption-400 u-hide">Author’s role or bio</p>
 									</div>
 								</div>
@@ -67,7 +68,7 @@
 						</div>
 
 						<div class="aw-article-content u-margin-block-start-32">
-							[REGULAR ARTICLE CONTENT HERE]
+							<svelte:component this={data.content} />
 						</div>
 					</article>
 				</div>
@@ -80,7 +81,7 @@
 					<section class="u-margin-block-start-32">
 						<ul class="aw-grid-articles">
 							<li>
-								<a class="aw-grid-articles-item" href="">
+								<a class="aw-grid-articles-item" href="/blog">
 									<div class="aw-grid-articles-item-image">
 										<img
 											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
@@ -109,63 +110,6 @@
 								</a>
 							</li>
 							<li>
-								<a class="aw-grid-articles-item" href="">
-									<div class="aw-grid-articles-item-image">
-										<img
-											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
-											class="aw-image-ratio-4/3"
-											alt=""
-										/>
-									</div>
-									<div class="aw-grid-articles-item-content">
-										<h4 class="aw-label aw-u-color-text-primary">
-											Lorem ipsum dolor sit amet consectetur
-										</h4>
-										<div class="aw-author">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="aw-author-image" src="." width="24" height="24" alt="" />
-												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
-													<p class="aw-caption-400 u-hide">Author’s role or bio</p>
-													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-														<li>[data]</li>
-														<li>[time-to-read] min</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a class="aw-grid-articles-item" href="">
-									<div class="aw-grid-articles-item-image">
-										<img
-											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC"
-											class="aw-image-ratio-4/3"
-											alt=""
-										/>
-									</div>
-									<div class="aw-grid-articles-item-content">
-										<h4 class="aw-label aw-u-color-text-primary">
-											Lorem ipsum dolor sit amet consectetur
-										</h4>
-										<div class="aw-author">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="aw-author-image" src="." width="24" height="24" alt="" />
-												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
-													<p class="aw-caption-400 u-hide">Author’s role or bio</p>
-													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-														<li>[data]</li>
-														<li>[time-to-read] min</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
 						</ul>
 					</section>
 				</div>
@@ -449,7 +393,7 @@
 							<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
 							<ul class="aw-footer-nav-main-list">
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Product</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Product</a></h5>
 									<button class="aw-footer-nav-button aw-is-only-mobile">
 										<span class="aw-caption-500">Product</span>
 										<svg
@@ -469,17 +413,17 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Docs</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Auth</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Databases</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Functions</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Storage</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Realtime</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Localization</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Docs</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Auth</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Databases</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Functions</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Storage</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Realtime</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Localization</a></li>
 									</ul>
 								</li>
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">About</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">About</a></h5>
 									<button class="aw-footer-nav-button is-open aw-is-only-mobile">
 										<span class="aw-caption-500">About</span>
 										<svg
@@ -499,17 +443,17 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Company</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Community</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Blog</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Careers</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Contact Us</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Roadmap</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Changelog</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Community</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Blog</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Contact Us</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
 									</ul>
 								</li>
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Legal</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Legal</a></h5>
 									<button class="aw-footer-nav-button aw-is-only-mobile">
 										<span class="aw-caption-500">Legal</span>
 										<svg
@@ -529,10 +473,10 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Status</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Terms</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Privacy</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Security</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Status</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Terms</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Privacy</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Security</a></li>
 									</ul>
 								</li>
 							</ul>

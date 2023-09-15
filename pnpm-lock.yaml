@@ -11,6 +11,9 @@ dependencies:
   '@appwrite.io/pink':
     specifier: 0.0.7-sl10.0
     version: 0.0.7-sl10.0
+  '@appwrite.io/repo':
+    specifier: github:appwrite/appwrite
+    version: github.com/appwrite/appwrite/549e0b476abda81e382f27994ef0b22504f650c1
   '@fontsource/inter':
     specifier: ^5.0.8
     version: 5.0.8
@@ -52,9 +55,6 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^5.62.0
     version: 5.62.0(eslint@8.49.0)(typescript@5.2.2)
-  appwrite:
-    specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/5717fbe28243a7616434d908554db51d28c4f35d
   eslint:
     specifier: ^8.49.0
     version: 8.49.0
@@ -5513,8 +5513,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/5717fbe28243a7616434d908554db51d28c4f35d:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/5717fbe28243a7616434d908554db51d28c4f35d}
+  github.com/appwrite/appwrite/549e0b476abda81e382f27994ef0b22504f650c1:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/549e0b476abda81e382f27994ef0b22504f650c1}
     name: appwrite
     version: 0.0.0
-    dev: true
+    dev: false
