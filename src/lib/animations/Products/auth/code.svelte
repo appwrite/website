@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Code from '$lib/animations/CodeWindow/Code.svelte';
-	import { authController } from './controller';
+	import { authController } from '.';
 
 	const { state } = authController;
 

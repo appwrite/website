@@ -9,6 +9,8 @@
 	import AnimatedBox from './AnimatedBox.svelte';
 	import { tick } from 'svelte';
 	import CodeWindow from '../CodeWindow/CodeWindow.svelte';
+	import { Databases, databasesController } from './databases';
+	import { objectKeys } from '$lib/utils/object';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -53,15 +55,24 @@
 	})();
 
 	let lastActive: Product | undefined = undefined;
+
+	const controllers = {
+		auth: authController,
+		databases: databasesController
+	};
 	$: (async () => {
 		const fixedLast = lastActive;
 		lastActive = active.product;
-		if (active.product === 'auth' && fixedLast !== 'auth') {
-			await tick();
-			authController.execute({
-				elements
-			});
-		}
+
+		objectKeys(controllers).forEach(async (key) => {
+			const controller = controllers[key];
+			if (active.product === key && fixedLast !== key) {
+				await tick();
+				controller.execute({
+					elements
+				});
+			}
+		});
 	})();
 
 	/* Products infos */
@@ -220,44 +231,47 @@
 					</ul>
 				</div>
 
-				<!-- Key is needed to forcibly change the elements reference -->
-				{#key active.product}
-					<div class="animated">
-						<div class="phone" bind:this={elements.phone}>
-							<Phone>
-								{#if active.product === 'auth'}
-									<Auth.Phone />
-								{/if}
-							</Phone>
-						</div>
-
-						<div class="box-wrapper" bind:this={elements.box}>
-							<AnimatedBox>
-								<div class="top" slot="top">
-									<p class="title">Users</p>
-								</div>
-
-								{#if active.product === 'auth'}
-									<Auth.Box />
-								{/if}
-							</AnimatedBox>
-						</div>
-
-						<div class="code-window" bind:this={elements.code}>
-							<CodeWindow>
-								{#if active.product === 'auth'}
-									<Auth.Code />
-								{/if}
-							</CodeWindow>
-						</div>
-
-						{#if active.product === 'auth'}
-							<div class="controls" bind:this={elements.controls}>
-								<Auth.Controls />
-							</div>
-						{/if}
+				<div class="animated">
+					<div class="phone" bind:this={elements.phone}>
+						<Phone>
+							{#if active.product === 'auth'}
+								<Auth.Phone />
+							{:else if active.product === 'databases'}
+								<Databases.Phone />
+							{/if}
+						</Phone>
 					</div>
-				{/key}
+
+					<div class="box-wrapper" bind:this={elements.box}>
+						<AnimatedBox>
+							<div class="top" slot="top">
+								<p class="title">Users</p>
+							</div>
+
+							{#if active.product === 'auth'}
+								<Auth.Box />
+							{:else if active.product === 'databases'}
+								<Databases.Box />
+							{/if}
+						</AnimatedBox>
+					</div>
+
+					<div class="code-window" bind:this={elements.code}>
+						<CodeWindow>
+							{#if active.product === 'auth'}
+								<Auth.Code />
+							{:else if active.product === 'databases'}
+								<Databases.Code />
+							{/if}
+						</CodeWindow>
+					</div>
+
+					{#if active.product === 'auth'}
+						<div class="controls" bind:this={elements.controls}>
+							<Auth.Controls />
+						</div>
+					{/if}
+				</div>
 			</div>
 		{/if}
 	</div>
@@ -511,6 +525,7 @@
 		top: 0;
 		left: 0;
 		z-index: 10;
+		opacity: 0;
 
 		background: rgba(255, 255, 255, 0.08);
 		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),

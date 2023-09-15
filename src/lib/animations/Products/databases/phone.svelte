@@ -1,50 +1,30 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { authController } from './controller';
-	import { objectKeys } from '$lib/utils/object';
-	import { flip } from '$lib/utils/flip';
+	import { fly } from 'svelte/transition';
+	import { databasesController } from '.';
+	import TaskCheckbox from '../TaskCheckbox.svelte';
 
-	const { state } = authController;
-
-	$: controlsEnabled = $state.showControls && Object.values($state.controls).some(Boolean);
+	const { state } = databasesController;
 </script>
 
 <div class="inner-phone theme-light">
-	<p class="title">Create an Account</p>
-	<p class="subtitle">Please enter your details</p>
-	<div class="inputs">
-		<fieldset>
-			<label for="name">Your Name</label>
-			<input type="name" id="name" placeholder="Enter your name" bind:value={$state.name} />
-		</fieldset>
-		<fieldset>
-			<label for="email">Your Email</label>
-			<input type="email" id="email" placeholder="Enter your email" bind:value={$state.email} />
-		</fieldset>
-		<fieldset>
-			<label for="password">Create Password</label>
-			<input
-				type="password"
-				id="password"
-				placeholder="Enter Password"
-				bind:value={$state.password}
-			/>
-		</fieldset>
+	<div class="header">
+		<p class="title">Your tasks</p>
+		<span class="icon-menu" aria-label="menu" />
 	</div>
-	<button class="sign-up">Sign Up</button>
-	{#if controlsEnabled}
-		<span class="with-sep" transition:fade={{ duration: 100 }}>or sign up with</span>
-		<div class="oauth-btns" transition:fade={{ duration: 100 }}>
-			{#each objectKeys($state.controls).filter((p) => $state.controls[p]) as provider (provider)}
-				<button class="oauth" transition:fade={{ duration: 100 }} animate:flip={{ duration: 250 }}>
-					<div class="inner">
-						<span class="aw-icon-{provider.toLowerCase()}" />
-						<span>{provider}</span>
-					</div>
-				</button>
-			{/each}
-		</div>
-	{/if}
+
+	<div class="date">Today</div>
+	<div class="tasks">
+		{#each $state.tasks as task (task.id)}
+			<div class="task" data-checked={task.checked ? '' : undefined} in:fly={{ x: -16 }}>
+				<TaskCheckbox bind:checked={task.checked} />
+				<span class="title">{task.title}</span>
+			</div>
+		{/each}
+	</div>
+
+	<button class="add-btn">
+		<span class="aw-icon-plus" />
+	</button>
 </div>
 
 <style lang="scss">
@@ -55,157 +35,93 @@
 		color: rgba(67, 67, 71, 1);
 		text-align: left;
 
-		.title {
-			color: #434347;
-			font-family: Inter;
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 600;
-			line-height: 22px; /* 137.5% */
-			letter-spacing: -0.224px;
-		}
+		position: relative;
+		height: 100%;
 
-		.subtitle {
-			color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
-			font-family: Inter;
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 20px; /* 142.857% */
-			letter-spacing: -0.196px;
-		}
-
-		.inputs {
+		.header {
 			display: flex;
-			flex-direction: column;
-			gap: 0.75rem;
-			margin-block-start: 1.5rem;
+			justify-content: space-between;
+			align-items: center;
 
-			fieldset {
-				display: flex;
-				flex-direction: column;
-				gap: 0.3125rem;
-				width: 100%;
+			.title {
+				color: var(--color-greyscale-800, #2d2d31);
+				font-family: Inter;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 600;
+				line-height: 1.375rem; /* 137.5% */
+				letter-spacing: -0.014rem;
+			}
 
-				label {
-					color: var(--color-greyscale-700, #56565c);
-					font-family: Inter;
-					font-size: 12px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 16px; /* 133.333% */
-					letter-spacing: -0.168px;
-				}
-
-				input {
-					all: unset;
-					display: flex;
-					padding: 8px 12px;
-					align-items: flex-start;
-					align-self: stretch;
-					border-radius: 8px;
-					border: 1px solid #d8d8db;
-
-					color: #434347;
-					font-family: Inter;
-					font-size: 12px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 16px; /* 133.333% */
-					letter-spacing: -0.168px;
-				}
+			[class*='icon-'] {
+				font-size: 1.25rem;
+				color: hsl(var(--aw-color-greyscale-500));
 			}
 		}
 
-		.sign-up {
-			padding: 0.375rem 0.75rem;
-			text-align: center;
-			width: 100%;
-			margin-block-start: 1.25rem;
+		.date {
+			margin-block-start: 3rem;
 
-			border-radius: 0.5rem;
-			background: var(--appwrite-purple, #7c67fe);
-			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
-
-			color: var(--color-bw-white, #fff);
-			text-align: center;
-
-			/* Responsive/SubBody-500 */
-			font-family: Inter;
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 22px; /* 157.143% */
-			letter-spacing: -0.07px;
-		}
-
-		.with-sep {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 1rem;
-
+			color: hsl(var(--aw-color-greyscale-600));
 			font-family: Inter;
 			font-size: 0.75rem;
 			font-style: normal;
-			font-weight: 400;
-			line-height: 1.25rem; /* 166.667% */
-			letter-spacing: -0.0105rem;
-			color: hsl(var(--aw-color-greyscale-500));
-
-			margin-block-start: 0.75rem;
-
-			&::before,
-			&::after {
-				content: '';
-				height: 1px;
-				flex-grow: 1;
-				background-color: hsl(var(--aw-color-greyscale-200));
-			}
-		}
-
-		.oauth-btns {
-			--gap: 0.5rem;
-			display: flex;
-			flex-wrap: wrap;
-			gap: var(--gap);
-			margin-block-start: 0.75rem;
-		}
-
-		.oauth {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			border-radius: 0.5rem;
-			border: 1px solid #d9d9d9;
-			color: hsl(var(--aw-color-greyscale-750));
-			text-align: center;
-
-			/* Responsive/Caption-500 */
-			font-family: Inter;
-			font-size: 0.875rem;
-			font-style: normal;
 			font-weight: 500;
-			line-height: 1.375rem; /* 157.143% */
-			letter-spacing: -0.01575rem;
+			line-height: 1.25rem; /* 166.667% */
+		}
 
-			flex: 1 1 calc(50% - var(--gap));
-			padding-block: 0.375rem;
-			position: relative;
-			height: 2.125rem;
+		.tasks {
+			margin-block-start: 0.5rem;
 
-			.inner {
-				position: absolute;
-				left: 50%;
-				top: 50%;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
 
+			.task {
 				display: flex;
-				justify-content: center;
 				align-items: center;
-				gap: 0.5rem;
-				transform: translate(-50%, -50%) scale(var(--inverse-sx, 1), var(--inverse-sy, 1));
+				gap: 0.75rem;
+
+				border-radius: 0.5rem;
+				border: 1px solid hsl(var(--aw-color-greyscale-50));
+				background: hsl(var(--aw-color-white));
+				color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
+
+				padding-block: 0.55rem;
+				padding-inline: 0.88rem;
+
+				/* Responsive/SubBody-400 */
+				font-family: Inter;
+				font-size: 0.875rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1.375rem; /* 157.143% */
+				letter-spacing: -0.00394rem;
+
+				transition: opacity 200ms ease;
+
+				&[data-checked] {
+					opacity: 0.6;
+				}
 			}
+		}
+
+		.add-btn {
+			position: absolute;
+			right: 1rem;
+			bottom: 2.5rem;
+
+			width: 2.5rem;
+			height: 2.5rem;
+			flex-shrink: 0;
+			box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
+			background-color: rgba(124, 103, 254, 1);
+			color: rgba(237, 237, 240, 1);
+			font-size: 1.5rem;
+
+			display: grid;
+			place-items: center;
+			border-radius: 100%;
 		}
 	}
 </style>

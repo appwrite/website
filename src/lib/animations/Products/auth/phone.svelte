@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { authController } from './controller';
+	import { authController } from '.';
 	import { objectKeys } from '$lib/utils/object';
 	import { flip } from '$lib/utils/flip';
 
