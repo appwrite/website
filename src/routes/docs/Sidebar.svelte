@@ -153,9 +153,37 @@
 							href: '/docs/products/databases/quick-start'
 						},
 						{
+							label: 'Databases',
+							href: '/docs/products/databases/databases'
+						},
+						{
+							label: 'Collections',
+							href: '/docs/products/databases/collections'
+						},
+						{
+							label: 'Documents',
+							href: '/docs/products/databases/documents'
+						},
+						{
 							label: 'Queries',
 							href: '/docs/products/databases/queries'
-						}
+						},
+						{
+							label: 'Order',
+							href: '/docs/products/databases/order'
+						},
+						{
+							label: 'Pagination',
+							href: '/docs/products/databases/pagination'
+						},
+						{
+							label: 'Permissions',
+							href: '/docs/products/databases/permissions'
+						},
+						{
+							label: 'Relationships',
+							href: '/docs/products/databases/relationships'
+						},
 					]
 				},
 				{
@@ -192,13 +220,29 @@
 				},
 				{
 					label: 'Storage',
-					href: '#',
+					href: '/docs/products/storage',
 					icon: 'icon-folder',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
-						}
+							label: 'Quick start',
+							href: '/docs/products/storage/quick-start'
+						},
+						{
+							label: 'Buckets',
+							href: '/docs/products/storage/buckets'
+						},
+						{
+							label: 'Upload and download',
+							href: '/docs/products/storage/upload-download'
+						},
+						{
+							label: 'Images',
+							href: '/docs/products/storage/images'
+						},
+						{
+							label: 'Permissions',
+							href: '/docs/products/storage/permissions'
+						},
 					]
 				}
 			]
@@ -410,19 +454,19 @@
 				<h4 class="aw-side-nav-header aw-eyebrow">APIS</h4>
 				<ul>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-clock" aria-hidden="true" />
 							<span class="aw-caption-400">Realtime</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">REST</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">GraphQL</span>
 						</a>

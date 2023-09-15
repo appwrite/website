@@ -6,12 +6,12 @@
 	import { Platform, languageMap, versions } from '$lib/utils/references.js';
 	import { Fence } from '$markdoc/nodes/_Module.svelte';
 
-	const handleRefClick = () => {
+	export let data;
+
+	function handleRefClick() {
 		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
 		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
-	};
-
-	export let data;
+	}
 
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;

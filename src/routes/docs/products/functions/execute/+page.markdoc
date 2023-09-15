@@ -50,7 +50,7 @@ import { Client, Functions } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 const functions = new Functions(client)
 
@@ -75,7 +75,7 @@ import 'dart:convert';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 final functions = Functions(client);
 
@@ -103,7 +103,7 @@ import com.google.gson.Gson;
 
 val client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]')
+    .setProject('<PROJECT_ID>')
 
 val functions = Functions(client)
 
@@ -130,7 +130,7 @@ import Foundation
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 let functions = Functions(client)
 
@@ -159,7 +159,7 @@ import { Client, Functions } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]')
+    .setProject('<PROJECT_ID>')
     .setKey('[API_KEY]');
 
 const functions = new Functions(client);
@@ -188,7 +188,7 @@ $client = new Client();
 
 $client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]')
+    .setProject('<PROJECT_ID>')
     .setKey('[API_KEY]');
 
 $functions = new Functions($client);
@@ -219,7 +219,7 @@ client = Client()
 
 (client
     .set_endpoint('https://cloud.appwrite.io/v1')
-    .set_project('[PROJECT_ID]')
+    .set_project('<PROJECT_ID>')
     .set_key('[API_KEY]')
 )
 
@@ -247,7 +247,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') 
-    .set_project('[PROJECT_ID]') 
+    .set_project('<PROJECT_ID>') 
     .set_key('[API_KEY]') 
 
 functions = Functions.new(client)
@@ -272,7 +272,7 @@ import { Client, Functions } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') 
-    .setProject('[PROJECT_ID]')
+    .setProject('<PROJECT_ID>')
     .setKey('[API_KEY]');
 
 const functions = new Functions(client);
@@ -297,7 +297,7 @@ import 'dart:convert';
 
 final client = Client();
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]')
+    .setProject('<PROJECT_ID>')
     .setKey('[API_KEY]');
 
 final functions = Functions(client);
@@ -326,7 +326,7 @@ import Foundation
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
     .setKey("[API_KEY]")
 
 let functions = Functions(client)
@@ -356,7 +356,7 @@ using System.Text.Json;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1")
-    .SetProject("[PROJECT_ID]")
+    .SetProject("<PROJECT_ID>")
     .SetKey("[API_KEY]");
 
 var functions = new Functions(client);
@@ -390,7 +390,7 @@ import com.google.gson.Gson
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
     .setKey("[API_KEY]")
 
 val functions = Functions(client)
@@ -420,7 +420,7 @@ import com.google.gson.Gson;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
     .setKey("[API_KEY]");
 
 Functions functions = new Functions(client);

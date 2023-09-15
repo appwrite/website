@@ -719,7 +719,7 @@
 							<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
 							<ul class="aw-footer-nav-main-list">
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Product</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Product</a></h5>
 									<button class="aw-footer-nav-button aw-is-only-mobile">
 										<span class="aw-caption-500">Product</span>
 										<svg
@@ -739,17 +739,17 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Docs</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Auth</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Databases</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Functions</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Storage</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Realtime</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Localization</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Docs</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Auth</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Databases</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Functions</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Storage</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Realtime</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Localization</a></li>
 									</ul>
 								</li>
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">About</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">About</a></h5>
 									<button class="aw-footer-nav-button is-open aw-is-only-mobile">
 										<span class="aw-caption-500">About</span>
 										<svg
@@ -769,17 +769,17 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Company</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Community</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Blog</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Careers</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Contact Us</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Roadmap</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Changelog</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Community</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Blog</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Contact Us</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
 									</ul>
 								</li>
 								<li class="aw-footer-nav-main-item">
-									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href=".">Legal</a></h5>
+									<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Legal</a></h5>
 									<button class="aw-footer-nav-button aw-is-only-mobile">
 										<span class="aw-caption-500">Legal</span>
 										<svg
@@ -799,10 +799,10 @@
 										</svg>
 									</button>
 									<ul class="aw-footer-nav-secondary-list">
-										<li class="aw-footer-nav-secondary-item"><a href=".">Status</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Terms</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Privacy</a></li>
-										<li class="aw-footer-nav-secondary-item"><a href=".">Security</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Status</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Terms</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Privacy</a></li>
+										<li class="aw-footer-nav-secondary-item"><a href="#">Security</a></li>
 									</ul>
 								</li>
 							</ul>

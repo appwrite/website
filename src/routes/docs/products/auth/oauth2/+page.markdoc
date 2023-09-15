@@ -32,7 +32,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
 
@@ -48,7 +48,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');               // Your project ID
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 final account = Account(client);
 
@@ -58,7 +58,7 @@ await account.createOAuth2Session(provider: 'amazon');
 {% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
-For Android, add the following activity inside the `<application>` tag in your AndroidManifest.xml. Replace `[PROJECT_ID]` with your actual Appwrite project ID.
+For Android, add the following activity inside the `<application>` tag in your AndroidManifest.xml. Replace `<PROJECT_ID>` with your actual Appwrite project ID.
 
 ```xml
 <!-- Add this inside the `<application>` tag, along side the existing `<activity>` tags -->
@@ -67,7 +67,7 @@ For Android, add the following activity inside the `<application>` tag in your A
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+    <data android:scheme="appwrite-callback-<PROJECT_ID>" />
   </intent-filter>
 </activity>
 ```
@@ -77,7 +77,7 @@ import io.appwrite.services.Account
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
 
 val account = Account(client)
 
@@ -99,7 +99,7 @@ For Apple, add the following URL scheme to your `Info.plist`.
     <string>io.appwrite</string>
     <key>CFBundleURLSchemes</key>
     <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
+        <string>appwrite-callback-<PROJECT_ID></string>
     </array>
 </dict>
 </array>
@@ -121,7 +121,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                // Your project ID
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 let account = Account(client)
 
@@ -164,7 +164,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');               // Your project ID
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 final account = Account(client);
 
