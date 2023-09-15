@@ -139,7 +139,7 @@ function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject 
 const specs = import.meta.glob('$appwrite/app/config/specs/open-api3*-(client|server).json');
 async function getSpec(version: string, platform: string) {
 	const isServer = platform.startsWith('server-');
-	const target = `/node_modules/appwrite/app/config/specs/open-api3-${version}-${
+	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
 		isServer ? 'server' : 'client'
 	}.json`;
 	return specs[target]();
@@ -211,7 +211,7 @@ export async function getService(
 			}
 		);
 
-		const path = `/node_modules/appwrite/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+		const path = `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
 			continue;
 		}
