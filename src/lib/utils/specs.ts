@@ -46,6 +46,10 @@ type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
 
 function getExamples(version: string) {
 	switch (version) {
+		case '0.15.x':
+			return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
+				as: 'raw'
+			});
 		case '1.0.x':
 			return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
 				as: 'raw'
