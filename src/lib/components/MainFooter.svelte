@@ -80,13 +80,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href=".">Support</a>
+					<a href="#">Support</a>
 				</li>
 				<li>
-					<a href=".">Status</a>
+					<a href="#">Status</a>
 				</li>
 				<li>
-					<a href=".">Changelog</a>
+					<a href="#">Changelog</a>
 				</li>
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
