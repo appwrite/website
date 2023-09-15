@@ -323,8 +323,46 @@
 				},
 				{
 					label: 'Self-hosting',
-					href: '#',
-					icon: 'icon-server'
+					href: '/docs/advanced/self-hosting',
+					icon: 'icon-server',
+					items: [
+						{
+							label: 'Install',
+							href: '/docs/advanced/self-hosting/install'
+						},
+						{
+							label: 'Email delivery',
+							href: '/docs/advanced/self-hosting/email'
+						},
+						{
+							label: 'SMS delivery',
+							href: '/docs/advanced/self-hosting/sms'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/advanced/self-hosting/functions'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/advanced/self-hosting/storage'
+						},
+						{
+							label: 'TLS certificates',
+							href: '/docs/advanced/self-hosting/certificates'
+						},
+						{
+							label: 'Update',
+							href: '/docs/advanced/self-hosting/update'
+						},
+						{
+							label: 'Debug',
+							href: '/docs/advanced/self-hosting/debug'
+						},
+						{
+							label: 'Production',
+							href: '/docs/advanced/self-hosting/production'
+						},
+					]
 				}
 			]
 		}
