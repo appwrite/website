@@ -13,6 +13,7 @@ import python from 'highlight.js/lib/languages/python';
 import diff from 'highlight.js/lib/languages/diff';
 import ruby from 'highlight.js/lib/languages/ruby';
 import csharp from 'highlight.js/lib/languages/csharp';
+import http from 'highlight.js/lib/languages/http';
 
 const languages = {
 	js: javascript,
@@ -28,7 +29,8 @@ const languages = {
 	diff: diff,
 	py: python,
 	rb: ruby,
-	cs: csharp
+	cs: csharp,
+	http: http,
 } as const satisfies Record<string, LanguageFn>;
 
 Object.entries(languages).forEach(([key, value]) => {
