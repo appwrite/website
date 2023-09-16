@@ -52,57 +52,44 @@
         color:hsl(var(--aw-color-greyscale-50));
       }
 
-      &::before {
-        --m-border-gradient: linear-gradient(
+
+        --m-border-gradient-before: linear-gradient(
           to bottom,
           rgba(253, 54, 110, 0.48) 0%,
           rgba(253, 54, 110, 0) 180%
         );
-      }
+      
     
-      &::after {
-        --m-border-gradient: radial-gradient(
+      
+        --m-border-gradient-after: radial-gradient(
           42.86% 42.86% at 50.55% -0%,
           rgba(255, 255, 255, 0.2) 0%,
           rgba(255, 255, 255, 0) 100%
         );
-      }
+      
 
       &:where(:hover) {
         background: rgba(253, 54, 110, 0.10);
         box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-
-        
-        &::before {
-          --m-border-gradient: linear-gradient(
-            180deg, rgba(253, 54, 110, 0.64) 0%,
-            rgba(253, 54, 110, 0.00) 163.1%
-            );
-          }
-
-          &::after {
-            --m-border-gradient: radial-gradient(
-              42.86% 42.86% at 50.55% 0%,
-              rgba(255, 255, 255, 0.20) 0%,
-              rgba(255, 255, 255, 0.00) 100%
-            );
-          }
+        --m-border-gradient-before: linear-gradient(
+        180deg, rgba(253, 54, 110, 0.64) 0%,
+        rgba(253, 54, 110, 0.00) 163.1%
+        );
+        --m-border-gradient-after: radial-gradient(
+          42.86% 42.86% at 50.55% 0%,
+          rgba(255, 255, 255, 0.20) 0%,
+          rgba(255, 255, 255, 0.00) 100%
+        );
+          
       }
 
       &:where(:active) {
         background: rgba(253, 54, 110, 0.16);
         box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-
-        &::before {
-          --m-border-gradient: 
-          linear-gradient(180deg, rgba(253, 54, 110, 0.64) 0%, rgba(253, 54, 110, 0.00) 163.1%);
-        }
-
-        &::after {
-          --m-border-gradient: 
-          radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.00) 100%);
-        }
-
+        --m-border-gradient-before: 
+        linear-gradient(180deg, rgba(253, 54, 110, 0.64) 0%, rgba(253, 54, 110, 0.00) 163.1%);
+        --m-border-gradient-after: 
+        radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.00) 100%);
       }
 
       &:where(:focus-visible) {
@@ -120,15 +107,15 @@
         color:hsl(var(--aw-color-pink-500));
       }
 
-      &::before {
-        --m-border-gradient: 
+      
+        --m-border-gradient-before: 
         linear-gradient(180deg, rgba(253, 54, 110, 0.19) 0%, rgba(253, 54, 110, 0.48) 100%);
-      }
+      
     
-      &::after {
-        --m-border-gradient: 
+      
+        --m-border-gradient-after: 
         radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
-      }
+      
 
       &:where(:hover) {
         background: rgba(253, 54, 110, 0.10);

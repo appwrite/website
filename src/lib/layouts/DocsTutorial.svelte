@@ -35,7 +35,7 @@
 						aria-label="previous page"
 					>
 						<span
-							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary"
+							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
 							aria-hidden="true"
 						/>
 					</button>
