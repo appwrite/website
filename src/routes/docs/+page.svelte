@@ -473,7 +473,7 @@
 				</li>
 				<li>
 					<div class="aw-card is-full-color">
-						<h4 class="aw-sub-body-500 u-margin-block-start-8">Superbase</h4>
+						<h4 class="aw-sub-body-500 u-margin-block-start-8">Supabase</h4>
 						<p class="aw-sub-body-400 u-margin-block-start-4">
 							Lorem ipsum dolor sit amet consectetur.
 						</p>
@@ -481,7 +481,7 @@
 				</li>
 				<li>
 					<div class="aw-card is-full-color">
-						<h4 class="aw-sub-body-500 u-margin-block-start-8">NHost</h4>
+						<h4 class="aw-sub-body-500 u-margin-block-start-8">Nhost</h4>
 						<p class="aw-sub-body-400 u-margin-block-start-4">
 							Lorem ipsum dolor sit amet consectetur.
 						</p>

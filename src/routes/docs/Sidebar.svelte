@@ -307,7 +307,7 @@
 							href: '/docs/products/migrations/supabase'
 						},
 						{
-							label: 'From NHost',
+							label: 'From Nhost',
 							href: '/docs/products/migrations/nhost'
 						},
 						{
