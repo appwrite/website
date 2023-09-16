@@ -28,7 +28,7 @@
 						aria-label="previous page"
 					>
 						<span
-							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary"
+							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
 							aria-hidden="true"
 						/>
 					</button>
@@ -299,6 +299,27 @@
 							</ul>
 						</li>
 					</ul>
+					<ul class="aw-numeric-list">
+						<li>aaa</li>
+						<li>bbb</li>
+						<li>
+							ccc
+							<ul class="aw-numeric-list">
+								<li>aaa</li>
+								<li>bbb</li>
+								<li>
+									ccc
+									<ul class="aw-numeric-list">
+										<li>aaa</li>
+										<li>bbb</li>
+										<li>
+											ccc
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section class="aw-article-content-sub-section">
 					<div class="aw-card is-normal">
@@ -432,48 +453,48 @@
 				</div>
 				<ol class="aw-references-menu-list">
 					<li class="aw-references-menu-item">
-						<a href="." class="aw-references-menu-link is-selected">
+						<a href="#" class="aw-references-menu-link is-selected">
 							<span class="aw-caption-400">Prerequisites</span>
 						</a>
 					</li>
 					<li class="aw-references-menu-item">
-						<a href="." class="aw-references-menu-link">
+						<a href="#" class="aw-references-menu-link">
 							<span class="aw-caption-400">Featured products</span>
 						</a>
 					</li>
 					<li class="aw-references-menu-item">
-						<a href="." class="aw-references-menu-link">
+						<a href="#" class="aw-references-menu-link">
 							<span class="aw-numeric-badge">1</span>
 							<span class="aw-caption-400">Title</span>
 						</a>
 					</li>
 					<li class="aw-references-menu-item">
-						<a href="." class="aw-references-menu-link">
+						<a href="#" class="aw-references-menu-link">
 							<span class="aw-numeric-badge">2</span>
 							<span class="aw-caption-400">Title</span>
 						</a>
 						<ol class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32">
 							<li class="aw-references-menu-item">
-								<a href="." class="aw-references-menu-link">
+								<a href="#" class="aw-references-menu-link">
 									<span class="aw-caption-400">Subtitle</span>
 								</a>
 							</li>
 							<li class="aw-references-menu-item">
-								<a href="." class="aw-references-menu-link">
+								<a href="#" class="aw-references-menu-link">
 									<span class="aw-caption-400">Subtitle</span>
 								</a>
 							</li>
 						</ol>
 					</li>
 					<li class="aw-references-menu-item">
-						<a href="." class="aw-references-menu-link">
+						<a href="#" class="aw-references-menu-link">
 							<span class="aw-numeric-badge">3</span>
 							<span class="aw-caption-400">Title</span>
 						</a>
 					</li>
 				</ol>
 				<div class="u-sep-block-start u-padding-block-start-20">
-					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href=".">
+					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#">
 						<span class="icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>

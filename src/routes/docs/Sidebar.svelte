@@ -62,7 +62,41 @@
 				{
 					label: 'References',
 					href: '/docs/reference',
-					icon: 'icon-document'
+					icon: 'icon-document',
+					items: [
+						{
+							label: 'Account',
+							href: '/docs/reference/cloud/client-web/account'
+						},
+						{
+							label: 'Users',
+							href: '/docs/reference/cloud/client-web/users'
+						},
+						{
+							label: 'Teams',
+							href: '/docs/reference/cloud/client-web/teams'
+						},
+						{
+							label: 'Databases',
+							href: '/docs/reference/cloud/client-web/databases'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/reference/cloud/client-web/storage'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/reference/cloud/client-web/functions'
+						},
+						{
+							label: 'Localization',
+							href: '/docs/reference/cloud/client-web/locale'
+						},
+						{
+							label: 'Avatars',
+							href: '/docs/reference/1.3.x/client-web/avatars'
+						}
+					]
 				}
 			]
 		},
@@ -329,19 +363,19 @@
 				<h4 class="aw-side-nav-header aw-eyebrow">APIS</h4>
 				<ul>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-clock" aria-hidden="true" />
 							<span class="aw-caption-400">Realtime</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">REST</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">GraphQL</span>
 						</a>
