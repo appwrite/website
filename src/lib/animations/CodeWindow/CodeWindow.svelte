@@ -14,6 +14,7 @@
 			<slot {Code} />
 		</AutoBox>
 	</div>
+	<div id="code-bottom" />
 </div>
 
 <style lang="scss">

@@ -21,6 +21,7 @@
 	import { objectKeys } from '$lib/utils/object';
 	import { get, writable } from 'svelte/store';
 	import { Storage, storageController } from './storage';
+	import { Functions, functionsController } from './functions';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -32,7 +33,7 @@
 	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
 	type Product = (typeof products)[number];
 
-	const animScale: Scale = [0.2, 0.95];
+	const animScale: Scale = [0.1, 0.95];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -60,7 +61,8 @@
 	const controllers = {
 		auth: authController,
 		databases: databasesController,
-		storage: storageController
+		storage: storageController,
+		functions: functionsController
 	};
 	$: (async () => {
 		const fixedLast = lastActive;
@@ -171,7 +173,7 @@
 			<pre>{JSON.stringify({ scrollInfo })}</pre>
 		</div> -->
 
-		{#if scrollInfo.percentage < 0.2}
+		{#if scrollInfo.percentage < 0.1}
 			<div
 				class="main-text"
 				out:fly={{ duration: 250, y: -300 }}
@@ -241,9 +243,9 @@
 								<Databases.Phone />
 							{:else if active.product === 'storage'}
 								<Storage.Phone />
-								<!-- {:else if active.product === 'functions'}
+							{:else if active.product === 'functions'}
 								<Functions.Phone />
-							{:else if active.product === 'realtime'}
+								<!-- {:else if active.product === 'realtime'}
 								<Realtime.Phone /> -->
 							{/if}
 						</Phone>
@@ -260,7 +262,7 @@
 									{:else if active.product === 'storage'}
 										Files
 									{:else if active.product === 'functions'}
-										Functions
+										<!-- oblivion -->
 									{:else if active.product === 'realtime'}
 										Realtime
 									{/if}
@@ -289,6 +291,8 @@
 								<Databases.Code />
 							{:else if active.product === 'storage'}
 								<Storage.Code />
+							{:else if active.product === 'functions'}
+								<Functions.Code />
 							{/if}
 						</CodeWindow>
 					</div>
