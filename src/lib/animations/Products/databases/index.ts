@@ -29,62 +29,57 @@ const state = createResettable<State>({
 });
 
 const execute = async () => {
-	try {
-		const phone = getElSelector('phone');
-		const box = getElSelector('box');
-		const code = getElSelector('code');
-		const { update } = state.reset();
+	const phone = getElSelector('phone');
+	const box = getElSelector('box');
+	const code = getElSelector('code');
+	const { update } = state.reset();
 
-		await Promise.all([
-			safeAnimate(phone, { x: 390, y: 0 }, { duration: 0.5 })?.finished,
-			safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
-			safeAnimate(code, { x: 80, y: 460, opacity: 1 }, { duration: 0.5 })?.finished
-		]);
+	await Promise.all([
+		safeAnimate(phone, { x: 390, y: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
+		safeAnimate(code, { x: 80, y: 460, opacity: 1 }, { duration: 0.5 })?.finished
+	]);
 
-		await sleep(1000);
+	await sleep(1000);
 
-		update((p) => ({
-			...p,
-			tasks: [
-				...p.tasks,
-				{
-					id: '3397fecdedb13397fecdedb2',
-					title: 'Create wireframes',
-					checked: false
-				}
-			]
-		}));
-		await sleep(500);
+	update((p) => ({
+		...p,
+		tasks: [
+			...p.tasks,
+			{
+				id: '3397fecdedb13397fecdedb2',
+				title: 'Create wireframes',
+				checked: false
+			}
+		]
+	}));
+	await sleep(500);
 
-		update((p) => ({
-			...p,
-			tableSlice: p.tableSlice + 1
-		}));
+	update((p) => ({
+		...p,
+		tableSlice: p.tableSlice + 1
+	}));
 
-		await sleep(500);
+	await sleep(500);
 
-		update((p) => ({
-			...p,
-			tasks: [
-				...p.tasks,
-				{
-					id: '3397fecdedb13397fecdedb3',
-					title: 'Create visual design',
-					checked: false
-				}
-			]
-		}));
+	update((p) => ({
+		...p,
+		tasks: [
+			...p.tasks,
+			{
+				id: '3397fecdedb13397fecdedb3',
+				title: 'Create visual design',
+				checked: false
+			}
+		]
+	}));
 
-		await sleep(500);
+	await sleep(500);
 
-		update((p) => ({
-			...p,
-			tableSlice: p.tableSlice + 1
-		}));
-	} catch {
-		// Do nothing. It's expected to error when trying to animate elements that no longer exist,
-		// e.g. when the component is unmounted.
-	}
+	update((p) => ({
+		...p,
+		tableSlice: p.tableSlice + 1
+	}));
 };
 
 export const databasesController = {
