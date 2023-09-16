@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { toScale, type Scale } from '$lib/utils/toScale';
 
-	import { browser } from '$app/environment';
-	import { animation, createScrollHandler, scroll, type Animation } from '.';
 	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
+	import { animation, createScrollHandler, scroll, type Animation } from '.';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -11,52 +10,66 @@
 		y: { easing: spring(springOptions) }
 	};
 	const animations: {
-		mobile: Animation;
-		desktop: Animation;
-	}[] = browser
-		? [
-				{
-					mobile: animation('#oss-discord', { x: [-1200, 0], y: 0, rotate: 1 }, animationOptions),
-					desktop: animation(
-						'#oss-discord',
-						{ x: [-100, 20], y: [0, -1030], rotate: 15 },
-						animationOptions
-					)
-				},
-				{
-					mobile: animation('#oss-github', { x: [-1200, 0], y: -10, rotate: -2 }, animationOptions),
-					desktop: animation(
-						'#oss-github',
-						{ rotate: 6.26, x: [0, -100], y: [0, -707] },
-						animationOptions
-					)
-				},
-				{
-					mobile: animation('#oss-twitter', { x: [-1200, 0], y: 10, rotate: -3 }, animationOptions),
-					desktop: animation(
-						'#oss-twitter',
-						{ rotate: -15, x: [0, 100], y: [0, -900] },
-						animationOptions
-					)
-				},
-				{
-					mobile: animation('#oss-youtube', { x: [-1200, 0], y: 5, rotate: 2 }, animationOptions),
-					desktop: animation(
-						'#oss-youtube',
-						{ rotate: -3.77, x: [0, -100], y: [0, -770] },
-						animationOptions
-					)
-				},
-				{
-					mobile: animation('#oss-commits', { x: [-1200, 0], y: -4, rotate: -1 }, animationOptions),
-					desktop: animation(
-						'#oss-commits',
-						{ rotate: -10.2, x: [0, 100], y: [0, -1030] },
-						animationOptions
-					)
-				}
-		  ]
-		: [];
+		mobile: {
+			main: Animation;
+			reversed: Animation;
+		};
+		desktop: {
+			main: Animation;
+			reversed: Animation;
+		};
+	}[] = [
+		{
+			mobile: {
+				main: animation('#oss-discord', { x: 0, y: 0, rotate: 1 }, animationOptions),
+				reversed: animation('#oss-discord', { x: -1200, y: 0, rotate: 1 }, animationOptions)
+			},
+			desktop: {
+				main: animation('#oss-discord', { x: 20, y: '-80vh', rotate: 15 }, animationOptions),
+				reversed: animation('#oss-discord', { x: -100, y: '0vh', rotate: 15 }, animationOptions)
+			}
+		},
+		{
+			mobile: {
+				main: animation('#oss-github', { x: 0, y: -10, rotate: -2 }, animationOptions),
+				reversed: animation('#oss-github', { x: -1200, y: 10, rotate: -2 }, animationOptions)
+			},
+			desktop: {
+				main: animation('#oss-github', { x: -100, y: '-55vh', rotate: 6.26 }, animationOptions),
+				reversed: animation('#oss-github', { x: 0, y: '0vh', rotate: 6.26 }, animationOptions)
+			}
+		},
+		{
+			mobile: {
+				main: animation('#oss-twitter', { x: 0, y: 10, rotate: -3 }, animationOptions),
+				reversed: animation('#oss-twitter', { x: -1200, y: -10, rotate: -3 }, animationOptions)
+			},
+			desktop: {
+				main: animation('#oss-twitter', { x: 100, y: '-70vh', rotate: -15 }, animationOptions),
+				reversed: animation('#oss-twitter', { x: 0, y: '0vh', rotate: -15 }, animationOptions)
+			}
+		},
+		{
+			mobile: {
+				main: animation('#oss-youtube', { x: 0, y: 5, rotate: 2 }, animationOptions),
+				reversed: animation('#oss-youtube', { x: -1200, y: -5, rotate: 2 }, animationOptions)
+			},
+			desktop: {
+				main: animation('#oss-youtube', { x: -100, y: '-55vh', rotate: -3.77 }, animationOptions),
+				reversed: animation('#oss-youtube', { x: 0, y: '0vh', rotate: -3.77 }, animationOptions)
+			}
+		},
+		{
+			mobile: {
+				main: animation('#oss-commits', { x: 0, y: -4, rotate: -1 }, animationOptions),
+				reversed: animation('#oss-commits', { x: -1200, y: 4, rotate: -1 }, animationOptions)
+			},
+			desktop: {
+				main: animation('#oss-commits', { x: 100, y: '-80vh', rotate: -10.2 }, animationOptions),
+				reversed: animation('#oss-commits', { x: 0, y: '0vh', rotate: -10.2 }, animationOptions)
+			}
+		}
+	];
 
 	const animScale: Scale = [0, animations.length - 1];
 	const percentScale: Scale = [0.1, 0.8];
@@ -66,9 +79,10 @@
 			return {
 				percentage: toScale(i, animScale, percentScale),
 				whenAfter() {
-					const anim = isMobile() ? mobile : desktop;
-					anim.play();
-					return anim.reverse;
+					const { main, reversed } = isMobile() ? mobile : desktop;
+
+					main.play();
+					return reversed.play;
 				}
 			};
 		})
@@ -79,14 +93,19 @@
 	};
 </script>
 
-<svelte:window on:resize={scrollHandler.reset} />
-
 <div
 	id="open-source"
 	use:scroll
 	on:aw-scroll={({ detail }) => {
-		const { scrollPercentage } = detail;
-		scrollHandler(scrollPercentage);
+		const { percentage } = detail;
+		scrollHandler(percentage);
+	}}
+	on:aw-resize={({ detail }) => {
+		scrollHandler.reset();
+		const { percentage } = detail;
+		console.log('resize', percentage);
+
+		scrollHandler(percentage);
 	}}
 >
 	<div class="sticky-wrapper">
@@ -100,7 +119,6 @@
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-discord"
-				style="--card-padding:2rem"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-discord aw-u-font-size-40" aria-hidden="true" aria-label="Discord" />
@@ -111,7 +129,6 @@
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-github"
-				style="--card-padding:2rem"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-github aw-u-font-size-40" aria-hidden="true" aria-label="GitHub" />
@@ -122,7 +139,6 @@
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-twitter"
-				style="--card-padding:2rem"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-twitter aw-u-font-size-40" aria-hidden="true" aria-label="Twitter" />
@@ -133,7 +149,6 @@
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-youtube"
-				style="--card-padding:2rem"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
@@ -144,7 +159,6 @@
 			<div
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-commits"
-				style="--card-padding:2rem"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-github aw-u-font-size-40" aria-hidden="true" aria-label="GitHub" />
@@ -177,6 +191,17 @@
 		height: 100vh;
 
 		text-align: center;
+
+		&::after {
+			background: linear-gradient(
+				to top,
+				hsl(var(--aw-color-background)) 0%,
+				hsl(var(--aw-color-background) / 0) 5%
+			);
+			content: '';
+			position: absolute;
+			inset: 0;
+		}
 
 		p {
 			max-width: 48.875rem;
@@ -213,6 +238,8 @@
 			rgba(255, 255, 255, 0.6) 100%
 		);
 		backdrop-filter: blur(10px);
+
+		--card-padding: 2rem;
 
 		--w: clamp(306px, 50vw, 22.125rem);
 		--h: 20.125rem;

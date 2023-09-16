@@ -24,12 +24,12 @@
 		},
 		{
 			icon: 'aw-icon-linkedin',
-			link: '.'
+			link: '#'
 		},
 		{
 			icon: 'aw-icon-youtube',
 			label: 'YouTube',
-			link: '.'
+			link: '#'
 		}
 	];
 

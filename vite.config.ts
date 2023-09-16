@@ -7,12 +7,19 @@ export default defineConfig({
 		sveltekit(),
 		dynamicImport({
 			filter(id) {
-				if (id.includes('/node_modules/appwrite/docs')) {
+				if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
 					return true;
 				}
 			}
 		})
 	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@use '$scss/abstract' as *;`
+			}
+		}
+	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
