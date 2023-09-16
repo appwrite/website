@@ -5,24 +5,25 @@
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
   &.is-normal {
     --p-card-bg-color: var(--p-card-bg-color-default);
-    --p-card-bg-color-default: var(--aw-color-greyscale-900) / 0.04;
+    --p-card-bg-color-default: var(--aw-color-card);
 
     --p-card-border-color: var(--p-card-border-color-default);
     --p-card-border-color-default: var(--aw-color-black) / 0.08;
 
     --card-padding: #{pxToRem(16)};
 
+    display:block;
     background-color: hsl(var(--p-card-bg-color));
     border: solid pxToRem(1) hsl(var(--p-card-border-color));
     padding: var(--p-card-padding);
     border-radius: var(--p-card-border-radius);
 
     #{$theme-dark} & {
-      --p-card-bg-color-default: var(--aw-color-white) / 0.06;
       --p-card-border-color-default: var(--aw-color-white) / 0.10;
     }
   }
   &.is-white {
+    display:block;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     backdrop-filter: blur(12px);
@@ -62,5 +63,9 @@
       --m-border-gradient-before: linear-gradient(180deg, rgba(253, 54, 110, 0.48) 0%, rgba(253, 54, 110, 0.00) 100%);
       --m-border-gradient-after: radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
     }
+  }
+
+  @media #{$break1} {
+    --p-card-padding: var(--card-padding-mobile, var(--card-padding));
   }
 }

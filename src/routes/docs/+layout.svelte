@@ -5,7 +5,7 @@
 
 	function getDocsVariant(pathname: string): DocsLayoutVariant {
 		const isTutorial = pathname.includes('/tutorials/');
-		const isProduct = pathname.includes('/products/');
+		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
 		const isReference = pathname.includes('/reference');
 
 		if (isTutorial || isProduct) {

@@ -42,3 +42,24 @@
   &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
   &-col      { padding-block:pxToRem(19); padding-inline:pxToRem(12); }
 }
+
+
+
+.#{$p}-table-line {
+  inline-size:100%;
+  &-row {
+    border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth));
+  }
+  &-cell {
+    &:nth-child(n + 2) { padding-inline-start:pxToRem(24); }
+  }
+
+  &-head {
+    .#{$p}-table-line-cell { padding-block-end:pxToRem(16); }
+  }
+
+  &-body {
+    .#{$p}-table-line-row:last-child { border-block-end-width:0; }
+    .#{$p}-table-line-cell { padding-block:pxToRem(32); }
+  }
+}
