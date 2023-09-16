@@ -81,6 +81,7 @@
     &::marker { content:revert; color:hsl(var(--aw-color-pink-500)); }
   }
   .#{$p}-pink-dots {
+    margin-block-start:0!important;
     > li { list-style-type:circle; }
     .#{$p}-pink-dots {
       > li {

@@ -256,7 +256,7 @@
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href=".">@ultrices lacus</a
+									href="#">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
@@ -291,7 +291,7 @@
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href=".">@ultrices lacus</a
+									href="#">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>

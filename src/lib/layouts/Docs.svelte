@@ -23,14 +23,14 @@
 	$: variantClass = variantClasses[variant];
 </script>
 
-<div id="top" class="u-position-relative">
+<div class="u-position-relative">
 	<div
 		class={variantClass}
 		style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
 	>
 		<section class="aw-mobile-header is-transparent">
 			<div class="aw-mobile-header-start">
-				<a href=".">
+				<a href="#">
 					<img
 						class="aw-logo u-only-dark"
 						src="/images/logos/appwrite.svg"

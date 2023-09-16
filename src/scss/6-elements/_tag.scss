@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .#{$p}-tag {
   --p-tag-text-color: var(--aw-color-primary);
-  --p-tag-bg-color: var(--aw-color-greyscale-100);
+  --p-tag-bg-color: var(--aw-color-greyscale-750);
 
   color: hsl(var(--p-tag-text-color));
   background-color: hsl(var(--p-tag-bg-color));
