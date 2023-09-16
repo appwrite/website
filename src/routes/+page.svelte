@@ -52,7 +52,7 @@
 						<span class="aw-icon-star" aria-hidden="true" />
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep" />
-						<span class="aw-caption-400">Pricing Plans announced</span>
+						<span class="aw-caption-400">Intorudcing a *brand* new Appwrite</span>
 						<span class="aw-icon-arrow-right" aria-hidden="true" />
 					</button>
 					<div class="aw-hero is-horizontal">
