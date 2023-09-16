@@ -5,8 +5,8 @@ export const versions = [
 	'1.3.x',
 	'1.2.x',
 	'1.1.x'
-	// '1.0.x',
-	// '0.15.x'
+	'1.0.x',
+	'0.15.x'
 ];
 
 export enum Service {
