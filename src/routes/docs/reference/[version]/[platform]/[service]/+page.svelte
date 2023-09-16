@@ -1,15 +1,34 @@
-<script>
+<script lang="ts">
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
-	import { Docs } from '$lib/layouts';
-	import Sidebar from '$routes/docs/Sidebar.svelte';
-
-	const handleRefClick = () => {
-		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
-		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
-	};
+	import { parse } from '$lib/utils/markdown';
+	import { Platform, languageMap, versions } from '$lib/utils/references.js';
+	import { Fence } from '$markdoc/nodes/_Module.svelte';
 
 	export let data;
+
+	function handleRefClick() {
+		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
+		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
+	}
+
+	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+		const { version, service } = $page.params;
+		goto(`/docs/reference/${version}/${event.currentTarget.value}/${service}`, {
+			noScroll: true
+		});
+	}
+
+	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+		const { platform, service } = $page.params;
+		goto(`/docs/reference/${event.currentTarget.value}/${platform}/${service}`, {
+			noScroll: true
+		});
+	}
+
+	$: platform = $page.params.platform as Platform;
+	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
 </script>
 
 <main class="u-contents">
@@ -17,15 +36,24 @@
 		<header class="aw-article-header">
 			<div class="aw-article-header-start">
 				<h1 class="aw-title">{data.service?.name}</h1>
-				<div class="aw-inline-code">CLIENT</div>
+				<div class="aw-inline-code">{platformType}</div>
 			</div>
 			<div class="aw-article-header-end">
 				<div class="u-flex u-gap-24 aw-u-color-text-primary">
 					<div class="u-flex u-cross-center u-gap-8">
 						<label class="u-small" for="platform">Platform</label>
 						<div class="aw-select is-colored">
-							<select id="platform">
-								<option>Web SDK</option>
+							<select id="platform" on:change={selectPlatform} value={platform}>
+								<optgroup label="Client">
+									{#each Object.values(Platform).filter((p) => p.startsWith('client-')) as platform}
+										<option>{platform}</option>
+									{/each}
+								</optgroup>
+								<optgroup label="Server">
+									{#each Object.values(Platform).filter((p) => p.startsWith('server-')) as platform}
+										<option>{platform}</option>
+									{/each}
+								</optgroup>
 							</select>
 							<span class="icon-cheveron-down" aria-hidden="true" />
 						</div>
@@ -33,8 +61,11 @@
 					<div class="u-flex u-cross-center u-gap-8">
 						<label class="u-small" for="version">Version</label>
 						<div class="aw-select is-colored">
-							<select id="version">
-								<option>Cloud</option>
+							<select id="version" on:change={selectVersion} value={$page.params.version}>
+								<option value="cloud">Cloud</option>
+								{#each versions as version}
+									<option value={version}>{version}</option>
+								{/each}
 							</select>
 							<span class="icon-cheveron-down" aria-hidden="true" />
 						</div>
@@ -50,14 +81,14 @@
 					</p>
 				</div>
 			</section>
-			{#each data.methods as method}
+			{#each data.methods as method (method.id)}
 				<section class="aw-article-content-grid-6-4">
 					<div class="-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
-							<h2 id={method.id} class="aw-main-body-500">{method.title}</h2>
+							<h2 id={method.id} class="aw-main-body-500 aw-snap-location">{method.title}</h2>
 						</header>
 						<p class="aw-sub-body-400">
-							{method.description}
+							{@html parse(method.description)}
 						</p>
 						<ul
 							class="collapsible u-width-full-line"
@@ -75,8 +106,13 @@
 										<div class="collapsible-content">
 											<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 												<ul class="u-flex-vertical">
-													{#each method.parameters as parameter}
-														<li>
+													{#each method.parameters as parameter, i}
+														{@const first = i === 0}
+														<li
+															class:u-sep-block-start={!first}
+															class:u-padding-block-start-16={!first}
+															class="u-margin-block-start-16"
+														>
 															<article>
 																<header class="u-flex u-cross-baseline u-gap-8">
 																	<h3 class="aw-eyebrow aw-u-color-text-primary">
@@ -88,7 +124,7 @@
 																	{/if}
 																</header>
 																<p class="aw-sub-body-400 u-margin-block-start-16">
-																	{parameter.description}
+																	{@html parse(parameter.description)}
 																</p>
 															</article>
 														</li>
@@ -102,7 +138,7 @@
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper">
 									<summary class="collapsible-button">
-										<span class="text"> Responnse </span>
+										<span class="text"> Response </span>
 										<div class="icon aw-u-color-text-primary">
 											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
@@ -110,50 +146,21 @@
 									<div class="collapsible-content">
 										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 											<ul>
-												<li>
-													<article>
-														<header class="u-flex u-cross-baseline u-gap-8">
-															<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
-															<span class="aw-caption-400">string</span>
-															<div class="aw-tag">required</div>
-														</header>
-														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto
-															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
-															underscore. Can't start with a special char. Max length is 36 chars.
-														</p>
-													</article>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</details>
-							</li>
-							<li class="collapsible-item">
-								<details class="collapsible-wrapper">
-									<summary class="collapsible-button">
-										<span class="text"> Errors </span>
-										<div class="icon aw-u-color-text-primary">
-											<span class="icon-cheveron-down" aria-hidden="true" />
-										</div>
-									</summary>
-									<div class="collapsible-content">
-										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
-											<ul>
-												<li>
-													<article>
-														<header class="u-flex u-cross-baseline u-gap-8">
-															<h3 class="aw-eyebrow aw-u-color-text-primary">userid</h3>
-															<span class="aw-caption-400">string</span>
-															<div class="aw-tag">required</div>
-														</header>
-														<p class="aw-sub-body-400 u-margin-block-start-16">
-															Choose your own unique ID or pass the string ID.unique() to auto
-															generate it. Valid chars are a-z, A-Z, 0-9, period, hyphen, and
-															underscore. Can't start with a special char. Max length is 36 chars.
-														</p>
-													</article>
-												</li>
+												{#each method.responses as response}
+													<li>
+														<article>
+															<header class="u-flex u-cross-baseline u-gap-8">
+																<h3 class="aw-eyebrow aw-u-color-text-primary">
+																	{response.code}
+																</h3>
+																<span class="aw-caption-400">{response.contentType}</span>
+															</header>
+															<p class="aw-sub-body-400 u-margin-block-start-16">
+																{response.model?.name}
+															</p>
+														</article>
+													</li>
+												{/each}
 											</ul>
 										</div>
 									</div>
@@ -167,27 +174,7 @@
 								class="u-position-sticky"
 								style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
 							>
-								<section class="aw-code-snippet" aria-label="code-snippet panel">
-									<header class="aw-code-snippet-header">
-										<div class="aw-code-snippet-header-start">
-											<div class="u-flex u-gap-16">
-												<div class="aw-tag">
-													<span class="text">Default</span>
-												</div>
-											</div>
-										</div>
-										<div class="aw-code-snippet-header-end">
-											<ul class="buttons-list u-flex u-gap-8">
-												<li class="buttons-list-item aw-u-padding-inline-start-20">
-													<button class="aw-icon-button" aria-label="copy code from code-snippet">
-														<span class="icon-duplicate" aria-hidden="true" />
-													</button>
-												</li>
-											</ul>
-										</div>
-									</header>
-									<div class="aw-code-snippet-content">CONTENT</div>
-								</section>
+								<Fence language={languageMap[platform]} content={method.demo} process />
 							</div>
 						</div>
 					</div>
