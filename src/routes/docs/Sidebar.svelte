@@ -35,6 +35,11 @@
 		{
 			items: [
 				{
+					label: 'Home',
+					href: '/docs',
+					icon: 'icon-home'
+				},
+				{
 					label: 'Quick Start',
 					href: '/docs/quick-start',
 					icon: 'icon-play'
