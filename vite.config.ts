@@ -13,6 +13,13 @@ export default defineConfig({
 			}
 		})
 	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@use '$scss/abstract' as *;`
+			}
+		}
+	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
