@@ -98,7 +98,7 @@
 	$: resolvedTheme = isMobileNavOpen ? 'dark' : theme;
 </script>
 
-<div id="app" class="u-position-relative">
+<div class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
 		class:is-transparent={browser && !isMobileNavOpen}

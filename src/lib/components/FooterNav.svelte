@@ -143,7 +143,7 @@
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/cookies">Cookies</a></li>
+				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>Cookies</li>
 				<li class="aw-footer-nav-secondary-item"><a href="/security">Security</a></li>
 			</ul>
 		</li>
