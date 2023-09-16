@@ -13,7 +13,7 @@
 		<span class="aw-eyebrow">Size</span>
 	</div>
 	{#each $state.files as file (file.src)}
-		<div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
+		<div class="row" in:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
 			<div class="img-wrapper">
 				<img src={file.src} alt="" />
 				<span>{file.filename}</span>
