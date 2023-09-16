@@ -7,3 +7,24 @@ readtime: 10
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The GraphQL API allows you to query and mutate any resource type on your Appwrite server through the endpoint `/v1/graphql`. Every endpoint available through REST is available through GraphQL, except for OAuth.
+
+{% info title="GraphQL Model Parameters" %}
+In Appwrite's GraphQL API, all internal model parameters are prefixed with `_` instead of `$` because `$` is reserved by GraphQL.
+{% /info %}
+
+## Requests {% #requests %}
+Although every query executes through the same endpoint, there are multiple ways to make a GraphQL request. All requests, however, share a common structure.
+
+Name		Type	Description
+query	required	string	The GraphQL query to execute.
+operationName	optional	string	If the query contains several named operations, controls which one to execute.
+variables	optional	object	An object containing variable names and values for the query. Variables are made available to your query with the $ prefix.
+
+
+For example, `$collectionId` in the REST API would be referenced as `_collectionId` in the GraphQL API.
+
+### GET
+You can execute a GraphQL query via a GET request, passing a query and optionally operationName and variables as query parameters.
+
+### POST
+There are multiple ways to make a GraphQL POST request, differentiated by content type.
