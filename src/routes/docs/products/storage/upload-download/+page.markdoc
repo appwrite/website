@@ -8,7 +8,7 @@ readtime: 15
 
 You can upload and download files both programmatically using SDKs or through the Appwrite Console.
 
-## Create file {% create-file %}
+## Create file {% #create-file %}
 
 After you create a bucket or have navigated to bucket details, you can access the **Files** tab so you can upload, view, delete and update files in the bucket using the Appwrite project's dashboard. You can also perform all those operations from Appwrite's client SDK, server SDKs, and REST APIs as long as you have the proper permission.
 
@@ -124,7 +124,7 @@ You can also upload files programmatically using our SDKs:
 During testing, you might prefer to create documents in the Appwrite Console.
 To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
-## Handle large files {% #large-files %}
+## Large files {% #large-files %}
 When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
 If you're using an Appwrite SDK, this is handled automatically. 
 If you're not using an SDK, you can [learn more about REST API file handling](TODO).
