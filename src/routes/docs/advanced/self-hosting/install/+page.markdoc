@@ -29,7 +29,7 @@ You will be prompted to configure the following during the setup command:
 
 
 {% tabs %}
-{% tabsitem #unix title="Mac OS and Linux" %}
+{% tabsitem #unix title="macOS and Linux" %}
 ### Bash
 ```sh
 docker run -it --rm \

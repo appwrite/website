@@ -18,7 +18,7 @@ Appwrite supports multiple source destinations for migrating your data. You can 
 | [Supabase](/docs/products/migrations/supabase) | enabled | enabled | partial | enabled | manual |
 | [Nhost](/docs/products/migrations/nhost) | enabled | enabled | partial | enabled | manual |
 | [Cloud](/docs/products/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
-| [Self-hosted](/docs/products/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
+| [Self hosted](/docs/products/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
 
 ## Limitations {% #limitations %}
 

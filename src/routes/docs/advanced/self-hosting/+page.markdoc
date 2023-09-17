@@ -22,7 +22,7 @@ Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/ins
 Set up your first Appwrite instance with a single Docker command.
 
 {% tabs %}
-{% tabsitem #unix title="Mac OS and Linux" %}
+{% tabsitem #unix title="macOS and Linux" %}
 ### Bash
 ```sh
 docker run -it --rm \
