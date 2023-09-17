@@ -20,7 +20,7 @@
 		"@melt-ui/pp": "^0.1.2",
 		"@melt-ui/svelte": "^0.47.6",
 		"@playwright/test": "^1.37.1",
-		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.24.1",
 		"@types/markdown-it": "^13.0.1",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
