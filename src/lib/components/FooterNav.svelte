@@ -57,9 +57,9 @@
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/auth">Auth</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/databases">Databases</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/functions">Functions</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/storage">Storage</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/apis/realtime">Realtime</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Functions</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Storage</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Realtime</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
