@@ -5,11 +5,15 @@
 
 	function getDocsVariant(pathname: string): DocsLayoutVariant {
 		const isQuickStarts = pathname.includes('/quick-starts/');
+		const isSDKs = pathname.includes('/sdks');
+		const isAPIs = pathname.includes('/apis/');
 		const isTutorial = pathname.includes('/tutorials/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
+		const isTooling = pathname.includes('/tooling');
+		const isAdvanced = pathname.includes('/advanced/');
 		const isReference = pathname.includes('/reference');
 
-		if (isQuickStarts || isTutorial || isProduct) {
+		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickStarts || isTooling || isAdvanced) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';

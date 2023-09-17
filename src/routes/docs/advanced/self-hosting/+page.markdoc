@@ -1,0 +1,112 @@
+---
+layout: article
+title: Self-hosting
+description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+---
+
+Appwrite was designed from the ground up with self-hosting in mind. 
+You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). 
+Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
+
+{% info title="Want to start building faster?" %}
+Spend less time worrying about infrastructure and scaling, and spend more time building with [Appwrite Cloud](https://cloud.appwrite.io/).
+{% /info %}
+
+## System Requirements {% #system-requirements %}
+
+Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, and an operating system that supports Docker.
+
+Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
+
+## Get started {% #get-started %}
+Set up your first Appwrite instance with a single Docker command.
+
+{% tabs %}
+{% tabsitem #unix title="Mac OS and Linux" %}
+### Bash
+```sh
+docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.4.2
+```
+After running the command, you can access the Appwrite Console and start building on `localhost`. 
+Read more about other ways to install and uninstall.
+
+[Learn about install and uninstall {% icon icon="cheveron-right" /%}](TODO)
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+### CMD 
+```cmd
+docker run -it --rm ^
+    --volume //var/run/docker.sock:/var/run/docker.sock ^
+    --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
+    --entrypoint="install" ^
+    appwrite/appwrite:1.4.2
+```
+### Powershell
+```powershell
+docker run -it --rm `
+    --volume /var/run/docker.sock:/var/run/docker.sock `
+    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
+    --entrypoint="install" `
+    appwrite/appwrite:1.4.2
+```
+After running the command, you can access the Appwrite Console and start building on `localhost`. 
+Read more about other ways to install and uninstall.
+
+[Learn about install and uninstall {% icon icon="cheveron-right" /%}](TODO)
+{% /tabsitem %}
+{% /tabs %}
+
+To unlock the full capabilities of Appwrite, read about the following configurations.
+
+## Email delivery
+Appwrite requires an SMTP service to deliver emails. 
+Email delivery is required for features like password recovery, account verification, MagicURL authentication, and team invites. 
+You can use a third-party SMTP service or host your own SMTP server.
+
+[Configure email delivery {% icon icon="cheveron-right" /%}](TODO)
+
+## SMS delivery
+Appwrite supports multiple third-party SMS delivery providers. 
+SMS delivery is required for phone authentication.
+
+[Configure SMS delivery {% icon icon="cheveron-right" /%}](TODO)
+
+## Functions
+Appwrite supports 10+ function runtimes and automatic deployments through Git integration. 
+Before using Appwrite Functions, configure Git integration and enable runtimes.
+
+[Configure Appwrite Functions {% icon icon="cheveron-right" /%}](TODO)
+
+## Storage
+Appwrite's Storage Service can be configured to store files locally, or with self-hosted and cloud storage services. 
+By default, Appwrite's Storage Service stores files on your server's local storage. 
+If you expect large volumes of data or the need to have scalable data storage, you may choose to use a separate storage service.
+
+[Configure Appwrite Storage {% icon icon="cheveron-right" /%}](TODO)
+
+## TLS certificates
+Appwrite uses Let's Encrypt to auto-generate TLS certificates for your Appwrite instance to ensure your API traffic is appropriately encrypted. 
+Configuration is required for Appwrite to properly generate certificates.
+
+[Configure TLS certificates {% icon icon="cheveron-right" /%}](TODO) 
+
+## Debug
+Appwrite provides tools to monitor server health, handle error logging.
+
+[Learn about upgrade {% icon icon="cheveron-right" /%}](TODO) 
+
+## Update
+Each Appwrite version contains a migration script to help you migrate your apps during updates.
+
+[Learn about updates {% icon icon="cheveron-right" /%}](TODO) 
+
+## Production
+Self-hosting Appwrite can be used in production settings.
+To succeed with Appwrite in a production environment, you should follow a few basic concepts and best practices. 
+
+[Learn about production {% icon icon="cheveron-right" /%}](TODO)

@@ -1,9 +1,50 @@
 ---
-layout: article
+layout: tutorial
 title: Databases
 description: This is the description used for SEO.
 ---
 
-The Databases Service allows you to store your application and users' data and fetch it using different supported queries. You can organize your data into a three-level hierarchy, which are databases, collections, and documents. Each database is a group of collections, each collection is a group of documents that share the same schema, and each document contains a set of data.
+Appwrite Databases let you store and query structured data. 
+Databases provide high-performance and scalable data storage for your key application, business, and user data.
 
-In addition, the Databases Service provides built-in validation to check the integrity of your incoming data, custom indexing for query performance, relationships to link data, and a flexible permissions mechanism to easily segment data between different users, teams, and roles. You can also use the Appwrite Realtime API to subscribe to live changes in your database.
+{% info title="Looking for file storage?" %}
+Databases store data, if you need to store files like images, PDFs or videos, use [Appwrite Storage](/docs/products/storage).
+{% /info %}
+
+## Get started
+Learn to setup up a database, create and retrieve documents, and basic permissions.
+- [Quick start]()
+
+## Organize your data
+Appwrite organizes data heirarchically into databases, collections and documents. A database contains many collections, a collection contains many documents.
+
+- [Learn about databases]()
+- [Learn about collections]()
+- [Learn about documents]()
+
+## Structure your data
+Collections define the structure of its documents. All documents in a collection share the same structure.
+
+- [Learn about structuring data]()
+
+## Query your data
+Appwrite supports a powerful set of query operators, so you can filter and order the data returned by Databases.
+
+- [Learn about quering data]()
+
+## Paginate your data
+Paginate large data sets into smaller pages using offset or cursor pagination.
+
+- [Learn about paginating data]()
+
+## Relationships
+Express complex and interconnected data models by organizing data using relationships.
+
+- [Learn about relationships]()
+
+## Permissions
+Manage which users can access data with permissions at the collection or document level.
+
+- [Learn about permissions]()
+
+

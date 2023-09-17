@@ -15,7 +15,7 @@ import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');               // Your project ID
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 const account = new Account(client);
 
@@ -63,7 +63,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
 
@@ -89,7 +89,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
 
@@ -113,7 +113,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const promise = account.createRecovery('email@example.com', 'https://example.com');
 
@@ -131,7 +131,7 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('[PROJECT_ID]');                 // Your project ID
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
 const promise = account.updateRecovery(
     '[USER_ID]',
