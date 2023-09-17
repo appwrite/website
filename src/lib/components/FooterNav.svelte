@@ -22,9 +22,9 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/next-js">Next.js</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nextjs">Next.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/flutter">Flutter</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/vue-js">Vue.js</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/vuejs">Vue.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/sveltekit">SvelteKit</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/apple">Apple</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/android">Android</a></li>
@@ -112,8 +112,8 @@
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/company">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="https://careers.appwrite.io">Careers</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="TODO">Company</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="https://careers.appwrite.io" target="_blank">Careers</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://store.appwrite.io" target="_blank">Store</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/brand">Brand</a></li>
@@ -144,7 +144,7 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
 				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>Cookies</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/security">Security</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="TODO">Security</a></li>
 			</ul>
 		</li>
 	</ul>
