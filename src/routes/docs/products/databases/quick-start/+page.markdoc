@@ -239,4 +239,5 @@ func main() async throws{
     }
 }
 ```
+{% /multicode %}
 {% /section %}
