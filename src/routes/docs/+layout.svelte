@@ -10,10 +10,10 @@
 		const isQuickstart = pathname.includes('/quick-start/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
 		const isTooling = pathname.includes('/tooling');
-		const isAdvanced = pathname.includes('/advanced/');
+		const isSelfHosting = pathname.includes('/self-hosting');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickstart || isTooling || isAdvanced) {
+		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickstart || isTooling || isSelfHosting) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
