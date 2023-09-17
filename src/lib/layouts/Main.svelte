@@ -87,7 +87,7 @@
 		},
 		{
 			label: 'Changelog',
-			href: '/changelog'
+			href: '#'
 		},
 		{
 			label: 'Pricing',
