@@ -457,7 +457,7 @@
 			<ul class="aw-grid-row-4">
 				<li>
 					<div class="aw-card is-full-color">
-						<h4 class="aw-sub-body-500 u-margin-block-start-8">Self-hosted</h4>
+						<h4 class="aw-sub-body-500 u-margin-block-start-8">Self hosted</h4>
 						<p class="aw-sub-body-400 u-margin-block-start-4">
 							Lorem ipsum dolor sit amet consectetur.
 						</p>
