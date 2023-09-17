@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Migrate from NHost
+title: Migrate from Nhost
 description: Learn how to migrate your Nhost project to Appwrite Cloud.
 difficulty: beginner
 readtime: 20
@@ -13,25 +13,25 @@ When you migrate data from Nhost to Appwrite Cloud, the resource usage during th
 {% /info %}
 
 {% section #obtain-credentials step=1 title="Obtain credentials" %}
-Find all of the following credentials from your NHost project.
+Find all of the following credentials from your Nhost project.
 
 | Field               | Description                                                                                                    |
 | ---------------     | -------------------------------------------------------------------------------------------------------------- |
-| **Region**          | The region your NHost project is hosted in. This can be found in your NHost project environment variables as `NHOST_REGION`. |
-| **Subdomain**       | The subdomain of your NHost project. This can be found in your NHost project environment variables as `NHOST_SUBDOMAIN`. |
-| **Database**        | The name of your NHost database. This can be found in your NHost project Database settings. |
-| **Username**        | The username of your NHost database. This can be found in your NHost project Database settings. |
-| **Password**        | The password of your NHost database. You set this when you created your NHost project, if you don't remember it you can reset it from your NHost project Database settings. |
-| **Admin Secret**    | The admin secret of your NHost project. This can be found in your NHost project environment variables as `NHOST_ADMIN_SECRET`. We use this to transfer your NHost files to Appwrite. |
+| **Region**          | The region your Nhost project is hosted in. This can be found in your Nhost project environment variables as `NHOST_REGION`. |
+| **Subdomain**       | The subdomain of your Nhost project. This can be found in your Nhost project environment variables as `NHOST_SUBDOMAIN`. |
+| **Database**        | The name of your Nhost database. This can be found in your Nhost project Database settings. |
+| **Username**        | The username of your Nhost database. This can be found in your Nhost project Database settings. |
+| **Password**        | The password of your Nhost database. You set this when you created your Nhost project, if you don't remember it you can reset it from your Nhost project Database settings. |
+| **Admin Secret**    | The admin secret of your Nhost project. This can be found in your Nhost project environment variables as `NHOST_ADMIN_SECRET`. We use this to transfer your Nhost files to Appwrite. |
 {% /section %}
 
-{% section #migration-process step=2 title="Migrating to Appwrite from NHost" %}
+{% section #migration-process step=2 title="Migrating to Appwrite from Nhost" %}
 
 To begin migrating to Appwrite make sure to read the [migration overview](/docs/migrations) and [things to keep in mind](#notices) sections above.
 
 1. Create a new project and click on the **Migrations** tab in **Project Settings**.
 
-1. Click on the **Create Migration** button and select **NHost** as your source.
+1. Click on the **Create Migration** button and select **Nhost** as your source.
 
 1. Enter the credentials following the [instructions below](#credentials) and click **Next**.
 
