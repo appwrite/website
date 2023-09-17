@@ -4,11 +4,12 @@
 	import Sidebar from './Sidebar.svelte';
 
 	function getDocsVariant(pathname: string): DocsLayoutVariant {
+		const isQuickStarts = pathname.includes('/quick-starts/');
 		const isTutorial = pathname.includes('/tutorials/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct) {
+		if (isQuickStarts || isTutorial || isProduct) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
