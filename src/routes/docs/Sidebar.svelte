@@ -197,15 +197,15 @@
 						},
 						{
 							label: 'Development',
-							href: '/docs/products/functions/develop'
+							href: '/docs/products/functions/development'
 						},
 						{
 							label: 'Deployment',
-							href: '/docs/products/functions/deploy'
+							href: '/docs/products/functions/deployment'
 						},
 						{
 							label: 'Execution',
-							href: '/docs/products/functions/execute'
+							href: '/docs/products/functions/execution'
 						},
 						{
 							label: 'Runtimes',
