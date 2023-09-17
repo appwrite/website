@@ -86,8 +86,8 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/docs">Docs</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/community">Community</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/blog">Blog</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="TODO">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="TODO">Changelog</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://status.appwrite.io" target="_blank">Status</a></li>
 			</ul>
 		</li><li class="aw-footer-nav-main-item">
@@ -112,7 +112,7 @@
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="TODO">Company</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://careers.appwrite.io" target="_blank">Careers</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://store.appwrite.io" target="_blank">Store</a></li>
@@ -144,7 +144,7 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
 				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>Cookies</li>
-				<li class="aw-footer-nav-secondary-item"><a href="TODO">Security</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Security</a></li>
 			</ul>
 		</li>
 	</ul>
