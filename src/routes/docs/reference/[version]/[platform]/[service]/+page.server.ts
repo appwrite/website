@@ -5,9 +5,9 @@ import { error } from '@sveltejs/kit';
 
 const services = Object.values(Service);
 const platforms = Object.values(Platform);
-export const prerender = true;
+
 export const entries: EntryGenerator = () => {
-	return versions.flatMap((version) => {
+	return ['cloud', ...versions].flatMap((version) => {
 		return platforms.flatMap((platform) => {
 			return services.map((service) => {
 				return { service, version, platform };
