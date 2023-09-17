@@ -8,7 +8,7 @@ readtime: 5
 
 You can create your first bucket, upload, and download your first file in minutes.
 
-## Create bucket 
+## Create bucket {% #create-bucket %}
 You can create a bucket in the Appwrite Console by navigating to **Storage** > **Create bucket**.
 
 In your bucket, navigate to **Settings** > **Permissions**, then add a new **Any** role with **CREATE** and **READ** permissions.

@@ -1,62 +1,38 @@
 ---
 layout: article
-title: Email delivery
+title: SMS delivery
 description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
 ---
 
-Appwrite v0.7 and above come with support for easy integrations with 3rd party SMTP providers. In order for emails to work, you will need to set up proper SMTP configuration as described below.
+Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
 
-Because email deliverability can be both tricky and hard, it is often easier to delegate this responsibility to a 3rd-party SMTP provider. These providers help you abstract the complexity of passing SPAM filters by doing a lot of the advanced configuration and validation for you.
+## SMS Providers {% #sms-providers %}
 
-In this document, you will learn how to connect a 3rd party SMTP provider like MailGun or SendGrid with Appwrite to help you get better email deliverability.
+Appwrite supports a growing list of SMS providers that you can choose from. Choose one from the list below and set up an account.
 
-## Update your environment file
+| &nbsp;            | SMS Provider   | Create Account                                          | Get Credentials                                      |
+| ----------------- | -------------- | ------------------------------------------------------- | ----------------------------------------------------- |
+|                   |                |                                                       |                                                     |
+| [TODO]            | Twilio         | [Website](https://www.twilio.com)                        | [Documentation](https://www.twilio.com/docs/iam/access-tokens#step-2-api-key)       |
+| [TODO]            | TextMagic      | [Website](https://www.textmagic.com)                     | [Documentation](https://www.textmagic.com/docs/api/start/#How-to-obtain-the-API-credentials) |
+| [TODO]            | Telesign       | [Website](https://www.telesign.com)                      | [Documentation](https://support.telesign.com/s/article/Find-Customer-ID-and-API-Key)       |
+| [TODO]            | MSG91          | [Website](https://msg91.com)                            | [Documentation](https://msg91.com/help/where-can-i-find-my-authentication-key)       |
+| [TODO]            | Vonage         | [Website](https://www.vonage.ca/)                        | [Documentation](https://developer.vonage.com/en/account/secret-management)       |
 
-At this stage, we assume that you have already installed Appwrite. If not, you can follow our [Self Hosting Guide](/docs/self-hosting) for the installation. Appwrite offers multiple environment variables to customize your server setup to your needs. To configure Appwrite to use your own SMTP server, you need to set the following environment variables in the hidden .env file that comes with your Appwrite installation.
+## Environment variables {% #environment-variables %}
 
-| Environment cariable  | Description                                                                                                           | Default Value           |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| _APP_SMTP_HOST                | SMTP server host name address. Use an empty string to disable all mail sending from the server.                     | Empty string             |
-| _APP_SMTP_PORT                | SMTP server TCP port.                                                                                                 | Empty                    |
-| _APP_SMTP_SECURE              | SMTP secure connection protocol. Change to 'tls' if running on a secure connection. Valid values: empty, 'tls', 'ssl'. | Empty                    |
-| _APP_SMTP_USERNAME            | SMTP server user name.                                                                                               | Empty                    |
-| _APP_SMTP_PASSWORD            | SMTP server user password.                                                                                           | Empty                    |
-| _APP_SYSTEM_EMAIL_ADDRESS     | Configured sender email address, seen by recipients.                                                                  | "team@appwrite.io"       |
+You will need to configure these [environment variables](https://example.com/docs/environment-variables#phone) and restart your Appwrite containers before you can use phone authentication.
 
-Here's a sample configuration if you're using SendGrid as your SMTP provider:
+{% info title="URL encode" %}
+Ensure the values you insert in the `_APP_SMS_PROVIDER` placeholders are [URL encoded](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) if they contain any non-alphanumeric characters.
+{% /info %}
 
-```sh
-_APP_SMTP_HOST=smtp.sendgrid.net
-_APP_SMTP_PORT=587
-_APP_SMTP_SECURE=tls
-_APP_SMTP_USERNAME=YOUR-SMTP-USERNAME
-_APP_SMTP_PASSWORD=YOUR-SMTP-PASSWORD
-_APP_SYSTEM_EMAIL_ADDRESS=YOUR-SENDER-EMAIL
-```
+| Provider | \_APP\_SMS\_PROVIDER                                | \_APP\_SMS\_FROM        |
+| -------- | -------------------------------------------------- | ----------------------- |
+| Twilio   | `sms://[ACCOUNT SID]:[AUTH TOKEN]@twilio`         | `[TWILIO PHONE NUMBER]` |
+| TextMagic| `sms://[USERNAME]:[API KEY]@text-magic`          | `[PHONE NUMBER OR SENDER ID]` |
+| TeleSign | `sms://[CUSTOMER ID]:[API KEY]@telesign`         | `[TELESIGN PHONE NUMBER]` |
+| MSG91    | `sms://[SENDER ID]:[AUTH KEY]@MSG91`             | `[FLOW ID]`            |
+| Vonage   | `sms://[API KEY]:[API SECRET]@vonage`            | `[PHONE NUMBER OR BRAND NAME]` |
 
 {% partial file="update-variables.md" /%}
-## Debugging
-
-If you are unable to send emails, there is most likely an issue with your integration. The first place to look for possible errors is the **Appwrite Emails Worker**. You can access the logs of this container using:
-
-```sh
-docker compose logs -f appwrite-worker-mails
-```
-
-The next possible source of error is the configuration in your .env file. Make sure that the keys and values are correct and test the credentials by sending a test email using your SMTP provider's SDK or cURL requests.
-
-Moving on to the next source of error. Some SMTP providers have a concept of [authorized recipients](https://help.mailgun.com/hc/en-us/articles/217531258-Authorized-Recipients) in their sandbox (or dev) environments and you can only send emails to recipients in this list. Make sure that the recipient of the email that you're trying to send is a part of this list.
-
-Another source of error could be that the environment variables have not been set in the appwrite container. You can check this using:
-
-```sh
-docker compose exec appwrite-worker-mails vars
-```
-
-If this is the case, you can try rebuilding your appwrite stack using:
-
-```sh
-docker compose up -d --build --force-recreate
-```
-
-Now you can head over to your Appwrite Console, log out from your account, and try to recover your password or send invites to other team members from your Appwrite Console using your newly configured SMTP provider.
