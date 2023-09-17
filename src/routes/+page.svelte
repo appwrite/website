@@ -63,7 +63,7 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where developers can build any
+								Appwrite is the open-source development platform where developers like you can build any
 								application at any scale, using the language they want.
 							</p>
 							<button class="aw-button is-full-width-mobile u-margin-block-start-32">

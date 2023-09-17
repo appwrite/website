@@ -36,7 +36,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.4.2
+    appwrite/appwrite:1.4.3
 ```
 {% /tabsitem %}
 
@@ -47,7 +47,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.4.2
+    appwrite/appwrite:1.4.3
 ```
 ### Powershell
 ```powershell
@@ -55,7 +55,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.4.2
+    appwrite/appwrite:1.4.3
 ```
 {% /tabsitem %}
 {% /tabs %}

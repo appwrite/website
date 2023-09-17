@@ -196,15 +196,15 @@
 							href: '/docs/products/functions/quick-start'
 						},
 						{
-							label: 'Develop',
+							label: 'Development',
 							href: '/docs/products/functions/develop'
 						},
 						{
-							label: 'Deploy',
+							label: 'Deployment',
 							href: '/docs/products/functions/deploy'
 						},
 						{
-							label: 'Execute',
+							label: 'Execution',
 							href: '/docs/products/functions/execute'
 						},
 						{
