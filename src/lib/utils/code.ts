@@ -13,12 +13,22 @@ import python from 'highlight.js/lib/languages/python';
 import diff from 'highlight.js/lib/languages/diff';
 import ruby from 'highlight.js/lib/languages/ruby';
 import csharp from 'highlight.js/lib/languages/csharp';
+import kotlin from 'highlight.js/lib/languages/kotlin';
+import java from 'highlight.js/lib/languages/java';
+import cpp from 'highlight.js/lib/languages/cpp';
+import bash from 'highlight.js/lib/languages/bash';
+import powershell from 'highlight.js/lib/languages/powershell';
+import dos from 'highlight.js/lib/languages/dos';
+import yaml from 'highlight.js/lib/languages/yaml';
+import plaintext from 'highlight.js/lib/languages/plaintext';
+import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 
 const languages = {
 	js: javascript,
 	dart: dart,
 	ts: typescript,
+	deno: typescript,
 	xml: xml,
 	html: xml,
 	sh: shell,
@@ -27,11 +37,26 @@ const languages = {
 	swift: swift,
 	php: php,
 	diff: diff,
+	python: python,
+	ruby: ruby,
+	csharp: csharp,
+	kotlin: kotlin,
+	java: java,
+	cpp: cpp,
+	bash: bash,
+	powershell: powershell,
+	cmd: dos,
+	yaml: yaml,
+	text:plaintext,
+	graphql:graphql,
+	http:http,
 	py: python,
 	rb: ruby,
 	cs: csharp,
-	http: http,
 } as const satisfies Record<string, LanguageFn>;
+
+
+
 
 Object.entries(languages).forEach(([key, value]) => {
 	hljs.registerLanguage(key, value);

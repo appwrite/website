@@ -51,13 +51,8 @@
 				},
 				{
 					label: 'SDKs',
-					href: '#',
+					href: '/docs/sdks',
 					icon: 'icon-cog'
-				},
-				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
 				},
 				{
 					label: 'References',
@@ -111,7 +106,11 @@
 
 					items: [
 						{
-							label: 'Email and Password',
+							label: 'Quick start',
+							href: '/docs/products/auth/quick-start'
+						},
+						{
+							label: 'Email and password',
 							href: '/docs/products/auth/email-password'
 						},
 						{
@@ -131,11 +130,11 @@
 							href: '/docs/products/auth/anonymous'
 						},
 						{
-							label: 'User Management',
+							label: 'User management',
 							href: '/docs/products/auth/user-management'
 						},
 						{
-							label: 'Server Integrations',
+							label: 'Server integrations',
 							href: '/docs/products/auth/server-integrations'
 						},
 						{
@@ -150,31 +149,100 @@
 					icon: 'icon-database',
 					items: [
 						{
+							label: 'Quick start',
+							href: '/docs/products/databases/quick-start'
+						},
+						{
+							label: 'Databases',
+							href: '/docs/products/databases/databases'
+						},
+						{
+							label: 'Collections',
+							href: '/docs/products/databases/collections'
+						},
+						{
+							label: 'Documents',
+							href: '/docs/products/databases/documents'
+						},
+						{
 							label: 'Queries',
 							href: '/docs/products/databases/queries'
-						}
+						},
+						{
+							label: 'Order',
+							href: '/docs/products/databases/order'
+						},
+						{
+							label: 'Pagination',
+							href: '/docs/products/databases/pagination'
+						},
+						{
+							label: 'Permissions',
+							href: '/docs/products/databases/permissions'
+						},
+						{
+							label: 'Relationships',
+							href: '/docs/products/databases/relationships'
+						},
 					]
 				},
 				{
 					label: 'Functions',
-					href: '#',
+					href: '/docs/products/functions',
 					icon: 'icon-lightning-bolt',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
-						}
+							label: 'Quick start',
+							href: '/docs/products/functions/quick-start'
+						},
+						{
+							label: 'Develop',
+							href: '/docs/products/functions/develop'
+						},
+						{
+							label: 'Deploy',
+							href: '/docs/products/functions/deploy'
+						},
+						{
+							label: 'Execute',
+							href: '/docs/products/functions/execute'
+						},
+						{
+							label: 'Runtimes',
+							href: '/docs/products/functions/runtimes'
+						},
+						{
+							label: 'Examples',
+							href: '/docs/products/functions/examples'
+						},
+
 					]
 				},
 				{
 					label: 'Storage',
-					href: '#',
+					href: '/docs/products/storage',
 					icon: 'icon-folder',
 					items: [
 						{
-							label: 'Inner item',
-							href: '#'
-						}
+							label: 'Quick start',
+							href: '/docs/products/storage/quick-start'
+						},
+						{
+							label: 'Buckets',
+							href: '/docs/products/storage/buckets'
+						},
+						{
+							label: 'Upload and download',
+							href: '/docs/products/storage/upload-download'
+						},
+						{
+							label: 'Images',
+							href: '/docs/products/storage/images'
+						},
+						{
+							label: 'Permissions',
+							href: '/docs/products/storage/permissions'
+						},
 					]
 				}
 			]
@@ -185,18 +253,34 @@
 			items: [
 				{
 					label: 'Realtime',
-					href: '#',
+					href: '/docs/apis/realtime',
 					icon: 'icon-clock'
 				},
 				{
 					label: 'REST',
-					href: '#',
+					href: '/docs/apis/rest',
 					icon: 'icon-play'
 				},
 				{
 					label: 'GraphQL',
-					href: '#',
+					href: '/docs/apis/graphql',
 					icon: 'icon-play'
+				}
+			]
+		},
+		{
+			label: 'Tooling',
+			href: '#',
+			items: [
+				{
+					label: 'Command Line',
+					href: '#',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'Assistant',
+					href: '/docs/tooling/assistant',
+					icon: 'icon-magic-wand'
 				}
 			]
 		},
@@ -216,13 +300,74 @@
 				},
 				{
 					label: 'Migrations',
-					href: '#',
-					icon: 'icon-refresh'
+					href: '/docs/products/migrations',
+					icon: 'icon-refresh',
+					items: [
+						{
+							label: 'From Firebase',
+							href: '/docs/products/migrations/firebase'
+						},
+						{
+							label: 'From Supabase',
+							href: '/docs/products/migrations/supabase'
+						},
+						{
+							label: 'From NHost',
+							href: '/docs/products/migrations/nhost'
+						},
+						{
+							label: 'From Cloud',
+							href: '/docs/products/migrations/cloud'
+						},
+						{
+							label: 'From self-hosted',
+							href: '/docs/products/migrations/self-hosted'
+						},
+
+					]
 				},
 				{
 					label: 'Self-hosting',
-					href: '#',
-					icon: 'icon-server'
+					href: '/docs/advanced/self-hosting',
+					icon: 'icon-server',
+					items: [
+						{
+							label: 'Install',
+							href: '/docs/advanced/self-hosting/install'
+						},
+						{
+							label: 'Email delivery',
+							href: '/docs/advanced/self-hosting/email'
+						},
+						{
+							label: 'SMS delivery',
+							href: '/docs/advanced/self-hosting/sms'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/advanced/self-hosting/functions'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/advanced/self-hosting/storage'
+						},
+						{
+							label: 'TLS certificates',
+							href: '/docs/advanced/self-hosting/certificates'
+						},
+						{
+							label: 'Update',
+							href: '/docs/advanced/self-hosting/update'
+						},
+						{
+							label: 'Debug',
+							href: '/docs/advanced/self-hosting/debug'
+						},
+						{
+							label: 'Production',
+							href: '/docs/advanced/self-hosting/production'
+						},
+					]
 				}
 			]
 		}
