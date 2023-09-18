@@ -274,8 +274,18 @@
 			items: [
 				{
 					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
+					href: '/docs/tooling/cli/installation',
+					icon: 'icon-terminal',
+					items: [
+						{
+							label: 'Installation',
+							href: '/docs/tooling/cli/installation'
+						},
+						{
+							label: 'Deployment',
+							href: '/docs/tooling/cli/deployment'
+						},
+					]
 				},
 				{
 					label: 'Assistant',
@@ -332,8 +342,8 @@
 					icon: 'icon-server',
 					items: [
 						{
-							label: 'Install',
-							href: '/docs/self-hosting/install'
+							label: 'Installation',
+							href: '/docs/self-hosting/installation'
 						},
 						{
 							label: 'Email delivery',
