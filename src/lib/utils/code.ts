@@ -23,10 +23,7 @@ import yaml from 'highlight.js/lib/languages/yaml';
 import plaintext from 'highlight.js/lib/languages/plaintext';
 import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
-import kotlin from 'highlight.js/lib/languages/kotlin';
-import java from 'highlight.js/lib/languages/java';
 import css from 'highlight.js/lib/languages/css';
-import graphql from 'highlight.js/lib/languages/graphql';
 import { Platform } from './references';
 
 const languages = {
