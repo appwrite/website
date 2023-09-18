@@ -4,7 +4,7 @@ title: API keys
 description: Placeholder SEO.
 ---
 
-API keys are secrets used by Appwrite [Server SDKs](TODO) and the Appwrite CLI to prove their identity.
+API keys are secrets used by Appwrite [Server SDKs](#) and the Appwrite CLI to prove their identity.
 What can be accessed each API key is restricted by [scopes](#scopes) instead of permissions.
 
 {% info title="Best practice" %}

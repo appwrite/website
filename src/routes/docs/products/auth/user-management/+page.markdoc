@@ -6,9 +6,9 @@ description: This is the description used for SEO.
 
 Appwrite has built-in features to help manage user accounts. Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. Each user can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
-## [User Preferences](#preferences)
+## User preferences {% #preferences %}
 
-You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/client/account#accountUpdatePrefs) endpoint. You can store user preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+You can store user preferences on a user's account using Appwrite's [Update Preferences](#) endpoint. You can store user preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
@@ -94,7 +94,7 @@ mutation {
 ```
 {% /multicode %}
 
-After a user's preferences are updated, they can be retrieved using the [Get Preferences](/docs/client/account#accountGetPrefs) endpoint.
+After a user's preferences are updated, they can be retrieved using the [Get Preferences](#) endpoint.
 
 {% multicode %}
 ```js 
@@ -157,15 +157,15 @@ query {
 ```
 {% /multicode %}
 
-## [Users API](#users-api)
+## Users API {% #users-api %}
 
 The Users API is a dedicated API for managing users from an admin's perspective. You'll notice that the Account API doesn't allow you to view or make changes to other users. This is by design and for **security reasons**.
 
-You can use the Users API with an API key authenticated [Server SDK](/docs/sdks) to manage users. If you must expose parts of the Users API to normal users, we suggest doing so through an Appwrite Function. Exposing API keys to users is **dangerous and a security risk**, by using an Appwrite Function, you can add your own validation to prevent malicious behavior.
+You can use the Users API with an API key authenticated [Server SDK](#) to manage users. If you must expose parts of the Users API to normal users, we suggest doing so through an Appwrite Function. Exposing API keys to users is **dangerous and a security risk**, by using an Appwrite Function, you can add your own validation to prevent malicious behavior.
 
-[Learn more about the Users API](/docs//server/users)
+[Learn more about the Users API](#)
 
-## [Labels](#labels)
+## Labels {% #labels %}
 
 Labels are a good way to categorize a user to grant them access to resources. For example, a `subscriber` label can be added to a user once they've purchased a subscription.
 
@@ -348,10 +348,10 @@ This would correspond with the permissions below.
 | Delete | `Permissions.delete(Role.label('subscriber'))` |
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
-[Learn more about permissions](/docs/permissions)
+[Learn more about permissions](/docs/platform/permissions)
 
-## [Teams](#teams)
+## Teams {% #teams %}
 
 Teams are a good way to allow users to share access to resources.
 
-For example, in a todo app, a user can [create a team](/docs/client/teams#teamsCreate) for one of their todo lists and [invite another user](/docs/client/teams#teamsCreateMembership) to the team to grant the other user access. The invited user can [accept the invitation](/docs/client/teams#teamsUpdateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again.
+For example, in a todo app, a user can [create a team](#) for one of their todo lists and [invite another user](#) to the team to grant the other user access. The invited user can [accept the invitation](#) to gain access. If the user's ever removed from the team, they'll lose access again.
