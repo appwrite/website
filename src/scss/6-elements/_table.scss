@@ -19,6 +19,7 @@
   border-collapse: collapse;
   border-style: hidden;
   min-inline-size:100%;
+  font-size: pxToRem(14);
 
   &-wrapper {
     @include light-mode();

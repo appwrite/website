@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+
+.#{$p}-tooltip {
+    --p-tooltip-bg: rgba(47, 48, 49, 1);
+    --p-tooltip-color: rgba(228, 228, 231, 1);
+
+    font-size: pxToRem(16);
+    color: var(--p-tooltip-color);
+    background-color: var(--p-tooltip-bg);
+    padding: pxToRem(8) pxToRem(12);
+    border-radius: pxToRem(8);
+}
