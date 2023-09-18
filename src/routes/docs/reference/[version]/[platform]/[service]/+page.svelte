@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
 	import { parse } from '$lib/utils/markdown';
-	import { Platform, languageMap, versions } from '$lib/utils/references.js';
+	import { Platform, languageMap, platformMap, serviceMap, versions } from '$lib/utils/references.js';
 	import { Fence } from '$markdoc/nodes/_Module.svelte';
 
 	export let data;
@@ -35,7 +35,7 @@
 	<article class="aw-article u-contents">
 		<header class="aw-article-header">
 			<div class="aw-article-header-start">
-				<h1 class="aw-title">{data.service?.name}</h1>
+				<h1 class="aw-title">{serviceMap[data.service?.name]}</h1>
 				<div class="aw-inline-code">{platformType}</div>
 			</div>
 			<div class="aw-article-header-end">
@@ -46,12 +46,12 @@
 							<select id="platform" on:change={selectPlatform} value={platform}>
 								<optgroup label="Client">
 									{#each Object.values(Platform).filter((p) => p.startsWith('client-')) as platform}
-										<option>{platform}</option>
+										<option value={platform}>{platformMap[platform]}</option>
 									{/each}
 								</optgroup>
 								<optgroup label="Server">
 									{#each Object.values(Platform).filter((p) => p.startsWith('server-')) as platform}
-										<option>{platform}</option>
+										<option value={platform}>{platformMap[platform]}</option>
 									{/each}
 								</optgroup>
 							</select>
@@ -98,7 +98,7 @@
 								<li class="collapsible-item">
 									<details class="collapsible-wrapper" open>
 										<summary class="collapsible-button">
-											<span class="text"> Request </span>
+											<span class="text">Request</span>
 											<div class="icon aw-u-color-text-primary">
 												<span class="icon-cheveron-down" aria-hidden="true" />
 											</div>
@@ -138,7 +138,7 @@
 							<li class="collapsible-item">
 								<details class="collapsible-wrapper">
 									<summary class="collapsible-button">
-										<span class="text"> Response </span>
+										<span class="text">Response</span>
 										<div class="icon aw-u-color-text-primary">
 											<span class="icon-cheveron-down" aria-hidden="true" />
 										</div>
@@ -153,10 +153,10 @@
 																<h3 class="aw-eyebrow aw-u-color-text-primary">
 																	{response.code}
 																</h3>
-																<span class="aw-caption-400">{response.contentType}</span>
+																<span class="aw-caption-400">{response.model?.name}</span>
 															</header>
 															<p class="aw-sub-body-400 u-margin-block-start-16">
-																{response.model?.name}
+																<a href="#">Payload <span class="icon-cheveron-right" /></a>
 															</p>
 														</article>
 													</li>

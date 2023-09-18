@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { Docs } from '$lib/layouts';
-	import Sidebar from './Sidebar.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 </script>
 
