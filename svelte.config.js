@@ -41,11 +41,9 @@ const config = {
 			$appwrite: './node_modules/@appwrite.io/repo',
 			$markdoc: './src/markdoc'
 		},
-		prerender: {
-			handleHttpError: ({ path, referrer, message }) => {
-				return;
-			}
-		}
+        prerender: {
+            handleHttpError: 'warn'
+        },
 	}
 };
 export default config;
