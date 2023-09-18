@@ -1,0 +1,80 @@
+---
+layout: article
+title: Update
+description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+---
+
+To upgrade your Appwrite server from an older version, you should use the Appwrite migration tool **after you have installed the new version**. The migration tool will adjust your Appwrite data to the new version's structure to make sure your Appwrite data is compatible with any internal changes.
+
+As of version 0.14, Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To upgrade Appwrite, make sure your Docker installation is updated to support Composer V2.
+
+{% info title="A note about migration" %}
+At present, we support migrations only to the **immediately higher versions**, i.e from `0.6.x` to `0.7.x` and `0.7.x` to `0.8.x` and so on. 
+
+So if you're trying to migrate from `0.6.0` to `0.8.2`, you will first need to migrate to `0.7.x` and then to `0.8.2`.
+
+It is highly recommended to [backup your server](https://gist.github.com/Meldiron/47b5851663668102a676aff43c6341f7) data before running the migration. It is recommended to run the migration process on a dev instance and make sure your application is working well and that you have checked for any breaking changes in the new version [changelog](https://github.com/appwrite/appwrite/tags).
+{% /info %}
+
+The first step is to install the latest version of Appwrite. Head to the directory where you ran your previous Appwrite install command.
+
+```text
+parent_directory <= you run the command in this directory
+└── appwrite
+    └── docker-compose.yml
+```
+
+This is the parent directory where you will find the `appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
+
+## [Installing the Next Version](/docs/upgrade#install-new-version)
+
+### Unix
+
+```sh
+docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="upgrade" \
+    appwrite/appwrite:1.4.3
+```
+
+### CMD
+
+```cmd
+docker run -it --rm ^
+    --volume //var/run/docker.sock:/var/run/docker.sock ^
+    --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
+    --entrypoint="upgrade" ^
+    appwrite/appwrite:1.4.3
+```
+
+### PowerShell
+
+```powershell
+docker run -it --rm `
+    --volume /var/run/docker.sock:/var/run/docker.sock `
+    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
+    --entrypoint="upgrade" `
+    appwrite/appwrite:1.4.3
+```
+
+This will pull the `docker-compose.yml` file for the new version and perform the installation. 
+Once the setup completes, verify that you have the latest version of Appwrite.
+
+```sh
+docker ps | grep appwrite/appwrite
+```
+
+Verify that the `STATUS` doesn't have any errors and all the `appwrite/appwrite` containers have the same version.
+## Running the Migration
+We can now start the migration. Navigate to the `appwrite` directory where your `docker-compose.yml` is present and run the following command.
+
+```sh
+cd appwrite/
+docker compose exec appwrite migrate
+```
+
+The data migration can take longer depending on the amount of data your Appwrite instance contains. The Appwrite migration command uses multi-threading to speed up the process, meaning that adding more CPU cores can help speed up the process.
+
+Once the migration process has been completed successfully, you're all set to use the latest version of Appwrite!
+

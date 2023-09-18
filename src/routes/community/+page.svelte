@@ -18,7 +18,7 @@
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where developers can build any
+								Appwrite is the open-source development platform developers like you any
 								application at any scale, using the language they want.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">

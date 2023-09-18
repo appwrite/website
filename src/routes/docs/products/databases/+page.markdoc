@@ -11,38 +11,38 @@ Databases provide high-performance and scalable data storage for your key applic
 Databases store data, if you need to store files like images, PDFs or videos, use [Appwrite Storage](/docs/products/storage).
 {% /info %}
 
-### Get started
+## Get started
 Learn to setup up a database, create and retrieve documents, and basic permissions.
 - [Quick start]()
 
-### Organize your data
+## Organize your data
 Appwrite organizes data heirarchically into databases, collections and documents. A database contains many collections, a collection contains many documents.
 
 - [Learn about databases]()
 - [Learn about collections]()
 - [Learn about documents]()
 
-### Structure your data
+## Structure your data
 Collections define the structure of its documents. All documents in a collection share the same structure.
 
 - [Learn about structuring data]()
 
-### Query your data
+## Query your data
 Appwrite supports a powerful set of query operators, so you can filter and order the data returned by Databases.
 
 - [Learn about quering data]()
 
-### Paginate your data
+## Paginate your data
 Paginate large data sets into smaller pages using offset or cursor pagination.
 
 - [Learn about paginating data]()
 
-### Relationships
+## Relationships
 Express complex and interconnected data models by organizing data using relationships.
 
 - [Learn about relationships]()
 
-### Permissions
+## Permissions
 Manage which users can access data with permissions at the collection or document level.
 
 - [Learn about permissions]()

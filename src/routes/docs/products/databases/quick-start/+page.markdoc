@@ -124,6 +124,7 @@ func main() async throws {
 {% /multicode %}
 
 The response should look similar to this.
+
 ```json
 {
   title: 'Hamlet',
@@ -238,4 +239,5 @@ func main() async throws{
     }
 }
 ```
+{% /multicode %}
 {% /section %}

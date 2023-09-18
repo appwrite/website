@@ -1,18 +1,26 @@
+@mixin border-gradient-inner {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--m-border-radius);
+  border: var(--m-border-size, 1px) solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 @mixin border-gradient {
   position: relative;
-  
+  border-radius: var(--m-border-radius);
 
-  &::before,
+  &::before {
+    @include border-gradient-inner;
+    background: var(--m-border-gradient-before) border-box;
+  }
+
   &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--m-border-radius);
-    border: var(--m-border-size) solid transparent;
-    background: var(--m-border-gradient) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    pointer-events: none;
+    @include border-gradient-inner;
+    background: var(--m-border-gradient-after) border-box;
   }
 }
