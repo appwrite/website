@@ -125,7 +125,11 @@
 				<ol class="aw-references-menu-list">
 					{#each tutorials as tutorial}
 						<li class="aw-references-menu-item">
-							<a href={tutorial.href} class="aw-references-menu-link">
+							<a
+								href={tutorial.href}
+								class="aw-references-menu-link"
+								class:tutorial-scroll-indicator={currentStep === tutorial.step}
+							>
 								<span class="aw-numeric-badge">{tutorial.step}</span>
 								<span class="aw-caption-400">{tutorial.title}</span>
 							</a>
@@ -175,3 +179,18 @@
 		</aside>
 	</article>
 </main>
+
+<style lang="scss">
+	.tutorial-scroll-indicator {
+		position: relative;
+		&::before {
+			position: absolute;
+			content: '';
+			top: 0;
+			left: -1.5rem;
+			height: 100%;
+			width: 2px;
+			background-color: hsl(var(--p-references-menu-link-color-text));
+		}
+	}
+</style>
