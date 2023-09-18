@@ -56,7 +56,7 @@
 				},
 				{
 					label: 'References',
-					href: '/docs/reference',
+					href: '/docs/references',
 					icon: 'icon-document',
 					items: [
 						{
