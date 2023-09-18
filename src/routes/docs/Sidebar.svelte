@@ -197,15 +197,15 @@
 						},
 						{
 							label: 'Development',
-							href: '/docs/products/functions/develop'
+							href: '/docs/products/functions/development'
 						},
 						{
 							label: 'Deployment',
-							href: '/docs/products/functions/deploy'
+							href: '/docs/products/functions/deployment'
 						},
 						{
 							label: 'Execution',
-							href: '/docs/products/functions/execute'
+							href: '/docs/products/functions/execution'
 						},
 						{
 							label: 'Runtimes',
@@ -274,8 +274,18 @@
 			items: [
 				{
 					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
+					href: '/docs/tooling/cli/installation',
+					icon: 'icon-terminal',
+					items: [
+						{
+							label: 'Installation',
+							href: '/docs/tooling/cli/installation'
+						},
+						{
+							label: 'Deployment',
+							href: '/docs/tooling/cli/deployment'
+						},
+					]
 				},
 				{
 					label: 'Assistant',
@@ -354,8 +364,8 @@
 					icon: 'icon-server',
 					items: [
 						{
-							label: 'Install',
-							href: '/docs/self-hosting/install'
+							label: 'Installation',
+							href: '/docs/self-hosting/installation'
 						},
 						{
 							label: 'Email delivery',
