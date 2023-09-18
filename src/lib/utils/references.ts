@@ -15,9 +15,11 @@ export enum Service {
 }
 
 export enum Platform {
-	ClientApple = 'client-apple',
-	ClientFlutter = 'client-flutter',
 	ClientWeb = 'client-web',
+	ClientFlutter = 'client-flutter',
+	ClientApple = 'client-apple',
+	ClientAndroidKotlin = 'client-android-kotlin',
+	ClientAndroidJava = 'client-android-java',
 	ServerDart = 'server-dart',
 	ServerDeno = 'server-deno',
 	ServerDotNet = 'server-dotnet',
@@ -32,6 +34,8 @@ export const languageMap: Record<Platform, Language> = {
 	[Platform.ClientApple]: 'swift',
 	[Platform.ClientFlutter]: 'dart',
 	[Platform.ClientWeb]: 'js',
+	[Platform.ClientAndroidKotlin]: 'kotlin',
+	[Platform.ClientAndroidJava]: 'java',
 	[Platform.ServerDart]: 'dart',
 	[Platform.ServerDeno]: 'ts',
 	[Platform.ServerDotNet]: 'cs',
@@ -40,4 +44,32 @@ export const languageMap: Record<Platform, Language> = {
 	[Platform.ServerPython]: 'py',
 	[Platform.ServerRuby]: 'rb',
 	[Platform.ServerSwift]: 'swift'
+};
+
+export const platformMap: Record<Platform, string> = {
+	[Platform.ClientApple]: 'Apple SDK',
+	[Platform.ClientFlutter]: 'Flutter SDK',
+	[Platform.ClientWeb]: 'Web SDK',
+	[Platform.ClientAndroidKotlin]: 'Android SDK (Kotlin)',
+	[Platform.ClientAndroidJava]: 'Android SDK (Java)',
+	[Platform.ServerDart]: 'Dart SDK',
+	[Platform.ServerDeno]: 'Deno SDK',
+	[Platform.ServerDotNet]: '.NET SDK',
+	[Platform.ServerNodeJs]: 'Node.js SDK',
+	[Platform.ServerPhp]: 'PHP SDK',
+	[Platform.ServerPython]: 'Python SDK',
+	[Platform.ServerRuby]: 'Ruby SDK',
+	[Platform.ServerSwift]: 'Swift SDK'
+};
+
+export const serviceMap: Record<Service, string> = {
+	[Service.Account]: 'Account',
+	[Service.Avatars]: 'Avatars',
+	[Service.Databases]: 'Databases',
+	[Service.Functions]: 'Functions',
+	[Service.Health]: 'Health',
+	[Service.Locale]: 'Locale',
+	[Service.Storage]: 'Storage',
+	[Service.Teams]: 'Teams',
+	[Service.Users]: 'Users'
 };
