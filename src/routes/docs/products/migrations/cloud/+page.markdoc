@@ -22,7 +22,7 @@ Migrations makes it as easy as a couple clicks to move all of your self-hosted p
 
 {% section #create-migration step=2 title="Create migration" %}
 
-To begin migrating to self-hosted, make sure to read the [migration overview](/docs/migrations)  
+To begin migrating to self-hosted, make sure to read the [migration overview](/docs/products/migrations)  
 and [things to keep in mind](#notices) sections above.
 
 1. Navigate to your self-hosted project's console and click on the **Migrations** tab.

@@ -26,7 +26,7 @@ parent_directory <= you run the command in this directory
 
 This is the parent directory where you will find the `appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
 
-## [Installing the Next Version](/docs/upgrade#install-new-version)
+## [Installing the Next Version](#)
 
 ### Unix
 

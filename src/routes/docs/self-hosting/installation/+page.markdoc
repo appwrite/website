@@ -76,11 +76,11 @@ Choose from one of the providers below:
 Self-hosting Appwrite gives you more configurable options.
 Make these configurations to unlock the full power of Appwrite.
 
-- [Configure email delivery](TODO)
-- [Configure SMS delivery](TODO)
-- [Configure Appwrite Functions](TODO)
-- [Configure Appwrite Storage](TODO)
-- [Configure TLS Certificates](TODO)
+- [Configure email delivery](#)
+- [Configure SMS delivery](#)
+- [Configure Appwrite Functions](#)
+- [Configure Appwrite Storage](#)
+- [Configure TLS Certificates](#)
 
 ## Manual (Docker Compose) {% #manual %}
 
