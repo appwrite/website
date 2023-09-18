@@ -15,14 +15,14 @@
 
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;
-		goto(`/docs/reference/${version}/${event.currentTarget.value}/${service}`, {
+		goto(`/docs/references/${version}/${event.currentTarget.value}/${service}`, {
 			noScroll: true
 		});
 	}
 
 	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { platform, service } = $page.params;
-		goto(`/docs/reference/${event.currentTarget.value}/${platform}/${service}`, {
+		goto(`/docs/references/${event.currentTarget.value}/${platform}/${service}`, {
 			noScroll: true
 		});
 	}
