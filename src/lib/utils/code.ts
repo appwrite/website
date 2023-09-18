@@ -1,4 +1,4 @@
-import type { HLJSApi, LanguageFn } from 'highlight.js';
+import type { LanguageFn } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
 import dart from 'highlight.js/lib/languages/dart';
 import javascript from 'highlight.js/lib/languages/javascript';
