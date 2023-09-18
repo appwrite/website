@@ -49,7 +49,10 @@ const languages = {
 	yaml: yaml,
 	text: plaintext,
 	graphql: graphql,
-	http: http
+	http: http,
+	py: python,
+	rb: ruby,
+	cs: csharp
 } as const satisfies Record<string, LanguageFn>;
 
 Object.entries(languages).forEach(([key, value]) => {

@@ -86,12 +86,12 @@
 			href: '/blog'
 		},
 		{
-			label: 'Pricing',
-			href: '/pricing'
+			label: 'Changelog',
+			href: '#'
 		},
 		{
-			label: 'Roadmap',
-			href: '/roadmap'
+			label: 'Pricing',
+			href: '/pricing'
 		}
 	];
 
@@ -139,7 +139,7 @@
 		</div>
 	</section>
 	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
-		<div class="aw-top-banner">
+		<!-- Hidden for now. <div class="aw-top-banner">
 			<div class="aw-top-banner-content aw-u-color-text-primary">
 				<span class="aw-caption-500">We are having lots of fun on</span>
 				<span class="aw-icon-discord" aria-hidden="true" />
@@ -148,7 +148,7 @@
 					<span class="aw-icon-close" aria-hidden="true" />
 				</button>
 			</div>
-		</div>
+		</div> -->
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">

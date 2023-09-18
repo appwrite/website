@@ -6,6 +6,7 @@
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
+	import Products from '$lib/animations/Products.svelte';
 </script>
 
 <!-- <div
@@ -51,7 +52,7 @@
 						<span class="aw-icon-star" aria-hidden="true" />
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep" />
-						<span class="aw-caption-400">Pricing Plans announced</span>
+						<span class="aw-caption-400">Intorudcing a *brand* new Appwrite</span>
 						<span class="aw-icon-arrow-right" aria-hidden="true" />
 					</button>
 					<div class="aw-hero is-horizontal">
@@ -62,8 +63,8 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where developers can build any
-								application at any scale, using the language they want.
+								Appwrite is the open-source development platform where you can build any
+								application at any scale, using the coding languages and tools you want.
 							</p>
 							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
 								<span class="text">Get Started</span>
@@ -133,20 +134,7 @@
 			</div>
 		</div>
 
-		<div class="aw-big-padding-section-level-1">
-			<div class="aw-big-padding-section-level-2">
-				<div class="aw-container">
-					<div class="aw-hero aw-u-max-width-993">
-						<span class="aw-badges aw-eyebrow">Products_</span>
-						<h2 class="aw-display aw-u-color-text-primary">Your backend, minus the hassle</h2>
-						<p class="aw-description aw-u-max-width-700 u-margin-inline-auto">
-							Build secure and scalable applications faster with Appwrite’s core backend products
-							and spend more time building the best products.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		<Products />
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">

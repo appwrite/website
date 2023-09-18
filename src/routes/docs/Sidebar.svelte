@@ -35,8 +35,13 @@
 		{
 			items: [
 				{
+					label: 'Home',
+					href: '/docs',
+					icon: 'icon-home'
+				},
+				{
 					label: 'Quick Start',
-					href: '/docs/quick-start',
+					href: '/docs/quick-starts',
 					icon: 'icon-play'
 				},
 				{
@@ -46,13 +51,8 @@
 				},
 				{
 					label: 'SDKs',
-					href: '#',
+					href: '/docs/sdks',
 					icon: 'icon-cog'
-				},
-				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
 				},
 				{
 					label: 'References',
@@ -196,16 +196,16 @@
 							href: '/docs/products/functions/quick-start'
 						},
 						{
-							label: 'Develop',
-							href: '/docs/products/functions/develop'
+							label: 'Development',
+							href: '/docs/products/functions/development'
 						},
 						{
-							label: 'Deploy',
-							href: '/docs/products/functions/deploy'
+							label: 'Deployment',
+							href: '/docs/products/functions/deployment'
 						},
 						{
-							label: 'Execute',
-							href: '/docs/products/functions/execute'
+							label: 'Execution',
+							href: '/docs/products/functions/execution'
 						},
 						{
 							label: 'Runtimes',
@@ -253,18 +253,44 @@
 			items: [
 				{
 					label: 'Realtime',
-					href: '#',
+					href: '/docs/apis/realtime',
 					icon: 'icon-clock'
 				},
 				{
 					label: 'REST',
-					href: '#',
+					href: '/docs/apis/rest',
 					icon: 'icon-play'
 				},
 				{
 					label: 'GraphQL',
-					href: '#',
+					href: '/docs/apis/graphql',
 					icon: 'icon-play'
+				}
+			]
+		},
+		{
+			label: 'Tooling',
+			href: '#',
+			items: [
+				{
+					label: 'Command Line',
+					href: '/docs/tooling/cli/installation',
+					icon: 'icon-terminal',
+					items: [
+						{
+							label: 'Installation',
+							href: '/docs/tooling/cli/installation'
+						},
+						{
+							label: 'Deployment',
+							href: '/docs/tooling/cli/deployment'
+						},
+					]
+				},
+				{
+					label: 'Assistant',
+					href: '/docs/tooling/assistant',
+					icon: 'icon-magic-wand'
 				}
 			]
 		},
@@ -296,7 +322,7 @@
 							href: '/docs/products/migrations/supabase'
 						},
 						{
-							label: 'From NHost',
+							label: 'From Nhost',
 							href: '/docs/products/migrations/nhost'
 						},
 						{
@@ -312,8 +338,46 @@
 				},
 				{
 					label: 'Self-hosting',
-					href: '#',
-					icon: 'icon-server'
+					href: '/docs/self-hosting',
+					icon: 'icon-server',
+					items: [
+						{
+							label: 'Installation',
+							href: '/docs/self-hosting/installation'
+						},
+						{
+							label: 'Email delivery',
+							href: '/docs/self-hosting/email'
+						},
+						{
+							label: 'SMS delivery',
+							href: '/docs/self-hosting/sms'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/self-hosting/functions'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/self-hosting/storage'
+						},
+						{
+							label: 'TLS Certificates',
+							href: '/docs/self-hosting/tls-certificates'
+						},
+						{
+							label: 'Update',
+							href: '/docs/self-hosting/update'
+						},
+						{
+							label: 'Debug',
+							href: '/docs/self-hosting/debug'
+						},
+						{
+							label: 'Production',
+							href: '/docs/self-hosting/production'
+						},
+					]
 				}
 			]
 		}
