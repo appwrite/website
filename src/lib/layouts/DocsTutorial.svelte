@@ -1,18 +1,15 @@
 <script lang="ts">
-	type Link = {
-		title: string;
-		href: string;
-		step: number;
-	};
+	import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
+	import type { TocItem } from './DocsArticle.svelte';
 
 	export let title: string;
-	export let toc: Array<
-		Link & {
-			children?: Array<Omit<Link, 'step'>>;
-		}
-	>;
-	export let nextStep: Link | undefined = undefined;
-	export let prevStep: Link | undefined = undefined;
+	export let toc: Array<TocItem>;
+	export let currentStep: number;
+
+	export let tutorials: Array<Tutorial>;
+
+	$: nextStep = tutorials.find((tutorial) => tutorial.step === currentStep + 1);
+	$: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 </script>
 
 <main class="u-contents">
@@ -126,24 +123,44 @@
 					<h5 class="aw-references-menu-title aw-eyebrow">Tutorial Steps</h5>
 				</div>
 				<ol class="aw-references-menu-list">
-					{#each toc as parent}
+					{#each tutorials as tutorial}
 						<li class="aw-references-menu-item">
-							<a href={parent.href} class="aw-references-menu-link">
-								<span class="aw-numeric-badge">{parent.step}</span>
-								<span class="aw-caption-400">{parent.title}</span>
+							<a href={tutorial.href} class="aw-references-menu-link">
+								<span class="aw-numeric-badge">{tutorial.step}</span>
+								<span class="aw-caption-400">{tutorial.title}</span>
 							</a>
-							{#if parent.children}
-								<ol
-									class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-								>
-									{#each parent.children as child}
+							{#if currentStep === tutorial.step}
+								{#each toc as parent}
+									<ol
+										class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+									>
 										<li class="aw-references-menu-item">
-											<a href={child.href} class="aw-references-menu-link">
-												<span class="aw-caption-400">{child.title}</span>
+											<a
+												href={parent.href}
+												class="aw-references-menu-link"
+												class:is-selected={parent.selected}
+											>
+												{#if parent?.step}
+													<span class="aw-numeric-badge">{parent.step}</span>
+												{/if}
+												<span class="aw-caption-400">{parent.title}</span>
 											</a>
+											{#if parent.children}
+												<ol
+													class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+												>
+													{#each parent.children as child}
+														<li class="aw-references-menu-item">
+															<a href={child.href} class="aw-references-menu-link">
+																<span class="aw-caption-400">{child.title}</span>
+															</a>
+														</li>
+													{/each}
+												</ol>
+											{/if}
 										</li>
-									{/each}
-								</ol>
+									</ol>
+								{/each}
 							{/if}
 						</li>
 					{/each}

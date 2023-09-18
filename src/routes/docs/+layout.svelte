@@ -12,7 +12,7 @@
 		const isPlatform = pathname.includes('/platform');
 		const isTooling = pathname.includes('/tooling');
 		const isSelfHosting = pathname.includes('/self-hosting');
-		const isReference = pathname.includes('/reference');
+		const isReference = pathname.includes('/references');
 
 		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickStarts || isTooling || isSelfHosting || isPlatform) {
 			return 'two-side-navs';
