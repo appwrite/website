@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
-	import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 	import Docs from '$lib/layouts/Docs.svelte';
 	import Sidebar, { type NavTree } from '$lib/layouts/Sidebar.svelte';
 
@@ -105,8 +103,6 @@
 			]
 		}
 	];
-	setContext<Tutorial[]>('tutorials', []);
-
 </script>
 
 <Docs variant='two-side-navs'>
