@@ -30,10 +30,18 @@
 	}
 
 	if (insideMultiCode) {
-		getContext<CodeContext>('multi-code').snippets.update((n) => {
+		const ctx = getContext<CodeContext>('multi-code');
+
+		ctx.snippets.update((n) => {
 			n.add(language);
 
 			return n;
+		});
+
+		ctx.selected.subscribe((n) => {
+			if (n === language) {
+				ctx.content.set(content);
+			}
 		});
 	}
 
@@ -44,7 +52,6 @@
 
 {#if insideMultiCode}
 	{#if $selected === language}
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html result}
 	{/if}
 {:else}
@@ -75,7 +82,6 @@
 			</div>
 		</header>
 		<div class="aw-code-snippet-content">
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html result}
 		</div>
 	</section>
