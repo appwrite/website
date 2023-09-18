@@ -40,12 +40,20 @@
 	});
 </script>
 
-<svelte:element
-	this={tag}
-	{id}
-	bind:this={element}
-	class:aw-snap-location={id}
-	class="aw-main-body-500 aw-u-color-text-primary"
->
-	<slot />
-</svelte:element>
+{#if id}
+	<a href={`#${id}`}>
+		<svelte:element
+			this={tag}
+			{id}
+			bind:this={element}
+			class:aw-snap-location={id}
+			class="aw-main-body-500 aw-u-color-text-primary"
+		>
+			<slot />
+		</svelte:element>
+	</a>
+{:else}
+	<svelte:element this={tag} bind:this={element} class="aw-main-body-500 aw-u-color-text-primary">
+		<slot />
+	</svelte:element>
+{/if}

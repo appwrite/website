@@ -111,17 +111,17 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="https://careers.appwrite.io" target="_blank">Careers</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="https://store.appwrite.io" target="_blank">Store</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/brand">Brand</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/contact-us">Contact us</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Community</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Blog</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Contact Us</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Legal</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Legal</a></h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
 				<span class="aw-caption-500">Legal</span>
 				<svg
