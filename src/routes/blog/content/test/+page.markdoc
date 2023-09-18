@@ -1,8 +1,9 @@
 ---
+layout: post
 title: Lorem Ipsum
 description: Lorem Ipsum dolor et amet.
 date: 2023-11-14
-cover: /images/bgs/hero-lines-1.png
+cover: /images/pages/homepage/dashboard.svg
 timeToRead: 3
 ---
 

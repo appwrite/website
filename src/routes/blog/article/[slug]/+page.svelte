@@ -28,7 +28,13 @@
 							</p>
 							<div class="aw-author u-margin-block-start-16">
 								<div class="u-flex u-cross-center u-gap-8">
-									<img class="aw-author-image" src="/images/blog/placeholder.png" width="44" height="44" alt="" />
+									<img
+										class="aw-author-image"
+										src="/images/blog/placeholder.png"
+										width="44"
+										height="44"
+										alt=""
+									/>
 									<div class="aw-author-info">
 										<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author's name</h4>
 										<p class="aw-caption-400 u-hide">Author’s role or bio</p>
@@ -109,7 +115,7 @@
 									</div>
 								</a>
 							</li>
-							<li>
+							<li />
 						</ul>
 					</section>
 				</div>
@@ -487,5 +493,5 @@
 				</div>
 			</div>
 		</div>
-	</div></Main
->
+	</div>
+</Main>

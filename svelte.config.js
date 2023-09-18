@@ -1,5 +1,5 @@
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { preprocessMeltUI } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
@@ -7,7 +7,7 @@ import sequence from 'svelte-sequential-preprocessor';
 import adapter from '@sveltejs/adapter-static';
 
 function absoulute(path) {
-    return join(dirname(fileURLToPath(import.meta.url)), path)
+	return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
 /** @type {import('@sveltejs/kit').Config}*/
@@ -24,7 +24,8 @@ const config = {
 			layouts: {
 				default: absoulute('./src/markdoc/layouts/Article.svelte'),
 				article: absoulute('./src/markdoc/layouts/Article.svelte'),
-				tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte')
+				tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
+				post: absoulute('./src/markdoc/layouts/Post.svelte')
 			}
 		}),
 		preprocessMeltUI()
