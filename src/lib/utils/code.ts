@@ -47,16 +47,13 @@ const languages = {
 	powershell: powershell,
 	cmd: dos,
 	yaml: yaml,
-	text:plaintext,
-	graphql:graphql,
-	http:http,
+	text: plaintext,
+	graphql: graphql,
+	http: http,
 	py: python,
 	rb: ruby,
-	cs: csharp,
+	cs: csharp
 } as const satisfies Record<string, LanguageFn>;
-
-
-
 
 Object.entries(languages).forEach(([key, value]) => {
 	hljs.registerLanguage(key, value);

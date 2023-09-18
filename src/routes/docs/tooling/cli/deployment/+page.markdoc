@@ -1,0 +1,23 @@
+---
+layout: article
+title: Deployment
+description: 
+---
+The Apprite CLI allows you to create and deploy databases, collections, buckets, teams and functions to your Appwrite project from a configuration file. This is especially helpful if you're trying to track project setup using version control.
+
+# Initialization {% #initialization %}
+
+After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
+
+```sh
+appwrite init project
+```
+
+The following prompts will guide you through the setup process. The init command also creates an [`appwrite.json`](#appwrite.json) file representing your Appwrite project.
+
+You can fetch all the existing databases and collections in your current project using:
+
+```sh
+appwrite init collection
+```
+
