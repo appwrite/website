@@ -1,12 +1,12 @@
 ---
 layout: article
-title: Start with Vue.js
-description: Learn how to quickly integrate Appwrite products and services into your Vue.js project.
+title: Start with React
+description: Learn how to quickly integrate Appwrite products and services into your React project.
 difficulty: beginner
 readtime: 3
 ---
 
-Learn to setup your first Vue project powered by Appwrite.
+Learn to setup your first React project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -21,11 +21,11 @@ Then, under **Add a platform**, add a **Web app**. The **Hostname** should be lo
 You can skip optional steps.
 
 {% /section %}
-{% section #step-2 step=2 title="Create Vue project" %}
-Create a Vue project.
+{% section #step-2 step=2 title="Create React project" %}
+Create a Vite project.
 
 ```sh
-npm init vue@latest my-app && cd my-app
+npm create vite@latest my-app -- --template react && cd my-app
 ```
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -57,7 +57,7 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-Add the following code to `src/App.vue`.
+Add the following code to `src/App.jsx`.
 
 ```html
 <template>

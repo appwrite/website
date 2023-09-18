@@ -1,9 +1,106 @@
 ---
 layout: article
-title: Quick start with SvelteKit
-description: Learn how to quickly integrate Appwrite products and services into your SvelteKit project.
-difficulty: beginner
-readtime: 3
+title: Start with SvelteKit
+description: This is the description used for SEO.
 ---
+Learn to setup your first SvelteKit project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-hello world
+![Create project screen](/images/docs/databases/quick-start/create-project.png)
+
+If this is your first time using Appwrite, create an accout and create your first project.
+
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+
+![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+
+You can skip optional steps.
+
+{% /section %}
+{% section #step-2 step=2 title="Create SvelteKit project" %}
+Create a SvelteKit project.
+
+```sh
+npm create svelte@next my-app && cd my-app
+```
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+Find your project's ID in the **Settings** page. 
+
+![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+
+Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+
+```js
+import { Client, Account} from 'appwrite';
+
+export const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+
+export const account = new Account(client);
+export { ID } from 'appwrite';
+```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
+Create a new file `src/routes/index.svelte` and add the following code to it.
+
+```html
+<script>
+    import { account, ID } from '$lib/appwrite';
+
+    let loggedInUser = null;
+
+    let email = '';
+    let password = '';
+    let name = '';
+
+    async function login(email, password) {
+        await account.createEmailSession(email, password);
+        loggedInUser = await account.get();
+    }
+</script>
+
+<p>
+    {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
+</p>
+
+<form>
+    <input type="email" placeholder="Email" bind:value={email} />
+    <input type="password" placeholder="Password" bind:value={password} />
+    <input type="text" placeholder="Name" bind:value={name} />
+
+    <button type="button" on:click={() => login(email, password)}>Login</button>
+    <button
+        type="button"
+        on:click={async () => {
+            await account.create(ID.unique(), email, password, name);
+            login(email, password);
+        }}>Register</button>
+
+    <button
+        type="button"
+        on:click={async () => {
+            await account.deleteSession('current');
+            loggedInUser = null;
+        }}>Logout</button>
+</form>
+```
+{% /section %}
+
+{% section #step-6 step=6 title="Checkout what you've built" %}
+Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+{% /section %}
+
+
