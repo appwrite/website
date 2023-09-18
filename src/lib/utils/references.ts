@@ -30,36 +30,39 @@ export enum Platform {
 	ServerSwift = 'server-swift'
 }
 
-export const languageMap: Record<Platform, Language> = {
-	[Platform.ClientApple]: 'swift',
-	[Platform.ClientFlutter]: 'dart',
-	[Platform.ClientWeb]: 'js',
-	[Platform.ClientAndroidKotlin]: 'kotlin',
-	[Platform.ClientAndroidJava]: 'java',
-	[Platform.ServerDart]: 'dart',
-	[Platform.ServerDeno]: 'ts',
-	[Platform.ServerDotNet]: 'cs',
-	[Platform.ServerNodeJs]: 'js',
-	[Platform.ServerPhp]: 'php',
-	[Platform.ServerPython]: 'py',
-	[Platform.ServerRuby]: 'rb',
-	[Platform.ServerSwift]: 'swift'
-};
-
-export const platformMap: Record<Platform, string> = {
-	[Platform.ClientApple]: 'Apple SDK',
-	[Platform.ClientFlutter]: 'Flutter SDK',
-	[Platform.ClientWeb]: 'Web SDK',
-	[Platform.ClientAndroidKotlin]: 'Android SDK (Kotlin)',
-	[Platform.ClientAndroidJava]: 'Android SDK (Java)',
-	[Platform.ServerDart]: 'Dart SDK',
-	[Platform.ServerDeno]: 'Deno SDK',
-	[Platform.ServerDotNet]: '.NET SDK',
-	[Platform.ServerNodeJs]: 'Node.js SDK',
-	[Platform.ServerPhp]: 'PHP SDK',
-	[Platform.ServerPython]: 'Python SDK',
-	[Platform.ServerRuby]: 'Ruby SDK',
-	[Platform.ServerSwift]: 'Swift SDK'
+export const platformMap: Record<Language, string> = {
+	[Platform.ClientApple]: 'Apple',
+	[Platform.ClientFlutter]: 'Flutter',
+	[Platform.ClientWeb]: 'Web',
+	[Platform.ClientAndroidKotlin]: 'Android (Kotlin)',
+	[Platform.ClientAndroidJava]: 'Android (Java)',
+	[Platform.ServerDart]: 'Dart',
+	[Platform.ServerDeno]: 'Deno',
+	[Platform.ServerDotNet]: '.NET',
+	[Platform.ServerNodeJs]: 'Node.js',
+	[Platform.ServerPhp]: 'PHP',
+	[Platform.ServerPython]: 'Python',
+	[Platform.ServerRuby]: 'Ruby',
+	[Platform.ServerSwift]: 'Swift',
+	sh: 'Shell',
+	js: 'JavaScript',
+	ts: 'TypeScript',
+	dart: 'Dart',
+	java: 'Java',
+	kotlin: 'Kotlin',
+	cs: 'C#',
+	py: 'Python',
+	rb: 'Ruby',
+	php: 'PHP',
+	swift: 'Swift',
+	xml: 'XML',
+	html: 'HTML',
+	md: 'Markdown',
+	json: 'JSON',
+	diff: 'Diff',
+	http: 'HTTP',
+	css: 'CSS',
+	graphql: 'GraphQL'
 };
 
 export const serviceMap: Record<Service, string> = {

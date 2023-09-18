@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
 	import { parse } from '$lib/utils/markdown';
-	import { Platform, languageMap, platformMap, serviceMap, versions } from '$lib/utils/references.js';
+	import { Platform, platformMap, serviceMap, versions } from '$lib/utils/references.js';
 	import { Fence } from '$markdoc/nodes/_Module.svelte';
 
 	export let data;
@@ -174,7 +174,7 @@
 								class="u-position-sticky"
 								style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
 							>
-								<Fence language={languageMap[platform]} content={method.demo} process />
+								<Fence language={platform} content={method.demo} process withLineNumbers={false} />
 							</div>
 						</div>
 					</div>
