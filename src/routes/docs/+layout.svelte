@@ -9,11 +9,12 @@
 		const isAPIs = pathname.includes('/apis/');
 		const isTutorial = pathname.includes('/tutorials/');
 		const isProduct = pathname.includes('/products/') || pathname.includes('/article');
+		const isPlatform = pathname.includes('/platform');
 		const isTooling = pathname.includes('/tooling');
 		const isSelfHosting = pathname.includes('/self-hosting');
 		const isReference = pathname.includes('/reference');
 
-		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickStarts || isTooling || isSelfHosting) {
+		if (isTutorial || isProduct || isAPIs || isSDKs || isQuickStarts || isTooling || isSelfHosting || isPlatform) {
 			return 'two-side-navs';
 		} else if (isReference) {
 			return 'expanded';
