@@ -1,6 +1,6 @@
-## Databases Service {% #databases-events %}
+## Databases events {% #databases-events %}
 
-| Name     {% width=20 %}           | Payload                        | Description                             |
+| Name            | Payload                        | Description                             |
 | ----------------------------------------- | ------------------------------ | --------------------------------------- |
 | `databases.*`                             | [Database Object](/docs/models/database)     | This event triggers on any database event. |
 | `databases.*.collections.*`               | [Collection Object](/docs/models/collection) | This event triggers on any collection event. |
