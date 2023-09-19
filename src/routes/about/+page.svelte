@@ -371,29 +371,18 @@
 		</div>
 
 		<div class="aw-big-padding-section-level-1 u-padding-0">
-
-
-
-			<div class="aw-big-padding-section-level-2">
-				<div class="aw-container">
-					<div class="aw-hero is-center aw-u-max-width-800">
-						<h3 class="aw-display aw-u-color-text-primary">Appwrite insights</h3>
-						<p class="aw-main-body-400">Sign up to our blog and get the latest insights from Appwrite. Learn more about engineering, product design, building community, and tips & tricks for using Appwrite.</p>
-					</div>
-					<div
-							class="aw-subscribe-input aw-input-text is-reset-input-inside u-width-full-line aw-u-max-width-380 u-margin-inline-auto u-margin-block-start-32"
-					>
-						<input type="email" placeholder="Enter your email" />
-						<button class="aw-button">Sign up</button>
-					</div>
-				</div>
-			</div>
-
 			<div
 				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
 			>
+				<img src="/images/bgs/pre-footer.svg" alt="" class="aw-pre-footer-bg" style="z-index:-1"/>
 				<div class="aw-container">
-					<PreFooter />
+					<div class="aw-hero aw-u-max-width-380">
+						<h3 class="aw-display aw-u-color-text-primary">Join the team</h3>
+						<p>Find your next career at Appwrite and join a team of remote workers.</p>
+						<button class="aw-button is-transparent u-cross-child-center u-margin-block-start-16">
+							<span>Careers</span>
+						</button>
+					</div>
 					<FooterNav />
 					<MainFooter />
 				</div>
@@ -401,3 +390,16 @@
 		</div>
 	</div>
 </Main>
+
+<style lang="scss">
+	.aw-pre-footer-bg {
+		position: absolute;
+		top: clamp(300px, 50vw, 50%);
+		left: clamp(300px, 50vw, 50%);
+		transform: translate(-50%, -70%);
+		width: clamp(1200px, 200vw, 3000px);
+		height: auto;
+		max-inline-size: unset;
+		max-block-size: unset;
+	}
+</style>
