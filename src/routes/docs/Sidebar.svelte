@@ -327,6 +327,10 @@
 						{
 							label: 'Permissions',
 							href: '/docs/platform/permissions'
+						},
+						{
+							label: 'Webhooks',
+							href: '/docs/platform/webhooks'
 						}
 					]
 				},
