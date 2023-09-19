@@ -3,13 +3,20 @@
 	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
 	const parent: NavParent = {
-		backlink: '/docs',
-		href: '/docs/tooling/command-line',
-		label: 'Command Line',
-		icon: 'icon-terminal'
+		href: '/docs',
+		label: 'Command Line'
 	};
 
 	const navigation: NavTree = [
+		{
+			label: 'Getting started',
+			items: [
+				{
+					label: 'Overview',
+					href: '/docs/tooling/command-line'
+				}
+			]
+		},
 		{
 			label: 'Guides',
 			items: [
