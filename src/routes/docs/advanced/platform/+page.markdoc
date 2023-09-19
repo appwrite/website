@@ -1,9 +1,32 @@
 ---
 layout: article
 title: Platform
-description: Learn how to migrate your projects from other vendors to Appwrite Cloud or how to move from self-hosting to Cloud and the other way around using Appwrite Migrations service.
-difficulty: beginner
-readtime: 5
+description: Description for SEO.
 ---
 
-If you're looking to migrate existing projects to Appwrite, Migrations can help you make the move more quickly. You can move your app from Firebase, Supabase, Nhost, and even move between self-hosted and Cloud projects using Migrations. You can also use Migrations to move between two self-hosted instances or even to duplicate projects on the same instance. Migrations will automatically move accounts, database documents, and storage files from one source to another.
+Appwrite is a development platform designed to adapt you unique use cases.
+Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
+
+## API keys {% #api-keys %}
+
+[Learn more about API keys {% icon icon="cheveron-right" /%}](#)
+
+## Custom domains {% #custom-domains %}
+
+[Learn more about custom domains {% icon icon="cheveron-right" /%}](#)
+
+## Events {% #events %}
+
+[Learn more about events {% icon icon="cheveron-right" /%}](#)
+
+## Response codes {% #response-codes %}
+
+[Learn more about response codes {% icon icon="cheveron-right" /%}](#)
+
+## Permissions {% #permissions %}
+
+[Learn more about permissions {% icon icon="cheveron-right" /%}](#)
+
+## Rate limits {% #rate-limits %}
+
+[Learn more about permissions {% icon icon="cheveron-right" /%}](#)
