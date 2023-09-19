@@ -11,15 +11,15 @@ The terms collections and documents are used because the Appwrite JSON REST API 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions. 
 
 ## Create collection
-You can create collections using the Appwrite Console or a [Server SDK](TODO).
+You can create collections using the Appwrite Console or a [Server SDK](#).
 {% tabs %}
 {% tabsitem #console title="Console" %}
-You can create a collection by heading to the **Databases** page, navigate to a [database](TODO), and click **Create collection**.
+You can create a collection by heading to the **Databases** page, navigate to a [database](#), and click **Create collection**.
 
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-You can also create collections programmatically using a [Server SDK](TODO). Appwrite [Server SDKs](TODO) require an [API key](TODO).
+You can also create collections programmatically using a [Server SDK](#). Appwrite [Server SDKs](#) require an [API key](#).
 
 {% multicode %}
 
@@ -223,7 +223,7 @@ let collection = try await databases.createCollection(
 ```
 {% /multicode %}
 
-You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references]([TODO]).
+You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references](#).
 {% /tabsitem %}
 {% /tabs %}
 
@@ -254,7 +254,7 @@ You can choose between the following types.
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
 | `url`        | URL attribute.                                                   |
-| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](TODO) |
+| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](#) |
 
 If an attribute must be populated in all documents, set it as `required`. 
 If not, you may optionally set a default value. 
@@ -272,6 +272,6 @@ The following indexes are currently supported:
 |------------|--------------------------------------------------------------------------------------------------------------|
 | `key`      | Plain Index to allow queries.                                                                                 |
 | `unique`   | Unique Index to disallow duplicates.                                                                          |
-| `fulltext` | For searching within string attributes. Required for the [search query method](/docs/queries#query-class).     |
+| `fulltext` | For searching within string attributes. Required for the [search query method](#).     |
 
-You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](TODO). 
+You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](#). 

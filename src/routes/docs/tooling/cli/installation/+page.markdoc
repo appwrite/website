@@ -95,11 +95,11 @@ You can use the CLI to create and deploy functions and collections. Deploy comma
 
 Besides utility commands, the CLI can be used to execute commands like a Server SDK.
 
-[Find a full list of commands](/docs/tooling/cli/commands)
+[Find a full list of commands](#)
 
 You can choose to use the CLI in a headless and non-interactive mode without the need for config files or sessions. This is useful for CI or scripting use cases.
 
-[Learn more about CI mode](/docs/tooling/cli/continues-integration)
+[Learn more about CI mode](#)
 
 ## Help {% #help %}
 

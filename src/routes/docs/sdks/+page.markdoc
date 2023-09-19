@@ -10,7 +10,7 @@ We're always working on improving and extending the current stack of available p
 
 ## Client Side {% #client-side %}
 
-Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick start](/docs/quick-start) guides for your framework of choice to start building your first application.
+Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
 {% table %}
 * {% align="center" %}
@@ -36,7 +36,7 @@ Client libraries for integrating with Appwrite to build client-based application
 
 ## Server Side {% #server-side %}
 
-Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick start](/docs/quick-start) guides for your language/runtime of choice to start building your first server integration.
+Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick starts](/docs/quick-starts) guides for your language/runtime of choice to start building your first server integration.
 
 {% table %}
 * {% align="center" %}
@@ -86,9 +86,9 @@ If you would like to help us extend our platforms and SDKs stack, you are more t
 We are always looking to add new SDKs to our platform. If the SDK you are looking for is still missing, labeled as beta or experimental, or you simply do not want to integrate with an SDK, you can always integrate with Appwrite directly using any standard HTTP, GraphQL, or WebSocket clients and the relevant Appwrite protocol.
 
 Appwrite supports multiple API protocols for maximum flexibility and developer convenience. You can learn more about how to integrate directly with them using one of the following available guides:
-- [Integrate with the Appwrite REST API](/docs/protocols/rest)
-- [Integrate with the Appwrite GraphQL API](/docs/protocols/graphql)
-- [Integrate with the Appwrite Realtime API](/docs/protocols/realtime)
+- [Integrate with the Appwrite REST API](#)
+- [Integrate with the Appwrite GraphQL API](#)
+- [Integrate with the Appwrite Realtime API](#)
 
 ## Community {% #community %}
 If you have created your own framework or any other technology specific integration and would like us to list it here please [contact us](/contact-us).

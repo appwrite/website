@@ -16,7 +16,7 @@ Make sure to keep this key in a safe place and never make it publicly accessible
 
 {% info title="Best practice" %}
 You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests. 
-You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](TODO) environment variable.
+You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](#) environment variable.
 {% /info %}
 
 ## Console access {% #console-access %}
@@ -29,7 +29,7 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](TODO)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
 
 ## Scaling {% #scaling %}
 
@@ -47,13 +47,13 @@ If you disabled rate limits during development, make sure you re-enable them whe
 
 Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/self-hosting/environment-variables)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
 
 ## Emails {% #emails %}
 
 Sending emails is hard. There are a lot of spam rules and configurations to master in order to set up a functional SMTP server. While it is okay to use a self-hosted SMTP server during development, you should use a third-party SMTP provider for production so your email doesn't get labeled as spam.
 
-You can [change Appwrite's SMTP settings](/docs/self-hosting/email-delivery) and credentials to any 3rd party provider you like that supports SMTP integration using our Docker environment variables. Most SMTP providers offer a decent free tier to get started with.
+You can [change Appwrite's SMTP settings](/docs/self-hosting/email) and credentials to any 3rd party provider you like that supports SMTP integration using our Docker environment variables. Most SMTP providers offer a decent free tier to get started with.
 
 ## Backups {% #backups %}
 
@@ -70,7 +70,7 @@ Do not back up any stateful container using a docker volume backup, such as data
 
 ## Errors {% #errors %}
 
-By default, your Appwrite installation comes with error reporting turned off. You can [enable dev mode](/docs/debugging#devMode) to get access to more verbose error logs and stack traces.
+By default, your Appwrite installation comes with error reporting turned off. You can [enable dev mode](#) to get access to more verbose error logs and stack traces.
 
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` value from is set to `production` and not `development`.
 
@@ -78,7 +78,7 @@ To monitor errors in production, add a third party monitoring service by setting
 
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` is set to `production` and not `development`.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/self-hosting/environment-variables)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
 
 ## Security {% #security %}
 

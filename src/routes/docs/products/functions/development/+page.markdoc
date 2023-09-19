@@ -409,7 +409,7 @@ public class Handler {
 ```
 {% /multicode %}
 
-If you prefer to learn through more examples like this, explore the [examples page](/docs/functions/examples).
+If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
 
 ## Context object {% #context-object %}
 Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console. 
@@ -419,10 +419,10 @@ You'll find these properties in the context object.
 
 | Property | Description                                                                                                              |
 |----------|--------------------------------------------------------------------------------------------------------------------------|
-| req      | Contains request information like method, body, and headers. See full examples [here](TODO).                                     |
-| res      | Contains methods to build a response and return information. See full examples [here](TODO).                                     |
-| log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [here](TODO). |
-| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [here](TODO).    |
+| req      | Contains request information like method, body, and headers. See full examples [here](#).                                     |
+| res      | Contains methods to build a response and return information. See full examples [here](#).                                     |
+| log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [here](#). |
+| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [here](#).    |
 
 #### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 
@@ -683,7 +683,7 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
 | `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
 | `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
-| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](TODO).  |
+| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](#).  |
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
@@ -928,7 +928,7 @@ namespace runtime {
 ```
 {% /multicode %}
 
-To get the different response types, set one of the following query parameters in the [generated domain](TODO) of your function.
+To get the different response types, set one of the following query parameters in the [generated domain](#) of your function.
 
 | Type     | Query Param     | Example                                                     |
 |----------|-----------------|-------------------------------------------------------------|
@@ -1237,9 +1237,9 @@ To install your dependencies before your function is built, you should add the r
 ## Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
 Authenticating with Appwrite is done via an API key or a JWT token. 
-API keys must be generated and exported as an [environment variable](TODO).
+API keys must be generated and exported as an [environment variable](#).
 
-You can read more about authentication in the [Server authentication](TODO) section of the docs.
+You can read more about authentication in the [Server authentication](#) section of the docs.
 
 ### Using with API key {% #using-api-key %} 
 API keys have defined scopes when you create them. 
@@ -2124,10 +2124,10 @@ You will have to migrate your old functions to follow new runtime syntax.
 
 Here's a checklist of things you need to know.
 
-1. The parameter passed into functions has changed. `req` and `res` has been replaced by `context`, which contains new logger methods. [Learn about context]().
-2. To improve privacy and logging reliability, we provide new `context.log()` and `context.error()` functions. You can no longer use native logging methods. [Learn about logging]().
-3. The old way of `req.variables` has been deprecated. You can now access variables passed into each function as environment variables. [Learn about environment variables]().
-4. The `req` object has been updated to use terminology consistent with typical HTTP concepts. You'll now find familiar concepts like headers, body, HTTP methods, and others. [Learn about request]().
-5. The response object has been updated. You can now specify headers, as well as use new methods like return redirects or empty responses. [Learn about response]().
-6. Now, you must return a response such as return `context.res.send("")`. This prevents confusing errors when functions are terminated prematurely before a response is sent. [Learn about response]().
+1. The parameter passed into functions has changed. `req` and `res` has been replaced by `context`, which contains new logger methods. [Learn about context](#).
+2. To improve privacy and logging reliability, we provide new `context.log()` and `context.error()` functions. You can no longer use native logging methods. [Learn about logging](#).
+3. The old way of `req.variables` has been deprecated. You can now access variables passed into each function as environment variables. [Learn about environment variables](#).
+4. The `req` object has been updated to use terminology consistent with typical HTTP concepts. You'll now find familiar concepts like headers, body, HTTP methods, and others. [Learn about request](#).
+5. The response object has been updated. You can now specify headers, as well as use new methods like return redirects or empty responses. [Learn about response](#).
+6. Now, you must return a response such as return `context.res.send("")`. This prevents confusing errors when functions are terminated prematurely before a response is sent. [Learn about response](#).
 7. Some variables about how a function was triggered are now found in the context.req object as headers.

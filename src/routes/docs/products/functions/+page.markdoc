@@ -24,8 +24,8 @@ Appwrite Functions use familiar HTTP concepts, so you can learn quickly and gain
 
 | Explore                           |                   |
 | -----------------                 | ----------------- | 
-| [Develop](functions/develop)      | Appwrite Functions use familiar HTTP concepts, so you can learn quickly and gain transferable skills. | 
-| [Deploy](functions/deploy)        | Appwrite Functions can be deployed automatically from Git, through the Appwrite CLI, or be uploaded manually. Develop and deploy with the workflow you're already comfortable with.   | 
-| [Execute](functions/execute)      | Appwrite Functions can be triggered by HTTP requests, SDK methods, server events, webhooks, and scheduled executions. Explore how Appwrite Functions can be invoked.   | 
+| [Develop](functions/development)      | Appwrite Functions use familiar HTTP concepts, so you can learn quickly and gain transferable skills. | 
+| [Deploy](functions/deployment)        | Appwrite Functions can be deployed automatically from Git, through the Appwrite CLI, or be uploaded manually. Develop and deploy with the workflow you're already comfortable with.   | 
+| [Execute](functions/execution)      | Appwrite Functions can be triggered by HTTP requests, SDK methods, server events, webhooks, and scheduled executions. Explore how Appwrite Functions can be invoked.   | 
 | [Runtimes](functions/runtimes)    | Appwrite supports a growing list of **10+** runtimes. Avoid adding additional complexity to your codebase by coding in languages you already use and love.   | 
 | [Examples](functions/examples)    | Like to learn from examples? Here's a curated list of examples that showcase Appwrite Functions' capabilities.   | 

@@ -20,7 +20,7 @@ Here are all the different ways to consume your Appwrite Functions.
 https://64d4d22db370ae41a32e.appwrite.global
 ```
 
-[Learn about adding a custom domain](/docs/functions-deploy#domain).
+[Learn about adding a custom domain](/docs/products/functions/deployment#domains).
 
 ## REST API  {% #rest %}
 
@@ -485,7 +485,7 @@ Here are some cron expressions for common intervals:
 ## Permissions {% #permission %}
 
 
-Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/permissions) on the function's settings page. Server SDKs require an API key with the correct scopes.
+Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/platform/permissions) on the function's settings page. Server SDKs require an API key with the correct scopes.
 
 If your function has a generated or custom domain, executions are not authenticated. Anyone visiting the configured domains will be considered a guest, so make sure to give `Any` execute permission in order for domain executions to work. If you need to enforce permissions for functions with a domain, use authentication methods like JWT.
 
