@@ -37,7 +37,7 @@ This will allow browsers to respect the Appwrite sessions cookies as they are se
 
 With these steps, your Appwrite project will accept API requests from your custom domain.
 
-If you encounter any issues during the setup process or have questions, don't hesitate to [contact us](/contact), and we'll be happy to assist you.
+If you encounter any issues during the setup process or have questions, don't hesitate to [contact us](/contact-us), and we'll be happy to assist you.
 
 ## Add a CNAME record {% #cname-record %}
 
@@ -45,7 +45,7 @@ A [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) (or a Canonical Nam
 
 Every DNS host has its own way of updating DNS settings, and, unfortunately, their dashboard interfaces usually aren't the most intuitive. We recommend that you read the help documentation of your DNS host, also do not hesitate to contact their support for help with their interface and settings.
 
-Below, you'll find a list of registrars and links to their DNS setting documentation. If your domain provider isn't listed above, please [contact us](/contact), and we'll include their settings as well.
+Below, you'll find a list of registrars and links to their DNS setting documentation. If your domain provider isn't listed above, please [contact us](/contact-us), and we'll include their settings as well.
 
 | Provider        | Documentation |
 | --------------- | -------- |
