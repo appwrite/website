@@ -29,11 +29,11 @@
 					href: '/docs/advanced/self-hosting/update'
 				},
 				{
-					label: 'Debug',
+					label: 'Debugging',
 					href: '/docs/advanced/self-hosting/debug'
 				},
 				{
-					label: 'E-Mail',
+					label: 'Email delivery',
 					href: '/docs/advanced/self-hosting/email'
 				},
 				{
@@ -45,7 +45,7 @@
 					href: '/docs/advanced/self-hosting/production'
 				},
 				{
-					label: 'SMS',
+					label: 'SMS delivery',
 					href: '/docs/advanced/self-hosting/sms'
 				},
 				{

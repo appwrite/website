@@ -9,20 +9,15 @@
 
 	const navigation: NavTree = [
 		{
-			label: 'Getting started',
-			items: [
-				{
-					label: 'Overview',
-					href: '/docs/tooling/command-line'
-				}
-			]
-		},
-		{
 			label: 'Guides',
 			items: [
 				{
 					label: 'Installation',
 					href: '/docs/tooling/command-line/installation'
+				},
+				{
+					label: 'Commands',
+					href: '/docs/tooling/command-line/commands'
 				},
 				{
 					label: 'Deployment',
