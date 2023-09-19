@@ -383,7 +383,6 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 ```dart
-{% /multicode %}
 
 ## Get File {% #get-file %}
 To get a file, use the `getFile` method.
@@ -705,5 +704,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
