@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Docs from '$lib/layouts/Docs.svelte';
+	import Sidebar from '../Sidebar.svelte';
 	import { MainFooter } from '$lib/components';
 </script>
 
@@ -521,7 +523,6 @@
 				</ul>
 			</section>
 		</div>
-		
 	</article>
 
 	<MainFooter variant="docs" />

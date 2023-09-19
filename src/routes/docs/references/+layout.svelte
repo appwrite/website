@@ -16,7 +16,7 @@
 				{
 					label: 'Overview',
 					href: '/docs/references',
-					icon: 'icon-book'
+					icon: 'icon-view-grid'
 				}
 			]
 		},
