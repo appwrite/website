@@ -14,9 +14,8 @@
 </script>
 
 <script lang="ts">
-	import { Docs, DocsArticle } from '$lib/layouts';
+	import { DocsArticle } from '$lib/layouts';
 	import { getContext, setContext } from 'svelte';
-	import Sidebar from '$routes/docs/Sidebar.svelte';
 	import { MainFooter } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 

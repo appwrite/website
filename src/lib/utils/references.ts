@@ -15,9 +15,13 @@ export enum Service {
 }
 
 export enum Platform {
-	ClientApple = 'client-apple',
-	ClientFlutter = 'client-flutter',
 	ClientWeb = 'client-web',
+	ClientFlutter = 'client-flutter',
+	ClientApple = 'client-apple',
+	ClientAndroidKotlin = 'client-android-kotlin',
+	ClientAndroidJava = 'client-android-java',
+	ClientGraphql = 'client-graphql',
+	ClientRest = 'client-rest',
 	ServerDart = 'server-dart',
 	ServerDeno = 'server-deno',
 	ServerDotNet = 'server-dotnet',
@@ -28,16 +32,51 @@ export enum Platform {
 	ServerSwift = 'server-swift'
 }
 
-export const languageMap: Record<Platform, Language> = {
-	[Platform.ClientApple]: 'swift',
-	[Platform.ClientFlutter]: 'dart',
-	[Platform.ClientWeb]: 'js',
-	[Platform.ServerDart]: 'dart',
-	[Platform.ServerDeno]: 'ts',
-	[Platform.ServerDotNet]: 'cs',
-	[Platform.ServerNodeJs]: 'js',
-	[Platform.ServerPhp]: 'php',
-	[Platform.ServerPython]: 'py',
-	[Platform.ServerRuby]: 'rb',
-	[Platform.ServerSwift]: 'swift'
+export const platformMap: Record<Language, string> = {
+	[Platform.ClientApple]: 'Apple',
+	[Platform.ClientFlutter]: 'Flutter',
+	[Platform.ClientWeb]: 'Web',
+	[Platform.ClientAndroidKotlin]: 'Android (Kotlin)',
+	[Platform.ClientAndroidJava]: 'Android (Java)',
+	[Platform.ClientGraphql]: 'GraphQL',
+	[Platform.ClientRest]: 'REST',
+	[Platform.ServerDart]: 'Dart',
+	[Platform.ServerDeno]: 'Deno',
+	[Platform.ServerDotNet]: '.NET',
+	[Platform.ServerNodeJs]: 'Node.js',
+	[Platform.ServerPhp]: 'PHP',
+	[Platform.ServerPython]: 'Python',
+	[Platform.ServerRuby]: 'Ruby',
+	[Platform.ServerSwift]: 'Swift',
+	sh: 'Shell',
+	js: 'JavaScript',
+	ts: 'TypeScript',
+	dart: 'Dart',
+	java: 'Java',
+	kotlin: 'Kotlin',
+	cs: 'C#',
+	py: 'Python',
+	rb: 'Ruby',
+	php: 'PHP',
+	swift: 'Swift',
+	xml: 'XML',
+	html: 'HTML',
+	md: 'Markdown',
+	json: 'JSON',
+	diff: 'Diff',
+	http: 'HTTP',
+	css: 'CSS',
+	graphql: 'GraphQL'
+};
+
+export const serviceMap: Record<Service, string> = {
+	[Service.Account]: 'Account',
+	[Service.Avatars]: 'Avatars',
+	[Service.Databases]: 'Databases',
+	[Service.Functions]: 'Functions',
+	[Service.Health]: 'Health',
+	[Service.Locale]: 'Locale',
+	[Service.Storage]: 'Storage',
+	[Service.Teams]: 'Teams',
+	[Service.Users]: 'Users'
 };

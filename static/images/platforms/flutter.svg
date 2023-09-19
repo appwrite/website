@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg enable-background="new 0 0 1999 2474.2" viewBox="0 0 1999 2474.2" xmlns="http://www.w3.org/2000/svg">
+  <linearGradient id="a" gradientTransform="matrix(298.431654, -306.199715, -41.660722, -42.742111, 712731.37725, -563282.566398)" gradientUnits="userSpaceOnUse" x1="-2115.0029" x2="-2115.0029" y1="1930.7407" y2="1929.7407">
+    <stop offset="0.2" stop-opacity=".15"/>
+    <stop offset="0.85" stop-color="#616161" stop-opacity=".01"/>
+  </linearGradient>
+  <linearGradient id="b" gradientTransform="matrix(443.477569, 0, 0, -306.634017, 939036.360942, 598625.856091)" gradientUnits="userSpaceOnUse" x1="-2115.2688" x2="-2114.2688" y1="1946.3563" y2="1946.3563">
+    <stop offset="0.2" stop-opacity=".55"/>
+    <stop offset="0.85" stop-color="#616161" stop-opacity=".01"/>
+  </linearGradient>
+  <path d="M 514.28 1500.66 L 215.381 1193.992 L 1185.9 198.325 L 1783.62 198.325 M 1783.62 1117.124 L 1185.9 1117.124 L 962 1346.844 L 1260.9 1653.512" fill-opacity=".8" fill="#42a5f5" style=""/>
+  <path d="M 962 1960.1 L 1185.9 2189.82 L 1783.62 2189.82 L 1260.9 1653.512" fill="#0d47a1" style=""/>
+  <path d="M 663.807 1653.673 L 962.235 1347.407 L 1260.665 1653.592 L 962.235 1959.859 Z" fill="#42a5f5" style=""/>
+  <path d="M 962.235 1959.859 L 1260.665 1653.673 L 1302.322 1696.413 L 1003.894 2002.599 Z" fill="url(#a)" style=""/>
+  <path d="M 962 1960.1 L 1405.485 1802.902 L 1260.9 1653.432" fill="url(#b)" style=""/>
+</svg>

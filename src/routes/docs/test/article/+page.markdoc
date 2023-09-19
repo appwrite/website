@@ -64,7 +64,7 @@ This is a nice table:
 
 | head1 {% width=20 %} | head two             | three                |
 | -------------------- | -------------------- | -------------------- |
-| ok                   | good swedish fish    | nice                 |
+| ![](/favicon.png)    | good swedish fish    | nice                 |
 | ok                   | good and plenty      | nice                 |
 | ok                   | good `oreos`         | hmm                  |
 | ok                   | good `zoute` drop    | yumm                 |
@@ -150,7 +150,6 @@ Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh eg
 
 ## Sub title
 
-{% multicode %}
 ```js
 const sdk = require('node-appwrite');
 

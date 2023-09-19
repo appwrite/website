@@ -21,6 +21,7 @@
 	};
 
 	$: variantClass = variantClasses[variant];
+
 </script>
 
 <div class="u-position-relative">
@@ -46,9 +47,9 @@
 				</a>
 			</div>
 			<div class="aw-mobile-header-end">
-				<button class="aw-button">
+				<a href="https://cloud.appwrite.io/console" class="aw-button">
 					<span class="aw-sub-body-500">Go to console</span>
-				</button>
+				</a>
 				<button on:click={handleMenuClick} class="aw-button is-text" aria-label="open navigation">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -122,9 +123,9 @@
 								<span class="text">Star on GitHub</span>
 								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 							</button>
-							<button class="aw-button">
+							<a href="https://cloud.appwrite.io/console" class="aw-button">
 								<span class="aw-sub-body-500">Go to console</span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
