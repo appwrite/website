@@ -1,0 +1,16 @@
+---
+layout: tutorial
+title: Setup databases and collections
+description: This is the description used for SEO.
+step: 6
+difficulty: easy
+readtime: 10
+---
+Create a collection in the Appwrite console to store our ideas.
+
+![Create collection screen](#TODO update me)
+
+Create a new collection with the following attributes:
+- userId: String (required)
+- title: String (required)
+- description: String
