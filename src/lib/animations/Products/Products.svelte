@@ -22,6 +22,7 @@
 	import { get, writable } from 'svelte/store';
 	import { Storage, storageController } from './storage';
 	import { Functions, functionsController } from './functions';
+	import { Realtime, realtimeController } from './realtime';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -33,7 +34,7 @@
 	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
 	type Product = (typeof products)[number];
 
-	const animScale: Scale = [0.1, 0.95];
+	const animScale: Scale = [0.1, 0.9];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -62,7 +63,8 @@
 		auth: authController,
 		databases: databasesController,
 		storage: storageController,
-		functions: functionsController
+		functions: functionsController,
+		realtime: realtimeController
 	};
 	$: (async () => {
 		const fixedLast = lastActive;
@@ -168,10 +170,10 @@
 	}}
 >
 	<div class="sticky-wrapper">
-		<!-- <div class="debug">
+		<div class="debug">
 			<pre>{JSON.stringify({ active })}</pre>
 			<pre>{JSON.stringify({ scrollInfo })}</pre>
-		</div> -->
+		</div>
 
 		{#if scrollInfo.percentage < 0.1}
 			<div
@@ -236,7 +238,7 @@
 
 				<div class="animated">
 					<div class="phone" id="phone-{$elId}">
-						<Phone>
+						<div class="inner">
 							{#if active.product === 'auth'}
 								<Auth.Phone />
 							{:else if active.product === 'databases'}
@@ -245,10 +247,10 @@
 								<Storage.Phone />
 							{:else if active.product === 'functions'}
 								<Functions.Phone />
-								<!-- {:else if active.product === 'realtime'}
-								<Realtime.Phone /> -->
+							{:else if active.product === 'realtime'}
+								<Realtime.Phone />
 							{/if}
-						</Phone>
+						</div>
 					</div>
 
 					<div class="box-wrapper" id="box-{$elId}">
@@ -275,10 +277,6 @@
 								<Databases.Box />
 							{:else if active.product === 'storage'}
 								<Storage.Box />
-								<!-- {:else if active.product === 'functions'}
-								<Functions.Box />
-							{:else if active.product === 'realtime'}
-								<Realtime.Box /> -->
 							{/if}
 						</AnimatedBox>
 					</div>
@@ -311,7 +309,7 @@
 <style lang="scss">
 	#products {
 		min-height: 500vh;
-		height: 5000px;
+		height: 6000px;
 		position: relative;
 
 		--debug-bg: transparent;
@@ -474,11 +472,51 @@
 	}
 
 	.phone {
+		@include border-gradient;
+		--m-border-size: 1px;
+		--m-border-radius: 2.5rem;
+		--m-border-gradient-after: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.12) 0%,
+			rgba(255, 255, 255, 0) 125.11%
+		);
+
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(8px);
+		padding: 0.5rem;
+
+		width: 275px;
+		height: 550px;
+		flex-shrink: 0;
+
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 10;
 		opacity: 1;
+
+		.inner {
+			background-color: white;
+			border-radius: 2rem;
+			width: 100%;
+			height: 100%;
+
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				bottom: 0.5rem;
+
+				border-radius: 100rem;
+				background: var(--label-color-light-primary, #000);
+
+				width: 6.25rem;
+				height: 0.25rem;
+			}
+		}
 	}
 
 	.box-wrapper {

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { databasesController } from '../databases';
-	import TaskCheckbox from '../TaskCheckbox.svelte';
-	import { elId, getElSelector } from '../Products.svelte';
 	import { storageController } from '.';
+	import { elId } from '../Products.svelte';
+	import TaskCheckbox from '../TaskCheckbox.svelte';
+	import { databasesController } from '../databases';
 
 	const { state: dbState } = databasesController;
 	const fixedTasks = $dbState.tasks;
@@ -36,7 +36,7 @@
 			<p class="title">Edit images for website</p>
 			<p class="subtitle">Edit the attached images to use in the website</p>
 
-			<div class="upload">Upload media...</div>
+			<div class="upload" id="upload-btn-{$elId}">Upload media...</div>
 			<div class="images">
 				{#each $state.files.slice(1) as file}
 					<img src={file.src} alt="" transition:fly={{ x: 16 }} />
@@ -47,7 +47,12 @@
 </div>
 <div class="upload-media" id="upload-{$elId}">
 	<p class="title">Upload media</p>
-	<div class="drop-zone">Drop media here</div>
+	<div class="drop-zone">
+		<span id="upload-text-{$elId}"> Drop media here </span>
+		<div class="loading-overlay" id="upload-loading-{$elId}">
+			<div class="loader" />
+		</div>
+	</div>
 	<img id="upload-img-{$elId}" src="/images/animations/storage-2.png" alt="" />
 </div>
 
@@ -248,6 +253,19 @@
 			margin-block-start: 0.5rem;
 			font-size: 0.65rem;
 			font-family: Inter;
+
+			position: relative;
+			overflow: hidden;
+
+			.loading-overlay {
+				position: absolute;
+				inset: 0;
+				opacity: 0;
+				z-index: 100;
+
+				display: grid;
+				place-items: center;
+			}
 		}
 
 		img {

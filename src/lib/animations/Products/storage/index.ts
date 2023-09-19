@@ -28,14 +28,18 @@ const execute = async () => {
 	const overlay = getElSelector('overlay');
 	const drawer = getElSelector('drawer');
 	const upload = getElSelector('upload');
+	const uploadBtn = getElSelector('upload-btn');
 	const uploadImg = getElSelector('upload-img');
+	const uploadLoading = getElSelector('upload-loading');
+	const uploadText = getElSelector('upload-text');
 
 	const { update } = state.reset();
 
 	await Promise.all([
 		safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(box, { opacity: 0 }, { duration: 0.5 })?.finished,
-		safeAnimate(code, { opacity: 0 }, { duration: 0.5 })?.finished
+		safeAnimate(code, { opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(uploadLoading, { opacity: 0 }, { duration: 0 })?.finished
 	]);
 
 	await safeAnimate(code, { zIndex: 20 }, { duration: 0 })?.finished;
@@ -62,6 +66,8 @@ const execute = async () => {
 
 	await sleep(1000);
 
+	await safeAnimate(uploadBtn, { scale: [1, 0.9, 1] }, { duration: 0.25 })?.finished;
+
 	await safeAnimate(code, { x: 300, y: 32 }, { duration: 0 })?.finished;
 
 	await Promise.all([
@@ -80,9 +86,14 @@ const execute = async () => {
 
 	await sleep(500);
 
-	await safeAnimate(upload, { opacity: 0, y: 48 }, { duration: 0.75 })?.finished;
-
+	await Promise.all([
+		safeAnimate(uploadText, { opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(uploadLoading, { opacity: 1 }, { duration: 0.5 })?.finished,
+		safeAnimate(uploadImg, { opacity: 0, y: 64 + 8 }, { duration: 0.5 })?.finished
+	]);
 	await sleep(500);
+
+	await safeAnimate(upload, { opacity: 0, y: 48 }, { duration: 0.5 })?.finished;
 
 	update((p) => ({
 		...p,
