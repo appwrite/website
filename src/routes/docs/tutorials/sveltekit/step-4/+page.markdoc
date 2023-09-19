@@ -1,0 +1,89 @@
+---
+layout: tutorial
+title: Create login page
+description: This is the description used for SEO.
+step: 4
+---
+
+## Using stores
+
+In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to share state between components. 
+We'll use a store to keep track of our user's data.
+
+Create a new file `src/lib/stores/user.js` and add the following code to it.
+
+```js
+import { writable } from "svelte/store";
+import { ID } from "appwrite";
+import { goto } from "$app/navigation";
+import { account } from "$lib/appwrite";
+
+const store = writable(null);
+
+async function init() {
+  try {
+    store.set(await account.get());
+  } catch (e) {
+    store.set(null);
+  }
+}
+
+async function register(email, password) {
+  await account.create(ID.unique(), email, password);
+  await login(email, password);
+}
+
+async function login(email, password) {
+  await account.createEmailSession(email, password);
+  await init();
+  goto("/"); // Redirect to home page after login
+}
+
+async function logout() {
+  await account.deleteSession("current");
+  store.set(null);
+}
+
+export const user = {
+  subscribe: store.subscribe, // Expose the store's value with $user
+  register,
+  login,
+  logout,
+  init,
+};
+```
+
+## Login page
+
+
+Using this store, we can build a login page.
+
+Create a new file `src/routes/login/+page.svelte` and add the following code to it.
+
+```html
+<script>
+  import { user } from "$lib/stores/user";
+
+  let email = "";
+  let password = "";
+</script>
+
+<h1>Login or register</h1>
+<form>
+  <input type="email" placeholder="Email" bind:value={email} />
+  <input type="password" placeholder="Password" bind:value={password} />
+  <button type="button" on:click={() => user.login(email, password)}
+    >Login</button
+  >
+  <button type="button" on:click={() => user.register(email, password)}
+    >Register</button
+  >
+</form>
+
+<style>
+  form {
+    display: grid;
+    gap: 0.25rem;
+  }
+</style>
+```
