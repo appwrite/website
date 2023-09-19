@@ -66,14 +66,18 @@
 								</a>
 								<ul class="aw-metadata aw-caption-400">
 									<li>
-										<time datetime={date}>{date}</time>
+										<time datetime={date}>{new Date(date).toLocaleDateString()}</time>
 									</li>
-									<li>{timeToRead} min</li>
+									{#if timeToRead}
+										<li>{timeToRead} min</li>
+									{/if}
 								</ul>
 								<h1 class="aw-title aw-u-color-text-primary">{title}</h1>
-								<p class="aw-description u-margin-block-start-8">
-									{description}
-								</p>
+								{#if description}
+									<p class="aw-description u-margin-block-start-8">
+										{description}
+									</p>
+								{/if}
 								{#if authorData}
 									<div class="aw-author u-margin-block-start-16">
 										<a href={authorData.href} class="u-flex u-cross-center u-gap-8">
@@ -135,10 +139,11 @@
 									</div>
 								{/if}
 							</header>
-
-							<div class="aw-media-container">
-								<img class="u-block" src={cover} alt="console dashboard" />
-							</div>
+							{#if cover}
+								<div class="aw-media-container">
+									<img class="u-block" src={cover} alt="console dashboard" />
+								</div>
+							{/if}
 
 							<div class="aw-article-content u-margin-block-start-32">
 								<slot />

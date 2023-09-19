@@ -25,7 +25,8 @@ const config = {
 				default: absoulute('./src/markdoc/layouts/Article.svelte'),
 				article: absoulute('./src/markdoc/layouts/Article.svelte'),
 				tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
-				post: absoulute('./src/markdoc/layouts/Post.svelte')
+				post: absoulute('./src/markdoc/layouts/Post.svelte'),
+				author: absoulute('./src/markdoc/layouts/Author.svelte')
 			}
 		}),
 		preprocessMeltUI()
@@ -39,9 +40,9 @@ const config = {
 			$appwrite: './node_modules/@appwrite.io/repo',
 			$markdoc: './src/markdoc'
 		},
-        prerender: {
-            handleHttpError: 'warn'
-        },
+		prerender: {
+			handleHttpError: 'warn'
+		}
 	}
 };
 export default config;
