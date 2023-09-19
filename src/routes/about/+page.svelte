@@ -214,11 +214,11 @@
 		<div class="aw-big-padding-section-level-1 aw-white-section theme-light">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<div class="aw-hero">
+					<div class="aw-hero aw-u-max-width-800">
 						<h4 class="aw-display aw-u-color-text-primary">Backed by top investors</h4>
-						<p class="aw-description">Appwrite is proudly backed by some of the top investors in the industry.</p>
+						<p class="aw-description aw-u-max-width-480 u-margin-inline-auto">Appwrite is proudly backed by some of the top investors in the industry.</p>
 					</div>
-					<ul class="u-flex u-main-center u-gap-32">
+					<ul class="u-flex u-main-center u-gap-32 aw-u-margin-block-start-64">
 						<li>
 							<div class="aw-card is-full-color">
 								<img src="" alt="" />
@@ -229,7 +229,143 @@
 			</div>
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					DDDDDDD
+					<h5 class="aw-title aw-u-color-text-primary u-text-center">Angel Investors</h5>
+					<ul class="aw-grid-2c-4c u-margin-block-start-48">
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Aaron Applebaum</h6>
+							<p class="aw-main-body-500">Partner</p>
+							<p class="aw-main-body-500">MizMaa</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Ariel Maislos</h6>
+							<p class="aw-main-body-500">Angel Investor</p>
+							<p class="aw-main-body-500">Former Apple IL CEO</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Gilad Engel</h6>
+							<p class="aw-main-body-500">Angel Investor</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Krishna Visvanathan</h6>
+							<p class="aw-main-body-500">Co-founder & Partner</p>
+							<p class="aw-main-body-500">Crane Venture Partners</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Ameet Patel</h6>
+							<p class="aw-main-body-500">Angel Investor</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Benno Jering</h6>
+							<p class="aw-main-body-500">Partner</p>
+							<p class="aw-main-body-500">Redline Capital</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">James Lindenbaum</h6>
+							<p class="aw-main-body-500">Co-founder</p>
+							<p class="aw-main-body-500">Heroku</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h6 class="aw-main-body-500 aw-u-color-text-primary">Uri Boness</h6>
+							<p class="aw-main-body-500">Co-Founder</p>
+							<p class="aw-main-body-500">Elastic</p>
+							<ul class="u-flex u-gap-8 u-margin-block-start-16">
+								<li>
+									<a href="https://github.com/" class="aw-icon-button" aria-label=" on aGithub" target="_blank">
+										<span class="aw-icon-github" aria-hidden="true"></span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label=" on aTwitter" target="_blank">
+										<span class="aw-icon-twitter" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
