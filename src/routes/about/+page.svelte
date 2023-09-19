@@ -234,7 +234,22 @@
 									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-											[CONTENT-left]
+											<div class="aw-card is-white">
+												<div class="aw-social-item u-flex-vertical u-gap-24">
+													<div class="u-flex u-gap-16 u-main-space-between">
+														<div class="aw-user-box">
+															<img class="aw-user-box-image" src="/images/avatars/eldad.png" alt="Avatar of Eldad Fux">
+															<div class="aw-user-box-name aw-sub-body-500">Eldad Fux</div>
+															<div class="aw-user-box-username aw-sub-body-400">@eldadfux</div>
+														</div>
+														<span class="aw-social-item-icon icon-twitter" aria-label="twitter" aria-hidden="true"></span>
+													</div>
+													<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
+														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
+														Duis pellentesque quis purus in posuere.
+													</p>
+												</div>
+											</div>
 										</div>
 										<div>
 											[CONTENT-right]
