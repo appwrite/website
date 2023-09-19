@@ -213,7 +213,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.from_path(path)`                | Used to upload files from a provided path.                  |
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
-{% /tabsitem %}
+{% /tabsitem %} 
 
 {% tabsitem #ruby title="Ruby" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
@@ -374,6 +374,329 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             val result = storage.getFileDownload(
+                bucketId = "[BUCKET_ID]",
+                fileId = "[FILE_ID]"
+            )
+            println(result); // Resource URL        
+        }
+    }
+}
+```
+```dart
+{% /multicode %}
+
+## Get File {% #get-file %}
+To get a file, use the `getFile` method.
+
+{% multicode %}
+```js
+import { Client, Storage } from "appwrite";
+
+const client = new Client();
+
+const storage = new Storage(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+;
+
+const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+void main() { // Init SDK
+  Client client = Client();
+  Storage storage = Storage(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+  ;
+  // downloading file
+  Future result = storage.getFile(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ).then((bytes) {
+    final file = File('path_to_file/filename.ext');
+    file.writeAsBytesSync(bytes)
+  }).catchError((error) {
+      print(error.response);
+  })
+}
+
+//displaying image preview
+FutureBuilder(
+  future: storage.getFile(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ), //works for both public file and private file, for private files you need to be logged in
+  builder: (context, snapshot) {
+    return snapshot.hasData && snapshot.data != null
+      ? Image.memory(
+          snapshot.data,
+        )
+      : CircularProgressIndicator();
+  },
+);
+```
+```swift
+import Appwrite
+
+func main() async throws {
+    let client = Client()
+      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("5df5acd0d48c2") // Your project ID
+    let storage = Storage(client)
+    let byteBuffer = try await storage.getFile(
+        bucketId: "[BUCKET_ID]",
+        fileId: "[FILE_ID]"
+    )
+
+    print(String(describing: byteBuffer)
+}
+```
+```kotlin
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import io.appwrite.Client
+import io.appwrite.services.Storage
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val client = Client(applicationContext)
+            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("5df5acd0d48c2") // Your project ID
+
+        val storage = Storage(client)
+
+        GlobalScope.launch {
+            val result = storage.getFile(
+                bucketId = "[BUCKET_ID]",
+                fileId = "[FILE_ID]"
+            )
+            println(result); // Resource URL        
+        }
+    }
+}
+```
+```dart
+{% /multicode %}
+
+## Get File Preview {% #get-file-preview %}
+To get a file preview image , use the `getFilePreview` method.
+
+{% multicode %}
+```js
+import { Client, Storage } from "appwrite";
+
+const client = new Client();
+
+const storage = new Storage(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+;
+
+const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
+
+console.log(result); // Resource URL
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+void main() { // Init SDK
+  Client client = Client();
+  Storage storage = Storage(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+  ;
+  // downloading file
+  Future result = storage.getFilePreview(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ).then((bytes) {
+    final file = File('path_to_file/filename.ext');
+    file.writeAsBytesSync(bytes)
+  }).catchError((error) {
+      print(error.response);
+  })
+}
+
+//displaying image preview
+FutureBuilder(
+  future: storage.getFilePreview(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ), //works for both public file and private file, for private files you need to be logged in
+  builder: (context, snapshot) {
+    return snapshot.hasData && snapshot.data != null
+      ? Image.memory(
+          snapshot.data,
+        )
+      : CircularProgressIndicator();
+  },
+);
+```
+```swift
+import Appwrite
+
+func main() async throws {
+    let client = Client()
+      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("5df5acd0d48c2") // Your project ID
+    let storage = Storage(client)
+    let byteBuffer = try await storage.getFilePreview(
+        bucketId: "[BUCKET_ID]",
+        fileId: "[FILE_ID]"
+    )
+
+    print(String(describing: byteBuffer)
+}
+```
+```kotlin
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import io.appwrite.Client
+import io.appwrite.services.Storage
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val client = Client(applicationContext)
+            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("5df5acd0d48c2") // Your project ID
+
+        val storage = Storage(client)
+
+        GlobalScope.launch {
+            val result = storage.getFilePreview(
+                bucketId = "[BUCKET_ID]",
+                fileId = "[FILE_ID]"
+            )
+            println(result); // Resource URL        
+        }
+    }
+}
+```
+```dart
+{% /multicode %}
+
+## View File {% #view-file%}
+
+To view a file, use the `getFileView` method.
+
+{% multicode %}
+```js
+import { Client, Storage } from "appwrite";
+
+const client = new Client();
+
+const storage = new Storage(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+;
+
+const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
+
+console.log(result); // Resource URL
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+void main() { // Init SDK
+  Client client = Client();
+  Storage storage = Storage(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+  ;
+  // downloading file
+  Future result = storage.getFileView(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ).then((bytes) {
+    final file = File('path_to_file/filename.ext');
+    file.writeAsBytesSync(bytes)
+  }).catchError((error) {
+      print(error.response);
+  })
+}
+
+//displaying image preview
+FutureBuilder(
+  future: storage.getFileView(
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+  ), //works for both public file and private file, for private files you need to be logged in
+  builder: (context, snapshot) {
+    return snapshot.hasData && snapshot.data != null
+      ? Image.memory(
+          snapshot.data,
+        )
+      : CircularProgressIndicator();
+  },
+);
+```
+```swift
+import Appwrite
+
+func main() async throws {
+    let client = Client()
+      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("5df5acd0d48c2") // Your project ID
+    let storage = Storage(client)
+    let byteBuffer = try await storage.getFileView(
+        bucketId: "[BUCKET_ID]",
+        fileId: "[FILE_ID]"
+    )
+
+    print(String(describing: byteBuffer)
+}
+```
+```kotlin
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import io.appwrite.Client
+import io.appwrite.services.Storage
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val client = Client(applicationContext)
+            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("5df5acd0d48c2") // Your project ID
+
+        val storage = Storage(client)
+
+        GlobalScope.launch {
+            val result = storage.getFileView(
                 bucketId = "[BUCKET_ID]",
                 fileId = "[FILE_ID]"
             )
