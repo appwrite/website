@@ -3,13 +3,20 @@
 	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
 	const parent: NavParent = {
-		backlink: '/docs',
-		href: '/docs/products/auth',
-		label: 'Auth',
-		icon: 'icon-user-group'
+		href: '/docs',
+		label: 'Auth'
 	};
 
 	const navigation: NavTree = [
+		{
+			label: 'Getting started',
+			items: [
+				{
+					label: 'Overview',
+					href: '/docs/products/auth'
+				}
+			]
+		},
 		{
 			label: 'Guides',
 			items: [

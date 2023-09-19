@@ -13,7 +13,7 @@ Appwrite is designed to run well on both small and large deployments. The minimu
 Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
 
 {% info title="Upgrading From Older Versions" %}
-If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/self-hosting/update)
+If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
 {% /info %}
 
 ## Install with Docker {% #install-with-docker %}

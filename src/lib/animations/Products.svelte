@@ -14,8 +14,6 @@
 	$: sectionIndex = Math.floor(
 		clamp(0, toScale(scrollInfo.percentage, percentScale, animScale), sections.length - 1)
 	);
-	$: section = sections[sectionIndex];
-	$: console.log(section);
 
 	let scrollInfo: ScrollInfo = {
 		percentage: 0,
