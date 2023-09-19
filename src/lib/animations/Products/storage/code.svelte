@@ -5,7 +5,7 @@
 const result = storage.createFile(
 	'my-bucket',
 	ID.unique(),
-  document.getElementById("uploader").files[0]
+	document.getElementById("uploader").files[0]
 );`.trim();
 </script>
 

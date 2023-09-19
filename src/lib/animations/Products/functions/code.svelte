@@ -8,18 +8,13 @@
 const userId = req.headers['user-id'];
 
 if (req.path === '/subscribe') {
-  const session = await stripe.checkout(userId);
-  return res.redirect(session.url, 303);
+	const session = await stripe.checkout(userId);
+	return res.redirect(session.url, 303);
 } 
 
 if (req.path === '/webhook') {
-  const event = stripe.validateWebhook(req);
-if (event.type === 'subscription.create') {
-  await appwrite.addSubscriberLabel(userId);
-} else if (event.type === 'subscription.delete') {
-  await appwrite.deleteSubscriberLabel(userId);
+	await appwrite.addSubscriberLabel(userId);
 }
-
 
 return res.json({ success: true });`.trim();
 

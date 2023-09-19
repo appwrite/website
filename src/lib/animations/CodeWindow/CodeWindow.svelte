@@ -89,5 +89,6 @@
 
 	.code-console :global(code) {
 		white-space: pre;
+		tab-size: 4;
 	}
 </style>
