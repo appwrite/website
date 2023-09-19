@@ -2,4 +2,4 @@
 	export let content: string;
 </script>
 
-<span class="aw-inline-code">{content}</span>
+<span class="aw-inline-code aw-code">{content}</span>
