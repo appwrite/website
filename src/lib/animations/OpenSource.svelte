@@ -103,7 +103,6 @@
 	on:aw-resize={({ detail }) => {
 		scrollHandler.reset();
 		const { percentage } = detail;
-		console.log('resize', percentage);
 
 		scrollHandler(percentage);
 	}}

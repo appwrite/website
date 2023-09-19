@@ -31,7 +31,7 @@
 	>
 		<section class="aw-mobile-header is-transparent">
 			<div class="aw-mobile-header-start">
-				<a href="#">
+				<a href="/">
 					<img
 						class="aw-logo u-only-dark"
 						src="/images/logos/appwrite.svg"

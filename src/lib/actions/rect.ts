@@ -6,7 +6,6 @@ type Args = Writable<DOMRect | null>;
 export const rect: Action<HTMLElement, Args> = (node, store) => {
 	let observer: ResizeObserver | null = null;
 	const update = (store: Args) => {
-		console.log('rect update');
 		observer?.disconnect();
 
 		store.set(node.getBoundingClientRect());

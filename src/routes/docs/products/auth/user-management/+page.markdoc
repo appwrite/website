@@ -348,7 +348,7 @@ This would correspond with the permissions below.
 | Delete | `Permissions.delete(Role.label('subscriber'))` |
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
-[Learn more about permissions](/docs/platform/permissions)
+[Learn more about permissions](/docs/advanced/platform/permissions)
 
 ## Teams {% #teams %}
 

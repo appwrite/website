@@ -4,7 +4,7 @@
 
 	const parent: NavParent = {
 		href: '/docs',
-		label: 'Storage'
+		label: 'Command Line'
 	};
 
 	const navigation: NavTree = [
@@ -13,7 +13,7 @@
 			items: [
 				{
 					label: 'Overview',
-					href: '/docs/products/storage'
+					href: '/docs/tooling/command-line'
 				}
 			]
 		},
@@ -21,24 +21,12 @@
 			label: 'Guides',
 			items: [
 				{
-					label: 'Quick start',
-					href: '/docs/products/storage/quick-start'
+					label: 'Installation',
+					href: '/docs/tooling/command-line/installation'
 				},
 				{
-					label: 'Buckets',
-					href: '/docs/products/storage/buckets'
-				},
-				{
-					label: 'Upload and download',
-					href: '/docs/products/storage/upload-download'
-				},
-				{
-					label: 'Images',
-					href: '/docs/products/storage/images'
-				},
-				{
-					label: 'Permissions',
-					href: '/docs/products/storage/permissions'
+					label: 'Deployment',
+					href: '/docs/tooling/command-line/deployment'
 				}
 			]
 		}

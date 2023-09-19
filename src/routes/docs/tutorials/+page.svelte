@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { MainFooter } from '$lib/components';
-	import { Docs } from '$lib/layouts';
-	import Sidebar from '../Sidebar.svelte';
 </script>
 
 <main class="aw-main-section">
