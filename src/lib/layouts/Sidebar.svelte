@@ -11,9 +11,7 @@
 	};
 
 	export type NavParent = {
-		backlink: string;
 		label: string;
-		icon: string;
 		href: string;
 	};
 
@@ -48,19 +46,18 @@
 		</button>
 		<div class="aw-side-nav-scroll">
 			{#if parent}
-				<section style:padding-bottom="16px" style:border-bottom="1px solid #232325">
-					<a class="aw-side-nav-button" href={parent.backlink}>
+				<section
+					style:padding-bottom="16px"
+					style:border-bottom="1px solid #232325"
+					style:display="flex"
+					style:align-items="baseline"
+				>
+					<a href={parent.href}>
 						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-caption-400">Back</span>
 					</a>
-					<a
-						class="aw-side-nav-button"
-						href={parent.href}
-						class:is-selected={$page.url?.pathname === parent.href}
+
+					<span class="aw-eyebrow" style:width="100%" style:text-align="center">{parent.label}</span
 					>
-						<span class={parent.icon} aria-hidden="true" />
-						<span class="aw-caption-500">{parent.label}</span>
-					</a>
 				</section>
 			{/if}
 			{#each navigation as navGroup}

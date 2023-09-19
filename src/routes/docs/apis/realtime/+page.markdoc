@@ -97,7 +97,7 @@ If you subscribe to a channel, you will receive callbacks for a variety of event
 
 
 {% info title="Permissions" %}
-All subscriptions are secured by the [permissions system](/docs/platform/permissions) offered by Appwrite, meaning a user will only receive updates to resources they have permission to access.
+All subscriptions are secured by the [permissions system](/docs/advanced/platform/permissions) offered by Appwrite, meaning a user will only receive updates to resources they have permission to access.
 
 Using `Role.any()` on read permissions will allow any client to receive updates.
 {% /info %}

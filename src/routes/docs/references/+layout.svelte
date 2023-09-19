@@ -6,12 +6,20 @@
 	$: expandable = $page.url.pathname.startsWith('/docs/references/');
 
 	const parent: NavParent = {
-		backlink: '/docs',
-		href: '/docs/references',
-		label: 'References',
-		icon: 'icon-document'
+		href: '/docs',
+		label: 'References'
 	};
 	const navigation: NavTree = [
+		{
+			label: 'Getting started',
+			items: [
+				{
+					label: 'Overview',
+					href: '/docs/references',
+					icon: 'icon-book'
+				}
+			]
+		},
 		{
 			label: 'Services',
 			items: [
