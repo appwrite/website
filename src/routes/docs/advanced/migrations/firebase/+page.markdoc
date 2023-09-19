@@ -53,7 +53,7 @@ To begin migrating to Appwrite, follow these steps.
 
 1. Add the platforms for your [Web](#), [Flutter](#), [Android](#), and [iOS](#) apps. Appwrite will reject requests from unknown web, Flutter, and mobile apps to protect from malicious attacks. You app **must be added as a platform** for Appwrite to accept requests.
 
-1. Remember to [add appropriate permissions](/docs/platform/permissions) to the migrated resources to protect user data and privacy.
+1. Remember to [add appropriate permissions](/docs/advanced/platform/permissions) to the migrated resources to protect user data and privacy.
 
 1. Migrate functions manually, by [pick a runtime](#) and [learn to develop Appwrite Functions](#).
 

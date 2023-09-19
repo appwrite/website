@@ -53,7 +53,7 @@ Rate limits are an important mechanism to protect your app. Without rate limits,
 
 Sending emails is hard. There are a lot of spam rules and configurations to master in order to set up a functional SMTP server. While it is okay to use a self-hosted SMTP server during development, you should use a third-party SMTP provider for production so your email doesn't get labeled as spam.
 
-You can [change Appwrite's SMTP settings](/docs/self-hosting/email) and credentials to any 3rd party provider you like that supports SMTP integration using our Docker environment variables. Most SMTP providers offer a decent free tier to get started with.
+You can [change Appwrite's SMTP settings](/docs/advanced/self-hosting/email) and credentials to any 3rd party provider you like that supports SMTP integration using our Docker environment variables. Most SMTP providers offer a decent free tier to get started with.
 
 ## Backups {% #backups %}
 

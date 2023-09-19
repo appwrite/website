@@ -20,11 +20,6 @@
 					icon: 'icon-cog'
 				},
 				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
-				},
-				{
 					label: 'References',
 					href: '/docs/references',
 					icon: 'icon-document'
@@ -77,43 +72,32 @@
 			]
 		},
 		{
+			label: 'Tooling',
+			items: [
+				{
+					label: 'Command Line',
+					href: '/docs/tooling/command-line',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'Assistant',
+					href: '/docs/tooling/assistant',
+					icon: 'icon-sparkles'
+				}
+			]
+		},
+		{
 			label: 'Advanced',
 			items: [
 				{
 					label: 'Integration',
-					href: '#',
+					href: '/docs/advanced/integration',
 					icon: 'icon-puzzle'
 				},
 				{
 					label: 'Platform',
-					href: '/docs/platform',
-					icon: 'icon-play',
-					items: [
-						{
-							label: 'API keys',
-							href: '/docs/platform/api-keys'
-						},
-						{
-							label: 'Events',
-							href: '/docs/platform/events'
-						},
-						{
-							label: 'Custom domains',
-							href: '/docs/platform/custom-domains'
-						},
-						{
-							label: 'Response codes',
-							href: '/docs/platform/response-codes'
-						},
-						{
-							label: 'Permissions',
-							href: '/docs/platform/permissions'
-						},
-						{
-							label: 'Webhooks',
-							href: '/docs/platform/webhooks'
-						}
-					]
+					href: '/docs/advanced/platform',
+					icon: 'icon-play'
 				},
 				{
 					label: 'Migrations',
@@ -122,7 +106,7 @@
 				},
 				{
 					label: 'Self-hosting',
-					href: '#',
+					href: '/docs/advanced/self-hosting',
 					icon: 'icon-server'
 				}
 			]
