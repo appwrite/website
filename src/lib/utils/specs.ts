@@ -1,5 +1,6 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import { OpenAPIV3 } from 'openapi-types';
+import { Platform, type Service } from './references';
 
 type SDKMethod = {
 	id: string;
@@ -155,32 +156,28 @@ export async function getService(
 	service: string
 ): Promise<{
 	service: {
-		name: string;
+		name: Service;
 		description: string;
 	};
 	methods: SDKMethod[];
 }> {
+	/**
+	 * Exceptions for Android SDK.
+	 */
+	const isAndroidJava = platform === Platform.ClientAndroidJava;
+	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin;
+	const isAndroid = isAndroidJava || isAndroidKotlin;
 	const spec = await getSpec(version, platform);
-	const data: {
-		service: {
-			name: string;
-			description: string;
-		};
-		methods: SDKMethod[];
-	} = {
-		service: {
-			name: '',
-			description: ''
-		},
-		methods: []
-	};
 	const parser = new SwaggerParser();
 	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
 	const tag = api.tags?.find((n) => n.name === service);
 
-	data.service = {
-		name: tag?.name ?? '',
-		description: tag?.description ?? ''
+	const data: Awaited<ReturnType<typeof getService>> = {
+		service: {
+			name: tag?.name as Service,
+			description: tag?.description ?? ''
+		},
+		methods: []
 	};
 
 	const examples = getExamples(version);
@@ -215,7 +212,9 @@ export async function getService(
 			}
 		);
 
-		const path = `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+		const path = isAndroid
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite'].demo}`
+			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
 			continue;
 		}

@@ -52,18 +52,17 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Community</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Blog</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Careers</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
-				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>cookie settings</li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Community</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Blog</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Contact Us</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="">Legal</a></h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Legal</a></h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
 				<span class="aw-caption-500">Legal</span>
 				<svg
