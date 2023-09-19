@@ -13,7 +13,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 appwrite init project
 ```
 
-The following prompts will guide you through the setup process. The init command also creates an [`appwrite.json`](#appwrite.json) file representing your Appwrite project.
+The following prompts will guide you through the setup process. The init command also creates an `appwrite.json` file representing your Appwrite project.
 
 You can fetch all the existing databases and collections in your current project using:
 

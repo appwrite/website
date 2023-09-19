@@ -186,5 +186,5 @@ Explore the features below.
 | [Anonymous](/docs/products/auth/anonymous)                              | Create guest user sessions that can be convered to full accounts later. |
 | [User preferences](/docs/products/auth/user-management#preferences)     | Store and manage user preferences, like notification settings and themes. |
 | [Organize users](/docs/products/auth/user-management#labels)            | Organize users by adding labels or creating teams. |
-| [Server integration](/docs/products/auth/user-integration)              | Authenticate users in backend code or act on behalf of users using the [Appwrite Server SDKs](TODO).  |
-| [Security](/docs/products/auth/sercurity)                               | Learn about Appwrite's session persistence and enhanced security features. |
+| [Server integration](/docs/products/auth/server-integration)              | Authenticate users in backend code or act on behalf of users using the [Appwrite Server SDKs](#).  |
+| [Security](/docs/products/auth/security)                               | Learn about Appwrite's session persistence and enhanced security features. |

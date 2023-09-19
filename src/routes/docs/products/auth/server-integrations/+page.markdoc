@@ -4,17 +4,17 @@ title: Server Integrations
 description: This is the description used for SEO.
 ---
 
-You can extend Appwrite's APIs by building backend apps using [Server SDKs](/docs/getting-started-for-server). To secure your backend app's APIs, client apps must prove their identity against your backend app before accessing sensitive information. You can secure these APIs and enforce access permissions in your backend app by using JWT authentication.
+You can extend Appwrite's APIs by building backend apps using [Server SDKs](#). To secure your backend app's APIs, client apps must prove their identity against your backend app before accessing sensitive information. You can secure these APIs and enforce access permissions in your backend app by using JWT authentication.
 
 If you are already authenticated on your client-side app and need your backend app to **act on behalf of the user**, this guide will walk you through the process.
 
-## [Proof of Identity](/docs/authentication-server#proof-of-identity)
+## Proof of Identity {% #proof-of-identity %}
 
-Before making requests to your backend APIs, your client application needs to first create a session **directly with Appwrite** using the account service. This session will act like an ID card for the user and can be used to access resources in Appwrite. The client will **only receive information accessible to the user** based on the resources' [permissions](/docs/permissions).
+Before making requests to your backend APIs, your client application needs to first create a session **directly with Appwrite** using the account service. This session will act like an ID card for the user and can be used to access resources in Appwrite. The client will **only receive information accessible to the user** based on the resources' [permissions](/docs/platform/permissions).
 
 When you build backend APIs to extend Appwrite's functionality, these APIs should still **respect access permissions** to keep user data secure. Appwrite's backend SDKs allow you to securely act on behalf of a user with the same permissions by using JWT authentication.
 
-## [JWT Authentication](/docs/authentication-server#jwt)
+## JWT Authentication {% #jwt %}
 
 [JSON Web Tokens](https://jwt.io/introduction) (JWTs) are a secure means to transfer information or claims between two parties. JWTs act like temporary copies of the user's ID card that allow Appwrite's Server SDKs to access information on behalf of a user.
 
@@ -168,15 +168,15 @@ var client = new Client()
 {% /multicode %}
 
 
-## [When Should I Use JWT Auth?](/docs/authentication-server#when-to-use)
+## When should I use JWTs? {% #when-to-use %}
 
 JWT auth is useful when you need your backend app's Server SDK to be restricted by the same set of permissions.
 
-If your backend app's Server SDK is using an [API key](/docs/keys), it will fetch **all resources** regardless of permissions. This means the Server SDK might fetch files and documents your user should not be able to see, which is not helpful when you need to act on behalf of a user.
+If your backend app's Server SDK is using an [API key](/docs/platform/api-keys), it will fetch **all resources** regardless of permissions. This means the Server SDK might fetch files and documents your user should not be able to see, which is not helpful when you need to act on behalf of a user.
 
 If your backend app's Server SDK is using a **JWT**, it will only fetch resources your user has permissions to access.
 
-## [Example](/docs/authentication-server#when-to-use-example)
+## Example {% #when-to-use-example %}
 
 Here's an example collection of birthdays with the following documents. Notice how they all have **different permissions**.
 

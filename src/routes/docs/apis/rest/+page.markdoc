@@ -31,7 +31,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 ---
 * X-Appwrite-JWT: [TOKEN]
 * optional
-* Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/jwt) method.
+* Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/server-integrations) method.
 ---
 * X-Appwrite-Response-Format: [VERSION-NUMBER]
 * optional
@@ -95,7 +95,7 @@ X-Appwrite-Key: [API_KEY]
 
 ### JWT
 
-JWT authentication is frequently used by server applications to act on behalf of a user. Users generate tokens using the [Create JWT](/todo) endpoint. When issuing requests authenticated with a JWT, Appwrite will treat the request like it is from the authenticated user.
+JWT authentication is frequently used by server applications to act on behalf of a user. Users generate tokens using the [Create JWT] (TODO) endpoint. When issuing requests authenticated with a JWT, Appwrite will treat the request like it is from the authenticated user.
 
 ```json
 GET /v1/account HTTP/1.1
@@ -108,7 +108,7 @@ X-Appwrite-JWT: [TOKEN]
 
 Appwrite implements resumable, chunked uploads for files larger than 5MB. Chunked uploads send files in chunks of 5MB to reduce memory footprint and increase resilience when handling large files. Appwrite SDKs will automatically handle chunked uploads, but it is possible to implement this with the REST API directly.
 
-Upload endpoints in Appwrite, such as [Create File](todo) and [Create Deployment](todo), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
+Upload endpoints in Appwrite, such as [Create File] (todo) and [Create Deployment] (todo), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
 
 {% table %}
 * Header

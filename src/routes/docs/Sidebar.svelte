@@ -322,7 +322,7 @@
 						},
 						{
 							label: 'Response codes',
-							href: '/docs/platform/response-code'
+							href: '/docs/platform/response-codes'
 						},
 						{
 							label: 'Permissions',

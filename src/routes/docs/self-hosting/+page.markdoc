@@ -34,7 +34,7 @@ docker run -it --rm \
 After running the command, you can access the Appwrite Console and start building on `localhost`. 
 Read more about other ways to install and uninstall.
 
-[Learn about install and uninstall {% icon icon="cheveron-right" /%}](TODO)
+[Learn about install and uninstall {% icon icon="cheveron-right" /%}](#)
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
@@ -57,7 +57,7 @@ docker run -it --rm `
 After running the command, you can access the Appwrite Console and start building on `localhost`. 
 Read more about other ways to install and uninstall.
 
-[Learn about install and uninstall {% icon icon="cheveron-right" /%}](TODO)
+[Learn about install and uninstall {% icon icon="cheveron-right" /%}](#)
 {% /tabsitem %}
 {% /tabs %}
 
@@ -68,45 +68,45 @@ Appwrite requires an SMTP service to deliver emails.
 Email delivery is required for features like password recovery, account verification, MagicURL authentication, and team invites. 
 You can use a third-party SMTP service or host your own SMTP server.
 
-[Configure email delivery {% icon icon="cheveron-right" /%}](TODO)
+[Configure email delivery {% icon icon="cheveron-right" /%}](#)
 
 ## SMS delivery
 Appwrite supports multiple third-party SMS delivery providers. 
 SMS delivery is required for phone authentication.
 
-[Configure SMS delivery {% icon icon="cheveron-right" /%}](TODO)
+[Configure SMS delivery {% icon icon="cheveron-right" /%}](#)
 
 ## Functions
 Appwrite supports 10+ function runtimes and automatic deployments through Git integration. 
 Before using Appwrite Functions, configure Git integration and enable runtimes.
 
-[Configure Appwrite Functions {% icon icon="cheveron-right" /%}](TODO)
+[Configure Appwrite Functions {% icon icon="cheveron-right" /%}](#)
 
 ## Storage
 Appwrite's Storage Service can be configured to store files locally, or with self-hosted and cloud storage services. 
 By default, Appwrite's Storage Service stores files on your server's local storage. 
 If you expect large volumes of data or the need to have scalable data storage, you may choose to use a separate storage service.
 
-[Configure Appwrite Storage {% icon icon="cheveron-right" /%}](TODO)
+[Configure Appwrite Storage {% icon icon="cheveron-right" /%}](#)
 
 ## TLS Certificates
 Appwrite uses Let's Encrypt to auto-generate TLS certificates for your Appwrite instance to ensure your API traffic is appropriately encrypted. 
 Configuration is required for Appwrite to properly generate certificates.
 
-[Configure TLS certificates {% icon icon="cheveron-right" /%}](TODO) 
+[Configure TLS certificates {% icon icon="cheveron-right" /%}](#) 
 
 ## Debug
 Appwrite provides tools to monitor server health, handle error logging.
 
-[Learn about upgrade {% icon icon="cheveron-right" /%}](TODO) 
+[Learn about upgrade {% icon icon="cheveron-right" /%}](#) 
 
 ## Update
 Each Appwrite version contains a migration script to help you migrate your apps during updates.
 
-[Learn about updates {% icon icon="cheveron-right" /%}](TODO) 
+[Learn about updates {% icon icon="cheveron-right" /%}](#) 
 
 ## Production
 Self-hosting Appwrite can be used in production settings.
 To succeed with Appwrite in a production environment, you should follow a few basic concepts and best practices. 
 
-[Learn about production {% icon icon="cheveron-right" /%}](TODO)
+[Learn about production {% icon icon="cheveron-right" /%}](#)

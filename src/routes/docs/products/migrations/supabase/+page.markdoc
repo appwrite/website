@@ -29,14 +29,13 @@ Find all of the following credentials from your Supabase project.
 
 {% section #create-migration step=2 title="Create migration" %}
 
-To begin migrating to Appwrite make sure to read the [migration overview](TODO) 
-and [things to keep in mind](#notices) sections above.
+Before migrating to Appwrite make sure you've read the [migration overview](/docs/products/migrations) page.
 
 1. Create a new project and click on the **Migrations** tab in **Project Settings**.
 
 1. Click on the **Create Migration** button and select **Supabase** as your source.
 
-1. Enter the credentials you obtained during [the first step](#obtain-credentials) and click **Next**.
+1. Enter the credentials from the [Obtain credentials](#obtain-credentials) step and click **Next**.
 
 1. Select the resources you want to migrate and finally click **Start migration** to begin the migration process.
 
@@ -44,11 +43,11 @@ and [things to keep in mind](#notices) sections above.
 
 {% section #next-steps step=3 title="Next steps" %}
 
-1. Add the platforms for your [Web](/docs/getting-started-for-web), [Flutter](getting-started-for-flutter/docs/getting-started-for-flutter), [Android](/docs/getting-started-for-android), and [iOS](/docs/getting-started-for-apple) apps. Appwrite will reject requests from unknown web, Flutter, and mobile apps to protect from malicious attacks. You app **must be added as a platform** for Appwrite to accept requests.
+1. Add the platforms for your [Web](#), [Flutter](#), [Android](#), and [iOS](#) apps. Appwrite will reject requests from unknown web, Flutter, and mobile apps to protect from malicious attacks. You app **must be added as a platform** for Appwrite to accept requests.
 
-1. Remember to [add appropriate permissions](/docs/permissions) to the migrated resources to protect user data and privacy.
+1. Remember to [add appropriate permissions](/docs/platform/permissions) to the migrated resources to protect user data and privacy.
 
-1. Migrate functions manually, by [pick a runtime](TODO) and [learn to develop Appwrite Functions](TODO).
+1. Migrate functions manually, by [pick a runtime](#) and [learn to develop Appwrite Functions](#).
 
 1. Explore Appwrite's unique feature by exploring the [TODO]
 
