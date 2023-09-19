@@ -214,74 +214,22 @@
 		<div class="aw-big-padding-section-level-1 aw-white-section theme-light">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<div class="aw-grid-15-25-desktop">
-						<div class="aw-hero is-align-start">
-							<div class="aw-display aw-u-color-text-primary">Visit the community</div>
-							<p class="aw-description">Discover more about Appwrite by visiting our community across platforms.</p>
-						</div>
-						<ul class="aw-multi-columns-1">
-							<li>
-								<div
-										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-										style="--card-padding:2rem"
-								>
-									<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-											class="icon-github aw-u-font-size-40"
-											aria-hidden="true"
-											aria-label="GitHub"
-									/>
-									</div>
-									<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-								</div>
-							</li>
-							<li>
-								<div
-										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-										style="--card-padding:2rem"
-								>
-									<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-											class="icon-github aw-u-font-size-40"
-											aria-hidden="true"
-											aria-label="GitHub"
-									/>
-									</div>
-									<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-								</div>
-							</li>
-							<li>
-								<div
-										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-										style="--card-padding:2rem"
-								>
-									<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-											class="icon-github aw-u-font-size-40"
-											aria-hidden="true"
-											aria-label="GitHub"
-									/>
-									</div>
-									<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-								</div>
-							</li>
-							<li>
-								<div
-										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-										style="--card-padding:2rem"
-								>
-									<div class="u-flex-vertical u-main-space-between u-gap-32">
-									<span
-											class="icon-github aw-u-font-size-40"
-											aria-hidden="true"
-											aria-label="GitHub"
-									/>
-									</div>
-									<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-								</div>
-							</li>
-						</ul>
+					<div class="aw-hero">
+						<h4 class="aw-display aw-u-color-text-primary">Backed by top investors</h4>
+						<p class="aw-description">Appwrite is proudly backed by some of the top investors in the industry.</p>
 					</div>
+					<ul class="u-flex u-main-center u-gap-32">
+						<li>
+							<div class="aw-card is-full-color">
+								<img src="" alt="" />
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="aw-big-padding-section-level-2">
+				<div class="aw-container">
+					DDDDDDD
 				</div>
 			</div>
 		</div>
