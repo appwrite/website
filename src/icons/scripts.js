@@ -12,7 +12,7 @@ export const generateIcons = async () => {
 		fontName: 'aw-icon',
 		styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
 		css: {
-			fontSize: '16px'
+			fontSize: '20px'
 		},
 		outSVGReact: false,
 		svgicons2svgfont: {

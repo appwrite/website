@@ -1,29 +1,145 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
-  all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none;
-  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14);
+  all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
+  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: pxToRem(120);
   select, .physical-select {
-    all:unset; display:block; padding-inline-end:pxToRem(32); cursor:pointer;
+    all:unset; display:flex; align-items:center;
+    padding-inline-end:pxToRem(32); cursor:pointer; inline-size:100%;
     &:focus-visible { }
   }
-  [class*="icon"]:first-child {margin-inline-end:pxToRem(4); }
+  [class*="icon"]:first-child {margin-inline-end:pxToRem(8); font-size: 20px !important; }
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
-    display:grid; place-content:center;
+    display:grid; place-content:center; pointer-events:none;
   }
   &.is-colored {
-    --p-select-bg-color: var(--aw-color-neutral-0);
-    --p-select-border-color: var(--aw-color-neutral-50);
+    @mixin light-mode() {
+      --p-select-bg-color-default: var(--aw-color-white);
+      --p-select-border-color-default: var(--aw-color-black) / 0.06;
+      --p-select-box-shadow-color-default: var(--transparent);
+
+      --p-select-bg-color-hover: var(--aw-color-greyscale-25);
+      --p-select-border-color-hover: var(--aw-color-black) / 0.06;
+
+      --p-select-bg-color-sctive: var(--aw-color-white);
+      --p-select-border-color-active: var(--aw-color-black) / 0.06;
+
+      --p-select-bg-color-focus: var(--aw-color-white);
+      --p-select-border-color-focus: var(--aw-color-greyscale-900);
+      --p-select-box-shadow-color-focus: var(--aw-color-black) / 0.10;
+    }
+    @mixin dark-mode() {
+      --p-select-bg-color-default: var(--aw-color-white) / 0.08;
+      --p-select-border-color-default: var(--aw-color-white) / 0.10;
+      --p-select-box-shadow-color-default: var(--transparent);
+
+      --p-select-bg-color-hover: var(--aw-color-white) / 0.12;
+      --p-select-border-color-hover: var(--aw-color-white) / 0.10;
+
+      --p-select-bg-color-active: var(--aw-color-white) / 0.08;
+      --p-select-border-color-active: var(--aw-color-white) / 0.10;
+
+      --p-select-bg-color-focus: var(--aw-color-white) / 0.08;
+      --p-select-border-color-focus: var(--aw-color-greyscale-100);
+      --p-select-box-shadow-color-focus: var(--aw-color-white) / 0.16;
+    }
+    @include light-mode();
+    --p-select-bg-color: var(--p-select-bg-color-default);
+    --p-select-border-color: var(--p-select-border-color-default);
+    --p-select-box-shadow-color: var(--p-select-box-shadow-color-default);
 
     background-color: hsl(var(--p-select-bg-color));
     border: solid pxToRem(1) hsl(var(--p-select-border-color));
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-box-shadow-color));
 
     padding-inline:pxToRem(8); padding-block:pxToRem(7); border-radius:pxToRem(8); line-height:1.2;
 
+    &:hover {
+      --p-select-bg-color: var(--p-select-bg-color-hover);
+      --p-select-border-color: var(--p-select-border-color-hover);
+    }
+    &:active {
+      --p-select-bg-color: var(--p-select-bg-color-active);
+      --p-select-border-color: var(--p-select-border-color-active);
+    }
+    &:disabled { opacity:0.4; }
+    &:focus-visible {
+      --p-select-bg-color: var(--p-select-bg-color-focus);
+      --p-select-border-color: var(--p-select-border-color-focus);
+      --p-select-box-shadow-color: var(--p-select-box-shadow-color-focus);
+    }
+
     #{$theme-dark} & {
-      --p-select-bg-color: var(--aw-color-neutral-0) / 0.08;
-      --p-select-border-color: var(--aw-color-neutral-50) / 0.08;
+      @include dark-mode();
     }
   }
 }
+
+
+.#{$p}-select-menu {
+	all: unset;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	line-height: 1;
+	user-select: none;
+	cursor: pointer;
+	color: hsl(var(--aw-color-primary));
+	font-size: pxToRem(14);
+	
+	border-radius: pxToRem(8);
+	line-height: 1.2;
+  padding-inline: pxToRem(4);
+  padding-block: pxToRem(4);
+  box-sizing: border-box;
+
+  @mixin light-mode() {
+    --p-select-menu-bg-color: var(--aw-color-white);
+    --p-select-menu-border-color: var(--aw-color-black) / 0.06;
+    --p-select-menu-box-shadow-color: var(--transparent);
+  }
+  @mixin dark-mode() {
+    --p-select-menu-bg-color: var(--aw-color-white) / 0.08;
+    --p-select-menu-border-color: var(--aw-color-white) / 0.10;
+    --p-select-menu-box-shadow-color: var(--transparent);
+  }
+  @include light-mode();
+  #{$theme-dark} & {
+    @include dark-mode();
+  }
+
+  background-color: hsl(var(--p-select-menu-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-select-menu-border-color));
+  box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-menu-box-shadow-color));
+}
+
+.#{$p}-select-option { 
+  display: flex;
+  align-items: center;
+  gap: pxToRem(8);
+
+  padding-block: pxToRem(4);
+  padding-inline: pxToRem(4);
+  border-radius: pxToRem(6);
+
+  @mixin light-mode() {
+    --p-select-option-bg-color-hover: var(--aw-color-greyscale-25);
+  }
+  @mixin dark-mode() {
+    --p-select-option-bg-color-hover: var(--aw-color-white) / 0.12;
+  }
+  @include light-mode();
+  #{$theme-dark} & {
+    @include dark-mode();
+  }
+
+  &:where(:hover, :focus) {
+    background-color: hsl(var(--p-select-option-bg-color-hover));
+  }
+
+  &  [class*="icon"] {
+   font-size: 20px !important;
+  }
+}
+

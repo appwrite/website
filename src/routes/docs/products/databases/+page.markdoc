@@ -1,0 +1,9 @@
+---
+layout: article
+title: Databases
+description: This is the description used for SEO.
+---
+
+The Databases Service allows you to store your application and users' data and fetch it using different supported queries. You can organize your data into a three-level hierarchy, which are databases, collections, and documents. Each database is a group of collections, each collection is a group of documents that share the same schema, and each document contains a set of data.
+
+In addition, the Databases Service provides built-in validation to check the integrity of your incoming data, custom indexing for query performance, relationships to link data, and a flexible permissions mechanism to easily segment data between different users, teams, and roles. You can also use the Appwrite Realtime API to subscribe to live changes in your database.

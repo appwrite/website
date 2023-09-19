@@ -15,8 +15,8 @@
   ul {
     list-style: disc; padding-inline-start:pxToRem(24);
     > li {
-      display:list-item; ist-style-type:disc;
-      &::marker { content:revert; }
+      display:list-item; list-style-type:disc;
+      &::marker { content:revert; color:hsl(var(--aw-color-pink-500)); }
     }
   }
   &.is-count-headers {

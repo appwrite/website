@@ -1,45 +1,46 @@
 @use '../abstract' as *;
 :root {
   @mixin color-light {
-    --aw-color-background: var(--aw-color-neutral-50);
-    --aw-color-background-docs: var(--aw-color-neutral-25);
-    --aw-color-primary: var(--aw-color-neutral-900);
-    --aw-color-secondary: var(--aw-color-neutral-700);
-    --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
-    --aw-color-accent-click: var(--aw-color-primary-500);
-    --aw-color-card: var(--aw-color-neutral-0) / 0.9;
-    --aw-color-smooth: var(--aw-color-neutral-100);
-    --aw-color-subtle: var(--aw-color-neutral-50);
-    --aw-color-offset: var(--aw-color-neutral-1000) / 0.06;
+    --aw-color-background: var(--aw-color-greyscale-50);
+    --aw-color-background-docs: var(--aw-color-greyscale-25);
+    --aw-color-primary: var(--aw-color-greyscale-900);
+    --aw-color-secondary: var(--aw-color-greyscale-700);
+    --aw-color-tertiary: var(--aw-color-greyscale-600);
+    --aw-color-accent: var(--aw-color-pink-500);
+    --aw-color-accent-darker: var(--aw-color-pink-600);
+    --aw-color-accent-click: var(--aw-color-pink-500);
+    --aw-color-card: var(--aw-color-white) / 0.9;
+    --aw-color-smooth: var(--aw-color-greyscale-900) / 0.04;
+    --aw-color-subtle: var(--aw-color-greyscale-50);
+    --aw-color-offset: var(--aw-color-black) / 0.06;
 
-    --aw-color-border: var(--aw-color-neutral-50);
+    --aw-color-border: var(--aw-color-greyscale-50);
   }
 
   @mixin color-dark {
-    --aw-color-background: var(--aw-color-neutral-900);
-    --aw-color-background-docs: var(--aw-color-neutral-900);
-    --aw-color-primary: var(--aw-color-neutral-100);
-    --aw-color-secondary: var(--aw-color-neutral-300);
-    --aw-color-tertiary: var(--aw-color-neutral-600);
-    --aw-color-accent: var(--aw-color-primary-500);
-    --aw-color-accent-darker: var(--aw-color-primary-600);
-    --aw-color-accent-click: var(--aw-color-neutral-50);
-    --aw-color-card: var(--aw-color-neutral-850) / 0.9;
-    --aw-color-smooth: var(--aw-color-neutral-800);
-    --aw-color-subtle: var(--aw-color-neutral-850);
-    --aw-color-offset: var(--aw-color-neutral-0) / 0.1;
+    --aw-color-background: var(--aw-color-greyscale-900);
+    --aw-color-background-docs: var(--aw-color-greyscale-900);
+    --aw-color-primary: var(--aw-color-greyscale-100);
+    --aw-color-secondary: var(--aw-color-greyscale-300);
+    --aw-color-tertiary: var(--aw-color-greyscale-600);
+    --aw-color-accent: var(--aw-color-pink-500);
+    --aw-color-accent-darker: var(--aw-color-pink-600);
+    --aw-color-accent-click: var(--aw-color-greyscale-50);
+    --aw-color-card: var(--aw-color-greyscale-850) / 0.9;
+    --aw-color-smooth: var(--aw-color-white) / 0.06;
+    --aw-color-subtle: var(--aw-color-greyscale-850);
+    --aw-color-offset: var(--aw-color-white) / 0.1;
 
     /* call other color variable */
     --aw-color-border: var(--aw-color-subtle);
   }
-    /* primary */
-  --aw-color-primary-hue: 343;
-  --aw-color-primary-200: var(--aw-color-primary-hue) 98% 84%;
-  --aw-color-primary-500: var(--aw-color-primary-hue) 98% 60%; /* #FD366E */
-  --aw-color-primary-600: var(--aw-color-primary-hue) 65% 48%;
-  --aw-color-primary-700: var(--aw-color-primary-hue) 65% 36%;
+  
+  /* pink */
+  --aw-color-pink-hue: 343;
+  --aw-color-pink-200: var(--aw-color-pink-hue) 98% 84%;
+  --aw-color-pink-500: var(--aw-color-pink-hue) 98% 60%; /* #FD366E */
+  --aw-color-pink-600: var(--aw-color-pink-hue) 65% 48%;
+  --aw-color-pink-700: var(--aw-color-pink-hue) 65% 36%;
 
   /* red */
   --aw-color-red-hue: 3;
@@ -81,23 +82,23 @@
   --aw-color-secondary-hue: 351;
   --aw-color-secondary-100: var(--aw-color-secondary-hue) 99% 66%; /* #FE536D */
 
-  /* neutral */
-  --aw-color-neutral-0:    0 0% 100%;
-  --aw-color-neutral-25:   240 11% 98%;
-  --aw-color-neutral-50:   240 11% 94%;
-  --aw-color-neutral-100:   240 6% 90%;
-  --aw-color-neutral-200:   240 4% 85%;
-  --aw-color-neutral-250:   240 3% 77%;
-  --aw-color-neutral-300:   240 2% 68%;
-  --aw-color-neutral-400:   240 2% 60%;
-  --aw-color-neutral-500:   240 2% 52%;
-  --aw-color-neutral-600:   240 2% 43%;
-  --aw-color-neutral-700:   240 3% 35%;   /* #56565C */
-  --aw-color-neutral-750:   240 4% 26%;
-  --aw-color-neutral-800:   240 4% 18%;
-  --aw-color-neutral-850:   240 3% 14%;
-  --aw-color-neutral-900:   240 6% 10%;
-  --aw-color-neutral-1000:  0 0% 0%;
+  /* greyscale */
+  --aw-color-white:    0 0% 100%;
+  --aw-color-greyscale-25:   240 11% 98%;
+  --aw-color-greyscale-50:   240 11% 94%;
+  --aw-color-greyscale-100:   240 6% 90%;
+  --aw-color-greyscale-200:   240 4% 85%;
+  --aw-color-greyscale-250:   240 3% 77%;
+  --aw-color-greyscale-300:   240 2% 68%;
+  --aw-color-greyscale-400:   240 2% 60%;
+  --aw-color-greyscale-500:   240 2% 52%;
+  --aw-color-greyscale-600:   240 2% 43%;
+  --aw-color-greyscale-700:   240 3% 35%;   /* #56565C */
+  --aw-color-greyscale-750:   240 4% 26%;
+  --aw-color-greyscale-800:   240 4% 18%;
+  --aw-color-greyscale-850:   240 3% 14%;
+  --aw-color-greyscale-900:   240 6% 10%;
+  --aw-color-black:  0 0% 0%;
 
   @include color-light; /* default */
   #{$theme-light} { @include color-light; }

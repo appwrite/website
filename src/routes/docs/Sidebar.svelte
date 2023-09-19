@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { createTreeView, melt } from '@melt-ui/svelte';
+
 	export let expandable = false;
 
 	const handleMenuClick = () => {
@@ -8,50 +11,303 @@
 		gridHugeNavs?.classList.toggle('is-open');
 		referencesMenu?.classList.remove('is-open');
 	};
+
+	type NavLink = {
+		label: string;
+		href: string;
+		icon?: string;
+	};
+
+	type NavGroup = {
+		label?: string;
+		href?: string;
+		icon?: string;
+		items: Array<NavLink | NavGroup>;
+	};
+
+	function isNavLink(item: NavLink | NavGroup): item is NavLink {
+		return !('items' in item);
+	}
+
+	type NavTree = Array<NavGroup>;
+
+	const navTree: NavTree = [
+		{
+			items: [
+				{
+					label: 'Quick Start',
+					href: '/docs/quick-start',
+					icon: 'icon-play'
+				},
+				{
+					label: 'Tutorials',
+					href: '/docs/tutorials',
+					icon: 'icon-book-open'
+				},
+				{
+					label: 'SDKs',
+					href: '#',
+					icon: 'icon-cog'
+				},
+				{
+					label: 'Command Line',
+					href: '#',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'References',
+					href: '/docs/reference',
+					icon: 'icon-document',
+					items: [
+						{
+							label: 'Account',
+							href: '/docs/reference/cloud/client-web/account'
+						},
+						{
+							label: 'Users',
+							href: '/docs/reference/cloud/client-web/users'
+						},
+						{
+							label: 'Teams',
+							href: '/docs/reference/cloud/client-web/teams'
+						},
+						{
+							label: 'Databases',
+							href: '/docs/reference/cloud/client-web/databases'
+						},
+						{
+							label: 'Storage',
+							href: '/docs/reference/cloud/client-web/storage'
+						},
+						{
+							label: 'Functions',
+							href: '/docs/reference/cloud/client-web/functions'
+						},
+						{
+							label: 'Localization',
+							href: '/docs/reference/cloud/client-web/locale'
+						},
+						{
+							label: 'Avatars',
+							href: '/docs/reference/1.3.x/client-web/avatars'
+						}
+					]
+				}
+			]
+		},
+		{
+			label: 'Products',
+			href: '/docs/products',
+			items: [
+				{
+					label: 'Auth',
+					href: '/docs/products/auth',
+					icon: 'icon-user-group',
+
+					items: [
+						{
+							label: 'Email and Password',
+							href: '/docs/products/auth/email-password'
+						},
+						{
+							label: 'Phone (SMS)',
+							href: '/docs/products/auth/phone-sms'
+						},
+						{
+							label: 'Magic URL',
+							href: '/docs/products/auth/magic-url'
+						},
+						{
+							label: 'OAuth 2',
+							href: '/docs/products/auth/oauth2'
+						},
+						{
+							label: 'Anonymous',
+							href: '/docs/products/auth/anonymous'
+						},
+						{
+							label: 'User Management',
+							href: '/docs/products/auth/user-management'
+						},
+						{
+							label: 'Server Integrations',
+							href: '/docs/products/auth/server-integrations'
+						},
+						{
+							label: 'Security',
+							href: '/docs/products/auth/security'
+						}
+					]
+				},
+				{
+					label: 'Databases',
+					href: '/docs/products/databases',
+					icon: 'icon-database',
+					items: [
+						{
+							label: 'Queries',
+							href: '/docs/products/databases/queries'
+						}
+					]
+				},
+				{
+					label: 'Functions',
+					href: '#',
+					icon: 'icon-lightning-bolt',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				},
+				{
+					label: 'Storage',
+					href: '#',
+					icon: 'icon-folder',
+					items: [
+						{
+							label: 'Inner item',
+							href: '#'
+						}
+					]
+				}
+			]
+		},
+		{
+			label: 'APIS',
+			href: '#',
+			items: [
+				{
+					label: 'Realtime',
+					href: '#',
+					icon: 'icon-clock'
+				},
+				{
+					label: 'REST',
+					href: '#',
+					icon: 'icon-play'
+				},
+				{
+					label: 'GraphQL',
+					href: '#',
+					icon: 'icon-play'
+				}
+			]
+		},
+		{
+			label: 'Advanced',
+			href: '#',
+			items: [
+				{
+					label: 'Integration',
+					href: '#',
+					icon: 'icon-puzzle'
+				},
+				{
+					label: 'Platform',
+					href: '#',
+					icon: 'icon-play'
+				},
+				{
+					label: 'Migrations',
+					href: '#',
+					icon: 'icon-refresh'
+				},
+				{
+					label: 'Self-hosting',
+					href: '#',
+					icon: 'icon-server'
+				}
+			]
+		}
+	];
+
+	const getGroupItemId = (group: NavGroup, item: NavLink | NavGroup) => {
+		return `${group.label}/${item.label}`.toLowerCase().replace(/\s/g, '-');
+	};
+
+	const currentGroup = $page.url.pathname.split('/')[2] ?? undefined;
+	const currentItem = $page.url.pathname.split('/')[3] ?? undefined;
+	const currentId =
+		currentGroup && currentItem
+			? getGroupItemId({ label: currentGroup, items: [] }, { label: currentItem, href: '' })
+			: undefined;
+
+	const {
+		elements: { tree, group, item }
+	} = createTreeView({
+		defaultExpanded: currentId ? [currentId] : [],
+		forceVisible: false
+	});
 </script>
 
-<nav class="aw-side-nav" class:is-transparent={!expandable}>
+<nav class="aw-side-nav" class:is-transparent={!expandable} use:melt={$tree}>
 	<div class="aw-side-nav-wrapper">
 		<button class="aw-input-text aw-is-not-desktop">
 			<span class="icon-search" />
 			<span class="text">Search in docs</span>
 		</button>
 		<div class="aw-side-nav-scroll">
-			<section>
-				<ul>
-					<li>
-						<a class="aw-side-nav-button is-selected" href="/docs/quick-start">
-							<span class="icon-play" aria-hidden="true" />
-							<span class="aw-caption-400">Quick Start</span>
-						</a>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href="/docs/tutorials">
-							<span class="icon-book-open" aria-hidden="true" />
-							<span class="aw-caption-400">Tutorials</span>
-						</a>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href=".">
-							<span class="icon-cog" aria-hidden="true" />
-							<span class="aw-caption-400">SDKs</span>
-						</a>
-					</li>
-					<li>
-						<button class="aw-side-nav-button">
-							<span class="icon-terminal" aria-hidden="true" />
-							<span class="aw-caption-400">Command Line</span>
-						</button>
-					</li>
-					<li>
-						<a class="aw-side-nav-button" href="/docs/reference">
-							<span class="icon-document" aria-hidden="true" />
-							<span class="aw-caption-400">References</span>
-						</a>
-					</li>
-				</ul>
-			</section>
-			<section>
+			{#each navTree as navGroup}
+				<section>
+					{#if navGroup.label}
+						<h4 class="aw-side-nav-header aw-eyebrow">{navGroup.label}</h4>
+					{/if}
+					<ul>
+						{#each navGroup.items as groupItem}
+							{@const id = getGroupItemId(navGroup, groupItem)}
+							<li>
+								{#if isNavLink(groupItem)}
+									<a
+										class="aw-side-nav-button"
+										class:is-selected={$page.url?.pathname === groupItem.href}
+										href={groupItem.href}
+										use:melt={$item({ id })}
+									>
+										<span class={groupItem.icon} aria-hidden="true" />
+										<span class="aw-caption-400">{groupItem.label}</span>
+									</a>
+								{:else}
+									<li>
+										<a
+											class="aw-side-nav-button"
+											use:melt={$item({ id, hasChildren: true })}
+											href={groupItem.href}
+											class:is-selected={groupItem.href &&
+												$page.url?.pathname.includes(groupItem.href)}
+										>
+											<span class={groupItem.icon} aria-hidden="true" />
+											<span class="aw-caption-400">{groupItem.label}</span>
+											<span
+												class="icon-cheveron-down u-margin-inline-start-auto"
+												aria-hidden="true"
+											/>
+										</a>
+										<ul class="aw-side-nav-inner" use:melt={$group({ id })}>
+											{#each groupItem.items as subItem}
+												{@const subId = `${navGroup.label}-${groupItem?.label}-${subItem?.label}}`}
+												<li>
+													<a
+														class="aw-side-nav-button"
+														class:is-selected={$page.url?.pathname === subItem.href}
+														use:melt={$item({ id: subId })}
+														href={subItem.href}
+													>
+														<span class="aw-icon-holder" />
+														<span class="aw-caption-400">{subItem.label}</span>
+													</a>
+												</li>
+											{/each}
+										</ul>
+									</li>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/each}
+			<!-- <section>
 				<h4 class="aw-side-nav-header aw-eyebrow">Products</h4>
 				<ul>
 					<li>
@@ -60,6 +316,20 @@
 							<span class="aw-caption-400">Auth</span>
 							<span class="icon-cheveron-down u-margin-inline-start-auto" aria-hidden="true" />
 						</button>
+						<ul class="aw-side-nav-inner">
+							<li>
+								<a href="/docs/product/auth" class="aw-side-nav-button" data-sveltekit-noscroll>
+									<span class="aw-icon-holder" />
+									<span class="aw-caption-400">Getting started</span>
+								</a>
+							</li>
+							<li>
+								<a href="/docs/product/auth/email-password" class="aw-side-nav-button" data-sveltekit-noscroll>
+									<span class="aw-icon-holder" />
+									<span class="aw-caption-400">Email and Password</span>
+								</a>
+							</li>
+						</ul>
 					</li>
 					<li>
 						<button class="aw-side-nav-button">
@@ -88,19 +358,19 @@
 				<h4 class="aw-side-nav-header aw-eyebrow">APIS</h4>
 				<ul>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-clock" aria-hidden="true" />
 							<span class="aw-caption-400">Realtime</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">REST</span>
 						</a>
 					</li>
 					<li>
-						<a class="aw-side-nav-button" href=".">
+						<a class="aw-side-nav-button" href="#">
 							<span class="icon-play" aria-hidden="true" />
 							<span class="aw-caption-400">GraphQL</span>
 						</a>
@@ -132,7 +402,7 @@
 						</button>
 					</li>
 				</ul>
-			</section>
+			</section> -->
 		</div>
 		{#if expandable}
 			<button
@@ -147,9 +417,9 @@
 			<button class="aw-button u-width-full-line">
 				<span class="text">Go to console</span>
 			</button>
-			<!-- todo: replace SVG with font-icon -->
+
 			<button class="aw-button is-text u-width-full-line">
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M8.55214 0.894436C8.73682 0.525615 9.26319 0.525617 9.44786 0.894438L11.3548 4.70276C11.4282 4.84944 11.5688 4.95086 11.7312 4.97425L15.9844 5.5871C16.3973 5.64659 16.5607 6.15521 16.2598 6.44413L13.1922 9.38955C13.0721 9.50495 13.0171 9.67255 13.0457 9.83669L13.7708 14.0043C13.8418 14.4126 13.4147 14.7256 13.0468 14.5349L9.23053 12.5564C9.08598 12.4815 8.91402 12.4815 8.76948 12.5564L4.95321 14.5349C4.58534 14.7256 4.1582 14.4126 4.22923 14.0044L4.95432 9.83669C4.98288 9.67255 4.92794 9.50495 4.80776 9.38955L1.74017 6.44413C1.43926 6.15521 1.60274 5.64659 2.01564 5.5871L6.26881 4.97425C6.43118 4.95086 6.5718 4.84944 6.64524 4.70276L8.55214 0.894436Z" stroke="white" stroke-opacity="0.48" stroke-width="1.20208" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
 				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 			</button>

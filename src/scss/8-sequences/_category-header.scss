@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+
+.#{$p}-category-header {
+  display:flex; flex-direction:column;
+  &-content { display:flex; gap:pxToRem(24); }
+  &-description { max-inline-size:pxToRem(892); }
+
+  @media #{$break1} {
+    &-content { flex-direction:column; }
+    .#{$p}-input-text-search-wrapper { margin-block-start:pxToRem(24); }
+  }
+  @media #{$break2open} {
+    &-content { justify-content:space-between; }
+    .#{$p}-input-text-search-wrapper { align-self:end; margin-block-start:pxToRem(40); }
+  }
+}

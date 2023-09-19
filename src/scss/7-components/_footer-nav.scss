@@ -13,7 +13,7 @@
   &-secondary {
     &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
     &-item {
-      a { color:hsl(var(--aw-color-neutral-500)); }
+      a { color:hsl(var(--aw-color-greyscale-500)); }
       }
   }
 

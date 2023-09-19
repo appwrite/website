@@ -1,0 +1,10 @@
+---
+layout: article
+title: Authentication
+description: This is the description used for SEO.
+---
+
+Appwrite Authentication delivers more than just user sign up and log in. Authentication makes it easy to build secure and robust authentication with support for many different authentication methods.
+
+You can manage user accounts with user preferences, user labeling, or organizing users into teams. Combined with a robust permissions system, Appwrite Authentication provides everything you need to authenticate and manage users.
+

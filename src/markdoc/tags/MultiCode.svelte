@@ -1,0 +1,55 @@
+<script context="module" lang="ts">
+	import type { Writable } from 'svelte/store';
+	export type CodeContext = {
+		selected: Writable<string | null>;
+		snippets: Writable<Set<string>>;
+	};
+</script>
+
+<script lang="ts">
+	import { getContext, setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	setContext<CodeContext>('multi-code', {
+		selected: writable(null),
+		snippets: writable(new Set())
+	});
+
+	const { snippets, selected } = getContext<CodeContext>('multi-code');
+
+	snippets.subscribe((n) => {
+		if ($selected === null && n.size > 0) {
+			$selected = Array.from(n)[0];
+		}
+	});
+</script>
+
+<section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
+	<header class="aw-code-snippet-header">
+		<div class="aw-code-snippet-header-start">
+			<div class="u-flex u-gap-16">
+				<div class="aw-tag"><span class="text">Default</span></div>
+			</div>
+		</div>
+		<div class="aw-code-snippet-header-end">
+			<ul class="buttons-list u-flex u-gap-8">
+				<li class="buttons-list-item u-flex u-cross-child-scenter">
+					<div class="aw-select">
+						<select bind:value={$selected}>
+							{#each Array.from($snippets) as language}
+								<option value={language}>{language}</option>
+							{/each}
+						</select>
+						<span class="icon-cheveron-down" aria-hidden="true" />
+					</div>
+				</li>
+				<li class="buttons-list-item aw-u-padding-inline-start-20">
+					<button class="aw-icon-button" aria-label="copy code from code-snippet"
+						><span class="icon-duplicate" aria-hidden="true" /></button
+					>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<div class="aw-code-snippet-content"><slot /></div>
+</section>

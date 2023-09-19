@@ -1,12 +1,24 @@
 @use '../abstract' as *;
 
 .#{$p}-radio-button {
-  --pr-adio-text-color: var(--aw-color-neutral-700);
-  --p-radio-bg-color: var(--aw-color-neutral-50);
+  --p-radio-text-color: var(--p-radio-text-color-default);
+  --p-radio-text-color-default: var(--aw-color-secondary);
+  --p-radio-text-color-hover: var(--aw-color-primary);
+  --p-radio-text-color-active: var(--aw-color-primary);
 
-  all:unset;
+  --p-radio-bg-color: var(--p-radio-bg-color-default);
+  --p-radio-bg-color-default: var(--aw-color-greyscale-900) / 0.04;
+  --p-radio-bg-color-hover: var(--aw-color-greyscale-900) / 0.04;
+  --p-radio-bg-color-active: var(--aw-color-black) / 0.08;
 
-  color: hsl(var(--pr-adio-text-color));
+  --p-radio-box-shadow: var(--p-radio-box-shadow-default);
+  --p-radio-box-shadow-default: var(--transparent);
+  --p-radio-box-shadow-focus: var(--aw-color-black) / 0.16;
+
+  position:relative;
+  all:unset; cursor:pointer;
+
+  color: hsl(var(--p-radio-text-color));
   background-color: hsl(var(--p-radio-bg-color));
 
   display:grid; place-content:center; box-sizing:border-box;
@@ -15,20 +27,29 @@
 
   &::before { all:unset; content:""; display:block; }
 
-  &.is-like {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="hsl(var(--pr-adio-text-color))"><path d="M2 10.4999C2 9.67145 2.67157 8.99988 3.5 8.99988C4.32843 8.99988 5 9.67145 5 10.4999V16.4999C5 17.3283 4.32843 17.9999 3.5 17.9999C2.67157 17.9999 2 17.3283 2 16.4999V10.4999Z" fill="%23EDEDF0"/><path d="M6 10.3332V15.7638C6 16.5214 6.428 17.2139 7.10557 17.5527L7.15542 17.5776C7.71084 17.8553 8.32329 17.9999 8.94427 17.9999H14.3604C15.3138 17.9999 16.1346 17.327 16.3216 16.3921L17.5216 10.3921C17.7691 9.15453 16.8225 7.99988 15.5604 7.99988H12V3.99988C12 2.89531 11.1046 1.99988 10 1.99988C9.44771 1.99988 9 2.44759 9 2.99988V3.66654C9 4.53203 8.71929 5.37416 8.2 6.06654L6.8 7.93321C6.28071 8.6256 6 9.46773 6 10.3332Z" fill="%23EDEDF0"/></svg>');
+  &:disabled { opacity:0.4; }
+
+  &:hover {
+    --p-radio-text-color: var(--p-radio-text-color-hover);
+    --p-radio-bg-color: var(--p-radio-bg-color-hover);
   }
-  &.is-dislike {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M18.0005 9.5C18.0005 10.3284 17.329 11 16.5005 11C15.6721 11 15.0005 10.3284 15.0005 9.5V3.5C15.0005 2.67157 15.6721 2 16.5005 2C17.329 2 18.0005 2.67157 18.0005 3.5V9.5Z" fill="%23EDEDF0"/><path d="M14.0005 9.66667V4.23607C14.0005 3.47852 13.5725 2.786 12.895 2.44721L12.8451 2.42229C12.2897 2.14458 11.6772 2 11.0563 2L5.64013 2C4.68677 2 3.86594 2.67292 3.67897 3.60777L2.47897 9.60777C2.23145 10.8453 3.17804 12 4.44013 12H8.00052V16C8.00052 17.1046 8.89595 18 10.0005 18C10.5528 18 11.0005 17.5523 11.0005 17V16.3333C11.0005 15.4679 11.2812 14.6257 11.8005 13.9333L13.2005 12.0667C13.7198 11.3743 14.0005 10.5321 14.0005 9.66667Z" fill="%23EDEDF0"/></svg>');
+  &:active {
+    --p-radio-text-color: var(--p-radio-text-color-active);
+    --p-radio-bg-color: var(--p-radio-bg-color-active);
   }
 
-  &:focus { box-shadow: var(--focus-box-shadow);}
-  &:checked {
-    outline: solid pxToRem(1) hsl(var(--pr-adio-text-color));
+  &:focus {
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-radio-box-shadow-focus));
+  }
+  &.is-selected {
+    outline: solid pxToRem(1) hsl(var(--p-radio-text-color));
   }
 
   #{$theme-dark} & {
-    --pr-adio-text-color: var(--aw-color-neutral-50);
-    --p-radio-bg-color: var(--aw-color-neutral-0) / 0.18;
+    --p-radio-bg-color-default: var(--aw-color-white) / 0.06;
+    --p-radio-bg-color-hover: var(--aw-color-white) / 0.06;
+    --p-radio-bg-color-active: var(--aw-color-white) / 0.10;
+
+    --p-radio-box-shadow-focus: var(--aw-color-white) / 0.16;
   }
 }

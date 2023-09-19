@@ -3,16 +3,16 @@
 .#{$p}-table {
   /* color variable mixins */
   @mixin light-mode {
-    --p-table-header-bg-color:    var(--aw-color-neutral-0);
-    --p-table-row-bg-odd-color:   var(--aw-color-neutral-25);
-    --p-table-row-bg-even-color:  var(--aw-color-neutral-0);
-    --p-table-border-color:       var(--aw-color-neutral-50);
+    --p-table-header-bg-color:    var(--aw-color-white);
+    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-25);
+    --p-table-row-bg-even-color:  var(--aw-color-white);
+    --p-table-border-color:       var(--aw-color-greyscale-50);
   }
   @mixin dark-mode {
-    --p-table-header-bg-color:    var(--aw-color-neutral-850);
-    --p-table-row-bg-odd-color:   var(--aw-color-neutral-900);
-    --p-table-row-bg-even-color:  var(--aw-color-neutral-850);
-    --p-table-border-color:       var(--aw-color-neutral-800);
+    --p-table-header-bg-color:    var(--aw-color-greyscale-850);
+    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-900);
+    --p-table-row-bg-even-color:  var(--aw-color-greyscale-850);
+    --p-table-border-color:       var(--aw-color-greyscale-800);
   }
 
   table-layout: fixed;
@@ -41,4 +41,25 @@
   }
   &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
   &-col      { padding-block:pxToRem(19); padding-inline:pxToRem(12); }
+}
+
+
+
+.#{$p}-table-line {
+  inline-size:100%;
+  &-row {
+    border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth));
+  }
+  &-cell {
+    &:nth-child(n + 2) { padding-inline-start:pxToRem(24); }
+  }
+
+  &-head {
+    .#{$p}-table-line-cell { padding-block-end:pxToRem(16); }
+  }
+
+  &-body {
+    .#{$p}-table-line-row:last-child { border-block-end-width:0; }
+    .#{$p}-table-line-cell { padding-block:pxToRem(32); }
+  }
 }

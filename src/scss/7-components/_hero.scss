@@ -1,8 +1,11 @@
 @use '../abstract' as *;
 
 .#{$p}-hero {
-  display:flex; flex-direction:column; gap:pxToRem(12); text-align:center;
-  max-inline-size:pxToRem(855); margin-inline:auto;
+  --p-hero-max-inline-size: var(--hero-max-inline-size, #{pxToRem(855)});
+  --p-hero-gap: var(--hero-gap, #{pxToRem(16)});
+
+  display:flex; flex-direction:column; gap:var(--p-hero-gap); text-align:center;
+  max-inline-size:var(--p-hero-max-inline-size); margin-inline:auto;
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
 
   :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
@@ -29,9 +32,4 @@
   }
 
   &.is-no-max-width { max-inline-size:initial; }
-
-  @media #{$break1} {
-    text-align:start;
-    .#{$p}-sub-title { align-self:start; }
-  }
 }

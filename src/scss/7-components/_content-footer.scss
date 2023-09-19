@@ -4,10 +4,10 @@
   padding-block-start: pxToRem(32);
   border-block-start: solid pxToRem(1) hsl(var(--aw-color-border));
   &-header {
-    display:flex; gap:pxToRem(16); justify-content:space-between;
+    display:flex; justify-content:space-between;
     &-start { display:flex; gap:pxToRem(16); }
-    @media #{$break1} { flex-direction:column-reverse; }
-    @media #{$break2open} { justify-items:center; }
+    @media #{$break1} { flex-direction:column-reverse; gap:pxToRem(32); }
+    @media #{$break2open} { justify-items:center; gap:pxToRem(16); }
   }
 
   .#{$p}-card {

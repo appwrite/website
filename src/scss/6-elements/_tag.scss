@@ -1,16 +1,11 @@
 @use '../abstract' as *;
 .#{$p}-tag {
-  --p-tag-text-color: var(--aw-color-neutral-700);
-  --p-tag-bg-color: var(--aw-color-neutral-100);
+  --p-tag-text-color: var(--aw-color-primary);
+  --p-tag-bg-color: var(--aw-color-greyscale-750);
 
   color: hsl(var(--p-tag-text-color));
   background-color: hsl(var(--p-tag-bg-color));
 
   padding-block:pxToRem(4); padding-inline:pxToRem(8); border-radius:pxToRem(12);
   font-size:var(--aw-font-size-micro); line-height:var(--aw-line-height-tiny);
-
-  #{$theme-dark} & {
-    --p-tag-text-color: var(--aw-color-neutral-300);
-    --p-tag-bg-color: var(--aw-color-neutral-750);
-  }
 }
