@@ -59,7 +59,7 @@ docker run -it --rm `
 {% /tabsitem %}
 {% /tabs %}
 
-## One-Click Setups {% #one-click-setups %}
+## One-click setups {% #one-click-setups %}
 
 In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
 
@@ -71,7 +71,7 @@ Choose from one of the providers below:
  {% icon icon="gitpod" /%}| Gitpod | [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
  {% icon icon="akamai" /%}| Akamai Compute | [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
 
-## Next Steps {% #next-steps %}
+## Next steps {% #next-steps %}
 
 Self-hosting Appwrite gives you more configurable options.
 Make these configurations to unlock the full power of Appwrite.
