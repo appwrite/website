@@ -83,7 +83,7 @@
 						</ul>
 					</div>
 				</header>
-				<div class="aw-card is-transparent" style="--card-padding:1rem">
+				<div class="aw-card is-normal" style="--card-padding:1rem">
 					<label for="message">
 						<span class="aw-u-color-text-primary">What did you like?</span>
 						<span class="">(optional)</span>
