@@ -37,7 +37,10 @@ const config = {
 			$scss: './src/scss',
 			$appwrite: './node_modules/@appwrite.io/repo',
 			$markdoc: './src/markdoc'
-		}
+		},
+        prerender: {
+            handleHttpError: 'warn'
+        },
 	}
 };
 export default config;

@@ -13,17 +13,24 @@ import python from 'highlight.js/lib/languages/python';
 import diff from 'highlight.js/lib/languages/diff';
 import ruby from 'highlight.js/lib/languages/ruby';
 import csharp from 'highlight.js/lib/languages/csharp';
-import http from 'highlight.js/lib/languages/http';
 import kotlin from 'highlight.js/lib/languages/kotlin';
 import java from 'highlight.js/lib/languages/java';
-import css from 'highlight.js/lib/languages/css';
+import cpp from 'highlight.js/lib/languages/cpp';
+import bash from 'highlight.js/lib/languages/bash';
+import powershell from 'highlight.js/lib/languages/powershell';
+import dos from 'highlight.js/lib/languages/dos';
+import yaml from 'highlight.js/lib/languages/yaml';
+import plaintext from 'highlight.js/lib/languages/plaintext';
 import graphql from 'highlight.js/lib/languages/graphql';
+import http from 'highlight.js/lib/languages/http';
+import css from 'highlight.js/lib/languages/css';
 import { Platform } from './references';
 
 const languages = {
 	js: javascript,
 	dart: dart,
 	ts: typescript,
+	deno: typescript,
 	xml: xml,
 	html: xml,
 	sh: shell,
@@ -32,14 +39,23 @@ const languages = {
 	swift: swift,
 	php: php,
 	diff: diff,
+	python: python,
+	ruby: ruby,
+	csharp: csharp,
+	kotlin: kotlin,
+	java: java,
+	cpp: cpp,
+	bash: bash,
+	powershell: powershell,
+	cmd: dos,
+	yaml: yaml,
+	text: plaintext,
+	graphql: graphql,
+	http: http,
 	py: python,
 	rb: ruby,
 	cs: csharp,
-	http: http,
-	kotlin: kotlin,
-	java: java,
 	css: css,
-	graphql: graphql
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<Platform, keyof typeof languages> = {
