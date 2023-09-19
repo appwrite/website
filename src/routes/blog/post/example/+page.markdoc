@@ -3,7 +3,8 @@ layout: post
 title: Example
 description: Lorem Ipsum dolor et amet.
 date: 2023-11-16
-timeToRead: 5
+cover: /images/blog/placeholder.png
+timeToRead: 15
 author: Arman
 category: design, accessibility, appwrite, community, accessiblity
 ---

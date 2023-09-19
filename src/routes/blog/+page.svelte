@@ -230,11 +230,11 @@
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
 						{#each data.posts as post}
-							{@const href = `/blog/article/${post.slug}`}
+							{@const href = `/blog/post/${post.slug}`}
 							<li>
 								<a class="aw-grid-articles-item" {href}>
 									<div class="aw-grid-articles-item-image">
-										<img src="/images/blog/placeholder.png" class="aw-image-ratio-4/3" alt="" />
+										<img src={post.cover} class="aw-image-ratio-4/3" alt="" />
 									</div>
 									<div class="aw-grid-articles-item-content">
 										<h4 class="aw-label aw-u-color-text-primary">
