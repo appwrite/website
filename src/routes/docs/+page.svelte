@@ -148,7 +148,7 @@
 		<img src="/images/temp/bg-side.png" width="647" alt="" />
 	</div>
 
-	<main class="aw-main-section">
+	<main class="aw-main-section u-position-relative">
 		<section class="aw-hero is-align-start">
 			<h1 class="aw-display u-max-width-600">Run on any provider or through Appwrite Cloud</h1>
 			<p class="aw-description u-max-width-600">
