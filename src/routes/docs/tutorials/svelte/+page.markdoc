@@ -300,7 +300,7 @@ Overwrite the contents of `src/routes/+page.svelte` with the following code.
       <li>
         <strong>{idea.title}</strong>
         <p>{idea.description}</p>
-        {#if idea.userId === $user.$id}
+        {#if $user && idea.userId === $user.$id}
           <button type="button" on:click={() => ideas.remove(idea.$id)}
             >Remove</button
           >
