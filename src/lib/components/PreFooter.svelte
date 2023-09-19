@@ -2,7 +2,7 @@
 	import { Tabs } from '$lib/UI';
 </script>
 
-<img src="/images/bgs/pre-footer.svg" alt="" class="pre-footer-bg" style="z-index:-1"/>
+<img src="/images/bgs/pre-footer.svg" alt="" class="aw-pre-footer-bg" style="z-index:-1"/>
 
 <div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
 	<section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
@@ -126,7 +126,7 @@
 </div>
 
 <style lang="scss">
-	.pre-footer-bg {
+	.aw-pre-footer-bg {
 		position: absolute;
 		top: clamp(300px, 50vw, 50%);
 		left: clamp(300px, 50vw, 50%);
