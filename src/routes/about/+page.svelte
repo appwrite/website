@@ -161,7 +161,7 @@
 											<h3 class="aw-title aw-u-color-text-primary">
 												A passion project called Appwrite
 											</h3>
-											<p class="aw -main-body-400">
+											<p class="aw-main-body-400">
 												Appwrite's first ever pull request was submitted in August 2019 by CEO and Founder Eldad A. Fux. Just one month later, September 2019, Appwrite officially launched. Soon the community started contributing by the hundreds pushing the product to new heights.
 											</p>
 										</div>
@@ -179,7 +179,10 @@
 											[CONTENT-left]
 										</div>
 										<div>
-											[CONTENT-right]
+											<div class="aw-card is-white aw-u-max-width-350">
+												<h6 class="aw-label">0.1 - 0.4 released</h6>
+												<p class="aw-sub-body-400 u-margin-block-start-12">Early stages of authentication, avatars, database, teams, and storage features</p>
+											</div>
 										</div>
 									</div>
 								</li>
@@ -201,7 +204,10 @@
 									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-											[CONTENT-left]
+											<div class="aw-card is-white aw-u-max-width-168">
+												<h6 class="aw-title">5k</h6>
+												<p class="aw-sub-body-400 aw-u-margin-block-start-6">GitHub Stars</p>
+											</div>
 										</div>
 										<div>
 											[CONTENT-right]
