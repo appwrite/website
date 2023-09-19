@@ -48,6 +48,8 @@ const platformAliases: Record<Platform, keyof typeof languages> = {
 	[Platform.ClientAndroidJava]: 'java',
 	[Platform.ClientAndroidKotlin]: 'kotlin',
 	[Platform.ClientApple]: 'swift',
+	[Platform.ClientGraphql]: 'graphql',
+	[Platform.ClientRest]: 'http',
 	[Platform.ServerDart]: 'dart',
 	[Platform.ServerDeno]: 'ts',
 	[Platform.ServerDotNet]: 'cs',
