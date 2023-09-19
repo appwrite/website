@@ -90,8 +90,8 @@
 							</ul>
 						</nav>
 						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-text aw-u-flex-basis-400">
-								<span class="icon-search" />
+							<button class="aw-input-button aw-u-flex-basis-400">
+								<span class="icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
 								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
