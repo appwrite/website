@@ -1,1 +1,0 @@
-<div>DOCS Quick Start</div>
