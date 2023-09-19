@@ -20,11 +20,6 @@
 					icon: 'icon-cog'
 				},
 				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
-				},
-				{
 					label: 'References',
 					href: '/docs/references',
 					icon: 'icon-document'
@@ -77,16 +72,31 @@
 			]
 		},
 		{
+			label: 'Tooling',
+			items: [
+				{
+					label: 'CLI',
+					href: '/docs/tooling/cli',
+					icon: 'icon-terminal'
+				},
+				{
+					label: 'Assistant',
+					href: '/docs/tooling/assistant',
+					icon: 'icon-clock'
+				}
+			]
+		},
+		{
 			label: 'Advanced',
 			items: [
 				{
 					label: 'Integration',
-					href: '#',
+					href: '/docs/advanced/integration',
 					icon: 'icon-puzzle'
 				},
 				{
 					label: 'Platform',
-					href: '#',
+					href: '/docs/advanced/platform',
 					icon: 'icon-play'
 				},
 				{
@@ -96,7 +106,7 @@
 				},
 				{
 					label: 'Self-hosting',
-					href: '#',
+					href: '/docs/advanced/self-hosting',
 					icon: 'icon-server'
 				}
 			]
