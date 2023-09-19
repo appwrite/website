@@ -496,7 +496,7 @@
 			</div>
 		</div>
 
-		<div class="aw-big-padding-section-level-1 u-padding-0">
+		<div class="aw-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
 			<div
 				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
 			>
