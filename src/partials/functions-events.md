@@ -1,4 +1,4 @@
-## Functions Service {% #functions-events %}
+## Functions events {% #functions-events %}
 
 | Name                                        | Payload                          | Description                               |
 | ------------------------------------------- | --------------------------------- | ----------------------------------------- |
