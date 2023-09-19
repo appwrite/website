@@ -1,5 +1,5 @@
 export function load() {
-	const modules = import.meta.glob('./content/*.markdoc', {
+	const modules = import.meta.glob('./post/**/*.markdoc', {
 		eager: true
 	});
 
@@ -16,7 +16,7 @@ export function load() {
 			};
 			return {
 				filepath,
-				slug: filepath.replace('./content/', '').replace('.markdoc', ''),
+				slug: filepath.replace('./post/', '').replace('.markdoc', ''),
 				title: frontmatter.title,
 				description: frontmatter.description,
 				date: new Date(frontmatter.date),
@@ -25,8 +25,8 @@ export function load() {
 			};
 		})
 		.sort((a, b) => {
-            return b.date.getTime() - a.date.getTime();
-        });
+			return b.date.getTime() - a.date.getTime();
+		});
 
 	return {
 		posts
