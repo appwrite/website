@@ -1,0 +1,21 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-row-4 {
+  --p-gap: #{pxToRem(32)};
+
+  display:grid; gap:var(--p-gap);
+
+  li > * { min-block-size:100%; }
+
+  @media #{$break1} {
+    &-mobile-2 {
+      --p-gap-mobile: var(--gap-mobile);
+      gap: var(--gap-mobile, var(--p-gap));
+      grid-template-columns: repeat(2, 1fr);
+      .is-mobile-col-span-2 { grid-column:span 2; }
+    }
+  }
+  @media #{$break2open} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,4 +1,4 @@
-<nav class="aw-footer-nav u-margin-block-start-100 u-position-relative">
+<nav class="aw-footer-nav u-margin-block-start-100 u-position-relative aw-u-sep-block-start">
 	<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
 	<ul class="aw-footer-nav-main-list">
 		<li class="aw-footer-nav-main-item">
@@ -59,6 +59,7 @@
 				<li class="aw-footer-nav-secondary-item"><a href="">Contact Us</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="">Roadmap</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="">Changelog</a></li>
+				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>cookie settings</li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">

@@ -1,0 +1,22 @@
+@use '../abstract' as *;
+
+.#{$p}-grid-1-1 {
+  --p-grid-1-1-gap: var(--grid-1-1-gap, 0);
+  display: grid;
+  gap: var(--p-grid-1-1-gap);
+
+  @media #{$break3open} {
+    --p-grid-1-1-gap-desktop: var(--grid-1-1-gap-desktop, 0);
+    gap: var(--p-grid-1-1-gap-desktop);
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.#{$p}-grid-1-1-opt-2 {
+  display: grid;
+  @media #{$break2open} {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}

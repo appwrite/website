@@ -2,7 +2,9 @@
 
 @layer pink, css-variables, resets, fonts, icons, animations, elements, components, grids, pages, utilities;
 
-@import url("https://unpkg.com/@appwrite.io/pink") layer(pink); /* temp location */
+@layer pink {
+  @import '@appwrite.io/pink';
+}
 
 @layer css-variables {
   @include meta.load-css('1-css-variables');
@@ -32,8 +34,12 @@
   @include meta.load-css('7-components');
 }
 
+@layer sequences {
+  @include meta.load-css('8-sequences');
+}
+
 @layer grids {
-  @include meta.load-css('8-grids');
+  @include meta.load-css('9-grids');
 }
 
 @layer pages {

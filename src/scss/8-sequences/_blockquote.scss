@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+.#{$p}-blockquote {
+  --p-blockquote-border-color: var(--aw-color-greyscale-100);
+
+  padding-inline-start: pxToRem(20);
+  border-inline-start: solid pxToRem(4) hsl(var(--p-blockquote-border-color));
+  max-inline-size: pxToRem(680);
+
+  &-footer { display:flex; flex-direction:column; gap:pxToRem(4); margin-block-start:pxToRem(24); }
+
+  #{$theme-dark} & {
+    --p-blockquote-border-color: var(--aw-color-greyscale-750);
+  }
+}
