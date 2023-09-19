@@ -88,7 +88,7 @@
 
 									</div>
 
-									<div class="aw-timeline-content-item-bottom aw-grid-1-1"
+									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											[CONTENT-left]
@@ -113,13 +113,13 @@
 										<div>[image]</div>
 									</div>
 
-									<div class="aw-grid-1-1"
+									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-
+											[CONTENT-left]
 										</div>
 										<div>
-
+											[CONTENT-right]
 										</div>
 									</div>
 								</li>
@@ -140,13 +140,13 @@
 										</div>
 									</div>
 
-									<div class="aw-grid-1-1"
+									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-
+											[CONTENT-left]
 										</div>
 										<div>
-
+											[CONTENT-right]
 										</div>
 									</div>
 								</li>
@@ -168,13 +168,13 @@
 
 									</div>
 
-									<div class="aw-grid-1-1"
+									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-
+											[CONTENT-left]
 										</div>
 										<div>
-
+											[CONTENT-right]
 										</div>
 									</div>
 								</li>
@@ -194,13 +194,13 @@
 										<div>[image]</div>
 									</div>
 
-									<div class="aw-grid-1-1"
+									<div class="aw-timeline-content-item-bottom aw-grid-1-1 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
-
+											[CONTENT-left]
 										</div>
 										<div>
-
+											[CONTENT-right]
 										</div>
 									</div>
 								</li>
