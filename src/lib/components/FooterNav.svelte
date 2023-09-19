@@ -111,13 +111,13 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
+				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Community</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Blog</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Contact Us</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="https://store.appwrite.io" target="_blank">Store</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/brand">Brand</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="#">Contact us</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">

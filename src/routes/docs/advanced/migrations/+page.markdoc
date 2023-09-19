@@ -14,11 +14,11 @@ Appwrite supports multiple source destinations for migrating your data. You can 
 
 | Source | Users | Databases | Documents | Files | Functions |
 |--------|-------|-----------|-----------|-------|-----------|
-| [Firebase](/docs/products/migrations/firebase) | enabled | enabled | partial | enabled | manual |
-| [Supabase](/docs/products/migrations/supabase) | enabled | enabled | partial | enabled | manual |
-| [Nhost](/docs/products/migrations/nhost) | enabled | enabled | partial | enabled | manual |
-| [Cloud](/docs/products/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
-| [Self hosted](/docs/products/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
+| [Firebase](/docs/advanced/migrations/firebase) | enabled | enabled | partial | enabled | manual |
+| [Supabase](/docs/advanced/migrations/supabase) | enabled | enabled | partial | enabled | manual |
+| [Nhost](/docs/advanced/migrations/nhost) | enabled | enabled | partial | enabled | manual |
+| [Cloud](/docs/advanced/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
+| [Self hosted](/docs/advanced/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
 
 ## Limitations {% #limitations %}
 
