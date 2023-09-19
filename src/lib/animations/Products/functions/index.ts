@@ -21,7 +21,7 @@ const execute = async () => {
 	const { update } = state.reset();
 
 	await Promise.all([
-		safeAnimate(phone, { x: 460, y: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(phone, { x: 460, y: 0, width: '275px' }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { x: 0, y: 200, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(box, { opacity: 0 }, { duration: 0.5 })?.finished
 	]);
