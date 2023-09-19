@@ -16,7 +16,7 @@
 				},
 				{
 					label: 'SDKs',
-					href: '#',
+					href: '/docs/sdks',
 					icon: 'icon-cog'
 				},
 				{
