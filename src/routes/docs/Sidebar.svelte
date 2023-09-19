@@ -96,34 +96,8 @@
 				},
 				{
 					label: 'Platform',
-					href: '/docs/platform',
-					icon: 'icon-play',
-					items: [
-						{
-							label: 'API keys',
-							href: '/docs/platform/api-keys'
-						},
-						{
-							label: 'Events',
-							href: '/docs/platform/events'
-						},
-						{
-							label: 'Custom domains',
-							href: '/docs/platform/custom-domains'
-						},
-						{
-							label: 'Response codes',
-							href: '/docs/platform/response-codes'
-						},
-						{
-							label: 'Permissions',
-							href: '/docs/platform/permissions'
-						},
-						{
-							label: 'Webhooks',
-							href: '/docs/platform/webhooks'
-						}
-					]
+					href: '/docs/advanced/platform',
+					icon: 'icon-play'
 				},
 				{
 					label: 'Migrations',
