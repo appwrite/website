@@ -21,6 +21,7 @@
 	};
 
 	$: variantClass = variantClasses[variant];
+
 </script>
 
 <div class="u-position-relative">

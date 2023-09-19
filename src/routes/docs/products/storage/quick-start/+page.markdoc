@@ -230,5 +230,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
