@@ -46,18 +46,11 @@
 		</button>
 		<div class="aw-side-nav-scroll">
 			{#if parent}
-				<section
-					style:padding-bottom="16px"
-					style:border-bottom="1px solid #232325"
-					style:display="flex"
-					style:align-items="baseline"
-				>
+				<section class="aw-side-nav-wrapper-parent">
 					<a href={parent.href}>
 						<span class="icon-cheveron-left" aria-hidden="true" />
 					</a>
-
-					<span class="aw-eyebrow" style:width="100%" style:text-align="center">{parent.label}</span
-					>
+					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
 				</section>
 			{/if}
 			{#each navigation as navGroup}
