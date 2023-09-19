@@ -3,3 +3,4 @@ export { default as MainFooter } from './MainFooter.svelte';
 export { default as PreFooter } from './PreFooter.svelte';
 export { default as MobileNav } from './MobileNav.svelte';
 export { default as Phone } from './Phone.svelte';
+export { default as Tooltip } from './Tooltip.svelte';
