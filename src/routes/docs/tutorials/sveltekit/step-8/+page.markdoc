@@ -1,0 +1,82 @@
+---
+layout: tutorial
+title: Creating the ideas page
+description: This is the description used for SEO.
+step: 8
+difficulty: easy
+readtime: 10
+---
+
+Using this store, we can build a page to submit and view ideas.
+
+Overwrite the contents of `src/routes/+page.svelte` with the following code.
+
+```html
+<script>
+  import { user } from "$lib/stores/user";
+  import { ideas } from "$lib/stores/ideas";
+
+  let title = "";
+  let description = "";
+</script>
+
+{#if $user}
+  <section>
+    <h2>Submit Idea</h2>
+    <form>
+      <input type="text" placeholder="Title" bind:value={title} />
+      <textarea placeholder="Description" bind:value={description} />
+      <button
+        type="button"
+        on:click={async () => {
+          ideas.add($user.$id, title, description);
+          title = "";
+          description = "";
+        }}>Submit</button
+      >
+    </form>
+  </section>
+{:else}
+  <section><p>Please login to submit an idea.</p></section>
+{/if}
+<section>
+  <h2>Latest Ideas</h2>
+  <ul>
+    {#each $ideas as idea}
+      <li>
+        <strong>{idea.title}</strong>
+        <p>{idea.description}</p>
+        {#if $user && idea.userId === $user.$id}
+          <button type="button" on:click={() => ideas.remove(idea.$id)}
+            >Remove</button
+          >
+        {/if}
+      </li>
+    {/each}
+  </ul>
+</section>
+
+<style>
+  section {
+    margin-bottom: 3rem;
+  }
+  form {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    border-radius: 0.25em;
+    background-color: antiquewhite;
+    box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, 0.1);
+    min-width: 20%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+</style>
+```
