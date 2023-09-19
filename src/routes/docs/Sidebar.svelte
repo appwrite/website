@@ -76,7 +76,7 @@
 			items: [
 				{
 					label: 'Command Line',
-					href: '/docs/tooling/command-line',
+					href: '/docs/tooling/command-line/installation',
 					icon: 'icon-terminal'
 				},
 				{
@@ -106,7 +106,7 @@
 				},
 				{
 					label: 'Self-hosting',
-					href: '/docs/advanced/self-hosting',
+					href: '/docs/advanced/self-hosting/installation',
 					icon: 'icon-server'
 				}
 			]
