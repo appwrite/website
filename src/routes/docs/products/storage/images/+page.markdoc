@@ -8,7 +8,7 @@ readtime: 15
 
 Appwrite provides utilities to manipulate images for previewing images in your apps.
 
-## Image manipulation {% Image manupulation %}
+## Image manipulation {% #image-manupulation %}
 
 Appwrite Storage's [preview endpoint](#) let you manipulate resolution, add borders and the border-radius, add background-color, set the opacity for the image, and get the image in the appropriate output format.
 
