@@ -13,11 +13,11 @@ We're always working on improving and extending the current stack of available p
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
 {% table %}
-* x {% align="center" %}
+* x {% width=48 %}
 * Platform
-* GitHub Repository {% width=10 %}
+* GitHub Repository
 ---
-* x {% align="center" %}
+* x
 * Web SDK `13.0.0`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
 ---
