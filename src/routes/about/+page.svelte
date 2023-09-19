@@ -218,9 +218,29 @@
 						<h4 class="aw-display aw-u-color-text-primary">Backed by top investors</h4>
 						<p class="aw-description aw-u-max-width-480 u-margin-inline-auto">Appwrite is proudly backed by some of the top investors in the industry.</p>
 					</div>
-					<ul class="u-flex u-main-center u-gap-32 aw-u-margin-block-start-64">
+					<ul class="aw-investor-cards aw-u-margin-block-start-64">
 						<li>
-							<div class="aw-card is-full-color">
+							<div class="aw-card is-full-color" style="--card-padding:1rem;">
+								<img src="" alt="" />
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-full-color" style="--card-padding:1rem;">
+								<img src="" alt="" />
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-full-color" style="--card-padding:1rem;">
+								<img src="" alt="" />
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-full-color" style="--card-padding:1rem;">
+								<img src="" alt="" />
+							</div>
+						</li>
+						<li>
+							<div class="aw-card is-full-color" style="--card-padding:1rem;">
 								<img src="" alt="" />
 							</div>
 						</li>
