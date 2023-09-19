@@ -75,14 +75,14 @@
 			label: 'Tooling',
 			items: [
 				{
-					label: 'CLI',
-					href: '/docs/tooling/cli',
+					label: 'Command Line',
+					href: '/docs/tooling/command-line',
 					icon: 'icon-terminal'
 				},
 				{
 					label: 'Assistant',
 					href: '/docs/tooling/assistant',
-					icon: 'icon-clock'
+					icon: 'icon-sparkles'
 				}
 			]
 		},

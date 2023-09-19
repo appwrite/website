@@ -4,8 +4,8 @@
 
 	const parent: NavParent = {
 		backlink: '/docs',
-		href: '/docs/tooling/cli',
-		label: 'CLI',
+		href: '/docs/tooling/command-line',
+		label: 'Command Line',
 		icon: 'icon-terminal'
 	};
 
@@ -15,11 +15,11 @@
 			items: [
 				{
 					label: 'Installation',
-					href: '/docs/tooling/cli/installation'
+					href: '/docs/tooling/command-line/installation'
 				},
 				{
 					label: 'Deployment',
-					href: '/docs/tooling/cli/deployment'
+					href: '/docs/tooling/command-line/deployment'
 				}
 			]
 		}
