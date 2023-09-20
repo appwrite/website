@@ -46,11 +46,12 @@
 	function getVisibleTheme() {
 		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
 			(element) => {
-				const { classList } = element;
+				const { classList, dataset } = element as HTMLElement;
 				if (
 					classList.contains('aw-mobile-header') ||
 					classList.contains('aw-main-header') ||
-					element === document.body
+					element === document.body ||
+					typeof dataset['themeIgnore'] === 'string'
 				) {
 					return false;
 				}

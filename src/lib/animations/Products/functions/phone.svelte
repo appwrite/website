@@ -30,7 +30,7 @@
 	].filter(Boolean) as Method[];
 </script>
 
-<div class="inner-phone theme-light">
+<div data-theme-ignore class="inner-phone theme-light">
 	<div class="header">
 		<p class="title">Upgrade plan</p>
 		<span class="icon-menu" aria-label="menu" />

@@ -11,7 +11,7 @@
 	const { state } = storageController;
 </script>
 
-<div class="inner-phone theme-light">
+<div data-theme-ignore class="inner-phone theme-light">
 	<div class="header">
 		<p class="title">Your tasks</p>
 		<span class="icon-menu" aria-label="menu" />
