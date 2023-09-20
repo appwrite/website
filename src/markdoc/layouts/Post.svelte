@@ -1,7 +1,21 @@
+<script context="module" lang="ts">
+	export type PostsData = {
+		title: string;
+		description: string;
+		date: Date;
+		cover: string;
+		timeToRead: number;
+		author: string;
+		category: string;
+		href: string;
+	};
+</script>
+
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { FooterNav, MainFooter, Newsletter, PreFooter } from '$lib/components';
 	import { Main } from '$lib/layouts';
+	import type { AuthorData } from './Author.svelte';
 
 	export let title: string;
 	export let description: string;
@@ -11,26 +25,14 @@
 	export let timeToRead: string;
 	export let cover: string;
 
-	type AuthorData = {
-		name: string;
-		role: string;
-		avatar: string;
-		bio: string;
-		twitter: string;
-		linkedin: string;
-		github: string;
-		href: string;
-	};
-
-	let authorData: AuthorData | undefined;
+	let authors: AuthorData | undefined;
 
 	function fetchAuthorData() {
-		const authors = import.meta.glob('$routes/blog/author/**/*.markdoc', {
+		const authorsGlob = import.meta.glob('$routes/blog/author/**/*.markdoc', {
 			eager: true
 		});
-		console.log(authors);
-		const data = Object.entries(authors).map(([_filepath, authors]) => {
-			const { frontmatter } = authors as {
+		const data = Object.entries(authorsGlob).map(([_filepath, authorList]) => {
+			const { frontmatter } = authorList as {
 				frontmatter: AuthorData;
 			};
 
@@ -46,8 +48,7 @@
 			};
 		});
 
-		authorData = data.find((a) => a.name.includes(author));
-		console.log(authorData);
+		authors = data.find((a) => a.name.includes(author));
 	}
 	fetchAuthorData();
 </script>
@@ -78,28 +79,28 @@
 										{description}
 									</p>
 								{/if}
-								{#if authorData}
+								{#if authors}
 									<div class="aw-author u-margin-block-start-16">
-										<a href={authorData.href} class="u-flex u-cross-center u-gap-8">
-											{#if authorData.avatar}
+										<a href={authors.href} class="u-flex u-cross-center u-gap-8">
+											{#if authors.avatar}
 												<img
 													class="aw-author-image"
-													src={authorData.avatar}
+													src={authors.avatar}
 													width="44"
 													height="44"
 													alt=""
 												/>
 											{/if}
 											<div class="u-flex-vertical">
-												<h4 class="aw-sub-body-400 aw-u-color-text-primary">{authorData.name}</h4>
-												<p class="aw-caption-400">{authorData.role}</p>
+												<h4 class="aw-sub-body-400 aw-u-color-text-primary">{authors.name}</h4>
+												<p class="aw-caption-400">{authors.role}</p>
 											</div>
 										</a>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
-											{#if authorData.twitter}
+											{#if authors.twitter}
 												<li>
 													<a
-														href={authorData.twitter}
+														href={authors.twitter}
 														class="aw-icon-button"
 														aria-label="Author twitter"
 														target="_blank"
@@ -109,10 +110,10 @@
 													</a>
 												</li>
 											{/if}
-											{#if authorData.linkedin}
+											{#if authors.linkedin}
 												<li>
 													<a
-														href={authorData.linkedin}
+														href={authors.linkedin}
 														class="aw-icon-button"
 														aria-label="Author LinkedIn"
 														target="_blank"
@@ -122,10 +123,10 @@
 													</a>
 												</li>
 											{/if}
-											{#if authorData.github}
+											{#if authors.github}
 												<li>
 													<a
-														href={authorData.github}
+														href={authors.github}
 														class="aw-icon-button"
 														aria-label="Author GitHub"
 														target="_blank"

@@ -128,7 +128,7 @@
 		<div class="aw-big-padding-section-level-2">
 			<div class="aw-container">
 				<h2 class="aw-title aw-u-color-text-primary">Articles</h2>
-				<div class="aw-is-only-mobile u-margin-block-start-32">
+				<!-- <div class="aw-is-only-mobile u-margin-block-start-32">
 					<label class="u-block aw-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
@@ -219,20 +219,22 @@
 									<span class="aw-main-body-500">Changelog</span>
 								</button>
 							</li>
-						</ul>
-						<div class="aw-input-text-search-wrapper">
+						</ul> 
+						 <div class="aw-input-text-search-wrapper">
 							<span class="icon-search" aria-hidden="true" />
 							<input class="aw-input-text aw-u-block-size-48" type="search" placeholder="Search" />
-						</div>
+						</div> 
 					</div>
-				</div>
+				</div>-->
 
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
 						{#each data.posts as post}
-							{@const href = `/blog/post/${post.slug}`}
+							{@const author = data.authors.find(
+								(author) => author.name.toLowerCase() === post.author.toLowerCase()
+							)}
 							<li>
-								<a class="aw-grid-articles-item" {href}>
+								<a class="aw-grid-articles-item" href={post.href}>
 									<div class="aw-grid-articles-item-image">
 										<img src={post.cover} class="aw-image-ratio-4/3" alt="" />
 									</div>
@@ -244,14 +246,13 @@
 											<div class="u-flex u-cross-center u-gap-8">
 												<img
 													class="aw-author-image"
-													src="/images/blog/placeholder.png"
+													src={author?.avatar}
 													width="24"
 													height="24"
 													alt=""
 												/>
 												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author's name</h4>
-													<p class="aw-caption-400 u-hide">Author's role or bio</p>
+													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author?.name}</h4>
 													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
 														<li>{post.date.toLocaleDateString()}</li>
 														<li>{post.timeToRead} min</li>
