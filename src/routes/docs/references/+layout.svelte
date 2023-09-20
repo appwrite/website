@@ -2,14 +2,13 @@
 	import { page } from '$app/stores';
 	import Docs from '$lib/layouts/Docs.svelte';
 	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+	import { preferredPlatform, preferredVersion } from '$lib/utils/references';
 
 	$: expandable = $page.url.pathname.startsWith('/docs/references/');
-
-	const parent: NavParent = {
-		href: '/docs',
-		label: 'References'
-	};
-	const navigation: NavTree = [
+	$: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
+		$preferredPlatform ?? $page.params?.platform ?? 'client-web'
+	}`;
+	$: navigation = [
 		{
 			label: 'Getting started',
 			items: [
@@ -26,46 +25,51 @@
 				{
 					label: 'Account',
 					icon: 'icon-user',
-					href: '/docs/references/cloud/client-web/account'
+					href: `${prefix}/account`
 				},
 				{
 					label: 'Users',
 					icon: 'icon-user-group',
-					href: '/docs/references/cloud/client-web/users'
+					href: `${prefix}/users`
 				},
 				{
 					label: 'Teams',
 					icon: 'icon-users',
-					href: '/docs/references/cloud/client-web/teams'
+					href: `${prefix}/teams`
 				},
 				{
 					label: 'Databases',
 					icon: 'icon-database',
-					href: '/docs/references/cloud/client-web/databases'
+					href: `${prefix}/databases`
 				},
 				{
 					label: 'Storage',
 					icon: 'icon-cloud',
-					href: '/docs/references/cloud/client-web/storage'
+					href: `${prefix}/storage`
 				},
 				{
 					label: 'Functions',
 					icon: 'icon-code',
-					href: '/docs/references/cloud/client-web/functions'
+					href: `${prefix}/functions`
 				},
 				{
 					label: 'Localization',
 					icon: 'icon-globe',
-					href: '/docs/references/cloud/client-web/locale'
+					href: `${prefix}/locale`
 				},
 				{
 					label: 'Avatars',
 					icon: 'icon-user',
-					href: '/docs/references/cloud/client-web/avatars'
+					href: `${prefix}/avatars`
 				}
 			]
 		}
-	];
+	] as NavTree;
+
+	const parent: NavParent = {
+		href: '/docs',
+		label: 'References'
+	};
 </script>
 
 <Docs variant={expandable ? 'expanded' : 'two-side-navs'}>
