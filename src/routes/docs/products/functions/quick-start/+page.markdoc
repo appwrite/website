@@ -1,0 +1,45 @@
+---
+layout: article
+title: Quick Start
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 5
+---
+You can create and execute your first Appwrite Function in minutes.
+
+### Create function  {% #create-function %} 
+
+Before deploying your function with Git, create a new function attached to your Git repository.
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+2. Click **Create function**.
+3. Under **Connect Git repository**, select your provider.
+4. After connecting to GitHub, under **Quick start**, select a starter template.
+![Starter templates](/images/docs/functions/quick-start/starter-template.png)
+5. Follow the step-by-step wizard and create the function.
+6. The function will be created and a build will begin. Once the build completes, you'll have created your first function.
+
+You can find the code used by the starter template in your newly created Git repository. 
+Each push to your Git repo will trigger a new deployment.
+
+### Execute {% #execute %} 
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Under the **Deployments** tab, click **Execute now**.
+1. Click **Execute** to execute the starter template function.
+1. You'll be redirected to the **Execution** tab automatically.
+1. Wait for the execution to be marked **completed** and click to view the execution logs.
+![Starter templates](/images/docs/functions/quick-start/starter-template-results.png)
+
+## Explore
+Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
+
+| Explore                                                                 |                                                    |
+|-------------------------------------------------------------------------|----------------------------------------------------|
+| [Develop](/docs/products/functions/development)                | Learn about how to parse request, build responses, and log to Console in Appwrite Functions. |
+| [Response](/docs/products/functions/development#response)       | Learn about function response types, like text, json, html, redirect, and empty responses.|
+| [Deploy](/docs/products/functions/deployment)                | Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads. |
+| [Execute](/docs/products/functions/execution)            | Appwrite functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.  |
+| [Domains](/docs/products/functions/execution#domains)       | Each Appwrite Function can be executed through it's own domain, generated or custom. Learn about domains.  |
+| [Runtime](/docs/products/functions/runtimes)            | Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.  |
+| [Examples](/docs/products/functions/examples)            | Enjoy learning from examples? Checkout these examples functions.  |

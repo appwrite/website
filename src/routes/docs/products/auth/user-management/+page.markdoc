@@ -3,3 +3,355 @@ layout: article
 title: User Managements
 description: This is the description used for SEO.
 ---
+
+Appwrite has built-in features to help manage user accounts. Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. Each user can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
+
+## User preferences {% #preferences %}
+
+You can store user preferences on a user's account using Appwrite's [Update Preferences](#) endpoint. You can store user preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+
+Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
+
+{% multicode %}
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.updatePrefs({darkTheme: true, language: 'en'});
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final account = Account(client);
+
+final user = await account.updatePrefs(
+    prefs: {
+        "darkTheme": true,
+        "language": "en",
+    }
+);
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+val user = account.updatePrefs(
+    prefs = mapOf(
+        "darkTheme" to true, 
+        "language" to "en"
+    )
+)
+```
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let user = try await account.updatePrefs(
+    prefs: [
+        "darkTheme": true, 
+        "language": "en"
+    ]
+)
+```
+```graphql
+mutation {
+    accountUpdatePrefs(
+        prefs: "{\"darkTheme\": true, \"language\": \"en\"}"
+    ) {
+        _id
+        name
+        prefs {
+            data
+        }
+    }
+}
+```
+{% /multicode %}
+
+After a user's preferences are updated, they can be retrieved using the [Get Preferences](#) endpoint.
+
+{% multicode %}
+```js 
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.getPrefs();
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final account = Account(client);
+
+final prefs = await account.getPrefs();
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+val prefs = account.getPrefs()
+```
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let prefs = try await account.getPrefs()
+```
+```graphql
+query {
+    accountGetPrefs {
+        data
+    }
+}
+```
+{% /multicode %}
+
+## Users API {% #users-api %}
+
+The Users API is a dedicated API for managing users from an admin's perspective. You'll notice that the Account API doesn't allow you to view or make changes to other users. This is by design and for **security reasons**.
+
+You can use the Users API with an API key authenticated [Server SDK](#) to manage users. If you must expose parts of the Users API to normal users, we suggest doing so through an Appwrite Function. Exposing API keys to users is **dangerous and a security risk**, by using an Appwrite Function, you can add your own validation to prevent malicious behavior.
+
+[Learn more about the Users API](#)
+
+## Labels {% #labels %}
+
+Labels are a good way to categorize a user to grant them access to resources. For example, a `subscriber` label can be added to a user once they've purchased a subscription.
+
+Using your extended markdown with the `{% multicode %}` syntax, the HTML content can be converted to the following markdown:
+
+{% multicode %}
+```js
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('98fd4...a2ad2');                    // Your secret API key
+
+const users = new sdk.Users(client);
+
+const promise = users.updateLabels(
+    '[USER_ID]',
+    [ 'subscriber' ]
+);
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+
+```php
+use Appwrite\Client;
+use Appwrite\Services\Users;
+use Appwrite\Role;
+
+$client = new Client();
+
+$client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('98fd4...a2ad2');                    // Your secret API key
+
+$users = new Users($client);
+
+$result = $users->updateLabels(
+    '[USER_ID]', 
+    [ 'subscriber' ]
+);
+```
+
+```python
+from appwrite.client import Client
+from appwrite.services.users import Users
+from appwrite.role import Role
+
+client = Client()
+
+(client
+  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('5df5acd0d48c2')                 # Your project ID
+  .set_key('98fd4...a2ad2')                     # Your secret API key
+)
+ 
+users = Users(client)
+
+result = users.update_labels(
+    '[USER_ID]',
+    [ 'subscriber' ]
+);
+```
+```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('5df5acd0d48c2')                 # Your project ID
+    .set_key('98fd4...a2ad2')                     # Your secret API key
+
+users = Users.new(client)
+
+response = users.update_labels(
+    user_id: '[USER_ID]',
+    labels: [ 'subscriber' ]
+);
+```
+
+```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+
+let client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('98fd4...a2ad2');                    // Your secret API key
+
+let users = new sdk.Users(client);
+
+const promise = users.updateLabels(
+    '[USER_ID]',
+    [ 'subscriber' ]
+);
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('98fd4...a2ad2');                    // Your secret API key
+
+final users = Users(client);
+
+final result = await users.updateLabels(
+    userId: '[USER_ID]',
+    labels: [ 'subscriber' ],
+);
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.Role
+import io.appwrite.services.Users
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("98fd4...a2ad2")                     // Your secret API key
+
+val users = Users(client)
+
+val response = users.updateLabels(
+    userId = "[USER_ID]",
+    labels = [ 'subscriber' ]
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("98fd4...a2ad2")                     // Your secret API key
+
+let users = Users(client)
+
+let response = try await users.updateLabels(
+    userId: "[USER_ID]",
+    labels: [ 'subscriber' ]
+);
+```
+
+```csharp
+using Appwrite;
+
+var client = new Client()
+    .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("5df5acd0d48c2")                 // Your project ID
+    .SetKey("98fd4...a2ad2");                    // Your secret API key
+
+var users = new Users(client);
+
+var response = await users.UpdateLabels(
+    userId: "[USER_ID]",
+    labels: [ 'subscriber' ]
+);
+```
+{% /multicode %}
+
+This would correspond with the permissions below.
+
+| Description                                 | Code Snippet                                |
+| ------------------------------------------- | ------------------------------------------- |
+| Read   | `Permissions.read(Role.label('subscriber'))`|
+| Update | `Permissions.update(Role.label('subscriber'))` |
+| Delete | `Permissions.delete(Role.label('subscriber'))` |
+| Create | `Permissions.create(Role.label('subscriber'))` |
+
+[Learn more about permissions](/docs/advanced/platform/permissions)
+
+## Teams {% #teams %}
+
+Teams are a good way to allow users to share access to resources.
+
+For example, in a todo app, a user can [create a team](#) for one of their todo lists and [invite another user](#) to the team to grant the other user access. The invited user can [accept the invitation](#) to gain access. If the user's ever removed from the team, they'll lose access again.
