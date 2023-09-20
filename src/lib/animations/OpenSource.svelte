@@ -140,7 +140,7 @@
 				id="oss-twitter"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
-					<span class="aw-icon-twitter aw-u-font-size-40" aria-hidden="true" aria-label="Twitter" />
+					<span class="aw-icon-x aw-u-font-size-40" aria-hidden="true" aria-label="Twitter" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
 			</div>
