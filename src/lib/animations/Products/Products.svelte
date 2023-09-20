@@ -13,7 +13,7 @@
 	import { scroll } from '..';
 	import ScrollIndicator from '../scroll-indicator.svelte';
 	import { Auth, authController } from './auth';
-	import Phone from '../Phone.svelte';
+
 	import AnimatedBox from './AnimatedBox.svelte';
 	import { tick } from 'svelte';
 	import CodeWindow from '../CodeWindow/CodeWindow.svelte';
@@ -23,6 +23,8 @@
 	import { Storage, storageController } from './storage';
 	import { Functions, functionsController } from './functions';
 	import { Realtime, realtimeController } from './realtime';
+	import { postController } from './post';
+	import Post from './post/post.svelte';
 
 	/* Basic Animation setup */
 	let scrollInfo = {
@@ -31,10 +33,10 @@
 		remaning: Infinity
 	};
 
-	const products = ['auth', 'databases', 'storage', 'functions', 'realtime'] as const;
+	const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
 	type Product = (typeof products)[number];
 
-	const animScale: Scale = [0.1, 0.9];
+	const animScale: Scale = [0.1, 1];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -64,8 +66,10 @@
 		databases: databasesController,
 		storage: storageController,
 		functions: functionsController,
-		realtime: realtimeController
+		realtime: realtimeController,
+		post: postController
 	};
+
 	$: (async () => {
 		const fixedLast = lastActive;
 		lastActive = active.product;
@@ -73,7 +77,9 @@
 		objectKeys(controllers).forEach(async (key) => {
 			const controller = controllers[key];
 			if (active.product === key && fixedLast !== key) {
-				elId.update((n) => n + 1);
+				if (!(fixedLast === 'realtime' && key === 'post')) {
+					elId.update((n) => n + 1);
+				}
 				await tick();
 				controller.execute();
 			}
@@ -91,7 +97,7 @@
 		description: string;
 		features: string[];
 	};
-	const infos: Record<Product, ProductInfo> = {
+	const infos: { [K in Product]?: ProductInfo } = {
 		auth: {
 			icon: {
 				active: './images/icons/illustrated/auth.svg',
@@ -170,10 +176,10 @@
 	}}
 >
 	<div class="sticky-wrapper">
-		<div class="debug">
+		<!-- <div class="debug">
 			<pre>{JSON.stringify({ active })}</pre>
 			<pre>{JSON.stringify({ scrollInfo })}</pre>
-		</div>
+		</div> -->
 
 		{#if scrollInfo.percentage < 0.1}
 			<div
@@ -206,53 +212,39 @@
 				in:fly={{ duration: 500, delay: 250, y: 300 }}
 				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
 			>
-				<div class="text">
+				<div class="text" id="pd-{$elId}">
 					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
 					<ul class="descriptions">
 						{#each products as product}
 							{@const copy = infos[product]}
 							{@const isActive = active.product === product}
 
-							<li data-active={isActive ? '' : undefined}>
-								<h3>
-									<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
-									<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
-								</h3>
-								{#if isActive}
-									<div transition:slide>
-										<h4 class="aw-title">{copy.subtitle}</h4>
-										<p>
-											{copy.description}
-										</p>
-										<ul class="features">
-											{#each copy.features as feature}
-												<li>{feature}</li>
-											{/each}
-										</ul>
-									</div>
-								{/if}
-							</li>
+							{#if copy}
+								<li data-active={isActive ? '' : undefined}>
+									<h3>
+										<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
+										<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
+									</h3>
+									{#if isActive}
+										<div transition:slide>
+											<h4 class="aw-title">{copy.subtitle}</h4>
+											<p>
+												{copy.description}
+											</p>
+											<ul class="features">
+												{#each copy.features as feature}
+													<li>{feature}</li>
+												{/each}
+											</ul>
+										</div>
+									{/if}
+								</li>
+							{/if}
 						{/each}
 					</ul>
 				</div>
 
 				<div class="animated">
-					<div class="phone" id="phone-{$elId}">
-						<div class="inner">
-							{#if active.product === 'auth'}
-								<Auth.Phone />
-							{:else if active.product === 'databases'}
-								<Databases.Phone />
-							{:else if active.product === 'storage'}
-								<Storage.Phone />
-							{:else if active.product === 'functions'}
-								<Functions.Phone />
-							{:else if active.product === 'realtime'}
-								<Realtime.Phone />
-							{/if}
-						</div>
-					</div>
-
 					<div class="box-wrapper" id="box-{$elId}">
 						<AnimatedBox>
 							<div class="top" slot="top">
@@ -301,6 +293,26 @@
 						</div>
 					{/if}
 				</div>
+
+				<div class="phone" id="phone-{$elId}">
+					<div class="inner">
+						{#if active.product === 'auth'}
+							<Auth.Phone />
+						{:else if active.product === 'databases'}
+							<Databases.Phone />
+						{:else if active.product === 'storage'}
+							<Storage.Phone />
+						{:else if active.product === 'functions'}
+							<Functions.Phone />
+						{:else if active.product === 'realtime' || active.product === 'post'}
+							<Realtime.Phone />
+						{/if}
+					</div>
+				</div>
+
+				{#if active.product === 'post'}
+					<Post />
+				{/if}
 			</div>
 		{/if}
 	</div>
@@ -385,6 +397,7 @@
 		justify-content: space-between;
 		width: 100%;
 		max-width: 77.75rem;
+		position: relative;
 
 		transition: 200ms ease;
 
@@ -491,7 +504,7 @@
 
 		position: absolute;
 		top: 0;
-		left: 0;
+		left: calc(50%);
 		z-index: 10;
 		opacity: 1;
 

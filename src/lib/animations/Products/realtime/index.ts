@@ -78,29 +78,32 @@ const execute = async () => {
 
 	const graphBox = getElSelector('graph-box');
 
+	const pd = getElSelector('pd');
+
 	const { update } = state.reset();
 	const { set: setConn } = connectionsProg.reset();
 
 	await Promise.all([
 		safeAnimate(phone, { x: 0, y: 0, width: '660px' }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { opacity: 0 }, { duration: 0.5 })?.finished,
-		safeAnimate(graphBox, { opacity: 0 }, { duration: 0 })?.finished
+		safeAnimate(graphBox, { opacity: 0, x: 0, y: 0 }, { duration: 0 })?.finished,
+		safeAnimate(pd, { opacity: 1, y: 0 }, { duration: 0.5 })?.finished
 	]);
 
 	// Graphbox
-	sleep(1750).then(async () => {
-		await safeAnimate(graphBox, { opacity: 1, y: [-16, 0] }, { duration: 0.5 })?.finished;
+	sleep(1250).then(async () => {
+		await safeAnimate(graphBox, { opacity: 1 }, { duration: 0.5 })?.finished;
 
 		animate(
 			(y) => {
 				setConn(y);
 			},
-			{ duration: 5, easing: 'ease-in' }
+			{ duration: 2.5, easing: 'ease-in' }
 		);
 	});
 
 	// Walter
-	sleep(1000).then(async () => {
+	sleep(500).then(async () => {
 		addUser(update, { name: 'Walter', color: '#fd366e' });
 		await sleep(500);
 		await safeAnimate(walter, { x: -200, y: -100, scale: 1 }, { duration: 0.5 })?.finished;
@@ -151,7 +154,7 @@ const execute = async () => {
 	});
 
 	// Aditya
-	sleep(2000).then(async () => {
+	sleep(1500).then(async () => {
 		addUser(update, { name: 'Aditya', color: 'rgba(124, 103, 254, 1)' });
 		await sleep(500);
 		await safeAnimate(aditya, { x: 200, y: -100, scale: 1 }, { duration: 0.5 })?.finished;
@@ -187,7 +190,7 @@ const execute = async () => {
 	});
 
 	// Sara
-	sleep(3000).then(async () => {
+	sleep(2500).then(async () => {
 		addUser(update, { name: 'Sara', color: 'rgba(103, 163, 254, 1)' });
 		await sleep(500);
 		await safeAnimate(sara, { x: 0, y: -100, scale: 1 }, { duration: 0.5 })?.finished;
