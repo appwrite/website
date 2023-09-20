@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
-	import { MainFooter, FooterNav } from '$lib/components';
+	import { MainFooter, FooterNav, Article } from '$lib/components';
 
 	export let data;
 </script>
@@ -233,36 +233,17 @@
 							{@const author = data.authors.find(
 								(author) => author.name.toLowerCase() === post.author.toLowerCase()
 							)}
-							<li>
-								<a class="aw-grid-articles-item" href={post.href}>
-									<div class="aw-grid-articles-item-image">
-										<img src={post.cover} class="aw-image-ratio-4/3" alt="" />
-									</div>
-									<div class="aw-grid-articles-item-content">
-										<h4 class="aw-label aw-u-color-text-primary">
-											{post.title}
-										</h4>
-										<div class="aw-author">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img
-													class="aw-author-image"
-													src={author?.avatar}
-													width="24"
-													height="24"
-													alt=""
-												/>
-												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author?.name}</h4>
-													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-														<li>{post.date.toLocaleDateString()}</li>
-														<li>{post.timeToRead} min</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
+							{#if author}
+								<Article
+									title={post.title}
+									href={post.href}
+									cover={post.cover}
+									date={post.date}
+									timeToRead={post.timeToRead}
+									avatar={author.avatar}
+									author={author.name}
+								/>
+							{/if}
 						{/each}
 					</ul>
 				</div>
