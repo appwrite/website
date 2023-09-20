@@ -11,9 +11,7 @@
 	};
 
 	export type NavParent = {
-		backlink: string;
 		label: string;
-		icon: string;
 		href: string;
 	};
 
@@ -48,19 +46,11 @@
 		</button>
 		<div class="aw-side-nav-scroll">
 			{#if parent}
-				<section style:padding-bottom="16px" style:border-bottom="1px solid #232325">
-					<a class="aw-side-nav-button" href={parent.backlink}>
+				<section class="aw-side-nav-wrapper-parent">
+					<a href={parent.href}>
 						<span class="icon-cheveron-left" aria-hidden="true" />
-						<span class="aw-caption-400">Back</span>
 					</a>
-					<a
-						class="aw-side-nav-button"
-						href={parent.href}
-						class:is-selected={$page.url?.pathname === parent.href}
-					>
-						<span class={parent.icon} aria-hidden="true" />
-						<span class="aw-caption-500">{parent.label}</span>
-					</a>
+					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
 				</section>
 			{/if}
 			{#each navigation as navGroup}
@@ -80,18 +70,18 @@
 						{/if}
 						<ul>
 							{#each navGroup.items as groupItem}
-									<li>
-										<a
-											class="aw-side-nav-button"
-											class:is-selected={$page.url?.pathname === groupItem.href}
-											href={groupItem.href}
-										>
-											{#if groupItem.icon}
-												<span class={groupItem.icon} aria-hidden="true" />
-											{/if}
-											<span class="aw-caption-400">{groupItem.label}</span>
-										</a>
-									</li>
+								<li>
+									<a
+										class="aw-side-nav-button"
+										class:is-selected={$page.url?.pathname === groupItem.href}
+										href={groupItem.href}
+									>
+										{#if groupItem.icon}
+											<span class={groupItem.icon} aria-hidden="true" />
+										{/if}
+										<span class="aw-caption-400">{groupItem.label}</span>
+									</a>
+								</li>
 							{/each}
 						</ul>
 					{/if}

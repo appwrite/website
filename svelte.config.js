@@ -41,7 +41,8 @@ const config = {
 			$markdoc: './src/markdoc'
 		},
 		prerender: {
-			handleHttpError: 'warn'
+			handleHttpError: 'warn',
+			handleMissingId: 'warn'
 		}
 	}
 };

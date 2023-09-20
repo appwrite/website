@@ -1,9 +1,14 @@
 <script lang="ts">
-	import Docs from '$lib/layouts/Docs.svelte';
+	import { page } from '$app/stores';
+	import Docs, { type DocsLayoutVariant } from '$lib/layouts/Docs.svelte';
 	import Sidebar from '../Sidebar.svelte';
+
+	$: variant = $page.url.pathname.endsWith('/tutorials')
+		? 'default'
+		: ('two-side-navs' as DocsLayoutVariant);
 </script>
 
-<Docs variant="two-side-navs">
+<Docs {variant}>
 	<Sidebar />
 	<slot />
 </Docs>
