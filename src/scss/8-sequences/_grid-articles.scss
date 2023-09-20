@@ -2,12 +2,12 @@
 
 .#{$p}-grid-articles {
   --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-default);
-  --p-grid-articles-item-border-color-default: var(--transparent);
-  --p-grid-articles-item-border-color-hover: var(--aw-color-smooth);
+  --p-grid-articles-item-border-color-default: var(--aw-color-smooth);
+  //--p-grid-articles-item-border-color-hover: var(--aw-color-smooth);
 
   --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-default);
-  --p-grid-articles-item-bg-color-default: var(--transparent);
-  --p-grid-articles-item-bg-color-hover: var(--aw-color-white);
+  --p-grid-articles-item-bg-color-default: var(--aw-color-white);
+  //--p-grid-articles-item-bg-color-hover: var(--aw-color-white);
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
@@ -46,8 +46,8 @@
 
   }
   #{$theme-dark} & {
-    --p-grid-articles-item-border-color-hover: var(--aw-color-white)  / 0.2;
-    --p-grid-articles-item-bg-color-hover: var(--aw-color-white)  / 0.06;
+    --p-grid-articles-item-border-color-default: var(--aw-color-white)  / 0.2;
+    --p-grid-articles-item-bg-color-default: var(--aw-color-white)  / 0.06;
   }
 
   @media #{$break1} {
