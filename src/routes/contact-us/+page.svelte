@@ -50,8 +50,8 @@
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-twitter" target="_blank">
-												<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-x" target="_blank">
+												<span class="aw-icon-x" aria-hidden="true"></span>
 											</a>
 										</li>
 										<li>
