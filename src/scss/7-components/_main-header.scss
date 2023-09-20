@@ -32,7 +32,7 @@
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
-  &.is-transparent { background-color:transparent; backdrop-filter:blur(10px); }
+  &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(10)); backdrop-filter:blur(pxToRem(10)); }
 
   #{$theme-dark} &,
   &#{$theme-dark} {
