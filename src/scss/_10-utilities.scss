@@ -3,6 +3,9 @@
 .#{$p}-u-hide-mobile  { @media #{$break1}{ display:none!important; } }
 .#{$p}-u-opacity-90                 { opacity:0.9!important; }
 
+.#{$p}-u-flex-vertical-reverse-mobile { @media #{$break1} { flex-direction:column-reverse!important; }  }
+
+
 .#{$p}-u-padding-20                 { padding:pxToRem(20); }
 .#{$p}-u-padding-inline-start-0     { padding-inline-start:0!important; }
 .#{$p}-u-padding-inline-start-20    { padding-inline-start:pxToRem(20)!important; }
