@@ -26,7 +26,8 @@ const config = {
 				article: absoulute('./src/markdoc/layouts/Article.svelte'),
 				tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
 				post: absoulute('./src/markdoc/layouts/Post.svelte'),
-				author: absoulute('./src/markdoc/layouts/Author.svelte')
+				author: absoulute('./src/markdoc/layouts/Author.svelte'),
+				category: absoulute('./src/markdoc/layouts/Category.svelte')
 			}
 		}),
 		preprocessMeltUI()
