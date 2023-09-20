@@ -45,7 +45,7 @@
                         </li>
                         <li>
                             <a href="" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-                                <span class="aw-icon-twitter" aria-hidden="true"></span>
+                                <span class="aw-icon-x" aria-hidden="true"></span>
                             </a>
                         </li>
                         <li>
@@ -143,7 +143,7 @@
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
                                             <li>
                                                 <a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										        </a>
 										    </li>
 											<li>
@@ -178,7 +178,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -213,7 +213,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -248,7 +248,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -283,7 +283,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -318,7 +318,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -353,7 +353,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -388,7 +388,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -423,7 +423,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>
@@ -458,7 +458,7 @@
 											</div>
 										</div>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide"><li><a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Author twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<span class="aw-icon-x" aria-hidden="true"></span>
 										</a>
 										</li>
 											<li>

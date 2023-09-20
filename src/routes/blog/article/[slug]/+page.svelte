@@ -42,7 +42,7 @@
 											aria-label="Author twitter"
 											target="_blank"
 										>
-											<span class="aw-icon-twitter" aria-hidden="true" />
+											<span class="aw-icon-x" aria-hidden="true" />
 										</a>
 									</li>
 									<li>

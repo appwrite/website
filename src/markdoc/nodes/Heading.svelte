@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, hasContext, onMount } from 'svelte';
+	import { getContext, hasContext, onMount, setContext } from 'svelte';
 	import type { LayoutContext } from '../layouts/Article.svelte';
 
 	export let level: number;
@@ -41,7 +41,7 @@
 </script>
 
 {#if id}
-	<a href={`#${id}`}>
+	<a href={`#${id}`} class="aw-link">
 		<svelte:element
 			this={tag}
 			{id}
