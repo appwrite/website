@@ -38,8 +38,6 @@
 
 		observer.observe(element);
 	});
-
-	setContext('is-heading', true);
 </script>
 
 {#if id}
