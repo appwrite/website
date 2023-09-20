@@ -55,12 +55,12 @@
 											</a>
 										</li>
 										<li>
-											<a href="#" class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
+											<a href="https://linkedin.com/company/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
 												<span class="aw-icon-linkedin" aria-hidden="true"></span>
 											</a>
 										</li>
 										<li>
-											<a href="#" class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
+											<a href="https://youtube.com/c/appwrite?sub_confirmation=1" class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
 												<span class="aw-icon-youtube" aria-hidden="true"></span>
 											</a>
 										</li>
