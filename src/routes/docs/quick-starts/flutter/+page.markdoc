@@ -130,13 +130,11 @@ flutter create my_app
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}
-Install the Appwrite SDK for Apple.
+Install the Appwrite SDK for Flutter.
 
-1. Select **File** > **Add Packages**
-2. Search for the Appwrite SDK with the URL `https://github.com/appwrite/sdk-for-apple`
-3. In the right panel, select your target project and add your desired version rules
-4. Select Add Package and wait for package resolution to complete
-5. Make sure the Appwrite package product is checked and select Add Package again
+```sh
+pub get appwrite
+```
 
 {% /section %}
 
@@ -147,8 +145,13 @@ Find your project's ID in the **Settings** page.
 
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
-```swift
-TODO
+```dart
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client();
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('650209298acac4ee1bb6')
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
