@@ -215,11 +215,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div
-							class="aw-display aw-u-color-text-primary"
-							style:z-index="1000"
-							style:position="relative"
-						>
+						<div class="aw-display aw-u-color-text-primary">
 							Loved by developers
 						</div>
 					</div>
