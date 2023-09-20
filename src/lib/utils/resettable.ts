@@ -2,16 +2,20 @@ const braindeadUUID = () => {
 	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
+const deepClone = (v: any) => {
+	return JSON.parse(JSON.stringify(v));
+};
+
 export const createResettable = <Value>(defaultValue: Value) => {
 	type GlobalState = Record<string, Value>;
 	type SubscribeCallback = (v: Value) => void;
 	let subscribeCallbacks: SubscribeCallback[] = [];
 
-	const d = { ...defaultValue };
+	const d = deepClone(defaultValue);
 
 	let currUuid = braindeadUUID();
 	const state: GlobalState = {
-		[currUuid]: { ...d }
+		[currUuid]: deepClone(d)
 	};
 
 	const subscribe = (cb: SubscribeCallback) => {
@@ -35,7 +39,7 @@ export const createResettable = <Value>(defaultValue: Value) => {
 			set(fn(state[fixedId]));
 		};
 
-		set({ ...d });
+		set(deepClone(d));
 		return { set, update };
 	};
 
