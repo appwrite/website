@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Create login page
+title: Add authentication
 description: This is the description used for SEO.
 step: 4
 ---
 
 ## Using stores
 
-In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to share state between components. 
+In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to share state and changes between components. 
 We'll use a store to keep track of our user's data.
 
 Create a new file `src/lib/stores/user.js` and add the following code to it.
@@ -44,8 +44,9 @@ async function logout() {
   store.set(null);
 }
 
+// Expose the store's value with $user
 export const user = {
-  subscribe: store.subscribe, // Expose the store's value with $user
+  subscribe: store.subscribe, 
   register,
   login,
   logout,
@@ -54,7 +55,6 @@ export const user = {
 ```
 
 ## Login page
-
 
 Using this store, we can build a login page.
 

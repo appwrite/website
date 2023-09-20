@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Create SvelteKit app
+title: Create app
 description: This is the description used for SEO.
 step: 2
 ---
@@ -21,8 +21,8 @@ Install the JavaScript Appwrite SDK.
 npm install appwrite
 ```
 
-We recommend starting the development server to watch your app update in the browser as you make changes.
+You can start the development server to watch your app update in the browser as you make changes.
 
 ```sh
-npm run dev -- --open
+npm run dev -- --open --port 3000
 ```
