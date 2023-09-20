@@ -24,11 +24,25 @@
     border:solid pxToRem(1) hsl(var(--p-grid-articles-item-border-color));
     transition:var(--transition); border-radius:pxToRem(16);
 
-    &-content { display:flex; flex-direction:column; gap:pxToRem(16); }
-    &:where(:hover, :focus) {
-      --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-hover);
-      --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-hover);
+    &-image {
+      overflow:hidden; border-radius:pxToRem(8);
+      > * {transition:var(--transition); }
     }
+
+    &-content { display:flex; flex-direction:column; gap:pxToRem(16); }
+
+    &:where(:hover, :focus) {
+      .#{$p}-grid-articles-item {
+        &-image {
+          > * { scale:1.05; }
+        }
+      }
+    }
+
+    //&:where(:hover, :focus) {
+    //  --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-hover);
+    //  --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-hover);
+    //}
 
   }
   #{$theme-dark} & {
