@@ -228,7 +228,7 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
@@ -252,7 +252,7 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
@@ -274,7 +274,7 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
