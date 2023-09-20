@@ -19,7 +19,6 @@
 </script>
 
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Tooltip from '$lib/components/Tooltip.svelte';
 	import { layoutState, toggleSidenav } from './Docs.svelte';
 	import SidebarNavButton from './SidebarNavButton.svelte';
@@ -61,7 +60,7 @@
 						{/if}
 					{:else}
 						{#if navGroup.label}
-							<h4 class="aw-side-nav-header aw-eyebrow">{navGroup.label}</h4>
+							<h4 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h4>
 						{/if}
 						<ul>
 							{#each navGroup.items as groupItem}
