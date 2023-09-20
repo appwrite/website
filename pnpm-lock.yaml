@@ -13,7 +13,7 @@ dependencies:
     version: 0.0.7-sl10.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/9ba609c46efc9ea3bd1074d308ca2c178321b9dc
+    version: github.com/appwrite/appwrite/ddb73eb4f60aa807fd0bfe8622da32a69738077a
   '@fontsource/inter':
     specifier: ^5.0.8
     version: 5.0.8
@@ -68,8 +68,8 @@ devDependencies:
     specifier: ^12.1.3
     version: 12.1.3
   oslllo-svg-fixer:
-    specifier: ^2.2.0
-    version: 2.2.0
+    specifier: ^3.0.0
+    version: 3.0.0
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^2.0.1
     version: 2.0.1
   svgtofont:
-    specifier: ^3.25.4
-    version: 3.25.4
+    specifier: ^4.0.0
+    version: 4.0.0
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -165,6 +165,10 @@ packages:
       normalize.css: 8.0.1
       the-new-css-reset: 1.9.0
     dev: false
+
+  /@assemblyscript/loader@0.10.1:
+    resolution: {integrity: sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==}
+    dev: true
 
   /@babel/runtime@7.22.15:
     resolution: {integrity: sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==}
@@ -2566,6 +2570,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /eventemitter-asyncresource@1.0.0:
+    resolution: {integrity: sha512-39F7TBIV0G7gTelxwbEqnwhp90eqCPON1k0NwNfwhgKn4Co4ybUbj2pECcXT0B3ztRKZ7Pw1JujUUgmQJHcVAQ==}
+    dev: true
+
   /exif-parser@0.1.12:
     resolution: {integrity: sha512-c2bQfLNbMzLPmzQuOr8fy0csy84WmwnER81W88DzTp9CYNPJ6yzOj2EZAh9pywYpqHnshVLHQJ8WzldAyfY+Iw==}
     dev: true
@@ -2951,6 +2959,18 @@ packages:
     dependencies:
       is-number: 3.0.0
       kind-of: 4.0.0
+    dev: true
+
+  /hdr-histogram-js@2.0.3:
+    resolution: {integrity: sha512-Hkn78wwzWHNCp2uarhzQ2SGFLU3JY8SBDDd3TAABK4fc30wm+MuPOrg5QVFVfkKOQd6Bfz3ukJEI+q9sXEkK1g==}
+    dependencies:
+      '@assemblyscript/loader': 0.10.1
+      base64-js: 1.5.1
+      pako: 1.0.11
+    dev: true
+
+  /hdr-histogram-percentiles-obj@3.0.0:
+    resolution: {integrity: sha512-7kIufnBqdsBGcSZLPJwqHT3yhk1QTsSlFsVD3kx5ixH/AlgBs9yM1q6DPhXZ8f8gtdqgh7N7/5btRLpQsS2gHw==}
     dev: true
 
   /hey-listen@1.0.8:
@@ -3802,6 +3822,29 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /nice-napi@1.0.2:
+    resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
+    os: ['!win32']
+    requiresBuild: true
+    dependencies:
+      node-addon-api: 3.2.1
+      node-gyp-build: 4.6.1
+    dev: true
+    optional: true
+
+  /node-addon-api@3.2.1:
+    resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /node-gyp-build@4.6.1:
+    resolution: {integrity: sha512-24vnklJmyRS8ViBNI8KbtK/r/DmXQMRiOMXTNz2nrTnAYUwjmEEbnnpB/+kt+yWRv73bPsSPRFddrcIbAxSiMQ==}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /node-gyp@9.4.0:
     resolution: {integrity: sha512-dMXsYP6gc9rRbejLXmTbVRYjAHw7ppswsKyMxuxJxxOHzluIO1rGp9TOQgjFJ+2MCqcOcQTOPB/8Xwhr+7s4Eg==}
     engines: {node: ^12.13 || ^14.13 || >=16}
@@ -3918,8 +3961,9 @@ packages:
       jimp: 0.16.13
     dev: true
 
-  /oslllo-svg-fixer@2.2.0:
-    resolution: {integrity: sha512-70jEmHwp/jqq2I2ZVaTOvHykPlEOhIHRto5AHntrjzD8/R6FOk0t8RjlyZNgpPlDjc7T/9a695qKAxF3bFVYKg==}
+  /oslllo-svg-fixer@3.0.0:
+    resolution: {integrity: sha512-fk0oWpDfWlcZI42EJfwZV2a7K2hbB63big8KBCDdIU/72QUeUw2z41hTRO/YJeNyFwixb6ecmwOVdJuWQ6SMLg==}
+    engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
       ansi-colors: 4.1.3
@@ -3928,6 +3972,7 @@ packages:
       oslllo-potrace: 2.0.1
       oslllo-svg2: 2.0.2
       oslllo-validator: 3.1.0
+      piscina: 4.1.0
       yargs: 16.2.0
     dev: true
 
@@ -4088,6 +4133,16 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+    dev: true
+
+  /piscina@4.1.0:
+    resolution: {integrity: sha512-sjbLMi3sokkie+qmtZpkfMCUJTpbxJm/wvaPzU28vmYSsTSW8xk9JcFUsbqGJdtPpIQ9tuj+iDcTtgZjwnOSig==}
+    dependencies:
+      eventemitter-asyncresource: 1.0.0
+      hdr-histogram-js: 2.0.3
+      hdr-histogram-percentiles-obj: 3.0.0
+    optionalDependencies:
+      nice-napi: 1.0.2
     dev: true
 
   /pixelmatch@4.0.2:
@@ -4902,8 +4957,8 @@ packages:
     resolution: {integrity: sha512-OIWR6bKzXvdXYyO4DK/UWa1VA1JeKq8E+0ug2DG98Y/vOmMpfZNj+TIG988HjfYSqtcy/hFOtZq/n/j5GSESNg==}
     dev: true
 
-  /svgtofont@3.25.4:
-    resolution: {integrity: sha512-S4DdXBBBPsV1wDJAS1mGuKeR2IYkDbd2AZnnYeUs3mCrIbGyVi9m40cbEGUgn7LLPTfLcMxv4Ft+LtdCVA1+yw==}
+  /svgtofont@4.0.0:
+    resolution: {integrity: sha512-8K0e/4BcJRhBcmQ9d5O5GC7WdNW0sLi7G1egvnzvPi5orICAcAQg/SF3n03DYMLkAGXhJ+UsKfJnC8ovv8/xiw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
@@ -5508,8 +5563,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/9ba609c46efc9ea3bd1074d308ca2c178321b9dc:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/9ba609c46efc9ea3bd1074d308ca2c178321b9dc}
+  github.com/appwrite/appwrite/ddb73eb4f60aa807fd0bfe8622da32a69738077a:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/ddb73eb4f60aa807fd0bfe8622da32a69738077a}
     name: appwrite
     version: 0.0.0
     dev: false

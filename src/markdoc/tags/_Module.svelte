@@ -5,4 +5,6 @@
 	export { default as Tabs } from './Tabs.svelte';
 	export { default as TabsItem } from './TabsItem.svelte';
 	export { default as Icon } from './Icon.svelte';
+	export { default as Only_Light } from './Only_Light.svelte';
+	export { default as Only_Dark } from './Only_Dark.svelte';
 </script>

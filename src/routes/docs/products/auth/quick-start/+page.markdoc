@@ -1,0 +1,190 @@
+---
+layout: article
+title: Quick Start
+description: This is the description used for SEO.
+difficulty: beginner
+readtime: 3
+---
+You can get up and running with Appwrite Authentication in minutes. 
+Adding signup and login is as simple as this.
+
+## Sign up {% #sign-up %}
+
+You can use the Appwrite Client SDKs to create an account using email and password.
+
+{% multicode %}
+```js
+import { Client, Account, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
+
+const account = new Account(client);
+
+const promise = account.create('[USER_ID]', 'email@example.com', '');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+```dart 
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
+
+final account = Account(client);
+
+final user = await account.create(
+    userId: ID.unique(),
+    email: 'email@example.com',
+    password: 'password',
+);
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+import io.appwrite.ID
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
+
+val account = Account(client)
+
+val user = account.create(
+    userId = ID.unique(),
+    email = "email@example.com",
+    password = "password"
+)
+```
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
+
+let account = Account(client)
+
+let user = try await account.create(
+    userId: ID.unique(),
+    email: "email@example.com",
+    password: "password"
+)
+```
+```graphql
+
+mutation {
+    accountCreate(userId: "unique()", email: "email@example.com", password: "password") {
+        _id
+        email
+        name
+    }
+}
+```
+{% /multicode %}
+
+## Login {% #login %}
+
+After you've created your account, users can be logged in using the Create Email Session route.
+
+Converting your HTML code into your custom Markdown with the multi-select code feature can be done like this.
+
+{% multicode %}
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createEmailSession('email@example.com', 'password');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final account = Account(client);
+
+final session = await account.createEmailSession(
+    email: 'email@example.com',
+    password: 'password'
+);
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+val session = account.createEmailSession(
+    email = "email@example.com",
+    password = "password"
+)
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let session = try await account.createEmailSession(
+    email: "email@example.com",
+    password: "password"
+)
+```
+
+```graphql
+mutation {
+    accountCreateEmailSession(email: "email@example.com", password: "password") {
+        _id
+        userId
+        provider
+        expire
+    }
+}
+```
+{% /multicode %}
+
+## Explore
+Appwrite's feature rich Authentication service has much more to offer. 
+Explore the features below.
+
+| Explore                                                                 |                                                    |
+|-------------------------------------------------------------------------|----------------------------------------------------|
+| [Email and password](/docs/products/auth/email-password)                | Authenticate your users using email and passwords.  |
+| [Account verification](/docs/products/auth/email-password#verification) | Verify the email of registered users.              |
+| [Phone (SMS)](/docs/products/auth/phone-sms)                            | Authenticate users with their phone number using SMS messages. |
+| [Magic URL](/docs/products/auth/magic-url)                              | Authenticate users through a magic link sent to their email, without needing a password. |
+| [OAuth 2](/docs/products/auth/oauth2)                                   | Authenticate users by connecting to existing accounts from an OAuth provider. |
+| [Anonymous](/docs/products/auth/anonymous)                              | Create guest user sessions that can be convered to full accounts later. |
+| [User preferences](/docs/products/auth/user-management#preferences)     | Store and manage user preferences, like notification settings and themes. |
+| [Organize users](/docs/products/auth/user-management#labels)            | Organize users by adding labels or creating teams. |
+| [Server integration](/docs/products/auth/server-integrations)              | Authenticate users in backend code or act on behalf of users using the [Appwrite Server SDKs](#).  |
+| [Security](/docs/products/auth/security)                               | Learn about Appwrite's session persistence and enhanced security features. |
