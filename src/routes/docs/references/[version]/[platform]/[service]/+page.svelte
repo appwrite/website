@@ -4,10 +4,18 @@
 	import { MainFooter } from '$lib/components';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
-	import { Platform, platformMap, serviceMap, versions } from '$lib/utils/references.js';
+	import {
+		Platform,
+		platformMap,
+		preferredPlatform,
+		preferredVersion,
+		serviceMap,
+		versions,
+		type Version
+	} from '$lib/utils/references.js';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
 	import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
-	import { getContext, setContext } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	export let data;
@@ -32,6 +40,8 @@
 
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;
+		const platform = event.currentTarget.value as Platform;
+		preferredPlatform.set(platform);
 		goto(`/docs/references/${version}/${event.currentTarget.value}/${service}`, {
 			noScroll: true
 		});
@@ -39,10 +49,17 @@
 
 	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { platform, service } = $page.params;
-		goto(`/docs/references/${event.currentTarget.value}/${platform}/${service}`, {
+		const version = event.currentTarget.value as Version;
+		preferredVersion.set(version);
+		goto(`/docs/references/${version}/${platform}/${service}`, {
 			noScroll: true
 		});
 	}
+
+	onMount(() => {
+		preferredVersion.set($page.params.version as Version);
+		preferredPlatform.set($page.params.platform as Platform);
+	});
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
