@@ -59,52 +59,61 @@ export { ID } from 'appwrite';
 {% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `src/App.jsx`.
 
-```html
-<template>
-  <div>
-    <p>
-      {{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}
-    </p>
+```js
+import React, { useState } from 'react';
+import { account, ID } from './lib/appwrite';
 
-    <form>
-      <input type="email" placeholder="Email" v-model="email" />
-      <input type="password" placeholder="Password" v-model="password" />
-      <input type="text" placeholder="Name" v-model="name" />
-      <button type="button" @click="login(email, password)">Login</button>
-      <button type="button" @click="register">
-        Register
-      </button>
-      <button type="button" @click="logout">
-        Logout
-      </button>
-    </form>
-  </div>
-</template>
+const App = () => {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
-<script setup>
-import { ref } from 'vue';
-import { account, ID } from './lib/appwrite.js';
+  async function login(email, password) {
+    await account.createEmailSession(email, password);
+    setLoggedInUser(await account.get());
+  }
 
-const loggedInUser = ref(null);
-const email = ref('');
-const password = ref('');
-const name = ref('');
+  return (
+    <div>
+      <p>
+        {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
+      </p>
 
-const login = async (email, password) => {
-  await account.createEmailSession(email, password);
-  loggedInUser.value = await account.get();
+      <form>
+        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+
+        <button type="button" onClick={() => login(email, password)}>
+          Login
+        </button>
+
+        <button
+          type="button"
+          onClick={async () => {
+            await account.create(ID.unique(), email, password, name);
+            login(email, password);
+          }}
+        >
+          Register
+        </button>
+
+        <button
+          type="button"
+          onClick={async () => {
+            await account.deleteSession('current');
+            setLoggedInUser(null);
+          }}
+        >
+          Logout
+        </button>
+      </form>
+    </div>
+  );
 };
 
-const register = async () => {
-  await account.create(ID.unique(), email.value, password.value, name.value);
-  login(email.value, password.value);
-};
-
-const logout = async () => {
-  await account.deleteSession('current');
-  loggedInUser.value = null;
-};
-</script>
+export default App;
 ```
 {% /section %}
 
