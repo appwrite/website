@@ -84,7 +84,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -118,7 +118,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -153,7 +153,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -187,7 +187,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -221,7 +221,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>
@@ -255,7 +255,7 @@
 										</li>
 										<li>
 											<button class="aw-icon-button" aria-label="Appwrite on Twitter">
-												<span class="icon-twitter" aria-hidden="true" />
+												<span class="aw-icon-x" aria-hidden="true" />
 											</button>
 										</li>
 									</ul>

@@ -94,7 +94,7 @@
 														target="_blank"
 														rel="noopener noreferrer"
 													>
-														<span class="aw-icon-twitter" aria-hidden="true" />
+														<span class="aw-icon-x" aria-hidden="true" />
 													</a>
 												</li>
 											{/if}
