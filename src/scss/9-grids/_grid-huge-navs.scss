@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-huge-navs {
-  //--p-grid-huge-navs-padding-inline: #{pxToRem(32)};
+  --p-grid-huge-navs-padding-inline: #{pxToRem(32)};
   --p-grid-huge-navs-main-header-height: #{pxToRem(80)};
   --p-grid-huge-navs-secondary-header-height: #{pxToRem(116)};
   --p-grid-huge-navs-secondary-sticky-position: #{pxToRem(80 + 116)}; /* 80 + 116 + 24 (margin) */
