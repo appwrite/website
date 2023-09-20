@@ -19,7 +19,7 @@
 			link: 'https://github.com/appwrite'
 		},
 		{
-			icon: 'aw-icon-twitter',
+			icon: 'aw-icon-x',
 			link: 'https://twitter.com/appwrite'
 		},
 		{

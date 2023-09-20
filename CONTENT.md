@@ -184,3 +184,10 @@ Lorem ipsum dolor sit amet consectetur.
 ```
 {% icon icon="github" /%}
 ```
+
+#### Only Light/Dark Theme
+
+```
+{% only_dark %}I am only shown in Dark Theme{% /only_dark %}
+{% only_light %}I am only shown in Light Theme{% /only_light %}
+```
