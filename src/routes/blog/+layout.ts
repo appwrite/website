@@ -1,5 +1,6 @@
 import { base } from '$app/paths';
 import type { AuthorData } from '$markdoc/layouts/Author.svelte';
+import type { CategoryData } from '$markdoc/layouts/Category.svelte';
 import type { PostsData } from '$markdoc/layouts/Post.svelte';
 
 export function load() {
@@ -7,6 +8,9 @@ export function load() {
 		eager: true
 	});
 	const authorsGlob = import.meta.glob('./author/**/*.markdoc', {
+		eager: true
+	});
+	const categoriesGlob = import.meta.glob('./category/**/*.markdoc', {
 		eager: true
 	});
 
@@ -50,8 +54,21 @@ export function load() {
 		};
 	});
 
+	const categories = Object.entries(categoriesGlob).map(([_filepath, categoryList]) => {
+		const { frontmatter } = categoryList as {
+			frontmatter: CategoryData;
+		};
+
+		return {
+			name: frontmatter.name,
+			description: frontmatter.description,
+			href: `${base}/blog/category/${frontmatter.name.toLowerCase()}`
+		};
+	});
+
 	return {
 		posts,
-		authors
+		authors,
+		categories
 	};
 }
