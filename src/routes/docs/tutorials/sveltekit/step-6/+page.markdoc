@@ -1,16 +1,74 @@
 ---
 layout: tutorial
-title: Setup databases and collections
+title: Add database
 description: This is the description used for SEO.
 step: 6
 difficulty: easy
 readtime: 10
 ---
-Create a collection in the Appwrite console to store our ideas.
+## Create collection
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 ![Create collection screen](#TODO update me)
 
 Create a new collection with the following attributes:
-- userId: String (required)
-- title: String (required)
-- description: String
+| Field       | Type   | Required |
+|-------------|--------|----------|
+| userId      | String | Yes      |
+| title       | String | Yes      |
+| description | String | No       |
+
+## Add and remove methods
+Now that you have a collection to hold ideas, we can read and write to it from our app.
+Create a new file `src/lib/stores/ideas.js` and add the following code to it.
+
+```js
+import { writable } from "svelte/store";
+import { ID, Query } from "appwrite";
+import { databases } from "$lib/appwrite";
+
+export const IDEAS_DATABASE_ID = "6508783c5dc784d544dd"; // Replace with your database ID
+export const IDEAS_COLLECTION_ID = "65087840ab307cb06883"; // Replace with your collection ID
+
+const databases = new Databases(client);
+
+const store = writable([]);
+
+async function init() {
+  const response = await databases.listDocuments(
+    IDEAS_DATABASE_ID,
+    IDEAS_COLLECTION_ID,
+    // Use a query to how the latest ideas first
+    [Query.orderDesc("$createdAt")]
+  );
+  store.set(response.documents);
+}
+
+async function add(userId, title, description) {
+  const response = await databases.createDocument(
+    IDEAS_DATABASE_ID,
+    IDEAS_COLLECTION_ID,
+    ID.unique(),
+    {
+      userId,
+      title,
+      description,
+    }
+  );
+  store.update((ideas) => [response, ...ideas]);
+}
+
+async function remove(id) {
+  await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+  store.update((ideas) => ideas.filter((idea) => idea.$id !== id));
+}
+
+export const ideas = {
+  subscribe: store.subscribe, // Expose the store's value with $ideas
+  init,
+  add,
+  remove,
+};
+```
+
+Remember to use a store to hold data returned from Appwrite Databases, so your components can be updated when the data changes.
