@@ -2,11 +2,13 @@
 
 .#{$p}-main-header {
   --p-main-header-padding-block: #{pxToRem(20)};
+  --p-main-header-padding-inline: #{pxToRem(32)};
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
   position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
-  padding-block:var(--p-main-header-padding-block);
+  padding-block: var(--p-main-header-padding-block);
+  padding-inline: var(--p-main-header-padding-inline);
   border-block-end: solid 1px var(--p-main-header-border-color);
   &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
   &-row { display:flex; }
