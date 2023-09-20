@@ -28,15 +28,9 @@
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
     
     &-parent {
-      padding-bottom: 16px;
-      border-block-end: 1px solid hsl(var(--aw-color-smooth));
-      display: flex;
-      align-items: baseline;
-
-      &-title {
-        width: 100%;
-        text-align: center;
-      }
+      display:flex; align-items:baseline;
+      padding-block-end:pxToRem(16); border-block-end:pxToRem(1) solid hsl(var(--aw-color-smooth));
+      &-title { inline-size:100%; text-align:center; }
     }
   }
   &-scroll {
