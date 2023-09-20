@@ -1,59 +1,82 @@
 ---
 layout: tutorial
-title: Create and delete documents
+title: Create ideas page
 description: This is the description used for SEO.
 step: 7
 difficulty: easy
 readtime: 10
 ---
 
-Create a new file `src/lib/stores/ideas.js` and add the following code to it.
+Using the `ideas` store, we can build a page to submit and view ideas.
 
-```js
-import { writable } from "svelte/store";
-import { ID, Query } from "appwrite";
-import { databases } from "$lib/appwrite";
+Overwrite the contents of `src/routes/+page.svelte` with the following code.
 
-export const IDEAS_DATABASE_ID = "6508783c5dc784d544dd"; // Replace with your database ID
-export const IDEAS_COLLECTION_ID = "65087840ab307cb06883"; // Replace with your collection ID
+```html
+<script>
+  import { user } from "$lib/stores/user";
+  import { ideas } from "$lib/stores/ideas";
 
-const databases = new Databases(client);
+  let title = "";
+  let description = "";
+</script>
 
-const store = writable([]);
+{#if $user}
+  <section>
+    <h2>Submit Idea</h2>
+    <form>
+      <input type="text" placeholder="Title" bind:value={title} />
+      <textarea placeholder="Description" bind:value={description} />
+      <button
+        type="button"
+        on:click={async () => {
+          ideas.add($user.$id, title, description);
+          title = "";
+          description = "";
+        }}>Submit</button
+      >
+    </form>
+  </section>
+{:else}
+  <section><p>Please login to submit an idea.</p></section>
+{/if}
+<section>
+  <h2>Latest Ideas</h2>
+  <ul>
+    {#each $ideas as idea}
+      <li>
+        <strong>{idea.title}</strong>
+        <p>{idea.description}</p>
+        {#if $user && idea.userId === $user.$id}
+          <button type="button" on:click={() => ideas.remove(idea.$id)}
+            >Remove</button
+          >
+        {/if}
+      </li>
+    {/each}
+  </ul>
+</section>
 
-async function init() {
-  const response = await databases.listDocuments(
-    IDEAS_DATABASE_ID,
-    IDEAS_COLLECTION_ID,
-    // Use a query to how the latest ideas first
-    [Query.orderDesc("$createdAt")]
-  );
-  store.set(response.documents);
-}
+<style>
+  section {
+    margin-bottom: 3rem;
+  }
+  form {
+    display: grid;
+    gap: 0.25rem;
+  }
 
-async function add(userId, title, description) {
-  const response = await databases.createDocument(
-    IDEAS_DATABASE_ID,
-    IDEAS_COLLECTION_ID,
-    ID.unique(),
-    {
-      userId,
-      title,
-      description,
-    }
-  );
-  store.update((ideas) => [response, ...ideas]);
-}
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 
-async function remove(id) {
-  await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
-  store.update((ideas) => ideas.filter((idea) => idea.$id !== id));
-}
-
-export const ideas = {
-  subscribe: store.subscribe, // Expose the store's value with $ideas
-  init,
-  add,
-  remove,
-};
+  li {
+    border-radius: 0.25em;
+    background-color: antiquewhite;
+    box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, 0.1);
+    min-width: 20%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+</style>
 ```
