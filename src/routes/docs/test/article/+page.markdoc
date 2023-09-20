@@ -150,6 +150,7 @@ Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh eg
 
 ## Sub title
 
+{% multicode %}
 ```js
 const sdk = require('node-appwrite');
 
