@@ -12,45 +12,32 @@
 </script>
 
 <script lang="ts">
-	import { base } from '$app/paths';
-	import { FooterNav, MainFooter, Newsletter, PreFooter } from '$lib/components';
+	import { FooterNav, MainFooter, Newsletter } from '$lib/components';
 	import { Main } from '$lib/layouts';
+	import { getContext } from 'svelte';
 	import type { AuthorData } from './Author.svelte';
+	import type { CategoryData } from './Category.svelte';
 
 	export let title: string;
 	export let description: string;
-	export let difficulty: string;
 	export let author: string;
 	export let date: string;
 	export let timeToRead: string;
 	export let cover: string;
+	export let category: string;
 
-	let authors: AuthorData | undefined;
+	const authors = getContext<AuthorData[]>('authors');
+	const authorData = authors.find((a) => a.name.includes(author));
+	const categoriesList = getContext<CategoryData[]>('categories');
+	const categories = getValidCategories();
+	const posts = getContext<PostsData[]>('posts');
 
-	function fetchAuthorData() {
-		const authorsGlob = import.meta.glob('$routes/blog/author/**/*.markdoc', {
-			eager: true
-		});
-		const data = Object.entries(authorsGlob).map(([_filepath, authorList]) => {
-			const { frontmatter } = authorList as {
-				frontmatter: AuthorData;
-			};
-
-			return {
-				name: frontmatter.name,
-				role: frontmatter.role,
-				avatar: frontmatter.avatar,
-				bio: frontmatter.bio,
-				twitter: frontmatter.twitter,
-				linkedin: frontmatter.linkedin,
-				github: frontmatter.github,
-				href: `${base}/blog/author/${frontmatter.name.toLowerCase()}`
-			};
-		});
-
-		authors = data.find((a) => a.name.includes(author));
+	function getValidCategories() {
+		if (!category) return undefined;
+		const cats = category.split(',');
+		console.log(categoriesList, cats);
+		return categoriesList.filter((c) => cats.includes(c.name.toLocaleLowerCase()));
 	}
-	fetchAuthorData();
 </script>
 
 <Main>
@@ -79,28 +66,28 @@
 										{description}
 									</p>
 								{/if}
-								{#if authors}
+								{#if authorData}
 									<div class="aw-author u-margin-block-start-16">
-										<a href={authors.href} class="u-flex u-cross-center u-gap-8">
-											{#if authors.avatar}
+										<a href={authorData.href} class="u-flex u-cross-center u-gap-8">
+											{#if authorData.avatar}
 												<img
 													class="aw-author-image"
-													src={authors.avatar}
+													src={authorData.avatar}
 													width="44"
 													height="44"
 													alt=""
 												/>
 											{/if}
 											<div class="u-flex-vertical">
-												<h4 class="aw-sub-body-400 aw-u-color-text-primary">{authors.name}</h4>
-												<p class="aw-caption-400">{authors.role}</p>
+												<h4 class="aw-sub-body-400 aw-u-color-text-primary">{authorData.name}</h4>
+												<p class="aw-caption-400">{authorData.role}</p>
 											</div>
 										</a>
 										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
-											{#if authors.twitter}
+											{#if authorData.twitter}
 												<li>
 													<a
-														href={authors.twitter}
+														href={authorData.twitter}
 														class="aw-icon-button"
 														aria-label="Author twitter"
 														target="_blank"
@@ -110,10 +97,10 @@
 													</a>
 												</li>
 											{/if}
-											{#if authors.linkedin}
+											{#if authorData.linkedin}
 												<li>
 													<a
-														href={authors.linkedin}
+														href={authorData.linkedin}
 														class="aw-icon-button"
 														aria-label="Author LinkedIn"
 														target="_blank"
@@ -123,10 +110,10 @@
 													</a>
 												</li>
 											{/if}
-											{#if authors.github}
+											{#if authorData.github}
 												<li>
 													<a
-														href={authors.github}
+														href={authorData.github}
 														class="aw-icon-button"
 														aria-label="Author GitHub"
 														target="_blank"
@@ -150,11 +137,64 @@
 								<slot />
 							</div>
 						</article>
+						{#if categories?.length}
+							<div class="u-flex u-gap-16">
+								{#each categories as cat}
+									<a href={cat.href} class="aw-tag">{cat.name}</a>
+								{/each}
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div class="aw-big-padding-section-level-1 aw-u-sep-block-start">
+		<div class="aw-big-padding-section-level-2">
+			<div class="aw-container">
+				<h3 class="aw-label aw-u-color-text-primary">Read next</h3>
+				<section class="u-margin-block-start-32">
+					<ul class="aw-grid-articles">
+						{#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
+							{@const author = authors.find((a) => a.name.includes(post.author))}
+							<li>
+								<a class="aw-grid-articles-item" href="/blog">
+									<div class="aw-grid-articles-item-image">
+										<img src={post.cover} class="aw-image-ratio-4/3" alt={post.title} />
+									</div>
+									<div class="aw-grid-articles-item-content">
+										<h4 class="aw-label aw-u-color-text-primary">
+											{post.title}
+										</h4>
+										<div class="aw-author">
+											<div class="u-flex u-cross-center u-gap-8">
+												<img
+													class="aw-author-image"
+													src={author?.avatar}
+													width="24"
+													height="24"
+													alt={author?.name}
+												/>
+												<div class="aw-author-info">
+													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author?.name}</h4>
+													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
+														<li>{post.date.toLocaleDateString()}</li>
+														<li>{post.timeToRead} min</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
+
 	<div
 		class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
 	>
