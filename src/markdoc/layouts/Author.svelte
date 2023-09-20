@@ -12,9 +12,9 @@
 </script>
 
 <script lang="ts">
-	import { base } from '$app/paths';
-	import { FooterNav, MainFooter, Newsletter, PreFooter } from '$lib/components';
+	import { FooterNav, MainFooter } from '$lib/components';
 	import { Main } from '$lib/layouts';
+	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 
 	export let name: string;
@@ -25,34 +25,7 @@
 	export let linkedin: string;
 	export let github: string;
 
-	let posts: PostsData[] | undefined;
-
-	function fetchPostsData() {
-		const postsGlob = import.meta.glob('$routes/blog/post/**/*.markdoc', {
-			eager: true
-		});
-		const data = Object.entries(postsGlob).map(([filepath, postList]) => {
-			const { frontmatter } = postList as {
-				frontmatter: PostsData;
-			};
-			const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
-			const postName = slug.slice(slug.lastIndexOf('/') + 1);
-
-			return {
-				title: frontmatter.title,
-				description: frontmatter.description,
-				date: new Date(frontmatter.date),
-				cover: frontmatter.cover,
-				timeToRead: frontmatter.timeToRead,
-				author: frontmatter.author,
-				category: frontmatter.category,
-				href: `${base}/blog/post/${postName}`
-			};
-		});
-
-		posts = data.filter((post) => post.author.includes(name));
-	}
-	fetchPostsData();
+	const posts = getContext<PostsData[]>('posts');
 </script>
 
 <Main>
@@ -275,44 +248,42 @@
 
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
-						{#if posts}
-							{#each posts as post}
-								<li>
-									<a class="aw-grid-articles-item" href={post.href}>
-										<div class="aw-grid-articles-item-image">
-											<img
-												src={post.cover ?? '/images/blog/placeholder.png'}
-												class="aw-image-ratio-4/3"
-												alt=""
-											/>
-										</div>
-										<div class="aw-grid-articles-item-content">
-											<h4 class="aw-label aw-u-color-text-primary">
-												{post.title}
-											</h4>
-											<div class="aw-author">
-												<div class="u-flex u-cross-center u-gap-8">
-													<img
-														class="aw-author-image"
-														src={avatar}
-														width="24"
-														height="24"
-														alt={name}
-													/>
-													<div class="aw-author-info">
-														<h4 class="aw-sub-body-400 aw-u-color-text-primary">{name}</h4>
-														<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-															<li>{post.date.toLocaleDateString()}</li>
-															<li>{post.timeToRead} min</li>
-														</ul>
-													</div>
+						{#each posts as post}
+							<li>
+								<a class="aw-grid-articles-item" href={post.href}>
+									<div class="aw-grid-articles-item-image">
+										<img
+											src={post.cover ?? '/images/blog/placeholder.png'}
+											class="aw-image-ratio-4/3"
+											alt=""
+										/>
+									</div>
+									<div class="aw-grid-articles-item-content">
+										<h4 class="aw-label aw-u-color-text-primary">
+											{post.title}
+										</h4>
+										<div class="aw-author">
+											<div class="u-flex u-cross-center u-gap-8">
+												<img
+													class="aw-author-image"
+													src={avatar}
+													width="24"
+													height="24"
+													alt={name}
+												/>
+												<div class="aw-author-info">
+													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{name}</h4>
+													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
+														<li>{post.date.toLocaleDateString()}</li>
+														<li>{post.timeToRead} min</li>
+													</ul>
 												</div>
 											</div>
 										</div>
-									</a>
-								</li>
-							{/each}
-						{/if}
+									</div>
+								</a>
+							</li>
+						{/each}
 					</ul>
 				</div>
 
