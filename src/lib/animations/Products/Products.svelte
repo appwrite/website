@@ -166,6 +166,8 @@
 			]
 		}
 	};
+
+	const anyify = (x: unknown) => x as any;
 </script>
 
 <div
@@ -304,13 +306,13 @@
 							<Storage.Phone />
 						{:else if active.product === 'functions'}
 							<Functions.Phone />
-						{:else if active.product === 'realtime' || active.product === 'post'}
+						{:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
 							<Realtime.Phone />
 						{/if}
 					</div>
 				</div>
 
-				{#if active.product === 'post'}
+				{#if !['auth', 'databases', 'storage', 'functions', 'realtime'].includes(anyify(active.product))}
 					<Post />
 				{/if}
 			</div>
