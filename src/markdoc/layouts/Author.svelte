@@ -81,10 +81,10 @@
 
 		<div class="aw-big-padding-section-level-2 u-position-relative">
 			<div class="aw-container">
-				<div class="aw-author-section">
+				<div class="aw-author-section u-block">
 					{#if avatar}
 						<div class="aw-author-section-image">
-							<img src={avatar} width="112" height="112" alt={name} />
+							<img class="u-block" src={avatar} width="112" height="112" alt={name} />
 						</div>
 					{/if}
 					<h1 class="aw-title aw-u-color-text-primary">{name}</h1>
