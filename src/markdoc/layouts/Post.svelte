@@ -35,8 +35,9 @@
 	function getValidCategories() {
 		if (!category) return undefined;
 		const cats = category.split(',');
-		console.log(categoriesList, cats);
-		return categoriesList.filter((c) => cats.includes(c.name.toLocaleLowerCase()));
+		return categoriesList.filter((c) =>
+			cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
+		);
 	}
 </script>
 
