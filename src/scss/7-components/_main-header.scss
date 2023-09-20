@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-main-header {
-  --p-main-header-padding-block: #{pxToRem(20)};
+  --p-main-header-padding-block: #{pxToRem(15)};
   --p-main-header-padding-inline: #{pxToRem(32)};
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
