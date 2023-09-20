@@ -76,7 +76,7 @@
 
   display:flex; align-items:center; gap:pxToRem(4);
   padding-inline:pxToRem(16); padding-block:pxToRem(12);
-  border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
+  border-radius:pxToRem(8); font-size:pxToRem(16); line-height:1;
   white-space:nowrap;
 
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
