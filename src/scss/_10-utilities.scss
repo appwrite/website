@@ -119,6 +119,7 @@
 .#{$p}-u-cross-child-end { align-self:end!important;  }
 
 .#{$p}-u-media-cover { object-fit:cover; }
+.#{$p}-u-media-ratio-16-9 { aspect-ratio:16 / 9; object-fit:cover; }
 
 .#{$p}-u-list-inline-dot-sep {
   >li:nth-child(n + 2)::before { content:"·"; margin-inline-start:pxToRem(8); }
