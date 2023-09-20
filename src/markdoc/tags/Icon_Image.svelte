@@ -1,5 +1,6 @@
 <script lang="ts">
-	export let icon: string;
+	export let src: string;
+	export let alt: string;
 	export let size: string = 's';
 
 	const sizes: Record<string, string> = {
@@ -10,4 +11,4 @@
 	};
 </script>
 
-<span class={`icon-${icon}`} style:font-size={sizes[size]} />
+<img {src} {alt} loading="lazy" style:width={sizes[size]} style:vertical-align="middle" />
