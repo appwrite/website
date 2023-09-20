@@ -43,7 +43,7 @@
 </script>
 
 <div class="wrapper">
-	<div class="inner-phone theme-light">
+	<div data-theme-ignore class="inner-phone theme-light">
 		<div class="header">
 			<div class="row">
 				<p class="title">My Team's tasks</p>

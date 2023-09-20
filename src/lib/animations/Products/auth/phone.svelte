@@ -9,7 +9,7 @@
 	$: controlsEnabled = $state.showControls && Object.values($state.controls).some(Boolean);
 </script>
 
-<div class="inner-phone theme-light">
+<div data-theme-ignore class="inner-phone theme-light">
 	<p class="title">Create an Account</p>
 	<p class="subtitle">Please enter your details</p>
 	<div class="inputs">
