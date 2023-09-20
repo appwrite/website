@@ -1,12 +1,35 @@
-<script lang="ts">
-	import { Main } from '$lib/layouts';
-	import { MainFooter, FooterNav } from '$lib/components';
+<script context="module" lang="ts">
+	export type AuthorData = {
+		name: string;
+		role: string;
+		avatar: string;
+		bio: string;
+		twitter: string;
+		linkedin: string;
+		github: string;
+		href: string;
+	};
+</script>
 
-	export let data;
+<script lang="ts">
+	import { FooterNav, MainFooter } from '$lib/components';
+	import { Main } from '$lib/layouts';
+	import { getContext } from 'svelte';
+	import type { PostsData } from './Post.svelte';
+
+	export let name: string;
+	export let role: string;
+	export let avatar: string;
+	export let bio: string;
+	export let twitter: string;
+	export let linkedin: string;
+	export let github: string;
+
+	const posts = getContext<PostsData[]>('posts');
 </script>
 
 <Main>
-	<div class="aw-big-padding-section-level-1 u-position-relative">
+	<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
 		<div
 			class="u-position-absolute"
 			style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -58,76 +81,72 @@
 
 		<div class="aw-big-padding-section-level-2 u-position-relative">
 			<div class="aw-container">
-				<h1 class="aw-display aw-u-color-text-primary">Blog</h1>
-				<article class="aw-feature-article u-margin-block-start-48">
-					<div class="aw-feature-article-image">
-						<img src="/images/blog/placeholder.png" class="aw-image-ratio-4/3" alt="cover" />
-					</div>
-					<div class="aw-feature-article-content">
-						<header class="aw-feature-article-header">
-							<ul class="aw-metadata aw-caption-400 aw-is-only-mobile">
-								<li>[data]</li>
-								<li>[time-to-read] min</li>
-							</ul>
-							<h2 class="aw-title aw-u-color-text-primary">Lorem ipsum dolor sit amet</h2>
-						</header>
-						<p class="aw-sub-body-400">
-							Lorem ipsum dolor sit amet consectetur. Mauris eu sit gravida dignissim semper
-							euismod. Imperdiet eget rhoncus eget purus.
-						</p>
-						<div class="aw-author">
-							<div class="u-flex u-cross-center u-gap-8">
-								<img
-									class="aw-author-image"
-									src="/images/blog/placeholder.png"
-									width="24"
-									height="24"
-									alt=""
-								/>
-								<div class="aw-author-info">
-									<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
-									<p class="aw-caption-400 u-hide">Author’s role or bio</p>
-									<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-										<li>[data]</li>
-										<li>[time-to-read] min</li>
-									</ul>
-								</div>
-							</div>
-							<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label="Author twitter"
-										target="_blank"
-									>
-										<span class="aw-icon-x" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label="Author LinkedIn"
-										target="_blank"
-									>
-										<span class="aw-icon-linkedin" aria-hidden="true" />
-									</a>
-								</li>
-							</ul>
+				<div class="aw-author-section u-block">
+					{#if avatar}
+						<div class="aw-author-section-image">
+							<img class="u-block" src={avatar} width="112" height="112" alt={name} />
 						</div>
-						<button class="aw-button is-secondary u-margin-block-start-auto">
-							<span>Read article</span>
-						</button>
-					</div>
-				</article>
+					{/if}
+					<h1 class="aw-title aw-u-color-text-primary">{name}</h1>
+					{#if role}
+						<div class="aw-label u-margin-block-start-8">{role}</div>
+					{/if}
+					{#if bio}
+						<p class="aw-author-section-info aw-description">
+							{bio}
+						</p>
+					{/if}
+					<ul class="u-flex u-main-center u-gap-8">
+						{#if github}
+							<li>
+								<a
+									href={github}
+									class="aw-icon-button"
+									aria-label="Author GitHub"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span class="aw-icon-github" aria-hidden="true" />
+								</a>
+							</li>
+						{/if}
+						{#if twitter}
+							<li>
+								<a
+									href={twitter}
+									class="aw-icon-button"
+									aria-label="Author twitter"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span class="aw-icon-x" aria-hidden="true" />
+								</a>
+							</li>
+						{/if}
+						{#if linkedin}
+							<li>
+								<a
+									href={linkedin}
+									class="aw-icon-button"
+									aria-label="Author LinkedIn"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span class="aw-icon-linkedin" aria-hidden="true" />
+								</a>
+							</li>
+						{/if}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
+
 	<div class="aw-big-padding-section-level-1">
 		<div class="aw-big-padding-section-level-2">
 			<div class="aw-container">
 				<h2 class="aw-title aw-u-color-text-primary">Articles</h2>
+
 				<!-- <div class="aw-is-only-mobile u-margin-block-start-32">
 					<label class="u-block aw-select is-colored" for="articles">
 						<select id="articles">
@@ -139,8 +158,8 @@
 						</select>
 						<span class="icon-cheveron-down" aria-hidden="true" />
 					</label>
-				</div>
-				<div class="aw-is-not-mobile">
+				</div> -->
+				<!--<div class="aw-is-not-mobile">
 					<div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-24">
 						<ul
 							class="aw-secondary-tabs is-transparent"
@@ -219,8 +238,8 @@
 									<span class="aw-main-body-500">Changelog</span>
 								</button>
 							</li>
-						</ul> 
-						 <div class="aw-input-text-search-wrapper">
+						</ul> -->
+				<!-- <div class="aw-input-text-search-wrapper">
 							<span class="icon-search" aria-hidden="true" />
 							<input class="aw-input-text aw-u-block-size-48" type="search" placeholder="Search" />
 						</div> 
@@ -229,14 +248,15 @@
 
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
-						{#each data.posts as post}
-							{@const author = data.authors.find(
-								(author) => author.name.toLowerCase() === post.author.toLowerCase()
-							)}
+						{#each posts as post}
 							<li>
 								<a class="aw-grid-articles-item" href={post.href}>
 									<div class="aw-grid-articles-item-image">
-										<img src={post.cover} class="aw-image-ratio-4/3" alt="" />
+										<img
+											src={post.cover ?? '/images/blog/placeholder.png'}
+											class="aw-image-ratio-4/3"
+											alt=""
+										/>
 									</div>
 									<div class="aw-grid-articles-item-content">
 										<h4 class="aw-label aw-u-color-text-primary">
@@ -246,13 +266,13 @@
 											<div class="u-flex u-cross-center u-gap-8">
 												<img
 													class="aw-author-image"
-													src={author?.avatar}
+													src={avatar}
 													width="24"
 													height="24"
-													alt=""
+													alt={name}
 												/>
 												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author?.name}</h4>
+													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{name}</h4>
 													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
 														<li>{post.date.toLocaleDateString()}</li>
 														<li>{post.timeToRead} min</li>
@@ -278,11 +298,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="aw-big-padding-section-level-2">
+		<div
+			class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+		>
 			<div class="aw-container">
 				<FooterNav />
 				<MainFooter />
 			</div>
 		</div>
-	</div>
-</Main>
+	</div></Main
+>
