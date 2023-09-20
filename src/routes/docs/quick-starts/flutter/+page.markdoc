@@ -6,15 +6,7 @@ difficulty: beginner
 readtime: 3
 ---
 
----
-layout: article
-title: Start with Apple
-description: Learn how to quickly integrate Appwrite products and services into your iOS, iPadOS, macOS, watchOS, tvOS, or visionOS project.
-difficulty: beginner
-readtime: 3
----
-
-Learn to setup your first Apple project powered by Appwrite.
+Learn to setup your first Flutter project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -65,6 +57,7 @@ You have to change your iOS Deployment Target in Xcode to be iOS >= 11 to be abl
 2. To view your app's settings, select the Runner project in the XCode project navigator. Then, in the main view sidebar, select the **Runner target**.
 3. Select the **General** tab.
 4. In **Deployment Info** > **Target**, select iOS 11.0 or above
+{% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
 Add your app's **name** and *package name*, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
@@ -106,13 +99,32 @@ You should get the application ID needed to add in the received error message.
 Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
 
 The Appwrite SDK uses `ASWebAuthenticationSession` on macOS 10.15+ to allow OAuth authentication. You have to change your macOS **Deployment Target** in XCode to be macOS >= 10.15 to be able to build your app for macOS.
-{% /tabs %}
+
+In order to capture the Appwrite OAuth 2 callback url, the following URL scheme needs to added to your `Info.plist`.
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+<dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>io.appwrite</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+        <string>appwrite-callback-[PROJECT_ID]</string>
+    </array>
+</dict>
+</array>
+```
+{% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
 
 For **Windows**, add your app *name* and *package name*. 
 Your package name is generally the **name** in your [pubspec.yaml](https://github.com/appwrite/playground-for-flutter/blob/master/pubspec.yaml#L1) file. 
 If you cannot find the correct package name, run the application in Windows, and make any request with proper exception handling. You should get the application ID needed to add in the received error message.
+{% /tabsitem %}
 
 {% /tabs %}
 
@@ -125,7 +137,7 @@ You can skip optional steps.
 Create a Flutter project.
 
 ```sh
-flutter create my_app
+flutter create my_app && cd my_app
 ```
 {% /section %}
 
@@ -133,7 +145,7 @@ flutter create my_app
 Install the Appwrite SDK for Flutter.
 
 ```sh
-pub get appwrite
+flutter pub add appwrite
 ```
 
 {% /section %}
@@ -143,25 +155,145 @@ Find your project's ID in the **Settings** page.
 
 ![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
 
-Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `lib/appwrite.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
 ```dart
 import 'package:appwrite/appwrite.dart';
 
-Client client = Client();
-client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('650209298acac4ee1bb6')
+class Appwrite {
+  static final Appwrite instance = Appwrite._internal();
+
+  late final Client client;
+  late final Account account;
+  factory Appwrite._() {
+    return instance;
+  }
+
+  Appwrite._internal() {
+    client = Client()
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("<YOUR_PROJECT_ID>");
+    account = Account(client);
+  }
+}
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `src/App.jsx`.
+import 'package:appwrite/appwrite.dart';
 
-```swift
-TODO
+```dart
+import 'package:flutter/material.dart';
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart' as models;
+
+import 'package:my_app/appwrite.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('My App')),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: MyForm(),
+        ),
+      ),
+    );
+  }
+}
+
+class MyForm extends StatefulWidget {
+  @override
+  MyFormState createState() {
+    return MyFormState();
+  }
+}
+
+class MyFormState extends State<MyForm> {
+  models.User? loggedInUser;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+
+  Future<void> login(String email, String password) async {
+    await Appwrite.instance.account
+        .createEmailSession(email: email, password: password);
+    final user = await Appwrite.instance.account.get();
+    setState(() {
+      loggedInUser = user;
+    });
+  }
+
+  Future<void> register(String email, String password, String name) async {
+    await Appwrite.instance.account.create(
+        userId: ID.unique(), email: email, password: password, name: name);
+    await login(email, password);
+  }
+
+  Future<void> logout() async {
+    await Appwrite.instance.account.deleteSession(sessionId: 'current');
+    setState(() {
+      loggedInUser = null;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(loggedInUser != null
+            ? 'Logged in as ${loggedInUser!.name}'
+            : 'Not logged in'),
+        SizedBox(height: 16.0),
+        TextField(
+          controller: emailController,
+          decoration: InputDecoration(labelText: 'Email'),
+        ),
+        SizedBox(height: 16.0),
+        TextField(
+          controller: passwordController,
+          decoration: InputDecoration(labelText: 'Password'),
+          obscureText: true,
+        ),
+        SizedBox(height: 16.0),
+        TextField(
+          controller: nameController,
+          decoration: InputDecoration(labelText: 'Name'),
+        ),
+        SizedBox(height: 16.0),
+        ElevatedButton(
+          onPressed: () {
+            login(emailController.text, passwordController.text);
+          },
+          child: Text('Login'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            register(emailController.text, passwordController.text,
+                nameController.text);
+          },
+          child: Text('Register'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            logout();
+          },
+          child: Text('Logout'),
+        ),
+      ],
+    );
+  }
+}
 ```
 {% /section %}
 
 {% section #step-6 step=6 title="Checkout what you've built" %}
-Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+Run your project with `flutter run` and select a browser, platform, or emulator to run your project.
 {% /section %}
