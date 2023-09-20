@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
+	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import { Platform, platformMap, serviceMap, versions } from '$lib/utils/references.js';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
@@ -28,11 +29,6 @@
 			}
 		}
 	});
-
-	function handleRefClick() {
-		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
-		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
-	}
 
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;
@@ -202,14 +198,14 @@
 				</section>
 			{/each}
 		</div>
-		<aside class="aw-references-menu">
-			<button class="aw-icon-button" id="refOpen" on:click={handleRefClick}>
+		<aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
+			<button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
 				<span class="icon-menu-alt-4" aria-hidden="true" />
 			</button>
 			<div class="aw-references-menu-content">
 				<div class="u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
 					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-					<button class="aw-icon-button" id="refClose" on:click={handleRefClick}>
+					<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
 						<span class="icon-x" aria-hidden="true" />
 					</button>
 				</div>
