@@ -133,7 +133,7 @@ function getParameters(
 	return parameters;
 }
 
-function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject {
+export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject {
 	const schema = api.components?.schemas?.[id] as OpenAPIV3.SchemaObject;
 	if (schema) {
 		return schema;
@@ -148,6 +148,14 @@ async function getSpec(version: string, platform: string) {
 		isServer ? 'server' : 'client'
 	}.json`;
 	return specs[target]();
+}
+
+export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
+	const spec = await getSpec(version, platform);
+	const parser = new SwaggerParser();
+	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
+
+	return api;
 }
 
 export async function getService(
@@ -167,9 +175,7 @@ export async function getService(
 	const isAndroidJava = platform === Platform.ClientAndroidJava;
 	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin;
 	const isAndroid = isAndroidJava || isAndroidKotlin;
-	const spec = await getSpec(version, platform);
-	const parser = new SwaggerParser();
-	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
+	const api = await getApi(version, platform);
 	const tag = api.tags?.find((n) => n.name === service);
 
 	const data: Awaited<ReturnType<typeof getService>> = {

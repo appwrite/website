@@ -1,113 +1,11 @@
 <script lang="ts">
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
-	import Sidebar, { type NavTree } from '$lib/layouts/Sidebar.svelte';
-
-	const navigation: NavTree = [
-		{
-			items: [
-				{
-					label: 'Quick Start',
-					href: '/docs/quick-start',
-					icon: 'icon-play'
-				},
-				{
-					label: 'Tutorials',
-					href: '/docs/tutorials',
-					icon: 'icon-book-open'
-				},
-				{
-					label: 'SDKs',
-					href: '#',
-					icon: 'icon-cog'
-				},
-				{
-					label: 'Command Line',
-					href: '#',
-					icon: 'icon-terminal'
-				},
-				{
-					label: 'References',
-					href: '/docs/references',
-					icon: 'icon-document'
-				}
-			]
-		},
-		{
-			label: 'Products',
-			items: [
-				{
-					label: 'Auth',
-					href: '/docs/products/auth',
-					icon: 'icon-user-group'
-				},
-				{
-					label: 'Databases',
-					href: '/docs/products/databases',
-					icon: 'icon-database'
-				},
-				{
-					label: 'Functions',
-					href: '#',
-					icon: 'icon-lightning-bolt'
-				},
-				{
-					label: 'Storage',
-					href: '#',
-					icon: 'icon-folder'
-				}
-			]
-		},
-		{
-			label: 'APIS',
-			items: [
-				{
-					label: 'Realtime',
-					href: '#',
-					icon: 'icon-clock'
-				},
-				{
-					label: 'REST',
-					href: '#',
-					icon: 'icon-play'
-				},
-				{
-					label: 'GraphQL',
-					href: '#',
-					icon: 'icon-play'
-				}
-			]
-		},
-		{
-			label: 'Advanced',
-			items: [
-				{
-					label: 'Integration',
-					href: '#',
-					icon: 'icon-puzzle'
-				},
-				{
-					label: 'Platform',
-					href: '#',
-					icon: 'icon-play'
-				},
-				{
-					label: 'Migrations',
-					href: '#',
-					icon: 'icon-refresh'
-				},
-				{
-					label: 'Self-hosting',
-					href: '#',
-					icon: 'icon-server'
-				}
-			]
-		}
-	];
+	import Sidebar from './Sidebar.svelte';
 </script>
 
 <Docs variant="default">
-	<Sidebar {navigation} />
+	<Sidebar />
 	<div class="u-position-absolute" style="margin-block-start:-36%; margin-inline-start:0;">
 		<svg
 			style="width:1466.685px; height:804.009px; transform:rotate(150.348deg); fill: var(--appwrite-pink, #FD366E); opacity: 0.6499999761581421; filter: blur(127.51104736328125px);"
@@ -561,7 +459,7 @@
 				<ul class="aw-grid-row-4">
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Self-hosted</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Self hosted</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -577,7 +475,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Superbase</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Supabase</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -585,7 +483,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">NHost</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Nhost</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
