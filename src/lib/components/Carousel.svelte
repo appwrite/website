@@ -1,37 +1,40 @@
 <script lang="ts">
 	let carousel: HTMLElement;
 
-	const baseScroll = 400;
+	const gap = 32;
+	const numberOfItems = 3;
 	let scroll = 0;
 
-	function calculateScrollAmount() {
-		let childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth;
-		Math.floor(baseScroll % childSize);
-		Math.floor(baseScroll % childSize);
-		return 0;
+	function calculateScrollAmount(prev = false) {
+		const direction = prev ? -1 : 1;
+		const size = scroll || carousel?.clientWidth;
+		if (!scroll) {
+			scroll = size;
+		}
+		const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+		const overflow = size % childSize;
+		const amount = numberOfItems * childSize - overflow * direction;
+		scroll += amount * direction;
+		return amount * direction;
 	}
 
 	function next() {
-		const scrollAmount = calculateScrollAmount();
-		scroll += scrollAmount;
 		carousel.scrollBy({
-			left: scrollAmount,
+			left: calculateScrollAmount(),
 			behavior: 'smooth'
 		});
 		logMe();
 	}
 	function prev() {
-		const scrollAmount = calculateScrollAmount();
-		scroll -= scrollAmount;
 		carousel.scrollBy({
-			left: -scrollAmount,
+			left: calculateScrollAmount(true),
 			behavior: 'smooth'
 		});
 		logMe();
 	}
 
 	function logMe() {
-		console.log(carousel?.clientWidth, carousel?.scrollWidth, carousel?.offsetWidth);
+		// console.log(carousel?.clientWidth, carousel?.scrollWidth, carousel?.offsetWidth);
 	}
 </script>
 
@@ -46,11 +49,9 @@
 		</button>
 	</div>
 </div>
-<div class=" wrapper">
-	<ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel" bind:this={carousel}>
-		<slot />
-	</ul>
-</div>
+<ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel" bind:this={carousel}>
+	<slot />
+</ul>
 
 <style lang="scss">
 	.carousel {
