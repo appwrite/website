@@ -5,6 +5,11 @@
 		{
 			items: [
 				{
+					label: 'Home',
+					href: '/docs',
+					icon: 'icon-home'
+				},
+				{
 					label: 'Quick Start',
 					href: '/docs/quick-starts',
 					icon: 'icon-play'
