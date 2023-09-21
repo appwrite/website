@@ -50,7 +50,7 @@
     --p-icon-button-border-color: var(--p-icon-button-border-color-focus);
     --p-icon-button-shadow-color: var(--p-icon-button-shadow-color-focus);
   }
-  &:disabled { opacity:0.4; }
+  &:disabled { opacity:0.4; cursor:initial; }
 
   #{$theme-dark} & {
     @include dark-mode();
