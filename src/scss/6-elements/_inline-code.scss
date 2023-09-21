@@ -7,5 +7,5 @@
   color: hsl(var(--p-inline-code-text-color));
   background-color: hsl(var(--p-inline-code-bg-color));
 
-  display:inline-flex; padding-inline:pxToRem(4); padding-block:pxToRem(1); border-radius:pxToRem(4); font-family:var(--aw-font-family-aeonik-fono);
+  display:inline-flex; padding-inline:pxToRem(4); padding-block:pxToRem(1); border-radius:pxToRem(4); font-family:monospace;
 }
