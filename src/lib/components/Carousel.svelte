@@ -23,18 +23,12 @@
 			left: calculateScrollAmount(),
 			behavior: 'smooth'
 		});
-		logMe();
 	}
 	function prev() {
 		carousel.scrollBy({
 			left: calculateScrollAmount(true),
 			behavior: 'smooth'
 		});
-		logMe();
-	}
-
-	function logMe() {
-		// console.log(carousel?.clientWidth, carousel?.scrollWidth, carousel?.offsetWidth);
 	}
 </script>
 
