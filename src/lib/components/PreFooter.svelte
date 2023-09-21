@@ -9,9 +9,9 @@
 		<h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">
 			Start building with Appwrite today
 		</h2>
-		<button class="aw-button is-transparent aw-u-cross-child-center">
+		<a href="https://cloud.appwrite.io" class="aw-button is-transparent aw-u-cross-child-center">
 			<span class="text">Get Started</span>
-		</button>
+		</a>
 	</section>
 	<section
 		class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"

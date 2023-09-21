@@ -121,9 +121,9 @@
 		</div>
 		<div class="aw-mobile-header-end">
 			{#if !isMobileNavOpen}
-				<button class="aw-button">
+				<a href="https://cloud.appwrite.io" class="aw-button">
 					<span class="text">Get Started</span>
-				</button>
+				</a>
 			{/if}
 			<button
 				class="aw-button is-text"
@@ -178,15 +178,15 @@
 						</nav>
 					</div>
 					<div class="aw-main-header-end">
-						<button class="aw-button is-text">
+						<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 							<span aria-hidden="true" class="aw-icon-star" />
 							<span class="text">Star on GitHub</span>
 							<span class="aw-inline-tag aw-sub-body-400">33.2k</span>
-						</button>
-						<button class="aw-button is-secondary">Sign Up</button>
-						<button class="aw-button">
+						</a>
+						<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary">Sign up</a>
+						<a href="https://cloud.appwrite.io" class="aw-button">
 							<span class="text">Get Started</span>
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
