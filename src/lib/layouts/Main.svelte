@@ -181,7 +181,7 @@
 						<button class="aw-button is-text">
 							<span aria-hidden="true" class="aw-icon-star" />
 							<span class="text">Star on GitHub</span>
-							<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
+							<span class="aw-inline-tag aw-sub-body-400">33.2k</span>
 						</button>
 						<button class="aw-button is-secondary">Sign Up</button>
 						<button class="aw-button">
