@@ -1,5 +1,9 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
+
 	export let ordered: boolean;
+
+	setContext('no-paragraph', true);
 </script>
 
 <svelte:element

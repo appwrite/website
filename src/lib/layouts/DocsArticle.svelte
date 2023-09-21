@@ -40,7 +40,7 @@
 						aria-label="previous page"
 					>
 						<span
-							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary"
+							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
 							aria-hidden="true"
 						/>
 					</button>
@@ -110,9 +110,13 @@
 					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
 				</div>
 				<ol class="aw-references-menu-list">
-					{#each toc as parent}
-						<li class="aw-references-menu-item">
-							<a href={parent.href} class="aw-references-menu-link" class:is-selected={parent.selected}>
+					{#each toc as parent (parent.href)}
+						<li class="aw-references-menu-item" class:article-scroll-indicator={parent.selected}>
+							<a
+								href={parent.href}
+								class="aw-references-menu-link"
+								class:is-selected={parent.selected}
+							>
 								{#if parent?.step}
 									<span class="aw-numeric-badge">{parent.step}</span>
 								{/if}
@@ -144,3 +148,18 @@
 		</aside>
 	</article>
 </main>
+
+<style lang="scss">
+	.article-scroll-indicator {
+		position: relative;
+		&::before {
+			position: absolute;
+			content: '';
+			top: 0;
+			left: -1.5rem;
+			height: 100%;
+			width: 2px;
+			background-color: hsl(var(--p-references-menu-link-color-text));
+		}
+	}
+</style>

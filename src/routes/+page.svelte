@@ -53,7 +53,7 @@
 						<span class="aw-icon-star" aria-hidden="true" />
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep" />
-						<span class="aw-caption-400">Pricing Plans announced</span>
+						<span class="aw-caption-400">Intorudcing a *brand* new Appwrite</span>
 						<span class="aw-icon-arrow-right" aria-hidden="true" />
 					</button>
 					<div class="aw-hero is-horizontal">
@@ -64,8 +64,8 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where developers can build any
-								application at any scale, using the language they want.
+								Appwrite is the open-source development platform where you can build any
+								application at any scale, using the coding languages and tools you want.
 							</p>
 							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
 								<span class="text">Get Started</span>
@@ -230,7 +230,7 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
@@ -246,7 +246,7 @@
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href=".">@ultrices lacus</a
+									href="#">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
@@ -254,7 +254,7 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
@@ -276,12 +276,12 @@
 							<DeveloperCard
 								name="Eldad Fux"
 								tag="@eldadfux"
-								icon="twitter"
+								icon="x"
 								avatarSrc="/images/avatars/eldad.png"
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href=".">@ultrices lacus</a
+									href="#">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>

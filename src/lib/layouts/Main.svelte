@@ -76,24 +76,24 @@
 
 	let navLinks: NavLink[] = [
 		{
-			label: 'Community',
-			href: '/community'
-		},
-		{
 			label: 'Docs',
 			href: '/docs'
+		},
+		{
+			label: 'Community',
+			href: '/community'
 		},
 		{
 			label: 'Blog',
 			href: '/blog'
 		},
 		{
-			label: 'Pricing',
-			href: '/pricing'
+			label: 'Changelog',
+			href: '#'
 		},
 		{
-			label: 'Roadmap',
-			href: '/roadmap'
+			label: 'Pricing',
+			href: '/pricing'
 		}
 	];
 
@@ -113,7 +113,7 @@
 	})();
 </script>
 
-<div id="app" class="u-position-relative">
+<div class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
 		class:is-transparent={browser && !isMobileNavOpen}
@@ -169,6 +169,7 @@
 				</button>
 			</div>
 		</div>
+		-->
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">

@@ -1,0 +1,104 @@
+<script lang="ts" context="module">
+	export type NavLink = {
+		label: string;
+		href: string;
+		icon?: string;
+	};
+
+	export type NavGroup = {
+		label?: string;
+		items: Array<NavLink>;
+	};
+
+	export type NavParent = {
+		label: string;
+		href: string;
+	};
+
+	export type NavTree = Array<NavGroup | NavLink>;
+</script>
+
+<script lang="ts">
+	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { layoutState, toggleSidenav } from './Docs.svelte';
+	import SidebarNavButton from './SidebarNavButton.svelte';
+
+	export let expandable = false;
+	export let navigation: NavTree;
+	export let parent: NavParent | undefined = undefined;
+
+	function isNavLink(item: NavLink | NavGroup): item is NavLink {
+		return 'href' in item;
+	}
+</script>
+
+<nav class="aw-side-nav" class:is-transparent={!expandable}>
+	<div class="aw-side-nav-wrapper">
+		<button class="aw-input-text aw-is-not-desktop">
+			<span class="icon-search" />
+			<span class="text">Search in docs</span>
+		</button>
+		<div class="aw-side-nav-scroll">
+			{#if parent}
+				<section class="aw-side-nav-wrapper-parent">
+					<a href={parent.href}>
+						<span class="icon-cheveron-left" aria-hidden="true" />
+					</a>
+					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
+				</section>
+			{/if}
+			{#each navigation as navGroup}
+				<section>
+					{#if isNavLink(navGroup)}
+						{#if expandable && !$layoutState.showSidenav}
+							<Tooltip placement="right">
+								<SidebarNavButton groupItem={navGroup} />
+								<svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+							</Tooltip>
+						{:else}
+							<SidebarNavButton groupItem={navGroup} />
+						{/if}
+					{:else}
+						{#if navGroup.label}
+							<h4 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h4>
+						{/if}
+						<ul>
+							{#each navGroup.items as groupItem}
+								<li>
+									{#if expandable && !$layoutState.showSidenav}
+										<Tooltip placement="right">
+											<SidebarNavButton {groupItem} />
+											<svelte:fragment slot="tooltip">{groupItem.label}</svelte:fragment>
+										</Tooltip>
+									{:else}
+										<SidebarNavButton {groupItem} />
+									{/if}
+								</li>
+							{/each}
+						</ul>
+					{/if}
+				</section>
+			{/each}
+		</div>
+		{#if expandable}
+			<button
+				on:click={toggleSidenav}
+				class="aw-icon-button u-margin-inline-start-auto"
+				aria-label="toggle nav"
+			>
+				<span class="icon-cheveron-right" aria-hidden="true" />
+			</button>
+		{/if}
+		<div class="aw-side-nav-mobile-footer-buttons">
+			<button class="aw-button u-width-full-line">
+				<span class="text">Go to console</span>
+			</button>
+
+			<button class="aw-button is-text u-width-full-line">
+				<span class="aw-icon-star" aria-hidden="true" />
+				<span class="text">Star on GitHub</span>
+				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
+			</button>
+		</div>
+	</div>
+</nav>

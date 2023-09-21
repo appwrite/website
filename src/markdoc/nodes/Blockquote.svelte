@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { setContext } from "svelte";
 
     setContext("no-paragraph", true);

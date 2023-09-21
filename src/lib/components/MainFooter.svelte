@@ -19,17 +19,17 @@
 			link: 'https://github.com/appwrite'
 		},
 		{
-			icon: 'aw-icon-twitter',
+			icon: 'aw-icon-x',
 			link: 'https://twitter.com/appwrite'
 		},
 		{
 			icon: 'aw-icon-linkedin',
-			link: '.'
+			link: 'https://www.linkedin.com/company/appwrite'
 		},
 		{
 			icon: 'aw-icon-youtube',
 			label: 'YouTube',
-			link: '.'
+			link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
 		}
 	];
 
@@ -80,13 +80,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href=".">Support</a>
+					<a href="/support">Support</a>
 				</li>
 				<li>
-					<a href=".">Status</a>
+					<a href="https://status.appwrite.io" target="_blank">Status</a>
 				</li>
 				<li>
-					<a href=".">Changelog</a>
+					<a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a>
 				</li>
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">

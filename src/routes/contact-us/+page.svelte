@@ -30,63 +30,73 @@
 				<div class="aw-container">
 					<div class="aw-grid-1-1-opt-2 u-gap-32">
 
-					<div class="">
-						<div class="aw-u-max-width-380 aw-u-max-inline-size-none-mobile">
-							<section class="u-flex-vertical aw-u-gap-20">
-								<h1 class="aw-display aw-u-color-text-primary">Contact Us</h1>
-								<p class="aw-description aw-u-padding-block-end-40">We’d love your input: questions, feature requests, bugs or compliments.</p>
-							</section>
-							<section class="u-flex-vertical u-gap-12 aw-u-padding-block-start-40 aw-u-sep-block-start">
-								<h2 class="aw-label aw-u-color-text-primary">Follow us</h2>
-								<ul class="u-flex u-gap-8">
-									<li>
-										<a href="https://appwrite.io/discord" class="aw-icon-button" aria-label="Appwrite on aw-icon-discord" target="_blank">
-											<span class="aw-icon-discord" aria-hidden="true"></span>
-										</a>
+						<div class="">
+							<div class="aw-u-max-width-380 aw-u-max-inline-size-none-mobile">
+								<section class="u-flex-vertical aw-u-gap-20">
+									<h1 class="aw-display aw-u-color-text-primary">Contact Us</h1>
+									<p class="aw-description aw-u-padding-block-end-40">We’d love your input: questions, feature requests, bugs or compliments.</p>
+								</section>
+								<section class="u-flex-vertical u-gap-12 aw-u-padding-block-start-40 aw-u-sep-block-start">
+									<h2 class="aw-label aw-u-color-text-primary">Follow us</h2>
+									<ul class="u-flex u-gap-8">
+										<li>
+											<a href="https://appwrite.io/discord" class="aw-icon-button" aria-label="Appwrite on aw-icon-discord" target="_blank">
+												<span class="aw-icon-discord" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="https://github.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-github" target="_blank">
+												<span class="aw-icon-github" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-x" target="_blank">
+												<span class="aw-icon-x" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="https://linkedin.com/company/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
+												<span class="aw-icon-linkedin" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="https://youtube.com/c/appwrite?sub_confirmation=1" class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
+												<span class="aw-icon-youtube" aria-hidden="true"></span>
+											</a>
+										</li>
+									</ul>
+								</section>
+								<div class="aw-is-only-mobile aw-u-margin-block-start-40 aw-u-padding-block-start-40 aw-u-sep-block-start"></div>
+							</div>
+						</div>
+
+						<div class="u-flex-vertical u-gap-16">
+							<div class="u-flex u-main-end">
+								<ul class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-580  aw-u-max-inline-size-none-mobile">
+									<li class="aw-form-item">
+										<input class="aw-input-text" type="text" placeholder="Name" aria-label="Name">
 									</li>
-									<li>
-										<a href="https://github.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-github" target="_blank">
-											<span class="aw-icon-github" aria-hidden="true"></span>
-										</a>
+									<li class="aw-form-item">
+										<input class="aw-input-text" type="email" placeholder="Email address" aria-label="Email address">
 									</li>
-									<li>
-										<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-twitter" target="_blank">
-											<span class="aw-icon-twitter" aria-hidden="true"></span>
-										</a>
+									<li class="aw-form-item is-column-span-2">
+										<input class="aw-input-text" type="text" placeholder="Subject" aria-label="Subject">
 									</li>
-									<li>
-										<a href="." class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
-											<span class="aw-icon-linkedin" aria-hidden="true"></span>
-										</a>
-									</li>
-									<li>
-										<a href="." class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
-											<span class="aw-icon-youtube" aria-hidden="true"></span>
-										</a>
+									<li class="aw-form-item is-column-span-2">
+										<textarea class="aw-input-text" placeholder="Your message" aria-label="Message"></textarea>
 									</li>
 								</ul>
-							</section>
-							<div class="aw-is-only-mobile aw-u-margin-block-start-40 aw-u-padding-block-start-40 aw-u-sep-block-start"></div>
+							</div>
+							<div class="u-flex u-gap-16 u-main-space-between">
+								<p class="aw-caption-400 aw-u-max-width-380">
+									This form is protected by reCAPTCHA, and the Google <a class="aw-link" href="/privacy" target="_blank">Privacy Policy</a> and <a class="aw-link" href="/terms" target="_blank">Terms of Service</a> apply.
+								</p>
+								<button class="aw-button u-cross-child-center">
+									<span>Submit</span>
+								</button>
+							</div>
 						</div>
 					</div>
-
-					<div class="u-flex u-main-end">
-						<ul class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-480  aw-u-max-inline-size-none-mobile">
-							<li class="aw-form-item">
-								<input class="aw-input-text" type="text" placeholder="Name" aria-label="Name">
-							</li>
-							<li class="aw-form-item">
-								<input class="aw-input-text" type="email" placeholder="Email address" aria-label="Email address">
-							</li>
-							<li class="aw-form-item is-column-span-2">
-								<input class="aw-input-text" type="text" placeholder="Subject" aria-label="Subject">
-							</li>
-							<li class="aw-form-item is-column-span-2">
-								<textarea class="aw-input-text" placeholder="Your message" aria-label="Message"></textarea>
-							</li>
-						</ul>
-					</div>
-				</div>
 				</div>
 			</div>
 		</div>

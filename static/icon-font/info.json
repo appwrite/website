@@ -197,10 +197,16 @@
     "className": "aw-icon-twitter",
     "unicode": "&#59937;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea22",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59938;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea23",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59939;"
   }
 }

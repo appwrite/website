@@ -27,7 +27,17 @@
     padding:pxToRem(16); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
     
-    
+    &-parent {
+      padding-bottom: 16px;
+      border-block-end: 1px solid hsl(var(--aw-color-smooth));
+      display: flex;
+      align-items: baseline;
+
+      &-title {
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
   &-scroll {
     flex:1; overflow-y:scroll; overflow-x:hidden;
