@@ -198,7 +198,7 @@
 				{#if scrollInfo.percentage > 0}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
-					<h2 class="aw-display aw-u-color-text-primary" transition:fly={{ y: 16, delay: 250 }}>
+					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
 						Your backend, minus the hassle
 					</h2>
 					<p
@@ -231,7 +231,7 @@
 								<li data-active={isActive ? '' : undefined}>
 									<h3>
 										<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
-										<span class="aw-label aw-u-color-text-primary">{copy.title}</span>
+										<span class="aw-label">{copy.title}</span>
 									</h3>
 									{#if isActive}
 										<div transition:slide>
@@ -440,6 +440,12 @@
 					}
 
 					transition: 100ms ease;
+
+					&[data-active] {
+						h3 {
+							color: hsl(var(--aw-color-primary));
+						}
+					}
 				}
 
 				h3 {
