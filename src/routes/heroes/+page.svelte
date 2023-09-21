@@ -400,14 +400,14 @@
 								<img src="/images/icons/gradients/discussion.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Channel access</h3>
 								<p class="aw-info-boxes-content">
-									Access to internal channel with Appwrite’s Engineering and DevRel team
+									Access to internal channel with Appwrite’s Engineering and DevRel teams
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/community.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">In-person gatherings</h3>
 								<p class="aw-info-boxes-content">
-									Invite to an in-person gathering (for top contributors)
+									Top contributors get invited to an in-person gathering with the Appwrite team
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
@@ -706,11 +706,9 @@
 							Have you been actively providing value for the Appwrite community? Apply now to join
 							our hero program! Applications are open every three months.
 						</p>
-						<button
-							class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20"
-						>
+						<a href="https://7nxwryuitoy.typeform.com/heroes-apply" target="_blank" class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20">
 							Become a Hero
-						</button>
+						</a>
 					</div>
 				</div>
 				<div class="aw-big-padding-section-level-2 u-position-relative">
