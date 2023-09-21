@@ -151,7 +151,10 @@
     }
 
     &:where(:hover, :active):where(:not(#{$disabled})) {
-      box-shadow:none; backdrop-filter:blur(7.5px); color:hsl(var(--aw-color-greyscale-900));
+      box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+
+      -webkit-backdrop-filter: blur(pxToRem(8));
+      backdrop-filter: blur(pxToRem(8));
       #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
     }
     &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
@@ -166,7 +169,9 @@
     #{$theme-light} & {
       color:hsl(var(--aw-color-greyscale-700));
       &:where(:hover, :active):where(:not(#{$disabled})) {
-        box-shadow:none; backdrop-filter:blur(7.5px); color:hsl(var(--aw-color-greyscale-900));
+        box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+        -webkit-backdrop-filter:blur(pxToRem(8));
+        backdrop-filter:blur(pxToRem(8));
         #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
       }
       &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }

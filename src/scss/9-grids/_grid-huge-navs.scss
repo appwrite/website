@@ -11,7 +11,7 @@
 
   max-inline-size:var(--container-size-huge); margin-inline:auto;
   .#{$p}-mobile-header    { grid-area:header; block-size:var(--p-grid-huge-navs-main-header-height); }
-  .#{$p}-main-header      { grid-area:header; block-size:var(--p-grid-huge-navs-main-header-height); padding-inline:var(--p-grid-huge-navs-padding-inline); }
+  .#{$p}-main-header      { grid-area:header; block-size:var(--p-grid-huge-navs-main-header-height); /*padding-inline:var(--p-grid-huge-navs-padding-inline);*/ }
   .#{$p}-article-header   { grid-area:a-header; }
   .#{$p}-side-nav         { grid-area:side-a; }
   .#{$p}-article          { grid-area:main;   }
