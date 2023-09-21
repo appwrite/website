@@ -29,7 +29,7 @@
 	export let variant: DocsLayoutVariant = 'default';
 
 	const variantClasses: Record<DocsLayoutVariant, string> = {
-		default: 'aw-grid-side-nav aw-container',
+		default: 'aw-grid-side-nav',
 		expanded: 'aw-grid-huge-navs',
 		'two-side-navs': 'aw-grid-two-side-navs'
 	};
