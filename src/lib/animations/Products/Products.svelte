@@ -490,7 +490,7 @@
 
 							transform: translateY(-50%);
 
-							background: url('./images/icons/colored/check.svg') no-repeat;
+							background: url('/images/icons/colored/check.svg') no-repeat;
 						}
 					}
 				}
