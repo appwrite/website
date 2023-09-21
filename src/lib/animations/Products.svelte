@@ -91,7 +91,7 @@
 								<input type="password" id="password" placeholder="Enter Password" />
 							</fieldset>
 						</div>
-						<button class="sign-up">Sign Up</button>
+						<a href="https://cloud.appwrite.io/register" class="sign-up">Sign up</a>
 					</div>
 				</Phone>
 			</div>
