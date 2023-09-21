@@ -6,6 +6,7 @@
   max-inline-size: var(--p-container-size);
   padding-inline: pxToRem(32);
   margin-inline: auto;
+  @media #{$break1} { padding-inline: pxToRem(20); }
 }
 
 .#{$p}-main-section {
