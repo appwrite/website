@@ -90,11 +90,6 @@
 			label: 'Advanced',
 			items: [
 				{
-					label: 'Integration',
-					href: '/docs/advanced/integration',
-					icon: 'icon-puzzle'
-				},
-				{
 					label: 'Platform',
 					href: '/docs/advanced/platform',
 					icon: 'icon-play'
