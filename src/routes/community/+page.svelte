@@ -422,10 +422,7 @@
 							<span>View all projects</span>
 						</button>
 					</div>
-				</div>
-				<div class="aw-big-padding-section-level-2">
-					<div class="aw-container">
-						<ul class="aw-grid-3-desktop-1-mobile">
+					<ul class="aw-grid-3-desktop-1-mobile aw-u-margin-block-start-64">
 							<li>
 								<a class="aw-card is-white" href="/" style="--card-padding:0.5rem;">
 									<div class="u-padding-12">
@@ -464,7 +461,6 @@
 							</li>
 
 						</ul>
-					</div>
 				</div>
 			</div>
 		</div>
