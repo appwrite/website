@@ -86,7 +86,8 @@ const execute = async () => {
 	await Promise.all([
 		safeAnimate(phone, { x: 0, y: 0, width: '660px' }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { opacity: 0 }, { duration: 0.5 })?.finished,
-		safeAnimate(graphBox, { opacity: 0, x: 0, y: 0 }, { duration: 0 })?.finished,
+		safeAnimate(graphBox, { opacity: 0, x: 0, y: 0, visibility: 'visible' }, { duration: 0 })
+			?.finished,
 		safeAnimate(pd, { opacity: 1, y: 0 }, { duration: 0.5 })?.finished
 	]);
 

@@ -199,7 +199,7 @@
 		padding-block-start: 15rem;
 
 		opacity: 0;
-		animation: fadeIn 0.5s ease-in-out forwards;
+		animation: fadeIn 0.75s ease-in-out 1.5s forwards;
 
 		&::before {
 			content: '';
