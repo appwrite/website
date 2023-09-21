@@ -14,16 +14,16 @@
 				{
 					label: 'Overview',
 					href: '/docs/products/functions'
-				}
+				},
+				{
+					label: 'Quick Start',
+					href: '/docs/products/functions/quick-start'
+				},
 			]
 		},
 		{
 			label: 'Guides',
 			items: [
-				{
-					label: 'Quick Start',
-					href: '/docs/products/functions/quick-start'
-				},
 				{
 					label: 'Development',
 					href: '/docs/products/functions/development'

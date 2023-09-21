@@ -14,16 +14,16 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
-Then, under **Add a platform**, add a **Apple app**. The **Bundle ID** can be `example.my-app`. 
+Then, under **Add a platform**, add a **Android app** with the **Name** `My Application` and **Package name** `com.example.myapplication`. 
 
 ![Add a platform](/images/docs/databases/quick-start/add-platform.png)
 
 You can skip optional steps.
 
 {% /section %}
-{% section #step-2 step=2 title="Create XCode project" %}
-Open XCode and select **Create a new XCode project** > select **App** > create an app named `my-app` under the **Organization Identifier** `example`.
-This creates a new app with the **Bundle ID** `example.my-app`.
+{% section #step-2 step=2 title="Create Android project" %}
+Open Android Studios and click **New Project**, select **Empty Activity**. 
+**Name** the project `My Application` with **Package Name** `com.example.myapplication`.
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}

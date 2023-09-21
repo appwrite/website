@@ -14,14 +14,18 @@
 				{
 					label: 'Overview',
 					href: '/docs/products/auth'
+				},
+				{
+					label: 'Quick start',
+					href: '/docs/products/auth/quick-start'
 				}
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Journeys',
 			items: [
 				{
-					label: 'Email and Password',
+					label: 'Email and password',
 					href: '/docs/products/auth/email-password'
 				},
 				{
@@ -39,13 +43,18 @@
 				{
 					label: 'Anonymous',
 					href: '/docs/products/auth/anonymous'
-				},
+				}
+			]
+		},
+		{
+			label: 'Concepts',
+			items: [
 				{
-					label: 'User Management',
+					label: 'User management',
 					href: '/docs/products/auth/user-management'
 				},
 				{
-					label: 'Server Integrations',
+					label: 'Server integrations',
 					href: '/docs/products/auth/server-integrations'
 				},
 				{
@@ -53,7 +62,7 @@
 					href: '/docs/products/auth/security'
 				}
 			]
-		}
+		},
 	];
 </script>
 
