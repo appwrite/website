@@ -22,8 +22,8 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nextjs">Next.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/flutter">Flutter</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nextjs">Next.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/vuejs">Vue.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/sveltekit">SvelteKit</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/apple">Apple</a></li>
