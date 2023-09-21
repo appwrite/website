@@ -428,7 +428,7 @@
 		gap: 0.5rem;
 
 		border-radius: 0.625rem;
-		border: 1px solid #e3e3e6;
+		border: 1px solid #ededf0;
 		background: var(--color-bw-white, #fff);
 
 		.text {
