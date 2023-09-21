@@ -2,7 +2,7 @@
 
 .#{$p}-top-banner {
   display:flex; justify-content:center;
-  padding-block:pxToRem(9); padding-inline:pxToRem(12);
+  padding-block:pxToRem(5); padding-inline:pxToRem(12);
   background: linear-gradient(94deg, rgba(253, 54, 110, 0.00) 0%, rgba(253, 54, 110, 0.50) 50.82%, rgba(253, 54, 110, 0.00) 100%);
   &-content { line-height:pxToRem(20); transition:var(--transition); }
   &-button { position:absolute; inset-inline-end:pxToRem(12); }

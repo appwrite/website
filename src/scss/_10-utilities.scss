@@ -3,6 +3,7 @@
 .#{$p}-u-hide-mobile  { @media #{$break1}{ display:none!important; } }
 .#{$p}-u-opacity-90                 { opacity:0.9!important; }
 
+.#{$p}-u-flex-vertical                {display:flex!important; flex-direction:column!important; }
 .#{$p}-u-flex-vertical-reverse-mobile { @media #{$break1} { flex-direction:column-reverse!important; }  }
 
 
