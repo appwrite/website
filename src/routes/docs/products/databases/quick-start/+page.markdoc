@@ -139,7 +139,7 @@ The response should look similar to this.
 
 {% /section %}
 
-{% section #query-documents step=4 title="Retrieve documents" %}
+{% section #list-documents step=4 title="List documents" %}
 To read and query data from your collection, use the `listDocuments` endpoint.
 
 Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<COLLECTION_ID>` with their respective IDs.

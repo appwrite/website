@@ -45,6 +45,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@apidevtools/json-schema-ref-parser": "^11.1.0",
 		"@apidevtools/swagger-parser": "^10.1.0",
 		"@appwrite.io/pink": "0.0.7-sl10.0",
 		"@appwrite.io/pink-icons": "0.0.7-sl10.0",

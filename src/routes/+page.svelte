@@ -78,12 +78,13 @@
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-0" style="--container-size:78.75rem">
 					<div class="aw-media-container">
-						<img
-							class="u-block"
-							src="/images/pages/homepage/dashboard.svg"
-							alt="console dashboard"
-							style="aspect-ratio: 16 / 9"
-						/>
+						<div style="aspect-ratio: 1244 / 717">
+							<img
+									class="u-block"
+									src="/images/pages/homepage/dashboard.svg"
+									alt="console dashboard"
+							/>
+						</div>
 					</div>
 				</section>
 			</div>
@@ -96,40 +97,40 @@
 					</h3>
 					<ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
 						<li>
-							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" />
+							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" width="42" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" />
+							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" width="136" height="17" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" />
+							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" width="133" height="32" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/intel.svg" alt="intel" />
+							<img src="/images/logos/trusted-by/intel.svg" alt="intel" width="76" height="30" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" />
+							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" width="74" height="30" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines" />
+							<img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines" width="147" height="24" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte." />
+							<img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte." width="103" height="20" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/gm.svg" alt="GM" />
+							<img src="/images/logos/trusted-by/gm.svg" alt="GM" width="48" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/ey.svg" alt="EY" />
+							<img src="/images/logos/trusted-by/ey.svg" alt="EY" width="46" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" />
+							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" width="119" height="34" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" />
+							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" width="110" height="37" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON" />
+							<img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON" width="127" height="32" />
 						</li>
 					</ul>
 				</div>
@@ -218,11 +219,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div
-							class="aw-display aw-u-color-text-primary"
-							style:z-index="1000"
-							style:position="relative"
-						>
+						<div class="aw-display aw-u-color-text-primary">
 							Loved by developers
 						</div>
 					</div>

@@ -26,7 +26,7 @@
     display:block;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter:blur(pxToRem(12)); backdrop-filter:blur(pxToRem(12));
     border-radius: var(--p-card-border-radius);
   }
   &.is-transparent {
@@ -34,8 +34,9 @@
     padding: var(--p-card-padding);
     border:solid pxToRem(1) rgba(255 255 255 / 0.12);
     border-radius:pxToRem(16);
-    backdrop-filter:blur(100px);
     background: linear-gradient(136deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 30.91%, rgba(255, 255, 255, 0.00) 100%, rgba(255, 255, 255, 0.01) 100%);
+    -webkit-backdrop-filter:blur(pxToRem(100));
+    backdrop-filter:blur(pxToRem(100));
     &-pink {
       background: linear-gradient(180deg, rgba(253, 54, 110, 0.04) 61.28%, rgba(253, 54, 110, 0.00) 100%);
       border-color:hsl(var(--aw-color-pink-500) / 0.5);
@@ -43,12 +44,20 @@
   }
   &.is-full-color {
     --card-bg-color: var(--aw-color-white);
-    padding:pxToRem(20); border-radius:pxToRem(16);
-    background-color:hsl(var(--card-bg-color)) / 0.9; backdrop-filter:blur(pxToRem(8));
+    padding: var(--p-card-padding, #{pxToRem(20)});
+     border-radius:pxToRem(16);
+    background-color:hsl(var(--card-bg-color) / 0.9);
     border:solid pxToRem(1) hsl(var(--aw-color-subtle));
+
+    -webkit-backdrop-filter:blur(pxToRem(8));
+    backdrop-filter:blur(pxToRem(8));
 
     #{$theme-dark} & {
       --card-bg-color: var(--aw-color-greyscale-850);
+    }
+
+    #{$theme-light} & {
+      --card-bg-color: var(--aw-color-white);
     }
   }
 
