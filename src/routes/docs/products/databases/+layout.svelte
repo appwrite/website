@@ -14,16 +14,16 @@
 				{
 					label: 'Overview',
 					href: '/docs/products/databases'
-				}
-			]
-		},
-		{
-			label: 'Guides',
-			items: [
+				},
 				{
 					label: 'Quick Start',
 					href: '/docs/products/databases/quick-start'
 				},
+			]
+		},
+		{
+			label: 'Concepts',
+			items: [
 				{
 					label: 'Databases',
 					href: '/docs/products/databases/databases'
@@ -37,6 +37,19 @@
 					href: '/docs/products/databases/documents'
 				},
 				{
+					label: 'Permissions',
+					href: '/docs/products/databases/permissions'
+				},
+				{
+					label: 'Relationships',
+					href: '/docs/products/databases/relationships'
+				}
+			]
+		},
+		{
+			label: 'Journeys',
+			items: [
+				{
 					label: 'Queries',
 					href: '/docs/products/databases/queries'
 				},
@@ -47,14 +60,6 @@
 				{
 					label: 'Pagination',
 					href: '/docs/products/databases/pagination'
-				},
-				{
-					label: 'Permissions',
-					href: '/docs/products/databases/permissions'
-				},
-				{
-					label: 'Relationships',
-					href: '/docs/products/databases/relationships'
 				}
 			]
 		}
