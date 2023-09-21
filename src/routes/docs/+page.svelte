@@ -46,15 +46,15 @@
 		<img src="/images/temp/bg-side.png" width="647" alt="" />
 	</div>
 
-	<main class="aw-main-section">
+	<main class="aw-main-section u-position-relative">
 		<section class="aw-hero is-align-start">
-			<h1 class="aw-display u-max-width-600">Run on any provider or through Appwrite Cloud</h1>
+			<h1 class="aw-display aw-u-color-text-primary u-max-width-600">Run on any provider or through Appwrite Cloud</h1>
 			<p class="aw-description u-max-width-600">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">
-			<h2 class="aw-title u-max-width-600">Get started quickly with your preferred technology</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Get started quickly with your preferred technology</h2>
 			<p class="aw-description u-max-width-600">
 				Start building with your preferred web, mobile, and native frameworks by following a quick
 				start guide.
@@ -202,7 +202,7 @@
 			</button>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
-			<h2 class="aw-title u-max-width-600">Show me some code</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
 			<p class="aw-description u-max-width-600">
 				Talk is cheap, where's the code? If you'd rather see some examples, we've got you covered.
 				Clone a template to get started.
@@ -343,7 +343,7 @@
 			</div>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
-			<h2 class="aw-title u-max-width-600">Show me some code</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
 			<p class="aw-description u-max-width-600">
 				All the core functionalities you need with a scalable and flexible API. Explore Appwrite's
 				product offerings.
@@ -353,7 +353,7 @@
 					<li>
 						<div class="aw-card is-full-color">
 							<img src="/images/icons/illustrated/auth.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Auth</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
 							</p>
@@ -362,7 +362,7 @@
 					<li>
 						<div class="aw-card is-full-color">
 							<img src="/images/icons/illustrated/databases.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Databases</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Databases</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store your application and users' data.
 							</p>
@@ -371,7 +371,7 @@
 					<li>
 						<div class="aw-card is-full-color">
 							<img src="/images/icons/illustrated/functions.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Functions</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Functions</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Extend and customize your server’s functionality.
 							</p>
@@ -380,7 +380,7 @@
 					<li>
 						<div class="aw-card is-full-color">
 							<img src="/images/icons/illustrated/storage.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Storage</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Storage</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store images, videos, documents, and files.
 							</p>
@@ -389,7 +389,7 @@
 					<li>
 						<div class="aw-card is-full-color">
 							<img src="/images/icons/illustrated/realtime.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Realtime</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Realtime</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Listen to any events on the server-side in realtime.
 							</p>
@@ -398,7 +398,7 @@
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
 							<img src="/images/icons/illustrated/messaging.svg" alt="" />
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Messaging</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Messaging</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
 							</p>
@@ -408,7 +408,7 @@
 			</div>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
-			<h2 class="aw-title u-max-width-600">Explore ways to integrate</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Explore ways to integrate</h2>
 			<p class="aw-description u-max-width-600">
 				Choose how you integrate with Appwrite. Explore references for the Appwrite SDK, REST API,
 				GraphQL API, or Realtime API.
@@ -417,7 +417,7 @@
 				<ul class="aw-grid-row-2">
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">SDKs</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">SDKs</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
 							</p>
@@ -425,7 +425,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">REST API</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">REST API</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
 							</p>
@@ -433,7 +433,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">GraphQL</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">GraphQL</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
 							</p>
@@ -441,7 +441,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Realtime</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Realtime</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
 							</p>
@@ -451,7 +451,7 @@
 			</div>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
-			<h2 class="aw-title u-max-width-600">Migrate to Appwrite</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Migrate to Appwrite</h2>
 			<p class="aw-description u-max-width-600">
 				Lorem ipsum dolor sit amet consectetur. Orci netus est urna dictum eleifend diam.
 			</p>
@@ -459,7 +459,7 @@
 				<ul class="aw-grid-row-4">
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Self hosted</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Self hosted</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -467,7 +467,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Firebase</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Firebase</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -475,7 +475,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Supabase</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Supabase</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -483,7 +483,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<h4 class="aw-sub-body-500 u-margin-block-start-8">Nhost</h4>
+							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Nhost</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
