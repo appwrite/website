@@ -152,7 +152,7 @@
 								</p>
 								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
 									<span>Contact us</span>
-								</button>
+								</a>
 							</article>
 						</li>
 						<li>
@@ -168,7 +168,7 @@
 								</p>
 								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
 									<span>Contact us</span>
-								</button>
+								</a>
 							</article>
 						</li>
 					</ul>
