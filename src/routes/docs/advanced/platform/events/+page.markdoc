@@ -22,7 +22,7 @@ You can find a list of events for Storage, Databases, Functions, and Authenticat
 {% partial file="functions-events.md" /%}
 
 
-## Known limitations {% known-limitations %}
+## Known limitations {% #known-limitations %}
 
 When events fire, only existing subscriptions for that event will receive the update. If your client or server side integrations lose network connection temporarily, delivery of the event is not guaranteed.
 
