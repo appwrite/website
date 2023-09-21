@@ -142,13 +142,17 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 	throw new Error("Schema doesn't exist");
 }
 
-const specs = import.meta.glob('$appwrite/app/config/specs/open-api3*-(client|server).json', {
-	as: 'raw'
-});
+const specs = import.meta.glob(
+	'$appwrite/app/config/specs/open-api3*-(client|server|console).json',
+	{
+		as: 'raw'
+	}
+);
 async function getSpec(version: string, platform: string) {
+	const isClient = platform.startsWith('client-');
 	const isServer = platform.startsWith('server-');
 	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
-		isServer ? 'server' : 'client'
+		isServer ? 'server' : isClient ? 'client' : 'console'
 	}.json`;
 	return specs[target]();
 }

@@ -34,7 +34,7 @@ type Model = {
 
 export const load: PageServerLoad = async ({ params }) => {
 	const version = params.version === 'cloud' ? '1.4.x' : params.version;
-	const api = await getApi(version, 'server-nodejs');
+	const api = await getApi(version, 'console-web');
 	const schema = getSchema(params.model, api);
 	const props = Object.entries(schema.properties ?? {});
 	const model: Model = {
