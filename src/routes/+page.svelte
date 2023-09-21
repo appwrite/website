@@ -7,6 +7,7 @@
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
 	import Products from '$lib/animations/Products/Products.svelte';
+	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
 </script>
 
 <!-- <div
@@ -135,6 +136,7 @@
 		</div>
 
 		<Products />
+		<ProductsMobile />
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
