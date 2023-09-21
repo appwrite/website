@@ -3,7 +3,8 @@ import {
 	animate as motionAnimate,
 	type ElementOrSelector,
 	type MotionKeyframesDefinition,
-	type AnimationOptionsWithOverrides
+	type AnimationOptionsWithOverrides,
+	animate
 } from 'motion';
 
 export function animation(
@@ -33,6 +34,18 @@ export function animation(
 }
 
 export type Animation = ReturnType<typeof animation>;
+
+export const safeAnimate = (
+	elementOrSelector: ElementOrSelector,
+	keyframes: MotionKeyframesDefinition,
+	options?: AnimationOptionsWithOverrides
+) => {
+	try {
+		return animate(elementOrSelector, keyframes, options);
+	} catch {
+		// do nothing lol
+	}
+};
 
 type Unsubscriber = () => void;
 
@@ -131,6 +144,9 @@ export const scroll: Action<
 		);
 	};
 
+	handleScroll();
+	handleResize();
+
 	window.addEventListener('scroll', handleScroll);
 	window.addEventListener('resize', handleResize);
 
@@ -141,3 +157,91 @@ export const scroll: Action<
 		}
 	};
 };
+
+type TimelineEvent = {
+	at: number;
+	callback: () => void;
+};
+
+export function createTimeline(events: TimelineEvent[]) {
+	let timeoutIds: NodeJS.Timeout[] = [];
+
+	const play = () => {
+		events.forEach((event) => {
+			const timeoutId = setTimeout(event.callback, event.at);
+			timeoutIds.push(timeoutId);
+		});
+	};
+
+	const cancel = () => {
+		timeoutIds.forEach(clearTimeout);
+		timeoutIds = [];
+	};
+
+	return { play, cancel };
+}
+
+type ProgressEvent = {
+	percentage: number;
+	callback: () => void;
+};
+
+/**
+ * Given a list of events, create a sequence of events that will be executed
+ * when a given percentage is greater than the event percentage, and before
+ * the next event percentage.
+ * e.g. const handler = createProgressSequence(events) // where there's an event for each 0.1 percentage
+ * handler(0.45) // will execute the event with percentage 0.4.
+ */
+export function createProgressSequence(events: ProgressEvent[]) {
+	// Sort from highest to lowest percentage
+	const sortedEvents = [...events].sort((a, b) => b.percentage - a.percentage);
+
+	let lastEventIdx = -1;
+
+	const handler = (percentage: number) => {
+		const idx = sortedEvents.findIndex((event) => event.percentage <= percentage);
+		if (idx === lastEventIdx) {
+			return;
+		}
+		const event = sortedEvents[idx];
+		event?.callback();
+		lastEventIdx = idx;
+	};
+
+	handler.resetLastEventIdx = () => {
+		lastEventIdx = -1;
+	};
+
+	return handler;
+}
+
+export type ProgressSequence = ReturnType<typeof createProgressSequence>;
+
+export function write(text: string, cb: (v: string) => void, duration = 500) {
+	const step = duration / text.length;
+	let i = 0;
+	return new Promise((resolve) => {
+		const interval = setInterval(() => {
+			cb(text.slice(0, ++i));
+			if (i === text.length) {
+				clearInterval(interval);
+				resolve(undefined);
+			}
+		}, step);
+	});
+}
+
+export function sleep(duration: number) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, duration);
+	});
+}
+
+export function getInitials(name: string) {
+	return name
+		.split(' ')
+		.map((word) => word?.[0]?.toUpperCase() ?? '')
+		.join('')
+		.slice(0, 2);
+}
