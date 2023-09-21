@@ -190,7 +190,11 @@
 																<span class="aw-caption-400">{response.model?.name}</span>
 															</header>
 															<p class="aw-sub-body-400 u-margin-block-start-16">
-																<a href="#">Payload <span class="icon-cheveron-right" /></a>
+																<a
+																	href={`/docs/references/${$page.params.version}/models/${response.model?.id}`}
+																>
+																	Payload <span class="icon-cheveron-right" />
+																</a>
 															</p>
 														</article>
 													</li>
