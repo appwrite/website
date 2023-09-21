@@ -1,4 +1,3 @@
-import SwaggerParser from '@apidevtools/swagger-parser';
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
 
@@ -17,11 +16,13 @@ type SDKMethod = {
 	responses: Array<{
 		code: number;
 		contentType?: string;
-		model?: {
-			id: string;
-			name: string;
-		};
+		models?: SDKMethodModel[];
 	}>;
+};
+
+type SDKMethodModel = {
+	id: string;
+	name: string;
 };
 
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
@@ -141,7 +142,9 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 	throw new Error("Schema doesn't exist");
 }
 
-const specs = import.meta.glob('$appwrite/app/config/specs/open-api3*-(client|server).json');
+const specs = import.meta.glob('$appwrite/app/config/specs/open-api3*-(client|server).json', {
+	as: 'raw'
+});
 async function getSpec(version: string, platform: string) {
 	const isServer = platform.startsWith('server-');
 	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
@@ -151,10 +154,8 @@ async function getSpec(version: string, platform: string) {
 }
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
-	const spec = await getSpec(version, platform);
-	const parser = new SwaggerParser();
-	const api = (await parser.bundle(spec as unknown as OpenAPIV3.Document)) as OpenAPIV3.Document;
-
+	const raw = await getSpec(version, platform);
+	const api = JSON.parse(raw);
 	return api;
 }
 
@@ -198,28 +199,41 @@ export async function getService(
 		const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
 			(tuple) => {
 				const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
-				const id = (
-					response?.content?.['application/json']?.schema as OpenAPIV3.ReferenceObject
-				)?.$ref
-					?.split('/')
-					.pop();
-				const schema = id ? getSchema(id, api) : undefined;
+				const models: SDKMethodModel[] = [];
+				const schemas = response?.content?.['application/json']?.schema as OpenAPIV3.SchemaObject;
+				if (code !== '204') {
+					if (schemas?.oneOf) {
+						schemas.oneOf.forEach((ref) => {
+							const schema = resolveReference(ref as OpenAPIV3.ReferenceObject, api);
+							models.push({
+								id: getIdFromReference(ref as OpenAPIV3.ReferenceObject),
+								name: schema.description ?? ''
+							});
+						});
+					} else {
+						if (schemas) {
+							const id = getIdFromReference(schemas as OpenAPIV3.ReferenceObject);
+							const schema = resolveReference(schemas as OpenAPIV3.ReferenceObject, api);
+							models.push({
+								id,
+								name: schema?.description ?? ''
+							});
+						}
+					}
+				}
 
 				return {
 					code: Number(code),
 					contentType: response?.content ? Object.keys(response.content)[0] : undefined,
-					model: id
-						? {
-								id,
-								name: schema?.description ?? ''
-						  }
-						: undefined
+					models
 				};
 			}
 		);
 
 		const path = isAndroid
-			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite'].demo}`
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${
+					isAndroidJava ? 'java' : 'kotlin'
+			  }/${operation['x-appwrite'].demo}`
 			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
 		if (!(path in examples)) {
 			continue;
@@ -235,4 +249,27 @@ export async function getService(
 	}
 
 	return data;
+}
+
+export function getIdFromReference(reference: OpenAPIV3.ReferenceObject) {
+	const id = reference?.$ref?.split('/')?.pop();
+	if (!id) {
+		throw new Error('Invalid reference');
+	}
+	return id;
+}
+
+export function resolveReference(
+	reference: OpenAPIV3.ReferenceObject,
+	api: OpenAPIV3.Document
+): AppwriteSchemaObject {
+	const id = reference.$ref.split('/').pop();
+	if (!id) {
+		throw new Error('Invalid reference');
+	}
+	const schema = api.components?.schemas?.[id] as AppwriteSchemaObject;
+	if (schema) {
+		return schema;
+	}
+	throw new Error("Schema doesn't exist");
 }

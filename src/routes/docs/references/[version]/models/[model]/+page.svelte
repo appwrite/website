@@ -1,19 +1,11 @@
 <script lang="ts">
-	import type { AppwriteSchemaObject } from '$lib/utils/specs.js';
 	import Article from '$markdoc/layouts/Article.svelte';
 	import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
 
 	export let data;
-
-	const properties = data.schema.properties as Record<string, AppwriteSchemaObject>;
-	const example = Object.entries(properties).reduce((acc, [name, property]) => {
-        
-		acc[name] = property['x-example'];
-		return acc;
-	}, {} as Record<string, unknown>);
 </script>
 
-<Article title={data.schema.description ?? ''} description="">
+<Article title={data.model.title} description="">
 	<article>
 		<Heading id="properties" level={2}>Properties</Heading>
 		<Table>
@@ -31,9 +23,9 @@
 				</Tr>
 			</Thead>
 			<Tbody>
-				{#each Object.entries(properties) as [name, property]}
+				{#each data.model.properties as property}
 					<Tr>
-						<Td>{name}</Td>
+						<Td>{property.name}</Td>
 						<Td>{property.type}</Td>
 						<Td>{property.description}</Td>
 					</Tr>
@@ -41,6 +33,6 @@
 			</Tbody>
 		</Table>
 		<Heading id="properties" level={2}>Example</Heading>
-		<Fence content={JSON.stringify(example, null, 4)} language="json" process withLineNumbers />
+		<Fence content={JSON.stringify(data.example, null, 4)} language="json" process withLineNumbers />
 	</article>
 </Article>
