@@ -1,17 +1,16 @@
 @use '../abstract' as *;
 
 .#{$p}-media {
-  --p-media-border-color:var(--aw-color-border);
-  --p-media-bg: linear-gradient(143deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+  @include border-gradient;
+  --m-border-gradient-before:  linear-gradient(186deg, rgba(255, 255, 255, 0.16) -1.41%, rgba(255, 255, 255, 0.00) 104.86%);
+  --m-border-radius: #{pxToRem(16)};
+
+  --p-media-bg: linear-gradient(113deg, rgba(255, 255, 255, 0.10) -1.78%, rgba(255, 255, 255, 0.06) 62.5%, rgba(255, 255, 255, 0.10) 103.4%);
 
   background: var(--p-media-bg);
   padding:pxToRem(8);
-  border:solid pxToRem(1) hsl(var(--p-media-border-color));
-  border-radius:pxToRem(16);
-
-  -webkit-backdrop-filter: blur(pxToRem(30));
-  backdrop-filter: blur(pxToRem(30));
-
+  
+  
   > * { display:block; border-radius:pxToRem(12); }
 
   #{$theme-dark} & {

@@ -1,4 +1,4 @@
-import { safeAnimate } from '$lib/animations';
+import { safeAnimate, sleep } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
 import { animate } from 'motion';
 import { getElSelector } from '../Products.svelte';
@@ -27,12 +27,12 @@ const execute = async () => {
 
 	await Promise.all([
 		safeAnimate(pd, { opacity: 0, y: -16 }, { duration: 0.5 })?.finished,
-		safeAnimate(phone, { x: '-50%', width: '660px' }, { duration: 0.5 })?.finished,
-		safeAnimate(graphBox, { x: 400, y: -364 }, { duration: 0.5 })?.finished
+		safeAnimate(graphBox, { opacity: 0, visibility: 'hidden' }, { duration: 0.5 })?.finished,
+		safeAnimate(phone, { x: '-50%', width: '660px' }, { duration: 1, delay: 0.5 })?.finished
 	]);
 
 	boxesAndStates.forEach(({ box, state }, i) => {
-		safeAnimate(box, { opacity: 1, y: [-16, 0] }, { duration: 0.5, delay: i * 0.25 })?.finished;
+		safeAnimate(box, { opacity: 1, y: [1200, 0] }, { duration: 0.5, delay: i * 0.1 })?.finished;
 		animate(state.set, { duration: 2, delay: (i + 1) * 0.25 });
 	});
 };
