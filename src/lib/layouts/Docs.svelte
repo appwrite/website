@@ -124,7 +124,7 @@
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
-							<button class="aw-button is-text">
+							<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="18"
@@ -142,8 +142,8 @@
 									/>
 								</svg>
 								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-							</button>
+								<span class="aw-inline-tag aw-sub-body-400">33.2k</span>
+							</a>
 							<a href="https://cloud.appwrite.io/console" class="aw-button">
 								<span class="aw-sub-body-500">Go to console</span>
 							</a>
