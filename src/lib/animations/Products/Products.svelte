@@ -4,6 +4,96 @@
 	export function getElSelector(el: string) {
 		return `#${el}-${get(elId)}`;
 	}
+
+	/* Products infos */
+	const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
+	type Product = (typeof products)[number];
+
+	type ProductInfo = {
+		icon: {
+			active: string;
+			inactive: string;
+		};
+		title: string;
+		subtitle: string;
+		description: string;
+		features: string[];
+		shot?: string;
+	};
+	export const infos: { [K in Product]?: ProductInfo } = {
+		auth: {
+			icon: {
+				active: './images/icons/illustrated/auth.svg',
+				inactive: './images/icons/illustrated/auth-gray.svg'
+			},
+			title: 'Auth',
+			subtitle: 'Secure login for all your users',
+			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			features: [
+				'Two-Factor Authentication support',
+				'30+ login methods',
+				'State-of-the-art password hashing support'
+			],
+			shot: './images/animations/auth-shot.svg'
+		},
+		databases: {
+			icon: {
+				active: './images/icons/illustrated/databases.svg',
+				inactive: './images/icons/illustrated/databases-gray.svg'
+			},
+			title: 'Databases',
+			subtitle: 'Store, query and manage your data',
+			description:
+				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
+			features: ['Relationships are a big deal'],
+			shot: './images/animations/auth-shot.svg'
+		},
+		storage: {
+			icon: {
+				active: './images/icons/illustrated/storage.svg',
+				inactive: './images/icons/illustrated/storage-gray.svg'
+			},
+			title: 'Storage',
+			subtitle: 'Secure login for all your users',
+			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			features: [
+				'Two-Factor Authentication support',
+				'30+ login methods',
+				'State-of-the-art password hashing support'
+			],
+			shot: './images/animations/auth-shot.svg'
+		},
+		functions: {
+			icon: {
+				active: './images/icons/illustrated/functions.svg',
+				inactive: './images/icons/illustrated/functions-gray.svg'
+			},
+			title: 'Functions',
+			subtitle: 'Secure login for all your users',
+			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			features: [
+				'Two-Factor Authentication support',
+				'30+ login methods',
+				'State-of-the-art password hashing support'
+			],
+			shot: './images/animations/auth-shot.svg'
+		},
+		realtime: {
+			icon: {
+				active: './images/icons/illustrated/realtime.svg',
+				inactive: './images/icons/illustrated/realtime-gray.svg'
+			},
+			title: 'Realtime',
+			subtitle: 'Secure login for all your users',
+			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			features: [
+				'Two-Factor Authentication support',
+				'30+ login methods',
+				'State-of-the-art password hashing support'
+			],
+			shot: './images/animations/auth-shot.svg'
+		}
+	};
 </script>
 
 <script lang="ts">
@@ -32,9 +122,6 @@
 		traversed: 0,
 		remaning: Infinity
 	};
-
-	const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
-	type Product = (typeof products)[number];
 
 	const animScale: Scale = [0.1, 1];
 	const productsScales = products.map((_, idx) => {
@@ -85,87 +172,6 @@
 			}
 		});
 	})();
-
-	/* Products infos */
-	type ProductInfo = {
-		icon: {
-			active: string;
-			inactive: string;
-		};
-		title: string;
-		subtitle: string;
-		description: string;
-		features: string[];
-	};
-	const infos: { [K in Product]?: ProductInfo } = {
-		auth: {
-			icon: {
-				active: './images/icons/illustrated/auth.svg',
-				inactive: './images/icons/illustrated/auth-gray.svg'
-			},
-			title: 'Auth',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		databases: {
-			icon: {
-				active: './images/icons/illustrated/databases.svg',
-				inactive: './images/icons/illustrated/databases-gray.svg'
-			},
-			title: 'Databases',
-			subtitle: 'Store, query and manage your data',
-			description:
-				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
-			features: ['Relationships are a big deal']
-		},
-		storage: {
-			icon: {
-				active: './images/icons/illustrated/storage.svg',
-				inactive: './images/icons/illustrated/storage-gray.svg'
-			},
-			title: 'Storage',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		functions: {
-			icon: {
-				active: './images/icons/illustrated/functions.svg',
-				inactive: './images/icons/illustrated/functions-gray.svg'
-			},
-			title: 'Functions',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		},
-		realtime: {
-			icon: {
-				active: './images/icons/illustrated/realtime.svg',
-				inactive: './images/icons/illustrated/realtime-gray.svg'
-			},
-			title: 'Realtime',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
-			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
-			]
-		}
-	};
 
 	const anyify = (x: unknown) => x as any;
 </script>
@@ -327,13 +333,21 @@
 		position: relative;
 
 		--debug-bg: transparent;
+
+		display: none;
 	}
 
-	.debug {
-		position: absolute;
-		top: 8rem;
-		left: 0;
+	@media (min-width: 1440px) {
+		#products {
+			display: block;
+		}
 	}
+
+	// .debug {
+	// 	position: absolute;
+	// 	top: 8rem;
+	// 	left: 0;
+	// }
 
 	.sticky-wrapper {
 		display: flex;
