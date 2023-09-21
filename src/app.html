@@ -9,6 +9,10 @@
 		%sveltekit.head%
 	</head>
 	<body class="theme-dark" data-sveltekit-preload-data="hover">
+		<script
+			type="module"
+			src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
+		></script>
 		<script>
 			const isDocs = window.location.pathname.startsWith('/docs');
 			if (isDocs) {
