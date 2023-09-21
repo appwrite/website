@@ -1,0 +1,126 @@
+---
+layout: article
+title: Commands
+description: 
+---
+
+Other than commands to create and deploy databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+
+Commands follows the following general syntax:
+
+```sh
+appwrite [COMMAND] --[OPTIONS]
+```
+
+## List {% #list %}
+
+Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
+
+{% table %}
+* Command
+* Description
+---
+* `login`
+* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+---
+* `client`
+* The client command allows you to configure your CLI.
+---
+* `init`
+* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
+---
+* `deploy`
+* The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
+---
+* `logout`
+* The logout command allows you to logout from the CLI.
+---
+* `projects`
+* The projects command allows you to view, create, and manage your Appwrite projects.
+---
+* `storage`
+* The storage command allows you to manage your project files.
+---
+* `teams`
+* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
+---
+* `users`
+* The users command allows you to manage your project users.
+---
+* `account`
+* The account command allows you to authenticate as and manage a user account.
+---
+* `avatars`
+* The avatars command provides utilities to manage images, icons, and avatars.
+---
+* `functions`
+* The functions command allows you view, create and manage your Appwrite Functions.
+---
+* `databases`
+* The databases command allows you to create structured collections of documents, query and filter lists of documents.
+---
+* `locale`
+* The locale command allows you to customize your app based on your users' location.
+---
+
+{% /table %}
+
+## Verbose {% #verbose %}
+In case of errors with any command, you can get more information about what went wrong using the `--verbose` flag
+
+```sh
+appwrite users list --verbose
+```
+
+## Examples {% #examples %}
+
+### Create user
+
+To create a new user in your project, you can use the create command.
+
+```sh
+appwrite users create --userId "unique()" \
+    --email hello@appwrite.io \
+    --password very_strong_password
+```
+
+### List Users
+
+To get a list of all your project users, you can use the list command.
+
+```sh
+appwrite users list
+```
+
+### List collections
+
+To get a list of all your collections, you can use the listCollections command.
+
+```sh
+appwrite databases listCollections --databaseId [DATABASE_ID]
+```
+
+If you wish to parse the output from the CLI, you can request the CLI output in JSON format using the `--json` flag
+
+```sh
+appwrite databases listCollections --databaseId [DATABASE_ID]--json
+```
+
+### Get collection
+
+To get more information on a particular collection, you can make use of the getCollection command and pass in the collectionId.
+
+```sh
+appwrite databases getCollection --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID]
+```
+
+### Create document
+
+To create a new document in an existing collection, use the `createDocument` command.
+
+```sh
+appwrite databases createDocument \
+    --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID] \
+    --documentId 'unique()' --data '{ "Name": "Iron Man" }' \
+    --permissions 'read("any")' 'write("team:abc")' 
+```

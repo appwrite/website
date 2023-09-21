@@ -3,9 +3,10 @@ layout: article
 title: Deployment
 description: 
 ---
+
 The Apprite CLI allows you to create and deploy databases, collections, buckets, teams and functions to your Appwrite project from a configuration file. This is especially helpful if you're trying to track project setup using version control.
 
-# Initialization {% #initialization %}
+## Initialization {% #initialization %}
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
 
@@ -13,7 +14,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 appwrite init project
 ```
 
-The following prompts will guide you through the setup process. The init command also creates an `appwrite.json` file representing your Appwrite project.
+The following prompts will guide you through the setup process. The init command also creates an [appwrite.json](/docs/command-line-deployment#appwriteJSON) file representing your Appwrite project.
 
 You can fetch all the existing databases and collections in your current project using:
 
@@ -21,3 +22,142 @@ You can fetch all the existing databases and collections in your current project
 appwrite init collection
 ```
 
+You can fetch all the existing teams in your current project using:
+
+```sh
+appwrite init team
+```
+
+## Deploying Functions {% #deploying-function %}
+
+The CLI also handles the creation and deployment of Appwrite Functions. Run this command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite init function
+? What would you like to name your function? My Awesome Function
+? What runtime would you like to use? Node.js (node-15.5)
+✓ Success
+```
+
+This command creates a new function **My Awesome Function** in your current Appwrite project and also creates a template function for you to get started.
+
+You can now deploy this function by running this command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite deploy function
+? Which functions would you like to deploy? Awesome Function (621229798628cf5bf712)
+ℹ Info Deploying function Awesome Function ( 621229798628cf5bf712 )
+✓ Success Deployed Awesome Function ( 621229798628cf5bf712 )
+```
+
+## Deploying Collections {% #deploying-collections %}
+
+The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
+
+You can deploy all the databases and collections in your [appwrite.json](#) file by running this command in the folder holding your `appwrite.json` file.
+
+The deploy command will overwrite existing collections causing existing data to be lost. If you already have data in your project, you will need to write your own migration script using a Server SDK instead of using the CLI.
+
+```sh
+appwrite deploy collection
+```
+
+## Deploying Teams {% #deploying-teams %}
+
+The Appwrite CLI can create teams to organize users. Teams can be used to grant access permissions to a group of users. [Learn more about permissions](/docs/permissions#permission-roles).
+
+Deploy teams by running this command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite deploy team
+```
+
+## Deploying Storage {% #deploying-storage %}
+
+The Appwrite CLI allows you to configure and deploy buckets across projects. All the bucket's settings are available through the [appwrite.json](/docs/command-line-deployment#appwriteJSON) file.
+
+Deploy storage buckets by running this command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite deploy bucket
+```
+
+## Conflicts {% #conflicts %}
+
+When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the console.
+
+## The appwrite.json file {% #appwrite-json %}
+
+An `appwrite.json` file is created by the CLI when you initialize your project. It stores all the configuration for the CLI to be able to interact with your Appwrite project in JSON format. When using the `appwrite deploy` command, the CLI uses information from `appwrite.json` to deploy your functions and collections.
+
+### Configuration {% #configuration %}
+
+Here's a complete list of all configurable options in `appwrite.json`:
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `projectId` | string | ID of your Appwrite Project. |
+| `projectName` | string | Name of your Appwrite Project. |
+| `functions` | array of [functions](/docs/command-line-deployment#function-options) | Configuration of functions in your project. |
+| `databases` | array of [databases](/docs/command-line-deployment#databases-options) | Configuration of databases in your project. |
+| `collections` | array of [collections](/docs/command-line-deployment#collection-options) | Configuration of collections in your project. |
+| `teams` | array of [teams](/docs/command-line-deployment#teams-options) | Configuration of teams in your project. |
+| `buckets` | array of [buckets](/docs/command-line-deployment#buckets-options) | Configuration of teams in your project. |
+
+#### Function options
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `$id` | string | Function ID. |
+| `name` | string | Function Name. |
+| `runtime` | string | Function runtime, must be enabled. [Learn more about runtimes](/docs/functions#supportedRuntimes). |
+| `path` | string | Path to folder containing the function's source code. |
+| `entrypoint` | string | Entry point of the function relative to the folder specified in path. |
+| `ignore` | array of strings | Files to ignore inside the function. [Learn more about ignoring files](/docs/functions#ignoreFiles). |
+| `execute` | array of strings | Grants execute permissions to users. [Learn more about role strings](/docs/rest#permissions). |
+| `events` | array of strings | Events that trigger the function to execute. [Learn more about events](/docs/events). |
+| `schedule` | string | Execute schedule for the function. [Learn more about scheduled executions](/docs/functions#scheduled-execution). |
+| `timeout` | int | Execution timeout of the function in seconds, with a maximum configurable limit of 900 seconds. |
+| `variables` | JSON object | Variables provided to the function on execution stored as a key-value JSON object. |
+
+#### Databases options
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `$id` | string | Database ID. |
+| `name` | string | Database Name. |
+
+#### Collection options
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `$id` | string | Collection ID. |
+| `name` | string | Collection Name. |
+| `databaseId` | string | ID of the database to which this collection belongs. |
+| `enabled` | bool | If the collection is enabled. |
+| `documentSecurity` | bool | If access permissions can be defined at the document level. |
+| `$permissions` | array of strings | Grants access permissions to users at the collection level. [Learn more about permissions](/docs/rest#permissions). |
+| `attributes` | array of objects | Defines a list of attributes in the collection. [Learn more about the Attributes List Object](/docs/models/attributeList). |
+| `indexes` | array of objects | Defines a list of indexes in the collection. [Learn more about the Indexes List Object](/docs/models/indexList). |
+
+#### Buckets options
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `$id` | string | Bucket ID. |
+| `name` | string | Bucket Name. |
+| `$permissions` | array of strings | Grants access permissions to users at the bucket level. [Learn more about permissions](/docs/rest#permissions). |
+| `fileSecurity` | boolean | Whether file-level security is enabled. [Learn more about permissions](/docs/rest#permissions). |
+| `enabled` | boolean | Whether the bucket is enabled or disabled. |
+| `maximumFileSize` | integer | Maximum file size supported. |
+| `allowedFileExtensions` | string\[\] | List of allowed file extensions. |
+| `compression` | string | Preferred algorithm for compression. Will be one of `none`, `gzip`, or `zstd`. |
+| `encryption` | boolean | Whether the bucket's content is encrypted. |
+| `antivirus` | boolean | Whether virus scanning is enabled for the bucket's content. |
+
+#### Teams options
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `$id` | string | Team ID. |
+| `name` | string | Team Name. |

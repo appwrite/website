@@ -23,7 +23,7 @@
 
   display:flex; gap:pxToRem(4); padding:pxToRem(4); border-radius:pxToRem(12); line-height:1.5;
   background: linear-gradient(134deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 52.97%, rgba(255, 255, 255, 0.08) 100%, rgba(255, 255, 255, 0.00) 100%);
-  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8));
   &.is-transparent { background:transparent; }
   &-item { }
   &-button {

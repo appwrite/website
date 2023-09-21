@@ -20,7 +20,7 @@
 		},
 		{
 			icon: 'aw-icon-x',
-			link: 'https://twitter.com/appwrite'
+			link: 'https://twitter.com/intent/follow?screen_name=appwrite'
 		},
 		{
 			icon: 'aw-icon-linkedin',

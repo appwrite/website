@@ -12,10 +12,17 @@ You can subscribe to events for specific resources using their ID or subscribe t
 You can also filter for events of specific actions like create, update, or delete. 
 You can find a list of events for Storage, Databases, Functions, and Authentication services below.
 
-[TODO: Need to add events here.]
+
+{% partial file="auth-events.md" /%}
+
+{% partial file="databases-events.md" /%}
+
+{% partial file="storage-events.md" /%}
+
+{% partial file="functions-events.md" /%}
 
 
-## Known limitations
+## Known limitations {% #known-limitations %}
 
 When events fire, only existing subscriptions for that event will receive the update. If your client or server side integrations lose network connection temporarily, delivery of the event is not guaranteed.
 
