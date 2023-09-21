@@ -43,6 +43,17 @@
 			{/if}
 		{/each}
 	</div>
+
+	<div class="post-wrapper">
+		<img src="/images/products/post.png" alt="" />
+		<div class="img-overlay" />
+
+		<h2>See your products grow</h2>
+		<p>
+			Keep track of your projects progress and see them grow into products users love and use every
+			day.
+		</p>
+	</div>
 </div>
 
 <style lang="scss">
@@ -53,6 +64,7 @@
 
 		max-width: 800px;
 		margin-inline: auto;
+		overflow: hidden;
 	}
 
 	@media (max-width: 1439px) {
@@ -120,6 +132,71 @@
 				width: 100%;
 				margin-block-start: 2.5rem;
 			}
+		}
+	}
+
+	.post-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow: visible;
+
+		position: relative;
+		width: 100%;
+
+		padding-block-start: 35rem;
+		padding-block-end: 5rem;
+
+		.img-overlay {
+			content: '';
+			background: linear-gradient(to top, black, transparent);
+			position: absolute;
+			bottom: 0;
+			width: 100vw;
+			height: 30rem;
+			z-index: 10;
+		}
+
+		img {
+			display: block;
+			max-block-size: unset;
+			max-inline-size: unset;
+			top: 0rem;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 37.5rem;
+
+			position: absolute;
+		}
+
+		h2 {
+			color: var(--greyscale-50, #ededf0);
+			text-align: center;
+
+			/* Responsive/Display */
+			font-family: Aeonik Pro;
+			font-size: 48px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 50px; /* 104.167% */
+			letter-spacing: -0.48px;
+			max-width: 20rem;
+			position: relative;
+			z-index: 100;
+		}
+
+		p {
+			color: var(--greyscale-400, #97979b);
+			text-align: center;
+			font-family: Inter;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 22px; /* 137.5% */
+			letter-spacing: -0.072px;
+			margin-block-start: 1rem;
+			max-width: 20rem;
+			z-index: 100;
 		}
 	}
 </style>
