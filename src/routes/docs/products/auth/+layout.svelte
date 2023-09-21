@@ -43,19 +43,31 @@
 				{
 					label: 'Anonymous',
 					href: '/docs/products/auth/anonymous'
-				}
+				},
+				{
+					label: 'Server integrations',
+					href: '/docs/products/auth/server-integrations'
+				},
 			]
 		},
 		{
 			label: 'Concepts',
 			items: [
 				{
-					label: 'User management',
-					href: '/docs/products/auth/user-management'
+					label: 'Account vs. Users API',
+					href: '/docs/products/auth/account-vs-users-api'
 				},
 				{
-					label: 'Server integrations',
-					href: '/docs/products/auth/server-integrations'
+					label: 'Accounts',
+					href: '/docs/products/auth/accounts'
+				},
+				{
+					label: 'Teams',
+					href: '/docs/products/auth/teams'
+				},
+				{
+					label: 'Labels',
+					href: '/docs/products/auth/labels'
 				},
 				{
 					label: 'Security',
