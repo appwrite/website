@@ -3,6 +3,7 @@
 .#{$p}-investor-cards {
   display: flex;
 
+  .#{$p}-card { display:grid; place-content:center; }
   @media #{$break1} {
     flex-direction:column; gap:pxToRem(20);
     > * { flex:1; }
