@@ -4,7 +4,7 @@
 	import { elId } from '../Products.svelte';
 
 	const {
-		state: { authentication, bandwidth, databases, executions, requests, storage }
+		state: { authentication, bandwidth, databases, executions, requests, storage, realtime }
 	} = postController;
 
 	const formatK = (num: number) => {
@@ -62,7 +62,7 @@
 
 <div class="gradient-box databases" id="post-databases-{$elId}">
 	<div class="u-flex u-cross-center u-gap-8">
-		<p class="icon-folder" />
+		<p class="icon-database" />
 		<p class="f-eyebrow">Databases</p>
 	</div>
 	<p class="f-display mbs-16">{toScale($databases, [0, 1], [0, 8]).toFixed(0)}</p>
@@ -76,6 +76,12 @@
 	<p class="f-display">{formatK(toScale($requests, [0, 1], [0, 6849]))}</p>
 	<p class="f-sub">Requests</p>
 	<img class="mbs-16" src="./images/animations/requests-graph.svg" alt="" />
+</div>
+
+<div class="gradient-box realtime" id="post-realtime-{$elId}">
+	<p class="f-display">{formatK(toScale($realtime, [0, 1], [0, 100000]))}</p>
+	<p class="f-sub">Realtime connections</p>
+	<img class="mbs-16" src="./images/animations/realtime-graph.svg" alt="" />
 </div>
 
 <div class="gradient-overlay u-flex u-flex-vertical">
@@ -250,19 +256,19 @@
 
 	.storage {
 		opacity: 0;
-		left: 0rem;
-		top: 0rem;
+		left: -10rem;
+		top: -2rem;
 	}
 
 	.bandwidth {
 		opacity: 0;
-		left: 4rem;
-		top: 14rem;
+		left: -4rem;
+		top: 11rem;
 	}
 
 	.functions {
 		opacity: 0;
-		left: -4rem;
+		left: -6rem;
 		top: 35rem;
 	}
 
@@ -274,7 +280,13 @@
 
 	.requests {
 		opacity: 0;
-		top: 30rem;
-		right: -12rem;
+		top: 17rem;
+		right: -18rem;
+	}
+
+	.realtime {
+		opacity: 0;
+		top: -1rem;
+		right: -7rem;
 	}
 </style>

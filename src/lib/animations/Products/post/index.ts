@@ -9,6 +9,7 @@ const authentication = createResettable(0);
 const storage = createResettable(0);
 const bandwidth = createResettable(0);
 const executions = createResettable(0);
+const realtime = createResettable(0);
 
 const execute = async () => {
 	const phone = getElSelector('phone');
@@ -22,6 +23,7 @@ const execute = async () => {
 		{ box: getElSelector('post-bandwidth'), state: bandwidth.reset() },
 		{ box: getElSelector('post-functions'), state: executions.reset() },
 		{ box: getElSelector('post-databases'), state: databases.reset() },
+		{ box: getElSelector('post-realtime'), state: realtime.reset() },
 		{ box: getElSelector('post-requests'), state: requests.reset() }
 	];
 
@@ -45,6 +47,7 @@ export const postController = {
 		authentication,
 		storage,
 		bandwidth,
-		executions
+		executions,
+		realtime
 	}
 };
