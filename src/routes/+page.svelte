@@ -68,9 +68,9 @@
 								Appwrite is the open-source development platform where you can build any application
 								at any scale, using the coding languages and tools you want.
 							</p>
-							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
+							<a href="https://cloud.appwrite.io" class="aw-button is-full-width-mobile u-margin-block-start-32">
 								<span class="text">Get Started</span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</section>
