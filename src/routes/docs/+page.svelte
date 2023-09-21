@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Spline } from '$lib/components';
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import Sidebar from './Sidebar.svelte';
@@ -39,12 +40,24 @@
 		</svg>
 	</div>
 
-	<div
-		class="u-position-absolute aw-is-not-mobile"
-		style="inline-size:647px; inset-block-start:24rem; inset-inline-start:calc(100% - 400px)"
-	>
-		<img src="/images/temp/bg-side.png" width="647" alt="" />
-	</div>
+	<Spline let:fallback let:viewer>
+		<div
+			class="u-position-absolute aw-is-not-mobile"
+			style="inline-size:647px; inset-block-start:24rem; inset-inline-start:calc(100% - 400px)"
+			use:fallback
+		>
+			<img src="/images/temp/bg-side.png" width="647" alt="" />
+		</div>
+		<div
+			class="u-position-absolute aw-is-not-mobile"
+			style="inline-size:647px; inset-block-start:24rem; inset-inline-start:calc(100% - 500px)"
+		>
+			<spline-viewer
+				url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
+				use:viewer
+			/>
+		</div>
+	</Spline>
 
 	<main class="aw-main-section">
 		<section class="aw-hero is-align-start">

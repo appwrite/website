@@ -1,7 +1,7 @@
-import Phone from './phone.svelte';
 import Box from './box.svelte';
 import Code from './code.svelte';
 import Controls from './controls.svelte';
+import Phone from './phone.svelte';
 
 export const Auth = {
 	Phone,
@@ -12,7 +12,6 @@ export const Auth = {
 
 import { safeAnimate, sleep, write } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
-import { animate } from 'motion';
 import { getElSelector } from '../Products.svelte';
 
 type State = {
@@ -57,15 +56,14 @@ const execute = async () => {
 	const { update } = state.reset();
 
 	await Promise.all([
-		safeAnimate(box, { x: 260, y: 32, opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(box, { x: 310, y: 32, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { x: 200, y: 460, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(controls, { x: 420, y: 0, opacity: 0 }, { duration: 0.5 })?.finished
 	]);
 
 	// Start
-	await safeAnimate(box, { x: [260, 260], y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 1 })
-		?.finished;
+	await safeAnimate(box, { y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 1 })?.finished;
 
 	await sleep(150);
 
