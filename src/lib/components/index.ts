@@ -5,3 +5,4 @@ export { default as MobileNav } from './MobileNav.svelte';
 export { default as Phone } from './Phone.svelte';
 export { default as Newsletter } from './Newsletter.svelte';
 export { default as Tooltip } from './Tooltip.svelte';
+export { default as Article } from './Article.svelte';

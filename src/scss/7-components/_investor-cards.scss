@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+
+.#{$p}-investor-cards {
+  display: flex;
+
+  .#{$p}-card { display:grid; place-content:center; }
+  @media #{$break1} {
+    flex-direction:column; gap:pxToRem(20);
+    > * { flex:1; }
+  }
+  @media #{$break2open} {
+    max-inline-size:pxToRem(994); margin-inline:auto;
+    flex-wrap:wrap; justify-content:center; gap:pxToRem(32);
+    > * { min-inline-size:pxToRem(310);  }
+  }
+}
