@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Carousel } from '$lib/components';
 	import { Spline } from '$lib/components';
+	import { Carousel } from '$lib/components';
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import Sidebar from './Sidebar.svelte';
@@ -741,7 +742,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/databases.png" alt="" />
+							<img src="/images/icons/illustrated/databases.svg" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Databases
 							</h4>
@@ -752,7 +753,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/functions.png" alt="" />
+							<img src="/images/icons/illustrated/functions.svg" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Functions
 							</h4>
@@ -763,7 +764,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
+							<img src="/images/icons/illustrated/storage.svg" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
@@ -774,7 +775,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/realtime.png" alt="" />
+							<img src="/images/icons/illustrated/realtime.svg" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
@@ -785,6 +786,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
+							<img src="/images/icons/illustrated/messaging.svg" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
