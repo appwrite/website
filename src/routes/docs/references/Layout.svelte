@@ -4,7 +4,8 @@
 	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 	import { preferredPlatform, preferredVersion } from '$lib/utils/references';
 
-	$: expandable = $page.url.pathname.startsWith('/docs/references/');
+	export let expandable = false;
+
 	$: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
 		$preferredPlatform ?? $page.params?.platform ?? 'client-web'
 	}`;

@@ -41,7 +41,7 @@ type AppwriteOperationObject = OpenAPIV3.OperationObject & {
 	};
 };
 
-type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
+export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
 	'x-example': string;
 };
 
