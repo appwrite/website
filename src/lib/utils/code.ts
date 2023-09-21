@@ -103,7 +103,7 @@ export const getCodeHtml = (args: Args) => {
 		return carry;
 	}, '');
 
-	return `<pre><code class="language-${language} ${
+	return `<pre><code class="aw-code language-${language} ${
 		withLineNumbers ? 'line-numbers' : ''
 	}">${final}</code></pre>`;
 };

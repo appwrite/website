@@ -5,10 +5,13 @@
   --p-media-bg: linear-gradient(143deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
 
   background: var(--p-media-bg);
-  backdrop-filter: blur(30px);
   padding:pxToRem(8);
   border:solid pxToRem(1) hsl(var(--p-media-border-color));
   border-radius:pxToRem(16);
+
+  -webkit-backdrop-filter: blur(pxToRem(30));
+  backdrop-filter: blur(pxToRem(30));
+
   > * { display:block; border-radius:pxToRem(12); }
 
   #{$theme-dark} & {
