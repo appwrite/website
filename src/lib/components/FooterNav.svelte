@@ -4,7 +4,7 @@
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Quick starts</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
-				<span class="aw-caption-500">Products</span>
+				<span class="aw-caption-500">Quick starts</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
 					xmlns="http://www.w3.org/2000/svg"
@@ -121,9 +121,9 @@
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Legal</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Policies</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
-				<span class="aw-caption-500">Legal</span>
+				<span class="aw-caption-500">Policies</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
 					xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,6 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/cookies">Cookies</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/security">Security</a></li>
 			</ul>
 		</li>
 	</ul>
