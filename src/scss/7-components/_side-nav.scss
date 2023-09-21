@@ -16,8 +16,8 @@
   --p-side-nav-bg-color: var(--p-body-bg-color);
 
 
-  position:sticky; z-index:25; inset-block-start:pxToRem(80); inset-block-end:0;
-  block-size:calc(100vh - pxToRem(80));
+  position:sticky; z-index:25; inset-block-start:pxToRem(74); inset-block-end:0;
+  block-size:calc(100vh - pxToRem(74));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
 
 
