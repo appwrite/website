@@ -76,12 +76,13 @@
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-0" style="--container-size:78.75rem">
 					<div class="aw-media-container">
-						<img
-							class="u-block"
-							src="/images/pages/homepage/dashboard.svg"
-							alt="console dashboard"
-							style="aspect-ratio: 1244 / 717"
-						/>
+						<div style="aspect-ratio: 1244 / 717">
+							<img
+									class="u-block"
+									src="/images/pages/homepage/dashboard.svg"
+									alt="console dashboard"
+							/>
+						</div>
 					</div>
 				</section>
 			</div>
