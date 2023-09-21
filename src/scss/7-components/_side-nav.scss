@@ -30,7 +30,8 @@
     &-parent {
       display:flex; align-items:baseline;
       padding-block-end:pxToRem(16); border-block-end:pxToRem(1) solid hsl(var(--aw-color-smooth));
-      &-title { inline-size:100%; text-align:center; }
+      [class*="icon"]:first-child { flex-shrink:0; padding-inline:pxToRem(12); }
+      &-title { inline-size:100%; text-align:center; transition:var(--transition); }
     }
   }
   &-scroll {
