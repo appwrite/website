@@ -400,14 +400,14 @@
 								<img src="/images/icons/gradients/discussion.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Channel access</h3>
 								<p class="aw-info-boxes-content">
-									Access to internal channel with Appwrite’s Engineering and DevRel team
+									Access to internal channel with Appwrite’s Engineering and DevRel teams
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/community.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">In-person gatherings</h3>
 								<p class="aw-info-boxes-content">
-									Invite to an in-person gathering (for top contributors)
+									Top contributors get invited to an in-person gathering with the Appwrite team
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
