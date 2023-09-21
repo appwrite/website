@@ -1,9 +1,7 @@
 ---
 layout: article
 title: GraphQL
-description: 
-difficulty: beginner
-readtime: 10
+description: Description used for SEO
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/rest), [GraphQL](/docs/graphql), and [Realtime](/docs/realtime).
