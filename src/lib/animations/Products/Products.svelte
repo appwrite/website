@@ -34,7 +34,7 @@
 				'30+ login methods',
 				'State-of-the-art password hashing support'
 			],
-			shot: './images/animations/auth-shot.svg'
+			shot: './images/products/Auth.svg'
 		},
 		databases: {
 			icon: {
@@ -46,7 +46,7 @@
 			description:
 				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
 			features: ['Relationships are a big deal'],
-			shot: './images/animations/auth-shot.svg'
+			shot: './images/products/Databases.svg'
 		},
 		storage: {
 			icon: {
@@ -61,7 +61,7 @@
 				'30+ login methods',
 				'State-of-the-art password hashing support'
 			],
-			shot: './images/animations/auth-shot.svg'
+			shot: './images/products/Storage.svg'
 		},
 		functions: {
 			icon: {
@@ -76,7 +76,7 @@
 				'30+ login methods',
 				'State-of-the-art password hashing support'
 			],
-			shot: './images/animations/auth-shot.svg'
+			shot: './images/products/Functions.svg'
 		},
 		realtime: {
 			icon: {
@@ -91,7 +91,7 @@
 				'30+ login methods',
 				'State-of-the-art password hashing support'
 			],
-			shot: './images/animations/auth-shot.svg'
+			shot: './images/products/Realtime.svg'
 		}
 	};
 </script>
