@@ -6,11 +6,12 @@
 
   background: linear-gradient(135deg, hsl(var(--aw-color-pink-500)) 0%, hsl(var(--aw-color-pink-500)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
-  display:flex; justify-content:center; align-items:center; gap:pxToRem(8);
+  display:flex; inline-size:fit-content; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
   border-radius:var(--m-border-radius); border:solid var(--m-border-size) transparent;
   text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-white)); font-weight: 500;
 
+  [class*="icon"] { line-height:1; }
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
 
   &:where(:hover):where(:not(#{$disabled})) {
