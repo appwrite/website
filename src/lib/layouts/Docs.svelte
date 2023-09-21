@@ -142,7 +142,7 @@
 									/>
 								</svg>
 								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
+								<span class="aw-inline-tag aw-sub-body-400">33.2k</span>
 							</button>
 							<a href="https://cloud.appwrite.io/console" class="aw-button">
 								<span class="aw-sub-body-500">Go to console</span>
