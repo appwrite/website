@@ -11,7 +11,6 @@
 		acc[name] = property['x-example'];
 		return acc;
 	}, {} as Record<string, unknown>);
-    $: console.log(data.schema)
 </script>
 
 <Article title={data.schema.description ?? ''} description="">
