@@ -4,3 +4,5 @@ export { default as PreFooter } from './PreFooter.svelte';
 export { default as MobileNav } from './MobileNav.svelte';
 
 export { default as Switch } from './Switch.svelte';
+export { default as Newsletter } from './Newsletter.svelte';
+export { default as Tooltip } from './Tooltip.svelte';

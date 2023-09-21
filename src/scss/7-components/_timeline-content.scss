@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.#{$p}-timeline-content {
+  &-list {
+    display:flex; flex-direction:column;
+    @media #{$break2open} {
+      gap:pxToRem(180);
+    }
+  }
+  &-item {
+    display:flex; flex-direction:column; gap:pxToRem(180);
+    &-top {}
+    &-bottom {
+      @media #{$break1} { display:none; }
+    }
+  }
+}

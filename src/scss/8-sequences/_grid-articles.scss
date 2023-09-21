@@ -8,8 +8,14 @@
   --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-default);
   --p-grid-articles-item-bg-color-default: var(--transparent);
   --p-grid-articles-item-bg-color-hover: var(--aw-color-white);
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
+
+  &-scroll {
+    container-type:inline-size; container-name:grid-articles;
+    .#{$p}-grid-articles-item {}
+  }
   &-item {
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding:pxToRem(8); padding-block-end:pxToRem(12);

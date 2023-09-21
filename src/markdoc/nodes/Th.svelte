@@ -1,11 +1,18 @@
 <script lang="ts">
-	import type { HTMLThAttributes } from 'svelte/elements';
+	import type { HTMLTdAttributes } from 'svelte/elements';
 
-	export let align: HTMLThAttributes['align'] = undefined;
+	export let align: HTMLTdAttributes['align'] = undefined;
+	export let width: HTMLTdAttributes['width'] = undefined;
 </script>
 
-<th class="aw-table-head-col" {align}>
+<td
+	style:width={width ? `${width}px` : undefined}
+	style:min-inline-size={width ? 'unset' : undefined}
+	role="columnheader"
+	class="aw-table-head-col"
+	{align}
+>
 	<span class="aw-eyebrow">
 		<slot />
 	</span>
-</th>
+</td>

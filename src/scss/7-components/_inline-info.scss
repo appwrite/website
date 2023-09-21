@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-inline-info {
+  >:last-child  { margin-block-end:0!important;}
   --p-inline-info-bg-color: var(--aw-color-white) / 0.04;
   --p-inline-info-border-color: var(--aw-color-greyscale-250);
 
@@ -9,7 +10,7 @@
 
   display:flex; flex-direction:column; gap:pxToRem(8);
   padding:pxToRem(16); border-radius:pxToRem(8);
-  [class*="icon"]:first-child { color:hsl(var(--aw-color-primary)); }
+  [class*="icon"]:first-child { color:hsl(var(--aw-color-primary)); font-size:pxToRem(24)!important; }
 
   #{$theme-dark} & {
     --p-inline-info-bg-color: var(--aw-color-white) / 0.04;
