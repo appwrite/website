@@ -25,27 +25,27 @@
 			label: 'Journeys',
 			items: [
 				{
-					label: 'Email and password',
+					label: 'Email and password login',
 					href: '/docs/products/auth/email-password'
 				},
 				{
-					label: 'Phone (SMS)',
+					label: 'Phone (SMS) login',
 					href: '/docs/products/auth/phone-sms'
 				},
 				{
-					label: 'Magic URL',
+					label: 'Magic URL login',
 					href: '/docs/products/auth/magic-url'
 				},
 				{
-					label: 'OAuth 2',
+					label: 'OAuth 2 login',
 					href: '/docs/products/auth/oauth2'
 				},
 				{
-					label: 'Anonymous',
+					label: 'Anonymous login',
 					href: '/docs/products/auth/anonymous'
 				},
 				{
-					label: 'Server integrations',
+					label: 'JWT login',
 					href: '/docs/products/auth/server-integrations'
 				},
 			]
@@ -53,10 +53,6 @@
 		{
 			label: 'Concepts',
 			items: [
-				{
-					label: 'Account vs. Users API',
-					href: '/docs/products/auth/account-vs-users-api'
-				},
 				{
 					label: 'Accounts',
 					href: '/docs/products/auth/accounts'
@@ -72,6 +68,23 @@
 				{
 					label: 'Security',
 					href: '/docs/products/auth/security'
+				}
+			]
+		},
+		{
+			label: 'References',
+			items: [
+				{
+					label: 'Account API',
+					href: '/docs/references/cloud/client-web/account'
+				},
+				{
+					label: 'Users API',
+					href: '/docs/references/cloud/server-nodejs/users'
+				},
+				{
+					label: 'Users API',
+					href: '/docs/references/cloud/client-web/teams'
 				}
 			]
 		},
