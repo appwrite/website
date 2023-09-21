@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-	import { FooterNav, MainFooter, Newsletter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { AuthorData } from './Author.svelte';
@@ -159,36 +159,17 @@
 					<ul class="aw-grid-articles">
 						{#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
 							{@const author = authors.find((a) => a.name.includes(post.author))}
-							<li>
-								<a class="aw-grid-articles-item" href="/blog">
-									<div class="aw-grid-articles-item-image">
-										<img src={post.cover} class="aw-image-ratio-4/3" alt={post.title} />
-									</div>
-									<div class="aw-grid-articles-item-content">
-										<h4 class="aw-label aw-u-color-text-primary">
-											{post.title}
-										</h4>
-										<div class="aw-author">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img
-													class="aw-author-image"
-													src={author?.avatar}
-													width="24"
-													height="24"
-													alt={author?.name}
-												/>
-												<div class="aw-author-info">
-													<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author?.name}</h4>
-													<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-														<li>{post.date.toLocaleDateString()}</li>
-														<li>{post.timeToRead} min</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
+							{#if author}
+								<Article
+									title={post.title}
+									href={post.href}
+									cover={post.cover}
+									date={post.date}
+									timeToRead={post.timeToRead}
+									avatar={author.avatar}
+									author={author.name}
+								/>
+							{/if}
 						{/each}
 					</ul>
 				</section>
