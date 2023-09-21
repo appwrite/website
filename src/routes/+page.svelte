@@ -80,7 +80,7 @@
 							class="u-block"
 							src="/images/pages/homepage/dashboard.svg"
 							alt="console dashboard"
-							style="aspect-ratio: 16 / 9"
+							style="aspect-ratio: 1244 / 717"
 						/>
 					</div>
 				</section>
