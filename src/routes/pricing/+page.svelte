@@ -150,8 +150,8 @@
 								<p class="u-margin-block-start-8">
 									Large scale projects seeking greater performance, collaboration and security.
 								</p>
-								<button class="aw-button is-secondary u-margin-block-start-32">
-									<span>Contact Us</span>
+								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
+									<span>Contact us</span>
 								</button>
 							</article>
 						</li>
@@ -166,8 +166,8 @@
 								<p class="u-margin-block-start-8">
 									We support OSS companies with a free Pro Plan. Get in touch to find out.
 								</p>
-								<button class="aw-button is-secondary u-margin-block-start-32">
-									<span>Contact Us</span>
+								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
+									<span>Contact us</span>
 								</button>
 							</article>
 						</li>
