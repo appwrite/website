@@ -18,12 +18,12 @@
 
 		const onLoad = () => {
 			loaded.set(true);
+
 			node.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
 		};
 
 		node?.addEventListener('load-complete', onLoad);
 
-		console.log(node);
 		if (node._loaded) {
 			onLoad();
 		}
@@ -38,7 +38,9 @@
 	const fallback = (node: HTMLElement) => {
 		const destroy = loaded.subscribe((l) => {
 			if (!l) return;
-			node?.style.setProperty('display', 'none');
+			setTimeout(() => {
+				node?.style.setProperty('display', 'none');
+			}, 500);
 		});
 
 		return {
