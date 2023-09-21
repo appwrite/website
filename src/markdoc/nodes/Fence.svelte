@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './Fence.css';
+	import '$scss/hljs.css';
 	import { getCodeHtml, type Language } from '$lib/utils/code';
 	import { getContext, hasContext } from 'svelte';
 	import { platformMap } from '$lib/utils/references';
@@ -52,6 +52,7 @@
 
 {#if insideMultiCode}
 	{#if $selected === language}
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html result}
 	{/if}
 {:else}
@@ -82,6 +83,7 @@
 			</div>
 		</header>
 		<div class="aw-code-snippet-content">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html result}
 		</div>
 	</section>

@@ -9,6 +9,7 @@
 	import { browser } from '$app/environment';
 	import { MobileNav } from '$lib/components';
 	import { isVisible } from '$lib/utils/isVisible';
+	import { createScrollInfo } from '$lib/utils/scroll';
 	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
@@ -45,11 +46,12 @@
 	function getVisibleTheme() {
 		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
 			(element) => {
-				const { classList } = element;
+				const { classList, dataset } = element as HTMLElement;
 				if (
 					classList.contains('aw-mobile-header') ||
 					classList.contains('aw-main-header') ||
-					element === document.body
+					element === document.body ||
+					typeof dataset['themeIgnore'] === 'string'
 				) {
 					return false;
 				}
@@ -96,12 +98,26 @@
 	];
 
 	$: resolvedTheme = isMobileNavOpen ? 'dark' : theme;
+
+	const scrollInfo = createScrollInfo();
+
+	$: isHeaderHidden = (() => {
+		if ($scrollInfo.top < 250) {
+			return false;
+		}
+		if ($scrollInfo.direction === 'down') {
+			return true;
+		}
+
+		return $scrollInfo.deltaDirChange < 200;
+	})();
 </script>
 
 <div class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
 		class:is-transparent={browser && !isMobileNavOpen}
+		class:is-hidden={isHeaderHidden}
 	>
 		<div class="aw-mobile-header-start">
 			<a href="/">
@@ -138,8 +154,12 @@
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
-		<!-- Hidden for now. <div class="aw-top-banner">
+	<header
+		class="aw-main-header theme-{resolvedTheme}"
+		class:is-transparent={browser}
+		class:is-hidden={isHeaderHidden}
+	>
+		<div class="aw-top-banner">
 			<div class="aw-top-banner-content aw-u-color-text-primary">
 				<span class="aw-caption-500">We are having lots of fun on</span>
 				<span class="aw-icon-discord" aria-hidden="true" />
@@ -148,7 +168,8 @@
 					<span class="aw-icon-close" aria-hidden="true" />
 				</button>
 			</div>
-		</div> -->
+		</div>
+
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">

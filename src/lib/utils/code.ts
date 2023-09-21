@@ -55,7 +55,7 @@ const languages = {
 	py: python,
 	rb: ruby,
 	cs: csharp,
-	css: css,
+	css: css
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<Platform, keyof typeof languages> = {
@@ -97,7 +97,12 @@ type Args = {
 export const getCodeHtml = (args: Args) => {
 	const { content, language, withLineNumbers } = args;
 	const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
-	const lines = res.split(/\n/g).slice(0, -1);
+	const lines = res.split(/\n/g);
+
+	while (lines.length > 0 && lines[lines.length - 1] === '') {
+		lines.pop();
+	}
+
 	const final = lines.reduce((carry, line) => {
 		carry += `<span class="line">${line}</span>\n`;
 		return carry;
