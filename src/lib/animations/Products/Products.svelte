@@ -331,6 +331,7 @@
 		min-height: 500vh;
 		height: 6000px;
 		position: relative;
+		padding-block-end: 20rem;
 
 		--debug-bg: transparent;
 
