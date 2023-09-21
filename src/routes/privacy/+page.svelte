@@ -1013,26 +1013,26 @@
 								In addition to the recipients described above, we may share your Personal Data as
 								follows:
 							</p>
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								With our business partners with whom we jointly offer products or services. We may
 								also share Personal Data with our affiliated companies.
 							</p>
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								To the extent necessary, with regulators, courts or competent authorities, to comply
 								with applicable laws, regulations and rules (including, without limitation, federal,
 								state or local laws), and requests of law enforcement, regulatory and other
 								governmental agencies or if required to do so by court order;
 							</p>
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								If, in the future, we sell or transfer, or we consider selling or transferring, some
 								or all of our business, shares or assets to a third party, we will disclose your
 								Personal Data to such third party (whether actual or potential) in connection with
 								the foregoing events;
 							</p>
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								In the event that we are acquired by, or merged with, a third party entity, or in
 								the event of bankruptcy or a comparable event, we reserve the right to transfer,
@@ -1041,7 +1041,7 @@
 								company assets, consolidation or restructuring, financing, or acquisition of all or
 								a portion of our business by or to another company; and/or
 							</p>
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								Where you have provided your consent to us sharing or transferring your Personal
 								Data (e.g., where you provide us with marketing consents or opt-in to optional
@@ -1126,7 +1126,7 @@
 								</li>
 							</ul>
 
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								You can exercise your rights by contacting us at privacy@appwrite.io. You may use an
 								authorized agent to submit a request on your behalf if you provide the authorized
@@ -1145,7 +1145,7 @@
 								the maximum extent possible, all in accordance with applicable law.
 							</p>
 
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
+							<span class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-12" />
 							<p>
 								Deleting your account: Should you ever decide to delete your account, you may do so
 								by emailing privacy@appwrite.io. If you terminate your account, any association
