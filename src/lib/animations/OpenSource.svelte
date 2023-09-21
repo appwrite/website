@@ -115,7 +115,8 @@
 		</p>
 
 		<div class="cards-wrapper">
-			<div
+			<a
+				href="https://discord.com/invite/GSeTUeA"
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-discord"
 			>
@@ -123,19 +124,21 @@
 					<span class="aw-icon-discord aw-u-font-size-40" aria-hidden="true" aria-label="Discord" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
-			</div>
+			</a>
 
-			<div
+			<a
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-github"
+				href="https://github.com/appwrite/appwrite"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-github aw-u-font-size-40" aria-hidden="true" aria-label="GitHub" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">32k+ GitHub Stars</div>
-			</div>
+			</a>
 
-			<div
+			<a
+				href="https://twitter.com/appwrite"
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-twitter"
 			>
@@ -143,27 +146,25 @@
 					<span class="aw-icon-x aw-u-font-size-40" aria-hidden="true" aria-label="Twitter" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
-			</div>
+			</a>
 
-			<div
-				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
-				id="oss-youtube"
-			>
+			<a class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">16k+ Youtube Subscribers</div>
-			</div>
+			</a>
 
-			<div
+			<a
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-commits"
+				href="https://github.com/appwrite/appwrite"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-github aw-u-font-size-40" aria-hidden="true" aria-label="GitHub" />
 				</div>
 				<div class="aw-title u-margin-block-start-auto">15k+ Code Commits</div>
-			</div>
+			</a>
 		</div>
 	</div>
 </div>
@@ -245,6 +246,10 @@
 		width: var(--w);
 		height: var(--h);
 		text-align: left;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
 		position: absolute;
 		left: calc(50% - calc(var(--w) / 2));
