@@ -23,8 +23,8 @@
 	export const infos: { [K in Product]?: ProductInfo } = {
 		auth: {
 			icon: {
-				active: './images/icons/illustrated/auth.svg',
-				inactive: './images/icons/illustrated/auth-gray.svg'
+				active: './images/icons/illustrated/dark/auth.png',
+				inactive: './images/icons/illustrated/dark/auth-transparent.png'
 			},
 			title: 'Auth',
 			subtitle: 'Secure login for all your users',
@@ -38,8 +38,8 @@
 		},
 		databases: {
 			icon: {
-				active: './images/icons/illustrated/databases.svg',
-				inactive: './images/icons/illustrated/databases-gray.svg'
+				active: './images/icons/illustrated/dark/databases.png',
+				inactive: './images/icons/illustrated/dark/databases-transparent.png'
 			},
 			title: 'Databases',
 			subtitle: 'Store, query and manage your data',
@@ -50,8 +50,8 @@
 		},
 		storage: {
 			icon: {
-				active: './images/icons/illustrated/storage.svg',
-				inactive: './images/icons/illustrated/storage-gray.svg'
+				active: './images/icons/illustrated/dark/storage.png',
+				inactive: './images/icons/illustrated/dark/storage-transparent.png'
 			},
 			title: 'Storage',
 			subtitle: 'Secure login for all your users',
@@ -65,8 +65,8 @@
 		},
 		functions: {
 			icon: {
-				active: './images/icons/illustrated/functions.svg',
-				inactive: './images/icons/illustrated/functions-gray.svg'
+				active: './images/icons/illustrated/dark/functions.png',
+				inactive: './images/icons/illustrated/dark/functions-transparent.png'
 			},
 			title: 'Functions',
 			subtitle: 'Secure login for all your users',
@@ -80,8 +80,8 @@
 		},
 		realtime: {
 			icon: {
-				active: './images/icons/illustrated/realtime.svg',
-				inactive: './images/icons/illustrated/realtime-gray.svg'
+				active: './images/icons/illustrated/dark/realtime.png',
+				inactive: './images/icons/illustrated/dark/realtime-transparent.png'
 			},
 			title: 'Realtime',
 			subtitle: 'Secure login for all your users',
