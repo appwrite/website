@@ -40,8 +40,9 @@ Before deploying your function with Git, create a new function attached to your 
 
 ## CLI  {% #cli %} 
 
-> ### CLI Setup {% #cli-setup %} 
-> Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](#) the CLI.
+{% info title="CLI Setup" %}
+Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
+{% /info %}
 
 To deploy with the Appwrite CLI, your function must be added to `appwrite.json`. Use the `appwrite init function` method to create a starter function, then paste in your function code.
 
