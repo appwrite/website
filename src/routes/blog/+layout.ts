@@ -51,7 +51,7 @@ export function load() {
 			twitter: frontmatter.twitter,
 			linkedin: frontmatter.linkedin,
 			github: frontmatter.github,
-			href: `${base}/blog/author/${name}`
+			href: `${base}/blog/author/${frontmatter.name.toLowerCase().replaceAll(' ', '-')}`
 		};
 	});
 
