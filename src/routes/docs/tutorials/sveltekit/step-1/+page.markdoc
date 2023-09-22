@@ -1,0 +1,28 @@
+---
+layout: tutorial
+title: Introduction
+description: This is the description used for SEO.
+step: 1
+difficulty: easy
+readtime: 10
+---
+
+**Idea Tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+In this tutorial, you will build Idea Tracker with Appwrite and SvelteKit.
+
+[TODO: Image] 
+
+You can follow along with a fresh repo or [clone the project on GitHub](#).
+
+## Concepts {% #concepts %}
+This tutorial will introduce the following concepts:
+
+1. Setting up your first project
+2. Authentication 
+3. Databases and collections
+4. Queries and pagination
+5. Storage
+
+## Prerequisites {% #prerequisites %}
+1. Basic knowledge of JavaScript and Svelte.
+2. Have [Node.js](#) and [NPM](#) installed on your computer
