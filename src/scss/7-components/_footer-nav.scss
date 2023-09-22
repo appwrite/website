@@ -4,7 +4,7 @@
   display:flex; justify-content:space-between; padding-block:pxToRem(64); font-size:var(--aw-font-size-tiny);
   .aw-logo { align-self:start; }
   &-main {
-    &-title { margin-block-end:pxToRem(24); text-transform: uppercase; color:hsl(var(--aw-color-secondary)) }
+    &-title { margin-block-end:pxToRem(24); }
     &-list  { display:flex; justify-content:space-between;  flex-basis:pxToRem(830); }
     &-item {}
     &-button {}
