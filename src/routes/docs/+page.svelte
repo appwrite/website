@@ -763,11 +763,13 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/storage.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
+							<p class="aw-sub-body-400 u-margin-block-start-4">
+								Store images, videos, documents, and files.
+							</p>
 						</div>
 					</li>
 					<li>
@@ -783,7 +785,6 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/dark/messaging.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
