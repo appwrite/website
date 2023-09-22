@@ -83,7 +83,7 @@
 					href: '/docs/references/cloud/server-nodejs/users'
 				},
 				{
-					label: 'Users API',
+					label: 'Teams API',
 					href: '/docs/references/cloud/client-web/teams'
 				}
 			]
