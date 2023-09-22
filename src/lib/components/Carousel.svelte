@@ -2,16 +2,17 @@
 	let carousel: HTMLElement;
 
 	const gap = 32;
-	const numberOfItems = 3;
 	let scroll = 0;
 
 	function calculateScrollAmount(prev = false) {
 		const direction = prev ? -1 : 1;
-		const size = scroll || carousel?.clientWidth;
+		const carouselSize = carousel?.clientWidth;
+		const size = scroll || carouselSize;
 		if (!scroll) {
 			scroll = size;
 		}
 		const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+		const numberOfItems = Math.floor(carouselSize / childSize);
 		const overflow = size % childSize;
 		const amount = numberOfItems * childSize - overflow * direction;
 		scroll += amount * direction;
