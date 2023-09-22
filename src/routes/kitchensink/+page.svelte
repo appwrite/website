@@ -73,27 +73,6 @@
 				<li>item</li>
 			</ol>
 			<br /><br /><br />
-			<ul class="aw-checked-list">
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-			</ul>
-			<br /><br /><br />
 		</div>
 		<div class="u-flex u-gap-16">
 			<input type="checkbox" class="is-small" />
@@ -245,8 +224,8 @@
 		</div>
 
 		<div>
-			<a class="aw-link">link</a><br />
-			<a class="aw-link is-disabled">disabled link</a>
+			<a href="#top" class="aw-link">link</a><br />
+			<a href="#top" class="aw-link is-disabled">disabled link</a>
 		</div>
 
 		<div>
@@ -284,7 +263,7 @@
 			</button>
 		</div>
 		<div class="u-flex u-gap-8">
-			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text" disabled>
+			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="18"

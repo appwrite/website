@@ -642,9 +642,6 @@
 		> svg {
 			margin-block-start: 1.25rem;
 			margin-inline: 0.5rem 1.5rem;
-
-			path {
-			}
 		}
 	}
 </style>

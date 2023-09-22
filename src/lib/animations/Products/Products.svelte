@@ -408,7 +408,7 @@
 	}
 
 	.products {
-		background: var(--debug-bg, hsl(250 50 50 / 0.25));
+		background: var(--debug-bg, hsla(250, 50%, 50%, 0.25));
 
 		display: flex;
 		justify-content: space-between;
@@ -419,7 +419,7 @@
 		transition: 200ms ease;
 
 		.text {
-			background: var(--debug-bg, hsl(200 50 50 / 0.25));
+			background: var(--debug-bg, hsla(200, 50%, 50%, 0.25));
 			display: flex;
 			flex-grow: 1;
 			max-width: 25rem;
@@ -500,7 +500,7 @@
 	}
 
 	.animated {
-		background: var(--debug-bg, hsl(100 50 50 / 0.25));
+		background: var(--debug-bg, hsl(100, 50%, 50%, 0.25));
 		width: min(42rem, 50vw);
 		height: min(38.75rem, 90vh);
 
