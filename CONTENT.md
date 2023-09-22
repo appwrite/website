@@ -181,6 +181,29 @@ Lorem ipsum dolor sit amet consectetur.
 
 #### Icon
 
+Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
+
 ```
 {% icon icon="github" /%}
+{% icon icon="github" size="m" /%}
+{% icon icon="github" size="l" /%}
+{% icon icon="github" size="xl" /%}
+```
+
+#### Icon Image
+
+Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
+
+```
+{% icon_image src="/icon.png" alt="Icon" /%}
+{% icon_image src="/icon.png" alt="Icon" size="m" /%}
+{% icon_image src="/icon.png" alt="Icon" size="l" /%}
+{% icon_image src="/icon.png" alt="Icon" size="xl" /%}
+```
+
+#### Only Light/Dark Theme
+
+```
+{% only_dark %}I am only shown in Dark Theme{% /only_dark %}
+{% only_light %}I am only shown in Light Theme{% /only_light %}
 ```

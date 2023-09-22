@@ -1,5 +1,6 @@
-import svgtofont from 'svgtofont';
+// @ts-expect-error missing types
 import SVGFixer from 'oslllo-svg-fixer';
+import svgtofont from 'svgtofont';
 import { resolve } from 'path';
 
 const src = resolve(process.cwd(), 'src/icons/svg');
@@ -25,9 +26,6 @@ export const generateIcons = async () => {
 		},
 		emptyDist: true,
 		generateInfoData: true,
-		svgoOptions: {
-			full: false
-		}
 	});
 };
 

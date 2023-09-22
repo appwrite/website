@@ -6,11 +6,11 @@
 </script>
 
 <td
+	style:width={width ? `${width}px` : undefined}
 	style:min-inline-size={width ? 'unset' : undefined}
 	role="columnheader"
 	class="aw-table-head-col"
 	{align}
-	{width}
 >
 	<span class="aw-eyebrow">
 		<slot />

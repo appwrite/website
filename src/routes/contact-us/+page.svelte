@@ -50,17 +50,17 @@
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-twitter" target="_blank">
-												<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-x" target="_blank">
+												<span class="aw-icon-x" aria-hidden="true"></span>
 											</a>
 										</li>
 										<li>
-											<a href="#" class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
+											<a href="https://linkedin.com/company/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-linkedin" target="_blank">
 												<span class="aw-icon-linkedin" aria-hidden="true"></span>
 											</a>
 										</li>
 										<li>
-											<a href="#" class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
+											<a href="https://youtube.com/c/appwrite?sub_confirmation=1" class="aw-icon-button" aria-label="Appwrite on YouTube" target="_blank">
 												<span class="aw-icon-youtube" aria-hidden="true"></span>
 											</a>
 										</li>
@@ -87,11 +87,11 @@
 									</li>
 								</ul>
 							</div>
-							<div class="u-flex u-gap-16 u-main-space-between">
+							<div class="u-flex u-gap-16 u-main-space-between aw-u-flex-vertical-reverse-mobile">
 								<p class="aw-caption-400 aw-u-max-width-380">
 									This form is protected by reCAPTCHA, and the Google <a class="aw-link" href="/privacy" target="_blank">Privacy Policy</a> and <a class="aw-link" href="/terms" target="_blank">Terms of Service</a> apply.
 								</p>
-								<button class="aw-button u-cross-child-center">
+								<button class="aw-button u-cross-child-center aw-u-inline-width-100-percent-mobile-break1">
 									<span>Submit</span>
 								</button>
 							</div>

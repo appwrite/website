@@ -55,19 +55,24 @@ But of course you can also have a quote:
 ##### Header 5
 
 1. This is an ordered list following a header.
-2. This is an ordered list following a header.
-3. This is an ordered list following a header.
+1. This is an ordered list following a header.
+1. This is an ordered list following a header.
 
 ###### Header 6
 
 This is a nice table:
 
-| head1 {% width=20 %} | head two             | three                |
-| -------------------- | -------------------- | -------------------- |
-| ok                   | good swedish fish    | nice                 |
-| ok                   | good and plenty      | nice                 |
-| ok                   | good `oreos`         | hmm                  |
-| ok                   | good `zoute` drop    | yumm                 |
+{% icon icon="github" /%}
+{% icon icon="github" size="m"  /%}
+{% icon icon="github" size="l"  /%}
+{% icon icon="github" size="xl"  /%}
+
+| test {% width=140 %}                                     | head two                                                 | three                                                    |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| {% icon_image src="/favicon.png" alt="Icon" /%}          | good swedish fish                                        | nice                                                     |
+| {% icon_image src="/favicon.png" alt="Icon" size="m" /%} | good and plenty                                          | nice                                                     |
+| {% icon_image src="/favicon.png" alt="Icon" size="l" /%} | good `oreos`                                             | hmm                                                      |
+| {% icon_image src="/favicon.png" alt="Icon" size="xl" /%} | good `zoute` drop                                        | yumm                                                     |
 
 ### There's a horizontal rule below this.
 
@@ -150,6 +155,7 @@ Lorem ipsum dolor sit amet consectetur. Id nisi quam nisl iaculis semper nibh eg
 
 ## Sub title
 
+{% multicode %}
 ```js
 const sdk = require('node-appwrite');
 
