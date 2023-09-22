@@ -466,8 +466,8 @@
 		<div class="aw-big-padding-section-level-1 aw-white-section theme-light">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<div class="aw-grid-15-25-desktop">
-						<div class="aw-hero is-align-start">
+					<div class="aw-grid-15-25-desktop aw-u-column-gap-96">
+						<div class="aw-hero is-align-start aw-u-max-width-380">
 							<div class="aw-display aw-u-color-text-primary">Visit the community</div>
 							<p class="aw-description">Discover more about Appwrite by visiting our community across platforms.</p>
 						</div>
