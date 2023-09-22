@@ -10,7 +10,8 @@
 		'qwik',
 		'react',
 		'sveltekit',
-		'vuejs'
+		'vuejs',
+		'node'
 	];
 </script>
 
