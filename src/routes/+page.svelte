@@ -332,20 +332,20 @@
 						</section>
 						<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">12</div>
-								<div class="text">Regions served</div>
+								<div class="aw-headline aw-u-color-text-primary">200M</div>
+								<div class="text">Requests served / month</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">900TB</div>
-								<div class="text">of data served</div>
+								<div class="aw-headline aw-u-color-text-primary">3TB</div>
+								<div class="text">Bandwidth served / month</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">1 million</div>
-								<div class="text">end users</div>
+								<div class="aw-headline aw-u-color-text-primary">20K</div>
+								<div class="text">Organizations</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">999</div>
-								<div class="text">total compute time</div>
+								<div class="aw-headline aw-u-color-text-primary">99.99%</div>
+								<div class="text">Guaranteed uptime</div>
 							</li>
 						</ul>
 					</div>
