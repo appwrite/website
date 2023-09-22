@@ -307,7 +307,7 @@
 				<div class="aw-container u-position-relative">
 					<section class="aw-hero is-align-start">
 						<span class="aw-badges aw-eyebrow">SDKs_</span>
-						<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Code the way you want</h2>
+						<h2 class="aw-display aw-u-color-text-primary u-max-width-600">Code the way you want</h2>
 						<p class="aw-description u-max-width-600">
 							We support many SDKs making Appwrite flexible to your needs and ensuring you can code with the language you want at any time.
 						</p>
