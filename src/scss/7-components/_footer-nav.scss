@@ -4,7 +4,7 @@
   display:flex; justify-content:space-between; padding-block:pxToRem(64); font-size:var(--aw-font-size-tiny);
   .aw-logo { align-self:start; }
   &-main {
-    &-title { margin-block-end:pxToRem(24); }
+    &-title { margin-block-end:pxToRem(24); text-transform: uppercase; color:hsl(var(--aw-color-secondary)) }
     &-list  { display:flex; justify-content:space-between;  flex-basis:pxToRem(830); }
     &-item {}
     &-button {}
@@ -13,7 +13,10 @@
   &-secondary {
     &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
     &-item {
-      a { color:hsl(var(--aw-color-greyscale-500)); }
+      a { 
+        color:hsl(var(--aw-color-primary));
+        &:hover { color:hsl(var(--aw-color-grayscale-500)); }
+       }
       }
   }
 
