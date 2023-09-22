@@ -3,12 +3,17 @@
 .#{$p}-card {
   --p-card-padding: var(--card-padding, #{pxToRem(24)});
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
+
   &.is-normal {
     --p-card-bg-color: var(--p-card-bg-color-default);
     --p-card-bg-color-default: var(--aw-color-card);
 
     --p-card-border-color: var(--p-card-border-color-default);
-    --p-card-border-color-default: var(--aw-color-black) / 0.08;
+    --p-card-border-color-default: var(--aw-color-offset);
+
+    --p-card-shadow-color: var(--p-card-shadow-color-default);
+    --p-card-shadow-color-default: var(--aw-color-black) / 0;
+    --p-card-shadow-color-focus-visible: var(--aw-color-black) / 0.06;
 
     --card-padding: #{pxToRem(16)};
 
@@ -18,8 +23,24 @@
     padding: var(--p-card-padding);
     border-radius: var(--p-card-border-radius);
 
+    &:where(a, button) {
+      cursor:pointer;
+      outline: solid pxToRem(1) hsl(var(--transparent));
+      box-shadow: 0 0 0 pxToRem(5) hsl(var(--p-card-shadow-color));
+      transition:var(--transition);
+      &:where(:hover, :focus):not(#{$disabled}) {
+        outline-color: hsl(var(--p-card-border-color));
+      }
+      &:where(:focus-visible) {
+        --p-card-shadow-color: var(--p-card-shadow-color-focus-visible);
+      }
+      &:where(#{$disabled}) { opacity:0.4; }
+    }
+
     #{$theme-dark} & {
       --p-card-border-color-default: var(--aw-color-white) / 0.10;
+
+      --p-card-shadow-color-focus-visible: var(--aw-color-white) / 0.06;
     }
   }
   &.is-white {
