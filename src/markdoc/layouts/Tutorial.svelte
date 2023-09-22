@@ -8,7 +8,7 @@
 
 <script lang="ts">
 	import { DocsTutorial } from '$lib/layouts';
-	import { getContext, onMount, setContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { MainFooter } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 	import { writable } from 'svelte/store';
@@ -19,7 +19,6 @@
 	export let difficulty: string;
 	export let readtime: string;
 	export let step: number;
-	export let tutorial: string;
 
 	setContext<LayoutContext>('headings', writable({}));
 
