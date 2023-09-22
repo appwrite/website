@@ -764,7 +764,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/storage.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
