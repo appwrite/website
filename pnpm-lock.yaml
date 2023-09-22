@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@appwrite.io/pink':
-    specifier: 0.0.7-sl10.0
-    version: 0.0.7-sl10.0
+    specifier: 0.1.0-next.9
+    version: 0.1.0-next.9
   '@appwrite.io/pink-icons':
-    specifier: 0.0.7-sl10.0
-    version: 0.0.7-sl10.0
+    specifier: 0.1.0-next.9
+    version: 0.1.0-next.9
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite
     version: github.com/appwrite/appwrite/ddb73eb4f60aa807fd0bfe8622da32a69738077a
@@ -122,14 +122,14 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: true
 
-  /@appwrite.io/pink-icons@0.0.7-sl10.0:
-    resolution: {integrity: sha512-lEC79/0YEWVbwtIFgwONbBelNX07I2d3q2fmzub3X3DR/0ZB4JMy5zyO0h8EMbOB00DxkI8rW7KlwDSstQ3fGw==}
+  /@appwrite.io/pink-icons@0.1.0-next.9:
+    resolution: {integrity: sha512-6t4Pqt/xugjpJQyaMx1u/7Gt9CkW5iItDAgUKcIMm84E4NbDJq8ZdAhhvctGQQppKUgHDPi+6x1XveUUd7tdbg==}
     dev: false
 
-  /@appwrite.io/pink@0.0.7-sl10.0:
-    resolution: {integrity: sha512-vAwXT9XAM9K5m7c0wU2+eCBxwEEg6974Y2lw9qW2iHN+0mKABBDh+7UVCuIHn3pbgVY/UYL0Vo0M0GrQIlmZMQ==}
+  /@appwrite.io/pink@0.1.0-next.9:
+    resolution: {integrity: sha512-W5xVm2ZXlEqbbKv0GkpnM5saunDKdSfuhWouLnORsonENGFsG529PxRjqeClz4zrlkt2x1DiwN175wpgV3GoEQ==}
     dependencies:
-      '@appwrite.io/pink-icons': 0.0.7-sl10.0
+      '@appwrite.io/pink-icons': 0.1.0-next.9
       normalize.css: 8.0.1
       the-new-css-reset: 1.9.0
     dev: false
