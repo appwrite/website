@@ -73,27 +73,6 @@
 				<li>item</li>
 			</ol>
 			<br /><br /><br />
-			<ul class="aw-checked-list">
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-				<li>
-					<span type="checkbox" class="is-checked" aria-label="has">
-						<span class="icon-check" aria-hidden="true" />
-					</span>
-					<span class="text">item</span>
-				</li>
-			</ul>
-			<br /><br /><br />
 		</div>
 		<div class="u-flex u-gap-16">
 			<input type="checkbox" class="is-small" />
@@ -110,7 +89,7 @@
 			<li><div class="aw-numeric-badge">5</div></li>
 		</ul>
 		<div class="u-flex u-gap-16">
-			<button class="aw-button is-text">
+			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="18"
@@ -129,7 +108,7 @@
 				</svg>
 				<span class="text">Star on GitHub</span>
 				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-			</button>
+			</a>
 
 			<button class="aw-button is-text is-only-icon">
 				<svg
@@ -245,8 +224,8 @@
 		</div>
 
 		<div>
-			<a class="aw-link">link</a><br />
-			<a class="aw-link is-disabled">disabled link</a>
+			<a href="#top" class="aw-link">link</a><br />
+			<a href="#top" class="aw-link is-disabled">disabled link</a>
 		</div>
 
 		<div>
@@ -256,7 +235,7 @@
 		</div>
 
 		<div class="u-flex u-gap-8">
-			<button class="aw-button is-text">
+			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="18"
@@ -275,7 +254,7 @@
 				</svg>
 				<span class="text">Star on GitHub</span>
 				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-			</button>
+			</a>
 			<button class="aw-button is-secondary">
 				<span class="text">Sign Up</span>
 			</button>
@@ -284,7 +263,7 @@
 			</button>
 		</div>
 		<div class="u-flex u-gap-8">
-			<button class="aw-button is-text" disabled>
+			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="18"
@@ -303,7 +282,7 @@
 				</svg>
 				<span class="text">Star on GitHub</span>
 				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-			</button>
+			</a>
 			<button class="aw-button is-secondary" disabled>
 				<span class="text">Sign Up</span>
 			</button>

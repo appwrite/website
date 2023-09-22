@@ -5,12 +5,13 @@
   --p-side-nav-item-icon-color: var(--p-side-nav-icon-item-color-default);
   --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-default);
 
-  --p-side-nav-text-item-color-default: var(--aw-color-greyscale-900);
+  --p-side-nav-text-item-color-default: var(--aw-color-secondary);
   --p-side-nav-icon-item-color-default: var(--aw-color-greyscale-250);
   --p-side-nav-item-bg-color-default:  var(--transparent);
 
   --p-side-nav-item-bg-color-hover: var(--aw-color-greyscale-50);
 
+  --p-side-nav-item-text-color-selected: var(--aw-color-primary);
   --p-side-nav-item-icon-color-selected: linear-gradient( hsla(343, 98%, 60%, 1), hsla(22, 98%, 60%, 1) );
 
   --p-side-nav-bg-color: var(--p-body-bg-color);
@@ -56,6 +57,7 @@
       --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-hover);
     }
     &.is-selected {
+      color: hsl(var(--p-side-nav-item-text-color-selected));
       [class*="icon"]:first-child {
         background: var(--p-side-nav-item-icon-color-selected);
         -webkit-background-clip: text;
@@ -88,7 +90,6 @@
   }
 
   #{$theme-dark} & {
-    --p-side-nav-text-item-color-default: var(--aw-color-greyscale-100);
     --p-side-nav-item-bg-color-hover: var(--aw-color-white) / 0.08;
   }
 }
