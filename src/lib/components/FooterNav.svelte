@@ -22,26 +22,36 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/quick-starts/flutter">Flutter</a>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/flutter">Flutter</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/quick-starts/nextjs">Next.js</a>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/nextjs">Next.js</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/vuejs">Vue.js</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/quick-starts/sveltekit">SvelteKit</a>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/vuejs">Vue.js</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/apple">Apple</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/quick-starts/android">Android</a>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/sveltekit">SvelteKit</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nuxt">Nuxt</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/quick-starts/angular">Angular</a>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/apple">Apple</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/qwik">Qwik</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/astro">Astro</a></li>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/android">Android</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/nuxt">Nuxt</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/angular">Angular</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/qwik">Qwik</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/quick-starts/astro">Astro</a>
+				</li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
@@ -65,15 +75,21 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/auth">Auth</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/products/databases">Databases</a>
+				<li>
+					<a class="aw-link" href="/docs/products/auth">Auth</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs/products/functions">Functions</a>
+				<li>
+					<a class="aw-link" href="/docs/products/databases">Databases</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/storage">Storage</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/apis/realtime">Realtime</a></li>
+				<li>
+					<a class="aw-link" href="/docs/products/functions">Functions</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/products/storage">Storage</a>
+				</li>
+				<li>
+					<a class="aw-link" href="/docs/apis/realtime">Realtime</a>
+				</li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
@@ -97,17 +113,21 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item">
-					<a href="/docs">Docs</a>
+				<li>
+					<a class="aw-link" href="/docs">Docs</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/community">Community</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/blog">Blog</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/roadmap">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a>
+				<li>
+					<a class="aw-link" href="/community">Community</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="https://status.appwrite.io" target="_blank">Status</a>
+				<li><a class="aw-link" href="/blog">Blog</a></li>
+				<li><a class="aw-link" href="/roadmap">Roadmap</a></li>
+				<li>
+					<a class="aw-link" href="https://github.com/appwrite/appwrite/releases" target="_blank"
+						>Changelog</a
+					>
+				</li>
+				<li>
+					<a class="aw-link" href="https://status.appwrite.io" target="_blank">Status</a>
 				</li>
 			</ul>
 		</li>
@@ -132,15 +152,17 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/company">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/careers">Careers</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
-				<li class="aw-footer-nav-secondary-item">
-					<a href="https://store.appwrite.io" target="_blank">Store</a>
+				<li><a class="aw-link" href="/pricing">Pricing</a></li>
+				<li><a class="aw-link" href="/company">Company</a></li>
+				<li><a class="aw-link" href="/careers">Careers</a></li>
+				<li><a class="aw-link" href="/heroes">Heroes</a></li>
+				<li>
+					<a class="aw-link" href="https://store.appwrite.io" target="_blank">Store</a>
 				</li>
-				<li class="aw-footer-nav-secondary-item"><a href="/brand">Brand</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/contact-us">Contact us</a></li>
+				<li><a class="aw-link" href="/brand">Brand</a></li>
+				<li>
+					<a class="aw-link" href="/contact-us">Contact us</a>
+				</li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
@@ -164,9 +186,9 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="/cookies">Cookies</a></li>
+				<li><a class="aw-link" href="/terms">Terms</a></li>
+				<li><a class="aw-link" href="/privacy">Privacy</a></li>
+				<li><a class="aw-link" href="/cookies">Cookies</a></li>
 			</ul>
 		</li>
 	</ul>
