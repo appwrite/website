@@ -14,46 +14,80 @@
 				{
 					label: 'Overview',
 					href: '/docs/products/auth'
+				},
+				{
+					label: 'Quick start',
+					href: '/docs/products/auth/quick-start'
 				}
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Journeys',
 			items: [
 				{
-					label: 'Email and Password',
+					label: 'Email and password login',
 					href: '/docs/products/auth/email-password'
 				},
 				{
-					label: 'Phone (SMS)',
+					label: 'Phone (SMS) login',
 					href: '/docs/products/auth/phone-sms'
 				},
 				{
-					label: 'Magic URL',
+					label: 'Magic URL login',
 					href: '/docs/products/auth/magic-url'
 				},
 				{
-					label: 'OAuth 2',
+					label: 'OAuth 2 login',
 					href: '/docs/products/auth/oauth2'
 				},
 				{
-					label: 'Anonymous',
+					label: 'Anonymous login',
 					href: '/docs/products/auth/anonymous'
 				},
 				{
-					label: 'User Management',
-					href: '/docs/products/auth/user-management'
+					label: 'JWT login',
+					href: '/docs/products/auth/server-integrations'
+				},
+			]
+		},
+		{
+			label: 'Concepts',
+			items: [
+				{
+					label: 'Accounts',
+					href: '/docs/products/auth/accounts'
 				},
 				{
-					label: 'Server Integrations',
-					href: '/docs/products/auth/server-integrations'
+					label: 'Teams',
+					href: '/docs/products/auth/teams'
+				},
+				{
+					label: 'Labels',
+					href: '/docs/products/auth/labels'
 				},
 				{
 					label: 'Security',
 					href: '/docs/products/auth/security'
 				}
 			]
-		}
+		},
+		{
+			label: 'References',
+			items: [
+				{
+					label: 'Account API',
+					href: '/docs/references/cloud/client-web/account'
+				},
+				{
+					label: 'Users API',
+					href: '/docs/references/cloud/server-nodejs/users'
+				},
+				{
+					label: 'Users API',
+					href: '/docs/references/cloud/client-web/teams'
+				}
+			]
+		},
 	];
 </script>
 

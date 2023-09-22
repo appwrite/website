@@ -6,4 +6,51 @@ difficulty: beginner
 readtime: 3
 ---
 
-hello world
+Learn to setup your first Apple project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+![Create project screen](/images/docs/databases/quick-start/create-project.png)
+
+If this is your first time using Appwrite, create an accout and create your first project.
+
+Then, under **Add a platform**, add a **Android app** with the **Name** `My Application` and **Package name** `com.example.myapplication`. 
+
+![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+
+You can skip optional steps.
+
+{% /section %}
+{% section #step-2 step=2 title="Create Android project" %}
+Open Android Studios and click **New Project**, select **Empty Activity**. 
+**Name** the project `My Application` with **Package Name** `com.example.myapplication`.
+{% /section %}
+
+{% section #step-3 step=3 title="Install Appwrite" %}
+Install the Appwrite SDK for Android.
+
+
+{% /section %}
+
+{% section #step-4 step=4 title="Import Appwrite" %}
+Find your project's ID in the **Settings** page. 
+
+![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+
+Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+
+```swift
+TODO
+```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
+Add the following code to `src/App.jsx`.
+
+```swift
+TODO
+```
+{% /section %}
+
+{% section #step-6 step=6 title="Checkout what you've built" %}
+Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+{% /section %}

@@ -14,20 +14,29 @@
 				{
 					label: 'Overview',
 					href: '/docs/products/storage'
+				},
+				{
+					label: 'Quick start',
+					href: '/docs/products/storage/quick-start'
+				},
+			]
+		},
+		{
+			label: 'Concepts',
+			items: [
+				{
+					label: 'Buckets',
+					href: '/docs/products/storage/buckets'
+				},
+				{
+					label: 'Permissions',
+					href: '/docs/products/storage/permissions'
 				}
 			]
 		},
 		{
 			label: 'Guides',
 			items: [
-				{
-					label: 'Quick start',
-					href: '/docs/products/storage/quick-start'
-				},
-				{
-					label: 'Buckets',
-					href: '/docs/products/storage/buckets'
-				},
 				{
 					label: 'Upload and download',
 					href: '/docs/products/storage/upload-download'
@@ -36,10 +45,6 @@
 					label: 'Images',
 					href: '/docs/products/storage/images'
 				},
-				{
-					label: 'Permissions',
-					href: '/docs/products/storage/permissions'
-				}
 			]
 		}
 	];

@@ -97,7 +97,7 @@ type Args = {
 export const getCodeHtml = (args: Args) => {
 	const { content, language, withLineNumbers } = args;
 	const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
-	const lines = res.split(/\n/g).slice(0, -1);
+	const lines = res.split(/\n/g);
 
 	while (lines.length > 0 && lines[lines.length - 1] === '') {
 		lines.pop();

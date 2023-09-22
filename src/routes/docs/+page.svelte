@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Spline } from '$lib/components';
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import Sidebar from './Sidebar.svelte';
@@ -39,12 +40,26 @@
 		</svg>
 	</div>
 
-	<div
-		class="u-position-absolute aw-is-not-mobile"
-		style="inline-size:647px; inset-block-start:24rem; inset-inline-start:calc(100% - 400px)"
-	>
-		<img src="/images/temp/bg-side.png" width="647" alt="" />
-	</div>
+	<Spline let:fallback let:viewer>
+		<div
+			class="u-position-absolute aw-is-not-mobile"
+			style="inline-size:512px; block-size: 512px; inset-block-start:24rem; inset-inline-start:calc(100% - 500px)"
+		>
+			<img
+				src="/images/animations/tech.png"
+				width="512"
+				height="512"
+				alt=""
+				style="position: absolute; display: block;"
+				use:fallback
+			/>
+
+			<spline-viewer
+				url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
+				use:viewer
+			/>
+		</div>
+	</Spline>
 
 	<main class="aw-main-section u-position-relative">
 		<section class="aw-hero is-align-start">
@@ -352,7 +367,7 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/auth.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/auth.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -361,7 +376,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/databases.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/databases.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Databases</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store your application and users' data.
@@ -370,16 +385,16 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/functions.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/functions.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Functions</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Extend and customize your server’s functionality.
+								Extend and customize your server's functionality.
 							</p>
 						</div>
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/storage.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Storage</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Store images, videos, documents, and files.
@@ -388,7 +403,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/realtime.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/realtime.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Realtime</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Listen to any events on the server-side in realtime.
@@ -397,7 +412,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/messaging.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/messaging.png" alt="" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Messaging</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
