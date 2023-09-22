@@ -328,16 +328,16 @@
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
-							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you</h2>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you and your users</h2>
 						</section>
 						<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">200M</div>
-								<div class="text">Requests served / month</div>
+								<div class="aw-headline aw-u-color-text-primary">90K</div>
+								<div class="text">Projects</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">3TB</div>
-								<div class="text">Bandwidth served / month</div>
+								<div class="aw-headline aw-u-color-text-primary">200M</div>
+								<div class="text">Requests / month</div>
 							</li>
 							<li class="aw-big-list-info-item">
 								<div class="aw-headline aw-u-color-text-primary">20K</div>
