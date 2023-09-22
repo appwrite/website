@@ -122,7 +122,7 @@
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-discord aw-u-font-size-40" aria-hidden="true" aria-label="Discord" />
 				</div>
-				<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
+				<div class="aw-title u-margin-block-start-auto">17k+ Discord Members</div>
 			</div>
 
 			<div
@@ -152,7 +152,7 @@
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
 				</div>
-				<div class="aw-title u-margin-block-start-auto">16k+ Youtube Subscribers</div>
+				<div class="aw-title u-margin-block-start-auto">3k+ Youtube Subscribers</div>
 			</div>
 
 			<div
