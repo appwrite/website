@@ -219,3 +219,11 @@
 .#{$p}-u-inline-block {
   display:inline-block;
 }
+
+.#{$p}-u-uppercase{
+  text-transform:uppercase;
+}
+
+.#{$p}-u-capitalize {
+  text-transform:capitalize;
+}
