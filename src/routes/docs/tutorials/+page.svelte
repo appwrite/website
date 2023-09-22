@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { MainFooter } from '$lib/components';
-	import { Docs } from '$lib/layouts';
+	import Docs from '$lib/layouts/Docs.svelte';
 	import Sidebar from '../Sidebar.svelte';
+	import { MainFooter } from '$lib/components';
 </script>
 
 <main class="aw-main-section">
@@ -523,7 +523,6 @@
 				</ul>
 			</section>
 		</div>
-		
 	</article>
 
 	<MainFooter variant="docs" />

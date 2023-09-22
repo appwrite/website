@@ -13,25 +13,34 @@ We're always working on improving and extending the current stack of available p
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
 {% table %}
-* {% align="center" %}
+* &nbsp; {% width=80 %}
 * Platform
-* GitHub Repository {% style="width:10px" %}
+* GitHub Repository
+* &nbsp; {% width=80 %}
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
 * Web SDK `13.0.0`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
+* 
 ---
-* ![Flutter](https://appwrite.io/images-ee/platforms/flutter.svg)
+* {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
 * Flutter SDK `11.0.0`
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
+* 
 ---
-* x
+* {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
 * Apple SDK `4.0.0`
 * [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple)
+* 
 ---
-* x
+* {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
 * Android SDK `4.0.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
+* 
 {% /table %}
 
 ## Server Side {% #server-side %}
@@ -39,45 +48,64 @@ Client libraries for integrating with Appwrite to build client-based application
 Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick starts](/docs/quick-starts) guides for your language/runtime of choice to start building your first server integration.
 
 {% table %}
-* {% align="center" %}
+* &nbsp; {% width=80 %}
 * Platform
-* GitHub Repository {% style="width:10px" %}
+* GitHub Repository
+* &nbsp; {% width=80 %}
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
 * Node.js SDK `11.0.0`
 * [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
 * Dart SDK `10.0.0`
 * [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * Python SDK `4.0.0`
 * [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
 * PHP SDK `10.0.0`
 * [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
 * Ruby SDK `10.0.0`
 * [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
 * .NET SDK `0.6.0`
 * [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet)
+* `beta`
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
 * Deno SDK `9.0.0`
 * [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
 * Kotlin SDK `4.0.0`
 * [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
+* 
 ---
-* x {% align="center" %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
 * Swift SDK `4.0.0`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift)
+* 
 {% /table %}
 
 If you would like to help us extend our platforms and SDKs stack, you are more than welcome to contact us or check out our Appwrite SDK Generator project GitHub repository and read our contribution guide.

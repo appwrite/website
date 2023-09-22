@@ -6,11 +6,12 @@
 
   background: linear-gradient(135deg, hsl(var(--aw-color-pink-500)) 0%, hsl(var(--aw-color-pink-500)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
   background-origin: border-box;
-  display:flex; justify-content:center; align-items:center; gap:pxToRem(8);
+  display:flex; inline-size:fit-content; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
   border-radius:var(--m-border-radius); border:solid var(--m-border-size) transparent;
   text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-white)); font-weight: 500;
 
+  [class*="icon"] { line-height:1; }
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
 
   &:where(:hover):where(:not(#{$disabled})) {
@@ -42,7 +43,7 @@
     }
 
     
-    #{$theme-dark} & {
+    @mixin dark-mode {
       background: rgba(253, 54, 110, 0.04);
       color: hsl(var(--aw-color-greyscale-100));
       box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
@@ -97,8 +98,9 @@
         box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.16), 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
       }
     }
+   
 
-    #{$theme-light} & {
+    @mixin light-mode {
       background: rgba(253, 54, 110, 0.08);
       box-shadow: none;
       color: hsl(var(--aw-color-accent-click));
@@ -129,6 +131,17 @@
         box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.24);
       }
     }
+    @include light-mode;
+    
+    #{$theme-dark} & {
+      @include dark-mode;
+    }
+
+    #{$theme-light} & {
+      @include light-mode;
+    }
+
+  
   }
   &.is-transparent {
     background: rgba(237, 237, 240, 0.16); border-width:0;
@@ -151,7 +164,10 @@
     }
 
     &:where(:hover, :active):where(:not(#{$disabled})) {
-      box-shadow:none; backdrop-filter:blur(7.5px); color:hsl(var(--aw-color-greyscale-900));
+      box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+
+      -webkit-backdrop-filter: blur(pxToRem(8));
+      backdrop-filter: blur(pxToRem(8));
       #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
     }
     &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
@@ -166,7 +182,9 @@
     #{$theme-light} & {
       color:hsl(var(--aw-color-greyscale-700));
       &:where(:hover, :active):where(:not(#{$disabled})) {
-        box-shadow:none; backdrop-filter:blur(7.5px); color:hsl(var(--aw-color-greyscale-900));
+        box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+        -webkit-backdrop-filter:blur(pxToRem(8));
+        backdrop-filter:blur(pxToRem(8));
         #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
       }
       &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }

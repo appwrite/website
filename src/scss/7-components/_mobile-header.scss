@@ -10,7 +10,7 @@
   padding:pxToRem(20); 
   &-start { display:flex; align-items: center; }
   &-end   { display:flex; align-items: center; gap: pxToRem(8) }
-  &.is-transparent { background-color:transparent; backdrop-filter:blur(7.5px); }
+  &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); }
   @media #{$break3open} { display:none; }
 
   #{$theme-dark} &,
@@ -21,5 +21,10 @@
   #{$theme-light} &,
   &#{$theme-light} {
     --p-mobile-header-border-color: rgb(0,0,0, 0.1);
+  }
+
+  transition: transform 0.3s ease;
+  &.is-hidden {
+    transform: translateY(-100%);
   }
 }

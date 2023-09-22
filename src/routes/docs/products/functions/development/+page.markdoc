@@ -428,7 +428,7 @@ You'll find these properties in the context object.
 Some languages, namely JavaScript, support destructuring. 
 You'll see us use destructuring in examples, which has the following syntax. 
 
-[Learn more about destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment){:target="_blank"}.
+[Learn more about destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 {% multicode %}
 ```js
 // before destructuring

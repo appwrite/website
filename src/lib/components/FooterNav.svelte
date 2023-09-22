@@ -4,7 +4,7 @@
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Quick starts</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
-				<span class="aw-caption-500">Products</span>
+				<span class="aw-caption-500">Quick starts</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
 					xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +22,8 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
-				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nextjs">Next.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/flutter">Flutter</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/nextjs">Next.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/vuejs">Vue.js</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/sveltekit">SvelteKit</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/quick-starts/apple">Apple</a></li>
@@ -57,9 +57,9 @@
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/auth">Auth</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/databases">Databases</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Functions</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Storage</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Realtime</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/functions">Functions</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/products/storage">Storage</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/docs/apis/realtime">Realtime</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
@@ -86,8 +86,8 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/docs">Docs</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/community">Community</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/blog">Blog</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Changelog</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/roadmap">Roadmap</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://status.appwrite.io" target="_blank">Status</a></li>
 			</ul>
 		</li><li class="aw-footer-nav-main-item">
@@ -112,18 +112,18 @@
 			</button>
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/pricing">Pricing</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Company</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Careers</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/company">Company</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/careers">Careers</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/heroes">Heroes</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="https://store.appwrite.io" target="_blank">Store</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/brand">Brand</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Contact us</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/contact-us">Contact us</a></li>
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile"><a href="#">Legal</a></h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Policies</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
-				<span class="aw-caption-500">Legal</span>
+				<span class="aw-caption-500">Policies</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
 					xmlns="http://www.w3.org/2000/svg"
@@ -143,8 +143,7 @@
 			<ul class="aw-footer-nav-secondary-list">
 				<li class="aw-footer-nav-secondary-item"><a href="/terms">Terms</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/privacy">Privacy</a></li>
-				<li class="aw-footer-nac-secondary-item" on:click={() => globalThis.OneTrust.ToggleInfoDisplay()}>Cookies</li>
-				<li class="aw-footer-nav-secondary-item"><a href="#">Security</a></li>
+				<li class="aw-footer-nav-secondary-item"><a href="/cookies">Cookies</a></li>
 			</ul>
 		</li>
 	</ul>

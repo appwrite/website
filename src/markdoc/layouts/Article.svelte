@@ -21,8 +21,8 @@
 
 	export let title: string;
 	export let description: string;
-	export let difficulty: string;
-	export let readtime: string;
+	export let difficulty: string = '';
+	export let readtime: string = '';
 
 	setContext<LayoutContext>('headings', writable({}));
 

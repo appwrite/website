@@ -1,8 +1,14 @@
 <script lang="ts">
-	import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
-	import { setContext } from 'svelte';
+	import { page } from '$app/stores';
+	import Docs, { type DocsLayoutVariant } from '$lib/layouts/Docs.svelte';
+	import Sidebar from '../Sidebar.svelte';
 
-	setContext<Tutorial[]>('tutorials', []);
+	$: variant = $page.url.pathname.endsWith('/tutorials')
+		? 'default'
+		: ('two-side-navs' as DocsLayoutVariant);
 </script>
 
-<slot />
+<Docs {variant}>
+	<Sidebar />
+	<slot />
+</Docs>
