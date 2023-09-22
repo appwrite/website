@@ -11,7 +11,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
 ![Add a platform](/images/docs/databases/quick-start/add-platform.png)
 
@@ -100,7 +100,7 @@ Create a new file `src/routes/index.svelte` and add the following code to it.
 {% /section %}
 
 {% section #step-6 step=6 title="Checkout what you've built" %}
-Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
 {% /section %}
 
 
