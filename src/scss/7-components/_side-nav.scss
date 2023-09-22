@@ -35,7 +35,7 @@
     }
   }
   &-scroll {
-    flex:1; overflow-y:scroll; overflow-x:hidden;
+    flex:1; overflow-y:auto; overflow-x:hidden;
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
 
