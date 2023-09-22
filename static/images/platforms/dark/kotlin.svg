@@ -4,9 +4,9 @@
     <g id="twitter-profile-copy" fill-rule="nonzero" stroke-width="24">
       <g id="Group" transform="translate(11.000000, 14.000000)">
         <g id="kotlin-logo" transform="translate(3.000000, 0.000000)">
-          <polygon id="Shape" points="0 0 125.518 0 0 131.998" style="stroke: rgb(255, 255, 255);"/>
-          <polygon id="Shape" points="0 250 125.338 124.444 250 250" style="stroke: rgb(255, 255, 255);"/>
-          <polygon id="Shape" points="125.518 0 0 131.998 0 250 125.338 124.442 250 0" style="stroke: rgb(255, 255, 255);"/>
+          <polygon id="Shape" points="0 0 125.518 0 0 131.998" style="fill: rgb(228, 228, 231);"/>
+          <polygon id="Shape" points="0 250 125.338 124.444 250 250" style="fill: rgb(228, 228, 231);"/>
+          <polygon id="Shape" points="125.518 0 0 131.998 0 250 125.338 124.442 250 0" style="fill: rgb(228, 228, 231);"/>
         </g>
       </g>
     </g>

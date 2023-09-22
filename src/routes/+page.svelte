@@ -6,7 +6,9 @@
 	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
-	import Products from '$lib/animations/Products.svelte';
+	import Products from '$lib/animations/Products/Products.svelte';
+	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
+	import { Spline } from '$lib/components';
 </script>
 
 <!-- <div
@@ -63,12 +65,12 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where you can build any
-								application at any scale, using the coding languages and tools you want.
+								Appwrite is the open-source development platform where you can build any application
+								at any scale, using the coding languages and tools you want.
 							</p>
-							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
+							<a href="https://cloud.appwrite.io" class="aw-button is-full-width-mobile u-margin-block-start-32">
 								<span class="text">Get Started</span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</section>
@@ -136,6 +138,7 @@
 		</div>
 
 		<Products />
+		<ProductsMobile />
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
@@ -241,7 +244,7 @@
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href="#">@ultrices lacus</a
+									href="#top">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
@@ -276,7 +279,7 @@
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
 									class="aw-link-1"
-									href="#">@ultrices lacus</a
+									href="#top">@ultrices lacus</a
 								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
 							</DeveloperCard>
 						</li>
@@ -300,14 +303,27 @@
 			<div
 				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
 			>
-				<img
-					class="u-position-absolute u-z-index-0"
-					src="/images/bgs/diagonal-lines.png"
-					alt=""
-					style="width: 1450px; height:auto; left: calc(50% - 40rem);
-					transform: translate(-50%);
-					max-inline-size: unset; max-block-size: unset;"
-				/>
+				<Spline let:viewer let:fallback>
+					<img
+						class="u-position-absolute u-z-index-0"
+						style="width: 1450px; height:auto; left: calc(50% - 40rem);
+				transform: translate(-50%);
+				max-inline-size: unset; max-block-size: unset;"
+						src="/images/bgs/diagonal-lines.png"
+						alt=""
+						use:fallback
+					/>
+					<div class="u-position-absolute u-z-index-0" style="width: 50%; height:100%; left:0;">
+						<div style:display="grid" style:place-items="center" style:height="100%">
+							<spline-viewer
+								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
+								use:viewer
+								loading="eager"
+							/>
+						</div>
+					</div>
+				</Spline>
+
 				<div class="aw-container u-position-relative">
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
