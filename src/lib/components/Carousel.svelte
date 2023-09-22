@@ -3,6 +3,8 @@
 
 	export let gap = 32;
 	let scroll = 0;
+	let touchStart = 0;
+	let touchEnd = 0;
 
 	function calculateScrollAmount(prev = false) {
 		const direction = prev ? -1 : 1;
@@ -30,11 +32,26 @@
 			behavior: 'smooth'
 		});
 	}
+
+	function handleTouchStart(e: TouchEvent) {
+		touchStart = e.touches[0].clientX;
+	}
+	function handleTouchMove(e: TouchEvent) {
+		touchEnd = e.touches[0].clientX;
+	}
+
+	function handleTouchEnd() {
+		if (touchEnd > touchStart) {
+			prev();
+		} else {
+			next();
+		}
+	}
 </script>
 
 <div class="u-flex u-main-space-between u-flex-wrap">
 	<slot name="header" />
-	<div class="u-flex u-gap-12 u-cross-end">
+	<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
 		<button class="aw-icon-button" aria-label="Move carousel backward" on:click={() => prev()}>
 			<span class="icon-arrow-left" aria-hidden="true" />
 		</button>
@@ -43,7 +60,13 @@
 		</button>
 	</div>
 </div>
-<ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel" bind:this={carousel}>
+<ul
+	class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
+	bind:this={carousel}
+	on:touchstart={handleTouchStart}
+	on:touchmove={handleTouchMove}
+	on:touchend={handleTouchEnd}
+>
 	<slot />
 </ul>
 
