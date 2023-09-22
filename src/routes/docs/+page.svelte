@@ -242,8 +242,8 @@
 						>
 							<div class="aw-grid-articles-item-image">
 								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://pink.appwrite.io/articles/announcement.png"
+									class="aw-articles-item-image"
+									src="/images/tutorials/react.png"
 									alt=""
 									loading="lazy"
 								/>
@@ -269,8 +269,8 @@
 						>
 							<div class="aw-grid-articles-item-image">
 								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/146"
+									class="aw-articles-item-image"
+									src="/images/tutorials/android.png"
 									alt=""
 									loading="lazy"
 								/>
@@ -296,8 +296,8 @@
 						>
 							<div class="aw-grid-articles-item-image">
 								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/261/147"
+									class="aw-articles-item-image"
+									src="/images/tutorials/flutter.png"
 									alt=""
 									loading="lazy"
 								/>
@@ -323,8 +323,8 @@
 						>
 							<div class="aw-grid-articles-item-image">
 								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/148"
+									class="aw-articles-item-image"
+									src="/images/tutorials/vue.png"
 									alt=""
 									loading="lazy"
 								/>
@@ -350,8 +350,8 @@
 						>
 							<div class="aw-grid-articles-item-image">
 								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
+									class="aw-articles-item-image"
+									src="/images/tutorials/svelte.png"
 									alt=""
 									loading="lazy"
 								/>
