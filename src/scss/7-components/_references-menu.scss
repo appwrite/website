@@ -12,7 +12,10 @@
     display:flex; flex-direction:column; gap:pxToRem(28); inline-size:pxToRem(255);
   }
   &-title { color:hsl(var(--aw-color-primary)); }
-  &-list { display:flex; flex-direction:column; gap:pxToRem(16); overflow-y: scroll; }
+  &-list {
+    @include scroll(); overflow-y:auto;
+    display:flex; flex-direction:column; gap:pxToRem(16);
+  }
   &-item {}
   &-link {
     display:flex; gap:pxToRem(8);

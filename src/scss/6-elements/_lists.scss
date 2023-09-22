@@ -24,6 +24,7 @@
   counter-reset: numeric-list;
   li::before { color:hsl(var(--aw-color-accent-click)); padding-inline-end:pxToRem(12); }
   li {
+    display:flex;
     &::before {
       counter-increment: numeric-list;
       content:counter(numeric-list); align-self:start;
