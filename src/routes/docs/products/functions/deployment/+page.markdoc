@@ -40,7 +40,7 @@ Before deploying your function with Git, create a new function attached to your 
 
 ## CLI  {% #cli %} 
 
-{% info title="CLI Setup" %}
+{% info title="CLI setup" %}
 Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
 {% /info %}
 
