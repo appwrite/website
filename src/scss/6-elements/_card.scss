@@ -23,7 +23,7 @@
     }
   }
   &.is-white {
-    display:block;
+    display:flex; flex-direction:column;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
     -webkit-backdrop-filter:blur(pxToRem(12)); backdrop-filter:blur(pxToRem(12));
@@ -75,6 +75,6 @@
   }
 
   @media #{$break1} {
-    --p-card-padding: var(--card-padding-mobile, var(--card-padding));
+    --p-card-padding: var(--card-padding-mobile, #{pxToRem(24)});
   }
 }
