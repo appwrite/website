@@ -1,19 +1,18 @@
 <script lang="ts">
 	let carousel: HTMLElement;
 
-	const gap = 32;
+	export let gap = 32;
 	let scroll = 0;
 
 	function calculateScrollAmount(prev = false) {
 		const direction = prev ? -1 : 1;
 		const carouselSize = carousel?.clientWidth;
-		const size = scroll || carouselSize;
-		if (!scroll) {
-			scroll = size;
-		}
 		const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+
+		scroll = scroll || carouselSize;
+
 		const numberOfItems = Math.floor(carouselSize / childSize);
-		const overflow = size % childSize;
+		const overflow = scroll % childSize;
 		const amount = numberOfItems * childSize - overflow * direction;
 		scroll += amount * direction;
 		return amount * direction;
@@ -37,10 +36,10 @@
 	<slot name="header" />
 	<div class="u-flex u-gap-12 u-cross-end">
 		<button class="aw-icon-button" aria-label="Move carousel backward" on:click={() => prev()}>
-			<span class="aw-icon-arrow-left" aria-hidden="true" />
+			<span class="icon-arrow-left" aria-hidden="true" />
 		</button>
 		<button class="aw-icon-button" aria-label="Move carousel forward" on:click={() => next()}>
-			<span class="aw-icon-arrow-right" aria-hidden="true" />
+			<span class="icon-arrow-right" aria-hidden="true" />
 		</button>
 	</div>
 </div>
