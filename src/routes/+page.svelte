@@ -483,15 +483,6 @@
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
 				<Spline let:viewer let:fallback>
-					<img
-						class="u-position-absolute u-z-index-0"
-						style="width: 1450px; height:auto; left: calc(50% - 40rem);
-				transform: translate(-50%);
-				max-inline-size: unset; max-block-size: unset;"
-						src="/images/bgs/diagonal-lines.png"
-						alt=""
-						use:fallback
-					/>
 					<div class="u-position-absolute u-z-index-0" style="width: 50%; height:100%; left:0;">
 						<div style:display="grid" style:place-items="center" style:height="100%">
 							<spline-viewer
