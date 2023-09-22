@@ -23,7 +23,7 @@
 					/>
 				</svg>
 			</button>
-			<ul class="aw-footer-nav-secondary-list">
+			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li>
 					<a class="aw-link" href="/docs/quick-starts/flutter">Flutter</a>
 				</li>
@@ -57,7 +57,7 @@
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Products</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Products</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
 				<span class="aw-caption-500 aw-eyebrow">Products</span>
 				<svg
@@ -76,7 +76,7 @@
 					/>
 				</svg>
 			</button>
-			<ul class="aw-footer-nav-secondary-list">
+			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li>
 					<a class="aw-link" href="/docs/products/auth">Auth</a>
 				</li>
@@ -95,7 +95,7 @@
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Learn</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Learn</h5>
 			<button class="aw-footer-nav-button is-open aw-is-only-mobile">
 				<span class="aw-caption-500 aw-eyebrow">Learn</span>
 				<svg
@@ -114,7 +114,7 @@
 					/>
 				</svg>
 			</button>
-			<ul class="aw-footer-nav-secondary-list">
+			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li>
 					<a class="aw-link" href="/docs">Docs</a>
 				</li>
@@ -134,7 +134,7 @@
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">About</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">About</h5>
 			<button class="aw-footer-nav-button is-open aw-is-only-mobile">
 				<span class="aw-caption-500 aw-eyebrow">About</span>
 				<svg
@@ -153,7 +153,7 @@
 					/>
 				</svg>
 			</button>
-			<ul class="aw-footer-nav-secondary-list">
+			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li><a class="aw-link" href="/pricing">Pricing</a></li>
 				<li><a class="aw-link" href="/company">Company</a></li>
 				<li><a class="aw-link" href="/careers">Careers</a></li>
@@ -168,7 +168,7 @@
 			</ul>
 		</li>
 		<li class="aw-footer-nav-main-item">
-			<h5 class="aw-footer-nav-main-title aw-is-not-mobile">Policies</h5>
+			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Policies</h5>
 			<button class="aw-footer-nav-button aw-is-only-mobile">
 				<span class="aw-caption-500 aw-eyebrow">Policies</span>
 				<svg
@@ -187,7 +187,7 @@
 					/>
 				</svg>
 			</button>
-			<ul class="aw-footer-nav-secondary-list">
+			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li><a class="aw-link" href="/terms">Terms</a></li>
 				<li><a class="aw-link" href="/privacy">Privacy</a></li>
 				<li><a class="aw-link" href="/cookies">Cookies</a></li>
