@@ -1,12 +1,11 @@
 ---
 layout: author
-name: Eldad
-id: eldad
-role: Big boss
-bio: Creator of Appwrite
+name: Eldad Fux
+role: Founder and CEO
+bio: Appwrite's first open-source contributor.
 avatar: /images/avatars/eldad.png
 twitter: https://twitter.com/eldadfux
 github: https://github.com/eldadfux
-linkedin: https://www.linkedin.com/in/eldadfux/
+linkedin: https://www.linkedin.com/in/eldadfux
 ---
 
