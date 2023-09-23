@@ -427,7 +427,7 @@
 								<a class="aw-card is-white aw-u-flex-vertical u-gap-8" href="/" style="--card-padding:0.5rem;">
 									<div class="u-padding-12">
 										<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
-										<p class="u-trim-2">
+										<p class="u-trim-2 u-break-word">
 											Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 										</p>
 									</div>
@@ -439,7 +439,7 @@
 							<a class="aw-card is-white aw-u-flex-vertical u-gap-8" href="/" style="--card-padding:0.5rem;">
 								<div class="u-padding-12">
 									<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
-									<p class="u-trim-2">
+									<p class="u-trim-2 u-break-word">
 										Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 									</p>
 								</div>
@@ -451,7 +451,7 @@
 							<a class="aw-card is-white aw-u-flex-vertical u-gap-8" href="/" style="--card-padding:0.5rem;">
 								<div class="u-padding-12">
 									<h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
-									<p class="u-trim-2">
+									<p class="u-trim-2 u-break-word">
 										Appwrite-powered Hackathon Collaboration Tool for streamlined team communication
 									</p>
 								</div>
