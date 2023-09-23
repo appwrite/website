@@ -96,18 +96,18 @@
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-800">
+					<div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-900">
 						<h1 class="aw-headline aw-u-color-text-primary">
-							Appwrite is built by active contributors
+							The power of open source benefits us all
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Inspire and get inspired. Join our community of maintainers and contributors and help us make Appwrite better for developers all around the world.
+								Appwrite improves daily thanks to our diverse, inspiring contributors. They come from various backgrounds and experience levels, welcoming anyone to join and help us excel.
 							</p>
 							<div class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32">
-								<button class="aw-button is-secondary is-full-width-mobile">
+								<a href="https://github.com/appwrite/appwrite/graphs/contributors" target="_blank" class="aw-button is-secondary is-full-width-mobile">
 									<span>View all contributors</span>
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -304,100 +304,133 @@
 					<div class="aw-grid-articles-scroll">
 						<ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32">
 							<li>
-								<a class="aw-grid-articles-item" href="#top">
+								<a class="aw-grid-articles-item" href="/discord" target="_blank">
 									<div class="aw-grid-articles-item-image">
-										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-u-media-ratio-16-9" alt="">
+										<img src="/images/community/events/office-hours.png" class="aw-u-media-ratio-16-9" alt="">
 									</div>
 									<div class="aw-grid-articles-item-content is-no-gap">
 										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<time class="">June 26, 2023</time>
+												<time class="">Sep 28th, 2023</time>
 											</li>
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<span class="">Appwrite Discord</span>
+												<span class="">Discord</span>
 											</li>
 										</ul>
 										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
-											Appwrite Office Hours
+											Office hours
 										</h5>
 										<p class="aw-sub-body-500">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Join us for an exciting hour of technical conversations around Appwrite.
 										</p>
 										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
 											<button class="aw-button is-secondary">
 												<span>View event</span>
 											</button>
-											<button class="aw-button is-text">
+											<!-- <button class="aw-button is-text">
 												<span>Add to calendar</span>
-											</button>
+											</button> -->
 										</div>
 									</div>
 								</a>
 							</li>
 							<li>
-								<a class="aw-grid-articles-item" href="#top">
+								<a class="aw-grid-articles-item" href="https://www.twitch.tv/wesscope" target="_blank">
 									<div class="aw-grid-articles-item-image">
-										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-u-media-ratio-16-9" alt="">
+										<img src="/images/community/events/live-coding.png" class="aw-u-media-ratio-16-9" alt="">
 									</div>
 									<div class="aw-grid-articles-item-content is-no-gap">
 										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<time class="">June 26, 2023</time>
+												<time class="">Sep 28th, 2023</time>
 											</li>
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<span class="">Appwrite Discord</span>
+												<span class="">Twitch</span>
 											</li>
 										</ul>
 										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
-											Appwrite Office Hours
+											Live coding with Wess
 										</h5>
 										<p class="aw-sub-body-500">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Pluck is going mobile. Join us in building Pluck.io's Flutter app.
 										</p>
 										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
 											<button class="aw-button is-secondary">
 												<span>View event</span>
 											</button>
-											<button class="aw-button is-text">
+											<!-- <button class="aw-button is-text">
 												<span>Add to calendar</span>
-											</button>
+											</button> -->
 										</div>
 									</div>
 								</a>
 							</li>
 							<li>
-								<a class="aw-grid-articles-item" href="#top">
+								<a class="aw-grid-articles-item" href="https://lu.ma/hf-kickoff-blr" target="_blank">
 									<div class="aw-grid-articles-item-image">
-										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAGUCAYAAADd3Z2SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAjRSURBVHgB7dzdcRNXGIDhswwFkA6UCgwd0ElIBQkVABXEHYRS6ACoIEoFoQPlrH8yCmM8sHtlv88z842Ebe4037w6q9Uy7vdszqs5F3MONzPOHok7nU4DtlqWZcBW9g9njmePn+Z8nvNh7pjjt/7Dt7bPYc6fc14OuIcFxB4CiD3sH77D+znv7gqhJ3f88W9zPg7xAwA8bK/mfJyx/PvXv/g6gN7MuRzXl74AAB66tWn+mBH05vyH5+fP68nP5YAf4AiaPVwCYw/7hw1ez71z1Tq32+cwri97Ofnhh1hA7CGA2MP+YYMvc16snwm6vQS2HguJHwDgMVtbZ73J6+oE6DDnrwEbeAfGHk6A2MP+YYef1hOglwMAoOPVGkDPBwBAx8UaQBcDAKDjsAbQYQAAdByeDACAmPUWDB+jZzN3YbCHu8DYw/5hDydAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgJynp9NpwFbLsgzYyv5hD/uHPZwAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkLHNOAzY6nbx82G5ZlgFb2T/s4QQIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACDn6el0GrDVsiwDtrJ/2MP+YQ8nQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAIAcAQQA5AggACBHAAEAOQIIAMgRQABAjgACAHIEEACQI4AAgBwBBADkCCAAIEcAAQA5AggAyBFAAECOAAIAcgQQAJAjgACAHAEEAOQIIAAgRwABADkCCADIEUAAQI4AAgByBBAAkCOAAICcNYCOAwCg4+gECADIcQIEANRcnQD9PQAAOj6vAfRpAAB0fFpOp9Oz+eSfARssyzJgq7l/Bmxl/7DDz0/mC+jLfPJhAAA8fu/nHK/yeb4LO8yHj3OeDfgB3oGxhxMg9rB/2GA99Hkxbm+Dny+i43x4NwAAHq+1dY7rk/++B2hG0OUQQQDA47Q2zuXtP/73RYgzgt7Oh9fj+ogIAOChW5tmbZu35z+88wLqzWeC1j/8ZcA9XINnD58BYg/7h+/wYc6v444vfb731XMTQi/nPJ9zMedw86vDgGEBsY8AYg/7hzPHs8d1Po/ru72+eUXrXzCikBuKJ0jJAAAAAElFTkSuQmCC" class="aw-u-media-ratio-16-9" alt="">
+										<img src="/images/community/events/hf-kickoff-bangalore.png" class="aw-u-media-ratio-16-9" alt="Hacktoberfest kickoff event">
 									</div>
 									<div class="aw-grid-articles-item-content is-no-gap">
 										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<time class="">June 26, 2023</time>
+												<time class="">Oct 1st, 2023</time>
 											</li>
 											<li class="u-flex u-cross-baseline u-gap-4">
 												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
-												<span class="">Appwrite Discord</span>
+												<span class="">Bengaluru</span>
 											</li>
 										</ul>
 										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
-											Appwrite Office Hours
+											Hacktoberfest kickoff event
 										</h5>
 										<p class="aw-sub-body-500">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Join us for our Hacktoberfest kickoff event in Bengaluru.
 										</p>
 										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
 											<button class="aw-button is-secondary">
 												<span>View event</span>
 											</button>
-											<button class="aw-button is-text">
+											<!-- <button class="aw-button is-text">
 												<span>Add to calendar</span>
+											</button> -->
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a class="aw-grid-articles-item" href="https://hacktoberfest.com/">
+									<div class="aw-grid-articles-item-image">
+										<img src="/images/community/events/oss-celebration.png" class="aw-u-media-ratio-16-9" alt="Hacktoberfest kickoff event">
+									</div>
+									<div class="aw-grid-articles-item-content is-no-gap">
+										<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<time class="">Oct, 2023</time>
+											</li>
+											<li class="u-flex u-cross-baseline u-gap-4">
+												<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true"></span>
+												<span class="">Virtual</span>
+											</li>
+										</ul>
+										<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
+											Hacktoberfest 10
+										</h5>
+										<p class="aw-sub-body-500">
+											Join us for a month long celebration of open source in collaboration with DigitalOcean.
+										</p>
+										<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+											<button class="aw-button is-secondary">
+												<span>View event</span>
 											</button>
+											<!-- <button class="aw-button is-text">
+												<span>Add to calendar</span>
+											</button> -->
 										</div>
 									</div>
 								</a>
@@ -408,7 +441,6 @@
 				</section>
 			</div>
 		</div>
-
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="aw-big-padding-section-level-2">
@@ -473,7 +505,7 @@
 						</div>
 						<ul class="aw-multi-columns-1">
 							<li>
-								<div
+								<a href="/discord" target="_blank"
 										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 										style="--card-padding:2rem"
 								>
@@ -485,10 +517,10 @@
 									/>
 									</div>
 									<div class="aw-title u-margin-block-start-auto">17K+ members</div>
-								</div>
+								</a>
 							</li>
 							<li>
-								<div
+								<a href="https://twitter.com/intent/follow?screen_name=appwrite" target="_blank"
 										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 										style="--card-padding:2rem"
 								>
@@ -500,10 +532,10 @@
 									/>
 									</div>
 									<div class="aw-title u-margin-block-start-auto">125K+ followers</div>
-								</div>
+								</a>
 							</li>
 							<li>
-								<div
+								<a href="https://github.com/appwrite/appwrite" target="_blank"
 										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 										style="--card-padding:2rem"
 								>
@@ -515,22 +547,22 @@
 									/>
 									</div>
 									<div class="aw-title u-margin-block-start-auto">33K+ stargazers</div>
-								</div>
+								</a>
 							</li>
 							<li>
-								<div
+								<a href="https://www.youtube.com/c/appwrite?sub_confirmation=1" target="_blank"
 										class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 										style="--card-padding:2rem"
 								>
 									<div class="u-flex-vertical u-main-space-between u-gap-32">
 									<span
-											class="icon-github aw-u-font-size-40"
+											class="icon-youtube aw-u-font-size-40"
 											aria-hidden="true"
 											aria-label="Youtube logo"
 									/>
 									</div>
 									<div class="aw-title u-margin-block-start-auto">3K+ subscribers</div>
-								</div>
+								</a>
 							</li>
 						</ul>
 					</div>
