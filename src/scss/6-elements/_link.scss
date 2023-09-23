@@ -7,13 +7,13 @@
   --p-link-color-text-active: var(--aw-color-pink-600);
 
   color: hsl(var(--p-link-color-text));
-  border-radius: pxToRem(8);
+  border-radius: pxToRem(4);
   cursor: pointer;
 
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus-visible) { outline:pxToRem(1) solid hsl(var(--aw-color-primary)); }
+  &:where(:focus-visible) { outline:pxToRem(1) solid hsl(var(--aw-color-primary)); box-shadow:none; }
 
   #{$theme-dark} & {
     --p-link-color-text-default: var(--aw-color-greyscale-100);
