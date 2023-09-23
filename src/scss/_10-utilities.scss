@@ -39,6 +39,8 @@
 
 .#{$p}-u-padding-block-end-136-not-mobile { @media #{$break2open} { padding-block-end:pxToRem(136)!important;} }
 
+.#{$p}-u-border-radius-8 { border-radius:pxToRem(8); }
+
 .#{$p}-u-max-width-168              { max-inline-size:pxToRem(168); }
 .#{$p}-u-max-width-350              { max-inline-size:pxToRem(350); }
 .#{$p}-u-max-width-380              { max-inline-size:pxToRem(380); }
