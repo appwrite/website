@@ -443,7 +443,7 @@
 										Appwrite-powered collaboration Tool for streamlined team communication.
 									</p>
 								</div>
-								<img src="https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/648bfe093f6b85062938/preview?width=800&output=webp&project=builtWithAppwrite"
+								<img src="/images/community/projects/glitch.png"
 									 class="u-width-full-line aw-u-block-size-160 aw-u-media-cover" alt="">
 							</a>
 						</li>
@@ -455,7 +455,7 @@
 										Appwrite-powered platform where you can sell your digital products online.
 									</p>
 								</div>
-								<img src="https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/648606aae239c1e001c0/preview?width=800&output=webp&project=builtWithAppwrite"
+								<img src="/images/community/projects/ucanearn.png"
 									 class="u-width-full-line aw-u-block-size-160 aw-u-media-cover" alt="">
 							</a>
 						</li>
