@@ -5,10 +5,10 @@ description: This is the description used for SEO.
 ---
 
 Teams are a good way to allow users to share access to resources. 
-For example, in a todo app, a user can [create a team](#) for one of their todo lists and [invite another user](#) to the team to grant the other user access. 
+For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access. 
 You can further give special rights to parts of a team using team roles.
 
-The invited user can [accept the invitation](#) to gain access. If the user's ever removed from the team, they'll lose access again. 
+The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again. 
 
 ## Create team {% #create %}
 For example, we can create a team called `teachers` with roles `maths`, `sciences`, `arts`, and `literature`.

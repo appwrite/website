@@ -28,7 +28,6 @@ You can customize email templates for each of your projects in the Appwrite Cons
 The built-in email service does not support custom email templates to prevent malicious templates. 
 Configure a [custom SMTP server](#smtp) to enable custom email templates.
 {% /info %}
-::: notice
 
 1. In your project, navigate to the **Auth** service.
 2. Under the **Auth** service, navigate to the **Templates** tab.
