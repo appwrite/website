@@ -91,7 +91,7 @@ mutation {
 
 ## Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Session](#) route.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) route.
 
 {% multicode %}
 ```js
