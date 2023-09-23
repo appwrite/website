@@ -46,7 +46,7 @@
 				},
 				{
 					label: 'JWT login',
-					href: '/docs/products/auth/server-integrations'
+					href: '/docs/products/auth/jwt'
 				},
 			]
 		},
@@ -56,6 +56,10 @@
 				{
 					label: 'Accounts',
 					href: '/docs/products/auth/accounts'
+				},
+				{
+					label: 'Manage users',
+					href: '/docs/products/auth/users'
 				},
 				{
 					label: 'Teams',

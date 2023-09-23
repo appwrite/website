@@ -51,4 +51,4 @@ You can specify one or many events to subscribe to with webhooks.
 
 {% partial file="functions-events.md" /%}
 
-[Learn more about events](/docs/platform/api-keys)
+[Learn more about events](/docs/advanced/platform/api-keys)

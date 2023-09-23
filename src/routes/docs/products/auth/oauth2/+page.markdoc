@@ -293,4 +293,6 @@ let session = try await account.updateSession(
 
 {% /multicode %}
 
-> **Note**: OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+{% info title="GraphQL" %}
+OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+{% /info %}

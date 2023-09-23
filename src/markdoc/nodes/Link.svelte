@@ -12,6 +12,6 @@
 <a class="aw-link" {href} {title} {target} {rel}>
 	<slot />
 	{#if isExternal}
-		<!-- <span class="icon-cheveron-right" /> -->
+	<!-- <span class="icon-cheveron-right" /> -->
 	{/if}
 </a>
