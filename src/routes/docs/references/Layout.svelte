@@ -21,7 +21,7 @@
 			]
 		},
 		{
-			label: 'Services',
+			label: 'APIs',
 			items: [
 				{
 					label: 'Account',
@@ -64,7 +64,16 @@
 					href: `${prefix}/avatars`
 				}
 			]
-		}
+		},
+		{
+			label: 'Debugging',
+			items: [
+				{
+					label: 'Response codes',
+					href: '/docs/references/response-codes',
+				}
+			]
+		},
 	] as NavTree;
 
 	const parent: NavParent = {

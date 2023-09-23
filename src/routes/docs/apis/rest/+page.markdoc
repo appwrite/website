@@ -31,7 +31,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 ---
 * X-Appwrite-JWT: [TOKEN]
 * optional
-* Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/server-integrations) method.
+* Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/jwt) method.
 ---
 * X-Appwrite-Response-Format: [VERSION-NUMBER]
 * optional

@@ -4,7 +4,7 @@ title: Accounts
 description: This is the description used for SEO.
 ---
 
-Appwrite allows users to create accounts.
+Appwrite Account API is used for user signup and login in client applications.
 Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. 
 Each user's account can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
@@ -183,4 +183,6 @@ individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
 | Verified user   | `Role.user(<USER_ID>, 'verified')`|
 | Unverified user | `Role.user(<USER_ID>, 'unverified')` |
 
-[Learn more about permissions](/docs/advanced/platform/permissions)
+
+
+[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)

@@ -22,8 +22,8 @@ You can skip optional steps.
 
 {% /section %}
 {% section #step-2 step=2 title="Create Android project" %}
-Open Android Studios and click **New Project**, select **Empty Activity**. 
-**Name** the project `My Application` with **Package Name** `com.example.myapplication`.
+Open Android Studios and click **Get from VCS** to create a project from a respository, use the url `https://github.com/loks0n/tutorial-for-android.git` then click **clone**.
+Wait for the dependency sync to complete.
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}

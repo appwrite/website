@@ -82,7 +82,10 @@ Anonymous users cannot sign back in. If the session expires, they move to anothe
 
 Create an account with any of these methods to transition from an anonymous session to a user account session.
 
-- [Email and password](/docs/products/auth/email-password)
-- [Phone (SMS)](/docs/products/auth/phone-sms)
-- [Magic URL](/docs/products/auth/magic-url)
-- [OAuth2](/docs/products/auth/oauth2)
+[Email and password {% icon icon="cheveron-right" /%}](/docs/products/auth/email-password)
+
+[Phone (SMS) {% icon icon="cheveron-right" /%}](/docs/products/auth/phone-sms)
+
+[Magic URL {% icon icon="cheveron-right" /%}](/docs/products/auth/magic-url)
+
+[OAuth2 {% icon icon="cheveron-right" /%}](/docs/products/auth/oauth2)

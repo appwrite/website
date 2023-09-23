@@ -53,6 +53,10 @@
 					href: '/docs/advanced/self-hosting/storage'
 				},
 				{
+					label: 'Environment variables',
+					href: '/docs/advanced/self-hosting/environment-variables'
+				},
+				{
 					label: 'TLS Certificates',
 					href: '/docs/advanced/self-hosting/tls-certificates'
 				}
