@@ -13,7 +13,7 @@
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus-visible) { outline:pxToRem(1) solid hsl(var(--aw-color-pink-500)); }
+  &:where(:focus-visible) { outline:pxToRem(1) solid hsl(var(--aw-color-primary)); }
 
   #{$theme-dark} & {
     --p-link-color-text-default: var(--aw-color-greyscale-100);
