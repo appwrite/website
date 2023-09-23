@@ -160,7 +160,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/self-hosted.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Self-Hosted</h3>
-								<p class="aw-info-boxes-content">Own your data or host it on a region of choice.</p>
+								<p class="aw-info-boxes-content">Own your data or host it on a cloud region of choice.</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/lock.svg" width="40" height="40" alt="" />
