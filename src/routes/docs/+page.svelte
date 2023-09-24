@@ -368,357 +368,6 @@
 							</article>
 						</a>
 					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-u-media-ratio-16-9"
-									src="https://unsplash.it/262/147"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
 				</svelte:fragment>
 			</Carousel>
 		</section>
@@ -732,7 +381,8 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/auth.png" alt="" />
+							<img src="/images/icons/illustrated/dark/auth.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/auth.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -741,7 +391,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/databases.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/databases.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/databases.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Databases
 							</h4>
@@ -752,7 +403,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/functions.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/functions.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/functions.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Functions
 							</h4>
@@ -763,7 +415,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" />
+							<img src="/images/icons/illustrated/dark/storage.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/storage.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
@@ -774,7 +427,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/realtime.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/realtime.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/realtime.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
@@ -785,7 +439,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/messaging.svg" alt="" />
+							<img src="/images/icons/illustrated/dark/messaging.png" alt="" class="u-only-dark" />
+							<img src="/images/icons/illustrated/light/messaging.png" alt="" class="u-only-light" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
