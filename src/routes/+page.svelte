@@ -171,16 +171,16 @@
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/shield.svg" width="40" height="40" alt="" />
-								<h3 class="aw-info-boxes-title">Abuse Protection</h3>
+								<h3 class="aw-info-boxes-title">Abuse protection</h3>
 								<p class="aw-info-boxes-content">
-									Protect users from abuse with built-in protection.
+									Protect your APIs from abuse with built-in protection.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/database.svg" width="40" height="40" alt="" />
-								<h3 class="aw-info-boxes-title">Data Migrations</h3>
+								<h3 class="aw-info-boxes-title">Data migrations</h3>
 								<p class="aw-info-boxes-content">
-									Move data between 3rd parties, cloud or self-hosting.
+									Easily transfer data from 3rd parties or between Cloud and self-hosted.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
