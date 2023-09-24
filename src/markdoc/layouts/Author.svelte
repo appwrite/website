@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	export type AuthorData = {
 		name: string;
+		id: string;
 		role: string;
 		avatar: string;
 		bio: string;
