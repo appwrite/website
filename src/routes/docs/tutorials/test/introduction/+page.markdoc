@@ -31,7 +31,7 @@ promise.then(function (response) {
 });
 ```
 
-Passwords are hashed with [Argon2](#), a resilient and secure password hashing algorithm.
+Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), a resilient and secure password hashing algorithm.
 
 ## Verification {% #verification %}
 
