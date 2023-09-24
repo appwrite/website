@@ -106,44 +106,46 @@
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
 			<div class="aw-references-menu-content">
-				<div class="u-flex u-main-space-between u-cross-center u-gap-16">
-					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-				</div>
-				<ol class="aw-references-menu-list">
-					{#each toc as parent (parent.href)}
-						<li class="aw-references-menu-item" class:article-scroll-indicator={parent.selected}>
-							<a
-								href={parent.href}
-								class="aw-references-menu-link"
-								class:is-selected={parent.selected}
-							>
-								{#if parent?.step}
-									<span class="aw-numeric-badge">{parent.step}</span>
-								{/if}
-								<span class="aw-caption-400">{parent.title}</span>
-							</a>
-							{#if parent.children}
-								<ol
-									class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+				{#if toc && toc.length > 0}
+					<div class="u-flex u-main-space-between u-cross-center u-gap-16">
+						<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
+					</div>
+					<ol class="aw-references-menu-list">
+						{#each toc as parent (parent.href)}
+							<li class="aw-references-menu-item" class:article-scroll-indicator={parent.selected}>
+								<a
+									href={parent.href}
+									class="aw-references-menu-link"
+									class:is-selected={parent.selected}
 								>
-									{#each parent.children as child}
-										<li class="aw-references-menu-item">
-											<a href={child.href} class="aw-references-menu-link">
-												<span class="aw-caption-400">{child.title}</span>
-											</a>
-										</li>
-									{/each}
-								</ol>
-							{/if}
-						</li>
-					{/each}
-				</ol>
-				<div class="u-sep-block-start u-padding-block-start-20">
-					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
-						<span class="icon-arrow-up" aria-hidden="true" />
-						<span class="aw-sub-body-500">Back to top</span>
-					</a>
-				</div>
+									{#if parent?.step}
+										<span class="aw-numeric-badge">{parent.step}</span>
+									{/if}
+									<span class="aw-caption-400">{parent.title}</span>
+								</a>
+								{#if parent.children}
+									<ol
+										class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+									>
+										{#each parent.children as child}
+											<li class="aw-references-menu-item">
+												<a href={child.href} class="aw-references-menu-link">
+													<span class="aw-caption-400">{child.title}</span>
+												</a>
+											</li>
+										{/each}
+									</ol>
+								{/if}
+							</li>
+						{/each}
+					</ol>
+					<div class="u-sep-block-start u-padding-block-start-20">
+						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
+							<span class="icon-arrow-up" aria-hidden="true" />
+							<span class="aw-sub-body-500">Back to top</span>
+						</a>
+					</div>
+				{/if}
 			</div>
 		</aside>
 	</article>
