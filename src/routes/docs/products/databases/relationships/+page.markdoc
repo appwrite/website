@@ -63,7 +63,7 @@ Appwrite also allows you to define the behavior of a relationship when a documen
 | Set null   | If a document has related documents, when it is deleted, the related documents are kept with their relationship attribute set to null.|
 
 ## Creating relationships {% #create-relationships %}
-You can define relationships in the Appwrite Console, or using a [Server SDK](#)
+You can define relationships in the Appwrite Console, or using a [Server SDK](/docs/sdks#server)
 
 {% tabs %}
 {% tabsitem #console title="Console" %}

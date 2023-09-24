@@ -25,4 +25,4 @@ This tutorial will introduce the following concepts:
 
 ## Prerequisites {% #prerequisites %}
 1. Basic knowledge of JavaScript and Svelte.
-2. Have [Node.js](#) and [NPM](#) installed on your computer
+2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer
