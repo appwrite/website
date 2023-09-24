@@ -226,73 +226,65 @@
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
+								name="Terry Lennon"
+								tag="@terry_lennon"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/terry.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+							Been a huge supporter of Appwrite for over a year, championing
+							it even at the companies I was working at. Their community is second-to-none,
+							speed of feature release is exceptional, and the support in their Discord is incredible.
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="discord"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href="#top">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
+								name="Varun Dhand"
+								tag="@varundhand"
 								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
+								avatarSrc="/images/community/avatars/varun.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+								Recently, I embarked on a journey to create a Real-Time Chat Application that would redefine seamless communication. Along the way, I discovered an incredible tool that transformed my backend game - Appwrite!
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
+								name="Kap.ts"
+								tag="@Kaperskyguru"
 								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
+								avatarSrc="/images/community/avatars/kap.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href="#top">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
+							Backend Engineers, you will agree with me that building the authentication process for your app with each new API development is a pain. Here's my secret: I let <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1">@appwrite</a> handle my authentication process while I focus on the business logic.
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
+								name="Stephen Simon"
+								tag="@codewithsimon"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/stephen.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+								Absolutely in love with Appwrite and the commitment to the community!
 							</DeveloperCard>
+						</li>
+						<li>
+							<DeveloperCard
+								name="Teri"
+								tag="@terieyenike"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/terieyenike.png"
+							>
+							I have used Appwrite twice, and the experience of using it was great as I got to build a full-stack application. I would gladly recommend it to anyone looking to explore an alternative database option. Appwrite is simply the best.
+							</DeveloperCard>
+						</li>
+						<li>
+							<DeveloperCard
+								name="Souvik Sarkar"
+								tag="@Jeet_2003"
+								icon="x"
+								avatarSrc="/images/community/avatars/souvik.png"
+							>
+							If you're looking for a backend server that is both powerful and easy to use, check out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1">@appwrite</a>. With its robust feature set and open-source nature, it's the perfect choice for developers who want to build secure and scalable applications.
+						</DeveloperCard>
 						</li>
 					</ul>
 				</div>
