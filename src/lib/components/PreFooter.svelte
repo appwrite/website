@@ -28,7 +28,7 @@
 					<li class="aw-strip-plans-item aw-strip-plans-container-query">
 						<div class="aw-strip-plans-item-wrapper">
 							<div class="aw-strip-plans-plan">
-								<h4 class="title aw-description">Free</h4>
+								<h4 class="title aw-description">Starter</h4>
 								<div class="aw-title aw-u-color-text-primary">$0</div>
 								<div class="info aw-caption-500" />
 							</div>
