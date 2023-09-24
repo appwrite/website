@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Carousel } from '$lib/components';
 	import { Spline } from '$lib/components';
 	import { Carousel } from '$lib/components';
 	import Docs from '$lib/layouts/Docs.svelte';
