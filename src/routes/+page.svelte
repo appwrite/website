@@ -500,8 +500,8 @@
 								<div class="text">Projects</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">200M</div>
-								<div class="text">Requests / month</div>
+								<div class="aw-headline aw-u-color-text-primary">+1B</div>
+								<div class="text">Requests served</div>
 							</li>
 							<li class="aw-big-list-info-item">
 								<div class="aw-headline aw-u-color-text-primary">20K</div>
