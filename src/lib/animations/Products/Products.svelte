@@ -44,7 +44,7 @@
 			title: 'Databases',
 			subtitle: 'Store, query and manage your data',
 			description:
-				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
+				"Store, query and manage access to your app's data in real-time with a robust and scalable database.",
 			features: ['Relationships are a big deal'],
 			shot: './images/products/Databases.svg'
 		},
@@ -184,11 +184,6 @@
 	}}
 >
 	<div class="sticky-wrapper">
-		<!-- <div class="debug">
-			<pre>{JSON.stringify({ active })}</pre>
-			<pre>{JSON.stringify({ scrollInfo })}</pre>
-		</div> -->
-
 		{#if scrollInfo.percentage < 0.1}
 			<div
 				class="main-text"
@@ -329,9 +324,8 @@
 <style lang="scss">
 	#products {
 		min-height: 500vh;
-		height: 6000px;
+		height: 5000px;
 		position: relative;
-		padding-block-end: 20rem;
 
 		--debug-bg: transparent;
 
@@ -361,13 +355,12 @@
 
 		top: 0;
 		min-height: 58rem;
-		height: 100vh;
 		overflow: hidden;
 
 		padding-inline: 1.25rem;
 
 		width: 100%;
-		height: 100vh;
+		height: 80vh;
 
 		> .main-text {
 			position: absolute;
