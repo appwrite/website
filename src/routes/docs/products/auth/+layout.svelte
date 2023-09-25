@@ -58,7 +58,7 @@
 					href: '/docs/products/auth/accounts'
 				},
 				{
-					label: 'Manage users',
+					label: 'Users',
 					href: '/docs/products/auth/users'
 				},
 				{
