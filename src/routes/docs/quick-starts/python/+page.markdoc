@@ -11,20 +11,29 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Integrate with your server**, add an **API Key**. Make sure to add the `databases.write`, `collections.write`, `attributes.write`, `documents.read`, and `documents.write` scopes in the **Database** category (all other scopes are optional).
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
 
 ![Add API Key]()
 
 {% /section %}
 {% section #step-2 step=2 title="Create Python project" %}
-Create a directory for the project.
+Create a directory for the project and create a code file named `my_app.py`.
 
 ```sh
 mkdir my_app
 cd my_app
+touch my_app.py
 ```
-
-After entering the project directory, create a file `my_app.py`.
 
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -55,9 +64,9 @@ client.set_key('<YOUR_API_KEY>')
 ```
 
 {% /section %}
-{% section #step-5 step=5 title="Initialize Database Service" %}
+{% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is set up, initialize the Database service using the Client and create a function to prepare a Todos database and collection (with the necessary attributes) by adding the following code to `my_app.py`.
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```py
 databases = Databases(client)
@@ -106,9 +115,8 @@ def prepare_database():
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Seed Todos Database" %}
-
-Once the Todos database and collection is ready, create a function to seed it with sample data by adding the following code to `my_app.py`.
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
 
 ```py
 def seed_database():
@@ -152,9 +160,10 @@ def seed_database():
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Get List Of Todos" %}
+{% section #step-7 step=7 title="Retrieve documents" %}
 
-After the database is seeded, create a function to get the list of all the seeded data and a function to trigger all the created functions in the steps above by adding the following code to `my_app.py`. 
+Create a function to retrieve the mock todo data, 
+then execute the functions in `_main_`.
 
 ```py
 def get_todos():
@@ -172,119 +181,7 @@ if __name__ == "__main__":
 ```
 
 {% /section %}
-{% section #step-8 step=8 title="Review your project" %}
-
-Review the entire program in `my_app.py` once before running it. This is a good time to catch any errors that may have been made in any past step.
-
-```py
-from appwrite.client import Client
-from appwrite.services.databases import Databases
-from appwrite.id import ID
-
-client = Client()
-client.set_endpoint('https://cloud.appwrite.io/v1')
-client.set_project('<YOUR_PROJECT_ID>')
-client.set_key('<YOUR_API_KEY>')
-
-databases = Databases(client)
-
-todoDatabase = None
-todoCollection = None
-
-def prepare_database():
-  global todoDatabase
-  global todoCollection
-
-  todoDatabase = databases.create(
-    database_id=ID.unique(),
-    name='TodosDB'
-  )
-
-  todoCollection = databases.create_collection(
-    database_id=todoDatabase['$id'],
-    collection_id=ID.unique(),
-    name='Todos'
-  )
-
-  databases.create_string_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    key='title',
-    size=255,
-    required=True
-  )
-
-  databases.create_string_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    key='description',
-    size=255,
-    required=False,
-    default='This is a test description.'
-  )
-
-  databases.create_boolean_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    key='isComplete',
-    required=True
-  )
-
-def seed_database():
-  testTodo1 = {
-    'title': "Buy apples",
-    'description': "At least 2KGs",
-    'isComplete': True
-  }
-
-  testTodo2 = {
-    'title': "Wash the apples", 
-    'isComplete': True
-  }
-
-  testTodo3 = {
-    'title': "Cut the apples",
-    'description': "Don\'t forget to pack them in a box",
-    'isComplete': False
-  }
-
-  databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
-    data=testTodo1
-  )
-
-  databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
-    data=testTodo2
-  )
-
-  databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
-    data=testTodo3
-  )
-
-def get_todos():
-  todos = databases.list_documents(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id']
-  )
-  for todo in todos['documents']:
-    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
-
-if __name__ == "__main__":
-  prepare_database()
-  seed_database()
-  get_todos()
-```
-
-{% /section %}
-{% section #step-9 step=9 title="Check out what you've built" %}
+{% section #step-8 step=8 title="All set" %}
 
 Run your project with `python my_app.py` and view the response in your console.
 

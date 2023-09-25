@@ -114,6 +114,7 @@ async function prepareDatabase() {
 {% /section %}
 {% section #step-6 step=6 title="Add documents" %}
 Create a function to add some mock data into your new collection.
+
 ```js
 async function seedDatabase() {
     var testTodo1 = {
