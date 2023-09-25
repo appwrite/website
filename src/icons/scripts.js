@@ -28,11 +28,3 @@ export const generateIcons = async () => {
 		generateInfoData: true,
 	});
 };
-
-export const optimizeSVG = async () => {
-	const fixer = new SVGFixer(src, src, {
-		showProgressBar: true
-	});
-
-	await fixer.fix();
-};
