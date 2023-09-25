@@ -27,12 +27,13 @@
 				inactive: './images/icons/illustrated/dark/auth-transparent.png'
 			},
 			title: 'Auth',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Secure login for all users',
+			description: 'Sign in your users securly with multiple login methods like email/password, sms, OAuth, annoymous, magic URLs and more.',
 			features: [
-				'Two-Factor Authentication support',
 				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Support for roles, user labels and teams',
+				'Rate-limits and advanced user protections',
+				'Custome SMTP and email templates'
 			],
 			shot: './images/products/Auth.svg'
 		},
@@ -42,26 +43,17 @@
 				inactive: './images/icons/illustrated/dark/databases-transparent.png'
 			},
 			title: 'Databases',
-			subtitle: 'Store, query and manage your data',
+			subtitle: 'Store, query and manage data',
 			description:
 				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
-			features: ['Relationships are a big deal'],
-			shot: './images/products/Databases.svg'
-		},
-		storage: {
-			icon: {
-				active: './images/icons/illustrated/dark/storage.png',
-				inactive: './images/icons/illustrated/dark/storage-transparent.png'
-			},
-			title: 'Storage',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Never paused',
+				'Fast in-memory caching',
+				'Advanced permission models',
+				'Custom data validation',
+				'Relationships support',
 			],
-			shot: './images/products/Storage.svg'
+			shot: './images/products/Databases.svg'
 		},
 		functions: {
 			icon: {
@@ -69,14 +61,30 @@
 				inactive: './images/icons/illustrated/dark/functions-transparent.png'
 			},
 			title: 'Functions',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Customize and extend your backend',
+			description: 'Deploy and scale serverless functions in secure, isolated runtimes.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Automatic deployment from GitHub',
+				'Trigger using HTTP, events, CRON or CLI',
+				'Support +30 runtimes and 13 languages',
+				'Custom domain support'
 			],
 			shot: './images/products/Functions.svg'
+		},
+		storage: {
+			icon: {
+				active: './images/icons/illustrated/dark/storage.png',
+				inactive: './images/icons/illustrated/dark/storage-transparent.png'
+			},
+			title: 'Storage',
+			subtitle: 'Upload and manage files',
+			description: 'Securely store files with advanced compression, encryption and image transformations.',
+			features: [
+				'File encryption in rest and transit',
+				'Built-in image transformation capabilities',
+				'Advanced compression with webp/brotli support'
+			],
+			shot: './images/products/Storage.svg'
 		},
 		realtime: {
 			icon: {
@@ -84,12 +92,12 @@
 				inactive: './images/icons/illustrated/dark/realtime-transparent.png'
 			},
 			title: 'Realtime',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Realtime events for every service',
+			description: 'Subscribe and react to any Appwrite event using the realtime API.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Unlimited subscriptions',
+				'Built-in permission management',
+				'Support for DBs, auth, storage & functions',
 			],
 			shot: './images/products/Realtime.svg'
 		}
