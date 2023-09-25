@@ -65,11 +65,39 @@ var todoDatabase;
 var todoCollection;
 
 async function prepareDatabase() {
-    todoDatabase = await databases.create(sdk.ID.unique(), 'TodosDB');
-    todoCollection = await databases.createCollection(todoDatabase.$id, sdk.ID.unique(), 'Todos');
-    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'title', 255, true);
-    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'description', 255, false, 'This is a test description');
-    await databases.createBooleanAttribute(todoDatabase.$id, todoCollection.$id, 'isComplete', true);
+    todoDatabase = await databases.create(
+        sdk.ID.unique(), 
+        'TodosDB'
+    );
+
+    todoCollection = await databases.createCollection(
+        todoDatabase.$id, 
+        sdk.ID.unique(), 
+        'Todos'
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'title', 
+        255, 
+        true
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'description', 
+        255, false, 
+        'This is a test description'
+    );
+    
+    await databases.createBooleanAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'isComplete', 
+        true
+    );
 }
 ```
 
@@ -97,9 +125,22 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo1);
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo2);
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo3);
+    await databases.createDocument(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        sdk.ID.unique(), 
+        testTodo1
+    );
+    
+    await databases.createDocument(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        sdk.ID.unique(), 
+        testTodo2
+    );
+    
+    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo3
+    );
 }
 ```
 
@@ -110,7 +151,10 @@ After the database is seeded, create a function to get the list of all the seede
 
 ```js
 async function getTodos() {
-    var todos = await databases.listDocuments(todoDatabase.$id, todoCollection.$id);
+    var todos = await databases.listDocuments(
+        todoDatabase.$id, 
+        todoCollection.$id
+    );
 
     todos.documents.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
@@ -146,11 +190,40 @@ var todoDatabase;
 var todoCollection;
 
 async function prepareDatabase() {
-    todoDatabase = await databases.create(sdk.ID.unique(), 'TodosDB');
-    todoCollection = await databases.createCollection(todoDatabase.$id, sdk.ID.unique(), 'Todos');
-    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'title', 255, true);
-    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'description', 255, false, 'This is a test description');
-    await databases.createBooleanAttribute(todoDatabase.$id, todoCollection.$id, 'isComplete', true);
+    todoDatabase = await databases.create(
+        sdk.ID.unique(), 
+        'TodosDB'
+    );
+
+    todoCollection = await databases.createCollection(
+        todoDatabase.$id, 
+        sdk.ID.unique(), 
+        'Todos'
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'title', 
+        255, 
+        true
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'description', 
+        255, 
+        false, 
+        'This is a test description'
+    );
+
+    await databases.createBooleanAttribute(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        'isComplete', 
+        true
+    );
 }
 
 async function seedDatabase() {
@@ -171,13 +244,33 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo1);
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo2);
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo3);
+    await databases.createDocument(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        sdk.ID.unique(), 
+        testTodo1
+    );
+
+    await databases.createDocument(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        sdk.ID.unique(), 
+        testTodo2
+    );
+
+    await databases.createDocument(
+        todoDatabase.$id, 
+        todoCollection.$id, 
+        sdk.ID.unique(), 
+        testTodo3
+    );
 }
 
 async function getTodos() {
-    var todos = await databases.listDocuments(todoDatabase.$id, todoCollection.$id);
+    var todos = await databases.listDocuments(
+        todoDatabase.$id, 
+        todoCollection.$id
+    );
 
     todos.documents.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
