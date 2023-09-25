@@ -508,7 +508,7 @@
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
 				<Spline let:viewer let:fallback>
 					<div
-						class="u-position-absolute u-z-index-0 is-not-mobile"
+						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
 						style="width: 50%; height:100%; left:0;"
 					>
 						<div style:display="grid" style:place-items="center" style:height="100%">
