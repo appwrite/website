@@ -1,6 +1,6 @@
 ---
 layout: article
-title: OAuth 2
+title: OAuth 2 login
 description: This is the description used for SEO.
 ---
 
@@ -221,7 +221,7 @@ print(session.providerAccessToken);
 {% /multicode %}
 
 
-An OAuth 2 [session](https://appwrite.io/docs/models/session) will have the following attributes.
+An OAuth 2 [session](/docs/references/cloud/models/session) will have the following attributes.
 
 | Property                   | Description                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------- |
