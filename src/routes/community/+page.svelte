@@ -28,7 +28,7 @@
 								<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-secondary is-full-width-mobile">
 									<span aria-hidden="true" class="aw-icon-star"></span>
 									<span>Star on GitHub</span>
-									<span class="aw-inline-tag aw-sub-body-400">33.2k</span>
+									<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
 								</a>
 							</div>
 						</div>
