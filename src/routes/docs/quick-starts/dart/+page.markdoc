@@ -11,7 +11,18 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Integrate with your server**, add an **API Key**. Make sure to add the `databases.write`, `collections.write`, `attributes.write`, `documents.read`, and `documents.write` scopes in the **Database** category (all other scopes are optional).
+
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
 
 ![Add API Key]()
 
@@ -57,9 +68,9 @@ Future<void> main() async {
 ```
 
 {% /section %}
-{% section #step-5 step=5 title="Initialize Database Service" %}
+{% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is set up, initialize the Database service using the Client and create a function to prepare a Todos database and collection (with the necessary attributes) by adding the following code to `bin/my_app.dart`.
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```dart
 var databases;
@@ -107,10 +118,8 @@ Future<void> prepareDatabase() async {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Seed Todos Database" %}
-
-Once the Todos database and collection is ready, create a function to seed it with sample data by adding the following code to `bin/my_app.dart`.
-
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
 ```dart
 Future<void> seedDatabase() async {
   var testTodo1 = {
@@ -154,10 +163,9 @@ Future<void> seedDatabase() async {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Get List Of Todos" %}
+{% section #step-7 step=7 title="Retrieve documents" %}
 
-After the database is seeded, create a function to get the list of all the seeded data by adding the following code to `bin/my_app.dart`. 
-
+Create a function to retrieve the mock todo data.
 ```dart
 Future<void> getTodos() async {
   var todos = await databases.listDocuments(
@@ -171,7 +179,7 @@ Future<void> getTodos() async {
 }
 ```
 
-Finally, revisit the `main()` function and update it to add the necessary function calls to trigger all the created functions in the steps above.
+Finally, revisit the `main()` function and call the functions created in previous steps.
 ```dart
 Future<void> main() async {
   client
@@ -187,124 +195,7 @@ Future<void> main() async {
 ```
 
 {% /section %}
-{% section #step-8 step=8 title="Review your project" %}
-
-Review the entire program in `bin/my_app.dart` once before running it. This is a good time to catch any errors that may have been made in any past step.
-
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-var client = Client();
-
-Future<void> main() async {
-  client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>");
-
-    await prepareDatabase();
-    await Future.delayed(const Duration(seconds: 1));
-    await seedDatabase();
-    await getTodos();
-}
-
-var databases;
-var todoDatabase;
-var todoCollection;
-
-Future<void> prepareDatabase() async {
-  databases = Databases(client);
-
-  todoDatabase = await databases.create(
-    databaseId: ID.unique(), 
-    name: 'TodosDB'
-  );
-
-  todoCollection = await databases.createCollection(
-    databaseId: todoDatabase.$id, 
-    collectionId: ID.unique(), 
-    name: 'Todos'
-  );
-
-  await databases.createStringAttribute(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    key: 'title',
-    size: 255,
-    xrequired: true
-  );
-
-  await databases.createStringAttribute(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    key: 'description',
-    size: 255,
-    xrequired: false,
-    xdefault: 'This is a test description'
-  );
-
-  await databases.createBooleanAttribute(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    key: 'isComplete',
-    xrequired: true
-  );
-}
-
-Future<void> seedDatabase() async {
-  var testTodo1 = {
-    'title': 'Buy apples',
-    'description': 'At least 2KGs',
-    'isComplete': true
-  };
-
-  var testTodo2 = {
-    'title': 'Wash the apples',
-    'isComplete': true
-  };
-
-  var testTodo3 = {
-    'title': 'Cut the apples',
-    'description': 'Don\'t forget to pack them in a box',
-    'isComplete': false
-  };
-
-  await databases.createDocument(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    documentId: ID.unique(),
-    data: testTodo1
-  );
-
-  await databases.createDocument(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    documentId: ID.unique(),
-    data: testTodo2
-  );
-
-  await databases.createDocument(
-    databaseId: todoDatabase.$id,
-    collectionId: todoCollection.$id,
-    documentId: ID.unique(),
-    data: testTodo3
-  );
-}
-
-Future<void> getTodos() async {
-  var todos = await databases.listDocuments(
-    databaseId: todoDatabase.$id, 
-    collectionId: todoCollection.$id
-  );
-
-  todos.documents.forEach((todo) {
-    print('Title: ${todo.data['title']}\nDescription: ${todo.data['description']}\nIs Todo Complete: ${todo.data['isComplete']}\n\n');
-  });
-}
-```
-
-{% /section %}
-{% section #step-9 step=9 title="Check out what you've built" %}
+{% section #step-8 step=8 title="All set" %}
 
 Run your project with `dart run bin/my_app.dart` and view the response in your console.
 

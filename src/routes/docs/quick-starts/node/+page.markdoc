@@ -11,7 +11,17 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Integrate with your server**, add an **API Key**. Make sure to add the `databases.write`, `collections.write`, `attributes.write`, `documents.read`, and `documents.write` scopes in the **Database** category (all other scopes are optional).
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
 
 ![Add API Key]()
 
@@ -54,9 +64,9 @@ client
 ```
 
 {% /section %}
-{% section #step-5 step=5 title="Initialize Database Service" %}
+{% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is set up, initialize the Database service using the Client and create a function to prepare a Todos database and collection (with the necessary attributes) by adding the following code to `app.js`.
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```js
 const databases = new sdk.Databases(client);
@@ -102,10 +112,8 @@ async function prepareDatabase() {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Seed Todos Database" %}
-
-Once the Todos database and collection is ready, create a function to seed it with sample data by adding the following code to `app.js`.
-
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
 ```js
 async function seedDatabase() {
     var testTodo1 = {
@@ -139,125 +147,6 @@ async function seedDatabase() {
         testTodo2
     );
     
-    await databases.createDocument(todoDatabase.$id, todoCollection.$id, sdk.ID.unique(), testTodo3
-    );
-}
-```
-
-{% /section %}
-{% section #step-7 step=7 title="Get List Of Todos" %}
-
-After the database is seeded, create a function to get the list of all the seeded data and a function to trigger all the created functions in the steps above by adding the following code to `app.js`.
-
-```js
-async function getTodos() {
-    var todos = await databases.listDocuments(
-        todoDatabase.$id, 
-        todoCollection.$id
-    );
-
-    todos.documents.forEach(todo => {
-        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
-    });
-}
-
-async function runAllTasks() {
-    await prepareDatabase();
-    await seedDatabase();
-    await getTodos();
-}
-runAllTasks();
-```
-
-{% /section %}
-{% section #step-8 step=8 title="Review your project" %}
-
-Review the entire program in `app.js` once before running it. This is a good time to catch any errors that may have been made in any past step.
-
-```js
-const sdk = require("node-appwrite");
-
-const client = new sdk.Client();
-
-client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>");
-
-const databases = new sdk.Databases(client);
-
-var todoDatabase;
-var todoCollection;
-
-async function prepareDatabase() {
-    todoDatabase = await databases.create(
-        sdk.ID.unique(), 
-        'TodosDB'
-    );
-
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id, 
-        sdk.ID.unique(), 
-        'Todos'
-    );
-
-    await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'title', 
-        255, 
-        true
-    );
-
-    await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'description', 
-        255, 
-        false, 
-        'This is a test description'
-    );
-
-    await databases.createBooleanAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'isComplete', 
-        true
-    );
-}
-
-async function seedDatabase() {
-    var testTodo1 = {
-        title: 'Buy apples',
-        description: 'At least 2KGs',
-        isComplete: true
-    };
-
-    var testTodo2 = {
-        title: 'Wash the apples',
-        isComplete: true
-    };
-
-    var testTodo3 = {
-        title: 'Cut the apples',
-        description: 'Don\'t forget to pack them in a box',
-        isComplete: false
-    };
-
-    await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        sdk.ID.unique(), 
-        testTodo1
-    );
-
-    await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        sdk.ID.unique(), 
-        testTodo2
-    );
-
     await databases.createDocument(
         todoDatabase.$id, 
         todoCollection.$id, 
@@ -265,7 +154,15 @@ async function seedDatabase() {
         testTodo3
     );
 }
+```
 
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data and a function to execute the requests in order.
+Run the functions to by calling `runAllTasks();`.
+
+```js
 async function getTodos() {
     var todos = await databases.listDocuments(
         todoDatabase.$id, 
@@ -286,7 +183,8 @@ runAllTasks();
 ```
 
 {% /section %}
-{% section #step-9 step=9 title="Check out what you've built" %}
+
+{% section #step-8 step=8 title="All set" %}
 
 Run your project with `node app.js` and view the response in your console.
 
