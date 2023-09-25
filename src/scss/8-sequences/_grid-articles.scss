@@ -17,7 +17,7 @@
     .#{$p}-grid-articles-item {}
   }
   &-item {
-    display:flex; flex-direction:column;
+    display:flex; flex-direction:column; min-block-size:100%;
     padding:pxToRem(8); padding-block-end:pxToRem(12);
 
     background-color:hsl(var(--p-grid-articles-item-bg-color));
