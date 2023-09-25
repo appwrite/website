@@ -26,12 +26,12 @@ const execute = async () => {
 		safeAnimate(box, { opacity: 0 }, { duration: 0.5 })?.finished
 	]);
 
-	await sleep(500);
+	await sleep(250);
 
 	await safeAnimate(code, { zIndex: 0 }, { duration: 0 })?.finished;
 	await safeAnimate(code, { y: [200 - 16, 200], opacity: 1 }, { duration: 0.5 })?.finished;
 
-	await sleep(500);
+	await sleep(250);
 
 	update((p) => ({
 		...p,
