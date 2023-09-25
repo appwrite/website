@@ -28,14 +28,14 @@
 	</div>
 </div>
 
-<div class="u-position-absolute aw-is-not-mobile">
+<div class="u-position-absolute u-width-full-line aw-is-not-mobile">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="1728"
 		height="617"
 		viewBox="0 0 1728 617"
 		fill="none"
-		class="u-max-width-100-percent"
+		class="u-width-full-line"
 	>
 		<g opacity="0.24" filter="url(#filter0_f_3260_127073)">
 			<ellipse cx="864" cy="36" rx="999" ry="325" fill="#FD366E" />
