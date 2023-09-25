@@ -38,6 +38,8 @@ export function load() {
 			frontmatter: AuthorData;
 		};
 
+		const name = frontmatter.id ?? frontmatter.name.toLowerCase().replace(' ', '-');
+
 		return {
 			name: frontmatter.name,
 			role: frontmatter.role,
@@ -46,7 +48,7 @@ export function load() {
 			twitter: frontmatter.twitter,
 			linkedin: frontmatter.linkedin,
 			github: frontmatter.github,
-			href: `${base}/blog/author/${frontmatter.name.toLowerCase()}`
+			href: `${base}/blog/author/${name}`
 		};
 	});
 
