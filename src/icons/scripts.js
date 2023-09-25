@@ -1,5 +1,3 @@
-// @ts-expect-error missing types
-import SVGFixer from 'oslllo-svg-fixer';
 import svgtofont from 'svgtofont';
 import { resolve } from 'path';
 
@@ -27,12 +25,4 @@ export const generateIcons = async () => {
 		emptyDist: true,
 		generateInfoData: true,
 	});
-};
-
-export const optimizeSVG = async () => {
-	const fixer = new SVGFixer(src, src, {
-		showProgressBar: true
-	});
-
-	await fixer.fix();
 };
