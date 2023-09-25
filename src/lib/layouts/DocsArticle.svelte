@@ -23,31 +23,33 @@
 		<header class="aw-article-header">
 			<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
 				{#if back !== undefined}
-				<a href="{back}"
-					class="
+					<a
+						href={back}
+						class="
                         aw-button is-text aw-is-only-mobile
                         aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
-					aria-label="previous page"
-				>
-					<span class="icon-cheveron-left" aria-hidden="true" />
-				</a>
+						aria-label="previous page"
+					>
+						<span class="icon-cheveron-left" aria-hidden="true" />
+					</a>
 				{/if}
 				<ul class="aw-metadata aw-caption-400">
 					<slot name="metadata" />
 				</ul>
 				<div class="u-position-relative u-flex u-cross-center">
 					{#if back !== undefined}
-					<a href="{back}"
-						class="
+						<a
+							href={back}
+							class="
                         aw-button is-text is-icon aw-u-cross-center aw-u-size-40
                         u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
-						aria-label="previous page"
-					>
-						<span
-							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
-							aria-hidden="true"
-						/>
-					</a>
+							aria-label="previous page"
+						>
+							<span
+								class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
+								aria-hidden="true"
+							/>
+						</a>
 					{/if}
 					<h1 class="aw-title">{title}</h1>
 				</div>
@@ -145,7 +147,7 @@
 						{/each}
 					</ol>
 					<div class="u-sep-block-start u-padding-block-start-20">
-						<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
+						<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
 							<span class="icon-arrow-up" aria-hidden="true" />
 							<span class="aw-sub-body-500">Back to top</span>
 						</a>
