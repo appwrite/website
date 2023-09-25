@@ -138,13 +138,13 @@
 								<slot />
 							</div>
 						</article>
-						{#if categories?.length}
+						<!-- {#if categories?.length}
 							<div class="u-flex u-gap-16">
 								{#each categories as cat}
 									<a href={cat.href} class="aw-tag">{cat.name}</a>
 								{/each}
 							</div>
-						{/if}
+						{/if} -->
 					</div>
 				</div>
 			</div>
