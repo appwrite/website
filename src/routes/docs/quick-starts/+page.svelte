@@ -11,7 +11,8 @@
 		'react',
 		'sveltekit',
 		'vuejs',
-		'node'
+		'node',
+		'dart'
 	];
 </script>
 
