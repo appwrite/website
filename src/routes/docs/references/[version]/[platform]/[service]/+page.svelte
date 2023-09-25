@@ -2,11 +2,20 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
+	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
-	import { Platform, platformMap, serviceMap, versions } from '$lib/utils/references.js';
+	import {
+		Platform,
+		platformMap,
+		preferredPlatform,
+		preferredVersion,
+		serviceMap,
+		versions,
+		type Version
+	} from '$lib/utils/references.js';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
 	import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
-	import { getContext, setContext } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	export let data;
@@ -29,13 +38,10 @@
 		}
 	});
 
-	function handleRefClick() {
-		document.querySelector('.aw-references-menu')?.classList.toggle('is-open');
-		document.querySelector('.aw-grid-two-side-navs')?.classList.remove('is-open');
-	}
-
 	function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { version, service } = $page.params;
+		const platform = event.currentTarget.value as Platform;
+		preferredPlatform.set(platform);
 		goto(`/docs/references/${version}/${event.currentTarget.value}/${service}`, {
 			noScroll: true
 		});
@@ -43,10 +49,17 @@
 
 	function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const { platform, service } = $page.params;
-		goto(`/docs/references/${event.currentTarget.value}/${platform}/${service}`, {
+		const version = event.currentTarget.value as Version;
+		preferredVersion.set(version);
+		goto(`/docs/references/${version}/${platform}/${service}`, {
 			noScroll: true
 		});
 	}
+
+	onMount(() => {
+		preferredVersion.set($page.params.version as Version);
+		preferredPlatform.set($page.params.platform as Platform);
+	});
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
@@ -168,19 +181,30 @@
 										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 											<ul>
 												{#each method.responses as response}
-													<li>
-														<article>
-															<header class="u-flex u-cross-baseline u-gap-8">
-																<h3 class="aw-eyebrow aw-u-color-text-primary">
-																	{response.code}
-																</h3>
-																<span class="aw-caption-400">{response.model?.name}</span>
-															</header>
-															<p class="aw-sub-body-400 u-margin-block-start-16">
-																<a href="#">Payload <span class="icon-cheveron-right" /></a>
-															</p>
-														</article>
-													</li>
+													{#if response.models}
+														<li>
+															<article>
+																<header class="u-flex u-cross-baseline u-gap-8">
+																	<h3 class="aw-eyebrow aw-u-color-text-primary">
+																		{response.code}
+																	</h3>
+																	<span class="aw-caption-400">application/json</span>
+																</header>
+																<ul class="aw-sub-body-400 u-margin-block-start-16">
+																	{#each response.models as model}
+																		<li>
+																			<a
+																				class="aw-link"
+																				href={`/docs/references/${$page.params.version}/models/${model.id}`}
+																			>
+																				{model.name}
+																			</a>
+																		</li>
+																	{/each}
+																</ul>
+															</article>
+														</li>
+													{/if}
 												{/each}
 											</ul>
 										</div>
@@ -202,14 +226,14 @@
 				</section>
 			{/each}
 		</div>
-		<aside class="aw-references-menu">
-			<button class="aw-icon-button" id="refOpen" on:click={handleRefClick}>
+		<aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
+			<button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
 				<span class="icon-menu-alt-4" aria-hidden="true" />
 			</button>
 			<div class="aw-references-menu-content">
 				<div class="u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
 					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-					<button class="aw-icon-button" id="refClose" on:click={handleRefClick}>
+					<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
 						<span class="icon-x" aria-hidden="true" />
 					</button>
 				</div>
@@ -225,7 +249,7 @@
 					{/each}
 				</ul>
 				<div class="u-sep-block-start aw-u-padding-block-20">
-					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
+					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
 						<span class="icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>

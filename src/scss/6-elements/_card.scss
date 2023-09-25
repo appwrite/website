@@ -3,12 +3,17 @@
 .#{$p}-card {
   --p-card-padding: var(--card-padding, #{pxToRem(24)});
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
+
   &.is-normal {
     --p-card-bg-color: var(--p-card-bg-color-default);
     --p-card-bg-color-default: var(--aw-color-card);
 
     --p-card-border-color: var(--p-card-border-color-default);
-    --p-card-border-color-default: var(--aw-color-black) / 0.08;
+    --p-card-border-color-default: var(--aw-color-offset);
+
+    --p-card-shadow-color: var(--p-card-shadow-color-default);
+    --p-card-shadow-color-default: var(--aw-color-black) / 0;
+    --p-card-shadow-color-focus-visible: var(--aw-color-black) / 0.06;
 
     --card-padding: #{pxToRem(16)};
 
@@ -18,15 +23,31 @@
     padding: var(--p-card-padding);
     border-radius: var(--p-card-border-radius);
 
+    &:where(a, button) {
+      cursor:pointer;
+      outline: solid pxToRem(1) hsl(var(--transparent));
+      box-shadow: 0 0 0 pxToRem(5) hsl(var(--p-card-shadow-color));
+      transition:var(--transition);
+      &:where(:hover, :focus):not(#{$disabled}) {
+        outline-color: hsl(var(--p-card-border-color));
+      }
+      &:where(:focus-visible) {
+        --p-card-shadow-color: var(--p-card-shadow-color-focus-visible);
+      }
+      &:where(#{$disabled}) { opacity:0.4; }
+    }
+
     #{$theme-dark} & {
       --p-card-border-color-default: var(--aw-color-white) / 0.10;
+
+      --p-card-shadow-color-focus-visible: var(--aw-color-white) / 0.06;
     }
   }
   &.is-white {
-    display:block;
+    display:flex; flex-direction:column;
     padding:var(--p-card-padding);
     background: linear-gradient(360deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.64) 100%);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter:blur(pxToRem(12)); backdrop-filter:blur(pxToRem(12));
     border-radius: var(--p-card-border-radius);
   }
   &.is-transparent {
@@ -34,8 +55,9 @@
     padding: var(--p-card-padding);
     border:solid pxToRem(1) rgba(255 255 255 / 0.12);
     border-radius:pxToRem(16);
-    backdrop-filter:blur(100px);
     background: linear-gradient(136deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 30.91%, rgba(255, 255, 255, 0.00) 100%, rgba(255, 255, 255, 0.01) 100%);
+    -webkit-backdrop-filter:blur(pxToRem(100));
+    backdrop-filter:blur(pxToRem(100));
     &-pink {
       background: linear-gradient(180deg, rgba(253, 54, 110, 0.04) 61.28%, rgba(253, 54, 110, 0.00) 100%);
       border-color:hsl(var(--aw-color-pink-500) / 0.5);
@@ -43,12 +65,20 @@
   }
   &.is-full-color {
     --card-bg-color: var(--aw-color-white);
-    padding:pxToRem(20); border-radius:pxToRem(16);
-    background-color:hsl(var(--card-bg-color)) / 0.9; backdrop-filter:blur(pxToRem(8));
+    padding: var(--p-card-padding, #{pxToRem(20)});
+     border-radius:pxToRem(16);
+    background-color:hsl(var(--card-bg-color) / 0.9);
     border:solid pxToRem(1) hsl(var(--aw-color-subtle));
+
+    -webkit-backdrop-filter:blur(pxToRem(8));
+    backdrop-filter:blur(pxToRem(8));
 
     #{$theme-dark} & {
       --card-bg-color: var(--aw-color-greyscale-850);
+    }
+
+    #{$theme-light} & {
+      --card-bg-color: var(--aw-color-white);
     }
   }
 
@@ -66,6 +96,6 @@
   }
 
   @media #{$break1} {
-    --p-card-padding: var(--card-padding-mobile, var(--card-padding));
+    --p-card-padding: var(--card-padding-mobile, #{pxToRem(24)});
   }
 }

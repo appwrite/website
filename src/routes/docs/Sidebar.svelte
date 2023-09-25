@@ -5,6 +5,11 @@
 		{
 			items: [
 				{
+					label: 'Home',
+					href: '/docs',
+					icon: 'icon-home'
+				},
+				{
 					label: 'Quick Start',
 					href: '/docs/quick-starts',
 					icon: 'icon-play'
@@ -67,7 +72,7 @@
 				{
 					label: 'GraphQL',
 					href: '/docs/apis/graphql',
-					icon: 'icon-play'
+					icon: 'icon-graphql'
 				}
 			]
 		},
@@ -89,11 +94,6 @@
 		{
 			label: 'Advanced',
 			items: [
-				{
-					label: 'Integration',
-					href: '/docs/advanced/integration',
-					icon: 'icon-puzzle'
-				},
 				{
 					label: 'Platform',
 					href: '/docs/advanced/platform',

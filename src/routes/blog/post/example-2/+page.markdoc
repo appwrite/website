@@ -1,0 +1,76 @@
+---
+layout: post
+title: Example 2
+description: Lorem Ipsum dolor et amet.
+date: 2022-11-12
+cover: /images/blog/placeholder.png
+timeToRead: 5
+author: eldad-fux
+category: design, accessibility, appwrite, community, accessiblity
+---
+
+When creating products, accessibility can be an afterthought. Understandably, we want to ship our products fast and deliver value to our users. We might think that accessibility is needed for edge cases and therefore not prioritize it. It's good to be reminded that the World Health Organization (WHO) estimates that 16% of the global population has some form of disability (Dec 2022).Ignoring such a significant part of your user base simply doesn't create a good user experience.Creating accessible products is everyone's responsibility. Designers, developers, content authors, and whoever else is involved in creating products should do their part and strive towards achieving a better experience for everyone.
+
+It's not always easy to maintain a high level of accessibility, but it's definitely easier with a design system. The components we created in Pink Design, Appwrite's fully open source UI library, have an accessibility level of AA. This is the recommended level of accessibility for most products.
+
+To ensure our products will maintain a high accessibility level, we did the following:
+
+- Use high color contrast
+- Not relying on color
+- Allow keyboard navigation
+- Define font size in REM
+- Allow users to reduce motion
+
+## Use high color contrast
+
+Color contrast might be the first thing that comes to mind when thinking about accessibility. A lack of contrast between the text and background might mean some people would be unable or have difficulty reading the text. Similarly, bright colors with high luminance are not readable for others. W3C recommends a contrast ratio between text and background of 4.5 to 1 for conformance level AA.
+
+| Item        | Price       | \# In stock |
+| ----------- | ----------- | ----------- |
+| Apples      | 1.99        | *7*         |
+| Bananas     | **1.89**    | 5234        |
+
+## Not relying on color
+
+The term “color blindness” is often used to describe people who have trouble identifying and distinguishing between certain colors, but color blindness, the inability to see any color, is extremely rare. According to the United Kingdom National Health Service (NHS), red-green color blindness affects 1 out of 12 men and 1 out of 200 women. People with this color vision deficiency may have difficulty differentiating between reds, oranges, yellows, browns, and greens. They also might find it hard to distinguish between shades of purple and may confuse red with black.Similarly, people with “blue-yellow” color vision deficiency may have difficulty differentiating between blues, greens, and yellows.
+
+BIG LINK
+
+We use four system colors in Pink Design — red, orange, green, and blue. Each of these colors represents a state in the Appwrite console — red indicates an error or danger, orange indicates a warning, green indicates success, and blue indicates information. Knowing the difficulties our users might face while seeing these colors, we don't rely on color to make critical information understandable.
+
+> “Lorem ipsum dolor sit amet consectetur. Diam fermentum tellus ante purus nullam eget sit id ac. Purus viverra ultrices fusce posuere sed enim duis aliquam sit. Vitae fames potenti donec ultricies in. Quis sed iaculis consectetur cras feugiat nibh gravida tincidunt volutpat. Eleifend vel blandit cras tempor sed nam quis aliquet. Facilisi tempor amet id integer gravida duis. Aliquet nulla tellus risus tortor neque vestibulum arcu.” Author
+
+## Allow keyboard navigation
+
+People with fine motor control restrictions or disabled hands or arms will be unable to use a mouse. In Pink Design, we provide distinct states for interactive elements. By designing states like focus, hover, and active, we provide the ability to navigate all interactive elements with a keyboard. This is not only an accessible experience but also a better experience for all users who prefer keyboard navigation, including Appwrite's developer community.
+
+It is possible to enhance accessibility through development as well. In collaboration with our engineering team, we decided to incorporate the following into Pink Design:
+
+![Alt text](/images/pages/homepage/dashboard.svg "a title")
+
+## Define font size in REM
+
+Browsers have a default font size that users can change via the browser setting. A pixel is an absolute unit for fixed sizes and spaces that ignores browser settings. This means that if we are using pixels and a user (with or without vision impairment) changes the font size in their browser settings, their setting won't affect our product. That being said, pixels should not cause any problems if the user zooms in, but we make no assumptions about users' preferences. This is why we decided to define the font size in REM, which is a relative unit.
+
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint 
+    .setProject('5df5acd0d48c2')                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createVerification('https://example.com'); 
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+
+```
+
+## Allow users to reduce motion
+
+There is no doubt that animations are a nice addition to every product, but animations can also distract people. In some cases, animations can cause dizziness, vertigo, or epileptic seizures. Users that are sensitive to motion might choose to reduce motion in their operating system settings. In this case, we should skip the animation for them. In Pink Design, we decided to create a big animation to show the functionality of the library on the landing page. The animation is 10 seconds long and is the first thing you see on the page. It starts immediately when the page is loaded, but if “reduce motion” is enabled in the operating system, the animation skips to the end.

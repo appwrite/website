@@ -521,7 +521,6 @@
 				</ul>
 			</section>
 		</div>
-		
 	</article>
 
 	<MainFooter variant="docs" />

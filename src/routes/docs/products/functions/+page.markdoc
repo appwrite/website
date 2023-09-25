@@ -11,21 +11,11 @@ Appwrite Functions are user-defined functions that can start small and scale big
 These Functions can be triggered by HTTP requests, SDK methods, server events, webhooks, and scheduled executions. 
 Each function will have its own URL, execute in its own isolated container, and have its own configurable environment variables and permissions.
 
-# Getting started {% #getting-started %}
+## Getting started {% #getting-started %}
 
 Appwrite Functions let you build anything you can imagine, but this flexibility makes it difficult to know where to start. 
 Start exploring by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features.
 
+[Quick start {% icon icon="cheveron-right" /%}](/docs/products/functions/quick-start)
+
 ![](https://appwrite.io/images-ee/docs/functions-starter-dark.png)
-
-# Explore features {% #explore %}
-
-Appwrite Functions use familiar HTTP concepts, so you can learn quickly and gain transferable skills.
-
-| Explore                           |                   |
-| -----------------                 | ----------------- | 
-| [Develop](functions/development)      | Appwrite Functions use familiar HTTP concepts, so you can learn quickly and gain transferable skills. | 
-| [Deploy](functions/deployment)        | Appwrite Functions can be deployed automatically from Git, through the Appwrite CLI, or be uploaded manually. Develop and deploy with the workflow you're already comfortable with.   | 
-| [Execute](functions/execution)      | Appwrite Functions can be triggered by HTTP requests, SDK methods, server events, webhooks, and scheduled executions. Explore how Appwrite Functions can be invoked.   | 
-| [Runtimes](functions/runtimes)    | Appwrite supports a growing list of **10+** runtimes. Avoid adding additional complexity to your codebase by coding in languages you already use and love.   | 
-| [Examples](functions/examples)    | Like to learn from examples? Here's a curated list of examples that showcase Appwrite Functions' capabilities.   | 

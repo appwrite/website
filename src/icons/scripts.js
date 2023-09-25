@@ -1,5 +1,4 @@
 import svgtofont from 'svgtofont';
-import SVGFixer from 'oslllo-svg-fixer';
 import { resolve } from 'path';
 
 const src = resolve(process.cwd(), 'src/icons/svg');
@@ -25,16 +24,5 @@ export const generateIcons = async () => {
 		},
 		emptyDist: true,
 		generateInfoData: true,
-		svgoOptions: {
-			full: false
-		}
 	});
-};
-
-export const optimizeSVG = async () => {
-	const fixer = new SVGFixer(src, src, {
-		showProgressBar: true
-	});
-
-	await fixer.fix();
 };
