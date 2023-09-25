@@ -30,7 +30,7 @@ HTTP requests made to your webhook's configured URL endpoint will contain severa
 
 ## Verification {% #verification %}
 
-Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/webhooks#headers) header. 
+Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/advanced/platform/webhooks#headers) header. 
 This is the HMAC-SHA1 signature of the payload. You can find the signature key in your webhooks properties in the dashboard. 
 To generate this hash you append the payload to the end of webhook URL (make sure there are no spaces in between) and then use the HMAC-SHA1 algorithm to generate the signature. 
 After you've generated the signature, compare it to the `X-Appwrite-Webhook-Signature` header value. 

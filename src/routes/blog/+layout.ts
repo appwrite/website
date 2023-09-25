@@ -37,25 +37,25 @@ export function load() {
 			return b.date.getTime() - a.date.getTime();
 		});
 
-	const authors = Object.entries(authorsGlob).map(([_filepath, authorList]) => {
+	const authors = Object.values(authorsGlob).map((authorList) => {
 		const { frontmatter } = authorList as {
 			frontmatter: AuthorData;
 		};
-		const name = frontmatter.id ?? frontmatter.name.toLowerCase().replace(' ', '-');
 
 		return {
 			name: frontmatter.name,
+			slug: frontmatter.slug,
 			role: frontmatter.role,
 			avatar: frontmatter.avatar,
 			bio: frontmatter.bio,
 			twitter: frontmatter.twitter,
 			linkedin: frontmatter.linkedin,
 			github: frontmatter.github,
-			href: `${base}/blog/author/${frontmatter.name.toLowerCase().replaceAll(' ', '-')}`
+			href: `${base}/blog/author/${frontmatter.slug}`
 		};
 	});
 
-	const categories = Object.entries(categoriesGlob).map(([_filepath, categoryList]) => {
+	const categories = Object.values(categoriesGlob).map((categoryList) => {
 		const { frontmatter } = categoryList as {
 			frontmatter: CategoryData;
 		};
@@ -66,7 +66,7 @@ export function load() {
 			href: `${base}/blog/category/${frontmatter.name.toLowerCase()}`
 		};
 	});
-
+	console.log({posts, authors})
 	return {
 		posts,
 		authors,
