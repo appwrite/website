@@ -110,8 +110,7 @@
 	<div class="sticky-wrapper">
 		<h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
 		<p class="aw-description">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis
-			pellentesque quis purus.
+			Together with hundreds of developers from the open-source community, we continue to build the most complete backend platform for every developer. 
 		</p>
 
 		<div class="cards-wrapper">
