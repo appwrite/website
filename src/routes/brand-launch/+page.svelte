@@ -40,7 +40,7 @@
 				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-margin-inline-auto">
 					<div class="aw-hero aw-u-gap-20">
 						<h1 class="aw-headline aw-u-color-text-primary">Brand new Appwrite</h1>
-						<p class="aw-description">
+						<p class="aw-description aw-u-color-text-primary aw-u-opacity-64">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 							Praesent sagittis eget ipsum vitae eleifend.
 						</p>
@@ -1227,7 +1227,7 @@
 				<div class="aw-container">
 					<div class="aw-hero">
 						<h4 class="aw-title aw-u-color-text-primary">Be a part of #Teamof100</h4>
-						<p class="aw-main-body-500 u-margin-block-start-4">
+						<p class="aw-main-body-500 u-margin-block-start-4 aw-u-color-text-primary aw-u-opacity-64">
 							Join our rebrand celebration by sharing #teamof100 in your socials for a chance to win
 							brand-new Appwrite swag.
 						</p>
