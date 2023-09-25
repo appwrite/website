@@ -3,10 +3,8 @@ name: Search Index
 on: [push]
 
 jobs:
-  build:
-
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -15,6 +13,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+      - run: ls
       - run: yarn
       - run: yarn start -c '$SCRAPIX_CONFIG'
         env:
