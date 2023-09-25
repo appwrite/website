@@ -12,9 +12,7 @@
 
   &-secondary {
     &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
-    &-item {
-      a { color:hsl(var(--aw-color-greyscale-500)); }
-      }
+    &-item {}
   }
 
   @media #{$break1} {

@@ -368,7 +368,7 @@
 						</div>
 						<div class="aw-mini-card">
 							<div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
-								<h4 class="aw-label aw-u-color-text-primary">Free</h4>
+								<h4 class="aw-label aw-u-color-text-primary">Starter</h4>
 								<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary">
 									<span class="aw-sub-body-500">Start building</span>
 								</a>
