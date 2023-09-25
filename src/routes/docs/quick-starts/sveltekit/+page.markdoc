@@ -99,7 +99,7 @@ Create a new file `src/routes/index.svelte` and add the following code to it.
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="Checkout what you've built" %}
+{% section #step-6 step=6 title="All set" %}
 Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
 {% /section %}
 

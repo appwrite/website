@@ -294,6 +294,6 @@ class MyFormState extends State<MyForm> {
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="Checkout what you've built" %}
+{% section #step-6 step=6 title="All set" %}
 Run your project with `flutter run` and select a browser, platform, or emulator to run your project.
 {% /section %}
