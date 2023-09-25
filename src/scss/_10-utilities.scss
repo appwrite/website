@@ -1,6 +1,7 @@
 @use "abstract" as *;
 
 .#{$p}-u-hide-mobile  { @media #{$break1}{ display:none!important; } }
+.#{$p}-u-opacity-40-mobile { @media #{$break1}{ opacity:0.4; } }
 .#{$p}-u-opacity-64                 { opacity:0.64!important; }
 .#{$p}-u-opacity-90                 { opacity:0.9!important;  }
 
