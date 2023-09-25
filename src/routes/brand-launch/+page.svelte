@@ -18,6 +18,15 @@
 		</defs>
 	</svg>
 </div>
+
+
+<div class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+	<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt width="800" style="transform:translateX(-35%)">
+</div>
+<div class="u-position-absolute u-inset-inline-end-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+	<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt width="800" style="transform:translateX(35%)">
+</div>
+
 <div class="u-position-absolute aw-is-not-mobile">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -51,12 +60,6 @@
 <Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
-			<!--<div class="u-position-absolute u-inset-inline-start-0">
-				<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt>
-			</div>
-			<div class="u-position-absolute u-inset-inline-end-0">
-				<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt>
-			</div>-->
 			<div class="aw-container u-position-relative">
 				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-margin-inline-auto">
 
