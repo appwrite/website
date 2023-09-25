@@ -190,7 +190,7 @@
 				out:fly={{ duration: 250, y: -300 }}
 				in:fly={{ duration: 250, delay: 250, y: -300 }}
 			>
-				{#if scrollInfo.percentage > 0}
+				{#if scrollInfo.percentage > -0.15}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
 					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
@@ -360,7 +360,7 @@
 		padding-inline: 1.25rem;
 
 		width: 100%;
-		height: 80vh;
+		height: 100vh;
 
 		> .main-text {
 			position: absolute;
@@ -430,7 +430,7 @@
 					}
 
 					&:not(:last-child)[data-active] {
-						padding-block-end: 4.25rem;
+						// padding-block-end: 4.25rem;
 					}
 
 					transition: 100ms ease;
