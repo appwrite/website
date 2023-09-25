@@ -1,5 +1,3 @@
-// @ts-expect-error missing types
-import SVGFixer from 'oslllo-svg-fixer';
 import svgtofont from 'svgtofont';
 import { resolve } from 'path';
 

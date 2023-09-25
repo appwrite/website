@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { toScale, type Scale } from '$lib/utils/toScale';
-
 	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
 	import { animation, createScrollHandler, scroll, type Animation } from '.';
 
@@ -71,13 +69,10 @@
 		}
 	];
 
-	const animScale: Scale = [0, animations.length - 1];
-	const percentScale: Scale = [0.1, 0.9];
-
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
 			return {
-				percentage: toScale(i, animScale, percentScale),
+				percentage: 0.1,
 				whenAfter() {
 					const { main, reversed } = isMobile() ? mobile : desktop;
 
@@ -109,10 +104,6 @@
 >
 	<div class="sticky-wrapper">
 		<h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
-		<p class="aw-description">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis
-			pellentesque quis purus.
-		</p>
 
 		<div class="cards-wrapper">
 			<a
@@ -171,7 +162,7 @@
 
 <style lang="scss">
 	#open-source {
-		height: 3500px;
+		height: 1500px;
 		position: relative;
 	}
 
@@ -201,10 +192,6 @@
 			content: '';
 			position: absolute;
 			inset: 0;
-		}
-
-		p {
-			max-width: 48.875rem;
 		}
 
 		.cards-wrapper {

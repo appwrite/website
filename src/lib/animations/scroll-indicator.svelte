@@ -13,7 +13,7 @@
 	onMount(() => {
 		let frame: number | null = null;
 		const ease = () => {
-			easedPercentage += (percentage - easedPercentage) * 0.1;
+			easedPercentage += (percentage - easedPercentage) * 1;
 			frame = window.requestAnimationFrame(ease);
 		};
 		ease();
