@@ -31,7 +31,7 @@
 					<a class="aw-link" href="/docs/quick-starts/nextjs">Next.js</a>
 				</li>
 				<li>
-					<a class="aw-link" href="/docs/quick-starts/vuejs">Vue.js</a>
+					<a class="aw-link" href="/docs/quick-starts/vue">Vue.js</a>
 				</li>
 				<li>
 					<a class="aw-link" href="/docs/quick-starts/sveltekit">SvelteKit</a>

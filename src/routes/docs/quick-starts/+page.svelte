@@ -27,7 +27,7 @@
 					title: 'Vue.js',
 					icon: 'icon-vue_js',
 					image: '/images/blog/placeholder.png',
-					href: 'vuejs'
+					href: 'vue'
 				},
 				{
 					title: 'SvelteKit',

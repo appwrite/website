@@ -14,7 +14,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 appwrite init project
 ```
 
-The following prompts will guide you through the setup process. The init command also creates an [appwrite.json](/docs/command-line-deployment#appwriteJSON) file representing your Appwrite project.
+The following prompts will guide you through the setup process. The init command also creates an [appwrite.json](/docs/tooling/command-line/deployment#appwrite-json) file representing your Appwrite project.
 
 You can fetch all the existing databases and collections in your current project using:
 
@@ -98,11 +98,11 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | --- | --- | --- |
 | `projectId` | string | ID of your Appwrite Project. |
 | `projectName` | string | Name of your Appwrite Project. |
-| `functions` | array of [functions](#function-options) | Configuration of functions in your project. |
-| `databases` | array of [databases](#databases-options) | Configuration of databases in your project. |
-| `collections` | array of [collections](#collection-options) | Configuration of collections in your project. |
-| `teams` | array of [teams](#teams-options) | Configuration of teams in your project. |
-| `buckets` | array of [buckets](#buckets-options) | Configuration of teams in your project. |
+| `functions` | array of functions | Configuration of functions in your project. |
+| `databases` | array of databases | Configuration of databases in your project. |
+| `collections` | array of collections | Configuration of collections in your project. |
+| `teams` | array of teams | Configuration of teams in your project. |
+| `buckets` | array of buckets | Configuration of teams in your project. |
 
 #### Function options
 
@@ -136,9 +136,9 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `databaseId` | string | ID of the database to which this collection belongs. |
 | `enabled` | bool | If the collection is enabled. |
 | `documentSecurity` | bool | If access permissions can be defined at the document level. |
-| `$permissions` | array of strings | Grants access permissions to users at the collection level. [Learn more about permissions](/docs/rest#permissions). |
-| `attributes` | array of objects | Defines a list of attributes in the collection. [Learn more about the Attributes List Object](/docs/models/attributeList). |
-| `indexes` | array of objects | Defines a list of indexes in the collection. [Learn more about the Indexes List Object](/docs/models/indexList). |
+| `$permissions` | array of strings | Grants access permissions to users at the collection level. [Learn more about permissions](/docs/apis/rest#permissions). |
+| `attributes` | array of objects | Defines a list of attributes in the collection. [Learn more about the Attributes List Object](/docs/references/cloud/models/attributeList). |
+| `indexes` | array of objects | Defines a list of indexes in the collection. [Learn more about the Indexes List Object](/docs/references/cloud/models/indexList). |
 
 #### Buckets options
 
@@ -146,8 +146,8 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | --- | --- | --- |
 | `$id` | string | Bucket ID. |
 | `name` | string | Bucket Name. |
-| `$permissions` | array of strings | Grants access permissions to users at the bucket level. [Learn more about permissions](/docs/rest#permissions). |
-| `fileSecurity` | boolean | Whether file-level security is enabled. [Learn more about permissions](/docs/rest#permissions). |
+| `$permissions` | array of strings | Grants access permissions to users at the bucket level. [Learn more about permissions](/docs/apis/rest#permissions). |
+| `fileSecurity` | boolean | Whether file-level security is enabled. [Learn more about permissions](/docs/apis/rest#permissions). |
 | `enabled` | boolean | Whether the bucket is enabled or disabled. |
 | `maximumFileSize` | integer | Maximum file size supported. |
 | `allowedFileExtensions` | string\[\] | List of allowed file extensions. |

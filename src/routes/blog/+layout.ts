@@ -66,7 +66,7 @@ export function load() {
 			href: `${base}/blog/category/${frontmatter.name.toLowerCase()}`
 		};
 	});
-	console.log({posts, authors})
+
 	return {
 		posts,
 		authors,
