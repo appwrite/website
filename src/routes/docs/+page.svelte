@@ -381,8 +381,8 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/auth.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/auth.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/auth.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/auth.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -391,8 +391,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/databases.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/databases.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/databases.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/databases.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Databases
 							</h4>
@@ -403,8 +403,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/functions.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/functions.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/functions.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/functions.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Functions
 							</h4>
@@ -415,8 +415,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/storage.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/storage.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/storage.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
@@ -427,8 +427,8 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/realtime.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/realtime.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/realtime.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/realtime.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
@@ -439,13 +439,13 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/dark/messaging.png" alt="" class="u-only-dark" />
-							<img src="/images/icons/illustrated/light/messaging.png" alt="" class="u-only-light" />
+							<img src="/images/icons/illustrated/dark/messaging.png" alt="" class="u-only-dark" width="48" height="48" />
+							<img src="/images/icons/illustrated/light/messaging.png" alt="" class="u-only-light" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Sign in users with multiple OAuth providers.
+								Send email, SMS, push notification and chat messages to your users.
 							</p>
 						</div>
 					</li>
