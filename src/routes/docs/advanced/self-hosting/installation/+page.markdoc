@@ -98,9 +98,9 @@ Make these configurations to unlock the full power of Appwrite.
 
 [Configure SMS delivery](/docs/advanced/self-hosting/sms)
 
-[Configure Appwrite Storage](storage)
+[Configure Appwrite Storage](/docs/advanced/self-hosting/storage)
 
-[Configure TLS Certificates](tls-certificate)
+[Configure TLS Certificates](/docs/advanced/self-hosting/tls-certificates)
 
 ## Manual (Docker Compose) {% #manual %}
 

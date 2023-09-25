@@ -56,7 +56,7 @@
 				},
 				{	
 					label: 'Email and SMS templates',
-					href: '/docs/advanced/platform/email-sms-templates'
+					href: '/docs/advanced/platform/message-templates'
 				},
 			]
 		},
