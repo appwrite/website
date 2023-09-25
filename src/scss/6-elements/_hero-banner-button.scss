@@ -34,7 +34,7 @@
   --p-hero-button-shadow-out-color-focus: var(--aw-color-pink-500) / 0.24 ;
 
   display:flex; align-items:baseline; gap:pxToRem(4);
-  padding-block:pxToRem(4); padding-inline:pxToRem(8);
+  padding-block:pxToRem(4); padding-inline:pxToRem(8); inline-size:fit-content;
   background:hsl(var(--p-hero-button-bg-color));
   
   line-height:pxToRem(20); 
