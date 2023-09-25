@@ -36,8 +36,15 @@
 <Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
-			<div class="aw-container">
+			<!--<div class="u-position-absolute u-inset-inline-start-0">
+				<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt>
+			</div>
+			<div class="u-position-absolute u-inset-inline-end-0">
+				<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt>
+			</div>-->
+			<div class="aw-container u-position-relative">
 				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-margin-inline-auto">
+
 					<div class="aw-hero aw-u-gap-20">
 						<h1 class="aw-headline aw-u-color-text-primary">Brand new Appwrite</h1>
 						<p class="aw-description aw-u-color-text-primary aw-u-opacity-64">
@@ -45,17 +52,26 @@
 							Praesent sagittis eget ipsum vitae eleifend.
 						</p>
 					</div>
+
 				</div>
 
-				<div class="aw-big-padding-section-level-2 aw-u-max-width-480">
-					<div class="aw-hero is-align-start">
-						<h2 class="aw-title aw-u-color-text-primary">All the tools that developers need</h2>
-						<p class="aw-main-body-500">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
-							Praesent sagittis eget ipsum vitae eleifend.
-						</p>
+
+				<div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
+					<div class="u-stretch u-flex aw-u-flex-vertical-mobile">
+						<div class="aw-hero is-align-start aw-u-max-width-480 aw-u-padding-block-start-48">
+							<h2 class="aw-title aw-u-color-text-primary">All the tools that developers need</h2>
+							<p class="aw-main-body-500">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
+								Praesent sagittis eget ipsum vitae eleifend.
+							</p>
+						</div>
+						<div class="u-stretch u-flex aw-u-margin-inline-auto-mobile aw-u-margin-block-start-40-mobile">
+							<img style="margin-block-start:-0.5rem"
+									class="u-margin-inline-start-auto u-max-width-100-percent" src="/images/pages/brand-lunch/box.png" alt>
+						</div>
 					</div>
 				</div>
+
 
 				<div class="aw-big-padding-section-level-2">
 					<div class="aw-grid-1-1-opt-2 aw-u-column-gap-96">
