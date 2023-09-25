@@ -616,7 +616,6 @@ databases.updateDocument(
 {% /multicode %}
 
 ## Delete relationships {% #delete %}
-[TODO WHY ARE H2 and H3 same sizee]
 ### Unlink relationships, retain documents {% #unlink %}
 
 If you need to unlink documents in a relationship but retain the documents, you can do this by **updating the relationship attribute** and removing the ID of the related document.
