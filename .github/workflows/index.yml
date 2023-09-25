@@ -13,6 +13,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-      - run: git clone https://github.com/meilisearch/docs-scraper.git
-      - run: yarn
+      - run: git clone https://github.com/meilisearch/docs-scraper.git scraper
+      - run: cd scraper && yarn
       - run: yarn start -c '$SCRAPIX_CONFIG'
