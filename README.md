@@ -1,38 +1,41 @@
-# create-svelte
+# Website 🖥️
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
+[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
+[![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
-## Creating a project
+The Appwrite Website repo features the main Appwrite website, including our [homepage](https://appwrite.io), [docs](https://appwrite.io/docs), and upcoming blog.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The Appwrite Website has been built with the following frameworks:
 
+-   [Svelte](https://svelte.dev/)
+-   [SvelteKit](https://kit.svelte.dev/)
+
+## Development
+
+*If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory.*
+
+To get the repo up and running in your local environment, use the following command:
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+pnpm run dev
 ```
 
-## Developing
+> If you don't have `pnpm` available on your system, you can install it from the [official pnpm Installation website](https://pnpm.io/installation)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
 
-```bash
-npm run dev
+All code contributions, including those of people with commit access, must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](./CONTRIBUTING.md).
 
-## Building
+## Security
 
-To create a production version of your app:
+For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
 
-```bash
-npm run build
-```
+## Follow Us
 
-You can preview the production build with `npm run preview`.
+Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), and [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## License
+
+This repository is available under the [BSD 3-Clause License](./LICENSE).
