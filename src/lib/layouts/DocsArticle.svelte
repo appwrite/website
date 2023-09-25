@@ -14,6 +14,7 @@
 
 <script lang="ts">
 	export let title: string;
+	export let back: string;
 	export let toc: Array<TocItem>;
 </script>
 
@@ -21,19 +22,22 @@
 	<article class="aw-article u-contents">
 		<header class="aw-article-header">
 			<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
-				<button
+				{#if back !== undefined}
+				<a href="{back}"
 					class="
                         aw-button is-text aw-is-only-mobile
                         aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
 					aria-label="previous page"
 				>
 					<span class="icon-cheveron-left" aria-hidden="true" />
-				</button>
+				</a>
+				{/if}
 				<ul class="aw-metadata aw-caption-400">
 					<slot name="metadata" />
 				</ul>
 				<div class="u-position-relative u-flex u-cross-center">
-					<button
+					{#if back !== undefined}
+					<a href="{back}"
 						class="
                         aw-button is-text is-icon aw-u-cross-center aw-u-size-40
                         u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
@@ -43,7 +47,8 @@
 							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
 							aria-hidden="true"
 						/>
-					</button>
+					</a>
+					{/if}
 					<h1 class="aw-title">{title}</h1>
 				</div>
 			</div>
