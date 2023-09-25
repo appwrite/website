@@ -28,11 +28,11 @@
 			},
 			title: 'Auth',
 			subtitle: 'Secure login for all users',
-			description: 'Sign in your users securly with multiple login methods like email/password, sms, OAuth, annoymous, magic URLs and more.',
+			description: 'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
 			features: [
 				'30+ login methods',
-				'Support for roles, user labels and teams',
-				'Rate-limits and advanced user protections',
+				'Support for teams, roles and user labels',
+				'Rate-limits and advanced user protection',
 				'Custome SMTP and email templates'
 			],
 			shot: './images/products/Auth.svg'
@@ -45,7 +45,7 @@
 			title: 'Databases',
 			subtitle: 'Store, query and manage data',
 			description:
-				'Store, query and manage access to your app\'s data in real-time with a robust and scalable database.',
+				'Scalable and robust database backed by your favorite technologies.',
 			features: [
 				'Never paused',
 				'Fast in-memory caching',
@@ -65,8 +65,8 @@
 			description: 'Deploy and scale serverless functions in secure, isolated runtimes.',
 			features: [
 				'Automatic deployment from GitHub',
-				'Trigger using HTTP, events, CRON or CLI',
-				'Support +30 runtimes and 13 languages',
+				'Trigger using GitHub, CLI, Event Listeners or HTTP requests',
+				'Support for 30+ runtimes in 13 languages',
 				'Custom domain support'
 			],
 			shot: './images/products/Functions.svg'
@@ -80,9 +80,9 @@
 			subtitle: 'Upload and manage files',
 			description: 'Securely store files with advanced compression, encryption and image transformations.',
 			features: [
-				'File encryption in rest and transit',
+				'File encryption at rest and transit',
 				'Built-in image transformation capabilities',
-				'Advanced compression with webp/brotli support'
+				'Advanced compression with WebP/Brotli support'
 			],
 			shot: './images/products/Storage.svg'
 		},
@@ -93,11 +93,11 @@
 			},
 			title: 'Realtime',
 			subtitle: 'Realtime events for every service',
-			description: 'Subscribe and react to any Appwrite event using the realtime API.',
+			description: 'Subscribe and react to any Appwrite event using the Realtime API.',
 			features: [
 				'Unlimited subscriptions',
 				'Built-in permission management',
-				'Support for DBs, auth, storage & functions',
+				'Support for DBs, Auth, Storage & Functions',
 			],
 			shot: './images/products/Realtime.svg'
 		}
