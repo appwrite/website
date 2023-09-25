@@ -14,7 +14,7 @@
   -webkit-backdrop-filter: blur(pxToRem(25));
   backdrop-filter: blur(pxToRem(25));
 
-  > * { border-radius:var(--p-media-border-radius); overflow:hidden; }
+  > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; }
 
   @media #{$break2} {
     --p-media-container-border-padding:#{pxToRem(5)};

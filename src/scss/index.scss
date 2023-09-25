@@ -1,6 +1,6 @@
 @use 'sass:meta';
 
-@layer pink, css-variables, resets, fonts, icons, animations, elements, components, grids, pages, utilities;
+@layer pink, css-variables, resets, fonts, icons, animations, elements, components, sequences, grids, pages, utilities;
 
 @layer pink {
   @import '@appwrite.io/pink';
