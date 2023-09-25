@@ -190,7 +190,7 @@
 				out:fly={{ duration: 250, y: -300 }}
 				in:fly={{ duration: 250, delay: 250, y: -300 }}
 			>
-				{#if scrollInfo.percentage > -0.15}
+				{#if scrollInfo.percentage > -0.1}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
 					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
