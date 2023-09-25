@@ -335,24 +335,26 @@
 						</div>
 					</section>
 					<section id="visuals">
-						<h2 class="aw-title aw-u-color-text-primary">Product visuals</h2>
-						<p>
-							Use these product visuals to enhance your articles, presentations, and content related to Appwrite.
-						</p>
-						<div class="aw-grid-1-1-opt-2 u-gap-32 u-margin-block-start-12">
-							<div>
-								<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
-							</div>
-							<div>
-								<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
-							</div>
-							<div>
-								<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
-							</div>
-							<div>
-								<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
-							</div>
+						<div class="u-flex u-flex-vertical u-gap-8">
+							<h2 class="aw-title aw-u-color-text-primary">Product visuals</h2>
+							<p>
+								Use these product visuals to enhance your articles, presentations, and content related to Appwrite.
+							</p>
+							<div class="aw-grid-1-1-opt-2 u-gap-32 u-margin-block-start-12">
+								<div>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+								</div>
+								<div>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+								</div>
+								<div>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+								</div>
+								<div>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+								</div>
 
+							</div>
 						</div>
 					</section>
 
