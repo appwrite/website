@@ -56,14 +56,14 @@ const execute = async () => {
 	const { update } = state.reset();
 
 	await Promise.all([
-		safeAnimate(box, { x: 310, y: 32, opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(box, { x: 310, y: 140, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { x: 200, y: 460, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(controls, { x: 420, y: 0, opacity: 0 }, { duration: 0.5 })?.finished
 	]);
 
 	// Start
-	await safeAnimate(box, { y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 0.25 })?.finished;
+	await safeAnimate(box, { y: [48, 140], opacity: 1 }, { duration: 0.25, delay: 0.25 })?.finished;
 
 	await sleep(50);
 
@@ -75,7 +75,7 @@ const execute = async () => {
 
 	await safeAnimate(
 		code,
-		{ x: [300, 300], y: [400 + 16, 400], opacity: [0, 1] },
+		{ x: [200, 200], y: [460 + 16, 460], opacity: [0, 1] },
 		{ duration: 0.25 }
 	)?.finished;
 
@@ -86,7 +86,7 @@ const execute = async () => {
 	await sleep(1000);
 
 	update((p) => ({ ...p, showControls: true }));
-	safeAnimate(controls, { x: [520, 450], y: [16, -80], opacity: 1 }, { duration: 0.5 });
+	safeAnimate(controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
 };
 
 export const authController = {

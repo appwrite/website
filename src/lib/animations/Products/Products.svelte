@@ -131,7 +131,7 @@
 		remaning: Infinity
 	};
 
-	const animScale: Scale = [0.1, 1];
+	const animScale: Scale = [0.075, 1];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -192,7 +192,10 @@
 	}}
 >
 	<div class="sticky-wrapper">
-		{#if scrollInfo.percentage < 0.1}
+		<!-- <div class="debug">
+			<pre>{scrollInfo.percentage}</pre>
+		</div> -->
+		{#if scrollInfo.percentage < 0.075}
 			<div
 				class="main-text"
 				out:fly={{ duration: 250, y: -300 }}
@@ -221,7 +224,7 @@
 				class="products"
 				out:fly={{ duration: 250, y: 300 }}
 				in:fly={{ duration: 500, delay: 250, y: 300 }}
-				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
+				data-active={scrollInfo.percentage > 0.075 ? '' : undefined}
 			>
 				<div class="text" id="pd-{$elId}">
 					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
@@ -345,12 +348,6 @@
 			display: block;
 		}
 	}
-
-	// .debug {
-	// 	position: absolute;
-	// 	top: 8rem;
-	// 	left: 0;
-	// }
 
 	.sticky-wrapper {
 		display: flex;
