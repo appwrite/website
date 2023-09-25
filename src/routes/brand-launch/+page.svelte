@@ -366,6 +366,7 @@
 		>
 			<div class="u-position-absolute u-inset-inline-start-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="698"
 					height="900"
@@ -483,6 +484,7 @@
 			</div>
 			<div class="u-position-absolute u-inset-inline-end-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="874"
 					height="900"
@@ -662,7 +664,6 @@
 		>
 			<div class="u-position-absolute u-inset-inline-end-0">
 				<svg
-						class="aw-u-opacity-40-mobile"
 					style="max-inline-size:100%;"
 					xmlns="http://www.w3.org/2000/svg"
 					width="1728"
@@ -887,7 +888,6 @@
 						class="u-full-screen-height u-flex-vertical aw-u-gap-80 u-main-center u-cross-center"
 					>
 						<svg
-								class="aw-u-opacity-40-mobile"
 							xmlns="http://www.w3.org/2000/svg"
 							width="584"
 							height="106"
