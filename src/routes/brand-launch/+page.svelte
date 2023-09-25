@@ -1263,46 +1263,26 @@
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
 				<div class="aw-container">
-					<div class="aw-hero">
-						<h4 class="aw-title aw-u-color-text-primary">Be a part of #Teamof100</h4>
-						<p class="aw-main-body-500 u-margin-block-start-4 aw-u-color-text-primary aw-u-opacity-64">
-							Join our rebrand celebration by sharing #teamof100 in your socials for a chance to win
-							brand-new Appwrite swag.
-						</p>
-						<button class="aw-button is-transparent u-cross-child-center u-margin-block-start-16">
-							<span class="aw-icon-star" aria-hidden="true" />
-							<span>Share</span>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="aw-big-padding-section-level-2">
-				<div class="aw-container">
-					<div class="u-flex u-gap-32">
-						<div class="aw-media-container u-flex-basis-250 u-stretch">
-							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
-							/>
+					<div class="aw-grid-1-1-opt-2 u-gap-32 u-main-space-between">
+						<div class="aw-hero is-align-start aw-u-max-width-480">
+							<h4 class="aw-title aw-u-color-text-primary">Be a part of #Teamof100</h4>
+							<p class="aw-main-body-500 u-margin-block-start-4 aw-u-color-text-primary aw-u-opacity-64">
+								Join our rebrand celebration by sharing #teamof100 in your socials for a chance to win
+								brand-new Appwrite swag.
+							</p>
+							<button class="aw-button is-transparent u-margin-block-start-16 is-full-width-mobile">
+								<span class="aw-icon-star" aria-hidden="true" />
+								<span>Share</span>
+							</button>
 						</div>
 						<div class="aw-media-container u-flex-basis-250 u-stretch">
 							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
-							/>
-						</div>
-						<div class="aw-media-container u-flex-basis-250 u-stretch">
-							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
+									src="/images/brand/t-shirts.png"
+									alt="brand visual stuff"
+									width="100%"
 							/>
 						</div>
 					</div>
-					<FooterNav />
-					<MainFooter />
 				</div>
 			</div>
 		</div>
