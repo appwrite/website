@@ -21,6 +21,7 @@
 
 	export let title: string;
 	export let description: string;
+	export let back: string;
 	export let difficulty: string = '';
 	export let readtime: string = '';
 
@@ -59,7 +60,7 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<DocsArticle {title} {toc}>
+<DocsArticle {title} {back} {toc}>
 	<svelte:fragment slot="metadata">
 		{#if difficulty}
 			<li>{difficulty}</li>

@@ -58,7 +58,7 @@ const languages = {
 	css: css
 } as const satisfies Record<string, LanguageFn>;
 
-const platformAliases: Record<Platform, keyof typeof languages> = {
+const platformAliases: Record<string, keyof typeof languages> = {
 	[Platform.ClientWeb]: 'js',
 	[Platform.ClientFlutter]: 'dart',
 	[Platform.ClientAndroidJava]: 'java',
@@ -73,7 +73,9 @@ const platformAliases: Record<Platform, keyof typeof languages> = {
 	[Platform.ServerPhp]: 'php',
 	[Platform.ServerPython]: 'py',
 	[Platform.ServerRuby]: 'rb',
-	[Platform.ServerSwift]: 'swift'
+	[Platform.ServerSwift]: 'swift',
+	vue: 'html',
+	svelte: 'html'
 };
 
 Object.entries(languages).forEach(([key, value]) => {
