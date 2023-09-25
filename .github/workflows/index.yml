@@ -3,8 +3,9 @@ name: Search Index
 on: [push]
 
 jobs:
-  scrape:
+  indexing:
     runs-on: ubuntu-latest
+    name: Indexing
     steps:
       - uses: actions/checkout@v4
         with:
