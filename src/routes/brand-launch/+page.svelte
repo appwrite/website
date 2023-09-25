@@ -3,7 +3,22 @@
 	import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute">
+<div class="u-position-absolute aw-is-only-mobile u-inset-inline-0">
+	<svg class="u-width-full-line"
+			xmlns="http://www.w3.org/2000/svg" width="360" height="661" viewBox="0 0 360 661" fill="none">
+		<g opacity="0.24" filter="url(#filter0_f_3260_129410)">
+			<ellipse cx="180" cy="80" rx="999" ry="325" fill="#FD366E"/>
+		</g>
+		<defs>
+			<filter id="filter0_f_3260_129410" x="-1074.02" y="-500.022" width="2508.04" height="1160.04" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+				<feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_3260_129410"/>
+			</filter>
+		</defs>
+	</svg>
+</div>
+<div class="u-position-absolute aw-is-not-mobile">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="1728"
@@ -73,15 +88,19 @@
 				</div>
 
 
-				<div class="aw-big-padding-section-level-2">
-					<div class="aw-grid-1-1-opt-2 aw-u-column-gap-96">
-						<div class="aw-hero is-align-start">
+				<div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
+					<div class="aw-grid-1-1-opt-2">
+						<div class="aw-hero is-align-start aw-u-padding-block-start-40">
 							<h2 class="aw-title aw-u-color-text-primary">Eliminating complexity</h2>
 							<p class="aw-main-body-500">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 							</p>
+							<div class="u-margin-block-start-48">
+								<img class="u-max-width-100-percent" src="/images/pages/brand-lunch/box-1.png" alt>
+							</div>
 						</div>
-						<div class="aw-hero is-align-start">
+						<div class="aw-hero is-align-start
+						aw-u-padding-block-start-40 aw-u-sep-inline-start-not-break1 aw-u-padding-inline-start-48-not-break1">
 							<h2 class="aw-title aw-u-color-text-primary">
 								Allowing you to innovate without limits
 							</h2>
@@ -89,6 +108,9 @@
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 								Praesent sagittis eget ipsum vitae eleifend.
 							</p>
+							<div class="u-margin-block-start-48">
+								<img class="u-max-width-100-percent" src="/images/pages/brand-lunch/box-2.png" alt>
+							</div>
 						</div>
 					</div>
 				</div>
