@@ -10,9 +10,9 @@ code.line-numbers .line:before {
     content: counter(line);
     display: inline-block;
     text-align: right;
-    padding-right: 8px;
+    padding-right: 1rem;
     color: #6C6C71;
-    width: 2rem;
+    width: 2.5rem;
 }
 
 .hljs-doctag,
