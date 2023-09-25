@@ -82,7 +82,7 @@
 						</div>
 						<div class="u-stretch u-flex aw-u-margin-inline-auto-mobile aw-u-margin-block-start-40-mobile">
 							<img style="margin-block-start:-0.5rem"
-									class="u-margin-inline-start-auto u-max-width-100-percent" src="/images/pages/brand-lunch/box.png" alt>
+									class="u-margin-inline-start-auto u-width-full-line u-max-width-500" src="/images/pages/brand-lunch/box.png" alt>
 						</div>
 					</div>
 				</div>
