@@ -19,12 +19,13 @@
 	</svg>
 </div>
 
-
-<div class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile">
-	<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt width="800" style="transform:translateX(-35%)">
-</div>
-<div class="u-position-absolute u-inset-inline-end-0 aw-u-inset-block-start-100 aw-is-not-mobile">
-	<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt width="800" style="transform:translateX(35%)">
+<div class="u-position-absolute" style="inline-size:100rem; inset-inline-start:50%; transform:translateX(-50%)">
+	<div class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+		<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt width="800" style="transform:translateX(-35%)">
+	</div>
+	<div class="u-position-absolute u-inset-inline-end-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+		<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt width="800" style="transform:translateX(35%)">
+	</div>
 </div>
 
 <div class="u-position-absolute aw-is-not-mobile">
