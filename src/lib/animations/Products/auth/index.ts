@@ -63,30 +63,30 @@ const execute = async () => {
 	]);
 
 	// Start
-	await safeAnimate(box, { y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 1 })?.finished;
+	await safeAnimate(box, { y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 0.25 })?.finished;
 
-	await sleep(150);
+	await sleep(50);
 
 	await write(emailToSet, (v) => update((p) => ({ ...p, email: v })), 300);
-	await sleep(150);
+	await sleep(50);
 
 	await write(passwordToSet, (v) => update((p) => ({ ...p, password: v })), 300);
-	await sleep(500);
+	await sleep(50);
 
 	await safeAnimate(
 		code,
-		{ x: [200, 200], y: [460 + 16, 460], opacity: [0, 1] },
+		{ x: [300, 300], y: [400 + 16, 400], opacity: [0, 1] },
 		{ duration: 0.25 }
 	)?.finished;
 
-	await sleep(500);
+	await sleep(350);
 
 	update((p) => ({ ...p, submitted: true }));
 
 	await sleep(1000);
 
 	update((p) => ({ ...p, showControls: true }));
-	safeAnimate(controls, { x: [420, 420], y: [16, 0], opacity: 1 }, { duration: 0.5 });
+	safeAnimate(controls, { x: [520, 450], y: [16, -80], opacity: 1 }, { duration: 0.5 });
 };
 
 export const authController = {
