@@ -5,7 +5,8 @@
 </script>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-	<svg xmlns="http://www.w3.org/2000/svg" width="692" height="1171" viewBox="0 0 692 1171" fill="none">
+	<svg xmlns="http://www.w3.org/2000/svg" width="692" height="1171" viewBox="0 0 692 1171" fill="none"
+		 style="max-inline-size:100%;">
 		<g opacity="0.4" filter="url(#filter0_f_1577_37321)">
 			<path d="M-96.9811 29.2126C-329.155 33.7322 -513.706 225.611 -509.186 457.785C-504.667 689.959 -312.788 874.51 -80.6141 869.99C33.1857 867.775 -132.237 523.592 -36.8339 437.579C62.4044 348.109 394.063 627.529 391.759 509.155C387.239 276.98 135.193 24.693 -96.9811 29.2126Z" fill="url(#paint0_radial_1577_37321)"/>
 		</g>
@@ -50,8 +51,8 @@
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-twitter" target="_blank">
-												<span class="aw-icon-twitter" aria-hidden="true"></span>
+											<a href="https://twitter.com/appwrite" class="aw-icon-button" aria-label="Appwrite on aw-icon-x" target="_blank">
+												<span class="aw-icon-x" aria-hidden="true"></span>
 											</a>
 										</li>
 										<li>
@@ -87,11 +88,11 @@
 									</li>
 								</ul>
 							</div>
-							<div class="u-flex u-gap-16 u-main-space-between">
+							<div class="u-flex u-gap-16 u-main-space-between aw-u-flex-vertical-reverse-mobile">
 								<p class="aw-caption-400 aw-u-max-width-380">
 									This form is protected by reCAPTCHA, and the Google <a class="aw-link" href="/privacy" target="_blank">Privacy Policy</a> and <a class="aw-link" href="/terms" target="_blank">Terms of Service</a> apply.
 								</p>
-								<button class="aw-button u-cross-child-center">
+								<button class="aw-button u-cross-child-center aw-u-inline-width-100-percent-mobile-break1">
 									<span>Submit</span>
 								</button>
 							</div>

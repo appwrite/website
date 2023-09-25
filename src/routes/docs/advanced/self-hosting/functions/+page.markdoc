@@ -79,8 +79,6 @@ Check the **Any account** box under **Where can this GitHub App be installed?** 
 
 After creating your app, you'll have to configure the following environment variables.
 
-Markdown doesn't natively support tables with complex markup like HTML does. However, you can create simple tables with Markdown. Here's a basic conversion of your table to Markdown:
-
 | Variable                     | Description                                                                                                                                                                                                                                                                                                                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `_APP_DOMAIN`                | Your main Appwrite domain used to access the Appwrite Console. When setting a public suffix domain, Appwrite will attempt to issue a valid SSL certificate automatically. When used with a dev domain, Appwrite will assign a self-signed SSL certificate. If you're using a proxy for **localhost development**, such as [ngrok](https://ngrok.com/), this will be the domain of your localhost proxy. |

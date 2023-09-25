@@ -3,13 +3,16 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
-		<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
 		<link rel="stylesheet" href="/icon-font/aw-icon.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Appwrite Next</title>
+		<title>Appwrite - open-source backend as a service</title>
 		%sveltekit.head%
 	</head>
 	<body class="theme-dark" data-sveltekit-preload-data="hover">
+		<script
+			type="module"
+			src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
+		></script>
 		<script>
 			const isDocs = window.location.pathname.startsWith('/docs');
 			if (isDocs) {

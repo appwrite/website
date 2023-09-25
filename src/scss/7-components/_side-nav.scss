@@ -5,19 +5,20 @@
   --p-side-nav-item-icon-color: var(--p-side-nav-icon-item-color-default);
   --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-default);
 
-  --p-side-nav-text-item-color-default: var(--aw-color-greyscale-900);
+  --p-side-nav-text-item-color-default: var(--aw-color-secondary);
   --p-side-nav-icon-item-color-default: var(--aw-color-greyscale-250);
   --p-side-nav-item-bg-color-default:  var(--transparent);
 
   --p-side-nav-item-bg-color-hover: var(--aw-color-greyscale-50);
 
+  --p-side-nav-item-text-color-selected: var(--aw-color-primary);
   --p-side-nav-item-icon-color-selected: linear-gradient( hsla(343, 98%, 60%, 1), hsla(22, 98%, 60%, 1) );
 
   --p-side-nav-bg-color: var(--p-body-bg-color);
 
 
-  position:sticky; z-index:25; inset-block-start:pxToRem(80); inset-block-end:0;
-  block-size:calc(100vh - pxToRem(80));
+  position:sticky; z-index:25; inset-block-start:pxToRem(74); inset-block-end:0;
+  block-size:calc(100vh - pxToRem(74));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
 
 
@@ -27,10 +28,16 @@
     padding:pxToRem(16); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
     
-    
+    &-parent {
+      display:flex; align-items:center;
+      padding-block-end:pxToRem(16); border-block-end:pxToRem(1) solid hsl(var(--aw-color-smooth));
+      [class*="icon"]:first-child { flex-shrink:0; padding-inline:pxToRem(12); }
+      &-title { @include trim(1); inline-size:100%; margin-inline-end:pxToRem(44); text-align:center; transition:var(--transition); }
+    }
   }
   &-scroll {
-    flex:1; overflow-y:scroll; overflow-x:hidden;
+    @include scroll(); overflow-y:auto; overflow-x:hidden;
+    flex:1;
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
 
@@ -51,6 +58,7 @@
       --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-hover);
     }
     &.is-selected {
+      color: hsl(var(--p-side-nav-item-text-color-selected));
       [class*="icon"]:first-child {
         background: var(--p-side-nav-item-icon-color-selected);
         -webkit-background-clip: text;
@@ -83,7 +91,6 @@
   }
 
   #{$theme-dark} & {
-    --p-side-nav-text-item-color-default: var(--aw-color-greyscale-100);
     --p-side-nav-item-bg-color-hover: var(--aw-color-white) / 0.08;
   }
 }

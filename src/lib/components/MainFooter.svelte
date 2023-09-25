@@ -19,8 +19,8 @@
 			link: 'https://github.com/appwrite'
 		},
 		{
-			icon: 'aw-icon-twitter',
-			link: 'https://twitter.com/appwrite'
+			icon: 'aw-icon-x',
+			link: 'https://twitter.com/intent/follow?screen_name=appwrite'
 		},
 		{
 			icon: 'aw-icon-linkedin',
@@ -85,9 +85,9 @@
 				<li>
 					<a href="https://status.appwrite.io" target="_blank">Status</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a>
-				</li>
+				</li> -->
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
 				Copyright © 2023 Appwrite

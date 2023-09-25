@@ -8,7 +8,10 @@
   box-shadow: var(--p-box-icon-shadow);
 
   display:grid; place-items:center; inline-size:pxToRem(56); block-size:pxToRem(56);
-  border-radius:pxToRem(8); backdrop-filter:blur(16.72526741027832px);
+  border-radius:pxToRem(8);
+
+  -webkit-backdrop-filter:blur(pxToRem(16));
+  backdrop-filter:blur(pxToRem(16));
 
   #{$theme-dark} & {
     --p-box-icon-bg-color: var(--aw-color-greyscale-850);

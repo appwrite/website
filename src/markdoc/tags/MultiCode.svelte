@@ -69,7 +69,7 @@
 							on:click={handleCopy}
 							class="aw-icon-button"
 							aria-label="copy code from code-snippet"
-							><span class="icon-duplicate" aria-hidden="true" /></button
+							><span class="aw-icon-copy" aria-hidden="true" /></button
 						>
 						<svelte:fragment slot="tooltip">
 							{copyText}

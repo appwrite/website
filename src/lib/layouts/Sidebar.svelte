@@ -19,19 +19,13 @@
 </script>
 
 <script lang="ts">
-	import { page } from '$app/stores';
+	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { layoutState, toggleSidenav } from './Docs.svelte';
+	import SidebarNavButton from './SidebarNavButton.svelte';
 
 	export let expandable = false;
 	export let navigation: NavTree;
 	export let parent: NavParent | undefined = undefined;
-
-	const handleMenuClick = () => {
-		const gridHugeNavs = document.querySelector('.aw-grid-huge-navs');
-		const referencesMenu = document.querySelector('.aw-references-menu');
-
-		gridHugeNavs?.classList.toggle('is-open');
-		referencesMenu?.classList.remove('is-open');
-	};
 
 	function isNavLink(item: NavLink | NavGroup): item is NavLink {
 		return 'href' in item;
@@ -46,48 +40,39 @@
 		</button>
 		<div class="aw-side-nav-scroll">
 			{#if parent}
-				<section
-					style:padding-bottom="16px"
-					style:border-bottom="1px solid #232325"
-					style:display="flex"
-					style:align-items="baseline"
-				>
+				<section class="aw-side-nav-wrapper-parent">
 					<a href={parent.href}>
 						<span class="icon-cheveron-left" aria-hidden="true" />
 					</a>
-
-					<span class="aw-eyebrow" style:width="100%" style:text-align="center">{parent.label}</span
-					>
+					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
 				</section>
 			{/if}
 			{#each navigation as navGroup}
 				<section>
 					{#if isNavLink(navGroup)}
-						<a
-							class="aw-side-nav-button"
-							href={navGroup.href}
-							class:is-selected={$page.url?.pathname === navGroup.href}
-						>
-							<span class={navGroup.icon} aria-hidden="true" />
-							<span class="aw-caption-400">{navGroup.label}</span>
-						</a>
+						{#if expandable && !$layoutState.showSidenav}
+							<Tooltip placement="right">
+								<SidebarNavButton groupItem={navGroup} />
+								<svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+							</Tooltip>
+						{:else}
+							<SidebarNavButton groupItem={navGroup} />
+						{/if}
 					{:else}
 						{#if navGroup.label}
-							<h4 class="aw-side-nav-header aw-eyebrow">{navGroup.label}</h4>
+							<h4 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h4>
 						{/if}
 						<ul>
 							{#each navGroup.items as groupItem}
 								<li>
-									<a
-										class="aw-side-nav-button"
-										class:is-selected={$page.url?.pathname === groupItem.href}
-										href={groupItem.href}
-									>
-										{#if groupItem.icon}
-											<span class={groupItem.icon} aria-hidden="true" />
-										{/if}
-										<span class="aw-caption-400">{groupItem.label}</span>
-									</a>
+									{#if expandable && !$layoutState.showSidenav}
+										<Tooltip placement="right">
+											<SidebarNavButton {groupItem} />
+											<svelte:fragment slot="tooltip">{groupItem.label}</svelte:fragment>
+										</Tooltip>
+									{:else}
+										<SidebarNavButton {groupItem} />
+									{/if}
 								</li>
 							{/each}
 						</ul>
@@ -97,7 +82,7 @@
 		</div>
 		{#if expandable}
 			<button
-				on:click={handleMenuClick}
+				on:click={toggleSidenav}
 				class="aw-icon-button u-margin-inline-start-auto"
 				aria-label="toggle nav"
 			>
@@ -109,11 +94,11 @@
 				<span class="text">Go to console</span>
 			</button>
 
-			<button class="aw-button is-text u-width-full-line">
+			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text u-width-full-line">
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-			</button>
+				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+			</a>
 		</div>
 	</div>
 </nav>

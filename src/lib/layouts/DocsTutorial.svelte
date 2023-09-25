@@ -96,7 +96,7 @@
 						</ul>
 					</div>
 				</header>
-				<div class="aw-card is-transparent" style="--card-padding:1rem">
+				<div class="aw-card is-normal" style="--card-padding:1rem">
 					<label for="message">
 						<span class="aw-caption-400 aw-u-color-text-primary">What did you like?</span>
 						<span class="aw-caption-400">(optional)</span>
@@ -170,7 +170,7 @@
 					{/each}
 				</ol>
 				<div class="u-sep-block-start u-padding-block-start-20">
-					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
+					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
 						<span class="icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>

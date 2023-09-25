@@ -1,32 +1,53 @@
 <script lang="ts" context="module">
+	import { navigating } from '$app/stores';
+	import { writable } from 'svelte/store';
+
 	export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
+	export type DocsLayoutState = {
+		showReferences: boolean;
+		showSidenav: boolean;
+	};
+	export const layoutState = writable<DocsLayoutState>({
+		showReferences: false,
+		showSidenav: false
+	});
+	export function toggleReferences() {
+		layoutState.update((state) => ({
+			showReferences: !state.showReferences,
+			showSidenav: false
+		}));
+	}
+	export function toggleSidenav() {
+		layoutState.update((state) => ({
+			showReferences: false,
+			showSidenav: !state.showSidenav
+		}));
+	}
 </script>
 
 <script lang="ts">
-	const handleMenuClick = () => {
-		const gridHugeNavs = document.querySelector('.aw-grid-huge-navs');
-		const gridSideNavs = document.querySelector('.aw-grid-side-nav');
-		const referencesMenu = document.querySelector('.aw-references-menu');
-
-		gridHugeNavs?.classList.toggle('is-open');
-		gridSideNavs?.classList.toggle('is-open');
-		referencesMenu?.classList.remove('is-open');
-	};
-
 	export let variant: DocsLayoutVariant = 'default';
+
 	const variantClasses: Record<DocsLayoutVariant, string> = {
-		default: 'aw-grid-side-nav aw-container',
+		default: 'aw-grid-side-nav aw-container u-padding-inline-0',
 		expanded: 'aw-grid-huge-navs',
 		'two-side-navs': 'aw-grid-two-side-navs'
 	};
 
 	$: variantClass = variantClasses[variant];
 
+	navigating.subscribe(() => {
+		layoutState.set({
+			showReferences: false,
+			showSidenav: false
+		});
+	});
 </script>
 
 <div class="u-position-relative">
 	<div
 		class={variantClass}
+		class:is-open={$layoutState.showSidenav}
 		style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
 	>
 		<section class="aw-mobile-header is-transparent">
@@ -50,7 +71,7 @@
 				<a href="https://cloud.appwrite.io/console" class="aw-button">
 					<span class="aw-sub-body-500">Go to console</span>
 				</a>
-				<button on:click={handleMenuClick} class="aw-button is-text" aria-label="open navigation">
+				<button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="20"
@@ -90,8 +111,8 @@
 							</ul>
 						</nav>
 						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-text aw-u-flex-basis-400">
-								<span class="icon-search" />
+							<button class="aw-input-button aw-u-flex-basis-400">
+								<span class="icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
 								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
@@ -103,7 +124,7 @@
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
-							<button class="aw-button is-text">
+							<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="18"
@@ -121,8 +142,8 @@
 									/>
 								</svg>
 								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-							</button>
+								<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+							</a>
 							<a href="https://cloud.appwrite.io/console" class="aw-button">
 								<span class="aw-sub-body-500">Go to console</span>
 							</a>

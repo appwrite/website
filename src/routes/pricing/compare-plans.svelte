@@ -368,25 +368,25 @@
 						</div>
 						<div class="aw-mini-card">
 							<div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
-								<h4 class="aw-label aw-u-color-text-primary">Free</h4>
-								<button class="aw-button is-secondary">
+								<h4 class="aw-label aw-u-color-text-primary">Starter</h4>
+								<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary">
 									<span class="aw-sub-body-500">Start building</span>
-								</button>
+								</a>
 							</div>
 						</div>
 						<div class="aw-mini-card">
 							<div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
 								<h4 class="aw-label aw-u-color-text-primary">Pro</h4>
-								<button class="aw-button">
-									<span class="aw-sub-body-500">Go Pro</span>
+								<button class="aw-button" disabled>
+									<span class="aw-sub-body-500">Coming soon</span>
 								</button>
 							</div>
 						</div>
 						<div class="aw-mini-card">
 							<div class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between">
 								<h4 class="aw-label aw-u-color-text-primary">Scale</h4>
-								<button class="aw-button is-secondary">
-									<span class="aw-sub-body-500">Get Scale</span>
+								<button class="aw-button is-secondary" disabled>
+									<span class="aw-sub-body-500">Coming soon</span>
 								</button>
 							</div>
 						</div>

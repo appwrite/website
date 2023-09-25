@@ -1,6 +1,16 @@
+import { writable } from 'svelte/store';
 import type { Language } from './code';
+import { browser } from '$app/environment';
 
-export const versions = ['1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x'];
+export type Version = '1.4.x' | '1.3.x' | '1.2.x' | '1.1.x' | '1.0.x' | '0.15.x' | 'cloud';
+export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = [
+	'1.4.x',
+	'1.3.x',
+	'1.2.x',
+	'1.1.x',
+	'1.0.x',
+	'0.15.x'
+] as const;
 
 export enum Service {
 	Account = 'account',
@@ -32,7 +42,7 @@ export enum Platform {
 	ServerSwift = 'server-swift'
 }
 
-export const platformMap: Record<Language, string> = {
+export const platformMap: Record<Language|string, string> = {
 	[Platform.ClientApple]: 'Apple',
 	[Platform.ClientFlutter]: 'Flutter',
 	[Platform.ClientWeb]: 'Web',
@@ -66,7 +76,19 @@ export const platformMap: Record<Language, string> = {
 	diff: 'Diff',
 	http: 'HTTP',
 	css: 'CSS',
-	graphql: 'GraphQL'
+	graphql: 'GraphQL',
+	deno: 'Deno',
+	python: 'Python',
+	ruby: 'Ruby',
+	csharp: 'C#',
+	cpp: 'C++',
+	bash: 'Bash',
+	powershell: 'PowerShell',
+	cmd: 'CMD',
+	yaml: 'YAML',
+	text: 'Text',
+	vue: 'Vue',
+	svelte: 'Svelte'
 };
 
 export const serviceMap: Record<Service, string> = {
@@ -80,3 +102,19 @@ export const serviceMap: Record<Service, string> = {
 	[Service.Teams]: 'Teams',
 	[Service.Users]: 'Users'
 };
+
+export const preferredVersion = writable<Version | null>(
+	globalThis?.localStorage?.getItem('preferredVersion') as Version
+);
+export const preferredPlatform = writable<Platform | null>(
+	globalThis?.localStorage?.getItem('preferredPlatform') as Platform
+);
+
+if (browser) {
+	preferredVersion.subscribe((value) => {
+		if (value) globalThis?.sessionStorage?.setItem('preferredVersion', value);
+	});
+	preferredPlatform.subscribe((value) => {
+		if (value) globalThis?.sessionStorage?.setItem('preferredPlatform', value);
+	});
+}

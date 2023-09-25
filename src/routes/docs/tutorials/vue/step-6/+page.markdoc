@@ -1,0 +1,61 @@
+---
+layout: tutorial
+title: Add database
+description: This is the description used for SEO.
+step: 6
+difficulty: easy
+readtime: 10
+---
+## Create collection
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+![Create collection screen](#TODO update me)
+
+Create a new collection with the following attributes:
+| Field       | Type   | Required |
+|-------------|--------|----------|
+| userId      | String | Yes      |
+| title       | String | Yes      |
+| description | String | No       |
+
+## Ideas context
+
+Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a store hold our ideas.
+Create a new file `src/lib/stores/ideas.js` and add the following code to it.
+
+```js
+import { ID, Query } from "appwrite";
+import { databases } from "../appwrite";
+import { reactive } from "vue";
+
+export const IDEAS_DATABASE_ID = "<YOUR_DATABASE_ID>"; // Replace with your database ID
+export const IDEAS_COLLECTION_ID = "<YOUR_COLLECTION_ID>"; // Replace with your collection ID
+
+export const ideas = reactive({
+  current: [],
+  async init() {
+    const response = await databases.listDocuments(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      [Query.orderDesc("$createdAt"), Query.limit(10)]
+    );
+    this.current = response.documents;
+  },
+  async add(idea) {
+    const response = await databases.createDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      ID.unique(),
+      idea
+    );
+    this.current = [response, ...this.current].slice(0, 10);
+  },
+  async remove(id) {
+    await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+    this.current = this.current.filter((idea) => idea.$id !== id);
+    await this.init(); // Refetch ideas to ensure we have 10 items
+  },
+});
+```
+
+Note the init function, which uses `Query` to fetch the last 10 ideas from the database. We will call this function when the app starts to ensure we have some data to display.

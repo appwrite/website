@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let name: string;
 	export let tag: string;
-	export let icon: 'twitter' | 'linkedin' | 'discord';
+	export let icon: 'x' | 'linkedin' | 'discord' | 'product-hunt';
 	export let avatarSrc: string;
 </script>
 
@@ -13,7 +13,7 @@
 				<div class="aw-user-box-name aw-sub-body-500">{name}</div>
 				<div class="aw-user-box-username aw-sub-body-400">{tag}</div>
 			</div>
-			<span class="aw-social-item-icon icon-{icon}" aria-label={icon} aria-hidden="true" />
+			<span class="aw-social-item-icon aw-icon-{icon}" aria-label={icon} aria-hidden="true" />
 		</div>
 		<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
 			<slot />
