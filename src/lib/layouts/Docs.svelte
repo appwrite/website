@@ -26,7 +26,11 @@
 </script>
 
 <script lang="ts">
+	import Search from '$lib/components/Search.svelte';
+
 	export let variant: DocsLayoutVariant = 'default';
+
+	let search: boolean = false;
 
 	const variantClasses: Record<DocsLayoutVariant, string> = {
 		default: 'aw-grid-side-nav aw-container u-padding-inline-0',
@@ -111,7 +115,7 @@
 							</ul>
 						</nav>
 						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-button aw-u-flex-basis-400">
+							<button class="aw-input-button aw-u-flex-basis-400" on:click={() => (search = true)}>
 								<span class="icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
@@ -124,7 +128,11 @@
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
-							<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
+							<a
+								href="https://github.com/appwrite/appwrite/stargazers"
+								target="_blank"
+								class="aw-button is-text"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="18"
@@ -155,3 +163,5 @@
 		<slot />
 	</div>
 </div>
+
+<Search bind:open={search} />
