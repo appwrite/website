@@ -489,7 +489,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
 
 ## Get File {% #get-file %}
@@ -599,7 +598,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
 
 ## Get File Preview {% #get-file-preview %}
@@ -705,7 +703,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
 
 ## View File {% #view-file%}
@@ -812,5 +809,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-```dart
 {% /multicode %}
