@@ -19,7 +19,7 @@
 	</svg>
 </div>
 
-<div class="u-position-absolute" style="inline-size:100rem; inset-inline-start:50%; transform:translateX(-50%)">
+<div class="u-position-absolute" style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);">
 	<div class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile">
 		<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt width="800" style="transform:translateX(-35%)">
 	</div>
@@ -62,7 +62,8 @@
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-container u-position-relative">
-				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-margin-inline-auto">
+				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto aw-u-margin-block-0 "
+						style="block-size:calc(100vh - 6.375rem)">
 
 					<div class="aw-hero aw-u-gap-20">
 						<h1 class="aw-headline aw-u-color-text-primary">Brand new Appwrite</h1>
