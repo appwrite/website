@@ -4,7 +4,7 @@ title: GraphQL
 description: Description used for SEO
 ---
 
-Appwrite supports multiple protocols for accessing the server, including [REST](/docs/rest), [GraphQL](/docs/graphql), and [Realtime](/docs/realtime).
+Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime).
 
 The GraphQL API allows you to query and mutate any resource type on your Appwrite server through the endpoint `/v1/graphql`. 
 Every endpoint available through REST is available through GraphQL, except for OAuth.
@@ -109,7 +109,7 @@ GraphQL authenticates using Appwrite accounts and sessions.
 Both accounts and sessions can be created with GraphQL using the `accountCreate`, `accountCreateEmailSession`, 
 `accountCreateAnonymousSession`, or `accountCreatePhoneSession` mutations.
 
-More information and examples of authenticating users can be found in the dedicated [authentication guide](/docs/authentication).
+More information and examples of authenticating users can be found in the dedicated [authentication guide](/docs/products/auth).
 
 ## GraphQL vs REST {% #graphql-vs-rest %}
 

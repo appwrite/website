@@ -42,7 +42,7 @@ export enum Platform {
 	ServerSwift = 'server-swift'
 }
 
-export const platformMap: Record<Language, string> = {
+export const platformMap: Record<Language|string, string> = {
 	[Platform.ClientApple]: 'Apple',
 	[Platform.ClientFlutter]: 'Flutter',
 	[Platform.ClientWeb]: 'Web',
@@ -86,7 +86,9 @@ export const platformMap: Record<Language, string> = {
 	powershell: 'PowerShell',
 	cmd: 'CMD',
 	yaml: 'YAML',
-	text: 'Text'
+	text: 'Text',
+	vue: 'Vue',
+	svelte: 'Svelte'
 };
 
 export const serviceMap: Record<Service, string> = {
