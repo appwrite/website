@@ -357,8 +357,7 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/dark/messaging.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/messaging.png" alt="" class="u-only-light" width="48" height="48" />
+							<img src="/images/icons/illustrated/dark/messaging.png" alt="" width="48" height="48" />
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
