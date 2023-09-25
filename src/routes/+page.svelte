@@ -331,7 +331,10 @@
 			<Spline let:fallback let:viewer>
 				<div
 					class="u-position-absolute aw-is-not-mobile"
-					style="inline-size:512px; block-size: 512px; inset-block-start:6rem; inset-inline-start:calc(100% - 500px)"
+					style:inline-size="512px"
+					style:block-size="512px"
+					style:inset-block-start="8rem"
+					style:left="calc(50% - 256px + 18rem)"
 				>
 					<img
 						src="/images/animations/tech.png"
@@ -341,7 +344,7 @@
 						style="position: absolute; display: block;"
 						use:fallback
 					/>
-		
+
 					<spline-viewer
 						url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
 						use:viewer
@@ -506,10 +509,12 @@
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-				<Spline let:viewer let:fallback>
+				<Spline let:viewer>
 					<div
 						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
-						style="width: 50%; height:100%; left:0;"
+						style:width="50%"
+						style:height="100%"
+						style:left="0"
 					>
 						<div style:display="grid" style:place-items="center" style:height="100%">
 							<spline-viewer
