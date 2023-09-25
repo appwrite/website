@@ -12,7 +12,7 @@
 
   &-secondary {
     &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
-    &-item { }
+    &-item {}
   }
 
   @media #{$break1} {
