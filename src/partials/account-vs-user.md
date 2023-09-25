@@ -3,7 +3,7 @@
 Appwrite provides two APIs to manager user accounts. 
 
 The Account API is the API you should use in your **client applications** like web, Flutter, mobile, and native apps.
-Account API creates sessions, which represent an authenticated user and is attached to a user's [account](/docs/products/auth/account).
+Account API creates sessions, which represent an authenticated user and is attached to a user's [account](/docs/products/auth/accounts).
 Sessions respect [permissions](/docs/advanced/platform/permissions), which means users can only access resources if they have been granted the correct permissions. 
 
 You'll notice that the Account API doesn't allow you to view or make changes to other users. 
