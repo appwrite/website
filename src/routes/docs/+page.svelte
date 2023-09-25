@@ -44,7 +44,10 @@
 	<Spline let:fallback let:viewer>
 		<div
 			class="u-position-absolute aw-is-not-mobile"
-			style="inline-size:512px; block-size: 512px; inset-block-start:24rem; inset-inline-start:calc(100% - 500px)"
+			style:inline-size="512px"
+			style:block-size="512px"
+			style:inset-block-start="32rem"
+			style:left="calc(50% - 256px + 500px)"
 		>
 			<img
 				src="/images/animations/tech.png"
@@ -82,56 +85,164 @@
 			<ul class="u-flex u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
 				<li>
 					<a href="/docs/quick-starts/flutter" class="aw-box-icon">
-						<img src="/images/platforms/dark/flutter.svg" alt="Flutter logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/flutter.svg" alt="Flutter logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/flutter.svg"
+							alt="Flutter logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/flutter.svg"
+							alt="Flutter logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/nextjs" class="aw-box-icon">
-						<img src="/images/platforms/dark/nextjs.svg" alt="Next.js logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/nextjs.svg" alt="Next.js logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/nextjs.svg"
+							alt="Next.js logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/nextjs.svg"
+							alt="Next.js logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/react" class="aw-box-icon">
-						<img src="/images/platforms/dark/react.svg" alt="React logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/react.svg" alt="React logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/react.svg"
+							alt="React logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/react.svg"
+							alt="React logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/sveltekit" class="aw-box-icon">
-						<img src="/images/platforms/dark/svelte.svg" alt="Svelte logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/svelte.svg" alt="Svelte logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/svelte.svg"
+							alt="Svelte logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/svelte.svg"
+							alt="Svelte logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/nuxt" class="aw-box-icon">
-						<img src="/images/platforms/dark/nuxt.svg" alt="Nuxt logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/nuxt.svg" alt="Nuxt logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/nuxt.svg"
+							alt="Nuxt logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/nuxt.svg"
+							alt="Nuxt logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/vue" class="aw-box-icon">
-						<img src="/images/platforms/dark/vue.svg" alt="Vue logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/vue.svg" alt="Vue logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/vue.svg"
+							alt="Vue logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/vue.svg"
+							alt="Vue logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/angular" class="aw-box-icon">
-						<img src="/images/platforms/dark/angular.svg" alt="Angular logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/angular.svg" alt="Angular logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/angular.svg"
+							alt="Angular logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/angular.svg"
+							alt="Angular logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/apple" class="aw-box-icon">
-						<img src="/images/platforms/dark/apple.svg" alt="Apple logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/apple.svg" alt="Apple logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/apple.svg"
+							alt="Apple logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/apple.svg"
+							alt="Apple logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/android" class="aw-box-icon">
-						<img src="/images/platforms/dark/android.svg" alt="Android logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/android.svg" alt="Android logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/android.svg"
+							alt="Android logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/android.svg"
+							alt="Android logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 			</ul>
@@ -299,8 +410,20 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/auth.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/auth.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/auth.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/auth.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -309,8 +432,20 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/databases.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/databases.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/databases.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/databases.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Databases
 							</h4>
@@ -321,8 +456,20 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/functions.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/functions.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/functions.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/functions.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Functions
 							</h4>
@@ -333,8 +480,20 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/storage.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/storage.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/storage.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
@@ -345,8 +504,20 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/realtime.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/realtime.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/realtime.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/realtime.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
@@ -357,7 +528,12 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/dark/messaging.png" alt="" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/messaging.png"
+								alt=""
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
