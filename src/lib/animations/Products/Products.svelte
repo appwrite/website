@@ -434,15 +434,12 @@
 						padding-block-start: 1.5rem;
 					}
 
-					&:not(:last-child)[data-active] {
-						// padding-block-end: 4.25rem;
-					}
-
 					transition: 100ms ease;
 
 					&[data-active] {
 						h3 {
 							color: hsl(var(--aw-color-primary));
+							margin-block-end: 0.75rem;
 						}
 					}
 				}
@@ -459,7 +456,6 @@
 
 				h4 {
 					color: hsl(var(--aw-color-primary));
-					margin-block-start: 0.75rem;
 				}
 
 				p {
