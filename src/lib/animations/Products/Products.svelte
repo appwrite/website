@@ -28,11 +28,11 @@
 			},
 			title: 'Auth',
 			subtitle: 'Secure login for all users',
-			description: 'Sign in your users securly with multiple login methods like email/password, sms, OAuth, annoymous, magic URLs and more.',
+			description: 'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
 			features: [
 				'30+ login methods',
-				'Support for roles, user labels and teams',
-				'Rate-limits and advanced user protections',
+				'Support for teams, roles and user labels',
+				'Rate-limits and advanced user protection',
 				'Custome SMTP and email templates'
 			],
 			shot: './images/products/Auth.svg'
@@ -80,9 +80,9 @@
 			subtitle: 'Upload and manage files',
 			description: 'Securely store files with advanced compression, encryption and image transformations.',
 			features: [
-				'File encryption in rest and transit',
+				'File encryption at rest and transit',
 				'Built-in image transformation capabilities',
-				'Advanced compression with webp/brotli support'
+				'Advanced compression with WebP/Brotli support'
 			],
 			shot: './images/products/Storage.svg'
 		},
