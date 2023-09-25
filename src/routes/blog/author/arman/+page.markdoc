@@ -1,6 +1,7 @@
 ---
 layout: author
 name: Arman
+id: arman
 role: Frontend Developer
 bio: In ♥ with Svelte and Vue, currently working at Appwrite
 avatar: /images/avatars/arman.png

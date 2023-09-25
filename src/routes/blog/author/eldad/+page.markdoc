@@ -1,6 +1,7 @@
 ---
 layout: author
 name: Eldad
+id: eldad
 role: Big boss
 bio: Creator of Appwrite
 avatar: /images/avatars/eldad.png
