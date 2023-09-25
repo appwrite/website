@@ -27,7 +27,7 @@
 	export let category: string;
 
 	const authors = getContext<AuthorData[]>('authors');
-	const authorData = authors.find((a) => a.name.includes(author));
+	const authorData = authors.find((a) => a.slug === author);
 	const categoriesList = getContext<CategoryData[]>('categories');
 	const categories = getValidCategories();
 	const posts = getContext<PostsData[]>('posts');
@@ -158,7 +158,7 @@
 				<section class="u-margin-block-start-32">
 					<ul class="aw-grid-articles">
 						{#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
-							{@const author = authors.find((a) => a.name.includes(post.author))}
+							{@const author = authors.find((a) => a.slug === post.author)}
 							{#if author}
 								<Article
 									title={post.title}
