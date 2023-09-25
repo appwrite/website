@@ -87,7 +87,7 @@
 				<li class="aw-footer-nav-secondary-item"><a href="/community">Community</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/blog">Blog</a></li>
 				<li class="aw-footer-nav-secondary-item"><a href="/roadmap">Roadmap</a></li>
-				<li class="aw-footer-nav-secondary-item"><a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a></li>
+				<!-- <li class="aw-footer-nav-secondary-item"><a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a></li> -->
 				<li class="aw-footer-nav-secondary-item"><a href="https://status.appwrite.io" target="_blank">Status</a></li>
 			</ul>
 		</li><li class="aw-footer-nav-main-item">
