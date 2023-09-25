@@ -45,7 +45,7 @@
 			title: 'Databases',
 			subtitle: 'Store, query and manage data',
 			description:
-				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
+				'Scalable and robust database backed by your favorite technologies.',
 			features: [
 				'Never paused',
 				'Fast in-memory caching',
@@ -65,8 +65,8 @@
 			description: 'Deploy and scale serverless functions in secure, isolated runtimes.',
 			features: [
 				'Automatic deployment from GitHub',
-				'Trigger using HTTP, events, CRON or CLI',
-				'Support +30 runtimes and 13 languages',
+				'Trigger using GitHub, CLI, Event Listeners or HTTP requests',
+				'Support for 30+ runtimes in 13 languages',
 				'Custom domain support'
 			],
 			shot: './images/products/Functions.svg'
@@ -93,11 +93,11 @@
 			},
 			title: 'Realtime',
 			subtitle: 'Realtime events for every service',
-			description: 'Subscribe and react to any Appwrite event using the realtime API.',
+			description: 'Subscribe and react to any Appwrite event using the Realtime API.',
 			features: [
 				'Unlimited subscriptions',
 				'Built-in permission management',
-				'Support for DBs, auth, storage & functions',
+				'Support for DBs, Auth, Storage & Functions',
 			],
 			shot: './images/products/Realtime.svg'
 		}
