@@ -7,13 +7,23 @@ Learn to setup your first SvelteKit project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -36,8 +46,12 @@ npm install appwrite
 {% section #step-4 step=4 title="Import Appwrite" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
-
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
