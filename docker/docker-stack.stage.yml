@@ -85,18 +85,6 @@ services:
         - traefik.http.routers.appwrite_secure.service=appwrite_api
         - traefik.http.routers.appwrite_secure.tls=true
         - traefik.http.routers.appwrite_secure.tls.certresolver=myresolver
-    environment:
-      _APP_SMTP_PORT: 587
-      _APP_SMTP_SECURE: tls
-      _APP_SMTP_HOST: smtp.mailgun.org
-      _APP_ENV:
-      _APP_MAILGUN_DOMAIN:
-      _APP_MAILGUN_KEY:
-      _APP_SMTP_PASSWORD:
-      _APP_SMTP_USERNAME:
-      _APP_HOMERUN_API_KEY:
-      _APP_LOGGING_PROVIDER:
-      _APP_LOGGING_CONFIG:
 
   janitor:
     image: appwrite/docker-janitor
