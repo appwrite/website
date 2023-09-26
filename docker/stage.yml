@@ -7,7 +7,7 @@ x-logging: &x-logging
 
 x-update-config: &x-update-config
   update_config:
-    order: start-first
+    order: stop-first
     failure_action: rollback
     parallelism: 2
     delay: 5s
@@ -15,7 +15,7 @@ x-update-config: &x-update-config
     failure_action: pause
     monitor: 5s
     parallelism: 2
-    order: start-first
+    order: stop-first
 
 version: '3.8'
 
@@ -50,14 +50,13 @@ services:
     networks:
       - cloud
     deploy:
-      replicas: 1
+      mode: global
       <<: *x-update-config
       placement:
-        max_replicas_per_node: 1
         constraints:
           - node.role == manager
 
-  website:
+  server:
     image: ghcr.io/appwrite/website:$_APP_VERSION
     <<: *x-logging
     networks:
@@ -65,7 +64,8 @@ services:
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 5
+      replicas: 6
+      max_replicas_per_node: 2
       placement:
         constraints:
           - node.role == worker

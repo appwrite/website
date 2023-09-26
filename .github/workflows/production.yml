@@ -1,13 +1,12 @@
-name: Staging deployment
+name: Production deployment
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 env:
-  TAG: ${{ github.sha }}
-  STACK_FILE: docker/stage.yml
+  TAG: ${{ github.event.release.tag_name }}
+  STACK_FILE: docker/production.yml
   REPOSITORY: website
 
 jobs:
@@ -38,9 +37,9 @@ jobs:
       - name: Execute SSH commands
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.STG_SSH_HOST }}
-          username: ${{ secrets.STG_SSH_USERNAME }}
-          key: ${{ secrets.STG_SSH_KEY }}
+          host: ${{ secrets.PRD_SSH_HOST }}
+          username: ${{ secrets.PRD_SSH_USERNAME }}
+          key: ${{ secrets.PRD_SSH_KEY }}
           script: |
             url="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/appwrite/${{ env.REPOSITORY }}.git"
             if ! git clone "${url}" "${{ env.REPOSITORY }}" 2>/dev/null && [ -d "${{ env.REPOSITORY }}" ] ; then
@@ -55,7 +54,7 @@ jobs:
 
             rm -f .env
             echo "_APP_VERSION=${{ env.TAG }}" >> .env
-            echo "_APP_DOMAIN=${{ secrets.STG_APP_DOMAIN }}" >> .env
+            echo "_APP_DOMAIN=${{ secrets.PRD_APP_DOMAIN }}" >> .env
             echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
             echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
 
