@@ -84,7 +84,7 @@ appwrite deploy bucket
 
 ## Conflicts {% #conflicts %}
 
-When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the console.
+When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the Console.
 
 ## The appwrite.json file {% #appwrite-json %}
 
