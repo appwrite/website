@@ -10,7 +10,6 @@
 	<img
 		src="/images/bgs/pricing-hero.svg"
 		alt=""
-		class="aw-u-gradient-mobile-align"
 		style="margin-inline:auto; display:block;"
 	/>
 </div>
