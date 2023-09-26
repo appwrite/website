@@ -11,7 +11,7 @@ Learn to setup your first Apple project powered by Appwrite.
 {% section #step-1 step=1 title="Create Apple project" %}
 Open Xcode and click **Create a new Xcode project**.
 
-Choose your desired project template and click **Next**.
+Choose your desired project template, for example **iOS App**,  and click **Next**.
 
 Now enter your app **product name** and **bundle identifier** and click **Next**. You will need both of these values later when you create your project in the Appwrite console.
 
