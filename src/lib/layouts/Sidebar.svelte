@@ -33,7 +33,10 @@
 	}
 </script>
 
-<nav class="aw-side-nav">
+<nav
+	class="aw-side-nav is-transparent"
+	class:is-transparent={$layoutState.currentVariant !== 'two-side-navs'}
+>
 	<div class="aw-side-nav-wrapper">
 		<button class="aw-input-text aw-is-not-desktop">
 			<span class="icon-search" />
@@ -95,7 +98,11 @@
 				<span class="text">Go to console</span>
 			</button>
 
-			<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text u-width-full-line">
+			<a
+				href="https://github.com/appwrite/appwrite/stargazers"
+				target="_blank"
+				class="aw-button is-text u-width-full-line"
+			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
 				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
