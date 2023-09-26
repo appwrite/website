@@ -7,16 +7,16 @@ Learn to setup your first Node.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-{% only_dark %}
-![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
-{% /only_dark %}
-{% only_light %}
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
-{% /only_light %}
-
 If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}
 
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
@@ -27,8 +27,6 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 |           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
 
 Other scopes are optional.
-
-![Add API Key]()
 
 {% /section %}
 {% section #step-2 step=2 title="Create Node.js project" %}

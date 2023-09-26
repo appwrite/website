@@ -8,10 +8,10 @@ Learn to setup your first Dart project powered by Appwrite.
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 {% only_dark %}
-![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
@@ -29,7 +29,12 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 
 Other scopes are optional.
 
-![Add API Key]()
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}
 
 {% /section %}
 {% section #step-2 step=2 title="Create Dart project" %}

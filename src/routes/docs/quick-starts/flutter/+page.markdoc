@@ -20,10 +20,10 @@ flutter create my_app && cd my_app
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 {% only_dark %}
-![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
 If this is your first time using Appwrite, create an accout and create your first project.
