@@ -47,28 +47,58 @@
 			next();
 		}
 	}
+
+	let isEnd = false;
+	let isStart = true;
+
+	function handleScroll() {
+		if (carousel.scrollLeft === 0) {
+			isStart = true;
+			isEnd = false;
+		} else if (Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth) {
+			isStart = false;
+			isEnd = true;
+		} else {
+			isStart = false;
+			isEnd = false;
+		}
+	}
 </script>
 
-<div class="u-flex u-main-space-between u-flex-wrap">
-	<slot name="header" />
-	<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
-		<button class="aw-icon-button" aria-label="Move carousel backward" on:click={() => prev()}>
-			<span class="aw-icon-arrow-left" aria-hidden="true" />
-		</button>
-		<button class="aw-icon-button" aria-label="Move carousel forward" on:click={() => next()}>
-			<span class="aw-icon-arrow-right" aria-hidden="true" />
-		</button>
+<slot name="header" />
+
+<div>
+	<div class="u-flex u-main-end u-flex-wrap">
+		<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
+			<button
+				class="aw-icon-button"
+				aria-label="Move carousel backward"
+				disabled={isStart}
+				on:click={() => prev()}
+			>
+				<span class="aw-icon-arrow-left" aria-hidden="true" />
+			</button>
+			<button
+				class="aw-icon-button"
+				aria-label="Move carousel forward"
+				disabled={isEnd}
+				on:click={() => next()}
+			>
+				<span class="aw-icon-arrow-right" aria-hidden="true" />
+			</button>
+		</div>
 	</div>
+	<ul
+		class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
+		bind:this={carousel}
+		on:touchstart={handleTouchStart}
+		on:touchmove={handleTouchMove}
+		on:touchend={handleTouchEnd}
+		on:scroll={handleScroll}
+	>
+		<slot />
+	</ul>
 </div>
-<ul
-	class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
-	bind:this={carousel}
-	on:touchstart={handleTouchStart}
-	on:touchmove={handleTouchMove}
-	on:touchend={handleTouchEnd}
->
-	<slot />
-</ul>
 
 <style lang="scss">
 	.carousel {
