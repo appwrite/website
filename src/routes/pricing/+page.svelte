@@ -42,7 +42,7 @@
 								>
 									<div class="aw-pricing-cards-item">
 										<header class="aw-pricing-cards-header">
-											<h2 class="aw-label">Free</h2>
+											<h2 class="aw-label">Starter</h2>
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
 											<div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
@@ -85,7 +85,7 @@
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free plus:</p>
+											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">300GB bandwidth</span></li>
 												<li class=""><span class="">Unlimited projects</span></li>
@@ -124,7 +124,7 @@
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free & Pro, plus:</p>
+											<p>Everything in Starter & Pro, plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">Extra support log retention days</span></li>
 												<li class=""><span class="">Additional org member roles</span></li>

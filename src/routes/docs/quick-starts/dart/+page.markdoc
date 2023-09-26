@@ -1,0 +1,202 @@
+---
+layout: article
+title: Start with Dart
+description: This is the description used for SEO.
+---
+Learn to setup your first Dart project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+![Create project screen](/images/docs/databases/quick-start/create-project.png)
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
+
+![Add API Key]()
+
+{% /section %}
+{% section #step-2 step=2 title="Create Dart project" %}
+Create a Dart CLI application.
+
+```sh
+dart create -t console my_app
+cd my_app
+```
+
+After entering the project directory, remove the `lib/` and `test/` directories.
+
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the Dart Appwrite SDK.
+
+```sh
+dart pub add dart_appwrite
+```
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+
+![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+
+Open `bin/my_app.dart` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+var client = Client();
+
+Future<void> main() async {
+  client
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+}
+```
+
+{% /section %}
+{% section #step-5 step=5 title="Initialize database" %}
+
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
+
+```dart
+var databases;
+var todoDatabase;
+var todoCollection;
+
+Future<void> prepareDatabase() async {
+  databases = Databases(client);
+
+  todoDatabase = await databases.create(
+    databaseId: ID.unique(), 
+    name: 'TodosDB'
+  );
+
+  todoCollection = await databases.createCollection(
+    databaseId: todoDatabase.$id, 
+    collectionId: ID.unique(), 
+    name: 'Todos'
+  );
+
+  await databases.createStringAttribute(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    key: 'title',
+    size: 255,
+    xrequired: true
+  );
+
+  await databases.createStringAttribute(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    key: 'description',
+    size: 255,
+    xrequired: false,
+    xdefault: 'This is a test description'
+  );
+
+  await databases.createBooleanAttribute(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    key: 'isComplete',
+    xrequired: true
+  );
+}
+```
+
+{% /section %}
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
+```dart
+Future<void> seedDatabase() async {
+  var testTodo1 = {
+    'title': 'Buy apples',
+    'description': 'At least 2KGs',
+    'isComplete': true
+  };
+
+  var testTodo2 = {
+    'title': 'Wash the apples',
+    'isComplete': true
+  };
+
+  var testTodo3 = {
+    'title': 'Cut the apples',
+    'description': 'Don\'t forget to pack them in a box',
+    'isComplete': false
+  };
+
+  await databases.createDocument(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    documentId: ID.unique(),
+    data: testTodo1
+  );
+
+  await databases.createDocument(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    documentId: ID.unique(),
+    data: testTodo2
+  );
+
+  await databases.createDocument(
+    databaseId: todoDatabase.$id,
+    collectionId: todoCollection.$id,
+    documentId: ID.unique(),
+    data: testTodo3
+  );
+}
+```
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data.
+```dart
+Future<void> getTodos() async {
+  var todos = await databases.listDocuments(
+    databaseId: todoDatabase.$id, 
+    collectionId: todoCollection.$id
+  );
+
+  todos.documents.forEach((todo) {
+    print('Title: ${todo.data['title']}\nDescription: ${todo.data['description']}\nIs Todo Complete: ${todo.data['isComplete']}\n\n');
+  });
+}
+```
+
+Finally, revisit the `main()` function and call the functions created in previous steps.
+```dart
+Future<void> main() async {
+  client
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+    await prepareDatabase();
+    await Future.delayed(const Duration(seconds: 1));
+    await seedDatabase();
+    await getTodos();
+}
+```
+
+{% /section %}
+{% section #step-8 step=8 title="All set" %}
+
+Run your project with `dart run bin/my_app.dart` and view the response in your console.
+
+{% /section %}

@@ -32,7 +32,7 @@
 				{/each}
 			</Tbody>
 		</Table>
-		<Heading id="properties" level={2}>Example</Heading>
+		<Heading id="example" level={2}>Example</Heading>
 		<Fence content={JSON.stringify(data.example, null, 4)} language="json" process withLineNumbers />
 	</article>
 </Article>

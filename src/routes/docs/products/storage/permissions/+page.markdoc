@@ -28,7 +28,7 @@ If a user has read, create, update, or delete permissions at the file level, the
 File level permissions are only applied if File Security is enabled in the settings of your bucket.
 Enable file level permissions by navigating to **Your bucket** > **Settings** > **File security**.
 
-File level permissions are configured in individual [files](/docs/products/storage/files).
+File level permissions are configured in individual [files](/docs/products/storage/permissions#file-level).
 
 [Learn more about permissions and roles](/docs/advanced/platform/permissions)
 

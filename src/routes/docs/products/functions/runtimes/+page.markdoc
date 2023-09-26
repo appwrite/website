@@ -10,7 +10,7 @@ Appwrite Functions supports an extensive list of runtimes to meet your unique te
 Below is a list of available Functions runtimes. The Appwrite team continually adds support for new runtimes.
 
 {% table %}
-* &nbsp; {% width=80 %}
+* &nbsp; {% width=48 %}
 * Name {% width=120 %}
 * Versions
 * Architectures
