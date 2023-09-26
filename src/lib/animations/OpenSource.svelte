@@ -107,7 +107,7 @@
 
 		<div class="cards-wrapper">
 			<a
-				href="https://discord.com/invite/GSeTUeA"
+				href="/discord"
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-discord"
 			>
@@ -139,7 +139,7 @@
 				<div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
 			</a>
 
-			<a class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
+			<a href="https://www.youtube.com/@Appwrite" class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
 				</div>
