@@ -174,8 +174,8 @@
 							Self-host your data or take it to the Cloud
 						</h2>
 						<p class="aw-description u-max-width-700">
-							Migrate your data from and to any platform at any time with Appwrite Migrations.
-							With built-in security and privacy for peace of mind.
+							Migrate your data from and to any platform at any time with Appwrite Migrations. With
+							built-in security and privacy for peace of mind.
 						</p>
 					</section>
 					<div class="u-overflow-hidden aw-u-margin-block-start-80">
