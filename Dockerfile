@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 RUN corepack enable
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install 
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store NODE_OPTIONS=--max_old_space_size=4096 pnpm install 
 RUN pnpm run build
 
 EXPOSE 3000
