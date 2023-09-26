@@ -36,13 +36,13 @@
 
 	async function search(value: string) {
 		return index.search(value, {
-			limit: 5
+			limit: 10
 		});
 	}
 
 	async function handleInput(value: string) {
 		const response = await search(value);
-		results = response.hits.filter((hit) => hit.h1);
+		results = response.hits;
 	}
 
 	function handleExit(event: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
