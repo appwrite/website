@@ -53,7 +53,7 @@
 		}));
 	});
 
-	function handleKeypress(event: any) {
+	function handleKeypress(event: KeyboardEvent) {
 		if (event.metaKey && event.key.toLowerCase() === 'k') {
 			$layoutState.showSearch = true;
 		} else if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
