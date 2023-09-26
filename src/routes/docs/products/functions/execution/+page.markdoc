@@ -456,7 +456,13 @@ You test a function by hitting the **Execute now** button, which will display wi
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
-![](https://appwrite.io/images-ee/docs/functions-execute-dark.png)
+{% only_dark %}
+![Create project screen](/images/docs/functions/execution/dark/execute-function.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/functions/execution/execute-function.png)
+{% /only_light %}
+
 
 ## Events {% #events %}
 
