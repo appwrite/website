@@ -35,7 +35,7 @@
 				'Rate-limits and advanced user protection',
 				'Custome SMTP and email templates'
 			],
-			shot: './images/products/Auth.svg'
+			shot: './images/products/auth.png'
 		},
 		databases: {
 			icon: {
@@ -53,7 +53,7 @@
 				'Custom data validation',
 				'Relationships support',
 			],
-			shot: './images/products/Databases.svg'
+			shot: './images/products/databases.png'
 		},
 		functions: {
 			icon: {
@@ -69,7 +69,7 @@
 				'Support for 30+ runtimes in 13 languages',
 				'Custom domain support'
 			],
-			shot: './images/products/Functions.svg'
+			shot: './images/products/functions.png'
 		},
 		storage: {
 			icon: {
@@ -84,7 +84,7 @@
 				'Built-in image transformation capabilities',
 				'Advanced compression with WebP/Brotli support'
 			],
-			shot: './images/products/Storage.svg'
+			shot: './images/products/storage.png'
 		},
 		realtime: {
 			icon: {
@@ -99,7 +99,7 @@
 				'Built-in permission management',
 				'Support for DBs, Auth, Storage & Functions',
 			],
-			shot: './images/products/Realtime.svg'
+			shot: './images/products/realtime.png'
 		}
 	};
 </script>
@@ -214,7 +214,7 @@
 							delay: 400
 						}}
 					>
-						Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's core backend products.					
+						Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's development platform.
 					</p>
 				{/if}
 			</div>
