@@ -1,4 +1,4 @@
-FROM node:20-slim AS build
+FROM node:20-bullseye AS build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
