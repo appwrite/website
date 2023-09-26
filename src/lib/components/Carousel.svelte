@@ -47,15 +47,41 @@
 			next();
 		}
 	}
+
+	let isEnd = false;
+	let isStart = true;
+
+	function handleScroll() {
+		if (carousel.scrollLeft === 0) {
+			isStart = true;
+			isEnd = false;
+		} else if (carousel.scrollLeft + carousel.offsetWidth === carousel.scrollWidth) {
+			isStart = false;
+			isEnd = true;
+		} else {
+			isStart = false;
+			isEnd = false;
+		}
+	}
 </script>
 
 <div class="u-flex u-main-space-between u-flex-wrap">
 	<slot name="header" />
 	<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
-		<button class="aw-icon-button" aria-label="Move carousel backward" on:click={() => prev()}>
+		<button
+			class="aw-icon-button"
+			aria-label="Move carousel backward"
+			disabled={isStart}
+			on:click={() => prev()}
+		>
 			<span class="aw-icon-arrow-left" aria-hidden="true" />
 		</button>
-		<button class="aw-icon-button" aria-label="Move carousel forward" on:click={() => next()}>
+		<button
+			class="aw-icon-button"
+			aria-label="Move carousel forward"
+			disabled={isEnd}
+			on:click={() => next()}
+		>
 			<span class="aw-icon-arrow-right" aria-hidden="true" />
 		</button>
 	</div>
@@ -66,6 +92,7 @@
 	on:touchstart={handleTouchStart}
 	on:touchmove={handleTouchMove}
 	on:touchend={handleTouchEnd}
+	on:scroll={handleScroll}
 >
 	<slot />
 </ul>
