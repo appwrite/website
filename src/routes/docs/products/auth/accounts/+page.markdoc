@@ -4,7 +4,7 @@ title: Accounts
 description: This is the description used for SEO.
 ---
 
-Appwrite allows users to create accounts.
+Appwrite Account API is used for user signup and login in client applications.
 Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. 
 Each user's account can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
@@ -22,7 +22,7 @@ authentication.
 
 ## Preferences {% #preferences %}
 
-You can store user preferences on a user's account using Appwrite's [Update Preferences](#) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
@@ -108,7 +108,7 @@ mutation {
 ```
 {% /multicode %}
 
-After a user's preferences are updated, they can be retrieved using the [Get Preferences](#) endpoint.
+After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
 ```js 
@@ -183,4 +183,6 @@ individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
 | Verified user   | `Role.user(<USER_ID>, 'verified')`|
 | Unverified user | `Role.user(<USER_ID>, 'unverified')` |
 
-[Learn more about permissions](/docs/advanced/platform/permissions)
+
+
+[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)

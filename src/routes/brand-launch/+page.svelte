@@ -3,14 +3,39 @@
 	import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute">
+<div class="u-position-absolute aw-is-only-mobile u-inset-inline-0">
+	<svg class="u-width-full-line"
+			xmlns="http://www.w3.org/2000/svg" width="360" height="661" viewBox="0 0 360 661" fill="none">
+		<g opacity="0.24" filter="url(#filter0_f_3260_129410)">
+			<ellipse cx="180" cy="80" rx="999" ry="325" fill="#FD366E"/>
+		</g>
+		<defs>
+			<filter id="filter0_f_3260_129410" x="-1074.02" y="-500.022" width="2508.04" height="1160.04" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+				<feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_3260_129410"/>
+			</filter>
+		</defs>
+	</svg>
+</div>
+
+<div class="u-position-absolute" style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);">
+	<div class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+		<img src="/images/pages/brand-lunch/left-side-top-brand.png" alt width="800" style="transform:translateX(-35%)">
+	</div>
+	<div class="u-position-absolute u-inset-inline-end-0 aw-u-inset-block-start-100 aw-is-not-mobile">
+		<img src="/images/pages/brand-lunch/right-side-top-brand.png" alt width="800" style="transform:translateX(35%)">
+	</div>
+</div>
+
+<div class="u-position-absolute u-width-full-line aw-is-not-mobile">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="1728"
 		height="617"
 		viewBox="0 0 1728 617"
 		fill="none"
-		class="u-max-width-100-percent"
+		class="u-width-full-line"
 	>
 		<g opacity="0.24" filter="url(#filter0_f_3260_127073)">
 			<ellipse cx="864" cy="36" rx="999" ry="325" fill="#FD366E" />
@@ -36,36 +61,51 @@
 <Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
-			<div class="aw-container">
-				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-margin-inline-auto">
+			<div class="aw-container u-position-relative">
+				<div class="aw-big-padding-section-level-2 aw-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto aw-u-margin-block-0 "
+						style="block-size:calc(100vh - 6.375rem)">
+
 					<div class="aw-hero aw-u-gap-20">
 						<h1 class="aw-headline aw-u-color-text-primary">Brand new Appwrite</h1>
-						<p class="aw-description">
+						<p class="aw-description aw-u-color-text-primary aw-u-opacity-64">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 							Praesent sagittis eget ipsum vitae eleifend.
 						</p>
 					</div>
+
 				</div>
 
-				<div class="aw-big-padding-section-level-2 aw-u-max-width-480">
-					<div class="aw-hero is-align-start">
-						<h2 class="aw-title aw-u-color-text-primary">All the tools that developers need</h2>
-						<p class="aw-main-body-500">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
-							Praesent sagittis eget ipsum vitae eleifend.
-						</p>
+
+				<div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
+					<div class="u-stretch u-flex aw-u-flex-vertical-mobile">
+						<div class="aw-hero is-align-start aw-u-max-width-480 aw-u-padding-block-start-48">
+							<h2 class="aw-title aw-u-color-text-primary">All the tools that developers need</h2>
+							<p class="aw-main-body-500">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
+								Praesent sagittis eget ipsum vitae eleifend.
+							</p>
+						</div>
+						<div class="u-stretch u-flex aw-u-margin-inline-auto-mobile aw-u-margin-block-start-40-mobile">
+							<img style="margin-block-start:-0.5rem"
+									class="u-margin-inline-start-auto u-width-full-line u-max-width-500" src="/images/pages/brand-lunch/box.png" alt>
+						</div>
 					</div>
 				</div>
 
-				<div class="aw-big-padding-section-level-2">
-					<div class="aw-grid-1-1-opt-2 aw-u-column-gap-96">
-						<div class="aw-hero is-align-start">
+
+				<div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
+					<div class="aw-grid-1-1-opt-2">
+						<div class="aw-hero is-align-start aw-u-padding-block-start-40">
 							<h2 class="aw-title aw-u-color-text-primary">Eliminating complexity</h2>
 							<p class="aw-main-body-500">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 							</p>
+							<div class="u-margin-block-start-48">
+								<img class="u-max-width-100-percent" src="/images/pages/brand-lunch/box-1.png" alt>
+							</div>
 						</div>
-						<div class="aw-hero is-align-start">
+						<div class="aw-hero is-align-start
+						aw-u-padding-block-start-40 aw-u-sep-inline-start-not-break1 aw-u-padding-inline-start-48-not-break1">
 							<h2 class="aw-title aw-u-color-text-primary">
 								Allowing you to innovate without limits
 							</h2>
@@ -73,6 +113,9 @@
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae diam augue.
 								Praesent sagittis eget ipsum vitae eleifend.
 							</p>
+							<div class="u-margin-block-start-48">
+								<img class="u-max-width-100-percent" src="/images/pages/brand-lunch/box-2.png" alt>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -83,6 +126,7 @@
 		>
 			<div class="u-position-absolute u-inset-inline-start-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="698"
 					height="900"
@@ -200,6 +244,7 @@
 			</div>
 			<div class="u-position-absolute u-inset-inline-end-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="874"
 					height="900"
@@ -326,6 +371,7 @@
 		>
 			<div class="u-position-absolute u-inset-inline-start-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="698"
 					height="900"
@@ -443,6 +489,7 @@
 			</div>
 			<div class="u-position-absolute u-inset-inline-end-0">
 				<svg
+						class="aw-u-opacity-40-mobile"
 					xmlns="http://www.w3.org/2000/svg"
 					width="874"
 					height="900"
@@ -1225,46 +1272,26 @@
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative">
 				<div class="aw-container">
-					<div class="aw-hero">
-						<h4 class="aw-title aw-u-color-text-primary">Be a part of #Teamof100</h4>
-						<p class="aw-main-body-500 u-margin-block-start-4">
-							Join our rebrand celebration by sharing #teamof100 in your socials for a chance to win
-							brand-new Appwrite swag.
-						</p>
-						<button class="aw-button is-transparent u-cross-child-center u-margin-block-start-16">
-							<span class="aw-icon-star" aria-hidden="true" />
-							<span>Share</span>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="aw-big-padding-section-level-2">
-				<div class="aw-container">
-					<div class="u-flex u-gap-32">
-						<div class="aw-media-container u-flex-basis-250 u-stretch">
-							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
-							/>
+					<div class="aw-grid-1-1-opt-2 u-gap-32 u-main-space-between">
+						<div class="aw-hero is-align-start aw-u-max-width-480">
+							<h4 class="aw-title aw-u-color-text-primary">Be a part of #Teamof100</h4>
+							<p class="aw-main-body-500 u-margin-block-start-4 aw-u-color-text-primary aw-u-opacity-64">
+								Join our rebrand celebration by sharing #teamof100 in your socials for a chance to win
+								brand-new Appwrite swag.
+							</p>
+							<button class="aw-button is-transparent u-margin-block-start-16 is-full-width-mobile">
+								<span class="aw-icon-star" aria-hidden="true" />
+								<span>Share</span>
+							</button>
 						</div>
 						<div class="aw-media-container u-flex-basis-250 u-stretch">
 							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
-							/>
-						</div>
-						<div class="aw-media-container u-flex-basis-250 u-stretch">
-							<img
-								src="/images/brand/new-brand-grid-mobile.png"
-								alt="brand visual stuff"
-								width="100%"
+									src="/images/brand/t-shirts.png"
+									alt="brand visual stuff"
+									width="100%"
 							/>
 						</div>
 					</div>
-					<FooterNav />
-					<MainFooter />
 				</div>
 			</div>
 		</div>

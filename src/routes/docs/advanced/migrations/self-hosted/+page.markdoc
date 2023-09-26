@@ -40,6 +40,7 @@ To begin migrating to self-hosted, make sure to read the [migration overview](/d
 
 1. Click **Start Migration** to start the migration process. You do not need to keep the Appwrite Console open through the process.
 
-> Keep in mind: Your self-hosted instance will generate an API Key in the background to pass to Appwrite Cloud. You can revoke this key after the migration process is complete.
-
+{% info title="Keep in mind" %}
+Your self-hosted instance will generate an API Key in the background to pass to Appwrite Cloud. You can revoke this key after the migration process is complete.
+{% /info %}
 {% /section %}
