@@ -44,7 +44,10 @@
 	<Spline let:fallback let:viewer>
 		<div
 			class="u-position-absolute aw-is-not-mobile"
-			style="inline-size:512px; block-size: 512px; inset-block-start:24rem; inset-inline-start:calc(100% - 500px)"
+			style:inline-size="512px"
+			style:block-size="512px"
+			style:inset-block-start="32rem"
+			style:left="calc(50% - 256px + 500px)"
 		>
 			<img
 				src="/images/animations/tech.png"
@@ -68,70 +71,178 @@
 				Run on any provider or through Appwrite Cloud
 			</h1>
 			<p class="aw-description u-max-width-600">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
+				Start building today by creating an account on <a href="https://cloud.appwrite.io/" rel="noopener noreferrer" target="_blank">Appwrite Cloud</a>
+				or <a href="/docs/advanced/self-hosting" rel="noopener noreferrer" target="_blank">self-host</a>.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">
 			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">
-				Get started quickly with your preferred technology
+				Get started with your technologies
 			</h2>
 			<p class="aw-description u-max-width-600">
-				Start building with your preferred web, mobile, and native frameworks by following a quick
-				start guide.
+				Follow a quick start guide on your web, mobile, and native frameworks.
 			</p>
 			<ul class="u-flex u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
 				<li>
 					<a href="/docs/quick-starts/flutter" class="aw-box-icon">
-						<img src="/images/platforms/dark/flutter.svg" alt="Flutter logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/flutter.svg" alt="Flutter logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/flutter.svg"
+							alt="Flutter logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/flutter.svg"
+							alt="Flutter logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/nextjs" class="aw-box-icon">
-						<img src="/images/platforms/dark/nextjs.svg" alt="Next.js logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/nextjs.svg" alt="Next.js logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/nextjs.svg"
+							alt="Next.js logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/nextjs.svg"
+							alt="Next.js logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/react" class="aw-box-icon">
-						<img src="/images/platforms/dark/react.svg" alt="React logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/react.svg" alt="React logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/react.svg"
+							alt="React logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/react.svg"
+							alt="React logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/sveltekit" class="aw-box-icon">
-						<img src="/images/platforms/dark/svelte.svg" alt="Svelte logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/svelte.svg" alt="Svelte logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/svelte.svg"
+							alt="Svelte logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/svelte.svg"
+							alt="Svelte logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/nuxt" class="aw-box-icon">
-						<img src="/images/platforms/dark/nuxt.svg" alt="Nuxt logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/nuxt.svg" alt="Nuxt logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/nuxt.svg"
+							alt="Nuxt logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/nuxt.svg"
+							alt="Nuxt logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/vue" class="aw-box-icon">
-						<img src="/images/platforms/dark/vue.svg" alt="Vue logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/vue.svg" alt="Vue logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/vue.svg"
+							alt="Vue logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/vue.svg"
+							alt="Vue logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/angular" class="aw-box-icon">
-						<img src="/images/platforms/dark/angular.svg" alt="Angular logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/angular.svg" alt="Angular logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/angular.svg"
+							alt="Angular logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/angular.svg"
+							alt="Angular logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/apple" class="aw-box-icon">
-						<img src="/images/platforms/dark/apple.svg" alt="Apple logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/apple.svg" alt="Apple logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/apple.svg"
+							alt="Apple logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/apple.svg"
+							alt="Apple logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 				<li>
 					<a href="/docs/quick-starts/android" class="aw-box-icon">
-						<img src="/images/platforms/dark/android.svg" alt="Android logo" class="u-only-dark" width="32" height="32" />
-						<img src="/images/platforms/android.svg" alt="Android logo" class="u-only-light" width="32" height="32" />
+						<img
+							src="/images/platforms/dark/android.svg"
+							alt="Android logo"
+							class="u-only-dark"
+							width="32"
+							height="32"
+						/>
+						<img
+							src="/images/platforms/android.svg"
+							alt="Android logo"
+							class="u-only-light"
+							width="32"
+							height="32"
+						/>
 					</a>
 				</li>
 			</ul>
@@ -145,8 +256,7 @@
 					<div>
 						<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
 						<p class="aw-description u-max-width-600">
-							Talk is cheap, where's the code? If you'd rather see some examples, we've got you
-							covered. Clone a template to get started.
+							If you learn best from code examples, follow one of our tutorials. 
 						</p>
 					</div>
 				</svelte:fragment>
@@ -290,7 +400,7 @@
 			</Carousel>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
-			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
+			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Explore capabilities</h2>
 			<p class="aw-description u-max-width-600">
 				All the core functionalities you need with a scalable and flexible API. Explore Appwrite's
 				product offerings.
@@ -299,8 +409,20 @@
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/auth.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/auth.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/auth.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/auth.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Auth</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Sign in users with multiple OAuth providers.
@@ -309,20 +431,44 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/databases.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/databases.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/databases.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/databases.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Databases
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Store your application and users' data.
+								Store your application and user data.
 							</p>
 						</div>
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/functions.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/functions.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/functions.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/functions.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Functions
 							</h4>
@@ -333,8 +479,20 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/storage.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/storage.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/storage.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/storage.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Storage
 							</h4>
@@ -345,24 +503,41 @@
 					</li>
 					<li>
 						<div class="aw-card is-full-color">
-							<img src="/images/icons/illustrated/dark/realtime.png" alt="" class="u-only-dark" width="48" height="48" />
-							<img src="/images/icons/illustrated/light/realtime.png" alt="" class="u-only-light" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/realtime.png"
+								alt=""
+								class="u-only-dark"
+								width="48"
+								height="48"
+							/>
+							<img
+								src="/images/icons/illustrated/light/realtime.png"
+								alt=""
+								class="u-only-light"
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Listen to any events on the server-side in realtime.
+								Respond to server events in realtime.
 							</p>
 						</div>
 					</li>
 					<li>
 						<div class="aw-card is-full-color u-opacity-20">
-							<img src="/images/icons/illustrated/dark/messaging.png" alt="" width="48" height="48" />
+							<img
+								src="/images/icons/illustrated/dark/messaging.png"
+								alt=""
+								width="48"
+								height="48"
+							/>
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Messaging
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Send email, SMS, push notification and chat messages to your users.
+								Coming soon.
 							</p>
 						</div>
 					</li>
@@ -381,7 +556,7 @@
 						<div class="aw-card is-full-color">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">SDKs</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
+								Light-weight SDKs for your favorite platforms.
 							</p>
 						</div>
 					</li>
@@ -391,7 +566,7 @@
 								REST API
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
+								Integrate with HTTP requests without the needing an SDK
 							</p>
 						</div>
 					</li>
@@ -401,7 +576,7 @@
 								GraphQL
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
+								Leverage GraphQL through our SDKs or integrate directly with REST endpoints.
 							</p>
 						</div>
 					</li>
@@ -411,7 +586,7 @@
 								Realtime
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur. Elit id et diam lectus egestas habitasse.
+								Respond to auth, databases, storage, and function events in realtime.
 							</p>
 						</div>
 					</li>
@@ -421,17 +596,17 @@
 		<section class="aw-hero is-align-start is-no-max-width">
 			<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Migrate to Appwrite</h2>
 			<p class="aw-description u-max-width-600">
-				Lorem ipsum dolor sit amet consectetur. Orci netus est urna dictum eleifend diam.
+				Own your data with automatic data migrations. 
 			</p>
 			<div class="u-margin-block-start-24">
 				<ul class="aw-grid-row-4">
 					<li>
 						<div class="aw-card is-full-color">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
-								Self hosted
+								Self-hosted
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Move data from self-hosted to Appwrite Cloud. 
 							</p>
 						</div>
 					</li>
@@ -441,7 +616,7 @@
 								Firebase
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Migrate users and data from Firebase to Appwrite.
 							</p>
 						</div>
 					</li>
@@ -451,7 +626,7 @@
 								Supabase
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Migrate users and data from Supabase to Appwrite.
 							</p>
 						</div>
 					</li>
@@ -459,7 +634,7 @@
 						<div class="aw-card is-full-color">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Nhost</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Migrate users and data from NHost to Appwrite.
 							</p>
 						</div>
 					</li>

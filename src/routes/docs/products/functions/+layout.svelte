@@ -22,7 +22,7 @@
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Journeys',
 			items: [
 				{
 					label: 'Development',
@@ -45,7 +45,16 @@
 					href: '/docs/products/functions/examples'
 				}
 			]
-		}
+		},
+		{
+			label: 'References',
+			items: [
+				{
+					label: 'Functions API',
+					href: '/docs/references/cloud/client-web/functions'
+				},
+			]
+		},
 	];
 </script>
 

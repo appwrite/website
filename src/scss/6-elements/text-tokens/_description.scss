@@ -11,6 +11,7 @@
   line-height: var(--p-line-height);
   letter-spacing: var(--p-letter-spacing);
   font-weight: var(--p-font-weight);
+  color: hsl(var(--aw-color-secondary));
 
   @media #{$break2open} {
     --p-font-size: var(--aw-font-size-large);

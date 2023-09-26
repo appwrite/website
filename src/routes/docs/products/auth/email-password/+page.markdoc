@@ -6,7 +6,7 @@ description: This is the description used for SEO.
 
 Email and password login is the most commonly used authentication method. Appwrite Authentication promotes a safer internet by providing secure APIs and promoting better password choices to end users. Appwrite supports added security features like blocking personal info in passwords, password dictionary, and password history to help users choose good passwords.
 
-## Sign up {% #sign-up %}
+## Signup {% #sign-up %}
 
 You can use the Appwrite Client SDKs to create an account using email and password.
 
@@ -28,7 +28,7 @@ promise.then(function (response) {
 });
 ```
 
-Passwords are hashed with [Argon2](#), a resilient and secure password hashing algorithm.
+Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), a resilient and secure password hashing algorithm.
 
 ## Verification {% #verification %}
 
