@@ -1,0 +1,89 @@
+---
+layout: article
+title: Subscriptions with Stripe
+description: This is the description used for SEO.
+---
+Learn how to accept payments and provide subscribers premium features.
+
+{% section #step-1 step=1 title="Setup Stripe" %}
+
+Start by visiting [Stripe](https://stripe.com/) and creating an account. When successful, you will see Stripe Dashboard.
+
+I will be using test mode, but the same steps will work for live mode.
+
+![Stripe Dashboard screen](/images/docs/functions/quick-start/stripe-dashboard.png)
+
+In the header you can switch to **Developers** page where you can switch to **API Keys** section. On this page, reveal and copy **Secret key**. Note it down as you will need it later on when setting `STRIPE_SECRET_KEY` environment variable.
+
+Next, switch over to **Webhooks** section and click button to **Add an endpoint**.
+
+Let's add fake endpoint for now in order to get webhook secret. Later, when you set up Appwrite Function, you will update this endpoint with Function's endpoint.
+
+Enter `https://temporary-endpoint/` as **Endpoint URL** and feel free write some **Description** for yourself. Leave everything else as is, and continue down to **Select events**. You need to toggle events `customer.subscription.created` and `customer.subscription.deleted`. You can use search bar to your advantage. By searching for `subscription`, you should easily find those two events. Once both are selected, you can click button to **Add events**. Finish off the form by clicking **Add endpoint** button.
+
+![Stripe webhook setup screen](/images/docs/functions/quick-start/stripe-webhook-subscription.png)
+
+Once created, click **Reveal** under **Signing secret** and copy the secret. Note it down as you will need it later on when setting `STRIPE_WEBHOOK_SECRET` environment variable.
+
+Keep this page open, as you will need it soon to update endpoint with real Function's endpoint.
+
+{% /section %}
+
+{% section #step-2 step=2 title="Create Function" %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) and create a new project if you haven't already. If this is your first tine using Appwrite, you will be asked to sign up first.
+
+Once inside your project overview, switch to **Functions** page from left sidebar. Under **Tempaltes** section, use search bar and look for `subscriptions`. You will find **Subscriptions with Stripe** template, which you can use by clicking **Create function** button.
+
+![Appwrite templates screen](/images/docs/functions/quick-start/templates-stripe-subscription.png)
+
+You will be asked to configure Function's **Name**, **Runtime** and **Function ID**. Feel free to customize those, or leave as is. Click **Next** button to continue to environment variables definition.
+
+Toggle **Generate API key on completion** in `APPWRITE_API_KEY` variable, so you dont need to go and generate it manually. Fill `STRIPE_SECRET_KEY` variable with key you copied from Stripe's Dashboard under **API keys** section. Similarly, fill `STRIPE_WEBHOOK_SECRET` variable with secret copied after creating **Webhook**. If you are self-hosting Appwrite, you will need to change `APPWRITE_ENDPOINT` as well, under **Optional variables** section. When done, click **Next** button.
+
+In this section you can decide if you want to host your Function's source code in an existing repository, or create a new one. Larger projects will benefit from having all functions in one repository, but to keep this quick start simple, let's stick to **Create a new repository**. Click **Next** button to continue.
+
+You will be asked to connect your project to Git provider. Click the one you want to use, and follow process of authroization. Once done, you will be redirected back to Appwrite Console. Here you can configure **Repository name** and toggle if you want to **Keep repository private**. Once done, click **Next** button to continue to final step.
+
+Finally, you can configure repository-related settings such as **Production branch**, **Root directory** or **Silent mode**. Let's stick to defaults provided by template, and click **Create** button to create the function.
+
+{% /section %}
+
+
+{% section #step-3 step=3 title="Configure Endpoint" %}
+
+Once Function is created, a build process will start. Wait a little for this to finish. Once done, it will automatically activate the deployment and make your function live.
+
+You should see **Active** card under **Deployments** section. In this card, there is **Domains** part telling you what domain was assigned to your Function.
+
+![Appwrite Function screen](/images/docs/functions/quick-start/functions-stripe-subscription.png)
+
+Copy the domain and head back to Stripe's **Webhook** page. In upper right corner there is button with 3 dots icon, under which there is **Update details...** button to open configuration modal. In this modal, let's update **Endpoint URL**.
+
+Function's domain I copied was `6512ac5b95af39df6469.appwrite.global`, and endpoint needed for Stripe communication is `/webhook`. By combiling those two, I get my new endpoint URL: `https://6512ac5b95af39df6469.appwrite.global/webhook`. Please do the same, but make sure to use domain generated for your Function. When done, click **Update endpoint** to save changes.
+
+{% /section %}
+
+{% section #step-4 step=4 title="Execute Function" %}
+
+You are now ready to use Appwrite Function in your frontend. You can initialize payment process by redirecting your user to `/subscribe` endpoint on the Function's domain.
+
+To showcase the functionality, the template ships with demo frontend that you can use. To allow this demo, you need to add Function's domain as trusted web platform. Head to **Overview** page of your project in Apwrite Console, and scroll down to **Integrations** section. Click **Add platform** button and select **Web App** from the dropdown.
+
+![Appwrite Platforms screen](/images/docs/functions/quick-start/functions-add-web-platform.png)
+
+Set **Name** to `Subscription demo` and **Hostname** to your Function's domain. In my case it is `6512ac5b95af39df6469.appwrite.global`. Click **Next** button to continue. You don't need to follow remaining screens, so you can click on **Skip optional steps**.
+
+Finally, you can visit our Function's domain in the browser to see the demo application.
+
+In the demo app, click **Register as anonnymous** button to create guest session. This will create a new user in your Appwrite Project. After registering, the demo app will show that you are **Not subscribed**. This means that your user does not have `subscriber` label. You can click **Subscribe with Stripe** to start payment process.
+
+Once redirected to Stripe, fill the payment form. If your Stripe account is in test mode, you can use test card number `4242 4242 4242 4242` with any future expiration date and any CVC code. When done, click **Subscribe** button.
+
+Once processed, you will be redirected back to demo application, where **Subscription status** will say **Subscribed**. If it doesn't, please allow Stripe few moments to process the payment. You can keep refreshing the website until the status is updated.
+
+To also confirm the label was added successfully to the user, you can switch to Appwrite Console, and visit **Auth** page of our Appwrite Project. Here, you should see one anonymous user. Let's click on this user to see the details. After scrolling down to **Labels** card, you can see `subscriber` label has been added to this user.
+
+![Appwrite User screen](/images/docs/functions/quick-start/user-subscriber-label.png)
+
+{% /section %}
