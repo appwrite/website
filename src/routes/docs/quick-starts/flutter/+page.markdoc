@@ -1,13 +1,22 @@
 ---
 layout: article
-title: Quick start with Flutter
+title: Start with Flutter
 description: Learn how to quickly integrate Appwrite products and services into your Flutter project.
 difficulty: beginner
 readtime: 3
 ---
 
 Learn to setup your first Flutter project powered by Appwrite.
-{% section #step-1 step=1 title="Create project" %}
+
+{% section #step-1 step=1 title="Create Flutter project" %}
+Create a Flutter project.
+
+```sh
+flutter create my_app && cd my_app
+```
+{% /section %}
+
+{% section #step-2 step=2 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
@@ -132,13 +141,6 @@ If you cannot find the correct package name, run the application in Windows, and
 
 You can skip optional steps.
 
-{% /section %}
-{% section #step-2 step=2 title="Create Flutter project" %}
-Create a Flutter project.
-
-```sh
-flutter create my_app && cd my_app
-```
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}
