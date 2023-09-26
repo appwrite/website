@@ -164,12 +164,12 @@
 									<tbody class="aw-table-line-body">
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5748</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
 													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+														>🚀 Feature: overload Feature for Storage.CreateFile for using Blob instead of File</span
 													>
 													<span>(appwrite/appwrite)</span>
 												</div>
@@ -188,12 +188,12 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5232</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
 													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+														>🚀 Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline</span
 													>
 													<span>(appwrite/appwrite)</span>
 												</div>
@@ -212,14 +212,14 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#680</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
 													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+														>🚀 Feature: Unit Tests</span
 													>
-													<span>(appwrite/appwrite)</span>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>
@@ -236,14 +236,14 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#679</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
 													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+														>📚 Documentation: Add inline docs to SDKs</span
 													>
-													<span>(appwrite/appwrite)</span>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>
