@@ -27,13 +27,27 @@ Other scopes are optional.
 
 {% /section %}
 {% section #step-2 step=2 title="Create Python project" %}
-Create a directory for the project and create a code file named `my_app.py`.
+Create a directory for the project.
 
 ```sh
 mkdir my_app
 cd my_app
-touch my_app.py
 ```
+
+After that, create a virtual environment in this directory and activate it.
+
+```sh
+# Create a venv
+python -m venv .venv
+
+# Active the venv in Unix shell
+source .venv/bin/activate
+
+# Or in Powershell
+.venv/Scripts/Activate.ps1
+```
+
+Finally, create a file `my_app.py`.
 
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
