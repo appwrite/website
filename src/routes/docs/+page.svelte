@@ -44,22 +44,23 @@
 	<Spline let:fallback let:viewer>
 		<div
 			class="u-position-absolute aw-is-not-mobile"
-			style:inline-size="512px"
-			style:block-size="512px"
-			style:inset-block-start="32rem"
-			style:left="calc(50% - 256px + 500px)"
+			style:inline-size="768px"
+			style:block-size="768px"
+			style:inset-block-start="26rem"
+			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
 				src="/images/animations/tech.png"
-				width="512"
-				height="512"
+				width="768"
+				height="768"
 				alt=""
 				style="position: absolute; display: block;"
 				use:fallback
 			/>
-
 			<spline-viewer
-				url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
+				url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+				width="768"
+				height="768"
 				use:viewer
 			/>
 		</div>
@@ -250,16 +251,14 @@
 				<span class="aw-sub-body-500">Explore all technologies</span>
 			</button>
 		</section>
-		<section class=" is-align-start">
+		<section class="aw-hero is-align-start is-no-max-width">
 			<Carousel>
 				<svelte:fragment slot="header">
-					<div>
-						<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
-						<p class="aw-description u-max-width-600">
-							Talk is cheap, where's the code? If you'd rather see some examples, we've got you
-							covered. Clone a template to get started.
-						</p>
-					</div>
+					<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
+					<p class="aw-description u-max-width-600">
+						Talk is cheap, where's the code? If you'd rather see some examples, we've got you
+						covered. Clone a template to get started.
+					</p>
 				</svelte:fragment>
 				<svelte:fragment>
 					<li>
@@ -523,22 +522,6 @@
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Listen to any events on the server-side in realtime.
-							</p>
-						</div>
-					</li>
-					<li>
-						<div class="aw-card is-full-color u-opacity-20">
-							<img
-								src="/images/icons/illustrated/dark/messaging.png"
-								alt=""
-								width="48"
-								height="48"
-							/>
-							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
-								Messaging
-							</h4>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Send email, SMS, push notification and chat messages to your users.
 							</p>
 						</div>
 					</li>
