@@ -38,7 +38,10 @@
 	class:is-transparent={$layoutState.currentVariant !== 'two-side-navs'}
 >
 	<div class="aw-side-nav-wrapper">
-		<button class="aw-input-text aw-is-not-desktop">
+		<button
+			class="aw-input-text aw-is-not-desktop"
+			on:click={() => ($layoutState.showSearch = true)}
+		>
 			<span class="icon-search" />
 			<span class="text">Search in docs</span>
 		</button>
