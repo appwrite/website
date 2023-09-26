@@ -1,8 +1,11 @@
 <script lang="ts" context="module">
+	import { writable } from 'svelte/store';
+
 	export type NavLink = {
 		label: string;
 		href: string;
 	};
+	export const isHeaderHidden = writable(false);
 </script>
 
 <script lang="ts">
@@ -101,7 +104,7 @@
 
 	const scrollInfo = createScrollInfo();
 
-	$: isHeaderHidden = (() => {
+	$: $isHeaderHidden = (() => {
 		if ($scrollInfo.top < 250) {
 			return false;
 		}
@@ -117,7 +120,7 @@
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
 		class:is-transparent={browser && !isMobileNavOpen}
-		class:is-hidden={isHeaderHidden}
+		class:is-hidden={$isHeaderHidden}
 	>
 		<div class="aw-mobile-header-start">
 			<a href="/">
@@ -157,7 +160,7 @@
 	<header
 		class="aw-main-header theme-{resolvedTheme}"
 		class:is-transparent={browser}
-		class:is-hidden={isHeaderHidden}
+		class:is-hidden={$isHeaderHidden}
 	>
 		<!-- <div class="aw-top-banner">
 			<div class="aw-top-banner-content aw-u-color-text-primary">
@@ -199,7 +202,11 @@
 						</nav>
 					</div>
 					<div class="aw-main-header-end">
-						<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
+						<a
+							href="https://github.com/appwrite/appwrite/stargazers"
+							target="_blank"
+							class="aw-button is-text"
+						>
 							<span aria-hidden="true" class="aw-icon-star" />
 							<span class="text">Star on GitHub</span>
 							<span class="aw-inline-tag aw-sub-body-400">33.2K</span>

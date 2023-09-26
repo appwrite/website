@@ -57,14 +57,14 @@ const execute = async () => {
 		]
 	}));
 
-	await sleep(1000);
+	await sleep(250);
 
 	await Promise.all([
 		safeAnimate(overlay, { opacity: 1 }, { duration: 0.25 })?.finished,
 		safeAnimate(drawer, { y: [128, 0], opacity: 1 }, { duration: 0.5 })?.finished
 	]);
 
-	await sleep(1000);
+	await sleep(250);
 
 	await safeAnimate(uploadBtn, { scale: [1, 0.9, 1] }, { duration: 0.25 })?.finished;
 
@@ -75,7 +75,7 @@ const execute = async () => {
 		safeAnimate(upload, { y: [-16, 0], opacity: 1 }, { duration: 0.5 })?.finished
 	]);
 
-	await sleep(500);
+	await sleep(250);
 
 	await safeAnimate(box, { x: 300, y: 300 }, { duration: 0 })?.finished;
 
@@ -84,14 +84,14 @@ const execute = async () => {
 		safeAnimate(box, { y: [300 - 16, 300], opacity: 1 }, { duration: 1 })?.finished
 	]);
 
-	await sleep(500);
+	await sleep(250);
 
 	await Promise.all([
 		safeAnimate(uploadText, { opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(uploadLoading, { opacity: 1 }, { duration: 0.5 })?.finished,
 		safeAnimate(uploadImg, { opacity: 0, y: 64 + 8 }, { duration: 0.5 })?.finished
 	]);
-	await sleep(500);
+	await sleep(250);
 
 	await safeAnimate(upload, { opacity: 0, y: 48 }, { duration: 0.5 })?.finished;
 
@@ -108,7 +108,7 @@ const execute = async () => {
 		]
 	}));
 
-	await sleep(1000);
+	await sleep(250);
 
 	update((p) => ({
 		...p,
