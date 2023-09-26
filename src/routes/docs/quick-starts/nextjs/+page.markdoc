@@ -35,7 +35,7 @@ Install the JavaScript Appwrite SDK.
 npm install appwrite
 ```
 {% /section %}
-{% section #step-4 step=4 title="Import Appwrite" %}
+{% section #step-4 step=4 title="Define Appwrite service" %}
 Find your project's ID in the **Settings** page. 
 
 ![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
