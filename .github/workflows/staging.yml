@@ -8,11 +8,8 @@ on:
       - feat-dockerize-app
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: appwrite/homepage
   TAG: ${{ github.sha }}
   STACK_FILE: docker/docker-stack.stage.yml
-  NAMESPACE: homepage
   REPOSITORY: website
 
 jobs:
@@ -25,7 +22,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -34,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+          tags: ghcr.io/appwrite/website:${{ env.TAG }}
 
   deploy:
     needs: build
@@ -65,4 +62,4 @@ jobs:
 
             echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ github.actor }} --password-stdin
             docker-compose -f ${{ env.STACK_FILE }} config
-            docker stack deploy --with-registry-auth -c <(docker-compose -f ${{ env.STACK_FILE }} config) ${{ env.NAMESPACE }}
+            docker stack deploy --with-registry-auth -c <(docker-compose -f ${{ env.STACK_FILE }} config) ${{ env.REPOSITORY }}
