@@ -83,7 +83,7 @@
 								<div class="u-flex u-cross-center u-gap-8">
 									<img
 										class="aw-author-image"
-										src="/images/blog/placeholder.png"
+										src={author?.avatar}
 										width="24"
 										height="24"
 										alt=""
@@ -92,8 +92,7 @@
 										<a href={author?.href} class="aw-sub-body-400 aw-link">{author?.name}</a>
 										<p class="aw-caption-400 u-hide">{author?.bio}</p>
 										<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-											<li>[data]</li>
-											<li>[time-to-read] min</li>
+											<li>{featured.timeToRead} min</li>
 										</ul>
 									</div>
 								</div>
@@ -249,16 +248,6 @@
 							{/if}
 						{/each}
 					</ul>
-				</div>
-
-				<div class="u-flex u-main-end aw-u-margin-block-start-48">
-					<div class="aw-select is-colored">
-						<button class="physical-select">
-							<span class="icon-moon" aria-hidden="true" />
-							<span data-svelte-h="svelte-397x2m">Dark</span>
-						</button>
-						<span class="icon-cheveron-down" aria-hidden="true" />
-					</div>
 				</div>
 			</div>
 		</div>
