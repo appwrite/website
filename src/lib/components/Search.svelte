@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import type { Action } from 'svelte/action';
 	import { MeiliSearch, type Hits, type Hit } from 'meilisearch';
+	import { afterNavigate } from '$app/navigation';
 
 	export let open: boolean = true;
 
@@ -120,6 +121,10 @@
 			}
 		};
 	};
+
+	afterNavigate(() => {
+		open = false;
+	});
 
 	$: value && handleInput(value);
 </script>
