@@ -574,7 +574,7 @@
 						<div class="aw-hero is-align-start aw-u-max-width-380">
 							<div class="aw-display aw-u-color-text-primary">Visit the community</div>
 							<p class="aw-description">
-								Discover Appwrite’s community across platforms and join the fun.
+								Discover Appwrite's community across platforms and join the fun.
 							</p>
 						</div>
 						<ul class="aw-multi-columns-1">
