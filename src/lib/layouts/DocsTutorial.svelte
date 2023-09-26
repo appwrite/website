@@ -56,7 +56,11 @@
 					</a>
 				{/if}
 				{#if nextStep}
-					<a href={nextStep.href} class="aw-button is-secondary">
+					<a
+						href={nextStep.href}
+						class="aw-button is-secondary"
+						style:margin-left={prevStep ? undefined : 'auto'}
+					>
 						<span class="aw-sub-body-500">
 							Step {nextStep.step}<span class="aw-is-not-mobile">: {nextStep.title}</span>
 						</span>

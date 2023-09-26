@@ -2,7 +2,7 @@
 
 .#{$p}-feature-article {
   &-image {
-    img { inline-size:100%; }
+    img { inline-size:100%;border-radius: 0.5rem; }
   }
   &-content { display:flex; flex-direction:column; max-inline-size:pxToRem(450); }
 
