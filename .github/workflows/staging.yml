@@ -5,14 +5,15 @@ on:
     branches:
       - dev
       - main
+      - feat-dockerize-app
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: appwrite/homepage
   TAG: ${{ github.sha }}
-  STACK_FILE: docker-stack.yml
+  STACK_FILE: docker/docker-stack.stage.yml
   NAMESPACE: homepage
-  REPOSITORY: homepage
+  REPOSITORY: website
 
 jobs:
   build:
@@ -31,8 +32,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          build-args: |
-            VERSION=${{ env.TAG }}
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
@@ -60,17 +59,8 @@ jobs:
             git checkout ${{ env.TAG }}
 
             rm -f .env
-            echo "_APP_ENV=${{ secrets.STG_APP_ENV }}" >> .env
-            echo "_APP_VERSION=${{ env.TAG }}" >> .env
             echo "_APP_DOMAIN=${{ secrets.STG_APP_DOMAIN }}" >> .env
-            echo "_APP_MAILGUN_DOMAIN=${{ secrets._APP_MAILGUN_DOMAIN }}" >> .env
-            echo "_APP_MAILGUN_KEY=${{ secrets._APP_MAILGUN_KEY }}" >> .env
-            echo "_APP_SMTP_PASSWORD=${{ secrets._APP_SMTP_PASSWORD }}" >> .env
-            echo "_APP_SMTP_USERNAME=${{ secrets._APP_SMTP_USERNAME }}" >> .env
-            echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets._APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
-            echo "_APP_HOMERUN_API_KEY=${{ secrets._APP_HOMERUN_API_KEY }}" >> .env
-            echo "_APP_LOGGING_PROVIDER=${{ secrets._APP_LOGGING_PROVIDER }}" >> .env
-            echo "_APP_LOGGING_CONFIG=${{ secrets._APP_LOGGING_CONFIG }}" >> .env
+            echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
             echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
 
             echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ github.actor }} --password-stdin

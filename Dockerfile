@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 RUN corepack enable
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install 
 RUN pnpm run build
 
 EXPOSE 3000
