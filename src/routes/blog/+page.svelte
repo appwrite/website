@@ -119,9 +119,9 @@
 									</li>
 								</ul>
 							</div>
-							<button class="aw-button is-secondary u-margin-block-start-auto">
+							<a href="{featured.href}" class="aw-button is-secondary u-margin-block-start-auto">
 								<span>Read article</span>
-							</button>
+							</a>
 						</div>
 					</article>
 				{/if}
