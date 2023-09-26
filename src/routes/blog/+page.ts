@@ -21,6 +21,7 @@ export function load() {
 			return {
 				title: frontmatter.title,
 				description: frontmatter.description,
+				featured: frontmatter?.featured ?? false,
 				date: new Date(frontmatter.date),
 				cover: frontmatter.cover,
 				timeToRead: frontmatter.timeToRead,

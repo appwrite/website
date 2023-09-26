@@ -13,5 +13,8 @@
 	{#if groupItem.icon}
 		<span class={groupItem.icon} aria-hidden="true" />
 	{/if}
-	<span class="aw-caption-400">{groupItem.label}</span>
+	<span class="aw-caption-400">{groupItem.label} </span>
+	{#if groupItem.isParent}
+		<span class="icon-cheveron-right u-margin-inline-start-auto" aria-hidden="true" />
+	{/if}
 </a>
