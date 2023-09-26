@@ -142,7 +142,6 @@
 					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
 						<span class="aw-icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
-
 					</a>
 				</div>
 			</div>
