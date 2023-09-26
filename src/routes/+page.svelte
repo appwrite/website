@@ -174,8 +174,8 @@
 							Self-host your data or take it to the Cloud
 						</h2>
 						<p class="aw-description u-max-width-700">
-							Migrate your data from and to any platform at any time with Appwrite Migrations.
-							With built-in security and privacy for peace of mind.
+							Migrate your data from and to any platform at any time with Appwrite Migrations. With
+							built-in security and privacy for peace of mind.
 						</p>
 					</section>
 					<div class="u-overflow-hidden aw-u-margin-block-start-80">
@@ -331,23 +331,23 @@
 			<Spline let:fallback let:viewer>
 				<div
 					class="u-position-absolute aw-is-not-mobile"
-					style:inline-size="512px"
-					style:block-size="512px"
-					style:inset-block-start="8rem"
-					style:left="calc(50% - 256px + 18rem)"
+					style:inline-size="768px"
+					style:block-size="768px"
+					style:inset-block-start="0rem"
+					style:left="calc(50% - 384px + 350px)"
 				>
 					<img
 						src="/images/animations/tech.png"
-						width="512"
-						height="512"
+						width="768"
+						height="768"
 						alt=""
 						style="position: absolute; display: block;"
 						use:fallback
 					/>
-
 					<spline-viewer
-						url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
-						loading="eager"
+						url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+						width="768"
+						height="768"
 						use:viewer
 					/>
 				</div>
