@@ -28,12 +28,12 @@
 					<li class="aw-strip-plans-item aw-strip-plans-container-query">
 						<div class="aw-strip-plans-item-wrapper">
 							<div class="aw-strip-plans-plan">
-								<h4 class="title aw-description">Free</h4>
+								<h4 class="title aw-description">Starter</h4>
 								<div class="aw-title aw-u-color-text-primary">$0</div>
 								<div class="info aw-caption-500" />
 							</div>
 							<p class="aw-strip-plans-info aw-caption-500">
-								For personal, passion projects and non-commercial use.
+								For personal passion projects and students.
 							</p>
 							<a href="https://cloud.appwrite.io/register" class="aw-button is-full-width-mobile aw-u-cross-child-end">
 								<span class="text">Get Started</span>
@@ -48,7 +48,7 @@
 								<div class="info aw-caption-500">per org member/month</div>
 							</div>
 							<p class="aw-strip-plans-info aw-caption-500">
-								For pro developers and production projects that need the ability to scale.
+								For pro developers and teams that need to scale their products.
 							</p>
 							<button class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end" disabled>
 								<span class="text">Coming soon</span>

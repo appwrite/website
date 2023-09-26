@@ -1,7 +1,8 @@
 ---
 layout: article
-title: Authentication
+title: Overview
 description: This is the description used for SEO.
+back: /docs
 ---
 
 Appwrite Authentication delivers more than just user sign up and log in. 

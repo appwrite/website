@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { toScale, type Scale } from '$lib/utils/toScale';
-
 	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
 	import { animation, createScrollHandler, scroll, type Animation } from '.';
 
@@ -71,13 +69,10 @@
 		}
 	];
 
-	const animScale: Scale = [0, animations.length - 1];
-	const percentScale: Scale = [0.1, 0.9];
-
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
 			return {
-				percentage: toScale(i, animScale, percentScale),
+				percentage: 0.1,
 				whenAfter() {
 					const { main, reversed } = isMobile() ? mobile : desktop;
 
@@ -109,21 +104,17 @@
 >
 	<div class="sticky-wrapper">
 		<h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
-		<p class="aw-description">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis
-			pellentesque quis purus.
-		</p>
 
 		<div class="cards-wrapper">
 			<a
-				href="https://discord.com/invite/GSeTUeA"
+				href="/discord"
 				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
 				id="oss-discord"
 			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-discord aw-u-font-size-40" aria-hidden="true" aria-label="Discord" />
 				</div>
-				<div class="aw-title u-margin-block-start-auto">125k+ Discord Members</div>
+				<div class="aw-title u-margin-block-start-auto">17k+ Discord Members</div>
 			</a>
 
 			<a
@@ -148,11 +139,11 @@
 				<div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
 			</a>
 
-			<a class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
+			<a href="https://www.youtube.com/@Appwrite" class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
 				</div>
-				<div class="aw-title u-margin-block-start-auto">16k+ Youtube Subscribers</div>
+				<div class="aw-title u-margin-block-start-auto">3k+ Youtube Subscribers</div>
 			</a>
 
 			<a
@@ -171,7 +162,7 @@
 
 <style lang="scss">
 	#open-source {
-		height: 3500px;
+		height: 1500px;
 		position: relative;
 	}
 
@@ -201,10 +192,6 @@
 			content: '';
 			position: absolute;
 			inset: 0;
-		}
-
-		p {
-			max-width: 48.875rem;
 		}
 
 		.cards-wrapper {

@@ -10,7 +10,6 @@
 	<img
 		src="/images/bgs/pricing-hero.svg"
 		alt=""
-		class="aw-u-gradient-mobile-align"
 		style="margin-inline:auto; display:block;"
 	/>
 </div>
@@ -42,11 +41,11 @@
 								>
 									<div class="aw-pricing-cards-item">
 										<header class="aw-pricing-cards-header">
-											<h2 class="aw-label">Free</h2>
+											<h2 class="aw-label">Starter</h2>
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
 											<div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For personal passion projects and non-commercial use
+												For personal passion projects and students.
 											</p>
 											<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary is-full-width u-margin-block-start-32">
 												<span class="aw-sub-body-500">Start building</span>
@@ -78,14 +77,14 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$15</div>
 											<div class="u-margin-block-start-4">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For pro teams and production projects that need to scale
+												For pro developers and teams that need to scale their products.
 											</p>
 											<button class="aw-button is-full-width u-margin-block-start-32" disabled>
 												<span class="aw-sub-body-500">Coming soon</span>
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free plus:</p>
+											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">300GB bandwidth</span></li>
 												<li class=""><span class="">Unlimited projects</span></li>
@@ -124,7 +123,7 @@
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free & Pro, plus:</p>
+											<p>Everything in Starter & Pro, plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">Extra support log retention days</span></li>
 												<li class=""><span class="">Additional org member roles</span></li>
@@ -164,7 +163,7 @@
 									<h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
 								</header>
 								<p class="u-margin-block-start-8">
-									We support OSS companies with a free Pro Plan. Get in touch to find out.
+									We support OSS maintainers with a free Pro Plan. Get in touch to find out.
 								</p>
 								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
 									<span>Contact us</span>
