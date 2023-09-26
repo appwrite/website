@@ -149,9 +149,9 @@
 														>
 															<article>
 																<header class="u-flex u-cross-baseline u-gap-8">
-																	<h3 class="aw-eyebrow aw-u-color-text-primary">
+																	<span class="aw-eyebrow aw-u-color-text-primary">
 																		{parameter.name}
-																	</h3>
+																	</span>
 																	<span class="aw-caption-400">{parameter.type}</span>
 																	{#if parameter.required}
 																		<div class="aw-tag">required</div>
@@ -185,9 +185,9 @@
 														<li>
 															<article>
 																<header class="u-flex u-cross-baseline u-gap-8">
-																	<h3 class="aw-eyebrow aw-u-color-text-primary">
+																	<span class="aw-eyebrow aw-u-color-text-primary">
 																		{response.code}
-																	</h3>
+																	</span>
 																	<span class="aw-caption-400">application/json</span>
 																</header>
 																<ul class="aw-sub-body-400 u-margin-block-start-16">
