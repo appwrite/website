@@ -55,7 +55,7 @@
 		if (carousel.scrollLeft === 0) {
 			isStart = true;
 			isEnd = false;
-		} else if (carousel.scrollLeft + carousel.offsetWidth === carousel.scrollWidth) {
+		} else if (Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth) {
 			isStart = false;
 			isEnd = true;
 		} else {
