@@ -25,7 +25,7 @@ Migrations makes it as easy as a couple clicks to move all of your self-hosted p
 To begin migrating to self-hosted, make sure to read the [migration overview](/docs/advanced/migrations)  
 and [things to keep in mind](#notices) sections above.
 
-1. Navigate to your self-hosted project's console and click on the **Migrations** tab.
+1. Navigate to your self-hosted project's Console and click on the **Migrations** tab.
 
 2. Click **Deploy to cloud**, you will be redirected to Appwrite Cloud.
 

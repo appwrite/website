@@ -265,7 +265,7 @@
 												Continuous improvement
 											</h3>
 											<p class="aw -main-body-400">
-												Towards the end of 2022 we released Appwrite 1.0 and the Console 2.0 for a better developer experience. It was the first time we produced a product, the console, which was fully designed by our in house team. These are the initial versions of the products you know today.
+												Towards the end of 2022 we released Appwrite 1.0 and the Console 2.0 for a better developer experience. It was the first time we produced a product, the Console, which was fully designed by our in house team. These are the initial versions of the products you know today.
 											</p>
 										</div>
 										<div>
@@ -505,7 +505,7 @@
 				<div class="aw-container">
 					<div class="aw-hero aw-u-max-width-380">
 						<h3 class="aw-display aw-u-color-text-primary">Join the team</h3>
-						<p>Find your next career at Appwrite and join a team of remote workers.</p>
+						<p class="aw-u-color-text-primary aw-u-opacity-64">Find your next career at Appwrite and join a team of remote workers.</p>
 						<button class="aw-button is-transparent u-cross-child-center u-margin-block-start-16">
 							<span>Careers</span>
 						</button>

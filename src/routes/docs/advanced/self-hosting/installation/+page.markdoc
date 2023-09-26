@@ -65,22 +65,42 @@ In addition to running Appwrite locally, you can also launch Appwrite using a pr
 
 Choose from one of the providers below:
  
-&nbsp; |Provider | Installation Link
---- | --- | ---
- {% icon icon="digitalocean" /%}| DigitalOcean | [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
- {% icon icon="gitpod" /%}| Gitpod | [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
- {% icon icon="akamai" /%}| Akamai Compute | [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+{% table %}
+* &nbsp;
+* Provider
+* Installation Link
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_light %}
+* DigitalOcean
+* [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_light %}
+* Gitpod
+* [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
+* Akamai Compute
+* [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+{% /table %}
+
 
 ## Next steps {% #next-steps %}
 
 Self-hosting Appwrite gives you more configurable options.
 Make these configurations to unlock the full power of Appwrite.
 
-- [Configure email delivery](#)
-- [Configure SMS delivery](#)
-- [Configure Appwrite Functions](#)
-- [Configure Appwrite Storage](#)
-- [Configure TLS Certificates](#)
+[Configure Appwrite Functions](/docs/advanced/self-hosting/functions)
+
+[Configure email delivery](/docs/advanced/self-hosting/email)
+
+[Configure SMS delivery](/docs/advanced/self-hosting/sms)
+
+[Configure Appwrite Storage](/docs/advanced/self-hosting/storage)
+
+[Configure TLS Certificates](/docs/advanced/self-hosting/tls-certificates)
 
 ## Manual (Docker Compose) {% #manual %}
 
