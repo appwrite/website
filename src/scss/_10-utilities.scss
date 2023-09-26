@@ -16,6 +16,7 @@
 .#{$p}-u-padding-inline-start-24    { padding-inline-start:pxToRem(24)!important; }
 .#{$p}-u-padding-inline-end-12      { padding-inline-end:12px!important; }
 .#{$p}-u-padding-block-0            { padding-block:0!important; }
+.#{$p}-u-padding-block-4            { padding-block:pxToRem(4)!important; }
 .#{$p}-u-padding-block-20            { padding-block:pxToRem(20)!important; }
 .#{$p}-u-padding-block-start-32     { padding-block-start:pxToRem(32)!important; }
 .#{$p}-u-padding-block-start-40     { padding-block-start:pxToRem(40)!important; }
@@ -59,6 +60,7 @@
 .#{$p}-u-max-width-580              { max-inline-size:pxToRem(580); }
 .#{$p}-u-max-width-600              { max-inline-size:pxToRem(600); }
 .#{$p}-u-max-width-610              { max-inline-size:pxToRem(610); }
+.#{$p}-u-max-width-680              { max-inline-size:pxToRem(680); }
 .#{$p}-u-max-width-700              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-800              { max-inline-size:pxToRem(800); }
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
@@ -75,6 +77,7 @@
 .#{$p}-u-inline-width-100-percent-mobile-break1 { @media #{$break1} { inline-size:100%; } }
 .#{$p}-u-max-inline-size-none-mobile { @media #{$break1} { max-inline-size:none;} }
 .#{$p}-u-max-inline-width-584-mobile{ @media #{$break1}, #{$break2} { max-inline-size:pxToRem(584);} }
+.#{$p}-u-margin-inline-20           { margin-inline:pxToRem(20); }
 .#{$p}-u-margin-inline-auto-mobile  { @media #{$break1}, #{$break2} { margin-inline:auto; } }
 
 .#{$p}-u-margin-block-32-mobile     { @media #{$break1} { margin-block:pxToRem(32);} }
