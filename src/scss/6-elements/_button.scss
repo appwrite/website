@@ -185,7 +185,7 @@
         box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
         -webkit-backdrop-filter:blur(pxToRem(8));
         backdrop-filter:blur(pxToRem(8));
-        #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
+       // #{$theme-dark} & { color:hsl(var(--color-neutral-0))!important; }
       }
       &:where(:hover):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
       &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%); }
