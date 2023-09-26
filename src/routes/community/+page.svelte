@@ -144,7 +144,7 @@
 							<div>
 								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
 								<p class="aw-main-body-500 u-margin-block-start-4">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									With every contribution Appwrite gets better for all of us. Start contributing today.
 								</p>
 								<button class="aw-button is-secondary u-margin-block-start-32">
 									<span class="aw-icon-github" aria-hidden="true" />
@@ -168,9 +168,11 @@
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>🚀 Feature: overload Feature for Storage.CreateFile for using Blob instead of File</span
-													>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">
+														<a href="https://github.com/appwrite/appwrite/issues/5748" target="_blank">
+															Feature: overload Feature for Storage.CreateFile for using Blob instead of File
+														</a>
+													</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -192,9 +194,11 @@
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>🚀 Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline</span
-													>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">
+														<a href="https://github.com/appwrite/appwrite/issues/5232" target="_blank">
+															Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline
+														</a>
+													</span>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -216,9 +220,11 @@
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>🚀 Feature: Unit Tests</span
-													>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">
+														<a href="https://github.com/appwrite/sdk-generator/issues/680" target="_blank">
+															Feature: Unit Tests
+														</a>
+													</span>
 													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -240,9 +246,11 @@
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>📚 Documentation: Add inline docs to SDKs</span
-													>
+													<span class="aw-sub-body-500 aw-u-color-text-accent-click">
+														<a href="https://github.com/appwrite/sdk-generator/issues/679" target="_blank">
+															Documentation: Add inline docs to SDKs
+														</a>
+													</span>
 													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
