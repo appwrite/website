@@ -32,7 +32,7 @@
 	}
 </script>
 
-<nav class="aw-side-nav" class:is-transparent={!expandable}>
+<nav class="aw-side-nav">
 	<div class="aw-side-nav-wrapper">
 		<button class="aw-input-text aw-is-not-desktop">
 			<span class="icon-search" />
