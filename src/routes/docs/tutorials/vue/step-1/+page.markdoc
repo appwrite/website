@@ -12,8 +12,6 @@ In this tutorial, you will build Idea Tracker with Appwrite and Vue.
 
 [TODO: Image] 
 
-You can follow along with a fresh repo or [clone the project on GitHub](#).
-
 ## Concepts {% #concepts %}
 
 This tutorial will introduce the following concepts:
@@ -28,4 +26,4 @@ This tutorial will introduce the following concepts:
 ## Prerequisites {% #prerequisites %}
 
 1. Basic knowledge of JavaScript and Vue.
-2. Have [Node.js](#) and [NPM](#) installed on your computer
+2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.

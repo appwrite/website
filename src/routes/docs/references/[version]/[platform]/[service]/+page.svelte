@@ -75,7 +75,7 @@
 			<div class="aw-article-header-end">
 				<div class="u-flex u-gap-24 aw-u-color-text-primary">
 					<div class="u-flex u-cross-center u-gap-8">
-						<label class="u-small" for="platform">Platform</label>
+						<label class="u-small is-not-mobile" for="platform">Platform</label>
 						<div class="aw-select is-colored">
 							<select id="platform" on:change={selectPlatform} value={platform}>
 								<optgroup label="Client">
@@ -93,7 +93,7 @@
 						</div>
 					</div>
 					<div class="u-flex u-cross-center u-gap-8">
-						<label class="u-small" for="version">Version</label>
+						<label class="u-small is-not-mobile" for="version">Version</label>
 						<div class="aw-select is-colored">
 							<select id="version" on:change={selectVersion} value={$page.params.version}>
 								<option value="cloud">Cloud</option>
@@ -250,7 +250,7 @@
 				</ul>
 				<div class="u-sep-block-start aw-u-padding-block-20">
 					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
-						<span class="icon-arrow-up" aria-hidden="true" />
+						<span class="aw-icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>
 				</div>

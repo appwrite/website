@@ -62,7 +62,16 @@
 					href: '/docs/products/databases/pagination'
 				}
 			]
-		}
+		},
+		{
+			label: 'References',
+			items: [
+				{
+					label: 'Databases API',
+					href: '/docs/references/cloud/client-web/databases'
+				},
+			]
+		},
 	];
 </script>
 

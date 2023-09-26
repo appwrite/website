@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { getContext, hasContext } from 'svelte';
-
 	export let href: string;
 	export let title: string;
 
