@@ -56,6 +56,7 @@ jobs:
             git checkout ${{ env.TAG }}
 
             rm -f .env
+            echo "_APP_VERSION=${{ env.TAG }}" >> .env
             echo "_APP_DOMAIN=${{ secrets.STG_APP_DOMAIN }}" >> .env
             echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
             echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
