@@ -9,13 +9,13 @@ Learn how to accept payments and provide subscribers with premium features.
 
 Start by visiting [Stripe](https://stripe.com/) and creating an account. When successful, you will see Stripe Dashboard.
 
-This quick start will use test mode, but the same steps will work for live mode.
+This quick start will use test mode, but the same steps will also work for live mode.
 
 ![Stripe Dashboard screen](/images/docs/functions/quick-start/stripe-dashboard.png)
 
-In the header, you can switch to the **Developers** page, where you can switch to the **API Keys** section. On this page, reveal and copy the **Secret key**. Note it down, as you will need it later when setting the `STRIPE_SECRET_KEY` environment variable.
+In the header, you can switch to the **Developers** page, where you can head to the **API Keys** section. On this page, reveal and copy the **Secret key**. Note it down, as you will need it later when setting the `STRIPE_SECRET_KEY` environment variable.
 
-Next, switch to the **Webhooks** section and click the button to **Add an endpoint**.
+Next, go to the **Webhooks** section and click the button to **Add an endpoint**.
 
 Let's add a fake endpoint for now in order to get a webhook secret. Later, when you set up the Appwrite Function, you will update this endpoint with the Function's endpoint.
 
@@ -37,7 +37,7 @@ Once inside your project overview, switch to the **Functions** page from the lef
 
 ![Appwrite templates screen](/images/docs/functions/quick-start/templates-stripe-subscription.png)
 
-You will be asked to configure Function's **Name**, **Runtime**, and **Function ID**. Feel free to customize those or leave them as is. Click the **Next** button to continue to the environment variables definition.
+You will be asked to configure Function's **Name**, **Runtime**, and **Function ID**. Feel free to customise those or leave them as is. Click the **Next** button to continue to the environment variables definition.
 
 Toggle **Generate API key on completion** in the `APPWRITE_API_KEY` variable, so you don't need to go and generate it manually. Fill the `STRIPE_SECRET_KEY` variable with the key you copied from Stripe's Dashboard under the **API keys** section. Similarly, fill the `STRIPE_WEBHOOK_SECRET` variable with the secret copied after creating **Webhook**. If you are self-hosting Appwrite, you will need to change `APPWRITE_ENDPOINT` as well, under the **Optional variables** section. When done, click the **Next** button.
 
