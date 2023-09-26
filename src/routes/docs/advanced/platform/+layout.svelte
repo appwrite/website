@@ -28,6 +28,10 @@
 					label: 'Webhooks',
 					href: '/docs/advanced/platform/webhooks'
 				},
+				{
+					label: 'Response codes',
+					href: '/docs/advanced/platform/response-codes',
+				}
 			]
 		},
 		{

@@ -22,6 +22,31 @@
 			]
 		},
 		{
+			label: 'Concepts',
+			items: [
+				{
+					label: 'Accounts',
+					href: '/docs/products/auth/accounts'
+				},
+				{
+					label: 'Users',
+					href: '/docs/products/auth/users'
+				},
+				{
+					label: 'Teams',
+					href: '/docs/products/auth/teams'
+				},
+				{
+					label: 'Labels',
+					href: '/docs/products/auth/labels'
+				},
+				{
+					label: 'Security',
+					href: '/docs/products/auth/security'
+				}
+			]
+		},
+		{
 			label: 'Journeys',
 			items: [
 				{
@@ -48,31 +73,6 @@
 					label: 'JWT login',
 					href: '/docs/products/auth/jwt'
 				},
-			]
-		},
-		{
-			label: 'Concepts',
-			items: [
-				{
-					label: 'Accounts',
-					href: '/docs/products/auth/accounts'
-				},
-				{
-					label: 'Users',
-					href: '/docs/products/auth/users'
-				},
-				{
-					label: 'Teams',
-					href: '/docs/products/auth/teams'
-				},
-				{
-					label: 'Labels',
-					href: '/docs/products/auth/labels'
-				},
-				{
-					label: 'Security',
-					href: '/docs/products/auth/security'
-				}
 			]
 		},
 		{
