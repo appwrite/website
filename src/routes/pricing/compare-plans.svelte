@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { Tabs } from '$lib/UI';
 	import { visible } from '$lib/actions/visible';
+	import { isHeaderHidden } from '$lib/layouts/Main.svelte';
 	import { getScrollDir } from '$lib/utils/getScrollDir';
 	import { isVisible } from '$lib/utils/isVisible';
 	import { createAccordion, melt } from '@melt-ui/svelte';
@@ -327,7 +328,7 @@
 
 					<div
 						class="aw-is-only-mobile aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 /u-position-sticky /u-z-index-5"
-						style="/--inset-block-start:2rem"
+						style:--inset-block-start="2rem"
 					>
 						<Tabs bind:tab tabs={cols} let:TabsList>
 							<TabsList
@@ -344,9 +345,9 @@
 					</div>
 
 					<div
-						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative
-						aw-u-padding-block-start-80 aw-u-filter-blur-8 u-position-sticky u-z-index-5"
-						style="--inset-block-start:5rem"
+						class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
+						style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
+						style:transition="inset-block-start 0.3s ease"
 					>
 						<div
 							class="aw-description aw-u-color-text-primary aw-u-cross-child-center"

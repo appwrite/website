@@ -56,7 +56,11 @@
 					</a>
 				{/if}
 				{#if nextStep}
-					<a href={nextStep.href} class="aw-button is-secondary">
+					<a
+						href={nextStep.href}
+						class="aw-button is-secondary"
+						style:margin-left={prevStep ? undefined : 'auto'}
+					>
 						<span class="aw-sub-body-500">
 							Step {nextStep.step}<span class="aw-is-not-mobile">: {nextStep.title}</span>
 						</span>
@@ -171,7 +175,7 @@
 				</ol>
 				<div class="u-sep-block-start u-padding-block-start-20">
 					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
-						<span class="icon-arrow-up" aria-hidden="true" />
+						<span class="aw-icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>
 				</div>

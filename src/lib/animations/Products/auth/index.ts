@@ -56,22 +56,22 @@ const execute = async () => {
 	const { update } = state.reset();
 
 	await Promise.all([
-		safeAnimate(box, { x: 310, y: 32, opacity: 0 }, { duration: 0.5 })?.finished,
+		safeAnimate(box, { x: 310, y: 140, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(code, { x: 200, y: 460, opacity: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(phone, { x: 0, y: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(controls, { x: 420, y: 0, opacity: 0 }, { duration: 0.5 })?.finished
 	]);
 
 	// Start
-	await safeAnimate(box, { y: [48, 32], opacity: 1 }, { duration: 0.25, delay: 1 })?.finished;
+	await safeAnimate(box, { y: [48, 140], opacity: 1 }, { duration: 0.25, delay: 0.25 })?.finished;
 
-	await sleep(150);
+	await sleep(50);
 
 	await write(emailToSet, (v) => update((p) => ({ ...p, email: v })), 300);
-	await sleep(150);
+	await sleep(50);
 
 	await write(passwordToSet, (v) => update((p) => ({ ...p, password: v })), 300);
-	await sleep(500);
+	await sleep(50);
 
 	await safeAnimate(
 		code,
@@ -79,7 +79,7 @@ const execute = async () => {
 		{ duration: 0.25 }
 	)?.finished;
 
-	await sleep(500);
+	await sleep(350);
 
 	update((p) => ({ ...p, submitted: true }));
 

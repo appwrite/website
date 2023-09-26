@@ -54,7 +54,7 @@ appwrite deploy function
 
 The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 
-You can deploy all the databases and collections in your [appwrite.json](#) file by running this command in the folder holding your `appwrite.json` file.
+You can deploy all the databases and collections in your [appwrite.json](/docs/tooling/command-line/deployment#appwrite-json) file by running this command in the folder holding your `appwrite.json` file.
 
 The deploy command will overwrite existing collections causing existing data to be lost. If you already have data in your project, you will need to write your own migration script using a Server SDK instead of using the CLI.
 
@@ -84,7 +84,7 @@ appwrite deploy bucket
 
 ## Conflicts {% #conflicts %}
 
-When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the console.
+When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the Console.
 
 ## The appwrite.json file {% #appwrite-json %}
 
