@@ -57,17 +57,20 @@ services:
         constraints:
           - node.role == manager
 
-  appwrite:
+  homepage:
     image: ghcr.io/appwrite/homepage:$_APP_VERSION
     <<: *x-logging
     networks:
       - cloud
     deploy:
       <<: *x-update-config
-      mode: global
+      mode: replicated
+      replicas: 4
       placement:
         constraints:
           - node.role == worker
+        preferences: 
+          - spread: node.role == worker
       labels:
         - traefik.enable=true
         - traefik.constraint-label-stack=appwrite

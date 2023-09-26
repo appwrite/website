@@ -7,18 +7,10 @@ services:
       - --log.level=DEBUG
       - --api.insecure=true
       - --providers.docker=true
-      - --providers.docker.watch=true
-      - --providers.docker.swarmMode=true
       - --providers.docker.exposedByDefault=false
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
-      - --entrypoints.web.http.redirections.entrypoint.to=websecure
-      - --entrypoints.web.http.redirections.entrypoint.scheme=https
       - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`homepage`)
-      - --certificatesresolvers.myresolver.acme.httpchallenge=true
-      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
-      - --certificatesresolvers.myresolver.acme.email=$_APP_SYSTEM_SECURITY_EMAIL_ADDRESS
-      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/${_APP_DOMAIN}.json
       - --accesslog=true
     ports:
       - 80:80
@@ -38,17 +30,17 @@ services:
     labels:
       - traefik.enable=true
       - traefik.constraint-label-stack=homepage
+      - traefik.docker.network=homepage
       - traefik.http.services.homepage.loadbalancer.server.port=3000
       #http
       - traefik.http.routers.homepage.entrypoints=web
-      - traefik.http.routers.homepage.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
+      - traefik.http.routers.homepage.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage.service=homepage
       # https
       - traefik.http.routers.homepage_secure.entrypoints=websecure
-      - traefik.http.routers.homepage_secure.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
+      - traefik.http.routers.homepage_secure.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage_secure.service=homepage
       - traefik.http.routers.homepage_secure.tls=true
-      - traefik.http.routers.homepage_secure.tls.certresolver=myresolver
   
 networks:
   homepage:
