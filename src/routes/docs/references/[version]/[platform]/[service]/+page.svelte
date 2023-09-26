@@ -250,7 +250,7 @@
 				</ul>
 				<div class="u-sep-block-start aw-u-padding-block-20">
 					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
-						<span class="icon-arrow-up" aria-hidden="true" />
+						<span class="aw-icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>
 				</div>
