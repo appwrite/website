@@ -115,7 +115,7 @@
 			<p class="aw-description u-max-width-600">
 				Follow a quick start guide on your web, mobile, and native frameworks.
 			</p>
-			<ul class="u-flex u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
+			<ul class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
 				<li>
 					<a href="/docs/quick-starts/flutter" class="aw-box-icon">
 						<img
