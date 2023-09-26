@@ -147,7 +147,7 @@
 			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li><a class="aw-link" href="/pricing">Pricing</a></li>
 				<li><a class="aw-link" href="/company">Company</a></li>
-				<li><a class="aw-link" href="/brand">Brand</a></li>
+				<li><a class="aw-link" href="/assets">Brand</a></li>
 				<li><a class="aw-link" href="/careers">Careers</a></li>
 				<li>
 					<a class="aw-link" href="https://store.appwrite.io" target="_blank">Store</a>
