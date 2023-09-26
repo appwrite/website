@@ -361,11 +361,7 @@
 								Messaging
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-<<<<<<< Updated upstream
-								Send email, SMS, push notification and chat messages to your users.
-=======
 								Coming soon.
->>>>>>> Stashed changes
 							</p>
 						</div>
 					</li>

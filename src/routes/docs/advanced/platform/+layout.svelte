@@ -17,7 +17,7 @@
 				}
 			]
 		},
-				{
+		{
 			label: 'Integration',
 			items: [
 				{
