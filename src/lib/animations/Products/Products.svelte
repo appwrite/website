@@ -216,8 +216,7 @@
 							delay: 400
 						}}
 					>
-						Build secure and scalable applications faster with Appwrite's core backend products and
-						spend more time building the best products.
+						Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's development platform.
 					</p>
 				{/if}
 			</div>
