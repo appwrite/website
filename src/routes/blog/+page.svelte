@@ -3,6 +3,8 @@
 	import { MainFooter, FooterNav, Article } from '$lib/components';
 
 	export let data;
+
+	const featured = data.posts.find((post) => post.featured);
 </script>
 
 <Main>
@@ -59,68 +61,71 @@
 		<div class="aw-big-padding-section-level-2 u-position-relative">
 			<div class="aw-container">
 				<h1 class="aw-display aw-u-color-text-primary">Blog</h1>
-				<article class="aw-feature-article u-margin-block-start-48">
-					<div class="aw-feature-article-image">
-						<img src="/images/blog/placeholder.png" class="aw-image-ratio-4/3" alt="cover" />
-					</div>
-					<div class="aw-feature-article-content">
-						<header class="aw-feature-article-header">
-							<ul class="aw-metadata aw-caption-400 aw-is-only-mobile">
-								<li>[data]</li>
-								<li>[time-to-read] min</li>
-							</ul>
-							<h2 class="aw-title aw-u-color-text-primary">Lorem ipsum dolor sit amet</h2>
-						</header>
-						<p class="aw-sub-body-400">
-							Lorem ipsum dolor sit amet consectetur. Mauris eu sit gravida dignissim semper
-							euismod. Imperdiet eget rhoncus eget purus.
-						</p>
-						<div class="aw-author">
-							<div class="u-flex u-cross-center u-gap-8">
-								<img
-									class="aw-author-image"
-									src="/images/blog/placeholder.png"
-									width="24"
-									height="24"
-									alt=""
-								/>
-								<div class="aw-author-info">
-									<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
-									<p class="aw-caption-400 u-hide">Author's role or bio</p>
-									<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-										<li>[data]</li>
-										<li>[time-to-read] min</li>
-									</ul>
+				{#if featured}
+					{@const author = data.authors.find((author) => author.slug === featured.author)}
+					<article class="aw-feature-article u-margin-block-start-48">
+						<a href={featured.href} class="aw-feature-article-image">
+							<img src={featured.cover} class="aw-image-ratio-4/3" alt="cover" />
+						</a>
+						<div class="aw-feature-article-content">
+							<header class="aw-feature-article-header">
+								<ul class="aw-metadata aw-caption-400 aw-is-only-mobile">
+									<li>{featured.timeToRead} min</li>
+								</ul>
+								<a href={featured.href}>
+									<h2 class="aw-title aw-u-color-text-primary">{featured.title}</h2>
+								</a>
+							</header>
+							<p class="aw-sub-body-400">
+								{featured.description}
+							</p>
+							<div class="aw-author">
+								<div class="u-flex u-cross-center u-gap-8">
+									<img
+										class="aw-author-image"
+										src="/images/blog/placeholder.png"
+										width="24"
+										height="24"
+										alt=""
+									/>
+									<div class="aw-author-info">
+										<a href={author?.href} class="aw-sub-body-400 aw-link">{author?.name}</a>
+										<p class="aw-caption-400 u-hide">{author?.bio}</p>
+										<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
+											<li>[data]</li>
+											<li>[time-to-read] min</li>
+										</ul>
+									</div>
 								</div>
+								<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
+									<li>
+										<a
+											href="https://twitter.com/appwrite"
+											class="aw-icon-button"
+											aria-label="Author twitter"
+											target="_blank"
+										>
+											<span class="aw-icon-x" aria-hidden="true" />
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://twitter.com/appwrite"
+											class="aw-icon-button"
+											aria-label="Author LinkedIn"
+											target="_blank"
+										>
+											<span class="aw-icon-linkedin" aria-hidden="true" />
+										</a>
+									</li>
+								</ul>
 							</div>
-							<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label="Author twitter"
-										target="_blank"
-									>
-										<span class="aw-icon-x" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label="Author LinkedIn"
-										target="_blank"
-									>
-										<span class="aw-icon-linkedin" aria-hidden="true" />
-									</a>
-								</li>
-							</ul>
+							<button class="aw-button is-secondary u-margin-block-start-auto">
+								<span>Read article</span>
+							</button>
 						</div>
-						<button class="aw-button is-secondary u-margin-block-start-auto">
-							<span>Read article</span>
-						</button>
-					</div>
-				</article>
+					</article>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -230,9 +235,7 @@
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
 						{#each data.posts as post}
-							{@const author = data.authors.find(
-								(author) => author.slug === post.author
-							)}
+							{@const author = data.authors.find((author) => author.slug === post.author)}
 							{#if author}
 								<Article
 									title={post.title}

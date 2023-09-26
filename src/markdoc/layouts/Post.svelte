@@ -8,6 +8,7 @@
 		author: string;
 		category: string;
 		href: string;
+		featured?: boolean;
 	};
 </script>
 

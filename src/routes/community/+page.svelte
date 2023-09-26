@@ -2,7 +2,6 @@
 	import { Main } from '$lib/layouts';
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
-	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import { Carousel } from '$lib/components';
 </script>
@@ -331,7 +330,9 @@
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
 					<Carousel>
-						<svelte:fragment slot="header">Upcoming Events</svelte:fragment>
+						<svelte:fragment slot="header">
+							<h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
+						</svelte:fragment>
 						<li>
 							<a class="aw-grid-articles-item" href="/discord" target="_blank">
 								<div class="aw-grid-articles-item-image">

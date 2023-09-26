@@ -47,6 +47,7 @@
 			next();
 		}
 	}
+	$: console.log(scroll)
 </script>
 
 <div class="u-flex u-main-space-between u-flex-wrap">

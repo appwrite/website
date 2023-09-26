@@ -347,6 +347,7 @@
 
 					<spline-viewer
 						url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
+						loading="eager"
 						use:viewer
 					/>
 				</div>
@@ -519,8 +520,8 @@
 						<div style:display="grid" style:place-items="center" style:height="100%">
 							<spline-viewer
 								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
-								use:viewer
 								loading="eager"
+								use:viewer
 							/>
 						</div>
 					</div>
