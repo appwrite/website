@@ -18,6 +18,7 @@
 
 		const onLoad = () => {
 			loaded.set(true);
+			node.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
 		};
 
 		node?.addEventListener('load-complete', onLoad);
