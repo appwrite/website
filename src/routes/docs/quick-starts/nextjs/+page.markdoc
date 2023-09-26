@@ -27,7 +27,7 @@ Create a Next.js project.
 npx create-next-app@latest && cd my-app
 ```
 {% /section %}
-{% section #step-3 step=3 title="Install Appwrite" %}
+{% section #step-3 step=3 title="Install Appwrite SDK" %}
 
 Install the JavaScript Appwrite SDK.
 
