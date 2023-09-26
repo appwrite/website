@@ -37,10 +37,10 @@ const execute = async () => {
 	await Promise.all([
 		safeAnimate(phone, { x: 390, y: 0 }, { duration: 0.5 })?.finished,
 		safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
-		safeAnimate(code, { x: 80, y: 460, opacity: 1 }, { duration: 0.5 })?.finished
+		safeAnimate(code, { x: 80, y: 320, opacity: 1 }, { duration: 0.5 })?.finished
 	]);
 
-	await sleep(1000);
+	await sleep(250);
 
 	update((p) => ({
 		...p,
@@ -53,14 +53,14 @@ const execute = async () => {
 			}
 		]
 	}));
-	await sleep(500);
+	await sleep(250);
 
 	update((p) => ({
 		...p,
 		tableSlice: p.tableSlice + 1
 	}));
 
-	await sleep(500);
+	await sleep(250);
 
 	update((p) => ({
 		...p,
@@ -74,7 +74,7 @@ const execute = async () => {
 		]
 	}));
 
-	await sleep(500);
+	await sleep(250);
 
 	update((p) => ({
 		...p,

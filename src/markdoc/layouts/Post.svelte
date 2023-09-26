@@ -8,6 +8,7 @@
 		author: string;
 		category: string;
 		href: string;
+		featured?: boolean;
 	};
 </script>
 
@@ -84,7 +85,7 @@
 												<p class="aw-caption-400">{authorData.role}</p>
 											</div>
 										</a>
-										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
+										<!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
 											{#if authorData.twitter}
 												<li>
 													<a
@@ -124,7 +125,7 @@
 													</a>
 												</li>
 											{/if}
-										</ul>
+										</ul> -->
 									</div>
 								{/if}
 							</header>
@@ -138,13 +139,13 @@
 								<slot />
 							</div>
 						</article>
-						{#if categories?.length}
+						<!-- {#if categories?.length}
 							<div class="u-flex u-gap-16">
 								{#each categories as cat}
 									<a href={cat.href} class="aw-tag">{cat.name}</a>
 								{/each}
 							</div>
-						{/if}
+						{/if} -->
 					</div>
 				</div>
 			</div>

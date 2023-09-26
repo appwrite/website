@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Server Integrations
+title: JWT login
 description: This is the description used for SEO.
 ---
 
-You can extend Appwrite's APIs by building backend apps using [Server SDKs](#). To secure your backend app's APIs, client apps must prove their identity against your backend app before accessing sensitive information. You can secure these APIs and enforce access permissions in your backend app by using JWT authentication.
+You can extend Appwrite's APIs by building backend apps using [Server SDKs](/docs/sdks#server). To secure your backend app's APIs, client apps must prove their identity against your backend app before accessing sensitive information. You can secure these APIs and enforce access permissions in your backend app by using JWT authentication.
 
 If you are already authenticated on your client-side app and need your backend app to **act on behalf of the user**, this guide will walk you through the process.
 
@@ -20,7 +20,7 @@ When you build backend APIs to extend Appwrite's functionality, these APIs shoul
 
 You need to create a session using the Client SDKs **before** generating a JWT. The JWT will be a stateless proof of claim for the identity of the authenticated user and expire after 15 minutes or when the session is deleted.
 
-You can generate a JWT like this:
+You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 
 {% multicode %}
 ```js
@@ -79,6 +79,7 @@ mutation {
 
 Your server application can use the JWT to act on behalf of the user by creating a `Client` instance with the JWT for **each request it receives**. To keep your API secure, **discard the client object** after each request.
 
+Use JWTs tokens like this in a [Server SDK](/docs/sdks#server).
 {% multicode %}
 ```js
 const { Client } = require('node-appwrite');
@@ -364,7 +365,7 @@ Only Kevin's birthday is returned and documents where `user-A` has no permission
 }
 ```
 
-If the same request is made where the Server SDK's `client` is authenticated with an API key instead of a JWT, the results returned will be different.
+If the same request is made where the [Server SDK](/docs/sdks#server)'s `client` is authenticated with an API key instead of a JWT, the results returned will be different.
 
 {% multicode %}
 ```js

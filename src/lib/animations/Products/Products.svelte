@@ -131,7 +131,7 @@
 		remaning: Infinity
 	};
 
-	const animScale: Scale = [0.1, 1];
+	const animScale: Scale = [0.075, 1];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -193,17 +193,15 @@
 >
 	<div class="sticky-wrapper">
 		<!-- <div class="debug">
-			<pre>{JSON.stringify({ active })}</pre>
-			<pre>{JSON.stringify({ scrollInfo })}</pre>
+			<pre>{scrollInfo.percentage}</pre>
 		</div> -->
-
-		{#if scrollInfo.percentage < 0.1}
+		{#if scrollInfo.percentage < 0.075}
 			<div
 				class="main-text"
 				out:fly={{ duration: 250, y: -300 }}
 				in:fly={{ duration: 250, delay: 250, y: -300 }}
 			>
-				{#if scrollInfo.percentage > 0}
+				{#if scrollInfo.percentage > -0.1}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
 					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
@@ -225,7 +223,7 @@
 				class="products"
 				out:fly={{ duration: 250, y: 300 }}
 				in:fly={{ duration: 500, delay: 250, y: 300 }}
-				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
+				data-active={scrollInfo.percentage > 0.075 ? '' : undefined}
 			>
 				<div class="text" id="pd-{$elId}">
 					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
@@ -336,9 +334,8 @@
 <style lang="scss">
 	#products {
 		min-height: 500vh;
-		height: 6000px;
+		height: 5000px;
 		position: relative;
-		padding-block-end: 20rem;
 
 		--debug-bg: transparent;
 
@@ -351,12 +348,6 @@
 		}
 	}
 
-	// .debug {
-	// 	position: absolute;
-	// 	top: 8rem;
-	// 	left: 0;
-	// }
-
 	.sticky-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -367,8 +358,7 @@
 		position: sticky;
 
 		top: 0;
-		min-height: 58rem;
-		height: 100vh;
+		// min-height: 58rem;
 		overflow: hidden;
 
 		padding-inline: 1.25rem;
@@ -443,15 +433,12 @@
 						padding-block-start: 1.5rem;
 					}
 
-					&:not(:last-child)[data-active] {
-						padding-block-end: 4.25rem;
-					}
-
 					transition: 100ms ease;
 
 					&[data-active] {
 						h3 {
 							color: hsl(var(--aw-color-primary));
+							margin-block-end: 0.75rem;
 						}
 					}
 				}
@@ -468,7 +455,6 @@
 
 				h4 {
 					color: hsl(var(--aw-color-primary));
-					margin-block-start: 0.75rem;
 				}
 
 				p {
