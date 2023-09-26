@@ -3,6 +3,7 @@
 		label: string;
 		href: string;
 		icon?: string;
+		isParent?: boolean;
 	};
 
 	export type NavGroup = {
