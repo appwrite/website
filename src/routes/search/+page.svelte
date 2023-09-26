@@ -10,8 +10,8 @@
 		 style="background:hsl(var(--aw-color-black) / 0.3); backdrop-filter:blur(15px);">
 
 		<div class="aw-input-text-search-wrapper aw-u-max-width-680 aw-u-margin-inline-20">
-			<span class="icon-search u-z-index-5" aria-hidden="true" style="inset-block-start:1.25rem" />
-			<input class="aw-input-button aw-u-padding-block-end-0 u-position-relative u-z-index-1" type="search" placeholder="Search"
+			<span class="icon-search u-z-index-5" aria-hidden="true" style="" />
+			<input class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1" type="search" placeholder="Search"
 					style="border-end-start-radius:0; border-end-end-radius:0;">
 			<div class="aw-card is-normal u-overflow-y-auto"
 				 style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem; margin-block-start:-0.0625rem; max-block-size: min(18.75rem, calc(100vh - 5.5rem)); border-block-start-width:0;">
