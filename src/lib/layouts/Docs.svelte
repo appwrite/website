@@ -6,11 +6,13 @@
 	export type DocsLayoutState = {
 		showReferences: boolean;
 		showSidenav: boolean;
+		showSearch: boolean;
 		currentVariant: DocsLayoutVariant | null;
 	};
 	export const layoutState = writable<DocsLayoutState>({
 		showReferences: false,
 		showSidenav: false,
+		showSearch: false,
 		currentVariant: null
 	});
 	export function toggleReferences() {
@@ -33,8 +35,6 @@
 	import Search from '$lib/components/Search.svelte';
 
 	export let variant: DocsLayoutVariant = 'default';
-
-	let search: boolean = false;
 
 	const variantClasses: Record<DocsLayoutVariant, string> = {
 		default: 'aw-grid-side-nav aw-container u-padding-inline-0',
@@ -121,7 +121,10 @@
 							</ul>
 						</nav>
 						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-button aw-u-flex-basis-400" on:click={() => (search = true)}>
+							<button
+								class="aw-input-button aw-u-flex-basis-400"
+								on:click={() => ($layoutState.showSearch = true)}
+							>
 								<span class="icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
@@ -170,4 +173,4 @@
 	</div>
 </div>
 
-<Search bind:open={search} />
+<Search bind:open={$layoutState.showSearch} />
