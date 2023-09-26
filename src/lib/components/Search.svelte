@@ -51,7 +51,7 @@
 	}
 
 	function createHref(hit: Hit<Props>): string {
-		const anchor = hit.anchor === '#' ? '' : hit.anchor;
+		const anchor = hit.anchor === '#' ? '' : hit.anchor ?? '';
 		const target = new URL(hit.url + anchor);
 
 		return target.toString();
