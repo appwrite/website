@@ -49,8 +49,7 @@
 
 		<h2>See your products grow</h2>
 		<p>
-			Keep track of your projects progress and see them grow into products users love and use every
-			day.
+			Keep track of your projects progress on the Appwrite Console and see them grow into products users love and use every day.
 		</p>
 	</div>
 </div>
