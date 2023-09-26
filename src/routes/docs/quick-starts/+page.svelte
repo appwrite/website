@@ -18,7 +18,7 @@
 			title: 'Web App',
 			quickStarts: [
 				{
-					title: 'Next.js',
+					title: 'React.js',
 					icon: 'icon-next_js',
 					image: '/images/blog/placeholder.png',
 					href: 'nextjs'
@@ -35,24 +35,6 @@
 					image: '/images/blog/placeholder.png',
 					href: 'sveltekit'
 				},
-				{
-					title: 'Nuxt',
-					icon: 'icon-nuxt_js',
-					image: '/images/blog/placeholder.png',
-					href: 'nuxt'
-				},
-				{
-					title: 'Angular',
-					icon: 'icon-angular',
-					image: '/images/blog/placeholder.png',
-					href: 'angular'
-				},
-				{
-					title: 'Astro',
-					icon: 'icon-astro',
-					image: '/images/blog/placeholder.png',
-					href: 'astro'
-				}
 			]
 		},
 		{
@@ -74,7 +56,32 @@
 		},
 		{
 			title: 'Server',
-			quickStarts: []
+			quickStarts: [
+				{
+					title: 'Node.js',
+					icon: 'icon-node',
+					image: '/images/blog/placeholder.png',
+					href: 'node'
+				},
+				{
+					title: 'Python',
+					icon: 'icon-python',
+					image: '/images/blog/placeholder.png',
+					href: 'python'
+				},
+				{
+					title: '.NET',
+					icon: 'icon-dotnet',
+					image: '/images/blog/placeholder.png',
+					href: 'dotnet'
+				},
+				{
+					title: 'Dart',
+					icon: 'icon-dart',
+					image: '/images/blog/placeholder.png',
+					href: 'dart'
+				}
+			]
 		}
 	];
 </script>

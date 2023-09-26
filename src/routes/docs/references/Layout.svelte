@@ -70,7 +70,7 @@
 			items: [
 				{
 					label: 'Response codes',
-					href: '/docs/references/response-codes',
+					href: '/docs/advanced/platform/response-codes',
 				}
 			]
 		},
