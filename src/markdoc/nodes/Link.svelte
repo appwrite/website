@@ -1,9 +1,6 @@
 <script lang="ts">
-	import type { HTMLTdAttributes } from "svelte/elements";
-
 	export let href: string;
 	export let title: string;
-	export let inline: HTMLTdAttributes['width'] = undefined;
 
 	const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
 	const target = isExternal ? '_blank' : undefined;
