@@ -19,7 +19,12 @@ flutter create my_app && cd my_app
 {% section #step-2 step=2 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
+{% only_dark %}
+![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
@@ -155,8 +160,12 @@ flutter pub add appwrite
 {% section #step-4 step=4 title="Import Appwrite" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
-
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 This imports and initializes Appwrite.
 

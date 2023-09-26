@@ -9,13 +9,23 @@ step: 3
 
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
+{% only_dark %}
+![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -23,7 +33,12 @@ You can skip optional steps.
 
 To use Appwrite in our Svelte app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 
 Create a new file `src/lib/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.

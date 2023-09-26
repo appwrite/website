@@ -22,7 +22,12 @@ Choose a directory for your project in and click **Create** to create your proje
 {% section #step-2 step=2 title="Create Appwrite project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
+{% only_dark %}
+![Create project screen](/images/docs/databases/quick-start/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
@@ -30,7 +35,12 @@ Then, under **Add a platform**, add an **Apple app**. Choose any of **iOS**, **m
 
 Add your app's **product name** and **bundle identifier**, your bundle identifier is the one entered when creating an Xcode project. For existing projects, you should use the **bundle identifier** from your project files **Identity** section.
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -80,8 +90,12 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 {% section #step-4 step=4 title="Create Appwrite Singleton" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
-
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 Create a new file `Appwrite.swift` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 
 ```swift
