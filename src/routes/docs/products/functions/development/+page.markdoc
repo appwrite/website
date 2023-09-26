@@ -419,10 +419,10 @@ You'll find these properties in the context object.
 
 | Property | Description                                                                                                              |
 |----------|--------------------------------------------------------------------------------------------------------------------------|
-| req      | Contains request information like method, body, and headers. See full examples [here](#).                                     |
-| res      | Contains methods to build a response and return information. See full examples [here](#).                                     |
-| log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [here](#). |
-| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [here](#).    |
+| req      | Contains request information like method, body, and headers. See full examples [in the request section](#request).                                     |
+| res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                     |
+| log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
+| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
 #### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 
@@ -683,7 +683,7 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
 | `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
 | `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
-| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](#).  |
+| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt).  |
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
@@ -928,7 +928,7 @@ namespace runtime {
 ```
 {% /multicode %}
 
-To get the different response types, set one of the following query parameters in the [generated domain](#) of your function.
+To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/deployment#domains) of your function.
 
 | Type     | Query Param     | Example                                                     |
 |----------|-----------------|-------------------------------------------------------------|
@@ -1088,12 +1088,13 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-## Accessing Environment Variables {% #environment-variables %} 
+## Accessing environment variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 Environmental variables can be global, or function-specific.
 
-> ### Appwrite API keys
-> If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
+{% info title="Appwrite API keys" %}
+If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
+{% /info %}
 
 | Variable                          | Description                                    |
 |-----------------------------------|------------------------------------------------|
@@ -1218,28 +1219,89 @@ namespace runtime {
 ## Dependencies {% #dependencies %} 
 Your function's dependencies should be managed by the package manager of each language. 
 By default, we include the following package managers in each runtime.
-| Language | Package Manager | Commands              |                                    |
-|----------|-----------------|-----------------------|------------------------------------|
-|     [TODO]        | Node.js         | npm                   | npm install                        |
-|     [TODO]        | PHP             | Composer              | composer install                   |
-|     [TODO]        | Python          | pip                   | pip install -r requirements.txt    |
-|     [TODO]        | Ruby            | Bundler               | bundle install                     |
-|     [TODO]        | Deno            | deno                  | deno cache <ENTRYPOINT_FILE>       |
-|     [TODO]        | Dart            | pub                   | pub get                            |
-|     [TODO]        | Swift           | Swift Package Manager | swift package resolve              |
-|     [TODO]        | .NET            | NuGet                 | dotnet restore                     |
-|     [TODO]        | Kotlin          | Gradle                | N/A                                |
-|     [TODO]        | Java            | Gradle                | N/A                                |
-|     [TODO]        | C++             | None                  | N/A                                |
+
+{% table %}
+* &nbsp; {% width=80 %}
+* Language
+* Package Manager
+* Commands
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+* Node.js
+* NPM
+* `npm install`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+* PHP
+* Composer
+* `composer install`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+* Python
+* pip
+* `pip install -r requirements.txt`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+* Ruby
+* Bundler
+* bundle install
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+* Deno
+* deno
+* `deno cache <ENTRYPOINT_FILE>`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+* Dart
+* pub
+* `pub get`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+* Swift
+* Swift Package Manager
+* `swift package resolve`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+* .NET
+* NuGet
+* `dotnet restore`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+* Kotlin
+* Gradle
+* N/A
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
+* Java
+* Gradle
+* N/A
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
+* C++
+* None
+* N/A
+{% /table %}
+
 
 To install your dependencies before your function is built, you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 
 ## Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
 Authenticating with Appwrite is done via an API key or a JWT token. 
-API keys must be generated and exported as an [environment variable](#).
+API keys must be generated and exported as an [environment variable](/docs/advanced/self-hosting/environment-variables).
 
-You can read more about authentication in the [Server authentication](#) section of the docs.
+You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
 ### Using with API key {% #using-api-key %} 
 API keys have defined scopes when you create them. 
@@ -2124,10 +2186,10 @@ You will have to migrate your old functions to follow new runtime syntax.
 
 Here's a checklist of things you need to know.
 
-1. The parameter passed into functions has changed. `req` and `res` has been replaced by `context`, which contains new logger methods. [Learn about context](#).
-2. To improve privacy and logging reliability, we provide new `context.log()` and `context.error()` functions. You can no longer use native logging methods. [Learn about logging](#).
-3. The old way of `req.variables` has been deprecated. You can now access variables passed into each function as environment variables. [Learn about environment variables](#).
-4. The `req` object has been updated to use terminology consistent with typical HTTP concepts. You'll now find familiar concepts like headers, body, HTTP methods, and others. [Learn about request](#).
-5. The response object has been updated. You can now specify headers, as well as use new methods like return redirects or empty responses. [Learn about response](#).
-6. Now, you must return a response such as return `context.res.send("")`. This prevents confusing errors when functions are terminated prematurely before a response is sent. [Learn about response](#).
+1. The parameter passed into functions has changed. `req` and `res` has been replaced by `context`, which contains new logger methods. [Learn about context](/docs/products/functions/development#context-object).
+2. To improve privacy and logging reliability, we provide new `context.log()` and `context.error()` functions. You can no longer use native logging methods. [Learn about logging](/docs/products/functions/development#logging).
+3. The old way of `req.variables` has been deprecated. You can now access variables passed into each function as environment variables. [Learn about environment variables](/docs/products/functions/development#environment-variables).
+4. The `req` object has been updated to use terminology consistent with typical HTTP concepts. You'll now find familiar concepts like headers, body, HTTP methods, and others. [Learn about request](/docs/products/functions/development#request).
+5. The response object has been updated. You can now specify headers, as well as use new methods like return redirects or empty responses. [Learn about response](/docs/products/functions/development#response).
+6. Now, you must return a response such as return `context.res.send("")`. This prevents confusing errors when functions are terminated prematurely before a response is sent. [Learn about response](/docs/products/functions/development#response).
 7. Some variables about how a function was triggered are now found in the context.req object as headers.

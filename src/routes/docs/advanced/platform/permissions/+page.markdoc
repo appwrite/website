@@ -12,7 +12,7 @@ As the name suggests, read permission allows a user to read a resource, create a
 
 All permissions can be granted to individuals or groups of users, entire teams, or only to team members with a specific role. Permission can also be granted based on authentication status, such as to all users, only authenticated users, or only guest users.
 
-A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](#) to achieve this functionality.
+A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](/docs/sdks#server) to achieve this functionality.
 
 ## Appwrite Resource
 
@@ -55,13 +55,13 @@ In Client and Server SDKs, you will find a **Role** class with helper methods fo
 | `Role.team([TEAM_ID])` | Grants access to any member of the specific team. To gain access to this permission, the user must be the team creator (owner), or receive and accept an invitation to join this team. |
 | `Role.team([TEAM_ID], [ROLE])` | Grants access to any member who possesses a specific role in a team. To gain access to this permission, the user must be a member of the specific team and have the given role assigned to them. Team roles can be assigned when inviting a user to become a team member. |
 | `Role.member([MEMBERSHIP_ID])` | Grants access to a specific member of a team. When the member is removed from the team, they will no longer have access. |
-| `Role.label([LABEL_ID])` | Grants access to all accounts with a specific label ID. Once the label is removed from the user, they will no longer have access. [Learn more about labels](/docs/products/auth/user-management#labels). |
+| `Role.label([LABEL_ID])` | Grants access to all accounts with a specific label ID. Once the label is removed from the user, they will no longer have access. [Learn more about labels](/docs/products/auth/labels). |
 
 ## Examples
 
 The examples below will show you how you can use the different Appwrite permissions to manage access control to your project resources.
 
-The following examples are using the [Appwrite Web SDK](https://github.com/appwrite/sdk-for-js) but can be applied similarly to any of the other [Appwrite SDKs](/docs/sdks).
+The following examples are using the [Appwrite Web SDK](https://github.com/appwrite/sdk-for-web) but can be applied similarly to any of the other [Appwrite SDKs](/docs/sdks).
 
 ### Example #1 - Basic usage
 

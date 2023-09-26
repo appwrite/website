@@ -1,3 +1,19 @@
+<script lang="ts">
+	import type { Action } from 'svelte/action';
+	const accordion: Action<HTMLButtonElement> = (node) => {
+		const callback = () => {
+			node.classList.toggle('is-open');
+		};
+		node.addEventListener('click', callback);
+
+		return {
+			destroy() {
+				node.removeEventListener('click', callback);
+			}
+		};
+	};
+</script>
+
 <nav class="aw-footer-nav u-margin-block-start-100 u-position-relative aw-u-sep-block-start">
 	<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
 	<ul class="aw-footer-nav-main-list">
@@ -5,7 +21,7 @@
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">
 				Quick starts
 			</h5>
-			<button class="aw-footer-nav-button aw-is-only-mobile">
+			<button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">Quick starts</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
@@ -31,7 +47,7 @@
 					<a class="aw-link" href="/docs/quick-starts/nextjs">Next.js</a>
 				</li>
 				<li>
-					<a class="aw-link" href="/docs/quick-starts/vuejs">Vue.js</a>
+					<a class="aw-link" href="/docs/quick-starts/vue">Vue.js</a>
 				</li>
 				<li>
 					<a class="aw-link" href="/docs/quick-starts/sveltekit">SvelteKit</a>
@@ -58,7 +74,7 @@
 		</li>
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Products</h5>
-			<button class="aw-footer-nav-button aw-is-only-mobile">
+			<button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">Products</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
@@ -115,19 +131,10 @@
 				</svg>
 			</button>
 			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
-				<li>
-					<a class="aw-link" href="/docs">Docs</a>
-				</li>
-				<li>
-					<a class="aw-link" href="/community">Community</a>
-				</li>
+				<li><a class="aw-link" href="/docs">Docs</a></li>
 				<li><a class="aw-link" href="/blog">Blog</a></li>
-				<li><a class="aw-link" href="/roadmap">Roadmap</a></li>
-				<li>
-					<a class="aw-link" href="https://github.com/appwrite/appwrite/releases" target="_blank"
-						>Changelog</a
-					>
-				</li>
+				<li><a class="aw-link" href="/community">Community</a></li>
+				<li><a class="aw-link" href="/heroes">Heroes</a></li>
 				<li>
 					<a class="aw-link" href="https://status.appwrite.io" target="_blank">Status</a>
 				</li>
@@ -135,7 +142,7 @@
 		</li>
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">About</h5>
-			<button class="aw-footer-nav-button is-open aw-is-only-mobile">
+			<button class="aw-footer-nav-button is-open aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">About</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
@@ -156,12 +163,11 @@
 			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li><a class="aw-link" href="/pricing">Pricing</a></li>
 				<li><a class="aw-link" href="/company">Company</a></li>
-				<li><a class="aw-link" href="/careers">Careers</a></li>
+				<li><a class="aw-link" href="https://careers.appwrite.io/" target="_blank">Careers</a></li>
 				<li><a class="aw-link" href="/heroes">Heroes</a></li>
 				<li>
 					<a class="aw-link" href="https://store.appwrite.io" target="_blank">Store</a>
 				</li>
-				<li><a class="aw-link" href="/brand">Brand</a></li>
 				<li>
 					<a class="aw-link" href="/contact-us">Contact us</a>
 				</li>
@@ -169,7 +175,7 @@
 		</li>
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Policies</h5>
-			<button class="aw-footer-nav-button aw-is-only-mobile">
+			<button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">Policies</span>
 				<svg
 					class="aw-footer-nav-button-arrow"

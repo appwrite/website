@@ -162,7 +162,7 @@
 .#{$p}-u-grid-auto-column-1fr {
   display:grid; grid-auto-flow:column; grid-auto-columns:1fr;
   &.is-with-footer-border {
-    padding-block-end:40px;
+    padding-block:40px;
     &::after {
       content:""; display:block; block-size:pxToRem(1);
       inline-size:200vw; position:absolute; inset-inline-start:-500px; inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));

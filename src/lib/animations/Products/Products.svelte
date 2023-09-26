@@ -27,14 +27,15 @@
 				inactive: './images/icons/illustrated/dark/auth-transparent.png'
 			},
 			title: 'Auth',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Secure login for all users',
+			description: 'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
 			features: [
-				'Two-Factor Authentication support',
 				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Support for teams, roles and user labels',
+				'Rate-limits and advanced user protection',
+				'Custome SMTP and email templates'
 			],
-			shot: './images/products/Auth.svg'
+			shot: './images/products/auth.png'
 		},
 		databases: {
 			icon: {
@@ -42,26 +43,17 @@
 				inactive: './images/icons/illustrated/dark/databases-transparent.png'
 			},
 			title: 'Databases',
-			subtitle: 'Store, query and manage your data',
+			subtitle: 'Store, query and manage data',
 			description:
-				'Store, query and manage access to your app’s data in real-time with a robust and scalable database.',
-			features: ['Relationships are a big deal'],
-			shot: './images/products/Databases.svg'
-		},
-		storage: {
-			icon: {
-				active: './images/icons/illustrated/dark/storage.png',
-				inactive: './images/icons/illustrated/dark/storage-transparent.png'
-			},
-			title: 'Storage',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+				'Scalable and robust database backed by your favorite technologies.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Never paused',
+				'Fast in-memory caching',
+				'Advanced permission models',
+				'Custom data validation',
+				'Relationships support',
 			],
-			shot: './images/products/Storage.svg'
+			shot: './images/products/databases.png'
 		},
 		functions: {
 			icon: {
@@ -69,14 +61,30 @@
 				inactive: './images/icons/illustrated/dark/functions-transparent.png'
 			},
 			title: 'Functions',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Customize and extend your backend',
+			description: 'Deploy and scale serverless functions in secure, isolated runtimes.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Automatic deployment from GitHub',
+				'Trigger using GitHub, CLI, Event Listeners or HTTP requests',
+				'Support for 30+ runtimes in 13 languages',
+				'Custom domain support'
 			],
-			shot: './images/products/Functions.svg'
+			shot: './images/products/functions.png'
+		},
+		storage: {
+			icon: {
+				active: './images/icons/illustrated/dark/storage.png',
+				inactive: './images/icons/illustrated/dark/storage-transparent.png'
+			},
+			title: 'Storage',
+			subtitle: 'Upload and manage files',
+			description: 'Securely store files with advanced compression, encryption and image transformations.',
+			features: [
+				'File encryption at rest and transit',
+				'Built-in image transformation capabilities',
+				'Advanced compression with WebP/Brotli support'
+			],
+			shot: './images/products/storage.png'
 		},
 		realtime: {
 			icon: {
@@ -84,14 +92,14 @@
 				inactive: './images/icons/illustrated/dark/realtime-transparent.png'
 			},
 			title: 'Realtime',
-			subtitle: 'Secure login for all your users',
-			description: 'Sign in users with multiple OAuth providers and multi factor authentication.',
+			subtitle: 'Realtime events for every service',
+			description: 'Subscribe and react to any Appwrite event using the Realtime API.',
 			features: [
-				'Two-Factor Authentication support',
-				'30+ login methods',
-				'State-of-the-art password hashing support'
+				'Unlimited subscriptions',
+				'Built-in permission management',
+				'Support for DBs, Auth, Storage & Functions',
 			],
-			shot: './images/products/Realtime.svg'
+			shot: './images/products/realtime.png'
 		}
 	};
 </script>
@@ -123,7 +131,7 @@
 		remaning: Infinity
 	};
 
-	const animScale: Scale = [0.1, 1];
+	const animScale: Scale = [0.075, 1];
 	const productsScales = products.map((_, idx) => {
 		const diff = animScale[1] - animScale[0];
 		const step = diff / products.length;
@@ -185,17 +193,15 @@
 >
 	<div class="sticky-wrapper">
 		<!-- <div class="debug">
-			<pre>{JSON.stringify({ active })}</pre>
-			<pre>{JSON.stringify({ scrollInfo })}</pre>
+			<pre>{scrollInfo.percentage}</pre>
 		</div> -->
-
-		{#if scrollInfo.percentage < 0.1}
+		{#if scrollInfo.percentage < 0.075}
 			<div
 				class="main-text"
 				out:fly={{ duration: 250, y: -300 }}
 				in:fly={{ duration: 250, delay: 250, y: -300 }}
 			>
-				{#if scrollInfo.percentage > 0}
+				{#if scrollInfo.percentage > -0.1}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
 					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
@@ -208,8 +214,7 @@
 							delay: 400
 						}}
 					>
-						Build secure and scalable applications faster with Appwrite's core backend products and
-						spend more time building the best products.
+						Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's development platform.
 					</p>
 				{/if}
 			</div>
@@ -218,7 +223,7 @@
 				class="products"
 				out:fly={{ duration: 250, y: 300 }}
 				in:fly={{ duration: 500, delay: 250, y: 300 }}
-				data-active={scrollInfo.percentage > 0.1 ? '' : undefined}
+				data-active={scrollInfo.percentage > 0.075 ? '' : undefined}
 			>
 				<div class="text" id="pd-{$elId}">
 					<ScrollIndicator percentage={toScale(scrollInfo.percentage, animScale, [0, 1])} />
@@ -329,9 +334,8 @@
 <style lang="scss">
 	#products {
 		min-height: 500vh;
-		height: 6000px;
+		height: 5000px;
 		position: relative;
-		padding-block-end: 20rem;
 
 		--debug-bg: transparent;
 
@@ -344,12 +348,6 @@
 		}
 	}
 
-	// .debug {
-	// 	position: absolute;
-	// 	top: 8rem;
-	// 	left: 0;
-	// }
-
 	.sticky-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -360,8 +358,7 @@
 		position: sticky;
 
 		top: 0;
-		min-height: 58rem;
-		height: 100vh;
+		// min-height: 58rem;
 		overflow: hidden;
 
 		padding-inline: 1.25rem;
@@ -436,15 +433,12 @@
 						padding-block-start: 1.5rem;
 					}
 
-					&:not(:last-child)[data-active] {
-						padding-block-end: 4.25rem;
-					}
-
 					transition: 100ms ease;
 
 					&[data-active] {
 						h3 {
 							color: hsl(var(--aw-color-primary));
+							margin-block-end: 0.75rem;
 						}
 					}
 				}
@@ -461,7 +455,6 @@
 
 				h4 {
 					color: hsl(var(--aw-color-primary));
-					margin-block-start: 0.75rem;
 				}
 
 				p {

@@ -21,6 +21,7 @@ export function load() {
 			return {
 				title: frontmatter.title,
 				description: frontmatter.description,
+				featured: frontmatter?.featured ?? false,
 				date: new Date(frontmatter.date),
 				cover: frontmatter.cover,
 				timeToRead: frontmatter.timeToRead,
@@ -33,22 +34,21 @@ export function load() {
 			return b.date.getTime() - a.date.getTime();
 		});
 
-	const authors = Object.entries(authorsGlob).map(([_filepath, authorList]) => {
+	const authors = Object.values(authorsGlob).map((authorList) => {
 		const { frontmatter } = authorList as {
 			frontmatter: AuthorData;
 		};
 
-		const name = frontmatter.id ?? frontmatter.name.toLowerCase().replace(' ', '-');
-
 		return {
 			name: frontmatter.name,
+			slug: frontmatter.slug,
 			role: frontmatter.role,
 			avatar: frontmatter.avatar,
 			bio: frontmatter.bio,
 			twitter: frontmatter.twitter,
 			linkedin: frontmatter.linkedin,
 			github: frontmatter.github,
-			href: `${base}/blog/author/${name}`
+			href: `${base}/blog/author/${frontmatter.slug}`
 		};
 	});
 

@@ -1,14 +1,20 @@
+import 'dotenv/config';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { preprocessMeltUI } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import sequence from 'svelte-sequential-preprocessor';
-import adapter from '@sveltejs/adapter-static';
+import staticAdapter from '@sveltejs/adapter-static';
+import nodeAdapter from '@sveltejs/adapter-node';
 
 function absoulute(path) {
 	return join(dirname(fileURLToPath(import.meta.url)), path);
 }
+
+const isVercel = process.env.VERCEL === '1';
+
+const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -34,16 +40,12 @@ const config = {
 	]),
 	extensions: ['.markdoc', '.svelte', '.md'],
 	kit: {
-		adapter: adapter(),
+		adapter,
 		alias: {
 			$routes: './src/routes',
 			$scss: './src/scss',
 			$appwrite: './node_modules/@appwrite.io/repo',
 			$markdoc: './src/markdoc'
-		},
-		prerender: {
-			handleHttpError: 'warn',
-			handleMissingId: 'warn'
 		}
 	}
 };

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Functions
+title: Overview
 description: [TODO]
 difficulty: beginner
 readtime: 3
@@ -16,6 +16,6 @@ Each function will have its own URL, execute in its own isolated container, and 
 Appwrite Functions let you build anything you can imagine, but this flexibility makes it difficult to know where to start. 
 Start exploring by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/function/quick-start)
+[Quick start {% icon icon="cheveron-right" /%}](/docs/products/functions/quick-start)
 
 ![](https://appwrite.io/images-ee/docs/functions-starter-dark.png)
