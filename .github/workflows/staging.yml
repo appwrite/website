@@ -1,0 +1,78 @@
+name: Staging deployment
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: appwrite/homepage
+  TAG: ${{ github.sha }}
+  STACK_FILE: docker-stack.yml
+  NAMESPACE: homepage
+  REPOSITORY: homepage
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          build-args: |
+            VERSION=${{ env.TAG }}
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.STG_SSH_HOST }}
+          username: ${{ secrets.STG_SSH_USERNAME }}
+          key: ${{ secrets.STG_SSH_KEY }}
+          script: |
+            url="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/appwrite/${{ env.REPOSITORY }}.git"
+            if ! git clone "${url}" "${{ env.REPOSITORY }}" 2>/dev/null && [ -d "${{ env.REPOSITORY }}" ] ; then
+                echo "Clone failed because the folder ${{ env.REPOSITORY }} exists"
+            fi
+
+            cd ${{ env.REPOSITORY }}
+            git reset --hard HEAD
+            git remote set-url origin $url
+            git fetch origin
+            git checkout ${{ env.TAG }}
+
+            rm -f .env
+            echo "_APP_ENV=${{ secrets.STG_APP_ENV }}" >> .env
+            echo "_APP_VERSION=${{ env.TAG }}" >> .env
+            echo "_APP_DOMAIN=${{ secrets.STG_APP_DOMAIN }}" >> .env
+            echo "_APP_MAILGUN_DOMAIN=${{ secrets._APP_MAILGUN_DOMAIN }}" >> .env
+            echo "_APP_MAILGUN_KEY=${{ secrets._APP_MAILGUN_KEY }}" >> .env
+            echo "_APP_SMTP_PASSWORD=${{ secrets._APP_SMTP_PASSWORD }}" >> .env
+            echo "_APP_SMTP_USERNAME=${{ secrets._APP_SMTP_USERNAME }}" >> .env
+            echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets._APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
+            echo "_APP_HOMERUN_API_KEY=${{ secrets._APP_HOMERUN_API_KEY }}" >> .env
+            echo "_APP_LOGGING_PROVIDER=${{ secrets._APP_LOGGING_PROVIDER }}" >> .env
+            echo "_APP_LOGGING_CONFIG=${{ secrets._APP_LOGGING_CONFIG }}" >> .env
+            echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
+
+            echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ github.actor }} --password-stdin
+            docker-compose -f ${{ env.STACK_FILE }} config
+            docker stack deploy --with-registry-auth -c <(docker-compose -f ${{ env.STACK_FILE }} config) ${{ env.NAMESPACE }}
