@@ -86,7 +86,7 @@
 								/>
 								<div class="aw-author-info">
 									<h4 class="aw-sub-body-400 aw-u-color-text-primary">Author’s name</h4>
-									<p class="aw-caption-400 u-hide">Author’s role or bio</p>
+									<p class="aw-caption-400 u-hide">Author's role or bio</p>
 									<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
 										<li>[data]</li>
 										<li>[time-to-read] min</li>
@@ -231,7 +231,7 @@
 					<ul class="aw-grid-articles">
 						{#each data.posts as post}
 							{@const author = data.authors.find(
-								(author) => author.name.toLowerCase() === post.author.toLowerCase()
+								(author) => author.slug === post.author
 							)}
 							{#if author}
 								<Article

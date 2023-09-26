@@ -13,7 +13,7 @@ We're always working on improving and extending the current stack of available p
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
 {% table %}
-* &nbsp; {% width=80 %}
+* &nbsp; {% width=48 %}
 * Platform
 * GitHub Repository
 * &nbsp; {% width=80 %}
@@ -48,7 +48,7 @@ Client libraries for integrating with Appwrite to build client-based application
 Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick starts](/docs/quick-starts) guides for your language/runtime of choice to start building your first server integration.
 
 {% table %}
-* &nbsp; {% width=80 %}
+* &nbsp; {% width=48 %}
 * Platform
 * GitHub Repository
 * &nbsp; {% width=80 %}

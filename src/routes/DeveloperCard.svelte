@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let name: string;
 	export let tag: string;
-	export let icon: 'x' | 'linkedin' | 'discord';
+	export let icon: 'x' | 'linkedin' | 'discord' | 'product-hunt';
 	export let avatarSrc: string;
 </script>
 

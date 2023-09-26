@@ -72,7 +72,7 @@
 				{
 					label: 'GraphQL',
 					href: '/docs/apis/graphql',
-					icon: 'icon-play'
+					icon: 'icon-graphql'
 				}
 			]
 		},

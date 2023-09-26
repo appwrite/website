@@ -28,6 +28,10 @@
 					label: 'Webhooks',
 					href: '/docs/advanced/platform/webhooks'
 				},
+				{
+					label: 'Response codes',
+					href: '/docs/advanced/platform/response-codes',
+				}
 			]
 		},
 		{
@@ -56,7 +60,7 @@
 				},
 				{	
 					label: 'Email and SMS templates',
-					href: '/docs/advanced/platform/email-sms-templates'
+					href: '/docs/advanced/platform/message-templates'
 				},
 			]
 		},
