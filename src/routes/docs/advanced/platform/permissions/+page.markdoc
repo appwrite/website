@@ -12,7 +12,7 @@ As the name suggests, read permission allows a user to read a resource, create a
 
 All permissions can be granted to individuals or groups of users, entire teams, or only to team members with a specific role. Permission can also be granted based on authentication status, such as to all users, only authenticated users, or only guest users.
 
-A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](#) to achieve this functionality.
+A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](/docs/sdks#server) to achieve this functionality.
 
 ## Appwrite Resource
 

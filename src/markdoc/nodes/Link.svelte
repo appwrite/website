@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { getContext, hasContext } from 'svelte';
-
 	export let href: string;
 	export let title: string;
 
@@ -11,7 +9,7 @@
 
 <a class="aw-link" {href} {title} {target} {rel}>
 	<slot />
-	{#if isExternal}
-		<!-- <span class="icon-cheveron-right" /> -->
+	{#if !isExternal}
+	<!-- <span class="icon-cheveron-right" /> -->
 	{/if}
 </a>
