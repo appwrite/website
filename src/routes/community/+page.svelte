@@ -18,8 +18,8 @@
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Inspire and get inspired. Join our community of maintainers and contributors
-								and help us make Appwrite better for developers all around the world.
+								Inspire and get inspired. Join our community of maintainers and contributors 
+								and help us make Appwrite better for developers worldwide.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
 								<a href="/discord" target="_blank" class="aw-button is-full-width-mobile">
@@ -102,7 +102,7 @@
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Appwrite improves daily thanks to our diverse, inspiring contributors. They come from various backgrounds and experience levels, welcoming anyone to join and help us excel.
+								See contributors of Appwrite since 2019 and discover how you can start contributing. 
 							</p>
 							<div class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32">
 								<a href="https://github.com/appwrite/appwrite/graphs/contributors" target="_blank" class="aw-button is-secondary is-full-width-mobile">
@@ -124,7 +124,7 @@
 						</h2>
 						<div class="">
 							<p class="aw-description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus. Duis pellentesque quis purus in posuere.
+								With every contribution, Appwrite gets better for all of us. Start contributing today.
 							</p>
 						</div>
 					</div>
@@ -250,38 +250,38 @@
 					<ul class="grid-box u-gap-32 aw-u-gap-20-mobile u-margin-block-start-20" style="--grid-item-size:15rem">
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Blogging & Speaking</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Create content</div>
+								<div class="aw-sub-body-400">Help others discover Appwrite with videos and blogs.</div>
 							</div>
 						</li>
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Presenting at Meetups</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Present at meetups</div>
+								<div class="aw-sub-body-400">Share your experience and represent Appwrite in public. </div>
 							</div>
 						</li>
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Reporting Bugs</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Report bugs</div>
+								<div class="aw-sub-body-400">Find bugs and submit PRs to fix them.</div>
 							</div>
 						</li>
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Submitting New Ideas</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Submit new ideas</div>
+								<div class="aw-sub-body-400">Suggest features, integrations, or SDKs for our roadmap.</div>
 							</div>
 						</li>
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Improving documentation</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Improve documentation</div>
+								<div class="aw-sub-body-400">Find improvements in our docs and improve accessibility.</div>
 							</div>
 						</li>
 						<li>
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
-								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping other contributors</div>
-								<div class="aw-sub-body-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping others</div>
+								<div class="aw-sub-body-400">Support community members with their projects and contributions.</div>
 							</div>
 						</li>
 					</ul>
@@ -448,7 +448,7 @@
 					<div class="aw-hero is-center">
 						<h2 class="aw-display aw-u-color-text-primary">Inspire and get inspired</h2>
 						<p class="aw-description">
-							Visit our showcase website Built with Appwrite to find inspiration for your projects or to showcase what you have built. Join hundreds of developers.
+							Visit our showcase website built with Appwrite to find inspiration for your projects or to showcase what you have built.
 						</p>
 						<a href="https://builtwith.appwrite.io" target="_blank" class="aw-button is-secondary aw-u-cross-child-center u-margin-block-start-16">
 							<span>View all projects</span>
@@ -501,7 +501,7 @@
 					<div class="aw-grid-15-25-desktop aw-u-row-gap-48 aw-u-column-gap-96">
 						<div class="aw-hero is-align-start aw-u-max-width-380">
 							<div class="aw-display aw-u-color-text-primary">Visit the community</div>
-							<p class="aw-description">Discover more about Appwrite by visiting our community across platforms.</p>
+							<p class="aw-description">Discover Appwrite’s community across platforms and join the fun.</p>
 						</div>
 						<ul class="aw-multi-columns-1">
 							<li>
