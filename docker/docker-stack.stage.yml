@@ -57,8 +57,8 @@ services:
         constraints:
           - node.role == manager
 
-  homepage:
-    image: ghcr.io/appwrite/homepage:$_APP_VERSION
+  website:
+    image: ghcr.io/appwrite/website:$_APP_VERSION
     <<: *x-logging
     networks:
       - cloud
