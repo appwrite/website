@@ -74,7 +74,7 @@ services:
       labels:
         - traefik.enable=true
         - traefik.constraint-label-stack=appwrite
-        - traefik.http.services.appwrite_api.loadbalancer.server.port=80
+        - traefik.http.services.appwrite_api.loadbalancer.server.port=3000
         #http
         - traefik.http.routers.appwrite.entrypoints=web
         - traefik.http.routers.appwrite.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
