@@ -35,7 +35,7 @@
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Journeys',
 			items: [
 				{
 					label: 'Upload and download',
@@ -46,7 +46,16 @@
 					href: '/docs/products/storage/images'
 				},
 			]
-		}
+		},
+		{
+			label: 'References',
+			items: [
+				{
+					label: 'Storage API',
+					href: '/docs/references/cloud/client-web/storage'
+				},
+			]
+		},
 	];
 </script>
 

@@ -1,61 +1,190 @@
 ---
 layout: article
 title: Start with Apple
-description: Learn how to quickly integrate Appwrite products and services into your iOS, iPadOS, macOS, watchOS, tvOS, or visionOS project.
+description: Learn how to quickly integrate Appwrite products and services into your Apple project.
 difficulty: beginner
 readtime: 3
 ---
 
 Learn to setup your first Apple project powered by Appwrite.
-{% section #step-1 step=1 title="Create project" %}
+
+{% section #step-1 step=1 title="Create Apple project" %}
+Open Xcode and click **Create a new Xcode project**.
+
+Choose your desired project template and click **Next**.
+
+Now enter your app **product name** and **bundle identifier** and click **Next**. You will need both of these values later when you create your project in the Appwrite console.
+
+Choose a directory for your project in and click **Create** to create your project.
+
+{% /section %}
+
+{% section #step-2 step=2 title="Create Appwrite project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
-Then, under **Add a platform**, add a **Apple app**. The **Bundle ID** can be `example.my-app`. 
+Then, under **Add a platform**, add an **Apple app**. Choose any of **iOS**, **macOS**, **watchOS** or **tvOS** as your Apple platform. If you are creating a multi-platform app, you can add more platforms later.
+
+Add your app's **product name** and **bundle identifier**, your bundle identifier is the one entered when creating an Xcode project. For existing projects, you should use the **bundle identifier** from your project files **Identity** section.
 
 ![Add a platform](/images/docs/databases/quick-start/add-platform.png)
 
 You can skip optional steps.
 
 {% /section %}
-{% section #step-2 step=2 title="Create XCode project" %}
-Open XCode and select **Create a new XCode project** > select **App** > create an app named `my-app` under the **Organization Identifier** `example`.
-This creates a new app with the **Bundle ID** `example.my-app`.
+
+{% section #step-3 step=3 title="Add the Appwrite SDK" %}
+To add the Appwrite SDK for Apple as a dependency, open the **File** menu and click **Add Packages**.
+
+In the **Package URL** search box, enter https://github.com/appwrite/sdk-for-apple. 
+
+Once the SDK is found, select **Up to Next Major Version** as your **Dependency Rule** and click **Add Package**.
+
+When dependency resolution is complete, click **Add Package** again to add the SDK package to your target.
+
+In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
+
+```plist
+<key>CFBundleURLTypes</key>
+<array>
+<dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>io.appwrite</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+        <string>appwrite-callback-[PROJECT_ID]</string>
+    </array>
+</dict>
+</array>
+```
+
+If you're using UIKit as opposed to SwiftUI, you will also need to add the following to your **SceneDelegate.swift** file.
+
+```swift
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let url = URLContexts.first?.url,
+        url.absoluteString.contains("appwrite-callback") else {
+        return
+    }
+
+    WebAuthComponent.handleIncomingCookie(from: url)
+}
+```
 {% /section %}
 
-{% section #step-3 step=3 title="Install Appwrite" %}
-Install the Appwrite SDK for Apple.
-
-1. Select **File** > **Add Packages**
-2. Search for the Appwrite SDK with the URL `https://github.com/appwrite/sdk-for-apple`
-3. In the right panel, select your target project and add your desired version rules
-4. Select Add Package and wait for package resolution to complete
-5. Make sure the Appwrite package product is checked and select Add Package again
-
-{% /section %}
-
-{% section #step-4 step=4 title="Import Appwrite" %}
+{% section #step-4 step=4 title="Create Appwrite Singleton" %}
 Find your project's ID in the **Settings** page. 
 
 ![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
 
-Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `Appwrite.swift` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 
 ```swift
-TODO
+import Foundation
+import Appwrite
+import JSONCodable
+
+class Appwrite {
+    var client: Client
+    var account: Account
+    
+    public init() {
+        self.client = Client()
+            .setEndpoint("https://cloud.appwrite.io/v1")
+            .setProject("[YOUR_PROJECT_ID]")
+        
+        self.account = Account(client)
+    }
+    
+    public func onRegister(
+        _ email: String,
+        _ password: String
+    ) async throws -> User<[String: AnyCodable]> {
+        try await account.create(
+            userId: ID.unique(),
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogin(
+        _ email: String,
+        _ password: String
+    ) async throws -> Session {
+        try await account.createEmailSession(
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogout() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+    
+}
+
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-Add the following code to `src/App.jsx`.
+Add the following code to `ContentView.swift`.
 
 ```swift
-TODO
+import SwiftUI
+
+class ViewModel: ObservableObject {
+    @Published var email: String = ""
+    @Published var password: String = ""
+}
+
+struct ContentView: View {
+    @ObservedObject var viewModel = ViewModel()
+    
+    var body: some View {
+        VStack {
+            TextField(
+                "Email",
+                text: $viewModel.email
+            )
+            SecureField(
+                "Password",
+                text: $viewModel.password
+            )
+            Button(
+                action: { Task {
+                    try await Appwrite.onRegister(
+                        viewModel.email,
+                        viewModel.password
+                    )
+                }},
+                label: {
+                    Text("Register")
+                }
+            )
+            Button(
+                action: { Task {
+                    try! await Appwrite.onLogin(
+                        viewModel.email,
+                        viewModel.password
+                    )
+                }},
+                label: {
+                    Text("Login")
+                }
+            )
+        }
+        .padding()
+    }
+}
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="Checkout what you've built" %}
-Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+{% section #step-6 step=6 title="All set" %}
+Run your project by clicking **Start active scheme** in Xcode.
 {% /section %}
