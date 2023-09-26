@@ -174,7 +174,7 @@
 							Self-host your data or take it to the Cloud
 						</h2>
 						<p class="aw-description u-max-width-700">
-							Migrate your data from and to any platform at any time with Appwrite’s migrations API.
+							Migrate your data from and to any platform at any time with Appwrite Migrations.
 							With built-in security and privacy for peace of mind.
 						</p>
 					</section>
@@ -244,7 +244,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display aw-u-color-text-primary">Loved by developers</div>
+						<div class="aw-display aw-u-color-text-primary">Loved by our community</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
