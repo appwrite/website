@@ -9,6 +9,13 @@
 	import '@fontsource/inter/800.css';
 	import '@fontsource/inter/900.css';
 	import '$scss/index.scss';
+	import { dev } from '$app/environment';
 </script>
+
+<svelte:head>
+	{#if !dev}
+		<script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+	{/if}
+</svelte:head>
 
 <slot />

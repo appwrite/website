@@ -31,7 +31,7 @@
 	/>
 </div>
 
-<div
+<!-- <div
 	class="u-position-absolute"
 	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
 >
@@ -43,14 +43,17 @@
 	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
 >
 	<img src="/images/bgs/hero-lines-2.png" alt="" />
-</div>
+</div> -->
 
 <Main>
 	<div class="aw-big-padding-section">
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-end-0">
-					<a href="/blog/post/meet-the-new-appwrite" class="aw-hero-banner-button aw-u-margin-block-end-24">
+					<a
+						href="/blog/post/meet-the-new-appwrite"
+						class="aw-hero-banner-button aw-u-margin-block-end-24"
+					>
 						<span class="aw-icon-star" aria-hidden="true" />
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep" />
@@ -180,7 +183,9 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/self-hosted.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Self-Hosted</h3>
-								<p class="aw-info-boxes-content">Own your data or host it on a cloud region of choice.</p>
+								<p class="aw-info-boxes-content">
+									Own your data or host it on a cloud region of choice.
+								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/lock.svg" width="40" height="40" alt="" />
@@ -249,9 +254,9 @@
 								icon="product-hunt"
 								avatarSrc="/images/community/avatars/terry.png"
 							>
-							Been a huge supporter of Appwrite for over a year, championing
-							it even at the companies I was working at. Their community is second-to-none,
-							speed of feature release is exceptional, and the support in their Discord is incredible.
+								Been a huge supporter of Appwrite for over a year, championing it even at the
+								companies I was working at. Their community is second-to-none, speed of feature
+								release is exceptional, and the support in their Discord is incredible.
 							</DeveloperCard>
 						</li>
 						<li>
@@ -261,7 +266,9 @@
 								icon="linkedin"
 								avatarSrc="/images/community/avatars/varun.png"
 							>
-								Recently, I embarked on a journey to create a Real-Time Chat Application that would redefine seamless communication. Along the way, I discovered an incredible tool that transformed my backend game - Appwrite!
+								Recently, I embarked on a journey to create a Real-Time Chat Application that would
+								redefine seamless communication. Along the way, I discovered an incredible tool that
+								transformed my backend game - Appwrite!
 							</DeveloperCard>
 						</li>
 						<li>
@@ -271,7 +278,12 @@
 								icon="x"
 								avatarSrc="/images/community/avatars/kap.png"
 							>
-							Backend Engineers, you will agree with me that building the authentication process for your app with each new API development is a pain. Here's my secret: I let <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1">@appwrite</a> handle my authentication process while I focus on the business logic.
+								Backend Engineers, you will agree with me that building the authentication process
+								for your app with each new API development is a pain. Here's my secret: I let <a
+									href="https://twitter.com/appwrite"
+									target="_blank"
+									class="aw-link-1">@appwrite</a
+								> handle my authentication process while I focus on the business logic.
 							</DeveloperCard>
 						</li>
 						<li>
@@ -291,7 +303,9 @@
 								icon="product-hunt"
 								avatarSrc="/images/community/avatars/terieyenike.png"
 							>
-							I have used Appwrite twice, and the experience of using it was great as I got to build a full-stack application. I would gladly recommend it to anyone looking to explore an alternative database option. Appwrite is simply the best.
+								I have used Appwrite twice, and the experience of using it was great as I got to
+								build a full-stack application. I would gladly recommend it to anyone looking to
+								explore an alternative database option. Appwrite is simply the best.
 							</DeveloperCard>
 						</li>
 						<li>
@@ -301,8 +315,12 @@
 								icon="x"
 								avatarSrc="/images/community/avatars/souvik.png"
 							>
-							If you're looking for a backend server that is both powerful and easy to use, check out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1">@appwrite</a>. With its robust feature set and open-source nature, it's the perfect choice for developers who want to build secure and scalable applications.
-						</DeveloperCard>
+								If you're looking for a backend server that is both powerful and easy to use, check
+								out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1"
+									>@appwrite</a
+								>. With its robust feature set and open-source nature, it's the perfect choice for
+								developers who want to build secure and scalable applications.
+							</DeveloperCard>
 						</li>
 					</ul>
 				</div>
@@ -313,7 +331,10 @@
 			<Spline let:fallback let:viewer>
 				<div
 					class="u-position-absolute aw-is-not-mobile"
-					style="inline-size:512px; block-size: 512px; inset-block-start:6rem; inset-inline-start:calc(100% - 500px)"
+					style:inline-size="512px"
+					style:block-size="512px"
+					style:inset-block-start="8rem"
+					style:left="calc(50% - 256px + 18rem)"
 				>
 					<img
 						src="/images/animations/tech.png"
@@ -323,9 +344,10 @@
 						style="position: absolute; display: block;"
 						use:fallback
 					/>
-		
+
 					<spline-viewer
 						url="https://prod.spline.design/KvoQWZAi5foGUXxJ/scene.splinecode"
+						loading="eager"
 						use:viewer
 					/>
 				</div>
@@ -481,20 +503,25 @@
 								</div>
 							</li>
 						</ul>
-						<button class="aw-button is-secondary" style:align-self="start">
+						<a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
 							<span class="aw-sub-body-500">Explore all SDKs</span>
-						</button>
+						</a>
 					</section>
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-				<Spline let:viewer let:fallback>
-					<div class="u-position-absolute u-z-index-0" style="width: 50%; height:100%; left:0;">
+				<Spline let:viewer>
+					<div
+						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
+						style:width="50%"
+						style:height="100%"
+						style:left="0"
+					>
 						<div style:display="grid" style:place-items="center" style:height="100%">
 							<spline-viewer
 								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
-								use:viewer
 								loading="eager"
+								use:viewer
 							/>
 						</div>
 					</div>
@@ -504,7 +531,9 @@
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
-							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you and your users</h2>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
+								We scale for you and your users
+							</h2>
 						</section>
 						<ul
 							class="aw-big-list-info u-margin-inline-start-auto aw-u-inline-width-100-percent-mobile-break1 aw-u-margin-block-start-48"

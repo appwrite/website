@@ -53,10 +53,10 @@
 	<slot name="header" />
 	<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
 		<button class="aw-icon-button" aria-label="Move carousel backward" on:click={() => prev()}>
-			<span class="icon-arrow-left" aria-hidden="true" />
+			<span class="aw-icon-arrow-left" aria-hidden="true" />
 		</button>
 		<button class="aw-icon-button" aria-label="Move carousel forward" on:click={() => next()}>
-			<span class="icon-arrow-right" aria-hidden="true" />
+			<span class="aw-icon-arrow-right" aria-hidden="true" />
 		</button>
 	</div>
 </div>
