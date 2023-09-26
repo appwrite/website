@@ -6,19 +6,23 @@
 	export type DocsLayoutState = {
 		showReferences: boolean;
 		showSidenav: boolean;
+		currentVariant: DocsLayoutVariant | null;
 	};
 	export const layoutState = writable<DocsLayoutState>({
 		showReferences: false,
-		showSidenav: false
+		showSidenav: false,
+		currentVariant: null
 	});
 	export function toggleReferences() {
 		layoutState.update((state) => ({
+			...state,
 			showReferences: !state.showReferences,
 			showSidenav: false
 		}));
 	}
 	export function toggleSidenav() {
 		layoutState.update((state) => ({
+			...state,
 			showReferences: false,
 			showSidenav: !state.showSidenav
 		}));
@@ -35,12 +39,14 @@
 	};
 
 	$: variantClass = variantClasses[variant];
+	$: $layoutState.currentVariant = variant;
 
 	navigating.subscribe(() => {
-		layoutState.set({
+		layoutState.update((n) => ({
+			...n,
 			showReferences: false,
 			showSidenav: false
-		});
+		}));
 	});
 </script>
 
@@ -124,7 +130,11 @@
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
-							<a href="https://github.com/appwrite/appwrite/stargazers" target="_blank" class="aw-button is-text">
+							<a
+								href="https://github.com/appwrite/appwrite/stargazers"
+								target="_blank"
+								class="aw-button is-text"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="18"
