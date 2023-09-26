@@ -1,10 +1,10 @@
 @use '../abstract' as *;
 
 .#{$p}-media-container {
-  --p-media-container-border-padding:#{pxToRem(2)};
-  --p-media-container-border-radius:#{pxToRem(7)};
+  --p-media-container-border-padding:#{pxToRem(7)};
+  --p-media-container-border-radius:#{pxToRem(20)};
 
-  --p-media-border-radius: #{pxToRem(5)};
+  --p-media-border-radius: #{pxToRem(16)};
 
   padding: var(--p-media-container-border-padding);
   border-radius: var(--p-media-container-border-radius);
@@ -15,25 +15,4 @@
   backdrop-filter: blur(pxToRem(25));
 
   > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; }
-
-  @media #{$break2} {
-    --p-media-container-border-padding:#{pxToRem(5)};
-    --p-media-container-border-radius:#{pxToRem(18)};
-
-    --p-media-border-radius: #{pxToRem(15)};
-  }
-
-  @media #{$break3} {
-    --p-media-container-border-padding:#{pxToRem(6)};
-    --p-media-container-border-radius:#{pxToRem(22)};
-
-    --p-media-border-radius: #{pxToRem(19)};
-  }
-
-  @media #{$break4open} {
-    --p-media-container-border-padding:#{pxToRem(8)};
-    --p-media-container-border-radius:#{pxToRem(24)};
-
-    --p-media-border-radius: #{pxToRem(20)};
-  }
 }

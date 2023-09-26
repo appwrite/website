@@ -11,7 +11,7 @@
 	</h2>
 
 	<p class="aw-description u-margin-block-start-16">
-		Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's core backend products.					
+		Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's development platform.
 	</p>
 
 	<div class="infos">

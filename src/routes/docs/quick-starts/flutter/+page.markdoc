@@ -1,13 +1,22 @@
 ---
 layout: article
-title: Quick start with Flutter
+title: Start with Flutter
 description: Learn how to quickly integrate Appwrite products and services into your Flutter project.
 difficulty: beginner
 readtime: 3
 ---
 
 Learn to setup your first Flutter project powered by Appwrite.
-{% section #step-1 step=1 title="Create project" %}
+
+{% section #step-1 step=1 title="Create Flutter project" %}
+Create a Flutter project.
+
+```sh
+flutter create my_app && cd my_app
+```
+{% /section %}
+
+{% section #step-2 step=2 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
@@ -60,7 +69,7 @@ You have to change your iOS Deployment Target in Xcode to be iOS >= 11 to be abl
 {% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
-Add your app's **name** and *package name*, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
+Add your app's **name** and **package name**, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
 
 In order to capture the Appwrite OAuth callback url, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml). 
 Be sure to replace the **[PROJECT_ID]** string with your actual Appwrite project ID. 
@@ -128,17 +137,10 @@ If you cannot find the correct package name, run the application in Windows, and
 
 {% /tabs %}
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+![Add a platform]()
 
 You can skip optional steps.
 
-{% /section %}
-{% section #step-2 step=2 title="Create Flutter project" %}
-Create a Flutter project.
-
-```sh
-flutter create my_app && cd my_app
-```
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -155,60 +157,39 @@ Find your project's ID in the **Settings** page.
 
 ![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
 
-Create a new file `lib/appwrite.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
-
-```dart
-import 'package:appwrite/appwrite.dart';
-
-class Appwrite {
-  static final Appwrite instance = Appwrite._internal();
-
-  late final Client client;
-  late final Account account;
-  factory Appwrite._() {
-    return instance;
-  }
-
-  Appwrite._internal() {
-    client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("<YOUR_PROJECT_ID>");
-    account = Account(client);
-  }
-}
-```
-{% /section %}
-{% section #step-5 step=5 title="Create a login page" %}
-Add the following code to `src/App.jsx`.
-import 'package:appwrite/appwrite.dart';
+Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+This imports and initializes Appwrite.
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart' as models;
 
-import 'package:my_app/appwrite.dart';
-
 void main() {
-  runApp(MyApp());
-}
+  WidgetsFlutterBinding.ensureInitialized();
+  Client client = Client();
+  client = Client()
+      .setEndpoint("https://cloud.appwrite.io/v1")
+      .setProject("650209298acac4ee1bb6");
+  ;
+  Account account = Account(client);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('My App')),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: MyForm(),
-        ),
-      ),
-    );
-  }
+  runApp(MyApp(
+    account: account,
+  ));
 }
+```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
+Then, append the following widgets to `lib/main.dart` create your login page.
+import 'package:appwrite/appwrite.dart';
 
+```dart
 class MyForm extends StatefulWidget {
+  final Account account;
+
+  MyForm({required this.account});
+
   @override
   MyFormState createState() {
     return MyFormState();
@@ -222,22 +203,21 @@ class MyFormState extends State<MyForm> {
   final TextEditingController nameController = TextEditingController();
 
   Future<void> login(String email, String password) async {
-    await Appwrite.instance.account
-        .createEmailSession(email: email, password: password);
-    final user = await Appwrite.instance.account.get();
+    await widget.account.createEmailSession(email: email, password: password);
+    final user = await widget.account.get();
     setState(() {
       loggedInUser = user;
     });
   }
 
   Future<void> register(String email, String password, String name) async {
-    await Appwrite.instance.account.create(
+    await widget.account.create(
         userId: ID.unique(), email: email, password: password, name: name);
     await login(email, password);
   }
 
   Future<void> logout() async {
-    await Appwrite.instance.account.deleteSession(sessionId: 'current');
+    await widget.account.deleteSession(sessionId: 'current');
     setState(() {
       loggedInUser = null;
     });
@@ -294,6 +274,6 @@ class MyFormState extends State<MyForm> {
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="Checkout what you've built" %}
+{% section #step-6 step=6 title="All set" %}
 Run your project with `flutter run` and select a browser, platform, or emulator to run your project.
 {% /section %}

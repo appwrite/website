@@ -7,26 +7,3 @@ description: Description for SEO.
 Appwrite is a development platform designed to adapt your unique use cases.
 Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
 
-## API keys {% #api-keys %}
-
-[Learn more about API keys {% icon icon="cheveron-right" /%}](#)
-
-## Custom domains {% #custom-domains %}
-
-[Learn more about custom domains {% icon icon="cheveron-right" /%}](#)
-
-## Events {% #events %}
-
-[Learn more about events {% icon icon="cheveron-right" /%}](#)
-
-## Response codes {% #response-codes %}
-
-[Learn more about response codes {% icon icon="cheveron-right" /%}](#)
-
-## Permissions {% #permissions %}
-
-[Learn more about permissions {% icon icon="cheveron-right" /%}](#)
-
-## Rate limits {% #rate-limits %}
-
-[Learn more about permissions {% icon icon="cheveron-right" /%}](#)
