@@ -63,6 +63,10 @@
 .#{$p}-u-max-width-800              { max-inline-size:pxToRem(800); }
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
 
+.#{$p}-u-max-height-300             { max-block-size:pxToRem(300); }
+
+.#{$p}-u-trim-1           { @include trim(1); }
+
 .#{$p}-u-size-40                  { inline-size:pxToRem(40); block-size:pxToRem(40); }
 .#{$p}-u-block-size-48            { block-size:pxToRem(48); }
 .#{$p}-u-block-size-160           { block-size:pxToRem(160); }
