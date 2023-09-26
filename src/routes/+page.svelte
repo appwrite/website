@@ -31,19 +31,19 @@
 	/>
 </div>
 
-<!-- <div
-	class="u-position-absolute"
-	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
+<div
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
 
 <div
-	class="u-position-absolute"
-	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
 >
 	<img src="/images/bgs/hero-lines-2.png" alt="" />
-</div> -->
+</div>
 
 <Main>
 	<div class="aw-big-padding-section">
