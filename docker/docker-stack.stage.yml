@@ -65,7 +65,7 @@ services:
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 4
+      replicas: 5
       placement:
         constraints:
           - node.role == worker
