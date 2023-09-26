@@ -5,12 +5,133 @@ description: Learn how to quickly integrate Appwrite products and services into 
 difficulty: beginner
 readtime: 3
 ---
+Learn to setup your first Next.js project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-Improve the docs, add this guide.
+![Create project screen](/images/docs/databases/quick-start/create-project.png)
 
-We still don't have this guide in place, but we do have some great news. 
-The Appwrite docs, just like Appwrite, is completely open sourced.
-This means, anyone can help improve them and add new guides and tutorials. 
+If this is your first time using Appwrite, create an account and create your first project.
 
-If you see this page, **we're actively looking for contributions to this page**.
-Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+
+![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+
+You can skip optional steps.
+
+{% /section %}
+{% section #step-2 step=2 title="Create Next.js project" %}
+Create a Next.js project.
+
+```sh
+npx create-next-app@latest && cd my-app
+```
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+Find your project's ID in the **Settings** page. 
+
+![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+
+Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+
+```js
+import { Client, Account} from 'appwrite';
+
+export const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+
+export const account = new Account(client);
+export { ID } from 'appwrite';
+```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
+Create/ update `app/page.js` file and add the following code to it.
+
+```html
+"use client";
+import { useState } from "react";
+import { account, ID } from "../src/lib/appwrite";
+
+const LoginPage = () => {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const login = async (email, password) => {
+    const session = await account.createEmailSession(email, password);
+    setLoggedInUser(await account.get());
+  };
+
+  const register = async () => {
+    await account.create(ID.unique(), email, password, name);
+    login(email, password);
+  };
+
+  const logout = async () => {
+    await account.deleteSession("current");
+    setLoggedInUser(null);
+  };
+
+  if (loggedInUser) {
+    return (
+      <div>
+        <p>Logged in as {loggedInUser.name}</p>
+        <button type="button" onClick={logout}>
+          Logout
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <p>Not logged in</p>
+      <form>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button type="button" onClick={() => login(email, password)}>
+          Login
+        </button>
+        <button type="button" onClick={register}>
+          Register
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default LoginPage;
+```
+{% /section %}
+
+{% section #step-6 step=6 title="All set" %}
+Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+{% /section %}
