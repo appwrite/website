@@ -11,6 +11,7 @@
     &.#{$p}-container { padding-inline:pxToRem(20); }
     .#{$p}-side-nav { display:none;  max-inline-size:none; margin-inline:pxToRem(-20); }
     .#{$p}-main-section { padding-inline:pxToRem(20); padding-block-start:pxToRem(32); }
+
     &.is-open {
       background:hsl(var(--aw-color-background));
       > *:not(.#{$p}-mobile-header, .#{$p}-side-nav) { display:none!important; }
