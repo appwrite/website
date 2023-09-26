@@ -115,9 +115,8 @@
 				{
 					label: 'Self-hosting',
 					href: '/docs/advanced/self-hosting',
-					icon: 'icon-server'
-          isParent: true
-
+					icon: 'icon-server',
+					isParent: true
 				}
 			]
 		}
