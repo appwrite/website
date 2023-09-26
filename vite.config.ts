@@ -15,7 +15,7 @@ export default defineConfig({
 		}),
 		ViteImageOptimizer({
 			includePublic: true
-		  })
+		})
 	],
 	css: {
 		preprocessorOptions: {
