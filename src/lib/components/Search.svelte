@@ -36,7 +36,7 @@
 
 	async function search(value: string) {
 		return index.search(value, {
-			limit: 10
+			limit: 20
 		});
 	}
 
@@ -85,28 +85,27 @@
 		}
 	];
 
-	const elements = new Map<number, HTMLElement>();
-
-	const arrowKeyFocus: Action<HTMLElement, number> = (node, index) => {
-		elements.set(index, node);
+	const arrowKeyFocus: Action = (node) => {
 		const callback = (event: KeyboardEvent) => {
 			switch (event.key) {
 				case 'ArrowDown':
 					{
 						event.preventDefault();
+						const index = Number(node.getAttribute('data-hit'));
+						if (index === null) return;
 						const target = index + 1;
-						if (elements.has(target)) {
-							elements.get(target)?.focus();
-						}
+						const element = document.querySelector(`[data-hit="${target}"]`) as HTMLElement;
+						element?.focus();
 					}
 					break;
 				case 'ArrowUp':
 					{
 						event.preventDefault();
+						const index = Number(node.getAttribute('data-hit'));
+						if (index === null) return;
 						const target = index - 1;
-						if (elements.has(target)) {
-							elements.get(target)?.focus();
-						}
+						const element = document.querySelector(`[data-hit="${target}"]`) as HTMLElement;
+						element?.focus();
 					}
 					break;
 			}
@@ -116,7 +115,6 @@
 
 		return {
 			destroy() {
-				elements.delete(index);
 				node.removeEventListener('keydown', callback);
 			}
 		};
@@ -157,7 +155,8 @@
 				bind:value
 				placeholder="Search"
 				style="border-end-start-radius:0; border-end-end-radius:0;"
-				use:arrowKeyFocus={-1}
+				use:arrowKeyFocus
+				data-hit="-1"
 			/>
 			<div
 				class="aw-card is-normal u-overflow-y-auto"
@@ -172,8 +171,9 @@
 									{#each results as hit, i (hit.uid)}
 										<li>
 											<a
+												data-hit={i}
 												href={createHref(hit)}
-												use:arrowKeyFocus={i}
+												use:arrowKeyFocus
 												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start u-max-width-100-percent"
 											>
 												<div class="aw-u-trim-1">
@@ -205,8 +205,9 @@
 									{@const index = i + (results.length ? results.length : 0)}
 									<li>
 										<a
+											data-hit={index}
 											href={createHref(hit)}
-											use:arrowKeyFocus={index}
+											use:arrowKeyFocus
 											class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start"
 										>
 											<div class="aw-u-trim-1">
