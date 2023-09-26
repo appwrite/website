@@ -65,6 +65,12 @@
 					href: 'flutter'
 				},
 				{
+					title: 'Apple',
+					icon: 'icon-apple',
+					image: '/images/blog/placeholder.png',
+					href: 'apple'
+				},
+				{
 					title: 'Android',
 					icon: 'icon-android',
 					image: '/images/blog/placeholder.png',
