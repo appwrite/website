@@ -11,7 +11,7 @@ Learn to setup your first Android project powered by Appwrite.
 {% section #step-1 step=1 title="Create Android project" %}
 Open Android Studio and click **New Project** to create a new project.
 
-Choose your desired project template and click **Next**.
+Choose your desired project template, for example **Empty Activity**, and click **Next**.
 
 Now enter your app **name** and **package name**. You will need both of these later when you create your project in the Appwrite console. Click **Finish** to create your project.
 
