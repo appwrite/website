@@ -72,7 +72,7 @@
 			</h1>
 			<p class="aw-description u-max-width-600">
 				Start building today by creating an account on <a href="https://cloud.appwrite.io/" rel="noopener noreferrer" target="_blank">Appwrite Cloud</a>
-				or <a href="/advanced/self-hosting" rel="noopener noreferrer" target="_blank">self-host</a>.
+				or <a href="/docs/advanced/self-hosting" rel="noopener noreferrer" target="_blank">self-host</a>.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">

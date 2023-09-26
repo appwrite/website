@@ -69,24 +69,24 @@
 					image: '/images/blog/placeholder.png',
 					href: 'node'
 				},
-				{
-					title: 'Python',
-					icon: 'icon-python',
-					image: '/images/blog/placeholder.png',
-					href: 'python'
-				},
-				{
-					title: '.NET',
-					icon: 'icon-dotnet',
-					image: '/images/blog/placeholder.png',
-					href: 'dotnet'
-				},
-				{
-					title: 'Dart',
-					icon: 'icon-dart',
-					image: '/images/blog/placeholder.png',
-					href: 'dart'
-				}
+				// {
+				// 	title: 'Python',
+				// 	icon: 'icon-python',
+				// 	image: '/images/blog/placeholder.png',
+				// 	href: 'python'
+				// },
+				// {
+				// 	title: '.NET',
+				// 	icon: 'icon-dotnet',
+				// 	image: '/images/blog/placeholder.png',
+				// 	href: 'dotnet'
+				// },
+				// {
+				// 	title: 'Dart',
+				// 	icon: 'icon-dart',
+				// 	image: '/images/blog/placeholder.png',
+				// 	href: 'dart'
+				// }
 			]
 		}
 	];
