@@ -60,7 +60,7 @@ You should see the **Active** card under the **Deployments** section. This card 
 
 Copy the domain and head back to Stripe's **Webhook** page. In the upper right corner is a button with a dots icon, under which there is a **Update details...** button to open the configuration modal. In this modal, let's update the **Endpoint URL**.
 
-The function's domain I copied was `6512ac5b95af39df6469.appwrite.global`, and the endpoint needed for Stripe communication is `/webhook`. By combining those two, I get my new endpoint URL: `https://6512ac5b95af39df6469.appwrite.global/webhook`. Please do the same, but make sure to use the domain generated for your Function. When done, click **Update endpoint** to save changes.
+Your Function's domain should look something like `6512ac5b95af39df6469.appwrite.global`. The Stripe template, however, requires us to receive incoming events on the `/webhook` path of the endpoint. To achieve this, you can combine your Function's domain along with the `/webhook` path, resulting in `https://6512ac5b95af39df6469.appwrite.global/webhook`. When done, click **Update endpoint** to save changes.
 
 {% /section %}
 
