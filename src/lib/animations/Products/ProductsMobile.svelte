@@ -62,7 +62,7 @@
 
 		max-width: 800px;
 		margin-inline: auto;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	@media (max-width: 1439px) {
