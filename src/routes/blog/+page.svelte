@@ -1,18 +1,34 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
-	import { MainFooter, FooterNav, Article, Metadata } from '$lib/components';
+	import { MainFooter, FooterNav, Article } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles.js';
-	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	export let data;
 
 	const featured = data.posts.find((post) => post.featured);
 
-	setMetadata({
-		title: 'Blog' + TITLE_SUFFIX,
-		ogImage: DEFAULT_HOST + '/images/open-graph/blog.png'
-	});
+	const title = 'Blog' + TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative">

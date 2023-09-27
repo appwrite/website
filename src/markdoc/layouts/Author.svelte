@@ -13,13 +13,13 @@
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter, Metadata } from '$lib/components';
+	import { Article, FooterNav, MainFooter } from '$lib/components';
 	import { page } from '$app/stores';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	export let name: string;
 	export let role: string;
@@ -35,12 +35,27 @@
 		(p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
 	);
 
-	setMetadata({
-		title: name + BLOG_TITLE_SUFFIX,
-		description: bio,
-		ogImage: DEFAULT_HOST + '/images/open-graph/blog.png'
-	});
+	const seoTitle = name + BLOG_TITLE_SUFFIX;
+	const description = bio;
+	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{seoTitle}</title>
+	<meta property="og:title" content={seoTitle} />
+	<meta name="”twitter:title”" content={seoTitle} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">

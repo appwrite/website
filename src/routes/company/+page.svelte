@@ -3,14 +3,29 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import { TITLE_SUFFIX } from '$routes/titles';
-	import { Metadata } from '$lib/components';
-	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
-	setMetadata({
-		title: 'Company' + TITLE_SUFFIX,
-		ogImage: DEFAULT_HOST + '/images/open-graph/website.png'
-	});
+	const title = 'Company' + TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
 	<svg

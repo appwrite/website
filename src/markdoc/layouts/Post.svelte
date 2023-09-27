@@ -13,13 +13,13 @@
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter, Metadata, Newsletter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	export let title: string;
 	export let description: string;
@@ -42,14 +42,24 @@
 			cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
 		);
 	}
-
-	setMetadata({
-		title: title + BLOG_TITLE_SUFFIX,
-		description,
-		ogTitle: title,
-		ogImage: DEFAULT_HOST + cover
-	});
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title + BLOG_TITLE_SUFFIX}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={DEFAULT_HOST + cover} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={DEFAULT_HOST + cover} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section">

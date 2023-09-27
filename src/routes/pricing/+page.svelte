@@ -1,17 +1,33 @@
 <script lang="ts">
-	import { FooterNav, MainFooter, Metadata, PreFooter } from '$lib/components';
-	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
+	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
 
-	setMetadata({
-		title: 'Pricing' + TITLE_SUFFIX,
-		ogImage: DEFAULT_HOST + '/images/open-graph/website.png'
-	});
+	const title = 'Pricing' + TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
 	<img src="/images/bgs/pricing-hero.svg" alt="" style="margin-inline:auto; display:block;" />

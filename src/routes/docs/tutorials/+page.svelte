@@ -1,6 +1,29 @@
 <script lang="ts">
 	import { MainFooter } from '$lib/components';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
+
+	const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <main class="aw-main-section">
 	<article class="aw-article">
