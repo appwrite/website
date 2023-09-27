@@ -14,7 +14,7 @@
 
 <script lang="ts">
 	export let title: string;
-	export let back: string;
+	export let back: string | undefined = undefined;
 	export let toc: Array<TocItem>;
 </script>
 
