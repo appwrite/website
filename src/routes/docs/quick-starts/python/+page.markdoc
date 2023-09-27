@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Python
-description: This is the description used for SEO.
+description: Learn to get started with server integrations with Appwrite Python SDK.
 ---
 Learn to setup your first Python project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
