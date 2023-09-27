@@ -72,7 +72,7 @@
 				{
 					label: 'REST',
 					href: '/docs/apis/rest',
-					icon: 'icon-play'
+					icon: 'aw-icon-rest'
 				},
 				{
 					label: 'GraphQL',
@@ -103,7 +103,7 @@
 				{
 					label: 'Platform',
 					href: '/docs/advanced/platform',
-					icon: 'icon-play',
+					icon: 'aw-icon-platform',
 					isParent: true
 				},
 				{
