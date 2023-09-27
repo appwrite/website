@@ -22,7 +22,10 @@ services:
       - homepage
 
   homepage:
-    image: ghcr.io/appwrite/website:3e0f7cf8d8dd1f15b2a559b7fabc43f1759b7be9
+    image: homepage-dev
+    build:
+      context: .
+    restart: always
     networks:
       - homepage
     labels:
