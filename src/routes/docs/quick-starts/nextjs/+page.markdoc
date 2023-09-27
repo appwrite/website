@@ -9,19 +9,29 @@ Learn to setup your first Next.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
 {% /section %}
 {% section #step-2 step=2 title="Create Next.js project" %}
-Create a Next.js project.
+Create a Next.js project and create a **JavaScript** Next.js project.
 
 ```sh
 npx create-next-app@latest && cd my-app
@@ -38,9 +48,14 @@ npm install appwrite
 {% section #step-4 step=4 title="Define Appwrite service" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 
-Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `app/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
 import { Client, Account } from 'appwrite';
@@ -56,12 +71,12 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-Create or update `app/page.js` file and add the following code to it.
+Create or update `app/page.jsx` file and add the following code to it.
 
 ```js
 "use client";
 import { useState } from "react";
-import { account, ID } from "../src/lib/appwrite";
+import { account, ID } from "appwrite";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -134,4 +149,6 @@ export default LoginPage;
 
 {% section #step-6 step=6 title="All set" %}
 Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Don't forget to add some CSS to suit your style.
 {% /section %}
