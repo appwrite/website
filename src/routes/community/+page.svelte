@@ -340,7 +340,7 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Sep 28th, 2023</time>
+											<time class="">Sep 28th</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
@@ -381,7 +381,7 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Sep 28th, 2023</time>
+											<time class="">Sep 28th</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
@@ -418,7 +418,7 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Oct 1st, 2023</time>
+											<time class="">Oct 1st</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
@@ -455,7 +455,7 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Oct, 2023</time>
+											<time class="">Oct</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />

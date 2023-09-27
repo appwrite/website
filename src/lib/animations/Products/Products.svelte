@@ -235,7 +235,7 @@
 							{#if copy}
 								<li data-active={isActive ? '' : undefined}>
 									<h3>
-										<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" />
+										<img src={isActive ? copy.icon.active : copy.icon.inactive} alt="" width="32" height="32" />
 										<span class="aw-label">{copy.title}</span>
 									</h3>
 									{#if isActive}
