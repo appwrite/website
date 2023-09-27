@@ -60,10 +60,12 @@
       #refOpen { position:sticky; inset-block-start:calc(var(--p-grid-huge-navs-secondary-sticky-position) + 24px); }
       &-content {
         display:none; /* hide */
+        gap:0;
         padding-inline-start:pxToRem(24);  padding-inline-end:var(--p-grid-huge-navs-padding-inline);
         border-inline-start:solid pxToRem(1) hsl(var(--aw-color-border));
         background-color:hsl(var(--p-body-bg-color)); inline-size:var(--p-grid-huge-navs-side-nav-width-opened);
       }
+      &-list { margin-block-start:pxToRem(8); }
       &.is-open {
         .#{$p}-references-menu-content {
           display:flex; /* show */
