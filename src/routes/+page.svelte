@@ -11,14 +11,6 @@
 	import { Spline } from '$lib/components';
 </script>
 
-<!-- <div
-	class="u-position-absolute"
-	style="
-	width: 100vw;
-	max-width: 100%; overflow: hidden;
-	height: 1000px;
-"
-> -->
 <div
 	class="u-position-absolute"
 	style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
@@ -163,7 +155,12 @@
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
-				<img class="u-block u-width-full-line" src="/images/bgs/padding-section-1.svg" alt="" />
+				<img
+					class="u-block u-width-full-line"
+					src="/images/bgs/padding-section-1.svg"
+					alt=""
+					style:max-height="48rem"
+				/>
 			</div>
 
 			<div class="aw-big-padding-section-level-2">
@@ -368,56 +365,164 @@
 						>
 							<li>
 								<a href="/docs/quick-starts/flutter" class="aw-box-icon">
-									<img src="/images/platforms/dark/flutter.svg" alt="Flutter logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/flutter.svg" alt="Flutter logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/flutter.svg"
+										alt="Flutter logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/flutter.svg"
+										alt="Flutter logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/nextjs" class="aw-box-icon">
-									<img src="/images/platforms/dark/nextjs.svg" alt="Next.js logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/nextjs.svg" alt="Next.js logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/nextjs.svg"
+										alt="Next.js logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/nextjs.svg"
+										alt="Next.js logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/react" class="aw-box-icon">
-									<img src="/images/platforms/dark/react.svg" alt="React logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/react.svg" alt="React logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/react.svg"
+										alt="React logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/react.svg"
+										alt="React logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/sveltekit" class="aw-box-icon">
-									<img src="/images/platforms/dark/svelte.svg" alt="Svelte logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/svelte.svg" alt="Svelte logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/svelte.svg"
+										alt="Svelte logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/svelte.svg"
+										alt="Svelte logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/nuxt" class="aw-box-icon">
-									<img src="/images/platforms/dark/nuxt.svg" alt="Nuxt logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/nuxt.svg" alt="Nuxt logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/nuxt.svg"
+										alt="Nuxt logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/nuxt.svg"
+										alt="Nuxt logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/vue" class="aw-box-icon">
-									<img src="/images/platforms/dark/vue.svg" alt="Vue logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/vue.svg" alt="Vue logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/vue.svg"
+										alt="Vue logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/vue.svg"
+										alt="Vue logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/angular" class="aw-box-icon">
-									<img src="/images/platforms/dark/angular.svg" alt="Angular logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/angular.svg" alt="Angular logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/angular.svg"
+										alt="Angular logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/angular.svg"
+										alt="Angular logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/apple" class="aw-box-icon">
-									<img src="/images/platforms/dark/apple.svg" alt="Apple logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/apple.svg" alt="Apple logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/apple.svg"
+										alt="Apple logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/apple.svg"
+										alt="Apple logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 							<li>
 								<a href="/docs/quick-starts/android" class="aw-box-icon">
-									<img src="/images/platforms/dark/android.svg" alt="Android logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/android.svg" alt="Android logo" class="u-only-light" width="32" height="32" />
+									<img
+										src="/images/platforms/dark/android.svg"
+										alt="Android logo"
+										class="u-only-dark"
+										width="32"
+										height="32"
+									/>
+									<img
+										src="/images/platforms/android.svg"
+										alt="Android logo"
+										class="u-only-light"
+										width="32"
+										height="32"
+									/>
 								</a>
 							</li>
 						</ul>
