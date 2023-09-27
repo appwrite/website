@@ -1,9 +1,7 @@
 ---
 layout: article
-title: Quick Start
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 3
+title: Quick start
+description: Effortlessly add authentication to your apps - simple signup & login in just minutes with Appwrite Authentication
 ---
 You can get up and running with Appwrite Authentication in minutes. 
 Adding signup and login is as simple as this.

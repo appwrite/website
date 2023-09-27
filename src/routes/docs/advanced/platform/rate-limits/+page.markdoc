@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Rate-limits
-description: Placeholder SEO.
+description: Optimize application performance with Appwrite rate limits. Explore rate limiting strategies, configurations, and how to prevent abuse of your services.
 ---
 
-## Appwrite Rate Limits
+## Appwrite rate limits {% appwrite-rate-limits %}
 
 Some of Appwrite's API endpoints have a rate limit to avoid abuse or brute-force attacks against Appwrite's REST API. Each Appwrite route documentation has information about any rate limits that might apply to them.
 
@@ -50,7 +50,7 @@ X-RateLimit-Reset: 1377013266
 }
 ```
 
-## Service Abuse
+## Service abuse {% service-abuse %}
 
 To protect the quality of service from Appwrite, additional rate limits may apply to some actions. For example, rapidly creating content, polling aggressively instead of using webhooks, making API calls with a high concurrency, or repeatedly requesting data that is computationally expensive may result in abuse rate limiting.
 

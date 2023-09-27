@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Functions
-description: [TODO]
-difficulty: beginner
-readtime: 3
+description: Explore the power of serverless functions with Appwrite Functions. Learn how to build and deploy serverless functions for dynamic and scalable application logic.
 ---
 
 Appwrite Functions unlock limitless potential for developers to extend Appwrite with code snippets. 
@@ -16,6 +14,11 @@ Each function will have its own URL, execute in its own isolated container, and 
 Appwrite Functions let you build anything you can imagine, but this flexibility makes it difficult to know where to start. 
 Start exploring by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/functions/quick-start)
+{% only_dark %}
+![Create project screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/functions/template.png)
+{% /only_light %}
 
-![](https://appwrite.io/images-ee/docs/functions-starter-dark.png)
+[Quick start {% icon icon="cheveron-right" /%}](/docs/products/functions/quick-start)

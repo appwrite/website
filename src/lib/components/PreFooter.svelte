@@ -6,11 +6,11 @@
 
 <div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
 	<section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-		<h2 class="aw-display u-max-width-600 aw-u-text-align-center aw-u-color-text-primary">
-			Start building with Appwrite today
+		<h2 class="aw-display u-max-width-500 aw-u-text-align-center aw-u-color-text-primary">
+			Start building today
 		</h2>
 		<a href="https://cloud.appwrite.io" class="aw-button is-transparent aw-u-cross-child-center">
-			<span class="text">Get Started</span>
+			<span class="text">Get started</span>
 		</a>
 	</section>
 	<section

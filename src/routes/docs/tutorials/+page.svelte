@@ -23,7 +23,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">React</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with React.
 							</p>
 						</article>
 					</li>
@@ -34,7 +34,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Vue</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with Vue.
 							</p>
 						</article>
 					</li>
@@ -45,7 +45,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">SvelteKit</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with SvelteKit.
 							</p>
 						</article>
 					</li>
@@ -56,7 +56,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Flutter</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>
@@ -67,7 +67,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Apple</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>
@@ -78,7 +78,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Android</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>

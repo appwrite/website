@@ -16,7 +16,7 @@
 					href: '/docs/products/functions'
 				},
 				{
-					label: 'Quick Start',
+					label: 'Quick start',
 					href: '/docs/products/functions/quick-start'
 				},
 			]

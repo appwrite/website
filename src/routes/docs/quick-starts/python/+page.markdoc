@@ -1,0 +1,224 @@
+---
+layout: article
+title: Start with Python
+description: Learn to get started with server integrations with Appwrite Python SDK.
+---
+Learn to setup your first Python project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+{% only_dark %}
+![Server integrations](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Server integrations](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+{% /section %}
+{% section #step-2 step=2 title="Create Python project" %}
+Create a directory for the project.
+
+```sh
+mkdir my_app
+cd my_app
+```
+
+After that, create a virtual environment in this directory and activate it.
+
+```sh
+# Create a venv
+python -m venv .venv
+
+# Active the venv in Unix shell
+source .venv/bin/activate
+
+# Or in Powershell
+.venv/Scripts/Activate.ps1
+```
+
+Finally, create a file `my_app.py`.
+
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the Python Appwrite SDK.
+
+```sh
+pip install appwrite
+```
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Open `my_app.py` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+
+```py
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.id import ID
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+```
+
+{% /section %}
+{% section #step-5 step=5 title="Initialize database" %}
+
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
+
+```py
+databases = Databases(client)
+
+todoDatabase = None
+todoCollection = None
+
+def prepare_database():
+  global todoDatabase
+  global todoCollection
+
+  todoDatabase = databases.create(
+    database_id=ID.unique(),
+    name='TodosDB'
+  )
+
+  todoCollection = databases.create_collection(
+    database_id=todoDatabase['$id'],
+    collection_id=ID.unique(),
+    name='Todos'
+  )
+
+  databases.create_string_attribute(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    key='title',
+    size=255,
+    required=True
+  )
+
+  databases.create_string_attribute(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    key='description',
+    size=255,
+    required=False,
+    default='This is a test description.'
+  )
+
+  databases.create_boolean_attribute(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    key='isComplete',
+    required=True
+  )
+```
+
+{% /section %}
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
+
+```py
+def seed_database():
+  testTodo1 = {
+    'title': "Buy apples",
+    'description': "At least 2KGs",
+    'isComplete': True
+  }
+
+  testTodo2 = {
+    'title': "Wash the apples", 
+    'isComplete': True
+  }
+
+  testTodo3 = {
+    'title': "Cut the apples",
+    'description': "Don\'t forget to pack them in a box",
+    'isComplete': False
+  }
+
+  databases.create_document(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    document_id=ID.unique(),
+    data=testTodo1
+  )
+
+  databases.create_document(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    document_id=ID.unique(),
+    data=testTodo2
+  )
+
+  databases.create_document(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    document_id=ID.unique(),
+    data=testTodo3
+  )
+```
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data, 
+then execute the functions in `_main_`.
+
+```py
+def get_todos():
+  todos = databases.list_documents(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id']
+  )
+  for todo in todos['documents']:
+    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+
+if __name__ == "__main__":
+  prepare_database()
+  seed_database()
+  get_todos()
+```
+
+{% /section %}
+{% section #step-8 step=8 title="All set" %}
+
+Run your project with `python my_app.py` and view the response in your console.
+
+{% /section %}

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Qwik
-description: Learn how to quickly integrate Appwrite products and services into your Qwik project.
+description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Qwik apps.
 difficulty: beginner
 readtime: 3
 ---

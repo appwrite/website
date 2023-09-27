@@ -82,7 +82,6 @@
 							<li>Last updated on September 27, 2023</li>
 							<li>
 								<button class="">
-									<!-- TODO: wait for implement icons in website -->
 									<span class="icon-edit" aria-hidden="true" />
 									<span>Update on GitHub</span>
 								</button>

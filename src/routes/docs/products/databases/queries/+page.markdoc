@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Queries
-description: This is the description used for SEO.
-difficulty: intermediate
-readtime: 15
+description: Harness the power of querying with Appwrite Databases. Discover various query options, filtering, sorting, and advanced querying techniques.
 ---
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.

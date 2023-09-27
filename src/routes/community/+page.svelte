@@ -22,7 +22,7 @@
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Inspire and get inspired. Join our community of maintainers and contributors and
+								Inspire and get inspired. Join Appwrite's community of maintainers and contributors and
 								help us make Appwrite better for developers worldwide.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">

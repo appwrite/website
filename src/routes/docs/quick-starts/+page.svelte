@@ -15,17 +15,23 @@
 
 	const quickStarts: QuickStarts = [
 		{
-			title: 'Web App',
+			title: 'Web app',
 			quickStarts: [
 				{
-					title: 'React.js',
-					icon: 'icon-next_js',
+					title: 'Next.js',
+					icon: 'icon-nextjs',
 					image: '/images/blog/placeholder.png',
 					href: 'nextjs'
 				},
 				{
+					title: 'React',
+					icon: 'icon-react',
+					image: '/images/blog/placeholder.png',
+					href: 'react'
+				},
+				{
 					title: 'Vue.js',
-					icon: 'icon-vue_js',
+					icon: 'icon-vue',
 					image: '/images/blog/placeholder.png',
 					href: 'vue'
 				},
@@ -38,7 +44,7 @@
 			]
 		},
 		{
-			title: 'Mobile and Native',
+			title: 'Mobile and native',
 			quickStarts: [
 				{
 					title: 'Flutter',
@@ -69,24 +75,24 @@
 					image: '/images/blog/placeholder.png',
 					href: 'node'
 				},
-				// {
-				// 	title: 'Python',
-				// 	icon: 'icon-python',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'python'
-				// },
-				// {
-				// 	title: '.NET',
-				// 	icon: 'icon-dotnet',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'dotnet'
-				// },
-				// {
-				// 	title: 'Dart',
-				// 	icon: 'icon-dart',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'dart'
-				// }
+				{
+					title: 'Python',
+					icon: 'icon-python',
+					image: '/images/blog/placeholder.png',
+					href: 'python'
+				},
+				{
+					title: '.NET',
+					icon: 'icon-dotnet',
+					image: '/images/blog/placeholder.png',
+					href: 'dotnet'
+				},
+				{
+					title: 'Dart',
+					icon: 'icon-dart',
+					image: '/images/blog/placeholder.png',
+					href: 'dart'
+				}
 			]
 		}
 	];
@@ -110,11 +116,12 @@
 						{#each category.quickStarts as quickStart}
 							<li class="is-mobile-col-span-2">
 								<a href={`/docs/quick-starts/${quickStart.href}`}>
-									<img class="aw-media" src={quickStart.image} alt="" />
-									<div class="u-flex u-cross-baseline u-gap-4">
+								<article class="aw-card is-full-color">
+									<header class="u-flex u-cross-baseline u-gap-4">
 										<span class="{quickStart.icon} aw-u-font-size-24" aria-hidden="true" />
 										<h4 class="aw-sub-body-500 aw-u-color-text-primary">{quickStart.title}</h4>
-									</div>
+									</header>
+								</article>
 								</a>
 							</li>
 						{/each}

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Migrate from Supabase
-description: Learn how to migrate your Supabase project to Appwrite Cloud.
+description: Effortlessly migrate from Supabase to Appwrite. Discover migration strategies, data transfer methods, and tips for a smooth transition to Appwrite.
 difficulty: beginner
 readtime: 20
 ---

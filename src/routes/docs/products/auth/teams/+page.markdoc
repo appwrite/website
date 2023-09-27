@@ -1,7 +1,7 @@
 ---
 layout: article
-title: User Managements
-description: This is the description used for SEO.
+title: Teams
+description: Master team management in the Appwrite Cloud. Explore team-related functions, permissions, and more.
 ---
 
 Teams are a good way to allow users to share access to resources. 

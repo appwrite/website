@@ -1,7 +1,7 @@
 ---
 layout: article
 title: SDKs
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Get started with Appwrite SDKs and learn how to use them to add authentication, user management, file storage, and more to your apps.
 ---
 
 Appwrite provides SDK libraries for major programming languages and platforms so you don't have to write code for interacting with our API protocols from scratch.

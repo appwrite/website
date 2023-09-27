@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Labels
-description: This is the description used for SEO.
+description: Organize your users and grant custom permissions for subscriptions or VIP users with labels.
 ---
 
 Labels are a good way to categorize a user to grant them access to resources. For example, a `subscriber` label can be added to a user once they've purchased a subscription.

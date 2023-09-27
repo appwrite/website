@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Storage
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+description: Unlock the power of cloud storage with Appwrite Storage. Learn how to store, manage, and retrieve files and media assets securely in your applications.
 ---
 
 Appwrite Storage allows you to manage files in your project. 
