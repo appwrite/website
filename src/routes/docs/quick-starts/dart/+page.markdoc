@@ -58,7 +58,7 @@ dart pub add dart_appwrite
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -66,6 +66,9 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
+
+ Also, click on the **View API Keys** button to find the API key that was created earlier. 
+
 Open `bin/my_app.dart` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```dart
