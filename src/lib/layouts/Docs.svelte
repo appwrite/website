@@ -135,7 +135,7 @@
 								class="aw-input-button aw-u-flex-basis-400"
 								on:click={() => ($layoutState.showSearch = true)}
 							>
-								<span class="icon-search" aria-hidden="true" />
+								<span class="aw-icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
 								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
