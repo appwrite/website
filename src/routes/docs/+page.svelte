@@ -8,35 +8,47 @@
 
 <Docs variant="default">
 	<Sidebar />
-	<div class="u-position-absolute" style="margin-block-start:-36%; margin-inline-start:0;">
-		<svg
-			style="width:1466.685px; height:804.009px; transform:rotate(150.348deg); fill: var(--appwrite-pink, #FD366E); opacity: 0.6499999761581421; filter: blur(127.51104736328125px);"
-			xmlns="http://www.w3.org/2000/svg"
-			width="1727"
-			height="520"
-			viewBox="0 0 1727 520"
-			fill="none"
-		>
-			<g opacity="0.65" filter="url(#filter0_f_278_15509)">
-				<path
-					d="M887.773 -394.667L-52.2142 167.684L842.622 381.131L1616.37 124.584L887.773 -394.667Z"
-					fill="#FD366E"
-				/>
+	<div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
+		<svg xmlns="http://www.w3.org/2000/svg" width="395" height="645" viewBox="0 0 395 645" fill="none">
+			<g opacity="0.6">
+				<g opacity="0.3" filter="url(#filter0_f_2588_70942)">
+					<path d="M490.888 119.115C582.97 188.753 601.165 319.853 531.527 411.935C461.89 504.018 330.79 522.213 238.707 452.575C193.573 418.442 360.66 328.3 347.404 265.83C333.616 200.849 118.572 216.378 154.076 169.43C223.714 77.3477 398.805 49.4778 490.888 119.115Z" fill="url(#paint0_radial_2588_70942)"/>
+				</g>
+				<g opacity="0.2" filter="url(#filter1_f_2588_70942)">
+					<ellipse cx="427.577" cy="248.547" rx="119.581" ry="41.5954" transform="rotate(-74.0791 427.577 248.547)" fill="url(#paint1_radial_2588_70942)"/>
+				</g>
+				<g opacity="0.2" filter="url(#filter2_f_2588_70942)">
+					<ellipse cx="413.058" cy="184.027" rx="98.4768" ry="40.0587" transform="rotate(170.022 413.058 184.027)" fill="url(#paint2_radial_2588_70942)"/>
+				</g>
 			</g>
 			<defs>
-				<filter
-					id="filter0_f_278_15509"
-					x="-307.237"
-					y="-649.69"
-					width="2178.63"
-					height="1285.84"
-					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
-				>
-					<feFlood flood-opacity="0" result="BackgroundImageFix" />
-					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-					<feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_278_15509" />
+				<filter id="filter0_f_2588_70942" x="0.97641" y="-69.007" width="722.02" height="713.051" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+					<feGaussianBlur stdDeviation="74.5738" result="effect1_foregroundBlur_2588_70942"/>
 				</filter>
+				<filter id="filter1_f_2588_70942" x="296.3" y="53.4351" width="262.554" height="390.225" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+					<feGaussianBlur stdDeviation="39.7727" result="effect1_foregroundBlur_2588_70942"/>
+				</filter>
+				<filter id="filter2_f_2588_70942" x="246.216" y="71.429" width="333.684" height="225.195" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+					<feGaussianBlur stdDeviation="34.8011" result="effect1_foregroundBlur_2588_70942"/>
+				</filter>
+				<radialGradient id="paint0_radial_2588_70942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(364.797 285.845) rotate(37.0985) scale(209.04 209.04)">
+					<stop offset="0.0625" stop-color="#FE9567"/>
+					<stop offset="0.421875" stop-color="#FD366E"/>
+				</radialGradient>
+				<radialGradient id="paint1_radial_2588_70942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(427.577 248.547) rotate(90) scale(41.5954 119.581)">
+					<stop stop-color="#FE9567"/>
+					<stop offset="1" stop-color="#FE9567" stop-opacity="0"/>
+				</radialGradient>
+				<radialGradient id="paint2_radial_2588_70942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(413.058 184.027) rotate(90) scale(40.0587 98.4768)">
+					<stop stop-color="#FE9567"/>
+					<stop offset="1" stop-color="#FD366E"/>
+				</radialGradient>
 			</defs>
 		</svg>
 	</div>
@@ -67,7 +79,28 @@
 	</Spline>
 
 	<main class="aw-main-section u-position-relative">
-		<section class="aw-hero is-align-start">
+
+		<div class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
+				style="    margin-inline-start: -30px;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="336" height="708" viewBox="0 0 336 708" fill="none">
+				<g opacity="0.3" filter="url(#filter0_f_2588_70948)">
+					<ellipse cx="13.6533" cy="353.688" rx="119.415" ry="198.315" transform="rotate(-32.9472 13.6533 353.688)" fill="url(#paint0_radial_2588_70948)"/>
+				</g>
+				<defs>
+					<filter id="filter0_f_2588_70948" x="-308.325" y="0.242935" width="643.957" height="706.891" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+						<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+						<feGaussianBlur stdDeviation="87.3766" result="effect1_foregroundBlur_2588_70948"/>
+					</filter>
+					<radialGradient id="paint0_radial_2588_70948" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.491 356.428) rotate(86.3936) scale(172.104 118.693)">
+						<stop stop-color="#E7F8F7"/>
+						<stop offset="1" stop-color="#85DBD8"/>
+					</radialGradient>
+				</defs>
+			</svg>
+		</div>
+
+		<section class="aw-hero is-align-start u-position-relative">
 			<h1 class="aw-display aw-u-color-text-primary u-max-width-600">
 				Run on any provider or through Appwrite Cloud
 			</h1>
@@ -83,7 +116,7 @@
 			<p class="aw-description u-max-width-600">
 				Follow a quick start guide on your web, mobile, and native frameworks.
 			</p>
-			<ul class="u-flex u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
+			<ul class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
 				<li>
 					<a href="/docs/quick-starts/flutter" class="aw-box-icon">
 						<img
