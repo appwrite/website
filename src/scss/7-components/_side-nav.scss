@@ -27,7 +27,7 @@
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
     padding:pxToRem(16); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
-    
+
     &-parent {
       display:flex; align-items:center;
       padding-block-end:pxToRem(16); border-block-end:pxToRem(1) solid hsl(var(--aw-color-smooth));
@@ -39,7 +39,7 @@
     @include scroll(); overflow-y:auto; overflow-x:hidden;
     flex:1;
     display:flex; flex-direction:column; gap:pxToRem(24);
-    padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
+    padding-inline:pxToRem(16); margin-inline:pxToRem(-16);
 
     .#{$p}-is-only-mobile  & {
       border-block-start: 1px solid hsl(var(--aw-color-smooth));
@@ -52,7 +52,7 @@
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
     color:hsl(var(--p-side-nav-item-text-color)); background-color:hsl(var(--p-side-nav-item-bg-color));
     border-radius:pxToRem(8);
-    [class*="icon"]:first-child { color:hsl(var(--p-side-nav-item-icon-color)); }
+    [class*="icon"]:first-child { color:hsl(var(--p-side-nav-item-icon-color)); font-size:pxToRem(16); }
     [class*="icon"]:last-child { transition:var(--transiton); }
     &:hover {
       --p-side-nav-item-bg-color: var(--p-side-nav-item-bg-color-hover);
