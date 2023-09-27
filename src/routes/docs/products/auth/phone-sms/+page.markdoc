@@ -6,7 +6,7 @@ description: This is the description used for SEO.
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
 
-## Send SMS message {% #init %}
+# Send SMS message {% #init %}
 
 Phone authentication is done using a two-step authentication process. When using phone authentication, the authentication request is initiated from the client application and an SMS message is sent to the user's phone. The SMS message will contain a secret the user can use to log in.
 
@@ -97,7 +97,7 @@ mutation {
 
 {% /multicode %}
 
-## Login {% #login %}
+# Login {% #login %}
 
 After initiating the phone authentication process, the returned user ID and secret are used to confirm the user. The secret will usually be a 6-digit number in the SMS message sent to the user.
 

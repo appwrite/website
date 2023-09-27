@@ -6,7 +6,7 @@ description:
 
 The Apprite CLI allows you to create and deploy databases, collections, buckets, teams and functions to your Appwrite project from a configuration file. This is especially helpful if you're trying to track project setup using version control.
 
-## Initialization {% #initialization %}
+# Initialization {% #initialization %}
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
 
@@ -28,7 +28,7 @@ You can fetch all the existing teams in your current project using:
 appwrite init team
 ```
 
-## Deploying Functions {% #deploying-function %}
+# Deploying Functions {% #deploying-function %}
 
 The CLI also handles the creation and deployment of Appwrite Functions. Run this command in the folder holding your `appwrite.json` file.
 
@@ -50,7 +50,7 @@ appwrite deploy function
 ✓ Success Deployed Awesome Function ( 621229798628cf5bf712 )
 ```
 
-## Deploying Collections {% #deploying-collections %}
+# Deploying Collections {% #deploying-collections %}
 
 The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 
@@ -62,7 +62,7 @@ The deploy command will overwrite existing collections causing existing data to 
 appwrite deploy collection
 ```
 
-## Deploying Teams {% #deploying-teams %}
+# Deploying Teams {% #deploying-teams %}
 
 The Appwrite CLI can create teams to organize users. Teams can be used to grant access permissions to a group of users. Learn more about permissions.
 
@@ -72,7 +72,7 @@ Deploy teams by running this command in the folder holding your `appwrite.json` 
 appwrite deploy team
 ```
 
-## Deploying Storage {% #deploying-storage %}
+# Deploying Storage {% #deploying-storage %}
 
 The Appwrite CLI allows you to configure and deploy buckets across projects. All the bucket's settings are available through the [appwrite.json](/docs/tooling/command-line/deployment#appwrite-json) file.
 
@@ -82,15 +82,15 @@ Deploy storage buckets by running this command in the folder holding your `appwr
 appwrite deploy bucket
 ```
 
-## Conflicts {% #conflicts %}
+# Conflicts {% #conflicts %}
 
 When using `appwrite.json`, changes made in the Appwrite Console can cause conflicts with the local config. To avoid conflicts, prefer updating configuration locally and deploying instead of using the Console.
 
-## The appwrite.json file {% #appwrite-json %}
+# The appwrite.json file {% #appwrite-json %}
 
 An `appwrite.json` file is created by the CLI when you initialize your project. It stores all the configuration for the CLI to be able to interact with your Appwrite project in JSON format. When using the `appwrite deploy` command, the CLI uses information from `appwrite.json` to deploy your functions and collections.
 
-### Configuration {% #configuration %}
+## Configuration {% #configuration %}
 
 Here's a complete list of all configurable options in `appwrite.json`:
 
@@ -104,7 +104,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `teams` | array of teams | Configuration of teams in your project. |
 | `buckets` | array of buckets | Configuration of teams in your project. |
 
-#### Function options
+### Function options
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -120,14 +120,14 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `timeout` | int | Execution timeout of the function in seconds, with a maximum configurable limit of 900 seconds. |
 | `variables` | JSON object | Variables provided to the function on execution stored as a key-value JSON object. |
 
-#### Databases options
+### Databases options
 
 | Option | Type | Description |
 | --- | --- | --- |
 | `$id` | string | Database ID. |
 | `name` | string | Database Name. |
 
-#### Collection options
+### Collection options
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `attributes` | array of objects | Defines a list of attributes in the collection. [Learn more about the Attributes List Object](/docs/references/cloud/models/attributeList). |
 | `indexes` | array of objects | Defines a list of indexes in the collection. [Learn more about the Indexes List Object](/docs/references/cloud/models/indexList). |
 
-#### Buckets options
+### Buckets options
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `encryption` | boolean | Whether the bucket's content is encrypted. |
 | `antivirus` | boolean | Whether virus scanning is enabled for the bucket's content. |
 
-#### Teams options
+### Teams options
 
 | Option | Type | Description |
 | --- | --- | --- |

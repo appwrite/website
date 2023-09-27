@@ -12,14 +12,14 @@ It is a best practice to grant only the scopes you need to meet your project's g
 API keys should be treated as a secret. Never share the API key and keep API keys out of client applications.
 {% /info %}
 
-## Create API key {% #create-api-key %}
+# Create API key {% #create-api-key %}
 
 To create a new API key, navigate to **Overview** > **Integration** > **API keys** and click **Create API key**.
 
 When adding a new API Key, you can choose which [scopes](#scopes) to grant your application. 
 If you need to replace your API Key, create a new key, update your app credentials and, once ready, delete your old key.
 
-## Scopes {% #scopes %}
+# Scopes {% #scopes %}
 
 | Name             | Description                                                           |
 |------------------|-----------------------------------------------------------------------|
