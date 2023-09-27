@@ -90,10 +90,6 @@
 			label: 'Blog',
 			href: '/blog'
 		},
-		// {
-		// 	label: 'Changelog',
-		// 	href: '#'
-		// },
 		{
 			label: 'Pricing',
 			href: '/pricing'
