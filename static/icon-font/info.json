@@ -209,16 +209,22 @@
     "className": "aw-icon-twitter",
     "unicode": "&#59939;"
   },
-  "x": {
+  "vue": {
     "encodedCode": "\\ea24",
     "prefix": "aw-icon",
-    "className": "aw-icon-x",
+    "className": "aw-icon-vue",
     "unicode": "&#59940;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea25",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59941;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea26",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59942;"
   }
 }
