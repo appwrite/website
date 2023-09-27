@@ -3,12 +3,13 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import PreFooter from '$lib/components/PreFooter.svelte';
-	import { Carousel, Metadata } from '$lib/components';
+	import { Carousel } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
-	import { setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	setMetadata({
-		title: 'Community' + TITLE_SUFFIX
+		title: 'Community' + TITLE_SUFFIX,
+		ogImage: DEFAULT_HOST + '/images/open-graph/website.png'
 	});
 </script>
 

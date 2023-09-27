@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter, Metadata } from '$lib/components';
-	import { setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import {
@@ -66,10 +66,10 @@
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
 	$: serviceName = serviceMap[data.service?.name];
-
-	setMetadata({
+	$: setMetadata({
 		title: serviceName + DOCS_TITLE_SUFFIX,
-		description: data.service?.description
+		description: data.service?.description,
+		ogImage: DEFAULT_HOST + '/images/open-graph/docs.png'
 	});
 </script>
 

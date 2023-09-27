@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Metadata } from '$lib/components';
 	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 	import { TITLE_SUFFIX } from '$routes/titles';
 

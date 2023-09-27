@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FooterNav, MainFooter, Metadata, PreFooter } from '$lib/components';
-	import { setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
@@ -8,7 +8,8 @@
 	import Faq from './faq.svelte';
 
 	setMetadata({
-		title: 'Pricing' + TITLE_SUFFIX
+		title: 'Pricing' + TITLE_SUFFIX,
+		ogImage: DEFAULT_HOST + '/images/open-graph/website.png'
 	});
 </script>
 

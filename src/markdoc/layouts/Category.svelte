@@ -13,7 +13,7 @@
 	import type { PostsData } from './Post.svelte';
 	import type { AuthorData } from './Author.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-	import { setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let name: string;
 	export let description: string;
@@ -24,7 +24,8 @@
 
 	setMetadata({
 		title: name + BLOG_TITLE_SUFFIX,
-		description
+		description,
+		ogImage: DEFAULT_HOST + '/images/open-graph/docs.png'
 	});
 </script>
 

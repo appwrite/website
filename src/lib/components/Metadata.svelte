@@ -51,9 +51,17 @@
 {#if $metadata?.title}
 	<title>{$metadata.title}</title>
 	<meta name="”twitter:site”" content="@appwrite" />
+	{#if !$metadata?.ogTitle}
+		<meta property="og:title" content={$metadata.title} />
+		<meta name="”twitter:title”" content={$metadata.title} />
+	{/if}
 {/if}
 {#if $metadata?.description}
 	<meta name="description" content={$metadata.description} />
+	{#if !$metadata?.ogDescription}
+		<meta property="og:description" content={$metadata.description} />
+		<meta name="”twitter:description" content={$metadata.description} />
+	{/if}
 {/if}
 {#if $metadata?.ogImage}
 	<meta property="og:image" content={$metadata.ogImage} />
@@ -68,7 +76,7 @@
 {/if}
 {#if $metadata?.ogDescription}
 	<meta property="og:description" content={$metadata.ogDescription} />
-	<meta name="”twitter:description" content={$metadata.ogTitle} />
+	<meta name="”twitter:description" content={$metadata.ogDescription} />
 {/if}
 {#if $metadata?.author}
 	{@html `<script type="application/ld+json">${createSchemaAuthor($metadata.author)}</script>`}
