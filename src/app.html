@@ -11,8 +11,24 @@
 </head>
 
 <body class="theme-dark" data-sveltekit-preload-data="hover">
+	<script>
+		const isDocs = window.location.pathname.startsWith('/docs');
+		if (isDocs) {
+			const theme = localStorage.getItem('theme');
+			document.body.classList.remove('theme-dark', 'theme-light');
+			if (theme === 'system') {
+				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light';
+				document.body.classList.add(`theme-${systemTheme}`);
+			} else {
+				console.log('set', theme);
+				document.body.classList.add(`theme-${theme}`);
+			}
+		}
+	</script>
+	<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"></script>
 	<div id="top" style="display: contents">%sveltekit.body%</div>
-	<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js" defer></script>
 </body>
 
 </html>
