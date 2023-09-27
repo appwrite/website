@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Blog - {TITLE_SUFFIX}</title>
+	<title>Blog{TITLE_SUFFIX}</title>
 </svelte:head>
 
 <Main>
