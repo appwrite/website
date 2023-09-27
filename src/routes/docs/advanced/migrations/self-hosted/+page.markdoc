@@ -31,9 +31,9 @@ To begin migrating to self-hosted, make sure to read the [migration overview](/d
 
 {% /section %}
 
-{% section #create-migration step=3 title="Continue on self-hosted" %}
+{% section #continue-on-self-hosted step=3 title="Continue on self-hosted" %}
 
-1. Once redirected to Appwrite Cloud, you'll be prompted to select an organization and a project. You can migrate to an existing project or create a new one.
+1. Once redirected to your self-hosted project, you'll be prompted to select an organization and a project. You can migrate to an existing project or create a new one.
 
 1. Select the data you wish to migrate. You can choose among accounts, databases, documents, files, and functions.
 

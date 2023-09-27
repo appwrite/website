@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 3
 ---
 
-Learn to setup your first Apple project powered by Appwrite.
+Learn to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).
 
 {% section #step-1 step=1 title="Create Apple project" %}
 Open Xcode and click **Create a new Xcode project**.
