@@ -12,10 +12,9 @@ RUN NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
 
 # Node alpine image to serve the generated static files
 FROM node:20-alpine AS serve
-WORKDIR /app
 
+WORKDIR /app
 COPY --from=build /app .
 
 EXPOSE 3000
-
 CMD [ "node", "build/index.js"]
