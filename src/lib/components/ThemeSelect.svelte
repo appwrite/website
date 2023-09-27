@@ -1,21 +1,16 @@
 <script lang="ts">
 	import { capitalize } from '$lib/utils/capitalize.js';
+	import { currentTheme, setTheme, type Theme } from '$routes/+layout.svelte';
 	import { createSelect, melt } from '@melt-ui/svelte';
-	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	const iconMap = {
+	const iconMap: Record<Theme, string> = {
 		dark: 'aw-icon-dark',
 		light: 'aw-icon-light',
 		system: 'icon-server'
-	} as const;
+	};
 
-	const themes = ['dark', 'light', 'system'] as const;
-
-	type Theme = (typeof themes)[number];
-	function isTheme(theme: unknown): theme is Theme {
-		return themes.includes(theme as Theme);
-	}
+	const themes: Array<Theme> = ['dark', 'light', 'system'];
 
 	const {
 		elements: { trigger, menu, option },
@@ -23,8 +18,8 @@
 	} = createSelect<Theme>({
 		preventScroll: false,
 		defaultSelected: {
-			value: 'dark',
-			label: 'Dark'
+			value: $currentTheme,
+			label: capitalize($currentTheme)
 		},
 		positioning: {
 			sameWidth: true,
@@ -33,42 +28,11 @@
 		forceVisible: true,
 		onSelectedChange({ curr, next }) {
 			const t = next?.value;
-			if (isTheme(t) && t !== curr?.value) {
+			if (t && t !== curr?.value) {
 				setTheme(t);
 			}
 			open.set(false);
 			return next;
-		}
-	});
-
-	function setSelected(theme: Theme) {
-		selected.set({
-			value: theme,
-			label: capitalize(theme)
-		});
-	}
-
-	function setTheme(theme: Theme) {
-		document.body.classList.remove('theme-dark', 'theme-light');
-		if (theme === 'system') {
-			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: 'light';
-			document.body.classList.add(`theme-${systemTheme}`);
-		} else {
-			document.body.classList.add(`theme-${theme}`);
-		}
-		localStorage.setItem('theme', theme);
-	}
-
-	onMount(() => {
-		const theme = localStorage.getItem('theme');
-		if (isTheme(theme)) {
-			setTheme(theme);
-			setSelected(theme);
-		} else {
-			setTheme('dark');
-			setSelected('dark');
 		}
 	});
 </script>
