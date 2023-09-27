@@ -86,13 +86,7 @@
 							</p>
 							<div class="aw-author">
 								<div class="u-flex u-cross-center u-gap-8">
-									<img
-										class="aw-author-image"
-										src={author?.avatar}
-										width="24"
-										height="24"
-										alt=""
-									/>
+									<img class="aw-author-image" src={author?.avatar} width="24" height="24" alt="" />
 									<div class="aw-author-info">
 										<a href={author?.href} class="aw-sub-body-400 aw-link">{author?.name}</a>
 										<p class="aw-caption-400 u-hide">{author?.bio}</p>
@@ -124,7 +118,7 @@
 									</li>
 								</ul>
 							</div>
-							<a href="{featured.href}" class="aw-button is-secondary u-margin-block-start-auto">
+							<a href={featured.href} class="aw-button is-secondary u-margin-block-start-auto">
 								<span>Read article</span>
 							</a>
 						</div>
