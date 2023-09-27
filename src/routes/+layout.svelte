@@ -33,6 +33,7 @@
 			return;
 		}
 		currentTheme.set(theme === 'system' ? getSystemTheme() : theme);
+		globalThis?.localStorage.setItem('theme', theme);
 	}
 </script>
 
