@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	export const DEFAULT_HOST = 'https://stage.appwrite.io';
+	export const DEFAULT_HOST = 'https://https://website-appwrite.vercel.app';
 	export function buildOpenGraphImage(title: string, description: string): string {
 		return `https://og.appwrite.global/image.png?title=${encodeURIComponent(
 			title
