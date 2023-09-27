@@ -68,7 +68,7 @@
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content={$metadata.ogImage} />
-	<meta name="”twitter:card”" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 {/if}
 {#if $metadata?.ogTitle}
 	<meta property="og:title" content={$metadata.ogTitle} />
