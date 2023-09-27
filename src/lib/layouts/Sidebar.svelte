@@ -39,7 +39,7 @@
 			class="aw-input-text aw-is-not-desktop"
 			on:click={() => ($layoutState.showSearch = true)}
 		>
-			<span class="icon-search" />
+			<span class="aw-icon-search" />
 			<span class="text">Search in docs</span>
 		</button>
 		<div class="aw-side-nav-scroll">

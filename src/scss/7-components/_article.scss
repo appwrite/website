@@ -28,7 +28,10 @@
       &-pink-dots    { margin-block-end:pxToRem(24); }
       &-blockquote    { margin-block:pxToRem(16); }
       &-table-wrapper { margin-block-end:pxToRem(32); }
-      &-media         { margin-block-end:pxToRem(32); }
+      &-media         {
+        margin-block-end:pxToRem(32);
+        &:not(:first-child) { margin-block-start:pxToRem(16); }
+      }
       &-inline-info   { margin-block-end:pxToRem(24); }
       &-code-snippet  { margin-block-end:pxToRem(32); }
     }
