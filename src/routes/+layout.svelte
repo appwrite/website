@@ -80,6 +80,7 @@
 			}
 		});
 	});
+
 	$: browser && currentTheme.subscribe((theme) => applyTheme(theme));
 </script>
 
