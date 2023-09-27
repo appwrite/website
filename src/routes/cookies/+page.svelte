@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { Metadata } from '$lib/components';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
-</script>
 
-<svelte:head>
-	<Metadata title={'Cookies' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Cookies' + TITLE_SUFFIX
+	});
+</script>
 
 <div class="u-position-absolute" style="pointer-events:none;">
 	<svg

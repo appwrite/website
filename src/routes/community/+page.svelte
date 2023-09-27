@@ -5,11 +5,12 @@
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import { Carousel, Metadata } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
-</script>
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
-<svelte:head>
-	<Metadata title={'Community' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Community' + TITLE_SUFFIX
+	});
+</script>
 
 <Main>
 	<div class="aw-big-padding-section">

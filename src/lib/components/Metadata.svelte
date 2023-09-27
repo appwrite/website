@@ -1,23 +1,30 @@
 <script lang="ts" context="module">
+	type MetaDataType = {
+		title: string;
+		description: string;
+		ogImage: string;
+		ogTitle: string;
+		ogDescription: string;
+		author: AuthorData;
+		post: PostsData;
+	};
+
+	const metadata = writable<Partial<MetaDataType>>();
 	export const DEFAULT_HOST = 'https://website-appwrite.vercel.app';
 	export function buildOpenGraphImage(title: string, description: string): string {
 		return `https://og.appwrite.global/image.png?title=${encodeURIComponent(
 			title
 		)}&subtitle=${encodeURIComponent(description)}`;
 	}
+	export function setMetadata(data: Partial<MetaDataType>) {
+		metadata.set(data);
+	}
 </script>
 
 <script lang="ts">
 	import type { AuthorData } from '$markdoc/layouts/Author.svelte';
 	import type { PostsData } from '$markdoc/layouts/Post.svelte';
-
-	export let title: string | undefined = undefined;
-	export let description: string | undefined = undefined;
-	export let ogImage: string | undefined = undefined;
-	export let ogTitle: string | undefined = title;
-	export let ogDescription: string | undefined = description;
-	export let author: AuthorData | undefined = undefined;
-	export let post: PostsData | undefined = undefined;
+	import { writable } from 'svelte/store';
 
 	function createSchemaAuthor(author: AuthorData): string {
 		return JSON.stringify({
@@ -41,32 +48,31 @@
 	}
 </script>
 
-{#if title}
-	<title>{title}</title>
+{#if $metadata?.title}
+	<title>{$metadata.title}</title>
 	<meta name="”twitter:site”" content="@appwrite" />
 {/if}
-{#if description}
-	<meta name="description" content={description} />
+{#if $metadata?.description}
+	<meta name="description" content={$metadata.description} />
 {/if}
-{#if ogImage}
-	<meta property="og:image" content={ogImage} />
+{#if $metadata?.ogImage}
+	<meta property="og:image" content={$metadata.ogImage} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:image" content={$metadata.ogImage} />
 	<meta name="”twitter:card”" content="”summary”" />
 {/if}
-{#if ogTitle}
-	<meta property="og:title" content={ogTitle} />
-	<meta name="”twitter:title”" content={ogTitle} />
+{#if $metadata?.ogTitle}
+	<meta property="og:title" content={$metadata.ogTitle} />
+	<meta name="”twitter:title”" content={$metadata.ogTitle} />
 {/if}
-{#if ogDescription}
-	<meta property="og:description" content={ogDescription} />
-	<meta name="”twitter:description" content={ogTitle} />
+{#if $metadata?.ogDescription}
+	<meta property="og:description" content={$metadata.ogDescription} />
+	<meta name="”twitter:description" content={$metadata.ogTitle} />
 {/if}
-{#if author}
-	{@html `<script type="application/ld+json">${createSchemaAuthor(author)}</script>`}
+{#if $metadata?.author}
+	{@html `<script type="application/ld+json">${createSchemaAuthor($metadata.author)}</script>`}
 {/if}
-{#if post}
-	{@html `<script type="application/ld+json">${createSchemaPost(post)}</script>`}
+{#if $metadata?.post}
+	{@html `<script type="application/ld+json">${createSchemaPost($metadata.post)}</script>`}
 {/if}
-<slot />

@@ -19,6 +19,7 @@
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let name: string;
 	export let role: string;
@@ -33,14 +34,12 @@
 	const author = authors.find(
 		(p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
 	);
-</script>
 
-<svelte:head>
-	<Metadata
-		title={name + BLOG_TITLE_SUFFIX}
-		description={bio}
-	/>
-</svelte:head>
+	setMetadata({
+		title: name + BLOG_TITLE_SUFFIX,
+		description: bio
+	});
+</script>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">

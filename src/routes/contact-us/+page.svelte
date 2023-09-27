@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Metadata } from '$lib/components';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
@@ -33,11 +34,11 @@
 
 		submitted = true;
 	}
-</script>
 
-<svelte:head>
-	<Metadata title={'Contact us' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Contact us' + TITLE_SUFFIX
+	});
+</script>
 
 <div class="u-position-absolute" style="pointer-events:none;">
 	<svg

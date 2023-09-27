@@ -19,7 +19,7 @@
 	import { MainFooter, Metadata } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
-	import { buildOpenGraphImage } from '$lib/components/Metadata.svelte';
+	import { buildOpenGraphImage, setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let title: string;
 	export let description: string;
@@ -55,15 +55,13 @@
 		});
 		return carry;
 	}, []);
-</script>
 
-<svelte:head>
-	<Metadata
-		title={title + DOCS_TITLE_SUFFIX}
-		{description}
-		ogImage={buildOpenGraphImage(title, description)}
-	/>
-</svelte:head>
+	setMetadata({
+		title: title + DOCS_TITLE_SUFFIX,
+		description,
+		ogImage: buildOpenGraphImage(title, description)
+	});
+</script>
 
 <DocsArticle {title} {back} {toc}>
 	<svelte:fragment slot="metadata">

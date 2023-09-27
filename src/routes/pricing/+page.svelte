@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { FooterNav, MainFooter, Metadata, PreFooter } from '$lib/components';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
-</script>
 
-<svelte:head>
-	<Metadata title={'Pricing' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Pricing' + TITLE_SUFFIX
+	});
+</script>
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
 	<img src="/images/bgs/pricing-hero.svg" alt="" style="margin-inline:auto; display:block;" />

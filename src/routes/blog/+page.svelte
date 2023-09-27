@@ -2,16 +2,17 @@
 	import { Main } from '$lib/layouts';
 	import { MainFooter, FooterNav, Article, Metadata } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles.js';
-	import { DEFAULT_HOST } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let data;
 
 	const featured = data.posts.find((post) => post.featured);
-</script>
 
-<svelte:head>
-	<Metadata title={'Blog' + TITLE_SUFFIX} ogImage="{DEFAULT_HOST}/images/open-graph/blog.png" />
-</svelte:head>
+	setMetadata({
+		title: 'Blog' + TITLE_SUFFIX,
+		ogImage: DEFAULT_HOST + '/images/open-graph/blog.png'
+	});
+</script>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative">

@@ -4,11 +4,12 @@
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import { Metadata } from '$lib/components';
-</script>
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
-<svelte:head>
-	<Metadata title={'Company' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Company' + TITLE_SUFFIX
+	});
+</script>
 
 <Main>
 	<svg
