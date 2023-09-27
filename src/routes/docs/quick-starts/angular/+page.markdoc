@@ -83,7 +83,7 @@ export { ID } from 'appwrite';
 {% section #step-5 step=5 title="Create a login page" %}
 First, add imports for the `FormsModule` from Angular to handle the login form..
 
-```typescript
+```ts
 import { FormsModule } from '@angular/forms';
 ...
 @NgModule({
@@ -128,7 +128,7 @@ Then, replace the contents of `src/app/app.component.html`.
 ```
 
 Lastly, update `src/app/app.component.ts`.
-```
+```ts
 import { Component } from '@angular/core';
 import { account, ID } from '../lib/appwrite';
 @Component({
