@@ -10,14 +10,12 @@
 	import '@fontsource/inter/900.css';
 	import '$scss/index.scss';
 	import { dev } from '$app/environment';
-	import { Metadata } from '$lib/components';
 </script>
 
 <svelte:head>
 	{#if !dev}
 		<script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
 	{/if}
-	<Metadata />
 </svelte:head>
 
 <slot />
