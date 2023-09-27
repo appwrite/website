@@ -101,11 +101,10 @@
 
 		<section class="aw-hero is-align-start u-position-relative">
 			<h1 class="aw-display aw-u-color-text-primary u-max-width-600">
-				Run on any provider or through Appwrite Cloud
+				Learn how to build like a team of hundreds
 			</h1>
 			<p class="aw-description u-max-width-600">
-				Start building today by creating an account on <a href="https://cloud.appwrite.io/" rel="noopener noreferrer" target="_blank">Appwrite Cloud</a>
-				or <a href="/docs/advanced/self-hosting" rel="noopener noreferrer" target="_blank">self-host</a>.
+				Appwrite is a backend development platform built by hundreds of open-source developers, where you can build any application at any scale, using the coding languages and tools you want.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">
