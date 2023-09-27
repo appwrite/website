@@ -135,6 +135,7 @@
 				<li><a class="aw-link" href="/blog">Blog</a></li>
 				<li><a class="aw-link" href="/community">Community</a></li>
 				<li><a class="aw-link" href="/heroes">Heroes</a></li>
+				<li><a class="aw-link" href="https://github.com/appwrite" target="_blank">Source code</a></li>
 				<li>
 					<a class="aw-link" href="https://status.appwrite.io" target="_blank">Status</a>
 				</li>
