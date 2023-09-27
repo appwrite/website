@@ -33,6 +33,11 @@
 			</Tbody>
 		</Table>
 		<Heading id="example" level={2}>Example</Heading>
-		<Fence content={JSON.stringify(data.example, null, 4)} language="json" process withLineNumbers />
+		<Fence
+			content={JSON.stringify(data.example, null, 4)}
+			language="json"
+			process
+			withLineNumbers
+		/>
 	</article>
 </Article>

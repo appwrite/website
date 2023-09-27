@@ -88,6 +88,7 @@
 			<button
 				on:click={toggleSidenav}
 				class="aw-icon-button u-margin-inline-start-auto"
+				style:margin-bottom="1rem"
 				aria-label="toggle nav"
 			>
 				<span class="icon-cheveron-right" aria-hidden="true" />
