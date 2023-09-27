@@ -57,7 +57,7 @@ When dependency resolution is complete, click **Add Package** again to add the S
 
 In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
 
-```plist
+```xml
 <key>CFBundleURLTypes</key>
 <array>
 <dict>
