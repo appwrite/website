@@ -18,6 +18,7 @@
 	import { getContext } from 'svelte';
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let title: string;
 	export let description: string;
@@ -41,6 +42,10 @@
 		);
 	}
 </script>
+
+<svelte:head>
+	<title>{title + BLOG_TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section">

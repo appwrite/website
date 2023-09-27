@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
 	import { MainFooter, FooterNav, Article } from '$lib/components';
+	import { TITLE_SUFFIX } from '$routes/titles.js';
 
 	export let data;
 
 	const featured = data.posts.find((post) => post.featured);
 </script>
+
+<svelte:head>
+	<title>Blog{TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative">
@@ -81,13 +86,7 @@
 							</p>
 							<div class="aw-author">
 								<div class="u-flex u-cross-center u-gap-8">
-									<img
-										class="aw-author-image"
-										src={author?.avatar}
-										width="24"
-										height="24"
-										alt=""
-									/>
+									<img class="aw-author-image" src={author?.avatar} width="24" height="24" alt="" />
 									<div class="aw-author-info">
 										<a href={author?.href} class="aw-sub-body-400 aw-link">{author?.name}</a>
 										<p class="aw-caption-400 u-hide">{author?.bio}</p>
@@ -119,7 +118,7 @@
 									</li>
 								</ul>
 							</div>
-							<a href="{featured.href}" class="aw-button is-secondary u-margin-block-start-auto">
+							<a href={featured.href} class="aw-button is-secondary u-margin-block-start-auto">
 								<span>Read article</span>
 							</a>
 						</div>

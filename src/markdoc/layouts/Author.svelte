@@ -18,6 +18,7 @@
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let name: string;
 	export let role: string;
@@ -33,6 +34,10 @@
 		(p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
 	);
 </script>
+
+<svelte:head>
+	<title>{name + BLOG_TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
