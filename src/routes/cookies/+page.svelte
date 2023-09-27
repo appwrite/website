@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 </script>
+
+<svelte:head>
+	<title>Cookies{TITLE_SUFFIX}</title>
+</svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
 	<svg
@@ -300,7 +305,9 @@
 					</section>
 					<section id="typeCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary">What types of cookies do we use?</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">
+								What types of cookies do we use?
+							</h3>
 							<p>
 								The types of cookies used by us in connection with the Site can be considered
 								'essential website cookies', 'functionality cookies', 'analytics and performance
@@ -960,7 +967,9 @@
 					</section>
 					<section id="controlCookies">
 						<div class="u-flex u-flex-vertical u-gap-8">
-							<h3 class="aw-sub-body-500 aw-u-color-text-primary">How to control or delete cookies</h3>
+							<h3 class="aw-sub-body-500 aw-u-color-text-primary">
+								How to control or delete cookies
+							</h3>
 							<p>
 								You may have the right to decide whether to accept or reject cookies. When you
 								access our Site, you are presented with a cookie consent mechanism that allows you

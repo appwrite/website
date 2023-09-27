@@ -9,7 +9,7 @@
 
   @media #{$break1} {
     &.#{$p}-container { padding-inline:pxToRem(20); }
-    .#{$p}-side-nav { display:none;  max-inline-size:none; margin-inline:pxToRem(-20); }
+    .#{$p}-side-nav { display:none;  max-inline-size:none; padding-inline:pxToRem(16); }
     .#{$p}-main-section { padding-inline:pxToRem(20); padding-block-start:pxToRem(32); }
 
     &.is-open {

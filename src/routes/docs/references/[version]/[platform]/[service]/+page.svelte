@@ -12,9 +12,10 @@
 		serviceMap,
 		versions,
 		type Version
-	} from '$lib/utils/references.js';
+	} from '$lib/utils/references';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
 	import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles.js';
 	import { getContext, onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -63,13 +64,18 @@
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
+	$: serviceName = serviceMap[data.service?.name]
 </script>
+
+<svelte:head>
+	<title>{serviceName}{DOCS_TITLE_SUFFIX}</title>
+</svelte:head>
 
 <main class="u-contents">
 	<article class="aw-article u-contents">
 		<header class="aw-article-header">
 			<div class="aw-article-header-start">
-				<h1 class="aw-title">{serviceMap[data.service?.name]}</h1>
+				<h1 class="aw-title">{serviceName}</h1>
 				<div class="aw-inline-code">{platformType}</div>
 			</div>
 			<div class="aw-article-header-end">

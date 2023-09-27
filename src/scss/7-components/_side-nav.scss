@@ -17,15 +17,15 @@
   --p-side-nav-bg-color: var(--p-body-bg-color);
 
 
-  position:sticky; z-index:25; inset-block-start:pxToRem(74); inset-block-end:0;
-  block-size:calc(100vh - pxToRem(74));
+  position:sticky; z-index:35; inset-block-start:pxToRem(74); inset-block-end:0;
+  block-size:calc(100vh - pxToRem(75));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
 
 
 
   &-wrapper {
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
-    padding:pxToRem(16); padding-block-end:pxToRem(32);
+    padding-inline:pxToRem(16);
     background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
     
     &-parent {
@@ -39,7 +39,7 @@
     @include scroll(); overflow-y:auto; overflow-x:hidden;
     flex:1;
     display:flex; flex-direction:column; gap:pxToRem(24);
-    padding-inline:pxToRem(16); margin-inline:pxToRem(-16); 
+    padding:pxToRem(16); margin-inline:pxToRem(-16); 
 
     .#{$p}-is-only-mobile  & {
       border-block-start: 1px solid hsl(var(--aw-color-smooth));

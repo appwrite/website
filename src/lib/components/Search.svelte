@@ -41,8 +41,12 @@
 	}
 
 	async function handleInput(value: string) {
-		const response = await search(value);
-		results = response.hits;
+		if (!value) {
+			results = [];
+		} else {
+			const response = await search(value);
+			results = response.hits;
+		}
 	}
 
 	function handleExit(event: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
@@ -124,7 +128,7 @@
 		open = false;
 	});
 
-	$: value && handleInput(value);
+	$: handleInput(value);
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -200,27 +204,25 @@
 					<section>
 						<h6 class="aw-eyebrow">Recommended</h6>
 						<ul class="u-margin-block-start-8">
-							{#key results.length}
-								{#each recommended as hit, i (hit.uid)}
-									{@const index = i + (results.length ? results.length : 0)}
-									<li>
-										<a
-											data-hit={index}
-											href={createHref(hit)}
-											use:arrowKeyFocus
-											class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start"
-										>
-											<div class="aw-u-trim-1">
-												<span class="aw-u-color-text-secondary">{hit.h1}</span>
-												{#if hit.h2}
-													<span class="aw-u-color-text-secondary"> / </span>
-													<span class="aw-u-color-text-primary">{hit.h2}</span>
-												{/if}
-											</div>
-										</a>
-									</li>
-								{/each}
-							{/key}
+							{#each recommended as hit, i (hit.uid)}
+								{@const index = i + (results.length ? results.length : 0)}
+								<li>
+									<a
+										data-hit={index}
+										href={createHref(hit)}
+										use:arrowKeyFocus
+										class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start"
+									>
+										<div class="aw-u-trim-1">
+											<span class="aw-u-color-text-secondary">{hit.h1}</span>
+											{#if hit.h2}
+												<span class="aw-u-color-text-secondary"> / </span>
+												<span class="aw-u-color-text-primary">{hit.h2}</span>
+											{/if}
+										</div>
+									</a>
+								</li>
+							{/each}
 						</ul>
 					</section>
 				</div>
