@@ -2,16 +2,17 @@
 	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
 
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
 </script>
 
+<svelte:head>
+	<title>Pricing{TITLE_SUFFIX}</title>
+</svelte:head>
+
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
-	<img
-		src="/images/bgs/pricing-hero.svg"
-		alt=""
-		style="margin-inline:auto; display:block;"
-	/>
+	<img src="/images/bgs/pricing-hero.svg" alt="" style="margin-inline:auto; display:block;" />
 </div>
 
 <Main>
@@ -47,7 +48,10 @@
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For personal passion projects and students.
 											</p>
-											<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary is-full-width u-margin-block-start-32">
+											<a
+												href="https://cloud.appwrite.io/register"
+												class="aw-button is-secondary is-full-width u-margin-block-start-32"
+											>
 												<span class="aw-sub-body-500">Start building</span>
 											</a>
 										</header>
@@ -118,7 +122,10 @@
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For scaling teams and agencies that need dedicated support.
 											</p>
-											<button class="aw-button is-secondary is-full-width u-margin-block-start-32" disabled>
+											<button
+												class="aw-button is-secondary is-full-width u-margin-block-start-32"
+												disabled
+											>
 												<span class="aw-sub-body-500">Coming soon</span>
 											</button>
 										</header>

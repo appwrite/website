@@ -4,7 +4,12 @@
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import { Carousel } from '$lib/components';
+	import { TITLE_SUFFIX } from '$routes/titles';
 </script>
+
+<svelte:head>
+	<title>Community{TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section">

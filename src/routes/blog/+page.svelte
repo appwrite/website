@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
 	import { MainFooter, FooterNav, Article } from '$lib/components';
+	import { TITLE_SUFFIX } from '$routes/titles.js';
 
 	export let data;
 
 	const featured = data.posts.find((post) => post.featured);
 </script>
+
+<svelte:head>
+	<title>Blog - {TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative">
