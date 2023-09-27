@@ -22,9 +22,9 @@
 
 	export let title: string;
 	export let description: string;
-	export let back: string = '';
-	export let difficulty: string = '';
-	export let readtime: string = '';
+	export let back: string | undefined = undefined;
+	export let difficulty: string | undefined = undefined;
+	export let readtime: string | undefined = undefined;
 
 	setContext<LayoutContext>('headings', writable({}));
 
