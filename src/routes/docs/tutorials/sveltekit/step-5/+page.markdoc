@@ -23,7 +23,7 @@ Create a new file `src/routes/+layout.svelte` and add the following code to it.
 </script>
 
 <nav>
-  <a href="/">Idea Tracker</a>
+  <a href="/">Idea tracker</a>
   {#if $user}
     <div>
       <span>{$user.email}</span>

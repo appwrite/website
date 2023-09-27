@@ -3,7 +3,7 @@ layout: tutorial
 title: Create ideas page
 description: Add database queries and pagination using Appwrite in your React application.
 step: 7
-difficulty: easy
+difficulty: beginner
 readtime: 10
 ---
 
