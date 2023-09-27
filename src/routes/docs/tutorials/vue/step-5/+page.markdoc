@@ -28,7 +28,7 @@ onMounted(() => {
 <template>
   <div>
     <nav>
-      <a href="/">Idea Tracker</a>
+      <a href="/">Idea tracker</a>
       <div>
         <template v-if="user.current">
           <span>{{ user.current.email }}</span>

@@ -3,7 +3,7 @@ layout: article
 title: Migrate from self-hosted
 description: Migrate to Appwrite from cloud platforms seamlessly. Learn how to move your applications and data to Appwrite for enhanced flexibility and control.
 difficulty: beginner
-readtime: 20
+readtime: 10
 ---
   
 Migrations makes it as easy as a couple clicks to move all of your self-hosted project data to a Cloud instance.

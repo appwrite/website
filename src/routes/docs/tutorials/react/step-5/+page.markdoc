@@ -34,7 +34,7 @@ function Navbar() {
 
   return (
     <nav>
-      <a href="/">Idea Tracker</a>
+      <a href="/">Idea tracker</a>
       <div>
         {user.current ? (
           <>

@@ -3,7 +3,7 @@ layout: article
 title: Start with Apple
 description: Build iOS apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
-readtime: 3
+readtime: 10
 ---
 
 Learn to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).
