@@ -394,7 +394,7 @@
 					style:left="calc(50% - 384px + 350px)"
 				>
 					<img
-						src="/images/animations/tech.png"
+						src="/images/animations/tech-dark.png"
 						width="768"
 						height="768"
 						alt=""
@@ -402,7 +402,7 @@
 						use:fallback
 					/>
 					<spline-viewer
-						url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+						url="/images/animations/dark-scene.splinecode"
 						width="768"
 						height="768"
 						use:viewer

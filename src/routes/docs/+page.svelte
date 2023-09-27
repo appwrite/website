@@ -122,16 +122,31 @@
 		</svg>
 	</div>
 
-	<Spline let:fallback let:viewer>
+	<div
+		class="u-position-absolute aw-is-not-mobile u-only-light"
+		style:inline-size="768px"
+		style:block-size="768px"
+		style:inset-block-start="26rem"
+		style:left="calc(50% - 384px + 600px)"
+	>
+		<img
+			src="/images/animations/tech-light.png"
+			width="768"
+			height="768"
+			alt=""
+			style="position: absolute; display: block;"
+		/>
+	</div>
+	<!-- <Spline let:fallback let:viewer>
 		<div
-			class="u-position-absolute aw-is-not-mobile"
+			class="u-position-absolute aw-is-not-mobile u-only-light"
 			style:inline-size="768px"
 			style:block-size="768px"
 			style:inset-block-start="26rem"
 			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
-				src="/images/animations/tech.png"
+				src="/images/animations/tech-light.png"
 				width="768"
 				height="768"
 				alt=""
@@ -139,7 +154,32 @@
 				use:fallback
 			/>
 			<spline-viewer
-				url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+				url="/images/animations/light-scene.splinecode"
+				width="768"
+				height="768"
+				use:viewer
+			/>
+		</div>
+	</Spline> -->
+
+	<Spline let:fallback let:viewer>
+		<div
+			class="u-position-absolute aw-is-not-mobile u-only-dark"
+			style:inline-size="768px"
+			style:block-size="768px"
+			style:inset-block-start="26rem"
+			style:left="calc(50% - 384px + 600px)"
+		>
+			<img
+				src="/images/animations/tech-dark.png"
+				width="768"
+				height="768"
+				alt=""
+				style="position: absolute; display: block;"
+				use:fallback
+			/>
+			<spline-viewer
+				url="/images/animations/dark-scene.splinecode"
 				width="768"
 				height="768"
 				use:viewer
@@ -214,8 +254,8 @@
 				Follow a quick start guide on your web, mobile, and native frameworks.
 			</p>
 			<Technologies />
-			<a href="/docs/quick-starts" class="aw-button is-secondary aw-u-cross-child-start">
-				<span class="text">Explore all technologies</span>
+			<a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
+				<span class="aw-sub-body-500">Explore all technologies</span>
 			</a>
 		</section>
 		<section class="aw-hero is-align-start is-no-max-width">
