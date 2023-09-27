@@ -12,7 +12,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 ![Create project screen](/images/docs/databases/quick-start/create-project.png)
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
