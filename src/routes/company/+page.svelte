@@ -3,10 +3,11 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import { TITLE_SUFFIX } from '$routes/titles';
+	import { Metadata } from '$lib/components';
 </script>
 
 <svelte:head>
-	<title>Company{TITLE_SUFFIX}</title>
+	<Metadata title={'Company' + TITLE_SUFFIX} />
 </svelte:head>
 
 <Main>

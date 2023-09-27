@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
@@ -35,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact us{TITLE_SUFFIX}</title>
+	<Metadata title={'Contact us' + TITLE_SUFFIX} />
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">

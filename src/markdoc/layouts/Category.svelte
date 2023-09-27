@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
@@ -23,7 +23,7 @@
 </script>
 
 <svelte:head>
-	<title>{name + BLOG_TITLE_SUFFIX}</title>
+	<Metadata title={name + BLOG_TITLE_SUFFIX} {description} />
 </svelte:head>
 
 <Main>

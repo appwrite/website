@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -7,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Privacy{TITLE_SUFFIX}</title>
+	<Metadata title={'Privacy' + TITLE_SUFFIX} />
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">

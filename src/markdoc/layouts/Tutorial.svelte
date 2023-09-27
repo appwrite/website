@@ -9,7 +9,7 @@
 <script lang="ts">
 	import { DocsTutorial } from '$lib/layouts';
 	import { getContext, setContext } from 'svelte';
-	import { MainFooter } from '$lib/components';
+	import { MainFooter, Metadata } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 	import { writable } from 'svelte/store';
 	import type { LayoutContext } from './Article.svelte';
@@ -52,8 +52,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}{DOCS_TITLE_SUFFIX}</title>
-	<meta name="description" content={description} />
+	<Metadata title={title + DOCS_TITLE_SUFFIX} {description} />
 </svelte:head>
 
 <DocsTutorial {title} {toc} {tutorials} currentStep={step}>
