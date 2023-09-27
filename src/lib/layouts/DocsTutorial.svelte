@@ -71,7 +71,8 @@
 
 			<section class="aw-content-footer">
 				<header class="aw-content-footer-header u-cross-center">
-					<!-- <div class="aw-content-footer-header-start u-cross-center">
+					<div class="aw-content-footer-header-start u-cross-center">
+					<!-- 
 						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 						<div class="u-flex u-gap-8">
 							<input
@@ -87,15 +88,16 @@
 								name="happy"
 							/>
 						</div>
-					</div> -->
+					-->
+					</div>
 					<div class="aw-content-footer-header-end">
 						<ul class="aw-metadata aw-caption-400">
-							<li>Last updated: July 16, 2023</li>
+							<li>Last updated on September 27, 2023</li>
 							<li>
-								<button class="u-flex u-gap-4 u-cross-baseline">
+								<a href="https://github.com/appwrite/website" target="_blank" class="aw-link u-flex u-gap-4 u-cross-baseline">
 									<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 									<span>Update on GitHub</span>
-								</button>
+								</a>
 							</li>
 						</ul>
 					</div>
