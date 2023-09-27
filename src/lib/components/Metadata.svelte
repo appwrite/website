@@ -43,6 +43,7 @@
 
 {#if title}
 	<title>{title}</title>
+	<meta name="”twitter:site”" content="@appwrite" />
 {/if}
 {#if description}
 	<meta name="description" content={description} />
@@ -51,12 +52,16 @@
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="”twitter:card”" content="”summary”" />
 {/if}
 {#if ogTitle}
 	<meta property="og:title" content={ogTitle} />
+	<meta name="”twitter:title”" content={ogTitle} />
 {/if}
 {#if ogDescription}
 	<meta property="og:description" content={ogDescription} />
+	<meta name="”twitter:description" content={ogTitle} />
 {/if}
 {#if author}
 	{@html `<script type="application/ld+json">${createSchemaAuthor(author)}</script>`}
