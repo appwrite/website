@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Assets - {TITLE_SUFFIX}</title>
+	<title>Assets{TITLE_SUFFIX}</title>
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
