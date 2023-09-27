@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
 	import { animation, createScrollHandler, scroll, type Animation } from '.';
+	import { toScale, type Scale } from '$lib/utils/toScale';
 
 	const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
 	const animationOptions: AnimationListOptions = {
@@ -73,10 +74,12 @@
 		return globalThis?.window?.innerWidth < 1024;
 	}
 
+	const animScale: Scale = [0, animations.length - 1];
+	const percentScale: Scale = [0.1, 0.9];
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
 			return {
-				percentage: 0.1,
+				percentage: isMobile() ? toScale(i, animScale, percentScale) : 0.1,
 				whenAfter() {
 					const { main, reversed } = isMobile() ? mobile : desktop;
 
