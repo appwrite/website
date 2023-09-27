@@ -49,8 +49,7 @@
 
 		<h2>See your products grow</h2>
 		<p>
-			Keep track of your projects progress and see them grow into products users love and use every
-			day.
+			Keep track of your projects progress on the Appwrite Console and see them grow into products users love and use every day.
 		</p>
 	</div>
 </div>
@@ -63,7 +62,7 @@
 
 		max-width: 800px;
 		margin-inline: auto;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	@media (max-width: 1439px) {

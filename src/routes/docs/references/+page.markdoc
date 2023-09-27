@@ -1,0 +1,17 @@
+---
+layout: article
+title: Title
+description: Description
+---
+
+{% cards %}
+{% cards_item href="#" title="I am a title" %}
+I am a description
+{% /cards_item %}
+{% cards_item href="#" title="I am a title" %}
+I am a description
+{% /cards_item %}
+{% cards_item href="#" title="I am a title" %}
+I am a description
+{% /cards_item %}
+{% /cards %}

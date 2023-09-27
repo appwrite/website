@@ -71,7 +71,7 @@
 
 			<section class="aw-content-footer">
 				<header class="aw-content-footer-header u-cross-center">
-					<div class="aw-content-footer-header-start u-cross-center">
+					<!-- <div class="aw-content-footer-header-start u-cross-center">
 						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 						<div class="u-flex u-gap-8">
 							<input
@@ -87,7 +87,7 @@
 								name="happy"
 							/>
 						</div>
-					</div>
+					</div> -->
 					<div class="aw-content-footer-header-end">
 						<ul class="aw-metadata aw-caption-400">
 							<li>Last updated: July 16, 2023</li>
@@ -100,7 +100,7 @@
 						</ul>
 					</div>
 				</header>
-				<div class="aw-card is-normal" style="--card-padding:1rem">
+				<!-- <div class="aw-card is-normal" style="--card-padding:1rem">
 					<label for="message">
 						<span class="aw-caption-400 aw-u-color-text-primary">What did you like?</span>
 						<span class="aw-caption-400">(optional)</span>
@@ -118,7 +118,7 @@
 							<span class="">Submit</span>
 						</button>
 					</div>
-				</div>
+				</div> -->
 			</section>
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
