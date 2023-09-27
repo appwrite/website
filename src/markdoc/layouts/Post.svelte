@@ -19,6 +19,7 @@
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	export let title: string;
 	export let description: string;
@@ -44,7 +45,20 @@
 </script>
 
 <svelte:head>
+	<!-- Titles -->
 	<title>{title + BLOG_TITLE_SUFFIX}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={DEFAULT_HOST + cover} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={DEFAULT_HOST + cover} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>

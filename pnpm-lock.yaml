@@ -13,7 +13,7 @@ dependencies:
     version: 0.1.0-next.9
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/c273e3d8e19ffbe4ebea2644e6318e01514c8217
+    version: github.com/appwrite/appwrite/59a850d8b8f2ff3a951b386f65e25a65efb7816a
   '@fontsource/inter':
     specifier: ^5.0.8
     version: 5.0.8
@@ -94,6 +94,9 @@ devDependencies:
   svelte-markdoc-preprocess:
     specifier: ^0.3.2
     version: 0.3.2
+  svelte-seo:
+    specifier: ^1.5.4
+    version: 1.5.4(typescript@5.2.2)
   svelte-sequential-preprocessor:
     specifier: ^2.0.1
     version: 2.0.1
@@ -3943,6 +3946,14 @@ packages:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
     dev: true
 
+  /schema-dts@1.1.2(typescript@5.2.2):
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    dependencies:
+      typescript: 5.2.2
+    dev: true
+
   /semver@7.5.4:
     resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
     engines: {node: '>=10'}
@@ -4388,6 +4399,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 4.2.0
       typescript: 5.2.2
+    dev: true
+
+  /svelte-seo@1.5.4(typescript@5.2.2):
+    resolution: {integrity: sha512-pevGUiWkqLrSWXVkxE0SbkBLNsz2dVaiK8/kBq2eUHYdyzuPEZGbqtUARyJZHouv28xre7IU9t0VnoYt8d4kzA==}
+    dependencies:
+      schema-dts: 1.1.2(typescript@5.2.2)
+    transitivePeerDependencies:
+      - typescript
     dev: true
 
   /svelte-sequential-preprocessor@2.0.1:
@@ -5067,8 +5086,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/c273e3d8e19ffbe4ebea2644e6318e01514c8217:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c273e3d8e19ffbe4ebea2644e6318e01514c8217}
+  github.com/appwrite/appwrite/59a850d8b8f2ff3a951b386f65e25a65efb7816a:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/59a850d8b8f2ff3a951b386f65e25a65efb7816a}
     name: appwrite
     version: 0.0.0
     dev: false

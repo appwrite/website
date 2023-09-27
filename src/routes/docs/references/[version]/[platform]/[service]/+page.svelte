@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter } from '$lib/components';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import {
@@ -64,11 +65,27 @@
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
-	$: serviceName = serviceMap[data.service?.name]
+	$: serviceName = serviceMap[data.service?.name];
+	$: title = serviceName + DOCS_TITLE_SUFFIX;
+	$: description = data.service?.description;
+	$: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
 <svelte:head>
-	<title>{serviceName}{DOCS_TITLE_SUFFIX}</title>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <main class="u-contents">
