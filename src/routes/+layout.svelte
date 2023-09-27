@@ -61,9 +61,9 @@
 
 	onMount(() => {
 		const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+
 		applyTheme(initialTheme);
 
-		currentTheme.subscribe((theme) => applyTheme(theme));
 		navigating.subscribe((n) => {
 			if (!n?.to) {
 				return;
@@ -72,9 +72,7 @@
 			const isDocs = n.to.route.id?.startsWith('/docs');
 
 			if (isDocs) {
-				console.log('isDocs');
 				if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
-					console.log('set 123');
 					applyTheme($currentTheme);
 				}
 			} else {
@@ -82,6 +80,7 @@
 			}
 		});
 	});
+	$: browser && currentTheme.subscribe((theme) => applyTheme(theme));
 </script>
 
 <svelte:head>
