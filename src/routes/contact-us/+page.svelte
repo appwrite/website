@@ -1,14 +1,37 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
-	import type { ActionData } from './$types';
 
-	export let form: ActionData;
+	let email = '';
+	let firstName = '';
+	let subject = '';
+	let message = '';
+	let error: string | undefined;
+	let submitted = false;
 
-	$: submitted = form?.submitted ?? false;
+	async function handleSubmit() {
+		error = undefined;
+		const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email,
+				firstName,
+				subject,
+				message
+			})
+		});
+		if (response.status >= 400) {
+			error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+			return;
+		}
+
+		submitted = true;
+	}
 </script>
 
 <svelte:head>
@@ -149,7 +172,11 @@
 							</div>
 						</div>
 						{#if !submitted}
-							<form method="post" use:enhance class="u-flex-vertical u-gap-16">
+							<form
+								method="post"
+								on:submit|preventDefault={handleSubmit}
+								class="u-flex-vertical u-gap-16"
+							>
 								<div class="u-flex u-main-end">
 									<ul
 										class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-580 aw-u-max-inline-size-none-mobile"
@@ -197,8 +224,8 @@
 								</div>
 								<div class="u-flex u-gap-16 u-main-space-between aw-u-flex-vertical-reverse-mobile">
 									<p class="aw-caption-400 aw-u-max-width-380">
-										{#if form?.error}
-											{form.error.message}
+										{#if error}
+											{error}
 										{/if}
 									</p>
 									<!-- <p class="aw-caption-400 aw-u-max-width-380">
