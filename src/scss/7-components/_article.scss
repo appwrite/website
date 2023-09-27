@@ -16,9 +16,11 @@
     display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
     article .#{$p},
     &-spacing-logic .#{$p}{
+      &-main-body-500 { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
       &-sub-body-400  { margin-block:pxToRem(16); }
       &-sub-body-500  { margin-block-end:pxToRem(4); }
       &-main-body-500 { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
+      &-description   { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
       &-label         { margin-block-end:pxToRem(16); }
       &-paragraph-md  { margin-block-end:pxToRem(32); }
       &-code-snippet  { margin-block-start:pxToRem(16); margin-block-end:pxToRem(32); }
