@@ -9,6 +9,7 @@
 	import Products from '$lib/animations/Products/Products.svelte';
 	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	const platforms: Array<{
 		name: string;
@@ -61,7 +62,28 @@
 			image: '/images/platforms/dark/android.svg'
 		}
 	];
+
+	const title = 'Appwrite - Build like a team of hundreds';
+	const description = '';
+	const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <div
 	style:position="absolute"

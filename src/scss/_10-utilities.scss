@@ -68,6 +68,7 @@
 .#{$p}-u-max-height-300             { max-block-size:pxToRem(300); }
 
 .#{$p}-u-trim-1           { @include trim(1); }
+.#{$p}-u-line-height-1-2         { line-height:1.2!important; }
 .#{$p}-u-line-height-2           { line-height:2!important; }
 
 .#{$p}-u-size-40                  { inline-size:pxToRem(40); block-size:pxToRem(40); }
@@ -143,8 +144,11 @@
 .#{$p}-u-text-align-start { text-align:start!important; }
 .#{$p}-u-text-align-center { text-align:center!important; }
 .#{$p}-u-mobile-align-text-center { @media #{$break1} { text-align:center!important;} }
-.#{$p}-u-padding-inline-0 {padding-inline:0!important;}
-.#{$p}-u-padding-inline-64 {padding-inline:pxToRem(64)!important;}
+.#{$p}-u-padding-inline-0  { padding-inline:0!important; }
+.#{$p}-u-padding-inline-12 { padding-inline:pxToRem(12)!important; }
+.#{$p}-u-padding-inline-64 { padding-inline:pxToRem(64)!important; }
+
+.#{$p}-u-padding-block-8   { padding-block:pxToRem(8)!important; }
 
 .#{$p}-u-inset-block-start-100 { inset-block-start:pxToRem(160); }
 
