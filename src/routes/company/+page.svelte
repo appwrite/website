@@ -195,7 +195,7 @@
 												Building the team
 											</h3>
 											<p class="aw -main-body-400">
-												After a year of building out in the open we closed our first funding round led by Ibex Investors, Seedcamp, and the Abraham Fund. With this new financial power we hired some of the top contributors in our open-source community. To this day we still hire people from our community.
+												After a year of building out in the open we closed our first funding round led by Ibex Investors, Seedcamp, and the Abraham Fund. With this new financial power we hired some of the top contributors in our open-source community. To this day we still hire people from the open-source community.
 											</p>
 										</div>
 										<div>[image]</div>
