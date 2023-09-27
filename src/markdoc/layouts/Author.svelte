@@ -19,6 +19,7 @@
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	export let name: string;
 	export let role: string;
@@ -33,10 +34,27 @@
 	const author = authors.find(
 		(p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
 	);
+
+	const seoTitle = name + BLOG_TITLE_SUFFIX;
+	const description = bio;
+	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
 <svelte:head>
-	<title>{name + BLOG_TITLE_SUFFIX}</title>
+	<!-- Titles -->
+	<title>{seoTitle}</title>
+	<meta property="og:title" content={seoTitle} />
+	<meta name="”twitter:title”" content={seoTitle} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>

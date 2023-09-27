@@ -40,4 +40,4 @@ Join our growing community around the world! See our official [Blog](https://med
 
 ## License
 
-This repository is available under the [BSD 3-Clause License](./LICENSE).
+Appwrite website, docs and blog © 2023 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
