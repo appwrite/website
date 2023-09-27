@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Custom domains
-description: Placeholder SEO.
+description: Customize your Appwrite platform with custom domains. Learn how to set up and configure custom domains to provide a branded experience for your users.
 ---
 
 Appwrite custom domains allows you to use your own domain as your Appwrite API endpoint. 

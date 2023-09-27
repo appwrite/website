@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Add authentication
-description: This is the description used for SEO.
+description: Add Appwrite authentication to you Svlete app using your Svelte store.
 step: 4
 ---
 

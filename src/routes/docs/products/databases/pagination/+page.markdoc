@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Pagination
-description: This is the description used for SEO.
-difficulty: intermediate
-readtime: 15
+description: Implement pagination for large data sets in Appwrite Databases. Explore techniques for splitting and displaying data across multiple pages.
 ---
 
 As your database grows in size, you'll need to paginate results returned.

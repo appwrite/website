@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Update
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Keep your self-hosted Appwrite instance up-to-date. Learn how to perform updates, manage versions, and ensure your self-hosted Appwrite stays current.
 ---
 
 To upgrade your Appwrite server from an older version, you should use the Appwrite migration tool **after you have installed the new version**. The migration tool will adjust your Appwrite data to the new version's structure to make sure your Appwrite data is compatible with any internal changes.
