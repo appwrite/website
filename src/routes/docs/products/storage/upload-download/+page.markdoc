@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Upload and download
-description: This is the description used for SEO.
+description: Effortlessly upload and download files with Appwrite Storage. Learn how to handle file uploads, manage file versions, and ensure secure downloads in your applications.
 difficulty: beginner
 readtime: 15
 ---
@@ -127,7 +127,7 @@ To do so, navigate to the **Documents** tab of your collection and click the **A
 ## Large files {% #large-files %}
 When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
 If you're using an Appwrite SDK, this is handled automatically. 
-If you're not using an SDK, you can [learn more about REST API file handling](#).
+If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 ## InputFile {% #input-file %}
 Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.

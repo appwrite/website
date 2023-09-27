@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Production
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Optimize self-hosted Appwrite for production environments. Learn how to fine-tune performance, security, and scalability for your production deployments.
 ---
 
 Appwrite's default setup is designed to help you start building with Appwrite quickly. To succeed with Appwrite in a production environment, you should follow a few basic concepts and best practices. This document assumes you have some basic understanding of Docker and Docker Compose command-line tools.
@@ -16,7 +16,7 @@ Make sure to keep this key in a safe place and never make it publicly accessible
 
 {% info title="Best practice" %}
 You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests. 
-You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](#) environment variable.
+You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](/docs/advanced/self-hosting/environment-variables) environment variable.
 {% /info %}
 
 ## Console access {% #console-access %}
@@ -29,7 +29,7 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
 
 ## Scaling {% #scaling %}
 
@@ -47,7 +47,7 @@ If you disabled rate limits during development, make sure you re-enable them whe
 
 Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
 
 ## Emails {% #emails %}
 
@@ -70,7 +70,7 @@ Do not back up any stateful container using a docker volume backup, such as data
 
 ## Errors {% #errors %}
 
-By default, your Appwrite installation comes with error reporting turned off. You can [enable dev mode](#) to get access to more verbose error logs and stack traces.
+By default, your Appwrite installation comes with error reporting turned off. You can [enable dev mode](/docs/advanced/self-hosting/debug#development-mode) to get access to more verbose error logs and stack traces.
 
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` value from is set to `production` and not `development`.
 
@@ -78,7 +78,7 @@ To monitor errors in production, add a third party monitoring service by setting
 
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` is set to `production` and not `development`.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](#)
+[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
 
 ## Security {% #security %}
 

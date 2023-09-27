@@ -1,16 +1,16 @@
 ---
 layout: article
 title: Anonymous login
-description: This is the description used for SEO.
+description: Manage user identities and profiles effectively with Appwrite. Dive into user management features, account settings, and user data customization.
 ---
 
-Anonymous sessions allow you to implement guest users. Guest users let you store user information like items in their cart or theme preferences before they create an account. This reduces the friction for your users to get started with your app.
+Anonymous sessions allow you to implement **guest** users. Guest users let you store user information like items in their cart or theme preferences before they create an account. This reduces the friction for your users to get started with your app.
 
 **If a user later creates an account**, their information will be inherited by the newly created account.
 
 ## Create anonymous session {% #createSession %}
 
-Create an anonymous session with [Create Anonymous Session](#) route.
+Create an anonymous session with [Create Anonymous Session](/docs/references/cloud/client-web/account#createAnonymousSession) route.
 
 {% multicode %}
 ```js
@@ -82,7 +82,10 @@ Anonymous users cannot sign back in. If the session expires, they move to anothe
 
 Create an account with any of these methods to transition from an anonymous session to a user account session.
 
-- [Email and password](/docs/products/auth/email-password)
-- [Phone (SMS)](/docs/products/auth/phone-sms)
-- [Magic URL](/docs/products/auth/magic-url)
-- [OAuth2](/docs/products/auth/oauth2)
+[Email and password {% icon icon="cheveron-right" /%}](/docs/products/auth/email-password)
+
+[Phone (SMS) {% icon icon="cheveron-right" /%}](/docs/products/auth/phone-sms)
+
+[Magic URL {% icon icon="cheveron-right" /%}](/docs/products/auth/magic-url)
+
+[OAuth2 {% icon icon="cheveron-right" /%}](/docs/products/auth/oauth2)

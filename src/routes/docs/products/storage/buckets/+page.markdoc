@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Buckets
-description: This is the description used for SEO.
+description: Organize and manage your files effectively with Appwrite Storage Buckets. Explore how to create, configure, and use storage buckets for seamless file organization.
 difficulty: beginner
 readtime: 5
 ---
@@ -10,7 +10,7 @@ Storage buckets are a group of files, similar to collections in Appwrite Databas
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more. 
 
 ## Create Bucket
-You can create your bucket from the Appwrite Console or a [Server SDK](#). 
+You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). 
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -19,7 +19,7 @@ You can create a bucket by heading to the **Storage** page and clicking **Create
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-You can also create collections programmatically using a [Server SDK](#). Appwrite [Server SDKs](#) require an [API key](#).
+You can also create collections programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys).
 
 {% multicode %}
 
@@ -219,7 +219,7 @@ let bucket = try await storage.createBucket(
 ```
 {% /multicode %}
 
-You can also configure permission, file size and extension restrictions, and more in the `createBucket` method, learn more about the `createBucket` in the [API references](#).
+You can also configure permission, file size and extension restrictions, and more in the `createBucket` method, learn more about the `createBucket` in the [API references](/docs/references/cloud/server-nodejs/storage#createBucket).
 {% /tabsitem %}
 {% /tabs %}
 

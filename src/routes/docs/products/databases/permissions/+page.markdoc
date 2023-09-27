@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Permissions
-description: This is the description used for SEO.
+description: Enhance data security and access control with Appwrite Database Permissions. Learn how to set permissions and access rules for your database collections
 difficulty: beginner
 readtime: 5
 ---
@@ -19,7 +19,7 @@ If a user has read, create, update, or delete permissions at the collection leve
 
 Configure collection level permissions by navigating to **Your collection** > **Settings** > **Permissions**.
 
-[Learn more about permissions and roles](#)
+[Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
 ## Document level {% #document-level %}
 Document level permissions grant access to individual documents.
@@ -28,8 +28,8 @@ If a user has read, create, update, or delete permissions at the document level,
 Document level permissions are only applied if Document Security is enabled in the settings of your collection.
 Enable document level permissions by navigating to **Your collection** > **Settings** > **Document security**.
 
-Document level permissions are configured in individual [documents](#).
+Document level permissions are configured in individual documents.
 
-[Learn more about permissions and roles](#)
+[Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
 

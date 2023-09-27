@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Quick Start
-description: This is the description used for SEO.
+description: Effortlessly add authentication to your apps: simple signup & login in just minutes with Appwrite Authentication
 difficulty: beginner
 readtime: 3
 ---
@@ -10,7 +10,7 @@ Adding signup and login is as simple as this.
 
 ## Sign up {% #sign-up %}
 
-You can use the Appwrite Client SDKs to create an account using email and password.
+You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account using email and password.
 
 {% multicode %}
 ```js
@@ -91,7 +91,7 @@ mutation {
 
 ## Login {% #login %}
 
-After you've created your account, users can be logged in using the Create Email Session route.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) route.
 
 {% multicode %}
 ```js

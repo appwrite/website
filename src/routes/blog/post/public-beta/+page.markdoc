@@ -3,7 +3,7 @@ layout: post
 title: Appwrite Cloud is now in public beta
 description: We're happy to announce Cloud is now available for everyone to signup.
 date: 2023-05-02
-cover: /images/pages/homepage/dashboard.svg
+cover: /images/blog/cloud-beta.png
 timeToRead: 5
 author: christy-jacob
 category: cloud
@@ -36,7 +36,7 @@ We have a lot of things planned in the upcoming months while we await Cloud to b
 ### Cloud interviews and surveys
 We’re conducting a series of interviews & surveys with participants of the Public Beta to get more insights into their requirements. During these interviews, we focus on understanding their background, their reasons for using a backend server like Appwrite, their use cases, their experience so far, along with their expectations and shortcomings of the platform. These interviews have provided key insights that have prompted us to steer in the right direction.
 
-If you’re part of the Beta and would like to participate in these interviews, please reach out to me on our community Discord or my email, and we’d be glad to set up a call.
+If you’re part of the Beta and would like to participate in these interviews, please reach out to me on the Appwrite Discord or my email, and we’d be glad to set up a call.
 
 ### Pricing
 Our goal is to make Appwrite Cloud affordable and accessible to all developers. We’ve had some really great feedback from our initial pricing survey and are really close to sharing our model with you all. We will continue working together with the Appwrite community to refine this pricing model. Rest assured, there will be a generous free tier for all the hobby projects you’ve been wanting to create!

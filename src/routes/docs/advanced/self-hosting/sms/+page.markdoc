@@ -1,23 +1,51 @@
 ---
 layout: article
 title: SMS delivery
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Set up SMS services for your self-hosted Appwrite instance. Discover how to configure SMS notifications, verification, and messaging for your applications.
 ---
 
 Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
 
-## SMS Providers {% #sms-providers %}
+## SMS providers {% #sms-providers %}
 
 Appwrite supports a growing list of SMS providers that you can choose from. Choose one from the list below and set up an account.
 
-| &nbsp;            | SMS Provider   | Create Account                                          | Get Credentials                                      |
-| ----------------- | -------------- | ------------------------------------------------------- | ----------------------------------------------------- |
-|                   |                |                                                       |                                                     |
-| [TODO]            | Twilio         | [Website](https://www.twilio.com)                        | [Documentation](https://www.twilio.com/docs/iam/access-tokens#step-2-api-key)       |
-| [TODO]            | TextMagic      | [Website](https://www.textmagic.com)                     | [Documentation](https://www.textmagic.com/docs/api/start/#How-to-obtain-the-API-credentials) |
-| [TODO]            | Telesign       | [Website](https://www.telesign.com)                      | [Documentation](https://support.telesign.com/s/article/Find-Customer-ID-and-API-Key)       |
-| [TODO]            | MSG91          | [Website](https://msg91.com)                            | [Documentation](https://msg91.com/help/where-can-i-find-my-authentication-key)       |
-| [TODO]            | Vonage         | [Website](https://www.vonage.ca/)                        | [Documentation](https://developer.vonage.com/en/account/secret-management)       |
+{% table %}
+* &nbsp; {% width=80 %}
+* SMS provider
+* Create account
+* Get credentials
+---
+* {% only_dark %}{% icon_image src="/images/sms-providers/dark/twilio.svg" alt="Twilio logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/sms-providers/twilio.svg" alt="Twilio logo" size="l" /%}{% /only_light %}
+* Twilio
+* [Website](https://www.twilio.com)
+* [Documentation](https://www.twilio.com/docs/iam/access-tokens#step-2-api-key)
+---
+* {% only_dark %}{% icon_image src="/images/sms-providers/dark/textmagic.svg" alt="TextMagic logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/sms-providers/textmagic.svg" alt="TextMagic logo" size="l" /%}{% /only_light %}
+* TextMagic
+* [Website](https://www.textmagic.com)
+* [Documentation](https://www.textmagic.com/docs/api/start/#How-to-obtain-the-API-credentials)
+---
+* {% only_dark %}{% icon_image src="/images/sms-providers/dark/telesign.svg" alt="Telesign logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/sms-providers/telesign.svg" alt="Telesign logo" size="l" /%}{% /only_light %}
+* Telesign
+* [Website](https://www.telesign.com)
+* [Documentation](https://support.telesign.com/s/article/Find-Customer-ID-and-API-Key)
+---
+* {% only_dark %}{% icon_image src="/images/sms-providers/dark/msg91.svg" alt="MSG91 logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/sms-providers/msg91.svg" alt="MSG91 logo" size="l" /%}{% /only_light %}
+* MSG91
+* [Website](https://msg91.com)
+* [Documentation](https://msg91.com/help/where-can-i-find-my-authentication-key)
+---
+* {% only_dark %}{% icon_image src="/images/sms-providers/dark/vonage.svg" alt="Vonage logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/sms-providers/vonage.svg" alt="Vonage logo" size="l" /%}{% /only_light %}
+* Vonage
+* [Website](https://www.vonage.ca/)
+* [Documentation](https://developer.vonage.com/en/account/secret-management)
+{% /table %}
 
 ## Environment variables {% #environment-variables %}
 

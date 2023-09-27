@@ -1,7 +1,7 @@
 ---
 layout: article
 title: OAuth 2 login
-description: This is the description used for SEO.
+description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.
@@ -22,7 +22,7 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 ## Initialize OAuth 2 login {% #init %}
 
-To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](#) route.
+To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
@@ -234,7 +234,7 @@ You can use the `providerAccessToken` to make requests to your OAuth 2 provider.
 
 ## OAuth 2 profile {% #profile %}
 
-OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](#) endpoint when ever your user visits your app.
+OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
 
 {% multicode %}
 ```js
@@ -293,4 +293,6 @@ let session = try await account.updateSession(
 
 {% /multicode %}
 
-> **Note**: OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+{% info title="GraphQL" %}
+OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+{% /info %}

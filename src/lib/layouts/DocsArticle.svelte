@@ -82,7 +82,6 @@
 							<li>Last updated on July 16, 2023</li>
 							<li>
 								<button class="">
-									<!-- TODO: wait for implement icons in website -->
 									<span class="icon-edit" aria-hidden="true" />
 									<span>Update on GitHub</span>
 								</button>
@@ -148,7 +147,7 @@
 					</ol>
 					<div class="u-sep-block-start u-padding-block-start-20">
 						<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
-							<span class="icon-arrow-up" aria-hidden="true" />
+							<span class="aw-icon-arrow-up" aria-hidden="true" />
 							<span class="aw-sub-body-500">Back to top</span>
 						</a>
 					</div>

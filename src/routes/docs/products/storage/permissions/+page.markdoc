@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Permissions
-description: This is the description used for SEO.
+description: Enhance data security and control with Appwrite Storage Permissions. Learn how to set access rules, permissions, and restrictions for your stored files.
 difficulty: beginner
 readtime: 5
 ---
@@ -19,7 +19,7 @@ If a user has read, create, update, or delete permissions at the bucket level, t
 
 Configure bucket level permissions by navigating to **Your bucket** > **Settings** > **Permissions**.
 
-[Learn more about permissions and roles](#)
+[Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
 ## File level {% #file-level %}
 File level permissions grant access to individual files.
@@ -28,8 +28,8 @@ If a user has read, create, update, or delete permissions at the file level, the
 File level permissions are only applied if File Security is enabled in the settings of your bucket.
 Enable file level permissions by navigating to **Your bucket** > **Settings** > **File security**.
 
-File level permissions are configured in individual [files](#).
+File level permissions are configured in individual [files](/docs/products/storage/permissions#file-level).
 
-[Learn more about permissions and roles](#)
+[Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
 
