@@ -7,8 +7,8 @@ difficulty: easy
 readtime: 10
 ---
 
-## Test your project {% #test-project %}
+# Test your project {% #test-project %}
 Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Add style {% #add-style %}
+# Add style {% #add-style %}
 If you want to see a version of this project, complete with CSS styles, clone [this GitHub repository]().
