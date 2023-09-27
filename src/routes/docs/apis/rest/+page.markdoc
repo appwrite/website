@@ -2,8 +2,6 @@
 layout: article
 title: REST
 description: Discover the Appwrite REST API for building robust and scalable applications. Access detailed documentation on REST endpoints, authentication, and data management.
-difficulty: beginner
-readtime: 10
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The REST API allows you to access your Appwrite server through HTTP requests without the needing an SDK. Each endpoint in the API represents a specific operation on a specific resource.

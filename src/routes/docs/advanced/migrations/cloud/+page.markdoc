@@ -32,7 +32,7 @@ and [things to keep in mind](#notices) sections above.
 
 {% /section %}
 
-{% section #create-migration step=3 title="Continue on Appwrite Cloud" %}
+{% section #continue-on-cloud step=3 title="Continue on Appwrite Cloud" %}
 
 1. Once redirected to Appwrite Cloud, you'll be prompted to select an organization and a project. You can migrate to an existing project or create a new one.
 

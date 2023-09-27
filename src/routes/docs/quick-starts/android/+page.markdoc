@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 3
 ---
 
-Learn to setup your first Android project powered by Appwrite.
+Learn to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android).
 
 {% section #step-1 step=1 title="Create Android project" %}
 Open Android Studio and click **New Project** to create a new project.
