@@ -116,11 +116,12 @@
 						{#each category.quickStarts as quickStart}
 							<li class="is-mobile-col-span-2">
 								<a href={`/docs/quick-starts/${quickStart.href}`}>
-									<img class="aw-media" src={quickStart.image} alt="" />
-									<div class="u-flex u-cross-baseline u-gap-4">
+								<article class="aw-card is-full-color">
+									<header class="u-flex u-cross-baseline u-gap-4">
 										<span class="{quickStart.icon} aw-u-font-size-24" aria-hidden="true" />
 										<h4 class="aw-sub-body-500 aw-u-color-text-primary">{quickStart.title}</h4>
-									</div>
+									</header>
+								</article>
 								</a>
 							</li>
 						{/each}
