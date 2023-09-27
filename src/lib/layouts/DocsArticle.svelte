@@ -60,32 +60,33 @@
 			<slot />
 			<section class="aw-content-footer">
 				<header class="aw-content-footer-header">
-					<!-- <div class="aw-content-footer-header-start">
-						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
-						<div class="u-flex u-gap-8">
-							<input
-								class="aw-radio-button is-like"
-								type="radio"
-								aria-label="Helpful"
-								name="happy"
-							/>
-							<input
-								class="aw-radio-button is-dislike"
-								type="radio"
-								aria-label="UnHelpful"
-								name="happy"
-							/>
-						</div>
-					</div> -->
+					<div class="aw-content-footer-header-start">
+						<!--
+							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
+							<div class="u-flex u-gap-8">
+								<input
+									class="aw-radio-button is-like"
+									type="radio"
+									aria-label="Helpful"
+									name="happy"
+								/>
+								<input
+									class="aw-radio-button is-dislike"
+									type="radio"
+									aria-label="UnHelpful"
+									name="happy"
+								/>
+							</div>
+						-->
+					</div>
 					<div class="aw-content-footer-header-end">
 						<ul class="aw-metadata aw-caption-400">
 							<li>Last updated on September 27, 2023</li>
 							<li>
-								<button class="">
-									<!-- TODO: wait for implement icons in website -->
-									<span class="icon-edit" aria-hidden="true" />
+								<a href="https://github.com/appwrite/website" target="_blank" class="aw-link">
+									<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 									<span>Update on GitHub</span>
-								</button>
+								</a>
 							</li>
 						</ul>
 					</div>
