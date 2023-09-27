@@ -237,7 +237,7 @@
 				<span class="icon-menu-alt-4" aria-hidden="true" />
 			</button>
 			<div class="aw-references-menu-content">
-				<div class="u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
+				<div class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
 					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
 					<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
 						<span class="icon-x" aria-hidden="true" />
