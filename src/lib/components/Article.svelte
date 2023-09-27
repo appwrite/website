@@ -23,7 +23,7 @@
 					<div class="aw-author-info">
 						<h4 class="aw-sub-body-400 aw-u-color-text-primary">{author}</h4>
 						<ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
-							<li>{date.toLocaleDateString()}</li>
+							<li>{Intl.DateTimeFormat('en-US',  { day: '2-digit', month: 'short', year: 'numeric' }).format(date)}</li>
 							<li>{timeToRead} min</li>
 						</ul>
 					</div>

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { FooterNav, MainFooter } from '$lib/components';
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 </script>
+
+<svelte:head>
+	<title>Heroes{TITLE_SUFFIX}</title>
+</svelte:head>
 
 <div
 	class="u-position-absolute aw-is-not-mobile"
@@ -706,7 +711,11 @@
 							Have you been actively providing value for the Appwrite community? Apply now to join
 							our hero program! Applications are open every three months.
 						</p>
-						<a href="https://7nxwryuitoy.typeform.com/heroes-apply" target="_blank" class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20">
+						<a
+							href="https://7nxwryuitoy.typeform.com/heroes-apply"
+							target="_blank"
+							class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20"
+						>
 							Become a Hero
 						</a>
 					</div>

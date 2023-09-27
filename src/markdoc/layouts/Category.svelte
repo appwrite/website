@@ -12,6 +12,7 @@
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 	import type { AuthorData } from './Author.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let name: string;
 	export let description: string;
@@ -20,6 +21,10 @@
 	const postsList = getContext<PostsData[]>('posts');
 	const posts = postsList.filter((post) => post.category.includes(name.toLowerCase()));
 </script>
+
+<svelte:head>
+	<title>{name + BLOG_TITLE_SUFFIX}</title>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1">

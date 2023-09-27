@@ -1,49 +1,101 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
+	import { Spline } from '$lib/components';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
-	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
 	import Products from '$lib/animations/Products/Products.svelte';
 	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
-	import { Spline } from '$lib/components';
+	import Tooltip from '$lib/components/Tooltip.svelte';
+
+	const platforms: Array<{
+		name: string;
+		href: string;
+		image: string;
+	}> = [
+		{
+			name: 'Flutter',
+			href: '/docs/quick-starts/flutter',
+			image: '/images/platforms/dark/flutter.svg'
+		},
+		{
+			name: 'Next',
+			href: '/docs/quick-starts/nextjs',
+			image: '/images/platforms/dark/nextjs.svg'
+		},
+		{
+			name: 'React',
+			href: '/docs/quick-starts/react',
+			image: '/images/platforms/dark/react.svg'
+		},
+		{
+			name: 'Svelte',
+			href: '/docs/quick-starts/sveltekit',
+			image: '/images/platforms/dark/svelte.svg'
+		},
+		{
+			name: 'Nuxt',
+			href: '/docs/quick-starts/nuxt',
+			image: '/images/platforms/dark/nuxt.svg'
+		},
+		{
+			name: 'Vue',
+			href: '/docs/quick-starts/vue',
+			image: '/images/platforms/dark/vue.svg'
+		},
+		{
+			name: 'Angular',
+			href: '/docs/quick-starts/angular',
+			image: '/images/platforms/dark/angular.svg'
+		},
+		{
+			name: 'Apple',
+			href: '/docs/quick-starts/apple',
+			image: '/images/platforms/dark/apple.svg'
+		},
+		{
+			name: 'Android',
+			href: '/docs/quick-starts/android',
+			image: '/images/platforms/dark/android.svg'
+		}
+	];
 </script>
 
-<!-- <div
-	class="u-position-absolute"
-	style="
-	width: 100vw;
-	max-width: 100%; overflow: hidden;
-	height: 1000px;
-"
-> -->
 <div
-	class="u-position-absolute"
-	style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+	style:position="absolute"
+	style:top="0"
+	style:width="100vw"
+	style:height="100vh"
+	style:overflow="hidden"
 >
-	<img
-		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
+	<div
+		class="u-position-absolute"
+		style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+	>
+		<img
+			style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-		src="/images/bgs/top-page-dark.svg"
-		alt=""
-	/>
+			src="/images/bgs/top-page-dark.svg"
+			alt=""
+		/>
+	</div>
 </div>
 
-<!-- <div
-	class="u-position-absolute"
-	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
+<div
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
 
 <div
-	class="u-position-absolute"
-	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
 >
 	<img src="/images/bgs/hero-lines-2.png" alt="" />
-</div> -->
+</div>
 
 <Main>
 	<div class="aw-big-padding-section">
@@ -163,7 +215,12 @@
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
-				<img class="u-block u-width-full-line" src="/images/bgs/padding-section-1.svg" alt="" />
+				<img
+					class="u-block u-width-full-line"
+					src="/images/bgs/padding-section-1.svg"
+					alt=""
+					style:max-height="48rem"
+				/>
 			</div>
 
 			<div class="aw-big-padding-section-level-2">
@@ -366,60 +423,16 @@
 						<ul
 							class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
 						>
-							<li>
-								<a href="/docs/quick-starts/flutter" class="aw-box-icon">
-									<img src="/images/platforms/dark/flutter.svg" alt="Flutter logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/flutter.svg" alt="Flutter logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/nextjs" class="aw-box-icon">
-									<img src="/images/platforms/dark/nextjs.svg" alt="Next.js logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/nextjs.svg" alt="Next.js logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/react" class="aw-box-icon">
-									<img src="/images/platforms/dark/react.svg" alt="React logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/react.svg" alt="React logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/sveltekit" class="aw-box-icon">
-									<img src="/images/platforms/dark/svelte.svg" alt="Svelte logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/svelte.svg" alt="Svelte logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/nuxt" class="aw-box-icon">
-									<img src="/images/platforms/dark/nuxt.svg" alt="Nuxt logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/nuxt.svg" alt="Nuxt logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/vue" class="aw-box-icon">
-									<img src="/images/platforms/dark/vue.svg" alt="Vue logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/vue.svg" alt="Vue logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/angular" class="aw-box-icon">
-									<img src="/images/platforms/dark/angular.svg" alt="Angular logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/angular.svg" alt="Angular logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/apple" class="aw-box-icon">
-									<img src="/images/platforms/dark/apple.svg" alt="Apple logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/apple.svg" alt="Apple logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
-							<li>
-								<a href="/docs/quick-starts/android" class="aw-box-icon">
-									<img src="/images/platforms/dark/android.svg" alt="Android logo" class="u-only-dark" width="32" height="32" />
-									<img src="/images/platforms/android.svg" alt="Android logo" class="u-only-light" width="32" height="32" />
-								</a>
-							</li>
+							{#each platforms as platform}
+								<Tooltip>
+									<li>
+										<a href={platform.href} class="aw-box-icon">
+											<img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
+										</a>
+									</li>
+									<svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+								</Tooltip>
+							{/each}
 						</ul>
 						<a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
 							<span class="aw-sub-body-500">Explore all SDKs</span>
