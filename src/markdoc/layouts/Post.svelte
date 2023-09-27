@@ -19,6 +19,7 @@
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+	import { DEFAULT_HOST } from '$lib/components/Metadata.svelte';
 
 	export let title: string;
 	export let description: string;
@@ -44,7 +45,12 @@
 </script>
 
 <svelte:head>
-	<Metadata title={title + BLOG_TITLE_SUFFIX} {description} />
+	<Metadata
+		title={title + BLOG_TITLE_SUFFIX}
+		{description}
+		ogTitle={title}
+		ogImage={DEFAULT_HOST + cover}
+	/>
 </svelte:head>
 
 <Main>

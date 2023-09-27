@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	export const DEFAULT_HOST = 'https://https://website-appwrite.vercel.app';
+	export const DEFAULT_HOST = 'https://website-appwrite.vercel.app';
 	export function buildOpenGraphImage(title: string, description: string): string {
 		return `https://og.appwrite.global/image.png?title=${encodeURIComponent(
 			title
@@ -14,7 +14,7 @@
 	export let title: string | undefined = undefined;
 	export let description: string | undefined = undefined;
 	export let ogImage: string | undefined = undefined;
-	export let ogTitle: string | undefined = undefined;
+	export let ogTitle: string | undefined = title;
 	export let ogDescription: string | undefined = description;
 	export let author: AuthorData | undefined = undefined;
 	export let post: PostsData | undefined = undefined;
@@ -43,6 +43,7 @@
 
 {#if title}
 	<title>{title}</title>
+	<meta name="”twitter:site”" content="@appwrite" />
 {/if}
 {#if description}
 	<meta name="description" content={description} />
@@ -51,12 +52,16 @@
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="”twitter:card”" content="”summary”" />
 {/if}
 {#if ogTitle}
 	<meta property="og:title" content={ogTitle} />
+	<meta name="”twitter:title”" content={ogTitle} />
 {/if}
 {#if ogDescription}
 	<meta property="og:description" content={ogDescription} />
+	<meta name="”twitter:description" content={ogTitle} />
 {/if}
 {#if author}
 	{@html `<script type="application/ld+json">${createSchemaAuthor(author)}</script>`}
