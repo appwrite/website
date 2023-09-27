@@ -18,14 +18,20 @@
 			title: 'Web App',
 			quickStarts: [
 				{
-					title: 'React.js',
-					icon: 'icon-next_js',
+					title: 'Next.js',
+					icon: 'icon-nextjs',
 					image: '/images/blog/placeholder.png',
 					href: 'nextjs'
 				},
 				{
+					title: 'React',
+					icon: 'icon-react',
+					image: '/images/blog/placeholder.png',
+					href: 'react'
+				},
+				{
 					title: 'Vue.js',
-					icon: 'icon-vue_js',
+					icon: 'icon-vue',
 					image: '/images/blog/placeholder.png',
 					href: 'vue'
 				},
