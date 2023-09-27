@@ -20,6 +20,7 @@
 	export let difficulty: string;
 	export let readtime: string;
 	export let step: number;
+	export let back: string;
 
 	setContext<LayoutContext>('headings', writable({}));
 
@@ -56,7 +57,7 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<DocsTutorial {title} {toc} {tutorials} currentStep={step}>
+<DocsTutorial {title} {back} {toc} {tutorials} currentStep={step}>
 	<svelte:fragment slot="metadata">
 		{#if difficulty}
 			<li>{difficulty}</li>
