@@ -2,6 +2,9 @@
 layout: article
 title: Start with Python
 description: Learn to get started with server integrations with Appwrite Python SDK.
+difficulty: beginner
+readtime: 5
+back: /docs/quick-starts
 ---
 Learn to setup your first Python project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

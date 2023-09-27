@@ -4,6 +4,7 @@ title: Start with Next.js
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Next.js apps.
 difficulty: beginner
 readtime: 3
+back: /docs/quick-starts
 ---
 Learn to setup your first Next.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

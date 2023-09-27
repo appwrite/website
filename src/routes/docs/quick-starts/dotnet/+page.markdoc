@@ -2,6 +2,9 @@
 layout: article
 title: Start with .NET
 description: Learn to get started with server integrations with Appwrite .NET SDK.
+difficulty: beginner
+readtime: 5
+back: /docs/quick-starts
 ---
 Learn to setup your first .NET project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
