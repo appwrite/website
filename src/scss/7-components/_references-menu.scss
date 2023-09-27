@@ -9,12 +9,12 @@
   display:flex; flex-direction:column; padding-inline:pxToRem(16);
 
   &-content {
-    display:flex; flex-direction:column; gap:pxToRem(24); inline-size:pxToRem(255);
+    display:flex; flex-direction:column; inline-size:pxToRem(255);
   }
   &-title { color:hsl(var(--aw-color-primary)); }
   &-list {
     @include scroll(); overflow-y:auto;
-    display:flex; flex-direction:column; gap:pxToRem(16);
+    display:flex; flex-direction:column; gap:pxToRem(16); margin-block-start:pxToRem(8);
     padding-block:pxToRem(4);
     padding-inline:pxToRem(4);
   }
