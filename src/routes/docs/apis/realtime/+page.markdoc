@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Realtime
-description: The Appwrite Realtime allows you to listen to any Appwrite events and build an interactive and responsive user experience.
+description: Explore the power of real-time communication with the Appwrite Realtime API. Learn how to build dynamic and interactive applications with real-time data updates.
 difficulty: beginner
 readtime: 10
 ---

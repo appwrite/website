@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Dart
-description: This is the description used for SEO.
+description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 ---
 Learn to setup your first Dart project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

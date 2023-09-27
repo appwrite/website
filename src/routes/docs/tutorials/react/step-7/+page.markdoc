@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create ideas page
-description: This is the description used for SEO.
+description: Add database queries and pagination using Appwrite in your React application.
 step: 7
 difficulty: easy
 readtime: 10

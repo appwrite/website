@@ -244,7 +244,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display aw-u-color-text-primary">Loved by our community</div>
+						<div class="aw-display aw-u-color-text-primary">Loved by developers like you</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>

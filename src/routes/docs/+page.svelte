@@ -104,7 +104,7 @@
 				Learn how to build like a team of hundreds
 			</h1>
 			<p class="aw-description u-max-width-600">
-				Appwrite is a backend development platform built by hundreds of open-source developers, where you can build any application at any scale, using the coding languages and tools you want.
+				Appwrite is a backend development platform built by hundreds of open-source developers, where you can build any application at any scale using the coding languages and tools you want.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">

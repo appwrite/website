@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Add navigation 
-description: This is the description used for SEO.
+description: Add navigation to your React applicating using Appwrite.
 step: 5
-difficulty: easy
-readtime: 10
 ---
 
 In our app we want to have a navigation bar that is always visible. We will add it to the `App` component and use the `useUser` hook to show either:

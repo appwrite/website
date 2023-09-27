@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Nuxt
-description: Learn how to quickly integrate Appwrite products and services into your Nuxt project.
+description: Build Nuxt.js apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 3
 ---

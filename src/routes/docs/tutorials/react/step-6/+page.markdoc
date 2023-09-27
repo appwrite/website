@@ -3,8 +3,7 @@ layout: tutorial
 title: Add database
 description: This is the description used for SEO.
 step: 6
-difficulty: easy
-readtime: 10
+
 ---
 ## Create collection
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: API keys
-description: Placeholder SEO.
+description: Secure your application with Appwrite API Keys. Discover how to create and manage API keys to control access and enhance your application's security.
 ---
 
 API keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) and the Appwrite CLI to prove their identity.

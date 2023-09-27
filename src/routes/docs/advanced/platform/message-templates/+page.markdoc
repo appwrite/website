@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Message templates
-description: Placeholder SEO.
+description: Communicate using your brand and voice by customizing email and SMS message templates, localized to your user's language.
 ---
 
 Appwrite uses emails to communicate with users to perform authentication and verification actions. Emails can be customized to fit your app's design and voice.

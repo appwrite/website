@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Quick Start
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+description: Get started quickly with Appwrite Functions. Follow a step-by-step guide to create your first serverless function, define triggers, and execute code.
 ---
 You can create and execute your first Appwrite Function in minutes.
 

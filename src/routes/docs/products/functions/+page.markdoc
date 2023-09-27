@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Overview
-description: [TODO]
-difficulty: beginner
-readtime: 3
+description: Explore the power of serverless functions with Appwrite Functions. Learn how to build and deploy serverless functions for dynamic and scalable application logic.
 ---
 
 Appwrite Functions unlock limitless potential for developers to extend Appwrite with code snippets. 
