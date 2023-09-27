@@ -195,7 +195,7 @@
 												Building the team
 											</h3>
 											<p class="aw -main-body-400">
-												After a year of building out in the open we closed our first funding round led by Ibex Investors, Seedcamp, and the Abraham Fund. With this new financial power we hired some of the top contributors in our open-source community. To this day we still hire people from our community.
+												After a year of building out in the open we closed our first funding round led by Ibex Investors, Seedcamp, and the Abraham Fund. With this new financial power we hired some of the top contributors in our open-source community. To this day we still hire people from the open-source community.
 											</p>
 										</div>
 										<div>[image]</div>
@@ -265,7 +265,7 @@
 												Continuous improvement
 											</h3>
 											<p class="aw -main-body-400">
-												Towards the end of 2022 we released Appwrite 1.0 and the Console 2.0 for a better developer experience. It was the first time we produced a product, the console, which was fully designed by our in house team. These are the initial versions of the products you know today.
+												Towards the end of 2022 we released Appwrite 1.0 and the Console 2.0 for a better developer experience. It was the first time we produced a product, the Console, which was fully designed by our in house team. These are the initial versions of the products you know today.
 											</p>
 										</div>
 										<div>

@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Introduction
-description: This is the description used for SEO.
+description: Learn to build an idea tracker app with Appwrite and Vue with authentication, databases and collections, queries, pagination, and file storage.
 step: 1
-difficulty: easy
-readtime: 10
 ---
 
 **Idea Tracker**: an app to track all the side project ideas that you'll start, but probably never finish.

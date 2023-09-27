@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Next steps
-description: This is the description used for SEO.
+description: View your SvelteKit project powered by Appwrite authentication and databases.
 step: 8
 difficulty: easy
 readtime: 10

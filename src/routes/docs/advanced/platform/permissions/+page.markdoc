@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Permissions
-description: Placeholder SEO.
+description: Enhance data security and access control with Appwrite platform permissions. Learn how to set fine-grained permissions to protect user data and resources.
 ---
 
 Appwrite's permission mechanism offers a simple, yet flexible way to manage which users, teams, or roles can access a specific resource in your project, such as documents and files.

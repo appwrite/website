@@ -1,7 +1,7 @@
 ---
 layout: article
 title: OAuth 2 login
-description: This is the description used for SEO.
+description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.

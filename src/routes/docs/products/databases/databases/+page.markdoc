@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Databases
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+description: Dive deeper into Appwrite Databases and their configuration. Learn how to create, manage, and optimize multiple databases for your application.
 ---
 Databases are the largest organizational unit in Appwrite.
 Each database contains a group [collections](/docs/products/databases/collections).

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Rate-limits
-description: Placeholder SEO.
+description: Optimize application performance with Appwrite rate limits. Explore rate limiting strategies, configurations, and how to prevent abuse of your services.
 ---
 
 ## Appwrite Rate Limits

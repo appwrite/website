@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Development
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 3
+description: Master serverless function development with Appwrite. Learn how to write and test functions locally, debug code, and optimize for efficient execution.
 ---
 
 Appwrite Functions offer a familiar interface if you've developed REST endpoints.

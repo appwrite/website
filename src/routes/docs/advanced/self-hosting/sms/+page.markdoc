@@ -1,7 +1,7 @@
 ---
 layout: article
 title: SMS delivery
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Set up SMS services for your self-hosted Appwrite instance. Discover how to configure SMS notifications, verification, and messaging for your applications.
 ---
 
 Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
