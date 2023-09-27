@@ -69,6 +69,10 @@
 		}
 	];
 
+	function isMobile(): boolean {
+		return globalThis?.window?.innerWidth < 1024;
+	}
+
 	const scrollHandler = createScrollHandler(
 		animations.map(({ mobile, desktop }, i) => {
 			return {
@@ -82,10 +86,6 @@
 			};
 		})
 	);
-
-	const isMobile = () => {
-		return window.innerWidth < 1024;
-	};
 </script>
 
 <div
@@ -139,7 +139,11 @@
 				<div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
 			</a>
 
-			<a href="https://www.youtube.com/@Appwrite" class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card" id="oss-youtube">
+			<a
+				href="https://www.youtube.com/@Appwrite"
+				class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
+				id="oss-youtube"
+			>
 				<div class="u-flex-vertical u-main-space-between u-gap-32">
 					<span class="aw-icon-youtube aw-u-font-size-40" aria-hidden="true" aria-label="YouTube" />
 				</div>
@@ -189,7 +193,6 @@
 				hsl(var(--aw-color-background)) 0%,
 				hsl(var(--aw-color-background) / 0) 5%
 			);
-			content: '';
 			position: absolute;
 			inset: 0;
 		}
