@@ -65,8 +65,8 @@ services:
       <<: *x-update-config
       mode: replicated
       replicas: 6
-      max_replicas_per_node: 2
       placement:
+        max_replicas_per_node: 2
         constraints:
           - node.role == worker
         preferences: 

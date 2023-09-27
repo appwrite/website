@@ -7,7 +7,7 @@ x-logging: &x-logging
 
 x-update-config: &x-update-config
   update_config:
-    order: start-first
+    order: stop-first
     failure_action: rollback
     parallelism: 2
     delay: 5s
@@ -15,7 +15,7 @@ x-update-config: &x-update-config
     failure_action: pause
     monitor: 5s
     parallelism: 2
-    order: start-first
+    order: stop-first
 
 version: '3.8'
 
@@ -25,7 +25,7 @@ services:
     <<: *x-logging
     command:
       - --log.level=DEBUG
-      - --api.insecure=true
+      - --api.insecure=false
       - --providers.docker=true
       - --providers.docker.watch=true
       - --providers.docker.swarmMode=true
@@ -43,17 +43,15 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 8080:8080
     volumes:
       - /letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - cloud
     deploy:
-      replicas: 1
+      mode: global
       <<: *x-update-config
       placement:
-        max_replicas_per_node: 1
         constraints:
           - node.role == manager
 
@@ -65,8 +63,9 @@ services:
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 5
+      replicas: 6
       placement:
+        max_replicas_per_node: 2
         constraints:
           - node.role == worker
         preferences: 
