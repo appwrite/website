@@ -73,7 +73,7 @@
 			quickStarts: [
 				{
 					title: 'Node.js',
-					icon: 'icon-node',
+					icon: 'icon-node_js',
 					image: '/images/blog/placeholder.png',
 					href: 'node'
 				},
