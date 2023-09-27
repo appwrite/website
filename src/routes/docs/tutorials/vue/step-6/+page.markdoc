@@ -7,7 +7,12 @@ step: 6
 ## Create collection
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
-![Create collection screen](#TODO update me)
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
 
 Create a new collection with the following attributes:
 | Field       | Type   | Required |
