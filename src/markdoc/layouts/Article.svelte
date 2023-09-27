@@ -18,10 +18,11 @@
 	import { getContext, setContext } from 'svelte';
 	import { MainFooter } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
 	export let title: string;
 	export let description: string;
-	export let back: string;
+	export let back: string = '';
 	export let difficulty: string = '';
 	export let readtime: string = '';
 
@@ -56,7 +57,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{title}{DOCS_TITLE_SUFFIX}</title>
 	<meta name="description" content={description} />
 </svelte:head>
 
