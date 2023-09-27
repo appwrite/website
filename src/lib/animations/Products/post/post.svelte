@@ -193,7 +193,7 @@
 	.gradient-overlay {
 		position: absolute;
 		z-index: 100;
-		bottom: -10rem;
+		bottom: -5rem;
 		width: 100%;
 		height: 30rem;
 
