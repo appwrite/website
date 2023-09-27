@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Realtime
-description: The Appwrite Realtime allows you to listen to any Appwrite events and build an interactive and responsive user experience.
+description: Explore the power of real-time communication with the Appwrite Realtime API. Learn how to build dynamic and interactive applications with real-time data updates.
 difficulty: beginner
 readtime: 10
 ---
@@ -93,7 +93,7 @@ To subscribe to updates from different Appwrite resources, you need to specify o
 
 If you subscribe to a channel, you will receive callbacks for a variety of events related to the channel. The events attribute in the callback can be used to filter and respond to specific events in a channel.
 
-[View a list of all available events](#).
+[View a list of all available events](/docs/advanced/platform/events).
 
 
 {% info title="Permissions" %}
@@ -337,7 +337,7 @@ The payload from the subscription will contain following properties:
 ---
 * events
 * string[]
-* The [system events](#) that triggered this update.
+* The [Appwrite events](/docs/advanced/platform/events) that triggered this update.
 ---
 * channels
 * string[]

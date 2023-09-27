@@ -1,25 +1,31 @@
 ---
 layout: article
-title: Self-hosting
-description: Learn how to self host Appwrite on your own server using your favorite cloud provider.
+title: Installation
+description: Explore advanced self-hosting options with Appwrite. Learn how to gain full control of your Appwrite deployment, customize settings, and enhance your infrastructure.
 ---
 
-Appwrite was designed from the ground up with self-hosting in mind. 
-You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). 
-Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
+Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
-{% info title="Want to start building faster?" %}
-Spend less time worrying about infrastructure and scaling, and spend more time building with [Appwrite Cloud](https://cloud.appwrite.io/).
-{% /info %}
-
-## System Requirements {% #system-requirements %}
+## System requirements {% #system-requirements %}
 
 Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, and an operating system that supports Docker.
 
 Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
 
-## Get started {% #get-started %}
-Set up your first Appwrite instance with a single Docker command.
+{% info title="Upgrading From Older Versions" %}
+If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
+{% /info %}
+
+## Install with Docker {% #install-with-docker %}
+
+The easiest way to start running your Appwrite server is by running our Docker installer tool from your terminal. Before running the installation command, make sure you have [Docker CLI](https://www.docker.com/products/docker-desktop) installed on your host machine.
+
+You will be prompted to configure the following during the setup command:
+
+1. Your Appwrite instance's HTTP and HTTPS ports.
+2. Your Appwrite instance's secret key used to encrypt sensitive data.
+3. Your Appwrite instance's main hostname. Appwrite will generate a certificate using this hostname.
+4. Your Appwrite instance's DNS A record hostname. Typically set to the same value as your Appwrite instance's hostname.
 
 {% tabs %}
 {% tabsitem #unix title="macOS and Linux" %}
@@ -31,10 +37,6 @@ docker run -it --rm \
     --entrypoint="install" \
     appwrite/appwrite:1.4.3
 ```
-After running the command, you can access the Appwrite Console and start building on `localhost`. 
-Read more about other ways to install and uninstall.
-
-[Learn about install and uninstall {% icon icon="cheveron-right" /%}](#)
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
@@ -54,59 +56,58 @@ docker run -it --rm `
     --entrypoint="install" `
     appwrite/appwrite:1.4.3
 ```
-After running the command, you can access the Appwrite Console and start building on `localhost`. 
-Read more about other ways to install and uninstall.
-
-[Learn about install and uninstall {% icon icon="cheveron-right" /%}](#)
 {% /tabsitem %}
 {% /tabs %}
 
-To unlock the full capabilities of Appwrite, read about the following configurations.
+## One-click setups {% #one-click-setups %}
 
-## Email delivery
-Appwrite requires an SMTP service to deliver emails. 
-Email delivery is required for features like password recovery, account verification, MagicURL authentication, and team invites. 
-You can use a third-party SMTP service or host your own SMTP server.
+In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
 
-[Configure email delivery {% icon icon="cheveron-right" /%}](#)
+Choose from one of the providers below:
+ 
+&nbsp; |Provider | Installation Link
+--- | --- | ---
+ {% icon icon="do" /%}| DigitalOcean | [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
+ {% icon icon="gitpod" /%}| Gitpod | [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
+ {% icon icon="akamai" /%}| Akamai Compute | [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
 
-## SMS delivery
-Appwrite supports multiple third-party SMS delivery providers. 
-SMS delivery is required for phone authentication.
+## Next steps {% #next-steps %}
 
-[Configure SMS delivery {% icon icon="cheveron-right" /%}](#)
+Self-hosting Appwrite gives you more configurable options.
+Make these configurations to unlock the full power of Appwrite.
 
-## Functions
-Appwrite supports 10+ function runtimes and automatic deployments through Git integration. 
-Before using Appwrite Functions, configure Git integration and enable runtimes.
+[Configure Appwrite Functions](/docs/advanced/self-hosting/functions)
 
-[Configure Appwrite Functions {% icon icon="cheveron-right" /%}](#)
+[Configure email delivery](/docs/advanced/self-hosting/email)
 
-## Storage
-Appwrite's Storage Service can be configured to store files locally, or with self-hosted and cloud storage services. 
-By default, Appwrite's Storage Service stores files on your server's local storage. 
-If you expect large volumes of data or the need to have scalable data storage, you may choose to use a separate storage service.
+[Configure SMS delivery](/docs/advanced/self-hosting/sms)
 
-[Configure Appwrite Storage {% icon icon="cheveron-right" /%}](#)
+[Configure Appwrite Storage](/docs/advanced/self-hosting/storage)
 
-## TLS Certificates
-Appwrite uses Let's Encrypt to auto-generate TLS certificates for your Appwrite instance to ensure your API traffic is appropriately encrypted. 
-Configuration is required for Appwrite to properly generate certificates.
+[Configure TLS Certificates](/docs/advanced/self-hosting/tls-certificates)
 
-[Configure TLS certificates {% icon icon="cheveron-right" /%}](#) 
+## Manual (Docker Compose) {% #manual %}
 
-## Debug
-Appwrite provides tools to monitor server health, handle error logging.
+For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base `docker-compose.yml` and `.env` files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
 
-[Learn about upgrade {% icon icon="cheveron-right" /%}](#) 
+```bash
+docker compose up -d --remove-orphans
+```
 
-## Update
-Each Appwrite version contains a migration script to help you migrate your apps during updates.
+Once the Docker installation completes, go to your machine's hostname or IP address on your browser to access the Appwrite Console. Please note that on hosts that are not Linux-native, the server might take a few minutes to start after installation completes.
 
-[Learn about updates {% icon icon="cheveron-right" /%}](#) 
+## Stop {% #stop %}
 
-## Production
-Self-hosting Appwrite can be used in production settings.
-To succeed with Appwrite in a production environment, you should follow a few basic concepts and best practices. 
+You can stop your Appwrite containers by using the following command executed from the same directory as your `docker-compose.yml` file.
 
-[Learn about production {% icon icon="cheveron-right" /%}](#)
+```bash
+docker compose stop
+```
+
+## Uninstall {% #uninstall %}
+
+To stop and remove your Appwrite containers, you can use the following command executed from the same directory as your `docker-compose.yml` file.
+
+```bash
+docker compose down -v
+```

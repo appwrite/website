@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Deployment
-description: This is the description used for SEO.
-difficulty: intermediate
-readtime: 10
+description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
 ---
 
 Appwrite Functions are mini-applications in Appwrite with their own endpoints. Each function can have many deployments, which can be thought of as versions of the mini-application.
@@ -40,8 +38,9 @@ Before deploying your function with Git, create a new function attached to your 
 
 ## CLI  {% #cli %} 
 
-> ### CLI Setup {% #cli-setup %} 
-> Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](#) the CLI.
+{% info title="CLI setup" %}
+Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
+{% /info %}
 
 To deploy with the Appwrite CLI, your function must be added to `appwrite.json`. Use the `appwrite init function` method to create a starter function, then paste in your function code.
 

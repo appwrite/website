@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Databases
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+description: Dive deeper into Appwrite Databases and their configuration. Learn how to create, manage, and optimize multiple databases for your application.
 ---
 Databases are the largest organizational unit in Appwrite.
 Each database contains a group [collections](/docs/products/databases/collections).
@@ -16,7 +14,7 @@ You can create a database by navigating to the **Databases** page and clicking *
 
 
 ## Create a database using Server SDKs
-You can programmatically create databases using a [Server SDK](#). Appwrite [Server SDKs](#) require an [API key](#).
+You can programmatically create databases using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys).
 
 {% multicode %}
 ```js

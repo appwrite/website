@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Storage
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Manage self-hosted storage options with Appwrite. Explore file storage, uploads, and customization in your self-hosted Appwrite environment.
 ---
 
 Appwrite's Storage Service can be configured to store files locally, or with self-hosted and cloud storage services. 
@@ -14,11 +14,11 @@ Some of these services can be self-hosted, just like Appwrite.
 
 You can select which storage adapter to use by setting the `_APP_STORAGE_DEVICE` environment variable. Valid values are `local`, `s3`, `dospaces`, `backblaze`, `linode`, and `wasabi`. Each storage adapter requires its own set of additional environment variables to configure.
 
-[Learn more about storage environment variables {% icon icon="cheveron-right" /%}](#)
+[Learn more about storage environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
 
 ## Maximum file size {% #adapters %}
 
 The maximum size for a single file upload is controlled by the `_APP_STORAGE_LIMIT` environment variable, which defaults to 30 MB. 
-See [Environment Variables](#) for more information.
+[Learn more about environment variables](/docs/advanced/self-hosting/environment-variables).
 
 {% partial file="update-variables.md" /%}

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Functions
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Harness the full power of self-hosted functions with Appwrite. Explore function deployment, management, and integration in your self-hosted environment.
 ---
 
 ## Configure GitHub app {% #git %}
@@ -105,7 +105,7 @@ _APP_VCS_GITHUB_CLIENT_SECRET=35rsdse532q13
 _APP_VCS_GITHUB_WEBHOOK_SECRET=super-secret
 ```
 
-[Learn more about environment variables](#)
+[Learn more about environment variables](/docs/advanced/self-hosting/environment-variables)
 
 ### Update exiting GitHub apps {% #existing-apps %}
 
@@ -125,7 +125,7 @@ The example below would enable Dart 2.15, .NET 6.0, and Java 18 runtimes.
 _APP_FUNCTIONS_RUNTIMES=dart-2.15, dotnet-6.0, java-18.0
 ```
 
-You can find a full list of supported runtimes on the [environment variables page](#).
+You can find a full list of supported runtimes on the [environment variables page](/docs/advanced/self-hosting/environment-variables).
 
 You can also configure the maximum timeout that can be set on individual Appwrite functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 

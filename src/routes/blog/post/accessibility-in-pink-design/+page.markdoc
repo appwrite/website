@@ -3,10 +3,10 @@ layout: post
 title: Accessibility in Pink Design
 description: Lorem Ipsum dolor et amet.
 date: 2023-11-14
-cover: /images/pages/homepage/dashboard.svg
+cover: /images/pages/homepage/dashboard.png
 timeToRead: 3
 author: arman
-category: design, accessibility, appwrite, community, accessiblity
+category: accessibility, design
 ---
 
 When creating products, accessibility can be an afterthought. Understandably, we want to ship our products fast and deliver value to our users. We might think that accessibility is needed for edge cases and therefore not prioritize it. It's good to be reminded that the World Health Organization (WHO) estimates that 16% of the global population has some form of disability (Dec 2022).Ignoring such a significant part of your user base simply doesn't create a good user experience.Creating accessible products is everyone's responsibility. Designers, developers, content authors, and whoever else is involved in creating products should do their part and strive towards achieving a better experience for everyone.
@@ -33,9 +33,7 @@ Color contrast might be the first thing that comes to mind when thinking about a
 
 The term “color blindness” is often used to describe people who have trouble identifying and distinguishing between certain colors, but color blindness, the inability to see any color, is extremely rare. According to the United Kingdom National Health Service (NHS), red-green color blindness affects 1 out of 12 men and 1 out of 200 women. People with this color vision deficiency may have difficulty differentiating between reds, oranges, yellows, browns, and greens. They also might find it hard to distinguish between shades of purple and may confuse red with black.Similarly, people with “blue-yellow” color vision deficiency may have difficulty differentiating between blues, greens, and yellows.
 
-BIG LINK
-
-We use four system colors in Pink Design — red, orange, green, and blue. Each of these colors represents a state in the Appwrite console — red indicates an error or danger, orange indicates a warning, green indicates success, and blue indicates information. Knowing the difficulties our users might face while seeing these colors, we don't rely on color to make critical information understandable.
+We use four system colors in Pink Design — red, orange, green, and blue. Each of these colors represents a state in the Appwrite Console — red indicates an error or danger, orange indicates a warning, green indicates success, and blue indicates information. Knowing the difficulties our users might face while seeing these colors, we don't rely on color to make critical information understandable.
 
 >“Lorem ipsum dolor sit amet consectetur. Diam fermentum tellus ante purus nullam eget sit id ac. Purus viverra ultrices fusce posuere sed enim duis aliquam sit. Vitae fames potenti donec ultricies in. Quis sed iaculis consectetur cras feugiat nibh gravida tincidunt volutpat. Eleifend vel blandit cras tempor sed nam quis aliquet. Facilisi tempor amet id integer gravida duis. Aliquet nulla tellus risus tortor neque vestibulum arcu.” Author
 
@@ -46,7 +44,7 @@ People with fine motor control restrictions or disabled hands or arms will be un
 
 It is possible to enhance accessibility through development as well. In collaboration with our engineering team, we decided to incorporate the following into Pink Design:
 
-![Alt text](/images/pages/homepage/dashboard.svg "a title")
+![Alt text](/images/pages/homepage/dashboard.png "a title")
 
 ## Define font size in REM
 
