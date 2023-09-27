@@ -14,7 +14,7 @@
 	export let title: string | undefined = undefined;
 	export let description: string | undefined = undefined;
 	export let ogImage: string | undefined = undefined;
-	export let ogTitle: string | undefined = undefined;
+	export let ogTitle: string | undefined = title;
 	export let ogDescription: string | undefined = description;
 	export let author: AuthorData | undefined = undefined;
 	export let post: PostsData | undefined = undefined;
