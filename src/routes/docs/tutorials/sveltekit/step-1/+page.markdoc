@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Introduction
-description: This is the description used for SEO.
+description: Build a SvelteKit project using Appwrite.
 step: 1
 difficulty: easy
 readtime: 10

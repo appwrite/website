@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Set up Appwrite
-description: This is the description used for SEO.
+description: Import and initialize Appwrite for your react application.
 step: 3
 ---
 

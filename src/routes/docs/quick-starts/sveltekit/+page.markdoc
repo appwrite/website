@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with SvelteKit
-description: This is the description used for SEO.
+description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your SvelteKit apps.
 ---
 Learn to setup your first SvelteKit project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

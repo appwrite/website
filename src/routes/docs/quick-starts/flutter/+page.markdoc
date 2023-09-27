@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Flutter
-description: Learn how to quickly integrate Appwrite products and services into your Flutter project.
+description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 3
 ---

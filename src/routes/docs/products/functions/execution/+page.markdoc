@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Execution
-description: This is the description used for SEO.
+description: Understand serverless function execution in Appwrite. Explore how triggers, events, and data flow enable dynamic execution of your code.
 difficulty: beginner
 readtime: 3
 ---
