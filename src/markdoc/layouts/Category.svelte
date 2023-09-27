@@ -13,6 +13,7 @@
 	import type { PostsData } from './Post.svelte';
 	import type { AuthorData } from './Author.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let name: string;
 	export let description: string;
@@ -20,11 +21,12 @@
 	const authors = getContext<AuthorData[]>('authors');
 	const postsList = getContext<PostsData[]>('posts');
 	const posts = postsList.filter((post) => post.category.includes(name.toLowerCase()));
-</script>
 
-<svelte:head>
-	<Metadata title={name + BLOG_TITLE_SUFFIX} {description} />
-</svelte:head>
+	setMetadata({
+		title: name + BLOG_TITLE_SUFFIX,
+		description
+	});
+</script>
 
 <Main>
 	<div class="aw-big-padding-section-level-1">

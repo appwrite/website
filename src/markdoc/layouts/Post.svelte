@@ -19,7 +19,7 @@
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
 	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let title: string;
 	export let description: string;
@@ -42,16 +42,14 @@
 			cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
 		);
 	}
-</script>
 
-<svelte:head>
-	<Metadata
-		title={title + BLOG_TITLE_SUFFIX}
-		{description}
-		ogTitle={title}
-		ogImage={DEFAULT_HOST + cover}
-	/>
-</svelte:head>
+	setMetadata({
+		title: title + BLOG_TITLE_SUFFIX,
+		description,
+		ogTitle: title,
+		ogImage: DEFAULT_HOST + cover
+	});
+</script>
 
 <Main>
 	<div class="aw-big-padding-section">

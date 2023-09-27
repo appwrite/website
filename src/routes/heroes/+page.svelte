@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { FooterNav, MainFooter, Metadata } from '$lib/components';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
-</script>
 
-<svelte:head>
-	<Metadata title={'Heroes' + TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: 'Heroes' + TITLE_SUFFIX
+	});
+</script>
 
 <div
 	class="u-position-absolute aw-is-not-mobile"

@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { MainFooter, Metadata } from '$lib/components';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import {
@@ -65,11 +66,12 @@
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
 	$: serviceName = serviceMap[data.service?.name];
-</script>
 
-<svelte:head>
-	<Metadata title={serviceName + DOCS_TITLE_SUFFIX} />
-</svelte:head>
+	setMetadata({
+		title: serviceName + DOCS_TITLE_SUFFIX,
+		description: data.service?.description
+	});
+</script>
 
 <main class="u-contents">
 	<article class="aw-article u-contents">

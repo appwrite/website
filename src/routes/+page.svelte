@@ -9,6 +9,7 @@
 	import Products from '$lib/animations/Products/Products.svelte';
 	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 
 	const platforms: Array<{
 		name: string;
@@ -61,6 +62,11 @@
 			image: '/images/platforms/dark/android.svg'
 		}
 	];
+
+	setMetadata({
+		title: 'Appwrite - Build like a team of hundreds',
+		ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
+	})
 </script>
 
 <div

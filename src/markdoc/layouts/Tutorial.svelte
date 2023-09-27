@@ -14,6 +14,7 @@
 	import { writable } from 'svelte/store';
 	import type { LayoutContext } from './Article.svelte';
 	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
+	import { setMetadata } from '$lib/components/Metadata.svelte';
 
 	export let title: string;
 	export let description: string;
@@ -49,11 +50,12 @@
 		});
 		return carry;
 	}, []);
-</script>
 
-<svelte:head>
-	<Metadata title={title + DOCS_TITLE_SUFFIX} {description} />
-</svelte:head>
+	setMetadata({
+		title: title + DOCS_TITLE_SUFFIX,
+		description
+	});
+</script>
 
 <DocsTutorial {title} {toc} {tutorials} currentStep={step}>
 	<svelte:fragment slot="metadata">
