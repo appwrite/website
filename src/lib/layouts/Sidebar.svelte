@@ -33,10 +33,7 @@
 	}
 </script>
 
-<nav
-	class="aw-side-nav is-transparent"
-	class:is-transparent={$layoutState.currentVariant !== 'two-side-navs'}
->
+<nav class="aw-side-nav">
 	<div class="aw-side-nav-wrapper">
 		<button
 			class="aw-input-text aw-is-not-desktop"
