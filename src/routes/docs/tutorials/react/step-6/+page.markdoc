@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Add database
-description: This is the description used for SEO.
+description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 
 ---

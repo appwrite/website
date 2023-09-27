@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with .NET
-description: This is the description used for SEO.
+description: Learn to get started with server integrations with Appwrite .NET SDK.
 ---
 Learn to setup your first .NET project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
