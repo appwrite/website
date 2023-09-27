@@ -52,6 +52,7 @@
     padding-inline:pxToRem(12); padding-block:pxToRem(8); white-space:nowrap;
     color:hsl(var(--p-side-nav-item-text-color)); background-color:hsl(var(--p-side-nav-item-bg-color));
     border-radius:pxToRem(8);
+    [class*="icon-"] { font-size:pxToRem(16); }
     [class*="icon"]:first-child { color:hsl(var(--p-side-nav-item-icon-color)); }
     [class*="icon"]:last-child { transition:var(--transiton); }
     &:hover {
