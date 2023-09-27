@@ -14,15 +14,15 @@
 
 <script lang="ts">
 	export let title: string;
-	export let back: string | undefined = undefined;
 	export let toc: Array<TocItem>;
+	export let back: string | undefined = undefined;
 </script>
 
 <main class="u-contents">
 	<article class="aw-article u-contents">
 		<header class="aw-article-header">
 			<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
-				{#if back !== undefined}
+				{#if back}
 					<a
 						href={back}
 						class="
@@ -37,7 +37,7 @@
 					<slot name="metadata" />
 				</ul>
 				<div class="u-position-relative u-flex u-cross-center">
-					{#if back !== undefined}
+					{#if back}
 						<a
 							href={back}
 							class="
