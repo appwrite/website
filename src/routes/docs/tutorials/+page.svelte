@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Docs from '$lib/layouts/Docs.svelte';
-	import Sidebar from '../Sidebar.svelte';
 	import { MainFooter } from '$lib/components';
 </script>
 
@@ -21,8 +19,8 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-react aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">React</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
@@ -32,8 +30,8 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-vue aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Vue</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
@@ -43,8 +41,8 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-svelte aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">SvelteKit</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
@@ -54,56 +52,8 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-				</ul>
-			</section>
-			<section class="u-flex-vertical u-gap-24">
-				<h2 class="aw-eyebrow">Server</h2>
-				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-flutter aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Flutter</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
@@ -113,8 +63,8 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-apple aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Apple</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
@@ -124,400 +74,12 @@
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
+								<span class="icon-android aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Android</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Lorem ipsum dolor sit amet consectetur.
 							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-				</ul>
-			</section>
-		</div>
-		<header class="aw-article-header">
-			<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
-				<div class="u-position-relative u-flex u-cross-center">
-					<h1 class="aw-title">Authentication</h1>
-				</div>
-			</div>
-			<div class="aw-article-header-end" />
-		</header>
-		<div class="aw-article-content aw-u-gap-80">
-			<section class="u-flex-vertical u-gap-24">
-				<h2 class="aw-eyebrow">Client</h2>
-				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-				</ul>
-			</section>
-			<section class="u-flex-vertical u-gap-24">
-				<h2 class="aw-eyebrow">Server</h2>
-				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-				</ul>
-			</section>
-		</div>
-
-		<header class="aw-article-header">
-			<div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
-				<div class="u-position-relative u-flex u-cross-center">
-					<h1 class="aw-title">Databases</h1>
-				</div>
-			</div>
-			<div class="aw-article-header-end" />
-		</header>
-		<div class="aw-article-content aw-u-gap-80">
-			<section class="u-flex-vertical u-gap-24">
-				<h2 class="aw-eyebrow">Client</h2>
-				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-				</ul>
-			</section>
-			<section class="u-flex-vertical u-gap-24">
-				<h2 class="aw-eyebrow">Server</h2>
-				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
-							</p>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
-						</article>
-					</li>
-					<li class="">
-						<article class="aw-card is-full-color">
-							<header class="u-flex u-cross-baseline u-gap-4">
-								<span class="icon-node_js aw-u-font-size-24" aria-hidden="true" />
-								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Node.js</h4>
-							</header>
 						</article>
 					</li>
 				</ul>

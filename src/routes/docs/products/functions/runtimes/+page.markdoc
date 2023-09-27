@@ -10,13 +10,13 @@ Appwrite Functions supports an extensive list of runtimes to meet your unique te
 Below is a list of available Functions runtimes. The Appwrite team continually adds support for new runtimes.
 
 {% table %}
-* &nbsp; {% width=40 %}
-* Name
+* &nbsp; {% width=48 %}
+* Name {% width=120 %}
 * Versions
 * Architectures
 ---
-* {% only_dark %}![Node.js logo](/images/platforms/dark/nodejs.svg){% /only_dark %}
-{% only_light %}![Node.js logo](/images/platforms/nodejs.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
 * [Node.js](https://hub.docker.com/r/openruntimes/node/tags)
 * `node-14.5`
 `node-16.0`
@@ -25,24 +25,22 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `node-20.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![PHP logo](/images/platforms/dark/php.svg){% /only_dark %}
-{% only_light %}![PHP logo](/images/platforms/php.svg){% /only_light %}
-* [PHP](https://hub.docker.com/r/openruntimes/php/tags)
-* `php-8.0`
-`php-8.1`
-`php-8.2`
-* x86 / arm64 / armv7 / armv8
+* {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+* [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
+* `bun-1.0`
+* x86 / arm64
 ---
-* {% only_dark %}![Ruby logo](/images/platforms/dark/ruby.svg){% /only_dark %}
-{% only_light %}![Ruby logo](/images/platforms/ruby.svg){% /only_light %}
-* [Ruby](https://hub.docker.com/r/openruntimes/ruby/tags)
-* `ruby-3.0`
-`ruby-3.1`
-`ruby-3.2`
-* x86 / arm64 / armv7 / armv8
+* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+* [Deno](https://hub.docker.com/r/openruntimes/deno/tags)
+* `deno-1.21`
+`deno-1.24`
+`deno-1.35`
+* x86
 ---
-* {% only_dark %}![Python logo](/images/platforms/dark/python.svg){% /only_dark %}
-{% only_light %}![Python logo](/images/platforms/python.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * [Python](https://hub.docker.com/r/openruntimes/python/tags)
 * `python-3.8` 
 `python-3.9`
@@ -50,16 +48,8 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `python-3.11`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![Deno logo](/images/platforms/dark/deno.svg){% /only_dark %}
-{% only_light %}![Deno logo](/images/platforms/deno.svg){% /only_light %}
-* [Deno](https://hub.docker.com/r/openruntimes/deno/tags)
-* `deno-1.21`
-`deno-1.24`
-`deno-1.35`
-* x86
----
-* {% only_dark %}![Dart logo](/images/platforms/dark/dart.svg){% /only_dark %}
-{% only_light %}![Dart logo](/images/platforms/dart.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
 * [Dart](https://hub.docker.com/r/openruntimes/dart/tags)
 * `dart-2.15`
 `dart-2.16`
@@ -68,16 +58,32 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `dart-3.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![.NET logo](/images/platforms/dark/dotnet.svg){% /only_dark %}
-{% only_light %}![.NET logo](/images/platforms/dotnet.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+* [PHP](https://hub.docker.com/r/openruntimes/php/tags)
+* `php-8.0`
+`php-8.1`
+`php-8.2`
+* x86 / arm64 / armv7 / armv8
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+* [Ruby](https://hub.docker.com/r/openruntimes/ruby/tags)
+* `ruby-3.0`
+`ruby-3.1`
+`ruby-3.2`
+* x86 / arm64 / armv7 / armv8
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
 * [.NET](https://hub.docker.com/r/openruntimes/dotnet/tags)
 * `dotnet-3.1` 
 `dotnet-6.0`
 `dotnet-7.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![Java logo](/images/platforms/dark/java.svg){% /only_dark %}
-{% only_light %}![Java logo](/images/platforms/java.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
 * [Java](https://hub.docker.com/r/openruntimes/java/tags)
 * `java-8.0`
 `java-11.0`
@@ -85,32 +91,26 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `java-18.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![Swift logo](/images/platforms/dark/swift.svg){% /only_dark %}
-{% only_light %}![Swift logo](/images/platforms/swift.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
 * [Swift](https://hub.docker.com/r/openruntimes/swift/tags)
 * `swift-5.5`
 `swift-5.8`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![Kotlin logo](/images/platforms/dark/kotlin.svg){% /only_dark %}
-{% only_light %}![Kotlin logo](/images/platforms/kotlin.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
 * [Kotlin](https://hub.docker.com/r/openruntimes/kotlin/tags)
 * `kotlin-1.6`
 `kotlin-1.8`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% only_dark %}![C++ logo](/images/platforms/dark/c.svg){% /only_dark %}
-{% only_light %}![C++ logo](/images/platforms/c.svg){% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
 * [C++](https://hub.docker.com/r/openruntimes/cpp/tags)
 * `cpp-17`
 `cpp-20`
 * x86 / arm64 / armv7 / armv8
----
-* {% only_dark %}![Bun logo](/images/platforms/dark/bun.svg){% /only_dark %}
-{% only_light %}![Bun logo](/images/platforms/bun.svg){% /only_light %}
-* [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
-* `bun-1.0`
-* x86 / arm64
 ---
 {% /table %}
 

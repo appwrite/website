@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+	import { FooterNav, MainFooter, Metadata, PreFooter } from '$lib/components';
 
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
 </script>
 
+<svelte:head>
+	<Metadata title={'Pricing' + TITLE_SUFFIX} />
+</svelte:head>
+
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
-	<img
-		src="/images/bgs/pricing-hero.svg"
-		alt=""
-		class="aw-u-gradient-mobile-align"
-		style="margin-inline:auto; display:block;"
-	/>
+	<img src="/images/bgs/pricing-hero.svg" alt="" style="margin-inline:auto; display:block;" />
 </div>
 
 <Main>
@@ -42,15 +42,18 @@
 								>
 									<div class="aw-pricing-cards-item">
 										<header class="aw-pricing-cards-header">
-											<h2 class="aw-label">Free</h2>
+											<h2 class="aw-label">Starter</h2>
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
 											<div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For personal passion projects and non-commercial use
+												For personal passion projects and students.
 											</p>
-											<button class="aw-button is-secondary is-full-width u-margin-block-start-32">
+											<a
+												href="https://cloud.appwrite.io/register"
+												class="aw-button is-secondary is-full-width u-margin-block-start-32"
+											>
 												<span class="aw-sub-body-500">Start building</span>
-											</button>
+											</a>
 										</header>
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
@@ -78,14 +81,14 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$15</div>
 											<div class="u-margin-block-start-4">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For pro teams and production projects that need to scale
+												For pro developers and teams that need to scale their products.
 											</p>
-											<button class="aw-button is-full-width u-margin-block-start-32">
-												<span class="aw-sub-body-500">Get Pro</span>
+											<button class="aw-button is-full-width u-margin-block-start-32" disabled>
+												<span class="aw-sub-body-500">Coming soon</span>
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free plus:</p>
+											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">300GB bandwidth</span></li>
 												<li class=""><span class="">Unlimited projects</span></li>
@@ -119,12 +122,15 @@
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For scaling teams and agencies that need dedicated support.
 											</p>
-											<button class="aw-button is-secondary is-full-width u-margin-block-start-32">
-												<span class="aw-sub-body-500">Get Scale</span>
+											<button
+												class="aw-button is-secondary is-full-width u-margin-block-start-32"
+												disabled
+											>
+												<span class="aw-sub-body-500">Coming soon</span>
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Free & Pro, plus:</p>
+											<p>Everything in Starter & Pro, plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li class=""><span class="">Extra support log retention days</span></li>
 												<li class=""><span class="">Additional org member roles</span></li>
@@ -150,9 +156,9 @@
 								<p class="u-margin-block-start-8">
 									Large scale projects seeking greater performance, collaboration and security.
 								</p>
-								<button class="aw-button is-secondary u-margin-block-start-32">
-									<span>Contact Us</span>
-								</button>
+								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
+									<span>Contact us</span>
+								</a>
 							</article>
 						</li>
 						<li>
@@ -164,11 +170,11 @@
 									<h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
 								</header>
 								<p class="u-margin-block-start-8">
-									We support OSS companies with a free Pro Plan. Get in touch to find out.
+									We support OSS maintainers with a free Pro Plan. Get in touch to find out.
 								</p>
-								<button class="aw-button is-secondary u-margin-block-start-32">
-									<span>Contact Us</span>
-								</button>
+								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
+									<span>Contact us</span>
+								</a>
 							</article>
 						</li>
 					</ul>

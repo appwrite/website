@@ -1,14 +1,18 @@
 <script lang="ts" context="module">
+	import { writable } from 'svelte/store';
+
 	export type NavLink = {
 		label: string;
 		href: string;
 	};
+	export const isHeaderHidden = writable(false);
 </script>
 
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { MobileNav } from '$lib/components';
 	import { isVisible } from '$lib/utils/isVisible';
+	import { createScrollInfo } from '$lib/utils/scroll';
 	import { addEventListener } from '@melt-ui/svelte/internal/helpers';
 	import { onMount } from 'svelte';
 
@@ -45,11 +49,12 @@
 	function getVisibleTheme() {
 		const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
 			(element) => {
-				const { classList } = element;
+				const { classList, dataset } = element as HTMLElement;
 				if (
 					classList.contains('aw-mobile-header') ||
 					classList.contains('aw-main-header') ||
-					element === document.body
+					element === document.body ||
+					typeof dataset['themeIgnore'] === 'string'
 				) {
 					return false;
 				}
@@ -85,10 +90,10 @@
 			label: 'Blog',
 			href: '/blog'
 		},
-		{
-			label: 'Changelog',
-			href: '#'
-		},
+		// {
+		// 	label: 'Changelog',
+		// 	href: '#'
+		// },
 		{
 			label: 'Pricing',
 			href: '/pricing'
@@ -96,12 +101,26 @@
 	];
 
 	$: resolvedTheme = isMobileNavOpen ? 'dark' : theme;
+
+	const scrollInfo = createScrollInfo();
+
+	$: $isHeaderHidden = (() => {
+		if ($scrollInfo.top < 250) {
+			return false;
+		}
+		if ($scrollInfo.direction === 'down') {
+			return true;
+		}
+
+		return $scrollInfo.deltaDirChange < 200;
+	})();
 </script>
 
 <div class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
 		class:is-transparent={browser && !isMobileNavOpen}
+		class:is-hidden={$isHeaderHidden}
 	>
 		<div class="aw-mobile-header-start">
 			<a href="/">
@@ -121,9 +140,9 @@
 		</div>
 		<div class="aw-mobile-header-end">
 			{#if !isMobileNavOpen}
-				<button class="aw-button">
+				<a href="https://cloud.appwrite.io" class="aw-button">
 					<span class="text">Get Started</span>
-				</button>
+				</a>
 			{/if}
 			<button
 				class="aw-button is-text"
@@ -138,8 +157,12 @@
 			</button>
 		</div>
 	</section>
-	<header class="aw-main-header theme-{resolvedTheme}" class:is-transparent={browser}>
-		<!-- Hidden for now. <div class="aw-top-banner">
+	<header
+		class="aw-main-header theme-{resolvedTheme}"
+		class:is-transparent={browser}
+		class:is-hidden={$isHeaderHidden}
+	>
+		<!-- <div class="aw-top-banner">
 			<div class="aw-top-banner-content aw-u-color-text-primary">
 				<span class="aw-caption-500">We are having lots of fun on</span>
 				<span class="aw-icon-discord" aria-hidden="true" />
@@ -149,6 +172,7 @@
 				</button>
 			</div>
 		</div> -->
+
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
 				<div class="aw-main-header-row">
@@ -178,15 +202,19 @@
 						</nav>
 					</div>
 					<div class="aw-main-header-end">
-						<button class="aw-button is-text">
+						<a
+							href="https://github.com/appwrite/appwrite/stargazers"
+							target="_blank"
+							class="aw-button is-text"
+						>
 							<span aria-hidden="true" class="aw-icon-star" />
 							<span class="text">Star on GitHub</span>
-							<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-						</button>
-						<button class="aw-button is-secondary">Sign Up</button>
-						<button class="aw-button">
+							<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+						</a>
+						<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary">Sign up</a>
+						<a href="https://cloud.appwrite.io" class="aw-button">
 							<span class="text">Get Started</span>
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>

@@ -1,15 +1,14 @@
 ---
 layout: article
-title: Magic URL
+title: Magic URL login
 description: This is the description used for SEO.
 ---
-Certainly, here's the HTML content converted into Markdown format:
 
 Magic URL is a password-less way to authenticate users. When a user logs in by providing their email, they will receive an email with a "magic" link that contains a secret used to log in the user. The user can simply click the link to be logged in.
 
-## Send Email {% #init %}
+## Send email {% #init %}
 
-Initialize the log in process with the [Create Magic URL Session](#) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
+Initialize the log in process with the [Create Magic URL Session](/docs/references/cloud/client-web/account#createMagicURLSession) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
 
 {% multicode %}
 ```js

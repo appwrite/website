@@ -1,44 +1,98 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
+	import { Metadata, Spline } from '$lib/components';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';
-	import { Tabs } from '$lib/UI';
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import OpenSource from '$lib/animations/OpenSource.svelte';
-	import Products from '$lib/animations/Products.svelte';
+	import Products from '$lib/animations/Products/Products.svelte';
+	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
+	import Tooltip from '$lib/components/Tooltip.svelte';
+
+	const platforms: Array<{
+		name: string;
+		href: string;
+		image: string;
+	}> = [
+		{
+			name: 'Flutter',
+			href: '/docs/quick-starts/flutter',
+			image: '/images/platforms/dark/flutter.svg'
+		},
+		{
+			name: 'Next',
+			href: '/docs/quick-starts/nextjs',
+			image: '/images/platforms/dark/nextjs.svg'
+		},
+		{
+			name: 'React',
+			href: '/docs/quick-starts/react',
+			image: '/images/platforms/dark/react.svg'
+		},
+		{
+			name: 'Svelte',
+			href: '/docs/quick-starts/sveltekit',
+			image: '/images/platforms/dark/svelte.svg'
+		},
+		{
+			name: 'Nuxt',
+			href: '/docs/quick-starts/nuxt',
+			image: '/images/platforms/dark/nuxt.svg'
+		},
+		{
+			name: 'Vue',
+			href: '/docs/quick-starts/vue',
+			image: '/images/platforms/dark/vue.svg'
+		},
+		{
+			name: 'Angular',
+			href: '/docs/quick-starts/angular',
+			image: '/images/platforms/dark/angular.svg'
+		},
+		{
+			name: 'Apple',
+			href: '/docs/quick-starts/apple',
+			image: '/images/platforms/dark/apple.svg'
+		},
+		{
+			name: 'Android',
+			href: '/docs/quick-starts/android',
+			image: '/images/platforms/dark/android.svg'
+		}
+	];
 </script>
 
-<!-- <div
-	class="u-position-absolute"
-	style="
-	width: 100vw;
-	max-width: 100%; overflow: hidden;
-	height: 1000px;
-"
-> -->
 <div
-	class="u-position-absolute"
-	style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+	style:position="absolute"
+	style:top="0"
+	style:width="100vw"
+	style:height="100vh"
+	style:overflow="hidden"
 >
-	<img
-		style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
+	<div
+		class="u-position-absolute"
+		style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+	>
+		<img
+			style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-		src="/images/bgs/top-page-dark.svg"
-		alt=""
-	/>
+			src="/images/bgs/top-page-dark.svg"
+			alt=""
+		/>
+	</div>
 </div>
 
 <div
-	class="u-position-absolute"
-	style="top: 15rem; left: 50%; translate: calc(-50% - 900px); width: 75.9375rem;"
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
 
 <div
-	class="u-position-absolute"
-	style="top: 60rem; left: 50%; translate: calc(-50% + 800px); width: 60rem;"
+	class="u-position-absolute aw-is-only-desktop"
+	style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
 >
 	<img src="/images/bgs/hero-lines-2.png" alt="" />
 </div>
@@ -48,13 +102,16 @@
 		<div class="aw-big-padding-section-level-1">
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-end-0">
-					<button class="aw-hero-banner-button aw-u-margin-block-end-24">
+					<a
+						href="/blog/post/meet-the-new-appwrite"
+						class="aw-hero-banner-button aw-u-margin-block-end-24"
+					>
 						<span class="aw-icon-star" aria-hidden="true" />
 						<span class="aw-caption-500">New</span>
 						<div class="aw-hero-banner-button-sep" />
-						<span class="aw-caption-400">Intorudcing a *brand* new Appwrite</span>
+						<span class="aw-caption-400">Meet the new Appwrite</span>
 						<span class="aw-icon-arrow-right" aria-hidden="true" />
-					</button>
+					</a>
 					<div class="aw-hero is-horizontal">
 						<h1 class="aw-headline">
 							<span class="aw-gradient-text">
@@ -63,12 +120,15 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where you can build any
-								application at any scale, using the coding languages and tools you want.
+								Appwrite is the open-source development platform where you can build any application
+								at any scale, using the coding languages and tools you want.
 							</p>
-							<button class="aw-button is-full-width-mobile u-margin-block-start-32">
+							<a
+								href="https://cloud.appwrite.io"
+								class="aw-button is-full-width-mobile u-margin-block-start-32"
+							>
 								<span class="text">Get Started</span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</section>
@@ -76,12 +136,13 @@
 			<div class="aw-big-padding-section-level-2">
 				<section class="aw-container aw-u-padding-block-0" style="--container-size:78.75rem">
 					<div class="aw-media-container">
-						<img
-							class="u-block"
-							src="/images/pages/homepage/dashboard.svg"
-							alt="console dashboard"
-							style="aspect-ratio: 16 / 9"
-						/>
+						<div style="aspect-ratio: 1244 / 717">
+							<img
+								class="u-block"
+								src="/images/pages/homepage/dashboard.png"
+								alt="console dashboard"
+							/>
+						</div>
 					</div>
 				</section>
 			</div>
@@ -94,40 +155,55 @@
 					</h3>
 					<ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
 						<li>
-							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" />
+							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" width="42" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" />
+							<img src="/images/logos/trusted-by/oracle.svg" alt="ORACLE" width="136" height="17" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" />
+							<img src="/images/logos/trusted-by/tiktok.svg" alt="TikTok" width="133" height="32" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/intel.svg" alt="intel" />
+							<img src="/images/logos/trusted-by/intel.svg" alt="intel" width="76" height="30" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" />
+							<img src="/images/logos/trusted-by/ibm.svg" alt="IBM" width="74" height="30" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/american-airlines.svg" alt="American Airlines" />
+							<img
+								src="/images/logos/trusted-by/american-airlines.svg"
+								alt="American Airlines"
+								width="147"
+								height="24"
+							/>
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/deloitte.svg" alt="Deloitte." />
+							<img
+								src="/images/logos/trusted-by/deloitte.svg"
+								alt="Deloitte."
+								width="103"
+								height="20"
+							/>
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/gm.svg" alt="GM" />
+							<img src="/images/logos/trusted-by/gm.svg" alt="GM" width="48" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/ey.svg" alt="EY" />
+							<img src="/images/logos/trusted-by/ey.svg" alt="EY" width="46" height="48" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" />
+							<img src="/images/logos/trusted-by/nestle.svg" alt="Nestle" width="119" height="34" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" />
+							<img src="/images/logos/trusted-by/bosch.svg" alt="BOSCH" width="110" height="37" />
 						</li>
 						<li>
-							<img src="/images/logos/trusted-by/decathlon.svg" alt="DECATHLON" />
+							<img
+								src="/images/logos/trusted-by/decathlon.svg"
+								alt="DECATHLON"
+								width="127"
+								height="32"
+							/>
 						</li>
 					</ul>
 				</div>
@@ -135,20 +211,28 @@
 		</div>
 
 		<Products />
+		<ProductsMobile />
 
 		<div class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light">
 			<div class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line">
-				<img class="u-block u-width-full-line" src="/images/bgs/padding-section-1.svg" alt="" />
+				<img
+					class="u-block u-width-full-line"
+					src="/images/bgs/padding-section-1.svg"
+					alt=""
+					style:max-height="48rem"
+				/>
 			</div>
 
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<section class="aw-hero is-align-start">
 						<span class="aw-badges aw-eyebrow">PRIVACY & SECURITY_</span>
-						<h2 class="aw-display u-max-width-700">Self-host your data or take it to the Cloud</h2>
+						<h2 class="aw-display aw-u-color-text-primary u-max-width-700">
+							Self-host your data or take it to the Cloud
+						</h2>
 						<p class="aw-description u-max-width-700">
-							Migrate your data from and to any platform at any time with Appwrite’s migrations API.
-							With built-in security and privacy for peace of mind.
+							Migrate your data from and to any platform at any time with Appwrite Migrations. With
+							built-in security and privacy for peace of mind.
 						</p>
 					</section>
 					<div class="u-overflow-hidden aw-u-margin-block-start-80">
@@ -156,7 +240,9 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/self-hosted.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Self-Hosted</h3>
-								<p class="aw-info-boxes-content">Own your data or host it on a region of choice.</p>
+								<p class="aw-info-boxes-content">
+									Own your data or host it on a cloud region of choice.
+								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/lock.svg" width="40" height="40" alt="" />
@@ -167,16 +253,16 @@
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/shield.svg" width="40" height="40" alt="" />
-								<h3 class="aw-info-boxes-title">Abuse Protection</h3>
+								<h3 class="aw-info-boxes-title">Abuse protection</h3>
 								<p class="aw-info-boxes-content">
-									Protect users from abuse with built-in protection.
+									Protect your APIs from abuse with built-in protection.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/database.svg" width="40" height="40" alt="" />
-								<h3 class="aw-info-boxes-title">Data Migrations</h3>
+								<h3 class="aw-info-boxes-title">Data migrations</h3>
 								<p class="aw-info-boxes-content">
-									Move data between 3rd parties, cloud or self-hosting.
+									Easily transfer data from 3rd parties or between Cloud and self-hosted.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
@@ -215,79 +301,82 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display aw-u-color-text-primary">
-							Loved by developers
-						</div>
+						<div class="aw-display aw-u-color-text-primary">Loved by our community</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
+								name="Terry Lennon"
+								tag="@terry_lennon"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/terry.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+								Been a huge supporter of Appwrite for over a year, championing it even at the
+								companies I was working at. Their community is second-to-none, speed of feature
+								release is exceptional, and the support in their Discord is incredible.
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="discord"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href="#">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
-							</DeveloperCard>
-						</li>
-						<li>
-							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
+								name="Varun Dhand"
+								tag="@varundhand"
 								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
+								avatarSrc="/images/community/avatars/varun.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+								Recently, I embarked on a journey to create a Real-Time Chat Application that would
+								redefine seamless communication. Along the way, I discovered an incredible tool that
+								transformed my backend game - Appwrite!
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
+								name="Kap.ts"
+								tag="@Kaperskyguru"
 								icon="x"
-								avatarSrc="/images/avatars/eldad.png"
+								avatarSrc="/images/community/avatars/kap.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in <a
-									class="aw-link-1"
-									href="#">@ultrices lacus</a
-								>. Duis pellentesque quis purus in posuere Duis pellentesque quis purus in posuere.
+								Backend Engineers, you will agree with me that building the authentication process
+								for your app with each new API development is a pain. Here's my secret: I let <a
+									href="https://twitter.com/appwrite"
+									target="_blank"
+									class="aw-link-1">@appwrite</a
+								> handle my authentication process while I focus on the business logic.
 							</DeveloperCard>
 						</li>
 						<li>
 							<DeveloperCard
-								name="Eldad Fux"
-								tag="@eldadfux"
-								icon="linkedin"
-								avatarSrc="/images/avatars/eldad.png"
+								name="Stephen Simon"
+								tag="@codewithsimon"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/stephen.png"
 							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.
-								Duis pellentesque quis purus in posuere.
+								Absolutely in love with Appwrite and the commitment to the community!
+							</DeveloperCard>
+						</li>
+						<li>
+							<DeveloperCard
+								name="Teri"
+								tag="@terieyenike"
+								icon="product-hunt"
+								avatarSrc="/images/community/avatars/terieyenike.png"
+							>
+								I have used Appwrite twice, and the experience of using it was great as I got to
+								build a full-stack application. I would gladly recommend it to anyone looking to
+								explore an alternative database option. Appwrite is simply the best.
+							</DeveloperCard>
+						</li>
+						<li>
+							<DeveloperCard
+								name="Souvik Sarkar"
+								tag="@Jeet_2003"
+								icon="x"
+								avatarSrc="/images/community/avatars/souvik.png"
+							>
+								If you're looking for a backend server that is both powerful and easy to use, check
+								out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1"
+									>@appwrite</a
+								>. With its robust feature set and open-source nature, it's the perfect choice for
+								developers who want to build secure and scalable applications.
 							</DeveloperCard>
 						</li>
 					</ul>
@@ -295,40 +384,106 @@
 			</div>
 		</div>
 
-		<div class="aw-big-padding-section-level-1">
-			<div
-				class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-			>
-				<img
-					class="u-position-absolute u-z-index-0"
-					src="/images/bgs/diagonal-lines.png"
-					alt=""
-					style="width: 1450px; height:auto; left: calc(50% - 40rem);
-					transform: translate(-50%);
-					max-inline-size: unset; max-block-size: unset;"
-				/>
+		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+			<Spline let:fallback let:viewer>
+				<div
+					class="u-position-absolute aw-is-not-mobile"
+					style:inline-size="768px"
+					style:block-size="768px"
+					style:inset-block-start="0rem"
+					style:left="calc(50% - 384px + 350px)"
+				>
+					<img
+						src="/images/animations/tech.png"
+						width="768"
+						height="768"
+						alt=""
+						style="position: absolute; display: block;"
+						use:fallback
+					/>
+					<spline-viewer
+						url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+						width="768"
+						height="768"
+						use:viewer
+					/>
+				</div>
+			</Spline>
+			<div class="aw-big-padding-section-level-2 is-margin-replace-padding">
+				<div class="aw-container u-position-relative">
+					<section class="aw-hero is-align-start">
+						<span class="aw-badges aw-eyebrow">SDKs_</span>
+						<h2 class="aw-display aw-u-color-text-primary u-max-width-600">
+							Code the way you want
+						</h2>
+						<p class="aw-description u-max-width-600">
+							We support many SDKs making Appwrite flexible to your needs and ensuring you can code
+							with the language you want at any time.
+						</p>
+						<ul
+							class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
+						>
+							{#each platforms as platform}
+								<Tooltip>
+									<li>
+										<a href={platform.href} class="aw-box-icon">
+											<img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
+										</a>
+									</li>
+									<svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+								</Tooltip>
+							{/each}
+						</ul>
+						<a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
+							<span class="aw-sub-body-500">Explore all SDKs</span>
+						</a>
+					</section>
+				</div>
+			</div>
+			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+				<Spline let:viewer>
+					<div
+						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
+						style:width="50%"
+						style:height="100%"
+						style:left="0"
+					>
+						<div style:display="grid" style:place-items="center" style:height="100%">
+							<spline-viewer
+								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
+								loading="eager"
+								use:viewer
+							/>
+						</div>
+					</div>
+				</Spline>
+
 				<div class="aw-container u-position-relative">
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
-							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you</h2>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
+								We scale for you and your users
+							</h2>
 						</section>
-						<ul class="aw-big-list-info u-margin-inline-start-auto aw-u-margin-block-start-48">
+						<ul
+							class="aw-big-list-info u-margin-inline-start-auto aw-u-inline-width-100-percent-mobile-break1 aw-u-margin-block-start-48"
+						>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">12</div>
-								<div class="text">Regions served</div>
+								<div class="aw-headline aw-u-color-text-primary">90K</div>
+								<div class="text">Projects</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">900TB</div>
-								<div class="text">of data served</div>
+								<div class="aw-headline aw-u-color-text-primary">+1B</div>
+								<div class="text">Requests served</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">1 million</div>
-								<div class="text">end users</div>
+								<div class="aw-headline aw-u-color-text-primary">20K</div>
+								<div class="text">Organizations</div>
 							</li>
 							<li class="aw-big-list-info-item">
-								<div class="aw-headline aw-u-color-text-primary">999</div>
-								<div class="text">total compute time</div>
+								<div class="aw-headline aw-u-color-text-primary">99.99%</div>
+								<div class="text">Guaranteed uptime</div>
 							</li>
 						</ul>
 					</div>
@@ -346,3 +501,6 @@
 		</div>
 	</div>
 </Main>
+
+<style lang="scss">
+</style>

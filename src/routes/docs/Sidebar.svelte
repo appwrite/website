@@ -5,6 +5,11 @@
 		{
 			items: [
 				{
+					label: 'Home',
+					href: '/docs',
+					icon: 'icon-home'
+				},
+				{
 					label: 'Quick Start',
 					href: '/docs/quick-starts',
 					icon: 'icon-play'
@@ -22,7 +27,8 @@
 				{
 					label: 'References',
 					href: '/docs/references',
-					icon: 'icon-document'
+					icon: 'icon-document',
+					isParent: true
 				}
 			]
 		},
@@ -32,22 +38,26 @@
 				{
 					label: 'Auth',
 					href: '/docs/products/auth',
-					icon: 'icon-user-group'
+					icon: 'icon-user-group',
+					isParent: true
 				},
 				{
 					label: 'Databases',
 					href: '/docs/products/databases',
-					icon: 'icon-database'
+					icon: 'icon-database',
+					isParent: true
 				},
 				{
 					label: 'Functions',
 					href: '/docs/products/functions',
-					icon: 'icon-lightning-bolt'
+					icon: 'icon-lightning-bolt',
+					isParent: true
 				},
 				{
 					label: 'Storage',
 					href: '/docs/products/storage',
-					icon: 'icon-folder'
+					icon: 'icon-folder',
+					isParent: true
 				}
 			]
 		},
@@ -67,7 +77,7 @@
 				{
 					label: 'GraphQL',
 					href: '/docs/apis/graphql',
-					icon: 'icon-play'
+					icon: 'icon-graphql'
 				}
 			]
 		},
@@ -77,7 +87,8 @@
 				{
 					label: 'Command Line',
 					href: '/docs/tooling/command-line/installation',
-					icon: 'icon-terminal'
+					icon: 'icon-terminal',
+					isParent: true
 				},
 				{
 					label: 'Assistant',
@@ -90,24 +101,22 @@
 			label: 'Advanced',
 			items: [
 				{
-					label: 'Integration',
-					href: '/docs/advanced/integration',
-					icon: 'icon-puzzle'
-				},
-				{
 					label: 'Platform',
 					href: '/docs/advanced/platform',
-					icon: 'icon-play'
+					icon: 'icon-play',
+					isParent: true
 				},
 				{
 					label: 'Migrations',
 					href: '/docs/advanced/migrations',
-					icon: 'icon-refresh'
+					icon: 'icon-refresh',
+					isParent: true
 				},
 				{
 					label: 'Self-hosting',
-					href: '/docs/advanced/self-hosting/installation',
-					icon: 'icon-server'
+					href: '/docs/advanced/self-hosting',
+					icon: 'icon-server',
+					isParent: true
 				}
 			]
 		}

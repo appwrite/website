@@ -16,13 +16,16 @@
 <script lang="ts">
 	import { DocsArticle } from '$lib/layouts';
 	import { getContext, setContext } from 'svelte';
-	import { MainFooter } from '$lib/components';
+	import { MainFooter, Metadata } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
+	import { buildOpenGraphImage } from '$lib/components/Metadata.svelte';
 
 	export let title: string;
 	export let description: string;
-	export let difficulty: string;
-	export let readtime: string;
+	export let back: string = '';
+	export let difficulty: string = '';
+	export let readtime: string = '';
 
 	setContext<LayoutContext>('headings', writable({}));
 
@@ -55,11 +58,14 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
+	<Metadata
+		title={title + DOCS_TITLE_SUFFIX}
+		{description}
+		ogImage={buildOpenGraphImage(title, description)}
+	/>
 </svelte:head>
 
-<DocsArticle {title} {toc}>
+<DocsArticle {title} {back} {toc}>
 	<svelte:fragment slot="metadata">
 		{#if difficulty}
 			<li>{difficulty}</li>

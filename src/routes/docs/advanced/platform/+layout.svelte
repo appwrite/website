@@ -18,24 +18,25 @@
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Integration',
 			items: [
-				{
-					label: 'API keys',
-					href: '/docs/advanced/platform/api-keys'
-				},
-				{
-					label: 'Custom domains',
-					href: '/docs/advanced/platform/custom-domains'
-				},
 				{
 					label: 'Events',
 					href: '/docs/advanced/platform/events'
 				},
 				{
-					label: 'Response codes',
-					href: '/docs/advanced/platform/response-codes'
+					label: 'Webhooks',
+					href: '/docs/advanced/platform/webhooks'
 				},
+				{
+					label: 'Response codes',
+					href: '/docs/advanced/platform/response-codes',
+				}
+			]
+		},
+		{
+			label: 'Access control',
+			items: [
 				{
 					label: 'Permissions',
 					href: '/docs/advanced/platform/permissions'
@@ -45,11 +46,24 @@
 					href: '/docs/advanced/platform/rate-limits'
 				},
 				{
-					label: 'Webhooks',
-					href: '/docs/advanced/platform/webhooks'
-				}
+					label: 'API keys',
+					href: '/docs/advanced/platform/api-keys'
+				},
 			]
-		}
+		},
+		{
+			label: 'Configuration',
+			items: [
+				{
+					label: 'Custom domains',
+					href: '/docs/advanced/platform/custom-domains'
+				},
+				{	
+					label: 'Email and SMS templates',
+					href: '/docs/advanced/platform/message-templates'
+				},
+			]
+		},
 	];
 </script>
 

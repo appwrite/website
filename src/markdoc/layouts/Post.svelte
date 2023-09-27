@@ -8,15 +8,17 @@
 		author: string;
 		category: string;
 		href: string;
+		featured?: boolean;
 	};
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Metadata, Newsletter } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { AuthorData } from './Author.svelte';
 	import type { CategoryData } from './Category.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let title: string;
 	export let description: string;
@@ -27,7 +29,7 @@
 	export let category: string;
 
 	const authors = getContext<AuthorData[]>('authors');
-	const authorData = authors.find((a) => a.name.includes(author));
+	const authorData = authors.find((a) => a.slug === author);
 	const categoriesList = getContext<CategoryData[]>('categories');
 	const categories = getValidCategories();
 	const posts = getContext<PostsData[]>('posts');
@@ -40,6 +42,10 @@
 		);
 	}
 </script>
+
+<svelte:head>
+	<Metadata title={title + BLOG_TITLE_SUFFIX} {description} />
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section">
@@ -84,7 +90,7 @@
 												<p class="aw-caption-400">{authorData.role}</p>
 											</div>
 										</a>
-										<ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
+										<!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
 											{#if authorData.twitter}
 												<li>
 													<a
@@ -124,7 +130,7 @@
 													</a>
 												</li>
 											{/if}
-										</ul>
+										</ul> -->
 									</div>
 								{/if}
 							</header>
@@ -138,13 +144,13 @@
 								<slot />
 							</div>
 						</article>
-						{#if categories?.length}
+						<!-- {#if categories?.length}
 							<div class="u-flex u-gap-16">
 								{#each categories as cat}
 									<a href={cat.href} class="aw-tag">{cat.name}</a>
 								{/each}
 							</div>
-						{/if}
+						{/if} -->
 					</div>
 				</div>
 			</div>
@@ -158,7 +164,7 @@
 				<section class="u-margin-block-start-32">
 					<ul class="aw-grid-articles">
 						{#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
-							{@const author = authors.find((a) => a.name.includes(post.author))}
+							{@const author = authors.find((a) => a.slug === post.author)}
 							{#if author}
 								<Article
 									title={post.title}

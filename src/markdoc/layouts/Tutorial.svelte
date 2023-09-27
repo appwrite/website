@@ -8,18 +8,18 @@
 
 <script lang="ts">
 	import { DocsTutorial } from '$lib/layouts';
-	import { getContext, onMount, setContext } from 'svelte';
-	import { MainFooter } from '$lib/components';
+	import { getContext, setContext } from 'svelte';
+	import { MainFooter, Metadata } from '$lib/components';
 	import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 	import { writable } from 'svelte/store';
 	import type { LayoutContext } from './Article.svelte';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
 	export let title: string;
 	export let description: string;
 	export let difficulty: string;
 	export let readtime: string;
 	export let step: number;
-	export let tutorial: string;
 
 	setContext<LayoutContext>('headings', writable({}));
 
@@ -52,8 +52,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
+	<Metadata title={title + DOCS_TITLE_SUFFIX} {description} />
 </svelte:head>
 
 <DocsTutorial {title} {toc} {tutorials} currentStep={step}>

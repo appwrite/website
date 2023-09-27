@@ -10,7 +10,7 @@ Adding signup and login is as simple as this.
 
 ## Sign up {% #sign-up %}
 
-You can use the Appwrite Client SDKs to create an account using email and password.
+You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account using email and password.
 
 {% multicode %}
 ```js
@@ -91,9 +91,7 @@ mutation {
 
 ## Login {% #login %}
 
-After you've created your account, users can be logged in using the Create Email Session route.
-
-Converting your HTML code into your custom Markdown with the multi-select code feature can be done like this.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) route.
 
 {% multicode %}
 ```js
@@ -172,19 +170,12 @@ mutation {
 ```
 {% /multicode %}
 
-## Explore
-Appwrite's feature rich Authentication service has much more to offer. 
-Explore the features below.
+## More ways to Authenticate
+You can signup and login a user with an account create through 
+[email password](/docs/products/auth/email-password),
+[phone (SMS)](/docs/products/auth/phone-sms),
+[Anonymous](/docs/products/auth/anonymous)
+[magic URL](/docs/products/auth/magic-url), and
+[OAuth 2](/docs/products/auth/oauth2)
+authentication. 
 
-| Explore                                                                 |                                                    |
-|-------------------------------------------------------------------------|----------------------------------------------------|
-| [Email and password](/docs/products/auth/email-password)                | Authenticate your users using email and passwords.  |
-| [Account verification](/docs/products/auth/email-password#verification) | Verify the email of registered users.              |
-| [Phone (SMS)](/docs/products/auth/phone-sms)                            | Authenticate users with their phone number using SMS messages. |
-| [Magic URL](/docs/products/auth/magic-url)                              | Authenticate users through a magic link sent to their email, without needing a password. |
-| [OAuth 2](/docs/products/auth/oauth2)                                   | Authenticate users by connecting to existing accounts from an OAuth provider. |
-| [Anonymous](/docs/products/auth/anonymous)                              | Create guest user sessions that can be convered to full accounts later. |
-| [User preferences](/docs/products/auth/user-management#preferences)     | Store and manage user preferences, like notification settings and themes. |
-| [Organize users](/docs/products/auth/user-management#labels)            | Organize users by adding labels or creating teams. |
-| [Server integration](/docs/products/auth/server-integrations)              | Authenticate users in backend code or act on behalf of users using the [Appwrite Server SDKs](#).  |
-| [Security](/docs/products/auth/security)                               | Learn about Appwrite's session persistence and enhanced security features. |

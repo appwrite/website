@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { MainFooter } from '$lib/components';
+	import { MainFooter, Metadata } from '$lib/components';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import {
@@ -12,9 +12,10 @@
 		serviceMap,
 		versions,
 		type Version
-	} from '$lib/utils/references.js';
+	} from '$lib/utils/references';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
 	import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles.js';
 	import { getContext, onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -63,19 +64,24 @@
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
+	$: serviceName = serviceMap[data.service?.name];
 </script>
+
+<svelte:head>
+	<Metadata title={serviceName + DOCS_TITLE_SUFFIX} />
+</svelte:head>
 
 <main class="u-contents">
 	<article class="aw-article u-contents">
 		<header class="aw-article-header">
 			<div class="aw-article-header-start">
-				<h1 class="aw-title">{serviceMap[data.service?.name]}</h1>
+				<h1 class="aw-title">{serviceName}</h1>
 				<div class="aw-inline-code">{platformType}</div>
 			</div>
 			<div class="aw-article-header-end">
 				<div class="u-flex u-gap-24 aw-u-color-text-primary">
 					<div class="u-flex u-cross-center u-gap-8">
-						<label class="u-small" for="platform">Platform</label>
+						<label class="u-small is-not-mobile" for="platform">Platform</label>
 						<div class="aw-select is-colored">
 							<select id="platform" on:change={selectPlatform} value={platform}>
 								<optgroup label="Client">
@@ -93,7 +99,7 @@
 						</div>
 					</div>
 					<div class="u-flex u-cross-center u-gap-8">
-						<label class="u-small" for="version">Version</label>
+						<label class="u-small is-not-mobile" for="version">Version</label>
 						<div class="aw-select is-colored">
 							<select id="version" on:change={selectVersion} value={$page.params.version}>
 								<option value="cloud">Cloud</option>
@@ -149,9 +155,9 @@
 														>
 															<article>
 																<header class="u-flex u-cross-baseline u-gap-8">
-																	<h3 class="aw-eyebrow aw-u-color-text-primary">
+																	<span class="aw-eyebrow aw-u-color-text-primary">
 																		{parameter.name}
-																	</h3>
+																	</span>
 																	<span class="aw-caption-400">{parameter.type}</span>
 																	{#if parameter.required}
 																		<div class="aw-tag">required</div>
@@ -181,19 +187,30 @@
 										<div class="aw-card is-transparent u-padding-16 u-margin-block-start-16">
 											<ul>
 												{#each method.responses as response}
-													<li>
-														<article>
-															<header class="u-flex u-cross-baseline u-gap-8">
-																<h3 class="aw-eyebrow aw-u-color-text-primary">
-																	{response.code}
-																</h3>
-																<span class="aw-caption-400">{response.model?.name}</span>
-															</header>
-															<p class="aw-sub-body-400 u-margin-block-start-16">
-																<a href="#">Payload <span class="icon-cheveron-right" /></a>
-															</p>
-														</article>
-													</li>
+													{#if response.models}
+														<li>
+															<article>
+																<header class="u-flex u-cross-baseline u-gap-8">
+																	<span class="aw-eyebrow aw-u-color-text-primary">
+																		{response.code}
+																	</span>
+																	<span class="aw-caption-400">application/json</span>
+																</header>
+																<ul class="aw-sub-body-400 u-margin-block-start-16">
+																	{#each response.models as model}
+																		<li>
+																			<a
+																				class="aw-link"
+																				href={`/docs/references/${$page.params.version}/models/${model.id}`}
+																			>
+																				{model.name}
+																			</a>
+																		</li>
+																	{/each}
+																</ul>
+															</article>
+														</li>
+													{/if}
 												{/each}
 											</ul>
 										</div>
@@ -238,8 +255,8 @@
 					{/each}
 				</ul>
 				<div class="u-sep-block-start aw-u-padding-block-20">
-					<a class="aw-button is-text u-main-start aw-u-padding-inline-0" href="#top">
-						<span class="icon-arrow-up" aria-hidden="true" />
+					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
+						<span class="aw-icon-arrow-up" aria-hidden="true" />
 						<span class="aw-sub-body-500">Back to top</span>
 					</a>
 				</div>

@@ -1,10 +1,19 @@
+<script lang="ts" context="module">
+	export function getReferencesContext() {
+		return getContext<Writable<boolean>>('references-expandable');
+	}
+</script>
+
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Docs from '$lib/layouts/Docs.svelte';
-	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 	import { preferredPlatform, preferredVersion } from '$lib/utils/references';
+	import { writable, type Writable } from 'svelte/store';
+	import { getContext, setContext } from 'svelte';
+	import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
-	$: expandable = $page.url.pathname.startsWith('/docs/references/');
+	const expandable = setContext('references-expandable', writable(false));
+
 	$: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
 		$preferredPlatform ?? $page.params?.platform ?? 'client-web'
 	}`;
@@ -20,7 +29,7 @@
 			]
 		},
 		{
-			label: 'Services',
+			label: 'APIs',
 			items: [
 				{
 					label: 'Account',
@@ -63,7 +72,17 @@
 					href: `${prefix}/avatars`
 				}
 			]
-		}
+		},
+		// {
+		// 	label: 'Debugging',
+		// 	items: [
+		// 		{
+		// 			icon: 'icon-document-search',
+		// 			label: 'Response codes',
+		// 			href: '/docs/advanced/platform/response-codes'
+		// 		}
+		// 	]
+		// }
 	] as NavTree;
 
 	const parent: NavParent = {
@@ -72,7 +91,7 @@
 	};
 </script>
 
-<Docs variant={expandable ? 'expanded' : 'two-side-navs'}>
-	<Sidebar {navigation} {expandable} {parent} />
+<Docs variant={$expandable ? 'expanded' : 'two-side-navs'}>
+	<Sidebar {navigation} expandable={$expandable} {parent} />
 	<slot />
 </Docs>

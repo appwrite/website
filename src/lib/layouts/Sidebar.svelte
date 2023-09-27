@@ -3,6 +3,7 @@
 		label: string;
 		href: string;
 		icon?: string;
+		isParent?: boolean;
 	};
 
 	export type NavGroup = {
@@ -32,9 +33,12 @@
 	}
 </script>
 
-<nav class="aw-side-nav" class:is-transparent={!expandable}>
+<nav class="aw-side-nav">
 	<div class="aw-side-nav-wrapper">
-		<button class="aw-input-text aw-is-not-desktop">
+		<button
+			class="aw-input-text aw-is-not-desktop"
+			on:click={() => ($layoutState.showSearch = true)}
+		>
 			<span class="icon-search" />
 			<span class="text">Search in docs</span>
 		</button>
@@ -84,6 +88,7 @@
 			<button
 				on:click={toggleSidenav}
 				class="aw-icon-button u-margin-inline-start-auto"
+				style:margin-bottom="1rem"
 				aria-label="toggle nav"
 			>
 				<span class="icon-cheveron-right" aria-hidden="true" />
@@ -94,11 +99,15 @@
 				<span class="text">Go to console</span>
 			</button>
 
-			<button class="aw-button is-text u-width-full-line">
+			<a
+				href="https://github.com/appwrite/appwrite/stargazers"
+				target="_blank"
+				class="aw-button is-text u-width-full-line"
+			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-			</button>
+				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+			</a>
 		</div>
 	</div>
 </nav>

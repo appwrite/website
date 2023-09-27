@@ -6,19 +6,25 @@
 	export type DocsLayoutState = {
 		showReferences: boolean;
 		showSidenav: boolean;
+		showSearch: boolean;
+		currentVariant: DocsLayoutVariant | null;
 	};
 	export const layoutState = writable<DocsLayoutState>({
 		showReferences: false,
-		showSidenav: false
+		showSidenav: false,
+		showSearch: false,
+		currentVariant: null
 	});
 	export function toggleReferences() {
 		layoutState.update((state) => ({
+			...state,
 			showReferences: !state.showReferences,
 			showSidenav: false
 		}));
 	}
 	export function toggleSidenav() {
 		layoutState.update((state) => ({
+			...state,
 			showReferences: false,
 			showSidenav: !state.showSidenav
 		}));
@@ -26,23 +32,37 @@
 </script>
 
 <script lang="ts">
+	import Search from '$lib/components/Search.svelte';
+
 	export let variant: DocsLayoutVariant = 'default';
 
 	const variantClasses: Record<DocsLayoutVariant, string> = {
-		default: 'aw-grid-side-nav aw-container',
+		default: 'aw-grid-side-nav aw-container u-padding-inline-0',
 		expanded: 'aw-grid-huge-navs',
 		'two-side-navs': 'aw-grid-two-side-navs'
 	};
 
 	$: variantClass = variantClasses[variant];
+	$: $layoutState.currentVariant = variant;
 
 	navigating.subscribe(() => {
-		layoutState.set({
+		layoutState.update((n) => ({
+			...n,
 			showReferences: false,
 			showSidenav: false
-		});
+		}));
 	});
+
+	function handleKeypress(event: KeyboardEvent) {
+		if (event.metaKey && event.key.toLowerCase() === 'k') {
+			$layoutState.showSearch = true;
+		} else if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
+			$layoutState.showSearch = false;
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleKeypress} />
 
 <div class="u-position-relative">
 	<div
@@ -111,7 +131,10 @@
 							</ul>
 						</nav>
 						<div class="u-flex u-stretch aw-u-margin-inline-start-48">
-							<button class="aw-input-button aw-u-flex-basis-400">
+							<button
+								class="aw-input-button aw-u-flex-basis-400"
+								on:click={() => ($layoutState.showSearch = true)}
+							>
 								<span class="icon-search" aria-hidden="true" />
 								<span class="text">Search in docs</span>
 
@@ -124,7 +147,11 @@
 					</div>
 					<div class="aw-main-header-end">
 						<div class="u-flex u-gap-8">
-							<button class="aw-button is-text">
+							<a
+								href="https://github.com/appwrite/appwrite/stargazers"
+								target="_blank"
+								class="aw-button is-text"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="18"
@@ -142,8 +169,8 @@
 									/>
 								</svg>
 								<span class="text">Star on GitHub</span>
-								<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
-							</button>
+								<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+							</a>
 							<a href="https://cloud.appwrite.io/console" class="aw-button">
 								<span class="aw-sub-body-500">Go to console</span>
 							</a>
@@ -155,3 +182,5 @@
 		<slot />
 	</div>
 </div>
+
+<Search bind:open={$layoutState.showSearch} />

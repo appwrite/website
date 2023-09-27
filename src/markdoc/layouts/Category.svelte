@@ -7,11 +7,12 @@
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
 	import type { AuthorData } from './Author.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let name: string;
 	export let description: string;
@@ -20,6 +21,10 @@
 	const postsList = getContext<PostsData[]>('posts');
 	const posts = postsList.filter((post) => post.category.includes(name.toLowerCase()));
 </script>
+
+<svelte:head>
+	<Metadata title={name + BLOG_TITLE_SUFFIX} {description} />
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1">

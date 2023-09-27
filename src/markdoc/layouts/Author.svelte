@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	export type AuthorData = {
 		name: string;
+		slug: string;
 		role: string;
 		avatar: string;
 		bio: string;
@@ -12,10 +13,12 @@
 </script>
 
 <script lang="ts">
-	import { Article, FooterNav, MainFooter } from '$lib/components';
+	import { Article, FooterNav, MainFooter, Metadata } from '$lib/components';
+	import { page } from '$app/stores';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData } from './Post.svelte';
+	import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
 	export let name: string;
 	export let role: string;
@@ -26,7 +29,18 @@
 	export let github: string;
 
 	const posts = getContext<PostsData[]>('posts');
+	const authors = getContext<AuthorData[]>('authors');
+	const author = authors.find(
+		(p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
+	);
 </script>
+
+<svelte:head>
+	<Metadata
+		title={name + BLOG_TITLE_SUFFIX}
+		description={bio}
+	/>
+</svelte:head>
 
 <Main>
 	<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
@@ -248,7 +262,7 @@
 
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
-						{#each posts as post}
+						{#each posts.filter((p) => p.author === author?.slug) as post}
 							<Article
 								title={post.title}
 								href={post.href}
@@ -281,5 +295,5 @@
 				<MainFooter />
 			</div>
 		</div>
-	</div></Main
->
+	</div>
+</Main>

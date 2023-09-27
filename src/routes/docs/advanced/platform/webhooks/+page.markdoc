@@ -4,17 +4,6 @@ title: Webhooks
 description: Placeholder SEO.
 ---
 
-Certainly! Below is the content converted to Markdown format:
-
-```markdown
-```php
-<?php
-
-$events = $this->getParam('events', []);
-
-?>
-```
-
 Webhooks allow you to build or set up integrations which subscribe to certain events on Appwrite. When one of those events is triggered, we'll send an HTTP POST payload to the webhook's configured URL. Webhooks can be used to purge cache from CDN, calculate data or send a Slack notification. You're only limited by your imagination.
 
 ## Add your webhook {% #addWebhook %}
@@ -23,7 +12,7 @@ You can set your webhook by adding it from your Appwrite project dashboard. You 
 
 ## Payload {% #payload %}
 
-Each event type has a specific payload format with the relevant event information. All event payloads mirror the payloads for the API payload which parallel to the [event types](/docs/events).
+Each event type has a specific payload format with the relevant event information. All event payloads mirror the payloads for the API payload which parallel to the [event types](/docs/advanced/platform/events).
 
 ## Headers {% #headers %}
 
@@ -33,7 +22,7 @@ HTTP requests made to your webhook's configured URL endpoint will contain severa
 |--------|-------------|
 | X-Appwrite-Webhook-Id | The ID of the Webhook who triggered the event. |
 | X-Appwrite-Webhook-Events | Names of the events that triggered this delivery. |
-| X-Appwrite-Webhook-Name | Name of the webhook as specified in your app settings and [events list](/docs/events). |
+| X-Appwrite-Webhook-Name | Name of the webhook as specified in your app settings and [events list](/docs/advanced/platform/events). |
 | X-Appwrite-Webhook-User-Id | The user ID of the user who triggered the event. Returns an empty string if an API key triggered the event. Note that events like `account.create` or `account.sessions.create` are performed by guest users and will not return any user ID. If you still need the user ID for these events, you can find it in the event payload. |
 | X-Appwrite-Webhook-Project-Id | The ID of the project who owns the Webhook and API call. |
 | X-Appwrite-Webhook-Signature | The HMAC-SHA1 signature of the payload. This is used to verify the authenticity of the payload. |
@@ -41,7 +30,7 @@ HTTP requests made to your webhook's configured URL endpoint will contain severa
 
 ## Verification {% #verification %}
 
-Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/webhooks#headers) header. 
+Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/advanced/platform/webhooks#headers) header. 
 This is the HMAC-SHA1 signature of the payload. You can find the signature key in your webhooks properties in the dashboard. 
 To generate this hash you append the payload to the end of webhook URL (make sure there are no spaces in between) and then use the HMAC-SHA1 algorithm to generate the signature. 
 After you've generated the signature, compare it to the `X-Appwrite-Webhook-Signature` header value. 
@@ -62,4 +51,4 @@ You can specify one or many events to subscribe to with webhooks.
 
 {% partial file="functions-events.md" /%}
 
-[Learn more about events](/docs/platform/api-keys)
+[Learn more about events](/docs/advanced/platform/api-keys)

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { rect } from '$lib/actions';
 	import { clamp } from '$lib/utils/clamp';
-	import { toScale } from '$lib/utils/toScale';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -11,12 +10,10 @@
 	const elRect = writable<DOMRect | null>(null);
 	$: y = $elRect ? clamp(0, easedPercentage, 1) * $elRect.height : 0;
 
-	$: wrapperY = toScale(easedPercentage, [0, 1], [-16, 16]);
-
 	onMount(() => {
 		let frame: number | null = null;
 		const ease = () => {
-			easedPercentage += (percentage - easedPercentage) * 0.05;
+			easedPercentage += (percentage - easedPercentage);
 			frame = window.requestAnimationFrame(ease);
 		};
 		ease();
@@ -31,7 +28,6 @@
 	class="scroll-indicator"
 	use:rect={elRect}
 	style:--y={`${y}px`}
-	style:--wrapper-y={`${wrapperY}px`}
 	style:--percentage={`${easedPercentage * 100}%`}
 >
 	<div class="cursor" />
@@ -40,7 +36,9 @@
 <style lang="scss">
 	.scroll-indicator {
 		position: relative;
+
 		width: 1px;
+		flex-shrink: 0;
 		height: 100%;
 		background: linear-gradient(
 			to bottom,
@@ -49,7 +47,6 @@
 			hsl(var(--aw-color-greyscale-700)) 100%
 		);
 		border-radius: 100%;
-		transform: translateY(var(--wrapper-y));
 
 		.cursor {
 			border-radius: 16px;
