@@ -33,7 +33,7 @@
 				},
 				{
 					title: 'Vue.js',
-					icon: 'icon-vue',
+					icon: 'aw-icon-vue',
 					image: '/images/blog/placeholder.png',
 					href: 'vue'
 				},
