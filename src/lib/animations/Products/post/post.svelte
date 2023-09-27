@@ -87,8 +87,8 @@
 <div class="gradient-overlay u-flex u-flex-vertical">
 	<h3>See your products grow</h3>
 	<p>
-		Keep track of your projects progress and see them grow into products users love and use every
-		day.
+		Keep track of your projects progress on the Appwrite Console and see them grow into products
+		users love and use every day.
 	</p>
 </div>
 
@@ -193,7 +193,7 @@
 	.gradient-overlay {
 		position: absolute;
 		z-index: 100;
-		bottom: -10rem;
+		bottom: -7.5rem;
 		width: 100%;
 		height: 30rem;
 
@@ -242,7 +242,7 @@
 			font-weight: 500;
 			line-height: 1.75rem; /* 140% */
 			letter-spacing: -0.0175rem;
-			max-width: 36rem;
+			max-width: 40rem;
 			text-align: center;
 		}
 	}

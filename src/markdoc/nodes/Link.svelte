@@ -7,9 +7,4 @@
 	const rel = isExternal ? 'noopener nofollow' : undefined;
 </script>
 
-<a class="aw-link" {href} {title} {target} {rel}>
-	<slot />
-	{#if !isExternal}
-	<!-- <span class="icon-cheveron-right" /> -->
-	{/if}
-</a>
+<a class="aw-link" {href} {title} {target} {rel}><slot /></a>
