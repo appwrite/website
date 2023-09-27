@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Metadata } from '$lib/components';
-	import { setMetadata } from '$lib/components/Metadata.svelte';
+	import { DEFAULT_HOST, setMetadata } from '$lib/components/Metadata.svelte';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
@@ -36,7 +36,8 @@
 	}
 
 	setMetadata({
-		title: 'Contact us' + TITLE_SUFFIX
+		title: 'Contact us' + TITLE_SUFFIX,
+		ogImage: DEFAULT_HOST + '/images/open-graph/website.png'
 	});
 </script>
 
