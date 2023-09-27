@@ -171,14 +171,14 @@
 						{#if results.length > 0}
 							<section>
 								<h6 class="aw-eyebrow">{results.length} results found</h6>
-								<ul class="u-margin-block-start-8">
+								<ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
 									{#each results as hit, i (hit.uid)}
 										<li>
 											<a
 												data-hit={i}
 												href={createHref(hit)}
 												use:arrowKeyFocus
-												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start u-max-width-100-percent"
+												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-8 aw-padding-inline-12  aw-u-cross-start u-max-width-100-percent"
 											>
 												<div class="aw-u-trim-1">
 													<span class="aw-u-color-text-secondary">{hit.h1}</span>
