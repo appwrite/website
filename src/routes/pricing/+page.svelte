@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+	import { FooterNav, MainFooter, Metadata, PreFooter } from '$lib/components';
 
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Pricing{TITLE_SUFFIX}</title>
+	<Metadata title={'Pricing' + TITLE_SUFFIX} />
 </svelte:head>
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">

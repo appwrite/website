@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
@@ -6,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Assets{TITLE_SUFFIX}</title>
+	<Metadata title={'Assets' + TITLE_SUFFIX} />
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
@@ -347,16 +348,16 @@
 							</p>
 							<div class="aw-grid-1-1-opt-2 u-gap-32 u-margin-block-start-12">
 								<div>
-									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt="placeholder">
 								</div>
 								<div>
-									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt="placeholder">
 								</div>
 								<div>
-									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt="placeholder">
 								</div>
 								<div>
-									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt>
+									<img class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line" src="/images/blog/placeholder.png" alt="placeholder">
 								</div>
 
 							</div>

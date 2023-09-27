@@ -3,12 +3,12 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import PreFooter from '$lib/components/PreFooter.svelte';
-	import { Carousel } from '$lib/components';
+	import { Carousel, Metadata } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
 </script>
 
 <svelte:head>
-	<title>Community{TITLE_SUFFIX}</title>
+	<Metadata title={'Community' + TITLE_SUFFIX} />
 </svelte:head>
 
 <Main>

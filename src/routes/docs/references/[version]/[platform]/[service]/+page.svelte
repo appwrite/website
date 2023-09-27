@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { MainFooter } from '$lib/components';
+	import { MainFooter, Metadata } from '$lib/components';
 	import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
 	import { parse } from '$lib/utils/markdown';
 	import {
@@ -64,11 +64,11 @@
 
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
-	$: serviceName = serviceMap[data.service?.name]
+	$: serviceName = serviceMap[data.service?.name];
 </script>
 
 <svelte:head>
-	<title>{serviceName}{DOCS_TITLE_SUFFIX}</title>
+	<Metadata title={serviceName + DOCS_TITLE_SUFFIX} />
 </svelte:head>
 
 <main class="u-contents">

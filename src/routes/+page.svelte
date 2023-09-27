@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
-	import { Spline } from '$lib/components';
+	import { Metadata, Spline } from '$lib/components';
 	import MainFooter from '../lib/components/MainFooter.svelte';
 	import FooterNav from '../lib/components/FooterNav.svelte';
 	import DeveloperCard from './DeveloperCard.svelte';

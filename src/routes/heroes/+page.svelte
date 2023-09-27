@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { FooterNav, MainFooter } from '$lib/components';
+	import { FooterNav, MainFooter, Metadata } from '$lib/components';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 </script>
 
 <svelte:head>
-	<title>Heroes{TITLE_SUFFIX}</title>
+	<Metadata title={'Heroes' + TITLE_SUFFIX} />
 </svelte:head>
 
 <div

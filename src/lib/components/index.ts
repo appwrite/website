@@ -9,3 +9,4 @@ export { default as Tooltip } from './Tooltip.svelte';
 export { default as Spline } from './Spline.svelte';
 export { default as Article } from './Article.svelte';
 export { default as Carousel } from './Carousel.svelte';
+export { default as Metadata } from './Metadata.svelte';
