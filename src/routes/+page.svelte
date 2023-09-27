@@ -450,7 +450,7 @@
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
 							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
-								We scale for you and your users
+								We scale for you
 							</h2>
 						</section>
 						<ul
