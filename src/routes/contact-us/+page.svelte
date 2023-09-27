@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import type { ActionData } from './$types';
@@ -9,6 +10,10 @@
 
 	$: submitted = form?.submitted ?? false;
 </script>
+
+<svelte:head>
+	<title>Contact us{TITLE_SUFFIX}</title>
+</svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
 	<svg

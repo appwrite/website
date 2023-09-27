@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { Main } from '$lib/layouts';
+	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 </script>
+
+<svelte:head>
+	<title>Assets - {TITLE_SUFFIX}</title>
+</svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
 	<svg
