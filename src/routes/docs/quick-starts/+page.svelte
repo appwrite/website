@@ -33,7 +33,7 @@
 				},
 				{
 					title: 'Vue.js',
-					icon: 'icon-vue',
+					icon: 'aw-icon-vue',
 					image: '/images/blog/placeholder.png',
 					href: 'vue'
 				},
@@ -73,7 +73,7 @@
 			quickStarts: [
 				{
 					title: 'Node.js',
-					icon: 'icon-node',
+					icon: 'icon-node_js',
 					image: '/images/blog/placeholder.png',
 					href: 'node'
 				},

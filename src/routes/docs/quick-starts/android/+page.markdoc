@@ -4,6 +4,7 @@ title: Start with Android
 description: Get started with Appwrite on Android and learn how to build secure and scalable apps using our powerful backend.
 difficulty: beginner
 readtime: 3
+back: /docs/quick-starts
 ---
 
 Learn to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android).

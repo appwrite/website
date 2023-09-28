@@ -2,6 +2,9 @@
 layout: article
 title: Start with SvelteKit
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your SvelteKit apps.
+difficulty: beginner
+readtime: 3
+back: /docs/quick-starts
 ---
 Learn to setup your first SvelteKit project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
