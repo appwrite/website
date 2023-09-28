@@ -489,29 +489,39 @@
 					</div>
 					<ul class="aw-investor-cards aw-u-margin-block-start-64">
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.bvp.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.tigerglobal.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/ibex.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.ibexinvestors.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/ibex.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.flybridge.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
-							</div>
+							<a href="https://seedcamp.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -577,8 +587,7 @@
 						<li class="u-flex-vertical">
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Gilad Engel</h6>
 							<p class="aw-main-body-500">Angel Investor</p>
-							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-							</ul>
+							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto" />
 						</li>
 						<li class="u-flex-vertical">
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Krishna Visvanathan</h6>
