@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	let showFeedback = false;
 	let feedbackType = '';
 	let email = '';
@@ -18,7 +20,8 @@
 			body: JSON.stringify({
 				email,
 				comment,
-				type: feedbackType
+				type: feedbackType,
+				route: $page.route.id
 			})
 		});
 		submitting = false;
