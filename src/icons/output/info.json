@@ -167,64 +167,70 @@
     "className": "aw-icon-minus",
     "unicode": "&#59932;"
   },
-  "platform": {
+  "nuxt": {
     "encodedCode": "\\ea1d",
     "prefix": "aw-icon",
-    "className": "aw-icon-platform",
+    "className": "aw-icon-nuxt",
     "unicode": "&#59933;"
   },
-  "plus": {
+  "platform": {
     "encodedCode": "\\ea1e",
     "prefix": "aw-icon",
-    "className": "aw-icon-plus",
+    "className": "aw-icon-platform",
     "unicode": "&#59934;"
   },
-  "product-hunt": {
+  "plus": {
     "encodedCode": "\\ea1f",
     "prefix": "aw-icon",
-    "className": "aw-icon-product-hunt",
+    "className": "aw-icon-plus",
     "unicode": "&#59935;"
   },
-  "rest": {
+  "product-hunt": {
     "encodedCode": "\\ea20",
     "prefix": "aw-icon",
-    "className": "aw-icon-rest",
+    "className": "aw-icon-product-hunt",
     "unicode": "&#59936;"
   },
-  "search": {
+  "rest": {
     "encodedCode": "\\ea21",
     "prefix": "aw-icon",
-    "className": "aw-icon-search",
+    "className": "aw-icon-rest",
     "unicode": "&#59937;"
   },
-  "star": {
+  "search": {
     "encodedCode": "\\ea22",
     "prefix": "aw-icon",
-    "className": "aw-icon-star",
+    "className": "aw-icon-search",
     "unicode": "&#59938;"
   },
-  "twitter": {
+  "star": {
     "encodedCode": "\\ea23",
     "prefix": "aw-icon",
-    "className": "aw-icon-twitter",
+    "className": "aw-icon-star",
     "unicode": "&#59939;"
   },
-  "vue": {
+  "twitter": {
     "encodedCode": "\\ea24",
     "prefix": "aw-icon",
-    "className": "aw-icon-vue",
+    "className": "aw-icon-twitter",
     "unicode": "&#59940;"
   },
-  "x": {
+  "vue": {
     "encodedCode": "\\ea25",
     "prefix": "aw-icon",
-    "className": "aw-icon-x",
+    "className": "aw-icon-vue",
     "unicode": "&#59941;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea26",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59942;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea27",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59943;"
   }
 }

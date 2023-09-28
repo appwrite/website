@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
 ---
-Learn to setup your first Next.js project powered by Appwrite.
+Learn how to setup your first Next.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -149,7 +149,7 @@ export default LoginPage;
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+Run your project with `npm run dev` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
 
 Don't forget to add some CSS to suit your style.
 {% /section %}

@@ -136,7 +136,7 @@
 		<div class="aw-mobile-header-end">
 			{#if !$isMobileNavOpen}
 				<a href="https://cloud.appwrite.io" class="aw-button">
-					<span class="text">Get Started</span>
+					<span class="text">Get started</span>
 				</a>
 			{/if}
 			<button
@@ -208,7 +208,7 @@
 						</a>
 						<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary">Sign up</a>
 						<a href="https://cloud.appwrite.io" class="aw-button">
-							<span class="text">Get Started</span>
+							<span class="text">Get started</span>
 						</a>
 					</div>
 				</div>

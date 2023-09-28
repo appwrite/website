@@ -204,7 +204,7 @@
 				{#if scrollInfo.percentage > -0.1}
 					<span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}>Products_</span>
 
-					<h2 class="aw-display" transition:fly={{ y: 16, delay: 250 }}>
+					<h2 class="aw-display aw-u-color-text-primary " transition:fly={{ y: 16, delay: 250 }}>
 						Your backend, minus the hassle
 					</h2>
 					<p
