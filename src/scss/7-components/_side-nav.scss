@@ -82,6 +82,7 @@
 
   &-mobile-footer-buttons { display:none; }
   @media #{$break1} {
+    &-open { overflow:hidden; }
     &-wrapper { padding-inline:0; }
     &-mobile-footer-buttons {
       display:flex; flex-direction:column; gap:pxToRem(8);
