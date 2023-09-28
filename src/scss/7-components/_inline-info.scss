@@ -14,7 +14,7 @@
 
   display:flex; flex-direction:column; gap:pxToRem(8);
   padding:pxToRem(16); 
-  [class*="icon"]:first-child { color:hsl(var(--aw-color-primary)); font-size:pxToRem(24)!important; }
+  [class*="icon"]:first-child { color:hsl(var(--aw-color-primary)); font-size:pxToRem(24)!important; line-height: pxToRem(24)!important; }
 
   #{$theme-dark} & {
     --p-inline-info-bg-color: var(--aw-color-white) / 0.04;

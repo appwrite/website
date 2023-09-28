@@ -38,6 +38,7 @@
 </script>
 
 <script lang="ts">
+	import '$icons/output/aw-icon.css';
 	import '@fontsource/inter/100.css';
 	import '@fontsource/inter/200.css';
 	import '@fontsource/inter/300.css';

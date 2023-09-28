@@ -14,7 +14,9 @@ function absoulute(path) {
 
 const isVercel = process.env.VERCEL === '1';
 
-const adapter = isVercel ? staticAdapter() : nodeAdapter();
+const adapter = isVercel ? staticAdapter({
+	fallback: 'index.html'
+}) : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -49,6 +51,7 @@ const config = {
 		alias: {
 			$routes: './src/routes',
 			$scss: './src/scss',
+			$icons: './src/icons',
 			$appwrite: './node_modules/@appwrite.io/repo',
 			$markdoc: './src/markdoc'
 		}
