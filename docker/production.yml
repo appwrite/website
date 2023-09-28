@@ -49,7 +49,7 @@ services:
     networks:
       - cloud
     deploy:
-      mode: global
+      replicas: 1
       <<: *x-update-config
       placement:
         constraints:
@@ -63,7 +63,7 @@ services:
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 6
+      replicas: 5
       placement:
         max_replicas_per_node: 2
         constraints:
