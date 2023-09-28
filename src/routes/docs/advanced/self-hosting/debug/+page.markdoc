@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Debug
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Master debugging techniques for self-hosted Appwrite. Discover best practices and tools for troubleshooting and maintaining a robust deployment.
 ---
 
 Appwrite comes with a few built-in tools and methods that easily debug and investigate issues on your Appwrite stack environment.

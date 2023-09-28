@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Commands
-description: 
+description: Learn about Appwrites CLI and the powerful, feature complete commands to manage Appwrite's auth, databases, functions, storage, and more.
 ---
 
 Other than commands to create and deploy databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.

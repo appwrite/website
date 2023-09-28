@@ -1,7 +1,7 @@
 ---
 layout: article
 title: GraphQL
-description: Description used for SEO
+description: Leverage the Appwrite GraphQL API for flexible data querying and manipulation. Explore GraphQL schema, queries, mutations, and how to integrate with your applications.
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime).

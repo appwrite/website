@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Manage users
-description: This is the description used for SEO.
+description: Manage user identities and profiles effectively with Appwrite. Dive into user management features, account settings, and user data customization
 ---
 
 Appwrite Users API is used for managing users in server applications.

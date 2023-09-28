@@ -30,11 +30,11 @@
 	<!-- Titles -->
 	<title>{seoTitle}</title>
 	<meta property="og:title" content={seoTitle} />
-	<meta name="”twitter:title”" content={seoTitle} />
+	<meta name="twitter:title" content={seoTitle} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />
 	<meta property="og:description" content={description} />
-	<meta name="”twitter:description" content={description} />
+	<meta name="twitter:description" content={description} />
 	<!-- Image -->
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="1200" />

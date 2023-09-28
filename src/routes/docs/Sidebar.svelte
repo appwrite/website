@@ -10,7 +10,7 @@
 					icon: 'icon-home'
 				},
 				{
-					label: 'Quick Start',
+					label: 'Quick start',
 					href: '/docs/quick-starts',
 					icon: 'icon-play'
 				},

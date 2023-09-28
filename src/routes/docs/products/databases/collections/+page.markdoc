@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Collections
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 10
+description: Organize your data with Appwrite Collections. Explore how to create and configure collections to store and structure your data effectively.
 ---
 Appwrite uses collections as containers of documents. Each collection contains many documents identical in structure. 
 The terms collections and documents are used because the Appwrite JSON REST API resembles the API of a traditional NoSQL database. 

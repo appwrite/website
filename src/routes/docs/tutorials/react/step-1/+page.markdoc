@@ -1,16 +1,21 @@
 ---
 layout: tutorial
-title: Introduction
-description: This is the description used for SEO.
+title: Build an ideas tracker with React
+description: Learn to build a React app with no backend code using an Appwrite backend.
 step: 1
-difficulty: Beginner
+difficulty: beginner
 readtime: 10
 ---
 
-**Idea Tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
-In this tutorial, you will build Idea Tracker with Appwrite and React.
+**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+In this tutorial, you will build Idea tracker with Appwrite and React.
 
-[TODO: Image] 
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker.png)
+{% /only_light %}
 
 # Concepts {% #concepts %}
 

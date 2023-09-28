@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Email delivery
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Configure email services for your self-hosted Appwrite instance. Learn how to set up email notifications, templates, and delivery for your applications.
 ---
 
 Appwrite v0.7 and above come with support for easy integrations with 3rd party SMTP providers. In order for emails to work, you will need to set up proper SMTP configuration as described below.

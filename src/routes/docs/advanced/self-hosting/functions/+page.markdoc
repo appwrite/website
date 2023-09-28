@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Functions
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Harness the full power of self-hosted functions with Appwrite. Explore function deployment, management, and integration in your self-hosted environment.
 ---
 
 # Configure GitHub app {% #git %}

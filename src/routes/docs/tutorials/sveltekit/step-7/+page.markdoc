@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Create ideas page
-description: This is the description used for SEO.
+description: Add pagining and ordering to you SvelteKit application powered by Appwrite Databases.
 step: 7
-difficulty: Beginner
-readtime: 10
 ---
 
 Using the `ideas` store, we can build a page to submit and view ideas.

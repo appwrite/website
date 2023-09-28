@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Create ideas page
-description: This is the description used for SEO.
+description: Add data queries and pagination to your Vue.js project powered by Appwrite Cloud databases.
 step: 7
-difficulty: Beginner
-readtime: 10
 ---
 
 Using the `ideas` store we can now display the ideas on the page. We will also add a form to submit new ideas.

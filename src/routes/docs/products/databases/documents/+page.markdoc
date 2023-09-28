@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Documents
-description: This is the description used for SEO.
+description: Master document management with Appwrite Databases. Learn how to create, update, and query documents within your collections for dynamic data storage.
 ---
 Each piece of data or information in Appwrite Databases is a document.
 Documents have a structure defined by the parent collection.
