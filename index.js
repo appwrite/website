@@ -1,8 +1,8 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { createServer } from 'node:http'
-import { handler } from './build/handler.js';
 import { readFile } from 'fs/promises';
+import { handler } from './build/handler.js';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const sitemap = readFile(resolve(root, 'build/sitemap.xml'));
