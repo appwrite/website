@@ -33,7 +33,7 @@
 								<div class="info aw-caption-500" />
 							</div>
 							<p class="aw-strip-plans-info aw-caption-500">
-								For students and hobby projects.
+								For personal hobby projects and students.
 							</p>
 							<a href="https://cloud.appwrite.io/register" class="aw-button is-full-width-mobile aw-u-cross-child-end">
 								<span class="text">Get started</span>

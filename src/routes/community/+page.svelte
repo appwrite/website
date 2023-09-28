@@ -380,7 +380,7 @@
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping others</div>
 								<div class="aw-sub-body-400">
-									Support community members with their projects and contributions.
+									Support developers with their projects and contributions.
 								</div>
 							</div>
 						</li>
