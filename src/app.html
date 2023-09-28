@@ -15,14 +15,16 @@
 		const isDocs = window.location.pathname.startsWith('/docs');
 		if (isDocs) {
 			const theme = localStorage.getItem('theme');
-			document.body.classList.remove('theme-dark', 'theme-light');
-			if (theme === 'system') {
-				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-					? 'dark'
-					: 'light';
-				document.body.classList.add(`theme-${systemTheme}`);
-			} else {
-				document.body.classList.add(`theme-${theme}`);
+			if (theme) {
+				document.body.classList.remove('theme-dark', 'theme-light');
+				if (theme === 'system') {
+					const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light';
+					document.body.classList.add(`theme-${systemTheme}`);
+				} else {
+					document.body.classList.add(`theme-${theme}`);
+				}
 			}
 		}
 	</script>

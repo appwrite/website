@@ -133,14 +133,23 @@
 		<div class="aw-article-content">
 			<section class="aw-article-content-grid-6-4">
 				<div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
-					<p class="aw-paragraph-md">
-						{data.service?.description}
-					</p>
+					{@html parse(data.service?.description)}
 				</div>
+				{#if data.methods.length === 0}
+					<div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+						<div class="aw-inline-info">
+							<span class="icon-info" aria-hidden="true" />
+							<h5 class="aw-sub-body-500 aw-u-color-text-primary">
+								No endpoint found for this version and platform
+							</h5>
+							Please switch to a newer version or different platform.
+						</div>
+					</div>
+				{/if}
 			</section>
 			{#each data.methods as method (method.id)}
 				<section class="aw-article-content-grid-6-4">
-					<div class="-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+					<div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
 							<Heading id={method.id} level={2}>{method.title}</Heading>
 						</header>
@@ -254,7 +263,9 @@
 				<span class="icon-menu-alt-4" aria-hidden="true" />
 			</button>
 			<div class="aw-references-menu-content">
-				<div class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
+				<div
+					class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24"
+				>
 					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
 					<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
 						<span class="icon-x" aria-hidden="true" />

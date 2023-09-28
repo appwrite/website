@@ -163,6 +163,22 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
 	return api;
 }
 
+const descriptions = import.meta.glob(
+	'/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
+	{
+		as: 'raw'
+	}
+);
+
+export async function getDescription(service: string): Promise<string> {
+	const target = `/src/routes/docs/references/[version]/[platform]/[service]/descriptions/${service}.md`;
+
+	if (!(target in descriptions)) {
+		throw new Error('Missing service description');
+	}
+	return descriptions[target]();
+}
+
 export async function getService(
 	version: string,
 	platform: string,
@@ -186,7 +202,7 @@ export async function getService(
 	const data: Awaited<ReturnType<typeof getService>> = {
 		service: {
 			name: tag?.name as Service,
-			description: tag?.description ?? ''
+			description: await getDescription(service)
 		},
 		methods: []
 	};
