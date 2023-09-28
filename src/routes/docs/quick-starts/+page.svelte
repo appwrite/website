@@ -38,6 +38,12 @@
 					href: 'vue'
 				},
 				{
+					title: 'Nuxt',
+					icon: 'aw-icon-nuxt',
+					image: '/images/blog/placeholder.png',
+					href: 'nuxt'
+				},
+				{
 					title: 'SvelteKit',
 					icon: 'icon-svelte',
 					image: '/images/blog/placeholder.png',
