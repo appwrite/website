@@ -248,6 +248,7 @@ You can choose between the following types.
 | `integer`    | Integer attribute.                                               |
 | `float`      | Float attribute.                                                 |
 | `boolean`    | Boolean attribute.                                               |
+| `datetime`   | Datetime attribute formatted as an ISO 8601 string.              |
 | `enum`       | Enum attribute.                                                  |
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
