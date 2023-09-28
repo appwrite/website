@@ -187,13 +187,13 @@
 									<tbody class="aw-table-line-body">
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5232</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
-													>
+													<a href="https://github.com/appwrite/appwrite/issues/5232" target="_blank" class="aw-link aw-sub-body-500">
+														Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline
+													</a>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -211,13 +211,13 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5748</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
-													>
+													<a href="https://github.com/appwrite/appwrite/issues/5748" target="_blank" class="aw-link aw-sub-body-500">
+														Feature: overload Feature for Storage.CreateFile for using Blob instead of File
+													</a>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -235,14 +235,14 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#680</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
-													>
-													<span>(appwrite/appwrite)</span>
+													<a href="https://github.com/appwrite/sdk-generator/issues/680" target="_blank" class="aw-link aw-sub-body-500">
+														Feature: Unit Tests
+													</a>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>
@@ -259,14 +259,14 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#679</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
-													>
-													<span>(appwrite/appwrite)</span>
+													<a href="https://github.com/appwrite/sdk-generator/issues/679" target="_blank" class="aw-link aw-sub-body-500">
+														Feature: overload Feature for Storage.CreateFile for using Blob instead of File
+													</a>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>
