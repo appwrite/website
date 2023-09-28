@@ -1,5 +1,31 @@
 <script lang="ts">
-	import { Tabs } from '$lib/UI';
+	let email = '';
+	let submitted = false;
+	let error: string | undefined;
+	let submitting = false;
+
+	async function submit() {
+		submitting = true;
+		error = undefined;
+
+		const response = await fetch('https://growth.appwrite.io/v1/newsletter/verify', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email
+			})
+		});
+
+		console.log(response);
+		submitting = false;
+		if (response.status >= 400) {
+			error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+			return;
+		}
+		submitted = true;
+	}
 </script>
 
 <img src="/images/bgs/pre-footer.svg" alt="" class="pre-footer-bg" />
@@ -12,12 +38,17 @@
 				Sign up to our company blog and get the latest insights from Appwrite. Learn more about
 				engineering, product design, building community, and tips & tricks for using Appwrite.
 			</p>
-			<div
-				class="aw-subscribe-input aw-input-text is-reset-input-inside u-width-full-line aw-u-max-width-380 u-margin-inline-auto u-margin-block-start-32"
-			>
-				<input type="email" placeholder="Enter your email" />
-				<button class="aw-button">Sign up</button>
-			</div>
+			{#if submitted}
+				test
+			{:else}
+				<form
+					class="aw-subscribe-input aw-input-text is-reset-input-inside u-width-full-line aw-u-max-width-380 u-margin-inline-auto u-margin-block-start-32"
+					on:submit|preventDefault={submit}
+				>
+					<input type="email" placeholder="Enter your email" required bind:value={email} />
+					<button type="submit" class="aw-button" disabled={submitting}>Sign up</button>
+				</form>
+			{/if}
 		</div>
 	</div>
 </div>
