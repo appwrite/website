@@ -73,21 +73,21 @@
 				}
 			]
 		},
-		{
-			label: 'Debugging',
-			items: [
-				{
-					icon: 'icon-document-search',
-					label: 'Response codes',
-					href: '/docs/advanced/platform/response-codes'
-				},
-				{
-					icon: 'icon-document-report',
-					label: 'Rate-limits',
-					href: '/docs/advanced/platform/rate-limits'
-				}
-			]
-		}
+		// {
+		// 	label: 'Debugging',
+		// 	items: [
+		// 		{
+		// 			icon: 'icon-document-search',
+		// 			label: 'Response codes',
+		// 			href: '/docs/advanced/platform/response-codes'
+		// 		},
+		// 		{
+		// 			icon: 'icon-document-report',
+		// 			label: 'Rate-limits',
+		// 			href: '/docs/advanced/platform/rate-limits'
+		// 		}
+		// 	]
+		// }
 	] as NavTree;
 
 	const parent: NavParent = {
