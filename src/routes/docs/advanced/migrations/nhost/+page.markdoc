@@ -51,7 +51,7 @@ Before migrating to Appwrite make sure you've read the [migration overview](/doc
 
 {% /section %}
 
-## Limitations {% #limitations %}
+# Limitations {% #limitations %}
 
 Not all vendors make their APIs publicly accessible or easy to use for extracting and fully owning your data. Furthermore, due to varying design philosophies, certain resources cannot be migrated on a one-to-one basis. Below, you'll find a list of some known limitations when migrating data from Nhost to Appwrite. It's advisable to review this list before initiating your migration or deploying your product in a production environment.
 

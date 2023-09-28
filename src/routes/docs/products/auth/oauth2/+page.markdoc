@@ -8,7 +8,7 @@ OAuth authentication allows users to log in using accounts from other popular se
 
 When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
 
-## Configure OAuth 2 login {% #configure %}
+# Configure OAuth 2 login {% #configure %}
 
 Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
 
@@ -20,7 +20,7 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 6. Copy information from your OAuth2 provider's developer platform to fill the **OAuth2 Settings** modal in the Appwrite Console.
 7. Configure redirect URL in your OAuth 2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
 
-## Initialize OAuth 2 login {% #init %}
+# Initialize OAuth 2 login {% #init %}
 
 To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
@@ -135,7 +135,7 @@ You'll be redirected to the OAuth 2 provider's login page to log in. Once comple
 
 You can optionally configure `success` or `failure` redirect links on web to handle success and failure scenarios.
 
-## OAuth 2 profile {% #profile %}
+# OAuth 2 profile {% #profile %}
 
 After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
 
@@ -232,7 +232,7 @@ An OAuth 2 [session](/docs/references/cloud/models/session) will have the follow
 
 You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
 
-## OAuth 2 profile {% #profile %}
+# OAuth 2 profile {% #profile %}
 
 OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
 
