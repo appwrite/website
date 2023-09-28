@@ -249,7 +249,7 @@
 				/>
 			</div>
 
-			<div>
+			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<section class="aw-hero is-align-start">
 						<span class="aw-badges aw-eyebrow">PRIVACY & SECURITY_</span>
