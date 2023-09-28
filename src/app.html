@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
-		<link rel="stylesheet" href="/icon-font/aw-icon.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="”twitter:site”" content="@appwrite" />
-		%sveltekit.head%
-	</head>
-	<body class="theme-dark" data-sveltekit-preload-data="hover">
-		<script
-			type="module"
-			src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
-		></script>
-		<script>
-			const isDocs = window.location.pathname.startsWith('/docs');
-			if (isDocs) {
-				const theme = localStorage.getItem('theme');
-				document.body.classList.remove('theme-dark', 'theme-light') || 'dark';
-				if (theme === 'system') {
-					const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-						? 'dark'
-						: 'light';
-					document.body.classList.add(`theme-${systemTheme}`);
-				} else {
-					document.body.classList.add(`theme-${theme}`);
-				}
-				localStorage.setItem('theme', theme);
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
+	<link rel="stylesheet" href="/icon-font/aw-icon.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="twitter:site" content="@appwrite" />
+	%sveltekit.head%
+</head>
+
+<body class="theme-dark" data-sveltekit-preload-data="hover">
+	<script>
+		const isDocs = window.location.pathname.startsWith('/docs');
+		if (isDocs) {
+			const theme = localStorage.getItem('theme');
+			document.body.classList.remove('theme-dark', 'theme-light');
+			if (theme === 'system') {
+				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light';
+				document.body.classList.add(`theme-${systemTheme}`);
+			} else {
+				document.body.classList.add(`theme-${theme}`);
 			}
-		</script>
-		<div id="top" style="display: contents">%sveltekit.body%</div>
-	</body>
+		}
+	</script>
+	<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"></script>
+	<div id="top" style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>

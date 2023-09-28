@@ -112,7 +112,7 @@
 		</li>
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">Learn</h5>
-			<button class="aw-footer-nav-button is-open aw-is-only-mobile">
+			<button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">Learn</span>
 				<svg
 					class="aw-footer-nav-button-arrow"
@@ -143,7 +143,7 @@
 		</li>
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">About</h5>
-			<button class="aw-footer-nav-button is-open aw-is-only-mobile" use:accordion>
+			<button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
 				<span class="aw-caption-500 aw-eyebrow">About</span>
 				<svg
 					class="aw-footer-nav-button-arrow"

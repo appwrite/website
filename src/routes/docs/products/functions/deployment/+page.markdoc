@@ -8,13 +8,13 @@ Appwrite Functions are mini-applications in Appwrite with their own endpoints. E
 
 Functions can be created and deployed in different ways to meet your unique development habits. You can automatically deploy Appwrite Functions from source control, build your own deployment pipelines using the Appwrite CLI, or upload code files manually. Here's everything you need to know to deploy your first Appwrite Function.
 
-## Git  {% #git %} 
+# Git  {% #git %} 
 
 The recommended way to manage your Appwrite Function deployments is to use a version control system, like Git. This offers simple versioning and collaboration that will easily fit into the rest of your development workflow.
 
 ![](https://appwrite.io/images-ee/docs/functions-starter-dark.png)
 
-### Create function  {% #create-function %} 
+## Create function  {% #create-function %} 
 
 Before deploying your function with Git, create a new function attached to your Git repo.
 
@@ -29,14 +29,14 @@ Before deploying your function with Git, create a new function attached to your 
 9. If you have build steps, like installing dependencies, input the commands into the **Build settings** heading's **Command** field. For example, `npm install && npm build`.
 10. Finally, configure the execute permissions of the function.
 
-### Deploy {% #deploy %} 
+## Deploy {% #deploy %} 
 
 1. Using Git, checkout the branch you configured as the production branch when creating the Appwrite Function.
 2. Create a new commit.
 3. Push your new commit.
 4. A new deployment will be automatically created, built and activated.
 
-## CLI  {% #cli %} 
+# CLI  {% #cli %} 
 
 {% info title="CLI setup" %}
 Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
@@ -54,11 +54,11 @@ Edit the generated code, add dependencies, and deploy the function using the fol
 appwrite deploy function
 ```
 
-### Overwrite warning {% #overwrite-warning %} 
+## Overwrite warning {% #overwrite-warning %} 
 
 If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
-## Manual Deployment {% #manual %} 
+# Manual Deployment {% #manual %} 
 
 You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.
 
@@ -93,7 +93,7 @@ Next, navigate to your Appwrite Console and upload the function.
 6. Select **Activate deployment after build**.
 7. Click **Create**.
 
-## Domains {% #domains %} 
+# Domains {% #domains %} 
 
 Each deployed function can have its own domain. By default, one is generated for each of your functions.
 
@@ -108,7 +108,7 @@ To find or add a domain:
 
 DNS records can take up to 48 hours to propagate.
 
-## Debugging Build {% #debugging %} 
+# Debugging Build {% #debugging %} 
 
 After deploying a function, you can find the status and build logs in the Appwrite Console.
 
@@ -117,7 +117,7 @@ After deploying a function, you can find the status and build logs in the Appwri
 3. Under the **Deployments** tab, find the status of the current and previous deployments.
 4. Access build logs by clicking the **Build logs** button.
 
-## Redeploy Builds {% #redeploy %} 
+# Redeploy Builds {% #redeploy %} 
 
 After updating the configuration, redeploy your function for changes to take effect. You can also redeploy to retry failed builds.
 

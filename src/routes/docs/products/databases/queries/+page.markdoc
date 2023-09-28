@@ -6,7 +6,7 @@ description: Harness the power of querying with Appwrite Databases. Discover var
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
 
-## Query Class {% #query-class %}
+# Query Class {% #query-class %}
 
 Appwrite SDKs provide a `Query` class to help you build queries. The `Query` class has a method for each type of supported query.
 
@@ -33,7 +33,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).        |
 
 
-## Building Queries {% #building-queries %}
+# Building Queries {% #building-queries %}
 
 Queries are passed to an endpoint through the `queries` parameter as an array of query strings, which can be generated using the `Query` class.
 
