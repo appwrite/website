@@ -27,6 +27,7 @@
 	export let expandable = false;
 	export let navigation: NavTree;
 	export let parent: NavParent | undefined = undefined;
+	export let back: string;
 
 	function isNavLink(item: NavLink | NavGroup): item is NavLink {
 		return 'href' in item;

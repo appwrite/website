@@ -21,6 +21,7 @@
 	export let difficulty: string;
 	export let readtime: string;
 	export let step: number;
+	export let back: string;
 
 	setContext<LayoutContext>('headings', writable({}));
 
@@ -71,7 +72,8 @@
 	<meta name="twitter:image" content={ogImage} />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
-<DocsTutorial {title} {toc} {tutorials} currentStep={step}>
+
+<DocsTutorial {title} {back} {toc} {tutorials} currentStep={step}>
 	<svelte:fragment slot="metadata">
 		{#if difficulty}
 			<li>{difficulty}</li>
