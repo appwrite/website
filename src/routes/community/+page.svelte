@@ -5,11 +5,11 @@
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import { Carousel } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import FloatingHeads from '$lib/components/FloatingHeads.svelte';
 
 	const title = 'Community' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

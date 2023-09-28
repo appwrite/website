@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -7,7 +7,7 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 
 	const title = 'Privacy' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -311,8 +311,10 @@
 											<td class="aw-info-table-col">
 												For more information, please read our cookies policy <a
 													href="https://appwrite.io/policy/cookies"
-													target="_blank">https://appwrite.io/policy/cookies</a
+													target="_blank"
 												>
+													Appwrite Cookies Policy (https://appwrite.io/policy/cookies)
+												</a>
 											</td>
 										</tr>
 										<tr class="aw-info-table-col-row">
@@ -1231,18 +1233,21 @@
 									href="https://marketingplatform.google.com/about/analytics/terms/us/"
 									target="_blank"
 								>
-									https://marketingplatform.google.com/about/analytics/terms/us/</a
+									Google Analytics Terms of Service
+									(https://marketingplatform.google.com/about/analytics/terms/us/)</a
 								>, and the Google Privacy Policy, available at
 								<a href="https://www.google.com/policies/privacy/" target="_blank">
-									https://www.google.com/policies/privacy/</a
+									Google Privacy Policy (https://www.google.com/policies/privacy/)</a
 								>. You may learn more about how Google collects and processes data specifically in
 								connection with Google Analytics at
 								<a href="https://www.google.com/policies/privacy/partners/" target="_blank">
-									https://www.google.com/policies/privacy/partners/</a
+									Google Privacy Policy for Partners
+									(https://www.google.com/policies/privacy/partners/)</a
 								>. You may prevent your data from being used by Google Analytics by downloading and
 								installing the Google Analytics Opt-out Browser Add-on, available at
 								<a href="https://tools.google.com/dlpage/gaoptout/" target="_blank">
-									https://tools.google.com/dlpage/gaoptout/</a
+									Google Analytics Opt-out Browser Add-on
+									(https://tools.google.com/dlpage/gaoptout/)</a
 								>.
 							</li>
 							<li>
@@ -1251,7 +1256,7 @@
 								activity. For more information on the privacy practices of Orbit, please visit the Orbit
 								Privacy & Terms web page:
 								<a href="https://orbit.love/privacy-policy/" target="_blank"
-									>https://orbit.love/privacy-policy/</a
+									>Orbit Privacy Policy (https://orbit.love/privacy-policy/)</a
 								>.
 							</li>
 							<li>
@@ -1260,9 +1265,9 @@
 								diagnose, fix, and optimize the performance of the Website. Sentry's ability to use and
 								share information collected by Sentry is regulated by their terms of service, available
 								at
-								<a href="https://sentry.io/terms/" target="_blank">https://sentry.io/terms/</a>, and
+								<a href="https://sentry.io/terms/" target="_blank">Sentry Terms of Service (https://sentry.io/terms/)</a>, and
 								their Privacy Policy available at
-								<a href="https://sentry.io/privacy/" target="_blank">https://sentry.io/privacy/</a>.
+								<a href="https://sentry.io/privacy/" target="_blank">Sentry Privacy Policy (https://sentry.io/privacy/)</a>.
 							</li>
 							<li>
 								<span class="aw-u-color-text-primary">Mixpanel </span>
@@ -1272,11 +1277,11 @@
 								the Website and our products. Mixpanel’s ability to use and share information about your
 								visits is restricted by the Terms of Service, available at
 								<a href="https://mixpanel.com/legal/terms-of-use" target="_blank"
-									>https://mixpanel.com/legal/terms-of-use</a
+									>Mixpanel Terms of Use (https://mixpanel.com/legal/terms-of-use)</a
 								>
 								and the Mixpanel Privacy Policy, available at
 								<a href="https://mixpanel.com/legal/privacy-policy" target="_blank"
-									>https://mixpanel.com/legal/privacy-policy</a
+									>Mixpanel Privacy Policy (https://mixpanel.com/legal/privacy-policy)</a
 								>.
 							</li>
 							<li>
