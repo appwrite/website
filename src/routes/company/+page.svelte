@@ -527,7 +527,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/aapplbaum"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -537,7 +537,7 @@
 								</li>
 								<li>
 									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/aapplbaum"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
@@ -554,7 +554,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/arielmaislos"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -564,7 +564,7 @@
 								</li>
 								<li>
 									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/arielmaislos"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
@@ -578,7 +578,7 @@
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Gilad Engel</h6>
 							<p class="aw-main-body-500">Angel Investor</p>
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-								<li>
+								<!-- <li>
 									<a
 										href="https://github.com/"
 										class="aw-icon-button"
@@ -597,7 +597,7 @@
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -607,7 +607,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/KVCVP"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -615,7 +615,7 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a
 										href="https://twitter.com/appwrite"
 										class="aw-icon-button"
@@ -624,7 +624,7 @@
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -633,7 +633,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/ameet-patel"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -641,7 +641,7 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a
 										href="https://twitter.com/appwrite"
 										class="aw-icon-button"
@@ -650,7 +650,7 @@
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -660,7 +660,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/bennojering/"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -668,7 +668,7 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a
 										href="https://twitter.com/appwrite"
 										class="aw-icon-button"
@@ -677,7 +677,7 @@
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -687,7 +687,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/jnl"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -695,7 +695,7 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a
 										href="https://twitter.com/appwrite"
 										class="aw-icon-button"
@@ -704,7 +704,7 @@
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -712,7 +712,7 @@
 							<p class="aw-main-body-500">Co-Founder</p>
 							<p class="aw-main-body-500">Elastic</p>
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-								<li>
+								<!-- <li>
 									<a
 										href="https://github.com/"
 										class="aw-icon-button"
@@ -721,10 +721,10 @@
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
-								</li>
+								</li> -->
 								<li>
 									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/uboness"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
