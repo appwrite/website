@@ -7,6 +7,7 @@
 	export let toc: Array<TocItem>;
 	export let currentStep: number;
 	export let back: string;
+	export let date: string;
 
 	export let tutorials: Array<Tutorial>;
 
@@ -74,23 +75,7 @@
 				{/if}
 			</div>
 
-			<Feedback>
-				<div class="aw-content-footer-header-end">
-					<ul class="aw-metadata aw-caption-400">
-						<li>Last updated on September 27, 2023</li>
-						<li>
-							<a
-								href="https://github.com/appwrite/website"
-								target="_blank"
-								class="aw-link u-flex u-gap-4 u-cross-baseline"
-							>
-								<span class="icon-pencil-alt u-contents" aria-hidden="true" />
-								<span>Update on GitHub</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</Feedback>
+			<Feedback {date} />
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
 			<div class="aw-references-menu-content">

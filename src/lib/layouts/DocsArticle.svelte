@@ -18,6 +18,7 @@
 	export let title: string;
 	export let toc: Array<TocItem>;
 	export let back: string | undefined = undefined;
+	export let date: string;
 </script>
 
 <main class="u-contents">
@@ -60,19 +61,7 @@
 		</header>
 		<div class="aw-article-content">
 			<slot />
-			<Feedback>
-				<div class="aw-content-footer-header-end">
-					<ul class="aw-metadata aw-caption-400">
-						<li>Last updated on September 27, 2023</li>
-						<li>
-							<a href="https://github.com/appwrite/website" target="_blank" class="aw-link">
-								<span class="icon-pencil-alt u-contents" aria-hidden="true" />
-								<span>Update on GitHub</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</Feedback>
+			<Feedback {date} />
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
 			<div class="aw-references-menu-content">
