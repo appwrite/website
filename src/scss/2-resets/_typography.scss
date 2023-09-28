@@ -13,7 +13,7 @@ body {
 }
 
 .#{$p}-main-section {
-	overflow-x:hidden;
+	//overflow-x:hidden;
 }
 
 :where(body) :focus-visible {
