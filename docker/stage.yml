@@ -90,6 +90,9 @@ services:
     image: appwrite/docker-janitor
     deploy:
       mode: global
+    environment:
+      - TIME_BETWEEN_RUNS=600
+      - UNUSED_TIME=10m
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   
