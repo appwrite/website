@@ -12,6 +12,6 @@
 	<img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
 {:else}
 	<div class="aw-media">
-		<img {src} {alt} {title} loading="lazy" class="aw-u-media-ratio-16-9" />
+		<img {src} {alt} {title} loading="lazy" class="aw-u-media-ratio-16-9 u-width-full-line" />
 	</div>
 {/if}
