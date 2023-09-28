@@ -169,15 +169,8 @@
 
 <style lang="scss">
 	#open-source {
-		height: 1000px;
+		height: 1500px;
 		position: relative;
-		margin-block-start: -7.5rem;
-		@media #{$break1} {
-			margin-block-start: unset;
-		}
-		@media (min-width: 1920px) {
-			height: 1200px;
-		}
 	}
 
 	.sticky-wrapper {
