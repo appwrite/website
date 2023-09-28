@@ -5,6 +5,7 @@
 	export let level: number;
 	export let id: string | undefined = undefined;
 	export let step: number | undefined = undefined;
+	export let inReferences = false;
 
 	const tag = `h${level + 1}`;
 	const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
@@ -53,7 +54,8 @@
 			this={tag}
 			{id}
 			bind:this={element}
-			class:aw-snap-location={id}
+			class:aw-snap-location={id && !inReferences}
+			class:aw-snap-location-references={id && inReferences}
 			class="{classList[level]} aw-u-color-text-primary"
 		>
 			<slot />

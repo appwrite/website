@@ -206,7 +206,7 @@
 												type="text"
 												placeholder="Name"
 												aria-label="Name"
-												name="name"
+												bind:value={firstName}
 											/>
 										</li>
 										<li class="aw-form-item">
@@ -214,9 +214,9 @@
 												required
 												class="aw-input-text"
 												type="email"
-												name="email"
 												placeholder="Email address"
 												aria-label="Email address"
+												bind:value={email}
 											/>
 										</li>
 										<li class="aw-form-item is-column-span-2">
@@ -227,6 +227,7 @@
 												name="subject"
 												placeholder="Subject"
 												aria-label="Subject"
+												bind:value={subject}
 											/>
 										</li>
 										<li class="aw-form-item is-column-span-2">
@@ -236,6 +237,7 @@
 												class="aw-input-text"
 												placeholder="Your message"
 												aria-label="Message"
+												bind:value={message}
 											/>
 										</li>
 									</ul>

@@ -19,6 +19,9 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
 			token.children = transform_tokens(token.children);
 		}
 		switch (token.type) {
+			case 'paragraph_open':
+				token.attrPush(['class', 'aw-paragraph']);
+				break;
 			case 'link_open':
 				if (token.attrGet('href')?.startsWith('http')) {
 					token.attrPush(['target', '_blank']);

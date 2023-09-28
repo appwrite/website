@@ -2,12 +2,13 @@ import svgtofont from 'svgtofont';
 import { resolve } from 'path';
 
 const src = resolve(process.cwd(), 'src/icons/svg');
+const dist = resolve(process.cwd(), 'src/icons/output');
 
 export const generateIcons = async () => {
 	await svgtofont({
 		classNamePrefix: 'aw-icon',
 		src: src,
-		dist: resolve(process.cwd(), 'static/icon-font'),
+		dist: dist,
 		fontName: 'aw-icon',
 		styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
 		css: {
