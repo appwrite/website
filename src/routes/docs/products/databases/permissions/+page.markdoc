@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Permissions
+title: Database permissions
 description: Enhance data security and access control with Appwrite Database Permissions. Learn how to set permissions and access rules for your database collections
 ---
 

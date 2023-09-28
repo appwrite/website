@@ -16,7 +16,7 @@
 	} from '$lib/utils/references';
 	import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
 	import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
-	import { DOCS_TITLE_SUFFIX } from '$routes/titles.js';
+	import { API_REFERENCE_TITLE_SUFFIX } from '$routes/titles.js';
 	import { getContext, onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -66,7 +66,7 @@
 	$: platform = $page.params.platform as Platform;
 	$: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
 	$: serviceName = serviceMap[data.service?.name];
-	$: title = serviceName + DOCS_TITLE_SUFFIX;
+	$: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
 	$: description = data.service?.description;
 	$: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>

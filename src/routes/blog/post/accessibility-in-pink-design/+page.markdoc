@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Accessibility in Pink Design
-description: Lorem Ipsum dolor et amet.
+title: How Pink Design helped us improve web accessibility in our products.
+description: 
 date: 2022-11-14
 cover: /images/pages/homepage/dashboard.png
 timeToRead: 3
@@ -34,9 +34,6 @@ Color contrast might be the first thing that comes to mind when thinking about a
 The term “color blindness” is often used to describe people who have trouble identifying and distinguishing between certain colors, but color blindness, the inability to see any color, is extremely rare. According to the United Kingdom National Health Service (NHS), red-green color blindness affects 1 out of 12 men and 1 out of 200 women. People with this color vision deficiency may have difficulty differentiating between reds, oranges, yellows, browns, and greens. They also might find it hard to distinguish between shades of purple and may confuse red with black.Similarly, people with “blue-yellow” color vision deficiency may have difficulty differentiating between blues, greens, and yellows.
 
 We use four system colors in Pink Design — red, orange, green, and blue. Each of these colors represents a state in the Appwrite Console — red indicates an error or danger, orange indicates a warning, green indicates success, and blue indicates information. Knowing the difficulties our users might face while seeing these colors, we don't rely on color to make critical information understandable.
-
->“Lorem ipsum dolor sit amet consectetur. Diam fermentum tellus ante purus nullam eget sit id ac. Purus viverra ultrices fusce posuere sed enim duis aliquam sit. Vitae fames potenti donec ultricies in. Quis sed iaculis consectetur cras feugiat nibh gravida tincidunt volutpat. Eleifend vel blandit cras tempor sed nam quis aliquet. Facilisi tempor amet id integer gravida duis. Aliquet nulla tellus risus tortor neque vestibulum arcu.” Author
-
 
 # Allow keyboard navigation
 
