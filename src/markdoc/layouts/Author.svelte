@@ -290,16 +290,6 @@
 						{/each}
 					</ul>
 				</div>
-
-				<div class="u-flex u-main-end aw-u-margin-block-start-48">
-					<div class="aw-select is-colored">
-						<button class="physical-select">
-							<span class="icon-moon" aria-hidden="true" />
-							<span data-svelte-h="svelte-397x2m">Dark</span>
-						</button>
-						<span class="icon-cheveron-down" aria-hidden="true" />
-					</div>
-				</div>
 			</div>
 		</div>
 		<div
