@@ -48,7 +48,7 @@
 <section class="aw-content-footer">
 	<header class="aw-content-footer-header u-width-full-line">
 		<div
-			class="aw-content-footer-header-start u-flex u-main-space-between u-cross-center u-width-full-line"
+			class="u-flex u-gap-32 u-main-space-between u-cross-center u-width-full-line"
 			style="flex-wrap: wrap-reverse;"
 		>
 			<div class="u-flex u-gap-16 u-cross-center">
