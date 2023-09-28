@@ -32,6 +32,10 @@
 	<div class="aw-container">
 		<div class="aw-grid-120-1fr-auto" />
 
+		<header class="aw-grid-120-1fr-auto-header">
+			<h1 class="aw-title aw-u-color-text-primary">Support</h1>
+		</header>
+
 		<FooterNav />
 		<MainFooter />
 	</div>
