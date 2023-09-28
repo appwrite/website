@@ -158,7 +158,7 @@
 		img {
 			display: block;
 			max-block-size: unset;
-			max-inline-size: unset;
+			max-inline-size: 100%;
 			top: 0rem;
 			left: 50%;
 			transform: translateX(-50%);
