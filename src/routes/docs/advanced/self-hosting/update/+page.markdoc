@@ -66,7 +66,9 @@ docker ps | grep appwrite/appwrite
 ```
 
 Verify that the `STATUS` doesn't have any errors and all the `appwrite/appwrite` containers have the same version.
-# Running the Migration
+
+# Running the Migration {% #running-the-migration %}
+
 We can now start the migration. Navigate to the `appwrite` directory where your `docker-compose.yml` is present and run the following command.
 
 ```sh
