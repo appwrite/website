@@ -146,14 +146,13 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where you can build any application
-								at any scale, using the coding languages and tools you want.
+								Appwrite's open-source development platform lets you build any application at any scale, own your data, and use your preferred coding languages and tools.
 							</p>
 							<a
 								href="https://cloud.appwrite.io"
 								class="aw-button is-full-width-mobile u-margin-block-start-32"
 							>
-								<span class="text">Get Started</span>
+								<span class="text">Get started</span>
 							</a>
 						</div>
 					</div>
@@ -417,6 +416,7 @@
 					style:inline-size="768px"
 					style:block-size="768px"
 					style:inset-block-start="0rem"
+					style:z-index="-1"
 					style:left="calc(50% - 384px + 350px)"
 				>
 					<img

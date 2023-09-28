@@ -12,7 +12,7 @@
 		<div class="u-flex items-center u-gap-8">
 			<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary u-width-full-line">Sign up</a>
 
-			<a href="https://cloud.appwrite.io" class="aw-button u-width-full-line">Get Started</a>
+			<a href="https://cloud.appwrite.io" class="aw-button u-width-full-line">Get started</a>
 		</div>
 		<div class="aw-side-nav-scroll">
 			<section>

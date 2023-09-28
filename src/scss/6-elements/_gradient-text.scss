@@ -2,7 +2,7 @@
 
 .#{$p}-gradient-text {
 	display: block;
-	background: radial-gradient(251.85% 67.77% at 4.95% 100%, #f8a1ba 0%, #fff 100%);
+	background: linear-gradient(6deg, rgba(248,161,186,1) 0%, rgba(255,255,255,1) 35%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
