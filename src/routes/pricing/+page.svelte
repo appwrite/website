@@ -1,14 +1,32 @@
 <script lang="ts">
 	import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import ComparePlans from './compare-plans.svelte';
 	import Faq from './faq.svelte';
+
+	const title = 'Pricing' + TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
-	<title>Pricing{TITLE_SUFFIX}</title>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="”twitter:title”" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="”twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
@@ -46,7 +64,7 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
 											<div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For personal passion projects and students.
+												For students and hobby projects.
 											</p>
 											<a
 												href="https://cloud.appwrite.io/register"

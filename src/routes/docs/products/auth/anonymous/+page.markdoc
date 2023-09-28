@@ -8,7 +8,7 @@ Anonymous sessions allow you to implement **guest** users. Guest users let you s
 
 **If a user later creates an account**, their information will be inherited by the newly created account.
 
-## Create anonymous session {% #createSession %}
+# Create anonymous session {% #createSession %}
 
 Create an anonymous session with [Create Anonymous Session](/docs/references/cloud/client-web/account#createAnonymousSession) route.
 
@@ -76,7 +76,7 @@ mutation {
 ```
 {% /multicode %}
 
-## Attaching an account {% #attach-account %}
+# Attaching an account {% #attach-account %}
 
 Anonymous users cannot sign back in. If the session expires, they move to another computer, or they clear their browser data, they won't be able to log in again. Remember to prompt the user to create an account to not lose their data.
 

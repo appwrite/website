@@ -115,7 +115,8 @@
   &-search-wrapper {
     position:relative; min-inline-size:pxToRem(350);
     input { block-size:pxToRem(48); padding-inline-start:pxToRem(40);  }
-    .icon-search {
+    .icon-search,
+    .#{$p}-icon-search {
       position:absolute; inset-block-start:pxToRem(16);  inset-inline-start:pxToRem(16);
       line-height:1;
     }

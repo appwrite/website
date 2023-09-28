@@ -26,9 +26,9 @@ parent_directory <= you run the command in this directory
 
 This is the parent directory where you will find the `appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
 
-## Installing the next version {% #install-next-version %}
+# Installing the next version {% #install-next-version %}
 
-### Unix
+## Unix
 
 ```sh
 docker run -it --rm \
@@ -38,7 +38,7 @@ docker run -it --rm \
     appwrite/appwrite:1.4.3
 ```
 
-### CMD
+## CMD
 
 ```cmd
 docker run -it --rm ^
@@ -48,7 +48,7 @@ docker run -it --rm ^
     appwrite/appwrite:1.4.3
 ```
 
-### PowerShell
+## PowerShell
 
 ```powershell
 docker run -it --rm `
@@ -66,7 +66,7 @@ docker ps | grep appwrite/appwrite
 ```
 
 Verify that the `STATUS` doesn't have any errors and all the `appwrite/appwrite` containers have the same version.
-## Running the Migration
+# Running the Migration
 We can now start the migration. Navigate to the `appwrite` directory where your `docker-compose.yml` is present and run the following command.
 
 ```sh

@@ -6,8 +6,15 @@
 	export let id: string | undefined = undefined;
 	export let step: number | undefined = undefined;
 
-	const tag = `h${level}`;
+	const tag = `h${level + 1}`;
 	const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
+	const classList: Record<typeof level, string> = {
+		1: 'aw-label',
+		2: 'aw-description',
+		3: 'aw-main-body-500',
+		4: 'aw-sub-body-500'
+	};
+
 	let element: HTMLElement | undefined;
 
 	onMount(() => {
@@ -47,13 +54,13 @@
 			{id}
 			bind:this={element}
 			class:aw-snap-location={id}
-			class="aw-main-body-500 aw-u-color-text-primary"
+			class="{classList[level]} aw-u-color-text-primary"
 		>
 			<slot />
 		</svelte:element>
 	</a>
 {:else}
-	<svelte:element this={tag} bind:this={element} class="aw-main-body-500 aw-u-color-text-primary">
+	<svelte:element this={tag} bind:this={element} class="{classList[level]} aw-u-color-text-primary">
 		<slot />
 	</svelte:element>
 {/if}

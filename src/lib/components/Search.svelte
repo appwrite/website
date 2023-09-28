@@ -147,7 +147,7 @@
 		<div
 			class="aw-input-text-search-wrapper aw-u-max-width-680 aw-u-margin-inline-20 u-width-full-line"
 		>
-			<span class="icon-search u-z-index-5" aria-hidden="true" style="" />
+			<span class="aw-icon-search u-z-index-5" aria-hidden="true" style="inset-block-start:0.9rem" />
 			<div id="searchbox" />
 
 			<!-- svelte-ignore a11y-autofocus -->
@@ -157,7 +157,7 @@
 				type="text"
 				id="search"
 				bind:value
-				placeholder="Search"
+				placeholder="Search in docs"
 				style="border-end-start-radius:0; border-end-end-radius:0;"
 				use:arrowKeyFocus
 				data-hit="-1"
@@ -171,14 +171,14 @@
 						{#if results.length > 0}
 							<section>
 								<h6 class="aw-eyebrow">{results.length} results found</h6>
-								<ul class="u-margin-block-start-8">
+								<ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
 									{#each results as hit, i (hit.uid)}
 										<li>
 											<a
 												data-hit={i}
 												href={createHref(hit)}
 												use:arrowKeyFocus
-												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start u-max-width-100-percent"
+												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-8 aw-padding-inline-12  aw-u-cross-start u-max-width-100-percent"
 											>
 												<div class="aw-u-trim-1">
 													<span class="aw-u-color-text-secondary">{hit.h1}</span>
@@ -203,7 +203,7 @@
 					{/if}
 					<section>
 						<h6 class="aw-eyebrow">Recommended</h6>
-						<ul class="u-margin-block-start-8">
+						<ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
 							{#each recommended as hit, i (hit.uid)}
 								{@const index = i + (results.length ? results.length : 0)}
 								<li>
