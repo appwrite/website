@@ -100,7 +100,7 @@
     --p-select-menu-box-shadow-color: var(--transparent);
   }
   @mixin dark-mode() {
-    --p-select-menu-bg-color: var(--aw-color-white) / 0.08;
+    --p-select-menu-bg-color: var(--aw-color-greyscale-800);
     --p-select-menu-border-color: var(--aw-color-white) / 0.10;
     --p-select-menu-box-shadow-color: var(--transparent);
   }
