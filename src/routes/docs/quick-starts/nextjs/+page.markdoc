@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
 ---
-Learn to setup your first Next.js project powered by Appwrite.
+Learn how to setup your first Next.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
