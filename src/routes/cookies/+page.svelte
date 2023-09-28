@@ -196,7 +196,7 @@
 					<section id="">
 						<p>
 							We use in our site
-							<a href="https://appwrite.io/" target="_blank">https://appwrite.io/</a> ("<b>Site</b
+							<a href="https://appwrite.io/" target="_blank">Appwrite (https://appwrite.io/)</a> ("<b>Site</b
 							>") cookies and similar files or technologies to automatically collect and store
 							information about your computer, device, and Site usage, in order to improve their
 							performance and enhance your user experience. We use the general term "<b>cookies</b>"
@@ -215,7 +215,7 @@
 							In this Cookies Policy, we use the term Appwrite (and "we", "us" and "our") to refer
 							to Appwrite Code Ltd. Our Privacy Policy is available at
 							<a href="https://appwrite.io/policy/privacy" target="_blank"
-								>https://appwrite.io/policy/privacy</a
+								>Appwrite Privacy Policy (https://appwrite.io/policy/privacy)</a
 							>.
 						</p>
 						<section class="u-flex u-flex-vertical u-gap-8" id="whatIsCookie">
