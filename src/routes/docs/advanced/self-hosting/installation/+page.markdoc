@@ -6,7 +6,7 @@ description: Set up your self-hosted Appwrite instance with ease. Follow the ins
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
-## System requirements {% #system-requirements %}
+# System requirements {% #system-requirements %}
 
 Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, and an operating system that supports Docker.
 
@@ -16,7 +16,7 @@ Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/ins
 If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
 {% /info %}
 
-## Install with Docker {% #install-with-docker %}
+# Install with Docker {% #install-with-docker %}
 
 The easiest way to start running your Appwrite server is by running our Docker installer tool from your terminal. Before running the installation command, make sure you have [Docker CLI](https://www.docker.com/products/docker-desktop) installed on your host machine.
 
@@ -29,7 +29,7 @@ You will be prompted to configure the following during the setup command:
 
 {% tabs %}
 {% tabsitem #unix title="macOS and Linux" %}
-### Bash
+## Bash
 ```sh
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
@@ -40,7 +40,7 @@ docker run -it --rm \
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
-### CMD 
+## CMD 
 ```cmd
 docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
@@ -48,7 +48,7 @@ docker run -it --rm ^
     --entrypoint="install" ^
     appwrite/appwrite:1.4.3
 ```
-### Powershell
+## Powershell
 ```powershell
 docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
@@ -59,7 +59,7 @@ docker run -it --rm `
 {% /tabsitem %}
 {% /tabs %}
 
-## One-click setups {% #one-click-setups %}
+# One-click setups {% #one-click-setups %}
 
 In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
 
@@ -87,7 +87,7 @@ Choose from one of the providers below:
 {% /table %}
 
 
-## Next steps {% #next-steps %}
+# Next steps {% #next-steps %}
 
 Self-hosting Appwrite gives you more configurable options.
 Make these configurations to unlock the full power of Appwrite.
@@ -102,7 +102,7 @@ Make these configurations to unlock the full power of Appwrite.
 
 [Configure TLS Certificates](/docs/advanced/self-hosting/tls-certificates)
 
-## Manual (Docker Compose) {% #manual %}
+# Manual (Docker Compose) {% #manual %}
 
 For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base `docker-compose.yml` and `.env` files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
 
@@ -112,7 +112,7 @@ docker compose up -d --remove-orphans
 
 Once the Docker installation completes, go to your machine's hostname or IP address on your browser to access the Appwrite Console. Please note that on hosts that are not Linux-native, the server might take a few minutes to start after installation completes.
 
-## Stop {% #stop %}
+# Stop {% #stop %}
 
 You can stop your Appwrite containers by using the following command executed from the same directory as your `docker-compose.yml` file.
 
@@ -120,7 +120,7 @@ You can stop your Appwrite containers by using the following command executed fr
 docker compose stop
 ```
 
-## Uninstall {% #uninstall %}
+# Uninstall {% #uninstall %}
 
 To stop and remove your Appwrite containers, you can use the following command executed from the same directory as your `docker-compose.yml` file.
 

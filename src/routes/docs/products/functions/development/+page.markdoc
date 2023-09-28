@@ -7,7 +7,7 @@ description: Master serverless function development with Appwrite. Learn how to 
 Appwrite Functions offer a familiar interface if you've developed REST endpoints.
 Each function is handled following a request and response pattern.
 
-## Lifecycle {% #life-cycle %}
+# Lifecycle {% #life-cycle %}
 There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
@@ -409,7 +409,7 @@ public class Handler {
 
 If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
 
-## Context object {% #context-object %}
+# Context object {% #context-object %}
 Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console. 
 All input, output, and logging **must be handled through the context object** passed in.
 
@@ -422,7 +422,7 @@ You'll find these properties in the context object.
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
 | error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
-#### Destructuring assignment {% #destructuring %}
+### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 
 You'll see us use destructuring in examples, which has the following syntax. 
 
@@ -456,7 +456,7 @@ export default async function ({ req, res, log, error }: any) {
 ```
 {% /multicode %}
 
-### Request {% #request %}
+## Request {% #request %}
 
 If you pass data into an Appwrite Function, it'll be found in the request object. 
 This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
@@ -671,7 +671,7 @@ public class Main {
 ```
 {% /multicode %}
 
-#### Headers {% #headers %}
+### Headers {% #headers %}
 
 Appwrite Functions will always receive a set of headers that provide meta data about the function execution. 
 These are provided alongside any custom headers sent to the function.
@@ -686,7 +686,7 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
 
-### Response {% #response %}
+## Response {% #response %}
 If you need to send a response to the invoker of the function, such as a user, client app, or an integration, use the response object. 
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
@@ -936,7 +936,7 @@ To get the different response types, set one of the following query parameters i
 | `html`     | `/?type=html`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=html`     |
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
-### Logging {% #logging %}
+## Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
 This means, to see logs or debug function executions you need to use the `log()` and `error()` methods. 
 These logs are only visible to developers with access to the Appwrite Console.
@@ -1086,7 +1086,7 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-## Accessing environment variables {% #environment-variables %} 
+# Accessing environment variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 Environmental variables can be global, or function-specific.
 
@@ -1103,7 +1103,7 @@ If your function is using an Appwrite SDK with an API key, this API key needs to
 | `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
 | `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
 
-### Function-level environment variables {% #function-variables %} 
+## Function-level environment variables {% #function-variables %} 
 Function-level environment variables will only be accessible in the function they belong to. 
 Function-level environment variables will override project-level variables when they have conflicting names.
 
@@ -1112,7 +1112,7 @@ Function-level environment variables will override project-level variables when 
 3. Under the **Settings** tab, navigate to **Environment variables**.
 4. Create an environment variable by clicking **Create variable**, using the **Editor**, or import new variables through a `.env` file.
 
-### Project-level variables {% #project-variables %} 
+## Project-level variables {% #project-variables %} 
 Project-level variables are accessible to all Appwrite Functions in your project. 
 Function-level environment variables will override project-level variables when they have conflicting names.
 
@@ -1214,7 +1214,7 @@ namespace runtime {
 ```
 {% /multicode %}
 
-## Dependencies {% #dependencies %} 
+# Dependencies {% #dependencies %} 
 Your function's dependencies should be managed by the package manager of each language. 
 By default, we include the following package managers in each runtime.
 
@@ -1294,14 +1294,14 @@ By default, we include the following package managers in each runtime.
 
 To install your dependencies before your function is built, you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 
-## Using Appwrite in a function {% #using-appwrite %} 
+# Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
 Authenticating with Appwrite is done via an API key or a JWT token. 
 API keys must be generated and exported as an [environment variable](/docs/advanced/self-hosting/environment-variables).
 
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
-### Using with API key {% #using-api-key %} 
+## Using with API key {% #using-api-key %} 
 API keys have defined scopes when you create them. 
 They ignore permissions and operate without a sessions. 
 Use API keys if the function should act as an admin type role, instead of acting on behalf of a user. 
@@ -1612,7 +1612,7 @@ public class Main {
 ```
 {% /multicode %}
 
-### Using with JWT {% #using-jwt %} 
+## Using with JWT {% #using-jwt %} 
 JWTs allow you to act on behalf of an user in your Appwrite Function. 
 When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT. 
 This preserves the permissions you configured on each resource.

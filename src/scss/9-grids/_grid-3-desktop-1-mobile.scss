@@ -3,4 +3,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: pxToRem(32);
+  @media #{$break1} {
+    grid-template-columns:1fr;
+  }
 }

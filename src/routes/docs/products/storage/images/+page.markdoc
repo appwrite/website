@@ -36,7 +36,7 @@ Below you can find all the different parameters offered by the preview endpoint 
 | background    | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`. |
 | output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp` |
 
-## Examples {% #examples %}
+# Examples {% #examples %}
 Here are some examples using [Client SDKs](/docs/sdks#client).
 {% multicode %}
 ```js

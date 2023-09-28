@@ -48,11 +48,11 @@
 	<!-- Titles -->
 	<title>{title + BLOG_TITLE_SUFFIX}</title>
 	<meta property="og:title" content={title} />
-	<meta name="”twitter:title”" content={title} />
+	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />
 	<meta property="og:description" content={description} />
-	<meta name="”twitter:description" content={description} />
+	<meta name="twitter:description" content={description} />
 	<!-- Image -->
 	<meta property="og:image" content={DEFAULT_HOST + cover} />
 	<meta property="og:image:width" content="1200" />
