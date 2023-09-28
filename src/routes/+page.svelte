@@ -417,6 +417,7 @@
 					style:inline-size="768px"
 					style:block-size="768px"
 					style:inset-block-start="0rem"
+					style:z-index="-1"
 					style:left="calc(50% - 384px + 350px)"
 				>
 					<img

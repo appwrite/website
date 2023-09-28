@@ -166,6 +166,7 @@
 			style:inline-size="768px"
 			style:block-size="768px"
 			style:inset-block-start="26rem"
+			style:z-index="-1"
 			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
@@ -191,6 +192,7 @@
 			style:inline-size="768px"
 			style:block-size="768px"
 			style:inset-block-start="26rem"
+			style:z-index="-1"
 			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
