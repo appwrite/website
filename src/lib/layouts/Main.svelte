@@ -6,6 +6,7 @@
 		href: string;
 	};
 	export const isHeaderHidden = writable(false);
+	export const isMobileNavOpen = writable(false);
 </script>
 
 <script lang="ts">
@@ -75,8 +76,6 @@
 		return setupThemeObserver();
 	});
 
-	let isMobileNavOpen = false;
-
 	let navLinks: NavLink[] = [
 		{
 			label: 'Docs',
@@ -96,7 +95,7 @@
 		}
 	];
 
-	$: resolvedTheme = isMobileNavOpen ? 'dark' : theme;
+	$: resolvedTheme = $isMobileNavOpen ? 'dark' : theme;
 
 	const scrollInfo = createScrollInfo();
 
@@ -115,7 +114,7 @@
 <div class="u-position-relative">
 	<section
 		class="aw-mobile-header theme-{resolvedTheme}"
-		class:is-transparent={browser && !isMobileNavOpen}
+		class:is-transparent={browser && !$isMobileNavOpen}
 		class:is-hidden={$isHeaderHidden}
 	>
 		<div class="aw-mobile-header-start">
@@ -135,7 +134,7 @@
 			</a>
 		</div>
 		<div class="aw-mobile-header-end">
-			{#if !isMobileNavOpen}
+			{#if !$isMobileNavOpen}
 				<a href="https://cloud.appwrite.io" class="aw-button">
 					<span class="text">Get Started</span>
 				</a>
@@ -143,9 +142,9 @@
 			<button
 				class="aw-button is-text"
 				aria-label="open navigation"
-				on:click={() => (isMobileNavOpen = !isMobileNavOpen)}
+				on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
 			>
-				{#if isMobileNavOpen}
+				{#if $isMobileNavOpen}
 					<span aria-hidden="true" class="aw-icon-close" />
 				{:else}
 					<span aria-hidden="true" class="aw-icon-hamburger-menu" />
@@ -216,9 +215,9 @@
 			</div>
 		</div>
 	</header>
-	<MobileNav bind:open={isMobileNavOpen} links={navLinks} />
+	<MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-	<main class="aw-main-section" class:aw-u-hide-mobile={isMobileNavOpen}>
+	<main class="aw-main-section" class:aw-u-hide-mobile={$isMobileNavOpen}>
 		<slot />
 	</main>
 </div>
