@@ -96,7 +96,7 @@ promise.then(function (response) {
 });
 ```
 
-## Example #2 - Team roles {% #examples-2 %}
+## Example #2 - Team roles
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 
@@ -114,9 +114,7 @@ let promise = databases.createDocument(
     '<COLLECTION_ID>',
     {'actorName': 'Chris Evans', 'height': 183},
     [
-       
-
- Permission.read(Role.team("5c1f88b87435e")),             // Only users of team 5c1f88b87435e can read the document
+        Permission.read(Role.team("5c1f88b87435e")),             // Only users of team 5c1f88b87435e can read the document
         Permission.update(Role.team("5c1f88b87435e", "owner")), // Only users of team 5c1f88b87435e with the role owner can update the document
         Permission.delete(Role.team("5c1f88b87435e", "owner"))  // Only users of team 5c1f88b87435e with the role owner can delete the document
     ]
