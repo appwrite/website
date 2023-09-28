@@ -133,16 +133,25 @@
 		<div class="aw-article-content">
 			<section class="aw-article-content-grid-6-4">
 				<div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
-					<p class="aw-paragraph-md">
-						{data.service?.description}
-					</p>
+					{@html parse(data.service?.description)}
 				</div>
+				{#if data.methods.length === 0}
+					<div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+						<div class="aw-inline-info">
+							<span class="icon-info" aria-hidden="true" />
+							<h5 class="aw-sub-body-500 aw-u-color-text-primary">
+								No endpoint found for this version and platform
+							</h5>
+							Please switch to a newer version or different platform.
+						</div>
+					</div>
+				{/if}
 			</section>
 			{#each data.methods as method (method.id)}
 				<section class="aw-article-content-grid-6-4">
-					<div class="-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+					<div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
-							<Heading id={method.id} level={2}>{method.title}</Heading>
+							<Heading id={method.id} level={2} inReferences>{method.title}</Heading>
 						</header>
 						<p class="aw-sub-body-400">
 							{@html parse(method.description)}
@@ -213,18 +222,20 @@
 																	</span>
 																	<span class="aw-caption-400">application/json</span>
 																</header>
-																<ul class="aw-sub-body-400 u-margin-block-start-16">
-																	{#each response.models as model}
-																		<li>
-																			<a
-																				class="aw-link"
-																				href={`/docs/references/${$page.params.version}/models/${model.id}`}
-																			>
-																				{model.name}
-																			</a>
-																		</li>
-																	{/each}
-																</ul>
+																{#if response.models.length > 0}
+																	<ul class="aw-sub-body-400 u-margin-block-start-16">
+																		{#each response.models as model}
+																			<li>
+																				<a
+																					class="aw-link"
+																					href={`/docs/references/${$page.params.version}/models/${model.id}`}
+																				>
+																					{model.name}
+																				</a>
+																			</li>
+																		{/each}
+																	</ul>
+																{/if}
 															</article>
 														</li>
 													{/if}
@@ -250,34 +261,38 @@
 			{/each}
 		</div>
 		<aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
-			<button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
-				<span class="icon-menu-alt-4" aria-hidden="true" />
-			</button>
-			<div class="aw-references-menu-content">
-				<div class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24">
-					<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-					<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
-						<span class="icon-x" aria-hidden="true" />
-					</button>
+			{#if data.methods.length > 0}
+				<button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
+					<span class="icon-menu-alt-4" aria-hidden="true" />
+				</button>
+				<div class="aw-references-menu-content">
+					<div
+						class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24"
+					>
+						<h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
+						<button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
+							<span class="icon-x" aria-hidden="true" />
+						</button>
+					</div>
+					<ul class="aw-references-menu-list">
+						{#each data.methods as method}
+							<li class="aw-references-menu-item">
+								<a
+									href={`#${method.id}`}
+									class="aw-references-menu-link aw-caption-400"
+									class:is-selected={method.id === selected}>{method.title}</a
+								>
+							</li>
+						{/each}
+					</ul>
+					<div class="u-sep-block-start aw-u-padding-block-20">
+						<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
+							<span class="aw-icon-arrow-up" aria-hidden="true" />
+							<span class="aw-sub-body-500">Back to top</span>
+						</a>
+					</div>
 				</div>
-				<ul class="aw-references-menu-list">
-					{#each data.methods as method}
-						<li class="aw-references-menu-item">
-							<a
-								href={`#${method.id}`}
-								class="aw-references-menu-link aw-caption-400"
-								class:is-selected={method.id === selected}>{method.title}</a
-							>
-						</li>
-					{/each}
-				</ul>
-				<div class="u-sep-block-start aw-u-padding-block-20">
-					<a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
-						<span class="aw-icon-arrow-up" aria-hidden="true" />
-						<span class="aw-sub-body-500">Back to top</span>
-					</a>
-				</div>
-			</div>
+			{/if}
 		</aside>
 	</article>
 </main>
