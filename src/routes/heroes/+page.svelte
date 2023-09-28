@@ -529,28 +529,28 @@
 								<img src="/images/icons/gradients/discussion.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Channel access</h3>
 								<p class="aw-info-boxes-content">
-									Access to internal channel with Appwrite’s Engineering and DevRel teams
+									Access to internal channel with Appwrite’s Engineering and DevRel teams.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/community.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">In-person gatherings</h3>
 								<p class="aw-info-boxes-content">
-									Top contributors get invited to an in-person gathering with the Appwrite team
+									Top contributors get invited to an in-person gathering with the Appwrite team.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/verified.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Digital badge</h3>
 								<p class="aw-info-boxes-content">
-									Exclusive digital badge to share on Discord and LinkedIn
+									Exclusive digital badge to share on Discord and LinkedIn.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/travel.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">Travel</h3>
 								<p class="aw-info-boxes-content">
-									Travel paid for top contributors (case-by-case) to attend dev conferences
+									Travel paid for top contributors (case-by-case) to attend dev conferences.
 								</p>
 							</li>
 							<li class="aw-info-boxes-item">
@@ -558,14 +558,14 @@
 								<h3 class="aw-info-boxes-title">
 									<span class="">Beta-test</span>
 								</h3>
-								<p class="aw-info-boxes-content">Opportunity to beta-test Appwrite releases</p>
+								<p class="aw-info-boxes-content">Opportunity to beta-test Appwrite releases.</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/unlock.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
 									<span class="">Roadmap access</span>
 								</h3>
-								<p class="aw-info-boxes-content">Special access to a more in-depth roadmap</p>
+								<p class="aw-info-boxes-content">Special access to a more in-depth roadmap.</p>
 							</li>
 						</ul>
 					</div>

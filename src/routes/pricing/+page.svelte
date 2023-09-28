@@ -188,7 +188,7 @@
 									<h3 class="aw-main-body-500 aw-u-color-text-primary">Open-source teams</h3>
 								</header>
 								<p class="u-margin-block-start-8">
-									We support OSS maintainers with a free Pro Plan. Get in touch to find out.
+									We support OSS maintainers with a free Pro Plan. Get in touch to find out more.
 								</p>
 								<a href="/contact-us" class="aw-button is-secondary u-margin-block-start-32">
 									<span>Contact us</span>
