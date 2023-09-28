@@ -10,7 +10,10 @@ body {
 
 	color: hsl(var(--p-body-text-color)) !important;
 	background-color: hsl(var(--p-body-bg-color));
-	overflow-x:hidden;
+}
+
+.#{$p}-main-section {
+	//overflow-x:hidden;
 }
 
 :where(body) :focus-visible {
