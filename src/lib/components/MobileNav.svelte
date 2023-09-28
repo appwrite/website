@@ -7,7 +7,7 @@
 
 <svelte:window on:resize={() => (open = false)} />
 
-<nav class="aw-side-nav aw-is-only-mobile" class:u-hide={!open}>
+<nav class="aw-side-nav aw-is-not-desktop" class:u-hide={!open}>
 	<div class="aw-side-nav-wrapper aw-u-padding-inline-16">
 		<div class="u-flex items-center u-gap-8">
 			<a href="https://cloud.appwrite.io/register" class="aw-button is-secondary u-width-full-line">Sign up</a>
