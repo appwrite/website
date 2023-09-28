@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create app
-description: This is the description used for SEO.
+description: Create a React app project and integrate with Appwrite.
 step: 2
 ---
 

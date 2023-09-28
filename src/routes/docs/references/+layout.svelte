@@ -53,36 +53,41 @@
 				},
 				{
 					label: 'Storage',
-					icon: 'icon-cloud',
+					icon: 'icon-folder',
 					href: `${prefix}/storage`
 				},
 				{
 					label: 'Functions',
-					icon: 'icon-code',
+					icon: 'icon-lightning-bolt',
 					href: `${prefix}/functions`
 				},
 				{
 					label: 'Localization',
-					icon: 'icon-globe',
+					icon: 'icon-location-marker',
 					href: `${prefix}/locale`
 				},
 				{
 					label: 'Avatars',
-					icon: 'icon-user',
+					icon: 'icon-user-circle',
 					href: `${prefix}/avatars`
 				}
 			]
 		},
-		// {
-		// 	label: 'Debugging',
-		// 	items: [
-		// 		{
-		// 			icon: 'icon-document-search',
-		// 			label: 'Response codes',
-		// 			href: '/docs/advanced/platform/response-codes'
-		// 		}
-		// 	]
-		// }
+		{
+			label: 'Debugging',
+			items: [
+				{
+					icon: 'icon-document-search',
+					label: 'Response codes',
+					href: '/docs/advanced/platform/response-codes'
+				},
+				{
+					icon: 'icon-document-report',
+					label: 'Rate-limits',
+					href: '/docs/advanced/platform/rate-limits'
+				}
+			]
+		}
 	] as NavTree;
 
 	const parent: NavParent = {

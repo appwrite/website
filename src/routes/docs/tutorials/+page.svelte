@@ -40,37 +40,37 @@
 				<h2 class="aw-eyebrow">Client</h2>
 				<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
 					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
+						<a href="/docs/tutorials/react" class="aw-card is-normal">
 							<header class="u-flex u-cross-baseline u-gap-4">
 								<span class="icon-react aw-u-font-size-24" aria-hidden="true" />
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">React</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with React.
 							</p>
-						</article>
+						</a>
 					</li>
 					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
+						<a href="/docs/tutorials/vue" class="aw-card is-normal">
 							<header class="u-flex u-cross-baseline u-gap-4">
 								<span class="icon-vue aw-u-font-size-24" aria-hidden="true" />
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Vue</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with Vue.
 							</p>
-						</article>
+						</a>
 					</li>
 					<li class="is-mobile-col-span-2">
-						<article class="aw-card is-full-color">
+						<a href="/docs/tutorials/sveltekit" class="aw-card is-normal">
 							<header class="u-flex u-cross-baseline u-gap-4">
 								<span class="icon-svelte aw-u-font-size-24" aria-hidden="true" />
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">SvelteKit</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Learn Appwrite Auth, Databases, and more with SvelteKit.
 							</p>
-						</article>
+						</a>
 					</li>
 					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
@@ -79,7 +79,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Flutter</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>
@@ -90,7 +90,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Apple</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>
@@ -101,7 +101,7 @@
 								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Android</h4>
 							</header>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Lorem ipsum dolor sit amet consectetur.
+								Coming soon...
 							</p>
 						</article>
 					</li>

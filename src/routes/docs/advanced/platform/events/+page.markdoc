@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Events
-description: Placeholder SEO.
+description: Harness the power of events in Appwrite. Explore event-driven architecture, event types, and how to use events to create dynamic and responsive applications.
 ---
 
 Appwrite provides a variety of events that allows your application to react to changes as they happen. 

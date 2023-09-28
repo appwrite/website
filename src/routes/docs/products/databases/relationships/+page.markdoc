@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Relationships
-description: This is the description used for SEO.
+description: Manage complex data relationships with Appwrite Databases. Discover how to define and work with relationships between documents for interconnected data.
 difficulty: advanced
 readtime: 20
 ---

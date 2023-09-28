@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Storage
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Manage self-hosted storage options with Appwrite. Explore file storage, uploads, and customization in your self-hosted Appwrite environment.
 ---
 
 Appwrite's Storage Service can be configured to store files locally, or with self-hosted and cloud storage services. 

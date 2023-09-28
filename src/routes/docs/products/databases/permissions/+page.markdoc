@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Permissions
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+description: Enhance data security and access control with Appwrite Database Permissions. Learn how to set permissions and access rules for your database collections
 ---
 
 Permissions define who can access documents in a collection. By default **no permissions** are granted to any users, so no user can access any documents.

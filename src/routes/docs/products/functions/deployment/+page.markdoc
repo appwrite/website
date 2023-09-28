@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Deployment
-description: This is the description used for SEO.
-difficulty: intermediate
-readtime: 10
+description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
 ---
 
 Appwrite Functions are mini-applications in Appwrite with their own endpoints. Each function can have many deployments, which can be thought of as versions of the mini-application.
