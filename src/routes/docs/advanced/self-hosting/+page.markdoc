@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Installation
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Explore advanced self-hosting options with Appwrite. Learn how to gain full control of your Appwrite deployment, customize settings, and enhance your infrastructure.
 ---
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.

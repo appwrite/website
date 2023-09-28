@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Add navigation 
-description: This is the description used for SEO.
+description: Add navigation to your Vue.js app with Appwrite authentication and pinia stores.
 step: 5
-difficulty: Beginner
-readtime: 10
 ---
 
 In our app we want to have a navigation bar that is always visible. Use the `user` store to show either:
@@ -30,7 +28,7 @@ onMounted(() => {
 <template>
   <div>
     <nav>
-      <a href="/">Idea Tracker</a>
+      <a href="/">Idea tracker</a>
       <div>
         <template v-if="user.current">
           <span>{{ user.current.email }}</span>

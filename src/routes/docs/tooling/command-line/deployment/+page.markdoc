@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Deployment
-description: 
+description: Efficiently deploy your Appwrite projects using the Command-Line Tool (CLI). Explore deployment options, strategies, and best practices for a smooth deployment process.
 ---
 
 The Apprite CLI allows you to create and deploy databases, collections, buckets, teams and functions to your Appwrite project from a configuration file. This is especially helpful if you're trying to track project setup using version control.

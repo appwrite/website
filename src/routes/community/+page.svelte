@@ -16,11 +16,11 @@
 	<!-- Titles -->
 	<title>{title}</title>
 	<meta property="og:title" content={title} />
-	<meta name="”twitter:title”" content={title} />
+	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />
 	<meta property="og:description" content={description} />
-	<meta name="”twitter:description" content={description} />
+	<meta name="twitter:description" content={description} />
 	<!-- Image -->
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="1200" />
@@ -40,7 +40,7 @@
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Inspire and get inspired. Join our community of maintainers and contributors and
+								Inspire and get inspired. Join Appwrite's community of maintainers and contributors and
 								help us make Appwrite better for developers worldwide.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">

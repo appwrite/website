@@ -17,11 +17,11 @@
 	<!-- Titles -->
 	<title>{title}</title>
 	<meta property="og:title" content={title} />
-	<meta name="”twitter:title”" content={title} />
+	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />
 	<meta property="og:description" content={description} />
-	<meta name="”twitter:description" content={description} />
+	<meta name="twitter:description" content={description} />
 	<!-- Image -->
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:image:width" content="1200" />
@@ -263,17 +263,10 @@
 
 		<section class="aw-hero is-align-start u-position-relative">
 			<h1 class="aw-display aw-u-color-text-primary u-max-width-600">
-				Run on any provider or through Appwrite Cloud
+				Learn how to build like a team of hundreds
 			</h1>
 			<p class="aw-description u-max-width-600">
-				Start building today by creating an account on <a
-					href="https://cloud.appwrite.io/"
-					rel="noopener noreferrer"
-					target="_blank">Appwrite Cloud</a
-				>
-				or
-				<a href="/docs/advanced/self-hosting" rel="noopener noreferrer" target="_blank">self-host</a
-				>.
+				Appwrite is a backend development platform built by hundreds of open-source developers, where you can build any application at any scale using the coding languages and tools you want.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">
@@ -293,14 +286,14 @@
 				<svelte:fragment slot="header">
 					<h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
 					<p class="aw-description u-max-width-600">
-						If you learn best from code examples, follow one of our tutorials..
+						If you learn best from code examples, follow one of our tutorials.
 					</p>
 				</svelte:fragment>
 				<svelte:fragment>
 					<li>
 						<a
 							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
+							href="/docs/tutorials/react"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -308,18 +301,18 @@
 								<img
 									class="aw-articles-item-image"
 									src="/images/tutorials/react.png"
-									alt=""
+									alt="react logo"
 									loading="lazy"
 								/>
 							</div>
 							<article class="aw-grid-articles-item-content">
 								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
+									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React tutorial</h3>
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
 								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									Learn Appwrite Auth, Databases, and more with React.
 								</p>
 							</article>
 						</a>
@@ -327,88 +320,7 @@
 					<li>
 						<a
 							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-articles-item-image"
-									src="/images/tutorials/android.png"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-articles-item-image"
-									src="/images/tutorials/flutter.png"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="aw-grid-articles-item-image">
-								<img
-									class="aw-articles-item-image"
-									src="/images/tutorials/vue.png"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
-							<article class="aw-grid-articles-item-content">
-								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
-								</header>
-								<p
-									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-							</article>
-						</a>
-					</li>
-					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="https://medium.com/appwrite-io/announcing-pink-design-30652e2a2be3"
+							href="/docs/tutorials/sveltekit"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -422,13 +334,94 @@
 							</div>
 							<article class="aw-grid-articles-item-content">
 								<header class="aw-articles-item-header">
-									<h3 class="aw-sub-body-500 aw-u-color-text-primary">React sign up template</h3>
+									<h3 class="aw-sub-body-500 aw-u-color-text-primary">SvelteKit tutorial</h3>
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
 								>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Learn Appwrite Auth, Databases, and more with SvelteKit.
+							</p>
+							</article>
+						</a>
+					</li>
+					<li>
+						<a
+							class="aw-grid-articles-item is-full-color"
+							href="/docs/tutorials/vue"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div class="aw-grid-articles-item-image">
+								<img
+									class="aw-articles-item-image"
+									src="/images/tutorials/vue.png"
+									alt=""
+									loading="lazy"
+								/>
+							</div>
+							<article class="aw-grid-articles-item-content">
+								<header class="aw-articles-item-header">
+									<h3 class="aw-sub-body-500 aw-u-color-text-primary">Vue tutorial</h3>
+								</header>
+								<p
+									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+								>
+								Learn Appwrite Auth, Databases, and more with Vue.
 								</p>
+							</article>
+						</a>
+					</li>
+					<li>
+						<a
+							class="aw-grid-articles-item is-full-color"
+							href="/docs/tutorials/android"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div class="aw-grid-articles-item-image">
+								<img
+									class="aw-articles-item-image"
+									src="/images/tutorials/android.png"
+									alt=""
+									loading="lazy"
+								/>
+							</div>
+							<article class="aw-grid-articles-item-content">
+								<header class="aw-articles-item-header">
+									<h3 class="aw-sub-body-500 aw-u-color-text-primary">Android tutorial</h3>
+								</header>
+								<p
+									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+								>
+								Coming soon...
+							</p>
+							</article>
+						</a>
+					</li>
+					<li>
+						<a
+							class="aw-grid-articles-item is-full-color"
+							href="/docs/tutorials/flutter"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div class="aw-grid-articles-item-image">
+								<img
+									class="aw-articles-item-image"
+									src="/images/tutorials/flutter.png"
+									alt=""
+									loading="lazy"
+								/>
+							</div>
+							<article class="aw-grid-articles-item-content">
+								<header class="aw-articles-item-header">
+									<h3 class="aw-sub-body-500 aw-u-color-text-primary">Flutter tutorial</h3>
+								</header>
+								<p
+									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+								>
+								Coming soon...
+							</p>
 							</article>
 						</a>
 					</li>
@@ -444,7 +437,7 @@
 			<div class="u-margin-block-start-24">
 				<ul class="aw-grid-row-4 aw-grid-row-4-m-1">
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/products/auth" class="aw-card is-normal">
 							<img
 								src="/images/icons/illustrated/dark/auth.png"
 								alt=""
@@ -466,7 +459,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/products/databases" class="aw-card is-normal">
 							<img
 								src="/images/icons/illustrated/dark/databases.png"
 								alt=""
@@ -490,7 +483,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/products/functions" class="aw-card is-normal">
 							<img
 								src="/images/icons/illustrated/dark/functions.png"
 								alt=""
@@ -514,7 +507,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/products/storage" class="aw-card is-normal">
 							<img
 								src="/images/icons/illustrated/dark/storage.png"
 								alt=""
@@ -538,7 +531,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/apis/realtime" class="aw-card is-normal">
 							<img
 								src="/images/icons/illustrated/dark/realtime.png"
 								alt=""
@@ -573,7 +566,7 @@
 			<div class="u-margin-block-start-24">
 				<ul class="aw-grid-row-2">
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/sdks" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">SDKs</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Light-weight SDKs for your favorite platforms.
@@ -581,17 +574,17 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/apis/rest" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								REST API
 							</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
-								Integrate with HTTP requests without the needing an SDK
+								Integrate with HTTP requests without the needing an SDK.
 							</p>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/apis/graphql" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								GraphQL
 							</h4>
@@ -601,7 +594,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/apis/realtime" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Realtime
 							</h4>
@@ -619,7 +612,7 @@
 			<div class="u-margin-block-start-24">
 				<ul class="aw-grid-row-4">
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/advanced/migrations/self-hosted" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Self-hosted
 							</h4>
@@ -629,7 +622,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/advanced/migrations/firebase" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Firebase
 							</h4>
@@ -639,7 +632,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="aw-card is-normal">
+						<a href="/docs/advanced/migrations/supabase" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">
 								Supabase
 							</h4>
@@ -649,7 +642,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="" class="aw-card is-normal">
+						<a href="/docs/advanced/migrations/nhost" class="aw-card is-normal">
 							<h4 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8">Nhost</h4>
 							<p class="aw-sub-body-400 u-margin-block-start-4">
 								Migrate users and data from NHost to Appwrite.
