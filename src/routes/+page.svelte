@@ -174,11 +174,11 @@
 			</div>
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
-					<h3
+					<h2
 						class="aw-title aw-u-color-text-primary aw-u-text-align-center aw-u-max-width-600 u-margin-inline-auto"
 					>
 						Trusted by developers from the world's leading organizations
-					</h3>
+					</h2>
 					<ul class="aw-grid-3c-4c-6c is-for-logos aw-u-padding-block-start-80">
 						<li>
 							<img src="/images/logos/trusted-by/apple.svg" alt="Apple" width="42" height="48" />
@@ -249,7 +249,7 @@
 				/>
 			</div>
 
-			<div class="aw-big-padding-section-level-2">
+			<div>
 				<div class="aw-container">
 					<section class="aw-hero is-align-start">
 						<span class="aw-badges aw-eyebrow">PRIVACY & SECURITY_</span>
@@ -450,14 +450,14 @@
 							class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
 						>
 							{#each platforms as platform}
-								<Tooltip>
-									<li>
+								<li>
+									<Tooltip>
 										<a href={platform.href} class="aw-box-icon">
 											<img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
 										</a>
-									</li>
-									<svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
-								</Tooltip>
+										<svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+									</Tooltip>
+								</li>
 							{/each}
 						</ul>
 						<a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
