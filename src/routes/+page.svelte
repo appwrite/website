@@ -9,7 +9,7 @@
 	import Products from '$lib/animations/Products/Products.svelte';
 	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
 
 	const platforms: Array<{
@@ -65,7 +65,7 @@
 	];
 
 	const title = 'Appwrite - Build like a team of hundreds';
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
 </script>
 
