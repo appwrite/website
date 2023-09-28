@@ -8,7 +8,7 @@ readtime: 15
 
 Appwrite provides utilities to manipulate images for previewing images in your apps.
 
-## Image manipulation {% #image-manupulation %}
+# Image manipulation {% #image-manupulation %}
 
 Appwrite Storage's [preview endpoint](/docs/references/cloud/client-web/storage#getFilePreview) let you manipulate resolution, add borders and the border-radius, add background-color, set the opacity for the image, and get the image in the appropriate output format.
 
@@ -36,7 +36,7 @@ Below you can find all the different parameters offered by the preview endpoint 
 | background    | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`. |
 | output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp` |
 
-## Examples {% #examples %}
+# Examples {% #examples %}
 Here are some examples using [Client SDKs](/docs/sdks#client).
 {% multicode %}
 ```js

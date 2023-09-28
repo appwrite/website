@@ -6,7 +6,7 @@ description: Master document management with Appwrite Databases. Learn how to cr
 Each piece of data or information in Appwrite Databases is a document.
 Documents have a structure defined by the parent collection.
 
-## Create documents {% #create-documents %}
+# Create documents {% #create-documents %}
 {% info title="Permissions required" %}
 You must grant **create** permissions to users at the **collection level** before users can create documents.
 [Learn more about permissions](#permissions)
@@ -128,7 +128,7 @@ mutation {
 During testing, you might prefer to create documents in the Appwrite Console.
 To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
-## List documents {% #list-documents %}
+# List documents {% #list-documents %}
 
 {% info title="Permissions required" %}
 You must grant **read** permissions to users at the **collection level** before users can read documents.
@@ -256,7 +256,7 @@ query {
 ```
 {% /multicode %}
 
-## Permissions {% #permissions %}
+# Permissions {% #permissions %}
 In Appwrite, permissions can be granted at the collection level and the document level.
 Before a user can create a document, you need to grant create permissions to the user.
 

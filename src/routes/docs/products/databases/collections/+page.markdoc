@@ -8,7 +8,7 @@ The terms collections and documents are used because the Appwrite JSON REST API 
 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions. 
 
-## Create collection
+# Create collection
 You can create collections using the Appwrite Console or a [Server SDK](/docs/sdks#server).
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -225,7 +225,7 @@ You can also configure **permissions** in the `createCollection` method, learn m
 {% /tabsitem %}
 {% /tabs %}
 
-## Permissions {% #permissions %}
+# Permissions {% #permissions %}
 Appwrite uses permissions to control data access.
 For security, only users that are granted permissions can access a resource. 
 This helps prevent accidental data leaks by forcing you to make more concious decisions around permissions.
@@ -235,7 +235,7 @@ This means users can't create new documents or read, update, and delete existing
 
 [Learn about configuring permissions](/docs/products/databases/permissions).
 
-## Attributes {% #attributes %}
+# Attributes {% #attributes %}
 All documents in a collection follow the same structure.
 Attributes are used to define the structure of your documents and help the Appwrite's API validate your users' input. 
 Add your first attribute by clicking the **Add attribute** button. 
@@ -258,7 +258,7 @@ If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value. 
 Additionally, decide if the attribute should be a single value or an array of values.
 
-## Indexes {% #indexes %}
+# Indexes {% #indexes %}
 
 Databases use indexes to quickly locate data without having to search through every document for matches. 
 To ensure the best performance, Appwrite recommends an index for every attribute queried. 
