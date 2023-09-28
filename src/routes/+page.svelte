@@ -10,6 +10,7 @@
 	import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
 	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
 
 	const platforms: Array<{
 		name: string;
@@ -91,6 +92,7 @@
 	style:width="100vw"
 	style:height="100vh"
 	style:overflow="hidden"
+	class:aw-u-hide-mobile={$isMobileNavOpen}
 >
 	<div
 		class="u-position-absolute"
@@ -108,6 +110,7 @@
 <div
 	class="u-position-absolute aw-is-only-desktop"
 	style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
+	class:aw-u-hide-mobile={$isMobileNavOpen}
 >
 	<img src="/images/bgs/hero-lines-1.png" alt="" />
 </div>
@@ -115,6 +118,7 @@
 <div
 	class="u-position-absolute aw-is-only-desktop"
 	style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
+	class:aw-u-hide-mobile={$isMobileNavOpen}
 >
 	<img src="/images/bgs/hero-lines-2.png" alt="" />
 </div>
@@ -323,7 +327,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display aw-u-color-text-primary">Loved by our community</div>
+						<div class="aw-display aw-u-color-text-primary">Loved by developers like you</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
@@ -416,7 +420,7 @@
 					style:left="calc(50% - 384px + 350px)"
 				>
 					<img
-						src="/images/animations/tech.png"
+						src="/images/animations/tech-dark.png"
 						width="768"
 						height="768"
 						alt=""
@@ -424,7 +428,7 @@
 						use:fallback
 					/>
 					<spline-viewer
-						url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+						url="/images/animations/dark-scene.splinecode"
 						width="768"
 						height="768"
 						use:viewer
@@ -484,9 +488,7 @@
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
-							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
-								We scale for you and your users
-							</h2>
+							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">We scale for you</h2>
 						</section>
 						<ul
 							class="aw-big-list-info u-margin-inline-start-auto aw-u-inline-width-100-percent-mobile-break1 aw-u-margin-block-start-48"

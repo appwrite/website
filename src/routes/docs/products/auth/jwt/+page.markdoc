@@ -1,7 +1,7 @@
 ---
 layout: article
 title: JWT login
-description: This is the description used for SEO.
+description: Integrate Appwrite's authentication into your server-side applications. Explore server integrations, best practices, and security considerations for seamless authentication.
 ---
 
 You can extend Appwrite's APIs by building backend apps using [Server SDKs](/docs/sdks#server). To secure your backend app's APIs, client apps must prove their identity against your backend app before accessing sensitive information. You can secure these APIs and enforce access permissions in your backend app by using JWT authentication.

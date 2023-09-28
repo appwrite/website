@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Order
-description: This is the description used for SEO.
-difficulty: intermediate
-readtime: 5
+description: Understand how to do data ordering in Appwrite Databases. Learn how to order and sort your database records for efficient data retrieval."
 ---
 
 You can order results returned by Appwrite Databases by using an order query. 

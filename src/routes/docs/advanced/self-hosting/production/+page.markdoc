@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Production
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Optimize self-hosted Appwrite for production environments. Learn how to fine-tune performance, security, and scalability for your production deployments.
 ---
 
 Appwrite's default setup is designed to help you start building with Appwrite quickly. To succeed with Appwrite in a production environment, you should follow a few basic concepts and best practices. This document assumes you have some basic understanding of Docker and Docker Compose command-line tools.

@@ -140,7 +140,7 @@
 
 								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
 									<span class="aw-kbd" aria-label="command">⌘</span>
-									<span class="aw-kbd">k</span>
+									<span class="aw-kbd">K</span>
 								</div>
 							</button>
 						</div>
@@ -152,7 +152,7 @@
 								target="_blank"
 								class="aw-button is-text"
 							>
-								<span class="aw-icon-star" aria-hidden="true"></span>
+								<span class="aw-icon-star" aria-hidden="true" />
 								<span class="text">Star on GitHub</span>
 								<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
 							</a>

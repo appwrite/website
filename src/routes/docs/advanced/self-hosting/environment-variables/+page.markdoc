@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Environment variables
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Customize the behavior of your self-hosted Appwrite instance to your unique needs. Customize SMTP, sms, functions, S3 adaptor, database, and other behaiors.
 ---
 
 

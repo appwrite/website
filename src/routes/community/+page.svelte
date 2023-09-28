@@ -6,6 +6,7 @@
 	import { Carousel } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import FloatingHeads from '$lib/components/FloatingHeads.svelte';
 
 	const title = 'Community' + TITLE_SUFFIX;
 	const description = '';
@@ -31,17 +32,27 @@
 
 <Main>
 	<div class="aw-big-padding-section">
-		<div class="aw-big-padding-section-level-1">
+		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+			<div
+				class="u-position-absolute aw-u-hide-mobile"
+				style:inline-size="704px"
+				style:block-size="670px"
+				style:z-index="-1"
+				style:left="calc((50% - 704px / 2) + 18rem)"
+				style:top="-4rem"
+			>
+				<img src="/images/community/sphere.png" alt="" />
+			</div>
 			<div class="aw-big-padding-section-level-2">
-				<section class="aw-container aw-u-padding-block-end-0">
+				<section class="aw-container aw-u-padding-block-end-0 u-position-relative">
 					<div class="aw-hero is-align-start aw-u-max-width-580">
 						<h1 class="aw-display aw-u-color-text-primary">
 							Built by a community of 700+ contributors
 						</h1>
 						<div class="">
 							<p class="aw-description">
-								Inspire and get inspired. Join our community of maintainers and contributors and
-								help us make Appwrite better for developers worldwide.
+								Inspire and get inspired. Join Appwrite's community of maintainers and contributors
+								and help us make Appwrite better for developers worldwide.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
 								<a href="/discord" target="_blank" class="aw-button is-full-width-mobile">
@@ -117,7 +128,21 @@
 			</div>
 		</div>
 
-		<div class="aw-big-padding-section-level-1">
+		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+			<FloatingHeads
+				images={[
+					'/images/avatars/sara.png',
+					'/images/avatars/eldad.png',
+					'/images/avatars/arman.png',
+					'/images/avatars/aditya.png',
+					'/images/avatars/caio.png',
+					'/images/avatars/torsten.png',
+					'/images/avatars/christy.png',
+					'/images/avatars/dylan.png',
+					'/images/avatars/kushboo.png',
+					'/images/avatars/may.png'
+				]}
+			/>
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-900">
@@ -187,13 +212,17 @@
 									<tbody class="aw-table-line-body">
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5232</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+													<a
+														href="https://github.com/appwrite/appwrite/issues/5232"
+														target="_blank"
+														class="aw-link aw-sub-body-500"
 													>
+														Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline
+													</a>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -211,13 +240,18 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#5748</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+													<a
+														href="https://github.com/appwrite/appwrite/issues/5748"
+														target="_blank"
+														class="aw-link aw-sub-body-500"
 													>
+														Feature: overload Feature for Storage.CreateFile for using Blob instead
+														of File
+													</a>
 													<span>(appwrite/appwrite)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
@@ -235,14 +269,18 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#680</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+													<a
+														href="https://github.com/appwrite/sdk-generator/issues/680"
+														target="_blank"
+														class="aw-link aw-sub-body-500"
 													>
-													<span>(appwrite/appwrite)</span>
+														Feature: Unit Tests
+													</a>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>
@@ -259,14 +297,19 @@
 										</tr>
 										<tr class="aw-table-line-row">
 											<td class="aw-table-line-cell u-un-break-text">
-												<span class="aw-caption-400">#24</span>
+												<span class="aw-caption-400">#679</span>
 											</td>
 											<td class="aw-table-line-cell">
 												<div>
-													<span class="aw-sub-body-500 aw-u-color-text-accent-click"
-														>Create a Helm Chart for Appwrite</span
+													<a
+														href="https://github.com/appwrite/sdk-generator/issues/679"
+														target="_blank"
+														class="aw-link aw-sub-body-500"
 													>
-													<span>(appwrite/appwrite)</span>
+														Feature: overload Feature for Storage.CreateFile for using Blob instead
+														of File
+													</a>
+													<span>(appwrite/sdk-generator)</span>
 												</div>
 												<ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8">
 													<li>

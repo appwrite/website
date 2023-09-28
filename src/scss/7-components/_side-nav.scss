@@ -18,7 +18,7 @@
 
 
   position:sticky; z-index:35; inset-block-start:pxToRem(74); inset-block-end:0;
-  block-size:calc(100vh - pxToRem(81));
+  block-size:calc(100vh - pxToRem(160)); block-size:calc(100dvh - pxToRem(81));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
 
 
@@ -82,6 +82,7 @@
 
   &-mobile-footer-buttons { display:none; }
   @media #{$break1} {
+    &-open { overflow:hidden; }
     &-wrapper { padding-inline:0; }
     &-mobile-footer-buttons {
       display:flex; flex-direction:column; gap:pxToRem(8);

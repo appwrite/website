@@ -5,6 +5,7 @@
 	export let title: string;
 	export let toc: Array<TocItem>;
 	export let currentStep: number;
+	export let back: string;
 
 	export let tutorials: Array<Tutorial>;
 
@@ -28,7 +29,9 @@
 					<slot name="metadata" />
 				</ul>
 				<div class="u-position-relative u-flex u-cross-center">
-					<button
+					{#if back}
+					<a
+						href={back}
 						class="
 						aw-button is-text is-only-icon aw-u-cross-center aw-u-size-40
 						u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
@@ -38,7 +41,8 @@
 							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
 							aria-hidden="true"
 						/>
-					</button>
+					</a>
+					{/if}
 					<h1 class="aw-title">{title}</h1>
 				</div>
 			</div>
@@ -71,7 +75,8 @@
 
 			<section class="aw-content-footer">
 				<header class="aw-content-footer-header u-cross-center">
-					<!-- <div class="aw-content-footer-header-start u-cross-center">
+					<div class="aw-content-footer-header-start u-cross-center">
+					<!-- 
 						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
 						<div class="u-flex u-gap-8">
 							<input
@@ -87,15 +92,16 @@
 								name="happy"
 							/>
 						</div>
-					</div> -->
+					-->
+					</div>
 					<div class="aw-content-footer-header-end">
 						<ul class="aw-metadata aw-caption-400">
-							<li>Last updated: July 16, 2023</li>
+							<li>Last updated on September 27, 2023</li>
 							<li>
-								<button class="u-flex u-gap-4 u-cross-baseline">
+								<a href="https://github.com/appwrite/website" target="_blank" class="aw-link u-flex u-gap-4 u-cross-baseline">
 									<span class="icon-pencil-alt u-contents" aria-hidden="true" />
 									<span>Update on GitHub</span>
-								</button>
+								</a>
 							</li>
 						</ul>
 					</div>

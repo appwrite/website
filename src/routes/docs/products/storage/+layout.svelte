@@ -42,7 +42,7 @@
 					href: '/docs/products/storage/upload-download'
 				},
 				{
-					label: 'Images',
+					label: 'Image transformations',
 					href: '/docs/products/storage/images'
 				},
 			]

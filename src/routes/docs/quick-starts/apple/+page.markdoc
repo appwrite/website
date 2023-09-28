@@ -1,17 +1,18 @@
 ---
 layout: article
 title: Start with Apple
-description: Learn how to quickly integrate Appwrite products and services into your Apple project.
+description: Build iOS apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
-readtime: 3
+readtime: 10
+back: /docs/quick-starts
 ---
 
-Learn to setup your first Apple project powered by Appwrite.
+Learn to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).
 
 {% section #step-1 step=1 title="Create Apple project" %}
 Open Xcode and click **Create a new Xcode project**.
 
-Choose your desired project template and click **Next**.
+Choose your desired project template, for example **iOS App**,  and click **Next**.
 
 Now enter your app **product name** and **bundle identifier** and click **Next**. You will need both of these values later when you create your project in the Appwrite console.
 
@@ -22,7 +23,12 @@ Choose a directory for your project in and click **Create** to create your proje
 {% section #step-2 step=2 title="Create Appwrite project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an accout and create your first project.
 
@@ -30,7 +36,12 @@ Then, under **Add a platform**, add an **Apple app**. Choose any of **iOS**, **m
 
 Add your app's **product name** and **bundle identifier**, your bundle identifier is the one entered when creating an Xcode project. For existing projects, you should use the **bundle identifier** from your project files **Identity** section.
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -47,7 +58,7 @@ When dependency resolution is complete, click **Add Package** again to add the S
 
 In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
 
-```plist
+```xml
 <key>CFBundleURLTypes</key>
 <array>
 <dict>
@@ -80,8 +91,12 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 {% section #step-4 step=4 title="Create Appwrite Singleton" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
-
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 Create a new file `Appwrite.swift` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 
 ```swift

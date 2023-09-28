@@ -1,9 +1,7 @@
 ---
 layout: article
 title: Upload and download
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 15
+description: Effortlessly upload and download files with Appwrite Storage. Learn how to handle file uploads, manage file versions, and ensure secure downloads in your applications.
 ---
 
 You can upload and download files both programmatically using SDKs or through the Appwrite Console.

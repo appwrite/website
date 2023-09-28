@@ -1,21 +1,25 @@
 ---
 layout: article
-title: Quick Start
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+title: Start with Functions
+description: Get started quickly with Appwrite Functions. Follow a step-by-step guide to create your first serverless function, define triggers, and execute code.
 ---
 You can create and execute your first Appwrite Function in minutes.
 
-## Create function  {% #create-function %} 
+# Create function {% #create-function %} 
 
 Before deploying your function with Git, create a new function attached to your Git repository.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/quick-start/dark/create-function.png)
+{% /only_dark %}
+{% only_light %}
+![Create function screen](/images/docs/functions/quick-start/create-function.png)
+{% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
 2. Click **Create function**.
 3. Under **Connect Git repository**, select your provider.
 4. After connecting to GitHub, under **Quick start**, select a starter template.
-![Starter templates](/images/docs/functions/quick-start/starter-template.png)
 5. Follow the step-by-step wizard and create the function.
 6. The function will be created and a build will begin. Once the build completes, you'll have created your first function.
 
@@ -23,13 +27,21 @@ You can find the code used by the starter template in your newly created Git rep
 Each push to your Git repo will trigger a new deployment.
 
 ## Execute {% #execute %} 
+You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execution).
+The easiest way to execute your first function is to use the Appwrite Console.
+
+{% only_dark %}
+![Execution-screen](/images/docs/functions/quick-start/dark/function-execution.png)
+{% /only_dark %}
+{% only_light %}
+![Execution-screen](/images/docs/functions/quick-start/function-execution.png)
+{% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-1. Under the **Deployments** tab, click **Execute now**.
+1. Under the **Executions** tab, click **Execute now**.
 1. Click **Execute** to execute the starter template function.
-1. You'll be redirected to the **Execution** tab automatically.
 1. Wait for the execution to be marked **completed** and click to view the execution logs.
-![Starter templates](/images/docs/functions/quick-start/starter-template-results.png)
+
 
 # Explore
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.

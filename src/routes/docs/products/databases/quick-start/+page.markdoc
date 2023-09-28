@@ -1,9 +1,7 @@
 ---
 layout: article
-title: Quick start
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 10
+title: Start with Databases
+description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define collections, and perform basic data operations.
 ---
 
 {% section #create-database step=1 title="Create database" %}
