@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 
 	const title = 'Assets' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
