@@ -155,7 +155,7 @@
 
 
 			<button class="aw-button">
-				<span class="text">Get Started</span>
+				<span class="text">Get started</span>
 				<span class="aw-inline-tag aw-sub-body-400">99.9k</span>
 			</button>
 
@@ -259,7 +259,7 @@
 				<span class="text">Sign Up</span>
 			</button>
 			<button class="aw-button">
-				<span class="text">Get Started</span>
+				<span class="text">Get started</span>
 			</button>
 		</div>
 		<div class="u-flex u-gap-8">
@@ -287,7 +287,7 @@
 				<span class="text">Sign Up</span>
 			</button>
 			<button class="aw-button" disabled>
-				<span class="text">Get Started</span>
+				<span class="text">Get started</span>
 			</button>
 		</div>
 		<div>[TEMP stuff]</div>

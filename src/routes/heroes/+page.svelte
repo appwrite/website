@@ -47,7 +47,7 @@
 								leader in our developer community.
 							</p>
 							<button class="aw-button is-secondary is-full-width-mobile u-margin-block-start-32">
-								<span class="text">Become a hero</span>
+								<span class="text">Become a Hero</span>
 							</button>
 						</div>
 					</div>

@@ -153,7 +153,7 @@
 								href="https://cloud.appwrite.io"
 								class="aw-button is-full-width-mobile u-margin-block-start-32"
 							>
-								<span class="text">Get Started</span>
+								<span class="text">Get started</span>
 							</a>
 						</div>
 					</div>
