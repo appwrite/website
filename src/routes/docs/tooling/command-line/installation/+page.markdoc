@@ -6,13 +6,13 @@ description: Get started with the Appwrite CLI by following the installation gui
 
 The [Appwrite CLI](https://github.com/appwrite/sdk-for-cli) is a command-line application that allows you to interact with the [Appwrite server](https://appwrite.io/docs/getting-started-for-server) and perform server-side tasks using your terminal. This includes creating and managing projects, managing resources (documents, files, users), creating and deploying Appwrite Functions, and other operations available through Appwrite's API.
 
-## Installation {% #Installation %}
+# Installation {% #Installation %}
 
 The CLI is packaged both as an  [npm module](https://www.npmjs.com/package/appwrite-cli)  as well as a  [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest)  for your operating system, making it completely dependency free, platform independent and language agnostic.
 
 If you plan to use the CLI to initialize new Appwrite Functions, ensure that  [Git is installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  on your machine.
 
-### Install with npm {% #install-with-npm %}
+## Install with npm {% #install-with-npm %}
 
 If you have npm set up, run the command below to install the CLI.
 
@@ -20,7 +20,7 @@ If you have npm set up, run the command below to install the CLI.
 npm install -g appwrite-cli
 ```
 
-### Install with script {% #install-with-script %}
+## Install with script {% #install-with-script %}
 
 For a completely dependency-free installation, the CLI also ships with a convenient installation script for your operating system
 
@@ -56,7 +56,7 @@ curl -sL https://appwrite.io/cli/install.sh | bash
 {% /tabsitem %}
 {% /tabs %}
 
-### Verify installation {% #verify-installation %}
+## Verify installation {% #verify-installation %}
 
 After the installation is complete, you can verify the Appwrite CLI is available by checking its version number.
 
@@ -64,7 +64,7 @@ After the installation is complete, you can verify the Appwrite CLI is available
 appwrite -v
 ```
 
-## Get started {% #get-started %}
+# Get started {% #get-started %}
 
 Before you can use the CLI, you need to login to your Appwrite account using
 
@@ -87,7 +87,7 @@ appwrite client --selfSigned true
 {% /info %}
 
 
-### Next steps {% #next-steps %}
+## Next steps {% #next-steps %}
 
 You can use the CLI to create and deploy functions and collections. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
 
@@ -101,7 +101,7 @@ You can choose to use the CLI in a headless and non-interactive mode without the
 
 [Learn more about CI mode](/docs/tooling/command-line/non-interactive)
 
-## Help {% #help %}
+# Help {% #help %}
 
 If you get stuck anywhere, you can always use the `help` command to get the usage examples.
 
@@ -109,7 +109,7 @@ If you get stuck anywhere, you can always use the `help` command to get the usag
 appwrite help
 ```
 
-## Configuration {% #configuration %}
+# Configuration {% #configuration %}
 
 At any point, if you would like to change your server's endpoint, project ID, or self-signed certificate acceptance, use the `client` command.
 
@@ -121,7 +121,7 @@ appwrite client --reset // Resets your CLI configuration
 appwrite client --debug // Prints your current configuration
 ```
 
-## Uninstall {% #uninstall %}
+# Uninstall {% #uninstall %}
 
 If you installed Appwrite CLI using NPM, you can use the following command to uninstall it.
 

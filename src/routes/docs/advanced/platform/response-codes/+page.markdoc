@@ -10,7 +10,7 @@ Appwrite uses conventional HTTP response codes to indicate the success or failur
 - Codes in the `4xx` range indicate an error caused by invalid request, usually caused by user error.
 - Codes in the `5xx` range indicate an error with Appwrite, please check Docker container logs.
 
-## Response codes {% #response-codes %}
+# Response codes {% #response-codes %}
 | Code | Text                   | Description                                                                                                                                                                                    |
 |------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 200  | OK                     | Success!                                                                                                                                                                                       |
@@ -32,7 +32,7 @@ Appwrite uses conventional HTTP response codes to indicate the success or failur
 | 503  | Service Unavailable    | The Appwrite servers are up but overloaded with requests. Try again later.                                                                                                                      |
 | 504  | Gateway timeout        | The Appwrite servers are up, but the request couldn't be serviced due to some failure within the stack. Try again later.                                                                       |
 
-## Error messages {% #error-messages %}
+# Error messages {% #error-messages %}
 
 When the Appwrite APIs return error messages, it does so in JSON format. For example, an error might look like this:
 
@@ -44,7 +44,7 @@ When the Appwrite APIs return error messages, it does so in JSON format. For exa
 }
 ```
 
-## Error types {% #error-types %}
+# Error types {% #error-types %}
 
 Appwrite also passes convenient error types in addition to the HTTP response codes to help you get more fine-grained control over what went wrong and allowing you to display relevant error messages in your applications. Error types are convenient to identify the type of error that occurred.
 

@@ -6,7 +6,7 @@ description: Customize your Appwrite platform with custom domains. Learn how to 
 
 Appwrite custom domains allows you to use your own domain as your Appwrite API endpoint. 
 
-## Third-party cookies  {% 3rd-party-cookies %}
+# Third-party cookies {% #third-party-cookies %}
 A recent change made in modern browsers will not allow your web app to use 3rd-party cookies. 
 This change is done to protect your users' privacy from malicious web tracking services.
 
@@ -17,7 +17,7 @@ as a fallback Appwrite will store your users' sessions on the browser localStora
 Using localStorage is very convenient to help you get started quickly with Appwrite, but it is not the best practice for your users' security. 
 The browser localStorage can't protect your users' sessions from being hijacked by a 3rd party script or an XSS vulnerability in your web app.
 
-## Appwrite API endpoint {% endpoint %}
+# Appwrite API endpoint {% #endpoint %}
 To prevent your browser from blocking your cookies, your Appwrite API endpoint should be set to under same domain of your web app's domain.
 When accessing Appwrite from the same domain as the one your app uses, 
 Appwrite cookies will no longer be treated as 3rd-party cookies by any browser and will store your users' sessions securely.
@@ -26,7 +26,7 @@ For example, if your app runs on [my-app.com](https://my-app.com),
 you can set the subdomain [appwrite.my-app.com](https://appwrite.my-app.com) to access the Appwrite API. 
 This will allow browsers to respect the Appwrite sessions cookies as they are set on the same domain as your app.
 
-## Add a custom domain {% domain %}
+# Add a custom domain {% #domain %}
 
 1. Go to the Appwrite Console and navigate to your project.
 2. Click on the **Settings** tab in the left sidebar.
@@ -39,7 +39,7 @@ With these steps, your Appwrite project will accept API requests from your custo
 
 If you encounter any issues during the setup process or have questions, don't hesitate to [contact us](/contact-us), and we'll be happy to assist you.
 
-## Add a CNAME record {% #cname-record %}
+# Add a CNAME record {% #cname-record %}
 
 A [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) (or a Canonical Name record) is a type of resource record in the Domain Name System (DNS), which maps one domain name (an alias) to another.
 

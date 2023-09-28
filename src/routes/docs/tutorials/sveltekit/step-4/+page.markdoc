@@ -5,7 +5,7 @@ description: Add Appwrite authentication to you Svlete app using your Svelte sto
 step: 4
 ---
 
-## Using stores
+# Using stores
 
 In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to share state and changes between components. 
 We'll use a store to keep track of our user's data.
@@ -54,7 +54,7 @@ export const user = {
 };
 ```
 
-## Login page
+# Login page
 
 Using this store, we can build a login page.
 

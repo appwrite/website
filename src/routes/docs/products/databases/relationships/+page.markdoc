@@ -13,25 +13,25 @@ These types of association between entities can be modeled in Appwrite using rel
 Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
 {% /info %}
 
-## Relationship Attributes {% #relationship-attributes %}
+# Relationship Attributes {% #relationship-attributes %}
 
 Relationships are represented in a collection using **relationship attributes**. 
 The relationship attribute contains the ID of related documents, which it references during read, update, and delete operations. 
 This attribute is **null** if a document has no related documents.
 
-## When to use a relationship {% #when-to-use-relationships %}
+# When to use a relationship {% #when-to-use-relationships %}
 
 Relationships help reduce redundant information. For example, a user can create many posts in your app. You can model this without relationships by keeping a copy of the user's information in all the documents representing posts, but this creates a lot of duplicate information in your database about the user.
 
-## Benefits of relationships {% #benefit-of-relationships %}
+# Benefits of relationships {% #benefit-of-relationships %}
 
 Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in databases. You can avoid duplicate information by storing users and posts in separate collections and relating a user and their posts through a relationship.
 
-## Tradeoff {% #trade-offs %}
+# Tradeoff {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
 
-## Directionality {% #directionality %}
+# Directionality {% #directionality %}
 
 Appwrite relationships can be one-way or two-way.
 
@@ -40,7 +40,7 @@ Appwrite relationships can be one-way or two-way.
 | One-way  | The relationship is only visible to one side of the relation. This is similar to a tree data structure.            |
 | Two-way  | The relationship is visible to both sides of the relationship. This is similar to a graph data structure.         |
 
-## Types {% #types %}
+# Types {% #types %}
 
 Appwrite provides four different relationship types to enforce different associative rules between documents.
 
@@ -52,7 +52,7 @@ Appwrite provides four different relationship types to enforce different associa
 | Many-to-many| A document can be related to many other documents.                      |
 
 
-## On-delete {% #on-delete %}
+# On-delete {% #on-delete %}
 
 Appwrite also allows you to define the behavior of a relationship when a document is deleted.
 
@@ -62,7 +62,7 @@ Appwrite also allows you to define the behavior of a relationship when a documen
 | Cascade    | If a document has related documents, when it is deleted, the related documents are also deleted.|
 | Set null   | If a document has related documents, when it is deleted, the related documents are kept with their relationship attribute set to null.|
 
-## Creating relationships {% #create-relationships %}
+# Creating relationships {% #create-relationships %}
 You can define relationships in the Appwrite Console, or using a [Server SDK](/docs/sdks#server)
 
 {% tabs %}
@@ -290,7 +290,7 @@ await databases.CreateRelationshipAttribute(
 {% /tabsitem %}
 {% /tabs %}
 
-## Creating documents {% #create-documents %}
+# Creating documents {% #create-documents %}
 If a collection has relationship attributes, you can create documents in two ways.
 You create both parent and child at the same time using a **nested** syntax or link parent and child documents through **references***.
 
@@ -398,7 +398,7 @@ databases.createDocument(
 ```
 {% /multicode %}
 
-### Edge case behaviors
+## Edge case behaviors
 - If a nested child document is included and **no child document ID** is provided, the child document will be given a unique ID.
 - If a nested child document is included and **no conflicting child document ID** exists, the child document will be **created**.
 - If a nested child document is included and the **child document ID already exists**, the child document will be **updated**.
@@ -509,10 +509,10 @@ databases.createDocument(
 {% /tabsitem %}
 {% /tabs %}
 
-## Queries {% #queries %}
+# Queries {% #queries %}
 Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
 
-## Update Relationships {% #update %}
+# Update Relationships {% #update %}
 Relationships can be updated by updating the relationship attribute.
 
 {% multicode %}
@@ -615,8 +615,8 @@ databases.updateDocument(
 
 {% /multicode %}
 
-## Delete relationships {% #delete %}
-### Unlink relationships, retain documents {% #unlink %}
+# Delete relationships {% #delete %}
+## Unlink relationships, retain documents {% #unlink %}
 
 If you need to unlink documents in a relationship but retain the documents, you can do this by **updating the relationship attribute** and removing the ID of the related document.
 
@@ -624,7 +624,7 @@ If a document can be related to **only one document**, you can delete the relati
 
 If a document can be related to **more than one document**, you can delete the relationship by setting the relationship attribute to an empty list.
 
-### Delete relationships and documents {% #delete-both %}
+## Delete relationships and documents {% #delete-both %}
 
 If you need to delete the documents as well as unlink the relationship, the approach depends on the [on-delete behavior](#on-delete) of a relationship.
 
@@ -704,7 +704,7 @@ databases.deleteDocument(
 
 Certainly, here is the content with the headings modified to the requested format:
 
-## Permissions {% #permissions %}
+# Permissions {% #permissions %}
 
 To access documents in a relationship, you must have permission to access both the parent and child documents.
 
@@ -830,7 +830,7 @@ databases.createDocument(
 When creating, updating, or deleting in a relationship, you must have permission to access all documents referenced. 
 If the user does not have read permission to any document, an exception will be thrown.
 
-## Limitations {% #limitations %}
+# Limitations {% #limitations %}
 
 Relationships can be nested between collections, but are restricted to a **max depth of three levels**. 
 Relationship attribute key, type, and directionality can't be updated. 

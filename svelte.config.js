@@ -41,6 +41,11 @@ const config = {
 	extensions: ['.markdoc', '.svelte', '.md'],
 	kit: {
 		adapter,
+		files: {
+			hooks: {
+				server: isVercel ? undefined : './src/hooks/server.ts',
+			}
+		},
 		alias: {
 			$routes: './src/routes',
 			$scss: './src/scss',

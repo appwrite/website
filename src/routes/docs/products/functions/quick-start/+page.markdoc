@@ -5,7 +5,7 @@ description: Get started quickly with Appwrite Functions. Follow a step-by-step 
 ---
 You can create and execute your first Appwrite Function in minutes.
 
-### Create function  {% #create-function %} 
+# Create function {% #create-function %} 
 
 Before deploying your function with Git, create a new function attached to your Git repository.
 
@@ -26,7 +26,7 @@ Before deploying your function with Git, create a new function attached to your 
 You can find the code used by the starter template in your newly created Git repository. 
 Each push to your Git repo will trigger a new deployment.
 
-### Execute {% #execute %} 
+## Execute {% #execute %} 
 You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execution).
 The easiest way to execute your first function is to use the Appwrite Console.
 
@@ -43,7 +43,7 @@ The easiest way to execute your first function is to use the Appwrite Console.
 1. Wait for the execution to be marked **completed** and click to view the execution logs.
 
 
-## Explore
+# Explore
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
 | Explore                                                                 |                                                    |
