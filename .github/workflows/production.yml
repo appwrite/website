@@ -59,6 +59,6 @@ jobs:
             echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
             echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
 
-            echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ env.REGISTRY_USERNAME }} --password-stdin
+            echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login --username ${{ env.REGISTRY_USERNAME }} --password-stdin ghcr.io
             docker-compose -f ${{ env.STACK_FILE }} config
             env $(cat .env | xargs) docker stack deploy --prune --resolve-image always --with-registry-auth -c ${{ env.STACK_FILE }} ${{ env.REPOSITORY }}
