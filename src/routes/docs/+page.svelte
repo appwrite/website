@@ -5,11 +5,11 @@
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import Sidebar from './Sidebar.svelte';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { TITLE_SUFFIX } from '$routes/titles';
 
 	const title = 'Docs' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
