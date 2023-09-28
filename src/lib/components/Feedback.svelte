@@ -12,7 +12,7 @@
 	async function handleSubmit() {
 		submitting = true;
 		error = undefined;
-		const response = await fetch('https://stage.growth.appwrite.io/v1/feedback/docs', {
+		const response = await fetch('https://growth.appwrite.io/v1/feedback/docs', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
