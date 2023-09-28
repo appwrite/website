@@ -169,8 +169,11 @@
 
 <style lang="scss">
 	#open-source {
-		height: 1500px;
+		height: 1000px;
 		position: relative;
+		@media (min-width: 1920px) {
+			height: 1200px;
+		}
 	}
 
 	.sticky-wrapper {
