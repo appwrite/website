@@ -10,6 +10,9 @@ body {
 
 	color: hsl(var(--p-body-text-color)) !important;
 	background-color: hsl(var(--p-body-bg-color));
+}
+
+.#{$p}-main-section {
 	overflow-x:hidden;
 }
 
