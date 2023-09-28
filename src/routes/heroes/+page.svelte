@@ -746,5 +746,19 @@
 				</div>
 			</div>
 		</div>
-	</div></Main
->
+	</div>
+</Main>
+
+<style lang="scss">
+	.aw-scroll-carousel li {
+		animation: marquee 15s linear infinite;
+		@keyframes marquee {
+			0% {
+				transform: translate(0, 0);
+			}
+			100% {
+				transform: translate(-100%, 0);
+			}
+		}
+	}
+</style>
