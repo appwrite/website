@@ -131,15 +131,15 @@
 		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
 			<FloatingHeads
 				images={[
-					'/images/avatars/sara.png',
-					'/images/avatars/eldad.png',
-					'/images/avatars/arman.png',
-					'/images/avatars/aditya.png',
-					'/images/avatars/caio.png',
+					'/images/community/avatars/1.png',
+					'/images/community/avatars/2.png',
 					'/images/avatars/torsten.png',
-					'/images/avatars/christy.png',
-					'/images/avatars/dylan.png',
-					'/images/avatars/kushboo.png',
+					'/images/community/avatars/3.png',
+					'/images/avatars/jade.png',
+					'/images/community/avatars/4.png',
+					'/images/community/avatars/5.png',
+					'/images/avatars/haimantika.png',
+					'/images/community/avatars/6.png',
 					'/images/avatars/may.png'
 				]}
 			/>
