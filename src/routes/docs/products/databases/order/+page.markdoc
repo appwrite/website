@@ -9,7 +9,7 @@ readtime: 5
 You can order results returned by Appwrite Databases by using an order query. 
 For best performance, create an [index](/docs/products/databases/collections#indexes) on the column you plan to order by.
 
-## Ordering one column {% #one-column %}
+# Ordering one column {% #one-column %}
 
 When querying using the [listDocuments](/docs/references/cloud/client-web/databases#listDocuments) endpoint, 
 you can specify the order of the documents returned using the `Query.orderAsc()` and `Query.orderDesc()` query methods.
@@ -126,7 +126,7 @@ query {
 
 {% /multicode %}
 
-## Multiple columns {% #multiple-columns %}
+# Multiple columns {% #multiple-columns %}
 To sort based on multiple attributes, simply provide multiple query methods.
 For better performance, create an index on the first attribute that you order by.
 

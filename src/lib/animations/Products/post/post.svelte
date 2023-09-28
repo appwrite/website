@@ -211,8 +211,11 @@
 			content: '';
 			inset: 0;
 			position: absolute;
-			background: #19191d;
-			filter: blur(125px);
+			//background: #19191d; // old bg
+			//filter: blur(125px); // break Safari
+			background: #19191dcc;
+			filter: blur(67px);
+
 		}
 
 		h3 {

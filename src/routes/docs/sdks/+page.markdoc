@@ -8,7 +8,7 @@ Appwrite provides SDK libraries for major programming languages and platforms so
 
 We're always working on improving and extending the current stack of available platforms and SDKs, listed below is a list of official libraries the Appwrite team is maintaining.
 
-## Client {% #client %}
+# Client {% #client %}
 
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
@@ -43,7 +43,7 @@ Client libraries for integrating with Appwrite to build client-based application
 * 
 {% /table %}
 
-## Server {% #server %}
+# Server {% #server %}
 
 Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick starts](/docs/quick-starts) guides for your language/runtime of choice to start building your first server integration.
 
@@ -110,7 +110,7 @@ Server libraries for integrating with Appwrite to build server side integrations
 
 If you would like to help us extend our platforms and SDKs stack, you are more than welcome to contact us or check out our Appwrite SDK Generator project GitHub repository and read our contribution guide.
 
-## Protocols {% #protocols %}
+# Protocols {% #protocols %}
 We are always looking to add new SDKs to our platform. If the SDK you are looking for is still missing, labeled as beta or experimental, or you simply do not want to integrate with an SDK, you can always integrate with Appwrite directly using any standard HTTP, GraphQL, or WebSocket clients and the relevant Appwrite protocol.
 
 Appwrite supports multiple API protocols for maximum flexibility and developer convenience. You can learn more about how to integrate directly with them using one of the following available guides:
@@ -121,7 +121,7 @@ Appwrite supports multiple API protocols for maximum flexibility and developer c
 
 [Integrate with the Appwrite GraphQL API {% icon icon="cheveron-right" /%}](/docs/apis/graphql)
 
-## Community {% #community %}
+# Community {% #community %}
 If you have created your own framework or any other technology specific integration and would like us to list it here please [contact us](/contact-us).
 
 If you would like to help us extend the Appwrite SDKs stack, you are more than welcome to check out the Appwrite [SDK Generator](https://github.com/appwrite/sdk-generator) project on GitHub and read our [contribution guide](https://github.com/appwrite/sdk-generator/blob/master/CONTRIBUTING.md).

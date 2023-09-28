@@ -73,16 +73,16 @@
 				}
 			]
 		},
-		{
-			label: 'Debugging',
-			items: [
-				{
-					icon: 'icon-document-search',
-					label: 'Response codes',
-					href: '/docs/advanced/platform/response-codes'
-				}
-			]
-		}
+		// {
+		// 	label: 'Debugging',
+		// 	items: [
+		// 		{
+		// 			icon: 'icon-document-search',
+		// 			label: 'Response codes',
+		// 			href: '/docs/advanced/platform/response-codes'
+		// 		}
+		// 	]
+		// }
 	] as NavTree;
 
 	const parent: NavParent = {
