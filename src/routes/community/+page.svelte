@@ -172,7 +172,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero is-align-start">
-						<h2 class="aw-display aw-u-color-text-primary">Get Involved</h2>
+						<h2 class="aw-display aw-u-color-text-primary">Get involved</h2>
 						<div class="">
 							<p class="aw-description">
 								With every contribution, Appwrite gets better for all of us. Start contributing
