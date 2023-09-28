@@ -4,6 +4,7 @@ title: Start with Vue.js
 description: Build Vue.js apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 3
+back: /docs/quick-starts
 ---
 
 Learn to setup your first Vue project powered by Appwrite.

@@ -2,6 +2,9 @@
 layout: article
 title: Start with Node.js
 description: Dive into our step-by-step guide on integrating Appwrite with your Node.js server backend application. Get your backend up and running quickly with this tutorial.
+difficulty: beginner
+readtime: 5
+back: /docs/quick-starts
 ---
 Learn to setup your first Node.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

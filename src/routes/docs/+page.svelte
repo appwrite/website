@@ -294,7 +294,6 @@
 						<a
 							class="aw-grid-articles-item is-full-color"
 							href="/docs/tutorials/react"
-							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="aw-grid-articles-item-image">
@@ -321,7 +320,6 @@
 						<a
 							class="aw-grid-articles-item is-full-color"
 							href="/docs/tutorials/sveltekit"
-							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="aw-grid-articles-item-image">
@@ -348,7 +346,6 @@
 						<a
 							class="aw-grid-articles-item is-full-color"
 							href="/docs/tutorials/vue"
-							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="aw-grid-articles-item-image">
@@ -375,7 +372,6 @@
 						<a
 							class="aw-grid-articles-item is-full-color"
 							href="/docs/tutorials/android"
-							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="aw-grid-articles-item-image">
@@ -402,7 +398,6 @@
 						<a
 							class="aw-grid-articles-item is-full-color"
 							href="/docs/tutorials/flutter"
-							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="aw-grid-articles-item-image">
