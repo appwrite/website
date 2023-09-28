@@ -35,9 +35,22 @@
 	let results: Hits<Props> = [];
 
 	async function search(value: string) {
-		return index.search(value, {
-			limit: 20
-		});
+		return index
+			.search(value, {
+				limit: 20
+			})
+			.then((n) => {
+				return {
+					...n,
+					hits: n.hits.map((h) => {
+						const url = h.url.replace('https://website-appwrite.vercel.app', '');
+						return {
+							...h,
+							url
+						};
+					})
+				};
+			});
 	}
 
 	async function handleInput(value: string) {
@@ -57,7 +70,7 @@
 
 	function createHref(hit: Hit<Props>): string {
 		const anchor = hit.anchor === '#' ? '' : hit.anchor ?? '';
-		const target = new URL(hit.url + anchor);
+		const target = hit.url + anchor;
 
 		return target.toString();
 	}
@@ -147,7 +160,11 @@
 		<div
 			class="aw-input-text-search-wrapper aw-u-max-width-680 aw-u-margin-inline-20 u-width-full-line"
 		>
-			<span class="aw-icon-search u-z-index-5" aria-hidden="true" style="inset-block-start:0.9rem" />
+			<span
+				class="aw-icon-search u-z-index-5"
+				aria-hidden="true"
+				style="inset-block-start:0.9rem"
+			/>
 			<div id="searchbox" />
 
 			<!-- svelte-ignore a11y-autofocus -->
@@ -178,7 +195,7 @@
 												data-hit={i}
 												href={createHref(hit)}
 												use:arrowKeyFocus
-												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-8 aw-padding-inline-12  aw-u-cross-start u-max-width-100-percent"
+												class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-8 aw-padding-inline-12 aw-u-cross-start u-max-width-100-percent"
 											>
 												<div class="aw-u-trim-1">
 													<span class="aw-u-color-text-secondary">{hit.h1}</span>
