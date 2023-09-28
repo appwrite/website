@@ -7,7 +7,7 @@ readtime: 10
 back: /docs/quick-starts
 ---
 
-Learn to setup your first Flutter project powered by Appwrite.
+Learn how to setup your first Flutter project powered by Appwrite.
 
 {% section #step-1 step=1 title="Create Flutter project" %}
 Create a Flutter project.

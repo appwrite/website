@@ -97,10 +97,10 @@
 					scale: 'Unlimited'
 				},
 				{
-					title: 'Appwrite branding on emails',
-					free: true,
-					pro: '-',
-					scale: '-'
+					title: 'No Appwrite branding on emails',
+					free: '-',
+					pro: true,
+					scale: true
 				},
 				{
 					title: 'Webhooks',
