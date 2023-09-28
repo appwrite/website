@@ -333,13 +333,18 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="x" target="_blank" aria-label="GitHub profile">
+											<a href="https://github.com/safwanyp/" target="_blank" aria-label="GitHub profile">
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="x" target="_blank" aria-label="X profile">
+											<a href="https://twitter.com/debingalooo" target="_blank" aria-label="X profile">
 												<span class="aw-icon-x" aria-hidden="true" />
+											</a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/in/safwanyp/" target="_blank" aria-label="LinkedIn profile">
+												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
 									</ul>
