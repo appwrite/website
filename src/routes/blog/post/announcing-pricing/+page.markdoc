@@ -15,14 +15,14 @@ Now let's dive in.
 
 # Building for the future
 
-As part of our mission to make software more accessible, we wanted to make sure our pricing compliments that mission but also enable us to have the resources to continue building a strong company that can reach new levels. We have put a lot of effort into creating Appwrite's pricing that aligns with our values, transparency, ambition, and simplicity.
+As part of our mission to make software more accessible, we wanted to make sure our pricing complements that mission but also enables us to have the resources to continue building a strong company that can reach new levels. We have put a lot of effort into creating Appwrite's pricing that aligns with our values, transparency, ambition, and simplicity.
 
 # Value framework
 
 We created a set of principles to guide us through the pricing process. We like to call this the “Value Framework” as it focuses on delivering the maximum value to our users without compromising on the affordability and accessibility of our products and services.
 
 - Equally plan for being accessible to all and our continued growth.
-- Make adoption easy and ensure the developer's growth and success matches pricing.
+- Make adoption easy and ensure the developer's growth and success match pricing.
 - The developer's success helps Appwrite grow and deliver better products.
 - Features should be consistent across tiers unless they are clearly focused on enterprise.
 - Focus on value based profit. Limits should generally be applied to usage. Not functionality.
@@ -58,5 +58,5 @@ One thing we cannot dismiss is our OSS program. We strongly believe in helping o
 # Next steps
 This is a big step forward for Appwrite and the community and we are excited to see the response to our plans. The coming weeks we will work hard on making our pricing available, but until then developers can continue to build on Appwrite free of charge.
 
-- [Review the pricing comparsion](/pricing)
+- [Review the pricing comparison](/pricing)
 - [Sign up for Cloud in beta](https://cloud.appwrite.io/)
