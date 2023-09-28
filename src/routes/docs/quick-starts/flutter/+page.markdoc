@@ -3,7 +3,8 @@ layout: article
 title: Start with Flutter
 description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
-readtime: 3
+readtime: 10
+back: /docs/quick-starts
 ---
 
 Learn to setup your first Flutter project powered by Appwrite.

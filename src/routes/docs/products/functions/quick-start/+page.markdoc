@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Quick start
+title: Start with Functions
 description: Get started quickly with Appwrite Functions. Follow a step-by-step guide to create your first serverless function, define triggers, and execute code.
 ---
 You can create and execute your first Appwrite Function in minutes.
