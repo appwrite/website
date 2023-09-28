@@ -49,8 +49,9 @@
 	<header class="aw-content-footer-header u-width-full-line">
 		<div
 			class="aw-content-footer-header-start u-flex u-main-space-between u-cross-center u-width-full-line"
+			style="flex-wrap: wrap-reverse;"
 		>
-			<div class="u-flex u-gap-16">
+			<div class="u-flex u-gap-16 u-cross-center">
 				<h5 class="aw-main-body-600 aw-u-color-text-primary">Was this page helpful?</h5>
 				<div class="u-flex u-gap-8">
 					<button
