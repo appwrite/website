@@ -8,7 +8,7 @@ back: /docs/quick-starts
 ---
 
 
-Learn to setup your first Angular project powered by Appwrite.
+Learn how to setup your first Angular project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -163,5 +163,5 @@ export class AppComponent {
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-Run your project with `ng serve --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+Run your project with `ng serve --port 3000` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
 {% /section %}

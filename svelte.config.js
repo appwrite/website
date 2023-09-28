@@ -14,9 +14,7 @@ function absoulute(path) {
 
 const isVercel = process.env.VERCEL === '1';
 
-const adapter = isVercel ? staticAdapter({
-	fallback: 'index.html'
-}) : nodeAdapter();
+const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {

@@ -5,11 +5,11 @@
 	import PreFooter from '$lib/components/PreFooter.svelte';
 	import { Carousel } from '$lib/components';
 	import { TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import FloatingHeads from '$lib/components/FloatingHeads.svelte';
 
 	const title = 'Community' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -131,15 +131,15 @@
 		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
 			<FloatingHeads
 				images={[
-					'/images/avatars/sara.png',
-					'/images/avatars/eldad.png',
-					'/images/avatars/arman.png',
-					'/images/avatars/aditya.png',
-					'/images/avatars/caio.png',
+					'/images/community/avatars/1.png',
+					'/images/community/avatars/2.png',
 					'/images/avatars/torsten.png',
-					'/images/avatars/christy.png',
-					'/images/avatars/dylan.png',
-					'/images/avatars/kushboo.png',
+					'/images/community/avatars/3.png',
+					'/images/avatars/jade.png',
+					'/images/community/avatars/4.png',
+					'/images/community/avatars/5.png',
+					'/images/avatars/haimantika.png',
+					'/images/community/avatars/6.png',
 					'/images/avatars/may.png'
 				]}
 			/>
@@ -172,7 +172,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero is-align-start">
-						<h2 class="aw-display aw-u-color-text-primary">Get Involved</h2>
+						<h2 class="aw-display aw-u-color-text-primary">Get involved</h2>
 						<div class="">
 							<p class="aw-description">
 								With every contribution, Appwrite gets better for all of us. Start contributing
@@ -192,7 +192,7 @@
 							<div>
 								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
 								<p class="aw-main-body-500 u-margin-block-start-4">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									Anyone can join and help Appwrite become better.
 								</p>
 								<button class="aw-button is-secondary u-margin-block-start-32">
 									<span class="aw-icon-github" aria-hidden="true" />
@@ -380,7 +380,7 @@
 							<div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
 								<div class="aw-sub-body-500 aw-u-color-text-primary">Helping others</div>
 								<div class="aw-sub-body-400">
-									Support community members with their projects and contributions.
+									Support developers with their projects and contributions.
 								</div>
 							</div>
 						</li>
