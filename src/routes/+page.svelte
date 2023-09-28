@@ -323,7 +323,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-hero">
-						<div class="aw-display aw-u-color-text-primary">Loved by our community</div>
+						<div class="aw-display aw-u-color-text-primary">Loved by developers like you</div>
 					</div>
 					<ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
 						<li>
@@ -416,7 +416,7 @@
 					style:left="calc(50% - 384px + 350px)"
 				>
 					<img
-						src="/images/animations/tech.png"
+						src="/images/animations/tech-dark.png"
 						width="768"
 						height="768"
 						alt=""
@@ -424,7 +424,7 @@
 						use:fallback
 					/>
 					<spline-viewer
-						url="https://prod.spline.design/0WfvducTgy5c8aVi/scene.splinecode"
+						url="/images/animations/dark-scene.splinecode"
 						width="768"
 						height="768"
 						use:viewer
@@ -485,7 +485,7 @@
 						<section class="aw-hero is-align-start">
 							<span class="aw-badges aw-eyebrow">Scale_</span>
 							<h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
-								We scale for you and your users
+								We scale for you
 							</h2>
 						</section>
 						<ul

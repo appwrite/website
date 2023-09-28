@@ -1,7 +1,7 @@
 ---
 layout: article
 title: API keys
-description: Placeholder SEO.
+description: Secure your application with Appwrite API Keys. Discover how to create and manage API keys to control access and enhance your application's security.
 ---
 
 API keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) and the Appwrite CLI to prove their identity.
@@ -13,6 +13,13 @@ API keys should be treated as a secret. Never share the API key and keep API key
 {% /info %}
 
 # Create API key {% #create-api-key %}
+
+{% only_dark %}
+![Project settings screen](/images/docs/platform/dark/create-api-key.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/platform/create-api-key.png)
+{% /only_light %}
 
 To create a new API key, navigate to **Overview** > **Integration** > **API keys** and click **Create API key**.
 

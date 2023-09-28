@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Add authentication
-description: This is the description used for SEO.
+description: Add authentication to your Vue application using Appwrite Web SDK.
 step: 4
 ---
 

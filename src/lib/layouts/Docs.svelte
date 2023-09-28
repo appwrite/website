@@ -140,7 +140,7 @@
 
 								<div class="u-flex u-gap-4 u-margin-inline-start-auto">
 									<span class="aw-kbd" aria-label="command">⌘</span>
-									<span class="aw-kbd">k</span>
+									<span class="aw-kbd">K</span>
 								</div>
 							</button>
 						</div>

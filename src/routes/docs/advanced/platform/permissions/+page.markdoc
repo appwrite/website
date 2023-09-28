@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Permissions
-description: Placeholder SEO.
+description: Enhance data security and access control with Appwrite platform permissions. Learn how to set fine-grained permissions to protect user data and resources.
 ---
 
 Appwrite's permission mechanism offers a simple, yet flexible way to manage which users, teams, or roles can access a specific resource in your project, such as documents and files.
@@ -14,23 +14,23 @@ All permissions can be granted to individuals or groups of users, entire teams, 
 
 A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](/docs/sdks#server) to achieve this functionality.
 
-# Appwrite Resource
+# Appwrite resource {% #appwrite-resource %}
 
 An Appwrite resource can be a database, collection, document, bucket, or file. Each resource has its own set of permissions to define who can interact with it.
 
 Using the Appwrite permissions mechanism, you can grant resource access to users, teams, and members with different roles.
 
-# Default Values
+# Default values {% #default-values %}
 
 If you create a resource using a Server SDK or the Appwrite Console without explicit permissions, no one can access it by default because the permissions will be empty. If you create a resource using a Client SDK without explicit permissions, the creator will be granted read, update, and delete permissions on that resource by default.
 
-# Server Integration
+# Server integration {% #server-integration %}
 
 Server integrations can be used for increased flexibility. When using a Server SDK in combination with the proper [API key scopes](/docs/advanced/platform/api-keys#scopes), you can have any type of access to any of your project resources regardless of their permissions.
 
 Using the server integration flexibility, you can change resource permissions, share resources between different users and teams, or edit and delete them without any limitations.
 
-# Permission Types
+# Permission types {% #permission-types %}
 
 In Client and Server SDKs, you will find a **Permission** class with helper methods for each role described below:
 
@@ -42,7 +42,7 @@ In Client and Server SDKs, you will find a **Permission** class with helper meth
 | `Permission.delete()` | Access to remove a resource. Does not apply to functions. |
 | `Permission.write()` | Alias to grant create, update, and delete access for collections and buckets and update and delete access for documents and files. |
 
-# Permission Roles
+# Permission roles {% #permission-roles %}
 
 In Client and Server SDKs, you will find a **Role** class with helper methods for each role described below:
 
@@ -57,7 +57,7 @@ In Client and Server SDKs, you will find a **Role** class with helper methods fo
 | `Role.member([MEMBERSHIP_ID])` | Grants access to a specific member of a team. When the member is removed from the team, they will no longer have access. |
 | `Role.label([LABEL_ID])` | Grants access to all accounts with a specific label ID. Once the label is removed from the user, they will no longer have access. [Learn more about labels](/docs/products/auth/labels). |
 
-# Examples
+# Examples {% #examples %}
 
 The examples below will show you how you can use the different Appwrite permissions to manage access control to your project resources.
 
@@ -96,7 +96,7 @@ promise.then(function (response) {
 });
 ```
 
-## Example #2 - Team roles
+## Example #2 - Team roles {% #examples-2 %}
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 

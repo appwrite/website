@@ -1,10 +1,8 @@
 ---
 layout: tutorial
 title: Add navigation 
-description: This is the description used for SEO.
+description: Add navigation to your SvelteKit application with Appwrite authentication.
 step: 5
-difficulty: easy
-readtime: 10
 ---
 
 Create a layout component, used by all pages, to display a navbar. The navbar will show a login button if the user is not logged in, and a logout button if the user is logged in.
@@ -25,7 +23,7 @@ Create a new file `src/routes/+layout.svelte` and add the following code to it.
 </script>
 
 <nav>
-  <a href="/">Idea Tracker</a>
+  <a href="/">Idea tracker</a>
   {#if $user}
     <div>
       <span>{$user.email}</span>

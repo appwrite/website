@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Accounts
-description: This is the description used for SEO.
+description: Unlock advanced user management - Appwrite's Account API for seamless signups, store user preferences, and dynamic permissions.
 ---
 
 Appwrite Account API is used for user signup and login in client applications.
