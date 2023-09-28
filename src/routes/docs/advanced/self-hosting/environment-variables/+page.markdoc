@@ -19,7 +19,7 @@ You can verify if the changes have been successfully applied by running this com
 docker compose exec appwrite vars
 ```
 
-## General {% #general %}
+# General {% #general %}
 | Name | Description |
 |------|-------------|
 | `_APP_ENV` | Set your server running environment. By default, the var is set to 'development'. When deploying to production, change it to: 'production'. |
@@ -46,7 +46,7 @@ docker compose exec appwrite vars
 | `_APP_WORKER_PER_CORE` |  **(version >= 0.13.0)** Internal Worker per core for the API, Realtime and Executor containers. Can be configured to optimize performance. |
 
 
-## Redis {% #redis %}
+# Redis {% #redis %}
 Appwrite uses a Redis server for managing cache, queues and scheduled tasks. The Redis env vars are used to allow Appwrite server to connect to the Redis container.
 
 | Name                     | Description                                                                                           |
@@ -69,7 +69,7 @@ Appwrite is using a MariaDB server for managing persistent database data. The Ma
 | `_APP_DB_PASS`         | MariaDB server user password. Default value is: `password`.                                      |
 | `_APP_DB_ROOT_PASS`    | MariaDB server root password. Default value is: `rootsecretpassword`.                           |
 
-## InfluxDB {% #influxdb %}
+# InfluxDB {% #influxdb %}
 Appwrite uses an InfluxDB server for managing time-series data and server stats. The InfluxDB env vars are used to allow Appwrite server to connect to the InfluxDB container.
 
 | Name                  | Description                                                                                     |
@@ -78,7 +78,7 @@ Appwrite uses an InfluxDB server for managing time-series data and server stats.
 | `_APP_INFLUXDB_PORT`  | InfluxDB server TCP port. Default value is: `8086`.                                             |
 
 
-## StatsD {% #statsd %}
+# StatsD {% #statsd %}
 
 Appwrite uses a StatsD server for aggregating and sending stats data over a fast UDP connection. The StatsD env vars are used to allow Appwrite server to connect to the StatsD container.
 
@@ -88,7 +88,7 @@ Appwrite uses a StatsD server for aggregating and sending stats data over a fast
 | `_APP_STATSD_PORT`  | StatsD server TCP port. Default value is: `8125`.                                   |
 
 
-## SMTP {% #smtp %}
+# SMTP {% #smtp %}
 
 Appwrite is using an SMTP server for emailing your projects users and server admins. The SMTP env vars are used to allow Appwrite server to connect to the SMTP container.
 
@@ -103,14 +103,14 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_SMTP_PASSWORD`  | SMTP server user password. Empty by default.                                                                                                                     |
 
 
-## Phone {% #phone %}
+# Phone {% #phone %}
 
 | Name                                        | Description                                                                                                                                                                                                                         |
 |---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `_APP_SMS_PROVIDER`  | **version >= 0.15.0** Provider used for delivering SMS for Phone authentication. Use the following format: 'sms://[USER]:[SECRET]@[PROVIDER]'.<br>Ensure `[USER]` and `[SECRET]` are URL encoded if they contain any non-alphanumeric characters.<br>Available providers are twilio, text-magic, telesign, msg91, and vonage. |
 | `_APP_SMS_FROM`  | **version >= 0.15.0** Phone number used for sending out messages. Must start with a leading '+' and maximum of 15 digits without spaces (+123456789).                                                                                                      |
 
-## Storage {% #storage %}
+# Storage {% #storage %}
 
 | Name                                        | Description                                                                                                                                                                                                                         |
 |---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -135,7 +135,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_STORAGE_LINODE_ACCESS_KEY`            | **version >= 0.14.2** Linode object storage access key. Required when the storage adapter is set to Linode. You can get your access key from your Linode console.                                                                  |
 | `_APP_STORAGE_LINODE_SECRET`                | **version >= 0.14.2** Linode object storage secret key. Required when the storage adapter is set to Linode
 
-## Functions {% #functions %}
+# Functions {% #functions %}
 | **Name**                      | **Description** |
 |-------------------------------|-----------------|
 | `_APP_FUNCTIONS_SIZE_LIMIT`   | **version >= 0.13.0** The maximum size deployment in bytes. The default value is 30MB. |
@@ -160,7 +160,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_DOCKER_HUB_PASSWORD`    | **version >= 1.2.0** The password for hub.docker.com. This variable is used to pull images from hub.docker.com. |
 | `_APP_FUNCTIONS_MAINTENANCE_INTERVAL`| **version >= 1.4.0** Interval value containing the number of seconds that the executor should wait before checking for inactive runtimes. The default value is 3600 seconds (1 hour). |
 
-## VCS (Version Control System) {% #vcs %}
+# VCS (Version Control System) {% #vcs %}
 
 | **Name**                        | **Description**                                                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -172,7 +172,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_VCS_GITHUB_WEBHOOK_SECRET`| **version >= 1.4.0** - GitHub webhook secret. You can configure it in your GitHub application settings under webhook section. |
 
 
-## Maintenance {% #maintenance %}
+# Maintenance {% #maintenance %}
 | **Name**                                        | **Description**                                                                                                                                                                    |
 |-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `_APP_MAINTENANCE_INTERVAL`                     | **version >= 0.7.0** - Interval value containing the number of seconds that the Appwrite maintenance process should wait before executing system cleanups and optimizations. The default value is `86400` seconds (1 day). |
@@ -183,7 +183,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_MAINTENANCE_RETENTION_USAGE_HOURLY`       | The maximum duration (in seconds) upto which to retain hourly usage metrics. The default value is `8640000` seconds (100 days).                                                      |
 | `_APP_MAINTENANCE_RETENTION_SCHEDULES`          | Schedules deletion interval (in seconds).                                                                                                                     |
 
-## GraphQL {% #graphql %}
+# GraphQL {% #graphql %}
 
 | **Name**                           | **Description**                                                                                                                                                     |
 |------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -191,13 +191,13 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_GRAPHQL_MAX_COMPLEXITY`      | **version >= 1.2.0** - Maximum complexity of a GraphQL query. One field adds one to query complexity. Lists multiply the complexity by the number of items requested. The default value is 250. |
 | `_APP_GRAPHQL_MAX_DEPTH`           | **version >= 1.2.0** - Maximum depth of a GraphQL query. One nested field level adds one to query depth. The default value is 3.                                    |
 
-## Migrations {% #migrations %}
+# Migrations {% #migrations %}
 | **Name**                                        | **Description**                                                                                         |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | `_APP_MIGRATIONS_FIREBASE_CLIENT_ID`            | **version >= 1.4.0** - Google OAuth client ID. You can find it in your GCP application settings.        |
 | `_APP_MIGRATIONS_FIREBASE_CLIENT_SECRET`        | **version >= 1.4.0** - Google OAuth client secret. You can generate secrets in your GCP application settings. |
 
-## Assistant {% #assistant %}
+# Assistant {% #assistant %}
 | **Name**                               | **Description**                                                         |
 |----------------------------------------|-------------------------------------------------------------------------|
 | `_APP_ASSISTANT_OPENAI_API_KEY`        | **version >= 1.4.0** - OpenAI API key. You can find it in your OpenAI application settings. |

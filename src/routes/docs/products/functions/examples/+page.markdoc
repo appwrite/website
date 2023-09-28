@@ -13,7 +13,7 @@ Appwrite Functions is all about flexibility. Behind the simple workflow hides so
 
 Here's a currency conversion API that converts from Euros and Indian Rupees to US Dollars. We'll use an external API to get the latest exchange rates and query it using a dependency specific to each runtime.
 
-### Prerequisites
+## Prerequisites
 
 {% tabs %}
 {% tabsitem #node title="Node.js" %}
@@ -106,7 +106,7 @@ Finally, add `bundle install` to your function's build commands in the Appwrite 
 {% /tabs %}
 
 
-### Code
+## Code
 {% multicode %}
 ```js
 import { fetch } from 'undici';
@@ -238,7 +238,7 @@ end
 
 Here's a simple voting system that allows users to vote on various topics. Appwrite Functions and the server SDK are used to enforce voting rules and prevent multiple votes from the same user for a single topic.
 
-### Prerequisites
+## Prerequisites
 
 Create a Topics collection with the following attributes:
 
@@ -256,7 +256,7 @@ Create a Votes collection with the following attributes:
 | `vote`        | string | The vote cast by the user. Must be either "yes" or "no" |
 
 
-### Code
+## Code
 {% multicode %}
 ```js
 import { Client, Databases, Query } from 'node-appwrite';
@@ -500,7 +500,7 @@ For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes`
 Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection. 
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
-### Prerequisites
+## Prerequisites
 Create a Messages collection with the following attributes:
 
 | Name       | Type   | Description                      |
@@ -509,7 +509,7 @@ Create a Messages collection with the following attributes:
 | `email`    | string | The email of the message author  |
 | `content`  | string | The content of the message       |
 
-### Code 
+## Code 
 
 {% multicode %}
 
