@@ -118,13 +118,26 @@ function getParameters(
 		}
 	} else {
 		const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
-		const schema = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
-		for (const [key, value] of Object.entries(schema?.properties ?? {})) {
+		const schemaJson = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
+		const schemaMultipart = requestBody?.content['multipart/form-data']?.schema as OpenAPIV3.SchemaObject;
+		
+		// TODO: make this pretty
+		for (const [key, value] of Object.entries(schemaJson?.properties ?? {})) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
 				name: key,
 				description: property.description ?? '',
-				required: schema?.required?.includes(key) ?? false,
+				required: schemaJson?.required?.includes(key) ?? false,
+				type: property.type ?? '',
+				example: property['x-example'] ?? ''
+			});
+		}
+		for (const [key, value] of Object.entries(schemaMultipart?.properties ?? {})) {
+			const property = value as AppwriteSchemaObject;
+			parameters.push({
+				name: key,
+				description: property.description ?? '',
+				required: schemaMultipart?.required?.includes(key) ?? false,
 				type: property.type ?? '',
 				example: property['x-example'] ?? ''
 			});
