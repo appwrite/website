@@ -19,9 +19,9 @@
 			},
 			body: JSON.stringify({
 				email,
-				comment,
 				type: feedbackType,
-				route: $page.route.id
+				route: $page.route.id,
+				comment
 			})
 		});
 		submitting = false;
