@@ -578,26 +578,6 @@
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Gilad Engel</h6>
 							<p class="aw-main-body-500">Angel Investor</p>
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-								<!-- <li>
-									<a
-										href="https://github.com/"
-										class="aw-icon-button"
-										aria-label=" on aGithub"
-										target="_blank"
-									>
-										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -615,16 +595,6 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<!-- <li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -641,16 +611,6 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<!-- <li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -668,16 +628,6 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<!-- <li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -695,16 +645,6 @@
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
 								</li>
-								<!-- <li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="u-flex-vertical">
@@ -712,16 +652,6 @@
 							<p class="aw-main-body-500">Co-Founder</p>
 							<p class="aw-main-body-500">Elastic</p>
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-								<!-- <li>
-									<a
-										href="https://github.com/"
-										class="aw-icon-button"
-										aria-label=" on aGithub"
-										target="_blank"
-									>
-										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li> -->
 								<li>
 									<a
 										href="https://twitter.com/uboness"
