@@ -29,7 +29,7 @@
       > * {transition:var(--transition); }
     }
 
-    &-content { display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12); }
+    &-content {flex:1; display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12); }
 
     &:where(:hover, :focus) {
       .#{$p}-grid-articles-item {

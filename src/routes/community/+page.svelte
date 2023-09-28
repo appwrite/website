@@ -419,7 +419,7 @@
 									<p class="aw-sub-body-500">
 										Join us for an exciting hour of technical conversations around Appwrite.
 									</p>
-									<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+									<div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 										<button class="aw-button is-secondary">
 											<span>View event</span>
 										</button>
@@ -460,7 +460,7 @@
 									<p class="aw-sub-body-500">
 										Pluck is going mobile. Join us in building Pluck.io's Flutter app.
 									</p>
-									<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+									<div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 										<button class="aw-button is-secondary">
 											<span>View event</span>
 										</button>
@@ -497,7 +497,7 @@
 									<p class="aw-sub-body-500">
 										Join us for our Hacktoberfest kickoff event in Bengaluru.
 									</p>
-									<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+									<div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 										<button class="aw-button is-secondary">
 											<span>View event</span>
 										</button>
@@ -535,7 +535,7 @@
 										Join us for a month long celebration of open source in collaboration with
 										DigitalOcean.
 									</p>
-									<div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+									<div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 										<button class="aw-button is-secondary">
 											<span>View event</span>
 										</button>
