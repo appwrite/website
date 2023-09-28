@@ -146,8 +146,7 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite is the open-source development platform where you can build any application
-								at any scale, using the coding languages and tools you want.
+								Appwrite's open-source development platform lets you build any application at any scale, own your data, and use your preferred coding languages and tools.
 							</p>
 							<a
 								href="https://cloud.appwrite.io"
