@@ -192,7 +192,7 @@
 							<div>
 								<h3 class="aw-label aw-u-color-text-primary">Check our Open Issues</h3>
 								<p class="aw-main-body-500 u-margin-block-start-4">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									Anyone can join and help Appwrite become better.
 								</p>
 								<button class="aw-button is-secondary u-margin-block-start-32">
 									<span class="aw-icon-github" aria-hidden="true" />
