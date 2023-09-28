@@ -64,7 +64,7 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$0</div>
 											<div class="u-margin-block-start-4 u-opacity-0">per user/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
-												For personal passion projects and students.
+												For students and hobby projects.
 											</p>
 											<a
 												href="https://cloud.appwrite.io/register"
