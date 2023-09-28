@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="post-wrapper">
-		<img class="¸" src="/images/products/post.png" alt="" />
+		<img src="/images/products/post.png" alt="" />
 		<div class="img-overlay" />
 
 		<h2>See your products grow</h2>
