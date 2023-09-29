@@ -36,6 +36,7 @@
 
 	function reset() {
 		comment = email = '';
+		feedbackType = '';
 		submitted = false;
 		error = undefined;
 	}
