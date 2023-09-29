@@ -1,5 +1,6 @@
 <script lang="ts">
 	let email = '';
+	let name = '';
 	let submitted = false;
 	let error: string | undefined;
 	let submitting = false;
@@ -8,22 +9,22 @@
 		submitting = true;
 		error = undefined;
 
-		const response = await fetch('https://growth.appwrite.io/v1/newsletter/verify', {
+		const response = await fetch('https://growth.appwrite.io/v1/newsletter/subscribe', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
+				name,
 				email
 			})
 		});
-
-		console.log(response);
 		submitting = false;
 		if (response.status >= 400) {
 			error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
 			return;
 		}
+
 		submitted = true;
 	}
 </script>
@@ -79,32 +80,53 @@
 				<div class="aw-grid-1-1-opt-2 u-gap-32">
 					<div class="">
 						<div class="aw-u-max-inline-size-none-mobile" class:aw-u-max-width-380={!submitted}>
-							{#if submitted}
-								<section class="u-flex-vertical aw-u-gap-20">
-									<h1 class="aw-u-color-text-primary">Thank you for your message</h1>
-									<p class="aw-description aw-u-padding-block-end-32">
-										Your message has been sent successfully. We appreciate your feedback, our team
-										will try to get back to you as soon as possible.
-									</p>
-									<a href="/" class="aw-button is-secondary aw-u-margin-block-end-32">
-										<span>Back to homepage</span>
-									</a>
-								</section>
-							{:else}
-								<section class="u-flex-vertical aw-u-gap-20">
-									<h1 class="aw-u-color-text-primary">Subscribe to our newsletter</h1>
-									<p class="aw-description aw-u-padding-block-end-40">
-										Sign up to our company blog and get the latest insights from Appwrite. Learn
-										more about engineering, product design, building community, and tips & tricks
-										for using Appwrite.
-									</p>
-								</section>
-							{/if}
+							<section class="u-flex-vertical aw-u-gap-20">
+								<h1 class="aw-title aw-u-color-text-primary">Subscribe to our newsletter</h1>
+								<p class="aw-description aw-u-padding-block-end-40">
+									Sign up to our company blog and get the latest insights from Appwrite. Learn more
+									about engineering, product design, building community, and tips & tricks for using
+									Appwrite.
+								</p>
+							</section>
 						</div>
 					</div>
-					{#if !submitted}
+					{#if submitted}
+						<div class="u-flex u-gap-8 u-cross-center">
+							<svg
+								width="18"
+								height="18"
+								viewBox="0 0 18 18"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<circle
+									cx="9"
+									cy="9"
+									r="8"
+									fill="#FD366E"
+									fill-opacity="0.08"
+									stroke="#FD366E"
+									stroke-opacity="0.32"
+									stroke-width="1.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M5.25 10.5L7.75 12.5L12.75 6"
+									stroke="#E4E4E7"
+									stroke-width="1.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+
+							<span class="text">
+								Thank you for subscribing! An email has been sent to your inbox.
+							</span>
+						</div>
+					{:else}
 						<form method="post" on:submit|preventDefault={submit} class="u-flex-vertical u-gap-16">
-							<div>
+							<div class="u-flex u-flex-vertical u-gap-4">
 								<label for="name">Your name</label>
 								<input
 									class="aw-input-text"
@@ -113,10 +135,10 @@
 									id="name"
 									name="name"
 									required
-									bind:value={email}
+									bind:value={name}
 								/>
 							</div>
-							<div>
+							<div class="u-flex u-flex-vertical u-gap-4">
 								<label for="email">Your email</label>
 								<input
 									class="aw-input-text"
@@ -129,6 +151,9 @@
 								/>
 							</div>
 							<button type="submit" class="aw-button" disabled={submitting}>Sign up</button>
+							{#if error}
+								<span class="text"> Something went wrong. Please try again later. </span>
+							{/if}
 						</form>
 					{/if}
 				</div>
@@ -136,48 +161,6 @@
 		</div>
 	</div>
 </div>
-
-<!-- <div class="aw-grid-1-1-opt-2 u-gap-32">
-	<div class="aw-hero aw-u-max-width-800">
-		<h5 class="aw-display aw-u-color-text-primary u-text-start">Subscribe to our newsletter</h5>
-		<p class="aw-description aw-u-color-text-primary u-text-start" style="opacity:0.64">
-			Sign up to our company blog and get the latest insights from Appwrite. Learn more about
-			engineering, product design, building community, and tips & tricks for using Appwrite.
-		</p>
-	</div>
-	<div>
-		{#if submitted}
-			test
-		{:else}
-			<form
-				class="u-width-full-line aw-u-max-width-380 u-flex u-flex-vertical u-gap-8"
-				on:submit|preventDefault={submit}
-			>
-				<label for="name"> Your name</label>
-				<input
-					class="aw-input-text"
-					type="text"
-					placeholder="Enter your name"
-					id="name"
-					name="name"
-					required
-					bind:value={email}
-				/>
-				<label for="name"> Your email</label>
-				<input
-					class="aw-input-text"
-					type="email"
-					placeholder="Enter your email"
-					required
-					id="email"
-					name="email"
-					bind:value={email}
-				/>
-				<button type="submit" class="aw-button" disabled={submitting}>Sign up</button>
-			</form>
-		{/if}
-	</div>
-</div> -->
 
 <style lang="scss">
 	.pre-footer-bg {
