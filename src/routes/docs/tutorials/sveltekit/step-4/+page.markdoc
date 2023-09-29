@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Add authentication
-description: Add Appwrite authentication to you Svlete app using your Svelte store.
+description: Add Appwrite authentication to you Svelte app using your Svelte store.
 step: 4
 ---
 
