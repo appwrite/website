@@ -1,51 +1,35 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
+    import { onMount } from 'svelte';
+    import { writable } from 'svelte/store';
+    import type { SplineViewer } from '@splinetool/viewer';
+    import { fade } from 'svelte/transition';
 
-	let loaded = writable(false);
+    export let url: SplineViewer['url'];
+    export let width: SplineViewer['width'] = undefined;
+    export let height: SplineViewer['height'] = undefined;
+    export let loading: SplineViewer['loading'] = 'auto';
 
-	type SplineElement = HTMLElement & {
-		_loaded: boolean;
-	};
+    let loaded = writable(false);
+    let spline: SplineViewer;
 
-	function isSplineElement(el: HTMLElement): el is SplineElement {
-		return '_loaded' in el;
-	}
+    onMount(async () => {
+        await import('@splinetool/viewer');
+        const onLoad = () => {
+            spline.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
 
-	const viewer = (node: HTMLElement) => {
-		if (!isSplineElement(node)) {
-			throw new Error('Spline element not found');
-		}
+            setTimeout(() => {
+                loaded.set(true);
+            }, 150);
+        };
 
-		const onLoad = () => {
-			loaded.set(true);
-			node.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
-		};
-
-		node?.addEventListener('load-complete', onLoad);
-
-		if (node._loaded) {
-			onLoad();
-		}
-
-		return {
-			destroy() {
-				node?.removeEventListener('load-complete', onLoad);
-			}
-		};
-	};
-
-	const fallback = (node: HTMLElement) => {
-		const destroy = loaded.subscribe((l) => {
-			if (!l) return;
-			setTimeout(() => {
-				node?.style.setProperty('display', 'none');
-			}, 150);
-		});
-
-		return {
-			destroy
-		};
-	};
+        spline.addEventListener('load-complete', onLoad);
+    });
 </script>
 
-<slot {viewer} {fallback} />
+<spline-viewer style="position: absolute;" {url} {width} {height} {loading} bind:this={spline} />
+
+{#if $$slots?.default && !$loaded}
+    <div out:fade={{duration: 50}}>
+        <slot />
+    </div>
+{/if}
