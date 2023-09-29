@@ -196,14 +196,17 @@
 					<section id="">
 						<p>
 							We use in our site
-							<a href="https://appwrite.io/" target="_blank">Appwrite (https://appwrite.io/)</a> ("<b>Site</b
-							>") cookies and similar files or technologies to automatically collect and store
-							information about your computer, device, and Site usage, in order to improve their
-							performance and enhance your user experience. We use the general term "<b>cookies</b>"
-							in this policy to refer to these technologies and all such similar technologies that
-							collect information automatically when you are using our Site where this policy is
-							posted. You can find out more about cookies and how to control them in the information
-							below.
+							<a href="https://appwrite.io/" target="_blank" rel="noopener noreferrer"
+								>Appwrite (https://appwrite.io/)</a
+							>
+							("<b>Site</b>") cookies and similar files or technologies to automatically collect and
+							store information about your computer, device, and Site usage, in order to improve
+							their performance and enhance your user experience. We use the general term "<b
+								>cookies</b
+							>" in this policy to refer to these technologies and all such similar technologies
+							that collect information automatically when you are using our Site where this policy
+							is posted. You can find out more about cookies and how to control them in the
+							information below.
 						</p>
 						<p>
 							If you do not accept the use of these cookies, please disable them using the
@@ -214,7 +217,7 @@
 						<p>
 							In this Cookies Policy, we use the term Appwrite (and "we", "us" and "our") to refer
 							to Appwrite Code Ltd. Our Privacy Policy is available at
-							<a href="https://appwrite.io/policy/privacy" target="_blank"
+							<a href="https://appwrite.io/policy/privacy" target="_blank" rel="noopener noreferrer"
 								>Appwrite Privacy Policy (https://appwrite.io/policy/privacy)</a
 							>.
 						</p>
@@ -1015,58 +1018,74 @@
 								<li>
 									<a
 										href="https://support.google.com/chrome/answer/95647?hl=en&ref_topic=14666"
-										target="_blank">Cookie settings in Chrome</a
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Chrome</a
 									>
 									and
-									<a href="https://support.google.com/chrome/answer/95647?hl=en" target="_blank"
-										>Chrome mobile</a
+									<a
+										href="https://support.google.com/chrome/answer/95647?hl=en"
+										target="_blank"
+										rel="noopener noreferrer">Chrome mobile</a
 									>
 								</li>
 								<li>
 									<a
 										href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer?redirectlocale=en-US&redirectslug=Cookies"
-										target="_blank">Cookie settings in Firefox</a
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Firefox</a
 									>
 									and
 									<a
 										href="https://support.mozilla.org/en-US/kb/clearing-cookies-private-data-history-and-settings"
-										target="_blank">Firefox mobile</a
+										target="_blank"
+										rel="noopener noreferrer">Firefox mobile</a
 									>
 								</li>
 								<li>
 									<a
 										href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d#ie=ie-10"
-										target="_blank">Cookie settings in Internet Explorer</a
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Internet Explorer</a
 									>
 									and
 									<a
 										href="https://support.microsoft.com/en-gb/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
-										target="_blank">Microsoft Edge</a
+										target="_blank"
+										rel="noopener noreferrer">Microsoft Edge</a
 									>
 								</li>
 								<li>
 									<a
 										href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac"
-										target="_blank">Cookie settings in Safari</a
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Safari</a
 									>
 									and
-									<a href="https://support.apple.com/en-gb/HT201265" target="_blank"
-										>Safari mobile</a
+									<a
+										href="https://support.apple.com/en-gb/HT201265"
+										target="_blank"
+										rel="noopener noreferrer">Safari mobile</a
 									>
 								</li>
 								<li>
-									<a href="https://support.apple.com/en-gb/HT201265" target="_blank"
-										>Cookie settings in iOS</a
+									<a
+										href="https://support.apple.com/en-gb/HT201265"
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in iOS</a
 									>
 								</li>
 								<li>
-									<a href="https://help.opera.com/en/latest/web-preferences/" target="_blank"
-										>Cookie settings in Opera</a
+									<a
+										href="https://help.opera.com/en/latest/web-preferences/"
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Opera</a
 									>
 								</li>
 								<li>
-									<a href="https://support.apple.com/en-gb/safari" target="_blank"
-										>Cookie settings in Apple Safari</a
+									<a
+										href="https://support.apple.com/en-gb/safari"
+										target="_blank"
+										rel="noopener noreferrer">Cookie settings in Apple Safari</a
 									>
 								</li>
 							</ul>
@@ -1075,14 +1094,20 @@
 						<p>
 							If you use another browser, you can check if the procedure for your browser is
 							mentioned in
-							<a href="https://allaboutcookies.org/how-to-manage-cookies" target="_blank"
-								>this explanatory website</a
+							<a
+								href="https://allaboutcookies.org/how-to-manage-cookies"
+								target="_blank"
+								rel="noopener noreferrer">this explanatory website</a
 							>.
 						</p>
 
 						<p>
 							To opt out of being tracked by Google Analytics across all websites, visit
-							<a href="https://tools.google.com/dlpage/gaoptout" target="_blank">here</a>.
+							<a
+								href="https://tools.google.com/dlpage/gaoptout"
+								target="_blank"
+								rel="noopener noreferrer">here</a
+							>.
 						</p>
 					</section>
 					<section id="thirdCookies">
@@ -1107,51 +1132,89 @@
 								<li>
 									<a
 										href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0"
-										target="_blank">Facebook</a
+										target="_blank"
+										rel="noopener noreferrer">Facebook</a
 									>
 								</li>
 								<li>
-									<a href="https://twitter.com/en/privacy" target="_blank">Twitter</a>
+									<a href="https://twitter.com/en/privacy" target="_blank" rel="noopener noreferrer"
+										>Twitter</a
+									>
 								</li>
 								<li>
-									<a href="https://policies.google.com/privacy?hl=en-GB" target="_blank">Google</a>
+									<a
+										href="https://policies.google.com/privacy?hl=en-GB"
+										target="_blank"
+										rel="noopener noreferrer">Google</a
+									>
 								</li>
 								<li>
 									<a
 										href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
-										target="_blank">GitHub</a
+										target="_blank"
+										rel="noopener noreferrer">GitHub</a
 									>
 								</li>
 								<li>
-									<a href="https://betterstack.com/privacy" target="_blank">Betterstack</a>
-								</li>
-								<li>
-									<a href="https://legal.hubspot.com/privacy-policy" target="_blank">Hubspot</a>
-								</li>
-								<li>
-									<a href="https://www.shopify.com/legal/privacy" target="_blank">Shopify</a>
-								</li>
-								<li>
-									<a href="https://homerun.app/privacy-policy/" target="_blank">Homerun</a>
-								</li>
-								<li>
-									<a href="https://www.paypal.com/us/legalhub/privacy-full" target="_blank"
-										>Paypal</a
+									<a
+										href="https://betterstack.com/privacy"
+										target="_blank"
+										rel="noopener noreferrer">Betterstack</a
 									>
 								</li>
 								<li>
-									<a href="https://logrocket.com/privacy/" target="_blank">Logrocket</a>
-								</li>
-								<li>
-									<a href="https://www.linkedin.com/legal/privacy-policy" target="_blank"
-										>Linkedin</a
+									<a
+										href="https://legal.hubspot.com/privacy-policy"
+										target="_blank"
+										rel="noopener noreferrer">Hubspot</a
 									>
 								</li>
 								<li>
-									<a href="https://mixpanel.com/legal/privacy-policy" target="_blank">Mixpanel</a>
+									<a
+										href="https://www.shopify.com/legal/privacy"
+										target="_blank"
+										rel="noopener noreferrer">Shopify</a
+									>
 								</li>
 								<li>
-									<a href="https://dashboard.clearbit.com/privacy" target="_blank">Clearbit</a>
+									<a
+										href="https://homerun.app/privacy-policy/"
+										target="_blank"
+										rel="noopener noreferrer">Homerun</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.paypal.com/us/legalhub/privacy-full"
+										target="_blank"
+										rel="noopener noreferrer">Paypal</a
+									>
+								</li>
+								<li>
+									<a href="https://logrocket.com/privacy/" target="_blank" rel="noopener noreferrer"
+										>Logrocket</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.linkedin.com/legal/privacy-policy"
+										target="_blank"
+										rel="noopener noreferrer">Linkedin</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://mixpanel.com/legal/privacy-policy"
+										target="_blank"
+										rel="noopener noreferrer">Mixpanel</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://dashboard.clearbit.com/privacy"
+										target="_blank"
+										rel="noopener noreferrer">Clearbit</a
+									>
 								</li>
 							</ul>
 						</div>
@@ -1163,7 +1226,8 @@
 								If you would like to find out more about cookies and their use on the Internet, you
 								may find the following link useful: <a
 									href="https://allaboutcookies.org/"
-									target="_blank">All about cookies</a
+									target="_blank"
+									rel="noopener noreferrer">All about cookies</a
 								>.
 							</p>
 						</div>
@@ -1188,7 +1252,9 @@
 							<p>
 								If you have any questions or comments about this cookies policy, or privacy matters
 								generally, please contact us via email at
-								<a href="mailto:privacy@appwrite.io" target="_blank">privacy@appwrite.io</a>.
+								<a href="mailto:privacy@appwrite.io" target="_blank" rel="noopener noreferrer"
+									>privacy@appwrite.io</a
+								>.
 							</p>
 						</div>
 					</section>
