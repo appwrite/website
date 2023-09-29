@@ -39,19 +39,18 @@ sw.addEventListener('activate', (event) => {
 sw.addEventListener('fetch', async (event) => {
 	// ignore POST requests etc
 	if (event.request.method !== 'GET') return;
-    const url = new URL(event.request.url);
-    // ignore requests from protocols like chrome-extension
-    if (!url.protocol.startsWith('http')) return;
+	const url = new URL(event.request.url);
+	// ignore requests from protocols like chrome-extension
+	if (!url.protocol.startsWith('http')) return;
 
 	async function respond(url: URL): Promise<Response> {
 		const cache = await caches.open(CACHE);
 
-        if (url.protocol)
-
-		// `build`/`files` can always be served from the cache
-		if (ASSETS.includes(url.pathname)) {
-			return cache.match(url.pathname) as Promise<Response>;
-		}
+		if (url.protocol)
+			if (ASSETS.includes(url.pathname)) {
+				// `build`/`files` can always be served from the cache
+				return cache.match(url.pathname) as Promise<Response>;
+			}
 
 		// for everything else, try the network first, but
 		// fall back to the cache if we're offline
