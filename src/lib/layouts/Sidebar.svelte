@@ -102,6 +102,7 @@
 			<a
 				href="https://github.com/appwrite/appwrite/stargazers"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="aw-button is-text u-width-full-line"
 			>
 				<span class="aw-icon-star" aria-hidden="true" />

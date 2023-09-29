@@ -84,11 +84,7 @@
 								<div class="aw-social-item u-flex-vertical u-gap-24">
 									<div class="u-flex u-gap-16 u-main-space-between">
 										<div class="aw-user-box">
-											<img
-												class="aw-user-box-image"
-												src="images/heroes/avatars/diana.png"
-												alt=""
-											/>
+											<img class="aw-user-box-image" src="images/heroes/avatars/diana.png" alt="" />
 											<div class="aw-user-box-name aw-sub-body-500">Diana Pham</div>
 											<div class="aw-user-box-username aw-sub-body-400">Developer Advocate</div>
 										</div>
@@ -100,17 +96,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/dianapham" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/dianapham"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/dianasoyster" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/dianasoyster"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/dianasoyster" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/dianasoyster"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -140,17 +151,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/codewithsimon" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/codewithsimon"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/codewithsimon" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/codewithsimon"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/codewithsimon" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/codewithsimon"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -163,11 +189,7 @@
 								<div class="aw-social-item u-flex-vertical u-gap-24">
 									<div class="u-flex u-gap-16 u-main-space-between">
 										<div class="aw-user-box">
-											<img
-												class="aw-user-box-image"
-												src="images/heroes/avatars/lucas.png"
-												alt=""
-											/>
+											<img class="aw-user-box-image" src="images/heroes/avatars/lucas.png" alt="" />
 											<div class="aw-user-box-name aw-sub-body-500">Lucas Audart</div>
 											<div class="aw-user-box-username aw-sub-body-400">Web Consultant</div>
 										</div>
@@ -179,17 +201,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/Slocaly" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/Slocaly"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/Slocalyy" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/Slocalyy"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/lucas-audart" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/lucas-audart"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -218,17 +255,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/tanmoy27112000" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/tanmoy27112000"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/tanmoykar27" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/tanmoykar27"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/tanmoykarmakar2711" target="_blank" aria-label="Linkedin profile">
+											<a
+												href="https://www.linkedin.com/in/tanmoykarmakar2711"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="Linkedin profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -257,17 +309,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/2002Bishwajeet" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/2002Bishwajeet"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/biswa_20p" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/biswa_20p"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/2002bishwajeet" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/2002bishwajeet"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -290,21 +357,38 @@
 										</div>
 									</div>
 									<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
-										Mickaël is a front-end developer working as a web consultant in Lyon at Zenika. He co-organizes meetups with LyonJS and speaks at conferences about Appwrite, Flutter, and Remotion.
+										Mickaël is a front-end developer working as a web consultant in Lyon at Zenika.
+										He co-organizes meetups with LyonJS and speaks at conferences about Appwrite,
+										Flutter, and Remotion.
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/CruuzAzul" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/CruuzAzul"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/CruuzAzul" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/CruuzAzul"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/mickaelalves" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/mickaelalves"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -333,17 +417,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/safwanyp/" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/safwanyp/"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/debingalooo" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/debingalooo"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/safwanyp/" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/safwanyp/"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -373,17 +472,32 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/Emiliaaah" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/Emiliaaah"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/CodingEmilia" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/CodingEmilia"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/emilia-van-der-ploeg" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/emilia-van-der-ploeg"
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -838,6 +952,7 @@
 						<a
 							href="https://7nxwryuitoy.typeform.com/heroes-apply"
 							target="_blank"
+							rel="noopener noreferrer"
 							class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20"
 						>
 							Become a Hero

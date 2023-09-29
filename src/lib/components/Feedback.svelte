@@ -86,6 +86,7 @@
 						<a
 							href="https://github.com/appwrite/website"
 							target="_blank"
+							rel="noopener noreferrer"
 							class="aw-link u-flex u-gap-4 u-cross-baseline"
 						>
 							<span class="icon-pencil-alt u-contents" aria-hidden="true" />

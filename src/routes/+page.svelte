@@ -146,7 +146,9 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to your product and build any application at any scale, own your data, and use your preferred coding languages and tools.
+								Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
+								your product and build any application at any scale, own your data, and use your
+								preferred coding languages and tools.
 							</p>
 							<a
 								href="https://cloud.appwrite.io"
@@ -364,6 +366,7 @@
 								for your app with each new API development is a pain. Here's my secret: I let <a
 									href="https://twitter.com/appwrite"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-link-1">@appwrite</a
 								> handle my authentication process while I focus on the business logic.
 							</DeveloperCard>
@@ -398,8 +401,11 @@
 								avatarSrc="/images/community/avatars/souvik.png"
 							>
 								If you're looking for a backend server that is both powerful and easy to use, check
-								out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1"
-									>@appwrite</a
+								out <a
+									href="https://twitter.com/appwrite"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="aw-link-1">@appwrite</a
 								>. With its robust feature set and open-source nature, it's the perfect choice for
 								developers who want to build secure and scalable applications.
 							</DeveloperCard>
@@ -411,26 +417,27 @@
 
 		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
 			<div
-			class="u-position-absolute aw-is-not-mobile"
-			style:inline-size="768px"
-			style:block-size="768px"
-			style:inset-block-start="0rem"
-			style:z-index="-1"
-			style:left="calc(50% - 384px + 350px)"
-		>
-			<Spline 
-				url="/images/animations/dark-scene.splinecode"
-				loading="eager"
-				width={768}
-				height={768}>
-				<img
-					src="/images/animations/tech-dark.png"
-					width="768"
-					height="768"
-					alt=""
-					style="position: absolute; display: block;"
-				/>
-			</Spline>
+				class="u-position-absolute aw-is-not-mobile"
+				style:inline-size="768px"
+				style:block-size="768px"
+				style:inset-block-start="0rem"
+				style:z-index="-1"
+				style:left="calc(50% - 384px + 350px)"
+			>
+				<Spline
+					url="/images/animations/dark-scene.splinecode"
+					loading="eager"
+					width={768}
+					height={768}
+				>
+					<img
+						src="/images/animations/tech-dark.png"
+						width="768"
+						height="768"
+						alt=""
+						style="position: absolute; display: block;"
+					/>
+				</Spline>
 			</div>
 			<div class="aw-big-padding-section-level-2 is-margin-replace-padding">
 				<div class="aw-container u-position-relative">
@@ -465,12 +472,13 @@
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
 				<div
-				class="u-position-absolute u-z-index-0 aw-is-not-mobile"
-				style:width="50%"
-				style:height="100%"
-				style:left="0">
+					class="u-position-absolute u-z-index-0 aw-is-not-mobile"
+					style:width="50%"
+					style:height="100%"
+					style:left="0"
+				>
 					<div style:display="grid" style:place-items="center" style:height="100%">
-						<Spline loading="eager" url="/images/animations/lines.splinecode"/>
+						<Spline loading="eager" url="/images/animations/lines.splinecode" />
 					</div>
 				</div>
 				<div class="aw-container u-position-relative">

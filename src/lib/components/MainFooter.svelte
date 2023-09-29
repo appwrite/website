@@ -48,6 +48,7 @@
 						class="aw-icon-button"
 						aria-label="Appwrite on {getSocialLabel(social)}"
 						target="_blank"
+						rel="noopener noreferrer"
 					>
 						<span class={social.icon} aria-hidden="true" />
 					</a>
@@ -69,6 +70,7 @@
 							class="aw-icon-button"
 							aria-label="Appwrite on {getSocialLabel(social)}"
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							<span class={social.icon} aria-hidden="true" />
 						</a>
@@ -80,13 +82,13 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href="/discord" target="_blank">Support</a>
+					<a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
 				</li>
 				<li>
-					<a href="https://status.appwrite.io" target="_blank">Status</a>
+					<a href="https://status.appwrite.io" target="_blank" rel="noopener noreferrer">Status</a>
 				</li>
 				<!-- <li>
-					<a href="https://github.com/appwrite/appwrite/releases" target="_blank">Changelog</a>
+					<a href="https://github.com/appwrite/appwrite/releases" target="_blank" rel="noopener noreferrer">Changelog</a>
 				</li> -->
 			</ul>
 			<div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
