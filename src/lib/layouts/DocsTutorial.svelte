@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Feedback } from '$lib/components';
 	import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 	import type { TocItem } from './DocsArticle.svelte';
 
@@ -6,6 +7,7 @@
 	export let toc: Array<TocItem>;
 	export let currentStep: number;
 	export let back: string;
+	export let date: string;
 
 	export let tutorials: Array<Tutorial>;
 
@@ -30,18 +32,18 @@
 				</ul>
 				<div class="u-position-relative u-flex u-cross-center">
 					{#if back}
-					<a
-						href={back}
-						class="
+						<a
+							href={back}
+							class="
 						aw-button is-text is-only-icon aw-u-cross-center aw-u-size-40
 						u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
-						aria-label="previous page"
-					>
-						<span
-							class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
-							aria-hidden="true"
-						/>
-					</a>
+							aria-label="previous page"
+						>
+							<span
+								class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
+								aria-hidden="true"
+							/>
+						</a>
 					{/if}
 					<h1 class="aw-title">{title}</h1>
 				</div>
@@ -73,59 +75,7 @@
 				{/if}
 			</div>
 
-			<section class="aw-content-footer">
-				<header class="aw-content-footer-header u-cross-center">
-					<div class="aw-content-footer-header-start u-cross-center">
-					<!-- 
-						<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
-						<div class="u-flex u-gap-8">
-							<input
-								class="aw-radio-button is-like"
-								type="radio"
-								aria-label="Helpful"
-								name="happy"
-							/>
-							<input
-								class="aw-radio-button is-dislike"
-								type="radio"
-								aria-label="UnHelpful"
-								name="happy"
-							/>
-						</div>
-					-->
-					</div>
-					<div class="aw-content-footer-header-end">
-						<ul class="aw-metadata aw-caption-400">
-							<li>Last updated on September 27, 2023</li>
-							<li>
-								<a href="https://github.com/appwrite/website" target="_blank" class="aw-link u-flex u-gap-4 u-cross-baseline">
-									<span class="icon-pencil-alt u-contents" aria-hidden="true" />
-									<span>Update on GitHub</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</header>
-				<!-- <div class="aw-card is-normal" style="--card-padding:1rem">
-					<label for="message">
-						<span class="aw-caption-400 aw-u-color-text-primary">What did you like?</span>
-						<span class="aw-caption-400">(optional)</span>
-					</label>
-					<textarea
-						class="aw-input-text u-margin-block-start-8"
-						id="message"
-						placeholder="Write your message"
-					/>
-					<div class="u-flex u-gap-8 u-main-end u-margin-block-start-16">
-						<button class="aw-button is-text">
-							<span class="">Cancel</span>
-						</button>
-						<button class="aw-button">
-							<span class="">Submit</span>
-						</button>
-					</div>
-				</div> -->
-			</section>
+			<Feedback {date} />
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
 			<div class="aw-references-menu-content">

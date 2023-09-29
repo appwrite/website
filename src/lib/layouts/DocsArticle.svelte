@@ -13,9 +13,12 @@
 </script>
 
 <script lang="ts">
+	import { Feedback } from '$lib/components';
+
 	export let title: string;
 	export let toc: Array<TocItem>;
 	export let back: string | undefined = undefined;
+	export let date: string;
 </script>
 
 <main class="u-contents">
@@ -58,59 +61,7 @@
 		</header>
 		<div class="aw-article-content">
 			<slot />
-			<section class="aw-content-footer">
-				<header class="aw-content-footer-header">
-					<div class="aw-content-footer-header-start">
-						<!--
-							<h5 class="aw-main-body-500 aw-u-color-text-primary">Was this page helpful?</h5>
-							<div class="u-flex u-gap-8">
-								<input
-									class="aw-radio-button is-like"
-									type="radio"
-									aria-label="Helpful"
-									name="happy"
-								/>
-								<input
-									class="aw-radio-button is-dislike"
-									type="radio"
-									aria-label="UnHelpful"
-									name="happy"
-								/>
-							</div>
-						-->
-					</div>
-					<div class="aw-content-footer-header-end">
-						<ul class="aw-metadata aw-caption-400">
-							<li>Last updated on September 27, 2023</li>
-							<li>
-								<a href="https://github.com/appwrite/website" target="_blank" class="aw-link">
-									<span class="icon-pencil-alt u-contents" aria-hidden="true" />
-									<span>Update on GitHub</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</header>
-				<!-- <div class="aw-card is-normal" style="--card-padding:1rem">
-					<label for="message">
-						<span class="aw-u-color-text-primary">What did you like?</span>
-						<span class="">(optional)</span>
-					</label>
-					<textarea
-						class="aw-input-text u-margin-block-start-8"
-						id="message"
-						placeholder="Write your message"
-					/>
-					<div class="u-flex u-main-end u-margin-block-start-16">
-						<button class="aw-button is-text">
-							<span class="">Cancel</span>
-						</button>
-						<button class="aw-button">
-							<span class="">Submit</span>
-						</button>
-					</div>
-				</div> -->
-			</section>
+			<Feedback {date} />
 		</div>
 		<aside class="aw-references-menu aw-u-padding-inline-start-24">
 			<div class="aw-references-menu-content">

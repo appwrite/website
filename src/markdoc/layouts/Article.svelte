@@ -26,6 +26,7 @@
 	export let back: string | undefined = undefined;
 	export let difficulty: string | undefined = undefined;
 	export let readtime: string | undefined = undefined;
+	export let date: string;
 
 	setContext<LayoutContext>('headings', writable({}));
 
@@ -77,7 +78,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<DocsArticle {title} {back} {toc}>
+<DocsArticle {title} {back} {toc} {date}>
 	<svelte:fragment slot="metadata">
 		{#if difficulty}
 			<li>{difficulty}</li>

@@ -80,7 +80,7 @@
 			</div>
 			<ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
 				<li>
-					<a href="/support">Support</a>
+					<a href="/discord" target="_blank">Support</a>
 				</li>
 				<li>
 					<a href="https://status.appwrite.io" target="_blank">Status</a>

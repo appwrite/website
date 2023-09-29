@@ -5,11 +5,11 @@
 	import Docs from '$lib/layouts/Docs.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 	import Sidebar from './Sidebar.svelte';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { TITLE_SUFFIX } from '$routes/titles';
 
 	const title = 'Docs' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
@@ -166,6 +166,7 @@
 			style:inline-size="768px"
 			style:block-size="768px"
 			style:inset-block-start="26rem"
+			style:z-index="-1"
 			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
@@ -191,6 +192,7 @@
 			style:inline-size="768px"
 			style:block-size="768px"
 			style:inset-block-start="26rem"
+			style:z-index="-1"
 			style:left="calc(50% - 384px + 600px)"
 		>
 			<img
@@ -266,7 +268,9 @@
 				Learn how to build like a team of hundreds
 			</h1>
 			<p class="aw-description u-max-width-600">
-				Appwrite is a backend development platform built by hundreds of open-source developers, where you can build any application at any scale using the coding languages and tools you want.
+				Appwrite is a backend development platform built by hundreds of open-source developers,
+				where you can build any application at any scale using the coding languages and tools you
+				want.
 			</p>
 		</section>
 		<section class="aw-hero is-align-start">
@@ -310,6 +314,7 @@
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+									style="word-break: keep-all;"
 								>
 									Learn Appwrite Auth, Databases, and more with React.
 								</p>
@@ -336,9 +341,10 @@
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+									style="word-break: keep-all;"
 								>
-								Learn Appwrite Auth, Databases, and more with SvelteKit.
-							</p>
+									Learn Appwrite Auth, Databases, and more with SvelteKit.
+								</p>
 							</article>
 						</a>
 					</li>
@@ -362,8 +368,9 @@
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+									style="word-break: keep-all;"
 								>
-								Learn Appwrite Auth, Databases, and more with Vue.
+									Learn Appwrite Auth, Databases, and more with Vue.
 								</p>
 							</article>
 						</a>
@@ -388,9 +395,10 @@
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+									style="word-break: keep-all;"
 								>
-								Coming soon...
-							</p>
+									Coming soon...
+								</p>
 							</article>
 						</a>
 					</li>
@@ -414,9 +422,10 @@
 								</header>
 								<p
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+									style="word-break: keep-all;"
 								>
-								Coming soon...
-							</p>
+									Coming soon...
+								</p>
 							</article>
 						</a>
 					</li>

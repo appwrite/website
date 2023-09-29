@@ -35,22 +35,9 @@
 	let results: Hits<Props> = [];
 
 	async function search(value: string) {
-		return index
-			.search(value, {
-				limit: 20
-			})
-			.then((n) => {
-				return {
-					...n,
-					hits: n.hits.map((h) => {
-						const url = h.url.replace('https://website-appwrite.vercel.app', '');
-						return {
-							...h,
-							url
-						};
-					})
-				};
-			});
+		return index.search(value, {
+			limit: 20
+		});
 	}
 
 	async function handleInput(value: string) {
@@ -78,25 +65,25 @@
 	const recommended: Hits<Props> = [
 		{
 			uid: 'recommended-references-account',
-			url: 'https://website-appwrite.vercel.app/docs/references/cloud/client-web/databases',
+			url: '/docs/references/cloud/client-web/databases',
 			h1: 'References',
 			h2: 'Databases'
 		},
 		{
 			uid: 'recommended-references-teans',
-			url: 'https://website-appwrite.vercel.app/docs/references/cloud/client-web/teams',
+			url: '/docs/references/cloud/client-web/teams',
 			h1: 'References',
 			h2: 'Teams'
 		},
 		{
 			uid: 'recommended-references-databases',
-			url: 'https://website-appwrite.vercel.app/docs/references/cloud/client-web/databases',
+			url: '/docs/references/cloud/client-web/databases',
 			h1: 'References',
 			h2: 'Databases'
 		},
 		{
 			uid: 'recommended-references-storage',
-			url: 'https://website-appwrite.vercel.app/docs/references/cloud/client-web/storage',
+			url: '/docs/references/cloud/client-web/storage',
 			h1: 'References',
 			h2: 'Storage'
 		}
