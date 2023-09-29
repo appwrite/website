@@ -120,6 +120,7 @@
 											class="aw-icon-button"
 											aria-label="Author twitter"
 											target="_blank"
+											rel="noopener noreferrer"
 										>
 											<span class="aw-icon-x" aria-hidden="true" />
 										</a>
@@ -130,6 +131,7 @@
 											class="aw-icon-button"
 											aria-label="Author LinkedIn"
 											target="_blank"
+											rel="noopener noreferrer"
 										>
 											<span class="aw-icon-linkedin" aria-hidden="true" />
 										</a>

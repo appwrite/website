@@ -169,10 +169,7 @@
 		style:z-index="-1"
 		style:left="calc(50% - 384px + 600px)"
 	>
-		<Spline 
-			url="/images/animations/dark-scene.splinecode"
-			width={768}
-			height={768}>
+		<Spline url="/images/animations/dark-scene.splinecode" width={768} height={768}>
 			<img
 				src="/images/animations/tech-dark.png"
 				width="768"
@@ -266,11 +263,7 @@
 				</svelte:fragment>
 				<svelte:fragment>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/react"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/react">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -293,11 +286,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/sveltekit"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/sveltekit">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -320,11 +309,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/vue"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/vue">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -347,11 +332,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/android"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/android">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -374,11 +355,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/flutter"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/flutter">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
