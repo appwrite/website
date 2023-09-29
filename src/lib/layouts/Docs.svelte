@@ -72,7 +72,7 @@
 	>
 		<section class="aw-mobile-header is-transparent">
 			<div class="aw-mobile-header-start">
-				<a href="/">
+				<a href="/" aria-label="homepage">
 					<img
 						class="aw-logo u-only-dark"
 						src="/images/logos/appwrite.svg"
