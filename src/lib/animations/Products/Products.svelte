@@ -33,7 +33,7 @@
 				'30+ login methods',
 				'Support for teams, roles and user labels',
 				'Rate-limits and advanced user protection',
-				'Custome SMTP and email templates'
+				'Custom SMTP and email templates'
 			],
 			shot: './images/products/auth.png'
 		},
