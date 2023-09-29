@@ -143,7 +143,12 @@ If you cannot find the correct package name, run the application in Windows, and
 
 {% /tabs %}
 
-![Add a platform]()
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
