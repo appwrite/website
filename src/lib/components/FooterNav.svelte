@@ -135,9 +135,21 @@
 				<li><a class="aw-link" href="/blog">Blog</a></li>
 				<li><a class="aw-link" href="/community">Community</a></li>
 				<li><a class="aw-link" href="/heroes">Heroes</a></li>
-				<li><a class="aw-link" href="https://github.com/appwrite" target="_blank">Source code</a></li>
 				<li>
-					<a class="aw-link" href="https://status.appwrite.io" target="_blank">Status</a>
+					<a
+						class="aw-link"
+						href="https://github.com/appwrite"
+						target="_blank"
+						rel="noopener noreferrer">Source code</a
+					>
+				</li>
+				<li>
+					<a
+						class="aw-link"
+						href="https://status.appwrite.io"
+						target="_blank"
+						rel="noopener noreferrer">Status</a
+					>
 				</li>
 			</ul>
 		</li>
@@ -164,10 +176,22 @@
 			<ul class="aw-footer-nav-secondary-list aw-sub-body-400">
 				<li><a class="aw-link" href="/pricing">Pricing</a></li>
 				<li><a class="aw-link" href="/company">Company</a></li>
-				<li><a class="aw-link" href="https://careers.appwrite.io/" target="_blank">Careers</a></li>
+				<li>
+					<a
+						class="aw-link"
+						href="https://careers.appwrite.io/"
+						target="_blank"
+						rel="noopener noreferrer">Careers</a
+					>
+				</li>
 				<li><a class="aw-link" href="/heroes">Heroes</a></li>
 				<li>
-					<a class="aw-link" href="https://store.appwrite.io" target="_blank">Store</a>
+					<a
+						class="aw-link"
+						href="https://store.appwrite.io"
+						target="_blank"
+						rel="noopener noreferrer">Store</a
+					>
 				</li>
 				<li>
 					<a class="aw-link" href="/contact-us">Contact us</a>

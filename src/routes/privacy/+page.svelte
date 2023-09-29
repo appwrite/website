@@ -312,6 +312,7 @@
 												For more information, please read our cookies policy <a
 													href="https://appwrite.io/policy/cookies"
 													target="_blank"
+													rel="noopener noreferrer"
 												>
 													Appwrite Cookies Policy (https://appwrite.io/policy/cookies)
 												</a>
@@ -1232,20 +1233,33 @@
 								<a
 									href="https://marketingplatform.google.com/about/analytics/terms/us/"
 									target="_blank"
+									rel="noopener noreferrer"
 								>
 									Google Analytics Terms of Service
 									(https://marketingplatform.google.com/about/analytics/terms/us/)</a
 								>, and the Google Privacy Policy, available at
-								<a href="https://www.google.com/policies/privacy/" target="_blank">
+								<a
+									href="https://www.google.com/policies/privacy/"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Google Privacy Policy (https://www.google.com/policies/privacy/)</a
 								>. You may learn more about how Google collects and processes data specifically in
 								connection with Google Analytics at
-								<a href="https://www.google.com/policies/privacy/partners/" target="_blank">
+								<a
+									href="https://www.google.com/policies/privacy/partners/"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Google Privacy Policy for Partners
 									(https://www.google.com/policies/privacy/partners/)</a
 								>. You may prevent your data from being used by Google Analytics by downloading and
 								installing the Google Analytics Opt-out Browser Add-on, available at
-								<a href="https://tools.google.com/dlpage/gaoptout/" target="_blank">
+								<a
+									href="https://tools.google.com/dlpage/gaoptout/"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Google Analytics Opt-out Browser Add-on
 									(https://tools.google.com/dlpage/gaoptout/)</a
 								>.
@@ -1255,7 +1269,10 @@
 								- Orbit is a community analytics service offered by Orbit that tracks and reports community
 								activity. For more information on the privacy practices of Orbit, please visit the Orbit
 								Privacy & Terms web page:
-								<a href="https://orbit.love/privacy-policy/" target="_blank"
+								<a
+									href="https://orbit.love/privacy-policy/"
+									target="_blank"
+									rel="noopener noreferrer"
 									>Orbit Privacy Policy (https://orbit.love/privacy-policy/)</a
 								>.
 							</li>
@@ -1265,9 +1282,12 @@
 								diagnose, fix, and optimize the performance of the Website. Sentry's ability to use and
 								share information collected by Sentry is regulated by their terms of service, available
 								at
-								<a href="https://sentry.io/terms/" target="_blank">Sentry Terms of Service (https://sentry.io/terms/)</a>, and
-								their Privacy Policy available at
-								<a href="https://sentry.io/privacy/" target="_blank">Sentry Privacy Policy (https://sentry.io/privacy/)</a>.
+								<a href="https://sentry.io/terms/" target="_blank" rel="noopener noreferrer"
+									>Sentry Terms of Service (https://sentry.io/terms/)</a
+								>, and their Privacy Policy available at
+								<a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer"
+									>Sentry Privacy Policy (https://sentry.io/privacy/)</a
+								>.
 							</li>
 							<li>
 								<span class="aw-u-color-text-primary">Mixpanel </span>
@@ -1276,11 +1296,17 @@
 								do so, but not PII. We use the information we get from Mixpanel to maintain and improve
 								the Website and our products. Mixpanel’s ability to use and share information about your
 								visits is restricted by the Terms of Service, available at
-								<a href="https://mixpanel.com/legal/terms-of-use" target="_blank"
+								<a
+									href="https://mixpanel.com/legal/terms-of-use"
+									target="_blank"
+									rel="noopener noreferrer"
 									>Mixpanel Terms of Use (https://mixpanel.com/legal/terms-of-use)</a
 								>
 								and the Mixpanel Privacy Policy, available at
-								<a href="https://mixpanel.com/legal/privacy-policy" target="_blank"
+								<a
+									href="https://mixpanel.com/legal/privacy-policy"
+									target="_blank"
+									rel="noopener noreferrer"
 									>Mixpanel Privacy Policy (https://mixpanel.com/legal/privacy-policy)</a
 								>.
 							</li>
@@ -1306,29 +1332,35 @@
 							<li>
 								<span class="aw-u-color-text-primary">Apple Store In-App Payments</span> - Their
 								Privacy Policy can be viewed at
-								<a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank"
-									>https://www.apple.com/legal/privacy/en-ww/</a
+								<a
+									href="https://www.apple.com/legal/privacy/en-ww/"
+									target="_blank"
+									rel="noopener noreferrer">https://www.apple.com/legal/privacy/en-ww/</a
 								>
 							</li>
 							<li>
 								<span class="aw-u-color-text-primary">Google Play In-App Payments</span> - Their
 								Privacy Policy can be viewed at
-								<a href="https://www.google.com/policies/privacy/" target="_blank"
-									>https://www.google.com/policies/privacy/</a
+								<a
+									href="https://www.google.com/policies/privacy/"
+									target="_blank"
+									rel="noopener noreferrer">https://www.google.com/policies/privacy/</a
 								>
 							</li>
 							<li>
 								<span class="aw-u-color-text-primary">Stripe</span> - Their Privacy Policy can be
 								viewed at
-								<a href="https://stripe.com/us/privacy" target="_blank"
+								<a href="https://stripe.com/us/privacy" target="_blank" rel="noopener noreferrer"
 									>https://stripe.com/us/privacy</a
 								>
 							</li>
 							<li>
 								<span class="aw-u-color-text-primary">Paypal/Braintree</span> - Their Privacy Policy
 								can be viewed at
-								<a href="https://www.paypal.com/webapps/mpp/ua/privacy-full" target="_blank"
-									>https://www.paypal.com/webapps/mpp/ua/privacy-full</a
+								<a
+									href="https://www.paypal.com/webapps/mpp/ua/privacy-full"
+									target="_blank"
+									rel="noopener noreferrer">https://www.paypal.com/webapps/mpp/ua/privacy-full</a
 								>
 							</li>
 						</ul>
@@ -1358,7 +1390,8 @@
 							notice and the data protection laws, or if you wish to exercise your rights, we
 							encourage you to first contact us at <a
 								href="mailto:privacy@appwrite.io"
-								target="_blank">privacy@appwrite.io</a
+								target="_blank"
+								rel="noopener noreferrer">privacy@appwrite.io</a
 							>.
 						</p>
 					</section>
