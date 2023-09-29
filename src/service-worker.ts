@@ -39,6 +39,7 @@ sw.addEventListener('activate', (event) => {
 sw.addEventListener('fetch', async (event) => {
 	// ignore POST requests etc
 	if (event.request.method !== 'GET') return;
+
 	const url = new URL(event.request.url);
 	// ignore requests from protocols like chrome-extension
 	if (!url.protocol.startsWith('http')) return;
