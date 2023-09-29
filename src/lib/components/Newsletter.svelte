@@ -1,14 +1,5 @@
-<script lang="ts">
-	let email = '';
-	let name = '';
-	let submitted = false;
-	let error: string | undefined;
-	let submitting = false;
-
-	async function submit() {
-		submitting = true;
-		error = undefined;
-
+<script context="module" lang="ts">
+	export async function newsletter(name: string, email: string) {
 		const response = await fetch('https://growth.appwrite.io/v1/newsletter/subscribe', {
 			method: 'POST',
 			headers: {
@@ -19,12 +10,26 @@
 				email
 			})
 		});
+		return response;
+	}
+</script>
+
+<script lang="ts">
+	let email = '';
+	let name = '';
+	let submitted = false;
+	let error: string | undefined;
+	let submitting = false;
+
+	async function submit() {
+		submitting = true;
+		error = undefined;
+		const response = await newsletter(name, email);
 		submitting = false;
 		if (response.status >= 400) {
 			error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
 			return;
 		}
-
 		submitted = true;
 	}
 </script>
