@@ -49,7 +49,7 @@
 						<h1 class="aw-display aw-u-color-text-primary">
 							Built by a community of 700+ contributors
 						</h1>
-						<div class="">
+						<div>
 							<p class="aw-description">
 								Inspire and get inspired. Join Appwrite's community of maintainers and contributors
 								and help us make Appwrite better for developers worldwide.
@@ -149,7 +149,7 @@
 						<h1 class="aw-headline aw-u-color-text-primary">
 							The power of open source benefits us all
 						</h1>
-						<div class="">
+						<div>
 							<p class="aw-description">
 								See contributors of Appwrite since 2019 and discover how you can start contributing.
 							</p>
@@ -173,7 +173,7 @@
 				<div class="aw-container">
 					<div class="aw-hero is-align-start">
 						<h2 class="aw-display aw-u-color-text-primary">Get involved</h2>
-						<div class="">
+						<div>
 							<p class="aw-description">
 								With every contribution, Appwrite gets better for all of us. Start contributing
 								today.
@@ -196,7 +196,7 @@
 								</p>
 								<button class="aw-button is-secondary u-margin-block-start-32">
 									<span class="aw-icon-github" aria-hidden="true" />
-									<span class="">View all Open Issues</span>
+									<span>View all Open Issues</span>
 								</button>
 							</div>
 							<div class="u-stretch">
@@ -406,11 +406,11 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Sep 28th</time>
+											<time>Sep 28th</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
-											<span class="">Discord</span>
+											<span>Discord</span>
 										</li>
 									</ul>
 									<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
@@ -447,11 +447,11 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Sep 28th</time>
+											<time>Sep 28th</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
-											<span class="">Twitch</span>
+											<span>Twitch</span>
 										</li>
 									</ul>
 									<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
@@ -484,11 +484,11 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Oct 1st</time>
+											<time>Oct 1st</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
-											<span class="">Bengaluru</span>
+											<span>Bengaluru</span>
 										</li>
 									</ul>
 									<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
@@ -521,11 +521,11 @@
 									<ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
-											<time class="">Oct</time>
+											<time>Oct</time>
 										</li>
 										<li class="u-flex u-cross-baseline u-gap-4">
 											<span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
-											<span class="">Virtual</span>
+											<span>Virtual</span>
 										</li>
 									</ul>
 									<h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
