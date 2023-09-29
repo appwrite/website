@@ -160,57 +160,28 @@
 			style="position: absolute; display: block;"
 		/>
 	</div>
-	<!-- <Spline let:fallback let:viewer>
-		<div
-			class="u-position-absolute aw-is-not-mobile u-only-light"
-			style:inline-size="768px"
-			style:block-size="768px"
-			style:inset-block-start="26rem"
-			style:z-index="-1"
-			style:left="calc(50% - 384px + 600px)"
-		>
-			<img
-				src="/images/animations/tech-light.png"
-				width="768"
-				height="768"
-				alt=""
-				style="position: absolute; display: block;"
-				use:fallback
-			/>
-			<spline-viewer
-				url="/images/animations/light-scene.splinecode"
-				width="768"
-				height="768"
-				use:viewer
-			/>
-		</div>
-	</Spline> -->
 
-	<Spline let:fallback let:viewer>
-		<div
-			class="u-position-absolute aw-is-not-mobile u-only-dark"
-			style:inline-size="768px"
-			style:block-size="768px"
-			style:inset-block-start="26rem"
-			style:z-index="-1"
-			style:left="calc(50% - 384px + 600px)"
-		>
+	<div
+		class="u-position-absolute aw-is-not-mobile u-only-dark"
+		style:inline-size="768px"
+		style:block-size="768px"
+		style:inset-block-start="26rem"
+		style:z-index="-1"
+		style:left="calc(50% - 384px + 600px)"
+	>
+		<Spline 
+			url="/images/animations/dark-scene.splinecode"
+			width={768}
+			height={768}>
 			<img
 				src="/images/animations/tech-dark.png"
 				width="768"
 				height="768"
 				alt=""
-				style="position: absolute; display: block;"
-				use:fallback
+				style="position: absolute;"
 			/>
-			<spline-viewer
-				url="/images/animations/dark-scene.splinecode"
-				width="768"
-				height="768"
-				use:viewer
-			/>
-		</div>
-	</Spline>
+		</Spline>
+	</div>
 
 	<main class="aw-main-section u-position-relative">
 		<div

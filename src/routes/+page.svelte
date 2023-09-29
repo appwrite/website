@@ -410,31 +410,28 @@
 		</div>
 
 		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-			<Spline let:fallback let:viewer>
-				<div
-					class="u-position-absolute aw-is-not-mobile"
-					style:inline-size="768px"
-					style:block-size="768px"
-					style:inset-block-start="0rem"
-					style:z-index="-1"
-					style:left="calc(50% - 384px + 350px)"
-				>
-					<img
-						src="/images/animations/tech-dark.png"
-						width="768"
-						height="768"
-						alt=""
-						style="position: absolute; display: block;"
-						use:fallback
-					/>
-					<spline-viewer
-						url="/images/animations/dark-scene.splinecode"
-						width="768"
-						height="768"
-						use:viewer
-					/>
-				</div>
+			<div
+			class="u-position-absolute aw-is-not-mobile"
+			style:inline-size="768px"
+			style:block-size="768px"
+			style:inset-block-start="0rem"
+			style:z-index="-1"
+			style:left="calc(50% - 384px + 350px)"
+		>
+			<Spline 
+				url="/images/animations/dark-scene.splinecode"
+				loading="eager"
+				width={768}
+				height={768}>
+				<img
+					src="/images/animations/tech-dark.png"
+					width="768"
+					height="768"
+					alt=""
+					style="position: absolute; display: block;"
+				/>
 			</Spline>
+			</div>
 			<div class="aw-big-padding-section-level-2 is-margin-replace-padding">
 				<div class="aw-container u-position-relative">
 					<section class="aw-hero is-align-start">
@@ -467,23 +464,15 @@
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-				<Spline let:viewer>
-					<div
-						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
-						style:width="50%"
-						style:height="100%"
-						style:left="0"
-					>
-						<div style:display="grid" style:place-items="center" style:height="100%">
-							<spline-viewer
-								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
-								loading="eager"
-								use:viewer
-							/>
-						</div>
+				<div
+				class="u-position-absolute u-z-index-0 aw-is-not-mobile"
+				style:width="50%"
+				style:height="100%"
+				style:left="0">
+					<div style:display="grid" style:place-items="center" style:height="100%">
+						<Spline loading="eager" url="/images/animations/lines.splinecode"/>
 					</div>
-				</Spline>
-
+				</div>
 				<div class="aw-container u-position-relative">
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">
