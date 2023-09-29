@@ -12,7 +12,7 @@
     color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8);
   }
 
-  .#{$p}aw-description { color:hsl(var(--aw-color-secondary)); }
+  .#{$p}-description { margin-block-start:pxToRem(20); color:hsl(var(--aw-color-secondary)); }
 
   &.is-align-start {
     text-align:start; margin-inline:0;
