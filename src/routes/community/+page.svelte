@@ -55,12 +55,18 @@
 								and help us make Appwrite better for developers worldwide.
 							</p>
 							<div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
-								<a href="/discord" target="_blank" class="aw-button is-full-width-mobile">
+								<a
+									href="/discord"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="aw-button is-full-width-mobile"
+								>
 									<span class="text">Join our Discord</span>
 								</a>
 								<a
 									href="https://github.com/appwrite/appwrite/stargazers"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-button is-secondary is-full-width-mobile"
 								>
 									<span aria-hidden="true" class="aw-icon-star" />
@@ -157,6 +163,7 @@
 								<a
 									href="https://github.com/appwrite/appwrite/graphs/contributors"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-button is-secondary is-full-width-mobile"
 								>
 									<span>View all contributors</span>
@@ -219,6 +226,7 @@
 													<a
 														href="https://github.com/appwrite/appwrite/issues/5232"
 														target="_blank"
+														rel="noopener noreferrer"
 														class="aw-link aw-sub-body-500"
 													>
 														Feature: Security Scans like SAST, DAST, FOSS, CAST in pipeline
@@ -247,6 +255,7 @@
 													<a
 														href="https://github.com/appwrite/appwrite/issues/5748"
 														target="_blank"
+														rel="noopener noreferrer"
 														class="aw-link aw-sub-body-500"
 													>
 														Feature: overload Feature for Storage.CreateFile for using Blob instead
@@ -276,6 +285,7 @@
 													<a
 														href="https://github.com/appwrite/sdk-generator/issues/680"
 														target="_blank"
+														rel="noopener noreferrer"
 														class="aw-link aw-sub-body-500"
 													>
 														Feature: Unit Tests
@@ -304,6 +314,7 @@
 													<a
 														href="https://github.com/appwrite/sdk-generator/issues/679"
 														target="_blank"
+														rel="noopener noreferrer"
 														class="aw-link aw-sub-body-500"
 													>
 														Feature: overload Feature for Storage.CreateFile for using Blob instead
@@ -394,7 +405,12 @@
 							<h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
 						</svelte:fragment>
 						<li>
-							<a class="aw-grid-articles-item" href="/discord" target="_blank">
+							<a
+								class="aw-grid-articles-item"
+								href="/discord"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-grid-articles-item-image">
 									<img
 										src="/images/community/events/office-hours.png"
@@ -435,6 +451,7 @@
 								class="aw-grid-articles-item"
 								href="https://www.twitch.tv/wesscope"
 								target="_blank"
+								rel="noopener noreferrer"
 							>
 								<div class="aw-grid-articles-item-image">
 									<img
@@ -472,7 +489,12 @@
 							</a>
 						</li>
 						<li>
-							<a class="aw-grid-articles-item" href="https://lu.ma/hf-kickoff-blr" target="_blank">
+							<a
+								class="aw-grid-articles-item"
+								href="https://lu.ma/hf-kickoff-blr"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-grid-articles-item-image">
 									<img
 										src="/images/community/events/hf-kickoff-bangalore.png"
@@ -563,6 +585,7 @@
 						<a
 							href="https://builtwith.appwrite.io"
 							target="_blank"
+							rel="noopener noreferrer"
 							class="aw-button is-secondary aw-u-cross-child-center u-margin-block-start-16"
 						>
 							<span>View all projects</span>
@@ -574,6 +597,7 @@
 								class="aw-card is-white aw-u-flex-vertical u-gap-8"
 								href="https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/"
 								target="_blank"
+								rel="noopener noreferrer"
 								style="--card-padding:0.5rem;"
 							>
 								<div class="u-padding-12">
@@ -594,6 +618,7 @@
 								class="aw-card is-white aw-u-flex-vertical u-gap-8"
 								href="https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/"
 								target="_blank"
+								rel="noopener noreferrer"
 								style="--card-padding:0.5rem;"
 							>
 								<div class="u-padding-12">
@@ -614,6 +639,7 @@
 								class="aw-card is-white aw-u-flex-vertical u-gap-8"
 								href="https://builtwith.appwrite.io/projects/648606ad9cd179190b28/"
 								target="_blank"
+								rel="noopener noreferrer"
 								style="--card-padding:0.5rem;"
 							>
 								<div class="u-padding-12">
@@ -648,6 +674,7 @@
 								<a
 									href="/discord"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 									style="--card-padding:2rem"
 								>
@@ -665,6 +692,7 @@
 								<a
 									href="https://twitter.com/intent/follow?screen_name=appwrite"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 									style="--card-padding:2rem"
 								>
@@ -682,6 +710,7 @@
 								<a
 									href="https://github.com/appwrite/appwrite"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 									style="--card-padding:2rem"
 								>
@@ -699,6 +728,7 @@
 								<a
 									href="https://www.youtube.com/c/appwrite?sub_confirmation=1"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
 									style="--card-padding:2rem"
 								>

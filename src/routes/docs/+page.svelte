@@ -160,57 +160,25 @@
 			style="position: absolute; display: block;"
 		/>
 	</div>
-	<!-- <Spline let:fallback let:viewer>
-		<div
-			class="u-position-absolute aw-is-not-mobile u-only-light"
-			style:inline-size="768px"
-			style:block-size="768px"
-			style:inset-block-start="26rem"
-			style:z-index="-1"
-			style:left="calc(50% - 384px + 600px)"
-		>
-			<img
-				src="/images/animations/tech-light.png"
-				width="768"
-				height="768"
-				alt=""
-				style="position: absolute; display: block;"
-				use:fallback
-			/>
-			<spline-viewer
-				url="/images/animations/light-scene.splinecode"
-				width="768"
-				height="768"
-				use:viewer
-			/>
-		</div>
-	</Spline> -->
 
-	<Spline let:fallback let:viewer>
-		<div
-			class="u-position-absolute aw-is-not-mobile u-only-dark"
-			style:inline-size="768px"
-			style:block-size="768px"
-			style:inset-block-start="26rem"
-			style:z-index="-1"
-			style:left="calc(50% - 384px + 600px)"
-		>
+	<div
+		class="u-position-absolute aw-is-not-mobile u-only-dark"
+		style:inline-size="768px"
+		style:block-size="768px"
+		style:inset-block-start="26rem"
+		style:z-index="-1"
+		style:left="calc(50% - 384px + 600px)"
+	>
+		<Spline url="/images/animations/dark-scene.splinecode" width={768} height={768}>
 			<img
 				src="/images/animations/tech-dark.png"
 				width="768"
 				height="768"
 				alt=""
-				style="position: absolute; display: block;"
-				use:fallback
+				style="position: absolute;"
 			/>
-			<spline-viewer
-				url="/images/animations/dark-scene.splinecode"
-				width="768"
-				height="768"
-				use:viewer
-			/>
-		</div>
-	</Spline>
+		</Spline>
+	</div>
 
 	<main class="aw-main-section u-position-relative">
 		<div
@@ -295,11 +263,7 @@
 				</svelte:fragment>
 				<svelte:fragment>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/react"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/react">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -322,11 +286,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/sveltekit"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/sveltekit">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -349,11 +309,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/vue"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/vue">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -376,11 +332,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/android"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/android">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"
@@ -403,11 +355,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="aw-grid-articles-item is-full-color"
-							href="/docs/tutorials/flutter"
-							rel="noopener noreferrer"
-						>
+						<a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/flutter">
 							<div class="aw-grid-articles-item-image">
 								<img
 									class="aw-articles-item-image"

@@ -4,6 +4,10 @@
         "redirect": "/docs/quick-starts"
     },
     {
+        "link": "/docs/server/database",
+        "redirect": "/docs/references/cloud/server-nodejs/databases"
+    },
+    {
         "link": "/docs/getting-started-for-flutter",
         "redirect": "/docs/quick-starts/flutter"
     },

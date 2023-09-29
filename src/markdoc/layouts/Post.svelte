@@ -111,8 +111,8 @@
 														href={authorData.twitter}
 														class="aw-icon-button"
 														aria-label="Author twitter"
-														target="_blank"
-														rel="noopener noreferrer"
+														target="_blank" rel="noopener noreferrer"
+														
 													>
 														<span class="aw-icon-x" aria-hidden="true" />
 													</a>
@@ -124,8 +124,8 @@
 														href={authorData.linkedin}
 														class="aw-icon-button"
 														aria-label="Author LinkedIn"
-														target="_blank"
-														rel="noopener noreferrer"
+														target="_blank" rel="noopener noreferrer"
+														
 													>
 														<span class="aw-icon-linkedin" aria-hidden="true" />
 													</a>
@@ -137,8 +137,8 @@
 														href={authorData.github}
 														class="aw-icon-button"
 														aria-label="Author GitHub"
-														target="_blank"
-														rel="noopener noreferrer"
+														target="_blank" rel="noopener noreferrer"
+														
 													>
 														<span class="aw-icon-github" aria-hidden="true" />
 													</a>

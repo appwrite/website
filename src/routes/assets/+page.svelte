@@ -633,7 +633,8 @@
 							<p>
 								Should you require further assistance or have specific needs beyond what's presented
 								on this page, please don't hesitate to
-								<a class="aw-link" href="/" target="_blank">contact us</a>.
+								<a class="aw-link" href="/" target="_blank" rel="noopener noreferrer">contact us</a
+								>.
 							</p>
 						</div>
 					</section>

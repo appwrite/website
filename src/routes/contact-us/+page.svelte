@@ -138,6 +138,7 @@
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-discord"
 												target="_blank"
+												rel="noopener noreferrer"
 											>
 												<span class="aw-icon-discord" aria-hidden="true" />
 											</a>
@@ -148,6 +149,7 @@
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-github"
 												target="_blank"
+												rel="noopener noreferrer"
 											>
 												<span class="aw-icon-github" aria-hidden="true" />
 											</a>
@@ -158,6 +160,7 @@
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-x"
 												target="_blank"
+												rel="noopener noreferrer"
 											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
@@ -168,6 +171,7 @@
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-linkedin"
 												target="_blank"
+												rel="noopener noreferrer"
 											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
@@ -178,6 +182,7 @@
 												class="aw-icon-button"
 												aria-label="Appwrite on YouTube"
 												target="_blank"
+												rel="noopener noreferrer"
 											>
 												<span class="aw-icon-youtube" aria-hidden="true" />
 											</a>
@@ -252,9 +257,9 @@
 										This form is protected by reCAPTCHA, and the Google <a
 											class="aw-link"
 											href="/privacy"
-											target="_blank">Privacy Policy</a
+											target="_blank" rel="noopener noreferrer">Privacy Policy</a
 										>
-										and <a class="aw-link" href="/terms" target="_blank">Terms of Service</a> apply.
+										and <a class="aw-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
 									</p> -->
 									<button
 										type="submit"

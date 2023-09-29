@@ -366,6 +366,7 @@
 								for your app with each new API development is a pain. Here's my secret: I let <a
 									href="https://twitter.com/appwrite"
 									target="_blank"
+									rel="noopener noreferrer"
 									class="aw-link-1">@appwrite</a
 								> handle my authentication process while I focus on the business logic.
 							</DeveloperCard>
@@ -400,8 +401,11 @@
 								avatarSrc="/images/community/avatars/souvik.png"
 							>
 								If you're looking for a backend server that is both powerful and easy to use, check
-								out <a href="https://twitter.com/appwrite" target="_blank" class="aw-link-1"
-									>@appwrite</a
+								out <a
+									href="https://twitter.com/appwrite"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="aw-link-1">@appwrite</a
 								>. With its robust feature set and open-source nature, it's the perfect choice for
 								developers who want to build secure and scalable applications.
 							</DeveloperCard>
@@ -412,14 +416,19 @@
 		</div>
 
 		<div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-			<Spline let:fallback let:viewer>
-				<div
-					class="u-position-absolute aw-is-not-mobile"
-					style:inline-size="768px"
-					style:block-size="768px"
-					style:inset-block-start="0rem"
-					style:z-index="-1"
-					style:left="calc(50% - 384px + 350px)"
+			<div
+				class="u-position-absolute aw-is-not-mobile"
+				style:inline-size="768px"
+				style:block-size="768px"
+				style:inset-block-start="0rem"
+				style:z-index="-1"
+				style:left="calc(50% - 384px + 350px)"
+			>
+				<Spline
+					url="/images/animations/dark-scene.splinecode"
+					loading="eager"
+					width={768}
+					height={768}
 				>
 					<img
 						src="/images/animations/tech-dark.png"
@@ -427,16 +436,9 @@
 						height="768"
 						alt=""
 						style="position: absolute; display: block;"
-						use:fallback
 					/>
-					<spline-viewer
-						url="/images/animations/dark-scene.splinecode"
-						width="768"
-						height="768"
-						use:viewer
-					/>
-				</div>
-			</Spline>
+				</Spline>
+			</div>
 			<div class="aw-big-padding-section-level-2 is-margin-replace-padding">
 				<div class="aw-container u-position-relative">
 					<section class="aw-hero is-align-start">
@@ -469,23 +471,16 @@
 				</div>
 			</div>
 			<div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-				<Spline let:viewer>
-					<div
-						class="u-position-absolute u-z-index-0 aw-is-not-mobile"
-						style:width="50%"
-						style:height="100%"
-						style:left="0"
-					>
-						<div style:display="grid" style:place-items="center" style:height="100%">
-							<spline-viewer
-								url="https://prod.spline.design/OQpkUefWdEWkbi4d/scene.splinecode"
-								loading="eager"
-								use:viewer
-							/>
-						</div>
+				<div
+					class="u-position-absolute u-z-index-0 aw-is-not-mobile"
+					style:width="50%"
+					style:height="100%"
+					style:left="0"
+				>
+					<div style:display="grid" style:place-items="center" style:height="100%">
+						<Spline loading="eager" url="/images/animations/lines.splinecode" />
 					</div>
-				</Spline>
-
+				</div>
 				<div class="aw-container u-position-relative">
 					<div class="grid-1-1">
 						<section class="aw-hero is-align-start">

@@ -489,35 +489,60 @@
 					</div>
 					<ul class="aw-investor-cards aw-u-margin-block-start-64">
 						<li>
-							<a href="https://www.bvp.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.bvp.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.tigerglobal.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.tigerglobal.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.ibexinvestors.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.ibexinvestors.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/ibex.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.flybridge.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.flybridge.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://seedcamp.com/" class="aw-card" target="_blank">
+							<a
+								href="https://seedcamp.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
 								</div>
@@ -541,6 +566,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -551,6 +577,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -568,6 +595,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -578,6 +606,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -600,6 +629,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -616,6 +646,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -633,6 +664,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -650,6 +682,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -667,6 +700,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -690,6 +724,7 @@
 						<a
 							href="https://careers.appwrite.io/"
 							target="_blank"
+							rel="noopener noreferrer"
 							class="aw-button is-transparent u-cross-child-center u-margin-block-start-16"
 						>
 							<span>Careers</span>
