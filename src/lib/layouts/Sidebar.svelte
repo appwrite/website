@@ -45,7 +45,7 @@
 		<div class="aw-side-nav-scroll">
 			{#if parent}
 				<section class="aw-side-nav-wrapper-parent">
-					<a href={parent.href}>
+					<a href={parent.href} aria-label="go back">
 						<span class="icon-cheveron-left" aria-hidden="true" />
 					</a>
 					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
