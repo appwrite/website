@@ -230,7 +230,7 @@ Appwrite uses permissions to control data access.
 For security, only users that are granted permissions can access a resource. 
 This helps prevent accidental data leaks by forcing you to make more concious decisions around permissions.
 
-By default, Appwrite doesn't grants permissions to any users when a new collection is created.
+By default, Appwrite doesn't grant permissions to any users when a new collection is created.
 This means users can't create new documents or read, update, and delete existing documents.
 
 [Learn about configuring permissions](/docs/products/databases/permissions).
