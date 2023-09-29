@@ -3,10 +3,10 @@
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
 	import { TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
 	const title = 'Company' + TITLE_SUFFIX;
-	const description = '';
+	const description = DEFAULT_DESCRIPTION;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -489,29 +489,39 @@
 					</div>
 					<ul class="aw-investor-cards aw-u-margin-block-start-64">
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.bvp.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.tigerglobal.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/ibex.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.ibexinvestors.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/ibex.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
-							</div>
+							<a href="https://www.flybridge.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="aw-card is-full-color" style="--card-padding:1rem;">
-								<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
-							</div>
+							<a href="https://seedcamp.com/" class="aw-card" target="_blank">
+								<div class="aw-card is-full-color" style="--card-padding:1rem;">
+									<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
+								</div>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -527,7 +537,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/aapplbaum"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -537,7 +547,7 @@
 								</li>
 								<li>
 									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/aapplbaum"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
@@ -554,7 +564,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/arielmaislos"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
@@ -564,7 +574,7 @@
 								</li>
 								<li>
 									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/arielmaislos"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
@@ -577,28 +587,7 @@
 						<li class="u-flex-vertical">
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Gilad Engel</h6>
 							<p class="aw-main-body-500">Angel Investor</p>
-							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
-								<li>
-									<a
-										href="https://github.com/"
-										class="aw-icon-button"
-										aria-label=" on aGithub"
-										target="_blank"
-									>
-										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
-									</a>
-								</li>
-							</ul>
+							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto" />
 						</li>
 						<li class="u-flex-vertical">
 							<h6 class="aw-main-body-500 aw-u-color-text-primary">Krishna Visvanathan</h6>
@@ -607,22 +596,12 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/KVCVP"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
 								</li>
 							</ul>
@@ -633,22 +612,12 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/ameet-patel"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
 								</li>
 							</ul>
@@ -660,22 +629,12 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/bennojering/"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
 								</li>
 							</ul>
@@ -687,22 +646,12 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
+										href="https://github.com/jnl"
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
-										class="aw-icon-button"
-										aria-label=" on aTwitter"
-										target="_blank"
-									>
-										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
 								</li>
 							</ul>
@@ -714,17 +663,7 @@
 							<ul class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto">
 								<li>
 									<a
-										href="https://github.com/"
-										class="aw-icon-button"
-										aria-label=" on aGithub"
-										target="_blank"
-									>
-										<span class="aw-icon-github" aria-hidden="true" />
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://twitter.com/appwrite"
+										href="https://twitter.com/uboness"
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"

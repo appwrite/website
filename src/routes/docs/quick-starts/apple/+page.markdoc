@@ -7,7 +7,7 @@ readtime: 10
 back: /docs/quick-starts
 ---
 
-Learn to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).
+Learn how to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).
 
 {% section #step-1 step=1 title="Create Apple project" %}
 Open Xcode and click **Create a new Xcode project**.
@@ -30,7 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add an **Apple app**. Choose any of **iOS**, **macOS**, **watchOS** or **tvOS** as your Apple platform. If you are creating a multi-platform app, you can add more platforms later.
 

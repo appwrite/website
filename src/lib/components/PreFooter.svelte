@@ -19,7 +19,7 @@
 		<Tabs let:TabsList let:TabContent tabs={['Cloud', 'Self-Hosted']}>
 			<header class="aw-strip-plans-header">
 				<div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-					<h3 class="aw-title aw-u-color-text-primary">Our Plans</h3>
+					<h3 class="aw-title aw-u-color-text-primary">Our plans</h3>
 					<!-- <TabsList /> -->
 				</div>
 			</header>
@@ -33,10 +33,10 @@
 								<div class="info aw-caption-500" />
 							</div>
 							<p class="aw-strip-plans-info aw-caption-500">
-								For students and hobby projects.
+								For personal hobby projects and students.
 							</p>
 							<a href="https://cloud.appwrite.io/register" class="aw-button is-full-width-mobile aw-u-cross-child-end">
-								<span class="text">Get Started</span>
+								<span class="text">Get started</span>
 							</a>
 						</div>
 					</li>
@@ -85,7 +85,7 @@
 								For personal, passion projects and non-commercial use.
 							</p>
 							<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-								><span class="text">Get Started</span></button
+								><span class="text">Get started</span></button
 							>
 						</div>
 					</li>
@@ -100,7 +100,7 @@
 								For personal, passion projects and non-commercial use.
 							</p>
 							<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-								><span class="text">Get Started</span></button
+								><span class="text">Get started</span></button
 							>
 						</div>
 					</li>
@@ -115,7 +115,7 @@
 								For personal, passion projects and non-commercial use.
 							</p>
 							<button class="aw-button is-full-width-mobile aw-u-cross-child-end"
-								><span class="text">Get Started</span></button
+								><span class="text">Get started</span></button
 							>
 						</div>
 					</li>

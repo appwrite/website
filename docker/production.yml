@@ -49,7 +49,7 @@ services:
     networks:
       - cloud
     deploy:
-      mode: global
+      replicas: 1
       <<: *x-update-config
       placement:
         constraints:
@@ -63,7 +63,7 @@ services:
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 6
+      replicas: 5
       placement:
         max_replicas_per_node: 2
         constraints:
@@ -91,6 +91,9 @@ services:
       mode: global
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TIME_BETWEEN_RUNS=3600
+      - UNUSED_TIME=6h
   
   sematext-agent:
     image: sematext/agent:latest

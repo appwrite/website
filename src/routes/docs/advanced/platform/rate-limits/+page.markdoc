@@ -4,11 +4,11 @@ title: Rate-limits
 description: Optimize application performance with Appwrite rate limits. Explore rate limiting strategies, configurations, and how to prevent abuse of your services.
 ---
 
-# Appwrite rate limits {% #appwrite-rate-limits %}
-
 Some of Appwrite's API endpoints have a rate limit to avoid abuse or brute-force attacks against Appwrite's REST API. Each Appwrite route documentation has information about any rate limits that might apply to them.
 
 Rate limits only apply to Client SDKs. Rate limits do not apply when accessing Appwrite with a Server SDK authenticated using an API key.
+
+# Headers {% #headers %}
 
 You can check the returned HTTP headers of any API request to see your current rate limit status:
 

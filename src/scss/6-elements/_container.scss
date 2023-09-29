@@ -19,7 +19,6 @@
   display:grid;
 
   &-level-1 {
-    overflow:hidden;
     @media #{$break1} {
       padding-block:pxToRem(0);
       &:first-child { padding-block-start:pxToRem(0); }
