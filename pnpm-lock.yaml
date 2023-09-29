@@ -14,9 +14,6 @@ dependencies:
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite
     version: github.com/appwrite/appwrite/49155a97d42a152f26e188a3910548bc209785d8
-  '@fontsource/inter':
-    specifier: ^5.0.8
-    version: 5.0.8
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -406,10 +403,6 @@ packages:
   /@floating-ui/utils@0.1.1:
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
     dev: true
-
-  /@fontsource/inter@5.0.8:
-    resolution: {integrity: sha512-28knWH1BfOiRalfLs90U4sge5mpQ8ZH6FS0PTT+IZMKrZ7wNHDHRuKa1kQJg+uHcc6axBppnxll+HXM4c7zo/Q==}
-    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
