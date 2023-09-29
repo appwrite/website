@@ -255,7 +255,7 @@
 						<h1 class="aw-headline aw-u-color-text-primary">
 							Unleashing creativity and innovation in every creator
 						</h1>
-						<div class="">
+						<div>
 							<p class="aw-description">
 								Software development transforms our everyday lives, relying heavily on the
 								creativity and innovation of developers. At Appwrite, we enable them to develop
@@ -326,9 +326,9 @@
 												Appwrite's first ever pull request was submitted in August 2019 by CEO and Founder Eldad A. Fux. Just one month later, September 2019, Appwrite officially launched. Soon the community started contributing by the hundreds pushing the product to new heights.
 											</p>
 										</div>
-										<div class="">
+										<div >
 											<div class="aw-media">
-												<img class="" src="https://pink.appwrite.io/articles/announcement.png" alt="" loading="lazy">
+												<img  src="https://pink.appwrite.io/articles/announcement.png" alt="" loading="lazy">
 											</div>
 										</div>
 

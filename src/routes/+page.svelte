@@ -146,7 +146,9 @@
 						</h1>
 						<div class="u-cross-child-end">
 							<p class="aw-description">
-								Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to your product and build any application at any scale, own your data, and use your preferred coding languages and tools.
+								Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
+								your product and build any application at any scale, own your data, and use your
+								preferred coding languages and tools.
 							</p>
 							<a
 								href="https://cloud.appwrite.io"
@@ -293,7 +295,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/star.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">GDPR</span>
+									<span>GDPR</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">
@@ -303,7 +305,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/soc-2.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">SOC-2</span>
+									<span>SOC-2</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">
@@ -313,7 +315,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/hipaa.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">HIPAA</span>
+									<span>HIPAA</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">Protect sensitive user health data.</p>

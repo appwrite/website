@@ -40,7 +40,7 @@
 				<section class="aw-container aw-u-padding-block-end-0">
 					<div class="aw-hero is-align-start aw-u-max-width-480">
 						<h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-						<div class="">
+						<div>
 							<p class="aw-main-body-500">
 								If you love building, writing, speaking, and helping other developers build with
 								Appwrite, help us support you by joining the Appwrite Heroes program and becoming a
@@ -59,7 +59,7 @@
 				<section class="aw-container">
 					<div class="aw-hero aw-u-max-width-800">
 						<h2 class="aw-title aw-u-color-text-primary">About Appwrite Heroes</h2>
-						<div class="">
+						<div>
 							<p class="aw-sub-body-500">
 								The Appwrite Heroes program is an exclusive group of developers who are experts in
 								Appwrite and dedicated to creating valuable content to assist other developers in
@@ -84,11 +84,7 @@
 								<div class="aw-social-item u-flex-vertical u-gap-24">
 									<div class="u-flex u-gap-16 u-main-space-between">
 										<div class="aw-user-box">
-											<img
-												class="aw-user-box-image"
-												src="images/heroes/avatars/diana.png"
-												alt=""
-											/>
+											<img class="aw-user-box-image" src="images/heroes/avatars/diana.png" alt="" />
 											<div class="aw-user-box-name aw-sub-body-500">Diana Pham</div>
 											<div class="aw-user-box-username aw-sub-body-400">Developer Advocate</div>
 										</div>
@@ -100,17 +96,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/dianapham" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/dianapham"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/dianasoyster" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/dianasoyster"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/dianasoyster" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/dianasoyster"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -140,17 +148,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/codewithsimon" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/codewithsimon"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/codewithsimon" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/codewithsimon"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/codewithsimon" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/codewithsimon"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -163,11 +183,7 @@
 								<div class="aw-social-item u-flex-vertical u-gap-24">
 									<div class="u-flex u-gap-16 u-main-space-between">
 										<div class="aw-user-box">
-											<img
-												class="aw-user-box-image"
-												src="images/heroes/avatars/lucas.png"
-												alt=""
-											/>
+											<img class="aw-user-box-image" src="images/heroes/avatars/lucas.png" alt="" />
 											<div class="aw-user-box-name aw-sub-body-500">Lucas Audart</div>
 											<div class="aw-user-box-username aw-sub-body-400">Web Consultant</div>
 										</div>
@@ -179,7 +195,11 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/Slocaly" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/Slocaly"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
@@ -189,7 +209,11 @@
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/lucas-audart" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/lucas-audart"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -218,17 +242,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/tanmoy27112000" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/tanmoy27112000"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/tanmoykar27" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/tanmoykar27"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/tanmoykarmakar2711" target="_blank" aria-label="Linkedin profile">
+											<a
+												href="https://www.linkedin.com/in/tanmoykarmakar2711"
+												target="_blank"
+												aria-label="Linkedin profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -257,17 +293,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/2002Bishwajeet" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/2002Bishwajeet"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/biswa_20p" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/biswa_20p"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/2002bishwajeet" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/2002bishwajeet"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -290,21 +338,35 @@
 										</div>
 									</div>
 									<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
-										Mickaël is a front-end developer working as a web consultant in Lyon at Zenika. He co-organizes meetups with LyonJS and speaks at conferences about Appwrite, Flutter, and Remotion.
+										Mickaël is a front-end developer working as a web consultant in Lyon at Zenika.
+										He co-organizes meetups with LyonJS and speaks at conferences about Appwrite,
+										Flutter, and Remotion.
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/CruuzAzul" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/CruuzAzul"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/CruuzAzul" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/CruuzAzul"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/mickaelalves" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/mickaelalves"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -333,17 +395,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/safwanyp/" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/safwanyp/"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/debingalooo" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/debingalooo"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/safwanyp/" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/safwanyp/"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -373,17 +447,29 @@
 									</p>
 									<ul class="u-flex u-gap-12">
 										<li>
-											<a href="https://github.com/Emiliaaah" target="_blank" aria-label="GitHub profile">
+											<a
+												href="https://github.com/Emiliaaah"
+												target="_blank"
+												aria-label="GitHub profile"
+											>
 												<span class="icon-github" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://twitter.com/CodingEmilia" target="_blank" aria-label="X profile">
+											<a
+												href="https://twitter.com/CodingEmilia"
+												target="_blank"
+												aria-label="X profile"
+											>
 												<span class="aw-icon-x" aria-hidden="true" />
 											</a>
 										</li>
 										<li>
-											<a href="https://www.linkedin.com/in/emilia-van-der-ploeg" target="_blank" aria-label="LinkedIn profile">
+											<a
+												href="https://www.linkedin.com/in/emilia-van-der-ploeg"
+												target="_blank"
+												aria-label="LinkedIn profile"
+											>
 												<span class="aw-icon-linkedin" aria-hidden="true" />
 											</a>
 										</li>
@@ -556,14 +642,14 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/labs.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">Beta-test</span>
+									<span>Beta-test</span>
 								</h3>
 								<p class="aw-info-boxes-content">Opportunity to beta-test Appwrite releases.</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/unlock.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">Roadmap access</span>
+									<span>Roadmap access</span>
 								</h3>
 								<p class="aw-info-boxes-content">Special access to a more in-depth roadmap.</p>
 							</li>
