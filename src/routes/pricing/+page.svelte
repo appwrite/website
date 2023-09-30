@@ -75,7 +75,7 @@
 										</header>
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">100GB bandwidth</span></li>
+												<li class=""><span class="">10GB bandwidth</span></li>
 												<li class=""><span class="">Unlimited projects</span></li>
 												<li class=""><span class="">Never paused</span></li>
 												<li class=""><span class="">750K executions</span></li>
