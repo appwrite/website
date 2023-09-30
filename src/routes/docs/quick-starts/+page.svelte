@@ -102,6 +102,16 @@
 					href: 'dart'
 				}
 			]
+		},
+		{
+			title: 'OAuth 2 providers',
+			quickStarts: [
+				{
+					title: 'Google OAuth 2',
+					image: '/images/blog/placeholder.png',
+					href: 'oauth-google'
+				},
+			]
 		}
 	];
 
