@@ -201,10 +201,15 @@
 								<p class="aw-main-body-500 u-margin-block-start-4">
 									Anyone can join and help Appwrite become better.
 								</p>
-								<button class="aw-button is-secondary u-margin-block-start-32">
+								<a
+									href="https://github.com/appwrite/appwrite/issues"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="aw-button is-secondary u-margin-block-start-32"
+								>
 									<span class="aw-icon-github" aria-hidden="true" />
 									<span class="">View all Open Issues</span>
-								</button>
+								</a>
 							</div>
 							<div class="u-stretch">
 								<table class="aw-table-line">
