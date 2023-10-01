@@ -39,13 +39,13 @@ brew install --HEAD appwrite
 or terminal
 
 ```sh
-curl -sL https://appwrite.io/cli/install.sh | bash
+curl -sL https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh | bash
 ```
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
 ```sh
-iwr -useb https://appwrite.io/cli/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.ps1 | iex
 ```
 {% /tabsitem %}
 
