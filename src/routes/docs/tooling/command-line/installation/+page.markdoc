@@ -51,7 +51,7 @@ iwr -useb https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.
 
 {% tabsitem #linux title="Linux" %}
 ```sh
-curl -sL https://appwrite.io/cli/install.sh | bash
+curl -sL https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh | bash
 ```
 {% /tabsitem %}
 {% /tabs %}
