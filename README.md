@@ -38,6 +38,12 @@ For security issues, kindly email us at [security@appwrite.io](mailto:security@a
 
 Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), and [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
 
+## Thanks to all the contributors ❤️
+
+<a href = "https://github.com/appwrite/website">
+  <img src = "https://contrib.rocks/image?repo=appwrite/website"/>
+</a>
+
 ## License
 
 Appwrite website, docs and blog © 2023 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
