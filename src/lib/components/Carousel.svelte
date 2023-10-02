@@ -3,8 +3,6 @@
 
     export let gap = 32;
     let scroll = 0;
-    let touchStart = 0;
-    let touchEnd = 0;
 
     function calculateScrollAmount(prev = false) {
         const direction = prev ? -1 : 1;
@@ -33,39 +31,16 @@
         });
     }
 
-    function handleTouchStart(e: TouchEvent) {
-        touchStart = e.touches[0].clientX;
-    }
-    function handleTouchMove(e: TouchEvent) {
-        touchEnd = e.touches[0].clientX;
-    }
-
-    function handleTouchEnd() {
-        if (touchEnd > touchStart) {
-            prev();
-        } else {
-            next();
-        }
-    }
-
     let isEnd = false;
     let isStart = true;
 
     function handleScroll() {
-        if (carousel.scrollLeft === 0) {
-            isStart = true;
-            isEnd = false;
-        } else if (Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth) {
-            isStart = false;
-            isEnd = true;
-        } else {
-            isStart = false;
-            isEnd = false;
-        }
+        isStart = carousel.scrollLeft <= 0;
+        isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth;
     }
 </script>
 
-<div class="wrapper">
+<div>
     <div class="u-flex u-main-end u-flex-wrap">
         <div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
             <button
@@ -86,22 +61,67 @@
             </button>
         </div>
     </div>
-    <ul
-        class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
-        bind:this={carousel}
-        on:touchstart={handleTouchStart}
-        on:touchmove={handleTouchMove}
-        on:touchend={handleTouchEnd}
-        on:scroll={handleScroll}
-    >
+
+    <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
+        <ul
+            class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
+            bind:this={carousel}
+            on:scroll={handleScroll}
+        >
+            <slot />
+        </ul>
+    </div>
+
+    <!-- <ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 pseudo-carousel">
         <slot />
-    </ul>
+    </ul> -->
 </div>
 
 <style lang="scss">
+    .carousel-wrapper {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            transition: ease 250ms;
+        }
+
+        &::before {
+            left: 0;
+            background: linear-gradient(
+                to right,
+                hsl(var(--aw-color-background-docs)),
+                transparent
+            );
+        }
+
+        &[data-state='start']::before {
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(var(--aw-color-background-docs)), transparent);
+        }
+
+        &[data-state='end']::after {
+            opacity: 0;
+        }
+    }
+
     .carousel {
         grid-auto-flow: column;
         grid-auto-columns: minmax(17.5rem, 1fr);
-        overflow-x: hidden;
+        overflow-x: scroll;
+        scroll-snap-type: x proximity;
+    }
+
+    .carousel :global(li) {
+        scroll-margin: 48px;
     }
 </style>
