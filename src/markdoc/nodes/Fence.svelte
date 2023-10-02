@@ -60,9 +60,11 @@
     <section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
         <header class="aw-code-snippet-header">
             <div class="aw-code-snippet-header-start">
-                <div class="u-flex u-gap-16">
-                    <div class="aw-tag"><span class="text">{platformMap[language]}</span></div>
-                </div>
+                {#if platformMap[language]}
+                    <div class="u-flex u-gap-16">
+                        <div class="aw-tag"><span class="text">{platformMap[language]}</span></div>
+                    </div>
+                {/if}
             </div>
             <div class="aw-code-snippet-header-end">
                 <ul class="buttons-list u-flex u-gap-8">
