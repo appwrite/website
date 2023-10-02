@@ -11,6 +11,12 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
+  grid-auto-columns:minmax(pxToRem(280), 1fr);
+
+  &.is-big {
+    grid-template-columns: repeat(auto-fill, minmax(pxToRem(360), 1fr));
+    grid-auto-columns:minmax(pxToRem(360), 1fr);
+  }
 
   &-scroll {
     container-type:inline-size; container-name:grid-articles;
