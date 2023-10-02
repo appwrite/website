@@ -28,10 +28,8 @@ import { Platform } from './references';
 
 const languages = {
 	js: javascript,
-	jsx: javascript,
 	dart: dart,
 	ts: typescript,
-	tsx: typescript,
 	deno: typescript,
 	xml: xml,
 	html: xml,
@@ -112,7 +110,6 @@ export const getCodeHtml = (args: Args) => {
 		return carry;
 	}, '');
 
-	return `<pre><code class="aw-code language-${language} ${
-		withLineNumbers ? 'line-numbers' : ''
-	}">${final}</code></pre>`;
+	return `<pre><code class="aw-code language-${language} ${withLineNumbers ? 'line-numbers' : ''
+		}">${final}</code></pre>`;
 };
