@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createTooltip, melt } from '@melt-ui/svelte';
     import type { FloatingConfig } from '@melt-ui/svelte/internal/actions';
-    import { fly } from 'svelte/transition';
+    import { fly, type FlyParams } from 'svelte/transition';
 
     export let placement: FloatingConfig['placement'] = 'top';
     export let disabled = false;
@@ -17,6 +17,38 @@
         closeOnPointerDown: false,
         forceVisible: true
     });
+
+    $: flyParams = (function getFlyParams() {
+        const params: FlyParams = {
+            duration: 150
+        };
+
+        switch (placement) {
+            case 'top':
+            case 'top-start':
+            case 'top-end':
+                params.y = 4;
+                break;
+            case 'bottom':
+            case 'bottom-start':
+            case 'bottom-end':
+                params.y = -4;
+                break;
+
+            case 'left':
+            case 'left-start':
+            case 'left-end':
+                params.x = 4;
+                break;
+            case 'right':
+            case 'right-start':
+            case 'right-end':
+                params.x = -4;
+                break;
+        }
+
+        return params;
+    })();
 </script>
 
 <slot name="asChild" trigger={$trigger} />
@@ -28,11 +60,7 @@
 {/if}
 
 {#if $open && !disabled}
-    <div
-        use:melt={$content}
-        class="aw-tooltip aw-sub-body-400"
-        transition:fly={{ y: 4, duration: 150 }}
-    >
+    <div use:melt={$content} class="aw-tooltip aw-sub-body-400" transition:fly={flyParams}>
         <div use:melt={$arrow} />
         <slot name="tooltip" />
     </div>
