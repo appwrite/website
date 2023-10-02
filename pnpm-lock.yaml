@@ -12,8 +12,8 @@ dependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/repo':
-    specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/edf06962ec0b5a7d58d3ce1aa126e612498c9d0a
+    specifier: github:appwrite/appwrite#fix-specs
+    version: github.com/appwrite/appwrite/7b5ee34b68626e5e7ae978983ce86bc8c99d984c
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -1486,7 +1486,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /chownr@1.1.4:
@@ -2321,6 +2321,14 @@ packages:
 
   /fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -3914,7 +3922,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /run-parallel@1.2.0:
@@ -4901,7 +4909,7 @@ packages:
       rollup: 3.28.0
       sass: 1.66.1
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /vitefu@0.2.4(vite@4.4.9):
@@ -5097,8 +5105,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/edf06962ec0b5a7d58d3ce1aa126e612498c9d0a:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/edf06962ec0b5a7d58d3ce1aa126e612498c9d0a}
-    name: appwrite
+  github.com/appwrite/appwrite/7b5ee34b68626e5e7ae978983ce86bc8c99d984c:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/7b5ee34b68626e5e7ae978983ce86bc8c99d984c}
+    name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
