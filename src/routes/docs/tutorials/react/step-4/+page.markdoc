@@ -69,7 +69,7 @@ First, wrap the `main` element with the `UserProvider` component.
 
 Update `src/App.jsx` to the following code.
 
-```jsx
+```js
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
 
@@ -92,7 +92,7 @@ Then, optionally render the `Login` component if the path is `/login`, otherwise
 
 Update `src/App.jsx` to the following code.
 
-```jsx
+```js
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
@@ -116,7 +116,7 @@ export default App;
 
 Create a new file `src/pages/Home.jsx` and add the following stub code to it.
 
-```jsx
+```js
 // We'll complete this component later
 export function Home() {
   return (
@@ -131,7 +131,7 @@ Finally, we are able to create the login page. Users will be able to login or re
 
 Create a new file `src/pages/Login.jsx` and add the following code to it.
 
-```jsx
+```js
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 
