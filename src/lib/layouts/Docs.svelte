@@ -77,13 +77,13 @@
 						class="aw-logo u-only-dark"
 						src="/images/logos/appwrite.svg"
 						alt="appwrite"
-						width="130"
+						height="24" width="130"
 					/>
 					<img
 						class="aw-logo u-only-light"
 						src="/images/logos/appwrite-light.svg"
 						alt="appwrite"
-						width="130"
+						height="24" width="130"
 					/>
 				</a>
 			</div>
@@ -114,13 +114,13 @@
 								class="aw-logo u-only-dark"
 								src="/images/logos/appwrite.svg"
 								alt="appwrite"
-								width="130"
+								height="24" width="130"
 							/>
 							<img
 								class="aw-logo u-only-light"
 								src="/images/logos/appwrite-light.svg"
 								alt="appwrite"
-								width="130"
+								height="24" width="130"
 							/>
 						</a>
 						<nav class="aw-main-header-nav">
