@@ -15,9 +15,9 @@
   @include meta.load-css('2-resets');
 }
 
-@layer fonts {
-  @include meta.load-css('3-fonts');
-}
+// @layer fonts {
+//   @include meta.load-css('3-fonts');
+// }
 
 @layer icons {
   @include meta.load-css('4-icons');
