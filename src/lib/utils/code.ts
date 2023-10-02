@@ -28,8 +28,10 @@ import { Platform } from './references';
 
 const languages = {
 	js: javascript,
+	jsx: javascript,
 	dart: dart,
 	ts: typescript,
+	tsx: typescript,
 	deno: typescript,
 	xml: xml,
 	html: xml,
