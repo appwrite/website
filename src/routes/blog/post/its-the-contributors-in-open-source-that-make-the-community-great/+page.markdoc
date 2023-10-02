@@ -78,33 +78,3 @@ We want to invite developers to come join us during Hacktoberfest. Together, we 
 Come join us and build like a team of hundreds.
 
 ![Build like a team of hundreds](/images/blog/slogan.png)
-
-So, if you have contributed to Appwrite before - be it by fixing a typo, contributing features, raising issues, or opening discussions, this blog is for you. Or if you want to contribute for the very first time, then too, this blog is for you.
-
-[Appwrite 1.4](https://dev.to/appwrite/appwrite-14-brings-command-center-ai-one-click-migrations-and-upgraded-functions-1ch2#:~:text=We've%20just%20released%20Appwrite,even%20better%20security%20for%20users.) release was a special one, not only because it was the biggest release of Appwrite so far, but also because it had the highest number of contributions from community members.
-
-We want to extend our gratitude to each and every one of them:
-
-- Luca Fabbri for helping us with [documentation](https://github.com/appwrite/appwrite/pull/4537)
-- Sarthak Roy for updating [codeql-action to v3](https://github.com/appwrite/appwrite/pull/4534)
-- Vrabe for updating [Chinese translation](https://github.com/appwrite/appwrite/pull/4285)
-- Kalpesh for removing [invalid link from Readme](https://github.com/appwrite/appwrite/pull/4298)
-- Tushar Dahiya for helping us with [updating text in Readme](https://github.com/appwrite/appwrite/pull/4317)
-- Sushrut for [updating actions/checkout to v3](https://github.com/appwrite/appwrite/pull/4332)
-- Piotr Rogowski for helping us [fix a bug in user not found exception](https://github.com/appwrite/appwrite/pull/4506)
-- Geister Furz for working on a [fix to prevent showing of incorrect realtime payload when deleting session from console](https://github.com/appwrite/appwrite/pull/4050)
-- Vimode for [updating Windows powershell commands](https://github.com/appwrite/appwrite/pull/4533)
-- Megatank for [updating the limit argument that makes upgrading to newer versions of self-hosted Appwrite smoother](https://github.com/appwrite/appwrite/pull/4341)
-- Pomarec for [fixing French translation](https://github.com/appwrite/appwrite/pull/4783)
-- Binyamin Yawitz for [fixing function event to trigger webhook](https://github.com/appwrite/appwrite/pull/6219)
-
-The above list shows that at Appwrite, we welcome every type of contribution. Whether you're just stepping into the world of Appwrite or you're a seasoned contributor, we've got resources and opportunities tailored for you:
-
-- [Appwrite Docs](https://appwrite.io/docs)
-- [Appwrite Discord Server](https://appwrite.io/discord)
-
-If you are looking to contribute to Appwrite this year, you can find them [here](https://github.com/appwrite/appwrite/labels/hacktoberfest), from code to low/no-code issues, we have it all!
-
-With Hacktoberfest just around the corner we are reminded of where our journey began, September 2019, just in time for Hacktoberfest. It was in this initial launch where we had over 200+ contributors as our GitHub starts doubled, reaching 4-digits for the first time! For this reason Hacktoberfest has always had a special place in our hearts.
-
-The above list shows that at Appwrite, we welcome every type of contribution. Whether you're just stepping into the world of Appwrite or you're a seasoned contributor, we've got resources and opportunities tailored for you, which you can find on our [community page](http://appwrite.io/community).
