@@ -7,8 +7,8 @@ async function main() {
     const app = express();
     app.use(compression());
     app.use(await sitemap());
-    app.use(function (req, res, next) {
-        res.setHeader('Cache-Control', 'max-age 3600, must-revalidate');
+    app.use(function (_req, res, next) {
+        res.setHeader('Cache-Control', 'max-age=3600, no-cache');
         next();
     });
     app.use(handler);
