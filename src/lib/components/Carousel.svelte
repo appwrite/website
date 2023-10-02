@@ -71,10 +71,6 @@
             <slot />
         </ul>
     </div>
-
-    <!-- <ul class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 pseudo-carousel">
-        <slot />
-    </ul> -->
 </div>
 
 <style lang="scss">
@@ -119,6 +115,8 @@
         grid-auto-columns: minmax(17.5rem, 1fr);
         overflow-x: scroll;
         scroll-snap-type: x proximity;
+
+        scrollbar-width: none;
     }
 
     .carousel :global(li) {
