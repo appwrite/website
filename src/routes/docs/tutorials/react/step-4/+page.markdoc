@@ -12,7 +12,7 @@ We'll use context and a custom hook to manage our user's data.
 
 Create a new file `src/lib/context/user.jsx` and add the following code to it.
 
-```js
+```jsx
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
 
