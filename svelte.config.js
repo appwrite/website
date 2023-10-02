@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { vitePreprocess } from '@sveltejs/kit/vite';
