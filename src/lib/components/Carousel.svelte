@@ -1,6 +1,7 @@
 <script lang="ts">
     let carousel: HTMLElement;
 
+    export let isBig = false;
     export let gap = 32;
     let scroll = 0;
 
@@ -41,8 +42,9 @@
 </script>
 
 <div>
-    <div class="u-flex u-main-end u-flex-wrap">
-        <div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
+    <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
+        <slot name="header" />
+        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
             <button
                 class="aw-icon-button"
                 aria-label="Move carousel backward"
@@ -65,6 +67,7 @@
     <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
         <ul
             class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
+            class:is-big={isBig}
             bind:this={carousel}
             on:scroll={handleScroll}
         >
@@ -85,6 +88,7 @@
             width: 60px;
             height: 100%;
             transition: ease 250ms;
+            z-index: 100;
         }
 
         &::before {
@@ -112,7 +116,6 @@
 
     .carousel {
         grid-auto-flow: column;
-        grid-auto-columns: minmax(17.5rem, 1fr);
         overflow-x: scroll;
         scroll-snap-type: x proximity;
 
