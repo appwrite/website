@@ -1,0 +1,32 @@
+---
+layout: tutorial
+title: Create Next app
+description: Create a Next JS project using Appwrite.
+step: 2
+---
+
+# Create Next JS project {% #create-next-js-project %}
+
+Create a new Next JS project using the `create-next-app` command.
+
+```sh
+npx create-next-app expense-tracker --tailwind --eslint
+```
+
+We are using the `--tailwind` and `--eslint` flags to add Tailwind CSS and ESLint to our project.
+
+# Install dependencies {% #install-dependencies %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+# Start the development server {% #start-the-development-server %}
+
+You can start the development server using the following command.
+
+```sh
+npm run dev
+```

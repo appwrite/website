@@ -17,7 +17,7 @@ This tutorial will introduce the following concepts:
 3. Implement auth
 4. Intro to databases
 5. Queries and pagination
-6. storage
+6. Storage
 
 # Prerequisites {% #prerequisites %}
 1. Basic knowledge of JavaScript, React JS and Next JS.
