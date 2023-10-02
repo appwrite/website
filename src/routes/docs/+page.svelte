@@ -156,7 +156,7 @@
             </p>
             <Carousel>
                 {#each tutorials as tutorial}
-                    <li>
+                    <li style:scroll-snap-align="start">
                         <CodeCard {...tutorial} />
                     </li>
                 {/each}
