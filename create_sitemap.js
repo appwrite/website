@@ -1,6 +1,13 @@
 import { writeFileSync } from 'fs';
 import { prerendered } from './build/server/manifest.js';
 
+const isVercel = process.env.VERCEL === '1';
+
+if (isVercel) {
+    console.log('Skipping sitemap.xml creation on Vercel preview.');
+    process.exit(0);
+}
+
 console.log('Building sitemap.xml ...');
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
