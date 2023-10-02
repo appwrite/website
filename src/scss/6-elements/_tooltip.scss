@@ -9,5 +9,7 @@
     background-color: var(--p-tooltip-bg);
     padding: pxToRem(8) pxToRem(12);
     border-radius: pxToRem(8);
+    backdrop-filter: blur(pxToRem(16));
+    // box-shadow:  0 1px 20px 3px rgb(0 0 0 / 0.1);
     z-index: 999;
 }
