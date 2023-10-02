@@ -33,15 +33,17 @@ services:
       - traefik.constraint-label-stack=homepage
       - traefik.docker.network=homepage
       - traefik.http.services.homepage.loadbalancer.server.port=3000
+      - traefik.http.middlewares.gzip.compress=true
       #http
       - traefik.http.routers.homepage.entrypoints=web
       - traefik.http.routers.homepage.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage.service=homepage
+      - traefik.http.routers.homepage.middlewares=gzip
       # https
       - traefik.http.routers.homepage_secure.entrypoints=websecure
       - traefik.http.routers.homepage_secure.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage_secure.service=homepage
       - traefik.http.routers.homepage_secure.tls=true
-  
+      - traefik.http.routers.homepage_secure.middlewares=gzip
 networks:
   homepage:
