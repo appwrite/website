@@ -15,7 +15,7 @@
 </script>
 
 <nav class="aw-footer-nav u-margin-block-start-100 u-position-relative aw-u-sep-block-start">
-	<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" width="130" />
+	<img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
 	<ul class="aw-footer-nav-main-list">
 		<li class="aw-footer-nav-main-item">
 			<h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">
