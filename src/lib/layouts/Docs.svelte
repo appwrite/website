@@ -64,7 +64,7 @@
 
 <svelte:window on:keydown={handleKeypress} />
 
-<div class="u-position-relative u-overflow-hidden">
+<div class="u-position-relative">
     <div
         class={variantClass}
         class:is-open={$layoutState.showSidenav}

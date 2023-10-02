@@ -26,7 +26,12 @@
 
     &-image {
       overflow:hidden; border-radius:pxToRem(8);
-      > * {transition:var(--transition); }
+      > * {
+        transition:var(--transition); 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &-content { display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12); }
