@@ -136,7 +136,7 @@
                             <a href="#introduction" class="is-selected">Introduction</a>
                         </li>
                         <li>
-                            <a href="#Subscription">Subscriptions</a>
+                            <a href="#subscription">Subscriptions</a>
                         </li>
                         <li>
                             <a href="#fee">Fee Changes</a>
