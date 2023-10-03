@@ -1,0 +1,177 @@
+---
+layout: tutorial
+title: Create Expense List
+description: Fetch user expenses from Appwrite database and display them in a list.
+step: 6
+---
+# Create List API {% #create-list-api %} 
+We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `api/expense/list.js` and add the following code.
+
+```js
+import { Query } from "appwrite";
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
+
+export default async (req, res) => {
+  const method = req.method;
+
+  if (method === "POST") {
+    const { userId} = req.body;
+    const { jwt } = req.headers;
+
+    if (!userId || !jwt) {
+      return res.status(401).json({ message: "Missing fields" });
+    }
+    account.client.setJWT(jwt);
+
+    try {
+      const items = await database.listDocuments(
+        EXPENSE_DATABASE_ID,
+        EXPENSE_COLLECTION_ID,
+        [
+          Query.equal("userId", [userId]),
+          Query.orderDesc("$createdAt"),
+        ]
+      );
+      return res
+        .status(200)
+        .json({ items: items.documents, total: items.total });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error", error: error.message });
+    }
+  } else {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
+};
+```
+
+With Appwrite's `listDocuments` method we can fetch the documents from the database.
+
+We are also using Appwrite's `Query` class to filter the documents. We have used the `Query.equal` method to filter the documents by `userId`. We have also used the `Query.orderDesc` method to order the documents by `$createdAt` in descending order.
+
+
+# Expense List Component {% #expense-list-component %}
+
+Let's fetch the user expenses from the database and display them in a list. Open the `pages/index.js` file and add the following code.
+
+```js
+import React, { useEffect, useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+
+import ExpenseList from "@/components/ExpenseList";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const cookie = useCookie(props.cookie);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        start: start,
+        limit: limit,
+      }),
+    });
+    const data = await response.json();
+    if (data.error === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+      setTotal(data.total);
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
+  return (
+    <ExpenseList
+      expenses={expenses}
+    />
+  );
+};
+
+export default Home;
+```
+
+Now we will render the Expenses. Create a new file `components/ExpenseList.js` and add the following code.
+
+```js
+import dayjs from "dayjs";
+import React from "react";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+
+const ExpenseList = ({ expenses }) => {
+  return (
+    <div className="pt-3">
+      {expenses?.length > 0 &&
+        expenses?.map((expense) => (
+          <div
+            className={`border rounded-md p-4 my-4 ${
+              expense.type === "Paid" ? "border-red-800" : "border-green-800"
+            }`}
+            key={expense.$id}
+          >
+            <div className="flex justify-between">
+              <p className="text-xl font-bold">{expense.title}</p>
+              <div className="flex gap-3">
+                <p className="text-xl font-bold">
+                  {expense.type === "Paid" && "-"}
+                  {expense.type === "Received" && "+"}${expense.amount}
+                </p>
+                <span
+                  className={`border px-2 font-semibold rounded-sm ${
+                    expense.type === "Paid"
+                      ? "border-red-800 bg-red-50"
+                      : "border-green-800 bg-gray-50"
+                  }`}
+                >
+                  {expense.type}
+                </span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-3">
+              <p className="text-gray-500">
+                {dayjs(expense.$createdAt).format("DD MMM YYYY hh:mm A")}
+              </p>
+              <div className="flex gap-2 text-2xl">
+                <button
+                  className="cursor-pointer"
+                >
+                  <AiOutlineEdit className="text-blue-800" />
+                </button>
+                <button
+                  className="cursor-pointer"
+                >
+                  <AiOutlineDelete className="text-red-800" />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+};
+
+export default ExpenseList;
+```
