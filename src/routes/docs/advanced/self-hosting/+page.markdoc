@@ -107,7 +107,7 @@ Make these configurations to unlock the full power of Appwrite.
 For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base `docker-compose.yml` and `.env` files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
 
 ```bash
-docker compose up -d --remove-orphans
+docker-compose up -d --remove-orphans
 ```
 
 Once the Docker installation completes, go to your machine's hostname or IP address on your browser to access the Appwrite Console. Please note that on hosts that are not Linux-native, the server might take a few minutes to start after installation completes.
@@ -117,7 +117,7 @@ Once the Docker installation completes, go to your machine's hostname or IP addr
 You can stop your Appwrite containers by using the following command executed from the same directory as your `docker-compose.yml` file.
 
 ```bash
-docker compose stop
+docker-compose stop
 ```
 
 # Uninstall {% #uninstall %}
@@ -125,5 +125,5 @@ docker compose stop
 To stop and remove your Appwrite containers, you can use the following command executed from the same directory as your `docker-compose.yml` file.
 
 ```bash
-docker compose down -v
+docker-compose down -v
 ```
