@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Implement Authtentication
-description: Add Appwrite authentication to your Next JS app
+title: Implement authtentication
+description: Add Appwrite authentication to your Next.js app
 step: 4
 ---
 
@@ -11,9 +11,9 @@ We will be using cookie to store the session token. So we need to install `next-
 npm install next-cookie react-hot-toast
 ```
 
-# Signup Page {% #signup-page %}      
+# Signup page {% #signup-page %}      
 
-In your project under the pages directory, create a new file `src/pages/signup.js`. Next JS will automatically create a route for this page `/signup`. Let's create the signup form.
+In your project under the pages directory, create a new file `src/pages/signup.js`. Next.js will automatically create a route for this page `/signup`. Let's create the signup form.
 
 ```js
 import { useState } from "react";
@@ -98,9 +98,9 @@ const signup = async (e) => {
 After the user is created, we are creating a session using `createEmailSession` method. Then we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
 
 
-# Signin Page {% #signin-page %}      
+# Signin page {% #signin-page %}      
 
-In your project under the pages directory, create a new file `src/pages/login.js`. Next JS will automatically create a route for this page `/login`. Let's create the signin form.
+In your project under the pages directory, create a new file `src/pages/login.js`. Next.js will automatically create a route for this page `/login`. Let's create the signin form.
 
 ```js
 import Link from "next/link";

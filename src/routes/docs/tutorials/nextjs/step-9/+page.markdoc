@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Next Steps
-description: View your Next JS project powered by Appwrite authentication and databases.
+title: Next steps
+description: View your Next.js project powered by Appwrite authentication and databases.
 step: 9
 ---
 
@@ -9,5 +9,5 @@ step: 9
 Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
 
 
-# Final Code {% #final-code %}
+# Final code {% #final-code %}
 If you are looking for the final code, you can find it in the [expense-tracker](https://github.com/Mridul2820/expense-tracker) repository.

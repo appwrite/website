@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Create Expense List
+title: Create expense list
 description: Fetch user expenses from Appwrite database and display them in a list.
 step: 6
 ---
-# Create List API {% #create-list-api %} 
+# Create list API {% #create-list-api %} 
 We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `api/expense/list.js` and add the following code.
 
 ```js
@@ -56,7 +56,7 @@ With Appwrite's `listDocuments` method we can fetch the documents from the datab
 We are also using Appwrite's `Query` class to filter the documents. We have used the `Query.equal` method to filter the documents by `userId`. We have also used the `Query.orderDesc` method to order the documents by `$createdAt` in descending order.
 
 
-# Expense List Component {% #expense-list-component %}
+# Expense list component {% #expense-list-component %}
 
 Let's fetch the user expenses from the database and display them in a list. Open the `pages/index.js` file and add the following code.
 

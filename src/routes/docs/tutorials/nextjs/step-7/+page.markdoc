@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Edit and Delete Expenses
-description: Edit and Delete Expenses from Expense List
+title: Edit and delete expenses
+description: Edit and delete expenses from expense list
 step: 7
 ---
 
 In the expense card we have added two buttons to edit and delete the expense. We will add the functionality to these buttons in this step.
 
-# Edit Expense {% #edit-expense %}
+# Edit expense {% #edit-expense %}
 
 When the user clicks on the edit button, we will show the expense popup form with the expense details filled in. The user can then edit the expense and save it.
 
@@ -225,7 +225,7 @@ const editExpense = async (docId, title, amount, type) => {
 };
 ```
 
-# Delete Expense {% #delete-expense %}
+# Delete expense {% #delete-expense %}
 When the user clicks on the delete button, we will show a confirmation popup to the user. If the user confirms the delete action, we will delete the expense from the database.
 
 We will add a click event handler to the delete button in the `ExpenseCard` component.

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Add Pagination
+title: Add pagination
 description: Add pagination to the expense list
 step: 8
 ---
 
-# Add Pagination in API {% #add-pagination-api %}
+# Add pagination in API {% #add-pagination-api %}
 We will add pagination to the API. We edit out `/api/list.js` and add the following code:
 
 ```js
@@ -59,7 +59,7 @@ We are now accepting `limit` and `start` as parameters. `limit` is the number of
 We are using the `Query.limit` to limit the number of items returned and `Query.offset` to offset the items returned.
 
 
-# Pagination in the Frontend {% #add-pagination-frontend %}
+# Pagination in the frontend {% #add-pagination-frontend %}
 We will now add pagination in the frontend. We edit `pages/index.js` and add the following code:
 
 ```js

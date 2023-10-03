@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Add Database
-description: Add databases and queries to store user data in your Next JS app.
+title: Add database
+description: Add databases and queries to store user data in your Next.js app.
 step: 5
 ---
 # Create collection {% #create-collection %} 
@@ -33,7 +33,7 @@ Now that we have created a collection, we have to add permissions to the collect
 
 You can also add permission for a specific user or a team.
 
-# Add New Expense {% #add-new-expense %}
+# Add new expense {% #add-new-expense %}
 Now that we have a collection, we can add a new expense to the database.
 
 First we need to create a new API endpoint to add an expense. Create a new file `api/expense/index.js` and add the following code.

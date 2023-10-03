@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Create Next app
-description: Create a Next JS project using Appwrite.
+title: Create Next.js app
+description: Create a Next.js project using Appwrite.
 step: 2
 ---
 
-# Create Next JS project {% #create-next-js-project %}
+# Create Next.js project {% #create-next-js-project %}
 
-Create a new Next JS project using the `create-next-app` command.
+Create a new Next.js project using the `create-next-app` command.
 
 ```sh
 npx create-next-app expense-tracker --tailwind --eslint
