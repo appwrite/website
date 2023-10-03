@@ -1,17 +1,13 @@
 <script lang="ts">
-    import type { Action } from 'svelte/action';
-    const accordion: Action<HTMLButtonElement> = (node) => {
-        const callback = () => {
-            node.classList.toggle('is-open');
-        };
-        node.addEventListener('click', callback);
-
-        return {
-            destroy() {
-                node.removeEventListener('click', callback);
-            }
-        };
-    };
+    import { createAccordion, melt } from '@melt-ui/svelte';
+    import { slide } from 'svelte/transition';
+    const {
+        elements: { content, heading, item, root, trigger },
+        helpers: { isSelected }
+    } = createAccordion({
+        multiple: true,
+        forceVisible: true
+    });
 
     const links: Record<string, { label: string; href: string; target?: string; rel?: string }[]> =
         {
@@ -81,30 +77,12 @@
 
 <nav class="aw-footer-nav u-margin-block-start-100 u-position-relative aw-u-sep-block-start">
     <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
-    <ul class="aw-footer-nav-main-list">
+    <ul class="aw-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
-            <li class="aw-footer-nav-main-item">
+            <li class="aw-footer-nav-main-item aw-is-not-mobile">
                 <h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">
                     {title}
                 </h5>
-                <button class="aw-footer-nav-button aw-is-only-mobile" use:accordion>
-                    <span class="aw-caption-500 aw-eyebrow">{title}</span>
-                    <svg
-                        class="aw-footer-nav-button-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M10.4243 13.0243C10.19 13.2586 9.81007 13.2586 9.57576 13.0243L5.07576 8.52426C4.84145 8.28995 4.84145 7.91005 5.07576 7.67574C5.31007 7.44142 5.68997 7.44142 5.92429 7.67574L10 11.7515L14.0758 7.67574C14.3101 7.44142 14.69 7.44142 14.9243 7.67574C15.1586 7.91005 15.1586 8.28995 14.9243 8.52426L10.4243 13.0243Z"
-                            fill="#ADADB0"
-                        />
-                    </svg>
-                </button>
                 <ul class="aw-footer-nav-secondary-list aw-sub-body-400">
                     {#each items as { href, label, target, rel }}
                         <li>
@@ -112,6 +90,36 @@
                         </li>
                     {/each}
                 </ul>
+            </li>
+            <li
+                class="aw-footer-nav-main-item aw-is-only-mobile"
+                use:melt={$item({ value: title })}
+            >
+                <h5 use:melt={$heading({ level: 5 })}>
+                    <button
+                        class="aw-footer-nav-button aw-is-only-mobile"
+                        use:melt={$trigger({ value: title })}
+                    >
+                        <span class="aw-caption-500 aw-eyebrow">{title}</span>
+                        <span
+                            class="aw-icon-chevron-down aw-u-transition"
+                            class:aw-u-rotate-180={$isSelected(title)}
+                        />
+                    </button>
+                </h5>
+                {#if $isSelected(title)}
+                    <ul
+                        class="aw-footer-nav-secondary-list aw-sub-body-400"
+                        use:melt={$content({ value: title })}
+                        transition:slide={{ duration: 250 }}
+                    >
+                        {#each items as { href, label, target, rel }}
+                            <li>
+                                <a class="aw-link" {href} {target} {rel}>{label}</a>
+                            </li>
+                        {/each}
+                    </ul>
+                {/if}
             </li>
         {/each}
     </ul>
