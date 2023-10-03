@@ -1,0 +1,209 @@
+---
+layout: tutorial
+title: Add database
+description: Add databases and queries to store user data in your Next JS app.
+step: 5
+---
+# Create collection {% #create-collection %} 
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our expenses.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/expense-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/expense-tracker-collection.png)
+{% /only_light %}
+
+In the collection go to attributes and add the following attributes:
+| Field       | Type    | Required | Elements       |
+|-------------|---------|----------|----------------|
+| userId      | String  | Yes      |                |
+| title       | String  | Yes      |                |
+| amount      | Integer | Yes      |                |
+| type        | Enum    | Yes      | Paid, Received |
+
+# Add New Expense {% #add-new-expense %}
+Now that we have a collection, we can add a new expense to the database.
+
+First we need to create a new API endpoint to add an expense. Create a new file `api/expense/index.js` and add the following code.
+
+```js
+import { ID } from "appwrite";
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
+
+export default async (req, res) => {
+  const method = req.method;
+  const { jwt } = req.headers;
+  if (!jwt) {
+    return res.status(400).json({ message: "Unauthorized" });
+  }
+  account.client.setJWT(jwt);
+
+  if (method === "POST") {
+    const { userId, title, amount, type } = req.body;
+    if (!userId || !title || !amount || !type) {
+      return res.status(401).json({ message: "Missing fields" });
+    }
+    try {
+      await database.createDocument(
+        EXPENSE_DATABASE_ID,
+        EXPENSE_COLLECTION_ID,
+        ID.unique(),
+        {
+          userId: userId,
+          title: title,
+          amount: amount,
+          type: type,
+        }
+      );
+      return res.status(200).json({ message: "Saved successfully" });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  } 
+};
+```
+
+We have used Appwrite `createDocument` method to add a new document to the database. The method takes the following parameters: `databaseId`, `collectionId`, `documentId`, `data`. 
+
+The `databaseId` is the ID of the database we want to add the document to. The `collectionId` is the ID of the collection we want to add the document to. The `documentId` is the ID of the document we want to add. We have used the `ID.unique()` method to generate a unique ID for the document. The `data` is an object that contains the data we want to add to the document.
+
+We have created a new API endpoint that will add a new expense to the database. The endpoint will be available at `/api/expense`.
+
+Let's use the new API. In the `pages/index.js` file, add the following code to the `addExpense` function. This function will add a new expense to the database.
+
+```js
+import React from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+
+const Home = (props) => {
+  const cookie = useCookie(props.cookie);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const createExpense = async (title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Saved successfully");
+    }
+  };
+
+  return (
+    <></>
+  );
+};
+```
+
+To get the expense data let's create a form.
+
+```js
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+
+const CreateExpensePopup = ({ setPopup, createExpense }) => {
+  const [item, setItem] = useState({
+    title: "",
+    amount: "",
+    type: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!item.title) {
+      return toast.error("Title is required");
+    }
+    if (!item.amount) {
+      return toast.error("Amount is required");
+    }
+    if (!item.type) {
+      return toast.error("Type is required");
+    }
+
+    await createExpense(item.title, item.amount, item.type);
+  };
+
+  return (
+    <div className="fixed inset-0 w-full h-full bg-black bg-opacity-25 flex items-center justify-center">
+      <div className="bg-white p-5 relative w-11/12 max-w-xl rounded-md">
+        <button
+          onClick={() => setPopup(null)}
+          className="absolute top-2 right-2 p-2"
+        >
+          <AiOutlineCloseCircle className="text-2xl" />
+        </button>
+        <p className="text-xl font-bold">Create Expense</p>
+        <form className="grid grid-cols-2 gap-3 mt-2" onSubmit={handleSubmit}>
+          <div className="col-span-2">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              className="border rounded-md p-2 w-full"
+              value={item.title}
+              onChange={(e) => setItem({ ...item, title: e.target.value })}
+            />
+          </div>
+          <div>
+            <label htmlFor="amount">Amount($)</label>
+            <input
+              type="number"
+              id="amount"
+              min="0"
+              className="border rounded-md p-2 w-full"
+              value={item.amount}
+              onChange={(e) => setItem({ ...item, amount: e.target.value })}
+            />
+          </div>
+          <div>
+            <label htmlFor="type">Type</label>
+            <select
+              id="type"
+              className="border rounded-md p-2 w-full"
+              value={item.type}
+              onChange={(e) => setItem({ ...item, type: e.target.value })}
+            >
+              <option value="">Select</option>
+              <option value="Paid">Paid</option>
+              <option value="Received">Received</option>
+            </select>
+          </div>
+
+          <div className="col-span-2 flex justify-center">
+            <button
+              type="submit"
+              className="border rounded-md p-2 bg-green-700 text-white w-40"
+            >
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default CreateExpensePopup;
+```
