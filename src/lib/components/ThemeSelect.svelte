@@ -37,7 +37,7 @@
 	});
 </script>
 
-<button class="aw-select is-colored" use:melt={$trigger}>
+<button class="aw-select is-colored" use:melt={$trigger} aria-label="Select theme">
 	<div class="physical-select">
 		{#if $selected?.value}
 			<span class={iconMap[$selected.value]} aria-hidden="true" />

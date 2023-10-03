@@ -72,7 +72,7 @@
     >
         <section class="aw-mobile-header is-transparent">
             <div class="aw-mobile-header-start">
-                <a href="/">
+                <a href="/" aria-label="homepage">
                     <img
                         class="aw-logo u-only-dark"
                         src="/images/logos/appwrite.svg"
@@ -125,7 +125,7 @@
             <div class="aw-main-header-wrapper">
                 <div class="aw-main-header-row">
                     <div class="aw-main-header-start u-stretch">
-                        <a href="/">
+                        <a href="/" aria-label="homepage">
                             <img
                                 class="aw-logo u-only-dark"
                                 src="/images/logos/appwrite.svg"
