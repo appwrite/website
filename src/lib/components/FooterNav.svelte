@@ -104,6 +104,7 @@
                         <span
                             class="aw-icon-chevron-down aw-u-transition"
                             class:aw-u-rotate-180={$isSelected(title)}
+                            style:font-size="1rem"
                         />
                     </button>
                 </h5>
