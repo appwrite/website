@@ -9,6 +9,8 @@ readtime: 10
 
 **Expense Tracker** is a simple web application that allows you to track your expenses. It is built using [Next JS](https://nextjs.org/) and [Appwrite](https://appwrite.io/).
 
+![Create project screen](/images/docs/tutorials/expense-tracker.png)
+
 # Concepts {% #concepts %}
 This tutorial will introduce the following concepts:
 
