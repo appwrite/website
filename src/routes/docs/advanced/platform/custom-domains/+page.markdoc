@@ -59,7 +59,7 @@ Below, you'll find a list of registrars and links to their DNS setting documenta
 | ClouDNS         | [A Record](https://www.cloudns.net/wiki/article/10/) / [CNAME Record](https://www.cloudns.net/wiki/article/13/) |
 | Cloudflare      | [Settings](https://support.cloudflare.com/hc/en-us/articles/360019093151) |
 | Crazydomains    | [A Record](https://www.crazydomains.com/help/how-do-i-create-update-an-a-record/) / [CNAME Record](https://www.crazydomains.com/help/how-do-i-change-update-my-cname-records/) |
-| DNS Made Easy   | [A Record](http://help.dnsmadeeasy.com/managed-dns/records/record/) / [CNAME Record](http://help.dnsmadeeasy.com/managed-dns/records/cname-record/) |
+| DNS Made Easy   | [A Record](https://help.dnsmadeeasy.com/managed-dns/records/record/) / [CNAME Record](https://help.dnsmadeeasy.com/managed-dns/records/cname-record/) |
 | DNSimple        | [A Record](https://support.dnsimple.com/articles/manage-a-record/) / [CNAME Record](https://support.dnsimple.com/articles/manage-cname-record/) |
 | DigitalOcean    | [A Record](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-dns#a-records) / [CNAME Record](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-dns#cname-records) / [Settings](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-dns) |
 | DreamHost       | [A Record](https://help.dreamhost.com/hc/en-us/articles/215414867-How-do-I-add-custom-DNS-records-#A_record) / [CNAME Record](https://help.dreamhost.com/hc/en-us/articles/215414867-How-do-I-add-custom-DNS-records-#CNAME_record) |

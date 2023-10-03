@@ -4,6 +4,10 @@
         "redirect": "/docs/quick-starts"
     },
     {
+        "link": "/contact",
+        "redirect": "/contact-us"
+    },
+    {
         "link": "/docs/server/database",
         "redirect": "/docs/references/cloud/server-nodejs/databases"
     },
