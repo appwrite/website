@@ -84,7 +84,7 @@ appwrite users create --userId "unique()" \
     --password very_strong_password
 ```
 
-## List Users
+## List users
 
 To get a list of all your project users, you can use the list command.
 
