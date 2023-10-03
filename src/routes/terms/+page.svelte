@@ -439,8 +439,8 @@
                         <h2 class="aw-title aw-u-color-text-primary">Contact Us</h2>
 
                         <p>
-                            If you have any questions about these Terms, please <a href="/contact"
-                                >contact us</a
+                            If you have any questions about these Terms, please <a
+                                href="/contact-us">contact us</a
                             >.
                         </p>
                     </section>
