@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { visible } from '$lib/actions';
     import { Main } from '$lib/layouts';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
@@ -8,6 +9,44 @@
     const title = 'Assets' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    enum Section {
+        NAMING = 'Naming',
+        LOGOTYPE = 'Logotype',
+        LOGOMARK = 'Logomark',
+        COLORS = 'Brand colors',
+        VISUALS = 'Product visuals',
+        CONTACT = 'Contact us'
+    }
+
+    const getSectionId = (section: Section) => section.toLowerCase().replace(/\s/g, '-');
+
+    let selectedMap: Map<Section, boolean> = new Map(
+        Object.values(Section).map((section) => [section, false])
+    );
+
+    $: selected = (function getSelected() {
+        for (const [key, value] of selectedMap) {
+            if (value) {
+                return key;
+            }
+        }
+        return Section.NAMING;
+    })();
+
+    $: progress = (function getProgress() {
+        const sections = Object.values(Section);
+        const index = sections.indexOf(selected);
+        return (index / (sections.length - 1)) * 100;
+    })();
+
+    const handleVisibility = (section: Section) => {
+        return (e: CustomEvent<boolean>) => {
+            console.log(selectedMap);
+            selectedMap.set(section, e.detail);
+            selectedMap = selectedMap;
+        };
+    };
 </script>
 
 <svelte:head>
@@ -15,7 +54,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -28,33 +67,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <svg
-        class="aw-is-not-mobile"
-        xmlns="http://www.w3.org/2000/svg"
-        width="1728"
-        height="518"
-        viewBox="0 0 1728 518"
-        fill="none"
-    >
-        <g opacity="0.12" filter="url(#filter0_f_1684_10385)">
-            <ellipse cx="864" rx="805" ry="262" fill="#FD366E" />
-        </g>
-        <defs>
-            <filter
-                id="filter0_f_1684_10385"
-                x="-196.022"
-                y="-517.022"
-                width="2120.04"
-                height="1034.04"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_1684_10385" />
-            </filter>
-        </defs>
-    </svg>
+    <img src="/images/bgs/assets-bg.svg" alt="" />
 </div>
 
 <Main>
@@ -78,116 +91,29 @@
             </header>
             <aside class="aw-grid-120-1fr-auto-side aw-is-mobile-closed">
                 <div class="aw-page-steps">
-                    <div class="aw-page-steps-location aw-is-not-mobile" style="--location:0%;">
+                    <div
+                        class="aw-page-steps-location aw-is-not-mobile"
+                        style="--location:{progress}%;"
+                    >
                         <button class="aw-page-steps-location-button">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                            >
-                                <g clip-path="url(#clip0_1684_10747)">
-                                    <g filter="url(#filter0_b_1684_10747)">
-                                        <circle
-                                            cx="8"
-                                            cy="8"
-                                            r="8"
-                                            fill="url(#paint0_linear_1684_10747)"
-                                            fill-opacity="0.32"
-                                        />
-                                        <circle
-                                            cx="8"
-                                            cy="8"
-                                            r="7.75"
-                                            stroke="url(#paint1_linear_1684_10747)"
-                                            stroke-width="0.5"
-                                        />
-                                    </g>
-                                    <circle cx="8" cy="7.99219" r="3" fill="white" />
-                                </g>
-                                <defs>
-                                    <filter
-                                        id="filter0_b_1684_10747"
-                                        x="-200"
-                                        y="-200"
-                                        width="416"
-                                        height="416"
-                                        filterUnits="userSpaceOnUse"
-                                        color-interpolation-filters="sRGB"
-                                    >
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feGaussianBlur
-                                            in="BackgroundImageFix"
-                                            stdDeviation="100"
-                                        />
-                                        <feComposite
-                                            in2="SourceAlpha"
-                                            operator="in"
-                                            result="effect1_backgroundBlur_1684_10747"
-                                        />
-                                        <feBlend
-                                            mode="normal"
-                                            in="SourceGraphic"
-                                            in2="effect1_backgroundBlur_1684_10747"
-                                            result="shape"
-                                        />
-                                    </filter>
-                                    <linearGradient
-                                        id="paint0_linear_1684_10747"
-                                        x1="2.02105"
-                                        y1="1.10843"
-                                        x2="16.3872"
-                                        y2="17.2901"
-                                        gradientUnits="userSpaceOnUse"
-                                    >
-                                        <stop stop-color="white" stop-opacity="0.4" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient
-                                        id="paint1_linear_1684_10747"
-                                        x1="7.45643"
-                                        y1="-1.10615"
-                                        x2="5.53812"
-                                        y2="17.9973"
-                                        gradientUnits="userSpaceOnUse"
-                                    >
-                                        <stop stop-color="white" stop-opacity="0.16" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0" />
-                                    </linearGradient>
-                                    <clipPath id="clip0_1684_10747">
-                                        <rect width="16" height="16" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
+                            <img src="/images/animations/indicator.svg" alt="" />
                         </button>
                     </div>
                     <ul class="aw-page-steps-list aw-sub-body-500">
-                        <li>
-                            <a href="#naming" class="is-selected">Naming</a>
-                        </li>
-                        <li>
-                            <a href="#logotype">Logotype</a>
-                        </li>
-                        <li>
-                            <a href="#logomark">Logomark</a>
-                        </li>
-                        <li>
-                            <a href="#colors">Brand colors</a>
-                        </li>
-                        <li>
-                            <a href="#visuals">Product visuals</a>
-                        </li>
-
-                        <li>
-                            <a href="#contact">Contact us</a>
-                        </li>
+                        {#each Object.values(Section) as section}
+                            <li>
+                                <a
+                                    href="#{getSectionId(section)}"
+                                    class:is-selected={selected === section}>{section}</a
+                                >
+                            </li>
+                        {/each}
                     </ul>
                 </div>
             </aside>
             <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed">
                 <div class="aw-content">
-                    <section id="">
+                    <section>
                         <p>
                             Resources for presenting the Appwrite brand to maintain consistency
                             while using our logos, colors, and other brand elements across various
@@ -198,9 +124,16 @@
                             <span>Download assets</span>
                         </button>
                     </section>
-                    <section id="naming">
+
+                    <section id={getSectionId(Section.NAMING)}>
                         <div class="u-flex u-flex-vertical u-gap-8">
-                            <h2 class="aw-title aw-u-color-text-primary">Naming</h2>
+                            <h2
+                                class="aw-title aw-u-color-text-primary"
+                                use:visible={{ top: 48 }}
+                                on:visible={handleVisibility(Section.NAMING)}
+                            >
+                                Naming
+                            </h2>
                             <p>
                                 Write 'Appwrite,' with a lowercase 'w' and no space between the two
                                 words. Please refrain from using variations like 'AppWrite' or 'App
@@ -208,9 +141,16 @@
                             </p>
                         </div>
                     </section>
-                    <section id="logotype">
+
+                    <section id={getSectionId(Section.LOGOTYPE)}>
                         <div class="u-flex u-flex-vertical u-gap-8">
-                            <h2 class="aw-title aw-u-color-text-primary">Logotype</h2>
+                            <h2
+                                class="aw-title aw-u-color-text-primary"
+                                use:visible={{ top: 48 }}
+                                on:visible={handleVisibility(Section.LOGOTYPE)}
+                            >
+                                Logotype
+                            </h2>
                             <p>
                                 The Appwrite logo stands as a prominent symbol of our brand's
                                 identity. Refrain from altering our logo and preferably use our logo
@@ -460,9 +400,16 @@
                             </div>
                         </section>
                     </section>
-                    <section id="logomark">
+
+                    <section id={getSectionId(Section.LOGOMARK)}>
                         <div class="u-flex u-flex-vertical u-gap-8">
-                            <h3 class="aw-title aw-u-color-text-primary">Logomark</h3>
+                            <h3
+                                class="aw-title aw-u-color-text-primary"
+                                use:visible={{ top: 48 }}
+                                on:visible={handleVisibility(Section.LOGOMARK)}
+                            >
+                                Logomark
+                            </h3>
                             <p>
                                 While prioritizing recognizability, the logotype is the recommended
                                 choice. Using the Appwrite logomark is suitable for situations where
@@ -601,8 +548,15 @@
                             </div>
                         </section>
                     </section>
-                    <section id="colors">
-                        <h2 class="aw-title aw-u-color-text-primary">Brand colors</h2>
+
+                    <section id={getSectionId(Section.COLORS)}>
+                        <h2
+                            class="aw-title aw-u-color-text-primary"
+                            use:visible={{ top: 48 }}
+                            on:visible={handleVisibility(Section.COLORS)}
+                        >
+                            Brand colors
+                        </h2>
                         <div class="u-flex u-flex-wrap u-gap-32">
                             <div
                                 class="u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8 aw-u-border-radius-8 u-padding-inline-24"
@@ -627,9 +581,16 @@
                             </div>
                         </div>
                     </section>
-                    <section id="visuals">
+
+                    <section id={getSectionId(Section.VISUALS)}>
                         <div class="u-flex u-flex-vertical u-gap-8">
-                            <h2 class="aw-title aw-u-color-text-primary">Product visuals</h2>
+                            <h2
+                                class="aw-title aw-u-color-text-primary"
+                                use:visible={{ top: 48 }}
+                                on:visible={handleVisibility(Section.VISUALS)}
+                            >
+                                Product visuals
+                            </h2>
                             <p>
                                 Use these product visuals to enhance your articles, presentations,
                                 and content related to Appwrite.
@@ -674,9 +635,15 @@
                         </div>
                     </section>
 
-                    <section id="contact">
+                    <section id={getSectionId(Section.CONTACT)}>
                         <div class="u-flex u-flex-vertical u-gap-8">
-                            <h2 class="aw-title aw-u-color-text-primary">Contact us</h2>
+                            <h2
+                                class="aw-title aw-u-color-text-primary"
+                                use:visible={{ top: 48 }}
+                                on:visible={handleVisibility(Section.CONTACT)}
+                            >
+                                Contact us
+                            </h2>
                             <p>
                                 Should you require further assistance or have specific needs beyond
                                 what's presented on this page, please don't hesitate to
