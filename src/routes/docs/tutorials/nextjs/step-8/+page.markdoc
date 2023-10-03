@@ -1,0 +1,155 @@
+---
+layout: tutorial
+title: Add Pagination
+description: Add pagination to the expense list
+step: 8
+---
+
+# Add Pagination in API {% #add-pagination-api %}
+We will add pagination to the API. We edit out `/api/list.js` and add the following code:
+
+```js
+import { Query } from "appwrite";
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
+
+export default async (req, res) => {
+  const method = req.method;
+
+  if (method === "POST") {
+    const { userId, limit, start } = req.body;
+    const { jwt } = req.headers;
+
+    if (!userId || !jwt) {
+      return res.status(401).json({ message: "Missing fields" });
+    }
+    account.client.setJWT(jwt);
+
+    try {
+      const items = await database.listDocuments(
+        EXPENSE_DATABASE_ID,
+        EXPENSE_COLLECTION_ID,
+        [
+          Query.equal("userId", [userId]),
+          Query.orderDesc("$createdAt"),
+          Query.limit(limit),
+          Query.offset(parseInt(start)),
+        ]
+      );
+      return res
+        .status(200)
+        .json({ items: items.documents, total: items.total });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error", error: error.message });
+    }
+  } else {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
+};
+```
+
+We are now accepting `limit` and `start` as parameters. `limit` is the number of items to return and `start` is the offset from the beginning of the list. We are also returning the `total` number of items in the collection.
+
+We are using the `Query.limit` to limit the number of items returned and `Query.offset` to offset the items returned.
+
+
+# Pagination in the Frontend {% #add-pagination-frontend %}
+We will now add pagination in the frontend. We edit `pages/index.js` and add the following code:
+
+```js
+import React, { useEffect, useState } from "react";
+import { useCookie } from "next-cookie";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+
+import ExpenseList from "@/components/ExpenseList";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
+  const [start, setStart] = useState(0);
+  const [total, setTotal] = useState(0);
+  const limit = 2;
+  const cookie = useCookie(props.cookie);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        start: start,
+        limit: limit,
+      }),
+    });
+    const data = await response.json();
+    if (data.error === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+      setTotal(data.total);
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+    // eslint-disable-next-line
+  }, [start]);
+
+  const pages = Math.ceil(total / limit);
+
+  return (
+    <div className="container mx-auto p-4 max-w-5xl">
+      <h1 className="text-2xl text-center font-bold">Your expenses</h1>
+      <ExpenseList setPopup={setPopup} expenses={expenses} />
+    </div>
+  );
+};
+
+export default Home;
+```
+
+We are using the `start` and `limit` to get the expenses. We are also calculating the number of pages using the `total` and `limit`.
+
+Now after the rendering the list, we will add the pagination buttons. We edit `pages/index.js` and add the following code:
+
+```js
+<div className="container mx-auto p-4 max-w-5xl">
+  <h1 className="text-2xl text-center font-bold">Your expenses</h1>
+  <ExpenseList setPopup={setPopup} expenses={expenses} />
+  <div className="flex justify-center gap-3">
+    {[...Array(pages)].map((_, i) => (
+      <button
+        key={i}
+        className={`border border-green-700 rounded-full px-3 py-1 mt-5 ${
+          i * limit === start
+            ? "bg-green-700 text-white"
+            : "bg-white text-green-700"
+        }
+        `}
+        onClick={() => setStart(i * limit)}
+      >
+        {i + 1}
+      </button>
+    ))}
+  </div>
+</div>
+```
+
+We are using the `pages` to render the buttons. We are also using the `start` to highlight the current page.
