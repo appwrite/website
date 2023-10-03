@@ -7,3 +7,7 @@ step: 9
 
 # Test your project {% #test-project %}
 Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+
+
+# Final Code {% #final-code %}
+If you are looking for the final code, you can find it in the [expense-tracker](https://github.com/Mridul2820/expense-tracker) repository.

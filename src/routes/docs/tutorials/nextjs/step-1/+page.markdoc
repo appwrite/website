@@ -12,12 +12,14 @@ readtime: 10
 # Concepts {% #concepts %}
 This tutorial will introduce the following concepts:
 
-1. Install dependencies
+1. Introduction to Appwrite
 2. Make first request
 3. Implement Authtentication
 4. Intro to databases
-5. Queries and pagination
-6. Storage
+5. Create, read, update and delete documents
+5. Queries Documents
+6. Add Pagination
+
 
 # Prerequisites {% #prerequisites %}
 1. Basic knowledge of JavaScript, React JS and Next JS.

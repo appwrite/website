@@ -134,7 +134,7 @@ Now after the rendering the list, we will add the pagination buttons. We edit `p
   <h1 className="text-2xl text-center font-bold">Your expenses</h1>
   <ExpenseList setPopup={setPopup} expenses={expenses} />
   <div className="flex justify-center gap-3">
-    {[...Array(pages)].map((_, i) => (
+    {expenses?.length > 0 && [...Array(pages)].map((_, i) => (
       <button
         key={i}
         className={`border border-green-700 rounded-full px-3 py-1 mt-5 ${
