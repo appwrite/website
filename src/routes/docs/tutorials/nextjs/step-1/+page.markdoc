@@ -14,7 +14,7 @@ This tutorial will introduce the following concepts:
 
 1. Install dependencies
 2. Make first request
-3. Implement auth
+3. Implement Authtentication
 4. Intro to databases
 5. Queries and pagination
 6. Storage

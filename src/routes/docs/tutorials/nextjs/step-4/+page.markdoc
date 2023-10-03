@@ -1,0 +1,206 @@
+---
+layout: tutorial
+title: Implement Authtentication
+description: Add Appwrite authentication to your Next JS app
+step: 4
+---
+
+We will be using cookie to store the session token. So we need to install `next-cookie` package. We will also be using `react-hot-toast` to show toast messages. Install these packages by running the following command in your terminal.
+
+```bash
+npm install next-cookie react-hot-toast
+```
+
+# Signup Page {% #signup-page %}      
+
+In your project under the pages directory, create a new file `src/pages/signup.js`. Next JS will automatically create a route for this page `/signup`. Let's create the signup form.
+
+```js
+import { useState } from "react";
+import Link from "next/link";
+
+import { account } from "@/config/appwrite";
+
+const SignUp = (props) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  return (
+    <section className="container h-screen mx-auto flex justify-center">
+      <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
+        <h1 className="text-6xl font-bold">Sign Up</h1>
+        <p className="mt-4">
+          Already have an account?{" "}
+          <Link href="/login" className="cursor-pointer underline">
+            Login
+          </Link>
+        </p>
+        <form onSubmit={signup}>
+          <label className="block mt-6">Name</label>
+          <input
+            className="w-full mt-1 px-4 py-2 placeholder-gray-400 text-gray-700 bg-white text-lg border-2 border-gray-400 focus:ring-0 focus:border-gray-900 rounded-md"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label className="block mt-6"> Email</label>
+          <input
+            className="w-full mt-1 px-4 py-2 placeholder-gray-400 text-gray-700 bg-white text-lg border-2 border-gray-400 focus:ring-0 focus:border-gray-900 rounded-md"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label className="block mt-6"> Password</label>
+          <input
+            className="w-full mt-1 px-4 py-2 placeholder-gray-400 text-gray-700 bg-white text-lg border-2 border-gray-400 focus:ring-0 focus:border-gray-900 rounded-md"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <div className="mt-6">
+            <button
+              type="submit"
+              disabled={!name || !email || !password}
+              className="mx-auto mt-4 py-3 px-10 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default SignUp;
+```
+
+Now let's add the signup function. We will be using Appwrite's `create` method to create a new user. We will also be using `react-hot-toast` to show toast messages.
+
+
+```js
+const signup = async (e) => {
+  e.preventDefault();
+  try {
+    await account.create(ID.unique(), email, password, name);
+    await account.createEmailSession(email, password);
+    const jwt = await account.createJWT();
+    const user = await account.get();
+    cookie.set("jwt", jwt.jwt);
+    cookie.set("userid", user.$id);
+    toast.success("Signed up successfully");
+    router.push("/");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+```
+
+After the user is created, we are creating a session using `createEmailSession` method. Then we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
+
+
+# Signin Page {% #signin-page %}      
+
+In your project under the pages directory, create a new file `src/pages/login.js`. Next JS will automatically create a route for this page `/login`. Let's create the signin form.
+
+```js
+import Link from "next/link";
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+import { account } from "@/config/appwrite";
+
+const Login = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  return (
+    <section className="container h-screen mx-auto flex justify-center">
+      <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
+        <h1 className="text-6xl font-bold">Login</h1>
+        <p className="mt-6">
+          Don&apos;t have an account?{" "}
+          <Link href="/signup" className="cursor-pointer underline">
+            Sign Up
+          </Link>
+        </p>
+        <form onSubmit={loginUser}>
+          <label className="block mt-6" htmlFor="email">
+            {" "}
+            Email
+          </label>
+          <input
+            id="email"
+            className="w-full mt-1 px-4 py-2 placeholder-gray-400 text-gray-700 bg-white text-lg border-2 border-gray-400 focus:ring-0 focus:border-gray-900 rounded-md"
+            type="email"
+            required={true}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label className="block mt-6" htmlFor="password">
+            {" "}
+            Password
+          </label>
+          <input
+            id="password"
+            className="w-full mt-1 px-4 py-2 placeholder-gray-400 text-gray-700 bg-white text-lg border-2 border-gray-400 focus:ring-0 focus:border-gray-900 rounded-md"
+            type="password"
+            required={true}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <div className="mt-6">
+            <button
+              type="submit"
+              disabled={!email || !password}
+              className="mx-auto mt-4 py-3 px-10 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default Login;
+```
+
+Now let's add the login function. We will be using Appwrite's `createEmailSession` method to create a new session. We will also be using `react-hot-toast` to show toast messages.
+
+```js
+const loginUser = async (e) => {
+  e.preventDefault();
+  try {
+    await account.createEmailSession(email, password);
+    const jwt = await account.createJWT();
+    const user = await account.get();
+    cookie.set("jwt", jwt.jwt);
+    cookie.set("userid", user.$id);
+    toast.success("Logged in successfully");
+    router.push("/");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+```
+
+After the session is created, we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
+
+# Logout {% #logout %}
+For logout, we will be using Appwrite's `deleteSessions` method. We will also be using `react-hot-toast` to show toast messages.
+
+```js
+import { account } from "@/config/appwrite";
+
+const logout = async () => {
+  try {
+    await account.deleteSessions("current");
+    cookie.remove("jwt");
+    cookie.remove("userid");
+    toast.success("Logged out successfully");
+    router.push("/login");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+```
