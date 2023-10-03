@@ -49,7 +49,7 @@
 			<div class="aw-container">
 				<a class="aw-link aw-u-color-text-secondary" href="/blog">
 					<span class="aw-icon-chevron-left" aria-hidden="true" />
-					<span class="">Back to blog</span>
+					<span>Back to blog</span>
 				</a>
 				<div class="aw-category-header u-margin-block-start-24">
 					<div class="aw-category-header-content">
