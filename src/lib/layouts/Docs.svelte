@@ -1,7 +1,13 @@
 <script lang="ts" context="module">
     import { navigating } from '$app/stores';
     import { writable } from 'svelte/store';
+    import { onMount } from 'svelte';
+    import { getGitHubStars } from '../utils/githubStars';
 
+    let githubStars: any = null;
+    onMount(async () => {
+        githubStars = await getGitHubStars();
+    });
     export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
     export type DocsLayoutState = {
         showReferences: boolean;
@@ -175,7 +181,7 @@
                             >
                                 <span class="aw-icon-star" aria-hidden="true" />
                                 <span class="text">Star on GitHub</span>
-                                <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+                                <span class="aw-inline-tag aw-sub-body-400">{githubStars}</span>
                             </a>
                             <a href="https://cloud.appwrite.io/console" class="aw-button">
                                 <span class="aw-sub-body-500">Go to console</span>
