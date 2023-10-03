@@ -112,7 +112,7 @@ function App() {
 export default App;
 ```
 
-# Basic routing  {% #basic-routing %}
+# Home page  {% #home-page %}
 
 Create a new file `src/pages/Home.jsx` and add the following stub code to it.
 
