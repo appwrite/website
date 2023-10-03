@@ -136,13 +136,13 @@
                             <a href="#introduction" class="is-selected">Introduction</a>
                         </li>
                         <li>
-                            <a href="#subscription">Subscriptions</a>
+                            <a href="#subscriptions">Subscriptions</a>
                         </li>
                         <li>
                             <a href="#fee">Fee Changes</a>
                         </li>
                         <li>
-                            <a href="#refund">Refund</a>
+                            <a href="#refunds">Refunds</a>
                         </li>
                         <li>
                             <a href="#content">Content</a>
@@ -151,7 +151,7 @@
                             <a href="#accounts">Accounts</a>
                         </li>
                         <li>
-                            <a href="#porperty">Intellectual Property</a>
+                            <a href="#property">Intellectual Property</a>
                         </li>
                         <li>
                             <a href="#other">Links To Other Web Sites</a>
