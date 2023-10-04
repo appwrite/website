@@ -1,0 +1,104 @@
+---
+layout: tutorial
+title: Adding tasks
+description: Add tasks to your React application using Appwrite
+step: 6
+---
+# Add Tasks context {% #add-todos-page %}
+
+Now we need to display our Todos to the page. In React, we can use [context](https://reactjs.org/docs/context.html) to share data between components. We'll use context and create a simple custom hook to manage out tasks.
+
+Create a new file `src/lib/context/tasks.jsx` and add the following code to it.
+
+```js
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+export const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
+export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
+
+const TasksContext = createContext();
+
+export function useTasks() {
+  return useContext(TasksContext);
+}
+
+export function TasksProvider(props) {
+  const [tasks, setTasks] = useState([]);
+
+  async function init() {
+    try {
+      const response = await databases.listDocuments(
+        TODOS_DATABASE_ID,
+        TODOS_COLLECTION_ID,
+        [Query.orderDesc("$createdAt"), Query.limit(4)],
+      );
+      setTasks(response.documents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <TasksContext.Provider value={{ current: tasks }}>
+      {props.children}
+    </TasksContext.Provider>
+  );
+}
+```
+we will add more functionality to the context later
+
+# Basic Routing
+
+First, wrap the `main` element with the `TasksProvider` component.
+
+Update `src/App.jsx` to the following code.
+
+```jsx
+import { TasksProvider } from "./lib/context/tasks";
+import { Tasks } from "./pages/Tasks";
+
+function App() {
+  return (
+    <div>
+      <TasksProvider>
+        <Tasks />
+      </TasksProvider>
+    </div>
+  );
+}
+
+export default App;
+```
+
+# Tasks page
+
+We are able to create the Tasks page.This will show users a list of tasks that is just a small chuck of the large dataset.
+
+Create a new file `src/pages/Tasks.jsx` and add the following stub code to it.
+
+```jsx
+import { useTasks } from "../lib/context/tasks";
+export function Tasks() {
+  const tasks = useTasks();
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {tasks.current.map((task) => (
+          <li key={`task-${task.taskId}`}>
+            <span>{`Task-${task.taskId}: `}</span>
+            <input type='checkbox' id={task.taskId} name={task.title} />
+            <label htmlFor={task.title}>{task.title}</label>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+```

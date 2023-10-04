@@ -1,0 +1,181 @@
+---
+layout: tutorial
+title: Implementing the Offset Pagination
+description: Learn about using offset pagination in a React app using Appwrite backend.
+step: 7
+---
+
+# What is Offset Pagination? {% #what-is-offset-pagination %}
+
+Offset Pagination is widely used in databases and online APIs to extract specific subsets of data from a bigger whole.It requires you to tell it where to start ("offset") and how many records to get ("limit"). In the context of software applications, offset pagination is a technique that may be employed to facilitate the navigation of content by incorporating forward and back buttons on a given page.
+
+In Appwrite, offset pagination can be achieved using the `Query.limit()` and `Query.offset()` methods. Here is an example using Appwrite's `listDocuments()` command to list the next four tasks:
+
+```js
+const page2 = await databases.listDocuments(
+    '[TODOS_DATABASE_ID]',
+    '[TODOS_COLLECTION_ID]',
+    [
+        Query.limit(4),
+        Query.offset(4)
+    ]
+);
+```
+this will run and retrieve the next four tasks starting at task-5
+
+# Implementation {% #implementation %}
+
+
+# Task context
+
+by updating the contents of `src/lib/context/tasks.jsx` with the following:
+
+```jsx
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+export const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
+export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
+
+const TasksContext = createContext();
+
+export function useTasks() {
+  return useContext(TasksContext);
+}
+
+export function TasksProvider(props) {
+  const [tasks, setTasks] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [counts, setCounts] = useState({
+    totalPages: 500,
+    totalResults: 1000,
+  });
+  const pageLimit = 4;
+  const hasNext = counts.totalPages > currentPage;
+
+  async function handleNextPage() {
+    if (hasNext) {
+      setOffset(offset + 4);
+    }
+    await init();
+  }
+
+  async function handlePreviousPage() {
+    if (offset > 0) {
+      setOffset(offset - 4);
+    }
+    await init();
+  }
+
+  async function init() {
+    try {
+      const response = await databases.listDocuments(
+        TODOS_DATABASE_ID,
+        TODOS_COLLECTION_ID,
+        [
+          Query.orderDesc("$createdAt"),
+          Query.limit(pageLimit),
+          Query.offset(offset),
+        ],
+      );
+
+      setTasks(response.documents);
+      setCurrentPage(Math.floor(offset / pageLimit) + 1);
+      setCounts({
+        totalPages: response.total / pageLimit,
+        totalResults: response.total,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    init();
+  }, [offset]);
+
+  return (
+    <TasksContext.Provider
+      value={{
+        current: tasks,
+        handleNextPage,
+        handlePreviousPage,
+        currentPage,
+        offset,
+      }}>
+      {props.children}
+    </TasksContext.Provider>
+  );
+}
+```
+
+# Tasks page
+
+In order to utilize offset pagination in our app, we want a "forward" and "back" buttons that will allow us to move through our dataset. Also we want to have a way to show the current page too. We will add these pieces of UI to the Tasks page and use the `useTasks` hook to handle the navigation and the UI will have the following:
+* a "back" button that will handle subtracting a given page limit from the offset and will be disabled when at the beginning of the dataset.
+* a span tag that will show the current page.
+* a "forward" button that will handle adding a given page limit to the offset and will be disabled when we reach the end of the dataset.
+
+Update the Tasks page in `src/pages/Tasks.jsx` to the following:
+
+```js
+import { useEffect, useState, useCallback } from "react";
+import { useTasks } from "../lib/context/tasks";
+export function Tasks() {
+  const tasks = useTasks();
+  const pageLimit = 4;
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {tasks.current &&
+          tasks.current.map((task) => (
+            <li key={`task-${task.taskId}`}>
+              <span>{`Task-${task.taskId}: `}</span>
+              <input type='checkbox' id={task.taskId} name={task.title} />
+              <label htmlFor={task.title}>{task.title}</label>
+            </li>
+          ))}
+      </ul>
+      <Pagination
+        totalTasks={tasks.totalTasks}
+        tasksPerPage={pageLimit}
+        nextOffset={tasks.offset + pageLimit}
+        handleNextPage={tasks.handleNextPage}
+        handlePreviousPage={tasks.handlePreviousPage}
+      />
+    </section>
+  );
+}
+
+function Pagination(props) {
+  const tasks = useTasks();
+  const pageLimit = 4;
+
+  const {
+    totalTasks,
+    tasksPerPage,
+    nextOffset,
+    handleNextPage,
+    handlePreviousPage,
+  } = props;
+  return (
+    <div>
+      <button
+        disabled={tasks.currentPage === 1}
+        onClick={() => handlePreviousPage()}>
+        Back
+      </button>
+      <span>{tasks.currentPage}</span>
+      <button
+        disabled={nextOffset > totalTasks}
+        onClick={() => handleNextPage()}>
+        Forward
+      </button>
+    </div>
+  );
+}
+
+```

@@ -1,0 +1,30 @@
+---
+layout: tutorial
+title: Build a todos app with React
+description: Learn about using pagination in a React app using Appwrite backend.
+step: 1
+difficulty: beginner
+readtime: 10
+---
+
+**Task App(working title)**: An app to track all your tasks that you'll need to get done. In this tutorial, you will build the Task app with Appwrite and React.
+
+# Overview {% #overview %}
+**What is pagination in web development and why is it important?**
+ Pagination is a technique used in web development to divide a large dataset into smaller manageable chunks. This practice significantly enhances user experience by facilitating easy navigation through the dataset, making the data consumption less overwhelming. It's a common feature in data-rich applications, such as search engines and task management systems, offering numerous benefits like reduced load times, easier data management, and a cleaner, more organized user interface.
+
+ In this tutorial, while building the Task App using Appwrite and React, you will implement some pagination methods that Appwrite offers to manage the display of tasks efficiently, ensuring a user-friendly interface that allows users to navigate through their tasks effortlessly.
+
+# Concepts {% #concepts %}
+
+This tutorial will introduce the following concepts:
+
+1. Setting up your first project with Appwrite and React.
+2. Understanding databases and collections in Appwrite.
+3. Crafting queries and implementing pagination to manage data efficiently.
+4. Utilizing storage solution for your Todo App.
+
+# Prerequisites {% #prerequisites %}
+
+1. Basic knowledge of JavaScript and React.
+2. Have the latest version of [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer

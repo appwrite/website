@@ -1,0 +1,63 @@
+---
+layout: tutorial
+title: Environment Setup
+description: setup the environment for seeding the database
+step: 5
+---
+
+# Seeding the collection {% #seeding-the-collection %}
+Now we need to create a script that will create documents from a setup.json file.Create a new file `./db/setup.js` in the root of the project directory and add the following code to it.
+
+```js
+import { databases } from "../src/lib/appwrite.js";
+import { ID } from "appwrite";
+
+export const TODOS_DATABASE_ID = "651c4c0bdba5256614d1";
+export const TODOS_COLLECTION_ID = "651c4c2e1e86c8de7f13";
+
+async function seedCollection() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/users/1/todos",
+  );
+  const data = await response.json();
+  console.log("Starting to seed collection...");
+  try {
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+      let promise = await databases.createDocument(
+        TODOS_DATABASE_ID,
+        TODOS_COLLECTION_ID,
+        ID.unique(),
+        {
+          taskId: item.id,
+          title: item.title,
+          completed: item.completed,
+        },
+      );
+      console.log(promise);
+    }
+    console.log("Seeding collection done!");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+seedCollection();
+
+```
+
+# Add Seed script to Package.json {% #add-seed-script %}
+
+Open the project's Package.json file and go to the `scripts` and add the following script to the list.
+
+```sh
+ "db:seed": "node ./db/setup.js",
+```
+
+You can now open a terminal and run the following command.
+
+```sh
+npm run db:seed
+```
+
+you should see the command running in the terminal.When it's done check the collection to see it populated with the data.

@@ -1,0 +1,17 @@
+---
+layout: tutorial
+title: Next Steps
+description: Run your React project built with Appwrite
+step: 10
+---
+
+# Test your project {% #test-project %}
+Run your project
+
+ ```sh
+ npm run dev -- --open --port 3000
+ ```
+
+ open [http://localhost:3000](http://localhost:3000) in your browser.
+
+ # Further Resources {% #further-resources %}

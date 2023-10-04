@@ -51,6 +51,17 @@
 						</a>
 					</li>
 					<li class="is-mobile-col-span-2">
+						<a href="/docs/tutorials/pagination" class="aw-card is-normal">
+							<header class="u-flex u-cross-baseline u-gap-4">
+								<span class="icon-react aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Pagination</h4>
+							</header>
+							<p class="aw-sub-body-400 u-margin-block-start-4">
+								Learn Appwrite Pagination and more with React.
+							</p>
+						</a>
+					</li>
+					<li class="is-mobile-col-span-2">
 						<a href="/docs/tutorials/vue" class="aw-card is-normal">
 							<header class="u-flex u-cross-baseline u-gap-4">
 								<span class="aw-icon-vue aw-u-font-size-24" aria-hidden="true" />
