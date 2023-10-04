@@ -100,12 +100,14 @@ function* iterateAllMethods(
 }
 
 function getParameters(
-	method: OpenAPIV3.HttpMethods,
 	operation: AppwriteOperationObject
 ): SDKMethod['parameters'] {
 	const parameters: ReturnType<typeof getParameters> = [];
-	if (method === OpenAPIV3.HttpMethods.GET) {
-		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[]) ?? []) {
+	const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
+	const schemaJson = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
+	const schemaMultipart = requestBody?.content['multipart/form-data']?.schema as OpenAPIV3.SchemaObject;
+	if (operation?.parameters) {
+		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[])) {
 			const schema = parameter.schema as OpenAPIV3.SchemaObject;
 
 			parameters.push({
@@ -116,13 +118,9 @@ function getParameters(
 				example: schema?.example
 			});
 		}
-	} else {
-		const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
-		const schemaJson = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
-		const schemaMultipart = requestBody?.content['multipart/form-data']?.schema as OpenAPIV3.SchemaObject;
-		
-		// TODO: make this pretty
-		for (const [key, value] of Object.entries(schemaJson?.properties ?? {})) {
+	}
+	if (schemaJson?.properties) {
+		for (const [key, value] of Object.entries(schemaJson.properties)) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
 				name: key,
@@ -132,7 +130,9 @@ function getParameters(
 				example: property['x-example'] ?? ''
 			});
 		}
-		for (const [key, value] of Object.entries(schemaMultipart?.properties ?? {})) {
+	}
+	if (schemaMultipart?.properties) {
+		for (const [key, value] of Object.entries(schemaMultipart)) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
 				name: key,
@@ -144,7 +144,9 @@ function getParameters(
 		}
 	}
 
-	return parameters;
+    return parameters.sort((a, b) => {
+        return (a.required === b.required) ? 0 : a.required ? -1 : 1;
+    });
 }
 
 export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject {
@@ -164,9 +166,8 @@ const specs = import.meta.glob(
 async function getSpec(version: string, platform: string) {
 	const isClient = platform.startsWith('client-');
 	const isServer = platform.startsWith('server-');
-	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
-		isServer ? 'server' : isClient ? 'client' : 'console'
-	}.json`;
+	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${isServer ? 'server' : isClient ? 'client' : 'console'
+		}.json`;
 	return specs[target]();
 }
 
@@ -226,9 +227,9 @@ export async function getService(
 		return data;
 	}
 
-	for (const [method, value] of iterateAllMethods(api, service)) {
+	for (const [_method, value] of iterateAllMethods(api, service)) {
 		const operation = value as AppwriteOperationObject;
-		const parameters = getParameters(method, operation);
+		const parameters = getParameters(operation);
 		const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
 			(tuple) => {
 				const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
@@ -264,13 +265,14 @@ export async function getService(
 		);
 
 		const path = isAndroid
-			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${
-					isAndroidJava ? 'java' : 'kotlin'
-			  }/${operation['x-appwrite'].demo}`
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${isAndroidJava ? 'java' : 'kotlin'
+			}/${operation['x-appwrite'].demo}`
 			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+
 		if (!(path in examples)) {
 			continue;
 		}
+
 		data.methods.push({
 			id: operation['x-appwrite'].method,
 			demo: await examples[path](),
