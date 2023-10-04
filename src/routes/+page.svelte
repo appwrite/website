@@ -295,7 +295,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/star.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">GDPR</span>
+									<span>GDPR</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">
@@ -305,7 +305,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/soc-2.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">SOC-2</span>
+									<span>SOC-2</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">
@@ -315,7 +315,7 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/hipaa.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">HIPAA</span>
+									<span>HIPAA</span>
 									<span class="aw-inline-tag is-pink">Coming Soon</span>
 								</h3>
 								<p class="aw-info-boxes-content">Protect sensitive user health data.</p>
