@@ -157,16 +157,18 @@
 		class:is-transparent={browser}
 		class:is-hidden={$isHeaderHidden}
 	>
-		<!-- <div class="aw-top-banner">
+		<div class="aw-top-banner">
 			<div class="aw-top-banner-content aw-u-color-text-primary">
-				<span class="aw-caption-500">We are having lots of fun on</span>
-				<span class="aw-icon-discord" aria-hidden="true" />
-				<span class="aw-caption-500">Discord. Come and join us!</span>
+				<a href="https://appwrite.io/discord" target="_blank" rel="noopener noreferrer">
+					<span class="aw-caption-500">We are having lots of fun on</span>
+					<span class="aw-icon-discord" aria-hidden="true" />
+					<span class="aw-caption-500">Discord. Come and join us!</span>
+				</a>
 				<button class="aw-top-banner-button" aria-label="close discord message">
 					<span class="aw-icon-close" aria-hidden="true" />
 				</button>
 			</div>
-		</div> -->
+		</div>
 
 		<div class="aw-container" style="--container-size:103rem">
 			<div class="aw-main-header-wrapper">
