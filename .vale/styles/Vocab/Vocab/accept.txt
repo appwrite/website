@@ -1,0 +1,4 @@
+Appwrite
+Vue
+Vite
+NPM
