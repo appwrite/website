@@ -75,15 +75,15 @@
 										</header>
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">100GB bandwidth</span></li>
-												<li class=""><span class="">Unlimited projects</span></li>
-												<li class=""><span class="">Never paused</span></li>
-												<li class=""><span class="">750K executions</span></li>
-												<li class=""><span class="">50MB uploads</span></li>
-												<li class=""><span class="">1 Database, 3 Buckets, 5 Functions</span></li>
-												<li class=""><span class="">Community support</span></li>
-												<li class=""><span class="">Non-removable Appwrite branding</span></li>
-												<li class=""><span class="">No Add-ons</span></li>
+												<li><span>100GB bandwidth</span></li>
+												<li><span>Unlimited projects</span></li>
+												<li><span>Never paused</span></li>
+												<li><span>750K executions</span></li>
+												<li><span>50MB uploads</span></li>
+												<li><span>1 Database, 3 Buckets, 5 Functions</span></li>
+												<li><span>Community support</span></li>
+												<li><span>Non-removable Appwrite branding</span></li>
+												<li><span>No Add-ons</span></li>
 											</ul>
 										</div>
 									</div>
@@ -108,18 +108,18 @@
 										<div class="aw-pricing-cards-content">
 											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">300GB bandwidth</span></li>
-												<li class=""><span class="">Unlimited projects</span></li>
-												<li class=""><span class="">Never paused</span></li>
-												<li class=""><span class="">150K Monthly active users</span></li>
-												<li class=""><span class="">150GB Storage</span></li>
-												<li class=""><span class="">3M executions</span></li>
-												<li class="">
-													<span class="">Unlimited Databases, Buckets and Functions</span>
+												<li><span>300GB bandwidth</span></li>
+												<li><span>Unlimited projects</span></li>
+												<li><span>Never paused</span></li>
+												<li><span>150K Monthly active users</span></li>
+												<li><span>150GB Storage</span></li>
+												<li><span>3M executions</span></li>
+												<li>
+													<span>Unlimited Databases, Buckets and Functions</span>
 												</li>
-												<li class=""><span class="">Email support</span></li>
-												<li class=""><span class="">Removable Appwrite branding</span></li>
-												<li class=""><span class="">Add-ons</span></li>
+												<li><span>Email support</span></li>
+												<li><span>Removable Appwrite branding</span></li>
+												<li><span>Add-ons</span></li>
 											</ul>
 										</div>
 									</div>
@@ -150,9 +150,9 @@
 										<div class="aw-pricing-cards-content">
 											<p>Everything in Starter & Pro, plus:</p>
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">Extra support log retention days</span></li>
-												<li class=""><span class="">Additional org member roles</span></li>
-												<li class=""><span class="">SSO</span></li>
+												<li><span>Extra support log retention days</span></li>
+												<li><span>Additional org member roles</span></li>
+												<li><span>SSO</span></li>
 											</ul>
 										</div>
 									</div>
