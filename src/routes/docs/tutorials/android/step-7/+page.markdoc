@@ -116,7 +116,7 @@ fun IdeasScreen(
 }
 ```
 
-# Updating navigation
+# Update navigation {% #update-navigation %}
 
 Update `MainActivity.kt` to add the `IdeasScreen` to the navigation bar.
 

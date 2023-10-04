@@ -5,7 +5,7 @@ description: Add navigation to your Android application.
 step: 5
 ---
 
-# Creating our MainActivity
+# Creating our MainActivity {% #creating-our-mainactivity %}
 
 To show the new screen, we need to set up our `MainActivity` class. Open `MainActivity.kt` and update it with following code.
 This code sets up our `MainActivity` with a bottom navigation bar, including a **User** screen.

@@ -5,7 +5,7 @@ description: Add Appwrite authentication to you Svelte app using your Svelte sto
 step: 4
 ---
 
-# Creating a user service
+# Creating a user service {% #creating-a-user-service %}
 
 We can use services to abstract business logic from our views.
 Create a service to handle user authentication with a new file `services/UserService.kt`.

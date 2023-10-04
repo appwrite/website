@@ -85,7 +85,7 @@ import io.appwrite.Client
 
 object Appwrite {
     private const val ENDPOINT = "https://cloud.appwrite.io/v1"
-    private const val PROJECT_ID = "650870066ca28da3d330"
+    private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
 
     private lateinit var client: Client
     internal lateinit var ideas: IdeaService // <-- Add this line
