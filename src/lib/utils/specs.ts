@@ -106,6 +106,9 @@ function getParameters(
 	const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
 	const schemaJson = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
 	const schemaMultipart = requestBody?.content['multipart/form-data']?.schema as OpenAPIV3.SchemaObject;
+    if (operation.operationId === 'storageCreateFile') {
+        console.log(schemaMultipart)
+    }
 	if (operation?.parameters) {
 		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[])) {
 			const schema = parameter.schema as OpenAPIV3.SchemaObject;
@@ -131,8 +134,8 @@ function getParameters(
 			});
 		}
 	}
-	if (schemaMultipart) {
-		for (const [key, value] of Object.entries(schemaMultipart)) {
+	if (schemaMultipart?.properties) {
+		for (const [key, value] of Object.entries(schemaMultipart.properties)) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
 				name: key,
