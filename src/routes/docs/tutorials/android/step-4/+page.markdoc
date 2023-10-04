@@ -1,0 +1,190 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add Appwrite authentication to you Svelte app using your Svelte store.
+step: 4
+---
+
+# Creating a user service
+
+We can use services to abstract business logic from our views.
+Create a service to handle user authentication with a new file `services/UserService.kt`.
+
+Add the following code to it.
+
+```kotlin
+package <YOUR_ROOT_PACKAGE_HERE>.services
+
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.models.User
+import io.appwrite.exceptions.AppwriteException
+import io.appwrite.services.Account
+
+class UserService(client: Client) {
+    private val account = Account(client)
+
+    suspend fun getLoggedIn(): User<Map<String, Any>>? {
+        return try {
+            account.get()
+        } catch (e: AppwriteException) {
+            null
+        }
+    }
+
+    suspend fun login(email: String, password: String): User<Map<String, Any>>? {
+        return try {
+            account.createEmailSession(email, password)
+            getLoggedIn()
+        } catch (e: AppwriteException) {
+            null
+        }
+    }
+
+    suspend fun register(email: String, password: String): User<Map<String, Any>>? {
+        return try {
+            account.create(ID.unique(), email, password)
+            login(email, password)
+        } catch (e: AppwriteException) {
+            null
+        }
+    }
+
+    suspend fun logout() {
+        account.deleteSession("current")
+    }
+}
+```
+
+We can now use this service to login, register and logout a user. Integrate the service to the `/services/Appwrite.kt` file.
+
+```kotlin
+object Appwrite {
+    private const val ENDPOINT = "https://cloud.appwrite.io/v1"
+    private const val PROJECT_ID = "650870066ca28da3d330"
+
+    private lateinit var client: Client
+    internal lateinit var users: UserService // <--- Add this line
+
+    fun init(context: Context) {
+        client = Client(context)
+            .setEndpoint(ENDPOINT)
+            .setProject(PROJECT_ID)
+
+        ideas = IdeaService(client) // <--- And this line
+    }
+}
+```
+
+# Login screen
+
+Using this service, we can now create a screen to login or register a user.
+
+Create a new file `ui/screens/UserScreen.kt` and add the following code to it.
+
+```kotlin
+package <YOUR_ROOT_PACKAGE_HERE>.ui.screens
+
+import <YOUR_ROOT_PACKAGE_HERE>.services.UserService
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.unit.dp
+import io.appwrite.models.User
+import kotlinx.coroutines.launch
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UserScreen(
+    user: MutableState<User<Map<String, Any>>?>,
+    userService: UserService
+) {
+    val coroutineScope = rememberCoroutineScope()
+
+    fun onLogin(email: String, password: String) {
+        coroutineScope.launch {
+            user.value = userService.login(email, password)
+        }
+    }
+
+    fun onRegister(email: String, password: String) {
+        coroutineScope.launch {
+            user.value = userService.register(email, password)
+        }
+    }
+
+    fun onLogout() {
+        coroutineScope.launch {
+            userService.logout()
+            user.value = null
+        }
+    }
+
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+    if (user.value !== null) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Logged in as ${user.value!!.email}")
+            Button(onClick = { onLogout() }) {
+                Text("Logout")
+            }
+        }
+    }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        TextField(
+            value = username,
+            onValueChange = { username = it },
+            label = { Text("Username") }
+        )
+        TextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Button(onClick = { onLogin(username, password) }) {
+                Text("Login")
+            }
+            Button(onClick = { onRegister(username, password) }) {
+                Text("Register")
+            }
+        }
+    }
+}
+```
