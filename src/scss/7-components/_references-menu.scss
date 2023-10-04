@@ -13,15 +13,23 @@
   }
   &-title { color:hsl(var(--aw-color-primary)); }
   &-list {
-    @include scroll(); overflow-y:auto;
+    @include scroll(); 
     display:flex; flex-direction:column; gap:pxToRem(16);
     padding-block:pxToRem(4);
-    padding-inline:pxToRem(4);
+    padding-inline: pxToRem(4);
+    
+    &:not(.#{$p}-references-menu-list .#{$p}-references-menu-list) {
+      padding-inline-start: pxToRem(28);
+      margin-inline-start: pxToRem(-24);
+      overflow-y:auto;
+    }
   }
   &-item { padding-inline:pxToRem(-4); }
   &-link {
     display:flex; gap:pxToRem(8);
     color:hsl(var(--p-references-menu-link-color-text));
+
+    transition: var(--transition);
     &.is-selected { --p-references-menu-link-color-text:var(--p-references-menu-link-color-text-selected); }
   }
 }
