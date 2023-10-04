@@ -9,53 +9,7 @@ In the expense card we have added two buttons to edit and delete the expense. We
 
 # Edit expense {% #edit-expense %}
 
-When the user clicks on the edit button, we will show the expense popup form with the expense details filled in. The user can then edit the expense and save it.
-
-We will add a click event handler to the edit button in the `ExpenseCard` component.
-
-```js
-<button
-  className="cursor-pointer"
-  onClick={() => setPopup({ type: "edit", data: expense })}
->
-  <AiOutlineEdit className="text-blue-800" />
-</button>
-```
-
-The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component.
-
-```js
-import React, { useEffect, useState } from "react";
-
-import ExpenseList from "@/components/ExpenseList";
-import EditExpensePopup from "@/components/EditExpensePopup";
-
-const Home = (props) => {
-  const [popup, setPopup] = useState(null);
-
-  return (
-    <>
-      {popup?.type === "edit" && (
-        <EditExpensePopup
-          docId={popup?.data?.$id}
-          title={popup?.data?.title}
-          amount={popup?.data?.amount}
-          type={popup?.data?.type}
-          popup={popup}
-          setPopup={setPopup}
-          editExpense={editExpense}
-        />
-      )}
-      <ExpenseList
-        expenses={expenses}
-        setPopup={setPopup}
-      />
-    </>
-  )
-}
-```
-
-To edit Edit expanse let's create a API first. We will create `PUT` api in the same `api/expense/index.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
+First create a API to edit the expense. We will create `PUT` api in the same `api/expense/index.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
 
 ```js
 import { ID } from "appwrite";
@@ -99,12 +53,80 @@ export default async (req, res) => {
 };
 ```
 
+When the user clicks on the edit button, we will show the expense popup form with the expense details filled in. The user can then edit the expense and save it.
+
+We will add a click event handler to the edit button in the `ExpenseCard` component.
+
+```js
+<button
+  className="cursor-pointer"
+  onClick={() => setPopup({ type: "edit", data: expense })}
+>
+  <div className="icon-pencil-alt" />
+</button>
+```
+
+The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component.
+
+We will also add the `editExpense` function. This function will make a `PUT` request to the `/api/expense` endpoint to update the expense.
+
+```js
+import React, { useEffect, useState } from "react";
+
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
+
+const Home = (props) => {
+  const [popup, setPopup] = useState(null);
+
+  const editExpense = async (docId, title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        docId: docId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Updated successfully");
+      setPopup(null);
+      getExpenses();
+    }
+  }
+
+  return (
+    <>
+      {popup?.type === "edit" && (
+        <EditExpensePopup
+          docId={popup?.data?.$id}
+          title={popup?.data?.title}
+          amount={popup?.data?.amount}
+          type={popup?.data?.type}
+          popup={popup}
+          setPopup={setPopup}
+          editExpense={editExpense}
+        />
+      )}
+      <ExpenseList
+        expenses={expenses}
+        setPopup={setPopup}
+      />
+    </>
+  )
+}
+```
+
 Let's create a `EditExpensePopup` component in the `components` folder. This component will be used to show the popup form to edit the expense.
 
 ```js
 import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const EditExpensePopup = ({
   title,
@@ -115,78 +137,75 @@ const EditExpensePopup = ({
   editExpense,
 }) => {
   const [item, setItem] = useState({
-    title: title,
-    amount: amount,
-    type: type,
+    title: title || "",
+    amount: amount || "",
+    type: type || "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!item.title) {
-      return toast.error("Title is required");
-    }
-    if (!item.amount) {
-      return toast.error("Amount is required");
-    }
-    if (!item.type) {
-      return toast.error("Type is required");
-    }
-
     await editExpense(docId, item.title, item.amount, item.type);
   };
 
   return (
-    <div className="fixed inset-0 w-full h-full bg-black bg-opacity-25 flex items-center justify-center">
-      <div className="bg-white p-5 relative w-11/12 max-w-xl rounded-md">
+    <div className="u-position-fixed u-inset-0 u-width-full-line u-full-screen-height u-flex u-cross-center u-main-center u-z-index-10 lite-bg">
+      <div className="card u-max-width-600 u-width-full-line">
         <button
           onClick={() => setPopup(null)}
-          className="absolute top-2 right-2 p-2"
+          className="u-position-absolute u-inset-inline-end-16 u-inset-block-start-16"
         >
-          <AiOutlineCloseCircle className="text-2xl" />
+          <span className="icon-x-circle" />
         </button>
-        <p className="text-xl font-bold">Update Expense</p>
-        <form className="grid grid-cols-2 gap-3 mt-2" onSubmit={handleSubmit}>
-          <div className="col-span-2">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              className="border rounded-md p-2 w-full"
-              value={item.title}
-              onChange={(e) => setItem({ ...item, title: e.target.value })}
-            />
-          </div>
+        <p className="heading-level-3 font-bold u-text-center">
+          Update Expense
+        </p>
+        <form className="u-margin-block-start-12" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="amount">Amount($)</label>
-            <input
-              type="number"
-              id="amount"
-              min="0"
-              className="border rounded-md p-2 w-full"
-              value={item.amount}
-              onChange={(e) => setItem({ ...item, amount: e.target.value })}
-            />
+            <label class="label">Title</label>
+            <div class="input-text-wrapper">
+              <input
+                class="input-text"
+                placeholder="Title"
+                id="title"
+                type="text"
+                required={true}
+                value={item.title}
+                onChange={(e) => setItem({ ...item, title: e.target.value })}
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="type">Type</label>
-            <select
-              id="type"
-              className="border rounded-md p-2 w-full"
-              value={item.type}
-              onChange={(e) => setItem({ ...item, type: e.target.value })}
-            >
-              <option value="">Select</option>
-              <option value="Paid">Paid</option>
-              <option value="Received">Received</option>
-            </select>
+          <div className="u-margin-block-start-12">
+            <label class="label">Amount($)</label>
+            <div class="input-text-wrapper">
+              <input
+                class="input-text"
+                placeholder="Title"
+                id="amount"
+                type="number"
+                required={true}
+                min="0"
+                value={item.amount}
+                onChange={(e) => setItem({ ...item, amount: e.target.value })}
+              />
+            </div>
           </div>
-
-          <div className="col-span-2 flex justify-center">
-            <button
-              type="submit"
-              className="border rounded-md p-2 bg-green-700 text-white w-40"
-            >
+          <div className="u-margin-block-start-12">
+            <label class="label">Type</label>
+            <div class="input-text-wrapper">
+              <select
+                id="type"
+                className="input-text"
+                value={item.type}
+                onChange={(e) => setItem({ ...item, type: e.target.value })}
+              >
+                <option value="">Select</option>
+                <option value="Paid">Paid</option>
+                <option value="Received">Received</option>
+              </select>
+            </div>
+          </div>
+          <div className="u-margin-block-start-12">
+            <button type="submit" className="button">
               Update
             </button>
           </div>
@@ -199,33 +218,43 @@ const EditExpensePopup = ({
 export default EditExpensePopup;
 ```
 
-We will add the `editExpense` function in the `pages/index.js` file. This function will make a `PUT` request to the `api/expense` endpoint to update the expense.
+# Delete expense {% #delete-expense %}
+ First create a API to delete the expense. We will create `DELETE` api in the same `api/expense/index.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
 
 ```js
-const editExpense = async (docId, title, amount, type) => {
-  const response = await fetch("/api/expense", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      jwt,
-    },
-    body: JSON.stringify({
-      docId: docId,
-      title: title,
-      amount: amount,
-      type: type,
-    }),
-  });
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
 
-  if (response.status === 200) {
-    toast.success("Updated successfully");
-    setPopup(null);
-    getExpenses();
+export default async (req, res) => {
+  const method = req.method;
+  const { jwt } = req.headers;
+  if (!jwt) {
+    return res.status(400).json({ message: "Unauthorized" });
+  }
+  account.client.setJWT(jwt);
+
+  if (method === "DELETE") {
+    const { docId } = req.body;
+    try {
+      await database.deleteDocument(
+        EXPENSE_DATABASE_ID,
+        EXPENSE_COLLECTION_ID,
+        docId
+      );
+      return res.status(200).json({ message: "Deleted successfully" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal server error", error: error.message });
+    }
   }
 };
 ```
 
-# Delete expense {% #delete-expense %}
 When the user clicks on the delete button, we will show a confirmation popup to the user. If the user confirms the delete action, we will delete the expense from the database.
 
 We will add a click event handler to the delete button in the `ExpenseCard` component.
@@ -235,44 +264,72 @@ We will add a click event handler to the delete button in the `ExpenseCard` comp
   className="cursor-pointer"
   onClick={() => setPopup({ type: "delete", data: expense })}
 >
-  <AiOutlineDelete className="text-red-800" />
+  <div className="icon-trash" />
 </button>
 ```
 
 The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component. This is the same state that we used to edit the expense.
 
+We will also add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
+
 ```js
-{popup?.type === "delete" && (
-  <DeleteExpensePopup
-    popup={popup}
-    setPopup={setPopup}
-    deleteExpense={deleteExpense}
-  />
-)}
+const Home = (props) => {
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const deleteExpense = async (docId) => {
+    const response = await fetch("/api/expense", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({ docId: docId }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Deleted successfully");
+      setPopup(null);
+      getExpenses();
+      setStart(0);
+    }
+  };
+
+  return (
+    <>
+      {popup?.type === "delete" && (
+        <DeleteExpensePopup
+          popup={popup}
+          setPopup={setPopup}
+          deleteExpense={deleteExpense}
+        />
+      )}
+    </>
+  );
+};
+
+export default Home;
 ```
 
 Let's create a `DeleteExpensePopup` component in the `components` folder. This component will be used to show the popup form to delete the expense.
 
 ```js
-import React from "react";
-import toast from "react-hot-toast";
-
 const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {
-  console.log(popup);
-
   return (
-    <div className="fixed inset-0 w-full h-full bg-black bg-opacity-25 flex items-center justify-center">
-      <div className="bg-white p-5 relative w-11/12 max-w-xl rounded-md">
-        <p className="text-xl font-bold text-center">Delete Expense Expense</p>
-        <div className="flex justify-center gap-2 mt-5">
+    <div className="u-position-fixed u-inset-0 u-width-full-line u-full-screen-height u-flex u-cross-center u-main-center u-z-index-10 lite-bg">
+      <div className="card u-max-width-600 u-width-full-line">
+        <p className="heading-level-3 font-bold u-text-center">
+          Delete Expense
+        </p>
+        <div className="u-flex u-main-center u-margin-block-start-12 u-gap-12">
           <button
-            className="border rounded-md p-2 bg-red-700 text-white w-40"
+            className="button is-secondary"
             onClick={() => setPopup(null)}
           >
             Cancel
           </button>
           <button
-            className="border rounded-md p-2 bg-green-700 text-white w-40 ml-2"
+            className="button"
             onClick={() => deleteExpense(popup.data.$id)}
           >
             Delete
@@ -286,29 +343,6 @@ const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {
 export default DeleteExpensePopup;
 ```
 
-We will add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `api/expense` endpoint to delete the expense.
 
-```js
-const editExpense = async (docId, title, amount, type) => {
-  const response = await fetch("/api/expense", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      jwt,
-    },
-    body: JSON.stringify({
-      docId: docId,
-      title: title,
-      amount: amount,
-      type: type,
-    }),
-  });
-
-  if (response.status === 200) {
-    toast.success("Updated successfully");
-    setPopup(null);
-    getExpenses();
-  }
-};
-```
+ 
 

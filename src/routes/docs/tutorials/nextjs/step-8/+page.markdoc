@@ -115,8 +115,8 @@ const Home = (props) => {
   const pages = Math.ceil(total / limit);
 
   return (
-    <div className="container mx-auto p-4 max-w-5xl">
-      <h1 className="text-2xl text-center font-bold">Your expenses</h1>
+    <div className="container u-flex-vertical	u-gap-12 u-cross-center">
+      <h1 className="heading-level-1 font-bold">Your expenses</h1>
       <ExpenseList setPopup={setPopup} expenses={expenses} />
     </div>
   );
@@ -127,27 +127,23 @@ export default Home;
 
 We are using the `start` and `limit` to get the expenses. We are also calculating the number of pages using the `total` and `limit`.
 
-Now after the rendering the list, we will add the pagination buttons. We edit `pages/index.js` and add the following code:
+Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code:
 
 ```js
-<div className="container mx-auto p-4 max-w-5xl">
-  <h1 className="text-2xl text-center font-bold">Your expenses</h1>
+<div className="container u-flex-vertical	u-gap-12 u-cross-center">
+  <h1 className="heading-level-1 font-bold">Your expenses</h1>
   <ExpenseList setPopup={setPopup} expenses={expenses} />
-  <div className="flex justify-center gap-3">
-    {expenses?.length > 0 && [...Array(pages)].map((_, i) => (
-      <button
-        key={i}
-        className={`border border-green-700 rounded-full px-3 py-1 mt-5 ${
-          i * limit === start
-            ? "bg-green-700 text-white"
-            : "bg-white text-green-700"
-        }
-        `}
-        onClick={() => setStart(i * limit)}
-      >
-        {i + 1}
-      </button>
-    ))}
+  <div className="u-flex u-main-center u-gap-12">
+    {expenses?.length > 0 &&
+      [...Array(pages)].map((_, i) => (
+        <button
+          key={i}
+          className="button is-only-icon"
+          onClick={() => setStart(i * limit)}
+        >
+          {i + 1}
+        </button>
+      ))}
   </div>
 </div>
 ```
