@@ -131,7 +131,7 @@ function getParameters(
 			});
 		}
 	}
-	if (schemaMultipart?.properties) {
+	if (schemaMultipart) {
 		for (const [key, value] of Object.entries(schemaMultipart)) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
