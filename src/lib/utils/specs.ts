@@ -166,7 +166,7 @@ const specs = import.meta.glob(
 async function getSpec(version: string, platform: string) {
 	const isClient = platform.startsWith('client-');
 	const isServer = platform.startsWith('server-');
-    const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
+	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
 		isServer ? 'server' : isClient ? 'client' : 'console'
 	}.json`;
 	return specs[target]();
@@ -273,7 +273,6 @@ export async function getService(
 		if (!(path in examples)) {
 			continue;
 		}
-
 		data.methods.push({
 			id: operation['x-appwrite'].method,
 			demo: await examples[path](),
