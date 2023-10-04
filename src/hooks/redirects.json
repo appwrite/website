@@ -646,5 +646,9 @@
     {
         "link": "/docs/installation",
         "redirect": "/docs/advanced/self-hosting"
+    },
+    {
+        "link": "/careers",
+        "redirect": "https://careers.appwrite.io/ "
     }
 ]
