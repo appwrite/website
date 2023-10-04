@@ -10,10 +10,6 @@
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
 
-    const title = 'Community' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
     const events: EventCardProps[] = [
         {
             href: '/discord',
@@ -65,6 +61,10 @@
             buttonText: 'View event'
         }
     ];
+
+    const title = 'Community' + TITLE_SUFFIX;
+    const description = DEFAULT_DESCRIPTION;
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
@@ -103,7 +103,7 @@
                         <h1 class="aw-display aw-u-color-text-primary">
                             Built by a community of 700+ contributors
                         </h1>
-                        <div class="">
+                        <div>
                             <p class="aw-description">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
@@ -210,7 +210,7 @@
                         <h1 class="aw-headline aw-u-color-text-primary">
                             The power of open source benefits us all
                         </h1>
-                        <div class="">
+                        <div>
                             <p class="aw-description">
                                 See contributors of Appwrite since 2019 and discover how you can
                                 start contributing.
@@ -238,7 +238,7 @@
                 <div class="aw-container">
                     <div class="aw-hero is-align-start">
                         <h2 class="aw-display aw-u-color-text-primary">Get involved</h2>
-                        <div class="">
+                        <div>
                             <p class="aw-description">
                                 With every contribution, Appwrite gets better for all of us. Start
                                 contributing today.
