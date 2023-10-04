@@ -1,5 +1,6 @@
 Appwrite
 Appwrite Realtime
+Hacktoberfest
 Vue
 Vite
 NPM
