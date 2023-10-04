@@ -44,7 +44,6 @@
 
     const handleVisibility = (section: Section) => {
         return (e: CustomEvent<boolean>) => {
-            console.log(selectedMap);
             selectedMap.set(section, e.detail);
             selectedMap = selectedMap;
         };
