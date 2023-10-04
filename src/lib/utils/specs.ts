@@ -166,8 +166,9 @@ const specs = import.meta.glob(
 async function getSpec(version: string, platform: string) {
 	const isClient = platform.startsWith('client-');
 	const isServer = platform.startsWith('server-');
-	const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${isServer ? 'server' : isClient ? 'client' : 'console'
-		}.json`;
+    const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
+		isServer ? 'server' : isClient ? 'client' : 'console'
+	}.json`;
 	return specs[target]();
 }
 
@@ -227,7 +228,7 @@ export async function getService(
 		return data;
 	}
 
-	for (const [_method, value] of iterateAllMethods(api, service)) {
+	for (const [method, value] of iterateAllMethods(api, service)) {
 		const operation = value as AppwriteOperationObject;
 		const parameters = getParameters(operation);
 		const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
@@ -265,10 +266,10 @@ export async function getService(
 		);
 
 		const path = isAndroid
-			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${isAndroidJava ? 'java' : 'kotlin'
-			}/${operation['x-appwrite'].demo}`
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${
+					isAndroidJava ? 'java' : 'kotlin'
+			  }/${operation['x-appwrite'].demo}`
 			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
-
 		if (!(path in examples)) {
 			continue;
 		}
