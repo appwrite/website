@@ -3,7 +3,7 @@ import sharp from 'sharp';
 
 const formats = ['webp', 'jpeg', 'png', 'tiff', 'avif'] as const;
 
-const filenameMap: Record<Format, string> = {
+const filenameMap: Record<ImageFormat, string> = {
     webp: 'webp',
     jpeg: 'jpg',
     png: 'png',
@@ -11,17 +11,17 @@ const filenameMap: Record<Format, string> = {
     avif: 'avif'
 };
 
-const getFilename = (imgUrl: string, format: Format) => {
+const getFilename = (imgUrl: string, format: ImageFormat) => {
     const filename = imgUrl.split('/').pop() ?? '';
     const ext = filename.split('.').pop() ?? '';
     if (ext === filenameMap[format]) return filename;
     return filename.replace(ext, filenameMap[format]);
 };
 
-type Format = (typeof formats)[number];
+export type ImageFormat = (typeof formats)[number];
 
-const isFormat = (format: unknown): format is Format => {
-    return typeof format === 'string' && formats.includes(format as Format);
+const isFormat = (format: unknown): format is ImageFormat => {
+    return typeof format === 'string' && formats.includes(format as ImageFormat);
 };
 
 export const GET = async ({ fetch, url }) => {
