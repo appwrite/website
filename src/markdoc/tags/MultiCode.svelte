@@ -57,7 +57,7 @@
 					<div class="aw-select">
 						<select bind:value={$selected}>
 							{#each Array.from($snippets) as language}
-								<option value={language}>{platformMap[language]}</option>
+								<option value={language} class="hljs-option-black">{platformMap[language]}</option>
 							{/each}
 						</select>
 						<span class="icon-cheveron-down" aria-hidden="true" />

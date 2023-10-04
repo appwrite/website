@@ -1,5 +1,5 @@
 pre {
-	color: #e4e4e7;
+    color: #e4e4e7;
 }
 
 code.line-numbers .line {
@@ -11,7 +11,7 @@ code.line-numbers .line:before {
     display: inline-block;
     text-align: right;
     padding-right: 1rem;
-    color: #6C6C71;
+    color: #6c6c71;
     width: 2.5rem;
 }
 
@@ -22,7 +22,7 @@ code.line-numbers .line:before {
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable.language_ {
-	color: #fe86a8;
+    color: #fe86a8;
 }
 
 .hljs-title,
@@ -30,7 +30,7 @@ code.line-numbers .line:before {
 .hljs-title.class_.inherited__,
 .hljs-title.function_,
 .hljs-symbol {
-	color: #68a3fe;
+    color: #68a3fe;
 }
 
 .hljs-attr,
@@ -44,25 +44,29 @@ code.line-numbers .line:before {
 .hljs-selector-attr,
 .hljs-selector-class,
 .hljs-selector-id {
-	color: #fe9567;
+    color: #fe9567;
 }
 
 .hljs-regexp,
 .hljs-string,
 .hljs-meta .hljs-string {
-	color: #85dbd8;
+    color: #85dbd8;
 }
 
 .hljs-comment,
 .hljs-code,
 .hljs-formula {
-	color: #adadb0;
+    color: #adadb0;
 }
 
 .hljs-emphasis {
-	font-style: italic;
+    font-style: italic;
 }
 
 .hljs-strong {
-	font-weight: bold;
+    font-weight: bold;
+}
+
+.hljs-option-black {
+    color: black;
 }
