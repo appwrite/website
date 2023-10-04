@@ -1,4 +1,5 @@
 Appwrite
+Appwrite Realtime
 Vue
 Vite
 NPM

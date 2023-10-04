@@ -12,10 +12,14 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
+        - name: Get list of changed markdoc files
+          id: get-changed-files
+          run: |
+            files=$(git diff --name-only --diff-filter=ACMRB ${{ github.event.before }} ${{ github.event.after }} | grep -E '\.(markdoc)$')
+            echo "::set-output name=files::$files"
         - uses: errata-ai/vale-action@reviewdog
           with:
-            files: |
-              $(git diff --name-only --diff-filter=ACMRB ${{ github.event.before }} ${{ github.event.after }} | grep -E '\.(markdoc)$')
+            files: ${{ steps.get-changed-files.outputs.files }}
             reporter: github-pr-check
     build:
         runs-on: ubuntu-latest

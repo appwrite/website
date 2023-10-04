@@ -1,0 +1,3 @@
+{
+    "vale.valeCLI.path": "${workspaceFolder}/node_modules/.bin/vale"
+}
