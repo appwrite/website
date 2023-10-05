@@ -40,7 +40,7 @@
 			on:click={() => ($layoutState.showSearch = true)}
 		>
 			<span class="aw-icon-search" />
-			<span class="text">Search in docs</span>
+			<span class="text">Search in Docs</span>
 		</button>
 		<div class="aw-side-nav-scroll">
 			{#if parent}
@@ -96,7 +96,7 @@
 		{/if}
 		<div class="aw-side-nav-mobile-footer-buttons">
 			<button class="aw-button u-width-full-line">
-				<span class="text">Go to console</span>
+				<span class="text">Go to Console</span>
 			</button>
 
 			<a
@@ -107,7 +107,7 @@
 			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+				<span class="aw-inline-tag aw-sub-body-400">35.2K</span>
 			</a>
 		</div>
 	</div>

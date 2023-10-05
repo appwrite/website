@@ -91,7 +91,7 @@
             </div>
             <div class="aw-mobile-header-end">
                 <a href="https://cloud.appwrite.io/console" class="aw-button">
-                    <span class="aw-sub-body-500">Go to console</span>
+                    <span class="aw-sub-body-500">Go to Console</span>
                 </a>
                 <button
                     on:click={toggleSidenav}
@@ -156,7 +156,7 @@
                                 on:click={() => ($layoutState.showSearch = true)}
                             >
                                 <span class="aw-icon-search" aria-hidden="true" />
-                                <span class="text">Search in docs</span>
+                                <span class="text">Search in Docs</span>
 
                                 <div class="u-flex u-gap-4 u-margin-inline-start-auto">
                                     <span class="aw-kbd" aria-label="command">⌘</span>
@@ -175,10 +175,10 @@
                             >
                                 <span class="aw-icon-star" aria-hidden="true" />
                                 <span class="text">Star on GitHub</span>
-                                <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+                                <span class="aw-inline-tag aw-sub-body-400">35.2K</span>
                             </a>
                             <a href="https://cloud.appwrite.io/console" class="aw-button">
-                                <span class="aw-sub-body-500">Go to console</span>
+                                <span class="aw-sub-body-500">Go to Console</span>
                             </a>
                         </div>
                     </div>

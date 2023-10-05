@@ -43,7 +43,7 @@
 			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+				<span class="aw-inline-tag aw-sub-body-400">35.2K</span>
 			</a>
 		</div>
 	</div>

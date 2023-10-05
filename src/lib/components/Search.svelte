@@ -142,7 +142,7 @@
 		style:-webkit-backdrop-filter="blur(15px)"
 		bind:this={container}
 		on:click={handleExit}
-		transition:fade={{ duration: 50 }}
+		transition:fade={{ duration: 100 }}
 	>
 		<div
 			class="aw-input-text-search-wrapper aw-u-max-width-680 aw-u-margin-inline-20 u-width-full-line"
@@ -161,7 +161,7 @@
 				type="text"
 				id="search"
 				bind:value
-				placeholder="Search in docs"
+				placeholder="Search in Docs"
 				style="border-end-start-radius:0; border-end-end-radius:0;"
 				use:arrowKeyFocus
 				data-hit="-1"
