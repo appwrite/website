@@ -349,7 +349,7 @@
 									class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
 									style="word-break: keep-all;"
 								>
-									Coming soon...
+									Learn Appwrite Auth, Databases, and more with Android.
 								</p>
 							</article>
 						</a>

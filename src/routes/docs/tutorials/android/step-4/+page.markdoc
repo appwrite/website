@@ -70,13 +70,11 @@ object Appwrite {
         client = Client(context)
             .setEndpoint(ENDPOINT)
             .setProject(PROJECT_ID)
-
-        ideas = IdeaService(client) // <--- And this line
     }
 }
 ```
 
-# Login screen
+# Login screen {% #login-screen %}
 
 Using this service, we can now create a screen to login or register a user.
 

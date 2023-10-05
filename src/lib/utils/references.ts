@@ -88,7 +88,8 @@ export const platformMap: Record<Language|string, string> = {
 	yaml: 'YAML',
 	text: 'Text',
 	vue: 'Vue',
-	svelte: 'Svelte'
+	svelte: 'Svelte',
+	groovy: 'Groovy'
 };
 
 export const serviceMap: Record<Service, string> = {
