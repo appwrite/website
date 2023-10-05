@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Adding tasks
-description: Add tasks to your React application using Appwrite
+description: Add tasks to your react application using appwrite
 step: 6
 ---
-# Add Tasks context {% #add-todos-page %}
+# Add tasks context {% #add-tasks-context %}
 
 Now we need to display our Todos to the page. In React, we can use [context](https://reactjs.org/docs/context.html) to share data between components. We'll use context and create a simple custom hook to manage out tasks.
 
@@ -53,13 +53,13 @@ export function TasksProvider(props) {
 ```
 we will add more functionality to the context later
 
-# Basic Routing
+## Basic Routing {% #basic-routing %}
 
 First, wrap the `main` element with the `TasksProvider` component.
 
 Update `src/App.jsx` to the following code.
 
-```jsx
+```js
 import { TasksProvider } from "./lib/context/tasks";
 import { Tasks } from "./pages/Tasks";
 
@@ -76,13 +76,13 @@ function App() {
 export default App;
 ```
 
-# Tasks page
+### Tasks page {% #tasks-page %}
 
-We are able to create the Tasks page.This will show users a list of tasks that is just a small chuck of the large dataset.
+We are now able to create the Tasks page that will show users a list of tasks that is a small chuck of the large dataset.
 
 Create a new file `src/pages/Tasks.jsx` and add the following stub code to it.
 
-```jsx
+```js
 import { useTasks } from "../lib/context/tasks";
 export function Tasks() {
   const tasks = useTasks();
@@ -102,3 +102,5 @@ export function Tasks() {
   );
 }
 ```
+
+In the next two steps, we will explore how to use offset or cursor pagination in our application.

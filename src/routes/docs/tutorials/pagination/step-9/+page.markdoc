@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Trade-offs Discussion
-description: Learn about the trade-offs between each pagination method in a React app using Appwrite backend.
+title: Trade-offs discussion
+description: Learn about the trade-offs between each pagination method in a react app using appwrite backend.
 step: 9
 ---
 
@@ -10,30 +10,30 @@ step: 9
 | Feature / Aspect| Offset Pagination | Cursor Pagination |
 |----------------|-----------------------|-----------------------|
 | Simplicity | High | Medium to Low |
-| Performance | Good for early pages, degrades with deep pagination |Consistently High |
+| Performance | Good for shallow pagination, degrades with deep pagination |Consistently High |
 | Data Consistency | Can be inconsistent with data changes | More consistent |
 | Scalability | Good for smaller datasets | High for large datasets |
 | Implementation Complexity | Low | Medium to High |
 | Direct Page Access | Yes | No |
 
-Based on the application's requirements, you can then prioritize which features/aspects are most important and make a decision accordingly.
+Based on the application's requirements, you can then determine which features/aspects are most important and make a decision accordingly.
 
 # When to use each method {% #when-to-use-each-method %}
 
-1. Offset Pagination
-  * When you have a relatively small dataset that doesn't change frequently.
+## Offset pagination {% #when-to-use-offset-pagination %}
+  * When you have a small dataset that doesn't change frequently.
   * When you need to jump to specific page numbers.
   * When simplicity and quick Implementation are priorities.
 
-2. Cursor Pagination
+## Cursor pagination {% #when-to-use-cursor-pagination %}
   * When dealing with large datasets
   * For real-time applications or applications with frequently updating datasets.
-  * When deep pagination is expected (i.e., users navigating to very high page numbers).
+  * When deep pagination is necessary (i.e., users need to navigate to high page numbers).
   * When performance and scalability are critical.
 
-  # Recap {% #recap %}
+# Recap {% #recap %}
   * Offset pagination is straightforward and allow direct page access but can suffer from performance issues in deep pagination.
    * Cursor pagination offers consistent high performance and is ideal for real-time or large datasets.
-  * Data Consistency challenges arise with offset pagination, especially with changing datasets.
-  * Cursor pagination can be more complex to implement and doesn't allow easy jumps to specific pages.
+  * Offset pagination causes data consistency issues, especially with changing datasets.
+  * Cursor pagination requires more work and doesn't enable page skips.
   * For Appwrite, consider the dataset size, update frequency, and user navigation needs when choosing a pagination method.

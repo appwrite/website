@@ -1,15 +1,16 @@
 ---
 layout: tutorial
-title: Implementing the Cursor Pagination
-description: Learn about using cursor pagination in a React app using Appwrite backend.
+title: Implementing the cursor pagination
+description: Discover cursor pagination. The react app will access our appwrite backend using cursor pagination.
 step: 8
 ---
+In this step, we will discover how to add the cursor pagination method to our app.
 
 # What is cursor pagination? {% #what-is-cursor-pagination %}
 
-Cursor pagination is similar to offset pagination except it uses a cursor that is a unique identifier(often a timestamp, ID, or some other field that has a consistant order) for a specific document, which acts as a pointer to the next document we want to start querying from to get the next page of data. For example, if you have a dataset of blog posts ordered by their creation date, and you want to retrieve post after a specific data, you would use that date as the cursor.
+Cursor pagination uses a cursor that is a unique identifier(often a timestamp, ID, or some other field that has a consistent order) for a specific document, which acts as a pointer to the next document we want to start querying from to get the next page of data. For example, if you have a dataset of blog posts ordered by their creation date, and you want to retrieve post after a specific data, you would use that date as the cursor.
 
-In Appwrite, cursor pagination can be achieved using either the `Query.cursorAfter(lastId)` query method to retrieve the next page of documents or the `Query.cursorBefore(firstId)` query method to retrieve the previous page of documents. Here is an example using Appwrite's `listDocuments()` command to retrieve the next page of documents.
+In Appwrite, cursor pagination uses either the `Query.cursorAfter(lastId)` query method to retrieve the next page of documents or the `Query.cursorBefore(firstId)` query method to retrieve the previous page of documents. Here is an example using Appwrite's `listDocuments()` command to retrieve the next page of documents.
 
 ```js
 const page2 = await databases.listDocuments(
@@ -24,9 +25,9 @@ const page2 = await databases.listDocuments(
 
 # Implementation {% #implementation %}
 
-# Task context
+## Task context {% #task-context %}
 
-by updating the contents of `src/lib/context/tasks.jsx` with the following:
+By updating the contents of `src/lib/context/tasks.jsx` with the following code, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
@@ -38,13 +39,14 @@ export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
 
 const TasksContext = createContext();
 
-export function useTasks2() {
+export function useTasks() {
   return useContext(TasksContext);
 }
 
 export function TasksProvider(props) {
   const [tasks, setTasks] = useState([]);
   const [lastId, setLastId] = useState(null);
+  const [firstId, setFirstId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [counts, setCounts] = useState({
     totalPages: 500,
@@ -69,6 +71,7 @@ export function TasksProvider(props) {
         setCurrentPage((currentPage) =>
           Math.min(currentPage + 1, counts.totalPages),
         );
+        setFirstId(response.documents[0].$id);
         setLastId(response.documents[response.documents.length - 1].$id);
         setTasks(response.documents);
       }
@@ -76,7 +79,28 @@ export function TasksProvider(props) {
       console.log(error);
     }
   }
-
+  async function loadPrev() {
+    console.log("loading previous...");
+    try {
+      if (hasNext) {
+        const response = await databases.listDocuments(
+          TODOS_DATABASE_ID,
+          TODOS_COLLECTION_ID,
+          [
+            Query.orderDesc("$createdAt"),
+            Query.limit(pageLimit),
+            Query.cursorBefore(firstId),
+          ],
+        );
+        setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
+        setFirstId(response.documents[0].$id);
+        setLastId(response.documents[response.documents.length - 1].$id);
+        setTasks(response.documents);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   async function init() {
     try {
       const response = await databases.listDocuments(
@@ -84,6 +108,7 @@ export function TasksProvider(props) {
         TODOS_COLLECTION_ID,
         [Query.orderDesc("$createdAt"), Query.limit(pageLimit)],
       );
+      setFirstId(response.documents[0].$id);
       setLastId(response.documents[response.documents.length - 1].$id);
       setTasks(response.documents);
       setCounts({
@@ -103,6 +128,7 @@ export function TasksProvider(props) {
       value={{
         current: tasks,
         loadMore,
+        loadPrev,
         currentPage,
         hasNext,
       }}>
@@ -110,26 +136,29 @@ export function TasksProvider(props) {
     </TasksContext.Provider>
   );
 }
-
 ```
 
-# Tasks page
+## Tasks page {% #tasks-page %}
 
-In order to utilize cursor pagination in our app, we want a "load more" button that will allow us to load the next page of data. Also we have a way to show the current page too. We will add these pieces of the UI to the Tasks page and use the `useTasks` hook to handle the loading of the next page and have the following:
+To utilize cursor pagination in our app, we want a "load more" button that will allow us to load the next page of data. We also have a way to show the current page too. We will add these pieces of the UI to the Tasks page and use the `useTasks` hook to handle the loading of the next page and have the following:
+* a "load previous" button that will handle the loading of the previous page of data and disabled when the current page is 1.
 * a div that will show the current page when data is loaded
-* a "load more" button that will handle loading the next page of data and will be disabled when the current page number is equal to the total number of pages.
+* a "load more" button that will handle loading the next page of data and disabled when the current page number is equal to the total number of pages.
 
 Update the Tasks page in `src/pages/Tasks.jsx` to the following:
-```jsx
+```js
 import { useEffect, useState, useCallback } from "react";
 import { useTasks } from "../lib/context/tasks";
 export function Tasks() {
-  const tasks = useTasks();
-  const pageLimit = 4;
-
-  return (
+ const tasks = useTasks();
+ return (
     <section>
       <h2>Todos</h2>
+      <button
+        disabled={tasks.currentPage === 1}
+        onClick={() => tasks.loadPrev()}>
+        Load Previous
+      </button>
       <ul>
         {tasks.current &&
           tasks.current.map((task) => (
@@ -140,22 +169,11 @@ export function Tasks() {
             </li>
           ))}
       </ul>
-      <Pagination />
-    </section>
-  );
-}
-
-function Pagination() {
-  const tasks = useTasks();
-  const pageLimit = 4;
-
-  return (
-    <div>
       <button disabled={!tasks.hasNext} onClick={() => tasks.loadMore()}>
         Load More
       </button>
       <div>{tasks.currentPage}</div>
-    </div>
+    </section>
   );
 }
 ```

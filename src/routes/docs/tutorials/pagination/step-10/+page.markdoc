@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Next Steps
-description: Run your React project built with Appwrite
+title: Next steps
+description: Run your react app built with appwrite
 step: 10
 ---
 
@@ -14,4 +14,5 @@ Run your project
 
  open [http://localhost:3000](http://localhost:3000) in your browser.
 
- # Further Resources {% #further-resources %}
+ # Further resources {% #further-resources %}
+Read more about it in the [pagination docs here](/docs/products/databases/pagination).

@@ -1,13 +1,14 @@
 ---
 layout: tutorial
-title: Implementing the Offset Pagination
-description: Learn about using offset pagination in a React app using Appwrite backend.
+title: Implementing the offset pagination
+description: Discover offset pagination. The react app will access our appwrite backend using offset pagination.
 step: 7
 ---
+In this step, we will discover how to add the offset pagination method to our app.
 
-# What is Offset Pagination? {% #what-is-offset-pagination %}
+# What is offset pagination? {% #what-is-offset-pagination %}
 
-Offset Pagination is widely used in databases and online APIs to extract specific subsets of data from a bigger whole.It requires you to tell it where to start ("offset") and how many records to get ("limit"). In the context of software applications, offset pagination is a technique that may be employed to facilitate the navigation of content by incorporating forward and back buttons on a given page.
+Offset pagination is widely used in databases and online APIs to extract specific subsets of data from a bigger whole.It requires you to tell it where to start ("offset") and how many records to get ("limit"). In the context of software applications, offset pagination is a technique that may be employed to facilitate the navigation of content by incorporating forward and back buttons on a given page.
 
 In Appwrite, offset pagination can be achieved using the `Query.limit()` and `Query.offset()` methods. Here is an example using Appwrite's `listDocuments()` command to list the next four tasks:
 
@@ -26,11 +27,11 @@ this will run and retrieve the next four tasks starting at task-5
 # Implementation {% #implementation %}
 
 
-# Task context
+## Task context {% #task-context %}
 
-by updating the contents of `src/lib/context/tasks.jsx` with the following:
+By updating the contents of `src/lib/context/tasks.jsx` with the following code, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
 
-```jsx
+```js
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../appwrite";
 import { Query } from "appwrite";
@@ -110,12 +111,12 @@ export function TasksProvider(props) {
 }
 ```
 
-# Tasks page
+## Tasks page {% #tasks-page %}
 
-In order to utilize offset pagination in our app, we want a "forward" and "back" buttons that will allow us to move through our dataset. Also we want to have a way to show the current page too. We will add these pieces of UI to the Tasks page and use the `useTasks` hook to handle the navigation and the UI will have the following:
-* a "back" button that will handle subtracting a given page limit from the offset and will be disabled when at the beginning of the dataset.
+For offset pagination in our app, we need "forward" and "back" buttons to navigate our dataset. We also want to display the current page. The Tasks page will contain the following UI, with navigation handled by the `useTasks` hook:
+* a "back" button that will handle subtracting a given page limit from the offset and disabled when at the beginning of the dataset.
 * a span tag that will show the current page.
-* a "forward" button that will handle adding a given page limit to the offset and will be disabled when we reach the end of the dataset.
+* a "forward" button that will handle adding a given page limit to the offset and disabled when we reach the end of the dataset.
 
 Update the Tasks page in `src/pages/Tasks.jsx` to the following:
 
@@ -179,3 +180,5 @@ function Pagination(props) {
 }
 
 ```
+
+In the next step, we will replace our current pagination method with the cursor pagination method.

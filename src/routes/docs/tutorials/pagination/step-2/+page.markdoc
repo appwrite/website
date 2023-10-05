@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Create app
-description: Create a React app project and integrate with Appwrite.
+description: Create a react app project and integrate it with appwrite.
 step: 2
 ---
 
 # Create React project {% #create-react-project %}
 
-Create a React app with the `npm create` command.
+Create a react app with the `npm create` command from [vite](https://vitejs.dev/).
 
 ```sh
 npm create vite@latest tasks-app -- --template react && cd tasks-app
@@ -15,7 +15,7 @@ npm create vite@latest tasks-app -- --template react && cd tasks-app
 
 # Add dependencies {% #add-dependencies %}
 
-Install the JavaScript Appwrite SDK.
+Install the JavaScript Appwrite Web SDK.
 
 ```sh
 npm install appwrite
