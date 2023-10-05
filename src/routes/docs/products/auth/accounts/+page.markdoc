@@ -13,10 +13,10 @@ Each user's account can also have their own preference object, which you can use
 # Signup and login {% #signup-login %}
 
 You can signup and login a user with an account create through 
-[Email-Password](/docs/products/auth/email-password),
-[Phone (SMS)](/docs/products/auth/phone-sms),
+[email password](/docs/products/auth/email-password),
+[phone (SMS)](/docs/products/auth/phone-sms),
 [Anonymous](/docs/products/auth/anonymous),
-[Magic URL](/docs/products/auth/magic-url), and
+[magic URL](/docs/products/auth/magic-url), and
 [OAuth 2](/docs/products/auth/oauth2)
 authentication.
 
