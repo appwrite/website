@@ -1,0 +1,394 @@
+---
+layout: tutorial
+title: Manage navigation 
+description: Add navigation to your SwiftUI app with Appwrite authentication and pinia stores.
+step: 5
+---
+
+# Router
+
+Add the following code to Router.swift File in the root folder
+
+```swift
+import SwiftUI
+
+
+enum Tabs {
+    case home, progress, setting
+}
+
+enum Route {
+    case appwrite
+    case home
+    case auth
+    case add_habit
+}
+
+extension Route: View {
+    var body: some View {
+        switch self {
+        case .appwrite:
+             ContentView()
+        case .home:
+            HomeView()
+        case .auth:
+            AuthScreen()
+        case .add_habit:
+            AddHabitScreen()
+        }
+        
+    }
+}
+
+
+extension Route: Hashable {
+    static func == (lhs: Route, rhs: Route) -> Bool {
+        return lhs.compareString == rhs.compareString
+    }
+    
+    var compareString: String {
+        switch self {
+        case .appwrite:
+            return "appwrite"
+        case .home:
+            return "home"
+        case .auth:
+            return "auth"
+        case .add_habit:
+            return "addHabit"
+        }
+    }
+}
+
+
+final class Router: ObservableObject {
+    @Published var routes = [Route]()
+    @Published var selectedTab: Tabs = .home
+    
+    func push(_ screen: Route) {
+        routes.append(screen)
+    }
+    
+    func pushReplacement(_ screen: Route) {
+        if routes.isEmpty {
+            routes.append(screen)
+        } else {
+            routes[routes.count - 1] = screen
+        }
+    }
+    
+    func pop() {
+        routes.removeLast()
+    }
+    
+    func popUntil(predicate: (Route) -> Bool) {
+        if let last = routes.popLast() {
+            guard predicate(last) else {
+                popUntil(predicate: predicate)
+                return
+            }
+        }
+    }
+    
+    func reset() {
+        routes = []
+    }
+}
+```
+
+# ContentView
+
+Update the ContentView.swift to reflect some changes related to our navigation
+
+```swift
+import SwiftUI
+
+struct ContentView: View {
+    
+    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var snackBarService: SnackBarService
+    @Environment(\.colorScheme) private var theme
+    
+    
+    var body: some View {
+        NavigationStack(path: $router.routes) {
+            VStack {
+                
+                Image(theme == .dark ? "appwrite_light" : "appwrite_dark")
+                    .frame(width: 132, height: 24)
+                
+            }
+            .task {
+                
+                let isAuthenticated = await userViewModel.getCurrentSession()
+                
+                if !isAuthenticated {
+                    router.pushReplacement(.auth)
+                } else {
+                    router.pushReplacement(.home)
+                }
+            }
+            .navigationDestination(for: Route.self, destination: { $0 })
+            
+        }
+        .overlay(alignment: .top) {
+            if (snackBarService.snackBarState?.hasError == true) {
+                SnackbarView(text: snackBarService.snackBarState?.error.localizedDescription ?? "An error occured")
+            }
+        }
+        
+    }
+}
+```
+
+Note: You can get the Appwrite logo on Appwrite website and add it to your project assets
+
+# Inject Services and View Models
+
+Let's inject Appwrite Service and Snarbar Service into our View Model then inject to our app using Environment Object. Update the entry file with the code below.
+
+```swift
+import SwiftUI
+
+@main
+struct appwrite_hacktoberfestApp: App {
+    
+    private var appwriteService = AppwriteService()
+    private var snackbarService = SnackBarService()
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(Router())
+                .environmentObject(UserViewModel(appwriteService, snackbarService))
+                .environmentObject(HabitViewModel(appwriteService, snackbarService))
+                .environmentObject(snackbarService)
+        }
+    }
+}
+```
+
+Note: Change **appwrite_hacktoberfestApp** to your project name
+
+
+# User View Model
+
+Add the following code to UserViewModel.swift inside **Home/ViewModels** folder.
+
+```swift
+import Foundation
+import Appwrite
+
+struct UserState {
+    var userId: String? = nil
+    var loading: Bool = false
+    var isLogout: Bool = false
+    
+}
+
+
+final class UserViewModel: ObservableObject {
+    
+    private var appwriteService: AppwriteService
+    private var snackbarService: SnackBarService
+    @Published var userState: UserState = UserState()
+        
+    init(_ appwriteService: AppwriteService, _ snackbarService: SnackBarService) {
+        self.appwriteService = appwriteService
+        self.snackbarService = snackbarService
+    }
+    
+    
+    @MainActor
+    func getCurrentSession() async -> Bool {
+        userState.loading = true
+        defer { userState.loading = false }
+        
+        do {
+            
+            let res = try await appwriteService.currentSession()
+            
+            print(res)
+            
+            userState.userId = res.id
+            userState.isLogout = false
+            
+            return true
+            
+        } catch {
+            
+            print(error)
+            userState.isLogout = true
+            
+            return false
+        }
+        
+    }
+    
+    
+    @MainActor
+    func login(_ email: String, _ password: String) async {
+        
+        do {
+           let session = try await appwriteService.onLogin(email, password)
+            
+           print(session)
+        } catch {
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+    
+    
+    @MainActor
+    func register(_ email: String, _ password: String) async {
+        
+        do {
+           let session = try await appwriteService.onRegister(email, password)
+            
+           print(session)
+        } catch {
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+    
+    
+    @MainActor
+    func logout() async {
+        
+        do {
+           _ = try await appwriteService.onLogout()
+        
+        } catch {
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+    
+}
+```
+
+# Habit View Model
+
+Add the following code to HabitViewModel.swift inside **Home/ViewModels** folder.
+
+```swift
+import Appwrite
+import Foundation
+
+
+struct HabitState {
+    var habits: [HabitModel] = []
+    var gettingHabit: Bool = false
+}
+
+struct SelectedHabitState {
+    var habit: HabitModel? = nil
+    var isSelected: Bool = false
+}
+
+
+final class HabitViewModel: ObservableObject {
+    
+    private var appwriteService: AppwriteService
+    private var snackbarService: SnackBarService
+    @Published var habitState: HabitState = HabitState()
+    @Published var selectedHabitState: SelectedHabitState = SelectedHabitState()
+        
+    init(_ appwriteService: AppwriteService, _ snackbarService: SnackBarService) {
+        self.appwriteService = appwriteService
+        self.snackbarService = snackbarService
+    }
+    
+    
+    @MainActor
+    func fetchHabits() async {
+        
+        do {
+            
+            habitState.gettingHabit = true
+            
+            defer { habitState.gettingHabit = false }
+            
+            let data: DocumentList<HabitModel> = try await appwriteService.getDocs(.habit, .habits)
+            
+            habitState.habits = data.documents.map{ doc in
+                
+                HabitModel(id: doc.id, userId: doc.data.userId, title: doc.data.title, description: doc.data.description, goals: doc.data.goals, goalCompleted: doc.data.goalCompleted, icon: doc.data.icon, startDate: doc.data.startDate, endDate: doc.data.endDate)
+                
+            }
+            
+        } catch {
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+    
+    
+    
+    @MainActor
+    func create(_ title: String, _ description: String, _ goals: Int, _ icon: String, _ startDate: String, _ endDate: String, _ userId: String) async {
+        
+        do {
+            
+            try await appwriteService.insertDoc(
+                .habit,
+                .habits,
+                data: [
+                    "title": title,
+                    "description": description,
+                    "goals": goals,
+                    "goalCompleted": 0,
+                    "icon": icon,
+                    "startDate": startDate,
+                    "endDate": endDate,
+                    "userId": userId
+                ]
+            )
+            
+        } catch {
+            
+            print(error)
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+    
+    
+    @MainActor
+    func update(_ id: String, _ goalCompleted: Int) async {
+        
+        do {
+            
+            try await appwriteService.updateDoc(
+                .habit,
+                .habits,
+                id,
+                data: [
+                    "goalCompleted": goalCompleted
+                ]
+            )
+            
+        } catch {
+            
+            print(error)
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    }
+}
+```

@@ -1,0 +1,77 @@
+---
+layout: tutorial
+title: Preference/Setting
+description: Handle user logout & delete account
+step: 8
+---
+
+# Setting UI {% #setting-ui %}
+
+Here's a more detailed explanation of the actions:
+1. Logout Action: When the ``Logout`` item in the list is tapped, it calls the logout method on the userViewModel. The await keyword is used, indicating that this method likely involves asynchronous operations, such as network requests. After logging out successfully, the router is instructed to reset the app's navigation state.
+2. Delete Account Action: Tapping the ``Delete Account`` button triggers the deleteAccount method on the userViewModel. Like the logout action, this method is likely asynchronous. After deleting the account, the router resets the navigation state.
+
+```swift
+import SwiftUI
+
+struct SettingScreen: View {
+    
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var router: Router
+
+    
+    var body: some View {
+        VStack {
+            
+            List {
+                HStack {
+                    Image(systemName: "arrow.right.circle.fill")
+                        .foregroundColor(.red)
+                        .font(.title)
+                    Text("Logout")
+                        .font(.headline)
+                }
+                .onTapGesture {
+                    Task {
+                        await userViewModel.logout()
+                        
+                        router.reset()
+                    }
+                }
+            }
+            
+            Button("Delete Account") {
+
+                 await userViewModel.deleteAccount()
+                        
+                 router.reset()
+                
+            }
+            .frame(width: 200, height: 50)
+            .background(.red)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            Spacer(minLength: 20)
+            
+            
+        }
+        
+    }
+}
+```
+
+# Progress Screen {% #progress-screen %}
+
+In this tutorial, we wouldn't be covering the Progress UI part. You can just display a text for now.
+
+```swift
+import SwiftUI
+
+struct ProgressScreen: View {
+    var body: some View {
+        Text("Progess")
+    }
+}
+```
+

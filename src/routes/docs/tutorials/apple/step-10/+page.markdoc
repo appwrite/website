@@ -1,0 +1,10 @@
+---
+layout: tutorial
+title: Next Steps
+description: Test your app in Xcode
+step: 10
+---
+
+# Test your project {% #test-project %}
+Run the active scheme on a simulator in Xcode
+
