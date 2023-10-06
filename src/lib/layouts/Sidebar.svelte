@@ -84,6 +84,7 @@
 				</section>
 			{/each}
 		</div>
+		
 		{#if expandable}
 			<button
 				on:click={toggleSidenav}
@@ -94,10 +95,11 @@
 				<span class="icon-cheveron-right" aria-hidden="true" />
 			</button>
 		{/if}
+
 		<div class="aw-side-nav-mobile-footer-buttons">
-			<button class="aw-button u-width-full-line">
-				<span class="text">Go to console</span>
-			</button>
+			<a href="https://cloud.appwrite.io/console" class="aw-button">
+				<span class="aw-sub-body-500">Go to console</span>
+			</a>
 
 			<a
 				href="https://github.com/appwrite/appwrite/stargazers"
