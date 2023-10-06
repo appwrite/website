@@ -1,3 +1,5 @@
+export const prerender = true;
+
 const parsePosts = (posts: Record<string, any>) => {
     return Object.fromEntries(
         Object.entries(posts).map(([key, value]) => {
