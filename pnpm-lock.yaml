@@ -13,7 +13,7 @@ dependencies:
     version: 0.1.0-next.9
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/8a4302ffe6173e6b1256da5e7c86042d73983cdb
+    version: github.com/appwrite/appwrite/030f9629a69f7db0f3da3e76d1805383bb3a3acd
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -61,6 +61,9 @@ devDependencies:
   '@types/compression':
     specifier: ^1.7.3
     version: 1.7.3
+  '@types/glob':
+    specifier: ^8.1.0
+    version: 8.1.0
   '@types/markdown-it':
     specifier: ^13.0.1
     version: 13.0.1
@@ -82,6 +85,9 @@ devDependencies:
   eslint-plugin-svelte:
     specifier: ^2.33.1
     version: 2.33.2(eslint@8.49.0)(svelte@4.2.0)
+  glob:
+    specifier: ^10.3.10
+    version: 10.3.10
   openapi-types:
     specifier: ^12.1.3
     version: 12.1.3
@@ -876,6 +882,13 @@ packages:
       '@types/node': 20.5.0
     dev: true
 
+  /@types/glob@8.1.0:
+    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
+    dependencies:
+      '@types/minimatch': 5.1.2
+      '@types/node': 20.5.0
+    dev: true
+
   /@types/http-errors@2.0.2:
     resolution: {integrity: sha512-lPG6KlZs88gef6aD85z3HNkztpj7w2R7HmR3gygjfXCQmsLloWNARFkMuzKiiY8FGdh1XDpgBdrSf4aKDiA7Kg==}
     dev: true
@@ -920,6 +933,10 @@ packages:
 
   /@types/mime@3.0.2:
     resolution: {integrity: sha512-Wj+fqpTLtTbG7c0tH47dkahefpLKEbB+xAZuLq7b4/IDHPl/n6VoXcyUQ2bypFlbSwvCr0y+bD4euTTqTJsPxQ==}
+    dev: true
+
+  /@types/minimatch@5.1.2:
+    resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: true
 
   /@types/morgan@1.9.6:
@@ -1525,7 +1542,7 @@ packages:
     dependencies:
       '@npmcli/fs': 3.1.0
       fs-minipass: 3.0.3
-      glob: 10.3.4
+      glob: 10.3.10
       lru-cache: 7.18.3
       minipass: 7.0.3
       minipass-collect: 1.0.2
@@ -2649,13 +2666,13 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob@10.3.4:
-    resolution: {integrity: sha512-6LFElP3A+i/Q8XQKEvZjkEWEOTgAIALR9AO2rwT8bgPhDd1anmqDJDZ6lLddI4ehxxxR1S5RIqKe1uapMQfYaQ==}
+  /glob@10.3.10:
+    resolution: {integrity: sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
       foreground-child: 3.1.1
-      jackspeak: 2.3.1
+      jackspeak: 2.3.6
       minimatch: 9.0.3
       minipass: 7.0.3
       path-scurry: 1.10.1
@@ -3105,8 +3122,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /jackspeak@2.3.1:
-    resolution: {integrity: sha512-4iSY3Bh1Htv+kLhiiZunUhQ+OYXIn0ze3ulq8JeWrFKmhPAJSySV2+kdtRh2pGcCeF0s6oR8Oc+pYZynJj4t8A==}
+  /jackspeak@2.3.6:
+    resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
     dependencies:
       '@isaacs/cliui': 8.0.2
@@ -5553,8 +5570,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/8a4302ffe6173e6b1256da5e7c86042d73983cdb:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/8a4302ffe6173e6b1256da5e7c86042d73983cdb}
+  github.com/appwrite/appwrite/030f9629a69f7db0f3da3e76d1805383bb3a3acd:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/030f9629a69f7db0f3da3e76d1805383bb3a3acd}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
