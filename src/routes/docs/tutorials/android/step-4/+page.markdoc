@@ -5,10 +5,10 @@ description: Add Appwrite authentication to you Android app.
 step: 4
 ---
 
-# Creating a user service {% #creating-a-user-service %}
+# Creating an account service {% #creating-an-account-service %}
 
 We can use services to abstract business logic from our views.
-Create a service to handle user authentication with a new file `services/UserService.kt`.
+Create a service to handle user authentication with a new file `services/AccountService.kt`.
 
 Add the following code to it.
 
@@ -21,7 +21,7 @@ import io.appwrite.models.User
 import io.appwrite.exceptions.AppwriteException
 import io.appwrite.services.Account
 
-class UserService(client: Client) {
+class AccountService(client: Client) {
     private val account = Account(client)
 
     suspend fun getLoggedIn(): User<Map<String, Any>>? {
@@ -61,10 +61,10 @@ We can now use this service to login, register and logout a user. Integrate the 
 ```kotlin
 object Appwrite {
     private const val ENDPOINT = "https://cloud.appwrite.io/v1"
-    private const val PROJECT_ID = "650870066ca28da3d330"
+    private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
 
     private lateinit var client: Client
-    internal lateinit var users: UserService // <--- Add this line
+    internal lateinit var account: AccountService // <--- Add this line
 
     fun init(context: Context) {
         client = Client(context)
@@ -83,7 +83,7 @@ Create a new file `ui/screens/UserScreen.kt` and add the following code to it.
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>.ui.screens
 
-import <YOUR_ROOT_PACKAGE_HERE>.services.UserService
+import <YOUR_ROOT_PACKAGE_HERE>.services.AccountService
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -114,25 +114,25 @@ import kotlinx.coroutines.launch
 @Composable
 fun UserScreen(
     user: MutableState<User<Map<String, Any>>?>,
-    userService: UserService
+    accountService: AccountService
 ) {
     val coroutineScope = rememberCoroutineScope()
 
     fun onLogin(email: String, password: String) {
         coroutineScope.launch {
-            user.value = userService.login(email, password)
+            user.value = accountService.login(email, password)
         }
     }
 
     fun onRegister(email: String, password: String) {
         coroutineScope.launch {
-            user.value = userService.register(email, password)
+            user.value = accountService.register(email, password)
         }
     }
 
     fun onLogout() {
         coroutineScope.launch {
-            userService.logout()
+            accountService.logout()
             user.value = null
         }
     }

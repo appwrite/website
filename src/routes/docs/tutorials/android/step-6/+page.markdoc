@@ -89,7 +89,7 @@ object Appwrite {
 
     private lateinit var client: Client
     internal lateinit var ideas: IdeaService // <-- Add this line
-    internal lateinit var users: UserService
+    internal lateinit var account: AccountService
 
     fun init(context: Context) {
         client = Client(context)
@@ -97,7 +97,7 @@ object Appwrite {
             .setProject(PROJECT_ID)
 
         ideas = IdeaService(client) // <-- Add this line
-        users = UserService(client)
+        account = AccountService(client)
     }
 }
 ```
