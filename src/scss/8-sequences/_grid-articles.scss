@@ -11,22 +11,39 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
+  grid-auto-columns:minmax(pxToRem(280), 1fr);
+
+  &.is-big {
+    grid-template-columns: repeat(auto-fill, minmax(pxToRem(360), 1fr));
+    grid-auto-columns:minmax(pxToRem(360), 1fr);
+  }
 
   &-scroll {
     container-type:inline-size; container-name:grid-articles;
     .#{$p}-grid-articles-item {}
   }
   &-item {
+    @include border-gradient;
+    --m-border-gradient-before: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+    --m-border-radius: #{pxToRem(16)};
+
+
     display:flex; flex-direction:column; min-block-size:100%;
     padding:pxToRem(8); padding-block-end:pxToRem(12);
 
     background-color:hsl(var(--p-grid-articles-item-bg-color));
-    border:solid pxToRem(1) hsl(var(--p-grid-articles-item-border-color));
-    transition:var(--transition); border-radius:pxToRem(16);
+    transition:var(--transition); 
 
     &-image {
       overflow:hidden; border-radius:pxToRem(8);
-      > * {transition:var(--transition); }
+      > * {
+        transition:var(--transition); 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &-content { display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12); }

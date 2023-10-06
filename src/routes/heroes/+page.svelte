@@ -40,7 +40,7 @@
 				<section class="aw-container aw-u-padding-block-end-0">
 					<div class="aw-hero is-align-start aw-u-max-width-480">
 						<h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-						<div class="">
+						<div>
 							<p class="aw-main-body-500">
 								If you love building, writing, speaking, and helping other developers build with
 								Appwrite, help us support you by joining the Appwrite Heroes program and becoming a
@@ -59,7 +59,7 @@
 				<section class="aw-container">
 					<div class="aw-hero aw-u-max-width-800">
 						<h2 class="aw-title aw-u-color-text-primary">About Appwrite Heroes</h2>
-						<div class="">
+						<div>
 							<p class="aw-sub-body-500">
 								The Appwrite Heroes program is an exclusive group of developers who are experts in
 								Appwrite and dedicated to creating valuable content to assist other developers in
@@ -670,14 +670,14 @@
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/labs.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">Beta-test</span>
+									<span>Beta-test</span>
 								</h3>
 								<p class="aw-info-boxes-content">Opportunity to beta-test Appwrite releases.</p>
 							</li>
 							<li class="aw-info-boxes-item">
 								<img src="/images/icons/gradients/unlock.svg" width="40" height="40" alt="" />
 								<h3 class="aw-info-boxes-title">
-									<span class="">Roadmap access</span>
+									<span>Roadmap access</span>
 								</h3>
 								<p class="aw-info-boxes-content">Special access to a more in-depth roadmap.</p>
 							</li>
