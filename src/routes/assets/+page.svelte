@@ -2,7 +2,7 @@
     import { visible } from '$lib/actions';
     import { Main } from '$lib/layouts';
     import { copy } from '$lib/utils/copy';
-    import { getImageUrl } from '$lib/utils/image';
+
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
@@ -178,7 +178,7 @@
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl('/assets/logotype/white.svg', 'png')}
+                                            href="/assets/logotype/white.png"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
@@ -206,7 +206,7 @@
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl('/assets/logotype/black.svg', 'png')}
+                                            href="/assets/logotype/black.png"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
@@ -275,7 +275,7 @@
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl('/assets/logomark/logo.svg', 'png')}
+                                            href="/assets/logomark/logo.png"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
@@ -303,7 +303,7 @@
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl('/assets/logomark/logo.svg', 'png')}
+                                            href="/assets/logomark/logo.png"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
@@ -429,14 +429,11 @@
                                     <div class="buttons">
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl(
-                                                '/assets/visuals/dashboard.png',
-                                                'jpeg'
-                                            )}
+                                            href="/assets/visuals/dashboard.jpg"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
-                                            <span>JPEG</span>
+                                            <span>JPG</span>
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
@@ -457,11 +454,11 @@
                                     <div class="buttons">
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl('/assets/visuals/auth.png', 'jpeg')}
+                                            href="/assets/visuals/auth.jpg"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
-                                            <span>JPEG</span>
+                                            <span>JPG</span>
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
@@ -482,14 +479,11 @@
                                     <div class="buttons">
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl(
-                                                '/assets/visuals/databases.png',
-                                                'jpeg'
-                                            )}
+                                            href="/assets/visuals/databases.jpg"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
-                                            <span>JPEG</span>
+                                            <span>JPG</span>
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
@@ -511,14 +505,11 @@
                                     <div class="buttons">
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl(
-                                                '/assets/visuals/storage.png',
-                                                'jpeg'
-                                            )}
+                                            href="/assets/visuals/storage.jpg"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
-                                            <span>JPEG</span>
+                                            <span>JPG</span>
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
@@ -540,14 +531,11 @@
                                     <div class="buttons">
                                         <a
                                             class="aw-button is-secondary"
-                                            href={getImageUrl(
-                                                '/assets/visuals/functions.png',
-                                                'jpeg'
-                                            )}
+                                            href="/assets/visuals/functions.jpg"
                                             download
                                         >
                                             <span class="aw-icon-download" aria-label="download" />
-                                            <span>JPEG</span>
+                                            <span>JPG</span>
                                         </a>
                                         <a
                                             class="aw-button is-secondary"
