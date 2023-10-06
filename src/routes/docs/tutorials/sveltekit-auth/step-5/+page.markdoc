@@ -24,7 +24,7 @@ You can see that we added a redirect in the login page to check if the user's al
 
 Now we just need to create a form to let the user input sign in data.
 
-```html
+```svelte
 <!-- src/routes/login/+page.svelte -->
 <script>
 	import { invalidateAll } from '$app/navigation';
