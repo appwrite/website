@@ -97,7 +97,7 @@
 		{/if}
 
 		<div class="aw-side-nav-mobile-footer-buttons">
-			<a href="https://cloud.appwrite.io/console" class="aw-button">
+			<a href="https://cloud.appwrite.io/console" class="aw-button u-width-full-line">
 				<span class="aw-sub-body-500">Go to console</span>
 			</a>
 
