@@ -120,10 +120,11 @@
                             while using our logos, colors, and other brand elements across various
                             platforms and materials.
                         </p>
-                        <button class="aw-button u-cross-child-start">
+
+                        <a href="/assets.zip" download class="aw-button u-cross-child-start">
                             <span class="aw-icon-download" aria-hidden="true" />
                             <span>Download assets</span>
-                        </button>
+                        </a>
                     </section>
 
                     <section id={getSectionId(Section.NAMING)}>
