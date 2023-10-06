@@ -33,7 +33,7 @@ If we find the user is not logged in, we can redirect them to log in first.
 
 We can get the returned data in the root page by using the `data` prop:
 
-```html
+```svelte
 <!-- src/routes/+page.svelte -->
 <script>
 	import { invalidateAll } from '$app/navigation';

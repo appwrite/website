@@ -7,7 +7,7 @@ step: 6
 
 For signup, you can copy the login `+page.js` and `+page.svelte` files into `src/routes/signup`, with some small changes to the `+page.svelte` file:
 
-```html
+```svelte
 <!-- src/routes/signup/+page.svelte -->
 <script>
 	import { invalidateAll } from '$app/navigation';
@@ -65,4 +65,5 @@ For signup, you can copy the login `+page.js` and `+page.svelte` files into `src
 	{/if}
 </form>
 ```
-With this, you have a simple authentication system!
+With this, you have a simple authentication system.
+
