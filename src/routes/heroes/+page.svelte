@@ -3,7 +3,6 @@
 	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { Main } from '$lib/layouts';
 	import { TITLE_SUFFIX } from '$routes/titles';
-    import { text } from '@sveltejs/kit';
 
 	const title = 'Heroes' + TITLE_SUFFIX;
 	const description = DEFAULT_DESCRIPTION;
