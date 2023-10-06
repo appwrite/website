@@ -27,7 +27,7 @@
 			rows: [
 				{
 					title: 'Bandwidth',
-					free: '10GB',
+					free: '100GB',
 					pro: '300GB',
 					scale: '5TB'
 				},
