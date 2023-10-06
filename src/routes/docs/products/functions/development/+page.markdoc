@@ -1150,6 +1150,7 @@ export default async ({ req, res, log }) => {
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 
 Future<dynamic> main(final context) async {
@@ -1454,14 +1455,15 @@ export default function ({req, res, error}: any){
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY);
+        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+        .setKey(Platform.environment['APPWRITE_API_KEY']);
     
     final databases = Databases(client);
     
@@ -1784,13 +1786,14 @@ export default function ({req, res, error}: any){
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
     
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);
