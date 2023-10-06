@@ -1,109 +1,128 @@
 <script lang="ts">
-	let carousel: HTMLElement;
+    let carousel: HTMLElement;
 
-	export let gap = 32;
-	let scroll = 0;
-	let touchStart = 0;
-	let touchEnd = 0;
+    export let isBig = false;
+    export let gap = 32;
+    let scroll = 0;
 
-	function calculateScrollAmount(prev = false) {
-		const direction = prev ? -1 : 1;
-		const carouselSize = carousel?.clientWidth;
-		const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+    function calculateScrollAmount(prev = false) {
+        const direction = prev ? -1 : 1;
+        const carouselSize = carousel?.clientWidth;
+        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
 
-		scroll = scroll || carouselSize;
+        scroll = scroll || carouselSize;
 
-		const numberOfItems = Math.floor(carouselSize / childSize);
-		const overflow = scroll % childSize;
-		const amount = numberOfItems * childSize - overflow * direction;
-		scroll += amount * direction;
-		return amount * direction;
-	}
+        const numberOfItems = Math.floor(carouselSize / childSize);
+        const overflow = scroll % childSize;
+        const amount = numberOfItems * childSize - overflow * direction;
+        scroll += amount * direction;
+        return amount * direction;
+    }
 
-	function next() {
-		carousel.scrollBy({
-			left: calculateScrollAmount(),
-			behavior: 'smooth'
-		});
-	}
-	function prev() {
-		carousel.scrollBy({
-			left: calculateScrollAmount(true),
-			behavior: 'smooth'
-		});
-	}
+    function next() {
+        carousel.scrollBy({
+            left: calculateScrollAmount(),
+            behavior: 'smooth'
+        });
+    }
+    function prev() {
+        carousel.scrollBy({
+            left: calculateScrollAmount(true),
+            behavior: 'smooth'
+        });
+    }
 
-	function handleTouchStart(e: TouchEvent) {
-		touchStart = e.touches[0].clientX;
-	}
-	function handleTouchMove(e: TouchEvent) {
-		touchEnd = e.touches[0].clientX;
-	}
+    let isEnd = false;
+    let isStart = true;
 
-	function handleTouchEnd() {
-		if (touchEnd > touchStart) {
-			prev();
-		} else {
-			next();
-		}
-	}
-
-	let isEnd = false;
-	let isStart = true;
-
-	function handleScroll() {
-		if (carousel.scrollLeft === 0) {
-			isStart = true;
-			isEnd = false;
-		} else if (Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth) {
-			isStart = false;
-			isEnd = true;
-		} else {
-			isStart = false;
-			isEnd = false;
-		}
-	}
+    function handleScroll() {
+        isStart = carousel.scrollLeft <= 0;
+        isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth;
+    }
 </script>
 
-<slot name="header" />
-
 <div>
-	<div class="u-flex u-main-end u-flex-wrap">
-		<div class="u-flex u-gap-12 u-cross-end u-margin-block-start-8">
-			<button
-				class="aw-icon-button"
-				aria-label="Move carousel backward"
-				disabled={isStart}
-				on:click={() => prev()}
-			>
-				<span class="aw-icon-arrow-left" aria-hidden="true" />
-			</button>
-			<button
-				class="aw-icon-button"
-				aria-label="Move carousel forward"
-				disabled={isEnd}
-				on:click={() => next()}
-			>
-				<span class="aw-icon-arrow-right" aria-hidden="true" />
-			</button>
-		</div>
-	</div>
-	<ul
-		class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
-		bind:this={carousel}
-		on:touchstart={handleTouchStart}
-		on:touchmove={handleTouchMove}
-		on:touchend={handleTouchEnd}
-		on:scroll={handleScroll}
-	>
-		<slot />
-	</ul>
+    <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
+        <slot name="header" />
+        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+            <button
+                class="aw-icon-button"
+                aria-label="Move carousel backward"
+                disabled={isStart}
+                on:click={() => prev()}
+            >
+                <span class="aw-icon-arrow-left" aria-hidden="true" />
+            </button>
+            <button
+                class="aw-icon-button"
+                aria-label="Move carousel forward"
+                disabled={isEnd}
+                on:click={() => next()}
+            >
+                <span class="aw-icon-arrow-right" aria-hidden="true" />
+            </button>
+        </div>
+    </div>
+
+    <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
+        <ul
+            class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
+            class:is-big={isBig}
+            bind:this={carousel}
+            on:scroll={handleScroll}
+        >
+            <slot />
+        </ul>
+    </div>
 </div>
 
 <style lang="scss">
-	.carousel {
-		grid-auto-flow: column;
-		grid-auto-columns: minmax(17.5rem, 1fr);
-		overflow-x: hidden;
-	}
+    .carousel-wrapper {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            transition: ease 250ms;
+            z-index: 100;
+        }
+
+        &::before {
+            left: 0;
+            background: linear-gradient(
+                to right,
+                hsl(var(--aw-color-background-docs)),
+                transparent
+            );
+        }
+
+        &[data-state='start']::before {
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(var(--aw-color-background-docs)), transparent);
+        }
+
+        &[data-state='end']::after {
+            opacity: 0;
+        }
+    }
+
+    .carousel {
+        grid-auto-flow: column;
+        overflow-x: scroll;
+        scroll-snap-type: x proximity;
+
+        scrollbar-width: none;
+    }
+
+    .carousel :global(li) {
+        scroll-margin: 48px;
+    }
 </style>
