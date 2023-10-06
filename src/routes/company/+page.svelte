@@ -276,6 +276,7 @@
 								href="https://careers.appwrite.io/"
 								class="aw-button u-cross-child-start aw-u-inline-width-100-percent-mobile-break1"
 								target="_blank"
+								rel="noopener noreferrer"
 							>
 								<span>Join the team</span>
 						</a>
