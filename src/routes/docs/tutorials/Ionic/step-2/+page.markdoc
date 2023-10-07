@@ -1,0 +1,30 @@
+---
+layout: tutorial
+title: Create an Ionic App
+description: Create an Ionic app project and integrate it with Appwrite.
+step: 2
+---
+
+# Create Ionic project {% #create-ionic-project %}
+
+Create an Ionic app with the `ionic start` command.
+
+```sh
+ionic start my-ionic-app blank
+cd my-ionic-app
+
+# Add dependencies {% #add-dependencies %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+You can start the development server to watch your app update in the browser as you make changes.
+
+```sh
+ionic serve
+```
+
+
