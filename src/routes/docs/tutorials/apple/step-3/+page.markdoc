@@ -46,3 +46,21 @@ In order to allow creating OAuth sessions, the following URL scheme must be adde
 </dict>
 </array>
 ```
+
+# Setup Database {% #setup-database %}
+
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our habits.
+
+In the collection go to attributes and add the following attributes:
+| Field          | Type     | Required | Elements       |
+|----------------|----------|----------|----------------|
+| userId         | String   | Yes      |                |
+| title          | String   | Yes      |                |
+| description    | String   | No       |                |
+| icon           | String   | Yes      |                |
+| goals          | Integer  | Yes      |                |
+| goalCompleted  | Integer  | Yes      |                |
+| startDate      | DateTime | Yes      |                |
+| endDate        | DateTime | Yes      |                |
+
+Make sure to enable CRUD permissions in order for user to be able to read, write, update and delete habit.
