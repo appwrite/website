@@ -72,12 +72,17 @@ We will also add the `editExpense` function. This function will make a `PUT` req
 
 ```js
 import React, { useEffect, useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
 
 import ExpenseList from "@/components/ExpenseList";
 import EditExpensePopup from "@/components/EditExpensePopup";
 
 const Home = (props) => {
   const [popup, setPopup] = useState(null);
+  const cookie = useCookie(props.cookie);
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
 
   const editExpense = async (docId, title, amount, type) => {
     const response = await fetch("/api/expense", {
@@ -97,7 +102,7 @@ const Home = (props) => {
     if (response.status === 200) {
       toast.success("Updated successfully");
       setPopup(null);
-      getExpenses();
+      getExpenses(); // get the expenses again
     }
   }
 
@@ -219,7 +224,8 @@ export default EditExpensePopup;
 ```
 
 # Delete expense {% #delete-expense %}
- First create a API to delete the expense. We will create `DELETE` api in the same `api/expense/index.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
+
+First create a API to delete the expense. We will create `DELETE` api in the same `api/expense/index.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
 
 ```js
 import {
@@ -273,7 +279,12 @@ The `setPopup` function is passed as a prop to the `ExpenseCard` component from 
 We will also add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
 
 ```js
+import React, { useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+
 const Home = (props) => {
+  const [popup, setPopup] = useState(null);
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
 
@@ -290,7 +301,7 @@ const Home = (props) => {
     if (response.status === 200) {
       toast.success("Deleted successfully");
       setPopup(null);
-      getExpenses();
+      getExpenses(); // get the expenses again
       setStart(0);
     }
   };

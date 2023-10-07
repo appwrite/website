@@ -90,11 +90,12 @@ We have created a new API endpoint that will add a new expense to the database. 
 Let's use the new API. In the `pages/index.js` file, add the following code to the `addExpense` function. This function will add a new expense to the database.
 
 ```js
-import React from "react";
+import React, { useState } from "react";
 import { useCookie } from "next-cookie";
 import toast from "react-hot-toast";
 
 const Home = (props) => {
+  const [popup, setPopup] = useState(null);
   const cookie = useCookie(props.cookie);
   const router = useRouter();
   const jwt = cookie.get("jwt");
@@ -128,10 +129,22 @@ const Home = (props) => {
           createExpense={createExpense} 
         />
       )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span class="icon-plus" aria-hidden="true"></span>
+          <span class="text">New Expense</span>
+        </button>
+      </div>
     </>
   );
 };
 ```
+
+We are rendering a new component `CreateExpensePopup` when the user clicks on the `New Expense` button. The `CreateExpensePopup` component will be used to create a new expense. 
 
 Let's create the `CreateExpensePopup` component. Create a new file `components/CreateExpensePopup.js` and add the following code.
 
@@ -233,3 +246,5 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
 
 export default CreateExpensePopup;
 ```
+
+We are using the `createExpense` function on the `handleSubmit` function to create a new expense.

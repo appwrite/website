@@ -58,6 +58,8 @@ We are now accepting `limit` and `start` as parameters. `limit` is the number of
 
 We are using the `Query.limit` to limit the number of items returned and `Query.offset` to offset the items returned.
 
+Learn more about [Appwrite Query](https://appwrite.io/docs/products/databases/queries) and [Appwrite Pagination](https://appwrite.io/docs/products/databases/pagination) in the Appwrite documentation.
+
 
 # Pagination in the frontend {% #add-pagination-frontend %}
 We will now add pagination in the frontend. We edit `pages/index.js` and add the following code:

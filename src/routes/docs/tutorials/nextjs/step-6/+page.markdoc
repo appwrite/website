@@ -171,3 +171,5 @@ const ExpenseList = ({ expenses, setPopup }) => {
 
 export default ExpenseList;
 ```
+
+We are also rendering edit and delete buttons. We will add the functionality for these buttons in the next step.

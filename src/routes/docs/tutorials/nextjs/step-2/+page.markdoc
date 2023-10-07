@@ -42,6 +42,23 @@ We will be using cookie to store the session token. So we need to install `next-
 npm install next-cookie react-hot-toast
 ```
 
+We also have to add the `Toaster` component in the `pages/_app.js` file. This component will render all toasts.
+
+```js
+import { Toaster } from "react-hot-toast";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Toaster 
+        position="top-right"
+      />
+    </>
+  );
+}
+```
+
 # Start the development server {% #start-the-development-server %}
 
 You can start the development server using the following command.
