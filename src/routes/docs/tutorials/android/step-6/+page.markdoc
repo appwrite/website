@@ -4,24 +4,29 @@ title: Add database
 description: Add databases and queries to store user data in you Android application.
 step: 6
 ---
+
 # Create collection
+
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
 {% /only_light %}
 
 Create a new collection with the following attributes:
-| Field       | Type   | Required |
-|-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+
+| Field       | Type        | Required    |
+| ----------- | ----------- | ----------- |
+| userId      | String      | Yes         |
+| title       | String      | Yes         |
+| description | String      | No          |
 
 # Add and remove methods
+
 Now that you have a collection to hold ideas, we can read and write to it from our app.
 Create a new file `services/IdeasService.kt` and add the following code to it. Replace the values for `ideaDatabaseId` and `ideaCollectionId` with the IDs of the database and collection you created in the previous step.
 
@@ -88,7 +93,9 @@ object Appwrite {
     private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
 
     private lateinit var client: Client
-    internal lateinit var ideas: IdeaService // <-- Add this line
+
+    // Add this line 👇
+    internal lateinit var ideas: IdeaService
     internal lateinit var account: AccountService
 
     fun init(context: Context) {
@@ -96,7 +103,8 @@ object Appwrite {
             .setEndpoint(ENDPOINT)
             .setProject(PROJECT_ID)
 
-        ideas = IdeaService(client) // <-- Add this line
+        // Add this line 👇
+        ideas = IdeaService(client)
         account = AccountService(client)
     }
 }
