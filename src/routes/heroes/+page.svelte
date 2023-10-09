@@ -46,9 +46,14 @@
 								Appwrite, help us support you by joining the Appwrite Heroes program and becoming a
 								leader in our developer community.
 							</p>
-							<button class="aw-button is-secondary is-full-width-mobile u-margin-block-start-32">
+							<a
+								href="https://7nxwryuitoy.typeform.com/heroes-apply"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="aw-button is-secondary is-full-width-mobile u-margin-block-start-32"
+							>
 								<span class="text">Become a Hero</span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</section>
