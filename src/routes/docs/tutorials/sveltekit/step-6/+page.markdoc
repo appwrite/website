@@ -21,6 +21,8 @@ Create a new collection with the following attributes:
 | title       | String | Yes      |
 | description | String | No       |
 
+Setup permissions on your collection to allow all users for now. In case you get 401 error, check this step.
+
 # Add and remove methods
 Now that you have a collection to hold ideas, we can read and write to it from our app.
 Create a new file `src/lib/stores/ideas.js` and add the following code to it.
@@ -32,8 +34,6 @@ import { databases } from "$lib/appwrite";
 
 export const IDEAS_DATABASE_ID = "6508783c5dc784d544dd"; // Replace with your database ID
 export const IDEAS_COLLECTION_ID = "65087840ab307cb06883"; // Replace with your collection ID
-
-const databases = new Databases(client);
 
 const store = writable([]);
 
