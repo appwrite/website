@@ -1,0 +1,132 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your angular application.
+step: 4
+---
+
+# User service {% #user-service %}
+
+In Angular, services are used to share data and functions between components. We'll create a UserService to manage our user's data.
+
+Create a new file `src/app/user.service.js` and add the following code to it.
+
+```js
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { account } from '../appwrite';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private userSubject = new BehaviorSubject(null);
+  user$ = this.userSubject.asObservable();
+
+  async login(email, password) {
+    const loggedIn = await account.createEmailSession(email, password);
+    this.userSubject.next(loggedIn);
+  }
+
+  async logout() {
+    await account.deleteSession('current');
+    this.userSubject.next(null);
+  }
+
+  async register(email, password) {
+    await account.create(email, password);
+    await this.login(email, password);
+  }
+
+  async init() {
+    try {
+      const loggedIn = await account.get();
+      this.userSubject.next(loggedIn);
+    } catch (err) {
+      this.userSubject.next(null);
+    }
+  }
+}
+```
+
+# Basic routing  {% #basic-routing %}
+
+Angular provides a powerful router that allows you to configure navigation between components. 
+
+Update your `src/app/app-routing.module.js` to define your routes.
+
+```js
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+# Home page  {% #home-page %}
+
+Create a new file `src/app/home/home.component.js` and add the following stub code to it.
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  template: `<p>I'm the home page</p>`
+})
+export class HomeComponent { }
+```
+
+# Login page {% #login-page %}
+
+Finally, we are able to create the login page. Users will be able to login or register from this page, so we'll need to add two buttons.
+
+Create a new file `src/app/login/login.component.js` and add the following code to it.
+
+```js
+import { Component } from '@angular/core';
+import { UserService } from '../user.service';
+
+@Component({
+  selector: 'app-login',
+  template: `
+    <section>
+      <h1>Login or register</h1>
+      <form>
+        <input type="email" [(ngModel)]="email" placeholder="Email">
+        <input type="password" [(ngModel)]="password" placeholder="Password">
+        <div>
+          <button (click)="login()">Login</button>
+          <button (click)="register()">Register</button>
+        </div>
+      </form>
+    </section>
+  `
+})
+export class LoginComponent {
+  email = '';
+  password = '';
+
+  constructor(private userService: UserService) { }
+
+  login() {
+    this.userService.login(this.email, this.password);
+  }
+
+  register() {
+    this.userService.register(this.email, this.password);
+  }
+}
+```
+
+Ensure you have the FormsModule imported in your `app.module.js` to use `[(ngModel)]` for two-way data binding.

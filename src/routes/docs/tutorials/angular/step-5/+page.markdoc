@@ -1,0 +1,51 @@
+---
+layout: tutorial
+title: Add navigation 
+description: Add navigation to your Angular applicating using Appwrite.
+step: 5
+---
+
+In our app we want to have a navigation bar that is always visible. We will add it to the `AppComponent` and use the `UserService` to show either:
+- a logout button if the user is logged in.
+- a login button if the user is not logged in.
+
+Update the `AppComponent` in `src/app/app.component.js`:
+
+```js
+import { Component } from '@angular/core';
+import { UserService } from './user.service';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <app-navbar></app-navbar> <!-- Add the navbar before page content -->
+    <router-outlet></router-outlet> <!-- This directive will insert the component of the active route -->
+  `
+})
+export class AppComponent { }
+
+@Component({
+  selector: 'app-navbar',
+  template: `
+    <nav>
+      <a routerLink="/">Idea tracker</a>
+      <div *ngIf="user$ | async as user; else login">
+        <span>{{ user.email }}</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+      <ng-template #login>
+        <a routerLink="/login">Login</a>
+      </ng-template>
+    </nav>
+  `
+})
+export class NavbarComponent {
+  user$ = this.userService.user$;
+
+  constructor(private userService: UserService) { }
+
+  logout() {
+    this.userService.logout();
+  }
+}
+```

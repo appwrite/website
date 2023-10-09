@@ -1,0 +1,9 @@
+---
+layout: tutorial
+title: Next steps
+description: View your Angular.js app build on Appwrite Cloud.
+step: 8
+---
+
+# Test your project {% #test-project %}
+Run your project with `ng serve --open` and open [http://localhost:4200](http://localhost:4200) in your browser.

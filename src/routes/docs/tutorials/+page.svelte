@@ -73,6 +73,17 @@
 						</a>
 					</li>
 					<li class="is-mobile-col-span-2">
+						<a href="/docs/tutorials/angular" class="aw-card is-normal">
+							<header class="u-flex u-cross-baseline u-gap-4">
+								<span class="icon-angular aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Angular</h4>
+							</header>
+							<p class="aw-sub-body-400 u-margin-block-start-4">
+								Learn Appwrite Auth, Databases, and more with Angular.
+							</p>
+						</a>
+					</li>
+					<li class="is-mobile-col-span-2">
 						<article class="aw-card is-full-color">
 							<header class="u-flex u-cross-baseline u-gap-4">
 								<span class="icon-flutter aw-u-font-size-24" aria-hidden="true" />
