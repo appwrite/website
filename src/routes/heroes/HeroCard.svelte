@@ -41,7 +41,7 @@
                     rel="noopener noreferrer"
                     aria-label="GitHub profile"
                 >
-                    <span class="icon-github" aria-hidden="true" />
+                    <span class="aw-icon-github" aria-hidden="true" />
                 </a>
             </li>
             <li>
