@@ -113,7 +113,7 @@
 												<li><span>Never paused</span></li>
 												<li><span>150K Monthly active users</span></li>
 												<li><span>150GB Storage</span></li>
-												<li><span>3M executions</span></li>
+												<li><span>3.5M executions</span></li>
 												<li>
 													<span>Unlimited Databases, Buckets and Functions</span>
 												</li>
