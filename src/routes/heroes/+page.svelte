@@ -91,6 +91,13 @@
             avatar: 'images/heroes/avatars/emilia.png'
         }
     ];
+
+    const infiniteScroll = (node: HTMLElement) => {
+        if (window.matchMedia('prefers-reduced-motion').matches) return;
+        const content = node.querySelector('.inner') as HTMLElement;
+        content.innerHTML += content?.innerHTML;
+        node.dataset.animated = 'true';
+    };
 </script>
 
 <svelte:head>
@@ -179,126 +186,25 @@
                 </div>
             </div>
             <div class="aw-big-padding-section-level-2">
-                <ul class="aw-scroll-carousel">
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2022/12/img_6246-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2023/07/img_9674-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2022/12/img_6167-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2023/07/img_9861-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            class="aw-card is-white"
-                            style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
-                        >
-                            <img
-                                class="u-block aw-u-border-radius-12"
-                                src="https://eladscil.files.wordpress.com/2022/12/img_6210-large.jpeg"
-                                width="362"
-                                alt=""
-                            />
-                        </div>
-                    </li>
-                </ul>
+                <div class="scroll-carousel" use:infiniteScroll>
+                    <ul class="inner">
+                        <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+                        {#each { length: 5 } as _, i}
+                            <li>
+                                <div
+                                    class="aw-card is-white carousel-img"
+                                    style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
+                                >
+                                    <img
+                                        class="u-block aw-u-border-radius-12"
+                                        src="/images/heroes/photos/{i + 1}.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </li>
+                        {/each}
+                    </ul>
+                </div>
             </div>
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
@@ -502,6 +408,69 @@
             max-block-size: none;
             left: -60rem;
             bottom: -45rem;
+        }
+
+        @media (max-width: 1023px) {
+            [class*='avatar-'] {
+                display: none;
+            }
+
+            .teal-blur {
+                left: -45rem;
+            }
+        }
+    }
+
+    @keyframes scroll {
+        to {
+            transform: translate(calc(-50% - 1rem));
+        }
+    }
+
+    .scroll-carousel {
+        display: flex;
+        width: 100%;
+        overflow: auto;
+
+        .inner {
+            padding-inline: 4rem;
+
+            display: flex;
+            gap: pxToRem(32);
+            flex-shrink: 0;
+
+            > * {
+                flex-shrink: 0;
+                scroll-snap-align: start;
+            } /* items */
+
+            .carousel-img {
+                @include border-gradient;
+                --m-border-gradient-before: linear-gradient(
+                    135.1deg,
+                    #ffffff 10.1%,
+                    rgba(255, 255, 255, 0.2) 52.69%,
+                    rgba(255, 255, 255, 0.5) 120.69%
+                );
+                --m-border-radius: 1.25rem;
+                background: linear-gradient(
+                    155deg,
+                    rgba(255, 255, 255, 0.35) 1.16%,
+                    rgba(255, 255, 255, 0.35) 84.17%
+                );
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+            }
+        }
+    }
+
+    :global([data-animated]).scroll-carousel {
+        width: max-content;
+        overflow: scroll;
+
+        .inner {
+            padding-inline: 0;
+            animation: scroll 40s linear infinite;
         }
     }
 </style>
