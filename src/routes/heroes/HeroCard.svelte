@@ -23,7 +23,7 @@
 </script>
 
 <div class="aw-card is-white">
-    <div class="aw-social-item u-flex-vertical u-gap-24">
+    <div class="aw-social-item u-flex-vertical">
         <div class="u-flex u-gap-16 u-main-space-between">
             <div class="aw-user-box">
                 <img class="aw-user-box-image" src={avatar} alt="" />
@@ -31,8 +31,8 @@
                 <div class="aw-user-box-username aw-sub-body-400">{role}</div>
             </div>
         </div>
-        <p class="aw-sub-body-500 aw-u-text-color-neutral-700">{bio}</p>
-        <ul class="u-flex u-gap-12">
+        <p class="aw-sub-body-500 aw-u-text-color-neutral-700 u-margin-block-start-20">{bio}</p>
+        <ul class="u-flex u-gap-12 u-margin-block-start-32">
             <li>
                 <a
                     class="aw-icon-button"
@@ -69,3 +69,9 @@
         </ul>
     </div>
 </div>
+
+<style lang="scss">
+    .aw-card {
+        --p-card-padding: 1.25rem;
+    }
+</style>
