@@ -122,16 +122,27 @@ fun UserScreen(
     accountService: AccountService
 ) {
     val coroutineScope = rememberCoroutineScope()
+    var error by remember { mutableStateOf<String?>(null) }
 
     fun onLogin(email: String, password: String) {
         coroutineScope.launch {
             user.value = accountService.login(email, password)
+        }
+        error = if (user.value === null) {
+            "Unable to login"
+        } else {
+            null
         }
     }
 
     fun onRegister(email: String, password: String) {
         coroutineScope.launch {
             user.value = accountService.register(email, password)
+        }
+        error = if (user.value === null) {
+            "Unable to register"
+        } else {
+            null
         }
     }
 
@@ -187,6 +198,13 @@ fun UserScreen(
             Button(onClick = { onRegister(username, password) }) {
                 Text("Register")
             }
+        }
+        if (error !== null) {
+            Text(
+                text = error!!,
+                modifier = Modifier.padding(16.dp),
+                color = androidx.compose.ui.graphics.Color.Red
+            )
         }
     }
 }
