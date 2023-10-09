@@ -64,12 +64,17 @@ object Appwrite {
     private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
 
     private lateinit var client: Client
-    internal lateinit var account: AccountService // <--- Add this line
+    
+    // Add this line 👇
+    internal lateinit var account: AccountService
 
     fun init(context: Context) {
         client = Client(context)
             .setEndpoint(ENDPOINT)
             .setProject(PROJECT_ID)
+
+        // Add this line 👇
+        account = AccountService(client)
     }
 }
 ```
@@ -161,7 +166,7 @@ fun UserScreen(
         TextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text("Username") }
+            label = { Text("Email") }
         )
         TextField(
             value = password,
