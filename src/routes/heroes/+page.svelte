@@ -14,7 +14,8 @@
         {
             name: 'Diana Pham',
             role: 'Developer Advocate',
-            bio: "Diana discovered Appwrite and its wonderful team while completing her master's in computer science. Now, as a developer advocate at Vonage, she is excited to build projects using both backend servicing and telecommunications APIs.",
+            bio: "Diana discovered Appwrite and its wonderful team while completing her master's in computer science.\
+						Now, as a developer advocate at Vonage, she is excited to build projects using both backend servicing and telecommunications APIs.",
             github: 'https://github.com/dianapham',
             twitter: 'https://twitter.com/dianasoyster',
             linkedin: 'https://www.linkedin.com/in/dianasoyster',
@@ -23,7 +24,9 @@
         {
             name: 'Stephen Simon',
             role: 'Community Director',
-            bio: "Stephen Simon leads one of the world's largest developer communities and has been instrumental in developing and implementing strategies to foster a sense of belonging and connection among community members. He also currently works on React and Azure.",
+            bio: "Stephen Simon leads one of the world's largest developer communities and has been instrumental in\
+						developing and implementing strategies to foster a sense of belonging and connection among community members.\
+						He also currently works on React and Azure.",
             github: 'https://github.com/codewithsimon',
             twitter: 'https://twitter.com/codewithsimon',
             linkedin: 'https://www.linkedin.com/in/codewithsimon',
@@ -32,7 +35,8 @@
         {
             name: 'Lucas Audart',
             role: 'Web Consultant',
-            bio: 'Lucas is a web consultant at Zenika who specializes in front-end technologies and has spoken about Appwrite and other technologies at various development conferences in France.',
+            bio: 'Lucas is a web consultant at Zenika who specializes in front-end technologies and has spoken about\
+						Appwrite and other technologies at various development conferences in France.',
             github: 'https://github.com/Slocaly',
             twitter: 'https://twitter.com/Slocalyy',
             linkedin: 'https://www.linkedin.com/in/lucas-audart',
@@ -41,7 +45,9 @@
         {
             name: 'Tanmoy Karmakar',
             role: 'Software Engineer',
-            bio: 'Tanmoy Karmakar is a co-organizer at Flutter Kolkata and SDE-II [Flutter] at SaaS Labs. He loves to create content related to Flutter and organize events and meet-ups. Learning new ways to complement Flutter development always amuses him.',
+            bio: 'Tanmoy Karmakar is a co-organizer at Flutter Kolkata and SDE-II [Flutter] at SaaS Labs.\
+						He loves to create content related to Flutter and organize events and meet-ups.\
+						Learning new ways to complement Flutter development always amuses him.',
             github: 'https://github.com/tanmoy27112000',
             twitter: 'https://twitter.com/tanmoykar27',
             linkedin: 'https://www.linkedin.com/in/tanmoykarmakar2711',
@@ -50,7 +56,8 @@
         {
             name: 'Bishwajeet Parhi',
             role: 'Flutter Developer',
-            bio: "Bishwajeet Parhi is a Flutter developer and active open-source contributor. He's currently a junior pursuing a Computer Science and Engineering degree and also an organizer of the Hack This Fall hackathon.",
+            bio: "Bishwajeet Parhi is a Flutter developer and active open-source contributor.\
+						He's currently a junior pursuing a Computer Science and Engineering degree and also an organizer of the Hack This Fall hackathon.",
             github: 'https://github.com/2002Bishwajeet',
             twitter: 'https://twitter.com/biswa_20p',
             linkedin: 'https://www.linkedin.com/in/2002bishwajeet',
@@ -121,20 +128,22 @@
                                 href="https://7nxwryuitoy.typeform.com/heroes-apply"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="aw-button is-secondary is-full-width-mobile u-margin-block-start-32"
+                                class="aw-button is-secondary u-margin-block-start-32"
                             >
                                 <span class="text">Become a Hero</span>
                             </a>
                         </div>
                     </div>
-                    <img src="/images/heroes/bg.png" width="" alt="" />
+                    <div>
+                        <img src="/images/heroes/bg.png" width="" alt="" />
+                    </div>
                 </section>
             </div>
         </div>
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container">
-                    <div class="aw-hero aw-u-max-width-800">
+                    <div class="aw-hero aw-u-max-width-800 about">
                         <h2 class="aw-title aw-u-color-text-primary">About Appwrite Heroes</h2>
                         <div>
                             <p class="aw-sub-body-500">
@@ -145,6 +154,10 @@
                                 providing support in our fast-growing Discord community.
                             </p>
                         </div>
+                        <img class="avatar-1" src="/images/heroes/avatar-1.png" alt="" />
+                        <img class="avatar-2" src="/images/heroes/avatar-2.png" alt="" />
+                        <img class="avatar-3" src="/images/heroes/avatar-3.png" alt="" />
+                        <img class="teal-blur" src="/images/heroes/teal-blur.svg" alt="" />
                     </div>
                 </section>
             </div>
@@ -420,7 +433,75 @@
 <style lang="scss">
     .hero {
         display: grid;
-        grid-template-columns: repe;
-        background-color: red;
+        grid-template-columns: 30.0625rem minmax(0, 1fr);
+        gap: 5vw;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        > :nth-child(2) {
+            transform-origin: left center;
+            scale: 2;
+            transform: translateY(2rem);
+        }
+
+        @media (max-width: 1023px) {
+            display: block;
+
+            overflow: hidden;
+            gap: 2rem;
+
+            > :first-child {
+                max-width: 40rem;
+                margin-inline: auto;
+            }
+
+            > :nth-child(2) {
+                scale: 1;
+                width: 100%;
+                height: 24rem;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 40rem;
+
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-30%, -50%);
+
+                    max-block-size: unset;
+                    max-inline-size: unset;
+                }
+            }
+        }
+    }
+
+    .about {
+        position: relative;
+
+        .avatar-1 {
+            position: absolute;
+            bottom: -5rem;
+            right: -20rem;
+        }
+        .avatar-2 {
+            position: absolute;
+            top: -5rem;
+            left: -7.5rem;
+        }
+        .avatar-3 {
+            position: absolute;
+            bottom: -13rem;
+            left: -15rem;
+        }
+        .teal-blur {
+            position: absolute;
+            max-inline-size: none;
+            max-block-size: none;
+            left: -60rem;
+            bottom: -45rem;
+        }
     }
 </style>

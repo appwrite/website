@@ -22,7 +22,7 @@
     export let avatar: $$Props['avatar'];
 </script>
 
-<div class="aw-card is-white">
+<div class="aw-card is-white theme-light">
     <div class="aw-social-item u-flex-vertical">
         <div class="u-flex u-gap-16 u-main-space-between">
             <div class="aw-user-box">
