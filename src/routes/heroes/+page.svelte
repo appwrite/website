@@ -466,7 +466,7 @@
 
     :global([data-animated]).scroll-carousel {
         width: max-content;
-        overflow: scroll;
+        overflow: hidden;
 
         .inner {
             padding-inline: 0;
