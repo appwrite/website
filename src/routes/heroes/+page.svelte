@@ -103,19 +103,12 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div
-    class="u-position-absolute aw-is-not-mobile"
-    style="pointer-events:none; inset-inline-start:822px;"
->
-    <img src="/images/temp/bg-side-heroes.png" width="" alt="" />
-</div>
-
 <Main>
     <div class="aw-big-padding-section">
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-padding-block-end-0">
-                    <div class="aw-hero is-align-start aw-u-max-width-480">
+                <section class="aw-container hero aw-u-padding-block-end-0">
+                    <div>
                         <h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
                         <div>
                             <p class="aw-main-body-500">
@@ -134,6 +127,7 @@
                             </a>
                         </div>
                     </div>
+                    <img src="/images/heroes/bg.png" width="" alt="" />
                 </section>
             </div>
         </div>
@@ -424,15 +418,9 @@
 </Main>
 
 <style lang="scss">
-    .aw-scroll-carousel li {
-        animation: marquee 15s linear infinite;
-        @keyframes marquee {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-100%, 0);
-            }
-        }
+    .hero {
+        display: grid;
+        grid-template-columns: repe;
+        background-color: red;
     }
 </style>
