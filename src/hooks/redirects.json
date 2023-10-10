@@ -650,5 +650,14 @@
     {
         "link": "/careers",
         "redirect": "https://careers.appwrite.io/"
+    },
+    {
+        "link": "/policy/terms",
+        "redirect": "/terms"
+    },
+    {
+        "link": "/policy/privacy",
+        "redirect": "/privacy"
     }
+    
 ]
