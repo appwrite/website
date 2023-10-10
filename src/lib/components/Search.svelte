@@ -108,7 +108,8 @@
         elements: { input, menu, option },
         states: { inputValue }
     } = createCombobox<Props>({
-        forceVisible: true,
+        forceVisible: false,
+        preventScroll: false,
         portal: null,
         positioning: null,
         onSelectedChange({ next }) {
@@ -141,7 +142,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
     class="wrapper u-position-fixed u-padding-0 u-inset-0 u-flex u-main-center u-cross-center"
-    data-visible={open ? '' : undefined}
+    data-visible={open ? true : undefined}
     style:z-index="100"
     style:background="hsl(var(--aw-color-black) / 0.3)"
     style:backdrop-filter="blur(15px)"
