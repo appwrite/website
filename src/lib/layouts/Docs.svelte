@@ -53,20 +53,7 @@
             showSidenav: false
         }));
     });
-
-    function handleKeypress(event: KeyboardEvent) {
-        const cmdPressed = isMac() ? event.metaKey : event.ctrlKey;
-        if (cmdPressed && event.key.toLowerCase() === 'k') {
-            event.preventDefault();
-            $layoutState.showSearch = true;
-        } else if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
-            event.preventDefault();
-            $layoutState.showSearch = false;
-        }
-    }
 </script>
-
-<svelte:window on:keydown={handleKeypress} />
 
 <div class="u-position-relative">
     <div
