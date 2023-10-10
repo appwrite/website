@@ -493,7 +493,7 @@
             </div>
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
-                    <Carousel isBig>
+                    <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
                         </svelte:fragment>

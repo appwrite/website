@@ -42,10 +42,10 @@ dependencies:
 devDependencies:
   '@melt-ui/pp':
     specifier: ^0.1.2
-    version: 0.1.2(@melt-ui/svelte@0.51.0)(svelte@4.2.0)
+    version: 0.1.2(@melt-ui/svelte@0.54.1)(svelte@4.2.0)
   '@melt-ui/svelte':
-    specifier: ^0.51.0
-    version: 0.51.0(svelte@4.2.0)
+    specifier: ^0.54.1
+    version: 0.54.1(svelte@4.2.0)
   '@playwright/test':
     specifier: ^1.37.1
     version: 1.38.0
@@ -510,19 +510,19 @@ packages:
       '@types/markdown-it': 12.2.3
     dev: true
 
-  /@melt-ui/pp@0.1.2(@melt-ui/svelte@0.51.0)(svelte@4.2.0):
+  /@melt-ui/pp@0.1.2(@melt-ui/svelte@0.54.1)(svelte@4.2.0):
     resolution: {integrity: sha512-GZeqp7UWLNZUC2dJpREnZrWMR88vy27WO7C3cIBz4KW3/CFD19FjNkd3VbSRfcRryrMkdnEs9nu2VUa8/0u58w==}
     engines: {pnpm: '>=8.6.3'}
     peerDependencies:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
-      '@melt-ui/svelte': 0.51.0(svelte@4.2.0)
+      '@melt-ui/svelte': 0.54.1(svelte@4.2.0)
       svelte: 4.2.0
     dev: true
 
-  /@melt-ui/svelte@0.51.0(svelte@4.2.0):
-    resolution: {integrity: sha512-RRtwHEEJnueJ0wnezJb6Dod8p0ItjCOSf7bjPivZDcqIWOoSTkXdn2upfzpVnNj3RobsjiQrpKbbdsZgUd92gA==}
+  /@melt-ui/svelte@0.54.1(svelte@4.2.0):
+    resolution: {integrity: sha512-sUAum/TSx0+DZYV5FNRTGRl38nv157PIbE2dy4IwXp6wJH97CWi7DuwaI4rrao9N2UKAUMIT0wmUVLeEULDCZw==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
