@@ -1,4 +1,6 @@
-export const prerender = true;
+const isVercel = process.env.VERCEL === '1';
+
+export const prerender = isVercel;
 
 const parsePosts = (posts: Record<string, any>) => {
     return Object.fromEntries(
