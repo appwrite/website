@@ -149,17 +149,152 @@
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
         </section>
-        <section>
-            <h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
-            <p class="aw-description u-max-width-600 u-margin-block-start-16">
-                If you learn best from code examples, follow one of our tutorials.
-            </p>
+        <section class="aw-hero is-align-start is-no-max-width">
             <Carousel>
-                {#each tutorials as tutorial}
-                    <li style:scroll-snap-align="start">
-                        <CodeCard {...tutorial} />
+                <svelte:fragment slot="header">
+                    <h2 class="aw-title aw-u-color-text-primary u-max-width-600">
+                        Show me some code
+                    </h2>
+                    <p class="aw-description u-max-width-600">
+                        If you learn best from code examples, follow one of our tutorials.
+                    </p>
+                </svelte:fragment>
+                <svelte:fragment>
+                    <li>
+                        <a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/react">
+                            <div class="aw-grid-articles-item-image">
+                                <img
+                                    class="aw-articles-item-image"
+                                    src="/images/tutorials/react.png"
+                                    alt="react logo"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <article class="aw-grid-articles-item-content">
+                                <header class="aw-articles-item-header">
+                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                        React tutorial
+                                    </h3>
+                                </header>
+                                <p
+                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+                                    style="word-break: keep-all;"
+                                >
+                                    Learn Appwrite Auth, Databases, and more with React.
+                                </p>
+                            </article>
+                        </a>
                     </li>
-                {/each}
+                    <li>
+                        <a
+                            class="aw-grid-articles-item is-full-color"
+                            href="/docs/tutorials/sveltekit"
+                        >
+                            <div class="aw-grid-articles-item-image">
+                                <img
+                                    class="aw-articles-item-image"
+                                    src="/images/tutorials/svelte.png"
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            </div>
+                            <article class="aw-grid-articles-item-content">
+                                <header class="aw-articles-item-header">
+                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                        SvelteKit tutorial
+                                    </h3>
+                                </header>
+                                <p
+                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+                                    style="word-break: keep-all;"
+                                >
+                                    Learn Appwrite Auth, Databases, and more with SvelteKit.
+                                </p>
+                            </article>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/vue">
+                            <div class="aw-grid-articles-item-image">
+                                <img
+                                    class="aw-articles-item-image"
+                                    src="/images/tutorials/vue.png"
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            </div>
+                            <article class="aw-grid-articles-item-content">
+                                <header class="aw-articles-item-header">
+                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                        Vue tutorial
+                                    </h3>
+                                </header>
+                                <p
+                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+                                    style="word-break: keep-all;"
+                                >
+                                    Learn Appwrite Auth, Databases, and more with Vue.
+                                </p>
+                            </article>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="aw-grid-articles-item is-full-color"
+                            href="/docs/tutorials/android"
+                        >
+                            <div class="aw-grid-articles-item-image">
+                                <img
+                                    class="aw-articles-item-image"
+                                    src="/images/tutorials/android.png"
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            </div>
+                            <article class="aw-grid-articles-item-content">
+                                <header class="aw-articles-item-header">
+                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                        Android tutorial
+                                    </h3>
+                                </header>
+                                <p
+                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+                                    style="word-break: keep-all;"
+                                >
+                                    Learn Appwrite Auth, Databases, and more with Android.
+                                </p>
+                            </article>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="aw-grid-articles-item is-full-color"
+                            href="/docs/tutorials/flutter"
+                        >
+                            <div class="aw-grid-articles-item-image">
+                                <img
+                                    class="aw-articles-item-image"
+                                    src="/images/tutorials/flutter.png"
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            </div>
+                            <article class="aw-grid-articles-item-content">
+                                <header class="aw-articles-item-header">
+                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                        Flutter tutorial
+                                    </h3>
+                                </header>
+                                <p
+                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
+                                    style="word-break: keep-all;"
+                                >
+                                    Coming soon...
+                                </p>
+                            </article>
+                        </a>
+                    </li>
+                </svelte:fragment>
             </Carousel>
         </section>
         <section class="aw-hero is-align-start is-no-max-width">
