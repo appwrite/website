@@ -120,6 +120,11 @@
         scroll-snap-type: x proximity;
 
         scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .carousel :global(li) {
