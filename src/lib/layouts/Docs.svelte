@@ -33,6 +33,7 @@
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
+    import { isMac } from '@melt-ui/svelte/internal/helpers';
 
     export let variant: DocsLayoutVariant = 'default';
 
@@ -52,17 +53,7 @@
             showSidenav: false
         }));
     });
-
-    function handleKeypress(event: KeyboardEvent) {
-        if (event.metaKey && event.key.toLowerCase() === 'k') {
-            $layoutState.showSearch = true;
-        } else if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
-            $layoutState.showSearch = false;
-        }
-    }
 </script>
-
-<svelte:window on:keydown={handleKeypress} />
 
 <div class="u-position-relative">
     <div
@@ -156,7 +147,11 @@
                             <span class="text">Search in docs</span>
 
                             <div class="u-flex u-gap-4 u-margin-inline-start-auto">
-                                <span class="aw-kbd" aria-label="command">⌘</span>
+                                {#if isMac()}
+                                    <span class="aw-kbd" aria-label="command">⌘</span>
+                                {:else}
+                                    <span class="aw-kbd" aria-label="control">Ctrl</span>
+                                {/if}
                                 <span class="aw-kbd">K</span>
                             </div>
                         </button>
