@@ -15,6 +15,22 @@ npx create-next-app expense-tracker --eslint
 
 We are using the `--eslint` flags to add ESLint to our project.
 
+What are the options you plan to take?
+
+```sh
+✔ Would you like to use TypeScript? … No / Yes : No
+✔ Would you like to use Tailwind CSS? … No / Yes : No
+✔ Would you like to use `src/` directory? … No / Yes : Yes
+✔ Would you like to use App Router? … No / Yes : No
+✔ Would you like to customize the default import alias? … No / Yes : No
+
+Creating a new Next.js app in expense-tracker.
+
+Using npm.
+```
+
+You can also follow the responses from above.
+
 # Install dependencies {% #install-dependencies %}
 
 Install the [JavaScript Appwrite SDK](https://appwrite.io/docs/sdks).
