@@ -24,7 +24,7 @@ Over the past year, we’ve noticed conversations like this in Appwrite communit
 
 "Why don’t they read the docs?" We wanted to find out.
 
-## Identifying the issues
+# Identifying the issues
 
 The Appwrite team has always valued documentation as a core part of the product. After all, most adoption begins at the documentation. The old documentation was minimalistic and to the point and reflects our product philosophy. You can skim through it in one sitting and learn how to start building with Appwrite.
 
@@ -35,7 +35,7 @@ Appwrite also gained popularity. While Appwrite’s early adopters are experienc
 
 Put simply, Appwrite’s documentation has to adapt to the changing needs of Appwrite’s growing capabilities and evolving audience.
 
-## Getting feedback
+# Getting feedback
 
 We view the Appwrite documentation as a product. 
 So when we notice problems, we apply the same product design processes to address them. 
@@ -46,7 +46,7 @@ We receive feedback from the "State of Appwrite" surveys, the Appwrite [Discord 
 issues on the [docs repo](https://github.com/appwrite/docs), Office Hours questions, developer interviews, UX research activities, 
 [this discussion](https://github.com/appwrite/appwrite/discussions/5692), and more. The open-source community’s feedback gave us a head start.
 
-## Planning the changes
+# Planning the changes
 
 First, we laid out the requirements for the new documentation. 
 We identified key friction points: lack of a search bar, insufficient navigation depth to abstract complex concepts, 
@@ -61,7 +61,7 @@ We took what we liked, and left out what didn’t work for us.
 We also attend conferences like DevRelCon and Refactor DX to learn about the latest trends in developer experience, technical writing, and accessibility to evaluate our design's strengths and shortcomings.
 A bonus is the fresh eyes we pull aside every conference for in-person feedback, especially rare for a fully remote team like us.
 
-## Building the new docs
+# Building the new docs
 
 The new Appwrite docs need to cover the entire developer journey. This means it needs to help the developers discover Appwrite, evaluate its capabilities, learn to use Appwrite, build something useful, and scale it to support product growth.
 
@@ -98,11 +98,18 @@ print("I'm python")
 
 Which renders multi-select code fences like you find all over our docs.
 
-![Code fence in new Appwrite docs](/images/blog/dont-blame-the-readers-write-the-docs-they-need/codefence.png)
+{% multicode %}
+```js
+console.log("I'm javascript");
+```
+```py
+print("I'm python")
+```
+{% /multicode %}
 
 The documentation source is easy for contributors to read and allows us to extend its syntax with powerful features.
 
-## Moving forward
+# Moving forward
 
 The most important part of these changes is to give us *room to grow*. There is more room for content, especially community-contributed tutorials, quick starts, and integration guides. Truth is, while we build the Appwrite Platform, the community has built more successful and production-ready projects.
 
