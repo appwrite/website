@@ -3,7 +3,7 @@ layout: post
 title: Meet the new Appwrite
 description: Unveiling Appwrite's new documentation. More details, just as simple, and more welcoming to contributors.
 date: 2023-10-10
-cover: /images/blog/don't-blame-the-readers-write-the-docs-they-need/cover.png
+cover: /images/blog/dont-blame-the-readers-write-the-docs-they-need/cover.png
 timeToRead: 10
 author: vincent-ge
 category: design, brand
@@ -33,7 +33,7 @@ More features simply need more words to explain, and the single-side navigation 
 
 Appwrite also gained popularity. While Appwrite’s early adopters are experienced open-source tinkerers who are comfortable operating with less guidance and enjoy the old documentation’s brevity, the growing number of learners and students need more help. You can expect experienced developers to understand the purpose of a tool intuitively, but learners need to know how and when to use Appwrite. 
 
-> Put simply, Appwrite’s documentation has to adapt to the changing needs of Appwrite’s growing capabilities and evolving audience.
+Put simply, Appwrite’s documentation has to adapt to the changing needs of Appwrite’s growing capabilities and evolving audience.
 
 ## Getting feedback
 
@@ -67,21 +67,21 @@ The new Appwrite docs need to cover the entire developer journey. This means it 
 
 Appwrite’s new documentation has a navigation flow that aims to follow this journey. We introduced overview pages that introduce Appwrite’s capabilities, platform pages to help developers evaluate Appwrite’s design, more quick starts for frameworks to shorten the learning stage and build confidence, and expanded tutorials that help developers build and scale.
 
-![Overview of Appwrite's new documentation](/images/blog/don't-blame-the-readers-write-the-docs-they-need/overview.png)
+![Overview of Appwrite's new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/overview.png)
 
 Developers loved the simplicity of the old Appwrite documentation, and we didn’t want to lose that part of our identity. 
 Each deep dive section still begins with the same one-page quick start, which may be enough information for veterans. 
 More comprehensive documentation and suggested usage are available, but further down the navigation.
 
-![Quick start in the Authentication docs page](/images/blog/don't-blame-the-readers-write-the-docs-they-need/quickstart.png)
+![Quick start in the Authentication docs page](/images/blog/dont-blame-the-readers-write-the-docs-they-need/quickstart.png)
 
 For learners and students, we added step by step tutorials to help you get to a working app faster and build confidence.
 
-![A complete tutorial in the new docs](/images/blog/don't-blame-the-readers-write-the-docs-they-need/tutorials.png)
+![A complete tutorial in the new docs](/images/blog/dont-blame-the-readers-write-the-docs-they-need/tutorials.png)
 
 With all the new content, the new Appwrite docs also introduce **search**. Search helps keep Appwrite docs easy to navigate.
 
-![Search feature in new documentation](/images/blog/don't-blame-the-readers-write-the-docs-they-need/search.png)
+![Search feature in new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/search.png)
 
 The new docs are written using an extended flavor of markdown called Markdoc with Svelte, which makes community contributions easier. Markdown is easy to read, and we can extend it with custom syntax like this multi-code selector.
 
@@ -98,7 +98,7 @@ print("I'm python")
 
 Which renders multi-select code fences like you find all over our docs.
 
-![Code fence in new Appwrite docs](/images/blog/don't-blame-the-readers-write-the-docs-they-need/codefence.png)
+![Code fence in new Appwrite docs](/images/blog/dont-blame-the-readers-write-the-docs-they-need/codefence.png)
 
 The documentation source is easy for contributors to read and allows us to extend its syntax with powerful features.
 
