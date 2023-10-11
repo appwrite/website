@@ -39,7 +39,11 @@ export enum Platform {
     ServerPhp = 'server-php',
     ServerPython = 'server-python',
     ServerRuby = 'server-ruby',
-    ServerSwift = 'server-swift'
+    ServerSwift = 'server-swift',
+    ServerAndroidKotlin = 'server-android-kotlin',
+    ServerAndroidJava = 'server-android-java',
+    ServerGraphql = 'server-graphql',
+    ServerRest = 'server-rest',
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -58,6 +62,10 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerPython]: 'Python',
     [Platform.ServerRuby]: 'Ruby',
     [Platform.ServerSwift]: 'Swift',
+    [Platform.ServerAndroidKotlin]: 'Android (Kotlin)',
+    [Platform.ServerAndroidJava]: 'Android (Java)',
+    [Platform.ServerGraphql]: 'GraphQL',
+    [Platform.ServerRest]: 'REST',
     sh: 'Shell',
     js: 'JavaScript',
     jsx: 'React',
