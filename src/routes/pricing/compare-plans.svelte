@@ -138,7 +138,7 @@
                     scale: '500,000 monthly active users'
                 },
                 {
-                    title: 'Additional users (cost per user)',
+                    title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
                     scale: '$3 per 1,000 users'
