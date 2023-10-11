@@ -83,7 +83,7 @@ With all the new content, the new Appwrite docs also introduce **search**. Searc
 
 ![Search feature in new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/search.png)
 
-The new docs are written using an extended flavor of markdown called Markdoc with Svelte, which makes community contributions easier. Markdown is easy to read, and we can extend it with custom syntax like this multi-code selector.
+The new docs are written using an extended flavor of markdown made with [Markdoc and Svelte](https://github.com/TorstenDittmann/svelte-markdoc-preprocess), which makes community contributions easier. Markdown is easy to read and we can extend it with custom syntax like this multi-code selector.
 
 ``````
 {% multicode %}
