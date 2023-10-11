@@ -5,6 +5,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import type { HeroCardProps } from './HeroCard.svelte';
     import HeroCard from './HeroCard.svelte';
+    import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     const title = 'Heroes' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -158,9 +159,15 @@
                                 providing support in our fast-growing Discord community.
                             </p>
                         </div>
-                        <img class="avatar-1" src="/images/heroes/avatar-1.png" alt="" />
-                        <img class="avatar-2" src="/images/heroes/avatar-2.png" alt="" />
-                        <img class="avatar-3" src="/images/heroes/avatar-3.png" alt="" />
+                        <div class="avatar-1">
+                            <FloatingHead src="/images/heroes/avatars/bishwajeet.png" size={64} />
+                        </div>
+                        <div class="avatar-2">
+                            <FloatingHead src="/images/heroes/avatars/tanmoy.png" size={80} />
+                        </div>
+                        <div class="avatar-3">
+                            <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
+                        </div>
                         <img class="teal-blur" src="/images/heroes/teal-blur.svg" alt="" />
                     </div>
                 </section>
@@ -173,7 +180,7 @@
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
                     <div class="aw-hero">
-                        <div class="aw-display aw-u-color-text-primary">Meet our Heroes</div>
+                        <div class="aw-display aw-u-clr-primary">Meet our Heroes</div>
                     </div>
                     <ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
                         {#each heroCards as heroCardProps}
@@ -396,7 +403,7 @@
         }
         .avatar-3 {
             position: absolute;
-            bottom: -13rem;
+            bottom: -7rem;
             left: -15rem;
         }
         .teal-blur {
