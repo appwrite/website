@@ -82,6 +82,11 @@
       @include dark-mode();
     }
   }
+
+  option {
+    background-color: white;
+    color: black;
+  }
 }
 
 
