@@ -29,7 +29,7 @@ Creating a new Next.js app in expense-tracker.
 Using npm.
 ```
 
-You can also follow the responses from above.
+You can also follow the responses from above. We will be using pages directory for project. Also We are not using TypeScript, Tailwind CSS.
 
 # Install dependencies {% #install-dependencies %}
 

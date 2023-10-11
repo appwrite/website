@@ -36,6 +36,7 @@ export default async (req, res) => {
         [
           Query.equal("userId", [userId]),
           Query.orderDesc("$createdAt"),
+          // limit and offset are used for pagination
           Query.limit(limit),
           Query.offset(parseInt(start)),
         ]
@@ -78,7 +79,7 @@ const Home = (props) => {
   const [popup, setPopup] = useState(null);
   const [start, setStart] = useState(0);
   const [total, setTotal] = useState(0);
-  const limit = 2;
+  const limit = 5;
   const cookie = useCookie(props.cookie);
   const router = useRouter();
   const jwt = cookie.get("jwt");
@@ -117,10 +118,21 @@ const Home = (props) => {
   const pages = Math.ceil(total / limit);
 
   return (
-    <div className="container u-flex-vertical	u-gap-12 u-cross-center">
-      <h1 className="heading-level-1 font-bold">Your expenses</h1>
-      <ExpenseList setPopup={setPopup} expenses={expenses} />
-    </div>
+    <>
+      // Popup components from previous steps
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text"> New Expense</span>
+        </button>
+        <ExpenseList setPopup={setPopup} expenses={expenses} />
+        // Pagination buttons will be here
+      </div>
+    </>
   );
 };
 
@@ -132,7 +144,7 @@ We are using the `start` and `limit` to get the expenses. We are also calculatin
 Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code:
 
 ```js
-<div className="container u-flex-vertical	u-gap-12 u-cross-center">
+<div className="container u-flex-vertical u-gap-12 u-cross-center">
   <h1 className="heading-level-1 font-bold">Your expenses</h1>
   <ExpenseList setPopup={setPopup} expenses={expenses} />
   <div className="u-flex u-main-center u-gap-12">

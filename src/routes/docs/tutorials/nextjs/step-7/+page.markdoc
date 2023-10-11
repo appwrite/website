@@ -27,8 +27,9 @@ export default async (req, res) => {
     return res.status(400).json({ message: "Unauthorized" });
   }
   account.client.setJWT(jwt);
-
-  if (method === "PUT") {
+  if (method === "POST") {
+    // create expense api
+  } else if (method === "PUT") {
     const { title, amount, type, docId } = req.body;
     if (!title || !amount || !type || !docId) {
       return res.status(401).json({ message: "Missing fields" });
@@ -108,6 +109,7 @@ const Home = (props) => {
 
   return (
     <>
+      // Edit expense popup
       {popup?.type === "edit" && (
         <EditExpensePopup
           docId={popup?.data?.$id}
@@ -119,10 +121,24 @@ const Home = (props) => {
           editExpense={editExpense}
         />
       )}
-      <ExpenseList
-        expenses={expenses}
-        setPopup={setPopup}
-      />
+      // New expense popup
+      {popup?.type === "new" && (
+        <CreateExpensePopup 
+          setPopup={setPopup} 
+          createExpense={createExpense} 
+        />
+      )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center u-main-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text"> New Expense</span>
+        </button>
+        <ExpenseList setPopup={setPopup} expenses={expenses} />
+      </div>
     </>
   )
 }
@@ -243,7 +259,11 @@ export default async (req, res) => {
   }
   account.client.setJWT(jwt);
 
-  if (method === "DELETE") {
+  if (method === "POST") {
+    // create expense api
+  } else if (method === "PUT") {
+    // update expense api
+  } else if (method === "DELETE") {
     const { docId } = req.body;
     try {
       await database.deleteDocument(
@@ -315,6 +335,7 @@ const Home = (props) => {
           deleteExpense={deleteExpense}
         />
       )}
+      // rest of the code from previous step
     </>
   );
 };

@@ -105,9 +105,28 @@ const Home = (props) => {
   }, []);
 
   return (
-    <ExpenseList
-      expenses={expenses}
-    />
+    <>
+      {popup?.type === "new" && (
+        <CreateExpensePopup 
+          setPopup={setPopup} 
+          createExpense={createExpense} 
+        />
+      )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text">New Expense</span>
+        </button>
+        <ExpenseList
+          expenses={expenses}
+          setPopup={setPopup}
+        />
+      </div>
+    </>
   );
 };
 
