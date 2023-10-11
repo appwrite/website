@@ -34,6 +34,7 @@
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
     import { isMac } from '@melt-ui/svelte/internal/helpers';
+    import { setContext } from 'svelte';
 
     export let variant: DocsLayoutVariant = 'default';
 
@@ -53,6 +54,8 @@
             showSidenav: false
         }));
     });
+
+    setContext('isDocs', true);
 </script>
 
 <div class="u-position-relative">
