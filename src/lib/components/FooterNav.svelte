@@ -1,6 +1,9 @@
 <script lang="ts">
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+
+    export let noBorder = false;
+
     const {
         elements: { content, heading, item, root, trigger },
         helpers: { isSelected }
@@ -75,7 +78,10 @@
         };
 </script>
 
-<nav class="aw-footer-nav u-margin-block-start-100 u-position-relative aw-u-sep-block-start">
+<nav
+    class="aw-footer-nav u-margin-block-start-100 u-position-relative"
+    class:aw-u-sep-block-start={!noBorder}
+>
     <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
     <ul class="aw-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
