@@ -137,7 +137,7 @@
                     <nav class="aw-main-header-nav">
                         <ul class="aw-main-header-nav-list">
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-main-header-nav-link is-selected" href="/docs">Docs</a>
+                                <a class="aw-link" href="/docs">Docs</a>
                             </li>
                         </ul>
                     </nav>
