@@ -104,7 +104,7 @@
                 },
                 {
                     title: 'Webhooks',
-                    free: '2 Per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
                 },

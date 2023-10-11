@@ -154,8 +154,8 @@
 												<li><span>500GB storage</span></li>
 												<li><span>10M executions</span></li>
 												<li><span>Priority Support</span></li>
-												<li><span>Longer log retention</span></li>
-												<li><span>Additional org member roles</span></li>
+												<li><span>14-day log retention</span></li>
+												<li><span>Additional organization roles</span></li>
 												<li><span>SSO</span></li>
 											</ul>
 										</div>
