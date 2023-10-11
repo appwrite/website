@@ -304,13 +304,8 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative">
-            <img
-                src="/images/bgs/heroes-pre.svg"
-                alt=""
-                class="u-position-absolute"
-                style="inset:0; inline-size:100%; max-block-size:100%;"
-            />
+        <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
+            <img src="/images/bgs/heroes-pre.svg" alt="" class="u-position-absolute" />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">
@@ -331,7 +326,7 @@
                 </div>
                 <div class="aw-big-padding-section-level-2 u-position-relative">
                     <div class="aw-container u-position-relative">
-                        <FooterNav />
+                        <FooterNav noBorder />
                         <MainFooter />
                     </div>
                 </div>
@@ -475,6 +470,28 @@
         .inner {
             padding-inline: 0;
             animation: scroll 40s linear infinite;
+        }
+    }
+
+    .footer-wrapper {
+        overflow: hidden;
+
+        > img {
+            top: -100px;
+            inline-size: 1700px;
+            max-inline-size: none;
+            max-block-size: none;
+        }
+
+        @media (max-width: 1024px) {
+            .aw-hero {
+                padding-block-start: 5rem;
+            }
+
+            > img {
+                top: -300px;
+                left: -400px;
+            }
         }
     }
 </style>
