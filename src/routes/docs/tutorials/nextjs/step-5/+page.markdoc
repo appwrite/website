@@ -135,8 +135,8 @@ const Home = (props) => {
           className="button"
           onClick={() => setPopup({ type: "new", data: null })}
         >
-          <span class="icon-plus" aria-hidden="true"></span>
-          <span class="text">New Expense</span>
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text">New Expense</span>
         </button>
       </div>
     </>
@@ -190,10 +190,10 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
         </p>
         <form className="u-margin-block-start-12" onSubmit={handleSubmit}>
           <div>
-            <label class="label">Title</label>
-            <div class="input-text-wrapper">
+            <label className="label">Title</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Title"
                 id="title"
                 type="text"
@@ -204,10 +204,10 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
             </div>
           </div>
           <div className="u-margin-block-start-12">
-            <label class="label">Amount($)</label>
-            <div class="input-text-wrapper">
+            <label className="label">Amount($)</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Title"
                 id="amount"
                 type="number"
@@ -219,8 +219,8 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
             </div>
           </div>
           <div className="u-margin-block-start-12">
-            <label class="label">Type</label>
-            <div class="input-text-wrapper">
+            <label className="label">Type</label>
+            <div className="input-text-wrapper">
               <select
                 id="type"
                 className="input-text"
@@ -248,3 +248,11 @@ export default CreateExpensePopup;
 ```
 
 We are using the `createExpense` function on the `handleSubmit` function to create a new expense.
+
+Here we are also using a custom className `lite-bg` which we can define in the `/src/styles/globals.css` file.
+
+```css
+.lite-bg {
+  background-color: hsl(var(--color-primary-100) / 0.2);
+}
+```

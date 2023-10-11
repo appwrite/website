@@ -32,10 +32,10 @@ const SignUp = (props) => {
         </p>
         <form onSubmit={signup}>
           <div>
-            <label class="label">Name</label>
-            <div class="input-text-wrapper">
+            <label className="label">Name</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Name"
                 id="name"
                 type="text"
@@ -45,10 +45,10 @@ const SignUp = (props) => {
             </div>
           </div>
           <div>
-            <label class="label">Email</label>
-            <div class="input-text-wrapper">
+            <label className="label">Email</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Email"
                 id="email"
                 type="email"
@@ -58,10 +58,10 @@ const SignUp = (props) => {
             </div>
           </div>
           <div>
-            <label class="label">Password</label>
-            <div class="input-text-wrapper">
+            <label className="label">Password</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Password"
                 id="password"
                 type="password"
@@ -139,10 +139,10 @@ const Login = (props) => {
         </p>
         <form onSubmit={loginUser}>
           <div>
-            <label class="label">Email</label>
-            <div class="input-text-wrapper">
+            <label className="label">Email</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Email"
                 id="email"
                 type="email"
@@ -152,10 +152,10 @@ const Login = (props) => {
             </div>
           </div>
           <div>
-            <label class="label">Password</label>
-            <div class="input-text-wrapper">
+            <label className="label">Password</label>
+            <div className="input-text-wrapper">
               <input
-                class="input-text"
+                className="input-text"
                 placeholder="Password"
                 id="password"
                 type="password"
