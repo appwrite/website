@@ -76,11 +76,12 @@
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
 												<li><span>10GB bandwidth</span></li>
+												<li><span>2GB storage</span></li>
 												<li><span>Unlimited projects</span></li>
 												<li><span>Never paused</span></li>
 												<li><span>750K executions</span></li>
 												<li><span>50MB uploads</span></li>
-												<li><span>1 Database, 3 Buckets, 5 Functions</span></li>
+												<li><span>1 Database, 3 Buckets, 5 Functions per project</span></li>
 												<li><span>Community support</span></li>
 												<li><span>Non-removable Appwrite branding</span></li>
 												<li><span>No Add-ons</span></li>
@@ -109,10 +110,8 @@
 											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
 												<li><span>300GB bandwidth</span></li>
-												<li><span>Unlimited projects</span></li>
-												<li><span>Never paused</span></li>
-												<li><span>150K Monthly active users</span></li>
-												<li><span>150GB Storage</span></li>
+												<li><span>200K Monthly active users</span></li>
+												<li><span>150GB storage</span></li>
 												<li><span>3.5M executions</span></li>
 												<li>
 													<span>Unlimited Databases, Buckets and Functions</span>
@@ -150,7 +149,12 @@
 										<div class="aw-pricing-cards-content">
 											<p>Everything in Starter & Pro, plus:</p>
 											<ul class="aw-checked-list-circle">
-												<li><span>Extra support log retention days</span></li>
+												<li><span>5TB bandwidth</span></li>
+												<li><span>500K Monthly active users</span></li>
+												<li><span>500GB storage</span></li>
+												<li><span>10M executions</span></li>
+												<li><span>Priority Support</span></li>
+												<li><span>Longer log retention</span></li>
 												<li><span>Additional org member roles</span></li>
 												<li><span>SSO</span></li>
 											</ul>
