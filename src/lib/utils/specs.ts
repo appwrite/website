@@ -208,10 +208,10 @@ export async function getService(
 	/**
 	 * Exceptions for Android SDK.
 	 */
-	const isAndroidJava = platform === Platform.ClientAndroidJava || platform === Platform.ServerAndroidJava;
-	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin || platform === Platform.ServerAndroidKotlin;
+	const isAndroidJava = platform === Platform.ClientAndroidJava || platform === Platform.ServerJava;
+	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
 	const isAndroid = isAndroidJava || isAndroidKotlin;
-	const isAndroidServer = platform === Platform.ServerAndroidJava || platform === Platform.ServerAndroidKotlin;
+	const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
 	const api = await getApi(version, platform);
 	const tag = api.tags?.find((n) => n.name === service);
 
