@@ -1,7 +1,8 @@
 <script lang="ts">
     export let src: string;
     export let type = 'video/mp4';
-    export let autoplay = false;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    export let autoplay: boolean = false;
 </script>
 
 <div class="aw-media">
