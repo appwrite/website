@@ -218,7 +218,7 @@
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as { label, href }}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-main-header-nav-link" {href}>{label}</a>
+                                <a class="aw-link" {href}>{label}</a>
                             </li>
                         {/each}
                     </ul>
