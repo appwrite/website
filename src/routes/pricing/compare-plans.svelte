@@ -122,9 +122,9 @@
                 },
                 {
                     title: 'Additional organization member roles',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -198,7 +198,7 @@
                 {
                     title: 'File size limit',
                     free: '50MB',
-                    pro: '5TB',
+                    pro: '5GB',
                     scale: '5TB'
                 },
                 {
@@ -238,7 +238,7 @@
                 {
                     title: 'Concurrent connections',
                     free: '250',
-                    pro: '750',
+                    pro: '500',
                     scale: '1500'
                 },
                 {
