@@ -80,10 +80,10 @@
 												<li><span>2GB storage</span></li>
 												<li><span>750K executions</span></li>
 												<li><span>75K monthly active users</span></li>
-												<li><span>1 Database, 3 Buckets, 5 Functions per project</span></li>
 												<li><span>Community support</span></li>
 												<li><span>Non-removable Appwrite branding</span></li>
 												<li><span>No Add-ons</span></li>
+												<li><span>1 Database, 3 Buckets, 5 Functions per project</span></li>
 											</ul>
 										</div>
 									</div>
@@ -112,12 +112,10 @@
 												<li><span>150GB storage</span></li>
 												<li><span>3.5M executions</span></li>
 												<li><span>200K monthly active users</span></li>
-												<li>
-													<span>Unlimited Databases, Buckets and Functions</span>
-												</li>
 												<li><span>Email support</span></li>
 												<li><span>Removable Appwrite branding</span></li>
 												<li><span>Add-ons</span></li>
+												<li><span>Unlimited Databases, Buckets and Functions</span></li>
 											</ul>
 										</div>
 									</div>
