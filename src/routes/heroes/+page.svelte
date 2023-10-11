@@ -124,22 +124,19 @@
                 <section class="aw-container hero aw-u-padding-block-end-0">
                     <div>
                         <h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-                        <div>
-                            <p class="aw-main-body-500">
-                                If you love building, writing, speaking, and helping other
-                                developers build with Appwrite, help us support you by joining the
-                                Appwrite Heroes program and becoming a leader in our developer
-                                community.
-                            </p>
-                            <a
-                                href="https://7nxwryuitoy.typeform.com/heroes-apply"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="aw-button is-secondary u-margin-block-start-32"
-                            >
-                                <span class="text">Become a Hero</span>
-                            </a>
-                        </div>
+                        <p class="aw-main-body-500 u-margin-block-start-20">
+                            If you love building, writing, speaking, and helping other developers
+                            build with Appwrite, help us support you by joining the Appwrite Heroes
+                            program and becoming a leader in our developer community.
+                        </p>
+                        <a
+                            href="https://7nxwryuitoy.typeform.com/heroes-apply"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="aw-button is-secondary u-margin-block-start-32"
+                        >
+                            <span class="text">Become a Hero</span>
+                        </a>
                     </div>
                     <div>
                         <img src="/images/heroes/bg.png" width="" alt="" />
