@@ -133,9 +133,9 @@
             rows: [
                 {
                     title: 'Users',
-                    free: '75,000 Monthly active users',
-                    pro: '200,000 Monthly active users',
-                    scale: '500,000 Monthly active users'
+                    free: '75,000 monthly active users',
+                    pro: '200,000 monthly active users',
+                    scale: '500,000 monthly active users'
                 },
                 {
                     title: 'Additional users (cost per user)',

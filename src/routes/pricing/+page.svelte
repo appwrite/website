@@ -75,11 +75,11 @@
 										</header>
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
-												<li><span>Unlimited projects ( Never paused )</span></li>
+												<li><span>Unlimited projects (never paused)</span></li>
 												<li><span>10GB bandwidth</span></li>
 												<li><span>2GB storage</span></li>
 												<li><span>750K executions</span></li>
-												<li><span>75K Monthly active users</span></li>
+												<li><span>75K monthly active users</span></li>
 												<li><span>1 Database, 3 Buckets, 5 Functions per project</span></li>
 												<li><span>Community support</span></li>
 												<li><span>Non-removable Appwrite branding</span></li>
@@ -97,7 +97,7 @@
 										<header class="aw-pricing-cards-header">
 											<h2 class="aw-label">Pro</h2>
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$15</div>
-											<div class="u-margin-block-start-4">per user/month</div>
+											<div class="u-margin-block-start-4">per member/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For pro developers and teams that need to scale their products.
 											</p>
@@ -111,7 +111,7 @@
 												<li><span>300GB bandwidth</span></li>
 												<li><span>150GB storage</span></li>
 												<li><span>3.5M executions</span></li>
-												<li><span>200K Monthly active users</span></li>
+												<li><span>200K monthly active users</span></li>
 												<li>
 													<span>Unlimited Databases, Buckets and Functions</span>
 												</li>
@@ -134,7 +134,7 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">
 												$685
 											</div>
-											<div class="u-margin-block-start-4">per organiztion/month</div>
+											<div class="u-margin-block-start-4">per organization/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For scaling teams and agencies that need dedicated support.
 											</p>
@@ -151,8 +151,8 @@
 												<li><span>5TB bandwidth</span></li>
 												<li><span>500GB storage</span></li>
 												<li><span>10M executions</span></li>
-												<li><span>500K Monthly active users</span></li>
-												<li><span>Priority Support</span></li>
+												<li><span>500K monthly active users</span></li>
+												<li><span>Priority support</span></li>
 												<li><span>14-day log retention</span></li>
 												<li><span>Additional organization roles</span></li>
 												<li><span>SSO</span></li>
