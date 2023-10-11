@@ -208,9 +208,10 @@ export async function getService(
 	/**
 	 * Exceptions for Android SDK.
 	 */
-	const isAndroidJava = platform === Platform.ClientAndroidJava;
-	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin;
+	const isAndroidJava = platform === Platform.ClientAndroidJava || platform === Platform.ServerAndroidJava;
+	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin || platform === Platform.ServerAndroidKotlin;
 	const isAndroid = isAndroidJava || isAndroidKotlin;
+	const isAndroidServer = platform === Platform.ServerAndroidJava || platform === Platform.ServerAndroidKotlin;
 	const api = await getApi(version, platform);
 	const tag = api.tags?.find((n) => n.name === service);
 
@@ -266,7 +267,7 @@ export async function getService(
 		);
 
 		const path = isAndroid
-			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${isAndroidServer ? 'server-kotlin' : 'client-android'}/${
 					isAndroidJava ? 'java' : 'kotlin'
 			  }/${operation['x-appwrite'].demo}`
 			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
