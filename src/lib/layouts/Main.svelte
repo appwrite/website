@@ -16,6 +16,7 @@
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { slide } from 'svelte/transition';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -109,6 +110,22 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    let showDiscordBanner = false;
+
+    function hideDiscordBanner() {
+        localStorage.setItem('hideDiscordBanner', 'true');
+        showDiscordBanner = false;
+    }
+
+    onMount(() => {
+        const sdbLocal = localStorage.getItem('hideDiscordBanner');
+        if (sdbLocal === 'true') {
+            showDiscordBanner = false;
+        } else {
+            showDiscordBanner = true;
+        }
+    });
 </script>
 
 <div class="u-position-relative">
@@ -159,6 +176,26 @@
         class:is-transparent={browser}
         class:is-hidden={$isHeaderHidden}
     >
+        {#if showDiscordBanner}
+            <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
+                <div class="aw-top-banner-content aw-u-color-text-primary">
+                    <a href="https://appwrite.io/discord" target="_blank" rel="noopener noreferrer">
+                        <span class="aw-caption-500">We are having lots of fun on</span>
+                        <span class="aw-icon-discord" aria-hidden="true" />
+                        <span class="aw-caption-500">Discord. Come and join us!</span>
+                    </a>
+                    {#if browser}
+                        <button
+                            class="aw-top-banner-button"
+                            aria-label="close discord message"
+                            on:click={hideDiscordBanner}
+                        >
+                            <span class="aw-icon-close" aria-hidden="true" />
+                        </button>
+                    {/if}
+                </div>
+            </div>
+        {/if}
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start">
                 <a href="/">

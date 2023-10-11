@@ -31,7 +31,7 @@
   .#{$p}-input-text { padding-block:pxToRem(7); padding-inline-end:pxToRem(8); }
 
   .aw-logo { margin-inline-end:pxToRem(32); }
-  .#{$p}-top-banner { position:relative; inset-block-start: calc(var(--p-main-header-padding-block) * -1); }
+  
 
   &-nav {
     align-self:center; font-size:pxToRem(16); user-select:none;
