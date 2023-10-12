@@ -3,6 +3,7 @@
         value: T;
         label: string;
         icon?: string;
+        group?: string;
     };
 </script>
 
@@ -16,7 +17,7 @@
     export let onSelectedChange: CreateSelectProps['onSelectedChange'] = undefined;
 
     const {
-        elements: { trigger, menu, option: optionEl },
+        elements: { trigger, menu, option: optionEl, group: groupEl, groupLabel },
         states: { open, selected: localSelected, selectedLabel }
     } = createSelect<unknown>({
         preventScroll: false,
@@ -40,6 +41,24 @@
     $: if (selectedOption) {
         localSelected.set(selectedOption);
     }
+
+    const DEFAULT_GROUP = 'default';
+    type Group = {
+        label: string;
+        options: SelectOption<unknown>[];
+    };
+    $: groups = (function getGroups(): Group[] {
+        const groups = options.reduce<Record<string, SelectOption[]>>((carry, option) => {
+            const group = option.group ?? DEFAULT_GROUP;
+            if (!carry[group]) {
+                carry[group] = [];
+            }
+            carry[group].push(option);
+            return carry;
+        }, {});
+
+        return Object.entries(groups).map(([label, options]) => ({ label, options }));
+    })();
 </script>
 
 <button
@@ -65,13 +84,21 @@
         use:melt={$menu}
         transition:fly={{ y: 4, duration: 150 }}
     >
-        {#each options as option}
-            <button class="aw-select-option" use:melt={$optionEl(option)}>
-                {#if option.icon}
-                    <span class={option.icon} aria-hidden="true" />
+        {#each groups as group}
+            {@const isDefault = group.label === DEFAULT_GROUP}
+            <div class="aw-select-group" use:melt={$groupEl(group.label)}>
+                {#if !isDefault}
+                    <span class="aw-select-group-label" use:melt={$groupLabel}>{group.label}</span>
                 {/if}
-                <span style:text-transform="capitalize">{option.label}</span>
-            </button>
+                {#each options as option}
+                    <button class="aw-select-option" use:melt={$optionEl(option)}>
+                        {#if option.icon}
+                            <span class={option.icon} aria-hidden="true" />
+                        {/if}
+                        <span style:text-transform="capitalize">{option.label}</span>
+                    </button>
+                {/each}
+            </div>
         {/each}
     </div>
 {/if}
@@ -84,10 +111,23 @@
         <span class={selectedOption.icon} aria-hidden="true" />
     {/if}
     <select bind:value={selected}>
-        {#each options as option}
-            <option value={option.value} selected={option.value === selected}>
-                {option.label}
-            </option>
+        {#each groups as group}
+            {@const isDefault = group.label === DEFAULT_GROUP}
+            {#if isDefault}
+                {#each options as option}
+                    <option value={option.value} selected={option.value === selected}>
+                        {option.label}
+                    </option>
+                {/each}
+            {:else}
+                <optgroup label={isDefault ? undefined : group.label}>
+                    {#each options as option}
+                        <option value={option.value} selected={option.value === selected}>
+                            {option.label}
+                        </option>
+                    {/each}
+                </optgroup>
+            {/if}
         {/each}
     </select>
     <span class="icon-cheveron-down" aria-hidden="true" />

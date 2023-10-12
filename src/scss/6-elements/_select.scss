@@ -83,8 +83,8 @@
     }
   }
 
-  option {
-    background-color: white;
+  option, optgroup {
+    background-color: whitesmoke;
     color: black;
   }
 }
@@ -94,10 +94,11 @@
 	all: unset;
 	display: flex;
 	flex-direction: column;
+  gap: pxToRem(8);  
 	position: relative;
 	line-height: 1;
 	user-select: none;
-	cursor: pointer;
+	
 	color: hsl(var(--aw-color-primary));
 	font-size: pxToRem(14);
 	
@@ -127,6 +128,15 @@
   box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-menu-box-shadow-color));
 }
 
+.#{$p}-select-group {
+  display: flex;
+	flex-direction: column;
+
+  &-label {
+    margin-block-end: pxToRem(4);
+  }
+}
+
 .#{$p}-select-option { 
   display: flex;
   align-items: center;
@@ -135,6 +145,8 @@
   padding-block: pxToRem(4);
   padding-inline: pxToRem(4);
   border-radius: pxToRem(6);
+
+  cursor: pointer;
 
   @mixin light-mode() {
     --p-select-option-bg-color-hover: var(--aw-color-greyscale-25);
