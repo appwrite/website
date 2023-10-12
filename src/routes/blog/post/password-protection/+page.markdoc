@@ -4,7 +4,7 @@ title: "Password protection for developers: importance and best practices"
 description: Why it is necessary to implement strong password protection policies in your app and best practices to follow
 date: 2023-10-11
 cover: /images/blog/password-protection.png
-timeToRead: 3
+timeToRead: 6
 author: aditya-oberai
 category: authentication, security
 ---
@@ -23,7 +23,7 @@ There are numerous reasons why we as developers must implement password protecti
 Developers are responsible for protecting sensitive user information such as personal data, financial details, and other private information. Proper password protection ensures unauthorized individuals cannot access this data, helping maintain user trust and privacy.
     
 - **Protect Application Integrity**  
-Weak password protection can lead to unauthorized access, resulting in data breaches, tampering with application functionality, and other malicious activities. By implementing robust password protection measures, developers can maintain the integrity of their applications and minimize the risk of cyberattacks.
+Weak password protection can lead to unauthorized access, resulting in data breaches, application functionality tampering, and other malicious activities. By implementing robust password protection measures, developers can maintain the integrity of their applications and minimize the risk of cyberattacks.
     
 - **Prevent Unauthorized Access**  
 A strong password protection system helps prevent unauthorized users from gaining access to restricted areas of an application, such as admin panels or user accounts. This ensures that only authorized users can access and modify data, reducing the chances of data leaks and minimizing possible attack vectors.
