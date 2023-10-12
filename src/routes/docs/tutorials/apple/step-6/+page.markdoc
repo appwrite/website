@@ -5,7 +5,7 @@ description: Add authentication to your SwiftUI application.
 step: 6
 ---
 
-# Authentication
+# Authentication {% #authentication %}
 
 Add the following code to AuthScreen.swift inside **Auth/View** folder. Basicly this UI handle both login and register user.
 

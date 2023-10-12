@@ -61,7 +61,7 @@ struct SettingScreen: View {
 }
 ```
 
-# Progress Screen {% #progress-screen %}
+# Progress screen {% #progress-screen %}
 
 In this tutorial, we wouldn't be covering the Progress UI part. You can just display a text for now.
 

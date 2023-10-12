@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Manage Service and View Models
-description: Manage Appwrite Service using Appwrite Web SDK and SwiftUI application View Model.
+title: Manage service and view models
+description: Manage Appwrite wervice using Appwrite Apple SDK and SwiftUI application View Model.
 step: 4
 ---
 
-# Appwrite Service
+# Appwrite service {% #appwrite-service %}
 
 Create a new file AppwriteService.swift inside **Shared/Services** folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID.
 
@@ -99,7 +99,7 @@ class AppwriteService {
 }
 ```
 
-# Snackbar Service
+# Snackbar service {% #snackbar-service %}
 
 In order to manage error toast, we need a view model to handle and dispatch error messsgae to our UI. Create a new file SnackbarService.swift inside **Shared/Services** folder and add the following code to it.
 
@@ -162,7 +162,7 @@ struct SnackbarView: View {
 }
 ```
 
-# Habit Model
+# Habit model {% #habit-model %}
 
 Add the following code to HabitModel.swift inside **Shared/Models** folder.
 

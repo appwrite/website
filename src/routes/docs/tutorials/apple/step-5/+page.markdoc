@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Manage navigation 
-description: Add navigation to your SwiftUI app with Appwrite authentication and pinia stores.
+description: Add navigation to your SwiftUI app with Appwrite authentication.
 step: 5
 ---
 
-# Router
+# Router {% #router %}
 
 Add the following code to Router.swift File in the root folder
 
@@ -96,7 +96,7 @@ final class Router: ObservableObject {
 }
 ```
 
-# ContentView
+# ContentView {% #contentview %}
 
 Update the ContentView.swift to reflect some changes related to our navigation
 
@@ -144,7 +144,7 @@ struct ContentView: View {
 
 Note: You can get the Appwrite logo on Appwrite website and add it to your project assets
 
-# Inject Services and View Models
+# Inject services and view models {% #inject-services-and-view-models %}
 
 Let's inject Appwrite Service and Snarbar Service into our View Model then inject to our app using Environment Object. Update the entry file with the code below.
 
@@ -172,7 +172,7 @@ struct appwrite_hacktoberfestApp: App {
 Note: Change **appwrite_hacktoberfestApp** to your project name
 
 
-# User View Model
+# User view model {% #user-view-models %}
 
 Add the following code to UserViewModel.swift inside **Home/ViewModels** folder.
 
@@ -276,7 +276,7 @@ final class UserViewModel: ObservableObject {
 }
 ```
 
-# Habit View Model
+# Habit view model {% #habit-view-model %}
 
 Add the following code to HabitViewModel.swift inside **Home/ViewModels** folder.
 
