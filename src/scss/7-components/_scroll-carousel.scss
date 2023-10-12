@@ -1,7 +1,0 @@
-@use '../abstract' as *;
-
-.#{$p}-scroll-carousel {
-  display:flex; gap:pxToRem(32); align-items:start; inline-size:100%;
-  overflow-x:auto; scroll-snap-type:x mandatory;
-  > * { flex-shrink:0; scroll-snap-align:start; } /* items */
-}

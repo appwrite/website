@@ -9,6 +9,7 @@
 
   display:inline-flex; justify-content:center; align-items:center;
   min-inline-size:pxToRem(24); block-size:pxToRem(24);
+  padding-inline: pxToRem(3.5);
   border-radius:pxToRem(4); flex-shrink:0;
   -webkit-user-select:none; user-select:none;
 

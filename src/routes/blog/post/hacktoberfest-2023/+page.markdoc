@@ -1,36 +1,48 @@
 ---
 layout: post
-title: Celebrate Hacktoberfest 2023 with Appwrite
-description: Hacktoberfest 2023 has been announced and we at Appwrite are glad to participate and support.
-date: 2023-09-15
+title: Celebrate Open Source with Appwrite and Hacktoberfest 2023!
+description: We're excited to announce our participation in Hacktoberfest 2023! Join Appwrite in celebrating and supporting open-source development this October.
+date: 2023-10-01
 cover: /images/blog/hacktoberfest-2023.png
 timeToRead: 3
 author: eldad-fux
 category: hacktoberfest
 ---
 
-Celebrating open source for a decade now! Hacktoberfest is finally back for its 10th year, and we at Appwrite are thrilled to share that we’ll be joining in and supporting open-source developers for the 5th time in a row!
+Hacktoberfest is back, celebrating a decade of open source! Appwrite is proud to support open-source developers for the fifth consecutive year of [Hacktoberfest 2023](https://hacktoberfest.com), partnered with DigitalOcean. Here is how you can get involved and grab some cool Appwrite swag!
 
-## Our journey with Hacktoberfest
+## Quick Guide to Getting Involved
 
-Hacktoberfest is an initiative that deeply matters to us. We launched the first iteration of Appwrite as a mere open-source project back in September 2019. Hacktoberfest 2019 was truly a game-changer for us, as we saw over 200 contributions from some lovely members of the open-source fraternity that October. The stars on our project doubled that month while entering the 4-digit range for the very first time. That one month truly enabled us to lay the foundations of a budding organization with the sole purpose of helping developers build faster and better. And for that, there are no thank-you's that will ever be enough to express our gratitude for this amazing open-source community that chose to carry us on their shoulders at our inception. We want to give back to you all for your endless love and support, and with that goal, we are partnering with DigitalOcean to sponsor Hacktoberfest 2023. We aim to uplift this ever-growing community and enable more newcomers to immerse themselves in the open-source ecosystem, become better developers, and support their peers in the times to come.
 
-## How We Will Be Supporting Developers This Year
+### 1. Appwrite Repository:
+- Check out the Appwrite repository on [GitHub](https://github.com/appwrite). Ensure you “Star” and “Like” the repo so you can find it easily
 
-Through our participation in Hacktoberfest 2023, we want to inspire more developers to get excited about open source and make their first contributions. To achieve this, we've partnered with your favorite communities to host engaging events related to open source and Hacktoberfest! These sessions will provide you with an introduction to open-source projects and communities, guide you in making contributions, and help you prepare for October. Make sure not to miss these sessions if you want to kickstart your journey.
+### 2. Search for Issues:
+- Look for [issues labeled `hacktoberfest`](https://github.com/appwrite/appwrite/labels/hacktoberfest). Not seeing enough to choose from? Do not worry, we will be adding more issues throughout the month
+- Can't find an issue you want to work on? You can create an issue if you have great ideas on how you can contribute to improving Appwrite. Keep in mind this years focus is on quality, not quantity
 
-Additionally, we'll be sharing a variety of blogs and videos focused on open source, featuring insights from tech experts. Our aim is to help you enter the world of open source with confidence. The open-source community thrives on teamwork and mutual support, and we're here to empower you to embark on your open-source journey in a way that suits you best.
+### 3. Choose Your Contribution:
+- Find the Issue you want to contribute to
+- Reply with a comment, “I would like to work on this. Can you assign it to me?”
+- Be sure to follow up with the issue within 3 days, so we know you are still working on it
+- Once your PR is ready, link the PR in the issue and tag a maintainer to let them know it is ready for review
+- Your PR will be confirmed within 7 days, and if it's accepted, we will label it as `hacktoberfest-accepted`
 
-## Contributing to Appwrite this Hacktoberfest
+### 4. Get Support:
+- Our maintainers are here to assist, guide, and mentor you through your contribution. Need alternative ways to contribute or additional help? Contact us on [Discord](https://appwrite.io/discord)!
 
-There are a variety of ways by which you can start contributing to the Appwrite ecosystem. Either by adding new features, fixing bugs, helping with documentation, building examples or spreading the word out. Every contribution counts!
+### 5. Win Swags:
+- Earn an Appwrite hoodie and stickers for contributing only one accepted and merged PR!
+- Earn a Digital Swag Bag from DigitalOcean for contributing 4 PRs+ from any open-source project participating in Hacktoberfest. We have a surprise gift inside this swag bag waiting for you
 
-During the event, you could go through the entire set of open-source repositories that Appwrite manages on GitHub and choose any code or non-code issue you'd like to help with and pick it up. Our maintainer will be there to help, guide, and mentor you.
+![Hacktoberfest swag](/images/blog/hacktoberfest2023-swag.png)
 
-In case you’d like to contribute in another way, feel free to let us know in our [Discord](https://appwrite.io/discord), and we’d be happy to assist you in this process.
+## How Appwrite Supports Developers
 
-## **Get more involved, join the Appwrite community!**
+- We are hosting several events that you can find in the Appwrite Discord community to introduce you to open-source projects, guide your contributions, and prep you for October. We are hosting two PR Review parties each week where you can watch our engineers live reviewing your pull requests and giving tips on contributing
 
-Join the Appwrite community and stay updated on new posts, guides, and features, and engage with other Appwriters like you.
+- We are consistently sharing content on how to build with Appwrite and become a better developer
 
-[Join us on Discord](https://appwrite.io/discord)
+## Join the Appwrite Community
+
+Stay informed on new announcements, events, and features, and interact with other Appwriters from the community! [Join us on Discord](https://appwrite.io/discord), join the #hacktoberfest channel, and celebrate open-source together!
