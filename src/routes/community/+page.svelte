@@ -9,6 +9,8 @@
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
+    import type { ProjectCardProps } from './ProjectCard.svelte';
+    import ProjectCard from './ProjectCard.svelte';
 
     const events: EventCardProps[] = [
         {
@@ -59,6 +61,37 @@
             description:
                 'Join us for a month long celebration of open source in collaboration with DigitalOcean.',
             buttonText: 'View event'
+        }
+    ];
+
+    const projects: ProjectCardProps[] = [
+        {
+            title: 'Auth UI',
+            description: 'Appwirte-powered authentication screens generator for any application.',
+            image: {
+                src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
+                alt: 'Auth UI: Fully customizable login flow for your applications'
+            },
+            href: 'https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/'
+        },
+        {
+            title: 'Glitch',
+            description: 'Appwrite-powered collaboration Tool for streamlined team communication.',
+            image: {
+                src: '/images/community/projects/glitch.png',
+                alt: 'A screenshot of the Glitch dashboard. There\'s a sidebar, and a headline that reads: "Welcome to Glitch, powered by Appwrite"'
+            },
+            href: 'https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/'
+        },
+        {
+            title: 'uCanEarn',
+            description:
+                'Appwrite-powered platform where you can sell your digital products online.',
+            image: {
+                src: '/images/community/projects/ucanearn.png',
+                alt: "A screenshot of uCanEarn's website"
+            },
+            href: 'https://builtwith.appwrite.io/projects/648606ad9cd179190b28/'
         }
     ];
 
@@ -541,76 +574,11 @@
                         </a>
                     </div>
                     <ul class="aw-grid-3-desktop-1-mobile aw-u-margin-block-start-64">
-                        <li>
-                            <a
-                                class="aw-card is-white aw-u-flex-vertical u-gap-8"
-                                href="https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="--card-padding:0.5rem;"
-                            >
-                                <div class="u-padding-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
-                                        Auth UI
-                                    </h3>
-                                    <p class="u-trim-2">
-                                        Appwirte-powered authentication screens generator for any
-                                        application.
-                                    </p>
-                                </div>
-                                <img
-                                    src="https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite"
-                                    class="u-width-full-line aw-u-block-size-160 aw-u-media-cover"
-                                    alt=""
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                class="aw-card is-white aw-u-flex-vertical u-gap-8"
-                                href="https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="--card-padding:0.5rem;"
-                            >
-                                <div class="u-padding-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">Glitch</h3>
-                                    <p class="u-trim-2">
-                                        Appwrite-powered collaboration Tool for streamlined team
-                                        communication.
-                                    </p>
-                                </div>
-                                <img
-                                    src="/images/community/projects/glitch.png"
-                                    class="u-width-full-line aw-u-block-size-160 aw-u-media-cover"
-                                    alt=""
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                class="aw-card is-white aw-u-flex-vertical u-gap-8"
-                                href="https://builtwith.appwrite.io/projects/648606ad9cd179190b28/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="--card-padding:0.5rem;"
-                            >
-                                <div class="u-padding-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
-                                        uCanEarn
-                                    </h3>
-                                    <p class="u-trim-2">
-                                        Appwrite-powered platform where you can sell your digital
-                                        products online.
-                                    </p>
-                                </div>
-                                <img
-                                    src="/images/community/projects/ucanearn.png"
-                                    class="u-width-full-line aw-u-block-size-160 aw-u-media-cover"
-                                    alt=""
-                                />
-                            </a>
-                        </li>
+                        {#each projects as project}
+                            <li>
+                                <ProjectCard {...project} />
+                            </li>
+                        {/each}
                     </ul>
                 </div>
             </div>
