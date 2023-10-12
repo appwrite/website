@@ -192,7 +192,7 @@
     @include dark-mode();
   }
 
-  &:where(:hover, :focus) {
+  &:where(:hover, :focus, [data-highlighted]) {
     background-color: hsl(var(--p-select-option-bg-color-hover));
   }
 

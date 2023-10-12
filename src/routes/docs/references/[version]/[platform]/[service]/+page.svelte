@@ -128,6 +128,7 @@
                         <label class="u-small is-not-mobile" for="version">Version</label>
 
                         <Select
+                            nativeMobile
                             on:change={selectVersion}
                             value={$page.params.version}
                             options={[
