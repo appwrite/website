@@ -39,7 +39,7 @@ To use Appwrite in our Next.js app, we'll need to find our project ID. Find your
 {% /only_light %}
 
 
-Create a new file `src/lib/appwrite.js` to hold our Appwrite related code.
+Create a new file `src/config/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
 

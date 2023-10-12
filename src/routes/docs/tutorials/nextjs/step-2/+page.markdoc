@@ -21,7 +21,7 @@ What are the options you plan to take?
 ✔ Would you like to use TypeScript? … No / Yes : No
 ✔ Would you like to use Tailwind CSS? … No / Yes : No
 ✔ Would you like to use `src/` directory? … No / Yes : Yes
-✔ Would you like to use App Router? … No / Yes : No
+✔ Would you like to use App Router? (recommended) … No / Yes: Yes
 ✔ Would you like to customize the default import alias? … No / Yes : No
 
 Creating a new Next.js app in expense-tracker.
@@ -29,7 +29,7 @@ Creating a new Next.js app in expense-tracker.
 Using npm.
 ```
 
-You can also follow the responses from above. We will be using pages directory for project. Also We are not using TypeScript, Tailwind CSS.
+You can also follow the responses from above. We will be using `app` directory for project. Also We are not using TypeScript, Tailwind CSS.
 
 # Install dependencies {% #install-dependencies %}
 
@@ -45,7 +45,7 @@ Install the [Appwrite CSS library](https://pink.appwrite.io/) and icons package.
 npm install "@appwrite.io/pink" "@appwrite.io/pink-icons"
 ```
 
-Import the CSS file and icons in the `pages/_app.js` file.
+Import the CSS file and icons in the `/src/app/layout.js` file.
 
 ```js
 import "@appwrite.io/pink";
@@ -58,19 +58,26 @@ We will be using cookie to store the session token. So we need to install `next-
 npm install next-cookie react-hot-toast
 ```
 
-We also have to add the `Toaster` component in the `pages/_app.js` file. This component will render all toasts.
+We also have to add the `Toaster` component in the `/src/app/layout.js` file. This component will render all toasts.
 
 ```js
 import { Toaster } from "react-hot-toast";
+import { Inter } from "next/font/google";
 
-function MyApp({ Component, pageProps }) {
+import "@appwrite.io/pink";
+import "@appwrite.io/pink-icons";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({ children }) {
   return (
-    <>
-      <Component {...pageProps} />
-      <Toaster 
-        position="top-right"
-      />
-    </>
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+        <Toaster position="bottom-right" />
+      </body>
+    </html>
   );
 }
 ```

@@ -9,10 +9,13 @@ In the expense card we have added two buttons to edit and delete the expense. We
 
 # Edit expense {% #edit-expense %}
 
-First create a API to edit the expense. We will create `PUT` api in the same `api/expense/index.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
+First create a API to edit the expense. We will create `PUT` api in the same `/src/app/api/expense/route.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
 
 ```js
 import { ID } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
 import {
   EXPENSE_COLLECTION_ID,
   EXPENSE_DATABASE_ID,
@@ -20,38 +23,43 @@ import {
   database,
 } from "@/config/appwrite";
 
-export default async (req, res) => {
-  const method = req.method;
-  const { jwt } = req.headers;
+// Post - create expense
+
+// Put - update expense
+export async function PUT(req) {
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
+
   if (!jwt) {
-    return res.status(400).json({ message: "Unauthorized" });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
   account.client.setJWT(jwt);
-  if (method === "POST") {
-    // create expense api
-  } else if (method === "PUT") {
-    const { title, amount, type, docId } = req.body;
-    if (!title || !amount || !type || !docId) {
-      return res.status(401).json({ message: "Missing fields" });
-    }
-    try {
-      await database.updateDocument(
-        EXPENSE_DATABASE_ID,
-        EXPENSE_COLLECTION_ID,
-        docId,
-        {
-          title: title,
-          amount: amount,
-          type: type,
-        }
-      );
-      return res.status(200).json({ message: "Updated successfully" });
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: "Internal server error" });
-    }
+
+  const body = await req.json();
+  const { title, amount, type, docId } = body;
+  if (!title || !amount || !type || !docId) {
+    return new NextResponse("Missing fields", { status: 401 });
   }
-};
+  try {
+    await database.updateDocument(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      docId,
+      {
+        title: title,
+        amount: amount,
+        type: type,
+      }
+    );
+    return new NextResponse("Updated successfully", { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
 ```
 
 When the user clicks on the edit button, we will show the expense popup form with the expense details filled in. The user can then edit the expense and save it.
@@ -147,6 +155,8 @@ const Home = (props) => {
 Let's create a `EditExpensePopup` component in the `components` folder. This component will be used to show the popup form to edit the expense.
 
 ```js
+"use client";
+
 import React, { useState } from "react";
 
 const EditExpensePopup = ({
@@ -241,9 +251,13 @@ export default EditExpensePopup;
 
 # Delete expense {% #delete-expense %}
 
-First create a API to delete the expense. We will create `DELETE` api in the same `api/expense/index.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
+First create a API to delete the expense. We will create `DELETE` api in the same `/src/app/api/expense/route.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
 
 ```js
+import { ID } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
 import {
   EXPENSE_COLLECTION_ID,
   EXPENSE_DATABASE_ID,
@@ -251,34 +265,41 @@ import {
   database,
 } from "@/config/appwrite";
 
-export default async (req, res) => {
-  const method = req.method;
-  const { jwt } = req.headers;
+// Post - create expense
+
+// Put - update expense
+
+// Delete - delete expense
+export async function DELETE(req) {
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
+
   if (!jwt) {
-    return res.status(400).json({ message: "Unauthorized" });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
   account.client.setJWT(jwt);
 
-  if (method === "POST") {
-    // create expense api
-  } else if (method === "PUT") {
-    // update expense api
-  } else if (method === "DELETE") {
-    const { docId } = req.body;
-    try {
-      await database.deleteDocument(
-        EXPENSE_DATABASE_ID,
-        EXPENSE_COLLECTION_ID,
-        docId
-      );
-      return res.status(200).json({ message: "Deleted successfully" });
-    } catch (error) {
-      return res
-        .status(500)
-        .json({ message: "Internal server error", error: error.message });
-    }
+  const body = await req.json();
+  const { docId } = body;
+  if (!docId) {
+    return new NextResponse("Missing fields", { status: 401 });
   }
-};
+  try {
+    await database.deleteDocument(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      docId
+    );
+    return new NextResponse("Deleted successfully", { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
+
 ```
 
 When the user clicks on the delete button, we will show a confirmation popup to the user. If the user confirms the delete action, we will delete the expense from the database.
@@ -322,7 +343,6 @@ const Home = (props) => {
       toast.success("Deleted successfully");
       setPopup(null);
       getExpenses(); // get the expenses again
-      setStart(0);
     }
   };
 
@@ -374,7 +394,3 @@ const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {
 
 export default DeleteExpensePopup;
 ```
-
-
- 
-

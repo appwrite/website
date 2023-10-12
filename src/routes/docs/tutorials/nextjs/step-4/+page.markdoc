@@ -7,11 +7,17 @@ step: 4
 
 # Signup page {% #signup-page %}      
 
-In your project under the pages directory, create a new file `src/pages/signup.js`. Next.js will automatically create a route for this page `/signup`. Let's create the signup form.
+In your project under the app directory, create a new file `src/app/(pages)/signup/page.js`. Next.js will automatically create a route for this page `/signup`. Let's create the signup form.
 
 ```js
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { ID } from "appwrite";
+import { useCookie } from "next-cookie";
 
 import { account } from "@/config/appwrite";
 
@@ -19,10 +25,12 @@ const SignUp = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  const cookie = useCookie(props.cookie);
 
   return (
     <section className="container u-flex u-main-center u-cross-center u-full-screen-height">
-      <div className="u-max-width-350 u-width-full-line u-padding-8">
+      <div className="u-max-width-350	u-width-full-line u-padding-8">
         <h1 className="heading-level-1 font-bold">Sign Up</h1>
         <p className="body-text-1 u-bold u-padding-block-16">
           Already have an account?{" "}
@@ -40,7 +48,7 @@ const SignUp = (props) => {
                 id="name"
                 type="text"
                 required={true}
-                onChange={(e) => sette(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
           </div>
@@ -70,6 +78,7 @@ const SignUp = (props) => {
               />
             </div>
           </div>
+
           <div className="u-padding-block-16">
             <button
               type="submit"
@@ -114,18 +123,24 @@ After the user is created, we are creating a session using `createEmailSession` 
 
 # Login page {% #login-page %}      
 
-In your project under the pages directory, create a new file `src/pages/login.js`. Next.js will automatically create a route for this page `/login`. Let's create the login form.
+In your project under the app directory, create a new file `src/app/(pages)/login/page.js`. Next.js will automatically create a route for this page `/login`. Let's create the login form.
 
 ```js
+"use client";
+
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useCookie } from "next-cookie";
 
 import { account } from "@/config/appwrite";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  const cookie = useCookie(props.cookie);
 
   return (
     <section className="container u-flex u-main-center u-cross-center u-full-screen-height">
@@ -202,22 +217,3 @@ const loginUser = async (e) => {
 ```
 
 After the session is created, we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
-
-# Logout {% #logout %}
-For logout, we will be using Appwrite's `deleteSessions` method. We will also be using `react-hot-toast` to show toast messages.
-
-```js
-import { account } from "@/config/appwrite";
-
-const logout = async () => {
-  try {
-    await account.deleteSessions("current");
-    cookie.remove("jwt");
-    cookie.remove("userid");
-    toast.success("Logged out successfully");
-    router.push("/login");
-  } catch (error) {
-    toast.error(error.message);
-  }
-};
-```

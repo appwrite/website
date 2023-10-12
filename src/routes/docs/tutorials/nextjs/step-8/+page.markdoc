@@ -6,10 +6,13 @@ step: 8
 ---
 
 # Add pagination in API {% #add-pagination-api %}
-We will add pagination to the API. We edit out `/api/list.js` and add the following code:
+We will add pagination to the API. We edit our `/src/app/api/expense/route.js` and add the following code:
 
 ```js
 import { Query } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
 import {
   EXPENSE_COLLECTION_ID,
   EXPENSE_DATABASE_ID,
@@ -17,42 +20,39 @@ import {
   database,
 } from "@/config/appwrite";
 
-export default async (req, res) => {
-  const method = req.method;
+export async function POST(req) {
+  const body = await req.json();
+  const { userId, limit, start } = body;
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
 
-  if (method === "POST") {
-    const { userId, limit, start } = req.body;
-    const { jwt } = req.headers;
-
-    if (!userId || !jwt) {
-      return res.status(401).json({ message: "Missing fields" });
-    }
-    account.client.setJWT(jwt);
-
-    try {
-      const items = await database.listDocuments(
-        EXPENSE_DATABASE_ID,
-        EXPENSE_COLLECTION_ID,
-        [
-          Query.equal("userId", [userId]),
-          Query.orderDesc("$createdAt"),
-          // limit and offset are used for pagination
-          Query.limit(limit),
-          Query.offset(parseInt(start)),
-        ]
-      );
-      return res
-        .status(200)
-        .json({ items: items.documents, total: items.total });
-    } catch (error) {
-      return res
-        .status(500)
-        .json({ message: "Internal server error", error: error.message });
-    }
-  } else {
-    return res.status(405).json({ message: "Method Not Allowed" });
+  if (!userId || !jwt) {
+    return new NextResponse("Unauthorized", { status: 401 });
   }
-};
+  account.client.setJWT(jwt);
+
+  try {
+    const items = await database.listDocuments(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      [
+        Query.equal("userId", [userId]),
+        Query.orderDesc("$createdAt"),
+        Query.limit(limit),
+        Query.offset(parseInt(start)),
+      ]
+    );
+    return new NextResponse(
+      JSON.stringify({ items: items.documents, total: items.total })
+    );
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
 ```
 
 We are now accepting `limit` and `start` as parameters. `limit` is the number of items to return and `start` is the offset from the beginning of the list. We are also returning the `total` number of items in the collection.
@@ -63,12 +63,13 @@ Learn more about [Appwrite Query](https://appwrite.io/docs/products/databases/qu
 
 
 # Pagination in the frontend {% #add-pagination-frontend %}
-We will now add pagination in the frontend. We edit `pages/index.js` and add the following code:
+We will now add pagination in the frontend. We edit `app/page.js` and add the following code:
 
 ```js
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useCookie } from "next-cookie";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 

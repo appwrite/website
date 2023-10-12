@@ -5,10 +5,13 @@ description: Fetch user expenses from Appwrite database and display them in a li
 step: 6
 ---
 # Create list API {% #create-list-api %} 
-We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `api/expense/list.js` and add the following code.
+We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `/src/app/api/expense/list/route.js` and add the following code.
 
 ```js
 import { Query } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
 import {
   EXPENSE_COLLECTION_ID,
   EXPENSE_DATABASE_ID,
@@ -16,55 +19,48 @@ import {
   database,
 } from "@/config/appwrite";
 
-export default async (req, res) => {
-  const method = req.method;
+export async function POST(req) {
+  const body = await req.json();
+  const { userId } = body;
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
 
-  if (method === "POST") {
-    const { userId} = req.body;
-    const { jwt } = req.headers;
-
-    if (!userId || !jwt) {
-      return res.status(401).json({ message: "Missing fields" });
-    }
-    account.client.setJWT(jwt);
-
-    try {
-      const items = await database.listDocuments(
-        EXPENSE_DATABASE_ID,
-        EXPENSE_COLLECTION_ID,
-        [
-          Query.equal("userId", [userId]),
-          Query.orderDesc("$createdAt"),
-        ]
-      );
-      return res
-        .status(200)
-        .json({ items: items.documents, total: items.total });
-    } catch (error) {
-      return res
-        .status(500)
-        .json({ message: "Internal server error", error: error.message });
-    }
-  } else {
-    return res.status(405).json({ message: "Method Not Allowed" });
+  if (!userId || !jwt) {
+    return new NextResponse("Unauthorized", { status: 401 });
   }
-};
+  account.client.setJWT(jwt);
+
+  try {
+    const items = await database.listDocuments(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      [Query.equal("userId", [userId]), Query.orderDesc("$createdAt")]
+    );
+    return new NextResponse(JSON.stringify({ items: items.documents }));
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
 ```
 
-With Appwrite's `listDocuments` method we can fetch the documents from the database.
+With Appwrite's `listDocuments` method we can fetch the documents from the database. It will create a new API endpoint `/api/expense/list` that will return the user expenses.
 
 We are also using Appwrite's `Query` class to filter the documents. We have used the `Query.equal` method to filter the documents by `userId`. We have also used the `Query.orderDesc` method to order the documents by `$createdAt` in descending order.
 
 
 # Expense list component {% #expense-list-component %}
 
-Let's fetch the user expenses from the database and display them in a list. Open the `pages/index.js` file and add the following code.
+Let's fetch the user expenses from the database and display them in a list. Open the `app/page.js` file and add the following code.
 
 ```js
 import React, { useEffect, useState } from "react";
 import { useCookie } from "next-cookie";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import ExpenseList from "@/components/ExpenseList";
 
@@ -84,8 +80,6 @@ const Home = (props) => {
       },
       body: JSON.stringify({
         userId: userId,
-        start: start,
-        limit: limit,
       }),
     });
     const data = await response.json();
@@ -96,7 +90,6 @@ const Home = (props) => {
       router.push("/login");
     } else {
       setExpenses(data.items);
-      setTotal(data.total);
     }
   };
 
