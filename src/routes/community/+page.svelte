@@ -85,7 +85,7 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
+    <div class="aw-big-padding-section u-overflow-hidden">
         <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
             <div
                 class="u-position-absolute aw-u-hide-mobile"
@@ -189,23 +189,28 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-            <FloatingHeads
-                images={[
-                    '/images/community/avatars/1.png',
-                    '/images/community/avatars/2.png',
-                    '/images/avatars/torsten.png',
-                    '/images/community/avatars/3.png',
-                    '/images/avatars/jade.png',
-                    '/images/community/avatars/4.png',
-                    '/images/community/avatars/5.png',
-                    '/images/avatars/haimantika.png',
-                    '/images/community/avatars/6.png',
-                    '/images/avatars/may.png'
-                ]}
-            />
+        <div class="aw-big-padding-section-level-1 u-position-relative">
+            <div class="absolute-container">
+                <div class="green-gradient" />
+                <div class="pink-gradient" />
+                <FloatingHeads
+                    images={[
+                        '/images/community/avatars/1.png',
+                        '/images/community/avatars/2.png',
+                        '/images/avatars/torsten.png',
+                        '/images/community/avatars/3.png',
+                        '/images/avatars/jade.png',
+                        '/images/community/avatars/4.png',
+                        '/images/community/avatars/5.png',
+                        '/images/avatars/haimantika.png',
+                        '/images/community/avatars/6.png',
+                        '/images/avatars/may.png'
+                    ]}
+                />
+            </div>
+
             <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
+                <div class="aw-container u-position-relative">
                     <div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-900">
                         <h1 class="aw-headline aw-u-color-text-primary">
                             The power of open source benefits us all
@@ -741,3 +746,42 @@
         </div>
     </div>
 </Main>
+
+<style lang="scss">
+    .absolute-container {
+        position: absolute;
+        width: 1720px;
+        min-height: 100%;
+        pointer-events: none;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .pink-gradient {
+        width: 842px;
+        height: 719px;
+        flex-shrink: 0;
+
+        border-radius: 842px;
+        opacity: 0.4;
+        background: radial-gradient(50% 46.73% at 50% 53.27%, #fe9567 28.17%, #fd366e 59.38%);
+        filter: blur(150px);
+
+        position: absolute;
+        right: -250px;
+        top: 00px;
+    }
+
+    .green-gradient {
+        border-radius: 771px;
+        opacity: 0.3;
+        background: radial-gradient(49.55% 43.54% at 47% 50.69%, #e7f8f7 0%, #85dbd8 100%);
+        filter: blur(150px);
+        width: 571px;
+        height: 771px;
+        position: absolute;
+
+        left: -200px;
+        bottom: -300px;
+    }
+</style>
