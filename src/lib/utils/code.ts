@@ -61,23 +61,27 @@ const languages = {
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
-    [Platform.ClientWeb]: 'js',
-    [Platform.ClientFlutter]: 'dart',
-    [Platform.ClientAndroidJava]: 'java',
-    [Platform.ClientAndroidKotlin]: 'kotlin',
-    [Platform.ClientApple]: 'swift',
-    [Platform.ClientGraphql]: 'graphql',
-    [Platform.ClientRest]: 'http',
-    [Platform.ServerDart]: 'dart',
-    [Platform.ServerDeno]: 'ts',
-    [Platform.ServerDotNet]: 'cs',
-    [Platform.ServerNodeJs]: 'js',
-    [Platform.ServerPhp]: 'php',
-    [Platform.ServerPython]: 'py',
-    [Platform.ServerRuby]: 'rb',
-    [Platform.ServerSwift]: 'swift',
-    vue: 'html',
-    svelte: 'html'
+	[Platform.ClientWeb]: 'js',
+	[Platform.ClientFlutter]: 'dart',
+	[Platform.ClientAndroidJava]: 'java',
+	[Platform.ClientAndroidKotlin]: 'kotlin',
+	[Platform.ClientApple]: 'swift',
+	[Platform.ClientGraphql]: 'graphql',
+	[Platform.ClientRest]: 'http',
+	[Platform.ServerDart]: 'dart',
+	[Platform.ServerDeno]: 'ts',
+	[Platform.ServerDotNet]: 'cs',
+	[Platform.ServerNodeJs]: 'js',
+	[Platform.ServerPhp]: 'php',
+	[Platform.ServerPython]: 'py',
+	[Platform.ServerRuby]: 'rb',
+	[Platform.ServerSwift]: 'swift',
+	[Platform.ServerJava]: 'java',
+	[Platform.ServerKotlin]: 'kotlin',
+	[Platform.ServerGraphql]: 'graphql',
+	[Platform.ServerRest]: 'http',
+	vue: 'html',
+	svelte: 'html'
 };
 
 Object.entries(languages).forEach(([key, value]) => {
