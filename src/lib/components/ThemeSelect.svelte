@@ -22,4 +22,4 @@
     ];
 </script>
 
-<Select {options} bind:selected={$currentTheme} nativeMobile />
+<Select {options} bind:value={$currentTheme} placement="top" />

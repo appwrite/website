@@ -1,8 +1,10 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
+  --p-select-min-width: #{pxToRem(130)};
+
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
-  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: pxToRem(130); height: pxToRem(30);
+  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: var(--p-select-min-width); height: pxToRem(30);
   
   select, .physical-select {
     all:unset; display:flex; align-items:center;
@@ -129,6 +131,9 @@
   padding-block: pxToRem(4);
   box-sizing: border-box;
 
+  max-height: pxToRem(300) !important;
+  overflow-y: auto;
+
   @mixin light-mode() {
     --p-select-menu-bg-color: var(--aw-color-white);
     --p-select-menu-border-color: var(--aw-color-black) / 0.06;
@@ -155,6 +160,12 @@
 
   &-label {
     margin-block-end: pxToRem(4);
+    padding-inline-start: pxToRem(4);
+    font-weight: 500;
+  }
+
+  .#{$p}-select-option {
+    padding-inline-start: pxToRem(16);
   }
 }
 
@@ -166,6 +177,7 @@
   padding-block: pxToRem(4);
   padding-inline: pxToRem(4);
   border-radius: pxToRem(6);
+  scroll-margin-block: pxToRem(8);
 
   cursor: pointer;
 
