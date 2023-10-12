@@ -33,6 +33,13 @@ Now that we have created a collection, we have to add permissions to the collect
 
 You can also add permission for a specific user or a team.
 
+Now you will get a database ID and collection ID. Copy the these two and save it in the `/src/config/appwrite.js` file.
+
+```js
+export const EXPENSE_DATABASE_ID = "<YOUR_DATABASE_ID>";
+export const EXPENSE_COLLECTION_ID = "<YOUR_COLLECTION_ID>";
+```
+
 # Add new expense {% #add-new-expense %}
 Now that we have a collection, we can add a new expense to the database.
 
