@@ -152,7 +152,7 @@ const Home = (props) => {
 }
 ```
 
-Let's create a `EditExpensePopup` component in the `components` folder. This component will be used to show the popup form to edit the expense.
+Let's create a `EditExpensePopup` component in the `components` folder `/src/components/EditExpensePopup.js`. This component will be used to show the popup form to edit the expense.
 
 ```js
 "use client";
@@ -363,7 +363,7 @@ const Home = (props) => {
 export default Home;
 ```
 
-Let's create a `DeleteExpensePopup` component in the `components` folder. This component will be used to show the popup form to delete the expense.
+Let's create a `DeleteExpensePopup` component in the `components` folder `/src/components/DeleteExpensePopup.js`. This component will be used to show the popup form to delete the expense.
 
 ```js
 const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {

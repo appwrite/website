@@ -6,7 +6,7 @@ step: 8
 ---
 
 # Add pagination in API {% #add-pagination-api %}
-We will add pagination to the API. We edit our `/src/app/api/expense/route.js` and add the following code:
+We will add pagination to the API. We edit our `/src/app/api/expense/route.js` and add the pagination logic:
 
 ```js
 import { Query } from "appwrite";
