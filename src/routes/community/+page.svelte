@@ -126,7 +126,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
                                 </a>
                             </div>
                         </div>
@@ -493,7 +493,7 @@
             </div>
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
-                    <Carousel isBig>
+                    <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
                         </svelte:fragment>

@@ -154,7 +154,7 @@
             <p class="aw-description u-max-width-600 u-margin-block-start-16">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
-            <Carousel>
+            <Carousel size="medium">
                 {#each tutorials as tutorial}
                     <li style:scroll-snap-align="start">
                         <CodeCard {...tutorial} />
