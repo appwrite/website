@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
-    import { MainFooter } from '$lib/components';
+    import { MainFooter, Select } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
     import { parse } from '$lib/utils/markdown';
@@ -19,6 +19,7 @@
     import { API_REFERENCE_TITLE_SUFFIX } from '$routes/titles.js';
     import { getContext, onMount, setContext } from 'svelte';
     import { writable } from 'svelte/store';
+    import { anyify } from '$lib/utils/anyify.js';
 
     export let data;
 
@@ -40,18 +41,18 @@
         }
     });
 
-    function selectPlatform(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+    function selectPlatform(event: CustomEvent<unknown>) {
         const { version, service } = $page.params;
-        const platform = event.currentTarget.value as Platform;
+        const platform = event.detail as Platform;
         preferredPlatform.set(platform);
-        goto(`/docs/references/${version}/${event.currentTarget.value}/${service}`, {
+        goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
         });
     }
 
-    function selectVersion(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+    function selectVersion(event: CustomEvent<unknown>) {
         const { platform, service } = $page.params;
-        const version = event.currentTarget.value as Version;
+        const version = event.detail as Version;
         preferredVersion.set(version);
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
@@ -99,37 +100,44 @@
                 <div class="u-flex u-gap-24 aw-u-color-text-primary">
                     <div class="u-flex u-cross-center u-gap-8">
                         <label class="u-small is-not-mobile" for="platform">Platform</label>
-                        <div class="aw-select is-colored">
-                            <select id="platform" on:change={selectPlatform} value={platform}>
-                                <optgroup label="Client">
-                                    {#each Object.values(Platform).filter( (p) => p.startsWith('client-') ) as platform}
-                                        <option value={platform}>{platformMap[platform]}</option>
-                                    {/each}
-                                </optgroup>
-                                <optgroup label="Server">
-                                    {#each Object.values(Platform).filter( (p) => p.startsWith('server-') ) as platform}
-                                        <option value={platform}>{platformMap[platform]}</option>
-                                    {/each}
-                                </optgroup>
-                            </select>
-                            <span class="icon-cheveron-down" aria-hidden="true" />
-                        </div>
+                        <Select
+                            --min-width="10rem"
+                            id="platform"
+                            value={platform}
+                            on:change={selectPlatform}
+                            options={[
+                                ...Object.values(Platform)
+                                    .filter((p) => p.startsWith('client-'))
+                                    .map((p) => ({
+                                        value: p,
+                                        label: platformMap[p],
+                                        group: 'Client'
+                                    })),
+                                ...Object.values(Platform)
+                                    .filter((p) => p.startsWith('server-'))
+                                    .map((p) => ({
+                                        value: p,
+                                        label: platformMap[p],
+                                        group: 'Server'
+                                    }))
+                            ]}
+                            nativeMobile
+                        />
                     </div>
                     <div class="u-flex u-cross-center u-gap-8">
                         <label class="u-small is-not-mobile" for="version">Version</label>
-                        <div class="aw-select is-colored">
-                            <select
-                                id="version"
-                                on:change={selectVersion}
-                                value={$page.params.version}
-                            >
-                                <option value="cloud">Cloud</option>
-                                {#each versions as version}
-                                    <option value={version}>{version}</option>
-                                {/each}
-                            </select>
-                            <span class="icon-cheveron-down" aria-hidden="true" />
-                        </div>
+
+                        <Select
+                            on:change={selectVersion}
+                            value={$page.params.version}
+                            options={[
+                                { value: 'cloud', label: 'Cloud' },
+                                ...versions.map((version) => ({
+                                    value: version,
+                                    label: anyify(version)
+                                }))
+                            ]}
+                        />
                     </div>
                 </div>
             </div>
