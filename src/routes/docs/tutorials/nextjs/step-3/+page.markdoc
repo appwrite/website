@@ -38,19 +38,33 @@ To use Appwrite in our Next.js app, we'll need to find our project ID. Find your
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
+First create a file that will hold env variables. Create a new file `.env.local` in the root of your project. Replace `<YOUR_PROJECT_ID>` with your project ID
 
+```
+NEXT_PUBLIC_APPWRITE_ENDPOINT = https://cloud.appwrite.io/v1
+NEXT_PUBLIC_APPWRITE_PROJECT = <YOUR_PROJECT_ID>
+```
+
+```js
 Create a new file `src/config/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
-Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
+Add the following code to it.
 
 ```js
 import { Client, Databases, Account } from "appwrite";
 
+export const config = {
+  APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT: process.env.NEXT_PUBLIC_APPWRITE_PROJECT,
+};
+
 const client = new Client();
 client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
+  .setEndpoint(config.APPWRITE_ENDPOINT)
+  .setProject(config.APPWRITE_PROJECT);
 
 export const account = new Account(client);
 export const database = new Databases(client);
 ```
+
+Here we are using the Appwrite endpoints and project ID from the `.env.local` file to initialize the Appwrite SDK.
