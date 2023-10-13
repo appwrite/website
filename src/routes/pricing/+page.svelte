@@ -75,15 +75,15 @@
 										</header>
 										<div class="aw-pricing-cards-content">
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">100GB bandwidth</span></li>
-												<li class=""><span class="">Unlimited projects</span></li>
-												<li class=""><span class="">Never paused</span></li>
-												<li class=""><span class="">750K executions</span></li>
-												<li class=""><span class="">50MB uploads</span></li>
-												<li class=""><span class="">1 Database, 3 Buckets, 5 Functions</span></li>
-												<li class=""><span class="">Community support</span></li>
-												<li class=""><span class="">Non-removable Appwrite branding</span></li>
-												<li class=""><span class="">No Add-ons</span></li>
+												<li><span>Unlimited projects (never paused)</span></li>
+												<li><span>10GB bandwidth</span></li>
+												<li><span>2GB storage</span></li>
+												<li><span>750K executions</span></li>
+												<li><span>75K monthly active users</span></li>
+												<li><span>Community support</span></li>
+												<li><span>Non-removable Appwrite branding</span></li>
+												<li><span>No Add-ons</span></li>
+												<li><span>1 Database, 3 Buckets, 5 Functions per project</span></li>
 											</ul>
 										</div>
 									</div>
@@ -97,7 +97,7 @@
 										<header class="aw-pricing-cards-header">
 											<h2 class="aw-label">Pro</h2>
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">$15</div>
-											<div class="u-margin-block-start-4">per user/month</div>
+											<div class="u-margin-block-start-4">per member/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For pro developers and teams that need to scale their products.
 											</p>
@@ -108,18 +108,14 @@
 										<div class="aw-pricing-cards-content">
 											<p>Everything in Starter plus:</p>
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">300GB bandwidth</span></li>
-												<li class=""><span class="">Unlimited projects</span></li>
-												<li class=""><span class="">Never paused</span></li>
-												<li class=""><span class="">150K Monthly active users</span></li>
-												<li class=""><span class="">150GB Storage</span></li>
-												<li class=""><span class="">3M executions</span></li>
-												<li class="">
-													<span class="">Unlimited Databases, Buckets and Functions</span>
-												</li>
-												<li class=""><span class="">Email support</span></li>
-												<li class=""><span class="">Removable Appwrite branding</span></li>
-												<li class=""><span class="">Add-ons</span></li>
+												<li><span>300GB bandwidth</span></li>
+												<li><span>150GB storage</span></li>
+												<li><span>3.5M executions</span></li>
+												<li><span>200K monthly active users</span></li>
+												<li><span>Email support</span></li>
+												<li><span>Removable Appwrite branding</span></li>
+												<li><span>Add-ons</span></li>
+												<li><span>Unlimited Databases, Buckets and Functions</span></li>
 											</ul>
 										</div>
 									</div>
@@ -136,7 +132,7 @@
 											<div class="aw-title aw-u-color-text-primary u-margin-block-start-8">
 												$685
 											</div>
-											<div class="u-margin-block-start-4">per organiztion/month</div>
+											<div class="u-margin-block-start-4">per organization/month</div>
 											<p class="aw-main-body-500 u-margin-block-start-16">
 												For scaling teams and agencies that need dedicated support.
 											</p>
@@ -148,11 +144,16 @@
 											</button>
 										</header>
 										<div class="aw-pricing-cards-content">
-											<p>Everything in Starter & Pro, plus:</p>
+											<p>Everything in Starter & Pro plus:</p>
 											<ul class="aw-checked-list-circle">
-												<li class=""><span class="">Extra support log retention days</span></li>
-												<li class=""><span class="">Additional org member roles</span></li>
-												<li class=""><span class="">SSO</span></li>
+												<li><span>5TB bandwidth</span></li>
+												<li><span>500GB storage</span></li>
+												<li><span>10M executions</span></li>
+												<li><span>500K monthly active users</span></li>
+												<li><span>Priority support</span></li>
+												<li><span>14-day log retention</span></li>
+												<li><span>Additional organization roles</span></li>
+												<li><span>SSO</span></li>
 											</ul>
 										</div>
 									</div>

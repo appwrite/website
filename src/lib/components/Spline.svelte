@@ -3,6 +3,7 @@
     import { writable } from 'svelte/store';
     import type { SplineViewer } from '@splinetool/viewer';
     import { fade } from 'svelte/transition';
+    import { dev } from '$app/environment';
 
     export let url: SplineViewer['url'];
     export let width: SplineViewer['width'] = undefined;
@@ -26,10 +27,19 @@
     });
 </script>
 
-<spline-viewer style="position: absolute;" {url} {width} {height} {loading} bind:this={spline} />
+{#if !dev}
+    <spline-viewer
+        style="position: absolute;"
+        {url}
+        {width}
+        {height}
+        {loading}
+        bind:this={spline}
+    />
+{/if}
 
 {#if $$slots?.default && !$loaded}
-    <div out:fade={{duration: 50}}>
+    <div out:fade={{ duration: 50 }}>
         <slot />
     </div>
 {/if}
