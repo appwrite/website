@@ -45,7 +45,7 @@
 		<div class="aw-side-nav-scroll">
 			{#if parent}
 				<section class="aw-side-nav-wrapper-parent">
-					<a href={parent.href}>
+					<a href={parent.href} aria-label="go back">
 						<span class="icon-cheveron-left" aria-hidden="true" />
 					</a>
 					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
@@ -107,7 +107,7 @@
 			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+				<span class="aw-inline-tag aw-sub-body-400">36.8K</span>
 			</a>
 		</div>
 	</div>

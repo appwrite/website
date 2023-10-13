@@ -14,5 +14,5 @@
   -webkit-backdrop-filter: blur(pxToRem(25));
   backdrop-filter: blur(pxToRem(25));
 
-  > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; }
+  > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; width: 100%; object-fit: cover; }
 }
