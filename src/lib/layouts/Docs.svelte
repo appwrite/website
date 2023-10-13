@@ -33,6 +33,7 @@
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
+    import { isMac } from '@melt-ui/svelte/internal/helpers';
 
     export let variant: DocsLayoutVariant = 'default';
 
@@ -52,17 +53,7 @@
             showSidenav: false
         }));
     });
-
-    function handleKeypress(event: KeyboardEvent) {
-        if (event.metaKey && event.key.toLowerCase() === 'k') {
-            $layoutState.showSearch = true;
-        } else if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
-            $layoutState.showSearch = false;
-        }
-    }
 </script>
-
-<svelte:window on:keydown={handleKeypress} />
 
 <div class="u-position-relative">
     <div
@@ -121,66 +112,66 @@
                 </button>
             </div>
         </section>
-        <header class="aw-main-header is-transparent" class:is-transparent={variant !== 'expanded'}>
+        <header class="aw-main-header is-docs" class:is-transparent={variant !== 'expanded'}>
             <div class="aw-main-header-wrapper">
-                <div class="aw-main-header-row">
-                    <div class="aw-main-header-start u-stretch">
-                        <a href="/" aria-label="homepage">
-                            <img
-                                class="aw-logo u-only-dark"
-                                src="/images/logos/appwrite.svg"
-                                alt="appwrite"
-                                height="24"
-                                width="130"
-                            />
-                            <img
-                                class="aw-logo u-only-light"
-                                src="/images/logos/appwrite-light.svg"
-                                alt="appwrite"
-                                height="24"
-                                width="130"
-                            />
-                        </a>
-                        <nav class="aw-main-header-nav">
-                            <ul class="aw-main-header-nav-list">
-                                <li class="aw-main-header-nav-item">
-                                    <a class="aw-main-header-nav-link is-selected" href="/docs"
-                                        >Docs</a
-                                    >
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="u-flex u-stretch aw-u-margin-inline-start-48">
-                            <button
-                                class="aw-input-button aw-u-flex-basis-400"
-                                on:click={() => ($layoutState.showSearch = true)}
-                            >
-                                <span class="aw-icon-search" aria-hidden="true" />
-                                <span class="text">Search in docs</span>
+                <div class="aw-main-header-start u-stretch">
+                    <a href="/" aria-label="homepage">
+                        <img
+                            class="aw-logo u-only-dark"
+                            src="/images/logos/appwrite.svg"
+                            alt="appwrite"
+                            height="24"
+                            width="130"
+                        />
+                        <img
+                            class="aw-logo u-only-light"
+                            src="/images/logos/appwrite-light.svg"
+                            alt="appwrite"
+                            height="24"
+                            width="130"
+                        />
+                    </a>
+                    <nav class="aw-main-header-nav">
+                        <ul class="aw-main-header-nav-list">
+                            <li class="aw-main-header-nav-item">
+                                <a class="aw-main-header-nav-link is-selected" href="/docs">Docs</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="u-flex u-stretch aw-u-margin-inline-start-48">
+                        <button
+                            class="aw-input-button aw-u-flex-basis-400"
+                            on:click={() => ($layoutState.showSearch = true)}
+                        >
+                            <span class="aw-icon-search" aria-hidden="true" />
+                            <span class="text">Search in docs</span>
 
-                                <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                            <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                                {#if isMac()}
                                     <span class="aw-kbd" aria-label="command">⌘</span>
-                                    <span class="aw-kbd">K</span>
-                                </div>
-                            </button>
-                        </div>
+                                {:else}
+                                    <span class="aw-kbd" aria-label="control">Ctrl</span>
+                                {/if}
+                                <span class="aw-kbd">K</span>
+                            </div>
+                        </button>
                     </div>
-                    <div class="aw-main-header-end">
-                        <div class="u-flex u-gap-8">
-                            <a
-                                href="https://github.com/appwrite/appwrite/stargazers"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="aw-button is-text"
-                            >
-                                <span class="aw-icon-star" aria-hidden="true" />
-                                <span class="text">Star on GitHub</span>
-                                <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
-                            </a>
-                            <a href="https://cloud.appwrite.io/console" class="aw-button">
-                                <span class="aw-sub-body-500">Go to console</span>
-                            </a>
-                        </div>
+                </div>
+                <div class="aw-main-header-end">
+                    <div class="u-flex u-gap-8">
+                        <a
+                            href="https://github.com/appwrite/appwrite/stargazers"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="aw-button is-text"
+                        >
+                            <span class="aw-icon-star" aria-hidden="true" />
+                            <span class="text">Star on GitHub</span>
+                            <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                        </a>
+                        <a href="https://cloud.appwrite.io/console" class="aw-button">
+                            <span class="aw-sub-body-500">Go to console</span>
+                        </a>
                     </div>
                 </div>
             </div>

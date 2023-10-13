@@ -15,6 +15,10 @@
   }
   &.is-colored {
     @mixin light-mode() {
+      @include border-gradient;
+      --m-border-radius: #{pxToRem(8)};
+      --m-border-gradient-before: hsl(var(--aw-color-greyscale-50));
+
       --p-select-bg-color-default: var(--aw-color-white);
       --p-select-border-color-default: var(--aw-color-black) / 0.06;
       --p-select-box-shadow-color-default: var(--transparent);
@@ -30,6 +34,10 @@
       --p-select-box-shadow-color-focus: var(--aw-color-black) / 0.10;
     }
     @mixin dark-mode() {
+      @include border-gradient;
+      --m-border-radius: #{pxToRem(8)};
+      --m-border-gradient-before: linear-gradient(180deg, rgba(232, 233, 240, 0.51) -321.25%, rgba(232, 233, 240, 0) 136.25%);
+
       --p-select-bg-color-default: var(--aw-color-white) / 0.08;
       --p-select-border-color-default: var(--aw-color-white) / 0.10;
       --p-select-box-shadow-color-default: var(--transparent);
@@ -50,10 +58,10 @@
     --p-select-box-shadow-color: var(--p-select-box-shadow-color-default);
 
     background-color: hsl(var(--p-select-bg-color));
-    border: solid pxToRem(1) hsl(var(--p-select-border-color));
+    
     box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-box-shadow-color));
 
-    padding-inline:pxToRem(8); padding-block:pxToRem(7); border-radius:pxToRem(8); line-height:1.2;
+    padding-inline:pxToRem(8); padding-block:pxToRem(3);  line-height:1.2;
 
     &:hover {
       --p-select-bg-color: var(--p-select-bg-color-hover);

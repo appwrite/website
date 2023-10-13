@@ -7,6 +7,60 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
+    import type { EventCardProps } from './EventCard.svelte';
+    import EventCard from './EventCard.svelte';
+
+    const events: EventCardProps[] = [
+        {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours.png',
+                alt: ''
+            },
+            date: 'Sep 28th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://www.twitch.tv/wesscope',
+            cover: {
+                src: '/images/community/events/live-coding.png',
+                alt: ''
+            },
+            date: 'Sep 28th',
+            location: 'Twitch',
+            title: 'Live coding with Wess',
+            description: "Pluck is going mobile. Join us in building Pluck.io's Flutter app.",
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://lu.ma/hf-kickoff-blr',
+            cover: {
+                src: '/images/community/events/hf-kickoff-bangalore.png',
+                alt: 'Hacktoberfest kickoff event'
+            },
+            date: 'Oct 1st',
+            location: 'Bengaluru',
+            title: 'Hacktoberfest kickoff event',
+            description: 'Join us for our Hacktoberfest kickoff event in Bengaluru.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://hacktoberfest.com/',
+            cover: {
+                src: '/images/community/events/oss-celebration.png',
+                alt: 'Hacktoberfest kickoff event'
+            },
+            date: 'Oct',
+            location: 'Virtual',
+            title: 'Hacktoberfest 10',
+            description:
+                'Join us for a month long celebration of open source in collaboration with DigitalOcean.',
+            buttonText: 'View event'
+        }
+    ];
 
     const title = 'Community' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -72,7 +126,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
                                 </a>
                             </div>
                         </div>
@@ -439,208 +493,23 @@
             </div>
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
-                    <Carousel>
+                    <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
                         </svelte:fragment>
-                        <li>
-                            <a
-                                class="aw-grid-articles-item"
-                                href="/discord"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <div class="aw-grid-articles-item-image">
-                                    <img
-                                        src="/images/community/events/office-hours.png"
-                                        class="aw-u-media-ratio-16-9"
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="aw-grid-articles-item-content is-no-gap">
-                                    <ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-calendar aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <time>Sep 28th</time>
-                                        </li>
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-location aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <span>Discord</span>
-                                        </li>
-                                    </ul>
-                                    <h5
-                                        class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4"
-                                    >
-                                        Office hours
-                                    </h5>
-                                    <p class="aw-sub-body-500">
-                                        Join us for an exciting hour of technical conversations
-                                        around Appwrite.
-                                    </p>
-                                    <div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
-                                        <button class="aw-button is-secondary">
-                                            <span>View event</span>
-                                        </button>
-                                        <!-- <button class="aw-button is-text">
-												<span>Add to calendar</span>
-											</button> -->
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                class="aw-grid-articles-item"
-                                href="https://www.twitch.tv/wesscope"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <div class="aw-grid-articles-item-image">
-                                    <img
-                                        src="/images/community/events/live-coding.png"
-                                        class="aw-u-media-ratio-16-9"
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="aw-grid-articles-item-content is-no-gap">
-                                    <ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-calendar aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <time>Sep 28th</time>
-                                        </li>
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-location aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <span>Twitch</span>
-                                        </li>
-                                    </ul>
-                                    <h5
-                                        class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4"
-                                    >
-                                        Live coding with Wess
-                                    </h5>
-                                    <p class="aw-sub-body-500">
-                                        Pluck is going mobile. Join us in building Pluck.io's
-                                        Flutter app.
-                                    </p>
-                                    <div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
-                                        <button class="aw-button is-secondary">
-                                            <span>View event</span>
-                                        </button>
-                                        <!-- <button class="aw-button is-text">
-												<span>Add to calendar</span>
-											</button> -->
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                class="aw-grid-articles-item"
-                                href="https://lu.ma/hf-kickoff-blr"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <div class="aw-grid-articles-item-image">
-                                    <img
-                                        src="/images/community/events/hf-kickoff-bangalore.png"
-                                        class="aw-u-media-ratio-16-9"
-                                        alt="Hacktoberfest kickoff event"
-                                    />
-                                </div>
-                                <div class="aw-grid-articles-item-content is-no-gap">
-                                    <ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-calendar aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <time>Oct 1st</time>
-                                        </li>
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-location aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <span>Bengaluru</span>
-                                        </li>
-                                    </ul>
-                                    <h5
-                                        class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4"
-                                    >
-                                        Hacktoberfest kickoff event
-                                    </h5>
-                                    <p class="aw-sub-body-500">
-                                        Join us for our Hacktoberfest kickoff event in Bengaluru.
-                                    </p>
-                                    <div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
-                                        <button class="aw-button is-secondary">
-                                            <span>View event</span>
-                                        </button>
-                                        <!-- <button class="aw-button is-text">
-												<span>Add to calendar</span>
-											</button> -->
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="aw-grid-articles-item" href="https://hacktoberfest.com/">
-                                <div class="aw-grid-articles-item-image">
-                                    <img
-                                        src="/images/community/events/oss-celebration.png"
-                                        class="aw-u-media-ratio-16-9"
-                                        alt="Hacktoberfest kickoff event"
-                                    />
-                                </div>
-                                <div class="aw-grid-articles-item-content is-no-gap">
-                                    <ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-calendar aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <time>Oct</time>
-                                        </li>
-                                        <li class="u-flex u-cross-baseline u-gap-4">
-                                            <span
-                                                class="aw-icon-location aw-u-color-text-tertiary"
-                                                aria-hidden="true"
-                                            />
-                                            <span>Virtual</span>
-                                        </li>
-                                    </ul>
-                                    <h5
-                                        class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4"
-                                    >
-                                        Hacktoberfest 10
-                                    </h5>
-                                    <p class="aw-sub-body-500">
-                                        Join us for a month long celebration of open source in
-                                        collaboration with DigitalOcean.
-                                    </p>
-                                    <div class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
-                                        <button class="aw-button is-secondary">
-                                            <span>View event</span>
-                                        </button>
-                                        <!-- <button class="aw-button is-text">
-												<span>Add to calendar</span>
-											</button> -->
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                        {#each events as event}
+                            <li>
+                                <EventCard
+                                    href={event.href}
+                                    cover={event.cover}
+                                    date={event.date}
+                                    location={event.location}
+                                    title={event.title}
+                                    description={event.description}
+                                    buttonText={event.buttonText}
+                                />
+                            </li>
+                        {/each}
                     </Carousel>
                 </section>
             </div>
