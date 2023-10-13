@@ -1,0 +1,65 @@
+---
+layout: tutorial
+title: Create ideas page
+description: Add database queries and pagination using Appwrite in your Angular application.
+step: 7
+---
+
+Using the `IdeasService`, we can now display the ideas on the page. We will also add a form to submit new ideas.
+
+Overwrite the contents of `src/app/home/home.component.js` with the following:
+
+```js
+import { Component } from '@angular/core';
+import { UserService } from '../user.service';
+import { IdeasService } from '../ideas.service';
+
+@Component({
+  selector: 'app-home',
+  template: `
+    <section *ngIf="user$ | async as user; else loginPrompt">
+      <h2>Submit Idea</h2>
+      <form (ngSubmit)="addIdea()">
+        <input type="text" [(ngModel)]="title" placeholder="Title" name="title" required />
+        <textarea [(ngModel)]="description" placeholder="Description" name="description"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <ng-template #loginPrompt>
+      <section>
+        <p>Please login to submit an idea.</p>
+      </section>
+    </ng-template>
+    <section>
+      <h2>Latest Ideas</h2>
+      <ul>
+        <li *ngFor="let idea of ideas$ | async">
+          <strong>{{ idea.title }}</strong>
+          <p>{{ idea.description }}</p>
+          <button *ngIf="user && user.$id === idea.userId" (click)="removeIdea(idea.$id)">Remove</button>
+        </li>
+      </ul>
+    </section>
+  `
+})
+export class HomeComponent {
+  title = '';
+  description = '';
+  user$ = this.userService.user$;
+  ideas$ = this.ideasService.ideas$;
+
+  constructor(private userService: UserService, private ideasService: IdeasService) { }
+
+  addIdea() {
+    if (this.title && this.description) {
+      this.ideasService.add({ title: this.title, description: this.description });
+      this.title = '';
+      this.description = '';
+    }
+  }
+
+  removeIdea(id) {
+    this.ideasService.remove(id);
+  }
+}
+```

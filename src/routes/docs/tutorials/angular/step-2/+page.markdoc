@@ -1,0 +1,28 @@
+---
+layout: tutorial
+title: Create app
+description: Create a Angular app project and integrate with Appwrite.
+step: 2
+---
+
+# Create Angular project {% #create-angular-project %}
+
+Create a Angular app with the `ng-new` command.
+
+```sh
+ng new ideas-tracker && cd ideas-tracker
+```
+
+# Add dependencies {% #add-dependencies %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+You can start the development server to watch your app update in the browser as you make changes.
+
+```sh
+ng serve --open --port 4200
+```
