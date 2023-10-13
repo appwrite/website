@@ -13,7 +13,7 @@ dependencies:
     version: 0.1.0-next.9
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#fix-specs
-    version: github.com/appwrite/appwrite/c0c4cffba28cae816230a27efe9ad0b5d8f99a11
+    version: github.com/appwrite/appwrite/f5d0ebeb755a2126144919a4e3b4f9e0ca509b84
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -5570,8 +5570,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/c0c4cffba28cae816230a27efe9ad0b5d8f99a11:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c0c4cffba28cae816230a27efe9ad0b5d8f99a11}
+  github.com/appwrite/appwrite/f5d0ebeb755a2126144919a4e3b4f9e0ca509b84:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/f5d0ebeb755a2126144919a4e3b4f9e0ca509b84}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
