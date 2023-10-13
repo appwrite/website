@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Add database
+title: Add expenses
 description: Add databases and queries to store user data in your Next.js app.
 step: 5
 ---
@@ -33,11 +33,25 @@ Now that we have created a collection, we have to add permissions to the collect
 
 You can also add permission for a specific user or a team.
 
-Now you will get a database ID and collection ID. Copy the these two and save it in the `/src/config/appwrite.js` file.
+Now you will get a database ID and collection ID. First Copy the these two and add them in the `.env.local` file
+
+```env
+NEXT_PUBLIC_EXPENSE_DATABASE_ID = <YOUR_DATABASE_ID>
+NEXT_PUBLIC_EXPENSE_COLLECTION_ID = <YOUR_COLLECTION_ID>
+```
+
+Now add them in the Appwrite config in the `/src/config/appwrite.js` file.
 
 ```js
-export const EXPENSE_DATABASE_ID = "<YOUR_DATABASE_ID>";
-export const EXPENSE_COLLECTION_ID = "<YOUR_COLLECTION_ID>";
+export const config = {
+  APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT: process.env.NEXT_PUBLIC_APPWRITE_PROJECT,
+  EXPENSE_DATABASE_ID: process.env.NEXT_PUBLIC_EXPENSE_DATABASE_ID,
+  EXPENSE_COLLECTION_ID: process.env.NEXT_PUBLIC_EXPENSE_COLLECTION_ID,
+};
+
+export const EXPENSE_DATABASE_ID = config.EXPENSE_DATABASE_ID;
+export const EXPENSE_COLLECTION_ID = config.EXPENSE_COLLECTION_ID;
 ```
 
 # Add new expense {% #add-new-expense %}
@@ -57,21 +71,22 @@ import {
   database,
 } from "@/config/appwrite";
 
-// Post - create expense
 export async function POST(req) {
+  const body = await req.json();
+  const { userId, title, amount, type } = body;
+  if (!userId || !title || !amount || !type) {
+    return new NextResponse("Missing fields", { status: 401 });
+  }
+
   const headersList = headers();
   const jwt = headersList.get("jwt");
 
   if (!jwt) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
+
   account.client.setJWT(jwt);
 
-  const body = await req.json();
-  const { userId, title, amount, type } = body;
-  if (!userId || !title || !amount || !type) {
-    return new NextResponse("Missing fields", { status: 401 });
-  }
   try {
     await database.createDocument(
       EXPENSE_DATABASE_ID,
@@ -95,13 +110,13 @@ export async function POST(req) {
 }
 ```
 
-We have used Appwrite `createDocument` method to add a new document to the database. The method takes the following parameters: `databaseId`, `collectionId`, `documentId`, `data`. 
+In this endpoint, we use the `createDocument` method to add a new document to the database, which accepts the following parameters: `databaseId`, `collectionId`, `documentId`, `data`. 
 
-The `databaseId` is the ID of the database we want to add the document to. The `collectionId` is the ID of the collection we want to add the document to. The `documentId` is the ID of the document we want to add. We have used the `ID.unique()` method to generate a unique ID for the document. The `data` is an object that contains the data we want to add to the document.
+In Appwrite, documents live in a collection, which in turn live in a database. So to add a document, we need its ID, as well as the ID of its containing collection, and the ID of the database that contains said collection. We also need the data that the document contains.
 
-We have created a new API endpoint that will add a new expense to the database. The endpoint will be available at `/api/expense`.
+Since we're creating a new document, it doesn't yet have an ID. We can use the `ID.unique()` method to generate a unique one for it.
 
-Let's use the new API. In the `/src/app/index.js` file, add the following code to the `addExpense` function. This function will add a new expense to the database.
+The document created by this endpoint represents a new expense. The endpoint is now available at `http://localhost:3000/api/expense`.
 
 ```js
 "use client";
@@ -117,7 +132,7 @@ const Home = (props) => {
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
 
-  const createExpense = async (title, amount, type) => {
+  const createExpense = async (item) => {
     const response = await fetch("/api/expense", {
       method: "POST",
       headers: {
@@ -125,10 +140,10 @@ const Home = (props) => {
         jwt,
       },
       body: JSON.stringify({
-        userId: userId,
-        title: title,
-        amount: amount,
-        type: type,
+        userId,
+        title: item.title,
+        amount: item.amount,
+        type: item.type,
       }),
     });
 
@@ -168,18 +183,20 @@ Let's create the `CreateExpensePopup` component. Create a new file `/src/compone
 ```js
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 
 const CreateExpensePopup = ({ setPopup, createExpense }) => {
-  const [item, setItem] = useState({
-    title: "",
-    amount: "",
-    type: "",
-  });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const item = {
+      title: formData.get("title"),
+      amount: formData.get("amount"),
+      type: formData.get("type"),
+    };
 
     if (!item.title) {
       return toast.error("Title is required");
@@ -191,7 +208,11 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
       return toast.error("Type is required");
     }
 
-    await createExpense(item.title, item.amount, item.type);
+    try {
+      await createExpense(item);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -213,11 +234,9 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
               <input
                 className="input-text"
                 placeholder="Title"
-                id="title"
+                name="title"
                 type="text"
-                required={true}
-                value={item.title}
-                onChange={(e) => setItem({ ...item, title: e.target.value })}
+                required
               />
             </div>
           </div>
@@ -227,24 +246,17 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
               <input
                 className="input-text"
                 placeholder="Title"
-                id="amount"
+                name="amount"
                 type="number"
-                required={true}
+                required
                 min="0"
-                value={item.amount}
-                onChange={(e) => setItem({ ...item, amount: e.target.value })}
               />
             </div>
           </div>
           <div className="u-margin-block-start-12">
             <label className="label">Type</label>
             <div className="input-text-wrapper">
-              <select
-                id="type"
-                className="input-text"
-                value={item.type}
-                onChange={(e) => setItem({ ...item, type: e.target.value })}
-              >
+              <select name="type" className="input-text">
                 <option value="">Select</option>
                 <option value="Paid">Paid</option>
                 <option value="Received">Received</option>
@@ -267,12 +279,4 @@ export default CreateExpensePopup;
 
 We are using the `createExpense` function on the `handleSubmit` function to create a new expense.
 
-Here we are also using a custom className `lite-bg` which we can define in the `/src/styles/globals.css` file.
-
-```css
-.lite-bg {
-  background-color: hsl(var(--color-primary-100) / 0.2);
-}
-```
-
-Now your expense createtion form is created, you can add a new expense to the database.
+Now your expense createtion form is created, you can add a new expense to the database. And you can see the expense in the Appwrite console under the documents tab in the collection.
