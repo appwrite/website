@@ -1,0 +1,24 @@
+---
+layout: tutorial
+title: Queries Methods in Appwrite
+description: Learn how to use the Appwrite Queries methods to filter and sort your data.
+step: 1
+back: /docs
+---
+
+**Overview**: Appwrite provides a robust set of query methods that empower developers to interact with databases efficiently. These methods allow you to filter, sort, and manipulate data within your Appwrite collections, enabling powerful and dynamic data operations.
+
+# Concepts {% #concepts %}
+
+This tutorial will introduce the following concepts:
+
+1. Introduction and importance of queries
+3. Query class in Appwrite
+2. Query methods in Appwrite
+4. Query examples
+
+# Prerequisites {% #prerequisites %}
+
+1. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.
+2. Set up an Appwrite project and obtain your API endpoint and project ID. If you haven't done this yet, head over to the [Appwrite Console](https://cloud.appwrite.io/console) to create your project.
+3. Familiarity with basic Appwrite concepts such as collections, documents, and databases will be helpful.

@@ -1,0 +1,87 @@
+---
+layout: tutorial
+title: Query.select() Method
+description: Learn how to use the Query.select() method
+step: 3
+---
+
+# Introduction
+In Appwrite, the Query.select() method allows you to specify which fields you want to retrieve from a collection in your database. This method is useful when you want to retrieve only a few fields from a collection instead of the entire collection.
+
+# Sample Data Setup
+Before diving into the code examples, let's create some sample data in your Appwrite project. Assume you have a collection named users with the following documents:
+
+**1. Document 1:**
+```json
+{
+  "name": "John",
+  "age": 30,
+  "email": "john@example.com"
+}
+```
+
+**2. Document 2:**
+```json
+{
+  "name": "Jane",
+  "age": 25,
+  "email": "jane@example.com"
+}
+```
+
+# Code Examples
+Python Example:
+{% multicode %}
+```python
+
+from appwrite.client import Client
+
+# Initialize the Appwrite client
+client = Client()
+client.set_endpoint('YOUR_APPWRITE_ENDPOINT')  # Replace with your Appwrite endpoint
+client.set_project('YOUR_APPWRITE_PROJECT_ID')  # Replace with your Appwrite project ID
+client.set_key('YOUR_APPWRITE_API_KEY')  # Replace with your Appwrite API key
+
+# Select specific fields from the 'users' collection
+query = client.database.list_documents('users').select(['name', 'email'])
+
+# Get the documents
+result = query.execute()
+
+# Print the output
+for user in result['documents']:
+    print(f"Name: {user['name']}, Email: {user['email']}")
+```
+
+
+```js
+const sdk = require('node-appwrite');
+
+// Initialize the Appwrite client
+const client = new sdk.Client();
+client
+    .setEndpoint('YOUR_APPWRITE_ENDPOINT') // Replace with your Appwrite endpoint
+    .setProject('YOUR_APPWRITE_PROJECT_ID') // Replace with your Appwrite project ID
+    .setKey('YOUR_APPWRITE_API_KEY'); // Replace with your Appwrite API key
+
+// Select specific fields from the 'users' collection
+const query = new sdk.Database(client).listDocuments('users').select(['name', 'email']);
+
+// Get the documents
+query.execute().then((result) => {
+    result.documents.forEach(user => {
+        console.log(`Name: ${user.name}, Email: ${user.email}`);
+    });
+});
+```
+{% /multicode %}
+
+# Output
+After running the code, you should see the following output:
+
+```yaml
+Name: Alice, Email: alice@example.com
+Name: Bob, Email: bob@example.com
+```
+# Conclusion
+In this tutorial, you learned how to use the Query.select() method in Appwrite to retrieve specific fields from documents in a collection. By following the provided code examples and setting up sample data, you can easily adapt this knowledge to your own Appwrite projects.
