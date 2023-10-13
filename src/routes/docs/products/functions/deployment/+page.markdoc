@@ -12,7 +12,12 @@ Functions can be created and deployed in different ways to meet your unique deve
 
 The recommended way to manage your Appwrite Function deployments is to use a version control system, like Git. This offers simple versioning and collaboration that will easily fit into the rest of your development workflow.
 
-![](https://appwrite.io/images-ee/docs/functions-starter-dark.png)
+{% only_dark %}
+![Create project screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/functions/template.png)
+{% /only_light %}
 
 ## Create function  {% #create-function %} 
 

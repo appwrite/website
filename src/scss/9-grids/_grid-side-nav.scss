@@ -37,7 +37,7 @@
     }
   }
   @media #{$break3open} {
-    display:grid; grid-template-columns: pxToRem(280) 1fr;
+    display:grid; grid-template-columns: pxToRem(280) minmax(0, 1fr);
     grid-template-areas:  "header header"
                           "side   main";
     .#{$p}-side-nav { border-inline-end:solid pxToRem(1) hsl(var(--color-border));}
