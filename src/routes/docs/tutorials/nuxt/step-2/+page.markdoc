@@ -28,16 +28,17 @@ You can start the development server to watch your app update in the browser as 
 npm run dev
 ```
 
-# Pages and layout for routing {% #pages-and-layout-for-routing %}
+# Pages and layouts for routing {% #pages-and-layout-for-routing %}
 
 In Nuxt, directories help organize the codebase and minimize boilerplate. The purpose is
 making it easy to find and manage different aspect of your application.
 
-The files added to the `pages` directory will automatically become a route once a default page layout has been
-added. After following these three steps, you will have a working app to verify your changes in the development server throughout the tutorial.
+The files added to the `pages` directory will automatically become a route. Nuxt will look for a layout (can be more than one) to accompany a page
+in the `layouts` directory. When these files have been created we can edit the `app.vue` file to render our pages. Now we will have a working app to verify our changes in the development server throughout the tutorial.
+As an additional step, by adding [Appwrite's Pink Design system]('https://pink.appwrite.io/') we will also have a global layout system to help with the layout.
 
 
-### 1. Add home page
+### 1. Add a page
 
 Create file `src/pages/index.vue` and add the following code:
 
@@ -50,9 +51,9 @@ Create file `src/pages/index.vue` and add the following code:
 ```
 
 
-### 2. Add global layout
+### 2. Add a default layout
 
-Add a file `src/layouts/default.vue` and insert the following code:
+ a file `src/layouts/default.vue` and insert the following code:
 
 ```vue
 <template>
@@ -66,53 +67,6 @@ export default {
   layout: "default",
 };
 </script>
-
-<style>
-body {
-  margin: 1rem auto;
-  max-width: 50rem;
-  background-color: #f4f5f7;
-}
-
-button {
-  width: fit-content;
-  border: none;
-  border-radius: 3px;
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.25rem;
-  background-color: #e3356d;
-  color: #fff;
-  text-decoration: none;
-}
-
-.link-btn {
-  padding: 0.75rem 1rem;
-  border-radius: 3px;
-  background-color: #e3356d;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-form {
-  max-width: 400px;
-  padding: 1.5rem;
-  display: grid;
-  gap: 0.25rem;
-}
-
-h1 {
-  padding: 0.75rem;
-}
-
-section {
-  padding: 0.75rem;
-  margin-bottom: 1.5rem;
-  background-color: #fff;
-  border-radius: 15px;
-  border: 1px solid #e6e8eb;
-}
-</style>
 ```
 
 ### 3. Edit app
@@ -127,4 +81,27 @@ Go to `app.vue`, remove `NuxtWelcome`and insert `NuxtPage` wrapped in `NuxtLayou
     </NuxtLayout>
   </div>
 </template>
+```
+
+
+### 4. Import layout
+
+Edit `nuxt.config.ts`to import Appwrite's design system to all pages and components.
+The classes will be ready to use in the templates through auto-import.
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        { rel: "stylesheet", href: "https://unpkg.com/@appwrite.io/pink" },
+        {
+          rel: "stylesheet",
+          href: "https://unpkg.com/@appwrite.io/pink-icons",
+        },
+      ],
+    },
+  },
+  devtools: { enabled: true },
+});
 ```

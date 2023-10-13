@@ -8,6 +8,3 @@ step: 8
 # Test your project {% #test-project %}
 Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) to see the new users and follow their interactions.
-
-# Add layout {% #add-layout %}
-The layout can be modified to your preferences. Go to the [Nuxt official documentation](https://nuxt.com/docs/getting-started/styling#third-party-libraries-and-modules) if you want to know more.
