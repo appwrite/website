@@ -22,11 +22,21 @@ Help us keep Appwrite open and inclusive. Please read and follow our [Code of Co
 For consistency the Appwrite documentation follows a strict set of style guidelines, so no matter who is writing the documentation, 
 the tone and voice remains consistent.
 
-### Style
-- All titles, headings, buttons, and labels should be written in **sentence case**. If you're not sure what sentence case should look like, check [APA's style guide](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case) or check with ChatGPT and other LLMs, which are surprisingly good at sentence case conversions.
-- All headings in a docs page begin with `# Heading` and go until `### Heading`. Internally, Appwrite Website's Markdown parser
+### Headings
+- All titles, headings, buttons, and labels should be written in **sentence case**. If you're not sure what sentence case should look like, check [APA's style guide](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case) or check with ChatGPT and other LLMs which reliably converts titles to sentence case.
+- All headings in a docs page begin with `# Heading` then `## Heading` and `### Heading`. Internally, they're converted to H2 to H4 tags.
+- All headings should have an ID label, for example `# Cool heading {% #cool-heading %}` the `#cool-heading` ID will be used to generate the table of contents and add links to the heading.
+- Prefer verbs over gerunds, for example, say "Create documents" not "Creating documents".
 
 ### Extended Markdoc components
+
+Appwrite's documentation uses extended markdown syntax. You can find all of the available partials types in the [CONTENT.md file](./CONTENT.md).
+
+### Screenshots
+- When contributing upload original screenshots. The Appwrite design team will edit the screenshot to be consistent with other screenshots in the docs.
+- Screnshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
+- Use generic and sensible organization, project, and resource names. Avoid names like `test`, `demo`, or `sdlkfj`.
+- All screenshot should be take from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
 
 ## Submit a pull request 🚀
 
