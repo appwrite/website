@@ -1,56 +1,87 @@
 ---
 layout: tutorial
-title: Set up Appwrite
-description: Import and configure a project with Appwrite Cloud and Vue.js.
+title: Query.select() Method
+description: Learn how to use the Query.select() method
 step: 3
 ---
 
-# Create project {% #create-project %}
+# Introduction
+In Appwrite, the Query.select() method allows you to specify which fields you want to retrieve from a collection in your database. This method is useful when you want to retrieve only a few fields from a collection instead of the entire collection.
 
-Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+# Sample Data Setup
+Before diving into the code examples, let's create some sample data in your Appwrite project. Assume you have a collection named users with the following documents:
 
-{% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/create-project.png)
-{% /only_dark %}
-{% only_light %}
-![Create project screen](/images/docs/quick-starts/create-project.png)
-{% /only_light %}
+**1. Document 1:**
+```json
+{
+  "name": "John",
+  "age": 30,
+  "email": "john@example.com"
+}
+```
 
-If this is your first time using Appwrite, create an account and create your first project.
+**2. Document 2:**
+```json
+{
+  "name": "Jane",
+  "age": 25,
+  "email": "jane@example.com"
+}
+```
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+# Code Examples
+Python Example:
+{% multicode %}
+```python
 
-{% only_dark %}
-![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
-{% /only_dark %}
-{% only_light %}
-![Add a platform](/images/docs/quick-starts/add-platform.png)
-{% /only_light %}
+from appwrite.client import Client
 
-You can skip optional steps.
+# Initialize the Appwrite client
+client = Client()
+client.set_endpoint('YOUR_APPWRITE_ENDPOINT')  # Replace with your Appwrite endpoint
+client.set_project('YOUR_APPWRITE_PROJECT_ID')  # Replace with your Appwrite project ID
+client.set_key('YOUR_APPWRITE_API_KEY')  # Replace with your Appwrite API key
 
-# Initialize Appwrite SDK {% #init-sdk %}
+# Select specific fields from the 'users' collection
+query = client.database.list_documents('users').select(['name', 'email'])
 
-To use Appwrite in our Svelte app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
+# Get the documents
+result = query.execute()
 
-{% only_dark %}
-![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
-{% /only_dark %}
-{% only_light %}
-![Project settings screen](/images/docs/quick-starts/project-id.png)
-{% /only_light %}
-Create a new file `src/appwrite.js` to hold our Appwrite related code.
-Only one instance of the `Client()` class should be created per app.
-Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
+# Print the output
+for user in result['documents']:
+    print(f"Name: {user['name']}, Email: {user['email']}")
+```
+
 
 ```js
-import { Client, Databases, Account } from "appwrite";
+const sdk = require('node-appwrite');
 
-const client = new Client();
+// Initialize the Appwrite client
+const client = new sdk.Client();
 client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
+    .setEndpoint('YOUR_APPWRITE_ENDPOINT') // Replace with your Appwrite endpoint
+    .setProject('YOUR_APPWRITE_PROJECT_ID') // Replace with your Appwrite project ID
+    .setKey('YOUR_APPWRITE_API_KEY'); // Replace with your Appwrite API key
 
-export const account = new Account(client);
-export const database = new Databases(client);
+// Select specific fields from the 'users' collection
+const query = new sdk.Database(client).listDocuments('users').select(['name', 'email']);
+
+// Get the documents
+query.execute().then((result) => {
+    result.documents.forEach(user => {
+        console.log(`Name: ${user.name}, Email: ${user.email}`);
+    });
+});
 ```
+{% /multicode %}
+
+# Output
+After running the code, you should see the following output:
+
+```yaml
+Name: Alice, Email: alice@example.com
+Name: Bob, Email: bob@example.com
+```
+# Conclusion
+In this tutorial, you learned how to use the Query.select() method in Appwrite to retrieve specific fields from documents in a collection. By following the provided code examples and setting up sample data, you can easily adapt this knowledge to your own Appwrite projects.

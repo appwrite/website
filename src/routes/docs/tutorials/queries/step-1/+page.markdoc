@@ -1,33 +1,24 @@
 ---
 layout: tutorial
-title: Learn how to use queries in Appwrite
-description: Learn to build an idea tracker app with Appwrite and Vue with authentication, databases and collections, queries, pagination, and file storage.
+title: Queries Methods in Appwrite
+description: Learn how to use the Appwrite Queries methods to filter and sort your data.
 step: 1
 back: /docs
 ---
 
-**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
-In this tutorial, you will build Idea tracker with Appwrite and Vue.
-
-{% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
-{% /only_dark %}
-{% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker.png)
-{% /only_light %}
+**Overview**: Appwrite provides a robust set of query methods that empower developers to interact with databases efficiently. These methods allow you to filter, sort, and manipulate data within your Appwrite collections, enabling powerful and dynamic data operations.
 
 # Concepts {% #concepts %}
 
 This tutorial will introduce the following concepts:
 
-1. Setting up your first project
-2. Authentication 
-3. Databases and collections
-4. Queries and pagination
-5. Storage
-
+1. Introduction and importance of queries
+3. Query class in Appwrite
+2. Query methods in Appwrite
+4. Query examples
 
 # Prerequisites {% #prerequisites %}
 
-1. Basic knowledge of JavaScript and Vue.
-2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.
+1. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.
+2. Set up an Appwrite project and obtain your API endpoint and project ID. If you haven't done this yet, head over to the [Appwrite Console](https://cloud.appwrite.io/console) to create your project.
+3. Familiarity with basic Appwrite concepts such as collections, documents, and databases will be helpful.

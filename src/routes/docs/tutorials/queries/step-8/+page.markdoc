@@ -1,9 +1,57 @@
 ---
 layout: tutorial
-title: Next steps
-description: View your Vue.js app build on Appwrite Cloud.
+title: List Documents
+description: Learn how to list documents from a collection using the Appwrite Query syntax.
 step: 8
 ---
 
-# Test your project {% #test-project %}
-Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+# List Documents
+
+In this tutorial, we will learn how to list documents from a collection using the Appwrite Query syntax.
+
+## List Documents
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+void main() {
+    Client client = Client();
+    Database database = Database(client);
+
+    database.listDocuments(collectionId: 'COLLECTION_ID', filters: ['name=John', 'age=18']).then((response) {
+        print(response);
+    }).catchError((error) {
+        print(error.response);
+    });
+}
+```
+
+## Response
+
+```json
+{
+    "sum": 0,
+    "documents": [
+        {
+            "name": "John",
+            "age": 18,
+            "$id": "5e8e9d0e8d8e6",
+            "$collection": "5e8e9d0e8d8e6",
+            "$permissions": {
+                "read": [
+                    "*"
+                ],
+                "write": [
+                    "*"
+                ]
+            },
+            "$created": 1586466726,
+            "$updated": 1586466726
+        }
+    ]
+}
+```
+
+## Next Steps
+
+Now you know how to list documents from a collection using the Appwrite Query syntax, let's move to [step 4](/dart/realtime) to learn how to subscribe to realtime document updates.

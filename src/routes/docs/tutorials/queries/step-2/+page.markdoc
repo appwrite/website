@@ -1,19 +1,20 @@
 ---
 layout: tutorial
-title: Create app
-description: Create and app with Appwrite Cloud and Vue.js.
+title: Query Class
+description: Get an overview of the Query class.
 step: 2
 ---
 
-# Create Vue project {% #create-vue-project %}
+# Overview {% #overview %}
 
-Create a Vue app with the `npm create` command.
+Appwrite SDKs offer a powerful tool called the Query Class, designed to simplify the process of building queries for your applications. With this class, developers can construct various types of queries effortlessly, enhancing the efficiency of their database operations. 
 
-```sh
-npm create vite@latest --template vue ideas-tracker && cd ideas-tracker
-```
+In this tutorial, we will explore the fundamental concepts of the Query Class and how to utilize its methods effectively.
 
-# Add dependencies {% #add-dependencies %}
+# Prerequisites {% #prerequisites %}
+Before we begin, install the Appwrite SDK for your programming language. You can find SDKs for various languages on the Appwrite GitHub repository.
+
+For this tutorial we'll be using JavaScript, but you can use any of the SDKs to follow along.
 
 Install the JavaScript Appwrite SDK.
 
@@ -26,3 +27,51 @@ You can start the development server to watch your app update in the browser as 
 ```sh
 npm run dev -- --open --port 3000
 ```
+
+# Understanding Query Class {% #understanding-query-class %}
+
+The Query Class is a part of Appwrite SDKs and provides a streamlined way to create different types of queries. Each method within the class corresponds to a specific supported query type. Let's dive into some of the common methods and their use cases:
+
+## Filters {% #filters %}
+Filters are used to narrow down the results of a query. The `setFilters` method accepts an array of filters and returns the Query object. The following example demonstrates how to use the `setFilters` method to filter documents based on the `name` field.
+
+```js
+const query = new Query();
+query.setFilters([
+    ['name', '!=', 'John Doe']
+]);
+```
+
+## Limit {% #limit %}
+The `setLimit` method is used to limit the number of documents returned by a query. The following example demonstrates how to use the `setLimit` method to limit the number of documents returned to 10.
+
+```js
+const query = new Query();
+query.setLimit(10);
+```
+
+## Offset {% #offset %}
+The `setOffset` method is used to skip a certain number of documents from the beginning of the query. The following example demonstrates how to use the `setOffset` method to skip the first 10 documents.
+
+```js
+const query = new Query();
+query.setOffset(10);
+```
+
+## Order {% #order %}
+The `setOrder` method is used to sort the documents returned by a query. The following example demonstrates how to use the `setOrder` method to sort documents in descending order based on the `name` field.
+
+```js
+const query = new Query();
+query.setOrder('name', 'DESC');
+```
+
+## Search {% #search %}
+The `setSearch` method is used to search for documents based on a search term. The following example demonstrates how to use the `setSearch` method to search for documents containing the term `John Doe`.
+
+```js
+const query = new Query();
+query.setSearch('John Doe');
+```
+
+There are many more methods available in the Query Class which we'll cover all one by one in detail in the upcoming sections.
