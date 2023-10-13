@@ -1,0 +1,72 @@
+---
+layout: tutorial
+title: Add database
+description: Add databases and queries for ideas in your Nuxt project.
+step: 6
+---
+# Create collection {% #create-collection %}
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
+
+Create a new collection with the following attributes:
+| Field       | Type   | Required |
+|-------------|--------|----------|
+| userId      | String | Yes      |
+| title       | String | Yes      |
+| description | String | No       |
+
+Change the collection's permissions settings to give any role access to it.
+
+# Query methods {% #query-methods %}
+Now that you have a collection to hold ideas, we can read and write to it from our app.
+Create a new file in the composables directory, `src/composables/useIdeas.js` and add the following code to it.
+
+```js
+import { ID, Query } from "appwrite";
+import { database } from "~/appwrite";
+import { ref } from "vue";
+
+const IDEAS_DATABASE_ID = "YOUR_DATABASE_ID";
+const IDEAS_COLLECTION_ID = "YOUR_COLLECTION_ID";
+
+const current = ref(null);
+
+export const useIdeas = () => {
+  const init = async () => {
+    const response = await database.listDocuments(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      [Query.orderDesc("$createdAt"), Query.limit(10)]
+    );
+    current.value = response.documents;
+  };
+  const add = async (idea) => {
+    const response = await database.createDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      ID.unique(),
+      idea
+    );
+    current.value = [response, ...current.value].slice(0, 10);
+  };
+
+  const remove = async (id) => {
+    await database.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+    current.value = current.value.filter((idea) => idea.$id !== id);
+    await init(); // Refetch ideas to ensure we have 10 items
+  };
+
+  return {
+    add,
+    current,
+    init,
+    remove,
+  };
+};
+```

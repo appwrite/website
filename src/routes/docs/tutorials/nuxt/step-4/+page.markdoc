@@ -1,0 +1,128 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your Nuxt application using Appwrite Web SDK.
+step: 4
+---
+
+# Nuxt composables {% #nuxt-composables %}
+
+Composables is a pattern in Nuxt to manage logic related to data fetching and global state management.
+Create a file `src/composables/useUserSession.js` in your composables directory. Add the following code:
+
+```js
+import { ID } from 'appwrite'
+import { ref } from 'vue'
+import { account } from '/appwrite'
+
+const current = ref(null)
+const isLoggedIn = ref(null)
+
+export const useUserSession = () => {
+  const register = async (email, password) => {
+    await account.create(ID.unique(), email, password)
+    await this.login(email, password)
+  }
+
+  const login = async (email, password) => {
+    const authUser = await account.createEmailSession(email, password)
+    current.value = authUser
+    isLoggedIn.value = true
+    navigateTo('/ideas')
+  }
+
+  const logout = async () => {
+    await account.deleteSession('current')
+    current.value = null
+    isLoggedIn.value = false
+    navigateTo('/')
+  }
+  return {
+    current,
+    isLoggedIn,
+    login,
+    logout,
+    register,
+  }
+}
+```
+
+Now, we can import the `useUserSession` composable in any page or component and use it to login, logout, register a user or keep track of the current user.
+
+# Login page {% #login-page %}
+
+We will start with building a login page to handle the user sessions.
+
+Create a new file `src/pages/index.vue` and add the following code.
+
+```vue
+<template>
+  <div>
+    <h2>Login/Register</h2>
+    <form @submit.prevent="handleLogin || handleRegistration">
+      <input v-model="userData.email" type="email" placeholder="Email" required />
+      <input v-model="userData.password" type="password" placeholder="Password" required />
+      <div>
+        <button @click="handleLogin">Login</button>
+        <button @click="handleRegistration">Register</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  setup() {
+    const user = useUserSession()
+
+    const userData = {
+      email: '',
+      password: '',
+    }
+
+    const handleLogin = async () => {
+      await user.login(userData.email, userData.password)
+    }
+
+    const handleRegistration = async () => {
+      await user.register(userData.email, userData.password)
+    }
+
+    return {
+      handleLogin,
+      handleRegistration,
+      userData,
+    }
+  },
+}
+</script>
+```
+
+# User section on home page {% #user-section-on-home-page %}
+
+Finally, we will can modify the `src/pages/index.vue` to show a section for logged in users only:
+
+```vue
+<template>
+  <div>
+    <section v-if="user.isLoggedIn.value === true">
+      <h2>Submit Idea</h2>
+    </section>
+    <section>
+      <h2>Hello, idea tracker!</h2>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  setup() {
+    const user = useUserSession();
+
+    return {
+      user,
+    };
+  },
+};
+</script>
+```

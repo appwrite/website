@@ -61,6 +61,17 @@
 							</p>
 						</a>
 					</li>
+          <li class="is-mobile-col-span-2">
+						<a href="/docs/tutorials/nuxt" class="aw-card is-normal">
+							<header class="u-flex u-cross-baseline u-gap-4">
+								<span class="aw-icon-nuxt aw-u-font-size-24" aria-hidden="true" />
+								<h4 class="aw-sub-body-500 aw-u-color-text-primary">Nuxt</h4>
+							</header>
+							<p class="aw-sub-body-400 u-margin-block-start-4">
+								Learn Appwrite Auth, Databases, and more with Nuxt.
+							</p>
+						</a>
+					</li>
 					<li class="is-mobile-col-span-2">
 						<a href="/docs/tutorials/sveltekit" class="aw-card is-normal">
 							<header class="u-flex u-cross-baseline u-gap-4">

@@ -1,0 +1,130 @@
+---
+layout: tutorial
+title: Build an ideas tracker with Nuxt
+description: Learn to build an idea tracker app with Appwrite and Nuxt
+step: 2
+---
+
+# Create Nuxt project {% #create-nuxt-project %}
+
+Create a Nuxt app with the `npx init` command.
+
+
+```sh
+npx nuxi@latest init ideas-tracker
+```
+
+# Add dependencies {% #add-dependencies %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+You can start the development server to watch your app update in the browser as you make changes.
+
+```sh
+npm run dev
+```
+
+# Pages and layout for routing {% #pages-and-layout-for-routing %}
+
+In Nuxt, directories help organize the codebase and minimize boilerplate. The purpose is
+making it easy to find and manage different aspect of your application.
+
+The files added to the `pages` directory will automatically become a route once a default page layout has been
+added. After following these three steps, you will have a working app to verify your changes in the development server throughout the tutorial.
+
+
+### 1. Add home page
+
+Create file `src/pages/index.vue` and add the following code:
+
+```vue
+<template>
+  <div>
+    <h1>Hello, idea tracker!</h1>
+  </div>
+</template>
+```
+
+
+### 2. Add global layout
+
+Add a file `src/layouts/default.vue` and insert the following code:
+
+```vue
+<template>
+  <div>
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  layout: "default",
+};
+</script>
+
+<style>
+body {
+  margin: 1rem auto;
+  max-width: 50rem;
+  background-color: #f4f5f7;
+}
+
+button {
+  width: fit-content;
+  border: none;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.25rem;
+  background-color: #e3356d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.link-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 3px;
+  background-color: #e3356d;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+form {
+  max-width: 400px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+h1 {
+  padding: 0.75rem;
+}
+
+section {
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid #e6e8eb;
+}
+</style>
+```
+
+### 3. Edit app
+
+Go to `app.vue`, remove `NuxtWelcome`and insert `NuxtPage` wrapped in `NuxtLayout`
+
+```vue
+<template>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
+```
