@@ -12,7 +12,6 @@ In your project under the app directory, create a new file `src/app/(pages)/sign
 ```js
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -22,9 +21,6 @@ import { useCookie } from "next-cookie";
 import { account } from "@/config/appwrite";
 
 const SignUp = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const router = useRouter();
   const cookie = useCookie(props.cookie);
 
@@ -45,10 +41,9 @@ const SignUp = (props) => {
               <input
                 className="input-text"
                 placeholder="Name"
-                id="name"
+                name="name"
                 type="text"
-                required={true}
-                onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -58,10 +53,9 @@ const SignUp = (props) => {
               <input
                 className="input-text"
                 placeholder="Email"
-                id="email"
+                name="email"
                 type="email"
-                required={true}
-                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -71,20 +65,14 @@ const SignUp = (props) => {
               <input
                 className="input-text"
                 placeholder="Password"
-                id="password"
+                name="password"
                 type="password"
-                required={true}
-                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
           </div>
-
           <div className="u-padding-block-16">
-            <button
-              type="submit"
-              disabled={!email || !password}
-              className="button"
-            >
+            <button type="submit" className="button">
               Sign Up
             </button>
           </div>
@@ -103,6 +91,15 @@ Now let's add the signup function. We will be using Appwrite's `create` method t
 ```js
 const signup = async (e) => {
   e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const name = formData.get("name");
+  if (!email || !password || !name) {
+    toast.error("Please fill in all the fields");
+    return;
+  }
   try {
     await account.create(ID.unique(), email, password, name);
     await account.createEmailSession(email, password);
@@ -118,10 +115,11 @@ const signup = async (e) => {
 };
 ```
 
-After the user is created, we are creating a session using `createEmailSession` method. Then we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
+First, we need to create the user in our Appwrite instance. After the user is created, we create a session using `createEmailSession` method, to effectively login the user into our app. We then create a JWT token using the `createJWT` method, and store the token and user ID into a cookie. This allows the user to remain logged in, even if the app is closed.
 
+With all that done, we can redirect the user to the home page.
 
-# Login page {% #login-page %}      
+# Login page {% #login-page %}     
 
 In your project under the app directory, create a new file `src/app/(pages)/login/page.js`. Next.js will automatically create a route for this page `/login`. Let's create the login form.
 
@@ -129,7 +127,6 @@ In your project under the app directory, create a new file `src/app/(pages)/logi
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useCookie } from "next-cookie";
@@ -144,7 +141,7 @@ const Login = (props) => {
 
   return (
     <section className="container u-flex u-main-center u-cross-center u-full-screen-height">
-      <div className="u-max-width-350 u-width-full-line u-padding-8">
+      <div className="u-max-width-350	u-width-full-line u-padding-8">
         <h1 className="heading-level-1 font-bold">Login</h1>
         <p className="body-text-1 u-bold u-padding-block-16">
           Don&apos;t have an account?{" "}
@@ -159,10 +156,9 @@ const Login = (props) => {
               <input
                 className="input-text"
                 placeholder="Email"
-                id="email"
+                name="email"
                 type="email"
-                required={true}
-                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -172,19 +168,14 @@ const Login = (props) => {
               <input
                 className="input-text"
                 placeholder="Password"
-                id="password"
+                name="password"
                 type="password"
-                required={true}
-                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
           </div>
           <div className="u-padding-block-16">
-            <button
-              type="submit"
-              disabled={!email || !password}
-              className="button"
-            >
+            <button type="submit" className="button">
               Login
             </button>
           </div>
@@ -197,11 +188,19 @@ const Login = (props) => {
 export default Login;
 ```
 
-Now let's add the login function. We will be using Appwrite's `createEmailSession` method to create a new session. We will also be using `react-hot-toast` to show toast messages.
+Now let's add the login function. We will be using Appwrite's `createEmailSession` method to create a new session. 
 
 ```js
 const loginUser = async (e) => {
   e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const email = formData.get("email");
+  const password = formData.get("password");
+  if (!email || !password) {
+    toast.error("Please fill in all the fields");
+    return;
+  }
   try {
     await account.createEmailSession(email, password);
     const jwt = await account.createJWT();
