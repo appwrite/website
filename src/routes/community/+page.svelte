@@ -170,49 +170,49 @@
                 <section class="aw-container">
                     <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">33K+</div>
                                 <div class="aw-description">GitHub Stars</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">8K+</div>
                                 <div class="aw-description">Pull Requests</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">15K+</div>
                                 <div class="aw-description">Commits</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">2.5K+</div>
                                 <div class="aw-description">Issues</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">400+</div>
                                 <div class="aw-description">Open Issues</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">1.9K+</div>
                                 <div class="aw-description">Closed Issues</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">4.9K+</div>
                                 <div class="aw-description">Forks</div>
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal">
+                            <div class="aw-card is-normal has-border-gradient">
                                 <div class="aw-title aw-u-color-text-primary">20K+</div>
                                 <div class="aw-description">Contributors</div>
                             </div>
