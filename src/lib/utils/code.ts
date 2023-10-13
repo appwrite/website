@@ -74,6 +74,10 @@ const platformAliases: Record<string, keyof typeof languages> = {
 	[Platform.ServerPython]: 'py',
 	[Platform.ServerRuby]: 'rb',
 	[Platform.ServerSwift]: 'swift',
+	[Platform.ServerJava]: 'java',
+	[Platform.ServerKotlin]: 'kotlin',
+	[Platform.ServerGraphql]: 'graphql',
+	[Platform.ServerRest]: 'http',
 	vue: 'html',
 	svelte: 'html'
 };

@@ -12,8 +12,8 @@ dependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/repo':
-    specifier: github:appwrite/appwrite
-    version: github.com/appwrite/appwrite/f656002a03b7e4195bcae8a20aff809fdb722bcf
+    specifier: github:appwrite/appwrite#main
+    version: github.com/appwrite/appwrite/fce18647d2352e4cfce7ce75fd103a21bafbf7d0
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -5570,8 +5570,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/f656002a03b7e4195bcae8a20aff809fdb722bcf:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/f656002a03b7e4195bcae8a20aff809fdb722bcf}
+  github.com/appwrite/appwrite/fce18647d2352e4cfce7ce75fd103a21bafbf7d0:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/fce18647d2352e4cfce7ce75fd103a21bafbf7d0}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
