@@ -595,14 +595,14 @@
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
-                        <ul class="aw-multi-columns-1">
+                        <ul class="aw-multi-columns-1" style:--p-col-gap="-1rem">
                             <li>
                                 <a
                                     href="/discord"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem"
+                                    style="--card-padding:2rem;rotate: 6deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
@@ -622,7 +622,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem"
+                                    style="--card-padding:2rem; rotate: 2deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
@@ -642,7 +642,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem"
+                                    style="--card-padding:2rem; rotate: -10deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
@@ -662,7 +662,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem"
+                                    style="--card-padding:2rem; rotate: -6deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
@@ -751,5 +751,17 @@
 
         left: -200px;
         bottom: -300px;
+    }
+
+    .aw-multi-columns-1 {
+        .aw-card {
+            border: 1px solid hsl(var(--aw-color-offset));
+        }
+        @media (max-width: 1235px) {
+            --p-col-gap: 2rem !important;
+            .aw-card {
+                rotate: none !important;
+            }
+        }
     }
 </style>
