@@ -27,19 +27,21 @@ import {
 
 // Put - update expense
 export async function PUT(req) {
+  const body = await req.json();
+  const { title, amount, type, docId } = body;
+  if (!title || !amount || !type || !docId) {
+    return new NextResponse("Missing fields", { status: 401 });
+  }
+
   const headersList = headers();
   const jwt = headersList.get("jwt");
 
   if (!jwt) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
+
   account.client.setJWT(jwt);
 
-  const body = await req.json();
-  const { title, amount, type, docId } = body;
-  if (!title || !amount || !type || !docId) {
-    return new NextResponse("Missing fields", { status: 401 });
-  }
   try {
     await database.updateDocument(
       EXPENSE_DATABASE_ID,
@@ -51,9 +53,9 @@ export async function PUT(req) {
         type: type,
       }
     );
+
     return new NextResponse("Updated successfully", { status: 200 });
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal server error", {
       status: 500,
       error: error.message,
@@ -77,7 +79,7 @@ We will add a click event handler to the edit button in the `ExpenseCard` compon
 
 The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component.
 
-We will also add the `editExpense` function. This function will make a `PUT` request to the `/api/expense` endpoint to update the expense.
+We will also add the `editExpense` function. This function will make a `PUT` request to the `http://localhost:3000/api/expense` endpoint to update the expense.
 
 ```js
 import React, { useEffect, useState } from "react";
@@ -157,7 +159,7 @@ Let's create a `EditExpensePopup` component in the `components` folder `/src/com
 ```js
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 const EditExpensePopup = ({
   title,
@@ -167,15 +169,33 @@ const EditExpensePopup = ({
   setPopup,
   editExpense,
 }) => {
-  const [item, setItem] = useState({
-    title: title || "",
-    amount: amount || "",
-    type: type || "",
-  });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await editExpense(docId, item.title, item.amount, item.type);
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const item = {
+      docId,
+      title: formData.get("title"),
+      amount: formData.get("amount"),
+      type: formData.get("type"),
+    };
+
+    if (!item.title) {
+      return toast.error("Title is required");
+    }
+    if (!item.amount) {
+      return toast.error("Amount is required");
+    }
+    if (!item.type) {
+      return toast.error("Type is required");
+    }
+
+    try {
+      await editExpense(item);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -197,11 +217,10 @@ const EditExpensePopup = ({
               <input
                 className="input-text"
                 placeholder="Title"
-                id="title"
+                name="title"
                 type="text"
-                required={true}
-                value={item.title}
-                onChange={(e) => setItem({ ...item, title: e.target.value })}
+                required
+                defaultValue={title}
               />
             </div>
           </div>
@@ -211,24 +230,18 @@ const EditExpensePopup = ({
               <input
                 className="input-text"
                 placeholder="Title"
-                id="amount"
+                name="amount"
                 type="number"
-                required={true}
+                required
                 min="0"
-                value={item.amount}
-                onChange={(e) => setItem({ ...item, amount: e.target.value })}
+                defaultValue={amount}
               />
             </div>
           </div>
           <div className="u-margin-block-start-12">
             <label className="label">Type</label>
             <div className="input-text-wrapper">
-              <select
-                id="type"
-                className="input-text"
-                value={item.type}
-                onChange={(e) => setItem({ ...item, type: e.target.value })}
-              >
+              <select name="type" className="input-text" defaultValue={type}>
                 <option value="">Select</option>
                 <option value="Paid">Paid</option>
                 <option value="Received">Received</option>
@@ -271,19 +284,22 @@ import {
 
 // Delete - delete expense
 export async function DELETE(req) {
+  const body = await req.json();
+  const { docId } = body;
+
+  if (!docId) {
+    return new NextResponse("Missing fields", { status: 401 });
+  }
+
   const headersList = headers();
   const jwt = headersList.get("jwt");
 
   if (!jwt) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
+
   account.client.setJWT(jwt);
 
-  const body = await req.json();
-  const { docId } = body;
-  if (!docId) {
-    return new NextResponse("Missing fields", { status: 401 });
-  }
   try {
     await database.deleteDocument(
       EXPENSE_DATABASE_ID,
@@ -292,14 +308,12 @@ export async function DELETE(req) {
     );
     return new NextResponse("Deleted successfully", { status: 200 });
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal server error", {
       status: 500,
       error: error.message,
     });
   }
 }
-
 ```
 
 When the user clicks on the delete button, we will show a confirmation popup to the user. If the user confirms the delete action, we will delete the expense from the database.

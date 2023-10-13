@@ -47,7 +47,7 @@ export async function POST(req) {
 }
 ```
 
-With Appwrite's `listDocuments` method we can fetch the documents from the database. It will create a new API endpoint `/api/expense/list` that will return the user expenses.
+With Appwrite's `listDocuments` method we can fetch the documents from the database. It will create a new API endpoint `http://localhost:3000/api/expense/list` that will return the user expenses.
 
 We are also using Appwrite's `Query` class to filter the documents. We have used the `Query.equal` method to filter the documents by `userId`. We have also used the `Query.orderDesc` method to order the documents by `$createdAt` in descending order.
 

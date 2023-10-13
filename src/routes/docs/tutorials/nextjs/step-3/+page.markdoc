@@ -40,7 +40,7 @@ To use Appwrite in our Next.js app, we'll need to find our project ID. Find your
 
 First create a file that will hold env variables. Create a new file `.env.local` in the root of your project. Replace `<YOUR_PROJECT_ID>` with your project ID
 
-```
+```js
 NEXT_PUBLIC_APPWRITE_ENDPOINT = https://cloud.appwrite.io/v1
 NEXT_PUBLIC_APPWRITE_PROJECT = <YOUR_PROJECT_ID>
 ```

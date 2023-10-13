@@ -35,7 +35,7 @@ You can also add permission for a specific user or a team.
 
 Now you will get a database ID and collection ID. First Copy the these two and add them in the `.env.local` file
 
-```env
+```js
 NEXT_PUBLIC_EXPENSE_DATABASE_ID = <YOUR_DATABASE_ID>
 NEXT_PUBLIC_EXPENSE_COLLECTION_ID = <YOUR_COLLECTION_ID>
 ```
