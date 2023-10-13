@@ -270,3 +270,7 @@
 .#{$p}-u-transition {
   transition:var(--transition);
 }
+
+.#{$p}-u-flex-1 {
+  flex: 1; 
+}
