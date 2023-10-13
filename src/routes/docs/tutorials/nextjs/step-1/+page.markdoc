@@ -7,7 +7,7 @@ difficulty: beginner
 readtime: 18
 ---
 
-**Expense tracker** is a simple web application that allows you to track your expenses. It is built using [Next.js](https://nextjs.org/) and [Appwrite](https://appwrite.io/).
+**Expense tracker** is a simple web application that allows you to track your expenses. It is built using [Next.js](https://nextjs.org/) [app router](https://nextjs.org/docs/app) and [Appwrite](https://appwrite.io/).
 
 ![Create project screen](/images/docs/tutorials/expense-tracker-app.png)
 
@@ -24,5 +24,5 @@ This tutorial will introduce the following concepts:
 
 
 # Prerequisites {% #prerequisites %}
-1. Basic knowledge of JavaScript, React and Next.js.
+1. Basic knowledge of JavaScript, [React](https://react.dev/learn) and [Next.js](https://nextjs.org/docs).
 2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer
