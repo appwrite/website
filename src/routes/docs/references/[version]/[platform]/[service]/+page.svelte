@@ -151,7 +151,7 @@
 				<section class="aw-article-content-grid-6-4">
 					<div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
 						<header class="aw-article-content-header">
-							<Heading id={method.id} level={2} inReferences>{method.title}</Heading>
+							<Heading id={method.id} level={1} inReferences>{method.title}</Heading>
 						</header>
 						<p class="aw-sub-body-400">
 							{@html parse(method.description)}
