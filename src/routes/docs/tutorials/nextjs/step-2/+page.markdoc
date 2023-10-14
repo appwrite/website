@@ -46,7 +46,7 @@ Install the [Appwrite CSS library](https://pink.appwrite.io/) and icons package.
 npm install "@appwrite.io/pink" "@appwrite.io/pink-icons"
 ```
 
-Import the CSS file and icons in the `/src/app/layout.js` file.
+Import the CSS file and icons in the top of `/src/app/layout.js` file.
 
 ```js
 import "@appwrite.io/pink";

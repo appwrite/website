@@ -51,9 +51,9 @@ export async function PUT(req) {
       EXPENSE_COLLECTION_ID,
       docId,
       {
-        title: title,
-        amount: amount,
-        type: type,
+        title,
+        amount,
+        type,
       }
     );
 
@@ -87,30 +87,41 @@ We will also add the `editExpense` function. This function will make a `PUT` req
 ```js
 import React, { useEffect, useState } from "react";
 import { useCookie } from "next-cookie";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 import ExpenseList from "@/components/ExpenseList";
 import EditExpensePopup from "@/components/EditExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
 
 const Home = (props) => {
+  const [expenses, setExpenses] = useState();
   const [popup, setPopup] = useState(null);
+  const router = useRouter();
   const cookie = useCookie(props.cookie);
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
 
-  const editExpense = async (docId, title, amount, type) => {
+  const getExpenses = async () => {
+    ...
+  }
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
+  const createExpense = async (item) => {
+    ...
+  }
+
+  const editExpense = async (item) => {
     const response = await fetch("/api/expense", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         jwt,
       },
-      body: JSON.stringify({
-        docId: docId,
-        title: title,
-        amount: amount,
-        type: type,
-      }),
+      body: JSON.stringify(item),
     });
 
     if (response.status === 200) {
@@ -345,12 +356,36 @@ We will also add the `deleteExpense` function in the `pages/index.js` file. This
 ```js
 import React, { useState } from "react";
 import { useCookie } from "next-cookie";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
+import DeleteExpensePopup from "@/components/DeleteExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
+
 const Home = (props) => {
+  const [expenses, setExpenses] = useState();
   const [popup, setPopup] = useState(null);
+  const router = useRouter();
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    ...
+  }
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
+  const createExpense = async (item) => {
+    ...
+  }
+
+  const editExpense = async (item) => {
+    ...
+  }
 
   const deleteExpense = async (docId) => {
     const response = await fetch("/api/expense", {

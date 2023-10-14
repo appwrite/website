@@ -74,6 +74,10 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 import ExpenseList from "@/components/ExpenseList";
+import DeleteExpensePopup from "@/components/DeleteExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
 
 const Home = (props) => {
   const [expenses, setExpenses] = useState();
@@ -94,9 +98,7 @@ const Home = (props) => {
         jwt,
       },
       body: JSON.stringify({
-        userId: userId,
-        start: start,
-        limit: limit,
+        userId, start, limit,
       }),
     });
     const data = await response.json();
@@ -113,10 +115,21 @@ const Home = (props) => {
 
   useEffect(() => {
     getExpenses();
-    // eslint-disable-next-line
   }, [start]);
 
   const pages = Math.ceil(total / limit);
+
+  const createExpense = async (item) => {
+    ...
+  }
+
+  const editExpense = async (item) => {
+    ...
+  }
+
+  const deleteExpense = async (docId) => {
+    ...
+  }
 
   return (
     <>

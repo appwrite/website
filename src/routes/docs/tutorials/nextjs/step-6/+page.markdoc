@@ -63,9 +63,11 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import ExpenseList from "@/components/ExpenseList";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
 
 const Home = (props) => {
   const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
   const cookie = useCookie(props.cookie);
   const router = useRouter();
   const jwt = cookie.get("jwt");
@@ -79,7 +81,7 @@ const Home = (props) => {
         jwt,
       },
       body: JSON.stringify({
-        userId: userId,
+        userId,
       }),
     });
     const data = await response.json();
@@ -96,6 +98,10 @@ const Home = (props) => {
   useEffect(() => {
     getExpenses();
   }, []);
+
+  const createExpense = async (item) => {
+    ...
+  }
 
   return (
     <>

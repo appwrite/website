@@ -93,10 +93,10 @@ export async function POST(req) {
       EXPENSE_COLLECTION_ID,
       ID.unique(),
       {
-        userId: userId,
-        title: title,
-        amount: amount,
-        type: type,
+        userId,
+        title,
+        amount,
+        type,
       }
     );
     return new NextResponse("Saved successfully", { status: 200 });
@@ -128,7 +128,6 @@ import toast from "react-hot-toast";
 const Home = (props) => {
   const [popup, setPopup] = useState(null);
   const cookie = useCookie(props.cookie);
-  const router = useRouter();
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
 
@@ -174,6 +173,8 @@ const Home = (props) => {
     </>
   );
 };
+
+export default Home;
 ```
 
 We are rendering a new component `CreateExpensePopup` when the user clicks on the `New Expense` button. The `CreateExpensePopup` component will be used to create a new expense. 
