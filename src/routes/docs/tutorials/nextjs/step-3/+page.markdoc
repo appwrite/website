@@ -45,7 +45,6 @@ NEXT_PUBLIC_APPWRITE_ENDPOINT = https://cloud.appwrite.io/v1
 NEXT_PUBLIC_APPWRITE_PROJECT = <YOUR_PROJECT_ID>
 ```
 
-```js
 Create a new file `src/config/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
 Add the following code to it.

@@ -11,6 +11,7 @@ Create a new Next.js project using the `create-next-app` command.
 
 ```sh
 npx create-next-app expense-tracker --eslint
+cd expense-tracker 
 ```
 
 We are using the `--eslint` flags to add ESLint to our project.

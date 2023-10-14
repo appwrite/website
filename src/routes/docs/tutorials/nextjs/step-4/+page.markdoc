@@ -85,10 +85,11 @@ const SignUp = (props) => {
 export default SignUp;
 ```
 
-Now let's add the signup function. We will be using Appwrite's `create` method to create a new user. We will also be using `react-hot-toast` to show toast messages.
+Now let's add the signup function. We will be using Appwrite's `create` method to create a new user.
 
 
 ```js
+// /src/app/(pages)/signup/page.js
 const signup = async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -134,8 +135,6 @@ import { useCookie } from "next-cookie";
 import { account } from "@/config/appwrite";
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const router = useRouter();
   const cookie = useCookie(props.cookie);
 

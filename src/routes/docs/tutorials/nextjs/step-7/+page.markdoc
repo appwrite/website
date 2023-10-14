@@ -24,6 +24,9 @@ import {
 } from "@/config/appwrite";
 
 // Post - create expense
+export async function POST(req) {
+  ...
+}
 
 // Put - update expense
 export async function PUT(req) {
@@ -66,7 +69,7 @@ export async function PUT(req) {
 
 When the user clicks on the edit button, we will show the expense popup form with the expense details filled in. The user can then edit the expense and save it.
 
-We will add a click event handler to the edit button in the `ExpenseCard` component.
+We will add a click event handler to the edit button in the `ExpenseList` component.
 
 ```js
 <button
@@ -77,7 +80,7 @@ We will add a click event handler to the edit button in the `ExpenseCard` compon
 </button>
 ```
 
-The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component.
+The `setPopup` function is passed as a prop to the `ExpenseList` component from the `ExpenseList` component.
 
 We will also add the `editExpense` function. This function will make a `PUT` request to the `http://localhost:3000/api/expense` endpoint to update the expense.
 
@@ -279,8 +282,14 @@ import {
 } from "@/config/appwrite";
 
 // Post - create expense
+export async function Post(req) {
+  ...
+}
 
 // Put - update expense
+export async function PUT(req) {
+  ...
+}
 
 // Delete - delete expense
 export async function DELETE(req) {
@@ -318,7 +327,7 @@ export async function DELETE(req) {
 
 When the user clicks on the delete button, we will show a confirmation popup to the user. If the user confirms the delete action, we will delete the expense from the database.
 
-We will add a click event handler to the delete button in the `ExpenseCard` component.
+We will add a click event handler to the delete button in the `ExpenseList` component.
 
 ```js
 <button
@@ -329,7 +338,7 @@ We will add a click event handler to the delete button in the `ExpenseCard` comp
 </button>
 ```
 
-The `setPopup` function is passed as a prop to the `ExpenseCard` component from the `ExpenseList` component. This is the same state that we used to edit the expense.
+The `setPopup` function is passed as a prop to the `ExpenseList` component from the `ExpenseList` component. This is the same state that we used to edit the expense.
 
 We will also add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
 
