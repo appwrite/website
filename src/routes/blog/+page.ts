@@ -9,7 +9,6 @@ export function load() {
     const authorsGlob = import.meta.glob('./author/**/*.markdoc', {
         eager: true
     });
-    console.log(postsGlob);
 
     const posts = Object.entries(postsGlob)
         .map(([filepath, postList]) => {
