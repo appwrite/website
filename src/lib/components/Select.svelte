@@ -105,14 +105,16 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                {#each options as option}
-                    <button class="aw-select-option" use:melt={$optionEl(option)}>
-                        {#if option.icon}
-                            <span class={option.icon} aria-hidden="true" />
-                        {/if}
-                        <span style:text-transform="capitalize">{option.label}</span>
-                    </button>
-                {/each}
+                <div class="u-flex u-flex-vertical">
+                    {#each options as option}
+                        <button class="aw-select-option" use:melt={$optionEl(option)}>
+                            {#if option.icon}
+                                <span class={option.icon} aria-hidden="true" />
+                            {/if}
+                            <span style:text-transform="capitalize">{option.label}</span>
+                        </button>
+                    {/each}
+                </div>
             {:else}
                 <div class="aw-select-group" use:melt={$groupEl(group.label)}>
                     <span class="aw-select-group-label" use:melt={$groupLabel(group.label)}>
