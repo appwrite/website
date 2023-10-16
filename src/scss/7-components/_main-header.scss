@@ -6,9 +6,9 @@
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
-  position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
+  position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   border-block-end: solid 1px var(--p-main-header-border-color);
-  padding-inline: clamp(1.25rem, 4vw, 120rem);
+  padding-inline: clamp(1.25rem, 4vw, 120rem); 
   
   &.is-docs {
     padding-inline: pxToRem(32);
@@ -31,7 +31,7 @@
   .#{$p}-input-text { padding-block:pxToRem(7); padding-inline-end:pxToRem(8); }
 
   .aw-logo { margin-inline-end:pxToRem(32); }
-  .#{$p}-top-banner { position:relative; inset-block-start: calc(var(--p-main-header-padding-block) * -1); }
+  
 
   &-nav {
     align-self:center; font-size:pxToRem(16); user-select:none;
