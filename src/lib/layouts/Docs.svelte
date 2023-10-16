@@ -34,6 +34,7 @@
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
     import { isMac } from '@melt-ui/svelte/internal/helpers';
+    import { setContext } from 'svelte';
 
     export let variant: DocsLayoutVariant = 'default';
 
@@ -53,6 +54,8 @@
             showSidenav: false
         }));
     });
+
+    setContext('isDocs', true);
 </script>
 
 <div class="u-position-relative">
@@ -134,7 +137,7 @@
                     <nav class="aw-main-header-nav">
                         <ul class="aw-main-header-nav-list">
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-main-header-nav-link is-selected" href="/docs">Docs</a>
+                                <a class="aw-link" href="/docs">Docs</a>
                             </li>
                         </ul>
                     </nav>

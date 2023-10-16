@@ -108,7 +108,7 @@
         elements: { input, menu, option },
         states: { inputValue }
     } = createCombobox<Props>({
-        forceVisible: false,
+        forceVisible: true,
         preventScroll: false,
         portal: null,
         positioning: null,

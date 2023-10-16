@@ -1,18 +1,35 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
+  --p-select-min-width: #{pxToRem(130)};
+
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
-  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: pxToRem(120);
+  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: var(--p-select-min-width); height: pxToRem(30);
+  
   select, .physical-select {
     all:unset; display:flex; align-items:center;
     padding-inline-end:pxToRem(32); cursor:pointer; inline-size:100%;height:100%;
     &:focus-visible { }
+
+    [class*="icon"]:first-child {margin-inline-end:pxToRem(8); font-size: 20px !important; }
+
   }
-  [class*="icon"]:first-child {margin-inline-end:pxToRem(8); font-size: 20px !important; }
+
+  > [class*="icon"] + :is(select, .physical-select) {
+    padding-inline-start: pxToRem(32);
+  }
+
+  > [class*="icon"]:first-child {
+    position:absolute; inset-block:0; inset-inline-start:pxToRem(8);
+    display:grid; place-content:center; pointer-events:none;
+  }
+  
+  
   .icon-cheveron-down {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center; pointer-events:none;
   }
+
   &.is-colored {
     @mixin light-mode() {
       @include border-gradient;
@@ -33,6 +50,7 @@
       --p-select-border-color-focus: var(--aw-color-greyscale-900);
       --p-select-box-shadow-color-focus: var(--aw-color-black) / 0.10;
     }
+
     @mixin dark-mode() {
       @include border-gradient;
       --m-border-radius: #{pxToRem(8)};
@@ -52,6 +70,7 @@
       --p-select-border-color-focus: var(--aw-color-greyscale-100);
       --p-select-box-shadow-color-focus: var(--aw-color-white) / 0.16;
     }
+
     @include light-mode();
     --p-select-bg-color: var(--p-select-bg-color-default);
     --p-select-border-color: var(--p-select-border-color-default);
@@ -60,8 +79,12 @@
     background-color: hsl(var(--p-select-bg-color));
     
     box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-box-shadow-color));
+      line-height:1.2;
 
-    padding-inline:pxToRem(8); padding-block:pxToRem(3);  line-height:1.2;
+
+    select, .physical-select {
+      padding-inline:pxToRem(8); padding-block:pxToRem(3);
+    }
 
     &:hover {
       --p-select-bg-color: var(--p-select-bg-color-hover);
@@ -82,6 +105,11 @@
       @include dark-mode();
     }
   }
+
+  option, optgroup {
+    background-color: whitesmoke;
+    color: black;
+  }
 }
 
 
@@ -89,10 +117,11 @@
 	all: unset;
 	display: flex;
 	flex-direction: column;
+  gap: pxToRem(8);  
 	position: relative;
 	line-height: 1;
 	user-select: none;
-	cursor: pointer;
+	
 	color: hsl(var(--aw-color-primary));
 	font-size: pxToRem(14);
 	
@@ -101,6 +130,9 @@
   padding-inline: pxToRem(4);
   padding-block: pxToRem(4);
   box-sizing: border-box;
+
+  max-height: pxToRem(290) !important;
+  overflow-y: auto;
 
   @mixin light-mode() {
     --p-select-menu-bg-color: var(--aw-color-white);
@@ -122,6 +154,21 @@
   box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-select-menu-box-shadow-color));
 }
 
+.#{$p}-select-group {
+  display: flex;
+	flex-direction: column;
+
+  &-label {
+    margin-block-end: pxToRem(4);
+    padding-inline-start: pxToRem(4);
+    font-weight: 500;
+  }
+
+  .#{$p}-select-option {
+    padding-inline-start: pxToRem(16);
+  }
+}
+
 .#{$p}-select-option { 
   display: flex;
   align-items: center;
@@ -130,6 +177,9 @@
   padding-block: pxToRem(4);
   padding-inline: pxToRem(4);
   border-radius: pxToRem(6);
+  scroll-margin-block: pxToRem(8);
+
+  cursor: pointer;
 
   @mixin light-mode() {
     --p-select-option-bg-color-hover: var(--aw-color-greyscale-25);
@@ -142,7 +192,7 @@
     @include dark-mode();
   }
 
-  &:where(:hover, :focus) {
+  &:where(:hover, :focus, [data-highlighted]) {
     background-color: hsl(var(--p-select-option-bg-color-hover));
   }
 
