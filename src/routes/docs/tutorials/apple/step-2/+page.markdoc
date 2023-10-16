@@ -7,7 +7,7 @@ step: 2
 
 # Setup new project {% #new-project %}
 
-Open XCode and click **Create new project**, Select app then click **Next** fill all the necessary information and click **Next** to create project.
+Open XCode and click **Create new project**, Select app as template for iOS then click **Next** fill all the necessary information e.g Product Name, Organization identifier, Interface (SwiftUI) and click **Next**, select the folder where you want to set up the project then click **Create**.
 
 ![Create project screen](/images/docs/tutorials/xcode-new-project-setup.png)
 

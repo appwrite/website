@@ -6,5 +6,5 @@ step: 10
 ---
 
 # Test your project {% #test-project %}
-Run the active scheme on a simulator in Xcode
+At the top level menu click on **Product** then **Scheme** and click on **Choose scheme**, you will notice that the active scheme is selected if not click on it to mark it selected then next to it select any iOS Simulator you wish to run the app on then click on play button.
 
