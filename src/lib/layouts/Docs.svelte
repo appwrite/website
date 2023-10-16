@@ -33,8 +33,9 @@
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
-    import { isMac } from '@melt-ui/svelte/internal/helpers';
+
     import { setContext } from 'svelte';
+    import { isMac } from '$lib/utils/platform';
 
     export let variant: DocsLayoutVariant = 'default';
 

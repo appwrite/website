@@ -355,7 +355,7 @@
         display: none;
     }
 
-    @media (min-width: 1440px) {
+    @media (min-width: 1400px) {
         #products {
             display: block;
         }

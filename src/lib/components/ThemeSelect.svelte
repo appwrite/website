@@ -17,7 +17,7 @@
         {
             value: 'system',
             label: 'System',
-            icon: 'icon-server'
+            icon: 'aw-icon-system'
         }
     ];
 </script>
