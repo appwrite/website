@@ -13,6 +13,10 @@
         return { ...store, set };
     })();
 
+    export const themeInUse = derived(currentTheme, (theme) => {
+        return theme === 'system' ? getSystemTheme() : theme;
+    });
+
     function isTheme(theme: unknown): theme is Theme {
         return ['dark', 'light', 'system'].includes(theme as Theme);
     }
@@ -41,7 +45,7 @@
     import '$scss/index.scss';
 
     import { browser, dev } from '$app/environment';
-    import { writable } from 'svelte/store';
+    import { derived, writable } from 'svelte/store';
     import { navigating, page } from '$app/stores';
     import { onMount } from 'svelte';
 
