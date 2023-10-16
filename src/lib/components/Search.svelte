@@ -2,6 +2,7 @@
     import { afterNavigate, goto } from '$app/navigation';
     import { layoutState } from '$lib/layouts/Docs.svelte';
     import { isMac } from '$lib/utils/platform';
+
     import { createCombobox, melt } from '@melt-ui/svelte';
 
     import { MeiliSearch, type Hit, type Hits } from 'meilisearch';

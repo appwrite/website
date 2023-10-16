@@ -10,7 +10,7 @@ const localStorageAdapter: Adapter = {
         if (typeof window === 'undefined') return undefined;
 
         const value = localStorage.getItem(key);
-        console.log(key, value);
+
         if (value === null) {
             return undefined;
         }
@@ -35,7 +35,7 @@ export const persisted = <Value>(
 ) => {
     const localValue = adapter.get(key);
     let initialValue: Value | undefined = defaultValue;
-    console.log({ localValue, initialValue, validated: validate(localValue) });
+
     if (validate(localValue)) {
         initialValue = localValue;
     }
@@ -54,7 +54,6 @@ export const persisted = <Value>(
     };
 
     const set: typeof store.set = (v) => {
-        console.log('set', v);
         update(() => v);
     };
 
