@@ -20,6 +20,8 @@
 
   .#{$p}-icon-button [class*="icon"]{transition:var(--transition); }
 
+  .#{$p}-main-header-wrapper { max-inline-size:none; }
+
   @media #{$break1} {
     --p-grid-huge-navs-padding-inline: #{pxToRem(20)};
     padding-inline:var(--p-grid-huge-navs-padding-inline);
