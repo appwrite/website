@@ -131,7 +131,7 @@
   padding-block: pxToRem(4);
   box-sizing: border-box;
 
-  max-height: pxToRem(300) !important;
+  max-height: pxToRem(290) !important;
   overflow-y: auto;
 
   @mixin light-mode() {
