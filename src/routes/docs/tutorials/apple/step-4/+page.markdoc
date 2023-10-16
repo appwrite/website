@@ -22,7 +22,7 @@ class AppwriteService {
     public init() {
         self.client = Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("[YOUR_PROJECT_ID]")
+            .setProject("65184ffdc128a26592ed")
         self.account = Account(client)
         self.database = Databases(client)
     }
@@ -54,6 +54,13 @@ class AppwriteService {
     }
     
     public func onLogout() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+    
+    
+    public func onAccountDelete() async throws {
         _ = try await account.deleteSession(
             sessionId: "current"
         )

@@ -187,7 +187,6 @@ struct UserState {
     
 }
 
-
 final class UserViewModel: ObservableObject {
     
     private var appwriteService: AppwriteService
@@ -198,7 +197,6 @@ final class UserViewModel: ObservableObject {
         self.appwriteService = appwriteService
         self.snackbarService = snackbarService
     }
-    
     
     @MainActor
     func getCurrentSession() async -> Bool {
@@ -226,7 +224,6 @@ final class UserViewModel: ObservableObject {
         
     }
     
-    
     @MainActor
     func login(_ email: String, _ password: String) async {
         
@@ -241,7 +238,6 @@ final class UserViewModel: ObservableObject {
         }
         
     }
-    
     
     @MainActor
     func register(_ email: String, _ password: String) async {
@@ -258,7 +254,6 @@ final class UserViewModel: ObservableObject {
         
     }
     
-    
     @MainActor
     func logout() async {
         
@@ -272,7 +267,20 @@ final class UserViewModel: ObservableObject {
         }
         
     }
-    
+
+    @MainActor
+    func deleteAccount() async {
+        
+        do {
+            _ = try await appwriteService.onAccountDelete()
+        
+        } catch {
+            
+            snackbarService.displayError(error)
+            
+        }
+        
+    } 
 }
 ```
 
