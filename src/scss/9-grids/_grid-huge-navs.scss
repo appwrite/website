@@ -133,7 +133,7 @@
         &-button {
           > *:not(:first-child) { opacity:1; }
         }
-        .#{$p}-icon-button [class*="icon"]{ rotate:180deg; }
+        .#{$p}-icon-button { transform-origin:center; rotate:180deg; }
       }
     }
   }
