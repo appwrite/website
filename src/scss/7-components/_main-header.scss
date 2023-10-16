@@ -16,14 +16,8 @@
   }
   
   &-wrapper { 
-    display: flex;
-    justify-content: center;
-    margin-inline: auto;
-
-    max-width: pxToRem(1728);
-    padding-block: var(--p-main-header-padding-block);
-    flex-wrap: wrap;
-    gap: 1rem;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:pxToRem(16); margin-inline:auto;
+    max-inline-size:pxToRem(1728); padding-block:var(--p-main-header-padding-block);
   }
   &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; align-items:center; gap:pxToRem(8) }
