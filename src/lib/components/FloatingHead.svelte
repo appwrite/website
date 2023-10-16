@@ -22,7 +22,7 @@
         );
 
         display: inline-block;
-        position: absolute;
+        position: var(--position, absolute);
         top: var(--top);
         left: var(--left);
         bottom: var(--bottom);
@@ -34,6 +34,10 @@
             rgba(255, 255, 255, 0) 161.63%
         );
         box-shadow: 0px 5.35px 10.7px 0px rgba(0, 0, 0, 0.02);
+
+        &.isRelative {
+            position: relative;
+        }
     }
 
     img {

@@ -1,8 +1,9 @@
 <script lang="ts">
     import { afterNavigate, goto } from '$app/navigation';
     import { layoutState } from '$lib/layouts/Docs.svelte';
+    import { isMac } from '$lib/utils/platform';
     import { createCombobox, melt } from '@melt-ui/svelte';
-    import { isMac } from '@melt-ui/svelte/internal/helpers';
+
     import { MeiliSearch, type Hit, type Hits } from 'meilisearch';
     import { tick } from 'svelte';
 
