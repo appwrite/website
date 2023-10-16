@@ -12,7 +12,7 @@ dependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/repo':
-    specifier: github:appwrite/appwrite
+    specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/fce18647d2352e4cfce7ce75fd103a21bafbf7d0
   '@splinetool/viewer':
     specifier: 0.9.455
