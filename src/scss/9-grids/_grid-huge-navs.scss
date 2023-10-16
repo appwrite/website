@@ -138,7 +138,10 @@
   @media #{$break5open} {
     .#{$p}-references-menu {
       #refOpen, #refClose { display:none; }
-      &-content { position:sticky; inset-block-start:pxToRem(213); }
+      &-content {
+        @include scroll();
+        position:sticky; inset-block-start:pxToRem(213);  max-block-size:calc(100dvh - #{pxToRem(213)});
+      }
     }
   }
   @media #{$break6open} {
