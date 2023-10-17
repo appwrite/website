@@ -60,126 +60,126 @@
 </script>
 
 <div class="u-position-relative">
-    <div
-        class={variantClass}
-        class:is-open={$layoutState.showSidenav}
-        style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
-    >
-        <section class="aw-mobile-header is-transparent">
-            <div class="aw-mobile-header-start">
-                <a href="/" aria-label="homepage">
-                    <img
+    <section class="aw-mobile-header is-transparent">
+        <div class="aw-mobile-header-start">
+            <a href="/" aria-label="homepage">
+                <img
                         class="aw-logo u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
-                    />
-                    <img
+                />
+                <img
                         class="aw-logo u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
-                    />
-                </a>
-            </div>
-            <div class="aw-mobile-header-end">
-                <a href="https://cloud.appwrite.io/console" class="aw-button">
-                    <span class="aw-sub-body-500">Go to console</span>
-                </a>
-                <button
+                />
+            </a>
+        </div>
+        <div class="aw-mobile-header-end">
+            <a href="https://cloud.appwrite.io/console" class="aw-button">
+                <span class="aw-sub-body-500">Go to console</span>
+            </a>
+            <button
                     on:click={toggleSidenav}
                     class="aw-button is-text"
                     aria-label="open navigation"
-                >
-                    <svg
+            >
+                <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
                         fill="none"
-                    >
-                        <path
+                >
+                    <path
                             d="M3 5.5H17"
                             stroke="#E4E4E7"
                             stroke-width="1.2"
                             stroke-linecap="round"
-                        />
-                        <path
+                    />
+                    <path
                             d="M3 14.5H17"
                             stroke="#E4E4E7"
                             stroke-width="1.2"
                             stroke-linecap="round"
-                        />
-                    </svg>
-                </button>
-            </div>
-        </section>
-        <header class="aw-main-header is-docs" class:is-transparent={variant !== 'expanded'}>
-            <div class="aw-main-header-wrapper">
-                <div class="aw-main-header-start u-stretch">
-                    <a href="/" aria-label="homepage">
-                        <img
+                    />
+                </svg>
+            </button>
+        </div>
+    </section>
+    <header class="aw-main-header is-docs" class:is-transparent={variant !== 'expanded'}>
+        <div class="aw-main-header-wrapper">
+            <div class="aw-main-header-start u-stretch">
+                <a href="/" aria-label="homepage">
+                    <img
                             class="aw-logo u-only-dark"
                             src="/images/logos/appwrite.svg"
                             alt="appwrite"
                             height="24"
                             width="130"
-                        />
-                        <img
+                    />
+                    <img
                             class="aw-logo u-only-light"
                             src="/images/logos/appwrite-light.svg"
                             alt="appwrite"
                             height="24"
                             width="130"
-                        />
-                    </a>
-                    <nav class="aw-main-header-nav">
-                        <ul class="aw-main-header-nav-list">
-                            <li class="aw-main-header-nav-item">
-                                <a class="aw-link" href="/docs">Docs</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="u-flex u-stretch aw-u-margin-inline-start-48">
-                        <button
+                    />
+                </a>
+                <nav class="aw-main-header-nav">
+                    <ul class="aw-main-header-nav-list">
+                        <li class="aw-main-header-nav-item">
+                            <a class="aw-link" href="/docs">Docs</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="u-flex u-stretch aw-u-margin-inline-start-48">
+                    <button
                             class="aw-input-button aw-u-flex-basis-400"
                             on:click={() => ($layoutState.showSearch = true)}
-                        >
-                            <span class="aw-icon-search" aria-hidden="true" />
-                            <span class="text">Search in docs</span>
+                    >
+                        <span class="aw-icon-search" aria-hidden="true" />
+                        <span class="text">Search in docs</span>
 
-                            <div class="u-flex u-gap-4 u-margin-inline-start-auto">
-                                {#if isMac()}
-                                    <span class="aw-kbd" aria-label="command">⌘</span>
-                                {:else}
-                                    <span class="aw-kbd" aria-label="control">Ctrl</span>
-                                {/if}
-                                <span class="aw-kbd">K</span>
-                            </div>
-                        </button>
-                    </div>
+                        <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                            {#if isMac()}
+                                <span class="aw-kbd" aria-label="command">⌘</span>
+                            {:else}
+                                <span class="aw-kbd" aria-label="control">Ctrl</span>
+                            {/if}
+                            <span class="aw-kbd">K</span>
+                        </div>
+                    </button>
                 </div>
-                <div class="aw-main-header-end">
-                    <div class="u-flex u-gap-8">
-                        <a
+            </div>
+            <div class="aw-main-header-end">
+                <div class="u-flex u-gap-8">
+                    <a
                             href="https://github.com/appwrite/appwrite/stargazers"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="aw-button is-text"
-                        >
-                            <span class="aw-icon-star" aria-hidden="true" />
-                            <span class="text">Star on GitHub</span>
-                            <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
-                        </a>
-                        <a href="https://cloud.appwrite.io/console" class="aw-button">
-                            <span class="aw-sub-body-500">Go to console</span>
-                        </a>
-                    </div>
+                    >
+                        <span class="aw-icon-star" aria-hidden="true" />
+                        <span class="text">Star on GitHub</span>
+                        <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                    </a>
+                    <a href="https://cloud.appwrite.io/console" class="aw-button">
+                        <span class="aw-sub-body-500">Go to console</span>
+                    </a>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+    <div
+        class={variantClass}
+        class:is-open={$layoutState.showSidenav}
+        style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
+    >
         <slot />
     </div>
 </div>
