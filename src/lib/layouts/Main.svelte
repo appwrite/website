@@ -170,10 +170,10 @@
         {#if $showTopBanner}
             <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
                 <div class="aw-top-banner-content aw-u-color-text-primary">
-                    <a href="https://appwrite.io/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="aw-caption-500">We are having lots of fun on</span>
-                        <span class="aw-icon-discord" aria-hidden="true" />
-                        <span class="aw-caption-500">Discord. Come and join us!</span>
+                    <a href="https://www.producthunt.com/posts/appwrite-cloud-beta" target="_blank" rel="noopener noreferrer">
+                        <span class="aw-caption-500">We are LIVE on ProductHunt. </span>
+                        <span class="aw-icon-product-hunt" aria-hidden="true" />
+                        <span class="aw-caption-500">Come show us some support!</span>
                     </a>
                     {#if browser}
                         <button
