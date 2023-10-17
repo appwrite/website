@@ -173,7 +173,7 @@
                     <a href="https://www.producthunt.com/posts/appwrite-cloud-beta" target="_blank" rel="noopener noreferrer">
                         <span class="aw-caption-500">We are LIVE on ProductHunt </span>
                         <span class="aw-icon-product-hunt" aria-hidden="true" />
-                        <span class="aw-caption-500">Come show us some support!</span>
+                        <span class="aw-caption-500">Check out our latest launch!</span>
                     </a>
                     {#if browser}
                         <button
