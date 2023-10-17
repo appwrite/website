@@ -41,7 +41,7 @@ export enum Platform {
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
     ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest',
+    ServerRest = 'server-rest'
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -69,6 +69,7 @@ export const platformMap: Record<Language | string, string> = {
     jsx: 'React',
     tsx: 'React',
     ts: 'TypeScript',
+    typescript: 'TypeScript',
     dart: 'Dart',
     java: 'Java',
     kotlin: 'Kotlin',
