@@ -54,6 +54,9 @@
 <style lang="scss">
     .aw-button {
         padding: 0.6rem !important;
+        [class*='icon'] {
+            color: hsl(var(--aw-color-primary)) !important;
+        }
     }
 
     .aw-media {
