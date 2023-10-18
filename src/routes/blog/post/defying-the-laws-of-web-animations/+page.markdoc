@@ -275,7 +275,7 @@ Combining `resettable` with `getElSelector`and Motion, ensures smooth transition
 
 ## Wrapping it up
 
-We've gone over the building blocks of our main animations: Triggering an animation on scroll, coding said animation, and enabling the transition between multiple animations. Join them all up, and we've just transformed a designer's dream into reality 💭
+We've gone over the building blocks of our main animations: Triggering an animation on scroll, coding said animation, and enabling the transition between multiple animations. Join them all up, and we've just transformed a designer's dream into reality!
 
 I hope this article helped outline the thought process behind this challenge, and also motivates you to delve into our [source code](https://github.com/appwrite/website/) to discover other nifty tricks we did to make our website possible!
 
