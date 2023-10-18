@@ -3,6 +3,7 @@
 .#{$p}-strip-plans {
   &-header {
     container-name:strip-plans; container-type:inline-size;
+    margin-block-end:pxToRem(32);
     &-wrapper {
       display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
     }
