@@ -16,6 +16,8 @@
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { slide } from 'svelte/transition';
+    import { persisted } from '$lib/utils/persisted';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -109,6 +111,12 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    const BANNER_KEY = 'discord-banner-00'; // Change this key whenever you want to show the banner again for all users
+    let showTopBanner = persisted(BANNER_KEY, {
+        defaultValue: true,
+        validate: (value): value is boolean => typeof value === 'boolean'
+    });
 </script>
 
 <div class="u-position-relative">
@@ -159,6 +167,26 @@
         class:is-transparent={browser}
         class:is-hidden={$isHeaderHidden}
     >
+        {#if $showTopBanner}
+            <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
+                <div class="aw-top-banner-content aw-u-color-text-primary">
+                    <a href="https://www.producthunt.com/posts/appwrite-cloud-beta" target="_blank" rel="noopener noreferrer">
+                        <span class="aw-caption-500">We are LIVE on Product Hunt </span>
+                        <span class="aw-icon-product-hunt" aria-hidden="true" />
+                        <span class="aw-caption-500">Check out our latest launch!</span>
+                    </a>
+                    {#if browser}
+                        <button
+                            class="aw-top-banner-button"
+                            aria-label="close discord message"
+                            on:click={() => ($showTopBanner = false)}
+                        >
+                            <span class="aw-icon-close" aria-hidden="true" />
+                        </button>
+                    {/if}
+                </div>
+            </div>
+        {/if}
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start">
                 <a href="/">
@@ -181,7 +209,7 @@
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as { label, href }}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-main-header-nav-link" {href}>{label}</a>
+                                <a class="aw-link" {href}>{label}</a>
                             </li>
                         {/each}
                     </ul>
