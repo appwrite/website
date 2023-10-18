@@ -22,7 +22,7 @@ class AppwriteService {
     public init() {
         self.client = Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("65184ffdc128a26592ed")
+            .setProject("[YOUR_PROJECT_ID]")
         self.account = Account(client)
         self.database = Databases(client)
     }
