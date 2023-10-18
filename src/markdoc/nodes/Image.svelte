@@ -82,6 +82,7 @@
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.25);
+        z-index: 1000;
     }
 
     .content {
@@ -95,5 +96,7 @@
 
         max-height: 75vh;
         max-width: calc(100% - 2.5rem);
+
+        z-index: 1000;
     }
 </style>
