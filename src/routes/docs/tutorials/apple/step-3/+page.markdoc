@@ -51,7 +51,16 @@ In order to allow creating OAuth sessions, the following URL scheme must be adde
 
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our habits.
 
-In the collection go to attributes and add the following attributes:
+# Create database {% #create-database %}
+
+Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a database and name it `Habit-SwiftUI`.
+Optionally, add a custom database ID.
+
+# Create collection {% #create-collection %}
+Create a collection and name it `habits`. Optionally, add a custom collection ID.
+
+Navigate to **Attributes** and create attributes by clicking **Create attribute** and add the following attributes. 
+
 | Field          | Type     | Required |
 |----------------|----------|----------|
 | userId         | String   | Yes      |
@@ -63,4 +72,7 @@ In the collection go to attributes and add the following attributes:
 | startDate      | DateTime | Yes      |
 | endDate        | DateTime | Yes      |
 
-Make sure to enable CRUD permissions in order for user to be able to read, write, update and delete habit.
+Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
+
+Navigate to **Settings** > **Permissions** and add a new role **All Users**.
+Check the **CREATE**, **UPDATE**, **DELETE** and **READ** permissions, so anyone can create and read documents.
