@@ -155,7 +155,9 @@ export default Home;
 
 We are using the `start` and `limit` to get the expenses. We are also calculating the number of pages using the `total` and `limit`.
 
-Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code:
+We are also calculating `pages` using the `total` and `limit` with the [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil) function.
+
+Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code: 
 
 ```js
 <div className="container u-flex-vertical u-gap-12 u-cross-center">
@@ -176,4 +178,4 @@ Now, after the rendering the list, we will add the pagination buttons. Edit `/pa
 </div>
 ```
 
-We are using the `pages` to render the buttons. We are also using the `start` to highlight the current page.
+We are making an array of `pages` and then rendering the buttons. We are also using the `start` to highlight the current page.
