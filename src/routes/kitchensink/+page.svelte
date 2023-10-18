@@ -228,8 +228,8 @@
         </div>
 
         <div>
-            <a href="#top" use:scrollToTop class="aw-link">link</a><br />
-            <a href="#top" use:scrollToTop class="aw-link is-disabled">disabled link</a>
+            <button use:scrollToTop class="aw-link">link</button><br />
+            <button use:scrollToTop class="aw-link is-disabled">disabled link</button>
         </div>
 
         <div>
