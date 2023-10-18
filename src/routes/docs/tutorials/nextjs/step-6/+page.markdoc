@@ -57,6 +57,8 @@ We are also using Appwrite's `Query` class to filter the documents. We have used
 Let's fetch the user expenses from the database and display them in a list. Open the `app/page.js` file and add the following code.
 
 ```js
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useCookie } from "next-cookie";
 import toast from "react-hot-toast";

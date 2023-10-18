@@ -85,6 +85,8 @@ The `setPopup` function is passed as a prop to the `ExpenseList` component from 
 We will also add the `editExpense` function. This function will make a `PUT` request to the `http://localhost:3000/api/expense` endpoint to update the expense.
 
 ```js
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useCookie } from "next-cookie";
 import { useRouter } from "next/navigation";
@@ -354,6 +356,8 @@ The `setPopup` function is passed as a prop to the `ExpenseList` component from 
 We will also add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
 
 ```js
+"use client";
+
 import React, { useState } from "react";
 import { useCookie } from "next-cookie";
 import { useRouter } from "next/navigation";
