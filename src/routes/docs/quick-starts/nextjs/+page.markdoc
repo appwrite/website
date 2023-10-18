@@ -6,35 +6,31 @@ difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
 ---
-
 Learn how to setup your first Next.js project powered by Appwrite.
-
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 {% only_dark %}
 ![Create project screen](/images/docs/quick-starts/dark/create-project.png)
 {% /only_dark %}
-
 {% only_light %}
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
 {% /only_dark %}
-
 {% only_light %}
 ![Add a platform](/images/docs/quick-starts/add-platform.png)
 {% /only_light %}
 
 You can skip optional steps.
-{% /section %}
 
+{% /section %}
 {% section #step-2 step=2 title="Create Next.js project" %}
 Create a Next.js project and create a **JavaScript** Next.js project.
 
@@ -42,22 +38,20 @@ Create a Next.js project and create a **JavaScript** Next.js project.
 npx create-next-app@latest && cd my-app
 ```
 {% /section %}
-
 {% section #step-3 step=3 title="Install Appwrite SDK" %}
+
 Install the JavaScript Appwrite SDK.
 
 ```sh
 npm install appwrite
 ```
 {% /section %}
-
 {% section #step-4 step=4 title="Define Appwrite service" %}
-Find your project's ID in the **Settings** page.
+Find your project's ID in the **Settings** page. 
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
 {% /only_dark %}
-
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
@@ -77,7 +71,6 @@ export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
 {% /section %}
-
 {% section #step-5 step=5 title="Create a login page" %}
 Create or update `app/page.jsx` file and add the following code to it.
 
