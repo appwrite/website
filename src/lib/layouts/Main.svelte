@@ -172,7 +172,7 @@
         </div>
     </section>
     <header
-        class="aw-main-header theme-{resolvedTheme}"
+        class="aw-main-header is-special-padding theme-{resolvedTheme}"
         class:is-transparent={browser}
         class:is-hidden={$isHeaderHidden}
     >
