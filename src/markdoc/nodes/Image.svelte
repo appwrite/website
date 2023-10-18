@@ -1,6 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
-    import { createDialog, createTooltip, melt } from '@melt-ui/svelte';
+    import { createDialog, melt } from '@melt-ui/svelte';
     import { getContext, hasContext } from 'svelte';
     import { fade, scale } from 'svelte/transition';
 
@@ -22,7 +22,7 @@
 {#if inTable}
     <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
 {:else}
-    <div class="aw-media">
+    <div class="aw-media main">
         <img {src} {alt} {title} loading="lazy" class="aw-u-media-ratio-16-9 u-width-full-line" />
 
         <div class="abs">
@@ -38,15 +38,16 @@
     {#if $open}
         <div use:melt={$portalled}>
             <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
-            <div
+
+            <img
+                class="aw-media content"
                 use:melt={$content}
-                class="content"
+                {src}
+                {alt}
+                {title}
+                loading="lazy"
                 transition:scale={{ duration: 250, start: 0.95 }}
-            >
-                <div class="aw-media">
-                    <img {src} {alt} {title} loading="lazy" />
-                </div>
-            </div>
+            />
         </div>
     {/if}
 {/if}
@@ -59,7 +60,7 @@
         }
     }
 
-    .aw-media {
+    .main {
         position: relative;
 
         .abs {
@@ -85,12 +86,14 @@
 
     .content {
         position: fixed;
-        top: 50%;
         left: 50%;
+        top: 50%;
         transform: translate(-50%, -50%);
 
-        width: 90vw;
-        max-width: 800px;
-        max-height: 90vh;
+        display: block;
+        object-fit: contain;
+
+        max-height: 75vh;
+        max-width: calc(100% - 2.5rem);
     }
 </style>
