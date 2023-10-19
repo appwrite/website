@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Installation
-description: Explore advanced self-hosting options with Appwrite. Learn how to gain full control of your Appwrite deployment, customize settings, and enhance your infrastructure.
+title: Self-hosting
+description: Set up your self-hosted Appwrite instance with ease. Follow the installation guide to configure and deploy Appwrite on your infrastructure for complete control.
 ---
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
@@ -35,7 +35,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.5
 ```
 {% /tabsitem %}
 
@@ -46,7 +46,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.5
 ```
 ## Powershell
 ```powershell
@@ -54,7 +54,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.5
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -65,11 +65,27 @@ In addition to running Appwrite locally, you can also launch Appwrite using a pr
 
 Choose from one of the providers below:
  
-&nbsp; |Provider | Installation Link
---- | --- | ---
- {% icon icon="do" /%}| DigitalOcean | [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
- {% icon icon="gitpod" /%}| Gitpod | [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
- {% icon icon="akamai" /%}| Akamai Compute | [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+{% table %}
+* &nbsp; {% width=48 %}
+* Provider
+* Installation Link
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_light %}
+* DigitalOcean
+* [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_light %}
+* Gitpod
+* [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
+* Akamai Compute
+* [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+{% /table %}
+
 
 # Next steps {% #next-steps %}
 

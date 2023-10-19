@@ -1,8 +1,12 @@
 @use '../abstract' as *;
 
 .#{$p}-media-container {
-  --p-media-container-border-padding:#{pxToRem(7)};
+  @include border-gradient;
+  --m-border-gradient-before: linear-gradient(186deg, rgba(255, 255, 255, 0.16) -1.41%, rgba(255, 255, 255, 0.00) 104.86%);
   --p-media-container-border-radius:#{pxToRem(20)};
+  --m-border-radius: var(--p-media-container-border-radius);
+
+  --p-media-container-border-padding:#{pxToRem(7)};
 
   --p-media-border-radius: #{pxToRem(16)};
 
@@ -14,5 +18,5 @@
   -webkit-backdrop-filter: blur(pxToRem(25));
   backdrop-filter: blur(pxToRem(25));
 
-  > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; }
+  > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; width: 100%; object-fit: cover; }
 }

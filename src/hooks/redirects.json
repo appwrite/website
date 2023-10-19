@@ -4,6 +4,14 @@
         "redirect": "/docs/quick-starts"
     },
     {
+        "link": "/contact",
+        "redirect": "/contact-us"
+    },
+    {
+        "link": "/docs/server/database",
+        "redirect": "/docs/references/cloud/server-nodejs/databases"
+    },
+    {
         "link": "/docs/getting-started-for-flutter",
         "redirect": "/docs/quick-starts/flutter"
     },
@@ -634,5 +642,22 @@
     {
         "link": "/docs/models/runtime",
         "redirect": "/docs/references/cloud/models/runtime"
+    },    
+    {
+        "link": "/docs/installation",
+        "redirect": "/docs/advanced/self-hosting"
+    },
+    {
+        "link": "/careers",
+        "redirect": "https://careers.appwrite.io/"
+    },
+    {
+        "link": "/policy/terms",
+        "redirect": "/terms"
+    },
+    {
+        "link": "/policy/privacy",
+        "redirect": "/privacy"
     }
+    
 ]
