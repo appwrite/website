@@ -20,6 +20,7 @@
     import { getContext, onMount, setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import { anyify } from '$lib/utils/anyify.js';
+    import { scrollToTop } from '$lib/actions/scrollToTop.js';
 
     export let data;
 
@@ -334,10 +335,13 @@
                         {/each}
                     </ul>
                     <div class="u-sep-block-start aw-u-padding-block-20">
-                        <a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
+                        <button
+                            class="aw-link u-inline-flex u-cross-center u-gap-8"
+                            use:scrollToTop
+                        >
                             <span class="aw-icon-arrow-up" aria-hidden="true" />
                             <span class="aw-sub-body-500">Back to top</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             {/if}
