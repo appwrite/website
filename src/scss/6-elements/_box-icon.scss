@@ -17,4 +17,17 @@
     --p-box-icon-bg-color: var(--aw-color-greyscale-850);
   }
 
+  &.has-border-gradient {
+    @include border-gradient;
+    --m-border-radius: #{pxToRem(8)};
+    --m-border-size: #{pxToRem(1)};
+    border: none;
+    --m-border-gradient-before: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.00) 100%);
+
+    &.is-transparent-pink {
+      --m-border-gradient-before: linear-gradient(180deg, rgba(253, 54, 110, 0.48) 0%, rgba(253, 54, 110, 0.00) 100%);
+      --m-border-gradient-after: radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
+    }
+  }
+
 }

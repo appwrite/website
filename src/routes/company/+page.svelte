@@ -255,7 +255,7 @@
 						<h1 class="aw-headline aw-u-color-text-primary">
 							Unleashing creativity and innovation in every creator
 						</h1>
-						<div class="">
+						<div>
 							<p class="aw-description">
 								Software development transforms our everyday lives, relying heavily on the
 								creativity and innovation of developers. At Appwrite, we enable them to develop
@@ -272,11 +272,14 @@
 					<section class="aw-grid-1-1" style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;">
 						<div class="u-flex-vertical u-gap-32">
 							<h2 class="aw-display aw-u-color-text-primary">Designed for and by developers</h2>
-							<button
+							<a
+								href="https://careers.appwrite.io/"
 								class="aw-button u-cross-child-start aw-u-inline-width-100-percent-mobile-break1"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
 								<span>Join the team</span>
-							</button>
+						</a>
 						</div>
 
 						<div class="aw-description u-flex-vertical u-gap-16">
@@ -326,9 +329,9 @@
 												Appwrite's first ever pull request was submitted in August 2019 by CEO and Founder Eldad A. Fux. Just one month later, September 2019, Appwrite officially launched. Soon the community started contributing by the hundreds pushing the product to new heights.
 											</p>
 										</div>
-										<div class="">
+										<div >
 											<div class="aw-media">
-												<img class="" src="https://pink.appwrite.io/articles/announcement.png" alt="" loading="lazy">
+												<img  src="https://pink.appwrite.io/articles/announcement.png" alt="" loading="lazy">
 											</div>
 										</div>
 
@@ -489,35 +492,60 @@
 					</div>
 					<ul class="aw-investor-cards aw-u-margin-block-start-64">
 						<li>
-							<a href="https://www.bvp.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.bvp.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/bessemer.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.tigerglobal.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.tigerglobal.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/tiger-global.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.ibexinvestors.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.ibexinvestors.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/ibex.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.flybridge.com/" class="aw-card" target="_blank">
+							<a
+								href="https://www.flybridge.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/flybridge.svg" alt="" height="63" />
 								</div>
 							</a>
 						</li>
 						<li>
-							<a href="https://seedcamp.com/" class="aw-card" target="_blank">
+							<a
+								href="https://seedcamp.com/"
+								class="aw-card"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<div class="aw-card is-full-color" style="--card-padding:1rem;">
 									<img src="/images/investors/light/seedcamp.svg" alt="" height="63" />
 								</div>
@@ -541,6 +569,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -551,6 +580,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -568,6 +598,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -578,6 +609,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -600,6 +632,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -616,6 +649,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -633,6 +667,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -650,6 +685,7 @@
 										class="aw-icon-button"
 										aria-label=" on aGithub"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-github" aria-hidden="true" />
 									</a>
@@ -667,6 +703,7 @@
 										class="aw-icon-button"
 										aria-label=" on aTwitter"
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										<span class="aw-icon-twitter" aria-hidden="true" />
 									</a>
@@ -690,6 +727,7 @@
 						<a
 							href="https://careers.appwrite.io/"
 							target="_blank"
+							rel="noopener noreferrer"
 							class="aw-button is-transparent u-cross-child-center u-margin-block-start-16"
 						>
 							<span>Careers</span>

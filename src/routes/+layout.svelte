@@ -1,94 +1,90 @@
 <script lang="ts" context="module">
-	export type Theme = 'dark' | 'light' | 'system';
-	export const currentTheme = writable<Theme>(getPreferredTheme());
+    export type Theme = 'dark' | 'light' | 'system';
+    export const currentTheme = (function () {
+        const store = writable<Theme>(getPreferredTheme());
 
-	function isTheme(theme: unknown): theme is Theme {
-		return ['dark', 'light', 'system'].includes(theme as Theme);
-	}
+        const set: typeof store.set = (value) => {
+            store.set(value);
+            if (browser) {
+                localStorage.setItem('theme', value);
+            }
+        };
 
-	function getSystemTheme(): Theme {
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	}
+        return { ...store, set };
+    })();
 
-	function getPreferredTheme() {
-		if (!browser) {
-			return 'dark';
-		}
+    export const themeInUse = derived(currentTheme, (theme) => {
+        return theme === 'system' ? getSystemTheme() : theme;
+    });
 
-		const theme = globalThis?.localStorage.getItem('theme');
+    function isTheme(theme: unknown): theme is Theme {
+        return ['dark', 'light', 'system'].includes(theme as Theme);
+    }
 
-		if (!isTheme(theme)) {
-			return 'dark';
-		}
+    function getSystemTheme(): Theme {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
-		if (theme === 'system') {
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-		}
+    function getPreferredTheme() {
+        if (!browser) {
+            return 'dark';
+        }
 
-		return theme;
-	}
+        const theme = localStorage.getItem('theme');
 
-	export function setTheme(theme: string) {
-		if (!isTheme(theme)) {
-			return;
-		}
-		currentTheme.set(theme === 'system' ? getSystemTheme() : theme);
-		globalThis?.localStorage.setItem('theme', theme);
-	}
+        if (!isTheme(theme)) {
+            return 'dark';
+        }
+
+        return theme;
+    }
 </script>
 
 <script lang="ts">
-	import '$icons/output/aw-icon.css';
-	import '@fontsource/inter/100.css';
-	import '@fontsource/inter/200.css';
-	import '@fontsource/inter/300.css';
-	import '@fontsource/inter/400.css';
-	import '@fontsource/inter/500.css';
-	import '@fontsource/inter/600.css';
-	import '@fontsource/inter/700.css';
-	import '@fontsource/inter/800.css';
-	import '@fontsource/inter/900.css';
-	import '$scss/index.scss';
-	import { browser, dev } from '$app/environment';
-	import { writable } from 'svelte/store';
-	import { navigating, page } from '$app/stores';
-	import { onMount } from 'svelte';
+    import '$icons/output/aw-icon.css';
+    import '$scss/index.scss';
 
-	function applyTheme(theme: Omit<Theme, 'system'>) {
-		const className = `theme-${theme}`;
-		document.body.classList.add(className);
-		document.body.classList.remove(`theme-${theme === 'dark' ? 'light' : 'dark'}`);
-	}
+    import { browser, dev } from '$app/environment';
+    import { derived, writable } from 'svelte/store';
+    import { navigating, page } from '$app/stores';
+    import { onMount } from 'svelte';
 
-	onMount(() => {
-		const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+    function applyTheme(theme: Theme) {
+        const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
+        const className = `theme-${resolvedTheme}`;
+        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.add(className);
+    }
 
-		applyTheme(initialTheme);
+    onMount(() => {
+        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
-		navigating.subscribe((n) => {
-			if (!n?.to) {
-				return;
-			}
+        applyTheme(initialTheme);
 
-			const isDocs = n.to.route.id?.startsWith('/docs');
+        navigating.subscribe((n) => {
+            if (!n?.to) {
+                return;
+            }
 
-			if (isDocs) {
-				if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
-					applyTheme($currentTheme);
-				}
-			} else {
-				applyTheme('dark');
-			}
-		});
-	});
+            const isDocs = n.to.route.id?.startsWith('/docs');
 
-	$: browser && currentTheme.subscribe((theme) => applyTheme(theme));
+            if (isDocs) {
+                if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
+                    applyTheme($currentTheme);
+                }
+            } else {
+                applyTheme('dark');
+            }
+        });
+    });
+
+    $: browser && currentTheme.subscribe((theme) => applyTheme(theme));
 </script>
 
 <svelte:head>
-	{#if !dev}
-		<script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
-	{/if}
+    {#if !dev}
+        <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+    {/if}
 </svelte:head>
 
 <slot />

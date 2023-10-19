@@ -21,7 +21,7 @@ If this is your first time using Appwrite, create an account and create your fir
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
 
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/add-platform.png)
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
 {% /only_dark %}
 {% only_light %}
 ![Add a platform](/images/docs/quick-starts/add-platform.png)
@@ -45,13 +45,13 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
-import { Client } from "appwrite";
+import { Client, Databases, Account } from "appwrite";
 
 const client = new Client();
 client
   .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project IDxw
+  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
 
 export const account = new Account(client);
-export const database = new Database(client);
+export const databases = new Databases(client);
 ```

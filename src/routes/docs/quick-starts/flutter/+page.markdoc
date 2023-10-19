@@ -27,7 +27,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Flutter app**. You can choose between many different platfroms.
 
@@ -143,7 +143,12 @@ If you cannot find the correct package name, run the application in Windows, and
 
 {% /tabs %}
 
-![Add a platform]()
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 

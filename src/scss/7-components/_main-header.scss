@@ -2,27 +2,40 @@
 
 .#{$p}-main-header {
   --p-main-header-padding-block: #{pxToRem(15)};
-  --p-main-header-padding-inline: #{pxToRem(32)};
+  
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
-  position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
-  padding-block: var(--p-main-header-padding-block);
-  padding-inline: var(--p-main-header-padding-inline);
+  position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   border-block-end: solid 1px var(--p-main-header-border-color);
-  &-wrapper { display:flex; flex-direction:column; gap:pxToRem(14); }
-  &-row { display:flex; }
+  padding-inline: clamp(1.25rem, 4vw, 120rem); 
+  
+  &.is-docs {
+    padding-inline: pxToRem(32);
+
+  }
+  
+  &-wrapper { 
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+
+    max-width: pxToRem(1728);
+    padding-block: var(--p-main-header-padding-block);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
   &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; align-items:center; gap:pxToRem(8) }
 
   .#{$p}-input-text { padding-block:pxToRem(7); padding-inline-end:pxToRem(8); }
 
   .aw-logo { margin-inline-end:pxToRem(32); }
-  .#{$p}-top-banner { position:relative; inset-block-start: calc(var(--p-main-header-padding-block) * -1); }
+  
+
   &-nav {
     align-self:center; font-size:pxToRem(16); user-select:none;
     &-list { display:flex; gap:pxToRem(32); }
-    &-item {}
     &-link {
       color:hsl(var(--aw-color-primary)); transition:var(--transition);
       &.is-selected { color:hsl(var(--p-main-header-link-color)); }
@@ -46,7 +59,7 @@
     --p-main-header-border-color: rgb(0,0,0, 0.1);
   }
 
-  @media #{$break1}, #{$break2}{
+  @media #{$break1}{
     display:none;
   }
   

@@ -502,7 +502,7 @@ return function ($context) {
 import json
 
 def main(context):
-    context.log(context.req.bodyRaw)             # Raw request body, contains request data
+    context.log(context.req.body_raw)            # Raw request body, contains request data
     context.log(json.dumps(context.req.body))    # Object from parsed JSON request body, otherwise string
     context.log(json.dumps(context.req.headers)) # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)              # Value of the x-forwarded-proto header, usually http or https
@@ -511,7 +511,7 @@ def main(context):
     context.log(context.req.host)                # Hostname from the host header, such as awesome.appwrite.io
     context.log(context.req.port)                # Port from the host header, for example 8000
     context.log(context.req.path)                # Path part of URL, for example /v1/hooks
-    context.log(context.req.queryString)         # Raw query params string. For example "limit=12&offset=50"
+    context.log(context.req.query_string)        # Raw query params string. For example "limit=12&offset=50"
     context.log(json.dumps(context.req.query))   # Parsed query params. For example, req.query.limit
 
     return context.res.send("All the request parameters are logged to the Appwrite Console.")
@@ -1150,6 +1150,7 @@ export default async ({ req, res, log }) => {
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 
 Future<dynamic> main(final context) async {
@@ -1246,7 +1247,7 @@ By default, we include the following package managers in each runtime.
 {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
 * Ruby
 * Bundler
-* bundle install
+* `bundle install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
@@ -1271,6 +1272,12 @@ By default, we include the following package managers in each runtime.
 * .NET
 * NuGet
 * `dotnet restore`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+* Bun
+* bun
+* `bun install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
@@ -1454,14 +1461,15 @@ export default function ({req, res, error}: any){
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY);
+        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+        .setKey(Platform.environment['APPWRITE_API_KEY']);
     
     final databases = Databases(client);
     
@@ -1784,13 +1792,14 @@ export default function ({req, res, error}: any){
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
     
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);

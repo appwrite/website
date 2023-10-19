@@ -70,7 +70,7 @@ onMounted(() => {
 You can use the [Vue Router](https://router.vuejs.org/) to handle routing in your app. However, we'll keep it simple for now.
 Optionally render a `Login` component if the path is `/login`, otherwise render the `Home` component.
 
-Update `src/App.jsx` to the following code.
+Update `src/App.vue` to the following code.
 
 ```vue
 <script setup>

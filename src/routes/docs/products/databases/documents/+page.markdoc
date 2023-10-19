@@ -12,7 +12,7 @@ You must grant **create** permissions to users at the **collection level** befor
 [Learn more about permissions](#permissions)
 {% /info %}
 
-In most use cases, you will documents programmatically.
+In most use cases, you will create documents programmatically.
 
 {% multicode %}
 ```js
