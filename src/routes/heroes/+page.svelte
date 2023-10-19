@@ -493,5 +493,17 @@
                 left: -400px;
             }
         }
+
+        .aw-hero {
+            gap: 0;
+
+            .aw-description {
+                margin-block-start: 1.25rem;
+            }
+
+            .aw-button {
+                margin-block-start: 1.5rem;
+            }
+        }
     }
 </style>
