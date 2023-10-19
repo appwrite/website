@@ -46,7 +46,7 @@
                 },
                 {
                     label: 'Status',
-                    href: 'https://www.appwrite.online',
+                    href: 'https://appwrite.online',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 }
@@ -56,7 +56,7 @@
                 { label: 'Company', href: '/company' },
                 {
                     label: 'Careers',
-                    href: 'https://www.appwrite.careers',
+                    href: 'https://appwrite.careers',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
