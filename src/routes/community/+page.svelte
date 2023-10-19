@@ -137,7 +137,7 @@
                             Built by a community of 700+ contributors
                         </h1>
                         <div>
-                            <p class="aw-description" style:margin-block-start="0">
+                            <p class="aw-description">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
@@ -560,7 +560,7 @@
                 <div class="aw-container">
                     <div class="aw-hero is-center">
                         <h2 class="aw-display aw-u-color-text-primary">Inspire and get inspired</h2>
-                        <p class="aw-description">
+                        <p class="aw-description" style:margin-block-start="0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
