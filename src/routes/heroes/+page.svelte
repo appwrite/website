@@ -5,6 +5,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import type { HeroCardProps } from './HeroCard.svelte';
     import HeroCard from './HeroCard.svelte';
+    import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     const title = 'Heroes' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -124,22 +125,19 @@
                 <section class="aw-container hero aw-u-padding-block-end-0">
                     <div>
                         <h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-                        <div>
-                            <p class="aw-main-body-500">
-                                If you love building, writing, speaking, and helping other
-                                developers build with Appwrite, help us support you by joining the
-                                Appwrite Heroes program and becoming a leader in our developer
-                                community.
-                            </p>
-                            <a
-                                href="https://7nxwryuitoy.typeform.com/heroes-apply"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="aw-button is-secondary u-margin-block-start-32"
-                            >
-                                <span class="text">Become a Hero</span>
-                            </a>
-                        </div>
+                        <p class="aw-main-body-500 u-margin-block-start-20">
+                            If you love building, writing, speaking, and helping other developers
+                            build with Appwrite, help us support you by joining the Appwrite Heroes
+                            program and becoming a leader in our developer community.
+                        </p>
+                        <a
+                            href="https://7nxwryuitoy.typeform.com/heroes-apply"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="aw-button is-secondary u-margin-block-start-32"
+                        >
+                            <span class="text">Become a Hero</span>
+                        </a>
                     </div>
                     <div>
                         <img src="/images/heroes/bg.png" width="" alt="" />
@@ -161,9 +159,15 @@
                                 providing support in our fast-growing Discord community.
                             </p>
                         </div>
-                        <img class="avatar-1" src="/images/heroes/avatar-1.png" alt="" />
-                        <img class="avatar-2" src="/images/heroes/avatar-2.png" alt="" />
-                        <img class="avatar-3" src="/images/heroes/avatar-3.png" alt="" />
+                        <div class="avatar-1">
+                            <FloatingHead src="/images/heroes/avatars/bishwajeet.png" size={64} />
+                        </div>
+                        <div class="avatar-2">
+                            <FloatingHead src="/images/heroes/avatars/tanmoy.png" size={80} />
+                        </div>
+                        <div class="avatar-3">
+                            <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
+                        </div>
                         <img class="teal-blur" src="/images/heroes/teal-blur.svg" alt="" />
                     </div>
                 </section>
@@ -176,7 +180,7 @@
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
                     <div class="aw-hero">
-                        <div class="aw-display aw-u-color-text-primary">Meet our Heroes</div>
+                        <div class="aw-display aw-u-clr-primary">Meet our Heroes</div>
                     </div>
                     <ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
                         {#each heroCards as heroCardProps}
@@ -300,13 +304,8 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative">
-            <img
-                src="/images/bgs/heroes-pre.svg"
-                alt=""
-                class="u-position-absolute"
-                style="inset:0; inline-size:100%; max-block-size:100%;"
-            />
+        <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
+            <img src="/images/bgs/heroes-pre.svg" alt="" class="u-position-absolute" />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">
@@ -327,7 +326,7 @@
                 </div>
                 <div class="aw-big-padding-section-level-2 u-position-relative">
                     <div class="aw-container u-position-relative">
-                        <FooterNav />
+                        <FooterNav noBorder />
                         <MainFooter />
                     </div>
                 </div>
@@ -399,7 +398,7 @@
         }
         .avatar-3 {
             position: absolute;
-            bottom: -13rem;
+            bottom: -7rem;
             left: -15rem;
         }
         .teal-blur {
@@ -471,6 +470,28 @@
         .inner {
             padding-inline: 0;
             animation: scroll 40s linear infinite;
+        }
+    }
+
+    .footer-wrapper {
+        overflow: hidden;
+
+        > img {
+            top: -100px;
+            inline-size: 1700px;
+            max-inline-size: none;
+            max-block-size: none;
+        }
+
+        @media (max-width: 1024px) {
+            .aw-hero {
+                padding-block-start: 5rem;
+            }
+
+            > img {
+                top: -300px;
+                left: -400px;
+            }
         }
     }
 </style>

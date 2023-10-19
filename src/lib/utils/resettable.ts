@@ -4,25 +4,16 @@ const braindeadUUID = () => {
     );
 };
 
-const deepClone = (v: any) => {
-    return JSON.parse(JSON.stringify(v));
-};
-
 export const createResettable = <Value>(defaultValue: Value) => {
-    type GlobalState = Record<string, Value>;
     type SubscribeCallback = (v: Value) => void;
     let subscribeCallbacks: SubscribeCallback[] = [];
 
-    const d = deepClone(defaultValue);
-
     let currUuid = braindeadUUID();
-    const state: GlobalState = {
-        [currUuid]: deepClone(d)
-    };
+    let state = structuredClone(defaultValue);
 
     const subscribe = (cb: SubscribeCallback) => {
         subscribeCallbacks.push(cb);
-        cb(state[currUuid]);
+        cb(state);
 
         return () => {
             subscribeCallbacks = subscribeCallbacks.filter((c) => c !== cb);
@@ -33,15 +24,16 @@ export const createResettable = <Value>(defaultValue: Value) => {
         currUuid = braindeadUUID();
         const fixedId = currUuid;
         const set = (v: Value) => {
-            state[fixedId] = v;
-            subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
+            if (fixedId !== currUuid) return;
+            state = v;
+            subscribeCallbacks.forEach((cb) => cb(state));
         };
 
         const update = (fn: (v: Value) => Value) => {
-            set(fn(state[fixedId]));
+            set(fn(state));
         };
 
-        set(deepClone(d));
+        set(structuredClone(defaultValue));
         return { set, update };
     };
 
@@ -49,12 +41,12 @@ export const createResettable = <Value>(defaultValue: Value) => {
         subscribe,
         reset,
         set: (v: Value) => {
-            state[currUuid] = v;
-            subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
+            state = v;
+            subscribeCallbacks.forEach((cb) => cb(state));
         },
         update: (fn: (v: Value) => Value) => {
-            state[currUuid] = fn(state[currUuid]);
-            subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
+            state = fn(state);
+            subscribeCallbacks.forEach((cb) => cb(state));
         }
     };
 };

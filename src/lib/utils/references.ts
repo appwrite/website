@@ -2,15 +2,13 @@ import { writable } from 'svelte/store';
 import type { Language } from './code';
 import { browser } from '$app/environment';
 
-export type Version = '1.4.x' | '1.3.x' | '1.2.x' | '1.1.x' | '1.0.x' | '0.15.x' | 'cloud';
-export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = [
-    '1.4.x',
-    '1.3.x',
-    '1.2.x',
-    '1.1.x',
-    '1.0.x',
-    '0.15.x'
-] as const;
+const allVersions = ['1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
+
+export type Version = (typeof allVersions)[number];
+
+export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.filter(
+    (v) => v !== 'cloud'
+);
 
 export enum Service {
     Account = 'account',
@@ -43,7 +41,7 @@ export enum Platform {
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
     ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest',
+    ServerRest = 'server-rest'
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -71,6 +69,7 @@ export const platformMap: Record<Language | string, string> = {
     jsx: 'React',
     tsx: 'React',
     ts: 'TypeScript',
+    typescript: 'TypeScript',
     dart: 'Dart',
     java: 'Java',
     kotlin: 'Kotlin',
