@@ -46,7 +46,7 @@
                 },
                 {
                     label: 'Status',
-                    href: 'https://appwrite.online',
+                    href: 'https://is.appwrite.online',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 }
