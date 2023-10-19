@@ -649,7 +649,7 @@
     },
     {
         "link": "/careers",
-        "redirect": "https://www.appwrite.careers"
+        "redirect": "https://appwrite.careers"
     },
     {
         "link": "/policy/terms",
