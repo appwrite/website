@@ -137,7 +137,7 @@
                             Built by a community of 700+ contributors
                         </h1>
                         <div>
-                            <p class="aw-description">
+                            <p class="aw-description" style:margin-block-start="0">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
