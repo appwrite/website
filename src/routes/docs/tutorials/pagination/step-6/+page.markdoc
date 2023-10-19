@@ -1,31 +1,31 @@
 ---
 layout: tutorial
-title: Adding tasks
-description: Add tasks to your react application using appwrite
+title: Adding todos
+description: Add todos to your React application using Appwrite.
 step: 6
 ---
-# Add tasks context {% #add-tasks-context %}
+# Add todos context {% #add-todos-context %}
 
-Now we need to display our Todos to the page. In React, we can use [context](https://reactjs.org/docs/context.html) to share data between components. We'll use context and create a simple custom hook to manage out tasks.
+We'll now display our Todos on the page. In React, [context](https://reactjs.org/docs/context.html) allows us to share data across components. We'll leverage context and create a custom hook to manage our todos.
 
-Create a new file `src/lib/context/tasks.jsx` and add the following code to it.
+Create a new file named `src/lib/context/todos.jsx` and insert the following code:
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../appwrite";
 import { Query } from "appwrite";
 
-export const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
-export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
+const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
+const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
 
-const TasksContext = createContext();
+const TodosContext = createContext();
 
-export function useTasks() {
-  return useContext(TasksContext);
+export function useTodos() {
+  return useContext(TodosContext);
 }
 
-export function TasksProvider(props) {
-  const [tasks, setTasks] = useState([]);
+export function TodosProvider(props) {
+  const [todos, setTodos] = useState([]);
 
   async function init() {
     try {
@@ -34,7 +34,7 @@ export function TasksProvider(props) {
         TODOS_COLLECTION_ID,
         [Query.orderDesc("$createdAt"), Query.limit(4)],
       );
-      setTasks(response.documents);
+      setTodos(response.documents);
     } catch (error) {
       console.log(error);
     }
@@ -45,30 +45,30 @@ export function TasksProvider(props) {
   }, []);
 
   return (
-    <TasksContext.Provider value={{ current: tasks }}>
+    <TodosContext.Provider value={{ current: todos }}>
       {props.children}
-    </TasksContext.Provider>
+    </TodosContext.Provider>
   );
 }
 ```
-we will add more functionality to the context later
+We'll expand on this context's functionality later.
 
 ## Basic Routing {% #basic-routing %}
 
-First, wrap the `main` element with the `TasksProvider` component.
+First, enclose the `main` element with the `TodosProvider` component.
 
-Update `src/App.jsx` to the following code.
+Update `src/App.jsx` with the following code:
 
 ```js
-import { TasksProvider } from "./lib/context/tasks";
-import { Tasks } from "./pages/Tasks";
+import { TodosProvider } from "./lib/context/todos";
+import { Todos } from "./pages/Todos";
 
 function App() {
   return (
     <div>
-      <TasksProvider>
-        <Tasks />
-      </TasksProvider>
+      <TodosProvider>
+        <Todos />
+      </TodosProvider>
     </div>
   );
 }
@@ -76,25 +76,25 @@ function App() {
 export default App;
 ```
 
-### Tasks page {% #tasks-page %}
+### Todos page {% #todos-page %}
 
-We are now able to create the Tasks page that will show users a list of tasks that is a small chuck of the large dataset.
+Now, we can craft the Todos page, which will present users with a list of todos-a small chuck of the large dataset.
 
-Create a new file `src/pages/Tasks.jsx` and add the following stub code to it.
+Create a new file named `src/pages/Todos.jsx` and insert this placeholder code:
 
 ```js
-import { useTasks } from "../lib/context/tasks";
-export function Tasks() {
-  const tasks = useTasks();
+import { useTodos } from "../lib/context/todos";
+export function Todos() {
+  const todos = useTodos();
   return (
     <section>
       <h2>Todos</h2>
       <ul>
-        {tasks.current.map((task) => (
-          <li key={`task-${task.taskId}`}>
-            <span>{`Task-${task.taskId}: `}</span>
-            <input type='checkbox' id={task.taskId} name={task.title} />
-            <label htmlFor={task.title}>{task.title}</label>
+        {todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`}>
+            <span>{`Task-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
           </li>
         ))}
       </ul>
@@ -103,4 +103,4 @@ export function Tasks() {
 }
 ```
 
-In the next two steps, we will explore how to use offset or cursor pagination in our application.
+The next steps will involve integrating offset or cursor pagination in our application.

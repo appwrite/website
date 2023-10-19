@@ -1,16 +1,15 @@
 ---
 layout: tutorial
 title: Implementing the cursor pagination
-description: Discover cursor pagination. The react app will access our appwrite backend using cursor pagination.
+description: Explore cursor pagination and how the React app accesses the appwrite backend using this method.
 step: 8
 ---
-In this step, we will discover how to add the cursor pagination method to our app.
+In this step, we'll delve into adding the cursor pagination method to our app.
 
 # What is cursor pagination? {% #what-is-cursor-pagination %}
+Cursor pagination uses a unique identifier(often a timestamp, ID, or another consistently ordered field) for a specific document. This identifer acts as a pointer to the next document we want to start querying from to get the next page of data. For instance, if you have a dataset of blog posts ordered by their creation date and you want to retrieve post after a specific data, you would use that date as the cursor.
 
-Cursor pagination uses a cursor that is a unique identifier(often a timestamp, ID, or some other field that has a consistent order) for a specific document, which acts as a pointer to the next document we want to start querying from to get the next page of data. For example, if you have a dataset of blog posts ordered by their creation date, and you want to retrieve post after a specific data, you would use that date as the cursor.
-
-In Appwrite, cursor pagination uses either the `Query.cursorAfter(lastId)` query method to retrieve the next page of documents or the `Query.cursorBefore(firstId)` query method to retrieve the previous page of documents. Here is an example using Appwrite's `listDocuments()` command to retrieve the next page of documents.
+With Appwrite, cursor pagination is achieved using the `Query.cursorAfter(lastId)` or the `Query.cursorBefore(firstId)` query methods. Here is an example using Appwrite's `listDocuments()` function to retrieve the next page of documents:
 
 ```js
 const page2 = await databases.listDocuments(
@@ -22,43 +21,110 @@ const page2 = await databases.listDocuments(
     ]
 );
 ```
+Cursor pagination is typically used in scenarios where the dataset is large, and the exact number of total items might not be known upfront. Here are different ways you can utilize cursor pagination:
 
-# Implementation {% #implementation %}
+# Creating the Pagination Component {% #creating-the-pagination-component %}
+{% tabs %}
+{% tabsitem #Basic-cursor-pagination title="Basic Cursor Pagination" %}
 
-## Task context {% #task-context %}
+Create a file and named `src/components/BasicCursorPagination.jsx`, insert the following code:
+```js
 
-By updating the contents of `src/lib/context/tasks.jsx` with the following code, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
+function CursorPagination(props) {
+  const {
+    hasNext,
+    loadMore,
+    loadPrev,
+    currentPage
+  } = props;
+
+  return (
+    <div>
+      <button disabled={currentPage === 1} onClick={loadPrev}>
+        Load Previous
+      </button>
+      <span>Page {currentPage}</span>
+      <button disabled={!hasNext} onClick={loadMore}>
+        Load More
+      </button>
+    </div>
+  );
+}
+
+export default CursorPagination;
+
+```
+This is the most straightforward use of cursor pagination. You have "Load Previous" and "Load More" buttons, and you fetch data based on the last or first items's cursor.
+{% /tabsitem %}
+{% tabsitem #infinite-scroll-with-cursor title="Infinite Scroll with Cursor" %}
+Create a file and named `src/components/InfiniteScroll.jsx`, insert the following code:
+```js
+import React, { useEffect } from 'react';
+
+function InfiniteScroll(props) {
+  const {
+    hasNext,
+    loadMore,
+    current
+  } = props;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if we're at the bottom of the viewport
+      if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+      if (hasNext && current && current.length) {
+        loadMore();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasNext, current]);
+
+  return (
+    <div>
+      {props.children}
+      {hasNext && <div>Loading more tasks...</div>}
+    </div>
+  );
+}
+
+export default InfiniteScroll;
+```
+Instead of manually clicking a "load more" button, you can automatically fetch more items when the user scrolls to the bottom of the list. This provides a seamless experience for users.
+{% /tabsitem %}
+{% /tabs %}
+
+# Update todos context {% #updating-todos-context %}
+
+Update the contents of `src/lib/context/todos.jsx` with the following code, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../appwrite";
 import { Query } from "appwrite";
 
-export const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
-export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
+const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
+const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
 
-const TasksContext = createContext();
+const TodosContext = createContext();
 
-export function useTasks() {
-  return useContext(TasksContext);
+export function useTodos() {
+  return useContext(TodosContext);
 }
 
-export function TasksProvider(props) {
-  const [tasks, setTasks] = useState([]);
+export function TodosProvider(props) {
+  const [todos, setTodos] = useState([]);
   const [lastId, setLastId] = useState(null);
   const [firstId, setFirstId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [counts, setCounts] = useState({
-    totalPages: 500,
-    totalResults: 1000,
-  });
+  const [totalPages, setTotalPages] = useState(0);
   const pageLimit = 4;
-  const hasNext = counts.totalPages > currentPage;
+  const hasNext = totalPages > currentPage;
 
   async function loadMore() {
-    console.log("loading more...");
+    if (currentPage < totalPages) {
     try {
-      if (hasNext) {
         const response = await databases.listDocuments(
           TODOS_DATABASE_ID,
           TODOS_COLLECTION_ID,
@@ -68,55 +134,49 @@ export function TasksProvider(props) {
             Query.cursorAfter(lastId),
           ],
         );
-        setCurrentPage((currentPage) =>
-          Math.min(currentPage + 1, counts.totalPages),
-        );
+        setCurrentPage(currentPage + 1)
         setFirstId(response.documents[0].$id);
         setLastId(response.documents[response.documents.length - 1].$id);
-        setTasks(response.documents);
-      }
+        setTodos([...todos, ...response.documents]);
     } catch (error) {
-      console.log(error);
+      console.log("Error loading more todos:", error);
+    }
     }
   }
   async function loadPrev() {
-    console.log("loading previous...");
+  if (currentPage > 1) {
     try {
-      if (hasNext) {
         const response = await databases.listDocuments(
           TODOS_DATABASE_ID,
           TODOS_COLLECTION_ID,
           [
-            Query.orderDesc("$createdAt"),
+            Query.orderAsc("$createdAt"),
             Query.limit(pageLimit),
             Query.cursorBefore(firstId),
           ],
         );
-        setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
+        setCurrentPage(currentPage -1 );
         setFirstId(response.documents[0].$id);
         setLastId(response.documents[response.documents.length - 1].$id);
         setTasks(response.documents);
-      }
     } catch (error) {
-      console.error(error);
+      console.error("Error loading previous todos:", error);
     }
+  }
   }
   async function init() {
     try {
       const response = await databases.listDocuments(
         TODOS_DATABASE_ID,
         TODOS_COLLECTION_ID,
-        [Query.orderDesc("$createdAt"), Query.limit(pageLimit)],
+        [Query.orderAsc("$createdAt"), Query.limit(pageLimit)],
       );
       setFirstId(response.documents[0].$id);
       setLastId(response.documents[response.documents.length - 1].$id);
       setTasks(response.documents);
-      setCounts({
-        totalPages: response.total / pageLimit,
-        totalResults: response.total,
-      });
+      setTotalPages(Math.ceil(response.total / pageLimit));
     } catch (error) {
-      console.log(error);
+      console.log("Error initializing tasks:", error);
     }
   }
   useEffect(() => {
@@ -124,56 +184,92 @@ export function TasksProvider(props) {
   }, []);
 
   return (
-    <TasksContext.Provider
+    <TodosContext.Provider
       value={{
-        current: tasks,
+        current: todos,
         loadMore,
         loadPrev,
         currentPage,
+        totalPages,
         hasNext,
       }}>
       {props.children}
-    </TasksContext.Provider>
+    </TodosContext.Provider>
   );
 }
 ```
+In this updated context:
+ * We're using `Query.cursorAfter()` is used to fetch documents that come after a specific document.
+ * We're using `Query.cursorBefore()` is used to fetch documents that come before a specific document.
+ * We've added `lastId` to hold the ID of the last document in the current set of todos.By using this ID with `Query.cursorAfter()`, We're essentially telling Appwrite: "Give me the next set of todos that come after this specific todo item."
+ * We's added `firstId` to hold the ID of the first document in the current set of todos. By using this ID with `Query.cursorBefore()`, we're telling Appwrite: "Give me the set of todos that come before this specific todo item."
 
-## Tasks page {% #tasks-page %}
-
-To utilize cursor pagination in our app, we want a "load more" button that will allow us to load the next page of data. We also have a way to show the current page too. We will add these pieces of the UI to the Tasks page and use the `useTasks` hook to handle the loading of the next page and have the following:
-* a "load previous" button that will handle the loading of the previous page of data and disabled when the current page is 1.
-* a div that will show the current page when data is loaded
-* a "load more" button that will handle loading the next page of data and disabled when the current page number is equal to the total number of pages.
-
-Update the Tasks page in `src/pages/Tasks.jsx` to the following:
+Now, you can use this context in your components to display todo items and handle pagination using Appwrite's cursor pagination methods.
+# Update Todos page {% #update-todos-page %}
+Now, let's use our Pagination component in the Todos Page.
+{% tabs %}
+{% tabsitem #Basic-cursor-pagination title="Basic Cursor Pagination" %}
+Update the Todos page in `src/pages/Todos.jsx`:
 ```js
-import { useEffect, useState, useCallback } from "react";
-import { useTasks } from "../lib/context/tasks";
-export function Tasks() {
- const tasks = useTasks();
- return (
+import React from 'react';
+import { useTodos } from '../lib/context/todos';
+import BasicCursorPagination from '../components/BasicCursorPagination';
+
+export function TodosPage() {
+  const todos = useTodos();
+
+  return (
     <section>
       <h2>Todos</h2>
-      <button
-        disabled={tasks.currentPage === 1}
-        onClick={() => tasks.loadPrev()}>
-        Load Previous
-      </button>
       <ul>
-        {tasks.current &&
-          tasks.current.map((task) => (
-            <li key={`task-${task.taskId}`}>
-              <span>{`Task-${task.taskId}: `}</span>
-              <input type='checkbox' id={task.taskId} name={task.title} />
-              <label htmlFor={task.title}>{task.title}</label>
-            </li>
-          ))}
+        {todos.current && todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`}>
+            <span>{`Todo-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
+          </li>
+        ))}
       </ul>
-      <button disabled={!tasks.hasNext} onClick={() => tasks.loadMore()}>
-        Load More
-      </button>
-      <div>{tasks.currentPage}</div>
+      <BasicCursorPagination
+        loadPrev={todos.loadPrev}
+        loadMore={todos.loadMore}
+        currentPage={todos.currentPage}
+        hasNext={todos.hasNext}
+      />
     </section>
   );
 }
 ```
+This implementation provide a basic pagination mechanism to navigate through the dataset and allows users to move to the next set of todo items or go back to the previous set.
+{% /tabsitem %}
+{% tabsitem #infinite-scroll-with-cursor title="Infinite Scroll with Cursor" %}
+Update the Todos page in `src/pages/Todos.jsx`:
+```js
+import InfiniteScroll from '../components/InfiniteScroll';
+import { useTodos } from '../lib/context/todos';
+
+export function Todos() {
+  const todos = useTodos();
+
+  return (
+    <InfiniteScroll>
+      <ul>
+        {todos.current &&
+          todos.current.map((todo) => (
+            <li key={`todo-${todo.taskId}`}>
+              <span>{`Task-${todo.taskId}: `}</span>
+              <input type='checkbox' id={todo.taskId} name={todo.title} />
+              <label htmlFor={todo.title}>{todo.title}</label>
+            </li>
+          ))}
+      </ul>
+    </InfiniteScroll>
+  );
+}
+```
+This implementation will automatically load more tasks when the user scrolls to the bottom of the page, as long as there are more tasks to load (as indicated by the hasNext value from the context).
+{% /tabsitem %}
+{% /tabs %}
+
+# See it in action {% #see-it-in-action %}
+Now's the perfect time to take a moment to run your application and see cursor pagination in action. Navigate through the tasks by scrolling or using the page navigation. As you scroll, you'll notice the seamless loading of todo items, thanks to infinite scrolling. Additionally, using the "Load Previous" and "Load More" buttons, you can manually navigate through tasks, showcasing the eficiency of cursor pagination.This approach ensures a smoother user experience by fetching only a subset of tod items, reducing server load and enhancing responsiveness.

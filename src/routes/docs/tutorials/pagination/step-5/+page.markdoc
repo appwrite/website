@@ -6,9 +6,9 @@ step: 5
 ---
 
 # Seeding the collection {% #seeding-the-collection %}
-Now we need to create a script that will create documents from a setup.json file.Create a new file `./db/setup.js` in the root of the project directory to hold our related code.
+We'll now create a script that populates documents from a `setup.json` file.Create a new file `./db/setup.js` in the root of your project directory for this purpose.
 
-Add the following code to it, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
+Insert the following code, make sure to replace `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your respective project and collection IDs.
 
 ```js
 import { databases } from "../src/lib/appwrite.js";
@@ -49,16 +49,22 @@ seedCollection();
 
 # Add seed script to package.json {% #add-seed-script %}
 
-Open the project's package.json file and go to the `scripts` and add the following script to the list.
+Open the project's package.json file, navigate to the `scripts` section, and add the following script:
 
 ```sh
- "db:seed": "node ./db/setup.js",
+{
+  ...,
+  "scripts": {
+    ...
+    "db:seed": "node ./db/setup.js"
+  },
+}
 ```
 
-You can now open a terminal and run the following command.
+Afterwards, open a terminal and execute:
 
 ```sh
 npm run db:seed
 ```
 
-You should see the command running in the terminal.When it's done check the collection to see it populated with the data.
+You should see the process running in the terminal.Once it's completed, check your collection to verify that it's populated with the data.

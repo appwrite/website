@@ -1,30 +1,32 @@
 ---
 layout: tutorial
-title: Build a todos app with react
-description: Learn about using pagination in a react app using appwrite backend.
+title: Implementing pagination with Appwrite and React
+description: Dive deep into integrating pagination in a React application using the Appwrite backend
 step: 1
-difficulty: beginner
-readtime: 10
+difficulty: intermediate
+readtime: 20
 ---
 
-**Todos App**: An app to track all your todos that you'll need to get done. In this tutorial, you will build the todos app with appwrite and react.
+ In this tutorial, you'll learn how to seamlessly integrate Appwrite's pagination methods into a React application. Proper pagination ensures efficient data display, enhance user experience, and provide a smooth interface for navigating large datasets.
 
-# Overview {% #overview %}
-**What is pagination in web development and why is it important?**
- Pagination is a technique used in web development to divide a large dataset into smaller manageable chunks. This practice enhances user experience by facilitating easy navigation through the dataset, making the data consumption less overwhelming. It's a common feature in data-rich applications, such as search engines and task management systems, offering benefits like reduced load times, easier data management, and a cleaner, more organized user interface.
+# Why pagination? {% #why-pagination %}
+Pagination is critical in web development, especially when working with huge databases. It helps users explore and process data without feeling overwhelmed by breaking it down into smaller parts. Data-rich applications like search engines and e-commerce sites require this.
 
- In this tutorial, while building the Todos app using Appwrite and React, you will use some pagination methods that Appwrite offers to manage the display of tasks efficiently, ensuring a user-friendly interface that allows users to navigate through their tasks effortlessly.
+The benefits are numerous:
+* faster load times
+* streamlined data management
+* a tidier, more user-friendly interface
 
-# Concepts {% #concepts %}
-
-This tutorial will introduce the following concepts:
-
-1. Setting up your first project with Appwrite and React.
-2. Understanding databases and collections in Appwrite.
-3. Crafting queries and implementing pagination to manage data efficiently.
-4. Utilizing storage solution for your Todo App.
+# Learning Objectives {% #learning-objectives %}
+By the end of this tutorial, you'll be equipped with:
+1. The knowledge to set up a React project integrated with Appwrite.
+2. Skills to craft queries using offset pagination and understand its implications.
+3. Expertise in constructing queries with cursor pagination and recognizing its benefits.
+4. Insight into the pros and cons of different pagination techniques.
 
 # Prerequisites {% #prerequisites %}
+Before diving in, ensure you:
 
 1. Basic knowledge of JavaScript and React.
-2. Have the latest version of [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer
+2. Basic understanding of databases or backend systems.
+3. Have the latest version of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com/) installed on your computer.
