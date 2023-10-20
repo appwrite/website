@@ -140,6 +140,15 @@
                             <li class="aw-main-header-nav-item">
                                 <a class="aw-link" href="/docs">Docs</a>
                             </li>
+                            <li class="aw-main-header-nav-item">
+                                <a class="aw-link" href="/community">Community</a>
+                            </li>
+                            <li class="aw-main-header-nav-item">
+                                <a class="aw-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="aw-main-header-nav-item">
+                                <a class="aw-link" href="/pricing">Pricing</a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="u-flex u-stretch aw-u-margin-inline-start-48">
