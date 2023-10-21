@@ -1,0 +1,86 @@
+---
+layout: tutorial
+title: Create ideas page
+description: Add database queries and pagination using Appwrite in your React application.
+step: 7
+---
+
+Using the `useIdeas` hook we can now display the ideas on the page. We will also add a form to submit new ideas.
+
+Overwrite the contents of `src/pages/Home.tsx` with the following:
+
+```ts
+import { useState, ChangeEvent } from "react";
+import { useUser } from "../lib/context/user";
+import { useIdeas } from "../lib/context/ideas";
+
+export function Home() {
+  const user = useUser();
+  const ideas = useIdeas();
+
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(event.target.value);
+  };
+
+  return (
+    <>
+      {/* Show the submit form to logged in users. */}
+      {user.current ? (
+        <section>
+          <h2>Submit Idea</h2>
+          <form>
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={handleTitleChange}
+            />
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={handleDescriptionChange}
+            />
+            <button
+              type="button"
+              onClick={() =>
+                ideas.add({ userId: user.current.id, title, description })
+              }
+            >
+              Submit
+            </button>
+          </form>
+        </section>
+      ) : (
+        <section>
+          <p>Please login to submit an idea.</p>
+        </section>
+      )}
+      <section>
+        <h2>Latest Ideas</h2>
+        <ul>
+          {ideas.current.map((idea) => (
+            <li key={idea.$id}>
+              <strong>{idea.title}</strong>
+              <p>{idea.description}</p>
+              {/* Show the remove button to idea owner. */}
+              {user.current && user.current.$id === idea.userId && (
+                <button type="button" onClick={() => ideas.remove(idea.$id)}>
+                  Remove
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
+  );
+}
+
+```

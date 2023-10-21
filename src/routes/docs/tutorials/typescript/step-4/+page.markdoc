@@ -1,0 +1,208 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your react application.
+step: 4
+---
+
+# User context {% #user-context %}
+
+In React, you can use [context](https://reactjs.org/docs/context.html) to share data between components.
+We'll use context and a custom hook to manage our user's data.
+
+Create a new file `src/lib/context/user.tsx` and add the following code to it.
+
+```ts
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { account } from "../appwrite";
+
+interface UserContextType {
+  current: any; // You should replace 'any' with the actual type of 'user'
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
+}
+
+const UserContext = createContext<UserContextType | undefined>(undefined);
+
+export function useUser() {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
+}
+
+interface UserProviderProps {
+  children: ReactNode;
+}
+
+export function UserProvider(props: UserProviderProps) {
+  const [user, setUser] = useState<any>(null); // Replace 'any' with the actual type of 'user'
+
+  async function login(email: string, password: string) {
+    const loggedIn = await account.createEmailSession(email, password);
+    setUser(loggedIn);
+  }
+
+  async function logout() {
+    await account.deleteSession("current");
+    setUser(null);
+  }
+
+  async function register(email: string, password: string) {
+    await account.create(email, password);
+    await login(email, password);
+  }
+
+  async function init() {
+    try {
+      const loggedIn = await account.get();
+      setUser(loggedIn);
+    } catch (err) {
+      setUser(null);
+    }
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ current: user, login, logout, register }}>
+      {props.children}
+    </UserContext.Provider>
+  );
+}
+
+```
+
+Now, we can use the `useUser` hook to access the user's data from any component. However, we first need to wrap our app with the `UserProvider`.
+
+# Basic routing  {% #basic-routing %}
+
+First, wrap the `main` element with the `UserProvider` component.
+
+Update `src/App.tsx` to the following code.
+
+```ts
+import { Home } from "./pages/Home";
+import { UserProvider } from "./lib/context/user";
+
+function App() {
+  const isLoginPage: boolean = window.location.pathname === "/login";
+
+  return (
+    <div>
+      <UserProvider>
+        <main>Home page</main>
+      </UserProvider>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+Then, optionally render the `Login` component if the path is `/login`, otherwise render the `Home` component.
+
+Update `src/App.tsx` to the following code.
+
+```ts
+import { Login } from './pages/Login';
+import { Home } from './pages/Home';
+import { UserProvider } from './lib/context/user';
+
+function App() {
+  const isLoginPage: boolean = window.location.pathname === '/login';
+
+  return (
+    <div>
+      <UserProvider>
+        <main>{isLoginPage ? <Login /> : <Home />}</main>
+      </UserProvider>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+# Home page  {% #home-page %}
+
+Create a new file `src/pages/Home.tsx` and add the following stub code to it.
+
+```ts
+// We'll complete this component later
+export function Home(): React.ReactNode {
+  return (
+    <p>I'm the home page</p>
+  );
+}
+
+```
+
+# Login page {% #login-page %}
+
+Finally, we are able to create the login page. Users will be able to login or register from this page, so we'll need to add two buttons.
+
+Create a new file `src/pages/Login.tsx` and add the following code to it.
+
+```ts
+import React, { useState, ChangeEvent } from "react";
+import { useUser } from "../lib/context/user";
+
+export function Login() {
+  const user = useUser();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = () => {
+    user.login(email, password);
+  };
+
+  const handleRegister = () => {
+    user.register(email, password);
+  };
+
+  return (
+    <section>
+      <h1>Login or register</h1>
+      <form>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        <div>
+          <button className="button" type="button" onClick={handleLogin}>
+            Login
+          </button>
+          <button className="button" type="button" onClick={handleRegister}>
+            Register
+          </button>
+        </div>
+      </form>
+    </section>
+  );
+}
+
+```
+
