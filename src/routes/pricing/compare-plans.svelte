@@ -104,7 +104,7 @@
                 },
                 {
                     title: 'Webhooks',
-                    free: '2 Per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
                 },
@@ -122,9 +122,9 @@
                 },
                 {
                     title: 'Additional organization member roles',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -133,12 +133,12 @@
             rows: [
                 {
                     title: 'Users',
-                    free: '75,000 Monthly active users',
-                    pro: '200,000 Monthly active users',
-                    scale: '500,000 Monthly active users'
+                    free: '75,000 monthly active users',
+                    pro: '200,000 monthly active users',
+                    scale: '500,000 monthly active users'
                 },
                 {
-                    title: 'Additional users (cost per user)',
+                    title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
                     scale: '$3 per 1,000 users'
@@ -198,7 +198,7 @@
                 {
                     title: 'File size limit',
                     free: '50MB',
-                    pro: '5TB',
+                    pro: '5GB',
                     scale: '5TB'
                 },
                 {
@@ -238,7 +238,7 @@
                 {
                     title: 'Concurrent connections',
                     free: '250',
-                    pro: '750',
+                    pro: '500',
                     scale: '1500'
                 },
                 {

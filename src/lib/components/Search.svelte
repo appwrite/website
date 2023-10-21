@@ -1,8 +1,10 @@
 <script lang="ts">
     import { afterNavigate, goto } from '$app/navigation';
     import { layoutState } from '$lib/layouts/Docs.svelte';
+    import { isMac } from '$lib/utils/platform';
+
     import { createCombobox, melt } from '@melt-ui/svelte';
-    import { isMac } from '@melt-ui/svelte/internal/helpers';
+
     import { MeiliSearch, type Hit, type Hits } from 'meilisearch';
     import { tick } from 'svelte';
 
@@ -109,6 +111,7 @@
         states: { inputValue }
     } = createCombobox<Props>({
         forceVisible: true,
+        preventScroll: false,
         portal: null,
         positioning: null,
         onSelectedChange({ next }) {
@@ -141,7 +144,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
     class="wrapper u-position-fixed u-padding-0 u-inset-0 u-flex u-main-center u-cross-center"
-    data-visible={open ? '' : undefined}
+    data-visible={open ? true : undefined}
     style:z-index="100"
     style:background="hsl(var(--aw-color-black) / 0.3)"
     style:backdrop-filter="blur(15px)"

@@ -27,7 +27,7 @@
         <div class="u-flex u-gap-16 u-main-space-between">
             <div class="aw-user-box">
                 <img class="aw-user-box-image" src={avatar} alt="" />
-                <div class="aw-user-box-name aw-sub-body-500">{name}</div>
+                <div class="aw-user-box-name aw-sub-body-500 aw-clr-primary">{name}</div>
                 <div class="aw-user-box-username aw-sub-body-400">{role}</div>
             </div>
         </div>

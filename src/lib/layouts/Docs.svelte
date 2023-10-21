@@ -33,7 +33,9 @@
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
-    import { isMac } from '@melt-ui/svelte/internal/helpers';
+
+    import { setContext } from 'svelte';
+    import { isMac } from '$lib/utils/platform';
 
     export let variant: DocsLayoutVariant = 'default';
 
@@ -53,6 +55,8 @@
             showSidenav: false
         }));
     });
+
+    setContext('isDocs', true);
 </script>
 
 <div class="u-position-relative">
@@ -134,7 +138,7 @@
                     <nav class="aw-main-header-nav">
                         <ul class="aw-main-header-nav-list">
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-main-header-nav-link is-selected" href="/docs">Docs</a>
+                                <a class="aw-link" href="/docs">Docs</a>
                             </li>
                         </ul>
                     </nav>
@@ -167,7 +171,7 @@
                         >
                             <span class="aw-icon-star" aria-hidden="true" />
                             <span class="text">Star on GitHub</span>
-                            <span class="aw-inline-tag aw-sub-body-400">33.2K</span>
+                            <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
                         </a>
                         <a href="https://cloud.appwrite.io/console" class="aw-button">
                             <span class="aw-sub-body-500">Go to console</span>
