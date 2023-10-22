@@ -130,7 +130,7 @@ If you're not using an SDK, you can [learn more about REST API file handling](/d
 # InputFile {% #input-file %}
 Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
 
-# Client SDKs
+# Client SDKs {% #client-sdk %}
 
 {% tabs %}
 {% tabsitem #web title="Web" %}
@@ -180,7 +180,7 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 {% /tabsitem %}
 {% /tabs %}
 
-# Server SDK
+# Server SDK {% #server-sdk %}
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
