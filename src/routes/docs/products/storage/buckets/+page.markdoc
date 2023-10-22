@@ -7,7 +7,7 @@ description: Organize and manage your files effectively with Appwrite Storage Bu
 Storage buckets are a group of files, similar to collections in Appwrite Databases.
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more. 
 
-# Create Bucket
+# Create Bucket {% #create-bucket %}
 You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). 
 
 {% tabs %}

@@ -63,7 +63,7 @@ The examples below will show you how you can use the different Appwrite permissi
 
 The following examples are using the [Appwrite Web SDK](https://github.com/appwrite/sdk-for-web) but can be applied similarly to any of the other [Appwrite SDKs](/docs/sdks).
 
-## Example #1 - Basic usage
+## Example 1 - Basic usage {% #example-1 %}
 
 In the following example, we are creating a document that can be read by anyone, edited by writers or admins, and deleted by administrators or a user with the user ID `user:5c1f88b42259e`.
 
@@ -96,7 +96,7 @@ promise.then(function (response) {
 });
 ```
 
-## Example #2 - Team roles
+## Example 2 - Team roles  {% #example-2 %}
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 
