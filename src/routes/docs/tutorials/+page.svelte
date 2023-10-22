@@ -92,13 +92,15 @@
                         </article>
                     </li>
                     <li class="is-mobile-col-span-2">
-                        <article class="aw-card is-full-color">
+                        <a href="/docs/tutorials/android" class="aw-card is-normal">
                             <header class="u-flex u-cross-baseline u-gap-4">
                                 <span class="icon-android aw-u-font-size-24" aria-hidden="true" />
                                 <h4 class="aw-sub-body-500 aw-u-color-text-primary">Android</h4>
                             </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">Coming soon...</p>
-                        </article>
+                            <p class="aw-sub-body-400 u-margin-block-start-4">
+                                Learn Appwrite Auth, Databases, and more with Android/Java.
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </section>
