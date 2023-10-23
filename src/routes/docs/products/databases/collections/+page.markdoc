@@ -8,7 +8,7 @@ The terms collections and documents are used because the Appwrite JSON REST API 
 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions. 
 
-# Create collection
+# Create collection {% #create-collection %}
 You can create collections using the Appwrite Console or a [Server SDK](/docs/sdks#server).
 {% tabs %}
 {% tabsitem #console title="Console" %}
