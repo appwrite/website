@@ -85,7 +85,7 @@
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
                 <li>
-                    <a href="https://status.appwrite.io" target="_blank" rel="noopener noreferrer"
+                    <a href="https://appwrite.online" target="_blank" rel="noopener noreferrer"
                         >Status</a
                     >
                 </li>

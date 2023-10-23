@@ -119,6 +119,8 @@
     border-radius:pxToRem(12); line-height:1.2;
     box-sizing:border-box; padding-inline:pxToRem(4); padding-block: pxToRem(4);
     max-block-size:pxToRem(300)!important; overflow-y:auto;
+    user-select: none;
+
 
   @mixin light-mode() {
     --p-select-menu-bg-color: var(--aw-color-white);

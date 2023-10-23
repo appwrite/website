@@ -14,7 +14,8 @@
         "test:integration": "playwright test",
         "test:unit": "vitest",
         "icons:build": "node ./src/icons/build.js",
-        "icons:optimize": "node ./src/icons/optimize.js"
+        "icons:optimize": "node ./src/icons/optimize.js",
+        "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js"
     },
     "devDependencies": {
         "@melt-ui/pp": "^0.1.2",
@@ -55,7 +56,7 @@
     "dependencies": {
         "@appwrite.io/pink": "0.1.0-next.9",
         "@appwrite.io/pink-icons": "0.1.0-next.9",
-        "@appwrite.io/repo": "github:appwrite/appwrite",
+        "@appwrite.io/repo": "github:appwrite/appwrite#main",
         "@splinetool/viewer": "0.9.455",
         "compression": "^1.7.4",
         "express": "^4.18.2",
