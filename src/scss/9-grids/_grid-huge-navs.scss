@@ -82,7 +82,7 @@
     .#{$p}-article {
       &-header  {
         block-size:var(--p-grid-huge-navs-secondary-header-height);
-        margin-inline:var(--p-grid-huge-navs-padding-inline);
+        margin-inline-start:var(--p-grid-huge-navs-padding-inline);
         inset-block-start:var(--p-grid-huge-navs-main-header-height);
         //&::after {
         //  content:""; display:block; block-size:pxToRem(24); position:absolute; inset-block-start:calc(100% + pxToRem(0.9)); inset-inline:0;
