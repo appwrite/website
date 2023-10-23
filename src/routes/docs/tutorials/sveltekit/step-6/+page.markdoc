@@ -21,7 +21,7 @@ Create a new collection with the following attributes:
 | title       | String | Yes      |
 | description | String | No       |
 
-# Add and remove methods {% #add-remove-methods %}
+# Add and remove methods {% #add-and-remove-methods %}
 Now that you have a collection to hold ideas, we can read and write to it from our app.
 Create a new file `src/lib/stores/ideas.js` and add the following code to it.
 
