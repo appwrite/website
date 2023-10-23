@@ -56,6 +56,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `dart-2.17`
 `dart-2.18`
 `dart-3.0`
+`dart-3.1`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}

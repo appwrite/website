@@ -1247,7 +1247,7 @@ By default, we include the following package managers in each runtime.
 {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
 * Ruby
 * Bundler
-* bundle install
+* `bundle install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
@@ -1272,6 +1272,12 @@ By default, we include the following package managers in each runtime.
 * .NET
 * NuGet
 * `dotnet restore`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+* Bun
+* bun
+* `bun install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
