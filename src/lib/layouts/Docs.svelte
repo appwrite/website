@@ -93,26 +93,7 @@
                     class="aw-button is-text"
                     aria-label="open navigation"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                    >
-                        <path
-                            d="M3 5.5H17"
-                            stroke="#E4E4E7"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                        />
-                        <path
-                            d="M3 14.5H17"
-                            stroke="#E4E4E7"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                        />
-                    </svg>
+                    <span class="aw-icon-hamburger-menu" />
                 </button>
             </div>
         </section>
@@ -176,6 +157,13 @@
                         <a href="https://cloud.appwrite.io/console" class="aw-button">
                             <span class="aw-sub-body-500">Go to console</span>
                         </a>
+                        <button
+                            on:click={toggleSidenav}
+                            class="aw-button is-text aw-is-not-desktop"
+                            aria-label="open navigation"
+                        >
+                            <span class="aw-icon-hamburger-menu" />
+                        </button>
                     </div>
                 </div>
             </div>

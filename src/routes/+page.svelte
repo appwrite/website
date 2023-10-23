@@ -168,13 +168,12 @@
                     style="--container-size:78.75rem"
                 >
                     <div class="aw-media-container">
-                        <div style="aspect-ratio: 1244 / 717">
-                            <img
-                                class="u-block"
-                                src="/images/pages/homepage/dashboard.png"
-                                alt="console dashboard"
-                            />
-                        </div>
+                        <img
+                            class="u-block"
+                            src="/images/pages/homepage/dashboard.png"
+                            alt="console dashboard"
+                            style:aspect-ratio="1244 / 717"
+                        />
                     </div>
                 </section>
             </div>
