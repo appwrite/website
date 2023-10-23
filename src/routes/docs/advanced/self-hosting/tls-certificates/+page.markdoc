@@ -39,7 +39,7 @@ If you want to generate a certificate for a specific domain, pass it as a parame
 docker compose exec appwrite ssl domain="api.myapp.com"
 ```
 
-# Development and localhost {% #development %}
+# Development and localhost {% #development-and-localhost %}
 
 You can't issue a [signed certificate for localhost](https://letsencrypt.org/docs/certificates-for-localhost/). This is because nobody uniquely owns that hostname and not an Appwrite specific limitation, just the way the internet works. By default, Appwrite will issue a self-signed certificate that is good enough for development.
 
