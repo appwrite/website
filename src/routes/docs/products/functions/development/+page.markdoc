@@ -2188,8 +2188,9 @@ public class Main {
 # Upgrade
 
 Appwrite Functions received major updates in Appwrite version 1.4. 
-If you still have functions from previous versions, they will be **read-only** in Appwrite 1.4. 
-You will have to migrate your old functions to follow new runtime syntax.
+Your old function from 1.3 will continue to work, but it can't be updated directly to a 1.4 function.
+You need to create a new function following 1.4 syntax. 
+After you've created your new function, point your application code to the new function and delete the old function.
 
 Here's a checklist of things you need to know.
 
