@@ -80,9 +80,6 @@
 
 <Docs variant="default">
     <Sidebar />
-    <div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
-        <img src="/images/bgs/docs-blur-1.svg" alt="" />
-    </div>
 
     <div
         class="u-position-absolute aw-is-not-mobile u-only-light"
@@ -120,6 +117,10 @@
     </div>
 
     <main class="aw-main-section u-position-relative">
+        <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
+            <img src="/images/bgs/docs-blur-1.svg" alt="" />
+        </div>
+
         <div
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
@@ -129,12 +130,13 @@
 
         <section class="aw-hero is-align-start u-position-relative">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
-                Learn how to build like a team of hundreds
+                Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
+                    >_
+                </span>
             </h1>
             <p class="aw-description u-max-width-600">
-                Appwrite is a backend development platform built by hundreds of open-source
-                developers, where you can build any application at any scale using the coding
-                languages and tools you want.
+                Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
+                powerful APIs to stop fighting technologies and start delivering value.
             </p>
         </section>
         <section class="aw-hero is-align-start">
@@ -428,3 +430,10 @@
         <MainFooter variant="docs" />
     </main>
 </Docs>
+
+<style lang="scss">
+    .bg-blur {
+        inset-inline-end: -300px;
+        inset-block-start: -100px;
+    }
+</style>
