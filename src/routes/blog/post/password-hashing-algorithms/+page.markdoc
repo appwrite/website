@@ -96,7 +96,7 @@ When a developer implements account creation on a server-side application, howev
 - PHPass
 - SHA
 
-An addition side-benefit this offers is that it allows a developer to migrate users from other platforms, such as Firebase, Supabase, and Nhost, using [Appwrite Migrations](https://appwrite.io/docs/advanced/migrations).
+An additional side-benefit this offers is that it allows a developer to migrate users from other platforms, such as Firebase, Supabase, and Nhost, using [Appwrite Migrations](https://appwrite.io/docs/advanced/migrations).
 
 ## Recap
 
