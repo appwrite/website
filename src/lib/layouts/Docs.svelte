@@ -65,7 +65,7 @@
         class:is-open={$layoutState.showSidenav}
         style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
     >
-        <section class="aw-mobile-header is-transparent">
+        <section class="aw-mobile-header is-transparent is-">
             <div class="aw-mobile-header-start">
                 <a href="/" aria-label="homepage">
                     <img
