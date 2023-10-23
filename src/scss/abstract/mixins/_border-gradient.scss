@@ -24,3 +24,32 @@
     background: var(--m-border-gradient-after) border-box;
   }
 }
+
+
+@mixin border-block-gradient-inner {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--m-border-radius);
+  border-block: var(--m-border-size, 1px) solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@mixin border-block-gradient {
+  position: relative;
+  border-radius: var(--m-border-radius);
+
+  &::before {
+    @include border-block-gradient-inner;
+    background: var(--m-border-gradient-before) border-box;
+  }
+
+  &::after {
+    @include border-block-gradient-inner;
+    background: var(--m-border-gradient-after) border-box;
+  }
+}
+
