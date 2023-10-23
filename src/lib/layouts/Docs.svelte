@@ -38,6 +38,7 @@
     import { isMac } from '$lib/utils/platform';
 
     export let variant: DocsLayoutVariant = 'default';
+    export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'aw-grid-side-nav aw-container u-padding-inline-0',
@@ -64,18 +65,18 @@
         <div class="aw-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
-                        class="aw-logo u-only-dark"
-                        src="/images/logos/appwrite.svg"
-                        alt="appwrite"
-                        height="24"
-                        width="130"
+                    class="aw-logo u-only-dark"
+                    src="/images/logos/appwrite.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
                 />
                 <img
-                        class="aw-logo u-only-light"
-                        src="/images/logos/appwrite-light.svg"
-                        alt="appwrite"
-                        height="24"
-                        width="130"
+                    class="aw-logo u-only-light"
+                    src="/images/logos/appwrite-light.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
                 />
             </a>
         </div>
@@ -83,32 +84,31 @@
             <a href="https://cloud.appwrite.io/console" class="aw-button">
                 <span class="aw-sub-body-500">Go to console</span>
             </a>
-            <button
-                    on:click={toggleSidenav}
-                    class="aw-button is-text"
-                    aria-label="open navigation"
-            >
-                 <span class="aw-icon-hamburger-menu" />
+            <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
+                <span class="aw-icon-hamburger-menu" />
             </button>
         </div>
     </section>
-    <header class="aw-main-header is-docs" class:is-transparent={variant !== 'expanded'}>
+    <header
+        class="aw-main-header {isReferences ? 'is-reference' : 'is-docs'}"
+        class:is-transparent={variant !== 'expanded'}
+    >
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start u-stretch">
                 <a href="/" aria-label="homepage">
                     <img
-                            class="aw-logo u-only-dark"
-                            src="/images/logos/appwrite.svg"
-                            alt="appwrite"
-                            height="24"
-                            width="130"
+                        class="aw-logo u-only-dark"
+                        src="/images/logos/appwrite.svg"
+                        alt="appwrite"
+                        height="24"
+                        width="130"
                     />
                     <img
-                            class="aw-logo u-only-light"
-                            src="/images/logos/appwrite-light.svg"
-                            alt="appwrite"
-                            height="24"
-                            width="130"
+                        class="aw-logo u-only-light"
+                        src="/images/logos/appwrite-light.svg"
+                        alt="appwrite"
+                        height="24"
+                        width="130"
                     />
                 </a>
                 <nav class="aw-main-header-nav">
@@ -120,8 +120,8 @@
                 </nav>
                 <div class="u-flex u-stretch aw-u-margin-inline-start-48">
                     <button
-                            class="aw-input-button aw-u-flex-basis-400"
-                            on:click={() => ($layoutState.showSearch = true)}
+                        class="aw-input-button aw-u-flex-basis-400"
+                        on:click={() => ($layoutState.showSearch = true)}
                     >
                         <span class="aw-icon-search" aria-hidden="true" />
                         <span class="text">Search in docs</span>
@@ -140,10 +140,10 @@
             <div class="aw-main-header-end">
                 <div class="u-flex u-gap-8">
                     <a
-                            href="https://github.com/appwrite/appwrite/stargazers"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="aw-button is-text"
+                        href="https://github.com/appwrite/appwrite/stargazers"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="aw-button is-text"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
@@ -153,12 +153,12 @@
                         <span class="aw-sub-body-500">Go to console</span>
                     </a>
                     <button
-                            on:click={toggleSidenav}
-                            class="aw-button is-text aw-is-not-desktop"
-                            aria-label="open navigation"
-                        >
-                            <span class="aw-icon-hamburger-menu" />
-                        </button>
+                        on:click={toggleSidenav}
+                        class="aw-button is-text aw-is-not-desktop"
+                        aria-label="open navigation"
+                    >
+                        <span class="aw-icon-hamburger-menu" />
+                    </button>
                 </div>
             </div>
         </div>
