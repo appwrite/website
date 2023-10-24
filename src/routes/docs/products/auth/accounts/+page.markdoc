@@ -10,7 +10,7 @@ Each user's account can also have their own preference object, which you can use
 
 {% partial file="account-vs-user.md" /%}
 
-# Sign up and login {% #sign up-login %}
+# Sign up and login {% #sign-up-login %}
 
 You can sign up and login a user with an account create through 
 [email password](/docs/products/auth/email-password),

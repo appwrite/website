@@ -15,7 +15,7 @@ Server APIs are constrained by an [API key's](/docs/advanced/platform/api-keys) 
 
 ## APIs {% #api %}
 Before using the Appwrite APIs, in the **Settings** of your Appwrite project, obtain your **API endpoint** and **Project ID**.
-Client APIs require an active session, created from [signing up and logging in](/docs/products/auth/accounts#sign up-login).
+Client APIs require an active session, created from [signing up and logging in](/docs/products/auth/accounts#signup-login).
 Server APIs require [API keys](/docs/advanced/platform/api-keys).
 
 
