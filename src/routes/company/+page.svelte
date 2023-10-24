@@ -272,11 +272,14 @@
 					<section class="aw-grid-1-1" style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;">
 						<div class="u-flex-vertical u-gap-32">
 							<h2 class="aw-display aw-u-color-text-primary">Designed for and by developers</h2>
-							<button
+							<a
+								href="https://appwrite.careers"
 								class="aw-button u-cross-child-start aw-u-inline-width-100-percent-mobile-break1"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
 								<span>Join the team</span>
-							</button>
+						</a>
 						</div>
 
 						<div class="aw-description u-flex-vertical u-gap-16">
@@ -722,7 +725,7 @@
 							Find your next career at Appwrite and join a team of remote workers.
 						</p>
 						<a
-							href="https://careers.appwrite.io/"
+							href="https://appwrite.careers"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="aw-button is-transparent u-cross-child-center u-margin-block-start-16"

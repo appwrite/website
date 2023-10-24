@@ -262,3 +262,15 @@
 .#{$p}-u-capitalize {
   text-transform:capitalize;
 }
+
+.#{$p}-u-rotate-180 {
+  transform:rotateZ(180deg);
+}
+
+.#{$p}-u-transition {
+  transition:var(--transition);
+}
+
+.#{$p}-u-flex-1 {
+  flex: 1; 
+}

@@ -1,58 +1,52 @@
 const braindeadUUID = () => {
-	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-};
-
-const deepClone = (v: any) => {
-	return JSON.parse(JSON.stringify(v));
+    return (
+        Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    );
 };
 
 export const createResettable = <Value>(defaultValue: Value) => {
-	type GlobalState = Record<string, Value>;
-	type SubscribeCallback = (v: Value) => void;
-	let subscribeCallbacks: SubscribeCallback[] = [];
+    type SubscribeCallback = (v: Value) => void;
+    let subscribeCallbacks: SubscribeCallback[] = [];
 
-	const d = deepClone(defaultValue);
+    let currUuid = braindeadUUID();
+    let state = structuredClone(defaultValue);
 
-	let currUuid = braindeadUUID();
-	const state: GlobalState = {
-		[currUuid]: deepClone(d)
-	};
+    const subscribe = (cb: SubscribeCallback) => {
+        subscribeCallbacks.push(cb);
+        cb(state);
 
-	const subscribe = (cb: SubscribeCallback) => {
-		subscribeCallbacks.push(cb);
-		cb(state[currUuid]);
+        return () => {
+            subscribeCallbacks = subscribeCallbacks.filter((c) => c !== cb);
+        };
+    };
 
-		return () => {
-			subscribeCallbacks = subscribeCallbacks.filter((c) => c !== cb);
-		};
-	};
+    const reset = () => {
+        currUuid = braindeadUUID();
+        const fixedId = currUuid;
+        const set = (v: Value) => {
+            if (fixedId !== currUuid) return;
+            state = v;
+            subscribeCallbacks.forEach((cb) => cb(state));
+        };
 
-	const reset = () => {
-		currUuid = braindeadUUID();
-		const fixedId = currUuid;
-		const set = (v: Value) => {
-			state[fixedId] = v;
-			subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
-		};
+        const update = (fn: (v: Value) => Value) => {
+            set(fn(state));
+        };
 
-		const update = (fn: (v: Value) => Value) => {
-			set(fn(state[fixedId]));
-		};
+        set(structuredClone(defaultValue));
+        return { set, update };
+    };
 
-		set(deepClone(d));
-		return { set, update };
-	};
-
-	return {
-		subscribe,
-		reset,
-		set: (v: Value) => {
-			state[currUuid] = v;
-			subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
-		},
-		update: (fn: (v: Value) => Value) => {
-			state[currUuid] = fn(state[currUuid]);
-			subscribeCallbacks.forEach((cb) => cb(state[currUuid]));
-		}
-	};
+    return {
+        subscribe,
+        reset,
+        set: (v: Value) => {
+            state = v;
+            subscribeCallbacks.forEach((cb) => cb(state));
+        },
+        update: (fn: (v: Value) => Value) => {
+            state = fn(state);
+            subscribeCallbacks.forEach((cb) => cb(state));
+        }
+    };
 };
