@@ -467,7 +467,7 @@
             --p-size: 700px;
             inline-size: var(--p-size);
             block-size: var(--p-size);
-            inset-block-start: -2.5rem;
+            inset-block-start: -3rem;
             z-index: -1;
             left: calc(50% - 384px + 600px);
         }
