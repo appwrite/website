@@ -134,11 +134,11 @@
             </a>
 
             <div class="u-position-absolute aw-is-not-mobile u-only-dark spline-wrapper">
-                <Spline url="/images/animations/dark-scene.splinecode" width={768} height={768}>
+                <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
                         src="/images/animations/tech-dark.png"
-                        width="768"
-                        height="768"
+                        width="660"
+                        height="660"
                         alt=""
                         style="position: absolute;"
                     />
@@ -464,7 +464,7 @@
         z-index: 10;
 
         .spline-wrapper {
-            --p-size: 660px;
+            --p-size: 700px;
             inline-size: var(--p-size);
             block-size: var(--p-size);
             inset-block-start: -2.5rem;
