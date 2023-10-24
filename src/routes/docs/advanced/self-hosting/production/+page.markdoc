@@ -25,7 +25,7 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 
 1. Whitelist a group of developers by IP using the `_APP_CONSOLE_WHITELIST_IPS` environment variable.
 2. Whitelist a group of developers by email using the `_APP_CONSOLE_WHITELIST_EMAILS` environment variable.
-3. Only the root user can signup. All other developers must be added through invitations. This is configured using the `_APP_CONSOLE_WHITELIST_ROOT` environment variable.
+3. Only the root user can sign up. All other developers must be added through invitations. This is configured using the `_APP_CONSOLE_WHITELIST_ROOT` environment variable.
 
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 

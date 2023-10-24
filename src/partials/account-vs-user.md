@@ -6,5 +6,5 @@ Sessions respect [permissions](/docs/advanced/platform/permissions), which means
 
 The Users API is a dedicated API for managing users from an admin's perspective.
 It should be used with backend or server-side applications with [Server SDKs](/docs/sdks#server). Users API uses API keys instead of sessions. 
-This means they're not resticted by permissions, but by the scopes granted to the API key used.
+This means they're not restricted by permissions, but by the scopes granted to the API key used.
 {% /info %}

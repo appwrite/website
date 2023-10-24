@@ -420,7 +420,7 @@ You'll find these properties in the context object.
 | req      | Contains request information like method, body, and headers. See full examples [in the request section](#request).                                     |
 | res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                     |
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
-| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
+| error()  | Method to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
 ### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 

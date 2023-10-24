@@ -47,7 +47,7 @@ devDependencies:
     specifier: ^0.55.0
     version: 0.55.4(svelte@4.2.0)
   '@ocular-d/vale-bin':
-    specifier: ^2.29.6
+    specifier: ^2.29.4
     version: 2.29.6
   '@playwright/test':
     specifier: ^1.37.1

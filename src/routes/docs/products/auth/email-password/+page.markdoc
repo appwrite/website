@@ -6,7 +6,7 @@ description: Implement email and password authentication with Appwrite. Securely
 
 Email and password login is the most commonly used authentication method. Appwrite Authentication promotes a safer internet by providing secure APIs and promoting better password choices to end users. Appwrite supports added security features like blocking personal info in passwords, password dictionary, and password history to help users choose good passwords.
 
-# Signup {% #sign-up %}
+# Sign up {% #sign-up %}
 
 You can use the Appwrite Client SDKs to create an account using email and password.
 
@@ -56,7 +56,7 @@ promise.then(function (response) {
 
 Next, implement the verification page in your app. This page will parse the secrets passed in through the `userId` and `secret` query parameters. In this example, the code below will be found in the page served at `https://example.com/verify`.
 
-Since the secrets are passed in through url params, it will be easiest to perform this step in the browser.
+Since the secrets are passed in through URL params, it will be easiest to perform this step in the browser.
 
 ```js
 import { Client, Account } from "appwrite";
@@ -102,7 +102,7 @@ promise.then(function (response) {
 });
 ```
 
-# Password Recovery {% #password-recovery %}
+# Password recovery {% #password-recovery %}
 
 If a user forgets their password, they can initiate a password recovery flow to recover their password. The Create Password Recovery endpoint sends the user an email with a temporary secret key for password reset. When the user clicks the confirmation link, they are redirected back to the password reset URL with the secret key and email address values attached to the URL as query strings.
 

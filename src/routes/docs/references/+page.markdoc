@@ -5,7 +5,7 @@ description: Complete API references for Appwrite SDK, REST, and GraphQL APIs. L
 ---
 Appwrite lets you build integrations on web, mobile, native, and server platforms through a set of APIs. You can use one of our many [SDKs](/docs/sdks) or integrate directly through the [REST API](/docs/apis/rest) or [GraphQL API](/docs/apis/graphql).
 
-## Client vs Server APIs {% #client-vs-server %}
+## Client vs server APIs {% #client-vs-server %}
 
 Client APIs and SDKs are for integrating with Appwrite to build client-based applications and websites. 
 Client APIs only give access to resources if users have been [granted permissions](/docs/advanced/platform/permissions).
@@ -15,7 +15,7 @@ Server APIs are constrained by an [API key's](/docs/advanced/platform/api-keys) 
 
 ## APIs {% #api %}
 Before using the Appwrite APIs, in the **Settings** of your Appwrite project, obtain your **API endpoint** and **Project ID**.
-Client APIs require an active session, created from [signing up and logging in](/docs/products/auth/accounts#signup-login).
+Client APIs require an active session, created from [signing up and logging in](/docs/products/auth/accounts#sign up-login).
 Server APIs require [API keys](/docs/advanced/platform/api-keys).
 
 
@@ -28,7 +28,7 @@ Server APIs require [API keys](/docs/advanced/platform/api-keys).
 
 {% cards %}
 {% cards_item href="/docs/references/cloud/client-web/account" title="Account" %}
-Add signup, login, logout, and other common authentication methods to client apps.
+Add sign up, login, logout, and other common authentication methods to client apps.
 {% /cards_item %}
 {% cards_item href="/docs/references/cloud/server-nodejs/users" title="Users" %}
 Manage users from an admin scope to build server integrations.

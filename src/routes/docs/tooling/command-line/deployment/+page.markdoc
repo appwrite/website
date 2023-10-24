@@ -28,7 +28,7 @@ You can fetch all the existing teams in your current project using:
 appwrite init team
 ```
 
-# Deploying Functions {% #deploying-function %}
+# Deploying functions {% #deploying-function %}
 
 The CLI also handles the creation and deployment of Appwrite Functions. Run this command in the folder holding your `appwrite.json` file.
 
@@ -50,7 +50,7 @@ appwrite deploy function
 ✓ Success Deployed Awesome Function ( 621229798628cf5bf712 )
 ```
 
-# Deploying Collections {% #deploying-collections %}
+# Deploying collections {% #deploying-collections %}
 
 The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 
@@ -62,7 +62,7 @@ The deploy command will overwrite existing collections causing existing data to 
 appwrite deploy collection
 ```
 
-# Deploying Teams {% #deploying-teams %}
+# Deploying teams {% #deploying-teams %}
 
 The Appwrite CLI can create teams to organize users. Teams can be used to grant access permissions to a group of users. Learn more about permissions.
 
@@ -72,7 +72,7 @@ Deploy teams by running this command in the folder holding your `appwrite.json` 
 appwrite deploy team
 ```
 
-# Deploying Storage {% #deploying-storage %}
+# Deploying storage {% #deploying-storage %}
 
 The Appwrite CLI allows you to configure and deploy buckets across projects. All the bucket's settings are available through the [appwrite.json](/docs/tooling/command-line/deployment#appwrite-json) file.
 

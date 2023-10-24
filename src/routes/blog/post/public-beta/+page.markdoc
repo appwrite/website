@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Appwrite Cloud is now in public beta
-description: We're happy to announce Cloud is now available for everyone to signup.
+description: We're happy to announce Cloud is now available for everyone to sign up.
 date: 2023-05-02
 cover: /images/blog/cloud-beta.png
 timeToRead: 5
@@ -39,7 +39,7 @@ We’re conducting a series of interviews & surveys with participants of the Pub
 If you’re part of the Beta and would like to participate in these interviews, please reach out to me on the Appwrite Discord or my email, and we’d be glad to set up a call.
 
 ## Pricing
-Our goal is to make Appwrite Cloud affordable and accessible to all developers. We’ve had some really great feedback from our initial pricing survey and are really close to sharing our model with you all. We will continue working together with the Appwrite community to refine this pricing model. Rest assured, there will be a generous free tier for all the hobby projects you’ve been wanting to create!
+Our goal is to make Appwrite Cloud affordable and accessible to all developers. We’ve had some really great feedback from our initial pricing survey and are really close to sharing our model with you all. We will continue working together with the Appwrite community to refine this pricing model. There will be a generous free tier for all the hobby projects you’ve been wanting to create!
 
 ## Self-hosted edition
 A lot of us may have questions about the open source version of Appwrite and its future. We can proudly say, we will continue to stand among the handful of companies that have been open-source first. Our vibrant community is a testament that, for the longest time, we have prioritized the open source version, and we will continue to do so. In fact, all major features will roll out to the open source version even before they hit the cloud! Appwrite will forever remain open source!
@@ -48,8 +48,7 @@ A lot of us may have questions about the open source version of Appwrite and its
 During the Beta, we’re operating with Frankfurt as our primary region. This is a careful decision to ensure we are geographically centrally located. As we get closer to general availability, we will focus on 3 more regions, namely San Francisco, New York, and Singapore with more regions to follow.
 
 ## Compliance
-Compliances are frameworks that help organizations ensure they are meeting certain standards and requirements in regard to data security and privacy. For most SaaS/BaaS companies, SOC 2, HIPAA & GDPR are the essential ones. These certifications help companies demonstrate to their customers and stakeholders they are taking data security and privacy seriously, and are committed to protecting their sensitive information.
-
+Compliance frameworks help organizations ensure they meet certain standards and requirements, especially in regard to data security and privacy. For many SaaS/BaaS companies, key standards include SOC 2, HIPAA, and GDPR. Adhering to these standards helps companies demonstrate to their customers and stakeholders that they take data security and privacy seriously, and are committed to protecting sensitive information.
 These usually involve a lot of paperwork, documentation, and administrative processes. We’re in the process of ensuring we meet the highest standards for data security and privacy.
 
 ## Support for more function runtimes

@@ -5,7 +5,7 @@ description: Add navigation to your SvelteKit application with Appwrite authenti
 step: 5
 ---
 
-Create a layout component, used by all pages, to display a navbar. The navbar will show a login button if the user is not logged in, and a logout button if the user is logged in.
+Create a layout component, used by all pages, to display a navigation bar. The navigation bar will show a login button if the user is not logged in, and a logout button if the user is logged in.
 
 In this component, we can call our `user.init()` function to check if the user is logged in when the page loads.
 

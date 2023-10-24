@@ -109,7 +109,7 @@ More information and examples of authenticating users can be found in the dedica
 # Examples {% #examples %}
 The examples below will show you how you can use Realtime in various ways.
 
-## Subscribe to a Channel {% #subscribe-to-a-channel %}
+## Subscribe to a channel {% #subscribe-to-a-channel %}
 In this example we are subscribing to all updates related to our account by using the `account` channel. This will be triggered by any update related to the authenticated user, like updating the user's name or e-mail address.
 
 {% multicode %}
@@ -177,7 +177,7 @@ val subscription = realtime.subscribe("account") {
 
 {% /multicode %}
 
-## Subscribe to Multiple Channels  {% #subscribe-to-multiple-channel %}
+## Subscribe to multiple channels  {% #subscribe-to-multiple-channel %}
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 

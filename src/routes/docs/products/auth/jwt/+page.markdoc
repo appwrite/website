@@ -8,13 +8,13 @@ You can extend Appwrite's APIs by building backend apps using [Server SDKs](/doc
 
 If you are already authenticated on your client-side app and need your backend app to **act on behalf of the user**, this guide will walk you through the process.
 
-# Proof of Identity {% #proof-of-identity %}
+# Proof of identity {% #proof-of-identity %}
 
 Before making requests to your backend APIs, your client application needs to first create a session **directly with Appwrite** using the account service. This session will act like an ID card for the user and can be used to access resources in Appwrite. The client will **only receive information accessible to the user** based on the resources' [permissions](/docs/advanced/platform/permissions).
 
 When you build backend APIs to extend Appwrite's functionality, these APIs should still **respect access permissions** to keep user data secure. Appwrite's backend SDKs allow you to securely act on behalf of a user with the same permissions by using JWT authentication.
 
-# JWT Authentication {% #jwt %}
+# JWT authentication {% #jwt %}
 
 [JSON Web Tokens](https://jwt.io/introduction) (JWTs) are a secure means to transfer information or claims between two parties. JWTs act like temporary copies of the user's ID card that allow Appwrite's Server SDKs to access information on behalf of a user.
 
@@ -169,9 +169,9 @@ var client = new Client()
 {% /multicode %}
 
 
-# When should I use JWTs? {% #when-to-use %}
+# When to use JWT authentication? {% #when-to-use %}
 
-JWT auth is useful when you need your backend app's Server SDK to be restricted by the same set of permissions.
+JWT authentication is useful when you need your backend app's Server SDK to be restricted by the same set of permissions.
 
 If your backend app's Server SDK is using an [API key](/docs/advanced/platform/api-keys), it will fetch **all resources** regardless of permissions. This means the Server SDK might fetch files and documents your user should not be able to see, which is not helpful when you need to act on behalf of a user.
 

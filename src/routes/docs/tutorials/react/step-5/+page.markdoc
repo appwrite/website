@@ -9,7 +9,7 @@ In our app we want to have a navigation bar that is always visible. We will add 
 - a logout button if the user is logged in.
 - a login button if the user is not logged in.
 
-Update the App componenent in `src/App.jsx`:
+Update the App component in `src/App.jsx`:
 
 ```js
 import { Login } from "./pages/Login";
@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <Navbar /> {/* Add the navbar before page content */}
+        <Navbar /> {/* Add the navigation bar before page content */}
         <main>{isLoginPage ? <Login /> : <Home />}</main>
       </UserProvider>
     </div>

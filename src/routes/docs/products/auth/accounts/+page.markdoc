@@ -1,23 +1,23 @@
 ---
 layout: article
 title: Accounts
-description: Unlock advanced user management - Appwrite's Account API for seamless signups, store user preferences, and dynamic permissions.
+description: Unlock advanced user management - Appwrite's Account API for seamless sign ups, store user preferences, and dynamic permissions.
 ---
 
-Appwrite Account API is used for user signup and login in client applications.
+Appwrite Account API is used for user sign up and login in client applications.
 Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. 
 Each user's account can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
 {% partial file="account-vs-user.md" /%}
 
-# Signup and login {% #signup-login %}
+# Sign up and login {% #sign up-login %}
 
-You can signup and login a user with an account create through 
+You can sign up and login a user with an account create through 
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),
 [Anonymous](/docs/products/auth/anonymous),
 [magic URL](/docs/products/auth/magic-url), and
-[OAuth 2](/docs/products/auth/oauth2)
+[OAuth2](/docs/products/auth/oauth2)
 authentication.
 
 # Preferences {% #preferences %}

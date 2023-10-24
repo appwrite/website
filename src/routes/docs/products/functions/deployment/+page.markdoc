@@ -21,7 +21,7 @@ The recommended way to manage your Appwrite Function deployments is to use a ver
 
 ## Create function  {% #create-function %} 
 
-Before deploying your function with Git, create a new function attached to your Git repo.
+Before deploying your function with Git, create a new function attached to your Git repository.
 
 1. Navigate to **Functions** from the side bar of the Appwrite Console.
 2. Click **Create function**.
@@ -63,7 +63,7 @@ appwrite deploy function
 
 If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
-# Manual Deployment {% #manual %} 
+# Manual deployment {% #manual %} 
 
 You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.
 
@@ -113,7 +113,7 @@ To find or add a domain:
 
 DNS records can take up to 48 hours to propagate.
 
-# Debugging Build {% #debugging %} 
+# Debugging build {% #debugging %} 
 
 After deploying a function, you can find the status and build logs in the Appwrite Console.
 
@@ -122,7 +122,7 @@ After deploying a function, you can find the status and build logs in the Appwri
 3. Under the **Deployments** tab, find the status of the current and previous deployments.
 4. Access build logs by clicking the **Build logs** button.
 
-# Redeploy Builds {% #redeploy %} 
+# Redeploy builds {% #redeploy %} 
 
 After updating the configuration, redeploy your function for changes to take effect. You can also redeploy to retry failed builds.
 

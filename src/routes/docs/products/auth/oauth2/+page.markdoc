@@ -1,28 +1,28 @@
 ---
 layout: article
-title: OAuth 2 login
+title: OAuth2 login
 description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.
 
-When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
+When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
 
-# Configure OAuth 2 login {% #configure %}
+# Configure OAuth2 login {% #configure %}
 
-Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
+Before using OAuth2 login, you need to enable and configure an OAuth2 login provider.
 
 1. Navigate to your Appwrite project.
 2. Navigate to **Auth** > **Settings**.
 3. Find and open the OAuth provider.
-4. In the OAuth 2 settings modal, use the toggle to enable the provider.
-5. Create and OAuth 2 app on the provider's developer platform.
+4. In the OAuth2 settings modal, use the toggle to enable the provider.
+5. Create and OAuth2 app on the provider's developer platform.
 6. Copy information from your OAuth2 provider's developer platform to fill the **OAuth2 Settings** modal in the Appwrite Console.
-7. Configure redirect URL in your OAuth 2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
+7. Configure redirect URL in your OAuth2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
 
-# Initialize OAuth 2 login {% #init %}
+# Initialize OAuth2 login {% #init %}
 
-To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
+To initialize the OAuth2 login process, use the [Create OAuth2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
@@ -131,15 +131,15 @@ try await account.createOAuth2Session(provider: "amazon")
 {% /tabsitem %}
 {% /tabs %}
 
-You'll be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+You'll be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
 
 You can optionally configure `success` or `failure` redirect links on web to handle success and failure scenarios.
 
-# OAuth 2 profile {% #profile %}
+# OAuth2 profile {% #profile %}
 
-After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
+After authenticating a user through their OAuth2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth2 provider and make API calls to the provider.
 
-After creating an OAuth 2 session, you can fetch the session to get information about the provider.
+After creating an OAuth2 session, you can fetch the session to get information about the provider.
 
 {% multicode %}
 ```js
@@ -221,20 +221,20 @@ print(session.providerAccessToken);
 {% /multicode %}
 
 
-An OAuth 2 [session](/docs/references/cloud/models/session) will have the following attributes.
+An OAuth2 [session](/docs/references/cloud/models/session) will have the following attributes.
 
 | Property                   | Description                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------- |
 | provider                   | The OAuth2 Provider.                                                                                       |
-| providerUid                | User ID from the OAuth 2 Provider.                                                                         |
-| providerAccessToken        | Access token from the OAuth 2 provider. Use this to **make requests to the OAuth 2 provider** to fetch personal data. |
+| providerUid                | User ID from the OAuth2 Provider.                                                                         |
+| providerAccessToken        | Access token from the OAuth2 provider. Use this to **make requests to the OAuth2 provider** to fetch personal data. |
 | providerAccessTokenExpiry  | Check this value to know if an access token is about to expire.                                            |
 
-You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
+You can use the `providerAccessToken` to make requests to your OAuth2 provider. Refer to the docs for the OAuth2 provider you're using to learn about making API calls with the access token.
 
-# OAuth 2 profile {% #profile %}
+# OAuth2 profile {% #profile %}
 
-OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
+OAuth2 sessions expire to protect from security risks. OAuth2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
 
 {% multicode %}
 ```js
@@ -294,5 +294,5 @@ let session = try await account.updateSession(
 {% /multicode %}
 
 {% info title="GraphQL" %}
-OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+OAuth2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
 {% /info %}

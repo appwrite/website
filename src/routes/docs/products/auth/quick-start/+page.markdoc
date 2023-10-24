@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Start with Authentication
-description: Effortlessly add authentication to your apps - simple signup & login in just minutes with Appwrite Authentication
+description: Effortlessly add authentication to your apps - simple sign up & login in just minutes with Appwrite Authentication
 ---
 You can get up and running with Appwrite Authentication in minutes. 
-Adding signup and login is as simple as this.
+Adding sign up and login is as simple as this.
 
 # Sign up {% #sign-up %}
 
@@ -169,11 +169,11 @@ mutation {
 {% /multicode %}
 
 # More ways to authenticate {% #more-ways-to-authenticate %}
-You can signup and login a user with an account create through 
+You can sign up and login a user with an account create through 
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),
 [Anonymous](/docs/products/auth/anonymous)
 [magic URL](/docs/products/auth/magic-url), and
-[OAuth 2](/docs/products/auth/oauth2)
+[OAuth2](/docs/products/auth/oauth2)
 authentication. 
 

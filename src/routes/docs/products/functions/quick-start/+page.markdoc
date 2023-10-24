@@ -3,36 +3,40 @@ layout: article
 title: Start with Functions
 description: Get started quickly with Appwrite Functions. Follow a step-by-step guide to create your first serverless function, define triggers, and execute code.
 ---
+
 You can create and execute your first Appwrite Function in minutes.
 
-# Create function {% #create-function %} 
+# Create function {% #create-function %}
 
 Before deploying your function with Git, create a new function attached to your Git repository.
 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/quick-start/dark/create-function.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/quick-start/create-function.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select a starter template.
-5. Follow the step-by-step wizard and create the function.
-6. The function will be created and a build will begin. Once the build completes, you'll have created your first function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select a starter template.
+1. Follow the step-by-step wizard and create the function.
+1. The function will be created and a build will begin. Once the build completes, you'll have created your first function.
 
-You can find the code used by the starter template in your newly created Git repository. 
-Each push to your Git repo will trigger a new deployment.
+You can find the code used by the starter template in your newly created Git repository.
+Each push to your Git repository will trigger a new deployment.
 
-## Execute {% #execute %} 
+## Execute {% #execute %}
+
 You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execution).
 The easiest way to execute your first function is to use the Appwrite Console.
 
 {% only_dark %}
 ![Execution-screen](/images/docs/functions/quick-start/dark/function-execution.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Execution-screen](/images/docs/functions/quick-start/function-execution.png)
 {% /only_light %}
@@ -42,16 +46,16 @@ The easiest way to execute your first function is to use the Appwrite Console.
 1. Click **Execute** to execute the starter template function.
 1. Wait for the execution to be marked **completed** and click to view the execution logs.
 
-
 # Explore {% #explore %}
+
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
-| Explore                                                                 |                                                    |
-|-------------------------------------------------------------------------|----------------------------------------------------|
-| [Develop](/docs/products/functions/development)                | Learn about how to parse request, build responses, and log to Console in Appwrite Functions. |
-| [Response](/docs/products/functions/development#response)       | Learn about function response types, like text, json, html, redirect, and empty responses.|
-| [Deploy](/docs/products/functions/deployment)                | Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads. |
-| [Execute](/docs/products/functions/execution)            | Appwrite functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.  |
-| [Domains](/docs/products/functions/execution#domains)       | Each Appwrite Function can be executed through it's own domain, generated or custom. Learn about domains.  |
-| [Runtime](/docs/products/functions/runtimes)            | Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.  |
-| [Examples](/docs/products/functions/examples)            | Enjoy learning from examples? Checkout these examples functions.  |
+| Explore                                                                                                                          |                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [Develop](/docs/products/functions/development)                                                                                  | Learn about how to parse request, build responses, and log to Console in Appwrite Functions.                                     |
+| [Response](/docs/products/functions/development#response)                                                                        | Learn about function response types, like text, JSON, HTML, redirect, and empty responses.                                       |
+| [Deploy](/docs/products/functions/deployment)                                                                                    | Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads.                                                         |
+| [Execute](/docs/products/functions/execution)                                                                                    | Appwrite functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions. |
+| [Domains](/docs/products/functions/execution#domains)                                                                            | Each Appwrite Function can be executed through it's own domain, generated or custom. Learn about domains.                        |
+| [Runtime](/docs/products/functions/runtimes)                                                                                     | Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.                                          |
+| [Examples](/docs/products/functions/examples)                                                                                    | Enjoy learning from examples? Checkout these examples functions.                                                                 |

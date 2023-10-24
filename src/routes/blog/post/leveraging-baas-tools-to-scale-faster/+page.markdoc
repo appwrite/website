@@ -10,17 +10,17 @@ category: engineering
 featured: false
 ---
 
-There are many tools that developers use every day to abstract away complexity, but many are seriously underutilizing the benefits of "Backend As A Service" tools for developing the entire backend of an app, or at least the key components.
+There are many tools that developers use every day to abstract away complexity, but many are seriously underutilizing the benefits of "Backend as a Service" tools for developing the entire backend of an app, or at least the key components.
 
 The idea of trusting such a vital part of the development process to a 3rd party tool can be scary; we get it. It's natural to want to have control over every bit of code and build things from scratch, but at what cost?
 
 Many of the features we require in most apps are necessary but don't represent the core product. This includes authentication, security, file storage and database management. Do you really need to reinvent the wheel and build this from scratch every time?
 
-We believe in most cases there is an easier way, which is where the idea of "Backend As A Service" can help.
+We believe in most cases there is an easier way, which is where the idea of "Backend as a Service" can help.
 
 # What is a Backend as a Service (BaaS)
 
-A backend as a service is a third party service that lets you develop the backend part of your application without building things from scratch. It's about NOT reinventing the wheel for every app you launch.
+A Backend as a Service is a third party service that lets you develop the backend part of your application without building things from scratch. It's about NOT reinventing the wheel for every app you launch.
 
 Each BaaS platform has its own set of tools and features, so let's use  [Appwrite](https://appwrite.io/)  as an example of offerings you may see. A service like Appwrite provides you with a console from which you can manage your entire backend. From your console's dashboard you'll have the ability to create and manage services such as:
 
@@ -45,7 +45,7 @@ In the process of writing this article, we did some research to find out which c
 
 Many developers at the highest level are adopting the idea of using these tools to optimize their effectiveness and efficiency. We've seen this in cases from developers trying to get a product to market in the shortest possible time or integrating features with efficiency into large-scale applications.
 
-In one interview, the CEO of Appwrite,  [Eldad Fux](https://twitter.com/eldadfux), said, "Appwrite was born out of necessity". After working on multiple startups and years of experience in the industry, Eldad said, "I didn't want to suffer from doing the same thing over and over again."
+In one interview, the CEO of Appwrite, [Eldad Fux](https://twitter.com/eldadfux), said, "Appwrite was born out of necessity". After working on multiple startups and years of experience in the industry, Eldad said, "I didn't want to suffer from doing the same thing over and over again."
 
 # Choosing a BaaS provider
 
@@ -65,7 +65,7 @@ One of the main concerns with using Firebase is that the data stored in Firebase
 
 ## The open-source solution
 
-These concerns are exactly why Appwrite was developed as the truly 100% open source Backend As A Service. A platform that is committed to giving you control over your tools and data while developing with the open source community.
+These concerns are exactly why Appwrite was developed as the truly 100% open source Backend as a Service. A platform that is committed to giving you control over your tools and data while developing with the open source community.
 
 Appwrite has addressed many of the problems developers in the community face, which is why it is being adopted at an incredible pace with amazing support! Since its launch in 2019, Appwrite has raised $37 million in seed rounds, was named Product Hunt's #1 product of the day after launching version 1.0, has gained over 33k GitHub stars with over 700 open source contributors, and has grown one of the most active developer communities on discord with over 17,000 members!
 

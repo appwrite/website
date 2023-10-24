@@ -32,7 +32,7 @@ If this is your first time using Appwrite, create an account and create your fir
 
 Then, under **Add a platform**, add an **Android app**.
 
-Add your app's **name** and **package name**, your package name is the one entered when creating an Android project. For existing projects, you should use the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-android/blob/master/app/build.gradle#L11) file.
+Add your app's **name** and **package name**, your package name is the one entered when creating an Android project. For existing projects, you should use the `applicationId` in your app-level [build.gradle](https://github.com/appwrite/playground-for-android/blob/master/app/build.gradle#L11) file.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -46,7 +46,7 @@ You can skip optional steps.
 {% /section %}
 
 {% section #step-3 step=3 title="Add the Appwrite SDK" %}
-To add the Appwrite SDK for Android as a dependency, add the following to your app-level **build.gradle.kts** file inside the **dependencies** block.
+To add the Appwrite SDK for Android as a dependency, add the following to your app-level `build.gradle.kts` file inside the **dependencies** block.
 
 ```kotlin
 implementation("io.appwrite:sdk-for-android:4.0.0")

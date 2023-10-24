@@ -15,7 +15,7 @@ Client libraries for integrating with Appwrite to build client-based application
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
-* GitHub Repository
+* GitHub repository
 * &nbsp; {% width=80 %}
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
@@ -50,7 +50,7 @@ Server libraries for integrating with Appwrite to build server side integrations
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
-* GitHub Repository
+* GitHub repository
 * &nbsp; {% width=80 %}
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}

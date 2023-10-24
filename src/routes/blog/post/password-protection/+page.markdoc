@@ -61,7 +61,7 @@ Implement password reset functionality using a secure token that expires after a
 Always store hashed and salted passwords instead of plain text. Hashing is a one-way function that transforms a password into a fixed-length string of characters, while salting adds a random value to the password before hashing to prevent precomputed attacks like rainbow tables. Use modern hashing algorithms like `bcrypt`, `scrypt`, or `Argon2`, which are designed to be slow and computationally expensive, making brute-force attacks more difficult.
     
 - **Use rate limiting and account lockout mechanisms**  
-Prevent brute-force attacks by temporarily locking accounts or requiring users to complete a captcha after a certain number of failed login attempts. Implement rate limiting to limit the number of authentication attempts within a specific time frame. This will also give your team time to investigate and prevent attacks before damage is caused.
+Prevent brute-force attacks by temporarily locking accounts or requiring users to complete a CAPTCHA after a certain number of failed login attempts. Implement rate limiting to limit the number of authentication attempts within a specific time frame. This will also give your team time to investigate and prevent attacks before damage is caused.
     
 - **Monitor and audit**  
 Regularly monitor and audit your authentication system for suspicious activity and maintain logs to help with incident response and forensic analysis.
@@ -70,6 +70,6 @@ Regularly monitor and audit your authentication system for suspicious activity a
 Please help your users understand why setting strong passwords is necessary and how password managers like LastPass, 1Password, or Bitwarden can help them generate and manage their passwords.
     
 
-## Moving Forward
+## Moving forward
 
 Security is a shared responsibility between developers and users. Collaborating with them in this process is essential to implement better password protection and keep your applications secure. As a developer, by the way, if you would like to try an authentication solution that implements better password protection policies out-of-the-box, look at [Appwrite](https://appwrite.io/docs/products/auth). With various features such as password hashing, session limits, a strong permissions system, password history, a password dictionary, and personal data checks in passwords, [Appwrite Authentication](https://appwrite.io/docs/products/auth) offers an easy-to-implement yet robust authentication system for you to build with.

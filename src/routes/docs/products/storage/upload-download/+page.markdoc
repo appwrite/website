@@ -127,7 +127,7 @@ When you are trying to upload any files above 5MB, you will need to upload them 
 If you're using an Appwrite SDK, this is handled automatically. 
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
-# InputFile {% #input-file %}
+# Input file {% #input-file %}
 Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
 
 # Client SDKs {% #client-sdks %}
@@ -489,7 +489,7 @@ class MainActivity : AppCompatActivity() {
 ```
 {% /multicode %}
 
-# Get File {% #get-file %}
+# Get file {% #get-file %}
 To get a file, use the `getFile` method.
 
 {% multicode %}
@@ -598,7 +598,7 @@ class MainActivity : AppCompatActivity() {
 ```
 {% /multicode %}
 
-# Get File Preview {% #get-file-preview %}
+# Get file preview {% #get-file-preview %}
 To get a file preview image , use the `getFilePreview` method.
 
 {% multicode %}
@@ -703,7 +703,7 @@ class MainActivity : AppCompatActivity() {
 ```
 {% /multicode %}
 
-# View File {% #view-file%}
+# View file {% #view-file%}
 
 To view a file, use the `getFileView` method.
 

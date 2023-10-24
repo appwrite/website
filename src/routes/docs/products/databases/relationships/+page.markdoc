@@ -13,7 +13,7 @@ These types of association between entities can be modeled in Appwrite using rel
 Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
 {% /info %}
 
-# Relationship Attributes {% #relationship-attributes %}
+# Relationship attributes {% #relationship-attributes %}
 
 Relationships are represented in a collection using **relationship attributes**. 
 The relationship attribute contains the ID of related documents, which it references during read, update, and delete operations. 
@@ -512,7 +512,7 @@ databases.createDocument(
 # Queries {% #queries %}
 Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
 
-# Update Relationships {% #update %}
+# Update relationships {% #update %}
 Relationships can be updated by updating the relationship attribute.
 
 {% multicode %}

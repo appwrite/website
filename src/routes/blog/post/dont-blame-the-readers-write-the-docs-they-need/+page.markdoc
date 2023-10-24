@@ -26,7 +26,7 @@ Over the past year, we’ve noticed conversations like this in Appwrite communit
 
 # Identifying the issues
 
-The Appwrite team has always valued documentation as a core part of the product. After all, most adoption begins at the documentation. The old documentation was minimalistic and to the point and reflects our product philosophy. You can skim through it in one sitting and learn how to start building with Appwrite.
+The Appwrite team has always valued documentation as a core part of the product. After all, most adoption begins at the documentation. The old documentation was minimal and to the point and reflects our product philosophy. You can skim through it in one sitting and learn how to start building with Appwrite.
 
 The old Appwrite docs are good but designed for a different audience and a different product. As Appwrite’s capabilities grow, so does the amount of documentation. 
 More features simply need more words to explain, and the single-side navigation becomes more bloated with more information than we ever intended. 
