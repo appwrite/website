@@ -1,0 +1,58 @@
+---
+layout: tutorial
+title: Add navigation
+description: Add navigation to your app.
+step: 5
+---
+
+To help our users navigate the app we want it to have a navigation bar that's visible on all pages.
+We will use the `useUserSession` composable to show a login button when no user is logged in and a logout button when logged in.
+Open the `app.vue` file and add the navbar in the `template`, just above the `<NuxtPage />` tag.
+
+```vue
+...
+  <NuxtLayout>
+
+  <!--- Navbar -->
+    <nav class="main-header u-padding-inline-end-0">
+      <h3 class="u-stretch eyebrow-heading-1">Idea Tracker</h3>
+
+      <!-- Email and logout button if logged in user -->
+      <div
+        class="main-header-end u-margin-inline-end-16"
+        v-if="user.isLoggedIn.value === true"
+      >
+        <p>
+          {{ user.current.value.providerUid }}
+        </p>
+        <button class="button" type="button" @click="user.logout()">
+          Logout
+        </button>
+      </div>
+
+      <!-- Login button if no user logged in -->
+      <NuxtLink v-else href="/login" class="button u-margin-inline-end-16">
+        Login
+      </NuxtLink>
+    </nav>
+    <NuxtPage />
+  </NuxtLayout>
+...
+```
+
+Add a new script below the template to get information about the user session from the `useUserSession`composable.
+
+```vue
+<script>
+export default {
+  setup() {
+    const user = useUserSession(); //Access the user session composable
+    return {
+      user,
+    };
+  },
+};
+</script>
+```
+
+You might wonder about the v-

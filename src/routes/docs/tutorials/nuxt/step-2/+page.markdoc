@@ -1,0 +1,98 @@
+---
+layout: tutorial
+title: Create app
+description: Create a Nuxt app project and integrate with Appwrite
+step: 2
+---
+
+# Create Nuxt project {% #create-nuxt-project %}
+
+Create a Nuxt app with the `npx init` command.
+
+```sh
+npx nuxi@latest init ideas-tracker
+```
+
+# Add dependencies {% #add-dependencies %}
+
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+You can start the development server to watch your app update in the browser as you make changes.
+
+```sh
+npm run dev
+```
+
+# Set up files {% #set up-files %}
+
+In Nuxt, directories help organize the codebase and minimize boilerplate.
+The purpose is making it easy to find and manage different aspect of your application.
+
+The files added to the `pages` directory will automatically become a route.
+Nuxt will look for a layout in the `layouts` directory to render a page layout.
+Without a layout file in this directory, the routing won't work
+When these files have been created the `app.vue` file needs to edited to render these pages instead of the standard welcome page.
+Then, we will have a working app where we can verify our changes in the browser throughout the tutorial.
+As an additional step, we will be adding [Appwrite's Pink Design system]('https://pink.appwrite.io/') to have a global design system to help with the layout.
+
+First, add a page by creating the file `src/pages/index.vue` and add the following code.
+
+```vue
+<template>
+  <div>
+    <h1>Hello, idea tracker!</h1>
+  </div>
+</template>
+```
+
+Create the file `src/layouts/default.vue` to add the default layout.
+
+```vue
+<template>
+  <div>
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  layout: "default",
+};
+</script>
+```
+
+Go to `app.vue`, remove `NuxtWelcome`and insert `<NuxtPage />` wrapped inside `<NuxtLayout>`.
+
+```vue
+<template>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
+```
+
+To import Appwrite's design system to all pages and components, edit the file `nuxt.config.ts`.
+The layouts is then ready to be used in the templates with auto-import.
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        { rel: "stylesheet", href: "https://unpkg.com/@appwrite.io/pink" },
+        {
+          rel: "stylesheet",
+          href: "https://unpkg.com/@appwrite.io/pink-icons",
+        },
+      ],
+    },
+  },
+  devtools: { enabled: true },
+});
+```
