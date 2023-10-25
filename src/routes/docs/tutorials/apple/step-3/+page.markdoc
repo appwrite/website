@@ -61,16 +61,16 @@ Create a collection and name it `habits`. Optionally, add a custom collection ID
 
 Navigate to **Attributes** and create attributes by clicking **Create attribute** and add the following attributes. 
 
-| Field          | Type     | Required |
-|----------------|----------|----------|
-| userId         | String   | Yes      |
-| title          | String   | Yes      |
-| description    | String   | No       |
-| icon           | String   | Yes      |
-| goals          | Integer  | Yes      |
-| goalCompleted  | Integer  | Yes      |
-| startDate      | DateTime | Yes      |
-| endDate        | DateTime | Yes      |
+| Field          | Type     | Required | Size | Min | Max | Default Value |
+|----------------|----------|----------|------|-----|-----|---------------|
+| userId         | String   | Yes      | 250  |     |     |               |
+| title          | String   | Yes      | 250  |     |     |               |
+| description    | String   | No       |      |     |     |               |
+| icon           | String   | No       | 200  |     |     | calendar      |
+| goals          | Integer  | Yes      |      | 1   | 10  | 1             |
+| goalCompleted  | Integer  | Yes      |      | 0   | 10  | 0             |
+| startDate      | DateTime | No       |      |     |     |               |
+| endDate        | DateTime | No       |      |     |     |               |
 
 Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
 
