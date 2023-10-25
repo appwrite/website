@@ -90,4 +90,4 @@ enum Database: String {
 enum DatabaseCollections : String {
     case habits = "[COLLECTION_ID]"
 }
-``
+```
