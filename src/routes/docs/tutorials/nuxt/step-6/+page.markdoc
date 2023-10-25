@@ -1,0 +1,79 @@
+---
+layout: tutorial
+title: Add database
+description: Add databases and queries for ideas in your Nuxt project.
+step: 6
+---
+
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
+
+Create a new collection with the following attributes:
+| Field       | Type   | Required |
+|-------------|--------|----------|
+| userId      | String | Yes      |
+| title       | String | Yes      |
+| description | String | No       |
+
+Change the collection's permissions in the settings to give access.
+First, add an "Any" role and check the `READ` box.
+Next, add a "Users" role and give them access to create, update and delete.
+
+# Query methods {% #query-methods %}
+Now that you have a collection to hold ideas, we can use it to get, add and remove data from our app.
+We will create a new composable to manage the data fetching and their global state.
+Create a new file in the composables directory, `src/composables/useIdeas.js` and add the following code.
+
+```js
+import { ID, Query } from "appwrite";
+import { database } from "~/appwrite";
+import { ref } from "vue";
+
+const IDEAS_DATABASE_ID = "YOUR_DATABASE_ID";
+const IDEAS_COLLECTION_ID = "YOUR_COLLECTION_ID";
+
+const current = ref(null); //Reference for the fetched data
+
+export const useIdeas = () => {
+
+  /* Fetch the 10 most recent ideas from the database
+     and passes the list to the current reference object */
+  const init = async () => {
+    const response = await database.listDocuments(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      [Query.orderDesc("$createdAt"), Query.limit(10)]
+    );
+    current.value = response.documents;
+  };
+
+  /* Add new idea to the database, add it to the current
+    object and remove the last to still have 10 ideas */
+  const add = async (idea) => {
+    const response = await database.createDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      ID.unique(),
+      idea
+    );
+    current.value = [response, ...current.value].slice(0, 10);
+
+  const remove = async (id) => {
+    await database.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+    await init(); //Refetch ideas to ensure we have 10 items
+  };
+
+  return {
+    add,
+    current,
+    init,
+    remove,
+  };
+};
+```

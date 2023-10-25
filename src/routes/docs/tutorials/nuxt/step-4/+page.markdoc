@@ -1,0 +1,196 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your Nuxt application using Appwrite Web SDK
+step: 4
+---
+
+# Composables {% #composables %}
+
+Composables is a design pattern in Vue and Nuxt to manage logic related to data fetching and global state management.
+You can think of a composable as a way to put pieces of code that do specific tasks into neat little boxes that you can use over and over again in you app.
+
+In the user session composable will put all the logic related to user authentication, such as login, logout and authentication status.
+It will be available for access in all pages and components.
+
+Create your composable for the user session logic by adding the file `src/composables/useUserSession.js`.
+Add the following code.
+
+```js
+import { ID } from 'appwrite'
+import { ref } from 'vue'
+import { account } from '/appwrite'
+
+const current = ref(null) //Reference to the current user object
+const isLoggedIn = ref(null) //Reference to check user status
+
+export const useUserSession = () => {
+  const register = async (email, password) => {
+    await account.create(ID.unique(), email, password) //Interaction with the Appwrite backend
+    await this.login(email, password) //Login the newly created user
+  }
+
+  const login = async (email, password) => {
+    const authUser = await account.createEmailSession(email, password) //Interaction with the Appwrite backend
+    current.value = authUser //Passing user data to the current user reference
+    isLoggedIn.value = true //Setting user status to true
+  }
+
+  const logout = async () => {
+    await account.deleteSession('current') //Interaction with the Appwrite backend
+    current.value = null //Clearing the current user data object
+    isLoggedIn.value = false //Setting user status to false
+  }
+  return {
+    current,
+    isLoggedIn,
+    login,
+    logout,
+    register,
+  }
+```
+
+The `useUserSession()` function is neatly packed and ready to be reused in our pages and components.
+
+# Login page {% #login-page %}
+
+With the authentication functions handled, we can go on to build a simple login page.
+The user interactions will be handled in a form with two input fields for email and password.
+Underneath will be a button to login and a button to register a new user.
+
+The values from the inputs will be bound to a `v-model`.
+The `v-model`acts like a bridge between your input fields and your Javascript code.
+If you change the information with yout code, the input field also changes.
+Similarily, if you type something in the input field, the information in your code also updates.
+It is a two-way-cnnection that are magically links them together.
+
+Create the form by adding a new file `src/pages/index.vue` and put in the following code.
+
+```vue
+<template>
+  <div class="card u-margin-32">
+    <h2 class="eyebrow-heading-2">Login/Register</h2>
+    <form
+      class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
+      @submit.prevent="handleLogin || handleRegistration"
+    >
+      <ul class="form-list">
+        <li class="form-item">
+          <label class="label">Email</label>
+          <div class="input-text-wrapper">
+
+            <!-- Input with v-model to link email field to script -->
+            <input
+              v-model="userData.email"
+              type="email"
+              class="input-text"
+              placeholder="Email"
+              required
+            />
+          </div>
+        </li>
+        <li class="form-item">
+          <label class="label">Password</label>
+          <div class="input-text-wrapper">
+
+            <!-- Input with v-model to link password field to script -->
+            <input
+              v-model="userData.password"
+              type="password"
+              class="input-text"
+              placeholder="Password"
+              required
+            />
+          </div>
+        </li>
+      </ul>
+      <ul class="buttons-list u-margin-block-start-16">
+        <li class="buttons-list-item">
+
+        <!-- Login button -->
+          <button
+            class="button is-small u-margin-inline-start-4"
+            aria-label="Login"
+            @click="handleLogin"
+          >
+            Login
+          </button>
+        </li>
+        <li class="buttons-list-item">
+
+        <!-- Register button -->
+          <button
+            class="button is-small is-secondary u-margin-inline-start-4"
+            aria-label="Register account"
+            @click="handleRegistration"
+          >
+            Register
+          </button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  setup() {
+    //Accessing the user session composable
+    const user = useUserSession();
+
+    //V-model object
+    const userData = {
+      email: "",
+      password: "",
+    };
+
+    //Event handler for logging in
+    const handleLogin = async () => {
+      await user.login(userData.email, userData.password);
+    };
+
+    //Event handler for registrering
+    const handleRegistration = async () => {
+      await user.register(userData.email, userData.password);
+    };
+
+    return {
+      handleLogin,
+      handleRegistration,
+      userData,
+    };
+  },
+};
+</script>
+```
+
+# Home page {% #home-page %}
+
+Now that users can register and login to the app, let's modify the home page in `src/pages/index.vue` to give the logged in users a secret message.
+
+```vue
+<template>
+  <div>
+    <!-- Visible if user is logged in -->
+    <section v-if="user.isLoggedIn.value === true">
+      <h2>Welcome!</h2>
+    </section>
+    <section>
+      <h2>Hello, idea tracker!</h2>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  setup() {
+    //Accessing the user session composable
+    const user = useUserSession();
+
+    return {
+      user,
+    };
+  },
+};
+</script>
+```
