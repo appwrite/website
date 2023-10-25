@@ -76,3 +76,18 @@ Attributes define the structure of your collection's documents. Enter **Attribut
 
 Navigate to **Settings** > **Permissions** and add a new role **All Users**.
 Check the **CREATE**, **UPDATE**, **DELETE** and **READ** permissions, so anyone can create and read documents.
+
+Create a database file in the **Shared/Constant** folder to contain the database id and collection id.
+
+```swift
+import Foundation
+
+enum Database: String {
+    case habit = "[DATABASE_ID]"
+}
+
+
+enum DatabaseCollections : String {
+    case habits = "[COLLECTION_ID]"
+}
+``
