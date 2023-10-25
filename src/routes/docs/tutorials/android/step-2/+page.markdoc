@@ -14,7 +14,11 @@ difficulty: beginner
 
 3. Select **Empty Activity**
 
+![Empty Activity](/images/docs/tutorials/recipewrite-empty-activity.png)
+
 4. Name your project **Recipewrite**, select Java language, and minimum SDK would be **23**
+
+![New Project](/images/docs/tutorials/recipewrite-new-project.png)
 
 # Add dependencies {% #add-dependencies %}
 

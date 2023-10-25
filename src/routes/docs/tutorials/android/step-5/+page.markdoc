@@ -16,6 +16,13 @@ Click on **Create collection**, give it any name and set Collection ID to `recip
 
 In **Attributes** tab, create two new attributes.
 
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-attributes.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-attributes.png)
+{% /only_light %}
+
 - **name**
     - **Type**: String
     - **Key**: name
@@ -30,11 +37,25 @@ In **Attributes** tab, create two new attributes.
 
 In **Indexes** tab, create a new index. This will be important for search feature of our app.
 
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-indexes.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-indexes.png)
+{% /only_light %}
+
 - **recipe_index**
     - **Type**: FullText
     - **Attribute**: recipe
 
 In **Settings** tab, find **Permissions** heading, add **Any** role and turn on all options, i.e., Create, Read, Update and Delete. You can learn more about Appwrite permissions [here](https://appwrite.io/docs/advanced/platform/permissions).
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-permissions.png)
+{% /only_light %}
 
 # Recipe Model {% #recipe-model %}
 

@@ -465,6 +465,8 @@ Right click on **res** folder, click **New**, click **Vector Asset**.
 
 Choose logout icon in **Clip Art** and then give the asset **logout** name.
 
+![Asset Studio](/images/docs/tutorials/recipewrite-asset-studio.png)
+
 Now, create a new file **res/menu/mymenu.xml**
 
 ```xml
