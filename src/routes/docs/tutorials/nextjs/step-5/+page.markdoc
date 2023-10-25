@@ -19,7 +19,7 @@ In the collection go to attributes and add the following attributes:
 |-------------|---------|----------|----------------|
 | userId      | String  | Yes      |                |
 | title       | String  | Yes      |                |
-| amount      | Integer | Yes      |                |
+| amount      | Float   | Yes      |                |
 | type        | Enum    | Yes      | Paid, Received |
 
 Now that we have created a collection, we have to add permissions to the collection. Go to the settings tab, scoll to the permissions sections add the following permissions:
@@ -249,6 +249,7 @@ const CreateExpensePopup = ({ setPopup, createExpense }) => {
                 placeholder="Title"
                 name="amount"
                 type="number"
+                step="0.01"
                 required
                 min="0"
               />
