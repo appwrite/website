@@ -44,6 +44,7 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
+
 import { Client, Databases, Account } from "appwrite";
 
 const client = new Client();

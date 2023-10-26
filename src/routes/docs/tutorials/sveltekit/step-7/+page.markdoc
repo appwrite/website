@@ -14,29 +14,28 @@ Overwrite the contents of `src/routes/+page.svelte` with the following code.
   import { user } from "$lib/stores/user";
   import { ideas } from "$lib/stores/ideas";
 
-  let title = "";
-  let description = "";
+  const add = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    ideas.add($user.$id, formData.get("title"), formData.get("description"));
+  };
 </script>
 
 {#if $user}
   <section>
     <h2>Submit Idea</h2>
-    <form>
-      <input type="text" placeholder="Title" bind:value={title} />
-      <textarea placeholder="Description" bind:value={description} />
-      <button
-        type="button"
-        on:click={async () => {
-          ideas.add($user.$id, title, description);
-          title = "";
-          description = "";
-        }}>Submit</button
-      >
+    <form on:submit={add}>
+      <input type="text" placeholder="Title" name="title" required  />
+      <textarea placeholder="Description" name="description" required />
+      <button type="submit">
+        Submit
+      </button>
     </form>
   </section>
 {:else}
   <section><p>Please login to submit an idea.</p></section>
 {/if}
+
 <section>
   <h2>Latest Ideas</h2>
   <ul>
@@ -45,11 +44,13 @@ Overwrite the contents of `src/routes/+page.svelte` with the following code.
         <strong>{idea.title}</strong>
         <p>{idea.description}</p>
         {#if $user && idea.userId === $user.$id}
-          <button type="button" on:click={() => ideas.remove(idea.$id)}
-            >Remove</button
-          >
+          <button type="button" on:click={() => ideas.remove(idea.$id)}>
+            Remove
+          </button>
         {/if}
       </li>
+    {:else}
+      <li>No ideas yet.</li>
     {/each}
   </ul>
 </section>
