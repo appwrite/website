@@ -22,7 +22,7 @@ import {
 
 export async function POST(req) {
   const body = await req.json();
-  const { userId, limit, start } = body;
+  const { userId, limit, start } = body; // Add limit and start
   const headersList = headers();
   const jwt = headersList.get("jwt");
 
@@ -38,8 +38,8 @@ export async function POST(req) {
       [
         Query.equal("userId", [userId]),
         Query.orderDesc("$createdAt"),
-        Query.limit(limit),
-        Query.offset(parseInt(start)),
+        Query.limit(limit), // Query limit
+        Query.offset(parseInt(start)), // Query start offset
       ]
     );
     return new NextResponse(
@@ -82,15 +82,22 @@ import EditExpensePopup from "@/components/EditExpensePopup";
 const Home = (props) => {
   const [expenses, setExpenses] = useState();
   const [popup, setPopup] = useState(null);
-  const [start, setStart] = useState(0);
-  const [total, setTotal] = useState(0);
-  const limit = 5;
+  // New state to track the start
+  const [start, setStart] = useState(0); 
+  // New state to track the total
+  const [total, setTotal] = useState(0); 
+  const limit = 5; // Add limit per page
   const cookie = useCookie(props.cookie);
   const router = useRouter();
   const jwt = cookie.get("jwt");
   const userId = cookie.get("userid");
 
   const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+
     const response = await fetch("/api/expense/list", {
       method: "POST",
       headers: {
@@ -98,7 +105,7 @@ const Home = (props) => {
         jwt,
       },
       body: JSON.stringify({
-        userId, start, limit,
+        userId, start, limit, // Pass the start and limit
       }),
     });
     const data = await response.json();
@@ -109,7 +116,8 @@ const Home = (props) => {
       router.push("/login");
     } else {
       setExpenses(data.items);
-      setTotal(data.total);
+      // Set the total
+      setTotal(data.total); 
     }
   };
 
@@ -117,7 +125,8 @@ const Home = (props) => {
     getExpenses();
   }, [start]);
 
-  const pages = Math.ceil(total / limit);
+  // Calculate the number of pages
+  const pages = Math.ceil(total / limit); 
 
   const createExpense = async (item) => {
     ...
@@ -160,6 +169,7 @@ We are also calculating `pages` using the `total` and `limit` with the [Math.cei
 Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code: 
 
 ```js
+// Pagination buttons
 <div className="container u-flex-vertical u-gap-12 u-cross-center">
   <h1 className="heading-level-1 font-bold">Your expenses</h1>
   <ExpenseList setPopup={setPopup} expenses={expenses} />
