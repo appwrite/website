@@ -54,7 +54,7 @@ We are also using Appwrite's `Query` class to filter the documents. We have used
 
 # Expense list component {% #expense-list-component %}
 
-Let's fetch the user expenses from the database and display them in a list. Open the `app/page.js` file and add the following code.
+Let's fetch the user expenses from the database and display them in a list. Open the `/src/app/page.js` file and add the following code.
 
 ```js
 "use client";
@@ -76,6 +76,11 @@ const Home = (props) => {
   const userId = cookie.get("userid");
 
   const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+
     const response = await fetch("/api/expense/list", {
       method: "POST",
       headers: {
@@ -134,7 +139,7 @@ const Home = (props) => {
 export default Home;
 ```
 
-Now we will render the Expenses. Create a new file `components/ExpenseList.js` and add the following code.
+Now we will render the Expenses. Create a new file `/src/components/ExpenseList.js` and add the following code.
 
 ```js
 import React from "react";
