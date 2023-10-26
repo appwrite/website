@@ -157,6 +157,8 @@
         <div class="cards-wrapper">
             <a
                 href="/discord"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-discord"
             >
