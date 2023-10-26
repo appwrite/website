@@ -23,7 +23,7 @@ export async function load() {
                 title: frontmatter.title,
                 framework: frontmatter.framework,
                 draft: frontmatter.draft,
-                href: `${base}/blog/post/${tutorialName}`
+                href: `${base}/docs/tutorials/${tutorialName}`
             };
         })
         .sort((a, b) => {
