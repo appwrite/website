@@ -9,6 +9,8 @@ step: 4
 
 In your project under the app directory, create a new file `src/app/(pages)/signup/page.js`. Next.js will automatically create a route for this page `/signup`. Let's create the signup form.
 
+We will be using Appwrite's `create` method to create a new user. We will also be using `createEmailSession` method to create a new session.
+
 ```js
 "use client";
 
@@ -23,6 +25,31 @@ import { account } from "@/config/appwrite";
 const SignUp = (props) => {
   const router = useRouter();
   const cookie = useCookie(props.cookie);
+
+  const signup = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const name = formData.get("name");
+    if (!email || !password || !name) {
+      toast.error("Please fill in all the fields");
+      return;
+    }
+    try {
+      await account.create(ID.unique(), email, password, name);
+      await account.createEmailSession(email, password);
+      const jwt = await account.createJWT();
+      const user = await account.get();
+      cookie.set("jwt", jwt.jwt);
+      cookie.set("userid", user.$id);
+      toast.success("Signed up successfully");
+      router.push("/");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <section className="container u-flex u-main-center u-cross-center u-full-screen-height">
@@ -85,37 +112,6 @@ const SignUp = (props) => {
 export default SignUp;
 ```
 
-Now let's add the signup function. We will be using Appwrite's `create` method to create a new user.
-
-
-```js
-// /src/app/(pages)/signup/page.js
-const signup = async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const name = formData.get("name");
-  if (!email || !password || !name) {
-    toast.error("Please fill in all the fields");
-    return;
-  }
-  try {
-    await account.create(ID.unique(), email, password, name);
-    await account.createEmailSession(email, password);
-    const jwt = await account.createJWT();
-    const user = await account.get();
-    cookie.set("jwt", jwt.jwt);
-    cookie.set("userid", user.$id);
-    toast.success("Signed up successfully");
-    router.push("/");
-  } catch (error) {
-    toast.error(error.message);
-  }
-};
-```
-
 First, we need to create the user in our Appwrite instance. After the user is created, we create a session using `createEmailSession` method, to effectively login the user into our app. We then create a JWT token using the `createJWT` method, and store the token and user ID into a cookie. This allows the user to remain logged in, even if the app is closed.
 
 With all that done, we can redirect the user to the home page.
@@ -123,6 +119,8 @@ With all that done, we can redirect the user to the home page.
 # Login page {% #login-page %}     
 
 In your project under the app directory, create a new file `src/app/(pages)/login/page.js`. Next.js will automatically create a route for this page `/login`. Let's create the login form.
+
+We will be using Appwrite's `createEmailSession` method to create a new session. 
 
 ```js
 "use client";
@@ -137,6 +135,29 @@ import { account } from "@/config/appwrite";
 const Login = (props) => {
   const router = useRouter();
   const cookie = useCookie(props.cookie);
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    if (!email || !password) {
+      toast.error("Please fill in all the fields");
+      return;
+    }
+    try {
+      await account.createEmailSession(email, password);
+      const jwt = await account.createJWT();
+      const user = await account.get();
+      cookie.set("jwt", jwt.jwt);
+      cookie.set("userid", user.$id);
+      toast.success("Logged in successfully");
+      router.push("/");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <section className="container u-flex u-main-center u-cross-center u-full-screen-height">
@@ -185,33 +206,6 @@ const Login = (props) => {
 };
 
 export default Login;
-```
-
-Now let's add the login function. We will be using Appwrite's `createEmailSession` method to create a new session. 
-
-```js
-const loginUser = async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  const email = formData.get("email");
-  const password = formData.get("password");
-  if (!email || !password) {
-    toast.error("Please fill in all the fields");
-    return;
-  }
-  try {
-    await account.createEmailSession(email, password);
-    const jwt = await account.createJWT();
-    const user = await account.get();
-    cookie.set("jwt", jwt.jwt);
-    cookie.set("userid", user.$id);
-    toast.success("Logged in successfully");
-    router.push("/");
-  } catch (error) {
-    toast.error(error.message);
-  }
-};
 ```
 
 After the session is created, we are creating a JWT token using `createJWT` method. We are storing the JWT token and user id in the cookie. Then we are redirecting the user to the home page.
