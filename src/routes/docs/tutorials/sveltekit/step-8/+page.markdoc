@@ -1,9 +1,0 @@
----
-layout: tutorial
-title: Next steps
-description: View your SvelteKit project powered by Appwrite authentication and databases.
-step: 8
----
-
-# Test your project {% #test-project %}
-Run your project with `npm run dev` and open [http://localhost:5173](http://localhost:5173) in your browser.
