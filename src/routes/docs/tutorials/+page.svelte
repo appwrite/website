@@ -61,7 +61,7 @@
                 <ul class="tutorial-grid">
                     {#each data.tutorials as tutorial}
                         <li>
-                            <a href="/docs/tutorials/react" class="aw-card is-normal">
+                            <a href={tutorial.href} class="aw-card is-normal">
                                 <header>
                                     <span
                                         class="{getIcon(tutorial)} aw-u-font-size-24"
@@ -81,7 +81,7 @@
                 <ul class="tutorial-grid">
                     {#each data.drafts as draft}
                         <li>
-                            <a href="/docs/tutorials/react" class="aw-card is-normal draft">
+                            <a href={draft.href} class="aw-card is-normal draft">
                                 <header>
                                     <span
                                         class="{getIcon(draft)} aw-u-font-size-24"
