@@ -170,7 +170,7 @@
         {#if $showTopBanner}
             <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
                 <div class="aw-top-banner-content aw-u-color-text-primary">
-                    <a href="https://appwrite.io/discord" target="_blank" rel="noopener noreferrer">
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
                         <span class="aw-caption-500">We are having lots of fun on</span>
                         <span class="aw-icon-discord" aria-hidden="true" />
                         <span class="aw-caption-500">Discord. Come and join us!</span>
