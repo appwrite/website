@@ -118,6 +118,10 @@ Since we're creating a new document, it doesn't yet have an ID. We can use the `
 
 The document created by this endpoint represents a new expense. The endpoint is now available at `http://localhost:3000/api/expense`.
 
+# Create expense popup {% #create-expense-popup %}
+
+Now that we have an endpoint to add a new expense, we can create a popup to add a new expense. We will manage the in our homepage.In Next.js the `/src/app/page.js` serves as the home page. Open the file and add the following code.
+
 ```js
 "use client";
 

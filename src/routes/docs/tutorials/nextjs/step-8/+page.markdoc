@@ -63,7 +63,7 @@ Learn more about [Appwrite Query](https://appwrite.io/docs/products/databases/qu
 
 
 # Pagination in the frontend {% #add-pagination-frontend %}
-We will now add pagination in the frontend. We edit `app/page.js` and add the following code:
+We will now add pagination in the frontend. Edit the `/src/app/page.js` file and add the following code:
 
 ```js
 "use client";
@@ -166,7 +166,7 @@ We are using the `start` and `limit` to get the expenses. We are also calculatin
 
 We are also calculating `pages` using the `total` and `limit` with the [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil) function.
 
-Now, after the rendering the list, we will add the pagination buttons. Edit `/pages/index.js` and add the following code: 
+Now, after the rendering the list, we will add the pagination buttons. Edit `/src/app/page.js` and add the following code: 
 
 ```js
 // Pagination buttons

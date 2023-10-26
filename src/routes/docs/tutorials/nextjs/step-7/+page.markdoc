@@ -84,6 +84,8 @@ The `setPopup` function is passed as a prop to the `ExpenseList` component from 
 
 We will also add the `editExpense` function. This function will make a `PUT` request to the `http://localhost:3000/api/expense` endpoint to update the expense.
 
+Edit the `/src/app/page.js` file to add the `editExpense` function.
+
 ```js
 "use client";
 
@@ -354,7 +356,7 @@ We will add a click event handler to the delete button in the `ExpenseList` comp
 
 The `setPopup` function is passed as a prop to the `ExpenseList` component from the `ExpenseList` component. This is the same state that we used to edit the expense.
 
-We will also add the `deleteExpense` function in the `pages/index.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
+We will also add the `deleteExpense` function in the `/src/app/page.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
 
 ```js
 "use client";
