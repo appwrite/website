@@ -7,7 +7,7 @@ step: 4
 
 # Using stores {% #using-stores %}
 
-In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to share state and changes between components. 
+In Svelte, [stores](https://svelte.dev/docs/svelte-store) are a way to manage state throughout your application.
 We'll use a store to keep track of our user's data.
 
 Create a new file `src/lib/stores/user.js` and add the following code to it.
@@ -28,8 +28,8 @@ async function init() {
   }
 }
 
-async function register(email, password) {
-  await account.create(ID.unique(), email, password);
+async function register(email, password, name) {
+  await account.create(ID.unique(), email, password, name);
   await login(email, password);
 }
 
@@ -64,20 +64,43 @@ Create a new file `src/routes/login/+page.svelte` and add the following code to 
 <script>
   import { user } from "$lib/stores/user";
 
-  let email = "";
-  let password = "";
+  const login = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    await user.login(formData.get("email"), formData.get("password"));
+  };
+
+  const register = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    await user.register(formData.get("email"), formData.get("password"), formData.get("name"));
+  };
 </script>
 
 <h1>Login or register</h1>
-<form>
-  <input type="email" placeholder="Email" bind:value={email} />
-  <input type="password" placeholder="Password" bind:value={password} />
-  <button type="button" on:click={() => user.login(email, password)}
-    >Login</button
-  >
-  <button type="button" on:click={() => user.register(email, password)}
-    >Register</button
-  >
+
+<form on:submit={login}>
+  <input type="email" placeholder="Email" name="email" required />
+  <input type="password" placeholder="Password" name="password" required />
+  <button type="submit">
+    Login
+  </button>
+</form>
+
+
+<form on:submit={register}>
+  <input type="text" placeholder="Name" name="name" required />
+  <input type="email" placeholder="Email" name="email" required />
+  <input
+    type="password"
+    placeholder="Password"
+    name="password"
+    required
+    minlength="8"
+  />
+  <button type="submit">
+    Register
+  </button>
 </form>
 
 <style>
