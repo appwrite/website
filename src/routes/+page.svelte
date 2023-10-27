@@ -11,6 +11,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import { TITLE_PREFIX } from './titles';
 
     const platforms: Array<{
         name: string;
@@ -65,14 +66,15 @@
     ];
 
     const title = 'Appwrite - Build like a team of hundreds';
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Open-source cloud backend platform for web, app and flutter';
+    const description = 'Appwrite: Build secure and stable applications with less code. Get a complete cloud backend solution with authentication, databases, storage, and more, all with minimal code.';
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
 </script>
 
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />

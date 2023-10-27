@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Start with .NET
-description: Learn to get started with server integrations with Appwrite .NET SDK.
+title: Getting started with Appwrite and .NET
+description: Build .NET apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts

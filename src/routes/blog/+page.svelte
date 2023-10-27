@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
     import { MainFooter, FooterNav, Article } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles.js';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     export let data;
@@ -9,14 +9,15 @@
     const featured = data.posts.find((post) => post.featured);
 
     const title = 'Blog' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Blog';
+    const description = "Appwrite blog: Learn about engineering, how to use Appwrite, building communities, and more from the Appwrite team and community.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />

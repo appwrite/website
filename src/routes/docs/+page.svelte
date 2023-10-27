@@ -2,14 +2,15 @@
     import { Carousel, Spline } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
     import Docs from '$lib/layouts/Docs.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Documentation to get started with Appwrite';
+    const description = 'Get started with Appwrite, the open-source backend-as-a-service (BaaS) platform. Appwrite provides easy-to-start guides and supports many SDKs, so you can code with the language you want.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [
@@ -64,7 +65,7 @@
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />

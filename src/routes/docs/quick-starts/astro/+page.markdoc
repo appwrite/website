@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Start with Astro
+title: Getting started with Appwrite and Astro
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Astro apps.
 difficulty: beginner
 readtime: 3

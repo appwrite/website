@@ -106,14 +106,15 @@
 	];
 
 	const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
-	const description = '';
+	const metaTitle = 'Getting started with Appwrite';
+	const description = 'Learn how to get started with Appwrite, the open source developer platform that makes it easy to build secure and scalable apps.';
 	const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
 <svelte:head>
 	<!-- Titles -->
 	<title>{title}</title>
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={metaTitle} />
 	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />

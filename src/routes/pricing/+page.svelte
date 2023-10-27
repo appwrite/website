@@ -3,19 +3,20 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
 
     const title = 'Pricing' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Cloud Pricing - Start your free trial';
+    const description = "Get started with Appwrite, the open-source backend-as-a-service (BaaS) platform. Appwrite offers a generous free Starter plan and a Pro plan trial, so you can try before you buy.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />

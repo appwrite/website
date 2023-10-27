@@ -4,7 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Carousel } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { newsletter } from '$lib/components/Newsletter.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
@@ -115,14 +115,15 @@
     }
 
     const title = 'Community' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Join the fastest growing open-source community';
+    const description = "Join the Appwrite community and contribute to open source with support from developers all over the world.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />

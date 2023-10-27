@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Start with Angular
+title: Getting started with Appwrite and Angular
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Angular apps.
 difficulty: beginner
 readtime: 3

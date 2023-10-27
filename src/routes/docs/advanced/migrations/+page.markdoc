@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Migrations
-description: Learn how to migrate your projects from other vendors to Appwrite Cloud or how to move from self-hosting to Cloud and the other way around using Appwrite Migrations service.
+description: No vendor lock-in. Appwrite supports multiple source destinations for migrating your data. You can transfer data from these sources to a new or existing Appwrite project.
 difficulty: beginner
 readtime: 5
 ---

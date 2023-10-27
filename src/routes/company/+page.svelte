@@ -2,18 +2,19 @@
 	import { Main } from '$lib/layouts';
 	import MainFooter from '$lib/components/MainFooter.svelte';
 	import FooterNav from '$lib/components/FooterNav.svelte';
-	import { TITLE_SUFFIX } from '$routes/titles';
-	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+	import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
 
 	const title = 'Company' + TITLE_SUFFIX;
-	const description = DEFAULT_DESCRIPTION;
+	const metaTitle = TITLE_PREFIX + 'Fast-growing open-source development platform';
+	const description = "Appwrite: The leading open-source development platform for building feature-rich applications. Join a thriving community of developers and build the next big thing.";
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
 	<!-- Titles -->
 	<title>{title}</title>
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={metaTitle} />
 	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />

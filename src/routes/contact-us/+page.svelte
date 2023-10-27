@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 	import { Main } from '$lib/layouts';
-	import { TITLE_SUFFIX } from '$routes/titles';
+	import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
 	import FooterNav from '../../lib/components/FooterNav.svelte';
 	import MainFooter from '../../lib/components/MainFooter.svelte';
 
@@ -35,14 +35,15 @@
 	}
 
 	const title = 'Contact us' + TITLE_SUFFIX;
-	const description = DEFAULT_DESCRIPTION;
+	const metatitle = TITLE_PREFIX + 'Discord - Join our thriving community!';
+	const description = "Contact Appwrite: We're here to help you with any questions or requests you have.";
 	const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
 	<!-- Titles -->
 	<title>{title}</title>
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={metatitle} />
 	<meta name="twitter:title" content={title} />
 	<!-- Desscription -->
 	<meta name="description" content={description} />

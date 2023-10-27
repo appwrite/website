@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Start with Python
-description: Learn to get started with server integrations with Appwrite Python SDK.
+title: Getting started with Appwrite and Python
+description: Build Python apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts

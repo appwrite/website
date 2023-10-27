@@ -4,12 +4,13 @@
     import { copy } from '$lib/utils/copy';
 
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Brand assets';
+    const description = "Download all of Appwrite's brand assets for use, including logos, naming, brand colors, co-branding logotypes, and product visuals.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     enum Section {
@@ -53,7 +54,7 @@
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Description -->
     <meta name="description" content={description} />

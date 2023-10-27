@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Start with Next.js
+title: Getting started with Appwrite and Next.js
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Next.js apps.
 difficulty: beginner
 readtime: 3

@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Start with Node.js
-description: Dive into our step-by-step guide on integrating Appwrite with your Node.js server backend application. Get your backend up and running quickly with this tutorial.
+title: Getting started with Appwrite and Node.js
+description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Node.js apps.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Migrate from Firebase
-description: Migrate seamlessly from Firebase to Appwrite. Learn how to transfer data, authentication, and services from Firebase to leverage Appwrite's capabilities.
+description: Appwrite is the open-source Firebase alternative. Migrate seamlessly from Firebase to Appwrite. Learn how to transfer data, authentication, and services from Firebase to leverage Appwrite's capabilities.
 difficulty: beginner
 readtime: 20
 ---

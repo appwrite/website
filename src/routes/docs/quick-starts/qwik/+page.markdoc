@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Start with Qwik
+title: Getting started with Appwrite and Qwik
 description: Learn how to use Appwrite to add authentication, user management, file storage, and more to your Qwik apps.
 difficulty: beginner
 readtime: 3

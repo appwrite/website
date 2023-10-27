@@ -2,13 +2,14 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_PREFIX, TITLE_SUFFIX } from '$routes/titles';
     import type { HeroCardProps } from './HeroCard.svelte';
     import HeroCard from './HeroCard.svelte';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     const title = 'Heroes' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const metaTitle = TITLE_PREFIX + 'Heroes program for active contributors';
+    const description = "Appwrite Heroes: An exclusive group of experts dedicated to helping developers succeed with Appwrite. Apply to join the program and gain access to valuable content, resources, and support.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const heroCards: HeroCardProps[] = [
@@ -104,7 +105,7 @@
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
     <meta name="description" content={description} />
