@@ -27,13 +27,13 @@
 
     function getPreferredTheme() {
         if (!browser) {
-            return 'dark';
+            return 'system';
         }
 
         const theme = localStorage.getItem('theme');
 
         if (!isTheme(theme)) {
-            return 'dark';
+            return 'system';
         }
 
         return theme;
