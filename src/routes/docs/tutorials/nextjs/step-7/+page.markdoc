@@ -9,9 +9,11 @@ In the expense card we have added two buttons to edit and delete the expense. We
 
 # Edit expense {% #edit-expense %}
 
-First create a API to edit the expense. We will create `PUT` api in the same `/src/app/api/expense/route.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
+First create a API to edit the expense. We will create `PUT` api in the same `app/api/expense/route.js` file. We will use the `updateDocument` method of the `database` service to update the expense document.
 
 ```js
+// /src/app/api/expense/route.js
+
 import { ID } from "appwrite";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -72,6 +74,8 @@ When the user clicks on the edit button, we will show the expense popup form wit
 We will add a click event handler to the edit button in the `ExpenseList` component.
 
 ```js
+// /src/components/ExpenseList.js
+
 <button
   className="cursor-pointer"
   onClick={() => setPopup({ type: "edit", data: expense })}
@@ -84,9 +88,11 @@ The `setPopup` function is passed as a prop to the `ExpenseList` component from 
 
 We will also add the `editExpense` function. This function will make a `PUT` request to the `http://localhost:3000/api/expense` endpoint to update the expense.
 
-Edit the `/src/app/page.js` file to add the `editExpense` function.
+Edit the `app/page.js` file to add the `editExpense` function.
 
 ```js
+// /src/app/page.js
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -137,7 +143,6 @@ const Home = (props) => {
 
   return (
     <>
-      // Edit expense popup
       {popup?.type === "edit" && (
         <EditExpensePopup
           docId={popup?.data?.$id}
@@ -149,32 +154,16 @@ const Home = (props) => {
           editExpense={editExpense}
         />
       )}
-      // New expense popup
-      {popup?.type === "new" && (
-        <CreateExpensePopup 
-          setPopup={setPopup} 
-          createExpense={createExpense} 
-        />
-      )}
-      <div className="container u-flex-vertical u-gap-12 u-cross-center u-main-center">
-        <h1 className="heading-level-1 font-bold">Your expenses</h1>
-        <button
-          className="button"
-          onClick={() => setPopup({ type: "new", data: null })}
-        >
-          <span className="icon-plus" aria-hidden="true"></span>
-          <span className="text"> New Expense</span>
-        </button>
-        <ExpenseList setPopup={setPopup} expenses={expenses} />
-      </div>
     </>
   )
 }
 ```
 
-Let's create a `EditExpensePopup` component in the `components` folder `/src/components/EditExpensePopup.js`. This component will be used to show the popup form to edit the expense.
+Let's create a `EditExpensePopup` component in the `components` folder `components/EditExpensePopup.js`. This component will be used to show the popup form to edit the expense.
 
 ```js
+// /src/components/EditExpensePopup.js
+
 "use client";
 
 import React from "react";
@@ -283,9 +272,11 @@ export default EditExpensePopup;
 
 # Delete expense {% #delete-expense %}
 
-First create a API to delete the expense. We will create `DELETE` api in the same `/src/app/api/expense/route.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
+First create a API to delete the expense. We will create `DELETE` api in the same `app/api/expense/route.js` file. We will use the `deleteDocument` method of the `database` service to delete the expense document.
 
 ```js
+// /src/app/api/expense/route.js
+
 import { ID } from "appwrite";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -346,6 +337,7 @@ When the user clicks on the delete button, we will show a confirmation popup to 
 We will add a click event handler to the delete button in the `ExpenseList` component.
 
 ```js
+// /src/components/ExpenseList.js
 <button
   className="cursor-pointer"
   onClick={() => setPopup({ type: "delete", data: expense })}
@@ -356,9 +348,11 @@ We will add a click event handler to the delete button in the `ExpenseList` comp
 
 The `setPopup` function is passed as a prop to the `ExpenseList` component from the `ExpenseList` component. This is the same state that we used to edit the expense.
 
-We will also add the `deleteExpense` function in the `/src/app/page.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
+We will also add the `deleteExpense` function in the `app/page.js` file. This function will make a `DELETE` request to the `/api/expense` endpoint to delete the expense. We are using the `docId` to identify the expense to delete.
 
 ```js
+// /src/app/page.js
+
 "use client";
 
 import React, { useState } from "react";
@@ -420,7 +414,6 @@ const Home = (props) => {
           deleteExpense={deleteExpense}
         />
       )}
-      // rest of the code from previous step
     </>
   );
 };
@@ -428,9 +421,11 @@ const Home = (props) => {
 export default Home;
 ```
 
-Let's create a `DeleteExpensePopup` component in the `components` folder `/src/components/DeleteExpensePopup.js`. This component will be used to show the popup form to delete the expense.
+Let's create a `DeleteExpensePopup` component in the `components` folder `components/DeleteExpensePopup.js`. This component will be used to show the popup form to delete the expense.
 
 ```js
+// /src/components/DeleteExpensePopup.js
+
 const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {
   return (
     <div className="u-position-fixed u-inset-0 u-width-full-line u-full-screen-height u-flex u-cross-center u-main-center u-z-index-10 lite-bg">
@@ -458,4 +453,165 @@ const DeleteExpensePopup = ({ popup, setPopup, deleteExpense }) => {
 };
 
 export default DeleteExpensePopup;
+```
+
+
+Here is the full code of `app/page.js` file after edit and delete expense functionality.
+
+```js
+// /src/app/page.js
+
+"use client";
+
+import React, { useState } from "react";
+import { useCookie } from "next-cookie";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
+import DeleteExpensePopup from "@/components/DeleteExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+      }),
+    });
+    const data = await response.json();
+    if (data.message === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+      setTotal(data.total);
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
+  const createExpense = async (title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Saved successfully");
+      setPopup(null);
+      getExpenses();
+    }
+  };
+
+  const editExpense = async (docId, title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        docId: docId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Updated successfully");
+      setPopup(null);
+      getExpenses();
+    }
+  };
+
+  const deleteExpense = async (docId) => {
+    const response = await fetch("/api/expense", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({ docId: docId }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Deleted successfully");
+      setPopup(null);
+      getExpenses(); // get the expenses again
+    }
+  };
+
+  return (
+    <>
+      {popup?.type === "new" && (
+        <CreateExpensePopup 
+          setPopup={setPopup} 
+          createExpense={createExpense} 
+        />
+      )}
+      {popup?.type === "edit" && (
+        <EditExpensePopup
+          docId={popup?.data?.$id}
+          title={popup?.data?.title}
+          amount={popup?.data?.amount}
+          type={popup?.data?.type}
+          popup={popup}
+          setPopup={setPopup}
+          editExpense={editExpense}
+        />
+      )}
+      {popup?.type === "delete" && (
+        <DeleteExpensePopup
+          popup={popup}
+          setPopup={setPopup}
+          deleteExpense={deleteExpense}
+        />
+      )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text"> New Expense</span>
+        </button>
+        <ExpenseList setPopup={setPopup} expenses={expenses} />
+      </div>
+    </>
+  );
+};
+
+export default Home;
 ```

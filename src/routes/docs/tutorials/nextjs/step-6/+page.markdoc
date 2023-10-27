@@ -5,9 +5,11 @@ description: Fetch user expenses from Appwrite database and display them in a li
 step: 6
 ---
 # Create list API {% #create-list-api %} 
-We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `/src/app/api/expense/list/route.js` and add the following code.
+We will create a new API endpoint that will fetch the user expenses from the database. Create a new file `app/api/expense/list/route.js` and add the following code.
 
 ```js
+// /src/app/api/expense/list/route.js
+
 import { Query } from "appwrite";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -54,9 +56,81 @@ We are also using Appwrite's `Query` class to filter the documents. We have used
 
 # Expense list component {% #expense-list-component %}
 
-Let's fetch the user expenses from the database and display them in a list. Open the `/src/app/page.js` file and add the following code.
+Let's fetch the user expenses from the database and display them in a list. Open the `app/page.js` file and add the following code.
 
 ```js
+// /src/app/page.js
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+import ExpenseList from "@/components/ExpenseList";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
+  const cookie = useCookie(props.cookie);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId,
+      }),
+    });
+    const data = await response.json();
+    if (data.error === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
+  const createExpense = async (item) => {
+    ...
+  }
+
+  return (
+    <>
+      <ExpenseList
+        expenses={expenses}
+        setPopup={setPopup}
+      />
+    </>
+  );
+};
+
+export default Home;
+```
+
+Here is the full code for the `app/page.js` file.
+
+```js
+// /src/app/page.js
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -107,8 +181,25 @@ const Home = (props) => {
   }, []);
 
   const createExpense = async (item) => {
-    ...
-  }
+    const response = await fetch("/api/expense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId,
+        title: item.title,
+        amount: item.amount,
+        type: item.type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Saved successfully");
+      setPopup(null);
+    }
+  };
 
   return (
     <>
@@ -139,9 +230,11 @@ const Home = (props) => {
 export default Home;
 ```
 
-Now we will render the Expenses. Create a new file `/src/components/ExpenseList.js` and add the following code.
+Now we will render the Expenses. Create a new file `components/ExpenseList.js`. This component will receive the `expenses` array and we will map over the array and render the expenses in a list.
 
 ```js
+// /src/components/ExpenseList.js
+
 import React from "react";
 
 const ExpenseList = ({ expenses, setPopup }) => {
