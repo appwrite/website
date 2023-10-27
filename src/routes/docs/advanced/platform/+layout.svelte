@@ -54,6 +54,10 @@
 		{
 			label: 'Configuration',
 			items: [
+				{		
+					label: 'Plans',
+					href: '/docs/advanced/platform/plans'
+				},
 				{
 					label: 'Custom domains',
 					href: '/docs/advanced/platform/custom-domains'
