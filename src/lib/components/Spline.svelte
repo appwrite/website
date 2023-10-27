@@ -1,7 +1,7 @@
 <script lang="ts">
+    import type { SplineViewer } from '@splinetool/viewer';
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
-    import type { SplineViewer } from '@splinetool/viewer';
     import { fade } from 'svelte/transition';
 
     export let url: SplineViewer['url'];
@@ -24,12 +24,23 @@
 
         spline.addEventListener('load-complete', onLoad);
     });
+
+    const ENABLED = false;
 </script>
 
-<spline-viewer style="position: absolute;" {url} {width} {height} {loading} bind:this={spline} />
+{#if ENABLED}
+    <spline-viewer
+        style="position: absolute;"
+        {url}
+        {width}
+        {height}
+        {loading}
+        bind:this={spline}
+    />
+{/if}
 
 {#if $$slots?.default && !$loaded}
-    <div out:fade={{duration: 50}}>
+    <div out:fade={{ duration: 50 }}>
         <slot />
     </div>
 {/if}

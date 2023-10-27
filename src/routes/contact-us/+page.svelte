@@ -106,7 +106,7 @@
 			<div class="aw-big-padding-section-level-2">
 				<div class="aw-container">
 					<div class="aw-grid-1-1-opt-2 u-gap-32">
-						<div class="">
+						<div>
 							<div class="aw-u-max-inline-size-none-mobile" class:aw-u-max-width-380={!submitted}>
 								{#if submitted}
 									<section class="u-flex-vertical aw-u-gap-20">
@@ -134,7 +134,7 @@
 									<ul class="u-flex u-gap-8">
 										<li>
 											<a
-												href="https://appwrite.io/discord"
+												href="/discord"
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-discord"
 												target="_blank"

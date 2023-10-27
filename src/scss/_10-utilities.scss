@@ -239,8 +239,9 @@
 }
 
 /* override partial styles */
-.collapsible-button {
-  padding-block:pxToRem(14);
+.collapsible {
+  &-button { padding-block:pxToRem(24); }
+  &-content { margin-block-start:pxToRem(-8); }
 }
 
 .#{$p}-u-flip-x {
@@ -261,4 +262,16 @@
 
 .#{$p}-u-capitalize {
   text-transform:capitalize;
+}
+
+.#{$p}-u-rotate-180 {
+  transform:rotateZ(180deg);
+}
+
+.#{$p}-u-transition {
+  transition:var(--transition);
+}
+
+.#{$p}-u-flex-1 {
+  flex: 1; 
 }
