@@ -4,7 +4,7 @@ title: Build an ideas tracker with Nuxt
 description: Learn to build an idea tracker app with Appwrite and Nuxt with authentication, databases and collections, queries, pagination, and file storage.
 step: 1
 difficulty: beginner
-readtime: 12
+readtime: 15
 back: /docs
 ---
 
