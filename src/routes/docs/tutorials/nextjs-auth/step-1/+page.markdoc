@@ -1,0 +1,35 @@
+---
+layout: tutorial
+title: Getting Started with Appwrite Authentication in Next.js
+description: Set up a Next.js project and integrate Appwrite for authentication.
+step: 1
+difficulty: beginner
+readtime: 15
+---
+
+**Welcome to the Appwrite Authentication Deep Dive for Next.js!**
+In this tutorial series, you will learn how to build a secure authentication system for your Next.js application using Appwrite.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker.png)
+{% /only_light %}
+
+# Concepts {% #concepts %}
+This tutorial series will cover the following key concepts:
+
+1. Setting up a Next.js project.
+2. Integrating Appwrite for authentication.
+3. User sign-up and login workflows.
+4. Email verification and password recovery.
+5. Managing user preferences and account deletion.
+
+# Prerequisites {% #prerequisites %}
+Before you begin, make sure you have the following prerequisites:
+
+1. Basic knowledge of JavaScript and Next.js.
+2. Node.js and NPM installed on your computer. You can download them from [Node.js website](https://nodejs.org/en/).
+
+Let's get started with setting up your Next.js project and integrating Appwrite for authentication!
