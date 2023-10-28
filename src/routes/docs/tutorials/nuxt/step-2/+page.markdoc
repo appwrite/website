@@ -8,6 +8,7 @@ step: 2
 # Create Nuxt project {% #create-nuxt-project %}
 
 Create a Nuxt app with the `npx init` command.
+The command will install all the necessary dependencies for you.
 
 ```sh
 npx nuxi@latest init ideas-tracker
@@ -15,72 +16,19 @@ npx nuxi@latest init ideas-tracker
 
 # Add dependencies {% #add-dependencies %}
 
-Install the JavaScript Appwrite SDK.
+Once the project is created, change your current working directory and install the JavaScript Appwrite SDK.
 
 ```sh
+cd ideas-tracker
 npm install appwrite
 ```
 
-You can start the development server to watch your app update in the browser as you make changes.
-
-```sh
-npm run dev
-```
-
-# Set up files {% #set up-files %}
-
-In Nuxt, directories help organize the codebase and minimize boilerplate.
-The purpose is making it easy to find and manage different aspect of your application.
-
-The files added to the `pages` directory will automatically become a route.
-Nuxt will look for a layout in the `layouts` directory to render a page layout.
-Without a layout file in this directory, the routing won't work
-When these files have been created the `app.vue` file needs to edited to render these pages instead of the standard welcome page.
-Then, we will have a working app where we can verify our changes in the browser throughout the tutorial.
-As an additional step, we will be adding [Appwrite's Pink Design system]('https://pink.appwrite.io/') to have a global design system to help with the layout.
-
-First, add a page by creating the file `src/pages/index.vue` and add the following code.
-
-```vue
-<template>
-  <div>
-    <h1>Hello, idea tracker!</h1>
-  </div>
-</template>
-```
-
-Create the file `src/layouts/default.vue` to add the default layout.
-
-```vue
-<template>
-  <div>
-    <slot />
-  </div>
-</template>
-
-<script>
-export default {
-  layout: "default",
-};
-</script>
-```
-
-Go to `app.vue`, remove `NuxtWelcome`and insert `<NuxtPage />` wrapped inside `<NuxtLayout>`.
-
-```vue
-<template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
-</template>
-```
-
-To import Appwrite's design system to all pages and components, edit the file `nuxt.config.ts`.
-The layouts is then ready to be used in the templates with auto-import.
+Open the file `nuxt.config.ts`and add links to the stylesheets from the `appwrite.io/pink` to import the design system.
+The design system is then ready to be used in all pages and components with auto-import, meaning that you don't have to add import statements to the scripts.
 
 ```ts
+[nuxt.config.ts]
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -95,4 +43,104 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
 });
+```
+
+You can start the development server to watch your app update in the browser as you make your changes.
+
+```sh
+npm run dev
+```
+
+# File structure {% #file-structure %}
+
+Nuxt relies on an opiniated directory structure to automate tasks and help organize the codebase.
+To take advantage of this we need to add the following directories:
+- components
+- composables
+- layouts
+- pages
+
+Create the `components` directory for our components.
+We will come back to it in step 5 when adding navigation.
+
+Add the `composables/` directory and leave it empty for now, too.
+We will use it in step 4 to handle the global states and data fetching for the user authentication.
+
+Next, create the `layouts/` directory and add the file `default.vue`.
+Add the following code for the default layout.
+As you see it's nearly empty but it is needed for the automatic routing to work properly.
+
+```vue
+[src/layouts/default.vue]
+
+<template>
+  <div>
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  layout: "default",
+};
+</script>
+```
+
+The last directory to add is `pages`.
+This is where we will keep the content that will render on our pages in the web application.
+Each file you put in here will automatically become a route.
+Add the file `index.vue` to the `/pages` directory and add the following code.
+
+```vue
+[pages/index.vue]
+
+<template>
+  <div>
+    <h1>Hello, idea tracker!</h1>
+  </div>
+</template>
+```
+
+This is what your directory should look like after adding the new directories and files:
+
+```
+[repository tree]
+
+├── .nuxt/
+├── components/
+├── composables/
+├── layouts/
+│   └── default.vue
+├── pages/
+│   ├── index.vue
+├── public/
+│   └── /favicon.ico
+├── server/
+│   └── /tsconfig.json
+├── .gitignore
+├── app.vue
+├── nuxt.config.ts
+├── package-lock.json
+├── package.json
+├── README.md
+└── tsconfig.json
+```
+
+# Render page {% #rener-page %}
+
+If you run the development server now, it will still render the Nuxt Welcome page.
+We need to tell our app to use the files we just created instead.
+Open `app.vue`in the root directory and replace the content with the following code.
+Your page will now be up and running.
+
+```vue
+[app.vue]
+
+<template>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
 ```

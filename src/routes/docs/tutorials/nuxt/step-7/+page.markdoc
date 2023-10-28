@@ -1,203 +1,222 @@
 ---
 layout: tutorial
-title: Create ideas page
-description: Add database queries using Appwrite in your Nuxt app.
+title: Ideas page
+description: Add ideas from Appwrite database in your app.
 step: 7
 ---
 
-# Create ideas page {% #create-ideas-page %}
+With the methods in the `useIdeas`composable we can get some ideas to the home page for the users to interact with.
+We will use it in a form component so the logged in users can add their ideas, and in a list component to render the ten most recent ideas.
+We start with building the form.
 
-Using the `useIdeas` composable, we can now get some ideas on the page to read and interact with.
-We don't have any to show just yet, so we are going to start with adding a form to create new ones.
-The form will only be visible for logged in users.
+# Idea form {% #idea-form %}
 
-We begin with adding the `v-model` object in the `<script>` tag on `src/pages/index.vue`.
-Unlike the `v-model`on the login form, the properties for the input fields will have `ref` to make them even more reactive to changes.
-The difference is that we want to instantly clear the inputs when the user press the submit button.
-On the login page, we redirected the user to the home page, so this was not necessary.
+On the home page, the logged in users should be able to add their ideas to the Appwrite database.
+The form need a text field for filling in the title, a textarea for the description and a submit button.
 
-Defining our object, we also need to think more closely about what the database is expecting to get.
-Not only does it want the title and the description, first it expects a userId.
-We can't expect our user to enter that, so we will add the one we have in the user session composable.
-This value does not require a `ref` since it is not a part of any other interactions.
+From the `components` directory, add the file `ÌdeasForm.vue` and add the following code.
 
 ```vue
+[components/IdeasForm.vue]
+
+<template>
+  <div>
+    <article class="container padding-0">
+      <h4 class="heading-level-4">Submit Idea</h4>
+      <form @submit.prevent="handleAddIdea" class="u-margin-block-start-16">
+        <ul class="form-list">
+          <!-- Title input field -->
+          <li class="form-item">
+            <label class="label">Title</label>
+            <input
+              type="text"
+              placeholder="Title"
+              v-model="addIdeaData.title.value"
+            />
+          </li>
+          <!-- Description input field -->
+          <li class="form-item">
+            <label class="label">Description</label>
+            <textarea
+              placeholder="Description"
+              v-model="addIdeaData.description.value"
+            />
+          </li>
+          <button class="button" aria-label="Submit idea" type="submit">
+            Submit
+          </button>
+        </ul>
+      </form>
+    </article>
+  </div>
+</template>
+
 <script>
-export default {
-  setup() {
-    const ideas = useIdeas(); // New variable for the ideas composable
-    const user = useUserSession();
+  export default {
+    setup() {
+      const ideas = useIdeas();
+      const user = useUserSession();
 
-    // V-model object
-    const addIdeaData = {
-      title: ref(""),
-      description: ref(""),
-    };
+      // Store input field values
+      const addIdeaData = {
+        title: ref(""),
+        description: ref(""),
+      };
 
-    // Event handler to submit form
-    const handleAddIdea = async () => {
-      // Extract the values from the refs and add userId
-      const postIdeaData = {
-        userId: user.current.value.userId,
-        title: addIdeaData.title.value,
-        description: addIdeaData.title.value
-      }
-      await ideas.add(postIdeaData);
-      addIdeaData.title.value = ""; // Clears the title field
-      addIdeaData.description.value = ""; // Clears the desciption field
-    };
+      const handleAddIdea = async () => {
+        // Extract the values from the refs and add userId
+        const postIdeaData = {
+          userId: user.current.value.userId,
+          title: addIdeaData.title.value,
+          description: addIdeaData.title.value,
+        };
+        await ideas.add(postIdeaData);
+        addIdeaData.title.value = ""; // Clear the title textfield
+        addIdeaData.description.value = ""; // Clear the description textarea
+      };
 
-    return {
-      addIdeaData,
-      handleAddIdea,
-      user,
-    };
-  },
-};
+      return {
+        addIdeaData,
+        handleAddIdea,
+        ideas,
+      };
+    },
+  };
 </script>
+
 ```
 
-Let's remove the header with the secret message we added in step 4 and replace it with a form.
-Since the properties for the `v-model` variables are references, we use the `.value` property to get the correct information to show.
+Next, add the component to the page `pages/index.vue` by auto-importing it in the `<template>`tag.
+In doing that, we need to take a moment to think of how we want to display the form to our.
+Since it should only be shown to logged in user, we need to wrap it in a `<section>`that renders conditionally when the `isLoggedIn` reference in the `useUserSession` is true.
+If the requirement is not met, we show a paragraph with some information to the user instead.
+
+Add the following code to the `index.vue`page to conditionally render the form and information paragraph.
+
+Overwrite the contents of `pages/index.vue` with the following code.
 
 ```vue
-...
-  <!-- Section to display for logged in users -->
-    <section v-if="user.isLoggedIn.value === true" class="u-margin-32">
-      <article class="box">
-        <h4 class="heading-level-4">Submit Idea</h4>
+[pages/index.vue]
 
-        <!-- Form -->
-        <form @submit.prevent="handleAddIdea" class="u-margin-block-start-16">
-          <ul class="form-list">
-            <li class="form-item">
-
-              <!-- Input for title -->
-              <label class="label">Title</label>
-              <input
-                v-model="addIdeaData.title.value"
-                type="text"
-                placeholder="Title"
-              />
-            </li>
-            <li class="form-item">
-
-              <!-- Input for description -->
-              <label class="label">Description</label>
-              <textarea
-                v-model="addIdeaData.description.value"
-                placeholder="Description"
-              />
-            </li>
-            <button class="button" aria-label="Submit idea" type="submit">
-              Submit
-            </button>
-          </ul>
-        </form>
-      </article>
+<template>
+  <div class="u-max-width-650" style="margin: 0 auto;">
+    <!-- Idea form component for logged in users -->
+    <section v-if="user.isLoggedIn.value === true" class="card u-margin-32">
+      <IdeasForm />
     </section>
 
-    <!-- Section to display if the user is not logged in -->
-    <section v-else><p>Please login to submit an idea.</p></section>
-  ...
-```
+    <!-- Paragraph for not logged in users -->
+    <section v-else class="card u-margin-32">
+      <div class="container">
+        <p class="body-text-1" style="width: 100%;">
+          Please login to submit an idea.
+        </p>
+      </div>
+    </section>
+  </div>
+</template>
 
-The next step is to get the newly added ideas from the database and show them below the previous sections.
-This section is visible to all users.
-Since we need the data before any interaction has taken place on the page, like pressing a button, we have to use a function to catch the moment when the page loads.
-The built-in `onMounted` function does just that.
-Inside it we can call the `init()` function from the ideas composable to get the data.
-Add the following to the `setup()`in the `<script>`, just underneath the `useIdeas` variable.
+<script>
+  export default {
+    setup() {
+      const user = useUserSession();
 
-```vue
-  setup() {
-    <!-- After composable variables -->
-    onMounted(() => {
-      ideas.init();
-    });
-    ...
+      return {
+        user,
+      };
+    },
+  };
+</script>
+
+<style>
+  article.box {
+    background-color: hsl(var(--color-neutral-0));
   }
-```
+</style>
 
-Then continue with adding a new section in the template that displays the list of ideas.
+````
+
+# Ideas list {% #ideas-list %}
+Now that we can get some ideas to show, we go on to build the component for the list of ideas.
+
+Once again, we need to take a moment to think about how this component should work.
+First of all, the ideas should be visible for the users before any interaction has taken place on the page.
+To catch that moment in time when the page loads, we call our `init()` function, that fetches the ideas in Appwrite, from the built-in `onMounted` function.
+
+Second, it's likely that a user will want to delete one of their ideas from the database.
+We help them do that by adding a delete button in the top right corner of the idea list item, but only on the ideas added by the user itself.
+
+Add the file `IdeasList`from the `componenents` directory and insert the following code:
 
 ```vue
-  <!-- Form section -->
-  ...
-  <!-- New ideas section -->
+[componenents/IdeasList.vue]
+
+<template>
   <section class="u-margin-32">
     <article class="card">
       <h4 class="heading-level-4">Latest Ideas</h4>
-      <ul>
+      <ul class="u-margin-block-start-8">
         <li v-for="idea in ideas.current.value">
           <div class="box">
             <h5 class="heading-level-6">{{ idea.title }}</h5>
             <p class="body-text-2">{{ idea.description }}</p>
+            <div
+              class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8"
+            >
+              <button
+                class="button is-small is-text is-only-icon"
+                aria-label="Remove item"
+                v-if="
+                  user.current.value &&
+                  idea.userId === user.current.value.userId
+                "
+                type="button"
+                @click="ideas.remove(idea.$id)"
+              >
+                <span class="icon-document-remove" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </li>
       </ul>
     </article>
   </section>
-...
-```
-Great, we can enter new ideas and have look at them!
-It probably won't be long before a user will want to delete an idea.
-We help the by adding a delete button in the top, right corner of their ideas.
-First, we'll add a function to handle the event in the `setup()`.
+</template>
 
-```vue
-setup() {
-  ...
-  // New eventhandler
-  const handleRemoveIdea = async (id) => {
-    await ideas.remove(id);
-  };
+<script>
+  export default {
+    setup() {
+      const ideas = useIdeas();
+      const user = useUserSession();
 
-  return {
-    ...
-    handleRemoveIdea, // Return the added event handler
-    ...
+      // Get ideas on page load
+      onMounted(() => {
+        ideas.init();
+      });
+      return { ideas, user };
+    },
   };
-};
+</script>
+
 ```
 
-The button is added to the `div` that renders the details of an idea.
+Return to the file `pages/index.vue` once more to import the list of ideas.
+This component should be visible to all users, so no conditional rendering neeeds to be handled.
 
 ```vue
-...
-<div class="box">
-  <h5 class="heading-level-6">{{ idea.title }}</h5>
-  <p class="body-text-2">{{ idea.description }}</p>
+[pages/index.vue]
 
-  <!-- New div with icon button -->
-  <div
-    class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8"
-  >
-    <button
-      class="button is-small is-text is-only-icon"
-      aria-label="Remove item"
-      <!-- Ensuring button is only displayed if a user is logged in and the id's are a match -->
-      v-if="
-        user.current.value &&
-        idea.userId === user.current.value.userId
-      "
-      type="button"
-      @click="handleRemoveIdea(idea.$id)"
-    >
-      <span class="icon-document-remove" aria-hidden="true" />
-    </button>
+<template>
+  <div class="u-max-width-650" style="margin: 0 auto;">
+    <!-- Section with form component for logged in users -->
+    <!-- Section with paragraph for not logged in users -->
+
+    <!-- Add list of ideas component for all users -->
+    <IdeasList />
   </div>
-</div>
-...
-```
+</template>
 
-Just one last thing before it's all wrapped up -- the layout needs a finishing touch.
-At the bottom of the file, under the closing `</script>` tag, add a style with a class to change the background color of the list of cards with a color variable.
+````
 
-```vue
-<style>
-article.box {
-  background-color: hsl(var(--color-neutral-0));
-}
-</style>
-```
+Congratulations!
+You now have an ideas tracker built with Nuxt and Appwrite to use locally.
