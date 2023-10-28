@@ -30,5 +30,5 @@ This tutorial will introduce the following concepts:
 
 # Prerequisites {% #prerequisites %}
 
-1. Basic knowledge of JavaScript and Angular.
+1. Basic knowledge of TypeScript and Angular.
 2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer

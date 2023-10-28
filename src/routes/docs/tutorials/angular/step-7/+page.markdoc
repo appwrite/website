@@ -7,9 +7,9 @@ step: 7
 
 Using the `IdeasService`, we can now display the ideas on the page. We will also add a form to submit new ideas.
 
-Overwrite the contents of `src/app/home/home.component.js` with the following:
+Overwrite the contents of `src/app/home/home.component.tsx` with the following:
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { IdeasService } from '../ideas.service';
@@ -43,14 +43,14 @@ import { IdeasService } from '../ideas.service';
   `
 })
 export class HomeComponent {
-  title = '';
-  description = '';
+  title: string = '';
+  description: string = '';
   user$ = this.userService.user$;
   ideas$ = this.ideasService.ideas$;
 
   constructor(private userService: UserService, private ideasService: IdeasService) { }
 
-  addIdea() {
+  addIdea(): void {
     if (this.title && this.description) {
       this.ideasService.add({ title: this.title, description: this.description });
       this.title = '';
@@ -58,7 +58,7 @@ export class HomeComponent {
     }
   }
 
-  removeIdea(id) {
+  removeIdea(id: string): void {
     this.ideasService.remove(id);
   }
 }

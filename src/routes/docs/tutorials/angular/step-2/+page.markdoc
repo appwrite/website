@@ -7,7 +7,13 @@ step: 2
 
 # Create Angular project {% #create-angular-project %}
 
-Create a Angular app with the `ng-new` command.
+If you don't have Angular CLI installed, run this command.
+
+```sh
+npm install -g @angular/cli
+```
+
+Then, Create a Angular app with the `ng new` command.
 
 ```sh
 ng new ideas-tracker && cd ideas-tracker
@@ -15,7 +21,7 @@ ng new ideas-tracker && cd ideas-tracker
 
 # Add dependencies {% #add-dependencies %}
 
-Install the JavaScript Appwrite SDK.
+Install the TypeScript Appwrite SDK.
 
 ```sh
 npm install appwrite

@@ -6,12 +6,12 @@ step: 5
 ---
 
 In our app we want to have a navigation bar that is always visible. We will add it to the `AppComponent` and use the `UserService` to show either:
-- a logout button if the user is logged in.
-- a login button if the user is not logged in.
+- A logout button if the user is logged in.
+- A login button if the user is not logged in.
 
-Update the `AppComponent` in `src/app/app.component.js`:
+Update the `AppComponent` in `src/app/app.component.tsx`:
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
 
@@ -44,7 +44,7 @@ export class NavbarComponent {
 
   constructor(private userService: UserService) { }
 
-  logout() {
+  logout(): void {
     this.userService.logout();
   }
 }
