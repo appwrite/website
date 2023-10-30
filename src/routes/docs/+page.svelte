@@ -17,7 +17,7 @@
             href: '/docs/tutorials/react',
             cover: {
                 src: '/images/tutorials/react.png',
-                alt: 'react logo'
+                alt: ''
             },
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
@@ -26,7 +26,7 @@
             href: '/docs/tutorials/sveltekit',
             cover: {
                 src: '/images/tutorials/svelte.png',
-                alt: 'svelte logo'
+                alt: ''
             },
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
@@ -35,7 +35,7 @@
             href: '/docs/tutorials/vue',
             cover: {
                 src: '/images/tutorials/vue.png',
-                alt: 'Vue logo'
+                alt: ''
             },
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
@@ -44,7 +44,7 @@
             href: '/docs/tutorials/android',
             cover: {
                 src: '/images/tutorials/android.png',
-                alt: 'Android logo'
+                alt: ''
             },
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
@@ -53,7 +53,7 @@
             href: '/docs/tutorials/flutter',
             cover: {
                 src: '/images/tutorials/flutter.png',
-                alt: 'Flutter logo'
+                alt: ''
             },
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
