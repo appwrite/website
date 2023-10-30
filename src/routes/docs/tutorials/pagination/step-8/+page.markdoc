@@ -81,12 +81,12 @@ function CursorPagination(props) {
 This is the most straightforward use of cursor pagination. You have "Load More" button,which will fetch more data based on the last item's cursor.
 {% /tabsitem %}
 {% tabsitem #Bidirectional-cursor-pagination title="Bidirectional Cursor Pagination" %}
-Open the file named `src/pages/TodosWithBidirectionalPagination.jsx`, overwrite the content with the following code:
+Open the file named `src/pages/TodosWithBidirectionalCursorPagination.jsx`, overwrite the content with the following code:
 ```js
 import React, { useCallback } from "react";
 import { useTodos } from "../lib/context/todos-cursor-pagination";
 
-export function TodosWithBidirectionalPagination() {
+export function TodosWithBidirectionalCursorPagination() {
   const todos = useTodos();
 
   return (

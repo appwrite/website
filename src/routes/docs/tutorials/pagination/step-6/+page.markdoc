@@ -100,10 +100,10 @@ Update `src/App.jsx` with the following code:
 import React from "react";
 import { OffsetProvider } from "./lib/context/todos-offset-pagination";
 import { CursorProvider } from "./lib/context/todos-cursor-pagination";
-import { TodosWithBasicPagination } from "./pages/TodosWithBasicPagination";
-import { TodosWithBasicPaginationAndNumbers } from "./pages/TodosWithBasicPaginationAndNumbers";
+import { TodosWithOffsetPagination } from "./pages/TodosWithOffsetPagination";
+import { TodosWithOffsetPaginationAndNumbers } from "./pages/TodosWithOffsetPaginationAndNumbers";
 import { TodosWithBasicCursorPagination } from "./pages/TodosWithBasicCursorPagination";
-import { TodosWithBidirectionalPagination } from "./pages/TodosWithBidirectionalPagination";
+import { TodosWithBidirectionalCursorPagination } from "./pages/TodosWithBidirectionalCursorPagination";
 const Header = () => (
   <div >
     <a href='/basicOffsetPagination'>Basic Offset Pagination</a>
@@ -118,13 +118,13 @@ const Header = () => (
 function App() {
   const showBasicOffsetPagination = () => {
     if (window.location.pathname === "/basicOffsetPagination") {
-      return <TodosWithBasicPagination />;
+      return <TodosWithOffsetPagination />;
     }
   };
 
   const showOffsetPaginationWithPageNumbers = () => {
     if (window.location.pathname === "/offsetPaginationWithPageNumbers") {
-      return <TodosWithBasicPaginationAndNumbers />;
+      return <TodosWithOffsetPaginationAndNumbers />;
     }
   };
 
@@ -136,7 +136,7 @@ function App() {
 
     const showBidirecionalPagination = () => {
     if (window.location.pathname === "/bidirectionalPagination") {
-      return <TodosWithBidirectionalPagination />;
+      return <TodosWithBidirectionalCursorPagination />;
     }
   };
 
@@ -164,7 +164,7 @@ export default App;
 
 Now, we can craft our Todos pages, which will present users with a list of todos-a small chuck of the large dataset in three different ways.
 
-Create four new files in `src/pages/` folder, name them `TodosWithBasicPagination`, `TodosWithBasicPaginationAndNumbers`, `TodosWithBasicCursorPagination`, and `TodosWithBidirectionalPagination `. Then insert this placeholder code in each file:
+Create four new files in `src/pages/` folder, name them `TodosWithOffsetPagination`, `TodosWithOffsetPaginationAndNumbers`, `TodosWithBasicCursorPagination`, and `TodosWithBidirectionalCursorPagination `. Then insert this placeholder code in each file:
 
 ```js
 import { useTodos } from "../lib/context/todos";
