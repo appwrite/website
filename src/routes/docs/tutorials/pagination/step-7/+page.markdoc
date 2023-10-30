@@ -25,34 +25,103 @@ this will retrieve the next four tasks, starting at task-5
 
 We'll explore different UI patterns for offset pagination and how to implement them in our React app.
 
-# Creating the Pagination Component {% #creating-the-pagination-component %}
+# Adding the Pagination Component {% #Adding-the-pagination-component %}
 {% tabs %}
 {% tabsitem #Basic-pagination title="Basic Pagination" %}
 
-Create a file and named `src/components/BasicPagination.jsx`, insert the following code:
+Open the file named `src/pages/Todos1.jsx`, overwrite it with the following code:
 ```js
-import React from 'react';
+import { useCallback } from "react";
+import { useTodos } from "../lib/context/todos";
 
 function BasicPagination(props) {
   const { loadPrev, loadNext, hasNext, hasPrev } = props;
 
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadPrev = useCallback(debounce(loadPrev, 300), [loadPrev]);
+
+  const debouncedLoadNext = useCallback(debounce(loadNext, 300), [loadNext]);
+
   return (
     <div>
-      <button disabled={!hasPrev} onClick={loadPrev}>Previous</button>
-      <button disabled={!hasNext} onClick={loadNext}>Next</button>
+      <button disabled={!hasPrev} onClick={debouncedLoadPrev}>
+        Previous
+      </button>
+      <button disabled={!hasNext} onClick={debouncedLoadNext}>
+        Next
+      </button>
     </div>
   );
 }
 
-export default BasicPagination;
+function TodosWithBasicPagination() {
+  const todos = useTodos();
 
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`} className='todo'>
+            <span>{`Task-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
+          </li>
+        ))}
+      </ul>
+      <BasicPagination
+        loadPrev={todos.loadPrev}
+        loadNext={todos.loadNext}
+        hasNext={todos.hasNext}
+        hasPrev={todos.currentPage > 1}
+      />
+    </section>
+  );
+}
+export default TodosWithBasicPagination;
 ```
 This component will only have "Previous" and "Next" buttons.
 {% /tabsitem %}
 {% tabsitem #numbered-pagination title="Numbered Pagination" %}
-Create a file and named `src/components/NumberedPagination.jsx`, insert the following code:
+Open the file named `src/pages/Todos2.jsx`, overwrite it with the following code:
 ```js
-import React from 'react';
+import { useCallback } from "react";
+import { useTodos } from "../lib/context/todos";
+
+export function TodosWithBasicPaginationAndNumbers() {
+  const todos = useTodos();
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`} className='todo'>
+            <span>{`Task-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
+          </li>
+        ))}
+      </ul>
+      <NumberedPagination
+        currentPage={todos.currentPage}
+        totalPages={todos.totalPages}
+        loadPrev={todos.loadPrev}
+        loadNext={todos.loadNext}
+        loadPage={todos.loadPage}
+        hasNext={todos.hasNext}
+        hasPrev={todos.currentPage > 1}
+      />
+    </section>
+  );
+}
 
 function NumberedPagination(props) {
   const {
@@ -62,10 +131,10 @@ function NumberedPagination(props) {
     loadNext,
     loadPage,
     hasNext,
-    hasPrev
+    hasPrev,
   } = props;
 
-   const pages = [];
+  const pages = [];
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(
@@ -74,17 +143,30 @@ function NumberedPagination(props) {
       </button>,
     );
   }
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadPrev = useCallback(debounce(loadPrev, 300), [loadPrev]);
+
+  const debouncedLoadNext = useCallback(debounce(loadNext, 300), [loadNext]);
 
   return (
     <div>
-      <button disabled={!hasPrev} onClick={loadPrev}>Previous</button>
-      {pages
-      <button disabled={!hasNext} onClick={loadNext}>Next</button>
+      <button disabled={!hasPrev} onClick={debouncedLoadPrev}>
+        Previous
+      </button>
+      {pages}
+      <button disabled={!hasNext} onClick={debouncedLoadNext}>
+        Next
+      </button>
     </div>
   );
 }
-
-export default NumberedPagination;
 ```
 
 This component will have "Previous" and "Next" buttons along with numbered pages for direct navigation.
@@ -93,15 +175,12 @@ This component will have "Previous" and "Next" buttons along with numbered pages
 
 # Update the todos context {% #update-the-todos-context %}
 
-Update the contents of `src/lib/context/todos.jsx` with the following code, replacing `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your project ID and collection ID.
+Update the contents of `src/lib/context/todos.jsx` with the following code:
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../appwrite";
 import { Query } from "appwrite";
-
-const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
-const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
 
 const TodosContext = createContext();
 
@@ -109,16 +188,13 @@ export function useTodos() {
   return useContext(TodosContext);
 }
 
-export function TodosProvider(props) {
+export function OffsetProvider(props) {
   const [todos, setTodos] = useState([]);
   const [offset, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [counts, setCounts] = useState({
-    totalPages: 500,
-    totalResults: 1000,
-  });
+  const [totalPages, setTotalPages] = useState(0);
   const pageLimit = 4;
-  const hasNext = counts.totalPages > currentPage;
+  const hasNext = totalPages > currentPage;
 
   async function loadNext() {
     if (hasNext) {
@@ -139,8 +215,8 @@ export function TodosProvider(props) {
   async function init() {
     try {
       const response = await databases.listDocuments(
-        TODOS_DATABASE_ID,
-        TODOS_COLLECTION_ID,
+        import.meta.env.APPWRITE_DATABASE_ID,
+        import.meta.env.APPWRITE_COLLECTION_ID,
         [
           Query.orderAsc("$createdAt"),
           Query.limit(pageLimit),
@@ -150,10 +226,7 @@ export function TodosProvider(props) {
 
       setTodos(response.documents);
       setCurrentPage(Math.floor(offset / pageLimit) + 1);
-      setCounts({
-        totalPages: response.total / pageLimit,
-        totalResults: response.total,
-      });
+      setTotalPages(response.total / pageLimit);
     } catch (error) {
       console.log(error);
     }
@@ -170,7 +243,7 @@ export function TodosProvider(props) {
         loadPrev,
         loadPage,
         currentPage,
-        totalPages: counts.totalPages,
+        totalPages,
         hasNext,
         hasPrev: currentPage > 1,
       }}>
@@ -182,80 +255,9 @@ export function TodosProvider(props) {
 In this updated context:
  * We're using `Query.limit()` to set the number of tasks we want to fetch per page.
  * We're using `Query.offset()` to set the starting point for fetching tasks based on the current page.
- * We've added `loadNextPage`, `loadPrevPage`, and `loadPage` function to handle pagination.
+ * We've added `loadNext`, `loadPrev`, and `loadPage` function to handle pagination.
 
  Now, you can use this context in your components to display todo items and handle pagination using Appwrite's offset pagination methods.
-
-# Update the Todos page {% #update-the-todoss-page %}
-
-Now, let's use our Pagination component in the Todos page.
-{% tabs %}
-{% tabsitem #Basic-pagination title="Basic Pagination" %}
-Update the Todos page in `src/pages/Todos.jsx`:
-```js
-import BasicPagination from '../components/BasicPagination';
-import {useTodos} from "../lib/context/todos";
-export function TodosWithBasicPagination() {
-  const todos = useTodos();
-
-  return (
-    <section>
-      <h2>Todos</h2>
-      <ul>
-        {todos.current.map(todo => (
-          <li key={`todo-${todo.taskId}`}>
-            <span>{`Task-${todo.taskId}: `}</span>
-            <input type='checkbox' id={todo.taskId} name={todo.title} />
-            <label htmlFor={todo.title}>{todo.title}</label>
-          </li>
-        ))}
-      </ul>
-      <BasicPagination
-        loadPrev={todos.loadPrev}
-        loadNext={todos.loadNext}
-        hasNext={todos.hasNext}
-        hasPrev={todos.currentPage > 1}
-      />
-    </section>
-  );
-}
-```
-{% /tabsitem %}
-{% tabsitem #numbered-pagination title="Numbered Pagination" %}
-Update the Todos page in `src/pages/Todos.jsx`:
-```js
-import NumberedPagination from '../components/NumberedPagination';
-
-export function TasksWithNumberedPagination() {
-  const tasks = useTasks();
-
-  return (
-    <section>
-      <h2>Todos</h2>
-      <ul>
-        {tasks.current.map(task => (
-          <li key={`task-${task.taskId}`}>
-            <span>{`Task-${task.taskId}: `}</span>
-            <input type='checkbox' id={task.taskId} name={task.title} />
-            <label htmlFor={task.title}>{task.title}</label>
-          </li>
-        ))}
-      </ul>
-      <NumberedPagination
-        currentPage={tasks.currentPage}
-        totalPages={tasks.totalPages}
-        loadPrev={tasks.loadPrev}
-        loadNext={tasks.loadNext}
-        loadPage={tasks.loadPage}
-        hasNext={tasks.hasNext}
-        hasPrev={tasks.currentPage > 1}
-      />
-    </section>
-  );
-}
-```
-{% /tabsitem %}
-{% /tabs %}
 
 You can now choose between the two offset pagination styles based on your UI/UX preferences.
 
