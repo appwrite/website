@@ -4,18 +4,30 @@ title: Environment setup
 description: Setup the environment for seeding the database
 step: 5
 ---
+# Create environment configuration file {% #create-env-file %}
+Now, let's set up the environment configuration for our project.
+Follow these steps to create a `.env` file in the root directory of the project.
+1.  Navigate to the root of the project using your terminal or file explorer.
+2. Create a new file named `.env` (make sure that there is no file extension like `.txt`).
+3. Open the `.env` file with your preferred text editor.
+4. Add the necessary environment variables and their values for your respective project, database, and collection IDs in the format `KEY=VALUE`. Each variable should be on a new line.
+```sh
+APPWRITE_PROJECT_ID=[YOUR_PROJECT_ID]
+APPWRITE_DATABASE_ID=[YOUR_DATABASE_ID]
+APPWRITE_COLLECTION_ID=[YOUR_COLLECTION_ID]
+```
+5. Save the file.
+This `.env` file will now act as the central place for your project's environment-specific configurations. Make sure not to sure this file publicly, especially if it contains sensitive information like API keys or database credentials.
 
 # Seeding the collection {% #seeding-the-collection %}
 We'll now create a script that populates documents from a `setup.json` file.Create a new file `./db/setup.js` in the root of your project directory for this purpose.
 
-Insert the following code, make sure to replace `[YOUR_DATABASE_ID]` and `[YOUR_COLLECTION_ID]` with your respective project and collection IDs.
+Insert the following code, make sure that you have `[APPWRITE_DATABASE_ID]` and `[APPWRITE_COLLECTION_ID]` with your respective database and collection IDs in a .env file on the root.
 
 ```js
 import { databases } from "../src/lib/appwrite.js";
 import { ID } from "appwrite";
 
-export const TODOS_DATABASE_ID = "[YOUR_DATABASE_ID]";
-export const TODOS_COLLECTION_ID = "[YOUR_COLLECTION_ID]";
 const dataURL = "https://jsonplaceholder.typicode.com/users/1/todos";
 
 async function seedCollection() {
@@ -26,8 +38,8 @@ async function seedCollection() {
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
       let promise = await databases.createDocument(
-        TODOS_DATABASE_ID,
-        TODOS_COLLECTION_ID,
+        import.meta.env.APPWRITE_DATABASE_ID,
+        import.meta.env.APPWRITE_COLLECTION_ID,
         ID.unique(),
         {
           taskId: item.id,
@@ -47,24 +59,12 @@ seedCollection();
 
 ```
 
-# Add seed script to package.json {% #add-seed-script %}
+# Run seed script {% #run-seed-script %}
 
-Open the project's package.json file, navigate to the `scripts` section, and add the following script:
-
-```sh
-{
-  ...,
-  "scripts": {
-    ...
-    "db:seed": "node ./db/setup.js"
-  },
-}
-```
-
-Afterwards, open a terminal and execute:
+Open a terminal and run the following command:
 
 ```sh
-npm run db:seed
+node ./db/setup.js
 ```
 
-You should see the process running in the terminal.Once it's completed, check your collection to verify that it's populated with the data.
+You should see the process running in the terminal. Once it's completed, check your collection to verify that it's populated with the data.

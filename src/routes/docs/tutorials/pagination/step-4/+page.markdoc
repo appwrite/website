@@ -24,7 +24,7 @@ When setting up your collection, make sure it has these attributes:
 * Max {% width=10 %}
 ---
 * &nbsp;
-* todoId
+* taskId
 * Integer
 * Yes
 * -
@@ -43,12 +43,15 @@ When setting up your collection, make sure it has these attributes:
 * completed
 * Boolean
 * Yes
-* 2048
+* -
 * -
 * -
 {% /table %}
 
 # Add Permissions {% #add-permissions %}
-1. Go to the 'Collection Settings' tab.
+1. Go to the **Settings** tab.
 2. Scroll to the 'Permissions' section.
 3. Add the `Any` role, ensuring you select both `CREATE` and `READ` permissions.
+{% info title="Tutorial only" %}
+  Don't set the **Any** role with both 'CREATE' and 'READ' in production. This is only for demonstration purposes for this tutorial.
+{% /info %}
