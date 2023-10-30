@@ -64,7 +64,7 @@
 						{/if}
 					{:else}
 						{#if navGroup.label}
-							<h4 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h4>
+							<h2 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h2>
 						{/if}
 						<ul>
 							{#each navGroup.items as groupItem}
