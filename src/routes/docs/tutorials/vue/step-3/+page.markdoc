@@ -31,7 +31,7 @@ You can skip optional steps.
 
 # Initialize Appwrite SDK {% #init-sdk %}
 
-To use Appwrite in our Svelte app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
+To use Appwrite in our Vue app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -39,18 +39,38 @@ To use Appwrite in our Svelte app, we'll need to find our project ID. Find your 
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
-Create a new file `src/appwrite.js` to hold our Appwrite related code.
+Create a new file `src/lib/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
 
+Before you can use Appwrite, you need to instanciate the Appwrite `Client` class with the project ID and endpoint. 
+This tells the SDK where your Appwrite project is hosted and which one to connect to.
+
+The client is then used to initialize services like `Databases` and `Account`, so they all point to the same Appwrite project.
+
+You can do this by instantiating the services you need in a file like `src/lib/appwrite.js` and **exporting the instances**.
+
 ```js
-import { Client, Databases, Account } from "appwrite";
-
-const client = new Client();
-client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
-
-export const account = new Account(client);
-export const databases = new Databases(client);
+  import { Databases, Account, Client } from "appwrite";
+  
+  const client = new Client();
+  client
+    .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(PUBLIC_APPWRITE_PROJECT);
+  
+  export const account = new Account(client);
+  export const databases = new Databases(client);
 ```
+For ease of building, we are using our `Endpoint` and `Project key` directly, but this is not advised when working with production code.
+
+For better security, we should use environment variables like
+`VITE_PUBLIC_APPWRITE_ENDPOINT` and `VITE_PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://cli.vuejs.org/guide/mode-and-env.html#environment-variables).
+
+For example, your `.env` might look something similar to this.
+
+```text
+VITE_PUBLIC_APPWRITE_ENDPOINT= <Endpoint>
+VITE_PUBLIC_APPWRITE_PROJECT= <Project_ID>
+```
+The env file must be placed in the project root. `VITE_` must be added in front of the environment variables in order for vite to identify them.
+You can get the values for these variables from the Appwrite console's **Settings** page.

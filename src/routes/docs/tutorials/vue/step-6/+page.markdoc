@@ -1,64 +1,174 @@
 ---
 layout: tutorial
-title: Add database
-description: Add data storage to your Vue.js project powered by Appwrite Cloud databases.
+title: Password Recovery and User verification
+description: This page deals with password recovery and user verification with Vue and Appwrite.
 step: 6
 ---
-# Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+# Password Recovery {% #Password-recovery %}
 
-{% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
-{% /only_dark %}
-{% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
-{% /only_light %}
+Appwrite also provides us the functionality of recovering our password. We have already implemented our forgot password functionality in our `login page`, which will take the user email and Sends the user an email with a temporary secret key for password reset. 
 
-Create a new collection with the following attributes:
-| Field       | Type   | Required |
-|-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+When the user clicks the confirmation link he is redirected back to your app password reset URL with the secret key and email address values attached to the URL query string.
 
-# Ideas context {% #ideas-context %}
-
-Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a store hold our ideas.
-Create a new file `src/lib/stores/ideas.js` and add the following code to it.
+## UpdatePassword action
 
 ```js
-import { ID, Query } from "appwrite";
-import { databases } from "../appwrite";
-import { reactive } from "vue";
-
-export const IDEAS_DATABASE_ID = "<YOUR_DATABASE_ID>"; // Replace with your database ID
-export const IDEAS_COLLECTION_ID = "<YOUR_COLLECTION_ID>"; // Replace with your collection ID
-
-export const ideas = reactive({
-  current: [],
-  async init() {
-    const response = await databases.listDocuments(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      [Query.orderDesc("$createdAt"), Query.limit(10)]
-    );
-    this.current = response.documents;
-  },
-  async add(idea) {
-    const response = await databases.createDocument(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      ID.unique(),
-      idea
-    );
-    this.current = [response, ...this.current].slice(0, 10);
-  },
-  async remove(id) {
-    await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
-    this.current = this.current.filter((idea) => idea.$id !== id);
-    await this.init(); // Refetch ideas to ensure we have 10 items
-  },
-});
+ async UpdatePassword(email){
+      const update = await account.createRecovery(email, 'http://localhost:5174/forgot')
+    },
 ```
 
-Note the init function, which uses `Query` to fetch the last 10 ideas from the database. We will call this function when the app starts to ensure we have some data to display.
+The `UpdatePassword` action takes up the user email and a path for where the user will enter the new password.
+
+So, we have create a page, where we will take the query string params and the new password. Then, user can submit a request to update the password.
+
+**NOTE: The verification link sent to the user's email address is valid for 1 hour.**
+
+Now, let's create a new view/page `src/views/forgotPassword.vue` and copy the below code to it.
+
+```js
+<script>
+import { ref, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useAuthenticationStore } from '@/stores/auth.js';
+
+export default {
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
+        const authenticationStore = useAuthenticationStore();
+        return {
+            password: ref(''),
+            passwordAgain: ref(''),
+            async PasswordVerificationConfirm() {
+                const { userId, secret } = route.query;
+                if (userId && secret) {
+                    await authenticationStore.UpdatePasswordConfirm(userId, secret, this.password, this.passwordAgain);
+                    alert("Password Updated")
+                    router.push({ path: '/' })
+                }
+                else {
+                    console.log("Not updated yet!")
+                }
+            }
+        };
+    },
+};
+</script>
+```
+In the above script we are doing the following things:
+
+- Importing the `ref`, `computed`, `useRoute()`, `useRouter()`, and `useAuthenticationStore()` hooks from Vue.js.
+- Creating a variable called `password` and initialize it with a ref.
+- Creating a variable called `passwordAgain` and initialize it with a ref.
+- Creating a method called `PasswordVerificationConfirm()`. This method should check if the `userID` and `secret` are present in the route query parameters. If they are, then the method should call the `UpdatePasswordConfirm()` method on the authentication store to update the user's password.
+
+```html
+<template>
+    <div>
+        <div>
+            <h1>Update Password</h1>
+            <form @submit.prevent="PasswordVerificationConfirm()">
+                <input type="password" v-model="password" placeholder="Password">
+                <input type="password" v-model="passwordAgain" placeholder="Password">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</template>
+```
+In the above code we are just taking password of the user and also we are confirming the password. Then, we are using the `PasswordVerificationConfirm` method to call `UpdatePasswordConfirm` action to submit a password update request to appwrite.
+
+## UpdatePasswordConfirm action
+
+```js
+async UpdatePasswordConfirm(id,secret, password, passwordAgain){
+      const confirResponse = await account.updateRecovery(id, secret, password, passwordAgain)
+    }
+```
+
+In the above `updateRecovery` request, we are sending the `userId`, `secret`, `password` and `passwordAgain` for updating the user password.
+
+
+# User Verfication  {% #user-verification %}
+
+It is a good practice to verify whether a user is authentic or not. Appwrite provides us a way to verify the user using different methods such as
+
+- Phone verification
+- email verification
+
+In this tutorial we are using email verification.
+
+## createVerification action
+
+This action uses `createVerification` method provided by appwrite to send a verification email to the user. The parameter that this method requires is a page where the user will be redirected to from the mail where the user can be verified.
+
+```js
+    async verifyUser(){
+      const verfication = await account.createVerification('http://localhost:5174/verify')
+    },
+```
+
+So, we have create a page, where we will verify the user. Then, user can submit a request to verify using  `updateVerification` action.
+
+Now, let's create a new view/page `src/views/verify.vue` and copy the below code to it.
+
+```js
+<script setup>
+import { useAuthenticationStore } from '@/stores/auth.js';
+import { useRoute , useRouter} from 'vue-router';
+
+const verificationDone = false; 
+const route = useRoute();
+const router = useRouter();
+const authenticationStore = useAuthenticationStore();
+const {userId, secret} = route.query;
+
+const verificationConfirm = async() =>{
+    if(userId && secret){
+        await authenticationStore.confirmVerification(userId, secret);
+        verificationDone = !verificationDone;
+        alert("verified!")
+        router.push({path: '/'})
+    }
+    else{
+        console.log("Not verfied yet!")
+    }
+}
+
+</script>
+```
+In the above script we are doing the following things:
+
+- Storing the `userId` and `secret` query parameters from query string present in the URL.
+- Then, using `verificationConfirm` function to first check if `userID` and `secret` are present in the URL, then only use the `confirmVerification` action from the store to send a verified request to appwrite.
+- After verification the user will be redirected to the `home page`.
+- If the user if successfully verified, the dashboard will show `verified`, else it will show `verify user`
+
+
+```html
+<template>
+    <div>
+        <div>
+            <button @click="verificationConfirm()" v-if=verificationDone>Verify</button>
+        </div>
+        <div v-if=verificationDone>
+            <h1> You have been verified ✅</h1>
+        </div>
+        <div v-if=!verificationDone>
+            <h1> path reserved for verification ✅</h1>
+        </div>
+    </div>
+</template>
+```
+In the above code we have a verify button which will trigger the `verificationConfirm` method and based on the `verificationDone` state the above text will be rendered.
+
+## confirmVerification action
+
+```js
+ async confirmVerification(id, secret){
+      const confirResponse = await account.updateVerification(id, secret)
+    },
+```
+The above action uses the `updateVerification` method which appwrite provides to send a verified request to the appwrite. This method takes two parameters `userId` and `secret` that is present in the query string from the URL we got in the email.
+

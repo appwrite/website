@@ -1,72 +1,90 @@
 ---
 layout: tutorial
-title: Create ideas page
-description: Add data queries and pagination to your Vue.js project powered by Appwrite Cloud databases.
+title: Protected routes
+description: In this step we discuss about how routes are protected from being accessed when the user is not yet authenticated.
 step: 7
 ---
 
-Using the `ideas` store we can now display the ideas on the page. We will also add a form to submit new ideas.
+Route protection is a powerful feature of the Vue Router that allows you to restrict access to certain routes based on the user's authentication status. This can help you to create more secure and user-friendly applications.
 
-Overwrite the contents of `src/pages/Home.vue` with the following:
+Let's visit the `index.js` file present in `src/router` to better understand how route protection is done.
 
-```vue
-<script setup>
-import { user } from "../stores/user";
-import { ideas } from "../stores/ideas";
-import { onMounted, ref } from "vue";
+```js
+import { createRouter, createWebHistory } from 'vue-router'
+import {useAuthenticationStore} from '@/stores/auth.js';
+import HomeView from '../views/HomeView.vue'
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/Dashboard',
+      name: 'dashboard',
+      component: () => import('../views/dashboard.vue'),
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: () => import('../views/verify.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginRegister.vue'),
+    },
+    {
+      path: '/forgot',
+      name: 'forgot',
+      component: () => import('../views/forgotPassword.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: HomeView,
+    },
+  ]
+})
 
-const title = ref("");
-const description = ref("");
+router.beforeEach((to, from, next) => {
+  const authenticationStore = useAuthenticationStore();
 
-function addIdea() {
-  ideas.add({
-    userId: user.current.$id,
-    title: title.value,
-    description: description.value,
-  });
-  title.value = "";
-  description.value = "";
-}
-
-onMounted(() => {
-  ideas.init();
+  if (to.meta.requiresAuth && !authenticationStore.isAuthenticated) {
+    next('/');
+  } else {
+    next();
+  }
 });
+
+export default router
+
 </script>
-
-<template>
-  <section v-if="user.current">
-    <h2>Submit Idea</h2>
-
-    <form>
-      <input
-        type="text"
-        placeholder="Title"
-        v-model="title"
-      />
-      <textarea
-        placeholder="Description"
-        v-model="description"
-      ></textarea>
-      <button type="button" @click="addIdea()">Submit</button>
-    </form>
-  </section>
-  <section v-else><p>Please login to submit an idea.</p></section>
-
-  <section v-if="ideas.current">
-    <h2>Latest Ideas</h2>
-    <ul>
-      <li v-for="idea in ideas.current"">
-        <strong>{{ idea.title }}</strong>
-        <p>{{ idea.description }}</p>
-        <button
-          v-if="user.current && idea.userId === user.current.$id"
-          type="button"
-          @click="ideas.remove(idea.$id)"
-        >
-          Remove
-        </button>
-      </li>
-    </ul>
-  </section>
-</template>
 ```
+
+A simple step by step explanatin what we are doing is the following:
+
+- To protect a route, add the `requiresAuth` meta property to it.
+- The `router.beforeEach` global navigation guard is called before every navigation.
+- The `router.beforeEach` guard checks if the target route requires authentication and the user is not authenticated.
+- If the target route requires authentication and the user is not authenticated, the navigation is canceled and the user is - redirected to the home page.
+- Otherwise, the navigation is allowed to continue.
+
+We also want to restritct access to pages such as `login` and `forgot` when the user is logged in. To acheive that we are using `beforeMount` lifecycle hook.
+
+## beforeMount lifecycle hook
+
+```js
+ beforeMount(){
+        const authenticationStore = useAuthenticationStore();
+        const router = useRouter();
+        if(authenticationStore.isAuthenticated){
+            router.push({path: '/'})
+        }
+    },
+```
+The above code just checks if the user is authenticated and is accessing `login` and `forgot` routes then, the user will be redirected to home page. Also, we have to use this lifecyle hook in both pages.
