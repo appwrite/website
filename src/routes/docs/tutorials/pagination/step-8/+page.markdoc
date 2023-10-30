@@ -27,10 +27,10 @@ Cursor pagination is typically used in scenarios where the dataset is large, and
 {% tabs %}
 {% tabsitem #Basic-cursor-pagination title="Basic Cursor Pagination" %}
 
-Open the file named `src/pages/Todos3.jsx`, overwrite the content with the following code:
+Open the file named `src/pages/TodosWithBasicCursorPagination.jsx`, overwrite the content with the following code:
 ```js
 import React, { useCallback } from "react";
-import { useTodos } from "../lib/context/todos2";
+import { useTodos } from "../lib/context/todos-cursor-pagination";
 
 export function TodosWithBasicCursorPagination() {
   const todos = useTodos();
@@ -81,10 +81,10 @@ function CursorPagination(props) {
 This is the most straightforward use of cursor pagination. You have "Load More" button,which will fetch more data based on the last item's cursor.
 {% /tabsitem %}
 {% tabsitem #Bidirectional-cursor-pagination title="Bidirectional Cursor Pagination" %}
-Open the file named `src/pages/Todos4.jsx`, overwrite the content with the following code:
+Open the file named `src/pages/TodosWithBidirectionalPagination.jsx`, overwrite the content with the following code:
 ```js
 import React, { useCallback } from "react";
-import { useTodos } from "../lib/context/todos2";
+import { useTodos } from "../lib/context/todos-cursor-pagination";
 
 export function TodosWithBidirectionalPagination() {
   const todos = useTodos();
@@ -143,7 +143,7 @@ Bidirectional cursor pagination allows users to navigate through datasets both f
 
 # Update todos context {% #updating-todos-context %}
 
-Update the contents of `src/lib/context/todos2.jsx` with the following code:
+Update the contents of `src/lib/context/todos-cursor-pagination.jsx` with the following code:
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";

@@ -8,7 +8,7 @@ step: 6
 
 We'll now display our Todos on the page. In React, [context](https://reactjs.org/docs/context.html) allows us to share data across components. We'll leverage context and create two custom hooks to manage our todos. One for each pagination method.
 
-Create a new file named `src/lib/context/todos.jsx` and insert the following code:
+Create a new file named `src/lib/context/todos-offset-pagination.jsx` and insert the following code:
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
@@ -48,7 +48,7 @@ export function OffsetProvider(props) {
   );
 }
 ```
-Also create a new file named `src/lib/context/todos2.jsx` and insert the following code:
+Also create a new file named `src/lib/context/todos-cursor-pagination.jsx` and insert the following code:
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
@@ -98,12 +98,12 @@ Update `src/App.jsx` with the following code:
 
 ```js
 import React from "react";
-import { OffsetProvider } from "./lib/context/todos";
-import { CursorProvider } from "./lib/context/todos2";
-import { TodosWithBasicPagination } from "./pages/Todos1";
-import { TodosWithBasicPaginationAndNumbers } from "./pages/Todos2";
-import { TodosWithBasicCursorPagination } from "./pages/Todos3";
-import { TodosWithBidirectionalPagination } from "./pages/Todos4";
+import { OffsetProvider } from "./lib/context/todos-offset-pagination";
+import { CursorProvider } from "./lib/context/todos-cursor-pagination";
+import { TodosWithBasicPagination } from "./pages/TodosWithBasicPagination";
+import { TodosWithBasicPaginationAndNumbers } from "./pages/TodosWithBasicPaginationAndNumbers";
+import { TodosWithBasicCursorPagination } from "./pages/TodosWithBasicCursorPagination";
+import { TodosWithBidirectionalPagination } from "./pages/TodosWithBidirectionalPagination";
 const Header = () => (
   <div >
     <a href='/basicOffsetPagination'>Basic Offset Pagination</a>
@@ -164,7 +164,7 @@ export default App;
 
 Now, we can craft our Todos pages, which will present users with a list of todos-a small chuck of the large dataset in three different ways.
 
-Create four new files in `src/pages/` folder, name them `Todos1`, `Todos2`, `Todos3` and `Todos4`. Then insert this placeholder code in each file:
+Create four new files in `src/pages/` folder, name them `TodosWithBasicPagination`, `TodosWithBasicPaginationAndNumbers`, `TodosWithBasicCursorPagination`, and `TodosWithBidirectionalPagination `. Then insert this placeholder code in each file:
 
 ```js
 import { useTodos } from "../lib/context/todos";

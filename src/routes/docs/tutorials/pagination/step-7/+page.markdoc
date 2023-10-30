@@ -29,7 +29,7 @@ We'll explore different UI patterns for offset pagination and how to implement t
 {% tabs %}
 {% tabsitem #Basic-pagination title="Basic Pagination" %}
 
-Open the file named `src/pages/Todos1.jsx`, overwrite it with the following code:
+Open the file named `src/pages/TodosWithBasicPagination.jsx`, overwrite it with the following code:
 ```js
 import { useCallback } from "react";
 import { useTodos } from "../lib/context/todos";
@@ -90,7 +90,7 @@ export default TodosWithBasicPagination;
 This component will only have "Previous" and "Next" buttons.
 {% /tabsitem %}
 {% tabsitem #numbered-pagination title="Numbered Pagination" %}
-Open the file named `src/pages/Todos2.jsx`, overwrite it with the following code:
+Open the file named `src/pages/TodosWithBasicPaginationAndNumbers.jsx`, overwrite it with the following code:
 ```js
 import { useCallback } from "react";
 import { useTodos } from "../lib/context/todos";
