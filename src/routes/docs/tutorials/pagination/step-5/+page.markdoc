@@ -10,6 +10,7 @@ Set up the environment configuration for your project to declare project-wide va
 APPWRITE_PROJECT_ID=[YOUR_PROJECT_ID]
 APPWRITE_DATABASE_ID=[YOUR_DATABASE_ID]
 APPWRITE_COLLECTION_ID=[YOUR_COLLECTION_ID]
+```
 This `.env` file will now act as the central place for your project's environment-specific configurations. Make sure not to sure this file publicly, especially if it contains sensitive information like API keys or database credentials.
 
 # Seeding the collection {% #seeding-the-collection %}
