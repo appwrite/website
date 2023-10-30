@@ -1,0 +1,67 @@
+---
+layout: tutorial
+title: Environment setup
+description: Setup the environment for seeding the database
+step: 5
+---
+# Create environment configuration file {% #create-env-file %}
+Set up the environment configuration for your project to declare project-wide variables like Appwrite project ID, database ID, and collection ID. Create a `.env` and add the declare variables.
+```sh
+APPWRITE_PROJECT_ID=[YOUR_PROJECT_ID]
+APPWRITE_DATABASE_ID=[YOUR_DATABASE_ID]
+APPWRITE_COLLECTION_ID=[YOUR_COLLECTION_ID]
+```
+This `.env` file will now act as the central place for your project's environment-specific configurations. Make sure not to sure this file publicly, especially if it contains sensitive information like API keys or database credentials.
+
+# Seeding the collection {% #seeding-the-collection %}
+We'll now create a script that populates documents from a `setup.json` file.Create a new file `./db/setup.js` in the root of your project directory for this purpose.
+
+Insert the following code, make sure that you have `[APPWRITE_DATABASE_ID]` and `[APPWRITE_COLLECTION_ID]` with your respective database and collection IDs in a `.env` file on the root.
+
+```js
+import { databases } from "../src/lib/appwrite.js";
+import { ID } from "appwrite";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const dataURL = "https://jsonplaceholder.typicode.com/users/1/todos";
+
+async function seedCollection() {
+  const response = await fetch(dataURL);
+  const data = await response.json();
+  console.log("Starting to seed collection...");
+  try {
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+      let promise = await databases.createDocument(
+        import.meta.env.APPWRITE_DATABASE_ID,
+        import.meta.env.APPWRITE_COLLECTION_ID,
+        ID.unique(),
+        {
+          taskId: item.id,
+          title: item.title,
+          completed: item.completed,
+        },
+      );
+      console.log(`${promise.title} has been added to the collection`);
+    }
+    console.log("Seeding collection done!");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+seedCollection();
+
+```
+
+# Run seed script {% #run-seed-script %}
+
+Open a terminal and run the following command:
+
+```sh
+node ./db/setup.js
+```
+
+You should see the process running in the terminal. Once it's completed, check your collection to verify that it's populated with the data.
