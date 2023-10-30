@@ -12,7 +12,7 @@ featured: false
 
 In the world of software development, October is more than just a month; it's a season of collaboration, innovation, and celebration. 
 
-### What is Hacktoberfest
+# What is Hacktoberfest
 
 Welcome to Hacktoberfest – a global event that unites tech enthusiasts from every corner of the globe to celebrate open-source software.
 
@@ -22,19 +22,19 @@ In this blog, we'll explore the significance of Hacktoberfest in the open-source
 
 Now, let's dive into some real-life stories of contributors who have participated in Hacktoberfest and experienced the transformative power of open-source collaboration.
 
-### Inspiring stories from the community
+# Inspiring stories from the community
 
-**A journey of discovery and connection**
+### A journey of discovery and connection
 
 The first story is from [Sarthak Roy](https://www.linkedin.com/in/sarthakroy2002/), who says, “Well, I started using GitHub properly from February 2021. Hacktoberfest was the reason I found out Appwrite and many more orgs/tools/services in 2021 October. Then I started exploring various stuffs and learnt a ton. During Hacktoberfest 2022, I again contributed in multiple projects, including Appwrite. It all started with the hope of getting a swag in 2021, to enjoying open source and contributing. It also helped me connect with some amazing folks. ”
 
 Sarthak's story highlights the transformative power of Hacktoberfest, from initially participating for the swag to discovering the joy of open source and connecting with amazing people.
 
-**Inspiring journey: From novice to maintainer**
+### Inspiring journey: From novice to maintainer
 
 Next, let's hear from Moumita Roy, who had an amazing experience with Hacktoberfest. In her own words, "Well, first, I participated in Hacktoberfest 2022 after a friend encouraged me to register for it. Before that, I only knew that GitHub was for pushing code. But through Hacktoberfest, I learned about schemas and other terminologies. Since then, I have contributed to numerous open-source projects. I'm grateful to my friend for introducing me to the world of open source. As a student, I'm still learning and excited about Hacktoberfest 2023. This year, I plan to contribute and participate as a maintainer." Now, let's dive into Moumita's inspiring journey.
 
-**Embracing the open-source culture**
+### Embracing the open-source culture
 
 The final story is from Krishnendu Dasgupta and he says, “One of the best things about Hacktoberfest for me is that it helped me become familiar with and accustomed to the open-source culture. I can still vividly remember Hacktoberfest 2018, when I was asking questions like "What is GitHub?" and learning about version control and collaboration through Git and GitHub. This experience was life-changing, as it continues to enable me to collaborate effectively with my teammates on any project.”
 
@@ -44,7 +44,7 @@ He further explained, “Overall, Hacktoberfest is definitely an event worth par
 
 From the above stories, one thing is common: everyone needs to start from somewhere, and for them, that somewhere was Hacktoberfest! If you are someone who is looking to get started in open source, this is your chance!
 
-### Tips to start contributing
+# Tips to start contributing
 
 Now that we've heard the inspiring stories of Hacktoberfest contributors, it's time to take the next step and embark on your own journey of contribution. If you're eager to make a meaningful impact in the open-source community, but unsure of where to begin, don't worry – we've got you covered. Starting your journey as a contributor can feel overwhelming, but fear not! 
 
