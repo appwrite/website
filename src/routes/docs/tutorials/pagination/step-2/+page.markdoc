@@ -18,7 +18,7 @@ npm create vite@latest todo-app -- --template react && cd todo-app
 Install the JavaScript Appwrite Web SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite dotenv
 ```
 
 You can start the development server to watch your app update in the browser as you make changes.

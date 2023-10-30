@@ -50,8 +50,8 @@ When setting up your collection, make sure it has these attributes:
 
 # Add Permissions {% #add-permissions %}
 1. Go to the **Settings** tab.
-2. Scroll to the 'Permissions' section.
-3. Add the `Any` role, ensuring you select both `CREATE` and `READ` permissions.
-{% info title="Tutorial only" %}
-  Don't set the **Any** role with both 'CREATE' and 'READ' in production. This is only for demonstration purposes for this tutorial.
+2. Scroll to the **Permissions** section.
+3. Add the **Any** role, ensuring you select both **CREATE** and **READ** permissions.
+{% info title="Any role" %}
+  The **Any** role is used in this tutorial for demonstration purposes. Remember to protect your user's data in production applications by configuring proper [permissions](/docs/advanced/platform/permissions).
 {% /info %}
