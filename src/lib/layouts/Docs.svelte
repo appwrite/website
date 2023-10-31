@@ -38,6 +38,7 @@
     import { isMac } from '$lib/utils/platform';
 
     export let variant: DocsLayoutVariant = 'default';
+    export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'aw-grid-side-nav aw-container u-padding-inline-0',
@@ -65,7 +66,7 @@
         class:is-open={$layoutState.showSidenav}
         style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
     >
-        <section class="aw-mobile-header is-transparent is-">
+        <section class="aw-mobile-header is-transparent">
             <div class="aw-mobile-header-start">
                 <a href="/" aria-label="homepage">
                     <img
@@ -97,7 +98,10 @@
                 </button>
             </div>
         </section>
-        <header class="aw-main-header is-docs" class:is-transparent={variant !== 'expanded'}>
+        <header
+            class="aw-main-header {isReferences ? 'is-references' : 'is-docs'}"
+            class:is-transparent={variant !== 'expanded'}
+        >
             <div class="aw-main-header-wrapper">
                 <div class="aw-main-header-start u-stretch">
                     <a href="/" aria-label="homepage">
