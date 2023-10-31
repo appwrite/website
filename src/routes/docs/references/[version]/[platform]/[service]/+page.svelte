@@ -69,6 +69,7 @@
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
+    $: metaTitle =  'Appwrite ' + serviceName + ' for ' + platformType;
     $: description = data.service?.description;
     $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
@@ -76,8 +77,8 @@
 <svelte:head>
     <!-- Titles -->
     <title>{title}</title>
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
+    <meta name="twitter:title" content={metaTitle} />
     <!-- Desscription -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />

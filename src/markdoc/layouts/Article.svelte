@@ -18,7 +18,7 @@
     import { DocsArticle } from '$lib/layouts';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import { DOCS_TITLE_SUFFIX } from '$routes/titles';
+    import { DOCS_TITLE_SUFFIX, TITLE_PREFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
 
     export let title: string;
@@ -58,14 +58,15 @@
     }, []);
 
     const seoTitle = title + DOCS_TITLE_SUFFIX;
+    const metaTitle = TITLE_PREFIX + title;
     const ogImage = buildOpenGraphImage(title, description);
 </script>
 
 <svelte:head>
     <!-- Titles -->
     <title>{seoTitle}</title>
-    <meta property="og:title" content={seoTitle} />
-    <meta name="twitter:title" content={seoTitle} />
+    <meta property="og:title" content={metaTitle} />
+    <meta name="twitter:title" content={metaTitle} />
     <!-- Desscription -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
