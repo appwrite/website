@@ -4,7 +4,7 @@ title: All set
 description: Add Authentication to a Flutter project using Appwrite.
 step: 7
 ---
-If you want to see these authentication concepts applied in a more robust manner, you can see them in action in this [demo app]().
+If you want to see these authentication concepts applied in a more robust manner, you can see them in action in this [demo app](https://github.com/Rohit-RA-2020/Flutter-Authentication-Deepdive).
 
 ## Other authentication methods
 Appwrite also supports OAuth, passwordless login, anonymous login, and phone login. 
