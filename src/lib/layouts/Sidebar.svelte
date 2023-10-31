@@ -95,7 +95,7 @@
 			</button>
 		{/if}
 		<div class="aw-side-nav-mobile-footer-buttons">
-			<button class="aw-button u-width-full-line aw-is-not-mobile">
+			<button class="aw-button u-width-full-line">
 				<span class="text">Go to console</span>
 			</button>
 
