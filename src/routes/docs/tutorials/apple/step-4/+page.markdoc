@@ -7,7 +7,7 @@ step: 4
 
 # Appwrite service {% #appwrite-service %}
 
-Create a new file AppwriteService.swift inside **Shared/Services** folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID.
+Create a new file AppwriteService.swift inside `Shared/Services` folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID.
 
 ```swift
 import Foundation
@@ -108,9 +108,11 @@ class AppwriteService {
 
 # Snackbar service {% #snackbar-service %}
 
-In order to manage error toast, we need a view model to handle and dispatch error messsgae to our UI. Create a new file SnackbarService.swift inside **Shared/Services** folder and add the following code to it.
+In order to manage error toast, we need a view model to handle and dispatch error messsgae to our UI. Create a new file SnackbarService.swift inside `Shared/Services` folder and add the following code to it.
 
 ```swift
+import SwiftUI
+
 struct SnackBarState: Identifiable, Equatable {
     static func == (lhs: SnackBarState, rhs: SnackBarState) -> Bool {
         lhs.id == rhs.id
@@ -137,7 +139,7 @@ class SnackBarService: ObservableObject {
 }
 ```
 
-Add the following code to SnackbarView.swift inside **Shared/Views** folder.
+Add the following code to SnackbarView.swift inside `Shared/Views` folder.
 
 ```swift
 import SwiftUI
@@ -171,7 +173,7 @@ struct SnackbarView: View {
 
 # Habit model {% #habit-model %}
 
-Add the following code to HabitModel.swift inside **Shared/Models** folder.
+Add the following code to HabitModel.swift inside `Shared/Models` folder.
 
 ```swift
 import Appwrite

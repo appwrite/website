@@ -1,77 +1,99 @@
 ---
 layout: tutorial
-title: Preference/Setting
-description: Handle user logout & delete account
-step: 8
+title: Add Habit
+description: Handle create habit and store in Appwrite Database.
+step: 9
 ---
 
-# Setting UI {% #setting-ui %}
+# Add Habit Screen {% #habit-ui %}
 
-Here's a more detailed explanation of the actions:
-1. Logout Action: When the ``Logout`` item in the list is tapped, it calls the logout method on the userViewModel. The await keyword is used, indicating that this method likely involves asynchronous operations, such as network requests. After logging out successfully, the router is instructed to reset the app's navigation state.
-2. Delete Account Action: Tapping the ``Delete Account`` button triggers the deleteAccount method on the userViewModel. Like the logout action, this method is likely asynchronous. After deleting the account, the router resets the navigation state.
+Here will explore a simple "Add Habit" screen that lets users input information to create a new habit. This screen covers various aspects like the habit title, description, goals, duration, and habit icon. Trigger the create method in HabitViewModel then pop the navigation back to HomeScreen.
 
 ```swift
 import SwiftUI
 
-struct SettingScreen: View {
+struct AddHabitScreen: View {
     
-    @EnvironmentObject private var userViewModel: UserViewModel
     @EnvironmentObject private var router: Router
-
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @State private var title: String = ""
+    @State private var description: String = ""
+    @State private var habitIcon: String = "figure.walk"
+    
+    @State private var startDate: Date = .now
+    @State private var endDate: Date = .now
+    
+    @State private var goals: Int? = nil
+    
+    @State private var taskRepeat: String? = nil
+    
+    let icons: [String] = [
+        "figure.walk",
+        "book.pages"
+        // Add as more icon as you want
+    ]
+    
+    let gridItems = [
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+    ]
+    
     
     var body: some View {
-        VStack {
+        Form {
+            Section("Title") {
+                TextField("Habit Title", text: $title)
+                TextField("Description", text: $description)
+            }
             
-            List {
-                HStack {
-                    Image(systemName: "arrow.right.circle.fill")
-                        .foregroundColor(.red)
-                        .font(.title)
-                    Text("Logout")
-                        .font(.headline)
-                }
-                .onTapGesture {
-                    Task {
-                        await userViewModel.logout()
-                        
-                        router.reset()
+            Section("Task") {
+               
+                TextField("Goals", value: $goals, format: .number)
+                    .keyboardType(.numberPad)
+            }
+            
+            Section("Period") {
+                DatePicker("Start", selection: $startDate, displayedComponents: .date)
+                DatePicker("End", selection: $endDate, displayedComponents: .date)
+            }
+            
+            Section("Icons") {
+                
+                LazyVGrid(columns: gridItems, spacing: 16) {
+                    ForEach(icons, id: \.self) { icon in
+                        Image(systemName: icon)
+                            .renderingMode(.original)
+                            .resizable()
+                            .foregroundColor(habitIcon == icon ? .white : Theme.pink)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .padding(.all, 10)
+                            .background((habitIcon == icon ? Theme.pink : .clear))
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .onTapGesture {
+                                habitIcon = icon
+                            }
                     }
                 }
-            }
-            
-            Button("Delete Account") {
-
-                 await userViewModel.deleteAccount()
-                        
-                 router.reset()
                 
             }
-            .frame(width: 200, height: 50)
-            .background(.red)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
             
-            Spacer(minLength: 20)
-            
-            
+            Button {
+                Task {
+                    
+                    await habitViewModel.create(title, description, goals ?? 0, habitIcon, startDate.formatted(), endDate.formatted(), userViewModel.userState.userId!)
+                    
+                    router.pop()
+                }
+            } label: {
+                Text("Create Habit")
+            }
         }
+        .navigationTitle("New habit")
         
     }
 }
 ```
-
-# Progress screen {% #progress-screen %}
-
-In this tutorial, we wouldn't be covering the Progress UI part. You can just display a text for now.
-
-```swift
-import SwiftUI
-
-struct ProgressScreen: View {
-    var body: some View {
-        Text("Progess")
-    }
-}
-```
-

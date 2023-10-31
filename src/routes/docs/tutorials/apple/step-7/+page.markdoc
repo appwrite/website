@@ -7,7 +7,7 @@ step: 7
 
 # HomeView UI {% #homeview-ui %}
 
-Using ``TabView`` user will be able to switch between multiple tab from home screen to progress to setting/preference. And with ``blur`` modifier we able to blur the home view and show modal of medium size for user to update the habit goal completed. Also performing async task inside ``task`` modifier in order to fetch habits record
+Using `TabView` user will be able to switch between multiple tab from home screen to progress to setting/preference. And with ``blur`` modifier we able to blur the home view and show modal of medium size for user to update the habit goal completed. Also performing async task inside ``task`` modifier in order to fetch habits record
 
 ```swift
 import SwiftUI
@@ -103,7 +103,7 @@ struct HomeView: View {
 }
 ```
 
-Add the following code to HomeScreen.swift inside **Home/View** folder. Here we will be using newly introduce ``ContentUnavailableView`` if the habits is empty else render ``HabitCellView`` inside the loop.
+Add the following code to HomeScreen.swift inside **Home/View** folder. Here we will be using newly introduce `ContentUnavailableView` if the habits is empty else render ``HabitCellView`` inside the loop.
 
 ```swift
 import SwiftUI
@@ -182,7 +182,7 @@ struct HomeScreen: View {
 }
 ```
 
-For ``HabitCellView``, create new SwiftUI View inside **Home/Components** folder and add the following code.
+For `HabitCellView`, create new SwiftUI View inside **Home/Components** folder and add the following code.
 
 ```swift
 import SwiftUI
@@ -273,7 +273,7 @@ struct HabitCellView: View {
 }
 ```
 
-Do the samething for ``DateFilterView``
+Do the samething for `DateFilterView`
 
 ```swift
 import SwiftUI

@@ -7,7 +7,7 @@ step: 6
 
 # Authentication {% #authentication %}
 
-Add the following code to AuthScreen.swift inside **Auth/View** folder. Basicly this UI handle both login and register user.
+Add the following code to `AuthView.swift` inside the `Auth/View` folder. This UI is designed to handle both user login and registration.
 
 ```swift
 import SwiftUI
@@ -82,10 +82,6 @@ struct AuthScreen: View {
         .navigationBarBackButtonHidden(true)
         
     }
-}
-
-#Preview {
-    AuthScreen()
 }
 
 ```
