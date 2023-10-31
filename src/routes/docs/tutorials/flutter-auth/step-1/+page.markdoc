@@ -3,7 +3,7 @@ layout: tutorial
 title: Authentication with Flutter
 description: Add Authentication to a Flutter project using Appwrite.
 step: 1
-difficulty: beginner
+difficulty: intermediate
 readtime: 20
 ---
 
