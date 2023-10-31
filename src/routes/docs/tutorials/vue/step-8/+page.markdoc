@@ -6,17 +6,4 @@ step: 8
 ---
 
 # Test your project {% #test-project %}
-Run your project with `npm run dev` and open the URL that comes up on the terminal.
-
-
-# Play with your project {% #play-project %}
-
-Try to implement `validations` to input, make use of `phone verification`.
-
-# Use Appwrite{% #make-project %}
-
-Use appwrite in your projects and explore other amazing features that appwrite provides such as 
-
-- Databases
-- Functions
-- Storage
+Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.

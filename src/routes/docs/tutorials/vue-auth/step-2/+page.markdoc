@@ -1,0 +1,51 @@
+---
+layout: tutorial
+title: Create project
+description: Add Authentication to a Vue project using Appwrite.
+step: 2
+---
+
+
+You can create a Vue project using [Vue](https://vuejs.org/guide/quick-start.html).
+
+```sh
+npm create vue@latest
+```
+
+This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool. You will be presented with prompts for several optional features such as TypeScript and testing support:
+
+The prompt will be something similar to this.
+
+```sh
+✔ Project name: … <your-project-name>
+✔ Add TypeScript? … No / Yes
+✔ Add JSX Support? … No / Yes
+✔ Add Vue Router for Single Page Application development? … No / Yes
+✔ Add Pinia for state management? … No / Yes
+✔ Add Vitest for Unit testing? … No / Yes
+✔ Add an End-to-End Testing Solution? … No / Cypress / Playwright
+✔ Add ESLint for code quality? … No / Yes
+✔ Add Prettier for code formatting? … No / Yes
+
+Scaffolding project in ./<your-project-name>...
+Done.
+```
+For this project we will be using Vue router and Pinia. So, make sure to check **yes** for these.
+
+After the prompt is finished, you can head over to the newly create project.
+
+```sh
+  cd vue_appwrite 
+  npm install
+  npm run dev
+```
+
+After running all these commands, you will be able to access you Vue app. 
+
+## Adding Appwrite to Your Vue App
+
+Appwrite provides a Web SDK that can be used in your Vue apps. You can use Appwrite by installing the Web SDK as an NPM package.
+
+```sh
+npm install appwrite
+```

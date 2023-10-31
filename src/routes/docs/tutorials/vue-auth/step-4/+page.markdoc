@@ -1,0 +1,184 @@
+---
+layout: tutorial
+title: Set up Store, Navigation bar and routes
+description: Setting up a pinia store, a navigation bar for ease of navigation and routes using vue-router
+step: 4
+---
+
+# Auth store {% #auth-store %}
+
+Since, we chose pinia for state management during the installatin process.So, we have already setuped our store. 
+
+Now, We just need to declare state(data that user will have), actions (fetching of information for appwrite). We will discuss about these as we go.
+
+```js
+import { defineStore } from 'pinia';
+import { ID } from 'appwrite';
+import { account } from '../lib/appwrite.js';
+
+export const useAuthenticationStore = defineStore('auth', {
+  state: () => ({
+    email: '',
+    password: '',
+    name: '',
+    user: {},
+    isAuthenticated: false,
+    isVerified: false,
+  }),
+  actions: {
+    async login() {
+    const loginResponse =  await account.createEmailSession(this.email, this.password); 
+    this.isAuthenticated = true;
+    },
+    async logout() {
+      await account.deleteSession("current");
+      this.user = null;
+      this.isAuthenticated = false;
+    },
+    async register() {
+      const registerResponse = await account.create(ID.unique(), this.email, this.password, this.name);
+      alert("Account Created and verification send")
+      this.user = registerResponse;
+    },
+    async getUser() {
+      this.user = await account.get();
+      this.isVerified  = this.user.emailVerification;
+    },
+    async verifyUser(){
+      const verfication = await account.createVerification('http://localhost:5174/verify')
+    },
+    async confirmVerification(id, secret){
+      const confirResponse = await account.updateVerification(id, secret)
+    },
+    async UpdatePassword(email){
+      const update = await account.createRecovery(email, 'http://localhost:5174/forgot')
+    },
+    async UpdatePasswordConfirm(id,secret, password, passwordAgain){
+      const confirResponse = await account.updateRecovery(id, secret, password, passwordAgain)
+    }
+  },
+});
+```
+Now, we can import the `auth` store in any component and use it to login, logout, verify user, recover password or register a user.
+
+Here, we have declared all the actions that we will require in order to achieve the following things:
+- `Log in` 
+- `Register up`
+- `Logout`
+- `Get user data`
+- `Verify user`
+- `Password Recovery`
+
+We will be going through each of them as we move forward in the tutorial.
+
+# Basic Navigation {% #basic-navigation %}
+
+In `src/components` create a file called `Navbar.vue`, we will be using this in `src/App.vue` for ease of navigation.
+
+```html
+<template>
+    <header>
+        <h2>
+            Auth App 🗝️
+        </h2>
+        <nav>
+            <RouterLink to="/">Home</RouterLink>
+            <RouterLink v-if="isAuthenticated" to="/dashboard">Dashboard</RouterLink>
+            <RouterLink v-if="isAuthenticated" to="/login">Login/Register</RouterLink>
+            <button v-if="isAuthenticated" @click="logout()" >Logout</button>
+        </nav>
+    </header>
+</template>
+```
+Above we are using Use the `isAuthenticated` computed property to conditionally render the Dashboard and Login/Register route links. We also have a `logout` button which utilizes the `logout action` in the auth store.
+
+We maintain the `isAuthenticated` state in our store to enable navigation guards.
+
+```js
+<script>
+import {computed, ref} from 'vue'
+import { useAuthenticationStore } from '@/stores/auth.js';
+import { useRouter } from 'vue-router';
+
+export default {
+   
+    components:{
+        Button
+    },
+    setup() {
+        const authenticationStore = useAuthenticationStore();
+        const router = useRouter();
+        return {
+            isAuthenticated: computed(() => authenticationStore.isAuthenticated),
+            async logout() {
+                await authenticationStore.logout();
+            },
+        };
+    },
+};
+</script>
+```
+In the script we are using `authenticationStore` and using `isAuthenticated` state.
+
+Also, we have a logout function that will be visible only if user is logged in. This logout function is calling the `logout action` declared in our store, which will logout our user from the app.
+
+Below is how our `src/App.vue` will look. We have a navbar and `RouterView` which renders our views/pages.
+
+```js
+<script setup>
+import Navbar from './components/Navbar.vue';
+</script>
+```
+```html
+<template>
+  <Navbar />
+  <RouterView />
+</template>
+```
+
+# Home page {% #home-page %}
+
+`src/views` folder will contain all the pages that we will have in our app.
+
+Create a new file `src/views/Home.vue` and add the following code to it.
+
+```html
+<template>
+  <div class="Home">
+    <div class="Intro">
+      <h2>Welcome to the Auth App 🚀</h2>
+      <p>Here, you will deep dive into Authenticatin with Vue using Appwrite.Appwrite is a self-hosted backend platform
+        that takes away the stress of building and maintaining a backend. With Appwrite, you can implement authentication,
+        databases, file storage, and real-time events with secure APIs out of the box.</p>
+      <br>
+      <p>This means that you can focus on what you do best: building great Vue apps. You don't have to worry about managing servers, databases, or security. Appwrite takes care of all that for you.
+      </p>
+      <br>
+    </div>
+    <RouterLink class="link" to="/login">
+      <Button p="20px" value="Get Started" />
+    </RouterLink>
+
+  </div>
+</template>
+```
+
+In the above code we have some introduction and a link to `/login` route where our login form is present.
+
+# Routes {% #Routes %}
+
+Last setup, we require is to setup the routes using the `vue-router`. The routes `index.js` file is present in `src/router` folder.
+
+Now, add the code from this [index.js](https://gist.github.com/Vaibhav91one/02a2bc139625b985cc597c9fb0e7156e) file.
+
+The code above is a `Vue Router` configuration that defines the routes for your application and a navigation guard that prevents users from accessing protected routes if they are not authenticated.
+
+We will be having the following routes:
+
+- `home`: This is the home page of your application. It is accessible to all users.
+- `dashboard`: This is a protected route that is only accessible to authenticated users.
+- `verify`: This route is used to verify the user's email address.
+- `login`: This route is used to log the user in, registering and password recovery.
+- `forgot`: This route is used to reset the user's password.
+- `/:pathMatch(.*)*`: This is a catch-all route that matches any URL that does not match another route. It redirects the user to the home page.
+

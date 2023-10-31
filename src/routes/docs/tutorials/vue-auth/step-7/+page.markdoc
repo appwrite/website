@@ -1,0 +1,33 @@
+---
+layout: tutorial
+title: Protected routes
+description: In this step we discuss about how routes are protected from being accessed when the user is not yet authenticated.
+step: 7
+---
+
+Route protection is a powerful feature of the Vue Router that allows you to restrict access to certain routes based on the user's authentication status. This can help you to create more secure and user-friendly applications.
+
+Let's visit the [index.js](https://gist.github.com/Vaibhav91one/02a2bc139625b985cc597c9fb0e7156e) file present in `src/router` to better understand how route protection is done.
+
+A simple step by step explanatin what we are doing is the following:
+
+- To protect a route, add the `requiresAuth` meta property to it.
+- The `router.beforeEach` global navigation guard is called before every navigation.
+- The `router.beforeEach` guard checks if the target route requires authentication and the user is not authenticated.
+- If the target route requires authentication and the user is not authenticated, the navigation is canceled and the user is - redirected to the home page.
+- Otherwise, the navigation is allowed to continue.
+
+We also want to restritct access to pages such as `login` and `forgot` when the user is logged in. To acheive that we are using `beforeMount` lifecycle hook.
+
+## beforeMount lifecycle hook
+
+```js
+ beforeMount(){
+        const authenticationStore = useAuthenticationStore();
+        const router = useRouter();
+        if(authenticationStore.isAuthenticated){
+            router.push({path: '/'})
+        }
+    },
+```
+The above code just checks if the user is authenticated and is accessing `login` and `forgot` routes then, the user will be redirected to home page. Also, we have to use this lifecyle hook in both pages.

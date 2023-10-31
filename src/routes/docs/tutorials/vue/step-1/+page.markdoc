@@ -1,20 +1,33 @@
 ---
 layout: tutorial
-title: Authentication with Vue
-description: Add Authentication to a Vue project using Appwrite.
+title: Build an ideas tracker with Vue.js
+description: Learn to build an idea tracker app with Appwrite and Vue with authentication, databases and collections, queries, pagination, and file storage.
 step: 1
-difficulty: beginner
-readtime: 20
+back: /docs
 ---
-## Appwrite: The backend you'll never have to build or maintain.
 
-Appwrite is a self-hosted backend platform that takes away the stress of building and maintaining a backend. With Appwrite, you can implement authentication, databases, file storage, and real-time events with secure APIs out of the box.
+**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+In this tutorial, you will build Idea tracker with Appwrite and Vue.
 
-This means that you can focus on what you do best: building great Vue apps. You don't have to worry about managing servers, databases, or security. Appwrite takes care of all that for you. Even if you're a beginner, you can get started with Appwrite and Vue in no time.
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker.png)
+{% /only_light %}
+
+# Concepts {% #concepts %}
+
+This tutorial will introduce the following concepts:
+
+1. Setting up your first project
+2. Authentication 
+3. Databases and collections
+4. Queries and pagination
+5. Storage
 
 
-## Before you start
+# Prerequisites {% #prerequisites %}
 
-Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Vue and Appwrite.
-
-If you're inspired and wish to follow along, make sure you've followed [Start with Vue](https://appwrite.io/docs/quick-starts/vue) first and can later jump onto this tutorial.
+1. Basic knowledge of JavaScript and Vue.
+2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.

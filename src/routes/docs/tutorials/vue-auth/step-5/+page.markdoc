@@ -1,0 +1,271 @@
+---
+layout: tutorial
+title: Basic Authentication 
+description: Add navigation to your Vue.js app with Appwrite authentication and pinia stores.
+step: 5
+---
+
+# Login page {% #login-page %}
+
+Finally, we are going to create our login page. Users will be able to login, register or recover their password from this page.
+
+Create a new file `src/views/LoginRegister.vue` and add the following code to it.
+
+```html
+<template>
+  <div>
+    <div>
+      <Login/>
+    </div>
+  </div>
+</template>
+```
+
+```js
+<script setup>
+import Login from '../components/Login.vue';
+</script>
+```
+
+The above code is just a view/page in which we are importing the `login` component, the main login logic is written in the `login` component that we will be creating in the `src/components` folder.
+
+Now, lets create our login component. Create a file `src/components/Login.vue` and the following code to it.
+
+```js
+<script>
+import { ref, computed } from 'vue';
+import { useAuthenticationStore } from '@/stores/auth.js';
+import { useRouter } from 'vue-router';
+
+export default {
+    data() {
+        return {
+            isLogin: true,
+            forgotPassword: false,
+        }
+    },
+    beforeMount(){
+        const authenticationStore = useAuthenticationStore();
+        const router = useRouter();
+        if(authenticationStore.isAuthenticated){
+            router.push({path: '/'})
+        }
+    },
+    setup() {
+        const authenticationStore = useAuthenticationStore();
+        const router = useRouter();
+        return {
+            email: ref(''),
+            password: ref(''),
+            name: ref(''),
+            isAuthenticated: computed(() => authenticationStore.isAuthenticated),
+            async login() {
+                authenticationStore.email = this.email;
+                authenticationStore.password = this.password;
+                await authenticationStore.login(this.email, this.password);
+                await authenticationStore.getUser();
+                router.push({ path: '/Dashboard' })
+            },
+            async register() {
+                authenticationStore.email = this.email;
+                authenticationStore.password = this.password;
+                authenticationStore.name = this.name;
+                await authenticationStore.register(this.email, this.password, this.name);
+                console.log(authenticationStore.user);
+            },
+            async sendPasswordRecoveryMail() {
+                authenticationStore.email = this.email;
+                await authenticationStore.UpdatePassword(this.email);
+                alert("Recovery Mail sent!")
+            },
+        };
+    },
+};
+</script>
+```
+Here is a short overview of what the above code is doing:
+- Importing the pinia `useAuthenticationStore()` and the useRouter() hook.
+- Creating a data section and define the following variables: `email`, `password`, and `name`.
+- Creating a setup section and define the following methods: `login()`, `register()`, and `sendPasswordRecoveryMail()`.
+- In the `beforeMount()` lifecycle hook, check if the user is already authenticated. If the user is authenticated, redirect the user to the home.
+- In the `login()` method, call the `login() action` from the auth store and also we are using `getUser()` action that gets user data from appwrite and fills the user object.
+- In the `register()` method, call the `register() action` from the auth store.
+- In the `sendPasswordRecoveryMail()` method, call the `UpdatePassword() action` from the auth store.
+
+
+```html
+<template>
+    <div v-if="isLogin && !isAuthenticated && !forgotPassword">
+        <h1>Sign in</h1>
+        <form @submit.prevent="login()">
+            <input type="email" v-model="email" placeholder="Email">
+            <input type="password" v-model="password" placeholder="Password">
+            <button type="submit">Sign in</button>
+        </form>
+        <div class="options">
+            <button @click="() => { isLogin = !isLogin }">Sign up</button>
+            <button @click="() => { forgotPassword = !forgotPassword }">Forgot Password?</button>
+        </div>
+    </div>
+    <div v-if="!isLogin && !forgotPassword">
+        <h1>Sign up</h1>
+        <form @submit.prevent="register()">
+            <input type="text" v-model="name" placeholder="Name">
+            <input type="email" v-model="email" placeholder="Email">
+            <input type="password" v-model="password" placeholder="Password">
+            <button type="submit">Sign up</button>
+        </form>
+        <div>
+            <button @click="() => { isLogin = !isLogin }">Sign in</button>
+            <button @click="() => { forgotPassword = !forgotPassword }" >Forgot Password?</button>
+        </div>
+    </div>
+    <div v-if="forgotPassword">
+        <h1>Forgot Password</h1>
+        <form @submit.prevent="sendPasswordRecoveryMail()">
+            <input type="email" v-model="email" placeholder="Email">
+            <button type="submit">Submit</button>
+        </form>
+        <div>
+            <button @click="() => { forgotPassword = !forgotPassword }">Back</button>
+        </div>
+    </div>
+</template>
+```
+
+In the above code we are doing the following things:
+
+- Creating three variables: `isLogin`, `forgotPassword`, and `email`.
+- Seting the `isLogin` variable to `false` and the `forgotPassword` variable to `false`.
+- Writing three methods: `login()`, `register()`, and `sendPasswordRecoveryMail()`. These methods will be called when the user submits the corresponding form.
+- Creating a Vue.js template with three sections: login, register, and forgot password.
+- Using the `v-if` directive to conditionally render each section of the page.
+- Using the `@submit.prevent` directive to prevent the default form submission behavior and call the corresponding method instead.
+
+Once you have completed these steps, you will have a basic Vue.js login, register, and forgot password form. Now, let's discuss the login, register, logout actions in deep.
+
+## Login action
+
+```js
+async login() {
+    const loginResponse =  await account.createEmailSession(this.email, this.password); 
+    this.isAuthenticated = true;
+    }
+```
+
+To login to our app, we use `createEmailSession` function which appwrite provides this checks if the user is registered to the platform.
+if user is registered, the user will be redirected to the `dashboard page` which will contain the user info, else the console will give the error invalid credentials.
+
+
+The login action takes inputs such as email and password of the user.
+
+## Register action
+
+```js
+async register() {
+      const registerResponse = await account.create(ID.unique(), this.email, this.password, this.name);
+      alert("Account Created")
+    }
+```
+
+To register to our app, we use `create` function which appwrite provides, this creates a user in our appwrite console. Now, user can login to the app with the credentials, the user entered during registration.
+
+
+The register action takes inputs such as email, password and the name of the user.
+
+## Logout Action
+
+We can find the logout button in the navbar once the user is logged in.
+
+```js
+ await account.deleteSession("current");
+      this.user = null;
+      this.isAuthenticated = false;
+```
+we can logout the user using `deleteSession` and providing 'current' as the session ID to logout on this device. Also, this action makes the state of the user null.
+
+## getUser Action
+
+Using this action, we can fill the user state object with the user data which we will get via appwrite. 
+
+```js
+ async getUser() {
+      this.user = await account.get();
+      this.isVerified  = this.user.emailVerification;
+    },
+```
+The above action fills our user state object with the user data we are getting via appwrite and also, assigns `isVerified` boolean state with `emailVerification` user data which is also boolean.
+
+# Dashboard page {% #Dashboard-page %}
+
+Now, we want to create our dashboard view/page which will show all the user information. Let's create a file `src/views/dashboard.vue` and add the following code to it.
+
+```js
+ <script setup>
+import { useAuthenticationStore } from '@/stores/auth.js';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
+
+const authenticationStore = useAuthenticationStore();
+const isAuthenticated = computed({
+  get() {
+    return authenticationStore.isAuthenticated;
+  }
+});
+
+const isVerified = computed({
+  get() {
+    return authenticationStore.isVerified;
+  }
+});
+
+const { user } = storeToRefs(authenticationStore);
+
+const userVerify = async () => {
+  await authenticationStore.verifyUser();
+  alert("Verification email sent!")
+};
+
+</script>
+```
+In the above code we are doing the following things:
+
+- Importing the `useAuthenticationStore()`, `storeToRefs()`, and `computed` functions from Vue.js and the pinia library.
+- Creating a variable called `authenticationStore` and assign it the result of calling the useAuthenticationStore() function.
+- Creating a computed property called `isAuthenticated` that returns the value of the `isAuthenticated` property in the authentication store.
+- Creating a computed property called `isVerified` that returns the value of the `isVerified` property in the authentication store.
+- Creating a reactive reference to the `user` object in the authentication store by calling the `storeToRefs()` function and passing in the `authenticationStore` variable.
+- Creating a method called `userDelete()` that calls the `DeleteUser()` method on the authentication store.
+- Creating a method called `userVerify()` that calls the `verifyUser()` method on the authentication store.
+
+
+```html
+ <template>
+  <div>
+    <div>
+      <h1 v-if=isAuthenticated>You are Logged In ✅</h1>
+      <h1 v-if=!isAuthenticated>You are Logged Out ❌</h1>
+      <div v-if=isAuthenticated>
+        <div>
+          <p>Name: {{ user.name }} </p>
+          <p>Email: {{ user.email }} </p>
+          <p>id: {{ user.$id }} </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button @click="userVerify()" v-if="!isVerified && isAuthenticated">Verify Account</button>
+      <button v-if="isVerified && isAuthenticated">Verified</button>
+    </div>
+  </div>
+</template>
+```
+Here is what is happening in the above code:
+
+- The template first checks the value of the `isAuthenticated` computed property. If the user is authenticated, the template displays the "You are Logged In ✅" heading. Otherwise, the template displays the "You are Logged Out ❌" heading.
+- If the user is authenticated, the template displays the user's name, email address, and ID.
+- If the user is not verified and authenticated, the template displays the "Verify Account" button.
+- If the user is verified and authenticated, the template displays the "Verified" button.
+- If the user is authenticated, the template displays the "Delete Account" button.
+
+In the next step, we will be discussing about the **user verification** and **password recovery** functionality.
