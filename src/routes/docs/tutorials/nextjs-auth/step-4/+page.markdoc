@@ -1,0 +1,96 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add Appwrite authentication to you Nextjs app.
+step: 4
+---
+
+# Create Authentication Service Functions
+
+Create a new file `app/services/page.tsx` and add the following code to it.
+
+```js
+import { account, ID } from "../appwrite";
+
+export const login = async (email: string, password: string) => {
+  try {
+    const session = await account.createEmailSession(email, password);
+    window.alert("Login successful"); // Alert for successful login
+    return account.get();
+  } catch (error: any) {
+    window.alert("Login failed: " + error.message); // Alert for login failure
+    throw error;
+  }
+};
+
+export const register = async (email: string, password: string, name: string) => {
+  try {
+    await account.create(email, password, name);
+    window.alert("Registration successful"); // Alert for successful registration
+  } catch (error: any) {
+    window.alert("Registration failed: " + error.message); // Alert for registration failure
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    await account.deleteSession("current");
+    window.alert("Logout successful"); // Alert for successful logout
+  } catch (error: any) {
+    window.alert("Logout failed: " + error.message); // Alert for logout failure
+    throw error;
+  }
+};
+
+export const deleteAccount = async (userId: string) => {
+  try {
+    const response = await account.deleteIdentity(userId);
+    window.alert("Account deleted successfully"); // Alert for successful account deletion
+    window.alert(response);
+  } catch (error: any) {
+    window.alert("Error deleting account: " + error.message); // Alert for deletion error
+    throw error;
+  }
+};
+
+export const updatePrefs = async () => {
+  try {
+    const response = await account.updatePrefs({});
+    window.alert("Preferences updated successfully"); // Alert for successful preference update
+    window.alert(response);
+    return response;
+  } catch (error: any) {
+    window.alert("Error updating preferences: " + error.message); // Alert for update error
+    throw error;
+  }
+};
+
+export const authenticateAndGetUserId = async (email: string, password: string) => {
+  try {
+    const session = await account.createEmailSession(email, password);
+    const user = await account.get();
+    window.alert("Authentication successful"); // Alert for successful authentication
+    return user.$id;
+  } catch (error: any) {
+    window.alert("Authentication failed: " + error.message); // Alert for authentication failure
+    throw error;
+  }
+};
+
+
+export const createVerification = async (url: string) => {
+  try {
+    const result = await account.createVerification(url);
+    window.alert("Verification request successful"); // Alert for successful verification request
+    window.alert(result);
+    return result;
+  } catch (error: any) {
+    window.alert("Verification request failed: " + error.message); // Alert for verification request failure
+    throw error;
+  }
+};
+
+```
+
+
