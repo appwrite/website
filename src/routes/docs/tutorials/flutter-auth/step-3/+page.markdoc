@@ -26,21 +26,19 @@ class Appwrite {
 
   Appwrite._instance() {
     client = Client()
-        .setEndpoint(constants.appwriteEndpoint)
-        .setProject(constants.appwriteProjectID)
-        .setSelfSigned(status: true);
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject(constants.appwriteProjectID);
     account = Account(client);
   }
 }
 ```
 
-`appwriteEndpoint` and `appwriteProjectID` are variables that you can either store in a `.env` file or in a different contants file.
+`appwriteProjectID` is a variable that you can store in a different constants file.
 
 For example, your `lib/constants.dart` file might look something similar to this.
 
 ```dart
-String appwriteEndpoint = "https://cloud.appwrite.io/v1";
 String appwriteProjectID = "642sdddf85b440dc7e5bf";
 ```
 
-You can get the values for these variables from the Appwrite console's **Settings** page.
+You can get the value for this variable from the Appwrite console's **Settings** page.
