@@ -294,7 +294,7 @@
                         <h2 class="aw-title aw-u-color-text-primary">
                             What personal data we collect, why we collect it, and how it is used
                         </h2>
-                        <p>When you browse or visit our website</p>
+                        <p>When you browse or visit our console</p>
                         <div class="aw-info-table-scroll">
                             <div class="aw-info-table-wrapper">
                                 <table class="aw-info-table">
@@ -348,10 +348,7 @@
                                             <th class="aw-info-table-col-header"
                                                 >Consequences of not providing the personal data</th
                                             >
-                                            <td class="aw-info-table-col"
-                                                >Certain non-essential Website features may not be
-                                                available
-                                            </td>
+                                            <td class="aw-info-table-col">- </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -359,7 +356,7 @@
                         </div>
                         <div>
                             <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                When you make use of, or interact with, our Website
+                                When you make use of, or interact with, our console
                             </h3>
                             <p>When you create an account and when you log in</p>
                         </div>
@@ -460,14 +457,15 @@
                                                 3rd party platforms such as for the following
                                                 purposes:
                                                 <ul>
+                                                    <li>ActiveCampaign</li>
                                                     <li>Orbit</li>
-                                                    <li>Google analytics</li>
                                                 </ul>
                                             </td>
                                             <td class="aw-info-table-col">
                                                 3rd party platforms such as for the following
                                                 purposes:
                                                 <ul>
+                                                    <li>ActiveCampaign</li>
                                                     <li>Mailgun</li>
                                                     <li>Orbit</li>
                                                     <li>Hubspot</li>
@@ -686,7 +684,6 @@
                                                     <li>ActiveCampaign</li>
                                                     <li>Mailgun</li>
                                                     <li>Orbit</li>
-                                                    <li>Hubspot</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -1446,53 +1443,6 @@
                             demographic information.
                         </p>
                         <ul class="u-flex u-flex-vertical u-gap-24">
-                            <li>
-                                <span class="aw-u-color-text-primary">Google Analytics </span>
-                                - The Website uses a tool called “Google Analytics” to collect information
-                                about use of the Website. Google Analytics collects information such
-                                as how often users visit this Website, what pages they visit when they
-                                do so, and what other websites they used prior to coming to this Website.
-                                We use the information we get from Google Analytics to maintain and improve
-                                the Website and our products. We do not combine the information collected
-                                through the use of Google Analytics with Personal Data we collect. Google’s
-                                ability to use and share information collected by Google Analytics about
-                                your visits to this Website is restricted by the Google Analytics Terms
-                                of Service, available at
-                                <a
-                                    href="https://marketingplatform.google.com/about/analytics/terms/us/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Google Analytics Terms of Service
-                                    (https://marketingplatform.google.com/about/analytics/terms/us/)</a
-                                >, and the Google Privacy Policy, available at
-                                <a
-                                    href="https://www.google.com/policies/privacy/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Google Privacy Policy (https://www.google.com/policies/privacy/)</a
-                                >. You may learn more about how Google collects and processes data
-                                specifically in connection with Google Analytics at
-                                <a
-                                    href="https://www.google.com/policies/privacy/partners/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Google Privacy Policy for Partners
-                                    (https://www.google.com/policies/privacy/partners/)</a
-                                >. You may prevent your data from being used by Google Analytics by
-                                downloading and installing the Google Analytics Opt-out Browser
-                                Add-on, available at
-                                <a
-                                    href="https://tools.google.com/dlpage/gaoptout/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Google Analytics Opt-out Browser Add-on
-                                    (https://tools.google.com/dlpage/gaoptout/)</a
-                                >.
-                            </li>
                             <li>
                                 <span class="aw-u-color-text-primary">Orbit </span>
                                 - Orbit is a community analytics service offered by Orbit that tracks
