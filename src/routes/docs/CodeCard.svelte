@@ -3,7 +3,6 @@
         href: string;
         cover: {
             src: string;
-            alt: string;
         };
         title: string;
         description: string;
