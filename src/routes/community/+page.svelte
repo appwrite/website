@@ -62,6 +62,66 @@
             description:
                 'Join us for a month long celebration of open source in collaboration with DigitalOcean.',
             buttonText: 'View event'
+        },
+        {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours2.png',
+                alt: ''
+            },
+            date: 'November 2nd',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+        {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours3.png',
+                alt: ''
+            },
+            date: 'November 9th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+         {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours4.png',
+                alt: ''
+            },
+            date: 'November 16th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+         {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours5.png',
+                alt: ''
+            },
+            date: 'November 23rd',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+         {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours6.png',
+                alt: ''
+            },
+            date: 'November 30th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
         }
     ];
 
