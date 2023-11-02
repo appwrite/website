@@ -17,55 +17,6 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours.png',
-                alt: ''
-            },
-            date: 'Sep 28th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://www.twitch.tv/wesscope',
-            cover: {
-                src: '/images/community/events/live-coding.png',
-                alt: ''
-            },
-            date: 'Sep 28th',
-            location: 'Twitch',
-            title: 'Live coding with Wess',
-            description: "Pluck is going mobile. Join us in building Pluck.io's Flutter app.",
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://lu.ma/hf-kickoff-blr',
-            cover: {
-                src: '/images/community/events/hf-kickoff-bangalore.png',
-                alt: 'Hacktoberfest kickoff event'
-            },
-            date: 'Oct 1st',
-            location: 'Bengaluru',
-            title: 'Hacktoberfest kickoff event',
-            description: 'Join us for our Hacktoberfest kickoff event in Bengaluru.',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://hacktoberfest.com/',
-            cover: {
-                src: '/images/community/events/oss-celebration.png',
-                alt: 'Hacktoberfest kickoff event'
-            },
-            date: 'Oct',
-            location: 'Virtual',
-            title: 'Hacktoberfest 10',
-            description:
-                'Join us for a month long celebration of open source in collaboration with DigitalOcean.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
                 src: '/images/community/events/office-hours2.png',
                 alt: ''
             },
