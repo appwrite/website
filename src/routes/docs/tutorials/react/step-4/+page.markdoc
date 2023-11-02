@@ -15,6 +15,7 @@ Create a new file `src/lib/context/user.jsx` and add the following code to it.
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
+import { ID } from "appwrite";
 
 const UserContext = createContext();
 
@@ -36,7 +37,7 @@ export function UserProvider(props) {
   }
 
   async function register(email, password) {
-    await account.create(email, password);
+    await account.create(ID.unique(), email, password);
     await login(email, password);
   }
 
