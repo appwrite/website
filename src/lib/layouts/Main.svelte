@@ -165,8 +165,7 @@
         </div>
     </section>
     <header
-        class="aw-main-header is-special-padding theme-{resolvedTheme}"
-        class:is-transparent={browser}
+        class="aw-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
         {#if showTopBanner}
