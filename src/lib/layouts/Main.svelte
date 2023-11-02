@@ -11,13 +11,13 @@
 
 <script lang="ts">
     import { browser } from '$app/environment';
+    import { page } from '$app/stores';
     import { MobileNav } from '$lib/components';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { slide } from 'svelte/transition';
-    import { persisted } from '$lib/utils/persisted';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -112,11 +112,13 @@
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    const BANNER_KEY = 'discord-banner-00'; // Change this key whenever you want to show the banner again for all users
-    let showTopBanner = persisted(BANNER_KEY, {
-        defaultValue: true,
-        validate: (value): value is boolean => typeof value === 'boolean'
-    });
+    let showTopBanner = $page.data.showBanner;
+    const hideTopBanner = () => {
+        showTopBanner = false;
+        fetch('/api/banner', {
+            method: 'POST'
+        });
+    };
 </script>
 
 <div class="u-position-relative">
@@ -167,7 +169,7 @@
         class:is-transparent={browser}
         class:is-hidden={$isHeaderHidden}
     >
-        {#if $showTopBanner}
+        {#if showTopBanner}
             <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
                 <div class="aw-top-banner-content aw-u-color-text-primary">
                     <a href="/discord" target="_blank" rel="noopener noreferrer">
@@ -179,7 +181,7 @@
                         <button
                             class="aw-top-banner-button"
                             aria-label="close discord message"
-                            on:click={() => ($showTopBanner = false)}
+                            on:click={hideTopBanner}
                         >
                             <span class="aw-icon-close" aria-hidden="true" />
                         </button>
