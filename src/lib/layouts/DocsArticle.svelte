@@ -129,7 +129,7 @@
             position: absolute;
             content: '';
             top: 0;
-            left: -1.5rem;
+            left: -1.8rem;
             height: 100%;
             width: 2px;
             background-color: hsl(var(--p-references-menu-link-color-text));
