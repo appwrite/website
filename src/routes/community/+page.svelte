@@ -368,7 +368,7 @@
                                                             href={issue.url}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            class="aw-link aw-sub-body-500 is-inline"
+                                                            class="aw-link aw-sub-body-500"
                                                         >
                                                             {issue.title}
                                                         </a>
