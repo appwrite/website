@@ -91,7 +91,7 @@
         {/if}
         <span>{$selectedLabel}</span>
     </div>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </button>
 
 {#if $open}
@@ -162,7 +162,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </div>
 
 <style lang="scss">
