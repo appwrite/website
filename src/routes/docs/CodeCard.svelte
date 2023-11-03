@@ -1,9 +1,7 @@
 <script lang="ts" context="module">
     export type CodeCardProps = {
         href: string;
-        cover: {
-            src: string;
-        };
+        cover: string;
         title: string;
         description: string;
     };
