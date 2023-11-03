@@ -15,11 +15,12 @@
 <script lang="ts">
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
+    import { formatDate } from '$lib/utils/date';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
     import type { AuthorData } from './Author.svelte';
     import type { CategoryData } from './Category.svelte';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     export let title: string;
     export let description: string;
@@ -75,9 +76,7 @@
                                 </a>
                                 <ul class="aw-metadata aw-caption-400">
                                     <li>
-                                        <time datetime={date}
-                                            >{new Date(date).toLocaleDateString()}</time
-                                        >
+                                        <time datetime={date}>{formatDate(date)}</time>
                                     </li>
                                     {#if timeToRead}
                                         <li>{timeToRead} min</li>
