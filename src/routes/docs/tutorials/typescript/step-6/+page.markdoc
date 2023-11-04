@@ -1,0 +1,102 @@
+---
+layout: tutorial
+title: Add database
+description: Add a database to your React application using Appwrite Web SDK.
+step: 6
+---
+# Create collection
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
+
+Create a new collection with the following attributes:
+| Field       | Type   | Required |
+|-------------|--------|----------|
+| userId      | String | Yes      |
+| title       | String | Yes      |
+| description | String | No       |
+
+# Ideas context
+
+Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a React context to hold our ideas.
+Create a new file `src/lib/context/ideas.tsx` and add the following code to it.
+
+```ts
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { databases } from "../appwrite";
+import { ID, Query } from "appwrite";
+
+export const IDEAS_DATABASE_ID = "<YOUR_DATABASE_ID>"; // Replace with your database ID
+export const IDEAS_COLLECTION_ID = "<YOUR_COLLECTION_ID>"; // Replace with your collection ID
+
+interface Idea {
+  $id: string;
+  // Define other properties of your idea here
+}
+
+interface IdeasContextType {
+  current: Idea[];
+  add: (idea: Idea) => Promise<void>;
+  remove: (id: string) => Promise<void>;
+}
+
+const IdeasContext = createContext<IdeasContextType | undefined>(undefined);
+
+export function useIdeas() {
+  const context = useContext(IdeasContext);
+  if (context === undefined) {
+    throw new Error("useIdeas must be used within an IdeasProvider");
+  }
+  return context;
+}
+
+interface IdeasProviderProps {
+  children: ReactNode;
+}
+
+export function IdeasProvider(props: IdeasProviderProps) {
+  const [ideas, setIdeas] = useState<Idea[]>([]);
+
+  async function add(idea: Idea) {
+    const response = await databases.createDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      ID.unique(),
+      idea
+    );
+    setIdeas((currentIdeas) => [response.$id, ...currentIdeas].slice(0, 10));
+  }
+
+  async function remove(id: string) {
+    await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+    setIdeas((currentIdeas) => currentIdeas.filter((idea) => idea.$id !== id));
+    await init(); // Refetch ideas to ensure we have 10 items
+  }
+
+  async function init() {
+    const response = await databases.listDocuments(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      [Query.orderDesc("$createdAt"), Query.limit(10)]
+    );
+    setIdeas(response.documents);
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <IdeasContext.Provider value={{ current: ideas, add, remove }}>
+      {props.children}
+    </IdeasContext.Provider>
+  );
+}
+
+```
+
