@@ -14,9 +14,9 @@ To demonstrate how queries are used in java, we are going to implement **search 
 
 # Search feature {% #search-feature %}
 
-Let us show a search icon next to logout icon in app bar of our Home Activity. Again, use **Asset Studio** to add a **search** icon from clip art, then name it **search.xml**.
+Let us show a search icon next to logout icon in app bar of our Home Activity. Again, use **Asset Studio** to add a **search** icon from clip art, then name it `search.xml`.
 
-Add the following icon in **res/layout/mymenu.xml**
+Add the following icon in `res/layout/mymenu.xml`.
 
 ```xml
 <item
@@ -27,7 +27,7 @@ Add the following icon in **res/layout/mymenu.xml**
     android:title="Search" />
 ```
 
-Introduce a ```search``` argument in our ```listRecipes``` method of ```Appwrite.java``` file. This argument will be an empty string if user doesn't want to perform a search, otherwise it will contain the search query.
+Introduce a `search` argument in our `listRecipes` method of `Appwrite.java` file. This argument will be an empty string if user doesn't want to perform a search, otherwise it will contain the search query.
 
 ```java
 public static void listRecipes(String search, CoroutineCallback<DocumentList> coroutineCallback) {

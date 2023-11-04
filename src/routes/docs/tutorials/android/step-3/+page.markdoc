@@ -19,8 +19,6 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Give your project a new name, and set **Project ID** to `recipewrite`.
-
 Then, under **Add a platform**, add a **Android app**. **Package Name** can be found in app level gradle file. 
 
 {% only_dark %}
@@ -32,9 +30,9 @@ Then, under **Add a platform**, add a **Android app**. **Package Name** can be f
 
 You can skip the optional steps.
 
-# Connect your app with appwrite {% #connect-your-app-with-appwrite %}
+# Connect your app with Appwrite {% #connect-your-app-with-appwrite %}
 
-Create **Appwrite.java**, this will handle our app's interaction with Appwrite server.
+Create **Appwrite.java** in the same directory that contains **MainActivity.java**, this will handle our app's interaction with Appwrite server. Replace `[project-id]` with your new project's id, which can be found beside your project's name in overview tab.
 
 ```java
 public class Appwrite {
@@ -42,8 +40,8 @@ public class Appwrite {
     private static Account account;
     private static Databases databases;
 
-    private static final String projectID = "recipewrite";
-    private static final String endpoint = "https://cloud.appwrite.io/v1";  // Add local address if you are running appwrite locally
+    private static final String projectID = "[project-id]";
+    private static final String endpoint = "https://cloud.appwrite.io/v1";  // Add local address if you are running Appwrite locally
 
     public static void init(Context context) {
         client = new Client(context);

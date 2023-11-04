@@ -20,6 +20,6 @@ This tutorial will introduce the following concepts:
 
 # Prerequisites {% #prerequisites %}
 1. Basic knowledge of Java.
-2. Have [Java](https://www.java.com/en/) and [Android Studio](https://developer.android.com/studio) installed on your computer
+2. Have [Java](https://www.java.com/en/) and [Android Studio](https://developer.android.com/studio) installed on your computer.
 
 If you are stuck at any point, you can refer to the final code repository of this tutorial [here](https://github.com/letsintegreat/Recipewrite).

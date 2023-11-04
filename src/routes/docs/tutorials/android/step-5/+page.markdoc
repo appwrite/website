@@ -23,17 +23,11 @@ In **Attributes** tab, create two new attributes.
 ![Create project screen](/images/docs/tutorials/recipewrite-collection-attributes.png)
 {% /only_light %}
 
-- **name**
-    - **Type**: String
-    - **Key**: name
-    - **Size**: 100
-    - **Required**: true
+| Key         | Type        | Size        | Required    |
+| ----------- | ----------- | ----------- | ----------- |
+| **name**    | String      | 100         | true        |
+| **recipe**  | String      | 1024        | true        |
 
-- **recipe**
-    - **Type**: String
-    - **Key**: recipe
-    - **Size**: 1024
-    - **Required**: true
 
 In **Indexes** tab, create a new index. This will be important for search feature of our app.
 
@@ -44,9 +38,10 @@ In **Indexes** tab, create a new index. This will be important for search featur
 ![Create project screen](/images/docs/tutorials/recipewrite-collection-indexes.png)
 {% /only_light %}
 
-- **recipe_index**
-    - **Type**: FullText
-    - **Attribute**: recipe
+| Key              | Type        | Attribute   | ASC/DESC    |
+| ---------------- | ----------- | ----------- | ----------- |
+| **recipe_index** | FullText    | recipe      | ASC         |
+
 
 In **Settings** tab, find **Permissions** heading, add **Any** role and turn on all options, i.e., Create, Read, Update and Delete. You can learn more about Appwrite permissions [here](https://appwrite.io/docs/advanced/platform/permissions).
 
@@ -59,7 +54,7 @@ In **Settings** tab, find **Permissions** heading, add **Any** role and turn on 
 
 # Recipe Model {% #recipe-model %}
 
-Create a new java class: **RecipeModel**. Recipe model will have two string members - **name** and **recipe**.
+Create a new java class, **RecipeModel**. Recipe model will have two string members, **name** and **recipe**.
 
 ```java
 public class RecipeModel {
@@ -92,7 +87,7 @@ public class RecipeModel {
 
 # Appwrite methods {% #appwrite-methods %}
 
-Now we are going to write database methods in **Appwrite.java**, just like we did in authentication part.
+Now we are going to write database methods in `Appwrite.java`, just like we did in authentication part.
 
 But first let's add `databaseID` and `collectionID` member variables to our `Appwrite` class.
 
@@ -159,9 +154,9 @@ Extract name from intent in `onCreate` method.
 name = getIntent().getStringExtra("name");
 ```
 
-Now, in order to get user's delicious recipe, let us make a floating action button. Again, use **Vector Asset** to make a new icon. Choose **add** icon in clip art, and then name it **add.xml**.
+Now, in order to get user's delicious recipe, let us make a floating action button. Again, use **Vector Asset** to make a new icon. Choose **add** icon in clip art, and then name it `add.xml`.
 
-Add a `FloatingActionButton` to **activity_home.xml**
+Add a `FloatingActionButton` to `activity_home.xml`.
 
 ```xml
 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -174,13 +169,13 @@ Add a `FloatingActionButton` to **activity_home.xml**
     app:srcCompat="@drawable/add" />
 ```
 
-Update definition of **HomeActivity** to implement `View.OnClickListener`
+Update definition of **HomeActivity** to implement `View.OnClickListener`.
 
 ```java
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener
 ```
 
-Declare a `FloatingActionButton` member variable of **HomeActivity**
+Declare a `FloatingActionButton` member variable of **HomeActivity**.
 
 ```java
 FloatingActionButton fab;
@@ -193,7 +188,7 @@ fab = findViewById(R.id.floatingActionButton);
 fab.setOnClickListener(this);
 ```
 
-Now, override `onClick` to write its click logic. We are going to show an `AlertDialog` with a text field to capture user's recipe and then use our appwrite method to add the new recipe to database.
+Now, override `onClick` to write its click logic. We are going to show an `AlertDialog` with a text field to capture user's recipe and then use our Appwrite method to add the new recipe to database.
 
 ```java
 @Override
@@ -241,7 +236,7 @@ public void onClick(View view) {
 
 Now, let us show all the delicious recipes that we've got stacked in our database.
 
-Add a `ListView` in **activity_home.xml**
+Add a `ListView` in `activity_home.xml`.
 
 ```xml
 <ListView
@@ -256,7 +251,7 @@ Add a `ListView` in **activity_home.xml**
 </ListView>
 ```
 
-Now, in **HomeActivity** class, add the following member variables
+Now, in **HomeActivity** class, add the following member variables.
 
 ```java
 ListView listView;
@@ -276,7 +271,7 @@ arr = new ArrayAdapter<>(
 listView.setAdapter(arr);
 ```
 
-Create a new file **res/layout/list_item.xml**
+Create a new file `res/layout/list_item.xml`.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

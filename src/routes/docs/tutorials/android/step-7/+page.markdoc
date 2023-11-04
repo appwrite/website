@@ -18,7 +18,7 @@ Learn more about pagination [here](https://appwrite.io/docs/products/databases/p
 
 # Pagination feature {% #pagination-feature %}
 
-Update the ```listRecipes``` method to take in ```lastDocumentId``` as an argument, and add appropriate query
+Update the ```listRecipes``` method to take in ```lastDocumentId``` as an argument, and add appropriate query.
 
 ```java
 public static void listRecipes(String search, String lastDocumentId, CoroutineCallback<DocumentList> coroutineCallback) {
@@ -48,7 +48,7 @@ public static void listRecipes(String search, String lastDocumentId, CoroutineCa
 }
 ```
 
-Declare the following member variables in ```HomeActivity``` class
+Declare the following member variables in ```HomeActivity``` class.
 
 1. **recipesDocuments**: As we will be needing the documentId of the last document we have, let us maintain a list of documents.
 2. **loading**: This will ensure no two ```listRecipes``` operations happen at the same time.
