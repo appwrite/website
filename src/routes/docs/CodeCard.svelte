@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
     export type CodeCardProps = {
         href: string;
-        src: string;
+        cover: string;
         title: string;
         description: string;
     };
@@ -10,14 +10,14 @@
 <script lang="ts">
     type $$Props = CodeCardProps;
     export let href: $$Props['href'];
-    export let src: $$Props['src'];
+    export let cover: $$Props['cover'];
     export let title: $$Props['title'];
     export let description: $$Props['description'];
 </script>
 
 <a class="aw-grid-articles-item is-full-color" {href}>
     <div class="aw-grid-articles-item-image">
-        <img src={src} alt='' loading="lazy" />
+        <img src={cover} alt='' loading="lazy" />
     </div>
     <article class="aw-grid-articles-item-content">
         <header class="aw-articles-item-header">

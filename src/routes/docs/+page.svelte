@@ -15,31 +15,31 @@
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
-            src: '/images/tutorials/react.png',
+            cover: '/images/tutorials/react.png',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
             href: '/docs/tutorials/sveltekit',
-            src: '/images/tutorials/svelte.png',
+            cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
         },
         {
             href: '/docs/tutorials/vue',
-            src: '/images/tutorials/vue.png',
+            cover: '/images/tutorials/vue.png',
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
         },
         {
             href: '/docs/tutorials/android',
-            src: '/images/tutorials/android.png',
+            cover: '/images/tutorials/android.png',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
         },
         {
             href: '/docs/tutorials/flutter',
-            src: '/images/tutorials/flutter.png',
+            cover: '/images/tutorials/flutter.png',
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
@@ -80,7 +80,7 @@
             src="/images/animations/tech-light.png"
             width="768"
             height="768"
-            alt=''
+            alt=""
             style="position: absolute; display: block;"
         />
     </div>
@@ -98,7 +98,7 @@
                 src="/images/animations/tech-dark.png"
                 width="768"
                 height="768"
-                alt=''
+                alt=""
                 style="position: absolute;"
             />
         </Spline>
@@ -109,7 +109,7 @@
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <img src="/images/bgs/docs-blur-2.svg" alt='' />
+            <img src="/images/bgs/docs-blur-2.svg" alt="" />
         </div>
 
         <section class="aw-hero is-align-start u-position-relative">
@@ -159,14 +159,14 @@
                         <a href="/docs/products/auth" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
-                                alt=''
+                                alt=""
                                 class="u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
-                                alt=''
+                                alt=""
                                 class="u-only-light"
                                 width="48"
                                 height="48"
