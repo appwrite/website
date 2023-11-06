@@ -12,3 +12,4 @@ export { default as FloatingHeads } from './FloatingHeads.svelte';
 export { default as FloatingHead } from './FloatingHead.svelte';
 export { default as Feedback } from './Feedback.svelte';
 export { default as Select } from './Select.svelte';
+export { default as MetricCard } from './MetricCard.svelte';

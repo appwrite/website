@@ -12,6 +12,7 @@
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
 
     export let data;
 
@@ -109,6 +110,17 @@
         }
     ];
 
+    const metrics = [
+        { metric: '33K+', description: 'GitHub Stars' },
+        { metric: '8K+', description: 'Pull Requests' },
+        { metric: '15K+', description: 'Commits' },
+        { metric: '2.5K+', description: 'Issues' },
+        { metric: '400+', description: 'Open Issues' },
+        { metric: '1.9K+', description: 'Closed Issues' },
+        { metric: '4.9K+', description: 'Forks' },
+        { metric: '20K+', description: 'Contributors' }
+    ];
+
     let name = '';
     let email = '';
     let submitted = false;
@@ -201,54 +213,11 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container">
                     <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">33K+</div>
-                                <div class="aw-description">GitHub Stars</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">8K+</div>
-                                <div class="aw-description">Pull Requests</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">15K+</div>
-                                <div class="aw-description">Commits</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">2.5K+</div>
-                                <div class="aw-description">Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">400+</div>
-                                <div class="aw-description">Open Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">1.9K+</div>
-                                <div class="aw-description">Closed Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">4.9K+</div>
-                                <div class="aw-description">Forks</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">20K+</div>
-                                <div class="aw-description">Contributors</div>
-                            </div>
-                        </li>
+                        {#each metrics as props}
+                            <li>
+                                <MetricCard {...props} />
+                            </li>
+                        {/each}
                     </ul>
                 </section>
             </div>
