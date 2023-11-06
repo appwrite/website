@@ -15,31 +15,31 @@
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
-            cover: '/images/tutorials/react.png',
+            src: '/images/tutorials/react.png',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
             href: '/docs/tutorials/sveltekit',
-            cover: '/images/tutorials/svelte.png',
+            src: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
         },
         {
             href: '/docs/tutorials/vue',
-            cover: '/images/tutorials/vue.png',
+            src: '/images/tutorials/vue.png',
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
         },
         {
             href: '/docs/tutorials/android',
-            cover: '/images/tutorials/android.png',
+            src: '/images/tutorials/android.png',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
         },
         {
             href: '/docs/tutorials/flutter',
-            cover: '/images/tutorials/flutter.png',
+            src: '/images/tutorials/flutter.png',
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
