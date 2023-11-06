@@ -54,7 +54,7 @@
                     <li class="is-mobile-col-span-2">
                         <a href="/docs/tutorials/vue" class="aw-card is-normal">
                             <header class="u-flex u-cross-center u-gap-4">
-                                <img src="/images/platforms/{$themeInUse}/vue.svg" alt="" />
+                                <img src="/images/platforms/{$themeInUse}/vue.svg" alt='' />
                                 <h4 class="aw-sub-body-500 aw-u-color-text-primary">Vue</h4>
                             </header>
                             <p class="aw-sub-body-400 u-margin-block-start-4">

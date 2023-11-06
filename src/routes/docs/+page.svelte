@@ -15,46 +15,31 @@
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
-            cover: {
-                src: '/images/tutorials/react.png',
-                alt: 'react logo'
-            },
+            cover: '/images/tutorials/react.png',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
             href: '/docs/tutorials/sveltekit',
-            cover: {
-                src: '/images/tutorials/svelte.png',
-                alt: 'svelte logo'
-            },
+            cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
         },
         {
             href: '/docs/tutorials/vue',
-            cover: {
-                src: '/images/tutorials/vue.png',
-                alt: 'Vue logo'
-            },
+            cover: '/images/tutorials/vue.png',
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
         },
         {
             href: '/docs/tutorials/android',
-            cover: {
-                src: '/images/tutorials/android.png',
-                alt: 'Android logo'
-            },
+            cover: '/images/tutorials/android.png',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
         },
         {
             href: '/docs/tutorials/flutter',
-            cover: {
-                src: '/images/tutorials/flutter.png',
-                alt: 'Flutter logo'
-            },
+            cover: '/images/tutorials/flutter.png',
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
