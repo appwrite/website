@@ -104,7 +104,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `teams` | array of teams | Configuration of teams in your project. |
 | `buckets` | array of buckets | Configuration of teams in your project. |
 
-### Function options
+### Function options {% #function-options %}
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -113,21 +113,21 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `runtime` | string | Function runtime, must be enabled. [Learn more about runtimes](/docs/products/functions/runtimes#available-runtimes). |
 | `path` | string | Path to folder containing the function's source code. |
 | `entrypoint` | string | Entry point of the function relative to the folder specified in path. |
-| `ignore` | array of strings | Files to ignore inside the function. [Learn more about ignoring files](/docs). |
+| `ignore` | array of strings | Files from your source code that should be ignored when creating a deployment. |
 | `execute` | array of strings | Grants execute permissions to users. [Learn more about role strings](/docs/apis/rest#permissions). |
-| `events` | array of strings | Events that trigger the function to execute. [Learn more about events](/docs). |
+| `events` | array of strings | Events that trigger the function to execute. [Learn more about events](/docs/advanced/platform/events). |
 | `schedule` | string | Execute schedule for the function. [Learn more about scheduled executions](/docs/products/functions/execution#schedule). |
 | `timeout` | int | Execution timeout of the function in seconds, with a maximum configurable limit of 900 seconds. |
 | `variables` | JSON object | Variables provided to the function on execution stored as a key-value JSON object. |
 
-### Databases options
+### Databases options {% #database-options %}
 
 | Option | Type | Description |
 | --- | --- | --- |
 | `$id` | string | Database ID. |
 | `name` | string | Database Name. |
 
-### Collection options
+### Collection options {% #collection-options %}
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `attributes` | array of objects | Defines a list of attributes in the collection. [Learn more about the Attributes List Object](/docs/references/cloud/models/attributeList). |
 | `indexes` | array of objects | Defines a list of indexes in the collection. [Learn more about the Indexes List Object](/docs/references/cloud/models/indexList). |
 
-### Buckets options
+### Buckets options {% #bucket-options %}
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `encryption` | boolean | Whether the bucket's content is encrypted. |
 | `antivirus` | boolean | Whether virus scanning is enabled for the bucket's content. |
 
-### Teams options
+### Teams options {% #team-options %}
 
 | Option | Type | Description |
 | --- | --- | --- |

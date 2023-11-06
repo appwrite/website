@@ -12,7 +12,7 @@ As the name suggests, read permission allows a user to read a resource, create a
 
 All permissions can be granted to individuals or groups of users, entire teams, or only to team members with a specific role. Permission can also be granted based on authentication status, such as to all users, only authenticated users, or only guest users.
 
-A project user can only grant permissions to a resource that they own. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](/docs/sdks#server) to achieve this functionality.
+A project user can only grant permissions to a resource that they have. For example, if a user is trying to share a document with a team that they are not a member of, they will encounter a 401 not authorized error. If your app needs users to grant access to teams they're not a member of, you can create Appwrite Functions with a [Server SDK](/docs/sdks#server) to achieve this functionality.
 
 # Appwrite resource {% #appwrite-resource %}
 
@@ -63,7 +63,7 @@ The examples below will show you how you can use the different Appwrite permissi
 
 The following examples are using the [Appwrite Web SDK](https://github.com/appwrite/sdk-for-web) but can be applied similarly to any of the other [Appwrite SDKs](/docs/sdks).
 
-## Example #1 - Basic usage
+## Example 1 - Basic usage {% #example-1-basic-usage %}
 
 In the following example, we are creating a document that can be read by anyone, edited by writers or admins, and deleted by administrators or a user with the user ID `user:5c1f88b42259e`.
 
@@ -96,7 +96,7 @@ promise.then(function (response) {
 });
 ```
 
-## Example #2 - Team roles
+## Example 2 - Team roles  {% #example-2-team-roles %}
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 
