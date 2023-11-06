@@ -80,7 +80,7 @@
             src="/images/animations/tech-light.png"
             width="768"
             height="768"
-            alt=""
+            alt=''
             style="position: absolute; display: block;"
         />
     </div>
@@ -98,7 +98,7 @@
                 src="/images/animations/tech-dark.png"
                 width="768"
                 height="768"
-                alt=""
+                alt=''
                 style="position: absolute;"
             />
         </Spline>
@@ -109,7 +109,7 @@
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <img src="/images/bgs/docs-blur-2.svg" alt="" />
+            <img src="/images/bgs/docs-blur-2.svg" alt='' />
         </div>
 
         <section class="aw-hero is-align-start u-position-relative">
@@ -159,14 +159,14 @@
                         <a href="/docs/products/auth" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
-                                alt=""
+                                alt=''
                                 class="u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
-                                alt=""
+                                alt=''
                                 class="u-only-light"
                                 width="48"
                                 height="48"
@@ -185,7 +185,7 @@
                         <a href="/docs/products/databases" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
-                                alt=""
+                                alt=''
                                 class="u-only-dark"
                                 width="48"
                                 height="48"
