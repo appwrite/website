@@ -185,7 +185,7 @@
                         <a href="/docs/products/databases" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
-                                alt=''
+                                alt=""
                                 class="u-only-dark"
                                 width="48"
                                 height="48"
