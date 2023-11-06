@@ -147,7 +147,7 @@
                 <div class="u-sep-block-start u-padding-block-start-20">
                     <button class="aw-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
                         <span class="aw-icon-arrow-up" aria-hidden="true" />
-                        <span class="aw-sub-body-500">Back to top</span>
+                        <span class="aw-caption-400">Back to top</span>
                     </button>
                 </div>
             </div>
