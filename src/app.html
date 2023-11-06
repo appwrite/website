@@ -19,6 +19,7 @@
 
     <body class="theme-dark" data-sveltekit-preload-data="hover">
         <script>
+            // Theme
             const isDocs = window.location.pathname.startsWith('/docs');
             if (isDocs) {
                 const theme = localStorage.getItem('theme');
@@ -36,7 +37,15 @@
                 }
             }
 
+            // Progressive enhancement
             document.body.dataset.jsEnabled = '';
+
+            // Banner
+            const BANNER_KEY = '%aw_banner_key%';
+            const hideBanner = localStorage.getItem(BANNER_KEY);
+            if (hideBanner === 'true') {
+                document.body.dataset.bannerHidden = '';
+            }
         </script>
         <div style="display: contents">%sveltekit.body%</div>
     </body>

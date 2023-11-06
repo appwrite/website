@@ -11,8 +11,7 @@ function absoulute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
-// const isVercel = process.env.VERCEL === '1';
-const isVercel = true;
+const isVercel = process.env.VERCEL === '1';
 
 const adapter = isVercel ? staticAdapter({ strict: false, pages: 'public' }) : nodeAdapter();
 
