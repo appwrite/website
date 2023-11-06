@@ -82,6 +82,10 @@
     grid-template-areas:  "side-a a-header side-b"
                           "side-a main side-b"
                           "side-a footer footer";
-    .#{$p}-side-nav         { inline-size:var(--p-grid-huge-navs-side-nav-width-opened); }
+    .#{$p}-side-nav {
+      inline-size:var(--p-grid-huge-navs-side-nav-width-opened);
+      &-wrapper { padding-block:0; }
+      &-scroll  { padding-block:pxToRem(16); }
+    }
   }
 }
