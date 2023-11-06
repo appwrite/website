@@ -81,7 +81,7 @@
             </a>
         </div>
         <div class="aw-mobile-header-end">
-            <a href="https://cloud.appwrite.io/console" class="aw-button">
+            <a href="https://cloud.appwrite.io/console" class="aw-button is-not-mobile">
                 <span class="aw-sub-body-500">Go to console</span>
             </a>
             <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">

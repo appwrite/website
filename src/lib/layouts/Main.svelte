@@ -12,12 +12,11 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav } from '$lib/components';
+    import { BANNER_KEY } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { slide } from 'svelte/transition';
-    import { persisted } from '$lib/utils/persisted';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -112,11 +111,10 @@
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    const BANNER_KEY = 'discord-banner-00'; // Change this key whenever you want to show the banner again for all users
-    let showTopBanner = persisted(BANNER_KEY, {
-        defaultValue: true,
-        validate: (value): value is boolean => typeof value === 'boolean'
-    });
+    const hideTopBanner = () => {
+        document.body.dataset.bannerHidden = '';
+        localStorage.setItem(BANNER_KEY, 'true');
+    };
 </script>
 
 <div class="u-position-relative">
@@ -163,30 +161,28 @@
         </div>
     </section>
     <header
-        class="aw-main-header is-special-padding theme-{resolvedTheme}"
-        class:is-transparent={browser}
+        class="aw-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-        {#if $showTopBanner}
-            <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
-                <div class="aw-top-banner-content aw-u-color-text-primary">
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="aw-caption-500">We are having lots of fun on</span>
-                        <span class="aw-icon-discord" aria-hidden="true" />
-                        <span class="aw-caption-500">Discord. Come and join us!</span>
-                    </a>
-                    {#if browser}
-                        <button
-                            class="aw-top-banner-button"
-                            aria-label="close discord message"
-                            on:click={() => ($showTopBanner = false)}
-                        >
-                            <span class="aw-icon-close" aria-hidden="true" />
-                        </button>
-                    {/if}
-                </div>
+        <div class="aw-top-banner">
+            <div class="aw-top-banner-content aw-u-color-text-primary">
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <span class="aw-caption-500">We are having lots of fun on</span>
+                    <span class="aw-icon-discord" aria-hidden="true" />
+                    <span class="aw-caption-500">Discord. Come and join us!</span>
+                </a>
+                {#if browser}
+                    <button
+                        class="aw-top-banner-button"
+                        aria-label="close discord message"
+                        on:click={hideTopBanner}
+                    >
+                        <span class="aw-icon-close" aria-hidden="true" />
+                    </button>
+                {/if}
             </div>
-        {/if}
+        </div>
+
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start">
                 <a href="/">
