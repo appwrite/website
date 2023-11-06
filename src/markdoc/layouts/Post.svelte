@@ -21,6 +21,7 @@
     import { getContext } from 'svelte';
     import type { AuthorData } from './Author.svelte';
     import type { CategoryData } from './Category.svelte';
+    import { scroll } from '$lib/animations';
 
     export let title: string;
     export let description: string;
@@ -43,6 +44,8 @@
             cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
         );
     }
+
+    let readPercentage = 0;
 </script>
 
 <svelte:head>
@@ -63,7 +66,13 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
+    <div
+        class="aw-big-padding-section"
+        use:scroll
+        on:aw-scroll={(e) => {
+            readPercentage = e.detail.percentage;
+        }}
+    >
         <div class="aw-big-padding-section">
             <div class="aw-big-padding-section-level-1">
                 <div class="aw-big-padding-section-level-2">
@@ -213,3 +222,16 @@
         </div>
     </div>
 </Main>
+
+<div class="progress-bar" style:--percentage="{readPercentage * 100}%" />
+
+<style lang="scss">
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        height: 2px;
+        width: var(--percentage);
+        background: hsl(var(--aw-color-accent));
+        z-index: 10000;
+    }
+</style>
