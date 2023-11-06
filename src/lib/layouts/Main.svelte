@@ -11,13 +11,12 @@
 
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { page } from '$app/stores';
     import { MobileNav } from '$lib/components';
+    import { BANNER_KEY } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { slide } from 'svelte/transition';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -112,12 +111,9 @@
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    let showTopBanner = $page.data.showBanner;
     const hideTopBanner = () => {
-        showTopBanner = false;
-        fetch('/api/banner', {
-            method: 'POST'
-        });
+        document.body.dataset.bannerHidden = '';
+        localStorage.setItem(BANNER_KEY, 'true');
     };
 </script>
 
@@ -168,26 +164,25 @@
         class="aw-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-        {#if showTopBanner}
-            <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
-                <div class="aw-top-banner-content aw-u-color-text-primary">
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="aw-caption-500">We are having lots of fun on</span>
-                        <span class="aw-icon-discord" aria-hidden="true" />
-                        <span class="aw-caption-500">Discord. Come and join us!</span>
-                    </a>
-                    {#if browser}
-                        <button
-                            class="aw-top-banner-button"
-                            aria-label="close discord message"
-                            on:click={hideTopBanner}
-                        >
-                            <span class="aw-icon-close" aria-hidden="true" />
-                        </button>
-                    {/if}
-                </div>
+        <div class="aw-top-banner">
+            <div class="aw-top-banner-content aw-u-color-text-primary">
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <span class="aw-caption-500">We are having lots of fun on</span>
+                    <span class="aw-icon-discord" aria-hidden="true" />
+                    <span class="aw-caption-500">Discord. Come and join us!</span>
+                </a>
+                {#if browser}
+                    <button
+                        class="aw-top-banner-button"
+                        aria-label="close discord message"
+                        on:click={hideTopBanner}
+                    >
+                        <span class="aw-icon-close" aria-hidden="true" />
+                    </button>
+                {/if}
             </div>
-        {/if}
+        </div>
+
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start">
                 <a href="/">
