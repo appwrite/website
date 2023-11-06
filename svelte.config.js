@@ -11,9 +11,10 @@ function absoulute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
-const isVercel = process.env.VERCEL === '1';
+// const isVercel = process.env.VERCEL === '1';
+const isVercel = true;
 
-const adapter = isVercel ? staticAdapter({ strict: false }) : nodeAdapter();
+const adapter = isVercel ? staticAdapter({ strict: false, pages: 'public' }) : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
