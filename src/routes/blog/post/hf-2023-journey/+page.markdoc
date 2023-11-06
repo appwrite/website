@@ -15,7 +15,7 @@ We had an absolute blast interacting with all the new contributors and hosting a
 
 Not only did we see multiple virtual events, but we also hosted an [in-person Hacktoberfest Kickoff meetup](https://photos.app.goo.gl/n5YQjK56CCgqyrj68) in collaboration with DigitalOcean in Bengaluru, India. Overall, this Hacktoberfest was one of the most wholesome and fulfilling experiences for our team, and we cannot wait to share our highlights from this edition.
 
-![Hacktoberfest Kickoff event in Bengaluru, India](/images/blog/hf-2023-journey/kickoff-blr.jpg)
+![Hacktoberfest Kickoff event in Bengaluru, India](/images/blog/hf-2023-journey/kickoff-blr.png)
 
 ## Our history with Hacktoberfest
 
@@ -50,8 +50,8 @@ The Appwrite team also participated in a number of livestreams throughout the mo
 Together, we made a lot of noise during Hacktoberfest, leading to some amazing results for the Appwrite community!
 
 - **135+** Hacktoberfest issues
-- **40+** Pull Requests
-- **20+** new GitHub contributors
+- **65+** accepted Pull Requests
+- **30+** new GitHub contributors
 - **8** Hacktoberfest PR Review Parties
 
 All these achievements were made possible through the strong collaboration and active participation of the community through a variety of contributions, spanning **adapters**, **function templates**, and more!
