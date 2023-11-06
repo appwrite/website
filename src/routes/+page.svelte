@@ -588,7 +588,9 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <Spline loading="eager" url="/images/animations/lines.splinecode" />
+                        <Spline loading="eager" url="/images/animations/lines.splinecode">
+                            <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
+                        </Spline>
                     </div>
                 </div>
                 <div class="aw-container u-position-relative">

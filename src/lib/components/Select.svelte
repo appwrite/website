@@ -105,7 +105,7 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                <div class="u-flex u-flex-vertical">
+                <div class="u-flex u-flex-vertical u-gap-2">
                     {#each group.options as option}
                         <button class="aw-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}

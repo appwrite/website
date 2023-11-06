@@ -134,7 +134,7 @@
 									<ul class="u-flex u-gap-8">
 										<li>
 											<a
-												href="https://appwrite.io/discord"
+												href="/discord"
 												class="aw-icon-button"
 												aria-label="Appwrite on aw-icon-discord"
 												target="_blank"
