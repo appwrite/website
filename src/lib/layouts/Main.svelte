@@ -220,7 +220,7 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">37.8K</span>
                 </a>
                 <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"
                     >Sign up</a
