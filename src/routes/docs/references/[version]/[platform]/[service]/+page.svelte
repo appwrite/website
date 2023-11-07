@@ -98,9 +98,9 @@
                 <div class="aw-inline-code">{platformType}</div>
             </div>
             <div class="aw-article-header-end">
-                <div class="u-flex u-gap-24 aw-u-color-text-primary">
+                <div class="u-flex u-gap-24 aw-u-flex-vertical-mobile aw-u-color-text-primary">
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small is-not-mobile" for="platform">Platform</label>
+                        <label class="u-small aw-is-not-mobile" for="platform">Platform</label>
                         <Select
                             --min-width="10rem"
                             id="platform"
@@ -126,7 +126,7 @@
                         />
                     </div>
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small is-not-mobile" for="version">Version</label>
+                        <label class="u-small aw-is-not-mobile" for="version">Version</label>
 
                         <Select
                             nativeMobile
