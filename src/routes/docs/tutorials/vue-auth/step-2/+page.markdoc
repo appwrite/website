@@ -5,6 +5,7 @@ description: Add Authentication to a Vue project using Appwrite.
 step: 2
 ---
 
+# Create Vue Project
 
 You can create a Vue project using [Vue](https://vuejs.org/guide/quick-start.html).
 

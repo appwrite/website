@@ -1,22 +1,88 @@
 ---
 layout: tutorial
-title: Next steps
-description: View your Vue.js app build on Appwrite Cloud.
+title: User verification
+description: This page deals with user verification with Vue and Appwrite.
 step: 8
 ---
+# User Verfication  {% #user-verification %}
 
-# Test your project {% #test-project %}
-Run your project with `npm run dev` and open the URL that comes up on the terminal.
+It is a good practice to verify whether a user is authentic or not. Appwrite provides us a way to verify the user using different methods such as
+
+- Phone verification
+- email verification
+
+In this tutorial we are using email verification.
+
+## createVerification action
+
+This action uses `createVerification` method provided by appwrite to send a verification email to the user. The parameter that this method requires is a page where the user will be redirected to from the mail where the user can be verified.
+
+```js
+    async verifyUser(){
+      const verfication = await account.createVerification('http://localhost:5174/verify')
+    },
+```
+
+So, we have create a page, where we will verify the user. Then, user can submit a request to verify using  `updateVerification` action.
+
+Now, let's create a new view/page `src/views/verify.vue` and copy the below code to it.
+
+```js
+<script setup>
+import { useAuthenticationStore } from '@/stores/auth.js';
+import { useRoute , useRouter} from 'vue-router';
+
+const verificationDone = false; 
+const route = useRoute();
+const router = useRouter();
+const authenticationStore = useAuthenticationStore();
+const {userId, secret} = route.query;
+
+const verificationConfirm = async() =>{
+    if(userId && secret){
+        await authenticationStore.confirmVerification(userId, secret);
+        verificationDone = !verificationDone;
+        alert("verified!")
+        router.push({path: '/'})
+    }
+    else{
+        console.log("Not verfied yet!")
+    }
+}
+
+</script>
+```
+In the above script we are doing the following things:
+
+- Storing the `userId` and `secret` query parameters from query string present in the URL.
+- Then, using `verificationConfirm` function to first check if `userID` and `secret` are present in the URL, then only use the `confirmVerification` action from the store to send a verified request to appwrite.
+- After verification the user will be redirected to the `home page`.
+- If the user if successfully verified, the dashboard will show `verified`, else it will show `verify user`
 
 
-# Play with your project {% #play-project %}
+```html
+<template>
+    <div>
+        <div>
+            <button @click="verificationConfirm()" v-if=verificationDone>Verify</button>
+        </div>
+        <div v-if=verificationDone>
+            <h1> You have been verified ✅</h1>
+        </div>
+        <div v-if=!verificationDone>
+            <h1> path reserved for verification ✅</h1>
+        </div>
+    </div>
+</template>
+```
+In the above code we have a verify button which will trigger the `verificationConfirm` method and based on the `verificationDone` state the above text will be rendered.
 
-Try to implement `validations` to input, make use of `phone verification`.
+## confirmVerification action
 
-# Use Appwrite{% #make-project %}
+```js
+ async confirmVerification(id, secret){
+      const confirResponse = await account.updateVerification(id, secret)
+    },
+```
+The above action uses the `updateVerification` method which appwrite provides to send a verified request to the appwrite. This method takes two parameters `userId` and `secret` that is present in the query string from the URL we got in the email.
 
-Use appwrite in your projects and explore other amazing features that appwrite provides such as 
-
-- Databases
-- Functions
-- Storage

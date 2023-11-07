@@ -1,14 +1,13 @@
 ---
 layout: tutorial
-title: Set up Store, Navigation bar and routes
+title: Check if logged in
 description: Setting up a pinia store, a navigation bar for ease of navigation and routes using vue-router
 step: 4
 ---
 
 # Auth store {% #auth-store %}
 
-Since, we chose pinia for state management during the installatin process.So, we have already setuped our store. 
-
+Since, we chose pinia for state management during the installatin process. So, we have already setuped our store. 
 Now, We just need to declare state(data that user will have), actions (fetching of information for appwrite). We will discuss about these as we go.
 
 ```js
@@ -156,9 +155,8 @@ Create a new file `src/views/Home.vue` and add the following code to it.
       <br>
     </div>
     <RouterLink class="link" to="/login">
-      <Button p="20px" value="Get Started" />
+      <button> Get started</button>
     </RouterLink>
-
   </div>
 </template>
 ```

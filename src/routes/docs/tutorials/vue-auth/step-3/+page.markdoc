@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Set up Appwrite
+title: Initialize SDK
 description: Import and configure a project with Appwrite Cloud and Vue.js.
 step: 3
 ---
@@ -51,26 +51,14 @@ The client is then used to initialize services like `Databases` and `Account`, s
 You can do this by instantiating the services you need in a file like `src/lib/appwrite.js` and **exporting the instances**.
 
 ```js
-  import { Databases, Account, Client } from "appwrite";
-  
-  const client = new Client();
-  client
-    .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(PUBLIC_APPWRITE_PROJECT);
-  
-  export const account = new Account(client);
-  export const databases = new Databases(client);
+import { Client, Databases, Account } from "appwrite";
+
+const client = new Client();
+client
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
+
+export const account = new Account(client);
+export const databases = new Databases(client);
 ```
-For ease of building, we are using our `Endpoint` and `Project key` directly, but this is not advised when working with production code.
-
-For better security, we should use environment variables like
-`VITE_PUBLIC_APPWRITE_ENDPOINT` and `VITE_PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://cli.vuejs.org/guide/mode-and-env.html#environment-variables).
-
-For example, your `.env` might look something similar to this.
-
-```text
-VITE_PUBLIC_APPWRITE_ENDPOINT= <Endpoint>
-VITE_PUBLIC_APPWRITE_PROJECT= <Project_ID>
-```
-The env file must be placed in the project root. `VITE_` must be added in front of the environment variables in order for vite to identify them.
 You can get the values for these variables from the Appwrite console's **Settings** page.

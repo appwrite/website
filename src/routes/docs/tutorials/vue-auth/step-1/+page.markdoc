@@ -3,7 +3,7 @@ layout: tutorial
 title: Authentication with Vue
 description: Add Authentication to a Vue project using Appwrite.
 step: 1
-difficulty: medium
+difficulty: intermediate
 readtime: 40
 ---
 ## Appwrite: The backend you'll never have to build or maintain.
