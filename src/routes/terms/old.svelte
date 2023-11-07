@@ -293,6 +293,7 @@
                             rights, copyrights, contract rights or any other rights of any person.
                         </p>
                     </section>
+
                     <section id="accounts">
                         <h2 class="aw-title aw-u-color-text-primary">Accounts</h2>
 
@@ -383,6 +384,7 @@
                             set forth herein is found to have failed of its essential purpose.
                         </p>
                     </section>
+
                     <section id="disclaimer">
                         <h2 class="aw-title aw-u-color-text-primary">Disclaimer</h2>
 
