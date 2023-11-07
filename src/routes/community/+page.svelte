@@ -79,7 +79,7 @@
     const projects: ProjectCardProps[] = [
         {
             title: 'Auth UI',
-            description: 'Appwirte-powered authentication screens generator for any application.',
+            description: 'Appwrite-powered authentication screens generator for any application.',
             image: {
                 src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
                 alt: 'Auth UI: Fully customizable login flow for your applications'
