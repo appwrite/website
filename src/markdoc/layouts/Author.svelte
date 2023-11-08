@@ -4,7 +4,7 @@
     import { Main } from '$lib/layouts';
     import { getContext } from 'svelte';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-    import type { PostsData, AuthorData} from '$routes/blog/content';
+    import type { PostsData, AuthorData } from '$routes/blog/content';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
