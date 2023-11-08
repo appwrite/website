@@ -15,6 +15,7 @@
     }
   }
   &-list { display:flex; flex-direction:column; gap:pxToRem(20); }
+  &.is-full-width { inline-size:revert; }
   .is-selected { color:hsl(var(--aw-color-primary)); }
   @media #{$break1} {}
   @media #{$break2open} {
