@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
     import { getContext, hasContext } from 'svelte';
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
@@ -12,6 +13,8 @@
     <slot />
 {:else if isDocs}
     <p class="aw-paragraph-md {className}"><slot /></p>
+{:else if isInsidePolicy()}
+    <p class="aw-paragraph-md is-policy {className}"><slot /></p>
 {:else}
     <p class="aw-paragraph-lg {className}"><slot /></p>
 {/if}
@@ -19,5 +22,9 @@
 <style lang="scss">
     p.aw-paragraph-lg {
         margin-block-end: 2rem;
+    }
+
+    .is-policy {
+        margin-block-end: 1rem;
     }
 </style>
