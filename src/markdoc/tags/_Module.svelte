@@ -11,4 +11,5 @@
     export { default as Only_Light } from './Only_Light.svelte';
     export { default as Only_Dark } from './Only_Dark.svelte';
     export { default as Video } from './Video.svelte';
+    export { default as Arrow_Link } from './Arrow_Link.svelte';
 </script>

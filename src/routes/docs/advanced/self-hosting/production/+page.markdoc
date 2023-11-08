@@ -29,7 +29,9 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
+{% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
+Learn more about environment variables 
+{% /arrow_link %}
 
 # Scaling {% #scaling %}
 
@@ -47,7 +49,9 @@ If you disabled rate limits during development, make sure you re-enable them whe
 
 Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
+{% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
+Learn more about environment variables 
+{% /arrow_link %}
 
 # Emails {% #emails %}
 
@@ -78,7 +82,9 @@ To monitor errors in production, add a third party monitoring service by setting
 
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` is set to `production` and not `development`.
 
-[Learn more about environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
+{% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
+Learn more about environment variables 
+{% /arrow_link %}
 
 # Security {% #security %}
 
