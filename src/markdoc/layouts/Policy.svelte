@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
     const POLICY_KEY = Symbol();
-    export type PolicyContext = boolean;
+    export type PolicyContext = {
+        toc: TableOfContents;
+    };
 
     const setCtx = (ctx: PolicyContext) => {
         setContext<PolicyContext>(POLICY_KEY, ctx);
@@ -8,6 +10,10 @@
 
     export const getPolicyCtx = () => {
         return getContext<PolicyContext>(POLICY_KEY);
+    };
+
+    export const isInsidePolicy = () => {
+        return hasContext(POLICY_KEY);
     };
 </script>
 
@@ -19,12 +25,12 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { createTableOfContents, type TableOfContents } from '@melt-ui/svelte';
 
-    import { getContext, setContext } from 'svelte';
+    import { getContext, hasContext, setContext } from 'svelte';
+    import PolicyTree from './PolicyTree.svelte';
 
     export let title: string;
-
-    setCtx(true);
 
     const seo = {
         title: title + TITLE_SUFFIX,
@@ -33,6 +39,22 @@
 
         APP_NAME: 'Appwrite'
     };
+
+    let showToc = false;
+
+    const toc = createTableOfContents({
+        selector: '#policy-content',
+        activeType: 'all'
+    });
+
+    setCtx({ toc });
+
+    const {
+        elements: { item },
+        states: { activeHeadingIdxs, headingsTree }
+    } = toc;
+
+    $: progress = Math.max(...$activeHeadingIdxs) / ($headingsTree.length - 1);
 </script>
 
 <svelte:head>
@@ -62,14 +84,18 @@
                       aw-u-padding-20 aw-u-color-text-primary aw-is-only-mobile
                      aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block"
                     style="inline-size:100vw"
+                    on:click={() => (showToc = !showToc)}
                 >
                     <span class="aw-description">Table of contents</span>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
                 </button>
             </header>
-            <aside class="aw-grid-120-1fr-auto-side aw-is-mobile-closed">
+            <aside class="aw-grid-120-1fr-auto-side" class:aw-is-mobile-closed={!showToc}>
                 <div class="aw-page-steps">
-                    <div class="aw-page-steps-location aw-is-not-mobile" style="--location:0%;">
+                    <div
+                        class="aw-page-steps-location aw-is-not-mobile"
+                        style="--location:{progress * 100}%;"
+                    >
                         <button class="aw-page-steps-location-button">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -153,51 +179,18 @@
                             </svg>
                         </button>
                     </div>
-                    <ul class="aw-page-steps-list aw-sub-body-500">
-                        <li>
-                            <a href="#introduction" class="is-selected">Introduction</a>
-                        </li>
-                        <li>
-                            <a href="#subscriptions">Subscriptions</a>
-                        </li>
-                        <li>
-                            <a href="#fee">Fee Changes</a>
-                        </li>
-                        <li>
-                            <a href="#refunds">Refunds</a>
-                        </li>
-                        <li>
-                            <a href="#content">Content</a>
-                        </li>
-                        <li>
-                            <a href="#accounts">Accounts</a>
-                        </li>
-                        <li>
-                            <a href="#property">Intellectual Property</a>
-                        </li>
-                        <li>
-                            <a href="#other">Links To Other Web Sites</a>
-                        </li>
-                        <li>
-                            <a href="#termination">Termination</a>
-                        </li>
-                        <li>
-                            <a href="#liability">Limitation Of Liability</a>
-                        </li>
-                        <li>
-                            <a href="#disclaimer">Disclaimer</a>
-                        </li>
-                        <li>
-                            <a href="#governingLaw">Governing Law</a>
-                        </li>
-                        <li>
-                            <a href="#contact">Contact us</a>
-                        </li>
-                    </ul>
+                    <PolicyTree
+                        tree={$headingsTree}
+                        activeHeadingIdxs={$activeHeadingIdxs}
+                        {item}
+                    />
                 </div>
             </aside>
-            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed">
-                <slot />
+            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="policy-content">
+                <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
+                    <h2 hidden>Introduction</h2>
+                    <slot />
+                </div>
             </main>
         </div>
         <FooterNav />
