@@ -48,7 +48,8 @@
         observer.observe(element);
     });
 
-    $: headingClass = isInsidePolicy() ? 'aw-title' : classList[level];
+    const inPolicy = isInsidePolicy();
+    $: headingClass = inPolicy && level === 1 ? 'aw-title' : classList[level];
 </script>
 
 {#if id}
@@ -65,7 +66,12 @@
         </svelte:element>
     </a>
 {:else}
-    <svelte:element this={tag} bind:this={element} class="{headingClass} aw-u-color-text-primary">
+    <svelte:element
+        this={tag}
+        bind:this={element}
+        class="{headingClass} aw-u-color-text-primary"
+        class:in-policy={inPolicy}
+    >
         <slot />
     </svelte:element>
 {/if}
@@ -74,5 +80,9 @@
     .aw-title {
         margin-block-end: 1rem;
         margin-block-start: 2rem;
+    }
+
+    .aw-sub-body-500.in-policy {
+        margin-block-end: 1.25rem;
     }
 </style>
