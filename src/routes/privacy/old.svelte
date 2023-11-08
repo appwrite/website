@@ -516,6 +516,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section>
                         <h3 class="aw-sub-body-500 aw-u-color-text-primary">
                             When you purchase products in our Swag Store
@@ -708,6 +709,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section>
                         <h3 class="aw-sub-body-500 aw-u-color-text-primary">
                             When we process your job application

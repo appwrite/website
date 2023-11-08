@@ -4,6 +4,7 @@
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
     const isDocs = getContext('isDocs') ?? false;
+    const inPolicy = isInsidePolicy();
 
     let className = '';
     export { className as class };
@@ -13,7 +14,7 @@
     <slot />
 {:else if isDocs}
     <p class="aw-paragraph-md {className}"><slot /></p>
-{:else if isInsidePolicy()}
+{:else if inPolicy}
     <p class="aw-paragraph-md is-policy {className}"><slot /></p>
 {:else}
     <p class="aw-paragraph-lg {className}"><slot /></p>
