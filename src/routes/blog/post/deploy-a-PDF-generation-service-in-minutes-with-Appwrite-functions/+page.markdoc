@@ -2,9 +2,9 @@
 layout: post
 title: Deploy a PDF generation service in minutes with Appwrite functions
 description: Learn how to deploy PDF generation service in minutes with Appwrite functions.
-date: 2023-10-18
+date: 2023-11-8
 cover: /images/blog/pdf-generationcover/PDF-Generation.png
-timeToRead: 10
+timeToRead: 5
 author: luke-silver
 category: website
 ---
