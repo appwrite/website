@@ -28,7 +28,7 @@ To help you with your move, Appwrite Migrations will require keys to your old ho
 
 ![Firebase key management screen.](/images/blog/migrate-firebase-projects-to-appwrite/firebase-key.png)
 
-The quickest way to get a key is to use your ****Firebase Admin SDK**** service account and key, found under ****Project settings > Service accounts > Generate private key****.
+The quickest way to get a key is to use your **Firebase Admin SDK** service account and key, found under **Project settings > Service accounts > Generate private key**.
 
 If you want to use an API key with a more fine-grained permission scope, checkout the [Appwrite documentation on this topic](/docs/advanced/migrations/firebase).
 
@@ -39,7 +39,7 @@ The Migration process is simple. Give Appwrite your keys, and it’ll pack up an
 1. Create a new project and click on the **Migrations** tab in **Project Settings**.
 2. Click on the **Create Migration** button and select **Firebase** as your source.
 3. Paste your Firebase API key’s JSON contents into the account credentials box and click **Next.**
-4. Select which resources you want Migrations to import and click ************Create************ to start the migration.
+4. Select which resources you want Migrations to import and click **Create** to start the migration.
 
 Migrations will run in the background, get a cup of tea or coffee, and return in a few minutes.
 
