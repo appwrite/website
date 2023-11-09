@@ -39,7 +39,7 @@ Select **Create a new repository** (this will generate a GitHub repository for
 
 Visit the **Domains** tab on the function page and copy the domain URL to test the function.
 
-![Domains](/images/blog/adding-url-shortener/url-shortener.png)
+![Domains](/images/blog/adding-url-shortener/shortener.png)
 
 Go to the function URL in your web browser, and you'll see a short url like the one shown below.
 
