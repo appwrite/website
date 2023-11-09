@@ -1295,6 +1295,7 @@
                             </p>
                         </div>
                     </section>
+
                     <section class="count-secondary-title" id="privacy">
                         <h2 class="aw-title aw-u-color-text-primary">
                             Your privacy rights. How to delete your account
