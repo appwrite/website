@@ -34,9 +34,20 @@
         :global(td) {
             background-color: transparent;
             border-right: 1px solid hsl(var(--aw-color-smooth));
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px; /* 157.143% */
+            letter-spacing: -0.063px;
+            text-transform: none;
         }
 
-        :global(td:first-child) {
+        :global(td .aw-eyebrow) {
+            all: unset;
+        }
+
+        :global(:is(td:first-child, thead td)) {
             background-color: hsl(var(--aw-color-greyscale-850));
             color: hsl(var(--aw-color-primary));
             font-weight: 500;
@@ -44,6 +55,10 @@
 
         :global(li::marker) {
             color: inherit;
+        }
+
+        :global(ul) {
+            gap: 0rem;
         }
     }
 </style>
