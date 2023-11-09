@@ -34,6 +34,10 @@
 .#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
 .#{$p}-u-padding-inline-16          { padding-inline:pxToRem(16); }
 .#{$p}-u-padding-inline-start-48-not-break1 { @media #{$break2open} { padding-inline-start:pxToRem(48); } }
+.#{$p}-u-padding-inline-d-16-m-8 {
+  @media #{$break1} { padding-inline:pxToRem(8)!important; }
+  @media #{$break2open} { padding-inline:pxToRem(16)!important; }
+}
 
 .#{$p}-u-margin-inline-auto-mobile { @media #{$break1}{ margin-inline:auto;} }
 .#{$p}-u-margin-inline-8-negative   { margin-inline:pxToRem(-8); }

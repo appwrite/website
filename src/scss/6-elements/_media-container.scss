@@ -19,4 +19,5 @@
   backdrop-filter: blur(pxToRem(25));
 
   > * { display:block; border-radius:var(--p-media-border-radius); overflow:hidden; width: 100%; object-fit: cover; }
+  &.is-border-radius-16 { --p-media-container-border-radius:#{pxToRem(16)}; }
 }
