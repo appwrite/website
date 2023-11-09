@@ -89,6 +89,11 @@
 .#{$p}-u-cross-start { align-items:start!important; }
 .#{$p}-u-cross-center{ align-items:center!important; }
 
+.#{$p}-u-margin-block-80w-40s      {
+  @media #{$break1} { margin-block:pxToRem(40)!important; }
+  @media #{$break2open} { margin-block:pxToRem(80)!important; }
+}
+
 .#{$p}-u-margin-block-120w-80s      {
   @media #{$break1} { margin-block:pxToRem(80)!important; }
   @media #{$break2open} { margin-block:pxToRem(120)!important; }
@@ -100,6 +105,8 @@
 .#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
 .#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
 .#{$p}-u-margin-block-start-160     { margin-block-start:pxToRem(160)!important; }
+
+.#{$p}-u-margin-block-start-8-minus { margin-block-start:pxToRem(-8); }
 
 .#{$p}-u-margin-block-end-24        { margin-block-end:pxToRem(24); }
 .#{$p}-u-margin-block-end-32        { margin-block-end:pxToRem(32); }

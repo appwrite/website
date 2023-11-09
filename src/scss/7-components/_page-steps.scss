@@ -13,6 +13,13 @@
       position:absolute; inset-block-start:var(--p-location); margin-block-start:pxToRem(-8);
       transition: var(--transition);
     }
+    &.is-end-fade {
+      &::after {
+        position:absolute; inset-block-end:0;
+        content:""; display:block; inline-size:100%; block-size:pxToRem(136);
+        background: linear-gradient(180deg, hsl(var(--p-body-bg-color) / 0) 0%, hsl(var(--p-body-bg-color) / 0.8) 51.29%, hsl(var(--p-body-bg-color)) 100%);
+      }
+    }
   }
   &-list { display:flex; flex-direction:column; gap:pxToRem(20); }
   &.is-full-width { inline-size:revert; }
