@@ -45,7 +45,8 @@
     const toc = createTableOfContents({
         exclude: ['h1', 'h3', 'h4', 'h5', 'h6'],
         selector: '#policy-content',
-        activeType: 'all'
+        activeType: 'all',
+        scrollOffset: 120
     });
 
     setCtx({ toc });
@@ -189,7 +190,8 @@
             </aside>
             <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="policy-content">
                 <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
-                    <h2 hidden>Introduction</h2>
+                    <!-- eslint-disable-next-line svelte/valid-compile -->
+                    <h2 aria-hidden="true">Introduction</h2>
                     <slot />
                 </div>
             </main>
@@ -198,3 +200,10 @@
         <MainFooter />
     </div>
 </Main>
+
+<style lang="scss">
+    h2[aria-hidden='true'] {
+        height: 0;
+        opacity: 0;
+    }
+</style>

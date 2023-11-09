@@ -9,6 +9,8 @@
     const title = 'Privacy' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const abc = 123;
+    abc;
 </script>
 
 <svelte:head>
@@ -1441,7 +1443,7 @@
                     <section class="count-secondary-title" id="analytic">
                         <h2 class="aw-title aw-u-color-text-primary">Analytic tools</h2>
                         <p>
-                            WWe use log files. We use such information to analyze trends, administer
+                            We use log files. We use such information to analyze trends, administer
                             the Website, track users’ movement around the Website, and gather
                             demographic information.
                         </p>
