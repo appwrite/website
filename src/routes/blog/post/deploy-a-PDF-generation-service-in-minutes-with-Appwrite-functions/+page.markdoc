@@ -3,7 +3,7 @@ layout: post
 title: Deploy a PDF generation service in minutes with Appwrite functions
 description: Learn how to deploy PDF generation service in minutes with Appwrite functions.
 date: 2023-11-8
-cover: /images/blog/pdf-generationcover/PDF-Generation.png
+cover: /images/blog/pdf-generation/pdf.png
 timeToRead: 5
 author: luke-silver
 category: website
@@ -20,21 +20,21 @@ If you want to see the source code, you can find it on our [templates GitHub rep
 
 Now, let’s navigate to our functions page on **[Appwrite Cloud](https://cloud.appwrite.io)**. Head over to your Appwrite project and visit the **Functions** page. From there, we will select the **Templates** tab, search for and select the **Generate PDF** function template.
 
-/images/blog/pdf-generationcover/templates.png
+![function](/images/blog/pdf-generation/templates.png)
 
 The function doesn’t have any required environment variables, so you can proceed straight to the **Connect** step. Select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
 
-/images/blog/pdf-generationcover/create-function.png
+![create function](/images/blog/pdf-generation/create-function.png)
 
 # Using the Function
 
 Visit the **Domains** tab on the function page and copy the domain URL to test the function. 
 
-/images/blog/pdf-generationcover/generate-pdf.png
+![generate pdf](/images/blog/pdf-generation/generate-pdf.png)
 
 Go to the function URL in your web browser, and you'll see a PDF invoice like the one shown below.
 
-/images/blog/pdf-generationcover/sample-invoice.png
+![sample invoice](/images/blog/pdf-generation/sample-invoice.png)
 
 You can refresh the page in your browser to create a new invoice with new and random information.
 
@@ -46,10 +46,7 @@ If you’d like to let people download the invoice from your web app, you can do
 </a>
 ```
 
-<aside>
 📱 On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.
-
-</aside>
 
 The next step is extend the template to show real invoice data. Here’s a high-level overview of what’s required:
 
