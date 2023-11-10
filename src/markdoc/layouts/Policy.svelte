@@ -2,6 +2,7 @@
     const POLICY_KEY = Symbol();
     export type PolicyContext = {
         toc: TableOfContents;
+        transparentTableCells?: boolean;
     };
 
     const setCtx = (ctx: PolicyContext) => {
@@ -31,6 +32,7 @@
     import PolicyTree from './PolicyTree.svelte';
 
     export let title: string;
+    export let transparentTableCells = false;
 
     const seo = {
         title: title + TITLE_SUFFIX,
@@ -49,7 +51,7 @@
         scrollOffset: 120
     });
 
-    setCtx({ toc });
+    setCtx({ toc, transparentTableCells });
 
     const {
         elements: { item },
@@ -205,5 +207,6 @@
     h2[aria-hidden='true'] {
         height: 0;
         opacity: 0;
+        margin-block-end: -3rem;
     }
 </style>

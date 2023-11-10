@@ -13,14 +13,16 @@
     this={ordered ? 'ol' : 'ul'}
     class:aw-numeric-list={ordered}
     class:aw-pink-dots={!ordered}
-    class:is-inside-policy={inPolicy}><slot /></svelte:element
+    class:in-policy={inPolicy}><slot /></svelte:element
 >
 
 <style lang="scss">
-    ol.is-inside-policy {
+    .in-policy {
         gap: 0rem;
         margin-block-end: 2rem;
+    }
 
+    ol.in-policy {
         :global(li) {
             gap: 0.25rem;
         }
@@ -30,12 +32,12 @@
             padding-inline-end: 0;
         }
 
-        :global(.is-inside-policy) {
+        :global(.in-policy) {
             padding-inline-start: 0.5rem;
             margin-block-end: 0;
         }
 
-        :global(.is-inside-policy li:before) {
+        :global(.in-policy li:before) {
             content: counter(numeric-list-level-2, lower-latin) '.  ';
             padding-inline-end: 0;
         }
