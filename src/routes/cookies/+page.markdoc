@@ -52,6 +52,11 @@ These cookies are essential to provide you with services available through this 
 * Expiry (In days)
 * Purpose
 ---
+* a_session_console
+* Appwrite Console
+* 365
+* The user will be logged in for 1 year
+---
 * _orig_referrer
 * Shopify
 * 13
@@ -141,62 +146,6 @@ These cookies are essential to provide you with services available through this 
 * paypal.com
 * 1094
 * E-commerce Provision
-{% /table %}
-
-
-# Functionality cookies
-
-These cookies record information about choices you've made and allow us to tailor the website to you. These cookies allow us to provide you with our services in the way in which you have required, as you continue to use or come back to our Site. For example, these cookies allow us to:
-- Save your location preference if you have set your location on the homepage in order to receive localized information;
-- Remember settings you have applied, such as layout, text size, preferences, and colors;
-- Show you when you are logged in; and
-- Store accessibility options.
-
-{% table %}
-* Cookie name
-* Source
-* Expiry (In days)
-* Purpose
----
-* hubspotutk
-* Hubspot
-* 179
-* User authentication and tracking
----
-* localization
-* betteruptime
-* 365
-* These cookies are set on pages with the Flickr widget
----
-* ahoy_visitor
-* status.appwrite.io
-* 729
-* Helps to identify a specific user across multiple devices
----
-* __tld__
-* appwrite.io
-* Session
-* Figure out a top-level domain for a user
----
-* wpm-domain-test
-* Shopify
-* Session
-* Determine whether the domain is correctly configured to allow cookies to be set by Shopify
----
-* initial_params
-* Homerun
-* Session
-* Helps Homerun understand how users are finding the website
----
-* cf_ob_info
-* CloudFlare
-* Session
-* Technical functions.
----
-* cookietest
-* Shopify
-* Session
-* A Shopify cookie to ensure their website is working correctly
 {% /table %}
 
 # Performance / Analytics cookies
