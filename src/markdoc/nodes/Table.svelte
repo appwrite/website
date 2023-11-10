@@ -5,16 +5,17 @@
 </script>
 
 <script lang="ts">
-    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
+    import { getPolicyCtx, isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
 
     import { getContext, setContext } from 'svelte';
 
     setContext(TABLE_CTX_KEY, true);
 
     const inPolicy = isInsidePolicy();
+    const transparentCells = inPolicy ? getPolicyCtx().transparentTableCells : false;
 </script>
 
-<div class="aw-table-wrapper" class:in-policy={inPolicy}>
+<div class="aw-table-wrapper" class:in-policy={inPolicy} class:transparentCells>
     <div class="aw-table-scroll">
         <table class="aw-table">
             <slot />
@@ -59,6 +60,12 @@
 
         :global(ul) {
             gap: 0rem;
+        }
+    }
+
+    .transparentCells {
+        :global(td) {
+            background-color: transparent !important    ;
         }
     }
 </style>
