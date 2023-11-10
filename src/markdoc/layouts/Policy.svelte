@@ -47,7 +47,7 @@
     const toc = createTableOfContents({
         exclude: ['h1', 'h3', 'h4', 'h5', 'h6'],
         selector: '#policy-content',
-        activeType: 'all',
+        activeType: 'lowest',
         scrollOffset: 120
     });
 
