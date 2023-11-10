@@ -100,7 +100,7 @@
                         class="aw-page-steps-location aw-is-not-mobile"
                         style="--location:{progress * 100}%;"
                     >
-                        <button class="aw-page-steps-location-button">
+                        <span class="aw-page-steps-location-button">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -181,7 +181,7 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <PolicyTree
                         tree={$headingsTree}
