@@ -15,7 +15,7 @@
 {:else if isDocs}
     <p class="aw-paragraph-md {className}"><slot /></p>
 {:else if inPolicy}
-    <p class="aw-paragraph-md is-policy {className}"><slot /></p>
+    <p class="aw-paragraph-md in-policy {className}"><slot /></p>
 {:else}
     <p class="aw-paragraph-lg {className}"><slot /></p>
 {/if}
@@ -25,7 +25,7 @@
         margin-block-end: 2rem;
     }
 
-    .is-policy {
+    .in-policy {
         margin-block-end: 1rem;
     }
 </style>
