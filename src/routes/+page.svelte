@@ -558,7 +558,7 @@
                                         <a href={platform.href} class="aw-box-icon">
                                             <img
                                                 src={platform.image}
-                                                alt="{platform.name} Logo"
+                                                alt="{platform.name} quick start"
                                                 width="32"
                                                 height="32"
                                             />

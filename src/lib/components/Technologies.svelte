@@ -60,7 +60,7 @@
         <Tooltip>
             <li>
                 <a href={platform.href} class="aw-box-icon has-border-gradient">
-                    <img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
+                    <img src={platform.image} alt="{platform.name} quick start" width="32" height="32" />
                 </a>
             </li>
             <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
