@@ -187,3 +187,180 @@ class MainActivity : AppCompatActivity() {
 ```
 
 {% /multicode %}
+
+## Examples {% #examples %}
+Here's another example to add Filters to images [Client SDKs](/docs/sdks#client).
+
+{% multicode %}
+
+```js
+import { Client, Storage } from "appwrite";
+
+const client = new Client();
+
+const storage = new Storage(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+;
+
+const imageId = 'sunset.png'; // File ID of the image you want to apply filters to
+const filters = ['grayscale', 'blur']; // Specify the filters you want to apply
+
+storage
+    .getFilePreview(
+        'photos',     // bucket ID
+        imageId,      // file ID
+        1800,         // width, will be resized using this value
+        0,            // height, ignored when 0
+        'center',     // crop center  
+        '90',         // slight compression
+        5,            // border width    
+        'CDCA30',     // border color
+        15,           // border radius
+        1,            // full opacity
+        0,            // no rotation
+        'FFFFFF',     // background color
+        'jpg'         // output jpg format
+    )
+    .then((result) => {
+        // Apply filters to the generated image
+        return storage.filters(imageId, filters);
+    })
+    .then((filteredResult) => {
+        console.log(filteredResult.href); // Log the URL of the filtered image
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Storage
+
+fun main() {
+    val client = Client()
+    val storage = Storage(client)
+
+    client
+        .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+        .setProject("5df5acd0d48c2") // Your project ID
+
+    val imageId = "sunset.png" // File ID of the image you want to apply filters to
+    val filters = arrayOf("grayscale", "blur") // Specify the filters you want to apply
+
+    try {
+        val result = storage.getFilePreview(
+            "photos",     // bucket ID
+            imageId,      // file ID
+            1800,         // width, will be resized using this value
+            0,            // height, ignored when 0
+            "center",     // crop center
+            "90",         // slight compression
+            5,            // border width
+            "CDCA30",     // border color
+            15,           // border radius
+            1,            // full opacity
+            0,            // no rotation
+            "FFFFFF",     // background color
+            "jpg"         // output jpg format
+        )
+
+        // Apply filters to the generated image
+        val filteredResult = storage.filters(imageId, filters)
+
+        println(filteredResult.href) // Log the URL of the filtered image
+    } catch (e: Exception) {
+        println(e.message)
+    }
+}
+```
+```dart
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+  final client = Client();
+  final storage = Storage(client);
+
+  client
+      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("5df5acd0d48c2"); // Your project ID
+
+  final imageId = "sunset.png"; // File ID of the image you want to apply filters to
+  final filters = ["grayscale", "blur"]; // Specify the filters you want to apply
+
+  try {
+    final result = await storage.getFilePreview(
+      "photos",     // bucket ID
+      imageId,      // file ID
+      1800,         // width, will be resized using this value
+      0,            // height, ignored when 0
+      "center",     // crop center
+      "90",         // slight compression
+      5,            // border width
+      "CDCA30",     // border color
+      15,           // border radius
+      1,            // full opacity
+      0,            // no rotation
+      "FFFFFF",     // background color
+      "jpg",        // output jpg format
+    );
+
+    // Apply filters to the generated image
+    final filteredResult = await storage.filters(imageId, filters);
+
+    print(filteredResult.href); // Log the URL of the filtered image
+  } catch (e) {
+    print(e.message);
+  }
+}
+```
+```swift
+import Appwrite
+
+func main() {
+    let client = Client()
+    let storage = Storage(client: client)
+
+    client
+        .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+        .setProject("5df5acd0d48c2") // Your project ID
+
+    let imageId = "sunset.png" // File ID of the image you want to apply filters to
+    let filters = ["grayscale", "blur"] // Specify the filters you want to apply
+
+    do {
+        let result = try storage.getFilePreview(
+            bucketId: "photos",     // bucket ID
+            fileId: imageId,        // file ID
+            width: 1800,            // width, will be resized using this value
+            height: 0,              // height, ignored when 0
+            gravity: "center",      // crop center
+            quality: 90,            // slight compression
+            borderWidth: 5,         // border width
+            borderColor: "CDCA30",  // border color
+            borderRadius: 15,       // border radius
+            opacity: 1,             // full opacity
+            rotation: 0,            // no rotation
+            background: "FFFFFF",   // background color
+            output: "jpg"           // output jpg format
+        )
+
+        // Apply filters to the generated image
+        let filteredResult = try storage.filters(
+            fileId: imageId,
+            filters: filters
+        )
+
+        print(filteredResult.href) // Log the URL of the filtered image
+    } catch let error as AppwriteError {
+        print(error.message)
+    } catch {
+        print("An error occurred.")
+    }
+}
+
+main()
+``` 
+{% /multicode %}
