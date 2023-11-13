@@ -22,8 +22,18 @@ Create a new collection with the following attributes:
 | description | String | No       |
 
 Change the collection's permissions in the settings to give access.
-First, add the role "Any" and check the `READ` box.
-Next, add a "Users" role and give them access to create, update and delete by checking those boxes.
+First, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **create**, **update** and **delete** by checking those boxes.
+
+# Secrets
+
+Just like when we set up the connection to Appwrite in [step 2](/docs/tutorials/nuxt/step-2), we need to keep the variables with the collection id secret.
+Open the `.env` file and add your database id and your collection id to it.
+
+```
+VITE_IDEAS_DATABASE_ID="YOUR_DATABASE_ID"
+VITE_IDEAS_COLLECTION_ID="YOUR_COLLECTION_ID"
+```
 
 # Query methods {% #query-methods %}
 
@@ -34,14 +44,14 @@ We will add a new composable, `useIdeas`, to handle this functionality.
 Create a new file in the composables directory, `useIdeas.js` and add the following code.
 
 ```js
-[composables/useIdeas.js]
+// [composables/useIdeas.js]
 
 import { ID, Query } from "appwrite";
 import { database } from "~/appwrite";
 import { ref } from "vue";
 
-const IDEAS_DATABASE_ID = "YOUR_DATABASE_ID";
-const IDEAS_COLLECTION_ID = "YOUR_COLLECTION_ID";
+const ideasDatabaseId = import.meta.env.VITE_IDEAS_DATABASE_ID;
+const ideasCollectionId = import.meta.env.VITE_IDEAS_COLLECTION_ID;
 
 const current = ref(null); //Reference for the fetched data
 
@@ -51,8 +61,8 @@ export const useIdeas = () => {
   // Add the list to the current reference object
   const init = async () => {
     const response = await database.listDocuments(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
+      ideasDatabaseId,
+      ideasCollectionId,
       [Query.orderDesc("$createdAt"), Query.limit(10)]
     );
     current.value = response.documents;
@@ -62,8 +72,8 @@ export const useIdeas = () => {
   // Change the value of the current object
   const add = async (idea) => {
     const response = await database.createDocument(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
+      ideasDatabaseId,
+      ideasCollectionId,
       ID.unique(),
       idea
     );
@@ -71,7 +81,7 @@ export const useIdeas = () => {
   };
 
   const remove = async (id) => {
-    await database.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+    await database.deleteDocument(ideasDatabaseId, ideasCollectionId, id);
     await init(); //Refetch ideas to ensure we have 10 items
   };
 

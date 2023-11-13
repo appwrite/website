@@ -30,10 +30,11 @@ The **Hostname** should be localhost.
 
 You can skip the optional steps.
 
-# Initialize Appwrite SDK {% #init-sdk %}
+# Secrets
 
-To use Appwrite in our app, we'll need to find our project ID.
-It is located in the **Settings** page.
+To connect to Appwrite in our app, we'll need to use sensitive information.
+We keep the secrets by using environment variables for the endpoint and project id.
+Your project id is located in the **Settings** page in the Appwrite console.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -42,17 +43,28 @@ It is located in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
+Add a `.env` file to the root directory and add the following code to it, replacing `YOUR_PROJECT_ID` with your project id.
+
+```
+VITE_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
+VITE_APPWRITE_PROJECT="YOUR_PROJECT_ID"
+```
+
+# Initialize Appwrite SDK {% #init-sdk %}
+
 Create a new file `appwrite.js` for the Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
-Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
+Add the following code to it.
 
 ```js
 import { Client, Databases, Account } from "appwrite";
 
+const url = import.meta.env.VITE_APPWRITE_ENDPOINT;
+const project = import.meta.env.VITE_APPWRITE_PROJECT;
+
 const client = new Client();
-client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>"); // Replace with your project ID
+
+client.setEndpoint(url).setProject(project);
 
 export const account = new Account(client);
 export const database = new Databases(client);
