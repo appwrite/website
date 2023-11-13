@@ -17,7 +17,7 @@ The form need a text field for filling in the title, a textarea for the descript
 From the `components` directory, add the file `ÌdeasForm.vue` and add the following code.
 
 ```vue
-[components/IdeasForm.vue]
+// [components/IdeasForm.vue]
 
 <template>
   <div>
@@ -87,8 +87,8 @@ From the `components` directory, add the file `ÌdeasForm.vue` and add the follo
 ```
 
 Next, add the component to the page `pages/index.vue` by auto-importing it in the `<template>`tag.
-In doing that, we need to take a moment to think of how we want to display the form to our.
-Since it should only be shown to a logged in user, we need to wrap it in a `<section>` that renders conditionally when the `isLoggedIn` reference in the `useUserSession` is true.
+In doing that, we need to take a moment to think about how we want to display the form to the users.
+Since it should only be shown to logged in user, we need to wrap it in a `<section>`that renders conditionally when the `isLoggedIn` reference in the `useUserSession` is true.
 If the requirement is not met, we show a paragraph with some information to the user instead.
 
 Add the following code to the `index.vue`page to conditionally render the form and information paragraph.
@@ -96,7 +96,7 @@ Add the following code to the `index.vue`page to conditionally render the form a
 Overwrite the contents of `pages/index.vue` with the following code.
 
 ```vue
-[pages/index.vue]
+// [pages/index.vue]
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
@@ -204,7 +204,7 @@ Return to the file `pages/index.vue` once more to import the list of ideas.
 This component should be visible to all users, so no conditional rendering neeeds to be handled.
 
 ```vue
-[pages/index.vue]
+// [pages/index.vue]
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">

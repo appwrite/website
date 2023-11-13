@@ -27,7 +27,7 @@ Open the file `nuxt.config.ts`and add links to the stylesheets from the `appwrit
 The design system is then ready to be used in all pages and components with auto-import, meaning that you don't have to add import statements to the scripts.
 
 ```ts
-[nuxt.config.ts]
+// [nuxt.config.ts]
 
 export default defineNuxtConfig({
   app: {
@@ -55,23 +55,27 @@ npm run dev
 
 Nuxt relies on an opiniated directory structure to automate tasks and help organize the codebase.
 To take advantage of this we need to add the following directories:
-- components
-- composables
-- layouts
-- pages
+- `/components/` to keep our UI components in one place.
+  We will get back to it in [step 5](/docs/tutorials/nuxt/step-5)
+- `/composables/`for storing files handling global states and data fetching.
+  We will use it in [step 4](/docs/tutorials/nuxt/step-4)
+- `/layouts/` to store the page layouts
+- `/pages/` for the content pages.
 
-Create the `components` directory for our components.
-We will come back to it in step 5 when adding navigation.
+Run the following command to create these folders
 
-Add the `composables/` directory and leave it empty for now, too.
-We will use it in step 4 to handle the global states and data fetching for the user authentication.
+```sh
+mkdir components composables layouts pages
+```
 
-Next, create the `layouts/` directory and add the file `default.vue`.
+# Add layout {% #add-layout %}
+
+Go to the `layouts/` directory and add the file `default.vue`.
 Add the following code for the default layout.
 As you see it's nearly empty but it is needed for the automatic routing to work properly.
 
 ```vue
-[src/layouts/default.vue]
+// [layouts/default.vue]
 
 <template>
   <div>
@@ -86,13 +90,15 @@ export default {
 </script>
 ```
 
-The last directory to add is `pages`.
+# Add home page {% #add-home-page %}
+
+Next, head over to the `pages`directory.
 This is where we will keep the content that will render on our pages in the web application.
 Each file you put in here will automatically become a route.
-Add the file `index.vue` to the `/pages` directory and add the following code.
+Add the file `index.vue` with the following code.
 
 ```vue
-[pages/index.vue]
+// [pages/index.vue]
 
 <template>
   <div>
@@ -126,7 +132,7 @@ This is what your directory should look like after adding the new directories an
 └── tsconfig.json
 ```
 
-# Render page {% #rener-page %}
+# Render page {% #render-page %}
 
 If you run the development server now, it will still render the Nuxt Welcome page.
 We need to tell our app to use the files we just created instead.
@@ -134,7 +140,7 @@ Open `app.vue`in the root directory and replace the content with the following c
 Your page will now be up and running.
 
 ```vue
-[app.vue]
+// [app.vue]
 
 <template>
   <div>
