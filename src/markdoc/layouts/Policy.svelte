@@ -83,17 +83,17 @@
         <div class="aw-grid-120-1fr-auto">
             <header class="aw-grid-120-1fr-auto-header">
                 <h1 class="aw-title aw-u-color-text-primary">{title}</h1>
-                <button
-                    class="u-flex u-width-full-line u-main-space-between u-cross-center
-                      aw-u-padding-20 aw-u-color-text-primary aw-is-only-mobile
-                     aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block"
-                    style="inline-size:100vw"
-                    on:click={() => (showToc = !showToc)}
-                >
-                    <span class="aw-description">Table of contents</span>
-                    <span class="icon-menu-alt-4" aria-hidden="true" />
-                </button>
             </header>
+            <button
+                    class="u-position-sticky u-flex u-width-full-line u-main-space-between u-cross-center
+                      aw-u-padding-20 aw-u-margin-inline-20-negative aw-u-color-text-primary aw-is-only-mobile
+                     u-margin-block-start-24 aw-u-sep-block aw-u-filter-blur-8"
+                    style="--inset-block-start:4.5rem; inline-size:100vw; background-color:hsl(var(--p-body-bg-color) / 0.1);"
+                    on:click={() => (showToc = !showToc)}
+            >
+                <span class="aw-description">Table of contents</span>
+                <span class="icon-menu-alt-4" aria-hidden="true" />
+            </button>
             <aside class="aw-grid-120-1fr-auto-side" class:aw-is-mobile-closed={!showToc}>
                 <div class="aw-page-steps">
                     <div
@@ -207,6 +207,6 @@
     h2[aria-hidden='true'] {
         height: 0;
         opacity: 0;
-        margin-block-end: -3rem;
+        //margin-block-end: -3rem;
     }
 </style>
