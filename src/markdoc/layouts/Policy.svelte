@@ -30,6 +30,7 @@
 
     import { getContext, hasContext, setContext } from 'svelte';
     import PolicyTree from './PolicyTree.svelte';
+    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
 
     export let title: string;
     export let transparentTableCells = false;
@@ -85,11 +86,14 @@
                 <h1 class="aw-title aw-u-color-text-primary">{title}</h1>
             </header>
             <button
-                    class="u-position-sticky u-flex u-width-full-line u-main-space-between u-cross-center
-                      aw-u-padding-20 aw-u-margin-inline-20-negative aw-u-color-text-primary aw-is-only-mobile
-                     u-margin-block-start-24 aw-u-sep-block aw-u-filter-blur-8"
-                    style="--inset-block-start:4.5rem; inline-size:100vw; background-color:hsl(var(--p-body-bg-color) / 0.1);"
-                    on:click={() => (showToc = !showToc)}
+                class="toc-btn u-position-sticky u-flex u-width-full-line u-main-space-between u-cross-center
+                aw-u-padding-20 aw-u-margin-inline-20-negative aw-u-color-text-primary aw-is-only-mobile
+                u-margin-block-start-24 aw-u-sep-block aw-u-filter-blur-8"
+                style:--inset-block-start="4.5rem"
+                style:inline-size="100vw"
+                style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
+                style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
+                on:click={() => (showToc = !showToc)}
             >
                 <span class="aw-description">Table of contents</span>
                 <span class="icon-menu-alt-4" aria-hidden="true" />
@@ -208,5 +212,15 @@
         height: 0;
         opacity: 0;
         //margin-block-end: -3rem;
+    }
+
+    .toc-btn {
+        transition: translate 0.3s ease;
+    }
+
+    @media screen and (max-width: 1023px) {
+        .aw-page-steps {
+            margin-block-start: 2rem;
+        }
     }
 </style>
