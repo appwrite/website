@@ -39,7 +39,7 @@
                 href="https://github.com/appwrite/appwrite/stargazers"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="aw-button is-text u-width-full-line"
+                class="aw-button is-text aw-u-inline-width-100-percent-mobile"
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
