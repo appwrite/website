@@ -296,7 +296,7 @@
         </div>
 
         <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <img src="/images/bgs/heroes-pre.svg" alt="" class="u-position-absolute" />
+            <img src="/images/bgs/heroes-pre.png" alt="" class="u-position-absolute" />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">
