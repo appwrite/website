@@ -211,7 +211,6 @@
     h2[aria-hidden='true'] {
         height: 0;
         opacity: 0;
-        //margin-block-end: -3rem;
     }
 
     .toc-btn {
