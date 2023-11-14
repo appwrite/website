@@ -159,7 +159,7 @@
                         <div class="avatar-3">
                             <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
                         </div>
-                        <img class="teal-blur" src="/images/heroes/teal-blur.png" alt="" />
+                        <enhanced:img class="teal-blur" src="./teal-blur.png" alt="" />
                     </div>
                 </section>
             </div>

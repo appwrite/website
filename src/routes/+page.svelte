@@ -98,10 +98,10 @@
         class="u-position-absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
-        <img
+        <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="/images/bgs/top-page-dark.png"
+            src="./top-page-dark.png"
             alt=""
         />
     </div>
