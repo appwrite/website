@@ -296,7 +296,12 @@
         </div>
 
         <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <img src="/images/bgs/heroes-pre.png" alt="" class="u-position-absolute" />
+            <enhanced:img
+                src="./bg-pre.png"
+                alt=""
+                class="u-position-absolute"
+                style:inset-block-start="0"
+            />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">
