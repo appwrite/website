@@ -68,7 +68,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <img src="/images/bgs/assets-bg.svg" alt="" />
+    <img src="/images/bgs/assets-bg.png" alt="" />
 </div>
 
 <Main>
