@@ -101,7 +101,7 @@
         <img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="/images/bgs/top-page-dark.svg"
+            src="/images/bgs/top-page-dark.png"
             alt=""
         />
     </div>
