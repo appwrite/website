@@ -30,7 +30,7 @@
 </svelte:head>
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
-    <img src="/images/bgs/pricing-hero.svg" alt="" style="margin-inline:auto; display:block;" />
+    <img src="/images/bgs/pricing-hero.png" alt="" style="margin-inline:auto; display:block;" />
 </div>
 
 <Main>
