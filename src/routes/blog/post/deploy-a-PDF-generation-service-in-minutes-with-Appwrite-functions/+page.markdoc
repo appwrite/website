@@ -8,7 +8,7 @@ timeToRead: 5
 author: luke-silver
 category: website
 ---
-As a part of Appwrite 1.4, one of the new features we have introduced to Appwrite Functions is Function Templates. Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
+We have recently introduced to Appwrite Functions Templates. Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
 
 Generating PDFs is a requirement of many applications. For example: creating invoices, generating reports, or any other form of documentation. Yet, it can be difficult to build a robust service in a short amount of time. In this blog, we’ll learn to build a robust PDF generator build with an Appwrite Functions template. The template benefits from the built-in scalability, reliability, and security of Appwrite Functions.
 
