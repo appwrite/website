@@ -711,7 +711,7 @@
                 </div>
             </div>
         </div>
-        <div class="aw-big-padding-section">
+        <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-1">
                 <div class="aw-big-padding-section-level-2">
                     <div class="aw-container">
