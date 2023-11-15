@@ -31,7 +31,7 @@
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
     <enhanced:img
-        src="./bg.png?enhanced"
+        src="./bg.png"
         alt=""
         style="margin-inline:auto; display:block; width: 1369px; height: auto;"
     />
