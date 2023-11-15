@@ -119,8 +119,6 @@ You can also upload files programmatically using our SDKs:
   ```
 
 {% /multicode %}
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
 # Large files {% #large-files %}
 When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 

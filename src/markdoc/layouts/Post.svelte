@@ -1,27 +1,12 @@
-<script context="module" lang="ts">
-    export type PostsData = {
-        title: string;
-        description: string;
-        date: Date;
-        cover: string;
-        timeToRead: number;
-        author: string;
-        category: string;
-        href: string;
-        featured?: boolean;
-    };
-</script>
-
 <script lang="ts">
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
-    import type { AuthorData } from './Author.svelte';
-    import type { CategoryData } from './Category.svelte';
     import { scroll } from '$lib/animations';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
+    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
     export let title: string;
     export let description: string;

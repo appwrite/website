@@ -1,3 +1,3 @@
 <thead class="aw-table-header">
-	<slot />
+    <slot />
 </thead>
