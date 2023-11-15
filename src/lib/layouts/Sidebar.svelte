@@ -95,7 +95,7 @@
 			</button>
 		{/if}
 		<div class="aw-side-nav-mobile-footer-buttons">
-			<button class="aw-button u-width-full-line">
+			<button class="aw-button aw-u-inline-width-100-percent-mobile">
 				<span class="text">Go to console</span>
 			</button>
 
@@ -103,11 +103,11 @@
 				href="https://github.com/appwrite/appwrite/stargazers"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="aw-button is-text u-width-full-line"
+				class="aw-button is-text aw-u-inline-width-100-percent-mobile"
 			>
 				<span class="aw-icon-star" aria-hidden="true" />
 				<span class="text">Star on GitHub</span>
-				<span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+				<span class="aw-inline-tag aw-sub-body-400">37.9K</span>
 			</a>
 		</div>
 	</div>

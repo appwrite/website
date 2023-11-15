@@ -1,6 +1,7 @@
 <script lang="ts">
     import { getContext, hasContext, onMount } from 'svelte';
     import type { LayoutContext } from '../layouts/Article.svelte';
+    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
 
     export let level: number;
     export let id: string | undefined = undefined;
@@ -46,6 +47,9 @@
 
         observer.observe(element);
     });
+
+    const inPolicy = isInsidePolicy();
+    $: headingClass = inPolicy && level === 1 ? 'aw-title' : classList[level];
 </script>
 
 {#if id}
@@ -56,7 +60,7 @@
             bind:this={element}
             class:aw-snap-location={id && !inReferences}
             class:aw-snap-location-references={id && inReferences}
-            class="{classList[level]} aw-u-color-text-primary"
+            class="{headingClass} aw-u-color-text-primary"
         >
             <slot />
         </svelte:element>
@@ -65,8 +69,20 @@
     <svelte:element
         this={tag}
         bind:this={element}
-        class="{classList[level]} aw-u-color-text-primary"
+        class="{headingClass} aw-u-color-text-primary"
+        class:in-policy={inPolicy}
     >
         <slot />
     </svelte:element>
 {/if}
+
+<style>
+    .aw-title {
+        margin-block-end: 1rem;
+        margin-block-start: 2rem;
+    }
+
+    .aw-sub-body-500.in-policy {
+        margin-block-end: 1.25rem;
+    }
+</style>
