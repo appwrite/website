@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto, invalidate } from '$app/navigation';
     import { MainFooter, FooterNav, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -11,6 +12,10 @@
         description: DEFAULT_DESCRIPTION,
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
+
+    function loadMore() {
+        goto(`/changelog/?page=${data.nextPage}`, { replaceState: true, noScroll: true });
+    }
 </script>
 
 <svelte:head>
@@ -44,7 +49,9 @@
             {/each}
         </ul>
 
-        <button class="aw-button is-secondary">Load more</button>
+        {#if data.nextPage}
+            <button class="aw-button is-secondary" on:click={loadMore}>Load more</button>
+        {/if}
     </div>
     <div
         class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
