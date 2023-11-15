@@ -24,3 +24,5 @@ export const getAllChangelogEntries = async () => {
     return bDate.getTime() - aDate.getTime();
   });
 }
+
+export const CHANGELOG_DEPENDENCY = 'changelog';

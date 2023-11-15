@@ -38,7 +38,7 @@
         }
     }
 
-    @media (min-width: 513px) {
+    @media screen and (min-width: 513px) {
         .padded {
             padding-inline: 1rem;
         }
