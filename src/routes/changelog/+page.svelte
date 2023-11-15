@@ -1,10 +1,34 @@
 <script lang="ts">
     import { MainFooter, FooterNav, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import ChangelogEntry from './ChangelogEntry.svelte';
 
     export let data;
+
+    const seo = {
+        title: 'Changelog',
+        description: DEFAULT_DESCRIPTION,
+        ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
+    };
 </script>
+
+<svelte:head>
+    <!-- Titles -->
+    <title>{seo.title}</title>
+    <meta property="og:title" content={seo.title} />
+    <meta name="twitter:title" content={seo.title} />
+    <!-- Desscription -->
+    <meta name="description" content={seo.description} />
+    <meta property="og:description" content={seo.description} />
+    <meta name="twitter:description" content={seo.description} />
+    <!-- Image -->
+    <meta property="og:image" content={seo.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={seo.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
     <div class="wrapper">
@@ -60,8 +84,8 @@
             content: '';
             background: linear-gradient(
                 to bottom,
-                hsl(var(--aw-color-smooth)) 0%,
-                hsl(var(--aw-color-smooth)) 95%,
+                hsl(var(--aw-color-greyscale-700)) 0%,
+                hsl(var(--aw-color-greyscale-700)) 95%,
                 transparent 100%
             );
 
