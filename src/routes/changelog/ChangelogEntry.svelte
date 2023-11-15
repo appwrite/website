@@ -38,7 +38,9 @@
         }
     }
 
-    .padded {
-        padding-inline: 1rem;
+    @media (min-width: 513px) {
+        .padded {
+            padding-inline: 1rem;
+        }
     }
 </style>

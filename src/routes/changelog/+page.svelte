@@ -112,4 +112,15 @@
         margin-inline: auto;
         min-inline-size: 10.9375rem;
     }
+
+    @media screen and (max-width: 512px) {
+        ul {
+            padding-inline-start: 0;
+            margin-block-start: 2.5rem;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
 </style>
