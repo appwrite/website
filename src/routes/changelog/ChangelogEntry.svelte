@@ -1,8 +1,8 @@
 <script lang="ts">
     import { formatDate } from '$lib/utils/date';
-    import type { ChangelogData } from '$markdoc/layouts/Changelog.svelte';
+    import type { PageData } from './$types';
 
-    export let entry: ChangelogData;
+    export let entry: PageData['entries'][0];
 </script>
 
 <div class="changelog-entry">
@@ -14,7 +14,11 @@
     {/if}
 
     <div class="padded">
-        <h2 class="aw-title aw-u-color-text-primary">{entry.title}</h2>
+        <h2 class="aw-title aw-u-color-text-primary">
+            <a href={entry.href}>
+                {entry.title}
+            </a>
+        </h2>
         <slot />
     </div>
 </div>
@@ -28,6 +32,10 @@
     h2 {
         display: grid;
         padding-block: 0.5rem 1rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .padded {

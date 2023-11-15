@@ -1,0 +1,94 @@
+<script lang="ts">
+    import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { Main } from '$lib/layouts';
+    import { formatDate } from '$lib/utils/date';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
+
+    export let data;
+
+    const seo = {
+        title: data.title,
+        ogImage: data.cover
+            ? DEFAULT_HOST + data.cover
+            : `${DEFAULT_HOST}/images/open-graph/website.png`
+    };
+</script>
+
+<svelte:head>
+    <!-- Titles -->
+    <title>{seo.title + CHANGELOG_TITLE_SUFFIX}</title>
+    <meta property="og:title" content={seo.title} />
+    <meta name="twitter:title" content={seo.title} />
+    <!-- Desscription -->
+    <!-- <meta name="description" content={description} />
+  <meta property="og:description" content={description} />
+  <meta name="twitter:description" content={description} /> -->
+    <!-- Image -->
+
+    <meta property="og:image" content={seo.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={seo.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<Main>
+    <div class="aw-big-padding-section wrapper">
+        <div class="aw-big-padding-section">
+            <div class="aw-big-padding-section-level-1">
+                <div class="aw-big-padding-section-level-2">
+                    <div class="aw-container" style="--container-size:42.5rem">
+                        <article class="aw-main-article">
+                            <header class="aw-main-article-header">
+                                <a class="aw-link aw-u-color-text-secondary" href="/changelog">
+                                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                                    <span>Back to changelog</span>
+                                </a>
+                                <ul class="aw-metadata aw-caption-400">
+                                    <li>
+                                        <time datetime={data.date}>{formatDate(data.date)}</time>
+                                    </li>
+                                </ul>
+                                <h1 class="aw-title aw-u-color-text-primary">{data.title}</h1>
+                            </header>
+                            {#if data.cover}
+                                <div class="aw-media-container">
+                                    <img class="u-block" src={data.cover} alt="" />
+                                </div>
+                            {/if}
+
+                            <div class="aw-article-content u-margin-block-start-32">
+                                <svelte:component this={data.component} />
+                            </div>
+                        </article>
+                        <!-- {#if categories?.length}
+            <div class="u-flex u-gap-16">
+              {#each categories as cat}
+                <a href={cat.href} class="aw-tag">{cat.name}</a>
+              {/each}
+            </div>
+          {/if} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+    >
+        <div class="aw-container">
+            <PreFooter />
+            <FooterNav />
+            <MainFooter />
+        </div>
+    </div>
+</Main>
+
+<style lang="scss">
+    .wrapper {
+        padding-block-end: 10rem;
+    }
+</style>
