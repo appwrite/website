@@ -5,6 +5,7 @@
     import type { CategoryData, AuthorData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { formatDate } from '$lib/utils/date';
 
     export let title: string;
     export let description: string;
@@ -60,9 +61,7 @@
                                 </a>
                                 <ul class="aw-metadata aw-caption-400">
                                     <li>
-                                        <time datetime={date}
-                                            >{new Date(date).toLocaleDateString()}</time
-                                        >
+                                        <time datetime={date}>{formatDate(date)}</time>
                                     </li>
                                     {#if timeToRead}
                                         <li>{timeToRead} min</li>

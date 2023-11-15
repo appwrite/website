@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { formatDate } from '$lib/utils/date';
+
     export let title: string;
     export let cover: string;
     export let href: string;
@@ -24,11 +26,7 @@
                         <h4 class="aw-sub-body-400 aw-u-color-text-primary">{author}</h4>
                         <ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
                             <li>
-                                {Intl.DateTimeFormat('en-US', {
-                                    day: '2-digit',
-                                    month: 'short',
-                                    year: 'numeric'
-                                }).format(date)}
+                                {formatDate(date)}
                             </li>
                             <li>{timeToRead} min</li>
                         </ul>
