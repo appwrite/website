@@ -46,7 +46,7 @@ If you’d like to let people download the invoice from your web app, you can do
 </a>
 ```
 
-📱 On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.
+On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.
 
 The next step is extend the template to show real invoice data. Here’s a high-level overview of what’s required:
 
