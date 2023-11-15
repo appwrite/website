@@ -17,50 +17,61 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours.png',
+                src: '/images/community/events/office-hours2.png',
                 alt: ''
             },
-            date: 'Sep 28th',
+            date: 'November 2nd',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
         {
-            href: 'https://www.twitch.tv/wesscope',
+            href: '/discord',
             cover: {
-                src: '/images/community/events/live-coding.png',
+                src: '/images/community/events/office-hours3.png',
                 alt: ''
             },
-            date: 'Sep 28th',
-            location: 'Twitch',
-            title: 'Live coding with Wess',
-            description: "Pluck is going mobile. Join us in building Pluck.io's Flutter app.",
+            date: 'November 9th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-        {
-            href: 'https://lu.ma/hf-kickoff-blr',
+         {
+            href: '/discord',
             cover: {
-                src: '/images/community/events/hf-kickoff-bangalore.png',
-                alt: 'Hacktoberfest kickoff event'
+                src: '/images/community/events/office-hours4.png',
+                alt: ''
             },
-            date: 'Oct 1st',
-            location: 'Bengaluru',
-            title: 'Hacktoberfest kickoff event',
-            description: 'Join us for our Hacktoberfest kickoff event in Bengaluru.',
+            date: 'November 16th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-        {
-            href: 'https://hacktoberfest.com/',
+         {
+            href: '/discord',
             cover: {
-                src: '/images/community/events/oss-celebration.png',
-                alt: 'Hacktoberfest kickoff event'
+                src: '/images/community/events/office-hours5.png',
+                alt: ''
             },
-            date: 'Oct',
-            location: 'Virtual',
-            title: 'Hacktoberfest 10',
-            description:
-                'Join us for a month long celebration of open source in collaboration with DigitalOcean.',
+            date: 'November 23rd',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
+            buttonText: 'View event'
+        },
+         {
+            href: '/discord',
+            cover: {
+                src: '/images/community/events/office-hours6.png',
+                alt: ''
+            },
+            date: 'November 30th',
+            location: 'Discord',
+            title: 'Office hours',
+            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         }
     ];
@@ -68,7 +79,7 @@
     const projects: ProjectCardProps[] = [
         {
             title: 'Auth UI',
-            description: 'Appwirte-powered authentication screens generator for any application.',
+            description: 'Appwrite-powered authentication screens generator for any application.',
             image: {
                 src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
                 alt: 'Auth UI: Fully customizable login flow for your applications'
@@ -178,7 +189,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
                                 </a>
                             </div>
                         </div>
@@ -700,9 +711,9 @@
                 </div>
             </div>
         </div>
-        <div class="aw-big-padding-section">
-            <div class="aw-big-padding-section-level-1">
-                <div class="aw-big-padding-section-level-2">
+        <div class="aw-big-padding-section-level-1">
+
+            <div class="aw-big-padding-section-level-2">
                     <div class="aw-container">
                         <div class="aw-grid-1-1-opt-2 u-gap-32">
                             <div class="">
@@ -801,7 +812,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
 
             <div
                 class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
