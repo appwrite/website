@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import { FooterNav, MainFooter } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
@@ -35,45 +35,30 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section wrapper">
-        <div class="aw-big-padding-section">
-            <div class="aw-big-padding-section-level-1">
-                <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container" style="--container-size:42.5rem">
-                        <article class="aw-main-article">
-                            <header class="aw-main-article-header">
-                                <a class="aw-link aw-u-color-text-secondary" href="/changelog">
-                                    <span class="aw-icon-chevron-left" aria-hidden="true" />
-                                    <span>Back to changelog</span>
-                                </a>
-                                <ul class="aw-metadata aw-caption-400">
-                                    <li>
-                                        <time datetime={data.date}>{formatDate(data.date)}</time>
-                                    </li>
-                                </ul>
-                                <h1 class="aw-title aw-u-color-text-primary">{data.title}</h1>
-                            </header>
-                            {#if data.cover}
-                                <div class="aw-media-container">
-                                    <img class="u-block" src={data.cover} alt="" />
-                                </div>
-                            {/if}
-
-                            <div class="aw-article-content u-margin-block-start-32">
-                                <svelte:component this={data.component} />
-                            </div>
-                        </article>
-                        <!-- {#if categories?.length}
-            <div class="u-flex u-gap-16">
-              {#each categories as cat}
-                <a href={cat.href} class="aw-tag">{cat.name}</a>
-              {/each}
-            </div>
-          {/if} -->
-                    </div>
+    <div class="aw-container wrapper" style="--container-size:42.5rem">
+        <article class="aw-main-article">
+            <header class="aw-main-article-header">
+                <a class="aw-link aw-u-color-text-secondary" href="/changelog">
+                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                    <span>Back to changelog</span>
+                </a>
+                <ul class="aw-metadata aw-caption-400">
+                    <li>
+                        <time datetime={data.date}>{formatDate(data.date)}</time>
+                    </li>
+                </ul>
+                <h1 class="aw-title aw-u-color-text-primary">{data.title}</h1>
+            </header>
+            {#if data.cover}
+                <div class="aw-media-container">
+                    <img class="u-block" src={data.cover} alt="" />
                 </div>
+            {/if}
+
+            <div class="aw-article-content u-margin-block-start-32">
+                <svelte:component this={data.component} />
             </div>
-        </div>
+        </article>
     </div>
 
     <div
@@ -89,6 +74,7 @@
 
 <style lang="scss">
     .wrapper {
+        padding-block-start: 3rem;
         padding-block-end: 10rem;
     }
 </style>
