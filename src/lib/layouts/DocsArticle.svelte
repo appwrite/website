@@ -113,7 +113,7 @@
                             use:scrollToTop
                         >
                             <span class="aw-icon-arrow-up" aria-hidden="true" />
-                            <span class="aw-sub-body-500">Back to top</span>
+                            <span class="aw-caption-400">Back to top</span>
                         </button>
                     </div>
                 {/if}
