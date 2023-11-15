@@ -1,0 +1,209 @@
+---
+layout: tutorial
+title: Add Signup and Login Pages
+description: Add Appwrite Signup and Login Pages to you Nextjs app.
+step: 5
+---
+
+# Create Signup and Login Page
+
+## Signup page {% #signup-page %}
+
+Create a new file `app/signup/page.tsx` and add the following code to it.
+
+```typescript
+import { useState } from "react";
+import { login, register, logout, deleteAccount, createVerification } from "../services/page";
+import { useRouter } from "next/navigation";
+
+const Signup: React.FC = () => {
+  // Define the User type
+  type User = {
+    $id: any;
+    name: string;
+  };
+
+  // Initialize state variables
+  const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const router = useRouter();
+
+  // Function to handle user login
+  const handleLogin = async () => {
+    const user = await login(email, password);
+    setLoggedInUser(user);
+  };
+
+  // Function to handle user registration
+  const handleRegister = async () => {
+    // Call the registration and verification functions
+    await register(email, password, name);
+    const verificationResult = await createVerification("http://localhost:3000/home");
+    // Redirect to the login page after registration
+    router.push("/login");
+  };
+
+  // Function to handle user logout
+  const handleLogout = async () => {
+    await logout();
+    setLoggedInUser(null);
+  };
+
+  // Function to handle account deletion
+  const handleDeleteAccount = async () => {
+    try {
+      // Clear the logged-in user and navigate to the home page
+      setLoggedInUser(null);
+      router.push("/");
+    } catch (error) {
+      console.error("Error deleting account:", error);
+    }
+  };
+
+  return (
+    <div>
+      {loggedInUser ? ( // Display content if the user is logged in
+        <div>
+          <p>Logged in as {loggedInUser.name}</p>
+          <button type="button" onClick={handleDeleteAccount}>
+            Delete Account
+          </button>
+          <button type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      ) : ( // Display content if the user is not logged in
+        <div>
+          <p>Not logged in</p>
+          <form>
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+            <button type="button" onClick={handleRegister}>
+              Register
+            </button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Signup;
+```
+# Login page {% #login-page %}
+
+Create a new file `app/login/page.tsx` and add the following code to it.
+
+```typescript
+"use client";
+import { useState } from "react";
+import { login, logout, deleteAccount } from "../services/page";
+import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
+
+const Login: React.FC = () => {
+  type User = {
+    email: string;
+    $id: any;
+    name: string;
+  };
+
+  const [loggedInUser, setLoggedInUser] = useState<User | null>(null);  // Initialize state variables
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const router = useRouter();  // Initialize the router
+
+  const handleLogin = async () => {
+    // Handle user login
+    const user = await login(email, password);
+    setLoggedInUser(user);
+  };
+
+  const handleLogout = async () => {
+    // Handle user logout
+    await logout();
+    setLoggedInUser(null);
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      setLoggedInUser(null);
+      router.push("/");  // Redirect to the home page
+    } catch (error) {
+      console.error("Error deleting account:", error);  // Log an error message if an exception occurs
+    }
+  };
+
+  return (
+    <div>
+      {loggedInUser ? (
+        <div>
+          <div>Username: {loggedInUser.name}</div>
+          <div>Email: {loggedInUser.email}</div>
+          <div>Unique ID: {uuidv4()}</div>
+          <div>
+            <button type="button" onClick={handleDeleteAccount}>
+              Delete Account
+            </button>
+            <button type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <p>Not logged in</p>
+          <form>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Login;
+```
+
+
