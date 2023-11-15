@@ -1,10 +1,12 @@
 <script lang="ts">
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
+    import { formatDate } from '$lib/utils/date';
     import { getContext } from 'svelte';
-    import type { CategoryData, AuthorData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { scroll } from '$lib/animations';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
+    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
 
     export let title: string;
     export let description: string;
@@ -27,6 +29,8 @@
             cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
         );
     }
+
+    let readPercentage = 0;
 </script>
 
 <svelte:head>
@@ -47,7 +51,13 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
+    <div
+        class="aw-big-padding-section"
+        use:scroll
+        on:aw-scroll={(e) => {
+            readPercentage = e.detail.percentage;
+        }}
+    >
         <div class="aw-big-padding-section">
             <div class="aw-big-padding-section-level-1">
                 <div class="aw-big-padding-section-level-2">
@@ -60,9 +70,7 @@
                                 </a>
                                 <ul class="aw-metadata aw-caption-400">
                                     <li>
-                                        <time datetime={date}
-                                            >{new Date(date).toLocaleDateString()}</time
-                                        >
+                                        <time datetime={date}>{formatDate(date)}</time>
                                     </li>
                                     {#if timeToRead}
                                         <li>{timeToRead} min</li>
@@ -199,3 +207,16 @@
         </div>
     </div>
 </Main>
+
+<div class="progress-bar" style:--percentage="{readPercentage * 100}%" />
+
+<style lang="scss">
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        height: 2px;
+        width: var(--percentage);
+        background: hsl(var(--aw-color-accent));
+        z-index: 10000;
+    }
+</style>

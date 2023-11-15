@@ -2,7 +2,6 @@
     import { getContext } from 'svelte';
 
     export let href: string;
-    export let title: string;
 
     const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
     const target = isExternal ? '_blank' : undefined;
@@ -11,10 +10,6 @@
     const isDocs = getContext('isDocs') ?? false;
 </script>
 
-<a
-    class="aw-link is-inline {isDocs ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
-    {href}
-    {title}
-    {target}
-    {rel}><slot /></a
+<a class="aw-link {isDocs ? 'aw-paragraph-md' : 'aw-paragraph-lg'}" {href} {target} {rel}
+    ><slot /><span class="icon-cheveron-right" style:font-size="16px" /></a
 >
