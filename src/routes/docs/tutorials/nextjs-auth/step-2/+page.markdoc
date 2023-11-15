@@ -1,0 +1,27 @@
+---
+layout: tutorial
+title: Create app
+description: Create a SvelteKit app project using Appwrite.
+step: 2
+---
+
+# Create a Nextjs project {% #create-nextjs-project %}
+
+Create a Nextjs app with the `npm create` command and select `Skeleton project`
+
+```sh
+npx create-next-app@latest && cd my-app
+```
+
+# Add dependencies
+Install the JavaScript Appwrite SDK.
+
+```sh
+npm install appwrite
+```
+
+You can start the development server to watch your app update in the browser as you make changes.
+
+```sh
+npm run dev -- --open --port 3000
+```
