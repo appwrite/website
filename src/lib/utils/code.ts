@@ -28,6 +28,7 @@ import { Platform } from './references';
 
 const languages = {
     js: javascript,
+    javascript: javascript,
     dart: dart,
     ts: typescript,
     typescript: typescript,
@@ -56,7 +57,8 @@ const languages = {
     py: python,
     rb: ruby,
     cs: csharp,
-    css: css
+    css: css,
+    svelte: xml
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {

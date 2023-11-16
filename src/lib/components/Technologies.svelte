@@ -1,6 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
-    import { currentTheme, themeInUse } from '$routes/+layout.svelte';
+    import { themeInUse } from '$routes/+layout.svelte';
 
     $: platforms = [
         {

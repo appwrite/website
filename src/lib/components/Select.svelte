@@ -91,7 +91,7 @@
         {/if}
         <span>{$selectedLabel}</span>
     </div>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </button>
 
 {#if $open}
@@ -136,7 +136,7 @@
 {/if}
 
 <div
-    class="aw-select is-colored aw-is-only-mobile"
+    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
@@ -162,7 +162,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </div>
 
 <style lang="scss">
