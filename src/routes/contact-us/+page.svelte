@@ -136,7 +136,7 @@
 											<a
 												href="/discord"
 												class="aw-icon-button"
-												aria-label="Appwrite on aw-icon-discord"
+												aria-label="Discord"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
@@ -147,7 +147,7 @@
 											<a
 												href="https://github.com/appwrite"
 												class="aw-icon-button"
-												aria-label="Appwrite on aw-icon-github"
+												aria-label="Github"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
@@ -158,7 +158,7 @@
 											<a
 												href="https://twitter.com/appwrite"
 												class="aw-icon-button"
-												aria-label="Appwrite on aw-icon-x"
+												aria-label="X"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
@@ -169,7 +169,7 @@
 											<a
 												href="https://linkedin.com/company/appwrite"
 												class="aw-icon-button"
-												aria-label="Appwrite on aw-icon-linkedin"
+												aria-label="LinkedIn"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
@@ -180,7 +180,7 @@
 											<a
 												href="https://youtube.com/c/appwrite?sub_confirmation=1"
 												class="aw-icon-button"
-												aria-label="Appwrite on YouTube"
+												aria-label="YouTube"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
