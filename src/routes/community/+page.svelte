@@ -6,12 +6,15 @@
     import { Carousel } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-	import { newsletter } from '$lib/components/Newsletter.svelte';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+
+    export let data;
 
     const events: EventCardProps[] = [
         {
@@ -38,7 +41,7 @@
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-         {
+        {
             href: '/discord',
             cover: {
                 src: '/images/community/events/office-hours4.png',
@@ -50,7 +53,7 @@
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-         {
+        {
             href: '/discord',
             cover: {
                 src: '/images/community/events/office-hours5.png',
@@ -62,7 +65,7 @@
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-         {
+        {
             href: '/discord',
             cover: {
                 src: '/images/community/events/office-hours6.png',
@@ -79,7 +82,7 @@
     const projects: ProjectCardProps[] = [
         {
             title: 'Auth UI',
-            description: 'Appwirte-powered authentication screens generator for any application.',
+            description: 'Appwrite-powered authentication screens generator for any application.',
             image: {
                 src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
                 alt: 'Auth UI: Fully customizable login flow for your applications'
@@ -105,6 +108,17 @@
             },
             href: 'https://builtwith.appwrite.io/projects/648606ad9cd179190b28/'
         }
+    ];
+
+    const metrics = [
+        { metric: '33K+', description: 'GitHub Stars' },
+        { metric: '8K+', description: 'Pull Requests' },
+        { metric: '15K+', description: 'Commits' },
+        { metric: '2.5K+', description: 'Issues' },
+        { metric: '400+', description: 'Open Issues' },
+        { metric: '1.9K+', description: 'Closed Issues' },
+        { metric: '4.9K+', description: 'Forks' },
+        { metric: '20K+', description: 'Contributors' }
     ];
 
     let name = '';
@@ -189,7 +203,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
                                 </a>
                             </div>
                         </div>
@@ -199,54 +213,11 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container">
                     <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">33K+</div>
-                                <div class="aw-description">GitHub Stars</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">8K+</div>
-                                <div class="aw-description">Pull Requests</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">15K+</div>
-                                <div class="aw-description">Commits</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">2.5K+</div>
-                                <div class="aw-description">Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">400+</div>
-                                <div class="aw-description">Open Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">1.9K+</div>
-                                <div class="aw-description">Closed Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">4.9K+</div>
-                                <div class="aw-description">Forks</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">20K+</div>
-                                <div class="aw-description">Contributors</div>
-                            </div>
-                        </li>
+                        {#each metrics as props}
+                            <li>
+                                <MetricCard {...props} />
+                            </li>
+                        {/each}
                     </ul>
                 </section>
             </div>
@@ -353,135 +324,37 @@
                                         </tr>
                                     </thead>
                                     <tbody class="aw-table-line-body">
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#5232</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/appwrite/issues/5232"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
+                                        {#each data.issues as issue}
+                                            <tr class="aw-table-line-row">
+                                                <td class="aw-table-line-cell u-un-break-text">
+                                                    <span class="aw-caption-400"
+                                                        >#{issue.number}</span
                                                     >
-                                                        Feature: Security Scans like SAST, DAST,
-                                                        FOSS, CAST in pipeline
-                                                    </a>
-                                                    <span>(appwrite/appwrite)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#5748</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/appwrite/issues/5748"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
+                                                </td>
+                                                <td class="aw-table-line-cell">
+                                                    <div>
+                                                        <a
+                                                            href={issue.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="aw-link aw-sub-body-500"
+                                                        >
+                                                            {issue.title}
+                                                        </a>
+                                                        <span>({issue.repository})</span>
+                                                    </div>
+                                                    <ul
+                                                        class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
                                                     >
-                                                        Feature: overload Feature for
-                                                        Storage.CreateFile for using Blob instead of
-                                                        File
-                                                    </a>
-                                                    <span>(appwrite/appwrite)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#680</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/sdk-generator/issues/680"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
-                                                    >
-                                                        Feature: Unit Tests
-                                                    </a>
-                                                    <span>(appwrite/sdk-generator)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#679</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/sdk-generator/issues/679"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
-                                                    >
-                                                        Feature: overload Feature for
-                                                        Storage.CreateFile for using Blob instead of
-                                                        File
-                                                    </a>
-                                                    <span>(appwrite/sdk-generator)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                                        {#each issue.tags as tag}
+                                                            <li>
+                                                                <div class="aw-tag">{tag}</div>
+                                                            </li>
+                                                        {/each}
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {/each}
                                     </tbody>
                                 </table>
                             </div>
