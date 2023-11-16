@@ -4,29 +4,25 @@
 
     type Day = {
         title: string;
-        cover: string;
+        cover?: string;
     };
 
     const days: Day[] = [
         {
-            title: 'Day 1',
-            cover: './day-1.png'
+            title: 'Messaging and notifications',
+            cover: Day1
         },
         {
-            title: 'Day 2',
-            cover: './day-1.png'
+            title: 'Bun & Dart 3.1 support'
         },
         {
-            title: 'Day 3',
-            cover: './day-1.png'
+            title: 'ENUM SDK'
         },
         {
-            title: 'Day 4',
-            cover: './day-1.png'
+            title: 'Day 4'
         },
         {
-            title: 'Day 5',
-            cover: './day-1.png'
+            title: 'Day 5'
         }
     ];
 </script>
@@ -48,11 +44,16 @@
     <div class="aw-container">
         <hr />
         <div class="days">
-            {#each days as day}
+            {#each days as day, i}
                 <div class="day">
-                    <span class="aw-eyebrow">Day 1<span class="accent">_</span></span>
-                    <h2>{day.title}</h2>
-                    <enhanced:img src={day.cover} />
+                    <div class="circle" aria-hidden />
+                    <span class="aw-eyebrow"
+                        >Day {i + 1}<span class="aw-u-color-text-accent">_</span></span
+                    >
+                    <h2 class="aw-label aw-u-color-text-primary">{day.title}</h2>
+                    {#if day.cover}
+                        <enhanced:img src={day.cover} class="img" />
+                    {/if}
                     <button class="aw-button is-secondary">
                         <span class="aw-icon-arrow-right" />
                     </button>
@@ -91,10 +92,12 @@
     }
 
     .days {
+        --day-width: 300px;
+        --col-size: calc(var(--day-width) / 2);
         padding-block: 3.75rem;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(var(--col-size), 1fr));
         gap: 2rem;
 
         .day {
@@ -106,8 +109,69 @@
                 rgba(255, 255, 255, 0) 125.11%
             );
 
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
             background: hsl(var(--aw-color-card));
+            overflow: hidden;
+
+            height: 13.75rem;
             padding: 1.25rem;
+            grid-column: span 2;
+
+            h2 {
+                margin-block-start: 0.5rem;
+                position: relative;
+            }
+
+            button {
+                aspect-ratio: 1;
+                padding: 0.625rem;
+
+                margin-block-start: auto;
+
+                [class*='icon'] {
+                    color: hsl(var(--aw-color-primary)) !important;
+                }
+            }
+
+            .circle {
+                content: '';
+                background: radial-gradient(
+                    hsl(var(--aw-color-accent)) 0%,
+                    hsl(var(--aw-color-accent) / 0) 70%
+                );
+                opacity: 0.24;
+
+                --size: 500px;
+                width: var(--size);
+                height: var(--size);
+
+                position: absolute;
+                right: 0;
+                top: 0;
+                translate: 60% -60%;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            .img {
+                position: absolute;
+                height: 100%;
+                object-fit: contain;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+        }
+
+        .day:last-child:nth-child(3n - 1) {
+            grid-column-end: -2;
+        }
+
+        .day:nth-last-child(2):nth-child(3n + 1) {
+            grid-column-end: 4;
         }
     }
 </style>
