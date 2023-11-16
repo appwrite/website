@@ -3,7 +3,7 @@
     import { MainFooter, FooterNav, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import ChangelogEntry from './ChangelogEntry.svelte';
+    import ChangelogEntry from '../ChangelogEntry.svelte';
 
     export let data;
 
@@ -14,7 +14,7 @@
     };
 
     function loadMore() {
-        goto(`/changelog/?page=${data.nextPage}`, { replaceState: true, noScroll: true });
+        goto(`/changelog/${data.nextPage}`, { replaceState: true, noScroll: true });
     }
 </script>
 

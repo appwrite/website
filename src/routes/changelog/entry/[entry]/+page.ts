@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getAllChangelogEntries } from '../utils.js';
+import { getAllChangelogEntries } from '../../utils.js';
 import type { EntryGenerator } from './$types.js';
 
 export const entries: EntryGenerator = async () => {

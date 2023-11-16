@@ -11,7 +11,8 @@ function absolute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
-const isVercel = process.env.VERCEL === '1';
+// const isVercel = process.env.VERCEL === '1';
+const isVercel = true;
 
 const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
