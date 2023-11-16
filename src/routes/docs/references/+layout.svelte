@@ -1,18 +1,10 @@
-<script lang="ts" context="module">
-    export function getReferencesContext() {
-        return getContext<Writable<boolean>>('references-expandable');
-    }
-</script>
-
 <script lang="ts">
     import { page } from '$app/stores';
     import Docs from '$lib/layouts/Docs.svelte';
-    import { preferredPlatform, preferredVersion } from '$lib/utils/references';
-    import { writable, type Writable } from 'svelte/store';
-    import { getContext, setContext } from 'svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { preferredPlatform, preferredVersion } from '$lib/utils/references';
 
-    const expandable = setContext('references-expandable', writable(false));
+    $: expandable = !!$page.url.pathname.match(/\/docs\/references\/.*?\/.*?\/.*?\/?/);
 
     $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
         $preferredPlatform ?? $page.params?.platform ?? 'client-web'
@@ -96,7 +88,7 @@
     };
 </script>
 
-<Docs variant={$expandable ? 'expanded' : 'two-side-navs'} isReferences={$expandable}>
-    <Sidebar {navigation} expandable={$expandable} {parent} />
+<Docs variant={expandable ? 'expanded' : 'two-side-navs'} isReferences={expandable}>
+    <Sidebar {navigation} {expandable} {parent} />
     <slot />
 </Docs>
