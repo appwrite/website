@@ -76,7 +76,7 @@
                     <li class="is-mobile-col-span-2">
                         <a href="/docs/tutorials/refine" class="aw-card is-normal">
                             <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-svelte aw-u-font-size-24" aria-hidden="true" />
+                                <span class="aw-icon-refine aw-u-font-size-24" aria-hidden="true" />
                                 <h4 class="aw-sub-body-500 aw-u-color-text-primary">Refine</h4>
                             </header>
                             <p class="aw-sub-body-400 u-margin-block-start-4">

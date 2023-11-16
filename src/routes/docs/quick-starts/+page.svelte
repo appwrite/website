@@ -48,6 +48,12 @@
 					icon: 'icon-svelte',
 					image: '/images/blog/placeholder.png',
 					href: 'sveltekit'
+				},
+				{
+					title: 'Refine',
+					icon: 'aw-icon-refine',
+					image: '/images/blog/placeholder.png',
+					href: 'refine'
 				}
 			]
 		},
