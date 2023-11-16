@@ -40,7 +40,7 @@
             <header class="aw-main-article-header">
                 <a class="aw-link aw-u-color-text-secondary" href="/changelog">
                     <span class="aw-icon-chevron-left" aria-hidden="true" />
-                    <span>Back to changelog</span>
+                    <span>Back to Changelog</span>
                 </a>
                 <ul class="aw-metadata aw-caption-400">
                     <li>
