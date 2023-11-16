@@ -20,33 +20,34 @@
     let minutes = 0;
     let hours = 0;
 
-    function updateCountdown() {
-        const today = new Date();
-        const timeRemaining = day.release.getTime() - today.getTime();
-
-        if (timeRemaining <= 0) {
-            // Target date has passed, stop the countdown
-            return;
-        }
-
-        const totalSeconds = Math.floor(timeRemaining / 1000);
-        seconds = totalSeconds % 60;
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        minutes = totalMinutes % 60;
-        hours = Math.floor(totalMinutes / 60);
-
-        console.log({ seconds, minutes, hours });
-
-        // Request the next animation frame to keep updating the countdown
-        requestAnimationFrame(() => {
-            updateCountdown();
-        });
-    }
-
     const pad = (num: number) => num.toString().padStart(2, '0');
 
     onMount(() => {
+        let frame: number;
+
+        function updateCountdown() {
+            const today = new Date();
+            const timeRemaining = day.release.getTime() - today.getTime();
+
+            if (timeRemaining <= 0) {
+                // Target date has passed, stop the countdown
+                return;
+            }
+
+            const totalSeconds = Math.floor(timeRemaining / 1000);
+            seconds = totalSeconds % 60;
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            minutes = totalMinutes % 60;
+            hours = Math.floor(totalMinutes / 60);
+
+            // Request the next animation frame to keep updating the countdown
+            frame = requestAnimationFrame(() => {
+                updateCountdown();
+            });
+        }
         updateCountdown();
+
+        return () => cancelAnimationFrame(frame);
     });
 </script>
 
