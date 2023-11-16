@@ -27,6 +27,10 @@
     ];
 </script>
 
+<svelte:head>
+    <title>Appwrite init_</title>
+</svelte:head>
+
 <Main>
     <div class="hero">
         <h1>
@@ -92,12 +96,12 @@
     }
 
     .days {
-        --day-width: 300px;
-        --col-size: calc(var(--day-width) / 2);
+        --day-min-w: 370px;
         padding-block: 3.75rem;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(var(--col-size), 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
 
         .day {
@@ -119,6 +123,8 @@
             height: 13.75rem;
             padding: 1.25rem;
             grid-column: span 2;
+
+            flex: 0 0 var(--day-min-w);
 
             h2 {
                 margin-block-start: 0.5rem;
