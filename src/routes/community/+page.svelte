@@ -638,7 +638,7 @@
                                         <span
                                             class="icon-discord aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Discord logo"
+                                            aria-label="Discord"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
@@ -658,7 +658,7 @@
                                         <span
                                             class="aw-icon-x aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="X logo"
+                                            aria-label="X"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
@@ -678,7 +678,7 @@
                                         <span
                                             class="icon-github aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="GitHub logo"
+                                            aria-label="GitHub"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
@@ -698,7 +698,7 @@
                                         <span
                                             class="icon-youtube aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Youtube logo"
+                                            aria-label="Youtube"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
