@@ -15,7 +15,15 @@
     onMount(async () => {
         await import('@splinetool/viewer');
         const onLoad = () => {
-            spline.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
+            const shadowRoot = spline.shadowRoot;
+            if (shadowRoot) {
+                shadowRoot.querySelector('#logo')?.remove(); // Remove Spline logo
+                const canvas = shadowRoot.getElementById('spline');
+                if (canvas) {
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                }
+            }
 
             setTimeout(() => {
                 loaded.set(true);
