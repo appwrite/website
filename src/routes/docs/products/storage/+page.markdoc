@@ -15,4 +15,6 @@ Appwrite Storage stores files like images, PDFs or videos. If you need to store 
 # Get started {% #get-started %}
 Get started with Appwrite Storage. Learn to setup up a bucket, upload, and download your first file.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/storage/quick-start)
+{% arrow_link href="/docs/products/storage/quick-start" %}
+Quick start 
+{% /arrow_link %}

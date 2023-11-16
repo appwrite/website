@@ -11,6 +11,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import Technologies from '$lib/components/Technologies.svelte';
 
     const platforms: Array<{
         name: string;
@@ -549,27 +550,7 @@
                             We support many SDKs making Appwrite flexible to your needs and ensuring
                             you can code with the language you want at any time.
                         </p>
-                        <ul
-                            class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
-                        >
-                            {#each platforms as platform}
-                                <li>
-                                    <Tooltip>
-                                        <a href={platform.href} class="aw-box-icon">
-                                            <img
-                                                src={platform.image}
-                                                alt="{platform.name} quick start"
-                                                width="32"
-                                                height="32"
-                                            />
-                                        </a>
-                                        <svelte:fragment slot="tooltip"
-                                            >{platform.name}</svelte:fragment
-                                        >
-                                    </Tooltip>
-                                </li>
-                            {/each}
-                        </ul>
+                        <Technologies />
                         <a
                             href="/docs/sdks"
                             class="aw-button is-secondary"

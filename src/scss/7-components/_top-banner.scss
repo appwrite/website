@@ -6,4 +6,8 @@
   background: linear-gradient(94deg, rgba(253, 54, 110, 0.00) 0%, rgba(253, 54, 110, 0.50) 50.82%, rgba(253, 54, 110, 0.00) 100%);
   &-content { line-height:pxToRem(20); transition:var(--transition); }
   &-button { position:absolute; inset-inline-end:pxToRem(12); }
+
+  [data-banner-hidden] & {
+    display: none;
+  }
 }

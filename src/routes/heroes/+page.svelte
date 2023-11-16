@@ -74,15 +74,6 @@
             avatar: 'images/heroes/avatars/mickael.png'
         },
         {
-            name: 'Safwan Parkar',
-            role: 'Full Stack Engineer',
-            bio: 'Safwan is a Full Stack Engineer with experience in various technologies such as React, Next, Express, Node, MySQL and Flutter. He is among the most active members on the Appwrite Discord server and also a community moderator.',
-            github: 'https://github.com/safwanyp/',
-            twitter: 'https://twitter.com/debingalooo',
-            linkedin: 'https://www.linkedin.com/in/safwanyp/',
-            avatar: 'images/heroes/avatars/safwan.png'
-        },
-        {
             name: 'Emilia',
             role: 'Software Engineer',
             bio: "Emilia is a current student who actively focuses on system administration and coding. She likes working with Docker, Linux, Svelte, and Go, is currently exploring Envoy proxy, Crowdsec, Kubernetes, and Rust, and happens to be one of the most active contributors in Appwrite's Discord community.",
