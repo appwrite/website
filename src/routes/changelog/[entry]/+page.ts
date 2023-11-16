@@ -9,7 +9,6 @@ export const entries: EntryGenerator = async () => {
       entry: entry.slug
     }
   });
-
 }
 
 export const load = async ({ params, }) => {
