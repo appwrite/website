@@ -1,6 +1,6 @@
 import { CHANGELOG_DEPENDENCY, getAllChangelogEntries } from './utils';
 
-export const prerender = false;
+
 
 const PER_PAGE = 5;
 
