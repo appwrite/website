@@ -102,6 +102,17 @@
 					href: 'dart'
 				}
 			]
+		},
+		{
+			title: 'OAuth 2 providers',
+			quickStarts: [
+				{
+					icon: 'icon-amazon',
+					title: 'Amazon OAuth 2',
+					image: '/images/blog/placeholder.png',
+					href: 'oauth-amazon'
+				},
+			]
 		}
 	];
 
