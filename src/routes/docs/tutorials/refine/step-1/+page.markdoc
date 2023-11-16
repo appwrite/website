@@ -11,8 +11,13 @@ readtime: 10
 In this tutorial, you will build admin panel app with Appwrite and [Refine](https://github.com/refinedev/refine).
 
 
-![Create project screen](/images/docs/tutorials/refine/blog-admin-panel.png)
 
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-dark.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-light.png)
+{% /only_light %}
 
 # Concepts {% #concepts %}
 

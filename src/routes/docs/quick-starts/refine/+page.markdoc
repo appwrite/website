@@ -1,66 +1,90 @@
 ---
-layout: tutorial
-title: Add authentication
-description: Add authentication to your Refine application.
-step: 4
+layout: article
+title: Start with Refine
+description: Build Refine apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+difficulty: beginner
+readtime: 3
+back: /docs/quick-starts
 ---
 
-# Authentication Provider {% #auth-provider %}
+Learn how to setup your first Refine project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
-Upon [creating a new project](https://refine.dev/docs/getting-started/quickstart/) with Appwrite preset, the CLI automatically creates [Auth Provider](https://refine.dev/docs/tutorial/understanding-authprovider/index/#what-is-auth-provider) file.
+If this is your first time using Appwrite, create an account and create your first project.
 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
-You'll see a file named [`src/authProvider.ts`](https://github.com/refinedev/refine/blob/master/examples/data-provider-appwrite-tutorial-docs/src/utility/authProvider.ts) created by CLI. This auto-generated file contains pre-defined functions using Appwrite Auth methods internally to perform authentication and authorization operations.
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
+You can skip optional steps.
 
-The auth provider registered to the Refine app by default in the `src/App.tsx`.
-```ts 
+{% /section %}
+{% section #step-2 step=2 title="Create Refine project" %}
+Create a Refine project with Appwrite support.
 
-import { authProvider } from './authProvider';
-...
-
- <Refine
-    ...
-    authProvider={authProvider}
->
+```sh
+npm create refine-app@latest -- --preset refine-appwrite
 ```
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
 
-Now, we can configure the routing and auth components to manage logins and sign ups.
+
+Using the `refine-appwrite` preset eliminates the need for extra dependencies for a quick start.
+
+If you want to integrate Appwrite into an existing Refine app, simply use this command:
+```sh
+npm install @refinedev/appwrite
+```
+Then follow [this](https://refine.dev/docs/packages/documentation/data-providers/appwrite) guide.
 
 
-#  Routing  {% #routing %} 
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+Find your project's ID in the **Settings** page. 
 
-Refine offers router bindings and utilities for [React Router v6](https://reactrouter.com/en/main) and improves the user interface with the [routerProvider](https://refine.dev/docs/api-reference/core/components/refine-config/#routerprovider) prop. 
-This allows the framework to identify resources from routes and efficiently handle query parameters and navigation tasks.
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+Navigate to `src/utility/appwriteClient.ts` and add your API credentials.
 
 
 ```ts
-import routerProvider from '@refinedev/react-router-v6';
-import { BrowserRouter } from 'react-router-dom';
-import { authProvider } from './authProvider';
-...
+import { Account, Appwrite, Storage } from "@refinedev/appwrite";
 
-<BrowserRouter>
-    <Refine
-        ...
-        authProvider={authProvider}
-        routerProvider={routerProvider}
-    >
-    ...
-</BrowserRouter>
+const APPWRITE_URL = '<YOUR_API_ENDPOINT>'; // Replace with your Appwrite API Endpoint
+const APPWRITE_PROJECT = "<YOUR_PROJECT_ID>"; // Replace with your project ID
+
+const appwriteClient = new Appwrite();
+
+appwriteClient.setEndpoint(APPWRITE_URL).setProject(APPWRITE_PROJECT);
+const account = new Account(appwriteClient);
+const storage = new Storage(appwriteClient);
+
+export { account, appwriteClient, storage };
+
 ```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
 
-# Login page {% #login-page %}
+Replace the code in `src/App.tsx` with the following.
 
-
-
-
-We'll use [Routes](https://reactrouter.com/en/main/components/routes) component to connect routing mechanisim along with [AuthPage](https://refine.dev/docs/api-reference/antd/components/antd-auth-page/#usage) component which returns ready-to-use authentication pages for login, register, update, and forgot password actions.
-
-Update `src/App.tsx` to the following code.
-
-```ts
+```js
 import { Authenticated, Refine } from '@refinedev/core';
 import { dataProvider, liveProvider } from '@refinedev/appwrite';
 import {
@@ -120,7 +144,7 @@ const App: React.FC = () => {
                                     </Authenticated>
                                 }
                             >
-                                <Route path="/login" element={<AuthPage forgotPasswordLink={false} />} />
+                                <Route path="/login" element={<AuthPage />} />
                                 <Route
                                     path="/register"
                                     element={<AuthPage type="register" />}
@@ -148,18 +172,8 @@ const App: React.FC = () => {
 
 export default App;
 ```
-Key concepts to handle authentication and routing:
+{% /section %}
 
-- The [`<AuthPage>`](https://refine.dev/docs/api-reference/antd/components/antd-auth-page) component in Refine includes pages for login, registration, password reset, and password update functionalities.
-- To manage authenticated routes effectively, the [`<Authenticated>`](https://refine.dev/docs/api-reference/core/components/auth/authenticated/) component using to determine the user's authentication status and accordingly directs them or displays relevant elements.
-- Within the `<Authenticated>` component, we use the `<Outlet>` component from `react-router-dom` to render secure routes that are accessible only to authenticated users.
-- We set up a `/login` route for redirecting unauthenticated users, using Refine's AuthPage components with a `type="login"` prop to create the login page efficiently.
-
-When you refresh the page, the login screen appears.
-
-![Refine login screen](/images/docs/tutorials/refine/refine-login-page.png)
-
-
-We'll activate the authentication mechanisim with Appwrite in the next section.
-
-
+{% section #step-6 step=6 title="All set" %}
+Run your project with `npm run dev -- --open --port 3000` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
+{% /section %}
