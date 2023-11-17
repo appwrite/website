@@ -33,7 +33,7 @@
 	}
 </script>
 
-<nav class="aw-side-nav">
+<nav class="aw-side-nav" aria-label="Side Navigation">
 	<div class="aw-side-nav-wrapper">
 		<button
 			class="aw-input-text aw-is-not-desktop"
