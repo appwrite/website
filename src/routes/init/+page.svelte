@@ -19,11 +19,11 @@
         },
         {
             title: 'Day 4',
-            release: new Date('2023-11-17')
+            release: new Date('2023-11-23')
         },
         {
             title: 'Day 5',
-            release: new Date('2023-11-18')
+            release: new Date('2023-11-24')
         }
     ];
 </script>
