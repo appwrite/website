@@ -1,0 +1,323 @@
+---
+layout: tutorial
+title: Database
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 5
+difficulty: beginner
+---
+
+# Create database and collection {% #create-database-and-collection %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+In **Databases** tab, click on **Create database**, give it any name and set Database ID to `default`.
+
+Click on **Create collection**, give it any name and set Collection ID to `recipes`.
+
+In **Attributes** tab, create two new attributes.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-attributes.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-attributes.png)
+{% /only_light %}
+
+| Key         | Type        | Size        | Required    |
+| ----------- | ----------- | ----------- | ----------- |
+| **name**    | String      | 100         | true        |
+| **recipe**  | String      | 1024        | true        |
+
+
+In **Indexes** tab, create a new index. This will be important for search feature of our app.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-indexes.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-indexes.png)
+{% /only_light %}
+
+| Key              | Type        | Attribute   | ASC/DESC    |
+| ---------------- | ----------- | ----------- | ----------- |
+| **recipe_index** | FullText    | recipe      | ASC         |
+
+
+In **Settings** tab, find **Permissions** heading, add **Any** role and turn on all options, i.e., Create, Read, Update and Delete. You can learn more about Appwrite permissions [here](https://appwrite.io/docs/advanced/platform/permissions).
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/recipewrite-collection-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/recipewrite-collection-permissions.png)
+{% /only_light %}
+
+# Recipe Model {% #recipe-model %}
+
+Create a new java class, **RecipeModel**. Recipe model will have two string members, **name** and **recipe**.
+
+```java
+public class RecipeModel {
+    public String name;
+    public String recipe;
+
+    public Map<String, String> toJson() {
+        Map<String, String> ret = new HashMap<>();
+        ret.put("name", name);
+        ret.put("recipe", recipe);
+        return ret;
+    }
+
+    public RecipeModel(Map<String, String> data) {
+        this.name = data.get("name");
+        this.recipe = data.get("recipe");
+    }
+
+    public RecipeModel(String name, String recipe) {
+        this.name = name;
+        this.recipe = recipe;
+    }
+
+    @Override
+    public String toString() {
+        return name + " shared:\n" + recipe;
+    }
+}
+```
+
+# Appwrite methods {% #appwrite-methods %}
+
+Now we are going to write database methods in `Appwrite.java`, just like we did in authentication part.
+
+But first let's add `databaseID` and `collectionID` member variables to our `Appwrite` class.
+
+```java
+private static final String databaseID = "default";
+private static final String collectionID = "recipes";
+```
+
+## **onAddRecipe**
+
+This method will be invoked to add a new recipe to the database.
+
+```java
+public static void onAddRecipe(RecipeModel recipeModel, CoroutineCallback coroutineCallback) {
+    try {
+        /* Create a new Document. */
+        databases.createDocument(
+                databaseID,
+                collectionID,
+                ID.Companion.unique(),
+                recipeModel.toJson(),
+                coroutineCallback
+        );
+    } catch (AppwriteException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+## **onListRecipes**
+
+This method will fetch the list of recipes stored in our recipes collection.
+
+```java
+public static void listRecipes(CoroutineCallback<DocumentList> coroutineCallback) {
+    try {
+        /* Get a list of all the user's documents in a given collection. */
+        databases.listDocuments(
+            databaseID,
+            collectionID,
+            coroutineCallback
+        );
+    } catch (AppwriteException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+# Add a recipe {% #add-a-recipe %}
+
+Let us implement the feature to add a finger-licking recipe to our database. We need two pieces of information to create a new recipe model, name of current user and the recipe they want to share.
+
+Remember we passed name of the user to **HomeActivity** in `onGetAccount` method of `Appwrite` class? Let us extract that out.
+
+Declare a string member variable `name` inside **HomeActivity**.
+
+```java
+String name;
+```
+
+Extract name from intent in `onCreate` method.
+
+```java
+name = getIntent().getStringExtra("name");
+```
+
+Now, in order to get user's delicious recipe, let us make a floating action button. Again, use **Vector Asset** to make a new icon. Choose **add** icon in clip art, and then name it `add.xml`.
+
+Add a `FloatingActionButton` to `activity_home.xml`.
+
+```xml
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/floatingActionButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:srcCompat="@drawable/add" />
+```
+
+Update definition of **HomeActivity** to implement `View.OnClickListener`.
+
+```java
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener
+```
+
+Declare a `FloatingActionButton` member variable of **HomeActivity**.
+
+```java
+FloatingActionButton fab;
+```
+
+Initialize it in `onCreate` method.
+
+```java
+fab = findViewById(R.id.floatingActionButton);
+fab.setOnClickListener(this);
+```
+
+Now, override `onClick` to write its click logic. We are going to show an `AlertDialog` with a text field to capture user's recipe and then use our Appwrite method to add the new recipe to database.
+
+```java
+@Override
+public void onClick(View view) {
+    switch ((view.getId())) {
+
+        case R.id.floatingActionButton:
+
+            /* Declare the builder */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            /* Set its title */
+            builder.setTitle("Add Recipe");
+
+            /* Create a new text field for recipe */
+            final EditText input = new EditText(this);
+            builder.setView(input);
+
+            /* Add an 'Add' button to the dialog */
+            builder.setPositiveButton("Add", (dialog, which) -> {
+
+                /* Extract user input */
+                String recipe = input.getText().toString();
+
+                /* Create a new recipe model */
+                RecipeModel recipeModel = new RecipeModel(name, recipe);
+
+                /* Add the new recipe to database */
+                Appwrite.onAddRecipe(recipeModel, new CoroutineCallback<>((result, error) -> {
+                    /* Do something on success addition to database */
+                }));
+            });
+
+            /* Add a 'Cancel' button to cancel the dialog */
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+            /* Finally show the dialog */
+            builder.show();
+            break;
+    }
+}
+```
+
+# List recipes {% #list-recipes %}
+
+Now, let us show all the delicious recipes that we've got stacked in our database.
+
+Add a `ListView` in `activity_home.xml`.
+
+```xml
+<ListView
+    android:id="@+id/list_view"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" >
+
+</ListView>
+```
+
+Now, in **HomeActivity** class, add the following member variables.
+
+```java
+ListView listView;
+ArrayList<RecipeModel> recipes = new ArrayList<>();
+ArrayAdapter<RecipeModel> arr;
+```
+
+Initialize `listView` and `arr` in `onCreate` method and set `arr` as adapter to `listView`.
+
+```java
+listView = findViewById(R.id.list_view);
+arr = new ArrayAdapter<>(
+    this,
+    R.layout.list_item,
+    recipes
+);
+listView.setAdapter(arr);
+```
+
+Create a new file `res/layout/list_item.xml`.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="marquee"/>
+```
+
+Now finally, let's write a method `reloadList` which will fetch the list of recipes from database, and update the UI.
+
+```java
+private void reloadList() {
+    Appwrite.listRecipes(new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        /* Clear recipes list first as we have fresh data */
+        recipes.clear();
+        if (result != null) {
+            for (Object document: result.getDocuments()) {
+                /* Extract JSON data from the response */
+                Map<String, String> data = (Map<String, String>) ((Document) document).getData();
+
+                /* Create recipe model from that JSON data */
+                RecipeModel recipe = new RecipeModel(data);
+
+                /* Add that model to our list of recipes */
+                recipes.add(recipe);
+            }
+        }
+
+        /* notify the adapter about the changes in list of recipes */
+        runOnUiThread(() -> arr.notifyDataSetChanged());
+    }));
+}
+```
+
+Call `reloadList`
+
+1. at the end of `onCreate` in order to load the list on startup.
+2. in `onClick`, under the comment `Do something on success addition to database` in order to reload the list once we have added a new recipe.
+
+Phew! We have successfully connected the app to the database, you can see both **add** and **list** in action by this time!
