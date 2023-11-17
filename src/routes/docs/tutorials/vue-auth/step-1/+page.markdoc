@@ -1,0 +1,20 @@
+---
+layout: tutorial
+title: Authentication with Vue
+description: Add Authentication to a Vue project using Appwrite.
+step: 1
+difficulty: intermediate
+readtime: 40
+---
+## Appwrite: The backend you'll never have to build or maintain.
+
+Appwrite is a self-hosted backend platform that takes away the stress of building and maintaining a backend. With Appwrite, you can implement authentication, databases, file storage, and real-time events with secure APIs out of the box.
+
+This means that you can focus on what you do best: building great Vue apps. You don't have to worry about managing servers, databases, or security. Appwrite takes care of all that for you. Even if you're a beginner, you can get started with Appwrite and Vue in no time.
+
+
+## Before you start
+
+Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Vue and Appwrite.
+
+If you're inspired and wish to follow along, make sure you've followed [Start with Vue](https://appwrite.io/docs/quick-starts/vue) first and can later jump onto this tutorial.

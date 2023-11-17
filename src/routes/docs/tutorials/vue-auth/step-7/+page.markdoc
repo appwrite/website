@@ -1,0 +1,121 @@
+---
+layout: tutorial
+title: Password Recovery
+description: This page deals with password recovery with Vue and Appwrite.
+step: 7
+---
+
+# forgotPassword page {% #forgotPassword-page %}
+Appwrite also provides us the functionality of recovering our password. The application will take the user email and Sends the user an email with a temporary secret key for password reset. 
+
+When the user clicks the confirmation link he is redirected back to your app password reset URL with the secret key and email address values attached to the URL query string.
+
+We are going to conditionally render our forgotPassword form besides our login and signup form with the help of `v-if` directive.
+
+Now, lets add our forgotPassword logic. Go to file `src/components/Login.vue` and add the following code to the script.
+
+```js
+           async sendPasswordRecoveryMail() {
+                authenticationStore.email = this.email;
+                await authenticationStore.UpdatePassword(this.email);
+                alert("Recovery Mail sent!")
+            }
+```
+The above function is setting the state of `email` and using the UpdatePassword action from the `authenticationStore`.
+
+
+Now, add the following html to the template under the forgot comment.
+
+```html
+    <!-- Forgot Password --> 
+    <div v-if="forgotPassword" class="forgotPassword-container">
+        <h1>Forgot Password</h1>
+        <form class="login" @submit.prevent="sendPasswordRecoveryMail()">
+            <input class="user-input" type="email" v-model="email" placeholder="Email">
+            <button class="input-submit" type="submit">Submit</button>
+        </form>
+        <div class="options">
+            <button class="register-btn" @click="() => { forgotPassword = !forgotPassword }">Back</button>
+        </div>
+    </div>
+```
+The `forgotPassword` div will only be rendered when he is not on either `signup` or `login`.
+
+## UpdatePassword action
+
+```js
+ async UpdatePassword(email){
+      const update = await account.createRecovery(email, 'http://localhost:5174/forgot')
+    }
+```
+
+The `UpdatePassword` action takes up the user email and a path for where the user will enter the new password.
+
+So, we have create a page, where we will take the query string params and the new password. Then, user can submit a request to update the password.
+
+**NOTE: The verification link sent to the user's email address is valid for 1 hour.**
+
+Now, let's create a new view/page `src/views/forgotPassword.vue` and copy the below code to it.
+
+```js
+<script>
+import { ref, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useAuthenticationStore } from '@/stores/auth.js';
+
+export default {
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
+        const authenticationStore = useAuthenticationStore();
+        return {
+            password: ref(''),
+            passwordAgain: ref(''),
+            async PasswordVerificationConfirm() {
+                const { userId, secret } = route.query;
+                if (userId && secret) {
+                    await authenticationStore.UpdatePasswordConfirm(userId, secret, this.password, this.passwordAgain);
+                    alert("Password Updated")
+                    router.push({ path: '/' })
+                }
+                else {
+                    console.log("Not updated yet!")
+                }
+            }
+        };
+    },
+};
+</script>
+```
+In the above script we are doing the following things:
+
+- Importing the `ref`, `computed`, `useRoute()`, `useRouter()`, and `useAuthenticationStore()` hooks from Vue.js.
+- Creating a variable called `password` and initialize it with a ref.
+- Creating a variable called `passwordAgain` and initialize it with a ref.
+- Creating a method called `PasswordVerificationConfirm()`. This method should check if the `userID` and `secret` are present in the route query parameters. If they are, then the method should call the `UpdatePasswordConfirm()` method on the authentication store to update the user's password.
+
+```html
+<template>
+    <div>
+        <div>
+            <h1>Update Password</h1>
+            <form @submit.prevent="PasswordVerificationConfirm()">
+                <input type="password" v-model="password" placeholder="Password">
+                <input type="password" v-model="passwordAgain" placeholder="Password">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</template>
+```
+In the above code we are just taking password of the user and also we are confirming the password. Then, we are using the `PasswordVerificationConfirm` method to call `UpdatePasswordConfirm` action to submit a password update request to appwrite.
+
+## UpdatePasswordConfirm action
+
+```js
+async UpdatePasswordConfirm(id,secret, password, passwordAgain){
+      const confirResponse = await account.updateRecovery(id, secret, password, passwordAgain)
+    }
+```
+
+In the above `updateRecovery` request, we are sending the `userId`, `secret`, `password` and `passwordAgain` for updating the user password.

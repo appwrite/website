@@ -1,0 +1,58 @@
+---
+layout: tutorial
+title: Create signup page
+description: Everything about the signup functionality.
+step: 6
+---
+
+# Signup page {% #signup-page %}
+
+We are going to conditionally render our signup form besides our login form only with the help of `v-if` directive.
+
+Now, lets add our signup logic. Go to file `src/components/Login.vue` and add the following code to the script.
+
+```js
+            async register() {
+                authenticationStore.email = this.email;
+                authenticationStore.password = this.password;
+                authenticationStore.name = this.name;
+                await authenticationStore.register(this.email, this.password, this.name);
+            }
+</script>
+```
+The above function is setting the state of `email` , `password` and `name` and using the register action from the `authenticationStore`.
+
+
+Now, add the following html to the template under the Signup comment.
+
+```html
+    <!-- Sign up -->
+    <div v-if="!isLogin && !forgotPassword">
+        <h1>Sign up</h1>
+        <form @submit.prevent="register()">
+            <input type="text" v-model="name" placeholder="Name">
+            <input type="email" v-model="email" placeholder="Email">
+            <input type="password" v-model="password" placeholder="Password">
+            <button type="submit">Sign up</button>
+        </form>
+        <div>
+            <button @click="() => { isLogin = !isLogin }">Sign in</button>
+            <button @click="() => { forgotPassword = !forgotPassword }" >Forgot Password?</button>
+        </div>
+    </div>
+```
+The `signup` div will only be rendered when he is not on either `forgotPassword` or `login` div.
+
+## Register action
+
+```js
+async register() {
+      const registerResponse = await account.create(ID.unique(), this.email, this.password, this.name);
+      alert("Account Created")
+    }
+```
+
+To register to our app, we use `create` function which appwrite provides, this creates a user in our appwrite console. Now, user can login to the app with the credentials, the user entered during registration.
+
+
+The register action takes inputs such as email, password and the name of the user.
