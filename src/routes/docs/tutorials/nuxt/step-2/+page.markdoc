@@ -75,7 +75,7 @@ Add the following code for the default layout.
 As you see it's nearly empty but it is needed for the automatic routing to work properly.
 
 ```vue
-// [layouts/default.vue]
+// layouts/default.vue
 
 <template>
   <div>
@@ -98,7 +98,7 @@ Each file you put in here will automatically become a route.
 Add the file `index.vue` with the following code.
 
 ```vue
-// [pages/index.vue]
+// pages/index.vue
 
 <template>
   <div>
@@ -111,7 +111,6 @@ This is what your directory should look like after adding the new directories an
 
 ```
 [repository tree]
-
 ├── .nuxt/
 ├── components/
 ├── composables/
@@ -140,7 +139,7 @@ Open `app.vue`in the root directory and replace the content with the following c
 Your page will now be up and running.
 
 ```vue
-// [app.vue]
+// app.vue
 
 <template>
   <div>

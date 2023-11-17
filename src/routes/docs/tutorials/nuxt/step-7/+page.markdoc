@@ -17,7 +17,7 @@ The form need a text field for filling in the title, a textarea for the descript
 From the `components` directory, add the file `ÌdeasForm.vue` and add the following code.
 
 ```vue
-// [components/IdeasForm.vue]
+// components/IdeasForm.vue
 
 <template>
   <div>
@@ -96,7 +96,7 @@ Add the following code to the `index.vue`page to conditionally render the form a
 Overwrite the contents of `pages/index.vue` with the following code.
 
 ```vue
-// [pages/index.vue]
+// pages/index.vue
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
@@ -149,7 +149,7 @@ We help them do that by adding a delete button in the top right corner of the id
 Add the file `IdeasList`from the `componenents` directory and insert the following code:
 
 ```vue
-[componenents/IdeasList.vue]
+// componenents/IdeasList.vue
 
 <template>
   <section class="u-margin-32">
@@ -204,7 +204,7 @@ Return to the file `pages/index.vue` once more to import the list of ideas.
 This component should be visible to all users, so no conditional rendering neeeds to be handled.
 
 ```vue
-// [pages/index.vue]
+// pages/index.vue
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">

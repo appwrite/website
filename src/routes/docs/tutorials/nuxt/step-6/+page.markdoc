@@ -22,12 +22,12 @@ Create a new collection with the following attributes:
 | description | String | No       |
 
 Change the collection's permissions in the settings to give access.
-First, add the role **Any** and check the **Read** box.
-Next, add a **Users** role and give them access to **create**, **update** and **delete** by checking those boxes.
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
-# Secrets
+# Environment variables {% #environment-variables %}
 
-Just like when we set up the connection to Appwrite in [step 2](/docs/tutorials/nuxt/step-2), we need to keep the variables with the collection id secret.
+Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/nuxt/step-3), we need to keep the variables with the collection id secret.
 Open the `.env` file and add your database id and your collection id to it.
 
 ```
@@ -44,7 +44,7 @@ We will add a new composable, `useIdeas`, to handle this functionality.
 Create a new file in the composables directory, `useIdeas.js` and add the following code.
 
 ```js
-// [composables/useIdeas.js]
+// composables/useIdeas.js
 
 import { ID, Query } from "appwrite";
 import { database } from "~/appwrite";
