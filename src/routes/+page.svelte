@@ -11,6 +11,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import Technologies from '$lib/components/Technologies.svelte';
 
     const platforms: Array<{
         name: string;
@@ -168,13 +169,12 @@
                     style="--container-size:78.75rem"
                 >
                     <div class="aw-media-container">
-                        <div style="aspect-ratio: 1244 / 717">
-                            <img
-                                class="u-block"
-                                src="/images/pages/homepage/dashboard.png"
-                                alt="console dashboard"
-                            />
-                        </div>
+                        <img
+                            class="u-block"
+                            src="/images/pages/homepage/dashboard.png"
+                            alt="console dashboard"
+                            style:aspect-ratio="1244 / 717"
+                        />
                     </div>
                 </section>
             </div>
@@ -550,27 +550,7 @@
                             We support many SDKs making Appwrite flexible to your needs and ensuring
                             you can code with the language you want at any time.
                         </p>
-                        <ul
-                            class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
-                        >
-                            {#each platforms as platform}
-                                <li>
-                                    <Tooltip>
-                                        <a href={platform.href} class="aw-box-icon">
-                                            <img
-                                                src={platform.image}
-                                                alt="{platform.name} Logo"
-                                                width="32"
-                                                height="32"
-                                            />
-                                        </a>
-                                        <svelte:fragment slot="tooltip"
-                                            >{platform.name}</svelte:fragment
-                                        >
-                                    </Tooltip>
-                                </li>
-                            {/each}
-                        </ul>
+                        <Technologies />
                         <a
                             href="/docs/sdks"
                             class="aw-button is-secondary"
@@ -589,7 +569,9 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <Spline loading="eager" url="/images/animations/lines.splinecode" />
+                        <Spline loading="eager" url="/images/animations/lines.splinecode">
+                            <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
+                        </Spline>
                     </div>
                 </div>
                 <div class="aw-container u-position-relative">

@@ -2,6 +2,7 @@
 layout: tutorial
 title: Recipewrite - a Recipe sharing app
 description: Learn to build an Android app with no backend code using an Appwrite backend.
+framework: Android
 step: 1
 difficulty: beginner
 ---

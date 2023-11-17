@@ -1,9 +1,8 @@
 <script lang="ts">
+    import type { SplineViewer } from '@splinetool/viewer';
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
-    import type { SplineViewer } from '@splinetool/viewer';
     import { fade } from 'svelte/transition';
-    import { dev } from '$app/environment';
 
     export let url: SplineViewer['url'];
     export let width: SplineViewer['width'] = undefined;
@@ -16,7 +15,15 @@
     onMount(async () => {
         await import('@splinetool/viewer');
         const onLoad = () => {
-            spline.shadowRoot?.querySelector('#logo')?.remove(); // Remove Spline logo
+            const shadowRoot = spline.shadowRoot;
+            if (shadowRoot) {
+                shadowRoot.querySelector('#logo')?.remove(); // Remove Spline logo
+                const canvas = shadowRoot.getElementById('spline');
+                if (canvas) {
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                }
+            }
 
             setTimeout(() => {
                 loaded.set(true);
@@ -25,9 +32,11 @@
 
         spline.addEventListener('load-complete', onLoad);
     });
+
+    const ENABLED = false;
 </script>
 
-{#if !dev}
+{#if ENABLED}
     <spline-viewer
         style="position: absolute;"
         {url}

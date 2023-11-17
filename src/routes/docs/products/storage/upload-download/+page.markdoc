@@ -119,8 +119,6 @@ You can also upload files programmatically using our SDKs:
   ```
 
 {% /multicode %}
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
 # Large files {% #large-files %}
 When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
@@ -130,7 +128,7 @@ If you're not using an SDK, you can [learn more about REST API file handling](/d
 # InputFile {% #input-file %}
 Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
 
-# Client SDKs
+# Client SDKs {% #client-sdks %}
 
 {% tabs %}
 {% tabsitem #web title="Web" %}
@@ -180,7 +178,7 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 {% /tabsitem %}
 {% /tabs %}
 
-# Server SDK
+# Server SDKs {% #server-sdks %}
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
