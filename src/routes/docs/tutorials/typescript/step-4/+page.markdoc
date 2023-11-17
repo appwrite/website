@@ -17,10 +17,10 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import { account } from "../appwrite";
 
 interface UserContextType {
-  current: any; // You should replace 'any' with the actual type of 'user'
+  current: any; // Replace 'any' with the actual type of 'user'
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  register: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, userid: string) => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -50,8 +50,8 @@ export function UserProvider(props: UserProviderProps) {
     setUser(null);
   }
 
-  async function register(email: string, password: string) {
-    await account.create(email, password);
+  async function register(email: string, password: string, userid: string) {
+    await account.create(email, password, { userid });
     await login(email, password);
   }
 

@@ -35,8 +35,11 @@ export const IDEAS_DATABASE_ID = "<YOUR_DATABASE_ID>"; // Replace with your data
 export const IDEAS_COLLECTION_ID = "<YOUR_COLLECTION_ID>"; // Replace with your collection ID
 
 interface Idea {
-  $id: string;
-  // Define other properties of your idea here
+  $id?: string;
+  title: string;
+  description: string;
+  userId: string;
+  // Add more properties as needed
 }
 
 interface IdeasContextType {
@@ -67,7 +70,7 @@ export function IdeasProvider(props: IdeasProviderProps) {
       IDEAS_DATABASE_ID,
       IDEAS_COLLECTION_ID,
       ID.unique(),
-      idea
+      { ...idea }
     );
     setIdeas((currentIdeas) => [response.$id, ...currentIdeas].slice(0, 10));
   }

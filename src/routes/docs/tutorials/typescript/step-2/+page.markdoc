@@ -10,10 +10,12 @@ step: 2
 Create a React app with the `npm create` command.
 
 ```sh
-npm create vite@latest ideas-tracker
+npm create vite@latest ideas-tracker && cd ideas-tracker
 ```
 
 Select React and then TypeScript from CLI.
+
+![Create project screen](/images/docs/tutorials/react-typescript.png)
 
 # Add dependencies {% #add-dependencies %}
 
