@@ -10,7 +10,7 @@ category: functions
 featured: false
 ---
 
-As a part of Appwrite 1.4, one of the new features we have introduced to Appwrite Functions is Function Templates. Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
+Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
 
 One such integration you can implement using Appwrite Functions is **Searching** using **Meilisearch**. In this blog we show how you can use an Appwrite Function Template to integrate search with Meilisearch.
 
