@@ -30,7 +30,7 @@ The **Hostname** should be localhost.
 
 You can skip the optional steps.
 
-# Secrets
+# Environment variables {% #environment-variables %}
 
 To connect to Appwrite in our app, we'll need to use sensitive information.
 We keep the secrets by using environment variables for the endpoint and project id.
@@ -57,6 +57,8 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it.
 
 ```js
+// appwrite.js
+
 import { Client, Databases, Account } from "appwrite";
 
 const url = import.meta.env.VITE_APPWRITE_ENDPOINT;

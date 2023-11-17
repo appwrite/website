@@ -24,7 +24,7 @@ In your `composable` directory, create the file `useUserSession.js` and add the 
 Then you can call the  `useUserSession()` function in the pages and components to use the functionality.
 
 ```js
-[composable/useUserSession.js]
+// composable/useUserSession.js
 
 import { ID } from "appwrite";
 import { ref } from "vue";
@@ -75,7 +75,7 @@ In step 5 we will add a loginbutton that will redirect us to this page.
 Add the following code to build the form.
 
 ```vue
-// [pages/login.vue]
+// pages/login.vue
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
