@@ -195,7 +195,7 @@
                 </div>
             </aside>
             <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="policy-content">
-                <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
+                <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc} id="main">
                     <!-- eslint-disable-next-line svelte/valid-compile -->
                     <h2 aria-hidden="true">Introduction</h2>
                     <slot />

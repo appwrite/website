@@ -112,7 +112,7 @@
                     </ul>
                 </div>
             </aside>
-            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed">
+            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
                 <div class="aw-content">
                     <section>
                         <p>

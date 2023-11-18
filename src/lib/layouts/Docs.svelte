@@ -59,7 +59,20 @@
 
     setContext('isDocs', true);
 </script>
-
+<style>
+    .skip-to-content-link {
+        z-index: 1000;
+        padding: 8px;
+        position: absolute;
+        top: 0;
+        -webkit-transform: translateY(-999px);
+        transform: translateY(-999px);
+    }
+    .skip-to-content-link:focus {
+        transform: translateY(0%);
+    }
+</style>
+<a class="skip-to-content-link" href="#main">Skip to content</a>
 <div class="u-position-relative">
     <section class="aw-mobile-header is-transparent">
         <div class="aw-mobile-header-start">

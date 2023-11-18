@@ -90,7 +90,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start">
