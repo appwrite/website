@@ -23,7 +23,7 @@
     export let date: string;
 </script>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
