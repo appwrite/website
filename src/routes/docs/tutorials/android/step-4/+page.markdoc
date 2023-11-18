@@ -12,131 +12,168 @@ This is the user flow that we are going to achieve in this page.
 
 ![user-flow](/images/docs/tutorials/recipewrite-user-flow.png)
 
-Keeping the userflow in mind, let us start by initializing two new empty views activities, **AuthActivity** and **HomeActivity**.
+Keeping the userflow in mind, let us start by initializing two [new empty views activities](https://developer.android.com/guide/components/activities/intro-activities), **AuthActivity** and **HomeActivity**. 
 
 # Appwrite methods {% #appwrite-methods %}
 
-Let us implement some utility methods in **Appwrite.java**.
+Let's implement some utility methods in **Appwrite.java**.
 
-**onGetAccount**
-
-It will be used in **MainActivity** to check if the user is already logged in or not. `coroutineCallback` is the piece of code that should be run after checking whether or not the user is logged in.
+Create a new method `onGetAccount` in **MainActivity** to check if the user is already logged in or not. `coroutineCallback` is the piece of code that should be run after checking whether or not the user is logged in.
 
 ```java
-public static void onGetAccount(CoroutineCallback<User> coroutineCallback) {
-    try {
-        /* Account.get is used to get the currently logged in user. */
-        account.get(coroutineCallback);
-    } catch (Exception e) {
-        e.printStackTrace();
+// ...other imports
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.models.User;
+
+public class Appwrite {
+    // ...other methods
+    public static void onGetAccount(CoroutineCallback<User> coroutineCallback) {
+        try {
+            /* Account.get is used to get the currently logged in user. */
+            account.get(coroutineCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
 
-**onLogin**
-
-This method will take in email and password, and will try to log the user in.
+Create a new method, `onLogin`, which will take in email and password, and will try to log the user in.
 
 ```java
-public static void onLogin(String email, String password, CoroutineCallback<Session> coroutineCallback) {
-    /* Allow the user to login into their account by providing a valid email and password combination. */
-    account.createEmailSession(
-            email,
-            password,
-            coroutineCallback
-    );
-}
-```
+// ...other imports
+import io.appwrite.models.Session;
 
-**onCreateAccount**
-
-This method will take in email, password and name, and will try to register our new user to the app.
-
-```java
-public static void onCreateAccount(String email, String password, String name, CoroutineCallback<User> coroutineCallback) {
-    try {
-        /* Allow a new user to register a new account */
-        account.create(
-                ID.Companion.unique(),
+public class Appwrite {
+    // ...other methods
+    public static void onLogin(String email, String password, CoroutineCallback<Session> coroutineCallback) {
+        /* Allow the user to login into their account by providing a valid email and password combination. */
+        account.createEmailSession(
                 email,
                 password,
-                name,
                 coroutineCallback
         );
-    } catch (AppwriteException e) {
-        e.printStackTrace();
     }
 }
 ```
 
-**onLogout**
+Create another method, `onCreateAccount, which will take in email, password and name, and will try to register our new user to the app.
 
 ```java
-public static void onLogout(CoroutineCallback<Object> coroutineCallback) {
-    /* Logout the user. Use 'current' as the session ID to logout on this device, use a session ID to logout on another device. */
-    account.deleteSession(
-            "current",
-            coroutineCallback
-    );
+// ...other imports
+import io.appwrite.ID;
+import io.appwrite.exceptions.AppwriteException;
+
+public class Appwrite {
+    // ...other methods
+    public static void onCreateAccount(String email, String password, String name, CoroutineCallback<User> coroutineCallback) {
+        try {
+            /* Allow a new user to register a new account */
+            account.create(
+                    ID.Companion.unique(),
+                    email,
+                    password,
+                    name,
+                    coroutineCallback
+            );
+        } catch (AppwriteException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Create another method, `onLogout, which will take log out the user.
+
+
+```java
+// ...other imports
+
+public class Appwrite {
+    // ...other methods
+    public static void onLogout(CoroutineCallback<Object> coroutineCallback) {
+        /* Logout the user. Use 'current' as the session ID to logout on this device, use a session ID to logout on another device. */
+        account.deleteSession(
+                "current",
+                coroutineCallback
+        );
+    }
 }
 ```
 
 # Main Activity {% #main-activity %}
 
-As shown in the userflow, main activity will just check if the user is already logged in or not. It will redirect accordingly.
+As shown in the userflow, main activity will check if the user is already logged in or not. It will redirect accordingly.
 
-## **activity_main.xml**
+Let's add a progress bar in `activity_main.xml`.
 
-We just need a progress bar here.
 
 ```xml
-<ProgressBar
-    android:id="@+id/progressBar"
-    style="?android:attr/progressBarStyle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    ...skipped attributes 
+    >
+
+    <!--Other layout components-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-## **MainActivity.java**
-
-We will reuse our **onGetAccount** method here.
+Then we'll add the redirects in `MainActivity.java`. We will reuse our `onGetAccount` method here.
 
 ```java
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-    setContentView(R.layout.activity_main);
-    
-    /* Ensure this is the first time onCreate is called. */
-    /* This will prevent Appwrite to be initialized multiple times */
-    if (savedInstanceState == null) {
-        Appwrite.init(this);
-        Appwrite.onGetAccount(new CoroutineCallback<>((result, error) -> {
+package com.example.recipewrite;
 
-            Intent intent;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
-            if (error != null) {  /* User isn't logged in. */
-                intent = new Intent(this, AuthActivity.class);
-            } else {              /* User is logged in.    */
-                intent = new Intent(this, HomeActivity.class);
+import android.content.Intent;
+import android.os.Bundle;
 
-                /* This will pass the account name to HomeActivity. */
-                intent.putExtra("name", result.getName());
-            }
+import io.appwrite.coroutines.CoroutineCallback;
 
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+public class MainActivity extends AppCompatActivity {
 
-            /* Launch the activity as per our user flow. */
-            startActivity(intent);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setContentView(R.layout.activity_main);
 
-            /* Finish the current activity. */
-            this.finish();
-        }));
+        /* Ensure this is the first time onCreate is called. */
+        /* This will prevent Appwrite to be initialized multiple times */
+        if (savedInstanceState == null) {
+            Appwrite.init(this);
+            Appwrite.onGetAccount(new CoroutineCallback<>((result, error) -> {
+
+                Intent intent;
+
+                if (error != null) {  /* User isn't logged in. */
+                    intent = new Intent(this, AuthActivity.class);
+                } else {              /* User is logged in.    */
+                    intent = new Intent(this, HomeActivity.class);
+
+                    /* This will pass the account name to HomeActivity. */
+                    intent.putExtra("name", result.getName());
+                }
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                /* Launch the activity as per our user flow. */
+                startActivity(intent);
+
+                /* Finish the current activity. */
+                this.finish();
+            }));
+        }
     }
 }
 ```

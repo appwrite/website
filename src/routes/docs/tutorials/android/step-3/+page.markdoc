@@ -32,9 +32,17 @@ You can skip the optional steps.
 
 # Connect your app with Appwrite {% #connect-your-app-with-appwrite %}
 
-Create **Appwrite.java** in the same directory that contains **MainActivity.java**, this will handle our app's interaction with Appwrite server. Replace `[project-id]` with your new project's id, which can be found beside your project's name in overview tab.
+Create **Appwrite.java** in the same directory that contains **MainActivity.java**, this will handle our app's interaction with Appwrite server. Replace `<PROJECT_ID>` with your new project's id, which can be found beside your project's name in overview tab.
 
 ```java
+package com.example.recipewrite;
+
+import android.content.Context;
+
+import io.appwrite.Client;
+import io.appwrite.services.Account;
+import io.appwrite.services.Databases;
+
 public class Appwrite {
     private static Client client;
     private static Account account;
@@ -58,11 +66,20 @@ public class Appwrite {
 Finally, call this `init` method in `onCreate` method of **MainActivity.java**.
 
 ```java
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+package com.example.recipewrite;
 
-    Appwrite.init(this);
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Appwrite.init(this);
+    }
 }
 ```

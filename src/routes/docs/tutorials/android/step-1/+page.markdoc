@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Recipewrite - a Recipe sharing app
+title: Build a recipe sharing app with Android
 description: Learn to build an Android app with no backend code using an Appwrite backend.
 framework: Android
 step: 1
 difficulty: beginner
 ---
 
-**Recipewrite**: an android app to share and find all the delicious recipes that left you licking your fingers.
-In this tutorial, you will build Recipewrite with Appwrite, Android and Java.
+**Recipewrite**: an Android app to share and find all the delicious recipes that left you licking your fingers.
+In this tutorial, you will build Recipewrite with Appwrite and Java for Android.
 
 # Concepts {% #concepts %}
 This tutorial will introduce the following concepts:
