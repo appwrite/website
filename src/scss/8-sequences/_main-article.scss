@@ -4,7 +4,7 @@
   &-header {
     position:relative;
     display:flex; flex-direction:column; gap:pxToRem(8);
-    margin-block-end:pxToRem(48);
+    margin-block-end:pxToRem(32);
     @media #{$break2open} {
       padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--aw-color-border));
     }

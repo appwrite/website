@@ -97,9 +97,9 @@
             );
 
             position: absolute;
-            inset-inline-start: -1px;
+            inset-inline-start: -0.5px;
             inset-block-start: var(--dot-offset);
-            width: 2px;
+            width: 1px;
             height: 100%;
         }
 
