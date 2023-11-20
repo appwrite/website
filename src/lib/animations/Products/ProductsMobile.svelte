@@ -198,5 +198,9 @@
             max-width: 20rem;
             z-index: 100;
         }
+
+      @media (max-width: 680px) {
+        padding-block-start: 87vw;
+      }
     }
 </style>
