@@ -19,11 +19,13 @@
         },
         {
             title: 'Day 4',
-            release: new Date('2023-11-23')
+            // Half a day from today
+            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 0.5)
         },
         {
             title: 'Day 5',
-            release: new Date('2023-11-24')
+            // 1.5 days from today
+            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1.5 - 30 * 60 * 1000 - 36 * 1000)
         }
     ];
 </script>
