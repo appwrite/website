@@ -20,3 +20,8 @@ body {
 	/* focus styles */
 	box-shadow: var(--focus-box-shadow);
 }
+
+::selection {
+	color: hsl(var(--aw-color-white));
+	background-color:hsl(var(--aw-color-pink-500));
+}
