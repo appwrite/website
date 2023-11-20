@@ -8,9 +8,9 @@
 <div class="changelog-entry">
     <time class="aw-caption-400 padded" datetime={entry.date}>{formatDate(entry.date)}</time>
     {#if entry.cover}
-        <div class="aw-media">
+        <a href={entry.href} class="aw-media">
             <img src={entry.cover} alt="" class="aw-u-media-ratio-16-9 u-width-full-line" />
-        </div>
+        </a>
     {/if}
 
     <div class="padded">

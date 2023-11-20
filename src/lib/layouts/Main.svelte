@@ -4,6 +4,7 @@
     export type NavLink = {
         label: string;
         href: string;
+        badge?: number;
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
@@ -17,6 +18,7 @@
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -89,6 +91,11 @@
         {
             label: 'Blog',
             href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            badge: $page.data.changelogEntries
         },
         {
             label: 'Pricing',
@@ -203,9 +210,16 @@
                 </a>
                 <nav class="aw-main-header-nav">
                     <ul class="aw-main-header-nav-list">
-                        {#each navLinks as { label, href }}
+                        {#each navLinks as navLink}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-link" {href}>{label}</a>
+                                <a class="aw-link" href={navLink.href}
+                                    >{navLink.label}
+                                    {#if navLink.badge}
+                                        <span class="aw-inline-tag aw-sub-body-400 nav-badge"
+                                            >{navLink.badge}</span
+                                        >
+                                    {/if}
+                                </a>
                             </li>
                         {/each}
                     </ul>
@@ -237,3 +251,10 @@
         <slot />
     </main>
 </div>
+
+<style lang="scss">
+    .nav-badge {
+        margin-inline-start: 0.5rem;
+        padding-inline: 0.375rem;
+    }
+</style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
     import { getContext } from 'svelte';
 
     export let href: string;
@@ -9,10 +10,11 @@
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
     const isDocs = getContext('isDocs') ?? false;
+    const inChangelog = isInsideChangelog();
 </script>
 
 <a
-    class="aw-link is-inline {isDocs ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
+    class="aw-link is-inline {isDocs || inChangelog ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
     {href}
     {title}
     {target}

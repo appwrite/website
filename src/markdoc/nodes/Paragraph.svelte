@@ -34,7 +34,7 @@
     }
 
     .in-changelog {
-        margin-block-end: 1rem;
+        margin-block-end: 1rem !important;
         font-weight: 400;
     }
 </style>
