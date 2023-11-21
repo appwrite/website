@@ -26,7 +26,6 @@
 </script>
 
 <div class="aw-card is-normal u-margin-block-start-16" {...$root} use:root>
-	<nav class="tabs u-flex u-gap-16" aria-label="Tabs">
 		<ul class="tabs-list" {...$list} use:list>
 			{#each $ctx.triggers.entries() as [id, title]}
 				<li class="tabs-item">
@@ -39,6 +38,5 @@
 				</li>
 			{/each}
 		</ul>
-	</nav>
 	<slot />
 </div>
