@@ -370,7 +370,9 @@
                         style="--grid-item-size:15rem"
                     >
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Create content
                                 </div>
@@ -380,7 +382,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Present at meetups
                                 </div>
@@ -390,7 +394,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Report bugs
                                 </div>
@@ -400,7 +406,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Submit new ideas
                                 </div>
@@ -410,7 +418,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Improve documentation
                                 </div>
@@ -420,7 +430,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Helping others
                                 </div>
@@ -585,107 +597,103 @@
             </div>
         </div>
         <div class="aw-big-padding-section-level-1">
-
             <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container">
-                        <div class="aw-grid-1-1-opt-2 u-gap-32">
-                            <div class="">
-                                <div
-                                    class="aw-u-max-inline-size-none-mobile"
-                                    class:aw-u-max-width-380={!submitted}
-                                >
-                                    <section class="u-flex-vertical aw-u-gap-20">
-                                        <h1 class="aw-title aw-u-color-text-primary">
-                                            Appwrite insights
-                                        </h1>
-                                        <p class="aw-description aw-u-padding-block-end-40">
-                                            Sign up to our company blog and get the latest insights
-                                            from Appwrite. Learn more about engineering, product
-                                            design, building community, and tips & tricks for using
-                                            Appwrite.
-                                        </p>
-                                    </section>
-                                </div>
+                <div class="aw-container">
+                    <div class="aw-grid-1-1-opt-2 u-gap-32">
+                        <div class="">
+                            <div
+                                class="aw-u-max-inline-size-none-mobile"
+                                class:aw-u-max-width-380={!submitted}
+                            >
+                                <section class="u-flex-vertical aw-u-gap-20">
+                                    <h1 class="aw-title aw-u-color-text-primary">
+                                        Appwrite insights
+                                    </h1>
+                                    <p class="aw-description aw-u-padding-block-end-40">
+                                        Sign up to our company blog and get the latest insights from
+                                        Appwrite. Learn more about engineering, product design,
+                                        building community, and tips & tricks for using Appwrite.
+                                    </p>
+                                </section>
                             </div>
-                            {#if submitted}
-                                <div class="u-flex u-gap-8 u-cross-center">
-                                    <svg
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 18 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <circle
-                                            cx="9"
-                                            cy="9"
-                                            r="8"
-                                            fill="#FD366E"
-                                            fill-opacity="0.08"
-                                            stroke="#FD366E"
-                                            stroke-opacity="0.32"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                        <path
-                                            d="M5.25 10.5L7.75 12.5L12.75 6"
-                                            stroke="#E4E4E7"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-
-                                    <span class="text">
-                                        Thank you for subscribing! An email has been sent to your
-                                        inbox.
-                                    </span>
-                                </div>
-                            {:else}
-                                <form
-                                    method="post"
-                                    on:submit|preventDefault={submit}
-                                    class="u-flex-vertical u-gap-16"
-                                >
-                                    <div class="u-flex u-flex-vertical u-gap-4">
-                                        <label for="name">Your name</label>
-                                        <input
-                                            class="aw-input-text"
-                                            type="text"
-                                            placeholder="Enter your name"
-                                            id="name"
-                                            name="name"
-                                            required
-                                            bind:value={name}
-                                        />
-                                    </div>
-                                    <div class="u-flex u-flex-vertical u-gap-4">
-                                        <label for="email">Your email</label>
-                                        <input
-                                            class="aw-input-text"
-                                            type="email"
-                                            placeholder="Enter your email"
-                                            required
-                                            id="email"
-                                            name="email"
-                                            bind:value={email}
-                                        />
-                                    </div>
-                                    <button type="submit" class="aw-button" disabled={submitting}
-                                        >Sign up</button
-                                    >
-                                    {#if error}
-                                        <span class="text">
-                                            Something went wrong. Please try again later.
-                                        </span>
-                                    {/if}
-                                </form>
-                            {/if}
                         </div>
+                        {#if submitted}
+                            <div class="u-flex u-gap-8 u-cross-center">
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle
+                                        cx="9"
+                                        cy="9"
+                                        r="8"
+                                        fill="#FD366E"
+                                        fill-opacity="0.08"
+                                        stroke="#FD366E"
+                                        stroke-opacity="0.32"
+                                        stroke-width="1.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M5.25 10.5L7.75 12.5L12.75 6"
+                                        stroke="#E4E4E7"
+                                        stroke-width="1.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+
+                                <span class="text">
+                                    Thank you for subscribing! An email has been sent to your inbox.
+                                </span>
+                            </div>
+                        {:else}
+                            <form
+                                method="post"
+                                on:submit|preventDefault={submit}
+                                class="u-flex-vertical u-gap-16"
+                            >
+                                <div class="u-flex u-flex-vertical u-gap-4">
+                                    <label for="name">Your name</label>
+                                    <input
+                                        class="aw-input-text"
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        id="name"
+                                        name="name"
+                                        required
+                                        bind:value={name}
+                                    />
+                                </div>
+                                <div class="u-flex u-flex-vertical u-gap-4">
+                                    <label for="email">Your email</label>
+                                    <input
+                                        class="aw-input-text"
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        required
+                                        id="email"
+                                        name="email"
+                                        bind:value={email}
+                                    />
+                                </div>
+                                <button type="submit" class="aw-button" disabled={submitting}
+                                    >Sign up</button
+                                >
+                                {#if error}
+                                    <span class="text">
+                                        Something went wrong. Please try again later.
+                                    </span>
+                                {/if}
+                            </form>
+                        {/if}
                     </div>
                 </div>
-
+            </div>
 
             <div
                 class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
