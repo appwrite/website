@@ -111,7 +111,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav" aria-label="Docs" >
+                <nav class="aw-main-header-nav" aria-label="Top" >
                     <ul class="aw-main-header-nav-list">
                         <li class="aw-main-header-nav-item">
                             <a class="aw-link" href="/docs">Docs</a>

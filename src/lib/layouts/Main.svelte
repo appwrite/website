@@ -201,7 +201,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav" aria-label="github stars">
+                <nav class="aw-main-header-nav" aria-label="Main">
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as { label, href }}
                             <li class="aw-main-header-nav-item">
