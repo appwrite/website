@@ -20,7 +20,7 @@
         android: 'icon-android',
         apple: 'icon-apple',
         flutter: 'icon-flutter',
-        refine: 'icon-refine'
+        refine: 'aw-icon-refine'
     };
 
     const getIcon = (tutorial: MappedTutorial) => {
