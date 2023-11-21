@@ -21,6 +21,7 @@
     import { writable } from 'svelte/store';
     import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
+    import { clickOutside } from '$lib/actions/clickOutside.js';
 
     export let data;
 
@@ -309,7 +310,11 @@
                 </section>
             {/each}
         </div>
-        <aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
+        <aside
+            class="aw-references-menu"
+            class:is-open={$layoutState.showReferences}
+            use:clickOutside={() => ($layoutState.showReferences = false)}
+        >
             {#if data.methods.length > 0}
                 <button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
