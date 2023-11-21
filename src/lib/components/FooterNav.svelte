@@ -78,7 +78,7 @@
         };
 </script>
 
-<nav aria-label="Footer Navigation"
+<nav aria-label="Footer"
     class="aw-footer-nav u-margin-block-start-100 u-position-relative"
     class:aw-u-sep-block-start={!noBorder}
 >
