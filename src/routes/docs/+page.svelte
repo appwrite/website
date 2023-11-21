@@ -89,12 +89,12 @@
 
         <div
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
-            style="    margin-inline-start: -30px;"
+            style="margin-inline-start: -120px; margin-block-start: -90px;"
         >
             <img src="/images/bgs/docs-blur-2.svg" alt="" />
         </div>
 
-        <section class="aw-hero is-align-start u-position-relative">
+        <section class="aw-hero main-hero is-align-start u-position-relative">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
                 Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
                     >_
@@ -423,10 +423,14 @@
         inset-block-start: -100px;
     }
 
+    .main-hero {
+        margin-block-start: 6.625rem;
+    }
+
     .tech-hero {
         @include border-block-gradient;
 
-        background: linear-gradient(to right, #19191c80, #19191c00);
+        background: linear-gradient(to right, #19191c80 0%, #19191c80 90%, transparent);
         // background-color: #19191c80;
         backdrop-filter: blur(1rem);
         -webkit-backdrop-filter: blur(1rem);
@@ -440,13 +444,13 @@
         );
 
         max-inline-size: unset;
-        margin-block-start: 2rem;
+        margin-block-start: 3rem;
         margin-inline-start: -3rem;
         padding-block: 5rem;
         padding-inline-start: 3rem;
 
         position: relative;
-        z-index: 10;
+        z-index: 100;
 
         .spline-wrapper {
             --p-size: 700px;
