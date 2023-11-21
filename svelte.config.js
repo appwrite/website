@@ -11,8 +11,7 @@ function absolute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
-// const isVercel = process.env.VERCEL === '1';
-const isVercel = true;
+const isVercel = process.env.VERCEL === '1';
 
 const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
@@ -54,6 +53,9 @@ const config = {
             $icons: './src/icons',
             $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
+        },
+        prerender: {
+            handleHttpError: 'warn'
         }
     }
 };
