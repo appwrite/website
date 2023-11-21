@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Send WhatsApp Messages With Vonage And Appwrite Functions
+title: Send WhatsApp messages with Vonage and Appwrite Functions
 description: Learn how to use an Appwrite Function Template to create a Whatsapp bot that will programmatically respond to incoming WhatsApp messages via Vonage.
 date: 2023-11-15
 cover: /images/blog/function-template-whatsapp-vonage/cover.png
