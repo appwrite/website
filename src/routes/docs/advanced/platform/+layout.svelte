@@ -52,12 +52,33 @@
 			]
 		},
 		{
+			label: 'Plans',
+			items: [
+				{
+					label: 'Starter',
+					href: '/docs/advanced/platform/starter'
+				},
+				{
+					label: 'Pro',
+					href: '/docs/advanced/platform/pro'
+				},
+				{
+					label: 'Scale',
+					href: '/docs/advanced/platform/scale'
+				},
+				{
+					label: 'Upgrade',
+					href: '/docs/advanced/platform/upgrade'
+				},
+				{
+					label: 'Billing',
+					href: '/docs/advanced/platform/billing'
+				},
+			]
+		},
+		{
 			label: 'Configuration',
 			items: [
-				{		
-					label: 'Plans',
-					href: '/docs/advanced/platform/plans'
-				},
 				{
 					label: 'Custom domains',
 					href: '/docs/advanced/platform/custom-domains'
