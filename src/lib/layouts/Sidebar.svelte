@@ -95,7 +95,7 @@
 			</button>
 		{/if}
 		<div class="aw-side-nav-mobile-footer-buttons">
-			<button class="aw-button aw-u-inline-width-100-percent-mobile">
+			<button href="https://cloud.appwrite.io/console" class="aw-button aw-u-inline-width-100-percent-mobile">
 				<span class="text">Go to console</span>
 			</button>
 
