@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build An Intelligent Chatbot With ChatGPT And Appwrite Functions
+title: Build an intelligent chatbot with ChatGPT and Appwrite Functions
 description: Learn how to use an Appwrite Function Template to create an interactive bot using GPT-3.5.
 date: 2023-11-15
 cover: /images/blog/function-template-prompt-chatgpt/cover.png
