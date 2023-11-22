@@ -1,6 +1,17 @@
 ---
 layout: article
 title: Starter
-description: Appwrite's starter plan provides a generous free tier. Perfect for budding projects, hobbiests, and side-projects.
+description: Appwrite's Starter plan provides a generous free tier. Perfect for budding projects, hobbiests, and side-projects.
 ---
 
+Appwrite Cloud provides a free **Starter** plan to all developers to start building with Appwrite. 
+Appwrite Starter plan is a perfect for personal hobbby projects for students and professional developers alike.
+You can learn more about Starter plan's generous resource limits on the [pricing page](https://appwrite.io/pricing).
+
+# Starter plan organizations {% #starter-plan-organizations %}
+Appwrite Cloud's different plans are applied at an organization level with its resources shared by theorganization's projects.
+When you create your Appwrite Cloud account, a **Personal Projects** organization using the Starter plan is automatically created.
+
+Each Appwrite Cloud account can only have one organization on the **Starter** plan, but you can create unlimited projects in the organization.
+
+{% partial file="resource-limits.md" %}
