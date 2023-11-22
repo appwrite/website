@@ -59,7 +59,7 @@
     {#each platforms as platform}
         <Tooltip>
             <li>
-                <a href={platform.href} class="aw-box-icon has-border-gradient">
+                <a href={platform.href} class="aw-icon-button aw-box-icon has-border-gradient">
                     <img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
                 </a>
             </li>
