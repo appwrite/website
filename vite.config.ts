@@ -12,6 +12,7 @@ const envFixer: Plugin = {
             return { code };
         }
 
+        // The replacement uses a zero-width space to avoid being detected by vite
         const transformed = code.replaceAll(/process\.env/g, 'process​.env');
         return {
             code: transformed
