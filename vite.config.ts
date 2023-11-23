@@ -2,9 +2,26 @@ import dynamicImport from 'vite-plugin-dynamic-import';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import type { Plugin } from 'vite';
+
+const envFixer: Plugin = {
+    name: 'env-fixer',
+    enforce: 'pre',
+    transform(code, id) {
+        if (!id.includes('.markdoc')) {
+            return { code };
+        }
+
+        const transformed = code.replaceAll(/process\.env/g, 'process​.env');
+        return {
+            code: transformed
+        };
+    }
+};
 
 export default defineConfig({
     plugins: [
+        envFixer,
         sveltekit(),
         dynamicImport({
             filter(id) {
