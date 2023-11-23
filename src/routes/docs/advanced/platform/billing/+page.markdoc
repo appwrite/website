@@ -12,17 +12,32 @@ You can view or change your organization's plan under the **Plan summary** secti
 You'll also find the expected cost, as well as the start and end date of the current billing period.
 
 ## Billing period {% #billing-period %}
-- explain
+Billing periods begin the day you change your plan, and lasts 30 days.
+You resource limits are reset at the beginning of each billing period and you will be billed for your plan and usage on the last day of each billing period.
+
 # Payment history {% #payment-history %}
-- How to access
-- how to download/export
+You can view and download you past payment's invoices under **Payment history**. 
+You can click the three-dots menu to view and download your invoices.
+
 # Payment methods {% #payment-methods %}
-- What we accept (what kind of cards)
+Appwrite Cloud accepts credit card as payment methods and will bill the card at the end of each billing cycle.
+Appwrite accepts Visa, Mastercard, American Express, Discover & Diners Club, China UnionPay, Japan Credit Bureau (JCB), Cartes Bancairies, and eftpos.
+
 # Billing addresss {% #billing-addresss %}
+Your billing address will be displayed on your invoices and used when Appwrite Cloud bills your payment method at the end of a billing cycle.
 
 # Tax ID {% #tax-id %}
-What this is, what its used for, etc.
+If you'd like you or your company's tax ID displayed on your generated invoice, you can provide it under **Tax ID**.
 
 # Budget cap {% #budget-cap %}
+Appwrite allows you to set budget caps when on your organizations. 
+Appwrite will automatically scale your projects by purchasing add-ons as they require more resources.
+Budget caps limit the amount of automatic scaling and prevent unexpected bills.
+
+You can enable budget caps under **Budget cap**, toggle the option **Enable budget cap**.
+You will be able to set a budget cap in USD.
+Appwrite will send emails to warn you when you're near your budget cap.
 
 # Redeem credit {% #redeem-credit %}
+If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
+When you redeem credit, the credit balance will be automatically applied to the next billing cycle.
