@@ -2,6 +2,7 @@ import dynamicImport from 'vite-plugin-dynamic-import';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { enhancedImages } from '@sveltejs/enhanced-img';
 import type { Plugin } from 'vite';
 
 const envFixer: Plugin = {
@@ -23,6 +24,7 @@ const envFixer: Plugin = {
 export default defineConfig({
     plugins: [
         envFixer,
+        enhancedImages(),
         sveltekit(),
         dynamicImport({
             filter(id) {
