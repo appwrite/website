@@ -12,6 +12,7 @@
     export let language: Language;
     export let process: boolean;
     export let withLineNumbers = true;
+    export let badge: string | null = null;
 
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
@@ -49,6 +50,8 @@
     $: result = process
         ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers })
         : content;
+
+    $: badgeValue = badge ?? platformMap[language];
 </script>
 
 {#if insideMultiCode}
@@ -60,9 +63,9 @@
     <section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
         <header class="aw-code-snippet-header">
             <div class="aw-code-snippet-header-start">
-                {#if platformMap[language]}
+                {#if badgeValue}
                     <div class="u-flex u-gap-16">
-                        <div class="aw-tag"><span class="text">{platformMap[language]}</span></div>
+                        <div class="aw-tag"><span class="text">{badgeValue}</span></div>
                     </div>
                 {/if}
             </div>
