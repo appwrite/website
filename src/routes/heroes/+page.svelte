@@ -159,7 +159,7 @@
                         <div class="avatar-3">
                             <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
                         </div>
-                        <img class="teal-blur" src="/images/heroes/teal-blur.svg" alt="" />
+                        <enhanced:img class="teal-blur" src="./teal-blur.png" alt="" />
                     </div>
                 </section>
             </div>
@@ -296,7 +296,12 @@
         </div>
 
         <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <img src="/images/bgs/heroes-pre.svg" alt="" class="u-position-absolute" />
+            <enhanced:img
+                src="./bg-pre.png"
+                alt=""
+                class="u-position-absolute"
+                style:inset-block-start="0"
+            />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">
