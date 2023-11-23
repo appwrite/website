@@ -17,7 +17,7 @@ const ASSETS = [
     ...build, // the app itself
     ...files // everything in `static`
 ].filter(file => !EXCEPTIONS.some(e => file.startsWith(e)));
-console.log(ASSETS);
+
 const sw = self as unknown as ServiceWorkerGlobalScope;
 
 sw.addEventListener('install', (event) => {
