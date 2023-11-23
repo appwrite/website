@@ -1,0 +1,28 @@
+---
+layout: article
+title: Billing
+description: Understand Appwrite's billing features, like budget caps, billing periods, taxes, and more.
+---
+
+Appwrite allows you to configure billing per organization. 
+You can access your organizations billing information under the **Billing** tab of your organization.
+
+# Plans {% #plans %}
+You can view or change your organization's plan under the **Plan summary** section. 
+You'll also find the expected cost, as well as the start and end date of the current billing period.
+
+## Billing period {% #billing-period %}
+- explain
+# Payment history {% #payment-history %}
+- How to access
+- how to download/export
+# Payment methods {% #payment-methods %}
+- What we accept (what kind of cards)
+# Billing addresss {% #billing-addresss %}
+
+# Tax ID {% #tax-id %}
+What this is, what its used for, etc.
+
+# Budget cap {% #budget-cap %}
+
+# Redeem credit {% #redeem-credit %}

@@ -1,7 +1,8 @@
-# Resource limits {% #resource-limits %}
-Each plan in Appwrite Cloud has a set of resource limits. You can find the details of these resource limits in the in the [pricing page](https://appwrite.io/pricing).
+## Check resource usage {% #check-resource-usage %}
 
-Each resource limit is applied per month and resets at the beginning of each month.
+You can check your resource usage by navigating to the overview of your organization. 
+Under the **Usage** tab, you can check current billing cycle's usage.
+
 
 ## Reaching resource limits {% #reaching-resource-limits %}
 The following limit consequences will persist until the current billing period ends.

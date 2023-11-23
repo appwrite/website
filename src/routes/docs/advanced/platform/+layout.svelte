@@ -67,10 +67,6 @@
 					href: '/docs/advanced/platform/scale'
 				},
 				{
-					label: 'Upgrade',
-					href: '/docs/advanced/platform/upgrade'
-				},
-				{
 					label: 'Billing',
 					href: '/docs/advanced/platform/billing'
 				},
