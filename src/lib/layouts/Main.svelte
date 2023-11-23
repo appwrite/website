@@ -222,9 +222,9 @@
                     <span class="text">Star on GitHub</span>
                     <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
                 </a>
-                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"
-                    >Sign up</a
-                >
+<!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
+<!--                    >Sign up</a-->
+<!--                >-->
                 <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
