@@ -151,6 +151,16 @@
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
+                <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+                    <Fence
+                        language="text"
+                        badge="Base URL"
+                        content="https://cloud.appwrite.io/v1"
+                        process
+                        withLineNumbers={false}
+                    />
+                </div>
+
                 {#if data.methods.length === 0}
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
                         <div class="aw-inline-info">
@@ -299,11 +309,20 @@
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
                             >
                                 <Fence
-                                    language={platform}
-                                    content={method.demo}
+                                    language="text"
+                                    badge="Endpoint"
+                                    content="{method.method.toUpperCase()} {method.url}"
                                     process
                                     withLineNumbers={false}
                                 />
+                                <div class="u-margin-block-start-24">
+                                    <Fence
+                                        language={platform}
+                                        content={method.demo}
+                                        process
+                                        withLineNumbers={false}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
