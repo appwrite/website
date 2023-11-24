@@ -58,7 +58,20 @@
     });
 
     setContext('isDocs', true);
+
+    const handleKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
+            e.preventDefault();
+            layoutState.update((state) => ({
+                ...state,
+                showReferences: false,
+                showSidenav: false
+            }));
+        }
+    };
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="u-position-relative">
     <section class="aw-mobile-header is-transparent">
