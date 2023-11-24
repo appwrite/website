@@ -81,7 +81,12 @@
                 <ul class="tutorial-grid">
                     {#each data.drafts as draft}
                         <li>
-                            <a href={draft.href} class="aw-card is-normal draft">
+                            <a
+                                href={draft.href}
+                                class="aw-card is-normal draft"
+                                aria-disabled="true"
+                                tabindex="-1"
+                            >
                                 <header>
                                     <span
                                         class="{getIcon(draft)} aw-u-font-size-24"
@@ -142,5 +147,6 @@
 
     .draft {
         opacity: 0.4;
+        pointer-events: none;
     }
 </style>
