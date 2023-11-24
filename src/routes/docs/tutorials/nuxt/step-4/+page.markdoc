@@ -12,7 +12,7 @@ With a login function, we can differentiate between users and decide which users
 
 We will build a page with a simple login form and store its related logic in a `useUserSession` composable so it can be reused, starting with the composable.
 
-## User session composable {% #user-session-composable %}
+# User session composable {% #user-session-composable %}
 
 There are a few standard functions involved in handling a user session that is added to the composable.
 The user needs to be able to register to an account, login to the account and logout from it.

@@ -5,6 +5,7 @@ description: Learn to build an idea tracker app with Appwrite and Nuxt with auth
 step: 1
 difficulty: beginner
 readtime: 25
+framework: Nuxt
 back: /docs
 ---
 
