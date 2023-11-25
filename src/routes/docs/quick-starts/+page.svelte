@@ -48,6 +48,12 @@
 					icon: 'icon-svelte',
 					image: '/images/blog/placeholder.png',
 					href: 'sveltekit'
+				},
+				{
+					title: 'Angular',
+					icon: 'icon-angular',
+					image: '/images/blog/placeholder.png',
+					href: 'angular'
 				}
 			]
 		},
