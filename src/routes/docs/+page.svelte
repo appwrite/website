@@ -65,6 +65,9 @@
 
 <Docs variant="default">
     <Sidebar />
+    <div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
+        <enhanced:img src="./blur-1.png" alt="" />
+    </div>
 
     <div
         class="u-position-absolute aw-is-not-mobile u-only-light"
@@ -91,7 +94,7 @@
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <img src="/images/bgs/docs-blur-2.svg" alt="" />
+            <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
         <section class="aw-hero is-align-start u-position-relative">
