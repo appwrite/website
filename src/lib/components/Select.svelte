@@ -146,14 +146,14 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                {#each options as option}
+                {#each group.options as option}
                     <option value={option.value} selected={option.value === value}>
                         {option.label}
                     </option>
                 {/each}
             {:else}
                 <optgroup label={isDefault ? undefined : group.label}>
-                    {#each options as option}
+                    {#each group.options as option}
                         <option value={option.value} selected={option.value === value}>
                             {option.label}
                         </option>

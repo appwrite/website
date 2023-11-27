@@ -54,6 +54,12 @@
 					icon: 'aw-icon-refine',
 					image: '/images/blog/placeholder.png',
 					href: 'refine'
+        },
+        {
+					title: 'Angular',
+					icon: 'icon-angular',
+					image: '/images/blog/placeholder.png',
+					href: 'angular'
 				}
 			]
 		},
