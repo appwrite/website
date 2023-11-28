@@ -17,7 +17,7 @@ We're using the `refine-appwrite` preset that installs the [`@refinedev/appwrite
 
 To make this example more visual, we'll use the Ant Desing UI package which natively supported by Refine.
 
-{% info title="Note" %}
+{% info title="Existing projects" %}
 
 No extra dependencies required for this tutorial. If you want to integrate Appwrite into an existing Refine app, use this command:
 ```sh
