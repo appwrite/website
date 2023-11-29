@@ -19,7 +19,7 @@ To make this example more visual, we'll use the Ant Desing UI package which nati
 
 {% info title="Existing projects" %}
 
-No extra dependencies required for this tutorial. If you want to integrate Appwrite into an existing Refine app, use this command:
+No additional dependencies are required for this tutorial. If you want to integrate Appwrite into an existing Refine app, use the following command.
 ```sh
 npm install @refinedev/appwrite
 ```
