@@ -261,101 +261,96 @@ import { appwriteClient } from "./utility";
 import { authProvider } from "./authProvider";
 import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
-const App: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <ConfigProvider theme={RefineThemes.Blue}>
-        <AntdApp>
-          <Refine
-            dataProvider={dataProvider(appwriteClient, {
-              databaseId: "<APPWRITE_DATABASE_ID>",
-            })}
-            liveProvider={liveProvider(appwriteClient, {
-              databaseId: "<APPWRITE_DATABASE_ID>",
-            })}
-            authProvider={authProvider}
-            routerProvider={routerProvider}
-            resources={[
-              {
-                name: "<APPWRITE_COLLECTION_ID>",
-                list: "/posts",
-                create: "/posts/create",
-                edit: "/posts/edit/:id",
-                show: "/posts/show/:id",
-                meta: {
-                  label: "Posts",
-                },
+const App: React.FC = () => (
+  <BrowserRouter>
+    <ConfigProvider theme={RefineThemes.Blue}>
+      <AntdApp>
+        <Refine
+          dataProvider={dataProvider(appwriteClient, {
+            databaseId: "<APPWRITE_DATABASE_ID>",
+          })}
+          liveProvider={liveProvider(appwriteClient, {
+            databaseId: "<APPWRITE_DATABASE_ID>",
+          })}
+          authProvider={authProvider}
+          routerProvider={routerProvider}
+          resources={[
+            {
+              name: "<APPWRITE_COLLECTION_ID>",
+              list: "/posts",
+              create: "/posts/create",
+              edit: "/posts/edit/:id",
+              show: "/posts/show/:id",
+              meta: {
+                label: "Posts",
               },
-            ]}
-            notificationProvider={useNotificationProvider}
-            options={{
-              liveMode: "auto",
-              syncWithLocation: true,
-              warnWhenUnsavedChanges: true,
-            }}
-          >
-            <Routes>
+            },
+          ]}
+          notificationProvider={useNotificationProvider}
+          options={{
+            liveMode: "auto",
+            syncWithLocation: true,
+            warnWhenUnsavedChanges: true,
+          }}
+        >
+          <Routes>
+            <Route
+              element={
+                <Authenticated fallback={<CatchAllNavigate to="/login" />}>
+                  <ThemedLayoutV2>
+                    <Outlet />
+                  </ThemedLayoutV2>
+                </Authenticated>
+              }
+            >
               <Route
+                index
                 element={
-                  <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                    <ThemedLayoutV2>
-                      <Outlet />
-                    </ThemedLayoutV2>
-                  </Authenticated>
+                  <NavigateToResource resource="<APPWRITE_COLLECTION_ID>" />
                 }
-              >
-                <Route
-                  index
-                  element={
-                    <NavigateToResource resource="<APPWRITE_COLLECTION_ID>" />
-                  }
-                />
+              />
 
-                <Route path="/posts">
-                  <Route index element={<PostList />} />
-                  <Route path="create" element={<PostCreate />} />
-                  <Route path="edit/:id" element={<PostEdit />} />
-                  <Route path="show/:id" element={<PostShow />} />
-                </Route>
+              <Route path="/posts">
+                <Route index element={<PostList />} />
+                <Route path="create" element={<PostCreate />} />
+                <Route path="edit/:id" element={<PostEdit />} />
+                <Route path="show/:id" element={<PostShow />} />
               </Route>
+            </Route>
 
+            <Route
+              element={
+                <Authenticated fallback={<Outlet />}>
+                  <NavigateToResource resource="<APPWRITE_COLLECTION_ID>" />
+                </Authenticated>
+              }
+            >
               <Route
-                element={
-                  <Authenticated fallback={<Outlet />}>
-                    <NavigateToResource resource="<APPWRITE_COLLECTION_ID>" />
-                  </Authenticated>
-                }
-              >
-                <Route
-                  path="/login"
-                  element={<AuthPage forgotPasswordLink={false} />}
-                />
-                <Route
-                  path="/register"
-                  element={<AuthPage type="register" />}
-                />
-              </Route>
+                path="/login"
+                element={<AuthPage forgotPasswordLink={false} />}
+              />
+              <Route path="/register" element={<AuthPage type="register" />} />
+            </Route>
 
-              <Route
-                element={
-                  <Authenticated>
-                    <ThemedLayoutV2>
-                      <Outlet />
-                    </ThemedLayoutV2>
-                  </Authenticated>
-                }
-              >
-                <Route path="*" element={<ErrorComponent />} />
-              </Route>
-            </Routes>
-            <UnsavedChangesNotifier />
-            <DocumentTitleHandler />
-          </Refine>
-        </AntdApp>
-      </ConfigProvider>
-    </BrowserRouter>
-  );
-};
+            <Route
+              element={
+                <Authenticated>
+                  <ThemedLayoutV2>
+                    <Outlet />
+                  </ThemedLayoutV2>
+                </Authenticated>
+              }
+            >
+              <Route path="*" element={<ErrorComponent />} />
+            </Route>
+          </Routes>
+          <UnsavedChangesNotifier />
+          <DocumentTitleHandler />
+        </Refine>
+      </AntdApp>
+    </ConfigProvider>
+  </BrowserRouter>
+);
 
 export default App;
 ```
