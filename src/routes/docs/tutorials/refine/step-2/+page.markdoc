@@ -23,7 +23,7 @@ No additional dependencies are required for this tutorial. If you want to integr
 ```sh
 npm install @refinedev/appwrite
 ```
-Then follow [this](https://refine.dev/docs/packages/documentation/data-providers/appwrite) guide.
+Learn more about [adding Appwrite a refine data provider](https://refine.dev/docs/packages/documentation/data-providers/appwrite).
 {% /info %}
 
 
