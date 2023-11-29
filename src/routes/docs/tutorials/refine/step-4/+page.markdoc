@@ -5,7 +5,7 @@ description: Add authentication to your Refine application.
 step: 4
 ---
 
-# Authentication Provider {% #auth-provider %}
+# Authentication provider {% #authentication-provider %}
 
 
 Upon [creating a new project](https://refine.dev/docs/getting-started/quickstart/) with Appwrite preset, the CLI automatically creates [Auth Provider](https://refine.dev/docs/tutorial/understanding-authprovider/index/#what-is-auth-provider) file.
