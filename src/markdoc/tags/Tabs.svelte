@@ -26,6 +26,7 @@
 </script>
 
 <div class="aw-card is-normal u-margin-block-start-16" {...$root} use:root>
+	<div class="tabs u-flex u-gap-16">
 		<ul class="tabs-list" {...$list} use:list>
 			{#each $ctx.triggers.entries() as [id, title]}
 				<li class="tabs-item">
@@ -35,8 +36,10 @@
 						{...$trigger(id)}
 						use:trigger>{title}</button
 					>
+			
 				</li>
 			{/each}
 		</ul>
+</div>
 	<slot />
 </div>
