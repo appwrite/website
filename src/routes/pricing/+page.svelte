@@ -64,7 +64,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Starter</h2>
+                                            <h2 id="starter" class="aw-label">Starter</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -112,7 +112,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Pro</h2>
+                                            <h2 id="pro" class="aw-label">Pro</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -159,7 +159,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Scale</h2>
+                                            <h2 id="scale" class="aw-label">Scale</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -205,7 +205,7 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3 id="enterprises" class="aw-main-body-500 aw-u-color-text-primary">
                                         Enterprises
                                     </h3>
                                     <div class="aw-inline-tag is-pink">Coming Soon</div>
@@ -228,7 +228,7 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3 id="open-source-teams" class="aw-main-body-500 aw-u-color-text-primary">
                                         Open-source teams
                                     </h3>
                                 </header>
