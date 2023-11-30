@@ -20,10 +20,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours2.png',
+                src: '/images/community/events/december-1.png',
                 alt: ''
             },
-            date: 'November 2nd',
+            date: 'Decemeber 14th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -32,10 +32,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours3.png',
+                src: '/images/community/events/december-2.png',
                 alt: ''
             },
-            date: 'November 9th',
+            date: 'December 21st',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -44,34 +44,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours4.png',
+                src: '/images/community/events/december-3.png',
                 alt: ''
             },
-            date: 'November 16th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours5.png',
-                alt: ''
-            },
-            date: 'November 23rd',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours6.png',
-                alt: ''
-            },
-            date: 'November 30th',
+            date: 'December 28th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
