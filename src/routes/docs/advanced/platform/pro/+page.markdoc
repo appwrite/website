@@ -14,7 +14,7 @@ You can head to the [pricing page](https://appwrite.io/pricing) and click **Star
 or create a new organization from the Appwrite Console and select the **Pro plan**.
 
 ## Trial {% #trial %} 
-Everh Appwrite Pro plan organization comes with a **14 day free trial**. 
+Every Appwrite Pro plan organization comes with a **14 day free trial**. 
 Your first billing period will start after your trial ends.
 
 ## Switch to Starter plan {% #switch-to-pro-plan %}
@@ -24,7 +24,7 @@ Under the **Billing** tab, you can click **Change plan** to change your plans.
 # Resource limits {% #resource-limits %}
 Each plan in Appwrite Cloud has a set of resource limits. You can find the details of these resource limits in the in the [pricing page](https://appwrite.io/pricing).
 
-You can purchase additional resources when you go over the resource limits to continue scaling your app.
+Additional resources are automatically purchased when you go over the resource limits to continue scaling your app, until your defined budget cap is reached.
 Each resource limit is applied per billing period and resets at the beginning of each billing period.
 
 ## Budget cap {% #budget-cap %}
