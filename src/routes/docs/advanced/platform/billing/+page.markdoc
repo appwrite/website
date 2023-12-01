@@ -20,7 +20,7 @@ You can view and download you past payment's invoices under **Payment history**.
 You can click the three-dots menu to view and download your invoices.
 
 # Payment methods {% #payment-methods %}
-Appwrite Cloud accepts credit card as payment methods and will bill the card at the end of each billing cycle.
+Appwrite Cloud accepts credit and debit cards as payment methods and will bill the card at the end of each billing cycle.
 Appwrite accepts Visa, Mastercard, American Express, Discover & Diners Club, China UnionPay, Japan Credit Bureau (JCB), Cartes Bancairies, and eftpos.
 
 # Billing addresss {% #billing-addresss %}
@@ -36,8 +36,12 @@ Budget caps limit the amount of automatic scaling and prevent unexpected bills.
 
 You can enable budget caps under **Budget cap**, toggle the option **Enable budget cap**.
 You will be able to set a budget cap in USD.
+
 Appwrite will send emails to warn you when you're near your budget cap.
 
 # Redeem credit {% #redeem-credit %}
 If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
 When you redeem credit, the credit balance will be automatically applied to the next billing cycle.
+
+# Billing alerts {% #billing-alerts %}
+[TODO]

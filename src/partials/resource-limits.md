@@ -11,7 +11,7 @@ The following limit consequences will persist until the current billing period e
 * Consequence
 ---
 * **Bandwidth** {% rowspan=3 %}
-* Project creation is disabled.
+*  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or budget cap is reached, API access will be disabled until more bandwidth is purchased.
 ---
 *  Importing projects via migrations disabled.
 ---
