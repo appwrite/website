@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Article, FooterNav, MainFooter } from '$lib/components';
+	import { page } from '$app/stores';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData, AuthorData } from '$routes/blog/content';
@@ -11,7 +12,7 @@
 
 	const authors = getContext<AuthorData[]>('authors');
 	const postsList = getContext<PostsData[]>('posts');
-	const posts = postsList.filter((post) => post.category.includes(name.toLowerCase()));
+	const posts = postsList.filter((post) => post.category.includes($page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1)));
 
 	const seoTitle = name + BLOG_TITLE_SUFFIX;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
