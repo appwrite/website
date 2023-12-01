@@ -58,7 +58,7 @@
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
 						{#each posts as post}
-							{@const author = authors.find((a) => a.name.includes(post.author))}
+							{@const author = authors.find((a) => a.slug.includes(post.author))}
 							{#if author}
 								<Article
 									title={post.title}
