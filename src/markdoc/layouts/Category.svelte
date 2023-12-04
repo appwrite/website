@@ -10,9 +10,10 @@
 	export let name: string;
 	export let description: string;
 
+	const pageSlug = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
 	const authors = getContext<AuthorData[]>('authors');
 	const postsList = getContext<PostsData[]>('posts');
-	const posts = postsList.filter((post) => post.category.includes($page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1)));
+	const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
 	const seoTitle = name + BLOG_TITLE_SUFFIX;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
