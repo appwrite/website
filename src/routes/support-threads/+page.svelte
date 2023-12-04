@@ -15,7 +15,7 @@
 
     export let data;
 
-    const debounce = createDebounce();
+    const { debounce, reset } = createDebounce();
 
     const search = (node: HTMLInputElement) => {
         const inputHandler = () => {
@@ -26,11 +26,22 @@
             });
         };
 
+        const keydownHandler = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                const value = node.value.toLowerCase();
+
+                reset();
+                goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+            }
+        };
+
         node.addEventListener('input', inputHandler);
+        node.addEventListener('keydown', keydownHandler);
 
         return {
             destroy() {
                 node.removeEventListener('input', inputHandler);
+                node.removeEventListener('keydown', keydownHandler);
             }
         };
     };
