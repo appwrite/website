@@ -1,4 +1,5 @@
 export type MockThread = {
+    id: string;
     username?: string;
     title: string;
     text: string;

@@ -11,14 +11,22 @@
     <h4 class="aw-eyebrow">Replies</h4>
     <div class="replies">
         {#each thread.replies as reply}
-            <div class="aw-card is-normal reply">
+            <div class="reply">
                 <p class="aw-caption-400">{reply.text}</p>
             </div>
         {/each}
     </div>
+
+    <a href="/support-threads/{thread.id}">
+        <span class="icon-external-link" />
+    </a>
 </div>
 
 <style lang="scss">
+    .thread {
+        position: relative;
+    }
+
     h3 {
         margin-block-end: 0.25rem;
     }
@@ -36,8 +44,19 @@
     }
 
     .reply {
-        padding: 1rem;
+        padding: 0.25rem 1rem;
 
-        background-color: hsl(var(--aw-color-greyscale-900));
+        border-inline-start: 1px solid hsl(var(--aw-color-greyscale-500));
+        margin-inline-start: 0.5rem;
+    }
+
+    a {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+
+        &:hover {
+            opacity: 0.5;
+        }
     }
 </style>

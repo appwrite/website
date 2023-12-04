@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
     import { Main } from '$lib/layouts';
+    import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -12,6 +14,26 @@
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     export let data;
+
+    const debounce = createDebounce();
+
+    const search = (node: HTMLInputElement) => {
+        const inputHandler = () => {
+            const value = node.value.toLowerCase();
+
+            debounce(() => {
+                goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+            });
+        };
+
+        node.addEventListener('input', inputHandler);
+
+        return {
+            destroy() {
+                node.removeEventListener('input', inputHandler);
+            }
+        };
+    };
 </script>
 
 <svelte:head>
@@ -47,6 +69,7 @@
                 id="search"
                 placeholder="Search for threads"
                 data-hit="-1"
+                use:search
             />
         </div>
 

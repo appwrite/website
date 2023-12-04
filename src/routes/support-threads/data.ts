@@ -2,6 +2,7 @@ import type { MockThread } from './types';
 
 export const MockData: MockThread[] = [
     {
+        id: '1',
         username: 'appwrite',
         title: 'Welcome to Appwrite!',
         text: 'Welcome to Appwrite! We are glad to have you here. If you have any questions, feel free to ask them here.',
@@ -21,6 +22,8 @@ export const MockData: MockThread[] = [
         ]
     },
     {
+        id: '2',
+
         username: 'user1',
         title: 'How do I create a new project?',
         text: 'I am trying to create a new project, but I cannot find the option to do so. Can someone help me?',
@@ -36,6 +39,7 @@ export const MockData: MockThread[] = [
         ]
     },
     {
+        id: '3',
         username: 'user2',
         title: 'How do I create a new collection?',
         text: 'I am trying to create a new collection, but I cannot find the option to do so. Can someone help me?',
