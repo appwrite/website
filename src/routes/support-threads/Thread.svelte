@@ -1,26 +1,40 @@
 <script lang="ts">
+    import { highlight } from '$lib/actions/highlight';
+    import { createSearchParams } from '$lib/stores/searchParams';
     import type { MockThread } from './types';
 
     export let thread: MockThread;
+
+    const searchParams = createSearchParams();
+
+    $: highlightTerms = $searchParams.get('q')?.split(' ') ?? [];
+
+    $: console.log($searchParams);
 </script>
 
-<div class="aw-card is-normal thread">
-    <h3 class="aw-main-body-500">{thread.title}</h3>
-    <p>{thread.text}</p>
+{$searchParams}
 
-    <h4 class="aw-eyebrow">Replies</h4>
-    <div class="replies">
-        {#each thread.replies as reply}
-            <div class="reply">
-                <p class="aw-caption-400">{reply.text}</p>
-            </div>
-        {/each}
+{#key highlightTerms}
+    <div class="aw-card is-normal thread">
+        <h3 class="aw-main-body-500" use:highlight={highlightTerms}>
+            {thread.title}
+        </h3>
+        <p>{thread.text}</p>
+
+        <h4 class="aw-eyebrow">Replies</h4>
+        <div class="replies">
+            {#each thread.replies as reply}
+                <div class="reply">
+                    <p class="aw-caption-400">{reply.text}</p>
+                </div>
+            {/each}
+        </div>
+
+        <a href="/support-threads/{thread.id}">
+            <span class="icon-external-link" />
+        </a>
     </div>
-
-    <a href="/support-threads/{thread.id}">
-        <span class="icon-external-link" />
-    </a>
-</div>
+{/key}
 
 <style lang="scss">
     .thread {
