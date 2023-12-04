@@ -5,10 +5,13 @@
 
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
+    import Thread from './Thread.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    export let data;
 </script>
 
 <svelte:head>
@@ -30,13 +33,53 @@
 
 <Main>
     <div class="aw-container">
-        <div class="aw-grid-120-1fr-auto" />
+        <h1 class="aw-title aw-u-color-text-primary">Support Threads</h1>
 
-        <header class="aw-grid-120-1fr-auto-header">
-            <h1 class="aw-title aw-u-color-text-primary">Support Threads</h1>
-        </header>
+        <div class="aw-input-text-search-wrapper u-width-full-line">
+            <span
+                class="aw-icon-search u-z-index-5"
+                aria-hidden="true"
+                style="inset-block-start:0.9rem"
+            />
+            <input
+                class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                type="text"
+                id="search"
+                placeholder="Search for threads"
+                data-hit="-1"
+            />
+        </div>
+
+        <h2 aria-live="polite">Found {data.threads.length} results.</h2>
+
+        <div class="threads">
+            {#each data.threads as thread}
+                <Thread {thread} />
+            {/each}
+        </div>
 
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
+
+<style lang="scss">
+    h1 {
+        margin-block-start: 2rem;
+    }
+
+    h2 {
+        margin-block-start: 1rem;
+    }
+
+    #search {
+        margin-block-start: 2rem;
+    }
+
+    .threads {
+        margin-block-start: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
