@@ -38,6 +38,7 @@ Appwrite uses conventional HTTP response codes to indicate the success or failur
 Learn more about Appwrite status codes
 {% /arrow_link %}
 
+---
 # Development mode {% #development-mode%}
 
 When moving to dev mode, your server will produce much more verbose error messages. Instead of getting a general 500 error, you'll be able to view the exact error that happened on the server, debug the issue further or [report it to the Appwrite team](https://github.com/appwrite/appwrite/issues/new?body=500%20Error).
