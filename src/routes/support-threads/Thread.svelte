@@ -12,8 +12,6 @@
     $: console.log($searchParams);
 </script>
 
-{$searchParams}
-
 {#key highlightTerms}
     <div class="aw-card is-normal thread">
         <h3 class="aw-main-body-500" use:highlight={highlightTerms}>
@@ -25,7 +23,7 @@
         <div class="replies">
             {#each thread.replies as reply}
                 <div class="reply">
-                    <p class="aw-caption-400">{reply.text}</p>
+                    <p class="aw-caption-400" use:highlight={highlightTerms}>{reply.text}</p>
                 </div>
             {/each}
         </div>
@@ -39,6 +37,10 @@
 <style lang="scss">
     .thread {
         position: relative;
+    }
+
+    .thread :global(mark) {
+        background-color: hsl(var(--aw-color-mint-700) / 0.5);
     }
 
     h3 {

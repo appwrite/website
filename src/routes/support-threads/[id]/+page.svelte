@@ -5,8 +5,8 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
 
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import MainFooter from '$lib/components/MainFooter.svelte';
+    import FooterNav from '../../lib/components/FooterNav.svelte';
+    import MainFooter from '../../lib/components/MainFooter.svelte';
     import Thread from './Thread.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
