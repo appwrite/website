@@ -37,11 +37,10 @@ Budget caps limit the amount of automatic scaling and prevent unexpected bills.
 You can enable budget caps under **Budget cap**, toggle the option **Enable budget cap**.
 You will be able to set a budget cap in USD.
 
-Appwrite will send emails to warn you when you're near your budget cap.
+## Budget alerts {% #budget-alerts %}
+When you enable budget cap, you'll be able to configure alerts under **Budget alerts** to warn you when you organization is near the budget cap.
+By default, an email alert will be sent at 75% of the budget cap. You can add up to three check points that send budget alerts when reached.
 
 # Redeem credit {% #redeem-credit %}
 If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
 When you redeem credit, the credit balance will be automatically applied to the next billing cycle.
-
-# Billing alerts {% #billing-alerts %}
-[TODO]
