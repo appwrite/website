@@ -13,7 +13,7 @@
 </script>
 
 {#key highlightTerms}
-    <a href="/support-threads/{thread.id}" class="aw-card is-normal thread">
+    <a href="/support-threads/{thread.id}" class="aw-card is-normal has-border-gradient thread">
         <div class="u-flex u-gap-8">
             <h3 class="aw-main-body-500 aw-u-color-text-primary" use:highlight={highlightTerms}>
                 {thread.title}
