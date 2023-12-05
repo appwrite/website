@@ -1,11 +1,9 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
-    import { createSearchParams } from '$lib/stores/searchParams';
+    import { searchParams } from '$lib/stores/searchParams';
     import type { DiscordThread } from './types';
 
     export let thread: DiscordThread;
-
-    const searchParams = createSearchParams();
 
     $: highlightTerms = $searchParams.get('q')?.split(' ') ?? [];
 </script>

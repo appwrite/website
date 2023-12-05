@@ -1,17 +1,31 @@
-import { afterNavigate } from '$app/navigation';
-import { onMount } from 'svelte';
-import { writable } from 'svelte/store';
+import { page } from '$app/stores';
+import { writable, type Readable } from 'svelte/store';
 
-export const createSearchParams = () => {
+const safeSubscribe = <T>(store: Readable<T>, cb: (value: T) => void) => {
+    try {
+        return store.subscribe(cb);
+    } catch (e) {
+        return () => {
+            // void
+        };
+    }
+};
+
+const createSearchParams = () => {
     const store = writable<URLSearchParams>(new URLSearchParams());
 
-    onMount(() => {
-        store.set(new URLSearchParams(window.location.search));
+    const unsubPage = safeSubscribe(page, (value) => {
+        store.set(value.url.searchParams);
     });
 
-    afterNavigate(() => {
-        store.set(new URLSearchParams(window.location.search));
-    });
+    function subscribe(...args: Parameters<typeof store.subscribe>) {
+        const unsubStore = store.subscribe(...args);
+
+        return () => {
+            unsubStore();
+            unsubPage();
+        };
+    }
 
     const update = (callback: (value: URLSearchParams) => URLSearchParams) => {
         store.update((prev) => {
@@ -27,7 +41,10 @@ export const createSearchParams = () => {
 
     return {
         ...store,
+        subscribe,
         set,
         update
     };
 };
+
+export const searchParams = createSearchParams();

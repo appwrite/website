@@ -67,64 +67,21 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section-level-1 u-position-relative" style="padding-block:1px;">
+    <div
+        class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden"
+        style="margin-block-start: -10rem; padding-block-start: 10rem; border-block-end: 1px solid hsl(var(--aw-color-smooth));"
+    >
         <div
             class="u-position-absolute"
-            style="pointer-events: none; inset-inline-start: 0px; inset-block-end: 0px;"
+            style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="660"
-                height="497"
-                viewBox="0 0 660 497"
-                fill="none"
-            >
-                <g opacity="0.4" filter="url(#filter0_f_2092_11792)">
-                    <ellipse
-                        cx="-2.5"
-                        cy="609.5"
-                        rx="362.5"
-                        ry="309.5"
-                        fill="url(#paint0_radial_2092_11792)"
-                    />
-                </g>
-                <defs>
-                    <filter
-                        id="filter0_f_2092_11792"
-                        x="-665"
-                        y="0"
-                        width="1325"
-                        height="1219"
-                        filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
-                    >
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feBlend
-                            mode="normal"
-                            in="SourceGraphic"
-                            in2="BackgroundImageFix"
-                            result="shape"
-                        />
-                        <feGaussianBlur
-                            stdDeviation="150"
-                            result="effect1_foregroundBlur_2092_11792"
-                        />
-                    </filter>
-                    <radialGradient
-                        id="paint0_radial_2092_11792"
-                        cx="0"
-                        cy="0"
-                        r="1"
-                        gradientUnits="userSpaceOnUse"
-                        gradientTransform="translate(-2.5 629.739) rotate(90) scale(289.261 362.5)"
-                    >
-                        <stop offset="0.281696" stop-color="#FE9567" /><stop
-                            offset="0.59375"
-                            stop-color="#FD366E"
-                        />
-                    </radialGradient>
-                </defs>
-            </svg>
+            <enhanced:img src="./(assets)/bg-red.svg" />
+        </div>
+        <div
+            class="u-position-absolute"
+            style="pointer-events: none; inset-inline-end: -700px; inset-block-start: -400px;"
+        >
+            <enhanced:img src="./(assets)/bg-green.svg" />
         </div>
         <div class="aw-big-padding-section-level-2 u-position-relative aw-u-margin-block-80">
             <div class="aw-container">
