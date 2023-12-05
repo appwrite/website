@@ -118,7 +118,7 @@
                     </button>
                 </li>
             </ul>
-            <div class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 u-margin-inline-start-auto">
+            <div class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 aw-u-max-inline-size-none-mobile u-margin-inline-start-auto">
             <span
                     class="aw-icon-search u-z-index-5"
                     aria-hidden="true"
