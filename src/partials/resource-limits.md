@@ -1,7 +1,7 @@
 ## Check resource usage {% #check-resource-usage %}
 
-You can check your resource usage by navigating to the overview of your organization. 
-Under the **Usage** tab, you can check current billing cycle's usage.
+You can check your organization's resource usage by navigating to the overview page of your organization. 
+Under the **Usage** tab, you can check the current billing cycle's usage stats.
 
 
 ## Reaching resource limits {% #reaching-resource-limits %}
@@ -13,12 +13,12 @@ The following limit consequences will persist until the current billing period e
 * **Bandwidth** {% rowspan=3 %}
 *  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or budget cap is reached, API access will be disabled until more bandwidth is purchased.
 ---
-*  Importing projects via migrations disabled.
+*  Importing projects via migrations disabled, but you can still export your projects.
 ---
 *  Platform creation disabled.
 ---
 * **Active users**
-* Auth member creation/team invitations disabled.
+* Creating new accounts and team invitations disabled.
 ---
 * **Compute**
 * Function executions are disabled.
@@ -27,12 +27,12 @@ The following limit consequences will persist until the current billing period e
 * Realtime subscriptions disabled.
 ---
 * **Storage**
-* File uploads are disabled. Persists across billing periods.
+* File uploads are disabled. Persists across billing periods until storage is .
 {% /table %}
 
 ## Switching to Starter plan and reaching limits {% #switching-to-starter-plan-reaching-resource-limits %}
 
-When you switch from Pro or Scale plan to Starter plan, you will be able to take advantage of the existing limits until the end of the current billing period. 
+When an orgnization switches from Pro or Scale plan to Starter plan, the organization's projects will be able to take advantage of the existing limits until the end of the current billing period. 
 After the billing period ends, the Starter plan limits and consequences will apply.
 
 If an organisation has multiple members after the billing period ends, all admins besides the original creator of the organization will be removed.
