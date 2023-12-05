@@ -12,7 +12,7 @@ export async function getThreads(q?: string | null) {
     const data = await databases.listDocuments(
         PUBLIC_APPWRITE_DB_MAIN_ID,
         PUBLIC_APPWRITE_COL_THREADS_ID,
-        q ? [Query.search('name', q)] : undefined
+        q ? [Query.search('search_meta', q)] : undefined
     );
 
     const threads = data.documents as unknown as DiscordThread[];

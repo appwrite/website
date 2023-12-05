@@ -35,10 +35,6 @@
         margin-block-end: 0.25rem;
     }
 
-    h4 {
-        margin-block-start: 1rem;
-    }
-
     a {
         position: absolute;
         right: 1rem;
