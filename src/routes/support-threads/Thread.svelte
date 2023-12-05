@@ -13,10 +13,14 @@
 </script>
 
 {#key highlightTerms}
-    <div class="aw-card is-normal thread">
-        <h3 class="aw-main-body-500" use:highlight={highlightTerms}>
-            {thread.title}
-        </h3>
+    <a href="/support-threads/{thread.id}" class="aw-card is-normal thread">
+        <div class="u-flex u-gap-8">
+            <h3 class="aw-main-body-500 aw-u-color-text-primary" use:highlight={highlightTerms}>
+                {thread.title}
+            </h3>
+            <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time>
+        </div>
+
         <p>{thread.text}</p>
 
         <h4 class="aw-eyebrow">Replies</h4>
@@ -27,11 +31,7 @@
                 </div>
             {/each}
         </div>
-
-        <a href="/support-threads/{thread.id}">
-            <span class="icon-external-link" />
-        </a>
-    </div>
+    </a>
 {/key}
 
 <style lang="scss">
