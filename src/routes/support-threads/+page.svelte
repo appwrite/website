@@ -95,25 +95,50 @@
 
     <div class="aw-container">
 
-        <div class="aw-input-text-search-wrapper u-width-full-line">
+        <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
+            <ul class="u-flex u-flex-wrap u-gap-8">
+                <li>
+                    <button class="aw-tag">
+                        <span>Web</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-tag">
+                        <span>Flutter</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-tag">
+                        <span>Apple</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="aw-tag">
+                        <span>Android</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 u-margin-inline-start-auto">
             <span
-                class="aw-icon-search u-z-index-5"
-                aria-hidden="true"
-                style="inset-block-start:0.9rem"
+                    class="aw-icon-search u-z-index-5"
+                    aria-hidden="true"
+                    style="inset-block-start:0.9rem"
             />
-            <input
-                class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1"
-                type="text"
-                id="search"
-                placeholder="Search for threads"
-                data-hit="-1"
-                use:search
-            />
+                <input
+                        class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                        type="text"
+                        id="search"
+                        placeholder="Search for threads"
+                        data-hit="-1"
+                        use:search
+                />
+            </div>
         </div>
 
-        <h2 aria-live="polite">Found {data.threads.length} results.</h2>
 
-        <div class="threads">
+        <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">Found {data.threads.length} results.</h2>
+
+        <div class="u-flex-vertical u-gap-16 u-margin-block-start-16">
             {#each data.threads as thread}
                 <Thread {thread} />
             {/each}
@@ -125,22 +150,5 @@
 </Main>
 
 <style lang="scss">
-    h1 {
-        margin-block-start: 2rem;
-    }
 
-    h2 {
-        margin-block-start: 1rem;
-    }
-
-    #search {
-        margin-block-start: 2rem;
-    }
-
-    .threads {
-        margin-block-start: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
 </style>
