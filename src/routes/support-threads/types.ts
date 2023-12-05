@@ -1,3 +1,5 @@
+import type { Models } from 'appwrite';
+
 export type MockThread = {
     id: string;
     username?: string;
@@ -5,6 +7,11 @@ export type MockThread = {
     text: string;
     replies: MockMessage[];
 };
+
+export interface DiscordThread extends Pick<Models.Document, '$id'> {
+    name: string;
+    discord_id: string;
+}
 
 export type MockMessage = {
     username?: string;

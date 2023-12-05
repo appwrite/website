@@ -1,17 +1,29 @@
-export type SearchResult<T> = {
+import { PUBLIC_APPWRITE_COL_THREADS_ID, PUBLIC_APPWRITE_DB_MAIN_ID } from '$env/static/public';
+import { databases } from '$lib/appwrite';
+import { Query } from 'appwrite';
+import type { DiscordThread } from './types';
+
+type Ranked<T> = {
     data: T;
     rank: number; // Percentage of query words found, from 0 to 1
 };
 
-export const mockSearch = <T extends Record<string, unknown>>(
-    arr: T[],
-    q: string
-): SearchResult<T>[] => {
+export async function getThreads(q?: string | null) {
+    const data = await databases.listDocuments(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        PUBLIC_APPWRITE_COL_THREADS_ID,
+        q ? [Query.search('name', q)] : undefined
+    );
+
+    const threads = data.documents as unknown as DiscordThread[];
+
+    if (!q) return threads;
+
     const queryWords = q.toLowerCase().split(/\s+/);
     const rankPerWord = 1 / queryWords.length;
-    const res: SearchResult<T>[] = [];
+    const res: Ranked<DiscordThread>[] = [];
 
-    arr.forEach((item) => {
+    threads.forEach((item) => {
         const foundWords = new Set<string>();
 
         Object.values(item).forEach((value) => {
@@ -34,5 +46,5 @@ export const mockSearch = <T extends Record<string, unknown>>(
         }
     });
 
-    return res.sort((a, b) => b.rank - a.rank);
-};
+    return res.sort((a, b) => b.rank - a.rank).map(({ data }) => data);
+}

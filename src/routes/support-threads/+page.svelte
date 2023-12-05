@@ -7,13 +7,15 @@
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import Thread from './Thread.svelte';
+    import ThreadCard from './ThreadCard.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     export let data;
+
+    let searching = false;
 
     const { debounce, reset } = createDebounce();
 
@@ -88,7 +90,7 @@
 
         <div class="threads">
             {#each data.threads as thread}
-                <Thread {thread} />
+                <ThreadCard {thread} />
             {/each}
         </div>
 

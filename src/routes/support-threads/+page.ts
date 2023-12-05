@@ -1,13 +1,7 @@
-import { MockData } from './data.js';
-import { mockSearch } from './helpers.js';
+import { getThreads } from './helpers.js';
 
-export function load({ url }) {
-    const query = url.searchParams.get('q');
-    if (!query) {
-        return { threads: MockData };
-    }
-
+export async function load({ url }) {
     return {
-        threads: mockSearch(MockData, query).map((result) => result.data)
+        threads: await getThreads(url.searchParams.get('q'))
     };
 }
