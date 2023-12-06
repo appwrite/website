@@ -8,14 +8,24 @@ type Ranked<T> = {
     rank: number; // Percentage of query words found, from 0 to 1
 };
 
-export async function getThreads(q?: string | null) {
+export async function getThreads(q?: string | null, tags?: string[]) {
     const data = await databases.listDocuments(
         PUBLIC_APPWRITE_DB_MAIN_ID,
         PUBLIC_APPWRITE_COL_THREADS_ID,
-        q ? [Query.search('search_meta', q)] : undefined
+        [
+            q ? Query.search('search_meta', q) : undefined
+            // tags ? Query.equal('tags', tags) : undefined
+        ].filter(Boolean) as string[]
     );
 
-    const threads = data.documents as unknown as DiscordThread[];
+    const threadDocs = data.documents as unknown as DiscordThread[];
+
+    const threads = tags
+        ? threadDocs.filter((thread) => {
+              const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
+              return tags.some((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+          })
+        : threadDocs;
 
     if (!q) return threads;
 

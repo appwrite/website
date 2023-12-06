@@ -9,6 +9,8 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
+    import { queryParam } from 'sveltekit-search-params';
+
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -53,7 +55,33 @@
         };
     };
 
-    const tags = ['Web', 'Flutter', 'Javascript', 'dart', 'apple'];
+    const tags = ['Web', 'Flutter', 'Javascript', 'Dart', 'Apple'];
+    const _selectedTags = queryParam<string[]>('tags', {
+        encode(value) {
+            return value.join(',');
+        },
+        decode(value) {
+            return value?.split(',') ?? [];
+        },
+        defaultValue: []
+    });
+    $: selectedTags = $_selectedTags; // Optimistic UI hack
+
+    function toggleTag(tag: string) {
+        _selectedTags.update((p) => {
+            let result: string[];
+
+            const prevArr = p ?? [];
+            if (prevArr.includes(tag)) {
+                result = prevArr.filter((t) => t !== tag);
+            } else {
+                result = [...prevArr, tag];
+            }
+
+            selectedTags = result; // Optimistic UI hack
+            return result;
+        });
+    }
 </script>
 
 <svelte:head>
@@ -102,7 +130,11 @@
             <ul class="u-flex u-flex-wrap u-gap-8">
                 {#each tags as tag}
                     <li>
-                        <button class="tag">
+                        <button
+                            class="aw-btn-tag"
+                            class:is-selected={selectedTags?.includes(tag)}
+                            on:click={() => toggleTag(tag)}
+                        >
                             <span>{tag}</span>
                         </button>
                     </li>
@@ -141,6 +173,3 @@
         <MainFooter />
     </div>
 </Main>
-
-<style lang="scss">
-</style>

@@ -1,13 +1,14 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
-    import { searchParams } from '$lib/stores/searchParams';
     import type { DiscordThread } from './types';
 
     export let thread: DiscordThread;
 
-    $: highlightTerms = $searchParams.get('q')?.split(' ') ?? [];
+    import { queryParam } from 'sveltekit-search-params';
 
-    $: console.log(thread);
+    const query = queryParam('q');
+
+    $: highlightTerms = $query?.split(' ') ?? [];
 </script>
 
 {#key highlightTerms}
@@ -26,12 +27,11 @@
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">
             <ul class="u-flex u-gap-8">
-                <li>
-                    <div class="aw-tag">Flutter</div>
-                </li>
-                <li>
-                    <div class="aw-tag">Self hosted</div>
-                </li>
+                {#each thread.tags ?? [] as tag}
+                    <li>
+                        <div class="aw-tag">{tag}</div>
+                    </li>
+                {/each}
             </ul>
 
             <div class="aw-icon-button is-more-content" aria-label="responds">
