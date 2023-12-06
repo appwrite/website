@@ -23,7 +23,9 @@
             <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time>
         </div>
 
-        <p class="aw-main-body-500 u-margin-block-start-4">{thread.content}</p>
+        <p class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>
+            {thread.content}
+        </p>
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">
             <ul class="u-flex u-gap-8">
