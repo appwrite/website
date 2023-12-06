@@ -52,6 +52,8 @@
             }
         };
     };
+
+    const tags = ['Web', 'Flutter', 'Javascript', 'dart', 'apple'];
 </script>
 
 <svelte:head>
@@ -98,26 +100,13 @@
     <div class="aw-container">
         <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
             <ul class="u-flex u-flex-wrap u-gap-8">
-                <li>
-                    <button class="aw-tag">
-                        <span>Web</span>
-                    </button>
-                </li>
-                <li>
-                    <button class="aw-tag">
-                        <span>Flutter</span>
-                    </button>
-                </li>
-                <li>
-                    <button class="aw-tag">
-                        <span>Apple</span>
-                    </button>
-                </li>
-                <li>
-                    <button class="aw-tag">
-                        <span>Android</span>
-                    </button>
-                </li>
+                {#each tags as tag}
+                    <li>
+                        <button class="tag">
+                            <span>{tag}</span>
+                        </button>
+                    </li>
+                {/each}
             </ul>
             <div
                 class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 aw-u-max-inline-size-none-mobile u-margin-inline-start-auto"
