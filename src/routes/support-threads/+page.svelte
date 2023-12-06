@@ -10,8 +10,8 @@
     import ThreadCard from './ThreadCard.svelte';
 
     import { queryParam } from 'sveltekit-search-params';
-    import TagsDropdown from './TagsDropdown.svelte';
     import PreFooter from './PreFooter.svelte';
+    import TagsDropdown from './TagsDropdown.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -175,15 +175,26 @@
             </div>
         </div>
 
-        <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
-            Found {data.threads.length} results.
-        </h2>
+        {#if data.threads.length}
+            <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
+                Found {data.threads.length} results.
+            </h2>
+        {/if}
 
         <div class="u-flex-vertical u-gap-16 u-margin-block-start-16">
             {#each data.threads as thread}
                 <ThreadCard {thread} />
             {:else}
-                fuck
+                <div class="aw-card is-normal has-border-gradient empty-card">
+                    <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
+                    <span class="aw-main-body-500">No support threads found</span>
+                    <button
+                        class="aw-button"
+                        on:click={() => {
+                            goto('/support-threads', { replaceState: true, keepFocus: true });
+                        }}>Clear search</button
+                    >
+                </div>
             {/each}
         </div>
     </div>
@@ -193,3 +204,27 @@
         <MainFooter />
     </div>
 </Main>
+
+<style lang="scss">
+    .empty-card {
+        padding: 1.25rem;
+
+        .img {
+            display: block;
+            width: 13.75rem;
+            height: auto;
+            margin-inline: auto;
+        }
+
+        span {
+            display: block;
+            color: hsl(var(--aw-color-primary));
+            text-align: center;
+        }
+
+        button {
+            margin-block-start: 1.5rem;
+            margin-inline: auto;
+        }
+    }
+</style>

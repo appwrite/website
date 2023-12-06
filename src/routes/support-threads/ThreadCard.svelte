@@ -49,6 +49,10 @@
 {/key}
 
 <style lang="scss">
+    .aw-card {
+        padding: 1.25rem;
+    }
+
     .thread {
         position: relative;
     }

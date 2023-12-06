@@ -7,6 +7,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
+    import { useCompletion } from 'ai/svelte';
 
     export let data;
 
@@ -23,6 +24,18 @@
         const year = dt.getFullYear();
 
         return `${day} ${month}, ${year}`;
+    };
+
+    let generated = false;
+    const { complete, completion } = useCompletion({
+        api: '/api/tldr'
+    });
+
+    const generateTldr = async () => {
+        if (generated) return;
+        generated = true;
+        await complete(`Title: ${data.name}\nDescription:${data.content}\nMessages:\n
+        ${data.messages?.map((m) => `${m.author}: ${m.message}`).join('\n')}`);
     };
 </script>
 
@@ -64,13 +77,23 @@
                     {/each}
                 </ul>
             </div>
-            <a
-                class="aw-button"
-                href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
-            >
-                <span class="aw-icon-discord" />
-                <span class="text">View on discord</span>
-            </a>
+            <div class="buttons">
+                <a
+                    class="aw-button"
+                    href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
+                >
+                    <span class="aw-icon-discord" />
+                    <span class="text">View on discord</span>
+                </a>
+                <button
+                    class="aw-button is-secondary"
+                    style="margin-block-start: 0.5rem"
+                    on:click={generateTldr}
+                    disabled={generated}
+                >
+                    Generate TL;DR
+                </button>
+            </div>
         </div>
 
         <div class="thread-grid">
@@ -93,6 +116,10 @@
                 </div>
             </div>
             <div class="related">
+                {#if generated}
+                    <h2 class="aw-eyebrow aw-u-color-text-primary">TL;DR</h2>
+                    <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">{$completion}</p>
+                {/if}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">Recommended threads</h2>
                 <ul>
                     {#each data.related as thread}
