@@ -34,5 +34,11 @@
   &.is-inline {
     text-decoration: underline;
   }
+
+  &.is-secondary {
+    --p-link-color-text-default: var(--aw-color-secondary);
+    // --p-link-color-text-hover: var(--aw-color-secondary) / 0.75;
+    // --p-link-color-text-active:var(--aw-color-secondary) / 0.5;
+  }
 }
 

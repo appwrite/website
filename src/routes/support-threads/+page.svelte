@@ -182,6 +182,8 @@
         <div class="u-flex-vertical u-gap-16 u-margin-block-start-16">
             {#each data.threads as thread}
                 <ThreadCard {thread} />
+            {:else}
+                fuck
             {/each}
         </div>
     </div>

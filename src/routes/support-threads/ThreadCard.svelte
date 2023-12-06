@@ -34,7 +34,11 @@
                 {/each}
             </ul>
 
-            <div class="aw-icon-button is-more-content" aria-label="responds">
+            <div
+                class="aw-icon-button is-more-content"
+                aria-label="Replies"
+                style:pointer-events="none"
+            >
                 <span class="aw-icon-message" aria-hidden="true" style="font-size:1rem" />
                 <span class="aw-caption-400 aw-u-line-height-1-2"
                     >{thread.messages?.length ?? 0}</span
