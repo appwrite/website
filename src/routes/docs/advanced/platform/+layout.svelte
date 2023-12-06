@@ -55,6 +55,10 @@
 			label: 'Plans',
 			items: [
 				{
+					label: 'Billing',
+					href: '/docs/advanced/platform/billing'
+				},
+				{
 					label: 'Starter',
 					href: '/docs/advanced/platform/starter'
 				},
@@ -67,8 +71,12 @@
 					href: '/docs/advanced/platform/scale'
 				},
 				{
-					label: 'Billing',
-					href: '/docs/advanced/platform/billing'
+					label: 'Enterprise',
+					href: '/docs/advanced/platform/enterprise'
+				},
+				{
+					label: 'Open source',
+					href: '/docs/advanced/platform/oss'
 				},
 			]
 		},
