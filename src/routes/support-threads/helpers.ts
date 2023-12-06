@@ -48,3 +48,11 @@ export async function getThreads(q?: string | null) {
 
     return res.sort((a, b) => b.rank - a.rank).map(({ data }) => data);
 }
+
+export async function getThread($id: string) {
+    return (await databases.getDocument(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        PUBLIC_APPWRITE_COL_THREADS_ID,
+        $id
+    )) as unknown as DiscordThread;
+}
