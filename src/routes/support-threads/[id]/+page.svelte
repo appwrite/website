@@ -8,6 +8,7 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
     import { useCompletion } from 'ai/svelte';
+    import { slide } from 'svelte/transition';
 
     export let data;
 
@@ -27,9 +28,11 @@
     };
 
     let generated = false;
-    const { complete, completion } = useCompletion({
+    const { complete, completion: _completion } = useCompletion({
         api: '/api/tldr'
     });
+
+    $: completion = $_completion.replace(/TL;DR:/g, '').trim();
 
     const generateTldr = async () => {
         if (generated) return;
@@ -94,6 +97,14 @@
                     Generate TL;DR
                 </button>
             </div>
+            <div class="tldr-mobile">
+                {#if generated}
+                    <h2 class="aw-eyebrow aw-u-color-text-primary" transition:slide>TL;DR</h2>
+                    <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">
+                        {completion}
+                    </p>
+                {/if}
+            </div>
         </div>
 
         <div class="thread-grid">
@@ -116,15 +127,21 @@
                 </div>
             </div>
             <div class="related">
-                {#if generated}
-                    <h2 class="aw-eyebrow aw-u-color-text-primary">TL;DR</h2>
-                    <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">{$completion}</p>
+                <div class="tldr-desktop">
+                    {#if generated}
+                        <h2 class="aw-eyebrow aw-u-color-text-primary" transition:slide>TL;DR</h2>
+                        <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">
+                            {completion}
+                        </p>
+                    {/if}
+                </div>
+                {#if data.related.length}
+                    <h2 class="aw-eyebrow aw-u-color-text-primary">Recommended threads</h2>
                 {/if}
-                <h2 class="aw-eyebrow aw-u-color-text-primary">Recommended threads</h2>
                 <ul>
                     {#each data.related as thread}
                         <li>
-                            <a href="/support-threads/{thread.$id}">
+                            <a href="/support-threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="u-flex u-cross-center">
                                     <span class="aw-sub-body-500 aw-u-color-text-primary">
                                         {thread.name}
@@ -234,7 +251,19 @@
         }
     }
 
+    .tldr-mobile {
+        display: none;
+    }
+
     @media #{$break1} {
+        .tldr-desktop {
+            display: none;
+        }
+
+        .tldr-mobile {
+            display: block;
+        }
+
         .header {
             gap: 2rem;
             grid-template-columns: 1fr;
