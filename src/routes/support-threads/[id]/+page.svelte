@@ -89,12 +89,11 @@
             </div>
         </div>
     </div>
-    <div class="u-position-relative u-overflow-hidden">
-        <div class="aw-container">
-            <PreFooter />
-            <FooterNav />
-            <MainFooter />
-        </div>
+
+    <PreFooter />
+    <div class="aw-container" style="margin-block-start: -7.75rem;">
+        <FooterNav />
+        <MainFooter />
     </div>
 </Main>
 

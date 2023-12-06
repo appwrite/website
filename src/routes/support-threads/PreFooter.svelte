@@ -1,89 +1,64 @@
-<script lang="ts">
-</script>
-
-<img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
-
-<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
-    <section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-        <h2 class="aw-display u-max-width-500 aw-u-text-align-center aw-u-color-text-primary">
-            Start building today
-        </h2>
-        <a
-            href="https://cloud.appwrite.io"
-            class="aw-button is-transparent aw-u-cross-child-center"
-        >
-            <span class="text">Start building today</span>
-        </a>
-    </section>
-    <section
-        class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
-    >
-        <header class="aw-strip-plans-header">
-            <div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-                <h3 class="aw-title aw-u-color-text-primary">Our plans</h3>
+<div class="wrapper">
+    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
+    <div class="aw-container">
+        <h2 class="aw-display aw-u-color-text-primary">Need Support?</h2>
+        <div class="cards">
+            <div class="cardy">
+                <h3 class="aw-label aw-u-color-text-primary">Join our Discord</h3>
+                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
+                    Get community support by joining our Discord server
+                </p>
+                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
+                    <span class="aw-icon-discord" />
+                    <span class="text">Join Discord</span>
+                </a>
             </div>
-        </header>
-
-        <ul class="aw-strip-plans">
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Starter</h4>
-                        <div class="aw-title aw-u-color-text-primary">$0</div>
-                        <div class="info aw-caption-500" />
-                    </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
-                        For personal hobby projects and students.
-                    </p>
-                    <a
-                        href="https://cloud.appwrite.io/register"
-                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
-                    >
-                        <span class="text">Get started</span>
-                    </a>
-                </div>
-            </li>
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Pro</h4>
-                        <div class="aw-title aw-u-color-text-primary">$15</div>
-                        <div class="info aw-caption-500">per user/month</div>
-                    </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
-                        For pro developers and teams that need to scale their products.
-                    </p>
-                    <button
-                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-                        disabled
-                    >
-                        <span class="text">Coming soon</span>
-                    </button>
-                </div>
-            </li>
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Scale</h4>
-                        <div class="aw-title aw-u-color-text-primary">$685</div>
-                        <div class="info aw-caption-500">per org/month</div>
-                    </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
-                        For pro developers and production projects that need the ability to scale.
-                    </p>
-                    <button
-                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-                        disabled
-                    >
-                        <span class="text">Coming soon</span>
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </section>
+            <div class="cardy">
+                <h3 class="aw-label aw-u-color-text-primary">Get premium support</h3>
+                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
+                    Become a pro user and get email support from our team
+                </p>
+                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
+                    <span class="text">Learn more</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
+    .wrapper {
+        padding-block: 7.5rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        gap: 2.25rem;
+        margin-block-start: 5rem;
+    }
+
+    .cardy {
+        @include border-gradient;
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        --m-border-radius: 1rem;
+
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(7.5px);
+        padding: 1.5rem;
+    }
+
     .aw-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
