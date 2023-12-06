@@ -97,16 +97,17 @@
                 <ul>
                     {#each data.related as thread}
                         <li>
-                            <div class="u-flex u-cross-center">
-                                <a
-                                    class="aw-sub-body-500 aw-u-color-text-primary"
-                                    href="/support-threads/{thread.$id}">{thread.name}</a
-                                >
-                                <!-- <span>{formatTimestamp(thread)}</span> -->
-                            </div>
-                            <p class="aw-sub-body-400 u-margin-block-start-8">
-                                {thread.content}
-                            </p>
+                            <a href="/support-threads/{thread.$id}">
+                                <div class="u-flex u-cross-center">
+                                    <span class="aw-sub-body-500 aw-u-color-text-primary">
+                                        {thread.name}
+                                    </span>
+                                    <!-- <span>{formatTimestamp(thread)}</span> -->
+                                </div>
+                                <p class="aw-sub-body-400 u-margin-block-start-8">
+                                    {thread.content}
+                                </p>
+                            </a>
                         </li>
                     {/each}
                 </ul>
@@ -197,6 +198,10 @@
 
                 &:not(:last-child) {
                     border-block-end: 1px solid hsl(var(--aw-color-smooth));
+                }
+
+                &:hover {
+                    opacity: 0.75;
                 }
             }
         }
