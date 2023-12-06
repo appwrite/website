@@ -60,7 +60,7 @@
     }
 
     .thread :global(mark) {
-        background-color: hsl(var(--aw-color-mint-700) / 0.5);
+        background-color: hsl(var(--aw-color-pink-500) / 0.5);
     }
 
     h3 {
