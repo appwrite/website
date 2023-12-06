@@ -17,6 +17,11 @@
 
     let searching = false; // Do some sick animation
 
+    const handleSearch = (value: string) => {
+        searching = true;
+        goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+    };
+
     const { debounce, reset } = createDebounce();
 
     const search = (node: HTMLInputElement) => {
@@ -24,7 +29,7 @@
             const value = node.value.toLowerCase();
 
             debounce(() => {
-                goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+                handleSearch(value);
             });
         };
 
@@ -33,7 +38,7 @@
                 const value = node.value.toLowerCase();
 
                 reset();
-                goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+                handleSearch(value);
             }
         };
 
@@ -75,13 +80,13 @@
             class="u-position-absolute"
             style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"
         >
-            <enhanced:img src="./(assets)/bg-red.svg" />
+            <enhanced:img src="./(assets)/bg-red.svg" alt="" />
         </div>
         <div
             class="u-position-absolute"
             style="pointer-events: none; inset-inline-end: -700px; inset-block-start: -400px;"
         >
-            <enhanced:img src="./(assets)/bg-green.svg" />
+            <enhanced:img src="./(assets)/bg-green.svg" alt="" />
         </div>
         <div class="aw-big-padding-section-level-2 u-position-relative aw-u-margin-block-80">
             <div class="aw-container">

@@ -6,6 +6,8 @@
     export let thread: DiscordThread;
 
     $: highlightTerms = $searchParams.get('q')?.split(' ') ?? [];
+
+    $: console.log(thread);
 </script>
 
 {#key highlightTerms}
@@ -20,12 +22,7 @@
             <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time>
         </div>
 
-        <!-- <p class="aw-main-body-500 u-margin-block-start-4">{thread.text}</p> -->
-        <p class="aw-main-body-500 u-margin-block-start-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem exercitationem obcaecati
-            odio, fuga blanditiis labore in nihil praesentium minus voluptates aperiam laboriosam id
-            nam nesciunt atque eius quasi facere nostrum.
-        </p>
+        <p class="aw-main-body-500 u-margin-block-start-4">{thread.content}</p>
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">
             <ul class="u-flex u-gap-8">
@@ -37,20 +34,12 @@
                 </li>
             </ul>
 
-            <ul class="u-flex u-gap-8">
-                <li>
-                    <div class="aw-icon-button is-more-content" aria-label="up votes">
-                        <span class="aw-icon-arrow-up" aria-hidden="true" />
-                        <span class="aw-caption-400 aw-u-line-height-1-2">4</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="aw-icon-button is-more-content" aria-label="responds">
-                        <span class="aw-icon-discord" aria-hidden="true" style="font-size:1rem" />
-                        <span class="aw-caption-400 aw-u-line-height-1-2">4</span>
-                    </div>
-                </li>
-            </ul>
+            <div class="aw-icon-button is-more-content" aria-label="responds">
+                <span class="aw-icon-message" aria-hidden="true" style="font-size:1rem" />
+                <span class="aw-caption-400 aw-u-line-height-1-2"
+                    >{thread.messages?.length ?? 0}</span
+                >
+            </div>
         </div>
     </a>
 {/key}
