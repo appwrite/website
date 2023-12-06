@@ -5,9 +5,8 @@
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import { formatDate } from '$lib/utils/date.js';
-    import MessageCard from './MessageCard.svelte';
     import PreFooter from '../PreFooter.svelte';
+    import MessageCard from './MessageCard.svelte';
 
     export let data;
 

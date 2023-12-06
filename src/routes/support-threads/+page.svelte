@@ -11,6 +11,7 @@
 
     import { queryParam } from 'sveltekit-search-params';
     import TagsDropdown from './TagsDropdown.svelte';
+    import PreFooter from './PreFooter.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -137,7 +138,7 @@
         </div>
     </div>
 
-    <div class="aw-container">
+    <div class="aw-container" style="padding-block-end: 5rem">
         <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
             <ul class="u-flex u-flex-wrap u-gap-8">
                 {#each tags as tag}
@@ -183,7 +184,9 @@
                 <ThreadCard {thread} />
             {/each}
         </div>
-
+    </div>
+    <PreFooter />
+    <div class="aw-container" style="margin-block-start: -7.75rem;">
         <FooterNav />
         <MainFooter />
     </div>

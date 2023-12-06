@@ -39,7 +39,7 @@
 
     .cards {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         justify-content: center;
         gap: 2.25rem;
         margin-block-start: 5rem;
