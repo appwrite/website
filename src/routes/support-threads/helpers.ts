@@ -9,6 +9,8 @@ type Ranked<T> = {
 };
 
 export async function getThreads(q?: string | null, tags?: string[]) {
+    tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
+
     const data = await databases.listDocuments(
         PUBLIC_APPWRITE_DB_MAIN_ID,
         PUBLIC_APPWRITE_COL_THREADS_ID,
@@ -23,7 +25,7 @@ export async function getThreads(q?: string | null, tags?: string[]) {
     const threads = tags
         ? threadDocs.filter((thread) => {
               const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
-              return tags.some((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+              return tags?.every((tag) => lowercaseTags?.includes(tag.toLowerCase()));
           })
         : threadDocs;
 

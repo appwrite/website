@@ -42,10 +42,10 @@ dependencies:
 devDependencies:
   '@melt-ui/pp':
     specifier: ^0.1.4
-    version: 0.1.4(@melt-ui/svelte@0.60.2)(svelte@4.2.7)
+    version: 0.1.4(@melt-ui/svelte@0.65.0)(svelte@4.2.7)
   '@melt-ui/svelte':
-    specifier: ^0.60.2
-    version: 0.60.2(svelte@4.2.7)
+    specifier: ^0.65.0
+    version: 0.65.0(svelte@4.2.7)
   '@playwright/test':
     specifier: ^1.40.0
     version: 1.40.0
@@ -466,6 +466,12 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+    dev: true
+
+  /@internationalized/date@3.5.0:
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
+    dependencies:
+      '@swc/helpers': 0.5.3
     dev: true
 
   /@isaacs/cliui@8.0.2:
@@ -917,25 +923,26 @@ packages:
       '@types/markdown-it': 12.2.3
     dev: true
 
-  /@melt-ui/pp@0.1.4(@melt-ui/svelte@0.60.2)(svelte@4.2.7):
+  /@melt-ui/pp@0.1.4(@melt-ui/svelte@0.65.0)(svelte@4.2.7):
     resolution: {integrity: sha512-zR+Kl3CZJPJBHW8V7YcdQCMI/dVcnW9Ct3yGbVaIywYVStVRS7F9uEDOea3xLLT2WTGodQePzPlUn53yKFu87g==}
     engines: {pnpm: '>=8.6.3'}
     peerDependencies:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
     dependencies:
-      '@melt-ui/svelte': 0.60.2(svelte@4.2.7)
+      '@melt-ui/svelte': 0.65.0(svelte@4.2.7)
       estree-walker: 3.0.3
       svelte: 4.2.7
     dev: true
 
-  /@melt-ui/svelte@0.60.2(svelte@4.2.7):
-    resolution: {integrity: sha512-dBGW7dIDBMYchCH0Fx9byqrCYtpkXX1QUGXdv1e2aQE20bDCrQqwVSV0/1iWuJVYyFeo2xUdr0/LVZJ6lOw4mg==}
+  /@melt-ui/svelte@0.65.0(svelte@4.2.7):
+    resolution: {integrity: sha512-EAUIe5ncVkPis9A9WlBMQ0DNhWEwkDI+55roP7tmZCSXK9FWSymeIFG5bgSrLqgLGW2CHz/ZU/D3+lvuxorL0g==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
       '@floating-ui/core': 1.5.0
       '@floating-ui/dom': 1.5.3
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 4.0.2
@@ -1353,6 +1360,12 @@ packages:
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@swc/helpers@0.5.3:
+    resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
+    dependencies:
+      tslib: 2.6.2
     dev: true
 
   /@tokenizer/token@0.3.0:

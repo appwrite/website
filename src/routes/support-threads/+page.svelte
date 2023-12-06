@@ -10,6 +10,7 @@
     import ThreadCard from './ThreadCard.svelte';
 
     import { queryParam } from 'sveltekit-search-params';
+    import TagsDropdown from './TagsDropdown.svelte';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -56,6 +57,17 @@
     };
 
     const tags = ['Web', 'Flutter', 'Javascript', 'Dart', 'Apple'];
+    const moreTags = [
+        'Self hosted',
+        'Cloud',
+        'Android',
+        'Windows',
+        'Linux',
+        'MacOS',
+        'iOS',
+        'iPadOS',
+        'WatchOS'
+    ];
     const _selectedTags = queryParam<string[]>('tags', {
         encode(value) {
             return value.join(',');
@@ -129,16 +141,19 @@
         <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
             <ul class="u-flex u-flex-wrap u-gap-8">
                 {#each tags as tag}
-                    <li>
+                    <li style="display: flex; align-items: center;">
                         <button
                             class="aw-btn-tag"
                             class:is-selected={selectedTags?.includes(tag)}
                             on:click={() => toggleTag(tag)}
                         >
-                            <span>{tag}</span>
+                            {tag}
                         </button>
                     </li>
                 {/each}
+                <li>
+                    <TagsDropdown tags={moreTags} selectedTags={selectedTags ?? []} {toggleTag} />
+                </li>
             </ul>
             <div
                 class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 aw-u-max-inline-size-none-mobile u-margin-inline-start-auto"
