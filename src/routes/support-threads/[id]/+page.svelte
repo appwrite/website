@@ -14,7 +14,16 @@
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    $: timestamp = data.messages?.[0].timestamp;
+    const formatTimestamp = (date: string): string => {
+        const dt = new Date(date);
+
+        // format like: 12 Jan, 2023
+        const day = dt.getDate();
+        const month = dt.toLocaleString('default', { month: 'short' });
+        const year = dt.getFullYear();
+
+        return `${day} ${month}, ${year}`;
+    };
 </script>
 
 <svelte:head>
@@ -85,6 +94,22 @@
             </div>
             <div class="related">
                 <h2 class="aw-eyebrow aw-u-color-text-primary">Recommended threads</h2>
+                <ul>
+                    {#each data.related as thread}
+                        <li>
+                            <div class="u-flex u-cross-center">
+                                <a
+                                    class="aw-sub-body-500 aw-u-color-text-primary"
+                                    href="/support-threads/{thread.$id}">{thread.name}</a
+                                >
+                                <!-- <span>{formatTimestamp(thread)}</span> -->
+                            </div>
+                            <p class="aw-sub-body-400 u-margin-block-start-8">
+                                {thread.content}
+                            </p>
+                        </li>
+                    {/each}
+                </ul>
             </div>
         </div>
     </div>
@@ -158,6 +183,22 @@
             width: 1px;
             height: calc(100% + 5rem);
             background-color: hsl(var(--aw-color-border));
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            margin-block-start: 1.5rem;
+
+            li {
+                padding-block-end: 1rem;
+
+                &:not(:last-child) {
+                    border-block-end: 1px solid hsl(var(--aw-color-smooth));
+                }
+            }
         }
     }
 

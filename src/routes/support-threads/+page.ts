@@ -4,9 +4,10 @@ export async function load({ url }) {
     const tagsParam = url.searchParams.get('tags');
 
     return {
-        threads: await getThreads(
-            url.searchParams.get('q'),
-            tagsParam ? tagsParam.split(',') : undefined
-        )
+        threads: await getThreads({
+            q: url.searchParams.get('q'),
+            tags: tagsParam ? tagsParam.split(',') : undefined,
+            allTags: true
+        })
     };
 }

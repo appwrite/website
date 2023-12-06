@@ -8,7 +8,13 @@ type Ranked<T> = {
     rank: number; // Percentage of query words found, from 0 to 1
 };
 
-export async function getThreads(q?: string | null, tags?: string[]) {
+type GetThreadsArgs = {
+    q?: string | null;
+    tags?: string[];
+    allTags?: boolean;
+};
+
+export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
 
     const data = await databases.listDocuments(
@@ -25,7 +31,11 @@ export async function getThreads(q?: string | null, tags?: string[]) {
     const threads = tags
         ? threadDocs.filter((thread) => {
               const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
-              return tags?.every((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+              if (allTags) {
+                  return tags?.every((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+              } else {
+                  return tags?.some((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+              }
           })
         : threadDocs;
 
@@ -67,4 +77,11 @@ export async function getThread($id: string) {
         PUBLIC_APPWRITE_COL_THREADS_ID,
         $id
     )) as unknown as DiscordThread;
+}
+
+export async function getRelatedThreads(thread: DiscordThread) {
+    const tags = thread.tags?.filter(Boolean) ?? [];
+    const relatedThreads = await getThreads({ q: null, tags, allTags: false });
+
+    return relatedThreads.filter(({ $id }) => $id !== thread.$id);
 }
