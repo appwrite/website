@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
+    import { afterNavigate, goto } from '$app/navigation';
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -79,6 +79,10 @@
         defaultValue: []
     });
     $: selectedTags = $_selectedTags; // Optimistic UI hack
+
+    afterNavigate(() => {
+        selectedTags = $_selectedTags;
+    });
 
     function toggleTag(tag: string) {
         _selectedTags.update((p) => {

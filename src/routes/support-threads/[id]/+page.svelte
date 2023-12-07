@@ -21,9 +21,9 @@
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
     <!-- Desscription -->
-    <meta name="description" content={description} />
-    <meta property="og:description" content={description} />
-    <meta name="twitter:description" content={description} />
+    <meta name="description" content={data.seo_description ?? description} />
+    <meta property="og:description" content={data.seo_description ?? description} />
+    <meta name="twitter:description" content={data.seo_description ?? description} />
     <!-- Image -->
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -106,12 +106,16 @@
                             <a href="/support-threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="u-flex u-cross-center">
                                     <span class="aw-sub-body-500 aw-u-color-text-primary">
-                                        {thread.name}
+                                        {thread.name.length > 40
+                                            ? thread.name.slice(0, 40) + '...'
+                                            : thread.name}
                                     </span>
                                     <!-- <span>{formatTimestamp(thread)}</span> -->
                                 </div>
                                 <p class="aw-sub-body-400 u-margin-block-start-8">
-                                    {thread.content}
+                                    {thread.content.length > 160
+                                        ? thread.content.slice(0, 160) + '...'
+                                        : thread.content}
                                 </p>
                             </a>
                         </li>
@@ -186,6 +190,8 @@
         position: relative;
         padding-block-start: 2.25rem;
 
+        overflow: hidden;
+
         &::before {
             content: '';
             position: absolute;
@@ -217,19 +223,7 @@
         }
     }
 
-    .tldr-mobile {
-        display: none;
-    }
-
     @media #{$break1} {
-        .tldr-desktop {
-            display: none;
-        }
-
-        .tldr-mobile {
-            display: block;
-        }
-
         .header {
             gap: 2rem;
             grid-template-columns: 1fr;
