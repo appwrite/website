@@ -17,7 +17,7 @@ The following limit consequences will persist until the current billing period e
 ---
 *  Platform creation disabled.
 ---
-* **Active users**
+* **Monthly active users**
 * Creating new accounts and team invitations disabled.
 ---
 * **Compute**
