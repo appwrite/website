@@ -1,20 +1,19 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
+    import SvelteMarkdown from 'svelte-markdown';
     import type { DiscordThread } from './types';
 
     export let thread: DiscordThread;
+    export let query: string;
 
-    import { queryParam } from 'sveltekit-search-params';
-
-    const query = queryParam('q');
-
-    $: highlightTerms = $query?.split(' ') ?? [];
+    $: highlightTerms = query?.split(' ') ?? [];
 </script>
 
 {#key highlightTerms}
     <a
         href="/support-threads/{thread.discord_id}"
         class="aw-card is-normal has-border-gradient thread"
+        data-sveltekit-preload-data="off"
     >
         <div class="u-flex u-gap-8">
             <h3 class="aw-main-body-500 aw-u-color-text-primary" use:highlight={highlightTerms}>
@@ -23,8 +22,16 @@
             <!-- <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>
 
+        <!-- <div class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>
+            <SvelteMarkdown
+                source={thread.content.length > 200
+                    ? thread.content.slice(0, 200) + '...'
+                    : thread.content}
+            />
+        </div> -->
+
         <p class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>
-            {thread.content}
+            {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
         </p>
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">

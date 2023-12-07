@@ -8,26 +8,14 @@ type Ranked<T> = {
     rank: number; // Percentage of query words found, from 0 to 1
 };
 
-type GetThreadsArgs = {
+type FilterThreadsArgs = {
+    threads: DiscordThread[];
     q?: string | null;
     tags?: string[];
     allTags?: boolean;
 };
 
-export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
-    tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
-
-    const data = await databases.listDocuments(
-        PUBLIC_APPWRITE_DB_MAIN_ID,
-        PUBLIC_APPWRITE_COL_THREADS_ID,
-        [
-            q ? Query.search('search_meta', q) : undefined
-            // tags ? Query.equal('tags', tags) : undefined
-        ].filter(Boolean) as string[]
-    );
-
-    const threadDocs = data.documents as unknown as DiscordThread[];
-
+export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
         ? threadDocs.filter((thread) => {
               const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
@@ -61,6 +49,7 @@ export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
         const rank = foundWords.size * rankPerWord;
 
         if (rank > 0) {
+            console.log(item.name, foundWords);
             res.push({
                 data: item,
                 rank
@@ -69,6 +58,24 @@ export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     });
 
     return res.sort((a, b) => b.rank - a.rank).map(({ data }) => data);
+}
+
+type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
+
+export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
+    tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
+
+    const data = await databases.listDocuments(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        PUBLIC_APPWRITE_COL_THREADS_ID,
+        [
+            q ? Query.search('search_meta', q) : undefined
+            // tags ? Query.equal('tags', tags) : undefined
+        ].filter(Boolean) as string[]
+    );
+
+    const threadDocs = data.documents as unknown as DiscordThread[];
+    return filterThreads({ threads: threadDocs, q, tags, allTags });
 }
 
 export async function getThread($id: string) {

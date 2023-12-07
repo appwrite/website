@@ -13,6 +13,8 @@
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    $: console.log({ data });
 </script>
 
 <svelte:head>
@@ -59,7 +61,7 @@
                     href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
                 >
                     <span class="aw-icon-discord" />
-                    <span class="text">View on discord</span>
+                    <span class="text">View on Discord</span>
                 </a>
             </div>
         </div>
@@ -92,7 +94,7 @@
                         href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
                     >
                         <span class="aw-icon-discord" />
-                        <span class="text">Reply on discord</span>
+                        <span class="text">Reply on Discord</span>
                     </a>
                 </div>
             </div>

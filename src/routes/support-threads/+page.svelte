@@ -12,6 +12,7 @@
     import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
+    import { filterThreads } from './helpers';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -19,11 +20,21 @@
 
     export let data;
 
-    let searching = false; // Do some sick animation
+    let threads = data.threads;
 
-    const handleSearch = (value: string) => {
+    let searching = false; // Do some sick animation
+    let query = '';
+
+    const handleSearch = async (value: string) => {
+        query = value;
         searching = true;
-        goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+        // goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
+        threads = await filterThreads({
+            threads: data.threads,
+            q: value,
+            // tags: selectedTags ?? [],
+            allTags: true
+        });
     };
 
     const { debounce, reset } = createDebounce();
@@ -179,15 +190,15 @@
             </div>
         </div>
 
-        {#if data.threads.length}
+        {#if threads.length}
             <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
-                Found {data.threads.length} results.
+                Found {threads.length} results.
             </h2>
         {/if}
 
         <div class="u-flex-vertical u-gap-16 u-margin-block-start-16">
-            {#each data.threads as thread}
-                <ThreadCard {thread} />
+            {#each threads as thread (thread.$id)}
+                <ThreadCard {thread} {query} />
             {:else}
                 <div class="aw-card is-normal has-border-gradient empty-card">
                     <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
