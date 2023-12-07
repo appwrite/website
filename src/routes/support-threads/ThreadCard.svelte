@@ -20,7 +20,7 @@
             <h3 class="aw-main-body-500 aw-u-color-text-primary" use:highlight={highlightTerms}>
                 {thread.name}
             </h3>
-            <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time>
+            <!-- <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>
 
         <p class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>

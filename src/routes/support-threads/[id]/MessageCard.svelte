@@ -33,6 +33,10 @@
 </div>
 
 <style lang="scss">
+    .aw-sub-body-500 {
+        font-size: 1rem !important;
+    }
+
     .header {
         display: flex;
         justify-content: space-between;

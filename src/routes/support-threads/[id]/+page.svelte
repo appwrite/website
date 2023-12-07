@@ -190,6 +190,8 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
+
+        text-wrap: nowrap;
     }
 
     .thread-grid {
