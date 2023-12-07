@@ -32,7 +32,7 @@
         threads = await filterThreads({
             threads: data.threads,
             q: value,
-            // tags: selectedTags ?? [],
+            tags: selectedTags ?? [],
             allTags: true
         });
     };
@@ -71,6 +71,8 @@
     const tags = ['Web', 'Flutter', 'Javascript', 'Dart', 'Apple'];
     const moreTags = [
         'Self hosted',
+        'Databases',
+        'Functions',
         'Cloud',
         'Android',
         'Windows',
@@ -89,26 +91,34 @@
         },
         defaultValue: []
     });
-    $: selectedTags = $_selectedTags; // Optimistic UI hack
 
-    afterNavigate(() => {
-        selectedTags = $_selectedTags;
-    });
+    let selectedTags: string[] = [];
+    // $: selectedTags = $_selectedTags; // Optimistic UI hack
+
+    // afterNavigate(() => {
+    //     selectedTags = $_selectedTags;
+    // });
 
     function toggleTag(tag: string) {
-        _selectedTags.update((p) => {
-            let result: string[];
+        if (selectedTags.includes(tag)) {
+            selectedTags = selectedTags.filter((t) => t !== tag);
+        } else {
+            selectedTags = [...selectedTags, tag];
+        }
+        handleSearch(query);
+        // _selectedTags.update((p) => {
+        //     let result: string[];
 
-            const prevArr = p ?? [];
-            if (prevArr.includes(tag)) {
-                result = prevArr.filter((t) => t !== tag);
-            } else {
-                result = [...prevArr, tag];
-            }
+        //     const prevArr = p ?? [];
+        //     if (prevArr.includes(tag)) {
+        //         result = prevArr.filter((t) => t !== tag);
+        //     } else {
+        //         result = [...prevArr, tag];
+        //     }
 
-            selectedTags = result; // Optimistic UI hack
-            return result;
-        });
+        //     selectedTags = result; // Optimistic UI hack
+        //     return result;
+        // });
     }
 </script>
 
@@ -192,7 +202,7 @@
 
         {#if threads.length}
             <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
-                Found {threads.length} results.
+                Found {query.length ? threads.length : '600+'} results.
             </h2>
         {/if}
 
