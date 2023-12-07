@@ -30,6 +30,7 @@
         </span>
     </div>
     <p class="aw-sub-body-500">{message.message}</p>
+    <slot />
 </div>
 
 <style lang="scss">

@@ -7,8 +7,6 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
-    import { useCompletion } from 'ai/svelte';
-    import { slide } from 'svelte/transition';
 
     export let data;
 
@@ -28,18 +26,6 @@
     };
 
     let generated = false;
-    const { complete, completion: _completion } = useCompletion({
-        api: '/api/tldr'
-    });
-
-    $: completion = $_completion.replace(/TL;DR:/g, '').trim();
-
-    const generateTldr = async () => {
-        if (generated) return;
-        generated = true;
-        await complete(`Title: ${data.name}\nDescription:${data.content}\nMessages:\n
-        ${data.messages?.map((m) => `${m.author}: ${m.message}`).join('\n')}`);
-    };
 </script>
 
 <svelte:head>
@@ -88,29 +74,26 @@
                     <span class="aw-icon-discord" />
                     <span class="text">View on discord</span>
                 </a>
-                <button
-                    class="aw-button is-secondary"
-                    style="margin-block-start: 0.5rem"
-                    on:click={generateTldr}
-                    disabled={generated}
-                >
-                    Generate TL;DR
-                </button>
-            </div>
-            <div class="tldr-mobile">
-                {#if generated}
-                    <h2 class="aw-eyebrow aw-u-color-text-primary" transition:slide>TL;DR</h2>
-                    <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">
-                        {completion}
-                    </p>
-                {/if}
             </div>
         </div>
 
         <div class="thread-grid">
             <div class="messages">
-                {#each data.messages ?? [] as message}
-                    <MessageCard {message} />
+                {#each data.messages ?? [] as message, i}
+                    {@const isFirst = i === 0}
+                    <MessageCard {message}>
+                        {#if isFirst}
+                            <div class="aw-inline-info" style:margin-block-start="1.5rem">
+                                <span
+                                    class="aw-sub-body-500 aw-u-color-text-primary"
+                                    style:display="block"
+                                >
+                                    TL;DR
+                                </span>
+                                {data.tldr}
+                            </div>
+                        {/if}
+                    </MessageCard>
                 {/each}
                 <div class="aw-card is-normal has-border-gradient">
                     <span class="aw-sub-body-500 aw-u-color-text-primary">Reply</span>
@@ -127,14 +110,6 @@
                 </div>
             </div>
             <div class="related">
-                <div class="tldr-desktop">
-                    {#if generated}
-                        <h2 class="aw-eyebrow aw-u-color-text-primary" transition:slide>TL;DR</h2>
-                        <p style="margin-block-start: 1rem; margin-block-end: 1.5rem;">
-                            {completion}
-                        </p>
-                    {/if}
-                </div>
                 {#if data.related.length}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">Recommended threads</h2>
                 {/if}
