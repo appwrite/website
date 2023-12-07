@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Fence from '$markdoc/nodes/Fence.svelte';
-    import type { DiscordMessage } from '../types';
     import SvelteMarkdown from 'svelte-markdown';
+    import type { DiscordMessage } from '../types';
     import CodeRenderer from './CodeRenderer.svelte';
+    import LinkRenderer from './LinkRenderer.svelte';
 
     export let message: DiscordMessage;
 
@@ -15,8 +15,10 @@
         const year = dt.getFullYear();
         const hours = dt.getHours();
         const minutes = dt.getMinutes();
+        const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+        const paddedHours = hours < 10 ? `0${hours}` : hours;
 
-        return `${day} ${month}, ${year}, ${hours}:${minutes}`;
+        return `${day} ${month}, ${year}, ${paddedHours}:${paddedMinutes}`;
     };
 </script>
 
@@ -36,7 +38,8 @@
         <SvelteMarkdown
             source={message.message}
             renderers={{
-                code: CodeRenderer
+                code: CodeRenderer,
+                link: LinkRenderer
             }}
         />
     </div>
@@ -44,6 +47,10 @@
 </div>
 
 <style lang="scss">
+    .aw-card {
+        overflow: hidden;
+    }
+
     .aw-sub-body-500 {
         font-size: 1rem !important;
     }

@@ -44,7 +44,7 @@
                 <ul class="tags">
                     <li class="aw-tag">
                         <span class="aw-icon-arrow-up" />
-                        <span class="text">4</span>
+                        <span class="text">{data.upvotes}</span>
                     </li>
                     {#each data.tags ?? [] as tag}
                         <li class="aw-tag">
@@ -170,6 +170,8 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        overflow: hidden;
 
         padding-block-start: 2rem;
 
