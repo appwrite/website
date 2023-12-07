@@ -107,4 +107,13 @@
             transform: translate(-50%, -50%);
         }
     }
+
+    .aw-code-snippet {
+        margin-block-end: 1rem;
+    }
+
+    .aw-code-snippet-content {
+        max-height: 600px;
+        overflow-y: auto;
+    }
 </style>
