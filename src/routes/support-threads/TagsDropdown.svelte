@@ -54,6 +54,9 @@
         flex-direction: column;
         gap: 0.5rem;
 
+        backdrop-filter: blur(2px);
+        --webkit-backdrop-filter: blur(2px);
+
         &:focus {
             outline: none;
             box-shadow: none;

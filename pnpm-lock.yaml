@@ -44,6 +44,9 @@ dependencies:
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
+  svelte-markdown:
+    specifier: ^0.4.0
+    version: 0.4.0(svelte@4.2.7)
 
 devDependencies:
   '@melt-ui/pp':
@@ -1522,6 +1525,10 @@ packages:
       '@types/linkify-it': 3.0.5
       '@types/mdurl': 1.0.5
     dev: true
+
+  /@types/marked@5.0.2:
+    resolution: {integrity: sha512-OucS4KMHhFzhz27KxmWg7J+kIYqyqoW5kdIEI319hqARQQUTqhao3M/F+uFnDXD0Rg72iDDZxZNxq5gvctmLlg==}
+    dev: false
 
   /@types/mdurl@1.0.5:
     resolution: {integrity: sha512-6L6VymKTzYSrEf4Nev4Xa1LCHKrlTlYCBMTlQKFuddo1CvQcE52I0mwfOJayueUC7MJuXOeHTcIU683lzd0cUA==}
@@ -4344,6 +4351,12 @@ packages:
       uc.micro: 1.0.6
     dev: false
 
+  /marked@5.1.2:
+    resolution: {integrity: sha512-ahRPGXJpjMjwSOlBoTMZAK7ATXkli5qCPxZ21TG44rx1KEo44bii4ekgTDQPNRQ4Kh7JMb9Ub1PVk1NxRSsorg==}
+    engines: {node: '>= 16'}
+    hasBin: true
+    dev: false
+
   /maxstache-stream@1.0.4:
     resolution: {integrity: sha512-v8qlfPN0pSp7bdSoLo1NTjG43GXGqk5W2NWFnOCq2GlmFFqebGzPCjLKSbShuqIOVorOtZSAy7O/S1OCCRONUw==}
     dependencies:
@@ -6010,6 +6023,16 @@ packages:
       - '@types/react'
       - react
     dev: true
+
+  /svelte-markdown@0.4.0(svelte@4.2.7):
+    resolution: {integrity: sha512-d8xYJoPhhiLn/tFrO54V5p22q2+I7It8w3CpTv+O+h99LlgehxK9XwdISVBl2aNcLbLX128Nz/vu7GScWhVZjw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      '@types/marked': 5.0.2
+      marked: 5.1.2
+      svelte: 4.2.7
+    dev: false
 
   /svelte-parse-markup@0.1.2(svelte@4.2.7):
     resolution: {integrity: sha512-DycY7DJr7VqofiJ63ut1/NEG92HrWWL56VWITn/cJCu+LlZhMoBkBXT4opUitPEEwbq1nMQbv4vTKUfbOqIW1g==}

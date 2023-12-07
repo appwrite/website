@@ -1,5 +1,8 @@
 <script lang="ts">
+    import Fence from '$markdoc/nodes/Fence.svelte';
     import type { DiscordMessage } from '../types';
+    import SvelteMarkdown from 'svelte-markdown';
+    import CodeRenderer from './CodeRenderer.svelte';
 
     export let message: DiscordMessage;
 
@@ -29,7 +32,14 @@
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <p class="aw-sub-body-500">{message.message}</p>
+    <div class="aw-sub-body-500" style=" margin-block-start: 1rem;">
+        <SvelteMarkdown
+            source={message.message}
+            renderers={{
+                code: CodeRenderer
+            }}
+        />
+    </div>
     <slot />
 </div>
 
@@ -66,9 +76,5 @@
             width: 100%;
             height: 100%;
         }
-    }
-
-    p {
-        margin-block-start: 1rem;
     }
 </style>

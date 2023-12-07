@@ -13,19 +13,6 @@
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    const formatTimestamp = (date: string): string => {
-        const dt = new Date(date);
-
-        // format like: 12 Jan, 2023
-        const day = dt.getDate();
-        const month = dt.toLocaleString('default', { month: 'short' });
-        const year = dt.getFullYear();
-
-        return `${day} ${month}, ${year}`;
-    };
-
-    let generated = false;
 </script>
 
 <svelte:head>

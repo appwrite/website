@@ -69,6 +69,7 @@
         "meilisearch": "^0.35.1",
         "motion": "^10.16.4",
         "openai": "^4.20.1",
-        "sharp": "^0.32.6"
+        "sharp": "^0.32.6",
+        "svelte-markdown": "^0.4.0"
     }
 }
