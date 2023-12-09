@@ -133,8 +133,10 @@
                                             </button>
                                         </header>
                                         <div class="aw-pricing-cards-content">
-                                            <p>Everything in Starter plus:</p>
                                             <ul class="aw-checked-list-circle">
+                                                <li>          
+                                                    <span>Unlimited projects (never paused)</span>
+                                                </li>
                                                 <li><span>300GB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
@@ -180,7 +182,7 @@
                                             </button>
                                         </header>
                                         <div class="aw-pricing-cards-content">
-                                            <p>Everything in Starter & Pro plus:</p>
+                                            <p>Everything in Pro and:</p>
                                             <ul class="aw-checked-list-circle">
                                                 <li><span>5TB bandwidth</span></li>
                                                 <li><span>500GB storage</span></li>
