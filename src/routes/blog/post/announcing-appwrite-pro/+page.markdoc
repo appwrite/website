@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing: Appwrite Pro"
 description: Introducing the next chapter in our journey with Appwrite Cloud.
-date: 2023-12-11
+date: 2023-12-13
 cover: /images/blog/announcing-appwrite-pro.png
 timeToRead: 5
 author: laura-du-ry
@@ -33,27 +33,35 @@ Here is a snapshot of the differences in resources and support for Appwrite Star
 * Appwrite Starter
 * Appwrite Pro
 ---
-* Free
-* $15 per member per month
+* **Free**
+* **$15 per member per month**
 ---
-* - Unlimited projects (never paused)
-  - 10GB bandwidth
-  - 2GB storage
-  - 750K executions
-  - 75K monthly active users
-  - Community support
-  - Non-removable Appwrite branding
-  - No add-on resources
-  - 1 Database, 3 Buckets, 5 Functions per project
-* - 300GB bandwidth
-  - 150GB storage
-  - 3.5M executions
-  - 200K monthly active users
-  - Email support
-  - Removable Appwrite branding
-  - Add-on resources
-  - Custom SMTP
-  - Unlimited Databases, Buckets, and Functions
+* Unlimited projects (never paused)
+* Unlimited projects (never paused)
+---
+* 10GB bandwidth
+* 300GB bandwidth
+---
+* 2GB storage
+* 150GB storage
+---
+* 750K executions
+* 3.5M executions
+---
+* 75K monthly active users
+* 200K monthly active users
+---
+* Community support
+* Email support
+---
+* Non-removable Appwrite branding
+* Removable Appwrite branding
+---
+* No add-on resources
+* Add-on resources
+---
+* 1 Database, 3 Buckets, 5 Functions per project
+* Unlimited Databases, Buckets, and Functions
 ---
 {% /table %}
 
