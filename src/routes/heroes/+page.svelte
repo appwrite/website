@@ -74,15 +74,6 @@
             avatar: 'images/heroes/avatars/mickael.png'
         },
         {
-            name: 'Safwan Parkar',
-            role: 'Full Stack Engineer',
-            bio: 'Safwan is a Full Stack Engineer with experience in various technologies such as React, Next, Express, Node, MySQL and Flutter. He is among the most active members on the Appwrite Discord server and also a community moderator.',
-            github: 'https://github.com/safwanyp/',
-            twitter: 'https://twitter.com/debingalooo',
-            linkedin: 'https://www.linkedin.com/in/safwanyp/',
-            avatar: 'images/heroes/avatars/safwan.png'
-        },
-        {
             name: 'Emilia',
             role: 'Software Engineer',
             bio: "Emilia is a current student who actively focuses on system administration and coding. She likes working with Docker, Linux, Svelte, and Go, is currently exploring Envoy proxy, Crowdsec, Kubernetes, and Rust, and happens to be one of the most active contributors in Appwrite's Discord community.",
@@ -168,7 +159,7 @@
                         <div class="avatar-3">
                             <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
                         </div>
-                        <img class="teal-blur" src="/images/heroes/teal-blur.svg" alt="" />
+                        <enhanced:img class="teal-blur" src="./teal-blur.png" alt="" />
                     </div>
                 </section>
             </div>
@@ -305,7 +296,12 @@
         </div>
 
         <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <img src="/images/bgs/heroes-pre.svg" alt="" class="u-position-absolute" />
+            <enhanced:img
+                src="./bg-pre.png"
+                alt=""
+                class="u-position-absolute"
+                style:inset-block-start="0"
+            />
             <div class="aw-big-padding-section-level-2 u-position-relative">
                 <div class="aw-container">
                     <div class="aw-hero aw-u-max-width-800">

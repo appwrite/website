@@ -154,7 +154,7 @@ return function ($context) {
         $amountInRupees = floatval($context->req->query['amount']);
         $response = $client->get('https://api.exchangerate.host/latest?base=INR&symbols=USD');
         $data = $response->json();
-        $amountInDollars = amountInRupees * $data['rates']['USD'];
+        $amountInDollars = $amountInRupees * $data['rates']['USD'];
         return $context->res->send(strval($amountInDollars));
     }
 

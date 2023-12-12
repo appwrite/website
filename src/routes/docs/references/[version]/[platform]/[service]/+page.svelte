@@ -21,6 +21,7 @@
     import { writable } from 'svelte/store';
     import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
+    import { clickOutside } from '$lib/actions/clickOutside.js';
 
     export let data;
 
@@ -98,9 +99,9 @@
                 <div class="aw-inline-code">{platformType}</div>
             </div>
             <div class="aw-article-header-end">
-                <div class="u-flex u-gap-24 aw-u-color-text-primary">
+                <div class="u-flex u-gap-24 aw-u-flex-vertical-mobile aw-u-color-text-primary">
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small is-not-mobile" for="platform">Platform</label>
+                        <label class="u-small aw-is-not-mobile" for="platform">Platform</label>
                         <Select
                             --min-width="10rem"
                             id="platform"
@@ -126,7 +127,7 @@
                         />
                     </div>
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small is-not-mobile" for="version">Version</label>
+                        <label class="u-small aw-is-not-mobile" for="version">Version</label>
 
                         <Select
                             nativeMobile
@@ -309,7 +310,11 @@
                 </section>
             {/each}
         </div>
-        <aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
+        <aside
+            class="aw-references-menu"
+            class:is-open={$layoutState.showReferences}
+            use:clickOutside={() => ($layoutState.showReferences = false)}
+        >
             {#if data.methods.length > 0}
                 <button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
@@ -340,7 +345,7 @@
                             use:scrollToTop
                         >
                             <span class="aw-icon-arrow-up" aria-hidden="true" />
-                            <span class="aw-sub-body-500">Back to top</span>
+                            <span class="aw-caption-400">Back to top</span>
                         </button>
                     </div>
                 </div>
