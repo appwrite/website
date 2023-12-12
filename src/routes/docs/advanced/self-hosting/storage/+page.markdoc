@@ -14,7 +14,9 @@ Some of these services can be self-hosted, just like Appwrite.
 
 You can select which storage adapter to use by setting the `_APP_STORAGE_DEVICE` environment variable. Valid values are `local`, `s3`, `dospaces`, `backblaze`, `linode`, and `wasabi`. Each storage adapter requires its own set of additional environment variables to configure.
 
-[Learn more about storage environment variables {% icon icon="cheveron-right" /%}](/docs/advanced/self-hosting/environment-variables)
+{% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
+Learn more about storage environment variables 
+{% /arrow_link %}
 
 # Maximum file size {% #adapters %}
 
