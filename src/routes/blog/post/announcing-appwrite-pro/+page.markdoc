@@ -1,0 +1,75 @@
+---
+layout: post
+title: "Announcing: Appwrite Pro"
+description: Introducing the next chapter in our journey with Appwrite Cloud.
+date: 2023-12-11
+cover: /images/blog/announcing-appwrite-pro.png
+timeToRead: 5
+author: laura-du-ry
+category: cloud
+---
+
+After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached yet another milestone as we welcome our newest addition to Appwrite Cloud, [Appwrite Pro](https://appwrite.io/pricing).
+
+While Appwrite Cloud is still in beta, Appwrite Pro is a new and exciting chapter we write together, allowing us to add more capabilities to Appwrite Cloud faster. It is yet another step towards our mission of making software development more accessible and fun for all. 
+
+# The Appwrite Pro developer
+
+Appwrite Pro helps engineers with big plans build successful applications. Appwrite Pro offers additional resources like more bandwidth, function executions, active users, and storage, allowing you to build with confidence. In addition, you will receive premium support and early access to features and products. With this, we bridge the gap between the Appwrite Starter and the Appwrite Pro developer, both equally as important but with significantly different needs. We focus on helping you get your projects to production faster and smoother and provide the tools, resources, and support you need to scale.
+
+# Pro resources & support
+
+Our pricing plans are based on a set of guiding principles we created, which we call the “Value Framework.” It guided us through the process of determining the resources in a Pro plan and a fair price. It focuses on delivering the maximum value for you without compromising on the affordability and accessibility of our products and services.
+
+Appwrite Pro is priced to help your team and Appwrite grow together. Instead of pricing per project, we price Appwrite Pro per member in your organization. By allowing you to have unlimited projects, we will enable you to experiment and build freely as an individual. When your app grows and your team grows, we bill per additional team member so our pricing is fair for development teams of all sizes.
+
+Appwrite Pro also starts with a generous resource limit but allows you to buy additional resources like storage or bandwidth. This helps us avoid overcharging developers for resources they don’t need while remaining flexible enough as you establish a growing user base.
+
+Another important benefit is premium support. This is an email support service on top of our  Discord community, where we will have a dedicated team to provide technical support.
+
+Here is a snapshot of the differences in resources and support for Appwrite Starter and Appwrite Pro. You can find the complete overview on our [pricing page](https://appwrite.io/pricing#:~:text=Contact%20us-,Compare%20plans,-Discover%20our%20plans).
+
+{% table %}
+* Appwrite Starter
+* Appwrite Pro
+---
+* Free
+* $15 per member per month
+---
+* - Unlimited projects (never paused)
+  - 10GB bandwidth
+  - 2GB storage
+  - 750K executions
+  - 75K monthly active users
+  - Community support
+  - Non-removable Appwrite branding
+  - No add-on resources
+  - 1 Database, 3 Buckets, 5 Functions per project
+* - 300GB bandwidth
+  - 150GB storage
+  - 3.5M executions
+  - 200K monthly active users
+  - Email support
+  - Removable Appwrite branding
+  - Add-on resources
+  - Custom SMTP
+  - Unlimited Databases, Buckets, and Functions
+---
+{% /table %}
+
+
+# Growth in beta with early adopters
+
+Appwrite Cloud has seen immense growth since we entered public beta. It has been truly encouraging to see what the strength of a valuable product and a fantastic community can do. We’ve seen unique projects hosted on Appwrite Cloud. Cloud has helped developers scale their apps, while their feedback has helped us improve Cloud.
+
+Beta developers are fundamental to the success of Appwrite Cloud today. We will provide each early adopter of Appwrite Cloud with credits for Appwrite Pro for the first two months as a sign of appreciation.
+
+# Appwrite Pro for open-source maintainers
+
+Open-source software forms the foundation of modern software technologies. As lovers and builders of open-source software, we understand and appreciate the difficulty of building in the open. We’re fortunate to have the opportunity to build open-source software sustainably, and we can’t wait to give back.
+
+Like our previous initiatives, such as the OSS Fund finalization, Appwrite Cloud will also support open-source developers. OSS maintainers can use Appwrite to build and maintain their projects on the Appwrite Pro plan for free. As always, Appwrite also remains open-sourced and free to self-host. 
+
+We are excited to see your projects grow and succeed with Appwrite Cloud. While you benefit from everything Appwrite Pro has to offer, you also become advocates in our mission to make software development accessible and enjoyable for all.
+
+Together, we build like a team of hundreds_
