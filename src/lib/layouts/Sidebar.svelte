@@ -35,72 +35,11 @@
     }
 </script>
 
-<nav class="aw-side-nav" aria-label="Side">
-	<div class="aw-side-nav-wrapper">
-		<button
-			class="aw-input-text aw-is-not-desktop"
-			on:click={() => ($layoutState.showSearch = true)}
-		>
-			<span class="aw-icon-search" />
-			<span class="text">Search in docs</span>
-		</button>
-		<div class="aw-side-nav-scroll">
-			{#if parent}
-				<section class="aw-side-nav-wrapper-parent">
-					<a href={parent.href} aria-label="go back">
-						<span class="icon-cheveron-left" aria-hidden="true" />
-					</a>
-					<span class="aw-side-nav-wrapper-parent-title aw-eyebrow">{parent.label}</span>
-				</section>
-			{/if}
-			{#each navigation as navGroup}
-				<section>
-					{#if isNavLink(navGroup)}
-						{#if expandable && !$layoutState.showSidenav}
-							<Tooltip placement="right">
-								<SidebarNavButton groupItem={navGroup} />
-								<svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
-							</Tooltip>
-						{:else}
-							<SidebarNavButton groupItem={navGroup} />
-						{/if}
-					{:else}
-						{#if navGroup.label}
-							<h2 class="aw-side-nav-header aw-eyebrow u-un-break-text">{navGroup.label}</h2>
-						{/if}
-						<ul>
-							{#each navGroup.items as groupItem}
-								<li>
-									{#if expandable && !$layoutState.showSidenav}
-										<Tooltip placement="right">
-											<SidebarNavButton {groupItem} />
-											<svelte:fragment slot="tooltip">{groupItem.label}</svelte:fragment>
-										</Tooltip>
-									{:else}
-										<SidebarNavButton {groupItem} />
-									{/if}
-								</li>
-							{/each}
-						</ul>
-					{/if}
-				</section>
-			{/each}
-		</div>
-		{#if expandable}
-			<button
-				on:click={toggleSidenav}
-				class="aw-icon-button u-margin-inline-start-auto"
-				style:margin-bottom="1rem"
-				aria-label="toggle nav"
-			>
-				<span class="icon-cheveron-right" aria-hidden="true" />
-			</button>
-		{/if}
-		<div class="aw-side-nav-mobile-footer-buttons">
-			<button class="aw-button aw-u-inline-width-100-percent-mobile">
-				<span class="text">Go to console</span>
-			</button>
-<nav class="aw-side-nav" use:clickOutside={() => ($layoutState.showSidenav = false)}>
+<nav
+    class="aw-side-nav"
+    use:clickOutside={() => ($layoutState.showSidenav = false)}
+    aria-label="Side"
+>
     <div class="aw-side-nav-wrapper">
         <button
             class="aw-input-text aw-is-not-desktop"
@@ -166,12 +105,12 @@
             </button>
         {/if}
         <div class="aw-side-nav-mobile-footer-buttons">
-            <button
+            <a
                 href="https://cloud.appwrite.io/console"
                 class="aw-button aw-u-inline-width-100-percent-mobile"
             >
                 <span class="text">Go to console</span>
-            </button>
+            </a>
 
             <a
                 href="https://github.com/appwrite/appwrite/stargazers"
