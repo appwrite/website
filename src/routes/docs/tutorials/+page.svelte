@@ -19,7 +19,9 @@
         sveltekit: 'icon-svelte',
         android: 'icon-android',
         apple: 'icon-apple',
-        flutter: 'icon-flutter'
+        flutter: 'icon-flutter',
+        stripe: 'icon-stripe'
+
     };
 
     const getIcon = (tutorial: MappedTutorial) => {
