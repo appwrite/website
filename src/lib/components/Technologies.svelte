@@ -38,6 +38,11 @@
             href: '/docs/quick-starts/angular',
             image: `/images/platforms/${$themeInUse}/angular.svg`
         },
+         {
+            name: 'Refine',
+            href: '/docs/quick-starts/refine',
+            image: `/images/platforms/${$themeInUse}/refine.svg`
+        },
         {
             name: 'Apple',
             href: '/docs/quick-starts/apple',
@@ -47,7 +52,8 @@
             name: 'Android',
             href: '/docs/quick-starts/android',
             image: `/images/platforms/${$themeInUse}/android.svg`
-        }
+        },
+       
     ] as Array<{
         name: string;
         href: string;
