@@ -1,12 +1,13 @@
 ---
 layout: article
 title: Start with Flutter
-description: Learn how to quickly integrate Appwrite products and services into your Flutter project.
+description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
-readtime: 3
+readtime: 10
+back: /docs/quick-starts
 ---
 
-Learn to setup your first Flutter project powered by Appwrite.
+Learn how to setup your first Flutter project powered by Appwrite.
 
 {% section #step-1 step=1 title="Create Flutter project" %}
 Create a Flutter project.
@@ -19,9 +20,14 @@ flutter create my_app && cd my_app
 {% section #step-2 step=2 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Flutter app**. You can choose between many different platfroms.
 
@@ -137,7 +143,12 @@ If you cannot find the correct package name, run the application in Windows, and
 
 {% /tabs %}
 
-![Add a platform]()
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -155,8 +166,12 @@ flutter pub add appwrite
 {% section #step-4 step=4 title="Import Appwrite" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
-
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 This imports and initializes Appwrite.
 

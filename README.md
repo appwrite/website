@@ -4,7 +4,7 @@
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
-![Cover banner](https://github.com/appwrite/website/assets/31401437/0852817d-b482-4e06-a002-ee84b2a7052c)
+![Cover banner](/../../../.github/blob/main/profile/images/banner.png)
 
 The Appwrite Website repo features the main Appwrite website, including our [homepage](https://appwrite.io), [docs](https://appwrite.io/docs), and upcoming blog.
 
@@ -40,4 +40,4 @@ Join our growing community around the world! See our official [Blog](https://med
 
 ## License
 
-This repository is available under the [BSD 3-Clause License](./LICENSE).
+Appwrite website, docs and blog © 2023 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).

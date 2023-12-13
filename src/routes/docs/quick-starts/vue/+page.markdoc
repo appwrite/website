@@ -1,22 +1,33 @@
 ---
 layout: article
 title: Start with Vue.js
-description: Learn how to quickly integrate Appwrite products and services into your Vue.js project.
+description: Build Vue.js apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 3
+back: /docs/quick-starts
 ---
 
-Learn to setup your first Vue project powered by Appwrite.
+Learn how to setup your first Vue project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -39,7 +50,12 @@ npm install appwrite
 {% section #step-4 step=4 title="Import Appwrite" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
@@ -109,5 +125,5 @@ const logout = async () => {
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-Run your project with `npm run dev -- --open --port 3000` and open [http://localhost:3000](http://localhost:3000) in your browser.
+Run your project with `npm run dev -- --open --port 3000` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
 {% /section %}

@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
-		<link rel="stylesheet" href="/icon-font/aw-icon.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Appwrite - build like a team of hundreds</title>
-		%sveltekit.head%
-	</head>
-	<body class="theme-dark" data-sveltekit-preload-data="hover">
-		<script
-			type="module"
-			src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
-		></script>
-		<script>
-			const isDocs = window.location.pathname.startsWith('/docs');
-			if (isDocs) {
-				const theme = localStorage.getItem('theme');
-				document.body.classList.remove('theme-dark', 'theme-light') || 'dark';
-				if (theme === 'system') {
-					const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-						? 'dark'
-						: 'light';
-					document.body.classList.add(`theme-${systemTheme}`);
-				} else {
-					document.body.classList.add(`theme-${theme}`);
-				}
-				localStorage.setItem('theme', theme);
-			}
-		</script>
-		<div id="top" style="display: contents">%sveltekit.body%</div>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="twitter:site" content="@appwrite" />
+        <link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
+        <!-- preload font for headlines -->
+        <link
+            rel="preload"
+            href="/fonts/aeonik-pro/AeonikPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+
+        %sveltekit.head%
+    </head>
+
+    <body class="theme-dark" data-sveltekit-preload-data="hover">
+        <script>
+            // Theme
+            const isDocs = window.location.pathname.startsWith('/docs');
+            if (isDocs) {
+                const theme = localStorage.getItem('theme');
+                if (theme) {
+                    document.body.classList.remove('theme-dark', 'theme-light');
+                    if (theme === 'system') {
+                        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+                            .matches
+                            ? 'dark'
+                            : 'light';
+                        document.body.classList.add(`theme-${systemTheme}`);
+                    } else {
+                        document.body.classList.add(`theme-${theme}`);
+                    }
+                }
+            }
+
+            // Progressive enhancement
+            document.body.dataset.jsEnabled = '';
+
+            // Banner
+            const BANNER_KEY = '%aw_banner_key%';
+            const hideBanner = localStorage.getItem(BANNER_KEY);
+            if (hideBanner === 'true') {
+                document.body.dataset.bannerHidden = '';
+            }
+        </script>
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>

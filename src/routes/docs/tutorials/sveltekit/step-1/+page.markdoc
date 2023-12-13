@@ -1,20 +1,24 @@
 ---
 layout: tutorial
-title: Introduction
-description: This is the description used for SEO.
+title: Build an ideas tracker with SvelteKit
+description: Build a SvelteKit project using Appwrite.
 step: 1
-difficulty: easy
+difficulty: beginner
 readtime: 10
+framework: SvelteKit
 ---
 
-**Idea Tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
-In this tutorial, you will build Idea Tracker with Appwrite and SvelteKit.
+**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+In this tutorial, you will build Idea tracker with Appwrite and SvelteKit.
 
-[TODO: Image] 
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker.png)
+{% /only_light %}
 
-You can follow along with a fresh repo or [clone the project on GitHub](#).
-
-## Concepts {% #concepts %}
+# Concepts {% #concepts %}
 This tutorial will introduce the following concepts:
 
 1. Setting up your first project
@@ -23,6 +27,6 @@ This tutorial will introduce the following concepts:
 4. Queries and pagination
 5. Storage
 
-## Prerequisites {% #prerequisites %}
+# Prerequisites {% #prerequisites %}
 1. Basic knowledge of JavaScript and Svelte.
 2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer

@@ -14,12 +14,18 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: pxToRem(4);
-    background: hsl(var(--aw-color-tertiary));
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-corner {
-    background: hsl(var(--aw-color-tertiary));
+    background-color: transparent;
     border-radius: pxToRem(6);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-corner {
+      background-color: hsl(var(--aw-color-border));
+    }
   }
 }
 

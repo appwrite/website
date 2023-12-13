@@ -1,9 +1,7 @@
 ---
 layout: article
-title: Permissions
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+title: Storage permissions
+description: Enhance data security and control with Appwrite Storage Permissions. Learn how to set access rules, permissions, and restrictions for your stored files.
 ---
 
 Permissions define who can access files within a bucket. By default **no permissions** are granted to any users, so no user can access any files.
@@ -13,7 +11,7 @@ In Appwrite, permissions are **granted**, meaning a user has no access by defaul
 A user with access granted at either bucket level or file level will be able to access a file.
 Users **don't need access at both levels** to access files.
 
-## Bucket level {% #bucket-level %}
+# Bucket level {% #bucket-level %}
 Bucket level permissions apply to every file in the bucket. 
 If a user has read, create, update, or delete permissions at the bucket level, the user can access **all files** inside the bucket.
 
@@ -21,7 +19,7 @@ Configure bucket level permissions by navigating to **Your bucket** > **Settings
 
 [Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
-## File level {% #file-level %}
+# File level {% #file-level %}
 File level permissions grant access to individual files.
 If a user has read, create, update, or delete permissions at the file level, the user can access the **individual file**.
 

@@ -1,20 +1,20 @@
 ---
 layout: article
-title: Quick start
-description: This is the description used for SEO.
+title: Start with Storage
+description: Get started quickly with Appwrite Storage. Follow step-by-step instructions to set up storage, upload files, and integrate cloud storage into your projects
 difficulty: beginner
 readtime: 5
 ---
 
 You can create your first bucket, upload, and download your first file in minutes.
 
-## Create bucket {% #create-bucket %}
+# Create bucket {% #create-bucket %}
 You can create a bucket in the Appwrite Console by navigating to **Storage** > **Create bucket**.
 
 In your bucket, navigate to **Settings** > **Permissions**, then add a new **Any** role with **CREATE** and **READ** permissions.
 This allows anyone to create and read files in this bucket.
 
-## Create file {% #create-file %}
+# Create file {% #create-file %}
 
 To upload a file, add this to you web, Flutter, Apple, or Android app.
 
@@ -123,11 +123,9 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   ```
 
 {% /multicode %}
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
 
-## Download file {% #download-file %}
+# Download file {% #download-file %}
 To download a file, use the `getFileDownload` method.
 
 {% multicode %}

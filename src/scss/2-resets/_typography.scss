@@ -12,6 +12,10 @@ body {
 	background-color: hsl(var(--p-body-bg-color));
 }
 
+.#{$p}-main-section {
+	//overflow-x:hidden;
+}
+
 :where(body) :focus-visible {
 	/* focus styles */
 	box-shadow: var(--focus-box-shadow);

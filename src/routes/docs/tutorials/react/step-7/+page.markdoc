@@ -1,17 +1,15 @@
 ---
 layout: tutorial
 title: Create ideas page
-description: This is the description used for SEO.
+description: Add database queries and pagination using Appwrite in your React application.
 step: 7
-difficulty: easy
-readtime: 10
 ---
 
 Using the `useIdeas` hook we can now display the ideas on the page. We will also add a form to submit new ideas.
 
 Overwrite the contents of `src/pages/Home.jsx` with the following:
 
-```jsx
+```js
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { useIdeas } from "../lib/context/ideas";
@@ -48,7 +46,7 @@ export function Home() {
             <button
               type="button"
               onClick={() =>
-                ideas.add({ userId: user.current.id, title, description })
+                ideas.add({ userId: user.current.$id, title, description })
               }
             >
               Submit
