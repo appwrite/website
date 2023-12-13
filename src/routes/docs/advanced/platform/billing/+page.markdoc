@@ -8,7 +8,7 @@ Appwrite allows you to configure billing per organization.
 You can access your organizations billing information under the **Billing** tab of your organization.
 
 # Plans {% #plans %}
-You can view or change your organization's plan under the **Plan summary** section. 
+You can view or change your organization's plan under the **Billing** section. 
 You'll also find the expected cost, as well as the start and end date of the current billing period.
 
 ## Billing period {% #billing-period %}
@@ -16,7 +16,7 @@ Billing periods begin the day you change your plan, and lasts 30 days.
 You resource limits are reset at the beginning of each billing period and you will be billed for your plan and usage on the last day of each billing period.
 
 # Payment history {% #payment-history %}
-You can view and download you past payment's invoices under **Payment history**. 
+You can view and download you past invoices under **Payment history**. 
 You can click the three-dots menu to view and download your invoices.
 
 # Payment methods {% #payment-methods %}

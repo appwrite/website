@@ -1,17 +1,16 @@
 ## Check resource usage {% #check-resource-usage %}
 
-You can check your organization's resource usage by navigating to the overview page of your organization. 
-Under the **Usage** tab, you can check the current billing cycle's usage stats.
+You can check your organization's resource usage by navigating to your organization, under the **Usage** tab, you can check the current billing cycle's usage stats.
 
 
 ## Reaching resource limits {% #reaching-resource-limits %}
-The following limit consequences will persist until the current billing period ends.
+Reaching your organization's resource limits will have the following effects until the current billing period ends.
 {% table %}
 * Component
 * Consequence
 ---
 * **Bandwidth** {% rowspan=3 %}
-*  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or budget cap is reached, API access will be disabled until more bandwidth is purchased.
+*  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or the budget cap is reached, API access will be denied until your organization's plan is upgraded or your budget cap is increased.
 ---
 *  Importing projects via migrations disabled, but you can still export your projects.
 ---
