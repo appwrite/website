@@ -1,9 +1,7 @@
 ---
 layout: article
-title: Overview
-description: This is the description used for SEO.
-difficulty: beginner
-readtime: 5
+title: Storage
+description: Unlock the power of cloud storage with Appwrite Storage. Learn how to store, manage, and retrieve files and media assets securely in your applications.
 ---
 
 Appwrite Storage allows you to manage files in your project. 
@@ -14,7 +12,9 @@ It provides APIs to upload, download, delete, and list files, with many added ut
 Appwrite Storage stores files like images, PDFs or videos. If you need to store data like profiles, recipes, or transactions, use [Appwrite Databases](/docs/products/databases).
 {% /info %}
 
-## Get started {% #get-started %}
+# Get started {% #get-started %}
 Get started with Appwrite Storage. Learn to setup up a bucket, upload, and download your first file.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/storage/quick-start)
+{% arrow_link href="/docs/products/storage/quick-start" %}
+Quick start 
+{% /arrow_link %}

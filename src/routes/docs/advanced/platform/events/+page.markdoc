@@ -1,12 +1,12 @@
 ---
 layout: article
 title: Events
-description: Placeholder SEO.
+description: Harness the power of events in Appwrite. Explore event-driven architecture, event types, and how to use events to create dynamic and responsive applications.
 ---
 
 Appwrite provides a variety of events that allows your application to react to changes as they happen. 
 A event will fire when a change occurs in your Appwrite project, like when a new user registers or a new file is uploaded to Appwrite. 
-You can subscribe to these events to with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
+You can subscribe to these events with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
 
 You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID. 
 You can also filter for events of specific actions like create, update, or delete. 
@@ -22,7 +22,7 @@ You can find a list of events for Storage, Databases, Functions, and Authenticat
 {% partial file="functions-events.md" /%}
 
 
-## Known limitations {% #known-limitations %}
+# Known limitations {% #known-limitations %}
 
 When events fire, only existing subscriptions for that event will receive the update. If your client or server side integrations lose network connection temporarily, delivery of the event is not guaranteed.
 

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Update
-description: Learn how to integrate Appwrite in your application with one of the supported SDKs.
+description: Keep your self-hosted Appwrite instance up-to-date. Learn how to perform updates, manage versions, and ensure your self-hosted Appwrite stays current.
 ---
 
 To upgrade your Appwrite server from an older version, you should use the Appwrite migration tool **after you have installed the new version**. The migration tool will adjust your Appwrite data to the new version's structure to make sure your Appwrite data is compatible with any internal changes.
@@ -26,36 +26,36 @@ parent_directory <= you run the command in this directory
 
 This is the parent directory where you will find the `appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
 
-## Installing the next version {% #install-next-version %}
+# Installing the next version {% #install-next-version %}
 
-### Unix
+## Unix
 
 ```sh
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.13
 ```
 
-### CMD
+## CMD
 
 ```cmd
 docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.13
 ```
 
-### PowerShell
+## PowerShell
 
 ```powershell
 docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.4.3
+    appwrite/appwrite:1.4.13
 ```
 
 This will pull the `docker-compose.yml` file for the new version and perform the installation. 
@@ -66,7 +66,9 @@ docker ps | grep appwrite/appwrite
 ```
 
 Verify that the `STATUS` doesn't have any errors and all the `appwrite/appwrite` containers have the same version.
-## Running the Migration
+
+# Running the Migration {% #running-the-migration %}
+
 We can now start the migration. Navigate to the `appwrite` directory where your `docker-compose.yml` is present and run the following command.
 
 ```sh

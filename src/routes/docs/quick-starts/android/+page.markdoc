@@ -1,17 +1,18 @@
 ---
 layout: article
 title: Start with Android
-description: Learn how to quickly integrate Appwrite products and services into your Android project.
+description: Get started with Appwrite on Android and learn how to build secure and scalable apps using our powerful backend.
 difficulty: beginner
 readtime: 3
+back: /docs/quick-starts
 ---
 
-Learn to setup your first Android project powered by Appwrite.
+Learn how to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android).
 
 {% section #step-1 step=1 title="Create Android project" %}
 Open Android Studio and click **New Project** to create a new project.
 
-Choose your desired project template and click **Next**.
+Choose your desired project template, for example **Empty Activity**, and click **Next**.
 
 Now enter your app **name** and **package name**. You will need both of these later when you create your project in the Appwrite console. Click **Finish** to create your project.
 
@@ -20,15 +21,25 @@ Now enter your app **name** and **package name**. You will need both of these la
 {% section #step-2 step=2 title="Create Appwrite project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-![Create project screen](/images/docs/databases/quick-start/create-project.png)
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
-If this is your first time using Appwrite, create an accout and create your first project.
+If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add an **Android app**.
 
 Add your app's **name** and **package name**, your package name is the one entered when creating an Android project. For existing projects, you should use the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-android/blob/master/app/build.gradle#L11) file.
 
-![Add a platform](/images/docs/databases/quick-start/add-platform.png)
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
 
 You can skip optional steps.
 
@@ -67,7 +78,12 @@ You can find your Appwrite project ID in you project settings screen in your App
 {% section #step-4 step=4 title="Create Appwrite Singleton" %}
 Find your project's ID in the **Settings** page. 
 
-![Settings page in Appwrite Console.](/images/docs/databases/quick-start/project-id.png)
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
 
 Create a new file `Appwrite.kt` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 

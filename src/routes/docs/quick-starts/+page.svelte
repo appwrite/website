@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { MainFooter } from '$lib/components';
+	import { DEFAULT_HOST } from '$lib/utils/metadata';
+	import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
 	type QuickStart = {
 		title: string;
@@ -15,19 +17,31 @@
 
 	const quickStarts: QuickStarts = [
 		{
-			title: 'Web App',
+			title: 'Web app',
 			quickStarts: [
 				{
-					title: 'React.js',
-					icon: 'icon-next_js',
+					title: 'Next.js',
+					icon: 'icon-nextjs',
 					image: '/images/blog/placeholder.png',
 					href: 'nextjs'
 				},
 				{
+					title: 'React',
+					icon: 'icon-react',
+					image: '/images/blog/placeholder.png',
+					href: 'react'
+				},
+				{
 					title: 'Vue.js',
-					icon: 'icon-vue_js',
+					icon: 'aw-icon-vue',
 					image: '/images/blog/placeholder.png',
 					href: 'vue'
+				},
+				{
+					title: 'Nuxt',
+					icon: 'aw-icon-nuxt',
+					image: '/images/blog/placeholder.png',
+					href: 'nuxt'
 				},
 				{
 					title: 'SvelteKit',
@@ -35,10 +49,16 @@
 					image: '/images/blog/placeholder.png',
 					href: 'sveltekit'
 				},
+				{
+					title: 'Angular',
+					icon: 'icon-angular',
+					image: '/images/blog/placeholder.png',
+					href: 'angular'
+				}
 			]
 		},
 		{
-			title: 'Mobile and Native',
+			title: 'Mobile and native',
 			quickStarts: [
 				{
 					title: 'Flutter',
@@ -57,7 +77,7 @@
 					icon: 'icon-android',
 					image: '/images/blog/placeholder.png',
 					href: 'android'
-				},
+				}
 			]
 		},
 		{
@@ -65,32 +85,53 @@
 			quickStarts: [
 				{
 					title: 'Node.js',
-					icon: 'icon-node',
+					icon: 'icon-node_js',
 					image: '/images/blog/placeholder.png',
 					href: 'node'
 				},
-				// {
-				// 	title: 'Python',
-				// 	icon: 'icon-python',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'python'
-				// },
-				// {
-				// 	title: '.NET',
-				// 	icon: 'icon-dotnet',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'dotnet'
-				// },
-				// {
-				// 	title: 'Dart',
-				// 	icon: 'icon-dart',
-				// 	image: '/images/blog/placeholder.png',
-				// 	href: 'dart'
-				// }
+				{
+					title: 'Python',
+					icon: 'icon-python',
+					image: '/images/blog/placeholder.png',
+					href: 'python'
+				},
+				{
+					title: '.NET',
+					icon: 'icon-dotnet',
+					image: '/images/blog/placeholder.png',
+					href: 'dotnet'
+				},
+				{
+					title: 'Dart',
+					icon: 'icon-dart',
+					image: '/images/blog/placeholder.png',
+					href: 'dart'
+				}
 			]
 		}
 	];
+
+	const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
+	const description = '';
+	const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
+
+<svelte:head>
+	<!-- Titles -->
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta name="twitter:title" content={title} />
+	<!-- Desscription -->
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="twitter:description" content={description} />
+	<!-- Image -->
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <main class="aw-main-section">
 	<article class="aw-article">
@@ -109,12 +150,11 @@
 					<ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
 						{#each category.quickStarts as quickStart}
 							<li class="is-mobile-col-span-2">
-								<a href={`/docs/quick-starts/${quickStart.href}`}>
-									<img class="aw-media" src={quickStart.image} alt="" />
-									<div class="u-flex u-cross-baseline u-gap-4">
+								<a href={`/docs/quick-starts/${quickStart.href}`} class="aw-card is-normal">
+									<header class="u-flex u-cross-baseline u-gap-4">
 										<span class="{quickStart.icon} aw-u-font-size-24" aria-hidden="true" />
 										<h4 class="aw-sub-body-500 aw-u-color-text-primary">{quickStart.title}</h4>
-									</div>
+									</header>
 								</a>
 							</li>
 						{/each}

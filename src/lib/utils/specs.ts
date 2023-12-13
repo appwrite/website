@@ -100,12 +100,14 @@ function* iterateAllMethods(
 }
 
 function getParameters(
-	method: OpenAPIV3.HttpMethods,
 	operation: AppwriteOperationObject
 ): SDKMethod['parameters'] {
 	const parameters: ReturnType<typeof getParameters> = [];
-	if (method === OpenAPIV3.HttpMethods.GET) {
-		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[]) ?? []) {
+	const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
+	const schemaJson = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
+	const schemaMultipart = requestBody?.content['multipart/form-data']?.schema as OpenAPIV3.SchemaObject;
+	if (operation?.parameters) {
+		for (const parameter of (operation?.parameters as OpenAPIV3.ParameterObject[])) {
 			const schema = parameter.schema as OpenAPIV3.SchemaObject;
 
 			parameters.push({
@@ -116,22 +118,35 @@ function getParameters(
 				example: schema?.example
 			});
 		}
-	} else {
-		const requestBody = operation?.requestBody as OpenAPIV3.RequestBodyObject;
-		const schema = requestBody?.content['application/json']?.schema as OpenAPIV3.SchemaObject;
-		for (const [key, value] of Object.entries(schema?.properties ?? {})) {
+	}
+	if (schemaJson?.properties) {
+		for (const [key, value] of Object.entries(schemaJson.properties)) {
 			const property = value as AppwriteSchemaObject;
 			parameters.push({
 				name: key,
 				description: property.description ?? '',
-				required: schema?.required?.includes(key) ?? false,
+				required: schemaJson?.required?.includes(key) ?? false,
+				type: property.type ?? '',
+				example: property['x-example'] ?? ''
+			});
+		}
+	}
+	if (schemaMultipart?.properties) {
+		for (const [key, value] of Object.entries(schemaMultipart.properties)) {
+			const property = value as AppwriteSchemaObject;
+			parameters.push({
+				name: key,
+				description: property.description ?? '',
+				required: schemaMultipart?.required?.includes(key) ?? false,
 				type: property.type ?? '',
 				example: property['x-example'] ?? ''
 			});
 		}
 	}
 
-	return parameters;
+    return parameters.sort((a, b) => {
+        return (a.required === b.required) ? 0 : a.required ? -1 : 1;
+    });
 }
 
 export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.SchemaObject {
@@ -163,6 +178,22 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
 	return api;
 }
 
+const descriptions = import.meta.glob(
+	'/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
+	{
+		as: 'raw'
+	}
+);
+
+export async function getDescription(service: string): Promise<string> {
+	const target = `/src/routes/docs/references/[version]/[platform]/[service]/descriptions/${service}.md`;
+
+	if (!(target in descriptions)) {
+		throw new Error('Missing service description');
+	}
+	return descriptions[target]();
+}
+
 export async function getService(
 	version: string,
 	platform: string,
@@ -177,16 +208,17 @@ export async function getService(
 	/**
 	 * Exceptions for Android SDK.
 	 */
-	const isAndroidJava = platform === Platform.ClientAndroidJava;
-	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin;
+	const isAndroidJava = platform === Platform.ClientAndroidJava || platform === Platform.ServerJava;
+	const isAndroidKotlin = platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
 	const isAndroid = isAndroidJava || isAndroidKotlin;
+	const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
 	const api = await getApi(version, platform);
 	const tag = api.tags?.find((n) => n.name === service);
 
 	const data: Awaited<ReturnType<typeof getService>> = {
 		service: {
 			name: tag?.name as Service,
-			description: tag?.description ?? ''
+			description: await getDescription(service)
 		},
 		methods: []
 	};
@@ -199,7 +231,7 @@ export async function getService(
 
 	for (const [method, value] of iterateAllMethods(api, service)) {
 		const operation = value as AppwriteOperationObject;
-		const parameters = getParameters(method, operation);
+		const parameters = getParameters(operation);
 		const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
 			(tuple) => {
 				const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
@@ -235,7 +267,7 @@ export async function getService(
 		);
 
 		const path = isAndroid
-			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/client-android/${
+			? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${isAndroidServer ? 'server-kotlin' : 'client-android'}/${
 					isAndroidJava ? 'java' : 'kotlin'
 			  }/${operation['x-appwrite'].demo}`
 			: `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;

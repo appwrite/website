@@ -1,0 +1,242 @@
+{
+  "apple": {
+    "encodedCode": "\\ea01",
+    "prefix": "aw-icon",
+    "className": "aw-icon-apple",
+    "unicode": "&#59905;"
+  },
+  "arrow-down": {
+    "encodedCode": "\\ea02",
+    "prefix": "aw-icon",
+    "className": "aw-icon-arrow-down",
+    "unicode": "&#59906;"
+  },
+  "arrow-ext-link": {
+    "encodedCode": "\\ea03",
+    "prefix": "aw-icon",
+    "className": "aw-icon-arrow-ext-link",
+    "unicode": "&#59907;"
+  },
+  "arrow-left": {
+    "encodedCode": "\\ea04",
+    "prefix": "aw-icon",
+    "className": "aw-icon-arrow-left",
+    "unicode": "&#59908;"
+  },
+  "arrow-right": {
+    "encodedCode": "\\ea05",
+    "prefix": "aw-icon",
+    "className": "aw-icon-arrow-right",
+    "unicode": "&#59909;"
+  },
+  "arrow-up": {
+    "encodedCode": "\\ea06",
+    "prefix": "aw-icon",
+    "className": "aw-icon-arrow-up",
+    "unicode": "&#59910;"
+  },
+  "calendar": {
+    "encodedCode": "\\ea07",
+    "prefix": "aw-icon",
+    "className": "aw-icon-calendar",
+    "unicode": "&#59911;"
+  },
+  "check": {
+    "encodedCode": "\\ea08",
+    "prefix": "aw-icon",
+    "className": "aw-icon-check",
+    "unicode": "&#59912;"
+  },
+  "chevron-down": {
+    "encodedCode": "\\ea09",
+    "prefix": "aw-icon",
+    "className": "aw-icon-chevron-down",
+    "unicode": "&#59913;"
+  },
+  "chevron-left": {
+    "encodedCode": "\\ea0a",
+    "prefix": "aw-icon",
+    "className": "aw-icon-chevron-left",
+    "unicode": "&#59914;"
+  },
+  "chevron-right": {
+    "encodedCode": "\\ea0b",
+    "prefix": "aw-icon",
+    "className": "aw-icon-chevron-right",
+    "unicode": "&#59915;"
+  },
+  "chevron-up": {
+    "encodedCode": "\\ea0c",
+    "prefix": "aw-icon",
+    "className": "aw-icon-chevron-up",
+    "unicode": "&#59916;"
+  },
+  "close": {
+    "encodedCode": "\\ea0d",
+    "prefix": "aw-icon",
+    "className": "aw-icon-close",
+    "unicode": "&#59917;"
+  },
+  "copy": {
+    "encodedCode": "\\ea0e",
+    "prefix": "aw-icon",
+    "className": "aw-icon-copy",
+    "unicode": "&#59918;"
+  },
+  "dark": {
+    "encodedCode": "\\ea0f",
+    "prefix": "aw-icon",
+    "className": "aw-icon-dark",
+    "unicode": "&#59919;"
+  },
+  "discord": {
+    "encodedCode": "\\ea10",
+    "prefix": "aw-icon",
+    "className": "aw-icon-discord",
+    "unicode": "&#59920;"
+  },
+  "divider-vertical": {
+    "encodedCode": "\\ea11",
+    "prefix": "aw-icon",
+    "className": "aw-icon-divider-vertical",
+    "unicode": "&#59921;"
+  },
+  "download": {
+    "encodedCode": "\\ea12",
+    "prefix": "aw-icon",
+    "className": "aw-icon-download",
+    "unicode": "&#59922;"
+  },
+  "github": {
+    "encodedCode": "\\ea13",
+    "prefix": "aw-icon",
+    "className": "aw-icon-github",
+    "unicode": "&#59923;"
+  },
+  "google": {
+    "encodedCode": "\\ea14",
+    "prefix": "aw-icon",
+    "className": "aw-icon-google",
+    "unicode": "&#59924;"
+  },
+  "hamburger-menu": {
+    "encodedCode": "\\ea15",
+    "prefix": "aw-icon",
+    "className": "aw-icon-hamburger-menu",
+    "unicode": "&#59925;"
+  },
+  "light": {
+    "encodedCode": "\\ea16",
+    "prefix": "aw-icon",
+    "className": "aw-icon-light",
+    "unicode": "&#59926;"
+  },
+  "linkedin": {
+    "encodedCode": "\\ea17",
+    "prefix": "aw-icon",
+    "className": "aw-icon-linkedin",
+    "unicode": "&#59927;"
+  },
+  "location": {
+    "encodedCode": "\\ea18",
+    "prefix": "aw-icon",
+    "className": "aw-icon-location",
+    "unicode": "&#59928;"
+  },
+  "logout-left": {
+    "encodedCode": "\\ea19",
+    "prefix": "aw-icon",
+    "className": "aw-icon-logout-left",
+    "unicode": "&#59929;"
+  },
+  "logout-right": {
+    "encodedCode": "\\ea1a",
+    "prefix": "aw-icon",
+    "className": "aw-icon-logout-right",
+    "unicode": "&#59930;"
+  },
+  "microsoft": {
+    "encodedCode": "\\ea1b",
+    "prefix": "aw-icon",
+    "className": "aw-icon-microsoft",
+    "unicode": "&#59931;"
+  },
+  "minus": {
+    "encodedCode": "\\ea1c",
+    "prefix": "aw-icon",
+    "className": "aw-icon-minus",
+    "unicode": "&#59932;"
+  },
+  "nuxt": {
+    "encodedCode": "\\ea1d",
+    "prefix": "aw-icon",
+    "className": "aw-icon-nuxt",
+    "unicode": "&#59933;"
+  },
+  "platform": {
+    "encodedCode": "\\ea1e",
+    "prefix": "aw-icon",
+    "className": "aw-icon-platform",
+    "unicode": "&#59934;"
+  },
+  "plus": {
+    "encodedCode": "\\ea1f",
+    "prefix": "aw-icon",
+    "className": "aw-icon-plus",
+    "unicode": "&#59935;"
+  },
+  "product-hunt": {
+    "encodedCode": "\\ea20",
+    "prefix": "aw-icon",
+    "className": "aw-icon-product-hunt",
+    "unicode": "&#59936;"
+  },
+  "rest": {
+    "encodedCode": "\\ea21",
+    "prefix": "aw-icon",
+    "className": "aw-icon-rest",
+    "unicode": "&#59937;"
+  },
+  "search": {
+    "encodedCode": "\\ea22",
+    "prefix": "aw-icon",
+    "className": "aw-icon-search",
+    "unicode": "&#59938;"
+  },
+  "star": {
+    "encodedCode": "\\ea23",
+    "prefix": "aw-icon",
+    "className": "aw-icon-star",
+    "unicode": "&#59939;"
+  },
+  "system": {
+    "encodedCode": "\\ea24",
+    "prefix": "aw-icon",
+    "className": "aw-icon-system",
+    "unicode": "&#59940;"
+  },
+  "twitter": {
+    "encodedCode": "\\ea25",
+    "prefix": "aw-icon",
+    "className": "aw-icon-twitter",
+    "unicode": "&#59941;"
+  },
+  "vue": {
+    "encodedCode": "\\ea26",
+    "prefix": "aw-icon",
+    "className": "aw-icon-vue",
+    "unicode": "&#59942;"
+  },
+  "x": {
+    "encodedCode": "\\ea27",
+    "prefix": "aw-icon",
+    "className": "aw-icon-x",
+    "unicode": "&#59943;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea28",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59944;"
+  }
+}

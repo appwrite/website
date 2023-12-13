@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Accounts
-description: This is the description used for SEO.
+description: Unlock advanced user management - Appwrite's Account API for seamless signups, store user preferences, and dynamic permissions.
 ---
 
 Appwrite Account API is used for user signup and login in client applications.
@@ -10,17 +10,17 @@ Each user's account can also have their own preference object, which you can use
 
 {% partial file="account-vs-user.md" /%}
 
-## Signup and login {% #signup-login %}
+# Signup and login {% #signup-login %}
 
 You can signup and login a user with an account create through 
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),
-[Anonymous](/docs/products/auth/anonymous)
+[Anonymous](/docs/products/auth/anonymous),
 [magic URL](/docs/products/auth/magic-url), and
 [OAuth 2](/docs/products/auth/oauth2)
-authentication. 
+authentication.
 
-## Preferences {% #preferences %}
+# Preferences {% #preferences %}
 
 You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
 
@@ -171,7 +171,7 @@ query {
 ```
 {% /multicode %}
 
-## Permissions {% #permissions %}
+# Permissions {% #permissions %}
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
 individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
@@ -184,5 +184,8 @@ individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
 | Unverified user | `Role.user(<USER_ID>, 'unverified')` |
 
 
+{% arrow_link href="/docs/advanced/platform/permissions" %}
+Learn more about permissions
+{% /arrow_link %}
 
-[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)
+

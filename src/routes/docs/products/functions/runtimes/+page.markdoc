@@ -1,12 +1,12 @@
 ---
 layout: article
 title: Runtimes
-description: 
+description: Choose the right runtime environment for your serverless functions in Appwrite. Explore available runtimes, dependencies, and runtime-specific considerations.
 ---
 
 Appwrite Functions supports an extensive list of runtimes to meet your unique tech preferences. Not all runtimes are available on Appwrite Cloud yet. Check the [Cloud Support](#cloud-support) list to know which ones are available on Appwrite Cloud.
 
-## Available runtimes {% #available-runtimes %}
+# Available runtimes {% #available-runtimes %}
 Below is a list of available Functions runtimes. The Appwrite team continually adds support for new runtimes.
 
 {% table %}
@@ -46,6 +46,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `python-3.9`
 `python-3.10`
 `python-3.11`
+`python-3.12`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
@@ -56,6 +57,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `dart-2.17`
 `dart-2.18`
 `dart-3.0`
+`dart-3.1`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
@@ -114,7 +116,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 ---
 {% /table %}
 
-## Cloud support {% #cloud-support %}
+# Cloud support {% #cloud-support %}
 
 While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As we continue to improve our Cloud offering, we will add support for more runtimes. Until then, these are the runtimes that you can use on Appwrite Cloud:
 
@@ -123,4 +125,5 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 - `php-8.0`
 - `ruby-3.0`
 - `python-3.9`
+- `python-3.12`
 - `dart-2.17`
