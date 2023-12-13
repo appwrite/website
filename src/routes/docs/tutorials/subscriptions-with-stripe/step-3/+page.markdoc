@@ -10,7 +10,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) and create a n
 ## Create a new function {% #create-function %}
 Once inside your project overview, switch to the **Functions** page from the left sidebar. Under the **Templates** section, use the search bar and look for `subscriptions`. You will find the **Subscriptions with Stripe** template, which you can use by clicking the **Create function** button.
 
-![Appwrite templates screen](/images/docs/functions/quick-start/templates-stripe-subscription.png)
+![Appwrite templates screen](/images/docs/tutorials/subscriptions-with-stripe/templates-stripe-subscription.png)
 
 ## Create a new function {% #create-function %}
 

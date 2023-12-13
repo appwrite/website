@@ -10,7 +10,7 @@ You are now ready to use the Appwrite Function in your front end. You can initia
 ## Add platform {% #add-platform %}
 To showcase the functionality, the template ships with a demo frontend that you can use. To allow this demo, you must add Function's domain as a trusted web platform. Head to your project's **Overview** page in Apwrite Console, and scroll down to the **Integrations** section. Click the **Add platform** button and select **Web App** from the dropdown.
 
-![Appwrite Platforms screen](/images/docs/functions/quick-start/functions-add-web-platform.png)
+![Appwrite Platforms screen](/images/docs/tutorials/subscriptions-with-stripe/functions-add-web-platform.png)
 
 Set **Name** to `Subscription demo` and **Hostname** to your Function's domain. In my case, it is `6512ac5b95af39df6469.appwrite.global`. Click the **Next** button to continue. 
 
@@ -36,7 +36,7 @@ Here, you should see one anonymous user.
 Let's click on this user to see the details. 
 After scrolling down to the **Labels** card, you can see the `subscriber` label has been added to this user.
 
-![Appwrite User screen](/images/docs/functions/quick-start/user-subscriber-label.png)
+![Appwrite User screen](/images/docs/tutorials/subscriptions-with-stripe/user-subscriber-label.png)
 
 ## Permissions {% #permissions %}
 

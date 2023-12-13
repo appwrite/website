@@ -29,7 +29,7 @@ You can use the search bar to your advantage. By searching for `subscription`, y
 
 Once both are selected, you can click a button to **Add events**. Finish off the form by clicking the **Add endpoint** button.
 
-![Stripe webhook setup screen](/images/docs/functions/quick-start/stripe-webhook-subscription.png)
+![Stripe webhook setup screen](/images/docs/tutorials/subscriptions-with-stripe/stripe-webhook-subscription.png)
 
 Once created, click **Reveal** under **Signing secret** and copy the secret. Note it down, as you will need it later when setting the `STRIPE_WEBHOOK_SECRET` environment variable.
 
