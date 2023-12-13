@@ -21,4 +21,6 @@ Start exploring by cloning one of the quick start templates or using a template 
 ![Create project screen](/images/docs/functions/template.png)
 {% /only_light %}
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/functions/quick-start)
+{% arrow_link href="/docs/products/functions/quick-start" %}
+Quick start 
+{% /arrow_link %}
