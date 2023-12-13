@@ -43,7 +43,7 @@ Eventually, to increase K-Collect users' access to desktop-based clients and ena
 
 One of the most important aspects of any BaaS platform is the features and offerings it provides a developer. Appwrite was a boon for K-Collect, as it offered several features for their product. Currently, K-Collect is leveraging Appwrite Authentication to manage identity (and relevant functionalities) for the entire web platform. All information related to K-pop albums, stars, and photo card metadata that K-Collect uses is stored in Appwrite Databases. The photo cards themselves are stored and consumed through Appwrite Storage. K-Collect also implements Appwrite Functions to integrate external 3rd-party services (such as sending emails) and other event-driven tasks related to the other Appwrite offerings being used.
 
-At the moment, Ryan is developing an internal trading platform that will allow users to communicate with each other and buy/sell photo cards. For these features, Ryan will be returning Appwrite Functions for transaction management with a payments gateway and using a combination of Appwrite Databases and Appwrite Realtime for an internal chat platform.
+At the moment, Ryan is developing an internal trading platform that will allow users to communicate with each other and buy/sell photo cards. For these features, Ryan will be returning to Appwrite Functions for transaction management with a payments gateway and using a combination of Appwrite Databases and Appwrite Realtime for an internal chat platform.
 
 ## Improved developer productivity due to easy SDK access
 
