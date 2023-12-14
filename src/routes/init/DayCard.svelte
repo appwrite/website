@@ -59,17 +59,16 @@
         {#if day.cover}
             <enhanced:img src={day.cover} class="img" />
         {/if}
-        <button class="aw-button is-secondary">
-            <span class="aw-icon-arrow-right" />
-        </button>
     </div>
 {:else}
     <div class="release">
         <span class="aw-eyebrow">Day {number}<span class="aw-u-color-text-accent">_</span></span>
-        <p class="countdown aw-title">
-            {pad(hours)}:{pad(minutes)}:{pad(seconds)}
-        </p>
-        <button class="aw-button is-secondary">Remind me</button>
+        <div class="bottom">
+            <p class="countdown aw-title">
+                {pad(hours)}:{pad(minutes)}:{pad(seconds)}
+            </p>
+            <button class="aw-button is-secondary">Remind me</button>
+        </div>
     </div>
 {/if}
 
@@ -91,7 +90,7 @@
         background: hsl(var(--aw-color-card));
         overflow: hidden;
 
-        height: 13.75rem;
+        height: 7.5rem;
         padding: 1.25rem;
 
         flex: 0 0 var(--day-min-w);
@@ -101,17 +100,7 @@
         h2 {
             margin-block-start: 0.5rem;
             position: relative;
-        }
-
-        button {
-            aspect-ratio: 1;
-            padding: 0.625rem;
-
-            margin-block-start: auto;
-
-            [class*='icon'] {
-                color: hsl(var(--aw-color-primary)) !important;
-            }
+            max-width: 50%;
         }
 
         .circle {
@@ -139,22 +128,22 @@
             height: 100%;
             object-fit: cover;
             top: 0;
-            left: 0;
+            right: 0;
+            max-width: 70%;
             pointer-events: none;
         }
     }
 
     .release {
-        align-items: center;
         justify-content: center;
+        gap: 0.5rem;
 
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+        }
         .countdown {
             color: hsl(var(--aw-color-primary));
-            margin-block-start: 0.5rem;
-        }
-
-        .aw-button {
-            margin-block-start: 1.25rem;
         }
     }
 </style>
