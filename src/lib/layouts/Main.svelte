@@ -201,7 +201,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Main">
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as { label, href }}
                             <li class="aw-main-header-nav-item">
@@ -220,11 +220,11 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                 </a>
-                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"
-                    >Sign up</a
-                >
+<!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
+<!--                    >Sign up</a-->
+<!--                >-->
                 <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
