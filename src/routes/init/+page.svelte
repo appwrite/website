@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import Day, { type DayType } from './Day.svelte';
+    import DayCard, { type DayType } from './DayCard.svelte';
     import Day1 from './day-1.png?enhanced';
 
     const days: DayType[] = [
@@ -52,7 +52,7 @@
         <hr />
         <div class="days">
             {#each days as day, i}
-                <Day {day} number={i + 1} />
+                <DayCard {day} number={i + 1} />
             {/each}
         </div>
     </div>
