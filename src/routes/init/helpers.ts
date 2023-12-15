@@ -9,31 +9,36 @@ export function createCountdown(date: Date) {
 
     const [days, hours, minutes, seconds] = [writable(0), writable(0), writable(0), writable(0)];
 
+    function update() {
+        const today = new Date();
+        const timeRemaining = date.getTime() - today.getTime();
+
+        if (timeRemaining <= 0) {
+            // Target date has passed, stop the countdown
+            return;
+        }
+
+        const totalSeconds = Math.floor(timeRemaining / 1000);
+        seconds.set(totalSeconds % 60);
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        minutes.set(totalMinutes % 60);
+        hours.set(Math.floor(totalMinutes / 60));
+        days.set(Math.floor(get(hours) / 24));
+    }
+
+    update();
+
     onMount(() => {
         let frame: number;
 
-        function updateCountdown() {
-            const today = new Date();
-            const timeRemaining = date.getTime() - today.getTime();
-
-            if (timeRemaining <= 0) {
-                // Target date has passed, stop the countdown
-                return;
-            }
-
-            const totalSeconds = Math.floor(timeRemaining / 1000);
-            seconds.set(totalSeconds % 60);
-            const totalMinutes = Math.floor(totalSeconds / 60);
-            minutes.set(totalMinutes % 60);
-            hours.set(Math.floor(totalMinutes / 60));
-            days.set(Math.floor(get(hours) / 24));
-
+        function updateFrame() {
+            update();
             // Request the next animation frame to keep updating the countdown
             frame = requestAnimationFrame(() => {
-                updateCountdown();
+                updateFrame();
             });
         }
-        updateCountdown();
+        updateFrame();
 
         return () => cancelAnimationFrame(frame);
     });

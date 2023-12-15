@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-    import { createCountdown, pad } from './helpers';
+    import { createCountdown, pad } from '../helpers';
 
     export let day: DayType;
     export let number: number;

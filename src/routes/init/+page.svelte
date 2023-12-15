@@ -1,9 +1,9 @@
 <script lang="ts">
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
-    import CountdownCard from './CountdownCard.svelte';
-    import DayCard, { type DayType } from './DayCard.svelte';
-    import Day1 from './day-1.png?enhanced';
+    import CountdownCard from './(components)/CountdownCard.svelte';
+    import DayCard, { type DayType } from './(components)/DayCard.svelte';
+    import Day1 from './(assets)/day-1.png?enhanced';
 
     const days: DayType[] = [
         {
