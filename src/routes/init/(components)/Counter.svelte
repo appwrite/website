@@ -4,6 +4,8 @@
 
     export let value = 0;
 
+    const getTransform = (value: number) => `translateY(-${value * 100}%)`;
+
     function transform(node: HTMLElement, value: number) {
         function update(value: number) {
             const childNode = [...node.children].find((child) => child.innerHTML === String(value));
@@ -26,7 +28,7 @@
             {#if Number.isNaN(Number(char))}
                 <span>{char}</span>
             {:else}
-                <ul use:transform={Number(char)}>
+                <ul style:transform={getTransform(Number(char))} use:transform={Number(char)}>
                     <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                     {#each { length: 10 } as _, i}
                         <li>{i}</li>
@@ -49,11 +51,6 @@
         align-items: center;
         height: 3rem;
         line-height: 3rem;
-        /* overflow: hidden; */
-        transition: 0.5s ease;
-    }
-
-    li {
         transition: 0.5s ease;
     }
 </style>

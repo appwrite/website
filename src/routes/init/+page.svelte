@@ -1,9 +1,12 @@
 <script lang="ts">
-    import { FooterNav, MainFooter } from '$lib/components';
+    import { Carousel, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
     import Day1 from './(assets)/day-1.png?enhanced';
+    import EventCard from '$routes/community/EventCard.svelte';
+
+    import { events } from '$routes/community/+page.svelte';
 
     const days: DayType[] = [
         {
@@ -67,6 +70,7 @@
             </h2>
 
             <div class="mosaic">
+                <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                 {#each { length: 10 } as _, i}
                     <div class="aw-card is-normal has-border-gradient">{i + 1}</div>
                 {/each}
@@ -81,7 +85,31 @@
                 <CountdownCard date={day.release} />
             {/each}
         </div>
+    </div>
 
+    <div class="events">
+        <div class="aw-container">
+            <h2 class="aw-label aw-u-color-text-primary">Upcoming Events</h2>
+
+            <ul>
+                {#each events as event}
+                    <li>
+                        <EventCard
+                            href={event.href}
+                            cover={event.cover}
+                            date={event.date}
+                            location={event.location}
+                            title={event.title}
+                            description={event.description}
+                            buttonText={event.buttonText}
+                        />
+                    </li>
+                {/each}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aw-container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -224,6 +252,36 @@
         :nth-child(10) {
             grid-column: 1 / span 12;
             grid-row: 9 / span 1;
+        }
+
+        @media screen and (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+
+    .events {
+        margin-block-start: 10rem;
+        padding-block: 5rem;
+
+        border-block: 1px solid hsl(var(--aw-color-offset));
+
+        .aw-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            h2 {
+                text-align: center;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
         }
     }
 </style>
