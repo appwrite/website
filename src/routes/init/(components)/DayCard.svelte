@@ -29,7 +29,7 @@
     <div class="release">
         <span class="aw-eyebrow">Day {number}<span class="aw-u-color-text-accent">_</span></span>
         <div class="bottom">
-            <p class="countdown aw-title">
+            <div class="countdown aw-title">
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
@@ -37,7 +37,7 @@
                         value={$seconds}
                     />
                 {/if}
-            </p>
+            </div>
             <button class="aw-button is-secondary">Remind me</button>
         </div>
     </div>
