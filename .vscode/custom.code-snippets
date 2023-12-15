@@ -1,0 +1,8 @@
+{
+    "color-class": {
+        "scope": "html, svelte",
+        "prefix": "clr",
+        "body": ["aw-u-color-text-$1"],
+        "description": "Shorthand for our **big** utility classes"
+    }
+}

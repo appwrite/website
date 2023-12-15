@@ -23,7 +23,7 @@ export function createCountdown(date: Date) {
         const totalMinutes = Math.floor(totalSeconds / 60);
         minutes.set(totalMinutes % 60);
         hours.set(Math.floor(totalMinutes / 60));
-        days.set(Math.floor(get(hours) / 24));
+        days.set(Math.ceil(get(hours) / 24));
     }
 
     update();

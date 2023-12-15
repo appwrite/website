@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { Carousel, FooterNav, MainFooter } from '$lib/components';
+    import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
+    import EventCard from '$routes/community/EventCard.svelte';
+    import Day1 from './(assets)/day-1.png?enhanced';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-    import Day1 from './(assets)/day-1.png?enhanced';
-    import EventCard from '$routes/community/EventCard.svelte';
 
     import { events } from '$routes/community/+page.svelte';
 
@@ -102,10 +102,34 @@
                             title={event.title}
                             description={event.description}
                             buttonText={event.buttonText}
+                            headingLevel={3}
                         />
                     </li>
                 {/each}
             </ul>
+        </div>
+    </div>
+
+    <div class="tickets-preview">
+        <h2 class="aw-label aw-u-color-text-primary">
+            Get a ticket and enter our special Init giveaway
+        </h2>
+        <p class="aw-sub-body-500">
+            Create, customize, and share your Init ticket to enter our general giveaway.
+        </p>
+        <button class="aw-button is-secondary">Get your ticket</button>
+
+        <div class="tickets">
+            <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+            {#each { length: 10 } as _}
+                <enhanced:img class="ticket" src="./(assets)/ticket.png" alt="" />
+            {/each}
+        </div>
+        <div class="tickets">
+            <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+            {#each { length: 9 } as _}
+                <enhanced:img class="ticket" src="./(assets)/ticket.png" alt="" />
+            {/each}
         </div>
     </div>
 
@@ -275,12 +299,55 @@
             h2 {
                 text-align: center;
             }
+        }
+    }
 
-            ul {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
+    .tickets-preview {
+        background: linear-gradient(to bottom, hsl(0 0 0 / 0.32), transparent);
+        padding-block-start: 5rem;
+        overflow: hidden;
+
+        h2,
+        p,
+        button {
+            text-align: center;
+            margin-inline: auto;
+            max-inline-size: 21.5625rem;
+        }
+
+        p {
+            margin-block-start: 1rem;
+        }
+
+        button {
+            margin-block-start: 1.5rem;
+        }
+
+        .tickets {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            width: max-content;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .ticket {
+                flex-shrink: 0;
+                height: 20rem;
+                width: auto;
+                object-fit: contain;
+            }
+
+            &:nth-last-child(2) {
+                margin-block-start: 5rem;
+            }
+
+            &:last-child {
+                margin-block-start: 2rem;
+                height: 14rem;
+                overflow: hidden;
             }
         }
     }
