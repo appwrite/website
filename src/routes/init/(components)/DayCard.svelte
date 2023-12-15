@@ -7,7 +7,8 @@
 </script>
 
 <script lang="ts">
-    import { createCountdown, pad } from '../helpers';
+    import { createCountdown } from '../helpers';
+    import Counter from './Counter.svelte';
 
     export let day: DayType;
     export let number: number;
@@ -32,7 +33,9 @@
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
-                    {pad($hours)}:{pad($minutes)}:{pad($seconds)}
+                    <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
+                        value={$seconds}
+                    />
                 {/if}
             </p>
             <button class="aw-button is-secondary">Remind me</button>
