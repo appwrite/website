@@ -7,47 +7,12 @@
 </script>
 
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { createCountdown, pad } from './helpers';
 
     export let day: DayType;
     export let number: number;
 
-    const today = new Date();
-
-    const hasReleased = today >= day.release;
-
-    let [days, hours, minutes, seconds] = [0, 0, 0, 0];
-
-    const pad = (num: number) => num.toString().padStart(2, '0');
-
-    onMount(() => {
-        let frame: number;
-
-        function updateCountdown() {
-            const today = new Date();
-            const timeRemaining = day.release.getTime() - today.getTime();
-
-            if (timeRemaining <= 0) {
-                // Target date has passed, stop the countdown
-                return;
-            }
-
-            const totalSeconds = Math.floor(timeRemaining / 1000);
-            seconds = totalSeconds % 60;
-            const totalMinutes = Math.floor(totalSeconds / 60);
-            minutes = totalMinutes % 60;
-            hours = Math.floor(totalMinutes / 60);
-            days = Math.floor(hours / 24);
-
-            // Request the next animation frame to keep updating the countdown
-            frame = requestAnimationFrame(() => {
-                updateCountdown();
-            });
-        }
-        updateCountdown();
-
-        return () => cancelAnimationFrame(frame);
-    });
+    const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
 </script>
 
 {#if hasReleased}
@@ -64,10 +29,10 @@
         <span class="aw-eyebrow">Day {number}<span class="aw-u-color-text-accent">_</span></span>
         <div class="bottom">
             <p class="countdown aw-title">
-                {#if hours > 24}
-                    {days} {days > 1 ? 'days' : 'day'}
+                {#if $hours > 24}
+                    {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
-                    {pad(hours)}:{pad(minutes)}:{pad(seconds)}
+                    {pad($hours)}:{pad($minutes)}:{pad($seconds)}
                 {/if}
             </p>
             <button class="aw-button is-secondary">Remind me</button>
