@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createCountdown, pad } from '../helpers';
+    import Counter from './Counter.svelte';
 
     export let date: Date;
 
@@ -14,11 +15,11 @@
             {$days > 1 ? 'days' : 'day'}<span class="aw-u-color-text-accent">_</span>
         </p>
     {:else}
-        <p class="aw-title">
-            {pad($hours)}:{pad($minutes)}:{pad($seconds)}<span class="aw-u-color-text-accent"
-                >_</span
-            >
-        </p>
+        <div class="aw-title">
+            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
+                value={$seconds}
+            /><span class="aw-u-color-text-accent">_</span>
+        </div>
     {/if}
 
     <p class="aw-sub-body-500">Countdown to next announcement</p>
