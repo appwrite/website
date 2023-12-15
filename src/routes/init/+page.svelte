@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
+    import CountdownCard from './CountdownCard.svelte';
     import DayCard, { type DayType } from './DayCard.svelte';
     import Day1 from './day-1.png?enhanced';
 
@@ -60,6 +62,7 @@
 
         <div class="days">
             <h2 class="aw-eyebrow aw-u-color-text-primary">
+                <div class="aw-dot" />
                 DAY 1 - MONDAY, DEC 5<span class="aw-u-color-text-accent">_</span>
             </h2>
 
@@ -68,7 +71,19 @@
                     <div class="aw-card is-normal has-border-gradient">{i + 1}</div>
                 {/each}
             </div>
+
+            {#each days.slice(1) as day, i}
+                <h2 class="aw-eyebrow aw-u-color-text-primary">
+                    <div class="aw-dot" />
+                    DAY {i + 2} - TUESDAY, DEC 6<span class="aw-u-color-text-accent">_</span>
+                </h2>
+
+                <CountdownCard date={day.release} />
+            {/each}
         </div>
+
+        <FooterNav />
+        <MainFooter />
     </div>
 </Main>
 
@@ -111,9 +126,8 @@
     }
 
     .days {
-        margin-block-start: 5rem;
-
         position: relative;
+        margin-block-start: 5rem;
 
         &::before {
             /* Gradient line */
@@ -125,12 +139,28 @@
             height: 100%;
 
             background: linear-gradient(
-                180deg,
-                hsl(var(--aw-color-offset)) 0%,
-                hsl(var(--aw-color-offset)) 50%,
-                hsla(var(--aw-color-offset), 0) 50%,
-                hsla(var(--aw-color-offset), 0) 100%
+                to bottom,
+                hsl(var(--aw-color-accent)) 0%,
+                hsl(var(--aw-color-subtle)) 10%,
+                hsl(var(--aw-color-subtle)) 90%,
+                transparent 100%
             );
+        }
+
+        h2 {
+            position: relative;
+            margin-block-end: 1rem;
+
+            &:not(:first-child) {
+                margin-block-start: 5rem;
+            }
+
+            .aw-dot {
+                position: absolute;
+                left: -40px;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
     }
 
@@ -141,7 +171,7 @@
     .mosaic {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 1fr);
+        grid-template-rows: repeat(9, 1fr);
         gap: 2rem;
 
         min-height: 660px;
