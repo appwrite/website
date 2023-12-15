@@ -91,7 +91,7 @@
         <div class="aw-container">
             <h2 class="aw-label aw-u-color-text-primary">Upcoming Events</h2>
 
-            <ul>
+            <ul class="aw-grid-articles">
                 {#each events as event}
                     <li>
                         <EventCard
