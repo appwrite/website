@@ -4,8 +4,19 @@
 
     export let value = 0;
 
-    function getTransform(value: number) {
-        return `translateY(-${value * 100}%)`;
+    function transform(node: HTMLElement, value: number) {
+        function update(value: number) {
+            const childNode = [...node.children].find((child) => child.innerHTML === String(value));
+            if (!childNode) return;
+
+            const charWidth = childNode.getBoundingClientRect().width;
+            node.style.transform = `translateY(-${value * 100}%)`;
+            node.style.width = `${charWidth}px`;
+        }
+
+        update(value);
+
+        return { update };
     }
 </script>
 
@@ -15,10 +26,10 @@
             {#if Number.isNaN(Number(char))}
                 <span>{char}</span>
             {:else}
-                <ul>
+                <ul use:transform={Number(char)}>
                     <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                     {#each { length: 10 } as _, i}
-                        <li style:transform={getTransform(Number(char))}>{i}</li>
+                        <li>{i}</li>
                     {/each}
                 </ul>
             {/if}
@@ -29,6 +40,7 @@
 <style>
     .wrapper {
         display: inline-flex;
+        overflow: hidden;
     }
 
     ul {
@@ -37,7 +49,8 @@
         align-items: center;
         height: 3rem;
         line-height: 3rem;
-        overflow: hidden;
+        /* overflow: hidden; */
+        transition: 0.5s ease;
     }
 
     li {
