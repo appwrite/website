@@ -133,6 +133,21 @@
         </div>
     </div>
 
+    <div class="pre-footer">
+        <div class="aw-container">
+            <div class="text">
+                <h2 class="aw-label aw-u-color-text-primary">Start building with Appwrite today</h2>
+                <p class="aw-main-body-500">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
+                    lacus.
+                </p>
+                <button class="aw-button">Get your ticket</button>
+            </div>
+
+            <enhanced:img class="console" src="./(assets)/console.png" alt="" />
+        </div>
+    </div>
+
     <div class="aw-container">
         <FooterNav />
         <MainFooter />
@@ -304,7 +319,9 @@
 
     .tickets-preview {
         background: linear-gradient(to bottom, hsl(0 0 0 / 0.32), transparent);
+        border-block-end: 1px solid hsl(var(--aw-color-offset));
         padding-block-start: 5rem;
+        padding-block-end: 0rem;
         overflow: hidden;
 
         h2,
@@ -350,5 +367,59 @@
                 overflow: hidden;
             }
         }
+    }
+
+    .pre-footer {
+        padding-block-start: 10rem;
+        padding-block-end: 0;
+        overflow: hidden;
+
+        .aw-container {
+            position: relative;
+            height: 43.75rem;
+
+            .text {
+                position: absolute;
+                inset-inline-start: 0;
+                inset-block-start: 10rem;
+                max-inline-size: 25rem;
+
+                p {
+                    margin-block-start: 0.75rem;
+                }
+
+                button {
+                    margin-block-start: 2rem;
+                }
+            }
+
+            .console {
+                position: absolute;
+                inset-inline-end: -50%;
+                inset-block-end: -10rem;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                inset-inline-start: -167px;
+                inset-block-end: -1000px;
+
+                width: 1104px;
+                height: 1104px;
+
+                background: radial-gradient(#fe9567, #fd366e);
+                border-radius: 100%;
+                filter: blur(424px);
+            }
+        }
+    }
+
+    .pre-footer :global(+ .aw-container) {
+        padding-block-start: 0;
+    }
+
+    .pre-footer :global(+ .aw-container nav) {
+        margin-block-start: 0;
     }
 </style>
