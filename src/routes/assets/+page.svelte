@@ -566,7 +566,7 @@
                                 what's presented on this page, please don't hesitate to
                                 <a
                                     class="aw-link"
-                                    href="/"
+                                    href="/contact-us"
                                     target="_blank"
                                     rel="noopener noreferrer">contact us</a
                                 >.
