@@ -202,17 +202,11 @@
                                             </div>
                                         </summary>
                                         <div class="collapsible-content">
-                                            <div
-                                                class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                            >
+                                            <div class="aw-card is-transparent u-padding-16">
                                                 <ul class="u-flex-vertical">
                                                     {#each method.parameters as parameter, i}
                                                         {@const first = i === 0}
-                                                        <li
-                                                            class:u-sep-block-start={!first}
-                                                            class:u-padding-block-start-16={!first}
-                                                            class="u-margin-block-start-16"
-                                                        >
+                                                        <li class:u-padding-block-start-16={!first}>
                                                             <article>
                                                                 <header
                                                                     class="u-flex u-cross-baseline u-gap-8"
@@ -257,9 +251,7 @@
                                         </div>
                                     </summary>
                                     <div class="collapsible-content">
-                                        <div
-                                            class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                        >
+                                        <div class="aw-card is-transparent u-padding-16">
                                             <ul>
                                                 {#each method.responses as response}
                                                     {#if response.models}
@@ -379,5 +371,30 @@
 <style lang="scss">
     .aw-inline-code {
         translate: 0 0.125rem;
+    }
+
+    .collapsible-item {
+        border-block-end: 0.0625rem solid hsl(var(--aw-color-offset));
+    }
+
+    .collapsible-button {
+        padding-block: 1rem;
+    }
+
+    .collapsible-content {
+        margin-block-start: 0;
+        padding-block-end: 1rem;
+
+        article :last-child {
+            margin-block-end: 0;
+        }
+
+        ul {
+            gap: 1rem;
+
+            li:not(:first-child) {
+                border-block-start: solid 0.0625rem hsl(var(--aw-color-offset));
+            }
+        }
     }
 </style>
