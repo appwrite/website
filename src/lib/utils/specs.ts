@@ -216,7 +216,6 @@ export async function getService(
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
-    console.log({ api });
     const tag = api.tags?.find((n) => n.name === service);
 
     const data: Awaited<ReturnType<typeof getService>> = {
@@ -234,7 +233,6 @@ export async function getService(
     }
 
     for (const { method, value, url } of iterateAllMethods(api, service)) {
-        // console.log({ method, value });
         const operation = value as AppwriteOperationObject;
         const parameters = getParameters(operation);
         const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(

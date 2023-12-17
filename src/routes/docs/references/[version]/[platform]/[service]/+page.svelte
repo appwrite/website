@@ -145,13 +145,15 @@
                 </div>
             </div>
         </header>
-        <div class="aw-article-content">
+        <div class="aw-article-content" style:gap="6rem">
             <section class="aw-article-content-grid-6-4">
                 <div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
-                <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+                <div
+                    class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
+                >
                     <Fence
                         language="text"
                         badge="Base URL"
@@ -311,7 +313,7 @@
                                 <Fence
                                     language="text"
                                     badge="Endpoint"
-                                    content="{method.method.toUpperCase()} {method.url}"
+                                    content="{method.method.toUpperCase()} /v1{method.url}"
                                     process
                                     withLineNumbers={false}
                                 />
