@@ -53,7 +53,7 @@
 </script>
 
 {#if id}
-    <a href={`#${id}`} class="aw-link">
+
         <svelte:element
             this={tag}
             {id}
@@ -62,9 +62,9 @@
             class:aw-snap-location-references={id && inReferences}
             class="{headingClass} aw-u-color-text-primary"
         >
-            <slot />
+            <a href={`#${id}`} class=""><slot /></a>
         </svelte:element>
-    </a>
+
 {:else}
     <svelte:element
         this={tag}

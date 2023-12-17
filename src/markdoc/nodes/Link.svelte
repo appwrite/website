@@ -15,8 +15,6 @@
 
 <a
     class="aw-link is-inline"
-    class:aw-paragraph-md={!inTable && isDocs}
-    class:aw-paragraph-lg={!inTable && !isDocs}
     {href}
     {title}
     {target}

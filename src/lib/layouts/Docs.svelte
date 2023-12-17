@@ -124,7 +124,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Top" >
                     <ul class="aw-main-header-nav-list">
                         <li class="aw-main-header-nav-item">
                             <a class="aw-link" href="/docs">Docs</a>
@@ -160,7 +160,7 @@
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                        <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                     </a>
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
