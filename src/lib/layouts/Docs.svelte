@@ -71,8 +71,6 @@
     };
 </script>
 
-<a class="skip-to-content-link" href="#main">Skip to content</a>
-
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="u-position-relative">
@@ -188,17 +186,3 @@
 </div>
 
 <Search bind:open={$layoutState.showSearch} />
-
-<style>
-    .skip-to-content-link {
-        z-index: 1000;
-        padding: 8px;
-        position: absolute;
-        top: 0;
-        -webkit-transform: translateY(-999px);
-        transform: translateY(-999px);
-    }
-    .skip-to-content-link:focus {
-        transform: translateY(0%);
-    }
-</style>
