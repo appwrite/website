@@ -51,7 +51,7 @@ Use this your first function as a springboard to explore the flexible and powerf
 | [Develop](/docs/products/functions/development)                | Learn about how to parse request, build responses, and log to Console in Appwrite Functions. |
 | [Response](/docs/products/functions/development#response)       | Learn about function response types, like text, json, html, redirect, and empty responses.|
 | [Deploy](/docs/products/functions/deployment)                | Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads. |
-| [Execute](/docs/products/functions/execution)            | Appwrite functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.  |
+| [Execute](/docs/products/functions/execution)            | Appwrite Functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.  |
 | [Domains](/docs/products/functions/execution#domains)       | Each Appwrite Function can be executed through it's own domain, generated or custom. Learn about domains.  |
 | [Runtime](/docs/products/functions/runtimes)            | Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.  |
-| [Examples](/docs/products/functions/examples)            | Enjoy learning from examples? Checkout these examples functions.  |
+| [Examples](/docs/products/functions/examples)            | Enjoy learning from examples? Take a look at these examples functions.  |
