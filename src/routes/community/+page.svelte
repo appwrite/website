@@ -88,7 +88,7 @@
     ];
 
     const metrics = [
-        { metric: '33K+', description: 'GitHub Stars' },
+        { metric: `${$page.data.stars}+`, description: 'GitHub Stars' },
         { metric: '8K+', description: 'Pull Requests' },
         { metric: '15K+', description: 'Commits' },
         { metric: '2.5K+', description: 'Issues' },
