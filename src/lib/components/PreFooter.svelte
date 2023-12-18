@@ -48,7 +48,7 @@
                     <div class="aw-strip-plans-plan">
                         <h4 class="title aw-description">Pro</h4>
                         <div class="aw-title aw-u-color-text-primary">$15</div>
-                        <div class="info aw-caption-500">per org member/month</div>
+                        <div class="info aw-caption-500">per user/month</div>
                     </div>
                     <p class="aw-strip-plans-info aw-caption-500">
                         For pro developers and teams that need to scale their products.

@@ -25,7 +25,7 @@
     },
     {
         "link": "/docs/getting-started-for-server",
-        "redirect": "/docs/getting-started-for-server"
+        "redirect": "/docs/quick-starts"
     },
     {
         "link": "/docs/self-hosting",
@@ -649,7 +649,7 @@
     },
     {
         "link": "/careers",
-        "redirect": "https://careers.appwrite.io/"
+        "redirect": "https://appwrite.careers"
     },
     {
         "link": "/policy/terms",

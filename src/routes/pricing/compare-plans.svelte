@@ -103,6 +103,12 @@
                     scale: true
                 },
                 {
+                    title: 'Custom SMTP',
+                    free: '-',
+                    pro: true,
+                    scale: true
+                },
+                {
                     title: 'Webhooks',
                     free: '2 per project',
                     pro: 'Unlimited',

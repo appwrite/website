@@ -25,7 +25,7 @@
   }
   
   
-  .icon-cheveron-down {
+  [class*='icon-cheveron-'] {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center; pointer-events:none;
   }
@@ -114,25 +114,13 @@
 
 
 .#{$p}-select-menu {
-	all: unset;
-	display: flex;
-	flex-direction: column;
-  gap: pxToRem(8);  
-	position: relative;
-	line-height: 1;
-	user-select: none;
-	
-	color: hsl(var(--aw-color-primary));
-	font-size: pxToRem(14);
-	
-	border-radius: pxToRem(8);
-	line-height: 1.2;
-  padding-inline: pxToRem(4);
-  padding-block: pxToRem(4);
-  box-sizing: border-box;
+	all:unset; position:relative; display:flex; flex-direction:column; gap:pxToRem(8);
+    user-select:none; color:hsl(var(--aw-color-primary)); font-size:pxToRem(14);
+    border-radius:pxToRem(12); line-height:1.2;
+    box-sizing:border-box; padding-inline:pxToRem(4); padding-block: pxToRem(4);
+    max-block-size:pxToRem(300)!important; overflow-y:auto;
+    user-select: none;
 
-  max-height: pxToRem(290) !important;
-  overflow-y: auto;
 
   @mixin light-mode() {
     --p-select-menu-bg-color: var(--aw-color-white);
@@ -140,7 +128,7 @@
     --p-select-menu-box-shadow-color: var(--transparent);
   }
   @mixin dark-mode() {
-    --p-select-menu-bg-color: var(--aw-color-greyscale-800);
+    --p-select-menu-bg-color: var(--aw-color-greyscale-850);
     --p-select-menu-border-color: var(--aw-color-white) / 0.10;
     --p-select-menu-box-shadow-color: var(--transparent);
   }
@@ -176,7 +164,7 @@
 
   padding-block: pxToRem(4);
   padding-inline: pxToRem(4);
-  border-radius: pxToRem(6);
+  border-radius: pxToRem(8);
   scroll-margin-block: pxToRem(8);
 
   cursor: pointer;
