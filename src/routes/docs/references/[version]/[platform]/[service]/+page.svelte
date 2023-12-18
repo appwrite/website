@@ -306,6 +306,7 @@
                                     language="text"
                                     badge="Endpoint"
                                     content="{method.method.toUpperCase()} {method.url}"
+                                    toCopy={method.url}
                                     process
                                     withLineNumbers={false}
                                 />
