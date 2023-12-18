@@ -1,5 +1,6 @@
 <script lang="ts">
     import { getContext } from 'svelte';
+    import { TABLE_CTX_KEY } from './Table.svelte';
 
     export let href: string;
     export let title: string;
@@ -9,10 +10,11 @@
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
     const isDocs = getContext('isDocs') ?? false;
+    const inTable = getContext(TABLE_CTX_KEY) ?? false;
 </script>
 
 <a
-    class="aw-link is-inline {isDocs ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
+    class="aw-link is-inline"
     {href}
     {title}
     {target}
