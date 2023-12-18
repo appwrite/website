@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="twitter:site" content="@appwrite" />
+        <link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
+        <!-- preload font for headlines -->
+        <link
+            rel="preload"
+            href="/fonts/aeonik-pro/AeonikPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="twitter:site" content="@appwrite" />
-	<link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
-	<!-- preload font for headlines -->
-	<link
-		rel="preload"
-		href="/fonts/aeonik-pro/AeonikPro-Regular.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin />
-	
-	%sveltekit.head%
-</head>
+        %sveltekit.head%
+    </head>
 
-<body class="theme-dark" data-sveltekit-preload-data="hover">
-	<script>
-		const isDocs = window.location.pathname.startsWith('/docs');
-		if (isDocs) {
-			const theme = localStorage.getItem('theme');
-			if (theme) {
-				document.body.classList.remove('theme-dark', 'theme-light');
-				if (theme === 'system') {
-					const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-						? 'dark'
-						: 'light';
-					document.body.classList.add(`theme-${systemTheme}`);
-				} else {
-					document.body.classList.add(`theme-${theme}`);
-				}
-			}
-		}
-	</script>
-	<div id="top" style="display: contents">%sveltekit.body%</div>
-</body>
+    <body class="theme-dark" data-sveltekit-preload-data="hover">
+        <script>
+            // Theme
+            const isDocs = window.location.pathname.startsWith('/docs');
+            if (isDocs) {
+                const theme = localStorage.getItem('theme');
+                if (theme) {
+                    document.body.classList.remove('theme-dark', 'theme-light');
+                    if (theme === 'system') {
+                        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+                            .matches
+                            ? 'dark'
+                            : 'light';
+                        document.body.classList.add(`theme-${systemTheme}`);
+                    } else {
+                        document.body.classList.add(`theme-${theme}`);
+                    }
+                }
+            }
 
+            // Progressive enhancement
+            document.body.dataset.jsEnabled = '';
+
+            // Banner
+            const BANNER_KEY = '%aw_banner_key%';
+            const hideBanner = localStorage.getItem(BANNER_KEY);
+            if (hideBanner === 'true') {
+                document.body.dataset.bannerHidden = '';
+            }
+        </script>
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>

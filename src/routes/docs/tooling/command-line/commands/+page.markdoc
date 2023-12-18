@@ -74,7 +74,7 @@ appwrite users list --verbose
 
 # Examples {% #examples %}
 
-## Create user
+## Create user {% #create-user %}
 
 To create a new user in your project, you can use the create command.
 
@@ -84,7 +84,7 @@ appwrite users create --userId "unique()" \
     --password very_strong_password
 ```
 
-## List Users
+## List users {% #list-users %}
 
 To get a list of all your project users, you can use the list command.
 
@@ -92,7 +92,7 @@ To get a list of all your project users, you can use the list command.
 appwrite users list
 ```
 
-## List collections
+## List collections {% #list-collections %}
 
 To get a list of all your collections, you can use the listCollections command.
 
@@ -106,7 +106,7 @@ If you wish to parse the output from the CLI, you can request the CLI output in 
 appwrite databases listCollections --databaseId [DATABASE_ID]--json
 ```
 
-## Get collection
+## Get collection {% #get-collection %}
 
 To get more information on a particular collection, you can make use of the getCollection command and pass in the collectionId.
 
@@ -114,7 +114,7 @@ To get more information on a particular collection, you can make use of the getC
 appwrite databases getCollection --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID]
 ```
 
-## Create document
+## Create document {% #create-document %}
 
 To create a new document in an existing collection, use the `createDocument` command.
 

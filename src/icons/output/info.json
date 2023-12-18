@@ -191,52 +191,58 @@
     "className": "aw-icon-product-hunt",
     "unicode": "&#59936;"
   },
-  "rest": {
+  "refine": {
     "encodedCode": "\\ea21",
     "prefix": "aw-icon",
-    "className": "aw-icon-rest",
+    "className": "aw-icon-refine",
     "unicode": "&#59937;"
   },
-  "search": {
+  "rest": {
     "encodedCode": "\\ea22",
     "prefix": "aw-icon",
-    "className": "aw-icon-search",
+    "className": "aw-icon-rest",
     "unicode": "&#59938;"
   },
-  "star": {
+  "search": {
     "encodedCode": "\\ea23",
     "prefix": "aw-icon",
-    "className": "aw-icon-star",
+    "className": "aw-icon-search",
     "unicode": "&#59939;"
   },
-  "system": {
+  "star": {
     "encodedCode": "\\ea24",
     "prefix": "aw-icon",
-    "className": "aw-icon-system",
+    "className": "aw-icon-star",
     "unicode": "&#59940;"
   },
-  "twitter": {
+  "system": {
     "encodedCode": "\\ea25",
     "prefix": "aw-icon",
-    "className": "aw-icon-twitter",
+    "className": "aw-icon-system",
     "unicode": "&#59941;"
   },
-  "vue": {
+  "twitter": {
     "encodedCode": "\\ea26",
     "prefix": "aw-icon",
-    "className": "aw-icon-vue",
+    "className": "aw-icon-twitter",
     "unicode": "&#59942;"
   },
-  "x": {
+  "vue": {
     "encodedCode": "\\ea27",
     "prefix": "aw-icon",
-    "className": "aw-icon-x",
+    "className": "aw-icon-vue",
     "unicode": "&#59943;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea28",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59944;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea29",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59945;"
   }
 }

@@ -91,7 +91,7 @@
         {/if}
         <span>{$selectedLabel}</span>
     </div>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </button>
 
 {#if $open}
@@ -105,8 +105,8 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                <div class="u-flex u-flex-vertical">
-                    {#each options as option}
+                <div class="u-flex u-flex-vertical u-gap-2">
+                    {#each group.options as option}
                         <button class="aw-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
@@ -121,7 +121,7 @@
                         {group.label}
                     </span>
 
-                    {#each options as option}
+                    {#each group.options as option}
                         <button class="aw-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
@@ -136,7 +136,7 @@
 {/if}
 
 <div
-    class="aw-select is-colored aw-is-only-mobile"
+    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
@@ -146,14 +146,14 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                {#each options as option}
+                {#each group.options as option}
                     <option value={option.value} selected={option.value === value}>
                         {option.label}
                     </option>
                 {/each}
             {:else}
                 <optgroup label={isDefault ? undefined : group.label}>
-                    {#each options as option}
+                    {#each group.options as option}
                         <option value={option.value} selected={option.value === value}>
                             {option.label}
                         </option>
@@ -162,7 +162,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </div>
 
 <style lang="scss">
