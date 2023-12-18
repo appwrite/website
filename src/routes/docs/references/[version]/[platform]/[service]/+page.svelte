@@ -212,7 +212,7 @@
                                                                     class="u-flex u-cross-baseline u-gap-8"
                                                                 >
                                                                     <span
-                                                                        class="aw-eyebrow aw-u-color-text-primary"
+                                                                        class="aw-code aw-u-color-text-primary"
                                                                     >
                                                                         {parameter.name}
                                                                     </span>
@@ -305,7 +305,7 @@
                                 <Fence
                                     language="text"
                                     badge="Endpoint"
-                                    content="{method.method.toUpperCase()} /v1{method.url}"
+                                    content="{method.method.toUpperCase()} {method.url}"
                                     process
                                     withLineNumbers={false}
                                 />
