@@ -1,45 +1,8 @@
 <script lang="ts">
+    import { socials } from '$lib/constants';
     import ThemeSelect from './ThemeSelect.svelte';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
-
-    type Social = {
-        icon: string;
-        label?: string;
-        link: string;
-    };
-
-    const socials: Array<Social> = [
-        {
-            icon: 'aw-icon-discord',
-            label:'Discord',
-            link: 'https://appwrite.io/discord'
-        },
-        {
-            icon: 'aw-icon-github',
-            label:'Github',
-            link: 'https://github.com/appwrite'
-        },
-        {
-            icon: 'aw-icon-x',
-            label:'Twitter',
-            link: 'https://twitter.com/intent/follow?screen_name=appwrite'
-        },
-        {
-            icon: 'aw-icon-linkedin',
-            label:'LinkedIn',
-            link: 'https://www.linkedin.com/company/appwrite'
-        },
-        {
-            icon: 'aw-icon-youtube',
-            label: 'YouTube',
-            link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
-        }
-    ];
-
-    function getSocialLabel(social: Social) {
-        return social.label ?? social.icon;
-    }
 </script>
 
 {#if variant === 'homepage'}
@@ -50,7 +13,7 @@
                     <a
                         href={social.link}
                         class="aw-icon-button"
-                        aria-label="{getSocialLabel(social)}"
+                        aria-label={social.label}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -72,7 +35,7 @@
                         <a
                             href={social.link}
                             class="aw-icon-button"
-                            aria-label="{getSocialLabel(social)}"
+                            aria-label={social.label}
                             target="_blank"
                             rel="noopener noreferrer"
                         >

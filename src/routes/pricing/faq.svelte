@@ -17,7 +17,7 @@
         },
         {
             question: 'What will happen to my current account when pricing is available?',
-            answer: 'All current Cloud users will be notified about the pricing plans being active. Depending on your situation, you will either need to upgrade your account to a pro Plan, or you can happily continue on a Starter plan. You will receive an email once this occurs.'
+            answer: 'All current Cloud users will be notified about the pricing plans being active. Depending on your situation, you will either need to upgrade your account to a Pro plan, or you can happily continue on a Starter plan. You will receive an email once this occurs.'
         },
         {
             question: 'Does Appwrite have a trial period?',

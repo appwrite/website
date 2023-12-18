@@ -68,7 +68,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <img src="/images/bgs/assets-bg.svg" alt="" />
+    <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
@@ -566,7 +566,7 @@
                                 what's presented on this page, please don't hesitate to
                                 <a
                                     class="aw-link"
-                                    href="/"
+                                    href="/contact-us"
                                     target="_blank"
                                     rel="noopener noreferrer">contact us</a
                                 >.

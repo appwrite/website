@@ -58,7 +58,20 @@
     });
 
     setContext('isDocs', true);
+
+    const handleKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
+            e.preventDefault();
+            layoutState.update((state) => ({
+                ...state,
+                showReferences: false,
+                showSidenav: false
+            }));
+        }
+    };
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="u-position-relative">
     <section class="aw-mobile-header is-transparent">
@@ -81,7 +94,7 @@
             </a>
         </div>
         <div class="aw-mobile-header-end">
-            <a href="https://cloud.appwrite.io/console" class="aw-button">
+            <a href="https://cloud.appwrite.io/console" class="aw-button aw-is-only-desktop">
                 <span class="aw-sub-body-500">Go to console</span>
             </a>
             <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
@@ -111,7 +124,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Top" >
                     <ul class="aw-main-header-nav-list">
                         <li class="aw-main-header-nav-item">
                             <a class="aw-link" href="/docs">Docs</a>
@@ -147,7 +160,7 @@
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                        <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                     </a>
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
