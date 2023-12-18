@@ -167,7 +167,7 @@
         <div class="aw-top-banner">
             <div class="aw-top-banner-content aw-u-color-text-primary">
                 <a href="/blog/post/announcing-appwrite-pro">
-                    <span class="aw-caption-500">Appwrite Pro is now available. Get started with $15 credit!</span>
+                    <span class="aw-caption-500">Appwrite Pro is now available! Get started with $15 credit.</span>
                 </a>
                 {#if browser}
                     <button
