@@ -570,7 +570,7 @@
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
                         <Spline loading="eager" url="/images/animations/lines.splinecode">
-                            <img src="/images/bgs/diagonal-lines.png" alt="" width="540" />
+                            <img src="/images/bgs/diagonal-lines.png" alt="" width="550" />
                         </Spline>
                     </div>
                 </div>
