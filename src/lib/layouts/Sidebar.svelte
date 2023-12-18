@@ -20,6 +20,8 @@
 </script>
 
 <script lang="ts">
+    import { page } from '$app/stores';
+
     import { clickOutside } from '$lib/actions/clickOutside';
 
     import Tooltip from '$lib/components/Tooltip.svelte';
@@ -120,7 +122,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">{$page.data.stars}</span>
             </a>
         </div>
     </div>

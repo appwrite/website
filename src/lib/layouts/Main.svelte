@@ -17,6 +17,7 @@
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -218,11 +219,11 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">{$page.data.stars}</span>
                 </a>
-<!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
-<!--                    >Sign up</a-->
-<!--                >-->
+                <!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
+                <!--                    >Sign up</a-->
+                <!--                >-->
                 <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
