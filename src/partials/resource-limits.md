@@ -1,6 +1,6 @@
 ## Check resource usage {% #check-resource-usage %}
 
-You can check your organization's resource usage by navigating to your organization, under the **Usage** tab, you can check the current billing cycle's usage stats.
+You can check your organization's resource usage for the current billing cycle by navigating to your organization, under the **Usage** tab.
 
 
 ## Reaching resource limits {% #reaching-resource-limits %}
