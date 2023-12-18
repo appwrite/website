@@ -43,11 +43,6 @@ Your self-hosted instance will generate an API Key in the background to pass to 
 {% /info %}
 {% /section %}
 
-
-
-
-
-
 {% section #create-migration step=2 title="Create migration" %}
 
 To begin migrating to self-hosted, make sure to read the [migration overview](/docs/advanced/migrations)  
