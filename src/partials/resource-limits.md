@@ -10,7 +10,7 @@ Reaching your organization's resource limits will have the following effects unt
 * Consequence
 ---
 * **Bandwidth** {% rowspan=3 %}
-*  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or the budget cap is reached, API access will be denied until your organization's plan is upgraded or your budget cap is increased.
+*  More bandwidth will be purchased automatically until your organization reaches a budget cap. If the organization uses a Starter plan or a budget cap is reached, API access will be denied until your organization's plan is upgraded or your budget cap is increased.
 ---
 *  Importing projects via migrations disabled, but you can still export your projects.
 ---
