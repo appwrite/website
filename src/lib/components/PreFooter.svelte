@@ -37,7 +37,7 @@
                     </p>
                     <a
                         href="https://cloud.appwrite.io/register"
-                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
+                        class="aw-button is-secondary is-full-width-mobile aw-u-cross-child-end"
                     >
                         <span class="text">Get started</span>
                     </a>
@@ -53,12 +53,14 @@
                     <p class="aw-strip-plans-info aw-caption-500">
                         For pro developers and teams that need to scale their products.
                     </p>
-                    <button
-                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-                        disabled
+                    <a
+                        href="https://cloud.appwrite.io/register?type=createPro"
+                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        <span class="text">Coming soon</span>
-                    </button>
+                        <span class="text">Start trial</span>
+                    </a>
                 </div>
             </li>
             <li class="aw-strip-plans-item aw-strip-plans-container-query">
