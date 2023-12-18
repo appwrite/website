@@ -9,6 +9,7 @@
     import { melt } from '@melt-ui/svelte';
 
     export let content: string;
+    export let toCopy: string | undefined = undefined;
     export let language: Language;
     export let process: boolean;
     export let withLineNumbers = true;
@@ -23,7 +24,7 @@
     }
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
-        await copy(content);
+        await copy(toCopy ?? content);
 
         copyText = CopyStatus.Copied;
         setTimeout(() => {
