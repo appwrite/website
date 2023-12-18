@@ -26,7 +26,7 @@ Reaching your organization's resource limits will have the following effects unt
 * Realtime subscriptions disabled.
 ---
 * **Storage**
-* File uploads are disabled. Persists across billing periods until storage is .
+* File uploads are disabled. Persists across billing periods until the amount of storage used is below the plan limit.
 {% /table %}
 
 ## Switching to Starter plan and reaching limits {% #switching-to-starter-plan-reaching-resource-limits %}
