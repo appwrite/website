@@ -1,0 +1,62 @@
+---
+layout: post
+title: Send WhatsApp messages with Vonage and Appwrite Functions
+description: Learn how to use an Appwrite Function Template to create a Whatsapp bot that will programmatically respond to incoming WhatsApp messages via Vonage.
+date: 2023-11-15
+cover: /images/blog/function-template-whatsapp-vonage/cover.png
+timeToRead: 5
+author: aditya-oberai
+category: functions
+---
+
+Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
+
+One such integration you can implement using Appwrite Functions is **WhatsApp messaging** via **Vonage**. In this blog, you will learn how you can use an Appwrite Function Template to create a Whatsapp bot that will programmatically respond to incoming WhatsApp messages via Vonage.
+
+
+## Setting up Vonage
+
+The first step is to create a Vonage account. Head over to Vonage’s [website](https://www.vonage.com/) and [sign up](https://dashboard.nexmo.com/sign-up?icid=tryitfree_homepage_nexmodashbdfreetrialsignup_tile&utm_campaign=bizdirect&attribution_campaign=bizdirect&cjregion=429207&adobe_mc=MCMID%3D34270386780739068404296704713035591008%7CMCORGID%3DA8833BC75245AF9E0A490D4D%2540AdobeOrg%7CTS%3D1663266957) to use Vonage Communication APIs. On the Vonage API Dashboard, visit the **[API Settings](https://dashboard.nexmo.com/settings)** tab and copy the **API Key**, **API Secret**, and **Signature Secret** from there.
+
+![Vonage API Dashboard](/images/blog/function-template-whatsapp-vonage/api-settings.png)
+
+After that, visit the **[Messages API Sandbox](https://dashboard.nexmo.com/messages/sandbox)** and enable **WhatsApp** to set up a test environment for our Appwrite Function template. Make sure to copy the **Phone Number** provided there (and join the WhatsApp channel with the instructions on the page. Once the Appwrite Function is deployed, we will return here to add the Function URL as the **Inbound Webhook** link.
+
+![Vonage Messages API Sandbox](/images/blog/function-template-whatsapp-vonage/messages-sandbox.png)
+
+## Preparing the Appwrite Function
+
+Now that we have all the necessary details from our Vonage account, let us get the function ready on **[Appwrite](https://cloud.appwrite.io)**. Head over to your Appwrite project and visit the **Functions** page. From there, we will select the **Templates** tab, search for and select the **WhatsApp with Vonage** function template.
+
+![Functions Templates](/images/blog/function-template-whatsapp-vonage/templates.png)
+
+This function requires **4 environment variables** to setup:
+
+- `VONAGE_API_KEY`: API Key from our Vonage account *(copied from the API Settings)*
+- `VONAGE_API_SECRET`: API Secret from our Vonage account *(copied from the API Settings)*
+- `VONAGE_API_SIGNATURE_SECRET`: Secret used to sign and verify the JWT token sent by Vonage *(copied from the API Settings)*
+- `VONAGE_WHATSAPP_NUMBER`: Vonage WhatsApp number to send messages from *(copied from the Messages API Sandbox)*
+
+After you have configured the environment variables, you must connect your Appwrite account with GitHub, select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
+
+Once the function is ready, visit the **Domains** tab on the function page and copy the domain to add to the **Inbound Webhook** link on the **Messages API Sandbox** page on your Vonage account.
+
+![Function Domain](/images/blog/function-template-whatsapp-vonage/domains.png)
+
+## Testing the Function
+
+Once all the aforementioned steps are complete, it is time to test the function!
+
+Open the WhatsApp app on your phone, join the Vonage WhatsApp Channel (via the steps mentioned on the *Messaging API Sandbox* on *Vonage*), and send any message to the WhatsApp number. You shall receive a message in the format: `Hi there! You sent me: <SENT MESSAGE>`
+
+![WhatsApp](/images/blog/function-template-whatsapp-vonage/whatsapp.png)
+
+## Next Steps
+
+We’ve covered the basics, and now it’s your time to shine! With a few changes, you should be able to extend this template to fit your app. Be sure to check out the other available Function Templates. We’ve created many that could be of use in your projects. You can find the [templates GitHub repository here](https://github.com/appwrite/templates).
+
+For more information about Appwrite and Appwrite Functions:
+
+- [Appwrite Function Docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+- [Functions Announcement](https://dev.to/appwrite/serverless-your-way-unleashing-appwrite-functions-true-potential-2l4f): Read the full announcement on Functions 1.4.
+- [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

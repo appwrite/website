@@ -6,21 +6,24 @@
     import { Carousel } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-	import { newsletter } from '$lib/components/Newsletter.svelte';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+
+    export let data;
 
     const events: EventCardProps[] = [
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours2.png',
+                src: '/images/community/events/december-1.png',
                 alt: ''
             },
-            date: 'November 2nd',
+            date: 'December 14th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -29,46 +32,22 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours3.png',
+                src: '/images/community/events/december-2.png',
                 alt: ''
             },
-            date: 'November 9th',
+            date: 'December 21st',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
             buttonText: 'View event'
         },
-         {
+        {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours4.png',
+                src: '/images/community/events/december-3.png',
                 alt: ''
             },
-            date: 'November 16th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-         {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours5.png',
-                alt: ''
-            },
-            date: 'November 23rd',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-         {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours6.png',
-                alt: ''
-            },
-            date: 'November 30th',
+            date: 'December 28th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -79,7 +58,7 @@
     const projects: ProjectCardProps[] = [
         {
             title: 'Auth UI',
-            description: 'Appwirte-powered authentication screens generator for any application.',
+            description: 'Appwrite-powered authentication screens generator for any application.',
             image: {
                 src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
                 alt: 'Auth UI: Fully customizable login flow for your applications'
@@ -105,6 +84,17 @@
             },
             href: 'https://builtwith.appwrite.io/projects/648606ad9cd179190b28/'
         }
+    ];
+
+    const metrics = [
+        { metric: '38K+', description: 'GitHub Stars' },
+        { metric: '3K+', description: 'Pull Requests' },
+        { metric: '18K+', description: 'Commits' },
+        { metric: '3K+', description: 'Issues' },
+        { metric: '600+', description: 'Open Issues' },
+        { metric: '2.5K+', description: 'Closed Issues' },
+        { metric: '3.5K+', description: 'Forks' },
+        { metric: '800+', description: 'Contributors' }
     ];
 
     let name = '';
@@ -164,7 +154,7 @@
                 <section class="aw-container aw-u-padding-block-end-0 u-position-relative">
                     <div class="aw-hero is-align-start aw-u-max-width-580">
                         <h1 class="aw-display aw-u-color-text-primary">
-                            Built by a community of 700+ contributors
+                            Built by a community of 800+ contributors
                         </h1>
                         <div>
                             <p class="aw-description">
@@ -189,7 +179,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                                 </a>
                             </div>
                         </div>
@@ -199,54 +189,11 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container">
                     <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">33K+</div>
-                                <div class="aw-description">GitHub Stars</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">8K+</div>
-                                <div class="aw-description">Pull Requests</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">15K+</div>
-                                <div class="aw-description">Commits</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">2.5K+</div>
-                                <div class="aw-description">Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">400+</div>
-                                <div class="aw-description">Open Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">1.9K+</div>
-                                <div class="aw-description">Closed Issues</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">4.9K+</div>
-                                <div class="aw-description">Forks</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="aw-card is-normal has-border-gradient">
-                                <div class="aw-title aw-u-color-text-primary">20K+</div>
-                                <div class="aw-description">Contributors</div>
-                            </div>
-                        </li>
+                        {#each metrics as props}
+                            <li>
+                                <MetricCard {...props} />
+                            </li>
+                        {/each}
                     </ul>
                 </section>
             </div>
@@ -353,135 +300,37 @@
                                         </tr>
                                     </thead>
                                     <tbody class="aw-table-line-body">
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#5232</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/appwrite/issues/5232"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
+                                        {#each data.issues as issue}
+                                            <tr class="aw-table-line-row">
+                                                <td class="aw-table-line-cell u-un-break-text">
+                                                    <span class="aw-caption-400"
+                                                        >#{issue.number}</span
                                                     >
-                                                        Feature: Security Scans like SAST, DAST,
-                                                        FOSS, CAST in pipeline
-                                                    </a>
-                                                    <span>(appwrite/appwrite)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#5748</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/appwrite/issues/5748"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
+                                                </td>
+                                                <td class="aw-table-line-cell">
+                                                    <div>
+                                                        <a
+                                                            href={issue.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="aw-link aw-sub-body-500"
+                                                        >
+                                                            {issue.title}
+                                                        </a>
+                                                        <span>({issue.repository})</span>
+                                                    </div>
+                                                    <ul
+                                                        class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
                                                     >
-                                                        Feature: overload Feature for
-                                                        Storage.CreateFile for using Blob instead of
-                                                        File
-                                                    </a>
-                                                    <span>(appwrite/appwrite)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#680</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/sdk-generator/issues/680"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
-                                                    >
-                                                        Feature: Unit Tests
-                                                    </a>
-                                                    <span>(appwrite/sdk-generator)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="aw-table-line-row">
-                                            <td class="aw-table-line-cell u-un-break-text">
-                                                <span class="aw-caption-400">#679</span>
-                                            </td>
-                                            <td class="aw-table-line-cell">
-                                                <div>
-                                                    <a
-                                                        href="https://github.com/appwrite/sdk-generator/issues/679"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="aw-link aw-sub-body-500"
-                                                    >
-                                                        Feature: overload Feature for
-                                                        Storage.CreateFile for using Blob instead of
-                                                        File
-                                                    </a>
-                                                    <span>(appwrite/sdk-generator)</span>
-                                                </div>
-                                                <ul
-                                                    class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                >
-                                                    <li>
-                                                        <div class="aw-tag">Enhancement</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Help Wanted</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="aw-tag">Discussion</div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                                        {#each issue.tags as tag}
+                                                            <li>
+                                                                <div class="aw-tag">{tag}</div>
+                                                            </li>
+                                                        {/each}
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {/each}
                                     </tbody>
                                 </table>
                             </div>
@@ -497,7 +346,9 @@
                         style="--grid-item-size:15rem"
                     >
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Create content
                                 </div>
@@ -507,7 +358,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Present at meetups
                                 </div>
@@ -517,7 +370,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Report bugs
                                 </div>
@@ -527,7 +382,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Submit new ideas
                                 </div>
@@ -537,7 +394,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Improve documentation
                                 </div>
@@ -547,7 +406,9 @@
                             </div>
                         </li>
                         <li>
-                            <div class="aw-card is-normal u-flex-vertical aw-u-gap-6">
+                            <div
+                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                            >
                                 <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     Helping others
                                 </div>
@@ -662,7 +523,7 @@
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        125K+ followers
+                                        128K+ followers
                                     </div>
                                 </a>
                             </li>
@@ -682,7 +543,7 @@
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        33K+ stargazers
+                                        38K+ stargazers
                                     </div>
                                 </a>
                             </li>
@@ -702,7 +563,7 @@
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        3K+ subscribers
+                                        4K+ subscribers
                                     </div>
                                 </a>
                             </li>
@@ -711,105 +572,101 @@
                 </div>
             </div>
         </div>
-        <div class="aw-big-padding-section">
-            <div class="aw-big-padding-section-level-1">
-                <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container">
-                        <div class="aw-grid-1-1-opt-2 u-gap-32">
-                            <div class="">
-                                <div
-                                    class="aw-u-max-inline-size-none-mobile"
-                                    class:aw-u-max-width-380={!submitted}
-                                >
-                                    <section class="u-flex-vertical aw-u-gap-20">
-                                        <h1 class="aw-title aw-u-color-text-primary">
-                                            Appwrite insights
-                                        </h1>
-                                        <p class="aw-description aw-u-padding-block-end-40">
-                                            Sign up to our company blog and get the latest insights
-                                            from Appwrite. Learn more about engineering, product
-                                            design, building community, and tips & tricks for using
-                                            Appwrite.
-                                        </p>
-                                    </section>
-                                </div>
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
+                    <div class="aw-grid-1-1-opt-2 u-gap-32">
+                        <div class="">
+                            <div
+                                class="aw-u-max-inline-size-none-mobile"
+                                class:aw-u-max-width-380={!submitted}
+                            >
+                                <section class="u-flex-vertical aw-u-gap-20">
+                                    <h1 class="aw-title aw-u-color-text-primary">
+                                        Appwrite insights
+                                    </h1>
+                                    <p class="aw-description aw-u-padding-block-end-40">
+                                        Sign up to our company blog and get the latest insights from
+                                        Appwrite. Learn more about engineering, product design,
+                                        building community, and tips & tricks for using Appwrite.
+                                    </p>
+                                </section>
                             </div>
-                            {#if submitted}
-                                <div class="u-flex u-gap-8 u-cross-center">
-                                    <svg
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 18 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <circle
-                                            cx="9"
-                                            cy="9"
-                                            r="8"
-                                            fill="#FD366E"
-                                            fill-opacity="0.08"
-                                            stroke="#FD366E"
-                                            stroke-opacity="0.32"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                        <path
-                                            d="M5.25 10.5L7.75 12.5L12.75 6"
-                                            stroke="#E4E4E7"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-
-                                    <span class="text">
-                                        Thank you for subscribing! An email has been sent to your
-                                        inbox.
-                                    </span>
-                                </div>
-                            {:else}
-                                <form
-                                    method="post"
-                                    on:submit|preventDefault={submit}
-                                    class="u-flex-vertical u-gap-16"
-                                >
-                                    <div class="u-flex u-flex-vertical u-gap-4">
-                                        <label for="name">Your name</label>
-                                        <input
-                                            class="aw-input-text"
-                                            type="text"
-                                            placeholder="Enter your name"
-                                            id="name"
-                                            name="name"
-                                            required
-                                            bind:value={name}
-                                        />
-                                    </div>
-                                    <div class="u-flex u-flex-vertical u-gap-4">
-                                        <label for="email">Your email</label>
-                                        <input
-                                            class="aw-input-text"
-                                            type="email"
-                                            placeholder="Enter your email"
-                                            required
-                                            id="email"
-                                            name="email"
-                                            bind:value={email}
-                                        />
-                                    </div>
-                                    <button type="submit" class="aw-button" disabled={submitting}
-                                        >Sign up</button
-                                    >
-                                    {#if error}
-                                        <span class="text">
-                                            Something went wrong. Please try again later.
-                                        </span>
-                                    {/if}
-                                </form>
-                            {/if}
                         </div>
+                        {#if submitted}
+                            <div class="u-flex u-gap-8 u-cross-center">
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle
+                                        cx="9"
+                                        cy="9"
+                                        r="8"
+                                        fill="#FD366E"
+                                        fill-opacity="0.08"
+                                        stroke="#FD366E"
+                                        stroke-opacity="0.32"
+                                        stroke-width="1.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M5.25 10.5L7.75 12.5L12.75 6"
+                                        stroke="#E4E4E7"
+                                        stroke-width="1.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+
+                                <span class="text">
+                                    Thank you for subscribing! An email has been sent to your inbox.
+                                </span>
+                            </div>
+                        {:else}
+                            <form
+                                method="post"
+                                on:submit|preventDefault={submit}
+                                class="u-flex-vertical u-gap-16"
+                            >
+                                <div class="u-flex u-flex-vertical u-gap-4">
+                                    <label for="name">Your name</label>
+                                    <input
+                                        class="aw-input-text"
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        id="name"
+                                        name="name"
+                                        required
+                                        bind:value={name}
+                                    />
+                                </div>
+                                <div class="u-flex u-flex-vertical u-gap-4">
+                                    <label for="email">Your email</label>
+                                    <input
+                                        class="aw-input-text"
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        required
+                                        id="email"
+                                        name="email"
+                                        bind:value={email}
+                                    />
+                                </div>
+                                <button type="submit" class="aw-button" disabled={submitting}
+                                    >Sign up</button
+                                >
+                                {#if error}
+                                    <span class="text">
+                                        Something went wrong. Please try again later.
+                                    </span>
+                                {/if}
+                            </form>
+                        {/if}
                     </div>
                 </div>
             </div>

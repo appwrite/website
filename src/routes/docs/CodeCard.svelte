@@ -1,10 +1,7 @@
 <script lang="ts" context="module">
     export type CodeCardProps = {
         href: string;
-        cover: {
-            src: string;
-            alt: string;
-        };
+        cover: string;
         title: string;
         description: string;
     };
@@ -20,7 +17,7 @@
 
 <a class="aw-grid-articles-item is-full-color" {href}>
     <div class="aw-grid-articles-item-image">
-        <img src={cover.src} alt={cover.alt} loading="lazy" />
+        <img src={cover} alt='' loading="lazy" />
     </div>
     <article class="aw-grid-articles-item-content">
         <header class="aw-articles-item-header">
