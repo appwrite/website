@@ -33,7 +33,6 @@ By default, only the first user can sign up on the Appwrite instance's dashboard
 Learn more about environment variables 
 {% /arrow_link %}
 
-
 # Scaling {% #scaling %}
 
 Appwrite is built with scalability in mind. Appwrite can scale both horizontally and vertically.
@@ -86,7 +85,6 @@ In production, it is highly recommended to turn error reporting off. To do so, m
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
 Learn more about environment variables 
 {% /arrow_link %}
-
 
 # Security {% #security %}
 
