@@ -108,57 +108,63 @@
     </div>
 </div>
 
-<div
-    class="u-position-absolute aw-is-only-desktop"
-    style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
-    class:aw-u-hide-mobile={$isMobileNavOpen}
->
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
-</div>
-
-<div
-    class="u-position-absolute aw-is-only-desktop"
-    style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
-    class:aw-u-hide-mobile={$isMobileNavOpen}
->
-    <img src="/images/bgs/hero-lines-2.png" alt="" />
-</div>
-
 <Main>
     <div class="aw-big-padding-section">
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-padding-block-end-0">
-                    <a
-                        href="/blog/post/meet-the-new-appwrite"
-                        class="aw-hero-banner-button aw-u-margin-block-end-24"
+                <section class="aw-container aw-u-padding-block-end-0 u-position-relative">
+
+
+                    <div
+                            class="u-position-absolute aw-is-not-mobile"
+                            style="top:7.5rem; left:-664px; width: 75.9375rem;"
+                            class:aw-u-hide-mobile={$isMobileNavOpen}
                     >
-                        <span class="aw-icon-star" aria-hidden="true" />
-                        <span class="aw-caption-500">New</span>
-                        <div class="aw-hero-banner-button-sep" />
-                        <span class="aw-caption-400">Meet the new Appwrite</span>
-                        <span class="aw-icon-arrow-right" aria-hidden="true" />
-                    </a>
-                    <div class="aw-hero is-horizontal">
-                        <h1 class="aw-headline">
+                        <img src="/images/bgs/hero-lines-1.png" alt="" />
+                    </div>
+
+                    <div
+                            class="u-position-absolute aw-is-not-mobile"
+                            style="top:31rem; right:-580px; width:60rem;"
+                            class:aw-u-hide-mobile={$isMobileNavOpen}
+                    >
+                        <img src="/images/bgs/hero-lines-2.png" alt="" />
+                    </div>
+
+
+
+                    <div class="u-position-relative">
+                        <a
+                                href="/blog/post/meet-the-new-appwrite"
+                                class="aw-hero-banner-button aw-u-margin-block-end-24"
+                        >
+                            <span class="aw-icon-star" aria-hidden="true" />
+                            <span class="aw-caption-500">New</span>
+                            <div class="aw-hero-banner-button-sep" />
+                            <span class="aw-caption-400">Meet the new Appwrite</span>
+                            <span class="aw-icon-arrow-right" aria-hidden="true" />
+                        </a>
+                        <div class="aw-hero is-horizontal">
+                            <h1 class="aw-headline">
                             <span class="aw-gradient-text">
                                 Build like a team of hundreds<span class="aw-u-color-text-accent"
-                                    >_</span
-                                >
-                            </span>
-                        </h1>
-                        <div class="u-cross-child-end">
-                            <p class="aw-description">
-                                Appwrite's open-source platform lets you add Auth, DBs, Functions
-                                and Storage to your product and build any application at any scale,
-                                own your data, and use your preferred coding languages and tools.
-                            </p>
-                            <a
-                                href="https://cloud.appwrite.io"
-                                class="aw-button is-full-width-mobile u-margin-block-start-32"
+                            >_</span
                             >
-                                <span class="text">Get started</span>
-                            </a>
+                            </span>
+                            </h1>
+                            <div class="u-cross-child-end">
+                                <p class="aw-description">
+                                    Appwrite's open-source platform lets you add Auth, DBs, Functions
+                                    and Storage to your product and build any application at any scale,
+                                    own your data, and use your preferred coding languages and tools.
+                                </p>
+                                <a
+                                        href="https://cloud.appwrite.io"
+                                        class="aw-button is-full-width-mobile u-margin-block-start-32"
+                                >
+                                    <span class="text">Get started</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </section>
