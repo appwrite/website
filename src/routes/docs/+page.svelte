@@ -69,7 +69,7 @@
         <enhanced:img src="./blur-1.png" alt="" />
     </div>
 
-    <main class="aw-main-section u-position-relative">
+    <main class="aw-main-section u-position-relative" id="main">
         <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
