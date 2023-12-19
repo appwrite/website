@@ -354,9 +354,3 @@
     </article>
 </main>
 <MainFooter variant="docs" />
-
-<style lang="scss">
-    .aw-inline-code {
-        translate: 0 0.125rem;
-    }
-</style>
