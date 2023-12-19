@@ -22,6 +22,28 @@
 			]
 		},
 		{
+			label: 'Concepts',
+			items: [
+				{
+					label: 'Functions',
+					href: '/docs/products/functions/runtimes'
+				},
+				{
+					label: 'Deployments',
+					href: '/docs/products/functions/runtimes'
+				},
+				{
+					label: 'Environment variables',
+					href: '/docs/products/functions/runtimes'
+				},
+				{
+					label: 'Runtimes',
+					href: '/docs/products/functions/runtimes'
+				},
+
+			]
+		},
+		{
 			label: 'Journeys',
 			items: [
 				{
@@ -35,10 +57,6 @@
 				{
 					label: 'Execution',
 					href: '/docs/products/functions/execution'
-				},
-				{
-					label: 'Runtimes',
-					href: '/docs/products/functions/runtimes'
 				},
 				{
 					label: 'Examples',
