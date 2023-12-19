@@ -172,17 +172,6 @@
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
                     </a>
-                    <button
-                        on:click={toggleSidenav}
-                        class="aw-button is-text aw-is-not-desktop"
-                        aria-label="open navigation"
-                    >
-                        {#if $layoutState.showSidenav}
-                            <span aria-hidden="true" class="aw-icon-close" />
-                        {:else}
-                            <span aria-hidden="true" class="aw-icon-hamburger-menu" />
-                        {/if}
-                    </button>
                 </div>
             </div>
         </div>
