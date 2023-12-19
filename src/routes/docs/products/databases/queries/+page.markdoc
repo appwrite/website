@@ -115,6 +115,27 @@ suspend fun main() {
     }
 }
 ```
+```python
+from appwrite.client import Client
+from appwrite.query import Query
+from appwrite.services.databases import Databases
+
+database = Databases(
+    client=(Client()
+            .set_endpoint('https://cloud.appwrite.io/v1')
+            .set_project('<PROJECT_ID>')
+            )
+)
+
+database.list_documents(
+    '[DATABASE_ID]',
+    '[COLLECTION_ID]',
+    [
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greaterThan('year', 1999)
+    ]
+)
+```
 ```swift
 import Appwrite
 import AppwriteModels
