@@ -7,6 +7,7 @@ cover: /images/blog/announcing-appwrite-pro/header.png
 timeToRead: 5
 author: laura-du-ry
 category: cloud
+featured: true
 ---
 
 After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud, Appwrite Pro. A new product offering that allows you to build with more confidence. 
