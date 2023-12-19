@@ -1977,7 +1977,7 @@ public class Main {
 ```
 {% /multicode %}
 
-# Code splitting {% #code-splitting %}
+# Code structure {% #code-structure %}
 
 As your functions grow, you may find yourself needing to split your code into multiple files. This helps you keep your codebase maintainable and easy to read. Here's how you can accomplish code splitting.
 
