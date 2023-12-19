@@ -16,7 +16,7 @@ Reaching your organization's resource limits will have the following effects unt
 ---
 *  Platform creation disabled.
 ---
-* **Monthly active users**
+* **Users**
 * Creating new accounts and team invitations disabled.
 ---
 * **Compute**
