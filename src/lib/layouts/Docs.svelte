@@ -153,14 +153,23 @@
             <div class="aw-main-header-end">
                 <div class="u-flex u-gap-8">
                     <a
+                            href="https://appwrite.io/discord"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="aw-button is-text"
+                    >
+                        <span class="aw-icon-discord aw-u-opacity-100" aria-hidden="true"  />
+                        <span class="text">Discord</span>
+                    </a>
+                    <a
                         href="https://github.com/appwrite/appwrite/stargazers"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="aw-button is-text"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
-                        <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                        <span class="text">GitHub</span>
+                        <span class="aw-inline-tag aw-sub-body-400">38.5K</span>
                     </a>
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
