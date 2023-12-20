@@ -73,7 +73,6 @@
           position:fixed; inset-inline-end:0; inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position); inset-block-end:0;
         }
       }
-
     }
   }
 
@@ -135,6 +134,17 @@
       }
     }
   }
+
+  @media #{$break5} {
+    .#{$p}-references-menu {
+      &.is-open-mid-range {
+        .#{$p}-references-menu-content {
+          position:sticky; display:flex;
+        }
+      }
+    }
+  }
+
   @media #{$break5open} {
     .#{$p}-references-menu {
       #refOpen, #refClose { display:none; }
