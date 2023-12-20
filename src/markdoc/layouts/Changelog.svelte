@@ -3,6 +3,7 @@
 
     export type ChangelogData = {
         title: string;
+        description?: string;
         date: string;
         cover?: string;
     };

@@ -3,13 +3,14 @@
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
 
     export let data;
 
     const seo = {
         title: data.title,
+        description: data.description ?? DEFAULT_DESCRIPTION,
         ogImage: data.cover
             ? DEFAULT_HOST + data.cover
             : `${DEFAULT_HOST}/images/open-graph/website.png`
@@ -22,9 +23,9 @@
     <meta property="og:title" content={seo.title} />
     <meta name="twitter:title" content={seo.title} />
     <!-- Desscription -->
-    <!-- <meta name="description" content={description} />
-  <meta property="og:description" content={description} />
-  <meta name="twitter:description" content={description} /> -->
+    <meta name="description" content={seo.description} />
+    <meta property="og:description" content={seo.description} />
+    <meta name="twitter:description" content={seo.description} />
     <!-- Image -->
 
     <meta property="og:image" content={seo.ogImage} />
