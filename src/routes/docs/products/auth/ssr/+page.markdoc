@@ -39,7 +39,6 @@ $client = (new Client())
 The most straightforward type of session to integrate is email/password. Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. Once you have a session object, you can persist it to a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
 Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
 
-We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, and is not accessible to JavaScript. This will prevent XSS attacks.
 
 {% multicode %}
 ```js
@@ -99,6 +98,8 @@ try {
 }
 ```
 {% /multicode %}
+
+We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, and is not accessible to JavaScript. This will prevent XSS attacks.
 
 # Accepting authenticated requests {% #accepting-authenticated-requests %}
 
