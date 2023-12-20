@@ -2,22 +2,22 @@
 layout: post
 title: Announcing Cloud pricing plans
 description: Appwrite Cloud pricing are now available.
-date: 2023-05-02
+date: 2023-08-08
 cover: /images/blog/cloud-pricing.png
 timeToRead: 5
 author: laura-du-ry
 category: cloud
 ---
 
-An important day has come for Appwrite, where we finally announce the pricing for Appwrite Cloud. Many of you mentioned that in order to continue building with Appwrite Cloud it is important to know what the potential costs are. So due to the high number of requests and to provide clarity we decided to share our pricing models before they're live. Please note that Appwrite Cloud continues to be free while in beta and pricing will be effective once we are generally available.
+An important day has come for Appwrite, where we finally announce the pricing for Appwrite Cloud. Many of you mentioned that in order to continue building with Appwrite Cloud it is important to know what the potential costs are. So due to the high number of requests and to provide clarity we decided to share our pricing models before they're live. Please note that Appwrite Cloud continues to be free untill billing is enabled towards the end of 2024.
 
 Now let's dive in.
 
 # Building for the future
 
-As part of our mission to make software more accessible, we wanted to make sure our pricing complements that mission but also enables us to have the resources to continue building a strong company that can reach new levels. We have put a lot of effort into creating Appwrite's pricing that aligns with our values, transparency, ambition, and simplicity.
+As part of our mission to make software development more accessible and enjoyable, we wanted to make sure our pricing complements that mission but also enables us to have the resources to continue building a strong foundation that can reach new levels. We have put a lot of effort into creating Appwrite's pricing that aligns with our values, transparency, ambition, and simplicity.
 
-# Value framework
+# Value Framework
 
 We created a set of principles to guide us through the pricing process. We like to call this the “Value Framework” as it focuses on delivering the maximum value to our users without compromising on the affordability and accessibility of our products and services.
 
@@ -36,14 +36,17 @@ The above framework supports our goal to make Appwrite Cloud affordable and acce
 
 ![Appwrite pricing plans](/images/blog/pricing-plans.png)
 
-**Starter Plan** a free tier for every developer working on a side project or SaaS product that can thrive on our starter plan limits.
-Free
+**Starter Plan** 
+- A free tier for every developer working on a side project or SaaS product that can thrive on our starter plan limits.
+- Free.
 
-**Pro Plan** a plan that supports your ambitions to scale your production project and allows you to grow. With flexible budget control tools to ensure you never get a surprise bill.
-$15, per month, per member
+**Pro Plan**
+- A plan that supports your ambitions to scale your production project and allows you to grow. With flexible budget control tools to ensure you never get a surprise bill.
+- $15, per month, per member.
 
-**Scale plan** a plan that offers more support as you continue to scale your commercial product and team. With higher limits and more support from our team to ensure we support the demand of scaling teams.
-$685, per month, per organization
+**Scale plan**
+- A plan that offers more support as you continue to scale your commercial product and team. With higher limits and more support from our team to ensure we support the demand of scaling teams. 
+- $685, per month, per organization.
 
 # Business model: Pay per organization member
 
