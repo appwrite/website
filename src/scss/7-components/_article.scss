@@ -13,7 +13,7 @@
 
   }
   &-content {
-    display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
+    display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary)); min-inline-size:0;
     article .#{$p},
     &-spacing-logic .#{$p}{
       &-sub-body-400  { margin-block:pxToRem(16); }

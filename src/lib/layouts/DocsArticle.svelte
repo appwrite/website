@@ -65,7 +65,7 @@
             <slot />
             <Feedback {date} />
         </div>
-        <aside class="aw-references-menu aw-u-padding-inline-start-24">
+        <aside class="aw-references-menu">
             <div class="aw-references-menu-content">
                 {#if toc && toc.length > 0}
                     <div class="u-flex u-main-space-between u-cross-center u-gap-16">

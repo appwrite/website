@@ -135,7 +135,7 @@
     }
   }
 
-  @media #{$break5} {
+  @media #{$break2}, #{$break3}, #{$break4}, #{$break5} {
     .#{$p}-references-menu {
       &.is-open-mid-range {
         .#{$p}-references-menu-content {
