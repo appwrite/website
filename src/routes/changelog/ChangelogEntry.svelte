@@ -1,6 +1,6 @@
 <script lang="ts">
     import { formatDate } from '$lib/utils/date';
-    import type { PageData } from './$types';
+    import type { PageData } from './[[page]]/$types';
 
     export let entry: PageData['entries'][0];
 </script>

@@ -4,7 +4,7 @@
     export type NavLink = {
         label: string;
         href: string;
-        badge?: number;
+        showBadge?: boolean;
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
@@ -16,9 +16,9 @@
     import { BANNER_KEY } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
+    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -96,7 +96,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            badge: $page.data.changelogEntries
+            showBadge: hasNewChangelog()
         },
         {
             label: 'Pricing',
@@ -213,13 +213,11 @@
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as navLink}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-link" href={navLink.href}
+                                <a
+                                    class="aw-link"
+                                    href={navLink.href}
+                                    data-badge={navLink.showBadge ? '' : undefined}
                                     >{navLink.label}
-                                    {#if navLink.badge}
-                                        <span class="aw-inline-tag aw-sub-body-400 nav-badge"
-                                            >{navLink.badge}</span
-                                        >
-                                    {/if}
                                 </a>
                             </li>
                         {/each}
@@ -261,5 +259,22 @@
     .nav-badge {
         margin-inline-start: 0.5rem;
         padding-inline: 0.375rem;
+    }
+
+    [data-badge] {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(var(--aw-color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+            translate: 100%;
+        }
     }
 </style>
