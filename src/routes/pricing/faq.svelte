@@ -29,7 +29,8 @@
         },
         {
             question: 'How can I join the OSS program?',
-            answer: 'The OSS program is exclusively for active open-source maintainers. In case you are liable for the program, you can <a href="/contact-us">apply here</a>.'
+            answer: `The OSS program is exclusively for active open-source maintainers. In case you are liable for the program, 
+            you can <a class="aw-link is-inline" href="/contact-us">apply here</a>.`
         },
         {
             question: 'I have a Starter plan account. How do I upgrade to a paid plan?',
@@ -41,10 +42,11 @@
         },
         {
             question: 'Where can I find an overview of my organization usage stats?',
-            answer: 'Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab where you can find an overview of all your project\'s usage stats.'
+            answer: "Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab where you can find an overview of all your project's usage stats."
         },
         {
-            question: 'Where can I find information about my invoices and other billing information?',
+            question:
+                'Where can I find information about my invoices and other billing information?',
             answer: 'Go to the Appwrite Console and use the drop-down menu in the top right corner to navigate to your organization overview by clicking on your organization. This will bring you to your overview, where you can select the billing tab. Here you will find your overview, payment history and methods, billing address, set a budget cap, and add your credits.'
         }
     ];
