@@ -17,15 +17,15 @@
         },
         {
             question: 'What payment methods does Appwrite support?',
-            answer: 'Appwrite currently supports credit and debit card payments. We will be working to add support for more methods constantly. Please reach out to us in case this is an issue for you.'
+            answer: 'Appwrite currently supports [credit and debit card payments](/docs/advanced/platform/billing#payment-methods). We will be working to add support for more methods constantly. Please reach out to us in case this is an issue for you.'
         },
         {
             question: 'What happens if I reach a resource limit in my Pro plan?',
-            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources under the pricing plans comparison. We will also notify you when you hit 75% and 100% of your resources with per email. You can also use our budget caps to avoid unexpected payments.'
+            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources under the pricing plans comparison. We will also notify you when you hit 75% and 100% of your resources with per email. You can also [use our budget caps](/docs/advanced/platform/pro#budget-cap) to avoid unexpected payments. [Learn more in our docs](/docs/advanced/platform/pro#reaching-resource-limits).'
         },
         {
             question: 'What happens if I reach a resource limit in my Starter plan?',
-            answer: 'Your project will freeze, and you will be requested to upgrade to Pro or downgrade the resources used in your project. We will also notify you when you hit 75% and 100% of your resources with per email.'
+            answer: 'Your project will freeze, and you will be requested to upgrade to Pro or reduce the resources used in your project. We will also notify you when you hit 75% and 100% of your resources with per email. [Learn more in our docs](/docs/advanced/platform/starter#reaching-resource-limits).'
         },
         {
             question: 'How can I join the OSS program?',
