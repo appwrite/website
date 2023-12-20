@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { goto, invalidate } from '$app/navigation';
-    import { MainFooter, FooterNav, PreFooter } from '$lib/components';
+    import { goto } from '$app/navigation';
+    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import ChangelogEntry from '../ChangelogEntry.svelte';
