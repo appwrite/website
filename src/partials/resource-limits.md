@@ -1,6 +1,6 @@
 ## Check resource usage {% #check-resource-usage %}
 
-You can check your organization's resource usage by navigating to your organization, under the **Usage** tab, you can check the current billing cycle's usage stats.
+You can check your organization's resource usage for the current billing cycle by navigating to your organization, under the **Usage** tab.
 
 
 ## Reaching resource limits {% #reaching-resource-limits %}
@@ -10,7 +10,7 @@ Reaching your organization's resource limits will have the following effects unt
 * Consequence
 ---
 * **Bandwidth** {% rowspan=3 %}
-*  More bandwidth will be purchased automatically until organization reaches budget cap. If the organization uses a Starter plan or the budget cap is reached, API access will be denied until your organization's plan is upgraded or your budget cap is increased.
+*  More bandwidth will be purchased automatically until your organization reaches a budget cap. If the organization uses a Starter plan or a budget cap is reached, API access will be denied until your organization's plan is upgraded or your budget cap is increased.
 ---
 *  Importing projects via migrations disabled, but you can still export your projects.
 ---
@@ -26,7 +26,7 @@ Reaching your organization's resource limits will have the following effects unt
 * Realtime subscriptions disabled.
 ---
 * **Storage**
-* File uploads are disabled. Persists across billing periods until storage is .
+* File uploads are disabled. Persists across billing periods until the amount of storage used is below the plan limit.
 {% /table %}
 
 ## Switching to Starter plan and reaching limits {% #switching-to-starter-plan-reaching-resource-limits %}
