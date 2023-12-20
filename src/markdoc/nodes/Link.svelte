@@ -1,6 +1,7 @@
 <script lang="ts">
     import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
     import { getContext } from 'svelte';
+    import { TABLE_CTX_KEY } from './Table.svelte';
 
     export let href: string;
     export let title: string;
@@ -11,6 +12,7 @@
 
     const isDocs = getContext('isDocs') ?? false;
     const inChangelog = isInsideChangelog();
+    const inTable = getContext(TABLE_CTX_KEY) ?? false;
 </script>
 
 <a

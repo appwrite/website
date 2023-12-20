@@ -19,7 +19,8 @@
         sveltekit: 'icon-svelte',
         android: 'icon-android',
         apple: 'icon-apple',
-        flutter: 'icon-flutter'
+        flutter: 'icon-flutter',
+        refine: 'aw-icon-refine'
     };
 
     const getIcon = (tutorial: MappedTutorial) => {
@@ -45,7 +46,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<main class="aw-main-section">
+<main class="aw-main-section" id="main">
     <article class="aw-article">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
@@ -81,7 +82,12 @@
                 <ul class="tutorial-grid">
                     {#each data.drafts as draft}
                         <li>
-                            <a href={draft.href} class="aw-card is-normal draft">
+                            <a
+                                href={draft.href}
+                                class="aw-card is-normal draft"
+                                aria-disabled="true"
+                                tabindex="-1"
+                            >
                                 <header>
                                     <span
                                         class="{getIcon(draft)} aw-u-font-size-24"
@@ -142,5 +148,6 @@
 
     .draft {
         opacity: 0.4;
+        pointer-events: none;
     }
 </style>

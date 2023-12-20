@@ -99,10 +99,10 @@
         class="u-position-absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
-        <img
+        <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="/images/bgs/top-page-dark.svg"
+            src="./top-page-dark.png"
             alt=""
         />
     </div>
@@ -130,13 +130,13 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-padding-block-end-0">
                     <a
-                        href="/blog/post/meet-the-new-appwrite"
+                        href="/blog/post/announcing-appwrite-pro"
                         class="aw-hero-banner-button aw-u-margin-block-end-24"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="aw-caption-500">New</span>
                         <div class="aw-hero-banner-button-sep" />
-                        <span class="aw-caption-400">Meet the new Appwrite</span>
+                        <span class="aw-caption-400">Announcing Appwrite Pro</span>
                         <span class="aw-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="aw-hero is-horizontal">

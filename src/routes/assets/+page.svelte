@@ -68,7 +68,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <img src="/images/bgs/assets-bg.svg" alt="" />
+    <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
@@ -112,7 +112,7 @@
                     </ul>
                 </div>
             </aside>
-            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed">
+            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
                 <div class="aw-content">
                     <section>
                         <p>
@@ -566,7 +566,7 @@
                                 what's presented on this page, please don't hesitate to
                                 <a
                                     class="aw-link"
-                                    href="/"
+                                    href="/contact-us"
                                     target="_blank"
                                     rel="noopener noreferrer">contact us</a
                                 >.
