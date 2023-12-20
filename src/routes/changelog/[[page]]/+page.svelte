@@ -3,7 +3,10 @@
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
+    import { page } from '$app/stores';
+    import { CHANGELOG_KEY } from '../utils';
 
     export let data;
 
@@ -16,6 +19,10 @@
     function loadMore() {
         goto(`/changelog/${data.nextPage}`, { replaceState: true, noScroll: true });
     }
+
+    onMount(() => {
+        localStorage.setItem(CHANGELOG_KEY, $page.data.changelogEntries.toString());
+    });
 </script>
 
 <svelte:head>
