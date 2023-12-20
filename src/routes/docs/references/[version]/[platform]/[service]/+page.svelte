@@ -91,7 +91,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start">
@@ -145,12 +145,24 @@
                 </div>
             </div>
         </header>
-        <div class="aw-article-content">
+        <div class="aw-article-content" style:gap="6rem">
             <section class="aw-article-content-grid-6-4">
                 <div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
+                <div
+                    class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
+                >
+                    <Fence
+                        language="text"
+                        badge="Base URL"
+                        content="https://cloud.appwrite.io/v1"
+                        process
+                        withLineNumbers={false}
+                    />
+                </div>
+
                 {#if data.methods.length === 0}
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
                         <div class="aw-inline-info">
@@ -190,23 +202,17 @@
                                             </div>
                                         </summary>
                                         <div class="collapsible-content">
-                                            <div
-                                                class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                            >
+                                            <div class="aw-card is-transparent u-padding-16">
                                                 <ul class="u-flex-vertical">
                                                     {#each method.parameters as parameter, i}
                                                         {@const first = i === 0}
-                                                        <li
-                                                            class:u-sep-block-start={!first}
-                                                            class:u-padding-block-start-16={!first}
-                                                            class="u-margin-block-start-16"
-                                                        >
+                                                        <li class:u-padding-block-start-16={!first}>
                                                             <article>
                                                                 <header
                                                                     class="u-flex u-cross-baseline u-gap-8"
                                                                 >
                                                                     <span
-                                                                        class="aw-eyebrow aw-u-color-text-primary"
+                                                                        class="aw-code aw-u-color-text-primary"
                                                                     >
                                                                         {parameter.name}
                                                                     </span>
@@ -245,9 +251,7 @@
                                         </div>
                                     </summary>
                                     <div class="collapsible-content">
-                                        <div
-                                            class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                        >
+                                        <div class="aw-card is-transparent u-padding-16">
                                             <ul>
                                                 {#each method.responses as response}
                                                     {#if response.models}
@@ -299,11 +303,21 @@
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
                             >
                                 <Fence
-                                    language={platform}
-                                    content={method.demo}
+                                    language="text"
+                                    badge="Endpoint"
+                                    content="{method.method.toUpperCase()} {method.url}"
+                                    toCopy={method.url}
                                     process
                                     withLineNumbers={false}
                                 />
+                                <div class="u-margin-block-start-24">
+                                    <Fence
+                                        language={platform}
+                                        content={method.demo}
+                                        process
+                                        withLineNumbers={false}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -358,5 +372,30 @@
 <style lang="scss">
     .aw-inline-code {
         translate: 0 0.125rem;
+    }
+
+    .collapsible-item {
+        border-block-end: 0.0625rem solid hsl(var(--aw-color-offset));
+    }
+
+    .collapsible-button {
+        padding-block: 1rem;
+    }
+
+    .collapsible-content {
+        margin-block-start: 0;
+        padding-block-end: 1rem;
+
+        article :last-child {
+            margin-block-end: 0;
+        }
+
+        ul {
+            gap: 1rem;
+
+            li:not(:first-child) {
+                border-block-start: solid 0.0625rem hsl(var(--aw-color-offset));
+            }
+        }
     }
 </style>

@@ -23,7 +23,7 @@
                 src: '/images/community/events/december-1.png',
                 alt: ''
             },
-            date: 'Decemeber 14th',
+            date: 'December 14th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -87,14 +87,14 @@
     ];
 
     const metrics = [
-        { metric: '33K+', description: 'GitHub Stars' },
-        { metric: '8K+', description: 'Pull Requests' },
-        { metric: '15K+', description: 'Commits' },
-        { metric: '2.5K+', description: 'Issues' },
-        { metric: '400+', description: 'Open Issues' },
-        { metric: '1.9K+', description: 'Closed Issues' },
-        { metric: '4.9K+', description: 'Forks' },
-        { metric: '20K+', description: 'Contributors' }
+        { metric: '38K+', description: 'GitHub Stars' },
+        { metric: '3K+', description: 'Pull Requests' },
+        { metric: '18K+', description: 'Commits' },
+        { metric: '3K+', description: 'Issues' },
+        { metric: '600+', description: 'Open Issues' },
+        { metric: '2.5K+', description: 'Closed Issues' },
+        { metric: '3.5K+', description: 'Forks' },
+        { metric: '800+', description: 'Contributors' }
     ];
 
     let name = '';
@@ -154,7 +154,7 @@
                 <section class="aw-container aw-u-padding-block-end-0 u-position-relative">
                     <div class="aw-hero is-align-start aw-u-max-width-580">
                         <h1 class="aw-display aw-u-color-text-primary">
-                            Built by a community of 700+ contributors
+                            Built by a community of 800+ contributors
                         </h1>
                         <div>
                             <p class="aw-description">
@@ -499,7 +499,7 @@
                                         <span
                                             class="icon-discord aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Discord logo"
+                                            aria-label="Discord"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
@@ -519,11 +519,11 @@
                                         <span
                                             class="aw-icon-x aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="X logo"
+                                            aria-label="X"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        125K+ followers
+                                        128K+ followers
                                     </div>
                                 </a>
                             </li>
@@ -539,11 +539,11 @@
                                         <span
                                             class="icon-github aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="GitHub logo"
+                                            aria-label="GitHub"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        33K+ stargazers
+                                        38K+ stargazers
                                     </div>
                                 </a>
                             </li>
@@ -559,11 +559,11 @@
                                         <span
                                             class="icon-youtube aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Youtube logo"
+                                            aria-label="Youtube"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        3K+ subscribers
+                                        4K+ subscribers
                                     </div>
                                 </a>
                             </li>

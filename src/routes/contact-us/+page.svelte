@@ -4,6 +4,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
+    import { socials } from '$lib/constants';
 
     let email = '';
     let firstName = '';
@@ -104,61 +105,19 @@
                                 >
                                     <h2 class="aw-label aw-u-color-text-primary">Follow us</h2>
                                     <ul class="u-flex u-gap-8">
-                                        <li>
-                                            <a
-                                                href="/discord"
-                                                class="aw-icon-button"
-                                                aria-label="Appwrite on aw-icon-discord"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span class="aw-icon-discord" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://github.com/appwrite"
-                                                class="aw-icon-button"
-                                                aria-label="Appwrite on aw-icon-github"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span class="aw-icon-github" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://twitter.com/appwrite"
-                                                class="aw-icon-button"
-                                                aria-label="Appwrite on aw-icon-x"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span class="aw-icon-x" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://linkedin.com/company/appwrite"
-                                                class="aw-icon-button"
-                                                aria-label="Appwrite on aw-icon-linkedin"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span class="aw-icon-linkedin" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://youtube.com/c/appwrite?sub_confirmation=1"
-                                                class="aw-icon-button"
-                                                aria-label="Appwrite on YouTube"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span class="aw-icon-youtube" aria-hidden="true" />
-                                            </a>
-                                        </li>
+                                        {#each socials as social}
+                                            <li>
+                                                <a
+                                                    href={social.link}
+                                                    class="aw-icon-button"
+                                                    aria-label={social.label}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <span class={social.icon} aria-hidden="true" />
+                                                </a>
+                                            </li>
+                                        {/each}
                                     </ul>
                                 </section>
                                 <div
