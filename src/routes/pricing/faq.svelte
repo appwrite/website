@@ -37,7 +37,7 @@
         },
         {
             question: 'Where can I find an overview of my project usage stats?',
-            answer: 'Go to the Appwrite Console and use the drop-down menu in the top right corner to navigate to your organization overview by clicking on your organization. Here you will find a usage tab where you can find an overview of all your project's usage stats.'
+            answer: 'Go to the Appwrite Console and use the drop-down menu in the top right corner to navigate to your organization overview by clicking on your organization. Here you will find a usage tab where you can find an overview of all your project\'s usage stats.'
         },
         {
             question: 'Where can I find information about my invoices and other billing information?',
