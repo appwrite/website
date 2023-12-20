@@ -101,7 +101,7 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
         }
     }
 
-    function logout() {
+    async function logout() {
         await account.deleteSession('current');
         loggedInUser = null;
     }
