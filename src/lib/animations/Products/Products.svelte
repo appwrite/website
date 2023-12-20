@@ -377,7 +377,7 @@
         position: sticky;
 
         top: 0;
-        // min-height: 58rem;
+        min-height: 50rem;
         overflow: hidden;
 
         padding-inline: 1.25rem;
