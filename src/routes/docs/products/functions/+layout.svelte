@@ -26,15 +26,19 @@
 			items: [
 				{
 					label: 'Functions',
-					href: '/docs/products/functions/runtimes'
+					href: '/docs/products/functions/functions'
 				},
 				{
 					label: 'Deployments',
-					href: '/docs/products/functions/runtimes'
+					href: '/docs/products/functions/deployments'
 				},
 				{
-					label: 'Environment variables',
-					href: '/docs/products/functions/runtimes'
+					label: 'Templates',
+					href: '/docs/products/functions/templates'
+				},
+				{
+					label: 'Domains',
+					href: '/docs/products/functions/domains'
 				},
 				{
 					label: 'Runtimes',
@@ -47,21 +51,17 @@
 			label: 'Journeys',
 			items: [
 				{
-					label: 'Development',
-					href: '/docs/products/functions/development'
+					label: 'Develop',
+					href: '/docs/products/functions/develop'
 				},
 				{
-					label: 'Deployment',
-					href: '/docs/products/functions/deployment'
+					label: 'Deploy',
+					href: '/docs/products/functions/deploy'
 				},
 				{
-					label: 'Execution',
-					href: '/docs/products/functions/execution'
+					label: 'Execute',
+					href: '/docs/products/functions/execute'
 				},
-				{
-					label: 'Examples',
-					href: '/docs/products/functions/examples'
-				}
 			]
 		},
 		{
