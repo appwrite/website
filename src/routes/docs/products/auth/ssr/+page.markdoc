@@ -1,0 +1,155 @@
+---
+layout: article
+title: Server side sendering
+description: How to implement server side rendering with Appwrite
+---
+
+Server side rendering patterns are fully supported with Appwrite. This guide will walk you through the process of implementing server side rendering with Appwrite at a high level.
+
+# Setting up the clinet {% #setting-up-the-client %}
+
+The first step is to set up a client with an API key. This will allow you to make requests to the Appwrite API from your server.
+
+{% multicode %}
+```js
+const { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setKey('<API_KEY>');                        // Your secret API key
+
+const account = new Account(client);
+
+export { client, account };
+```
+```php
+use Appwrite\Client;
+use Appwrite\Services\Account;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')                  // Your project ID
+    ->setKey('<API_KEY>');                        // Your secret API key
+```
+{% /multicode %}
+
+# Creating email/password sessions {% #creating-sessions %}
+
+The most straightforward type of session to integrate is email/password. Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. Once you have a session object, you can persist it to a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
+Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
+
+We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, and is not accessible to JavaScript. This will prevent XSS attacks.
+
+{% multicode %}
+```js
+import express from 'express';
+
+// Initialize Appwrite client here
+// ...
+
+app.post('/login', async (req, res) => {
+    // Get email and password from request
+    const { email, password } = req.body;
+
+    try {
+        // Create the session using the Appwrite client
+        const session = await account.createEmailSession(email, password);
+
+        // Set the session cookie
+        res.cookie('session', session.secret, { // use the session secret as the cookie value
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            maxAge: sesion.expire
+            path: '/',
+        });
+
+        res.status(200).json({ success: true });
+    } catch (e) {
+        res.status(400).json({ success: false, error: e.message });
+    }
+});
+```
+
+```php
+<?php
+// Initialize Appwrite client here
+
+// Get email and password from request
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+try {
+    // Create the session using the Appwrite client
+    $session = $account->createEmailSession($email, $password);
+
+    // Set the session cookie
+    setcookie('session', $session['secret'], [
+        'httpOnly' => true,
+        'secure' => true,
+        'sameSite' => 'strict',
+        'maxAge' => $session['expire'],
+        'path' => '/',
+    ]);
+
+    echo json_encode(['success' => true]);
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+}
+```
+{% /multicode %}
+
+# Accepting authenticated requests {% #accepting-authenticated-requests %}
+
+Once a user has a session cookie, they can use it to make authenticated requests to your server. To enable this, you will need to read the cookie value from the request, and then pass it to the Appwrite client, using the `setSession` helper.
+
+{% multicode %}
+```js
+app.get('/user', async (req, res) => {
+    // First, read the session cookie from the request
+    const session = req.cookies.session;
+
+    // If the session cookie is not present, return an error
+    if (!session) {
+        return res.status(401).json({ success: false, error: 'Unauthorized' });
+    }
+
+    // Pass the session cookie to the Appwrite client
+    client.setSession(session);
+
+    // Now, you can make authenticated requests to the Appwrite API
+    try {
+        const user = await account.get();
+
+        res.status(200).json({ success: true, user });
+    } catch (e) {
+        res.status(400).json({ success: false, error: e.message });
+    }
+});
+```
+
+```php
+<?php
+// First, read the session cookie from the request
+$session = $_COOKIE['session'];
+
+// If the session cookie is not present, return an error
+if (!$session) {
+    return http_response_code(401);
+}
+
+// Pass the session cookie to the Appwrite client
+$client->setSession($session);
+
+// Now, you can make authenticated requests to the Appwrite API
+try {
+    $user = $account->get();
+
+    echo json_encode(['success' => true, 'user' => $user]);
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+}
+```
+{% /multicode %}
+
