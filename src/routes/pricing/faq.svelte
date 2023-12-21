@@ -25,7 +25,7 @@
         },
         {
             question: 'What happens if I reach a resource limit in my Starter plan?',
-            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for next billing cycle which resets usage limits. <a class="aw-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="aw-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'How can I join the OSS program?',
@@ -37,7 +37,7 @@
         },
         {
             question: 'How can I apply credits to my organization?',
-            answer: 'Go to the Appwrite Console and select the organization you wish to add credits to. In your organization overview, you can switch to the billing tab. Here, you need to go to the bottom of the page, where you will find the ability to add credits, as well as see the status of your credits. Credits are only relevavnt to Pro organizations, since Starter organizations are 100% free.'
+            answer: 'Go to the Appwrite Console and select the organization you wish to add credits to. In your organization overview, you can switch to the billing tab. Here, you need to go to the bottom of the page, where you will find the ability to add credits, as well as see the status of your credits. Credits are only relevant to Pro organizations since Starter organizations are 100% free.'
         },
         {
             question: 'Where can I find an overview of my organization usage stats?',
