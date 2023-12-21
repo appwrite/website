@@ -6,6 +6,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
+    import BG from './bg.png?enhanced';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -31,7 +32,7 @@
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
     <enhanced:img
-        src="./bg.png"
+        src={BG}
         alt=""
         style="margin-inline:auto; display:block; width: 1369px; height: auto;"
     />
@@ -134,7 +135,7 @@
                                         </header>
                                         <div class="aw-pricing-cards-content">
                                             <ul class="aw-checked-list-circle">
-                                                <li>          
+                                                <li>
                                                     <span>Unlimited projects (never paused)</span>
                                                 </li>
                                                 <li><span>300GB bandwidth</span></li>
@@ -207,7 +208,10 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 id="enterprises" class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3
+                                        id="enterprises"
+                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                    >
                                         Enterprises
                                     </h3>
                                     <div class="aw-inline-tag is-pink">Coming Soon</div>
@@ -230,7 +234,10 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 id="open-source-teams" class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3
+                                        id="open-source-teams"
+                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                    >
                                         Open-source teams
                                     </h3>
                                 </header>
