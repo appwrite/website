@@ -12,7 +12,7 @@
             href="https://cloud.appwrite.io"
             class="aw-button is-transparent aw-u-cross-child-center"
         >
-            <span class="text">Start building today</span>
+            <span class="text">Get started</span>
         </a>
     </section>
     <section
