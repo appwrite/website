@@ -118,8 +118,6 @@
     const title = 'Community' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    console.log(data.issues);
 </script>
 
 <svelte:head>
