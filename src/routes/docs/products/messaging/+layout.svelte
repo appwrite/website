@@ -25,15 +25,19 @@
 			label: 'Concepts',
 			items: [
 				{
-					label: 'Topics',
-					href: '/docs/products/messaging/XXXXX'
-				},
-				{
 					label: 'Providers',
 					href: '/docs/products/messaging/XXXXX'
 				},
 				{
-					label: 'XXXXX',
+					label: 'Targets',
+					href: '/docs/products/messaging/XXXXX'
+				},
+				{
+					label: 'Topics',
+					href: '/docs/products/messaging/XXXXX'
+				},
+				{
+					label: 'Message types',
 					href: '/docs/products/messaging/XXXXX'
 				},
 				
@@ -43,7 +47,15 @@
 			label: 'Journeys',
 			items: [
 				{
-					label: 'XXXXX',
+					label: 'Send push notifications',
+					href: '/docs/products/messaging/XXXXX'
+				},
+				{
+					label: 'Send email messages',
+					href: '/docs/products/messaging/XXXXX'
+				},
+				{
+					label: 'Send SMS messages',
 					href: '/docs/products/messaging/XXXXX'
 				},
 			]
