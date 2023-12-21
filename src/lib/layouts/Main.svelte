@@ -18,6 +18,7 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
 
+    export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
@@ -166,10 +167,10 @@
     >
         <div class="aw-top-banner">
             <div class="aw-top-banner-content aw-u-color-text-primary">
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="aw-caption-500">We are having lots of fun on</span>
-                    <span class="aw-icon-discord" aria-hidden="true" />
-                    <span class="aw-caption-500">Discord. Come and join us!</span>
+                <a href="/blog/post/announcing-appwrite-pro">
+                    <span class="aw-caption-500"
+                        >Appwrite Pro is now available! Get started with $15 credit.</span
+                    >
                 </a>
                 {#if browser}
                     <button
@@ -201,7 +202,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Main">
                     <ul class="aw-main-header-nav-list">
                         {#each navLinks as { label, href }}
                             <li class="aw-main-header-nav-item">
@@ -220,11 +221,11 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                 </a>
-<!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
-<!--                    >Sign up</a-->
-<!--                >-->
+                <!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
+                <!--                    >Sign up</a-->
+                <!--                >-->
                 <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
@@ -233,7 +234,11 @@
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-    <main class="aw-main-section" class:aw-u-hide-mobile={$isMobileNavOpen}>
+    <main
+        class="aw-main-section"
+        class:aw-u-hide-mobile={$isMobileNavOpen}
+        id={omitMainId ? undefined : 'main'}
+    >
         <slot />
     </main>
 </div>
