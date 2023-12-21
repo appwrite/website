@@ -45,7 +45,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 
 Appwrite supports multiple authentication methods, including account sessions, API keys, and JWTs. The authentication method you use depends on your use case. Below are examples showing how you can authenticate using the REST API.
 
-## Client side
+## Client integrations {% #client-integration %}
 
 You can create account sessions with POST requests to the Account API. Sessions are persisted using secured cookies. You can learn more about session persistence in the Authentication Guide.
 
@@ -78,7 +78,7 @@ Content-Type: application/json
 X-Appwrite-Project: [PROJECT_ID]
 ```
 
-## Server side
+## Server integrations {% #server-integrations %}
 
 Server integrations use API keys to authenticate and are typically used for backend applications.
 
@@ -91,7 +91,7 @@ X-Appwrite-Project: [PROJECT_ID]
 X-Appwrite-Key: [API_KEY]
 ```
 
-## JWT
+## JWT {% #jwt %}
 
 JWT authentication is frequently used by server applications to act on behalf of a user. Users generate tokens using the [Create JWT](/docs/references/cloud/client-web/account#createJWT) endpoint. When issuing requests authenticated with a JWT, Appwrite will treat the request like it is from the authenticated user.
 
@@ -224,7 +224,7 @@ Appwrite SDKs have helpers to generate permission string formats, but when using
 ---
 {% /table %}
 
-## Roles
+## Roles {% #roles %}
 
 Appwrite SDKs have helpers to generate roles string formats, but when using Appwrite without SDKs, you'd need to create the strings yourself.
 

@@ -3,8 +3,9 @@
     import type { FloatingConfig } from '@melt-ui/svelte/internal/actions';
     import { fly, type FlyParams } from 'svelte/transition';
 
-    export let placement: FloatingConfig['placement'] = 'top';
+    export let placement: NonNullable<FloatingConfig>['placement'] = 'top';
     export let disabled = false;
+    export let closeOnPointerDown = false;
 
     const {
         elements: { trigger, content, arrow },
@@ -14,7 +15,7 @@
             placement
         },
         openDelay: 0,
-        closeOnPointerDown: false,
+        closeOnPointerDown,
         forceVisible: true
     });
 

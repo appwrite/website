@@ -1,86 +1,115 @@
 <script lang="ts" context="module">
-	export type Theme = 'dark' | 'light' | 'system';
-	export const currentTheme = writable<Theme>(getPreferredTheme());
+    export type Theme = 'dark' | 'light' | 'system';
+    export const currentTheme = (function () {
+        const store = writable<Theme>(getPreferredTheme());
 
-	function isTheme(theme: unknown): theme is Theme {
-		return ['dark', 'light', 'system'].includes(theme as Theme);
-	}
+        const set: typeof store.set = (value) => {
+            store.set(value);
+            if (browser) {
+                localStorage.setItem('theme', value);
+            }
+        };
 
-	function getSystemTheme(): Theme {
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	}
+        return { ...store, set };
+    })();
 
-	function getPreferredTheme() {
-		if (!browser) {
-			return 'dark';
-		}
+    export const themeInUse = derived(currentTheme, (theme) => {
+        return theme === 'system' ? getSystemTheme() : theme;
+    });
 
-		const theme = globalThis?.localStorage.getItem('theme');
+    function isTheme(theme: unknown): theme is Theme {
+        return ['dark', 'light', 'system'].includes(theme as Theme);
+    }
 
-		if (!isTheme(theme)) {
-			return 'dark';
-		}
+    function getSystemTheme(): Theme {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
-		if (theme === 'system') {
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-		}
+    function getPreferredTheme() {
+        if (!browser) {
+            return 'dark';
+        }
 
-		return theme;
-	}
+        const theme = localStorage.getItem('theme');
 
-	export function setTheme(theme: string) {
-		if (!isTheme(theme)) {
-			return;
-		}
-		currentTheme.set(theme === 'system' ? getSystemTheme() : theme);
-		globalThis?.localStorage.setItem('theme', theme);
-	}
+        if (!isTheme(theme)) {
+            return 'dark';
+        }
+
+        return theme;
+    }
 </script>
 
 <script lang="ts">
-	import '$icons/output/aw-icon.css';
-	import '$scss/index.scss';
+    import '$icons/output/aw-icon.css';
+    import '$scss/index.scss';
 
-	import { browser, dev } from '$app/environment';
-	import { writable } from 'svelte/store';
-	import { navigating, page } from '$app/stores';
-	import { onMount } from 'svelte';
+    import { browser, dev } from '$app/environment';
+    import { derived, writable } from 'svelte/store';
+    import { navigating, page } from '$app/stores';
+    import { onMount } from 'svelte';
 
-	function applyTheme(theme: Omit<Theme, 'system'>) {
-		const className = `theme-${theme}`;
-		document.body.classList.add(className);
-		document.body.classList.remove(`theme-${theme === 'dark' ? 'light' : 'dark'}`);
-	}
+    function applyTheme(theme: Theme) {
+        const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
+        const className = `theme-${resolvedTheme}`;
+        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.add(className);
+    }
 
-	onMount(() => {
-		const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+    onMount(() => {
+        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
-		applyTheme(initialTheme);
+        applyTheme(initialTheme);
 
-		navigating.subscribe((n) => {
-			if (!n?.to) {
-				return;
-			}
+        navigating.subscribe((n) => {
+            if (!n?.to) {
+                return;
+            }
 
-			const isDocs = n.to.route.id?.startsWith('/docs');
+            const isDocs = n.to.route.id?.startsWith('/docs');
 
-			if (isDocs) {
-				if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
-					applyTheme($currentTheme);
-				}
-			} else {
-				applyTheme('dark');
-			}
-		});
-	});
+            if (isDocs) {
+                if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
+                    applyTheme($currentTheme);
+                }
+            } else {
+                applyTheme('dark');
+            }
+        });
+    });
 
-	$: browser && currentTheme.subscribe((theme) => applyTheme(theme));
+    $: browser && currentTheme.subscribe((theme) => applyTheme(theme));
 </script>
 
 <svelte:head>
-	{#if !dev}
-		<script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
-	{/if}
+    {#if !dev}
+        <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+    {/if}
 </svelte:head>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <slot />
+
+<style lang="scss">
+    .skip {
+        position: absolute;
+        inset-block-start: 0;
+        z-index: 9999;
+
+        display: block;
+        background-color: hsl(var(--aw-color-mint-500));
+        color: hsl(var(--aw-color-black));
+        text-decoration: underline;
+        opacity: 0;
+
+        padding: 0.75rem 1.25rem;
+        pointer-events: none;
+    }
+
+    .skip:focus {
+        opacity: 1;
+        position: relative;
+        pointer-events: all;
+    }
+</style>

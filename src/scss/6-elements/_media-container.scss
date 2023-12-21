@@ -1,10 +1,14 @@
 @use '../abstract' as *;
 
 .#{$p}-media-container {
-  --p-media-container-border-padding:#{pxToRem(7)};
-  --p-media-container-border-radius:#{pxToRem(20)};
+  @include border-gradient;
+  --m-border-gradient-before: linear-gradient(186deg, rgba(255, 255, 255, 0.16) -1.41%, rgba(255, 255, 255, 0.00) 104.86%);
+  --p-media-container-border-radius:#{pxToRem(24)};
+  --m-border-radius: var(--p-media-container-border-radius);
 
-  --p-media-border-radius: #{pxToRem(16)};
+  --p-media-container-border-padding:#{pxToRem(8)};
+
+  --p-media-border-radius: calc(var(--p-media-container-border-radius) - var(--p-media-container-border-padding));
 
   padding: var(--p-media-container-border-padding);
   border-radius: var(--p-media-container-border-radius);

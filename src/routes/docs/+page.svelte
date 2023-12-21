@@ -15,46 +15,31 @@
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
-            cover: {
-                src: '/images/tutorials/react.png',
-                alt: 'react logo'
-            },
+            cover: '/images/tutorials/react.png',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
             href: '/docs/tutorials/sveltekit',
-            cover: {
-                src: '/images/tutorials/svelte.png',
-                alt: 'svelte logo'
-            },
+            cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
         },
         {
             href: '/docs/tutorials/vue',
-            cover: {
-                src: '/images/tutorials/vue.png',
-                alt: 'Vue logo'
-            },
+            cover: '/images/tutorials/vue.png',
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
         },
         {
             href: '/docs/tutorials/android',
-            cover: {
-                src: '/images/tutorials/android.png',
-                alt: 'Android logo'
-            },
+            cover: '/images/tutorials/android.png',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
         },
         {
             href: '/docs/tutorials/flutter',
-            cover: {
-                src: '/images/tutorials/flutter.png',
-                alt: 'Flutter logo'
-            },
+            cover: '/images/tutorials/flutter.png',
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
@@ -81,80 +66,73 @@
 <Docs variant="default">
     <Sidebar />
     <div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
-        <img src="/images/bgs/docs-blur-1.svg" alt="" />
+        <enhanced:img src="./blur-1.png" alt="" />
     </div>
 
-    <div
-        class="u-position-absolute aw-is-not-mobile u-only-light"
-        style:inline-size="768px"
-        style:block-size="768px"
-        style:inset-block-start="26rem"
-        style:left="calc(50% - 384px + 600px)"
-    >
-        <img
-            src="/images/animations/tech-light.png"
-            width="768"
-            height="768"
-            alt=""
-            style="position: absolute; display: block;"
-        />
-    </div>
+    <main class="aw-main-section u-position-relative" id="main">
+        <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
+            <img src="/images/bgs/docs-blur-1.svg" alt="" />
+        </div>
 
-    <div
-        class="u-position-absolute aw-is-not-mobile u-only-dark"
-        style:inline-size="768px"
-        style:block-size="768px"
-        style:inset-block-start="26rem"
-        style:z-index="-1"
-        style:left="calc(50% - 384px + 600px)"
-    >
-        <Spline url="/images/animations/dark-scene.splinecode" width={768} height={768}>
-            <img
-                src="/images/animations/tech-dark.png"
-                width="768"
-                height="768"
-                alt=""
-                style="position: absolute;"
-            />
-        </Spline>
-    </div>
-
-    <main class="aw-main-section u-position-relative">
         <div
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <img src="/images/bgs/docs-blur-2.svg" alt="" />
+            <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
         <section class="aw-hero is-align-start u-position-relative">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
-                Learn how to build like a team of hundreds
+                Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
+                    >_
+                </span>
             </h1>
             <p class="aw-description u-max-width-600">
-                Appwrite is a backend development platform built by hundreds of open-source
-                developers, where you can build any application at any scale using the coding
-                languages and tools you want.
+                Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
+                powerful APIs to stop fighting technologies and start delivering value.
             </p>
         </section>
-        <section class="aw-hero is-align-start">
+        <section class="aw-hero is-align-start tech-hero">
             <h2 class="aw-title aw-u-color-text-primary u-max-width-600">
                 Get started with your technologies
             </h2>
             <p class="aw-description u-max-width-600">
-                Follow a quick start guide on your web, mobile, and native frameworks.
+                Start building with your preferred web, mobile, and native frameworks by following a
+                quick start guide.
             </p>
             <Technologies />
             <a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
+
+            <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
+                <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
+                    <img
+                        class="u-only-dark"
+                        src="/images/animations/tech-dark.png"
+                        width="660"
+                        height="660"
+                        alt=""
+                        style="position: absolute;"
+                    />
+                    <img
+                        class="u-only-light"
+                        src="/images/animations/tech-light.png"
+                        width="660"
+                        height="660"
+                        alt=""
+                        style="position: absolute;"
+                    />
+                </Spline>
+            </div>
+            <div class="bg-overlay" />
         </section>
         <section>
             <h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
             <p class="aw-description u-max-width-600 u-margin-block-start-16">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
-            <Carousel>
+            <Carousel size="medium">
                 {#each tutorials as tutorial}
                     <li style:scroll-snap-align="start">
                         <CodeCard {...tutorial} />
@@ -428,3 +406,70 @@
         <MainFooter variant="docs" />
     </main>
 </Docs>
+
+<style lang="scss">
+    .aw-main-section {
+        max-inline-size: unset;
+        margin-inline: unset;
+        padding-inline-start: 3rem; // 48px
+    }
+
+    .bg-blur {
+        inset-inline-end: -300px;
+        inset-block-start: -100px;
+    }
+
+    .tech-hero {
+        @include border-block-gradient;
+
+        --m-border-size: 1px;
+        --m-border-gradient-before: linear-gradient(
+            to right,
+            hsl(var(--aw-color-smooth)) 0%,
+            hsl(var(--aw-color-smooth)) 90%,
+            transparent
+        );
+
+        max-inline-size: unset;
+        margin-block-start: 2rem;
+        margin-inline-start: -3rem;
+        padding-block: 5rem;
+        padding-inline-start: 3rem;
+
+        position: relative;
+        z-index: 10;
+
+        .spline-wrapper {
+            --p-size: 700px;
+            inline-size: var(--p-size);
+            block-size: var(--p-size);
+            inset-block-start: -3rem;
+            z-index: -1;
+            left: calc(50% - 384px + 600px);
+        }
+
+        .bg-overlay {
+            position: absolute;
+
+            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 10%, #ffffff);
+
+            top: 0;
+            right: 10rem;
+            translate: 100%;
+            width: 25rem;
+            height: 100%;
+            content: '';
+            z-index: 9999;
+        }
+    }
+
+    :global(.theme-dark) .tech-hero {
+        background: linear-gradient(to right, #19191c80, #19191c00);
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+    }
+
+    :global(.theme-dark) .bg-overlay {
+        background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
+    }
+</style>

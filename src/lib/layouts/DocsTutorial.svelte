@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { scrollToTop } from '$lib/actions/scrollToTop';
     import { Feedback } from '$lib/components';
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
@@ -15,7 +16,7 @@
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 </script>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
@@ -144,10 +145,10 @@
                     {/each}
                 </ol>
                 <div class="u-sep-block-start u-padding-block-start-20">
-                    <a class="aw-link u-inline-flex u-cross-center u-gap-8" href="#top">
+                    <button class="aw-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
                         <span class="aw-icon-arrow-up" aria-hidden="true" />
-                        <span class="aw-sub-body-500">Back to top</span>
-                    </a>
+                        <span class="aw-caption-400">Back to top</span>
+                    </button>
                 </div>
             </div>
         </aside>

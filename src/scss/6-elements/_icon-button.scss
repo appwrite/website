@@ -1,62 +1,90 @@
 @use '../abstract' as *;
 
 .#{$p}-icon-button {
+  display: block;
+  position: relative;
+  block-size:pxToRem(28);
+  inline-size:pxToRem(28); 
+
+  border: 1px solid transparent;
+	border-radius: pxToRem(8);
+
+  > [class*='icon'] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
   @mixin light-mode() {
-    /* icon */
-    --p-icon-button-icon-color-default: var(--aw-color-secondary);
-    --p-icon-button-icon-color-hover: var(--aw-color-pink-500);
+		background: hsl(var(--aw-color-smooth));
+		backdrop-filter: blur(pxToRem(7.5));
+		-webkit-backdrop-filter: blur(pxToRem(7.5));
+    color: hsl(var(--aw-color-primary));
 
-    /* background color */
-    --p-icon-button-bg-color-default: var(--aw-color-white) / 0.64;
+		&:focus-visible:not(:disabled) {
+			border-color: hsl(var(--aw-color-accent-click));
+			background: hsl(var(--aw-color-offset));
+			box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.16);
+			color: hsl(var(--aw-color-primary));
+		}
 
-    /* border color */
-    --p-icon-button-border-color-default: var(--transparent);
-    --p-icon-button-border-color-focus: var(--aw-color-pink-500);
+    &:hover:not(:disabled) {
+      background: hsl(var(--aw-color-offset));
+      backdrop-filter: blur(pxToRem(7.5));
+      color: hsl(var(--aw-color-accent-click));
+    }
 
-    /* box shadow color */
-    --p-icon-button-shadow-color-default: var(--transparent);
-    --p-icon-button-shadow-color-focus: var(--aw-color-pink-500) / 0.16;
+    &:active:not(:disabled) {
+      background: hsl(var(--aw-color-smooth));
+      backdrop-filter: blur(pxToRem(7.5));
+      color: hsl(var(--aw-color-accent-click));
+    }
+
+    
   }
+
   @mixin dark-mode() {
-    /* icon */
-    --p-icon-button-icon-color-hover: var(--aw-color-greyscale-50);
+    background: hsl(var(--aw-color-smooth));
+		backdrop-filter: blur(pxToRem(7.5));
+		-webkit-backdrop-filter: blur(pxToRem(7.5));
+		color: hsl(var(--aw-color-primary));
 
-    /* background color */
-    --p-icon-button-bg-color-default: var(--aw-color-white) / 0.08;
+		&:focus-visible:not(:disabled) {
+			border-color: hsl(var(--aw-color-primary));
+			background: hsl(var(--aw-color-offset));
+			box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.16);
+			color: hsl(var(--aw-color-accent-click));
+		}
 
-    /* border color */
-    --p-icon-button-border-color-focus: var(--aw-color-greyscale-50);
+    &:hover:not(:disabled) {
+      background: hsl(var(--aw-color-offset));
+      color: hsl(var(--aw-color-accent-click));
+    }
 
-    /* box shadow color */
-    --p-icon-button-shadow-color-default: var(--transparent);
-    --p-icon-button-shadow-color-focus: var(--aw-color-white) / 0.16;
+    &:active:not(:disabled) {
+      background: hsl(var(--aw-color-smooth));
+      color: hsl(var(--aw-color-accent-click));
+    }
+
   }
+
   @include light-mode();
-  --p-icon-button-icon-color: var(--p-icon-button-icon-color-default);
-  --p-icon-button-bg-color: var(--p-icon-button-bg-color-default);
-  --p-icon-button-border-color: var(--p-icon-button-border-color-default);
-  --p-icon-button-shadow-color: var(--p-icon-button-shadow-color-default);
-  display:grid; place-content:center;
-  inline-size:pxToRem(28); block-size:pxToRem(28);
-  background-color: hsl(var(--p-icon-button-bg-color));
-  border:solid pxToRem(1) hsl(var(--p-icon-button-border-color));
-  border-radius:pxToRem(8); transition:var(--transition);
-  box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-icon-button-shadow-color));
 
-  &:hover {
-    --p-icon-button-icon-color: var(--p-icon-button-icon-color-hover);
-  }
-  &:focus-visible {
-    --p-icon-button-border-color: var(--p-icon-button-border-color-focus);
-    --p-icon-button-shadow-color: var(--p-icon-button-shadow-color-focus);
-  }
-  &:disabled { opacity:0.4; cursor:initial; }
-  #{$theme-light} & {
-    @include light-mode();
-  }
 
+  
   #{$theme-dark} & {
     @include dark-mode();
   }
+  
+  #{$theme-light} & {
+    @include light-mode();
+  }
+  
+  &:disabled {
+    opacity: 0.4;
+		cursor: not-allowed;
+  } 
 
 }

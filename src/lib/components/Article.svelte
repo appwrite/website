@@ -9,7 +9,7 @@
 </script>
 
 <li>
-    <a class="aw-grid-articles-item" {href}>
+    <a class="aw-grid-articles-item is-transparent" {href}>
         <div class="aw-grid-articles-item-image">
             <img src={cover} class="aw-u-media-ratio-16-9" alt={title} />
         </div>
