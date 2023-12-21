@@ -64,7 +64,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Starter</h2>
+                                            <h2 id="starter" class="aw-label">Starter</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -112,7 +112,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Pro</h2>
+                                            <h2 id="pro" class="aw-label">Pro</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -125,16 +125,20 @@
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
-                                            <button
+                                            <a
+                                                href="https://cloud.appwrite.io/register?type=createPro"
                                                 class="aw-button is-full-width u-margin-block-start-32"
-                                                disabled
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
-                                                <span class="aw-sub-body-500">Coming soon</span>
-                                            </button>
+                                                <span class="aw-sub-body-500">Start trial</span>
+                                            </a>
                                         </header>
                                         <div class="aw-pricing-cards-content">
-                                            <p>Everything in Starter plus:</p>
                                             <ul class="aw-checked-list-circle">
+                                                <li>
+                                                    <span>Unlimited projects (never paused)</span>
+                                                </li>
                                                 <li><span>300GB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
@@ -159,7 +163,7 @@
                                 >
                                     <div class="aw-pricing-cards-item">
                                         <header class="aw-pricing-cards-header">
-                                            <h2 class="aw-label">Scale</h2>
+                                            <h2 id="scale" class="aw-label">Scale</h2>
                                             <div
                                                 class="aw-title aw-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -180,7 +184,7 @@
                                             </button>
                                         </header>
                                         <div class="aw-pricing-cards-content">
-                                            <p>Everything in Starter & Pro plus:</p>
+                                            <p>Everything in Pro and:</p>
                                             <ul class="aw-checked-list-circle">
                                                 <li><span>5TB bandwidth</span></li>
                                                 <li><span>500GB storage</span></li>
@@ -205,7 +209,10 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3
+                                        id="enterprises"
+                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                    >
                                         Enterprises
                                     </h3>
                                     <div class="aw-inline-tag is-pink">Coming Soon</div>
@@ -228,7 +235,10 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
-                                    <h3 class="aw-main-body-500 aw-u-color-text-primary">
+                                    <h3
+                                        id="open-source-teams"
+                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                    >
                                         Open-source teams
                                     </h3>
                                 </header>

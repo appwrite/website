@@ -195,15 +195,14 @@
                 </section>
             </div>
         </div>
-    </div>
-
-    <div
-        class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-    >
-        <div class="aw-container">
-            <Newsletter />
-            <FooterNav />
-            <MainFooter />
+        <div
+                class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden"
+        >
+            <div class="aw-container">
+                <Newsletter />
+                <FooterNav />
+                <MainFooter />
+            </div>
         </div>
     </div>
 </Main>
