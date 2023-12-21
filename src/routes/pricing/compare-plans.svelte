@@ -397,7 +397,7 @@
                                 <h4 class="aw-label aw-u-color-text-primary">Pro</h4>
                                 <a
                                     class="aw-button"
-                                    href="https://cloud.appwrite.io/register?type=createPro"
+                                    href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
