@@ -129,7 +129,6 @@ app.get('/user', async (req, res) => {
     }
 });
 ```
-
 ```php
 <?php
 // First, read the session cookie from the request
@@ -154,3 +153,100 @@ try {
 ```
 {% /multicode %}
 
+To prevent rate limiting, you must also use the `setKey` helper on the SDK. It's also possible to populate details about the user with the `setForwardedFor` helper and the `setForwardedUserAgent` helpers.
+Let's put it all together:
+
+{% multicode %}
+```js
+client.setKey('<API_KEY>');
+client.setSession(session.secret);
+client.setForwardedFor(req.headers['x-forwarded-for']);
+client.setForwardedUserAgent(req.headers['user-agent']);
+```
+```php
+<?php
+$client->setKey('<API_KEY>');
+$client->setSession($session['secret']);
+$client->setForwardedFor($_SERVER['HTTP_X_FORWARDED_FOR']);
+$client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
+```
+{% /multicode %}
+
+# OAuth {% #oauth %}
+
+OAuth requires a few extra steps. First, initiate the OAuth flow on the client side
+
+```html
+<script type='module'>
+    import { Client, Account } from "appwrite"; // Using the client SDK
+
+    const client = new Client()
+        .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+        .setProject('<PROJECT_ID>')                  // Your project ID
+        .setKey('<API_KEY>');                        // Your secret API key
+
+    const account = new Account(client);
+
+    await account.createOAuth2Session(
+        'https://example.com/oauth/success', // Success URL
+        'https://example.com/oauth/failure', // Failure URL
+    );
+</script>
+```
+
+After authenticating with the provider, the user will be redirected to the `success` URL with `userId` and `secret` URL parameters. You can then use these parameters to call `exchangeTokenForSession` on the server side.
+This endpoint returns a session object, which you can then persist to a cookie, just like with email/password sessions.
+
+{% multicode %}
+```js
+
+app.get('/oauth/success', async (req, res) => {
+    // Get the userId and secret from the URL parameters
+    const { userId, secret } = req.query;
+
+    try {
+        // Create the session using the Appwrite client
+        const session = await account.exchangeTokenForSession(userId, secret);
+
+        // Set the session cookie
+        res.cookie('session', session.secret, { // use the session secret as the cookie value
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            maxAge: sesion.expire
+            path: '/',
+        });
+
+        res.status(200).json({ success: true });
+    } catch (e) {
+        res.status(400).json({ success: false, error: e.message });
+    }
+});
+```
+    
+```php
+<?php
+// Get the userId and secret from the URL parameters
+
+$userId = $_GET['userId'];
+$secret = $_GET['secret'];
+
+try {
+    // Create the session using the Appwrite client
+    $session = $account->exchangeTokenForSession($userId, $secret);
+
+    // Set the session cookie
+    setcookie('session', $session['secret'], [
+        'httpOnly' => true,
+        'secure' => true,
+        'sameSite' => 'strict',
+        'maxAge' => $session['expire'],
+        'path' => '/',
+    ]);
+
+    echo json_encode(['success' => true]);
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+}
+```
+{% /multicode %}
