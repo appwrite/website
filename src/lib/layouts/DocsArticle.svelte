@@ -20,7 +20,7 @@
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
-    export let date: string;
+    export let date: string | undefined = undefined;
 </script>
 
 <main class="u-contents" id="main">
