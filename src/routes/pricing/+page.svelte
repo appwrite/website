@@ -127,7 +127,7 @@
                                                 their products.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/register?type=createPro"
+                                                href="https://cloud.appwrite.io/console?type=createPro"
                                                 class="aw-button is-full-width u-margin-block-start-32"
                                                 target="_blank"
                                                 rel="noopener noreferrer"

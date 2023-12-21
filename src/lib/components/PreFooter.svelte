@@ -54,7 +54,7 @@
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
-                        href="https://cloud.appwrite.io/register?type=createPro"
+                        href="https://cloud.appwrite.io/console?type=createPro"
                         class="aw-button is-full-width-mobile aw-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
