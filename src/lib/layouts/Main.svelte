@@ -261,6 +261,15 @@
         padding-inline: 0.375rem;
     }
 
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
     [data-badge] {
         position: relative;
 
@@ -275,6 +284,8 @@
             inset-block-start: -2px;
             inset-inline-end: -4px;
             translate: 100%;
+
+            animation: scale-in 0.35s ease;
         }
     }
 </style>
