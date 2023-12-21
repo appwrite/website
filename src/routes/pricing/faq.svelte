@@ -17,19 +17,19 @@
         },
         {
             question: 'What payment methods does Appwrite support?',
-            answer: 'Appwrite currently supports [credit and debit card payments](/docs/advanced/platform/billing#payment-methods). We are actively working on adding support for more methods. Please <a class="aw-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
+            answer: 'Appwrite currently supports <a class="aw-link is-inline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="aw-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
         },
         {
             question: 'What happens if I reach a resource limit in my Pro plan?',
-            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources under the <a class="aw-link is-inline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a [budget cap](/docs/advanced/platform/pro#budget-cap) on your organization. [Learn more in our docs](/docs/advanced/platform/pro#reaching-resource-limits).'
+            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="aw-link is-inline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="aw-link is-inline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="aw-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'What happens if I reach a resource limit in my Starter plan?',
-            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for next billing cycle which resets usage limits. [Learn more in our docs](/docs/advanced/platform/starter#reaching-resource-limits).'
+            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for next billing cycle which resets usage limits. <a class="aw-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'How can I join the OSS program?',
-            answer: `The OSS program is exclusively for active open-source maintainers. If you consider your project to be liable for the program, you can <a class="aw-link is-inline" href="/contact-us">apply here</a>.`
+            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. If you consider your project to be liable for the program, you can <a class="aw-link is-inline" href="/contact-us">apply here</a>.`
         },
         {
             question: 'I have a Starter plan account. How do I upgrade to a paid plan?',
