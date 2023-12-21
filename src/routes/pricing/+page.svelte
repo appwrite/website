@@ -6,6 +6,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
+    import BG from './bg.png?enhanced';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -31,7 +32,7 @@
 
 <div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
     <enhanced:img
-        src="./bg.png"
+        src={BG}
         alt=""
         style="margin-inline:auto; display:block; width: 1369px; height: auto;"
     />
