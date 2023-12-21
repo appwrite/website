@@ -49,7 +49,7 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
         const rank = foundWords.size * rankPerWord;
 
         if (rank > 0) {
-            console.log(item.name, foundWords);
+            console.log(item.title, foundWords);
             res.push({
                 data: item,
                 rank

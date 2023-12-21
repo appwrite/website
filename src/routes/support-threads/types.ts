@@ -18,7 +18,7 @@ export interface DiscordMessage extends Pick<Models.Document, '$id'> {
 }
 
 export interface DiscordThread extends Pick<Models.Document, '$id'> {
-    name: string;
+    title: string;
     discord_id: string;
     content: string;
     author: string;
@@ -26,6 +26,8 @@ export interface DiscordThread extends Pick<Models.Document, '$id'> {
     tags?: string[];
     messages?: DiscordMessage[];
     seo_description?: string;
+    tldr: string;
+    vote_count: number;
 }
 
 export type MockMessage = {

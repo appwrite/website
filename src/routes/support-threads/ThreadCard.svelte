@@ -16,7 +16,7 @@
     >
         <div class="u-flex u-gap-8">
             <h3 class="aw-main-body-500 aw-u-color-text-primary" use:highlight={highlightTerms}>
-                {thread.name}
+                {thread.title}
             </h3>
             <!-- <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>

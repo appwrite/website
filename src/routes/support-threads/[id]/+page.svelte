@@ -42,7 +42,7 @@
                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                     <span>Back</span>
                 </a>
-                <h1 class="aw-title aw-u-color-text-primary">{data.name}</h1>
+                <h1 class="aw-title aw-u-color-text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="aw-tag">
                         <span class="aw-icon-arrow-up" />
@@ -108,9 +108,9 @@
                             <a href="/support-threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="u-flex u-cross-center">
                                     <span class="aw-sub-body-500 aw-u-color-text-primary">
-                                        {thread.name.length > 40
-                                            ? thread.name.slice(0, 40) + '...'
-                                            : thread.name}
+                                        {thread.title.length > 40
+                                            ? thread.title.slice(0, 40) + '...'
+                                            : thread.title}
                                     </span>
                                     <!-- <span>{formatTimestamp(thread)}</span> -->
                                 </div>
