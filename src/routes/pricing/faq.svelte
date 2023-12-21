@@ -65,6 +65,7 @@
     class="collapsible u-width-full-line"
     style="--p-toggle-border-color: var(--aw-color-smooth);"
     use:melt={$root}
+    id="faq"
 >
     {#each items as faqItem, index (index)}
         <li class="collapsible-item">

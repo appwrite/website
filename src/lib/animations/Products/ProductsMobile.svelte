@@ -3,74 +3,97 @@
     import { infos } from './Products.svelte';
 </script>
 
-<div class="wrapper">
-    <span class="aw-badges aw-eyebrow">Products_</span>
+<div class="outside">
+    <div class="wrapper">
+        <span class="aw-badges aw-eyebrow">Products_</span>
 
-    <h2 class="aw-display aw-u-color-text-primary u-margin-block-start-16">
-        Your backend, minus the hassle
-    </h2>
+        <h2 class="aw-display aw-u-color-text-primary u-margin-block-start-16">
+            Your backend, minus the hassle
+        </h2>
 
-    <p class="aw-description u-margin-block-start-16">
-        Build secure and scalable applications with less code. Add authentication, databases,
-        storage, and more using Appwrite's development platform.
-    </p>
-
-    <div class="infos">
-        {#each objectKeys(infos) as prod}
-            {@const info = infos[prod]}
-
-            {#if info}
-                <div class="info">
-                    <h3>
-                        <img src={info.icon.active} alt="" />
-                        <span class="aw-label aw-u-color-text-primary">{info.title}</span>
-                    </h3>
-
-                    <h4 class="aw-title">{info.subtitle}</h4>
-                    <p>
-                        {info.description}
-                    </p>
-                    <ul class="features">
-                        {#each info.features as feature}
-                            <li>{feature}</li>
-                        {/each}
-                    </ul>
-
-                    {#if info.shot}
-                        <img src={info.shot} alt="" />
-                    {/if}
-                </div>
-            {/if}
-        {/each}
-    </div>
-
-    <div class="post-wrapper">
-        <img src="/images/products/post.png" alt="" />
-        <div class="img-overlay" />
-
-        <h2>See your products grow</h2>
-        <p>
-            Keep track of your projects progress on the Appwrite Console and see them grow into
-            products users love and use every day.
+        <p class="aw-description u-margin-block-start-16">
+            Build secure and scalable applications with less code. Add authentication, databases,
+            storage, and more using Appwrite's development platform.
         </p>
+
+        <div class="infos">
+            {#each objectKeys(infos) as prod, i}
+                {@const info = infos[prod]}
+                {@const isLast = i === objectKeys(infos).length - 1}
+
+                {#if info}
+                    <div class="info">
+                        <h3>
+                            <img src={info.icon.active} alt="" />
+                            <span class="aw-label aw-u-color-text-primary">{info.title}</span>
+                        </h3>
+
+                        <h4 class="aw-title">{info.subtitle}</h4>
+                        <p>
+                            {info.description}
+                        </p>
+                        <ul class="features">
+                            {#each info.features as feature}
+                                <li>{feature}</li>
+                            {/each}
+                        </ul>
+
+                        {#if info.shot}
+                            <enhanced:img class="img" src={info.shot} alt="" />
+                        {/if}
+                    </div>
+
+                    {#if !isLast}
+                        <hr />
+                    {/if}
+                {/if}
+            {/each}
+        </div>
+
+        <div class="post-wrapper">
+            <img src="/images/products/post.png" alt="" />
+
+            <h2>See your products grow</h2>
+            <p>
+                Keep track of your projects progress on the Appwrite Console and see them grow into
+                products users love and use every day.
+            </p>
+        </div>
     </div>
+    <div class="img-overlay" />
 </div>
 
 <style lang="scss">
-    .wrapper {
+    .outside {
+        position: relative;
+        overflow: hidden;
         display: none;
-        padding-block-start: 5rem;
-        padding-inline: 1.25rem;
 
-        max-width: 800px;
-        margin-inline: auto;
-        overflow: visible;
+        .img-overlay {
+            content: '';
+            background: linear-gradient(to bottom, transparent 0%, black 40%);
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 30rem;
+            z-index: 10;
+        }
     }
 
     @media (max-width: 1399px) {
-        .wrapper {
+        .outside {
             display: block;
         }
+    }
+
+    .wrapper {
+        --padding-inline: 1.25rem;
+
+        padding-block-start: 5rem;
+        padding-inline: var(--padding-inline);
+
+        max-width: 600px;
+        margin-inline: auto;
     }
 
     .infos {
@@ -78,7 +101,7 @@
 
         display: flex;
         flex-direction: column;
-        gap: 6rem;
+        gap: 3rem;
 
         .info {
             h3 {
@@ -128,10 +151,16 @@
                 }
             }
 
-            > img {
-                width: 100%;
+            .img {
+                inline-size: 100%;
+                block-size: auto;
                 margin-block-start: 2.5rem;
             }
+        }
+
+        hr {
+            border: 1px solid hsl(var(--aw-color-smooth));
+            margin-inline: calc(var(--padding-inline) * -1);
         }
     }
 
@@ -143,25 +172,16 @@
 
         position: relative;
         width: 100%;
+        /* overflow: hidden; */
 
         padding-block-start: 35rem;
         padding-block-end: 5rem;
 
-        .img-overlay {
-            content: '';
-            background: linear-gradient(to top, black, transparent);
-            position: absolute;
-            bottom: 0;
-            width: 100vw;
-            height: 30rem;
-            z-index: 10;
-        }
-
         img {
             display: block;
             max-block-size: unset;
-            max-inline-size: 100%;
-            top: 0rem;
+            max-inline-size: unset;
+            top: 5rem;
             left: 50%;
             transform: translateX(-50%);
             width: 37.5rem;
