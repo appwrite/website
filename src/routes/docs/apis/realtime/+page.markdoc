@@ -66,7 +66,7 @@ let subscription = realtime.subscribe(channels: ["files"]) { response in
 }
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -109,7 +109,7 @@ More information and examples of authenticating users can be found in the dedica
 # Examples {% #examples %}
 The examples below will show you how you can use Realtime in various ways.
 
-## Subscribe to a Channel
+## Subscribe to a Channel {% #subscribe-to-a-channel %}
 In this example we are subscribing to all updates related to our account by using the `account` channel. This will be triggered by any update related to the authenticated user, like updating the user's name or e-mail address.
 
 {% multicode %}
@@ -159,7 +159,7 @@ let subscription = realtime.subscribe(channel: "account", callback: { response i
 })
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -177,7 +177,7 @@ val subscription = realtime.subscribe("account") {
 
 {% /multicode %}
 
-## Subscribe to Multiple Channels
+## Subscribe to Multiple Channels  {% #subscribe-to-multiple-channel %}
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
@@ -230,7 +230,7 @@ realtime.subscribe(channels: ["databases.A.collections.A.documents.A", "files"])
 }
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -247,7 +247,7 @@ realtime.subscribe("databases.A.collections.A.documents.A", "files") {
 
 {% /multicode %}
 
-## Unsubscribe
+## Unsubscribe {% #unsubscribe %}
 
 If you no longer want to receive updates from a subscription, you can unsubscribe so that your callbacks are no longer called. Leaving old subscriptions alive and resubscribing can result in duplicate subscriptions and cause race conditions.
 
@@ -303,7 +303,7 @@ let subscription = realtime.subscribe(channel: "files") { response in
 subscription.close()
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -490,7 +490,7 @@ let client = Client()
 client.setEndpointRealtime("wss://cloud.appwrite.io/v1/realtime")
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 
 val client = Client(context)
@@ -503,10 +503,13 @@ client.setEndpointRealtime("wss://cloud.appwrite.io/v1/realtime")
 
 While the Realtime API offers robust capabilities, there are currently some limitations to be aware of in its implementation.
 
-## Subscriptions changes
+## Subscription changes {% #subscription-changes %}
 
-The SDK creates a single WebSocket connection for all subscribed channels. Each time a channel is added or unsubscribed - the SDK currently creates a completely new connection and terminates the old one. Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily built up several times by multiple components' life cycles.
+The SDK creates a single WebSocket connection for all subscribed channels. 
+Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one. 
+Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily 
+built up several times by multiple components' life cycles.
 
-## Server-side SDKs
+## Server SDKs {% #server-sdks %}
 
 We currently are not offering access to realtime with Server SDKs and an API key.

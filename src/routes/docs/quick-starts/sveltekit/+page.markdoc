@@ -35,7 +35,7 @@ You can skip optional steps.
 Create a SvelteKit project.
 
 ```sh
-npm create svelte@next my-app && cd my-app
+npm create svelte@next my-app && cd my-app && npm install
 ```
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -58,7 +58,7 @@ Find your project's ID in the **Settings** page.
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
-import { Client, Account} from 'appwrite';
+import { Client, Account } from 'appwrite';
 
 export const client = new Client();
 
@@ -71,7 +71,7 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-Create a new file `src/routes/index.svelte` and add the following code to it.
+Replace the contents of `src/routes/+page.svelte` with the following code.
 
 ```html
 <script>
@@ -79,13 +79,31 @@ Create a new file `src/routes/index.svelte` and add the following code to it.
 
     let loggedInUser = null;
 
-    let email = '';
-    let password = '';
-    let name = '';
-
     async function login(email, password) {
         await account.createEmailSession(email, password);
         loggedInUser = await account.get();
+    }
+
+    async function register(email, password) {
+        await account.create(ID.unique(), email, password);
+        login(email, password);
+    }
+
+    function submit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const type = e.submitter.dataset.type;
+        
+        if (type === "login") {
+            login(formData.get('email'), formData.get('password'));
+        } else if (type === "register") {
+            register(formData.get('email'), formData.get('password'));
+        }
+    }
+
+    async function logout() {
+        await account.deleteSession('current');
+        loggedInUser = null;
     }
 </script>
 
@@ -93,31 +111,20 @@ Create a new file `src/routes/index.svelte` and add the following code to it.
     {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
 </p>
 
-<form>
-    <input type="email" placeholder="Email" bind:value={email} />
-    <input type="password" placeholder="Password" bind:value={password} />
-    <input type="text" placeholder="Name" bind:value={name} />
+<form on:submit={submit}>
+    <input type="email" placeholder="Email" name="email" required />
+    <input type="password" placeholder="Password" name="password" required />
 
-    <button type="button" on:click={() => login(email, password)}>Login</button>
-    <button
-        type="button"
-        on:click={async () => {
-            await account.create(ID.unique(), email, password, name);
-            login(email, password);
-        }}>Register</button>
-
-    <button
-        type="button"
-        on:click={async () => {
-            await account.deleteSession('current');
-            loggedInUser = null;
-        }}>Logout</button>
+    <button type="submit" data-type="login">Login</button>
+    <button type="submit" data-type="register">Register</button>
 </form>
+
+<button on:click={logout}>Logout</button>
 ```
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-Run your project with `npm run dev -- --open --port 3000` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
+Run your project with `npm run dev` and open [localhost on port 5173](http://localhost:5173) in your browser.
 {% /section %}
 
 

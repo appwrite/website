@@ -1,25 +1,35 @@
 @use '../abstract' as *;
+@use '../6-elements/text-tokens' as *;
 
 .#{$p}-link {
   --p-link-color-text: var(--p-link-color-text-default);
-  --p-link-color-text-default: var(--aw-color-greyscale-900);
-  --p-link-color-text-hover: var(--aw-color-pink-500);
-  --p-link-color-text-active: var(--aw-color-pink-600);
+  --p-link-color-text-default: var(--aw-color-primary);
+  --p-link-color-text-hover: var(--aw-color-accent-darker);
+  --p-link-color-text-active: var(--aw-color-accent);
+  --p-link-color-text-focus-visible: var(--aw-color-accent-click);
 
-  color: hsl(var(--p-link-color-text));
+  display: inline-flex;
+  gap: pxToRem(4);
   border-radius: pxToRem(4);
+  color: hsl(var(--p-link-color-text));
   cursor: pointer;
 
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus-visible) { outline:pxToRem(1) solid hsl(var(--aw-color-primary)); box-shadow:none; }
+  &:where(:focus-visible) {
+    box-shadow:none;
+    color: hsl(var(--p-link-color-text-focus-visible));
+    outline:pxToRem(1) solid hsl(var(--p-link-color-text-focus-visible));
+    outline-offset: 0.125rem;
+  }
 
-  #{$theme-dark} & {
-    --p-link-color-text-default: var(--aw-color-greyscale-100);
+  &.is-sm {
+    @extend .#{$p}-caption-400;
+  }
+
+  &.is-inline {
+    text-decoration: underline;
   }
 }
 
-.#{$p}-link-1 {
-  color: hsl(var(--aw-color-pink-500));
-}

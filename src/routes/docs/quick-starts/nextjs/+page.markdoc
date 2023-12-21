@@ -72,12 +72,12 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-Create or update `app/page.jsx` file and add the following code to it.
+Create or update `app/page.js` file and add the following code to it.
 
 ```js
 "use client";
 import { useState } from "react";
-import { account, ID } from "appwrite";
+import { account, ID } from "./appwrite";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);

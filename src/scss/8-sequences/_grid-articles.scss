@@ -3,19 +3,24 @@
 .#{$p}-grid-articles {
   --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-default);
   --p-grid-articles-item-border-color-default: var(--aw-color-smooth);
-  //--p-grid-articles-item-border-color-hover: var(--aw-color-smooth);
+  
 
   --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-default);
   --p-grid-articles-item-bg-color-default: var(--aw-color-white);
-  //--p-grid-articles-item-bg-color-hover: var(--aw-color-white);
+  
+
+  --p-grid-articles-width: #{pxToRem(280)};
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(pxToRem(280), 1fr));
-  grid-auto-columns:minmax(pxToRem(280), 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(var(--p-grid-articles-width), 1fr));
+  grid-auto-columns:minmax(var(--p-grid-articles-width), 1fr);
+
+  &.is-medium {
+    --p-grid-articles-width: #{pxToRem(320)};
+  }
 
   &.is-big {
-    grid-template-columns: repeat(auto-fill, minmax(pxToRem(360), 1fr));
-    grid-auto-columns:minmax(pxToRem(360), 1fr);
+    --p-grid-articles-width: #{pxToRem(360)};
   }
 
   &-scroll {
@@ -23,11 +28,13 @@
     .#{$p}-grid-articles-item {}
   }
   &-item {
-    @include border-gradient;
-    --m-border-gradient-before: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.12) 0%, 
-    rgba(255, 255, 255, 0.01) 100%);
-    --m-border-radius: #{pxToRem(16)};
+    &:not(.is-transparent) {
+      @include border-gradient;
+      --m-border-gradient-before: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.12) 0%, 
+      rgba(255, 255, 255, 0.01) 100%);
+      --m-border-radius: #{pxToRem(16)};
+    }
 
 
     display:flex; flex-direction:column; min-block-size:100%;
@@ -38,7 +45,9 @@
 
     &-image {
       overflow:hidden; border-radius:pxToRem(8);
+      
       > * {
+        display: block;
         transition:var(--transition); 
         width: 100%;
         height: 100%;
@@ -46,7 +55,21 @@
       }
     }
 
-    &-content { display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12); }
+    &.is-transparent {
+      padding: 0;
+      background-color: transparent;
+
+
+    }
+
+    &-content { display:flex; flex-direction:column; gap:pxToRem(4); padding:pxToRem(12);
+    
+      .is-transparent & {
+        gap: pxToRem(16);
+        padding-inline: 0;
+        padding-block-start: pxToRem(24);
+      }
+    }
 
     &:where(:hover, :focus) {
       .#{$p}-grid-articles-item {
@@ -55,13 +78,8 @@
         }
       }
     }
-
-    //&:where(:hover, :focus) {
-    //  --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-hover);
-    //  --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-hover);
-    //}
-
   }
+
   #{$theme-dark} & {
     --p-grid-articles-item-border-color-default: var(--aw-color-white)  / 0.2;
     --p-grid-articles-item-bg-color-default: var(--aw-color-white)  / 0.06;

@@ -1,200 +1,222 @@
 <script>
-	import { objectKeys } from '$lib/utils/object';
-	import { infos } from './Products.svelte';
+    import { objectKeys } from '$lib/utils/object';
+    import { infos } from './Products.svelte';
 </script>
 
-<div class="wrapper">
-	<span class="aw-badges aw-eyebrow">Products_</span>
+<div class="outside">
+    <div class="wrapper">
+        <span class="aw-badges aw-eyebrow">Products_</span>
 
-	<h2 class="aw-display aw-u-color-text-primary u-margin-block-start-16">
-		Your backend, minus the hassle
-	</h2>
+        <h2 class="aw-display aw-u-color-text-primary u-margin-block-start-16">
+            Your backend, minus the hassle
+        </h2>
 
-	<p class="aw-description u-margin-block-start-16">
-		Build secure and scalable applications with less code. Add authentication, databases, storage, and more using Appwrite's development platform.
-	</p>
+        <p class="aw-description u-margin-block-start-16">
+            Build secure and scalable applications with less code. Add authentication, databases,
+            storage, and more using Appwrite's development platform.
+        </p>
 
-	<div class="infos">
-		{#each objectKeys(infos) as prod}
-			{@const info = infos[prod]}
+        <div class="infos">
+            {#each objectKeys(infos) as prod, i}
+                {@const info = infos[prod]}
+                {@const isLast = i === objectKeys(infos).length - 1}
 
-			{#if info}
-				<div class="info">
-					<h3>
-						<img src={info.icon.active} alt="" />
-						<span class="aw-label aw-u-color-text-primary">{info.title}</span>
-					</h3>
+                {#if info}
+                    <div class="info">
+                        <h3>
+                            <img src={info.icon.active} alt="" />
+                            <span class="aw-label aw-u-color-text-primary">{info.title}</span>
+                        </h3>
 
-					<h4 class="aw-title">{info.subtitle}</h4>
-					<p>
-						{info.description}
-					</p>
-					<ul class="features">
-						{#each info.features as feature}
-							<li>{feature}</li>
-						{/each}
-					</ul>
+                        <h4 class="aw-title">{info.subtitle}</h4>
+                        <p>
+                            {info.description}
+                        </p>
+                        <ul class="features">
+                            {#each info.features as feature}
+                                <li>{feature}</li>
+                            {/each}
+                        </ul>
 
-					{#if info.shot}
-						<img src={info.shot} alt="" />
-					{/if}
-				</div>
-			{/if}
-		{/each}
-	</div>
+                        {#if info.shot}
+                            <enhanced:img class="img" src={info.shot} alt="" />
+                        {/if}
+                    </div>
 
-	<div class="post-wrapper">
-		<img src="/images/products/post.png" alt="" />
-		<div class="img-overlay" />
+                    {#if !isLast}
+                        <hr />
+                    {/if}
+                {/if}
+            {/each}
+        </div>
 
-		<h2>See your products grow</h2>
-		<p>
-			Keep track of your projects progress on the Appwrite Console and see them grow into products users love and use every day.
-		</p>
-	</div>
+        <div class="post-wrapper">
+            <img src="/images/products/post.png" alt="" />
+
+            <h2>See your products grow</h2>
+            <p>
+                Keep track of your projects progress on the Appwrite Console and see them grow into
+                products users love and use every day.
+            </p>
+        </div>
+    </div>
+    <div class="img-overlay" />
 </div>
 
 <style lang="scss">
-	.wrapper {
-		display: none;
-		padding-block-start: 5rem;
-		padding-inline: 1.25rem;
+    .outside {
+        position: relative;
+        overflow: hidden;
+        display: none;
 
-		max-width: 800px;
-		margin-inline: auto;
-		overflow: visible;
-	}
+        .img-overlay {
+            content: '';
+            background: linear-gradient(to bottom, transparent 0%, black 40%);
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 30rem;
+            z-index: 10;
+        }
+    }
 
-	@media (max-width: 1439px) {
-		.wrapper {
-			display: block;
-		}
-	}
+    @media (max-width: 1399px) {
+        .outside {
+            display: block;
+        }
+    }
 
-	.infos {
-		margin-block-start: 3rem;
+    .wrapper {
+        --padding-inline: 1.25rem;
 
-		display: flex;
-		flex-direction: column;
-		gap: 6rem;
+        padding-block-start: 5rem;
+        padding-inline: var(--padding-inline);
 
-		.info {
-			h3 {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
+        max-width: 600px;
+        margin-inline: auto;
+    }
 
-				.aw-label {
-					margin-block-start: 0.25rem;
-				}
-			}
+    .infos {
+        margin-block-start: 3rem;
 
-			h4 {
-				color: hsl(var(--aw-color-primary));
-				margin-block-start: 0.75rem;
-			}
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
 
-			p {
-				margin-block-start: 1rem;
-			}
+        .info {
+            h3 {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
 
-			.features {
-				display: flex;
-				flex-direction: column;
-				gap: 0.75rem;
-				margin-block-start: 2rem;
+                .aw-label {
+                    margin-block-start: 0.25rem;
+                }
+            }
 
-				li {
-					--marker-size: 1.25rem;
-					--margin-left: calc(var(--marker-size) + 0.75rem);
-					position: relative;
-					margin-inline-start: var(--margin-left);
+            h4 {
+                color: hsl(var(--aw-color-primary));
+                margin-block-start: 0.75rem;
+            }
 
-					&::before {
-						content: '';
-						position: absolute;
+            p {
+                margin-block-start: 1rem;
+            }
 
-						left: calc(var(--margin-left) * -1);
-						top: 50%;
-						width: var(--marker-size);
-						height: var(--marker-size);
+            .features {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-block-start: 2rem;
 
-						transform: translateY(-50%);
+                li {
+                    --marker-size: 1.25rem;
+                    --margin-left: calc(var(--marker-size) + 0.75rem);
+                    position: relative;
+                    margin-inline-start: var(--margin-left);
 
-						background: url('/images/icons/colored/check.svg') no-repeat;
-					}
-				}
-			}
+                    &::before {
+                        content: '';
+                        position: absolute;
 
-			> img {
-				width: 100%;
-				margin-block-start: 2.5rem;
-			}
-		}
-	}
+                        left: calc(var(--margin-left) * -1);
+                        top: 50%;
+                        width: var(--marker-size);
+                        height: var(--marker-size);
 
-	.post-wrapper {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		overflow: visible;
+                        transform: translateY(-50%);
 
-		position: relative;
-		width: 100%;
+                        background: url('/images/icons/colored/check.svg') no-repeat;
+                    }
+                }
+            }
 
-		padding-block-start: 35rem;
-		padding-block-end: 5rem;
+            .img {
+                inline-size: 100%;
+                block-size: auto;
+                margin-block-start: 2.5rem;
+            }
+        }
 
-		.img-overlay {
-			content: '';
-			background: linear-gradient(to top, black, transparent);
-			position: absolute;
-			bottom: 0;
-			width: 100vw;
-			height: 30rem;
-			z-index: 10;
-		}
+        hr {
+            border: 1px solid hsl(var(--aw-color-smooth));
+            margin-inline: calc(var(--padding-inline) * -1);
+        }
+    }
 
-		img {
-			display: block;
-			max-block-size: unset;
-			max-inline-size: 100%;
-			top: 0rem;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 37.5rem;
+    .post-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: visible;
 
-			position: absolute;
-		}
+        position: relative;
+        width: 100%;
+        /* overflow: hidden; */
 
-		h2 {
-			color: var(--greyscale-50, #ededf0);
-			text-align: center;
+        padding-block-start: 35rem;
+        padding-block-end: 5rem;
 
-			/* Responsive/Display */
-			font-family: Aeonik Pro;
-			font-size: 48px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 50px; /* 104.167% */
-			letter-spacing: -0.48px;
-			max-width: 20rem;
-			position: relative;
-			z-index: 100;
-		}
+        img {
+            display: block;
+            max-block-size: unset;
+            max-inline-size: unset;
+            top: 5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 37.5rem;
 
-		p {
-			color: var(--greyscale-400, #97979b);
-			text-align: center;
-			font-family: Inter;
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 22px; /* 137.5% */
-			letter-spacing: -0.072px;
-			margin-block-start: 1rem;
-			max-width: 20rem;
-			z-index: 100;
-		}
-	}
+            position: absolute;
+        }
+
+        h2 {
+            color: var(--greyscale-50, #ededf0);
+            text-align: center;
+
+            /* Responsive/Display */
+            font-family: Aeonik Pro;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 50px; /* 104.167% */
+            letter-spacing: -0.48px;
+            max-width: 20rem;
+            position: relative;
+            z-index: 100;
+        }
+
+        p {
+            color: var(--greyscale-400, #97979b);
+            text-align: center;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: -0.072px;
+            margin-block-start: 1rem;
+            max-width: 20rem;
+            z-index: 100;
+        }
+    }
 </style>
