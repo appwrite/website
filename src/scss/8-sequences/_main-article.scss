@@ -10,7 +10,8 @@
     }
     @media #{$break3open} {
       .#{$p}-link {
-        position:absolute; inset-inline-end:calc(100% + #{pxToRem(74)});
+        position:absolute; 
+        inset-inline-end:calc(100% + #{pxToRem(74)});
         white-space:nowrap;
       }
     }
