@@ -109,7 +109,7 @@
                 <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
                         class="u-only-dark"
-                        src="/images/animations/tech-dark.png"
+                        src="/images/animations/tech-dark-transparent.png"
                         width="660"
                         height="660"
                         alt=""
