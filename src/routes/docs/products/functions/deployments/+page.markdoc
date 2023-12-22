@@ -1,81 +1,41 @@
 ---
 layout: article
-title: Deployments
-description: Learn to version and update your Appwrite Functions' code with deployments.
+title: Deployment
+description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
 ---
 
-Appwrite Functions are mini-applications in Appwrite with their own endpoints. 
 Each function can have many deployments, which can be thought of as versions of the mini-application.
-There are many different
+Functions can be created and deployed in different ways to meet your unique development habits. 
 
-# Create deployment {% #create-deployment %} 
+You can automatically deploy Appwrite Functions from source control, build your own deployment pipelines using the Appwrite CLI, or upload code files manually. 
+Here's everything you need to know to deploy your first Appwrite Function.
 
-## Git {% #git %} 
+## Deployment status {% #deployment-status %}
+Throughout the life cycle of a deployment, it could have the following status.
 
-The recommended way to manage your Appwrite Function deployments is to use a version control system, like Git. 
-This offers simple versioning and collaboration that will easily fit into the rest of your development workflow.
+{% table %}
+* Status 
+* description
+---
+* `active`
+* The deployment is built and currently activated and ready to be executed. A function can have one active deployment and deployment a must be active before being executed.
+---
+* `ready`
+* A deployment is built, but is not activated. `ready` deployments can be activated to replace the current active deployment.
+---
+* `building`
+* A deployment is being built. Check the [build log](#build-log) for more detailed logs.
+---
+* `failed`
+* A deployment was not successful. Check the [build log](#build-log) for detailed logs for debugging.
+{% /table %}
 
-You can only use Git deployment for Appwrite Functions connected to Git. 
-[Create a new function with Git](/docs/products/functions/functions#create-function) or connect your existing function to a Git repository in your function's **Settings** > **Configuration** > **Git settings** > **Connect Git**. 
+## Update deployment {% #update-deployment %}
+Some Function settings require redeploying your function to be reflected in your active deployment.
+When you update a functions **Git settings**, **Build settings**, and **Environment variables**, 
+you need to redeploy your function before they take effect.
 
-1. Using Git, checkout the branch you configured as the production branch when creating the Appwrite Function.
-2. Create a new commit.
-3. Push your new commit.
-4. A new deployment will be automatically created, built and activated.
+## Build logs  {% #build-logs %}
+When you build a deployment, the logs generated will be saved for debugging purposes.
+You can find build logs by navigating to the **deployments** tab of your function, clicking the three-dots menu beside, and click **Logs**.
 
-# CLI  {% #cli %} 
-
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
-{% /info %}
-
-To deploy with the Appwrite CLI, your function must be added to `appwrite.json`. Use the `appwrite init function` method to create a starter function, then paste in your function code.
-
-```bash
-appwrite init function
-```
-
-Edit the generated code, add dependencies, and deploy the function using the following command:
-
-```bash
-appwrite deploy function
-```
-
-## Overwrite warning {% #overwrite-warning %} 
-
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
-
-# Manual Deployment {% #manual %} 
-
-You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.
-
-```text
-.
-├── package.json
-└── index.js
-```
-
-First, navigate inside the folder that contains your dependency file. Package your code files into the `.tar.gz` format:
-
-{% multicode %}
-  ```bash
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-  ```cmd
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-  ```powershell
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-{% /multicode %}
-
-
-Next, navigate to your Appwrite Console and upload the function.
-
-1. Navigate to the function you want to deploy.
-2. Click **Create deployment**.
-3. Select the **Manual** tab.
-4. Input the entry point of your function under **Entrypoint**. For the example above, it would be `index.js`.
-5. Upload `code.tar.gz`.
-6. Select **Activate deployment after build**.
-7. Click **Create**.
