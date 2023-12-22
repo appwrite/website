@@ -104,7 +104,6 @@
             <a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
-
             <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
                 <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
