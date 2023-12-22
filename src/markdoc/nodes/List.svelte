@@ -48,6 +48,7 @@
 
     .in-changelog {
         padding-inline-start: 0.9rem;
+        margin-block-end: 1rem;
         gap: 0.75rem;
     }
 </style>
