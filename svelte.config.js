@@ -45,7 +45,8 @@ const config = {
         adapter,
         files: {
             hooks: {
-                server: isVercel ? undefined : './src/hooks/server.ts'
+                // server: isVercel ? undefined : './src/hooks/server.ts'
+                server: './src/hooks/server.ts'
             }
         },
         alias: {
