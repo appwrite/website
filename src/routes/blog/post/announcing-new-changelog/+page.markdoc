@@ -9,13 +9,13 @@ author: eldad-fux
 category: product
 ---
 
-At Appwrite, we constantly try to evolve, push boundaries, and enhance Appwrite as a platform to deliver the best experience possible. We understand that staying up to date with every update and tweak can be challenging. Monitoring every release in a unified changelog could be a better experience for some developers. That's why we're happy to announce a new addition to our website, the Changelog feed. The new feed is our commitment to transparency and collaboration and a great tool to be easily in the loop with all the small or big changes in our products.
+At Appwrite, we're constantly evolving our products, features, and experience, and we understand it is challenging to keep up with these modifications. Therefore, we introduce the Changelog feed to our website. An easier way to be informed about releases, updates, and fixes. The new Changelog feed is our commitment to transparency and collaboration and a great tool to be easily in the loop with all the small or big changes in our products.
 
 ## What to expect from the new Changelog
 
-The Changelog is more than just a list of updates; it's your window into the continuous improvements we're making. Here's what you can find in it:
+The Changelog is how we keep you informed and show our continuous improvements. Here's what you can find in it:
 
-**Concise updates**: Each entry is a quick-to-digest snippet, giving you the gist of the update without the need for extensive reading.
+**Concise updates**: Each entry is a quick-to-digest snippet, giving you the gist of the update without requiring extensive reading.
 
 **Highlighted features**: Discover the most impactful changes with highlights that draw your attention to what matters most.
 
@@ -31,7 +31,7 @@ The Changelog is more than just a list of updates; it's your window into the con
 
 ## Easy access
 
-We've made accessing the Changelog effortless. Look for the small badge near the Changelog link on the Appwrite website. This badge is your clue that something new and exciting awaits. A single click and you're there, exploring all the latest developments.
+Accessing the Changelog is easy, all you need to do is look for the small badge near the Changelog link on the Appwrite website. This badge is your clue that something new and exciting awaits. A single click and you're there, exploring all the latest developments.
 
 ![The new Changelog feed alert](/images/blog/changelog-alert.png "The new Changelog feed alert")
 
