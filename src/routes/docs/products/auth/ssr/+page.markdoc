@@ -6,7 +6,7 @@ description: How to implement server side rendering with Appwrite
 
 Server side rendering patterns are fully supported with Appwrite. This guide will walk you through the process of implementing server side rendering with Appwrite at a high level.
 
-# Setting up the clinet {% #setting-up-the-client %}
+# Setting up the client {% #setting-up-the-client %}
 
 The first step is to set up a client with an API key. This will allow you to make requests to the Appwrite API from your server.
 
