@@ -33,8 +33,8 @@
 					href: '/docs/products/functions/deployments'
 				},
 				{
-					label: 'Templates',
-					href: '/docs/products/functions/templates'
+					label: 'Executions',
+					href: '/docs/products/functions/executions'
 				},
 				{
 					label: 'Domains',
@@ -43,6 +43,10 @@
 				{
 					label: 'Runtimes',
 					href: '/docs/products/functions/runtimes'
+				},
+				{
+					label: 'Templates',
+					href: '/docs/products/functions/templates'
 				},
 
 			]
