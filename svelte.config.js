@@ -6,6 +6,7 @@ import { markdoc } from 'svelte-markdoc-preprocess';
 import sequence from 'svelte-sequential-preprocessor';
 import staticAdapter from '@sveltejs/adapter-static';
 import nodeAdapter from '@sveltejs/adapter-node';
+import vercelAdapter from '@sveltejs/adapter-vercel';
 
 function absoulute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
@@ -13,7 +14,8 @@ function absoulute(path) {
 
 const isVercel = process.env.VERCEL === '1';
 
-const adapter = isVercel ? staticAdapter() : nodeAdapter();
+const adapter = isVercel ? vercelAdapter() : nodeAdapter();
+// const adapter = vercel
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
