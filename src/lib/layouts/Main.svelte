@@ -8,6 +8,8 @@
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
+
+    const initialized = writable(false);
 </script>
 
 <script lang="ts">
@@ -19,6 +21,7 @@
     import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -77,6 +80,9 @@
     }
 
     onMount(() => {
+        setTimeout(() => {
+            $initialized = true;
+        }, 1000);
         return setupThemeObserver();
     });
 
@@ -96,7 +102,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: hasNewChangelog()
+            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',
@@ -216,6 +222,7 @@
                                 <a
                                     class="aw-link"
                                     href={navLink.href}
+                                    data-initialized={$initialized ? '' : undefined}
                                     data-badge={navLink.showBadge ? '' : undefined}
                                     >{navLink.label}
                                 </a>
@@ -261,6 +268,15 @@
         padding-inline: 0.375rem;
     }
 
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
     [data-badge] {
         position: relative;
 
@@ -275,6 +291,10 @@
             inset-block-start: -2px;
             inset-inline-end: -4px;
             translate: 100%;
+        }
+
+        &:not([data-initialized])::after {
+            animation: scale-in 0.2s ease-out;
         }
     }
 </style>

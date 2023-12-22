@@ -78,4 +78,10 @@
         padding-block-start: 3rem;
         padding-block-end: 10rem;
     }
+
+    header a {
+        display: flex;
+        align-items: center;
+        translate: -0.35rem -0.25rem;
+    }
 </style>
