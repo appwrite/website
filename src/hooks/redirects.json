@@ -1,5 +1,9 @@
 [
     {
+        "link": "/discord",
+        "redirect": "https://discord.com/invite/GSeTUeA"
+    },
+    {
         "link": "/docs/getting-started-for-web",
         "redirect": "/docs/quick-starts"
     },
@@ -642,7 +646,7 @@
     {
         "link": "/docs/models/runtime",
         "redirect": "/docs/references/cloud/models/runtime"
-    },    
+    },
     {
         "link": "/docs/installation",
         "redirect": "/docs/advanced/self-hosting"
@@ -659,5 +663,4 @@
         "link": "/policy/privacy",
         "redirect": "/privacy"
     }
-    
 ]
