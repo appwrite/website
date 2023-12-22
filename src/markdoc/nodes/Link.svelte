@@ -17,8 +17,15 @@
 
 <a
     class="aw-link is-inline {isDocs || inChangelog ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
+    data-in-changelog={inChangelog ? '' : undefined}
     {href}
     {title}
     {target}
     {rel}><slot /></a
 >
+
+<style lang="scss">
+    [data-in-changelog]:last-child {
+        margin-block-start: 1rem;
+    }
+</style>
