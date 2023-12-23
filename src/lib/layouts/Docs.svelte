@@ -15,6 +15,7 @@
         showSearch: false,
         currentVariant: null
     });
+
     export function toggleReferences() {
         layoutState.update((state) => ({
             ...state,
@@ -23,19 +24,21 @@
         }));
     }
     export function toggleSidenav() {
-        layoutState.update((state) => ({
-            ...state,
-            showReferences: false,
-            showSidenav: !state.showSidenav
-        }));
+        layoutState.update((state) => {
+            return {
+                ...state,
+                showReferences: false,
+                showSidenav: !state.showSidenav
+            };
+        });
     }
 </script>
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
 
-    import { setContext } from 'svelte';
     import { isMac } from '$lib/utils/platform';
+    import { setContext } from 'svelte';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -97,8 +100,12 @@
             <a href="https://cloud.appwrite.io/console" class="aw-button aw-is-only-desktop">
                 <span class="aw-sub-body-500">Go to console</span>
             </a>
-            <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
-                <span class="aw-icon-hamburger-menu" />
+            <button class="aw-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+                {#if $layoutState.showSidenav}
+                    <span aria-hidden="true" class="aw-icon-close" />
+                {:else}
+                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                {/if}
             </button>
         </div>
     </section>
@@ -165,13 +172,6 @@
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
                     </a>
-                    <button
-                        on:click={toggleSidenav}
-                        class="aw-button is-text aw-is-not-desktop"
-                        aria-label="open navigation"
-                    >
-                        <span class="aw-icon-hamburger-menu" />
-                    </button>
                 </div>
             </div>
         </div>
