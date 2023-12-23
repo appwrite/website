@@ -76,7 +76,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="u-position-relative">
+<div class="u-position-relative" style="overflow-x: clip;">
     <section class="aw-mobile-header is-transparent">
         <div class="aw-mobile-header-start">
             <a href="/" aria-label="homepage">
