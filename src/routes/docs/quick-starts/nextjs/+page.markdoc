@@ -42,8 +42,14 @@ npx create-next-app@latest && cd my-app
 
 Install the JavaScript Appwrite SDK.
 
+Using npm
 ```sh
 npm install appwrite
+```
+
+Using yarn
+```sh
+yarn add appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Define Appwrite service" %}
@@ -149,7 +155,7 @@ export default LoginPage;
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-Run your project with `npm run dev` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
+Run your project with `npm run dev` or `yarn dev` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
 
 Don't forget to add some CSS to suit your style.
 {% /section %}
