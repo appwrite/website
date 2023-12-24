@@ -69,3 +69,16 @@ Connection: close
     "code": 429
 }
 ```
+
+# Default limits {% #default-limits %}
+
+| Endpoint           | Number of requests | Mettered factor|
+| ------------------ | ------------------ | -------------- |
+| Login              | 10                 | Email address  |
+| Signup             | 10                 | IP address     |
+| Delete session     | 100                | IP address     |
+| Password recovery  | 10                 | Email address  |
+| Email verification | 10                 | Email address  |
+| OAuth              | 50                 | IP address     |
+
+The cooldown for all endpoints is 60 minutes. 
