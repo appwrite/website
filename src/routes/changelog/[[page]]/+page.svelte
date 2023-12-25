@@ -43,30 +43,36 @@
 </svelte:head>
 
 <Main>
-    <div class="wrapper">
-        <h1 class="aw-display aw-u-color-text-primary">Changelog</h1>
-        <ul>
-            {#each data.entries as entry}
-                <li>
-                    <div class="aw-dot" />
-                    <ChangelogEntry {entry}>
-                        <svelte:component this={entry.component} />
-                    </ChangelogEntry>
-                </li>
-            {/each}
-        </ul>
+    <div class="aw-big-padding-section">
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container wrapper">
+                    <h1 class="aw-display aw-u-color-text-primary">Changelog</h1>
+                    <ul>
+                        {#each data.entries as entry}
+                            <li>
+                                <div class="aw-dot" />
+                                <ChangelogEntry {entry}>
+                                    <svelte:component this={entry.component} />
+                                </ChangelogEntry>
+                            </li>
+                        {/each}
+                    </ul>
 
-        {#if data.nextPage}
-            <button class="aw-button is-secondary" on:click={loadMore}>Load more</button>
-        {/if}
-    </div>
-    <div
-        class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-    >
-        <div class="aw-container">
-            <PreFooter />
-            <FooterNav />
-            <MainFooter />
+                    {#if data.nextPage}
+                        <button class="aw-button is-secondary" on:click={loadMore}>Load more</button>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
+                    <PreFooter />
+                    <FooterNav />
+                    <MainFooter />
+                </div>
+            </div>
         </div>
     </div>
 </Main>
@@ -74,12 +80,9 @@
 <style lang="scss">
     .wrapper {
         --padding-inline: 1rem;
-
+        box-sizing: border-box;
         max-width: calc(49.375rem + var(--padding-inline) * 2);
-        margin-block-start: 7.5rem;
-        margin-inline: auto;
         padding-inline: var(--padding-inline);
-        padding-block-end: 10rem;
     }
 
     ul {
