@@ -64,7 +64,7 @@
                     <div class="aw-container" style="--container-size:42.5rem">
                         <article class="aw-main-article">
                             <header class="aw-main-article-header">
-                                <a class="aw-link aw-u-color-text-secondary" href="/blog">
+                                <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/blog">
                                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
