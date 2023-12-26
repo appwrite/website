@@ -75,142 +75,7 @@ We use performance/analytics cookies to analyze how the website is accessed, use
 * Expiry (In days)
 * Purpose
 ---
-* _ga_xxxxxxxxxx
-* JavaScript / Google Analytics
-* 729
-* Gather information about how users interact with their websites
----
-* cb_group_id
-* Clearbit: B2B Marketing Intelligence
-* 364
-* Tracking marketing performance
----
-* initial_referrer
-* Homerun
-* Session
-* Tracking the initial referral source of a visitor to a website that is using the Homerun platform
----
-* __hssrc
-* HubSpot
-* Session
-* Website analytics
----
-* _shopify_d
-* Shopify
-* Session
-* Shopify analytics
----
-* _s
-* Shopify
-* Session
-* Shopify's analytics suite
----
-* _gat
-* Google Universal
-* Session
-* Google Universal Analytics - Throttle the request rate - limiting the collection of data on high traffic sites
----
-* _shopify_s
-* Shopify
-* Session
-* Shopify's analytics suite
----
-* mp_xxxxxxx_mixpanel
-* (empty)
-* 364
-* Helps Mixpanel Improve usability
----
-* ahoy_visit
-* BetterStack
-* Session
-* Analytics purposes
----
-* __mp_opt_in_out_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-* Mixpanel
-* Session
-* Helps Mixpanel Improve usability
----
-* _y
-* Shopify
-* 364
-* Shopify's analytics suite
----
-* cb%3Atest
-* Clearbit: B2B Marketing Intelligence
-* 364
-* Tracks page views and traits for Clearbit
----
-* __hstc
-* HubSpot
-* 179
-* HubSpot - website analytics
----
-* ph_phc_Tbfg4EiRsr5iefFoth2Y1Hi3sttTeLQ5RV5TLg4hL1W_posthog
-* Betterstack
-* 364
-* Track user behavior across different pages and interactions, enabling us to analyze user engagement, usage patterns, and other relevant data
----
-* _shopify_sa_p
-* Shopify
-* Session
-* Shopify's analytics suite concerning marketing and referrals
----
-* _ga
-* Google Universal
-* 729
-* Distinguish unique users by assigning a randomly generated number as a client identifier, calculate visitor, session, and campaign data for the site's analytics reports
----
-* _gid
-* Google Universal
-* Session
-* Google Universal Analytics - Store and update a unique value for each page visited
----
-* _shopify_sa_t
-* Shopify
-* Session
-* Shopify's analytics suite
----
-* _s
-* Shopify
-* Session
-* Shopify's analytics suite
----
-* _shopify_y
-* Shopify
-* 364
-* Shopify's analytics suite
----
-* _landing_page
-* appwrite.io
-* 13
-* Track, report, and analyze landing pages
----
-* _gclxxxx
-* Google
-* 89
-* Google conversion tracking cookie
----
-* _ga
-* Google Universal
-* 729
-* Google Universal Analytics - distinguish unique users by assigning a randomly generated number as a client identifier, calculate visitor, session, and campaign data for the site's analytics reports
----
-* __hssc
-* appwrite.io/ HubSpot
-* Session
-* Website analytics
----
-* _ph
-* BetterStack
-* Session
-* Analytics
----
 * _lr_uf_-rgthvf
-* Logrocket
-* Session
-* Bug tracking and debugging
----
-* _lr5_
 * Logrocket
 * Session
 * Bug tracking and debugging
@@ -236,12 +101,9 @@ We use performance/analytics cookies to analyze how the website is accessed, use
 * For debugging actions on our the console
 {% /table %}
 
-# Marketing
+# Functionality cookies
 
-We use marketing cookies to deliver many types of targeted digital marketing. We do this to provide you with a better user experience and to continually improve the website. These cookies store user data and behavior information, which allows advertising services to target the audience based on various variables. For example, these cookies allow us to:
-
-- Observe the site performance and generate retargeting (Site retargeting, search retargeting, etc).
-- Maintain and improve the website and our products.
+These cookies record information about choices you've made and allow us to tailor the website to you. These cookies allow us to provide you with our services in the way in which you have required, as you continue to use or come back to our Site.
 
 {% table %}
 * Cookie name
@@ -249,85 +111,15 @@ We use marketing cookies to deliver many types of targeted digital marketing. We
 * Expiry (In days)
 * Purpose
 ---
-* cb_user_id
-* Clearbit: B2B Marketing Intelligence
-* 364
-* Tracks page views and traits for Clearbit
----
-* pt_
-* appwrite.io
+* __stripe_sid
+* Stripe
 * Session
-* NA
+* Address collection for receipts
 ---
-* _gat_UA-XXXXXX-X
-* careers.appwrite.io
-* Session
-* Google Analytics Cookies
----
-* cb_anonymous_id
-* Clearbit: B2B Marketing Intelligence
-* 364
-* Tracks page views and traits for Clearbit
----
-* test_cookie
-* doubleclick.net
-* Session
-* Doubleclick - Google's real-time bidding advertising exchange
----
-* IDE
-* doubleclick.net
-* 389
-* Doubleclick - Google's real-time bidding advertising exchange
----
-* __cf_bm
-* CloudFlare
-* Session
-* CloudFlare authentication
----
-* _fbp
-* Facebook
-* 89
-* Advertisement products from third-party advertisers
----
-* bcookie
-* LinkedIn
-* 364
-* Content sharing buttons
----
-* UserMatchHistory
-* LinkedIn
-* 29
-* Content sharing buttons
----
-* personalization_id
-* Twitter
-* 729
-* Collects data through a range of plug-ins and integrations, that is primarily used for tracking and targeting
----
-* lidc
-* LinkedIn
-* Session
-* Content sharing buttons
----
-* li_sugr
-* LinkedIn
-* 89
-* Content sharing buttons
----
-* AnalyticsSyncHistory
-* LinkedIn
-* 29
-* Content sharing buttons
----
-* muc_ads
-* Twitter
-* 729
-* Optimizes ads on the website
----
-* ln_or
-* Linkedin
-* Session
-* Used to determine if Oribi analytics can be carried out on a specific domain
+* __stripe_mid
+* Stripe
+* 365
+* Enable the website to process payments without storing any credit card information
 {% /table %}
 
 # How to control or delete cookies
