@@ -19,6 +19,7 @@
 
   position:sticky; z-index:35; inset-block-start:pxToRem(74); inset-block-end:0;
   block-size:calc(100vh - pxToRem(160)); block-size:calc(100dvh - pxToRem(73));
+  background-color:hsl(var(--p-side-nav-bg-color));
   .#{$p}-icon-button { transition:var(--transition); margin-block-end:pxToRem(-4); margin-inline-end:pxToRem(6); }
 
 
@@ -26,7 +27,7 @@
   &-wrapper {
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
     padding:pxToRem(16); padding-block-end:pxToRem(32);
-    background-color:hsl(var(--p-side-nav-bg-color)); transition:var(--transition);
+    transition:var(--transition);
 
     &-parent {
       position:sticky; inset-block-start:pxToRem(-16); background-color:hsl(var(--p-body-bg-color));

@@ -87,4 +87,29 @@
     {/if}
 </svelte:head>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <slot />
+
+<style lang="scss">
+    .skip {
+        position: absolute;
+        inset-block-start: 0;
+        z-index: 9999;
+
+        display: block;
+        background-color: hsl(var(--aw-color-mint-500));
+        color: hsl(var(--aw-color-black));
+        text-decoration: underline;
+        opacity: 0;
+
+        padding: 0.75rem 1.25rem;
+        pointer-events: none;
+    }
+
+    .skip:focus {
+        opacity: 1;
+        position: relative;
+        pointer-events: all;
+    }
+</style>

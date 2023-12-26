@@ -20,10 +20,10 @@
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
-    export let date: string;
+    export let date: string | undefined = undefined;
 </script>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">

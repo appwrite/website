@@ -47,7 +47,7 @@
 
     const toc = createTableOfContents({
         exclude: ['h1', 'h3', 'h4', 'h5', 'h6'],
-        selector: '#policy-content',
+        selector: '#main',
         activeType: 'lowest',
         scrollOffset: 120
     });
@@ -79,7 +79,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Main>
+<Main omitMainId>
     <div class="aw-container">
         <div class="aw-grid-120-1fr-auto">
             <header class="aw-grid-120-1fr-auto-header">
@@ -194,7 +194,7 @@
                     />
                 </div>
             </aside>
-            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="policy-content">
+            <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
                 <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
                     <!-- eslint-disable-next-line svelte/valid-compile -->
                     <h2 aria-hidden="true">Introduction</h2>

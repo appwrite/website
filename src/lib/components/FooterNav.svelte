@@ -68,7 +68,8 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
+                { label: 'Changelog', href: '/changelog' }
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },

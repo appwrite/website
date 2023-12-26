@@ -69,23 +69,7 @@
         <enhanced:img src="./blur-1.png" alt="" />
     </div>
 
-    <div
-        class="u-position-absolute aw-is-not-mobile u-only-light"
-        style:inline-size="768px"
-        style:block-size="768px"
-        style:inset-block-start="26rem"
-        style:left="calc(50% - 384px + 600px)"
-    >
-        <img
-            src="/images/animations/tech-light.png"
-            width="768"
-            height="768"
-            alt=""
-            style="position: absolute; display: block;"
-        />
-    </div>
-
-    <main class="aw-main-section u-position-relative">
+    <main class="aw-main-section u-position-relative aw-u-overflow-hidden-break1-to-break3" id="main">
         <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
@@ -121,10 +105,19 @@
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
 
-            <div class="u-position-absolute aw-is-not-mobile u-only-dark spline-wrapper">
+            <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
                 <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
+                        class="u-only-dark"
                         src="/images/animations/tech-dark.png"
+                        width="660"
+                        height="660"
+                        alt=""
+                        style="position: absolute;"
+                    />
+                    <img
+                        class="u-only-light"
+                        src="/images/animations/tech-light.png"
                         width="660"
                         height="660"
                         alt=""
@@ -132,7 +125,7 @@
                     />
                 </Spline>
             </div>
-            <div class="bg-boi" />
+            <div class="bg-overlay" />
         </section>
         <section>
             <h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
@@ -429,11 +422,6 @@
     .tech-hero {
         @include border-block-gradient;
 
-        background: linear-gradient(to right, #19191c80, #19191c00);
-        // background-color: #19191c80;
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
-
         --m-border-size: 1px;
         --m-border-gradient-before: linear-gradient(
             to right,
@@ -460,9 +448,10 @@
             left: calc(50% - 384px + 600px);
         }
 
-        .bg-boi {
+        .bg-overlay {
             position: absolute;
-            background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
+
+            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 10%, #ffffff);
 
             top: 0;
             right: 10rem;
@@ -472,5 +461,15 @@
             content: '';
             z-index: 9999;
         }
+    }
+
+    :global(.theme-dark) .tech-hero {
+        background: linear-gradient(to right, #19191c80, #19191c00);
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+    }
+
+    :global(.theme-dark) .bg-overlay {
+        background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
     }
 </style>

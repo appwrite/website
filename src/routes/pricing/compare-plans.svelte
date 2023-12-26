@@ -187,7 +187,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming soon',
+                    pro: 'Start trial',
                     scale: 'Coming soon'
                 }
             ]
@@ -395,9 +395,14 @@
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
                                 <h4 class="aw-label aw-u-color-text-primary">Pro</h4>
-                                <button class="aw-button" disabled>
-                                    <span class="aw-sub-body-500">Coming soon</span>
-                                </button>
+                                <a
+                                    class="aw-button"
+                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="aw-sub-body-500">Start trial</span>
+                                </a>
                             </div>
                         </div>
                         <div class="aw-mini-card">
