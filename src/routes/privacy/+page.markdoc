@@ -6,16 +6,16 @@ This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (t
 
 1. When you browse or visit any of the Appwrite.io domains and subdomains.
 2. When you make use of, or interact with, our Website (https://appwrite.io/)
-  1. When you create an account and when you log in 
+  1. When you create an account and when you log in
   2. When you purchase our products in our Swag Store
   3. When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
   4. When you submit a job application
   5. When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
-  6. When you apply for our fund 
-3. When you make use of, or interact with, our  application, and any other application, that we license (each individually, and collectively, the “App”).  
-  1. When you create an account and when you log into our console 
-4. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data 
-5. When we use the Personal Data of our customers (e.g. contact details) 
+  6. When you apply for our fund
+3. When you make use of, or interact with, our  application, and any other application, that we license (each individually, and collectively, the “App”).
+  1. When you create an account and when you log into our console
+4. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data
+5. When we use the Personal Data of our customers (e.g. contact details)
 6. When you interact with us on our social media profiles (e.g., Facebook, GitHub, Twitter, LinkedIn)
 
 Hereinafter the Website and the App will be referred to as the “Service.” Please read this Privacy Policy carefully, so you can understand our practices and your rights in relation to personal data. “Personal Data” or “Personal Information” means any information that can be used, alone or together with other data, to uniquely identify any living human being and any information deemed as Personally Identifiable Information by privacy laws. Please note that this is a master privacy policy, and some of its provisions only apply to individuals in certain jurisdictions. For example, the legal basis in the table below is only relevant to GDPR-protected individuals. Important note: Nothing in this Privacy Policy is intended to limit in any way your statutory right, including your rights to a remedy or means of enforcement.
@@ -46,11 +46,32 @@ What personal data we collect, why we collect it, and how it is used
 * For more information, please read our cookies policy [io Appwrite Cookies Policy](https://appwrite.io/cookies)
 ---
 * Consequences of not providing the personal data
-* Certain non-essential Website features may not be available
+*  --
+{% /table %}
+
+#### When you purchase our cloud account
+
+{% table %}
+---
+* Specific personal data we collect
+* Address
+---
+* What is the personal data collected and for what purpose?
+* For payment processing purposes
+---
+* Legal basis (GDPR only, if applicable)
+* - Consent
+  - Legitimate interest
+---
+* Third parties with whom we share your personal data
+* Stripe
+---
+* Consequences of not providing the personal data
+*  --
 {% /table %}
 
 
-#### When you make use of, or interact with, our console
+#### When you create an account and when you log in
 
 {% table %}
 *
@@ -151,7 +172,6 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as for the following purposes:
-  - ActiveCampaign
   - Mailgun
   - Orbit
 ---
