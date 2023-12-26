@@ -4,19 +4,18 @@ title: Privacy Policy
 ---
 This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
 
-1. When you browse or visit any of the Appwrite.io domains and subdomains.
-2. When you make use of, or interact with, our Website (https://appwrite.io/)
-  1. When you create an account and when you log in
-  2. When you purchase our products in our Swag Store
-  3. When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
-  4. When you submit a job application
-  5. When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
-  6. When you apply for our fund
-3. When you make use of, or interact with, our  application, and any other application, that we license (each individually, and collectively, the “App”).
-  1. When you create an account and when you log into our console
-4. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data
-5. When we use the Personal Data of our customers (e.g. contact details)
-6. When you interact with us on our social media profiles (e.g., Facebook, GitHub, Twitter, LinkedIn)
+1. When you make use of, or interact with, our Website (https://appwrite.io/)
+  2. When you create an account and when you log in
+  3. When you purchase our Cloud plan
+  4. When you purchase our products in our Swag Store
+  5. When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
+  6. When you submit a job application
+  7. When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
+  8. When you apply for our fund
+2. When you create an account and when you log into our console
+3. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data
+4. When we use the Personal Data of our customers (e.g. contact details)
+5. When you interact with us on our social media profiles (e.g., Facebook, GitHub, Twitter, LinkedIn)
 
 Hereinafter the Website and the App will be referred to as the “Service.” Please read this Privacy Policy carefully, so you can understand our practices and your rights in relation to personal data. “Personal Data” or “Personal Information” means any information that can be used, alone or together with other data, to uniquely identify any living human being and any information deemed as Personally Identifiable Information by privacy laws. Please note that this is a master privacy policy, and some of its provisions only apply to individuals in certain jurisdictions. For example, the legal basis in the table below is only relevant to GDPR-protected individuals. Important note: Nothing in this Privacy Policy is intended to limit in any way your statutory right, including your rights to a remedy or means of enforcement.
 
@@ -33,20 +32,17 @@ What personal data we collect, why we collect it, and how it is used
 {% table %}
 ---
 * Specific personal data we collect
-* Cookies, analytic tools and log files
+* Cookies
 ---
 * What is the personal data collected and for what purpose?
-* Marketing purposes, usage analytics and statistics, improving the quality of service
+* Usage analytics and statistics, improving quality of service
 ---
 * Legal basis (GDPR only, if applicable)
 * - Consent
-  - Legitimate interest (e.g. essential cookies)
+  - Legitimate interest
 ---
 * Third parties with whom we share your personal data
 * For more information, please read our cookies policy [io Appwrite Cookies Policy](https://appwrite.io/cookies)
----
-* Consequences of not providing the personal data
-*  --
 {% /table %}
 
 #### When you purchase our cloud account
@@ -93,7 +89,7 @@ What personal data we collect, why we collect it, and how it is used
   - To be able to enjoy features available to registered users
   - To collect Informative reason for the administrator.
   - To better project development (identify reported problem)
-* - To send you marketing communications and product update
+* - To send you marketing communications and product updates
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
@@ -349,7 +345,7 @@ Your Personal Data will be stored until we delete the record and we proactively 
 {% /count_section %}
 
 {% count_section %}
-# Sharing your personal data
+# Sharing personal data
 In addition to the recipients described above, we may share your Personal Data as follows:
 
 {% count_title / %}
