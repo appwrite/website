@@ -1,9 +1,20 @@
 <script lang="ts">
-    import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import { getContext } from 'svelte';
+    import { isInDocs } from '$lib/layouts/Docs.svelte';
+    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
+    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
+    import { isInTable } from './Table.svelte';
 
-    const isDocs = getContext('isDocs') ?? false;
-    const inChangelog = isInsideChangelog();
+    const inDocs = isInDocs();
+    const inChangelog = isInChangelog();
+    const inPolicy = isInPolicy();
+    const inTable = isInTable();
+
+    $: classes = (() => {
+        if (inDocs) return '';
+        if (inChangelog) return '';
+        if (inPolicy && inTable) return '';
+        return 'aw-paragraph-lg';
+    })();
 </script>
 
-<li><p class:aw-paragraph-lg={!isDocs && !inChangelog}><slot /></p></li>
+<li><p class={classes}><slot /></p></li>

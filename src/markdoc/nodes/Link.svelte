@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import { getContext } from 'svelte';
-    import { TABLE_CTX_KEY } from './Table.svelte';
+    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
+    import { hasContext } from 'svelte';
+    import { isInTable } from './Table.svelte';
 
     export let href: string;
     export let title: string;
@@ -10,18 +10,20 @@
     const target = isExternal ? '_blank' : undefined;
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
-    const isDocs = getContext('isDocs') ?? false;
-    const inChangelog = isInsideChangelog();
-    const inTable = getContext(TABLE_CTX_KEY) ?? false;
+    const isDocs = hasContext('isDocs');
+    const inChangelog = isInChangelog();
+    const inTable = isInTable();
+
+    $: classes = (() => {
+        if (isDocs) return 'aw-link is-inline aw-paragraph-md';
+        if (inChangelog) return 'aw-link is-inline aw-paragraph-lg';
+        if (inTable) return 'aw-link is-inline';
+        return '';
+    })();
 </script>
 
-<a
-    class="aw-link is-inline {isDocs || inChangelog ? 'aw-paragraph-md' : 'aw-paragraph-lg'}"
-    data-in-changelog={inChangelog ? '' : undefined}
-    {href}
-    {title}
-    {target}
-    {rel}><slot /></a
+<a class={classes} data-in-changelog={inChangelog ? '' : undefined} {href} {title} {target} {rel}
+    ><slot /></a
 >
 
 <style lang="scss">
