@@ -167,6 +167,8 @@
 .#{$p}-u-media-cover { object-fit:cover; }
 .#{$p}-u-media-ratio-16-9 { display:block; aspect-ratio:16 / 9; object-fit:cover; }
 
+.#{$p}-u-container-query-inline { container-type:inline-size; }
+
 .#{$p}-u-list-inline-dot-sep {
   >li:nth-child(n + 2)::before { content:"·"; margin-inline-start:pxToRem(8); }
 }
@@ -177,7 +179,9 @@
     padding-block:40px;
     &::after {
       content:""; display:block; block-size:pxToRem(1);
-      inline-size:200vw; position:absolute; inset-inline-start:-500px; inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
+      inline-size:100vw; position:absolute;
+      inset-inline-start: calc(calc(100vw - 100cqw)/2 * -1 + pxToRem(8));
+      inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
     }
   }
 }
