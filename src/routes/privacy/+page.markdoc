@@ -5,13 +5,13 @@ title: Privacy Policy
 This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
 
 1. When you make use of, or interact with, our Website (https://appwrite.io/)
-  2. When you create an account and when you log in
-  3. When you purchase our Cloud plan
-  4. When you purchase our products in our Swag Store
-  5. When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
-  6. When you submit a job application
-  7. When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
-  8. When you apply for our fund
+  - When you create an account and when you log in
+  - When you purchase our Cloud plan
+  - When you purchase our products in our Swag Store
+  - When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
+  - When you submit a job application
+  - When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
+  - When you apply for our fund
 2. When you create an account and when you log into our console
 3. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data
 4. When we use the Personal Data of our customers (e.g. contact details)
@@ -45,7 +45,7 @@ What personal data we collect, why we collect it, and how it is used
 * For more information, please read our cookies policy [io Appwrite Cookies Policy](https://appwrite.io/cookies)
 {% /table %}
 
-#### When you purchase our cloud account
+#### When you purchase our cloud plan
 
 {% table %}
 ---
@@ -61,9 +61,6 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * Stripe
----
-* Consequences of not providing the personal data
-*  --
 {% /table %}
 
 
@@ -106,13 +103,13 @@ What personal data we collect, why we collect it, and how it is used
   - Orbit
   - Hubspot
 ---
-* Consequences of not providing the personal data
+* To send you marketing communications and product update
 * - Cannot be able to create an account
   - Cannot be able to log in
   - Cannot be able to enjoy features available to registered users
   - Cannot collect Informative reason for the administrator.
   - Cannot better project development (identify reported problem)
-* Cannot send you marketing communications and product update
+* Cannot send you marketing communications and product updates
 {% /table %}
 
 #### When you purchase products in our Swag Store
