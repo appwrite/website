@@ -42,7 +42,7 @@
                 <div class="aw-container wrapper" style="--container-size:42.5rem">
                     <article class="aw-main-article">
                         <header class="aw-main-article-header">
-                            <a class="aw-link aw-u-color-text-secondary" href="/changelog">
+                            <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/changelog">
                                 <span class="aw-icon-chevron-left" aria-hidden="true" />
                                 <span>Back to Changelog</span>
                             </a>
