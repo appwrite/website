@@ -408,9 +408,9 @@
                 width: 1104px;
                 height: 1104px;
 
-                background: radial-gradient(#fe9567, #fd366e);
                 border-radius: 100%;
-                filter: blur(424px);
+                background: radial-gradient(50% 50% at 50% 50%, #fe9567 0%, #fd366e 100%);
+                filter: blur(212px);
             }
         }
     }
