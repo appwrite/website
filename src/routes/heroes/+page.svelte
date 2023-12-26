@@ -180,7 +180,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
+            <div class="aw-big-padding-section-level-2 aw-u-overflow-hidden">
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->

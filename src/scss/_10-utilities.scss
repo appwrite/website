@@ -5,6 +5,12 @@
 .#{$p}-u-opacity-64                 { opacity:0.64!important; }
 .#{$p}-u-opacity-90                 { opacity:0.9!important;  }
 
+.#{$p}-u-overflow-hidden-break1-to-break3 {
+  @media #{$break1}, #{$break2}, #{$break3} {
+    overflow:hidden;
+  }
+}
+
 .#{$p}-u-flex-vertical                {display:flex!important; flex-direction:column!important; }
 .#{$p}-u-flex-vertical-mobile         { @media #{$break1} { flex-direction:column!important; }  }
 .#{$p}-u-flex-vertical-reverse-mobile { @media #{$break1} { flex-direction:column-reverse!important; }  }

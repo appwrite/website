@@ -46,7 +46,7 @@ Using an Appwrite-based stack enabled several benefits for the Smartbee team:
 
 ## Solving performance and security problems of a self-developed stack
 
-In the initial MVP that Smartbee built, they faced several performance issues due to their custom Flask-based solution. The solution could barely manage the load from sensors in 2 coal mines. Since transitioning to an Appwrite-based stack, Smartbee is currently sustaining a substantially higher throughput:
+In the initial MVP that Smartbee built, they faced several performance issues due to their custom Flask-based solution. The solution could barely manage the load from sensors in 2 coal mines. Since transitioning to an Appwrite-based stack, Smartbee is able to process a substantially higher amount of data:
 
 1. **Database:** 35 million documents are added from a total of 70 sensors each month
 2. **Bandwidth:** 500GB of bandwidth is transmitted between the IoT sensors, local coal mine servers, and the remote server each month
@@ -54,7 +54,7 @@ In the initial MVP that Smartbee built, they faced several performance issues du
 
 ## Improved developer productivity due to SDKs, Functions runtimes, and CLI
 
-A significant factor in accelerating Smartbee’s developer productivity was Appwrite’s developer experience. The Appwrite CLI helped Smartbee quickly set up and manage all the local coal mine Appwrite instances and the remote server. Appwrite’s pre-built API endpoints and SDKs meant that Smartbee did not have to re-create any services to support the monitoring platform. They only had to swap in the function calls from Appwrite’s SDK for Python and replace the synchronization and CSV report management scripts with Python-based Appwrite functions. One of the most significant benefits that Smartbee received was our Storage offering. In the past, Smartbee used an FTP server to store and manage reports, which had severe performance deficits, considering the high data stream from Smartbee’s IoT sensors. Appwrite pre-built storage buckets and SDK allowed a simpler-to-implement yet performant alternative. In fact, Sergio learned Flutter and chose it for their client application because of the well-supported Appwrite SDK and learning resources available around the same.
+A significant factor in accelerating Smartbee’s developer productivity was Appwrite’s developer experience. The Appwrite CLI helped Smartbee quickly set up and manage all the local coal mine Appwrite instances and the remote server. Appwrite’s pre-built API endpoints and SDKs meant that Smartbee did not have to re-create any services to support the monitoring platform. They only had to swap in the function calls from Appwrite’s SDK for Python and replace the synchronization and CSV report management scripts with Python-based Appwrite functions. One of the most significant benefits that Smartbee received was our Storage offering. In the past, Smartbee used an FTP server to store and manage reports, which had severe performance deficits, considering the high data stream from Smartbee’s IoT sensors. Appwrite's pre-built storage buckets and SDK allowed a simpler-to-implement yet performant alternative. In fact, Sergio learned Flutter and chose it for their client application because of the well-supported Appwrite SDK and learning resources available around the same.
 
 ## Support from a highly active and helpful virtual community
 
