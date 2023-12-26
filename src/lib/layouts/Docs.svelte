@@ -32,13 +32,16 @@
             };
         });
     }
+
+    const CTX_KEY = Symbol('docs');
+    export const isInDocs = () => getContext<boolean>(CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
 
     import { isMac } from '$lib/utils/platform';
-    import { setContext } from 'svelte';
+    import { getContext, setContext } from 'svelte';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -59,8 +62,7 @@
             showSidenav: false
         }));
     });
-
-    setContext('isDocs', true);
+    setContext(CTX_KEY, true);
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
