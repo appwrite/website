@@ -50,7 +50,7 @@
             Appwrite is unveiling new features over a week of exciting announcements
         </p>
         <div class="buttons">
-            <button class="aw-button">Get your ticket</button>
+            <a href="/init_/ticket" class="aw-button">Get your ticket</a>
             <button class="aw-button is-secondary">Blog announcement</button>
         </div>
     </div>
@@ -117,7 +117,7 @@
         <p class="aw-sub-body-500">
             Create, customize, and share your Init ticket to enter our general giveaway.
         </p>
-        <button class="aw-button is-secondary">Get your ticket</button>
+        <a href="/init_/ticket" class="aw-button is-secondary">Get your ticket</a>
 
         <div class="tickets">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
@@ -141,7 +141,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.
                 </p>
-                <button class="aw-button">Get your ticket</button>
+                <a href="/init_/ticket" class="aw-button">Get your ticket</a>
             </div>
 
             <enhanced:img class="console" src="./(assets)/console.png" alt="" />
@@ -326,7 +326,7 @@
 
         h2,
         p,
-        button {
+        a {
             text-align: center;
             margin-inline: auto;
             max-inline-size: 21.5625rem;
@@ -336,7 +336,7 @@
             margin-block-start: 1rem;
         }
 
-        button {
+        a {
             margin-block-start: 1.5rem;
         }
 
@@ -388,7 +388,7 @@
                     margin-block-start: 0.75rem;
                 }
 
-                button {
+                a {
                     margin-block-start: 2rem;
                 }
             }
