@@ -13,7 +13,7 @@
         return getContext<PolicyContext>(POLICY_KEY);
     };
 
-    export const isInsidePolicy = () => {
+    export const isInPolicy = () => {
         return hasContext(POLICY_KEY);
     };
 </script>
