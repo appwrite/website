@@ -3,7 +3,12 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import ShineSVG from '../(assets)/shine.svg';
+    import TicketPNG from '../(assets)/ticket.png';
 </script>
+
+<svelte:head>
+    <title>Appwrite init_ - Ticket</title>
+</svelte:head>
 
 <Main>
     <div class="hero">
@@ -27,6 +32,12 @@
                 <div class="aw-icon-appwrite aw-u-color-text-primary" />
                 <span class="text">Register with Appwrite Account</span>
             </button>
+            <a
+                href="/init_/ticket/customize"
+                class="aw-button is-full-width is-secondary u-margin-block-start-8"
+            >
+                <span class="text">(DEBUG) Customize ticket without logging in</span>
+            </a>
             <p class="u-margin-block-start-16">
                 By registering, you agree to our <a href="/terms" class="aw-link is-inline"
                     >Terms and Conditions</a
@@ -35,10 +46,10 @@
             </p>
         </div>
         <div class="ticket-preview">
-            <enhanced:img class="ticket-1" src="../(assets)/ticket.png" alt="" />
-            <enhanced:img class="ticket-2" src="../(assets)/ticket.png" alt="" />
-            <enhanced:img class="ticket-3" src="../(assets)/ticket.png" alt="" />
-            <img src={ShineSVG} alt="" />
+            <img class="ticket-1" src={TicketPNG} alt="" />
+            <img class="ticket-2" src={TicketPNG} alt="" />
+            <img class="ticket-3" src={TicketPNG} alt="" />
+            <img class="shine" src={ShineSVG} alt="" />
         </div>
     </div>
 
@@ -51,8 +62,9 @@
 <style lang="scss">
     .hero {
         display: grid;
-        grid-template-columns: minmax(500px, 40%) 1fr;
+        grid-template-columns: minmax(500px, 40%) min(60%, 700px);
         gap: 7.5rem;
+        justify-content: space-between;
 
         padding-inline: clamp(1.25rem, 4vw, 120rem);
         padding-block-start: 4rem;
@@ -105,6 +117,13 @@
             );
             border-radius: var(--p-border-radius);
             z-index: 10;
+        }
+
+        .shine {
+            position: absolute;
+            inset-block-start: -100px;
+            inset-inline-end: -100px;
+            z-index: 20;
         }
     }
 </style>
