@@ -1,14 +1,14 @@
 <script lang="ts">
-    import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
+    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
+    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { setContext } from 'svelte';
 
     export let ordered: boolean;
 
     setContext('no-paragraph', true);
 
-    const inPolicy = isInsidePolicy();
-    const inChangelog = isInsideChangelog();
+    const inPolicy = isInPolicy();
+    const inChangelog = isInChangelog();
 </script>
 
 <svelte:element
