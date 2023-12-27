@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Announcing the Appwrite OSS Program
-description: Appwrite's newest initiative to support open source projects and their maintainers.
+description: Appwrite's newest initiative to support open-source projects and their maintainers.
 date: 2023-28-12
-cover: images/blog/Blog cover - OSS Program (1).png
+cover: website/static/images/blog/OSS-Progam.png
 timeToRead: 3
 author: laura-du-ry
 category: OSS
