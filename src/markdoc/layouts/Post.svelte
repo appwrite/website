@@ -1,12 +1,13 @@
 <script lang="ts">
+    import { Media } from '$lib/UI';
+    import { scroll } from '$lib/animations';
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
-    import { getContext } from 'svelte';
-    import { scroll } from '$lib/animations';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { getContext } from 'svelte';
 
     export let title: string;
     export let description: string;
@@ -64,7 +65,10 @@
                     <div class="aw-container" style="--container-size:42.5rem">
                         <article class="aw-main-article">
                             <header class="aw-main-article-header">
-                                <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/blog">
+                                <a
+                                    class="aw-link aw-u-color-text-secondary u-cross-baseline"
+                                    href="/blog"
+                                >
                                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
@@ -150,7 +154,7 @@
                             </header>
                             {#if cover}
                                 <div class="aw-media-container">
-                                    <img class="u-block" src={cover} alt="" />
+                                    <Media class="u-block" src={cover} />
                                 </div>
                             {/if}
 
@@ -195,9 +199,7 @@
                 </section>
             </div>
         </div>
-        <div
-                class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden"
-        >
+        <div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
             <div class="aw-container">
                 <Newsletter />
                 <FooterNav />
