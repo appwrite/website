@@ -8,7 +8,7 @@ Appwrite's Storage Service can be configured to store files locally, or with sel
 By default, Appwrite's Storage Service **stores files on your server's local storage**.
 If you expect large volumes of data or the need to have scalable data storage, you may choose to use a separate storage service.
 
-# Available adpters {% #adapters %}
+# Available adapters {% #adapters %}
 Appwrite supports AWS S3, Digital Ocean Spaces, Backblaze, Akamai Object Storage, and Wasabi as storage adapters. 
 Some of these services can be self-hosted, just like Appwrite.
 
