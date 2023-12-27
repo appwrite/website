@@ -4,6 +4,7 @@
 
     export let open = false;
     export let links: NavLink[];
+    export let githubStars: number;
 
     afterNavigate(() => {
         open = false;
@@ -43,7 +44,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">{`${githubStars.toFixed(1)}K`}</span>
             </a>
         </div>
     </div>

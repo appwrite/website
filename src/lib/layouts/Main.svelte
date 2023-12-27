@@ -10,6 +10,8 @@
     export const isMobileNavOpen = writable(false);
 
     const initialized = writable(false);
+
+    export let mainGithubStar = writable(0);
 </script>
 
 <script lang="ts">
@@ -22,9 +24,11 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
+    import { getGitHubStars } from '$lib/utils/gitFetch';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
+    let githubStars: number = 0;
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -78,6 +82,11 @@
 
         return 'dark';
     }
+
+    onMount(async () => {
+        githubStars = await getGitHubStars();
+        mainGithubStar.set(githubStars);
+    });
 
     onMount(() => {
         setTimeout(() => {
@@ -240,7 +249,7 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">{`${githubStars.toFixed(1)}K`}</span>
                 </a>
                 <!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
                 <!--                    >Sign up</a-->
@@ -251,7 +260,7 @@
             </div>
         </div>
     </header>
-    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} githubStars={githubStars} />
 
     <main
         class="aw-main-section"

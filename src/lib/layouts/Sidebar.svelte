@@ -23,7 +23,7 @@
     import { clickOutside } from '$lib/actions/clickOutside';
 
     import Tooltip from '$lib/components/Tooltip.svelte';
-    import { layoutState, toggleSidenav } from './Docs.svelte';
+    import { layoutState, toggleSidenav, sidebarGithubStars } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
     export let expandable = false;
@@ -125,7 +125,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">{$sidebarGithubStars.toFixed(1)}K</span>
             </a>
         </div>
     </div>

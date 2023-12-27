@@ -2,6 +2,8 @@
     import { navigating } from '$app/stores';
     import { writable } from 'svelte/store';
 
+    export let sidebarGithubStars = writable(0);
+
     export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
     export type DocsLayoutState = {
         showReferences: boolean;
@@ -38,10 +40,17 @@
     import Search from '$lib/components/Search.svelte';
 
     import { isMac } from '$lib/utils/platform';
-    import { setContext } from 'svelte';
+    import { onMount, setContext } from 'svelte';
+    import { getGitHubStars } from '$lib/utils/gitFetch';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
+    let githubStars: number = 0;
+
+    onMount(async () => {
+        githubStars = await getGitHubStars();
+        sidebarGithubStars.set(githubStars);
+    });
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'aw-grid-side-nav aw-container u-padding-inline-0',
@@ -167,7 +176,7 @@
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                        <span class="aw-inline-tag aw-sub-body-400">{`$githubStars.toFixed(1)}K`}</span>
                     </a>
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
