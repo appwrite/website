@@ -8,7 +8,7 @@ Appwrite's Storage Service can be configured to store files locally, or with sel
 By default, Appwrite's Storage Service **stores files on your server's local storage**.
 If you expect large volumes of data or the need to have scalable data storage, you may choose to use a separate storage service.
 
-# Available adapters {% #adapters %}
+# Available adapters {% #available-adapters %}
 Appwrite supports AWS S3, Digital Ocean Spaces, Backblaze, Akamai Object Storage, and Wasabi as storage adapters. 
 Some of these services can be self-hosted, just like Appwrite.
 
@@ -18,7 +18,7 @@ You can select which storage adapter to use by setting the `_APP_STORAGE_DEVICE`
 Learn more about storage environment variables 
 {% /arrow_link %}
 
-# Maximum file size {% #adapters %}
+# Maximum file size {% #maximum-file-size %}
 
 The maximum size for a single file upload is controlled by the `_APP_STORAGE_LIMIT` environment variable, which defaults to 30 MB. 
 [Learn more about environment variables](/docs/advanced/self-hosting/environment-variables).
