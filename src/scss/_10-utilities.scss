@@ -178,10 +178,12 @@
   &.is-with-footer-border {
     padding-block:40px;
     &::after {
-      content:""; display:block; block-size:pxToRem(1);
-      inline-size:100vw; position:absolute;
-      inset-inline-start: calc(calc(100vw - 100cqw)/2 * -1 + pxToRem(8));
-      inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
+      @supports (container-type:inline-size) {
+        content:""; display:block; block-size:pxToRem(1);
+        inline-size:100vw; position:absolute;
+        inset-inline-start: calc(calc(100vw - 100cqw)/2 * -1 + pxToRem(8));
+        inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
+      }
     }
   }
 }
