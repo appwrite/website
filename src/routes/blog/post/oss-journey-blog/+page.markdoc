@@ -3,7 +3,7 @@ layout: post
 title: Supporting the future of open-source
 description: A short walk down memory lane to learn about Appwrite’s open-source journey so far and why we owe the community our support.
 date: 2023-12-29
-cover: /images/blog/blog-cover-oss-journey.png
+cover: /images/blog/Blog-cover-oss-journey.png
 timeToRead: 10
 author: laura-du-ry
 category: OSS
@@ -62,8 +62,6 @@ At the time, Eldad put the purpose of the fund into words, and we couldn’t phr
 *‘In the journey of turning your dream project into a reality, all that you need to have is the vision to build an awesome open-source project. The idea behind the fund is to support developers like you and the open-source project you are building.’*
 
 This fund has now come to an end, but we successfully supported twenty OSS maintainers, such as [LinkFree](https://github.com/EddieHubCommunity/BioDrop) (now BioDrop), [Vale](https://github.com/errata-ai/vale), [Rally](https://github.com/lukevella/rallly), and [Strawberry](https://github.com/strawberry-graphql/strawberry/).
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">WOW thank you <a href="https://twitter.com/appwrite?ref_src=twsrc%5Etfw">@appwrite</a> for sponsoring me on GitHub 🚀 <br><br>Did you hear about Appwrite&#39;s $50,000 Open Source fund?<br><br>I applied and just found out I got sponsored to continued contributing to Open Source 🎉 <br><br>Link to apply below... 👇 <a href="https://t.co/RPnCJYxKvx">pic.twitter.com/RPnCJYxKvx</a></p>&mdash; Eddie Jaoude | EddieHub | Open Source GitHub Star (@eddiejaoude) <a href="https://twitter.com/eddiejaoude/status/1640917165711712256?ref_src=twsrc%5Etfw">March 29, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### **Pro Plan for free**
 
