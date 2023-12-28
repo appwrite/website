@@ -116,7 +116,7 @@
                     />
                     <img
                         class="u-only-light"
-                        src="/images/animations/tech-light.png"
+                        src="/images/animations/tech-light-transparent.png"
                         width="660"
                         height="660"
                         alt=""
