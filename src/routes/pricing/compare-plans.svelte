@@ -338,7 +338,7 @@
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
                             <TabsList
-                                class=" aw-u-mobile-divider"
+                                class=" aw-u-mobile-divider aw-u-container-query-inline"
                                 stretch
                                 style="--p-secondary-tabs-bg-color-default: var(--aw-color-white);
 								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
