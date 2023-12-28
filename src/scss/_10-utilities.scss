@@ -189,8 +189,7 @@
 .aw-u-mobile-divider {
   &::after {
     content:""; display:block; block-size:pxToRem(1); padding-block-end:40px;
-    inline-size:200vw; position:absolute; inset-inline-start:pxToRem(-500); inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
-
+    inline-size:100vw; position:absolute; inset-inline-start:calc(calc(100vw - 100cqw)/2 * -1 + pxToRem(8)); inset-block-start:100%; border-block-end: solid 1px hsl(var(--aw-color-smooth));
   }
 }
 
