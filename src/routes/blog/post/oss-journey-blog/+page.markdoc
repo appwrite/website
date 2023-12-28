@@ -3,7 +3,7 @@ layout: post
 title: Supporting the future of open-source
 description: A short walk down memory lane to learn about Appwrite’s open-source journey so far and why we owe the community our support.
 date: 2023-12-29
-cover: /images/blog/blog-cover-oss-journey
+cover: /images/blog/blog-cover-oss-journey.png
 timeToRead: 10
 author: laura-du-ry
 category: OSS
@@ -21,15 +21,15 @@ Let’s take a short walk down memory lane to learn about Appwrite’s open-sour
 
 The [first ever pull request](https://github.com/appwrite/appwrite/pulls?page=105&q=is%3Apr+is%3Aclosed) for Appwrite was submitted in August 2019 by Eldad, Founder and CEO of Appwrite, and not much later, the [first community PR](https://github.com/appwrite/appwrite/pull/2) followed. Contributors kept on coming and helped with code, copy, accessibility, fixing bugs, and more. For Eldad at the time, it was remarkable to witness how devs would help out and expect nothing in return. They wanted to use Appwrite as their backend, so they helped improve Appwrite for themselves and also ensured others would not have to face the challenges of building a complex backend. During this period, Eldad fell in love with open-source and the community around it.
 
-![Eldad's first ever PR for Appwrite](/images/blog/first-pr.png)
+![Eldad's first ever PR for Appwrite](/images/blog/first-pr1.png)
 
 Not much later, Appwrite's [open-source version](https://betterprogramming.pub/introducing-appwrite-an-open-source-backend-server-for-mobile-web-developers-4be70731575d) was launched. The launch went viral, our Hacker News post was trending, and our GitHub Stars charts went up with over 1,500 new stargazers in the first month after release. The love was evident from both sides and together with many contributors, Eldad worked tirelessly as a solo maintainer to build out the product envisioned, ensuring many other developers would not face the same struggles when building complex software. 
 
-![First ever community contribution for Appwrite](/images/blog/community-pr.png)
+![First ever community contribution for Appwrite](/images/blog/community-pr1.png)
 
 Today, Appwrite has over [38K stars, 800 contributors, 3.5K forks, and thousands of contributions](https://github.com/appwrite/appwrite) made, all with the help, support, and love of the open-source community.
 
-![The number of contributions over the years](/images/blog/contributions.png)
+![The number of contributions over the years](/images/blog/contributions-2023.png)
 
 ### **Pre-monetization as a solo maintainer**
 
