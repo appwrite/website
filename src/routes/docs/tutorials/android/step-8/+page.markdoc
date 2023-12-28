@@ -1,0 +1,11 @@
+---
+layout: tutorial
+title: Next steps
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 8
+difficulty: beginner
+---
+
+# Test your project {% #test-your-project %}
+
+Run your project with **Run 'app'** button, or hit **Shift+F10** in Android Studio.
