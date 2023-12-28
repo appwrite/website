@@ -27,6 +27,7 @@
   &-wrapper {
     display:flex; flex-direction:column; block-size:100%; gap:pxToRem(16);
     padding:pxToRem(16); padding-block-end:pxToRem(32);
+    background-color:hsl(var(--p-side-nav-bg-color));
     transition:var(--transition);
 
     &-parent {
