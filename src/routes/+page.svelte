@@ -376,7 +376,6 @@
                                 />
                                 <h3 class="aw-info-boxes-title">
                                     <span>GDPR</span>
-                                    <span class="aw-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="aw-info-boxes-content">
                                     Safeguard user data and privacy with provided GDPR regulations.
