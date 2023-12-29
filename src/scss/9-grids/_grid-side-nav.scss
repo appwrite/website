@@ -33,7 +33,7 @@
       .#{$p}-hero:first-child {
         margin-block-start:pxToRem(100); margin-block-end:pxToRem(80);
       }
-      > *:not(:first-child) { margin-block-start:pxToRem(160); }
+      > *:not(:first-child):where(:not(.u-position-absolute)) { margin-block-start:pxToRem(160); }
     }
   }
   @media #{$break3open} {
