@@ -81,7 +81,7 @@
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="aw-hero is-align-start u-position-relative">
+        <section class="aw-hero is-align-start u-position-relative e-hero-docs">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
                 Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
                     >_
@@ -407,6 +407,12 @@
 </Docs>
 
 <style lang="scss">
+
+    .e-hero-docs {
+      @media (min-width:1280px) {
+        margin-block-start:7rem;
+      }
+    }
     .aw-main-section {
         max-inline-size: unset;
         margin-inline: unset;
