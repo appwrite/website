@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Supporting the future of open-source
+title: Supporting the future of open source
 description: A short walk down memory lane to learn about Appwrite’s open-source journey so far and why we owe the community our support.
 date: 2023-12-29
 cover: /images/blog/Blog-cover-oss-journey.png
@@ -27,7 +27,7 @@ Not much later, Appwrite's [open-source version](https://betterprogramming.pub/i
 
 ![First ever community contribution for Appwrite](/images/blog/community-pr1.png)
 
-Today, Appwrite has over [38K stars, 800 contributors, 3.5K forks, and thousands of contributions](https://github.com/appwrite/appwrite) made, all with the help, support, and love of the open-source community.
+Today, Appwrite has over [38K stars](https://github.com/appwrite/appwrite), 800 contributors, 3.5K forks, and thousands of contributions made, all with the help, support, and love of the open-source community.
 
 ![The number of contributions over the years](/images/blog/contributions-2023.png)
 
