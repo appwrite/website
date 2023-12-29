@@ -14,6 +14,10 @@
 
     type $$Props = TicketProps;
     $: ({ name, user, id, showGithub, tribe } = $$props as $$Props);
+
+    function randomRange(min: number, max: number) {
+        return Math.random() * (max - min) + min;
+    }
 </script>
 
 <div class="ticket">
@@ -31,6 +35,16 @@
     {#if tribe}
         <img class="tribe" src={`/images/tribes/${tribe.toLowerCase()}.svg`} alt={tribe} />
     {/if}
+
+    <div class="github">
+        {#each { length: 100 } as _, i}
+            <div class="row">
+                {#each { length: 7 } as _, j}
+                    <div style:--index={7 - j} style:opacity={randomRange(0, 1)} />
+                {/each}
+            </div>
+        {/each}
+    </div>
 </div>
 
 <style lang="scss">
@@ -41,6 +55,7 @@
         padding: 2rem;
         padding-block-start: 3.5rem;
         position: relative;
+        border-radius: 1rem;
         overflow: hidden;
     }
 
@@ -95,5 +110,38 @@
         /* Make it white */
         filter: brightness(0) invert(1);
         opacity: 0.04;
+    }
+
+    @keyframes fade-in {
+        from {
+            background-color: transparent;
+        }
+        to {
+            background-color: hsl(var(--aw-color-accent));
+        }
+    }
+
+    .github {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+
+        mask-image: linear-gradient(to left, hsl(240, 3, 14), transparent);
+
+        .row {
+            display: flex;
+            gap: 0.25rem;
+
+            div {
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 0.125rem;
+                animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + 700ms) forwards;
+            }
+        }
     }
 </style>
