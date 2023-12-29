@@ -29,7 +29,7 @@
         },
         {
             question: 'How can I join the OSS program?',
-            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="aw-link is-inline" href="/blog/post/announcing-appwrite-pro">announcement blog</a>.`
+            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="aw-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
         },
         {
             question: 'I have a Starter plan account. How do I upgrade to a paid plan?',
