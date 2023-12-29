@@ -51,15 +51,15 @@ As we grew, so did our team, and we added many more engineers to the team. Many 
 
 ### **Appwrite Swag Store**
 
-Another way we ensure funds from the community go back to the community is by giving back the money we earn on swags. For every shirt, hoodie, bag, or sock we sell from the [Appwrite store](https://appwrite.store/), we give back the profit made. In general, we believe swag should be there for the community, not to line our pockets. And in case you haven’t seen it yet, we have a special edition [Appwrite Pro zipper hoodie](https://twitter.com/appwrite/status/1738237605706145823) for grabs.
-
-### **OSS Fund**
+Another way we ensure funds from the community go back to the community is by giving back the money we earn on swags. For every shirt, hoodie, bag, or sock we sell from the [Appwrite store](https://appwrite.store/), we give back the profit made. In general, we believe swag should be there for the community, not to line our pockets.
 
 We always knew that if we're ever fortunate enough to be in a position to give back funds to the community, we'd never think twice about it. And with our Series A, we were in that position. In 2022 we announced the Appwrite OSS Fund, a $50,000 fund to support open-source projects.
 
 At the time, Eldad put the purpose of the fund into words, and we couldn’t phrase it any better:
 
+blockquote {
 *‘In the journey of turning your dream project into a reality, all that you need to have is the vision to build an awesome open-source project. The idea behind the fund is to support developers like you and the open-source project you are building.’*
+}
 
 This fund has now come to an end, but we successfully supported twenty OSS maintainers, such as [LinkFree](https://github.com/EddieHubCommunity/BioDrop) (now BioDrop), [Vale](https://github.com/errata-ai/vale), [Rally](https://github.com/lukevella/rallly), and [Strawberry](https://github.com/strawberry-graphql/strawberry/).
 
