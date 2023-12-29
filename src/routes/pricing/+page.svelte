@@ -30,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
+<div class="u-position-absolute u-overflow-hidden aw-location-for-mobile" style="pointer-events:none; inline-size:100%;">
     <enhanced:img
         src={BG}
         alt=""
@@ -284,3 +284,10 @@
         </div>
     </div>
 </Main>
+
+
+<style lang="scss">
+  @media (min-width:360px) and (max-width:550px) {
+    .aw-location-for-mobile { inset-block-start:90px; }
+  }
+</style>
