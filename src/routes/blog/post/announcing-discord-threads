@@ -1,0 +1,30 @@
+---
+layout: post
+title: Introducing Support threads: your gateway to community wisdom
+description: Announcing our latest feature Discord Threads. An improved way to find answers to your questions.
+date: 2024-01-05
+cover: /images/blog/changelog.png
+timeToRead: 3
+author: sara-kaandorp
+category: product
+---
+
+Imagine you're deep into building your dream application with Appwrite, and suddenly, you hit a roadblock – a puzzling bug or a tricky configuration issue. At times like these, your go-to support is the Appwrite Discord server, your connection to the developer community.
+
+Discord servers like ours serve as invaluable spaces where developers gather to share experiences, ask questions, and find solutions. But here's the challenge: valuable answers often get buried in endless message threads, making finding what you need feel like searching for a needle in a haystack.
+
+At Appwrite, we value your time and understand that your journey should be as smooth as possible. Our focus has always been on delivering solutions that enhance your experience with Appwrite, throughout the entire developer journey.
+
+### Discord thread indexing
+
+So, we embarked on a mission to address this challenge – the issue of buried wisdom and time-consuming searches. We designed a dedicated page on our website that displays support threads within our Discord server. This page allows you to quickly find the answers you seek.
+
+### AI assistant
+
+We know that even after finding the right thread, reading through a conversation can be time-consuming. That's why we've integrated our AI assistant into the page. The AI assistant gives you concise summaries of these threads, highlighting the essential insights and solutions. It's like having a personal assistant to sift through the information for you.
+
+### A journey with you in mind
+
+Our commitment to you goes beyond providing a robust backend service. We're here to ensure that your experience with Appwrite is frustration-free and productive. We believe that by making information more accessible and digestible, we can empower you to build your dream applications.
+
+Take a closer look at this new addition and don't hesitate to tell us your thoughts. Your feedback is what drives new ideas, and we're looking forward to hearing about your experiences.
