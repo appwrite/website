@@ -2,9 +2,11 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
+    import { fade, fly, scale, type TransitionConfig } from 'svelte/transition';
     import ShineSVG from '../../(assets)/shine.svg';
     import Ticket from './ticket.svelte';
     import TribeToggle from './tribe-toggle.svelte';
+    import { quadIn, quadInOut, quadOut } from 'svelte/easing';
 
     let name = 'Eldad Fux';
 
@@ -29,6 +31,29 @@
         'NET'
     ];
     let tribe: string | null = null;
+
+    function toScale(value: number, from: [number, number], to: [number, number]) {
+        const [fromMin, fromMax] = from;
+        const [toMin, toMax] = to;
+
+        const fromRange = fromMax - fromMin;
+        const toRange = toMax - toMin;
+        const scale = toRange / fromRange;
+
+        return (value - fromMin) * scale + toMin;
+    }
+
+    function ticketOut(node: HTMLElement): TransitionConfig {
+        // Scale from 1 to 0.75, from opacity 1 to 0.5
+        return {
+            duration: 500,
+            css: (t) => `
+                transform: scale(${toScale(t, [0, 1], [0.9, 1])});
+                opacity: ${toScale(t, [0, 1], [0.25, 1])};
+            `,
+            easing: quadOut
+        };
+    }
 </script>
 
 <svelte:head>
@@ -91,7 +116,15 @@
             </div>
         </div>
         <div class="ticket-preview">
-            <Ticket {name} user="eldadfux" id="abc1234" {tribe} />
+            {#key tribe}
+                <div
+                    class="ticket-holder"
+                    in:fly={{ y: -100, delay: 400, duration: 500, easing: quadOut }}
+                    out:ticketOut
+                >
+                    <Ticket {name} user="eldadfux" id="0013371" {tribe} />
+                </div>
+            {/key}
             <img class="shine" src={ShineSVG} alt="" />
         </div>
     </div>
@@ -125,6 +158,13 @@
 
         display: grid;
         place-items: center;
+
+        .ticket-holder {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+        }
 
         .shine {
             position: absolute;
