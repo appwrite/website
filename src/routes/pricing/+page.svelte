@@ -244,14 +244,14 @@
                                     </h3>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    We support OSS maintainers with a free Pro Plan. Get in touch to
-                                    find out more.
+                                    We support OSS maintainers with a free Pro Plan. Read our announcement blog
+                                    to find out more.
                                 </p>
                                 <a
-                                    href="/contact-us"
+                                    href="/blog/post/announcing-appwrite-pro"
                                     class="aw-button is-secondary u-margin-block-start-32"
                                 >
-                                    <span>Contact us</span>
+                                    <span>Learn more</span>
                                 </a>
                             </article>
                         </li>
