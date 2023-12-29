@@ -410,7 +410,7 @@
 
     .e-hero-docs {
       @media (min-width:1280px) {
-        margin-block-start:7rem;
+        margin-block-start:5rem;
       }
     }
     .aw-main-section {
