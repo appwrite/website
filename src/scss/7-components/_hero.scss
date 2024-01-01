@@ -7,11 +7,6 @@
   display:flex; flex-direction:column; gap:var(--p-hero-gap); text-align:center;
   max-inline-size:var(--p-hero-max-inline-size); margin-inline:auto;
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
-
-  :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
-    color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8);
-  }
-
   .#{$p}-description { margin-block-start:pxToRem(20); color:hsl(var(--aw-color-secondary)); }
 
   &.is-align-start {
