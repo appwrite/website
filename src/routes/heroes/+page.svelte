@@ -460,7 +460,6 @@
     }
 
     :global([data-animated]).scroll-carousel {
-        width: max-content;
         overflow: hidden;
 
         .inner {

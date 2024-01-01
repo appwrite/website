@@ -7,7 +7,7 @@ import sequence from 'svelte-sequential-preprocessor';
 import staticAdapter from '@sveltejs/adapter-static';
 import nodeAdapter from '@sveltejs/adapter-node';
 
-function absoulute(path) {
+function absolute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
 }
 
@@ -23,17 +23,18 @@ const config = {
         vitePreprocess(),
         markdoc({
             generateSchema: true,
-            nodes: absoulute('./src/markdoc/nodes/_Module.svelte'),
-            tags: absoulute('./src/markdoc/tags/_Module.svelte'),
-            partials: absoulute('./src/partials'),
+            nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
+            tags: absolute('./src/markdoc/tags/_Module.svelte'),
+            partials: absolute('./src/partials'),
             layouts: {
-                default: absoulute('./src/markdoc/layouts/Article.svelte'),
-                article: absoulute('./src/markdoc/layouts/Article.svelte'),
-                tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
-                post: absoulute('./src/markdoc/layouts/Post.svelte'),
-                author: absoulute('./src/markdoc/layouts/Author.svelte'),
-                category: absoulute('./src/markdoc/layouts/Category.svelte'),
-                policy: absoulute('./src/markdoc/layouts/Policy.svelte')
+                default: absolute('./src/markdoc/layouts/Article.svelte'),
+                article: absolute('./src/markdoc/layouts/Article.svelte'),
+                tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
+                post: absolute('./src/markdoc/layouts/Post.svelte'),
+                author: absolute('./src/markdoc/layouts/Author.svelte'),
+                category: absolute('./src/markdoc/layouts/Category.svelte'),
+                policy: absolute('./src/markdoc/layouts/Policy.svelte'),
+                changelog: absolute('./src/markdoc/layouts/Changelog.svelte')
             }
         }),
         preprocessMeltUI()
@@ -52,6 +53,9 @@ const config = {
             $icons: './src/icons',
             $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
+        },
+        prerender: {
+            handleHttpError: 'warn'
         }
     }
 };

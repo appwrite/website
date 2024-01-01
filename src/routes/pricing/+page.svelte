@@ -30,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute u-overflow-hidden" style="pointer-events:none; inline-size:100%;">
+<div class="u-position-absolute u-overflow-hidden aw-location-for-mobile" style="pointer-events:none; inline-size:100%;">
     <enhanced:img
         src={BG}
         alt=""
@@ -244,14 +244,14 @@
                                     </h3>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    We support OSS maintainers with a free Pro Plan. Get in touch to
-                                    find out more.
+                                    We support OSS maintainers with a free Pro Plan. Read our announcement blog
+                                    to find out more.
                                 </p>
                                 <a
-                                    href="/contact-us"
+                                    href="/blog/post/announcing-appwrite-pro"
                                     class="aw-button is-secondary u-margin-block-start-32"
                                 >
-                                    <span>Contact us</span>
+                                    <span>Learn more</span>
                                 </a>
                             </article>
                         </li>
@@ -284,3 +284,10 @@
         </div>
     </div>
 </Main>
+
+
+<style lang="scss">
+  @media (min-width:360px) and (max-width:550px) {
+    .aw-location-for-mobile { inset-block-start:90px; }
+  }
+</style>
