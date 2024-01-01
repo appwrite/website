@@ -35,8 +35,9 @@
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Community', href: '/community' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Changelog', href: '/changelog' },
                 { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Source code',
@@ -52,8 +53,8 @@
                 }
             ],
             About: [
-                { label: 'Pricing', href: '/pricing' },
                 { label: 'Company', href: '/company' },
+                { label: 'Pricing', href: '/pricing' },
                 {
                     label: 'Careers',
                     href: 'https://appwrite.careers',
@@ -69,7 +70,6 @@
                 },
                 { label: 'Contact us', href: '/contact-us' },
                 { label: 'Assets', href: '/assets' },
-                { label: 'Changelog', href: '/changelog' }
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },
