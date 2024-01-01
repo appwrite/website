@@ -2,10 +2,10 @@
 
 .#{$p}-grid-4-6 {
   > * { min-inline-size:0; }
-  @media #{$break1}, #{$break2} {
+  @media #{$break1}, #{$break2}, #{$break3} {
     display:flex; flex-direction:column; gap:pxToRem(64);
   }
-  @media #{$break3open} {
+  @media #{$break4open} {
     display:grid; grid-template-columns:4fr 6fr; gap:pxToRem(80);
   }
 }

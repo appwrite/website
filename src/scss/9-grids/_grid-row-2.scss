@@ -3,8 +3,8 @@
 .#{$p}-grid-row-2 {
   display:grid; gap:pxToRem(32);
   li > * { min-block-size:100%; }
-  @media #{$break1} {}
-  @media #{$break2open} {
+  @media #{$break1}, #{$break2} {}
+  @media #{$break3open} {
     grid-template-columns: repeat(2, 1fr);
   }
 }

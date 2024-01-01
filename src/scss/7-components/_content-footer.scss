@@ -6,12 +6,12 @@
   &-header {
     display:flex; justify-content:space-between;
     &-start { display:flex; gap:pxToRem(16); }
-    @media #{$break1} { flex-direction:column-reverse; gap:pxToRem(32); }
-    @media #{$break2open} { justify-items:center; gap:pxToRem(16); }
+    @media #{$break1}, #{$break2} { flex-direction:column-reverse; gap:pxToRem(32); }
+    @media #{$break3open} { justify-items:center; gap:pxToRem(16); }
   }
 
   .#{$p}-card {
-    @media #{$break1} { margin-block-start:pxToRem(16); }
-    @media #{$break2open} { margin-block-start:pxToRem(32); }
+    @media #{$break1}, #{$break2} { margin-block-start:pxToRem(16); }
+    @media #{$break3open} { margin-block-start:pxToRem(32); }
   }
 }

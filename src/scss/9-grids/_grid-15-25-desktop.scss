@@ -2,10 +2,10 @@
 
 .#{$p}-grid-15-25-desktop {
   display:flex;
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     flex-direction:column;
   }
-  @media #{$break2open} {
+  @media #{$break3open} {
     >:nth-child(1) {flex:1.5; }
     >:nth-child(2) {flex:2.5; }
   }

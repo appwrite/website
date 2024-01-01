@@ -12,7 +12,7 @@
   letter-spacing: var(--p-letter-spacing);
   font-weight: var(--p-font-weight);
 
-  @media #{$break2open} {
+  @media #{$break3open} {
     --p-font-size: var(--aw-font-size-giant);
     --p-line-height: var(--aw-line-height-xxxxl);
   }

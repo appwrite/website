@@ -22,7 +22,7 @@
 
   .#{$p}-main-header-wrapper { max-inline-size:none; }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     --p-grid-huge-navs-padding-inline: #{pxToRem(20)};
     padding-inline:var(--p-grid-huge-navs-padding-inline);
     .#{$p}-mobile-header { margin-inline: calc(var(--p-grid-huge-navs-padding-inline) * -1); }
@@ -34,13 +34,13 @@
     .#{$p}-references-menu { display:none!important; }
   }
 
-  @media #{$break1}, #{$break2}, #{$break6open} {
+  @media #{$break1}, #{$break2}, #{$break3}, #{$break7open} {
     .#{$p}-side-nav {
       .#{$p}-icon-button {display:none; }
     }
   }
 
-  @media #{$break2} {
+  @media #{$break3} {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:  "a-header a-header"
@@ -56,7 +56,7 @@
     }
   }
 
-  @media #{$break2}, #{$break3}, #{$break4} {
+  @media #{$break3}, #{$break4}, #{$break5} {
     .#{$p}-references-menu {
       #refOpen { position:sticky; inset-block-start:pxToRem(213); }
       &-content {
@@ -77,7 +77,7 @@
     }
   }
 
-  @media #{$break2open} {
+  @media #{$break3open} {
     .#{$p}-side-nav-wrapper { border-inline-end:solid pxToRem(1) hsl(var(--aw-color-border)); }
     .#{$p}-article {
       &-header  {
@@ -97,7 +97,7 @@
       &-content { position:sticky; inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position); }
     }
   }
-  @media #{$break3open} {
+  @media #{$break4open} {
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto 1fr auto; /* header article-header content footer */
@@ -105,7 +105,7 @@
                           "side-a main side-b"
                           "side-a footer footer";
   }
-  @media #{$break3}, #{$break4}, #{$break5} {
+  @media #{$break4}, #{$break5}, #{$break6} {
     .#{$p}-side-nav {
       max-inline-size:var(--p-grid-huge-navs-side-nav-width-closed);
       &-wrapper {
@@ -135,7 +135,7 @@
       }
     }
   }
-  @media #{$break5open} {
+  @media #{$break6open} {
     .#{$p}-references-menu {
       #refOpen, #refClose { display:none; }
       &-content {
@@ -144,7 +144,7 @@
       }
     }
   }
-  @media #{$break6open} {
+  @media #{$break7open} {
     .#{$p}-side-nav {
       inline-size:var(--p-grid-huge-navs-side-nav-width-opened);
       &-wrapper { padding-block:0; }

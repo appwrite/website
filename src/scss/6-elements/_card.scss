@@ -95,7 +95,7 @@
     }
   }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     --p-card-padding: var(--card-padding-mobile, #{pxToRem(24)});
   }
 }

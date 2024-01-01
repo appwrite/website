@@ -13,7 +13,7 @@
   font-weight: var(--p-font-weight);
   text-transform: none; /* optional */
 
-  @media #{$break2open} {
+  @media #{$break3open} {
     --p-font-size: var(--aw-font-size-medium);
     --p-line-height: var(--aw-line-height-sm);
     --p-letter-spacing: var(--aw-letter-spacing-tight);

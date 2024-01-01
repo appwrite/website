@@ -21,7 +21,7 @@
   &-scroll {
     border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--aw-color-smooth));
     overflow-x:auto;
-    @media #{$break1} {
+    @media #{$break1}, #{$break2} {
       min-inline-size: calc(100vw - #{pxToRem(32)});
       border-start-end-radius:0;
       border-end-end-radius:0;

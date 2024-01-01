@@ -7,12 +7,12 @@
   --p-column-gap-desktop: var(--column-gap-desktop, #{pxToRem(32)});
   --p-row-gap-desktop: var(--row-gap-desktop, #{pxToRem(48)});
   display: grid;
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     grid-template-columns: repeat(2, 1fr);
     column-gap: var(--p-column-gap-mobile);
     row-gap: var(--p-row-gap-mobile);
   }
-  @media #{$break2open} {
+  @media #{$break3open} {
     grid-template-columns: repeat(4, 1fr);
     column-gap: var(--p-column-gap-desktop);
     row-gap: var(--p-row-gap-desktop);

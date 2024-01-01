@@ -4,10 +4,10 @@
   &-header  { padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--aw-color-border)); }
   &-content { display:flex; flex-direction:column; gap:pxToRem(20); padding-block-start:pxToRem(32); }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     &-list { display:flex; flex-direction:column; gap:pxToRem(32); }
   }
-  @media #{$break2open} {
+  @media #{$break3open} {
     &-list { display:grid; grid-template-columns:repeat(3, 1fr); gap:pxToRem(32); }
   }
 }
