@@ -22,7 +22,7 @@
                 </li>
             {/each}
         </ul>
-        <div>Copyright © 2023 Appwrite</div>
+        <div>Copyright © 2024 Appwrite</div>
     </footer>
 {:else if variant === 'docs'}
     <footer
@@ -61,7 +61,7 @@
 				</li> -->
             </ul>
             <div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
-                Copyright © 2023 Appwrite
+                Copyright © 2024 Appwrite
             </div>
         </div>
     </footer>
