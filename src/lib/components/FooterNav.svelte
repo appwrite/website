@@ -38,7 +38,6 @@
                 { label: 'Community', href: '/community' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
-                { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
