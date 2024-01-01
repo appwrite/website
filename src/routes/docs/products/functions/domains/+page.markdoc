@@ -1,0 +1,20 @@
+---
+layout: article
+title: Deployment
+description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
+---
+
+# Domains {% #domains %} 
+
+Each deployed function can have its own domain. By default, one is generated for each of your functions.
+
+To find or add a domain:
+
+1. Navigate to the Appwrite Console's **Functions** page.
+2. Navigate to the **Domains** tab.
+3. Click on **Create domain**.
+4. Input your domain and click **Next**.
+5. Copy the **CNAME** record and add it to your domain registrar.
+6. Click **Go to console** and wait for verification and certificate generation.
+
+DNS records can take up to 48 hours to propagate.
