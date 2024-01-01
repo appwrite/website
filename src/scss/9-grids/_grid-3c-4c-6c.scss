@@ -2,9 +2,9 @@
 
 .#{$p}-grid-3c-4c-6c {
   display: grid;
-  @media #{$break1}     { grid-template-columns: repeat(3, 1fr); gap:pxToRem(20); }
-  @media #{$break2}     { grid-template-columns: repeat(4, 1fr); column-gap:pxToRem(20); row-gap:pxToRem(40); }
-  @media #{$break3open} { grid-template-columns: repeat(6, 1fr); column-gap:pxToRem(20); row-gap:pxToRem(40); }
+  @media #{$break1}     { grid-template-columns: repeat(3, 1fr); gap:pxToRem(40); }
+  @media #{$break2}     { grid-template-columns: repeat(4, 1fr); column-gap:pxToRem(40); row-gap:pxToRem(40); }
+  @media #{$break3open} { grid-template-columns: repeat(6, 1fr); column-gap:pxToRem(40); row-gap:pxToRem(40); }
 
   &.is-for-logos {
     text-align:center;
