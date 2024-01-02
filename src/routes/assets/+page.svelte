@@ -9,6 +9,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
+    import Copy from './Copy.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -346,13 +347,7 @@
                                     <h3 class="aw-label">Light Grey</h3>
                                     <p class="aw-caption-400">#EDEDF0</p>
                                     <div class="buttons | theme-light">
-                                        <button
-                                            class="aw-button is-secondary"
-                                            on:click={() => copy('#EDEDF0')}
-                                        >
-                                            <span class="aw-icon-copy" aria-label="copy" />
-                                            <span>Copy</span>
-                                        </button>
+                                        <Copy toCopy="#EDEDF0" />
                                     </div>
                                 </div>
                                 <div
@@ -364,13 +359,7 @@
                                     <h3 class="aw-label">Dark Grey</h3>
                                     <p class="aw-caption-400">#19191D</p>
                                     <div class="buttons">
-                                        <button
-                                            class="aw-button is-secondary"
-                                            on:click={() => copy('#19191D')}
-                                        >
-                                            <span class="aw-icon-copy" aria-label="copy" />
-                                            <span>Copy</span>
-                                        </button>
+                                        <Copy toCopy="#19191D" />
                                     </div>
                                 </div>
                                 <div
@@ -382,17 +371,7 @@
                                     <h3 class="aw-label">Appwrite Pink</h3>
                                     <p class="aw-caption-400">#FD366E</p>
                                     <div class="buttons">
-                                        <button
-                                            class="aw-button is-secondary"
-                                            on:click={() => copy('#FD366E')}
-                                        >
-                                            <span
-                                                class="aw-icon-copy"
-                                                aria-label="copy"
-                                                style="color: white;"
-                                            />
-                                            <span>Copy</span>
-                                        </button>
+                                        <Copy toCopy="#FD366E" />
                                     </div>
                                 </div>
                             </div>
