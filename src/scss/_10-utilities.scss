@@ -210,14 +210,14 @@
 
 /* functional */
 .#{$p}-is-mobile-closed {
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     display:none!important;
   }
 }
 
 /* responsive global state classes */
 .#{$p}-is-only-mobile {
-  @media #{$break2open} { display:none!important; }
+  @media #{$break3open} { display:none!important; }
 }
 
 .#{$p}-is-only-tablet {
@@ -229,7 +229,7 @@
 }
 
 .#{$p}-is-not-mobile {
-  @media #{$break1} { display:none!important; }
+  @media #{$break1}, #{$break2} { display:none!important; }
 }
 
 .#{$p}-is-not-desktop {
