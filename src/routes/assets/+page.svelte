@@ -3,7 +3,6 @@
     import TocNav from '$lib/components/TocNav.svelte';
     import TocRoot from '$lib/components/TocRoot.svelte';
     import { Main } from '$lib/layouts';
-    import { copy } from '$lib/utils/copy';
 
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
