@@ -7,12 +7,12 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
+    import SeoOgImage from '$lib/components/SeoOgImage.svelte';
 
     export let data;
 
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
 <svelte:head>
@@ -24,12 +24,10 @@
     <meta name="description" content={data.seo_description ?? description} />
     <meta property="og:description" content={data.seo_description ?? description} />
     <meta name="twitter:description" content={data.seo_description ?? description} />
-    <!-- Image -->
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <SeoOgImage
+        title={data.title.substring(0, 64)}
+        description={data.seo_description?.substring(0, 128) ?? ''}
+    />
 </svelte:head>
 
 <Main>
@@ -77,19 +75,23 @@
                                 >
                                     TL;DR
                                 </span>
-                                {#await data.streamed.tldr}
-                                    <div class="dots" aria-label="loading">
-                                        {#each { length: 3 } as _, i}
-                                            <div
-                                                class="dot"
-                                                aria-hidden="true"
-                                                style:--p-index={i}
-                                            />
-                                        {/each}
-                                    </div>
-                                {:then res}
-                                    {res}
-                                {/await}
+                                {#if data.tldr}
+                                    {data.tldr}
+                                {:else}
+                                    {#await data.streamed.tldr}
+                                        <div class="dots" aria-label="loading">
+                                            {#each { length: 3 } as _, i}
+                                                <div
+                                                    class="dot"
+                                                    aria-hidden="true"
+                                                    style:--p-index={i}
+                                                />
+                                            {/each}
+                                        </div>
+                                    {:then res}
+                                        {res}
+                                    {/await}
+                                {/if}
                             </div>
                         {/if}
                     </MessageCard>
