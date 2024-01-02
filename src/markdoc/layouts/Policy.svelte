@@ -87,7 +87,7 @@
                 <TocNav />
                 <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
                     <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
-                        <!-- eslint-disable-next-line svelte/valid-compile -->
+                        <!-- svelte-ignore a11y-hidden -->
                         <h2 aria-hidden="true">Introduction</h2>
                         <slot />
                     </div>
@@ -107,11 +107,5 @@
 
     .toc-btn {
         transition: translate 0.3s ease;
-    }
-
-    @media screen and (max-width: 1023px) {
-        .aw-page-steps {
-            margin-block-start: 2rem;
-        }
     }
 </style>
