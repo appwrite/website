@@ -1,9 +1,10 @@
 import {
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
-    PUBLIC_APPWRITE_DB_MAIN_ID
+    PUBLIC_APPWRITE_DB_MAIN_ID,
+    PUBLIC_APPWRITE_FN_TLDR_ID
 } from '$env/static/public';
-import { databases } from '$lib/appwrite';
+import { databases, functions } from '$lib/appwrite';
 import { Query } from 'appwrite';
 import type { DiscordMessage, DiscordThread } from './types';
 
@@ -105,4 +106,20 @@ export async function getThreadMessages(threadId: string) {
     );
 
     return data.documents as unknown as DiscordMessage[];
+}
+
+export async function getThreadTldr(thread: DiscordThread) {
+    if (thread.tldr) return thread.tldr;
+
+    const execution = await functions.createExecution(
+        PUBLIC_APPWRITE_FN_TLDR_ID,
+        JSON.stringify({ thread_id: thread.$id }),
+        false,
+        '/',
+        'GET'
+    );
+
+    console.log(execution);
+
+    return 'PLACEHOLDER';
 }

@@ -79,7 +79,19 @@
                                 >
                                     TL;DR
                                 </span>
-                                {data.tldr}
+                                {#await data.streamed.tldr}
+                                    <div class="dots" aria-label="loading">
+                                        {#each { length: 3 } as _, i}
+                                            <div
+                                                class="dot"
+                                                aria-hidden="true"
+                                                style:--p-index={i}
+                                            />
+                                        {/each}
+                                    </div>
+                                {:then res}
+                                    {res}
+                                {/await}
                             </div>
                         {/if}
                     </MessageCard>
@@ -223,6 +235,35 @@
                 }
             }
         }
+    }
+
+    @keyframes dot {
+        0% {
+            translate: 0 0;
+        }
+        37% {
+            translate: 0 -0.25rem;
+        }
+        75% {
+            translate: 0 0;
+        }
+    }
+
+    .dots {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        margin-block-start: 0.5rem;
+    }
+
+    .dot {
+        --p-size: 0.375rem;
+        animation: dot 1000ms linear calc(var(--p-index) * 150ms) infinite;
+        width: var(--p-size);
+        height: var(--p-size);
+        border-radius: 100%;
+        background-color: white;
     }
 
     @media #{$break1} {
