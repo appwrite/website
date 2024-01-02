@@ -1,15 +1,11 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { highlight } from '$lib/actions/highlight';
-    import { createSearchParams } from '$lib/stores/searchParams';
     import type { MockThread } from './types';
 
     export let thread: MockThread;
 
-    const searchParams = createSearchParams();
-
-    $: highlightTerms = $searchParams.get('q')?.split(' ') ?? [];
-
-    $: console.log($searchParams);
+    $: highlightTerms = $page.url.searchParams.get('q')?.split(' ') ?? [];
 </script>
 
 {#key highlightTerms}
@@ -25,9 +21,9 @@
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">
             <ul class="u-flex u-gap-8">
-                  <li>
-                      <div class="aw-tag">Flutter</div>
-                  </li>
+                <li>
+                    <div class="aw-tag">Flutter</div>
+                </li>
                 <li>
                     <div class="aw-tag">Self hosted</div>
                 </li>
@@ -36,29 +32,18 @@
             <ul class="u-flex u-gap-8">
                 <li>
                     <div class="aw-icon-button is-more-content" aria-label="up votes">
-                        <span class="aw-icon-arrow-up" aria-hidden="true"></span>
+                        <span class="aw-icon-arrow-up" aria-hidden="true" />
                         <span class="aw-caption-400 aw-u-line-height-1-2">4</span>
                     </div>
                 </li>
                 <li>
                     <div class="aw-icon-button is-more-content" aria-label="responds">
-                        <span class="aw-icon-discord" aria-hidden="true" style="font-size:1rem"></span>
+                        <span class="aw-icon-discord" aria-hidden="true" style="font-size:1rem" />
                         <span class="aw-caption-400 aw-u-line-height-1-2">4</span>
                     </div>
                 </li>
             </ul>
         </div>
-
-        <!--
-            <h4 class="aw-eyebrow">Replies</h4>
-            <div class="replies">
-                {#each thread.replies as reply}
-                    <div class="reply">
-                        <p class="aw-caption-400" use:highlight={highlightTerms}>{reply.text}</p>
-                    </div>
-                {/each}
-            </div>
-        -->
     </a>
 {/key}
 
@@ -73,24 +58,5 @@
 
     h3 {
         margin-block-end: 0.25rem;
-    }
-
-    h4 {
-        margin-block-start: 1rem;
-    }
-
-    .replies {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        margin-block-start: 0.5rem;
-    }
-
-    .reply {
-        padding: 0.25rem 1rem;
-
-        border-inline-start: 1px solid hsl(var(--aw-color-greyscale-500));
-        margin-inline-start: 0.5rem;
     }
 </style>
