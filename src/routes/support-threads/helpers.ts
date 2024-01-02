@@ -54,7 +54,6 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
         const rank = foundWords.size * rankPerWord;
 
         if (rank > 0) {
-            console.log(item.title, foundWords);
             res.push({
                 data: item,
                 rank
@@ -118,8 +117,6 @@ export async function getThreadTldr(thread: DiscordThread) {
         '/',
         'GET'
     );
-
-    console.log(execution);
 
     return 'PLACEHOLDER';
 }

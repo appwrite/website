@@ -13,8 +13,6 @@
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    $: console.log({ data });
 </script>
 
 <svelte:head>
