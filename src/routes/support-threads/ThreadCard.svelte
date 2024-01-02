@@ -1,6 +1,5 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
-    import SvelteMarkdown from 'svelte-markdown';
     import type { DiscordThread } from './types';
 
     export let thread: DiscordThread;
@@ -21,14 +20,6 @@
             <!-- <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>
 
-        <!-- <div class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>
-            <SvelteMarkdown
-                source={thread.content.length > 200
-                    ? thread.content.slice(0, 200) + '...'
-                    : thread.content}
-            />
-        </div> -->
-
         <p class="aw-main-body-500 u-margin-block-start-4" use:highlight={highlightTerms}>
             {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
         </p>
@@ -48,9 +39,7 @@
                 style:pointer-events="none"
             >
                 <span class="aw-icon-message" aria-hidden="true" style="font-size:1rem" />
-                <span class="aw-caption-400 aw-u-line-height-1-2"
-                    >{thread.messages?.length ?? 0}</span
-                >
+                <span class="aw-caption-400 aw-u-line-height-1-2">{thread.message_count}</span>
             </div>
         </div>
     </a>

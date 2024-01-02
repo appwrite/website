@@ -38,7 +38,7 @@
     <div class="aw-container" style="padding-block-end: 0;">
         <div class="header">
             <div>
-                <a class="aw-link is-secondary" href="/support-threads">
+                <a class="aw-link is-secondary u-cross-baseline" href="/support-threads">
                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                     <span>Back</span>
                 </a>

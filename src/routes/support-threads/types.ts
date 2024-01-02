@@ -9,25 +9,28 @@ export type MockThread = {
 };
 
 export interface DiscordMessage extends Pick<Models.Document, '$id'> {
+    threadId: string;
     author: string;
     author_avatar: string;
     message: string;
-    role: string;
+    role?: string;
     /* `UTC` timestamp */
     timestamp: string;
 }
 
 export interface DiscordThread extends Pick<Models.Document, '$id'> {
-    title: string;
     discord_id: string;
-    content: string;
     author: string;
-    author_avatar: string;
     tags?: string[];
-    // messages?: DiscordMessage[];
+    author_avatar: string;
     seo_description?: string;
+    content: string;
+    title: string;
+    search_meta?: string;
+    // messages?: DiscordMessage[];
     tldr: string;
     vote_count: number;
+    message_count: number;
 }
 
 export type MockMessage = {

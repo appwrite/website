@@ -1,15 +1,16 @@
+import { random } from '$lib/utils/random.js';
 import { error } from '@sveltejs/kit';
-import { getRelatedThreads, getThread } from '../helpers.js';
-import { deterministicRandom, random } from '$lib/utils/random.js';
+import { getRelatedThreads, getThread, getThreadMessages } from '../helpers.js';
 
 export const prerender = false;
 
-export const load = async ({ params, fetch }) => {
+export const load = async ({ params }) => {
     const id = params.id;
 
     try {
         const thread = await getThread(id);
         const related = await getRelatedThreads(thread);
+        const messages = await getThreadMessages(id);
 
         // const tldrPrompt = `Title: ${thread.name}\nDescription:${thread.content}\nMessages:\n
         //     ${thread.messages?.map((m) => `${m.author}: ${m.message}`).join('\n')}`;
@@ -27,7 +28,7 @@ export const load = async ({ params, fetch }) => {
 
         const upvotes = random(1, 60);
 
-        return { ...thread, related, tldr, upvotes };
+        return { ...thread, related, tldr, upvotes, messages };
     } catch (e) {
         console.log(e);
         throw error(404, 'Thread not found');
