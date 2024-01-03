@@ -1,0 +1,9 @@
+---
+layout: article
+title: Endpoint
+description: PLACEHOLDER
+---
+
+- XSS protection
+- Rate limiting
+- HTTPS/TLS
