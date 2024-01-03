@@ -6,6 +6,7 @@
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
+
   position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   padding-inline:pxToRem(32); border-block-end: solid pxToRem(1) var(--p-main-header-border-color);
   min-block-size:pxToRem(73);
@@ -62,7 +63,7 @@
     --p-main-header-border-color: rgb(0,0,0, 0.1);
   }
 
-  @media #{$break1}{
+  @media #{$break1}, #{$break2}{
     display:none;
   }
   

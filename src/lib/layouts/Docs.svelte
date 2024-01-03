@@ -15,6 +15,7 @@
         showSearch: false,
         currentVariant: null
     });
+
     export function toggleReferences() {
         layoutState.update((state) => ({
             ...state,
@@ -23,19 +24,24 @@
         }));
     }
     export function toggleSidenav() {
-        layoutState.update((state) => ({
-            ...state,
-            showReferences: false,
-            showSidenav: !state.showSidenav
-        }));
+        layoutState.update((state) => {
+            return {
+                ...state,
+                showReferences: false,
+                showSidenav: !state.showSidenav
+            };
+        });
     }
+
+    const CTX_KEY = Symbol('docs');
+    export const isInDocs = () => getContext<boolean>(CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
     import Search from '$lib/components/Search.svelte';
 
-    import { setContext } from 'svelte';
     import { isMac } from '$lib/utils/platform';
+    import { getContext, setContext } from 'svelte';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -56,8 +62,7 @@
             showSidenav: false
         }));
     });
-
-    setContext('isDocs', true);
+    setContext(CTX_KEY, true);
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
@@ -97,8 +102,12 @@
             <a href="https://cloud.appwrite.io/console" class="aw-button aw-is-only-desktop">
                 <span class="aw-sub-body-500">Go to console</span>
             </a>
-            <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
-                <span class="aw-icon-hamburger-menu" />
+            <button class="aw-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+                {#if $layoutState.showSidenav}
+                    <span aria-hidden="true" class="aw-icon-close" />
+                {:else}
+                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                {/if}
             </button>
         </div>
     </section>
@@ -124,7 +133,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav" aria-label="Top" >
+                <nav class="aw-main-header-nav" aria-label="Top">
                     <ul class="aw-main-header-nav-list">
                         <li class="aw-main-header-nav-item">
                             <a class="aw-link" href="/docs">Docs</a>
@@ -165,13 +174,6 @@
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>
                     </a>
-                    <button
-                        on:click={toggleSidenav}
-                        class="aw-button is-text aw-is-not-desktop"
-                        aria-label="open navigation"
-                    >
-                        <span class="aw-icon-hamburger-menu" />
-                    </button>
                 </div>
             </div>
         </div>
