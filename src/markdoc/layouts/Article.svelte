@@ -26,7 +26,7 @@
     export let back: string | undefined = undefined;
     export let difficulty: string | undefined = undefined;
     export let readtime: string | undefined = undefined;
-    export let date: string;
+    export let date: string | undefined = undefined;
 
     setContext<LayoutContext>('headings', writable({}));
 

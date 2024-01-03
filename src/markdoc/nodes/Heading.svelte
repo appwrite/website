@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext, hasContext, onMount } from 'svelte';
     import type { LayoutContext } from '../layouts/Article.svelte';
-    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
+    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
 
     export let level: number;
     export let id: string | undefined = undefined;
@@ -48,23 +48,21 @@
         observer.observe(element);
     });
 
-    const inPolicy = isInsidePolicy();
+    const inPolicy = isInPolicy();
     $: headingClass = inPolicy && level === 1 ? 'aw-title' : classList[level];
 </script>
 
 {#if id}
-
-        <svelte:element
-            this={tag}
-            {id}
-            bind:this={element}
-            class:aw-snap-location={id && !inReferences}
-            class:aw-snap-location-references={id && inReferences}
-            class="{headingClass} aw-u-color-text-primary"
-        >
-            <a href={`#${id}`} class=""><slot /></a>
-        </svelte:element>
-
+    <svelte:element
+        this={tag}
+        {id}
+        bind:this={element}
+        class:aw-snap-location={id && !inReferences}
+        class:aw-snap-location-references={id && inReferences}
+        class="{headingClass} aw-u-color-text-primary"
+    >
+        <a href={`#${id}`} class=""><slot /></a>
+    </svelte:element>
 {:else}
     <svelte:element
         this={tag}

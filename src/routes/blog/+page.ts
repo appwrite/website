@@ -1,6 +1,6 @@
 import { base } from '$app/paths';
-import type { AuthorData } from '$markdoc/layouts/Author.svelte';
-import type { PostsData } from '$markdoc/layouts/Post.svelte';
+import type { AuthorData, PostsData } from './content';
+
 
 export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
