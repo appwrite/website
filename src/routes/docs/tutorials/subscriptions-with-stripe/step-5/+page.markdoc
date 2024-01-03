@@ -52,4 +52,6 @@ The label created will grant the user access to any resource with the following 
 | Delete | `Permissions.delete(Role.label('subscriber'))` |
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
-[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)
+{% arrow_link href="/docs/advanced/platform/permissions" %}
+Learn more about permissions
+{% /arrow_link %}
