@@ -113,6 +113,12 @@
 					isParent: true
 				},
 				{
+					label: 'Security',
+					href: '/docs/advanced/security',
+					icon: 'icon-appwrite',
+					isParent: true
+				},
+				{
 					label: 'Self-hosting',
 					href: '/docs/advanced/self-hosting',
 					icon: 'icon-server',

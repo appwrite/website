@@ -1,0 +1,32 @@
+---
+layout: article
+title: Security
+description: Learn how Appwrite keeps your project, users, and data secure through security measures and compliance.
+---
+
+Appwrite helps you build secure apps by applying various security and compliance measures. 
+Appwrite is compliant with [GDPR]() and actively working toward [SOC 2]() and [HIPPA]() compliance.
+
+Appwrite also provides employs [enhanced password protection and encryption](), [rate limits](), [robust permission systems](), 
+[cross-site encryption protection](), and [HTTPS/SSL]() to protect you and your users' data.
+
+These pages will cover the security measures Appwrite implements or provides.
+
+{% cards %}
+{% cards_item href="/docs/advanced/security/compliance"  title="Compliance" %}
+Integrate with the Appwrite Realtime API
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/security/dpa"  title="DPA" %}
+Integrate with the Appwrite REST API
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/security/endpoint"  title="Endpoint" %}
+Integrate with the Appwrite GraphQL API
+{% /cards_item %}
+
+
+{% cards_item href="/docs/products/auth/security"  title="Security" %}
+Integrate with the Appwrite GraphQL API
+{% /cards_item %}
+{% /cards %}
