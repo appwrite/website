@@ -1,0 +1,19 @@
+---
+layout: article
+title: Data processing agreement
+description: 
+---
+
+A DPA, or Data Processing Agreement, is a contract between a data controller and data processor concerning the rights and obligations
+of both parties when processing personal data.
+
+{% arrow_link href="/dpa" %}
+Find the DPA on our website
+{% /arrow_link %}
+
+This agreement describes how Appwrite and sub-processors handles, secure, transfers data, as well as relevant compliance with regard to GDPR and 
+other standards and regulations.
+
+{% arrow_link href="/dpa#legal-effect" %}
+Learn more about signing the DPA
+{% /arrow_link %}
