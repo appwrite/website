@@ -69,7 +69,7 @@
         <enhanced:img src="./blur-1.png" alt="" />
     </div>
 
-    <main class="aw-main-section u-position-relative" id="main">
+    <main class="aw-main-section u-position-relative aw-u-overflow-hidden-break1-to-break3" id="main">
         <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
@@ -81,7 +81,7 @@
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="aw-hero is-align-start u-position-relative">
+        <section class="aw-hero is-align-start u-position-relative e-hero-docs">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
                 Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
                     >_
@@ -104,12 +104,11 @@
             <a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
-
             <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
                 <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
                         class="u-only-dark"
-                        src="/images/animations/tech-dark.png"
+                        src="/images/animations/tech-dark-transparent.png"
                         width="660"
                         height="660"
                         alt=""
@@ -117,7 +116,7 @@
                     />
                     <img
                         class="u-only-light"
-                        src="/images/animations/tech-light.png"
+                        src="/images/animations/tech-light-transparent.png"
                         width="660"
                         height="660"
                         alt=""
@@ -408,6 +407,12 @@
 </Docs>
 
 <style lang="scss">
+
+    .e-hero-docs {
+      @media (min-width:1280px) {
+        margin-block-start:5rem;
+      }
+    }
     .aw-main-section {
         max-inline-size: unset;
         margin-inline: unset;

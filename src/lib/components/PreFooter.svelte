@@ -12,7 +12,7 @@
             href="https://cloud.appwrite.io"
             class="aw-button is-transparent aw-u-cross-child-center"
         >
-            <span class="text">Start building today</span>
+            <span class="text">Get started</span>
         </a>
     </section>
     <section
@@ -37,7 +37,7 @@
                     </p>
                     <a
                         href="https://cloud.appwrite.io/register"
-                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
+                        class="aw-button is-secondary is-full-width-mobile aw-u-cross-child-end"
                     >
                         <span class="text">Get started</span>
                     </a>
@@ -48,17 +48,19 @@
                     <div class="aw-strip-plans-plan">
                         <h4 class="title aw-description">Pro</h4>
                         <div class="aw-title aw-u-color-text-primary">$15</div>
-                        <div class="info aw-caption-500">per user/month</div>
+                        <div class="info aw-caption-500">per member/month</div>
                     </div>
                     <p class="aw-strip-plans-info aw-caption-500">
                         For pro developers and teams that need to scale their products.
                     </p>
-                    <button
-                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
-                        disabled
+                    <a
+                        href="https://cloud.appwrite.io/console?type=createPro"
+                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        <span class="text">Coming soon</span>
-                    </button>
+                        <span class="text">Start trial</span>
+                    </a>
                 </div>
             </li>
             <li class="aw-strip-plans-item aw-strip-plans-container-query">
