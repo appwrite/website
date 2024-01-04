@@ -9,7 +9,7 @@
 
     $: classes = (() => {
         if (inDocs) return '';
-        if (inChangelog) return '';
+        if (inChangelog) return 'aw-paragraph-lg';
         if (inPolicy) return '';
         return 'aw-paragraph-lg';
     })();
