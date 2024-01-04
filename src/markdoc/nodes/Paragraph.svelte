@@ -3,9 +3,10 @@
     import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { getContext, hasContext } from 'svelte';
     import { isInTable } from './Table.svelte';
+    import { isInDocs } from '$lib/layouts/Docs.svelte';
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
-    const isDocs = getContext<boolean>('isDocs') ?? false;
+    const inDocs = isInDocs();
     const inPolicy = isInPolicy();
     const inChangelog = isInChangelog();
     const inTable = isInTable();
@@ -14,7 +15,7 @@
     export { className as class };
 
     $: classes = (() => {
-        if (isDocs) return 'aw-paragraph-md';
+        if (inDocs) return 'aw-paragraph-md';
         if (inPolicy) return 'aw-paragraph-md in-policy';
         if (inTable) return 'aw-paragraph-md';
         if (inChangelog) return 'aw-paragraph-lg in-changelog';
