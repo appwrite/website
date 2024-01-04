@@ -4,6 +4,7 @@
 .#{$p}-u-opacity-40-mobile { @media #{$break1}{ opacity:0.4; } }
 .#{$p}-u-opacity-64                 { opacity:0.64!important; }
 .#{$p}-u-opacity-90                 { opacity:0.9!important;  }
+.#{$p}-u-opacity-100                { opacity:1!important;  }
 
 .#{$p}-u-overflow-hidden-break1-to-break3 {
   @media #{$break1}, #{$break2}, #{$break3} {

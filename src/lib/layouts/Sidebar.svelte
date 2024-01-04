@@ -125,7 +125,17 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">38.5K</span>
+            </a>
+
+            <a
+                    href="https://appwrite.io/discord"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="aw-button is-text aw-u-inline-width-100-percent-mobile"
+            >
+                <span class="aw-icon-discord aw-u-opacity-100" aria-hidden="true"  />
+                <span class="text">Discord</span>
             </a>
         </div>
     </div>
