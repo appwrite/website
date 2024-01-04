@@ -14,7 +14,6 @@ function absolute(path) {
 const isVercel = process.env.VERCEL === '1';
 
 const adapter = isVercel ? vercelAdapter() : nodeAdapter();
-// const adapter = vercel
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
