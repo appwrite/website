@@ -137,41 +137,62 @@
         class:is-transparent={browser && !$isMobileNavOpen}
         class:is-hidden={$isHeaderHidden}
     >
-        <div class="aw-mobile-header-start">
-            <a href="/">
-                <img
-                    class="aw-logo aw-u-only-dark"
-                    src="/images/logos/appwrite.svg"
-                    alt="appwrite"
-                    height="24"
-                    width="130"
-                />
-                <img
-                    class="aw-logo aw-u-only-light"
-                    src="/images/logos/appwrite-light.svg"
-                    alt="appwrite"
-                    height="24"
-                    width="130"
-                />
-            </a>
-        </div>
-        <div class="aw-mobile-header-end">
-            {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="aw-button">
-                    <span class="text">Get started</span>
+
+        <div class="aw-top-banner">
+            <div class="aw-top-banner-content aw-u-color-text-primary">
+                <a class="u-flex u-gap-16 u-main-center u-cross-center aw-u-flex-vertical-mobile" href="/blog/post/announcing-appwrite-pro">
+                    <span class="body-text-1 u-bold">Appwrite Pro is now available!</span>
+                    <div class="aw-button is-secondary u-line-height-1 is-full-width-mobile aw-u-max-width-380">Upgrade</div>
                 </a>
-            {/if}
-            <button
-                class="aw-button is-text"
-                aria-label="open navigation"
-                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
-            >
-                {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="aw-icon-close" />
-                {:else}
-                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                {#if browser}
+                    <button
+                            class="aw-top-banner-button"
+                            aria-label="close discord message"
+                            on:click={hideTopBanner}
+                    >
+                        <span class="aw-icon-close" aria-hidden="true" />
+                    </button>
                 {/if}
-            </button>
+            </div>
+        </div>
+
+        <div class="aw-mobile-header-wrapper">
+            <div class="aw-mobile-header-start">
+                <a href="/">
+                    <img
+                            class="aw-logo aw-u-only-dark"
+                            src="/images/logos/appwrite.svg"
+                            alt="appwrite"
+                            height="24"
+                            width="130"
+                    />
+                    <img
+                            class="aw-logo aw-u-only-light"
+                            src="/images/logos/appwrite-light.svg"
+                            alt="appwrite"
+                            height="24"
+                            width="130"
+                    />
+                </a>
+            </div>
+            <div class="aw-mobile-header-end">
+                {#if !$isMobileNavOpen}
+                    <a href="https://cloud.appwrite.io" class="aw-button">
+                        <span class="text">Get started</span>
+                    </a>
+                {/if}
+                <button
+                        class="aw-button is-text"
+                        aria-label="open navigation"
+                        on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+                >
+                    {#if $isMobileNavOpen}
+                        <span aria-hidden="true" class="aw-icon-close" />
+                    {:else}
+                        <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                    {/if}
+                </button>
+            </div>
         </div>
     </section>
     <header
@@ -180,16 +201,15 @@
     >
         <div class="aw-top-banner">
             <div class="aw-top-banner-content aw-u-color-text-primary">
-                <a href="/blog/post/announcing-appwrite-pro">
-                    <span class="aw-caption-500"
-                        >Appwrite Pro is now available! Get started with $15 credit.</span
-                    >
+                <a class="u-flex u-gap-16 u-main-center u-cross-center aw-u-flex-vertical-mobile" href="/blog/post/announcing-appwrite-pro">
+                    <span class="body-text-1 u-bold">Appwrite Pro is now available!</span>
+                    <div class="aw-button is-secondary u-line-height-1 is-full-width-mobile aw-u-max-width-380">Upgrade</div>
                 </a>
                 {#if browser}
                     <button
-                        class="aw-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
+                            class="aw-top-banner-button"
+                            aria-label="close discord message"
+                            on:click={hideTopBanner}
                     >
                         <span class="aw-icon-close" aria-hidden="true" />
                     </button>

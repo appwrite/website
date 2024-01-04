@@ -8,11 +8,10 @@
 
 
   position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
-  padding-inline:pxToRem(32); border-block-end: solid pxToRem(1) var(--p-main-header-border-color);
-  min-block-size:pxToRem(73);
-
+  border-block-end:solid pxToRem(1) var(--p-main-header-border-color); min-block-size:pxToRem(73);
+  &-wrapper { padding-inline:pxToRem(32); }
   &.is-special-padding {
-    padding-inline: clamp(1.25rem,4vw,120rem); /* Thomas calculation */
+    .#{$p}-main-header-wrapper { padding-inline:clamp(1.25rem,4vw,120rem); /* Thomas calculation */ }
   }
   &.is-docs {
     .#{$p}-main-header-wrapper { max-inline-size:var(--container-size-large);  }
