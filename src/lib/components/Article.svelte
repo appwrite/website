@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
     export let title: string;
@@ -13,7 +14,13 @@
 <li>
     <a class="aw-grid-articles-item is-transparent" {href}>
         <div class="aw-grid-articles-item-image">
-            <img src={cover} class="aw-u-media-ratio-16-9" alt={title} />
+            <Media
+                src={cover}
+                class="aw-u-media-ratio-16-9"
+                alt={title}
+                autoplay
+                controls={false}
+            />
         </div>
         <div class="aw-grid-articles-item-content">
             <h4 class="aw-label aw-u-color-text-primary">

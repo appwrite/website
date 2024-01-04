@@ -1,12 +1,13 @@
 <script lang="ts">
+    import { Media } from '$lib/UI';
+    import { scroll } from '$lib/animations';
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
-    import { getContext } from 'svelte';
-    import { scroll } from '$lib/animations';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { getContext } from 'svelte';
 
     export let title: string;
     export let description: string;
@@ -153,7 +154,7 @@
                             </header>
                             {#if cover}
                                 <div class="aw-media-container">
-                                    <img class="u-block" src={cover} alt="" />
+                                    <Media class="u-block" src={cover} />
                                 </div>
                             {/if}
 
