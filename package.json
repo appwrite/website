@@ -63,14 +63,12 @@
         "@appwrite.io/pink-icons": "0.1.0-next.9",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
         "@splinetool/viewer": "0.9.455",
-        "ai": "^2.2.27",
         "compression": "^1.7.4",
         "express": "^4.18.2",
         "highlight.js": "^11.9.0",
         "markdown-it": "^13.0.2",
         "meilisearch": "^0.35.1",
         "motion": "^10.16.4",
-        "openai": "^4.20.1",
         "sharp": "^0.32.6",
         "svelte-markdown": "^0.4.0"
     }
