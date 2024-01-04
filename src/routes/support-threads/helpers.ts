@@ -112,11 +112,12 @@ export async function getThreadTldr(thread: DiscordThread) {
 
     const execution = await functions.createExecution(
         PUBLIC_APPWRITE_FN_TLDR_ID,
-        JSON.stringify({ thread_id: thread.$id }),
+        JSON.stringify({ thread: thread.$id }),
         false,
         '/',
-        'GET'
+        'POST'
     );
+    const { tldr } = JSON.parse(execution.responseBody);
 
-    return 'PLACEHOLDER';
+    return tldr;
 }
