@@ -1,12 +1,11 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/kit/vite';
 import { preprocessMeltUI } from '@melt-ui/pp';
-import { markdoc } from 'svelte-markdoc-preprocess';
-import sequence from 'svelte-sequential-preprocessor';
-import staticAdapter from '@sveltejs/adapter-static';
 import nodeAdapter from '@sveltejs/adapter-node';
 import vercelAdapter from '@sveltejs/adapter-vercel';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import { dirname, join } from 'path';
+import { markdoc } from 'svelte-markdoc-preprocess';
+import sequence from 'svelte-sequential-preprocessor';
+import { fileURLToPath } from 'url';
 
 function absolute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
