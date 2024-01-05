@@ -33,7 +33,7 @@
                 <span class="text">Register with Appwrite Account</span>
             </button>
             <a
-                href="/init_/ticket/customize"
+                href="/init/ticket/customize"
                 class="aw-button is-full-width is-secondary u-margin-block-start-8"
             >
                 <span class="text">(DEBUG) Customize ticket without logging in</span>
