@@ -5,10 +5,10 @@
     position:relative;
     display:flex; flex-direction:column; gap:pxToRem(8);
     margin-block-end:pxToRem(32);
-    @media #{$break2open} {
+    @media #{$break3open} {
       padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--aw-color-border));
     }
-    @media #{$break3open} {
+    @media #{$break4open} {
       .#{$p}-link {
         position:absolute; 
         inset-inline-end:calc(100% + #{pxToRem(74)});
@@ -17,7 +17,7 @@
     }
   }
 
-  @media #{$break2open} {
+  @media #{$break3open} {
     .#{$p}-media-container { margin-inline:pxToRem(-55); }
   }
 }

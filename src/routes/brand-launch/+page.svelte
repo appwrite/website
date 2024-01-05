@@ -155,7 +155,7 @@
                         </div>
                         <div
                             class="aw-hero is-align-start
-						aw-u-padding-block-start-40 aw-u-sep-inline-start-not-break1 aw-u-padding-inline-start-48-not-break1"
+						aw-u-padding-block-start-40 aw-u-sep-inline-start-not-break1-or-break2 aw-u-padding-inline-start-48-not-break1"
                         >
                             <h2 class="aw-title aw-u-color-text-primary">
                                 Allowing you to innovate without limits

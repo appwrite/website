@@ -136,7 +136,7 @@
 {/if}
 
 <div
-    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1"
+    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1-and-break2"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}

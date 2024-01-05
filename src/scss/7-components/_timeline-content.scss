@@ -3,14 +3,14 @@
 .#{$p}-timeline-content {
   &-list {
     display:flex; flex-direction:column;
-    @media #{$break1} { gap:pxToRem(68); }
-    @media #{$break2open} { gap:pxToRem(180); }
+    @media #{$break1}, #{$break2} { gap:pxToRem(68); }
+    @media #{$break3open} { gap:pxToRem(180); }
   }
   &-item {
     display:flex; flex-direction:column; gap:pxToRem(180);
     &-top {}
     &-bottom {
-      @media #{$break1} { display:none; }
+      @media #{$break1}, #{$break2} { display:none; }
     }
   }
 }

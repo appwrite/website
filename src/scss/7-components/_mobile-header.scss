@@ -11,7 +11,7 @@
   &-start { display:flex; align-items: center; }
   &-end   { display:flex; align-items: center; gap: pxToRem(8) }
   &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); }
-  @media #{$break3open} { display:none; }
+  @media #{$break4open} { display:none; }
 
   #{$theme-dark} &,
   &#{$theme-dark} {

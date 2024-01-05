@@ -7,11 +7,6 @@
   display:flex; flex-direction:column; gap:var(--p-hero-gap); text-align:center;
   max-inline-size:var(--p-hero-max-inline-size); margin-inline:auto;
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
-
-  :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
-    color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8);
-  }
-
   .#{$p}-description { margin-block-start:pxToRem(20); color:hsl(var(--aw-color-secondary)); }
 
   &.is-align-start {
@@ -21,15 +16,15 @@
   &.is-horizontal {
     display:flex; flex-direction:column; margin-inline:initial;
     text-align:start;
-    @media #{$break1}     { max-inline-size:initial; }
-    @media #{$break2open} { max-inline-size:pxToRem(650); }
-    @media #{$break3open} {
+    @media #{$break1}, #{$break2} { max-inline-size:initial; }
+    @media #{$break3open} { max-inline-size:pxToRem(650); }
+    @media #{$break4open} {
       flex-direction:row; gap:pxToRem(32); text-align:start;
       margin-inline:0; max-inline-size:none;
       >:nth-child(1) { flex:1.3; }
       >:nth-child(2) { flex:1;   }
     }
-    @media #{$break1}, #{$break2}, #{$break3} { overflow:hidden; }
+    @media #{$break1}, #{$break2}, #{$break3}, #{$break4} { overflow:hidden; }
   }
 
   &.is-no-max-width { max-inline-size:initial; }

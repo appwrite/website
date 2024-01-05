@@ -85,10 +85,10 @@
     --p-grid-articles-item-bg-color-default: var(--aw-color-white)  / 0.06;
   }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     gap:pxToRem(32);
   }
-  @media #{$break2open} {
+  @media #{$break3open} {
     gap:pxToRem(48);
   }
 }

@@ -1,19 +1,19 @@
 @use '../abstract' as *;
 
 .#{$p}-main-footer {
-  display:flex; justify-content:space-between; gap:pxToRem(16); font-size:pxToRem(14);
+  display:flex; justify-content:space-between; gap:pxToRem(16);
   padding-block:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--aw-color-border));
   font-size:var(--aw-font-size-tiny); color:hsl(var(--aw-color-secondary));
 
   &-links {
     display:flex; gap:pxToRem(16);
-    @media #{$break1}, #{$break2} { flex-direction:column; }
-    @media #{$break3open} {  }
+    @media #{$break1}, #{$break2}, #{$break3} { flex-direction:column; }
+    @media #{$break4open} {  }
   }
 
   &.is-with-bg-color { z-index:25; background-color:hsl(var(--p-body-bg-color)); }
 
-  @media #{$break1}, #{$break2} {
+  @media #{$break1}, #{$break2}, #{$break3} {
     flex-direction: column;
     &-grid-1 {
       display: grid;
@@ -29,7 +29,7 @@
     }
   }
 
-  @media #{$break3open} {
+  @media #{$break4open} {
     &-grid-1 {
       display:flex; align-items:center; gap:pxToRem(32); inline-size:100%;
       &-column-1 { margin-inline-end:auto; }

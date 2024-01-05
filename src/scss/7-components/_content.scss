@@ -36,7 +36,7 @@
     }
 
   }
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     --p-section-gap: #{pxToRem(24)};
     --p-content-gap: #{pxToRem(16)};
   }

@@ -74,7 +74,7 @@
                             </h2>
                             <a
                                 href="https://appwrite.careers"
-                                class="aw-button u-cross-child-start aw-u-inline-width-100-percent-mobile-break1"
+                                class="aw-button u-cross-child-start aw-u-inline-width-100-percent-mobile-break1-and-break2"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
