@@ -15,9 +15,9 @@
 
 <script lang="ts">
     import { MainFooter } from '$lib/components';
+    import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
-    import { buildOpenGraphImage } from '$lib/utils/metadata';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
 
@@ -58,7 +58,6 @@
     }, []);
 
     const seoTitle = title + DOCS_TITLE_SUFFIX;
-    const ogImage = buildOpenGraphImage(title, description);
 </script>
 
 <svelte:head>
@@ -70,12 +69,7 @@
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
-    <!-- Image -->
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <SeoOgImage {title} {description} />
 </svelte:head>
 
 <DocsArticle {title} {back} {toc} {date}>

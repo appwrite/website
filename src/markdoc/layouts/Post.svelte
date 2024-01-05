@@ -66,7 +66,7 @@
                         <article class="aw-main-article">
                             <header class="aw-main-article-header">
                                 <a
-                                    class="aw-link aw-u-color-text-secondary u-cross-baseline"
+                                    class="aw-link is-secondary aw-u-color-text-secondary u-cross-baseline"
                                     href="/blog"
                                 >
                                     <span class="aw-icon-chevron-left" aria-hidden="true" />
