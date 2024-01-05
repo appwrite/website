@@ -1,0 +1,29 @@
+---
+layout: post
+title: Announcing Appwrite is GDPR compliant
+description: 
+date: 2024-01-09
+cover: /images/pages/homepage/dashboard.png
+timeToRead: 3
+author: laura-dury
+category: GDPR
+---
+
+At Appwrite, we take your data seriously. Therefore, we are excited to announce that Appwrite is now GDPR Compliant.
+
+We have always kept strict internal policies with regard to personal data and privacy. But to be GDPR compliant, one must undertake the necessary steps and show proof. We have now done this, and we’re pleased that we are now certified with the European General Data Protection Regulation (GDPR) standards.
+
+Appwrite developers will no longer have to navigate the complex waters of GDPR compliance – we've got you covered. We have undertaken the necessary measures to protect personal information. Our policies, procedures, and infrastructure have been updated, and we are committed to a continuous improvement cycle as time goes by.
+
+If you are interested in having a data processing agreement with Appwrite, you can now find our DPA download button in our console. Click and sign it, and the agreement will be implemented.
+
+Here are some technical insights into how we enhance data security:
+
+- Appwrite implements a multi-layered security approach, integrating centralized IAM (Identity and Access Management) to regulate access to production resources.
+- Cloud security processes are employed for provisioning, configuring, monitoring, and accessing cloud resources. Changes in production environments follow a controlled process using Infrastructure as Code (IaC).
+- Industry-standard encryption protocols like TLS/SSL safeguard data transmitted over networks. Additionally, data stored in databases and file storage is secured using techniques like AES encryption. Key rotations are performed at regular intervals to ensure data security.
+- Appwrite performs regular security audits at the application and infrastructure layers to ensure compliance with industry-leading security standards and practices. Periodic vulnerability scans are also conducted on software dependencies and packages to mitigate against CVEs.
+
+As always, with Appwrite, developers can continue creating with peace of mind. Your personal data will not be mistreated.
+
+Further resources: [Privacy policy](https://appwrite.io/privacy) , [Cookie policy](https://appwrite.io/cookies)
