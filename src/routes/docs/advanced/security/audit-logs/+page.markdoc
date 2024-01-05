@@ -1,0 +1,13 @@
+---
+layout: article
+title: Audit logs
+description: Appwrite provides audit logs to help detect anomalies and investigate security incidents.
+---
+
+All Appwrite products, like Authentication, Databases, Storage, Functions, and Messaging, provide detailed audit logs.
+Audit logs are important in detecting and responding to security incidents.
+Through audit logs, you can detect incidents through anomalous activities, 
+trace the source of security incidents, and understand the scope of users affected so you can respond more quickly
+and effectively.
+
+[HOW DO I LOOK AT THEM?]

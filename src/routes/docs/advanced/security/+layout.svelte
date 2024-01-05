@@ -9,32 +9,69 @@
 
 	const navigation: NavTree = [
 		{
-			label: 'Getting started',
+			label: 'Security',
 			items: [
 				{
-					label: 'Overview',
+					label: 'Getting started',
 					href: '/docs/advanced/security'
 				}
 			]
 		},
 		{
-			label: 'Guides',
+			label: 'Compliances',
 			items: [
 				{
-					label: 'Compliance',
-					href: '/docs/advanced/security/compliance'
+					label: 'GDPR',
+					href: '/docs/advanced/security/gdpr'
 				},
 				{
-					label: 'DPA',
-					href: '/docs/advanced/security/dpa'
+					label: 'SOC-2 (Coming soon)',
+					href: '/docs/advanced/security/soc2'
 				},
 				{
-					label: 'Endpoint',
-					href: '/docs/advanced/security/endpoint'
+					label: 'HIPPA (Coming soon)',
+					href: '/docs/advanced/security/hippa'
 				},
+				{
+					label: 'PCI',
+					href: '/docs/advanced/security/pci'
+				},
+			]
+		},
+		{
+			label: 'Measures',
+			items: [
 				{
 					label: 'Authentication',
 					href: '/docs/products/auth/security'
+				},
+				{
+					label: 'Encryption',
+					href: '/docs/advanced/security/encryption'
+				},
+				{
+					label: 'HTTPS',
+					href: '/docs/advanced/security/https'
+				},
+				{
+					label: 'TLS',
+					href: '/docs/advanced/security/tls'
+				},
+				{
+					label: 'Backups',
+					href: '/docs/advanced/security/backups'
+				},
+				{
+					label: 'Penetration tests',
+					href: '/docs/advanced/security/penetration-tests'
+				},
+				{
+					label: 'Audit logs',
+					href: '/docs/advanced/security/audit-logs'
+				},
+				{
+					label: 'Abuse protection',
+					href: '/docs/advanced/security/abuse-protection'
 				},
 			]
 		}

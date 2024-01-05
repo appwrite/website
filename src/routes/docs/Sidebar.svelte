@@ -115,7 +115,7 @@
 				{
 					label: 'Security',
 					href: '/docs/advanced/security',
-					icon: 'icon-appwrite',
+					icon: 'icon-shield-check',
 					isParent: true
 				},
 				{
