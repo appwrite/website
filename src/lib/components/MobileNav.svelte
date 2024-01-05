@@ -21,9 +21,9 @@
             </a>
 
             {#if $loggedIn}
-              <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Go to Console</a>
+                <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Go to Console</a>
             {:else}
-              <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Get started</a>
+                <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Get started</a>
             {/if}
         </div>
         <div class="aw-side-nav-scroll">
