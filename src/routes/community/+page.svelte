@@ -1,22 +1,5 @@
-<script lang="ts">
-    import { Main } from '$lib/layouts';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
-    import { Carousel } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
-    import FloatingHeads from '$lib/components/FloatingHeads.svelte';
-    import type { EventCardProps } from './EventCard.svelte';
-    import EventCard from './EventCard.svelte';
-    import type { ProjectCardProps } from './ProjectCard.svelte';
-    import ProjectCard from './ProjectCard.svelte';
-    import MetricCard from '$lib/components/MetricCard.svelte';
-
-    export let data;
-
-    const events: EventCardProps[] = [
+<script lang="ts" context="module">
+    export const events: EventCardProps[] = [
         {
             href: '/discord',
             cover: {
@@ -54,6 +37,25 @@
             buttonText: 'View event'
         }
     ];
+</script>
+
+<script lang="ts">
+    import { Main } from '$lib/layouts';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { Carousel } from '$lib/components';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
+    import FloatingHeads from '$lib/components/FloatingHeads.svelte';
+    import type { EventCardProps } from './EventCard.svelte';
+    import EventCard from './EventCard.svelte';
+    import type { ProjectCardProps } from './ProjectCard.svelte';
+    import ProjectCard from './ProjectCard.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+
+    export let data;
 
     const projects: ProjectCardProps[] = [
         {
