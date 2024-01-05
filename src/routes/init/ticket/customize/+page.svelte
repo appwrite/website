@@ -63,7 +63,7 @@
 <Main>
     <div class="hero">
         <div style:margin-block-start="0.625rem">
-            <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/init_/ticket">
+            <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/init/ticket">
                 <span class="aw-icon-chevron-left" aria-hidden="true" />
                 <span>Back</span>
             </a>
