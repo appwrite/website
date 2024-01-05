@@ -104,7 +104,9 @@ export async function getThreadMessages(threadId: string) {
         [Query.equal('threadId', threadId)].filter(Boolean) as string[]
     );
 
-    return data.documents as unknown as DiscordMessage[];
+    return (data.documents as unknown as DiscordMessage[]).sort(
+        (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+    );
 }
 
 export async function getThreadTldr(thread: DiscordThread) {

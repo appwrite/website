@@ -1,18 +1,22 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
+    import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
-    import SeoOgImage from '$lib/components/SeoOgImage.svelte';
 
     export let data;
 
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
+
+    function shorten(str: string, len: number) {
+        return str.length > len ? str.slice(0, len) + '...' : str;
+    }
 </script>
 
 <svelte:head>
@@ -25,8 +29,8 @@
     <meta property="og:description" content={data.seo_description ?? description} />
     <meta name="twitter:description" content={data.seo_description ?? description} />
     <SeoOgImage
-        title={data.title.substring(0, 64)}
-        description={data.seo_description?.substring(0, 128) ?? ''}
+        title={shorten(data.title, 32)}
+        description={shorten(data.seo_description ?? DEFAULT_DESCRIPTION, 64)}
     />
 </svelte:head>
 
@@ -80,6 +84,7 @@
                                 {:else}
                                     {#await data.streamed.tldr}
                                         <div class="dots" aria-label="loading">
+                                            <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                                             {#each { length: 3 } as _, i}
                                                 <div
                                                     class="dot"
