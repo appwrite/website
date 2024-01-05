@@ -10,23 +10,74 @@ Appwrite is compliant with [GDPR]() and actively working toward [SOC 2]() and [H
 Appwrite also provides employs [enhanced password protection and encryption](), [rate limits](), [robust permission systems](), 
 [cross-site encryption protection](), and [HTTPS/SSL]() to protect you and your users' data.
 
-These pages will cover the security measures Appwrite implements or provides.
+# Compliance {% #compliance %}
+
+The safeguarding of your and your users' data is taken seriously at Appwrite.
+Appwrite works to achieve compliance with a variety of standards to protect sensitive data, as well as maintain trust and credibility.
 
 {% cards %}
-{% cards_item href="/docs/advanced/security/compliance"  title="Compliance" %}
-Integrate with the Appwrite Realtime API
+{% cards_item href="/docs/advanced/security/gdpr"  title="GDPR" %}
+Appwrite is GDPR compliant. Learn about our measures, privacy policy, and find our data processing agreement.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/security/dpa"  title="DPA" %}
-Integrate with the Appwrite REST API
+{% cards_item href="/docs/advanced/security/pci"  title="PCI" %}
+Appwrite uses Stripe to handle payment and payment information securely. Learn about Appwrite's PCI compliance.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/security/endpoint"  title="Endpoint" %}
-Integrate with the Appwrite GraphQL API
+{% cards_item href="/docs/advanced/security/soc2"  title="SOC 2" %}
+Coming soon
 {% /cards_item %}
 
-
-{% cards_item href="/docs/products/auth/security"  title="Security" %}
-Integrate with the Appwrite GraphQL API
+{% cards_item href="/docs/advanced/security/hippa"  title="HIPPA" %}
+Coming soon.
 {% /cards_item %}
+
+{% /cards %}
+
+# Measures {% #measures %}
+
+Appwrite employs a variety of measures to help you build secure applications, faster.
+Learn about the different ways Appwrite protects you and your users' data and privacy.
+
+{% cards %}
+{% cards_item href="/docs/products/auth/security"  title="Authentication" %}
+Secure authentication methods to 
+protect your users and promote better passwords.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/security/encryption"  title="Encryption" %}
+Appwrite encrypts sensitive data and files 
+in Appwrite Databases and Storage.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/security/https"  title="HTTPS" %}
+Appwrite Cloud enforces HTTPS on all endpoints to prevent on-path
+attacks like packet sniffing.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/security/https"  title="TLS" %}
+Appwrite assigns TLS certificates on all
+Appwrite and user provided domains connected to Appwrite. 
+{% /cards_item %}
+
+{% cards_item href=""  title="Backups" %}
+Appwrite Cloud uses regular backups to prevent
+data loss and improve resiliency.
+{% /cards_item %}
+
+{% cards_item href=""  title="Penetration tests" %}
+Appwrite employs regular third-party penetration tests
+to find vulnerabilities.
+{% /cards_item %}
+
+{% cards_item href=""  title="Audit logs" %}
+Appwrite provides detailed audit logs for each 
+product to track and discover suspicious activity.
+{% /cards_item %}
+
+{% cards_item href=""  title="Abuse protection" %}
+Appwrite protects against common abuse methods
+like cross-site scripting and data scraping.
+{% /cards_item %}
+
 {% /cards %}
