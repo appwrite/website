@@ -17,4 +17,8 @@ Location: https://cloud.appwrite.io/v1/<ENDPOINT>
 
 Appwrite Cloud does not support HTTP, which is a common practice in modern development, because unencrypted
 HTTP traffic is dangerous and exposes sensitive user data to malicious attackers.
+Appwrite uses the [Strict-Transport-Security header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
+to inform browsers that the website should only be accessed using HTTPS, further protecting against 
+man-in-the-middle attacks such as protocol downgrade attacks and cookie hijacking. 
 By enforcing HTTPS, Appwrite Cloud's endpoint will always be served over a secure connection, which helps protect users' data and privacy.
+

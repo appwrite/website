@@ -29,6 +29,13 @@ of both parties when processing personal data.
 This agreement describes how Appwrite and sub-processors handles, secure, transfers data, as well as outline rights and obligations of both Appwrite and 
 you or your company when personal data is processed. 
 
-{% arrow_link href="/dpa" %}
+{% only_dark %}
+![Project settings screen](/images/docs/advanced/security/dark/dpa.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/advanced/security/dpa.png)
+{% /only_light %}
+
+{% arrow_link href="/dpa/Appwrite_DPA_no_sign.pdf" %}
 Find the DPA on our website
 {% /arrow_link %}
