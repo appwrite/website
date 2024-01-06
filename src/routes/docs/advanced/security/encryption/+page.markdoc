@@ -4,15 +4,12 @@ title: Encryption
 description: Learn about Appwrite's use of encryption across Appwrite's databases and storage buckets to protect user data..
 ---
 Other than applying encryption in [authentication](/docs/products/auth/security), [enforcing HTTPS](/docs/advanced/security/https), 
-and [generating TLS certificate for domains](/docs/advanced/security/tls).
-
-## Databases {% #databases %}
-
-Appwrite Databases provides the option to store encrypted string attributes. 
-When selected, the attribute will be encrypted while stored in the database instead of in plain text. 
-In case of a data breach, encrypted string attributes will be difficult to decipher.
+and [generating TLS certificate for domains](/docs/advanced/security/tls), Appwrite also uses encryption for Storage, and Databases to come.
 
 ## Storage {% #storage %}
 
 For storage, buckets can have its files encrypted. If enabled, files uploaded to the bucket that are smaller than 20MB will be encrypted in the storage provider.
 You can enable encryption by going to your bucket's **Settings** > **Security settings** > toggle **Encryption**.
+
+## Databases {% #databases %}
+Databases encryption is being actively developed and coming soon.

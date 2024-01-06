@@ -10,4 +10,4 @@ Appwrite has processes for external and internal information security risk manag
 assess and address risks using a risk treatment plan to implement recommendations and decisions. 
 The risk assessment methodologies utilized include pen-test practices.
 
-See Appwrite's Data Processing Addendum for further details.
+See the "Data Processing" addendum of [Appwrite's DPA](/dpa/Appwrite_DPA_no_sign.pdf) for further details.
