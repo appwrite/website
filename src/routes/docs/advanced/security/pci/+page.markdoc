@@ -8,5 +8,10 @@ Appwrite uses [Stripe](https://stripe.com/en-se) to securely handle payments for
 Stripe is a [PCI Service Provider Level 1](https://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=stripe) provider
 with a strong [commitment to security and privacy](https://stripe.com/docs/security) that matches Appwrite's core values.
 
+{% info title="Handling payment information" %}
 If you're looking to add payment or subscription services to your apps built on Appwrite,
-consider using one of the [function templates](https://appwrite.io/docs/products/functions/quick-start).
+we recommend that you **do not store credit card** information directly in Appwrite.
+
+You can consider using one of the [function templates](/docs/products/functions/quick-start)
+to use a third party service, such as Stripe to handle payment.
+{% /info %}

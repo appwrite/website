@@ -9,10 +9,10 @@
 
 	const navigation: NavTree = [
 		{
-			label: 'Security',
+			label: 'Getting started',
 			items: [
 				{
-					label: 'Getting started',
+					label: 'Overview',
 					href: '/docs/advanced/security'
 				}
 			]
