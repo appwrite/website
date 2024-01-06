@@ -107,7 +107,7 @@ _APP_VCS_GITHUB_WEBHOOK_SECRET=super-secret
 
 [Learn more about environment variables](/docs/advanced/self-hosting/environment-variables)
 
-## Update exiting GitHub apps {% #existing-apps %}
+## Update existing GitHub apps {% #existing-apps %}
 
 There are additional steps if you're updating permissions in existing GitHub apps.
 Every time you update your GitHub app's permissions, GitHub will prompt you to review the changes.
