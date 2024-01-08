@@ -1,9 +1,14 @@
 <script lang="ts">
+    import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import ShineSVG from '../(assets)/shine.svg';
     import TicketPNG from '../(assets)/ticket.png';
+
+    function loginGithub() {
+        appwriteInit.account.createOAuth2Session('github');
+    }
 </script>
 
 <svelte:head>
@@ -24,7 +29,7 @@
             <p class="aw-label aw-u-color-text-primary" style:margin-block-start="4rem">
                 Register today and claim your Init ticket
             </p>
-            <button class="aw-button is-full-width u-margin-block-start-16">
+            <button class="aw-button is-full-width u-margin-block-start-16" on:click={loginGithub}>
                 <div class="aw-icon-github" />
                 <span class="text">Register with GitHub Account</span>
             </button>

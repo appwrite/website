@@ -112,6 +112,7 @@
         .bottom {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         .countdown {
             color: hsl(var(--aw-color-primary));
