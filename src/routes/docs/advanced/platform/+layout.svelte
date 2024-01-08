@@ -88,7 +88,7 @@
 					href: '/docs/advanced/platform/custom-domains'
 				},
 				{	
-					label: 'Email and SMS templates',
+					label: 'Message templates',
 					href: '/docs/advanced/platform/message-templates'
 				},
 			]

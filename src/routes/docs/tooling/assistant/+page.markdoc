@@ -6,6 +6,13 @@ description: AI-powered assistant for precise Appwrite tasks. Code snippets, tro
 
 The **Appwrite Assistant** is an AI-powered tool engineered to augment Appwrite-related tasks with technical precision. It operates on a foundation of training data sourced from the Appwrite documentation website, enabling it to furnish insights into Appwrite's features, APIs, and documentation. Additionally, it offers functionality for code snippet generation, sample project creation, and problem troubleshooting.
 
+{% only_dark %}
+![Using Appwrite Assistant's AI features](/images/docs/assistant/dark/ask-ai.png)
+{% /only_dark %}
+{% only_light %}
+![Using Appwrite Assistant's AI features](/images/docs/assistant/ask-ai.png)
+{% /only_light %}
+
 {% info title="Development" %}
 While the Appwrite Assistant remains under active development and is considered experimental, it undergoes incremental refinement. Its proficiency in comprehending user queries and delivering relevant responses improves with sustained usage.
 {% /info %}
