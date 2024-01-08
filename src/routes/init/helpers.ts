@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { appwriteInit } from '$lib/appwrite/init';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
+import type { ContributionsMatrix } from './(components)/ticket.svelte';
 
 export const pad = (num: number) => num.toString().padStart(2, '0');
 
@@ -63,4 +64,87 @@ export async function isLoggedInGithub() {
     } catch {
         return false;
     }
+}
+
+interface GithubUser {
+    login: string;
+    name: string;
+}
+
+export async function getGithubUser() {
+    const { providerAccessToken } = await appwriteInit.account.getSession('current');
+
+    return await fetch('https://api.github.com/user', {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${providerAccessToken}`
+        }
+    }).then((res) => res.json() as Promise<GithubUser>);
+}
+
+interface GithubContributionsResponse {
+    data: {
+        user: {
+            contributionsCollection: {
+                contributionCalendar: {
+                    totalContributions: number;
+                    weeks: Array<{
+                        contributionDays: Array<{
+                            contributionCount: number;
+                            date: Date;
+                        }>;
+                    }>;
+                };
+            };
+        };
+    };
+}
+
+export async function getGithubContributions(username: string) {
+    const { providerAccessToken } = await appwriteInit.account.getSession('current');
+
+    const { data } = await fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${providerAccessToken}`
+        },
+        body: JSON.stringify({
+            query: `query($userName:String!) { 
+            user(login: $userName){
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      contributionCount
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+            variables: { userName: username }
+        })
+    }).then((res) => res.json() as Promise<GithubContributionsResponse>);
+    const { weeks } = data.user.contributionsCollection.contributionCalendar;
+
+    const max = weeks.reduce((acc, week) => {
+        const weekMax = week.contributionDays.reduce((acc, day) => {
+            return Math.max(acc, day.contributionCount);
+        }, 0);
+        const newMax = Math.max(acc, weekMax);
+        return Math.min(newMax, 45);
+    }, 0);
+
+    const contributions: ContributionsMatrix = weeks.map((week) => {
+        return week.contributionDays
+            .map((day) => {
+                return day.contributionCount / max;
+            })
+            .toReversed();
+    });
+
+    return contributions;
 }

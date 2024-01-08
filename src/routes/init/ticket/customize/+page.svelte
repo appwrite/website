@@ -1,20 +1,20 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
+    import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { quadOut } from 'svelte/easing';
     import { fly, type TransitionConfig } from 'svelte/transition';
     import ShineSVG from '../../(assets)/shine.svg';
-    import Ticket from './ticket.svelte';
+    import Ticket from '../../(components)/ticket.svelte';
     import TribeToggle from './tribe-toggle.svelte';
-    import { appwriteInit } from '$lib/appwrite/init';
-    import { goto } from '$app/navigation';
-    import { browser } from '$app/environment';
-    import { onMount } from 'svelte';
+    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
 
     export let data;
 
-    let name = data.username?.name ?? '';
+    let name = data.user?.name ?? '';
 
     const tribes = [
         null,
@@ -60,11 +60,6 @@
             easing: quadOut
         };
     }
-
-    let mounted = false;
-    onMount(() => {
-        mounted = true;
-    });
 </script>
 
 <svelte:head>
@@ -74,10 +69,13 @@
 <Main>
     <div class="hero">
         <div style:margin-block-start="0.625rem">
-            <!-- <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/init/ticket">
+            <a
+                class="aw-link aw-u-color-text-secondary u-cross-baseline"
+                href="/init/ticket/thank-you"
+            >
                 <span class="aw-icon-chevron-left" aria-hidden="true" />
                 <span>Back</span>
-            </a> -->
+            </a>
             <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
                 Customize ticket<span class="aw-u-color-text-accent">_</span>
             </h1>
@@ -138,7 +136,7 @@
                 {/each}
             </div>
         </div>
-        <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
+        <TicketPreview>
             {#key tribe}
                 <div
                     class="ticket-holder"
@@ -147,7 +145,7 @@
                 >
                     <Ticket
                         {name}
-                        user={data.username?.login}
+                        user={data.user?.login}
                         id="0013371"
                         {tribe}
                         contributions={data.contributions}
@@ -155,7 +153,7 @@
                 </div>
             {/key}
             <img class="shine" src={ShineSVG} alt="" />
-        </div>
+        </TicketPreview>
     </div>
 
     <div class="aw-container">
@@ -173,36 +171,6 @@
 
         padding-inline: clamp(1.25rem, 4vw, 120rem);
         padding-block-start: 4rem;
-    }
-
-    .ticket-preview {
-        --p-border-radius: 1rem;
-        border: 1px solid hsl(var(--aw-color-subtle));
-        border-radius: var(--p-border-radius);
-
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        aspect-ratio: 0.925 / 1;
-
-        display: grid;
-        place-items: center;
-
-        transition: opacity 0.25s ease;
-
-        .ticket-holder {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            translate: -50% -50%;
-        }
-
-        .shine {
-            position: absolute;
-            inset-block-start: -100px;
-            inset-inline-end: -100px;
-            z-index: 20;
-        }
     }
 
     hr {
