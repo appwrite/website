@@ -7,3 +7,67 @@ description: Appwrite is a development platform designed to adapt you unique use
 Appwrite is a development platform designed to adapt your unique use cases.
 Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
 
+# Integration
+Appwrite is designed to integrate with both frontend and backend apps.
+Learn about advanced integrations and API response codes.
+
+{% cards %}
+{% cards_item href="/docs/advanced/platform/events" title="Events" %}
+Appwrite allows you to react to events that occur on the platform.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/webhooks" title="Webhooks" %}
+Use webhooks to update backend integrations about Appwrite events.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/response-codes codes" title="Response codes" %}
+Learn about response codes and errors returned by Appwrite APIs.
+{% /cards_item %}
+{% /cards %}
+
+# Access control
+Appwrite is secure by default and provides tools for you to manage 
+access control and prevent abuse.
+{% cards %}
+{% cards_item href="/docs/advanced/platform/permissions" title="Permissions" %}
+Control which users can access which resources.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/rate-limits" title="Rate limits" %}
+Appwrite has rate limits on some endpoints to prevent abuse.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/api-keys" title="API keys" %}
+Create and manage API keys use by Server SDKs.
+{% /cards_item %}
+{% /cards %}
+
+# Plans
+Learn which plan best suits your organization and how to manage billing.
+{% cards %}
+{% cards_item href="/docs/advanced/platform/billing" title="Billing" %}
+Learn to manage your billing information.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/starter" title="Starter" %}
+Learn about Appwrite Starter. Free plan for hobby projects and learners.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/pro" title="Pro" %}
+Learn about Appwrite Pro, for growing organizations that need to scale.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/scale" title="Scale" %}
+Coming soon.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/enterprise" title="Enterprise" %}
+Coming soon.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/oss" title="Open source" %}
+Appwrite provides special plans for open source projects.
+{% /cards_item %}
+{% /cards %}
+
+# Configuration
+Configure custom domains and customize communication templates.
+{% cards %}
+{% cards_item href="/docs/advanced/platform/custom-domains" title="Custom domains" %}
+Add a custom domain for your Appwrite APIs.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/message-templates" title="Message templates" %}
+Create custom branding and messages when you communicate with users..
+{% /cards_item %}
+{% /cards %}
