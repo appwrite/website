@@ -25,7 +25,7 @@
 					href: '/docs/advanced/security/gdpr'
 				},
 				{
-					label: 'SOC-2 (Coming soon)',
+					label: 'SOC 2 (Coming soon)',
 					href: '/docs/advanced/security/soc2'
 				},
 				{
