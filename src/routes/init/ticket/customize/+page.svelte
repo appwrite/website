@@ -7,8 +7,12 @@
     import ShineSVG from '../../(assets)/shine.svg';
     import Ticket from './ticket.svelte';
     import TribeToggle from './tribe-toggle.svelte';
+    import { appwriteInit } from '$lib/appwrite/init';
+    import { goto } from '$app/navigation';
 
-    let name = 'Eldad Fux';
+    export let data;
+
+    let name = data.username?.name ?? '';
 
     const tribes = [
         null,
@@ -63,10 +67,10 @@
 <Main>
     <div class="hero">
         <div style:margin-block-start="0.625rem">
-            <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/init/ticket">
+            <!-- <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/init/ticket">
                 <span class="aw-icon-chevron-left" aria-hidden="true" />
                 <span>Back</span>
-            </a>
+            </a> -->
             <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
                 Customize ticket<span class="aw-u-color-text-accent">_</span>
             </h1>
@@ -91,9 +95,19 @@
             <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
                 Sign in with your Appwrite Account and see the magic happen in your ticket
             </p>
-            <button class="aw-button is-full-width is-secondary u-margin-block-start-24">
+            <button class="aw-button is-full-width is-secondary u-margin-block-start-24" disabled>
                 <div class="aw-icon-appwrite aw-u-color-text-primary" />
-                <span class="text">Log in to Appwrite Account</span>
+                <span class="text">(SOON) Log in to Appwrite Account</span>
+            </button>
+            <button
+                class="aw-button is-full-width is-secondary u-margin-block-start-24"
+                on:click={async () => {
+                    await appwriteInit.account.deleteSession('current');
+                    goto('/init/ticket');
+                }}
+            >
+                <div class="aw-icon-github aw-u-color-text-primary" />
+                <span class="text">DEBUG Log-out of GitHub</span>
             </button>
 
             <hr />
@@ -122,7 +136,13 @@
                     in:fly={{ y: -100, delay: 400, duration: 500, easing: quadOut }}
                     out:ticketOut
                 >
-                    <Ticket {name} user="eldadfux" id="0013371" {tribe} />
+                    <Ticket
+                        {name}
+                        user={data.username?.login}
+                        id="0013371"
+                        {tribe}
+                        contributions={data.contributions}
+                    />
                 </div>
             {/key}
             <img class="shine" src={ShineSVG} alt="" />
