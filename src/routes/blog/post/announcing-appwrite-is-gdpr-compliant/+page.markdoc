@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Announcing Appwrite is GDPR compliant
-description: 
+description: placeholder
 date: 2024-01-09
-cover: /images/announcing-appwrite-is-gdpr-compliant/GDPR-Announcement.png
+cover: /images/blog/announcing-appwrite-is-gdpr-compliant/GDPR-Announcement.png
 timeToRead: 3
 author: may-ender
 category: GDPR
@@ -17,7 +17,7 @@ Appwrite developers will no longer have to navigate the complex waters of GDPR c
 
 If you are interested in having a data processing agreement with Appwrite, you can now find our DPA download button in our console. Click and sign it, and the agreement will be implemented.
 
-![Download DPA from your organization's settings](static/images/blog/announcing-appwrite-is-gdpr-compliant/dpa-card.png)
+![Download DPA from your organization's settings](/images/blog/announcing-appwrite-is-gdpr-compliant/dpa-card.png)
 
 Here are some technical insights into how we enhance data security:
 
