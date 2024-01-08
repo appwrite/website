@@ -2,11 +2,11 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { fade, fly, scale, type TransitionConfig } from 'svelte/transition';
+    import { quadOut } from 'svelte/easing';
+    import { fly, type TransitionConfig } from 'svelte/transition';
     import ShineSVG from '../../(assets)/shine.svg';
     import Ticket from './ticket.svelte';
     import TribeToggle from './tribe-toggle.svelte';
-    import { quadIn, quadInOut, quadOut } from 'svelte/easing';
 
     let name = 'Eldad Fux';
 
@@ -43,7 +43,7 @@
         return (value - fromMin) * scale + toMin;
     }
 
-    function ticketOut(node: HTMLElement): TransitionConfig {
+    function ticketOut(_node: HTMLElement): TransitionConfig {
         // Scale from 1 to 0.75, from opacity 1 to 0.5
         return {
             duration: 500,
