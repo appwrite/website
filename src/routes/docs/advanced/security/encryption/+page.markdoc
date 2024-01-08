@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Encryption
-description: Learn about Appwrite's use of encryption across Appwrite's databases and storage buckets to protect user data..
+description: Learn about Appwrite's use of encryption across Appwrite's databases and storage buckets to protect user data.
 ---
 Other than applying encryption in [authentication](/docs/products/auth/security), [enforcing HTTPS](/docs/advanced/security/https), 
 and [generating TLS certificate for domains](/docs/advanced/security/tls), Appwrite also uses encryption for Storage, and Databases to come.
