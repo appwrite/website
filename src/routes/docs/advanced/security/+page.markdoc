@@ -65,17 +65,17 @@ Appwrite Cloud uses regular backups to prevent
 data loss and improve resiliency.
 {% /cards_item %}
 
-{% cards_item href="" title="Penetration tests" %}
+{% cards_item href="/docs/advanced/security/penetration-tests" title="Penetration tests" %}
 Appwrite employs regular third-party penetration tests
 to find vulnerabilities.
 {% /cards_item %}
 
-{% cards_item href="" title="Audit logs" %}
+{% cards_item href="/docs/advanced/security/audit-logs" title="Audit logs" %}
 Appwrite provides detailed audit logs for each 
 product to track and discover suspicious activity.
 {% /cards_item %}
 
-{% cards_item href="" title="Abuse protection" %}
+{% cards_item href="/docs/advanced/security/abuse-protection" title="Abuse protection" %}
 Appwrite protects against common abuse methods
 like DoS and brute-force attacks.
 {% /cards_item %}
