@@ -43,7 +43,7 @@
 			items: [
 				{
 					label: 'Authentication',
-					href: '/docs/products/auth/security'
+					href: '/docs/advanced/security/authentication'
 				},
 				{
 					label: 'Encryption',
