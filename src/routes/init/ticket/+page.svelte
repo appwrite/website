@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -9,8 +10,8 @@
     function loginGithub() {
         appwriteInit.account.createOAuth2Session(
             'github',
-            'http://localhost:5173/init/ticket?success=1',
-            'http://localhost:5173/init/ticket?error=1',
+            `${$page.url.origin}/init/ticket?success=1`,
+            `${$page.url.origin}/init/ticket?error=1`,
             ['read:user']
         );
     }
