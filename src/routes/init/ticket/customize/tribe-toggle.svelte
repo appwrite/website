@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { createCheckbox, melt } from '@melt-ui/svelte';
 
@@ -24,6 +25,7 @@
         class="aw-icon-button aw-box-icon has-border-gradient"
         use:melt={$root}
         on:m-click|preventDefault={onClick}
+        disabled={!browser}
     >
         <img {src} {alt} />
     </button>
