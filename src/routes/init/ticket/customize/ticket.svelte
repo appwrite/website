@@ -5,7 +5,6 @@
         name?: string;
         user?: string;
         id: string;
-        showGithub?: boolean;
         tribe?: string | null;
         contributions?: ContributionsMatrix;
     };
@@ -16,16 +15,12 @@
     import Logo from './(assets)/logo.svg';
 
     type $$Props = TicketProps;
-    $: ({ name, user, id, showGithub, tribe, contributions } = $$props as $$Props);
-
-    function randomRange(min: number, max: number) {
-        return Math.random() * (max - min) + min;
-    }
+    $: ({ name, user, id, tribe, contributions } = $$props as $$Props);
 </script>
 
 <div class="ticket">
     <img src={BG} alt="" class="bg" />
-    <p class="aw-title aw-u-color-text-primary">{name || 'Wade Wilson'}</p>
+    <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
     {#if user}
         <p class="aw-label" style:margin-block-start="0.25rem">@{user}</p>
     {/if}
@@ -41,7 +36,7 @@
 
     {#if contributions}
         <div class="github">
-            {#each contributions as row, i}
+            {#each contributions as row}
                 <div class="row">
                     {#each row as opacity, j}
                         <div style:--index={7 - j} style:opacity />

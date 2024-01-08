@@ -38,16 +38,10 @@
                 <div class="aw-icon-github" />
                 <span class="text">Register with GitHub Account</span>
             </button>
-            <button class="aw-button is-full-width is-secondary u-margin-block-start-8">
+            <button class="aw-button is-full-width is-secondary u-margin-block-start-8" disabled>
                 <div class="aw-icon-appwrite aw-u-color-text-primary" />
-                <span class="text">Register with Appwrite Account</span>
+                <span class="text">(SOON) Register with Appwrite Account</span>
             </button>
-            <a
-                href="/init/ticket/customize"
-                class="aw-button is-full-width is-secondary u-margin-block-start-8"
-            >
-                <span class="text">(DEBUG) Customize ticket without logging in</span>
-            </a>
             <p class="u-margin-block-start-16">
                 By registering, you agree to our <a href="/terms" class="aw-link is-inline"
                     >Terms and Conditions</a

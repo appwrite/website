@@ -9,6 +9,8 @@
     import TribeToggle from './tribe-toggle.svelte';
     import { appwriteInit } from '$lib/appwrite/init';
     import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
     export let data;
 
@@ -47,10 +49,10 @@
         return (value - fromMin) * scale + toMin;
     }
 
-    function ticketOut(_node: HTMLElement): TransitionConfig {
+    function ticketOut(_node: HTMLElement, enabled = false): TransitionConfig {
         // Scale from 1 to 0.75, from opacity 1 to 0.5
         return {
-            duration: 500,
+            duration: enabled ? 500 : 0,
             css: (t) => `
                 transform: scale(${toScale(t, [0, 1], [0.9, 1])});
                 opacity: ${toScale(t, [0, 1], [0.25, 1])};
@@ -58,6 +60,11 @@
             easing: quadOut
         };
     }
+
+    let mounted = false;
+    onMount(() => {
+        mounted = true;
+    });
 </script>
 
 <svelte:head>
@@ -86,6 +93,7 @@
                     required
                     bind:value={name}
                     maxlength="128"
+                    disabled={!browser}
                 />
             </div>
 
@@ -105,9 +113,10 @@
                     await appwriteInit.account.deleteSession('current');
                     goto('/init/ticket');
                 }}
+                disabled={!browser}
             >
                 <div class="aw-icon-github aw-u-color-text-primary" />
-                <span class="text">DEBUG Log-out of GitHub</span>
+                <span class="text">(DEBUG) Log-out of GitHub</span>
             </button>
 
             <hr />
@@ -129,7 +138,7 @@
                 {/each}
             </div>
         </div>
-        <div class="ticket-preview">
+        <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
             {#key tribe}
                 <div
                     class="ticket-holder"
@@ -178,6 +187,8 @@
 
         display: grid;
         place-items: center;
+
+        transition: opacity 0.25s ease;
 
         .ticket-holder {
             position: absolute;
