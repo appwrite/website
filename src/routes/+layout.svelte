@@ -48,6 +48,7 @@
     import { derived, writable } from 'svelte/store';
     import { navigating, page } from '$app/stores';
     import { onMount } from 'svelte';
+    import { sdk, loggedIn } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -55,8 +56,26 @@
         document.body.classList.remove('theme-dark', 'theme-light');
         document.body.classList.add(className);
     }
+    let getAccount = async () => {
+      loggedIn.set(
+        localStorage.getItem('appwrite:loggedIn') !== null
+      );
+
+      try {
+          await sdk.account.get();
+
+          localStorage.setItem('appwrite:loggedIn', 'true');
+          
+          loggedIn.set(true);
+      } catch (e) {
+          loggedIn.set(false);
+      }
+    }
+
 
     onMount(() => {
+        getAccount();
+
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);

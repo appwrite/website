@@ -109,7 +109,7 @@ To find or add a domain:
 3. Click on **Create domain**.
 4. Input your domain and click **Next**.
 5. Copy the **CNAME** record and add it to your domain registrar.
-6. Click **Go to console** and wait for verification and certificate generation.
+6. Click **Go to Console** and wait for verification and certificate generation.
 
 DNS records can take up to 48 hours to propagate.
 
