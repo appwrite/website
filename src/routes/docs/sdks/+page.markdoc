@@ -115,17 +115,21 @@ We are always looking to add new SDKs to our platform. If the SDK you are lookin
 
 Appwrite supports multiple API protocols for maximum flexibility and developer convenience. You can learn more about how to integrate directly with them using one of the following available guides:
 
-{% arrow_link href="/docs/apis/realtime" %}
-Integrate with the Appwrite Realtime API 
-{% /arrow_link %}
+{% cards %}
+{% cards_item href="/docs/apis/realtime" title="Realtime API" %}
+Integrate with the Appwrite Realtime API
+{% /cards_item %}
 
-{% arrow_link href="/docs/apis/rest" %}
-Integrate with the Appwrite REST API 
-{% /arrow_link %}
+{% cards_item href="/docs/apis/rest" title="REST API" %}
+Integrate with the Appwrite REST API
+{% /cards_item %}
 
-{% arrow_link href="/docs/apis/graphql" %}
-Integrate with the Appwrite GraphQL API 
-{% /arrow_link %}
+{% cards_item href="/docs/apis/graphql" title="GraphQL API" %}
+Integrate with the Appwrite GraphQL API
+{% /cards_item %}
+{% /cards %}
+
+
 
 # Community {% #community %}
 If you have created your own framework or any other technology specific integration and would like us to list it here please [contact us](/contact-us).

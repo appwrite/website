@@ -1,0 +1,14 @@
+---
+layout: article
+title: Backups
+description: Appwrite performs regular data backups to ensure data security. Data must be kept private, but continuously available in the event of malicious attacks, corruption, or accidents.
+---
+
+Preventing downtime and keeping data available is a crucial part to digital security.
+Backups are crucial for:
+- Recovering from accidental deletion of data.
+- Recovering in case of malicious alteration or deletion of data.
+- Reducing downtime in the event of accidental data loss, corruption, or malicious attacks.
+
+Appwrite Cloud uses multiple databases for its products. Some data bases will have access to point-in-time recovery from the past 7 days.
+Other databases performs regular data backups every 4 hours. Each backup is kept for 7 days.
