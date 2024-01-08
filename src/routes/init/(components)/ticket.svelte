@@ -11,8 +11,8 @@
 </script>
 
 <script lang="ts">
-    import BG from './(assets)/ticket-bg.svg';
-    import Logo from './(assets)/logo.svg';
+    import BG from '../(assets)/ticket-bg.svg';
+    import Logo from '../(assets)/logo.svg';
 
     type $$Props = TicketProps;
     $: ({ name, user, id, tribe, contributions } = $$props as $$Props);
@@ -39,7 +39,7 @@
             {#each contributions as row}
                 <div class="row">
                     {#each row as opacity, j}
-                        <div style:--index={7 - j} style:opacity />
+                        <div style:--index={row.length - j} style:opacity />
                     {/each}
                 </div>
             {/each}
