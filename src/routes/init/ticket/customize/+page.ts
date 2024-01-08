@@ -1,73 +1,92 @@
 import { appwriteInit } from '$lib/appwrite/init';
-import { createGraphqlFetcher } from '$lib/utils/graphql';
+import { redirect } from '@sveltejs/kit';
+
 import { isLoggedInGithub } from '../../helpers';
+import type { ContributionsMatrix } from './ticket.svelte';
+import { browser } from '$app/environment';
 
-export interface GithubContributionsResponse {
-    data: Data;
+interface GithubContributionsResponse {
+    data: {
+        user: {
+            contributionsCollection: {
+                contributionCalendar: {
+                    totalContributions: number;
+                    weeks: Array<{
+                        contributionDays: Array<{
+                            contributionCount: number;
+                            date: Date;
+                        }>;
+                    }>;
+                };
+            };
+        };
+    };
 }
 
-export interface Data {
-    user: User;
+interface GithubUser {
+    login: string;
+    name: string;
 }
 
-export interface User {
-    contributionsCollection: ContributionsCollection;
-}
-
-export interface ContributionsCollection {
-    contributionCalendar: ContributionCalendar;
-}
-
-export interface ContributionCalendar {
-    totalContributions: number;
-    weeks: Week[];
-}
-
-export interface Week {
-    contributionDays: ContributionDay[];
-}
-
-export interface ContributionDay {
-    contributionCount: number;
-    date: Date;
-}
-
-const fetchContributions = createGraphqlFetcher<GithubContributionsResponse>({
-    query: `query($userName:String!) { 
-    user(login: $userName){
-      contributionsCollection {
-        contributionCalendar {
-          totalContributions
-          weeks {
-            contributionDays {
-              contributionCount
-              date
-            }
-          }
-        }
-      }
-    }
-  }`,
-    url: 'https://api.github.com/graphql'
-});
-
-export const load = async () => {
+export const load = async ({ fetch }) => {
     if (await isLoggedInGithub()) {
         const { providerAccessToken } = await appwriteInit.account.getSession('current');
-        console.log(providerAccessToken);
-        const contributions = await fetchContributions({
-            authorizationToken: providerAccessToken,
-            variables: { userName: 'tglide' }
+
+        const username = await fetch('https://api.github.com/user', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${providerAccessToken}`
+            }
+        }).then((res) => res.json() as Promise<GithubUser>);
+
+        const { data } = await fetch('https://api.github.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${providerAccessToken}`
+            },
+            body: JSON.stringify({
+                query: `query($userName:String!) { 
+                user(login: $userName){
+                  contributionsCollection {
+                    contributionCalendar {
+                      totalContributions
+                      weeks {
+                        contributionDays {
+                          contributionCount
+                          date
+                        }
+                      }
+                    }
+                  }
+                }
+              }`,
+                variables: { userName: 'tglide' }
+            })
+        }).then((res) => res.json() as Promise<GithubContributionsResponse>);
+        const { weeks } = data.user.contributionsCollection.contributionCalendar;
+
+        const max = weeks.reduce((acc, week) => {
+            const weekMax = week.contributionDays.reduce((acc, day) => {
+                return Math.max(acc, day.contributionCount);
+            }, 0);
+            const newMax = Math.max(acc, weekMax);
+            return Math.min(newMax, 45);
+        }, 0);
+
+        const contributions: ContributionsMatrix = weeks.map((week) => {
+            return week.contributionDays
+                .map((day) => {
+                    return day.contributionCount / max;
+                })
+                .toReversed();
         });
 
-        console.log(
-            contributions.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
-                (week) => week.contributionDays
-            )
-        );
-
         return {
-            // username: session
+            contributions,
+            username
         };
+    } else if (browser) {
+        throw redirect(307, '/init/ticket');
     }
 };

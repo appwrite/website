@@ -1,10 +1,13 @@
 <script lang="ts" context="module">
+    export type ContributionsMatrix = number[][];
+
     export type TicketProps = {
         name?: string;
         user?: string;
         id: string;
         showGithub?: boolean;
         tribe?: string | null;
+        contributions?: ContributionsMatrix;
     };
 </script>
 
@@ -13,7 +16,7 @@
     import Logo from './(assets)/logo.svg';
 
     type $$Props = TicketProps;
-    $: ({ name, user, id, showGithub, tribe } = $$props as $$Props);
+    $: ({ name, user, id, showGithub, tribe, contributions } = $$props as $$Props);
 
     function randomRange(min: number, max: number) {
         return Math.random() * (max - min) + min;
@@ -36,15 +39,17 @@
         <img class="tribe" src={`/images/tribes/${tribe.toLowerCase()}.svg`} alt={tribe} />
     {/if}
 
-    <div class="github">
-        {#each { length: 100 } as _, i}
-            <div class="row">
-                {#each { length: 7 } as _, j}
-                    <div style:--index={7 - j} style:opacity={randomRange(0, 1)} />
-                {/each}
-            </div>
-        {/each}
-    </div>
+    {#if contributions}
+        <div class="github">
+            {#each contributions as row, i}
+                <div class="row">
+                    {#each row as opacity, j}
+                        <div style:--index={7 - j} style:opacity />
+                    {/each}
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style lang="scss">
@@ -137,9 +142,10 @@
             gap: 0.25rem;
 
             div {
-                width: 0.5rem;
-                height: 0.5rem;
-                border-radius: 0.125rem;
+                --p-size: 0.5275rem;
+                width: var(--p-size);
+                height: var(--p-size);
+                border-radius: calc(var(--p-size) / 4);
                 animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + 700ms) forwards;
             }
         }
