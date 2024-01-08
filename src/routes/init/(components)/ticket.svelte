@@ -22,14 +22,16 @@
     <img src={BG} alt="" class="bg" />
     <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
     {#if user}
-        <p class="aw-label" style:margin-block-start="0.25rem">@{user}</p>
+        <p class="aw-label">@{user}</p>
     {/if}
     <div class="bottom-left">
         <img src={Logo} alt="init_" />
         <span>JAN 15 - 20</span>
     </div>
 
-    <span class="id">#{id}</span>
+    <div class="id">
+        <span>#{id}</span>
+    </div>
     {#if tribe}
         <img class="tribe" src={`/images/tribes/${tribe.toLowerCase()}.svg`} alt={tribe} />
     {/if}
@@ -48,14 +50,24 @@
 </div>
 
 <style lang="scss">
+    @use 'sass:math';
+
+    $base-width: 28.75;
+
+    @function adjusted($value) {
+        @return #{math.div($value, $base-width)}em;
+    }
+
     .ticket {
-        width: 28.75rem;
+        --base-width: clamp(12rem, 50vw, #{$base-width}rem);
+        font-size: var(--base-width);
+        width: var(--base-width);
         aspect-ratio: 460 / 644;
 
-        padding: 2rem;
-        padding-block-start: 3.5rem;
+        padding: adjusted(2);
+        padding-block-start: adjusted(3.5);
         position: relative;
-        border-radius: 1rem;
+        border-radius: adjusted(1);
         overflow: hidden;
     }
 
@@ -65,48 +77,63 @@
         z-index: -1;
     }
 
+    .aw-title {
+        font-size: adjusted(2.5);
+        line-height: #{math.div(44, 40)}em;
+    }
+
+    .aw-label {
+        font-size: adjusted(1.5);
+        line-height: #{math.div(28, 24)}em;
+        margin-block-start: adjusted(0.25);
+    }
+
     .bottom-left {
         position: absolute;
-        inset-block-end: 2rem;
-        inset-inline-start: 2rem;
+        inset-block-end: adjusted(2);
+        inset-inline-start: adjusted(2);
 
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: adjusted(0.5);
 
         img {
-            width: 5.6875rem;
+            width: adjusted(5.6875);
         }
 
         span {
             font-family: var(--aw-font-family-aeonik-fono);
             color: hsl(var(--aw-color-primary));
-            font-size: 0.875rem;
+            font-size: adjusted(0.875);
             font-style: normal;
             font-weight: 400;
-            line-height: 1rem; /* 114.286% */
+            line-height: 114.286%;
         }
     }
 
     .id {
         position: absolute;
-        inset-block-end: 2rem;
-        inset-inline-end: 2rem;
+        inset-block-end: adjusted(2);
+        inset-inline-end: adjusted(2);
+        display: grid;
+        place-items: center;
 
-        color: rgba(255, 255, 255, 0.5);
-        font-family: var(--aw-font-family-aeonik-fono);
-        font-size: 0.875rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1rem; /* 114.286% */
+        span {
+            color: rgba(255, 255, 255, 0.5);
+            font-family: var(--aw-font-family-aeonik-fono);
+            font-size: adjusted(0.875);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 114.286%;
+        }
     }
 
     .tribe {
         position: absolute;
-        inset-block-end: -6rem;
-        inset-inline-start: -8rem;
+        inset-block-end: adjusted(-6);
+        inset-inline-start: adjusted(-8);
 
-        width: 28.75rem;
+        width: adjusted(28.75);
         /* Make it white */
         filter: brightness(0) invert(1);
         opacity: 0.04;
@@ -124,7 +151,7 @@
     .github {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: adjusted(0.25);
 
         position: absolute;
         inset-block-start: 0;
@@ -134,10 +161,10 @@
 
         .row {
             display: flex;
-            gap: 0.25rem;
+            gap: adjusted(0.25);
 
             div {
-                --p-size: 0.5275rem;
+                --p-size: #{adjusted(0.5275)};
                 width: var(--p-size);
                 height: var(--p-size);
                 border-radius: calc(var(--p-size) / 4);
