@@ -1,3 +1,5 @@
+import { browser } from '$app/environment';
+import { appwriteInit } from '$lib/appwrite/init';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
@@ -50,4 +52,15 @@ export function createCountdown(date: Date) {
         minutes,
         seconds
     };
+}
+
+export async function isLoggedInGithub() {
+    if (!browser) return false;
+
+    try {
+        const { provider } = await appwriteInit.account.getSession('current');
+        return provider === 'github';
+    } catch {
+        return false;
+    }
 }

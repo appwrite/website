@@ -7,7 +7,12 @@
     import TicketPNG from '../(assets)/ticket.png';
 
     function loginGithub() {
-        appwriteInit.account.createOAuth2Session('github');
+        appwriteInit.account.createOAuth2Session(
+            'github',
+            'http://localhost:5173/init/ticket?success=1',
+            'http://localhost:5173/init/ticket?error=1',
+            ['read:user']
+        );
     }
 </script>
 

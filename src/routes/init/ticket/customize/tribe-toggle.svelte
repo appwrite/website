@@ -19,7 +19,7 @@
     $: alt = tribe === null ? 'No tribe' : tribe;
 </script>
 
-<Tooltip>
+<Tooltip disableHoverableContent>
     <button
         class="aw-icon-button aw-box-icon has-border-gradient"
         use:melt={$root}
