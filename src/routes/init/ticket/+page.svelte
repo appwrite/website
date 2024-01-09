@@ -6,6 +6,8 @@
     import Main from '$lib/layouts/Main.svelte';
     import ShineSVG from '../(assets)/shine.svg';
     import TicketPNG from '../(assets)/ticket.png';
+    import Ticket from '../(components)/Ticket.svelte';
+    import { getMockContributions } from '../helpers';
 
     function loginGithub() {
         appwriteInit.account.createOAuth2Session(
@@ -61,9 +63,20 @@
         </div>
 
         <div class="ticket-preview">
-            <img class="ticket-1" src={TicketPNG} alt="" />
-            <img class="ticket-2" src={TicketPNG} alt="" />
-            <img class="ticket-3" src={TicketPNG} alt="" />
+            <div class="ticket-1">
+                <Ticket name="eldadfux" id="123123" />
+            </div>
+            <div class="ticket-2">
+                <Ticket
+                    name="Eldad"
+                    user="eldadfux"
+                    id="123123"
+                    contributions={getMockContributions()}
+                />
+            </div>
+            <div class="ticket-3">
+                <Ticket name="Sara" user="sara_k" id="123123" />
+            </div>
             <img class="shine" src={ShineSVG} alt="" />
         </div>
     </div>
@@ -109,22 +122,24 @@
         aspect-ratio: 0.925 / 1;
 
         .ticket-1 {
-            inset-inline-start: -15.625rem;
-            inline-size: 50%;
+            --base-width: 24.375rem;
+            inset-inline-start: 50%;
+            --p-translate-x: calc(-50% - 480px);
             block-size: auto;
+            opacity: 0.5;
         }
 
         .ticket-2 {
             inset-inline-start: 50%;
             --p-translate-x: -50%;
-            inline-size: min(60%, 440px);
-            block-size: auto;
+            --base-width: min(40vw, 28.75rem);
         }
 
         .ticket-3 {
-            inset-inline-end: -15.625rem;
-            inline-size: 50%;
-            block-size: auto;
+            --base-width: 24.375rem;
+            inset-inline-start: 50%;
+            --p-translate-x: calc(-50% + 480px);
+            opacity: 0.25;
         }
 
         [class^='ticket-'] {
@@ -152,6 +167,8 @@
             inset-block-start: -100px;
             inset-inline-end: -100px;
             z-index: 20;
+
+            pointer-events: none;
         }
     }
 
@@ -202,7 +219,15 @@
 
         .ticket-preview {
             grid-column: 1 / -1;
-            /* border-radius: 0; */
+
+            .ticket-1,
+            .ticket-3 {
+                opacity: 0;
+            }
+
+            .ticket-2 {
+                --base-width: min(60vw, 300px);
+            }
         }
     }
 </style>
