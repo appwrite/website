@@ -4,7 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import ShineSVG from '../(assets)/shine.svg';
+
     import Ticket from '../(components)/Ticket.svelte';
     import TicketPreview from '../(components)/TicketPreview.svelte';
     import { getMockContributions } from '../helpers';
@@ -78,7 +78,6 @@
                 <div class="ticket-3">
                     <Ticket name="Sara" user="sara_k" id="123123" />
                 </div>
-                <img class="shine" src={ShineSVG} alt="" />
             </TicketPreview>
         </div>
     </div>
@@ -144,15 +143,6 @@
             );
             border-radius: var(--p-border-radius);
             z-index: 10;
-        }
-
-        .shine {
-            position: absolute;
-            inset-block-start: -100px;
-            inset-inline-end: -100px;
-            z-index: 20;
-
-            pointer-events: none;
         }
     }
 
