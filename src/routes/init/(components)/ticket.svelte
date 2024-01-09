@@ -13,9 +13,24 @@
 <script lang="ts">
     import BG from '../(assets)/ticket-bg.svg';
     import Logo from '../(assets)/logo.svg';
+    import type { TransitionConfig } from 'svelte/transition';
+    import { toScale } from '$lib/utils/toScale';
 
     type $$Props = TicketProps;
     $: ({ name, user, id, tribe, contributions } = $$props as $$Props);
+
+    function appear(): TransitionConfig {
+        return {
+            css(t, u) {
+                console.log(t);
+                return `
+                  
+                    opacity: ${toScale(u, [1, 0], [0.32, 0.04])};
+                `;
+            },
+            duration: 400
+        };
+    }
 </script>
 
 <div class="ticket">
@@ -32,9 +47,16 @@
     <div class="id">
         <span>#{id}</span>
     </div>
-    {#if tribe}
-        <img class="tribe" src={`/images/tribes/${tribe.toLowerCase()}.svg`} alt={tribe} />
-    {/if}
+
+    {#key tribe}
+        <img
+            class="tribe"
+            src={`/images/tribes/${tribe?.toLowerCase()}.svg`}
+            alt={tribe}
+            style:display={tribe ? undefined : 'none'}
+            in:appear
+        />
+    {/key}
 
     {#if contributions}
         <div class="github">
