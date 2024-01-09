@@ -72,7 +72,7 @@
         padding-inline: clamp(1.25rem, 4vw, 120rem);
         padding-block-start: 4rem;
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             grid-template-columns: 1fr;
             gap: 4rem;
         }

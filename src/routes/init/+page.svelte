@@ -293,7 +293,7 @@
             grid-row: 9 / span 1;
         }
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             display: flex;
             flex-direction: column;
             gap: 1rem;
