@@ -1,11 +1,17 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
     import { appwriteInit } from '$lib/appwrite/init';
     import TribeToggle from './tribe-toggle.svelte';
+    import type { PageData } from './$types';
+    import { Switch } from '$lib/components';
+
+    $: data = $page.data as PageData;
 
     export let name = '';
     export let tribe: string | null = null;
+    export let showGitHub = true;
 
     const tribes = [
         null,
@@ -46,14 +52,18 @@
 
 <hr />
 
-<h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
-<p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-    Sign in with your Appwrite Account and see the magic happen in your ticket
-</p>
-<button class="aw-button is-full-width is-secondary u-margin-block-start-24" disabled>
-    <div class="aw-icon-appwrite aw-u-color-text-primary" />
-    <span class="text">(SOON) Log in to Appwrite Account</span>
-</button>
+<div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
+    <img src="/images/icons/colored/check.svg" alt="" />
+    <span class="aw-sub-body-500">GitHub account connected</span>
+</div>
+
+<div class="u-flex u-cross-center u-main-between" style="margin-block-start: 0.25rem; gap: 1.25rem">
+    <p class="aw-sub-body-500">
+        Your ticket has been updated to show your unique GitHub contribution pattern.
+    </p>
+    <Switch bind:checked={showGitHub} />
+</div>
+
 <button
     class="aw-button is-full-width is-secondary u-margin-block-start-24"
     on:click={async () => {
@@ -64,6 +74,17 @@
 >
     <div class="aw-icon-github aw-u-color-text-primary" />
     <span class="text">(DEBUG) Log-out of GitHub</span>
+</button>
+
+<hr />
+
+<h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
+<p class="aw-sub-body-500" style:margin-block-start="0.25rem">
+    Sign in with your Appwrite Account and see the magic happen in your ticket
+</p>
+<button class="aw-button is-full-width is-secondary u-margin-block-start-24" disabled>
+    <div class="aw-icon-appwrite aw-u-color-text-primary" />
+    <span class="text">(SOON) Log in to Appwrite Account</span>
 </button>
 
 <hr />
