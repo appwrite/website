@@ -41,7 +41,11 @@
             {#each contributions as row}
                 <div class="row">
                     {#each row as opacity, j}
-                        <div style:--index={row.length - j} style:opacity />
+                        <div
+                            style:--index={row.length - j}
+                            data-empty={opacity ? undefined : ''}
+                            style:--opacity={opacity}
+                        />
                     {/each}
                 </div>
             {/each}
@@ -141,10 +145,12 @@
 
     @keyframes fade-in {
         from {
-            background-color: transparent;
+            background-color: hsl(var(--bg-color) / 0);
+            border: 1px solid hsl(var(--border-color, transparent) / 0);
         }
         to {
-            background-color: hsl(var(--aw-color-accent));
+            background-color: hsl(var(--bg-color) / 1);
+            border: 1px solid hsl(var(--border-color, transparent) / 1);
         }
     }
 
@@ -164,11 +170,23 @@
             gap: adjusted(0.25);
 
             div {
-                --p-size: #{adjusted(0.5275)};
-                width: var(--p-size);
-                height: var(--p-size);
-                border-radius: calc(var(--p-size) / 4);
+                --size: #{adjusted(0.5275)};
+                width: var(--size);
+                height: var(--size);
+
+                border-radius: calc(var(--size) / 4);
                 animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + 700ms) forwards;
+
+                &[data-empty] {
+                    --bg-color: transparent;
+                    --border-color: var(--aw-color-accent);
+                    opacity: 0.2;
+                }
+
+                &:not([data-empty]) {
+                    --bg-color: var(--aw-color-accent);
+                    opacity: var(--opacity);
+                }
             }
         }
     }
