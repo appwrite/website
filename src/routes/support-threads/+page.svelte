@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { afterNavigate, goto } from '$app/navigation';
+    import { afterNavigate, goto, invalidate } from '$app/navigation';
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -196,6 +196,7 @@
                     placeholder="Search for threads"
                     data-hit="-1"
                     use:search
+                    bind:value={query}
                 />
             </div>
         </div>
@@ -216,7 +217,7 @@
                     <button
                         class="aw-button"
                         on:click={() => {
-                            goto('/support-threads', { replaceState: true, keepFocus: true });
+                            handleSearch('');
                         }}>Clear search</button
                     >
                 </div>
