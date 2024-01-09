@@ -12,6 +12,7 @@
 
     let name = data.user?.name ?? '';
     let tribe: string | null = null;
+    let showGitHub = true;
 
     let drawerOpen = false;
 </script>
@@ -35,7 +36,7 @@
             </h1>
 
             <div class="desktop">
-                <Form bind:name bind:tribe />
+                <Form bind:name bind:tribe bind:showGitHub />
             </div>
         </div>
         <TicketPreview>
@@ -45,7 +46,7 @@
                     user={data.user?.login}
                     id="0013371"
                     {tribe}
-                    contributions={data.contributions}
+                    contributions={showGitHub ? data.contributions : undefined}
                 />
             </div>
             <img class="shine" src={ShineSVG} alt="" />

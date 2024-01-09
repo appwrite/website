@@ -11,10 +11,11 @@
 </script>
 
 <script lang="ts">
-    import BG from '../(assets)/ticket-bg.svg';
-    import Logo from '../(assets)/logo.svg';
-    import type { TransitionConfig } from 'svelte/transition';
     import { toScale } from '$lib/utils/toScale';
+    import { quadInOut } from 'svelte/easing';
+    import { fade, type TransitionConfig } from 'svelte/transition';
+    import Logo from '../(assets)/logo.svg';
+    import BG from '../(assets)/ticket-bg.svg';
 
     type $$Props = TicketProps;
     $: ({ name, user, id, tribe, contributions } = $$props as $$Props);
@@ -22,13 +23,12 @@
     function appear(): TransitionConfig {
         return {
             css(t, u) {
-                console.log(t);
                 return `
-                  
                     opacity: ${toScale(u, [1, 0], [0.32, 0.04])};
                 `;
             },
-            duration: 400
+            duration: 400,
+            easing: quadInOut
         };
     }
 </script>
@@ -59,7 +59,7 @@
     {/key}
 
     {#if contributions}
-        <div class="github">
+        <div class="github" out:fade={{ duration: 100 }}>
             {#each contributions as row}
                 <div class="row">
                     {#each row as opacity, j}
@@ -168,11 +168,11 @@
     @keyframes fade-in {
         from {
             background-color: hsl(var(--bg-color) / 0);
-            border: 1px solid hsl(var(--border-color, transparent) / 0);
+            /* border: 1px solid hsl(var(--border-color, transparent) / 0); */
         }
         to {
             background-color: hsl(var(--bg-color) / 1);
-            border: 1px solid hsl(var(--border-color, transparent) / 1);
+            /* border: 1px solid hsl(var(--border-color, transparent) / 1); */
         }
     }
 
