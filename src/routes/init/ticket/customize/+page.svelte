@@ -8,7 +8,7 @@
     import { quadOut } from 'svelte/easing';
     import { fly, type TransitionConfig } from 'svelte/transition';
     import ShineSVG from '../../(assets)/shine.svg';
-    import Ticket from '../../(components)/ticket.svelte';
+    import Ticket from '../../(components)/Ticket.svelte';
     import TribeToggle from './tribe-toggle.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
 

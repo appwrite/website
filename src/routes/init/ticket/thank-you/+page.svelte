@@ -3,7 +3,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
-    import Ticket from '../../(components)/ticket.svelte';
+    import Ticket from '../../(components)/Ticket.svelte';
 
     export let data;
 
