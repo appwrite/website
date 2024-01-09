@@ -93,7 +93,7 @@
 				{
 					label: 'Command Center',
 					href: '/docs/tooling/command-center',
-					icon: 'icon-sparkles'
+					icon: 'icon-command'
 				},
 				{
 					label: 'Assistant',
