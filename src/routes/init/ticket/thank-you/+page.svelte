@@ -16,44 +16,49 @@
 
 <Main>
     <div class="hero">
-        <div>
-            <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="3.5rem">
-                Thank you for registering for
-                <span style:font-weight="500">
-                    init<span class="aw-u-color-text-accent">_</span>
-                </span>
-            </h1>
+        <div class="desktop-left">
+            <div class="header">
+                <h1 class="aw-title aw-u-color-text-primary">
+                    Thank you for registering for
+                    <span style:font-weight="500">
+                        init<span class="aw-u-color-text-accent">_</span>
+                    </span>
+                </h1>
+                <p class="aw-label u-margin-block-start-16">You have received ticket #0013371</p>
+            </div>
 
-            <p class="aw-label u-margin-block-start-16">You have received ticket #0013371</p>
+            <div class="info">
+                <a
+                    href="/init/ticket/customize"
+                    class="aw-button is-full-width u-margin-block-start-32"
+                >
+                    <span class="text">Customize ticket</span>
+                </a>
 
-            <a
-                href="/init/ticket/customize"
-                class="aw-button is-full-width u-margin-block-start-32"
-            >
-                <span class="text">Customize ticket</span>
-            </a>
-
-            <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                <button class="aw-button is-full-width is-secondary" disabled>
-                    <div class="aw-icon-copy aw-u-color-text-primary" />
-                    <span class="text">Copy ticket URL</span>
-                </button>
-                <button class="aw-button is-full-width is-secondary" disabled>
-                    <div class="aw-icon-x aw-u-color-text-primary" />
-                    <span class="text">Share your ticket</span>
-                </button>
+                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
+                    <button class="aw-button is-full-width is-secondary" disabled>
+                        <div class="aw-icon-copy aw-u-color-text-primary" />
+                        <span class="text">Copy ticket URL</span>
+                    </button>
+                    <button class="aw-button is-full-width is-secondary" disabled>
+                        <div class="aw-icon-x aw-u-color-text-primary" />
+                        <span class="text">Share your ticket</span>
+                    </button>
+                </div>
             </div>
         </div>
-        <TicketPreview>
-            <div class="ticket-holder">
-                <Ticket
-                    {name}
-                    user={data.user?.login}
-                    id="0013371"
-                    contributions={data.contributions}
-                />
-            </div>
-        </TicketPreview>
+        <div class="ticket-preview-wrapper">
+            <TicketPreview>
+                <div class="ticket-holder">
+                    <Ticket
+                        {name}
+                        user={data.user?.login}
+                        id="0013371"
+                        contributions={data.contributions}
+                    />
+                </div>
+            </TicketPreview>
+        </div>
     </div>
 
     <div class="aw-container">
@@ -63,18 +68,49 @@
 </Main>
 
 <style lang="scss">
-    .hero {
-        display: grid;
-        grid-template-columns: minmax(420px, 30%) min(65%, 700px);
-        gap: 7.5rem;
-        justify-content: space-between;
+    h1 {
+        margin-block-start: 3.5rem;
+    }
 
-        padding-inline: clamp(1.25rem, 4vw, 120rem);
-        padding-block-start: 4rem;
+    .ticket-preview-wrapper {
+        display: contents;
+    }
 
-        @media screen and (max-width: 1023px) {
-            grid-template-columns: 1fr;
-            gap: 4rem;
+    .ticket-holder {
+        --base-width: min(40vw, 28.75rem);
+    }
+
+    @media screen and (max-width: 511px) {
+        .ticket-preview-wrapper {
+            :global(.ticket-preview) {
+                border-radius: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        h1 {
+            margin-block-start: 0;
+        }
+
+        .info {
+            grid-row: 3;
+
+            .u-flex {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-block-start: 0.5rem;
+            }
+        }
+
+        .ticket-preview-wrapper {
+            :global(.ticket-preview) {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .ticket-holder {
+            --base-width: min(60vw, 300px);
         }
     }
 </style>
