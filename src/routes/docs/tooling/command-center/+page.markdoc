@@ -6,6 +6,13 @@ description: Appwrite Command Center enhances developer experience with AI, keyb
 
 The Appwrite **Command Center** is designed to improve the developer experience by enabling straightforward navigation and exploration of features, settings, and sections of the Appwrite Console. The Command Center is enhanced with [AI capabilities](/docs/tooling/assistant) and is the home of the Appwrite assistant. It allows you to execute tasks and access features within the Appwrite Console efficiently using keyboard shortcuts and advanced context-aware search.
 
+{% only_dark %}
+![Command center](/images/docs/command-center/dark/command-center.png)
+{% /only_dark %}
+{% only_light %}
+![Command center](/images/docs/command-center/command-center.png)
+{% /only_light %}
+
 # Getting started {% #getting-started %}
 
 You can access the Command Center by pressing `⌘` + `K` on Mac or `Ctrl` + `K` on Windows and Linux devices or by clicking the search icon in the Console top navigation bar. A modal will appear, presenting a search input and a list of commands relevant to your current Console context.
