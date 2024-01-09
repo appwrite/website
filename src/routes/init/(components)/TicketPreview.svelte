@@ -18,12 +18,14 @@
         position: relative;
         overflow: hidden;
         width: 100%;
-        aspect-ratio: 0.925 / 2;
+        aspect-ratio: 0.8 / 1;
 
         display: grid;
         place-items: center;
 
         transition: opacity 0.25s ease;
+
+        --base-width: min(40vw, 28.75rem);
 
         :global(.ticket-holder) {
             position: absolute;
@@ -37,6 +39,10 @@
             inset-block-start: -100px;
             inset-inline-end: -100px;
             z-index: 20;
+        }
+
+        @media screen and (max-width: 1023px) {
+            --base-width: min(60vw, 300px);
         }
     }
 </style>

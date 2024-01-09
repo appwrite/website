@@ -72,14 +72,6 @@
         margin-block-start: 3.5rem;
     }
 
-    .ticket-preview-wrapper {
-        display: contents;
-    }
-
-    .ticket-holder {
-        --base-width: min(40vw, 28.75rem);
-    }
-
     @media screen and (max-width: 511px) {
         .ticket-preview-wrapper {
             :global(.ticket-preview) {
@@ -104,13 +96,7 @@
         }
 
         .ticket-preview-wrapper {
-            :global(.ticket-preview) {
-                grid-column: 1 / -1;
-            }
-        }
-
-        .ticket-holder {
-            --base-width: min(60vw, 300px);
+            grid-column: 1 / -1;
         }
     }
 </style>
