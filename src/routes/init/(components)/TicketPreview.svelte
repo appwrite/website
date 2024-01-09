@@ -1,6 +1,6 @@
 <script>
     import { browser } from '$app/environment';
-    import ShineSVG from '../(assets)/shine.svg';
+    import ShineSVG from '../(assets)/shine-bg.svg';
 </script>
 
 <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
@@ -38,7 +38,7 @@
             position: absolute;
             inset-block-start: -100px;
             inset-inline-end: -100px;
-            z-index: 20;
+            z-index: -1;
         }
 
         @media screen and (max-width: 1023px) {
