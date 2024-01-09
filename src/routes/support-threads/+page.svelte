@@ -12,7 +12,7 @@
     import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
-    import { filterThreads } from './helpers';
+    import { filterThreads, getThreads } from './helpers';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -28,9 +28,7 @@
     const handleSearch = async (value: string) => {
         query = value;
         searching = true;
-        // goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
-        threads = await filterThreads({
-            threads: data.threads,
+        threads = await getThreads({
             q: value,
             tags: selectedTags ?? [],
             allTags: true
@@ -217,6 +215,7 @@
                     <button
                         class="aw-button"
                         on:click={() => {
+                            query = '';
                             handleSearch('');
                         }}>Clear search</button
                     >
