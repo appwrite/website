@@ -28,4 +28,4 @@ An integral part of the Command Center is the [Appwrite AI Assistant](/docs/tool
 
 Many developers favor keyboard interactions for efficiency and speed. The Command Center was designed with keyboard optimization in mind. It caters to the needs of keyboard-centric developers, enabling various tasks and efficient navigation across the Console without relying on a mouse or trackpad.
 
-You can use your up and down keys to navigate between different commands and your Enter and Escape keys to enter and exit specific context screens. The Command Center also includes many built-in shortcuts that can be used from any console screen and allow greater productivity.
+You can use your `up` and `down` arrow keys to navigate between different commands and your `Enter` and `Escape` keys to enter and exit specific context screens. The Command Center also includes many built-in shortcuts that can be used from any console screen and allow greater productivity.
