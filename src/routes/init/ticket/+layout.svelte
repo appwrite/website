@@ -5,6 +5,7 @@
 <style lang="scss">
     .wrapper {
         display: contents;
+        --p-padding-inline: clamp(1.25rem, 4vw, 120rem);
 
         :global(.hero) {
             display: grid;
@@ -12,7 +13,6 @@
             gap: clamp(3rem, 6vw, 7.5rem);
             justify-content: space-between;
 
-            --p-padding-inline: clamp(1.25rem, 4vw, 120rem);
             padding-inline: var(--p-padding-inline);
             padding-block-start: 4rem;
             max-width: 1440px;
