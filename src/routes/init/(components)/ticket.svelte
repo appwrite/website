@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     export type ContributionsMatrix = number[][];
+    export type TicketVariant = 'default' | 'pink' | 'rainbow';
 
     export type TicketProps = {
         name?: string;
@@ -7,6 +8,7 @@
         id: string;
         tribe?: string | null;
         contributions?: ContributionsMatrix;
+        variant?: TicketVariant;
     };
 </script>
 
@@ -16,12 +18,27 @@
     import { fade, type TransitionConfig } from 'svelte/transition';
     import Logo from '../(assets)/logo.svg';
     import BG from '../(assets)/ticket-bg.svg';
+    import BgPink from '../(assets)/ticket-bg-pink.svg';
     import ShineSvg from '../(assets)/shine.svg';
+    import ShinePink from '../(assets)/shine-pink.svg';
 
     type $$Props = TicketProps;
-    $: ({ name, user, id, tribe, contributions } = $$props as $$Props);
+    $: ({ name, user, id, tribe, contributions, variant = 'default' } = $$props as $$Props);
 
-    function appear(): TransitionConfig {
+    $: bg = {
+        default: BG,
+        pink: BgPink,
+        rainbow: BG
+    }[variant];
+
+    $: shine = {
+        default: ShineSvg,
+        pink: ShinePink,
+        rainbow: ShineSvg
+    }[variant];
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function appear(_node: HTMLElement): TransitionConfig {
         return {
             css(t, u) {
                 return `
@@ -35,8 +52,8 @@
 </script>
 
 <div class="wrapper">
-    <div class="ticket">
-        <img src={BG} alt="" class="bg" />
+    <div class="ticket" data-variant={variant}>
+        <img src={bg} alt="" class="bg" />
         <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
         {#if user}
             <p class="aw-label">@{user}</p>
@@ -75,8 +92,9 @@
                 {/each}
             </div>
         {/if}
+
+        <img class="shine" src={shine} alt="" />
     </div>
-    <img class="shine" src={ShineSvg} alt="" />
 </div>
 
 <style lang="scss">
@@ -94,17 +112,6 @@
         overflow: visible;
     }
 
-    .shine {
-        position: absolute;
-        max-inline-size: unset;
-        max-block-size: unset;
-        inline-size: adjusted(40);
-        block-size: auto;
-        inset-block-start: adjusted(-5);
-        inset-inline-start: adjusted(-5);
-        /* background-color: red; */
-    }
-
     .ticket {
         --base-width-default: clamp(12rem, 40vw, #{$base-width}rem);
         width: var(--base-width, var(--base-width-default));
@@ -115,6 +122,11 @@
         position: relative;
         border-radius: adjusted(1);
         overflow: hidden;
+    }
+
+    .shine {
+        position: absolute;
+        inset: 0;
     }
 
     .bg {
