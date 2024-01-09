@@ -21,6 +21,7 @@
     import BgPink from '../(assets)/ticket-bg-pink.svg';
     import ShineSvg from '../(assets)/shine.svg';
     import ShinePink from '../(assets)/shine-pink.svg';
+    import Glow from '../(assets)/glow.svg';
 
     type $$Props = TicketProps;
     $: ({ name, user, id, tribe, contributions, variant = 'default' } = $$props as $$Props);
@@ -52,6 +53,9 @@
 </script>
 
 <div class="wrapper">
+    {#if variant === 'pink'}
+        <img class="glow" src={Glow} alt="" />
+    {/if}
     <div class="ticket" data-variant={variant}>
         <img src={bg} alt="" class="bg" />
         <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
@@ -110,6 +114,16 @@
         position: relative;
         font-size: var(--base-width, var(--base-width-default));
         overflow: visible;
+    }
+
+    .glow {
+        position: absolute;
+        inset-block-start: adjusted(-12);
+        inset-inline-end: adjusted(-12);
+        max-inline-size: unset;
+        max-block-size: unset;
+        inline-size: 160%;
+        z-index: -1;
     }
 
     .ticket {
