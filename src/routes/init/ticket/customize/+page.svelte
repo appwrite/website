@@ -3,8 +3,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
-    import { quadOut } from 'svelte/easing';
-    import { fly, slide, type TransitionConfig } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
     import ShineSVG from '../../(assets)/shine.svg';
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
@@ -13,29 +12,6 @@
 
     let name = data.user?.name ?? '';
     let tribe: string | null = null;
-
-    function toScale(value: number, from: [number, number], to: [number, number]) {
-        const [fromMin, fromMax] = from;
-        const [toMin, toMax] = to;
-
-        const fromRange = fromMax - fromMin;
-        const toRange = toMax - toMin;
-        const scale = toRange / fromRange;
-
-        return (value - fromMin) * scale + toMin;
-    }
-
-    function ticketOut(_node: HTMLElement, enabled = false): TransitionConfig {
-        // Scale from 1 to 0.75, from opacity 1 to 0.5
-        return {
-            duration: enabled ? 500 : 0,
-            css: (t) => `
-                transform: scale(${toScale(t, [0, 1], [0.9, 1])});
-                opacity: ${toScale(t, [0, 1], [0.25, 1])};
-            `,
-            easing: quadOut
-        };
-    }
 
     let drawerOpen = false;
 </script>
@@ -63,21 +39,15 @@
             </div>
         </div>
         <TicketPreview>
-            {#key tribe}
-                <div
-                    class="ticket-holder"
-                    in:fly={{ y: -100, delay: 400, duration: 500, easing: quadOut }}
-                    out:ticketOut
-                >
-                    <Ticket
-                        {name}
-                        user={data.user?.login}
-                        id="0013371"
-                        {tribe}
-                        contributions={data.contributions}
-                    />
-                </div>
-            {/key}
+            <div class="ticket-holder">
+                <Ticket
+                    {name}
+                    user={data.user?.login}
+                    id="0013371"
+                    {tribe}
+                    contributions={data.contributions}
+                />
+            </div>
             <img class="shine" src={ShineSVG} alt="" />
         </TicketPreview>
     </div>
@@ -182,7 +152,6 @@
             padding-block-start: 0;
 
             :global(nav) {
-                /* padding-block-start: 0; */
                 margin-block-start: 0;
             }
         }
