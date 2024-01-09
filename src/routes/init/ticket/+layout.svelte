@@ -8,8 +8,8 @@
 
         :global(.hero) {
             display: grid;
-            grid-template-columns: 1fr min(60%, 770px);
-            gap: clamp(3rem, 5vw, 7.5rem);
+            grid-template-columns: 1fr min(50%, 730px);
+            gap: clamp(3rem, 4vw, 6.5rem);
             justify-content: space-between;
 
             --p-padding-inline: clamp(1.25rem, 4vw, 120rem);

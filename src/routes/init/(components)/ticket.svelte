@@ -63,7 +63,7 @@
     }
 
     .ticket {
-        --base-width-default: clamp(12rem, 50vw, #{$base-width}rem);
+        --base-width-default: clamp(12rem, 40vw, #{$base-width}rem);
         font-size: var(--base-width, var(--base-width-default));
         width: var(--base-width, var(--base-width-default));
         aspect-ratio: 460 / 644;
