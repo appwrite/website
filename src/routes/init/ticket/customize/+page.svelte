@@ -4,7 +4,6 @@
     import Main from '$lib/layouts/Main.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { slide } from 'svelte/transition';
-    import ShineSVG from '../../(assets)/shine-bg.svg';
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
 
@@ -47,6 +46,7 @@
                     id="0013371"
                     {tribe}
                     contributions={showGitHub ? data.contributions : undefined}
+                    variant="pink"
                 />
             </div>
         </TicketPreview>
