@@ -5,8 +5,8 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import ShineSVG from '../(assets)/shine.svg';
-    import TicketPNG from '../(assets)/ticket.png';
     import Ticket from '../(components)/Ticket.svelte';
+    import TicketPreview from '../(components)/TicketPreview.svelte';
     import { getMockContributions } from '../helpers';
 
     function loginGithub() {
@@ -62,22 +62,24 @@
             </div>
         </div>
 
-        <div class="ticket-preview">
-            <div class="ticket-1">
-                <Ticket name="eldadfux" id="123123" />
-            </div>
-            <div class="ticket-2">
-                <Ticket
-                    name="Eldad"
-                    user="eldadfux"
-                    id="123123"
-                    contributions={getMockContributions()}
-                />
-            </div>
-            <div class="ticket-3">
-                <Ticket name="Sara" user="sara_k" id="123123" />
-            </div>
-            <img class="shine" src={ShineSVG} alt="" />
+        <div class="ticket-preview-wrapper">
+            <TicketPreview>
+                <div class="ticket-1">
+                    <Ticket name="eldadfux" id="123123" />
+                </div>
+                <div class="ticket-2">
+                    <Ticket
+                        name="Eldad"
+                        user="eldadfux"
+                        id="123123"
+                        contributions={getMockContributions()}
+                    />
+                </div>
+                <div class="ticket-3">
+                    <Ticket name="Sara" user="sara_k" id="123123" />
+                </div>
+                <img class="shine" src={ShineSVG} alt="" />
+            </TicketPreview>
         </div>
     </div>
 
@@ -88,19 +90,6 @@
 </Main>
 
 <style lang="scss">
-    .hero {
-        display: grid;
-        grid-template-columns: 1fr min(60%, 770px);
-        gap: clamp(3rem, 5vw, 7.5rem);
-        justify-content: space-between;
-
-        --p-padding-inline: clamp(1.25rem, 4vw, 120rem);
-        padding-inline: var(--p-padding-inline);
-        padding-block-start: 4rem;
-        max-width: 1440px;
-        margin-inline: auto;
-    }
-
     h1 {
         margin-block-start: 3.5rem;
     }
@@ -111,16 +100,11 @@
         }
     }
 
-    .ticket-preview {
-        --p-border-radius: 1rem;
-        border: 1px solid hsl(var(--aw-color-subtle));
-        border-radius: var(--p-border-radius);
+    .ticket-preview-wrapper {
+        display: contents;
+    }
 
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        aspect-ratio: 0.925 / 1;
-
+    :global(.ticket-preview) {
         .ticket-1 {
             --base-width: 24.375rem;
             inset-inline-start: 50%;
@@ -173,43 +157,20 @@
     }
 
     @media screen and (max-width: 511px) {
-        .ticket-preview {
-            border-radius: 0;
+        .ticket-preview-wrapper {
+            :global(.ticket-preview) {
+                border-radius: 0;
+            }
         }
     }
 
     @media screen and (max-width: 1023px) {
-        .hero {
-            display: grid;
-            grid-template-columns: var(--p-padding-inline) 1fr var(--p-padding-inline);
-            row-gap: 3rem;
-            column-gap: 0;
-            padding-block-start: 3rem;
-            padding-inline: 0;
-
-            max-width: 512px;
-            margin-inline: auto;
-
-            > * {
-                grid-column: 2;
-            }
-        }
-
-        .desktop-left {
-            /* To put the children in the flex container */
-            display: contents;
-
-            > * {
-                grid-column: 2;
-            }
-        }
-
         h1 {
             margin-block-start: 0;
         }
 
         .info {
-            order: 3;
+            grid-row: 3;
 
             p:first-child {
                 margin-block-start: 0;
@@ -217,8 +178,10 @@
             }
         }
 
-        .ticket-preview {
-            grid-column: 1 / -1;
+        .ticket-preview-wrapper {
+            :global(.ticket-preview) {
+                grid-column: 1 / -1;
+            }
 
             .ticket-1,
             .ticket-3 {
