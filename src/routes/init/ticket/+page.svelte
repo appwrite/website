@@ -23,33 +23,43 @@
 
 <Main>
     <div class="hero">
-        <div>
-            <h1 class="aw-display" style:margin-block-start="3.5rem">
+        <div class="desktop-left">
+            <h1 class="aw-display">
                 <span style:font-weight="500">
                     <span class="aw-u-color-text-primary">init</span><span
                         class="aw-u-color-text-accent">_</span
                     >
                 </span>
-                kicks off on January 15th
+                launches on January 22nd
             </h1>
-            <p class="aw-label aw-u-color-text-primary" style:margin-block-start="4rem">
-                Register today and claim your Init ticket
-            </p>
-            <button class="aw-button is-full-width u-margin-block-start-16" on:click={loginGithub}>
-                <div class="aw-icon-github" />
-                <span class="text">Register with GitHub Account</span>
-            </button>
-            <button class="aw-button is-full-width is-secondary u-margin-block-start-8" disabled>
-                <div class="aw-icon-appwrite aw-u-color-text-primary" />
-                <span class="text">(SOON) Register with Appwrite Account</span>
-            </button>
-            <p class="u-margin-block-start-16">
-                By registering, you agree to our <a href="/terms" class="aw-link is-inline"
-                    >Terms and Conditions</a
+
+            <div class="info">
+                <p class="aw-label aw-u-color-text-primary">
+                    Register today and claim your Init ticket
+                </p>
+                <button
+                    class="aw-button is-full-width u-margin-block-start-16"
+                    on:click={loginGithub}
                 >
-                and <a href="/privacy" class="aw-link is-inline">Privacy Policy</a>
-            </p>
+                    <div class="aw-icon-github" />
+                    <span class="text">Register with GitHub Account</span>
+                </button>
+                <button
+                    class="aw-button is-full-width is-secondary u-margin-block-start-8"
+                    disabled
+                >
+                    <div class="aw-icon-appwrite aw-u-color-text-primary" />
+                    <span class="text">(SOON) Register with Appwrite Account</span>
+                </button>
+                <p class="u-margin-block-start-16">
+                    By registering, you agree to our <a href="/terms" class="aw-link is-inline"
+                        >Terms and Conditions</a
+                    >
+                    and <a href="/privacy" class="aw-link is-inline">Privacy Policy</a>
+                </p>
+            </div>
         </div>
+
         <div class="ticket-preview">
             <img class="ticket-1" src={TicketPNG} alt="" />
             <img class="ticket-2" src={TicketPNG} alt="" />
@@ -67,16 +77,24 @@
 <style lang="scss">
     .hero {
         display: grid;
-        grid-template-columns: minmax(500px, 40%) min(60%, 700px);
-        gap: 7.5rem;
+        grid-template-columns: 1fr min(60%, 770px);
+        gap: clamp(3rem, 5vw, 7.5rem);
         justify-content: space-between;
 
-        padding-inline: clamp(1.25rem, 4vw, 120rem);
+        --p-padding-inline: clamp(1.25rem, 4vw, 120rem);
+        padding-inline: var(--p-padding-inline);
         padding-block-start: 4rem;
+        max-width: 1440px;
+        margin-inline: auto;
+    }
 
-        @media screen and (max-width: 1024px) {
-            grid-template-columns: 1fr;
-            gap: 4rem;
+    h1 {
+        margin-block-start: 3.5rem;
+    }
+
+    .info {
+        p:first-child {
+            margin-block-start: 4rem;
         }
     }
 
@@ -99,7 +117,7 @@
         .ticket-2 {
             inset-inline-start: 50%;
             --p-translate-x: -50%;
-            inline-size: 60%;
+            inline-size: min(60%, 440px);
             block-size: auto;
         }
 
@@ -134,6 +152,57 @@
             inset-block-start: -100px;
             inset-inline-end: -100px;
             z-index: 20;
+        }
+    }
+
+    @media screen and (max-width: 511px) {
+        .ticket-preview {
+            border-radius: 0;
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        .hero {
+            display: grid;
+            grid-template-columns: var(--p-padding-inline) 1fr var(--p-padding-inline);
+            row-gap: 3rem;
+            column-gap: 0;
+            padding-block-start: 3rem;
+            padding-inline: 0;
+
+            max-width: 512px;
+            margin-inline: auto;
+
+            > * {
+                grid-column: 2;
+            }
+        }
+
+        .desktop-left {
+            /* To put the children in the flex container */
+            display: contents;
+
+            > * {
+                grid-column: 2;
+            }
+        }
+
+        h1 {
+            margin-block-start: 0;
+        }
+
+        .info {
+            order: 3;
+
+            p:first-child {
+                margin-block-start: 0;
+                text-align: center;
+            }
+        }
+
+        .ticket-preview {
+            grid-column: 1 / -1;
+            /* border-radius: 0; */
         }
     }
 </style>
