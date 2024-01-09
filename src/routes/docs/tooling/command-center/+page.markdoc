@@ -8,7 +8,7 @@ The Appwrite **Command Center** is designed to improve the developer experience 
 
 # Getting started {% #getting-started %}
 
-You can access the Command Center by pressing `⌘ + K` on Mac or `Ctrl + K` on Windows and Linux devices or by clicking the search icon in the Console top navigation bar. A modal will appear, presenting a search input and a list of commands relevant to your current Console context.
+You can access the Command Center by pressing `⌘` + `K` on Mac or `Ctrl` + `K` on Windows and Linux devices or by clicking the search icon in the Console top navigation bar. A modal will appear, presenting a search input and a list of commands relevant to your current Console context.
 
 The Command Center emphasizes keyboard navigation. You can browse through commands using the up and down arrow keys and execute them with the Enter key. The search input lets you quickly filter and find specific commands or entities within the Console. Additionally, some commands have dedicated keyboard shortcuts that can be used for immediate execution without opening the Command Center.
 
