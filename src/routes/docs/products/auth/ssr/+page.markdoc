@@ -1,14 +1,32 @@
 ---
 layout: article
-title: Server side rendering
-description: How to implement server side rendering with Appwrite
+title: Server-side rendering
+description: How to implement server-side rendering with Appwrite
 ---
 
-Server side rendering patterns are fully supported with Appwrite. This guide will walk you through the process of implementing server side rendering with Appwrite at a high level.
+Server-side rendering patterns are fully supported with Appwrite. 
+Server-side rendering (SSR) is a technique used in web development where web pages are 
+generated on the server instead of in the browser browser. 
+This differs from client-side rendering, where the web content is generated in the user's browser using JavaScript.
+
+You can use Appwrite with many SSR frameworks like Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
+This guide will walk you through the process of implementing SSR with Appwrite.
+
+# SSR authentication flow {% #ssr-auth-flow %}
+In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
+On server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means
+authentication information is frist passed from the client's web browser to your server, and the server authenticates against Appwrite.
+
+[DIAGRAM?]
 
 # Setting up the client {% #setting-up-the-client %}
 
-The first step is to set up a client with an API key. This will allow you to make requests to the Appwrite API from your server.
+The first step is to set up a client with an API key. 
+This will allow you to make requests to the Appwrite API from your server.
+
+{% info title="Server SDK required" %}
+Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Client SDK. 
+{% /info %}
 
 {% multicode %}
 ```js
@@ -99,7 +117,8 @@ try {
 ```
 {% /multicode %}
 
-We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, and is not accessible to JavaScript. This will prevent XSS attacks.
+We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, 
+and is not accessible to JavaScript. This will prevent XSS attacks.
 
 # Accepting authenticated requests {% #accepting-authenticated-requests %}
 
@@ -153,7 +172,8 @@ try {
 ```
 {% /multicode %}
 
-To prevent rate limiting, you must also use the `setKey` helper on the SDK. It's also possible to populate details about the user with the `setForwardedFor` helper and the `setForwardedUserAgent` helpers.
+To prevent rate limiting, you must also use the `setKey` helper on the SDK. 
+It's also possible to populate details about the user with the `setForwardedFor` helper and the `setForwardedUserAgent` helpers.
 Let's put it all together:
 
 {% multicode %}
