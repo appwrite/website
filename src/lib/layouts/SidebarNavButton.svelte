@@ -20,7 +20,7 @@
 </a>
 
 <style lang="scss">
-    .icon {
+    [class*='icon'] {
         font-size: 1rem;
     }
 </style>
