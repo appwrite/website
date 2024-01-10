@@ -130,20 +130,20 @@
             inset-block-start: 50%;
             translate: var(--p-translate-x, 0) -50%;
         }
+    }
 
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: linear-gradient(
-                0deg,
-                #19191c 7.06%,
-                rgba(25, 25, 28, 0.9) 21.93%,
-                rgba(25, 25, 28, 0) 88.57%
-            );
-            border-radius: var(--p-border-radius);
-            z-index: 10;
-        }
+    .ticket-preview-wrapper :global(.ticket-preview::after) {
+        content: '';
+        position: absolute;
+        inset: 1px;
+        background: linear-gradient(
+            0deg,
+            #19191c 7.06%,
+            rgba(25, 25, 28, 0.9) 21.93%,
+            rgba(25, 25, 28, 0) 88.57%
+        );
+        border-radius: var(--p-border-radius);
+        z-index: 10;
     }
 
     @media screen and (max-width: 511px) {

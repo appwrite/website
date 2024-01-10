@@ -2,11 +2,12 @@ import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/st
 import { appwriteInit } from '$lib/appwrite/init';
 import { ID, Query, type Models } from 'appwrite';
 import {
+    getGithubContributions,
     getGithubUser,
     isLoggedInGithub,
-    type GithubUser,
-    getGithubContributions
+    type GithubUser
 } from '../helpers';
+import { TICKET_DEP } from './constants';
 
 export const ssr = false;
 
@@ -15,6 +16,7 @@ type Ticket = Pick<Models.Document, '$id'> & {
     tribe: string;
     gh_user: string;
     id: number;
+    show_contributions: boolean;
 };
 
 async function getTicketDetails({ login, name }: GithubUser) {
@@ -44,7 +46,9 @@ async function getTicketDetails({ login, name }: GithubUser) {
     }
 }
 
-export const load = async () => {
+export const load = async ({ depends }) => {
+    depends(TICKET_DEP);
+
     if (await isLoggedInGithub()) {
         const ghUser = await getGithubUser();
         const [ticket, contributions] = await Promise.all([

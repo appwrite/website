@@ -1,19 +1,59 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
+    import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
+    import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
+    import { invalidateTicket } from '../constants';
     import Form from './form.svelte';
+    import { dequal } from 'dequal/lite';
 
     export let data;
 
     let name = data.ticket?.name ?? '';
-    let tribe: string | null = null;
-    let showGitHub = true;
+    let tribe: string | null = data.ticket?.tribe ?? null;
+    let showGitHub = data.ticket?.show_contributions ?? true;
+
+    $: modified = !dequal(
+        {
+            name: data.ticket?.name,
+            tribe: data.ticket?.tribe,
+            showGitHub: data.ticket?.show_contributions
+        },
+        { name, tribe, showGitHub }
+    );
 
     let drawerOpen = false;
+
+    let saving = false;
+
+    async function goBack(e: Event) {
+        e.preventDefault();
+        const href = '/init/ticket';
+
+        const ticketId = data.ticket?.$id;
+        if (ticketId === undefined || !modified) {
+            return goto(href);
+        }
+
+        saving = true;
+        await appwriteInit.database.updateDocument(
+            PUBLIC_APPWRITE_DB_INIT_ID,
+            PUBLIC_APPWRITE_COL_INIT_ID,
+            ticketId,
+            {
+                name,
+                tribe,
+                show_contributions: showGitHub
+            }
+        );
+        await invalidateTicket();
+        await goto(href);
+    }
 </script>
 
 <svelte:head>
@@ -23,13 +63,22 @@
 <Main>
     <div class="hero">
         <div style:margin-block-start="0.625rem">
-            <a
-                class="aw-link aw-u-color-text-secondary u-cross-baseline"
-                href="/init/ticket/thank-you"
-            >
-                <span class="aw-icon-chevron-left" aria-hidden="true" />
-                <span>Back</span>
-            </a>
+            <button class="aw-link is-secondary u-cross-center" on:click={goBack} disabled={saving}>
+                {#if saving}
+                    <div class="loader is-small" style:margin-inline-end="0.25rem" />
+                {:else}
+                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                {/if}
+                <span>
+                    {#if saving}
+                        Saving...
+                    {:else if modified}
+                        Save and go back
+                    {:else}
+                        Back
+                    {/if}
+                </span>
+            </button>
             <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
                 Customize ticket<span class="aw-u-color-text-accent">_</span>
             </h1>
