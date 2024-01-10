@@ -84,7 +84,7 @@
 
     const parent: NavParent = {
         href: '/docs',
-        label: 'References'
+        label: 'API Reference'
     };
 </script>
 
