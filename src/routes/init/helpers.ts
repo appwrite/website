@@ -66,7 +66,7 @@ export async function isLoggedInGithub() {
     }
 }
 
-interface GithubUser {
+export interface GithubUser {
     login: string;
     name: string;
 }
