@@ -30,7 +30,7 @@ import { ID } from "appwrite";
 import { ref } from "vue";
 import { account } from "/appwrite";
 
-const current = ref(null) //Reference to current user object
+const current = ref(null) // Reference to current user object
 const isLoggedIn = ref(null) //Reference to check user status
 
 export const useUserSession = () => {
