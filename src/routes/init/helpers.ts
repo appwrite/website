@@ -4,8 +4,6 @@ import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 import type { ContributionsMatrix } from './(components)/Ticket.svelte';
 
-export const pad = (num: number) => num.toString().padStart(2, '0');
-
 export function createCountdown(date: Date) {
     const today = new Date();
     const hasReleased = today >= date;

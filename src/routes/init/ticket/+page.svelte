@@ -65,18 +65,18 @@
         <div class="ticket-preview-wrapper">
             <TicketPreview>
                 <div class="ticket-1">
-                    <Ticket name="eldadfux" id="123123" />
+                    <Ticket name="eldadfux" id={123123} />
                 </div>
                 <div class="ticket-2">
                     <Ticket
                         name="Eldad"
                         user="eldadfux"
-                        id="123123"
+                        id={1}
                         contributions={getMockContributions()}
                     />
                 </div>
                 <div class="ticket-3">
-                    <Ticket name="Sara" user="sara_k" id="123123" />
+                    <Ticket name="Sara" user="sara_k" id={10} />
                 </div>
             </TicketPreview>
         </div>

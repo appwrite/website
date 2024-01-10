@@ -7,7 +7,8 @@
 
     export let data;
 
-    let name = data.ghUser?.name ?? '';
+    let name = data.ticket?.name ?? '';
+    const id = data.ticket?.id ?? 0;
 </script>
 
 <svelte:head>
@@ -24,7 +25,9 @@
                         init<span class="aw-u-color-text-accent">_</span>
                     </span>
                 </h1>
-                <p class="aw-label u-margin-block-start-16">You have received ticket #0013371</p>
+                <p class="aw-label u-margin-block-start-16">
+                    You have received ticket #{id.toString().padStart(6, '0')}
+                </p>
             </div>
 
             <div class="info">
@@ -52,8 +55,8 @@
                 <div class="ticket-holder">
                     <Ticket
                         {name}
-                        user={data.ghUser?.login}
-                        id="0013371"
+                        user={data.ticket?.gh_user}
+                        id={data.ticket?.id ?? 0}
                         contributions={data.contributions}
                     />
                 </div>
