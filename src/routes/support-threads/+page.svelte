@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { afterNavigate, goto } from '$app/navigation';
+    import { afterNavigate, goto, invalidate } from '$app/navigation';
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -12,7 +12,7 @@
     import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
-    import { filterThreads } from './helpers';
+    import { filterThreads, getThreads } from './helpers';
 
     const title = 'Support Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -28,9 +28,7 @@
     const handleSearch = async (value: string) => {
         query = value;
         searching = true;
-        goto(`/support-threads/?q=${value}`, { replaceState: true, keepFocus: true });
-        threads = await filterThreads({
-            threads: data.threads,
+        threads = await getThreads({
             q: value,
             tags: selectedTags ?? [],
             allTags: true
@@ -198,6 +196,7 @@
                     placeholder="Search for threads"
                     data-hit="-1"
                     use:search
+                    bind:value={query}
                 />
             </div>
         </div>
@@ -218,7 +217,8 @@
                     <button
                         class="aw-button"
                         on:click={() => {
-                            goto('/support-threads', { replaceState: true, keepFocus: true });
+                            query = '';
+                            handleSearch('');
                         }}>Clear search</button
                     >
                 </div>
