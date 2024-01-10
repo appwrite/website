@@ -1,22 +1,25 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
     import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
     import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
+    import { dequal } from 'dequal/lite';
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
-    import { invalidateTicket } from '../constants';
     import Form from './form.svelte';
-    import { dequal } from 'dequal/lite';
+    import { createCopy } from '$lib/utils/copy';
+    import { page } from '$app/stores';
 
     export let data;
 
     let name = data.ticket?.name ?? '';
+    const id = data.ticket?.id ?? 0;
     let tribe: string | null = data.ticket?.tribe ?? null;
     let showGitHub = data.ticket?.show_contributions ?? true;
+    let drawerOpen = false;
+    let customizing = false;
 
     $: modified = !dequal(
         {
@@ -27,20 +30,12 @@
         { name, tribe, showGitHub }
     );
 
-    let drawerOpen = false;
-
-    let saving = false;
-
-    async function goBack(e: Event) {
-        e.preventDefault();
-        const href = '/init/ticket';
-
+    async function saveTicket() {
         const ticketId = data.ticket?.$id;
         if (ticketId === undefined || !modified) {
-            return goto(href);
+            return;
         }
 
-        saving = true;
         await appwriteInit.database.updateDocument(
             PUBLIC_APPWRITE_DB_INIT_ID,
             PUBLIC_APPWRITE_COL_INIT_ID,
@@ -51,9 +46,14 @@
                 show_contributions: showGitHub
             }
         );
-        await invalidateTicket();
-        await goto(href);
     }
+
+    async function goBack() {
+        customizing = false;
+        saveTicket();
+    }
+
+    const { copied, copy } = createCopy(`${$page.url.origin}/init/ticket/${data.ticket.$id}`);
 </script>
 
 <svelte:head>
@@ -62,31 +62,59 @@
 
 <Main>
     <div class="hero">
-        <div style:margin-block-start="0.625rem">
-            <button class="aw-link is-secondary u-cross-center" on:click={goBack} disabled={saving}>
-                {#if saving}
-                    <div class="loader is-small" style:margin-inline-end="0.25rem" />
-                {:else}
+        {#if customizing}
+            <div style:margin-block-start="0.625rem">
+                <button class="aw-link is-secondary u-cross-center" on:click={goBack}>
                     <span class="aw-icon-chevron-left" aria-hidden="true" />
-                {/if}
-                <span>
-                    {#if saving}
-                        Saving...
-                    {:else if modified}
-                        Save and go back
-                    {:else}
-                        Back
-                    {/if}
-                </span>
-            </button>
-            <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
-                Customize ticket<span class="aw-u-color-text-accent">_</span>
-            </h1>
 
-            <div class="desktop">
-                <Form bind:name bind:tribe bind:showGitHub />
+                    <span>Back</span>
+                </button>
+                <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
+                    Customize ticket<span class="aw-u-color-text-accent">_</span>
+                </h1>
+
+                <div class="desktop">
+                    <Form bind:name bind:tribe bind:showGitHub />
+                </div>
             </div>
-        </div>
+        {:else}
+            <div class="desktop-left">
+                <div class="header">
+                    <h1 class="aw-title aw-u-color-text-primary">
+                        Thank you for registering for
+                        <span style:font-weight="500">
+                            init<span class="aw-u-color-text-accent">_</span>
+                        </span>
+                    </h1>
+                    <p class="aw-label u-margin-block-start-16">
+                        You have received ticket #{id.toString().padStart(6, '0')}
+                    </p>
+                </div>
+
+                <div class="info">
+                    <button
+                        on:click={() => (customizing = true)}
+                        class="aw-button is-full-width u-margin-block-start-32"
+                    >
+                        <span class="text">Customize ticket</span>
+                    </button>
+
+                    <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
+                        <button class="aw-button is-full-width is-secondary" on:click={copy}>
+                            <div
+                                class="aw-icon-{$copied ? 'check' : 'copy'} aw-u-color-text-primary"
+                            />
+                            <span class="text">Copy ticket URL</span>
+                        </button>
+                        <button class="aw-button is-full-width is-secondary" disabled>
+                            <div class="aw-icon-x aw-u-color-text-primary" />
+                            <span class="text">Share your ticket</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {/if}
+
         <TicketPreview>
             <div class="ticket-holder">
                 <Ticket
@@ -95,7 +123,6 @@
                     id={data.ticket?.id ?? 0}
                     {tribe}
                     contributions={showGitHub ? data.contributions : undefined}
-                    variant="pink"
                 />
             </div>
         </TicketPreview>
@@ -106,23 +133,47 @@
         <MainFooter />
     </div>
 
-    <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
-        <button on:click={() => (drawerOpen = !drawerOpen)}>
-            <div class="inner">
-                <span class="aw-label aw-u-color-text-primary">Ticket Editor</span>
-                <span class="aw-icon-chevron-down" />
-            </div>
-        </button>
-        {#if drawerOpen}
-            <hr />
-            <div class="form-wrapper" transition:slide>
-                <Form bind:name bind:tribe />
-            </div>
-        {/if}
-    </div>
+    {#if customizing}
+        <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
+            <button on:click={() => (drawerOpen = !drawerOpen)}>
+                <div class="inner">
+                    <span class="aw-label aw-u-color-text-primary">Ticket Editor</span>
+                    <span class="aw-icon-chevron-down" />
+                </div>
+            </button>
+            {#if drawerOpen}
+                <hr />
+                <div class="form-wrapper" transition:slide>
+                    <Form bind:name bind:tribe bind:showGitHub />
+                </div>
+            {/if}
+        </div>
+    {/if}
 </Main>
 
 <style lang="scss">
+    .desktop-left {
+        h1 {
+            margin-block-start: 3.5rem;
+        }
+
+        @media screen and (max-width: 1023px) {
+            h1 {
+                margin-block-start: 0;
+            }
+
+            .info {
+                grid-row: 3;
+
+                .u-flex {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin-block-start: 0.5rem;
+                }
+            }
+        }
+    }
+
     .desktop {
         display: contents;
     }

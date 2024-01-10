@@ -18,7 +18,7 @@
         position: relative;
         overflow: hidden;
         width: 100%;
-        aspect-ratio: 0.8 / 1;
+        aspect-ratio: 0.95 / 1;
 
         display: grid;
         place-items: center;
