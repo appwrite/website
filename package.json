@@ -69,5 +69,18 @@
         "meilisearch": "^0.35.1",
         "motion": "^10.16.4",
         "sharp": "^0.32.6"
+    },
+    "pnpm": {
+        "supportedArchitectures": {
+            "os": [
+                "win32",
+                "darwin",
+                "current"
+            ],
+            "cpu": [
+                "x64",
+                "arm64"
+            ]
+        }
     }
 }
