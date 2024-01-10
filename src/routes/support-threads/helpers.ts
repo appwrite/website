@@ -113,18 +113,3 @@ export async function getThreadMessages(threadId: string) {
         (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
     );
 }
-
-export async function getThreadTldr(thread: DiscordThread) {
-    if (thread.tldr) return thread.tldr;
-
-    const execution = await functions.createExecution(
-        PUBLIC_APPWRITE_FN_TLDR_ID,
-        JSON.stringify({ thread: thread.$id }),
-        false,
-        '/',
-        'POST'
-    );
-    const { tldr } = JSON.parse(execution.responseBody);
-
-    return tldr;
-}

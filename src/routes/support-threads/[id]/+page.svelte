@@ -46,7 +46,7 @@
                 <ul class="tags">
                     <li class="aw-tag">
                         <span class="aw-icon-arrow-up" />
-                        <span class="text">{data.upvotes}</span>
+                        <span class="text">{data.vote_count}</span>
                     </li>
                     {#each data.tags ?? [] as tag}
                         <li class="aw-tag">
@@ -58,7 +58,7 @@
             <div class="buttons">
                 <a
                     class="aw-button"
-                    href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
+                    href="https://discord.com/channels/564160730845151244/{data.discord_id}"
                 >
                     <span class="aw-icon-discord" />
                     <span class="text">View on Discord</span>
@@ -79,24 +79,7 @@
                                 >
                                     TL;DR
                                 </span>
-                                {#if data.tldr}
-                                    {data.tldr}
-                                {:else}
-                                    {#await data.streamed.tldr}
-                                        <div class="dots" aria-label="loading">
-                                            <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-                                            {#each { length: 3 } as _, i}
-                                                <div
-                                                    class="dot"
-                                                    aria-hidden="true"
-                                                    style:--p-index={i}
-                                                />
-                                            {/each}
-                                        </div>
-                                    {:then res}
-                                        {res}
-                                    {/await}
-                                {/if}
+                                {data.tldr}
                             </div>
                         {/if}
                     </MessageCard>
@@ -108,7 +91,7 @@
                     </p>
                     <a
                         class="aw-button u-margin-block-start-24"
-                        href="https://discord.com/channels/1096473701832200302/{data.discord_id}"
+                        href="https://discord.com/channels/564160730845151244/{data.discord_id}"
                     >
                         <span class="aw-icon-discord" />
                         <span class="text">Reply on Discord</span>

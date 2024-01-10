@@ -20,6 +20,7 @@
             class="aw-card is-normal has-border-gradient menu"
             use:melt={menu}
             transition:fly={{ y: 8, duration: 250 }}
+            style:z-index="1"
         >
             {#each tags as tag}
                 {@const checked = selectedTags?.includes(tag)}
