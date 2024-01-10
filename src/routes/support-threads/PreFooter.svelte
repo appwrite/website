@@ -18,7 +18,7 @@
                 <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
                     Become a pro user and get email support from our team
                 </p>
-                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
+                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/pricing">
                     <span class="text">Learn more</span>
                 </a>
             </div>
