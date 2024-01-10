@@ -1,6 +1,5 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
-    import { pad } from '../helpers';
 
     export let value = 0;
 
@@ -23,7 +22,7 @@
 </script>
 
 <div class="wrapper">
-    {#each pad(value) as char, index (index)}
+    {#each value.toString().padStart(2, '0') as char, index (index)}
         <div transition:fade={{ duration: 200 }}>
             {#if Number.isNaN(Number(char))}
                 <span>{char}</span>

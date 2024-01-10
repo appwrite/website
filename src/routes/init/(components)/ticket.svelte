@@ -5,7 +5,7 @@
     export type TicketProps = {
         name?: string;
         user?: string;
-        id: string;
+        id: number;
         tribe?: string | null;
         contributions?: ContributionsMatrix;
         variant?: TicketVariant;
@@ -68,7 +68,7 @@
         </div>
 
         <div class="id">
-            <span>#{id}</span>
+            <span>#{id.toString().padStart(6, '0')}</span>
         </div>
 
         {#key tribe}

@@ -1,6 +1,6 @@
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init';
-import { ID, Query } from 'appwrite';
+import { ID, Query, type Models } from 'appwrite';
 import {
     getGithubUser,
     isLoggedInGithub,
@@ -10,6 +10,13 @@ import {
 
 export const ssr = false;
 
+type Ticket = Pick<Models.Document, '$id'> & {
+    name: string;
+    tribe: string;
+    gh_user: string;
+    id: number;
+};
+
 async function getTicketDetails({ login, name }: GithubUser) {
     const { documents, total } = await appwriteInit.database.listDocuments(
         PUBLIC_APPWRITE_DB_INIT_ID,
@@ -18,13 +25,13 @@ async function getTicketDetails({ login, name }: GithubUser) {
     );
 
     if (total) {
-        return documents[0];
+        return documents[0] as unknown as Ticket;
     } else {
         const allDocs = await appwriteInit.database.listDocuments(
             PUBLIC_APPWRITE_DB_INIT_ID,
             PUBLIC_APPWRITE_COL_INIT_ID
         );
-        return await appwriteInit.database.createDocument(
+        return (await appwriteInit.database.createDocument(
             PUBLIC_APPWRITE_DB_INIT_ID,
             PUBLIC_APPWRITE_COL_INIT_ID,
             ID.unique(),
@@ -33,7 +40,7 @@ async function getTicketDetails({ login, name }: GithubUser) {
                 id: allDocs.total + 1,
                 name
             }
-        );
+        )) as unknown as Ticket;
     }
 }
 
@@ -46,7 +53,6 @@ export const load = async () => {
         ]);
 
         return {
-            ghUser,
             ticket,
             contributions
         };
