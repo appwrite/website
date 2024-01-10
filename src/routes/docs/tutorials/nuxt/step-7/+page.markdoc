@@ -88,6 +88,7 @@ From the `components` directory, add the file `ÌdeasForm.vue` and add the follo
 
 Next, add the component to the page `pages/index.vue` by auto-importing it in the `<template>`tag.
 In doing that, we need to take a moment to think about how we want to display the form to the users.
+
 Since it should only be shown to logged in user, we need to wrap it in a `<section>`that renders conditionally when the `isLoggedIn` reference in the `useUserSession` is true.
 If the requirement is not met, we show a paragraph with some information to the user instead.
 
@@ -141,7 +142,7 @@ Now that we can get some ideas to show, we go on to build the component for the 
 
 Once again, we need to take a moment to think about how this component should work.
 First of all, the ideas should be visible for the users before any interaction has taken place on the page.
-To catch that moment in time when the page loads, we call our `init()` function, that fetches the ideas in Appwrite, from the built-in `onMounted` function.
+To catch that moment in time when the page loads, we call our `fetch()` function, that fetches the ideas in Appwrite, from the built-in `onMounted` function.
 
 Second, it's likely that a user will want to delete one of their ideas from the database.
 We help them do that by adding a delete button in the top right corner of the idea list item, but only on the ideas added by the user itself.
@@ -191,7 +192,7 @@ Add the file `IdeasList`from the `componenents` directory and insert the followi
 
       // Get ideas on page load
       onMounted(() => {
-        ideas.init();
+        ideas.fetch();
       });
       return { ideas, user };
     },

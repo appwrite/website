@@ -31,8 +31,8 @@ Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/
 Open the `.env` file and add your database id and your collection id to it.
 
 ```
-VITE_IDEAS_DATABASE_ID="YOUR_DATABASE_ID"
-VITE_IDEAS_COLLECTION_ID="YOUR_COLLECTION_ID"
+VITE_DATABASE_ID="YOUR_DATABASE_ID"
+VITE_COLLECTION_ID="YOUR_COLLECTION_ID"
 ```
 
 # Query methods {% #query-methods %}
@@ -50,8 +50,8 @@ import { ID, Query } from "appwrite";
 import { database } from "~/appwrite";
 import { ref } from "vue";
 
-const ideasDatabaseId = import.meta.env.VITE_IDEAS_DATABASE_ID;
-const ideasCollectionId = import.meta.env.VITE_IDEAS_COLLECTION_ID;
+const ideasDatabaseId = import.meta.env.VITE_DATABASE_ID;
+const ideasCollectionId = import.meta.env.VITE_COLLECTION_ID;
 
 const current = ref(null); //Reference for the fetched data
 
@@ -59,7 +59,7 @@ export const useIdeas = () => {
 
   // Fetch the 10 most recent ideas from the database
   // Add the list to the current reference object
-  const init = async () => {
+  const fetch = async () => {
     const response = await database.listDocuments(
       ideasDatabaseId,
       ideasCollectionId,
@@ -82,13 +82,13 @@ export const useIdeas = () => {
 
   const remove = async (id) => {
     await database.deleteDocument(ideasDatabaseId, ideasCollectionId, id);
-    await init(); //Refetch ideas to ensure we have 10 items
+    await fetch(); //Refetch ideas to ensure we have 10 items
   };
 
   return {
     add,
     current,
-    init,
+    fetch,
     remove,
   };
 };

@@ -21,28 +21,29 @@ Once the project is created, change your current working directory and install t
 ```sh
 cd ideas-tracker
 npm install appwrite
+npm install "@appwrite.io/pink"
 ```
 
-Open the file `nuxt.config.ts`and add links to the stylesheets from the `appwrite.io/pink` to import the design system.
-The design system is then ready to be used in all pages and components with auto-import, meaning that you don't have to add import statements to the scripts.
+Open `App.vue` and import the relevant style files.
 
-```ts
-// [nuxt.config.ts]
+```html
+<script setup>
 
+import "@appwrite.io/pink";
+// optionally, add icons
+import "@appwrite.io/pink-icons";
+
+</script>
+```
+
+Then update `nuxt.config.ts` to disable SSR for now. SSR support is coming soon to Appwrite, for now, disable SSR.
+
+```js
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    head: {
-      link: [
-        { rel: "stylesheet", href: "https://unpkg.com/@appwrite.io/pink" },
-        {
-          rel: "stylesheet",
-          href: "https://unpkg.com/@appwrite.io/pink-icons",
-        },
-      ],
-    },
-  },
-  devtools: { enabled: true },
-});
+  ssr: false,
+  devtools: { enabled: true }
+})
 ```
 
 You can start the development server to watch your app update in the browser as you make your changes.
@@ -74,8 +75,8 @@ Go to the `layouts/` directory and add the file `default.vue`.
 Add the following code for the default layout.
 As you see it's nearly empty but it is needed for the automatic routing to work properly.
 
-```vue
-// layouts/default.vue
+```html
+<!-- layouts/default.vue -->
 
 <template>
   <div>
@@ -98,7 +99,7 @@ Each file you put in here will automatically become a route.
 Add the file `index.vue` with the following code.
 
 ```vue
-// pages/index.vue
+<!-- pages/index.vue -->
 
 <template>
   <div>
@@ -139,7 +140,12 @@ Open `app.vue`in the root directory and replace the content with the following c
 Your page will now be up and running.
 
 ```vue
-// app.vue
+<!-- app.vue -->
+
+<script setup>
+import "@appwrite.io/pink";
+import "@appwrite.io/pink-icons";
+</script>
 
 <template>
   <div>
