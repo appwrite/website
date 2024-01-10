@@ -67,15 +67,20 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
 type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
+    let query = [
+      q ? Query.search('search_meta', q) : undefined
+    ];
+  
     tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
+    
+    if (tags.length > 0) {
+        query = [...query, Query.search('tags', tags.join(','))];
+    }
 
     const data = await databases.listDocuments(
         PUBLIC_APPWRITE_DB_MAIN_ID,
         PUBLIC_APPWRITE_COL_THREADS_ID,
-        [
-            q ? Query.search('search_meta', q) : undefined
-            // tags ? Query.equal('tags', tags) : undefined
-        ].filter(Boolean) as string[]
+        query.filter(Boolean) as string[]
     );
 
     const threadDocs = data.documents as unknown as DiscordThread[];
