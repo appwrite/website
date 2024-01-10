@@ -73,6 +73,10 @@
 					label: 'JWT login',
 					href: '/docs/products/auth/jwt'
 				},
+								{
+					label: 'SSR login',
+					href: '/docs/products/auth/ssr'
+				},
 			]
 		},
 		{

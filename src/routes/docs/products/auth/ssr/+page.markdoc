@@ -1,11 +1,11 @@
 ---
 layout: article
-title: Server-side rendering
+title: SSR login
 description: How to implement server-side rendering with Appwrite
 ---
 
-Server-side rendering patterns are fully supported with Appwrite. 
-Server-side rendering (SSR) is a technique used in web development where web pages are 
+Server-side rendering (SSR) patterns are fully supported with Appwrite. 
+SSR is a technique used in web development where web pages are 
 generated on the server instead of in the browser browser. 
 This differs from client-side rendering, where the web content is generated in the user's browser using JavaScript.
 
@@ -15,13 +15,16 @@ This guide will walk you through the process of implementing SSR with Appwrite.
 # SSR authentication flow {% #ssr-auth-flow %}
 In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
 On server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means
-authentication information is frist passed from the client's web browser to your server, and the server authenticates against Appwrite.
+authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
 
 [DIAGRAM?]
 
-# Setting up the client {% #setting-up-the-client %}
+# Initialize Server SDK {% #initialize-server-sdk %}
 
-The first step is to set up a client with an API key. 
+In SSR, your server-side application will be making authentication requests to Appwrite and passing
+session cookies to your client-side app on the browser.
+
+To initialize the Server SDK, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key).
 This will allow you to make requests to the Appwrite API from your server.
 
 {% info title="Server SDK required" %}
@@ -54,10 +57,15 @@ $client = (new Client())
 
 # Creating email/password sessions {% #creating-sessions %}
 
-The most straightforward type of session to integrate is email/password. Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. Once you have a session object, you can persist it to a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
-Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
+The most straightforward type of session to integrate is email/password.
+Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. 
+Once you have a session object, you can persist it to a cookie. 
+This will allow your users make authenticated requests to the Appwrite API from your server.
 
+Use the `secret` property of the session object as the cookie value. 
+The `expire` property of the session object should be used as the cookie's max age.
 
+Here's an example with Express and PHP, but the same concepts apply to all web frameworks.
 {% multicode %}
 ```js
 import express from 'express';
@@ -122,7 +130,11 @@ and is not accessible to JavaScript. This will prevent XSS attacks.
 
 # Accepting authenticated requests {% #accepting-authenticated-requests %}
 
-Once a user has a session cookie, they can use it to make authenticated requests to your server. To enable this, you will need to read the cookie value from the request, and then pass it to the Appwrite client, using the `setSession` helper.
+Once a user has a session cookie, which will be set automatically by the browser when it receives the `/login` endpoint's response,
+they can use it to make authenticated requests to your server. 
+
+To enable this, you will need to read the cookie value from the request, and then pass it to the Appwrite client, using the `setSession` helper.
+When the browser makes a request to your domain's endpoints, it will automatically include session cookies.
 
 {% multicode %}
 ```js
