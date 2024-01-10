@@ -66,19 +66,21 @@
         };
     };
 
-    const tags = ['Web', 'Flutter', 'Javascript', 'Dart', 'Apple'];
+    const tags = ['Web', 'Flutter', 'GraphQL', 'Cloud', 'Self Hosted'];
     const moreTags = [
-        'Self hosted',
+        'Tools',
+        'Accounts',
+        'Users',
+        'Teams',
         'Databases',
+        'Storage',
         'Functions',
-        'Cloud',
-        'Android',
-        'Windows',
-        'Linux',
-        'MacOS',
-        'iOS',
-        'iPadOS',
-        'WatchOS'
+        'Realtime',
+        'Locale',
+        'Avatars',
+        'Webhooks',
+        'General',
+        'REST API'
     ];
     const _selectedTags = queryParam<string[]>('tags', {
         encode(value) {
