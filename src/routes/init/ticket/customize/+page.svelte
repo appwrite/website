@@ -9,7 +9,7 @@
 
     export let data;
 
-    let name = data.user?.name ?? '';
+    let name = data.ghUser?.name ?? '';
     let tribe: string | null = null;
     let showGitHub = true;
 
@@ -42,7 +42,7 @@
             <div class="ticket-holder">
                 <Ticket
                     {name}
-                    user={data.user?.login}
+                    user={data.ghUser?.login}
                     id="0013371"
                     {tribe}
                     contributions={showGitHub ? data.contributions : undefined}

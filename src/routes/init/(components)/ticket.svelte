@@ -72,13 +72,15 @@
         </div>
 
         {#key tribe}
-            <img
-                class="tribe"
-                src={`/images/tribes/${tribe?.toLowerCase()}.svg`}
-                alt={tribe}
-                style:display={tribe ? undefined : 'none'}
-                in:appear
-            />
+            {#if tribe}
+                <img
+                    class="tribe"
+                    src={`/images/tribes/${tribe?.toLowerCase()}.svg`}
+                    alt={tribe}
+                    style:display={tribe ? undefined : 'none'}
+                    in:appear|global
+                />
+            {/if}
         {/key}
 
         {#if contributions}
@@ -231,7 +233,7 @@
         inset-block-start: 0;
         inset-inline-end: 0;
 
-        mask-image: linear-gradient(to left, hsl(240, 3, 14), transparent);
+        mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
 
         .row {
             display: flex;

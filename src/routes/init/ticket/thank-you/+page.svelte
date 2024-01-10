@@ -7,7 +7,7 @@
 
     export let data;
 
-    let name = data.user?.name ?? '';
+    let name = data.ghUser?.name ?? '';
 </script>
 
 <svelte:head>
@@ -52,7 +52,7 @@
                 <div class="ticket-holder">
                     <Ticket
                         {name}
-                        user={data.user?.login}
+                        user={data.ghUser?.login}
                         id="0013371"
                         contributions={data.contributions}
                     />

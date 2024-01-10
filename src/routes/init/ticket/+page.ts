@@ -1,6 +1,8 @@
 import { redirect } from '@sveltejs/kit';
-import { isLoggedInGithub } from '../helpers';
 
-export const load = async () => {
-    if (await isLoggedInGithub()) throw redirect(307, '/init/ticket/thank-you');
+export const load = async ({ parent }) => {
+    const data = await parent();
+    if (data.ghUser) {
+        throw redirect(307, '/init/ticket/thank-you');
+    }
 };
