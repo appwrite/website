@@ -54,7 +54,8 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-
+        height: 14rem;
+        overflow-y: auto;
         backdrop-filter: blur(2px);
         --webkit-backdrop-filter: blur(2px);
 

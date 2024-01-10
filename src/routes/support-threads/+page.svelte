@@ -66,7 +66,14 @@
         };
     };
 
-    const tags = ['Web', 'Flutter', 'GraphQL', 'Cloud', 'Self Hosted'];
+    const tags = [
+        'Web', 
+        'Flutter', 
+        'GraphQL', 
+        'Cloud', 
+        'Self Hosted'
+    ];
+
     const moreTags = [
         'Tools',
         'Accounts',
