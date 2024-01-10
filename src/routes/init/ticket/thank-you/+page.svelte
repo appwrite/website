@@ -57,7 +57,10 @@
                         {name}
                         user={data.ticket?.gh_user}
                         id={data.ticket?.id ?? 0}
-                        contributions={data.contributions}
+                        contributions={data.ticket?.show_contributions
+                            ? data.contributions
+                            : undefined}
+                        tribe={data.ticket?.tribe}
                     />
                 </div>
             </TicketPreview>

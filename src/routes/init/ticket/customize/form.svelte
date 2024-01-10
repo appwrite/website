@@ -1,13 +1,9 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
     import { appwriteInit } from '$lib/appwrite/init';
-    import TribeToggle from './tribe-toggle.svelte';
-    import type { PageData } from './$types';
     import { Switch } from '$lib/components';
-
-    $: data = $page.data as PageData;
+    import TribeToggle from './tribe-toggle.svelte';
 
     export let name = '';
     export let tribe: string | null = null;
