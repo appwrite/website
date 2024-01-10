@@ -32,7 +32,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Support Threads', href: '/support-threads' }
+                { label: 'Threads', href: '/support-threads' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },

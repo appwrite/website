@@ -14,7 +14,7 @@
     import TagsDropdown from './TagsDropdown.svelte';
     import { filterThreads, getThreads } from './helpers';
 
-    const title = 'Support Threads' + TITLE_SUFFIX;
+    const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
@@ -158,7 +158,7 @@
         </div>
         <div class="aw-big-padding-section-level-2 u-position-relative aw-u-margin-block-80">
             <div class="aw-container">
-                <h1 class="aw-display aw-u-color-text-primary">Support threads</h1>
+                <h1 class="aw-display aw-u-color-text-primary">Threads</h1>
             </div>
         </div>
     </div>
