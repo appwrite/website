@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to put privacy first, data second, and still grow
-description: 
+description: Appwrite is working towards a completely privacy-friendly and open-source tech stack. 
 date: 2024-01-12
 cover: /images/blog/privacy.png
 timeToRead: 9
@@ -34,7 +34,7 @@ If you visit the Appwrite Console or website, you will see a cookie consent bann
 
 Most were used to get website analytics, analyze website clicks, measure ad performance, and collect form submissions.
 
-### The consequences for growth
+### The consequences of removing marketing pixels, tags, and cookies
 
 The above mentioned allowed us to analyze user behavior, measure the effectiveness of ad campaigns, retarget ads, and, to some extent, personalize the user experience. There are hardly any growth or marketing teams that don’t rely on them, and as stated in [this article from Osano](https://www.osano.com/articles/marketer-friendly-privacy-software), privacy regulations make it a lot harder for growth and marketing teams to do their work. Go to any privacy footer on any website, and you will read an essay on all the data that is being tracked. But this is precisely what we are challenging: does removing pixels, cookies, and tags make growth’s life harder? Let’s take a look.
 
@@ -48,7 +48,7 @@ If you want to use data for decision-making or personalizing the user experience
 
 So, let’s look at what this looks like for Appwrite.
 
-### Privacy friendly alternatives for your growth stack
+### Privacy-friendly alternatives for your growth stack
 
 Our growth philosophy and rules enable us to grow without relying on tracking you across the web. To give you some insight, here are three (of the six) growth statements we follow for success:
 
