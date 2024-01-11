@@ -3,9 +3,9 @@ layout: post
 title: How to put privacy first, data second, and still grow
 description: 
 date: 2024-01-12
-cover: /images/pages/homepage/dashboard.png
+cover: /images/blog/privacy.png
 timeToRead: 9
-author: laura
+author: laura-du-ry
 category: GDPR
 ---
 
@@ -18,6 +18,8 @@ With our recent announcement of GDPR compliance, we took a big step in becoming 
 - **Tags** are snippets of code added to a website to track your activity and collect data. For example, a tag can be used to track how many people visit a particular page on a website or to collect information about what products you are viewing. The most well-known tool for this is [Google Tag Manager](https://www.semrush.com/blog/beginners-guide-to-google-tag-manager/). It allows you to manage all of your website tags in one place.
 - **Pixels** are small, transparent images that are embedded in a website. When you visit a website with a pixel, your browser sends information about your visit to the company that owns the pixel. This information can include the user's IP address, browser type, and the URL of the page you’re visiting. It is a beneficial tool to retarget website visitors with banner or social ads.
 - **Cookies,** first-party are set by the website you’ve visited mainly to improve your experience on that website, whereas different websites, such as Google Analytics set third-party cookies. Third-party cookies are the ones that are often used to track you across platforms, mostly meant for advertising purposes.
+
+![Appwrite is GDPR compliant](/images/blog/gdpr.png)
 
 ### So, what did we remove?
 
@@ -79,6 +81,6 @@ Overall, it made much sense to go down this route and focus on delivering a bett
 
 ### Where will it end?
 
-We still have the necessary tools to improve our product, the developer experience, and analyze our website traffic. That said, we will continue to explore the possibilities of moving towards a fully open-source and privacy-friendly growth tech stack. Not only do we feel it is the right thing to do, but it is also rooted in our culture. We want to treat you as we want to be treated by any vendors we use. For now, this has been the most sensible decision we could have made for Appwrite and the community. We are excited to take privacy further and further, so who knows where we will stand a year from now.
+We still have the necessary tools to improve our product, the developer experience and analyze our website traffic. That said, we will continue to explore the possibilities of moving towards a fully open-source and privacy-friendly growth tech stack. Not only do we feel it is the right thing to do, but it is also rooted in our culture. We want to treat you as we want to be treated by any vendors we use. For now, this has been the most sensible decision we could have made for Appwrite and the community. We are excited to take privacy further and further, so who knows where we will stand a year from now.
 
-If you are looking to build your own privacy-friendly growth stack, go check out [this blog from Posthog.](https://posthog.com/blog/best-gdpr-compliant-analytics-tools)
+If you are looking to build your privacy-friendly growth stack, go check out [this blog from Posthog.](https://posthog.com/blog/best-gdpr-compliant-analytics-tools)
