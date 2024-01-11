@@ -1,7 +1,7 @@
 ---
 layout: post
-title: How to put privacy first, data second, and still grow
-description: Appwrite is working towards a completely privacy-friendly and open-source tech stack. 
+title: How to create a privacy-first growth strategy
+description: Appwrite is working towards a completely privacy-friendly and open-source tech stack. We are committed to putting developers first and building a company that values your personal data.
 date: 2024-01-12
 cover: /images/blog/privacy.png
 timeToRead: 9
@@ -69,7 +69,7 @@ To return to our growth philosophy, we believe the dev community will find the i
 
 But there is more to gain than just privacy-friendly data.
 
-### Building **experience and trust with the developer community**
+### Building experience and trust with the developer community
 
 As we often repeat, we are heavily focused on the developer experience. It is at the core of everything we do. Considering this, there are several reasons why we decided to remove most of the tags, pixels, and cookies from our website:
 
@@ -79,8 +79,8 @@ As we often repeat, we are heavily focused on the developer experience. It is at
 
 Overall, it made much sense to go down this route and focus on delivering a better experience and enhancing trust with the community. And I think it’s fair to say that with the removal of marketing pixels, cookies, and tags, we didn’t lose anything; we merely gained.
 
-### Where will it end?
+### Building a privacy-friendly and open-source growth stack
 
-We still have the necessary tools to improve our product, the developer experience and analyze our website traffic. That said, we will continue to explore the possibilities of moving towards a fully open-source and privacy-friendly growth tech stack. Not only do we feel it is the right thing to do, but it is also rooted in our culture. We want to treat you as we want to be treated by any vendors we use. For now, this has been the most sensible decision we could have made for Appwrite and the community. We are excited to take privacy further and further, so who knows where we will stand a year from now.
+We still have the necessary tools to improve our product, the developer experience, and analyze our website traffic. That said, we will continue to explore the possibilities of moving towards a fully open-source and privacy-friendly growth tech stack. Not only do we feel it is the right thing to do, but it is also rooted in our culture. We want to treat you as we want to be treated by any vendors we use. For now, this has been the most sensible decision we could have made for Appwrite and the community. We are excited to take privacy further and further, so who knows where we will stand a year from now.
 
 If you are looking to build your privacy-friendly growth stack, go check out [this blog from Posthog.](https://posthog.com/blog/best-gdpr-compliant-analytics-tools)
