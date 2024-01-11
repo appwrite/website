@@ -1,11 +1,11 @@
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init.js';
 import sharp from 'sharp';
+
 import type { Ticket } from '../../constants.js';
 
-const getSvg = (
-    ticket: Ticket
-) => `<svg width="438" height="249" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
+const getSvg = (ticket: Ticket) => `
+<svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_327_1972)">
   <g clip-path="url(#clip0_327_1972)">
     <rect width="438" height="249" rx="18" fill="#19191C" />
@@ -820,6 +820,33 @@ const getSvg = (
 </svg>
 `;
 
+// export async function GET({ params, url }) {
+//     const ticket = (await appwriteInit.database.getDocument(
+//         PUBLIC_APPWRITE_DB_INIT_ID,
+//         PUBLIC_APPWRITE_COL_INIT_ID,
+//         params.id
+//     )) as unknown as Ticket;
+//     const svg = getSvg(ticket);
+
+//     const resvg = new Resvg(svg, {
+//         font: {
+//             fontFiles: [
+//                 `${url.origin}/static/fonts/AeonikPro-Regular.woff2`,
+//                 `${url.origin}/static/fonts/AeonikPro-Bold.woff2`,
+//                 `${url.origin}/static/fonts/AeonikFono-Regular.woff2`
+//             ]
+//         }
+//     });
+//     const pngData = resvg.render();
+//     const pngBuffer = pngData.asPng();
+
+//     return new Response(pngBuffer, {
+//         headers: {
+//             'Content-Type': 'image/png'
+//         }
+//     });
+// }
+
 export async function GET({ params }) {
     const ticket = (await appwriteInit.database.getDocument(
         PUBLIC_APPWRITE_DB_INIT_ID,
@@ -829,7 +856,7 @@ export async function GET({ params }) {
     const svg = getSvg(ticket);
 
     const svgBuffer = Buffer.from(svg);
-    const pngBuffer = await sharp(svgBuffer)
+    const pngBuffer = await sharp(svgBuffer, {})
         .resize({
             width: 1000
         })
