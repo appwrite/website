@@ -16,48 +16,53 @@
     </button>
 
     {#if open}
-        <ul
-            class="aw-card is-normal has-border-gradient menu"
-            use:melt={menu}
-            transition:fly={{ y: 8, duration: 250 }}
-            style:z-index="1"
+        <div 
+          class="menu-wrapper aw-card is-normal menu has-border-gradient"
+          style:z-index="1"
+          use:melt={menu}
+          transition:fly={{ y: 8, duration: 250 }}
         >
-            {#each tags as tag}
-                {@const checked = selectedTags?.includes(tag)}
-                <DropdownCheckboxItem let:checkboxItem {checked}>
-                    <li
-                        use:melt={checkboxItem}
-                        on:m-click={(e) => {
-                            e.preventDefault();
-                            toggleTag(tag);
-                        }}
-                    >
-                        <div class="checkbox">
-                            {#if checked}
-                                <span class="aw-icon-check" />
-                            {/if}
-                        </div>
-                        {tag}
-                    </li>
-                </DropdownCheckboxItem>
-            {/each}
-        </ul>
+          <ul
+          >
+              {#each tags as tag}
+                  {@const checked = selectedTags?.includes(tag)}
+                  <DropdownCheckboxItem let:checkboxItem {checked}>
+                      <li
+                          use:melt={checkboxItem}
+                          on:m-click={(e) => {
+                              e.preventDefault();
+                              toggleTag(tag);
+                          }}
+                      >
+                          <div class="checkbox">
+                              {#if checked}
+                                  <span class="aw-icon-check" />
+                              {/if}
+                          </div>
+                          {tag}
+                      </li>
+                  </DropdownCheckboxItem>
+              {/each}
+          </ul>
+        </div>
     {/if}
 </DropdownMenu>
 
 <style lang="scss">
-    ul {
-        --p-card-border-radius: 0.5rem;
+    .menu-wrapper {
+      --p-card-border-radius: 0.5rem;
         padding: 0.75rem;
+        backdrop-filter: blur(2px);
+        --webkit-backdrop-filter: blur(2px);
+    }
+    ul {
         min-width: 14.375rem;
 
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        height: 14rem;
+        height: 12rem;
         overflow-y: auto;
-        backdrop-filter: blur(2px);
-        --webkit-backdrop-filter: blur(2px);
 
         &:focus {
             outline: none;
@@ -80,7 +85,7 @@
     }
 
     .checkbox {
-        --p-checkbox-size: 1rem;
+        --p-checkbox-size: 1.4rem;
         width: var(--p-checkbox-size);
         height: var(--p-checkbox-size);
 
