@@ -87,12 +87,8 @@
             <div class="github" out:fade={{ duration: 100 }}>
                 {#each contributions as row}
                     <div class="row">
-                        {#each row as opacity, j}
-                            <div
-                                style:--index={row.length - j}
-                                data-empty={opacity ? undefined : ''}
-                                style:--opacity={opacity}
-                            />
+                        {#each row as level, j}
+                            <div style:--index={row.length - j} data-level={level} />
                         {/each}
                     </div>
                 {/each}
@@ -247,15 +243,28 @@
                 border-radius: calc(var(--size) / 4);
                 animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + 700ms) forwards;
 
-                &[data-empty] {
-                    --bg-color: transparent;
-                    --border-color: var(--aw-color-accent);
-                    opacity: 0.2;
+                &[data-level] {
+                    --bg-color: var(--aw-color-accent);
                 }
 
-                &:not([data-empty]) {
-                    --bg-color: var(--aw-color-accent);
-                    opacity: var(--opacity);
+                &[data-level='0'] {
+                    opacity: 0;
+                }
+
+                &[data-level='1'] {
+                    opacity: 0.25;
+                }
+
+                &[data-level='2'] {
+                    opacity: 0.5;
+                }
+
+                &[data-level='3'] {
+                    opacity: 0.75;
+                }
+
+                &[data-level='4'] {
+                    opacity: 1;
                 }
             }
         }

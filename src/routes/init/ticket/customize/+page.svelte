@@ -122,7 +122,7 @@
                     user={data.ticket?.gh_user}
                     id={data.ticket?.id ?? 0}
                     {tribe}
-                    contributions={showGitHub ? data.contributions : undefined}
+                    contributions={showGitHub ? data.ticket.contributions : undefined}
                 />
             </div>
         </TicketPreview>
