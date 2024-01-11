@@ -1,7 +1,7 @@
 <div class="wrapper">
     <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
     <div class="aw-container">
-        <h2 class="aw-display aw-u-color-text-primary">Need Support?</h2>
+        <h2 class="aw-display aw-u-color-text-primary">Need support?</h2>
         <div class="cards">
             <div class="cardy">
                 <h3 class="aw-label aw-u-color-text-primary">Join our Discord</h3>
