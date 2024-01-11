@@ -1,27 +1,32 @@
 <script lang="ts">
-    import { isInsideChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import { isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
+    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
+    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { getContext, hasContext } from 'svelte';
+    import { isInTable } from './Table.svelte';
+    import { isInDocs } from '$lib/layouts/Docs.svelte';
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
-    const isDocs = getContext('isDocs') ?? false;
-    const inPolicy = isInsidePolicy();
-    const inChangelog = isInsideChangelog();
+    const inDocs = isInDocs();
+    const inPolicy = isInPolicy();
+    const inChangelog = isInChangelog();
+    const inTable = isInTable();
 
     let className = '';
     export { className as class };
+
+    $: classes = (() => {
+        if (inDocs) return 'aw-paragraph-md';
+        if (inPolicy) return 'aw-paragraph-md in-policy';
+        if (inTable) return 'aw-paragraph-md';
+        if (inChangelog) return 'aw-paragraph-lg in-changelog';
+        return 'aw-paragraph-lg';
+    })();
 </script>
 
 {#if noParagraph}
     <slot />
-{:else if isDocs}
-    <p class="aw-paragraph-md {className}"><slot /></p>
-{:else if inPolicy}
-    <p class="aw-paragraph-md in-policy {className}"><slot /></p>
-{:else if inChangelog}
-    <p class="aw-paragraph-lg in-changelog {className}"><slot /></p>
 {:else}
-    <p class="aw-paragraph-lg {className}"><slot /></p>
+    <p class="{classes} {className}"><slot /></p>
 {/if}
 
 <style lang="scss">

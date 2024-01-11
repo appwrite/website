@@ -338,7 +338,7 @@
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
                             <TabsList
-                                class=" aw-u-mobile-divider"
+                                class=" aw-u-mobile-divider aw-u-container-query-inline"
                                 stretch
                                 style="--p-secondary-tabs-bg-color-default: var(--aw-color-white);
 								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
@@ -351,7 +351,7 @@
                     </div>
 
                     <div
-                        class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
+                        class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5 aw-u-container-query-inline"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
