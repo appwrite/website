@@ -91,6 +91,11 @@
 					isParent: true
 				},
 				{
+					label: 'Command Center',
+					href: '/docs/tooling/command-center',
+					icon: 'aw-icon-command'
+				},
+				{
 					label: 'Assistant',
 					href: '/docs/tooling/assistant',
 					icon: 'icon-sparkles'
