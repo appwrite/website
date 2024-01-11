@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
@@ -10,11 +11,18 @@
 
     let firstName = data.ticket.name.split(/\s/)[0] ?? '';
 
-    const { copied, copy } = createCopy(window.location.href);
+    const { copied, copy } = createCopy($page.url.href);
+    const ogImage = `${$page.url.origin}/init/ticket/${data.ticket.$id}/og`;
 </script>
 
 <svelte:head>
     <title>Appwrite init_ - Ticket</title>
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="568" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>

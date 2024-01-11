@@ -5,7 +5,7 @@ import sharp from 'sharp';
 import type { Ticket } from '../../constants.js';
 
 const getSvg = (ticket: Ticket) => `
-<svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="438" height="249" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_327_1972)">
   <g clip-path="url(#clip0_327_1972)">
     <rect width="438" height="249" rx="18" fill="#19191C" />
