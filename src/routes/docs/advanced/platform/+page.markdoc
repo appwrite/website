@@ -18,7 +18,7 @@ Appwrite allows you to react to events that occur on the platform.
 {% cards_item href="/docs/advanced/platform/webhooks" title="Webhooks" %}
 Use webhooks to update backend integrations about Appwrite events.
 {% /cards_item %}
-{% cards_item href="/docs/advanced/platform/response-codes codes" title="Response codes" %}
+{% cards_item href="/docs/advanced/platform/response-codes" title="Response codes" %}
 Learn about response codes and errors returned by Appwrite APIs.
 {% /cards_item %}
 {% /cards %}
