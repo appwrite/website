@@ -91,6 +91,11 @@
 					isParent: true
 				},
 				{
+					label: 'Command Center',
+					href: '/docs/tooling/command-center',
+					icon: 'aw-icon-command'
+				},
+				{
 					label: 'Assistant',
 					href: '/docs/tooling/assistant',
 					icon: 'icon-sparkles'
@@ -110,6 +115,12 @@
 					label: 'Migrations',
 					href: '/docs/advanced/migrations',
 					icon: 'icon-refresh',
+					isParent: true
+				},
+				{
+					label: 'Security',
+					href: '/docs/advanced/security',
+					icon: 'icon-shield-check',
 					isParent: true
 				},
 				{
