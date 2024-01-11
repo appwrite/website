@@ -31,7 +31,7 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
+    <div class="aw-big-padding-section" style:overflow-x="hidden">
         <div class="aw-big-padding-section-level-1 u-position-relative">
             <div
                     class="u-position-absolute"

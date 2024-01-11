@@ -14,7 +14,7 @@
         setContext(CONTEXT_KEY, null);
     }
 
-    export function isInsideChangelog() {
+    export function isInChangelog() {
         return hasContext(CONTEXT_KEY);
     }
 </script>

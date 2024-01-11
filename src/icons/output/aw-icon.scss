@@ -30,34 +30,35 @@
 .aw-icon-chevron-right:before { content: "\ea0c"; }
 .aw-icon-chevron-up:before { content: "\ea0d"; }
 .aw-icon-close:before { content: "\ea0e"; }
-.aw-icon-copy:before { content: "\ea0f"; }
-.aw-icon-dark:before { content: "\ea10"; }
-.aw-icon-discord:before { content: "\ea11"; }
-.aw-icon-divider-vertical:before { content: "\ea12"; }
-.aw-icon-download:before { content: "\ea13"; }
-.aw-icon-github:before { content: "\ea14"; }
-.aw-icon-google:before { content: "\ea15"; }
-.aw-icon-hamburger-menu:before { content: "\ea16"; }
-.aw-icon-light:before { content: "\ea17"; }
-.aw-icon-linkedin:before { content: "\ea18"; }
-.aw-icon-location:before { content: "\ea19"; }
-.aw-icon-logout-left:before { content: "\ea1a"; }
-.aw-icon-logout-right:before { content: "\ea1b"; }
-.aw-icon-microsoft:before { content: "\ea1c"; }
-.aw-icon-minus:before { content: "\ea1d"; }
-.aw-icon-nuxt:before { content: "\ea1e"; }
-.aw-icon-platform:before { content: "\ea1f"; }
-.aw-icon-plus:before { content: "\ea20"; }
-.aw-icon-product-hunt:before { content: "\ea21"; }
-.aw-icon-refine:before { content: "\ea22"; }
-.aw-icon-rest:before { content: "\ea23"; }
-.aw-icon-search:before { content: "\ea24"; }
-.aw-icon-star:before { content: "\ea25"; }
-.aw-icon-system:before { content: "\ea26"; }
-.aw-icon-twitter:before { content: "\ea27"; }
-.aw-icon-vue:before { content: "\ea28"; }
-.aw-icon-x:before { content: "\ea29"; }
-.aw-icon-youtube:before { content: "\ea2a"; }
+.aw-icon-command:before { content: "\ea0f"; }
+.aw-icon-copy:before { content: "\ea10"; }
+.aw-icon-dark:before { content: "\ea11"; }
+.aw-icon-discord:before { content: "\ea12"; }
+.aw-icon-divider-vertical:before { content: "\ea13"; }
+.aw-icon-download:before { content: "\ea14"; }
+.aw-icon-github:before { content: "\ea15"; }
+.aw-icon-google:before { content: "\ea16"; }
+.aw-icon-hamburger-menu:before { content: "\ea17"; }
+.aw-icon-light:before { content: "\ea18"; }
+.aw-icon-linkedin:before { content: "\ea19"; }
+.aw-icon-location:before { content: "\ea1a"; }
+.aw-icon-logout-left:before { content: "\ea1b"; }
+.aw-icon-logout-right:before { content: "\ea1c"; }
+.aw-icon-microsoft:before { content: "\ea1d"; }
+.aw-icon-minus:before { content: "\ea1e"; }
+.aw-icon-nuxt:before { content: "\ea1f"; }
+.aw-icon-platform:before { content: "\ea20"; }
+.aw-icon-plus:before { content: "\ea21"; }
+.aw-icon-product-hunt:before { content: "\ea22"; }
+.aw-icon-refine:before { content: "\ea23"; }
+.aw-icon-rest:before { content: "\ea24"; }
+.aw-icon-search:before { content: "\ea25"; }
+.aw-icon-star:before { content: "\ea26"; }
+.aw-icon-system:before { content: "\ea27"; }
+.aw-icon-twitter:before { content: "\ea28"; }
+.aw-icon-vue:before { content: "\ea29"; }
+.aw-icon-x:before { content: "\ea2a"; }
+.aw-icon-youtube:before { content: "\ea2b"; }
 
 $aw-icon-apple: "\ea01";
 $aw-icon-appwrite: "\ea02";
@@ -73,31 +74,32 @@ $aw-icon-chevron-left: "\ea0b";
 $aw-icon-chevron-right: "\ea0c";
 $aw-icon-chevron-up: "\ea0d";
 $aw-icon-close: "\ea0e";
-$aw-icon-copy: "\ea0f";
-$aw-icon-dark: "\ea10";
-$aw-icon-discord: "\ea11";
-$aw-icon-divider-vertical: "\ea12";
-$aw-icon-download: "\ea13";
-$aw-icon-github: "\ea14";
-$aw-icon-google: "\ea15";
-$aw-icon-hamburger-menu: "\ea16";
-$aw-icon-light: "\ea17";
-$aw-icon-linkedin: "\ea18";
-$aw-icon-location: "\ea19";
-$aw-icon-logout-left: "\ea1a";
-$aw-icon-logout-right: "\ea1b";
-$aw-icon-microsoft: "\ea1c";
-$aw-icon-minus: "\ea1d";
-$aw-icon-nuxt: "\ea1e";
-$aw-icon-platform: "\ea1f";
-$aw-icon-plus: "\ea20";
-$aw-icon-product-hunt: "\ea21";
-$aw-icon-refine: "\ea22";
-$aw-icon-rest: "\ea23";
-$aw-icon-search: "\ea24";
-$aw-icon-star: "\ea25";
-$aw-icon-system: "\ea26";
-$aw-icon-twitter: "\ea27";
-$aw-icon-vue: "\ea28";
-$aw-icon-x: "\ea29";
-$aw-icon-youtube: "\ea2a";
+$aw-icon-command: "\ea0f";
+$aw-icon-copy: "\ea10";
+$aw-icon-dark: "\ea11";
+$aw-icon-discord: "\ea12";
+$aw-icon-divider-vertical: "\ea13";
+$aw-icon-download: "\ea14";
+$aw-icon-github: "\ea15";
+$aw-icon-google: "\ea16";
+$aw-icon-hamburger-menu: "\ea17";
+$aw-icon-light: "\ea18";
+$aw-icon-linkedin: "\ea19";
+$aw-icon-location: "\ea1a";
+$aw-icon-logout-left: "\ea1b";
+$aw-icon-logout-right: "\ea1c";
+$aw-icon-microsoft: "\ea1d";
+$aw-icon-minus: "\ea1e";
+$aw-icon-nuxt: "\ea1f";
+$aw-icon-platform: "\ea20";
+$aw-icon-plus: "\ea21";
+$aw-icon-product-hunt: "\ea22";
+$aw-icon-refine: "\ea23";
+$aw-icon-rest: "\ea24";
+$aw-icon-search: "\ea25";
+$aw-icon-star: "\ea26";
+$aw-icon-system: "\ea27";
+$aw-icon-twitter: "\ea28";
+$aw-icon-vue: "\ea29";
+$aw-icon-x: "\ea2a";
+$aw-icon-youtube: "\ea2b";
