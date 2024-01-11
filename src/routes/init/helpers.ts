@@ -3,6 +3,9 @@ import { appwriteInit } from '$lib/appwrite/init';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 import type { ContributionsMatrix } from './(components)/Ticket.svelte';
+import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
+import { ID, Query } from 'appwrite';
+import type { Ticket } from './ticket/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -98,7 +101,7 @@ interface GithubContributionsResponse {
     };
 }
 
-export async function getGithubContributions(username: string) {
+export async function _getGithubContributions(username: string) {
     const { providerAccessToken } = await appwriteInit.account.getSession('current');
 
     const { data } = await fetch('https://api.github.com/graphql', {
@@ -220,4 +223,66 @@ export function getMockContributions() {
         [0, 0.04, 0.18, 0, 0.18, 0, 0.02],
         [0.18, 0.13, 0]
     ]);
+}
+
+export async function getTicketDocByUser({ login, name }: GithubUser) {
+    const { documents, total } = await appwriteInit.database.listDocuments(
+        PUBLIC_APPWRITE_DB_INIT_ID,
+        PUBLIC_APPWRITE_COL_INIT_ID,
+        [Query.equal('gh_user', login)]
+    );
+
+    if (total) {
+        return documents[0] as unknown as Omit<Ticket, 'contributions'>;
+    } else {
+        const allDocs = await appwriteInit.database.listDocuments(
+            PUBLIC_APPWRITE_DB_INIT_ID,
+            PUBLIC_APPWRITE_COL_INIT_ID
+        );
+        return (await appwriteInit.database.createDocument(
+            PUBLIC_APPWRITE_DB_INIT_ID,
+            PUBLIC_APPWRITE_COL_INIT_ID,
+            ID.unique(),
+            {
+                gh_user: login,
+                id: allDocs.total + 1,
+                name
+            }
+        )) as unknown as Omit<Ticket, 'contributions'>;
+    }
+}
+
+export async function getTicketDocById(id: string) {
+    return (await appwriteInit.database.getDocument(
+        PUBLIC_APPWRITE_DB_INIT_ID,
+        PUBLIC_APPWRITE_COL_INIT_ID,
+        id
+    )) as unknown as Omit<Ticket, 'contributions'>;
+}
+
+export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
+    const res = await f(`/init/ticket/${id}/get-contributions`);
+    const { data: contributions } = (await res.json()) as { data: ContributionsMatrix | null };
+
+    return contributions ?? [];
+}
+
+export async function getTicketByUser(user: GithubUser) {
+    const doc = await getTicketDocByUser(user);
+    const contributions = await getTicketContributions(doc.$id);
+
+    return {
+        ...doc,
+        contributions
+    } as Ticket;
+}
+
+export async function getTicketById(id: string, f = fetch) {
+    const doc = await getTicketDocById(id);
+    const contributions = await getTicketContributions(doc.$id, f);
+
+    return {
+        ...doc,
+        contributions
+    } as Ticket;
 }

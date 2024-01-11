@@ -1,8 +1,7 @@
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init.js';
-import sharp from 'sharp';
-
 import type { Ticket } from '../../constants.js';
+import sharp from 'sharp';
 
 const getSvg = (ticket: Ticket) => `
 <svg width="438" height="249" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -819,33 +818,6 @@ const getSvg = (ticket: Ticket) => `
 </defs>
 </svg>
 `;
-
-// export async function GET({ params, url }) {
-//     const ticket = (await appwriteInit.database.getDocument(
-//         PUBLIC_APPWRITE_DB_INIT_ID,
-//         PUBLIC_APPWRITE_COL_INIT_ID,
-//         params.id
-//     )) as unknown as Ticket;
-//     const svg = getSvg(ticket);
-
-//     const resvg = new Resvg(svg, {
-//         font: {
-//             fontFiles: [
-//                 `${url.origin}/static/fonts/AeonikPro-Regular.woff2`,
-//                 `${url.origin}/static/fonts/AeonikPro-Bold.woff2`,
-//                 `${url.origin}/static/fonts/AeonikFono-Regular.woff2`
-//             ]
-//         }
-//     });
-//     const pngData = resvg.render();
-//     const pngBuffer = pngData.asPng();
-
-//     return new Response(pngBuffer, {
-//         headers: {
-//             'Content-Type': 'image/png'
-//         }
-//     });
-// }
 
 export async function GET({ params }) {
     const ticket = (await appwriteInit.database.getDocument(

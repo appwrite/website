@@ -73,9 +73,12 @@
             <div class="ticket-holder">
                 <Ticket
                     name={data.ticket.name}
-                    user={data.ticket?.gh_user}
-                    tribe={data.ticket?.tribe}
-                    id={data.ticket?.id ?? 0}
+                    user={data.ticket.gh_user}
+                    tribe={data.ticket.tribe}
+                    id={data.ticket.id ?? 0}
+                    contributions={data.ticket.show_contributions
+                        ? data.ticket.contributions
+                        : undefined}
                 />
             </div>
         </TicketPreview>
