@@ -20,6 +20,7 @@
 </script>
 
 <script lang="ts">
+    import {loggedIn} from "$lib/utils/console";
     import { clickOutside } from '$lib/actions/clickOutside';
 
     import Tooltip from '$lib/components/Tooltip.svelte';
@@ -110,12 +111,15 @@
             </button>
         {/if}
         <div class="aw-side-nav-mobile-footer-buttons">
-            <a
-                href="https://cloud.appwrite.io/console"
-                class="aw-button aw-u-inline-width-100-percent-mobile"
-            >
-                <span class="text">Go to console</span>
-            </a>
+            {#if $loggedIn}
+                <a href="https://cloud.appwrite.io" class="aw-button">
+                    <span class="text">Go to Console</span>
+                </a>
+            {:else}
+                <a href="https://cloud.appwrite.io" class="aw-button">
+                    <span class="text">Get started</span>
+                </a>
+            {/if}
 
             <a
                 href="https://github.com/appwrite/appwrite/stargazers"
