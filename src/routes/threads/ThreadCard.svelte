@@ -10,7 +10,7 @@
 
 {#key highlightTerms}
     <a
-        href="/support-threads/{thread.discord_id}"
+        href="/threads/{thread.discord_id}"
         class="aw-card is-normal has-border-gradient thread"
     >
         <div class="u-flex u-gap-8">
@@ -52,6 +52,10 @@
 
     .thread {
         position: relative;
+
+        p: {
+          overflow-wrap: break-word;
+        }
     }
 
     .thread :global(mark) {

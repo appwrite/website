@@ -38,7 +38,7 @@
     <div class="aw-container" style="padding-block-end: 0;">
         <div class="header">
             <div>
-                <a class="aw-link is-secondary u-cross-baseline" href="/support-threads">
+                <a class="aw-link is-secondary u-cross-baseline" href="/threads">
                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                     <span>Back</span>
                 </a>
@@ -105,7 +105,7 @@
                 <ul>
                     {#each data.related as thread}
                         <li>
-                            <a href="/support-threads/{thread.$id}" data-sveltekit-reload>
+                            <a href="/threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="u-flex u-cross-center">
                                     <span class="aw-sub-body-500 aw-u-color-text-primary">
                                         {thread.title.length > 40
