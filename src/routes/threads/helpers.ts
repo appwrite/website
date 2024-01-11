@@ -95,11 +95,11 @@ export async function getThread($id: string) {
     )) as unknown as DiscordThread;
 }
 
-export async function getRelatedThreads(thread: DiscordThread) {
+export async function getRelatedThreads(thread: DiscordThread, limit: number = 3) {
     const tags = thread.tags?.filter(Boolean) ?? [];
     const relatedThreads = await getThreads({ q: null, tags, allTags: false });
 
-    return relatedThreads.filter(({ $id }) => $id !== thread.$id);
+    return relatedThreads.filter(({ $id }) => $id !== thread.$id).slice(0, limit);
 }
 
 export async function getThreadMessages(threadId: string) {
