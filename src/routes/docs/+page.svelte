@@ -416,7 +416,9 @@
     .aw-main-section {
         max-inline-size: unset;
         margin-inline: unset;
-        padding-inline-start: 3rem; // 48px
+        @media (min-width:1280px) {
+            padding-inline-start: 3rem; // 48px
+        }
     }
 
     .bg-blur {
