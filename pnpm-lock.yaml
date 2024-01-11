@@ -14,6 +14,9 @@ dependencies:
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/5a715ff68cba4171bf3473eabc83b84a4ae5876c
+  '@resvg/resvg-js':
+    specifier: ^2.6.0
+    version: 2.6.0
   '@splinetool/viewer':
     specifier: 0.9.455
     version: 0.9.455
@@ -1066,7 +1069,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-android-arm64@2.6.0:
@@ -1075,7 +1077,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-darwin-arm64@2.6.0:
@@ -1084,7 +1085,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-darwin-x64@2.6.0:
@@ -1093,7 +1093,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-linux-arm-gnueabihf@2.6.0:
@@ -1102,7 +1101,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-linux-arm64-gnu@2.6.0:
@@ -1111,7 +1109,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-linux-arm64-musl@2.6.0:
@@ -1120,7 +1117,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-linux-x64-gnu@2.6.0:
@@ -1129,7 +1125,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-linux-x64-musl@2.6.0:
@@ -1138,7 +1133,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-win32-arm64-msvc@2.6.0:
@@ -1147,7 +1141,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-win32-ia32-msvc@2.6.0:
@@ -1156,7 +1149,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js-win32-x64-msvc@2.6.0:
@@ -1165,7 +1157,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@resvg/resvg-js@2.6.0:
@@ -1184,7 +1175,6 @@ packages:
       '@resvg/resvg-js-win32-arm64-msvc': 2.6.0
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.0
       '@resvg/resvg-js-win32-x64-msvc': 2.6.0
-    dev: true
 
   /@rollup/plugin-commonjs@25.0.7(rollup@3.29.4):
     resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}

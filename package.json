@@ -60,6 +60,7 @@
         "@appwrite.io/pink": "0.1.0-next.9",
         "@appwrite.io/pink-icons": "0.1.0-next.9",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
+        "@resvg/resvg-js": "^2.6.0",
         "@splinetool/viewer": "0.9.455",
         "appwrite": "^13.0.1",
         "compression": "^1.7.4",
@@ -75,11 +76,17 @@
             "os": [
                 "win32",
                 "darwin",
-                "current"
+                "current",
+                "linux",
+                "linuxmusl"
             ],
             "cpu": [
                 "x64",
                 "arm64"
+            ],
+            "libc": [
+                "musl",
+                "glibc"
             ]
         }
     }
