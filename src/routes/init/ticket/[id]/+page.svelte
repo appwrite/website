@@ -16,7 +16,19 @@
 </script>
 
 <svelte:head>
-    <title>Appwrite init_ - Ticket</title>
+    <!-- Title -->
+    <title>Appwrite init_ - {firstName}'s Ticket</title>
+    <meta property="og:title" content="Appwrite init_ - {firstName}'s Ticket" />
+    <meta name="twitter:title" content="Appwrite init_ - {firstName}'s Ticket" />
+    <!-- Description -->
+    <meta
+        name="description"
+        content="Get your own ticket for Appwrite's brand new release event and get the chance to win prizes."
+    />
+    <meta
+        property="og:description"
+        content="Get your own ticket for Appwrite's brand new release event and get the chance to win prizes."
+    />
     <!-- Image -->
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1000" />
