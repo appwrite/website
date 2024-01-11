@@ -23,45 +23,43 @@ The response from these interactions will be stored as references to get more in
 In your `composable` directory, create the file `useUserSession.js` and add the following code.
 Then you can call the  `useUserSession()` function in the pages and components to use the functionality.
 
-```js
-// composable/useUserSession.js
+```ts
+// composable/useUserSession.ts
 
 import { ID } from "appwrite";
 import { ref } from "vue";
-import { account } from "/appwrite";
+import { account } from "../appwrite";
+import { type Models } from 'appwrite';
 
-const current = ref(null) // Reference to current user object
-const isLoggedIn = ref(null) //Reference to check user status
 
-export const useUserSession = () => {
-  const register = async (email, password) => {
-    await account.create(ID.unique(), email, password); // Register new user in Appwrite
-    await login(email, password); // Login registered user
-  };
 
-  const login = async (email, password) => {
-    const authUser = await account.createEmailSession(email, password); // Open user session in Appwrite
-    current.value = authUser; // Pass user data to current ref
-    isLoggedIn.value = true; // Set ref to true
-    navigateTo("/");
-  };
+const current = ref<Models.Session | null>(null); // Reference to current user object
 
-  const logout = async () => {
-    await account.deleteSession("current"); // Delete Appwrite user session
-    current.value = null; // Clear current ref
-    isLoggedIn.value = false; // Set ref to false
-    navigateTo("/");
-  };
+export const useUserSession = () =>  {
+    const register = async (email: string, password: string): Promise<void> => {
+        await account.create(ID.unique(), email, password); // Register new user in Appwrite
+        await login(email, password); // Login registered user
+    };
 
-  return {
-    current,
-    isLoggedIn,
-    login,
-    logout,
-    register,
-  };
+    const login = async (email: string, password: string): Promise<void> => {
+        const authUser = await account.createEmailSession(email, password); // Open user session in Appwrite
+        current.value = authUser; // Pass user data to current ref
+        navigateTo("/");
+    };
+
+    const logout = async (): Promise<void> => {
+        await account.deleteSession("current"); // Delete Appwrite user session
+        current.value = null; // Clear current ref
+        navigateTo("/");
+    };
+
+    return {
+        current,
+        login,
+        logout,
+        register,
+    };
 };
-
 ```
 # Login page {% #login-page %}
 
@@ -75,7 +73,7 @@ In step 5 we will add a loginbutton that will redirect us to this page.
 Add the following code to build the form.
 
 ```vue
-// pages/login.vue
+<!-- pages/login.vue -->
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
@@ -140,35 +138,27 @@ Add the following code to build the form.
   </div>
 </template>
 
-<script>
-  export default {
-    setup() {
-      // Access user composable functions
-      const user = useUserSession();
+<script setup>
+import { ref } from 'vue';
 
-      // Store user input
-      const userData = {
-        email: "",
-        password: "",
-      };
+// Access user composable functions
+const user = useUserSession();
 
-      // Login user event handler
-      const handleLogin = async () => {
-        await user.login(userData.email, userData.password);
-      };
+// Store user input
+const userData = ref({
+    email: "",
+    password: "",
+});
 
-      // Register user event handler
-      const handleRegistration = async () => {
-        await user.register(userData.email, userData.password);
-      };
+// Login user event handler
+const handleLogin = async () => {
+    await user.login(userData.value.email, userData.value.password);
+};
 
-      return {
-        handleLogin,
-        handleRegistration,
-        userData,
-      };
-    },
-  };
+// Register user event handler
+const handleRegistration = async () => {
+    await user.register(userData.value.email, userData.value.password);
+};
 </script>
 ```
 

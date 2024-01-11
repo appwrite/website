@@ -19,7 +19,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 If this is your first time using Appwrite, create an account and create your first project.
 
 Then, under **Add a platform**, add a **Web app**.
-The **Hostname** should be localhost.
+The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -56,18 +56,18 @@ Create a new file `appwrite.js` for the Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
 Add the following code to it.
 
-```js
-// appwrite.js
+```ts
+// appwrite.ts
 
 import { Client, Databases, Account } from "appwrite";
 
-const url = import.meta.env.VITE_APPWRITE_ENDPOINT;
-const project = import.meta.env.VITE_APPWRITE_PROJECT;
+const url: string = import.meta.env.VITE_APPWRITE_ENDPOINT;
+const project: string = import.meta.env.VITE_APPWRITE_PROJECT;
 
-const client = new Client();
+const client: Client = new Client();
 
 client.setEndpoint(url).setProject(project);
 
-export const account = new Account(client);
-export const database = new Databases(client);
+export const account: Account = new Account(client);
+export const database: Databases = new Databases(client);
 ```

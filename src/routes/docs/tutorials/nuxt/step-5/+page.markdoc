@@ -14,7 +14,7 @@ We will also put the user's e-mail address next to the logout button.
 From the `components` directory, create the file `navbar.vue` and add the code below.
 
 ```vue
-// components/navbar.vue
+  <!-- components/navbar.vue -->
 
 <template>
   <div>
@@ -24,9 +24,9 @@ From the `components` directory, create the file `navbar.vue` and add the code b
       <!-- Email and logout button if logged in user -->
       <div
         class="main-header-end u-margin-inline-end-16"
-        v-if="user.isLoggedIn.value === true"
-      >
-        <p>{{ user.current.value.providerUid }}</p>
+        v-if="user.current.value"      
+        >
+        <p>{{ user.current.providerUid }}</p>
         <button class="button" type="button" @click="user.logout()">
           Logout
         </button>
@@ -39,32 +39,31 @@ From the `components` directory, create the file `navbar.vue` and add the code b
   </div>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const user = useUserSession(); // Access user composable function
-
-      return {
-        user,
-      };
-    },
-  };
+<script setup>
+// Access user composable function
+const user = useUserSession();
 </script>
-
 ```
 
 Open `app.vue` from the root directory and add the navigation bar.
 
 ```vue
-// app.vue
-<template>
-  <NuxtLayout>
-    <!-- Add navbar -->
-    <Navbar />
-    <NuxtPage />
-  </NuxtLayout>
-<template>
+<!-- app.vue -->
 
+<script setup>
+import "@appwrite.io/pink";
+import "@appwrite.io/pink-icons";
+</script>
+
+<template>
+  <div>
+    <NuxtLayout>
+      <!-- Add navbar -->
+      <Navbar />
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
 ```
 
 Have a look in the browser at both the main page and the login page to test the new functionality.

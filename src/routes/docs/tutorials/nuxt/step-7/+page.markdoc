@@ -17,7 +17,7 @@ The form need a text field for filling in the title, a textarea for the descript
 From the `components` directory, add the file `ÌdeasForm.vue` and add the following code.
 
 ```vue
-// components/IdeasForm.vue
+<!-- components/ideasForm.vue -->
 
 <template>
   <div>
@@ -31,7 +31,7 @@ From the `components` directory, add the file `ÌdeasForm.vue` and add the follo
             <input
               type="text"
               placeholder="Title"
-              v-model="addIdeaData.title.value"
+              name="title"
             />
           </li>
           <!-- Description input field -->
@@ -39,7 +39,7 @@ From the `components` directory, add the file `ÌdeasForm.vue` and add the follo
             <label class="label">Description</label>
             <textarea
               placeholder="Description"
-              v-model="addIdeaData.description.value"
+              name="description"
             />
           </li>
           <button class="button" aria-label="Submit idea" type="submit">
@@ -51,39 +51,26 @@ From the `components` directory, add the file `ÌdeasForm.vue` and add the follo
   </div>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const ideas = useIdeas();
-      const user = useUserSession();
+<script setup>
+const ideas = useIdeas();
+const user = useUserSession();
 
-      // Store input field values
-      const addIdeaData = {
-        title: ref(""),
-        description: ref(""),
-      };
+const handleAddIdea = async (event) => {
+  const form = event.target;
+  const formData = new FormData(form);
 
-      const handleAddIdea = async () => {
-        // Extract the values from the refs and add userId
-        const postIdeaData = {
-          userId: user.current.value.userId,
-          title: addIdeaData.title.value,
-          description: addIdeaData.title.value,
-        };
-        await ideas.add(postIdeaData);
-        addIdeaData.title.value = ""; // Clear the title textfield
-        addIdeaData.description.value = ""; // Clear the description textarea
-      };
-
-      return {
-        addIdeaData,
-        handleAddIdea,
-        ideas,
-      };
-    },
+  // Extract the values from the FormData object and add userId
+  const postIdeaData = {
+    userId: user.current.value.userId,
+    title: formData.get('title'),
+    description: formData.get('description'),
   };
-</script>
 
+  await ideas.add(postIdeaData);
+
+  form.reset(); // Clear the form
+};
+</script>
 ```
 
 Next, add the component to the page `pages/index.vue` by auto-importing it in the `<template>`tag.
@@ -97,12 +84,12 @@ Add the following code to the `index.vue`page to conditionally render the form a
 Overwrite the contents of `pages/index.vue` with the following code.
 
 ```vue
-// pages/index.vue
+<!-- pages/index.vue -->
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
     <!-- Idea form component for logged in users -->
-    <section v-if="user.isLoggedIn.value === true" class="card u-margin-32">
+    <section v-if="user.current.value" class="card u-margin-32">
       <IdeasForm />
     </section>
 
@@ -114,27 +101,20 @@ Overwrite the contents of `pages/index.vue` with the following code.
         </p>
       </div>
     </section>
+    <IdeasList />
   </div>
 </template>
-
-<script>
-  export default {
-    setup() {
-      const user = useUserSession();
-
-      return {
-        user,
-      };
-    },
-  };
+  
+<script setup>
+// Access user composable function
+const user = useUserSession();
 </script>
-
+  
 <style>
-  article.box {
-    background-color: hsl(var(--color-neutral-0));
-  }
+article.box {
+  background-color: hsl(var(--color-neutral-0));
+}
 </style>
-
 ````
 
 # Ideas list {% #ideas-list %}
@@ -150,62 +130,56 @@ We help them do that by adding a delete button in the top right corner of the id
 Add the file `IdeasList`from the `componenents` directory and insert the following code:
 
 ```vue
-// componenents/IdeasList.vue
+<!-- componenents/ideasList.vue -->
 
 <template>
-  <section class="u-margin-32">
-    <article class="card">
-      <h4 class="heading-level-4">Latest Ideas</h4>
-      <ul class="u-margin-block-start-8">
-        <li v-for="idea in ideas.current.value">
-          <div class="box">
-            <h5 class="heading-level-6">{{ idea.title }}</h5>
-            <p class="body-text-2">{{ idea.description }}</p>
-            <div
-              class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8"
-            >
-              <button
-                class="button is-small is-text is-only-icon"
-                aria-label="Remove item"
-                v-if="
-                  user.current.value &&
-                  idea.userId === user.current.value.userId
-                "
-                type="button"
-                @click="ideas.remove(idea.$id)"
-              >
-                <span class="icon-document-remove" aria-hidden="true" />
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </article>
-  </section>
+    <section class="u-margin-32">
+        <article class="card">
+            <h4 class="heading-level-4">Latest Ideas</h4>
+            <ul class="u-margin-block-start-8">
+                <template v-if="ideas.current.value && ideas.current.value.length">
+                    <li v-for="idea in ideas.current.value">
+                        <div class="box">
+                            <h5 class="heading-level-6">{{ idea.title }}</h5>
+                            <p class="body-text-2">{{ idea.description }}</p>
+                            <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
+                                <button class="button is-small is-text is-only-icon" aria-label="Remove item" v-if="user.current.value &&
+                                    idea.userId === user.current.value.userId
+                                    " type="button" @click="ideas.remove(idea.$id)">
+                                    <span class="icon-document-remove" aria-hidden="true" />
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+                <template v-else>
+                    <p>No ideas yet.</p>
+                </template>
+            </ul>
+        </article>
+    </section>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const ideas = useIdeas();
-      const user = useUserSession();
+<script setup>
+import { onMounted } from 'vue';
 
-      // Get ideas on page load
-      onMounted(() => {
-        ideas.fetch();
-      });
-      return { ideas, user };
-    },
-  };
+const ideas = useIdeas();
+const user = useUserSession();
+
+console.log(ideas.current.value);
+
+// Get ideas on page load
+onMounted(() => {
+    ideas.fetch();
+});
 </script>
-
 ```
 
 Return to the file `pages/index.vue` once more to import the list of ideas.
 This component should be visible to all users, so no conditional rendering neeeds to be handled.
 
 ```vue
-// pages/index.vue
+<!-- pages/index.vue -->
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">

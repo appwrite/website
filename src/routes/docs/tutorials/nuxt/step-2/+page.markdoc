@@ -27,6 +27,8 @@ npm install "@appwrite.io/pink"
 Open `App.vue` and import the relevant style files.
 
 ```html
+<!-- app.vue -->
+
 <script setup>
 
 import "@appwrite.io/pink";
@@ -39,6 +41,8 @@ import "@appwrite.io/pink-icons";
 Then update `nuxt.config.ts` to disable SSR for now. SSR support is coming soon to Appwrite, for now, disable SSR.
 
 ```js
+// nuxt.config.ts
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
