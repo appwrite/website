@@ -110,6 +110,7 @@
 
     .aw-code-snippet {
         margin-block-end: 1rem;
+        margin-top: 1rem;
     }
 
     .aw-code-snippet-content {
