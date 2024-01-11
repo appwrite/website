@@ -17,6 +17,7 @@ RUN fc-cache -f -v
 
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
+
 RUN NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
 
 

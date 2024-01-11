@@ -3,6 +3,8 @@ import { appwriteInit } from '$lib/appwrite/init.js';
 import { error } from '@sveltejs/kit';
 import type { Ticket } from '../constants.js';
 
+export const ssr = true;
+
 export const load = async ({ params }) => {
     const { id } = params;
     try {
