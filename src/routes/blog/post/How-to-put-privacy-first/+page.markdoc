@@ -17,7 +17,7 @@ With our recent announcement of GDPR compliance, we took a big step in becoming 
 
 - **Tags** are snippets of code added to a website to track your activity and collect data. For example, a tag can be used to track how many people visit a particular page on a website or to collect information about what products you are viewing. The most well-known tool for this is [Google Tag Manager](https://www.semrush.com/blog/beginners-guide-to-google-tag-manager/). It allows you to manage all of your website tags in one place.
 - **Pixels** are small, transparent images that are embedded in a website. When you visit a website with a pixel, your browser sends information about your visit to the company that owns the pixel. This information can include the user's IP address, browser type, and the URL of the page you’re visiting. It is a beneficial tool to retarget website visitors with banner or social ads.
-- **Cookies,** first-party are set by the website you’ve visited mainly to improve your experience on that website, whereas different websites, such as Google Analytics set third-party cookies. Third-party cookies are the ones that are often used to track you across platforms, mostly meant for advertising purposes.
+- **Cookies** have two different types: first-party, which are set by the website you’ve visited mainly to improve your experience on that website, and third-party, which are set by different websites, such as Google Analytics. Third-party cookies are often used to track you across platforms, mostly meant for advertising purposes.
 
 ![Appwrite is GDPR compliant](/images/blog/gdpr.png)
 
