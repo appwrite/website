@@ -11,7 +11,7 @@ category: GDPR
 
 With our recent announcement of GDPR compliance, we took a big step in becoming a privacy-first organization. But we didn’t want to stop here. We wanted to take it further than just ticking the privacy boxes. We wanted to act as a party that values your personal data, so we needed to take action and move to privacy-friendly analytics. This led to removing most of the tags, pixels, and cookies on our website and the Appwrite Console. In this blog, we dive deeper into what we removed, how this affected our growth strategy, and, most of all, what we, as a community, gained from this decision.
 
-### But first, what are pixels, tags, and cookies?
+## But first, what are pixels, tags, and cookies?
 
 **Pixels**, **tags**, and **cookies** are all pieces of technology used to [track user activity online.](https://www.osano.com/articles/privacy-cookies-pixels-and-tags) They are often used for marketing and advertising purposes but can also be used to improve website functionality and user experience.
 
@@ -21,7 +21,7 @@ With our recent announcement of GDPR compliance, we took a big step in becoming 
 
 ![Appwrite is GDPR compliant](/images/blog/gdpr.png)
 
-### So, what did we remove?
+## So, what did we remove?
 
 If you visit the Appwrite Console or website, you will see a cookie consent banner. However, you will see only two options for you to pick from, `Strictly necessary cookies` and `Product analytics.`We have removed all of our `Marketing` classified pixels, tags, and cookies such as:
 
@@ -34,7 +34,7 @@ If you visit the Appwrite Console or website, you will see a cookie consent bann
 
 Most were used to get website analytics, analyze website clicks, measure ad performance, and collect form submissions.
 
-### The consequences of removing marketing pixels, tags, and cookies
+## The consequences of removing marketing pixels, tags, and cookies
 
 The above mentioned allowed us to analyze user behavior, measure the effectiveness of ad campaigns, retarget ads, and, to some extent, personalize the user experience. There are hardly any growth or marketing teams that don’t rely on them, and as stated in [this article from Osano](https://www.osano.com/articles/marketer-friendly-privacy-software), privacy regulations make it a lot harder for growth and marketing teams to do their work. Go to any privacy footer on any website, and you will read an essay on all the data that is being tracked. But this is precisely what we are challenging: does removing pixels, cookies, and tags make growth’s life harder? Let’s take a look.
 
@@ -48,7 +48,7 @@ If you want to use data for decision-making or personalizing the user experience
 
 So, let’s look at what this looks like for Appwrite.
 
-### Privacy-friendly alternatives for your growth stack
+## Privacy-friendly alternatives for your growth stack
 
 Our growth philosophy and rules enable us to grow without relying on tracking you across the web. To give you some insight, here are three (of the six) growth statements we follow for success:
 
@@ -69,7 +69,7 @@ To return to our growth philosophy, we believe the dev community will find the i
 
 But there is more to gain than just privacy-friendly data.
 
-### Building experience and trust with the developer community
+## Building experience and trust with the developer community
 
 As we often repeat, we are heavily focused on the developer experience. It is at the core of everything we do. Considering this, there are several reasons why we decided to remove most of the tags, pixels, and cookies from our website:
 
@@ -79,7 +79,7 @@ As we often repeat, we are heavily focused on the developer experience. It is at
 
 Overall, it made much sense to go down this route and focus on delivering a better experience and enhancing trust with the community. And I think it’s fair to say that with the removal of marketing pixels, cookies, and tags, we didn’t lose anything; we merely gained.
 
-### Building a privacy-friendly and open-source growth stack
+## Building a privacy-friendly and open-source growth stack
 
 We still have the necessary tools to improve our product, the developer experience, and analyze our website traffic. That said, we will continue to explore the possibilities of moving towards a fully open-source and privacy-friendly growth tech stack. Not only do we feel it is the right thing to do, but it is also rooted in our culture. We want to treat you as we want to be treated by any vendors we use. For now, this has been the most sensible decision we could have made for Appwrite and the community. We are excited to take privacy further and further, so who knows where we will stand a year from now.
 
