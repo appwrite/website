@@ -140,7 +140,7 @@ This is what your directory should look like after adding the new directories an
 
 If you run the development server now, it will still render the Nuxt Welcome page.
 We need to tell our app to use the files we just created instead.
-Open `app.vue`in the root directory and replace the content with the following code.
+Open `app.vue` in the root directory and replace the content with the following code.
 Your page will now be up and running.
 
 ```vue

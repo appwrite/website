@@ -71,10 +71,9 @@ interface Idea extends Models.Document{
 const current = ref<Idea[] | null>(null); // Reference for the fetched data
 
 export const useIdeas = () => {
-
     // Fetch the 10 most recent ideas from the database
     // Add the list to the current reference object
-    const fetch = async (): Promise<void> => {
+    const fetch = async () => {
         const response = await database.listDocuments(
             ideasDatabaseId,
             ideasCollectionId,
@@ -109,4 +108,4 @@ export const useIdeas = () => {
 };
 ```
 
-Now we can call the `useIdeas()` composable from the home page.
+Now we can call the `useIdeas` composable from the home page.
