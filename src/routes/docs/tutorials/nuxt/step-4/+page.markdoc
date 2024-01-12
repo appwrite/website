@@ -31,8 +31,6 @@ import { ref } from "vue";
 import { account } from "../appwrite";
 import { type Models } from 'appwrite';
 
-
-
 const current = ref<Models.Session | null>(null); // Reference to current user object
 
 export const useUserSession = () =>  {
@@ -64,19 +62,19 @@ export const useUserSession = () =>  {
 # Login page {% #login-page %}
 
 To get the user input we will build a simple form with the logic from the `useUserSession()` composable.
-The form will have two input fields, one for the user's email-address and one for the password.
-Underneath will be two buttons for logging in or registering the user.
+The form will have two input fields, one for the user's email address and one for the password.
+Underneath there will be two buttons for logging in or registering the user.
 
 Create a new file in the `pages` directory called `login.vue`.
 This will not only create a new page, it will also add the route `/login` to the url.
-In step 5 we will add a loginbutton that will redirect us to this page.
+In step 5 we will add a login button that will redirect us to this page.
 Add the following code to build the form.
 
 ```vue
 <!-- pages/login.vue -->
 
 <template>
-  <div class="u-max-width-650" style="margin: 0 auto;">
+  <div class="u-max-width-650" style="margin-inline: auto;">
     <section class="card u-margin-32">
       <h2 class="eyebrow-heading-2">Login/Register</h2>
       <form
@@ -84,7 +82,6 @@ Add the following code to build the form.
         @submit.prevent="handleLogin || handleRegistration"
       >
         <ul class="form-list">
-          <!-- Input field e-mail -->
           <li class="form-item">
             <label class="label">Email</label>
             <div class="input-text-wrapper">
@@ -97,7 +94,6 @@ Add the following code to build the form.
               />
             </div>
           </li>
-          <!-- Input field e-mail -->
           <li class="form-item">
             <label class="label">Password</label>
             <div class="input-text-wrapper">
