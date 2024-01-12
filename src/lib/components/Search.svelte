@@ -71,7 +71,7 @@
         {
             uid: 'recommended-references-account',
             url: '/docs/references/cloud/client-web/databases',
-            h1: 'API Reference',
+            h1: 'API reference',
             h2: 'Databases'
         },
         {
