@@ -77,19 +77,19 @@
         {
             uid: 'recommended-references-teans',
             url: '/docs/references/cloud/client-web/teams',
-            h1: 'API Reference',
+            h1: 'API reference',
             h2: 'Teams'
         },
         {
             uid: 'recommended-references-databases',
             url: '/docs/references/cloud/client-web/databases',
-            h1: 'API Reference',
+            h1: 'API reference',
             h2: 'Databases'
         },
         {
             uid: 'recommended-references-storage',
             url: '/docs/references/cloud/client-web/storage',
-            h1: 'API Reference',
+            h1: 'API reference',
             h2: 'Storage'
         }
     ];
