@@ -6,9 +6,10 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 COPY . .
 
-RUN corepack enable
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install 
-RUN NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
+RUN corepack enable \
+    && pnpm install --mount=type=cache,id=pnpm,target=/pnpm/store \
+    && NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
+
 
 # Node alpine image to serve the generated static files
 FROM node:20-alpine AS serve
