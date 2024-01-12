@@ -18,6 +18,26 @@ From the `components` directory, add the file `IdeasForm.vue` and add the follow
 
 ```vue
 <!-- components/IdeasForm.vue -->
+<script setup>
+const ideas = useIdeas();
+const user = useUserSession();
+
+const handleAddIdea = async (event) => {
+  const form = event.target;
+  const formData = new FormData(form);
+
+  // Extract the values from the FormData object and add userId
+  const postIdeaData = {
+    userId: user.current.value.userId,
+    title: formData.get('title'),
+    description: formData.get('description'),
+  };
+
+  await ideas.add(postIdeaData);
+
+  form.reset(); // Clear the form
+};
+</script>
 
 <template>
   <div>
@@ -48,27 +68,6 @@ From the `components` directory, add the file `IdeasForm.vue` and add the follow
     </article>
   </div>
 </template>
-
-<script setup>
-const ideas = useIdeas();
-const user = useUserSession();
-
-const handleAddIdea = async (event) => {
-  const form = event.target;
-  const formData = new FormData(form);
-
-  // Extract the values from the FormData object and add userId
-  const postIdeaData = {
-    userId: user.current.value.userId,
-    title: formData.get('title'),
-    description: formData.get('description'),
-  };
-
-  await ideas.add(postIdeaData);
-
-  form.reset(); // Clear the form
-};
-</script>
 ```
 
 Next, add the component to the page `pages/index.vue` by auto-importing it in the `<template>` tag.
@@ -83,6 +82,9 @@ Overwrite the contents of `pages/index.vue` with the following code.
 
 ```vue
 <!-- pages/index.vue -->
+<script setup>
+const user = useUserSession();
+</script>
 
 <template>
   <div class="u-max-width-650" style="margin-inline: auto;">
@@ -101,10 +103,6 @@ Overwrite the contents of `pages/index.vue` with the following code.
     <IdeasList />
   </div>
 </template>
-  
-<script setup>
-const user = useUserSession();
-</script>
   
 <style>
 article.box {
@@ -127,6 +125,19 @@ Add the file `IdeasList` from the `componenents` directory and insert the follow
 
 ```vue
 <!-- componenents/IdeasList.vue -->
+<script setup>
+import { onMounted } from 'vue';
+
+const ideas = useIdeas();
+const user = useUserSession();
+
+console.log(ideas.current.value);
+
+// Get ideas on page load
+onMounted(() => {
+    ideas.fetch();
+});
+</script>
 
 <template>
     <section class="u-margin-32">
@@ -155,20 +166,6 @@ Add the file `IdeasList` from the `componenents` directory and insert the follow
         </article>
     </section>
 </template>
-
-<script setup>
-import { onMounted } from 'vue';
-
-const ideas = useIdeas();
-const user = useUserSession();
-
-console.log(ideas.current.value);
-
-// Get ideas on page load
-onMounted(() => {
-    ideas.fetch();
-});
-</script>
 ```
 
 Return to the file `pages/index.vue` once more to import the list of ideas.
