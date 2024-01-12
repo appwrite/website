@@ -76,23 +76,6 @@ We will also show buttons to toggle between the two different types of forms.
 
 ```vue
 <!-- pages/login.vue -->
-
-<template>
-  <div class="u-max-width-650" style="margin: 0 auto;">
-    <section class="card u-margin-32">
-      <h2 class="eyebrow-heading-2">Login/Register</h2>
-      <AuthForm v-if="isSignUp" :handle-submit="handleRegistration" submit-type="Sign Up"></AuthForm>
-      <AuthForm v-else :handle-submit="handleLogin" submit-type="Log In"></AuthForm>
-      <button v-if="isSignUp" @click="isSignUp = false" class="u-margin-block-start-16">
-        Already have an account? Log in
-      </button>
-      <button v-else @click="isSignUp = true" class="u-margin-block-start-16">
-        Don't have an account? Sign up
-      </button>
-    </section>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 
@@ -120,6 +103,22 @@ const handleRegistration = async (event) => {
   form.reset(); // Clear the form
 };
 </script>
+
+<template>
+  <div class="u-max-width-650" style="margin: 0 auto;">
+    <section class="card u-margin-32">
+      <h2 class="eyebrow-heading-2">Login/Register</h2>
+      <AuthForm v-if="isSignUp" :handle-submit="handleRegistration" submit-type="Sign Up"></AuthForm>
+      <AuthForm v-else :handle-submit="handleLogin" submit-type="Log In"></AuthForm>
+      <button v-if="isSignUp" @click="isSignUp = false" class="u-margin-block-start-16">
+        Already have an account? Log in
+      </button>
+      <button v-else @click="isSignUp = true" class="u-margin-block-start-16">
+        Don't have an account? Sign up
+      </button>
+    </section>
+  </div>
+</template>
 ```
 
 # Authentication forms {% #auth-forms %}

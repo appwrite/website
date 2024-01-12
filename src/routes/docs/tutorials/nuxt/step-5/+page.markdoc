@@ -14,7 +14,11 @@ We will also put the user's e-mail address next to the logout button.
 From the `components` directory, create the file `navbar.vue` and add the code below.
 
 ```vue
-  <!-- components/navbar.vue -->
+<!-- components/navbar.vue -->
+<script setup>
+// Access user composable function
+const user = useUserSession();
+</script>
 
 <template>
   <div>
@@ -38,11 +42,6 @@ From the `components` directory, create the file `navbar.vue` and add the code b
     </nav>
   </div>
 </template>
-
-<script setup>
-// Access user composable function
-const user = useUserSession();
-</script>
 ```
 
 Open `app.vue` from the root directory and add the navigation bar.
