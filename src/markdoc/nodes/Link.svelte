@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
-    import { TABLE_CTX_KEY } from './Table.svelte';
+    import { isInDocs } from '$lib/layouts/Docs.svelte';
+    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
 
     export let href: string;
     export let title: string;
@@ -9,16 +9,20 @@
     const target = isExternal ? '_blank' : undefined;
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
-    const isDocs = getContext('isDocs') ?? false;
-    const inTable = getContext(TABLE_CTX_KEY) ?? false;
+    const inDocs = isInDocs();
+    const inChangelog = isInChangelog();
+
+    $: classes = (() => {
+        if (inDocs) return 'aw-paragraph-md';
+        if (inChangelog) return 'aw-paragraph-lg in-changelog';
+        return '';
+    })();
 </script>
 
-<a
-    class="aw-link is-inline"
-    class:aw-paragraph-md={!inTable && isDocs}
-    class:aw-paragraph-lg={!inTable && !isDocs}
-    {href}
-    {title}
-    {target}
-    {rel}><slot /></a
->
+<a class="aw-link is-inline {classes}" {href} {title} {target} {rel}><slot /></a>
+
+<style lang="scss">
+    .in-changelog:last-child {
+        margin-block-start: 1rem;
+    }
+</style>

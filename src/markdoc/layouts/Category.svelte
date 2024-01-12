@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Article, FooterNav, MainFooter } from '$lib/components';
+	import { page } from '$app/stores';
 	import { Main } from '$lib/layouts';
 	import { getContext } from 'svelte';
 	import type { PostsData, AuthorData } from '$routes/blog/content';
@@ -9,9 +10,10 @@
 	export let name: string;
 	export let description: string;
 
+	const pageSlug = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
 	const authors = getContext<AuthorData[]>('authors');
 	const postsList = getContext<PostsData[]>('posts');
-	const posts = postsList.filter((post) => post.category.includes(name.toLowerCase()));
+	const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
 	const seoTitle = name + BLOG_TITLE_SUFFIX;
 	const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
@@ -38,7 +40,7 @@
 	<div class="aw-big-padding-section-level-1">
 		<div class="aw-big-padding-section-level-2">
 			<div class="aw-container">
-				<a class="aw-link aw-u-color-text-secondary" href="/blog">
+				<a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/blog">
 					<span class="aw-icon-chevron-left" aria-hidden="true" />
 					<span>Back to blog</span>
 				</a>
@@ -58,7 +60,7 @@
 				<div class="u-margin-block-start-48">
 					<ul class="aw-grid-articles">
 						{#each posts as post}
-							{@const author = authors.find((a) => a.name.includes(post.author))}
+							{@const author = authors.find((a) => a.slug.includes(post.author))}
 							{#if author}
 								<Article
 									title={post.title}

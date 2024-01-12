@@ -35,9 +35,9 @@
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Community', href: '/community' },
-                { label: 'Heroes', href: '/heroes' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
@@ -52,8 +52,8 @@
                 }
             ],
             About: [
-                { label: 'Pricing', href: '/pricing' },
                 { label: 'Company', href: '/company' },
+                { label: 'Pricing', href: '/pricing' },
                 {
                     label: 'Careers',
                     href: 'https://appwrite.careers',
@@ -68,7 +68,7 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },
@@ -78,7 +78,7 @@
         };
 </script>
 
-<nav
+<nav aria-label="Footer"
     class="aw-footer-nav u-margin-block-start-100 u-position-relative"
     class:aw-u-sep-block-start={!noBorder}
 >
