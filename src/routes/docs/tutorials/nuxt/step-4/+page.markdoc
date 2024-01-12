@@ -51,6 +51,11 @@ export const useUserSession = () =>  {
         navigateTo("/");
     };
 
+    // Check if already logged in to initialize the store.
+    account.getSession('current').then((user: Models.Session) => {
+        current.value = user;
+    });
+
     return {
         current,
         login,
@@ -61,75 +66,29 @@ export const useUserSession = () =>  {
 ```
 # Login page {% #login-page %}
 
-To get the user input we will build a simple form with the logic from the `useUserSession()` composable.
-The form will have two input fields, one for the user's email address and one for the password.
-Underneath there will be two buttons for logging in or registering the user.
-
 Create a new file in the `pages` directory called `login.vue`.
 This will not only create a new page, it will also add the route `/login` to the url.
 In step 5 we will add a login button that will redirect us to this page.
-Add the following code to build the form.
+
+We will define functions to handle form submissions and show either a signup
+or a login form, which renders one form or the other depending on `isSignUp`'s state.
+We will also show buttons to toggle between the two different types of forms.
 
 ```vue
 <!-- pages/login.vue -->
 
 <template>
-  <div class="u-max-width-650" style="margin-inline: auto;">
+  <div class="u-max-width-650" style="margin: 0 auto;">
     <section class="card u-margin-32">
       <h2 class="eyebrow-heading-2">Login/Register</h2>
-      <form
-        class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
-        @submit.prevent="handleLogin || handleRegistration"
-      >
-        <ul class="form-list">
-          <li class="form-item">
-            <label class="label">Email</label>
-            <div class="input-text-wrapper">
-              <input
-                v-model="userData.email"
-                type="email"
-                class="input-text"
-                placeholder="Email"
-                required
-              />
-            </div>
-          </li>
-          <li class="form-item">
-            <label class="label">Password</label>
-            <div class="input-text-wrapper">
-              <input
-                v-model="userData.password"
-                type="password"
-                class="input-text"
-                placeholder="Password"
-                required
-              />
-            </div>
-          </li>
-        </ul>
-        <ul class="buttons-list u-margin-block-start-16">
-          <!-- Login button  -->
-          <li class="buttons-list-item">
-            <button
-              class="button is-small u-margin-inline-start-4"
-              aria-label="Login"
-              @click="handleLogin"
-            >
-              Login
-            </button>
-          </li>
-          <!-- Register button  -->
-          <li class="buttons-list-item">
-            <button
-              class="button is-small is-secondary u-margin-inline-start-4"
-              aria-label="Register account"
-              @click="handleRegistration"
-            >
-              Register
-            </button>
-          </li>
-        </ul>
-      </form>
+      <AuthForm v-if="isSignUp" :handle-submit="handleRegistration" submit-type="Sign Up"></AuthForm>
+      <AuthForm v-else :handle-submit="handleLogin" submit-type="Log In"></AuthForm>
+      <button v-if="isSignUp" @click="isSignUp = false" class="u-margin-block-start-16">
+        Already have an account? Log in
+      </button>
+      <button v-else @click="isSignUp = true" class="u-margin-block-start-16">
+        Don't have an account? Sign up
+      </button>
     </section>
   </div>
 </template>
@@ -140,21 +99,101 @@ import { ref } from 'vue';
 // Access user composable functions
 const user = useUserSession();
 
-// Store user input
-const userData = ref({
-    email: "",
-    password: "",
-});
+const isSignUp = ref(false);
 
 // Login user event handler
-const handleLogin = async () => {
-    await user.login(userData.value.email, userData.value.password);
+const handleLogin = async (event) => {
+  const form = event.target;
+  const formData = new FormData(form);
+
+  await user.login(formData.get('email'), formData.get('password'));
+
+  form.reset(); // Clear the form
 };
 
-// Register user event handler
-const handleRegistration = async () => {
-    await user.register(userData.value.email, userData.value.password);
+const handleRegistration = async (event) => {
+  const form = event.target;
+  const formData = new FormData(form);
+
+  await user.register(formData.get('email'), formData.get('password'));
+
+  form.reset(); // Clear the form
 };
+</script>
+```
+
+# Authentication forms {% #auth-forms %}
+
+In the previous step, we defined a `AuthForm` to handle signup and login. 
+Let's build this form now.
+
+Create a new file `components/authForm.vue` and add the following code.
+The handle submit and submit type are props passed from `pages/login.vue`
+
+```html
+<!-- components/authForm.vue -->
+
+<template>
+  <form
+  class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
+  @submit.prevent="handleSubmit"
+>
+  <ul class="form-list">
+    <!-- Input field e-mail -->
+    <li class="form-item">
+      <label class="label">Email</label>
+      <div class="input-text-wrapper">
+        <input
+          type="email"
+          name="email"
+          class="input-text"
+          placeholder="Email"
+          required
+        />
+      </div>
+    </li>
+    <!-- Input field e-mail -->
+    <li class="form-item">
+      <label class="label">Password</label>
+      <div class="input-text-wrapper">
+        <input
+          type="password"
+          name="password"
+          class="input-text"
+          placeholder="Password"
+          required
+        />
+      </div>
+    </li>
+  </ul>
+  <ul class="buttons-list u-margin-block-start-16">
+    <!-- Login button  -->
+    <li class="buttons-list-item">
+      <button
+        class="button is-small u-margin-inline-start-4"
+        aria-label="Login"
+        @click="handleSubmit"
+      >
+        {{submitType}}
+      </button>
+    </li>
+  </ul>
+</form>
+</template>
+
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  handleSubmit: {
+    type: Function,
+    required: true
+  },
+  submitType: {
+    type: String,
+    required: true
+  }
+})
 </script>
 ```
 

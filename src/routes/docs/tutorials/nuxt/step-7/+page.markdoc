@@ -179,14 +179,12 @@ This component should be visible to all users, so no conditional rendering neeed
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
-    <!-- Section with form component for logged in users -->
-    <!-- Section with paragraph for not logged in users -->
-
-    <!-- Add list of ideas component for all users -->
+    ... Some skipped code
     <IdeasList />
   </div>
 </template>
 
+.. Skipped script section and styling
 ````
 
 Congratulations!

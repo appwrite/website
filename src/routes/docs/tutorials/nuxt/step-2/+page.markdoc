@@ -106,9 +106,9 @@ Add the file `index.vue` with the following code.
 <!-- pages/index.vue -->
 
 <template>
-  <div>
-    <h1>Hello, idea tracker!</h1>
-  </div>
+  <nav class="main-header u-padding-inline-end-0">
+    <h3 class="u-stretch eyebrow-heading-1">Hello, Idea Tracker!</h3>
+  </nav>
 </template>
 ```
 
