@@ -24,7 +24,7 @@ parent_directory <= you run the command in this directory
     └── docker-compose.yml
 ```
 
-This is the parent directory where you will find the `appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
+This is the parent directory where you will find the appwrite directory, inside which there are `docker-compose.yml` and `.env` files.
 
 # Installing the next version {% #install-next-version %}
 
@@ -35,7 +35,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.4.9
+    appwrite/appwrite:1.4.13
 ```
 
 ## CMD
@@ -45,7 +45,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.4.9
+    appwrite/appwrite:1.4.13
 ```
 
 ## PowerShell
@@ -55,7 +55,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.4.9
+    appwrite/appwrite:1.4.13
 ```
 
 This will pull the `docker-compose.yml` file for the new version and perform the installation. 

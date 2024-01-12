@@ -103,6 +103,12 @@
                     scale: true
                 },
                 {
+                    title: 'Custom SMTP',
+                    free: '-',
+                    pro: true,
+                    scale: true
+                },
+                {
                     title: 'Webhooks',
                     free: '2 per project',
                     pro: 'Unlimited',
@@ -181,7 +187,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming soon',
+                    pro: 'Start trial',
                     scale: 'Coming soon'
                 }
             ]
@@ -332,7 +338,7 @@
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
                             <TabsList
-                                class=" aw-u-mobile-divider"
+                                class=" aw-u-mobile-divider aw-u-container-query-inline"
                                 stretch
                                 style="--p-secondary-tabs-bg-color-default: var(--aw-color-white);
 								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
@@ -345,7 +351,7 @@
                     </div>
 
                     <div
-                        class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5"
+                        class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5 aw-u-container-query-inline"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
@@ -389,9 +395,14 @@
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
                                 <h4 class="aw-label aw-u-color-text-primary">Pro</h4>
-                                <button class="aw-button" disabled>
-                                    <span class="aw-sub-body-500">Coming soon</span>
-                                </button>
+                                <a
+                                    class="aw-button"
+                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="aw-sub-body-500">Start trial</span>
+                                </a>
                             </div>
                         </div>
                         <div class="aw-mini-card">

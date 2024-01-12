@@ -66,7 +66,7 @@ let subscription = realtime.subscribe(channels: ["files"]) { response in
 }
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -159,7 +159,7 @@ let subscription = realtime.subscribe(channel: "account", callback: { response i
 })
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -230,7 +230,7 @@ realtime.subscribe(channels: ["databases.A.collections.A.documents.A", "files"])
 }
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -303,7 +303,7 @@ let subscription = realtime.subscribe(channel: "files") { response in
 subscription.close()
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
 
@@ -490,7 +490,7 @@ let client = Client()
 client.setEndpointRealtime("wss://cloud.appwrite.io/v1/realtime")
 ```
 
-```java
+```kotlin
 import io.appwrite.Client
 
 val client = Client(context)

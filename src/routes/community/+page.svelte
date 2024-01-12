@@ -20,10 +20,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours2.png',
+                src: '/images/community/events/december-1.png',
                 alt: ''
             },
-            date: 'November 2nd',
+            date: 'December 14th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -32,10 +32,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours3.png',
+                src: '/images/community/events/december-2.png',
                 alt: ''
             },
-            date: 'November 9th',
+            date: 'December 21st',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -44,34 +44,10 @@
         {
             href: '/discord',
             cover: {
-                src: '/images/community/events/office-hours4.png',
+                src: '/images/community/events/december-3.png',
                 alt: ''
             },
-            date: 'November 16th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours5.png',
-                alt: ''
-            },
-            date: 'November 23rd',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/office-hours6.png',
-                alt: ''
-            },
-            date: 'November 30th',
+            date: 'December 28th',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -111,14 +87,14 @@
     ];
 
     const metrics = [
-        { metric: '33K+', description: 'GitHub Stars' },
-        { metric: '8K+', description: 'Pull Requests' },
-        { metric: '15K+', description: 'Commits' },
-        { metric: '2.5K+', description: 'Issues' },
-        { metric: '400+', description: 'Open Issues' },
-        { metric: '1.9K+', description: 'Closed Issues' },
-        { metric: '4.9K+', description: 'Forks' },
-        { metric: '20K+', description: 'Contributors' }
+        { metric: '38K+', description: 'GitHub Stars' },
+        { metric: '3K+', description: 'Pull Requests' },
+        { metric: '18K+', description: 'Commits' },
+        { metric: '3K+', description: 'Issues' },
+        { metric: '600+', description: 'Open Issues' },
+        { metric: '2.5K+', description: 'Closed Issues' },
+        { metric: '3.5K+', description: 'Forks' },
+        { metric: '800+', description: 'Contributors' }
     ];
 
     let name = '';
@@ -178,7 +154,7 @@
                 <section class="aw-container aw-u-padding-block-end-0 u-position-relative">
                     <div class="aw-hero is-align-start aw-u-max-width-580">
                         <h1 class="aw-display aw-u-color-text-primary">
-                            Built by a community of 700+ contributors
+                            Built by a community of 800+ contributors
                         </h1>
                         <div>
                             <p class="aw-description">
@@ -203,7 +179,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                                 </a>
                             </div>
                         </div>
@@ -523,7 +499,7 @@
                                         <span
                                             class="icon-discord aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Discord logo"
+                                            aria-label="Discord"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
@@ -543,11 +519,11 @@
                                         <span
                                             class="aw-icon-x aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="X logo"
+                                            aria-label="X"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        125K+ followers
+                                        128K+ followers
                                     </div>
                                 </a>
                             </li>
@@ -563,11 +539,11 @@
                                         <span
                                             class="icon-github aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="GitHub logo"
+                                            aria-label="GitHub"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        33K+ stargazers
+                                        38K+ stargazers
                                     </div>
                                 </a>
                             </li>
@@ -583,11 +559,11 @@
                                         <span
                                             class="icon-youtube aw-u-font-size-40"
                                             aria-hidden="true"
-                                            aria-label="Youtube logo"
+                                            aria-label="Youtube"
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        3K+ subscribers
+                                        4K+ subscribers
                                     </div>
                                 </a>
                             </li>

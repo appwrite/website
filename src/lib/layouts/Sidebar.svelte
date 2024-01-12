@@ -35,7 +35,16 @@
     }
 </script>
 
-<nav class="aw-side-nav" use:clickOutside={() => ($layoutState.showSidenav = false)}>
+<nav
+    class="aw-side-nav"
+    use:clickOutside={(e) => {
+        const el = e.target;
+        if (!(el instanceof HTMLElement)) return;
+        if (el.closest('.aw-main-header') || el.closest('.aw-mobile-header')) return;
+        $layoutState.showSidenav = false;
+    }}
+    aria-label="Side"
+>
     <div class="aw-side-nav-wrapper">
         <button
             class="aw-input-text aw-is-not-desktop"
@@ -101,12 +110,12 @@
             </button>
         {/if}
         <div class="aw-side-nav-mobile-footer-buttons">
-            <button
+            <a
                 href="https://cloud.appwrite.io/console"
                 class="aw-button aw-u-inline-width-100-percent-mobile"
             >
                 <span class="text">Go to console</span>
-            </button>
+            </a>
 
             <a
                 href="https://github.com/appwrite/appwrite/stargazers"
@@ -116,7 +125,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
             </a>
         </div>
     </div>
