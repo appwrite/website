@@ -1,6 +1,6 @@
 ---
 layout: article
-title: API Reference
+title: API reference
 description: Complete API references for Appwrite SDK, REST, and GraphQL APIs. Learn how to use Authentication, Databases, Storage, Functions, Avatars, Locale, and other Appwrite APIs.
 ---
 Appwrite lets you build integrations on web, mobile, native, and server platforms through a set of APIs. You can use one of our many [SDKs](/docs/sdks) or integrate directly through the [REST API](/docs/apis/rest) or [GraphQL API](/docs/apis/graphql).
