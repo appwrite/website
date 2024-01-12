@@ -90,21 +90,16 @@
         'REST API'
     ];
     const _selectedTags = queryParam<string[]>('tags', {
-        encode(value) {
-            return value.join(',');
+        encode(tags) {
+            return tags.join(',');
         },
-        decode(value) {
-            return value?.split(',') ?? [];
+        decode(tags) {
+            return tags?.split(',') ?? [];
         },
         defaultValue: []
     });
 
     let selectedTags: string[] = [];
-    // $: selectedTags = $_selectedTags; // Optimistic UI hack
-
-    // afterNavigate(() => {
-    //     selectedTags = $_selectedTags;
-    // });
 
     function toggleTag(tag: string) {
         if (selectedTags.includes(tag)) {
@@ -113,19 +108,6 @@
             selectedTags = [...selectedTags, tag];
         }
         handleSearch(query);
-        // _selectedTags.update((p) => {
-        //     let result: string[];
-
-        //     const prevArr = p ?? [];
-        //     if (prevArr.includes(tag)) {
-        //         result = prevArr.filter((t) => t !== tag);
-        //     } else {
-        //         result = [...prevArr, tag];
-        //     }
-
-        //     selectedTags = result; // Optimistic UI hack
-        //     return result;
-        // });
     }
 </script>
 

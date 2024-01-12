@@ -13,6 +13,7 @@
 
     const title = 'Support Thread' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
+    const discordLink = "https://discord.com/channels/564160730845151244/{data.discord_id}";
 
     function shorten(str: string, len: number) {
         return str.length > len ? str.slice(0, len) + '...' : str;
@@ -58,7 +59,7 @@
             <div class="buttons">
                 <a
                     class="aw-button"
-                    href="https://discord.com/channels/564160730845151244/{data.discord_id}"
+                    href={discordLink}
                 >
                     <span class="aw-icon-discord" />
                     <span class="text">View on Discord</span>
@@ -91,7 +92,7 @@
                     </p>
                     <a
                         class="aw-button u-margin-block-start-24"
-                        href="https://discord.com/channels/564160730845151244/{data.discord_id}"
+                        href={discordLink}
                     >
                         <span class="aw-icon-discord" />
                         <span class="text">Reply on Discord</span>
@@ -112,7 +113,6 @@
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}
                                     </span>
-                                    <!-- <span>{formatTimestamp(thread)}</span> -->
                                 </div>
                                 <p class="aw-sub-body-400 u-margin-block-start-8">
                                     {thread.content.length > 160

@@ -27,7 +27,6 @@ export interface DiscordThread extends Pick<Models.Document, '$id'> {
     content: string;
     title: string;
     search_meta?: string;
-    // messages?: DiscordMessage[];
     tldr: string;
     vote_count: number;
     message_count: number;
