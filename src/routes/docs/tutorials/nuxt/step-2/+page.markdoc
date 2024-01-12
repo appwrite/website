@@ -40,7 +40,7 @@ import "@appwrite.io/pink-icons";
 
 Then update `nuxt.config.ts` to disable SSR for now. SSR support is coming soon to Appwrite, for now, disable SSR.
 
-```js
+```ts
 // nuxt.config.ts
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
