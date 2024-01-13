@@ -398,7 +398,7 @@ databases.createDocument(
 ```
 {% /multicode %}
 
-## Edge case behaviors
+## Edge case behaviors {% #edge-case-behaviors %}
 - If a nested child document is included and **no child document ID** is provided, the child document will be given a unique ID.
 - If a nested child document is included and **no conflicting child document ID** exists, the child document will be **created**.
 - If a nested child document is included and the **child document ID already exists**, the child document will be **updated**.

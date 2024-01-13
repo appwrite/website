@@ -119,8 +119,6 @@ You can also upload files programmatically using our SDKs:
   ```
 
 {% /multicode %}
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
 # Large files {% #large-files %}
 When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
@@ -130,7 +128,7 @@ If you're not using an SDK, you can [learn more about REST API file handling](/d
 # InputFile {% #input-file %}
 Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
 
-# Client SDKs
+# Client SDKs {% #client-sdks %}
 
 {% tabs %}
 {% tabsitem #web title="Web" %}
@@ -180,7 +178,7 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 {% /tabsitem %}
 {% /tabs %}
 
-# Server SDK
+# Server SDKs {% #server-sdks %}
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
@@ -479,115 +477,6 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             val result = storage.getFileDownload(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
-    }
-}
-```
-{% /multicode %}
-
-# Get File {% #get-file %}
-To get a file, use the `getFile` method.
-
-{% multicode %}
-```js
-import { Client, Storage } from "appwrite";
-
-const client = new Client();
-
-const storage = new Storage(client);
-
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-;
-
-const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
-
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
-```
-```dart
-import 'package:appwrite/appwrite.dart';
-
-void main() { // Init SDK
-  Client client = Client();
-  Storage storage = Storage(client);
-
-  client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-  ;
-  // downloading file
-  Future result = storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
-  ).then((bytes) {
-    final file = File('path_to_file/filename.ext');
-    file.writeAsBytesSync(bytes)
-  }).catchError((error) {
-      print(error.response);
-  })
-}
-
-//displaying image preview
-FutureBuilder(
-  future: storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
-  ), //works for both public file and private file, for private files you need to be logged in
-  builder: (context, snapshot) {
-    return snapshot.hasData && snapshot.data != null
-      ? Image.memory(
-          snapshot.data,
-        )
-      : CircularProgressIndicator();
-  },
-);
-```
-```swift
-import Appwrite
-
-func main() async throws {
-    let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
-    let storage = Storage(client)
-    let byteBuffer = try await storage.getFile(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
-    )
-
-    print(String(describing: byteBuffer)
-}
-```
-```kotlin
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import io.appwrite.Client
-import io.appwrite.services.Storage
-
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
-
-        val storage = Storage(client)
-
-        GlobalScope.launch {
-            val result = storage.getFile(
                 bucketId = "[BUCKET_ID]",
                 fileId = "[FILE_ID]"
             )

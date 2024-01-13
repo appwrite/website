@@ -3,8 +3,10 @@
   content: "";
   display:block;
   inline-size:pxToRem(20);
-  block-size:pxToRem(20);
+  min-inline-size:pxToRem(20);
+  block-size:pxToRem(24);
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iOCIgZmlsbD0iI0ZEMzY2RSIgZmlsbC1vcGFjaXR5PSIwLjA4IiBzdHJva2U9IiNGRDM2NkUiIHN0cm9rZS1vcGFjaXR5PSIwLjMyIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik02LjI1IDExLjVMOC43NSAxMy41TDEzLjc1IDciIHN0cm9rZT0iI0U0RTRFNyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
+  background-position-y: center;
 }

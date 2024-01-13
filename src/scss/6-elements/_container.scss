@@ -17,6 +17,7 @@
 
 .#{$p}-big-padding-section {
   display:grid;
+  grid-template-columns: minmax(0, 1fr);
 
   &-level-1 {
     @media #{$break1} {

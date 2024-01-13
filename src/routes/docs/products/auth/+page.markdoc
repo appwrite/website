@@ -12,4 +12,6 @@ Authentication makes it easy to build secure and robust authentication with supp
 You can manage user accounts with user preferences, user labeling, or organizing users into teams.
 Combined with a robust permissions system, Appwrite Authentication provides everything you need to authenticate and manage users.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/auth/quick-start)
+{% arrow_link href="/docs/products/auth/quick-start" %}
+Quick start 
+{% /arrow_link %}

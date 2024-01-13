@@ -8,10 +8,15 @@ import { build, files, version } from '$service-worker';
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
 
+const EXCEPTIONS = [
+  '/images/blog',
+  '/assets.zip'
+]
+
 const ASSETS = [
     ...build, // the app itself
     ...files // everything in `static`
-];
+].filter(file => !EXCEPTIONS.some(e => file.startsWith(e)));
 
 const sw = self as unknown as ServiceWorkerGlobalScope;
 

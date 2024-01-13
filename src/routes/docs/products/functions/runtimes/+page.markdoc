@@ -46,6 +46,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `python-3.9`
 `python-3.10`
 `python-3.11`
+`python-3.12`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
@@ -56,6 +57,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `dart-2.17`
 `dart-2.18`
 `dart-3.0`
+`dart-3.1`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
@@ -123,4 +125,5 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 - `php-8.0`
 - `ruby-3.0`
 - `python-3.9`
+- `python-3.12`
 - `dart-2.17`

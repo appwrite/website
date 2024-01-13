@@ -5,6 +5,7 @@
 
     export let placement: FloatingConfig['placement'] = 'top';
     export let disabled = false;
+    export let closeOnPointerDown = false;
 
     const {
         elements: { trigger, content, arrow },
@@ -14,7 +15,7 @@
             placement
         },
         openDelay: 0,
-        closeOnPointerDown: false,
+        closeOnPointerDown,
         forceVisible: true
     });
 

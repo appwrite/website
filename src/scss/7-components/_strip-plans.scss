@@ -3,6 +3,7 @@
 .#{$p}-strip-plans {
   &-header {
     container-name:strip-plans; container-type:inline-size;
+    margin-block-end:pxToRem(32);
     &-wrapper {
       display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
     }
@@ -11,18 +12,19 @@
     container-name:strip-plans; container-type:inline-size;
     padding-block:pxToRem(32);
     &:nth-child(n + 2) { border-block-start:solid pxToRem(1) rgba(255, 255, 255, 0.12); }
+    &:last-child { padding-block-end:0; }
     &-wrapper {
       display:flex; justify-content:space-between; align-items:end; gap:pxToRem(48);
     }
   }
   &-plan {
     display:flex; flex-direction:column; gap:pxToRem(4);
-    flex:1; flex-basis:pxToRem(103);
+    flex:1; flex-basis:pxToRem(103); flex-shrink:0;
     .title { color:rgb(255 255 255 / 0.64); }
     .price {  }
-    .info  { color:rgb(255 255 255 / 0.64); }
+    .info  { white-space:nowrap; color:rgb(255 255 255 / 0.64); }
   }
-  &-info { flex:2.5; flex-basis:pxToRem(230); }
+  &-info { flex:2.5; flex-basis:pxToRem(230); color:rgb(255 255 255 / 0.64); }
   .#{$p}-button { flex:1;  white-space:nowrap; }
 
   /* responsive according container size */

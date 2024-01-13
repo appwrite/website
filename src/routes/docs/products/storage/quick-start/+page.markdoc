@@ -123,8 +123,6 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   ```
 
 {% /multicode %}
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
 
 # Download file {% #download-file %}
