@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Migrate from Cloud
+title: Migrate from self-hosted
 description: Self-hosted application migration made easy with Appwrite. Discover the steps and strategies for migrating your self-hosted apps to Appwrite's managed platform.
 difficulty: beginner
 readtime: 20

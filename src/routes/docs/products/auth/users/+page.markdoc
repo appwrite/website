@@ -12,4 +12,6 @@ If you need to act on behalf of users through an Appwrite Function or your own b
 
 The users API can be used to create users, import users, update user info, get user audit logs, and remove users.
 
-[Learn more in the Users API references {% icon icon="cheveron-right" /%}](/docs/references/cloud/server-nodejs/users)
+{% arrow_link href="/docs/references/cloud/server-nodejs/users" %}
+Learn more in the Users API references 
+{% /arrow_link %}

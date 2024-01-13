@@ -5,51 +5,44 @@ description: Add navigation to your SvelteKit application with Appwrite authenti
 step: 5
 ---
 
-Create a layout component, used by all pages, to display a navbar. The navbar will show a login button if the user is not logged in, and a logout button if the user is logged in.
-
-In this component, we can call our `user.init()` function to check if the user is logged in when the page loads.
+We'll create a layout component, that's used by all pages, to display a navbar.
+The navbar will show a login button if the user is not logged in, and a logout button if the user is logged in.
 
 Create a new file `src/routes/+layout.svelte` and add the following code to it.
 
 ```html
 <script>
-  import { ideas } from "$lib/stores/ideas";
-  import { user } from "$lib/stores/user";
-  import { onMount } from "svelte";
-
-  onMount(async () => {
-    user.init();
-  });
+	import { user } from '$lib/user';
 </script>
 
 <nav>
-  <a href="/">Idea tracker</a>
-  {#if $user}
-    <div>
-      <span>{$user.email}</span>
-      <button type="button" on:click={user.logout}>Logout</button>
-    </div>
-  {:else}
-    <a href="/login">Login</a>
-  {/if}
+	<a href="/">Home</a>
+	{#if $user}
+		<div>
+			<span>{$user.name}</span>
+			<button type="button" on:click={user.logout}>Logout</button>
+		</div>
+	{:else}
+		<a href="/login">Login</a>
+	{/if}
 </nav>
 
 <slot />
 
 <style>
-  :global(*) {
-    font-family: sans-serif;
-  }
+	:global(*) {
+		font-family: sans-serif;
+	}
 
-  :global(body) {
-    margin: 1rem auto;
-    max-width: 30rem;
-  }
+	:global(body) {
+		margin: 1rem auto;
+		max-width: 30rem;
+	}
 
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 </style>
 ```

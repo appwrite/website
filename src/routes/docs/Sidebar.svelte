@@ -58,6 +58,12 @@
 					href: '/docs/products/storage',
 					icon: 'icon-folder',
 					isParent: true
+				},
+				{
+					label: 'Messaging',
+					href: '/docs/products/messaging',
+					icon: 'icon-send',
+					isParent: true
 				}
 			]
 		},

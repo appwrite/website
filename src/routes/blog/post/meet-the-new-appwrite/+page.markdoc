@@ -7,7 +7,7 @@ cover: /images/blog/logo.png
 timeToRead: 5
 author: sara-kaandorp
 category: design, brand
-featured: true
+featured: false
 ---
 
 At Appwrite, we are constantly collaborating with the Appwrite community to improve Appwrite's products, services, and content. All for the sake of improving your developer experience, as well as staying true to the open-source values.

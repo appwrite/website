@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Migrate from self-hosted
+title: Migrate from Cloud
 description: Migrate to Appwrite from cloud platforms seamlessly. Learn how to move your applications and data to Appwrite for enhanced flexibility and control.
 difficulty: beginner
 readtime: 10
@@ -26,7 +26,7 @@ and [things to keep in mind](#notices) sections above.
 
 1. Navigate to your self-hosted project's Console and click on the **Migrations** tab.
 
-2. Click **Deploy to cloud**, you will be redirected to Appwrite Cloud.
+2. Click **Deploy to Cloud**, you will be redirected to Appwrite Cloud.
 
 3. You will complete the migration on Appwrite Cloud.
 

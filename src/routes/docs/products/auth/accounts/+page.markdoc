@@ -15,10 +15,10 @@ Each user's account can also have their own preference object, which you can use
 You can signup and login a user with an account create through 
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),
-[Anonymous](/docs/products/auth/anonymous)
+[Anonymous](/docs/products/auth/anonymous),
 [magic URL](/docs/products/auth/magic-url), and
 [OAuth 2](/docs/products/auth/oauth2)
-authentication. 
+authentication.
 
 # Preferences {% #preferences %}
 
@@ -184,5 +184,8 @@ individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
 | Unverified user | `Role.user(<USER_ID>, 'unverified')` |
 
 
+{% arrow_link href="/docs/advanced/platform/permissions" %}
+Learn more about permissions
+{% /arrow_link %}
 
-[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)
+

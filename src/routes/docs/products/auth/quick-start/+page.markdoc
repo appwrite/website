@@ -168,7 +168,7 @@ mutation {
 ```
 {% /multicode %}
 
-# More ways to Authenticate
+# More ways to authenticate {% #more-ways-to-authenticate %}
 You can signup and login a user with an account create through 
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),

@@ -5,6 +5,7 @@ description: Build a SvelteKit project using Appwrite.
 step: 1
 difficulty: beginner
 readtime: 10
+framework: SvelteKit
 ---
 
 **Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.

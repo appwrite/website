@@ -1,0 +1,12 @@
+---
+layout: article
+title: Messaging
+description: Send push notifications, text, or emails to users or groups of users using your app.
+back: /docs
+---
+
+PLACE HOLDER 
+
+{% arrow_link href="/docs/products/messaging/quick-start" %}
+Quick start 
+{% /arrow_link %}
