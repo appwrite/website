@@ -14,28 +14,37 @@
 				{
 					label: 'Installation',
 					href: '/docs/advanced/self-hosting/'
-				}
+				},
+				{
+					label: 'Upgrade',
+					href: '/docs/advanced/self-hosting/update'
+				},
+			]
+		},
+		{
+			label: 'Configuration',
+			items: [
+				{
+					label: 'Email adapter',
+					href: '/docs/advanced/self-hosting/email'
+				},
+				{
+					label: 'SMS adapter',
+					href: '/docs/advanced/self-hosting/sms'
+				},
+				{
+					label: 'Storage adapter',
+					href: '/docs/advanced/self-hosting/storage'
+				},
+				{
+					label: 'VCS adapter',
+					href: '/docs/advanced/self-hosting/functions'
+				},
 			]
 		},
 		{
 			label: 'Guides',
 			items: [
-				{
-					label: 'Functions',
-					href: '/docs/advanced/self-hosting/functions'
-				},
-				{
-					label: 'Email delivery',
-					href: '/docs/advanced/self-hosting/email'
-				},
-				{
-					label: 'SMS delivery',
-					href: '/docs/advanced/self-hosting/sms'
-				},
-				{
-					label: 'Storage',
-					href: '/docs/advanced/self-hosting/storage'
-				},
 				{
 					label: 'Environment variables',
 					href: '/docs/advanced/self-hosting/environment-variables'
@@ -45,16 +54,12 @@
 					href: '/docs/advanced/self-hosting/tls-certificates'
 				},
 				{
-					label: 'Debugging',
-					href: '/docs/advanced/self-hosting/debug'
-				},
-				{
 					label: 'Production',
 					href: '/docs/advanced/self-hosting/production'
 				},
 				{
-					label: 'Update',
-					href: '/docs/advanced/self-hosting/update'
+					label: 'Debugging',
+					href: '/docs/advanced/self-hosting/debug'
 				},
 			]
 		}
