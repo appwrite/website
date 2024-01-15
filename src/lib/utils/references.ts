@@ -67,6 +67,8 @@ export const platformMap: Record<Language | string, string> = {
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
+    jsx: 'React',	
+    tsx: 'React',
     typescript: 'TypeScript',
     dart: 'Dart',
     java: 'Java',
