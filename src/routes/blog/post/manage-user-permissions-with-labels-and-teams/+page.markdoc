@@ -30,7 +30,7 @@ Teams and labels accomplish much of the same thing, however there are some techn
 
 Teams are designed to group users together, allowing for shared access to resources within an application. For example, in an app like Discord or Slack, we can create Teams and invite users to be a part of the Team (Ex: Server or chat room).
 
-![Labels vs Teams](/images/blog/labels 3.png)
+![Labels vs Teams](/images/blog/labels 6.png)
 
 One of the key differences between Teams and Labels is that Teams have the ability to set roles within a Team and assign permissions to those roles. This means all users in a Team will inherit permissions from the Team such as read access to all messages in the chat room, but will also inherit permissions from their role as well if they have been assigned one, such as moderator or admin. 
 
