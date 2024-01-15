@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "vite dev",
-        "build": "vite build",
+        "build": "pnpm download-contributors && vite build",
         "preview": "vite preview",
         "test": "npm run test:integration && npm run test:unit",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -16,7 +16,8 @@
         "test:unit": "vitest",
         "icons:build": "node ./src/icons/build.js",
         "icons:optimize": "node ./src/icons/optimize.js",
-        "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js"
+        "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js",
+        "download-contributors": "node ./src/scripts/download-contributor-data.js"
     },
     "devDependencies": {
         "@melt-ui/pp": "^0.1.4",

@@ -1,9 +1,9 @@
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init.js';
-import type { Ticket } from '../../constants.js';
+import type { TicketData } from '../../constants.js';
 import sharp from 'sharp';
 
-const getSvg = (ticket: Ticket) => `
+const getSvg = (ticket: TicketData) => `
 <svg width="438" height="249" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_327_1972)">
   <g clip-path="url(#clip0_327_1972)">
@@ -824,7 +824,7 @@ export async function GET({ params }) {
         PUBLIC_APPWRITE_DB_INIT_ID,
         PUBLIC_APPWRITE_COL_INIT_ID,
         params.id
-    )) as unknown as Ticket;
+    )) as unknown as TicketData;
     const svg = getSvg(ticket);
 
     const svgBuffer = Buffer.from(svg);

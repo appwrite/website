@@ -1,11 +1,12 @@
 import { browser } from '$app/environment';
+import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init';
+import { ID, Query } from 'appwrite';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
-import type { ContributionsMatrix } from './(components)/Ticket.svelte';
-import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
-import { ID, Query } from 'appwrite';
-import type { Ticket } from './ticket/constants';
+
+import type { ContributionsMatrix, TicketData, TicketVariant } from './ticket/constants';
+import { contributors } from '$lib/contributors';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -233,7 +234,7 @@ export async function getTicketDocByUser({ login, name }: GithubUser) {
     );
 
     if (total) {
-        return documents[0] as unknown as Omit<Ticket, 'contributions'>;
+        return documents[0] as unknown as Omit<TicketData, 'contributions' | 'variant'>;
     } else {
         const allDocs = await appwriteInit.database.listDocuments(
             PUBLIC_APPWRITE_DB_INIT_ID,
@@ -248,7 +249,7 @@ export async function getTicketDocByUser({ login, name }: GithubUser) {
                 id: allDocs.total + 1,
                 name
             }
-        )) as unknown as Omit<Ticket, 'contributions'>;
+        )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
     }
 }
 
@@ -257,7 +258,7 @@ export async function getTicketDocById(id: string) {
         PUBLIC_APPWRITE_DB_INIT_ID,
         PUBLIC_APPWRITE_COL_INIT_ID,
         id
-    )) as unknown as Omit<Ticket, 'contributions'>;
+    )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
 }
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
@@ -267,22 +268,36 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     return contributions ?? [];
 }
 
+function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
+    const { gh_user } = doc;
+    if (gh_user && contributors.includes(gh_user)) {
+        return 'rainbow';
+    }
+
+    return 'default';
+    // TODO: include pink variant
+}
+
 export async function getTicketByUser(user: GithubUser) {
     const doc = await getTicketDocByUser(user);
     const contributions = await getTicketContributions(doc.$id);
+    const variant = getTicketVariant(doc);
 
     return {
         ...doc,
-        contributions
-    } as Ticket;
+        contributions,
+        variant
+    } as TicketData;
 }
 
 export async function getTicketById(id: string, f = fetch) {
     const doc = await getTicketDocById(id);
     const contributions = await getTicketContributions(doc.$id, f);
+    const variant = getTicketVariant(doc);
 
     return {
         ...doc,
-        contributions
-    } as Ticket;
+        contributions,
+        variant
+    } as TicketData;
 }
