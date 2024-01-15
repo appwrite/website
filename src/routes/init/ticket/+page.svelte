@@ -70,13 +70,13 @@
                 <div class="ticket-2">
                     <Ticket
                         name="Eldad"
-                        user="eldadfux"
+                        gh_user="eldadfux"
                         id={1}
                         contributions={getMockContributions()}
                     />
                 </div>
                 <div class="ticket-3">
-                    <Ticket name="Sara" user="sara_k" id={10} />
+                    <Ticket name="Sara" gh_user="sara_k" id={10} />
                 </div>
             </TicketPreview>
         </div>

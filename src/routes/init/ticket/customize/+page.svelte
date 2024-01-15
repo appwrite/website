@@ -117,13 +117,7 @@
 
         <TicketPreview>
             <div class="ticket-holder">
-                <Ticket
-                    {name}
-                    user={data.ticket?.gh_user}
-                    id={data.ticket?.id ?? 0}
-                    {tribe}
-                    contributions={showGitHub ? data.ticket.contributions : undefined}
-                />
+                <Ticket {...data.ticket} />
             </div>
         </TicketPreview>
     </div>

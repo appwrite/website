@@ -1,30 +1,24 @@
-<script lang="ts" context="module">
-    export type ContributionsMatrix = number[][];
-    export type TicketVariant = 'default' | 'pink' | 'rainbow';
-
-    export type TicketProps = {
-        name?: string;
-        user?: string;
-        id: number;
-        tribe?: string | null;
-        contributions?: ContributionsMatrix;
-        variant?: TicketVariant;
-    };
-</script>
-
 <script lang="ts">
     import { toScale } from '$lib/utils/toScale';
     import { quadInOut } from 'svelte/easing';
     import { fade, type TransitionConfig } from 'svelte/transition';
-    import Logo from '../(assets)/logo.svg';
-    import BG from '../(assets)/ticket-bg.svg';
-    import BgPink from '../(assets)/ticket-bg-pink.svg';
-    import ShineSvg from '../(assets)/shine.svg';
-    import ShinePink from '../(assets)/shine-pink.svg';
     import Glow from '../(assets)/glow.svg';
+    import Logo from '../(assets)/logo.svg';
+    import ShinePink from '../(assets)/shine-pink.svg';
+    import ShineSvg from '../(assets)/shine.svg';
+    import BgPink from '../(assets)/ticket-bg-pink.svg';
+    import BG from '../(assets)/ticket-bg.svg';
+    import type { TicketData } from '../ticket/constants';
 
-    type $$Props = TicketProps;
-    $: ({ name, user, id, tribe, contributions, variant = 'default' } = $$props as $$Props);
+    type $$Props = Omit<TicketData, '$id'>;
+    $: ({
+        name,
+        gh_user,
+        id,
+        tribe = null,
+        contributions,
+        variant = 'default'
+    } = $$props as $$Props);
 
     $: bg = {
         default: BG,
@@ -59,8 +53,8 @@
     <div class="ticket" data-variant={variant}>
         <img src={bg} alt="" class="bg" />
         <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
-        {#if user}
-            <p class="aw-label">@{user}</p>
+        {#if gh_user}
+            <p class="aw-label">@{gh_user}</p>
         {/if}
         <div class="bottom-left">
             <img src={Logo} alt="init_" />
