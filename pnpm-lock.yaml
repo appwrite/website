@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@appwrite.io/console':
+    specifier: ^0.4.2
+    version: 0.4.2
   '@appwrite.io/pink':
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
@@ -169,6 +172,15 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.20
     dev: true
+
+  /@appwrite.io/console@0.4.2:
+    resolution: {integrity: sha512-WUltkC5q7RIK7TDCb+qTXq2cPtBek9k98Ilqcn8Lv3rN5ZuK0x33AwcpTAEPD0DE9phWXmvoV1a8H5PGMcGKew==}
+    dependencies:
+      cross-fetch: 3.1.5
+      isomorphic-form-data: 2.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /@appwrite.io/pink-icons@0.1.0-next.9:
     resolution: {integrity: sha512-6t4Pqt/xugjpJQyaMx1u/7Gt9CkW5iItDAgUKcIMm84E4NbDJq8ZdAhhvctGQQppKUgHDPi+6x1XveUUd7tdbg==}
