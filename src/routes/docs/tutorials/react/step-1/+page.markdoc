@@ -5,6 +5,8 @@ description: Learn to build a React app with no backend code using an Appwrite b
 step: 1
 difficulty: beginner
 readtime: 10
+category: Web
+framework: React
 ---
 
 **Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.

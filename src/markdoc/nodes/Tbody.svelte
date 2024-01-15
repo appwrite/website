@@ -1,3 +1,3 @@
 <tbody class="aw-table-body">
-	<slot />
+    <slot />
 </tbody>

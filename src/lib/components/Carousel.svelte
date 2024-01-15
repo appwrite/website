@@ -1,7 +1,7 @@
 <script lang="ts">
     let carousel: HTMLElement;
 
-    export let isBig = false;
+    export let size: 'default' | 'medium' | 'big' = 'default';
     export let gap = 32;
     let scroll = 0;
 
@@ -66,8 +66,10 @@
 
     <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
         <ul
-            class="aw-grid-articles aw-u-gap-32 u-margin-block-start-32 carousel"
-            class:is-big={isBig}
+            class="aw-grid-articles u-margin-block-start-32 carousel"
+            class:is-medium={size === 'medium'}
+            class:is-big={size === 'big'}
+            style:gap="{gap}px"
             bind:this={carousel}
             on:scroll={handleScroll}
         >
@@ -120,6 +122,11 @@
         scroll-snap-type: x proximity;
 
         scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .carousel :global(li) {

@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-multi-columns-1 {
-  column-width:pxToRem(340); column-gap:pxToRem(32);
-  > * { break-inside:avoid; margin-block-end:pxToRem(32); }
+  --p-col-gap: #{pxToRem(32)};
+  column-width:pxToRem(340); column-gap:var(--p-col-gap); 
+  > * { break-inside:avoid; margin-block-end:var(--p-col-gap); }
 }
