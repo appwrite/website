@@ -32,7 +32,8 @@ If you'd like you or your company's tax ID displayed on your generated invoice, 
 # Budget cap {% #budget-cap %}
 Appwrite allows you to set budget caps when on your organizations. 
 Appwrite will automatically scale your projects by purchasing add-ons as they require more resources.
-Budget caps limit the amount of automatic scaling and prevent unexpected bills.
+Budget caps limit the amount of automatic scaling and prevent unexpected bills. 
+This budget cap **only applies to add-ons purchased**, and does not include plan price.
 
 You can enable budget caps under **Budget cap**, toggle the option **Enable budget cap**.
 You will be able to set a budget cap in USD.
