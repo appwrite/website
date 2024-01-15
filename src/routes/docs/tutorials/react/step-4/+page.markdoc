@@ -14,7 +14,7 @@ Create a new file `src/lib/context/user.jsx` and add the following code to it.
 
 ```js
 import { createContext, useContext, useEffect, useState } from "react";
-import { account } from "../appwrite";
+import { account, ID } from "../appwrite";
 
 const UserContext = createContext();
 
