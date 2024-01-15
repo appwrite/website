@@ -65,11 +65,24 @@
 
 <Docs variant="default">
     <Sidebar />
-    <div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
-        <enhanced:img src="./blur-1.png" alt="" />
+
+    <div
+        class="u-position-absolute aw-is-not-mobile u-only-light"
+        style:inline-size="768px"
+        style:block-size="768px"
+        style:inset-block-start="26rem"
+        style:left="calc(50% - 384px + 600px)"
+    >
+        <img
+            src="/images/animations/tech-light.png"
+            width="768"
+            height="768"
+            alt=""
+            style="position: absolute; display: block;"
+        />
     </div>
 
-    <main class="aw-main-section u-position-relative aw-u-overflow-hidden-break1-to-break3" id="main">
+    <main class="aw-main-section u-position-relative">
         <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
@@ -78,10 +91,10 @@
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <enhanced:img src="./blur-2.png" alt="" />
+            <img src="/images/bgs/docs-blur-2.svg" alt="" />
         </div>
 
-        <section class="aw-hero is-align-start u-position-relative e-hero-docs">
+        <section class="aw-hero is-align-start u-position-relative">
             <h1 class="aw-display aw-u-color-text-primary u-max-width-600">
                 Learn how to build like a team of hundreds<span class="aw-u-color-text-accent"
                     >_
@@ -104,19 +117,11 @@
             <a href="/docs/sdks" class="aw-button is-secondary" style:align-self="start">
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
-            <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
+
+            <div class="u-position-absolute aw-is-not-mobile u-only-dark spline-wrapper">
                 <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
                     <img
-                        class="u-only-dark"
-                        src="/images/animations/tech-dark-transparent.png"
-                        width="660"
-                        height="660"
-                        alt=""
-                        style="position: absolute;"
-                    />
-                    <img
-                        class="u-only-light"
-                        src="/images/animations/tech-light-transparent.png"
+                        src="/images/animations/tech-dark.png"
                         width="660"
                         height="660"
                         alt=""
@@ -124,7 +129,7 @@
                     />
                 </Spline>
             </div>
-            <div class="bg-overlay" />
+            <div class="bg-boi" />
         </section>
         <section>
             <h2 class="aw-title aw-u-color-text-primary u-max-width-600">Show me some code</h2>
@@ -136,116 +141,7 @@
                     <li style:scroll-snap-align="start">
                         <CodeCard {...tutorial} />
                     </li>
-                    <li>
-                        <a
-                            class="aw-grid-articles-item is-full-color"
-                            href="/docs/tutorials/sveltekit"
-                        >
-                            <div class="aw-grid-articles-item-image">
-                                <img
-                                    class="aw-articles-item-image"
-                                    src="/images/tutorials/svelte.png"
-                                    alt=""
-                                    loading="lazy"
-                                />
-                            </div>
-                            <article class="aw-grid-articles-item-content">
-                                <header class="aw-articles-item-header">
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        SvelteKit tutorial
-                                    </h3>
-                                </header>
-                                <p
-                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-                                    style="word-break: keep-all;"
-                                >
-                                    Learn Appwrite Auth, Databases, and more with SvelteKit.
-                                </p>
-                            </article>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="aw-grid-articles-item is-full-color" href="/docs/tutorials/vue">
-                            <div class="aw-grid-articles-item-image">
-                                <img
-                                    class="aw-articles-item-image"
-                                    src="/images/tutorials/vue.png"
-                                    alt=""
-                                    loading="lazy"
-                                />
-                            </div>
-                            <article class="aw-grid-articles-item-content">
-                                <header class="aw-articles-item-header">
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        Vue tutorial
-                                    </h3>
-                                </header>
-                                <p
-                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-                                    style="word-break: keep-all;"
-                                >
-                                    Learn Appwrite Auth, Databases, and more with Vue.
-                                </p>
-                            </article>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            class="aw-grid-articles-item is-full-color"
-                            href="/docs/tutorials/android"
-                        >
-                            <div class="aw-grid-articles-item-image">
-                                <img
-                                    class="aw-articles-item-image"
-                                    src="/images/tutorials/android.png"
-                                    alt=""
-                                    loading="lazy"
-                                />
-                            </div>
-                            <article class="aw-grid-articles-item-content">
-                                <header class="aw-articles-item-header">
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        Android tutorial
-                                    </h3>
-                                </header>
-                                <p
-                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-                                    style="word-break: keep-all;"
-                                >
-                                    Learn Appwrite Auth, Databases, and more with Android.
-                                </p>
-                            </article>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            class="aw-grid-articles-item is-full-color"
-                            href="/docs/tutorials/flutter"
-                        >
-                            <div class="aw-grid-articles-item-image">
-                                <img
-                                    class="aw-articles-item-image"
-                                    src="/images/tutorials/flutter.png"
-                                    alt=""
-                                    loading="lazy"
-                                />
-                            </div>
-                            <article class="aw-grid-articles-item-content">
-                                <header class="aw-articles-item-header">
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        Flutter tutorial
-                                    </h3>
-                                </header>
-                                <p
-                                    class="aw-articles-item-paragraph aw-sub-body-500 u-trim-2 u-margin-block-start-4"
-                                    style="word-break: keep-all;"
-                                >
-                                    Coming soon...
-                                </p>
-                            </article>
-                        </a>
-                    </li>
-                </svelte:fragment>
+                {/each}
             </Carousel>
         </section>
         <section class="aw-hero is-align-start is-no-max-width">
@@ -516,18 +412,10 @@
 </Docs>
 
 <style lang="scss">
-
-    .e-hero-docs {
-      @media (min-width:1280px) {
-        margin-block-start:5rem;
-      }
-    }
     .aw-main-section {
         max-inline-size: unset;
         margin-inline: unset;
-        @media (min-width:1280px) {
-            padding-inline-start: 3rem; // 48px
-        }
+        padding-inline-start: 3rem; // 48px
     }
 
     .bg-blur {
@@ -537,6 +425,11 @@
 
     .tech-hero {
         @include border-block-gradient;
+
+        background: linear-gradient(to right, #19191c80, #19191c00);
+        // background-color: #19191c80;
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
 
         --m-border-size: 1px;
         --m-border-gradient-before: linear-gradient(
@@ -564,10 +457,9 @@
             left: calc(50% - 384px + 600px);
         }
 
-        .bg-overlay {
+        .bg-boi {
             position: absolute;
-
-            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 10%, #ffffff);
+            background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
 
             top: 0;
             right: 10rem;
@@ -577,15 +469,5 @@
             content: '';
             z-index: 9999;
         }
-    }
-
-    :global(.theme-dark) .tech-hero {
-        background: linear-gradient(to right, #19191c80, #19191c00);
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
-    }
-
-    :global(.theme-dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
     }
 </style>
