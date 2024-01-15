@@ -3,15 +3,17 @@ layout: post
 title: How to use Appwrite Labels and Team to manage user permissions
 description: Understanding the difference between Teams and Labels and how to use them for managing users and permissions.
 date: 2024-01-16
-cover: /images/blog/baas.png
+cover: /images/blog/manage-user-permissions-with-labels-and-teams/labels_cover.png
 timeToRead: 8
 author: dennis-ivy
 category: engineering
 featured: false
 ---
-![Labels vs Teams](/images/blog/labels 3.png)
+
 
 Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to documents, files and functions much more efficient this way. 
+
+![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels3.png)
 
 To think of this in real-world terms, imagine for a second we were building the next social media application. Teams can be used to create admins and moderators, and these admins and moderators would have permission to delete and flag posts that don’t meet community guidelines. The owner at the document level would have the ability to update and delete this post, but anyone who is on the moderator Team would also have the ability to delete the post, something that is normally restricted to only the owner of the post. We can also change which users have these permissions at any point by adding and removing users and updating the group-level permissions.
 
@@ -30,7 +32,7 @@ Teams and labels accomplish much of the same thing, however there are some techn
 
 Teams are designed to group users together, allowing for shared access to resources within an application. For example, in an app like Discord or Slack, we can create Teams and invite users to be a part of the Team (Ex: Server or chat room).
 
-![Labels vs Teams](/images/blog/labels 6.png)
+![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels6.png)
 
 One of the key differences between Teams and Labels is that Teams have the ability to set roles within a Team and assign permissions to those roles. This means all users in a Team will inherit permissions from the Team such as read access to all messages in the chat room, but will also inherit permissions from their role as well if they have been assigned one, such as moderator or admin. 
 
@@ -40,7 +42,7 @@ This allows for granular control over what each Team member can do based on thei
 
 Labels are essentially custom tags that you can assign to a user. They act as custom-defined markers or classifications that we can place on specific users.
 
-![Labels vs Teams](/images/blog/labels 1.png)
+![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels1.png)
 
 Just like Teams, we can grant permissions to specific Labels. Labels are attached to individual user accounts and are used to categorize users on a one-to-one basis. Labels can be used in a similar manner to Teams but are a more lightweight and flexible way to manage users and permissions.
 
@@ -54,7 +56,7 @@ This would make Labels a great option for managing which users can view restrict
 
 ## How permissions work with Teams and labels
 
-![Labels vs Teams](/images/blog/labels 4.png)
+![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels4.png)
 
 Here’s the process of granting users permission to resources through Teams and labels. Be sure to pay attention to step 3 in the process. There’s a slight difference in how users connect to Teams Vs. labels.
 
