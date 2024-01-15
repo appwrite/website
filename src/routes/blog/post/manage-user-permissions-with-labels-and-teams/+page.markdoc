@@ -9,6 +9,7 @@ author: dennis-ivy
 category: engineering
 featured: false
 ---
+![Labels vs Teams](/images/blog/labels 3.png)
 
 Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to documents, files and functions much more efficient this way. 
 
@@ -29,6 +30,8 @@ Teams and labels accomplish much of the same thing, however there are some techn
 
 Teams are designed to group users together, allowing for shared access to resources within an application. For example, in an app like Discord or Slack, we can create Teams and invite users to be a part of the Team (Ex: Server or chat room).
 
+![Labels vs Teams](/images/blog/labels 3.png)
+
 One of the key differences between Teams and Labels is that Teams have the ability to set roles within a Team and assign permissions to those roles. This means all users in a Team will inherit permissions from the Team such as read access to all messages in the chat room, but will also inherit permissions from their role as well if they have been assigned one, such as moderator or admin. 
 
 This allows for granular control over what each Team member can do based on their role within the Team. 
@@ -36,6 +39,8 @@ This allows for granular control over what each Team member can do based on thei
 ### Labels
 
 Labels are essentially custom tags that you can assign to a user. They act as custom-defined markers or classifications that we can place on specific users.
+
+![Labels vs Teams](/images/blog/labels 1.png)
 
 Just like Teams, we can grant permissions to specific Labels. Labels are attached to individual user accounts and are used to categorize users on a one-to-one basis. Labels can be used in a similar manner to Teams but are a more lightweight and flexible way to manage users and permissions.
 
@@ -48,6 +53,8 @@ This would make Labels a great option for managing which users can view restrict
 - Labels offer flexibility in user segmentation, while Teams provide structure for collaborative environments.
 
 ## How permissions work with Teams and labels
+
+![Labels vs Teams](/images/blog/labels 4.png)
 
 Here’s the process of granting users permission to resources through Teams and labels. Be sure to pay attention to step 3 in the process. There’s a slight difference in how users connect to Teams Vs. labels.
 
