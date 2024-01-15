@@ -4,10 +4,10 @@
   --p-mobile-header-border-color: rgb(0,0,0, 0.1);
 
 
-  position:sticky; z-index:20; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
+  position:sticky; z-index:120; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
   display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
   border-block-end: solid 1px var(--p-mobile-header-border-color);
-  padding:pxToRem(20); 
+  padding-inline:pxToRem(20); padding-block:pxToRem(16);
   &-start { display:flex; align-items: center; }
   &-end   { display:flex; align-items: center; gap: pxToRem(8) }
   &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); }

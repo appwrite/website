@@ -14,7 +14,7 @@ In this document, you will learn how to connect a 3rd party SMTP provider like M
 
 At this stage, we assume that you have already installed Appwrite. If not, you can follow our [Self Hosting Guide](/docs/advanced/self-hosting) for the installation. Appwrite offers multiple environment variables to customize your server setup to your needs. To configure Appwrite to use your own SMTP server, you need to set the following environment variables in the hidden .env file that comes with your Appwrite installation.
 
-| Environment cariable  | Description                                                                                                           | Default Value           |
+| Environment Variable  | Description                                                                                                           | Default Value           |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | _APP_SMTP_HOST                | SMTP server host name address. Use an empty string to disable all mail sending from the server.                     | Empty string             |
 | _APP_SMTP_PORT                | SMTP server TCP port.                                                                                                 | Empty                    |

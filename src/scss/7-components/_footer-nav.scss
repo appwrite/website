@@ -20,26 +20,24 @@
     &-main {
       &-list { display:flex; flex-direction:column; gap:pxToRem(12); flex-basis:0; }
       &-item {
-        display:flex; flex-direction:column; gap:pxToRem(24);
-        padding:pxToRem(16);
+        display:flex; flex-direction:column; 
+        
         background-color:hsl(var(--color-neutral-0) / 0.04);
         border-radius:pxToRem(8);
 
         -webkit-backdrop-filter:blur(pxToRem(8));
         backdrop-filter:blur(pxToRem(8));
+
+        .#{$p}-footer-nav-secondary-list {
+          padding:pxToRem(16);
+        }
       }
-    }
-    &-secondary {
-      &-list {display:none;}
     }
     &-button {
       display:flex; justify-content:space-between; align-items:center;
       inline-size:100%; gap:pxToRem(16);
+      padding:pxToRem(16);
       &-arrow { transition:var(--transition);}
-      &.is-open {
-        .#{$p}-footer-nav-button-arrow { rotate:180deg; }
-      + * { display:flex; }
-      }
     }
   }
 }

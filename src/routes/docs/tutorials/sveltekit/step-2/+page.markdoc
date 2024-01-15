@@ -10,7 +10,9 @@ step: 2
 Create a SvelteKit app with the `npm create` command and select `Skeleton project`
 
 ```sh
-npm create svelte@latest ideas-tracker && cd ideas-tracker
+npm create svelte@latest ideas-tracker
+cd ideas-tracker
+npm install
 ```
 
 # Add dependencies {% #add-dependencies %}
@@ -24,5 +26,7 @@ npm install appwrite
 You can start the development server to watch your app update in the browser as you make changes.
 
 ```sh
-npm run dev -- --open --port 3000
+npm run dev
 ```
+
+Your app should be available at [http://localhost:5173](http://localhost:5173).

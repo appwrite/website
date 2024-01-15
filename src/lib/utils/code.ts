@@ -29,8 +29,10 @@ import { Platform } from './references';
 
 const languages = {
     js: javascript,
+    javascript: javascript,
     dart: dart,
     ts: typescript,
+    typescript: typescript,
     deno: typescript,
     xml: xml,
     html: xml,
@@ -57,7 +59,8 @@ const languages = {
     rb: ruby,
     cs: csharp,
     css: css,
-    groovy: groovy
+    groovy: groovy,
+    svelte: xml
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
@@ -76,6 +79,10 @@ const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ServerPython]: 'py',
     [Platform.ServerRuby]: 'rb',
     [Platform.ServerSwift]: 'swift',
+    [Platform.ServerJava]: 'java',
+    [Platform.ServerKotlin]: 'kotlin',
+    [Platform.ServerGraphql]: 'graphql',
+    [Platform.ServerRest]: 'http',
     vue: 'html',
     svelte: 'html'
 };

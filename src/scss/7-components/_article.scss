@@ -7,7 +7,7 @@
     padding-block-start:pxToRem(40); padding-block-end:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
     border-block-end:solid pxToRem(1) hsl(var(--aw-color-border)); margin-block-end:pxToRem(24);
-    &-start { display:flex; align-items:end; gap:pxToRem(16); }
+    &-start { display:flex; align-items:center; gap:pxToRem(16);  }
     &-end { align-self:center; }
     .#{$p}-title { color:hsl(var(--aw-color-primary)); }
 
@@ -18,10 +18,11 @@
     &-spacing-logic .#{$p}{
       &-sub-body-400  { margin-block:pxToRem(16); }
       &-sub-body-500  { margin-block-end:pxToRem(4); }
-      &-main-body-500 { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
+      &-main-body-500 { margin-block-end:pxToRem(8); }
       &-description   { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
       &-label         { margin-block-end:pxToRem(16); }
       &-paragraph-md  { margin-block-end:pxToRem(32); }
+      &-link          { margin-block-end:0 !important; }
       &-code-snippet  { margin-block-start:pxToRem(16); margin-block-end:pxToRem(32); }
       &-card          { margin-block-end:pxToRem(32); }
       &-list,
@@ -39,7 +40,7 @@
     &-header {
       position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:pxToRem(16);
       .#{$p}-numeric-badge {
-        margin-block-start:pxToRem(16);
+        
         @media #{$break2open} { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
       }
     }

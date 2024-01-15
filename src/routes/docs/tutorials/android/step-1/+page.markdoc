@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Build an ideas tracker with Android
-description: Build an Android project using Appwrite.
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+framework: Android
+category: Mobile and native
 step: 1
-difficulty: beginner
-readtime: 20
 ---
 
 **Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.

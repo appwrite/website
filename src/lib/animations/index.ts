@@ -1,50 +1,50 @@
 import type { Action } from 'svelte/action';
 import {
-	animate as motionAnimate,
-	type ElementOrSelector,
-	type MotionKeyframesDefinition,
-	type AnimationOptionsWithOverrides,
-	animate
+    animate as motionAnimate,
+    type ElementOrSelector,
+    type MotionKeyframesDefinition,
+    type AnimationOptionsWithOverrides,
+    animate
 } from 'motion';
 
 export function animation(
-	elementOrSelector: ElementOrSelector,
-	keyframes: MotionKeyframesDefinition,
-	options?: AnimationOptionsWithOverrides
+    elementOrSelector: ElementOrSelector,
+    keyframes: MotionKeyframesDefinition,
+    options?: AnimationOptionsWithOverrides
 ) {
-	const play = () => {
-		const played = motionAnimate(elementOrSelector, keyframes, options);
-		return played;
-	};
+    const play = () => {
+        const played = motionAnimate(elementOrSelector, keyframes, options);
+        return played;
+    };
 
-	const reverse = () => {
-		const reversedKeyframes = Object.fromEntries(
-			Object.entries(keyframes).map(([key, keyframe]) => {
-				return [key, Array.isArray(keyframe) ? [...keyframe].reverse() : keyframe];
-			})
-		) as typeof keyframes;
-		const reversed = motionAnimate(elementOrSelector, reversedKeyframes, options);
-		return reversed;
-	};
+    const reverse = () => {
+        const reversedKeyframes = Object.fromEntries(
+            Object.entries(keyframes).map(([key, keyframe]) => {
+                return [key, Array.isArray(keyframe) ? [...keyframe].reverse() : keyframe];
+            })
+        ) as typeof keyframes;
+        const reversed = motionAnimate(elementOrSelector, reversedKeyframes, options);
+        return reversed;
+    };
 
-	return {
-		play,
-		reverse
-	};
+    return {
+        play,
+        reverse
+    };
 }
 
 export type Animation = ReturnType<typeof animation>;
 
 export const safeAnimate = (
-	elementOrSelector: ElementOrSelector,
-	keyframes: MotionKeyframesDefinition,
-	options?: AnimationOptionsWithOverrides
+    elementOrSelector: ElementOrSelector,
+    keyframes: MotionKeyframesDefinition,
+    options?: AnimationOptionsWithOverrides
 ) => {
-	try {
-		return animate(elementOrSelector, keyframes, options);
-	} catch {
-		// do nothing lol
-	}
+    try {
+        return animate(elementOrSelector, keyframes, options);
+    } catch {
+        // do nothing lol
+    }
 };
 
 type Unsubscriber = () => void;
@@ -52,138 +52,135 @@ type Unsubscriber = () => void;
 type PreviousScroll = 'before' | 'after' | undefined;
 
 type ScrollCallbackState = {
-	previous?: PreviousScroll;
-	unsubscribe?: Unsubscriber;
-	executedCount: number;
+    previous?: PreviousScroll;
+    unsubscribe?: Unsubscriber;
+    executedCount: number;
 };
 
 export type ScrollCallback = {
-	percentage: number;
-	whenAfter?: (args: Omit<ScrollCallbackState, 'unsubscribe'>) => Unsubscriber | void;
+    percentage: number;
+    whenAfter?: (args: Omit<ScrollCallbackState, 'unsubscribe'>) => Unsubscriber | void;
 };
 
 export function createScrollHandler(callbacks: ScrollCallback[]) {
-	const states: ScrollCallbackState[] = callbacks.map(() => ({ executedCount: 0 }));
+    const states: ScrollCallbackState[] = callbacks.map(() => ({ executedCount: 0 }));
 
-	const handler = function (scrollPercentage: number) {
-		callbacks.forEach((callback, i) => {
-			const { percentage, whenAfter } = callback;
-			const { previous, unsubscribe, executedCount } = states[i];
+    const handler = function (scrollPercentage: number) {
+        callbacks.forEach((callback, i) => {
+            const { percentage, whenAfter } = callback;
+            const { previous, unsubscribe, executedCount } = states[i];
 
-			if (scrollPercentage >= percentage && previous !== 'after') {
-				// Execute whenAfter
-				states[i].unsubscribe = whenAfter?.({ previous, executedCount }) ?? undefined;
-				states[i].previous = 'after';
-				if (whenAfter) {
-					states[i].executedCount++;
-				}
-			} else if (scrollPercentage < percentage && previous === 'after') {
-				unsubscribe?.();
-				states[i].unsubscribe = undefined;
-				states[i].previous = 'before';
-			}
-		});
-	};
+            if (scrollPercentage >= percentage && previous !== 'after') {
+                // Execute whenAfter
+                states[i].unsubscribe = whenAfter?.({ previous, executedCount }) ?? undefined;
+                states[i].previous = 'after';
+                if (whenAfter) {
+                    states[i].executedCount++;
+                }
+            } else if (scrollPercentage < percentage && previous === 'after') {
+                unsubscribe?.();
+                states[i].unsubscribe = undefined;
+                states[i].previous = 'before';
+            }
+        });
+    };
 
-	handler.reset = () => {
-		states.forEach((state) => {
-			// state.unsubscribe?.();
-			state.unsubscribe = undefined;
-			state.previous = undefined;
-			state.executedCount = 0;
-		});
-	};
+    handler.reset = () => {
+        states.forEach((state) => {
+            // state.unsubscribe?.();
+            state.unsubscribe = undefined;
+            state.previous = undefined;
+            state.executedCount = 0;
+        });
+    };
 
-	return handler;
+    return handler;
 }
 
 export type ScrollInfo = {
-	percentage: number;
-	traversed: number;
-	remaning: number;
+    percentage: number;
+    traversed: number;
+    remaning: number;
 };
 
 export const scroll: Action<
-	HTMLElement,
-	undefined,
-	{
-		'on:aw-scroll': (e: CustomEvent<ScrollInfo>) => void;
-		'on:aw-resize': (e: CustomEvent<ScrollInfo>) => void;
-	}
+    HTMLElement,
+    undefined,
+    {
+        'on:aw-scroll': (e: CustomEvent<ScrollInfo>) => void;
+        'on:aw-resize': (e: CustomEvent<ScrollInfo>) => void;
+    }
 > = (node) => {
-	function getScrollInfo(): ScrollInfo {
-		const { top, height } = node.getBoundingClientRect();
-		const { innerHeight } = window;
+    function getScrollInfo(): ScrollInfo {
+        const { top, height } = node.getBoundingClientRect();
+        const { innerHeight } = window;
 
-		const scrollHeight = height - innerHeight;
-		const scrollPercentage = (-1 * top) / scrollHeight;
+        const scrollHeight = height - innerHeight;
+        const scrollPercentage = (-1 * top) / scrollHeight;
 
-		const traversed = scrollPercentage * scrollHeight;
-		const remaning = scrollHeight - traversed;
+        const traversed = scrollPercentage * scrollHeight;
+        const remaning = scrollHeight - traversed;
 
-		return {
-			percentage: scrollPercentage,
-			traversed,
-			remaning
-		};
-	}
+        return {
+            percentage: scrollPercentage,
+            traversed,
+            remaning
+        };
+    }
 
-	const handleScroll = () => {
-		node.dispatchEvent(
-			new CustomEvent<ScrollInfo>('aw-scroll', {
-				detail: getScrollInfo()
-			})
-		);
-	};
+    const createHandler = (eventName: 'aw-scroll' | 'aw-resize') => {
+        return () => {
+            node.dispatchEvent(
+                new CustomEvent<ScrollInfo>(eventName, {
+                    detail: getScrollInfo()
+                })
+            );
+        };
+    };
 
-	const handleResize = () => {
-		node.dispatchEvent(
-			new CustomEvent<ScrollInfo>('aw-resize', {
-				detail: getScrollInfo()
-			})
-		);
-	};
+    const handleScroll = createHandler('aw-scroll');
+    const handleResize = createHandler('aw-resize');
 
-	handleScroll();
-	handleResize();
+    handleScroll();
+    handleResize();
 
-	window.addEventListener('scroll', handleScroll);
-	window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
-	return {
-		destroy() {
-			window.removeEventListener('scroll', handleScroll);
-			window.removeEventListener('resize', handleResize);
-		}
-	};
+    return {
+        destroy() {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        }
+    };
 };
 
 type TimelineEvent = {
-	at: number;
-	callback: () => void;
+    at: number;
+    callback: () => void;
 };
 
 export function createTimeline(events: TimelineEvent[]) {
-	let timeoutIds: NodeJS.Timeout[] = [];
+    let timeoutIds: NodeJS.Timeout[] = [];
 
-	const play = () => {
-		events.forEach((event) => {
-			const timeoutId = setTimeout(event.callback, event.at);
-			timeoutIds.push(timeoutId);
-		});
-	};
+    const play = () => {
+        events.forEach((event) => {
+            const timeoutId = setTimeout(event.callback, event.at);
+            timeoutIds.push(timeoutId);
+        });
+    };
 
-	const cancel = () => {
-		timeoutIds.forEach(clearTimeout);
-		timeoutIds = [];
-	};
+    const cancel = () => {
+        timeoutIds.forEach(clearTimeout);
+        timeoutIds = [];
+    };
 
-	return { play, cancel };
+    return { play, cancel };
 }
 
 type ProgressEvent = {
-	percentage: number;
-	callback: () => void;
+    percentage: number;
+    callback: () => void;
 };
 
 /**
@@ -194,54 +191,54 @@ type ProgressEvent = {
  * handler(0.45) // will execute the event with percentage 0.4.
  */
 export function createProgressSequence(events: ProgressEvent[]) {
-	// Sort from highest to lowest percentage
-	const sortedEvents = [...events].sort((a, b) => b.percentage - a.percentage);
+    // Sort from highest to lowest percentage
+    const sortedEvents = [...events].sort((a, b) => b.percentage - a.percentage);
 
-	let lastEventIdx = -1;
+    let lastEventIdx = -1;
 
-	const handler = (percentage: number) => {
-		const idx = sortedEvents.findIndex((event) => event.percentage <= percentage);
-		if (idx === lastEventIdx) {
-			return;
-		}
-		const event = sortedEvents[idx];
-		event?.callback();
-		lastEventIdx = idx;
-	};
+    const handler = (percentage: number) => {
+        const idx = sortedEvents.findIndex((event) => event.percentage <= percentage);
+        if (idx === lastEventIdx) {
+            return;
+        }
+        const event = sortedEvents[idx];
+        event?.callback();
+        lastEventIdx = idx;
+    };
 
-	handler.resetLastEventIdx = () => {
-		lastEventIdx = -1;
-	};
+    handler.resetLastEventIdx = () => {
+        lastEventIdx = -1;
+    };
 
-	return handler;
+    return handler;
 }
 
 export type ProgressSequence = ReturnType<typeof createProgressSequence>;
 
 export function write(text: string, cb: (v: string) => void, duration = 500) {
-	const step = duration / text.length;
-	let i = 0;
-	return new Promise((resolve) => {
-		const interval = setInterval(() => {
-			cb(text.slice(0, ++i));
-			if (i === text.length) {
-				clearInterval(interval);
-				resolve(undefined);
-			}
-		}, step);
-	});
+    const step = duration / text.length;
+    let i = 0;
+    return new Promise((resolve) => {
+        const interval = setInterval(() => {
+            cb(text.slice(0, ++i));
+            if (i === text.length) {
+                clearInterval(interval);
+                resolve(undefined);
+            }
+        }, step);
+    });
 }
 
 export function sleep(duration: number) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, duration);
-	});
+    return new Promise((resolve) => {
+        setTimeout(resolve, duration);
+    });
 }
 
 export function getInitials(name: string) {
-	return name
-		.split(' ')
-		.map((word) => word?.[0]?.toUpperCase() ?? '')
-		.join('')
-		.slice(0, 2);
+    return name
+        .split(' ')
+        .map((word) => word?.[0]?.toUpperCase() ?? '')
+        .join('')
+        .slice(0, 2);
 }

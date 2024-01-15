@@ -11,6 +11,7 @@
     }
     &-button {
       position:absolute; inset-block-start:var(--p-location); margin-block-start:pxToRem(-8);
+      transition: var(--transition);
     }
   }
   &-list { display:flex; flex-direction:column; gap:pxToRem(20); }

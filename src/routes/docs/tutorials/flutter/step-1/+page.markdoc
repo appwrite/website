@@ -2,7 +2,10 @@
 layout: tutorial
 title: Coming soon
 description: Learn to build an Flutter app with no backend code using an Appwrite backend.
+framework: Flutter
+category: Mobile and native 
 step: 1
+draft: true
 ---
 
 Improve the docs, add this guide.

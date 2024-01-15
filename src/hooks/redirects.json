@@ -25,7 +25,7 @@
     },
     {
         "link": "/docs/getting-started-for-server",
-        "redirect": "/docs/getting-started-for-server"
+        "redirect": "/docs/quick-starts"
     },
     {
         "link": "/docs/self-hosting",
@@ -642,5 +642,22 @@
     {
         "link": "/docs/models/runtime",
         "redirect": "/docs/references/cloud/models/runtime"
+    },    
+    {
+        "link": "/docs/installation",
+        "redirect": "/docs/advanced/self-hosting"
+    },
+    {
+        "link": "/careers",
+        "redirect": "https://appwrite.careers"
+    },
+    {
+        "link": "/policy/terms",
+        "redirect": "/terms"
+    },
+    {
+        "link": "/policy/privacy",
+        "redirect": "/privacy"
     }
+    
 ]
