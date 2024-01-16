@@ -81,12 +81,13 @@ Let's start with creating a new Team, adding members, and assigning roles to tho
 
 That’s it for creating a Team and adding members from the appwrite console. Now you can assign document, storage, and function permissions to your Teams. As an example, for collection level permissions, you can go to the “settings'' tab in a collection, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team. 
 
-Labels
+## Labels
 
 Labels can also be assigned from the auth tab. To assign a label select a user and add a label in the “Labels” section.
 
 Assigning permissions to labels is the same as it is for Teams, only you would choose the “Label” section in the drop down menu.
-SDK Usage
+
+### SDK Usage
 
 From a technical perspective, it’s important to note a key difference in how we use Teams and Labels when it comes to the SDK.
 
