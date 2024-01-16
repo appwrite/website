@@ -1,14 +1,13 @@
-import { browser } from '$app/environment';
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init';
 import { ID, Query } from 'appwrite';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
-import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './ticket/constants';
 import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import { shuffle } from '$lib/utils/shuffle';
+import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './ticket/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -59,17 +58,6 @@ export function createCountdown(date: Date) {
     };
 }
 
-export async function isLoggedInGithub() {
-    if (!browser) return false;
-
-    try {
-        const { provider } = await appwriteInit.account.getSession('current');
-        return provider === 'github';
-    } catch {
-        return false;
-    }
-}
-
 export async function isLoggedIn() {
     const user = await getUser();
     return !!(user.appwrite || user.github);
@@ -81,16 +69,19 @@ export interface GithubUser {
 }
 
 export async function getGithubUser() {
-    const isLoggedIn = await isLoggedInGithub();
-    if (!isLoggedIn) return null;
-    const { providerAccessToken } = await appwriteInit.account.getSession('current');
+    try {
+        const { providerAccessToken, provider } = await appwriteInit.account.getSession('current');
+        if (provider !== 'github') return null;
 
-    return await fetch('https://api.github.com/user', {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${providerAccessToken}`
-        }
-    }).then((res) => res.json() as Promise<GithubUser>);
+        return await fetch('https://api.github.com/user', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${providerAccessToken}`
+            }
+        }).then((res) => res.json() as Promise<GithubUser>);
+    } catch {
+        return null;
+    }
 }
 
 export type User = {
@@ -180,7 +171,34 @@ export async function getTicketDocByUser(user: User) {
     ]);
 
     if (gh?.total || aw?.total) {
-        const doc = (gh?.documents?.[0] ?? aw?.documents?.[0]) as unknown as TicketDoc;
+        const gh_doc = gh?.documents[0] as unknown as TicketDoc;
+        const aw_doc = aw?.documents[0] as unknown as TicketDoc;
+        if (gh_doc && aw_doc && gh_doc.$id !== aw_doc.$id) {
+            // Delete the oldest document ids
+            const oldest = gh_doc.id < aw_doc.id ? gh_doc.$id : aw_doc.$id;
+            const newest = gh_doc.id > aw_doc.id ? gh_doc.$id : aw_doc.$id;
+            await appwriteInit.database.updateDocument(
+                PUBLIC_APPWRITE_DB_INIT_ID,
+                PUBLIC_APPWRITE_COL_INIT_ID,
+                oldest,
+                {
+                    gh_user: null,
+                    aw_id: null
+                }
+            );
+            return (await appwriteInit.database.updateDocument(
+                PUBLIC_APPWRITE_DB_INIT_ID,
+                PUBLIC_APPWRITE_COL_INIT_ID,
+                newest,
+                {
+                    gh_user: user.github?.login,
+                    aw_id: user.appwrite?.$id
+                }
+            )) as unknown as TicketDoc;
+        }
+
+        const doc = gh_doc ?? aw_doc;
+
         if (!doc.gh_user || !doc.aw_id) {
             return (await appwriteInit.database.updateDocument(
                 PUBLIC_APPWRITE_DB_INIT_ID,
@@ -222,19 +240,28 @@ export async function getTicketDocById(id: string) {
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
     const res = await f(`/init/ticket/${id}/get-contributions`);
-    const { data: contributions } = (await res.json()) as { data: ContributionsMatrix | null };
+    const { data: contributions } = (await res
+        .json()
+        .then((r) => r)
+        .catch(() => {
+            return { data: null };
+        })) as { data: ContributionsMatrix | null };
 
     return contributions ?? [];
 }
 
 function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
-    const { gh_user } = doc;
+    const { gh_user, aw_id } = doc;
+
     if (gh_user && contributors.includes(gh_user)) {
         return 'rainbow';
     }
 
+    if (aw_id) {
+        return 'pink';
+    }
+
     return 'default';
-    // TODO: include pink variant
 }
 
 export async function getTicketByUser(user: User) {
@@ -259,4 +286,13 @@ export async function getTicketById(id: string, f = fetch) {
         contributions,
         variant
     } as TicketData;
+}
+
+export function loginGithub() {
+    appwriteInit.account.createOAuth2Session(
+        'github',
+        `${window.location.origin}/init/ticket?success=1`,
+        `${window.location.origin}/init/ticket?error=1`,
+        ['read:user']
+    );
 }
