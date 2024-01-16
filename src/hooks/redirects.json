@@ -1,9 +1,5 @@
 [
     {
-        "link": "/discord",
-        "redirect": "https://discord.com/invite/GSeTUeA"
-    },
-    {
         "link": "/docs/getting-started-for-web",
         "redirect": "/docs/quick-starts"
     },

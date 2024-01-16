@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { afterNavigate, goto, invalidate } from '$app/navigation';
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -12,7 +11,7 @@
     import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
-    import { filterThreads, getThreads } from './helpers';
+    import { getThreads } from './helpers';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -116,7 +115,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />

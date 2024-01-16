@@ -1,11 +1,11 @@
-import { preprocessMeltUI } from '@melt-ui/pp';
-import nodeAdapter from '@sveltejs/adapter-node';
-import vercelAdapter from '@sveltejs/adapter-vercel';
-import { vitePreprocess } from '@sveltejs/kit/vite';
 import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import { preprocessMeltUI } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import sequence from 'svelte-sequential-preprocessor';
-import { fileURLToPath } from 'url';
+import staticAdapter from '@sveltejs/adapter-static';
+import nodeAdapter from '@sveltejs/adapter-node';
 
 function absolute(path) {
     return join(dirname(fileURLToPath(import.meta.url)), path);
@@ -13,7 +13,7 @@ function absolute(path) {
 
 const isVercel = process.env.VERCEL === '1';
 
-const adapter = isVercel ? vercelAdapter() : nodeAdapter();
+const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -44,8 +44,7 @@ const config = {
         adapter,
         files: {
             hooks: {
-                // server: isVercel ? undefined : './src/hooks/server.ts'
-                server: './src/hooks/server.ts'
+                server: isVercel ? undefined : './src/hooks/server.ts'
             }
         },
         alias: {
