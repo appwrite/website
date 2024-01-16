@@ -19,11 +19,21 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 
 Create a new collection with the following attributes:
 
-| Field       | Type        | Required    |
-| ----------- | ----------- | ----------- |
-| userId      | String      | Yes         |
-| title       | String      | Yes         |
-| description | String      | No          |
+| Field       | Type   | Required | Size     |
+|-------------|--------|----------|----------|
+| userId      | String | Yes      | 200      |
+| title       | String | Yes      | 200      |
+| description | String | No       | 500      |
+
+{% only_dark %}
+![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
 # Add and remove methods
 
@@ -49,7 +59,7 @@ class IdeaService(client: Client) {
         return databases.listDocuments(
             ideaDatabaseId,
             ideaCollectionId,
-            listOf(Query.limit(10))
+            listOf(Query.orderDesc("\$createdAt"), Query.limit(10))
         ).documents
     }
 
@@ -81,6 +91,8 @@ class IdeaService(client: Client) {
 ```
 
 Update the `services/Appwrite.kt` file to add a new property for the `IdeaService` class.
+
+Look for `// Add this line 👇` to find where the changes made here.
 
 ```kotlin
 package io.appwrite.tutorialforandroid.services

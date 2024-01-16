@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Set up Appwrite
-description: Initialize Appwrite in your SvelteKit project.
+description: Initialize Appwrite in your Android project.
 step: 3
 ---
 

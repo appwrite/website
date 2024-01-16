@@ -11,6 +11,7 @@ Overwrite the contents of `ui/screens/IdeasScreen.kt` with the following code.
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>.screens
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,7 +36,7 @@ import androidx.compose.ui.unit.dp
 import io.appwrite.models.Document
 import io.appwrite.models.User
 import kotlinx.coroutines.launch
-import <YOUR_ROOT_PACKAGE_HERE>.IdeaService
+import <YOUR_ROOT_PACKAGE_HERE>services.IdeaService
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,7 +57,7 @@ fun IdeasScreen(
     fun onSubmit(title: String, description: String) {
         if (user === null) return
         coroutineScope.launch {
-            ideas = ideas.plus(ideasService.add(user.id, title, description))
+            ideas = listOf(ideasService.add(user.id, title, description)).plus(ideas)
         }
     }
 
@@ -120,6 +121,8 @@ fun IdeasScreen(
 
 Update `MainActivity.kt` to add the `IdeasScreen` to the navigation bar.
 
+Look for `// Add this line 👇` to find where the changes made here.
+
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>
 
@@ -129,6 +132,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+// Add this line 👇
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
@@ -165,6 +169,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Add navigation with this composable 👇
 @Composable
 private fun AppBottomBar(screen: MutableState<Screen>) {
     BottomAppBar {
@@ -194,10 +199,11 @@ private fun AppBottomBar(screen: MutableState<Screen>) {
 // Update this line 👇
 private fun AppContent(accountService: AccountService, ideasService: IdeaService) {
     val user = remember { mutableStateOf<User<Map<String, Any>>?>(null) }
+    // Update this line 👇
     val screen = remember { mutableStateOf(Screen.Ideas) }
 
     LaunchedEffect(screen) {
-        user.value = userService.getLoggedIn()
+        user.value = accountService.getLoggedIn()
     }
 
     Scaffold(bottomBar = { AppBottomBar(screen) }) { padding ->
