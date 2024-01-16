@@ -211,7 +211,7 @@
                         <ul class="aw-info-boxes is-desktop-max-out-3 aw-sub-body-500">
                             <li class="aw-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/self-hosted.svg"
+                                        src="/images/icons/gradients/mobile.svg"
                                         width="40"
                                         height="40"
                                         alt=""
@@ -223,7 +223,7 @@
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/lock.svg"
+                                        src="/images/icons/gradients/email.svg"
                                         width="40"
                                         height="40"
                                         alt=""
@@ -235,7 +235,7 @@
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/shield.svg"
+                                        src="/images/icons/gradients/message.svg"
                                         width="40"
                                         height="40"
                                         alt=""
@@ -247,7 +247,7 @@
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/database.svg"
+                                        src="/images/icons/gradients/bell.svg"
                                         width="40"
                                         height="40"
                                         alt=""
@@ -259,7 +259,7 @@
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/star.svg"
+                                        src="/images/icons/gradients/chat.svg"
                                         width="40"
                                         height="40"
                                         alt=""
