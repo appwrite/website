@@ -488,15 +488,6 @@
 </Main>
 
 <style lang="scss">
-    .absolute-container {
-        position: absolute;
-        width: 1720px;
-        min-height: 100%;
-        pointer-events: none;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
     .pink-gradient {
       position:absolute; inset-block-start:50px; inset-inline-end:-120px;
       inline-size: 983px;
@@ -513,17 +504,5 @@
       background: url("/images/messaging/green-gradient.png") no-repeat;
       background-position: center center;
       background-size: contain;
-    }
-
-    .aw-multi-columns-1 {
-        .aw-card {
-            border: 1px solid hsl(var(--aw-color-offset));
-        }
-        @media (max-width: 1235px) {
-            --p-col-gap: 2rem !important;
-            .aw-card {
-                rotate: none !important;
-            }
-        }
     }
 </style>
