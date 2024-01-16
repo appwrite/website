@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introducing Threads: your gateway to community wisdom
-description: Get answers to your questions faster with Appwrite's newest website adition: Threads.
+description: Get answers to your questions faster with Appwrite's newest website addition: Threads.
 date: 2024-01-16
 cover: /images/blog/threads-cover.png
 timeToRead: 3
@@ -14,7 +14,8 @@ Introducing Threads. A complete overview of all questions ever asked and answere
 
 ## Helping you move faster
 Imagine you're deep into building your dream application with Appwrite, and suddenly, you hit a roadblock – a puzzling bug or a tricky configuration issue. At times like these, your go-to support is the Appwrite [Discord server](appwrite.io/discord), your connection to the developer community and all its wisdom 
-Discord servers like ours serve as invaluable spaces where developers gather to share experiences, ask questions, and find solutions. But here's the challenge: valuable answers often get buried in endless message threads, making finding what you need feel like searching for a needle in a haystack. Costing you valuable time you could rather spend building.
+
+Discord servers like ours are invaluable spaces where developers gather to share experiences, ask questions, and find solutions. But here's the challenge: valuable answers often get buried in endless message threads, making finding what you need feel like searching for a needle in a haystack. Costing you valuable time you could rather spend building.
 
 ## Discord thread indexing
 Therefore we decided to address this challenge – the issue of buried information and time-consuming searches. We designed a dedicated page on our website that displays support threads within our Discord server. This page allows you to quickly find the answers you seek. 
@@ -26,4 +27,5 @@ We know that even after finding the right thread, reading through a conversation
 
 ## A journey with you in mind
 With this new addition to our website, we ensure that your experience with Appwrite is frustration-free and productive. We believe that by making information more accessible and digestible, we can empower you to build your dream applications.
+
 Take a closer look at this new addition and don't hesitate to tell us your thoughts. Your feedback is what drives new ideas, and we're looking forward to hearing about your experiences. 
