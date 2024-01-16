@@ -5,8 +5,10 @@ import { ID, Query } from 'appwrite';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
-import type { ContributionsMatrix, TicketData, TicketVariant } from './ticket/constants';
+import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './ticket/constants';
 import { contributors } from '$lib/contributors';
+import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
+import { shuffle } from '$lib/utils/shuffle';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -68,12 +70,19 @@ export async function isLoggedInGithub() {
     }
 }
 
+export async function isLoggedIn() {
+    const user = await getUser();
+    return !!(user.appwrite || user.github);
+}
+
 export interface GithubUser {
     login: string;
     name: string;
 }
 
 export async function getGithubUser() {
+    const isLoggedIn = await isLoggedInGithub();
+    if (!isLoggedIn) return null;
     const { providerAccessToken } = await appwriteInit.account.getSession('current');
 
     return await fetch('https://api.github.com/user', {
@@ -84,88 +93,14 @@ export async function getGithubUser() {
     }).then((res) => res.json() as Promise<GithubUser>);
 }
 
-interface GithubContributionsResponse {
-    data: {
-        user: {
-            contributionsCollection: {
-                contributionCalendar: {
-                    totalContributions: number;
-                    weeks: Array<{
-                        contributionDays: Array<{
-                            contributionCount: number;
-                            date: Date;
-                        }>;
-                    }>;
-                };
-            };
-        };
-    };
-}
+export type User = {
+    github: GithubUser | null;
+    appwrite: AppwriteUser | null;
+};
 
-export async function _getGithubContributions(username: string) {
-    const { providerAccessToken } = await appwriteInit.account.getSession('current');
-
-    const { data } = await fetch('https://api.github.com/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${providerAccessToken}`
-        },
-        body: JSON.stringify({
-            query: `query($userName:String!) { 
-            user(login: $userName){
-              contributionsCollection {
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      contributionCount
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-            variables: { userName: username }
-        })
-    }).then((res) => res.json() as Promise<GithubContributionsResponse>);
-    const { weeks } = data.user.contributionsCollection.contributionCalendar;
-
-    const max = weeks.reduce((acc, week) => {
-        const weekMax = week.contributionDays.reduce((acc, day) => {
-            return Math.max(acc, day.contributionCount);
-        }, 0);
-        const newMax = Math.max(acc, weekMax);
-        return Math.min(newMax, 45);
-    }, 0);
-
-    const contributions: ContributionsMatrix = weeks.map((week) => {
-        return week.contributionDays
-            .map((day) => {
-                return parseFloat((day.contributionCount / max).toFixed(2));
-            })
-            .toReversed();
-    });
-
-    return contributions;
-}
-
-function shuffle<T extends Array<unknown>>(array: T) {
-    let currentIndex = array.length,
-        randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-    }
-
-    return array;
+export async function getUser(): Promise<User> {
+    const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
+    return { github, appwrite };
 }
 
 export function getMockContributions() {
@@ -226,15 +161,38 @@ export function getMockContributions() {
     ]);
 }
 
-export async function getTicketDocByUser({ login, name }: GithubUser) {
-    const { documents, total } = await appwriteInit.database.listDocuments(
-        PUBLIC_APPWRITE_DB_INIT_ID,
-        PUBLIC_APPWRITE_COL_INIT_ID,
-        [Query.equal('gh_user', login)]
-    );
+export async function getTicketDocByUser(user: User) {
+    const [gh, aw] = await Promise.all([
+        user.github?.login
+            ? appwriteInit.database.listDocuments(
+                  PUBLIC_APPWRITE_DB_INIT_ID,
+                  PUBLIC_APPWRITE_COL_INIT_ID,
+                  [Query.equal('gh_user', user.github.login)]
+              )
+            : null,
+        user.appwrite?.$id
+            ? appwriteInit.database.listDocuments(
+                  PUBLIC_APPWRITE_DB_INIT_ID,
+                  PUBLIC_APPWRITE_COL_INIT_ID,
+                  [Query.equal('aw_id', user.appwrite.$id)]
+              )
+            : null
+    ]);
 
-    if (total) {
-        return documents[0] as unknown as Omit<TicketData, 'contributions' | 'variant'>;
+    if (gh?.total || aw?.total) {
+        const doc = (gh?.documents?.[0] ?? aw?.documents?.[0]) as unknown as TicketDoc;
+        if (!doc.gh_user || !doc.aw_id) {
+            return (await appwriteInit.database.updateDocument(
+                PUBLIC_APPWRITE_DB_INIT_ID,
+                PUBLIC_APPWRITE_COL_INIT_ID,
+                doc.$id,
+                {
+                    gh_user: user.github?.login,
+                    aw_id: user.appwrite?.$id
+                }
+            )) as unknown as TicketDoc;
+        }
+        return doc;
     } else {
         const allDocs = await appwriteInit.database.listDocuments(
             PUBLIC_APPWRITE_DB_INIT_ID,
@@ -245,11 +203,12 @@ export async function getTicketDocByUser({ login, name }: GithubUser) {
             PUBLIC_APPWRITE_COL_INIT_ID,
             ID.unique(),
             {
-                gh_user: login,
+                gh_user: user.github?.login ?? undefined,
+                aw_id: user.appwrite?.$id ?? undefined,
                 id: allDocs.total + 1,
-                name
+                name: user.appwrite?.name ?? user.github?.name
             }
-        )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
+        )) as unknown as TicketDoc;
     }
 }
 
@@ -278,7 +237,7 @@ function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): T
     // TODO: include pink variant
 }
 
-export async function getTicketByUser(user: GithubUser) {
+export async function getTicketByUser(user: User) {
     const doc = await getTicketDocByUser(user);
     const contributions = await getTicketContributions(doc.$id);
     const variant = getTicketVariant(doc);

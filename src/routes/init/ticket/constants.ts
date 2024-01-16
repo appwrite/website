@@ -14,8 +14,11 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
     tribe?: string;
     gh_user?: string;
+    aw_id?: string;
     id: number;
     show_contributions?: boolean;
     contributions?: ContributionsMatrix;
     variant?: TicketVariant;
 };
+
+export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;

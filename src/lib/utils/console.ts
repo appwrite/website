@@ -5,15 +5,22 @@ import type { Models } from 'appwrite';
 
 const client = new Client();
 
-client.setEndpoint('https://stage.cloud.appwrite.io/v1').setProject('console');
+client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
 
 const account = new Account(client);
 
 export const sdk = { client, account };
 
-type AppwriteUser = Models.User<Models.Preferences>;
+export type AppwriteUser = Models.User<Models.Preferences>;
 function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
+}
+
+export function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return account
+        .get()
+        .then((res) => res)
+        .catch(() => null);
 }
 
 function createAppwriteUser() {
@@ -32,14 +39,9 @@ function createAppwriteUser() {
         const localUser = JSON.parse(localStorage.getItem('appwrite:user') ?? 'null');
         if (isAppwriteUser(localUser)) _set(localUser);
 
-        sdk.account
-            .get()
-            .then((res) => {
-                set(res);
-            })
-            .catch(() => {
-                set(null);
-            });
+        getAppwriteUser().then((res) => {
+            set(res);
+        });
     }
 
     return {
