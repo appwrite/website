@@ -58,6 +58,8 @@ class AccountService(client: Client) {
 
 We can now use this service to login, register and logout a user. Integrate the service to the `/services/Appwrite.kt` file.
 
+Look for `// Add this line 👇` to find where the changes made here.
+
 ```kotlin
 object Appwrite {
     private const val ENDPOINT = "https://cloud.appwrite.io/v1"
