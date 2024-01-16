@@ -1,22 +1,12 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
 
     import Ticket from '../(components)/Ticket.svelte';
     import TicketPreview from '../(components)/TicketPreview.svelte';
-    import { getMockContributions } from '../helpers';
-
-    function loginGithub() {
-        appwriteInit.account.createOAuth2Session(
-            'github',
-            `${$page.url.origin}/init/ticket?success=1`,
-            `${$page.url.origin}/init/ticket?error=1`,
-            ['read:user']
-        );
-    }
+    import { getMockContributions, loginGithub } from '../helpers';
 </script>
 
 <svelte:head>

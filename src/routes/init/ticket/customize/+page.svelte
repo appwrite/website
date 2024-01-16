@@ -16,7 +16,7 @@
 
     let name = data.ticket?.name ?? '';
     const id = data.ticket?.id ?? 0;
-    let tribe: string | null = data.ticket?.tribe ?? null;
+    let tribe: string | undefined = data.ticket?.tribe ?? undefined;
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
@@ -117,7 +117,7 @@
 
         <TicketPreview>
             <div class="ticket-holder">
-                <Ticket {...data.ticket} />
+                <Ticket {...data.ticket} {tribe} {name} show_contributions={showGitHub} />
             </div>
         </TicketPreview>
     </div>

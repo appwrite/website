@@ -11,6 +11,7 @@ export const load = async () => {
     const ticket = await getTicketByUser(user);
 
     return {
-        ticket
+        ticket,
+        user
     };
 };

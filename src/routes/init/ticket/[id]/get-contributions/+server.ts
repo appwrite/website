@@ -1,7 +1,7 @@
 import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
 import { appwriteInit } from '$lib/appwrite/init.js';
-import type { ContributionsMatrix } from '$routes/init/(components)/Ticket.svelte';
-import type { TicketData } from '../../constants.js';
+
+import type { ContributionsMatrix, TicketData } from '../../constants.js';
 import { parse } from 'node-html-parser';
 
 const emptyResponse = new Response(JSON.stringify({ data: null }), {
@@ -17,6 +17,8 @@ export async function GET({ params }) {
         PUBLIC_APPWRITE_COL_INIT_ID,
         params.id
     )) as unknown as TicketData;
+
+    if (!gh_user) return emptyResponse;
 
     const res = await fetch(`https://github.com/${gh_user}`);
     const html = await res.text();

@@ -1,19 +1,23 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
+    import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
+    import { loginGithub } from '$routes/init/helpers';
+
+    import type { PageData } from './$types';
     import TribeToggle from './tribe-toggle.svelte';
 
     export let name = '';
     export let tribe: string | null = null;
     export let showGitHub = true;
+    $: ({ ticket } = $page.data as PageData);
 
     const tribes = [
         null,
         'Appwrite',
         'Flutter',
-        'JavaScript',
         'Svelte',
         'React',
         'Vue',
@@ -48,41 +52,73 @@
 
 <hr />
 
-<div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
-    <img src="/images/icons/colored/check.svg" alt="" />
-    <span class="aw-sub-body-500">GitHub account connected</span>
-</div>
+{#if ticket.gh_user}
+    <div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
+        <img src="/images/icons/colored/check.svg" alt="" />
+        <span class="aw-sub-body-500">GitHub account connected</span>
+    </div>
 
-<div class="u-flex u-cross-center u-main-between" style="margin-block-start: 0.25rem; gap: 1.25rem">
-    <p class="aw-sub-body-500">
-        Your ticket has been updated to show your unique GitHub contribution pattern.
+    <div
+        class="u-flex u-cross-center u-main-between"
+        style="margin-block-start: 0.25rem; gap: 1.25rem"
+    >
+        <p class="aw-sub-body-500">
+            Your ticket has been updated to show your unique GitHub contribution pattern.
+        </p>
+        <Switch bind:checked={showGitHub} />
+    </div>
+
+    {#if dev}
+        <button
+            class="aw-button is-full-width is-secondary u-margin-block-start-24"
+            on:click={async () => {
+                await appwriteInit.account.deleteSession('current');
+                goto('/init/ticket');
+            }}
+            disabled={!browser}
+        >
+            <div class="aw-icon-github aw-u-color-text-primary" />
+            <span class="text">(DEBUG) Log-out of GitHub</span>
+        </button>
+    {/if}
+{:else}
+    <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your GitHub account</h2>
+    <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
+        Sign in with your GitHub Account and see the magic happen in your ticket.
     </p>
-    <Switch bind:checked={showGitHub} />
-</div>
-
-<button
-    class="aw-button is-full-width is-secondary u-margin-block-start-24"
-    on:click={async () => {
-        await appwriteInit.account.deleteSession('current');
-        goto('/init/ticket');
-    }}
-    disabled={!browser}
->
-    <div class="aw-icon-github aw-u-color-text-primary" />
-    <span class="text">(DEBUG) Log-out of GitHub</span>
-</button>
+    <button
+        class="aw-button is-full-width is-secondary u-margin-block-start-24"
+        on:click={loginGithub}
+    >
+        <div class="aw-icon-github aw-u-color-text-primary" />
+        <span class="text">Log in to GitHub Account</span>
+    </button>
+{/if}
 
 <hr />
 
-<h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
-<p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-    Sign in with your Appwrite Account and see the magic happen in your ticket
-</p>
-<button class="aw-button is-full-width is-secondary u-margin-block-start-24" disabled>
-    <div class="aw-icon-appwrite aw-u-color-text-primary" />
-    <span class="text">(SOON) Log in to Appwrite Account</span>
-</button>
+{#if ticket.aw_id}
+    <div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
+        <img src="/images/icons/colored/check.svg" alt="" />
+        <span class="aw-sub-body-500">Appwrite account connected</span>
+    </div>
 
+    <p class="aw-sub-body-500" style="margin-block-start: 0.25rem;">
+        Your ticket has been upgraded.
+    </p>
+{:else}
+    <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
+    <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
+        Sign in with your Appwrite Account and see the magic happen in your ticket
+    </p>
+    <a
+        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/ticket"
+        class="aw-button is-full-width is-secondary u-margin-block-start-24"
+    >
+        <div class="aw-icon-appwrite aw-u-color-text-primary" />
+        <span class="text">Log in to Appwrite Account</span>
+    </a>
+{/if}
 <hr />
 
 <h2 class="aw-sub-body-500 aw-u-color-text-primary">Add your tribe</h2>

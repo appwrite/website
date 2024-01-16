@@ -6,8 +6,9 @@
     import Logo from '../(assets)/logo.svg';
     import ShinePink from '../(assets)/shine-pink.svg';
     import ShineSvg from '../(assets)/shine.svg';
+    import BgRainbow from '../(assets)/ticket-bg-rainbow.svg';
     import BgPink from '../(assets)/ticket-bg-pink.svg';
-    import BG from '../(assets)/ticket-bg.svg';
+    import Bg from '../(assets)/ticket-bg.svg';
     import type { TicketData } from '../ticket/constants';
 
     type $$Props = Omit<TicketData, '$id'>;
@@ -17,13 +18,14 @@
         id,
         tribe = null,
         contributions,
-        variant = 'default'
+        variant = 'default',
+        show_contributions = true
     } = $$props as $$Props);
 
     $: bg = {
-        default: BG,
+        default: Bg,
         pink: BgPink,
-        rainbow: BG
+        rainbow: BgRainbow
     }[variant];
 
     $: shine = {
@@ -37,7 +39,7 @@
         return {
             css(t, u) {
                 return `
-                    opacity: ${toScale(u, [1, 0], [0.32, 0.04])};
+                    opacity: ${toScale(u, [1, 0], variant === 'rainbow' ? [1, 0.5] : [0.32, 0.04])};
                 `;
             },
             duration: 400,
@@ -69,7 +71,9 @@
             {#if tribe}
                 <img
                     class="tribe"
-                    src={`/images/tribes/${tribe?.toLowerCase()}.svg`}
+                    src="/images/tribes/{variant === 'rainbow'
+                        ? 'rainbow'
+                        : ''}/{tribe?.toLowerCase()}.svg"
                     alt={tribe}
                     style:display={tribe ? undefined : 'none'}
                     in:appear|global
@@ -77,7 +81,7 @@
             {/if}
         {/key}
 
-        {#if contributions}
+        {#if contributions && show_contributions}
             <div class="github" out:fade={{ duration: 100 }}>
                 {#each contributions as row}
                     <div class="row">
@@ -201,6 +205,10 @@
         /* Make it white */
         filter: brightness(0) invert(1);
         opacity: 0.04;
+
+        [data-variant='rainbow'] & {
+            opacity: 0.5;
+        }
     }
 
     @keyframes fade-in {
@@ -239,6 +247,10 @@
 
                 &[data-level] {
                     --bg-color: var(--aw-color-accent);
+
+                    [data-variant='rainbow'] & {
+                        --bg-color: 0 0% 90%;
+                    }
                 }
 
                 &[data-level='0'] {
