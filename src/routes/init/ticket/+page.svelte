@@ -46,13 +46,14 @@
                     <div class="aw-icon-github" />
                     <span class="text">Register with GitHub Account</span>
                 </button>
-                <button
+                <a
+                    href="https://cloud.appwrite.io/login?forceRedirect={$page.url
+                        .origin}/init/ticket"
                     class="aw-button is-full-width is-secondary u-margin-block-start-8"
-                    disabled
                 >
                     <div class="aw-icon-appwrite aw-u-color-text-primary" />
-                    <span class="text">(SOON) Register with Appwrite Account</span>
-                </button>
+                    <span class="text">Register with Appwrite Account</span>
+                </a>
                 <p class="u-margin-block-start-16">
                     By registering, you agree to our <a href="/terms" class="aw-link is-inline"
                         >Terms and Conditions</a
