@@ -122,3 +122,7 @@ const users = new sdk.Users(client);
 
 const promise = users.updateLabels('[USER_ID]', ['subscriber']);
 ```
+
+Want to learn visually? Watch the video on how to manage user permissions with Labels and Teams on [YouTube](https://www.youtube.com/watch?v=xJTj5Ye8-W0&feature=youtu.be).
+
+[![Video Title](http://img.youtube.com/vi/xJTj5Ye8-W0/0.jpg)](http://www.youtube.com/watch?v=xJTj5Ye8-W0)
