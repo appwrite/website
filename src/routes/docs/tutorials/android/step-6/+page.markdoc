@@ -19,7 +19,7 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 
 Create a new collection with the following attributes:
 
-| Field       | Type   | Required | Size     |
+| Attribute   | Type   | Required | Size     |
 |-------------|--------|----------|----------|
 | userId      | String | Yes      | 200      |
 | title       | String | Yes      | 200      |
@@ -50,8 +50,10 @@ import io.appwrite.models.Document
 import io.appwrite.services.Databases
 
 class IdeaService(client: Client) {
-    private val ideaDatabaseId = "<YOUR_IDEA_DATABASE_ID_HERE>"
-    private val ideaCollectionId = "<YOUR_IDEA_COLLECTION_ID_HERE>"
+    companion object {
+        private const val ideaDatabaseId = "<YOUR_IDEA_DATABASE_ID_HERE>"
+        private const val ideaCollectionId = "<YOUR_IDEA_COLLECTION_ID_HERE>"
+    }
 
     private val databases = Databases(client)
 
