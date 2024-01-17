@@ -18,8 +18,6 @@ export const load = async ({ depends, params }) => {
   depends(CHANGELOG_DEPENDENCY);
   
   if (browser && params.page === '1') {
-    console.log(params.page);
-
     throw redirect(302, '/changelog');
   }
 
