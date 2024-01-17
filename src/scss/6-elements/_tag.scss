@@ -7,6 +7,7 @@
   color: hsl(var(--p-tag-text-color));
   background-color: hsl(var(--p-tag-bg-color));
 
+  display:flex; align-items:center; gap:pxToRem(4); block-size:100%;
   padding-block: pxToRem(4);
   padding-inline: pxToRem(8);
   border-radius: pxToRem(12);
@@ -15,5 +16,9 @@
 
   #{$theme-dark} & {
     --p-tag-bg-color: var(--aw-color-greyscale-750);
+  }
+
+  #{$theme-light} & {
+    --p-tag-bg-color: var(--aw-color-greyscale-100);
   }
 }
