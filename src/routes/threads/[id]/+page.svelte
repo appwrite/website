@@ -159,7 +159,7 @@
         align-items: center;
         gap: 0.25rem;
 
-        text-wrap: nowrap;
+        white-space: nowrap;
     }
 
     .thread-grid {
@@ -235,23 +235,6 @@
         75% {
             translate: 0 0;
         }
-    }
-
-    .dots {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-
-        margin-block-start: 0.5rem;
-    }
-
-    .dot {
-        --p-size: 0.375rem;
-        animation: dot 1000ms linear calc(var(--p-index) * 150ms) infinite;
-        width: var(--p-size);
-        height: var(--p-size);
-        border-radius: 100%;
-        background-color: white;
     }
 
     @media #{$break1} {
