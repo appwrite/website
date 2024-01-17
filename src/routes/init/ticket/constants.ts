@@ -14,7 +14,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
     tribe?: string;
     gh_user?: string;
-    aw_id?: string;
+    aw_email?: string;
     id: number;
     show_contributions?: boolean;
     contributions?: ContributionsMatrix;
