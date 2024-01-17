@@ -16,15 +16,15 @@ export const entries = async () => {
 
 export const load = async ({ depends, params }) => {
   depends(CHANGELOG_DEPENDENCY);
-
-  if(browser) {
-    if(window.location.href.endsWith('1')) {
-      window.location.href = window.location.href.replace(/1$/, '');
-    }
-    console.log(window.location);
-  }
   
+  if (browser && params.page === '1') {
+    console.log(params.page);
+
+    throw redirect(302, '/changelog');
+  }
+
   const page = parseInt(params.page || '1', 10);
+
   const entries = await getAllChangelogEntries();
 
   return {
