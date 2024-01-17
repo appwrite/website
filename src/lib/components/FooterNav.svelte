@@ -31,11 +31,12 @@
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
                 { label: 'Community', href: '/community' },
+                { label: 'Threads', href: '/threads' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
                 {
