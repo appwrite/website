@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to DockerHub
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -54,6 +54,12 @@ jobs:
             git checkout ${{ env.TAG }}
 
             rm -f .env
+            echo "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ env.PUBLIC_APPWRITE_PROJECT_INIT_ID }}" >> .env
+            echo "PUBLIC_APPWRITE_PROJECT_ID=${{ env.PUBLIC_APPWRITE_PROJECT_ID }}" >> .env
+            echo "PUBLIC_APPWRITE_DB_MAIN_ID=${{ env.PUBLIC_APPWRITE_DB_MAIN_ID }}" >> .env
+            echo "PUBLIC_APPWRITE_COL_THREADS_ID=${{ env.PUBLIC_APPWRITE_COL_THREADS_ID }}" >> .env
+            echo "PUBLIC_APPWRITE_COL_MESSAGES_ID=${{ env.PUBLIC_APPWRITE_COL_MESSAGES_ID }}" >> .env
+            echo "PUBLIC_APPWRITE_FN_TLDR_ID=${{ env.PUBLIC_APPWRITE_FN_TLDR_ID }}" >> .env
             echo "_APP_VERSION=${{ env.TAG }}" >> .env
             echo "_APP_DOMAIN=${{ secrets.PRD_APP_DOMAIN }}" >> .env
             echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
