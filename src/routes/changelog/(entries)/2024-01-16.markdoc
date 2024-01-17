@@ -1,0 +1,12 @@
+---
+layout: changelog
+title: Introducing Threads
+date: 2024-01-16
+cover: /images/changelog/threads-cover.png
+---
+
+A complete overview of all questions ever asked and answered on the Appwrite Discord Server. Now, you can get an answer to your question immediately without awaiting a response or having to search the server.
+
+{% arrow_link href="/blog/post/announcing-threads" %}
+Read the full announcement
+{% /arrow_link %}
