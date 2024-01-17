@@ -5,9 +5,11 @@ export const prerender = true;
 
 export const entries = async () => {
     const ids = [];
-    for await (const i of iterateAllThreads()) ids.push(i);
+    for await (const thread of iterateAllThreads()) {
+        ids.push({ id: thread.$id });
+    }
 
-    return ids.map(({ $id }) => ({ id: $id }));
+    return ids;
 };
 
 export const load = async ({ params }) => {
