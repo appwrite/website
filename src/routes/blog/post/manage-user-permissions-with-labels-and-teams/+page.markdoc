@@ -96,6 +96,7 @@ Labels can only be created & modified from the console or Server SDK, while Team
 ### Teams
 
 Server SDK - Yes
+
 Client SDK - Yes
 
 ```javascript
@@ -111,6 +112,7 @@ const promise = Teams.create('[Team_ID]', '[NAME]');
 ## Labels
 
 Server SDK - Yes
+
 Client SDK - No
 
 ```javascript
