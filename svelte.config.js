@@ -55,7 +55,8 @@ const config = {
             $markdoc: './src/markdoc'
         },
         prerender: {
-            handleHttpError: 'warn'
+            handleHttpError: 'warn',
+            concurrency: 64
         }
     }
 };
