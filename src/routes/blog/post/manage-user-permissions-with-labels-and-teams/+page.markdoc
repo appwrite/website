@@ -95,9 +95,8 @@ Labels can only be created & modified from the console or Server SDK, while Team
 
 ### Teams
 
-✅ Server SDK
-
-✅ Client SDK
+Server SDK - Yes
+Client SDK - Yes
 
 ```javascript
 import { Client, Teams } from "appwrite";
@@ -111,9 +110,8 @@ const promise = Teams.create('[Team_ID]', '[NAME]');
 
 ## Labels
 
-✅ Server SDK
-
-❌ Client SDK
+Server SDK - Yes
+Client SDK - No
 
 ```javascript
 const sdk = require('node-appwrite');
