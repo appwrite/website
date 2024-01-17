@@ -219,13 +219,13 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/apple.svg" alt>
                                             <span class="text">APNS</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/firebase.svg" alt>
                                             <span class="text">FCM</span>
                                         </a>
@@ -245,13 +245,13 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/mailgun.svg" alt>
                                             <span class="text">Mailgun</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/sendgrid.svg" alt>
                                             <span class="text">Sendgrid</span>
                                         </a>
@@ -271,25 +271,25 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/twilio.svg" alt>
                                             <span class="text">Twilio</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/vonage.svg" alt>
                                             <span class="text">Vonage</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/msg91.svg" alt>
                                             <span class="text">MSG91</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <span class="text">+2</span>
                                         </a>
                                     </li>
@@ -308,7 +308,7 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/appwrite.svg" alt>
                                             <span class="text">Appwrite</span>
                                         </a>
@@ -330,19 +330,19 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/slack.svg" alt>
                                             <span class="text">Slack</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/discord.svg" alt>
                                             <span class="text">Discord</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag">
+                                        <a class="aw-tag" href="/">
                                             <img src="/images/icons/gray-colors/whatsapp.svg" alt>
                                             <span class="text">WhatsApp</span>
                                         </a>
