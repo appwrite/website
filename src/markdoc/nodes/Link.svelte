@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { isInDocs } from '$lib/layouts/Docs.svelte';
     import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import { hasContext } from 'svelte';
 
     export let href: string;
     export let title: string;
@@ -9,11 +9,11 @@
     const target = isExternal ? '_blank' : undefined;
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
-    const isDocs = hasContext('isDocs');
+    const inDocs = isInDocs();
     const inChangelog = isInChangelog();
 
     $: classes = (() => {
-        if (isDocs) return 'aw-paragraph-md';
+        if (inDocs) return 'aw-paragraph-md';
         if (inChangelog) return 'aw-paragraph-lg in-changelog';
         return '';
     })();

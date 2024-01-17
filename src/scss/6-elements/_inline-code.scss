@@ -1,11 +1,15 @@
 @use '../abstract' as *;
 
 .#{$p}-inline-code {
-  --p-inline-code-text-color: var(--aw-color-secondary);
-  --p-inline-code-bg-color: var(--aw-color-smooth);
+    --p-inline-code-text-color: var(--aw-color-secondary);
+    --p-inline-code-bg-color: var(--aw-color-smooth);
 
-  color: hsl(var(--p-inline-code-text-color));
-  background-color: hsl(var(--p-inline-code-bg-color));
+    color: hsl(var(--p-inline-code-text-color));
+    background-color: hsl(var(--p-inline-code-bg-color));
 
-  display:inline-flex; padding-inline:pxToRem(4); padding-block:pxToRem(1); border-radius:pxToRem(4); font-family:monospace;
+    display: inline-flex;
+    padding-inline: pxToRem(4);
+    padding-block: pxToRem(1);
+    border-radius: pxToRem(4);
+    font-family: var(--aw-font-family-fira-code);
 }

@@ -6,6 +6,7 @@ step: 1
 difficulty: beginner
 readtime: 10
 framework: Refine
+category: Web
 ---
 
 **Blog admin panel**: a CRUD app to manage Blog content.
