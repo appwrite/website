@@ -194,11 +194,8 @@
         </div>
 
         <div
-            class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light"
+            class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light aw-u-padding-block-end-0"
         >
-            <img
-                    class="u-position-absolute u-z-index-1 u-inset-inline-start-0 u-inset-block-end-0"
-                    src="/images/messaging/stripes.png" alt>
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
                     <section class="aw-hero is-align-start">
@@ -275,10 +272,14 @@
                     </div>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative u-z-index-1 u-overflow-hidden theme-light">
+            <div class="aw-big-padding-section-level-2 u-position-relative u-z-index-1 theme-light">
 
                 <div class="aw-container u-position-relative">
-                    <div class="grid-1-1">
+                    <img
+                            class="u-position-absolute u-z-index-1 is-not-mobile"
+                            style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
+                            src="/images/messaging/stripes.png" alt>
+                    <div class="grid-1-1 u-position-relative u-z-index-1">
                         <section class="aw-hero is-align-start">
                             <span class="aw-badges aw-eyebrow">PERFORMANCE_</span>
                             <h2 class="aw-display u-max-width-600 aw-u-color-text-primary">
@@ -307,7 +308,7 @@
         </div>
 
         <div
-                class="aw-big-padding-section-level-1"
+                class="aw-big-padding-section-level-1 u-position-relative u-z-index-1"
                 style="background-color:hsl(var(--aw-color-greyscale-900))"
         >
             <div class="aw-big-padding-section-level-2">
