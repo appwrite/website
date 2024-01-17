@@ -55,6 +55,7 @@ const config = {
             $markdoc: './src/markdoc'
         },
         prerender: {
+            handleHttpError: 'warn', // TODO: NEEDS TO BE REMOVED BEFORE MERGE
             concurrency: 64
         }
     }
