@@ -18,7 +18,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Android app**. The **Package Name** should be the same as the one you used when creating your project. 
+Then, under **Add a platform**, add an **Android app**. The **Package Name** should be the same as the one you used when creating your app.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
