@@ -3,6 +3,7 @@
     import type { DiscordMessage } from '../types';
     import CodeRenderer from './CodeRenderer.svelte';
     import LinkRenderer from './LinkRenderer.svelte';
+    import HtmlRenderer from './HtmlRenderer.svelte';
 
     export let message: DiscordMessage;
 
@@ -39,7 +40,8 @@
             source={message.message}
             renderers={{
                 code: CodeRenderer,
-                link: LinkRenderer
+                link: LinkRenderer,
+                html: HtmlRenderer
             }}
         />
     </div>
