@@ -165,7 +165,7 @@ export async function getTicketDocByUser(user: User) {
             ? appwriteInit.database.listDocuments(
                   PUBLIC_APPWRITE_DB_INIT_ID,
                   PUBLIC_APPWRITE_COL_INIT_ID,
-                  [Query.equal('aw_id', user.appwrite.$id)]
+                  [Query.equal('aw_email', user.appwrite.email)]
               )
             : null
     ]);
@@ -183,7 +183,7 @@ export async function getTicketDocByUser(user: User) {
                 oldest,
                 {
                     gh_user: null,
-                    aw_id: null
+                    aw_email: null
                 }
             );
             return (await appwriteInit.database.updateDocument(
@@ -192,21 +192,21 @@ export async function getTicketDocByUser(user: User) {
                 newest,
                 {
                     gh_user: user.github?.login,
-                    aw_id: user.appwrite?.$id
+                    aw_email: user.appwrite?.email
                 }
             )) as unknown as TicketDoc;
         }
 
         const doc = gh_doc ?? aw_doc;
 
-        if (!doc.gh_user || !doc.aw_id) {
+        if (!doc.gh_user || !doc.aw_email) {
             return (await appwriteInit.database.updateDocument(
                 PUBLIC_APPWRITE_DB_INIT_ID,
                 PUBLIC_APPWRITE_COL_INIT_ID,
                 doc.$id,
                 {
                     gh_user: user.github?.login,
-                    aw_id: user.appwrite?.$id
+                    aw_email: user.appwrite?.email
                 }
             )) as unknown as TicketDoc;
         }
@@ -222,7 +222,7 @@ export async function getTicketDocByUser(user: User) {
             ID.unique(),
             {
                 gh_user: user.github?.login ?? undefined,
-                aw_id: user.appwrite?.$id ?? undefined,
+                aw_email: user.appwrite?.email ?? undefined,
                 id: allDocs.total + 1,
                 name: user.appwrite?.name ?? user.github?.name
             }
@@ -251,13 +251,13 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
 }
 
 function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
-    const { gh_user, aw_id } = doc;
+    const { gh_user, aw_email } = doc;
 
     if (gh_user && contributors.includes(gh_user)) {
         return 'rainbow';
     }
 
-    if (aw_id) {
+    if (aw_email) {
         return 'pink';
     }
 

@@ -97,7 +97,7 @@
 
 <hr />
 
-{#if ticket.aw_id}
+{#if ticket.aw_email}
     <div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
         <span class="aw-sub-body-500">Appwrite account connected</span>
