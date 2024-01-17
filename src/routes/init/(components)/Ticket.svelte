@@ -10,6 +10,7 @@
     import BgPink from '../(assets)/ticket-bg-pink.svg';
     import Bg from '../(assets)/ticket-bg.svg';
     import type { TicketData } from '../ticket/constants';
+    import { spring } from 'svelte/motion';
 
     type $$Props = Omit<TicketData, '$id'>;
     $: ({
@@ -46,13 +47,113 @@
             easing: quadInOut
         };
     }
+
+    const springR = { stiffness: 0.066, damping: 0.25 };
+    const springD = { stiffness: 0.03, damping: 0.45 };
+
+    let springRotate = spring({ x: 0, y: 0 }, springR);
+    let springBg = spring({ x: 0, y: 0 }, springD);
+    let hovering = false;
+
+    const round = (num: number, fix = 3) => parseFloat(num.toFixed(fix));
+    const clamp = (num: number, min = -20, max = 20) => Math.min(Math.max(num, min), max);
+
+    function isTouchEvent(e: MouseEvent | TouchEvent): e is TouchEvent {
+        return e.type === 'touchmove';
+    }
+
+    function mouse(node: HTMLElement) {
+        const mouseMove = (e: MouseEvent) => {
+            const clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+            const clientY = isTouchEvent(e) ? e.touches[0].clientY : e.clientY;
+
+            const el = e.target as HTMLElement;
+            const rect = el.getBoundingClientRect(); // get element's current size/position
+            const absolute = {
+                x: clientX - rect.left, // get mouse position from left
+                y: clientY - rect.top // get mouse position from right
+            };
+            const percent = {
+                x: round((100 / rect.width) * absolute.x),
+                y: round((100 / rect.height) * absolute.y)
+            };
+            const center = {
+                x: percent.x - 50,
+                y: percent.y - 50
+            };
+
+            // springBackground.stiffness = springR.stiffness;
+            // springBackground.damping = springR.damping;
+            // springBackground.set({
+            //     x: round(50 + percent.x / 4 - 12.5),
+            //     y: round(50 + percent.y / 3 - 16.67)
+            // });
+            springRotate.stiffness = springR.stiffness;
+            springRotate.damping = springR.damping;
+            springRotate.set({
+                x: round(-(center.x / 7)),
+                y: round(center.y / 10)
+            });
+            springBg.set({
+                x: percent.x / 5,
+                y: percent.y / 5
+            });
+
+            // springGlare.stiffness = springR.stiffness;
+            // springGlare.damping = springR.damping;
+            // springGlare.set({
+            //     x: percent.x,
+            //     y: percent.y,
+            //     o: 1
+            // });
+
+            // // get angle of mouse position relative to center of element
+            // angle = Math.atan2(center.y, center.x) * (180 / Math.PI);
+
+            // // get proximity to center of element. 0 = center, 1 = edge
+            // $centerProximity = Math.sqrt(center.x * center.x + center.y * center.y) / 50 - 0.1;
+            hovering = true;
+        };
+        const mouseLeave = () => {
+            const snapStiff = 0.05;
+            const snapDamp = 0.5;
+
+            springRotate.stiffness = snapStiff;
+            springRotate.damping = snapDamp;
+            springRotate.set({ x: 0, y: 0 });
+
+            springBg.stiffness = snapStiff;
+            springBg.damping = snapDamp;
+            springBg.set({ x: 0, y: 0 });
+            hovering = false;
+        };
+
+        node.addEventListener('mousemove', mouseMove);
+        node.addEventListener('mouseleave', mouseLeave);
+
+        return {
+            destroy() {
+                node.removeEventListener('mousemove', mouseMove);
+                node.removeEventListener('mouseleave', mouseLeave);
+            }
+        };
+    }
+
+    $: styles = `
+		--rx: ${$springRotate.x}deg;
+		--ry: ${$springRotate.y}deg;
+        --bg-x: ${$springBg.x}%;
+        --bg-y: ${$springBg.y}%;
+        --opacity: ${hovering ? 1 : 0};
+        
+	`;
 </script>
 
 <div class="wrapper">
     {#if variant === 'pink'}
         <img class="glow" src={Glow} alt="" />
     {/if}
-    <div class="ticket" data-variant={variant}>
+    <div class="ticket" data-variant={variant} use:mouse style={styles}>
         <img src={bg} alt="" class="bg" />
         <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
         {#if gh_user}
@@ -94,6 +195,7 @@
         {/if}
 
         <img class="shine" src={shine} alt="" />
+        <div class="rainbow" />
     </div>
 </div>
 
@@ -106,10 +208,75 @@
         @return #{math.div($value, $base-width)}em;
     }
 
+    .rainbow {
+        --duration: 300ms;
+        --foil-size: 100%;
+        --radius: 0px;
+        --easing: linear;
+        --transition: var(--duration) var(--easing);
+        --m-x: 10.427%;
+        --m-y: 24.49%;
+        --r-x: 0deg;
+        --r-y: 0deg;
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-area: 1 / 1;
+        opacity: var(--opacity);
+        will-change: background;
+        transition: opacity 200ms ease;
+        --step: 5%;
+        --foil-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='860' height='1062' fill='none' viewBox='0 0 860 1062'%3E%3Cpath fill='%23000212' d='M0-.005h860v1062H0z' /%3E%3C/svg%3E");
+        --pattern: var(--foil-svg) center / 100% no-repeat;
+        --rainbow: repeating-linear-gradient(
+                0deg,
+                rgb(255, 119, 115) calc(var(--step) * 1),
+                rgba(255, 237, 95, 1) calc(var(--step) * 2),
+                rgba(168, 255, 95, 1) calc(var(--step) * 3),
+                rgba(131, 255, 247, 1) calc(var(--step) * 4),
+                rgba(120, 148, 255, 1) calc(var(--step) * 5),
+                rgb(216, 117, 255) calc(var(--step) * 6),
+                rgb(255, 119, 115) calc(var(--step) * 7)
+            )
+            0% var(--bg-y) / 200% 700% no-repeat;
+        --diagonal: repeating-linear-gradient(
+                128deg,
+                #0e152e 0%,
+                hsl(180, 10%, 60%) 3.8%,
+                hsl(180, 10%, 60%) 4.5%,
+                hsl(180, 10%, 60%) 5.2%,
+                #0e152e 10%,
+                #0e152e 12%
+            )
+            var(--bg-x) var(--bg-y) / 300% no-repeat;
+        --shade: radial-gradient(
+                farthest-corner circle at var(--m-x) var(--m-y),
+                rgba(255, 255, 255, 0.1) 12%,
+                rgba(255, 255, 255, 0.15) 20%,
+                rgba(255, 255, 255, 0.25) 120%
+            )
+            var(--bg-x) var(--bg-y) / 300% no-repeat;
+        mix-blend-mode: color-dodge;
+        background-blend-mode: hue, hue, hue, overlay;
+        background: var(--pattern), var(--rainbow), var(--diagonal), var(--shade);
+
+        &::after {
+            content: '';
+            mix-blend-mode: exclusion;
+            background-blend-mode: soft-light, hue, hard-light;
+            grid-area: inherit;
+            background: inherit inherit inherit inherit inherit inherit;
+            background-position: center, 0% var(--bg-y),
+                calc(var(--bg-x) * -1) calc(var(--bg-y) * -1), var(--bg-x) var(--bg-y);
+        }
+    }
+
     .wrapper {
         position: relative;
         font-size: var(--base-width, var(--base-width-default));
         overflow: visible;
+
+        perspective: 600px;
     }
 
     .glow {
@@ -132,6 +299,14 @@
         position: relative;
         border-radius: adjusted(1);
         overflow: hidden;
+
+        transition: transform 100ms;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotateY(var(--rx)) rotateX(var(--ry));
+        transform: rotateY(var(--rx)) rotateX(var(--ry));
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
     }
 
     .shine {
