@@ -67,12 +67,10 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
 type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
-    let query = [
-      q ? Query.search('search_meta', q) : undefined
-    ];
-  
+    let query = [q ? Query.search('search_meta', q) : undefined];
+
     tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
-    
+
     if (tags.length > 0) {
         query = [...query, Query.search('tags', tags.join(','))];
     }
@@ -112,4 +110,26 @@ export async function getThreadMessages(threadId: string) {
     return (data.documents as unknown as DiscordMessage[]).sort(
         (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
     );
+}
+
+export async function* iterateAllThreads() {
+    let offset = 0;
+    const limit = 100;
+    while (true) {
+        const data = await databases.listDocuments<DiscordThread>(
+            PUBLIC_APPWRITE_DB_MAIN_ID,
+            PUBLIC_APPWRITE_COL_THREADS_ID,
+            [Query.offset(offset), Query.limit(limit)]
+        );
+
+        if (data.documents.length === 0) {
+            break;
+        }
+
+        for (const thread of data.documents) {
+            yield thread;
+        }
+
+        offset += limit;
+    }
 }
