@@ -217,6 +217,20 @@
                                 <p class="aw-info-boxes-content">
                                     Effortlessly send push notifications for seamless instant communication.
                                 </p>
+                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/apple.svg" alt>
+                                            <span class="text">APNS</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/firebase.svg" alt>
+                                            <span class="text">FCM</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
@@ -229,6 +243,20 @@
                                 <p class="aw-info-boxes-content">
                                     Easily send emails for smooth communication and information sharing.
                                 </p>
+                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/mailgun.svg" alt>
+                                            <span class="text">Mailgun</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/sendgrid.svg" alt>
+                                            <span class="text">Sendgrid</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
@@ -241,6 +269,31 @@
                                 <p class="aw-info-boxes-content">
                                     Send SMS for quick updates beyond your app's environment.
                                 </p>
+                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/twilio.svg" alt>
+                                            <span class="text">Twilio</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/vonage.svg" alt>
+                                            <span class="text">Vonage</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/msg91.svg" alt>
+                                            <span class="text">MSG91</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <span class="text">+2</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
@@ -253,6 +306,14 @@
                                 <p class="aw-info-boxes-content">
                                     Send realtime alerts to your users within your application.
                                 </p>
+                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/appwrite.svg" alt>
+                                            <span class="text">Appwrite</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="aw-info-boxes-item">
                                 <img
@@ -267,6 +328,26 @@
                                 <p class="aw-info-boxes-content">
                                     Connect chat apps such as Slack, Discord, and WhatsApp.
                                 </p>
+                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/slack.svg" alt>
+                                            <span class="text">Slack</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/discord.svg" alt>
+                                            <span class="text">Discord</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="aw-tag">
+                                            <img src="/images/icons/gray-colors/whatsapp.svg" alt>
+                                            <span class="text">WhatsApp</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
