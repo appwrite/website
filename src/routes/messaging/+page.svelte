@@ -414,8 +414,29 @@
         </div>
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
+                <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
+                    <Carousel size="big">
+                        <svelte:fragment slot="header">
+                            <h4 class="aw-label aw-u-color-text-primary">Keep exploring our products</h4>
+                        </svelte:fragment>
+                        {#each events as event}
+                            <li>
+                                <EventCard
+                                        href={event.href}
+                                        cover={event.cover}
+                                        date={event.date}
+                                        location={event.location}
+                                        title={event.title}
+                                        description={event.description}
+                                        buttonText={event.buttonText}
+                                />
+                            </li>
+                        {/each}
+                    </Carousel>
+                </section>
+            </div>
+            <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
-                    <h3 class="aw-label aw-u-color-text-primary u-text-center">Keep exploring our products</h3>
                     <ul class="u-flex u-flex-wrap u-main-center u-gap-32 u-margin-block-start-48">
                         <li class="aw-u-flex-basis-378">
                             <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
@@ -447,28 +468,6 @@
                                 <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8"><div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
                                     <h4 class="aw-main-body-400 aw-u-color-text-primary">Databases</h4>
                                     <p class="aw-sub-body-400">Store and query structured data, ensuring scalable storage.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
-                                <div class="aw-u-media-ratio-16-9">
-                                    <img src="/images/messaging/storage.png" class="aw-u-media-ratio-16-9" alt="">
-                                </div>
-                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8"><div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Storage</h4>
-                                    <p class="aw-sub-body-400">Manage your files’ project, using convenient APIs and utilities.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
-                                <div class="aw-u-media-ratio-16-9">
-                                    <img src="/images/messaging/realtime.png" class="aw-u-media-ratio-16-9" alt="">
-                                </div>
-                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8"><div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Realtime</h4>
-                                    <p class="aw-sub-body-400">Utilize realtime information from all Appwrite services.</p>
                                 </div>
                             </div>
                         </li>
