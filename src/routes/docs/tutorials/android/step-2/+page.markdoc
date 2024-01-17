@@ -1,0 +1,30 @@
+---
+layout: tutorial
+title: Initialize project
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 2
+difficulty: beginner
+---
+
+# Initialize Android Studio project {% #initialize-android-studio-project %}
+
+Open Android Studio and click **New Project** to create a new project. Select **Empty Views Activity**, and click **Next**.
+
+![Empty Activity](/images/docs/tutorials/recipewrite-empty-activity.png)
+
+Name your project **Recipewrite**, under **Language** select Java, and minimum SDK would be **24**.
+
+![New Project](/images/docs/tutorials/recipewrite-new-project.png)
+
+# Add dependencies {% #add-dependencies %}
+
+Open `app/build.gradle` file, update `compileSdk` and `targetSdk` to **34**, then find `dependencies` block, and add the Appwrite dependency along with existing ones.
+
+```
+dependencies {
+    implementation("io.appwrite:sdk-for-android:4.0.0")
+    ... other dependencies
+}
+```
+
+Click **Sync Now** to sync your dependencies.

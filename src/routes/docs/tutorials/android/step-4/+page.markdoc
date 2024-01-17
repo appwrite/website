@@ -1,0 +1,449 @@
+---
+layout: tutorial
+title: Authentication
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 4
+difficulty: beginner
+---
+
+# User Flow {% #user-flow %}
+
+This is the user flow that we are going to achieve in this page.
+
+![user-flow](/images/docs/tutorials/recipewrite-user-flow.png)
+
+Keeping the userflow in mind, let us start by initializing two [new empty views activities](https://developer.android.com/guide/components/activities/intro-activities), **AuthActivity** and **HomeActivity**. 
+
+# Appwrite methods {% #appwrite-methods %}
+
+Let's implement some utility methods in **Appwrite.java**.
+
+Create a new method `onGetAccount` in **MainActivity** to check if the user is already logged in or not. `coroutineCallback` is the piece of code that should be run after checking whether or not the user is logged in.
+
+```java
+// ...other imports
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.models.User;
+
+public class Appwrite {
+    // ...other methods
+    public static void onGetAccount(CoroutineCallback<User> coroutineCallback) {
+        try {
+            /* Account.get is used to get the currently logged in user. */
+            account.get(coroutineCallback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Create a new method, `onLogin`, which will take in email and password, and will try to log the user in.
+
+```java
+// ...other imports
+import io.appwrite.models.Session;
+
+public class Appwrite {
+    // ...other methods
+    public static void onLogin(String email, String password, CoroutineCallback<Session> coroutineCallback) {
+        /* Allow the user to login into their account by providing a valid email and password combination. */
+        account.createEmailSession(
+                email,
+                password,
+                coroutineCallback
+        );
+    }
+}
+```
+
+Create another method, `onCreateAccount, which will take in email, password and name, and will try to register our new user to the app.
+
+```java
+// ...other imports
+import io.appwrite.ID;
+import io.appwrite.exceptions.AppwriteException;
+
+public class Appwrite {
+    // ...other methods
+    public static void onCreateAccount(String email, String password, String name, CoroutineCallback<User> coroutineCallback) {
+        try {
+            /* Allow a new user to register a new account */
+            account.create(
+                    ID.Companion.unique(),
+                    email,
+                    password,
+                    name,
+                    coroutineCallback
+            );
+        } catch (AppwriteException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Create another method, `onLogout, which will take log out the user.
+
+
+```java
+// ...other imports
+
+public class Appwrite {
+    // ...other methods
+    public static void onLogout(CoroutineCallback<Object> coroutineCallback) {
+        /* Logout the user. Use 'current' as the session ID to logout on this device, use a session ID to logout on another device. */
+        account.deleteSession(
+                "current",
+                coroutineCallback
+        );
+    }
+}
+```
+
+# Main Activity {% #main-activity %}
+
+As shown in the userflow, main activity will check if the user is already logged in or not. It will redirect accordingly.
+
+Let's add a progress bar in `activity_main.xml`.
+
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    ...skipped attributes 
+    >
+
+    <!--Other layout components-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+Then we'll add the redirects in `MainActivity.java`. We will reuse our `onGetAccount` method here.
+
+```java
+package com.example.recipewrite;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import io.appwrite.coroutines.CoroutineCallback;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setContentView(R.layout.activity_main);
+
+        /* Ensure this is the first time onCreate is called. */
+        /* This will prevent Appwrite to be initialized multiple times */
+        if (savedInstanceState == null) {
+            Appwrite.init(this);
+            Appwrite.onGetAccount(new CoroutineCallback<>((result, error) -> {
+
+                Intent intent;
+
+                if (error != null) {  /* User isn't logged in. */
+                    intent = new Intent(this, AuthActivity.class);
+                } else {              /* User is logged in.    */
+                    intent = new Intent(this, HomeActivity.class);
+
+                    /* This will pass the account name to HomeActivity. */
+                    intent.putExtra("name", result.getName());
+                }
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                /* Launch the activity as per our user flow. */
+                startActivity(intent);
+
+                /* Finish the current activity. */
+                this.finish();
+            }));
+        }
+    }
+}
+```
+
+# Auth Activity {% #auth-activity %}
+
+## **activity_login.xml**
+
+We will need five elements here.
+
+- Name field, which will dynamically be shown/hidden from UI as per the current state(Register/Login).
+
+```xml
+<EditText
+    android:id="@+id/name_edit_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Name"
+    android:inputType="textPersonName"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+```
+
+- Email field.
+
+```xml
+<EditText
+    android:id="@+id/email_edit_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Email"
+    android:inputType="textEmailAddress"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+```
+
+- Password field.
+
+```xml
+<EditText
+    android:id="@+id/password_edit_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Password"
+    android:inputType="textPassword"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
+```
+
+- Submit button, which will initially be called "Register" and will be renamed dynamically to "Login" as per the current state.
+
+```xml
+<Button
+    android:id="@+id/submit_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Register"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
+```
+
+- State change button, which will change Register state to Login state and vice-versa.
+
+```xml
+<Button
+    android:id="@+id/change_state_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="LOGIN?"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/submit_button" />
+```
+
+## **AuthActivity.java**
+
+Now let us write logic of button clicks. There are a couple of ways to implement `OnClickListener` on views. Here we are going to use `View.OnClickListener` interface.
+
+Change the definition of `AuthActivity` to implement `View.OnClickListener` interface.
+
+```java
+public class AuthActivity extends AppCompatActivity implements View.OnClickListener
+```
+
+Declare UI views and state variable within this class.
+
+```java
+EditText nameEditText, emailEditText, passwordEditText;
+Button submitButton, changeStateButton;
+String state = "register";
+```
+
+Initialize these variables in `onCreate` method.
+
+```java
+nameEditText = findViewById(R.id.name_edit_text);
+emailEditText = findViewById(R.id.email_edit_text);
+passwordEditText = findViewById(R.id.password_edit_text);
+submitButton = findViewById(R.id.submit_button);
+changeStateButton = findViewById(R.id.change_state_button);
+```
+
+Set `OnClickListener`s on both the buttons inside `onCreate` method.
+
+```java
+submitButton.setOnClickListener(this);
+changeStateButton.setOnClickListener(this);
+```
+
+Now override the `onClick` method of `LoginActivity` to finally write the click logic.
+
+```java
+@Override
+public void onClick(View view) {
+
+    /* Extract user input */
+    String name = nameEditText.getText().toString();
+    String email = emailEditText.getText().toString();
+    String password = passwordEditText.getText().toString();
+
+    switch ((view.getId())) {
+        case R.id.submit_button:
+            if (Objects.equals(state, "register")) {
+                /* Register if the state is "register". */
+                register(email, password, name);
+            } else {
+                /* Login if the state is "login". */
+                login(email, password);
+            }
+            break;
+
+        case R.id.change_state_button:
+            /* Change register state to login state and vice-versa. */
+            changeState();
+            break;
+    }
+}
+```
+
+Now we are left with implementing these three methods in **AuthActivity**. Let us start with the simplest one `changeState`.
+
+```java
+void changeState() {
+    if (Objects.equals(state, "register")) {
+        /* If state is "register", change it to "login". */
+        state = "login";
+        nameEditText.setVisibility(View.GONE);
+        submitButton.setText("Login");
+        changeStateButton.setText("Register?");
+    } else {
+        /* If state is "login", change it to "register". */
+        state = "register";
+        nameEditText.setVisibility(View.VISIBLE);
+        submitButton.setText("Register");
+        changeStateButton.setText("Login?");
+    }
+}
+```
+
+Now, for the `login` method, we will first call `Appwrite.onLogin`, after successfully logging the user in, we will use `Appwrite.onGetAccount` to get the user's name and pass it on to **HomeActivity**.
+
+```java
+void login(String email, String password) {
+    Appwrite.onLogin(email, password, new CoroutineCallback<>((r, error) -> {
+        if (error != null) {
+            /* Login unsuccessful */
+            error.printStackTrace();
+            return;
+        }
+
+        /* Get current user and redirect to HomeActivity */
+        Appwrite.onGetAccount(new CoroutineCallback<>((result, e) -> {
+
+            Intent intent = new Intent(this, HomeActivity.class);
+
+            /* This will pass the account name to HomeActivity */
+            intent.putExtra("name", result.getName());
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            this.finish();
+        }));
+    }));
+}
+```
+
+Finally, for `register` method, we will first create an account for our new user using `Appwrite.onCreateAccount`, then we will reuse our `login` function to log the user in.
+
+```java
+void register(String email, String password, String name) {
+    Appwrite.onCreateAccount(email, password, name, new CoroutineCallback<>((res, err) -> {
+        if (err != null) {
+            /* Create account unsuccessful */
+            err.printStackTrace();
+            return;
+        }
+
+        /* Log the new user in, and redirect to HomeActivity */
+        login(email, password);
+    }));
+}
+```
+
+This completes the implementation of **AuthActivity**.
+
+# Home Activity {% #home-activity %}
+
+Finally, we want to add a logout button in the app bar of **HomeActivity**.
+
+Let us start by creating a vector asset for logout icon.
+
+Right click on **res** folder, click **New**, click **Vector Asset**.
+
+Choose logout icon in **Clip Art** and then give the asset **logout** name.
+
+![Asset Studio](/images/docs/tutorials/recipewrite-asset-studio.png)
+
+Now, create a new file `res/menu/mymenu.xml`.
+
+```xml
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/logout"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Logout" />
+</menu>
+```
+
+Now, override ```onCreateOptionsMenu``` method of ```HomeActivity``` in order to show the above defined icon on the app bar.
+
+```java
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.mymenu, menu);
+    return super.onCreateOptionsMenu(menu);
+}
+```
+
+Finally, to write its click logic, override ```onOptionsItemSelected``` method and use our already defined method `Appwrite.onLogout`.
+
+```java
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+
+    if (id == R.id.action_logout) {
+        Appwrite.onLogout(new CoroutineCallback<>((result, error) -> {
+            if (error != null) {
+                /* Logout unsuccessful */
+                error.printStackTrace();
+                return;
+            }
+
+            /* Redirect to LoginActivity if logout successful */
+            Intent intent = new Intent(this, AuthActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            this.finish();
+        }));
+    }
+
+    return super.onOptionsItemSelected(item);
+}
+```
+
+Kudos! We started from zero and now we have a full fledged authentication system.

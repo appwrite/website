@@ -1,0 +1,85 @@
+---
+layout: tutorial
+title: Setup Appwrite
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 3
+difficulty: beginner
+---
+
+# Create project {% #create-project %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+Then, under **Add a platform**, add a **Android app**. **Package Name** can be found in app level gradle file. 
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+You can skip the optional steps.
+
+# Connect your app with Appwrite {% #connect-your-app-with-appwrite %}
+
+Create **Appwrite.java** in the same directory that contains **MainActivity.java**, this will handle our app's interaction with Appwrite server. Replace `<PROJECT_ID>` with your new project's id, which can be found beside your project's name in overview tab.
+
+```java
+package com.example.recipewrite;
+
+import android.content.Context;
+
+import io.appwrite.Client;
+import io.appwrite.services.Account;
+import io.appwrite.services.Databases;
+
+public class Appwrite {
+    private static Client client;
+    private static Account account;
+    private static Databases databases;
+
+    private static final String projectID = "[project-id]";
+    private static final String endpoint = "https://cloud.appwrite.io/v1";  // Add local address if you are running Appwrite locally
+
+    public static void init(Context context) {
+        client = new Client(context);
+        client.setEndpoint(endpoint);
+        client.setProject(projectID);
+        client.setSelfSigned(true);
+
+        account = new Account(client);
+        databases = new Databases(client);
+    }
+}
+```
+
+Finally, call this `init` method in `onCreate` method of **MainActivity.java**.
+
+```java
+package com.example.recipewrite;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Appwrite.init(this);
+    }
+}
+```

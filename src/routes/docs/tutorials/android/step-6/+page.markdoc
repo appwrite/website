@@ -1,0 +1,116 @@
+---
+layout: tutorial
+title: Database Queries
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 6
+difficulty: beginner
+---
+
+# Introduction {% #introduction %}
+
+Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries. Learn more about Appwrite Queries [here](https://appwrite.io/docs/products/databases/queries).
+
+To demonstrate how queries are used in java, we are going to implement **search feature** in our **Recipewrite** app.
+
+# Search feature {% #search-feature %}
+
+Let us show a search icon next to logout icon in app bar of our Home Activity. Again, use **Asset Studio** to add a **search** icon from clip art, then name it `search.xml`.
+
+Add the following icon in `res/layout/mymenu.xml`.
+
+```xml
+<item
+    android:id="@+id/action_search"
+    android:icon="@drawable/search"
+    android:orderInCategory="100"
+    app:showAsAction="always"
+    android:title="Search" />
+```
+
+Introduce a `search` argument in our `listRecipes` method of `Appwrite.java` file. This argument will be an empty string if user doesn't want to perform a search, otherwise it will contain the search query.
+
+```java
+public static void listRecipes(String search, CoroutineCallback<DocumentList> coroutineCallback) {
+
+    ArrayList<String> queries = new ArrayList<>();
+    if (!search.isEmpty()) {
+        /* Perform the search on 'recipe' attribute */
+        queries.add(Query.Companion.search("recipe", search));
+    }
+    
+    try {
+        /* Get a list of all the user's documents in a given collection. */
+        databases.listDocuments(
+            databaseID,
+            collectionID,
+            queries,
+            coroutineCallback
+        );
+    } catch (AppwriteException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+Now, create a new String member variable `search` in **HomeActivity**.
+
+```java
+String search = "";
+```
+
+Pass this argument to **listRecipes** inside **reloadList** method
+
+```java
+Appwrite.listRecipes(search, new CoroutineCallback<>((result, error) -> {
+```
+
+Finally, update the `onOptionsItemSelected` method to write search button's click logic.
+
+```java
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+
+    if (id == R.id.action_logout) {
+        Appwrite.onLogout(this);
+    } else if (id == R.id.action_search) {
+
+        /* Declare an AlertDialog to capture search query from user */
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Search Recipe");
+
+        /* Initialize a new text field to take user input */
+        final EditText input = new EditText(this);
+
+        /* Set its initial value to be the current search query */
+        input.setText(search);
+        builder.setView(input);
+
+        /* Add a 'Search' button to perform the search */
+        builder.setPositiveButton("Search", (dialog, which) -> {
+
+            /* Extract user input */
+            search = input.getText().toString();
+            /* reload the list */
+            reloadList();
+        });
+
+        /* Add a 'Clear' button to remove current search query */
+        builder.setNegativeButton("Clear", (dialog, which) -> {
+            /* reset search to empty string */
+            search = "";
+            /* reload the list */
+            reloadList();
+            /* close the dialog */
+            dialog.cancel();
+        });
+
+        /* Finally show the dialog */
+        builder.show();
+    }
+    
+    return super.onOptionsItemSelected(item);
+}
+```
+
+There you have the search feature in action!

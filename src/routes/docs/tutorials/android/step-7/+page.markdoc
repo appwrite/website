@@ -1,0 +1,158 @@
+---
+layout: tutorial
+title: Pagination
+description: Learn to build an Android app with no backend code using an Appwrite backend.
+step: 7
+difficulty: beginner
+---
+
+# Introduction {% #introduction %}
+
+As your database grows in size, you'll need to paginate results returned. Pagination improves performance by returning a subset of results that match a query at a time, called a page.
+
+By default, list operations return 25 items per page, which can be changed using the ```Query.limit(25)``` operator. **Beware that large pages can degrade performance**.
+
+After reading a page of documents, pass the last document's ID into the ```Query.cursorAfter(lastId)``` query method to get the next page of documents. Pass the first document's ID into the ```Query.cursorBefore(firstId)``` query method to retrieve the previous page.
+
+Learn more about pagination [here](https://appwrite.io/docs/products/databases/pagination).
+
+# Pagination feature {% #pagination-feature %}
+
+Update the ```listRecipes``` method to take in ```lastDocumentId``` as an argument, and add appropriate query.
+
+```java
+public static void listRecipes(String search, String lastDocumentId, CoroutineCallback<DocumentList> coroutineCallback) {
+    ArrayList<String> queries = new ArrayList<>();
+
+    if (!search.isEmpty()) {
+        /* Perform the search on 'recipe' attribute */
+        queries.add(Query.Companion.search("recipe", search));
+    }
+
+    if(!lastDocumentId.isEmpty()) {
+        /* This retrieves the next page */
+        queries.add(Query.Companion.cursorAfter(lastDocumentId));
+    }
+
+    try {
+        /* Get a list of all the user's documents in a given collection. */
+        databases.listDocuments(
+            databaseID,
+            collectionID,
+            queries,
+            coroutineCallback
+        );
+    } catch (AppwriteException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+Declare the following member variables in ```HomeActivity``` class.
+
+1. **recipesDocuments**: As we will be needing the documentId of the last document we have, let us maintain a list of documents.
+2. **loading**: This will ensure no two ```listRecipes``` operations happen at the same time.
+
+```java
+ArrayList<Document> recipesDocuments = new ArrayList<>();
+Boolean loading = false;
+```
+
+In ```reloadList``` method, set ```loading``` to true and false accordingly, pass an empty string to ```listRecipe``` as ```lastDocumentId``` and update `recipesDocuments` list along with `recipes` list.
+
+```java
+private void reloadList() {
+    loading = true;
+    Appwrite.listRecipes(search, "", new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        /* Clear recipes list first as we have fresh data */
+        recipes.clear();
+        recipesDocuments.clear();
+        if (result != null) {
+            for (Object document: result.getDocuments()) {
+                /* Extract JSON data from the response */
+                Map<String, String> data = (Map<String, String>) ((Document) document).getData();
+
+                /* Create recipe model from that JSON data */
+                RecipeModel recipe = new RecipeModel(data);
+
+                /* Add that model to our list of recipes */
+                recipes.add(recipe);
+                recipesDocuments.add((Document) document);
+            }
+        }
+
+        /* notify the adapter about the changes in list of recipes */
+        runOnUiThread(() -> arr.notifyDataSetChanged());
+        loading = false;
+    }));
+}
+```
+
+Write a new method ```loadNextPage``` which will pass the documentId of the last document we have in our UI, and append the result to the UI. It will be called every time user scrolls to the bottom of the `ListView`.
+
+```java
+private void loadNextPage() {
+    loading = true;
+    String lastDocumentId = "";
+
+    /* find the documentId of the last document we have on UI */
+    if (!recipesDocuments.isEmpty()) {
+        lastDocumentId = recipesDocuments.get(recipesDocuments.size() - 1).getId();
+    }
+
+    Appwrite.listRecipes(search, lastDocumentId, new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        if (result != null) {
+            for (Object document: result.getDocuments()) {
+                /* Extract JSON data from the response */
+                Map<String, String> data = (Map<String, String>) ((Document) document).getData();
+
+                /* Create recipe model from that JSON data */
+                RecipeModel recipe = new RecipeModel(data);
+
+                /* Add that model to our list of recipes */
+                recipes.add(recipe);
+                recipesDocuments.add((Document) document);
+            }
+
+            /* notify the adapter about the changes in list of recipes if list is changed */
+            if (result.getTotal() != 0) {
+                runOnUiThread(() -> arr.notifyDataSetChanged());
+            }
+        }
+        loading = false;
+    }));
+}
+```
+
+Now, in order to call ```loadNextPage``` every time user scrolls to the bottom, we will add an ```OnScrollListener``` to the listView in ```onCreate``` method.
+
+```
+listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+    @Override
+    public void onScrollStateChanged(AbsListView absListView, int i) {}
+
+    @Override
+    public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        /* Find out the last item which is visible on our UI */
+        int lastInScreen = firstVisibleItem + visibleItemCount;
+
+        if (lastInScreen == totalItemCount) { /* User is looking at the last item of our list, load next page if we aren't already loading. */
+            if (!loading) loadNextPage();
+        }
+    }
+});
+```
+
+Finally, get rid of the ```reloadList``` call from ```onCreate``` method, as our ```OnScrollListener``` will take care of it. 
+
+Tada! That's all, we now have pagination implemented in our app!
