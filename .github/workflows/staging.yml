@@ -38,6 +38,13 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/appwrite/website:${{ env.TAG }}
+          build-args: |
+            "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ secrets.PUBLIC_APPWRITE_PROJECT_INIT_ID }}"
+            "PUBLIC_APPWRITE_PROJECT_ID=${{ secrets.PUBLIC_APPWRITE_PROJECT_ID }}"
+            "PUBLIC_APPWRITE_DB_MAIN_ID=${{ secrets.PUBLIC_APPWRITE_DB_MAIN_ID }}"
+            "PUBLIC_APPWRITE_COL_THREADS_ID=${{ secrets.PUBLIC_APPWRITE_COL_THREADS_ID }}"
+            "PUBLIC_APPWRITE_COL_MESSAGES_ID=${{ secrets.PUBLIC_APPWRITE_COL_MESSAGES_ID }}"
+            "PUBLIC_APPWRITE_FN_TLDR_ID=${{ secrets.PUBLIC_APPWRITE_FN_TLDR_ID }}"
 
   deploy:
     needs: build
