@@ -112,7 +112,13 @@
                     icon: 'icon-dart',
                     image: '/images/blog/placeholder.png',
                     href: 'dart'
-                }
+                },
+                {
+                    title: 'Ruby',
+                    icon: 'icon-ruby',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
             ]
         }
     ];
