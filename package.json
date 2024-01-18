@@ -17,7 +17,7 @@
         "icons:build": "node ./src/icons/build.js",
         "icons:optimize": "node ./src/icons/optimize.js",
         "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js",
-        "download-contributors": "node ./src/scripts/download-contributor-data.js"
+        "download-contributors": "node ./scripts/download-contributor-data.js"
     },
     "devDependencies": {
         "@melt-ui/pp": "^0.1.4",
