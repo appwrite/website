@@ -207,17 +207,15 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
 function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
     const { gh_user, aw_email } = doc;
 
-    return 'pink'
+    if (gh_user && contributors.includes(gh_user)) {
+        return 'rainbow';
+    }
 
-    // if (gh_user && contributors.includes(gh_user)) {
-    //     return 'rainbow';
-    // }
+    if (aw_email) {
+        return 'pink';
+    }
 
-    // if (aw_email) {
-    //     return 'pink';
-    // }
-
-    // return 'default';
+    return 'default';
 }
 
 export async function getTicketByUser(user: User) {

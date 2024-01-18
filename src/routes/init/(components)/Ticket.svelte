@@ -41,7 +41,6 @@
     }
 
     const springR = { stiffness: 0.066, damping: 0.25 };
-    const springD = { stiffness: 0.03, damping: 0.45 };
 
     let springRotate = spring({ x: 0, y: 0 }, springR);
     let springGlare = spring({ x: 50, y: 50, o: 0.25 }, springR);
