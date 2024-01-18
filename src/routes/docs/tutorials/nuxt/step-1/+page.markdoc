@@ -6,7 +6,6 @@ step: 1
 difficulty: beginner
 readtime: 25
 framework: Nuxt
-category: Web
 back: /docs
 ---
 

@@ -1,24 +1,18 @@
 ---
 layout: tutorial
-title: Build an ideas tracker with Android
+title: Coming soon
 description: Learn to build an Android app with no backend code using an Appwrite backend.
 framework: Android
 category: Mobile and native
 step: 1
+draft: true
 ---
 
-**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
-In this tutorial, you will build Idea tracker with Appwrite and Android.
+Improve the docs, add this guide.
 
-# Concepts {% #concepts %}
-This tutorial will introduce the following concepts:
+We still don't have this guide in place, but we do have some great news. 
+The Appwrite docs, just like Appwrite, is completely open sourced.
+This means, anyone can help improve them and add new guides and tutorials. 
 
-1. Setting up your first project
-2. Authentication 
-3. Databases and collections
-4. Queries and pagination
-5. Storage
-
-# Prerequisites {% #prerequisites %}
-1. Basic knowledge of Kotlin and Android development.
-2. Have [Android Studio](https://developer.android.com/studio) installed on your computer.
+If you see this page, **we're actively looking for contributions to this page**.
+Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
