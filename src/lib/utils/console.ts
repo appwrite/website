@@ -20,7 +20,10 @@ export function getAppwriteUser(): Promise<AppwriteUser | null> {
     return account
         .get()
         .then((res) => res)
-        .catch(() => null);
+        .catch((e) => {
+            console.error(e);
+            return null
+        });
 }
 
 function createAppwriteUser() {

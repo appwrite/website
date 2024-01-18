@@ -4,10 +4,9 @@ import { ID, Query } from 'appwrite';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
-import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import { shuffle } from '$lib/utils/shuffle';
 import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './ticket/constants';
+import { contributors } from '$lib/contributors';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -79,7 +78,8 @@ export async function getGithubUser() {
                 Authorization: `Bearer ${providerAccessToken}`
             }
         }).then((res) => res.json() as Promise<GithubUser>);
-    } catch {
+    } catch (e) {
+        console.error(e);
         return null;
     }
 }
@@ -91,82 +91,36 @@ export type User = {
 
 export async function getUser(): Promise<User> {
     const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
+    console.log({ github, appwrite });
     return { github, appwrite };
 }
 
 export function getMockContributions() {
-    return shuffle<ContributionsMatrix>([
-        [0.02, 0.2, 0.29, 0.49, 0.16, 0.24, 0.36],
-        [0.13, 0.6, 0.07, 0.09, 0.44, 0.38, 0],
-        [0, 0.09, 0.04, 0.22, 0.31, 0.36, 0],
-        [0, 0.2, 0.2, 0.4, 0.09, 0.07, 0],
-        [0, 0.24, 0.44, 0.36, 0.44, 0.11, 0],
-        [0, 0.16, 0.2, 0.13, 0.24, 0.2, 0.04],
-        [0, 0.09, 0.16, 0.04, 0.13, 0.07, 0],
-        [0, 0, 0, 0.33, 0.29, 0.11, 0],
-        [0.27, 0.2, 0.18, 0.27, 0.09, 0.09, 0],
-        [0, 0.13, 0.09, 0.16, 0.42, 0.44, 0.31],
-        [0, 0, 0, 0.24, 0.38, 0.51, 0],
-        [0.82, 0.84, 0.36, 0.49, 0.29, 0, 0],
-        [0.24, 0.09, 0.62, 0.4, 0.91, 0.82, 0.82],
-        [0.29, 0.11, 0.56, 0.36, 0.24, 0.49, 0.2],
-        [0.47, 0.47, 0.58, 0.36, 0.31, 0.33, 2.49],
-        [0.18, 1, 0.56, 0.38, 0.31, 0.69, 0],
-        [0.11, 0.04, 0.24, 0.24, 0.56, 0.58, 0.36],
-        [0.56, 0.11, 0, 1.42, 0, 0.2, 0.04],
-        [0.04, 0.18, 0.36, 0.51, 0.33, 0.2, 0.11],
-        [0.07, 0.6, 0.29, 0, 0.04, 0.16, 0.13],
-        [0.02, 0.09, 0.09, 0.22, 0.13, 0.29, 0.04],
-        [0.36, 0.36, 0.09, 0.04, 0.2, 0.09, 0],
-        [0.29, 0.58, 0.71, 0.4, 0.51, 0.51, 0.56],
-        [0.04, 0.11, 0.29, 0.27, 0.33, 0.24, 0.31],
-        [0.4, 0, 0.24, 0.42, 0.33, 0.33, 0],
-        [0.27, 0.18, 0.33, 0.33, 0.18, 0.29, 0.22],
-        [0.02, 0.8, 0.36, 0.44, 0.36, 0.27, 0.33],
-        [0.24, 0.29, 0.2, 0.2, 0.84, 0.71, 0.22],
-        [0.13, 0.13, 0.31, 0.24, 0.24, 0.4, 0.42],
-        [0.22, 0.18, 0.89, 0.51, 0.8, 0.2, 0.42],
-        [0.02, 0.38, 0.29, 0.27, 0.36, 0.78, 0.11],
-        [0.29, 1.04, 0.89, 0.24, 0.13, 0.24, 0.22],
-        [0, 0.36, 0.51, 0.18, 0.44, 0.31, 0.6],
-        [0.33, 0.53, 0.2, 0.36, 0.11, 0.56, 0.13],
-        [0, 0.27, 0.84, 0.42, 0.58, 0.29, 0.29],
-        [0.22, 0.13, 0.27, 0.24, 0.24, 0.67, 0.02],
-        [0, 0, 0.4, 0.13, 0.09, 0.04, 0],
-        [0.09, 0.04, 0.13, 0.04, 0, 0, 0],
-        [0, 0.42, 0.36, 0.4, 0.64, 0.4, 0.29],
-        [0.24, 0.44, 0.47, 0.38, 0.36, 0.27, 0.04],
-        [0.24, 0.53, 0.44, 0.13, 0.11, 0.36, 0.11],
-        [0, 0.09, 0.31, 0.07, 0.16, 0.76, 0],
-        [0.02, 0.22, 0.33, 0.02, 0.18, 0.07, 0.07],
-        [0.18, 0.29, 0.2, 0.29, 0.24, 0.36, 0.04],
-        [0, 0.02, 0.29, 0.49, 0.11, 0, 0],
-        [0.22, 0.2, 0.22, 0.09, 0.36, 0.44, 0],
-        [0.27, 0.11, 0, 0.07, 0.24, 0, 0.16],
-        [0.33, 0, 0.02, 0.09, 0, 0.11, 0.07],
-        [0.09, 0.11, 0.09, 0.16, 0.29, 0.16, 0.11],
-        [0, 0.11, 0.42, 0.27, 0.2, 1, 0.24],
-        [0.02, 0, 0.04, 0.33, 0.58, 0, 0.02],
-        [0, 0.04, 0.18, 0, 0.18, 0, 0.02],
-        [0.18, 0.13, 0]
-    ]);
+    const result: ContributionsMatrix = [];
+    for (let i = 0; i < 53; i++) {
+        result.push([]);
+        for (let j = 0; j < 7; j++) {
+            result[i].push(Math.floor(Math.random() * 4));
+        }
+    }
+    return result;
 }
 
 export async function getTicketDocByUser(user: User) {
     const [gh, aw] = await Promise.all([
         user.github?.login
             ? appwriteInit.database.listDocuments(
-                  PUBLIC_APPWRITE_DB_INIT_ID,
-                  PUBLIC_APPWRITE_COL_INIT_ID,
-                  [Query.equal('gh_user', user.github.login)]
-              )
+                PUBLIC_APPWRITE_DB_INIT_ID,
+                PUBLIC_APPWRITE_COL_INIT_ID,
+                [Query.equal('gh_user', user.github.login)]
+            )
             : null,
         user.appwrite?.$id
             ? appwriteInit.database.listDocuments(
-                  PUBLIC_APPWRITE_DB_INIT_ID,
-                  PUBLIC_APPWRITE_COL_INIT_ID,
-                  [Query.equal('aw_email', user.appwrite.email)]
-              )
+                PUBLIC_APPWRITE_DB_INIT_ID,
+                PUBLIC_APPWRITE_COL_INIT_ID,
+                [Query.equal('aw_email', user.appwrite.email)]
+            )
             : null
     ]);
 
@@ -253,13 +207,13 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
 function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
     const { gh_user, aw_email } = doc;
 
-    // if (gh_user && contributors.includes(gh_user)) {
-    //     return 'rainbow';
-    // }
+    if (gh_user && contributors.includes(gh_user)) {
+        return 'rainbow';
+    }
 
-    // if (aw_email) {
-    //     return 'pink';
-    // }
+    if (aw_email) {
+        return 'pink';
+    }
 
     return 'default';
 }
