@@ -97,7 +97,7 @@ export default {
 
 # Add home page {% #add-home-page %}
 
-Next, head over to the `pages`directory.
+Next, head over to the `pages` directory.
 This is where we will keep the content that will render on our pages in the web application.
 Each file you put in here will automatically become a route.
 Add the file `index.vue` with the following code.
