@@ -404,7 +404,11 @@
                         <div class="u-flex-vertical u-gap-16">
                             <h3 class="aw-label aw-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="aw-description">Subscribe to receive all messages related to that topic.</p>
-                            <section class="theme-dark aw-code-snippet u-margin-block-start-24" aria-label="code-snippet panel">
+                            <section
+                                    class="theme-dark aw-code-snippet u-margin-block-start-24"
+                                    aria-label="code-snippet panel"
+                                    style="background:radial-gradient(100% 100% at 50% 100%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 44.19%, rgba(255, 255, 255, 0.00) 100%), #1D1D21;"
+                            >
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
                                         <div class="u-flex u-gap-16">
@@ -440,7 +444,7 @@
                                         </ul>
                                     </div>
                                 </header>
-                                <div class="aw-code-snippet-content">
+                                <div class="aw-code-snippet-content" style="background:none">
                                     [CODE]
                                 </div>
                             </section>
@@ -448,7 +452,11 @@
                         <div class="u-flex-vertical u-gap-16">
                             <h3 class="aw-label aw-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="aw-description">Subscribe to receive all messages related to that topic.</p>
-                            <section class="theme-dark aw-code-snippet u-margin-block-start-24" aria-label="code-snippet panel">
+                            <section
+                                    class="theme-dark aw-code-snippet u-margin-block-start-24"
+                                    aria-label="code-snippet panel"
+                                    style="background:radial-gradient(100% 100% at 50% 100%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 44.19%, rgba(255, 255, 255, 0.00) 100%), #1D1D21;"
+                            >
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
                                         <div class="u-flex u-gap-16">
@@ -484,7 +492,7 @@
                                         </ul>
                                     </div>
                                 </header>
-                                <div class="aw-code-snippet-content">
+                                <div class="aw-code-snippet-content" style="background:none">
                                     [CODE]
                                 </div>
                             </section>
