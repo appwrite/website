@@ -14,7 +14,7 @@ We will build a page with a simple login form and store its related logic in a `
 
 # User session composable {% #user-session-composable %}
 
-There are a few standard functions involved in handling a user session that is added to the composable.
+There are a few standard functions involved in handling a user session that are added to the composable.
 The user needs to be able to register to an account, login to the account and logout from it.
 
 We are using Appwrite as a backend to handle the user details, so we need to connect to Appwrite by importing the configurations from step 3.
