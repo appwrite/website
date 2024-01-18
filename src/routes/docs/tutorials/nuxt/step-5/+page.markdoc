@@ -16,7 +16,6 @@ From the `components` directory, create the file `navbar.vue` and add the code b
 ```vue
 <!-- components/navbar.vue -->
 <script setup>
-// Access user composable function
 const user = useUserSession();
 </script>
 
