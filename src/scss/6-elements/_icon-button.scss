@@ -11,7 +11,6 @@
 	border-radius: pxToRem(8);
 
   > [class*='icon'] {
-   position: relative;
     &::before {
       position: absolute;
       top: 50%;
@@ -21,7 +20,7 @@
   }
   &.is-more-content {
     inline-size:fit-content; padding:pxToRem(4); line-height:pxToRem(18);
-    > [class*='icon'] { inline-size:pxToRem(16); }
+    > [class*='icon'] {  position:relative; inline-size:pxToRem(16); }
   }
 
 
