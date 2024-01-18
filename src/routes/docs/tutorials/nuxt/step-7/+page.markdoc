@@ -169,12 +169,12 @@ This component should be visible to all users, so no conditional rendering neeed
 
 <template>
   <div class="u-max-width-650" style="margin: 0 auto;">
-    ... Some skipped code
+    <!-- ... Some skipped code -->
     <IdeasList />
   </div>
 </template>
 
-.. Skipped script section and styling
+<!-- ... Some skipped code -->
 ````
 
 Congratulations!

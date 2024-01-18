@@ -21,7 +21,6 @@ We are using Appwrite as a backend to handle the user details, so we need to con
 The response from these interactions will be stored as references to get more information about the user in our app.
 
 In your `composable` directory, create the file `useUserSession.js` and add the following code.
-Then you can call the  `useUserSession()` function in the pages and components to use the functionality.
 
 ```ts
 // composable/useUserSession.ts
@@ -64,6 +63,9 @@ export const useUserSession = () =>  {
     };
 };
 ```
+
+Then you can call the  `useUserSession()` function in the pages and components to use the functionality.
+
 # Login page {% #login-page %}
 
 Create a new file in the `pages` directory called `login.vue`.
@@ -71,8 +73,7 @@ This will not only create a new page, it will also add the route `/login` to the
 In step 5 we will add a login button that will redirect us to this page.
 
 We will define functions to handle form submissions and show either a signup
-or a login form, which renders one form or the other depending on `isSignUp`'s state.
-We will also show buttons to toggle between the two different types of forms.
+or a login form.
 
 ```vue
 <!-- pages/login.vue -->
@@ -120,6 +121,9 @@ const handleRegistration = async (event) => {
   </div>
 </template>
 ```
+
+This page renders a login or sign up form depending on `isSignUp`'s state.
+We will also show buttons to toggle between the two different types of forms.
 
 # Authentication forms {% #auth-forms %}
 

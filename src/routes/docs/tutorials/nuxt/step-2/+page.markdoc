@@ -99,7 +99,7 @@ export default {
 
 Next, head over to the `pages` directory.
 This is where we will keep the content that will render on our pages in the web application.
-Each file you put in here will automatically become a route.
+Nuxt reads all the `.vue` files inside this directory and [automatically renders them as routes](https://v2.nuxt.com/docs/directory-structure/pages/).
 Add the file `index.vue` with the following code.
 
 ```vue
