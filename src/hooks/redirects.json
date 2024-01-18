@@ -642,7 +642,7 @@
     {
         "link": "/docs/models/runtime",
         "redirect": "/docs/references/cloud/models/runtime"
-    },    
+    },
     {
         "link": "/docs/installation",
         "redirect": "/docs/advanced/self-hosting"
@@ -659,5 +659,4 @@
         "link": "/policy/privacy",
         "redirect": "/privacy"
     }
-    
 ]

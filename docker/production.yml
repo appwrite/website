@@ -60,6 +60,13 @@ services:
     <<: *x-logging
     networks:
       - cloud
+    environment:
+      - PUBLIC_APPWRITE_PROJECT_INIT_ID
+      - PUBLIC_APPWRITE_PROJECT_ID
+      - PUBLIC_APPWRITE_DB_MAIN_ID
+      - PUBLIC_APPWRITE_COL_THREADS_ID
+      - PUBLIC_APPWRITE_COL_MESSAGES_ID
+      - PUBLIC_APPWRITE_FN_TLDR_ID
     deploy:
       <<: *x-update-config
       mode: replicated
@@ -68,7 +75,7 @@ services:
         max_replicas_per_node: 2
         constraints:
           - node.role == worker
-        preferences: 
+        preferences:
           - spread: node.role == worker
       labels:
         - traefik.enable=true
@@ -94,7 +101,7 @@ services:
     environment:
       - TIME_BETWEEN_RUNS=3600
       - UNUSED_TIME=6h
-  
+
   sematext-agent:
     image: sematext/agent:latest
     environment:

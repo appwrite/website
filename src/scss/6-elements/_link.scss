@@ -31,5 +31,9 @@
   &.is-inline {
     text-decoration: underline;
   }
+
+  &.is-secondary {
+    --p-link-color-text-default: var(--aw-color-secondary);
+  }
 }
 
