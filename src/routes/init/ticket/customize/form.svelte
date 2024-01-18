@@ -139,7 +139,7 @@
 
 <h2 class="aw-sub-body-500 aw-u-color-text-primary">Add your tribe</h2>
 <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-    Add your favorite technology to your Init ticket and join your tribe of like-minded developers
+    Customize your init ticket with your technology.
 </p>
 <div class="tribes">
     {#each tribes as t}

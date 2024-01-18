@@ -233,6 +233,7 @@
     .glare {
         will-change: transform, opacity, background-image, background-size, background-position,
             background-blend-mode, filter;
+        border-radius: adjusted(1.2);
     }
 
     .shine {
@@ -255,7 +256,6 @@
         position: absolute;
         inset: 0;
 
-        border-radius: calc(var(--radius) + 3px);
         transform: translateZ(1px);
         z-index: 4;
         background: radial-gradient(
