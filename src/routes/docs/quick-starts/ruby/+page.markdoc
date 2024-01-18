@@ -54,7 +54,7 @@ bundle init
 Install the Ruby Appwrite SDK.
 
 ```sh
-npm install node-appwrite
+gem install appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -71,9 +71,6 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 Create a new file `app.ruby` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ruby
-# Install the Appwrite SDK for Ruby
-gem install appwrite
-
 # Initialize the Appwrite client
 require 'appwrite'
 
@@ -91,58 +88,47 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```ruby
-# Initialize the Appwrite client
-require 'appwrite'
+@databases = Databases.new(@client)
 
-client = Appwrite::Client.new()
+@todo_database = nil
+@todo_collection = nil
 
-client
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your Appwrite Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>') # Your secret API key
-
-databases = Appwrite::Database.new(client)
-
-todo_database = nil
-todo_collection = nil
+@todo_database = @databases.create(
+    database_id: ID.unique(), 
+    name: 'TodosDB'
+)
+@todo_collection = @databases.create_collection(
+    database_id: @todo_database.id, 
+    collection_id: ID.unique(), 
+    name: 'Todos'
+)
 
 def prepare_database
-    todo_database = databases.create('TodosDB')
 
-    todo_collection = databases.create_collection(
-        todo_database['$id'], 
-        'Todos'
+    @databases.create_string_attribute(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        key: 'title', 
+        size: 255, 
+        required: true
     )
 
-    databases.create_attribute(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        'title', 
-        'string', 
-        255, 
-        true
+    @databases.create_string_attribute(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        key: 'description', 
+        size: 255, 
+        required: false
     )
 
-    databases.create_attribute(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        'description', 
-        'string', 
-        255, 
-        false, 
-        'This is a test description'
-    )
-    
-    databases.create_attribute(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        'isComplete', 
-        'boolean', 
-        true
+    @databases.create_boolean_attribute(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        key: 'isComplete', 
+        required: false,
+        default: false
     )
 end
-
-prepare_database
 ```
 
 {% /section %}
@@ -150,7 +136,7 @@ prepare_database
 Create a function to add some mock data into your new collection.
 
 ```ruby
-def seed_database(todo_database, todo_collection)
+def seed_database()
     test_todo1 = {
         'title' => 'Buy apples',
         'description' => 'At least 2KGs',
@@ -168,29 +154,27 @@ def seed_database(todo_database, todo_collection)
         'isComplete' => false
     }
 
-    databases.create_document(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        SecureRandom.uuid, 
-        test_todo1
+    @databases.create_document(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        document_id: ID.unique(), 
+        data: test_todo1
     )
     
-    databases.create_document(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        SecureRandom.uuid, 
-        test_todo2
+    @databases.create_document(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        document_id: ID.unique(), 
+        data: test_todo2
     )
     
-    databases.create_document(
-        todo_database['$id'], 
-        todo_collection['$id'], 
-        SecureRandom.uuid, 
-        test_todo3
+    @databases.create_document(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id, 
+        document_id: ID.unique(), 
+        data: test_todo3
     )
 end
-
-seed_database(todo_database, todo_collection)
 ```
 
 {% /section %}
@@ -200,14 +184,14 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `runAllTasks();`.
 
 ```ruby
-def get_todos(todo_database, todo_collection)
-    todos = databases.list_documents(
-        todo_database['$id'], 
-        todo_collection['$id']
+def get_todos
+    todos = @databases.list_documents(
+        database_id: @todo_database.id, 
+        collection_id: @todo_collection.id
     )
 
-    todos['documents'].each do |todo|
-        puts "Title: #{todo['title']}\nDescription: #{todo['description']}\nIs Todo Complete: #{todo['isComplete']}\n\n"
+    todos.documents.each do |todo|
+        puts "Title: #{todo.data['title']}\nDescription: #{todo.data['description']}\nIs Todo Complete: #{todo.data['isComplete']}\n\n"
     end
 end
 
@@ -223,6 +207,6 @@ run_all_tasks
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with `node app.js` and view the response in your console.
+Run your project with `ruby app.ruby` and view the response in your console.
 
 {% /section %}
