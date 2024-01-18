@@ -1,16 +1,14 @@
 <script lang="ts">
     import { toScale } from '$lib/utils/toScale';
     import { quadInOut } from 'svelte/easing';
+    import { spring } from 'svelte/motion';
     import { fade, type TransitionConfig } from 'svelte/transition';
     import Glow from '../(assets)/glow.svg';
     import Logo from '../(assets)/logo.svg';
-    import ShinePink from '../(assets)/shine-pink.svg';
-    import ShineSvg from '../(assets)/shine.svg';
-    import BgRainbow from '../(assets)/ticket-bg-rainbow.svg';
     import BgPink from '../(assets)/ticket-bg-pink.svg';
+    import BgRainbow from '../(assets)/ticket-bg-rainbow.svg';
     import Bg from '../(assets)/ticket-bg.svg';
     import type { TicketData } from '../ticket/constants';
-    import { spring } from 'svelte/motion';
 
     type $$Props = Omit<TicketData, '$id'>;
     $: ({
@@ -29,12 +27,6 @@
         rainbow: BgRainbow
     }[variant];
 
-    $: shine = {
-        default: ShineSvg,
-        pink: ShinePink,
-        rainbow: ShineSvg
-    }[variant];
-
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function appear(_node: HTMLElement): TransitionConfig {
         return {
@@ -49,14 +41,23 @@
     }
 
     const springR = { stiffness: 0.066, damping: 0.25 };
-    const springD = { stiffness: 0.03, damping: 0.45 };
 
     let springRotate = spring({ x: 0, y: 0 }, springR);
-    let springBg = spring({ x: 0, y: 0 }, springD);
+    let springGlare = spring({ x: 50, y: 50, o: 0.25 }, springR);
+    let springBackground = spring({ x: 50, y: 50 }, springR);
     let hovering = false;
 
     const round = (num: number, fix = 3) => parseFloat(num.toFixed(fix));
     const clamp = (num: number, min = -20, max = 20) => Math.min(Math.max(num, min), max);
+    const adjust = (
+        value: number,
+        fromMin: number,
+        fromMax: number,
+        toMin: number,
+        toMax: number
+    ) => {
+        return round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
+    };
 
     function isTouchEvent(e: MouseEvent | TouchEvent): e is TouchEvent {
         return e.type === 'touchmove';
@@ -82,36 +83,28 @@
                 y: percent.y - 50
             };
 
-            // springBackground.stiffness = springR.stiffness;
-            // springBackground.damping = springR.damping;
-            // springBackground.set({
-            //     x: round(50 + percent.x / 4 - 12.5),
-            //     y: round(50 + percent.y / 3 - 16.67)
-            // });
             springRotate.stiffness = springR.stiffness;
             springRotate.damping = springR.damping;
             springRotate.set({
                 x: round(-(center.x / 7)),
                 y: round(center.y / 10)
             });
-            springBg.set({
-                x: percent.x / 5,
-                y: percent.y / 5
+
+            springGlare.stiffness = springR.stiffness;
+            springGlare.damping = springR.damping;
+            springGlare.set({
+                x: percent.x,
+                y: percent.y,
+                o: 1
             });
 
-            // springGlare.stiffness = springR.stiffness;
-            // springGlare.damping = springR.damping;
-            // springGlare.set({
-            //     x: percent.x,
-            //     y: percent.y,
-            //     o: 1
-            // });
+            springBackground.stiffness = springR.stiffness;
+            springBackground.damping = springR.damping;
+            springBackground.set({
+                x: adjust(percent.x, 0, 100, 37, 63),
+                y: adjust(percent.y, 0, 100, 33, 67)
+            });
 
-            // // get angle of mouse position relative to center of element
-            // angle = Math.atan2(center.y, center.x) * (180 / Math.PI);
-
-            // // get proximity to center of element. 0 = center, 1 = edge
-            // $centerProximity = Math.sqrt(center.x * center.x + center.y * center.y) / 50 - 0.1;
             hovering = true;
         };
         const mouseLeave = () => {
@@ -122,9 +115,14 @@
             springRotate.damping = snapDamp;
             springRotate.set({ x: 0, y: 0 });
 
-            springBg.stiffness = snapStiff;
-            springBg.damping = snapDamp;
-            springBg.set({ x: 0, y: 0 });
+            springGlare.stiffness = snapStiff;
+            springGlare.damping = snapDamp;
+            springGlare.set({ x: 50, y: 50, o: 0 });
+
+            springBackground.stiffness = snapStiff;
+            springBackground.damping = snapDamp;
+            springBackground.set({ x: 50, y: 50 }, { soft: 1 });
+
             hovering = false;
         };
 
@@ -142,10 +140,26 @@
     $: styles = `
 		--rx: ${$springRotate.x}deg;
 		--ry: ${$springRotate.y}deg;
-        --bg-x: ${$springBg.x}%;
-        --bg-y: ${$springBg.y}%;
         --opacity: ${hovering ? 1 : 0};
-        
+        --mx: ${$springGlare.x}%;
+		--my: ${$springGlare.y}%;
+        --pointer-x: ${$springGlare.x}%;
+        --pointer-y: ${$springGlare.y}%;
+        --pointer-from-top: ${$springGlare.y / 100};
+        --pointer-from-left: ${$springGlare.x / 100};
+		--o: ${$springGlare.o};
+        --card-opacity: ${$springGlare.o};
+        --pointer-from-center: ${clamp(
+            Math.sqrt(
+                ($springGlare.y - 50) * ($springGlare.y - 50) +
+                    ($springGlare.x - 50) * ($springGlare.x - 50)
+            ) / 50,
+            0,
+            1
+        )};
+
+        --background-x: ${$springBackground.x}%;
+        --background-y: ${$springBackground.y}%;
 	`;
 </script>
 
@@ -194,7 +208,10 @@
             </div>
         {/if}
 
-        <!-- <img class="shine" src={shine} alt="" /> -->
+        <div class="frufru">
+            <div class="shine" />
+            <div class="glare" />
+        </div>
     </div>
 </div>
 
@@ -205,6 +222,105 @@
 
     @function adjusted($value) {
         @return #{math.div($value, $base-width)}em;
+    }
+
+    .frufru {
+        position: absolute;
+        inset: 0;
+    }
+
+    .shine,
+    .glare {
+        will-change: transform, opacity, background-image, background-size, background-position,
+            background-blend-mode, filter;
+    }
+
+    .shine {
+        position: absolute;
+        inset: 0;
+
+        display: grid;
+        transform: translateZ(1px);
+        overflow: hidden;
+        z-index: 3;
+        background: transparent;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.85) contrast(2.75) saturate(0.65);
+        mix-blend-mode: color-dodge;
+        opacity: var(--card-opacity);
+    }
+
+    .glare {
+        position: absolute;
+        inset: 0;
+
+        border-radius: calc(var(--radius) + 3px);
+        transform: translateZ(1px);
+        z-index: 4;
+        background: radial-gradient(
+            farthest-corner circle at var(--mx) var(--my),
+            rgba(255, 255, 255, 0.8) 10%,
+            rgba(255, 255, 255, 0.65) 20%,
+            rgba(0, 0, 0, 0.5) 90%
+        );
+        mix-blend-mode: overlay;
+        opacity: calc(var(--o) * 0.2);
+    }
+
+    [data-variant='rainbow'] {
+        .shine {
+            --space: 5%;
+            --angle: -22deg;
+            --imgsize: 300% 400%;
+            background-image: repeating-linear-gradient(
+                var(--angle),
+                hsla(283, 49%, 60%, 0.75) calc(var(--space) * 1),
+                hsla(2, 74%, 59%, 0.75) calc(var(--space) * 2),
+                hsla(53, 67%, 53%, 0.75) calc(var(--space) * 3),
+                hsla(93, 56%, 52%, 0.75) calc(var(--space) * 4),
+                hsla(176, 38%, 50%, 0.75) calc(var(--space) * 5),
+                hsla(228, 100%, 77%, 0.75) calc(var(--space) * 6),
+                hsla(283, 49%, 61%, 0.75) calc(var(--space) * 7)
+            );
+            background-blend-mode: color-dodge;
+            background-size: var(--imgsize);
+            background-position: 0% calc(var(--background-y) * 1),
+                var(--background-x) var(--background-y);
+            filter: brightness(calc((var(--pointer-from-center) * 0.3) + 0.5)) contrast(2.3)
+                saturate(1);
+
+            &::after {
+                position: absolute;
+                inset: 0;
+
+                content: '';
+                background-image: radial-gradient(
+                    farthest-corner ellipse at calc(((var(--pointer-x)) * 0.5) + 25%)
+                        calc(((var(--pointer-y)) * 0.5) + 25%),
+                    hsl(0, 0%, 100%) 5%,
+                    hsla(300, 100%, 11%, 0.6) 40%,
+                    hsl(0, 0%, 22%) 120%
+                );
+                background-position: center center;
+                background-size: 400% 500%;
+                filter: brightness(calc((var(--pointer-from-center) * 0.2) + 0.4)) contrast(0.85)
+                    saturate(1.1);
+                mix-blend-mode: hard-light;
+            }
+        }
+
+        .glare {
+            opacity: var(--o);
+
+            background-image: radial-gradient(
+                farthest-corner circle at var(--pointer-x) var(--pointer-y),
+                hsla(0, 0%, 100%, 1) 10%,
+                hsla(0, 0%, 100%, 0.6) 35%,
+                hsla(180, 11%, 35%, 1) 60%
+            );
+            mix-blend-mode: soft-light;
+        }
     }
 
     .wrapper {
@@ -243,11 +359,6 @@
         transform: rotateY(var(--rx)) rotateX(var(--ry));
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-    }
-
-    .shine {
-        position: absolute;
-        inset: 0;
     }
 
     .bg {
