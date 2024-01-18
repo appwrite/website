@@ -66,9 +66,9 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerRest]: 'REST',
     sh: 'Shell',
     js: 'JavaScript',
-    ts: 'TypeScript',
-    jsx: 'React',	
+    jsx: 'React',
     tsx: 'React',
+    ts: 'TypeScript',
     typescript: 'TypeScript',
     dart: 'Dart',
     java: 'Java',
@@ -97,8 +97,7 @@ export const platformMap: Record<Language | string, string> = {
     yaml: 'YAML',
     text: 'Text',
     vue: 'Vue',
-    svelte: 'Svelte',
-    groovy: 'Groovy'
+    svelte: 'Svelte'
 };
 
 export const serviceMap: Record<Service, string> = {
