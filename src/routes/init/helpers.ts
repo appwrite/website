@@ -219,8 +219,13 @@ function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): T
 }
 
 export async function getTicketByUser(user: User) {
+    console.time('ticket');
     const doc = await getTicketDocByUser(user);
+    console.timeEnd('ticket');
+
+    console.time('contributions');
     const contributions = await getTicketContributions(doc.$id);
+    console.timeEnd('contributions');
     const variant = getTicketVariant(doc);
 
     return {

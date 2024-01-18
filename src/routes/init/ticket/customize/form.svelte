@@ -5,6 +5,7 @@
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
     import { loginGithub } from '$routes/init/helpers';
+    import type { TicketVariant } from '../constants';
 
     import type { PageData } from './$types';
     import TribeToggle from './tribe-toggle.svelte';
@@ -13,6 +14,9 @@
     export let tribe: string | null = null;
     export let showGitHub = true;
     $: ({ ticket } = $page.data as PageData);
+    export let variant: TicketVariant = 'default';
+
+    const variants: TicketVariant[] = ['default', 'rainbow', 'pink'];
 
     const tribes = [
         null,
@@ -49,6 +53,18 @@
         disabled={!browser}
     />
 </div>
+
+<label for="variant" class="u-margin-block-start-32 u-block">Ticket variant (DEBUG)</label>
+<select
+    id="variant"
+    class="u-margin-block-start-4"
+    style:text-transform="capitalize"
+    bind:value={variant}
+>
+    {#each variants as variant}
+        <option value={variant}>{variant}</option>
+    {/each}
+</select>
 
 <hr />
 
