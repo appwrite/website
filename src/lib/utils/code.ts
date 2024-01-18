@@ -24,7 +24,6 @@ import plaintext from 'highlight.js/lib/languages/plaintext';
 import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
-import groovy from 'highlight.js/lib/languages/groovy';
 import { Platform } from './references';
 
 const languages = {
@@ -59,7 +58,6 @@ const languages = {
     rb: ruby,
     cs: csharp,
     css: css,
-    groovy: groovy,
     svelte: xml
 } as const satisfies Record<string, LanguageFn>;
 
