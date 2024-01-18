@@ -20,7 +20,9 @@ export async function GET({ params }) {
 
     if (!gh_user) return emptyResponse;
 
+    console.time('fetch on gh');
     const res = await fetch(`https://github.com/${gh_user}`);
+    console.timeEnd('fetch on gh');
     const html = await res.text();
     const root = parse(html);
     const table = root.querySelector('table');

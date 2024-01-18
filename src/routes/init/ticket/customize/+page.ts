@@ -7,8 +7,12 @@ export const load = async () => {
         throw redirect(307, '/init/ticket');
     }
 
+    console.time('user');
     const user = await getUser();
+    console.timeEnd('user');
+    console.time('ticket');
     const ticket = await getTicketByUser(user);
+    console.timeEnd('ticket');
 
     return {
         ticket,

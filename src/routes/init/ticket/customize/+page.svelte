@@ -11,12 +11,14 @@
     import Form from './form.svelte';
     import { createCopy } from '$lib/utils/copy';
     import { page } from '$app/stores';
+    import type { TicketVariant } from '../constants';
 
     export let data;
 
     let name = data.ticket?.name ?? '';
     const id = data.ticket?.id ?? 0;
     let tribe: string | undefined = data.ticket?.tribe ?? undefined;
+    let variant: TicketVariant = data.ticket.variant;
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
@@ -74,7 +76,7 @@
                 </h1>
 
                 <div class="desktop">
-                    <Form bind:name bind:tribe bind:showGitHub />
+                    <Form bind:variant bind:name bind:tribe bind:showGitHub />
                 </div>
             </div>
         {:else}
@@ -117,7 +119,13 @@
 
         <TicketPreview>
             <div class="ticket-holder">
-                <Ticket {...data.ticket} {tribe} {name} show_contributions={showGitHub} />
+                <Ticket
+                    {...$page.data.ticket}
+                    {variant}
+                    {tribe}
+                    {name}
+                    show_contributions={showGitHub}
+                />
             </div>
         </TicketPreview>
     </div>
@@ -138,7 +146,7 @@
             {#if drawerOpen}
                 <hr />
                 <div class="form-wrapper" transition:slide>
-                    <Form bind:name bind:tribe bind:showGitHub />
+                    <Form bind:variant bind:name bind:tribe bind:showGitHub />
                 </div>
             {/if}
         </div>
