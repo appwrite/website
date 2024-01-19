@@ -1,0 +1,15 @@
+---
+layout: changelog
+title: New Ruby SDK release with fixes for the database service
+date: 2024-01-19
+cover: /images/changelog/2023-08-30.png
+---
+
+We’ve just released a new Ruby SDK with fixes for the database service.
+
+View the [pull request](https://github.com/appwrite/sdk-for-ruby/compare/10.1.0...10.1.1) on GitHub for the source code.
+
+
+{% arrow_link href="https://appwrite.io/changelog/entry/2024-01-19" %}
+Read more.
+{% /arrow_link %}
