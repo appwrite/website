@@ -186,7 +186,6 @@ void main() {
   client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
       .setProject("650209298acac4ee1bb6");
-  ;
   Account account = Account(client);
 
   runApp(MyApp(
