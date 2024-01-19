@@ -7,6 +7,13 @@ cover:
 
 We’ve just released a new Ruby SDK with fixes for the database service.
 
+What's changed? 
+**Fix null params**
+- Fix null parameters being passed to API
+
+**Fix list documents**
+- Fix `require` in documentation
+
 View the [pull request](https://github.com/appwrite/sdk-for-ruby/compare/10.1.0...10.1.1) on GitHub for the source code.
 
 
