@@ -26,19 +26,19 @@
 			items: [
 				{
 					label: 'Providers',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/providers'
 				},
 				{
 					label: 'Targets',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/targets'
 				},
 				{
 					label: 'Topics',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/topics'
 				},
 				{
 					label: 'Message types',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/message-types'
 				},
 				
 			]
@@ -48,15 +48,15 @@
 			items: [
 				{
 					label: 'Send push notifications',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/send-push-notifications'
 				},
 				{
 					label: 'Send email messages',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/send-email-messages'
 				},
 				{
 					label: 'Send SMS messages',
-					href: '/docs/products/messaging/XXXXX'
+					href: '/docs/products/messaging/send-sms-messages'
 				},
 			]
 		},
@@ -64,7 +64,7 @@
 			label: 'References',
 			items: [
 				{
-					label: 'XXXXX',
+					label: 'API reference',
 					href: '/docs/references/cloud/client-web/XXXXX'
 				},
 			]
