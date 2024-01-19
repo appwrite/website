@@ -95,9 +95,10 @@ Labels can only be created & modified from the console or Server SDK, while Team
 
 ### Teams
 
-✅ Server SDK
+Server SDK - Yes
 
-✅ Client SDK
+Client SDK - Yes
+
 
 ```javascript
 import { Client, Teams } from "appwrite";
@@ -111,9 +112,10 @@ const promise = Teams.create('[Team_ID]', '[NAME]');
 
 ## Labels
 
-✅ Server SDK
+Server SDK - Yes
 
-❌ Client SDK
+Client SDK - No
+
 
 ```javascript
 const sdk = require('node-appwrite');
@@ -124,3 +126,12 @@ const users = new sdk.Users(client);
 
 const promise = users.updateLabels('[USER_ID]', ['subscriber']);
 ```
+
+### Resources
+Learn more about Labels and Teams in our documentation:
+- [Labels](https://appwrite.io/docs/products/auth/labels)
+- [Teams](https://appwrite.io/docs/products/auth/teams)
+
+Watch the video tutorial on 'how to manage user permissions with Labels and Teams' on [YouTube](https://www.youtube.com/watch?v=xJTj5Ye8-W0&feature=youtu.be).
+
+[![Teams and Labels in Appwrite](http://img.youtube.com/vi/xJTj5Ye8-W0/0.jpg)](http://www.youtube.com/watch?v=xJTj5Ye8-W0)

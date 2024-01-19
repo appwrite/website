@@ -20,6 +20,7 @@
         android: 'icon-android',
         apple: 'icon-apple',
         flutter: 'icon-flutter',
+        nuxt: 'icon-nuxt',
         stripe: 'icon-stripe',
         refine: 'aw-icon-refine'
     };
