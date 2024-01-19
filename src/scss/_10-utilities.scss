@@ -47,6 +47,7 @@
 .#{$p}-u-margin-inline-32-negative  { margin-inline:pxToRem(-32); }
 
 .#{$p}-u-margin-block-0             { margin-block:0; }
+.#{$p}-u-margin-block-80            { margin-block:pxToRem(80); }
 .#{$p}-u-margin-block-start-40      { margin-block-start:pxToRem(40); }
 .#{$p}-u-margin-block-start-40-mobile { @media #{$break1} {margin-block-start:pxToRem(40);} }
 

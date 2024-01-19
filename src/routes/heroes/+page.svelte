@@ -471,21 +471,9 @@
     .footer-wrapper {
         overflow: hidden;
 
-        > img {
-            top: -100px;
-            inline-size: 1700px;
-            max-inline-size: none;
-            max-block-size: none;
-        }
-
         @media (max-width: 1024px) {
             .aw-hero {
                 padding-block-start: 5rem;
-            }
-
-            > img {
-                top: -300px;
-                left: -400px;
             }
         }
 
