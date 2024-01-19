@@ -397,6 +397,7 @@ return function ($context) {
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
+import: 'dart:io';
 
 Future main(final context) async {
     final vote = {
@@ -723,6 +724,7 @@ end
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
+import: 'dart:io';
 
 Future main(final context) async {
     final html = '''<!doctype html>
