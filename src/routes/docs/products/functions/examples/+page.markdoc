@@ -184,6 +184,7 @@ def main(context):
 ```dart
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'dart:io';
 
 Future<dynamic> main(final context) async {
   if (context.req.path == '/eur') {
@@ -397,6 +398,7 @@ return function ($context) {
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'dart:io';
 
 Future main(final context) async {
     final vote = {
