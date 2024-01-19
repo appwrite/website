@@ -57,8 +57,8 @@ Appwrite uses a Redis server for managing cache, queues and scheduled tasks. The
 | `_APP_REDIS_PASS`          | Redis server password. This is an optional variable. Default value is an empty string.|
 
 
-
-Appwrite is using a MariaDB server for managing persistent database data. The MariaDB env vars are used to allow Appwrite server to connect to the MariaDB container.
+# Database {% #database %}
+Appwrite uses MariaDB to persist database data. The DB env vars are used to allow Appwrite server to connect to MariaDB.
 
 | Name                   | Description                                                                                      |
 |------------------------|--------------------------------------------------------------------------------------------------|
