@@ -2,7 +2,7 @@
 layout: changelog
 title: New Ruby SDK release with fixes for the database service
 date: 2024-01-19
-cover: /images/changelog/2023-08-30.png
+cover:
 ---
 
 We’ve just released a new Ruby SDK with fixes for the database service.
