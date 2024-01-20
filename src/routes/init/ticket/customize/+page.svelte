@@ -18,7 +18,7 @@
     let name = data.ticket?.name ?? '';
     const id = data.ticket?.id ?? 0;
     let tribe: string | undefined = data.ticket?.tribe ?? undefined;
-    let variant: TicketVariant = data.ticket.variant;
+    let variant: TicketVariant | undefined = data.ticket.variant;
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
