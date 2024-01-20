@@ -49,7 +49,7 @@
         name="name"
         required
         bind:value={name}
-        maxlength="128"
+        maxlength="42"
         disabled={!browser}
     />
 </div>
