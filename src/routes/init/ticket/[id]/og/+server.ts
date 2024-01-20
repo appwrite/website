@@ -1,4 +1,4 @@
-import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
+import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init.js';
 import type { TicketData } from '../../constants.js';
 import sharp from 'sharp';
@@ -670,16 +670,15 @@ const getSvg = (ticket: TicketData) => `
             transform="rotate(90 383.322 247.773)" fill="#FD366E" />
         </g>
       </g>
-      ${
-          ticket.gh_user
-              ? `
+      ${ticket.gh_user
+    ? `
       <text transform="translate(232.061 67.1128)" fill="#ADADB0" xml:space="preserve" style="white-space: pre"
         font-family="Aeonik Pro" font-size="10.2261" letter-spacing="0em">
         <tspan x="0" y="9.69774">@${ticket.gh_user}</tspan>
       </text>
       `
-              : ''
-      }
+    : ''
+  }
       <text transform="translate(232.061 46.6606)" fill="white" xml:space="preserve" style="white-space: pre"
         font-family="Aeonik Pro" font-size="17.0435" letter-spacing="-0.01em">
         <tspan x="0" y="15.5948">${ticket.name}</tspan>
@@ -820,24 +819,24 @@ const getSvg = (ticket: TicketData) => `
 `;
 
 export async function GET({ params }) {
-    const ticket = (await appwriteInit.database.getDocument(
-        PUBLIC_APPWRITE_DB_INIT_ID,
-        PUBLIC_APPWRITE_COL_INIT_ID,
-        params.id
-    )) as unknown as TicketData;
-    const svg = getSvg(ticket);
+  const ticket = (await appwriteInit.database.getDocument(
+    APPWRITE_DB_INIT_ID,
+    APPWRITE_COL_INIT_ID,
+    params.id
+  )) as unknown as TicketData;
+  const svg = getSvg(ticket);
 
-    const svgBuffer = Buffer.from(svg);
-    const pngBuffer = await sharp(svgBuffer, {})
-        .resize({
-            width: 1000
-        })
-        .toFormat('png')
-        .toBuffer();
+  const svgBuffer = Buffer.from(svg);
+  const pngBuffer = await sharp(svgBuffer, {})
+    .resize({
+      width: 1000
+    })
+    .toFormat('png')
+    .toBuffer();
 
-    return new Response(pngBuffer, {
-        headers: {
-            'Content-Type': 'image/png'
-        }
-    });
+  return new Response(pngBuffer, {
+    headers: {
+      'Content-Type': 'image/png'
+    }
+  });
 }

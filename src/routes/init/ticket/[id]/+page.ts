@@ -11,7 +11,8 @@ export const load = async ({ params, fetch }) => {
         return {
             ticket
         };
-    } catch {
+    } catch (e) {
+        console.log(e)
         throw error(404, 'Ticket not found');
     }
 };

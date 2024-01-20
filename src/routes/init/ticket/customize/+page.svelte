@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
     import { appwriteInit } from '$lib/appwrite/init';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -38,16 +37,18 @@
             return;
         }
 
-        await appwriteInit.database.updateDocument(
-            PUBLIC_APPWRITE_DB_INIT_ID,
-            PUBLIC_APPWRITE_COL_INIT_ID,
-            ticketId,
-            {
+        await fetch(`/init/ticket/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ticketId,
                 name,
                 tribe,
-                show_contributions: showGitHub
-            }
-        );
+                showGitHub
+            })
+        });
     }
 
     async function goBack() {

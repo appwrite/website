@@ -1,4 +1,4 @@
-import { PUBLIC_APPWRITE_COL_INIT_ID, PUBLIC_APPWRITE_DB_INIT_ID } from '$env/static/public';
+import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init.js';
 
 import type { ContributionsMatrix, TicketData } from '../../constants.js';
@@ -13,8 +13,8 @@ const emptyResponse = new Response(JSON.stringify({ data: null }), {
 
 export async function GET({ params }) {
     const { gh_user } = (await appwriteInit.database.getDocument(
-        PUBLIC_APPWRITE_DB_INIT_ID,
-        PUBLIC_APPWRITE_COL_INIT_ID,
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
         params.id
     )) as unknown as TicketData;
 
@@ -42,7 +42,7 @@ export async function GET({ params }) {
             matrix[c].push(Number(cell.getAttribute('data-level')));
         }
 
-        matrix[c] = matrix[c].toReversed();
+        matrix[c] = matrix[c].reverse();
     }
 
     return new Response(
