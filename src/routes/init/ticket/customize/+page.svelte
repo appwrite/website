@@ -196,7 +196,7 @@
             position: sticky;
             bottom: 0;
             padding-block: 0;
-            background-color: hsl(var(--aw-color-subtle));
+            background-color: hsl(var(--aw-color-background));
             backdrop-filter: blur(40px);
             z-index: 9999999;
 
