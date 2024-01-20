@@ -286,6 +286,10 @@
     }
 
     [data-variant='rainbow'] {
+        .bottom-left img {
+            filter: brightness(0) invert(1);
+        }
+
         .shine {
             --space: 5%;
             --angle: -22deg;
@@ -387,6 +391,7 @@
     .aw-title {
         font-size: adjusted(2.5);
         line-height: #{math.div(44, 40)}em;
+        overflow-wrap: break-word;
     }
 
     .aw-label {
