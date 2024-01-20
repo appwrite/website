@@ -165,4 +165,10 @@
         flex-wrap: wrap;
         gap: 1rem;
     }
+
+    @media (max-width: 1023px) {
+        .tribes {
+            gap: 0.625rem;
+        }
+    }
 </style>
