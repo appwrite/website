@@ -209,6 +209,16 @@
         {/if}
 
         <div class="frufru">
+            <svg viewBox="0 0 460 644" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <clipPath id="clip" clipPathUnits="objectBoundingBox">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M0,0.025 C0,0.011,0.016,0,0.035,0 H0.965 C0.984,0,1,0.011,1,0.025 V0.975 C1,0.989,0.984,1,0.965,1 H0.035 C0.016,1,0,0.989,0,0.975 V0.025 M0.413,0.031 C0.413,0.028,0.417,0.025,0.422,0.025 H0.578 C0.583,0.025,0.587,0.028,0.587,0.031 C0.587,0.034,0.583,0.037,0.578,0.037 H0.422 C0.417,0.037,0.413,0.034,0.413,0.031"
+                        fill="black"
+                    />
+                </clipPath>
+            </svg>
             <div class="shine" />
             <div class="glare" />
         </div>
@@ -227,13 +237,20 @@
     .frufru {
         position: absolute;
         inset: 0;
+
+        svg {
+            position: absolute;
+            inset: 0;
+        }
     }
 
     .shine,
     .glare {
         will-change: transform, opacity, background-image, background-size, background-position,
             background-blend-mode, filter;
-        border-radius: adjusted(1.2);
+        border-radius: adjusted(1);
+        border-bottom-left-radius: adjusted(1.2);
+        clip-path: url(#clip);
     }
 
     .shine {
