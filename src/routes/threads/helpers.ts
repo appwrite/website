@@ -67,7 +67,7 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
 type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
-    let query = [q ? Query.search('search_meta', q) : undefined];
+    let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
 
     tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
 
