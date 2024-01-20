@@ -191,7 +191,7 @@
 
         {#if threads.length}
             <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
-                Found {query.length ? threads.length : '600+'} results.
+                Found {query.length ? threads.length : '5000+'} results.
             </h2>
         {/if}
 
