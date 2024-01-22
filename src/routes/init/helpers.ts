@@ -128,7 +128,9 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     return contributions ?? [];
 }
 
-function getTicketVariant(doc: Omit<TicketData, 'contributions' | 'variant'>): TicketVariant {
+export function getTicketVariant(
+    doc: Omit<TicketData, 'contributions' | 'variant'>
+): TicketVariant {
     const { gh_user, aw_email } = doc;
 
     if (gh_user && contributors.includes(gh_user)) {

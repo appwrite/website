@@ -1,10 +1,43 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init.js';
-import type { TicketData } from '../../constants.js';
 import sharp from 'sharp';
+import type { ContributionsMatrix, TicketData, TicketVariant } from '../../constants.js';
+import { getContributions } from '../get-contributions/helpers.server.js';
+import { getTicketVariant } from '$routes/init/helpers.js';
 
-const getSvg = (ticket: TicketData) => `
-<svg width="438" height="249" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
+type GetCubeArgs = {
+    week: number;
+    day: number;
+    level: number;
+    variant?: TicketVariant;
+};
+
+const getCube = ({ week, day, level, variant = 'default' }: GetCubeArgs) => {
+    const x = INITIAL_X + day * DIFF_X;
+    const y = INITIAL_Y + week * DIFF_Y;
+    const opacity = level / 4;
+    const fill = variant === 'rainbow' ? 'white' : '#FD366E';
+
+    return `<rect opacity="${opacity}" x="${x}" y="${y}" width="3.4087" height="3.4087" rx="0.852174" fill="${fill}" />`;
+};
+const INITIAL_X = 380;
+const INITIAL_Y = 22.7998;
+const DIFF_Y = 5.1133;
+const DIFF_X = 5.1133;
+
+const getSvg = async (ticket: TicketData) => {
+    const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
+    // const matrix = getMockContributions();
+    const cubes = matrix.reduce((acc, week, w) => {
+        week.forEach((level, d) => {
+            acc.push(getCube({ week: w, day: d, level, variant: ticket.variant }));
+        });
+
+        return acc;
+    }, [] as string[]);
+
+    return `
+<svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_327_1972)">
   <g clip-path="url(#clip0_327_1972)">
     <rect width="438" height="249" rx="18" fill="#19191C" />
@@ -38,647 +71,19 @@ const getSvg = (ticket: TicketData) => `
             fill="url(#paint5_linear_327_1972)" />
         </mask>
         <g mask="url(#mask1_327_1972)">
-          <rect opacity="0.64" x="414" y="22.7998" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 22.7998)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="27.9131" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 27.9131)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="33.0259" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 33.0259)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="38.1392" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 38.1392)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="43.252" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 43.252)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="48.3652" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 48.3652)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="53.478" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 53.478)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="58.5913" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 58.5913)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="63.7041" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 63.7041)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="68.8174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 68.8174)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="73.9302" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 73.9302)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="79.0435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 79.0435)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="84.1562" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 84.1562)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="89.2695" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 89.2695)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="94.3823" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 94.3823)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="99.4956" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 99.4956)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="104.608" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 104.608)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="109.722" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 109.722)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="114.834" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 114.834)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="119.948" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 119.948)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="125.061" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 125.061)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="130.174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 130.174)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="135.287" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 135.287)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="140.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 140.4)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="145.513" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 145.513)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="150.626" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 150.626)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="155.739" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 155.739)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="160.852" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 160.852)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="165.965" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 165.965)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="171.078" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 171.078)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="176.191" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 176.191)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="181.304" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 181.304)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="186.417" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 186.417)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="191.53" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 191.53)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="196.643" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 196.643)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="201.756" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 201.756)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="206.869" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 206.869)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="211.982" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 211.982)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="217.096" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 217.096)" fill="#FD366E" />
-          <rect opacity="0.32" x="414" y="222.208" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 222.208)" fill="#FD366E" />
-          <rect opacity="0.64" x="414" y="227.321" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 227.321)" fill="#FD366E" />
-          <rect opacity="0.4" x="414" y="232.435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 232.435)" fill="#FD366E" />
-          <rect opacity="0.16" x="414" y="237.548" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 237.548)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="242.661" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 242.661)" fill="#FD366E" />
-          <rect opacity="0.8" x="414" y="247.774" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 414 247.774)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 251.182)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 246.069)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 240.956)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 235.843)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 230.73)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 225.617)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 220.504)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 215.391)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 210.278)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 205.165)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 200.052)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 194.939)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 189.826)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 184.713)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 179.6)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 174.487)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 169.374)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 164.261)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 159.147)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 154.035)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 148.921)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 143.809)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 138.695)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 133.583)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 128.469)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 123.356)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 118.243)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 113.13)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 108.017)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 102.904)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 97.791)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 92.6777)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 87.5649)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 82.4517)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 77.3389)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 72.2256)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 67.1128)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 61.9995)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 56.8867)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 51.7734)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 46.6606)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 41.5474)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 36.4346)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 31.3213)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 408.887 26.2085)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="22.7998" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 22.7998)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="27.9131" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 27.9131)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="33.0259" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 33.0259)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="38.1392" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 38.1392)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="43.252" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 43.252)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="48.3652" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 48.3652)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="53.478" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 53.478)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="58.5913" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 58.5913)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="63.7041" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 63.7041)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="68.8174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 68.8174)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="73.9302" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 73.9302)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="79.0435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 79.0435)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="84.1562" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 84.1562)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="89.2695" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 89.2695)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="94.3823" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 94.3823)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="99.4956" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 99.4956)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="104.608" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 104.608)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="109.722" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 109.722)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="114.834" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 114.834)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="119.948" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 119.948)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="125.061" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 125.061)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="130.174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 130.174)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="135.287" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 135.287)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="140.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 140.4)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="145.513" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 145.513)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="150.626" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 150.626)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="155.739" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 155.739)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="160.852" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 160.852)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="165.965" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 165.965)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="171.078" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 171.078)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="176.191" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 176.191)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="181.304" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 181.304)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="186.417" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 186.417)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="191.53" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 191.53)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="196.643" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 196.643)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="201.756" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 201.756)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="206.869" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 206.869)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="211.982" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 211.982)" fill="#FD366E" />
-          <rect opacity="0.8" x="403.774" y="217.095" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 217.095)" fill="#FD366E" />
-          <rect opacity="0.64" x="403.774" y="222.208" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 222.208)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="227.321" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 227.321)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="232.435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 232.435)" fill="#FD366E" />
-          <rect opacity="0.16" x="403.774" y="237.547" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 237.547)" fill="#FD366E" />
-          <rect opacity="0.4" x="403.774" y="242.661" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 242.661)" fill="#FD366E" />
-          <rect opacity="0.32" x="403.774" y="247.773" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 403.774 247.773)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="22.7998" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 22.7998)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="27.9131" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 27.9131)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="33.0259" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 33.0259)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="38.1392" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 38.1392)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="43.252" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 43.252)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="48.3652" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 48.3652)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="53.478" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 53.478)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="58.5913" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 58.5913)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="63.7041" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 63.7041)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="68.8174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 68.8174)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="73.9302" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 73.9302)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="79.0435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 79.0435)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="84.1562" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 84.1562)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="89.2695" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 89.2695)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="94.3823" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 94.3823)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="99.4956" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 99.4956)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="104.608" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 104.608)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="109.722" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 109.722)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="114.834" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 114.834)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="119.948" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 119.948)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="125.061" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 125.061)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="130.174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 130.174)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="135.287" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 135.287)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="140.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 140.4)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="145.513" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 145.513)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="150.626" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 150.626)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="155.739" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 155.739)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="160.852" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 160.852)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="165.965" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 165.965)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="171.078" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 171.078)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="176.191" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 176.191)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="181.304" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 181.304)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="186.417" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 186.417)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="191.53" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 191.53)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="196.643" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 196.643)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="201.756" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 201.756)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="206.869" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 206.869)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="211.982" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 211.982)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="217.095" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 217.095)" fill="#FD366E" />
-          <rect opacity="0.32" x="398.661" y="222.208" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 222.208)" fill="#FD366E" />
-          <rect opacity="0.64" x="398.661" y="227.321" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 227.321)" fill="#FD366E" />
-          <rect opacity="0.4" x="398.661" y="232.435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 232.435)" fill="#FD366E" />
-          <rect opacity="0.16" x="398.661" y="237.547" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 237.547)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="242.661" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 242.661)" fill="#FD366E" />
-          <rect opacity="0.8" x="398.661" y="247.773" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 398.661 247.773)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 251.182)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 246.069)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 240.956)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 235.843)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 230.73)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 225.617)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 220.504)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 215.391)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 210.278)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 205.165)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 200.052)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 194.939)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 189.826)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 184.713)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 179.6)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 174.487)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 169.374)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 164.261)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 159.147)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 154.035)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 148.921)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 143.809)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 138.695)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 133.583)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 128.469)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 123.356)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 118.243)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 113.13)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 108.017)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 102.904)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 97.791)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 92.6777)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 87.5649)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 82.4517)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 77.3389)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 72.2256)" fill="#FD366E" />
-          <rect opacity="0.8" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 67.1128)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 61.9995)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 56.8867)" fill="#FD366E" />
-          <rect opacity="0.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 51.7734)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 46.6606)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 41.5474)" fill="#FD366E" />
-          <rect opacity="0.64" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 36.4346)" fill="#FD366E" />
-          <rect opacity="0.32" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 31.3213)" fill="#FD366E" />
-          <rect opacity="0.16" width="3.4087" height="3.4087" rx="0.852174"
-            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 393.548 26.2085)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="22.7998" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 22.7998)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="27.9131" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 27.9131)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="33.0259" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 33.0259)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="38.1392" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 38.1392)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="43.252" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 43.252)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="48.3652" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 48.3652)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="53.478" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 53.478)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="58.5913" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 58.5913)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="63.7041" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 63.7041)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="68.8174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 68.8174)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="73.9302" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 73.9302)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="79.0435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 79.0435)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="84.1562" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 84.1562)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="89.2695" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 89.2695)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="94.3823" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 94.3823)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="99.4956" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 99.4956)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="104.608" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 104.608)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="109.722" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 109.722)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="114.834" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 114.834)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="119.948" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 119.948)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="125.061" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 125.061)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="130.174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 130.174)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="135.287" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 135.287)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="140.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 140.4)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="145.513" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 145.513)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="150.626" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 150.626)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="155.739" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 155.739)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="160.852" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 160.852)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="165.965" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 165.965)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="171.078" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 171.078)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="176.191" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 176.191)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="181.304" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 181.304)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="186.417" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 186.417)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="191.53" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 191.53)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="196.643" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 196.643)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="201.756" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 201.756)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="206.869" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 206.869)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="211.982" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 211.982)" fill="#FD366E" />
-          <rect opacity="0.8" x="388.435" y="217.096" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 217.096)" fill="#FD366E" />
-          <rect opacity="0.64" x="388.435" y="222.208" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 222.208)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="227.321" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 227.321)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="232.435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 232.435)" fill="#FD366E" />
-          <rect opacity="0.16" x="388.435" y="237.548" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 237.548)" fill="#FD366E" />
-          <rect opacity="0.4" x="388.435" y="242.661" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 242.661)" fill="#FD366E" />
-          <rect opacity="0.32" x="388.435" y="247.774" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 388.435 247.774)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="22.7998" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 22.7998)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="27.9131" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 27.9131)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="33.0259" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 33.0259)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="38.1392" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 38.1392)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="43.252" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 43.252)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="48.3652" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 48.3652)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="53.478" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 53.478)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="58.5913" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 58.5913)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="63.7041" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 63.7041)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="68.8174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 68.8174)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="73.9302" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 73.9302)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="79.0435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 79.0435)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="84.1562" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 84.1562)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="89.2695" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 89.2695)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="94.3823" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 94.3823)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="99.4956" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 99.4956)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="104.608" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 104.608)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="109.722" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 109.722)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="114.834" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 114.834)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="119.948" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 119.948)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="125.061" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 125.061)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="130.174" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 130.174)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="135.287" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 135.287)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="140.4" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 140.4)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="145.513" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 145.513)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="150.626" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 150.626)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="155.739" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 155.739)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="160.852" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 160.852)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="165.965" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 165.965)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="171.078" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 171.078)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="176.191" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 176.191)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="181.304" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 181.304)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="186.417" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 186.417)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="191.53" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 191.53)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="196.643" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 196.643)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="201.756" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 201.756)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="206.869" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 206.869)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="211.982" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 211.982)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="217.095" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 217.095)" fill="#FD366E" />
-          <rect opacity="0.32" x="383.322" y="222.208" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 222.208)" fill="#FD366E" />
-          <rect opacity="0.64" x="383.322" y="227.321" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 227.321)" fill="#FD366E" />
-          <rect opacity="0.4" x="383.322" y="232.435" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 232.435)" fill="#FD366E" />
-          <rect opacity="0.16" x="383.322" y="237.547" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 237.547)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="242.661" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 242.661)" fill="#FD366E" />
-          <rect opacity="0.8" x="383.322" y="247.773" width="3.4087" height="3.4087" rx="0.852174"
-            transform="rotate(90 383.322 247.773)" fill="#FD366E" />
+          ${cubes.join('')}
         </g>
       </g>
-      ${ticket.gh_user
-    ? `
+      ${
+          ticket.gh_user
+              ? `
       <text transform="translate(232.061 67.1128)" fill="#ADADB0" xml:space="preserve" style="white-space: pre"
         font-family="Aeonik Pro" font-size="10.2261" letter-spacing="0em">
         <tspan x="0" y="9.69774">@${ticket.gh_user}</tspan>
       </text>
       `
-    : ''
-  }
+              : ''
+      }
       <text transform="translate(232.061 46.6606)" fill="white" xml:space="preserve" style="white-space: pre"
         font-family="Aeonik Pro" font-size="17.0435" letter-spacing="-0.01em">
         <tspan x="0" y="15.5948">${ticket.name}</tspan>
@@ -817,26 +222,29 @@ const getSvg = (ticket: TicketData) => `
 </defs>
 </svg>
 `;
+};
 
 export async function GET({ params }) {
-  const ticket = (await appwriteInit.database.getDocument(
-    APPWRITE_DB_INIT_ID,
-    APPWRITE_COL_INIT_ID,
-    params.id
-  )) as unknown as TicketData;
-  const svg = getSvg(ticket);
+    const ticket = (await appwriteInit.database.getDocument(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        params.id
+    )) as unknown as TicketData;
+    ticket.variant = getTicketVariant(ticket);
+    console.log(ticket);
+    const svg = await getSvg(ticket);
 
-  const svgBuffer = Buffer.from(svg);
-  const pngBuffer = await sharp(svgBuffer, {})
-    .resize({
-      width: 1000
-    })
-    .toFormat('png')
-    .toBuffer();
+    const svgBuffer = Buffer.from(svg);
+    const pngBuffer = await sharp(svgBuffer, {})
+        .resize({
+            width: 1000
+        })
+        .toFormat('png')
+        .toBuffer();
 
-  return new Response(pngBuffer, {
-    headers: {
-      'Content-Type': 'image/png'
-    }
-  });
+    return new Response(pngBuffer, {
+        headers: {
+            'Content-Type': 'image/png'
+        }
+    });
 }
