@@ -17,7 +17,6 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     aw_email?: string;
     id: number;
     show_contributions?: boolean;
-    contributions?: ContributionsMatrix;
     variant?: TicketVariant;
 };
 

@@ -71,7 +71,7 @@
 
         <TicketPreview>
             <div class="ticket-holder">
-                <Ticket {...data.ticket} />
+                <Ticket {...data.ticket} contributions={data.streamed.contributions} />
             </div>
         </TicketPreview>
     </div>
