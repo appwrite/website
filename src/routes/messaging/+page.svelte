@@ -407,7 +407,6 @@
                             <section
                                     class="theme-dark aw-code-snippet u-margin-block-start-24"
                                     aria-label="code-snippet panel"
-                                    style="background:radial-gradient(100% 100% at 50% 100%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 44.19%, rgba(255, 255, 255, 0.00) 100%), #1D1D21;"
                             >
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
@@ -455,7 +454,6 @@
                             <section
                                     class="theme-dark aw-code-snippet u-margin-block-start-24"
                                     aria-label="code-snippet panel"
-                                    style="background:radial-gradient(100% 100% at 50% 100%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 44.19%, rgba(255, 255, 255, 0.00) 100%), #1D1D21;"
                             >
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
@@ -503,65 +501,91 @@
         </div>
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
-                    <Carousel size="big">
-                        <svelte:fragment slot="header">
-                            <h4 class="aw-label aw-u-color-text-primary">Keep exploring our products</h4>
-                        </svelte:fragment>
-                        {#each events as event}
-                            <li>
-                                <EventCard
-                                        href={event.href}
-                                        cover={event.cover}
-                                        date={event.date}
-                                        location={event.location}
-                                        title={event.title}
-                                        description={event.description}
-                                        buttonText={event.buttonText}
-                                />
-                            </li>
-                        {/each}
-                    </Carousel>
-                </section>
-            </div>
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <ul class="u-flex u-flex-wrap u-main-center u-gap-32 u-margin-block-start-48">
+                <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-80">
+                    <h4 class="aw-label u-text-center aw-u-color-text-primary">Keep exploring our products</h4>
+                    <ul class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-48">
                         <li class="aw-u-flex-basis-378">
-                            <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
-                                <div class="aw-u-media-ratio-16-9">
-                                    <img src="/images/messaging/auth.png" class="aw-u-media-ratio-16-9" alt="">
-                                </div>
+                            <a
+                                    class="aw-card is-normal has-border-gradient"
+                                    href=""
+                                    style="background: rgba(255, 255, 255, 0.04);"
+                            >
                                 <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Auth</h4>
+                                    <div class="u-flex u-gap-8">
+                                        <img src="/images/icons/illustrated/dark/auth.png" alt="" width="32" height="32">
+                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">Auth</h4>
+                                        <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </div>
                                     <p class="aw-sub-body-400">Build secure authentication and manage your users.</p>
                                 </div>
-                            </div>
+                            </a>
                         </li>
                         <li class="aw-u-flex-basis-378">
-                            <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
-                                <div class="aw-u-media-ratio-16-9">
-                                    <img src="" class="aw-u-media-ratio-16-9" alt="">
-                                </div>
-                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8"><div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Functions</h4>
+                            <a
+                                    class="aw-card is-normal has-border-gradient"
+                                    href=""
+                                    style="background: rgba(255, 255, 255, 0.04);"
+                            >
+                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
+                                    <div class="u-flex u-gap-8">
+                                        <img src="/images/icons/illustrated/dark/functions.png" alt="" width="32" height="32">
+                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">Functions</h4>
+                                        <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </div>
                                     <p class="aw-sub-body-400">Scale big and unlock limitless potential with Appwrite functions.</p>
                                 </div>
-                            </div>
+                            </a>
                         </li>
                         <li class="aw-u-flex-basis-378">
-                            <div class="aw-card is-transparent has-border-gradient" style="--card-padding:1rem">
-                                <div class="aw-u-media-ratio-16-9">
-                                    <img src="/images/messaging/database.png" class="aw-u-media-ratio-16-9" alt="">
-                                </div>
-                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8"><div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Databases</h4>
+                            <a
+                                    class="aw-card is-normal has-border-gradient"
+                                    href=""
+                                    style="background: rgba(255, 255, 255, 0.04);"
+                            >
+                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
+                                    <div class="u-flex u-gap-8">
+                                        <img src="/images/icons/illustrated/dark/databases.png" alt="" width="32" height="32">
+                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">Databases</h4>
+                                        <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </div>
                                     <p class="aw-sub-body-400">Store and query structured data, ensuring scalable storage.</p>
                                 </div>
-                            </div>
+                            </a>
+                        </li>
+                        <li class="aw-u-flex-basis-378">
+                            <a
+                                    class="aw-card is-normal has-border-gradient"
+                                    href=""
+                                    style="background: rgba(255, 255, 255, 0.04);"
+                            >
+                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
+                                    <div class="u-flex u-gap-8">
+                                        <img src="/images/icons/illustrated/dark/storage.png" alt="" width="32" height="32">
+                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">Storage</h4>
+                                        <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </div>
+                                    <p class="aw-sub-body-400">Manage your files’ project, using convenient APIs and utilities.</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="aw-u-flex-basis-378">
+                            <a
+                                    class="aw-card is-normal has-border-gradient"
+                                    href=""
+                                    style="background: rgba(255, 255, 255, 0.04);"
+                            >
+                                <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
+                                    <div class="u-flex u-gap-8">
+                                        <img src="/images/icons/illustrated/dark/realtime.png" alt="" width="32" height="32">
+                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">Realtime</h4>
+                                        <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </div>
+                                    <p class="aw-sub-body-400">Utilize realtime information from all Appwrite services.</p>
+                                </div>
+                            </a>
                         </li>
                     </ul>
-                </div>
+                </section>
             </div>
             <div
                     class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
