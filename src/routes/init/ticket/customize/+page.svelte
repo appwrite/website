@@ -1,16 +1,15 @@
 <script lang="ts">
-    import { appwriteInit } from '$lib/appwrite/init';
+    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
+    import { createCopy } from '$lib/utils/copy';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
-    import Form from './form.svelte';
-    import { createCopy } from '$lib/utils/copy';
-    import { page } from '$app/stores';
     import type { TicketVariant } from '../constants';
+    import Form from './form.svelte';
 
     export let data;
 
@@ -121,10 +120,11 @@
         <TicketPreview>
             <div class="ticket-holder">
                 <Ticket
-                    {...$page.data.ticket}
+                    {...data.ticket}
                     {variant}
                     {tribe}
                     {name}
+                    contributions={data.streamed.contributions}
                     show_contributions={showGitHub}
                 />
             </div>

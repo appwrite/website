@@ -8,9 +8,11 @@
     import BgPink from '../(assets)/ticket-bg-pink.svg';
     import BgRainbow from '../(assets)/ticket-bg-rainbow.svg';
     import Bg from '../(assets)/ticket-bg.svg';
-    import type { TicketData } from '../ticket/constants';
+    import type { ContributionsMatrix, TicketData } from '../ticket/constants';
 
-    type $$Props = Omit<TicketData, '$id'>;
+    type $$Props = Omit<TicketData, '$id'> & {
+        contributions?: Promise<ContributionsMatrix>;
+    };
     $: ({
         name,
         gh_user,
@@ -196,17 +198,19 @@
             {/if}
         {/key}
 
-        {#if contributions && show_contributions}
-            <div class="github" out:fade={{ duration: 100 }}>
-                {#each contributions as row}
-                    <div class="row">
-                        {#each row as level, j}
-                            <div style:--index={row.length - j} data-level={level} />
-                        {/each}
-                    </div>
-                {/each}
-            </div>
-        {/if}
+        {#await contributions then contributions}
+            {#if contributions && show_contributions}
+                <div class="github" out:fade={{ duration: 100 }}>
+                    {#each contributions as row}
+                        <div class="row">
+                            {#each row as level, j}
+                                <div style:--index={row.length - j} data-level={level} />
+                            {/each}
+                        </div>
+                    {/each}
+                </div>
+            {/if}
+        {/await}
 
         <div class="frufru">
             <svg viewBox="0 0 460 644" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -291,8 +295,8 @@
         }
 
         .shine {
-            --space: 5%;
-            --angle: -22deg;
+            --space: 4.5%;
+            --angle: 15deg;
             --imgsize: 300% 400%;
             background-image: repeating-linear-gradient(
                 var(--angle),
