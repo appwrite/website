@@ -11,7 +11,7 @@
     import type { ContributionsMatrix, TicketData } from '../ticket/constants';
 
     type $$Props = Omit<TicketData, '$id'> & {
-        contributions?: Promise<ContributionsMatrix>;
+        contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
     $: ({
         name,
