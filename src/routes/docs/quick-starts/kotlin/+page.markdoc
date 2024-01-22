@@ -107,7 +107,7 @@ var todoDatabase: DatabaseModel? = null
 var todoCollection: Collection? = null
 
 fun prepareDatabase() = runBlocking {
-    todoDatabase = databases.create(UUID.randomUUID().toString(), "TodosDB")
+    todoDatabase = databases.create(ID.unique(), "TodosDB")
     todoCollection = databases.createCollection(todoDatabase?.id!!, UUID.randomUUID().toString(), "Todos")
 
     databases.createStringAttribute(todoDatabase?.id!!, todoCollection?.id!!, "title", 255, true)
