@@ -506,7 +506,7 @@
                     <ul class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-32">
                         <li class="aw-u-flex-basis-378">
                             <a
-                                    class="aw-card is-normal has-border-gradient"
+                                    class="aw-card is-normal"
                                     href=""
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
@@ -522,7 +522,7 @@
                         </li>
                         <li class="aw-u-flex-basis-378">
                             <a
-                                    class="aw-card is-normal has-border-gradient"
+                                    class="aw-card is-normal"
                                     href=""
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
@@ -538,7 +538,7 @@
                         </li>
                         <li class="aw-u-flex-basis-378">
                             <a
-                                    class="aw-card is-normal has-border-gradient"
+                                    class="aw-card is-normal"
                                     href=""
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
@@ -554,7 +554,7 @@
                         </li>
                         <li class="aw-u-flex-basis-378">
                             <a
-                                    class="aw-card is-normal has-border-gradient"
+                                    class="aw-card is-normal"
                                     href=""
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
@@ -570,7 +570,7 @@
                         </li>
                         <li class="aw-u-flex-basis-378">
                             <a
-                                    class="aw-card is-normal has-border-gradient"
+                                    class="aw-card is-normal"
                                     href=""
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
