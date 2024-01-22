@@ -219,15 +219,15 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/apple.svg" alt>
-                                            <span class="text">APNS</span>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="aw-icon-firebase" aria-hidden="true"></span>
+                                            <span class="text">FCM</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/firebase.svg" alt>
-                                            <span class="text">FCM</span>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="aw-icon-apple" aria-hidden="true"></span>
+                                            <span class="text">APNS</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -245,14 +245,14 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/mailgun.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="aw-icon-mailgun" aria-hidden="true"></span>
                                             <span class="text">Mailgun</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/sendgrid.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="aw-icon-sendgrid" aria-hidden="true"></span>
                                             <span class="text">Sendgrid</span>
                                         </a>
                                     </li>
@@ -271,26 +271,20 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/twilio.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-twilio" aria-hidden="true"></span>
                                             <span class="text">Twilio</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/vonage.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-vonage" aria-hidden="true"></span>
                                             <span class="text">Vonage</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/msg91.svg" alt>
-                                            <span class="text">MSG91</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="aw-tag" href="/">
-                                            <span class="text">+2</span>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="text">+3</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -308,8 +302,8 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/appwrite.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-appwrite" aria-hidden="true"></span>
                                             <span class="text">Appwrite</span>
                                         </a>
                                     </li>
@@ -330,20 +324,20 @@
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/slack.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-slack" aria-hidden="true"></span>
                                             <span class="text">Slack</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/discord.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-discord" aria-hidden="true"></span>
                                             <span class="text">Discord</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-tag" href="/">
-                                            <img src="/images/icons/gray-colors/whatsapp.svg" alt>
+                                        <a class="aw-interactive-tag" href="/">
+                                            <span class="icon-whatsapp" aria-hidden="true"></span>
                                             <span class="text">WhatsApp</span>
                                         </a>
                                     </li>
@@ -411,7 +405,7 @@
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
                                         <div class="u-flex u-gap-16">
-                                            <div class="aw-tag">
+                                            <div class="aw-interactive-tag">
                                                 <span class="text">Web</span>
                                             </div>
                                         </div>
@@ -458,7 +452,7 @@
                                 <header class="aw-code-snippet-header">
                                     <div class="aw-code-snippet-header-start">
                                         <div class="u-flex u-gap-16">
-                                            <div class="aw-tag">
+                                            <div class="aw-interactive-tag">
                                                 <span class="text">Web</span>
                                             </div>
                                         </div>
