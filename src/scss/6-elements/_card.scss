@@ -13,7 +13,7 @@
 
     --p-card-shadow-color: var(--p-card-shadow-color-default);
     --p-card-shadow-color-default: var(--aw-color-black) / 0;
-    --p-card-shadow-color-focus-visible: var(--aw-color-black) / 0.06;
+    --p-card-shadow-color-focus-visible: var(--aw-color-pink-500) / 0.72;
 
     --card-padding: #{pxToRem(16)};
 
@@ -39,8 +39,7 @@
 
     #{$theme-dark} & {
       --p-card-border-color-default: var(--aw-color-white) / 0.10;
-
-      --p-card-shadow-color-focus-visible: var(--aw-color-white) / 0.06;
+      //--p-card-shadow-color-focus-visible: var(--aw-color-white) / 0.06;
     }
   }
   &.is-white {
