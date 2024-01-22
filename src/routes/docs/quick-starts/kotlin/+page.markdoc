@@ -84,11 +84,11 @@ Open the file `Main.kt` and initialize the Appwrite Client. Replace `<YOUR_PROJE
 
 ```kotlin
 import io.appwrite.Client
+import io.appwrite.ID
 import io.appwrite.services.Databases
-import io.appwrite.models.Database as DatabaseModel
+import io.appwrite.models.Database as Database
 import io.appwrite.models.Collection
 import kotlinx.coroutines.runBlocking
-import java.util.UUID
 val client = Client()
     .SetEndpoint("https://cloud.appwrite.io/v1")
     .SetProject("<YOUR_PROJECT_ID>")
@@ -103,12 +103,12 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 ```kotlin
 val databases = Databases(client)
 
-var todoDatabase: DatabaseModel? = null
+var todoDatabase: Database? = null
 var todoCollection: Collection? = null
 
 fun prepareDatabase() = runBlocking {
     todoDatabase = databases.create(ID.unique(), "TodosDB")
-    todoCollection = databases.createCollection(todoDatabase?.id!!, UUID.randomUUID().toString(), "Todos")
+    todoCollection = databases.createCollection(todoDatabase?.id!!, ID.unique(), "Todos")
 
     databases.createStringAttribute(todoDatabase?.id!!, todoCollection?.id!!, "title", 255, true)
     databases.createStringAttribute(todoDatabase?.id!!, todoCollection?.id!!, "description", 255, false, "This is a test description.")
@@ -138,9 +138,9 @@ fun seedDatabase() = runBlocking {
         "isComplete" to false
     )
 
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, UUID.randomUUID().toString(), testTodo1)
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, UUID.randomUUID().toString(), testTodo2)
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, UUID.randomUUID().toString(), testTodo3)
+    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo1)
+    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo2)
+    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo3)
 }
 ```
 
