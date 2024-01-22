@@ -194,7 +194,7 @@ async function getTodos() {
 }
 
 async function runAllTasks() {
-    await prepareDatabase();    
+    await prepareDatabase();
     await seedDatabase();
     await getTodos();
 }
