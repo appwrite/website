@@ -511,7 +511,7 @@
                                     style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8">
-                                    <div class="u-flex u-gap-8">
+                                    <div class="u-flex u-cross-center u-gap-8">
                                         <img src="/images/icons/illustrated/dark/auth.png" alt="" width="32" height="32">
                                         <h4 class="aw-main-body-400 aw-u-color-text-primary">Auth</h4>
                                         <span class="aw-icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
