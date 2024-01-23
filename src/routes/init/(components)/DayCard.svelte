@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
     export type DayType = {
         title: string;
-        cover?: string;
+
         release: Date;
     };
 </script>
@@ -23,9 +23,9 @@
             >Day {number}<span class="aw-u-color-text-accent">_</span></span
         >
         <h2 class="aw-label aw-u-color-text-primary">{day.title}</h2>
-        {#if day.cover}
-            <enhanced:img src={day.cover} class="img" />
-        {/if}
+        <div class="slot-wrapper">
+            <slot />
+        </div>
     </div>
 {:else}
     <div class="release">
@@ -98,13 +98,12 @@
             pointer-events: none;
         }
 
-        .img {
+        .slot-wrapper {
             position: absolute;
             height: 100%;
-            object-fit: cover;
-            top: 0;
-            right: 0;
-            max-width: 70%;
+            inset-inline-end: 0;
+            inset-block-end: 0;
+            translate: 50% 20%;
             pointer-events: none;
         }
     }

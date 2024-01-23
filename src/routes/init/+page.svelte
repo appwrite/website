@@ -2,18 +2,18 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import EventCard from '$routes/community/EventCard.svelte';
-    import Day1 from './(assets)/day-1.png?enhanced';
+    import ShinesSvg from './(assets)/shines.svg';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-    import ShinesSvg from './(assets)/shines.svg';
 
     import { events } from '$routes/community/+page.svelte';
+    import { Animations } from './(animations)';
     import VideoWrapper from './(components)/VideoWrapper.svelte';
+    import Messaging from './(animations)/Messaging.svelte';
 
     const days: DayType[] = [
         {
             title: 'Day 1',
-            cover: Day1,
             release: new Date(Date.now())
         },
         {
@@ -46,7 +46,7 @@
 <Main>
     <div class="hero">
         <h1>
-            <img src="/images/logos/init.svg" alt="init" />
+            <Animations.Logo />
         </h1>
         <p class="aw-description">
             Appwrite is unveiling new features over a week of exciting announcements
@@ -65,7 +65,11 @@
     <div class="aw-container">
         <div class="day-cards">
             {#each days as day, i}
-                <DayCard {day} number={i + 1} />
+                <DayCard {day} number={i + 1}>
+                    {#if i === 0}
+                        <Animations.Messaging />
+                    {/if}
+                </DayCard>
             {/each}
         </div>
         <hr />
