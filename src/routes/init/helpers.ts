@@ -89,7 +89,7 @@ export type User = {
 
 export async function getUser(): Promise<User> {
     const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
-    console.log({ github, appwrite });
+
     return { github, appwrite };
 }
 
@@ -121,7 +121,6 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     const { data: contributions } = (await res
         .json()
         .then((r) => {
-            console.log('r', r);
             return r;
         })
         .catch(() => {

@@ -9,7 +9,6 @@ const emptyResponse = new Response(JSON.stringify({ data: null }), {
 
 export async function GET({ params }) {
     const matrix = await getContributions(params.id);
-    console.log('matrix', matrix);
     if (!matrix) return emptyResponse;
 
     return new Response(
