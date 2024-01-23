@@ -1,7 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const prerender = true;
-
 const follow = `# robotstxt.org/
 User-agent: *`;
 
@@ -14,6 +12,6 @@ export const GET:RequestHandler = ({url}) => {
 
   
   return new Response(
-    h === 'www' || h === 'appwrite' ? follow : nofollow
+    h === 'appwrite' ? follow : nofollow
   );
 }
