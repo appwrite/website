@@ -180,7 +180,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
+            <div class="aw-big-padding-section-level-2 aw-u-overflow-hidden">
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
@@ -460,7 +460,6 @@
     }
 
     :global([data-animated]).scroll-carousel {
-        width: max-content;
         overflow: hidden;
 
         .inner {
@@ -472,21 +471,9 @@
     .footer-wrapper {
         overflow: hidden;
 
-        > img {
-            top: -100px;
-            inline-size: 1700px;
-            max-inline-size: none;
-            max-block-size: none;
-        }
-
         @media (max-width: 1024px) {
             .aw-hero {
                 padding-block-start: 5rem;
-            }
-
-            > img {
-                top: -300px;
-                left: -400px;
             }
         }
 
