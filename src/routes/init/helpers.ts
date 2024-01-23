@@ -120,7 +120,10 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     const res = await f(`/init/ticket/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
-        .then((r) => r)
+        .then((r) => {
+            console.log('r', r);
+            return r;
+        })
         .catch(() => {
             return { data: null };
         })) as { data: ContributionsMatrix | null };

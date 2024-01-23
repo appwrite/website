@@ -163,6 +163,13 @@
         --background-x: ${$springBackground.x}%;
         --background-y: ${$springBackground.y}%;
 	`;
+
+    function getTribeSource(tribe: string) {
+        if (variant === 'rainbow') {
+            return `/images/tribes/rainbow/${tribe?.toLowerCase()}.svg`;
+        }
+        return `/images/tribes/${tribe?.toLowerCase()}.svg`;
+    }
 </script>
 
 <div class="wrapper">
@@ -188,9 +195,7 @@
             {#if tribe}
                 <img
                     class="tribe"
-                    src="/images/tribes/{variant === 'rainbow'
-                        ? 'rainbow'
-                        : ''}{tribe?.toLowerCase()}.svg"
+                    src={getTribeSource(tribe)}
                     alt={tribe}
                     style:display={tribe ? undefined : 'none'}
                     in:appear|global
@@ -198,10 +203,10 @@
             {/if}
         {/key}
 
-        {#await contributions then contributions}
-            {#if contributions && show_contributions}
+        {#await contributions then c}
+            {#if c && show_contributions}
                 <div class="github" out:fade={{ duration: 100 }}>
-                    {#each contributions as row}
+                    {#each c as row}
                         <div class="row">
                             {#each row as level, j}
                                 <div style:--index={row.length - j} data-level={level} />
