@@ -12,7 +12,6 @@ export async function GET({ params }) {
         params.id
     )) as unknown as TicketData;
     ticket.variant = getTicketVariant(ticket);
-    console.log(ticket);
     const svg = await getTicketSvg(ticket);
 
     const svgBuffer = Buffer.from(svg);

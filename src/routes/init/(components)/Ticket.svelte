@@ -29,6 +29,19 @@
         rainbow: BgRainbow
     }[variant];
 
+    function getTribeSource(tribe: string) {
+        if (variant === 'rainbow') {
+            return `/images/tribes/rainbow/${tribe?.toLowerCase()}.svg`;
+        }
+        return `/images/tribes/${tribe?.toLowerCase()}.svg`;
+    }
+
+    /* Animation details */
+    let removeDelay = false;
+    $: if (!show_contributions) {
+        removeDelay = true;
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function appear(_node: HTMLElement): TransitionConfig {
         return {
@@ -163,13 +176,6 @@
         --background-x: ${$springBackground.x}%;
         --background-y: ${$springBackground.y}%;
 	`;
-
-    function getTribeSource(tribe: string) {
-        if (variant === 'rainbow') {
-            return `/images/tribes/rainbow/${tribe?.toLowerCase()}.svg`;
-        }
-        return `/images/tribes/${tribe?.toLowerCase()}.svg`;
-    }
 </script>
 
 <div class="wrapper">
@@ -205,7 +211,11 @@
 
         {#await contributions then c}
             {#if c && show_contributions}
-                <div class="github" out:fade={{ duration: 100 }}>
+                <div
+                    class="github"
+                    out:fade={{ duration: 100 }}
+                    data-remove-delay={removeDelay ? '' : undefined}
+                >
                     {#each c as row}
                         <div class="row">
                             {#each row as level, j}
@@ -476,6 +486,7 @@
     }
 
     .github {
+        --delay: 700ms;
         display: flex;
         flex-direction: column;
         gap: adjusted(0.25);
@@ -485,6 +496,10 @@
         inset-inline-end: 0;
 
         mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
+
+        &[data-remove-delay] {
+            --delay: 0ms;
+        }
 
         .row {
             display: flex;
@@ -496,7 +511,8 @@
                 height: var(--size);
 
                 border-radius: calc(var(--size) / 4);
-                animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + 700ms) forwards;
+                animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
+                    forwards;
 
                 &[data-level] {
                     --bg-color: var(--aw-color-accent);
