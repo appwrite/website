@@ -22,7 +22,7 @@
 </script>
 
 <div class="wrapper">
-    {#each value.toString().padStart(2, '0') as char, index (index)}
+    {#each value?.toString().padStart(2, '0') as char, index (index)}
         <div transition:fade={{ duration: 200 }}>
             {#if Number.isNaN(Number(char))}
                 <span>{char}</span>
