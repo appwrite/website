@@ -2,7 +2,7 @@
 layout: changelog
 title: New tutorial with Nux
 date: 2024-01-23
-cover: static/images/changelog/ideas-tracker.png
+cover: /images/changelog/ideas-tracker.png
 ---
 
 We've added a new tutorial to our documentation. Learn how to build an ideas tracker with Nuxt by following the steps in the tutorial.
