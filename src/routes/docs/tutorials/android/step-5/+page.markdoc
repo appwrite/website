@@ -83,6 +83,6 @@ private fun AppContent(accountService: AccountService) {
 }
 ```
 
-# Test the MainActivity {% #creating-the-mainactivity %}
+# Test the MainActivity {% #test-the-mainactivity %}
 
 Launch the app and you should be able to use the Login screen to register, login, and logout. Confirm your email address is displayed once you are logged in.
