@@ -145,7 +145,7 @@
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container u-position-relative">
                     <div
-                            class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-900"
+                            class="aw-hero is-align-start is-mobile-center aw-u-gap-20 aw-u-max-width-900"
                             style="--hero-max-inline-size:48rem"
                     >
                         <div class="u-flex u-main-center u-cross-center u-gap-8">
@@ -160,7 +160,7 @@
                                 Send push notifications, emails, and SMS in just minutes, streamlining your multi-channel communication effortlessly.
                             </p>
                             <div
-                                class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32 aw-u-flex-direction-column-mobile"
+                                class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32 aw-u-flex-direction-column-mobile"
                             >
                                 <a
                                         href=""
