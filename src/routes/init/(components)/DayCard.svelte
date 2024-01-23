@@ -19,7 +19,9 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="aw-eyebrow">Day {number}<span class="aw-u-color-text-accent">_</span></span>
+        <span class="aw-eyebrow aw-u-color-text-primary"
+            >Day {number}<span class="aw-u-color-text-accent">_</span></span
+        >
         <h2 class="aw-label aw-u-color-text-primary">{day.title}</h2>
         {#if day.cover}
             <enhanced:img src={day.cover} class="img" />
@@ -27,7 +29,9 @@
     </div>
 {:else}
     <div class="release">
-        <span class="aw-eyebrow">Day {number}<span class="aw-u-color-text-accent">_</span></span>
+        <span class="aw-eyebrow aw-u-color-text-primary"
+            >Day {number}<span class="aw-u-color-text-accent">_</span></span
+        >
         <div class="bottom">
             <div class="countdown aw-title">
                 {#if $hours > 24}

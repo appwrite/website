@@ -5,8 +5,10 @@
     import Day1 from './(assets)/day-1.png?enhanced';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
+    import ShinesSvg from './(assets)/shines.svg';
 
     import { events } from '$routes/community/+page.svelte';
+    import VideoWrapper from './(components)/VideoWrapper.svelte';
 
     const days: DayType[] = [
         {
@@ -51,8 +53,13 @@
         </p>
         <div class="buttons">
             <a href="/init/ticket" class="aw-button">Get your ticket</a>
-            <button class="aw-button is-secondary">Blog announcement</button>
+            <button class="aw-button is-secondary">
+                <div class="aw-icon-play" />
+                <span class="text">Watch the video</span>
+            </button>
         </div>
+
+        <img class="shines" src={ShinesSvg} alt="" />
     </div>
 
     <div class="aw-container">
@@ -66,7 +73,19 @@
         <div class="days">
             <h2 class="aw-eyebrow aw-u-color-text-primary">
                 <div class="aw-dot" />
-                DAY 1 - MONDAY, DEC 5<span class="aw-u-color-text-accent">_</span>
+                init<span class="aw-u-color-text-accent">_</span>1.5
+            </h2>
+
+            <div class="aw-card is-normal has-border-gradient kickoff">
+                <h3 class="aw-label aw-u-color-text-primary">
+                    Watch the kickoff video<span class="aw-u-color-text-accent">_</span>
+                </h3>
+                <VideoWrapper />
+            </div>
+
+            <h2 class="aw-eyebrow aw-u-color-text-primary">
+                <div class="aw-dot" />
+                Day 1 - Monday, Dec 5<span class="aw-u-color-text-accent">_</span>
             </h2>
 
             <div class="mosaic">
@@ -165,6 +184,8 @@
         justify-content: center;
         gap: 1rem;
 
+        position: relative;
+
         p {
             max-width: 23.125rem;
             text-align: center;
@@ -175,6 +196,16 @@
             gap: 0.5rem;
 
             padding-block-start: 1rem;
+        }
+
+        .shines {
+            position: absolute;
+            max-block-size: unset;
+            max-inline-size: unset;
+            inline-size: 2500px;
+            inset-block-start: -500px;
+            pointer-events: none;
+            filter: blur(74.4275894165039px);
         }
     }
 
@@ -228,6 +259,27 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
             }
+        }
+    }
+
+    .kickoff {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background: linear-gradient(
+                93deg,
+                rgba(253, 54, 110, 0.2) 0.29%,
+                rgba(35, 35, 37, 0.2) 52.57%,
+                rgba(35, 35, 37, 0.2) 100%
+            ),
+            #232325;
+        padding: 0.5rem;
+
+        height: 5.625rem;
+
+        h3 {
+            padding-inline-start: 1.5rem;
         }
     }
 
