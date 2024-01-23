@@ -9,11 +9,10 @@
     import { events } from '$routes/community/+page.svelte';
     import { Animations } from './(animations)';
     import VideoWrapper from './(components)/VideoWrapper.svelte';
-    import Messaging from './(animations)/Messaging.svelte';
 
     const days: DayType[] = [
         {
-            title: 'Day 1',
+            title: 'Messaging',
             release: new Date(Date.now())
         },
         {
@@ -81,8 +80,8 @@
             </h2>
 
             <div class="aw-card is-normal has-border-gradient kickoff">
-                <h3 class="aw-label aw-u-color-text-primary">
-                    Watch the kickoff video<span class="aw-u-color-text-accent">_</span>
+                <h3 class="aw-title aw-u-color-text-primary">
+                    Init kickoff<span class="aw-u-color-text-accent">_</span>
                 </h3>
                 <VideoWrapper />
             </div>
@@ -275,7 +274,7 @@
     .kickoff {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
 
         background: linear-gradient(
                 93deg,
@@ -286,9 +285,10 @@
             #232325;
         padding: 0.5rem;
 
-        height: 5.625rem;
+        height: 23.25rem;
 
         h3 {
+            padding-block-start: 1.5rem;
             padding-inline-start: 1.5rem;
         }
     }

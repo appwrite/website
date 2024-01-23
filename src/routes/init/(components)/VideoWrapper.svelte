@@ -28,7 +28,7 @@
 
         display: flex;
         justify-content: flex-end;
-        aspect-ratio: 2.8;
+        aspect-ratio: 1.6;
     }
 
     .img {
