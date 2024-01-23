@@ -190,7 +190,7 @@
                     class="tribe"
                     src="/images/tribes/{variant === 'rainbow'
                         ? 'rainbow'
-                        : ''}/{tribe?.toLowerCase()}.svg"
+                        : ''}{tribe?.toLowerCase()}.svg"
                     alt={tribe}
                     style:display={tribe ? undefined : 'none'}
                     in:appear|global
