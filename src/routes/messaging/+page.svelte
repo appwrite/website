@@ -148,9 +148,10 @@
                             class="aw-hero is-align-start is-mobile-center aw-u-gap-20 aw-u-max-width-900"
                             style="--hero-max-inline-size:48rem"
                     >
-                        <div class="u-flex u-main-center u-cross-center u-gap-8">
-                            <div class="aw-hero-banner-button aw-eyebrow">BETA</div>
+                        <div class="u-flex u-cross-center u-gap-8">
+                            <img src="/images/icons/illustrated/dark/auth.png" alt="" width="32" height="32">
                             <span class="aw-eyebrow aw-u-color-text-accent-click">MESSAGING<span class="aw-u-text-color-primary-500">_</span></span>
+                            <div class="aw-hero-banner-button aw-eyebrow">BETA</div>
                         </div>
                         <h1 class="aw-display aw-u-color-text-primary aw-u-text-wrap-balance">
                             Open source messaging service for developers
