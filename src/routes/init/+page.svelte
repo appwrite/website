@@ -10,17 +10,17 @@
 
     const days: DayType[] = [
         {
-            title: 'Messaging and notifications',
+            title: 'Day 1',
             cover: Day1,
             release: new Date(Date.now())
         },
         {
-            title: 'Bun & Dart 3.1 support',
+            title: 'Day 2',
             // Half a day from today
             release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 0.5)
         },
         {
-            title: 'ENUM SDK',
+            title: 'Day 3',
             // 1.5 days from today
             release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1.5 - 30 * 60 * 1000 - 36 * 1000)
         },
