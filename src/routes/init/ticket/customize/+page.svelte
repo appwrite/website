@@ -89,7 +89,7 @@
                         </span>
                     </h1>
                     <p class="aw-label u-margin-block-start-16">
-                        You have received ticket #{id.toString().padStart(6, '0')}
+                        You have received ticket #{id?.toString().padStart(6, '0')}
                     </p>
                 </div>
 
