@@ -186,6 +186,12 @@
 
         position: relative;
 
+        h1 {
+            img {
+                inline-size: 13.9375rem;
+            }
+        }
+
         p {
             max-width: 23.125rem;
             text-align: center;
