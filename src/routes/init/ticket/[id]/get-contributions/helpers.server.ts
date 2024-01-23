@@ -12,9 +12,8 @@ export async function getContributions(id: string) {
 
     if (!gh_user) return null;
 
-    console.time('fetch on gh');
     const res = await fetch(`https://github.com/${gh_user}`);
-    console.timeEnd('fetch on gh');
+
     const html = await res.text();
     const root = parse(html);
     const table = root.querySelector('table');
