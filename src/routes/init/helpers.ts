@@ -147,9 +147,7 @@ export function getTicketVariant(
 }
 
 export async function getTicketByUser(user: User, f = fetch) {
-    console.time('ticket');
     const doc = await getTicketDocByUser(user, f);
-    console.timeEnd('ticket');
 
     const variant = getTicketVariant(doc);
 
