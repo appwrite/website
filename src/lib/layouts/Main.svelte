@@ -4,9 +4,12 @@
     export type NavLink = {
         label: string;
         href: string;
+        showBadge?: boolean;
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
+
+    const initialized = writable(false);
 </script>
 
 <script lang="ts">
@@ -15,8 +18,10 @@
     import { BANNER_KEY } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
+    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -75,6 +80,9 @@
     }
 
     onMount(() => {
+        setTimeout(() => {
+            $initialized = true;
+        }, 1000);
         return setupThemeObserver();
     });
 
@@ -90,6 +98,11 @@
         {
             label: 'Blog',
             href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',
@@ -204,9 +217,15 @@
                 </a>
                 <nav class="aw-main-header-nav" aria-label="Main">
                     <ul class="aw-main-header-nav-list">
-                        {#each navLinks as { label, href }}
+                        {#each navLinks as navLink}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-link" {href}>{label}</a>
+                                <a
+                                    class="aw-link"
+                                    href={navLink.href}
+                                    data-initialized={$initialized ? '' : undefined}
+                                    data-badge={navLink.showBadge ? '' : undefined}
+                                    >{navLink.label}
+                                </a>
                             </li>
                         {/each}
                     </ul>
@@ -242,3 +261,40 @@
         <slot />
     </main>
 </div>
+
+<style lang="scss">
+    .nav-badge {
+        margin-inline-start: 0.5rem;
+        padding-inline: 0.375rem;
+    }
+
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    [data-badge] {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(var(--aw-color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+            translate: 100%;
+        }
+
+        &:not([data-initialized])::after {
+            animation: scale-in 0.2s ease-out;
+        }
+    }
+</style>

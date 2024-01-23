@@ -9,8 +9,12 @@
     scroll-snap-align:start; scroll-margin-top:pxToRem(120);
   }
   a:not(.aw-button) {
-    @include break-word();   word-break:break-all; color:hsl(var(--aw-color-primary));
+    @include break-word();   word-break:break-all; 
     &:where(:hover, :focus) { text-decoration:underline; }
+  }
+
+  a:not(.aw-button):not(.aw-link) {
+    color:hsl(var(--aw-color-primary));
   }
   ul {
     list-style: disc; padding-inline-start:pxToRem(24);
