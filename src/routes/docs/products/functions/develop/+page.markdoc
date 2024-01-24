@@ -7,8 +7,6 @@ description: Master serverless function development with Appwrite. Learn how to 
 Appwrite Functions offer a familiar interface if you've developed REST endpoints.
 Each function is handled following a request and response pattern.
 
-
-
 If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
 
 # Context object {% #context-object %}
