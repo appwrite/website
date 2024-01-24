@@ -1,9 +1,9 @@
 ---
 layout: post
 title: The evolution of team Appwrite
-description: Many people search for a new employer at the start of a new year and at Appwrite we get more applications than we can 
+description: Many people search for a new employer at the start of a new year and at Appwrite we get more applications than we can handle.
 date: 2024-01-23
-cover: /images/blog/hiring-cover.png
+cover: /images/blog/the-evolution-of-team-appwrite/hiring-cover.png
 timeToRead: 9
 author: laura-du-ry
 category: open-source
@@ -11,9 +11,9 @@ category: open-source
 
 2024 has begun, and as it goes with a new year, many people search for a new job. Statistically speaking, January is the most popular month of the year for new job seekers. Reasons vary from New Year's resolutions and increased hiring activity to bonus payouts. At Appwrite, we notice this, too. That said, throughout the year the team gets numerous hiring requests in their DMs, so many we cannot respond to most, let alone do we have vacancies for all these people. So, in response, we decided to write this blog. We will give you insights into how many current team members joined Appwrite after helping out in the community and contributing. But please do not, they never did this with the intention of getting hired. This was just the outcome of their actions.
 
-![The Appwrite team in New York](/images/blog/team.png)
+![The Appwrite team in New York](/images/blog/the-evolution-of-team-appwrite/team.jpg)
 
-### **The very first Appwrite employees**
+# The very first Appwrite employees
 
 To kick off, the very first Appwrite employee, [Eldad Fux](https://github.com/eldadfux), started his own open-source project and worked relentlessly to get Appwrite where it is today. Aka, the Founder & CEO of Appwrite, aka contributor zero.
 
@@ -25,9 +25,11 @@ After the first funding round, there was financial power to hire the first engin
 
 Like many products when they are in a staring phase, Appwrite had some bugs. Our current front-end lead [Torsten Dittmann](https://github.com/TorstenDittmann) decided not to sit around and wait for a fix and started contributing by fixing bugs for Appwrite. Today, whenever you open your Appwrite Console, you can see Torsten and his team at work.
 
-### **As the team grew**
+# As the team grew
 
 If you know Appwrite, you know [Steven Nguyen](https://github.com/stnguyen90). Not all heroes wear capes, but we should get Steven a cape. Not only does he work on code at Appwrite, but he also answers everyone’s questions on our Discord server. He started doing this a year-long before he joined Appwrite. As you can imagine, he is a more than welcome addition to the team.
+
+![CS Dojo Tweet](/images/blog/the-evolution-of-team-appwrite/cs-dojo-tweets.png)
 
 [Khushboo Verma](https://github.com/vermakhushboo) is someone you’d love to have on the team. She creates content, does public speaking, is an engineer, and is a valuable addition to the Appwrite team. She discovered Appwrite through another Appwriter, [Aditya](https://github.com/adityaoberai), when she invited him to join a liveshow for GitHub’s Education channel. Appwrite’s community-driven culture drew her curiosity, and she started contributing to [Utopia-PHP.](https://github.com/utopia-php) She immediately joined the Discord server, where she connected with the rest of the team, which helped her expand her skillset and she contributed yet again by adding the PostgreSQL database adapter. She felt that this was a rewarding experience, and soon after, she joined Appwrite as she knew that Appwrite would be the right place for her.
 
@@ -35,7 +37,7 @@ If you know Appwrite, you know [Steven Nguyen](https://github.com/stnguyen90). N
 
 [Matej Bačo](https://github.com/meldiron) started tinkering with Appwrite as a freelancer and ran into some obstacles. Thanks to Appwrite's Discord server, he could learn from others and understand all the concepts rapidly. To show appreciation for all the support maintainers gave, he decided to help with all the community questions he possibly could. This led to him being a valuable member of the Appwrite team.
 
-### **Contributing in general**
+# Contributing in general
 
 Now, we don’t only hire people from our own community. We, and other tech companies, appreciate contributing in general. [Thomas G Lopez](https://github.com/TGlide/), a front-end dev, is one of the people who has made notable contributions within the Svelte community. He even built [Melt UI](https://melt-ui.com/docs/introduction), an open-source collection of accessible and customizable component builders for creating user interfaces with Svelte. His contributions earned him the notable title of an official Svelte Ambassador.
 
@@ -45,10 +47,27 @@ If you have been around the Appwrite community, you must know [Aditya Oberai](ht
 
 [Sara Kaandorp](https://www.linkedin.com/in/sara-k-78468a116/) joined as the first non-technical hire. Now, She leads our Design team and, with it, brings our brand and visual identity to new heights every day. She might not have contributed to the community, but as a designer, she put the work in with her portfolio. Also, she understands development as she has a [background](https://appwrite.io/blog/post/appwrite-decoded-sara-kaandorp/) in it. Therefore, there is no better designer we could wish for to lead all of our efforts.
 
-### **How to stand out from the crowd**
+# How to stand out from the crowd
 
 Finding the right team members is crucial for tech start-ups. When you are still building your company, there is little room for error, especially when it comes to building your team.  Hiring the right people determines future success. So it’s about finding the needle in the haystack for employers like Appwrite, and for you to be that needle, you need to shine brighter than the rest. Now, this is not an unhealthy testimony to working day and night, every day, no fun, or any of that. On the contrary, we stand for healthy life balance and will force you to take leave if you like it or not. To stand out is to deliver quality work consistently, not quantity, to be eager to learn, receptive to feedback, and supportive of others. And if you missed this point, one thing is for sure: contributing to open source increases the chances of getting hired into a tech job.
 
-### Doing more with your skills
+![Andrew Red Tweet](/images/blog/the-evolution-of-team-appwrite/andrew-red.png)
+
+# Doing more with your skills
 
 So, how do you stand out? Be active in the community you want to work in. Contribute to open-source projects with code, content, support, or whatever works best for you. To learn more and get inspired, follow people like [Eddie Jaoude](https://twitter.com/eddiejaoude), [Danny Thompson](https://twitter.com/DThompsonDev), [Ruth Ikegah](https://twitter.com/IkegahRuth), [Santosh Yadav,](https://twitter.com/SantoshYadavDev) and our very own [Eldad Fux](https://twitter.com/eldadfux). However, if you decide to contribute, keep in mind: [keep it healthy.](https://appwrite.io/blog/post/make-open-source-healthier)
+
+![Eddie Jaoude](/images/blog/the-evolution-of-team-appwrite/eddie-jaoude.png)
+
+I often get bombarded with messages asking if Appwrite is hiring or if I could refer them to the hiring manager. Most of the time, it will be software engineers, rarely marketers.
+
+Ever since I became a manager at JOGO, this has been the case, but since I started working at Appwrite, this number has quadrupled. It’s great to see so many devs wanting to work at Appwrite, and I can’t blame them. Appwrite is a fantastic employer. But it also gets a bit frustrating because we cannot help them besides pointing out our career page and hoping for the best.
+
+But maybe we could do more. Maybe we could show how most of the Appwrite team got hired in the first place by being part of the open-source community and contributing to Appwrite. Besides giving insights into how to add value to your resume, this is also a moment of appreciation for the amazing team and the hard work day do, day in, day out.
+
+
+# Non-devs
+
+So what about non-technical recruits like me? How do we get to join Appwrite? For me, [Laura Du Ry](https://www.linkedin.com/in/laura-du-ry-53203b94/), it helped to have worked for tech start-ups previously, and that I know a thing or two about building SaaS companies. That said, the developer and open-source community were new to me, and I still have much to learn. Hence, I am attempting to learn Python and evolve my coding knowledge and skills.
+
+Emma Carpagnano, our People Operations, had the same experience as me. Previous tech start-up experience is a big win. But how did she crack into the tech start up world? To put is simply, adaptability and simplicity, many work environments are fast- paced and dynamic, not just start ups. By using her experience in working in these unique work spaces it made her be able to convey her quick thinking, problem-solving abilities and open the door. Creativity in problem solving is a must and it is this that allows her to do well in working to support the needs of all our team, no matter where they are based in the world
