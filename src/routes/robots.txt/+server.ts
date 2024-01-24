@@ -8,10 +8,7 @@ User-agent: *
 Disallow: /`;
 
 export const GET:RequestHandler = ({url}) => {
-  const h = url.hostname.split('.')[0];
-
-  
   return new Response(
-    h === 'appwrite' ? follow : nofollow
+    url.hostname === 'appwrite.io'  ? follow : nofollow
   );
 }
