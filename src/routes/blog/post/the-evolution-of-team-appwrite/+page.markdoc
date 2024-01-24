@@ -23,6 +23,10 @@ After the first funding round, there was financial power to hire the first engin
 
 [Damodar Lohani](https://github.com/lohanidamodar) is a Flutter enthusiast, and in his search for a proper Backend-as-a-Service, he discovered Appwrite. Not much later, he dedicated an entire [YouTube channel](https://www.youtube.com/@appwriters) to videos on Appwrite and Flutter and contributed to Appwrite’s Flutter SDK. If you want to know what to do to get hired by Appwrite, or any other OSS company, he is a leading example. Making contributions in both code and content definitely gets you noticed.
 
+[Jake Barnby](https://github.com/abnegate) was a rather tricky one logistically. Being the only one in the southeast Pacific time zone, working together with him was an unforeseen challenge. When most of us log on, Jake logs off. However his contributions to the Android SDK and his wide knowledge of languages and platforms helped him land a job at Appwrite. He contributed to every single SDK and API, and even frontend work. He got promoted to Lead within a few months. It is a classic story of dedication and hard work that pays off.
+
+[Bradley Schofield](https://github.com/PineappleIOnic) dropped out of college because he wasn’t learning enough. We have heard that story quite a few times in the developer community, but did you know he was only 16 when we hired him? That’s a first for us. Now, he has been around for three years, and as a full-stack engineer with a love for data, he is the go-to engineer for anything growth-related.
+
 Like many products when they are in a staring phase, Appwrite had some bugs. Our current front-end lead [Torsten Dittmann](https://github.com/TorstenDittmann) decided not to sit around and wait for a fix and started contributing by fixing bugs for Appwrite. Today, whenever you open your Appwrite Console, you can see Torsten and his team at work.
 
 # As the team grew
