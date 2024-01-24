@@ -130,13 +130,13 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-padding-block-end-0">
                     <a
-                        href="/blog/post/meet-the-new-appwrite"
+                        href="/blog/post/announcing-appwrite-pro"
                         class="aw-hero-banner-button aw-u-margin-block-end-24"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="aw-caption-500">New</span>
                         <div class="aw-hero-banner-button-sep" />
-                        <span class="aw-caption-400">Meet the new Appwrite</span>
+                        <span class="aw-caption-400">Announcing Appwrite Pro</span>
                         <span class="aw-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="aw-hero is-horizontal">
@@ -375,8 +375,7 @@
                                     alt=""
                                 />
                                 <h3 class="aw-info-boxes-title">
-                                    <span>GDPR</span>
-                                    <span class="aw-inline-tag is-pink">Coming Soon</span>
+                                    GDPR
                                 </h3>
                                 <p class="aw-info-boxes-content">
                                     Safeguard user data and privacy with provided GDPR regulations.

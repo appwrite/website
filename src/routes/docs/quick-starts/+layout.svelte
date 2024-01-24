@@ -4,7 +4,7 @@
 	import Sidebar from '../Sidebar.svelte';
 </script>
 
-<Docs variant={$page.url.pathname.endsWith('/quick-starts') ? 'default' : 'two-side-navs'}>
+<Docs variant={$page.route.id === '/docs/quick-starts' ? 'default' : 'two-side-navs'}>
 	<Sidebar />
 	<slot />
 </Docs>
