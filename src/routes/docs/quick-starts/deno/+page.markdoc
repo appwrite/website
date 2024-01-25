@@ -33,8 +33,8 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
 |           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
 
 Other scopes are optional.
 
@@ -51,11 +51,16 @@ echo "console.log('Hello, Deno!');" > mod.ts
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Deno Appwrite SDK.
+Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your file.
 
-```sh
-npm install node-appwrite
 ```
+// import all as sdk
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+
+// import only what you need
+import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
+```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 

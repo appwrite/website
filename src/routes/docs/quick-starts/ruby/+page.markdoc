@@ -33,8 +33,8 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
 |           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
 
 Other scopes are optional.
 
@@ -95,17 +95,17 @@ databases = Databases.new(client)
 @todo_database = nil
 @todo_collection = nil
 
-@todo_database = @databases.create(
-    database_id: ID.unique(), 
-    name: 'TodosDB'
-)
-@todo_collection = @databases.create_collection(
-    database_id: @todo_database.id, 
-    collection_id: ID.unique(), 
-    name: 'Todos'
-)
-
 def prepare_database
+    @todo_database = @databases.create(
+        database_id: ID.unique(), 
+        name: 'TodosDB'
+    )
+
+    @todo_collection = @databases.create_collection(
+        database_id: @todo_database.id, 
+        collection_id: ID.unique(), 
+        name: 'Todos'
+    )
 
     @databases.create_string_attribute(
         database_id: @todo_database.id, 
@@ -146,14 +146,14 @@ def seed_database()
     }
 
     test_todo2 = {
-        'title' => 'Wash the apples',
-        'isComplete' => true
+        title: 'Wash the apples',
+        isComplete: true
     }
 
     test_todo3 = {
-        'title' => 'Cut the apples',
-        'description' => 'Don\'t forget to pack them in a box',
-        'isComplete' => false
+        title: 'Cut the apples',
+        description: 'Don\'t forget to pack them in a box',
+        'isComplete: false
     }
 
     @databases.create_document(
@@ -183,7 +183,7 @@ end
 {% section #step-7 step=7 title="Retrieve documents" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
-Run the functions to by calling `run_all_tasks()`.
+Run the functions to by calling `run_all_tasks()`.  
 
 ```ruby
 def get_todos
@@ -209,6 +209,6 @@ run_all_tasks
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with `ruby app.rb` and view the response in your console.
+Run your project with `ruby app.rb` and view the response in your console.  
 
 {% /section %}
