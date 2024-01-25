@@ -1,7 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-icon-button {
-  display: block;
+  display: flex;
+  gap: pxToRem(4);
   position: relative;
   block-size:pxToRem(28);
   inline-size:pxToRem(28); 
@@ -10,10 +11,16 @@
 	border-radius: pxToRem(8);
 
   > [class*='icon'] {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &.is-more-content {
+    inline-size:fit-content; padding:pxToRem(4); line-height:pxToRem(18);
+    > [class*='icon'] {  position:relative; inline-size:pxToRem(16); }
   }
 
 
