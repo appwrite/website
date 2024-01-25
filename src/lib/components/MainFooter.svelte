@@ -66,3 +66,9 @@
         </div>
     </footer>
 {/if}
+
+<style lang="scss">
+  .aw-icon-button {
+    display: grid;
+  }
+</style>

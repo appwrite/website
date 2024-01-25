@@ -6,6 +6,7 @@ step: 1
 difficulty: easy
 readtime: 10
 framework: Stripe
+category: Functions
 ---
 As you app grows, you may start offering paid services or features.
 This is an important part of growing your idea into a business.
