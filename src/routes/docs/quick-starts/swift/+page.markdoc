@@ -83,9 +83,9 @@ import Foundation
 import Appwrite
 
 let client = Client()
-client.setEndpoint("https://cloud.appwrite.io/v1")
-client.setProject("<YOUR_PROJECT_ID>")
-client.setKey("<YOUR_API_KEY>")
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
 ```
 
 {% /section %}

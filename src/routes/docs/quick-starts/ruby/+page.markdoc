@@ -54,7 +54,7 @@ bundle init
 Install the Ruby Appwrite SDK.
 
 ```sh
-gem install appwrite
+bundle add appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -68,13 +68,15 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `app.ruby` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file `app.rb` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ruby
 # Initialize the Appwrite client
 require 'appwrite'
 
-client = Appwrite::Client.new()
+include Appwrite
+
+client = Client.new()
 
 client
     .set_endpoint('https://cloud.appwrite.io/v1') # Your Appwrite Endpoint
@@ -88,7 +90,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```ruby
-@databases = Databases.new(@client)
+databases = Databases.new(client)
 
 @todo_database = nil
 @todo_collection = nil
@@ -138,9 +140,9 @@ Create a function to add some mock data into your new collection.
 ```ruby
 def seed_database()
     test_todo1 = {
-        'title' => 'Buy apples',
-        'description' => 'At least 2KGs',
-        'isComplete' => true
+        title: 'Buy apples',
+        description: 'At least 2KGs',
+        isComplete: true
     }
 
     test_todo2 = {
@@ -181,7 +183,7 @@ end
 {% section #step-7 step=7 title="Retrieve documents" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
-Run the functions to by calling `runAllTasks();`.
+Run the functions to by calling `run_all_tasks()`.
 
 ```ruby
 def get_todos
@@ -207,6 +209,6 @@ run_all_tasks
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with `ruby app.ruby` and view the response in your console.
+Run your project with `ruby app.rb` and view the response in your console.
 
 {% /section %}
