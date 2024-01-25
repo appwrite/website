@@ -12,9 +12,10 @@ There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
 1. The function is invoked.
-2. Appwrite passes in request information like headers, body or path through the `context.req` object.
-3. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
-4. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
+1. The active [deployment](/docs/products/functions/deployments)'s executor will handle the request.
+1. The Executor passes in request information like headers, body or path through the `context.req` object of your [entrypoint](#entrypoint).
+1. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
+1. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
 
 You'll find all of these steps in a simple function like this.
 
@@ -214,8 +215,8 @@ Future main(final context) async {
   //
   // final client = Client()
   //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(Platform.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-  //    .setKey(Platform.environment["APPWRITE_API_KEY"]);
+  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+  //    .setKey(process.env.APPWRITE_API_KEY);
 
   // You can log messages to the console
   context.log('Hello, Logs!');
