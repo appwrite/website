@@ -103,7 +103,6 @@ todoDatabase = try? await databases.create(databaseId: ID.unique(), name: "Todos
 todoCollection = try? await databases.createCollection(databaseId: todoDatabase!.id, collectionId: ID.unique(), name: "Todos")
 
 func prepareDatabase() async {
-
     try? await databases.createStringAttribute(databaseId: todoDatabase!.id, collectionId: todoCollection!.id, key: "title", size: 255, xrequired: true)
     try? await databases.createStringAttribute(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, key: "description", size: 255, xrequired: false, xdefault: "This is a test description.")
     try? await databases.createBooleanAttribute(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, key: "isComplete", xrequired: true)
