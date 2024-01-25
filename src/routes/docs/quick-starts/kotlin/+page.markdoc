@@ -11,7 +11,7 @@ Learn how to setup your first Kotlin project powered by Appwrite.
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 {% info title="Server SDK" %}
-This tutorial is for the Swift Server SDK, meant for server and backend applications.
+This tutorial is for the Kotlin Server SDK, meant for server and backend applications.
 If you're trying to build a client-side app, like an Android app,
 follow the [Start with Android guide](https://appwrite.io/docs/quick-starts/android).
 {% /info %}
@@ -53,13 +53,13 @@ Other scopes are optional.
 {% /section %}
 {% section #step-2 step=2 title="Create Kotlin project" %}
 Create a Kotlin application by opening **IntelliJ IDEA** > **New Project** and create a **Kotlin** application.
-This quick start will use **Gradle** as the build system, but you can follow with Maven or IntelliJ if you're more comfortable.
+This quick start will use **Gradle** as the build system, with the Kotlin DSL. You can follow with Maven or IntelliJ if you're more comfortable.
 
 Follow the wizard and open your new project. 
 
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
-Open you `build.gradle.kts` file and implement the following dependency.
+Open your `build.gradle.kts` file and implement the following dependency.
 
 ```groovy
 dependencies {
@@ -88,11 +88,11 @@ import io.appwrite.ID
 import io.appwrite.services.Databases
 import io.appwrite.models.Database as Database
 import io.appwrite.models.Collection
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.coroutineScope
 val client = Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1")
-    .SetProject("<YOUR_PROJECT_ID>")
-    .SetKey("<YOUR_API_KEY>");
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
 ```
 
 {% /section %}
@@ -106,7 +106,7 @@ val databases = Databases(client)
 var todoDatabase: Database? = null
 var todoCollection: Collection? = null
 
-fun prepareDatabase() = runBlocking {
+suspend fun prepareDatabase() {
     todoDatabase = databases.create(ID.unique(), "TodosDB")
     todoCollection = databases.createCollection(todoDatabase?.id!!, ID.unique(), "Todos")
 
@@ -120,7 +120,7 @@ fun prepareDatabase() = runBlocking {
 {% section #step-6 step=6 title="Add documents" %}
 Create a function to add some mock data into your new collection.
 ```kotlin
-fun seedDatabase() = runBlocking {
+suspend fun seedDatabase() {
     val testTodo1 = mapOf(
         "title" to "Buy apples",
         "description" to "At least 2KGs",
@@ -150,17 +150,19 @@ fun seedDatabase() = runBlocking {
 Create a function to retrieve the mock todo data.
 
 ```kotlin
-fun getTodos() = runBlocking {
+suspend fun getTodos() {
     val todos = databases.listDocuments(todoDatabase?.id!!, todoCollection?.id!!)
     for (todo in todos.documents) {
         println("Title: ${todo.data["title"]}\nDescription: ${todo.data["description"]}\nIs Todo Complete: ${todo.data["isComplete"]}\n\n")
     }
 }
 
-fun main() {
-    prepareDatabase()
-    seedDatabase()
-    getTodos()
+suspend fun main() = coroutineScope {
+    launch {
+        prepareDatabase()
+        seedDatabase()
+        getTodos()
+    }
 }
 ```
 

@@ -73,7 +73,7 @@ Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<YOUR_PRO
 ```ts
 import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
 
-const client: Models.Client = new Client();
+const client: Client = new Client();
 
 client
     .setEndpoint("https://cloud.appwrite.io/v1")
@@ -87,7 +87,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```ts
-const databases: Models.Databases = new Databases(client);
+const databases: Databases = new Databases(client);
 
 var todoDatabase: Models.Database;
 var todoCollection: Models.Collection;
