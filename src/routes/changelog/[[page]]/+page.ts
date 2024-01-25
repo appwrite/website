@@ -1,4 +1,3 @@
-import { browser } from '$app/environment';
 import { redirect } from '@sveltejs/kit';
 import { CHANGELOG_DEPENDENCY, getAllChangelogEntries } from '../utils';
 
@@ -17,7 +16,7 @@ export const entries = async () => {
 export const load = async ({ depends, params }) => {
   depends(CHANGELOG_DEPENDENCY);
   
-  if (browser && params.page === '1') {
+  if (params.page === '1') {
     throw redirect(302, '/changelog');
   }
 
