@@ -1,14 +1,32 @@
 ---
 layout: article
-title: Deployment
-description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
+title: Domains
+description: Execute Appwrite Functions through domains using standard HTTP GET, POST, or other request methods to serve static, JSON, HTML, or other content.
 ---
 
-# Domains {% #domains %} 
+Each deployed function can have its own domain, generated or developer defined.
+You can use this domain to execute Appwrite Functions through HTTP methods. 
+You can use common practices like using paths, query parameters, headers, HTTP methods, formdata, 
+and all the typical HTTP concepts to implement Appwrite Functions.
 
-Each deployed function can have its own domain. By default, one is generated for each of your functions.
+{% arrow_link href="/docs/products/functions/develop" %}
+Learn about Function development
+{% /arrow_link %}
 
-To find or add a domain:
+# Generated domains {% #generated-domains %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Under the **Domains** tab, you'll find the generated domain from Appwrite.
+
+The domain usually has this format.
+```bash
+https://64d4d22db370ae41a32e.appwrite.global
+```
+
+Appwrite generates TLS certificates to enforce HTTPS on all Appwrite Functions domains, generated or custom.
+These domains are safe to use and access in production.
+
+# Add a custom domain {% #add-a-custom-domain %}
 
 1. Navigate to the Appwrite Console's **Functions** page.
 2. Navigate to the **Domains** tab.
@@ -18,3 +36,8 @@ To find or add a domain:
 6. Click **Go to console** and wait for verification and certificate generation.
 
 DNS records can take up to 48 hours to propagate.
+
+Appwrite generates TLS certificates to enforce HTTPS on all Appwrite Functions domains, generated or custom.
+These domains are safe to use and access in production.
+
+When both **VERIFICATION STATUS** and **CERTIFICATE STATUS** are green, the new domain is ready to use.

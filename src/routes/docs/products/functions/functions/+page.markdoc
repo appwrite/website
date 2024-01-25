@@ -7,411 +7,10 @@ description: Learn what an Appwrite Function can do for you and how to create a 
 Each Appwrite Function is a piece of user defined code that can be executed on demand.
 When you create a new Appwrite Function, you select a name, ID, and [runtime language](/docs/products/functions/runtimes).
 
-Appwrite Functions can be versioned with [deployments](/docs/products/functions/deployments).
+Each time a function changes, a [deployment](/docs/products/functions/deployments) is created, which is like a version of a function.
 Each function has a single active deployment, which is the version of code that's executed when it's called.
 You can update the Appwrite Function's code by creating new [deployments](/docs/products/functions/deployments). 
 You can also switch between different deployments by activating them.
-
-# Lifecycle {% #life-cycle %}
-There is a clear lifecycle for all Appwrite Functions, from beginning to end.
-Here's everything that happens during a function execution.
-
-1. The function is invoked.
-2. Appwrite passes in request information like headers, body or path through the `context.req` object.
-3. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
-4. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
-
-You'll find all of these steps in a simple function like this.
-
-{% multicode %}
-```js
-import { Client } from 'node-appwrite';
-
-// This is your Appwrite function
-// It's executed each time we get a request
-export default async ({ req, res, log, error }) => {
-  // Why not try the Appwrite SDK?
-  //
-  // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  //    .setKey(process.env.APPWRITE_API_KEY);
-
-  // You can log messages to the console
-  log('Hello, Logs!');
-
-  // If something goes wrong, log an error
-  error('Hello, Errors!');
-
-  // The `req` object contains the request data
-  if (req.method === 'GET') {
-    // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return res.send('Hello, World!');
-  }
-
-  // `res.json()` is a handy helper for sending JSON
-  return res.json({
-    motto: 'Build like a team of hundreds_',
-    learn: 'https://appwrite.io/docs',
-    connect: 'https://appwrite.io/discord',
-    getInspired: 'https://builtwith.appwrite.io',
-  });
-};
-```
-
-```php
-require(__DIR__ . '/../vendor/autoload.php');
-
-use Appwrite\Client;
-use Appwrite\Exception;
-
-// This is your Appwrite function
-// It's executed each time we get a request
-return function ($context) {
-    // Why not try the Appwrite SDK?
-    //
-    // $client = new Client();
-    // $client
-    //     ->setEndpoint('https://cloud.appwrite.io/v1')
-    //     ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    //      ->setKey(getenv('APPWRITE_API_KEY'));
-
-    // You can log messages to the console
-    $context->log('Hello, Logs!');
-
-    // If something goes wrong, log an error
-    $context->error('Hello, Errors!');
-
-    // The `req` object contains the request data
-    if ($context->req->method === 'GET') {
-        // Send a response with the res object helpers
-        // `res.send()` dispatches a string back to the client
-        return $context->res->send('Hello, World!');
-    }
-
-    // `res.json()` is a handy helper for sending JSON
-    return $context->res->json([
-        'motto' => 'Build like a team of hundreds_',
-        'learn' => 'https://appwrite.io/docs',
-        'connect' => 'https://appwrite.io/discord',
-        'getInspired' => 'https://builtwith.appwrite.io',
-    ]);
-};
-```
-
-```python
-from appwrite.client import Client
-import os
-
-
-# This is your Appwrite function
-# It's executed each time we get a request
-def main(context):
-    # Why not try the Appwrite SDK?
-    #
-    # client = (
-    #     Client()
-    #         .set_endpoint("https://cloud.appwrite.io/v1")
-    #         .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #         .set_key(os.environ["APPWRITE_API_KEY"])
-    # )
-
-    # You can log messages to the console
-    context.log("Hello, Logs!")
-
-    # If something goes wrong, log an error
-    context.error("Hello, Errors!")
-
-    # The `context.req` object contains the request data
-    if context.req.method == "GET":
-        # Send a response with the res object helpers
-        # `context.res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
-
-    # `context.res.json()` is a handy helper for sending JSON
-    return context.res.json({
-        "motto": "Build like a team of hundreds_",
-        "learn": "https://appwrite.io/docs",
-        "connect": "https://appwrite.io/discord",
-        "getInspired": "https://builtwith.appwrite.io",
-    })
-```
-```ruby
-require "appwrite"
-
-# This is your Appwrite function
-# It's executed each time we get a request
-def main(context)
-  # Why not try the Appwrite SDK?
-  #
-  # client = Appwrite::Client.new
-  # client
-  #   .set_endpoint('https://cloud.appwrite.io/v1')
-  #   .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-  #   .set_key(ENV['APPWRITE_API_KEY'])
-
-  # You can log messages to the console
-  context.log("Hello, Logs!")
-
-  # If something goes wrong, log an error
-  context.error("Hello, Errors!")
-
-  # The `context.req` object contains the request data
-  if (context.req.method == "GET")
-    # Send a response with the res object helpers
-    # `context.res.send()` dispatches a string back to the client
-    return context.res.send("Hello, World!")
-  end
-
-  # `context.res.json()` is a handy helper for sending JSON
-  return context.res.json({
-    "motto": "Build like a team of hundreds_",
-    "learn": "https://appwrite.io/docs",
-    "connect": "https://appwrite.io/discord",
-    "getInspired": "https://builtwith.appwrite.io",
-  })
-end
-```
-```deno
-import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
-
-// This is your Appwrite function
-// It's executed each time we get a request
-export default ({ req, res, log, error }: any) => {
-  // Why not try the Appwrite SDK?
-  //
-  // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
-  //    .setKey(Deno.env.get("APPWRITE_API_KEY"));
-
-  // You can log messages to the console
-  log("Hello, Logs!");
-
-  // If something goes wrong, log an error
-  error("Hello, Errors!");
-
-  // The `req` object contains the request data
-  if (req.method === "GET") {
-    // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return res.send("Hello, World!");
-  }
-
-  // `res.json()` is a handy helper for sending JSON
-  return res.json({
-    motto: "Build like a team of hundreds_",
-    learn: "https://appwrite.io/docs",
-    connect: "https://appwrite.io/discord",
-    getInspired: "https://builtwith.appwrite.io",
-  });
-};
-```
-```dart
-import 'dart:async';
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-// This is your Appwrite function
-// It's executed each time we get a request
-Future main(final context) async {
-// Why not try the Appwrite SDK?
-  //
-  // final client = Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  //    .setKey(process.env.APPWRITE_API_KEY);
-
-  // You can log messages to the console
-  context.log('Hello, Logs!');
-
-  // If something goes wrong, log an error
-  context.error('Hello, Errors!');
-
-  // The `req` object contains the request data
-  if (context.req.method == 'GET') {
-    // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return context.res.send('Hello, World!');
-  }
-
-  // `res.json()` is a handy helper for sending JSON
-  return context.res.json({
-    'motto': 'Build like a team of hundreds_',
-    'learn': 'https://appwrite.io/docs',
-    'connect': 'https://appwrite.io/discord',
-    'getInspired': 'https://builtwith.appwrite.io',
-  });
-}
-```
-```kotlin
-package io.openruntimes.kotlin.src
-
-import io.openruntimes.kotlin.RuntimeContext
-import io.openruntimes.kotlin.RuntimeOutput
-import io.appwrite.Client
-import java.util.HashMap
-
-class Main {
-    // This is your Appwrite function
-    // It's executed each time we get a request
-    fun main(context: RuntimeContext): RuntimeOutput {
-        // Why not try the Appwrite SDK?
-        // val client = Client()
-        //    .setEndpoint("https://cloud.appwrite.io/v1")
-        //    .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //    .setKey(System.getenv("APPWRITE_API_KEY"))
-
-        // You can log messages to the console
-        context.log("Hello, Logs!")
-
-        // If something goes wrong, log an error
-        context.error("Hello, Errors!")
-
-        // The `context.req` object contains the request data
-        if (context.req.method == "GET") {
-            // Send a response with the res object helpers
-            // `context.res.send()` dispatches a string back to the client
-            return context.res.send("Hello, World!")
-        }
-
-        // `context.res.json()` is a handy helper for sending JSON
-        return context.res.json(mutableMapOf(
-            "motto" to "Build like a team of hundreds_",
-            "learn" to "https://appwrite.io/docs",
-            "connect" to "https://appwrite.io/discord",
-            "getInspired" to "https://builtwith.appwrite.io"
-        ))
-    }
-}
-```
-```java
-package io.openruntimes.java.src;
-
-import io.openruntimes.java.RuntimeContext;
-import io.openruntimes.java.RuntimeOutput;
-import java.util.HashMap;
-import io.appwrite.Client;
-
-public class Main {
-
-    // This is your Appwrite function
-    // It's executed each time we get a request
-    public RuntimeOutput main(RuntimeContext context) throws Exception {
-        // Why not try the Appwrite SDK?
-        //
-        // Client client = new Client()
-        //     .setEndpoint("https://cloud.appwrite.io/v1")
-        //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //     .setKey(System.getenv("APPWRITE_API_KEY"));
-
-        // You can log messages to the console
-        context.log("Hello, Logs!");
-
-        // If something goes wrong, log an error
-        context.error("Hello, Errors!");
-
-        // The `context.getReq()` object contains the request data
-        if (context.getReq().getMethod().equals("GET")) {
-            // Send a response with the res object helpers
-            // `context.getRes().send()` dispatches a string back to the client
-            return context.getRes().send("Hello, World!");
-        }
-
-        Map json = new HashMap<>();
-        json.put("motto", "Build like a team of hundreds_");
-        json.put("learn", "https://appwrite.io/docs");
-        json.put("connect", "https://appwrite.io/discord");
-        json.put("getInspired", "https://builtwith.appwrite.io");
-
-        // `context.getRes().json()` is a handy helper for sending JSON
-        return context.getRes().json(json);
-    }
-}
-```
-```swift
-import Appwrite
-import AppwriteModels
-import Foundation
-
-// This is your Appwrite function
-// It's executed each time we get a request
-func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    // Why not try the Appwrite SDK?
-    //
-    // let client = Client()
-    //    .setEndpoint("https://cloud.appwrite.io/v1")
-    //    .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-    //    .setKey(ProcessInfo.processInfo.environment["APPWRITE_API_KEY"]);
-
-    // You can log messages to the console
-    context.log("Hello, Logs!")
-
-    // If something goes wrong, log an error
-    context.error("Hello, Errors!")
-
-    // The `context.req` object contains the request data
-    if context.req.method == "GET" {
-        // Send a response with the res object helpers
-        // `res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
-    }
-
-    // `context.res.json()` is a handy helper for sending JSON
-    return try context.res.json([
-        "motto": "Build like a team of hundreds_",
-        "learn": "https://appwrite.io/docs",
-        "connect": "https://appwrite.io/discord",
-        "getInspired": "https://builtwith.appwrite.io",
-    ])
-}
-```
-```csharp
-namespace DotNetRuntime;
-
-using Appwrite;
-using Appwrite.Services;
-using Appwrite.Models;
-
-public class Handler {
-
-    // This is your Appwrite function
-    // It"s executed each time we get a request
-    public async Task Main(RuntimeContext Context) 
-    {
-        // Why not try the Appwrite SDK?
-        //
-        // var client = new Client()
-        //     .SetEndpoint("https://cloud.appwrite.io/v1")  
-        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))        
-        //     .SetKey(Environment.GetEnvironmentVariable("APPWRITE_API_KEY"))
-
-        // You can log messages to the console
-        Context.Log("Hello, Logs!");
-
-        // If something goes wrong, log an error
-        Context.Error("Hello, Errors!");
-
-        // The `Context.Req` object contains the request data
-        if (Context.Req.Method == "GET") {
-            // Send a response with the res object helpers
-            // `Context.Res.Send()` dispatches a string back to the client
-            return Context.Res.Send("Hello, World!");
-        }
-
-        // `Context.Res.Json()` is a handy helper for sending JSON
-        return Context.Res.Json(new Dictionary()
-        {
-            { "motto", "Build like a team of hundreds_" },
-            { "learn", "https://appwrite.io/docs" },
-            { "connect", "https://appwrite.io/discord" },
-            { "getInspired", "https://builtwith.appwrite.io" },
-        });
-    }
-}
-```
-{% /multicode %}
-
 
 # Create function {% #create-function %}
 You can create Appwrite Functions in three different ways.
@@ -485,3 +84,100 @@ appwrite deploy function
 ```
 {% /tabsitem %}
 {% /tabs %}
+
+After creating your function, create a [deployment](/docs/products/functions/deployments) to add code to the function.
+
+# Configuration {% #configuration %}
+
+## Name {% #name %}
+You can update the name of your function by navigating to your function > **Settings** > **Name**.
+Update your function's name and click **Update**.
+Functions are executed using it's ID, updating name does not affect references to your function.
+
+## Runtime {% #runtime %}
+Every deployment of a function uses the same runtime. 
+You can update the runtime of a function by navigating to function > **Settings** > **Runtime**.
+Select a new runtime and click **Update**.
+
+{% info title="Redeployment required" %}
+This change requires your function to be redeployed to take effect.
+{% /info %}
+
+When you update a function's runtime, the code of your function may not be compatible with the new runtime.
+Remember to update your code and redeploy your function.
+
+## Build configuration {% #build-configuration %}
+You can update the entrypoint file and build settings of your function by navigating to your function > 
+**Settings** > **Configuration**. 
+
+{% info title="Redeployment required" %}
+This change requires your function to be redeployed to take effect.
+{% /info %}
+
+The **Entrypoint** refers to the file imported and executed by the function executor. 
+It must export a [valid function entrypoint function](/docs/products/functions/develop#entry).
+It's recommended you use one of the [starter function templates](/docs/products/functions/develop#templates) and edit from there.
+
+Under **Build settings**, you can update your build commands. 
+These are terminal commands that will be executed in the [runtime containers]() in the [build step]() of the deployment process.
+
+## Git integration {% #git-integration %}
+You can update the entrypoint file and build settings of your function by navigating to your function > **Settings** > **Configuration**.
+
+{% info title="Redeployment required" %}
+This change requires your function to be redeployed to take effect.
+{% /info %}
+
+Under **Git settings** you can configure the Git repository and branch that your function is connected to.
+
+Build commands and entrypoint are executed relative to the configured **Root directory** of your Git respository.
+
+By default, Appwrite will create comments in PRs to your connected branch. You can use **Silent mode** to suppress these comments.
+
+## Execution logs {% #execution-logs %}
+You can enable and disable execution logs for your functions by navigating to your function > **Settings** > **Execution logs**
+In production environments, you can choose to disable execution logs to protect user privacy.
+
+## Execute access {% #execution-access %}
+You can control who can execute your functions
+by navigating to your function > **Settings** > **Execute access**
+and granting access to select [permission roles](/docs/advanced/platform/permissions#permission-roles).
+
+If this is left empty, no user can execute your function.
+Server SDKs, scheduled executions, and event function triggers don't require permissions to execute a function.
+
+## Events{% #events %}
+Functions can be triggered by [platform events](/docs/advanced/platform/events) which reflect changes 
+that occur in your Appwrite project.
+You can configure events triggers by navigating to your function > **Settings** > **Events**.
+
+## Schedule {% #schedule %}
+
+Appwrite supports scheduled function executions. 
+You can schedule executions using [cron expressions](https://en.wikipedia.org/wiki/Cron) in the settings of your function. 
+Cron supports recurring executions as frequently as **every minute**.
+
+You can configure events triggers by navigating to your function > **Settings** > **Schedule**.
+
+Here are some cron expressions for common intervals:
+
+| Cron Expression  | Schedule              |
+| ---------------- | --------------------- |
+| `*/15 * * * *`   | Every 15 minutes      |
+| `0 * * * *`      | Every Hour            |
+| `0 0 * * *`      | Every day at 00:00    |
+| `0 0 * * 1`      | Every Monday at 00:00 |
+
+## Environment variables {% #environment-variables %}
+Set static environment variables that will be passed to your function 
+by navigating to your function > **Settings** > **Environment variables**.
+
+{% info title="Redeployment required" %}
+This change requires your function to be redeployed to take effect.
+{% /info %}
+
+You can access environment variables inside functions using your [runtime language's system methods](/docs/products/functions/develop#function-variables).
+
+## Timeout {% #timeout %}
+You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.
+There is a system wide maximum timeout of 900 seconds (15 minutes).
