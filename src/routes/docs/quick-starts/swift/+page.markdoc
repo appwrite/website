@@ -99,13 +99,38 @@ let databases = Databases(client)
 var todoDatabase: Database?
 var todoCollection: Collection?
 
-todoDatabase = try? await databases.create(databaseId: ID.unique(), name: "TodosDB")
-todoCollection = try? await databases.createCollection(databaseId: todoDatabase!.id, collectionId: ID.unique(), name: "Todos")
+todoDatabase = try? await databases.create(
+    databaseId: ID.unique(),
+    name: "TodosDB"
+)
+todoCollection = try? await databases.createCollection(
+    databaseId: todoDatabase!.id,
+    collectionId: ID.unique(),
+    name: "Todos"
+)
 
 func prepareDatabase() async {
-    try? await databases.createStringAttribute(databaseId: todoDatabase!.id, collectionId: todoCollection!.id, key: "title", size: 255, xrequired: true)
-    try? await databases.createStringAttribute(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, key: "description", size: 255, xrequired: false, xdefault: "This is a test description.")
-    try? await databases.createBooleanAttribute(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, key: "isComplete", xrequired: true)
+    try? await databases.createStringAttribute(
+        databaseId: todoDatabase!.id,
+        collectionId: todoCollection!.id,
+        key: "title",
+        size: 255,
+        xrequired: true
+    )
+    try? await databases.createStringAttribute(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String,
+        key: "description",
+        size: 255,
+        xrequired: false,
+        xdefault: "This is a test description."
+    )
+    try? await databases.createBooleanAttribute(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String,
+        key: "isComplete",
+        xrequired: true
+    )
 }
 ```
 
@@ -131,9 +156,22 @@ func seedDatabase() async {
         "isComplete": false
     ]
 
-    try? await databases.createDocument(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, documentId: UUID().uuidString, data: testTodo1)
-    try? await databases.createDocument(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, documentId: UUID().uuidString, data: testTodo2)
-    try? await databases.createDocument(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String, documentId: UUID().uuidString, data: testTodo3)
+    try? await databases.createDocument(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String,
+        documentId: ID.unique(), data: testTodo1
+    )
+    try? await databases.createDocument(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String,
+        documentId: ID.unique(), data: testTodo2
+    )
+    try? await databases.createDocument(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String,
+        documentId: ID.unique(),
+        data: testTodo3
+    )
 }
 ```
 
@@ -147,7 +185,10 @@ func getTodos() async {
     let todos = try? await databases.listDocuments(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String)
     for document in todos?.documents ?? [] {
         if let todo = document.data as? [String: Any] {
-            print("Title: \(todo["title"] ?? "")\nDescription: \(todo["description"] ?? "")\nIs Todo Complete: \(todo["isComplete"] ?? "")\n\n")
+            print("Title: \(todo["title"] ?? "")\n"
+                + "Description: \(todo["description"] ?? "")\n"
+                + "Is Todo Complete: \(todo["isComplete"] ?? "")\n\n"
+            )
         }
     }
 }

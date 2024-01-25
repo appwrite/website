@@ -110,9 +110,29 @@ suspend fun prepareDatabase() {
     todoDatabase = databases.create(ID.unique(), "TodosDB")
     todoCollection = databases.createCollection(todoDatabase?.id!!, ID.unique(), "Todos")
 
-    databases.createStringAttribute(todoDatabase?.id!!, todoCollection?.id!!, "title", 255, true)
-    databases.createStringAttribute(todoDatabase?.id!!, todoCollection?.id!!, "description", 255, false, "This is a test description.")
-    databases.createBooleanAttribute(todoDatabase?.id!!, todoCollection?.id!!, "isComplete", true)
+    databases.createStringAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "title",
+        size = 255,
+        required = true
+    )
+
+    databases.createStringAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "description",
+        size = 255,
+        required = false,
+        default = "This is a test description."
+    )
+
+    databases.createBooleanAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "isComplete",
+        required = true
+    )
 }
 ```
 
@@ -138,9 +158,26 @@ suspend fun seedDatabase() {
         "isComplete" to false
     )
 
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo1)
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo2)
-    databases.createDocument(todoDatabase?.id!!, todoCollection?.id!!, ID.unique(), testTodo3)
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo1
+    )
+
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo2
+    )
+
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo3
+    )
 }
 ```
 
@@ -153,16 +190,19 @@ Create a function to retrieve the mock todo data.
 suspend fun getTodos() {
     val todos = databases.listDocuments(todoDatabase?.id!!, todoCollection?.id!!)
     for (todo in todos.documents) {
-        println("Title: ${todo.data["title"]}\nDescription: ${todo.data["description"]}\nIs Todo Complete: ${todo.data["isComplete"]}\n\n")
+        println("""
+                    Title: ${todo.data["title"]}
+                    Description: ${todo.data["description"]}
+                    Is Todo Complete: ${todo.data["isComplete"]}
+                    
+                """.trimIndent())
     }
 }
 
 suspend fun main() = coroutineScope {
-    launch {
-        prepareDatabase()
-        seedDatabase()
-        getTodos()
-    }
+    prepareDatabase()
+    seedDatabase()
+    getTodos()
 }
 ```
 

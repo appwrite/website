@@ -94,38 +94,42 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 ```php
 $databases = new Databases($client);
 
-$todoDatabase = $databases->create(ID::unique(), 'TodosDB');
+function prepareDatabase($databases) {
+    $todoDatabase = $databases->create(
+        databaseId: ID::unique(), 
+        name: 'TodosDB'
+    );
 
-$todoCollection = $databases->createCollection(
-    $todoDatabase['$id'], 
-    ID::unique(),
-    'Todos'
-);
-
-function prepareDatabase($databases, $todoDatabase, $todoCollection) {
-
-    $databases->createStringAttribute(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        'title', 
-        255, 
-        true
+    $todoCollection = $databases->createCollection(
+        databaseId: $todoDatabase['$id'], 
+        collectionId: ID::unique(),
+        name: 'Todos'
     );
 
     $databases->createStringAttribute(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        'description', 
-        255, 
-        false, 
+        databaseId: $todoDatabase['$id'], 
+        collectionId: $todoCollection['$id'], 
+        key: 'title', 
+        size: 255, 
+        required: true
+    );
+
+    $databases->createStringAttribute(
+        databaseId: $todoDatabase['$id'], 
+        collectionId: $todoCollection['$id'], 
+        key: 'description', 
+        size: 255, 
+        required: false, 
     );
 
     $databases->createBooleanAttribute(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        'isComplete', 
-        true
+        databaseId: $todoDatabase['$id'], 
+        collectionId: $todoCollection['$id'], 
+        key: 'isComplete', 
+        required: true
     );
+
+    return [$todoDatabase, $todoCollection];
 }
 ```
 
@@ -189,23 +193,25 @@ function getTodos($databases, $todoDatabase, $todoCollection) {
     );
 
     foreach ($todos['documents'] as $todo) {
-        echo "Title: {$todo['title']}\nDescription: {$todo['description']}\nIs Todo Complete: {$todo['isComplete']}\n\n";
-    }
+        echo "Title: {$todo['title']}\n" .
+            "Description: {$todo['description']}\n" .
+            "Is Todo Complete: {$todo['isComplete']}\n\n";    
+        }
 }
 
-function runAllTasks($databases, $todoDatabase, $todoCollection) {
-    prepareDatabase($databases, $todoDatabase, $todoCollection);
+function runAllTasks($databases) {
+    [$todoDatabase, $todoCollection] = prepareDatabase($databases);
     seedDatabase($databases, $todoDatabase, $todoCollection);
     getTodos($databases, $todoDatabase, $todoCollection);
 }
 
-runAllTasks($databases, $todoDatabase, $todoCollection);
+runAllTasks($databases);
 ```
 
 {% /section %}
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with `php index.php` and view the response in your console.
+Run your project with `php src/index.php` and view the response in your console.
 
 {% /section %}
