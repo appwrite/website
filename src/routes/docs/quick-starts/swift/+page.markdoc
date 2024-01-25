@@ -39,8 +39,8 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
 |           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
 
 Other scopes are optional.
 

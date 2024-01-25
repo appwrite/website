@@ -119,6 +119,30 @@
                     image: '/images/blog/placeholder.png',
                     href: 'ruby'
                 },
+                {
+                    title: 'Deno',
+                    icon: 'icon-deno',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
+                {
+                    title: 'PHP',
+                    icon: 'icon-php',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
+                {
+                    title: 'Kotlin',
+                    icon: 'icon-kotlin',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
+                {
+                    title: 'Swift',
+                    icon: 'icon-swift',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
             ]
         }
     ];
