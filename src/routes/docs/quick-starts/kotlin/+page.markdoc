@@ -89,6 +89,7 @@ import io.appwrite.services.Databases
 import io.appwrite.models.Database as Database
 import io.appwrite.models.Collection
 import kotlinx.coroutines.coroutineScope
+
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<YOUR_PROJECT_ID>")
@@ -190,12 +191,13 @@ Create a function to retrieve the mock todo data.
 suspend fun getTodos() {
     val todos = databases.listDocuments(todoDatabase?.id!!, todoCollection?.id!!)
     for (todo in todos.documents) {
-        println("""
-                    Title: ${todo.data["title"]}
-                    Description: ${todo.data["description"]}
-                    Is Todo Complete: ${todo.data["isComplete"]}
-                    
-                """.trimIndent())
+        println(
+            """
+            Title: ${todo.data["title"]}
+            Description: ${todo.data["description"]}
+            Is Todo Complete: ${todo.data["isComplete"]}
+            """.trimIndent()
+        )
     }
 }
 

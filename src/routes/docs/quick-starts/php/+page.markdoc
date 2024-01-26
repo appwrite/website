@@ -196,7 +196,7 @@ function getTodos($databases, $todoDatabase, $todoCollection) {
         echo "Title: {$todo['title']}\n" .
             "Description: {$todo['description']}\n" .
             "Is Todo Complete: {$todo['isComplete']}\n\n";    
-        }
+   }
 }
 
 function runAllTasks($databases) {
