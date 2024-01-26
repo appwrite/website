@@ -92,44 +92,45 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 ```ruby
 databases = Databases.new(client)
 
-@todo_database = nil
-@todo_collection = nil
+todo_database = nil
+todo_collection = nil
 
-def prepare_database
-    @todo_database = @databases.create(
+def prepare_database(databases)
+    todo_database = databases.create(
         database_id: ID.unique(), 
         name: 'TodosDB'
     )
 
-    @todo_collection = @databases.create_collection(
-        database_id: @todo_database.id, 
+    todo_collection = databases.create_collection(
+        database_id: todo_database.id, 
         collection_id: ID.unique(), 
         name: 'Todos'
     )
 
-    @databases.create_string_attribute(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_string_attribute(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         key: 'title', 
         size: 255, 
         required: true
     )
 
-    @databases.create_string_attribute(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_string_attribute(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         key: 'description', 
         size: 255, 
         required: false
     )
 
-    @databases.create_boolean_attribute(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_boolean_attribute(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         key: 'isComplete', 
         required: false,
         default: false
     )
+    return todo_database, todo_collection
 end
 ```
 
@@ -138,7 +139,7 @@ end
 Create a function to add some mock data into your new collection.
 
 ```ruby
-def seed_database()
+def seed_database(databases, todo_database, todo_collection)
     test_todo1 = {
         title: 'Buy apples',
         description: 'At least 2KGs',
@@ -153,26 +154,26 @@ def seed_database()
     test_todo3 = {
         title: 'Cut the apples',
         description: 'Don\'t forget to pack them in a box',
-        'isComplete: false
+        isComplete: false
     }
 
-    @databases.create_document(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_document(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         document_id: ID.unique(), 
         data: test_todo1
     )
     
-    @databases.create_document(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_document(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         document_id: ID.unique(), 
         data: test_todo2
     )
     
-    @databases.create_document(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id, 
+    databases.create_document(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id, 
         document_id: ID.unique(), 
         data: test_todo3
     )
@@ -186,10 +187,10 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `run_all_tasks()`.  
 
 ```ruby
-def get_todos
-    todos = @databases.list_documents(
-        database_id: @todo_database.id, 
-        collection_id: @todo_collection.id
+def get_todos(databases, todo_database, todo_collection)
+    todos = databases.list_documents(
+        database_id: todo_database.id, 
+        collection_id: todo_collection.id
     )
 
     todos.documents.each do |todo|
@@ -197,12 +198,13 @@ def get_todos
     end
 end
 
-def run_all_tasks
-    prepare_database
-    seed_database
-    get_todos
+def run_all_tasks(databases)
+    todo_database, todo_collection = prepare_database(databases)
+    seed_database(databases, todo_database, todo_collection)
+    get_todos(databases, todo_database, todo_collection)
 end
-run_all_tasks
+
+run_all_tasks(databases)
 ```
 
 {% /section %}
