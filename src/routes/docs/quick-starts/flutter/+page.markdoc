@@ -182,35 +182,32 @@ import 'package:appwrite/models.dart' as models;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Client client = Client();
-  client = Client()
+  Client client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("650209298acac4ee1bb6");
+      .setProject("<YOUR_PROJECT_ID>");
   Account account = Account(client);
 
-  runApp(MyApp(
-    account: account,
+  runApp(MaterialApp(
+    home: MyApp(account: account),
   ));
 }
-```
-{% /section %}
-{% section #step-5 step=5 title="Create a login page" %}
-Then, append the following widgets to `lib/main.dart` create your login page.
-import 'package:appwrite/appwrite.dart';
-
-```dart
-class MyForm extends StatefulWidget {
+class MyApp extends StatefulWidget {
   final Account account;
 
-  MyForm({required this.account});
+  MyApp({required this.account});
 
   @override
   MyFormState createState() {
     return MyFormState();
   }
 }
+```
+{% /section %}
+{% section #step-5 step=5 title="Create a login page" %}
+Then, append the following widgets to `lib/main.dart` create your login page.
 
-class MyFormState extends State<MyForm> {
+```dart
+class MyFormState extends State<MyApp> {
   models.User? loggedInUser;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -239,49 +236,60 @@ class MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(loggedInUser != null
-            ? 'Logged in as ${loggedInUser!.name}'
-            : 'Not logged in'),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: emailController,
-          decoration: InputDecoration(labelText: 'Email'),
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(loggedInUser != null
+                ? 'Logged in as ${loggedInUser!.name}'
+                : 'Not logged in'),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    login(emailController.text, passwordController.text);
+                  },
+                  child: Text('Login'),
+                ),
+                SizedBox(width: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    register(emailController.text, passwordController.text,
+                        nameController.text);
+                  },
+                  child: Text('Register'),
+                ),
+                SizedBox(width: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    logout();
+                  },
+                  child: Text('Logout'),
+                ),
+              ],
+            ),
+          ],
         ),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: passwordController,
-          decoration: InputDecoration(labelText: 'Password'),
-          obscureText: true,
-        ),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Name'),
-        ),
-        SizedBox(height: 16.0),
-        ElevatedButton(
-          onPressed: () {
-            login(emailController.text, passwordController.text);
-          },
-          child: Text('Login'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            register(emailController.text, passwordController.text,
-                nameController.text);
-          },
-          child: Text('Register'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            logout();
-          },
-          child: Text('Logout'),
-        ),
-      ],
+      ),
     );
   }
 }
