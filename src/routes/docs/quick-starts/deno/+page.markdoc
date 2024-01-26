@@ -194,7 +194,7 @@ Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    var todos = await databases.listDocuments(
+    const todos = await databases.listDocuments(
         todoDatabase.$id, 
         todoCollection.$id
     );

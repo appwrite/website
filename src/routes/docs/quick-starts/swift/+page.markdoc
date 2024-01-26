@@ -81,6 +81,7 @@ Open the file `main.swift` and initialize the Appwrite Client. Replace `<YOUR_PR
 ```swift
 import Foundation
 import Appwrite
+import AppwriteModels
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
