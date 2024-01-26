@@ -1,9 +1,16 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import Article from '$markdoc/layouts/Article.svelte';
     import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
 
     export let data;
 </script>
+
+<svelte:head>
+  {#if $page.params.version !== 'cloud'}
+    <link rel={`/docs/references/cloud/models/${$page.params.model}`} />
+  {/if}
+</svelte:head>
 
 <Article title={data.model.title} description="">
     <article>
