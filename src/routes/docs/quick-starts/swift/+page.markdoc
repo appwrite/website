@@ -97,20 +97,16 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 ```swift
 let databases = Databases(client)
 
-var todoDatabase: Database?
-var todoCollection: Collection?
-
-todoDatabase = try? await databases.create(
-    databaseId: ID.unique(),
-    name: "TodosDB"
-)
-todoCollection = try? await databases.createCollection(
-    databaseId: todoDatabase!.id,
-    collectionId: ID.unique(),
-    name: "Todos"
-)
-
-func prepareDatabase() async {
+func prepareDatabase() async -> (Database?, Collection?) {
+    let todoDatabase = try? await databases.create(
+        databaseId: ID.unique(),
+        name: "TodosDB"
+    )
+    let todoCollection = try? await databases.createCollection(
+        databaseId: todoDatabase!.id,
+        collectionId: ID.unique(),
+        name: "Todos"
+    )
     try? await databases.createStringAttribute(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
@@ -132,6 +128,8 @@ func prepareDatabase() async {
         key: "isComplete",
         xrequired: true
     )
+    
+    return (todoDatabase, todoCollection)
 }
 ```
 
@@ -139,7 +137,7 @@ func prepareDatabase() async {
 {% section #step-6 step=6 title="Add documents" %}
 Create a function to add some mock data into your new collection.
 ```swift
-func seedDatabase() async {
+func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
     let testTodo1: [String: Any] = [
         "title": "Buy apples",
         "description": "At least 2KGs",
@@ -158,18 +156,18 @@ func seedDatabase() async {
     ]
 
     try? await databases.createDocument(
-        databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String,
+        databaseId: todoDatabase!.id,
+        collectionId: todoCollection!.id,
         documentId: ID.unique(), data: testTodo1
     )
     try? await databases.createDocument(
-        databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String,
+        databaseId: todoDatabase!.id,
+        collectionId: todoCollection!.id,
         documentId: ID.unique(), data: testTodo2
     )
     try? await databases.createDocument(
-        databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String,
+        databaseId: todoDatabase!.id,
+        collectionId: todoCollection!.id,
         documentId: ID.unique(),
         data: testTodo3
     )
@@ -182,8 +180,11 @@ func seedDatabase() async {
 Create a function to retrieve the mock todo data.
 
 ```swift
-func getTodos() async {
-    let todos = try? await databases.listDocuments(databaseId: todoDatabase!.id as! String, collectionId: todoCollection!.id as! String)
+func getTodos(todoDatabase: Database?, todoCollection: Collection?) async {
+    let todos = try? await databases.listDocuments(
+        databaseId: todoDatabase!.id as! String,
+        collectionId: todoCollection!.id as! String
+    )
     for document in todos?.documents ?? [] {
         if let todo = document.data as? [String: Any] {
             print("Title: \(todo["title"] ?? "")\n"
@@ -194,9 +195,9 @@ func getTodos() async {
     }
 }
 
-await prepareDatabase()
-await seedDatabase()
-await getTodos()
+let (todoDatabase, todoCollection) = await prepareDatabase()
+await seedDatabase(todoDatabase: todoDatabase, todoCollection: todoCollection)
+await getTodos(todoDatabase: todoDatabase, todoCollection: todoCollection)
 ```
 
 {% /section %}
