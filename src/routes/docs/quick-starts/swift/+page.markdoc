@@ -158,12 +158,14 @@ func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), data: testTodo1
+        documentId: ID.unique(), 
+        data: testTodo1
     )
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), data: testTodo2
+        documentId: ID.unique(), 
+        data: testTodo2
     )
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
