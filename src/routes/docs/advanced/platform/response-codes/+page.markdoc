@@ -138,7 +138,6 @@ Errors found when using Appwrite Authentication.
 
 ## Databases errors
 Errors found when using Appwrite Databases.
-
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400  | collection_limit_exceeded | The maximum number of collections has been reached. |
@@ -210,7 +209,6 @@ Errors when using Appwrite Migrations.
 
 ## Avatars API errors
 Errors from the Appwrite Avatars API.
-
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 404  | avatar_set_not_found | The requested avatar set could not be found. |
@@ -221,7 +219,6 @@ Errors from the Appwrite Avatars API.
 
 ## GraphQL errors
 Errors from the Appwrite GraphQL API.
-
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400  | graphql_no_query | Param "query" is not optional. |
