@@ -50,7 +50,7 @@ Appwrite also passes convenient error types in addition to the HTTP response cod
 
 For example, a `400` HTTP response code could indicate a Bad Request due to a variety of reasons, and error types can help you pinpoint the exact `400` error. Appwrite currently supports the following error types:
 
-## Platform errors
+## Platform errors {% #platform-errors %}
 Platform errors are not related to an individual product, but can occur across the Appwrite platform.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
@@ -95,7 +95,7 @@ Platform errors are not related to an individual product, but can occur across t
 | 503  | general_smtp_disabled | SMTP is disabled on your Appwrite instance. You can learn more about setting up SMTP in our docs. |
 | 503  | general_phone_disabled | Phone provider is not configured. Please check the `_APP_SMS_PROVIDER` environment variable of your Appwrite server. |
 
-## Authentication errors
+## Authentication errors {% #authentication-errors %}
 Errors found when using Appwrite Authentication.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
@@ -136,7 +136,7 @@ Errors found when using Appwrite Authentication.
 | 501  | user_count_exceeded | The current project has exceeded the maximum number of users. Please check your user limit in the Appwrite console. |
 | 501  | user_auth_method_unsupported | The requested authentication method is either disabled or unsupported. Please check the supported authentication methods in the Appwrite console. |
 
-## Databases errors
+## Databases errors {% #databases-errors %}
 Errors found when using Appwrite Databases.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
@@ -167,7 +167,7 @@ Errors found when using Appwrite Databases.
 | 409  | attribute_already_exists | Attribute with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 409  | index_already_exists | Index with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 
-## Storage errors
+## Storage errors {% #storage-errors %}
 Errors found when using Appwrite Storage.
 | 400  | storage_device_not_found | The requested storage device could not be found. |
 | 400  | storage_file_empty | Empty file passed to the endpoint. |
@@ -182,7 +182,7 @@ Errors found when using Appwrite Storage.
 | 409  | storage_bucket_already_exists | A storage bucket with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 416  | storage_invalid_range | The requested range is not satisfiable. Please check the value of the `Range` header. |
 
-## Functions errors
+## Functions errors {% #functions-errors %}
 Errors found when using Appwrite Functions.
 | 400  | build_not_ready | Build with the requested ID is building and not ready for execution. |
 | 400  | build_in_progress | Build with the requested ID is already in progress. Please wait before you can retry. |
@@ -198,7 +198,7 @@ Errors found when using Appwrite Functions.
 | 409  | provider_contribution_conflict | External contribution is already authorized. |
 | 409  | variable_already_exists | Variable with the same ID already exists in this project. Try again with a different ID. |
 
-## Appwrite Migrations API errors
+## Migrations errors {% #migrations-errors %}
 Errors when using Appwrite Migrations.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
@@ -207,7 +207,7 @@ Errors when using Appwrite Migrations.
 | 409  | migration_in_progress | Migration is already in progress. You can check the status of the migration in your Appwrite Console's "Settings" > "Migrations". |
 
 
-## Avatars API errors
+## Avatars errors {% #avatars-errors %}
 Errors from the Appwrite Avatars API.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
@@ -217,7 +217,7 @@ Errors from the Appwrite Avatars API.
 | 404  | avatar_remote_url_failed | Failed to fetch favicon from the requested URL. |
 | 404  | avatar_icon_not_found | The requested favicon could not be found. |
 
-## GraphQL errors
+## GraphQL errors {% #graphql-errors %}
 Errors from the Appwrite GraphQL API.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
