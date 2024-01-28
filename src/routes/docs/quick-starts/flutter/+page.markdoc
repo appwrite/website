@@ -197,8 +197,8 @@ class MyApp extends StatefulWidget {
   MyApp({required this.account});
 
   @override
-  MyFormState createState() {
-    return MyFormState();
+  MyAppState createState() {
+    return MyAppState();
   }
 }
 ```
@@ -207,7 +207,7 @@ class MyApp extends StatefulWidget {
 Then, append the following widgets to `lib/main.dart` create your login page.
 
 ```dart
-class MyFormState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   models.User? loggedInUser;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
