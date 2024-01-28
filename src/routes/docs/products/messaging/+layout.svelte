@@ -4,7 +4,7 @@
 
 	const parent: NavParent = {
 		href: '/docs',
-		label: 'Auth'
+		label: 'Messaging'
 	};
 
 	const navigation: NavTree = [
@@ -13,11 +13,11 @@
 			items: [
 				{
 					label: 'Overview',
-					href: '/docs/products/XXXXX'
+					href: '/docs/products/messaging'
 				},
 				{
 					label: 'Quick start',
-					href: '/docs/products/XXXXX/quick-start'
+					href: '/docs/products/messaging/quick-start'
 				}
 			]
 		},
@@ -65,7 +65,7 @@
 			items: [
 				{
 					label: 'API reference',
-					href: '/docs/references/cloud/client-web/XXXXX'
+					href: '/docs/references/cloud/client-web/messaging'
 				},
 			]
 		},

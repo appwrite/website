@@ -1,0 +1,55 @@
+---
+layout: article
+title: Apple Push Notification service
+description: Send push notifications to apps on Apple devices through Apple Push Notification service (APNs) using Appwrite Messaging.
+back: /docs
+---
+
+Apple Push Notification service (APNs) lets you send push notifications to Apple devices like macOS, iOS, tvOS, iPadOS, and watchOS devices.
+APNs is a best-effort service, and will attempt to deliver you messages to your device when it's online and available again.
+APNs will save the last [N] messages for [M] days and attempt delivery as soon as it's online.
+
+{% section #add-provider step=1 title="Add provider" %}
+
+To add APNs as a provier, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+[SCREENSHOT]
+
+Give your provider a name > choose **APNS** > click **Save and continue**. 
+The provider will be saved to your project, but not enabled until you complete its configuration.
+{% /section %}
+{% section #configure-provider step=2 title="Configure provider" %}
+
+In the **Configure** step, you will need to provide details form your Apple developer account to connect your Appwrite project with your
+Apple developer account.
+
+[SCREENSHOT]
+
+You will need to provide the following information from the **Apple Developer Member Center**.
+
+{% table %}
+* Field name
+* 
+---
+* Team ID
+* Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
+---
+* Bundle ID
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
+---
+* Authentication key ID
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details
+---
+* Authentication key (.p8 file)
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key
+{% /table %}
+
+After adding the following details, click **Save and continue** to enable the provider.
+{% /section %}
+
+{% section #test-provider step=3 title="Test provider" %}
+You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
+{% /section %}
+
+{% section #manage-provider step=4 title="Manage provider" %}
+[TODO: How to update and delete provider.]
+{% /section %}
