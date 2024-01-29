@@ -2,7 +2,7 @@
 layout: article
 title: Apple Push Notification service
 description: Send push notifications to apps on Apple devices through Apple Push Notification service (APNs) using Appwrite Messaging.
-back: /docs
+back: /docs/products/messaging/providers
 ---
 
 Apple Push Notification service (APNs) lets you send push notifications to Apple devices like macOS, iOS, tvOS, iPadOS, and watchOS devices.
@@ -11,7 +11,7 @@ APNs will save the last [N] messages for [M] days and attempt delivery as soon a
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provier, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
 [SCREENSHOT]
 
 Give your provider a name > choose **APNS** > click **Save and continue**. 
