@@ -1,0 +1,51 @@
+---
+layout: article
+title: Twilio
+description: Send SMS messages to your Appwrite users using Twilio and Appwrite Messaging.
+back: /docs/products/messaging/providers
+---
+
+Twilio lets you send customized SMS messages to your users. 
+These SMS messages can be sent immediately or scheduled.
+You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
+
+{% section #add-provider step=1 title="Add provider" %}
+
+To add Twilio as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+[SCREENSHOT]
+
+Give your provider a name > choose **Twilio** > click **Save and continue**. 
+The provider will be saved to your project, but not enabled until you complete its configuration.
+{% /section %}
+{% section #configure-provider step=2 title="Configure provider" %}
+
+In the **Configure** step, you will need to provide details form your Twilio dashboard to connect your Appwrite project.
+
+[SCREENSHOT]
+
+You will need to provide the following information from your **Twilio dashboard**.
+
+{% table %}
+* Field name
+*
+---
+* Account SID 
+* Head to Twilio console -> **Account info** -> **Account SID**.
+---
+* Auth token
+* Head to Twilio console -> **Account info** -> **Auth Token**.
+---
+* Sender number
+* You can access numbers by navigating to your Twilio console > **Develop** > **Phone Numbers** > **Manage** > **Active Numbers**.
+{% /table %}
+
+After adding the following details, click **Save and continue** to enable the provider.
+{% /section %}
+
+{% section #test-provider step=3 title="Test provider" %}
+You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
+{% /section %}
+
+{% section #manage-provider step=4 title="Manage provider" %}
+[TODO: How to update and delete provider.]
+{% /section %}

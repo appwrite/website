@@ -13,7 +13,7 @@
 			items: [
 				{
 					label: 'Overview',
-					href: '/docs/products/messaging'
+					href: '/docs/products/messaging/providers'
 				},
 			]
 		},
@@ -22,11 +22,11 @@
 			items: [
 				{
 					label: 'FCM',
-					href: '/docs/products/messaging/providers'
+					href: '/docs/products/messaging/providers/fcm'
 				},
 				{
 					label: 'APNs',
-					href: '/docs/products/messaging/targets'
+					href: '/docs/products/messaging/providers/apns'
 				},
 			]
 		},
@@ -47,8 +47,8 @@
 			label: 'SMS',
 			items: [
 				{
-					label: 'Twillio',
-					href: '/docs/products/messaging/providers/twillio'
+					label: 'Twilio',
+					href: '/docs/products/messaging/providers/twilio'
 				},
 				{
 					label: 'MSG91',
