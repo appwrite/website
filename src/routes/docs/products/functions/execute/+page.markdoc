@@ -490,14 +490,6 @@ Here are some cron expressions for common intervals:
 
 # Permissions {% #permission %}
 
-
 Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/advanced/platform/permissions) on the function's settings page. Server SDKs require an API key with the correct scopes.
 
 If your function has a generated or custom domain, executions are not authenticated. Anyone visiting the configured domains will be considered a guest, so make sure to give `Any` execute permission in order for domain executions to work. If you need to enforce permissions for functions with a domain, use authentication methods like JWT.
-
-
-# Logs and results {% #logs %}
-
-You can view the logs of your function executions in the Appwrite Console. Navigate to **Functions** and click on a function to view its executions.
-
-For security reasons, Appwrite does not store the response of function executions. If you need to debug, we recommend logging the response in your function code.
