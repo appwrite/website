@@ -91,7 +91,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     {#if $page.params.version !== 'cloud'}
-        <link rel={`/docs/references/cloud/${$page.params.platform}/${$page.params.service}`} />
+        <link rel="canonical" href={`https://appwrite.io/docs/references/cloud/${$page.params.platform}/${$page.params.service}`} />
     {/if}
 
 </svelte:head>
