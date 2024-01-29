@@ -36,7 +36,7 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-container" style="padding-block-end: 0;">
+    <div class="aw-container aw-u-padding-block-end-0">
         <div class="header">
             <div>
                 <a class="aw-link is-secondary u-cross-baseline" href="/threads">
@@ -58,8 +58,8 @@
             </div>
             <div class="buttons">
                 <a
-                    class="aw-button"
-                    href={discordLink}
+                        class="aw-button"
+                        href={discordLink}
                 >
                     <span class="aw-icon-discord" />
                     <span class="text">View on Discord</span>
