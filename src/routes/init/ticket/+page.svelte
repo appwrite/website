@@ -60,8 +60,8 @@
                 </div>
                 <div class="ticket-2">
                     <Ticket
-                        name="Walter O'Brien"
-                        gh_user="walterobrien"
+                        name="Walter"
+                        gh_user="walterob"
                         id={1}
                         contributions={getMockContributions()}
                     />
