@@ -197,7 +197,7 @@
             <span>#{id?.toString().padStart(6, '0')}</span>
         </div>
 
-        {#key tribe}
+        {#key `${tribe}-${variant}`}
             {#if tribe}
                 <img
                     class="tribe"
