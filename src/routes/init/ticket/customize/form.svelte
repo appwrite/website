@@ -54,8 +54,8 @@
     />
 </div>
 
-<label for="variant" class="u-margin-block-start-32 u-block">Ticket variant (DEBUG)</label>
-<select
+<!-- <label for="variant" class="u-margin-block-start-32 u-block">Ticket variant (DEBUG)</label> -->
+<!-- <select
     id="variant"
     class="u-margin-block-start-4"
     style:text-transform="capitalize"
@@ -64,7 +64,7 @@
     {#each variants as variant}
         <option value={variant}>{variant}</option>
     {/each}
-</select>
+</select> -->
 
 <hr />
 
