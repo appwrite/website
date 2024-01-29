@@ -47,7 +47,18 @@ You can skip optional steps.
 
 {% /section %}
 
-{% section #step-3 step=3 title="Create Appwrite Object" %}
+{% section #step-3 step=3 title="Add the Appwrite SDK" %}
+To add the Appwrite SDK for Apple as a dependency, open the **File** menu and click **Add Packages**.
+
+In the **Package URL** search box, enter https://github.com/appwrite/sdk-for-apple. 
+
+Once the SDK is found, select **Up to Next Major Version** as your **Dependency Rule** and click **Add Package**.
+
+When dependency resolution is complete, click **Add Package** again to add the SDK package to your target.
+
+{% /section %}
+
+{% section #step-4 step=4 title="Create Appwrite Object" %}
 Find your project's ID in the **Settings** page. 
 
 {% only_dark %}
@@ -109,7 +120,8 @@ class Appwrite {
 }
 ```
 {% /section %}
-{% section #step-4 step=4 title="Create a login page" %}
+
+{% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `ContentView.swift`.
 
 ```swift
@@ -164,6 +176,6 @@ struct ContentView: View {
 ```
 {% /section %}
 
-{% section #step-5 step=5 title="All set" %}
+{% section #step-6 step=6 title="All set" %}
 Run your project by clicking **Start active scheme** in Xcode.
 {% /section %}
