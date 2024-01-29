@@ -22,7 +22,7 @@
                         class="aw-u-color-text-accent">_</span
                     >
                 </span>
-                launches on February 5th
+                launches on February 12th
             </h1>
 
             <div class="info">
@@ -60,8 +60,8 @@
                 </div>
                 <div class="ticket-2">
                     <Ticket
-                        name="Eldad"
-                        gh_user="eldadfux"
+                        name="Walter O'Brien"
+                        gh_user="walterobrien"
                         id={1}
                         contributions={getMockContributions()}
                     />
