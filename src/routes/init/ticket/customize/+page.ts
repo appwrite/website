@@ -13,7 +13,7 @@ export const load = async ({ url }) => {
     const ticket = await getTicketByUser(user);
 
     return {
-        ticket: { ...ticket, variant },
+        ticket: { ...ticket, variant, name: 'Walter', gh_user: 'walterob' },
         user,
         streamed: {
             contributions: getMockContributions()
