@@ -8,7 +8,7 @@
 
 <svelte:head>
   {#if $page.params.version !== 'cloud'}
-    <link rel={`/docs/references/cloud/models/${$page.params.model}`} />
+      <link rel="canonical" href={`https://appwrite.io/docs/references/cloud/models/${$page.params.model}`} />
   {/if}
 </svelte:head>
 
