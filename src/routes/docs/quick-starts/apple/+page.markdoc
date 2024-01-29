@@ -47,48 +47,7 @@ You can skip optional steps.
 
 {% /section %}
 
-{% section #step-3 step=3 title="Add the Appwrite SDK" %}
-To add the Appwrite SDK for Apple as a dependency, open the **File** menu and click **Add Packages**.
-
-In the **Package URL** search box, enter https://github.com/appwrite/sdk-for-apple. 
-
-Once the SDK is found, select **Up to Next Major Version** as your **Dependency Rule** and click **Add Package**.
-
-When dependency resolution is complete, click **Add Package** again to add the SDK package to your target.
-
-In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
-
-```xml
-<key>CFBundleURLTypes</key>
-<array>
-<dict>
-    <key>CFBundleTypeRole</key>
-    <string>Editor</string>
-    <key>CFBundleURLName</key>
-    <string>io.appwrite</string>
-    <key>CFBundleURLSchemes</key>
-    <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
-    </array>
-</dict>
-</array>
-```
-
-If you're using UIKit as opposed to SwiftUI, you will also need to add the following to your **SceneDelegate.swift** file.
-
-```swift
-func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    guard let url = URLContexts.first?.url,
-        url.absoluteString.contains("appwrite-callback") else {
-        return
-    }
-
-    WebAuthComponent.handleIncomingCookie(from: url)
-}
-```
-{% /section %}
-
-{% section #step-4 step=4 title="Create Appwrite Singleton" %}
+{% section #step-3 step=3 title="Create Appwrite Object" %}
 Find your project's ID in the **Settings** page. 
 
 {% only_dark %}
@@ -100,15 +59,14 @@ Find your project's ID in the **Settings** page.
 Create a new file `Appwrite.swift` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 
 ```swift
-import Foundation
 import Appwrite
 import JSONCodable
 
 class Appwrite {
-    var client: Client
-    var account: Account
+    let client: Client
+    let account: Account
     
-    public init() {
+    init() {
         self.client = Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject("[YOUR_PROJECT_ID]")
@@ -116,7 +74,7 @@ class Appwrite {
         self.account = Account(client)
     }
     
-    public func onRegister(
+    func onRegister(
         _ email: String,
         _ password: String
     ) async throws -> User<[String: AnyCodable]> {
@@ -127,7 +85,7 @@ class Appwrite {
         )
     }
     
-    public func onLogin(
+    func onLogin(
         _ email: String,
         _ password: String
     ) async throws -> Session {
@@ -137,69 +95,75 @@ class Appwrite {
         )
     }
     
-    public func onLogout() async throws {
+    func onLogout() async throws {
         _ = try await account.deleteSession(
             sessionId: "current"
         )
     }
     
+    func getSession() async throws -> Session {
+        try await account.getSession(
+            sessionId: "current"
+        )
+    }
 }
-
 ```
 {% /section %}
-{% section #step-5 step=5 title="Create a login page" %}
+{% section #step-4 step=4 title="Create a login page" %}
 Add the following code to `ContentView.swift`.
 
 ```swift
 import SwiftUI
 
-class ViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
-}
-
 struct ContentView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var session: Session?
+    
+    let appwrite = Appwrite()
     
     var body: some View {
         VStack {
-            TextField(
-                "Email",
-                text: $viewModel.email
-            )
-            SecureField(
-                "Password",
-                text: $viewModel.password
-            )
-            Button(
-                action: { Task {
-                    try await Appwrite.onRegister(
-                        viewModel.email,
-                        viewModel.password
-                    )
-                }},
-                label: {
-                    Text("Register")
+            if let session = self.session {
+                Text("Welcome \(session.providerUid)")
+                Button("Log Out") {
+                    Task {
+                        try await appwrite.onLogout()
+                        self.session = nil
+                    }
                 }
-            )
-            Button(
-                action: { Task {
-                    try! await Appwrite.onLogin(
-                        viewModel.email,
-                        viewModel.password
-                    )
-                }},
-                label: {
-                    Text("Login")
+            } else {
+                TextField("Email", text: $email)
+                SecureField("Password",text: $password)
+                Button("Register") {
+                    Task {
+                        try await appwrite.onRegister(
+                            email,
+                            password
+                        )
+                    }
                 }
-            )
+                Button("Login") {
+                    Task {
+                        self.session = try await appwrite.onLogin(
+                            email,
+                            password
+                        )
+                    }
+                }
+            }
         }
         .padding()
+        .onAppear {
+            Task {
+                self.session = try await appwrite.getSession()
+            }
+        }
     }
 }
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="All set" %}
+{% section #step-5 step=5 title="All set" %}
 Run your project by clicking **Start active scheme** in Xcode.
 {% /section %}
