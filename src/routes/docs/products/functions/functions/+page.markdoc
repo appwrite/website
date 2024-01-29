@@ -172,6 +172,8 @@ Here are some cron expressions for common intervals:
 Set static environment variables that will be passed to your function 
 by navigating to your function > **Settings** > **Environment variables**.
 
+You can also configure global variables that apply to all your functions in the **Settings** of your project.
+
 {% info title="Redeployment required" %}
 This change requires your function to be redeployed to take effect.
 {% /info %}

@@ -44,16 +44,16 @@
 					label: 'Runtimes',
 					href: '/docs/products/functions/runtimes'
 				},
-				{
-					label: 'Templates',
-					href: '/docs/products/functions/templates'
-				},
 
 			]
 		},
 		{
 			label: 'Journeys',
 			items: [
+				{
+					label: 'Templates',
+					href: '/docs/products/functions/templates'
+				},
 				{
 					label: 'Develop',
 					href: '/docs/products/functions/develop'
