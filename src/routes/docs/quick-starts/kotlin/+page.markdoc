@@ -86,7 +86,7 @@ Open the file `Main.kt` and initialize the Appwrite Client. Replace `<YOUR_PROJE
 import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.services.Databases
-import io.appwrite.models.Database as Database
+import io.appwrite.models.Database
 import io.appwrite.models.Collection
 import kotlinx.coroutines.coroutineScope
 
