@@ -12,7 +12,7 @@
 <DropdownMenu let:open let:menu let:trigger>
     <button class="aw-btn-tag" use:melt={trigger}>
         <span class="text">More</span>
-        <span class="aw-icon-chevron-down" style="font-size: 1rem" />
+        <span class="aw-icon-chevron-down aw-u-font-size-16" />
     </button>
 
     {#if open}

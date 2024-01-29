@@ -121,6 +121,7 @@
 .#{$p}-u-text-color-neutral-700     { color:hsl(var(--aw-color-greyscale-700));   }
 .#{$p}-u-text-color-neutral-900     { color:hsl(var(--aw-color-greyscale-900));   }
 
+.#{$p}-u-font-size-16               { font-size:#{pxToRem(16)}!important; }
 .#{$p}-u-font-size-20               { font-size:#{pxToRem(20)}!important; }
 .#{$p}-u-font-size-24               { font-size:#{pxToRem(24)}!important; }
 .#{$p}-u-font-size-40               { font-size:#{pxToRem(40)}!important; }
