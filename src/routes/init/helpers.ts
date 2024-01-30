@@ -70,12 +70,17 @@ export async function getGithubUser() {
         const { providerAccessToken, provider } = await appwriteInit.account.getSession('current');
         if (provider !== 'github') return null;
 
-        return await fetch('https://api.github.com/user', {
+        const res = await fetch('https://api.github.com/user', {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${providerAccessToken}`
             }
         }).then((res) => res.json() as Promise<GithubUser>);
+        if (!res.login) {
+            await appwriteInit.account.deleteSession('current');
+            return null;
+        }
+        return res;
     } catch (e) {
         console.error(e);
         return null;
