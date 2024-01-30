@@ -297,14 +297,17 @@
                                         height="40"
                                         alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">In app notifications</h3>
+                                <h3 class="aw-info-boxes-title">
+                                    In app notifications
+                                    <span class="aw-inline-tag is-pink">Coming Soon</span>
+                                </h3>
                                 <p class="aw-info-boxes-content">
                                     Send realtime alerts to your users within your application.
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
                                         <a class="aw-interactive-tag" href="/">
-                                            <span class="icon-appwrite" aria-hidden="true"></span>
+                                            <span class="aw-icon-appwrite u-small aw-u-margin-inline-end-4" aria-hidden="true"></span>
                                             <span class="text">Appwrite</span>
                                         </a>
                                     </li>
@@ -319,6 +322,7 @@
                                 />
                                 <h3 class="aw-info-boxes-title">
                                     Chat
+                                    <span class="aw-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="aw-info-boxes-content">
                                     Connect chat apps such as Slack, Discord, and WhatsApp.
