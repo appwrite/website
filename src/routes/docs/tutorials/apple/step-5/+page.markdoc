@@ -7,7 +7,7 @@ step: 5
 
 # Router {% #router %}
 
-Routing is the process of navigating from one view to another, and SwiftUI makes use of the NavigationStack to allow us to control and manage how we push and pop views on the navigation stack. In order to define all our routes, specify the view for each route, and implement push and pop methods, we need to create a routing code. This code should be added to the `Router.swift` file located in the root folder.
+Routing is the process of navigating from one view to another, and SwiftUI makes use of the NavigationStack to allow us to control and manage how we push and pop views on the navigation stack. In order to define all our routes, specify the view for each route, and implement push and pop methods, we need to create a routing object. This code should be added to the `Router.swift` file located in the root folder.
 
 ```swift
 import SwiftUI
@@ -142,7 +142,7 @@ struct ContentView: View {
 }
 ```
 
-> Note: You can get the Appwrite logo on Appwrite website and add it to your project assets
+> Note: You can get the Appwrite logo on [Appwrite website](https://appwrite.io/assets/) and add it to your project assets
 
 # Inject services and view models {% #inject-services-and-view-models %}
 
