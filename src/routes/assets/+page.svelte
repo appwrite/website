@@ -54,7 +54,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="u-position-absolute aw-u-pointer-events-none">
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
@@ -67,8 +67,7 @@
                     <button
                         class="u-flex u-width-full-line aw-u-padding-block-20
                         aw-u-color-text-primary aw-is-only-mobile
-                       aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block"
-                        style="inline-size:100vw"
+                       aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block u-width-full-line"
                     >
                         <span
                             class="aw-container u-flex u-width-full-line u-main-space-between u-cross-center"
@@ -95,7 +94,7 @@
                         </section>
 
                         <section id={getSectionId(Section.NAMING)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex aw-u-flex-vertical u-gap-8">
                                 <h2
                                     class="aw-title aw-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -112,7 +111,7 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOTYPE)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex aw-u-flex-vertical u-gap-8">
                                 <h2
                                     class="aw-title aw-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -128,8 +127,8 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-100)); block-size:20rem;"
+                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64
+                                    aw-u-bg-color-neutral-100 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/white.svg"
@@ -162,8 +161,8 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64
+                                    aw-u-bg-color-neutral-800 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/black.svg"
@@ -197,7 +196,7 @@
                                 </div>
                             </div>
                             <section>
-                                <div class="u-flex u-flex-vertical u-gap-8">
+                                <div class="u-flex aw-u-flex-vertical u-gap-8">
                                     <h3 class="aw-label aw-u-color-text-primary">
                                         Co-branding logotypes
                                     </h3>
@@ -207,8 +206,8 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16
+                                                aw-u-bg-color-neutral-800 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/co-brand.svg"
@@ -220,7 +219,7 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOMARK)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex aw-u-flex-vertical u-gap-8">
                                 <h3
                                     class="aw-title aw-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -237,8 +236,8 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-100)); block-size:20rem;"
+                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64
+                                    aw-u-bg-color-neutral-100 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -271,8 +270,8 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64
+                                    aw-u-bg-color-neutral-800 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -306,7 +305,7 @@
                                 </div>
                             </div>
                             <section id="">
-                                <div class="u-flex u-flex-vertical u-gap-8">
+                                <div class="u-flex aw-u-flex-vertical u-gap-8">
                                     <h3 class="aw-label aw-u-color-text-primary">
                                         Co-branding lockups
                                     </h3>
@@ -316,8 +315,8 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16
+                                                aw-u-bg-color-neutral-800 aw-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/co-brand.svg"
@@ -338,10 +337,9 @@
                             </h2>
                             <div class="u-flex u-flex-wrap u-gap-32">
                                 <div
-                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
-                                aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-900)); background-color:#EDEDF0; 
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 aw-u-flex-vertical u-main-center u-gap-8
+                                aw-u-border-radius-8 u-padding-inline-24 aw-u-text-color-neutral-900 aw-u-bg-color-neutral-50
+                                aw-u-media-ratio-1-1 aw-u-min-block-size-160"
                                 >
                                     <h3 class="aw-label">Light Grey</h3>
                                     <p class="aw-caption-400">#EDEDF0</p>
@@ -350,10 +348,9 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | aw-u-sep u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center
-                                u-gap-8 aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-50)); background-color:#19191D;
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | aw-u-sep u-stretch aw-u-flex-basis-200 aw-u-flex-vertical u-main-center
+                                u-gap-8 aw-u-border-radius-8 u-padding-inline-24 aw-u-media-ratio-1-1 aw-u-min-block-size-160
+                                aw-u-text-color-neutral-50 aw-u-bg-color-neutral-900"
                                 >
                                     <h3 class="aw-label">Dark Grey</h3>
                                     <p class="aw-caption-400">#19191D</p>
@@ -362,10 +359,9 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
-                                aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-50)); background-color:#FD366E;
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 aw-u-flex-vertical u-main-center u-gap-8
+                                aw-u-border-radius-8 u-padding-inline-24 aw-u-text-color-neutral-50 aw-u-bg-color-primary-500
+                                aw-u-aspect-ratio-1-1 aw-u-min-block-size-160"
                                 >
                                     <h3 class="aw-label">Appwrite Pink</h3>
                                     <p class="aw-caption-400">#FD366E</p>
@@ -377,7 +373,7 @@
                         </section>
 
                         <section id={getSectionId(Section.VISUALS)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex aw-u-flex-vertical u-gap-8">
                                 <h2
                                     class="aw-title aw-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -552,7 +548,7 @@
                         </section>
 
                         <section id={getSectionId(Section.CONTACT)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex aw-u-flex-vertical u-gap-8">
                                 <h2
                                     class="aw-title aw-u-color-text-primary"
                                     use:visible={{ top: 48 }}
