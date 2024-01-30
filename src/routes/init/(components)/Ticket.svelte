@@ -190,14 +190,14 @@
         {/if}
         <div class="bottom-left">
             <img src={Logo} alt="init_" />
-            <span>JAN 22 - 27</span>
+            <span>FEB 12 - 16</span>
         </div>
 
         <div class="id">
             <span>#{id?.toString().padStart(6, '0')}</span>
         </div>
 
-        {#key tribe}
+        {#key `${tribe}-${variant}`}
             {#if tribe}
                 <img
                     class="tribe"
