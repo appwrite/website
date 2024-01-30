@@ -12,7 +12,7 @@
 
     const days: DayType[] = [
         {
-            title: 'Messaging',
+            title: 'Day 1',
             release: new Date(Date.now())
         },
         {

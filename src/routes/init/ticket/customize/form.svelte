@@ -14,7 +14,6 @@
     export let tribe: string | null = null;
     export let showGitHub = true;
     $: ({ ticket } = $page.data as PageData);
-    export let variant: TicketVariant = 'default';
 
     const variants: TicketVariant[] = ['default', 'rainbow', 'pink'];
 
