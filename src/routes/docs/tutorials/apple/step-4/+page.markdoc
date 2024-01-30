@@ -7,7 +7,7 @@ step: 4
 
 # Appwrite service {% #appwrite-service %}
 
-Create a new file AppwriteService.swift inside `Shared/Services` folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID.
+Create a new file AppwriteService.swift inside `Shared/Services` folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID. The purpose of this file is to initialize Appwrite SDK and create necessary methods needed for both authentication and read/write from documents.
 
 ```swift
 import Foundation
@@ -27,44 +27,6 @@ class AppwriteService {
         self.database = Databases(client)
     }
     
-    
-    public func currentSession() async throws -> User<[String: AnyCodable]> {
-        try await account.get()
-    }
-    
-    public func onRegister(
-        _ email: String,
-        _ password: String
-    ) async throws -> User<[String: AnyCodable]> {
-        try await account.create(
-            userId: ID.unique(),
-            email: email,
-            password: password
-        )
-    }
-    
-    public func onLogin(
-        _ email: String,
-        _ password: String
-    ) async throws -> Session {
-        try await account.createEmailSession(
-            email: email,
-            password: password
-        )
-    }
-    
-    public func onLogout() async throws {
-        _ = try await account.deleteSession(
-            sessionId: "current"
-        )
-    }
-    
-    
-    public func onAccountDelete() async throws {
-        _ = try await account.deleteSession(
-            sessionId: "current"
-        )
-    }
     
     public func getDocs<T>(_ db: Database, _ collection: DatabaseCollections, queries: [String]? = nil) async throws -> DocumentList<T> {
         try await database.listDocuments<T>(
@@ -182,7 +144,7 @@ import Foundation
 
 
 struct HabitModel: Codable, Identifiable {
-    let id: String?
+    let id: String
     let userId: String
     let title: String
     let description: String?

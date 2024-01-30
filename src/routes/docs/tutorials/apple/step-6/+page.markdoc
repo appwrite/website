@@ -7,6 +7,66 @@ step: 6
 
 # Authentication {% #authentication %}
 
+In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+<dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>io.appwrite</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+        <string>appwrite-callback-[PROJECT_ID]</string>
+    </array>
+</dict>
+</array>
+```
+
+In `AppwriteService.swift`, let's update the object to include the auth methods by adding the following snippets.
+
+```swift
+    public func currentSession() async throws -> User<[String: AnyCodable]> {
+        try await account.get()
+    }
+    
+    public func onRegister(
+        _ email: String,
+        _ password: String
+    ) async throws -> User<[String: AnyCodable]> {
+        try await account.create(
+            userId: ID.unique(),
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogin(
+        _ email: String,
+        _ password: String
+    ) async throws -> Session {
+        try await account.createEmailSession(
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogout() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+    
+    
+    public func onAccountDelete() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+```
+
 Add the following code to `AuthView.swift` inside the `Auth/View` folder. This UI is designed to handle both user login and registration.
 
 ```swift
