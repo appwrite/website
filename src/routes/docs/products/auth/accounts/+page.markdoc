@@ -12,17 +12,19 @@ Each user's account can also have their own preference object, which you can use
 
 # Signup and login {% #signup-login %}
 
-You can signup and login a user with an account create through 
-[email password](/docs/products/auth/email-password),
-[phone (SMS)](/docs/products/auth/phone-sms),
-[Anonymous](/docs/products/auth/anonymous),
-[magic URL](/docs/products/auth/magic-url), and
-[OAuth 2](/docs/products/auth/oauth2)
-authentication.
+You can signup and login a user with an account created through 
+[Email and password](/docs/products/auth/email-password), 
+[OAuth 2](/docs/products/auth/oauth2), 
+[Magic URL](/docs/products/auth/magic-url), 
+[Email OTP](/docs/products/auth/email-otp), 
+[Phone (SMS)](/docs/products/auth/phone-sms), 
+and [Anonymous](/docs/products/auth/anonymous) authentications.
+
+You can also implement your own authentication flow using [Custom token](/docs/products/auth/custom-token) or integrate with any provider using [External flow](/docs/products/auth/external).
 
 # Preferences {% #preferences %}
 
-You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+You can store user preferences on a user's account using Appwrite's [Update preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
@@ -108,7 +110,7 @@ mutation {
 ```
 {% /multicode %}
 
-After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
+After a user's preferences are updated, they can be retrieved using the [Get preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
 ```js 
