@@ -6,24 +6,24 @@
   --p-main-header-link-color: var(--aw-color-greyscale-900);
   --p-main-header-border-color: rgb(0,0,0, 0.1);
 
-  position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
-  border-block-end: solid 1px var(--p-main-header-border-color);
-  padding-inline: clamp(1.25rem, 4vw, 120rem); 
-  
-  &.is-docs {
-    padding-inline: pxToRem(32);
 
+  position:sticky; z-index:999; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
+  padding-inline:pxToRem(32); border-block-end: solid pxToRem(1) var(--p-main-header-border-color);
+  min-block-size:pxToRem(73);
+
+  &.is-special-padding {
+    padding-inline: clamp(1.25rem,4vw,120rem); /* Thomas calculation */
+  }
+  &.is-docs {
+    .#{$p}-main-header-wrapper { max-inline-size:var(--container-size-large);  }
+  }
+  &.is-reference {
+    .#{$p}-main-header-wrapper { max-inline-size:var(--container-size-huge); }
   }
   
   &-wrapper { 
-    display: flex;
-    justify-content: center;
-    margin-inline: auto;
-
-    max-width: pxToRem(1728);
-    padding-block: var(--p-main-header-padding-block);
-    flex-wrap: wrap;
-    gap: 1rem;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:pxToRem(16); margin-inline:auto;
+    max-inline-size:pxToRem(1728); padding-block:var(--p-main-header-padding-block);
   }
   &-start { display:flex; align-items:center; }
   &-end { display:flex; margin-inline-start:auto; align-items:center; gap:pxToRem(8) }
@@ -45,7 +45,11 @@
     &-link { color:hsl(var(--color-neutral-0) / 0.64); }
   }
 
-  &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(10)); backdrop-filter:blur(pxToRem(10)); }
+  &.is-transparent { 
+    [data-js-enabled] & {
+      background-color: transparent; -webkit-backdrop-filter:blur(pxToRem(10)); backdrop-filter:blur(pxToRem(10)); 
+    }
+  }
 
   #{$theme-dark} &,
   &#{$theme-dark} {
@@ -59,7 +63,7 @@
     --p-main-header-border-color: rgb(0,0,0, 0.1);
   }
 
-  @media #{$break1}{
+  @media #{$break1}, #{$break2}{
     display:none;
   }
   

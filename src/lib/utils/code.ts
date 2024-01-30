@@ -24,96 +24,102 @@ import plaintext from 'highlight.js/lib/languages/plaintext';
 import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
+import groovy from 'highlight.js/lib/languages/groovy';
 import { Platform } from './references';
 
 const languages = {
-	js: javascript,
-	dart: dart,
-	ts: typescript,
-	deno: typescript,
-	xml: xml,
-	html: xml,
-	sh: shell,
-	md: markdown,
-	json: json,
-	swift: swift,
-	php: php,
-	diff: diff,
-	python: python,
-	ruby: ruby,
-	csharp: csharp,
-	kotlin: kotlin,
-	java: java,
-	cpp: cpp,
-	bash: bash,
-	powershell: powershell,
-	cmd: dos,
-	yaml: yaml,
-	text: plaintext,
-	graphql: graphql,
-	http: http,
-	py: python,
-	rb: ruby,
-	cs: csharp,
-	css: css
+    js: javascript,
+    javascript: javascript,
+    dart: dart,
+    ts: typescript,
+    typescript: typescript,
+    deno: typescript,
+    xml: xml,
+    html: xml,
+    sh: shell,
+    md: markdown,
+    json: json,
+    swift: swift,
+    php: php,
+    diff: diff,
+    python: python,
+    ruby: ruby,
+    csharp: csharp,
+    kotlin: kotlin,
+    java: java,
+    cpp: cpp,
+    bash: bash,
+    powershell: powershell,
+    cmd: dos,
+    yaml: yaml,
+    text: plaintext,
+    graphql: graphql,
+    http: http,
+    py: python,
+    rb: ruby,
+    cs: csharp,
+    css: css,
+    groovy: groovy,
+    svelte: xml
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
-	[Platform.ClientWeb]: 'js',
-	[Platform.ClientFlutter]: 'dart',
-	[Platform.ClientAndroidJava]: 'java',
-	[Platform.ClientAndroidKotlin]: 'kotlin',
-	[Platform.ClientApple]: 'swift',
-	[Platform.ClientGraphql]: 'graphql',
-	[Platform.ClientRest]: 'http',
-	[Platform.ServerDart]: 'dart',
-	[Platform.ServerDeno]: 'ts',
-	[Platform.ServerDotNet]: 'cs',
-	[Platform.ServerNodeJs]: 'js',
-	[Platform.ServerPhp]: 'php',
-	[Platform.ServerPython]: 'py',
-	[Platform.ServerRuby]: 'rb',
-	[Platform.ServerSwift]: 'swift',
-	[Platform.ServerJava]: 'java',
-	[Platform.ServerKotlin]: 'kotlin',
-	[Platform.ServerGraphql]: 'graphql',
-	[Platform.ServerRest]: 'http',
-	vue: 'html',
-	svelte: 'html'
+    [Platform.ClientWeb]: 'js',
+    [Platform.ClientFlutter]: 'dart',
+    [Platform.ClientAndroidJava]: 'java',
+    [Platform.ClientAndroidKotlin]: 'kotlin',
+    [Platform.ClientApple]: 'swift',
+    [Platform.ClientGraphql]: 'graphql',
+    [Platform.ClientRest]: 'http',
+    [Platform.ServerDart]: 'dart',
+    [Platform.ServerDeno]: 'ts',
+    [Platform.ServerDotNet]: 'cs',
+    [Platform.ServerNodeJs]: 'js',
+    [Platform.ServerPhp]: 'php',
+    [Platform.ServerPython]: 'py',
+    [Platform.ServerRuby]: 'rb',
+    [Platform.ServerSwift]: 'swift',
+    [Platform.ServerJava]: 'java',
+    [Platform.ServerKotlin]: 'kotlin',
+    [Platform.ServerGraphql]: 'graphql',
+    [Platform.ServerRest]: 'http',
+    vue: 'html',
+    svelte: 'html'
 };
 
 Object.entries(languages).forEach(([key, value]) => {
-	hljs.registerLanguage(key, value);
+    hljs.registerLanguage(key, value);
 });
 
 Object.entries(platformAliases).forEach(([key, value]) => {
-	hljs.registerAliases(key, {
-		languageName: value
-	});
+    hljs.registerAliases(key, {
+        languageName: value
+    });
 });
 
 export type Language = keyof typeof languages | Platform;
 
 type Args = {
-	content: string;
-	language?: Language;
-	withLineNumbers?: boolean;
+    content: string;
+    language?: Language;
+    withLineNumbers?: boolean;
 };
 
 export const getCodeHtml = (args: Args) => {
-	const { content, language, withLineNumbers } = args;
-	const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
-	const lines = res.split(/\n/g);
+    const { content, language, withLineNumbers } = args;
+    const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
+    const lines = res.split(/\n/g);
 
-	while (lines.length > 0 && lines[lines.length - 1] === '') {
-		lines.pop();
-	}
+    while (lines.length > 0 && lines[lines.length - 1] === '') {
+        lines.pop();
+    }
 
-	const final = lines.reduce((carry, line) => {
-		carry += `<span class="line">${line}</span>\n`;
-		return carry;
-	}, '');
+    const final = lines.reduce((carry, line) => {
+        carry += `<span class="line">${line}</span>\n`;
+        return carry;
+    }, '');
 
-	return `<pre><code class="aw-code language-${language} ${withLineNumbers ? 'line-numbers' : ''
-		}">${final}</code></pre>`;
+    return `<pre><code class="aw-code language-${language} ${
+        withLineNumbers ? 'line-numbers' : ''
+    }">${final}</code></pre>`;
 };

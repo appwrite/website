@@ -11,6 +11,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import Technologies from '$lib/components/Technologies.svelte';
 
     const platforms: Array<{
         name: string;
@@ -98,10 +99,10 @@
         class="u-position-absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
-        <img
+        <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="/images/bgs/top-page-dark.svg"
+            src="./top-page-dark.png"
             alt=""
         />
     </div>
@@ -129,13 +130,13 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-padding-block-end-0">
                     <a
-                        href="/blog/post/meet-the-new-appwrite"
+                        href="/blog/post/announcing-appwrite-pro"
                         class="aw-hero-banner-button aw-u-margin-block-end-24"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="aw-caption-500">New</span>
                         <div class="aw-hero-banner-button-sep" />
-                        <span class="aw-caption-400">Meet the new Appwrite</span>
+                        <span class="aw-caption-400">Announcing Appwrite Pro</span>
                         <span class="aw-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="aw-hero is-horizontal">
@@ -168,13 +169,12 @@
                     style="--container-size:78.75rem"
                 >
                     <div class="aw-media-container">
-                        <div style="aspect-ratio: 1244 / 717">
-                            <img
-                                class="u-block"
-                                src="/images/pages/homepage/dashboard.png"
-                                alt="console dashboard"
-                            />
-                        </div>
+                        <img
+                            class="u-block"
+                            src="/images/pages/homepage/dashboard.png"
+                            alt="console dashboard"
+                            style:aspect-ratio="1244 / 717"
+                        />
                     </div>
                 </section>
             </div>
@@ -375,8 +375,7 @@
                                     alt=""
                                 />
                                 <h3 class="aw-info-boxes-title">
-                                    <span>GDPR</span>
-                                    <span class="aw-inline-tag is-pink">Coming Soon</span>
+                                    GDPR
                                 </h3>
                                 <p class="aw-info-boxes-content">
                                     Safeguard user data and privacy with provided GDPR regulations.
@@ -550,27 +549,7 @@
                             We support many SDKs making Appwrite flexible to your needs and ensuring
                             you can code with the language you want at any time.
                         </p>
-                        <ul
-                            class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile"
-                        >
-                            {#each platforms as platform}
-                                <li>
-                                    <Tooltip>
-                                        <a href={platform.href} class="aw-box-icon">
-                                            <img
-                                                src={platform.image}
-                                                alt="{platform.name} Logo"
-                                                width="32"
-                                                height="32"
-                                            />
-                                        </a>
-                                        <svelte:fragment slot="tooltip"
-                                            >{platform.name}</svelte:fragment
-                                        >
-                                    </Tooltip>
-                                </li>
-                            {/each}
-                        </ul>
+                        <Technologies />
                         <a
                             href="/docs/sdks"
                             class="aw-button is-secondary"
@@ -589,7 +568,9 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <Spline loading="eager" url="/images/animations/lines.splinecode" />
+                        <Spline loading="eager" url="/images/animations/lines.splinecode">
+                            <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
+                        </Spline>
                     </div>
                 </div>
                 <div class="aw-container u-position-relative">

@@ -52,6 +52,35 @@
 			]
 		},
 		{
+			label: 'Plans',
+			items: [
+				{
+					label: 'Billing',
+					href: '/docs/advanced/platform/billing'
+				},
+				{
+					label: 'Starter',
+					href: '/docs/advanced/platform/starter'
+				},
+				{
+					label: 'Pro',
+					href: '/docs/advanced/platform/pro'
+				},
+				{
+					label: 'Scale',
+					href: '/docs/advanced/platform/scale'
+				},
+				{
+					label: 'Enterprise',
+					href: '/docs/advanced/platform/enterprise'
+				},
+				{
+					label: 'Open source',
+					href: '/docs/advanced/platform/oss'
+				},
+			]
+		},
+		{
 			label: 'Configuration',
 			items: [
 				{
@@ -59,7 +88,7 @@
 					href: '/docs/advanced/platform/custom-domains'
 				},
 				{	
-					label: 'Email and SMS templates',
+					label: 'Message templates',
 					href: '/docs/advanced/platform/message-templates'
 				},
 			]

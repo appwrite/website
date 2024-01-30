@@ -7,13 +7,19 @@ description: Organize and manage your files effectively with Appwrite Storage Bu
 Storage buckets are a group of files, similar to collections in Appwrite Databases.
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more. 
 
-# Create Bucket
+# Create Bucket {% #create-bucket %}
 You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). 
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
 You can create a bucket by heading to the **Storage** page and clicking **Create bucket**.
 
+{% only_dark %}
+![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+{% /only_dark %}
+{% only_light %}
+![Create bucket on console](/images/docs/storage/create-bucket.png)
+{% /only_light %}
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
@@ -231,7 +237,7 @@ This means users can't create new files or read, update, and delete existing fil
 
 [Learn about configuring permissions](/docs/products/storage/permissions).
 
-# Encrption {% #encryption %}
+# Encryption {% #encryption %}
 Appwrite provides added security settings for your buckets. Enable encryption under your bucket's **Settings** > **Security settings**.
 You can enable encryption to encrypt files in your buckets. If your files are leaked, encrypted files cannot be read by the malicious actor.
 Files bigger than 20MB cannot be encrypted.

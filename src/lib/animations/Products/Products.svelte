@@ -1,4 +1,10 @@
 <script lang="ts" context="module">
+    import AuthShot from './(assets)/auth-shot.png?enhanced';
+    import DatabasesShot from './(assets)/db-shot.png?enhanced';
+    import FunctionsShot from './(assets)/fn-shot.png?enhanced';
+    import StorageShot from './(assets)/storage-shot.png?enhanced';
+    import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
+
     export const elId = writable(0);
 
     export function getElSelector(el: string) {
@@ -36,7 +42,7 @@
                 'Rate-limits and advanced user protection',
                 'Custom SMTP and email templates'
             ],
-            shot: './images/products/auth.png'
+            shot: AuthShot
         },
         databases: {
             icon: {
@@ -53,7 +59,7 @@
                 'Custom data validation',
                 'Relationships support'
             ],
-            shot: './images/products/databases.png'
+            shot: DatabasesShot
         },
         functions: {
             icon: {
@@ -69,7 +75,7 @@
                 'Support for 30+ runtimes in 13 languages',
                 'Custom domain support'
             ],
-            shot: './images/products/functions.png'
+            shot: FunctionsShot
         },
         storage: {
             icon: {
@@ -85,7 +91,7 @@
                 'Built-in image transformation capabilities',
                 'Advanced compression with WebP/Brotli support'
             ],
-            shot: './images/products/storage.png'
+            shot: StorageShot
         },
         realtime: {
             icon: {
@@ -100,7 +106,7 @@
                 'Built-in permission management',
                 'Support for DBs, Auth, Storage & Functions'
             ],
-            shot: './images/products/realtime.png'
+            shot: RealtimeShot
         }
     };
 </script>
@@ -371,7 +377,7 @@
         position: sticky;
 
         top: 0;
-        // min-height: 58rem;
+        min-height: 50rem;
         overflow: hidden;
 
         padding-inline: 1.25rem;

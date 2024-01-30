@@ -13,14 +13,11 @@
   border-radius: pxToRem(4);
   color: hsl(var(--p-link-color-text));
   cursor: pointer;
-  
-  @extend .#{$p}-sub-body-400;
-
 
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
-  &:where(:focus-visible) { 
+  &:where(:focus-visible) {
     box-shadow:none;
     color: hsl(var(--p-link-color-text-focus-visible));
     outline:pxToRem(1) solid hsl(var(--p-link-color-text-focus-visible));
@@ -32,8 +29,11 @@
   }
 
   &.is-inline {
-    font-weight: 500;
     text-decoration: underline;
+  }
+
+  &.is-secondary {
+    --p-link-color-text-default: var(--aw-color-secondary);
   }
 }
 

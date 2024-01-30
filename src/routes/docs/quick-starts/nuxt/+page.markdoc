@@ -78,27 +78,6 @@ export { ID } from 'appwrite';
 Add the following code to `app.vue`.
 
 ```html
-<template>
-  <div>
-    <p>
-      {{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}
-    </p>
-
-    <form>
-      <input type="email" placeholder="Email" v-model="email" />
-      <input type="password" placeholder="Password" v-model="password" />
-      <input type="text" placeholder="Name" v-model="name" />
-      <button type="button" @click="login(email, password)">Login</button>
-      <button type="button" @click="register">
-        Register
-      </button>
-      <button type="button" @click="logout">
-        Logout
-      </button>
-    </form>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import { account, ID } from './utils/appwrite.js';
@@ -123,9 +102,30 @@ const logout = async () => {
   loggedInUser.value = null;
 };
 </script>
+
+<template>
+  <div>
+    <p>
+      {{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}
+    </p>
+
+    <form>
+      <input type="email" placeholder="Email" v-model="email" />
+      <input type="password" placeholder="Password" v-model="password" />
+      <input type="text" placeholder="Name" v-model="name" />
+      <button type="button" @click="login(email, password)">Login</button>
+      <button type="button" @click="register">
+        Register
+      </button>
+      <button type="button" @click="logout">
+        Logout
+      </button>
+    </form>
+  </div>
+</template>
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="Checkout what you've built" %}
+{% section #step-6 step=6 title="All set" %}
 Run your project with `npm run dev -- --open --port 3000` and open [Localhost on Port 3000](http://localhost:3000) in your browser.
 {% /section %}

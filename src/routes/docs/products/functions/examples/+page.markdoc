@@ -154,7 +154,7 @@ return function ($context) {
         $amountInRupees = floatval($context->req->query['amount']);
         $response = $client->get('https://api.exchangerate.host/latest?base=INR&symbols=USD');
         $data = $response->json();
-        $amountInDollars = amountInRupees * $data['rates']['USD'];
+        $amountInDollars = $amountInRupees * $data['rates']['USD'];
         return $context->res->send(strval($amountInDollars));
     }
 
@@ -411,8 +411,8 @@ Future main(final context) async {
 
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY);
+        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+        .setKey(Platform.environment['APPWRITE_API_KEY']);
 
     final database = Database(client);
 
@@ -757,8 +757,8 @@ Future main(final context) async {
 
         final client = Client()
             .setEndpoint('https://cloud.appwrite.io/v1')
-            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-            .setKey(process.env.APPWRITE_API_KEY);
+            .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+            .setKey(Platform.environment['APPWRITE_API_KEY']);
 
         final databases = Database(client);
         final document = await databases.createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);

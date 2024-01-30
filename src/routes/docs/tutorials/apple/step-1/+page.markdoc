@@ -2,6 +2,8 @@
 layout: tutorial
 title: Build an habit tracker with SwiftUI
 description: Learn to build an Apple app with no backend code using an Appwrite backend.
+framework: Apple
+category: Mobile and native
 step: 1
 back: /docs
 ---

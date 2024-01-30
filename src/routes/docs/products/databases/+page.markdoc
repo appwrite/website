@@ -14,4 +14,6 @@ Databases store data, if you need to store files like images, PDFs or videos, us
 You can organize data into databases, collections, and documents. You can also paginate, order, and query documents. 
 For complex business logic, Appwrite supports relationships to help you model your data.
 
-[Quick start {% icon icon="cheveron-right" /%}](/docs/products/databases/quick-start)
+{% arrow_link href="/docs/products/databases/quick-start" %}
+Quick start 
+{% /arrow_link %}

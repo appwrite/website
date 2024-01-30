@@ -46,7 +46,7 @@ export function Home() {
             <button
               type="button"
               onClick={() =>
-                ideas.add({ userId: user.current.id, title, description })
+                ideas.add({ userId: user.current.$id, title, description })
               }
             >
               Submit

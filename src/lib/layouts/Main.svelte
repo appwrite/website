@@ -4,21 +4,26 @@
     export type NavLink = {
         label: string;
         href: string;
+        showBadge?: boolean;
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
+
+    const initialized = writable(false);
 </script>
 
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav } from '$lib/components';
+    import { BANNER_KEY } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
+    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { slide } from 'svelte/transition';
-    import { persisted } from '$lib/utils/persisted';
+    import { page } from '$app/stores';
 
+    export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
@@ -75,6 +80,9 @@
     }
 
     onMount(() => {
+        setTimeout(() => {
+            $initialized = true;
+        }, 1000);
         return setupThemeObserver();
     });
 
@@ -90,6 +98,11 @@
         {
             label: 'Blog',
             href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',
@@ -112,11 +125,10 @@
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    const BANNER_KEY = 'discord-banner-00'; // Change this key whenever you want to show the banner again for all users
-    let showTopBanner = persisted(BANNER_KEY, {
-        defaultValue: true,
-        validate: (value): value is boolean => typeof value === 'boolean'
-    });
+    const hideTopBanner = () => {
+        document.body.dataset.bannerHidden = '';
+        localStorage.setItem(BANNER_KEY, 'true');
+    };
 </script>
 
 <div class="u-position-relative">
@@ -163,30 +175,28 @@
         </div>
     </section>
     <header
-        class="aw-main-header theme-{resolvedTheme}"
-        class:is-transparent={browser}
+        class="aw-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-        {#if $showTopBanner}
-            <div class="aw-top-banner" transition:slide={{ duration: 250 }}>
-                <div class="aw-top-banner-content aw-u-color-text-primary">
-                    <a href="https://www.producthunt.com/posts/appwrite-cloud-beta" target="_blank" rel="noopener noreferrer">
-                        <span class="aw-caption-500">We are LIVE on Product Hunt </span>
-                        <span class="aw-icon-product-hunt" aria-hidden="true" />
-                        <span class="aw-caption-500">Check out our latest launch!</span>
-                    </a>
-                    {#if browser}
-                        <button
-                            class="aw-top-banner-button"
-                            aria-label="close discord message"
-                            on:click={() => ($showTopBanner = false)}
-                        >
-                            <span class="aw-icon-close" aria-hidden="true" />
-                        </button>
-                    {/if}
-                </div>
+        <div class="aw-top-banner">
+            <div class="aw-top-banner-content aw-u-color-text-primary">
+                <a href="/blog/post/announcing-appwrite-pro">
+                    <span class="aw-caption-500"
+                        >Appwrite Pro is now available! Get started with $15 credit.</span
+                    >
+                </a>
+                {#if browser}
+                    <button
+                        class="aw-top-banner-button"
+                        aria-label="close discord message"
+                        on:click={hideTopBanner}
+                    >
+                        <span class="aw-icon-close" aria-hidden="true" />
+                    </button>
+                {/if}
             </div>
-        {/if}
+        </div>
+
         <div class="aw-main-header-wrapper">
             <div class="aw-main-header-start">
                 <a href="/">
@@ -205,11 +215,17 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Main">
                     <ul class="aw-main-header-nav-list">
-                        {#each navLinks as { label, href }}
+                        {#each navLinks as navLink}
                             <li class="aw-main-header-nav-item">
-                                <a class="aw-link" {href}>{label}</a>
+                                <a
+                                    class="aw-link"
+                                    href={navLink.href}
+                                    data-initialized={$initialized ? '' : undefined}
+                                    data-badge={navLink.showBadge ? '' : undefined}
+                                    >{navLink.label}
+                                </a>
                             </li>
                         {/each}
                     </ul>
@@ -224,11 +240,11 @@
                 >
                     <span aria-hidden="true" class="aw-icon-star" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">36.8K</span>
+                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
                 </a>
-                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"
-                    >Sign up</a
-                >
+                <!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
+                <!--                    >Sign up</a-->
+                <!--                >-->
                 <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
@@ -237,7 +253,48 @@
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-    <main class="aw-main-section" class:aw-u-hide-mobile={$isMobileNavOpen}>
+    <main
+        class="aw-main-section"
+        class:aw-u-hide-mobile={$isMobileNavOpen}
+        id={omitMainId ? undefined : 'main'}
+    >
         <slot />
     </main>
 </div>
+
+<style lang="scss">
+    .nav-badge {
+        margin-inline-start: 0.5rem;
+        padding-inline: 0.375rem;
+    }
+
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    [data-badge] {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(var(--aw-color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+            translate: 100%;
+        }
+
+        &:not([data-initialized])::after {
+            animation: scale-in 0.2s ease-out;
+        }
+    }
+</style>

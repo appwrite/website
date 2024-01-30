@@ -31,13 +31,14 @@
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Community', href: '/community' },
-                { label: 'Heroes', href: '/heroes' },
+                { label: 'Threads', href: '/threads' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
@@ -46,29 +47,29 @@
                 },
                 {
                     label: 'Status',
-                    href: 'https://status.appwrite.io',
+                    href: 'https://appwrite.online',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 }
             ],
             About: [
-                { label: 'Pricing', href: '/pricing' },
                 { label: 'Company', href: '/company' },
+                { label: 'Pricing', href: '/pricing' },
                 {
                     label: 'Careers',
-                    href: 'https://careers.appwrite.io/',
+                    href: 'https://appwrite.careers',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Store',
-                    href: 'https://store.appwrite.io',
+                    href: 'https://appwrite.store',
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },
@@ -78,7 +79,7 @@
         };
 </script>
 
-<nav
+<nav aria-label="Footer"
     class="aw-footer-nav u-margin-block-start-100 u-position-relative"
     class:aw-u-sep-block-start={!noBorder}
 >

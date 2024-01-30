@@ -12,7 +12,7 @@
     --aw-color-card: var(--aw-color-white) / 0.9;
     --aw-color-smooth: var(--aw-color-greyscale-900) / 0.04;
     --aw-color-subtle: var(--aw-color-greyscale-50);
-    --aw-color-offset: var(--aw-color-black) / 0.06;
+    --aw-color-offset: var(--aw-color-black) / 0.08;
 
     --aw-color-border: var(--aw-color-greyscale-50);
   }
@@ -105,20 +105,9 @@
   #{$theme-dark} { @include color-dark; }
 }
 
-.#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary))!important; } 
-.#{$p}-clr-primary { color:hsl(var(--aw-color-primary))!important; }
-
+.#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary))!important; }
 .#{$p}-u-color-text-secondary { color:hsl(var(--aw-color-secondary))!important; }
-.#{$p}-clr-secondary { color:hsl(var(--aw-color-secondary))!important; }
-
 .#{$p}-u-color-text-tertiary { color:hsl(var(--aw-color-tertiary))!important; }
-.#{$p}-clr-tertiary { color:hsl(var(--aw-color-tertiary))!important; }
-
 .#{$p}-u-color-text-accent { -webkit-text-fill-color: hsl(var(--aw-color-accent))!important; color:hsl(var(--aw-color-accent))!important; }
-.#{$p}-clr-accent { -webkit-text-fill-color: hsl(var(--aw-color-accent))!important; color:hsl(var(--aw-color-accent))!important; }
-
 .#{$p}-u-color-text-accent-darker { color:hsl(var(--aw-color-accent-darker))!important; }
-.#{$p}-clr-accent-darker { color:hsl(var(--aw-color-accent-darker))!important; }
-
 .#{$p}-u-color-text-accent-click { color:hsl(var(--aw-color-accent-click))!important; }
-.#{$p}-clr-accent-click { color:hsl(var(--aw-color-accent-click))!important; }

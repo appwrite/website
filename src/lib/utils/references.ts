@@ -41,7 +41,7 @@ export enum Platform {
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
     ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest',
+    ServerRest = 'server-rest'
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -66,9 +66,10 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerRest]: 'REST',
     sh: 'Shell',
     js: 'JavaScript',
-    jsx: 'React',
-    tsx: 'React',
     ts: 'TypeScript',
+    jsx: 'React',	
+    tsx: 'React',
+    typescript: 'TypeScript',
     dart: 'Dart',
     java: 'Java',
     kotlin: 'Kotlin',
@@ -96,7 +97,8 @@ export const platformMap: Record<Language | string, string> = {
     yaml: 'YAML',
     text: 'Text',
     vue: 'Vue',
-    svelte: 'Svelte'
+    svelte: 'Svelte',
+    groovy: 'Groovy'
 };
 
 export const serviceMap: Record<Service, string> = {

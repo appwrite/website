@@ -1,24 +1,10 @@
-<script context="module" lang="ts">
-    export type AuthorData = {
-        name: string;
-        slug: string;
-        role: string;
-        avatar: string;
-        bio: string;
-        twitter: string;
-        linkedin: string;
-        github: string;
-        href: string;
-    };
-</script>
-
 <script lang="ts">
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
     import { getContext } from 'svelte';
-    import type { PostsData } from './Post.svelte';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import type { PostsData, AuthorData } from '$routes/blog/content';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 

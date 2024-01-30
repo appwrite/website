@@ -27,7 +27,7 @@
             desktop: {
                 main: animation(
                     '#oss-discord',
-                    { x: 20, y: '-80vh', rotate: 15 },
+                    { x: 20, y: '-75vh', rotate: 15 },
                     animationOptions
                 ),
                 reversed: animation(
@@ -45,7 +45,7 @@
             desktop: {
                 main: animation(
                     '#oss-github',
-                    { x: -100, y: '-55vh', rotate: 6.26 },
+                    { x: -100, y: '-50vh', rotate: 6.26 },
                     animationOptions
                 ),
                 reversed: animation(
@@ -67,7 +67,7 @@
             desktop: {
                 main: animation(
                     '#oss-twitter',
-                    { x: 100, y: '-70vh', rotate: -15 },
+                    { x: 100, y: '-65vh', rotate: -15 },
                     animationOptions
                 ),
                 reversed: animation(
@@ -85,7 +85,7 @@
             desktop: {
                 main: animation(
                     '#oss-youtube',
-                    { x: -100, y: '-55vh', rotate: -3.77 },
+                    { x: -100, y: '-50vh', rotate: -3.77 },
                     animationOptions
                 ),
                 reversed: animation(
@@ -103,7 +103,7 @@
             desktop: {
                 main: animation(
                     '#oss-commits',
-                    { x: 100, y: '-80vh', rotate: -10.2 },
+                    { x: 100, y: '-70vh', rotate: -10.2 },
                     animationOptions
                 ),
                 reversed: animation(
@@ -157,6 +157,8 @@
         <div class="cards-wrapper">
             <a
                 href="/discord"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-discord"
             >
@@ -182,7 +184,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="aw-title u-margin-block-start-auto">32k+ GitHub Stars</div>
+                <div class="aw-title u-margin-block-start-auto">38k+ GitHub Stars</div>
             </a>
 
             <a
@@ -197,7 +199,7 @@
                         aria-label="Twitter"
                     />
                 </div>
-                <div class="aw-title u-margin-block-start-auto">125k+ Twitter Followers</div>
+                <div class="aw-title u-margin-block-start-auto">128k+ Twitter Followers</div>
             </a>
 
             <a
@@ -212,7 +214,7 @@
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="aw-title u-margin-block-start-auto">3k+ Youtube Subscribers</div>
+                <div class="aw-title u-margin-block-start-auto">4k+ Youtube Subscribers</div>
             </a>
 
             <a
@@ -227,7 +229,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="aw-title u-margin-block-start-auto">15k+ Code Commits</div>
+                <div class="aw-title u-margin-block-start-auto">18k+ Code Commits</div>
             </a>
         </div>
     </div>
@@ -245,7 +247,7 @@
 
     .sticky-wrapper {
         position: sticky;
-        top: 0;
+        top: -15vh;
         overflow: hidden;
 
         display: flex;
@@ -256,7 +258,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 100vh;
+        height: 130vh;
 
         text-align: center;
 

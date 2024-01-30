@@ -107,7 +107,7 @@ _APP_VCS_GITHUB_WEBHOOK_SECRET=super-secret
 
 [Learn more about environment variables](/docs/advanced/self-hosting/environment-variables)
 
-## Update exiting GitHub apps {% #existing-apps %}
+## Update existing GitHub apps {% #existing-apps %}
 
 There are additional steps if you're updating permissions in existing GitHub apps.
 Every time you update your GitHub app's permissions, GitHub will prompt you to review the changes.
@@ -127,6 +127,6 @@ _APP_FUNCTIONS_RUNTIMES=dart-2.15, dotnet-6.0, java-18.0
 
 You can find a full list of supported runtimes on the [environment variables page](/docs/advanced/self-hosting/environment-variables).
 
-You can also configure the maximum timeout that can be set on individual Appwrite functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
+You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 
 {% partial file="update-variables.md" /%}

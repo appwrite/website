@@ -13,6 +13,7 @@ We'll use context and a custom hook to manage our user's data.
 Create a new file `src/lib/context/user.jsx` and add the following code to it.
 
 ```js
+import { ID } from "appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
 
@@ -36,7 +37,7 @@ export function UserProvider(props) {
   }
 
   async function register(email, password) {
-    await account.create(email, password);
+    await account.create(ID.unique(), email, password);
     await login(email, password);
   }
 

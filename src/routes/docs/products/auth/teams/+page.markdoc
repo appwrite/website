@@ -198,4 +198,6 @@ individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>
 | Select roles   | `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])`|
 
 
-[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)
+{% arrow_link href="/docs/advanced/platform/permissions" %}
+Learn more about permissions 
+{% /arrow_link %}
