@@ -73,13 +73,10 @@
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
                         {#if isFirst}
-                            <div class="aw-inline-info" style:margin-block-start="1.5rem">
-                                <span
-                                    class="aw-sub-body-500 aw-u-color-text-primary"
-                                    style:display="block"
-                                >
+                            <div class="aw-inline-info aw-u-margin-block-start-24">
+                                <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     TL;DR
-                                </span>
+                                </div>
                                 {data.tldr}
                             </div>
                         {/if}
