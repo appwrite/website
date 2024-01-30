@@ -17,8 +17,7 @@
 
     {#if open}
         <div 
-          class="menu-wrapper aw-card is-normal menu has-border-gradient"
-          style:z-index="1"
+          class="menu-wrapper aw-card is-normal menu has-border-gradient u-z-index-1"
           use:melt={menu}
           transition:fly={{ y: 8, duration: 250 }}
         >
