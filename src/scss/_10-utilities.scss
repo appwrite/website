@@ -48,6 +48,7 @@
 
 .#{$p}-u-margin-block-0             { margin-block:0; }
 .#{$p}-u-margin-block-80            { margin-block:pxToRem(80); }
+.#{$p}-u-margin-block-start-8-negative { margin-block-start:pxToRem(-8)!important; }
 .#{$p}-u-margin-block-start-0       { margin-block-start:0!important; }
 .#{$p}-u-margin-block-start-24      { margin-block-start:pxToRem(24); }
 .#{$p}-u-margin-block-start-40      { margin-block-start:pxToRem(40); }
@@ -80,6 +81,7 @@
 .#{$p}-u-max-width-993              { max-inline-size:pxToRem(993); }
 
 .#{$p}-u-max-height-300             { max-block-size:pxToRem(300); }
+.#{$p}-u-max-height-100-percent     { max-block-size:100%; }
 
 .#{$p}-u-trim-1           { @include trim(1); }
 .#{$p}-u-line-height-1-2         { line-height:1.2!important; }
