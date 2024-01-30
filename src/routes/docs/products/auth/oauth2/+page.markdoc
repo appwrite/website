@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Serverless Tokenless Passwordless Domainful Powerful Wonderful Authorization
+title: OAuth 2 login
 description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
