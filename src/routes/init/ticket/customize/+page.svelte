@@ -8,7 +8,6 @@
     import { dequal } from 'dequal/lite';
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
-    import type { TicketVariant } from '../constants';
     import Form from './form.svelte';
 
     export let data;
@@ -16,7 +15,6 @@
     let name = data.ticket?.name ?? '';
     const id = data.ticket?.id ?? 0;
     let tribe: string | undefined = data.ticket?.tribe ?? undefined;
-    let variant: TicketVariant | undefined = data.ticket.variant;
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
@@ -76,7 +74,7 @@
                 </h1>
 
                 <div class="desktop">
-                    <Form bind:variant bind:name bind:tribe bind:showGitHub />
+                    <Form bind:name bind:tribe bind:showGitHub />
                 </div>
             </div>
         {:else}
@@ -121,7 +119,6 @@
             <div class="ticket-holder">
                 <Ticket
                     {...data.ticket}
-                    {variant}
                     {tribe}
                     {name}
                     contributions={data.streamed.contributions}
@@ -147,7 +144,7 @@
             {#if drawerOpen}
                 <hr />
                 <div class="form-wrapper" transition:slide>
-                    <Form bind:variant bind:name bind:tribe bind:showGitHub />
+                    <Form bind:name bind:tribe bind:showGitHub />
                 </div>
             {/if}
         </div>
