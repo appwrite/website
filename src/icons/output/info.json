@@ -227,40 +227,46 @@
     "className": "aw-icon-search",
     "unicode": "&#59942;"
   },
-  "star": {
+  "solid": {
     "encodedCode": "\\ea27",
     "prefix": "aw-icon",
-    "className": "aw-icon-star",
+    "className": "aw-icon-solid",
     "unicode": "&#59943;"
   },
-  "system": {
+  "star": {
     "encodedCode": "\\ea28",
     "prefix": "aw-icon",
-    "className": "aw-icon-system",
+    "className": "aw-icon-star",
     "unicode": "&#59944;"
   },
-  "twitter": {
+  "system": {
     "encodedCode": "\\ea29",
     "prefix": "aw-icon",
-    "className": "aw-icon-twitter",
+    "className": "aw-icon-system",
     "unicode": "&#59945;"
   },
-  "vue": {
+  "twitter": {
     "encodedCode": "\\ea2a",
     "prefix": "aw-icon",
-    "className": "aw-icon-vue",
+    "className": "aw-icon-twitter",
     "unicode": "&#59946;"
   },
-  "x": {
+  "vue": {
     "encodedCode": "\\ea2b",
     "prefix": "aw-icon",
-    "className": "aw-icon-x",
+    "className": "aw-icon-vue",
     "unicode": "&#59947;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea2c",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59948;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea2d",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59949;"
   }
 }
