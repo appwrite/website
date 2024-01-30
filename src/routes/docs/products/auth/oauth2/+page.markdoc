@@ -1,6 +1,6 @@
 ---
 layout: article
-title: OAuth 2 login
+title: Serverless Tokenless Passwordless Domainful Powerful Wonderful Authorization
 description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
@@ -22,7 +22,7 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 # Initialize OAuth 2 login {% #init %}
 
-To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
+To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) endpoint.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
