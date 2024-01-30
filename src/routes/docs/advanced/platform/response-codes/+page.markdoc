@@ -169,6 +169,8 @@ Errors found when using Appwrite Databases.
 
 ## Storage errors {% #storage-errors %}
 Errors found when using Appwrite Storage.
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 | 400  | storage_device_not_found | The requested storage device could not be found. |
 | 400  | storage_file_empty | Empty file passed to the endpoint. |
 | 400  | storage_file_type_unsupported | The given file extension is not supported. |
@@ -184,6 +186,8 @@ Errors found when using Appwrite Storage.
 
 ## Functions errors {% #functions-errors %}
 Errors found when using Appwrite Functions.
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 | 400  | build_not_ready | Build with the requested ID is building and not ready for execution. |
 | 400  | build_in_progress | Build with the requested ID is already in progress. Please wait before you can retry. |
 | 404  | installation_not_found | Installation with the requested ID could not be found. Check to see if the ID is correct, or create the installation. |
