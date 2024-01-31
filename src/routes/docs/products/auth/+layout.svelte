@@ -80,11 +80,7 @@
 				{
 					label: 'Custom token login',
 					href: '/docs/products/auth/custom-token'
-				},
-				{
-					label: 'External login',
-					href: '/docs/products/auth/external'
-				},
+				}
 			]
 		},
 		{

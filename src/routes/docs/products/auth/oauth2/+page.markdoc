@@ -6,11 +6,11 @@ description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.
 
-When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
+When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to your application.
 
 # Configure OAuth 2 login {% #configure %}
 
-Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
+Before using OAuth 2 login, you need to enable and configure an OAuth 2 provider.
 
 1. Navigate to your Appwrite project.
 2. Navigate to **Auth** > **Settings**.
@@ -37,7 +37,7 @@ const client = new Client()
 const account = new Account(client);
 
 // Go to OAuth provider login page
-account.createOAuth2Session('amazon', [LINK_ON_SUCCESS], [LINK_ON_FAILURE]);
+account.createOAuth2Session('amazon', '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
 ```
 {% /tabsitem %}
 
