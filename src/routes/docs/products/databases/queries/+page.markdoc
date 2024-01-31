@@ -10,9 +10,10 @@ Many list endpoints in Appwrite allow you to filter, sort, and paginate results 
 
 Appwrite SDKs provide a `Query` class to help you build queries. The `Query` class has a method for each type of supported query.
 
-| Query                 | Description                                                                                                           |
+| Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
+| `Query.or([Query.lessThan(5), Query.greaterThan(10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
 | `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
@@ -24,6 +25,8 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -32,6 +35,38 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
 | `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).        |
 
+
+{% tabs %}
+{% tabsitem #nodejs title="Node.js" %}
+{% /tabsitem %}
+
+{% tabsitem #php title="PHP" %}
+{% /tabsitem %}
+
+{% tabsitem #python title="Python" %}
+{% /tabsitem %}
+
+{% tabsitem #ruby title="Ruby" %}
+{% /tabsitem %}
+
+{% tabsitem #deno title="Deno" %}
+{% /tabsitem %}
+
+{% tabsitem #dart title="Dart" %}
+{% /tabsitem %}
+
+{% tabsitem #swift title="Swift" %}
+{% /tabsitem %}
+
+{% tabsitem #dotnet title=".NET" %}
+{% /tabsitem %}
+
+{% tabsitem #kotlin title="Kotlin" %}
+{% /tabsitem %}
+
+{% tabsitem #java title="Java" %}
+{% /tabsitem %}
+{% /tabs %}
 
 # Building Queries {% #building-queries %}
 
