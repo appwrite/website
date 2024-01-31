@@ -1,0 +1,246 @@
+---
+layout: article
+title: Messages
+description: Learn about Appwrite messages, the different types of messages, what can be sent in different message types.
+back: /docs
+---
+
+Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite 
+as a **message** is displayed in the **Messages** tab.
+
+[TODO: Screenshot]
+
+# Messages {% #messages %}
+
+Each message displays with the following information.
+
+{% table %}
+* Column {% width=200 %}
+* Description
+---
+* Message ID
+* The unique ID of the message.
+---
+* Description
+* The developer defined description of the message. End users do not see this description.
+---
+* Message
+* The message delivered to end users.
+---
+* Type
+* Type of message, either `Push`, `Email`, and `SMS`.
+---
+* Status
+* Indicates the status of the message, can be one of `draft`, `scheduled`, `processing`, `failed`, `success`.
+---
+* Scheduled at
+* Indicates the scheduled delivery time of the message.
+---
+* Delivered at
+* Indicates the time at which the message was successfully delivered.
+{% /table %}
+
+
+# Messages types {% #messages-types %}
+
+There are three types of messages
+
+{% table %}
+* Message type {% width=200 %}
+* Description
+---
+* Push notifications
+* Push notifications are alerts that show up on a user device's notification center. 
+This can be used to deliver messages to the user whether their application is open or not.
+---
+* Emails
+* Emails let you deliver rich content to a users' inbox. 
+Appwrite allows you to send customized HTML email messages so you can include links, styling, and more. 
+---
+* SMS
+* SMS messages let you deliver text messages to your user's phone.
+This helps you reach your user, even when their device do not have internet access.
+{% /table %}
+
+# Choosing a message type {% #choosing-a-message-type %}
+Choosing the right type of notification to reach your audience is important for your app's success.
+Here are some common factors to consider when deciding what type of message should be sent.
+
+{% table %}
+* Message type {% width=200 %}
+* Description
+---
+* Time-sensitive messages
+* Push notifications or SMS messages are ideal for time-sensitive messages, as they are typically checked frequently and opened within minutes, ensuring prompt attention.
+---
+* Guaranteed delivery
+* Emails and SMS messages are more reliable for guaranteed delivery of important messages like invoices and order confirmations, as push notifications can be easily missed.
+---
+* Content-rich messages
+* Emails are best suited for delivering content-rich messages like promotional letters, detailed updates, and newsletters, thanks to support for HTML, allowing for rich text, links, and styling.
+---
+* Increasing engagement
+* Push notifications are effective for increasing engagement with users, as they can be clicked on to link directly to your app, promoting immediate interaction.
+---
+* Accessibility and reach
+* Emails and SMS messages allow you to reach users even before they have installed your app, making them suitable for announcement-type messages that require broad accessibility.
+{% /table %}
+
+# Composing messages {% #composing-messages %}
+Different types of messages have different content and configurable options.
+Here are the different components that make up a message.
+
+{% tabs %}
+{% tabsitem #push-notification title="Push notifications" %}
+{% table %}
+* Parameter {% width=100 %}
+* Required  {% width=100 %}
+* Description
+---
+* `title`
+* required
+* The title of the push notification. This is the headline text that recipients see first.
+---
+* `body`
+* required
+* The main content or body of the push notification. Provides the details or message you want to convey.
+---
+* `data`
+* optional
+* Extra key-value pairs that apps can use to handle the notification more effectively, such as directing users to a specific part of the app.
+---
+* `action`
+* optional
+* Specifies which activity or view controller to open within the app when the notification is tapped.
+---
+* `icon`
+* optional
+* Sets the icon of the notification, used only for Android devices. This can help in branding the notification.
+---
+* `sound`
+* optional
+* Sets the sound to use for the notification. For Android, the sound file must be located in `/res/raw`; for Apple devices, it must be in the app's main bundle or the `Library/Sounds` folder of the app container.
+---
+* `color`
+* optional
+* Specifies a color tint for the notification icon, used only for Android devices. This can be used to align with brand colors.
+---
+* `tag`
+* optional
+* Can be used to replace an existing notification with the same tag, used only for Android devices. Useful for updating or canceling notifications.
+---
+* `badge`
+* optional
+* Sets the number to display next to the app's icon, indicating the number of notifications or updates. Setting to 0 removes any existing badge. This is for Apple devices only.
+---
+* `status`
+* optional
+* The status of the push notification, which can be `draft`, `scheduled`, or `processing` (default). `Processing` means the notification is sent immediately.
+---
+* `scheduledAt`
+* optional
+* An ISO date time string specifying when the push notification should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+{% /table %}
+
+{% /tabsitem %}
+{% tabsitem #emails title="Emails" %}
+
+{% table %}
+* Parameter {% width=100 %}
+* Required  {% width=100 %}
+* Description
+---
+* `subject`
+* required
+* The subject line of the email. This is what recipients see first in their inbox.
+---
+* `content`
+* required
+* The main content of the email. This can be plain text or HTML, depending on the `html` flag.
+---
+* `cc` 
+* optional
+* An array of target IDs to be included in the carbon copy (CC) field. These recipients can see each other's email addresses.
+---
+* `bcc` 
+* optional 
+* An array of target IDs to be included in the blind carbon copy (BCC) field. These recipients cannot see each other's email addresses.
+---
+* `html` 
+* optional
+* A boolean indicating whether the `content` is in HTML format. This allows for rich text, links, and styling in the email content.
+---
+* `status` 
+* optional
+* The status of the email, which can be draft, scheduled, processing (default). Processing means the email is sent immediately.
+---
+* `scheduledAt`
+* optional
+* An ISO date time string specifying when the email should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+{% /table %}
+
+{% /tabsitem %}
+{% tabsitem #sms title="SMS" %}
+{% table %}
+* Parameter {% width=100 %}
+* Required  {% width=100 %}
+* Description
+---
+* `content`
+* required
+* The main content of the SMS. This should be concise and clear, as SMS messages have character limits.
+---
+* `status`
+* optional
+* The status of the SMS message, which can be `draft`, `scheduled`, or `processing` (default). `Processing` means the SMS is sent immediately.
+---
+* `scheduledAt`
+* optional
+* An ISO date time string specifying when the SMS should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+{% /table %}
+{% /tabsitem %}
+{% /tabs %}
+
+# Sending a message {% #create-a-message %}
+You can create a message with the `METHOD` method using a Server SDK.
+{% multicode %}
+```js
+// Push notification
+
+// Email
+
+// SMS
+```
+```deno
+```
+```php
+```
+```python
+```
+```ruby
+```
+```csharp
+```
+```dart
+```
+```kotlin
+```
+```java
+```
+```swift
+```
+{% /multicode %}
+
+For a complete, end-to-end example, follow one of the following journies.
+
+{% arrow_link href="/docs/products/messaging/send-push-notification" %}
+Send a push notification
+{% /arrow_link %}
+
+{% arrow_link href="/docs/products/messaging/send-email-messages" %}
+Send a email
+{% /arrow_link %}
+
+{% arrow_link href="/docs/products/messaging/send-sms-messages" %}
+Send a SMS
+{% /arrow_link %}
