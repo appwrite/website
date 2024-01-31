@@ -4,4 +4,20 @@ title: Targets
 description: Manage avenues of communication by targetting user's device, email, or phone number in your notification and messages.
 ---
 
+Targets are different ways a user can be reached.
+For example, a user might have two emails, a phone number as well as a phone and a tablet with your app installed.
+This means, the user has five different targets that you can deliver messages to.
+
+# Topics and targets {% #topics-and-targets %}
+A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
+These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
+
+{% arrow_link href="/docs/products/messaging/topics" %}
+Learn more about topics
+{% /arrow_link %}
+
+# Types of targets {% #types-of-targets %}
+
+[@abnegate @stnguyen90: TODO types of targets and how to create/add targets in console + code.]
+
 

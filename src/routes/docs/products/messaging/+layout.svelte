@@ -29,16 +29,16 @@
 					href: '/docs/products/messaging/providers'
 				},
 				{
-					label: 'Targets',
-					href: '/docs/products/messaging/targets'
-				},
-				{
 					label: 'Topics',
 					href: '/docs/products/messaging/topics'
 				},
 				{
-					label: 'Message types',
-					href: '/docs/products/messaging/message-types'
+					label: 'Targets',
+					href: '/docs/products/messaging/targets'
+				},
+				{
+					label: 'Messages',
+					href: '/docs/products/messaging/messages'
 				},
 				
 			]
