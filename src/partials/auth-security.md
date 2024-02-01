@@ -23,5 +23,3 @@ Encourage passwords that are hard to guess by disallowing users to pick password
 Personal data includes the user's name, email, and phone number.
 
 Disallowing personal data can be enabled in the Auth service's **Security** tab on the Appwrite Console.
-
-TODO: @Vincent lets add section for Session length (show use case with short session length and renewal on every request for safe short-lived sessions like online banking), Users limit (use case with beta tests for example)
