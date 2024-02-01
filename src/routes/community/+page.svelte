@@ -179,7 +179,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">39.1K</span>
                                 </a>
                             </div>
                         </div>
