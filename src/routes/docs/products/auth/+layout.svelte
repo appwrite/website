@@ -73,6 +73,10 @@
 					label: 'JWT login',
 					href: '/docs/products/auth/jwt'
 				},
+				{
+					label: 'Multi-factor authentication',
+					href: '/docs/products/auth/mfa'
+				},
 			]
 		},
 		{
