@@ -112,7 +112,37 @@
                     icon: 'icon-dart',
                     image: '/images/blog/placeholder.png',
                     href: 'dart'
-                }
+                },
+                {
+                    title: 'Ruby',
+                    icon: 'icon-ruby',
+                    image: '/images/blog/placeholder.png',
+                    href: 'ruby'
+                },
+                {
+                    title: 'Deno',
+                    icon: 'icon-deno',
+                    image: '/images/blog/placeholder.png',
+                    href: 'deno'
+                },
+                {
+                    title: 'PHP',
+                    icon: 'icon-php',
+                    image: '/images/blog/placeholder.png',
+                    href: 'php'
+                },
+                {
+                    title: 'Kotlin',
+                    icon: 'icon-kotlin',
+                    image: '/images/blog/placeholder.png',
+                    href: 'kotlin'
+                },
+                {
+                    title: 'Swift',
+                    icon: 'icon-swift',
+                    image: '/images/blog/placeholder.png',
+                    href: 'swift'
+                },
             ]
         }
     ];
