@@ -5,7 +5,6 @@
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
     import { loginGithub } from '$routes/init/helpers';
-    import type { TicketVariant } from '../constants';
 
     import type { PageData } from './$types';
     import TribeToggle from './tribe-toggle.svelte';
@@ -14,8 +13,6 @@
     export let tribe: string | null = null;
     export let showGitHub = true;
     $: ({ ticket } = $page.data as PageData);
-
-    const variants: TicketVariant[] = ['default', 'rainbow', 'pink'];
 
     const tribes = [
         null,
@@ -99,14 +96,14 @@
 {:else}
     <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your GitHub account</h2>
     <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-        Sign in with your GitHub Account and see the magic happen in your ticket.
+        Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
     <button
         class="aw-button is-full-width is-secondary u-margin-block-start-24"
         on:click={loginGithub}
     >
         <div class="aw-icon-github aw-u-color-text-primary" />
-        <span class="text">Log in to GitHub Account</span>
+        <span class="text">Log in to GitHub account</span>
     </button>
 {/if}
 
@@ -124,21 +121,21 @@
 {:else}
     <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
     <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-        Sign in with your Appwrite Account and see the magic happen in your ticket
+        Sign in with your Appwrite account and see the magic happen in your ticket
     </p>
     <a
         href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/ticket"
         class="aw-button is-full-width is-secondary u-margin-block-start-24"
     >
         <div class="aw-icon-appwrite aw-u-color-text-primary" />
-        <span class="text">Log in to Appwrite Account</span>
+        <span class="text">Log in to Appwrite account</span>
     </a>
 {/if}
 <hr />
 
 <h2 class="aw-sub-body-500 aw-u-color-text-primary">Add your tribe</h2>
 <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-    Customize your init ticket with your technology.
+    Customize your Init ticket with your technology.
 </p>
 <div class="tribes">
     {#each tribes as t}

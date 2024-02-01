@@ -34,7 +34,7 @@
                     on:click={loginGithub}
                 >
                     <div class="aw-icon-github" />
-                    <span class="text">Register with GitHub Account</span>
+                    <span class="text">Register with GitHub account</span>
                 </button>
                 <a
                     href="https://cloud.appwrite.io/login?forceRedirect={$page.url
@@ -42,7 +42,7 @@
                     class="aw-button is-full-width is-secondary u-margin-block-start-8"
                 >
                     <div class="aw-icon-appwrite aw-u-color-text-primary" />
-                    <span class="text">Register with Appwrite Account</span>
+                    <span class="text">Register with Appwrite account</span>
                 </a>
                 <p class="u-margin-block-start-16">
                     By registering, you agree to our <a href="/terms" class="aw-link is-inline"
