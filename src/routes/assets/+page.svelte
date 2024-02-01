@@ -63,7 +63,7 @@
         <div class="aw-container">
             <div class="aw-grid-120-1fr-auto">
                 <header class="aw-grid-120-1fr-auto-header">
-                    <h1 class="aw-title aw-u-color-text-primary">Brand assets</h1>
+                    <h1 class="aw-display aw-u-color-text-primary">Brand assets</h1>
                     <button
                         class="u-flex u-width-full-line aw-u-padding-block-20
                         aw-u-color-text-primary aw-is-only-mobile
