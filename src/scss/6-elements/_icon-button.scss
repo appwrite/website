@@ -3,23 +3,19 @@
 .#{$p}-icon-button {
   /* light-mode is the default */
   @mixin light-mode() {
-    --p-icon-button-font-color: var(--p-icon-button-font-color-default);
     --p-icon-button-font-color-default: var(--aw-color-primary);
     --p-icon-button-font-color-hover: var(--aw-color-accent-click);
     --p-icon-button-font-color-active: var(--aw-color-accent-click);
     --p-icon-button-font-color-focus: var(--aw-color-greyscale-900);
 
-    --p-icon-button-bg-color: var(--p-icon-button-bg-color-default);
     --p-icon-button-bg-color-default: var(--aw-color-smooth);
     --p-icon-button-bg-color-hover: var(--aw-color-offset);
     --p-icon-button-bg-color-active: var(--aw-color-smooth);
     --p-icon-button-bg-color-focus: var(--aw-color-offset);
 
-    --p-icon-button-border-color: var(--p-icon-button-border-color-default);
     --p-icon-button-border-color-default: transparent;
     --p-icon-button-border-color-focus: var(--aw-color-pink-500);
 
-    --p-icon-button-shadow-color: var(--p-icon-button-border-color-default);
     --p-icon-button-shadow-color-default: transparent;
     --p-icon-button-shadow-color-focus: var(--aw-color-pink-500);
   }
@@ -28,6 +24,11 @@
     --p-icon-button-border-color-focus: var(--aw-color-greyscale-100);
     --p-icon-button-shadow-color-focus: var(--aw-color-white);
   }
+  --p-icon-button-font-color: var(--p-icon-button-font-color-default);
+  --p-icon-button-bg-color: var(--p-icon-button-bg-color-default);
+  --p-icon-button-border-color: var(--p-icon-button-border-color-default);
+  --p-icon-button-shadow-color: var(--p-icon-button-border-color-default);
+
   position:relative; display:flex; gap:pxToRem(4);
   block-size:pxToRem(28); inline-size:pxToRem(28); border-radius:pxToRem(8);
   -webkit-backdrop-filter:blur(pxToRem(7.5)); backdrop-filter:blur(pxToRem(7.5));
