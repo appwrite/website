@@ -1,8 +1,15 @@
+import { splitStr } from '$lib/utils/string';
 import type { TicketData } from '$routes/init/ticket/constants';
 import { getCubes } from './helpers';
 
 export const getRainbowSvg = async (ticket: TicketData) => {
     const cubes = await getCubes(ticket);
+
+    const line_height = 18;
+    const big_line_height = 22;
+    const chars_per_line = 16;
+    // split ticket name in max 16 chars per line
+    const split_name = splitStr(ticket.name, { chars: chars_per_line, breakWord: false });
 
     return `
 <svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,28 +54,37 @@ export const getRainbowSvg = async (ticket: TicketData) => {
             ? `
     <text transform="translate(232.061 67.1128)" fill="#ADADB0" xml:space="preserve" style="white-space: pre"
       font-family="Aeonik Pro" font-size="10.2261" letter-spacing="0em">
-      <tspan x="0" y="9.69774">@${ticket.gh_user}</tspan>
+      <tspan x="0" y="${9.69774 + line_height * (split_name.length - 1)}">@${ticket.gh_user}</tspan>
     </text>
     `
             : ''
     }
-    <text transform="translate(232.061 46.6606)" fill="white" xml:space="preserve" style="white-space: pre"
+    ${split_name.map(
+        (line, i) => `
+      <text transform="translate(232.061 46.6606)" fill="white" xml:space="preserve" style="white-space: pre"
       font-family="Aeonik Pro" font-size="17.0435" letter-spacing="-0.01em">
-      <tspan x="0" y="15.5948">${ticket.name}</tspan>
-    </text>
+        <tspan x="0" y="${15.5 + line_height * i}">${line}</tspan>
+      </text>
+    `
+    )}
   </g>
   <text fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="23.7885"
     letter-spacing="-0.01em">
-    <tspan x="51.7739" y="71.2692">_</tspan>
+    <tspan x="51.7739" y="${71.2692 + big_line_height * (split_name.length - 1)}">_</tspan>
   </text>
   <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="23.7885"
     letter-spacing="-0.01em">
-    <tspan x="20.5273" y="71.2692">init</tspan>
+    <tspan x="20.5273" y="${71.2692 + big_line_height * (split_name.length - 1)}">init</tspan>
   </text>
-  <text fill="white" fill-opacity="0.64" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro"
-    font-size="23.7885" letter-spacing="-0.01em">
-    <tspan x="20.5273" y="44.8783">${ticket.name}</tspan>
-  </text>
+    ${split_name.map(
+        (line, i) => `
+        <text fill="white" fill-opacity="0.64" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro"
+        font-size="23.7885" letter-spacing="-0.01em">
+          <tspan x="20.5273" y="${44.8783 + big_line_height * i}">${line}</tspan>
+        </text>
+    `
+    )}
+
   <path
     d="M34.9975 209.424V212.718H26.8944C24.5336 212.718 22.4723 211.394 21.3695 209.424C21.2092 209.138 21.0688 208.838 20.9511 208.526C20.7201 207.915 20.5748 207.259 20.5308 206.576V205.685C20.5403 205.532 20.5554 205.381 20.5751 205.232C20.6154 204.925 20.6763 204.625 20.7563 204.333C21.5133 201.568 23.9747 199.542 26.8944 199.542C29.8141 199.542 32.2752 201.568 33.0322 204.333H29.5674C28.9986 203.432 28.014 202.836 26.8944 202.836C25.7747 202.836 24.7902 203.432 24.2214 204.333C24.048 204.607 23.9135 204.91 23.8254 205.232C23.7471 205.518 23.7053 205.819 23.7053 206.13C23.7053 207.074 24.0898 207.926 24.7061 208.526C25.2773 209.083 26.0473 209.424 26.8944 209.424H34.9975Z"
     fill="#FD366E" />
@@ -92,7 +108,7 @@ export const getRainbowSvg = async (ticket: TicketData) => {
   </g>
   <text transform="translate(20.5308 218.878)" fill="#E4E4E7" xml:space="preserve" style="white-space: pre"
     font-family="Aeonik Fono" font-size="8.4834" letter-spacing="0em">
-    <tspan x="0" y="7.9441">JAN 15 - 20</tspan>
+    <tspan x="0" y="7.9441">FEB 12 - 16</tspan>
   </text>
   <g filter="url(#filter3_f_327_1972)">
     <path
@@ -101,7 +117,9 @@ export const getRainbowSvg = async (ticket: TicketData) => {
   </g>
   <text transform="translate(20.9619 84.6782)" fill="white" fill-opacity="0.5" xml:space="preserve"
     style="white-space: pre" font-family="Aeonik Fono" font-size="10.2656" letter-spacing="0em">
-    <tspan x="0" y="8.74695">#${ticket.id.toString().padStart(6, '0')}</tspan>
+    <tspan x="0" y="${8.74695 + big_line_height * (split_name.length - 1)}">#${ticket.id
+        .toString()
+        .padStart(6, '0')}</tspan>
   </text>
   <rect x="214.791" y="143" width="222.857" height="106.297" fill="url(#paint7_linear_327_1972)" />
 </g>
