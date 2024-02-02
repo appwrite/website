@@ -12,7 +12,10 @@ export async function GET({ params }) {
         params.id
     )) as unknown as TicketData;
     ticket.variant = getTicketVariant(ticket);
-    const svg = await getTicketSvg(ticket);
+    const svg = await getTicketSvg({
+        ...ticket,
+        name: 'thomas gouveia lopes the destroyer of worlds'
+    });
 
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
