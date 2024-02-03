@@ -1,5 +1,4 @@
 import { splitStr } from '$lib/utils/string';
-import { getMockContributions } from '$routes/init/helpers';
 import type { ContributionsMatrix, TicketData, TicketVariant } from '$routes/init/ticket/constants';
 import { getContributions } from '../get-contributions/helpers.server';
 
@@ -24,8 +23,8 @@ const DIFF_Y = 5.1133;
 const DIFF_X = 5.1133;
 
 export async function getCubes(ticket: TicketData) {
-    // const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
-    const matrix = getMockContributions();
+    const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
+    // const matrix = getMockContributions();
 
     return matrix.reduce((acc, week, w) => {
         week.forEach((level, d) => {
@@ -126,8 +125,11 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
 
     const rainbow_png = await toBase64('/images/ticket/rainbow.png', f);
 
-    const tribe_src = getTribeSource(ticket.variant ?? 'default', ticket.tribe ?? 'appwrite');
-    const tribe_svg = await toBase64(tribe_src, f);
+    let tribe_svg: string | undefined = undefined;
+    if (ticket.tribe) {
+        const tribe_src = getTribeSource(ticket.variant ?? 'default', ticket.tribe);
+        tribe_svg = await toBase64(tribe_src, f);
+    }
 
     return `
 <svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +176,11 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
       </text>
     `
     )}
-  <image x="160" y="130" width="200" height="200" xlink:href="${tribe_svg}" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+    ${
+        tribe_svg
+            ? `<image x="160" y="130" width="200" height="200" xlink:href="${tribe_svg}" xmlns:xlink="http://www.w3.org/1999/xlink"/>`
+            : ''
+    }
 
   </g>
   <text fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="23.7885"

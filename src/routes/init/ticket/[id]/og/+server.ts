@@ -12,7 +12,7 @@ export async function GET({ params, fetch }) {
         params.id
     )) as unknown as TicketData;
     ticket.variant = getTicketVariant(ticket);
-    const svg = await getTicketSvg({ ...ticket, variant: 'default' }, fetch);
+    const svg = await getTicketSvg({ ...ticket }, fetch);
 
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
