@@ -3,19 +3,16 @@ import { appwriteInit } from '$lib/appwrite/init.js';
 import { getTicketVariant } from '$routes/init/helpers.js';
 import sharp from 'sharp';
 import type { TicketData } from '../../constants.js';
-import { getTicketSvg } from './(tickets)/index.js';
+import { getTicketSvg } from './getTicketSvg.server.js';
 
-export async function GET({ params }) {
+export async function GET({ params, fetch }) {
     const ticket = (await appwriteInit.database.getDocument(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
         params.id
     )) as unknown as TicketData;
     ticket.variant = getTicketVariant(ticket);
-    const svg = await getTicketSvg({
-        ...ticket,
-        name: 'thomas gouveia lopes the destroyer of worlds'
-    });
+    const svg = await getTicketSvg({ ...ticket, variant: 'default' }, fetch);
 
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
