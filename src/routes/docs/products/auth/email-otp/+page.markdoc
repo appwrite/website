@@ -9,12 +9,12 @@ Email OTP (one-time password) authentication lets users create accounts using th
 {% info title="Email OTP vs Magic URL" %}
 Email OTP sends an email with a 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox. 
 
-#### Benefits of Email OTP
+**Benefits of Email OTP**
 - Doesn't require user to be signed into email inbox on the device
 - Doesn't disturb application flow with a redirect
 - Doesn't require deep linking on mobile apps
 
-#### Downsides of Email OTP
+**Downsides of Email OTP**
 - Expires quicker
 - Requires more inputs from user
 {% /info %}

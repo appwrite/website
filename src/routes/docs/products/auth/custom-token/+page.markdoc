@@ -33,7 +33,7 @@ If you are integrating with external authentication providers or implementing yo
 
 If you are implementing token-based authentication flow, share the token secret with user over any channel of your choice instead of directly giving it to him in the response.
 
-If the client doesn't know his user ID during authentication, we recommend to directly return user ID to client as part of this step. If nessessary, you may also want to create or find user in your code based on specific defails you are provided in your authentication flow.
+If the client doesn't know the user's ID during authentication, we recommend to directly return user ID to the client as part of this step. If necessary, you can check if the user with an user ID exists first, and create a new user if needed.
 
 # Login {% #login %}
 
