@@ -4,13 +4,13 @@ title: Custom token login
 description: Limitless authentication flow in Appwrite. Find out how to implement custom authentication flow or connect to 3rd party authentication providers.
 ---
 
-Tokens are short-lived secrets created by server that can be exchanged for session by client. You may already be familiar with tokens if you checked out [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp) or [Phone (SMS) login](/docs/products/auth/phone-sms).
+Tokens are short-lived secrets created by an [Appwrite Server SDK](/docs/sdks#server) that can be exchanged for session by a [Client SDK](/docs/sdks#client) to log in users. You may already be familiar with tokens if you checked out [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp) or [Phone (SMS) login](/docs/products/auth/phone-sms).
 
-Custom token allows you to use [Server SDK](/docs/sdks#server) to generate tokens for your own implementations. This allows you to code your own authentication methods using Appwrite Functions or your custom backend. You could implement nick&password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to skip authentication which is useful when you integrate Appwrite with external authenticaion providers such as Auth0, TypingDNA, or any provider trusted by your users.
+Custom token allows you to use [Server SDK](/docs/sdks#server) to generate tokens for your own implementations. This allows you to code your own authentication methods using Appwrite Functions or your own backend. You could implement username and password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to skip authentication which is useful when you integrate Appwrite with external authenticaion providers such as Auth0, TypingDNA, or any provider trusted by your users.
 
-# Create custom token {% #init %}
+# Create custom token {% #create-custom-token %}
 
-Once you have your server endpoint prepared either in Appwrite Function or custom backend, you can use [Create token](/docs/references/cloud/server-node/users#createToken) endpoint of Users API to generate a token.
+Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-node/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 ```js
 import { Client, Users } from "node-appwrite";
@@ -27,9 +27,9 @@ const token = await users.createToken('[USER_ID]');
 console.log(token.secret);
 ```
 
-Token that got created includes a secret which is 6 character long hexadecimal string. You can configure length of the secret and expiry when creating a token.
+The newly created token includes a secret which is 6 character long hexadecimal string. You can configure length of the secret and expiry when creating a token.
 
-If you are integrating with external provider or implementented your own, make sure to validate user authenticated properly before generating a token for him.
+If you are integrating with external authentication providers or implementing your own authentication, make sure to validate user authenticated properly before generating a token for them.
 
 If you are implementing token-based authentication flow, share the token secret with user over any channel of your choice instead of directly giving it to him in the response.
 
