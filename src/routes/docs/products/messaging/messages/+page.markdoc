@@ -62,6 +62,18 @@ Appwrite allows you to send customized HTML email messages so you can include li
 This helps you reach your user, even when their device do not have internet access.
 {% /table %}
 
+# Messages lifecycle {% #messages-lifecycle %}
+All messages begin as `draft`. 
+If the message is sent immediately, its status is set to `processing`.
+If the message is scheduled to be sent later, its status is set to `scheduled`, then to `processing` at schedule time.
+After attempted delivery, it is marked as `sent` or `failed` depending on if the message was successfully delivered.
+{% only_dark %}
+![Message lifecycle](/images/docs/messaging/dark/message-status.png)
+{% /only_dark %}
+{% only_light %}
+![Message lifecycle](/images/docs/messaging/message-status.png)
+{% /only_light %}
+
 # Choosing a message type {% #choosing-a-message-type %}
 Choosing the right type of notification to reach your audience is important for your app's success.
 Here are some common factors to consider when deciding what type of message should be sent.
