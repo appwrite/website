@@ -249,7 +249,7 @@ An OAuth 2 [session](/docs/references/cloud/models/session) will have the follow
 
 You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
 
-# OAuth 2 profile {% #profile %}
+# Refreshing OAuth 2 tokens {% #refreshing-tokens %}
 
 OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint right before token expiry, or before first request after expiry.
 

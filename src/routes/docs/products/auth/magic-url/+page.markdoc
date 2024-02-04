@@ -9,7 +9,7 @@ Magic URL is a password-less way to authenticate users. When a user logs in by p
 {% info title="Magic URL vs Email OTP" %}
 Magic URL delivers a clickable button or a link to user's inbox, while Email OTP sends email with 6 digit code that user needs to enter into the app.
 
-#### Benefits of Email OTP
+#### Benefits of Magic URL
 - Doesn't expire too quickly while remaining secure
 - Doesn't require many inputs, only 1 click
 
@@ -129,18 +129,18 @@ mutation {
     accountCreateMagicURLToken(
         userId: "ID.unique()",
         email: "email@example.com",
-        securityPhrase: true
+        phrase: true
     ) {
         _id
         _createdAt
         userId
         secret
         expire
-        securityPhrase
+        phrase
     }
 }
 ```
 
 {% /multicode %}
 
-By enabling security phrase feature, you will recieve `securityPhrase` in the response. You need to display this phrase to the user, and we recommend informing user what this phrase is and how to check it. When security phrase is enabled, email will also include a new section providing user with the security phrase.
+By enabling security phrase feature, you will recieve `phrase` in the response. You need to display this phrase to the user, and we recommend informing user what this phrase is and how to check it. When security phrase is enabled, email will also include a new section providing user with the security phrase.
