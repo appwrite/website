@@ -80,7 +80,8 @@
 				{
 					label: 'Custom token login',
 					href: '/docs/products/auth/custom-token'
-				}
+				},
+				{
 					label: 'Multi-factor authentication',
 					href: '/docs/products/auth/mfa'
 				},

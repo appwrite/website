@@ -8,16 +8,14 @@ Magic URL is a password-less way to authenticate users. When a user logs in by p
 
 {% info title="Magic URL vs Email OTP" %}
 Magic URL delivers a clickable button or a link to user's inbox, while Email OTP sends email with 6 digit code that user needs to enter into the app.
+Both allow passwordless login flows with different advantages.
 
-#### Benefits of Magic URL
-- Doesn't expire too quickly while remaining secure
-- Doesn't require many inputs, only 1 click
+| Benefits of Magic URL                                          | Downsides of Magic URL                                                                                                      |
+|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Doesn't expire too quickly while remaining secure              | Requires user to be signed into email inbox on the device                                                                   |
+| Doesn't require many inputs, only 1 click                      | Disturbs application flow with a redirect                                                                                   |
+|                                                                | Requires deep linking when developing PWA or mobile apps                                                                    |
 
-#### Downsides of Email OTP
-
-- Requires user to be signed into email inbox on the device
-- Disturbs application flow with a redirect
-- Requires deep linking when developing PWA or mobile apps
 {% /info %}
 
 # Send email {% #init %}
