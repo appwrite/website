@@ -36,7 +36,7 @@ If FCM is disabled, click the three-dots menu and open the link. On the followin
 * 
 ---
 * Server key (.json file)
-* Head to Project settings -> Service accounts -> Generate new private key.
+* Head to Project settings -> Service accounts -> Generate new private key. {% only_dark %} ![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) {% /only_dark %} {% only_light %} ![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) {% /only_light %}
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
