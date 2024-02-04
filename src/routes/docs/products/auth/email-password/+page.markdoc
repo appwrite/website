@@ -78,7 +78,7 @@ promise.then(function (response) {
 
 Next, implement the verification page in your app. This page will parse the secrets passed in through the `userId` and `secret` query parameters. In this example, the code below will be found in the page served at `https://example.com/verify`.
 
-Since the secrets are passed in through url params, it will be easiest to perform this step in the browser.
+Since the secrets are passed in through query params, it will be easiest to perform this step in the browser.
 
 ```js
 import { Client, Account } from "appwrite";
@@ -153,4 +153,4 @@ promise.then(function (response) {
 
 # Security {% #security %}
 
-Appwrite's security first mindset goes beyond a securely implemented of authentication API. You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place. [Learn more](/docs/products/auth/security).
+Appwrite's security first mindset goes beyond a securely implemented of [Authentication API](/docs/references/cloud/client-web/account). You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place. [Learn more about security features](/docs/products/auth/security).
