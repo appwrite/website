@@ -8,7 +8,7 @@ Email and password login is the most commonly used authentication method. Appwri
 
 # Signup {% #sign-up %}
 
-You can use the Appwrite Client SDKs to create an account using email and password.
+You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account using email and password.
 
 ```js
 import { Client, Account, ID } from "appwrite";
@@ -19,7 +19,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create('[USER_ID]', 'email@example.com', '');
+const promise = account.create(ID.unique(), 'email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -30,9 +30,31 @@ promise.then(function (response) {
 
 Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), a resilient and secure password hashing algorithm.
 
+# Login {% #login %}
+
+After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/client-web/account#createEmailPasswordSession) endpoint.
+
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createEmailPasswordSession('email@example.com', 'password');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+
 # Verification {% #verification %}
 
-After an account is created, it can be verified through the account create verification route. The user doesn't need to be verified to log in, but you can restrict resource access to verified users only using permissions through the `user([USER_ID], "verified")` role.
+After an account is created, it can be verified through the account create verification endpoint. The user doesn't need to be verified to log in, but you can restrict resource access to verified users only using permissions through the `user([USER_ID], "verified")` role.
 
 First, send a verification email. Specify a redirect URL which users will be redirected to. The verification secrets will be appended as query parameters to the redirect URL. In this example, the redirect URL is `https://example.com/verify`.
 
@@ -41,11 +63,11 @@ import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com');
+const promise = account.createVerification('https://example.com/verify');
 
 promise.then(function (response) {
     console.log(response);
@@ -56,7 +78,7 @@ promise.then(function (response) {
 
 Next, implement the verification page in your app. This page will parse the secrets passed in through the `userId` and `secret` query parameters. In this example, the code below will be found in the page served at `https://example.com/verify`.
 
-Since the secrets are passed in through url params, it will be easiest to perform this step in the browser.
+Since the secrets are passed in through query params, it will be easiest to perform this step in the browser.
 
 ```js
 import { Client, Account } from "appwrite";
@@ -80,31 +102,9 @@ promise.then(function (response) {
 });
 ```
 
-# Login {% #login %}
-
-After you've created your account, users can be logged in using the Create Email Session route.
-
-```js
-import { Client, Account } from "appwrite";
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
-
-const account = new Account(client);
-
-const promise = account.createEmailSession('email@example.com', 'password');
-
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
-```
-
 # Password Recovery {% #password-recovery %}
 
-If a user forgets their password, they can initiate a password recovery flow to recover their password. The Create Password Recovery endpoint sends the user an email with a temporary secret key for password reset. When the user clicks the confirmation link, they are redirected back to the password reset URL with the secret key and email address values attached to the URL as query strings.
+If a user forgets their password, they can initiate a password recovery flow to recover their password. The Create Password Recovery endpoint sends the user an email with a temporary secret key for password reset. When the user clicks the confirmation link, they are redirected back to the password reset URL with the secret key and user ID values attached to the URL as query strings.
 
 Only redirect URLs to domains added as a platform on your Appwrite Console will be accepted. URLs not added as a platform are rejected to protect against redirect attacks.
 
@@ -115,7 +115,7 @@ const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-const promise = account.createRecovery('email@example.com', 'https://example.com');
+const promise = account.createRecovery('email@example.com', 'https://example.com/recover-password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -133,11 +133,15 @@ const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
+const urlParams = new URLSearchParams(window.location.search);
+const secret = urlParams.get('secret');
+const userId = urlParams.get('userId');
+
 const promise = account.updateRecovery(
-    '[USER_ID]',
-    '[SECRET]',
-    'password',
-    'password'
+    userId,
+    secret,
+    'new-password',
+    'new-password'
 );
 
 promise.then(function (response) {
@@ -149,4 +153,4 @@ promise.then(function (response) {
 
 # Security {% #security %}
 
-Appwrite's security first mindset goes beyond a securely implemented of authentication API. You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place.
+Appwrite's security first mindset goes beyond a securely implemented of [Authentication API](/docs/references/cloud/client-web/account). You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place. [Learn more about security features](/docs/products/auth/security).
