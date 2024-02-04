@@ -4,26 +4,26 @@ title: Email OTP
 description: Seamless sign in with Email OTP authentication in Appwrite. Learn how to provide simple and secure passwordless user accounts.
 ---
 
-Email OTP authentication lets users create accounts using their email address and log in using a 6 digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url), but can provide better user experience in some scenarios.
+Email OTP (one-time password) authentication lets users create accounts using their email address and log in using a 6 digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url), but can provide better user experience in some scenarios.
 
 {% info title="Email OTP vs Magic URL" %}
-Email OTP sends email with 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox. 
+Email OTP sends an email with a 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox. 
 
 #### Benefits of Email OTP
 - Doesn't require user to be signed into email inbox on the device
 - Doesn't disturb application flow with a redirect
-- Doesn't require deep linking when developing PWA or mobile apps
+- Doesn't require deep linking on mobile apps
 
 #### Downsides of Email OTP
 - Expires quicker
 - Requires more inputs from user
 {% /info %}
 
-# Send email {% #init %}
+# Send email {% #send-email %}
 
 Email OTP authentication is done using a two-step authentication process. The authentication request is initiated from the client application and an email message is sent to the user's email inbox. The email will contain a 6-digit number the user can use to log in.
 
-Send an an email to initiate the authentication process. A **new account** will be created for this phone number if it has never been used before.
+Send an an email to initiate the authentication process. A **new account** will be created for this email if it has never been used before.
 
 {% multicode %}
 
@@ -112,7 +112,7 @@ mutation {
 
 # Login {% #login %}
 
-After initiating the email OTP authentication process, the returned user ID and secret are used to authenticate the user. The secret will be a 6-digit number in the email sent to the user's email inbox.
+After initiating the email OTP authentication process, the returned user ID and secret are used to authenticate the user. The user will use their 6-digit one-time password to log in to your app.
 
 {% multicode %}
 
@@ -195,9 +195,9 @@ After the secret is verified, a session will be created.
 
 # Security phrase {% #security-phrase %}
 
-A security phrase is a randomly generated phrase provided on sign-in page, as well as inside Email OTP login email. Verifying those phrases match is a prevention for numerous phishing and man-in-the-middle attacks.
+A security phrase is a randomly generated phrase provided on the login page, as well as inside Email OTP login email. Users must match the phrase on the login page with the phrase provided inside the email. Security phrases offer protection for various types of phishing and man-in-the-middle attacks.
 
-By default, security phrases are disabled. To enable a security prhase in Email OTP, enable it in first step of authentication flow.
+By default, security phrases are disabled. To enable a security phrase in Email OTP, enable it in first step of the authentication flow.
 
 {% multicode %}
 ```js
@@ -209,7 +209,11 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailToken(ID.unique(), 'email@example.com', true);
+const promise = account.createEmailToken(
+        ID.unique(), 
+        'email@example.com', 
+        true
+    );
 
 promise.then(function (response) {
     console.log(response); // Success

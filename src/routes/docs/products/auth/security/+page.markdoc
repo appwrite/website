@@ -25,18 +25,18 @@ Only keep user sessions active as long as needed and maintain exactly **one** in
 
 You can limit amount of users to be allowed to sign up in your application. Once the limit is reached, all new sign-ups will be blocked. This is useful for beta testing or only allowing moderated sign-ups into your application.
 
-To set users limit, go to **Security** tab of the Auth Service in Appwrite Console. By default it's unlimited and maximum configurable limit is 10 000.
+To set users limit, head to the Appwrite Console > **Authentication** > **Security**. By default it's unlimited and maximum configurable limit is 10,000.
 
 # Session limits {% #session-limits %}
-You can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. New sessions created by the same user past the session limit delete the oldest session.
+You can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. The oldest session is deleted when creating sessions beyond the session limit..
 
-You can change the session limit in the **Security** tab of the Auth Service in Appwrite Console. The default session limit is 10 with a maximum configurable limit of 100.
+You can change the session limit by heading to the Appwrite Console > **Authentication** > **Security**. The default session limit is 10 with a maximum configurable limit of 100.
 
 # Session length {% #session-length %}
 
-Every session must expire for security reasons. By default, sessions made in Appwrite will expire after 1 year. You can configure the expiration in the **Security** tab of the Auth Service in Appwrite Console. You can not make it any longer than 1 year, and you can make it as short as you want.
+Every session must expire for security reasons. By default, sessions made in Appwrite will expire after 1 year. You can configure the expiration by heading to the Appwrite Console > **Authentication** > **Security**. You can not make it any longer than 1 year, and you can make it as short as you want.
 
-When using short session lengths such as 5 minutes, we recommend sending request to [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint everytime user performs an action. By doing that, user's session expiry is is extended to session length. This allows experience often seen in online banking apps when a session is invalidated within few mintes after user stops interacting with the application.
+When using short session lengths such as 5 minutes, we recommend sending request to [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint everytime user performs an action. By doing that, user's session expiry is extended to session length. This means the session is invalidated within few minutes after user stops interacting with the application, and the user is logged out.
 
 # Permissions {% #permissions %}
 
