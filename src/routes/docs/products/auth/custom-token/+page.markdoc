@@ -37,8 +37,7 @@ If the client doesn't know his user ID during authentication, we recommend to di
 
 # Login {% #login %}
 
-Once client recieves a token secret, we can use it to authenticate the user in the application. Using [Client SDKs](/docs/sdks#client) endpoint [Create session](/docs/references/cloud/client-web/account#createSession) you can exchange token secret for a valid session.
-
+Once the client receives a token secret, we can use it to authenticate the user in the application. Use the [Client SDK's](/docs/sdks#client) [Create session endpoint](/docs/references/cloud/client-web/account#createSession) to exchange the token secret for a valid session, which logs the user.
 ```js
 import { Client, Account } from "appwrite";
 
