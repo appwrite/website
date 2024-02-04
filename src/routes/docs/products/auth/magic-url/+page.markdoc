@@ -100,9 +100,9 @@ mutation {
 
 # Security phrase {% #security-phrase %}
 
-A security phrase is a randomly generated phrase provided on sign-in page, as well as inside Magic URL email. Verifying those phrases match is a prevention for numerous phishing and man-in-the-middle attacks.
+A security phrase is a randomly generated phrase provided on the login page, as well as inside Magic URL login email. Users must match the phrase on the login page with the phrase provided inside the email. Security phrases offer protection for various types of phishing and man-in-the-middle attacks.
 
-By default, security phrases are disabled. To enable a security prhase in Magic URL, enable it in first step of authentication flow.
+By default, security phrases are disabled. To enable a security phrase in Magic URL, enable it in first step of the authentication flow.
 
 
 {% multicode %}
