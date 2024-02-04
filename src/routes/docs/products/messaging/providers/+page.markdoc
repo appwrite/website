@@ -2,6 +2,7 @@
 layout: article
 title: Providers 
 description: Learn the different providers that you can use to send messages with Appwrite.
+back: /docs/products/messaging
 ---
 
 Appwrite allows you to connect to a variety of third-party messaging providers to deliver push notifications, emails, and SMS messages to your users.
@@ -33,8 +34,8 @@ Deliver custom email messages to users using Sendgrid.
 # SMS {% #sms %}
 Send customized SMS messages to users by phone to send reminders, updates, promotions, and one-time passwords.
 {% cards %}
-{% cards_item href="/docs/products/messaging/providers/twillio" title="Twillio" %}
-Deliver custom SMS messages to users using Twillio.
+{% cards_item href="/docs/products/messaging/providers/twilio" title="Twilio" %}
+Deliver custom SMS messages to users using Twilio.
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/providers/msg91" title="MSG91" %}
 Deliver custom SMS messages to users using MSG91.

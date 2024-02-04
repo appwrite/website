@@ -1,42 +1,55 @@
 ---
 layout: article
-title: Firebase Cloud Messaging
-description: Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
+title: Sendgrid
+description: Send emails to your Appwrite users using Sendgrid and Appwrite Messaging.
 back: /docs/products/messaging/providers
 ---
 
-Firebase Cloud Messaging (FCM) lets you send push notifications to your iOS, Android, and web apps through Appwrite Messaging.
-Before you can deliver messages, you must connect to a messaging provider.
+Sendgrid lets you send customized email messages to your users. 
+These emails can be sent immediately or scheduled.
+You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add FCM as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add Sendgrid as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
 [SCREENSHOT]
 
-Give your provider a name > choose **FCM** > click **Save and continue**. 
+Give your provider a name > choose **Sendgrid** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Firebase console to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your Sendgrid dashboard to connect your Appwrite project.
 
 [SCREENSHOT]
 
-You will need to provide the following information from the **Firebase console**.
-
-{% info title="Enable FCM" %}
-FCM must be enabled on your Firebase project.
-
-Head to Firebase console -> Settings -> Project settings -> Cloud Messaging. 
-If FCM is disabled, click the three-dots menu and open the link. On the following page, click **Enable** (it might take a few minutes for the action to complete).
-{% /info %}
+You will need to provide the following information from your **Sendgrid dashboard**.
 
 {% table %}
 * Field name
-* 
+*
 ---
-* Server key (.json file)
-* Head to Project settings -> Service accounts -> Generate new private key.
+* API key
+* Head to Profile -> API Security -> Add new key.
+---
+* Domain
+* Head to Sending -> Domains -> Add new domain. 
+Follow [Mailgun's instructions](https://help.mailgun.com/hc/en-us/articles/360026833053-Domain-Verification-Walkthrough) to verify the domain name.
+---
+* EU region
+* Enable the EU region setting if your domain is within the European Union.
+---
+* Sender email
+* [TODO]
+---
+* Sender name
+* [TODO]
+---
+* Reply-to email 
+* [TODO]
+---
+* Reply-to name
+* [TODO]
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
@@ -47,7 +60,7 @@ Before sending your first message,
 make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
-To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notification**.
+To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Email**.
 [SCREENSHOT]
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
