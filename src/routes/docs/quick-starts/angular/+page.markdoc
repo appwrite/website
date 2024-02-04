@@ -82,7 +82,7 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-First, add imports for the `FormsModule` from Angular to handle the login form..
+First, add imports for the `FormsModule` from Angular to handle the login form.
 
 ```ts
 import { FormsModule } from '@angular/forms';
