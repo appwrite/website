@@ -10,9 +10,9 @@
     export let data;
 
     let firstName = data.ticket.name.split(/\s/)[0] ?? '';
+    const ogImage = `${$page.url.origin}/init/ticket/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
-    const ogImage = `${$page.url.origin}/init/ticket/${data.ticket.$id}/og`;
 </script>
 
 <svelte:head>
@@ -42,7 +42,7 @@
         <div class="desktop-left">
             <div class="header">
                 <h1 class="aw-display">
-                    This is {firstName}'s ticket for
+                    Join us 12-16 February for
                     <span class="aw-u-color-text-primary" style:font-weight="500">
                         init<span class="aw-u-color-text-accent">_</span>
                     </span>
@@ -51,8 +51,7 @@
 
             <div class="info">
                 <p class="aw-label u-margin-block-start-16">
-                    Get your own ticket for Appwrite's brand new release event and get the chance to
-                    win prizes.
+                    Register today and claim your Init ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
                     <a class="aw-button" href="/init/ticket">
