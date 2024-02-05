@@ -1,3 +1,4 @@
+export const GITHUB_STARS = '38.4K';
 export const BANNER_KEY = 'pricing-banner-01'; // Change key to force banner to show again
 
 /**
