@@ -10,5 +10,5 @@
 .#{$p}-snap-location-references {
   scroll-snap-align: start;
   scroll-margin-top: 7.5rem;
-  @media #{$break2open} { scroll-margin-top: 12.5rem; }
+  @media #{$break3open} { scroll-margin-top: 12.5rem; }
 }

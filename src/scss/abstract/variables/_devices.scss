@@ -1,11 +1,13 @@
 // Responsive Variables
-$break1:      "(max-width:1023.9px)";
-$break2:      "(min-width:1024px) and (max-width:1279.9px)";
-$break2open:  "(min-width:1024px)";
-$break3:      "(min-width:1280px) and (max-width:1439.9px)";
-$break3open:  "(min-width:1280px)";
-$break4:      "(min-width:1440px) and (max-width:1727.9px)";
-$break4open:  "(min-width:1440px)";
-$break5:      "(min-width:1728px) and (max-width:1919.9px)";
-$break5open:  "(min-width:1728px)";
-$break6open:  "(min-width:1920px)";
+$break1:      "(max-width:767.9px)";
+$break2:      "(min-width:768px)  and (max-width:1023.9px)";
+$break2open:  "(min-width:768px)";
+$break3:      "(min-width:1024px) and (max-width:1279.9px)";
+$break3open:  "(min-width:1024px)";
+$break4:      "(min-width:1280px) and (max-width:1439.9px)";
+$break4open:  "(min-width:1280px)";
+$break5:      "(min-width:1440px) and (max-width:1727.9px)";
+$break5open:  "(min-width:1440px)";
+$break6:      "(min-width:1728px) and (max-width:1919.9px)";
+$break6open:  "(min-width:1728px)";
+$break7open:  "(min-width:1920px)";

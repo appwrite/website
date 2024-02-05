@@ -16,8 +16,8 @@
   }
   &-list { display:flex; flex-direction:column; gap:pxToRem(20); }
   .is-selected { color:hsl(var(--aw-color-primary)); }
-  @media #{$break1} {}
-  @media #{$break2open} {
+  @media #{$break1}, #{$break2} {}
+  @media #{$break3open} {
     position:sticky; inset-block-start: pxToRem(110);
     inline-size:pxToRem(280); /* was 236px. But to small for privacy page*/
   }

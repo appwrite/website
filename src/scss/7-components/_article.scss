@@ -41,12 +41,12 @@
       position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:pxToRem(16);
       .#{$p}-numeric-badge {
         
-        @media #{$break2open} { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
+        @media #{$break3open} { position:absolute; transform:translateX(calc(calc(-100% - pxToRem(16) ) * var(--transform-direction) )); }
       }
     }
     &-section {
       position:relative; display:flex; flex-direction:column; gap:pxToRem(24);
-      @media #{$break2open} {
+      @media #{$break3open} {
         &.is-with-line::before {
           content:""; display:block;
           position:absolute; inset-block-start:pxToRem(24); inset-inline-start:pxToRem(-30);
@@ -62,13 +62,13 @@
     */
     &-grid-6-4 {
       > * { min-inline-size:0; }
-      @media #{$break1} { display:flex; flex-direction:column; gap:pxToRem(32); }
-      @media #{$break2open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }
+      @media #{$break1}, #{$break2} { display:flex; flex-direction:column; gap:pxToRem(32); }
+      @media #{$break3open} { display:grid; grid-template-columns:6fr 5.7fr; gap:pxToRem(32); }
     }
   }
   .tabs-list { block-size:pxToRem(40); }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     &-header {
       position:relative; z-index:1; flex-direction:column-reverse; padding-block-start:pxToRem(16);
       &-end { align-self:initial; }

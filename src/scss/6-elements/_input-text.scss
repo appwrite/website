@@ -142,13 +142,13 @@ textarea.#{$p}-input-text {
   &-list {
     display:grid;
     &.is-two-columns {
-      @media #{$break2open} {
+      @media #{$break3open} {
         grid-template-columns: repeat(2, 1fr);
       }
     }
   }
   &-item {
-    @media #{$break2open} {
+    @media #{$break3open} {
       &.is-column-span-2 { grid-column:span 2;}
     }
   }

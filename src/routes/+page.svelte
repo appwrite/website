@@ -582,7 +582,7 @@
                             </h2>
                         </section>
                         <ul
-                            class="aw-big-list-info u-margin-inline-start-auto aw-u-inline-width-100-percent-mobile-break1 aw-u-margin-block-start-48"
+                            class="aw-big-list-info u-margin-inline-start-auto aw-u-inline-width-100-percent-mobile-break1-and-break2 aw-u-margin-block-start-48"
                         >
                             <li class="aw-big-list-info-item">
                                 <div class="aw-headline aw-u-color-text-primary">90K</div>
