@@ -5,7 +5,12 @@ description: Allow groups of users to subscribe to a common topic and receive th
 ---
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
 
-[SCREENSHOT]
+{% only_dark %}
+![Add a target](/images/docs/messaging/topics/dark/topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/topics/topics.png)
+{% /only_light %}
 
 # Topics and targets {% #topics-and-targets %}
 A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
@@ -28,7 +33,12 @@ If you need to deliver messages to **all devices of the same user**, you can fin
 You can create topics 
 {% tabs %}
 {% tabsitem #console title="Console" %}
-[SCREENSHOT]
+{% only_dark %}
+![Add a target](/images/docs/messaging/topics/dark/create-topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/topics/create-topics.png)
+{% /only_light %}
 Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic**.
 {% /tabsitem %}
 

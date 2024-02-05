@@ -12,7 +12,12 @@ You can send emails for purposes like reminders, promotions, announcements, and 
 {% section #add-provider step=1 title="Add provider" %}
 
 To add Sendgrid as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
-[SCREENSHOT]
+{% only_dark %}
+![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/dark/add-sendgrid.png)
+{% /only_dark %}
+{% only_light %}
+![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/add-sendgrid.png)
+{% /only_light %}
 
 Give your provider a name > choose **Sendgrid** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
@@ -21,8 +26,12 @@ The provider will be saved to your project, but not enabled until you complete i
 
 In the **Configure** step, you will need to provide details form your Sendgrid dashboard to connect your Appwrite project.
 
-[SCREENSHOT]
-
+{% only_dark %}
+![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/dark/configure-sendgrid.png)
+{% /only_dark %}
+{% only_light %}
+![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/Configure-sendgrid.png)
+{% /only_light %}
 You will need to provide the following information from your **Sendgrid dashboard**.
 
 {% table %}
@@ -35,9 +44,6 @@ You will need to provide the following information from your **Sendgrid dashboar
 * Domain
 * Head to Sending -> Domains -> Add new domain. 
 Follow [Mailgun's instructions](https://help.mailgun.com/hc/en-us/articles/360026833053-Domain-Verification-Walkthrough) to verify the domain name.
----
-* EU region
-* Enable the EU region setting if your domain is within the European Union.
 ---
 * Sender email
 * [TODO]

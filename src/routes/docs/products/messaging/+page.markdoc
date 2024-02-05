@@ -16,13 +16,18 @@ You can also use Appwrite Messaging to implement security checks and custom auth
 ![Messaging overview](/images/docs/messaging/message-overview.png)
 {% /only_light %}
 
-{% arrow_link href="/docs/products/messaging/quick-start" %}
-Send your first message today
-{% /arrow_link %}
-
-Appwrite lets you connect with your choice of third-party providers to deliver your push notifications, emails, and SMS text messages.
-Choose providers that have the best pricing and coverage for your user base.
-
-{% arrow_link href="/docs/products/messaging/providers" %}
-Learn about Messaging providers
-{% /arrow_link %}
+Explore what you can build with Appwrite Messaging. 
+{% cards %}
+{% cards_item href="/docs/products/messaging/send-email-messages" title="Emails" %}
+Send newsletters, invoices, promitions and other emails.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/send-sms-messages" title="SMS messages" %}
+Send SMS messages straight to your user's phone.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" %}
+Send push notifications to your user's devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/providers" title="Providers" %}
+Integrate with 9 of the top messaging services.
+{% /cards_item %}
+{% /cards %}

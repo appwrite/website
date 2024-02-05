@@ -10,9 +10,13 @@ These emails can be sent immediately or scheduled.
 You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
-
 To add Mailgun as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
-[SCREENSHOT]
+{% only_dark %}
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
+{% /only_dark %}
+{% only_light %}
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/add-mailgun.png)
+{% /only_light %}
 
 Give your provider a name > choose **Mailgun** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
@@ -21,7 +25,15 @@ The provider will be saved to your project, but not enabled until you complete i
 
 In the **Configure** step, you will need to provide details form your Mailgun dashboard to connect your Appwrite project.
 
-[SCREENSHOT]
+
+{% only_dark %}
+![Configure SMTP provider](/images/docs/messaging/providers/mailgun/dark/configure-mailgun.png)
+{% /only_dark %}
+{% only_light %}
+![Configure SMTP provider](/images/docs/messaging/providers/mailgun/Configure-mailgun.png)
+{% /only_light %}
+You will need to provide the following information from your **Sendgrid dashboard**.
+
 
 You will need to provide the following information from your **Mailgun dashboard**.
 
