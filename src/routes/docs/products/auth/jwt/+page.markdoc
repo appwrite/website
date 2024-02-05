@@ -125,7 +125,7 @@ client = Client.new
 ```deno
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
-const client = new Client()
+let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
@@ -262,7 +262,7 @@ documents = databases.list_documents(
 ```deno
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
-const client = new Client()
+let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
@@ -441,7 +441,7 @@ documents = databases.list_documents(
 ```deno
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
-const client = new Client()
+let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('<API_KEY>');                    // Your secret API key
