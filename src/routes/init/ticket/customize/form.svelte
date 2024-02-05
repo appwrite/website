@@ -127,7 +127,7 @@
 {:else}
     <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
     <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
-        Sign in with your Appwrite account and see the magic happen in your ticket
+        Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
         href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/ticket"

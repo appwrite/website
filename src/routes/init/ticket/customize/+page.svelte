@@ -55,11 +55,23 @@
         saveTicket();
     }
 
-    const { copied, copy } = createCopy(`${$page.url.origin}/init/ticket/${data.ticket.$id}`);
+    const ticketUrl = `${$page.url.origin}/init/ticket/${data.ticket.$id}`;
+    const { copied, copy } = createCopy(ticketUrl);
+    $: twitterText = encodeURIComponent(
+        [
+            `Join Init and celebrate what is next with @appwrite`,
+            ``,
+            `Register here ${ticketUrl}`
+        ].join('\n')
+    );
 </script>
 
 <svelte:head>
-    <title>Appwrite init_ - Customize Ticket</title>
+    <title>Appwrite Init - Customize Ticket</title>
+    <meta
+        name="description"
+        content="Join Init 12-16 February. Register today and claim your Init ticket."
+    />
 </svelte:head>
 
 <Main>
@@ -108,10 +120,14 @@
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>
-                        <button class="aw-button is-full-width is-secondary" disabled>
+                        <a
+                            class="aw-button is-full-width is-secondary"
+                            href="https://twitter.com/intent/tweet?text={twitterText}"
+                            target="_blank"
+                        >
                             <div class="aw-icon-x aw-u-color-text-primary" />
                             <span class="text">Share your ticket</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
