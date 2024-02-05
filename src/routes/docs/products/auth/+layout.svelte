@@ -62,6 +62,10 @@
 					href: '/docs/products/auth/magic-url'
 				},
 				{
+					label: 'Email OTP login',
+					href: '/docs/products/auth/email-otp'
+				},
+				{
 					label: 'OAuth 2 login',
 					href: '/docs/products/auth/oauth2'
 				},
@@ -72,6 +76,14 @@
 				{
 					label: 'JWT login',
 					href: '/docs/products/auth/jwt'
+				},
+				{
+					label: 'Custom token login',
+					href: '/docs/products/auth/custom-token'
+				},
+				{
+					label: 'Multi-factor authentication',
+					href: '/docs/products/auth/mfa'
 				},
 			]
 		},

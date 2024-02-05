@@ -6,11 +6,11 @@ description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.
 
-When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
+When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to your application.
 
 # Configure OAuth 2 login {% #configure %}
 
-Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
+Before using OAuth 2 login, you need to enable and configure an OAuth 2 provider.
 
 1. Navigate to your Appwrite project.
 2. Navigate to **Auth** > **Settings**.
@@ -22,12 +22,11 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 # Initialize OAuth 2 login {% #init %}
 
-To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
+To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) endpoint.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
 ```js
-// Web SDK
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -37,13 +36,25 @@ const client = new Client()
 const account = new Account(client);
 
 // Go to OAuth provider login page
-account.createOAuth2Session('amazon', [LINK_ON_SUCCESS], [LINK_ON_FAILURE]);
+account.createOAuth2Session('github', '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
 ```
+
+Users will be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+
+In your web application, you need to finish OAuth authentication using [Create session](/docs/references/cloud/client-web/account#createSession) endpoint. Both user ID and token secret will be provided to you in the URL params.
+
+```js
+const urlParams = new URLSearchParams(window.location.search);
+const secret = urlParams.get('secret');
+const userId = urlParams.get('userId');
+
+await account.createSession(userId, secret);
+```
+
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
 ```dart
-// Flutter SDK
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -53,8 +64,12 @@ final client = Client()
 final account = Account(client);
 
 // Go to OAuth provider login page
-await account.createOAuth2Session(provider: 'amazon');
+await account.createOAuth2Session(provider: 'github');
 ```
+
+User will be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+
+You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
 {% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
@@ -82,8 +97,13 @@ val client = Client()
 val account = Account(client)
 
 // Go to OAuth provider login page
-account.createOAuth2Session(provider = "amazon")
+account.createOAuth2Session(provider = "github")
 ```
+
+User will be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+
+You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
+
 {% /tabsitem %}
 
 {% tabsitem #apple title="Apple" %}
@@ -128,12 +148,13 @@ let account = Account(client)
 // Go to OAuth provider login page
 try await account.createOAuth2Session(provider: "amazon")
 ```
+
+User will be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+
+You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
+
 {% /tabsitem %}
 {% /tabs %}
-
-You'll be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
-
-You can optionally configure `success` or `failure` redirect links on web to handle success and failure scenarios.
 
 # OAuth 2 profile {% #profile %}
 
@@ -143,7 +164,6 @@ After creating an OAuth 2 session, you can fetch the session to get information 
 
 {% multicode %}
 ```js
-// Web SDK
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -159,7 +179,6 @@ console.log(session.providerAccessToken);
 ```
 
 ```dart
-// Flutter SDK
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -179,7 +198,6 @@ print(session.providerAccessToken);
 ```
 
 ```kotlin
-// Android SDK
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -200,7 +218,6 @@ print(session.providerAccessToken);
 ```
 
 ```swift
-// Apple SDK
 import Appwrite
 
 let client = Client()
@@ -232,13 +249,12 @@ An OAuth 2 [session](/docs/references/cloud/models/session) will have the follow
 
 You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
 
-# OAuth 2 profile {% #profile %}
+# Refreshing OAuth 2 tokens {% #refreshing-tokens %}
 
-OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
+OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint right before token expiry, or before first request after expiry.
 
 {% multicode %}
 ```js
-// Web
 const promise = account.updateSession('[SESSION_ID]');
 
 promise.then(function (response) {
@@ -248,7 +264,6 @@ promise.then(function (response) {
 });
 ```
 ```dart
-// Flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -262,7 +277,6 @@ final result = await account.updateSession(
 );
 ```
 ```kotlin
-// Android
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -277,7 +291,6 @@ val response = account.updateSession(
 );
 ```
 ```swift
-// Apple
 import Appwrite
 
 let client = Client()

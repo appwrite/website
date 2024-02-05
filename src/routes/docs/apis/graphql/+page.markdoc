@@ -106,8 +106,8 @@ If no errors occur, the array will not be present in the response.
 # Authentication {% #authentication %}
 
 GraphQL authenticates using Appwrite accounts and sessions. 
-Both accounts and sessions can be created with GraphQL using the `accountCreate`, `accountCreateEmailSession`, 
-`accountCreateAnonymousSession`, or `accountCreatePhoneSession` mutations.
+Both accounts and sessions can be created with GraphQL using the `accountCreate`, `accountCreateEmailPasswordSession`, 
+`accountCreateAnonymousSession`, or `accountCreatePhoneToken` mutations.
 
 More information and examples of authenticating users can be found in the dedicated [authentication guide](/docs/products/auth).
 
