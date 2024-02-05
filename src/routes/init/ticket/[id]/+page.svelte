@@ -42,10 +42,9 @@
         <div class="desktop-left">
             <div class="header">
                 <h1 class="aw-display">
-                    Join us 12-16 February for
-                    <span class="aw-u-color-text-primary" style:font-weight="500">
+                    Join <span class="aw-u-color-text-primary" style:font-weight="500">
                         init<span class="aw-u-color-text-accent">_</span>
-                    </span>
+                    </span><br />12-16 February
                 </h1>
             </div>
 
