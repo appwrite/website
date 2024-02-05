@@ -1,4 +1,4 @@
-import { building } from '$app/environment';
+import { building, dev } from '$app/environment';
 import { formatK } from '$lib/utils/formatK';
 import fs from 'fs';
 import { getAllChangelogEntries } from './changelog/utils';
@@ -48,7 +48,8 @@ async function getGitHubStars(fallback?: number): Promise<number> {
 
 export const load = async () => {
     const [stars, changelogEntries] = await Promise.all([
-        getGitHubStars(),
+        // Avoid breaking in dev mode
+        getGitHubStars(dev ? 0 : undefined),
         getAllChangelogEntries()
     ]);
 
