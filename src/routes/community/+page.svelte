@@ -13,6 +13,7 @@
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
     import MetricCard from '$lib/components/MetricCard.svelte';
+    import { GITHUB_STARS } from '$lib/constants';
 
     export let data;
 
@@ -179,7 +180,7 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                                 </a>
                             </div>
                         </div>
