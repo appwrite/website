@@ -39,7 +39,12 @@
 
 <nav
     class="aw-side-nav"
-    use:clickOutside={() => ($layoutState.showSidenav = false)}
+    use:clickOutside={(e) => {
+        const el = e.target;
+        if (!(el instanceof HTMLElement)) return;
+        if (el.closest('.aw-main-header') || el.closest('.aw-mobile-header')) return;
+        $layoutState.showSidenav = false;
+    }}
     aria-label="Side"
 >
     <div class="aw-side-nav-wrapper">

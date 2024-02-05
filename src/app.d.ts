@@ -6,6 +6,7 @@ declare global {
         // interface Locals {}
         interface PageData {
             stars: string;
+            changelogEntries: number;
         }
         // interface Platform {}
     }

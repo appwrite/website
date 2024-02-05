@@ -40,7 +40,7 @@
 	<div class="aw-big-padding-section-level-1">
 		<div class="aw-big-padding-section-level-2">
 			<div class="aw-container">
-				<a class="aw-link aw-u-color-text-secondary" href="/blog">
+				<a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/blog">
 					<span class="aw-icon-chevron-left" aria-hidden="true" />
 					<span>Back to blog</span>
 				</a>

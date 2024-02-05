@@ -1,17 +1,16 @@
 <script lang="ts" context="module">
-    export const TABLE_CTX_KEY = 'in-table';
-    export const getTableCtx = () => getContext<boolean>(TABLE_CTX_KEY);
-    export const isInTable = () => !!getTableCtx();
+    export const TABLE_CTX_KEY = Symbol('table');
+    export const isInTable = () => getContext<boolean>(TABLE_CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
-    import { getPolicyCtx, isInsidePolicy } from '$markdoc/layouts/Policy.svelte';
+    import { getPolicyCtx, isInPolicy } from '$markdoc/layouts/Policy.svelte';
 
     import { getContext, setContext } from 'svelte';
 
     setContext(TABLE_CTX_KEY, true);
 
-    const inPolicy = isInsidePolicy();
+    const inPolicy = isInPolicy();
     const transparentCells = inPolicy ? getPolicyCtx().transparentTableCells : false;
 </script>
 

@@ -1,3 +1,5 @@
+import { getAllChangelogEntries } from './changelog/utils';
+
 export const prerender = true;
 
 let lastStarCount = 38000;
@@ -21,6 +23,7 @@ export const load = async () => {
     };
 
     return {
-        stars: formatK(lastStarCount)
+        stars: formatK(lastStarCount),
+        changelogEntries: (await getAllChangelogEntries()).length
     };
 };

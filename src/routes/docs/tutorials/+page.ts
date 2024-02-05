@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 
-const framework_order = ['React', 'Vue', 'SvelteKit'];
+const framework_order = ['React', 'Vue', 'SvelteKit', 'Stripe', 'Refine'];
 
 export async function load() {
     const tutorialsGlob = import.meta.glob('./**/step-1/+page.markdoc', {
