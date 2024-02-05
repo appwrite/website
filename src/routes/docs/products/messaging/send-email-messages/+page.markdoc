@@ -4,4 +4,100 @@ title: Send email messages
 description: Send email messages to your users using Appwrite Messaging.
 ---
 
+You can send custom email messages to your app's uses using Appwrite Messaging and a connected SMTP service.
+This guide takes you through the implementation path of adding email messaging to your app.
 
+# Add a provider {% #add-a-provider %}
+Appwrite supports [Mailgun](/docs/products/messaging/providers/mailgun/) and [Sendgird](/docs/products/messaging/providers/sendgrid/) as 
+SMTP providers. You must configure one of them as a provider.
+{% only_dark %}
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
+{% /only_dark %}
+{% only_light %}
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/add-mailgun.png)
+{% /only_light %}
+To add a new provider navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**
+and follow the wizard. You can find more details about configuring in the provider guides for
+[Mailgun](/docs/products/messaging/providers/mailgun#configure-provider) and [Sendgird](/docs/products/messaging/providers/sendgrid#configure-provider).
+
+# Add targets {% #add-targets %}
+In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
+You can deliver messages to users through their **targets**.
+
+[SCREENSHOT OF THE TARGETS SCREEN]
+
+If the user signed up with email and password, their account would already have email as a target.
+During development, you can add targets to existing accounts by navigating to **Authentication** > **Users** > **Select a user** > **Targets** > **Add a subscriber**.
+{% only_dark %}
+![Add a target](/images/docs/messaging/targets/dark/add-targets.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/targets/add-targets.png)
+{% /only_light %}
+
+You can also implement forms in your app to collect contact information and add it as a target with the [PLACEHOLDER](#TODO) endpoint.
+
+[PLACE HOLDER FOR CODE EXAMPLE]
+
+# Create topics (optional) {% #create-topics %}
+You can use topics to organize targets that should receive the same messages, so you can send emails to groups of targets instead of one at time.
+This step is optional if you plan to only send emails to individual targets.
+
+To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics** > {% icon icon="plus" size="m" /%} **Create topic**.
+{% only_dark %}
+![Add a target](/images/docs/messaging/topics/dark/create-topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/topics/create-topics.png)
+{% /only_light %}
+
+You can also create topics programmatically using an [Appwrite Server SDK](#TODO).
+[PLACE HOLDER FOR CODE EXAMPLE]
+
+# Send emails {% #send-emails %}
+You can send emails using a Server SDK. 
+To send an email immediately, you can call the `createEmail` endpoint with `status` set to `'processing'` and `schedule` left empty.
+```js
+// IMPORTS?
+
+messaging.createEmail({
+  ID.unique(), // Message ID.
+  'Hello World!', // Email Subject.
+  'This is the content of the email. It supports up to 64,230 characters.', // Email Content.
+  ['topicID1', 'topicID2'], // List of Topic IDs. Optional.
+  ['userID1', 'userID2'], // List of User IDs. Optional.
+  ['targetID1', 'targetID2'], // List of Targets IDs. Optional.
+  ['targetID1', 'targetID2'], // Array of target IDs to be added as CC. Optional.
+  ['targetID1', 'targetID2'], // Array of target IDs to be added as BCC. Optional.
+  'processing', // Message Status. Optional.
+  false, // Boolean indicating if content is of type HTML. Optional.
+}).then(response => {
+  console.log('Email created successfully:', response);
+}).catch(error => {
+  console.error('Error creating email:', error);
+});
+```
+
+# Schedule emails {% #schedule-emails %}
+To send an scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
+```js
+// IMPORTS?
+
+messaging.createEmail({
+  ID.unique(), // Message ID.
+  'Hello World!', // Email Subject.
+  'This is the content of the email. It supports up to 64,230 characters.', // Email Content.
+  ['topicID1', 'topicID2'], // List of Topic IDs. Optional.
+  ['userID1', 'userID2'], // List of User IDs. Optional.
+  ['targetID1', 'targetID2'], // List of Targets IDs. Optional.
+  ['targetID1', 'targetID2'], // Array of target IDs to be added as CC. Optional.
+  ['targetID1', 'targetID2'], // Array of target IDs to be added as BCC. Optional.
+  'processing', // Message Status. Optional.
+  false, // Boolean indicating if content is of type HTML. Optional.
+  2024-03-01T10:00:00Z', // Scheduled delivery time for message in ISO 8601 format. Optional.
+}).then(response => {
+  console.log('Email created successfully:', response);
+}).catch(error => {
+  console.error('Error creating email:', error);
+});
+```

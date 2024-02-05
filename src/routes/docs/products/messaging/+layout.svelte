@@ -15,10 +15,6 @@
 					label: 'Overview',
 					href: '/docs/products/messaging'
 				},
-				{
-					label: 'Quick start',
-					href: '/docs/products/messaging/quick-start'
-				}
 			]
 		},
 		{
