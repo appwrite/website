@@ -2,7 +2,7 @@
 layout: article
 title: Apple Push Notification service
 description: Send push notifications to apps on Apple devices through Apple Push Notification service (APNs) using Appwrite Messaging.
-back: /docs
+back: /docs/products/messaging/providers
 ---
 
 Apple Push Notification service (APNs) lets you send push notifications to Apple devices like macOS, iOS, tvOS, iPadOS, and watchOS devices.
@@ -11,7 +11,7 @@ APNs will save the last [N] messages for [M] days and attempt delivery as soon a
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provier, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
 [SCREENSHOT]
 
 Give your provider a name > choose **APNS** > click **Save and continue**. 
@@ -32,24 +32,72 @@ You will need to provide the following information from the **Apple Developer Me
 ---
 * Team ID
 * Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
+{% only_dark %} ![Team ID](/images/docs/messaging/providers/apns/dark/team-id.png) {% /only_dark %} {% only_light %} ![Team ID](/images/docs/messaging/providers/apns/team-id.png) {% /only_light %}
 ---
 * Bundle ID
 * Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
+{% only_dark %} ![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) {% /only_dark %} {% only_light %} ![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) {% /only_light %}
 ---
 * Authentication key ID
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
+{% only_dark %} ![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) {% /only_dark %} {% only_light %} ![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) {% /only_light %}
 ---
 * Authentication key (.p8 file)
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
+{% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) {% /only_light %}
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
 {% /section %}
+{% section #configure-app step=3 title="Configure app" %}
+Some additional configuration is required to enable push notifications in your iOS app.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+{% /section %}
+{% section #test-provider step=4 title="Test provider" %}
+Before sending your first message, 
+make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
+{% tabs %}
+{% tabsitem #console title="Console" %}
+To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notifcation**.
+[SCREENSHOT]
 
-{% section #test-provider step=3 title="Test provider" %}
+Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
+
+Verify that you can receive the message in your inbox. If not
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
+{% multicode %}
+```js
+```
+```deno
+```
+```php
+```
+```python
+```
+```ruby
+```
+```csharp
+```
+```dart
+```
+```kotlin
+```
+```java
+```
+```swift
+```
+{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
+
 You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
 {% /section %}
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 [TODO: How to update and delete provider.]
 {% /section %}
