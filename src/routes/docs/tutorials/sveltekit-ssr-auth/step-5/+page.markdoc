@@ -1,0 +1,50 @@
+---
+layout: tutorial
+title: Create sign in page
+description: Add Authentication to a SvelteKit project using Appwrite.
+step: 5
+---
+
+We can now implement our sign in page. Create a `+page.svelte` file in the `src/routes/signin` directory:
+
+```svelte
+<!-- src/routes/sigin/+page.svelte -->
+<form method="post">
+	<input id="email" placeholder="Email" type="email" />
+	<input id="password" placeholder="Password" type="password" />
+	<button type="submit">Sign in</button>
+</form>
+```
+
+This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use SvelteKit form actions we create a `+page.server.js` file in the same directory:
+
+```javascript
+import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite.js';
+import { redirect } from '@sveltejs/kit';
+
+export const actions = {
+	default: async (event) => {
+		// Extract the form data.
+		const form = await event.request.formData();
+		const email = form.get('email') as string;
+		const password = form.get('password') as string;
+
+		// Create the Appwrite client.
+		const { account } = createAppwriteClient(event);
+
+		// Create the session using the client
+		const session = await account.createEmailPasswordSession(email, password);
+
+		// Set the session cookie with the secret
+		event.cookies.set(SESSION_COOKIE, session.secret, {
+			sameSite: 'strict',
+			expires: new Date(session.expire),
+			secure: true,
+			path: '/'
+		});
+
+		// Redirect to the account page.
+		throw redirect(301, '/account');
+	}
+};
+```
