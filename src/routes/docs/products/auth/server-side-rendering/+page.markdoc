@@ -4,16 +4,16 @@ title: SSR login
 description: How to implement server-side rendering with Appwrite
 ---
 
-Server-side rendering (SSR) patterns are fully supported with Appwrite. SSR is a technique used in web development where web pages are generated on the server instead of in the browser. Whereas with client-side rendering, the web content is generated in the user's browser using JavaScript.
+Server-side rendering (SSR) is fully supported with Appwrite. With SSR, web pages are generated on the server instead of in the browser.
 
 You can use Appwrite with many SSR-oriented frameworks, such as Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
-This guide will walk you through the process of implementing SSR with Appwrite.
+This guide will walk you through the process of implementing an SSR application with Appwrite.
 
 # SSR authentication flow {% #ssr-auth-flow %}
 
 In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
 
-On server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
+With server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
 [DIAGRAM?]
 
 # Initialize Server SDK {% #initialize-server-sdk %}
