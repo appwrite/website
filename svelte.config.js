@@ -52,7 +52,7 @@ const config = {
             $markdoc: './src/markdoc'
         },
         prerender: {
-            concurrency: 32,
+            concurrency: 16,
             handleHttpError: ({ path, message }) => {
                 if (path.startsWith('/threads/')) {
                     console.warn('Flaky thread build error.')
