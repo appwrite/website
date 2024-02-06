@@ -66,7 +66,7 @@
                     href: '/docs/products/auth/email-otp'
                 },
                 {
-                    label: 'OAuth 2 login',
+                    label: 'OAuth2 login',
                     href: '/docs/products/auth/oauth2'
                 },
                 {
