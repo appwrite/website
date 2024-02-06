@@ -184,7 +184,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="aw-title u-margin-block-start-auto">38k+ GitHub Stars</div>
+                <div class="aw-title u-margin-block-start-auto">39k+ GitHub Stars</div>
             </a>
 
             <a
