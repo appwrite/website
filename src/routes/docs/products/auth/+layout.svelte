@@ -43,6 +43,10 @@
                 {
                     label: 'Security',
                     href: '/docs/products/auth/security'
+                },
+                {
+                    label: 'Tokens',
+                    href: '/docs/products/auth/tokens'
                 }
             ]
         },
@@ -79,7 +83,7 @@
                 },
                 {
                     label: 'SSR login',
-                    href: '/docs/products/auth/ssr'
+                    href: '/docs/products/auth/server-side-rendering'
                 },
                 {
                     label: 'Custom token login',
