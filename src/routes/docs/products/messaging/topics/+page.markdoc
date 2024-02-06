@@ -1,7 +1,94 @@
 ---
 layout: article
 title: Topics 
-description: Send messages or notification to groups of users organized into topics.
+description: Allow groups of users to subscribe to a common topic and receive the same notifications.
 ---
+In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
 
+{% only_dark %}
+![Add a target](/images/docs/messaging/topics/dark/topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/topics/topics.png)
+{% /only_light %}
 
+# Topics and targets {% #topics-and-targets %}
+A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
+These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
+
+{% arrow_link href="/docs/products/messaging/targets" %}
+Learn more about targets
+{% /arrow_link %}
+
+# Organizing topics {% #organizing-topics %}
+A topic should have semantic meaning.
+For example, a topic can represent a group of customers that receing a common announcemennt or publishing public updates.
+It's important to keep privacy in mind when using topics. 
+Prefer sending private information like chat messages by addressing individual targets attached to a user.
+
+Topics are optimized for delivering the same message to large groups of users. 
+If you need to deliver messages to **all devices of the same user**, you can find a user's targets by calling `account.get()`.
+
+# Create a topic {% #create-a-topic %}
+You can create topics 
+{% tabs %}
+{% tabsitem #console title="Console" %}
+{% only_dark %}
+![Add a topic](/images/docs/messaging/topics/dark/create-topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a topic](/images/docs/messaging/topics/create-topics.png)
+{% /only_light %}
+Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic**.
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+Lorem ipsum dolor sit amet consectetur.
+@abnegate TODO
+{% /tabsitem %}
+{% /tabs %}
+
+# Subscribe targets to a topic {% #subscribe-targets-to-topics %}
+{% tabs %}
+{% tabsitem #console title="Console" %}
+During development, you can subscribe targests to a topic for testing right in the Appwrite console.
+{% only_dark %}
+![Add a topic](/images/docs/messaging/topics/dark/add-subscriber.png)
+{% /only_dark %}
+{% only_light %}
+![Add a topic](/images/docs/messaging/topics/add-subscriber.png)
+{% /only_light %}
+Navigate to your Appwrite Console > **Messaging** > **Topics** > click on your topic > **Subscribers** > **Create topic** > **Add subscriber**.
+
+If you can't find the targets you'd like to add, see the [targets page](/docs/products/messaging/targets).
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
+
+const promise = messaging.createSubscriber(
+        sdk.ID.unique(),    // Create a unique subscriber ID
+        '<TOPIC_ID>',       // The topic ID to subscribe to
+        '<TARGET_ID>'       // The target ID will receive messages from the topic
+    );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+{% /tabsitem %}
+{% /tabs %}

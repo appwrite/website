@@ -4,4 +4,142 @@ title: Targets
 description: Manage avenues of communication by targetting user's device, email, or phone number in your notification and messages.
 ---
 
+Targets are different ways a user can be reached.
+For example, a user might have two emails, a phone number as well as a phone and a tablet with your app installed.
+This means, the user has five different targets that you can deliver messages to.
+
+# Topics and targets {% #topics-and-targets %}
+A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
+These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
+
+{% arrow_link href="/docs/products/messaging/topics" %}
+Learn more about topics
+{% /arrow_link %}
+
+# Types of targets {% #types-of-targets %}
+There are three types of targets you can use to reach your targets.
+{% table %}
+* Target Type
+* Description
+---
+* **Email**
+* Allows you to send emails to the user's email.
+---
+* **SMS**
+* Allows you to send SMS messages to the user's phone.
+---
+* **Push notification**
+* Allows you to send push notifications to the user's device.
+{% /table %}
+
+
+# Add a target {% #add-a-target %}
+Before you can send messages, make sure you have the appropriate targets added for your user.
+## Add email target {% #add-email-target%}
+Verified emails for users that signed up with [email password](/docs/products/auth/email-password), 
+[magic URL](/docs/products/auth/magic-url), and [email OTP](/docs/products/auth/email-otp) login will already have a email target.
+
+If you need to add targets outside the normal signin flow, you can do so with a [Server SDK](/docs/sdks#server).
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const users = new sdk.Users(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOU_PROJECT_ID>') // Your project ID
+    .setKey('<YOU_API_KEY>') // Your secret API key
+;
+
+const promise = users.createTarget(
+    ID.unique(),        // target ID
+    <USER_ID>,          // user ID
+    'email',            // provider type, one of 'email', 'sms', 'push'
+    <IDENTIFIER>,       // The target's ID
+    <PROVIDER_ID>,      // The provider that this target subscribes to
+    <PROVIDER_NAME>,    // The new target's name
+)
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+
+## Add SMS target {% #add-sms-target%}
+Verified phone numbers for users that signed up with [Phone OPT](/docs/products/auth/phone-sms) login will already have a phone target.
+
+If you need to add targets outside the normal signin flow, you can do so with a [Server SDK](/docs/sdks#server).
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const users = new sdk.Users(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOU_PROJECT_ID>') // Your project ID
+    .setKey('<YOU_API_KEY>') // Your secret API key
+;
+
+const promise = users.createTarget(
+    ID.unique(),        // target ID
+    <USER_ID>,          // user ID
+    'sms',              // provider type, one of 'email', 'sms', 'push'
+    <IDENTIFIER>,       // The target's ID
+    <PROVIDER_ID>,      // The provider that this target subscribes to
+    <PROVIDER_NAME>,    // The new target's name
+)
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+
+## Add push notification target {% #add-push-notification-target%}
+Push notifications require configuration on both the Appwrite platform and your client app's code.
+
+
+{% tabs %}
+{% tabsitem #fcm-ios title="iOS with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
+1. Register and download your `google-services.json` config file.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
+{% /tabsitem %}
+
+{% tabsitem #fcm-android title="Android with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **Android** app.
+1. Register and download your `google-services.json` config file.
+1. Add `google-services.json` at the root of your project.
+1. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
+1. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
+1. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
+```groovy
+<service android:name="io.appwrite.NotificationHandler" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+</service>
+```
+{% /tabsitem %}
+
+{% tabsitem #APNs-ios title="iOS with APNs" %}
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+{% /tabsitem %}
+{% /tabs %}
+
 
