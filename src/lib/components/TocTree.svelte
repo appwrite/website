@@ -1,6 +1,6 @@
 <script lang="ts">
     import { type TableOfContentsItem, type TableOfContentsElements, melt } from '@melt-ui/svelte';
-    import { getPolicyCtx } from './Policy.svelte';
+    import { getTocCtx } from './TocRoot.svelte';
 
     export let tree: TableOfContentsItem[] = [];
     export let activeHeadingIdxs: number[];
@@ -11,7 +11,7 @@
         toc: {
             helpers: { isActive }
         }
-    } = getPolicyCtx();
+    } = getTocCtx();
 </script>
 
 <ul class="aw-page-steps-list aw-sub-body-500">

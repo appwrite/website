@@ -9,6 +9,7 @@
   @media #{$break1} { padding-inline: pxToRem(20); }
 }
 
+
 .#{$p}-main-section {
   > * { padding-block:pxToRem(24); }
   >:first-child { padding-block-start:0; }

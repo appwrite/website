@@ -16,15 +16,27 @@ Only keep user sessions active as long as needed and maintain exactly **one** in
 
 |  {% width=70 %} | Framework {% width=120 %} | Storage method |
 |:----------------------------------------------------------------------------------------------------:|:---:|:----------------------------------------------------------------------------------------------------------------------:|
-| {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %} | Web | Uses a secure session cookie and falls back to local storage when a session cookie is not available. |
-| {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Flutter | Uses a session cookie stored in Application Documents through the **path_provider** package. |
-| {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Apple | Uses a session cookie stored in **UserDefaults**. |
-| {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Android | Uses a session cookie stored in **SharedPreferences**. |
+| {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %} | Web | Uses a secure cookie and falls back to local storage when a session cookie is not available. |
+| {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Flutter | Uses a cookie stored in Application Documents through the **path_provider** package. |
+| {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Apple | Uses a cookie stored in **UserDefaults**. |
+| {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Android | Uses a cookie stored in **SharedPreferences**. |
+
+# Users limit {% #users-limit %}
+
+You can limit amount of users to be allowed to sign up in your application. Once the limit is reached, all new sign-ups will be blocked. This is useful for beta testing or only allowing moderated sign-ups into your application.
+
+To set users limit, head to the Appwrite Console > **Authentication** > **Security**. By default it's unlimited and maximum configurable limit is 10,000.
 
 # Session limits {% #session-limits %}
-In Appwrite versions 1.2 and above, you can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. New sessions created by the same user past the session limit delete the oldest session.
+You can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. The oldest session is deleted when creating sessions beyond the session limit.
 
-You can change the session limit in the **Security** tab of the Auth Service in your Appwrite Console. The default session limit is 10 with a maximum configurable limit of 100.
+You can change the session limit by heading to the Appwrite Console > **Authentication** > **Security**. The default session limit is 10 with a maximum configurable limit of 100.
+
+# Session length {% #session-length %}
+
+Every session must expire for security reasons. By default, sessions made in Appwrite will expire after 1 year. You can configure the expiration by heading to the Appwrite Console > **Authentication** > **Security**. You can not make it any longer than 1 year, and you can make it as short as you want.
+
+When using short session lengths such as 5 minutes, we recommend sending request to [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint everytime user performs an action. By doing that, user's session expiry is extended to session length. This means the session is invalidated within few minutes after user stops interacting with the application, and the user is logged out.
 
 # Permissions {% #permissions %}
 
@@ -33,21 +45,4 @@ Appwrite uses a [permissions model](/docs/advanced/platform/permissions) coupled
 With all Appwrite services, including databases and storage, access is granted at the collection, bucket, document, or file level.
 These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
 
-# Password history  {% #password-history %}
-
-Password history prevents users from reusing recent passwords. This protects user accounts from security risks by enforcing a new password every time it's changed.
-
-Password history can be enabled in the Auth service's **Security** tab on the Appwrite Console. You can choose how many previous passwords to remember up to a maximum of 20 and block users from reusing them.
-
-# Password dictionary {% #password-dictionary %}
-
-Password dictionary protects users from using bad passwords. It compares the user's password to the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt) and throws an error if there's a match. Together with [rate limits](/docs/advanced/platform/rate-limits), password dictionary will significantly reduce the chance of a malicious actor from guessing user passwords.
-
-Password dictionary can be enabled in the Auth service's **Security** tab on the Appwrite Console.
-
-# Personal data  {% #personal-data %}
-
-Encourage passwords that are hard to guess by disallowing users to pick passwords that contain personal data.
-Personal data includes the user's name, email, and phone number.
-
-Disallowing personal data can be enabled in the Auth service's **Security** tab on the Appwrite Console.
+{% partial file="auth-security.md" /%}

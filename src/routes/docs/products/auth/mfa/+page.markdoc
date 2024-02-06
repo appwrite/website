@@ -1,0 +1,167 @@
+---
+layout: article
+title: Multi-factor authentication
+description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
+---
+
+Multi-factor authentication (MFA) greatly increases the security of your apps by adding additional layers of protection.
+When Multifactor authentication is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
+Appwrite Authentication lets you easily implement MFA in your apps, letting you build more securely and quickly.
+
+Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
+
+Here are the steps to implement MFA in your application.
+
+{% section #enable-mfa step=1 title="Enable MFA on an account" %}
+[TODO @TorstenDittmann need some advice here, what's the steps?]
+{% /section %}
+{% section #init-login step=2 title="Initialize login" %}
+Begin your login flow with the default authentication method used by your app, for example, email password.
+{% multicode %}
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client();
+
+const account = new Account(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+;
+
+await account.createEmailSession(
+    'email@example.com',
+    'password1+'
+);
+```
+
+```dart
+echo 'test';
+```
+
+```kotlin
+print('test');
+```
+
+```swift
+print('test');
+```
+{% /multicode %}
+{% /section %}
+{% section #check-for-2fa step=3 title="Check for multi-factor" %}
+Upon successful login in the first authentication step, check the status of the login by calling `account.get()`.
+If more than one factors are required, you will the error `user_more_factors_required`.
+{% multicode %}
+```js
+try {
+    await account.get();
+} catch (error) {
+    if (error.type === `user_more_factors_required`){
+        // redirect to perform MFA
+    }
+    else {
+        // handle other errors
+    }
+}
+```
+
+```dart
+echo 'test';
+```
+
+```kotlin
+print('test');
+```
+
+```swift
+print('test');
+```
+{% /multicode %}
+{% /section %}
+{% section #list-provider step=4 title="List provider" %}
+You can check which providers are enabled for an account using `account.listProviders()`.
+The returned object will be formatted like this.
+
+```js
+{
+    totp: true, // time-based one-time password
+    email: false, // email
+    phone: true // phone
+}
+```
+
+{% multicode %}
+```js
+const providers = await account.listProviders();
+// redirect based on providers returned.
+```
+
+```dart
+echo 'test';
+```
+
+```kotlin
+print('test');
+```
+
+```swift
+print('test');
+```
+{% /multicode %}
+
+{% /section %}
+{% section #create-challenge step=5 title="Create challenge" %}
+Based on the providers available, initialize an additional auth step.
+Calling these methods will send a challenge to the user.
+{% multicode %}
+```js
+// Authenticator app
+const challenge = await account.createChallenge('totp');
+
+// Email
+const challenge = await account.createChallenge('email');
+
+// Phone
+const challenge = await account.createChallenge('phone');
+```
+
+```dart
+echo 'test';
+```
+
+```kotlin
+print('test');
+```
+
+```swift
+print('test');
+```
+{% /multicode %}
+
+{% /section %}
+{% section #complete-challenge step=6 title="Complete challenge" %}
+Once the user receives the challenge code, you can pass the code back to Appwrite to complete the challenge.
+{% multicode %}
+```js
+// Authenticator app
+await account.updateChallenge(
+    [CHALLENGE_ID],
+    [CHALLENGE_CODE]
+);
+```
+
+```dart
+echo 'test';
+```
+
+```kotlin
+print('test');
+```
+
+```swift
+print('test');
+```
+{% /multicode %}
+
+{% /section %}

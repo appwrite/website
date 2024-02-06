@@ -6,6 +6,7 @@ step: 1
 difficulty: beginner
 readtime: 20
 framework: SvelteKit
+category: Auth
 ---
 
 Appwrite takes away your stress of building and maintaining a backend. Appwrite helps you implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
