@@ -111,20 +111,21 @@ Push notifications require configuration on both the Appwrite platform and your 
 {% tabs %}
 {% tabsitem #fcm-ios title="iOS with FCM" %}
 1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
-2. Register and download your `google-services.json` config file.
-3. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
-4. Create a new key, note down the key ID and download your key.
-5. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
-6. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. Register and download your `google-services.json` config file.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
 {% /tabsitem %}
 
 {% tabsitem #fcm-android title="Android with FCM" %}
 1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **Android** app.
-2. Register and download your `google-services.json` config file.
-3. Add `google-services.json` at the root of your project.
-4. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
-5. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
-6. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
+1. Register and download your `google-services.json` config file.
+1. Add `google-services.json` at the root of your project.
+1. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
+1. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
+1. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
 ```groovy
 <service android:name="io.appwrite.NotificationHandler" android:exported="false">
     <intent-filter>
@@ -135,7 +136,9 @@ Push notifications require configuration on both the Appwrite platform and your 
 {% /tabsitem %}
 
 {% tabsitem #APNs-ios title="iOS with APNs" %}
-Lorem ipsum dolor sit amet consectetur.
+1.Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 {% /tabsitem %}
 {% /tabs %}
 
