@@ -88,7 +88,7 @@ Find your project's ID in the **Settings** page.
 Create a new file `Appwrite.kt` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
 
 ```kotlin
-package com.example.myapplication
+package <YOUR_ROOT_PACKAGE_HERE>
 
 import android.content.Context
 import io.appwrite.Client
@@ -112,7 +112,7 @@ object Appwrite {
         email: String,
         password: String,
     ): Session {
-        return account.createEmailSession(
+        return account.createEmailPasswordSession(
             email,
             password,
         )
@@ -139,7 +139,7 @@ object Appwrite {
 Add the following code to `MainActivity.kt`.
 
 ```kotlin
-package com.example.myapplication
+package <YOUR_ROOT_PACKAGE_HERE>
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -151,7 +151,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.*
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import <YOUR_ROOT_PACKAGE_HERE>.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {

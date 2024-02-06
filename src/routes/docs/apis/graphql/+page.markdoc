@@ -4,9 +4,9 @@ title: GraphQL
 description: Leverage the Appwrite GraphQL API for flexible data querying and manipulation. Explore GraphQL schema, queries, mutations, and how to integrate with your applications.
 ---
 
-Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime).
+Appwrite supports multiple protocols for accessing the platform, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime).
 
-The GraphQL API allows you to query and mutate any resource type on your Appwrite server through the endpoint `/v1/graphql`. 
+The GraphQL API allows you to query and mutate any resource type on the Appwrite platform through the endpoint `/v1/graphql`. 
 Every endpoint available through REST is available through GraphQL, except for OAuth.
 
 # Requests {% #requests %}
@@ -106,8 +106,8 @@ If no errors occur, the array will not be present in the response.
 # Authentication {% #authentication %}
 
 GraphQL authenticates using Appwrite accounts and sessions. 
-Both accounts and sessions can be created with GraphQL using the `accountCreate`, `accountCreateEmailSession`, 
-`accountCreateAnonymousSession`, or `accountCreatePhoneSession` mutations.
+Both accounts and sessions can be created with GraphQL using the `accountCreate`, `accountCreateEmailPasswordSession`, 
+`accountCreateAnonymousSession`, or `accountCreatePhoneToken` mutations.
 
 More information and examples of authenticating users can be found in the dedicated [authentication guide](/docs/products/auth).
 

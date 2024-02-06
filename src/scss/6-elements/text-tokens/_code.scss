@@ -1,6 +1,6 @@
 @use '../../abstract' as *;
 .#{$p}-code {
-  --p-font-family: monospace;
+  --p-font-family: var(--aw-font-family-fira-code);
   --p-font-size: var(--aw-font-size-micro);
   --p-line-height: var(--aw-line-height-tiny);
   --p-letter-spacing: var(--aw-letter-spacing-none);

@@ -31,13 +31,14 @@
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Community', href: '/community' },
-                { label: 'Heroes', href: '/heroes' },
+                { label: 'Threads', href: '/threads' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
@@ -52,8 +53,8 @@
                 }
             ],
             About: [
-                { label: 'Pricing', href: '/pricing' },
                 { label: 'Company', href: '/company' },
+                { label: 'Pricing', href: '/pricing' },
                 {
                     label: 'Careers',
                     href: 'https://appwrite.careers',
@@ -68,7 +69,7 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },

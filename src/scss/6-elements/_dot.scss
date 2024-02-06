@@ -1,0 +1,29 @@
+@use '../abstract' as *;
+
+
+.#{$p}-dot {
+  border-radius: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(
+      138deg,
+      rgba(255, 255, 255, 0.13) 9.61%,
+      rgba(255, 255, 255, 0) 105.41%
+  );
+  backdrop-filter: blur(100px);
+
+  width: 16px;
+  height: 16px;
+
+  
+  &::after {
+      content: '';
+      background-color: white;
+      border-radius: 100%;
+      width: 4px;
+      height: 4px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+  }
+}

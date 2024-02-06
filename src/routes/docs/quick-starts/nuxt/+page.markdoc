@@ -78,6 +78,31 @@ export { ID } from 'appwrite';
 Add the following code to `app.vue`.
 
 ```html
+<script setup>
+import { ref } from 'vue';
+import { account, ID } from './utils/appwrite.js';
+
+const loggedInUser = ref(null);
+const email = ref('');
+const password = ref('');
+const name = ref('');
+
+const login = async (email, password) => {
+  await account.createEmailPasswordSession(email, password);
+  loggedInUser.value = await account.get();
+};
+
+const register = async () => {
+  await account.create(ID.unique(), email.value, password.value, name.value);
+  login(email.value, password.value);
+};
+
+const logout = async () => {
+  await account.deleteSession('current');
+  loggedInUser.value = null;
+};
+</script>
+
 <template>
   <div>
     <p>
@@ -98,31 +123,6 @@ Add the following code to `app.vue`.
     </form>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import { account, ID } from './utils/appwrite.js';
-
-const loggedInUser = ref(null);
-const email = ref('');
-const password = ref('');
-const name = ref('');
-
-const login = async (email, password) => {
-  await account.createEmailSession(email, password);
-  loggedInUser.value = await account.get();
-};
-
-const register = async () => {
-  await account.create(ID.unique(), email.value, password.value, name.value);
-  login(email.value, password.value);
-};
-
-const logout = async () => {
-  await account.deleteSession('current');
-  loggedInUser.value = null;
-};
-</script>
 ```
 {% /section %}
 
