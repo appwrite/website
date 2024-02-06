@@ -34,10 +34,10 @@ You can create topics
 {% tabs %}
 {% tabsitem #console title="Console" %}
 {% only_dark %}
-![Add a target](/images/docs/messaging/topics/dark/create-topics.png)
+![Add a topic](/images/docs/messaging/topics/dark/create-topics.png)
 {% /only_dark %}
 {% only_light %}
-![Add a target](/images/docs/messaging/topics/create-topics.png)
+![Add a topic](/images/docs/messaging/topics/create-topics.png)
 {% /only_light %}
 Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic**.
 {% /tabsitem %}
@@ -49,19 +49,46 @@ Lorem ipsum dolor sit amet consectetur.
 {% /tabs %}
 
 # Subscribe targets to a topic {% #subscribe-targets-to-topics %}
-
-# Create a topic {% #create-a-topic %}
-You can create topics 
 {% tabs %}
 {% tabsitem #console title="Console" %}
-[SCREENSHOT]
+During development, you can subscribe targests to a topic for testing right in the Appwrite console.
+{% only_dark %}
+![Add a topic](/images/docs/messaging/topics/dark/add-subscriber.png)
+{% /only_dark %}
+{% only_light %}
+![Add a topic](/images/docs/messaging/topics/add-subscriber.png)
+{% /only_light %}
 Navigate to your Appwrite Console > **Messaging** > **Topics** > click on your topic > **Subscribers** > **Create topic** > **Add subscriber**.
 
 If you can't find the targets you'd like to add, see the [targets page](/docs/products/messaging/targets).
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-Lorem ipsum dolor sit amet consectetur.
-@abnegate TODO
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
+
+const promise = messaging.createSubscriber(
+        sdk.ID.unique(),    // Create a unique subscriber ID
+        '<TOPIC_ID>',       // The topic ID to subscribe to
+        '<TARGET_ID>'       // The target ID will receive messages from the topic
+    );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
 {% /tabsitem %}
 {% /tabs %}
