@@ -49,8 +49,13 @@ You will need to provide the following information from the **Apple Developer Me
 
 After adding the following details, click **Save and continue** to enable the provider.
 {% /section %}
-
-{% section #test-provider step=3 title="Test provider" %}
+{% section #configure-app step=3 title="Configure app" %}
+Some additional configuration is required to enable push notifications in your iOS app.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+{% /section %}
+{% section #test-provider step=4 title="Test provider" %}
 Before sending your first message, 
 make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
 {% tabs %}
@@ -93,6 +98,6 @@ To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#serv
 You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
 {% /section %}
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 [TODO: How to update and delete provider.]
 {% /section %}

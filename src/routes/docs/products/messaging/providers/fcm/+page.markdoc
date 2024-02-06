@@ -42,7 +42,41 @@ If FCM is disabled, click the three-dots menu and open the link. On the followin
 After adding the following details, click **Save and continue** to enable the provider.
 {% /section %}
 
-{% section #test-provider step=3 title="Test provider" %}
+{% section #configure-app step=3 title="Configure app" %}
+Some additional configuration is required to enable push notifications in your mobile app.
+
+
+{% tabs %}
+{% tabsitem #fcm-ios title="iOS with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
+1. Register and download your `google-services.json` config file.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
+{% /tabsitem %}
+
+{% tabsitem #fcm-android title="Android with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **Android** app.
+1. Register and download your `google-services.json` config file.
+1. Add `google-services.json` at the root of your project.
+1. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
+1. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
+1. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
+```groovy
+<service android:name="io.appwrite.NotificationHandler" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+</service>
+```
+{% /tabsitem %}
+{% /tabs %}
+
+{% /section %}
+
+{% section #test-provider step=4 title="Test provider" %}
 Before sending your first message, 
 make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
 {% tabs %}
@@ -85,6 +119,6 @@ To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#serv
 You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
 {% /section %}
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 [TODO: How to update and delete provider.]
 {% /section %}
