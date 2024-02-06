@@ -4,28 +4,23 @@ title: SSR login
 description: How to implement server-side rendering with Appwrite
 ---
 
-Server-side rendering (SSR) patterns are fully supported with Appwrite. 
-SSR is a technique used in web development where web pages are 
-generated on the server instead of in the browser browser. 
-This differs from client-side rendering, where the web content is generated in the user's browser using JavaScript.
+Server-side rendering (SSR) patterns are fully supported with Appwrite. SSR is a technique used in web development where web pages are generated on the server instead of in the browser. Whereas with client-side rendering, the web content is generated in the user's browser using JavaScript.
 
-You can use Appwrite with many SSR frameworks like Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
+You can use Appwrite with many SSR-oriented frameworks, such as Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
 This guide will walk you through the process of implementing SSR with Appwrite.
 
 # SSR authentication flow {% #ssr-auth-flow %}
-In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
-On server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means
-authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
 
+In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
+
+On server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
 [DIAGRAM?]
 
 # Initialize Server SDK {% #initialize-server-sdk %}
 
-In SSR, your server-side application will be making authentication requests to Appwrite and passing
-session cookies to your client-side app on the browser.
+In SSR, your server-side application will be making authentication requests to Appwrite and passing session cookies to your client-side app on the browser.
 
-To initialize the Server SDK, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key).
-This will allow you to make requests to the Appwrite API from your server.
+To initialize the Server SDK, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). This will allow you to make requests to the Appwrite API from your server.
 
 {% info title="Server SDK required" %}
 Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Client SDK. 
@@ -58,14 +53,14 @@ $client = (new Client())
 # Creating email/password sessions {% #creating-sessions %}
 
 The most straightforward type of session to integrate is email/password.
+
 Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. 
-Once you have a session object, you can persist it to a cookie. 
-This will allow your users make authenticated requests to the Appwrite API from your server.
 
-Use the `secret` property of the session object as the cookie value. 
-The `expire` property of the session object should be used as the cookie's max age.
+Once you have a session object, you can store it in a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
 
-Here's an example with Express and PHP, but the same concepts apply to all web frameworks.
+Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
+
+Here's an example with Express and PHP, but the same concepts apply to all most frameworks.
 {% multicode %}
 ```js
 import express from 'express';
@@ -79,7 +74,7 @@ app.post('/login', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.createEmailSession(email, password);
+        const session = await account.createEmailPasswordSession(email, password);
 
         // Set the session cookie
         res.cookie('session', session.secret, { // use the session secret as the cookie value
@@ -100,6 +95,7 @@ app.post('/login', async (req, res) => {
 ```php
 <?php
 // Initialize Appwrite client here
+// ...
 
 // Get email and password from request
 $email = $_POST['email'];
@@ -107,7 +103,7 @@ $password = $_POST['password'];
 
 try {
     // Create the session using the Appwrite client
-    $session = $account->createEmailSession($email, $password);
+    $session = $account->createEmailPasswordSession($email, $password);
 
     // Set the session cookie
     setcookie('session', $session['secret'], [
@@ -184,9 +180,11 @@ try {
 ```
 {% /multicode %}
 
-To prevent rate limiting, you must also use the `setKey` helper on the SDK. 
-It's also possible to populate details about the user with the `setForwardedFor` helper and the `setForwardedUserAgent` helpers.
-Let's put it all together:
+To prevent [rate limiting](/docs/advanced/platform/rate-limits), use the `setKey` helper on the SDK. Otherwise, the server will be rate limited as if it were a client.
+
+Appwrite sessions record information about the client. To set this informatio, use the `setForwardedFor` to set the end-user's IP address and the `setForwardedUserAgent` to set the end-user's user agent. While optional, these can be useful for debugging and security purposes.
+
+Put it all together, and you get something like this:
 
 {% multicode %}
 ```js
@@ -204,9 +202,9 @@ $client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
 ```
 {% /multicode %}
 
-# OAuth {% #oauth %}
+# OAuth2 {% #oauth2 %}
 
-OAuth requires a few extra steps. First, initiate the OAuth flow on the client side
+OAuth2 requires a few extra steps. First, initiate the flow on the client side
 
 ```html
 <script type='module'>
@@ -219,15 +217,16 @@ OAuth requires a few extra steps. First, initiate the OAuth flow on the client s
 
     const account = new Account(client);
 
-    await account.createOAuth2Session(
+    await account.createOAuth2Token(
         'https://example.com/oauth/success', // Success URL
         'https://example.com/oauth/failure', // Failure URL
     );
 </script>
 ```
 
-After authenticating with the provider, the user will be redirected to the `success` URL with `userId` and `secret` URL parameters. You can then use these parameters to call `exchangeTokenForSession` on the server side.
-This endpoint returns a session object, which you can then persist to a cookie, just like with email/password sessions.
+After authenticating with the provider, the user will be redirected to the `success` URL with `userId` and `secret` URL parameters. You can then use these parameters to call `createSession` on the server side.
+
+This endpoint returns a session object, which you can store in a cookie, just as the `createEmailPasswordSession.
 
 {% multicode %}
 ```js
@@ -238,10 +237,10 @@ app.get('/oauth/success', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.exchangeTokenForSession(userId, secret);
+        const session = await account.createSession(userId, secret);
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // use the session secret as the cookie value
+        res.cookie('session', session.secret, { // Use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -265,7 +264,7 @@ $secret = $_GET['secret'];
 
 try {
     // Create the session using the Appwrite client
-    $session = $account->exchangeTokenForSession($userId, $secret);
+    $session = $account->createSession($userId, $secret);
 
     // Set the session cookie
     setcookie('session', $session['secret'], [
@@ -282,3 +281,4 @@ try {
 }
 ```
 {% /multicode %}
+
