@@ -39,11 +39,11 @@ You will need to provide the following information from the **Apple Developer Me
 {% only_dark %} ![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) {% /only_dark %} {% only_light %} ![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) {% /only_light %}
 ---
 * Authentication key ID
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
 {% only_dark %} ![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) {% /only_dark %} {% only_light %} ![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) {% /only_light %}
 ---
 * Authentication key (.p8 file)
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key
+* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
 {% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) {% /only_light %}
 {% /table %}
 

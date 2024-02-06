@@ -35,8 +35,7 @@ There are three types of targets you can use to reach your targets.
 
 # Add a target {% #add-a-target %}
 Before you can send messages, make sure you have the appropriate targets added for your user.
-{% tabs %}
-{% tabsitem #email title="Email" %}
+## Add email target {% #add-email-target%}
 Verified emails for users that signed up with [email password](/docs/products/auth/email-password), 
 [magic URL](/docs/products/auth/magic-url), and [email OTP](/docs/products/auth/email-otp) login will already have a email target.
 
@@ -70,9 +69,8 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
-{% /tabsitem %}
 
-{% tabsitem #sms title="SMS" %}
+## Add SMS target {% #add-sms-target%}
 Verified phone numbers for users that signed up with [Phone OPT](/docs/products/auth/phone-sms) login will already have a phone target.
 
 If you need to add targets outside the normal signin flow, you can do so with a [Server SDK](/docs/sdks#server).
@@ -105,10 +103,40 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
+## Add push notification target {% #add-push-notification-target%}
+Push notifications require configuration on both the Appwrite platform and your client app's code.
+
+
+{% tabs %}
+{% tabsitem #fcm-ios title="iOS with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
+2. Register and download your `google-services.json` config file.
+3. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+4. Create a new key, note down the key ID and download your key.
+5. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+6. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 {% /tabsitem %}
 
-{% tabsitem #push title="Push notifications" %}
-[TODO]
+{% tabsitem #fcm-android title="Android with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **Android** app.
+2. Register and download your `google-services.json` config file.
+3. Add `google-services.json` at the root of your project.
+4. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
+5. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
+6. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
+```groovy
+<service android:name="io.appwrite.NotificationHandler" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+</service>
+```
+{% /tabsitem %}
+
+{% tabsitem #APNs-ios title="iOS with APNs" %}
+Lorem ipsum dolor sit amet consectetur.
 {% /tabsitem %}
 {% /tabs %}
+
 
