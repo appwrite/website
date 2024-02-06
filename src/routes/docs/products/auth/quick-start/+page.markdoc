@@ -171,7 +171,7 @@ mutation {
 # More ways to authenticate {% #more-ways-to-authenticate %}
 You can signup and login a user with an account created through 
 [Email and password](/docs/products/auth/email-password), 
-[OAuth 2](/docs/products/auth/oauth2), 
+[OAuth2](/docs/products/auth/oauth2), 
 [Magic URL](/docs/products/auth/magic-url), 
 [Email OTP](/docs/products/auth/email-otp), 
 [Phone (SMS)](/docs/products/auth/phone-sms), 
