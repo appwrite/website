@@ -543,7 +543,7 @@
                                         />
                                     </div>
                                     <div class="aw-title u-margin-block-start-auto">
-                                        38K+ stargazers
+                                        39K+ stargazers
                                     </div>
                                 </a>
                             </li>
