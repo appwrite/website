@@ -306,7 +306,7 @@ const client = new Client()
 const databases = new Databases(client);
 
 databases.listDocuments(
-    '[DATABASE_ID]',
+    '<DATABASE_ID>',
     '[COLLECTION_ID]',
     [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
@@ -326,7 +326,7 @@ void main() async {
 
     try {
         final documents = await databases.listDocuments(
-            '[DATABASE_ID]',
+            '<DATABASE_ID>',
             '[COLLECTION_ID]',
             [
                 Query.equal('title', ['Avatar', 'Lord of the Rings']),
@@ -352,8 +352,8 @@ suspend fun main() {
 
     try {
         val documents = databases.listDocuments(
-            databaseId = "[DATABASE_ID]",
-            collectionId = "[COLLECTION_ID]",
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", listOf("Avatar", "Lord of the Rings")),
                 Query.greaterThan("year", 1999)
@@ -377,8 +377,8 @@ func main() async throws {
 
     do {
         let documents = try await databases.listDocuments(
-            databaseId: "[DATABASE_ID]",
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", ["Avatar", "Lord of the Rings"]),
                 Query.greaterThan("year", 1999)
@@ -392,8 +392,8 @@ func main() async throws {
 ```graphql
 query {
     databasesListDocuments(
-        databaseId: "[DATABASE_ID]",
-        collectionId: "[COLLECTION_ID]"
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>"
         queries: ["equal(\"title\", [\"Avatar\", \"Lord of the Rings\"])", "greaterThan(\"year\", 1999)]
     ) {
         total

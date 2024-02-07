@@ -234,7 +234,7 @@ import { Client, Graphql } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
-    .setProject('[PROJECT_ID]');                // Your project ID
+    .setProject('<PROJECT_ID>');                // Your project ID
 
 const graphql = new Graphql(client);
 
@@ -271,7 +271,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
-    .setProject('[PROJECT_ID]');               // Your project ID
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 final graphql = Graphql(client);
 
@@ -309,7 +309,7 @@ import io.appwrite.services.Graphql
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                // Your project ID
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 val graphql = Graphql(client)
 
@@ -346,7 +346,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("[PROJECT_ID]")                // Your project ID
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 let graphql = Graphql(client)
 

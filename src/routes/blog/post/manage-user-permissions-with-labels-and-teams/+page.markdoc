@@ -106,7 +106,7 @@ const client = //...
 
 const Teams = new Teams(client);
 
-const promise = Teams.create('[Team_ID]', '[NAME]');
+const promise = Teams.create('<TEAM_ID>', '[NAME]');
 ```
 
 ## Labels
@@ -122,7 +122,7 @@ const client = //...
 
 const users = new sdk.Users(client);
 
-const promise = users.updateLabels('[USER_ID]', ['subscriber']);
+const promise = users.updateLabels('<USER_ID>', ['subscriber']);
 ```
 
 ### Resources
