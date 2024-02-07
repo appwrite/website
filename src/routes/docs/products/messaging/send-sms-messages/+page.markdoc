@@ -4,4 +4,151 @@ title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
 
+You can send custom sms messages to your app's users using Appwrite Messaging and a connected SMTP service.
+This guide takes you through the implementation path of adding sms messaging to your app.
 
+# Add a provider {% #add-a-provider %}
+Appwrite supports [Twilio](/docs/products/messaging/providers/twilio/),
+[MSG91](/docs/products/messaging/providers/msg91/),
+[Telesign](/docs/products/messaging/providers/telesign/),
+[TextMagic](/docs/products/messaging/providers/textmagic/),
+and [Vonage](/docs/products/messaging/providers/vonage/)
+as SMS providers. You must configure one of them as a provider.
+{% only_dark %}
+![Add a SMTP provider](/images/docs/messaging/providers/twilio/dark/add-twilio.png)
+{% /only_dark %}
+{% only_light %}
+![Add a SMTP provider](/images/docs/messaging/providers/twilio/add-twilio.png)
+{% /only_light %}
+To add a new provider navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**
+and follow the wizard. You can find more details about configuring in the provider guides for
+[Twilio](/docs/products/messaging/providers/twilio/),
+[MSG91](/docs/products/messaging/providers/msg91/),
+[Telesign](/docs/products/messaging/providers/telesign/),
+[TextMagic](/docs/products/messaging/providers/textmagic/),
+and [Vonage](/docs/products/messaging/providers/vonage/).
+
+# Add targets {% #add-targets %}
+In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
+You can deliver messages to users through their **targets**.
+
+{% only_dark %}
+![Target overview](/images/docs/messaging/targets/dark/target-overview.png)
+{% /only_dark %}
+{% only_light %}
+![Target overview](/images/docs/messaging/targets/target-overview.png)
+{% /only_light %}
+
+If the user signed up with phone (SMS) authentication, their account would already have a phone number as a target.
+During development, you can add targets to existing accounts by navigating to **Authentication** > **Users** > **Select a user** > **Targets** > **Add a subscriber**.
+{% only_dark %}
+![Add a target](/images/docs/messaging/targets/dark/add-targets.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/targets/add-targets.png)
+{% /only_light %}
+
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](#TODO) endpoint.
+
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
+
+const promise = messaging.createSubscriber(
+        sdk.ID.unique(),    // Create a unique subscriber ID
+        '<TOPIC_ID>',       // The topic ID to subscribe to
+        '<TARGET_ID>'       // The target ID will receive messages from the topic
+    );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+# Create topics (optional) {% #create-topics %}
+You can use topics to organize targets that should receive the same messages, so you can send SMS messages to groups of targets instead of one at time.
+This step is optional if you plan to only send SMS messages to individual targets.
+
+To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics** > {% icon icon="plus" size="m" /%} **Create topic**.
+{% only_dark %}
+![Add a target](/images/docs/messaging/topics/dark/create-topics.png)
+{% /only_dark %}
+{% only_light %}
+![Add a target](/images/docs/messaging/topics/create-topics.png)
+{% /only_light %}
+
+You can also create topics programmatically using an [Appwrite Server SDK](#TODO).
+[PLACE HOLDER FOR CODE EXAMPLE]
+
+# Send SMS messages {% #send-sms %}
+You can send SMS messages using a Server SDK. 
+To send an SMS messages immediately, you can call the `createSMS` endpoint with `status` set to `'processing'` and `schedule` left empty.
+```js
+import { Messaging, Client, ID } from "node-appwrite";
+
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('[]') // Your project ID
+    .setKey('[]') // Your secret API key
+;
+
+messaging.createSMS(
+    ID.unique(),                // SMS ID,
+    'Hello world!',             // Message content
+    ['65c2592cb669ff954d94'],   // List of topic IDs
+    [],                         // List of targt IDs
+    [],                         //
+    'processing'
+).then(response => {
+  console.log('SMS message created successfully:', response);
+}).catch(error => {
+  console.error('Error creating SMS message:', error);
+});
+```
+
+# Schedule SMS message {% #schedule-sms %}
+To send an scheduled SMS message, you can call the `createSMS` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
+```js
+import { Messaging, Client, ID } from "node-appwrite";
+
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('[]') // Your project ID
+    .setKey('[]') // Your secret API key
+;
+
+messaging.createSMS(
+    ID.unique(),                // SMS ID,
+    'Hello world!',             // Message content
+    ['65c2592cb669ff954d94'],    // List of topic IDs
+    [],
+    [],
+    'scheduled',
+    '2024-04-07T23:41:47+0000'
+).then(response => {
+  console.log('SMS message created successfully:', response);
+}).catch(error => {
+  console.error('Error creating SMS message:', error);
+});
+```
