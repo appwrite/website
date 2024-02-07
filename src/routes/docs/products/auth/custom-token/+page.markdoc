@@ -22,7 +22,7 @@ const client = new Client()
 
 const users = new Users(client);
 
-const token = await users.createToken('[USER_ID]');
+const token = await users.createToken('<USER_ID>');
 
 console.log(token.secret);
 ```
@@ -47,7 +47,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-await account.createSession('[USER_ID]', '[SECRET]');
+await account.createSession('<USER_ID>', '[SECRET]');
 ```
 
 When the session is successfully created, the session is stored in a persistent manner and you can now do requests as authorized user from the application.

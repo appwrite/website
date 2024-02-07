@@ -167,7 +167,7 @@ let session = try await account.createSession(
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "[SECRET]") {
         _id
         userId
         provider
