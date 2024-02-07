@@ -121,7 +121,7 @@ What personal data we collect, why we collect it, and how it is used
   - Email address
   - Address, including (Apartment, Postal Code and City)
   - Phone number
-  - Payment information (e.g., 4 last digits of the credit card number)
+  - Payment information (e.g., 4 last digits of the credit card number, via third party vendor)
   - And any other information that you decide to provide us with
 ---
 * The purpose of data collection
@@ -136,7 +136,7 @@ What personal data we collect, why we collect it, and how it is used
 * 3rd party platforms such as for the following purposes:
   - Shopify
   - Printful
-  - Stripe
+  - Paypal
 ---
 * Consequences of not providing the personal data
 * - Cannot purchase our swag products
@@ -164,6 +164,12 @@ What personal data we collect, why we collect it, and how it is used
 * 3rd party platforms such as for the following purposes:
   - Mailgun
   - Orbit
+  - MSG91 (India only)
+  - Twilio
+  - Telesign
+  - Textmagic
+  - Vonage
+  - Sendgrid
 ---
 * Consequences of not providing the personal data
 * - Cannot add you to our mailing list
@@ -205,7 +211,7 @@ What personal data we collect, why we collect it, and how it is used
   - Cannot communicate with your for candidacy-related matters
 {% /table %}
 
-####  When you contact us (e.g. customer support, need help, submit a request or when you report a security vulnerability)
+####  When you contact us (e.g. customer support, need help, sign a DPA, submit feedback, request or report a security vulnerability)
 
 {% table %}
 ---
@@ -228,6 +234,8 @@ What personal data we collect, why we collect it, and how it is used
 * Third parties with whom we share your personal data
 * 3rd party platforms such as for the following purposes:
   - HelpScout
+  - Docusign (for DPAs)
+  - Typeform
 ---
 * Consequences of not providing the personal data
 * - Cannot assist you and respond your query
