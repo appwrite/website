@@ -1,22 +1,33 @@
 ---
 layout: article
 title: SSR login
-description: How to implement server-side rendering with Appwrite
+description: How to implement SSR authentication with Appwrite
 ---
 
-Server-side rendering (SSR) is fully supported with Appwrite. With SSR, web pages are generated on the server instead of in the browser.
+Server-side rendering (SSR) is fully supported with Appwrite. You can use Appwrite with many SSR-oriented frameworks, such as Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
 
-You can use Appwrite with many SSR-oriented frameworks, such as Next.js, SvelteKit, Nuxt, Gatsby, Remix, and more.
+SSR is a technique where the server renders a web page and sending the fully rendered page to the client's web browser. This is in contrast to client-side rendering (CSR), where the client's web browser renders the page using JavaScript.
+
 This guide will walk you through the process of implementing an SSR application with Appwrite.
 
 # SSR authentication flow {% #ssr-auth-flow %}
 
 In client-side rendered web apps, a [Client SDK](/docs/sdks#client) is used to perform authentication directly from the client's web browser.
 
-With server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite, which means authentication information is first passed from the client's web browser to your server, and the server authenticates against Appwrite.
-[DIAGRAM?]
+With server-side rendered web apps, a [Server SDK](/docs/sdks#server) is used to handle authentication against Appwrite. Authentication data is passed from the client's web browser to your server, and then your server makes requests to Appwrite on behalf of the client.
 
-# Initialize Server SDK {% #initialize-server-sdk %}
+Here's a high-level overview of the authentication flow:
+
+1. The user enters their credentials in their web browser.
+2. The browser sends the credentials to your server.
+3. Your server uses the Server SDK to authenticate the user with Appwrite.
+4. If the authentication is successful, your server sends a session cookie to the client's web browser.
+5. The client's web browser sends the session cookie to your server with subsequent request.
+6. Your server uses the session cookie to make authenticated requests to Appwrite on behalf of the client.
+
+<!--- TODO: Add sequence diagram --->
+
+# Setting up the server SDK {% #setting-up-the-server-sdk %}
 
 In SSR, your server-side application will be making authentication requests to Appwrite and passing session cookies to your client-side app on the browser.
 
@@ -32,8 +43,8 @@ const { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                  // Your project ID
-    .setKey('<API_KEY>');                        // Your secret API key
+    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setKey('<YOUR_API_KEY>');                   // Your secret API key
 
 const account = new Account(client);
 
@@ -45,10 +56,19 @@ use Appwrite\Services\Account;
 
 $client = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<PROJECT_ID>')                  // Your project ID
-    ->setKey('<API_KEY>');                        // Your secret API key
+    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
 {% /multicode %}
+
+It is important to use an API key with the `setKey` method, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
+
+The API key should have the at least the following scopes in order to perform authentication:
+
+- `accounts.read`
+- `accounts.write`
+- `sessions.read`
+- `sessions.write`
 
 # Creating email/password sessions {% #creating-sessions %}
 
@@ -124,7 +144,7 @@ try {
 We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, 
 and is not accessible to JavaScript. This will prevent XSS attacks.
 
-# Accepting authenticated requests {% #accepting-authenticated-requests %}
+# Making authenticated requests {% #making-authenticated-requests %}
 
 Once a user has a session cookie, which will be set automatically by the browser when it receives the `/login` endpoint's response,
 they can use it to make authenticated requests to your server. 
@@ -180,23 +200,17 @@ try {
 ```
 {% /multicode %}
 
-To prevent [rate limiting](/docs/advanced/platform/rate-limits), use the `setKey` helper on the SDK. Otherwise, the server will be rate limited as if it were a client.
+# Forwarding user information {% #forwarding-user-information %}
 
-Appwrite sessions record information about the client. To set this informatio, use the `setForwardedFor` to set the end-user's IP address and the `setForwardedUserAgent` to set the end-user's user agent. While optional, these can be useful for debugging and security purposes.
-
-Put it all together, and you get something like this:
+Appwrite sessions record some information about the client. To set this information in a server-side context use the `setForwardedFor` to set the end-user's IP address and the `setForwardedUserAgent` to set the end-user's user agent. While optional, these can be useful for debugging and security purposes.
 
 {% multicode %}
 ```js
-client.setKey('<API_KEY>');
-client.setSession(session.secret);
 client.setForwardedFor(req.headers['x-forwarded-for']);
 client.setForwardedUserAgent(req.headers['user-agent']);
 ```
 ```php
 <?php
-$client->setKey('<API_KEY>');
-$client->setSession($session['secret']);
 $client->setForwardedFor($_SERVER['HTTP_X_FORWARDED_FOR']);
 $client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
 ```
@@ -212,7 +226,7 @@ OAuth2 requires a few extra steps. First, initiate the flow on the client side
 
     const client = new Client()
         .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-        .setProject('<PROJECT_ID>')                  // Your project ID
+        .setProject('<YOUR_PROJECT_ID>')             // Your project ID
         .setKey('<API_KEY>');                        // Your secret API key
 
     const account = new Account(client);
@@ -282,3 +296,4 @@ try {
 ```
 {% /multicode %}
 
+Now the cookie is set, it will be passed to the server with subsequent requests, and you can use it to make authenticated requests to the Appwrite API on behalf of the end-user.
