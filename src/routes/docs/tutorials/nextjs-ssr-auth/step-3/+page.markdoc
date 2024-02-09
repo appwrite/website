@@ -41,7 +41,7 @@ export function createAppwriteClient(headers) {
 
 `APPWRITE_KEY`, `NEXT_PUBLIC_APPWRITE_ENDPOINT` and `NEXT_PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables).
 
-You can get the values for these variables from the Appwrite console. The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite server, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write to the database.
+You can get the values for these variables from the Appwrite console. The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite server, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write accounts and sessions.
 
 For this tutorial you'll need an API key with the following scopes:
 - `accounts.read`
