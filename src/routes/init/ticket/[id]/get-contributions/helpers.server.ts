@@ -3,14 +3,23 @@ import { appwriteInit } from '$lib/appwrite/init';
 import parse from 'node-html-parser';
 import type { TicketData, ContributionsMatrix } from '../../constants';
 
-export async function getContributions(id: string) {
-    const { gh_user } = (await appwriteInit.database.getDocument(
+export async function getContributions(id: string): Promise<ContributionsMatrix | null> {
+    const { gh_user, contributions } = (await appwriteInit.database.getDocument(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
         id
     )) as unknown as TicketData;
 
     if (!gh_user) return null;
+
+    if (contributions?.length) {
+        // Transform flat array into matrix with 7 columns
+        const matrix: ContributionsMatrix = [];
+        for (let i = 0; i < contributions.length; i += 7) {
+            matrix.push(contributions.slice(i, i + 7));
+        }
+        return matrix;
+    }
 
     const res = await fetch(`https://github.com/${gh_user}`);
 
@@ -35,6 +44,11 @@ export async function getContributions(id: string) {
 
         matrix[c] = matrix[c].reverse();
     }
+
+    // Update the document with the new contributions
+    await appwriteInit.database.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
+        contributions: matrix.flat()
+    });
 
     return matrix;
 }
