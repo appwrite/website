@@ -84,7 +84,7 @@ const authUser: Models.Session = await account.createEmailSession(email, passwor
 ```
 {% /section %}
 
-{% section #step-4 step=4 title="Extending TypeScript models" %}
+{% section #step-5 step=5 title="Extending TypeScript models" %}
 Sometimes you'll need to extend TypeScript models with your own type definitions.
 
 For example, when you fetch a list of documents from a collection, you can define the expected structure of the documents like this.
