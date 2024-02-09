@@ -73,7 +73,12 @@ make sure you've configured [a topic](/docs/products/messaging/topic) and [a tar
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Email**.
-[SCREENSHOT]
+{% only_dark %}
+![Create email message](/images/docs/messaging/messages/dark/create-email-message.png)
+{% /only_dark %}
+{% only_light %}
+![Create email message](/images/docs/messaging/messages/create-email-message.png)
+{% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
@@ -84,24 +89,204 @@ Verify that you can receive the message in your inbox. If not, check for logs in
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
 ```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>') // Your secret API key
+;
+
+const promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+
+// Init SDK
+let client = new sdk.Client();
+
+let messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>') // Your secret API key
+;
+
+let promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Messaging;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>') // Your secret API key
+;
+
+$messaging = new Messaging($client);
+
+$result = $messaging->createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```python
+from appwrite.client import Client
+
+client = Client()
+
+(client
+  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>') # Your secret API key
+)
+
+messaging = Messaging(client)
+
+result = messaging.create_email('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>')
 ```
 ```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>') # Your secret API key
+
+messaging = Messaging.new(client)
+
+response = messaging.create_email(message_id: '<MESSAGE_ID>', subject: '<SUBJECT>', content: '<CONTENT>')
+
+puts response.inspect
 ```
 ```csharp
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+using Appwrite.Enums;
+using Appwrite.Enums;
+using Appwrite.Enums;
+
+var client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>"); // Your secret API key
+
+var messaging = new Messaging(client);
+
+Message result = await messaging.CreateEmail(
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>");
 ```
 ```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+void main() { // Init SDK
+  Client client = Client();
+  Messaging messaging = Messaging(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>') // Your secret API key
+  ;
+
+  Future result = messaging.createEmail(
+    messageId:'<MESSAGE_ID>' ,
+    subject:'<SUBJECT>' ,
+    content:'<CONTENT>' ,
+  );
+
+  result
+    .then((response) {
+      print(response);
+    }).catchError((error) {
+      print(error.response);
+  });
+}
 ```
 ```kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Messaging
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+val messaging = Messaging(client)
+
+val response = messaging.createEmail(
+    messageId = "<MESSAGE_ID>",
+    subject = "<SUBJECT>",
+    content = "<CONTENT>",
+)
 ```
 ```java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Messaging;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>"); // Your secret API key
+
+Messaging messaging = new Messaging(client);
+
+messaging.createEmail(
+    "<MESSAGE_ID>",
+    "<SUBJECT>",
+    "<CONTENT>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(result);
+    })
+);
 ```
 ```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+let messaging = Messaging(client)
+
+let message = try await messaging.createEmail(
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>"
+)
 ```
 {% /multicode %}
 {% /tabsitem %}
