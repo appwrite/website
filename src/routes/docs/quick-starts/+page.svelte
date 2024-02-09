@@ -23,7 +23,7 @@
                     title: 'Web',
                     icon: 'icon-js',
                     image: '/images/blog/placeholder.png',
-                    href: 'js'
+                    href: 'web'
                 },
                 {
                     title: 'Next.js',
