@@ -47,7 +47,7 @@ npm install appwrite
 {% /section %}
 {% section #step-3 step=3 title="Import Appwrite" %}
 ```js
-import { Client, Account} from 'appwrite';
+import { Client, Account } from 'appwrite';
 
 export const client = new Client();
 
