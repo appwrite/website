@@ -1,0 +1,76 @@
+---
+layout: tutorial
+title: Adding OAuth2 authentication with SSR
+description: Add authentication to a Next.js project using Appwrite.
+step: 7
+---
+
+To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, and then handle the callback from the OAuth2 provider. 
+
+Add a new server action. Navigate to `src/lib/server` and create a new file `oauth2.js`:
+
+```js
+// src/lib/server/oauth2.js
+
+import { SESSION_COOKIE, createAppwriteClient } from "@/lib/server/appwrite";
+import { redirect } from "next/navigation";
+
+async function signInWithGithub(formData) {
+	"use server";
+
+	const provider = formData.get('provider') ?? 'github';
+
+	const { account } = createAppwriteClient();
+	const redirectURL = await account.createOAuth2Token(
+		provider, 
+		'<YOUR_WEBSITE_DOMAIN>/oauth2',
+		'<YOUR_WEBSITE_DOMAIN>/signin'
+	);
+
+	return redirect(redirectURL);
+};
+```
+
+The `createOAuth2Token` method redirects the user to the OAuth2 provider, and then the OAuth2 provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
+
+To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
+
+```jsx
+// src/app/signin/page.jsx
+
+// ... existing imports
+import { signInWithGithub } from "@/lib/server/oauth2";
+
+// ... existing sign in form 
+<form action={signInWithGithub} method="post">
+  <input type="hidden" name="provider" value="github" />
+  <button type="submit">Sign in with GitHub</button>
+</form>
+```
+
+Handle the callback and create a session for the user. Create a new Next.js server route at `src/app/oauth2/route.js`:
+
+```js
+// src/app/oauth2/route.js
+
+import { SESSION_COOKIE, createAppwriteClient } from "@/lib/server/appwrite";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+
+export async function GET(request) {
+  const userId = request.nextUrl.searchParams.get("userId");
+  const secret = request.nextUrl.searchParams.get("secret");
+
+  const { account } = createAppwriteClient(request.headers);
+  const session = await account.createSession(userId, secret);
+
+  cookies().set(SESSION_COOKIE, session.secret, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "strict",
+    secure: true,
+  });
+
+  return NextResponse.redirect(`${request.nextUrl.origin}/account`);
+}
+```

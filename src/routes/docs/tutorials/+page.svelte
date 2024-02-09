@@ -22,7 +22,8 @@
         flutter: 'icon-flutter',
         nuxt: 'icon-nuxt',
         stripe: 'icon-stripe',
-        refine: 'aw-icon-refine'
+        refine: 'aw-icon-refine',
+        'next.js': 'icon-nextjs'
     };
 
     const getIcon = (tutorial: MappedTutorial) => {
