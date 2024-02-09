@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Initialize SDK
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 3
 ---
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint. 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Server Side Rendering with SvelteKit
-description: Add SSR Authentication to your SvelteKit app with Appwrite
+title: Server-side authentication with SvelteKit
+description: Add SSR authentication to your SvelteKit app with Appwrite
 step: 1
 difficulty: beginner
 readtime: 20
@@ -12,7 +12,7 @@ category: Auth
 Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
 If you're a Svelte developer, the examples in this guide show you how Appwrite can help you add authentication to Svelte apps faster.
 
-# Before you start
+# Before you start {% #before-you-start %}
 
 Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Svelte and Appwrite.
 
