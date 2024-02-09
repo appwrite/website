@@ -34,7 +34,7 @@ You can skip optional steps.
 
 {% /section %}
 {% section #step-2 step=2 title="Create project" %}
-You can install the Appwrite Web SDK using CDN with a script tag.
+You can add the Appwrite Web SDK using CDN with a script tag.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
