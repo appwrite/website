@@ -17,4 +17,4 @@ If you're a Next.js developer, the examples in this guide show you how Appwrite 
 Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Next.js and Appwrite.
 
 If you're inspired and wish to follow along, make sure you've followed [Start with Next.js](https://appwrite.io/docs/quick-starts/sveltekit) first.
-You can also clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/main/nextjs) examples and follow along by looking at the code.
+Clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/main/nextjs) examples and follow along with the source code.

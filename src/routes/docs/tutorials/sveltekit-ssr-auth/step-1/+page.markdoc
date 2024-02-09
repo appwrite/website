@@ -17,4 +17,4 @@ If you're a Svelte developer, the examples in this guide show you how Appwrite c
 Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Svelte and Appwrite.
 
 If you're inspired and wish to follow along, make sure you've followed [Start with Svelte](https://appwrite.io/docs/quick-starts/sveltekit) first.
-You can also clone the [Demos for svelte](https://github.com/appwrite/demos-for-svelte) examples and follow along by looking at the code.
+Clone the [Demos for svelte](https://github.com/appwrite/demos-for-svelte) examples and follow along with the source code.
