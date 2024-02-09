@@ -71,7 +71,7 @@ To send a test message, navigate to **Messaging** > **Messages** > {% icon icon=
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
-Verify that you can receive the message in your inbox. If not
+Verify that you can receive the message in your inbox. If not, check for logs in the Appwrite Console or in your provider's logs.
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}

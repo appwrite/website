@@ -12,7 +12,12 @@ You can send SMS messages for purposes like reminders, promotions, announcements
 {% section #add-provider step=1 title="Add provider" %}
 
 To add MSG91 as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
-[SCREENSHOT]
+{% only_dark %}
+![Add a Telesign provider](/images/docs/messaging/providers/msg91/dark/provider.png)
+{% /only_dark %}
+{% only_light %}
+![Add a Telesign provider](/images/docs/messaging/providers/msg91/provider.png)
+{% /only_light %}
 
 Give your provider a name > choose **MSG91** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
@@ -21,8 +26,6 @@ The provider will be saved to your project, but not enabled until you complete i
 
 In the **Configure** step, you will need to provide details form your MSG91 dashboard to connect your Appwrite project.
 
-[SCREENSHOT]
-
 You will need to provide the following information from your **MSG91 dashboard**.
 
 {% table %}
@@ -30,10 +33,10 @@ You will need to provide the following information from your **MSG91 dashboard**
 *
 ---
 * Auth key
-* Click to open the Username dropdown -> Authkey -> Verify your mobile number -> Create Authkey.
+* Click to open the Username dropdown > **Authkey** > **Verify your mobile number** > **Create Authkey**.
 ---
 * Sender ID
-* Head to MSG91 dashboard -> SMS -> Sender ID -> Create sender ID.
+* Head to MSG91 dashboard > **SMS** > **Sender ID** > **Create sender ID**.
 ---
 * Sender number
 * [TODO]
@@ -85,6 +88,74 @@ To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#serv
 You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
 {% /section %}
 
+
 {% section #manage-provider step=4 title="Manage provider" %}
-[TODO: How to update and delete provider.]
+{% tabs %}
+{% tabsitem #console title="Console" %}
+You can update or delete a provider in the Appwrite Console. 
+
+Navigate to **Messaging** > **Providers** > click your provider.
+In the settings, you can update a provider's configuration or delete the provider.
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
+{% multicode %}
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+;
+
+// update provider
+messaging.updateMsg91Provider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>', 
+    '<ENABLED?>', 
+    '<SENDER_ID>', 
+    '<AUTH_KEY>',
+    '<PHONE_NUMBER>'
+).then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+
+// delete provider
+messaging.deleteProvider('[PROVIDER_ID]')
+.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```deno
+```
+```php
+```
+```python
+```
+```ruby
+```
+```csharp
+```
+```dart
+```
+```kotlin
+```
+```java
+```
+```swift
+```
+{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 {% /section %}
