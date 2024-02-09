@@ -20,6 +20,12 @@
             title: 'Web app',
             quickStarts: [
                 {
+                    title: 'Web',
+                    icon: 'icon-js',
+                    image: '/images/blog/placeholder.png',
+                    href: 'web'
+                },
+                {
                     title: 'Next.js',
                     icon: 'icon-nextjs',
                     image: '/images/blog/placeholder.png',
