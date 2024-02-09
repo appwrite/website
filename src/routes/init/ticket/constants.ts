@@ -19,6 +19,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     show_contributions?: boolean;
     variant?: TicketVariant;
     is_pro?: boolean;
+    contributions?: number[];
 };
 
 export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;
