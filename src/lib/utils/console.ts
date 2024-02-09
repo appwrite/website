@@ -1,13 +1,30 @@
 import { derived, writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import { Account, Client } from '@appwrite.io/console';
-import type { Models } from 'appwrite';
+import { Account, Client, Teams } from '@appwrite.io/console';
+import { Query, type Models } from 'appwrite';
 
 const client = new Client();
 
 client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
 
 const account = new Account(client);
+const teams = new Teams(client);
+
+enum BillingPlan {
+    STARTER = 'tier-0',
+    PRO = 'tier-1',
+    SCALE = 'tier-2'
+}
+
+export async function isProUser() {
+    try {
+        const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
+        return orgs?.teams?.length > 1;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
+}
 
 export const sdk = { client, account };
 
@@ -22,7 +39,7 @@ export function getAppwriteUser(): Promise<AppwriteUser | null> {
         .then((res) => res)
         .catch((e) => {
             console.error(e);
-            return null
+            return null;
         });
 }
 

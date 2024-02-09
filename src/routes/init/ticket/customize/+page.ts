@@ -8,6 +8,7 @@ export const load = async () => {
     }
 
     const user = await getUser();
+    console.log(user);
     const ticket = await getTicketByUser(user);
 
     return {

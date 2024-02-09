@@ -1,69 +1,16 @@
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import { Spline } from '$lib/components';
-    import MainFooter from '../lib/components/MainFooter.svelte';
-    import FooterNav from '../lib/components/FooterNav.svelte';
-    import DeveloperCard from './DeveloperCard.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
     import OpenSource from '$lib/animations/OpenSource.svelte';
     import Products from '$lib/animations/Products/Products.svelte';
     import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
-    import Tooltip from '$lib/components/Tooltip.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import { Spline } from '$lib/components';
+    import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
-
-    const platforms: Array<{
-        name: string;
-        href: string;
-        image: string;
-    }> = [
-        {
-            name: 'Flutter',
-            href: '/docs/quick-starts/flutter',
-            image: '/images/platforms/dark/flutter.svg'
-        },
-        {
-            name: 'Next',
-            href: '/docs/quick-starts/nextjs',
-            image: '/images/platforms/dark/nextjs.svg'
-        },
-        {
-            name: 'React',
-            href: '/docs/quick-starts/react',
-            image: '/images/platforms/dark/react.svg'
-        },
-        {
-            name: 'Svelte',
-            href: '/docs/quick-starts/sveltekit',
-            image: '/images/platforms/dark/svelte.svg'
-        },
-        {
-            name: 'Nuxt',
-            href: '/docs/quick-starts/nuxt',
-            image: '/images/platforms/dark/nuxt.svg'
-        },
-        {
-            name: 'Vue',
-            href: '/docs/quick-starts/vue',
-            image: '/images/platforms/dark/vue.svg'
-        },
-        {
-            name: 'Angular',
-            href: '/docs/quick-starts/angular',
-            image: '/images/platforms/dark/angular.svg'
-        },
-        {
-            name: 'Apple',
-            href: '/docs/quick-starts/apple',
-            image: '/images/platforms/dark/apple.svg'
-        },
-        {
-            name: 'Android',
-            href: '/docs/quick-starts/android',
-            image: '/images/platforms/dark/android.svg'
-        }
-    ];
+    import { Main } from '$lib/layouts';
+    import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import FooterNav from '../lib/components/FooterNav.svelte';
+    import MainFooter from '../lib/components/MainFooter.svelte';
+    import DeveloperCard from './DeveloperCard.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -374,9 +321,7 @@
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">
-                                    GDPR
-                                </h3>
+                                <h3 class="aw-info-boxes-title">GDPR</h3>
                                 <p class="aw-info-boxes-content">
                                     Safeguard user data and privacy with provided GDPR regulations.
                                 </p>
