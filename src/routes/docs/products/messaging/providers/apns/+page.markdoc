@@ -12,7 +12,12 @@ APNs will save the last [N] messages for [M] days and attempt delivery as soon a
 {% section #add-provider step=1 title="Add provider" %}
 
 To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
-[SCREENSHOT]
+{% only_dark %}
+![Add a FCM provider](/images/docs/messaging/providers/apns/dark/provider.png)
+{% /only_dark %}
+{% only_light %}
+![Add a FCM provider](/images/docs/messaging/providers/apns/provider.png)
+{% /only_light %}
 
 Give your provider a name > choose **APNS** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
@@ -21,8 +26,6 @@ The provider will be saved to your project, but not enabled until you complete i
 
 In the **Configure** step, you will need to provide details form your Apple developer account to connect your Appwrite project with your
 Apple developer account.
-
-[SCREENSHOT]
 
 You will need to provide the following information from the **Apple Developer Member Center**.
 

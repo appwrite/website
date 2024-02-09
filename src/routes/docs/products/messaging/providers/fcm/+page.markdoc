@@ -11,7 +11,12 @@ Before you can deliver messages, you must connect to a messaging provider.
 {% section #add-provider step=1 title="Add provider" %}
 
 To add FCM as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
-[SCREENSHOT]
+{% only_dark %}
+![Add a FCM provider](/images/docs/messaging/providers/fcm/dark/provider.png)
+{% /only_dark %}
+{% only_light %}
+![Add a FCM provider](/images/docs/messaging/providers/fcm/provider.png)
+{% /only_light %}
 
 Give your provider a name > choose **FCM** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
@@ -19,8 +24,6 @@ The provider will be saved to your project, but not enabled until you complete i
 {% section #configure-provider step=2 title="Configure provider" %}
 
 In the **Configure** step, you will need to provide details form your Firebase console to connect your Appwrite project.
-
-[SCREENSHOT]
 
 You will need to provide the following information from the **Firebase console**.
 
