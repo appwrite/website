@@ -131,8 +131,8 @@ func main() async throws {
             databaseId: "[DATABASE_ID]",
             collectionId: "[COLLECTION_ID]",
             queries: [
-                Query.equal("title", ["Avatar", "Lord of the Rings"]),
-                Query.greaterThan("year", 1999)
+                Query.equal("title", value: ["Avatar", "Lord of the Rings"]),
+                Query.greaterThan("year", value: 1999)
             ]
         )
     } catch {
