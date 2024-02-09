@@ -1,0 +1,20 @@
+---
+layout: tutorial
+title: Server-side authentication with Nuxt
+description: Add SSR authentication to your Nuxt app with Appwrite
+step: 1
+difficulty: beginner
+readtime: 20
+framework: Nuxt
+category: Auth
+---
+
+Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
+This tutorials shows how Appwrite can help you add authentication to your Nuxt app using server-side rendering (SSR).
+
+# Before you start {% #before-you-start %}
+
+Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Vue and Appwrite.
+
+If you're inspired and wish to follow along, make sure you've followed [Start with Nuxt](https://appwrite.io/docs/quick-starts/nuxt) first.
+Clone the [demos-for-vue](https://github.com/appwrite/demos-for-vue) examples and follow along with the source code.
