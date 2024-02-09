@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Check if logged in
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 4
 ---
 
