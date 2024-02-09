@@ -1,17 +1,17 @@
 ---
 layout: article
-title: Text Magic
-description: Send SMS messages to your Appwrite users using Text Magic and Appwrite Messaging.
+title: TextMagic
+description: Send SMS messages to your Appwrite users using TextMagic and Appwrite Messaging.
 back: /docs/products/messaging/providers
 ---
 
-Text Magic lets you send customized SMS messages to your users. 
+TextMagic lets you send customized SMS messages to your users. 
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add Text Magic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+To add TextMagic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
 ![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/dark/provider.png)
 {% /only_dark %}
@@ -19,14 +19,14 @@ To add Text Magic as a provider, navigate to **Messaging** > **Providers** > {% 
 ![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **Text Magic** > click **Save and continue**. 
+Give your provider a name > choose **TextMagic** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Text Magic dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your TextMagic dashboard to connect your Appwrite project.
 
-You will need to provide the following information from your **Text Magic dashboard**.
+You will need to provide the following information from your **TextMagic dashboard**.
 
 {% table %}
 * Field name
