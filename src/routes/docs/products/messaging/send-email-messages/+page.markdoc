@@ -87,7 +87,18 @@ You can also create topics programmatically using an [Appwrite Server SDK](#TODO
 You can send emails using a Server SDK. 
 To send an email immediately, you can call the `createEmail` endpoint with `status` set to `'processing'` and `schedule` left empty.
 ```js
-// IMPORTS?
+import { Messaging, Client, ID } from "node-appwrite";
+
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
 
 messaging.createEmail(
   ID.unique(), // Message ID.
@@ -110,7 +121,18 @@ messaging.createEmail(
 # Schedule emails {% #schedule-emails %}
 To send an scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
 ```js
-// IMPORTS?
+import { Messaging, Client, ID } from "node-appwrite";
+
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
 
 messaging.createEmail({
   ID.unique(), // Message ID.
