@@ -13,10 +13,10 @@ You can send SMS messages for purposes like reminders, promotions, announcements
 
 To add MSG91 as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
-![Add a Telesign provider](/images/docs/messaging/providers/msg91/dark/provider.png)
+![Add a MSG91 provider](/images/docs/messaging/providers/msg91/dark/provider.png)
 {% /only_dark %}
 {% only_light %}
-![Add a Telesign provider](/images/docs/messaging/providers/msg91/provider.png)
+![Add a MSG91 provider](/images/docs/messaging/providers/msg91/provider.png)
 {% /only_light %}
 
 Give your provider a name > choose **MSG91** > click **Save and continue**. 
