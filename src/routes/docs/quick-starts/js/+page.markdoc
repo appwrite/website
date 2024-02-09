@@ -104,7 +104,7 @@ const response = await database.listDocuments(
     ideasCollectionId,
     [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
 );
-const ideas: Idea[] = response.documents as Idea[];
+const ideas = response.documents as Idea[];
 ```
 {% /section %}
 
