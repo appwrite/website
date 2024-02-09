@@ -89,7 +89,7 @@ Sometimes you'll need to extend TypeScript models with your own type definitions
 
 For example, when you fetch a list of documents from a collection, you can define the expected structure of the documents like this.
 ```ts
-interface Idea extends Models.Document{
+interface Idea extends Models.Document {
     title: string;
     description: string;
     userId: string;
