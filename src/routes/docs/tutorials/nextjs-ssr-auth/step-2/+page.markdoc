@@ -6,7 +6,7 @@ step: 2
 ---
 
 
-Create a react project using [Next.js](https://kit.svelte.dev/docs/creating-a-project).
+Create a react project using [Next.js](https://nextjs.org/docs/getting-started/installation#automatic-installation).
 
 ```sh
 npx create-next-app@latest
