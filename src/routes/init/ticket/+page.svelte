@@ -22,7 +22,7 @@
                         class="aw-u-color-text-accent">_</span
                     >
                 </span>
-                launches on February 12th
+                launches on February 26th
             </h1>
 
             <div class="info">
