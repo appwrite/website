@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "vite dev",
-        "build": "vite build",
+        "build": "pnpm download-contributors && vite build",
         "preview": "vite preview",
         "test": "npm run test:integration && npm run test:unit",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -16,7 +16,8 @@
         "test:unit": "vitest",
         "icons:build": "node ./src/icons/build.js",
         "icons:optimize": "node ./src/icons/optimize.js",
-        "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js"
+        "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js",
+        "download-contributors": "node ./scripts/download-contributor-data.js"
     },
     "devDependencies": {
         "@melt-ui/pp": "^0.1.4",
@@ -33,10 +34,12 @@
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "appwrite": "^13.0.1",
+        "dequal": "^2.0.3",
         "eslint": "^8.54.0",
         "eslint-config-prettier": "^8.10.0",
         "eslint-plugin-svelte": "^2.35.1",
         "glob": "^10.3.10",
+        "node-html-parser": "^6.1.12",
         "openapi-types": "^12.1.3",
         "oslllo-svg-fixer": "^3.0.0",
         "prettier": "^2.8.8",
@@ -58,10 +61,13 @@
     },
     "type": "module",
     "dependencies": {
+        "@appwrite.io/console": "^0.4.2",
         "@appwrite.io/pink": "0.1.0-next.9",
         "@appwrite.io/pink-icons": "0.1.0-next.9",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
+        "@resvg/resvg-js": "^2.6.0",
         "@splinetool/viewer": "0.9.455",
+        "appwrite": "^13.0.1",
         "compression": "^1.7.4",
         "express": "^4.18.2",
         "highlight.js": "^11.9.0",
@@ -70,5 +76,24 @@
         "motion": "^10.16.4",
         "sharp": "^0.32.6",
         "svelte-markdown": "^0.4.0"
+    },
+    "pnpm": {
+        "supportedArchitectures": {
+            "os": [
+                "win32",
+                "darwin",
+                "current",
+                "linux",
+                "linuxmusl"
+            ],
+            "cpu": [
+                "x64",
+                "arm64"
+            ],
+            "libc": [
+                "musl",
+                "glibc"
+            ]
+        }
     }
 }

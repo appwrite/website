@@ -1,4 +1,5 @@
-FROM node:20-bullseye AS build
+# Use an official Node runtime as a parent image
+FROM node:latest
 
 ARG PUBLIC_APPWRITE_COL_MESSAGES_ID
 ENV PUBLIC_APPWRITE_COL_MESSAGES_ID ${PUBLIC_APPWRITE_COL_MESSAGES_ID}
@@ -21,15 +22,18 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 COPY . .
 
+# Remove the node_modules folder to avoid wrong binaries
+RUN rm -rf node_modules
+
+# Install fontconfig
+COPY ./local-fonts /usr/share/fonts
+RUN apt-get update; apt-get install -y fontconfig
+RUN fc-cache -f -v
+
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=8192 pnpm run build
 
-# Node alpine image to serve the generated static files
-FROM node:20-alpine AS serve
-
-WORKDIR /app
-COPY --from=build /app .
 
 EXPOSE 3000
 CMD [ "node", "server/main.js"]
