@@ -12,9 +12,8 @@ Create a Vue project using [Nuxt](https://nuxt.com/docs/getting-started/installa
 npx nuxi@latest init my-nuxt-project
 ```
 
-The command will give you a prompt with several options/
-
-The prompt will be something similar to this.
+The command will give you a prompt with several options,
+the prompt will be something similar to this.
 
 ```sh
 ❯ Which package manager would you like to use?
@@ -29,7 +28,7 @@ After the prompt is finished, you can head over to the newly create project.
 cd my-nuxt-project
 ```
 
-# Adding `node-appwrite` to your Vue app
+# Install Appwrite {% #install-appwrite %}
 
 Appwrite provides a Node SDK that can be used in your Nuxt apps. You can use Appwrite by installing the Node SDK as an NPM package. 
 The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/nuxt)

@@ -28,7 +28,7 @@ export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
 To ensure the `locals` object is typed correctly, we can add a type definition for it in the `env.d.ts` file:
 
 ```ts
-/// <reference types="astro/client" />
+// <reference types="astro/client" />
 
 declare namespace App {
   interface Locals {
@@ -52,7 +52,7 @@ interface ImportMeta {
 
 Now, use the `locals` object in the home page to redirect based on the user's login status. Create a new file in the `src/pages` directory called `index.astro`:
 
-```astro
+```js
 ---
 const { user } = Astro.locals;
 if (user) {

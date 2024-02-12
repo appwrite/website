@@ -7,7 +7,7 @@ step: 6
 
 Now the end-user is able to sign in, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `src/pages` directory called `account.astro` and add the following code:
 
-```astro
+```js
 ---
 import { SESSION_COOKIE, createAppwriteClient } from "../server/appwrite";
 

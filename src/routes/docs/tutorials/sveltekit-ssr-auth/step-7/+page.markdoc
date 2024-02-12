@@ -25,7 +25,7 @@ Add a new server route to handle the redirect.
 ```js
 // src/routes/signin/+page.server.js
 
-// ..
+// ... existing imports
 
 
 import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite.js';
