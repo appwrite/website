@@ -5,7 +5,7 @@ description: Add SSR authentication to your SvelteKit app with Appwrite
 step: 1
 difficulty: beginner
 readtime: 20
-framework: SvelteKit
+framework: SvelteKit SSR
 category: Auth
 ---
 
