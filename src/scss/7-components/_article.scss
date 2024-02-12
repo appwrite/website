@@ -14,28 +14,31 @@
   }
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(32); color:hsl(var(--aw-color-secondary));
-    article .#{$p},
-    &-spacing-logic .#{$p}{
-      &-sub-body-400  { margin-block:pxToRem(16); }
-      &-sub-body-500  { margin-block-end:pxToRem(4); }
-      &-main-body-500 { margin-block-end:pxToRem(8); }
-      &-description   { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
-      &-label         { margin-block-end:pxToRem(16); }
-      &-paragraph-md  { margin-block-end:pxToRem(32); }
-      &-link          { margin-block-end:0 !important; }
-      &-code-snippet  { margin-block-start:pxToRem(16); margin-block-end:pxToRem(32); }
-      &-card          { margin-block-end:pxToRem(32); }
-      &-list,
-      &-numeric-list,
-      &-pink-dots    { margin-block-end:pxToRem(24); }
-      &-blockquote    { margin-block:pxToRem(16); }
-      &-table-wrapper { margin-block-end:pxToRem(32); }
-      &-media         {
-        margin-block-end:pxToRem(32);
-        &:not(:first-child) { margin-block-start:pxToRem(16); }
+    article,
+    &-spacing-logic {
+      .#{$p} {
+        &-sub-body-400  { margin-block:pxToRem(16); }
+        &-sub-body-500  { margin-block-end:pxToRem(4); }
+        &-main-body-500 { margin-block-end:pxToRem(8); }
+        &-description   { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
+        &-label         { margin-block-end:pxToRem(16); }
+        &-paragraph-md  { margin-block-end:pxToRem(32); }
+        &-link          { margin-block-end:0 !important; }
+        &-code-snippet  { margin-block-start:pxToRem(16); margin-block-end:pxToRem(32); }
+        &-card          { margin-block-end:pxToRem(32); }
+        &-list,
+        &-numeric-list,
+        &-pink-dots    { margin-block-end:pxToRem(24); }
+        &-blockquote    { margin-block:pxToRem(16); }
+        &-table-wrapper { margin-block-end:pxToRem(32); }
+        &-media         {
+          margin-block-end:pxToRem(32);
+          &:not(:first-child) { margin-block-start:pxToRem(16); }
+        }
+        &-inline-info   { margin-block-end:pxToRem(24); }
+        &-code-snippet  { margin-block-end:pxToRem(32); }
       }
-      &-inline-info   { margin-block-end:pxToRem(24); }
-      &-code-snippet  { margin-block-end:pxToRem(32); }
+      li * { margin-block-end:0!important; }
     }
     &-header {
       position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:pxToRem(16);

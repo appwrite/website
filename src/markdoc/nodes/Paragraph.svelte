@@ -19,7 +19,7 @@
         if (inPolicy) return 'aw-paragraph-md in-policy';
         if (inTable) return 'aw-paragraph-md';
         if (inChangelog) return 'aw-paragraph-lg in-changelog';
-        return 'aw-paragraph-lg';
+        return 'aw-paragraph-md';
     })();
 </script>
 
