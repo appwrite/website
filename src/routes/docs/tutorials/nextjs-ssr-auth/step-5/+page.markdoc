@@ -1,0 +1,83 @@
+---
+layout: tutorial
+title: Create sign in page
+description: Add authentication to a Next.js project using Appwrite.
+step: 5
+---
+
+We can now implement our sign in page. Create a `+page.jsx` file in the `src/app/signin` directory:
+
+```jsx
+// src/app/sigin/+page.jsx
+
+import {
+  createAppwriteClient,
+  getLoggedInUser,
+} from "@/lib/server/appwrite";
+
+
+export default async function SignInPage() {
+  const { account } = createAppwriteClient(headers());
+
+  const user = await getLoggedInUser(account);
+  if (user) redirect("/account");
+
+  return (
+    <form action={signInWithEmail}>
+      <input
+        id="email"
+        name="email"
+        placeholder="Email"
+        type="email"
+        autoComplete="off"
+      />
+      <input
+        id="password"
+        name="password"
+        placeholder="Password"
+        minLength={8}
+        type="password"
+        autoComplete="off"
+      />
+      <button type="submit">Sign in</button>
+    </form>
+  );
+}
+
+```
+
+This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Next.js form actions we create the `signInWithEmail` function in the same file:
+
+```jsx
+// src/app/sigin/+page.jsx
+
+// previous imports ...
+
+import { SESSION_COOKIE } from "@/lib/server/appwrite";
+import { cookies, headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+// the SignInPage component ...
+
+async function signInWithEmail(formData) {
+  "use server";
+
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  const { account } = createAppwriteClient(headers());
+
+  const session = await account.createEmailPasswordSession(email, password);
+
+  cookies().set(SESSION_COOKIE, session.secret, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "strict",
+    secure: true,
+  });
+
+  redirect("/account");
+}
+```
+
+The `signInWithEmail` function is an async function that takes the form data as an argument. It uses the `createAppwriteClient` function to create an Appwrite client and then calls the `createEmailPasswordSession` method on the `account` object. This method takes the email and password as arguments and returns a session object. We then set the session secret in a cookie and redirect the user to the account page.

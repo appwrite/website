@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Initialize SDK
-description: Add authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a Nuxt project using Appwrite.
 step: 3
 ---
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint. 
@@ -18,43 +18,48 @@ Doing so could create security vulnerabilities.
 {% /info %}
 
 ```js
-// src/lib/server/appwrite.js
-import { Client, Account } from 'node-appwrite';
-import { APPWRITE_KEY } from '$env/static/private';
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
+// server/lib/appwrite.js
+import { Client, Account } from "node-appwrite";
 
-export const SESSION_COOKIE = 'my-custom-session';
+export const SESSION_COOKIE = "my-custom-session";
 
 export function createAppwriteClient(event) {
-	// Build the Appwrite client
-	const client = new Client()
-		.setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
-		.setProject(PUBLIC_APPWRITE_PROJECT_ID);
+  const config = useRuntimeConfig(event);
 
-	// Set the API key for the client
-	client.setKey(APPWRITE_KEY);
+  const client = new Client()
+    .setEndpoint(config.public.appwriteEndpoint)
+    .setProject(config.public.appwriteProjectId);
 
-	// Extract our custom domain's session cookie from the request
-	const session = event.cookies.get(SESSION_COOKIE);
-	if (session) client.setSession(session);
+  client.setKey(config.appwriteApiKey);
 
-	// Return the services we want to use.
-  // This allows us to use syntax like:
-  // import { createAppwriteClient } from '$lib/server/appwrite';
-  //
-  // const { account } = createAppwriteClient(event);
-  // const user = await account.get();
-	return {
-		get account() {
-			return new Account(client);
-		}
-	};
+  const session = getCookie(event, SESSION_COOKIE);
+  if (session) {
+    client.setSession(session);
+  }
+
+  return {
+    get account() {
+      return new Account(client);
+    },
+  };
 }
 ```
 
-`APPWRITE_KEY`, `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
+`config.appwriteApiKey`, `config.public.appwriteEndpoint` and `config.public.appwriteProjectId` are Nuxt runtime configuration variables. Create a [nuxt.config.js](https://nuxt.com/docs/api/configuration/nuxt-config) file in the root of your project and add the following code to set the runtime configuration.
 
-You can get the values for these variables from the Appwrite console. 
+```js
+export default defineNuxtConfig({
+  runtimeConfig: {
+    appwriteKey: process.env.APPWRITE_KEY,
+    public: {
+      appwriteEndpoint: process.env.PUBLIC_APPWRITE_ENDPOINT,
+      appwriteProjectId: process.env.PUBLIC_APPWRITE_PROJECT_ID,
+    },
+  },
+});
+```
+
+Now you can use `.env` files to set the environment variables for your project. Retrieve the values for these variables from the Appwrite console. 
 
 The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. 
 You can get the values for these variables from the Appwrite console. 
