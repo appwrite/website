@@ -58,6 +58,12 @@
 					href: '/docs/products/storage',
 					icon: 'icon-folder',
 					isParent: true
+				},
+				{
+					label: 'AI',
+					href: '/docs/products/ai',
+					icon: 'icon-academic-cap', // Temp, replace with icon design wants
+					isParent: true
 				}
 			]
 		},
