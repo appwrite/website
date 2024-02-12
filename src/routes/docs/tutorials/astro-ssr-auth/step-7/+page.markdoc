@@ -33,6 +33,7 @@ export const POST: APIRoute = async ({ request, redirect, url }) => {
 
   // Create an OAuth2 token
   const redirectUrl = await account.createOAuth2Token(
+	'github',
     `${url.protocol}//${url.hostname}/oauth`,
     `${url.protocol}//${url.hostname}/sigin`
   );
