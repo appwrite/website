@@ -4,7 +4,7 @@ title: Send email messages
 description: Send email messages to your users using Appwrite Messaging.
 ---
 
-You can send custom email messages to your app's uses using Appwrite Messaging and a connected SMTP service.
+You can send custom email messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding email messaging to your app.
 
 # Add a provider {% #add-a-provider %}
@@ -24,7 +24,12 @@ and follow the wizard. You can find more details about configuring in the provid
 In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
 You can deliver messages to users through their **targets**.
 
-[SCREENSHOT OF THE TARGETS SCREEN]
+{% only_dark %}
+![Target overview](/images/docs/messaging/targets/dark/target-overview.png)
+{% /only_dark %}
+{% only_light %}
+![Target overview](/images/docs/messaging/targets/target-overview.png)
+{% /only_light %}
 
 If the user signed up with email and password, their account would already have email as a target.
 During development, you can add targets to existing accounts by navigating to **Authentication** > **Users** > **Select a user** > **Targets** > **Add a subscriber**.
@@ -35,10 +40,34 @@ During development, you can add targets to existing accounts by navigating to **
 ![Add a target](/images/docs/messaging/targets/add-targets.png)
 {% /only_light %}
 
-You can also implement forms in your app to collect contact information and add it as a target with the [PLACEHOLDER](#TODO) endpoint.
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](#TODO) endpoint.
 
-[PLACE HOLDER FOR CODE EXAMPLE]
+```js
+const sdk = require('node-appwrite');
 
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
+
+const promise = messaging.createSubscriber(
+        sdk.ID.unique(),    // Create a unique subscriber ID
+        '<TOPIC_ID>',       // The topic ID to subscribe to
+        '<TARGET_ID>'       // The target ID will receive messages from the topic
+    );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
 # Create topics (optional) {% #create-topics %}
 You can use topics to organize targets that should receive the same messages, so you can send emails to groups of targets instead of one at time.
 This step is optional if you plan to only send emails to individual targets.
@@ -58,9 +87,20 @@ You can also create topics programmatically using an [Appwrite Server SDK](#TODO
 You can send emails using a Server SDK. 
 To send an email immediately, you can call the `createEmail` endpoint with `status` set to `'processing'` and `schedule` left empty.
 ```js
-// IMPORTS?
+import { Messaging, Client, ID } from "node-appwrite";
 
-messaging.createEmail({
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
+
+messaging.createEmail(
   ID.unique(), // Message ID.
   'Hello World!', // Email Subject.
   'This is the content of the email. It supports up to 64,230 characters.', // Email Content.
@@ -71,7 +111,7 @@ messaging.createEmail({
   ['targetID1', 'targetID2'], // Array of target IDs to be added as BCC. Optional.
   'processing', // Message Status. Optional.
   false, // Boolean indicating if content is of type HTML. Optional.
-}).then(response => {
+).then(response => {
   console.log('Email created successfully:', response);
 }).catch(error => {
   console.error('Error creating email:', error);
@@ -81,7 +121,18 @@ messaging.createEmail({
 # Schedule emails {% #schedule-emails %}
 To send an scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
 ```js
-// IMPORTS?
+import { Messaging, Client, ID } from "node-appwrite";
+
+// Init SDK
+const client = new Client();
+
+const messaging = new Messaging(client);
+
+client
+    .setEndpoint('https://qa.appwrite.org/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>') // Your secret API key
+;
 
 messaging.createEmail({
   ID.unique(), // Message ID.

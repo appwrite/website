@@ -8,6 +8,13 @@ Targets are different ways a user can be reached.
 For example, a user might have two emails, a phone number as well as a phone and a tablet with your app installed.
 This means, the user has five different targets that you can deliver messages to.
 
+{% only_dark %}
+![Target overview](/images/docs/messaging/targets/dark/target-overview.png)
+{% /only_dark %}
+{% only_light %}
+![Target overview](/images/docs/messaging/targets/target-overview.png)
+{% /only_light %}
+
 # Topics and targets {% #topics-and-targets %}
 A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
 These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
@@ -54,16 +61,12 @@ client
     .setKey('<YOU_API_KEY>') // Your secret API key
 ;
 
-const promise = users.createTarget(
-    ID.unique(),        // target ID
-    <USER_ID>,          // user ID
-    'email',            // provider type, one of 'email', 'sms', 'push'
-    <IDENTIFIER>,       // The target's ID
-    <PROVIDER_ID>,      // The provider that this target subscribes to
-    <PROVIDER_NAME>,    // The new target's name
-)
-
-promise.then(function (response) {
+users.createTarget(
+    '65c287ce3a7bd406963b',     // user ID
+    ID.unique(),                // target ID
+    'email',                    // provider type, one of 'email', 'sms', 'push'
+    'email1@example.com',       // the target's email address
+).then(function (response) {
     console.log(response);
 }, function (error) {
     console.log(error);
@@ -88,16 +91,12 @@ client
     .setKey('<YOU_API_KEY>') // Your secret API key
 ;
 
-const promise = users.createTarget(
-    ID.unique(),        // target ID
-    <USER_ID>,          // user ID
-    'sms',              // provider type, one of 'email', 'sms', 'push'
-    <IDENTIFIER>,       // The target's ID
-    <PROVIDER_ID>,      // The provider that this target subscribes to
-    <PROVIDER_NAME>,    // The new target's name
-)
-
-promise.then(function (response) {
+users.createTarget(
+    '65c287ce3a7bd406963b',     // user ID
+    ID.unique(),                // target ID
+    'sms',                      // provider type, one of 'email', 'sms', 'push'
+    '+16555555555',             // the target's email address
+).then(function (response) {
     console.log(response);
 }, function (error) {
     console.log(error);
@@ -141,5 +140,3 @@ Push notifications require configuration on both the Appwrite platform and your 
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 {% /tabsitem %}
 {% /tabs %}
-
-
