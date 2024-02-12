@@ -1,29 +1,32 @@
 ---
 layout: article
-title: Text Magic
-description: Send SMS messages to your Appwrite users using Text Magic and Appwrite Messaging.
+title: TextMagic
+description: Send SMS messages to your Appwrite users using TextMagic and Appwrite Messaging.
 back: /docs/products/messaging/providers
 ---
 
-Text Magic lets you send customized SMS messages to your users. 
+TextMagic lets you send customized SMS messages to your users. 
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add Text Magic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
-[SCREENSHOT]
+To add TextMagic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+{% only_dark %}
+![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/dark/provider.png)
+{% /only_dark %}
+{% only_light %}
+![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/provider.png)
+{% /only_light %}
 
-Give your provider a name > choose **Text Magic** > click **Save and continue**. 
+Give your provider a name > choose **TextMagic** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Text Magic dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your TextMagic dashboard to connect your Appwrite project.
 
-[SCREENSHOT]
-
-You will need to provide the following information from your **Text Magic dashboard**.
+You will need to provide the following information from your **TextMagic dashboard**.
 
 {% table %}
 * Field name
@@ -52,7 +55,7 @@ To send a test message, navigate to **Messaging** > **Messages** > {% icon icon=
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
-Verify that you can receive the message in your inbox. If not
+Verify that you can receive the message in your inbox. If not, check for logs in the Appwrite Console or in your provider's logs.
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
@@ -86,5 +89,72 @@ You can follow the [Send push notifications](TODO) journey to send your first pu
 {% /section %}
 
 {% section #manage-provider step=4 title="Manage provider" %}
-[TODO: How to update and delete provider.]
+{% tabs %}
+{% tabsitem #console title="Console" %}
+You can update or delete a provider in the Appwrite Console. 
+
+Navigate to **Messaging** > **Providers** > click your provider.
+In the settings, you can update a provider's configuration or delete the provider.
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
+{% multicode %}
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('5df5acd0d48c2') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+;
+
+// update provider
+messaging.updateTextmagicProvider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>', 
+    '<ENABLED?>', 
+    '<USER_NAME>', 
+    '<API_KEY>',
+    '<PHONE_NUMBER>'
+).then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+
+// delete provider
+messaging.deleteProvider('[PROVIDER_ID]')
+.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```deno
+```
+```php
+```
+```python
+```
+```ruby
+```
+```csharp
+```
+```dart
+```
+```kotlin
+```
+```java
+```
+```swift
+```
+{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 {% /section %}

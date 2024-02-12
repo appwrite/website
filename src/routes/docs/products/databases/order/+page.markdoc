@@ -23,7 +23,7 @@ const client = new Client()
 const databases = new Databases(client);
 
 databases.listDocuments(
-    '[DATABASE_ID]',
+    '<DATABASE_ID>',
     '[COLLECTION_ID]',
     [
         Query.orderAsc('title'),
@@ -43,7 +43,7 @@ void main() async {
 
     try {
         final documents = await databases.listDocuments(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             queries: [
                 Query.orderAsc('title')
@@ -69,8 +69,8 @@ suspend fun main() {
 
     try {
         val documents = databases.listDocuments(
-            databaseId = "[DATABASE_ID]",
-            collectionId = "[COLLECTION_ID]",
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = [
                 Query.orderAsc("title")
             ]
@@ -94,8 +94,8 @@ func main() async throws {
 
     do {
         let documents = try await databases.listDocuments(
-            databaseId: "[DATABASE_ID]",
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.orderAsc("title")
             ]
@@ -109,8 +109,8 @@ func main() async throws {
 ```graphql
 query {
     databasesListDocuments(
-        databaseId: "[DATABASE_ID]",
-        collectionId: "[COLLECTION_ID]"
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>"
         queries: ["orderAsc(\"title\")"]
     ) {
         total
@@ -137,7 +137,7 @@ In the example below, the movies returned will be first sorted by `title` in asc
 
 // List documents and sort based on multiple attributes
 databases.listDocuments(
-    '[DATABASE_ID]',
+    '<DATABASE_ID>',
     '[COLLECTION_ID]',
     [
         Query.orderAsc('title'), // Order first by title in ascending order
@@ -152,7 +152,7 @@ databases.listDocuments(
 // List documents and sort based on multiple attributes
 try {
     final documents = await databases.listDocuments(
-        databaseId: '[DATABASE_ID]',
+        databaseId: '<DATABASE_ID>',
         collectionId: '[COLLECTION_ID]',
         queries: [
             Query.orderAsc('title'), // Order by title in ascending order
@@ -170,8 +170,8 @@ try {
 // List documents and sort based on multiple attributes
 try {
     val documents = databases.listDocuments(
-        databaseId = "[DATABASE_ID]",
-        collectionId = "[COLLECTION_ID]",
+        databaseId = "<DATABASE_ID>",
+        collectionId = "<COLLECTION_ID>",
         queries = [
             Query.orderAsc("title"), // Order by title in ascending order
             Query.orderDesc("year")  // Order by year in descending order
@@ -188,8 +188,8 @@ try {
 // List documents and sort based on multiple attributes
 do {
     let documents = try await databases.listDocuments(
-        databaseId: "[DATABASE_ID]",
-        collectionId: "[COLLECTION_ID]",
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
         queries: [
             Query.orderAsc("title"), // Order by title in ascending order
             Query.orderDesc("year")  // Order by year in descending order
@@ -202,8 +202,8 @@ do {
 ```graphql
 query {
     databasesListDocuments(
-        databaseId: "[DATABASE_ID]",
-        collectionId: "[COLLECTION_ID]",
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
         queries: ["orderAsc(\"title\")", "orderDesc(\"year\")"]
     ) {
         total
