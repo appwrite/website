@@ -5,8 +5,8 @@ description: Add SSR authentication to your Nuxt app with Appwrite
 step: 1
 difficulty: beginner
 readtime: 20
-framework: Nuxt
-category: Auth
+framework: Nuxt SSR
+category: Auth 
 ---
 
 Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 

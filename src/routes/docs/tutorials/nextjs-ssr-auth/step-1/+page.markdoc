@@ -5,7 +5,7 @@ description: Add SSR authentication to your Next.js app with Appwrite
 step: 1
 difficulty: beginner
 readtime: 20
-framework: Next.js
+framework: Next.js SSR
 category: Auth
 ---
 
