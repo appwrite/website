@@ -74,7 +74,7 @@ users.createTarget(
 ```
 
 ## Add SMS target {% #add-sms-target%}
-Verified phone numbers for users that signed up with [Phone OPT](/docs/products/auth/phone-sms) login will already have a phone target.
+Verified phone numbers for users that signed up with [Phone OTP](/docs/products/auth/phone-sms) login will already have a phone target.
 
 If you need to add targets outside the normal signin flow, you can do so with a [Server SDK](/docs/sdks#server).
 ```js
