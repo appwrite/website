@@ -9,7 +9,7 @@ To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, a
 
 To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
 
-```Astro
+```js
 <!-- src/pages/sigin.astro -->
 
 <!-- ... existing sign in form -->
@@ -20,7 +20,7 @@ To redirect, add a button to our sign in page that redirects the user to the OAu
 </form>
 ```
 
-Add a new POST route to handle the redirect.
+Add a new `POST` route to handle the redirect.
 
 ```js
 // src/pages/oauth.ts
@@ -45,7 +45,7 @@ export const POST: APIRoute = async ({ request, redirect, url }) => {
 
 The `createOAuth2Token` method returns a URL to the OAuth2 provider. After authentication the OAuth2 provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
 
-Create a new GET route to handle the callback and create a session for the user.
+Create a new `GET` route to handle the callback and create a session for the user.
 
 ```js
 // src/pages/oauth.ts
