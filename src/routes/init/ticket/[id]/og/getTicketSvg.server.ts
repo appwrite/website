@@ -223,7 +223,7 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
   </g>
   <text transform="translate(20.5308 218.878)" fill="#E4E4E7" xml:space="preserve" style="white-space: pre"
     font-family="Aeonik Fono" font-size="8.4834" letter-spacing="0em">
-    <tspan x="0" y="7.9441">FEB 12 - 16</tspan>
+    <tspan x="0" y="7.9441">FEB 26 - MAR 1</tspan>
   </text>
   <g filter="url(#filter3_f_327_1972)">
     <path

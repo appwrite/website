@@ -190,7 +190,7 @@
         {/if}
         <div class="bottom-left">
             <img src={Logo} alt="init_" />
-            <span>FEB 12 - 16</span>
+            <span>FEB 26 - MAR 1</span>
         </div>
 
         <div class="id">

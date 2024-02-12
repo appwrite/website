@@ -70,7 +70,7 @@
     <title>Appwrite Init - Customize Ticket</title>
     <meta
         name="description"
-        content="Join Init 12-16 February. Register today and claim your Init ticket."
+        content="Join Init February 26-March 1. Register today and claim your Init ticket."
     />
 </svelte:head>
 
