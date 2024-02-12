@@ -1,0 +1,58 @@
+---
+layout: tutorial
+title: Create sign in page
+description: Add authentication to a Astro project using Appwrite.
+step: 5
+---
+
+We can now implement our sign in page. Create a `signin.astro` file in the `src/pages` directory:
+
+```astro
+---
+const { user } = Astro.locals;
+if (user) {
+  return Astro.redirect("/account");
+}
+---
+<form method="POST">
+  <input id="email" name="email" placeholder="Email" type="email" />
+  <input id="password" name="email" placeholder="Password" type="password" />
+  <button class="button is-full-width" type="submit"> Sign in</button>
+</form>
+```
+
+This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Astro form actions, add an `if (Astro.request.method === "POST")` statement to the server-side javascript.
+
+```astro
+---
+import { SESSION_COOKIE, createAppwriteClient } from "../server/appwrite";
+
+// ... existing javascript
+
+if (Astro.request.method === "POST") {
+  // Extract the form data
+  const data = await Astro.request.formData();
+  const email = data.get("email") as string;
+  const password = data.get("password") as string;
+
+  // Create the Appwrite client
+  const { account } = createAppwriteClient(Astro.request);
+
+  // Create the email password session
+  const session = await account.createEmailPasswordSession(email, password);
+
+  // Set the session cookie
+  Astro.cookies.set(SESSION_COOKIE, session.secret, {
+    path: "/",
+    expires: new Date(session.expires),
+    sameSite: "strict",
+    secure: true,
+    httpOnly: true,
+  });
+
+  // Redirect the logged in user
+  return Astro.redirect("/account");
+}
+---
+<!--- existing form --->
+```
