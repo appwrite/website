@@ -79,6 +79,8 @@
   border-radius:pxToRem(8); font-size:pxToRem(16); line-height:1;
   white-space:nowrap;
 
+  
+
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
 
   /* reset pink box-shadow */
