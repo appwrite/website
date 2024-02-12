@@ -294,5 +294,316 @@ You can follow the [Send push notifications](TODO) journey to send your first pu
 {% /section %}
 
 {% section #manage-provider step=4 title="Manage provider" %}
-[TODO: How to update and delete provider.]
+{% tabs %}
+{% tabsitem #console title="Console" %}
+You can update or delete a provider in the Appwrite Console. 
+
+Navigate to **Messaging** > **Providers** > click your provider.
+In the settings, you can update a provider's configuration or delete the provider.
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
+{% multicode %}
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>') // Your secret API key
+;
+
+// update provider
+messaging.updateSendgridProvider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>',  
+    '<API_KEY>', 
+    '<DOMAIN>', 
+    '<IS_EU_REGION?>',
+    '<SENDER_NAME>', 
+    '<SENDER_EMAIL>',
+    '<REPLY_TO_NAME>',
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
+).then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+
+// delete provider
+messaging.deleteProvider('<PROVIDER_ID>')
+.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+
+// Init SDK
+let client = new sdk.Client();
+
+let messaging = new sdk.Messaging(client);
+
+// update provider
+messaging.updateSendgridProvider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>',  
+    '<API_KEY>', 
+    '<DOMAIN>', 
+    '<IS_EU_REGION?>',
+    '<SENDER_NAME>', 
+    '<SENDER_EMAIL>',
+    '<REPLY_TO_NAME>',
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
+).then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+
+// delete provider
+messaging.deleteProvider('<PROVIDER_ID>')
+.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Messaging;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>') // Your secret API key
+;
+
+$messaging = new Messaging($client);
+
+$result = $messaging->updateSendgridProvider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>', 
+    '<API_KEY>', 
+    '<DOMAIN>', 
+    '<IS_EU_REGION?>',
+    '<SENDER_NAME>', 
+    '<SENDER_EMAIL>',
+    '<REPLY_TO_NAME>',
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
+);
+```
+```python
+from appwrite.client import Client
+
+client = Client()
+
+(client
+  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>') # Your secret API key
+)
+
+messaging = Messaging(client)
+
+result = messaging.update_sendgrid_provider(
+    '<PROVIDER_ID>',
+    '<PROVIDER_NAME>',  
+    '<API_KEY>',
+    '<DOMAIN>', 
+    '<IS_EU_REGION?>',
+    '<SENDER_NAME>', 
+    '<SENDER_EMAIL>',
+    '<REPLY_TO_NAME>',
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
+)
+```
+```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>') # Your secret API key
+
+messaging = Messaging.new(client)
+
+response = messaging.update_sendgrid_provider(
+    provider_id: "<PROVIDER_ID>",
+    name: "<PROVIDER_NAME>",  
+    api_key: "<API_KEY>", 
+    domain: "<DOMAIN>",
+    isEuRegion: "<IS_EU_REGION?>",
+    from_name: "<SENDER_NAME>", 
+    from_email: "<SENDER_EMAIL>",
+    reply_to_name: "<REPLY_TO_NAME>",
+    reply_to_email: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
+)
+
+puts response.inspect
+```
+```csharp
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+using Appwrite.Enums;
+
+var client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>"); // Your secret API key
+
+var messaging = new Messaging(client);
+
+Provider result = await messaging.UpdateSendgridProvider(
+    providerId: "<PROVIDER_ID>",
+    name: "<PROVIDER_NAME>",  
+    apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>",
+    fromName: "<SENDER_NAME>", 
+    fromEmail: "<SENDER_EMAIL>",
+    replyToName: "<REPLY_TO_NAME>",
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
+);
+```
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+void main() { // Init SDK
+  Client client = Client();
+  Messaging messaging = Messaging(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>') // Your secret API key
+  ;
+
+  Future result = messaging.updateSendgridProvider(
+    providerId: "<PROVIDER_ID>",
+    name: "<PROVIDER_NAME>",  
+    apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>",
+    fromName: "<SENDER_NAME>", 
+    fromEmail: "<SENDER_EMAIL>",
+    replyToName: "<REPLY_TO_NAME>",
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
+  );
+
+  result
+    .then((response) {
+      print(response);
+    }).catchError((error) {
+      print(error.response);
+  });
+}
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Messaging
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+val messaging = Messaging(client)
+
+val response = messaging.updateSendgridProvider(
+    providerId = "<PROVIDER_ID>",
+    name = "<PROVIDER_NAME>",  
+    apiKey = "<API_KEY>", 
+    domain = "<DOMAIN>", 
+    isEuRegion = "<IS_EU_REGION?>",
+    fromName = "<SENDER_NAME>", 
+    fromEmail = "<SENDER_EMAIL>",
+    replyToName = "<REPLY_TO_NAME>",
+    replyToEmail = "<REPLY_TO_EMAIL>",
+    enabled = "<ENABLED?>",
+)
+
+```
+```java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Messaging;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>"); // Your secret API key
+
+Messaging messaging = new Messaging(client);
+
+messaging.updateSendgridProvider(
+    "<PROVIDER_ID>",
+    "<PROVIDER_NAME>",  
+    "<API_KEY>", 
+    "<DOMAIN>", 
+    "<IS_EU_REGION?>",
+    "<SENDER_NAME>", 
+    "<SENDER_EMAIL>",
+    "<REPLY_TO_NAME>",
+    "<REPLY_TO_EMAIL>",
+    "<ENABLED?>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(result);
+    })
+);
+```
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+let messaging = Messaging(client)
+
+let provider = try await messaging.updateSendgridProvider(
+    providerId: "<PROVIDER_ID>",
+    name: "<PROVIDER_NAME>", 
+    apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>", 
+    fromName: "<SENDER_NAME>", 
+    fromEmail: "<SENDER_EMAIL>",
+    replyToName: "<REPLY_TO_NAME>",
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
+)
+```
+{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 {% /section %}
