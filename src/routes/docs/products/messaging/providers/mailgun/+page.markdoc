@@ -32,8 +32,6 @@ In the **Configure** step, you will need to provide details form your Mailgun da
 {% only_light %}
 ![Configure SMTP provider](/images/docs/messaging/providers/mailgun/Configure-mailgun.png)
 {% /only_light %}
-You will need to provide the following information from your **Sendgrid dashboard**.
-
 
 You will need to provide the following information from your **Mailgun dashboard**.
 
