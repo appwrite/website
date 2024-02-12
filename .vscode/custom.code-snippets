@@ -1,0 +1,14 @@
+{
+    "color-class": {
+        "scope": "html, svelte",
+        "prefix": "clr",
+        "body": ["aw-u-color-text-$1"],
+        "description": "Shorthand for our **huge** color utility classes"
+    },
+    "mbs": {
+        "scope": "html, svelte",
+        "prefix": "mbs",
+        "body": ["u-margin-block-start-$1"],
+        "description": "Shorthand for our **huge** spacing utility classes"
+    }
+}
