@@ -20,7 +20,7 @@
                 <h1 class="aw-display aw-u-color-text-primary">
                     Open source messaging service for developers
                 </h1>
-                <p class="aw-description">
+                <p class="aw-description u-margin-block-start-20">
                     Set up messaging within minutes and send push notifications, emails, and SMS
                     directly from the Appwrite Console.
                 </p>
@@ -42,6 +42,8 @@
         </div>
     </div>
 
+    <div class="features aw-container" style:--container-size="var(--container-size-large)">a</div>
+
     <div class="aw-container">
         <FooterNav />
         <MainFooter />
@@ -52,13 +54,15 @@
     .hero {
         overflow: hidden;
         position: relative;
+        border-block-end: 1px solid hsl(var(--aw-color-offset));
 
         .aw-container {
             display: grid;
             grid-template-columns: 580px 700px;
             align-items: center;
             gap: 5.625rem;
-            block-size: 43.75rem;
+            min-block-size: 700px;
+            block-size: 90vh;
 
             .phone-wrapper {
                 position: relative;
@@ -90,7 +94,7 @@
             block-size: 1200px;
             inline-size: auto;
             inset-inline-start: -600px;
-            inset-block-start: -100px;
+            inset-block-start: -250px;
         }
 
         .blur-right {
