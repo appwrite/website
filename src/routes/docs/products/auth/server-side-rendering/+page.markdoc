@@ -67,7 +67,6 @@ The API key should have the at least the following scopes in order to perform au
 
 - `accounts.read`
 - `accounts.write`
-- `sessions.read`
 - `sessions.write`
 
 # Creating email/password sessions {% #creating-sessions %}

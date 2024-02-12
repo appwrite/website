@@ -46,7 +46,6 @@ You can get the values for these variables from the Appwrite console. The `PUBLI
 For this tutorial you'll need an API key with the following scopes:
 - `accounts.read`
 - `accounts.write`
-- `sessions.read`
 - `sessions.write`
 
 For example, your `.env` might look something similar to this.
