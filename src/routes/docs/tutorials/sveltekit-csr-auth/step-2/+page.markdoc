@@ -6,7 +6,7 @@ step: 2
 ---
 
 
-Create a Svelte project using [SvelteKit](https://kit.svelte.dev/docs/creating-a-project).
+You can create a Svelte project using [SvelteKit](https://kit.svelte.dev/docs/creating-a-project).
 
 ```sh
 npm create svelte@latest
@@ -43,11 +43,10 @@ cd my-svelte-project
 npm install
 ```
 
-# Install Appwrite {% #install-appwrite %}
+# Adding Appwrite to your Svelte app {% #adding-appwrite-to-your-svelte-app %}
 
-Appwrite provides a Node SDK that can be used in your Svelte apps. You can use Appwrite by installing the Node SDK as an NPM package. 
-The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/svelte-auth).
+Appwrite provides a Web SDK that can be used in your Svelte apps. You can use Appwrite by installing the Web SDK as an NPM package.
 
 ```sh
-npm install node-appwrite
+npm install appwrite
 ```

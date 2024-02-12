@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Initialize SDK
-description: Add authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a Next.js project using Appwrite.
 step: 3
 ---
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint. 
@@ -17,44 +17,37 @@ When using Appwrite in server-integrations, it's important to **never share a `C
 Doing so could create security vulnerabilities.
 {% /info %}
 
+
 ```js
 // src/lib/server/appwrite.js
-import { Client, Account } from 'node-appwrite';
-import { APPWRITE_KEY } from '$env/static/private';
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
+import { Client, Account } from "node-appwrite";
+import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
-export const SESSION_COOKIE = 'my-custom-session';
+export const SESSION_COOKIE = "a_session";
 
-export function createAppwriteClient(event) {
-	// Build the Appwrite client
-	const client = new Client()
-		.setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
-		.setProject(PUBLIC_APPWRITE_PROJECT_ID);
+export function createAppwriteClient(headers) {
+  const client = new Client()
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
 
-	// Set the API key for the client
-	client.setKey(APPWRITE_KEY);
+  // Set the API key for the client, bypassing rate limiting and enabling
+  client.setKey(process.env.APPWRITE_KEY!);
 
-	// Extract our custom domain's session cookie from the request
-	const session = event.cookies.get(SESSION_COOKIE);
-	if (session) client.setSession(session);
+  // Extract the session from cookies and use it for the client
+  const cookies = parseCookie(headers.get("cookie") ?? "");
+  const session = cookies.get(SESSION_COOKIE);
+  if (session) client.setSession(session);
 
-	// Return the services we want to use.
-  // This allows us to use syntax like:
-  // import { createAppwriteClient } from '$lib/server/appwrite';
-  //
-  // const { account } = createAppwriteClient(event);
-  // const user = await account.get();
-	return {
-		get account() {
-			return new Account(client);
-		}
-	};
+  return {
+    get account() {
+      return new Account(client);
+    },
+  };
 }
 ```
 
-`APPWRITE_KEY`, `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
+`APPWRITE_KEY`, `NEXT_PUBLIC_APPWRITE_ENDPOINT` and `NEXT_PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables).
 
-You can get the values for these variables from the Appwrite console. 
 
 The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. 
 You can get the values for these variables from the Appwrite console. 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create account page
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 6
 ---
 
