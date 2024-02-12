@@ -44,7 +44,7 @@
                 <h1 class="aw-display">
                     Join <span class="aw-u-color-text-primary" style:font-weight="500">
                         init<span class="aw-u-color-text-accent">_</span>
-                    </span><br />12-16 February
+                    </span><br />26 Feb - 1 March
                 </h1>
             </div>
 
