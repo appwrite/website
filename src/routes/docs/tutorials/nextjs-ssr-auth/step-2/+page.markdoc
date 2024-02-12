@@ -6,7 +6,7 @@ step: 2
 ---
 
 
-Create a react project using [Next.js](https://nextjs.org/docs/getting-started/installation#automatic-installation).
+Create a project using [Next.js](https://nextjs.org/docs/getting-started/installation#automatic-installation).
 
 ```sh
 npx create-next-app@latest
@@ -34,10 +34,10 @@ cd my-app
 npm install
 ```
 
-## Adding `node-appwrite` to Your Next.js App
+# Install Appwrite {% #instll-appwrite %}
 
 Appwrite provides a Node SDK that can be used in your Next.js apps. You can use Appwrite by installing the Node SDK as an NPM package. 
-The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should use the Web SDK instead.
+The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should use the [Web SDK](/docs/quick-starts/web) instead.
 
 ```sh
 npm install node-appwrite

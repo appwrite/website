@@ -7,7 +7,7 @@ step: 4
 
 Build a utility function to get the logged in user from Appwrite. This function will be used in our components and routes to check if a user is logged in, and access the user's details.
 
-Edit the `src/server/appwrite.js` file to create a new function called `getLoggedInUser`:
+Edit the `src/server/appwrite.js` file to create a new function called `getLoggedInUser`.
 ```js
 // ... your createAppwriteClient function
 
@@ -20,7 +20,7 @@ export async function getLoggedInUser(account) {
 }
 ```
 
-Now, use the `getLoggedInUser` function in the home page to redirect based on the user's login status. Create a new file in the `app` directory called `+page.jsx`:
+Now, use the `getLoggedInUser` function in the home page to redirect based on the user's login status. Create a new file in the `app` directory called `+page.jsx`.
 
 ```js
 import { createAppwriteClient, getLoggedInUser } from "@/lib/server/appwrite";

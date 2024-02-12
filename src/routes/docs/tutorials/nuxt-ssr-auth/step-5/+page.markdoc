@@ -5,7 +5,7 @@ description: Add authentication to a Nuxt project using Appwrite.
 step: 5
 ---
 
-We can now implement our sign in page. Create a `signin.vue` file in the `pages` directory:
+We can now implement our sign in page. Create a `signin.vue` file in the `pages` directory.
 
 ```vue
 <!-- pages/signin.vue -->

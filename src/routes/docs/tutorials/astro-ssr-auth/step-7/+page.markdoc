@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding OAuth2 authentication with SSR
+title: OAuth2 authentication with SSR
 description: Add authentication to a Astro project using Appwrite.
 step: 7
 ---
