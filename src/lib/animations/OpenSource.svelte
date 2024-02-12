@@ -1,8 +1,7 @@
 <script lang="ts">
+    import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { toScale, type Scale } from '$lib/utils/toScale';
-    import { browser } from '$app/environment';
 
     const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
     const animationOptions: AnimationListOptions = {
@@ -21,7 +20,11 @@
     }[] = [
         {
             mobile: {
-                main: animation('#oss-discord', { x: 0, y: 0, rotate: 1 }, animationOptions),
+                main: animation(
+                    '#oss-discord',
+                    { x: 0, y: [1200, 0], rotate: 1 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-discord', { y: 1200, x: 0, rotate: 1 }, animationOptions)
             },
             desktop: {
@@ -39,7 +42,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-github', { x: 0, y: -10, rotate: -2 }, animationOptions),
+                main: animation(
+                    '#oss-github',
+                    { x: 0, y: [1200, -10], rotate: -2 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-github', { y: 1200, x: 10, rotate: -2 }, animationOptions)
             },
             desktop: {
@@ -57,7 +64,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-twitter', { x: 0, y: 10, rotate: -3 }, animationOptions),
+                main: animation(
+                    '#oss-twitter',
+                    { x: 0, y: [1200, 10], rotate: -3 },
+                    animationOptions
+                ),
                 reversed: animation(
                     '#oss-twitter',
                     { y: 1200, x: -10, rotate: -3 },
@@ -79,7 +90,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-youtube', { x: 0, y: 5, rotate: 2 }, animationOptions),
+                main: animation(
+                    '#oss-youtube',
+                    { x: 0, y: [1200, 5], rotate: 2 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-youtube', { y: 1200, x: -5, rotate: 2 }, animationOptions)
             },
             desktop: {
@@ -97,7 +112,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-commits', { x: 0, y: -4, rotate: -1 }, animationOptions),
+                main: animation(
+                    '#oss-commits',
+                    { x: 0, y: [1200, -4], rotate: -1 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-commits', { y: 1200, x: 4, rotate: -1 }, animationOptions)
             },
             desktop: {
@@ -121,7 +140,7 @@
     }
 
     const animScale: Scale = [0, animations.length - 1];
-    const percentScale: Scale = [0.1, 0.9];
+    const percentScale: Scale = [0.1, 0.8];
     const scrollHandler = createScrollHandler(
         animations.map(({ mobile, desktop }, i) => {
             return {
@@ -237,11 +256,12 @@
 
 <style lang="scss">
     #open-source {
-        min-height: 1500px;
-        height: 250vh;
+        min-height: 150vh;
+        height: 3500px;
         position: relative;
+
         @media (min-width: 1024px) {
-            height: 150vh;
+            height: 1500px;
         }
     }
 
