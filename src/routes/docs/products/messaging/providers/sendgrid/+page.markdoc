@@ -319,13 +319,14 @@ client
 // update provider
 messaging.updateSendgridProvider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>', 
-    '<ENABLED?>', 
+    '<PROVIDER_NAME>',  
     '<API_KEY>', 
+    '<DOMAIN>', 
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
-    '<REPLY_TO_EMAIL>'
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
 ).then(function (response) {
     console.log(response);
 }, function (error) {
@@ -351,13 +352,14 @@ let messaging = new sdk.Messaging(client);
 // update provider
 messaging.updateSendgridProvider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>', 
-    '<ENABLED?>', 
+    '<PROVIDER_NAME>',  
     '<API_KEY>', 
+    '<DOMAIN>', 
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
-    '<REPLY_TO_EMAIL>'
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
 ).then(function (response) {
     console.log(response);
 }, function (error) {
@@ -391,12 +393,13 @@ $messaging = new Messaging($client);
 $result = $messaging->updateSendgridProvider(
     '<PROVIDER_ID>',
     '<PROVIDER_NAME>', 
-    '<ENABLED?>', 
     '<API_KEY>', 
+    '<DOMAIN>', 
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
-    '<REPLY_TO_EMAIL>'
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
 );
 ```
 ```python
@@ -414,13 +417,14 @@ messaging = Messaging(client)
 
 result = messaging.update_sendgrid_provider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>', 
-    '<ENABLED?>', 
-    '<API_KEY>', 
+    '<PROVIDER_NAME>',  
+    '<API_KEY>',
+    '<DOMAIN>', 
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
-    '<REPLY_TO_EMAIL>'
+    '<REPLY_TO_EMAIL>',
+    '<ENABLED?>',
 )
 ```
 ```ruby
@@ -437,13 +441,14 @@ messaging = Messaging.new(client)
 
 response = messaging.update_sendgrid_provider(
     provider_id: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>", 
-    enabled: "<ENABLED?>", 
+    name: "<PROVIDER_NAME>",  
     api_key: "<API_KEY>", 
+    domain: "<DOMAIN>",
     from_name: "<SENDER_NAME>", 
     from_email: "<SENDER_EMAIL>",
     reply_to_name: "<REPLY_TO_NAME>",
-    reply_to_email: "<REPLY_TO_EMAIL>"
+    reply_to_email: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
 )
 
 puts response.inspect
@@ -463,13 +468,14 @@ var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateSendgridProvider(
     providerId: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>", 
-    enabled: "<ENABLED?>", 
+    name: "<PROVIDER_NAME>",  
     apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
-    replyToEmail: "<REPLY_TO_EMAIL>"
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
 );
 ```
 ```dart
@@ -487,13 +493,14 @@ void main() { // Init SDK
 
   Future result = messaging.updateSendgridProvider(
     providerId: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>", 
-    enabled: "<ENABLED?>", 
+    name: "<PROVIDER_NAME>",  
     apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
-    replyToEmail: "<REPLY_TO_EMAIL>"
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
   );
 
   result
@@ -518,13 +525,14 @@ val messaging = Messaging(client)
 
 val response = messaging.updateSendgridProvider(
     providerId = "<PROVIDER_ID>",
-    name = "<PROVIDER_NAME>", 
-    enabled = "<ENABLED?>", 
+    name = "<PROVIDER_NAME>",  
     apiKey = "<API_KEY>", 
+    domain = "<DOMAIN>", 
     fromName = "<SENDER_NAME>", 
     fromEmail = "<SENDER_EMAIL>",
     replyToName = "<REPLY_TO_NAME>",
-    replyToEmail = "<REPLY_TO_EMAIL>"
+    replyToEmail = "<REPLY_TO_EMAIL>",
+    enabled = "<ENABLED?>",
 )
 
 ```
@@ -542,13 +550,14 @@ Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
     "<PROVIDER_ID>",
-    "<PROVIDER_NAME>", 
-    "<ENABLED?>", 
+    "<PROVIDER_NAME>",  
     "<API_KEY>", 
+    "<DOMAIN>", 
     "<SENDER_NAME>", 
     "<SENDER_EMAIL>",
     "<REPLY_TO_NAME>",
     "<REPLY_TO_EMAIL>",
+    "<ENABLED?>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -572,12 +581,13 @@ let messaging = Messaging(client)
 let provider = try await messaging.updateSendgridProvider(
     providerId: "<PROVIDER_ID>",
     name: "<PROVIDER_NAME>", 
-    enabled: "<ENABLED?>", 
     apiKey: "<API_KEY>", 
+    domain: "<DOMAIN>", 
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
-    replyToEmail: "<REPLY_TO_EMAIL>"
+    replyToEmail: "<REPLY_TO_EMAIL>",
+    enabled: "<ENABLED?>",
 )
 ```
 {% /multicode %}
