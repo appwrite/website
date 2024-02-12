@@ -1,0 +1,66 @@
+---
+layout: tutorial
+title: Add a server hook
+description: Add authentication to a Astro project using Appwrite.
+step: 4
+---
+
+Astro middleware are functions that run on the server before a page is displayed to the user. Astro locals are a way to store data that is specific to the current request. We can use these features to store the user's account data, so that it is available to all pages.
+
+Create a new file in the `src/server` directory called `middleware.js`:
+```js
+// src/server/middleware.js
+import { defineMiddleware } from "astro:middleware";
+import { createAppwriteClient } from "./server/appwrite";
+
+export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
+  const { account } = createAppwriteClient(request);
+
+  try {
+    locals.user = await account.get();
+  } catch {}
+
+  return next();
+});
+
+```
+
+To ensure the `locals` object is typed correctly, we can add a type definition for it in the `env.d.ts` file:
+
+```ts
+/// <reference types="astro/client" />
+
+declare namespace App {
+  interface Locals {
+    user?:
+      | import("node-appwrite").Models.User<
+          import("node-appwrite").Models.Preferences<{}>
+        >
+  }
+}
+
+interface ImportMetaEnv {
+  readonly PUBLIC_APPWRITE_ENDPOINT: string;
+  readonly PUBLIC_APPWRITE_PROJECT_ID: string;
+  readonly APPWRITE_KEY: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
+Now, use the `locals` object in the home page to redirect based on the user's login status. Create a new file in the `src/pages` directory called `index.astro`:
+
+```astro
+---
+const { user } = Astro.locals;
+if (user) {
+  return Astro.redirect("/account");
+}
+
+return Astro.redirect("/signin");
+---
+```
+
+When a user visits the home page, they will be redirected to the sign in page if they are not logged in, or to the account page if they are logged in.
