@@ -57,7 +57,6 @@
                 right: window.innerWidth
             });
         const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
-        console.log(h);
 
         return isVisible(element, {
             top: h,
