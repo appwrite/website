@@ -61,7 +61,7 @@
 			items: [
 				{
 					label: 'API reference',
-					href: '#TODO'
+					href: '#'
 				},
 			]
 		},

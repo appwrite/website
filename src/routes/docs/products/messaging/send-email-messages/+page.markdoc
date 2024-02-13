@@ -40,7 +40,7 @@ During development, you can add targets to existing accounts by navigating to **
 ![Add a target](/images/docs/messaging/targets/add-targets.png)
 {% /only_light %}
 
-You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](#TODO) endpoint.
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](#) endpoint.
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
@@ -281,7 +281,7 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 ![Add a target](/images/docs/messaging/topics/create-topics.png)
 {% /only_light %}
 
-You can also create topics programmatically using an [Appwrite Server SDK](#TODO).
+You can also create topics programmatically using an [Appwrite Server SDK](#).
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
