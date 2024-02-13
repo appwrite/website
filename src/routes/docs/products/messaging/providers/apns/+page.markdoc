@@ -64,7 +64,12 @@ make sure you've configured [a topic](/docs/products/messaging/topic) and [a tar
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notifcation**.
-[SCREENSHOT]
+{% only_dark %}
+![Create email message](/images/docs/messaging/messages/dark/create-push-notification.png)
+{% /only_dark %}
+{% only_light %}
+![Create email message](/images/docs/messaging/messages/create-push-notification.png)
+{% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
