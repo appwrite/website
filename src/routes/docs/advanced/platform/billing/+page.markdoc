@@ -45,3 +45,13 @@ By default, an email alert will be sent at 75% of the budget cap. You can add up
 # Redeem credit {% #redeem-credit %}
 If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
 When you redeem credit, the credit balance will be automatically applied to the next billing cycle.
+
+# Recurring payments for Indian developers {% #recurring-payments-for-indian-developers %}
+
+The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. 
+Appwrite is obligated to ask for verification before billing your card. 
+Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used.
+
+You can learn more about the RBI mandates in [Processing of e-mandate on cards for recurring transactions
+](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11668), the [2020 amendment](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12002)
+, and the [2021 amendment](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12051&Mode=0).
