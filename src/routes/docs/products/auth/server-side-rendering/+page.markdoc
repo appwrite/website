@@ -39,7 +39,7 @@ Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Cl
 
 {% multicode %}
 ```js
-const { Client, Account } from "appwrite";
+import { Client, Account } from "node-appwrite"; // Using the server SDK
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -65,9 +65,11 @@ It is important to use an API key with the `setKey` method, as this will allow y
 
 The API key should have the at least the following scopes in order to perform authentication:
 
-- `accounts.read`
-- `accounts.write`
-- `sessions.write`
+| Category  {% width=120 %} | Required scopes    | Purpose |
+|-----------|---------------------|---------|
+| Accounts  | `accounts.read`     | Allows API key to read account information. |
+|           | `accounts.write`    | Allows API key to create, update, and delete account information. |
+| Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 # Creating email/password sessions {% #creating-sessions %}
 
@@ -221,7 +223,7 @@ OAuth2 requires a few extra steps. First, initiate the flow on the client side
 
 ```html
 <script type='module'>
-    import { Client, Account } from "appwrite"; // Using the client SDK
+    import { Client, Account } from "node-appwrite"; // Using the server SDK
 
     const client = new Client()
         .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
