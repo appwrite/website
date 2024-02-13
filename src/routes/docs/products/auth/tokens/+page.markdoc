@@ -26,7 +26,7 @@ Methods that create tokens include [Magic URL login](/docs/products/auth/magic-u
 
 These methods transfer the token `userId` and `secret` to the client, via a URL, email, SMS, or other method. The client then uses the token to create a session.
 
-Custom tokens can be created using the [Create token](#TODO) endpoint of the [Users API](/docs/products/auth/users).
+Custom tokens can be created using the [Create token](#) endpoint of the [Users API](/docs/products/auth/users).
 
 # Create a session using the token {% #create-session-using-token %}
 
