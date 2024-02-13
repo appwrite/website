@@ -293,7 +293,7 @@ messaging.createSMS(
 
 For a complete, end-to-end example, follow one of the following journies.
 
-{% arrow_link href="/docs/products/messaging/send-push-notification" %}
+{% arrow_link href="/docs/products/messaging/send-push-notifications" %}
 Send a push notification
 {% /arrow_link %}
 

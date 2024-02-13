@@ -30,7 +30,7 @@ In the **Configure** step, you will need to provide details form your Mailgun da
 ![Configure SMTP provider](/images/docs/messaging/providers/mailgun/dark/configure-mailgun.png)
 {% /only_dark %}
 {% only_light %}
-![Configure SMTP provider](/images/docs/messaging/providers/mailgun/Configure-mailgun.png)
+![Configure SMTP provider](/images/docs/messaging/providers/mailgun/configure-mailgun.png)
 {% /only_light %}
 
 You will need to provide the following information from your **Mailgun dashboard**.
@@ -67,7 +67,7 @@ After adding the following details, click **Save and continue** to enable the pr
 
 {% section #test-provider step=3 title="Test provider" %}
 Before sending your first message, 
-make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
+make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Email**.
@@ -290,7 +290,7 @@ let message = try await messaging.createEmail(
 {% /tabsitem %}
 {% /tabs %}
 
-You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
+You can follow the [Send email messages](/docs/products/messaging/send-push-notifications) journey to send your first push notification and test your provider.
 {% /section %}
 
 {% section #manage-provider step=4 title="Manage provider" %}

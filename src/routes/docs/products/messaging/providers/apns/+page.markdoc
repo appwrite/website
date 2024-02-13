@@ -60,7 +60,7 @@ Some additional configuration is required to enable push notifications in your i
 {% /section %}
 {% section #test-provider step=4 title="Test provider" %}
 Before sending your first message, 
-make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
+make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notifcation**.
@@ -80,6 +80,42 @@ Verify that you can receive the message in your inbox. If not, check for logs in
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
 ```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client();
+
+const messaging = new sdk.Messaging(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('5df5acd0d48c2')                    // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
+;
+
+const promise = messaging.createPush(
+        '[MESSAGE_ID]', // messageId
+        '[TITLE]',      // title
+        '[BODY]',       // body
+        [],             // topics (optional)
+        [],             // users (optional)
+        [],             // targets (optional)
+        {},             // data (optional)
+        '[ACTION]',     // action (optional)
+        '[ICON]',       // icon (optional)
+        '[SOUND]',      // sound (optional)
+        '[COLOR]',      // color (optional)
+        '[TAG]',        // tag (optional)
+        '[BADGE]',      // badge (optional)
+        'draft',        // status (optional)
+        ''              // scheduledAt (optional)
+    );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```deno
 ```
@@ -103,7 +139,7 @@ To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#serv
 {% /tabsitem %}
 {% /tabs %}
 
-You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
+You can follow the [Send push notifications](/docs/products/messaging/send-push-notifications) journey to send your first push notification and test your provider.
 {% /section %}
 
 {% section #manage-provider step=5 title="Manage provider" %}
