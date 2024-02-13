@@ -47,7 +47,7 @@ After adding the following details, click **Save and continue** to enable the pr
 
 {% section #test-provider step=3 title="Test provider" %}
 Before sending your first message, 
-make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
+make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
@@ -90,7 +90,7 @@ To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#serv
 {% /tabsitem %}
 {% /tabs %}
 
-You can follow the [Send push notifications](TODO) journey to send your first push notification and test your provider.
+You can follow the [Send SMS messages](/docs/products/messaging/send-sms-messages) journey to send your first push notification and test your provider.
 {% /section %}
 
 {% section #manage-provider step=4 title="Manage provider" %}

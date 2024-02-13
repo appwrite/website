@@ -30,7 +30,7 @@ In the **Configure** step, you will need to provide details form your Sendgrid d
 ![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/dark/configure-sendgrid.png)
 {% /only_dark %}
 {% only_light %}
-![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/Configure-sendgrid.png)
+![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/configure-sendgrid.png)
 {% /only_light %}
 You will need to provide the following information from your **Sendgrid dashboard**.
 
@@ -63,7 +63,7 @@ After adding the following details, click **Save and continue** to enable the pr
 
 {% section #test-provider step=3 title="Test provider" %}
 Before sending your first message, 
-make sure you've configured [a topic](/docs/products/messaging/topic) and [a target](/docs/products/messaging/target) to send messages to.
+make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Email**.
