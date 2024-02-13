@@ -10,7 +10,7 @@ Custom token allows you to use [Server SDK](/docs/sdks#server) to generate token
 
 # Create custom token {% #create-custom-token %}
 
-Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
+Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](#TODO) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 {% multicode %}
 ```js
