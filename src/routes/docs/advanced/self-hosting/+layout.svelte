@@ -12,7 +12,11 @@
 			label: 'Getting started',
 			items: [
 				{
-					label: 'Installation',
+					label: 'Overview',
+					href: '/docs/advanced/self-hosting'
+				},
+				{
+					label: 'Install',
 					href: '/docs/advanced/self-hosting/'
 				},
 				{
@@ -40,13 +44,17 @@
 					label: 'VCS adapter',
 					href: '/docs/advanced/self-hosting/functions'
 				},
+				{
+					label: 'Error logs adapter',
+					href: '/docs/advanced/self-hosting/functions'
+				},
 			]
 		},
 		{
 			label: 'Guides',
 			items: [
 				{
-					label: 'Environment variables',
+					label: 'Env. variables',
 					href: '/docs/advanced/self-hosting/environment-variables'
 				},
 				{
