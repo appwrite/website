@@ -2,35 +2,8 @@
     import { onMount } from 'svelte';
 
     /* Variables & Contstants */
-    let canvas: HTMLCanvasElement;
     const width = 2000;
     const height = 1000;
-
-    /* Helpers */
-    type DrawCircleArgs = {
-        pos: [number, number];
-        radius: number;
-        color: string;
-    };
-    function drawCircle(ctx: CanvasRenderingContext2D, { pos, radius, color }: DrawCircleArgs) {
-        ctx.beginPath();
-        ctx.arc(pos[0], pos[1], radius, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-    }
-
-    type DrawLineArgs = {
-        from: [number, number];
-        to: [number, number];
-        color: string;
-    };
-    function drawLine(ctx: CanvasRenderingContext2D, { from, to, color }: DrawLineArgs) {
-        ctx.beginPath();
-        ctx.moveTo(from[0], from[1]);
-        ctx.lineTo(to[0], to[1]);
-        ctx.strokeStyle = color;
-        ctx.stroke();
-    }
 
     /* Entities */
     type Circle = {
@@ -76,36 +49,6 @@
     $: console.log(lines);
 
     let selected = [] as boolean[];
-
-    function paintCanvas() {
-        const ctx = canvas?.getContext('2d');
-        if (!ctx) return;
-
-        ctx.reset();
-
-        circles.forEach((circle, i) => {
-            const color = selected[i] ? '#ff0000' : '#ffffff';
-            drawCircle(ctx, { ...circle, radius: 8, color });
-        });
-        lines.forEach((line) => {
-            let color = '#ffffff50';
-            if (selected[line.from] && selected[line.to]) {
-                color = '#ff0000';
-            }
-            drawLine(ctx, {
-                from: circles[line.from].pos,
-                to: circles[line.to].pos,
-                color
-            });
-        });
-    }
-
-    onMount(paintCanvas);
-
-    $: {
-        selected;
-        paintCanvas();
-    }
 </script>
 
 {#each circles as circle, i}
@@ -117,10 +60,29 @@
     </div>
 {/each}
 
-<canvas bind:this={canvas} {width} {height} />
+<svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
+    {#each lines as line}
+        <line
+            x1={circles[line.from].pos[0]}
+            y1={circles[line.from].pos[1]}
+            x2={circles[line.to].pos[0]}
+            y2={circles[line.to].pos[1]}
+            stroke={selected[line.from] && selected[line.to] ? '#ff0000' : '#ffffff50'}
+        />
+    {/each}
+
+    {#each circles as circle, i}
+        <circle
+            cx={circle.pos[0]}
+            cy={circle.pos[1]}
+            r="10"
+            fill={selected[i] ? '#ff0000' : '#ffffff'}
+        />
+    {/each}
+</svg>
 
 <style>
-    canvas {
+    svg {
         border: 1px dashed #fff;
         width: 100%;
         margin-block-start: 2rem;
