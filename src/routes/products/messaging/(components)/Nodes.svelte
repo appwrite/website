@@ -33,42 +33,89 @@
     }
 
     /* Entities */
-    const circles: DrawCircleArgs[] = [
-        { pos: [100, 500], radius: 3, color: '#ffffff' },
-        { pos: [500, 100], radius: 3, color: '#ffffff' },
-        { pos: [1500, 100], radius: 3, color: '#ffffff' },
-        { pos: [1500, 900], radius: 3, color: '#ffffff' },
-        { pos: [500, 900], radius: 3, color: '#ffffff' },
-        { pos: [1900, 500], radius: 3, color: '#ffffff' },
-        { pos: [450, 450], radius: 3, color: '#ffffff' },
-        { pos: [1570, 700], radius: 3, color: '#ffffff' },
-        { pos: [1300, 450], radius: 3, color: '#ffffff' }
-    ];
+    type Circle = {
+        pos: [number, number];
+    };
+    const circles = [
+        { pos: [100, 500] },
+        { pos: [500, 100] },
+        { pos: [1500, 100] },
+        { pos: [1500, 900] },
+        { pos: [500, 900] },
+        { pos: [1900, 500] },
+        { pos: [450, 450] },
+        { pos: [1570, 700] },
+        { pos: [1300, 450] }
+    ] as const satisfies Circle[];
 
-    const lines: DrawLineArgs[] = [
-        { from: circles[0].pos, to: circles[1].pos, color: '#ffffff20' },
-        { from: circles[0].pos, to: circles[2].pos, color: '#ffffff20' },
-        { from: circles[0].pos, to: circles[4].pos, color: '#ffffff20' },
-        { from: circles[0].pos, to: circles[7].pos, color: '#ffffff20' },
-        { from: circles[7].pos, to: circles[6].pos, color: '#ffffff20' },
-        { from: circles[6].pos, to: circles[8].pos, color: '#ffffff20' },
-        { from: circles[1].pos, to: circles[2].pos, color: '#ffffff20' },
-        { from: circles[2].pos, to: circles[3].pos, color: '#ffffff20' },
-        { from: circles[3].pos, to: circles[4].pos, color: '#ffffff20' },
-        { from: circles[4].pos, to: circles[1].pos, color: '#ffffff20' },
-        { from: circles[5].pos, to: circles[3].pos, color: '#ffffff20' },
-        { from: circles[5].pos, to: circles[2].pos, color: '#ffffff20' }
+    type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+        ? Acc[number]
+        : Enumerate<N, [...Acc, Acc['length']]>;
+
+    type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
+
+    type Line = {
+        from: IntRange<0, typeof circles.length>;
+        to: IntRange<0, typeof circles.length>;
+    };
+
+    const lines: Line[] = [
+        { from: 0, to: 1 },
+        { from: 0, to: 2 },
+        { from: 0, to: 4 },
+        { from: 0, to: 7 },
+        { from: 7, to: 6 },
+        { from: 6, to: 8 },
+        { from: 1, to: 2 },
+        { from: 2, to: 3 },
+        { from: 3, to: 4 },
+        { from: 4, to: 1 },
+        { from: 5, to: 3 },
+        { from: 5, to: 2 }
     ];
     $: console.log(lines);
 
-    onMount(() => {
-        const ctx = canvas.getContext('2d');
+    let selected = [] as boolean[];
+
+    function paintCanvas() {
+        const ctx = canvas?.getContext('2d');
         if (!ctx) return;
 
-        circles.forEach((circle) => drawCircle(ctx, circle));
-        lines.forEach((line) => line && drawLine(ctx, line));
-    });
+        ctx.reset();
+
+        circles.forEach((circle, i) => {
+            const color = selected[i] ? '#ff0000' : '#ffffff';
+            drawCircle(ctx, { ...circle, radius: 8, color });
+        });
+        lines.forEach((line) => {
+            let color = '#ffffff50';
+            if (selected[line.from] && selected[line.to]) {
+                color = '#ff0000';
+            }
+            drawLine(ctx, {
+                from: circles[line.from].pos,
+                to: circles[line.to].pos,
+                color
+            });
+        });
+    }
+
+    onMount(paintCanvas);
+
+    $: {
+        selected;
+        paintCanvas();
+    }
 </script>
+
+{#each circles as circle, i}
+    <div>
+        <label>
+            <input type="checkbox" bind:checked={selected[i]} />
+            Circle {i} ({circle.pos[0]}, {circle.pos[1]})
+        </label>
+    </div>
+{/each}
 
 <canvas bind:this={canvas} {width} {height} />
 
