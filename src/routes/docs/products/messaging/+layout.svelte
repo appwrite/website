@@ -61,7 +61,7 @@
 			items: [
 				{
 					label: 'API reference',
-					href: '/docs/references/cloud/client-web/messaging'
+					href: '#TODO'
 				},
 			]
 		},
