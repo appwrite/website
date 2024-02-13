@@ -76,6 +76,8 @@
         overflow: hidden;
         position: relative;
         border-block-end: 1px solid hsl(var(--aw-color-offset));
+        margin-block-start: -5rem;
+        padding-block-start: 5rem;
 
         .aw-container {
             display: grid;
