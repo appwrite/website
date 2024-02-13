@@ -28,6 +28,10 @@
             answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="aw-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
+            question: 'Why does Appwrite ask for payment verification for up to $150?',
+            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used.'
+        },
+        {
             question: 'How can I join the OSS program?',
             answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="aw-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
         },
