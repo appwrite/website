@@ -42,6 +42,7 @@
 
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
+    import { GITHUB_STARS } from '$lib/constants';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -169,7 +170,7 @@
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                        <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                     </a>
                     <a href="https://cloud.appwrite.io/console" class="aw-button">
                         <span class="aw-sub-body-500">Go to console</span>

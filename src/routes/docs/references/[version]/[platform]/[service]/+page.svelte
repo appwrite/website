@@ -89,6 +89,11 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    {#if $page.params.version !== 'cloud'}
+        <link rel="canonical" href={`https://appwrite.io/docs/references/cloud/${$page.params.platform}/${$page.params.service}`} />
+    {/if}
+
 </svelte:head>
 
 <main class="u-contents" id="main">

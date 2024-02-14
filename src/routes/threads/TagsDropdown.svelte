@@ -12,17 +12,16 @@
 <DropdownMenu let:open let:menu let:trigger>
     <button class="aw-btn-tag" use:melt={trigger}>
         <span class="text">More</span>
-        <span class="aw-icon-chevron-down" style="font-size: 1rem" />
+        <span class="aw-icon-chevron-down aw-u-font-size-16" />
     </button>
 
     {#if open}
         <div 
-          class="menu-wrapper aw-card is-normal menu has-border-gradient"
-          style:z-index="1"
+          class="menu-wrapper aw-card is-normal menu has-border-gradient u-z-index-1"
           use:melt={menu}
           transition:fly={{ y: 8, duration: 250 }}
         >
-          <ul
+          <ul class="aw-sub-body-400"
           >
               {#each tags as tag}
                   {@const checked = selectedTags?.includes(tag)}
@@ -85,7 +84,7 @@
     }
 
     .checkbox {
-        --p-checkbox-size: 1.4rem;
+        --p-checkbox-size: 1.25rem;
         width: var(--p-checkbox-size);
         height: var(--p-checkbox-size);
 
