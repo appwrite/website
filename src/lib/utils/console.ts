@@ -1,7 +1,7 @@
 import { derived, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { Account, Client, Teams } from '@appwrite.io/console';
-import { Query, type Models } from 'appwrite';
+import { Query, type Models } from '@appwrite.io/console';
 
 const client = new Client();
 

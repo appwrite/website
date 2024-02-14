@@ -1,5 +1,5 @@
 import { invalidate } from '$app/navigation';
-import type { Models } from 'appwrite';
+import type { Models } from '@appwrite.io/console';
 
 export const TICKET_DEP = 'ticket';
 export const invalidateTicket = () => {
