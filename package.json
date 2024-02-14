@@ -75,24 +75,5 @@
         "motion": "^10.16.4",
         "sharp": "^0.32.6",
         "svelte-markdown": "^0.4.0"
-    },
-    "pnpm": {
-        "supportedArchitectures": {
-            "os": [
-                "win32",
-                "darwin",
-                "current",
-                "linux",
-                "linuxmusl"
-            ],
-            "cpu": [
-                "x64",
-                "arm64"
-            ],
-            "libc": [
-                "musl",
-                "glibc"
-            ]
-        }
     }
 }
