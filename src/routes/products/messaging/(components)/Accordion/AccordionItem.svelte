@@ -14,6 +14,7 @@
 <div use:melt={$item(index.toString())}>
     <button use:melt={$trigger(index.toString())}>
         <slot name="trigger" />
+        <div class="aw-icon-chevron-down aw-u-color-text-primary" />
     </button>
     {#if $isSelected(index.toString())}
         <div use:melt={$content(index.toString())} transition:slide={{ duration: 250 }}>
@@ -22,8 +23,21 @@
     {/if}
 </div>
 
-<style>
+<style lang="scss">
     button {
         user-select: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        inline-size: 100%;
+
+        .aw-icon-chevron-down {
+            transition: 200ms ease;
+
+            :global([data-state='open']) & {
+                transform: rotate(180deg);
+            }
+        }
     }
 </style>

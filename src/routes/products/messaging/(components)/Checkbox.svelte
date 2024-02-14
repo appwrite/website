@@ -2,13 +2,15 @@
     import { createCheckbox, melt, type CreateCheckboxProps, createSync } from '@melt-ui/svelte';
 
     export let checked: NonNullable<CreateCheckboxProps['defaultChecked']> = false;
+    export let onCheckedChange: CreateCheckboxProps['onCheckedChange'] = undefined;
 
     const {
         elements: { root },
         helpers: { isChecked, isIndeterminate },
         states: { checked: innerChecked }
     } = createCheckbox({
-        defaultChecked: checked
+        defaultChecked: checked,
+        onCheckedChange: onCheckedChange ?? (({ next }) => next)
     });
 
     const sync = createSync({ checked: innerChecked });
