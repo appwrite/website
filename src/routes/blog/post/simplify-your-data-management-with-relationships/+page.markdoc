@@ -2,7 +2,7 @@
 layout: post
 title: Simplify your data management with relationships
 description: Learn how to simplify your collection management and save time and effort with database relationships.
-date: 2024-01-5
+date: 2024-01-05
 cover: /images/blog/simplify-your-data-management-with-relationships/cover.png
 timeToRead: 6
 author: jake-barnby
@@ -172,7 +172,7 @@ Each of these options has its own use cases, and the choice ultimately depends o
 
 In addition to simplifying your collection management, database relationships also provide several other benefits. First, they can help to ensure data consistency and integrity by enforcing referential constraints between related collections. This means that you can prevent orphaned documents or other data inconsistencies that might arise if you were to manage the relationships between collections manually. Additionally, using relationships can also improve the performance of your requests and reduce the amount of code you need to write, since you can retrieve related data in a single request rather than having to fetch it separately.
 
-Overall, database relationships are a powerful tool that simplifies your collection management and saves you time and effort. By easily linking your collections and retrieving related data, you can focus on developing your application's core features. Check out the [docs](https://appwrite.io/docs/databases-relationships) for more information as well as the [release announcement](https://dev.to/appwrite/join-celebrations-appwrite-13-ships-relationships-57fc) for details on other awesome new features in the latest version of Appwrite. We encourage you to give it a try today and see how it can benefit your development process.
+Overall, database relationships are a powerful tool that simplifies your collection management and saves you time and effort. By easily linking your collections and retrieving related data, you can focus on developing your application's core features. Check out the [docs](https://appwrite.io/docs/databases-relationships) for more information. We encourage you to give it a try today and see how it can benefit your development process.
 
 - [Appwrite GitHub](https://github.com/appwrite)
 - [Appwrite Docs](https://appwrite.io/docs)
