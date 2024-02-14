@@ -103,7 +103,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
+            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',

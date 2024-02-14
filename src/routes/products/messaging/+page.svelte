@@ -84,12 +84,11 @@
             grid-template-columns: 580px 700px;
             align-items: center;
             gap: 5.625rem;
-            min-block-size: 700px;
-            block-size: 90vh;
+            block-size: 800px;
+            // block-size: 90vh;
 
             .phone-wrapper {
                 position: relative;
-                overflow: hidden;
                 block-size: 100%;
                 inline-size: 100%;
 
@@ -100,7 +99,7 @@
                     position: absolute;
                     display: block;
                     block-size: 800px;
-                    translate: 0 70px;
+                    translate: 0 100px;
                     inline-size: auto;
                 }
             }
