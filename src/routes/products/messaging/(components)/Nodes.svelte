@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { withRaf } from '$lib/utils/withRaf';
+    import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
+    import { withRaf } from '$lib/utils/withRaf';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
-    import { clamp } from '$lib/utils/clamp';
     import Checkbox from './Checkbox.svelte';
 
     /* Variables & Contstants */
@@ -52,8 +52,64 @@
         { from: 5, to: 2 }
     ];
 
+    type User = {
+        name: string;
+        devices: Array<{
+            checked: boolean;
+            type: string;
+            value: string;
+            circleIndex: IntRange<0, typeof circles.length>;
+        }>;
+    };
+
+    let users: User[] = [
+        {
+            name: 'Eleanor Pena',
+            devices: [
+                { checked: false, type: 'Email', value: 'eleanor.pena@gmail.com', circleIndex: 0 },
+                { checked: false, type: 'SMS', value: '+1 123 456 7890', circleIndex: 1 },
+                { checked: false, type: 'Push', value: "Eleanor's iPhone", circleIndex: 2 }
+            ]
+        },
+        {
+            name: "Walter O'Brien",
+            devices: [
+                { checked: false, type: 'Email', value: 'walter@appwrite.io', circleIndex: 3 },
+                { checked: false, type: 'SMS', value: '+1 123 456 7000', circleIndex: 4 }
+            ]
+        },
+        {
+            name: 'Toby Curtis',
+            devices: [
+                { checked: false, type: 'Push', value: "Toby's Pixel", circleIndex: 5 },
+                { checked: false, type: 'Push', value: "Toby's Laptop", circleIndex: 6 }
+            ]
+        },
+        {
+            name: 'Paige Dineen',
+            devices: [
+                { checked: false, type: 'Email', value: 'paige@appwrite.io', circleIndex: 7 },
+                { checked: false, type: 'SMS', value: '+1 123 456 7000', circleIndex: 8 }
+            ]
+        }
+    ];
+
     let selected = withPrevious(circles.map(() => false));
     let prevSelected = selected.previous;
+
+    $: {
+        users.forEach((user) => {
+            user.devices.forEach((device) => {
+                selected.update((p) => {
+                    return [
+                        ...p.slice(0, device.circleIndex),
+                        device.checked,
+                        ...p.slice(device.circleIndex + 1)
+                    ];
+                });
+            });
+        });
+    }
 
     type AnimationProgress = {
         percent: number;
@@ -84,28 +140,7 @@
             };
         });
     });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function anyify<T>(x: T): any {
-        return x;
-    }
 </script>
-
-{#each circles as circle, i}
-    <div>
-        <label>
-            <input
-                type="checkbox"
-                checked={$selected[i]}
-                on:change={(e) => {
-                    const target = anyify(e.target);
-                    $selected = $selected.map((_, j) => (j === i ? target.checked : $selected[j]));
-                }}
-            />
-            Circle {i} ({circle.pos[0]}, {circle.pos[1]})
-        </label>
-    </div>
-{/each}
 
 <div class="wrapper">
     <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
@@ -174,24 +209,48 @@
         <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
         <Accordion>
             <ul class="accordion-items">
-                {#each { length: 5 } as _, i (i)}
+                {#each users as user, i}
+                    {@const selectedDevices = user.devices.filter((d) => d.checked).length}
+                    {@const allSelected = selectedDevices === user.devices.length}
                     <li>
                         <AccordionItem index={i}>
                             <div class="trigger" slot="trigger">
-                                <Checkbox />
+                                <Checkbox
+                                    checked={allSelected
+                                        ? true
+                                        : selectedDevices > 0
+                                        ? 'indeterminate'
+                                        : false}
+                                    onCheckedChange={({ next }) => {
+                                        if (next === true) {
+                                            user.devices.forEach((d) => (d.checked = true));
+                                        } else if (!next) {
+                                            user.devices.forEach((d) => (d.checked = false));
+                                        }
+                                        users = users;
+
+                                        return next;
+                                    }}
+                                />
                                 <span class="aw-sub-body-500 aw-u-color-text-primary">
-                                    Eleanor Pena
+                                    {user.name}
                                 </span>
-                                <span class="aw-caption-400">&nbsp;(3/4 targets)</span>
+                                <span class="aw-caption-400">
+                                    &nbsp;({selectedDevices}/{user.devices.length} targets)
+                                </span>
                             </div>
 
                             <ul>
-                                <li>
-                                    <Checkbox />
-
-                                    <span class="type">Email</span>
-                                    <span class="value">eleanor.pena@gmail.com</span>
-                                </li>
+                                {#each user.devices as device, j}
+                                    <li>
+                                        <Checkbox
+                                            bind:checked={user.devices[j].checked}
+                                            --size="1rem"
+                                        />
+                                        <span class="type">{device.type}</span>
+                                        <span class="aw-caption-400">{device.value}</span>
+                                    </li>
+                                {/each}
                             </ul>
                         </AccordionItem>
                     </li>
@@ -252,10 +311,6 @@
         );
         --m-border-radius: 1.5rem;
 
-        hr {
-            border-block-end: 1px solid hsl(var(--aw-color-offset));
-        }
-
         .accordion-items {
             display: flex;
             flex-direction: column;
@@ -285,6 +340,19 @@
                     /* padding-block-start: 1rem; */
                     padding-inline-start: 2.25rem;
                     padding-block-end: 1rem;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+
+                        .type {
+                            background: hsl(var(--aw-color-smooth));
+                            border-radius: 0.25rem;
+                            font-size: 0.75rem;
+                            padding-inline: 0.375rem;
+                        }
+                    }
                 }
             }
         }
