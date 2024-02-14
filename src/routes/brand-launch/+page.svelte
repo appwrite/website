@@ -128,8 +128,7 @@
                             class="u-stretch u-flex aw-u-margin-inline-auto-mobile aw-u-margin-block-start-40-mobile"
                         >
                             <img
-                                style="margin-block-start:-0.5rem"
-                                class="u-margin-inline-start-auto u-width-full-line u-max-width-500"
+                                class="aw-u-margin-block-start-8-negative u-margin-inline-start-auto u-width-full-line u-max-width-500"
                                 src="/images/pages/brand-lunch/box.png"
                                 alt=""
                             />
@@ -181,13 +180,12 @@
         >
             <div class="u-position-absolute u-inset-inline-start-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="aw-u-opacity-40-mobile u-max-width-100-percent aw-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
                     viewBox="0 0 698 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.3" filter="url(#filter0_f_3260_125165)">
                         <ellipse
@@ -323,13 +321,12 @@
             </div>
             <div class="u-position-absolute u-inset-inline-end-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="aw-u-opacity-40-mobile u-max-width-100-percent aw-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
                     viewBox="0 0 874 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.4" filter="url(#filter0_f_3260_125160)">
                         <path
@@ -476,13 +473,12 @@
         >
             <div class="u-position-absolute u-inset-inline-start-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="aw-u-opacity-40-mobile u-max-width-100-percent aw-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
                     viewBox="0 0 698 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.3" filter="url(#filter0_f_3260_125165)">
                         <ellipse
@@ -618,13 +614,12 @@
             </div>
             <div class="u-position-absolute u-inset-inline-end-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="aw-u-opacity-40-mobile u-max-width-100-percent aw-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
                     viewBox="0 0 874 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.4" filter="url(#filter0_f_3260_125160)">
                         <path
