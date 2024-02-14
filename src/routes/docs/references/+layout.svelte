@@ -54,6 +54,11 @@
                     href: `${prefix}/functions`
                 },
                 {
+                    label: 'Messaging',
+                    icon: 'icon-lightning-bolt',
+                    href: `${prefix}/messaging`
+                },
+                {
                     label: 'Localization',
                     icon: 'icon-location-marker',
                     href: `${prefix}/locale`

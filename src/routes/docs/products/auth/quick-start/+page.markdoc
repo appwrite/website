@@ -89,7 +89,7 @@ mutation {
 
 # Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/client-web/account#createEmailPasswordSession) endpoint.
+After you've created your account, users can be logged in using the [Create Email Password Session](#) endpoint.
 
 {% multicode %}
 ```js

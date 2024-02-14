@@ -74,6 +74,10 @@ function getExamples(version: string) {
             return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
                 as: 'raw'
             });
+        case '1.5.x':
+            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
+                as: 'raw'
+            });
     }
 }
 
