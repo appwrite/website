@@ -11,30 +11,10 @@
     const height = 1050;
 
     /* Entities */
-    type Circle = {
-        pos: [number, number];
-    };
-    const circles = [
-        { pos: [100, 500] },
-        { pos: [500, 100] },
-        { pos: [1500, 100] },
-        { pos: [1500, 900] },
-        { pos: [500, 900] },
-        { pos: [1900, 500] },
-        { pos: [450, 450] },
-        { pos: [1570, 700] },
-        { pos: [1300, 450] }
-    ] as const satisfies Circle[];
-
-    type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
-        ? Acc[number]
-        : Enumerate<N, [...Acc, Acc['length']]>;
-
-    type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
 
     type Line = {
-        from: IntRange<0, typeof circles.length>;
-        to: IntRange<0, typeof circles.length>;
+        from: number;
+        to: number;
     };
 
     const lines: Line[] = [
@@ -58,7 +38,7 @@
             checked: boolean;
             type: string;
             value: string;
-            circleIndex: IntRange<0, typeof circles.length>;
+            circlePos: [number, number];
         }>;
     };
 
@@ -66,49 +46,57 @@
         {
             name: 'Eleanor Pena',
             devices: [
-                { checked: false, type: 'Email', value: 'eleanor.pena@gmail.com', circleIndex: 0 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7890', circleIndex: 1 },
-                { checked: false, type: 'Push', value: "Eleanor's iPhone", circleIndex: 2 }
+                {
+                    checked: false,
+                    type: 'Email',
+                    value: 'eleanor.pena@gmail.com',
+                    circlePos: [100, 500]
+                },
+                { checked: false, type: 'SMS', value: '+1 123 456 7890', circlePos: [500, 100] },
+                { checked: false, type: 'Push', value: "Eleanor's iPhone", circlePos: [1500, 100] }
             ]
         },
         {
             name: "Walter O'Brien",
             devices: [
-                { checked: false, type: 'Email', value: 'walter@appwrite.io', circleIndex: 3 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7000', circleIndex: 4 }
+                {
+                    checked: false,
+                    type: 'Email',
+                    value: 'walter@appwrite.io',
+                    circlePos: [1500, 900]
+                },
+                { checked: false, type: 'SMS', value: '+1 123 456 7000', circlePos: [500, 900] }
             ]
         },
         {
             name: 'Toby Curtis',
             devices: [
-                { checked: false, type: 'Push', value: "Toby's Pixel", circleIndex: 5 },
-                { checked: false, type: 'Push', value: "Toby's Laptop", circleIndex: 6 }
+                { checked: false, type: 'Push', value: "Toby's Pixel", circlePos: [1900, 500] },
+                { checked: false, type: 'Push', value: "Toby's Laptop", circlePos: [450, 450] }
             ]
         },
         {
             name: 'Paige Dineen',
             devices: [
-                { checked: false, type: 'Email', value: 'paige@appwrite.io', circleIndex: 7 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7000', circleIndex: 8 }
+                {
+                    checked: false,
+                    type: 'Email',
+                    value: 'paige@appwrite.io',
+                    circlePos: [1570, 700]
+                },
+                { checked: false, type: 'SMS', value: '+1 123 456 7000', circlePos: [1300, 450] }
             ]
         }
     ];
 
-    let selected = withPrevious(circles.map(() => false));
+    let selected = withPrevious(users.flatMap((u) => u.devices.map((d) => d.checked)));
     let prevSelected = selected.previous;
 
+    $: circles = users.flatMap((u) => u.devices.map((d) => ({ pos: d.circlePos })));
+
     $: {
-        users.forEach((user) => {
-            user.devices.forEach((device) => {
-                selected.update((p) => {
-                    return [
-                        ...p.slice(0, device.circleIndex),
-                        device.checked,
-                        ...p.slice(device.circleIndex + 1)
-                    ];
-                });
-            });
-        });
+        // Update selected devices
+        $selected = users.flatMap((u) => u.devices.map((d) => d.checked));
     }
 
     type AnimationProgress = {
@@ -274,6 +262,15 @@
     </div>
 </div>
 
+<div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16">
+    <h3 class="aw-title aw-u-color-text-primary u-text-center">
+        Target and group your subscribers
+    </h3>
+    <p class="aw-description u-text-center" style:max-inline-size="580px">
+        Customize your message recipients to ensure your communication hits the mark.
+    </p>
+</div>
+
 <style lang="scss">
     .wrapper {
         position: relative;
@@ -310,11 +307,11 @@
         @include border-gradient;
 
         position: absolute;
-        inset-block-end: -3rem;
+        inset-block-end: 0rem;
         inset-inline-start: 50%;
         transform: translateX(-50%);
 
-        inline-size: 28rem;
+        inline-size: 30rem;
 
         padding: 2rem;
         background-color: hsl(0, 0%, 100%, 0.02);
