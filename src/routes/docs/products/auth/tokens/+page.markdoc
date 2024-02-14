@@ -22,7 +22,7 @@ Many Appwrite authentication methods use a token-base flow to authenticate users
 
 First, create a token for the user.
 
-Methods that create tokens include [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp), [Phone (SMS) login](/docs/products/auth/phone-sms), and [Custom token](#create-custom-token).
+Methods that create tokens include [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp), [Phone (SMS) login](/docs/products/auth/phone-sms), and [Custom token](/docs/products/auth/custom-token/#create-custom-token).
 
 These methods transfer the token `userId` and `secret` to the client, via a URL, email, SMS, or other method. The client then uses the token to create a session.
 

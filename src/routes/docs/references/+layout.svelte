@@ -55,7 +55,7 @@
                 },
                 {
                     label: 'Messaging',
-                    icon: 'icon-lightning-bolt',
+                    icon: 'icon-send',
                     href: `${prefix}/messaging`
                 },
                 {
