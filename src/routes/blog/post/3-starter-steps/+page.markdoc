@@ -1,0 +1,37 @@
+---
+layout: post
+title: 3 important steps when building with Appwrite
+description: 3 steps you need to complete before setting up your first Appwrite project
+date: 2024-2-13
+cover: /images/blog/3-starter-steps/placeholder.png
+timeToRead: 1
+author: dennis-ivy
+category: engineering
+---
+
+When creating a new project there are 3 important things you need to do to ensure you have things setup properly and can connect to your Appwrite backend.
+
+Forgetting to complete one of these steps will result in errors later when trying to make your first request, so let’s jump in and see what they are so things are set up properly for your next project.
+
+### 1 - Add a platform
+
+After creating a new project in the Appwrite console, you’ll need to add a platform in order to connect an SDK. You can add a platform from the  “overview” tab under the “Add a platform” section. From here you’ll need to choose between one of the 4 client side SDK’s, or generate an API key with a server side SDK.
+
+If you’re adding an API key to use one of the server SDK’s, you’ll be asked set scopes for the key. This sets permissions, allowing us to dictate what permissions this API key has over certain parts of our application.
+
+![Appwrite Platform](/images/blog/3-starter-steps/platform.jpg)
+
+
+### 2 - Add a hostname
+
+When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I did just put out a full video and [article](https://appwrite.io/blog/post/cors-error) on this topic so be sure to check that out if you have questions or face any problems here.
+
+![Appwrite Platform](/images/blog/3-starter-steps/hostname.jpg)
+
+### 3 - Permissions
+
+Before you can read and write data from an Appwrite database collection or storage bucket, you’ll need to make sure you have the proper permissions set. This can be set from the “Settings” tab under the “Permissions” section inside of a collection or storage bucket.
+
+![Appwrite Platform](/images/blog/3-starter-steps/permissions.jpg)
+
+With these 3 steps to complete you should be set to connect to an Appwrite backend from a either a client or server SDK.
