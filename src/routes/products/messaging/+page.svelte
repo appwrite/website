@@ -4,6 +4,10 @@
     import Nodes from './(components)/Nodes.svelte';
 </script>
 
+<svelte:head>
+    <title>Messaging</title>
+</svelte:head>
+
 <Main>
     <div class="hero">
         <enhanced:img src="./(assets)/blur-left.png" alt="" class="blur-left" />

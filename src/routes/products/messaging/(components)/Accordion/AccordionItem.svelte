@@ -16,7 +16,7 @@
         <slot name="trigger" />
     </button>
     {#if $isSelected(index.toString())}
-        <div use:melt={$content(index.toString())} transition:slide={{ duration: 150 }}>
+        <div use:melt={$content(index.toString())} transition:slide={{ duration: 250 }}>
             <slot />
         </div>
     {/if}
