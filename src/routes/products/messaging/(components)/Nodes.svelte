@@ -1,6 +1,8 @@
 <script lang="ts">
     import { withRaf } from '$lib/utils/withRaf';
     import { withPrevious } from '$lib/utils/withPrevious';
+    import Accordion from './Accordion/Accordion.svelte';
+    import AccordionItem from './Accordion/AccordionItem.svelte';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -103,49 +105,89 @@
     </div>
 {/each}
 
-<svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
-    {#each lines as line, i}
-        {@const x1 = animationProgress[i].reverse
-            ? circles[line.to].pos[0]
-            : circles[line.from].pos[0]}
-        {@const y1 = animationProgress[i].reverse
-            ? circles[line.to].pos[1]
-            : circles[line.from].pos[1]}
-        {@const x2 = animationProgress[i].reverse
-            ? circles[line.from].pos[0]
-            : circles[line.to].pos[0]}
-        {@const y2 = animationProgress[i].reverse
-            ? circles[line.from].pos[1]
-            : circles[line.to].pos[1]}
+<div class="wrapper">
+    <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
+        {#each lines as line, i}
+            {@const x1 = animationProgress[i].reverse
+                ? circles[line.to].pos[0]
+                : circles[line.from].pos[0]}
+            {@const y1 = animationProgress[i].reverse
+                ? circles[line.to].pos[1]
+                : circles[line.from].pos[1]}
+            {@const x2 = animationProgress[i].reverse
+                ? circles[line.from].pos[0]
+                : circles[line.to].pos[0]}
+            {@const y2 = animationProgress[i].reverse
+                ? circles[line.from].pos[1]
+                : circles[line.to].pos[1]}
 
-        {@const selectionPercent = animationProgress[i].percent}
-        <linearGradient id="gradient-{i}" gradientUnits="userSpaceOnUse" {x1} {y1} {x2} {y2}>
-            <!-- Go from red to white, depending on selectionPercent -->
-            <stop offset="0%" stop-color={'#ff0000'} />
-            <stop offset="{selectionPercent}%" stop-color={'#ff0000'} />
-            <stop offset="{selectionPercent}%" stop-color={'#ffffff'} />
-            <stop offset="100%" stop-color={'#ffffff'} />
-        </linearGradient>
+            {@const selectionPercent = animationProgress[i].percent}
+            <linearGradient id="gradient-{i}" gradientUnits="userSpaceOnUse" {x1} {y1} {x2} {y2}>
+                <!-- Go from red to white, depending on selectionPercent -->
+                <stop offset="0%" stop-color="hsla(178, 54%, 69%, 1)" />
+                <stop offset="{selectionPercent}%" stop-color="hsla(178, 54%, 69%, 1)" />
+                <stop offset="{selectionPercent}%" stop-color="hsla(0, 0%, 100%, 0.08)" />
+                <stop offset="100%" stop-color="hsla(0, 0%, 100%, 0.08)" />
+            </linearGradient>
 
-        <line
-            x1={circles[line.from].pos[0]}
-            y1={circles[line.from].pos[1]}
-            x2={circles[line.to].pos[0]}
-            y2={circles[line.to].pos[1]}
-            stroke="url(#gradient-{i})"
-            stroke-width="2"
-        />
-    {/each}
+            <line
+                x1={circles[line.from].pos[0]}
+                y1={circles[line.from].pos[1]}
+                x2={circles[line.to].pos[0]}
+                y2={circles[line.to].pos[1]}
+                stroke="url(#gradient-{i})"
+                stroke-width="2"
+            />
+        {/each}
 
-    {#each circles as circle, i}
-        <circle
-            cx={circle.pos[0]}
-            cy={circle.pos[1]}
-            r="10"
-            fill={$selected[i] ? '#ff0000' : '#ffffff'}
-        />
-    {/each}
-</svg>
+        {#each circles as circle, i}
+            <!-- Outer -->
+            <circle
+                cx={circle.pos[0]}
+                cy={circle.pos[1]}
+                r="12"
+                fill={$selected[i] ? 'url(#selected-circle)' : 'transparent'}
+                stroke="hsla(178, 54%, 69%, {$selected[i] ? 1 : 0})"
+                stroke-width="2"
+            />
+            <!-- Inner -->
+            <circle
+                cx={circle.pos[0]}
+                cy={circle.pos[1]}
+                r="3"
+                fill={$selected[i] ? 'hsla(178, 54%, 69%, 1)' : 'hsl(0, 0%, 100%, 0.5)'}
+            />
+        {/each}
+
+        <defs>
+            <linearGradient id="selected-circle" gradientTransform="rotate(90)">
+                <stop offset="0%" stop-color="hsl(240, 5%, 10%)" />
+                <stop offset="100%" stop-color="hsla(178, 54%, 69%, 1)" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <div class="users-modal">
+        <h3>Select subscribers</h3>
+        <hr />
+        <Accordion>
+            <AccordionItem index={0}>
+                <div slot="trigger">
+                    <input type="checkbox" on:click|stopPropagation /><span>Eleanor Pena</span>
+                    <span>(3/4 targets)</span>
+                </div>
+
+                <ul>
+                    <li>
+                        <input type="checkbox" />
+                        <span class="type">Email</span>
+                        <span class="value">eleanor.pena@gmail.com</span>
+                    </li>
+                </ul>
+            </AccordionItem>
+        </Accordion>
+    </div>
+</div>
 
 <style lang="scss">
     svg {
@@ -154,7 +196,8 @@
         margin-block-start: 2rem;
 
         line,
-        linearGradient {
+        linearGradient,
+        circle {
             transition: 200ms ease;
         }
     }
