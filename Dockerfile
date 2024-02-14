@@ -1,6 +1,21 @@
 # Use an official Node runtime as a parent image
 FROM node:latest
 
+ARG PUBLIC_APPWRITE_COL_MESSAGES_ID
+ENV PUBLIC_APPWRITE_COL_MESSAGES_ID ${PUBLIC_APPWRITE_COL_MESSAGES_ID}
+
+ARG PUBLIC_APPWRITE_COL_THREADS_ID
+ENV PUBLIC_APPWRITE_COL_THREADS_ID ${PUBLIC_APPWRITE_COL_THREADS_ID}
+
+ARG PUBLIC_APPWRITE_DB_MAIN_ID
+ENV PUBLIC_APPWRITE_DB_MAIN_ID ${PUBLIC_APPWRITE_DB_MAIN_ID}
+
+ARG PUBLIC_APPWRITE_FN_TLDR_ID
+ENV PUBLIC_APPWRITE_FN_TLDR_ID ${PUBLIC_APPWRITE_FN_TLDR_ID}
+
+ARG PUBLIC_APPWRITE_PROJECT_ID
+ENV PUBLIC_APPWRITE_PROJECT_ID ${PUBLIC_APPWRITE_PROJECT_ID}
+
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -16,7 +31,8 @@ RUN apt-get update; apt-get install -y fontconfig
 RUN fc-cache -f -v
 
 RUN corepack enable
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN NODE_OPTIONS=--max_old_space_size=8192 pnpm run build
 
 RUN NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
 
