@@ -73,7 +73,7 @@
         "markdown-it": "^13.0.2",
         "meilisearch": "^0.35.1",
         "motion": "^10.16.4",
-        "sharp": "^0.32.6",
+        "sharp": "^0.33.2",
         "svelte-markdown": "^0.4.0"
     }
 }
