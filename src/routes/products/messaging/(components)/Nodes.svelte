@@ -3,6 +3,8 @@
     import { withPrevious } from '$lib/utils/withPrevious';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
+    import { clamp } from '$lib/utils/clamp';
+    import Checkbox from './Checkbox.svelte';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -77,7 +79,7 @@
             // ease into new value
             const goal = isSelected ? 100 : 0;
             return {
-                percent: Math.min(100, Math.max(0, curr.percent + (goal - curr.percent) * 0.1)),
+                percent: clamp(0, curr.percent + (goal - curr.percent) * 0.15, 100),
                 reverse
             };
         });
@@ -146,9 +148,10 @@
                 cx={circle.pos[0]}
                 cy={circle.pos[1]}
                 r="12"
-                fill={$selected[i] ? 'url(#selected-circle)' : 'transparent'}
-                stroke="hsla(178, 54%, 69%, {$selected[i] ? 1 : 0})"
+                fill="url(#selected-circle)"
+                stroke="hsla(178, 54%, 69%, 1)"
                 stroke-width="2"
+                opacity={$selected[i] ? 1 : 0}
             />
             <!-- Inner -->
             <circle
@@ -168,30 +171,56 @@
     </svg>
 
     <div class="users-modal">
-        <h3>Select subscribers</h3>
-        <hr />
+        <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
         <Accordion>
-            <AccordionItem index={0}>
-                <div slot="trigger">
-                    <input type="checkbox" on:click|stopPropagation /><span>Eleanor Pena</span>
-                    <span>(3/4 targets)</span>
-                </div>
-
-                <ul>
+            <ul class="accordion-items">
+                {#each { length: 5 } as _, i (i)}
                     <li>
-                        <input type="checkbox" />
-                        <span class="type">Email</span>
-                        <span class="value">eleanor.pena@gmail.com</span>
+                        <AccordionItem index={i}>
+                            <div class="trigger" slot="trigger">
+                                <Checkbox />
+                                <span class="aw-sub-body-500 aw-u-color-text-primary">
+                                    Eleanor Pena
+                                </span>
+                                <span class="aw-caption-400">&nbsp;(3/4 targets)</span>
+                            </div>
+
+                            <ul>
+                                <li>
+                                    <Checkbox />
+
+                                    <span class="type">Email</span>
+                                    <span class="value">eleanor.pena@gmail.com</span>
+                                </li>
+                            </ul>
+                        </AccordionItem>
                     </li>
-                </ul>
-            </AccordionItem>
+                {/each}
+            </ul>
         </Accordion>
     </div>
 </div>
 
 <style lang="scss">
+    .wrapper {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                hsl(240, 5.7%, 10.4%, 0),
+                hsl(240, 5.7%, 10.4%, 0) 80%,
+                hsl(240, 5.7%, 10.4%, 1)
+            );
+            pointer-events: none;
+        }
+    }
+
     svg {
-        border: 1px dashed #fff;
+        /* border: 1px dashed #fff; */
         width: 100%;
         margin-block-start: 2rem;
 
@@ -199,6 +228,65 @@
         linearGradient,
         circle {
             transition: 200ms ease;
+        }
+    }
+
+    .users-modal {
+        @include border-gradient;
+
+        position: absolute;
+        inset-block-end: 0;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+
+        inline-size: 35rem;
+
+        padding: 2rem;
+        background-color: hsl(0, 0%, 100%, 0.02);
+        backdrop-filter: blur(35px);
+
+        --m-border-gradient-before: linear-gradient(
+            to bottom,
+            hsl(0, 0%, 100%, 0.07),
+            hsl(0, 0%, 100%, 0)
+        );
+        --m-border-radius: 1.5rem;
+
+        hr {
+            border-block-end: 1px solid hsl(var(--aw-color-offset));
+        }
+
+        .accordion-items {
+            display: flex;
+            flex-direction: column;
+            margin-block-start: 2rem;
+
+            > li {
+                border-block-start: 1px solid hsl(var(--aw-color-offset));
+
+                &:last-child {
+                    border-block-end: 1px solid hsl(var(--aw-color-offset));
+                }
+
+                .trigger {
+                    display: flex;
+                    align-items: center;
+                    padding-block: 1rem;
+
+                    > span:nth-child(2) {
+                        padding-inline-start: 1rem;
+                    }
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    /* padding-block-start: 1rem; */
+                    padding-inline-start: 2.25rem;
+                    padding-block-end: 1rem;
+                }
+            }
         }
     }
 </style>
