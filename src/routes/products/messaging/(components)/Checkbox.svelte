@@ -42,6 +42,8 @@
 
         position: relative;
 
+        transition: 150ms ease;
+
         &:hover {
             opacity: 0.8;
         }

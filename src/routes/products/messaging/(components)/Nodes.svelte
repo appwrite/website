@@ -8,7 +8,7 @@
 
     /* Variables & Contstants */
     const width = 2000;
-    const height = 1000;
+    const height = 1050;
 
     /* Entities */
     type Circle = {
@@ -257,12 +257,28 @@
                 {/each}
             </ul>
         </Accordion>
+        <div class="u-flex u-margin-block-start-20">
+            <span class="aw-u-color-text-tertiary" style:font-size="0.75rem">
+                Total results: {users.flatMap((u) => u.devices).length}
+            </span>
+        </div>
+
+        <hr />
+
+        <div class="u-flex u-cross-center u-main-end u-gap-16">
+            <span style="font-size: 14px; color: #6C6C71;"
+                >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
+            >
+            <button class="aw-button">Add</button>
+        </div>
     </div>
 </div>
 
 <style lang="scss">
     .wrapper {
         position: relative;
+        overflow: hidden;
+        margin-block-start: 2rem;
 
         &::after {
             content: '';
@@ -294,15 +310,15 @@
         @include border-gradient;
 
         position: absolute;
-        inset-block-end: 0;
+        inset-block-end: -3rem;
         inset-inline-start: 50%;
         transform: translateX(-50%);
 
-        inline-size: 35rem;
+        inline-size: 28rem;
 
         padding: 2rem;
         background-color: hsl(0, 0%, 100%, 0.02);
-        backdrop-filter: blur(35px);
+        backdrop-filter: blur(20px);
 
         --m-border-gradient-before: linear-gradient(
             to bottom,
@@ -355,6 +371,12 @@
                     }
                 }
             }
+        }
+
+        hr {
+            margin-inline: -2rem;
+            border-block-end: 1px solid hsl(var(--aw-color-offset));
+            margin-block: 2rem;
         }
     }
 </style>
