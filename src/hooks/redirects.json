@@ -658,5 +658,9 @@
     {
         "link": "/policy/privacy",
         "redirect": "/privacy"
+    },
+    {
+        "link": "/cli/install.sh",
+        "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
     }
 ]
