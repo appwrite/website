@@ -2,7 +2,7 @@
 layout: post
 title: Building apps with Bun and Appwrite
 description: Learn what Bun really is, how it compares with Node.js and Deno, and how you can build apps with Bun and Appwrite.
-date: 2024-02-14
+date: 2024-01-10
 cover: /images/blog/building-apps-with-bun-and-appwrite/bun-cover.png
 timeToRead: 9
 author: aditya-oberai
