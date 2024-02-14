@@ -137,7 +137,7 @@ The handle submit and submit type are props passed from `pages/login.vue`
 <!-- components/authForm.vue -->
 
 <template>
-  <form
+<form
   class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
   @submit.prevent="handleSubmit"
 >

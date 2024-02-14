@@ -99,6 +99,7 @@ Server SDK - Yes
 
 Client SDK - Yes
 
+
 ```javascript
 import { Client, Teams } from "appwrite";
 
@@ -114,6 +115,7 @@ const promise = Teams.create('<TEAM_ID>', '[NAME]');
 Server SDK - Yes
 
 Client SDK - No
+
 
 ```javascript
 const sdk = require('node-appwrite');
@@ -131,5 +133,3 @@ Learn more about Labels and Teams in our documentation:
 - [Teams](https://appwrite.io/docs/products/auth/teams)
 
 Watch the video tutorial on 'how to manage user permissions with Labels and Teams' on [YouTube](https://www.youtube.com/watch?v=xJTj5Ye8-W0&feature=youtu.be).
-
-[![Teams and Labels in Appwrite](http://img.youtube.com/vi/xJTj5Ye8-W0/0.jpg)](http://www.youtube.com/watch?v=xJTj5Ye8-W0)
