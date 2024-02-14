@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { withRaf } from '$lib/utils/withRaf';
+    import { withPrevious } from '$lib/utils/withPrevious';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -46,28 +47,93 @@
         { from: 5, to: 3 },
         { from: 5, to: 2 }
     ];
-    $: console.log(lines);
 
-    let selected = [] as boolean[];
+    let selected = withPrevious(circles.map(() => false));
+    let prevSelected = selected.previous;
+
+    type AnimationProgress = {
+        percent: number;
+        reverse: boolean;
+    };
+    let animationProgress = lines.map(() => {
+        return { percent: 0, reverse: false } as AnimationProgress;
+    });
+
+    withRaf(() => {
+        animationProgress = animationProgress.map((curr, i) => {
+            const isSelected = $selected[lines[i].from] && $selected[lines[i].to];
+            const wasSelected = $prevSelected[lines[i].from] && $prevSelected[lines[i].to];
+            let reverse = false;
+            if (wasSelected !== isSelected) {
+                if (isSelected) {
+                    reverse = $prevSelected[lines[i].to];
+                } else {
+                    reverse = $selected[lines[i].to];
+                }
+            }
+
+            // ease into new value
+            const goal = isSelected ? 100 : 0;
+            return {
+                percent: Math.min(100, Math.max(0, curr.percent + (goal - curr.percent) * 0.1)),
+                reverse
+            };
+        });
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function anyify<T>(x: T): any {
+        return x;
+    }
 </script>
 
 {#each circles as circle, i}
     <div>
         <label>
-            <input type="checkbox" bind:checked={selected[i]} />
+            <input
+                type="checkbox"
+                checked={$selected[i]}
+                on:change={(e) => {
+                    const target = anyify(e.target);
+                    $selected = $selected.map((_, j) => (j === i ? target.checked : $selected[j]));
+                }}
+            />
             Circle {i} ({circle.pos[0]}, {circle.pos[1]})
         </label>
     </div>
 {/each}
 
 <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
-    {#each lines as line}
+    {#each lines as line, i}
+        {@const x1 = animationProgress[i].reverse
+            ? circles[line.to].pos[0]
+            : circles[line.from].pos[0]}
+        {@const y1 = animationProgress[i].reverse
+            ? circles[line.to].pos[1]
+            : circles[line.from].pos[1]}
+        {@const x2 = animationProgress[i].reverse
+            ? circles[line.from].pos[0]
+            : circles[line.to].pos[0]}
+        {@const y2 = animationProgress[i].reverse
+            ? circles[line.from].pos[1]
+            : circles[line.to].pos[1]}
+
+        {@const selectionPercent = animationProgress[i].percent}
+        <linearGradient id="gradient-{i}" gradientUnits="userSpaceOnUse" {x1} {y1} {x2} {y2}>
+            <!-- Go from red to white, depending on selectionPercent -->
+            <stop offset="0%" stop-color={'#ff0000'} />
+            <stop offset="{selectionPercent}%" stop-color={'#ff0000'} />
+            <stop offset="{selectionPercent}%" stop-color={'#ffffff'} />
+            <stop offset="100%" stop-color={'#ffffff'} />
+        </linearGradient>
+
         <line
             x1={circles[line.from].pos[0]}
             y1={circles[line.from].pos[1]}
             x2={circles[line.to].pos[0]}
             y2={circles[line.to].pos[1]}
-            stroke={selected[line.from] && selected[line.to] ? '#ff0000' : '#ffffff50'}
+            stroke="url(#gradient-{i})"
+            stroke-width="2"
         />
     {/each}
 
@@ -76,15 +142,20 @@
             cx={circle.pos[0]}
             cy={circle.pos[1]}
             r="10"
-            fill={selected[i] ? '#ff0000' : '#ffffff'}
+            fill={$selected[i] ? '#ff0000' : '#ffffff'}
         />
     {/each}
 </svg>
 
-<style>
+<style lang="scss">
     svg {
         border: 1px dashed #fff;
         width: 100%;
         margin-block-start: 2rem;
+
+        line,
+        linearGradient {
+            transition: 200ms ease;
+        }
     }
 </style>
