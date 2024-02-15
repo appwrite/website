@@ -1,7 +1,9 @@
 <script>
     import { FooterNav, MainFooter } from '$lib/components';
     import Main from '$lib/layouts/Main.svelte';
-    import Nodes from './(components)/Nodes.svelte';
+    import Draft from './(components)/Draft.svelte';
+    import Step from './(components)/Step.svelte';
+    import Target from './(components)/Target.svelte';
 </script>
 
 <svelte:head>
@@ -48,25 +50,8 @@
     </div>
 
     <div class="steps aw-container">
-        <div class="step">
-            <div class="aw-dot" />
-            <h2 class="aw-eyebrow aw-u-color-text-primary">Step 1: Draft</h2>
-            <enhanced:img class="img" src="./(assets)/draft.png" alt="" />
-            <div class="text">
-                <h3 class="aw-title aw-u-color-text-primary">
-                    Draft and preview your message before delivering it
-                </h3>
-                <p class="aw-description u-margin-block-start-24">
-                    See a preview of your crafted messages on the Console before sending them to
-                    your audience.
-                </p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="aw-dot" />
-            <h2 class="aw-eyebrow aw-u-color-text-primary">Step 2: Target</h2>
-            <Nodes />
-        </div>
+        <Draft />
+        <Target />
     </div>
 
     <div class="aw-container">
@@ -152,32 +137,6 @@
         position: relative;
         padding-block-start: 5rem;
 
-        $padding-block-end: 7.5rem;
-
-        .step {
-            border-inline-start: 1px solid hsl(var(--aw-color-offset));
-            padding-inline-start: 2rem;
-            padding-block-end: $padding-block-end;
-            position: relative;
-
-            .aw-dot {
-                position: absolute;
-                inset-inline-start: calc(calc(var(--p-dot-size) / 2) * -1);
-            }
-
-            .img {
-                margin-block-start: 2rem;
-                block-size: auto;
-            }
-        }
-
-        .step:nth-child(1) {
-            .text {
-                position: absolute;
-                max-inline-size: 33.5rem;
-                inset-block-end: $padding-block-end;
-                inset-inline-start: 5rem;
-            }
-        }
+        --padding-block-end: 7.5rem;
     }
 </style>
