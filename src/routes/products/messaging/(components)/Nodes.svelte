@@ -92,7 +92,7 @@
     let selected = withPrevious(users.flatMap((u) => u.devices.map((d) => d.checked)));
     let prevSelected = selected.previous;
 
-    $: circles = users.flatMap((u) => u.devices.map((d) => ({ pos: d.circlePos })));
+    $: devices = users.flatMap((u) => u.devices);
 
     $: {
         // Update selected devices
@@ -134,17 +134,17 @@
     <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
         {#each lines as line, i}
             {@const x1 = animationProgress[i].reverse
-                ? circles[line.to].pos[0]
-                : circles[line.from].pos[0]}
+                ? devices[line.to].circlePos[0]
+                : devices[line.from].circlePos[0]}
             {@const y1 = animationProgress[i].reverse
-                ? circles[line.to].pos[1]
-                : circles[line.from].pos[1]}
+                ? devices[line.to].circlePos[1]
+                : devices[line.from].circlePos[1]}
             {@const x2 = animationProgress[i].reverse
-                ? circles[line.from].pos[0]
-                : circles[line.to].pos[0]}
+                ? devices[line.from].circlePos[0]
+                : devices[line.to].circlePos[0]}
             {@const y2 = animationProgress[i].reverse
-                ? circles[line.from].pos[1]
-                : circles[line.to].pos[1]}
+                ? devices[line.from].circlePos[1]
+                : devices[line.to].circlePos[1]}
 
             {@const selectionPercent = animationProgress[i].percent}
             <linearGradient id="gradient-{i}" gradientUnits="userSpaceOnUse" {x1} {y1} {x2} {y2}>
@@ -156,20 +156,20 @@
             </linearGradient>
 
             <line
-                x1={circles[line.from].pos[0]}
-                y1={circles[line.from].pos[1]}
-                x2={circles[line.to].pos[0]}
-                y2={circles[line.to].pos[1]}
+                x1={devices[line.from].circlePos[0]}
+                y1={devices[line.from].circlePos[1]}
+                x2={devices[line.to].circlePos[0]}
+                y2={devices[line.to].circlePos[1]}
                 stroke="url(#gradient-{i})"
                 stroke-width="2"
             />
         {/each}
 
-        {#each circles as circle, i}
+        {#each devices as device, i}
             <!-- Outer -->
             <circle
-                cx={circle.pos[0]}
-                cy={circle.pos[1]}
+                cx={device.circlePos[0]}
+                cy={device.circlePos[1]}
                 r="12"
                 fill="url(#selected-circle)"
                 stroke="hsla(178, 54%, 69%, 1)"
@@ -178,11 +178,22 @@
             />
             <!-- Inner -->
             <circle
-                cx={circle.pos[0]}
-                cy={circle.pos[1]}
+                cx={device.circlePos[0]}
+                cy={device.circlePos[1]}
                 r="3"
                 fill={$selected[i] ? 'hsla(178, 54%, 69%, 1)' : 'hsl(0, 0%, 100%, 0.5)'}
             />
+
+            <foreignObject
+                x={device.circlePos[0] - 12}
+                y={device.circlePos[1] + 24}
+                width="320"
+                height="64"
+            >
+                <span class="aw-eyebrow" data-active={$selected[i]}>
+                    {device.value}
+                </span>
+            </foreignObject>
         {/each}
 
         <defs>
@@ -300,6 +311,32 @@
         linearGradient,
         circle {
             transition: 200ms ease;
+        }
+
+        text {
+            text-transform: uppercase;
+        }
+
+        foreignObject span {
+            @include border-gradient;
+            --m-border-radius: 0.5rem;
+            --m-border-gradient-before: linear-gradient(
+                to bottom,
+                hsl(0, 0%, 100%, 0.07),
+                hsl(0, 0%, 100%, 0)
+            );
+
+            display: inline-block;
+            background: linear-gradient(to bottom, hsl(0, 0%, 100%, 0.128), hsl(0, 0%, 100%, 0));
+            padding: 0.25rem 0.5rem;
+            opacity: 0;
+            transition: 200ms ease;
+            font-size: 1rem;
+            translate: 0 4px;
+
+            &[data-active='true'] {
+                opacity: 1;
+            }
         }
     }
 
