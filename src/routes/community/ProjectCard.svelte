@@ -18,9 +18,9 @@
     export let image: $$Props['image'];
     export let href: $$Props['href'];
 </script>
-
 <a
     class="aw-card is-white aw-u-flex-vertical u-gap-8"
+    style="--card-padding: 0.5rem;"
     {href}
     target="_blank"
     rel="noopener noreferrer"
@@ -38,9 +38,6 @@
 
 <style lang="scss">
     .aw-card {
-        --card-padding: 0.5rem;
-        border-radius: 1rem;
-
         &:hover {
             img {
                 transform: scale(1.025);

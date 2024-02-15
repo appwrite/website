@@ -40,20 +40,21 @@
 </script>
 
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
     import { Carousel } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { GITHUB_STARS } from '$lib/constants';
+    import { Main } from '$lib/layouts';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
-    import MetricCard from '$lib/components/MetricCard.svelte';
 
     export let data;
 
@@ -89,7 +90,7 @@
     ];
 
     const metrics = [
-        { metric: '38K+', description: 'GitHub Stars' },
+        { metric: '39K+', description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
         { metric: '18K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
@@ -143,10 +144,9 @@
     <div class="aw-big-padding-section u-overflow-hidden">
         <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
             <div
-                class="u-position-absolute aw-u-hide-mobile"
+                class="u-position-absolute aw-u-z-index-1-negative aw-u-hide-mobile"
                 style:inline-size="704px"
                 style:block-size="670px"
-                style:z-index="-1"
                 style:left="calc((50% - 704px / 2) + 18rem)"
                 style:top="-4rem"
             >
@@ -181,7 +181,8 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span
+                                    >
                                 </a>
                             </div>
                         </div>
@@ -453,7 +454,7 @@
                 <div class="aw-container">
                     <div class="aw-hero is-center">
                         <h2 class="aw-display aw-u-color-text-primary">Inspire and get inspired</h2>
-                        <p class="aw-description" style:margin-block-start="0">
+                        <p class="aw-description aw-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>

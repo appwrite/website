@@ -5,9 +5,7 @@
   &-caption {
     position:sticky; inset-block-start:pxToRem(96);
     padding-inline:pxToRem(8); margin-inline:pxToRem(-8);
-
-    -webkit-backdrop-filter:blur(pxToRem(8));
-    backdrop-filter:blur(pxToRem(8));
+    -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8));
 
     &-button { padding-block:pxToRem(16); }
     @media #{$break1} {

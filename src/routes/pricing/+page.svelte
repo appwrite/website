@@ -248,7 +248,7 @@
                                     to find out more.
                                 </p>
                                 <a
-                                    href="/blog/post/announcing-appwrite-pro"
+                                    href="/docs/advanced/platform/oss"
                                     class="aw-button is-secondary u-margin-block-start-32"
                                 >
                                     <span>Learn more</span>

@@ -78,7 +78,7 @@
         });
     });
 
-    $: browser && currentTheme.subscribe((theme) => applyTheme(theme));
+    $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
 </script>
 
 <svelte:head>

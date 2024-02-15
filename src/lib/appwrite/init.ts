@@ -1,5 +1,5 @@
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
-import { Client, Account, Databases } from 'appwrite';
+import { Client, Account, Databases } from '@appwrite.io/console';
 
 const client = new Client();
 
