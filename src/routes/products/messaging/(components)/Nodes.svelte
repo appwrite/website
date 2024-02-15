@@ -19,17 +19,18 @@
 
     const lines: Line[] = [
         { from: 0, to: 1 },
-        { from: 0, to: 2 },
-        { from: 0, to: 4 },
         { from: 0, to: 7 },
-        { from: 7, to: 6 },
-        { from: 6, to: 8 },
+        { from: 0, to: 4 },
+        { from: 0, to: 2 },
         { from: 1, to: 2 },
-        { from: 2, to: 3 },
+        { from: 2, to: 6 },
+        { from: 6, to: 8 },
+        { from: 1, to: 7 },
+        { from: 7, to: 3 },
         { from: 3, to: 4 },
         { from: 4, to: 1 },
         { from: 5, to: 3 },
-        { from: 5, to: 2 }
+        { from: 5, to: 7 }
     ];
 
     type User = {
@@ -39,6 +40,7 @@
             type: string;
             value: string;
             circlePos: [number, number];
+            textPos?: [number, number];
         }>;
     };
 
@@ -47,44 +49,75 @@
             name: 'Eleanor Pena',
             devices: [
                 {
-                    checked: false,
+                    checked: true,
                     type: 'Email',
-                    value: 'eleanor.pena@gmail.com',
+                    value: 'eleanor.pena@appwrite.io',
                     circlePos: [100, 500]
                 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7890', circlePos: [500, 100] },
-                { checked: false, type: 'Push', value: "Eleanor's iPhone", circlePos: [1500, 100] }
+                {
+                    checked: true,
+                    type: 'Push',
+                    value: "Eleanor's iPhone",
+
+                    circlePos: [500, 100],
+                    textPos: [250, 80]
+                },
+                { checked: true, type: 'SMS', value: '+1 123 456 2890', circlePos: [1520, 700] }
             ]
         },
         {
             name: "Walter O'Brien",
             devices: [
                 {
-                    checked: false,
+                    checked: true,
                     type: 'Email',
                     value: 'walter@appwrite.io',
                     circlePos: [1500, 900]
                 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7000', circlePos: [500, 900] }
+                {
+                    checked: true,
+                    type: 'SMS',
+                    value: '+55 98142-4332',
+                    circlePos: [500, 900],
+                    textPos: [300, 924]
+                }
             ]
         },
         {
             name: 'Toby Curtis',
             devices: [
-                { checked: false, type: 'Push', value: "Toby's Pixel", circlePos: [1900, 500] },
-                { checked: false, type: 'Push', value: "Toby's Laptop", circlePos: [450, 450] }
+                {
+                    checked: true,
+                    type: 'Push',
+                    value: "Toby's Pixel",
+                    circlePos: [1900, 500],
+                    textPos: [1700, 480]
+                },
+                {
+                    checked: true,
+                    type: 'Push',
+                    value: "Toby's Laptop",
+                    circlePos: [450, 450],
+                    textPos: [300, 390]
+                }
             ]
         },
         {
             name: 'Paige Dineen',
             devices: [
                 {
-                    checked: false,
+                    checked: true,
                     type: 'Email',
                     value: 'paige@appwrite.io',
-                    circlePos: [1570, 700]
+                    circlePos: [1500, 100]
                 },
-                { checked: false, type: 'SMS', value: '+1 123 456 7000', circlePos: [1300, 450] }
+                {
+                    checked: true,
+                    type: 'SMS',
+                    value: '+351 999 888 124',
+                    circlePos: [1300, 450],
+                    textPos: [1100, 430]
+                }
             ]
         }
     ];
@@ -133,28 +166,6 @@
 <div class="wrapper">
     <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
         {#each lines as line, i}
-            {@const x1 = animationProgress[i].reverse
-                ? devices[line.to].circlePos[0]
-                : devices[line.from].circlePos[0]}
-            {@const y1 = animationProgress[i].reverse
-                ? devices[line.to].circlePos[1]
-                : devices[line.from].circlePos[1]}
-            {@const x2 = animationProgress[i].reverse
-                ? devices[line.from].circlePos[0]
-                : devices[line.to].circlePos[0]}
-            {@const y2 = animationProgress[i].reverse
-                ? devices[line.from].circlePos[1]
-                : devices[line.to].circlePos[1]}
-
-            {@const selectionPercent = animationProgress[i].percent}
-            <linearGradient id="gradient-{i}" gradientUnits="userSpaceOnUse" {x1} {y1} {x2} {y2}>
-                <!-- Go from red to white, depending on selectionPercent -->
-                <stop offset="0%" stop-color="hsla(178, 54%, 69%, 1)" />
-                <stop offset="{selectionPercent}%" stop-color="hsla(178, 54%, 69%, 1)" />
-                <stop offset="{selectionPercent}%" stop-color="hsla(0, 0%, 100%, 0.08)" />
-                <stop offset="100%" stop-color="hsla(0, 0%, 100%, 0.08)" />
-            </linearGradient>
-
             <line
                 x1={devices[line.from].circlePos[0]}
                 y1={devices[line.from].circlePos[1]}
@@ -166,6 +177,11 @@
         {/each}
 
         {#each devices as device, i}
+            {@const textPos = device.textPos ?? [
+                device.circlePos[0] - 12,
+                device.circlePos[1] + 24
+            ]}
+
             <!-- Outer -->
             <circle
                 cx={device.circlePos[0]}
@@ -184,19 +200,45 @@
                 fill={$selected[i] ? 'hsla(178, 54%, 69%, 1)' : 'hsl(0, 0%, 100%, 0.5)'}
             />
 
-            <foreignObject
-                x={device.circlePos[0] - 12}
-                y={device.circlePos[1] + 24}
-                width="320"
-                height="64"
-            >
-                <span class="aw-eyebrow" data-active={$selected[i]}>
+            <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
+                <span class="aw-eyebrow aw-u-color-text-primary" data-active={$selected[i]}>
                     {device.value}
                 </span>
             </foreignObject>
         {/each}
 
         <defs>
+            {#each lines as line, i}
+                {@const x1 = animationProgress[i].reverse
+                    ? devices[line.to].circlePos[0]
+                    : devices[line.from].circlePos[0]}
+                {@const y1 = animationProgress[i].reverse
+                    ? devices[line.to].circlePos[1]
+                    : devices[line.from].circlePos[1]}
+                {@const x2 = animationProgress[i].reverse
+                    ? devices[line.from].circlePos[0]
+                    : devices[line.to].circlePos[0]}
+                {@const y2 = animationProgress[i].reverse
+                    ? devices[line.from].circlePos[1]
+                    : devices[line.to].circlePos[1]}
+
+                {@const selectionPercent = animationProgress[i].percent}
+                <linearGradient
+                    id="gradient-{i}"
+                    gradientUnits="userSpaceOnUse"
+                    {x1}
+                    {y1}
+                    {x2}
+                    {y2}
+                >
+                    <!-- Go from red to white, depending on selectionPercent -->
+                    <stop offset="0%" stop-color="hsla(178, 54%, 69%, 1)" />
+                    <stop offset="{selectionPercent}%" stop-color="hsla(178, 54%, 69%, 1)" />
+                    <stop offset="{selectionPercent}%" stop-color="hsla(0, 0%, 100%, 0.08)" />
+                    <stop offset="100%" stop-color="hsla(0, 0%, 100%, 0.08)" />
+                </linearGradient>
+            {/each}
+
             <linearGradient id="selected-circle" gradientTransform="rotate(90)">
                 <stop offset="0%" stop-color="hsl(240, 5%, 10%)" />
                 <stop offset="100%" stop-color="hsla(178, 54%, 69%, 1)" />
@@ -327,11 +369,11 @@
             );
 
             display: inline-block;
-            background: linear-gradient(to bottom, hsl(0, 0%, 100%, 0.128), hsl(0, 0%, 100%, 0));
-            padding: 0.25rem 0.5rem;
+            background: linear-gradient(to bottom, hsl(240, 2%, 22%), hsl(240, 4%, 16%));
+            padding: 0.5rem 0.75rem;
             opacity: 0;
             transition: 200ms ease;
-            font-size: 1rem;
+            font-size: 1.175rem;
             translate: 0 4px;
 
             &[data-active='true'] {
