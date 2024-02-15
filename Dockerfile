@@ -49,8 +49,5 @@ RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=8192 pnpm run build
 
-RUN NODE_OPTIONS=--max_old_space_size=4096 pnpm run build
-
-
 EXPOSE 3000
 CMD [ "node", "server/main.js"]
