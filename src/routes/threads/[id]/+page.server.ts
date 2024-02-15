@@ -5,7 +5,7 @@ export const prerender = 'auto';
 
 export const entries = async () => {
     const ids = [];
-    for await (const thread of iterateAllThreads()) {
+    for await (const thread of iterateAllThreads(100)) {
         ids.push({ id: thread.$id });
     }
 
