@@ -158,7 +158,7 @@
         </div>
         <div class="aw-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://stage.cloud.appwrite.io" class="aw-button">
+                <a href="https://cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
