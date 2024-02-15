@@ -112,7 +112,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads() {
+export async function* iterateAllThreads(total: number|undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {
@@ -131,5 +131,9 @@ export async function* iterateAllThreads() {
         }
 
         offset += limit;
+
+        if (total !== undefined && offset >= total) {
+            break;
+        }
     }
 }
