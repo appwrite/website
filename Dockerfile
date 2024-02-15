@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:20
+FROM node:20-bullseye
 
 ARG PUBLIC_APPWRITE_COL_MESSAGES_ID
 ENV PUBLIC_APPWRITE_COL_MESSAGES_ID ${PUBLIC_APPWRITE_COL_MESSAGES_ID}
