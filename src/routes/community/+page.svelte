@@ -1,23 +1,5 @@
-<script lang="ts">
-    import { Main } from '$lib/layouts';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
-    import { Carousel } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
-    import FloatingHeads from '$lib/components/FloatingHeads.svelte';
-    import type { EventCardProps } from './EventCard.svelte';
-    import EventCard from './EventCard.svelte';
-    import type { ProjectCardProps } from './ProjectCard.svelte';
-    import ProjectCard from './ProjectCard.svelte';
-    import MetricCard from '$lib/components/MetricCard.svelte';
-    import { GITHUB_STARS } from '$lib/constants';
-
-    export let data;
-
-    const events: EventCardProps[] = [
+<script lang="ts" context="module">
+    export const events: EventCardProps[] = [
         {
             href: '/discord',
             cover: {
@@ -55,6 +37,26 @@
             buttonText: 'View event'
         }
     ];
+</script>
+
+<script lang="ts">
+    import { Carousel } from '$lib/components';
+    import FloatingHeads from '$lib/components/FloatingHeads.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { GITHUB_STARS } from '$lib/constants';
+    import { Main } from '$lib/layouts';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import type { EventCardProps } from './EventCard.svelte';
+    import EventCard from './EventCard.svelte';
+    import type { ProjectCardProps } from './ProjectCard.svelte';
+    import ProjectCard from './ProjectCard.svelte';
+
+    export let data;
 
     const projects: ProjectCardProps[] = [
         {
@@ -179,7 +181,8 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span
+                                    >
                                 </a>
                             </div>
                         </div>
