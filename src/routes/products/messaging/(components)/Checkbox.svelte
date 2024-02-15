@@ -3,6 +3,7 @@
 
     export let checked: NonNullable<CreateCheckboxProps['defaultChecked']> = false;
     export let onCheckedChange: CreateCheckboxProps['onCheckedChange'] = undefined;
+    export let id: string;
 
     const {
         elements: { root },
@@ -17,7 +18,7 @@
     $: sync.checked(checked, (v) => (checked = v));
 </script>
 
-<button use:melt={$root} on:click|stopPropagation>
+<button {id} use:melt={$root} on:click|stopPropagation>
     {#if $isIndeterminate}
         <div class="aw-icon-minus" />
     {:else if $isChecked}
