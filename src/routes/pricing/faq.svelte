@@ -29,7 +29,7 @@
         },
         {
             question: 'Why does Appwrite ask for payment verification for up to $150?',
-            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used.'
+            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used or your budget cap. If you need higher limits, <a class="aw-link is-inline" href="mailto:billing@appwrite.io">contact us</a>.'        
         },
         {
             question: 'How can I join the OSS program?',
