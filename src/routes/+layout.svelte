@@ -48,6 +48,7 @@
     import { navigating, page } from '$app/stores';
     import { onMount } from 'svelte';
     import { derived, writable } from 'svelte/store';
+    import { loggedIn } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -79,6 +80,9 @@
     });
 
     $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
+    $: if (browser && $loggedIn) {
+        document.body.dataset.loggedIn = '';
+    }
 </script>
 
 <svelte:head>

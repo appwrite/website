@@ -58,7 +58,7 @@ function createAppwriteUser() {
     if (browser) {
         const localUser = JSON.parse(localStorage.getItem('appwrite:user') ?? 'null');
         if (isAppwriteUser(localUser)) _set(localUser);
-
+        console.log('tst');
         getAppwriteUser().then((res) => {
             set(res);
         });
