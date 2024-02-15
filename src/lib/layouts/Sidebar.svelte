@@ -110,18 +110,7 @@
             </button>
         {/if}
         <div class="aw-side-nav-mobile-footer-buttons">
-            <IsLoggedIn>
-                <svelte:fragment slot="isLoggedIn">
-                    <a href="https://cloud.appwrite.io" class="aw-button">
-                        <span class="text">Go to Console</span>
-                    </a>
-                </svelte:fragment>
-                <svelte:fragment slot="isNotLoggedIn">
-                    <a href="https://cloud.appwrite.io" class="aw-button">
-                        <span class="text">Get started</span>
-                    </a>
-                </svelte:fragment>
-            </IsLoggedIn>
+            <IsLoggedIn />
 
             <a
                 href="https://github.com/appwrite/appwrite/stargazers"
