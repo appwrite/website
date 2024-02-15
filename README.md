@@ -15,7 +15,7 @@ The Appwrite Website has been built with the following frameworks:
 
 ## Development
 
-*If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory.*
+_If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory._
 
 To get the repo up and running in your local environment, use the following command:
 

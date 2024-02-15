@@ -5,7 +5,7 @@ import {
     PUBLIC_APPWRITE_FN_TLDR_ID
 } from '$env/static/public';
 import { databases, functions } from '$lib/appwrite';
-import { Query } from 'appwrite';
+import { Query } from '@appwrite.io/console';
 import type { DiscordMessage, DiscordThread } from './types';
 
 type Ranked<T> = {

@@ -22,6 +22,7 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
+    import { loggedIn } from '$lib/utils/console';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -157,7 +158,7 @@
         </div>
         <div class="aw-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="aw-button">
+                <a href="https://stage.cloud.appwrite.io" class="aw-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
@@ -242,9 +243,16 @@
                     <span class="text">Star on GitHub</span>
                     <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                 </a>
-                <a href="https://cloud.appwrite.io" class="aw-button">
-                    <span class="text">Get started</span>
-                </a>
+
+                {#if $loggedIn}
+                    <a href="https://cloud.appwrite.io" class="aw-button">
+                        <span class="text">Go to Console</span>
+                    </a>
+                {:else}
+                    <a href="https://cloud.appwrite.io" class="aw-button">
+                        <span class="text">Get started</span>
+                    </a>
+                {/if}
             </div>
         </div>
     </header>

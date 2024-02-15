@@ -45,9 +45,9 @@
     import '$scss/index.scss';
 
     import { browser, dev } from '$app/environment';
-    import { derived, writable } from 'svelte/store';
     import { navigating, page } from '$app/stores';
     import { onMount } from 'svelte';
+    import { derived, writable } from 'svelte/store';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;

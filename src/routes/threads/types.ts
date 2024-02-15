@@ -1,4 +1,4 @@
-import type { Models } from 'appwrite';
+import type { Models } from '@appwrite.io/console';
 
 export type MockThread = {
     id: string;
