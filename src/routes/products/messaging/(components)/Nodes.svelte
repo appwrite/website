@@ -2,9 +2,11 @@
     import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
     import { withRaf } from '$lib/utils/withRaf';
+    import { get } from 'svelte/store';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
     import Checkbox from './Checkbox.svelte';
+    import { dequal } from 'dequal/lite';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -55,7 +57,7 @@
                     circlePos: [100, 500]
                 },
                 {
-                    checked: true,
+                    checked: false,
                     type: 'Push',
                     value: "Eleanor's iPhone",
 
@@ -69,13 +71,13 @@
             name: "Walter O'Brien",
             devices: [
                 {
-                    checked: true,
+                    checked: false,
                     type: 'Email',
                     value: 'walter@appwrite.io',
                     circlePos: [1500, 900]
                 },
                 {
-                    checked: true,
+                    checked: false,
                     type: 'SMS',
                     value: '+55 98142-4332',
                     circlePos: [500, 900],
@@ -87,14 +89,14 @@
             name: 'Toby Curtis',
             devices: [
                 {
-                    checked: true,
+                    checked: false,
                     type: 'Push',
                     value: "Toby's Pixel",
                     circlePos: [1900, 500],
                     textPos: [1700, 480]
                 },
                 {
-                    checked: true,
+                    checked: false,
                     type: 'Push',
                     value: "Toby's Laptop",
                     circlePos: [450, 450],
@@ -106,13 +108,13 @@
             name: 'Paige Dineen',
             devices: [
                 {
-                    checked: true,
+                    checked: false,
                     type: 'Email',
                     value: 'paige@appwrite.io',
                     circlePos: [1500, 100]
                 },
                 {
-                    checked: true,
+                    checked: false,
                     type: 'SMS',
                     value: '+351 999 888 124',
                     circlePos: [1300, 450],
@@ -129,7 +131,8 @@
 
     $: {
         // Update selected devices
-        $selected = users.flatMap((u) => u.devices.map((d) => d.checked));
+        selected.set(users.flatMap((u) => u.devices.map((d) => d.checked)));
+        console.log(get(prevSelected), get(selected));
     }
 
     type AnimationProgress = {
@@ -145,6 +148,7 @@
             const isSelected = $selected[lines[i].from] && $selected[lines[i].to];
             const wasSelected = $prevSelected[lines[i].from] && $prevSelected[lines[i].to];
             let reverse = false;
+
             if (wasSelected !== isSelected) {
                 if (isSelected) {
                     reverse = $prevSelected[lines[i].to];
@@ -263,12 +267,19 @@
                                         ? 'indeterminate'
                                         : false}
                                     onCheckedChange={({ next }) => {
-                                        if (next === true) {
-                                            user.devices.forEach((d) => (d.checked = true));
-                                        } else if (!next) {
-                                            user.devices.forEach((d) => (d.checked = false));
+                                        const newUsers = structuredClone(users).map((u, j) => {
+                                            if (i === j) {
+                                                if (next === true) {
+                                                    u.devices.forEach((d) => (d.checked = true));
+                                                } else if (!next) {
+                                                    u.devices.forEach((d) => (d.checked = false));
+                                                }
+                                            }
+                                            return u;
+                                        });
+                                        if (!dequal(newUsers, users)) {
+                                            users = newUsers;
                                         }
-                                        users = users;
 
                                         return next;
                                     }}
