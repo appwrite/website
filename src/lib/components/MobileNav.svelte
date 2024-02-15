@@ -3,7 +3,6 @@
     import { IsLoggedIn } from '$lib/components';
     import { GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
-    import { loggedIn } from '$lib/utils/console';
 
     export let open = false;
     export let links: NavLink[];
