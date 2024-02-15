@@ -14,7 +14,7 @@
 
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { MobileNav } from '$lib/components';
+    import { MobileNav, IsLoggedIn } from '$lib/components';
     import { BANNER_KEY, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
@@ -22,7 +22,6 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { loggedIn } from '$lib/utils/console';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -243,16 +242,18 @@
                     <span class="text">Star on GitHub</span>
                     <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                 </a>
-
-                {#if $loggedIn}
-                    <a href="https://cloud.appwrite.io" class="aw-button">
-                        <span class="text">Go to Console</span>
-                    </a>
-                {:else}
-                    <a href="https://cloud.appwrite.io" class="aw-button">
-                        <span class="text">Get started</span>
-                    </a>
-                {/if}
+                <IsLoggedIn>
+                    <svelte:fragment slot="isLoggedIn">
+                        <a href="https://cloud.appwrite.io" class="aw-button">
+                            <span class="text">Go to Console</span>
+                        </a>
+                    </svelte:fragment>
+                    <svelte:fragment slot="isNotLoggedIn">
+                        <a href="https://cloud.appwrite.io" class="aw-button not-logged-in">
+                            <span class="text">Get started</span>
+                        </a>
+                    </svelte:fragment>
+                </IsLoggedIn>
             </div>
         </div>
     </header>
