@@ -45,7 +45,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com');
+const promise = account.createVerification('https://example.com/verify');
 
 promise.then(function (response) {
     console.log(response);
@@ -106,7 +106,7 @@ promise.then(function (response) {
 
 If a user forgets their password, they can initiate a password recovery flow to recover their password. The Create Password Recovery endpoint sends the user an email with a temporary secret key for password reset. When the user clicks the confirmation link, they are redirected back to the password reset URL with the secret key and email address values attached to the URL as query strings.
 
-Only redirect URLs to domains added as a platform on your Appwrite Console will be accepted. URLs not added as a platform are rejected to protect against redirect attacks.
+Only redirect URLs to domains added as a platform on your Appwrite Console will be accepted. URLs not added as a platform are rejected to protect against redirect attacks. In this example, the redirect URL is `https://example.com/recover`.
 
 ```js
 import { Client, Account } from "appwrite";
@@ -115,7 +115,7 @@ const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-const promise = account.createRecovery('email@example.com', 'https://example.com');
+const promise = account.createRecovery('email@example.com', 'https://example.com/recover');
 
 promise.then(function (response) {
     console.log(response); // Success
