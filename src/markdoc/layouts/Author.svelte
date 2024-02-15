@@ -47,8 +47,7 @@
 <Main>
     <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
         <div
-            class="u-position-absolute"
-            style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
+            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 aw-u-pointer-events-none"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

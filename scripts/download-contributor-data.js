@@ -11,7 +11,7 @@ async function fetchContributors() {
     let hasMoreData = true;
 
     while (hasMoreData) {
-        console.log(page);
+        console.log(`Fetching page ${page} of contributors...`);
         const url = `${apiUrl}?page=${page}&per_page=${perPage}`;
         const response = await fetch(url);
 
@@ -28,6 +28,8 @@ async function fetchContributors() {
             contributorsData = contributorsData.concat(data.map((c) => c.login));
             page++;
         }
+
+        console.log(`Fetched ${data.length} contributors. Total: ${contributorsData.length}...\n`);
     }
 
     if (contributorsData.length > 0) {

@@ -20,6 +20,7 @@
         android: 'icon-android',
         apple: 'icon-apple',
         flutter: 'icon-flutter',
+        nuxt: 'icon-nuxt',
         stripe: 'icon-stripe',
         refine: 'aw-icon-refine'
     };
@@ -52,58 +53,57 @@
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
                 <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="aw-title">Platforms</h1>
+                    <h1 class="aw-title">Tutorials</h1>
                 </div>
             </div>
             <div class="aw-article-header-end" />
         </header>
         <div class="aw-article-content aw-u-gap-80">
-            <section class="u-flex-vertical u-gap-24">
-                <h2 class="aw-eyebrow">Client</h2>
-                <ul class="tutorial-grid">
-                    {#each data.tutorials as tutorial}
-                        <li>
-                            <a href={tutorial.href} class="aw-card is-normal">
-                                <header>
-                                    <span
-                                        class="{getIcon(tutorial)} aw-u-font-size-24"
-                                        aria-hidden="true"
-                                    />
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        {tutorial.framework}
-                                    </h3>
-                                </header>
-                                <p class="aw-sub-body-400 u-margin-block-start-4">
-                                    {tutorial.title}
-                                </p>
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-                <ul class="tutorial-grid">
-                    {#each data.drafts as draft}
-                        <li>
-                            <a
-                                href={draft.href}
-                                class="aw-card is-normal draft"
-                                aria-disabled="true"
-                                tabindex="-1"
-                            >
-                                <header>
-                                    <span
-                                        class="{getIcon(draft)} aw-u-font-size-24"
-                                        aria-hidden="true"
-                                    />
-                                    <h3 class="aw-sub-body-500 aw-u-color-text-primary">
-                                        {draft.framework}
-                                    </h3>
-                                    <span class="badge aw-caption-400">Coming Soon</span>
-                                </header>
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
+            {#each data.tutorials as category}
+                <section class="u-flex-vertical u-gap-24">
+                    <h2 class="aw-eyebrow">{category.title}</h2>
+                    <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
+                        {#each category.tutorials as tutorial}
+                            <li>
+                                {#if tutorial.draft === true}
+                                    <a
+                                        href={tutorial.href}
+                                        class="aw-card is-normal draft"
+                                        aria-disabled="true"
+                                        tabindex="-1"
+                                    >
+                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                            <span
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
+                                                aria-hidden="true"
+                                            />
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                                {tutorial.framework}
+                                            </h3>
+                                            <span class="badge aw-caption-400">Coming Soon</span>
+                                        </header>
+                                    </a>
+                                {:else}
+                                    <a href={tutorial.href} class="aw-card is-normal">
+                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                            <span
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
+                                                aria-hidden="true"
+                                            />
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                                {tutorial.framework}
+                                            </h3>
+                                        </header>
+                                        <p class="aw-sub-body-400 u-margin-block-start-4">
+                                            {tutorial.title}
+                                        </p>
+                                    </a>
+                                {/if}
+                            </li>
+                        {/each}
+                    </ul>
+                </section>
+            {/each}
         </div>
     </article>
 
@@ -111,35 +111,6 @@
 </main>
 
 <style lang="scss">
-    .tutorial-grid {
-        display: grid;
-        gap: 1.5rem; // 24px
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-        .aw-card {
-            padding: 1.25rem;
-
-            header {
-                display: flex;
-                gap: 0.25rem;
-                align-items: center;
-
-                > [class*='icon'] {
-                    position: relative;
-                    width: 1.5rem;
-                    height: 1.5rem;
-
-                    &::before {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, calc(-50%));
-                    }
-                }
-            }
-        }
-    }
-
     .badge {
         border-radius: 0.25rem;
         background: rgba(253, 54, 110, 0.24);

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
+    import { GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
     import {loggedIn} from "$lib/utils/console";
 
@@ -48,7 +49,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
             </a>
         </div>
     </div>

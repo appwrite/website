@@ -6,8 +6,10 @@ node_modules
 /package
 .env
 .env.*
+.envrc
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 package-lock.json
 .tool-versions
+.vscode

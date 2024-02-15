@@ -1,7 +1,7 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID, HUBSPOT_LIST_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init.js';
 import type { User } from '$routes/init/helpers.js';
-import { ID, Query } from 'appwrite';
+import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
 import { hubspot } from '$lib/hubspot.server.js';
 import { isProUser } from '$lib/utils/console.js';
