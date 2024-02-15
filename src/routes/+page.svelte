@@ -430,6 +430,7 @@
                                 tag="@terry_lennon"
                                 icon="product-hunt"
                                 avatarSrc="/images/community/avatars/terry.png"
+                                profileURL="https://www.producthunt.com/@terry_lennon"
                             >
                                 Been a huge supporter of Appwrite for over a year, championing it
                                 even at the companies I was working at. Their community is
@@ -443,6 +444,8 @@
                                 tag="@varundhand"
                                 icon="linkedin"
                                 avatarSrc="/images/community/avatars/varun.png"
+                                profileURL="https://www.linkedin.com/in/varundhand"
+
                             >
                                 Recently, I embarked on a journey to create a Real-Time Chat
                                 Application that would redefine seamless communication. Along the
@@ -456,6 +459,8 @@
                                 tag="@Kaperskyguru"
                                 icon="x"
                                 avatarSrc="/images/community/avatars/kap.png"
+                                profileURL="https://twitter.com/Kaperskyguru"
+
                             >
                                 Backend Engineers, you will agree with me that building the
                                 authentication process for your app with each new API development is
@@ -473,6 +478,8 @@
                                 tag="@codewithsimon"
                                 icon="product-hunt"
                                 avatarSrc="/images/community/avatars/stephen.png"
+                                profileURL="https://twitter.com/codewithsimon"
+
                             >
                                 Absolutely in love with Appwrite and the commitment to the
                                 community!
@@ -484,6 +491,8 @@
                                 tag="@terieyenike"
                                 icon="product-hunt"
                                 avatarSrc="/images/community/avatars/terieyenike.png"
+                                profileURL="https://github.com/Terieyenike"
+
                             >
                                 I have used Appwrite twice, and the experience of using it was great
                                 as I got to build a full-stack application. I would gladly recommend
@@ -497,6 +506,8 @@
                                 tag="@Jeet_2003"
                                 icon="x"
                                 avatarSrc="/images/community/avatars/souvik.png"
+                                profileURL="https://twitter.com/Jeet_2003"
+
                             >
                                 If you're looking for a backend server that is both powerful and
                                 easy to use, check out <a

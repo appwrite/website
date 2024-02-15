@@ -177,8 +177,8 @@
                                     rel="noopener noreferrer"
                                     class="aw-button is-secondary is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="aw-icon-star" />
-                                    <span>Star on GitHub</span>
+                                <span class="aw-icon-github" aria-hidden="true" />
+                                <span class="text">GitHub</span>
                                     <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                                 </a>
                             </div>

@@ -42,8 +42,8 @@
                 rel="noopener noreferrer"
                 class="aw-button is-text aw-u-inline-width-100-percent-mobile"
             >
-                <span class="aw-icon-star" aria-hidden="true" />
-                <span class="text">Star on GitHub</span>
+                <span class="aw-icon-github" aria-hidden="true" />
+                <span class="text">GitHub</span>
                 <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
             </a>
         </div>
