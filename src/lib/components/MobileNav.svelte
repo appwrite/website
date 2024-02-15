@@ -20,18 +20,7 @@
             <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary aw-u-flex-1">
                 Sign up
             </a>
-            <IsLoggedIn>
-                <svelte:fragment slot="isLoggedIn">
-                    <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">
-                        Go to Console
-                    </a>
-                </svelte:fragment>
-                <svelte:fragment slot="isNotLoggedIn">
-                    <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">
-                        Get started
-                    </a>
-                </svelte:fragment>
-            </IsLoggedIn>
+            <IsLoggedIn classes="aw-u-flex-1" />
         </div>
         <div class="aw-side-nav-scroll">
             <section>
