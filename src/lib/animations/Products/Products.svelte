@@ -188,6 +188,20 @@
             }
         });
     })();
+
+    function navigateToProduct(product: Product) {
+        const i = products.indexOf(product);
+        const scale = productsScales[i][0];
+
+        const productsWrapper = document.getElementById('products');
+        if (!productsWrapper) return;
+        const rect = productsWrapper.getBoundingClientRect();
+
+        window.scrollTo({
+            top: rect.top + window.scrollY + rect.height * scale,
+            behavior: 'smooth'
+        });
+    }
 </script>
 
 <div
@@ -248,15 +262,20 @@
 
                             {#if copy}
                                 <li data-active={isActive ? '' : undefined}>
-                                    <h3>
-                                        <img
-                                            src={isActive ? copy.icon.active : copy.icon.inactive}
-                                            alt=""
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <span class="aw-label">{copy.title}</span>
-                                    </h3>
+                                    <button on:click={() => navigateToProduct(product)}>
+                                        <h3>
+                                            <img
+                                                src={isActive
+                                                    ? copy.icon.active
+                                                    : copy.icon.inactive}
+                                                alt=""
+                                                width="32"
+                                                height="32"
+                                            />
+                                            <span class="aw-label">{copy.title}</span>
+                                        </h3>
+                                    </button>
+
                                     {#if isActive}
                                         <div transition:slide>
                                             <h4 class="aw-title">{copy.subtitle}</h4>
