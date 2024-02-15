@@ -6,7 +6,7 @@ date: 2024-01-05
 cover: /images/blog/simplify-your-data-management-with-relationships/cover.png
 timeToRead: 6
 author: jake-barnby
-category:
+category: accessibility
 ---
 
 Managing collections of data is an essential task for any application, but it can quickly become complex when you need to keep track of the relationships between different collections. For instance, if you have two collections of data, such as movies and reviews, you may need to retrieve all the reviews associated with a particular movie. However, writing complex code to retrieve this data and merge it together manually can be time-consuming and prone to errors.
