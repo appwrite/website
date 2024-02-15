@@ -46,6 +46,11 @@
             if (hideBanner === 'true') {
                 document.body.dataset.bannerHidden = '';
             }
+            // Is logged in
+            const isLoggedIn = localStorage.getItem('appwrite:user');
+            if (isLoggedIn) {
+                document.body.dataset.loggedIn = '';
+            }
         </script>
         <div style="display: contents">%sveltekit.body%</div>
     </body>
