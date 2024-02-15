@@ -8,14 +8,16 @@
 <style lang="scss">
     :global(body[data-logged-in]) {
         .logged-in {
-            display: none;
             display: block;
+        }
+        .not-logged-in {
+            display: none;
         }
     }
-    :global(body[data-logged-in]) {
-        .not-logged-in {
-            display: block;
-            display: none;
-        }
+    .not-logged-in {
+        display: block;
+    }
+    .logged-in {
+        display: none;
     }
 </style>
