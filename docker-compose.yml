@@ -42,6 +42,6 @@ services:
       - traefik.http.routers.homepage_secure.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage_secure.service=homepage
       - traefik.http.routers.homepage_secure.tls=true
-  
+
 networks:
   homepage:

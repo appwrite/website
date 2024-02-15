@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:latest
+FROM node:20-alpine
 
 ARG PUBLIC_APPWRITE_COL_MESSAGES_ID
 ENV PUBLIC_APPWRITE_COL_MESSAGES_ID ${PUBLIC_APPWRITE_COL_MESSAGES_ID}
@@ -42,7 +42,7 @@ RUN rm -rf node_modules
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
-RUN apt-get update; apt-get install -y fontconfig
+RUN apk update; apk add fontconfig
 RUN fc-cache -f -v
 
 RUN corepack enable
