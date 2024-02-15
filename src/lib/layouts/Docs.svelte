@@ -171,18 +171,7 @@
                         <span class="text">Star on GitHub</span>
                         <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                     </a>
-                    <IsLoggedIn>
-                        <svelte:fragment slot="isLoggedIn">
-                            <a href="https://cloud.appwrite.io" class="aw-button">
-                                <span class="text">Go to Console</span>
-                            </a>
-                        </svelte:fragment>
-                        <svelte:fragment slot="isNotLoggedIn">
-                            <a href="https://cloud.appwrite.io" class="aw-button">
-                                <span class="text">Get started</span>
-                            </a>
-                        </svelte:fragment>
-                    </IsLoggedIn>
+                    <IsLoggedIn />
                 </div>
             </div>
         </div>
