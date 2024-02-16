@@ -134,9 +134,9 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
     return `
 <svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_b_327_1972)">
-<g clip-path="url(#clip0_327_1972)">
-  <rect width="438" height="249" rx="18" fill="#19191C" />
-  <rect width="438" height="249" rx="18" fill="url(#paint0_linear_327_1972)" fill-opacity="0.64" />
+<g >
+  <rect width="438" height="249" fill="#19191C" />
+  <rect width="438" height="249" fill="url(#paint0_linear_327_1972)" fill-opacity="0.64" />
   <g clip-path="url(#clip1_327_1972)">
   ${cards[ticket.variant ?? 'default']}
     <g filter="url(#filter2_f_327_1972)">
