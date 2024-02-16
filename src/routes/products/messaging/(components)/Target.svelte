@@ -8,6 +8,9 @@
     import Checkbox from './Checkbox.svelte';
     import { dequal } from 'dequal/lite';
     import Step from './Step.svelte';
+    import { onMount } from 'svelte';
+    import { inView } from 'motion';
+    import { sleep } from '$lib/animations';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -165,10 +168,27 @@
             };
         });
     });
+
+    let wrapper: HTMLElement;
+    onMount(() => {
+        inView(
+            wrapper,
+            () => {
+                (async () => {
+                    users[0].devices[0].checked = true;
+                    await sleep(1000);
+                    users[0].devices[2].checked = true;
+                    await sleep(500);
+                    users[0].devices[1].checked = true;
+                })();
+            },
+            { amount: 1 }
+        );
+    });
 </script>
 
 <Step title="Step 2: Target">
-    <div class="wrapper">
+    <div class="wrapper" bind:this={wrapper}>
         <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
             {#each lines as line, i}
                 <line
