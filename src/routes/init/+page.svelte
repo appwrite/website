@@ -51,7 +51,7 @@
             Appwrite is unveiling new features over a week of exciting announcements
         </p>
         <div class="buttons">
-            <a href="/init/ticket" class="aw-button">Get your ticket</a>
+            <a href="/init/ticket" class="aw-button">Claim your ticket</a>
             <button class="aw-button is-secondary">
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
@@ -139,7 +139,7 @@
         <p class="aw-sub-body-500">
             Create, customize, and share your Init ticket to enter our general giveaway.
         </p>
-        <a href="/init/ticket" class="aw-button is-secondary">Get your ticket</a>
+        <a href="/init/ticket" class="aw-button is-secondary">Claim your ticket</a>
 
         <div class="tickets">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
@@ -163,7 +163,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.
                 </p>
-                <a href="/init/ticket" class="aw-button">Get your ticket</a>
+                <a href="/init/ticket" class="aw-button">Claim your ticket</a>
             </div>
 
             <enhanced:img class="console" src="./(assets)/console.png" alt="" />
