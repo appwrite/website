@@ -1,23 +1,9 @@
-import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID, HUBSPOT_LIST_ID } from '$env/static/private';
+import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init.js';
+import { isProUser } from '$lib/utils/console.js';
 import type { User } from '$routes/init/helpers.js';
 import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
-import { hubspot } from '$lib/hubspot.server.js';
-import { isProUser } from '$lib/utils/console.js';
-
-type Contact = {
-    id: string;
-    properties: {
-        email: string;
-        hs_object_id: '4831113';
-        lastmodifieddate: '2024-01-24T09:16:04.042Z';
-    };
-};
-
-type ContactResults = {
-    results: Array<Contact>;
-};
 
 type SendToHubspotArgs = {
     name: string;
@@ -25,43 +11,16 @@ type SendToHubspotArgs = {
 };
 
 async function sendToHubspot({ name, email }: SendToHubspotArgs) {
-    // See if contact exists
-    const contacts: ContactResults = await hubspot
-        .fetch('objects/contacts/batch/read', {
-            method: 'POST',
-            body: JSON.stringify({
-                properties: ['email'],
-                idProperty: 'email',
-                inputs: [
-                    {
-                        id: email
-                    }
-                ]
-            })
+    await fetch('https://growth.appwrite.io/v1/mailinglists/init', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email,
+            name
         })
-        .then((res) => res.json());
-    let contact = contacts.results?.[0];
-
-    if (!contact) {
-        contact = await hubspot
-            .fetch('objects/contacts', {
-                method: 'POST',
-                body: JSON.stringify({
-                    properties: {
-                        email: email,
-                        firstname: name
-                    }
-                })
-            })
-            .then((res) => res.json());
-    }
-
-    await hubspot
-        .fetch(`lists/${HUBSPOT_LIST_ID}/memberships/add`, {
-            method: 'PUT',
-            body: JSON.stringify([contact.id])
-        })
-        .then((res) => res.json());
+    });
 }
 
 async function getTicketDocByUser(user: User) {
@@ -75,13 +34,13 @@ async function getTicketDocByUser(user: User) {
     const [gh, aw, isPro] = await Promise.all([
         user.github?.login
             ? appwriteInit.database.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                  Query.equal('gh_user', user.github.login)
-              ])
+                Query.equal('gh_user', user.github.login)
+            ])
             : null,
         user.appwrite?.$id
             ? appwriteInit.database.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                  Query.equal('aw_email', user.appwrite.email)
-              ])
+                Query.equal('aw_email', user.appwrite.email)
+            ])
             : null,
         isProUser()
     ]);
