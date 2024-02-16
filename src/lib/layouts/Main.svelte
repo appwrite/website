@@ -180,10 +180,10 @@
     >
         <div class="aw-top-banner">
             <div class="aw-top-banner-content aw-u-color-text-primary">
-                <a href="/blog/post/announcing-appwrite-pro">
-                    <span class="aw-caption-500"
-                        >Appwrite Pro is now available! Get started with $15 credit.</span
-                    >
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <span class="aw-caption-500">We are having lots of fun on</span>
+                    <span class="aw-icon-discord" aria-hidden="true" />
+                    <span class="aw-caption-500">Discord. Come and join us!</span>
                 </a>
                 {#if browser}
                     <button
