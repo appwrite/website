@@ -10,8 +10,11 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
         id
     )) as unknown as TicketData;
 
+    console.log('gh_user', gh_user);
     if (!gh_user) return null;
 
+
+    console.log('contributionssss', contributions);
     if (contributions?.length) {
         // Transform flat array into matrix with 7 columns
         const matrix: ContributionsMatrix = [];
@@ -25,12 +28,15 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
 
     const html = await res.text();
     const root = parse(html);
-    const table = root.querySelector('table');
+    const table = root.querySelector('table.ContributionCalendar-grid');
+
     if (!table) return null;
 
     const matrix: ContributionsMatrix = [];
     const rows = table.querySelectorAll('tbody tr');
     const maxCols = rows[0].querySelectorAll('[role="gridcell"]').length;
+
+    console.log('maxCols', maxCols);
     for (let c = 0; c < maxCols; c++) {
         matrix.push([]);
         for (let r = 0; r < rows.length; r++) {
@@ -44,6 +50,7 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
 
         matrix[c] = matrix[c].reverse();
     }
+    console.log('matrix', matrix);
 
     // Update the document with the new contributions
     await appwriteInit.database.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
