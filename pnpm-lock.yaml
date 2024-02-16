@@ -16,7 +16,7 @@ dependencies:
     version: 0.1.0-next.9
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0
+    version: github.com/appwrite/appwrite/c3ddc6a05dae5ce8c64025f1c31130b1cd126644
   '@resvg/resvg-js':
     specifier: ^2.6.0
     version: 2.6.0
@@ -52,6 +52,9 @@ dependencies:
     version: 0.4.1(svelte@4.2.7)
 
 devDependencies:
+  '@internationalized/date':
+    specifier: 3.5.0
+    version: 3.5.0
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.73.0)(svelte@4.2.7)
@@ -687,8 +690,8 @@ packages:
     dev: true
     optional: true
 
-  /@internationalized/date@3.5.1:
-    resolution: {integrity: sha512-LUQIfwU9e+Fmutc/DpRTGXSdgYZLBegi4wygCWDSVmUdLTaMHsQyASDiJtREwanwKuQLq0hY76fCJ9J/9I2xOQ==}
+  /@internationalized/date@3.5.0:
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
     dependencies:
       '@swc/helpers': 0.5.3
     dev: true
@@ -1157,7 +1160,7 @@ packages:
     dependencies:
       '@floating-ui/core': 1.5.0
       '@floating-ui/dom': 1.5.3
-      '@internationalized/date': 3.5.1
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.5
@@ -6890,8 +6893,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/cbf1085850354c6d16296e764e9c64abea067be0}
+  github.com/appwrite/appwrite/c3ddc6a05dae5ce8c64025f1c31130b1cd126644:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c3ddc6a05dae5ce8c64025f1c31130b1cd126644}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false

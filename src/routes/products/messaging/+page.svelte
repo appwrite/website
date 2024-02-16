@@ -2,12 +2,13 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import Main from '$lib/layouts/Main.svelte';
     import Draft from './(components)/Draft.svelte';
+    import Schedule from './(components)/Schedule.svelte';
     import Step from './(components)/Step.svelte';
     import Target from './(components)/Target.svelte';
 </script>
 
 <svelte:head>
-    <title>Messaging</title>
+    <title>Appwrite - Messaging</title>
 </svelte:head>
 
 <Main>
@@ -52,6 +53,7 @@
     <div class="steps aw-container">
         <Draft />
         <Target />
+        <Schedule />
     </div>
 
     <div class="aw-container">
