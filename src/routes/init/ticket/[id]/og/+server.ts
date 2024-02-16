@@ -17,7 +17,7 @@ export async function GET({ params, fetch }) {
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
         .resize({
-            width: 1000
+            // width: 1000
         })
         .toFormat('png')
         .toBuffer();
