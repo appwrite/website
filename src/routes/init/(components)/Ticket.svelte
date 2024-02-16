@@ -10,7 +10,7 @@
     import Bg from '../(assets)/ticket-bg.svg';
     import type { ContributionsMatrix, TicketData } from '../ticket/constants';
 
-    type $$Props = Omit<TicketData, '$id'> & {
+    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
     $: ({
