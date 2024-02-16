@@ -2,9 +2,31 @@
     import Step from './Step.svelte';
     import Marker from '../(assets)/marker.svg';
     import MarkerActive from '../(assets)/marker-active.svg';
+    import { inView } from 'motion';
+    import { onMount } from 'svelte';
+    import { sleep, write } from '$lib/animations';
 
-    let title = 'Edit the title on the console';
-    let message = 'Message goes here';
+    let title = '';
+    let message = '';
+    let wrapper: HTMLElement;
+
+    onMount(() => {
+        inView(
+            wrapper,
+            () => {
+                (async () => {
+                    await write('Appwrite Messaging is out 🚀', (v) => (title = v), 500);
+                    await sleep(500);
+                    await write(
+                        'Discover enhanced features to elevate your apps!',
+                        (v) => (message = v),
+                        500
+                    );
+                })();
+            },
+            { amount: 0.75 }
+        );
+    });
 </script>
 
 <Step title="Step 1: Draft">
@@ -12,6 +34,7 @@
         class="console"
         style:--marker-active="url('{MarkerActive}')"
         style:--marker="url('{Marker}')"
+        bind:this={wrapper}
     >
         <div class="inner">
             <div class="header">
