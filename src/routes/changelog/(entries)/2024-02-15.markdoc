@@ -4,7 +4,7 @@ title: New SDK versions released
 date: 2024-02-15
 cover: /images/changelog/2024-01-09.png
 ---
-We've released new SDK versions. 
+We've released new versions of the Ruby, .NET, and Dart SDKs. We also updated the Appwrite CLI.
 
 You can find the updates made on GitHub:
 - [Ruby 10.1.2](https://github.com/appwrite/sdk-for-ruby/releases/tag/10.1.2)
