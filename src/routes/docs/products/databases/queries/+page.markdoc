@@ -289,7 +289,7 @@ Queries are passed to an endpoint through the `queries` parameter as an array of
 Each query method is logically separated via `AND` operations. For `OR` operation, pass multiple values into the query method separated by commas. 
 For example `Query.equal('title', ['Avatar', 'Lord of the Rings'])` will fetch the movies `Avatar` or `Lord of the Rings`.
 
-{% info title="Permissions required" %}
+{% info title="Default pagination behavior" %}
 By default, results are limited to the **first 25 items**. 
 You can change this through [pagination](/docs/products/databases/pagination).
 {% /info %}
