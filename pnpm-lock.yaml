@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@appwrite.io/pink':
-    specifier: 0.1.0-next.9
-    version: 0.1.0-next.9
+    specifier: 0.4.0
+    version: 0.4.0
   '@appwrite.io/pink-icons':
-    specifier: 0.1.0-next.9
-    version: 0.1.0-next.9
+    specifier: 0.4.0
+    version: 0.4.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#feat-rc-sdks
     version: github.com/appwrite/appwrite/96cd47862446001ada9e791bbf4b118d892e0f28
@@ -166,14 +166,14 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.20
 
-  /@appwrite.io/pink-icons@0.1.0-next.9:
-    resolution: {integrity: sha512-6t4Pqt/xugjpJQyaMx1u/7Gt9CkW5iItDAgUKcIMm84E4NbDJq8ZdAhhvctGQQppKUgHDPi+6x1XveUUd7tdbg==}
+  /@appwrite.io/pink-icons@0.4.0:
+    resolution: {integrity: sha512-o1r101GRK72nBbeVL76H7NIwucrW8+vbzs41AMBPbnK+uAGhNb9ui5Na7gi6NtnBxHYnPDECg93bZhoLYlQ6XA==}
     dev: false
 
-  /@appwrite.io/pink@0.1.0-next.9:
-    resolution: {integrity: sha512-W5xVm2ZXlEqbbKv0GkpnM5saunDKdSfuhWouLnORsonENGFsG529PxRjqeClz4zrlkt2x1DiwN175wpgV3GoEQ==}
+  /@appwrite.io/pink@0.4.0:
+    resolution: {integrity: sha512-48g2MQIFaEXPXobJ77wJK73YRUkpUZSAkRNa3XJhtC0N2WSTXD3poXBAVYb2QfjGW4e5U1tM/WYC0ZQMtjEzlQ==}
     dependencies:
-      '@appwrite.io/pink-icons': 0.1.0-next.9
+      '@appwrite.io/pink-icons': 0.4.0
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.2
     dev: false

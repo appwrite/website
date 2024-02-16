@@ -12,10 +12,10 @@ Before you can deliver messages, you must connect to a messaging provider.
 Send push notifications, which are little notification messages that appear on a user's browser or device to alert them
 of events or updates. Configure one of the following providers to send push notifications.
 {% cards %}
-{% cards_item href="/docs/products/messaging/providers/apns" title="Apple Push Notification service" %}
+{% cards_item href="/docs/products/messaging/providers/apns" title="APNS" icon="icon-apple" %}
 Send push notifications to apps on Apple devices through Apple Push Notification service (APNs).
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/fcm" title="Firebase Cloud Messaging" %}
+{% cards_item href="/docs/products/messaging/providers/fcm" title="FCM" icon="icon-firebase" %}
 Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
 {% /cards_item %}
 {% /cards %}
@@ -23,10 +23,10 @@ Send push notifications to Android, Apple, or Web app with Firebase Cloud Messag
 # Email {% #email %}
 Deliver customized emails to users to send reminders, updates, promotions, and custom authentication logic.
 {% cards %}
-{% cards_item href="/docs/products/messaging/providers/mailgun" title="Mailgun" %}
+{% cards_item href="/docs/products/messaging/providers/mailgun" title="Mailgun" icon="icon-mailgun" %}
 Deliver custom email messages to users using Mailgun.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/sendgrid" title="Sendgrid" %}
+{% cards_item href="/docs/products/messaging/providers/sendgrid" title="Sendgrid" icon="icon-sendgrid" %}
 Deliver custom email messages to users using Sendgrid.
 {% /cards_item %}
 {% /cards %}
@@ -34,19 +34,19 @@ Deliver custom email messages to users using Sendgrid.
 # SMS {% #sms %}
 Send customized SMS messages to users by phone to send reminders, updates, promotions, and one-time passwords.
 {% cards %}
-{% cards_item href="/docs/products/messaging/providers/twilio" title="Twilio" %}
+{% cards_item href="/docs/products/messaging/providers/twilio" title="Twilio" icon="icon-twilio" %}
 Deliver custom SMS messages to users using Twilio.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/msg91" title="MSG91" %}
+{% cards_item href="/docs/products/messaging/providers/msg91" title="MSG91" icon="icon-msg91" %}
 Deliver custom SMS messages to users using MSG91.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/telesign" title="Telesign" %}
+{% cards_item href="/docs/products/messaging/providers/telesign" title="Telesign" icon="icon-telesign" %}
 Deliver custom SMS messages to users using Telesign.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/textmagic" title="TextMagic" %}
+{% cards_item href="/docs/products/messaging/providers/textmagic" title="TextMagic" icon="icon-textmagic" %}
 Deliver custom SMS messages to users using TextMagic.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers/vonage" title="Vonage" %}
+{% cards_item href="/docs/products/messaging/providers/vonage" title="Vonage" icon="icon-vonage" %}
 Deliver custom SMS messages to users using Vonage.
 {% /cards_item %}
 {% /cards %}
