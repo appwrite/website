@@ -2,7 +2,7 @@
 layout: changelog
 title: New SDK versions released
 date: 2024-02-15
-cover: /images/changelog/
+cover:
 ---
 We've released new versions of the Ruby, .NET, and Dart SDKs. We also updated the Appwrite CLI.
 
