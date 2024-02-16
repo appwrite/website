@@ -45,6 +45,4 @@ jobs:
                   PUBLIC_APPWRITE_PROJECT_INIT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_INIT_ID }}
                   APPWRITE_DB_INIT_ID: ${{ secrets.APPWRITE_DB_INIT_ID }}
                   APPWRITE_COL_INIT_ID: ${{ secrets.APPWRITE_COL_INIT_ID }}
-                  HUBSPOT_INIT_TOKEN: ${{ secrets.HUBSPOT_INIT_TOKEN }}
-                  HUBSPOT_LIST_ID: ${{ secrets.HUBSPOT_LIST_ID }}
               run: pnpm run build
