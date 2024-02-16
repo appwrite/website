@@ -122,10 +122,12 @@ export async function getTicketDocById(id: string, f = fetch) {
 }
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
+    console.log('fetching contributions');
     const res = await f(`/init/ticket/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
         .then((r) => {
+            console.log('contributions', r);
             return r;
         })
         .catch(() => {
