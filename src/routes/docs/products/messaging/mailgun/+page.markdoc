@@ -1,38 +1,39 @@
 ---
 layout: article
-title: Sendgrid
-description: Send emails to your Appwrite users using Sendgrid and Appwrite Messaging.
-back: /docs/products/messaging/providers
+title: Mailgun
+description: Send emails to your Appwrite users using Mailgun and Appwrite Messaging.
+back: /docs/
 ---
 
-Sendgrid lets you send customized email messages to your users. 
+Mailgun lets you send customized email messages to your users. 
 These emails can be sent immediately or scheduled.
 You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
-
-To add Sendgrid as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
+To add Mailgun as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
 {% only_dark %}
-![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/dark/add-sendgrid.png)
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
 {% /only_dark %}
 {% only_light %}
-![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/add-sendgrid.png)
+![Add a SMTP provider](/images/docs/messaging/providers/mailgun/add-mailgun.png)
 {% /only_light %}
 
-Give your provider a name > choose **Sendgrid** > click **Save and continue**. 
+Give your provider a name > choose **Mailgun** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Sendgrid dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your Mailgun dashboard to connect your Appwrite project.
+
 
 {% only_dark %}
-![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/dark/configure-sendgrid.png)
+![Configure SMTP provider](/images/docs/messaging/providers/mailgun/dark/configure-mailgun.png)
 {% /only_dark %}
 {% only_light %}
-![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/configure-sendgrid.png)
+![Configure SMTP provider](/images/docs/messaging/providers/mailgun/configure-mailgun.png)
 {% /only_light %}
-You will need to provide the following information from your **Sendgrid dashboard**.
+
+You will need to provide the following information from your **Mailgun dashboard**.
 
 {% table %}
 * Field name
@@ -44,6 +45,9 @@ You will need to provide the following information from your **Sendgrid dashboar
 * Domain
 * Head to Sending -> Domains -> Add new domain. 
 Follow [Mailgun's instructions](https://help.mailgun.com/hc/en-us/articles/360026833053-Domain-Verification-Walkthrough) to verify the domain name.
+---
+* EU region
+* Enable the EU region setting if your domain is within the European Union.
 ---
 * Sender email
 * The provider sends emails from this sender email. The sender email needs to be an email under the configured domain.
@@ -117,7 +121,6 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
-
 
 let promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 
@@ -287,7 +290,7 @@ let message = try await messaging.createEmail(
 {% /tabsitem %}
 {% /tabs %}
 
-You can follow the [Send email messages](/docs/products/messaging/send-email-messages) journey to send your first push notification and test your provider.
+You can follow the [Send email messages](/docs/products/messaging/send-push-notifications) journey to send your first push notification and test your provider.
 {% /section %}
 
 {% section #manage-provider step=4 title="Manage provider" %}
@@ -322,6 +325,7 @@ messaging.updateSendgridProvider(
     '<PROVIDER_NAME>',  
     '<API_KEY>', 
     '<DOMAIN>', 
+    '<IS_EU_REGION?>',
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
@@ -355,6 +359,7 @@ messaging.updateSendgridProvider(
     '<PROVIDER_NAME>',  
     '<API_KEY>', 
     '<DOMAIN>', 
+    '<IS_EU_REGION?>',
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
@@ -395,6 +400,7 @@ $result = $messaging->updateSendgridProvider(
     '<PROVIDER_NAME>', 
     '<API_KEY>', 
     '<DOMAIN>', 
+    '<IS_EU_REGION?>',
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
@@ -420,6 +426,7 @@ result = messaging.update_sendgrid_provider(
     '<PROVIDER_NAME>',  
     '<API_KEY>',
     '<DOMAIN>', 
+    '<IS_EU_REGION?>',
     '<SENDER_NAME>', 
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
@@ -444,6 +451,7 @@ response = messaging.update_sendgrid_provider(
     name: "<PROVIDER_NAME>",  
     api_key: "<API_KEY>", 
     domain: "<DOMAIN>",
+    isEuRegion: "<IS_EU_REGION?>",
     from_name: "<SENDER_NAME>", 
     from_email: "<SENDER_EMAIL>",
     reply_to_name: "<REPLY_TO_NAME>",
@@ -471,6 +479,7 @@ Provider result = await messaging.UpdateSendgridProvider(
     name: "<PROVIDER_NAME>",  
     apiKey: "<API_KEY>", 
     domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>",
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
@@ -496,6 +505,7 @@ void main() { // Init SDK
     name: "<PROVIDER_NAME>",  
     apiKey: "<API_KEY>", 
     domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>",
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
@@ -528,6 +538,7 @@ val response = messaging.updateSendgridProvider(
     name = "<PROVIDER_NAME>",  
     apiKey = "<API_KEY>", 
     domain = "<DOMAIN>", 
+    isEuRegion = "<IS_EU_REGION?>",
     fromName = "<SENDER_NAME>", 
     fromEmail = "<SENDER_EMAIL>",
     replyToName = "<REPLY_TO_NAME>",
@@ -553,6 +564,7 @@ messaging.updateSendgridProvider(
     "<PROVIDER_NAME>",  
     "<API_KEY>", 
     "<DOMAIN>", 
+    "<IS_EU_REGION?>",
     "<SENDER_NAME>", 
     "<SENDER_EMAIL>",
     "<REPLY_TO_NAME>",
@@ -583,6 +595,7 @@ let provider = try await messaging.updateSendgridProvider(
     name: "<PROVIDER_NAME>", 
     apiKey: "<API_KEY>", 
     domain: "<DOMAIN>", 
+    isEuRegion: "<IS_EU_REGION?>", 
     fromName: "<SENDER_NAME>", 
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",

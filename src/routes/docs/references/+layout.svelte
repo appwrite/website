@@ -17,6 +17,11 @@
                     label: 'Overview',
                     href: '/docs/references',
                     icon: 'icon-view-grid'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/references/quick-start',
+                    icon: 'icon-play'
                 }
             ]
         },

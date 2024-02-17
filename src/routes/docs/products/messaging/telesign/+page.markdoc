@@ -1,44 +1,44 @@
 ---
 layout: article
-title: MSG91
-description: Send SMS messages to your Appwrite users using MSG91 and Appwrite Messaging.
-back: /docs/products/messaging/providers
+title: Telesign
+description: Send SMS messages to your Appwrite users using Telesign and Appwrite Messaging.
+back: /docs/
 ---
 
-MSG91 lets you send customized SMS messages to your users. 
+Telesign lets you send customized SMS messages to your users. 
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add MSG91 as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+To add Telesign as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
-![Add a MSG91 provider](/images/docs/messaging/providers/msg91/dark/provider.png)
+![Add a Telesign provider](/images/docs/messaging/providers/telesign/dark/provider.png)
 {% /only_dark %}
 {% only_light %}
-![Add a MSG91 provider](/images/docs/messaging/providers/msg91/provider.png)
+![Add a Telesign provider](/images/docs/messaging/providers/telesign/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **MSG91** > click **Save and continue**. 
+Give your provider a name > choose **Telesign** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your MSG91 dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your Telesign dashboard to connect your Appwrite project.
 
-You will need to provide the following information from your **MSG91 dashboard**.
+You will need to provide the following information from your **Telesign dashboard**.
 
 {% table %}
 * Field name
 *
 ---
-* Auth key
-* Click to open the Username dropdown > **Authkey** > **Verify your mobile number** > **Create Authkey**.
+* [TODO]
+* [TODO]
 ---
-* Sender ID
-* Head to MSG91 dashboard > **SMS** > **Sender ID** > **Create sender ID**.
+* [TODO]
+* [TODO]
 ---
-* Sender number
+* [TODO]
 * [TODO]
 {% /table %}
 
@@ -52,21 +52,20 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
 {% only_dark %}
-![Create email message](/images/docs/messaging/messages/dark/create-email-message.png)
+![Create SMS message](/images/docs/messaging/messages/dark/create-sms-message.png)
 {% /only_dark %}
 {% only_light %}
-![Create email message](/images/docs/messaging/messages/create-email-message.png)
+![Create SMS message](/images/docs/messaging/messages/create-sms-message.png)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
-Verify that you can receive the message in your inbox. If not
+Verify that you can receive the message in your inbox. If not, check for logs in the Appwrite Console or in your provider's logs.
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
-
 ```js
 const sdk = require('node-appwrite');
 
@@ -337,9 +336,8 @@ let message = try await messaging.createSMS(
 {% /tabsitem %}
 {% /tabs %}
 
-You can follow the [Send email messages](/docs/products/messaging/send-sms-messages) journey to send your first push notification and test your provider.
+You can follow the [Send SMS messages](/docs/products/messaging/send-sms-messages) journey to send your first push notification and test your provider.
 {% /section %}
-
 
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
@@ -367,12 +365,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateMsg91Provider(
+const promise = messaging.updateTelesignProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[SENDER_ID]',                           // senderId (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
+        '[USERNAME]',                            // username (optional)
+        '[PASSWORD]',                            // password (optional)
         '[FROM]'                                 // from (optional)
     );
 
@@ -396,12 +394,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateMsg91Provider(
+const promise = messaging.updateTelesignProvider(
         '[PROVIDER_ID]',                         // providerId   
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[SENDER_ID]',                           // senderId (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
+        '[USERNAME]',                            // username (optional)
+        '[PASSWORD]',                            // password (optional)
         '[FROM]'                                 // from (optional)
     );
 
@@ -427,12 +425,12 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateMsg91Provider( 
+$result = $messaging->updateTelesignProvider( 
     providerId: '[PROVIDER_ID]', 
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
-    senderId: '[SENDER_ID]',                      // optional
-    authKey: '[AUTH_KEY]',                        // optional
+    username: '[USERNAME]',                       // optional
+    password: '[PASSWORD]',                       // optional
     from: '[FROM]'                                // optional
 );
 ```
@@ -450,12 +448,12 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_msg91_provider( 
+result = messaging.update_telesign_provider( 
     provider_id = '[PROVIDER_ID]', 
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
-    sender_id = '[SENDER_ID]',                  # optional
-    auth_key = '[AUTH_KEY]',                    # optional
+    username = '[USERNAME]',                    # optional
+    password = '[PASSWORD]',                    # optional
     from = '[FROM]'                             # optional
 )
 ```
@@ -471,12 +469,12 @@ client = Client.new
 
 messaging = Messaging.new(client)
 
-response = messaging.update_msg91_provider(
+response = messaging.update_telesign_provider(
     provider_id: '[PROVIDER_ID]', 
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
-    sender_id: '[SENDER_ID]',                     # optional
-    auth_key: '[AUTH_KEY]',                       # optional
+    username: '[USERNAME]',                       # optional
+    password: '[PASSWORD]',                       # optional
     from: '[FROM]'                                # optional
 )
 
@@ -494,12 +492,12 @@ var client = new Client()
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateMsg91Provider(
+Provider result = await messaging.UpdateTelesignProvider(
     providerId: "[PROVIDER_ID]"    
     name: "[NAME]"                                // optional    
     enabled: false                                // optional    
-    senderId: "[SENDER_ID]"                       // optional    
-    authKey: "[AUTH_KEY]"                         // optional    
+    username: "[USERNAME]"                        // optional    
+    password: "[PASSWORD]"                        // optional    
     from: "[FROM]");                              // optional
 ```
 ```dart
@@ -515,12 +513,12 @@ void main() {                                    // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.updateMsg91Provider(
+  Future result = messaging.updateTelesignProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                              // optional
     enabled: false,                              // optional
-    senderId: '[SENDER_ID]',                     // optional
-    authKey: '[AUTH_KEY]',                       // optional
+    username: '[USERNAME]',                      // optional
+    password: '[PASSWORD]',                      // optional
     from: '[FROM]',                              // optional
   );
 
@@ -544,12 +542,12 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateMsg91Provider(
+messaging.updateTelesignProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[SENDER_ID]",                                // senderId (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
+    "[USERNAME]",                                 // username (optional)
+    "[PASSWORD]",                                 // password (optional)
     "[FROM]"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -573,12 +571,12 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateMsg91Provider(
+messaging.updateTelesignProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[SENDER_ID]",                                // senderId (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
+    "[USERNAME]",                                 // username (optional)
+    "[PASSWORD]",                                 // password (optional)
     "[FROM]"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -600,12 +598,12 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateMsg91Provider(
+let provider = try await messaging.updateTelesignProvider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                                // optional
   enabled: xfalse,                               // optional
-  senderId: "[SENDER_ID]",                       // optional
-  authKey: "[AUTH_KEY]",                         // optional
+  username: "[USERNAME]",                        // optional
+  password: "[PASSWORD]",                        // optional
   from: "[FROM]"                                 // optional
 )
 ```
