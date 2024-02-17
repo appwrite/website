@@ -3,6 +3,7 @@
     import Main from '$lib/layouts/Main.svelte';
     import Draft from './(components)/Draft.svelte';
     import Schedule from './(components)/Schedule.svelte';
+    import Send from './(components)/Send.svelte';
     import Step from './(components)/Step.svelte';
     import Target from './(components)/Target.svelte';
 </script>
@@ -54,6 +55,7 @@
         <Draft />
         <Target />
         <Schedule />
+        <Send />
     </div>
 
     <div class="aw-container">
