@@ -27,7 +27,4 @@ Send SMS messages straight to your user's phone.
 {% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" %}
 Send push notifications to your user's devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/providers" title="Providers" %}
-Integrate with 9 of the top messaging services.
-{% /cards_item %}
 {% /cards %}

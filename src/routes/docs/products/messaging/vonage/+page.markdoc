@@ -2,7 +2,7 @@
 layout: article
 title: Vonage
 description: Send SMS messages to your Appwrite users using Vonage and Appwrite Messaging.
-back: /docs/products/messaging/providers
+back: /docs/
 ---
 
 Vonage lets you send customized SMS messages to your users. 

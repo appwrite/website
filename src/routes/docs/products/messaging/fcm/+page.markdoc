@@ -1,69 +1,93 @@
 ---
 layout: article
-title: Apple Push Notification service
-description: Send push notifications to apps on Apple devices through Apple Push Notification service (APNs) using Appwrite Messaging.
-back: /docs/products/messaging/providers
+title: Firebase Cloud Messaging
+description: Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
+back: /docs/
 ---
 
-Apple Push Notification service (APNs) lets you send push notifications to Apple devices like macOS, iOS, tvOS, iPadOS, and watchOS devices.
-APNs is a best-effort service, and will attempt to deliver you messages to your device when it's online and available again.
-APNs will save the last [N] messages for [M] days and attempt delivery as soon as it's online.
+Firebase Cloud Messaging (FCM) lets you send push notifications to your iOS, Android, and web apps through Appwrite Messaging.
+Before you can deliver messages, you must connect to a messaging provider.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add FCM as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
 {% only_dark %}
-![Add a FCM provider](/images/docs/messaging/providers/apns/dark/provider.png)
+![Add a FCM provider](/images/docs/messaging/providers/fcm/dark/provider.png)
 {% /only_dark %}
 {% only_light %}
-![Add a FCM provider](/images/docs/messaging/providers/apns/provider.png)
+![Add a FCM provider](/images/docs/messaging/providers/fcm/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **APNS** > click **Save and continue**. 
+Give your provider a name > choose **FCM** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Apple developer account to connect your Appwrite project with your
-Apple developer account.
+In the **Configure** step, you will need to provide details form your Firebase console to connect your Appwrite project.
 
-You will need to provide the following information from the **Apple Developer Member Center**.
+You will need to provide the following information from the **Firebase console**.
+
+{% info title="Enable FCM" %}
+FCM must be enabled on your Firebase project.
+
+Head to Firebase console -> Settings -> Project settings -> Cloud Messaging. 
+If FCM is disabled, click the three-dots menu and open the link. On the following page, click **Enable** (it might take a few minutes for the action to complete).
+{% /info %}
 
 {% table %}
 * Field name
 * 
 ---
-* Team ID
-* Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
-{% only_dark %} ![Team ID](/images/docs/messaging/providers/apns/dark/team-id.png) {% /only_dark %} {% only_light %} ![Team ID](/images/docs/messaging/providers/apns/team-id.png) {% /only_light %}
----
-* Bundle ID
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
-{% only_dark %} ![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) {% /only_dark %} {% only_light %} ![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) {% /only_light %}
----
-* Authentication key ID
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
-{% only_dark %} ![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) {% /only_dark %} {% only_light %} ![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) {% /only_light %}
----
-* Authentication key (.p8 file)
-* Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
-{% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) {% /only_light %}
+* Server key (.json file)
+* 
+    Head to **Project settings** > **Service accounts** > **Generate new private key**. 
+    
+    {% only_dark %} ![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) {% /only_dark %} {% only_light %} ![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) {% /only_light %}
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
 {% /section %}
+
 {% section #configure-app step=3 title="Configure app" %}
-Some additional configuration is required to enable push notifications in your iOS app.
+Some additional configuration is required to enable push notifications in your mobile app.
+
+
+{% tabs %}
+{% tabsitem #fcm-ios title="iOS with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
+1. Register and download your `google-services.json` config file.
 1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
 1. Create a new key, note down the key ID and download your key.
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
+{% /tabsitem %}
+
+{% tabsitem #fcm-android title="Android with FCM" %}
+1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **Android** app.
+1. Register and download your `google-services.json` config file.
+1. Add `google-services.json` at the root of your project.
+1. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
+1. Add Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
+1. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongisde other activities.
+```groovy
+<service android:name="io.appwrite.NotificationHandler" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+</service>
+```
+{% /tabsitem %}
+{% /tabs %}
+
 {% /section %}
+
 {% section #test-provider step=4 title="Test provider" %}
 Before sending your first message, 
 make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
-To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notifcation**.
+To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notification**.
 {% only_dark %}
 ![Create email message](/images/docs/messaging/messages/dark/create-push-notification.png)
 {% /only_dark %}
@@ -423,6 +447,7 @@ let message = try await messaging.createPush(
 You can follow the [Send push notifications](/docs/products/messaging/send-push-notifications) journey to send your first push notification and test your provider.
 {% /section %}
 
+
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -451,14 +476,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateAPNSProvider(
+const promise = messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[AUTH_KEY_ID]',                         // authKeyId (optional)
-        '[TEAM_ID]',                             // teamId (optional)
-        '[BUNDLE_ID]'                            // bundleId (optional)
+        {}                                       // serviceAccountJSON (optional)
     );
 
 promise.then(function (response) {
@@ -481,14 +503,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateAPNSProvider(
+const promise = messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId   
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[AUTH_KEY_ID]',                         // authKeyId (optional)
-        '[TEAM_ID]',                             // teamId (optional)
-        '[BUNDLE_ID]'                            // bundleId (optional)
+        {}                                       // serviceAccountJSON (optional)
     );
 
 promise.then(function (response) {
@@ -513,14 +532,11 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateAPNSProvider( 
+$result = $messaging->updateFCMProvider( 
     providerId: '[PROVIDER_ID]', 
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
-    authKey: '[AUTH_KEY]',                        // optional
-    authKeyId: '[AUTH_KEY_ID]',                   // optional
-    teamId: '[TEAM_ID]',                          // optional
-    bundleId: '[BUNDLE_ID]'                       // optional
+    serviceAccountJSON: []                        // optional
 );
 ```
 ```python
@@ -537,14 +553,11 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_apns_provider( 
+result = messaging.update_fcm_provider( 
     provider_id = '[PROVIDER_ID]', 
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
-    auth_key = '[AUTH_KEY]',                    # optional
-    auth_key_id = '[AUTH_KEY_ID]',              # optional
-    team_id = '[TEAM_ID]',                      # optional
-    bundle_id = '[BUNDLE_ID]'                   # optional
+    service_account_json = {}                   # optional
 )
 ```
 ```ruby
@@ -559,14 +572,11 @@ client = Client.new
 
 messaging = Messaging.new(client)
 
-response = messaging.update_apns_provider(
+response = messaging.update_fcm_provider(
     provider_id: '[PROVIDER_ID]', 
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
-    auth_key: '[AUTH_KEY]',                       # optional
-    auth_key_id: '[AUTH_KEY_ID]',                 # optional
-    team_id: '[TEAM_ID]',                         # optional
-    bundle_id: '[BUNDLE_ID]'                      # optional
+    service_account_json: {}                      # optional
 )
 
 puts response.inspect
@@ -583,14 +593,11 @@ var client = new Client()
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateAPNSProvider(
+Provider result = await messaging.UpdateFCMProvider(
     providerId: "[PROVIDER_ID]"    
     name: "[NAME]"                                // optional    
     enabled: false                                // optional    
-    authKey: "[AUTH_KEY]"                         // optional    
-    authKeyId: "[AUTH_KEY_ID]"                    // optional    
-    teamId: "[TEAM_ID]"                           // optional    
-    bundleId: "[BUNDLE_ID]");                     // optional
+    serviceAccountJSON: [object]);                // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -605,14 +612,11 @@ void main() {                                    // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.updateAPNSProvider(
+  Future result = messaging.updateFCMProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                              // optional
     enabled: false,                              // optional
-    authKey: '[AUTH_KEY]',                       // optional
-    authKeyId: '[AUTH_KEY_ID]',                  // optional
-    teamId: '[TEAM_ID]',                         // optional
-    bundleId: '[BUNDLE_ID]',                     // optional
+    serviceAccountJSON: {},                      // optional
   );
 
   result
@@ -635,14 +639,11 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateFCMProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -665,14 +666,11 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateFCMProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -693,14 +691,11 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateAPNSProvider(
+let provider = try await messaging.updateFCMProvider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                                // optional
   enabled: xfalse,                               // optional
-  authKey: "[AUTH_KEY]",                         // optional
-  authKeyId: "[AUTH_KEY_ID]",                    // optional
-  teamId: "[TEAM_ID]",                           // optional
-  bundleId: "[BUNDLE_ID]"                        // optional
+  serviceAccountJSON: [:]                        // optional
 )
 ```
 {% /multicode %}

@@ -1,45 +1,45 @@
 ---
 layout: article
-title: Twilio
-description: Send SMS messages to your Appwrite users using Twilio and Appwrite Messaging.
-back: /docs/products/messaging/providers
+title: MSG91
+description: Send SMS messages to your Appwrite users using MSG91 and Appwrite Messaging.
+back: /docs/
 ---
 
-Twilio lets you send customized SMS messages to your users. 
+MSG91 lets you send customized SMS messages to your users. 
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add Twilio as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+To add MSG91 as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
-![Add a Twilio provider](/images/docs/messaging/providers/twilio/dark/provider.png)
+![Add a MSG91 provider](/images/docs/providers/messaging/msg91/dark/provider.png)
 {% /only_dark %}
 {% only_light %}
-![Add a Twilio provider](/images/docs/messaging/providers/twilio/provider.png)
+![Add a MSG91 provider](/images/docs/providers/messaging/msg91/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **Twilio** > click **Save and continue**. 
+Give your provider a name > choose **MSG91** > click **Save and continue**. 
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Twilio dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details form your MSG91 dashboard to connect your Appwrite project.
 
-You will need to provide the following information from your **Twilio dashboard**.
+You will need to provide the following information from your **MSG91 dashboard**.
 
 {% table %}
 * Field name
 *
 ---
-* Account SID 
-* Head to Twilio console > **Account info** > **Account SID**.
+* Auth key
+* Click to open the Username dropdown > **Authkey** > **Verify your mobile number** > **Create Authkey**.
 ---
-* Auth token
-* Head to Twilio console > **Account info** > **Auth Token**.
+* Sender ID
+* Head to MSG91 dashboard > **SMS** > **Sender ID** > **Create sender ID**.
 ---
 * Sender number
-* You can access numbers by navigating to your Twilio console > **Develop** > **Phone Numbers** > **Manage** > **Active Numbers**.
+* [TODO]
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
@@ -52,15 +52,15 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
 {% only_dark %}
-![Create an sms message](/images/docs/messaging/messages/dark/create-sms-message.png)
+![Create email message](/images/docs/providers/messaging/messages/dark/create-email-message.png)
 {% /only_dark %}
 {% only_light %}
-![Create an sms message](/images/docs/messaging/messages/create-sms-message.png)
+![Create email message](/images/docs/providers/messaging/messages/create-email-message.png)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
 
-Verify that you can receive the message in your inbox. If not, check for logs in the Appwrite Console or in your provider's logs.
+Verify that you can receive the message in your inbox. If not
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
@@ -336,7 +336,10 @@ let message = try await messaging.createSMS(
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
+
+You can follow the [Send email messages](/docs/products/messaging/send-sms-messages) journey to send your first push notification and test your provider.
 {% /section %}
+
 
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
@@ -364,12 +367,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateTwilioProvider(
+const promise = messaging.updateMsg91Provider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[ACCOUNT_SID]',                         // accountSid (optional)
-        '[AUTH_TOKEN]',                          // authToken (optional)
+        '[SENDER_ID]',                           // senderId (optional)
+        '[AUTH_KEY]',                            // authKey (optional)
         '[FROM]'                                 // from (optional)
     );
 
@@ -393,12 +396,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateTwilioProvider(
+const promise = messaging.updateMsg91Provider(
         '[PROVIDER_ID]',                         // providerId   
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
-        '[ACCOUNT_SID]',                         // accountSid (optional)
-        '[AUTH_TOKEN]',                          // authToken (optional)
+        '[SENDER_ID]',                           // senderId (optional)
+        '[AUTH_KEY]',                            // authKey (optional)
         '[FROM]'                                 // from (optional)
     );
 
@@ -424,12 +427,12 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateTwilioProvider( 
+$result = $messaging->updateMsg91Provider( 
     providerId: '[PROVIDER_ID]', 
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
-    accountSid: '[ACCOUNT_SID]',                  // optional
-    authToken: '[AUTH_TOKEN]',                    // optional
+    senderId: '[SENDER_ID]',                      // optional
+    authKey: '[AUTH_KEY]',                        // optional
     from: '[FROM]'                                // optional
 );
 ```
@@ -447,12 +450,12 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_twilio_provider( 
+result = messaging.update_msg91_provider( 
     provider_id = '[PROVIDER_ID]', 
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
-    account_sid = '[ACCOUNT_SID]',              # optional
-    auth_token = '[AUTH_TOKEN]',                # optional
+    sender_id = '[SENDER_ID]',                  # optional
+    auth_key = '[AUTH_KEY]',                    # optional
     from = '[FROM]'                             # optional
 )
 ```
@@ -468,12 +471,12 @@ client = Client.new
 
 messaging = Messaging.new(client)
 
-response = messaging.update_twilio_provider(
+response = messaging.update_msg91_provider(
     provider_id: '[PROVIDER_ID]', 
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
-    account_sid: '[ACCOUNT_SID]',                 # optional
-    auth_token: '[AUTH_TOKEN]',                   # optional
+    sender_id: '[SENDER_ID]',                     # optional
+    auth_key: '[AUTH_KEY]',                       # optional
     from: '[FROM]'                                # optional
 )
 
@@ -491,12 +494,12 @@ var client = new Client()
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateTwilioProvider(
+Provider result = await messaging.UpdateMsg91Provider(
     providerId: "[PROVIDER_ID]"    
     name: "[NAME]"                                // optional    
     enabled: false                                // optional    
-    accountSid: "[ACCOUNT_SID]"                   // optional    
-    authToken: "[AUTH_TOKEN]"                     // optional    
+    senderId: "[SENDER_ID]"                       // optional    
+    authKey: "[AUTH_KEY]"                         // optional    
     from: "[FROM]");                              // optional
 ```
 ```dart
@@ -512,12 +515,12 @@ void main() {                                    // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.updateTwilioProvider(
+  Future result = messaging.updateMsg91Provider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                              // optional
     enabled: false,                              // optional
-    accountSid: '[ACCOUNT_SID]',                 // optional
-    authToken: '[AUTH_TOKEN]',                   // optional
+    senderId: '[SENDER_ID]',                     // optional
+    authKey: '[AUTH_KEY]',                       // optional
     from: '[FROM]',                              // optional
   );
 
@@ -541,12 +544,12 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateTwilioProvider(
+messaging.updateMsg91Provider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[ACCOUNT_SID]",                              // accountSid (optional)
-    "[AUTH_TOKEN]",                               // authToken (optional)
+    "[SENDER_ID]",                                // senderId (optional)
+    "[AUTH_KEY]",                                 // authKey (optional)
     "[FROM]"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -570,12 +573,12 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateTwilioProvider(
+messaging.updateMsg91Provider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[ACCOUNT_SID]",                              // accountSid (optional)
-    "[AUTH_TOKEN]",                               // authToken (optional)
+    "[SENDER_ID]",                                // senderId (optional)
+    "[AUTH_KEY]",                                 // authKey (optional)
     "[FROM]"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -597,12 +600,12 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateTwilioProvider(
+let provider = try await messaging.updateMsg91Provider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                                // optional
   enabled: xfalse,                               // optional
-  accountSid: "[ACCOUNT_SID]",                   // optional
-  authToken: "[AUTH_TOKEN]",                     // optional
+  senderId: "[SENDER_ID]",                       // optional
+  authKey: "[AUTH_KEY]",                         // optional
   from: "[FROM]"                                 // optional
 )
 ```
