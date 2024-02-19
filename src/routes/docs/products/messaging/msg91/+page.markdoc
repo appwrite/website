@@ -13,10 +13,10 @@ You can send SMS messages for purposes like reminders, promotions, announcements
 
 To add MSG91 as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
-![Add a MSG91 provider](/images/docs/providers/messaging/msg91/dark/provider.png)
+![Add a MSG91 provider](/images/docs/messaging/providers/msg91/dark/provider.png)
 {% /only_dark %}
 {% only_light %}
-![Add a MSG91 provider](/images/docs/providers/messaging/msg91/provider.png)
+![Add a MSG91 provider](/images/docs/messaging/providers/msg91/provider.png)
 {% /only_light %}
 
 Give your provider a name > choose **MSG91** > click **Save and continue**. 
@@ -52,10 +52,10 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
 {% only_dark %}
-![Create email message](/images/docs/providers/messaging/messages/dark/create-email-message.png)
+![Create email message](/images/docs/messaging/providers/messages/dark/create-email-message.png)
 {% /only_dark %}
 {% only_light %}
-![Create email message](/images/docs/providers/messaging/messages/create-email-message.png)
+![Create email message](/images/docs/messaging/providers/messages/create-email-message.png)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
