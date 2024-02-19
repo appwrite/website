@@ -1,9 +1,8 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import { preprocessMeltUI } from '@melt-ui/pp';
+import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
-import sequence from 'svelte-sequential-preprocessor';
 import nodeAdapter from '@sveltejs/adapter-node';
 
 function absolute(path) {

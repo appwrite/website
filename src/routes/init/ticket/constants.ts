@@ -12,7 +12,7 @@ export type TicketVariant = 'default' | 'pink' | 'rainbow';
 
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
-    tribe?: string;
+    tribe?: string | null
     gh_user?: string;
     aw_email?: string;
     id: number;
