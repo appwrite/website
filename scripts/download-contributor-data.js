@@ -5,7 +5,7 @@ const perPage = 100;
 const outputFile = `./src/lib/contributors.ts`;
 
 const headers = process.env.GITHUB_TOKEN ? {
-    Authorization: `token ${process.env.GITHUB_TOKEN}```
+    Authorization: `token ${process.env.GITHUB_TOKEN}`
 } : {}
 
 async function fetchRepositories() {
