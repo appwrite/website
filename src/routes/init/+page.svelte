@@ -14,7 +14,7 @@
     import type { TicketVariant } from './ticket/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
 
-    const base = new Date('2024-02-21 15:00:00 GMT+0000');
+    const base = new Date('2024-02-26 15:00:00 GMT+0000');
     const addDays = (date: Date, days: number) => {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
     };
@@ -92,10 +92,10 @@
         <p class="aw-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/ticket" class="aw-button">Claim your ticket</a>
-            <button class="aw-button is-secondary">
+            <!-- <button class="aw-button is-secondary">
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
-            </button>
+            </button> -->
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
@@ -104,16 +104,17 @@
     <div class="aw-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
-                <DayCard {day} number={i}>
-                    {#if i === 0}
-                        <Animations.Messaging />
-                    {/if}
-                </DayCard>
+                <DayCard {day} number={i} />
             {/each}
         </div>
         <hr />
 
         <div class="days">
+            <h2 class="aw-eyebrow aw-u-color-text-primary">
+                <div class="aw-dot" />
+            </h2>
+
+            <CountdownCard date={new Date('2024-02-21 15:00:00 GMT+0000')} />
             {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
@@ -163,7 +164,9 @@
                 <a href="/init/ticket" class="aw-button is-secondary">Claim your ticket</a>
             </div>
 
-            <div class="aw-card is-normal has-border-gradient" />
+            <div class="aw-card is-normal has-border-gradient">
+                <enhanced:img class="swag" src="./(assets)/swag.png" alt="" />
+            </div>
         </div>
 
         <div class="tickets">
@@ -391,6 +394,11 @@
             .aw-card {
                 width: 480px;
                 height: 200px;
+                padding: 8px;
+
+                .swag {
+                    border-radius: 12px;
+                }
             }
 
             @media screen and (max-width: 1023px) {

@@ -1,12 +1,72 @@
 <script lang="ts" context="module">
     export const events: EventCardProps[] = [
         {
+            href: 'https://discord.com/events/564160730845151244/1209117134417035365',
+            cover: {
+                src: '/images/community/events/init-0.png',
+                alt: ''
+            },
+            date: 'February 26th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117245859569754',
+            cover: {
+                src: '/images/community/events/init-1.png',
+                alt: ''
+            },
+            date: 'February 27th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117412247609354',
+            cover: {
+                src: '/images/community/events/init-2.png',
+                alt: ''
+            },
+            date: 'February 28th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117457294295121',
+            cover: {
+                src: '/images/community/events/init-3.png',
+                alt: ''
+            },
+            date: 'February 29th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117535723851776',
+            cover: {
+                src: '/images/community/events/init-4.png',
+                alt: ''
+            },
+            date: 'March 1st, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
             href: '/discord',
             cover: {
                 src: '/images/community/events/december-1.png',
                 alt: ''
             },
-            date: 'December 14th',
+            date: 'December 14th, 2023',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -18,7 +78,7 @@
                 src: '/images/community/events/december-2.png',
                 alt: ''
             },
-            date: 'December 21st',
+            date: 'December 21st, 2023',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
@@ -30,7 +90,7 @@
                 src: '/images/community/events/december-3.png',
                 alt: ''
             },
-            date: 'December 28th',
+            date: 'December 28th, 2023',
             location: 'Discord',
             title: 'Office hours',
             description: 'Join us for an exciting hour of technical conversations around Appwrite.',
