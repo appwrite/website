@@ -4,7 +4,7 @@ import { get, writable } from 'svelte/store';
 import { appwriteInit } from '$lib/appwrite/init';
 import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './ticket/constants';
+import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();

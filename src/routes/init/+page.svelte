@@ -10,8 +10,8 @@
     import Ticket from './(components)/Ticket.svelte';
     import { getMockContributions } from './helpers';
     import { randomPick } from '$lib/utils/random';
-    import { tribes } from './ticket/customize/form.svelte';
-    import type { TicketVariant } from './ticket/constants';
+    import { tribes } from './tickets/customize/form.svelte';
+    import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
 
     const base = new Date('2024-02-26 15:00:00 GMT+0000');
