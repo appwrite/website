@@ -1,3 +1,25 @@
+<script lang="ts" context="module">
+    export const tribes = [
+        null,
+        'Appwrite',
+        'Flutter',
+        'Svelte',
+        'React',
+        'Vue',
+        'Angular',
+        'Next',
+        'Apple',
+        'Android',
+        'Windows',
+        'Linux',
+        'Python',
+        'Dart',
+        'php',
+        'Ruby',
+        'NET'
+    ];
+</script>
+
 <script lang="ts">
     import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
