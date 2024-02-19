@@ -207,3 +207,20 @@ Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
 {% only_dark %}I am only shown in Dark Theme{% /only_dark %}
 {% only_light %}I am only shown in Light Theme{% /only_light %}
 ```
+
+#### Cards
+
+{% cards %}
+{% cards_item href="/docs/quick-starts/react" title="React" %}
+Get started with Appwrite and React
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/vue" title="Vue.js" %}
+Get started with Appwrite and Vue.js
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/nuxt" title="Nuxt" %}
+Get started with Appwrite and Nuxt
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/sveltekit" title="SvelteKit" %}
+Get started with Appwrite and SvelteKit
+{% /cards_item %}
+{% /cards %}
