@@ -39,6 +39,7 @@ jobs:
                       "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}"
                       "APPWRITE_DB_INIT_ID=${{ secrets.APPWRITE_DB_INIT_ID }}"
                       "APPWRITE_COL_INIT_ID=${{ secrets.APPWRITE_COL_INIT_ID }}"
+                      "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
 
     deploy:
         needs: build
