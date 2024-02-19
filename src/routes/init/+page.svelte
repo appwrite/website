@@ -1,41 +1,82 @@
 <script lang="ts">
-    import { FooterNav, MainFooter } from '$lib/components';
+    import { Carousel, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import EventCard from '$routes/community/EventCard.svelte';
     import ShinesSvg from './(assets)/shines.svg';
-    import CountdownCard from './(components)/CountdownCard.svelte';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
 
     import { events } from '$routes/community/+page.svelte';
     import { Animations } from './(animations)';
-    import VideoWrapper from './(components)/VideoWrapper.svelte';
+    import Ticket from './(components)/Ticket.svelte';
+    import { getMockContributions } from './helpers';
+    import { randomPick } from '$lib/utils/random';
+    import { tribes } from './ticket/customize/form.svelte';
+    import type { TicketVariant } from './ticket/constants';
+    import CountdownCard from './(components)/CountdownCard.svelte';
 
-    const days: DayType[] = [
+    const base = new Date('2024-02-21 15:00:00 GMT+0000');
+    const addDays = (date: Date, days: number) => {
+        return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
+    };
+    const toReleaseDate = (date: Date) => {
+        return date.toLocaleDateString('en-US', {
+            weekday: 'long',
+            month: 'short',
+            day: 'numeric'
+        });
+    };
+
+    $: days = [
         {
-            title: 'Day 1',
-            release: new Date(Date.now())
+            title: 'XXX',
+            release: base
         },
         {
-            title: 'Day 2',
-            // Half a day from today
-            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 0.5)
+            title: 'XXX',
+            release: addDays(base, 1)
         },
         {
-            title: 'Day 3',
-            // 1.5 days from today
-            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1.5 - 30 * 60 * 1000 - 36 * 1000)
+            title: 'XXX',
+            release: addDays(base, 2)
         },
         {
-            title: 'Day 4',
-            // 2.5 days from today
-            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2.5 - 30 * 60 * 1000 - 36 * 1000)
+            title: 'XXX',
+            release: addDays(base, 3)
         },
         {
-            title: 'Day 5',
-            // 3.5 days from today
-            release: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3.5 - 30 * 60 * 1000 - 36 * 1000)
+            title: 'XXX',
+            release: addDays(base, 4)
         }
+    ] as DayType[];
+
+    const users = [
+        { name: 'Eldad', user: 'eldadfux' },
+        { name: 'Thomas', user: 'tglide' },
+        { name: "Walter O'Brien", user: 'walterob' },
+        { name: 'Sara Kaandorp', user: 'sarak' },
+        { name: 'Carla', user: 'carla' },
+        { name: 'Chen Parnasa', user: 'chenp' },
+        { name: 'Caio Arias', user: 'caioarias' },
+        { name: 'Bradley Schofield', user: '.ionic' },
+        { name: 'Dylan', user: 'dylan' },
+        { name: 'Emma Carpagnano', user: 'emmacarpagnano' },
+        { name: 'Torsten Dittmann', user: 'torstendittmann' },
+        { name: 'Arman Nik', user: 'ArmanNik' }
     ];
+
+    const getRandomTicket = () => {
+        const user = randomPick(users);
+        const tribe = randomPick(tribes);
+
+        return {
+            name: user.name,
+            gh_user: user.user,
+            tribe,
+            variant: randomPick(['default', 'rainbow', 'pink']) as TicketVariant,
+            id: Math.floor(Math.random() * 100000),
+            contributions: getMockContributions()
+        };
+    };
 </script>
 
 <svelte:head>
@@ -45,11 +86,10 @@
 <Main>
     <div class="hero">
         <h1>
+            <span class="sr-only">Init</span>
             <Animations.Logo />
         </h1>
-        <p class="aw-description">
-            Appwrite is unveiling new features over a week of exciting announcements
-        </p>
+        <p class="aw-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/ticket" class="aw-button">Claim your ticket</a>
             <button class="aw-button is-secondary">
@@ -63,8 +103,8 @@
 
     <div class="aw-container">
         <div class="day-cards">
-            {#each days as day, i}
-                <DayCard {day} number={i + 1}>
+            {#each days as day, i (day.release.toISOString())}
+                <DayCard {day} number={i}>
                     {#if i === 0}
                         <Animations.Messaging />
                     {/if}
@@ -74,34 +114,12 @@
         <hr />
 
         <div class="days">
-            <h2 class="aw-eyebrow aw-u-color-text-primary">
-                <div class="aw-dot" />
-                init<span class="aw-u-color-text-accent">_</span>1.5
-            </h2>
-
-            <div class="aw-card is-normal has-border-gradient kickoff">
-                <h3 class="aw-title aw-u-color-text-primary">
-                    Init kickoff<span class="aw-u-color-text-accent">_</span>
-                </h3>
-                <VideoWrapper />
-            </div>
-
-            <h2 class="aw-eyebrow aw-u-color-text-primary">
-                <div class="aw-dot" />
-                Day 1 - Monday, Dec 5<span class="aw-u-color-text-accent">_</span>
-            </h2>
-
-            <div class="mosaic">
-                <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-                {#each { length: 10 } as _, i}
-                    <div class="aw-card is-normal has-border-gradient">{i + 1}</div>
-                {/each}
-            </div>
-
-            {#each days.slice(1) as day, i}
+            {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
-                    DAY {i + 2} - TUESDAY, DEC 6<span class="aw-u-color-text-accent">_</span>
+                    DAY {i} - {toReleaseDate(day.release)}<span class="aw-u-color-text-accent"
+                        >_</span
+                    >
                 </h2>
 
                 <CountdownCard date={day.release} />
@@ -111,9 +129,10 @@
 
     <div class="events">
         <div class="aw-container">
-            <h2 class="aw-label aw-u-color-text-primary">Upcoming Events</h2>
-
-            <ul class="aw-grid-articles">
+            <Carousel size="big">
+                <svelte:fragment slot="header">
+                    <h2 class="aw-label aw-u-color-text-primary">Upcoming Events</h2>
+                </svelte:fragment>
                 {#each events as event}
                     <li>
                         <EventCard
@@ -128,29 +147,35 @@
                         />
                     </li>
                 {/each}
-            </ul>
+            </Carousel>
         </div>
     </div>
 
     <div class="tickets-preview">
-        <h2 class="aw-label aw-u-color-text-primary">
-            Get a ticket and enter our special Init giveaway
-        </h2>
-        <p class="aw-sub-body-500">
-            Create, customize, and share your Init ticket to enter our general giveaway.
-        </p>
-        <a href="/init/ticket" class="aw-button is-secondary">Claim your ticket</a>
+        <div class="aw-container">
+            <div>
+                <h2 class="aw-label aw-u-color-text-primary">
+                    Get a ticket and enter our special Init giveaway
+                </h2>
+                <p class="aw-sub-body-500">
+                    Create, customize, and share your Init ticket to enter our general giveaway.
+                </p>
+                <a href="/init/ticket" class="aw-button is-secondary">Claim your ticket</a>
+            </div>
+
+            <div class="aw-card is-normal has-border-gradient" />
+        </div>
 
         <div class="tickets">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 10 } as _}
-                <enhanced:img class="ticket" src="./(assets)/ticket.png" alt="" />
+                <Ticket {...getRandomTicket()} disableEffects --base-width="14rem" />
             {/each}
         </div>
         <div class="tickets">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 9 } as _}
-                <enhanced:img class="ticket" src="./(assets)/ticket.png" alt="" />
+                <Ticket {...getRandomTicket()} disableEffects --base-width="14rem" />
             {/each}
         </div>
     </div>
@@ -158,12 +183,13 @@
     <div class="pre-footer">
         <div class="aw-container">
             <div class="text">
-                <h2 class="aw-label aw-u-color-text-primary">Start building with Appwrite today</h2>
+                <h2 class="aw-label aw-u-color-text-primary">Start building with Appwrite</h2>
                 <p class="aw-main-body-500">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
-                    lacus.
+                    Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
+                    your product and build any application at any scale, own your data, and use your
+                    preferred coding languages and tools.
                 </p>
-                <a href="/init/ticket" class="aw-button">Claim your ticket</a>
+                <a href="https://cloud.appwrite.io" class="aw-button">Get started</a>
             </div>
 
             <enhanced:img class="console" src="./(assets)/console.png" alt="" />
@@ -177,6 +203,18 @@
 </Main>
 
 <style lang="scss">
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
     .hero {
         min-height: 500px;
         height: 70vh;
@@ -188,6 +226,7 @@
         gap: 1rem;
 
         position: relative;
+        overflow-x: clip;
 
         h1 {
             img {
@@ -205,6 +244,15 @@
             gap: 0.5rem;
 
             padding-block-start: 1rem;
+
+            @media screen and (max-width: 1023px) {
+                flex-direction: column;
+                align-items: center;
+
+                .aw-button {
+                    width: 300px;
+                }
+            }
         }
 
         .shines {
@@ -230,6 +278,10 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 2rem;
+
+        @media screen and (max-width: 1023px) {
+            --day-min-w: 100%;
+        }
     }
 
     .days {
@@ -254,7 +306,7 @@
             );
         }
 
-        h2 {
+        :global(h2) {
             position: relative;
             margin-block-end: 1rem;
 
@@ -262,7 +314,7 @@
                 margin-block-start: 5rem;
             }
 
-            .aw-dot {
+            :global(.aw-dot) {
                 position: absolute;
                 left: -40px;
                 top: 50%;
@@ -291,74 +343,15 @@
             padding-block-start: 1.5rem;
             padding-inline-start: 1.5rem;
         }
-    }
-
-    [class*='mosaic'] {
-        margin-block-start: 1rem;
-    }
-
-    .mosaic {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(9, 1fr);
-        gap: 2rem;
-
-        min-height: 660px;
-
-        :nth-child(1) {
-            grid-column: 1 / span 3;
-            grid-row: 1 / span 3;
-        }
-
-        :nth-child(2) {
-            grid-column: 1 / span 3;
-            grid-row: 4 / span 3;
-        }
-
-        :nth-child(3) {
-            grid-column: 4 / span 6;
-            grid-row: 1 / span 6;
-        }
-
-        :nth-child(4) {
-            grid-column: 10 / span 3;
-            grid-row: 1 / span 3;
-        }
-
-        :nth-child(5) {
-            grid-column: 10 / span 3;
-            grid-row: 4 / span 3;
-        }
-
-        :nth-child(6) {
-            grid-column: 1 / span 3;
-            grid-row: 7 / span 2;
-        }
-
-        :nth-child(7) {
-            grid-column: 4 / span 3;
-            grid-row: 7 / span 2;
-        }
-
-        :nth-child(8) {
-            grid-column: 7 / span 3;
-            grid-row: 7 / span 2;
-        }
-
-        :nth-child(9) {
-            grid-column: 10 / span 3;
-            grid-row: 7 / span 2;
-        }
-
-        :nth-child(10) {
-            grid-column: 1 / span 12;
-            grid-row: 9 / span 1;
-        }
 
         @media screen and (max-width: 1023px) {
-            display: flex;
             flex-direction: column;
             gap: 1rem;
+            height: unset;
+
+            h3 {
+                padding-inline-start: 1.25rem;
+            }
         }
     }
 
@@ -386,12 +379,41 @@
         padding-block-end: 0rem;
         overflow: hidden;
 
-        h2,
-        p,
-        a {
-            text-align: center;
-            margin-inline: auto;
-            max-inline-size: 21.5625rem;
+        .aw-container {
+            display: flex;
+            justify-content: space-between;
+
+            > :first-child {
+                max-inline-size: 360px;
+                text-wrap: balance;
+            }
+
+            .aw-card {
+                width: 480px;
+                height: 200px;
+            }
+
+            @media screen and (max-width: 1023px) {
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 2rem;
+
+                > :first-child {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+
+                    .aw-button {
+                        width: 100%;
+                    }
+                }
+
+                .aw-card {
+                    width: 100%;
+                    height: 200px;
+                }
+            }
         }
 
         p {
@@ -412,13 +434,6 @@
             left: 50%;
             transform: translateX(-50%);
 
-            .ticket {
-                flex-shrink: 0;
-                height: 20rem;
-                width: auto;
-                object-fit: contain;
-            }
-
             &:nth-last-child(2) {
                 margin-block-start: 5rem;
             }
@@ -432,7 +447,7 @@
     }
 
     .pre-footer {
-        padding-block-start: 10rem;
+        padding-block-start: 0rem;
         padding-block-end: 0;
         overflow: hidden;
 
@@ -440,11 +455,18 @@
             position: relative;
             height: 43.75rem;
 
+            @media screen and (max-width: 1023px) {
+                height: 36.4375rem;
+            }
+
             .text {
-                position: absolute;
-                inset-inline-start: 0;
+                position: relative;
                 inset-block-start: 10rem;
                 max-inline-size: 25rem;
+
+                @media screen and (max-width: 1023px) {
+                    inset-block-start: 3rem;
+                }
 
                 p {
                     margin-block-start: 0.75rem;
@@ -459,6 +481,16 @@
                 position: absolute;
                 inset-inline-end: -50%;
                 inset-block-end: -10rem;
+
+                @media screen and (max-width: 1023px) {
+                    inset-inline-end: -100px;
+                    inset-block-end: 3rem;
+
+                    max-block-size: unset;
+                    block-size: 275px;
+                    max-inline-size: unset;
+                    inline-size: auto;
+                }
             }
 
             &::before {

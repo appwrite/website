@@ -7,6 +7,7 @@
             store.set(value);
             if (browser) {
                 localStorage.setItem('theme', value);
+                document.documentElement.style.setProperty('color-scheme', value);
             }
         };
 
@@ -96,6 +97,10 @@
 <slot />
 
 <style lang="scss">
+    :global(html) {
+        color-scheme: dark;
+    }
+
     .skip {
         position: absolute;
         inset-block-start: 0;
