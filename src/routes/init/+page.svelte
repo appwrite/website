@@ -10,8 +10,8 @@
     import Ticket from './(components)/Ticket.svelte';
     import { getMockContributions } from './helpers';
     import { randomPick } from '$lib/utils/random';
-    import { tribes } from './ticket/customize/form.svelte';
-    import type { TicketVariant } from './ticket/constants';
+    import { tribes } from './tickets/customize/form.svelte';
+    import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
 
     const base = new Date('2024-02-26 15:00:00 GMT+0000');
@@ -91,7 +91,7 @@
         </h1>
         <p class="aw-description">The start of something new.</p>
         <div class="buttons">
-            <a href="/init/ticket" class="aw-button">Claim your ticket</a>
+            <a href="/init/tickets" class="aw-button">Claim your ticket</a>
             <!-- <button class="aw-button is-secondary">
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
@@ -161,7 +161,7 @@
                 <p class="aw-sub-body-500">
                     Create, customize, and share your Init ticket to enter our general giveaway.
                 </p>
-                <a href="/init/ticket" class="aw-button is-secondary">Claim your ticket</a>
+                <a href="/init/tickets" class="aw-button is-secondary">Claim your ticket</a>
             </div>
 
             <div class="aw-card is-normal has-border-gradient">

@@ -95,7 +95,7 @@
             class="aw-button is-full-width is-secondary u-margin-block-start-24"
             on:click={async () => {
                 await appwriteInit.account.deleteSession('current');
-                goto('/init/ticket');
+                goto('/init/tickets');
             }}
             disabled={!browser}
         >
@@ -134,7 +134,7 @@
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
-        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/ticket"
+        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/tickets"
         class="aw-button is-full-width is-secondary u-margin-block-start-24"
     >
         <div class="aw-icon-appwrite aw-u-color-text-primary" />
