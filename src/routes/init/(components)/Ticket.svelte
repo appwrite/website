@@ -12,6 +12,7 @@
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
+        disableEffects?: boolean;
     };
     $: ({
         name,
@@ -20,7 +21,8 @@
         tribe = null,
         contributions,
         variant = 'default',
-        show_contributions = true
+        show_contributions = true,
+        disableEffects = false
     } = $$props as $$Props);
 
     $: bg = {
@@ -79,6 +81,7 @@
     }
 
     function mouse(node: HTMLElement) {
+        if (disableEffects) return;
         const mouseMove = (e: MouseEvent) => {
             const clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
             const clientY = isTouchEvent(e) ? e.touches[0].clientY : e.clientY;
@@ -123,6 +126,8 @@
             hovering = true;
         };
         const mouseLeave = () => {
+            if (disableEffects) return;
+
             const snapStiff = 0.05;
             const snapDamp = 0.5;
 
@@ -179,7 +184,7 @@
 </script>
 
 <div class="wrapper">
-    {#if variant === 'pink'}
+    {#if variant === 'pink' && !disableEffects}
         <img class="glow" src={Glow} alt="" />
     {/if}
     <div class="ticket" data-variant={variant} use:mouse style={styles}>
