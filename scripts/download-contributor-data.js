@@ -8,6 +8,8 @@ const headers = process.env.GITHUB_TOKEN ? {
     Authorization: `token ${process.env.GITHUB_TOKEN}`
 } : {}
 
+console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`)
+
 async function fetchRepositories() {
     let page = 1;
     let repositoriesData = [];
