@@ -8,6 +8,8 @@
         'Vue',
         'Angular',
         'Next',
+        'Astro',
+        'Qwik',
         'Apple',
         'Android',
         'Windows',
@@ -39,26 +41,6 @@
     $: ({ ticket } = $page.data as PageData);
 
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
-
-    const tribes = [
-        null,
-        'Appwrite',
-        'Flutter',
-        'Svelte',
-        'React',
-        'Vue',
-        'Angular',
-        'Next',
-        'Apple',
-        'Android',
-        'Windows',
-        'Linux',
-        'Python',
-        'Dart',
-        'php',
-        'Ruby',
-        'NET'
-    ];
 </script>
 
 <div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
