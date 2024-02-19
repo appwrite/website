@@ -68,10 +68,10 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Email**.
 {% only_dark %}
-![Create email message](/images/docs/messaging/messages/providers/dark/create-email-message.png)
+![Create email message](/images/docs/messaging/messages/dark/create-email-message.png)
 {% /only_dark %}
 {% only_light %}
-![Create email message](/images/docs/messaging/messages/providers/create-email-message.png)
+![Create email message](/images/docs/messaging/messages/create-email-message.png)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
