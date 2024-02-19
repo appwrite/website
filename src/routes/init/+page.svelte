@@ -49,23 +49,68 @@
         }
     ] as DayType[];
 
-    const users = [
-        { name: 'Eldad', user: 'eldadfux' },
+    const shuffle = (array: any[]): any[] => {
+        let currentIndex = array.length,  randomIndex;
+
+        while (currentIndex > 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+    
+    const users = shuffle([
+        { name: 'Eldad Fux', user: 'eldadfux' },
         { name: 'Thomas', user: 'tglide' },
         { name: "Walter O'Brien", user: 'walterob' },
         { name: 'Sara Kaandorp', user: 'sarak' },
-        { name: 'Carla', user: 'carla' },
+        { name: 'Carla Alexander', user: 'carla' },
         { name: 'Chen Parnasa', user: 'chenp' },
         { name: 'Caio Arias', user: 'caioarias' },
         { name: 'Bradley Schofield', user: '.ionic' },
-        { name: 'Dylan', user: 'dylan' },
+        { name: 'Dylan Graham', user: 'dylan' },
         { name: 'Emma Carpagnano', user: 'emmacarpagnano' },
         { name: 'Torsten Dittmann', user: 'torstendittmann' },
-        { name: 'Arman Nik', user: 'ArmanNik' }
-    ];
+        { name: 'Arman Nik', user: 'armanNik' },
+        { name: 'Christy Jacob', user: 'christyjacob4' },
+        { name: 'Damodar Lohani', user: 'lohanidamodar' },
+        { name: 'Jake Barnby', user: 'abnegate' },
+        { name: 'Aditya Oberai', user: 'adityaoberai' },
+        { name: 'Wess Cope', user: 'wess' },
+        { name: 'Matej Bačo', user: 'meldiron' },
+        { name: 'Khushboo Verma', user: 'vermakhushboo' },
+        { name: 'May Ender', user: 'mayender' },
+        { name: 'Elad Shechter', user: 'elad2412' },
+        { name: 'Vincent Ge', user: 'wenYuGe1' },
+        { name: 'Chen Parnasa', user: 'chenparnasa' },
+        { name: 'Tessa Mero', user: 'tessamero' },
+        { name: 'Shimon Newman', user: 'shimonewman' },
+        { name: 'Shmuel Fogel', user: 'fogelito' },
+        { name: 'Steven Nguyen', user: 'stnguyen90' },
+        { name: 'Jade Baudchon', user: 'dajebp' },
+        { name: 'Holly Barclay', user: 'holly' },
+        { name: 'Laura Du Ry', user: 'lauraDuRy' },
+        { name: 'Luke Silver', user: 'loks0n' },
+        { name: 'Sümeyra Bulut', user: 'sumeyra' },
+        { name: 'Dennis Ivy', user: 'divanov11' },
+        { name: 'Andrea Fernández Camps', user: 'andrea' },
+        { name: 'Evan LeAir', user: 'evdog4life' }
+    ]);
 
+    let userIndex = 0;
     const getRandomTicket = () => {
-        const user = randomPick(users);
+        let user = users[userIndex];
+
+        if(!user) {
+            userIndex = 0;
+            user = users[userIndex];
+        }
+
+        userIndex++;
+
         const tribe = randomPick(tribes);
 
         return {
