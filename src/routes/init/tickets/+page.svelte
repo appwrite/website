@@ -38,7 +38,7 @@
                 </button>
                 <a
                     href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                        .origin}/init/ticket"
+                        .origin}/init/tickets"
                     class="aw-button is-full-width is-secondary u-margin-block-start-8"
                 >
                     <div class="aw-icon-appwrite aw-u-color-text-primary" />

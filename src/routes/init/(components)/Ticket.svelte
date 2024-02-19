@@ -8,7 +8,7 @@
     import BgPink from '../(assets)/ticket-bg-pink.svg';
     import BgRainbow from '../(assets)/ticket-bg-rainbow.svg';
     import Bg from '../(assets)/ticket-bg.svg';
-    import type { ContributionsMatrix, TicketData } from '../ticket/constants';
+    import type { ContributionsMatrix, TicketData } from '../tickets/constants';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;

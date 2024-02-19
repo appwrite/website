@@ -36,7 +36,7 @@
             return;
         }
 
-        await fetch(`/init/ticket/update`, {
+        await fetch(`/init/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@
         saveTicket();
     }
 
-    const ticketUrl = `${$page.url.origin}/init/ticket/${data.ticket.$id}`;
+    const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
         [
