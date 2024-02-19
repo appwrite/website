@@ -10,7 +10,7 @@
     export let data;
 
     let firstName = data.ticket.name.split(/\s/)[0] ?? '';
-    const ogImage = `${$page.url.origin}/init/ticket/${data.ticket.$id}/og`;
+    const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
 </script>
@@ -53,7 +53,7 @@
                     Register today and claim your Init ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
-                    <a class="aw-button" href="/init/ticket">
+                    <a class="aw-button" href="/init/tickets">
                         <span class="text">Get my Init ticket</span>
                     </a>
                     <button class="aw-button is-secondary" on:click={copy}>

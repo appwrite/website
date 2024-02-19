@@ -41,7 +41,7 @@
                     />
                 {/if}
             </div>
-            <a href="/init/ticket" class="aw-button is-secondary">Register</a>
+            <a href="/init/tickets" class="aw-button is-secondary">Register</a>
         </div>
     </div>
 {/if}

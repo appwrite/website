@@ -110,20 +110,20 @@ export function getMockContributions() {
 }
 
 export async function getTicketDocByUser(user: User, f = fetch) {
-    return await f(`/init/ticket/get-ticket-doc?user=${JSON.stringify(user)}`).then(
+    return await f(`/init/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
         (res) => res.json() as Promise<TicketDoc>
     );
 }
 
 export async function getTicketDocById(id: string, f = fetch) {
-    return await f(`/init/ticket/get-ticket-doc?id=${id}`).then(
+    return await f(`/init/tickets/get-ticket-doc?id=${id}`).then(
         (res) => res.json() as Promise<TicketDoc>
     );
 }
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
 
-    const res = await f(`/init/ticket/${id}/get-contributions`);
+    const res = await f(`/init/tickets/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
         .then((r) => {
@@ -176,8 +176,8 @@ export async function getTicketById(id: string, f = fetch) {
 export function loginGithub() {
     appwriteInit.account.createOAuth2Session(
         'github',
-        `${window.location.origin}/init/ticket?success=1`,
-        `${window.location.origin}/init/ticket?error=1`,
+        `${window.location.origin}/init/tickets?success=1`,
+        `${window.location.origin}/init/tickets?error=1`,
         ['read:user']
     );
 }

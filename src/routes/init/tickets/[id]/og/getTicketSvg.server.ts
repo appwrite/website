@@ -1,5 +1,5 @@
 import { splitStr } from '$lib/utils/string';
-import type { ContributionsMatrix, TicketData, TicketVariant } from '$routes/init/ticket/constants';
+import type { ContributionsMatrix, TicketData, TicketVariant } from '$routes/init/tickets/constants';
 import { getContributions } from '../get-contributions/helpers.server';
 
 type GetCubeArgs = {
