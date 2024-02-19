@@ -1,60 +1,86 @@
+<script lang="ts" context="module">
+    export const events: EventCardProps[] = [
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117134417035365',
+            cover: {
+                src: '/images/community/events/init-0.png',
+                alt: ''
+            },
+            date: 'February 26th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117245859569754',
+            cover: {
+                src: '/images/community/events/init-1.png',
+                alt: ''
+            },
+            date: 'February 27th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117412247609354',
+            cover: {
+                src: '/images/community/events/init-2.png',
+                alt: ''
+            },
+            date: 'February 28th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117457294295121',
+            cover: {
+                src: '/images/community/events/init-3.png',
+                alt: ''
+            },
+            date: 'February 29th, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        },
+        {
+            href: 'https://discord.com/events/564160730845151244/1209117535723851776',
+            cover: {
+                src: '/images/community/events/init-4.png',
+                alt: ''
+            },
+            date: 'March 1st, 2024',
+            location: 'Discord',
+            title: 'Guest speaker: Diana Pham',
+            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            buttonText: 'View event'
+        }
+    ];
+</script>
+
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
     import { Carousel } from '$lib/components';
-    import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import MetricCard from '$lib/components/MetricCard.svelte';
+    import { newsletter } from '$lib/components/Newsletter.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { GITHUB_STARS } from '$lib/constants';
+    import { Main } from '$lib/layouts';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
-    import MetricCard from '$lib/components/MetricCard.svelte';
-    import { GITHUB_STARS } from '$lib/constants';
 
     export let data;
-
-    const events: EventCardProps[] = [
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-1.png',
-                alt: ''
-            },
-            date: 'December 14th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-2.png',
-                alt: ''
-            },
-            date: 'December 21st',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-3.png',
-                alt: ''
-            },
-            date: 'December 28th',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        }
-    ];
 
     const projects: ProjectCardProps[] = [
         {
@@ -179,7 +205,8 @@
                                 >
                                     <span aria-hidden="true" class="aw-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
+                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span
+                                    >
                                 </a>
                             </div>
                         </div>
