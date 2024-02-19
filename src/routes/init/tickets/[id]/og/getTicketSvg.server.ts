@@ -123,7 +123,7 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
     // split ticket name in max 16 chars per line
     const split_name = splitStr(ticket.name, { chars: chars_per_line, breakWord: false });
 
-    const rainbow_png = await toBase64('/images/ticket/rainbow.png', f);
+    const rainbow_png = await toBase64('/images/tickets/rainbow.png', f);
 
     let tribe_svg: string | undefined = undefined;
     if (ticket.tribe) {
