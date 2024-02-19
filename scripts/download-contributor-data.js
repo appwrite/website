@@ -4,6 +4,12 @@ const perPage = 100;
 
 const outputFile = `./src/lib/contributors.ts`;
 
+const headers = process.env.GITHUB_TOKEN ? {
+    Authorization: `token ${process.env.GITHUB_TOKEN}`
+} : {}
+
+console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`)
+
 async function fetchRepositories() {
     let page = 1;
     let repositoriesData = [];
@@ -14,9 +20,7 @@ async function fetchRepositories() {
         const url = `https://api.github.com/orgs/appwrite/repos?page=${page}&per_page=${perPage}`;
 
         const response = await fetch(url, {
-            headers: {
-                // Authorization: `token $TOKEN_HERE `
-            }
+            headers
         });
 
         if (!response.ok) {
@@ -46,9 +50,7 @@ async function fetchContributors(apiUrl) {
         console.log(`Fetching page ${page} of contributors...`);
         const url = `${apiUrl}?page=${page}&per_page=${perPage}`;
         const response = await fetch(url, {
-            headers: {
-                // Authorization: `token $TOKEN_HERE `
-            }
+            headers
         });
 
         if (!response.ok) {
