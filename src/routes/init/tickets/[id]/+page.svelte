@@ -9,7 +9,7 @@
 
     export let data;
 
-    let firstName = data.ticket.name.split(/\s/)[0] ?? '';
+    let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
     const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
