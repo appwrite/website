@@ -59,42 +59,6 @@
             title: 'Guest speaker: Diana Pham',
             description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
             buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-1.png',
-                alt: ''
-            },
-            date: 'December 14th, 2023',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-2.png',
-                alt: ''
-            },
-            date: 'December 21st, 2023',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
-        },
-        {
-            href: '/discord',
-            cover: {
-                src: '/images/community/events/december-3.png',
-                alt: ''
-            },
-            date: 'December 28th, 2023',
-            location: 'Discord',
-            title: 'Office hours',
-            description: 'Join us for an exciting hour of technical conversations around Appwrite.',
-            buttonText: 'View event'
         }
     ];
 </script>
