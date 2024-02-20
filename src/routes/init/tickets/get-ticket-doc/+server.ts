@@ -1,5 +1,5 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
-import { appwriteInit } from '$lib/appwrite/init.js';
+import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
 import type { User } from '$routes/init/helpers.js';
 import { ID, Query } from '@appwrite.io/console';
@@ -33,12 +33,12 @@ async function getTicketDocByUser(user: User) {
 
     const [gh, aw, isPro] = await Promise.all([
         user.github?.login
-            ? appwriteInit.database.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
+            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
                 Query.equal('gh_user', user.github.login)
             ])
             : null,
         user.appwrite?.$id
-            ? appwriteInit.database.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
+            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
                 Query.equal('aw_email', user.appwrite.email)
             ])
             : null,
@@ -53,7 +53,7 @@ async function getTicketDocByUser(user: User) {
         if (gh_doc && aw_doc && gh_doc.$id !== aw_doc.$id) {
             const oldest = gh_doc.id < aw_doc.id ? gh_doc.$id : aw_doc.$id;
             const newest = gh_doc.id > aw_doc.id ? gh_doc.$id : aw_doc.$id;
-            await appwriteInit.database.updateDocument(
+            await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
                 APPWRITE_COL_INIT_ID,
                 oldest,
@@ -62,7 +62,7 @@ async function getTicketDocByUser(user: User) {
                     aw_email: null
                 }
             );
-            return (await appwriteInit.database.updateDocument(
+            return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
                 APPWRITE_COL_INIT_ID,
                 newest,
@@ -77,7 +77,7 @@ async function getTicketDocByUser(user: User) {
 
         // If the document is missing either the GitHub or Appwrite user, update it
         if (!doc.gh_user || !doc.aw_email) {
-            return (await appwriteInit.database.updateDocument(
+            return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
                 APPWRITE_COL_INIT_ID,
                 doc.$id,
@@ -90,7 +90,7 @@ async function getTicketDocByUser(user: User) {
 
         // If the user's pro status has changed, update the document
         if (!!user.appwrite && doc.is_pro !== isPro) {
-            return (await appwriteInit.database.updateDocument(
+            return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
                 APPWRITE_COL_INIT_ID,
                 doc.$id,
@@ -104,11 +104,11 @@ async function getTicketDocByUser(user: User) {
         return doc;
     } else {
         // If no document exists, create one
-        const allDocs = await appwriteInit.database.listDocuments(
+        const allDocs = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID
         );
-        return (await appwriteInit.database.createDocument(
+        return (await appwriteInitServer.databases.createDocument(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID,
             ID.unique(),
@@ -124,7 +124,7 @@ async function getTicketDocByUser(user: User) {
 }
 
 async function getTicketDocById(id: string) {
-    return (await appwriteInit.database.getDocument(
+    return (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
         id
