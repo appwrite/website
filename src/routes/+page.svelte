@@ -77,13 +77,13 @@
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-padding-block-end-0">
                     <a
-                        href="/blog/post/announcing-appwrite-pro"
+                        href="/blog/post/announcing-init"
                         class="aw-hero-banner-button aw-u-margin-block-end-24"
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="aw-caption-500">New</span>
                         <div class="aw-hero-banner-button-sep" />
-                        <span class="aw-caption-400">Announcing Appwrite Pro</span>
+                        <span class="aw-caption-400">Announcing Init</span>
                         <span class="aw-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="aw-hero is-horizontal">
