@@ -36,7 +36,7 @@
             return;
         }
 
-        await fetch(`/init/ticket/update`, {
+        await fetch(`/init/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@
         saveTicket();
     }
 
-    const ticketUrl = `${$page.url.origin}/init/ticket/${data.ticket.$id}`;
+    const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
         [
@@ -67,7 +67,7 @@
 </script>
 
 <svelte:head>
-    <title>Appwrite Init - Customize Ticket</title>
+    <title>Customize Ticket - Appwrite</title>
     <meta
         name="description"
         content="Join Init February 26-March 1. Register today and claim your Init ticket."

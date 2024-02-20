@@ -33,6 +33,8 @@
                         document.body.classList.add(`theme-${systemTheme}`);
                     } else {
                         document.body.classList.add(`theme-${theme}`);
+                        // Color scheme in html
+                        document.documentElement.style.setProperty('color-scheme', theme);
                     }
                 }
             }

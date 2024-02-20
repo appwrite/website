@@ -9,15 +9,15 @@
 
     export let data;
 
-    let firstName = data.ticket.name.split(/\s/)[0] ?? '';
-    const ogImage = `${$page.url.origin}/init/ticket/${data.ticket.$id}/og`;
+    let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
+    const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
 </script>
 
 <svelte:head>
     <!-- Title -->
-    <title>Appwrite init_ - {firstName}'s Ticket</title>
+    <title>Init - {firstName}'s ticket</title>
     <meta property="og:title" content="Appwrite init_ - {firstName}'s Ticket" />
     <meta name="twitter:title" content="Appwrite init_ - {firstName}'s Ticket" />
     <!-- Description -->
@@ -53,7 +53,7 @@
                     Register today and claim your Init ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
-                    <a class="aw-button" href="/init/ticket">
+                    <a class="aw-button" href="/init/tickets">
                         <span class="text">Get my Init ticket</span>
                     </a>
                     <button class="aw-button is-secondary" on:click={copy}>
@@ -99,7 +99,7 @@
                     gap: 0.5rem;
                     margin-block-start: 1rem;
 
-                    button {
+                    .aw-button {
                         inline-size: 100%;
                     }
                 }

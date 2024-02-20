@@ -1,3 +1,27 @@
+<script lang="ts" context="module">
+    export const tribes = [
+        null,
+        'Appwrite',
+        'Flutter',
+        'Svelte',
+        'React',
+        'Vue',
+        'Angular',
+        'Next',
+        'Astro',
+        'Qwik',
+        'Apple',
+        'Android',
+        'Windows',
+        'Linux',
+        'Python',
+        'Dart',
+        'php',
+        'Ruby',
+        'NET'
+    ];
+</script>
+
 <script lang="ts">
     import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
@@ -17,26 +41,6 @@
     $: ({ ticket } = $page.data as PageData);
 
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
-
-    const tribes = [
-        null,
-        'Appwrite',
-        'Flutter',
-        'Svelte',
-        'React',
-        'Vue',
-        'Angular',
-        'Next',
-        'Apple',
-        'Android',
-        'Windows',
-        'Linux',
-        'Python',
-        'Dart',
-        'php',
-        'Ruby',
-        'NET'
-    ];
 </script>
 
 <div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
@@ -91,7 +95,7 @@
             class="aw-button is-full-width is-secondary u-margin-block-start-24"
             on:click={async () => {
                 await appwriteInit.account.deleteSession('current');
-                goto('/init/ticket');
+                goto('/init/tickets');
             }}
             disabled={!browser}
         >
@@ -130,7 +134,7 @@
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
-        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/ticket"
+        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/tickets"
         class="aw-button is-full-width is-secondary u-margin-block-start-24"
     >
         <div class="aw-icon-appwrite aw-u-color-text-primary" />
