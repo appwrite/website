@@ -115,35 +115,6 @@ to create the push target.
 }
 ```
 
-Your app also requires permissions to be able to receive push notifications.
-First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="YOUR_PACKAGE">
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <!-- ... rest of your manifest -->
-```
-
-Then, request permissions to display push notifications in your app.
-Appwrite provides a utility to help request permissions.
-```kotlin
-OS.requestPermission(
-    this,                                   // Context
-    Manifest.permission.POST_NOTIFICATIONS, // Permission requested
-    onGranted = {
-        println("Permission granted")       // When permission is granted
-    },
-    onDenied = {
-        println("Permission denied")        // When permission is denied
-    },
-    onShowRationale = {
-        println("Should show rationale")    // Explain why this permission is needed.
-    }
-)
-```
-
 Lastly, because FCM push tokens can change, we need to add a service to handle FCM token
 refreshes and update the target with Appwrite Messaging.
 
@@ -200,4 +171,42 @@ In your `AndroidManifest.xml`, register this new service.
 {% section #request-permissions step=3 title="Request permissions" %}
 Your app must ask for permission to receive push notification from the user.
 Appwrite provides an `OS` class to help simplify the process to handle permissions.
+
+{% tabs %}
+{% tabsitem #apple-apns title="Apple with APNs" %}
+
+
+{% /tabsitem %}
+
+{% tabsitem #android-fcm title="Android with FCM" %}
+First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="YOUR_PACKAGE">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- ... rest of your manifest -->
+```
+
+Then, request permissions to display push notifications in your app.
+Appwrite provides a utility to help request permissions.
+```kotlin
+OS.requestPermission(
+    this,                                   // Context
+    Manifest.permission.POST_NOTIFICATIONS, // Permission requested
+    onGranted = {
+        println("Permission granted")       // When permission is granted
+    },
+    onDenied = {
+        println("Permission denied")        // When permission is denied
+    },
+    onShowRationale = {
+        println("Should show rationale")    // Explain why this permission is needed.
+    }
+)
+```
+{% /tabsitem %}
+{% /tabs %}
+
 {% /section %}
