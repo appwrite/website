@@ -34,7 +34,7 @@ What personal data we collect, why we collect it, and how it is used
 * Specific personal data we collect
 * Cookies
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * Usage analytics and statistics, improving quality of service
 ---
 * Legal basis (GDPR only, if applicable)
@@ -52,7 +52,7 @@ What personal data we collect, why we collect it, and how it is used
 * Specific personal data we collect
 * Address
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * For payment processing purposes
 ---
 * Legal basis (GDPR only, if applicable)
@@ -80,7 +80,7 @@ What personal data we collect, why we collect it, and how it is used
 * - Full name
   - Email address
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To be able to create an account
   - To be able to log in
   - To be able to enjoy features available to registered users
@@ -101,12 +101,12 @@ What personal data we collect, why we collect it, and how it is used
   - Orbit
   - Hubspot
 ---
-* To send you marketing communications and product update
-* - Cannot be able to create an account
-  - Cannot be able to log in
-  - Cannot be able to enjoy features available to registered users
+* Consequences of not providing the Personal Data
+* - Cannot create an account
+  - Cannot log in
+  - Cannot enjoy features available to registered users
   - Cannot collect Informative reason for the administrator.
-  - Cannot better project development (identify reported problem)
+  - Cannot better your project development (identify reported problem)
 * Cannot send you marketing communications and product updates
 {% /table %}
 
@@ -121,10 +121,10 @@ What personal data we collect, why we collect it, and how it is used
   - Email address
   - Address, including (Apartment, Postal Code and City)
   - Phone number
-  - Payment information (e.g., 4 last digits of the credit card number)
+  - Payment information (e.g., 4 last digits of the credit card number, via third party vendor)
   - And any other information that you decide to provide us with
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To allow you to purchase Appwrite's products from our Swag Store.
   - To customize your experience
 ---
@@ -136,8 +136,7 @@ What personal data we collect, why we collect it, and how it is used
 * 3rd party platforms such as for the following purposes:
   - Shopify
   - Printful
-  - Printfection
-  - Stripe
+  - Paypal
 ---
 * Consequences of not providing the personal data
 * - Cannot purchase our swag products
@@ -152,7 +151,7 @@ What personal data we collect, why we collect it, and how it is used
 * - Full name
   - Email address
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To add you to our mailing list
   - To send newsletters or other marketing communications.
   - To add you to our blog distribution list
@@ -165,6 +164,12 @@ What personal data we collect, why we collect it, and how it is used
 * 3rd party platforms such as for the following purposes:
   - Mailgun
   - Orbit
+  - MSG91 (India only)
+  - Twilio
+  - Telesign
+  - Textmagic
+  - Vonage
+  - Sendgrid
 ---
 * Consequences of not providing the personal data
 * - Cannot add you to our mailing list
@@ -186,7 +191,7 @@ What personal data we collect, why we collect it, and how it is used
   - Resume/CV
   - Any other data that you decide to supply/provide us
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To process your job application
   - To assess the candidate
   - To communicate with you for candidacy-related matters
@@ -206,7 +211,7 @@ What personal data we collect, why we collect it, and how it is used
   - Cannot communicate with your for candidacy-related matters
 {% /table %}
 
-####  When you contact us (e.g. customer support, need help, submit a request or when you report a security vulnerability)
+####  When you contact us (e.g. customer support, need help, sign a DPA, submit feedback, request or report a security vulnerability)
 
 {% table %}
 ---
@@ -216,7 +221,7 @@ What personal data we collect, why we collect it, and how it is used
   - Message
   - Any other data that you decide to supply/provide us
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To process and answer questions
   - To provide support (e.g., to solve problems)
   - To analyze the security vulnerability report sent by you
@@ -229,6 +234,8 @@ What personal data we collect, why we collect it, and how it is used
 * Third parties with whom we share your personal data
 * 3rd party platforms such as for the following purposes:
   - HelpScout
+  - Docusign (for DPAs)
+  - Typeform
 ---
 * Consequences of not providing the personal data
 * - Cannot assist you and respond your query
@@ -248,7 +255,7 @@ What personal data we collect, why we collect it, and how it is used
   - GitHub profile
   - Any other data that you decide to supply/provide us
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To process and answer questions
   - To provide support (e.g., to solve problems)
   - To analyze the security vulnerability report sent by you
@@ -262,7 +269,7 @@ What personal data we collect, why we collect it, and how it is used
 * 3rd party platforms such as for the following purposes:
   - GitHub
   - OpenCollective
-  - Asana
+  - Linear
 ---
 * Consequences of not providing the personal data
 * - Cannot process your fund application
@@ -282,7 +289,7 @@ What personal data we collect, why we collect it, and how it is used
   - Job position
   - Any other data that you decide to supply/provide us
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * - To establish a business connection
   - To send marketing communications
 ---
@@ -310,7 +317,7 @@ What personal data we collect, why we collect it, and how it is used
   - Twitter Handle
   - Any other data that you decide to supply/provide us and/or publicly available on your social media account
 ---
-* What is the personal data collected and for what purpose?
+* The purpose of data collection
 * To reply and/or respond to your request or question
 ---
 * Legal basis (GDPR only, if applicable)

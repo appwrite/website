@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
+    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg aw-u-z-index-1-negative" />
     <div class="aw-container">
         <h2 class="aw-display aw-u-color-text-primary">Need support?</h2>
         <div class="cards">

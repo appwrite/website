@@ -43,5 +43,7 @@
     img {
         border-radius: 50%;
         padding: 10%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
     }
 </style>
