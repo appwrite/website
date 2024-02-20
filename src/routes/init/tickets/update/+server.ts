@@ -1,10 +1,10 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
-import { appwriteInit } from '$lib/appwrite/init.js';
+import { appwriteInitServer } from '$lib/appwrite/init.server';
 
 export async function POST({ request }) {
   const data = await request.json()
 
-  await appwriteInit.database.updateDocument(
+  await appwriteInitServer.databases.updateDocument(
     APPWRITE_DB_INIT_ID,
     APPWRITE_COL_INIT_ID,
     data.ticketId,
