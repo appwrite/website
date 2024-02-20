@@ -28,7 +28,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -55,7 +55,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query::startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query::endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query::contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query::contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query::contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query::search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query::orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query::orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -70,6 +70,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
 | `Query.or([Query.lessThan(5), Query.greaterThan(10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan(5), Query.greaterThan(10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.not_equal("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
 | `Query.less_than("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
@@ -82,7 +83,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.order_asc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -109,7 +110,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.order_asc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -136,7 +137,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -163,7 +164,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -190,7 +191,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -217,7 +218,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -244,7 +245,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -271,7 +272,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
 | `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "%ette")` | Returns documents if a string attributes is like the pattern specified. Use `%` as a wildcard.                                                       |
+| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
