@@ -3,14 +3,31 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-
     import Ticket from '../(components)/Ticket.svelte';
     import TicketPreview from '../(components)/TicketPreview.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
+    import { buildOpenGraphImage } from '$lib/utils/metadata';
+
+    const title = 'Init - Appwrite';
+    const description = 'The start of something new.';
+    const ogImage = buildOpenGraphImage('init', description);
 </script>
 
 <svelte:head>
-    <title>Appwrite init_ - Ticket</title>
+    <!-- Titles -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <!-- Description -->
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>
