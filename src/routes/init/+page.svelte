@@ -13,12 +13,13 @@
     import { tribes } from './tickets/customize/form.svelte';
     import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
+    import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     const base = new Date('2024-02-26T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
-    };
+    }
 
     function toReleaseDate(date: Date): string {
         return date.toLocaleDateString('en-US', {
@@ -52,13 +53,13 @@
     ] as DayType[];
 
     function shuffle<T>(array: T[]): T[] {
-        let currentIndex = array.length,  randomIndex;
+        let currentIndex = array.length,
+            randomIndex;
 
         while (currentIndex > 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
-            [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
         }
 
         return array;
@@ -106,7 +107,7 @@
     const getRandomTicket = () => {
         let user = users[userIndex];
 
-        if(!user) {
+        if (!user) {
             userIndex = 0;
             user = users[userIndex];
         }
@@ -124,10 +125,27 @@
             contributions: getMockContributions()
         };
     };
+
+    const title = 'Init - Appwrite';
+    const description = 'The start of something new.';
+    const ogImage = buildOpenGraphImage('init', description);
 </script>
 
 <svelte:head>
-    <title>Init - Appwrite</title>
+    <!-- Titles -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <!-- Description -->
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>
@@ -512,7 +530,7 @@
             height: 43.75rem;
 
             @media screen and (max-width: 1023px) {
-                height: 36.4375rem;
+                height: 38rem;
             }
 
             .text {
