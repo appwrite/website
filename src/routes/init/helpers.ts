@@ -4,7 +4,12 @@ import { get, writable } from 'svelte/store';
 import { appwriteInit } from '$lib/appwrite/init';
 import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import type { ContributionsMatrix, TicketData, TicketDoc, TicketVariant } from './tickets/constants';
+import type {
+    ContributionsMatrix,
+    TicketData,
+    TicketDoc,
+    TicketVariant
+} from './tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -75,11 +80,18 @@ export async function getGithubUser() {
             headers: {
                 Authorization: `Bearer ${providerAccessToken}`
             }
-        }).then((res) => res.json() as Promise<GithubUser>);
+        })
+            .then((res) => res.json() as Promise<GithubUser>)
+            .then((n) => ({
+                login: n.login,
+                name: n.name
+            }));
+
         if (!res.login) {
             await appwriteInit.account.deleteSession('current');
             return null;
         }
+
         return res;
     } catch (e) {
         console.error(e);
@@ -122,7 +134,6 @@ export async function getTicketDocById(id: string, f = fetch) {
 }
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
-
     const res = await f(`/init/tickets/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
