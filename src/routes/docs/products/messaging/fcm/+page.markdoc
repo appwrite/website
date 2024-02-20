@@ -70,7 +70,7 @@ Some additional configuration is required to enable push notifications in your m
 {% /tabsitem %}
 {% tabsitem #fcm-ios title="iOS with FCM" %}
 1. In your Firebase console, navigate to **Settings** > **General** > **Your apps** > add an **iOS** app.
-1. Register and download your `google-services.json` config file.
+1. Register and download your `GoogleService-Info.plist` and add it to the root of your project.
 1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
 1. Create a new key, note down the key ID and download your key.
 1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.

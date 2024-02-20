@@ -370,13 +370,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFile(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFile(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -475,13 +473,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileDownload(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileDownload(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -580,13 +576,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFilePreview(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFilePreview(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -686,13 +680,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileView(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileView(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
