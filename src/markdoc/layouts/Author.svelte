@@ -108,10 +108,12 @@
                     {#if avatar}
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
-                    <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
-                    {#if role}
-                        <div class="aw-label u-margin-block-start-8">{role}</div>
-                    {/if}
+                    <div>
+                        <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
+                        {#if role}
+                            <div class="aw-label u-margin-block-start-8">{role}</div>
+                        {/if}
+                    </div>
                     {#if bio}
                         <p class="aw-author-section-info aw-description">
                             {bio}
