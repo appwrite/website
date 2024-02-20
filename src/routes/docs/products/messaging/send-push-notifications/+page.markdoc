@@ -29,14 +29,42 @@ Before sending your first push notification, your application must register itse
 then provide the device token to Appwrite.
 
 {% tabs %}
-{% tabsitem #apple-apns title="Apple with APNs" %}
+{% tabsitem #apple-apns title="APNs for Apple" %}
 First, enable push notification in your app.
 1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
 1. Create a new key, note down the key ID and download your key.
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+
 {% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/xcode-enable-pn.png) {% /only_light %}
 
-Next, create a handler for when the app receives a push notification device token.
+First, register for remote notifications in your app delegate's `application(_:didFinishLaunchingWithOptions:)` method.
+
+```swift
+func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+) -> Bool {
+    // Register for remote notifications
+    UNUserNotificationCenter.current().delegate = self
+
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: { granted, error in
+            DispatchQueue.main.async {
+                if granted {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
+    )
+
+    return true
+}
+```
+
+
+Next, create a handler for when the app receives the push notification device token.
 ```swift
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -46,18 +74,49 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // register device
         var token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
         
-        Task {
-            let target = try? await account.createPushTarget(
-                targetId: ID.unique(),
-                identifier: token
-            )
+        // Save the token to be used later
+        UserDefaults.standard.set(token, forKey: "apnsToken")
+    }
+}
+```
+Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
+With this saved `apnsToken`, you can create a push target with Appwrite when the user logs in.
+Each push target is associated with an account, heres an example with a email password login.
+The same logic applies to all types of login methods.
+```swift
+func login() async {
+    do {
+        let session = try await account.createEmailPasswordSession(
+            email: username,
+            password: password
+        )
+
+        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else {
+            return
+        }
+
+        guard let target = try? await account.createPushTarget(
+            targetId: ID.unique(),
+            identifier: token
+        ) else {
+            return
+        }
+
+        UserDefaults.standard.set(target.id, forKey: "targetId")
+
+        DispatchQueue.main.async {
+            self.response = String(describing: session.toMap())
+        }
+    } catch {
+        DispatchQueue.main.async {
+            self.response = error.localizedDescription
         }
     }
 }
 ```
 {% /tabsitem %}
 
-{% tabsitem #android-fcm title="Android with FCM" %}
+{% tabsitem #android-fcm title="FCM for Android" %}
 Before you can send push notifications using FCM, make sure you'd followed the steps to
 [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
 
@@ -187,8 +246,144 @@ In your `AndroidManifest.xml`, register this new service.
 </service>
 ```
 {% /tabsitem %}
-{% /tabs %}
 
+{% tabsitem #apple-fcm title="FCM for Apple" %}
+Before you can send push notifications using FCM, make sure you'd followed the steps to
+[Add Firebase to your iOS project](https://firebase.google.com/docs/ios/setup).
+
+After adding Firebase to your iOS project and adding the `GoogleService-Info.plist` to the root of your project.
+
+
+Next, add your APNs key to Firebase.
+1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
+1. Create a new key, note down the key ID and download your key.
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
+
+Initialize Firebase in your app delegate's `application(_:didFinishLaunchingWithOptions:)` method,
+implement the messaging delegate protocol, and register for remote notifications.
+
+```swift
+func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+) -> Bool {
+    // initialize Firebase
+    FirebaseApp.configure()
+
+    // Set the messaging delegate
+    Messaging.messaging().delegate = self
+
+    // Register for remote notifications
+    UNUserNotificationCenter.current().delegate = self
+
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: { granted, error in
+            DispatchQueue.main.async {
+                if granted {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
+    )
+
+    return true
+}
+```
+Your APNS token can change, so you need to handle the token refresh event and update the target with Appwrite Messaging.
+Implement `didReceiveRegistrationToken`, which is called when the FCM token is updated.
+```swift
+func messaging(
+    _ messaging: FirebaseMessaging.Messaging,
+    didReceiveRegistrationToken fcmToken: String?
+) {
+    guard let fcmToken = fcmToken else {
+        return
+    }
+
+    // Save the token to be used later
+    UserDefaults.standard.set(fcmToken , forKey: "fcmToken")
+
+    // Get the current Appwrite targetId from UserDefaults
+    let targetId = UserDefaults.standard.string(forKey: "targetId")
+
+    Task {
+        do {
+            _ = try await account.get()
+        } catch {
+            return // if not logged in, don't update the target
+        }
+
+        // if targetId is nil, create a new target
+        if targetId == nil {
+            let target = try? await account.createPushTarget(
+                targetId: ID.unique(),
+                identifier: fcmToken
+            )
+
+            UserDefaults.standard.set(target?.id , forKey: "targetId")
+        } else {
+            // if targetId exists for the Appwrite Account, update the target
+            _ = try? await account.updatePushTarget(
+                targetId: targetId!,
+                identifier: fcmToken
+            )
+        }
+    }
+}
+
+Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
+With this saved `fcmToken`, you can create a push target with Appwrite when the user logs in.
+Each push target is associated with an account, heres an example with a email password login.
+The same logic applies to all types of login methods.
+```swift
+func login() async {
+    do {
+        let session = try await account.createEmailPasswordSession(
+            email: username,
+            password: password
+        )
+
+        guard let token = UserDefaults.standard.string(forKey: "fcmToken") else {
+            return
+        }
+
+        guard let target = try? await account.createPushTarget(
+            targetId: ID.unique(),
+            identifier: token
+        ) else {
+            return
+        }
+
+        UserDefaults.standard.set(target.id, forKey: "targetId")
+
+        DispatchQueue.main.async {
+            self.response = String(describing: session.toMap())
+        }
+    } catch {
+        DispatchQueue.main.async {
+            self.response = error.localizedDescription
+        }
+    }
+}
+```
+
+If you have disabled method swizzling, or you are building a SwiftUI app,
+you'll need to explicitly map your APNs token to the FCM registration token. 
+Implement the `didRegisterForRemoteNotificationsWithDeviceToken` method to get the device token and save it to FCM.
+```swift
+func application(
+    _ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+) {
+    Messaging.messaging().apnsToken = deviceToken
+}
+``` 
+{% /tabsitem %}
+{% /tabs %}
 {% /section %}
 
 {% section #request-permissions step=3 title="Request permissions" %}
@@ -197,11 +392,25 @@ Appwrite provides an `OS` class to help simplify the process to handle permissio
 
 {% tabs %}
 {% tabsitem #apple-apns title="Apple with APNs" %}
+Before your app can receive push notifications, you need to request the user for permissions.
+Appwrite provides a utility to help request permissions to display notificaitons.
 
+```swift
+OS.requestPermission(
+    application,
+    OSPermission.notifications,
+    onGranted: {
+        // Handle on permission granted
+    },
+    onDenied: {
+        // Handle on permission denied
+    }
+)
+```
 
 {% /tabsitem %}
 
-{% tabsitem #android-fcm title="Android with FCM" %}
+{% tabsitem #android-fcm title="FCM for Android" %}
 First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
 
 ```xml
@@ -228,6 +437,38 @@ OS.requestPermission(
         println("Should show rationale")    // Explain why this permission is needed.
     }
 )
+```
+{% /tabsitem %}
+
+{% tabsitem #apple-fcm title="FCM for Apple" %}
+Before your app can receive push notifications, you need to request the user for permissions.
+Appwrite provides a utility to help request permissions to display notificaitons.
+
+```swift
+OS.requestPermission(
+    application,
+    OSPermission.notifications,
+    onGranted: {
+        // Handle on permission granted
+    },
+    onDenied: {
+        // Handle on permission denied
+    }
+)
+```
+
+When an FCM registration token is generated, the library uploads the identifier and configuration data to Firebase.
+If you wish to give your users the ability to explicitly opt out of sending data to Firebase,
+you can disable automatic initialization and manually initialize the library when the user grants permission.
+
+Disable auto-initialization by setting `FirebaseMessagingAutoInitEnabled` to `NO` in your `Info.plist`.
+```text
+FirebaseMessagingAutoInitEnabled = NO
+```
+
+Then, manually initialize the library when the user grants permission.
+``` swift
+Messaging.messaging().autoInitEnabled = true
 ```
 {% /tabsitem %}
 {% /tabs %}
