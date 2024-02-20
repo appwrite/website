@@ -14,17 +14,19 @@
     import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
 
-    const base = new Date('2024-02-26 15:00:00 GMT+0000');
-    const addDays = (date: Date, days: number) => {
+    const base = new Date('2024-02-26T15:00:00.000Z');
+
+    function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
     };
-    const toReleaseDate = (date: Date) => {
+
+    function toReleaseDate(date: Date): string {
         return date.toLocaleDateString('en-US', {
             weekday: 'long',
             month: 'short',
             day: 'numeric'
         });
-    };
+    }
 
     $: days = [
         {
@@ -49,7 +51,7 @@
         }
     ] as DayType[];
 
-    const shuffle = (array: any[]): any[] => {
+    function shuffle<T>(array: T[]): T[] {
         let currentIndex = array.length,  randomIndex;
 
         while (currentIndex > 0) {
@@ -61,7 +63,7 @@
 
         return array;
     }
-    
+
     const users = shuffle([
         { name: 'Eldad Fux', user: 'eldadfux' },
         { name: 'Thomas', user: 'tglide' },
@@ -125,7 +127,7 @@
 </script>
 
 <svelte:head>
-    <title>Appwrite init_</title>
+    <title>Init - Appwrite</title>
 </svelte:head>
 
 <Main>
@@ -159,7 +161,7 @@
                 <div class="aw-dot" />
             </h2>
 
-            <CountdownCard date={new Date('2024-02-21 15:00:00 GMT+0000')} />
+            <CountdownCard date={new Date('2024-02-21T15:00:00.000Z')} />
             {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
@@ -443,6 +445,7 @@
 
                 .swag {
                     border-radius: 12px;
+                    object-fit: cover;
                 }
             }
 
