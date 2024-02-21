@@ -65,7 +65,7 @@ Find your project's ID in the **Settings** page.
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
-import { Client, Account} from 'appwrite';
+import { Client, Account } from 'appwrite';
 
 export const client = new Client();
 
@@ -96,39 +96,37 @@ const App = () => {
         setLoggedInUser(await account.get());
     }
 
+    async function register(email, password, name) {
+        await account.create(ID.unique(), email, password, name);
+        login(email, password);
+    }
+
+    async function logout() {
+        await account.deleteSession('current');
+        setLoggedInUser(null);
+    }
+
+    if (loggedInUser()) {
+        return (
+            <div>
+                <p>Logged in as {loggedInUser().name}</p>
+                <button onClick={logout}>Logout</button>
+            </div>
+        );
+    }
+
     return (
         <div>
-            <p>
-                {() => loggedInUser() ? `Logged in as ${loggedInUser().name}` : 'Not logged in'}
-            </p>
-
+            <p>Not logged in</p>
             <form>
                 <input type="email" placeholder="Email" value={email()} onChange={e => setEmail(e.target.value)} />
                 <input type="password" placeholder="Password" value={password()} onChange={e => setPassword(e.target.value)} />
                 <input type="text" placeholder="Name" value={name()} onChange={e => setName(e.target.value)} />
-
                 <button type="button" onClick={() => login(email(), password())}>
                     Login
                 </button>
-
-                <button
-                    type="button"
-                    onClick={async () => {
-                        await account.create(ID.unique(), email(), password(), name());
-                        login(email(), password());
-                    }}
-                >
+                <button type="button" onClick={() => register(email(), password(), name())}>
                     Register
-                </button>
-
-                <button
-                    type="button"
-                    onClick={async () => {
-                        await account.deleteSession('current');
-                        setLoggedInUser(null);
-                    }}
-                >
-                    Logout
                 </button>
             </form>
         </div>
