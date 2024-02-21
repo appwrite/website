@@ -13,10 +13,11 @@ Appwrite currently allows two factors of authentication. More factors of authent
 Here are the steps to implement MFA in your application.
 
 {% section #enable-mfa step=1 title="Enable MFA on an account" %}
-[TODO @TorstenDittmann need some advice here, what's the steps?]
-{% /section %}
-{% section #init-login step=2 title="Initialize login" %}
-Begin your login flow with the default authentication method used by your app, for example, email password.
+You can enable MFA on your account by calling `account.updateMFA()`.
+You will need to have added more than 1 factors of authentication to an account before
+the MFA is enforced.
+
+Initialize your Appwrite SDK's `Client` and `Account`.
 {% multicode %}
 ```js
 import { Client, Account } from "appwrite";
@@ -27,25 +28,121 @@ const account = new Account(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
-
-await account.createEmailSession(
-    'email@example.com',
-    'password1+'
-);
 ```
-
 ```dart
-echo 'test';
-```
+import 'package:appwrite/appwrite.dart';
 
-```kotlin
-print('test');
+void main() {                        // Init SDK
+  Client client = Client();
+  Account account = Account(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+  ;
+}
 ```
 
 ```swift
-print('test');
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let account = Account(client)
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val account = Account(client)
+```
+{% /multicode %}
+
+
+{% multicode %}
+```js
+const promise = account.updateMFA(true);
+
+promise.then(function (response) {
+    console.log(response);           // Success
+}, function (error) {
+    console.log(error);              // Failure
+});
+```
+
+```dart
+Future result = account.updateMFA(
+    mfa: false,
+);
+
+result
+.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+```swift
+let user = try await account.updateMFA(
+  mfa: xfalse
+)
+```
+```kotlin
+val response = account.updateMFA(
+    mfa = false
+)
+```
+{% /multicode %}
+{% /section %}
+{% section #init-login step=2 title="Initialize login" %}
+Begin your login flow with the default authentication method used by your app, for example, email password.
+{% multicode %}
+```js
+const promise = account.createEmailPasswordSession(
+        'email@example.com',         // email
+        'password'                   // password
+    );
+
+promise.then(function (response) {
+    console.log(response);           // Success
+}, function (error) {
+    console.log(error);              // Failure
+});
+```
+
+```dart                       // Init SDK
+Future result = account.createEmailPasswordSession(
+email: 'email@example.com',
+password: 'password',
+);
+
+result
+.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+```swift
+let session = try await account.createEmailPasswordSession(
+  email: "email@example.com",
+  password: "password"
+)
+```
+```kotlin
+val response = account.createEmailPasswordSession(
+    email = "email@example.com",
+    password = "password"
+)
 ```
 {% /multicode %}
 {% /section %}
@@ -54,28 +151,60 @@ Upon successful login in the first authentication step, check the status of the 
 If more than one factors are required, you will the error `user_more_factors_required`.
 {% multicode %}
 ```js
-try {
-    await account.get();
-} catch (error) {
+const promise = account.get();
+
+promise.then(function (response) {
+    console.log(response);           // Success
+}, function (error) {
+    console.log(error);              // Failure
     if (error.type === `user_more_factors_required`){
         // redirect to perform MFA
     }
     else {
         // handle other errors
     }
-}
+});
 ```
 
 ```dart
-echo 'test';
-```
+Future result = account.get();
 
-```kotlin
-print('test');
+result
+.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+    if (error.type == 'user_more_factors_required') {
+    // redirect to perform MFA
+    } else {
+    // handle other errors
+    }
+});
 ```
-
 ```swift
-print('test');
+do {
+    let user = try await account.get()
+} catch let error as AppwriteException {
+    print(error.message)
+    if error.type == "user_more_factors_required" {
+        // redirect to perform MFA
+    } else {
+        // handle other errors
+    }
+}
+```
+```kotlin
+try {
+    val response = account.get()
+    println(response)
+} catch (error: AppwriteException) {
+    println(error.message)
+    if (error.type == "user_more_factors_required") {
+        // redirect to perform MFA
+    } else {
+        // handle other errors
+    }
+}
 ```
 {% /multicode %}
 {% /section %}
@@ -93,20 +222,33 @@ The returned object will be formatted like this.
 
 {% multicode %}
 ```js
-const providers = await account.listProviders();
-// redirect based on providers returned.
-```
+const promise = account.listFactors();
 
+promise.then(function (response) {
+    console.log(response);           // Success
+    // redirect based on providers returned.
+}, function (error) {
+    console.log(error);              // Failure
+});
+```
 ```dart
-echo 'test';
-```
+Future result = account.listFactors();
 
-```kotlin
-print('test');
+result
+.then((response) {
+    print(response);
+    // redirect based on providers returned.
+}).catchError((error) {
+    print(error.response);
+});
 ```
 
 ```swift
-print('test');
+let mfaFactors = try await account.listFactors()
+```
+
+```kotlin
+val response = account.listFactors()
 ```
 {% /multicode %}
 
@@ -114,28 +256,51 @@ print('test');
 {% section #create-challenge step=5 title="Create challenge" %}
 Based on the providers available, initialize an additional auth step.
 Calling these methods will send a challenge to the user.
+You will need to save the challenge ID to complete the challenge in a later step.
 {% multicode %}
 ```js
-// Authenticator app
-const challenge = await account.createChallenge('totp');
+// "totp" for authenticator app challenge
+// "email" for email challenge
+// "phone" for SMS challenge
+const promise = account.create2FAChallenge(
+        'phone'                       // factor
+    );
 
-// Email
-const challenge = await account.createChallenge('email');
+promise.then(function (response) {
+    console.log(response);           // Success
+    let challengeId = response.$id; 
+}, function (error) {
+    console.log(error);              // Failure
+});
 
-// Phone
-const challenge = await account.createChallenge('phone');
 ```
 
 ```dart
-echo 'test';
-```
+Future result = account.create2FAChallenge(
+factor: 'phone',
+);
 
-```kotlin
-print('test');
+result
+.then((response) {
+    print(response);
+    var challengeId = response.$id;
+}).catchError((error) {
+    print(error.response);
+});
 ```
 
 ```swift
-print('test');
+let mfaChallenge = try await account.create2FAChallenge(
+  factor: "phone"
+)
+let challengeId = mfaChallenge.id
+```
+
+```kotlin
+val response = account.create2FAChallenge(
+    factor = "phone"
+)
+val challengeId = response.id
 ```
 {% /multicode %}
 
@@ -144,23 +309,38 @@ print('test');
 Once the user receives the challenge code, you can pass the code back to Appwrite to complete the challenge.
 {% multicode %}
 ```js
-// Authenticator app
-await account.updateChallenge(
-    [CHALLENGE_ID],
-    [CHALLENGE_CODE]
-);
+const promise = account.updateChallenge(
+        '[CHALLENGE_ID]',            // challengeId
+        '[OTP]'                      // otp
+    );
 ```
 
 ```dart
-echo 'test';
+Future result = account.updateChallenge(
+challengeId: '[CHALLENGE_ID]',
+otp: '[OTP]',
+);
+
+result
+.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
 ```
 
 ```kotlin
-print('test');
+let result = try await account.updateChallenge(
+  challengeId: "[CHALLENGE_ID]",
+  otp: "[OTP]"
+)
 ```
 
 ```swift
-print('test');
+val response = account.updateChallenge(
+    challengeId = "[CHALLENGE_ID]",
+    otp = "[OTP]"
+)
 ```
 {% /multicode %}
 
