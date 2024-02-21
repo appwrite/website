@@ -13,13 +13,13 @@
     import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import LogoSvg from './(assets)/logo-short.svg';
     import thumbnail from './(assets)/thumbnail-1.png';
     import Day from './(days)/Day.svelte';
     import Video from './(components)/Video.svelte';
     import { fade, slide } from 'svelte/transition';
 
     const base = new Date('2024-02-26T15:00:00.000Z');
+    const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -139,16 +139,6 @@
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
-    const kickoff = new Date('2024-02-21T15:00:00.000Z');
-
-    let mockdate = new Date(kickoff);
-
-    function fastForward() {
-        const now = new Date();
-        now.setTime(new Date().getTime() + 10000);
-
-        mockdate = now;
-    }
 </script>
 
 <svelte:head>
@@ -195,28 +185,26 @@
             {/each}
         </div>
         <hr />
-        <button class="aw-button" on:click={fastForward}>Fast forward</button>
         <div class="days">
-            {#key mockdate}
-                <Day release={mockdate}>
-                    <div
-                        class="aw-card is-normal has-border-gradient kickoff"
-                        transition:fade={{ delay: 0, duration: 600 }}
+            <Day release={kickoff}>
+                <div
+                    class="aw-card is-normal has-border-gradient kickoff"
+                    transition:fade={{ delay: 0, duration: 600 }}
+                >
+                    <h3
+                        class="aw-title aw-u-color-text-primary"
+                        id="kickoff"
+                        style:scroll-margin-top="5rem"
                     >
-                        <h3
-                            class="aw-title aw-u-color-text-primary"
-                            id="kickoff"
-                            style:scroll-margin-top="5rem"
-                        >
-                            Init kickoff<span class="aw-u-color-text-accent">_</span>
-                        </h3>
-                        <Video
-                            {thumbnail}
-                            src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
-                        />
-                    </div>
-                </Day>
-            {/key}
+                        Init kickoff<span class="aw-u-color-text-accent">_</span>
+                    </h3>
+                    <Video
+                        --p-aspect-ratio="16/9"
+                        {thumbnail}
+                        src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
+                    />
+                </div>
+            </Day>
             {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
