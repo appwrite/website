@@ -1,0 +1,174 @@
+---
+layout: post
+title: Introducing support for server-side rendering
+description: 
+date: 2024-02-27
+cover: /images/blog/ssr-announcement.png
+timeToRead: 2
+author: dennis-ivy
+category: engineering
+featured: false
+---
+We're excited to introduce support for server-side rendering (SSR) authentication patterns. This change enhances the developer experience when building with popular frameworks that provide SSR as an option, such as Next.js, SvelteKit, Nuxt, Astro, Remix, and more.
+
+Until now, Appwrite’s authentication system has only been compatible with Client Side Rendering patterns, which worked well with single page applications (SPA’s), but had limitations on how SSR was implemented. While it was possible to implement auth with SSR, the implementation developers used were hacky and undocumented. In the latest release, we are officially introducing support for SSR with new methods and workflows to the server SDK's.
+
+### Understanding Past Limitations
+
+To understand the new changes and workflows, let's first take a step back and address the challenges we aimed to solve in this new release.
+
+When building applications with SSR, we need a way to generate and store a session secret server-side in order to protect API routes and pages and a way to make authenticated requests.
+
+The problem with Appwrites SDK was that there was no way to access a session secret when using authentication methods. When using methods such as `createEmailSession`, Appwrite’s web SDK automatically stores the session in the browser's cookies and does not make it available to you. For client-side rendering, this is a non-issue since we don't need to access the session manually. However, when it comes to SSR we need a way to access a session and set it in the server's cookies for subsequent requests.
+
+### **Getting started with SSR**
+
+As you get started with SSR it’s important to note that all methods we will be working with are based on Appwrite’s server SDK’s. In the examples below, we will use the [Node JS SDK.](https://appwrite.io/docs/sdks#server)
+
+It’s also recommended that as you follow along with this article, you do not install any client SDK’s as that may lead to confusion. All examples are using `node-appwrite`.
+
+```bash
+npm install node-appwrite
+```
+
+### **Create sessions server-side**
+
+To solve this issue, all existing server SDK methods that create a session will now also return a session object. The following methods are: 
+
+- `account.createEmailPasswordSession(email, password)`
+- `account.createAnonomousSession()`
+- `account.createSession(userId, token)`
+
+You can use these methods now to create a session, and to set a session cookie on your server.
+
+```jsx
+const session = account.createEmailPasswordSession(email, password)
+
+console.log(session.secret)
+//Output: 'eyJpZCI...sdfahfkjjy'
+```
+
+### **Using session secrets**
+
+With a session cookie set, we can now use it to authenticate users and protect routes. 
+
+When using the Appwrite SDK you can now use the new `setSession` method to authenticate a user for any request. 
+
+```jsx
+client.setSession(session.secret);
+const currentUser = await account.get();
+```
+
+It’s important to note that the client instance should be re-created for every request. Failure to do so on your server SDK could result in leaked/shared session cookies between request
+
+### **Preventing rate limiting**
+
+Many Appwrite endpoints are rate-limited by IP address to prevent abuse. Server-side rendered applications will be making requests from the same IP address. This means that if multiple users are using the application at the same time, they will be sharing the same rate limit.
+
+To prevent rate limiting, you must also use the `setSession` helper on the SDK.  Appwrite will use the session token for authorization and disable rate limiting for the request.
+
+```jsx
+client.setKey('<API_KEY>');
+client.setSession(session.secret);
+```
+
+It’s important to note that you must use `setKey` along with `setSession` . This ensures that when we create a session we’ll get back a session secret in the response. If you don’t set an API key, the request will be confused for a client request and won't return a session secret.
+
+### Seeing it in action
+
+Using an express server for simplicity, I’ve provided an example of how we can use the node server-side SDK to generate a session and then make authenticated requests in order to send or retrieve data such as the current user.
+
+> Code in this example is minimal, proceed to video link here to see complete code and full demonstration: Video Link
+> 
+
+### **Creating a session**
+
+Here, I'll create a route that generates a session and sets a cookie server-side. We'll use the most straightforward example with the new `createEmailPasswordSession` method to create a session and set our session cookie.
+
+```jsx
+const express = require('express')
+const appwrite = require("node-appwrite");
+
+app.post('/login', async (req, res) => {
+		// Initialize Appwrite client & account here
+		// ...
+
+    // Get email and password from request
+    const { email, password } = req.body;
+
+    // Create the session using the Appwrite client
+    const session = await account.createEmailSession(email, password);
+
+    // Set the session cookie
+    res.cookie('session', session.secret, { 
+			//...
+		});
+});
+```
+
+Once we set the session cookie, the browser will take this cookie and store it. From this point on the session cookie will be sent back on each request to the server, allowing the server to use the session cookie for identity verification.
+
+each request the session cookie will be sent back to the server along with
+
+ and send it back on all future requests
+
+### **Accepting authenticated requests**
+
+Once a user has a session cookie, they can use it to make authenticated requests to your server.
+
+To enable this, you will need to read the cookie value from the request, and then pass it to the Appwrite client, using the new `setSession` helper method. 
+
+```jsx
+app.get('/user', async (req, res) => {
+		//Initialize OR retrive client instance
+
+    const sessionSecret = req.cookies.session;
+
+    // Pass the session cookie to the Appwrite client
+    client.setSession(sessionSecret);
+
+    // Now, you can make authenticated requests to the Appwrite API
+   const user = await account.get('current');
+
+   //...
+})
+```
+
+### Changes to existing auth flows
+
+For authentication methods such as `phone` & `magicURL` we've changed the approach to use token creation methods, which can later be exchanged for sessions with one universal method, `account.createSession(userId, token)` , which can be used across all auth flows. Having a universal method to create sessions helps remove unnecessary duplicate code. 
+
+**Before**
+
+Previously, for phone and magicURL authentication, you would create a session and then update the session: 
+
+```jsx
+//Step 1                                
+createMagicURLSession(userId, email) 
+createPhoneSession(userId, phone)
+
+//Step 2
+updateMagicURLSession(userId, secret)
+updatePhoneSession(userId, secret)
+```
+
+**After**
+
+With the new flow, you will now create tokens from the `Accounts` API and then use that token to generate a session with the `account.createSession(userId, token)` method. 
+
+```jsx
+createMagicURLToken(userId, email) -->  createSession(userId, token)
+createPhoneToken(userId, phone)  ---->  createSession(userId, token)
+```
+
+### Resources
+
+Visit our documentation to get started with SSR, join us on Discord to be part of the discussion, or visit our blog and YouTube channel to learn more! 
+
+- [Docs](/docs/products/auth/server-side-rendering)
+- [Discord](/discord)
+- [Blog](/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub repository](https://github.com/appwrite/appwrite)
+
+SSR will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.
