@@ -5,7 +5,11 @@
     export let day: string | undefined = undefined;
 
     let today = new Date();
-    setInterval(() => {
+    let interval = setInterval(() => {
+        if (hasReleased) {
+            clearInterval(interval);
+            return;
+        }
         today = new Date();
     }, 1000);
 
