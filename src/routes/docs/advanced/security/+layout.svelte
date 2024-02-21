@@ -50,6 +50,10 @@
 					href: '/docs/advanced/security/encryption'
 				},
 				{
+					label: 'Multi-factor authentication',
+					href: '/docs/advanced/security/mfa'
+				},
+				{
 					label: 'HTTPS',
 					href: '/docs/advanced/security/https'
 				},

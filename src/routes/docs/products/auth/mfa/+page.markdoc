@@ -8,6 +8,11 @@ Multi-factor authentication (MFA) greatly increases the security of your apps by
 When Multifactor authentication is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite Authentication lets you easily implement MFA in your apps, letting you build more securely and quickly.
 
+{% info title="Looking for MFA for your Console account?" %}
+This page covers MFA for your app's end-users. 
+If you are looking for MFA for your Appwrite Console account, please refer to the [Console MFA page](/docs/advanced/security/mfa).
+{% /info %}
+
 Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
 
 Here are the steps to implement MFA in your application.
@@ -343,5 +348,4 @@ val response = account.updateChallenge(
 )
 ```
 {% /multicode %}
-
 {% /section %}
