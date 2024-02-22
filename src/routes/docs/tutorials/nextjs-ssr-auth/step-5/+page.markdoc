@@ -11,13 +11,12 @@ We can now implement our sign in page. Create a `+page.jsx` file in the `src/app
 // src/app/sigin/+page.jsx
 
 import {
-  createAppwriteClient,
+  createSessionClient,
   getLoggedInUser,
 } from "@/lib/server/appwrite";
 
-
 export default async function SignInPage() {
-  const { account } = createAppwriteClient(headers());
+  const { account } = createSessionClient(headers());
 
   const user = await getLoggedInUser(account);
   if (user) redirect("/account");
@@ -53,7 +52,7 @@ This is an HTML form with an email and password input. When the form is submitte
 
 // previous imports ...
 
-import { SESSION_COOKIE } from "@/lib/server/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "@/lib/server/appwrite";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -65,7 +64,7 @@ async function signInWithEmail(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const { account } = createAppwriteClient(headers());
+  const { account } = createAdminClient();
 
   const session = await account.createEmailPasswordSession(email, password);
 
@@ -80,4 +79,4 @@ async function signInWithEmail(formData) {
 }
 ```
 
-The `signInWithEmail` function is an async function that takes the form data as an argument. It uses the `createAppwriteClient` function to create an Appwrite client and then calls the `createEmailPasswordSession` method on the `account` object. This method takes the email and password as arguments and returns a session object. We then set the session secret in a cookie and redirect the user to the account page.
+The `signInWithEmail` function is an async function that takes the form data as an argument. It uses the `createAdminClient` function to create an admin Appwrite client and then calls the `createEmailPasswordSession` method on the `account` object. This method takes the email and password as arguments and returns a session object. We then set the session secret in a cookie and redirect the user to the account page.

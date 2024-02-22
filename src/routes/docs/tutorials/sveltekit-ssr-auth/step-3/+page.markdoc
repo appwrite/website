@@ -71,8 +71,6 @@ For this tutorial you'll need an API key with the following scopes:
 
 | Category  {% width=120 %} | Required scopes    | Purpose |
 |-----------|---------------------|---------|
-| Accounts  | `accounts.read`     | Allows API key to read account information. |
-|           | `accounts.write`    | Allows API key to create, update, and delete account information. |
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% only_dark %}

@@ -23,21 +23,38 @@ Doing so could create security vulnerabilities.
 import { Client, Account } from "node-appwrite";
 import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
-export const SESSION_COOKIE = "a_session";
+// The name of your cookie that will store the session
+export const SESSION_COOKIE = "my-custom-session";
 
-export function createAppwriteClient(headers) {
+// Admin client, used to create new accounts
+export function createAdminClient() {
   const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
+    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
+    .setKey(import.meta.env.APPWRITE_KEY); // Set the API key here!
 
-  // Set the API key for the client, bypassing rate limiting and enabling
-  client.setKey(process.env.APPWRITE_KEY!);
+  // Return the services you need
+  return {
+    get account() {
+      return new Account(client);
+    },
+  };
+}
 
-  // Extract the session from cookies and use it for the client
-  const cookies = parseCookie(headers.get("cookie") ?? "");
+// Session client, used to make requests on behalf of the logged in user
+export function createSessionClient(request) {
+  const client = new Client()
+    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+
+  // Get the session cookie from the request and set the session
+  const cookies = parseCookies(request.headers.get("cookie") ?? "");
   const session = cookies.get(SESSION_COOKIE);
-  if (session) client.setSession(session);
-
+  if (session) {
+    client.setSession(session);
+  }
+  
+  // Return the services you need
   return {
     get account() {
       return new Account(client);
@@ -64,8 +81,6 @@ For this tutorial you'll need an API key with the following scopes:
 
 | Category  {% width=120 %} | Required scopes    | Purpose |
 |-----------|---------------------|---------|
-| Accounts  | `accounts.read`     | Allows API key to read account information. |
-|           | `accounts.write`    | Allows API key to create, update, and delete account information. |
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% only_dark %}

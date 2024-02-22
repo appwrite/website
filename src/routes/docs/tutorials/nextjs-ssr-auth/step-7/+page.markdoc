@@ -12,7 +12,7 @@ Add a new server action. Navigate to `src/lib/server` and create a new file `oau
 ```js
 // src/lib/server/oauth2.js
 
-import { SESSION_COOKIE, createAppwriteClient } from "@/lib/server/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "@/lib/server/appwrite";
 import { redirect } from "next/navigation";
 
 async function signInWithGithub(formData) {
@@ -20,7 +20,7 @@ async function signInWithGithub(formData) {
 
 	const provider = formData.get('provider') ?? 'github';
 
-	const { account } = createAppwriteClient();
+	const { account } = createAdminClient();
 	const redirectURL = await account.createOAuth2Token(
 		provider, 
 		'<YOUR_WEBSITE_DOMAIN>/oauth2',
@@ -53,7 +53,7 @@ Handle the callback and create a session for the user. Create a new Next.js serv
 ```js
 // src/app/oauth2/route.js
 
-import { SESSION_COOKIE, createAppwriteClient } from "@/lib/server/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -61,7 +61,7 @@ export async function GET(request) {
   const userId = request.nextUrl.searchParams.get("userId");
   const secret = request.nextUrl.searchParams.get("secret");
 
-  const { account } = createAppwriteClient(request.headers);
+  const { account } = createAdminClient();
   const session = await account.createSession(userId, secret);
 
   cookies().set(SESSION_COOKIE, session.secret, {
