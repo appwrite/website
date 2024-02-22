@@ -14,22 +14,19 @@ Edit the `src/server/appwrite.js` file to create a new function called `getLogge
 export async function getLoggedInUser(account) {
   try {
     return await account.get();
-  } catch {
-	return undefined;
-  }
+  } catch {}
 }
 ```
 
 Now, use the `getLoggedInUser` function in the home page to redirect based on the user's login status. Create a new file in the `app` directory called `+page.jsx`.
 
 ```js
-import { createAppwriteClient, getLoggedInUser } from "@/lib/server/appwrite";
-
+import { createSessionClient, getLoggedInUser } from "@/lib/server/appwrite";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
-  const { account } = createAppwriteClient(headers());
+  const { account } = createSessionClient(headers());
 
   const user = await getLoggedInUser(account);
   if (!user) redirect("/signin");

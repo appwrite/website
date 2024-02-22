@@ -11,7 +11,7 @@ Now the end-user is able to sign in, we can create the account page. This page w
 // src/app/account/page.jsx
 import {
   SESSION_COOKIE,
-  createAppwriteClient,
+  createSessionClient,
   getLoggedInUser,
 } from "@/lib/server/appwrite";
 import { redirect } from "next/navigation";
@@ -20,7 +20,7 @@ import { cookies, headers } from "next/headers";
 async function signOut() {
   "use server";
 
-  const { account } = createAppwriteClient(headers());
+  const { account } = createSessionClient(headers());
 
   cookies().delete(SESSION_COOKIE);
   await account.deleteSession("current");
@@ -29,7 +29,7 @@ async function signOut() {
 }
 
 export default async function HomePage() {
-  const { account } = createAppwriteClient(headers());
+  const { account } = createSessionClient(headers());
 
   const user = await getLoggedInUser(account);
   if (!user) redirect("/signin");
