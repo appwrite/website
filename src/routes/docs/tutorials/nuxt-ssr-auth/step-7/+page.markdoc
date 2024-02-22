@@ -24,16 +24,16 @@ Add a new server route to handle the redirect.
 
 ```js
 // server/routes/api/oauth2.post.js
-import { createAppwriteClient } from "~/server/lib/appwrite";
+import { createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
-  const { account } = createAppwriteClient(event);
+  const { account } = createAdminClient();
 
   const redirectUrl = await account.createOAuth2Token(
-	"github", // OAuth2 provider
-	`${config.public.appwriteEndpoint}/api/oauth2`, // Success URL: redirect back to the /oauth2 route
-	`${config.public.appwriteEndpoint}/signin`      // Failure URL: redirect to the sign in page
+    "github", // OAuth2 provider
+    `${config.public.appwriteEndpoint}/api/oauth2`, // Success URL: redirect back to the /oauth2 route
+    `${config.public.appwriteEndpoint}/signin`      // Failure URL: redirect to the sign in page
   );
 
   // Redirect the user to the OAuth2 provider authorization page
@@ -47,7 +47,7 @@ Handle the callback and create a session for the user. Create a new server route
 
 ```js
 // server/routes/api/oauth2.post.js
-import { SESSION_COOKIE, createAppwriteClient } from "~/server/lib/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
   // Extract the userId and secret from the URL query parameters
@@ -57,11 +57,10 @@ export default defineEventHandler(async (event) => {
   }
 
   // Create the Appwrite client
-  const { account } = createAppwriteClient(event);
+  const { account } = createAdminClient();
 
   // Exchange the token userId and secret for a session
   const session = await account.createSession(userId, secret);
-
 
   // Set the session cookie
   setCookie(event, SESSION_COOKIE, session.secret, {
