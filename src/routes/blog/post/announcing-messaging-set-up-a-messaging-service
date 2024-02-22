@@ -20,7 +20,7 @@ Timely and personalized messages delivered to the users’ devices and inboxes h
 
 ## All your messages in one place
 
-Messaging covers every communication avenue under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers to deliver you messages. See this table to get an overview of what message types you can send with each provider.
+As mentioned, Messaging covers every communication avenue under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers to deliver you messages. See this table to get an overview of what message types you can send with each provider.
 
 | Message Type      | Provider                                         |
 |-------------------|--------------------------------------------------|
@@ -34,6 +34,7 @@ Messaging covers every communication avenue under one unified API, allowing you 
 |                   | - Telesign                                       |
 |                   | - TextMagic                                      |
 |                   | - Vonage                                         |
+
 
 ## Message your existing users
 
