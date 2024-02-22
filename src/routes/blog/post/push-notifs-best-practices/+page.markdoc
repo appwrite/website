@@ -74,4 +74,10 @@ let provider = try await messaging.updateAPNSProvider(
 )
 ```
 
-You can learn more on how to enable push notifications by reading our [product documentation](https://appwrite.io/docs/products/messaging/send-push-notifications).
+Visit our documentation to learn more about push notifications, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](/docs/products/messaging/send-push-notifications)
+- [Discord](/discord)
+- [Blog](/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
