@@ -9,7 +9,7 @@ Now the end-user is able to sign in, we can create the account page. This page w
 
 ```js
 // src/routes/account/+page.server.js
-import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite.js';
+import { SESSION_COOKIE, createSessionClient } from '$lib/server/appwrite.js';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ locals }) {
@@ -26,7 +26,7 @@ export async function load({ locals }) {
 export const actions = {
 	default: async (event) => {
 		// Create the Appwrite client.
-		const { account } = createAppwriteClient(event);
+		const { account } = createSessionClient(event);
 
 		// Delete the session on Appwrite, and delete the session cookie.
 		await account.deleteSession('current');

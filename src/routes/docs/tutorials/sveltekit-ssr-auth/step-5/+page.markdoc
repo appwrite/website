@@ -19,7 +19,7 @@ We can now implement our sign in page. Create a `+page.svelte` file in the `src/
 This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use SvelteKit form actions we create a `+page.server.js` file in the same directory:
 
 ```javascript
-import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite.js';
+import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite.js';
 import { redirect } from '@sveltejs/kit';
 
 export const actions = {
@@ -30,7 +30,7 @@ export const actions = {
 		const password = form.get('password') as string;
 
 		// Create the Appwrite client.
-		const { account } = createAppwriteClient(event);
+		const { account } = createAdminClient();
 
 		// Create the session using the client
 		const session = await account.createEmailPasswordSession(email, password);
