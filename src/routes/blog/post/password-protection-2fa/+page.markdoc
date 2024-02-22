@@ -72,4 +72,12 @@ With the release of Appwrite 1.5, we have introduced the ability to implement 2F
 - **Emails:** A verified email can be used for authentication, providing a 6-digit code to the user.
 - **SMS:** A verified phone number can be used for authentication, providing a 6-digit code to the user.
 
-You can learn more about implementing 2FA using Appwrite through our [documentation](https://appwrite.io/docs/products/auth/mfa).
+# Resources
+
+Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](/docs/products/auth/mfa)
+- [Discord](/discord)
+- [Blog](/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
