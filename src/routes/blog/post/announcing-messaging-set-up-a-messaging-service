@@ -48,6 +48,8 @@ You can address recipients of messages at three levels:
 
 You can publish announcements and newsletters through topics, deliver user-specific promotions and alerts to all users’ devices, and address individual targets for location-based or real-time alerts.
 
+![Creating a message from the Console](/images/blog/message-overview.png)
+
 ## Deliver messages your way
 
 Draft, schedule, and send your messages in the Appwrite Console, or use Appwrite SDKs to send messages through code.
