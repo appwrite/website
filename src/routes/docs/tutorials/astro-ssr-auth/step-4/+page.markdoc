@@ -11,10 +11,10 @@ Create a new file in the `src/server` directory called `middleware.js`:
 ```js
 // src/server/middleware.js
 import { defineMiddleware } from "astro:middleware";
-import { createAppwriteClient } from "./server/appwrite";
+import { createSessionClient } from "./server/appwrite";
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
-  const { account } = createAppwriteClient(request);
+  const { account } = createSessionClient(request);
 
   try {
     locals.user = await account.get();
@@ -22,7 +22,6 @@ export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
 
   return next();
 });
-
 ```
 
 To ensure the `locals` object is typed correctly, we can add a type definition for it in the `env.d.ts` file:

@@ -25,7 +25,7 @@ This is an HTML form with an email and password input. When the form is submitte
 
 ```js
 ---
-import { SESSION_COOKIE, createAppwriteClient } from "../server/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "../server/appwrite";
 
 // ... existing javascript
 
@@ -35,8 +35,8 @@ if (Astro.request.method === "POST") {
   const email = data.get("email") as string;
   const password = data.get("password") as string;
 
-  // Create the Appwrite client
-  const { account } = createAppwriteClient(Astro.request);
+  // Create the admin client
+  const { account } = createAdminClient();
 
   // Create the email password session
   const session = await account.createEmailPasswordSession(email, password);
@@ -50,7 +50,7 @@ if (Astro.request.method === "POST") {
     httpOnly: true,
   });
 
-  // Redirect the logged in user
+  // Redirect to the account page
   return Astro.redirect("/account");
 }
 ---
