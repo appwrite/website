@@ -28,7 +28,7 @@ Add a new server route to handle the redirect.
 // ... existing imports
 
 
-import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite.js';
+import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite';
 import { redirect } from '@sveltejs/kit';
 
 export const actions = {
@@ -38,7 +38,7 @@ export const actions = {
         const formData = await event.request.formData();
         const provider = formData.get('provider') ?? 'github';
 
-        const { account } = createAppwriteClient();
+        const { account } = createAdminClient();
         const redirectURL = account.createOAuth2Token(
             provider, 
             '<YOUR_WEBSITE_DOMAIN>/oauth2',
@@ -57,7 +57,7 @@ Handle the callback and create a session for the user. Create a new server route
 ```js
 // src/routes/oauth2/+server.js
 
-import { SESSION_COOKIE, createAppwriteClient } from '$lib/server/appwrite';
+import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite';
 
 export async function GET(event) {
 	// We should have a `userId` and `secret` query parameters in the URL
@@ -65,7 +65,7 @@ export async function GET(event) {
 	const secret = event.url.searchParams.get('secret') as string;
 
 	// Exchange the token `userId` and `secret` for a session
-	const { account } = createAppwriteClient(event);
+	const { account } = createAdminClient();
 	const session = await account.createSession(userId, secret);
 
 	// Redirect to the account page, and set the session cookie
