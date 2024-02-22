@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Announcing Init. The start of something new.
+title: "Announcing messaging: set up a full-functioning messaging service"
 description: 
-date: 2024-02-20
+date: 2024-02-26
 cover: /images/blog/messaging-announcement.png
 timeToRead: 4
 author: eldad-fux
-category: open-source
+category: engineering
 featured: false
 ---
 
