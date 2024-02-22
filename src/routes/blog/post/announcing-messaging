@@ -1,0 +1,70 @@
+---
+layout: post
+title: Announcing Init. The start of something new.
+description: 
+date: 2024-02-20
+cover: /images/blog/messaging-announcement.png
+timeToRead: 4
+author: eldad-fux
+category: open-source
+featured: false
+---
+
+It has been requested over and over again by Appwrite developers: Messaging. It's a product that is hard to build from scratch and much needed for developers and their applications. Therefore, we're excited to present you with **Messaging**. With just a few lines of backend code, you can set up a full-functioning messaging service for your application that covers every communication avenue under one unified API.
+
+## The power of communication
+
+Effective communication with your users is key to high user engagement and retention. Consistent but judicious use of emails, SMS, and push notifications is the key to a highly engaged and loyal user base.
+
+Timely and personalized messages delivered to the users’ devices and inboxes help them stay informed and connected, even when they’re not actively using your app. This is where Messaging comes in, a product built to help you streamline email, SMS, and push notifications.
+
+## All your messages in one place
+
+Messaging covers every communication avenue under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers to deliver you messages. See this table to get an overview of what message types you can send with each provider.
+
+| Message Type      | Provider                                         |
+|-------------------|--------------------------------------------------|
+| Push Notifications| - APNs (Apple)                                   |
+|                   | - FCM (Google)                                   |
+| Email             | - Mailgun                                        |
+|                   | - Sendgrid                                       |
+|                   | - SMTP (Generic)                                 |
+| SMS               | - Twilio                                         |
+|                   | - MSG91                                          |
+|                   | - Telesign                                       |
+|                   | - TextMagic                                      |
+|                   | - Vonage                                         |
+
+## Message your existing users
+
+With Messaging, you can deliver messages to groups of users through topics or address individual users and their devices through targets. Messaging deeply integrates with integrated existing accounts in Appwrite out of the box. You can immediately start messaging your existing users and integrate deeply with other Appwrite features.
+
+You can address recipients of messages at three levels:
+
+- Topics, which hold a group of users’ devices.
+- Users which holds all targets associated with their account.
+- Targets, which are individual emails, phone numbers, and devices.
+
+You can publish announcements and newsletters through topics, deliver user-specific promotions and alerts to all users’ devices, and address individual targets for location-based or real-time alerts.
+
+## Deliver messages your way
+
+Draft, schedule, and send your messages in the Appwrite Console, or use Appwrite SDKs to send messages through code.
+
+Drafting directly in the Appwrite Console is great for promo messages, newsletters, and other announcements. You can see a preview of what your message will look like right in the console and control how your message will look before sending.
+
+For real-time alerts, you can programmatically send messages to your users and integrate with Appwrite Functions triggered by platform events. This allows you to deliver automated messages like invoices, login alerts, order confirmations, and new message alerts.
+
+## Get started with Messaging
+
+To get started with messaging, you connect a provider, add topics and targets, and then send your first message today for your project.
+
+Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](http://appwrite.io/docs/products/messaging)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
+
+Messaging will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.
