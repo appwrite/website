@@ -267,7 +267,7 @@ You will need to save the challenge ID to complete the challenge in a later step
 // "totp" for authenticator app challenge
 // "email" for email challenge
 // "phone" for SMS challenge
-const promise = account.create2FAChallenge(
+const promise = account.createChallenge(
         'phone'                       // factor
     );
 
@@ -281,7 +281,7 @@ promise.then(function (response) {
 ```
 
 ```dart
-Future result = account.create2FAChallenge(
+Future result = account.createChallenge(
 factor: 'phone',
 );
 
@@ -295,14 +295,14 @@ result
 ```
 
 ```swift
-let mfaChallenge = try await account.create2FAChallenge(
+let mfaChallenge = try await account.createChallenge(
   factor: "phone"
 )
 let challengeId = mfaChallenge.id
 ```
 
 ```kotlin
-val response = account.create2FAChallenge(
+val response = account.createChallenge(
     factor = "phone"
 )
 val challengeId = response.id
