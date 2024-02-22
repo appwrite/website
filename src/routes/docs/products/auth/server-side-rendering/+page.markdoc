@@ -25,7 +25,12 @@ Here's a high-level overview of the authentication flow:
 5. The client's web browser sends the session cookie to your server with subsequent request.
 6. Your server uses the session cookie to make authenticated requests to Appwrite on behalf of the client.
 
-<!--- TODO: Add sequence diagram --->
+{% only_dark %}
+![CSR vs SSR flow diagram](/images/docs/auth/ssr/dark/ssr.png)
+{% /only_dark %}
+{% only_light %}
+![CSR vs SSR flow diagram](/images/docs/auth/ssr/ssr.png)
+{% /only_light %}
 
 # Initialize clients {% #initialize-clients %}
 

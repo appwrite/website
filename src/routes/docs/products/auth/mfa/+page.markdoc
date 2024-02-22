@@ -75,13 +75,7 @@ val account = Account(client)
 
 {% multicode %}
 ```js
-const promise = account.updateMFA(true);
-
-promise.then(function (response) {
-    console.log(response);           // Success
-}, function (error) {
-    console.log(error);              // Failure
-});
+const result = await account.updateMFA(true);
 ```
 
 ```dart
@@ -112,20 +106,14 @@ val response = account.updateMFA(
 Begin your login flow with the default authentication method used by your app, for example, email password.
 {% multicode %}
 ```js
-const promise = account.createEmailPasswordSession(
+const session = await account.createEmailPasswordSession(
         'email@example.com',         // email
         'password'                   // password
     );
-
-promise.then(function (response) {
-    console.log(response);           // Success
-}, function (error) {
-    console.log(error);              // Failure
-});
 ```
 
 ```dart                       // Init SDK
-Future result = account.createEmailPasswordSession(
+Future session = account.createEmailPasswordSession(
 email: 'email@example.com',
 password: 'password',
 );
@@ -144,7 +132,7 @@ let session = try await account.createEmailPasswordSession(
 )
 ```
 ```kotlin
-val response = account.createEmailPasswordSession(
+val session = account.createEmailPasswordSession(
     email = "email@example.com",
     password = "password"
 )
@@ -153,16 +141,32 @@ val response = account.createEmailPasswordSession(
 {% /section %}
 {% section #check-for-2fa step=3 title="Check for multi-factor" %}
 Upon successful login in the first authentication step, check the status of the login by calling `account.get()`.
-If more than one factors are required, you will the error `user_more_factors_required`.
+If more than one factors are required, you will the error `user_more_factors_required`. Redirect the user in your app to
+perform the MFA challenge.
 {% multicode %}
 ```js
+try {
+    const response = await account.get();
+    console.log(response);
+} catch (error) {
+    console.log(error);
+    if (error.type === `user_more_factors_required`){
+        // redirect to perform MFA
+    }
+    else {
+        // handle other errors
+    }
+}
+```
+
+```dart
 const promise = account.get();
 
 promise.then(function (response) {
     console.log(response);           // Success
 }, function (error) {
     console.log(error);              // Failure
-    if (error.type === `user_more_factors_required`){
+    if (error.type === "user_more_factors_required"){
         // redirect to perform MFA
     }
     else {
@@ -227,14 +231,7 @@ The returned object will be formatted like this.
 
 {% multicode %}
 ```js
-const promise = account.listFactors();
-
-promise.then(function (response) {
-    console.log(response);           // Success
-    // redirect based on providers returned.
-}, function (error) {
-    console.log(error);              // Failure
-});
+const factors = await account.listFactors();
 ```
 ```dart
 Future result = account.listFactors();
@@ -262,22 +259,66 @@ val response = account.listFactors()
 Based on the providers available, initialize an additional auth step.
 Calling these methods will send a challenge to the user.
 You will need to save the challenge ID to complete the challenge in a later step.
+
+{% tabs %}
+{% tabsitem #email title="Email" %}
+Appwrite will use a verified email on the user's account to send the challenge code via email.
+Note that this is only valid as a second factor if the user did not initialize their login with email OTP.
 {% multicode %}
 ```js
-// "totp" for authenticator app challenge
-// "email" for email challenge
-// "phone" for SMS challenge
-const promise = account.createChallenge(
+const challenge = await account.createChallenge(
+        'email'                       // factor
+    );
+
+// Save the challenge ID to complete the challenge later
+const challengeId = challenge.$id; 
+```
+
+```dart
+Future result = account.createChallenge(
+factor: 'email',
+);
+
+result
+.then((response) {
+    print(response);
+    // Save the challenge ID to complete the challenge later
+    var challengeId = response.$id;
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```swift
+let mfaChallenge = try await account.createChallenge(
+  factor: "email"
+)
+// Save the challenge ID to complete the challenge later
+let challengeId = mfaChallenge.id
+```
+
+```kotlin
+val response = account.createChallenge(
+    factor = "email"
+)
+// Save the challenge ID to complete the challenge later
+val challengeId = response.id
+```
+{% /multicode %}
+
+{% /tabsitem %}
+
+{% tabsitem #phone title="Phone" %}
+Appwrite will use a verified phone number on the user's account to send the challenge code via SMS.
+You cannot use this method if the user initialized their login with phone OTP.
+{% multicode %}
+```js
+const challenge = await account.createChallenge(
         'phone'                       // factor
     );
 
-promise.then(function (response) {
-    console.log(response);           // Success
-    let challengeId = response.$id; 
-}, function (error) {
-    console.log(error);              // Failure
-});
-
+// Save the challenge ID to complete the challenge later
+const challengeId = challenge.$id; 
 ```
 
 ```dart
@@ -288,6 +329,7 @@ factor: 'phone',
 result
 .then((response) {
     print(response);
+    // Save the challenge ID to complete the challenge later
     var challengeId = response.$id;
 }).catchError((error) {
     print(error.response);
@@ -298,6 +340,7 @@ result
 let mfaChallenge = try await account.createChallenge(
   factor: "phone"
 )
+// Save the challenge ID to complete the challenge later
 let challengeId = mfaChallenge.id
 ```
 
@@ -305,25 +348,176 @@ let challengeId = mfaChallenge.id
 val response = account.createChallenge(
     factor = "phone"
 )
+// Save the challenge ID to complete the challenge later
 val challengeId = response.id
 ```
 {% /multicode %}
+{% /tabsitem %}
+
+{% tabsitem #totp title="TOTP" %}
+Appwrite supports TOTP (Time-based One-Time Password) as a second factor. 
+This requires the user to have a TOTP authenticator app installed on their device.
+To setup a TOTP authenticator, you can use the `account.addAuthenticator()` method.
+
+{% multicode %}
+```js
+const { backups, secret, uri } = await account.addAuthenticator('totp');
+```
+```dart
+Future result = account.addAuthenticator(
+    type: 'totp',
+);
+result
+.then((response) {
+    print(response.backups);
+    print(response.secret);
+    print(response.uri);
+}).catchError((error) {
+    print(error.response);
+});
+```
+```swift
+let response = try await account.addAuthenticator(
+  type: "totp"
+)
+let (backups, secret, uri) = (response.backups, response.secret, response.uri)
+```
+```kotlin
+val response = account.addAuthenticator(
+    type = "totp"
+)
+val backups = response.backups
+val secret = response.secret
+val uri = response.uri
+```
+{% /multicode %}
+
+After the user adds this authenticator to their app, you'll need to verify the setup succeeded by prompting the user to enter a code from their TOTP authenticator app.
+The TOTP needs to be submitted like this.
+{% multicode %}
+```js
+const { backups, secret, uri } = await account.verifyAuthenticator('totp', <TOTP_FROM_USER>);
+```
+```dart
+Future result = account.verifyAuthenticator(
+    type: 'totp',
+    <TOTP_FROM_USER>
+);
+result
+.then((response) {
+    print(response.backups);
+    print(response.secret);
+    print(response.uri);
+}).catchError((error) {
+    print(error.response);
+});
+```
+```swift
+let response = try await account.verifyAuthenticator(
+  type: "totp",
+  <TOTP_FROM_USER>
+)
+let (backups, secret, uri) = (response.backups, response.secret, response.uri)
+```
+```kotlin
+val response = account.verifyAuthenticator(
+    type = "totp",
+    <TOTP_FROM_USER>
+)
+val backups = response.backups
+val secret = response.secret
+val uri = response.uri
+```
+{% /multicode %}
+
+You'll need to display the `uri` to the user as a QR code to scan with their TOTP authenticator app.
+{% multicode %}
+```js
+const avatarts = new Avatars();
+// display image at QRCode.href to your user
+const QRCode = await avatarts.getQR(uri);
+```
+```dart
+final avatars = Avatars();
+// display image at QRCode.href to your user
+final QRCode = await avatars.getQR(uri);
+```
+```swift
+let avatars = Avatars()
+// display image at QRCode.href to your user
+let QRCode = try await avatars.getQR(uri)
+```
+```kotlin
+val avatars = Avatars()
+// display image at QRCode.href to your user
+val QRCode = avatars.getQR(uri)
+```
+{% /multicode %}
+
+If the user's unable to scan QR codes, you can display the `secret` to the user.
+After adding the authenticator, you should also prompt the user to save their `backups`. 
+These backup code are the only way to recover access to their account if they lose access to their TOTP authenticator app.
+
+Lastly, you can initialize the TOTP challenge.
+{% multicode %}
+```js
+const challenge = await account.createChallenge(
+        'totp'                       // factor
+    );
+
+// Save the challenge ID to complete the challenge later
+const challengeId = challenge.$id; 
+```
+
+```dart
+Future result = account.createChallenge(
+factor: 'totp',
+);
+
+result
+.then((response) {
+    print(response);
+    // Save the challenge ID to complete the challenge later
+    var challengeId = response.$id;
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```swift
+let mfaChallenge = try await account.createChallenge(
+  factor: "totp"
+)
+// Save the challenge ID to complete the challenge later
+let challengeId = mfaChallenge.id
+```
+
+```kotlin
+val response = account.createChallenge(
+    factor = "totp"
+)
+// Save the challenge ID to complete the challenge later
+val challengeId = response.id
+```
+{% /multicode %}
+{% /tabsitem %}
+{% /tabs %}
 
 {% /section %}
 {% section #complete-challenge step=6 title="Complete challenge" %}
 Once the user receives the challenge code, you can pass the code back to Appwrite to complete the challenge.
 {% multicode %}
 ```js
-const promise = account.updateChallenge(
-        '[CHALLENGE_ID]',            // challengeId
-        '[OTP]'                      // otp
+const response = await account.updateChallenge(
+        '<CHALLENGE_ID>',            // challengeId
+        '<OTP>'                      // otp
     );
 ```
 
 ```dart
 Future result = account.updateChallenge(
-challengeId: '[CHALLENGE_ID]',
-otp: '[OTP]',
+    challengeId: '<CHALLENGE_ID>',
+    otp: '<OTP>',
 );
 
 result
@@ -333,18 +527,16 @@ result
     print(error.response);
 });
 ```
-
-```kotlin
-let result = try await account.updateChallenge(
-  challengeId: "[CHALLENGE_ID]",
-  otp: "[OTP]"
-)
-```
-
 ```swift
 val response = account.updateChallenge(
-    challengeId = "[CHALLENGE_ID]",
-    otp = "[OTP]"
+    challengeId = "<CHALLENGE_ID>",
+    otp = "<OTP>"
+)
+```
+```kotlin
+let result = try await account.updateChallenge(
+  challengeId: "<CHALLENGE_ID>",
+  otp: "<OTP>"
 )
 ```
 {% /multicode %}
