@@ -10,7 +10,7 @@ category: open-source
 featured: false
 ---
 
-It has been requested over and over again by Appwrite developers: Messaging. It's a product that is hard to build from scratch and much needed for developers and their applications. Therefore, we're excited to present you with **Messaging**. With just a few lines of backend code, you can set up a full-functioning messaging service for your application that covers every communication avenue under one unified API.
+It has been requested over and over again by Appwrite developers, Messaging. It's a product that is hard to build from scratch and much needed for developers and their applications. Therefore, we're excited to present you with **Messaging**. With just a few lines of backend code, you can set up a full-functioning messaging service for your application that covers every communication avenue under one unified API.
 
 ## The power of communication
 
@@ -57,7 +57,7 @@ For real-time alerts, you can programmatically send messages to your users and i
 
 ## Get started with Messaging
 
-To get started with messaging, you connect a provider, add topics and targets, and then send your first message today for your project.
+To get started with messaging, you connect a provider, add topics and targets, and send your first message today for your project.
 
 Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
