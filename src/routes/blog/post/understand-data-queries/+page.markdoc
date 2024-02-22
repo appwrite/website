@@ -10,7 +10,7 @@ category: engineering
 featured: false
 ---
 
-As a developer venturing into the realm of databases, understanding the nuances of data queries is crucial. These queries, executed through languages like SQL (Structured Query Language), are the backbone of database interaction, allowing you to retrieve, update, insert, or delete data. In this blog, we'll delve into the different types of data queries, shedding light on their functions and best practices.
+As a developer, you work with databases a lot, and understanding the nuances of data queries is crucial. These queries, executed through languages like SQL (Structured Query Language), are the backbone of database interaction, allowing you to retrieve, update, insert, or delete data. In this blog, we'll delve into the different types of data queries, shedding light on their functions and best practices.
 
 # Different types of queries
 
@@ -110,6 +110,14 @@ const movieData3 = databases.listDocuments(
 );
 ```
 
-You can learn more about our new database operators in the Appwrite Database through our [queries documentation](https://appwrite.io/docs/products/databases/queries).
-
 Mastering the art of data querying is a continuous process. As a developer, your aim should be to write efficient, secure, and maintainable queries. Remember, the power of a database is harnessed through the effectiveness of its queries.
+
+# Resources
+
+Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](https://appwrite.io/docs/products/databases/queries)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
