@@ -14,7 +14,7 @@ We’re excited to announce the addition of two new database operators for perfo
 
 These two operators have been highly requested by the Appwrite community, and we’re excited to show you how to use them, so let’s jump in and take a look! 
 
-- `contains` - search for partial text matches
+- `contains` - Partial text matches on string attributes, array element matching on array attributes
 - `or` -  write logical OR queries
 
 &nbsp;   
