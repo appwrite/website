@@ -52,6 +52,9 @@ dependencies:
     version: 0.4.1(svelte@4.2.10)
 
 devDependencies:
+  '@internationalized/date':
+    specifier: 3.5.0
+    version: 3.5.0
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.1)(svelte@4.2.10)
@@ -68,7 +71,7 @@ devDependencies:
     specifier: ^2.0.3
     version: 2.0.3(@sveltejs/kit@1.30.0)
   '@sveltejs/enhanced-img':
-    specifier: ^0.1.2
+    specifier: ^0.1.8
     version: 0.1.8(svelte@4.2.10)
   '@sveltejs/kit':
     specifier: 1.30.0
@@ -660,8 +663,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@internationalized/date@3.5.1:
-    resolution: {integrity: sha512-LUQIfwU9e+Fmutc/DpRTGXSdgYZLBegi4wygCWDSVmUdLTaMHsQyASDiJtREwanwKuQLq0hY76fCJ9J/9I2xOQ==}
+  /@internationalized/date@3.5.0:
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
     dependencies:
       '@swc/helpers': 0.5.6
     dev: true
@@ -1130,7 +1133,7 @@ packages:
     dependencies:
       '@floating-ui/core': 1.6.0
       '@floating-ui/dom': 1.6.3
-      '@internationalized/date': 3.5.1
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.5

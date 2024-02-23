@@ -1,64 +1,81 @@
-<script lang="ts">
-    import { Main } from '$lib/layouts';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
+<script>
+    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import Main from '$lib/layouts/Main.svelte';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import Draft from './(components)/Draft.svelte';
+    import Schedule from './(components)/Schedule.svelte';
+    import Send from './(components)/Send.svelte';
+    import Target from './(components)/Target.svelte';
 
-    export let data;
+    const title = 'Messaging' + TITLE_SUFFIX;
+    const description = DEFAULT_DESCRIPTION;
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
+
+<svelte:head>
+    <!-- Titles -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <!-- Desscription -->
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <Main>
     <div class="aw-big-padding-section u-overflow-hidden">
-        <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-            <div class="green-gradient" />
-            <div class="pink-gradient" />
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container u-position-relative">
-                    <div
-                        class="aw-hero is-align-start is-mobile-center aw-u-gap-20 aw-u-max-width-900"
-                        style="--hero-max-inline-size:48rem"
-                    >
-                        <div class="u-flex u-cross-center u-gap-8">
-                            <img
-                                src="/images/icons/illustrated/dark/auth.png"
-                                alt=""
-                                width="32"
-                                height="32"
-                            />
-                            <span class="aw-eyebrow aw-u-color-text-accent-click"
-                                >MESSAGING<span class="aw-u-text-color-primary-500">_</span></span
-                            >
-                            <div class="aw-hero-banner-button aw-eyebrow">BETA</div>
-                        </div>
-                        <h1 class="aw-display aw-u-color-text-primary aw-u-text-wrap-balance">
-                            Open source messaging service for developers
-                        </h1>
-                        <div>
-                            <p class="aw-description">
-                                Send push notifications, emails, and SMS in just minutes,
-                                streamlining your multi-channel communication effortlessly.
-                            </p>
-                            <div
-                                class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32 aw-u-flex-direction-column-mobile"
-                            >
-                                <a href="" class="aw-button is-full-width-mobile">
-                                    <span>Get started</span>
-                                </a>
-                                <a href="" class="aw-button is-secondary is-full-width-mobile">
-                                    <span>Read the docs</span>
-                                </a>
-                            </div>
-                        </div>
+        <div class="hero">
+            <enhanced:img src="./(assets)/blur-left.png" alt="" class="blur-left" />
+            <enhanced:img src="./(assets)/blur-right.png" alt="" class="blur-right" />
+
+            <div class="aw-container">
+                <div>
+                    <div class="product">
+                        <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
+                        <span class="aw-eyebrow aw-u-color-text-primary">
+                            Messaging<span class="aw-u-color-text-accent">_</span>
+                        </span>
+                        <span class="aw-hero-banner-button aw-eyebrow">BETA</span>
                     </div>
+                    <h1 class="aw-display aw-u-color-text-primary">
+                        Open source messaging service for developers
+                    </h1>
+                    <p class="aw-description u-margin-block-start-20">
+                        Set up messaging within minutes and send push notifications, emails, and SMS
+                        directly from the Appwrite Console.
+                    </p>
+                    <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32">
+                        <a class="aw-button" href="https://cloud.appwrite.io" target="_blank"
+                            >Get started</a
+                        >
+                        <a
+                            class="aw-button is-secondary"
+                            href="https://appwrite.io/docs/products/messaging"
+                            target="_blank">Read the docs</a
+                        >
+                    </div>
+                </div>
+
+                <div class="phone-wrapper">
+                    <enhanced:img class="phone" src="./(assets)/phone.png" alt="" />
                 </div>
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 aw-u-sep-block-start">
-            <div class="aw-big-padding-section-level-2" />
+        <div class="steps aw-container">
+            <Draft />
+            <Target />
+            <Schedule />
+            <Send />
         </div>
-
-        <div class="aw-big-padding-section-level-1" />
 
         <div
             class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light aw-u-padding-block-end-0"
@@ -229,7 +246,7 @@
                         class="u-position-absolute u-z-index-1 is-not-mobile"
                         style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
                         src="/images/messaging/stripes.png"
-                        alt
+                        alt="stripes"
                     />
                     <div class="grid-1-1 u-position-relative u-z-index-1">
                         <section class="aw-hero is-align-start">
@@ -400,6 +417,7 @@
                 </div>
             </div>
         </div>
+
         <div class="aw-big-padding-section-level-1">
             <div class="aw-big-padding-section-level-2">
                 <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-80">
@@ -523,7 +541,7 @@
                                         />
                                     </div>
                                     <p class="aw-sub-body-400">
-                                        Manage your files’ project, using convenient APIs and
+                                        Manage your files' project, using convenient APIs and
                                         utilities.
                                     </p>
                                 </div>
@@ -572,8 +590,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</Main>
+    </div></Main
+>
 
 <style lang="scss">
     .pink-gradient {
@@ -596,5 +614,83 @@
         background: url('/images/messaging/green-gradient.png') no-repeat;
         background-position: center center;
         background-size: contain;
+    }
+    .hero {
+        overflow: hidden;
+        position: relative;
+        border-block-end: 1px solid hsl(var(--aw-color-offset));
+        margin-block-start: -5rem;
+        padding-block-start: 5rem;
+
+        .aw-container {
+            display: grid;
+            grid-template-columns: 580px 700px;
+            align-items: center;
+            gap: 5.625rem;
+            block-size: 800px;
+            // block-size: 90vh;
+
+            .phone-wrapper {
+                position: relative;
+                block-size: 100%;
+                inline-size: 100%;
+
+                .phone {
+                    max-inline-size: unset;
+                    max-block-size: unset;
+
+                    position: absolute;
+                    display: block;
+                    block-size: 800px;
+                    translate: 0 100px;
+                    inline-size: auto;
+                }
+            }
+        }
+
+        [class^='blur-'] {
+            max-inline-size: unset;
+            max-block-size: unset;
+            pointer-events: none;
+        }
+
+        .blur-left {
+            position: absolute;
+            block-size: 1200px;
+            inline-size: auto;
+            inset-inline-start: -600px;
+            inset-block-start: -250px;
+        }
+
+        .blur-right {
+            position: absolute;
+            block-size: 1200px;
+            inline-size: auto;
+            inset-inline-end: -500px;
+            inset-block-end: -600px;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            img {
+                $size: 2rem;
+                block-size: $size;
+                inline-size: $size;
+            }
+        }
+
+        h1 {
+            margin-block-start: 1.25rem;
+        }
+    }
+
+    .steps {
+        position: relative;
+        padding-block-start: 5rem;
+
+        --padding-block-end: 7.5rem;
     }
 </style>

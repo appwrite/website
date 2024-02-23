@@ -9,7 +9,8 @@
             date: 'February 26th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Diana Pham',
-            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            description:
+                'Join day zero of Init together with Vonage developer advocate Diana Pham.',
             buttonText: 'View event'
         },
         {
@@ -21,7 +22,8 @@
             date: 'February 27th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Hitesh Choudhary',
-            description: 'Join us on day one of Init together with engineer and creator Hitesh Choudhary.',
+            description:
+                'Join us on day one of Init together with engineer and creator Hitesh Choudhary.',
             buttonText: 'View event'
         },
         {
@@ -33,7 +35,8 @@
             date: 'February 28th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Jessica Temporal',
-            description: 'Join us on day two of Init together with developer advocate Jessica Temporal.',
+            description:
+                'Join us on day two of Init together with developer advocate Jessica Temporal.',
             buttonText: 'View event'
         },
         {
@@ -45,7 +48,8 @@
             date: 'February 29th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Danny Thompson',
-            description: 'Join us on day three of Init together with engineer and creator Danny Thompson.',
+            description:
+                'Join us on day three of Init together with engineer and creator Danny Thompson.',
             buttonText: 'View event'
         },
         {
