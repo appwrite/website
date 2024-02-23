@@ -10,7 +10,7 @@ category: engineering
 featured: false
 ---
 
-We’re excited to announce the addition of two new database operators for performing queries, the  `or` and `contains` operators. In this release, we aimed to add more flexibility by allowing partial text matches when searching an Appwrite database, as well as the capabilities for writing logical OR queries. 
+We’re excited to announce the addition of two new query methods,  `or` and `contains`. In this release, we aimed to add more flexibility by adding array element matches, partial text matches, as well as logical OR queries. 
 
 These two operators have been highly requested by the Appwrite community, and we’re excited to show you how to use them, so let’s jump in and take a look! 
 
