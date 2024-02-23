@@ -64,18 +64,17 @@ func application(
 
 Next, create a handler for when the app receives the push notification device token.
 ```swift
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-        // register device
-        var token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
-        
-        // Save the token to be used later
-        UserDefaults.standard.set(token, forKey: "apnsToken")
-    }
+func application(
+    _ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+) {
+    // register device
+    var token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
+    
+    // Save the token to be used later
+    UserDefaults.standard.set(token, forKey: "apnsToken")
 }
+
 ```
 Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
 With this saved `apnsToken`, you can create a push target with Appwrite when the user logs in.
@@ -475,6 +474,13 @@ Messaging.messaging().autoInitEnabled = true
 
 {% section #send-message step=4 title="Send message" %}
 You can send messages in both the Appwrite Console and programmatically using the Appwrite Server SDK.
+
+{% info title="APNs environment" %}
+Appwrite sends push notifications to the APNs production environment by default.
+This means, your development builds on XCode will not receive push notifications.
+To test push notifications, click your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > uncheck **Automatically manage signing**.
+Then manually select a **Provisioning profile** that is a **Distribution profile**.
+{% /info %}
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
