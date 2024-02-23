@@ -1,0 +1,13 @@
+---
+layout: changelog
+title: "Introducing more runtimes to the Appwrite ecosystem: Bun and Dart 3.3"
+date: 2024-03-01
+cover: /images/changelog/2024-03-01.png
+---
+
+Previously, we completely reimagined Functions to be more flexible and innovative yet familiar to developers. Now, Appwrite expands the runtime ecosystem available on Appwrite Cloud with Bun and Dart support.
+
+{% arrow_link href="/blog/post/introducing-more-runtimes-bun-and-dart" %}
+Read the announcement to learn more
+{% /arrow_link %}
+
