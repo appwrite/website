@@ -21,8 +21,8 @@
 
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
-
-    import Tooltip from '$lib/components/Tooltip.svelte';
+    import { Tooltip, IsLoggedIn } from '$lib/components';
+    import { GITHUB_STARS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
@@ -110,12 +110,7 @@
             </button>
         {/if}
         <div class="aw-side-nav-mobile-footer-buttons">
-            <a
-                href="https://cloud.appwrite.io/console"
-                class="aw-button aw-u-inline-width-100-percent-mobile"
-            >
-                <span class="text">Go to console</span>
-            </a>
+            <IsLoggedIn />
 
             <a
                 href="https://github.com/appwrite/appwrite/stargazers"
@@ -125,7 +120,7 @@
             >
                 <span class="aw-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
+                <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
             </a>
         </div>
     </div>

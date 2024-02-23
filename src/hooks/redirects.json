@@ -642,7 +642,7 @@
     {
         "link": "/docs/models/runtime",
         "redirect": "/docs/references/cloud/models/runtime"
-    },    
+    },
     {
         "link": "/docs/installation",
         "redirect": "/docs/advanced/self-hosting"
@@ -658,6 +658,9 @@
     {
         "link": "/policy/privacy",
         "redirect": "/privacy"
+    },
+    {
+        "link": "/cli/install.sh",
+        "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
     }
-    
 ]
