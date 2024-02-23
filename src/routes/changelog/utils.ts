@@ -14,7 +14,7 @@ export const getAllChangelogEntries = async () => {
     let entries = Object.entries(entriesGlob).map(([filepath, component]) => {
         const typedComponent = component as ChangelogComponent;
         const { frontmatter } = typedComponent;
-        const slug = filepath.replace(/\.markdoc$/, '').replace('(entries)/', '');
+        const slug = filepath.replace(/\.markdoc$/, '').replace('./(entries)/', '');
         const href = `/changelog/entry/${slug}`;
 
         return { ...frontmatter, component: typedComponent.default, filepath, href, slug };

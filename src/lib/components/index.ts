@@ -13,3 +13,5 @@ export { default as FloatingHead } from './FloatingHead.svelte';
 export { default as Feedback } from './Feedback.svelte';
 export { default as Select } from './Select.svelte';
 export { default as MetricCard } from './MetricCard.svelte';
+export { default as IsLoggedIn } from './IsLoggedIn.svelte';
+export { default as Search } from './Search.svelte';
