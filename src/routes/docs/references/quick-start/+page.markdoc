@@ -247,7 +247,7 @@ Appwrite uses Server SDKs for SSR apps. The initialization is different
 
 {% info title="Admin clients" %}
 Admin clients should only be used if you need to perform admin actions that bypass permissions
-or [unauthenticated requests that bypass rate limits](#rate-limits).
+or [unauthenticated requests that bypass rate limits](/docs/products/auth/server-side-rendering#rate-limits).
 {% /info %}
 
 To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). 
