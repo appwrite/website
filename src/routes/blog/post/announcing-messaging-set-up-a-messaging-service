@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Announcing messaging: set up a full-functioning messaging service"
+title: "Announcing Messaging: Push, Email and SMS directly from your Appwrite backend"
 description: 
 date: 2024-02-26
 cover: /images/blog/messaging-announcement.png
