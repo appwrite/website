@@ -428,7 +428,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href=""
+                                href="/products/auth"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -437,7 +437,7 @@
                                     <div class="u-flex u-cross-center u-gap-8">
                                         <img
                                             src="/images/icons/illustrated/dark/auth.png"
-                                            alt=""
+                                            alt="auth"
                                             width="32"
                                             height="32"
                                         />
@@ -458,7 +458,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href=""
+                                href="/products/functions"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -467,7 +467,7 @@
                                     <div class="u-flex u-cross-center u-gap-8">
                                         <img
                                             src="/images/icons/illustrated/dark/functions.png"
-                                            alt=""
+                                            alt="functions"
                                             width="32"
                                             height="32"
                                         />
@@ -489,7 +489,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href=""
+                                href="/products/database"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -519,7 +519,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href=""
+                                href="/products/storage"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -528,7 +528,7 @@
                                     <div class="u-flex u-cross-center u-gap-8">
                                         <img
                                             src="/images/icons/illustrated/dark/storage.png"
-                                            alt=""
+                                            alt="storage"
                                             width="32"
                                             height="32"
                                         />
@@ -550,7 +550,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href=""
+                                href="/products/realtime"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -559,7 +559,7 @@
                                     <div class="u-flex u-cross-center u-gap-8">
                                         <img
                                             src="/images/icons/illustrated/dark/realtime.png"
-                                            alt=""
+                                            alt="realtime"
                                             width="32"
                                             height="32"
                                         />
@@ -594,27 +594,6 @@
 >
 
 <style lang="scss">
-    .pink-gradient {
-        position: absolute;
-        inset-block-start: 50px;
-        inset-inline-end: -120px;
-        inline-size: 983px;
-        block-size: 985px;
-        background: url('/images/messaging/pink-gradient.png') no-repeat;
-        background-position: center center;
-        background-size: contain;
-    }
-
-    .green-gradient {
-        position: absolute;
-        inset-block-start: -30px;
-        inset-inline-start: -120px;
-        inline-size: 460px;
-        block-size: 709px;
-        background: url('/images/messaging/green-gradient.png') no-repeat;
-        background-position: center center;
-        background-size: contain;
-    }
     .hero {
         overflow: hidden;
         position: relative;
