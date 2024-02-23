@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A first look at the new Or & Contains database operators
+title: A first look at the new or & contains query methods
 description: What is a database without queries? Not a lot. That's why we’re happy to announce a new set of query methods, array contains, string contains, and OR operators. 
 date: 2024-02-28
 cover: /images/blog/db-operators-overview/cover.png
