@@ -38,7 +38,7 @@ Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Cl
 {% /info %}
 In SSR, your server-side application will be making authentication requests to Appwrite and passing session cookies to your client-side app on the browser.
 
-We'll need to initialize two Appwrite clients: one for admin requests, and one for session-based requests.
+We'll need to initialize two Appwrite clients, one for admin requests and one for session-based requests.
 
 ## Admin client {% #admin-client %}
 
@@ -80,7 +80,10 @@ It is important to use an API key, as this will allow your server requests to by
 
 ## Session client {% #session-client %}
 
-The session client will be used to make requests to Appwrite on behalf of the end-user. It will be initialized with the session, usually stored within a cookie.
+The session client will be used to make requests to Appwrite on behalf of the end-user. 
+It will be initialized with the session, usually stored within a cookie.
+
+You should create a new client for each request and **never** share the client between requests.
 
 {% multicode %}
 ```js
