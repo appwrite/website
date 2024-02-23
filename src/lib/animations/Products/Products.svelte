@@ -35,7 +35,7 @@
             title: 'Auth',
             subtitle: 'Secure login for all users',
             description:
-                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
+                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Anonymous, Magic URLs and more.',
             features: [
                 '30+ login methods',
                 'Support for teams, roles and user labels',

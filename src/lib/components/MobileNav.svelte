@@ -1,8 +1,8 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
+    import { IsLoggedIn } from '$lib/components';
     import { GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
-    import {loggedIn} from "$lib/utils/console";
 
     export let open = false;
     export let links: NavLink[];
@@ -20,12 +20,7 @@
             <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary aw-u-flex-1">
                 Sign up
             </a>
-
-            {#if $loggedIn}
-                <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Go to Console</a>
-            {:else}
-                <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Get started</a>
-            {/if}
+            <IsLoggedIn classes="aw-u-flex-1" />
         </div>
         <div class="aw-side-nav-scroll">
             <section>

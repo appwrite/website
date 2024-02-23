@@ -33,7 +33,6 @@
         preventScroll,
         positioning: {
             sameWidth: true,
-            fitViewport: true,
             placement
         },
         forceVisible: true,
@@ -45,7 +44,9 @@
             dispatch('change', next?.value);
 
             return next;
-        }
+        },
+        portal: null,
+        scrollAlignment: 'center'
     });
 
     $: selectedOption = options.find((o) => o.value === value);
