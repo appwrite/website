@@ -1,26 +1,26 @@
 ---
 layout: article
-title: Multi-factor authentication
+title: 2-Factor authentication
 description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
 ---
 
-Multi-factor authentication (MFA) greatly increases the security of your apps by adding additional layers of protection.
-When Multifactor authentication is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
-Appwrite Authentication lets you easily implement MFA in your apps, letting you build more securely and quickly.
+Two-factor authentication (2FA) greatly increases the security of your apps by adding additional layers of protection.
+When 2FA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
+Appwrite Authentication lets you easily implement 2FA in your apps, letting you build more securely and quickly.
 
-{% info title="Looking for MFA for your Console account?" %}
-This page covers MFA for your app's end-users. 
-If you are looking for MFA for your Appwrite Console account, please refer to the [Console MFA page](/docs/advanced/security/mfa).
+{% info title="Looking for 2FA for your Console account?" %}
+This page covers 2FA for your app's end-users. 
+If you are looking for 2FA for your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/mfa).
 {% /info %}
 
 Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
 
-Here are the steps to implement MFA in your application.
+Here are the steps to implement 2FA in your application.
 
-{% section #enable-mfa step=1 title="Enable MFA on an account" %}
-You can enable MFA on your account by calling `account.updateMFA()`.
+{% section #enable-2fa step=1 title="Enable 2FA on an account" %}
+You can enable 2FA on your account by calling `account.updateMFA()`.
 You will need to have added more than 1 factors of authentication to an account before
-the MFA is enforced.
+the 2FA is enforced.
 
 Initialize your Appwrite SDK's `Client` and `Account`.
 {% multicode %}
