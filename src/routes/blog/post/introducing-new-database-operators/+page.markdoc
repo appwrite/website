@@ -17,7 +17,6 @@ These two query methods have been highly requested by the Appwrite community, an
 - `contains` - Partial text matches on string attributes, array element matching on array attributes
 - `or` -  write logical OR queries
 
-&nbsp;   
 ## `contains` operator
  
 The contains operator is a great addition to the existing text search operators such as `startsWith` & `endsWith`, and can be used in combination with these two. With contains, we can now perform a broader search by matching against any text within a substring. This is extremely useful when searching a large body of text or when the placement of keywords is unknown. 
