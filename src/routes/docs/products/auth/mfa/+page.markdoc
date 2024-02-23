@@ -232,6 +232,7 @@ The returned object will be formatted like this.
 {% multicode %}
 ```js
 const factors = await account.listFactors();
+// redirect based on providers returned.
 ```
 ```dart
 Future result = account.listFactors();
@@ -247,10 +248,12 @@ result
 
 ```swift
 let mfaFactors = try await account.listFactors()
+// redirect based on providers returned.
 ```
 
 ```kotlin
 val response = account.listFactors()
+// redirect based on providers returned.
 ```
 {% /multicode %}
 
