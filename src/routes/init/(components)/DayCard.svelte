@@ -1,7 +1,6 @@
 <script lang="ts" context="module">
     export type DayType = {
         title: string;
-
         release: Date;
     };
 </script>
@@ -42,7 +41,7 @@
                     />
                 {/if}
             </div>
-            <button class="aw-button is-secondary">Remind me</button>
+            <a href="/init/tickets" class="aw-button is-secondary">Register</a>
         </div>
     </div>
 {/if}
@@ -78,7 +77,7 @@
             max-width: 50%;
         }
 
-        .circle {
+        /* .circle {
             content: '';
             background: radial-gradient(
                 hsl(var(--aw-color-accent)) 0%,
@@ -96,7 +95,7 @@
             translate: 60% -60%;
             z-index: 0;
             pointer-events: none;
-        }
+        } */
 
         .slot-wrapper {
             position: absolute;

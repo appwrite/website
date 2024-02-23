@@ -1,7 +1,7 @@
 import { derived, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { Account, Client, Teams } from '@appwrite.io/console';
-import { Query, type Models } from 'appwrite';
+import { Query, type Models } from '@appwrite.io/console';
 
 const client = new Client();
 
@@ -21,7 +21,6 @@ export async function isProUser() {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
     } catch (e) {
-        console.error(e);
         return false;
     }
 }
@@ -37,10 +36,7 @@ export function getAppwriteUser(): Promise<AppwriteUser | null> {
     return account
         .get()
         .then((res) => res)
-        .catch((e) => {
-            console.error(e);
-            return null;
-        });
+        .catch(() =>  null);
 }
 
 function createAppwriteUser() {
@@ -58,7 +54,6 @@ function createAppwriteUser() {
     if (browser) {
         const localUser = JSON.parse(localStorage.getItem('appwrite:user') ?? 'null');
         if (isAppwriteUser(localUser)) _set(localUser);
-
         getAppwriteUser().then((res) => {
             set(res);
         });
