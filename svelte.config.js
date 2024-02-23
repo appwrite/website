@@ -51,7 +51,7 @@ const config = {
             $markdoc: './src/markdoc'
         },
         prerender: {
-            concurrency: 32
+            concurrency: 100
         }
     }
 };
