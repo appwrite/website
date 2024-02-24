@@ -50,7 +50,7 @@
 					href: '/docs/advanced/security/encryption'
 				},
 				{
-					label: 'Multi-factor authentication',
+					label: '2-Factor authentication',
 					href: '/docs/advanced/security/mfa'
 				},
 				{

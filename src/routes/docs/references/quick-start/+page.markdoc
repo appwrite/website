@@ -242,7 +242,74 @@ let client = Client()
 {% /tabsitem %}
 
 {% tabsitem #ssr title="SSR" %}
-TODO
+Appwrite uses Server SDKs for SSR apps. The initialization is different
+## Admin client {% #admin-client %}
+
+{% info title="Admin clients" %}
+Admin clients should only be used if you need to perform admin actions that bypass permissions
+or [unauthenticated requests that bypass rate limits](/docs/products/auth/server-side-rendering#rate-limits).
+{% /info %}
+
+To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). 
+The API key should have the following scope in order to perform authentication:
+
+| Category  {% width=120 %} | Required scopes    | Purpose |
+|-----------|---------------------|---------|
+| Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
+
+{% multicode %}
+```js
+import { Client } from "node-appwrite"; // Using the server SDK
+
+const adminClient = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setKey('<YOUR_API_KEY>');                   // Your secret API key
+```
+```php
+use Appwrite\Client;
+use Appwrite\Services\Account;
+
+$adminClient = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setKey('<YOUR_API_KEY>');                   // Your secret API key
+
+
+```
+{% /multicode %}
+
+It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
+
+## Session client {% #session-client %}
+
+The session client will be used to make requests to Appwrite on behalf of the end-user. 
+It will be initialized with the session, usually stored within a cookie.
+
+You should create a new client for each request and **never** share the client between requests.
+
+{% multicode %}
+```js
+const sessionClient = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>');            // Your project ID
+
+const session = req.cookies.session; // Get the session cookie from the request
+if (session) {
+    sessionClient.setSession(session);
+}
+```
+```php
+$sessionClient = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<YOUR_PROJECT_ID>');            // Your project ID
+
+$session = $_COOKIE['session']; // Get the session cookie from the request
+if ($session) {
+    $sessionClient->setSession($session);
+}
+```
+{% /multicode %}
 {% /tabsitem %}
 
 You will use the initialized client in all requests you make to Appwrite.
