@@ -27,7 +27,7 @@ To initialize the OAuth2 login process, use the [Create OAuth2 Session](/docs/re
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
 ```js
-import { Client, Account } from "appwrite";
+import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -36,7 +36,7 @@ const client = new Client()
 const account = new Account(client);
 
 // Go to OAuth provider login page
-account.createOAuth2Session('github', '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
+account.createOAuth2Session(OAuthProvider.GitHub, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
 ```
 
 Users will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
@@ -64,7 +64,7 @@ final client = Client()
 final account = Account(client);
 
 // Go to OAuth provider login page
-await account.createOAuth2Session(provider: 'github');
+await account.createOAuth2Session(provider: OAuthProvider.github);  
 ```
 
 User will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
