@@ -204,8 +204,12 @@ Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
 #### Only Light/Dark Theme
 
 ```
-{% only_dark %}I am only shown in Dark Theme{% /only_dark %}
-{% only_light %}I am only shown in Light Theme{% /only_light %}
+{% only_dark %}
+![Project settings screen](/images/docs/platform/dark/create-api-key.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/platform/create-api-key.png)
+{% /only_light %}
 ```
 
 #### Cards
