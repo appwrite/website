@@ -260,7 +260,7 @@ Create an initial endpoint that redirects the user to the OAuth2 provider's auth
 
 {% multicode %}
 ```js
-import { Client, Account } from "node-appwrite"; // Using the server SDK
+import { Client, Account, OAuthProvider } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -271,7 +271,7 @@ app.get('/oauth', async (req, res) => {
     const account = new Account(adminClient);
 
     const redirectUrl = await account.createOAuth2Token(
-        'github',                            // Provider
+        OAuthProvider.GitHub,                // Provider
         'https://example.com/oauth/success', // Success URL
         'https://example.com/oauth/failure', // Failure URL
     );
@@ -283,6 +283,7 @@ app.get('/oauth', async (req, res) => {
 <?php
 use Appwrite\Client;
 use Appwrite\Services\Account;
+use Appwrite\Enums\OAuthProvider;
 
 $adminClient = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -292,7 +293,7 @@ $adminClient = (new Client())
 $account = new Account($adminClient);
 
 $redirectUrl = $account->createOAuth2Token(
-    'github',                            // Provider
+    OAuthProvider::GITHUB(),
     'https://example.com/oauth/success', // Success URL
     'https://example.com/oauth/failure', // Failure URL
 );
