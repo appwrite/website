@@ -14,17 +14,20 @@ Add a new server action. Navigate to `src/lib/server` and create a new file `oau
 
 import { SESSION_COOKIE, createAdminClient } from "@/lib/server/appwrite";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
+import { OAuthProvider } from "node-appwrite";
 
 async function signInWithGithub(formData) {
 	"use server";
 
-	const provider = formData.get('provider') ?? 'github';
-
 	const { account } = createAdminClient();
+
+  const origin = headers().get("origin");
+  
 	const redirectURL = await account.createOAuth2Token(
-		provider, 
-		'<YOUR_WEBSITE_DOMAIN>/oauth2',
-		'<YOUR_WEBSITE_DOMAIN>/signin'
+		OAuthProvider.GitHub,
+		`${origin}/oauth2`,
+		`${origin}/oauth2`,
 	);
 
 	return redirect(redirectURL);
