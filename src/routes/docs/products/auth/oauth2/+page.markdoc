@@ -41,7 +41,7 @@ account.createOAuth2Session('github', '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', 
 
 Users will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
 
-In your web application, you need to finish OAuth authentication using [Create session](#) endpoint. Both user ID and token secret will be provided to you in the URL params.
+In your web application, you need to finish OAuth authentication using [Create session](/docs/references/cloud/client-web/account#createSession) endpoint. Both user ID and token secret will be provided to you in the URL params.
 
 ```js
 const urlParams = new URLSearchParams(window.location.search);

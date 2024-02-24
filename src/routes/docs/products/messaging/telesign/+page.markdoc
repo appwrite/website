@@ -32,14 +32,14 @@ You will need to provide the following information from your **Telesign dashboar
 * Field name
 *
 ---
-* [TODO]
-* [TODO]
+* Customer ID
+* Head to **Telesign portal** > **Profile** > **Customer ID**.
 ---
-* [TODO]
-* [TODO]
+* API Key
+* Head to **Telesign portal** > **Profile** > **API Keys**.
 ---
-* [TODO]
-* [TODO]
+* Sender number
+* The number from which the SMS will be sent. You may need to first purchase a number from Telesign.
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
