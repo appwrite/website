@@ -6,7 +6,7 @@ date: 2024-02-26
 cover: /images/blog/simplify-messaging-twilio.png
 timeToRead: 7
 author: aditya-oberai
-category: engineering
+category: product
 featured: false
 ---
 
@@ -18,7 +18,7 @@ Messaging refers to sending messages directly to a user's mobile device from an 
 
 It can be used for various reasons, including:
 
-- **Transactional messages:** These messages are related to the user's actions or account, such as payment confirmation.
+- **Transactional messages:** These messages relate to the user's actions or account, such as payment confirmation.
 - **Promotional messages**: These marketing messages promote products, services, or offers.
 - **Reminder messages**: These remind users about events, tasks, or actions they must take.
 - **Location-based messages**: These are triggered by the user's location.
@@ -94,6 +94,7 @@ const promise = await messaging.updateTwilioProvider(
 );
 ```
 
+# Resources
 Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
 - [Docs](https://appwrite.io/docs/products/messaging/twilio)
