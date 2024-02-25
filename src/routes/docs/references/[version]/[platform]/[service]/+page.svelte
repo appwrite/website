@@ -217,52 +217,6 @@
                                 </div>
                                 <Response {method} />
                             </AccordionItem>
-
-                            <!-- These are example usages of the accordion component. This must be removed later -->
-                            <AccordionItem title="Image">
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
-                                    pellentesque nullam. Maecenas cras blandit sollicitudin
-                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
-                                </div>
-                                <Image
-                                    src="/images/docs/quick-starts/dark/add-platform.png"
-                                    alt="Hello world Image"
-                                    title="Hello World"
-                                />
-                            </AccordionItem>
-
-                            <AccordionItem title="Code">
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
-                                    pellentesque nullam. Maecenas cras blandit sollicitudin
-                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
-                                </div>
-                                <Fence
-                                    badge={'Web'}
-                                    language={'javascript'}
-                                    content={`import { Client,  Account } from "appwrite";\n\nconst client = new Client();\n\nconst account = new Account(client);`}
-                                    process
-                                    withLineNumbers={true}
-                                />
-                            </AccordionItem>
-
-                            <AccordionItem title="Table">
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
-                                    pellentesque nullam. Maecenas cras blandit sollicitudin
-                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
-                                </div>
-                                <Table
-                                    data={[
-                                        ['Name', 'Type', 'Description'],
-                                        ['Name', 'Type', 'Description'],
-                                        ['Name', 'Type', 'Description']
-                                    ]}
-                                    columns={['Name', 'Type', 'Description']}
-                                />
-                            </AccordionItem>
-                            <!-- END -->
                         </Accordion>
                     </div>
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
