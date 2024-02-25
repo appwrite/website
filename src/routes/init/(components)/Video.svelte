@@ -4,14 +4,14 @@
     import { videoCtx } from './VideoWrapper.svelte';
 
     type $$Props = {
+        src: string;
         thumbnail: string;
         '--p-aspect-ratio'?: string;
         '--p-border-radius'?: string;
-        src?: string; // TODO: This should be required
     };
 
     export let thumbnail: $$Props['thumbnail'];
-    export let src: string = 'https://www.youtube.com/embed/XxbJw8PrIkc?si=kOEzUREP0KZoFDY7'; // TODO: REMOVE THIS BEFORE MERGING, THIS IS MOCK DATA
+    export let src: string;
 
     const dialog = videoCtx.get();
     const {
