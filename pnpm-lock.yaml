@@ -15,8 +15,8 @@ dependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/repo':
-    specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0
+    specifier: github:appwrite/appwrite#feat-rc-sdks
+    version: github.com/appwrite/appwrite/9d35e7525cb32daa608554b00cd3c8b80aefd8f0
   '@resvg/resvg-js':
     specifier: ^2.6.0
     version: 2.6.0
@@ -6590,8 +6590,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/cbf1085850354c6d16296e764e9c64abea067be0}
+  github.com/appwrite/appwrite/9d35e7525cb32daa608554b00cd3c8b80aefd8f0:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/9d35e7525cb32daa608554b00cd3c8b80aefd8f0}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
