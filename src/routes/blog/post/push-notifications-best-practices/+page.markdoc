@@ -74,6 +74,8 @@ let provider = try await messaging.updateAPNSProvider(
 )
 ```
 
+# Resources
+
 Visit our documentation to learn more about push notifications, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
 - [Docs](https://appwrite.io/docs/products/messaging/send-push-notifications)
