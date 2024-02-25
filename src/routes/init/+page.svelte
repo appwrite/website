@@ -4,7 +4,6 @@
     import EventCard from '$routes/community/EventCard.svelte';
     import ShinesSvg from './(assets)/shines.svg';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-
     import { events } from '$routes/community/+page.svelte';
     import { Animations } from './(animations)';
     import Ticket from './(components)/Ticket.svelte';
@@ -13,18 +12,26 @@
     import { tribes } from './tickets/customize/form.svelte';
     import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
+    import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import thumbnail from './(assets)/thumbnail-1.png';
+    import Day from './(days)/Day.svelte';
+    import Video from './(components)/Video.svelte';
+    import { fade, slide } from 'svelte/transition';
 
-    const base = new Date('2024-02-26 15:00:00 GMT+0000');
-    const addDays = (date: Date, days: number) => {
+    const base = new Date('2024-02-26T15:00:00.000Z');
+    const kickoff = new Date('2024-02-21T15:00:00.000Z');
+
+    function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
-    };
-    const toReleaseDate = (date: Date) => {
+    }
+
+    function toReleaseDate(date: Date): string {
         return date.toLocaleDateString('en-US', {
             weekday: 'long',
             month: 'short',
             day: 'numeric'
         });
-    };
+    }
 
     $: days = [
         {
@@ -49,23 +56,74 @@
         }
     ] as DayType[];
 
-    const users = [
-        { name: 'Eldad', user: 'eldadfux' },
+    function scrollIntoView(query: string) {
+        document.querySelector(query)?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    function shuffle<T>(array: T[]): T[] {
+        let currentIndex = array.length,
+            randomIndex;
+
+        while (currentIndex > 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+
+    const users = shuffle([
+        { name: 'Eldad Fux', user: 'eldadfux' },
         { name: 'Thomas', user: 'tglide' },
         { name: "Walter O'Brien", user: 'walterob' },
         { name: 'Sara Kaandorp', user: 'sarak' },
-        { name: 'Carla', user: 'carla' },
+        { name: 'Carla Alexander', user: 'carla' },
         { name: 'Chen Parnasa', user: 'chenp' },
         { name: 'Caio Arias', user: 'caioarias' },
         { name: 'Bradley Schofield', user: '.ionic' },
-        { name: 'Dylan', user: 'dylan' },
+        { name: 'Dylan Graham', user: 'dylan' },
         { name: 'Emma Carpagnano', user: 'emmacarpagnano' },
         { name: 'Torsten Dittmann', user: 'torstendittmann' },
-        { name: 'Arman Nik', user: 'ArmanNik' }
-    ];
+        { name: 'Arman Nik', user: 'armanNik' },
+        { name: 'Christy Jacob', user: 'christyjacob4' },
+        { name: 'Damodar Lohani', user: 'lohanidamodar' },
+        { name: 'Jake Barnby', user: 'abnegate' },
+        { name: 'Aditya Oberai', user: 'adityaoberai' },
+        { name: 'Wess Cope', user: 'wess' },
+        { name: 'Matej Bačo', user: 'meldiron' },
+        { name: 'Khushboo Verma', user: 'vermakhushboo' },
+        { name: 'May Ender', user: 'mayender' },
+        { name: 'Elad Shechter', user: 'elad2412' },
+        { name: 'Vincent Ge', user: 'wenYuGe1' },
+        { name: 'Chen Parnasa', user: 'chenparnasa' },
+        { name: 'Tessa Mero', user: 'tessamero' },
+        { name: 'Shimon Newman', user: 'shimonewman' },
+        { name: 'Shmuel Fogel', user: 'fogelito' },
+        { name: 'Steven Nguyen', user: 'stnguyen90' },
+        { name: 'Jade Baudchon', user: 'dajebp' },
+        { name: 'Holly Barclay', user: 'holly' },
+        { name: 'Laura Du Ry', user: 'lauraDuRy' },
+        { name: 'Luke Silver', user: 'loks0n' },
+        { name: 'Sümeyra Bulut', user: 'sumeyra' },
+        { name: 'Dennis Ivy', user: 'divanov11' },
+        { name: 'Andrea Fernández Camps', user: 'andrea' },
+        { name: 'Evan LeAir', user: 'evdog4life' }
+    ]);
 
+    let userIndex = 0;
     const getRandomTicket = () => {
-        const user = randomPick(users);
+        let user = users[userIndex];
+
+        if (!user) {
+            userIndex = 0;
+            user = users[userIndex];
+        }
+
+        userIndex++;
+
         const tribe = randomPick(tribes);
 
         return {
@@ -77,10 +135,27 @@
             contributions: getMockContributions()
         };
     };
+
+    const title = 'Init - Appwrite';
+    const description = 'The start of something new.';
+    const ogImage = buildOpenGraphImage('init', description);
 </script>
 
 <svelte:head>
-    <title>Appwrite init_</title>
+    <!-- Titles -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <!-- Description -->
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>
@@ -92,10 +167,12 @@
         <p class="aw-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/tickets" class="aw-button">Claim your ticket</a>
-            <!-- <button class="aw-button is-secondary">
-                <div class="aw-icon-play" />
-                <span class="text">Watch the video</span>
-            </button> -->
+            {#if new Date() >= kickoff}
+                <button on:click={() => scrollIntoView('#kickoff')} class="aw-button is-secondary">
+                    <div class="aw-icon-play" />
+                    <span class="text">Watch the video</span>
+                </button>
+            {/if}
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
@@ -108,13 +185,26 @@
             {/each}
         </div>
         <hr />
-
         <div class="days">
-            <h2 class="aw-eyebrow aw-u-color-text-primary">
-                <div class="aw-dot" />
-            </h2>
-
-            <CountdownCard date={new Date('2024-02-21 15:00:00 GMT+0000')} />
+            <Day release={kickoff}>
+                <div
+                    class="aw-card is-normal has-border-gradient kickoff"
+                    transition:fade={{ delay: 0, duration: 600 }}
+                >
+                    <h3
+                        class="aw-title aw-u-color-text-primary"
+                        id="kickoff"
+                        style:scroll-margin-top="5rem"
+                    >
+                        Init kickoff<span class="aw-u-color-text-accent">_</span>
+                    </h3>
+                    <Video
+                        --p-aspect-ratio="16/9"
+                        {thumbnail}
+                        src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
+                    />
+                </div>
+            </Day>
             {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
@@ -340,7 +430,7 @@
             #232325;
         padding: 0.5rem;
 
-        height: 23.25rem;
+        height: 25rem;
 
         h3 {
             padding-block-start: 1.5rem;
@@ -398,6 +488,7 @@
 
                 .swag {
                     border-radius: 12px;
+                    object-fit: cover;
                 }
             }
 
@@ -464,7 +555,7 @@
             height: 43.75rem;
 
             @media screen and (max-width: 1023px) {
-                height: 36.4375rem;
+                height: 38rem;
             }
 
             .text {

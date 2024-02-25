@@ -17,7 +17,7 @@
 
 <svelte:head>
     <!-- Title -->
-    <title>Appwrite init_ - {firstName}'s Ticket</title>
+    <title>Init - {firstName}'s ticket</title>
     <meta property="og:title" content="Appwrite init_ - {firstName}'s Ticket" />
     <meta name="twitter:title" content="Appwrite init_ - {firstName}'s Ticket" />
     <!-- Description -->
@@ -99,7 +99,7 @@
                     gap: 0.5rem;
                     margin-block-start: 1rem;
 
-                    button {
+                    .aw-button {
                         inline-size: 100%;
                     }
                 }

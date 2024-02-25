@@ -1,12 +1,12 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
-import { appwriteInit } from '$lib/appwrite/init.js';
-import { getTicketVariant } from '$routes/init/helpers.js';
+import { appwriteInitServer } from '$lib/appwrite/init.server';
+import { getTicketVariant } from '$routes/init/helpers';
 import sharp from 'sharp';
 import type { TicketData } from '../../constants.js';
 import { getTicketSvg } from './getTicketSvg.server.js';
 
 export async function GET({ params, fetch }) {
-    const ticket = (await appwriteInit.database.getDocument(
+    const ticket = (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
         params.id
