@@ -1,0 +1,266 @@
+<script lang="ts">
+    import Day from './Day.svelte';
+    import illustration from '../(assets)/messaging.png';
+    import Video from '../(components)/Video.svelte';
+    import thumbnail from '../(assets)/thumbnail-messaging.png';
+    import thumbnailProduct from '../(assets)/thumbnail-messaging-product.png';
+    import twillio from '../(assets)/messaging-1.svg';
+    import { Animations } from '../(animations)';
+    import VideoWrapper from '../(components)/VideoWrapper.svelte';
+
+    export let release: Date;
+</script>
+
+<Day day="Day 1 - Monday, Feb 12" {release}>
+    <div class="mosaic">
+        <div class="aw-card is-normal has-border-gradient" style:padding="0">
+            <div style:padding="2rem" style:padding-block-end="0">
+                <h3 class="aw-label aw-u-color-text-primary">Messaging</h3>
+                <p style:margin-block-start="0.625rem">
+                    Introducing multimedia messaging service to communicate to your users across
+                    platforms.
+                </p>
+                <a
+                    href="#"
+                    class="aw-link u-flex u-cross-center"
+                    style:margin-block-start="1.25rem"
+                >
+                    <span class="text">Announcement</span>
+                    <span class="aw-icon-arrow-right" />
+                </a>
+            </div>
+            <img src={illustration} alt="" />
+            <div class="circle" />
+        </div>
+        <div
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 0.5rem; --p-aspect-ratio: 0;"
+        >
+            <Video
+                {thumbnail}
+                src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
+            >
+                <div
+                    class="u-flex u-flex-vertical"
+                    style="position: absolute; inset-block-end: 1rem; inset-inline-start: 1rem; gap: 0.25rem;"
+                >
+                    <h4 class="aw-label aw-u-color-text-primary">Release video</h4>
+                    <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                        <span class="text">Watch</span>
+                        <span class="aw-icon-arrow-right" />
+                    </a>
+                </div>
+            </Video>
+        </div>
+
+        <div
+            class="aw-card is-normal has-border-gradient u-overflow-hidden"
+            style="padding: 1.25rem; --p-aspect-ratio: 0;"
+        >
+            <h3 class="aw-label aw-u-color-text-primary" style="max-width: 18.75rem">
+                How tools like Twilio can simplify messaging for developers
+            </h3>
+            <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                <span class="text">Article</span>
+                <span class="aw-icon-arrow-right" />
+            </a>
+            <img
+                src={twillio}
+                alt="Twilio"
+                style="position: absolute; inset-block-start: 0; inset-inline-end: -9rem;"
+            />
+        </div>
+        <div class="aw-card is-normal has-border-gradient u-overflow-hidden" style="padding: 20px">
+            <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
+                Best practices for sending push notifications
+            </h3>
+            <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                <span class="text">Enter</span>
+                <span class="aw-icon-arrow-right" />
+            </a>
+            <div>
+                <Animations.Messaging />
+            </div>
+        </div>
+        <VideoWrapper let:openVideo>
+            <div
+                class="aw-card is-normal has-border-gradient u-overflow-hidden"
+                style="padding: 0.5rem; display: flex; justify-content: space-between; "
+            >
+                <div style="padding: 0.75rem;">
+                    <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
+                        Product tour
+                    </h3>
+                    <button
+                        on:click={openVideo}
+                        class="aw-link u-flex u-cross-center"
+                        style:opacity="0.64"
+                    >
+                        <span class="text">Watch</span>
+                        <span class="aw-icon-arrow-right" />
+                    </button>
+                </div>
+                <Video
+                    thumbnail={thumbnailProduct}
+                    --p-aspect-ratio="16/9"
+                    --p-border-radius="0.75rem"
+                    src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
+                />
+            </div>
+        </VideoWrapper>
+
+        <div class="aw-card is-normal has-border-gradient" style="padding: 1.25rem">
+            <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
+            <a href="/docs/products/messaging" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                <span class="text">Learn more</span>
+                <span class="aw-icon-arrow-right" />
+            </a>
+        </div>
+        <div class="aw-card is-normal has-border-gradient" style="padding: 1.25rem">
+            <h3 class="aw-label aw-u-color-text-primary">Win swag</h3>
+            <a href="/init/tickets" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                <span class="text">Enter giveaway</span>
+                <span class="aw-icon-arrow-right" />
+            </a>
+        </div>
+        <div
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 0.5rem; display: flex; justify-content: space-between; "
+        >
+            <div style="padding: 0.75rem;">
+                <h3 class="aw-label aw-u-color-text-primary">Event: Welcome to Init</h3>
+                <a
+                    href="https://discord.com/events/564160730845151244/1209117134417035365"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="aw-link u-flex u-cross-center"
+                    style:opacity="0.64"
+                >
+                    <span class="text">Enter</span>
+                    <span class="aw-icon-arrow-right" />
+                </a>
+            </div>
+            <img
+                src="/images/community/events/init-0.png"
+                alt=""
+                style="aspect-ratio: 16/9; border-radius: 0.75rem;  object-fit: cover;"
+            />
+        </div>
+    </div>
+</Day>
+
+<style lang="scss">
+    p {
+        text-wrap: balance;
+    }
+
+    .mosaic {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(2, 224px) repeat(2, 126px) 60px;
+        gap: 2rem;
+
+        min-height: 660px;
+
+        > :nth-child(1) {
+            grid-column: 1 / 8;
+            grid-row: 1 / 3;
+
+            position: relative;
+            overflow: hidden;
+
+            img {
+                display: block;
+                margin-block-start: 1rem;
+                z-index: 10;
+            }
+
+            .circle {
+                $size: 200px;
+                width: $size;
+                height: $size;
+                background: hsl(var(--aw-color-accent));
+                filter: blur(200px);
+
+                position: absolute;
+                inset-block-end: calc(-1 * $size / 2);
+                inset-inline-start: 50%;
+                translate: -50%;
+                z-index: 1;
+            }
+        }
+
+        > :nth-child(2) {
+            grid-column: 8 / 13;
+            grid-row: 1 / 2;
+        }
+
+        > :nth-child(3) {
+            grid-column: 8 / 13;
+            grid-row: 2 / 3;
+        }
+
+        > :nth-child(4) {
+            grid-column: 1 / 7;
+            grid-row: 3 / 4;
+
+            > div:last-child {
+                position: absolute;
+                inset-block-start: 1.5rem;
+                inset-inline-end: -7rem;
+            }
+
+            @media screen and (max-width: 1023px) {
+                height: 224px;
+
+                > div:last-child {
+                    inset-block-start: unset;
+                    inset-block-end: 1rem;
+                    inset-inline-start: 3rem;
+                    inset-inline-end: unset;
+                }
+            }
+        }
+
+        > :nth-child(5) {
+            grid-column: 7 / 13;
+            grid-row: 3 / 4;
+
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        > :nth-child(6) {
+            grid-column: 1 / 4;
+            grid-row: 4 / 5;
+        }
+
+        > :nth-child(7) {
+            grid-column: 4 / 7;
+            grid-row: 4 / 5;
+        }
+
+        > :nth-child(8) {
+            grid-column: 7 / 13;
+            grid-row: 4 / 5;
+
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        > :nth-child(9) {
+            grid-column: 1 / 13;
+            grid-row: 5 / 6;
+        }
+
+        @media screen and (max-width: 1023px) {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+</style>
