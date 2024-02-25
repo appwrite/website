@@ -8,9 +8,9 @@ Two-factor authentication (2FA) greatly increases the security of your apps by a
 When 2FA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite Authentication lets you easily implement 2FA in your apps, letting you build more securely and quickly.
 
-{% info title="Looking for 2FA for your Console account?" %}
+{% info title="Looking for 2FA on your Console account?" %}
 This page covers 2FA for your app's end-users. 
-If you are looking for 2FA for your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/mfa).
+If you are looking for 2FA on your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/mfa).
 {% /info %}
 
 Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
@@ -217,8 +217,8 @@ try {
 ```
 {% /multicode %}
 {% /section %}
-{% section #list-provider step=4 title="List provider" %}
-You can check which providers are enabled for an account using `account.listProviders()`.
+{% section #list-provider step=4 title="List factors" %}
+You can check which factors are enabled for an account using `account.listFactors()`.
 The returned object will be formatted like this.
 
 ```js
@@ -232,7 +232,7 @@ The returned object will be formatted like this.
 {% multicode %}
 ```js
 const factors = await account.listFactors();
-// redirect based on providers returned.
+// redirect based on factors returned.
 ```
 ```dart
 Future result = account.listFactors();
@@ -240,7 +240,7 @@ Future result = account.listFactors();
 result
 .then((response) {
     print(response);
-    // redirect based on providers returned.
+    // redirect based on factors returned.
 }).catchError((error) {
     print(error.response);
 });
@@ -248,18 +248,18 @@ result
 
 ```swift
 let mfaFactors = try await account.listFactors()
-// redirect based on providers returned.
+// redirect based on factors returned.
 ```
 
 ```kotlin
 val response = account.listFactors()
-// redirect based on providers returned.
+// redirect based on factors returned.
 ```
 {% /multicode %}
 
 {% /section %}
 {% section #create-challenge step=5 title="Create challenge" %}
-Based on the providers available, initialize an additional auth step.
+Based on the factors available, initialize an additional auth step.
 Calling these methods will send a challenge to the user.
 You will need to save the challenge ID to complete the challenge in a later step.
 
@@ -270,7 +270,7 @@ Note that this is only valid as a second factor if the user did not initialize t
 {% multicode %}
 ```js
 const challenge = await account.createChallenge(
-        'email'                       // factor
+        'email'  // factor
     );
 
 // Save the challenge ID to complete the challenge later
