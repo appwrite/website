@@ -11,7 +11,9 @@
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
         </summary>
-        <slot/>
+        <div class="collapsible-content u-flex-vertical">
+            <slot />
+        </div>
     </details>
 </li>
 
@@ -22,5 +24,11 @@
 
     .collapsible-button {
         padding-block: 1rem;
+    }
+
+    .collapsible-content {
+        margin-block-start: 0;
+        padding-block-end: 1rem;
+        gap: 16px;
     }
 </style>
