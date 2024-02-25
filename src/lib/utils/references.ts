@@ -21,7 +21,6 @@ export enum Service {
     Storage = 'storage',
     Teams = 'teams',
     Users = 'users',
-    Messaging = 'messaging'
 }
 
 export enum Platform {
