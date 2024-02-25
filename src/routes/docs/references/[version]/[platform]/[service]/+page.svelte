@@ -198,21 +198,10 @@
                         <Accordion>
                             {#if method.parameters.length > 0}
                                 <AccordionItem open={true} title="Request">
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
-                                        aliquet pellentesque nullam. Maecenas cras blandit
-                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
-                                        elementum habitant.
-                                    </div>
                                     <Request {method} />
                                 </AccordionItem>
                             {/if}
                             <AccordionItem title="Response">
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
-                                    pellentesque nullam. Maecenas cras blandit sollicitudin
-                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
-                                </div>
                                 <Response {method} />
                             </AccordionItem>
                         </Accordion>

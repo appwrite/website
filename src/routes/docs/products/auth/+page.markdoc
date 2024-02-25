@@ -15,24 +15,3 @@ Combined with a robust permissions system, Appwrite Authentication provides ever
 {% arrow_link href="/docs/products/auth/quick-start" %}
 Quick start 
 {% /arrow_link %}
-
-{% accordion %}
-{% accordion_item title="Table" %}
-Authentication makes it easy to build secure and robust authentication with support for many different authentication methods.
-
-| Header 1     | Header 2     | Header 3     |
-| ------------ | ------------ | ------------ |
-| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
-| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
-{% /accordion_item %}
-
-{% accordion_item title="Image" %}
-Authentication makes it easy to build secure and robust authentication with support for many different authentication methods.
-{% only_dark %}
-![Project settings screen](/images/docs/platform/dark/create-api-key.png)
-{% /only_dark %}
-{% only_light %}
-![Project settings screen](/images/docs/platform/create-api-key.png)
-{% /only_light %}
-{% /accordion_item %}
-{% /accordion %}
