@@ -152,8 +152,8 @@ const client = new Client()
 const databases = new Databases(client);
 
 let promise = databases.listDocuments(
-    "[DATABASE_ID]"
-    "[COLLECTION_ID]",
+    "<DATABASE_ID>"
+    "<COLLECTION_ID>",
     [
         Query.equal('title', 'Hamlet')
     ]
@@ -177,7 +177,7 @@ void main() async {
 
     try {
         final documents = await databases.listDocuments(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             queries: [
                 Query.equal('title', 'Hamlet')
@@ -202,8 +202,8 @@ suspend fun main() {
 
     try {
         val documents = databases.listDocuments(
-            databaseId = "[DATABASE_ID]",
-            collectionId = "[COLLECTION_ID]",
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", "Hamlet")
             )
@@ -226,8 +226,8 @@ func main() async throws{
 
     do {
         let documents = try await databases.listDocuments(
-            databaseId: "[DATABASE_ID]",
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", "Hamlet")
             ]

@@ -2,6 +2,9 @@ import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
 
 type SDKMethod = {
+    'rate-limit': number;
+    'rate-time': number;
+    'rate-key': string;
     id: string;
     title: string;
     description: string;
@@ -72,6 +75,10 @@ function getExamples(version: string) {
             });
         case '1.4.x':
             return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
+                as: 'raw'
+            });
+        case '1.5.x':
+            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
                 as: 'raw'
             });
     }
@@ -289,10 +296,13 @@ export async function getService(
             parameters: parameters ?? [],
             responses: responses ?? [],
             method,
-            url
+            url,
+            'rate-limit': operation['x-appwrite']['rate-limit'],
+            'rate-time': operation['x-appwrite']['rate-time'],
+            'rate-key': operation['x-appwrite']['rate-key']
         });
     }
-
+    
     return data;
 }
 
