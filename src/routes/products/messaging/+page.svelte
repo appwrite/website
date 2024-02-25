@@ -126,7 +126,7 @@ messaging.createEmail(
                         Set up messaging within minutes and send push notifications, emails, and SMS
                         directly from the Appwrite Console.
                     </p>
-                    <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32">
+                    <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
                         <a class="aw-button" href="https://cloud.appwrite.io" target="_blank"
                             >Get started</a
                         >
@@ -576,11 +576,21 @@ messaging.createEmail(
 
         .aw-container {
             display: grid;
-            grid-template-columns: 580px 700px;
+            // grid-template-columns: 580px 700px;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 5.625rem;
-            block-size: 800px;
+            min-block-size: 800px;
             // block-size: 90vh;
+            @media (max-width: 1023px) {
+                padding-block-start: 5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
 
             .phone-wrapper {
                 position: relative;
@@ -593,9 +603,27 @@ messaging.createEmail(
 
                     position: absolute;
                     display: block;
-                    block-size: 800px;
+                    block-size: 100%;
                     translate: 0 100px;
                     inline-size: auto;
+                }
+                @media (max-width: 1023px) {
+                    block-size: 800px;
+                    translate: 0 0;
+                }
+                @media (max-width: 500px) {
+                    block-size: 500px;
+                    translate: 0 -50px;
+                }
+            }
+        }
+
+        &-buttons {
+            @media (max-width: 500px) {
+                flex-direction: column;
+                gap: 1rem;
+                & a {
+                    width: 100%;
                 }
             }
         }
