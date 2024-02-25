@@ -25,8 +25,7 @@
     import {
         Accordion,
         AccordionContent,
-        AccordionItem,
-        AccordionTrigger
+        AccordionItem
     } from '$lib/components/Accordion';
     import Request from '$lib/components/Accordion/Content/Request.svelte';
     import Response from '$lib/components/Accordion/Content/Response.svelte';
@@ -204,11 +203,8 @@
                         </p>
                         <Accordion>
                             {#if method.parameters.length > 0}
-                                <AccordionItem open={true}>
-                                    <AccordionTrigger slot="trigger">
-                                        <p class="text">Request</p>
-                                    </AccordionTrigger>
-                                    <AccordionContent slot="content">
+                                <AccordionItem open={true} title='Request'>
+                                    <AccordionContent>
                                         <div>
                                             Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                             aliquet pellentesque nullam. Maecenas cras blandit
@@ -219,11 +215,8 @@
                                     </AccordionContent>
                                 </AccordionItem>
                             {/if}
-                            <AccordionItem>
-                                <AccordionTrigger slot="trigger">
-                                    <p class="text">Response</p>
-                                </AccordionTrigger>
-                                <AccordionContent slot="content">
+                            <AccordionItem title='Response'>
+                                <AccordionContent>
                                     <div>
                                         Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                         aliquet pellentesque nullam. Maecenas cras blandit
@@ -235,11 +228,8 @@
                             </AccordionItem>
 
                             <!-- These are example usages of the accordion component. This must be removed later -->
-                            <AccordionItem>
-                                <AccordionTrigger slot="trigger">
-                                    <p class="text">Image</p>
-                                </AccordionTrigger>
-                                <AccordionContent slot="content">
+                            <AccordionItem title='Image'>
+                                <AccordionContent>
                                     <div>
                                         Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                         aliquet pellentesque nullam. Maecenas cras blandit
@@ -254,11 +244,8 @@
                                 </AccordionContent>
                             </AccordionItem>
 
-                            <AccordionItem>
-                                <AccordionTrigger slot="trigger">
-                                    <p class="text">Code</p>
-                                </AccordionTrigger>
-                                <AccordionContent slot="content">
+                            <AccordionItem title='Code'>
+                                <AccordionContent>
                                     <div>
                                         Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                         aliquet pellentesque nullam. Maecenas cras blandit
@@ -275,11 +262,8 @@
                                 </AccordionContent>
                             </AccordionItem>
 
-                            <AccordionItem>
-                                <AccordionTrigger slot="trigger">
-                                    <p class="text">Table</p>
-                                </AccordionTrigger>
-                                <AccordionContent slot="content">
+                            <AccordionItem title='Table'>
+                                <AccordionContent>
                                     <div>
                                         Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                         aliquet pellentesque nullam. Maecenas cras blandit
