@@ -16,10 +16,10 @@
     import thumbnail from './(assets)/thumbnail-1.png';
     import Day from './(days)/Day.svelte';
     import Video from './(components)/Video.svelte';
-    import { fade, slide } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
 
-    const base = new Date('2024-02-25T15:00:00.000Z');
+    let base = new Date('2024-02-26T15:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
@@ -180,6 +180,7 @@
     </div>
 
     <div class="aw-container">
+        <button class="aw-button" on:click={() => base = new Date}>fast forward</button>
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i} />
@@ -210,11 +211,11 @@
                 {#if i === 0}
                     <Day1 release={day.release} />
                 {:else}
-                <h2 class="aw-eyebrow aw-u-color-text-primary">
-                    <div class="aw-dot" />
-                    DAY {i} - {toReleaseDate(day.release)}
-                    <span class="aw-u-color-text-accent">_</span>
-                </h2>
+                    <h2 class="aw-eyebrow aw-u-color-text-primary">
+                        <div class="aw-dot" />
+                        DAY {i} - {toReleaseDate(day.release)}
+                        <span class="aw-u-color-text-accent">_</span>
+                    </h2>
                     <CountdownCard date={day.release} />
                 {/if}
             {/each}

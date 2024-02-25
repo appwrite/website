@@ -127,7 +127,7 @@ We will also show buttons to toggle between the two different types of forms.
 
 # Authentication forms {% #auth-forms %}
 
-In the previous step, we defined a `AuthForm` to handle signup and login. 
+In the previous step, we defined a `AuthForm` to handle signup and login.
 Let's build this form now.
 
 Create a new file `components/authForm.vue` and add the following code.

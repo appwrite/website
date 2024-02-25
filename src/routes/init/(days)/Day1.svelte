@@ -40,7 +40,7 @@
                 {thumbnail}
                 src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
             >
-                <div
+                <!-- <div
                     class="u-flex u-flex-vertical"
                     style="position: absolute; inset-block-end: 1rem; inset-inline-start: 1rem; gap: 0.25rem;"
                 >
@@ -49,7 +49,7 @@
                         <span class="text">Watch</span>
                         <span class="aw-icon-arrow-right" />
                     </span>
-                </div>
+                </div> -->
             </Video>
         </div>
 
