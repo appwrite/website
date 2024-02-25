@@ -226,6 +226,32 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/docs/products/messaging" class="aw-card is-normal">
+                            <img
+                                src="/images/icons/illustrated/dark/messaging.png"
+                                alt=""
+                                class="u-only-dark"
+                                width="48"
+                                height="48"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/messaging.png"
+                                alt=""
+                                class="u-only-light"
+                                width="48"
+                                height="48"
+                            />
+                            <h4
+                                class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-8"
+                            >
+                                Messaging
+                            </h4>
+                            <p class="aw-sub-body-400 u-margin-block-start-4">
+                                Send and schedule email, sms, and push notifications.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/docs/products/storage" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
