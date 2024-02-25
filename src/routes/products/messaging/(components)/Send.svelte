@@ -118,6 +118,10 @@
             pointer-events: none;
             z-index: 100;
         }
+        @media screen and (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .phone {
@@ -141,6 +145,11 @@
 
         // background-color: hsl(0, 0%, 100%, 0.02);
         backdrop-filter: blur(42px);
+
+        @media screen and (max-width: 1024px) {
+            margin-inline-start: 0;
+            margin: auto;
+        }
 
         .inner {
             border: 0.5rem solid hsl(0, 0%, 100%, 0.08);
@@ -265,7 +274,10 @@
     .android {
         height: 100%;
         position: relative;
-
+        @media screen and (max-width: 1024px) {
+            margin-block-start: 2rem;
+            padding-block-end: var(--padding-block-end);
+        }
         h3 {
             padding-inline-start: 2rem;
             position: relative;
@@ -291,6 +303,9 @@
             inset-block-end: 0;
             margin-inline-start: -1rem;
             position: absolute;
+            @media screen and (max-width: 1024px) {
+                display: none;
+            }
         }
         // margin-inline-start: -2rem;
     }
