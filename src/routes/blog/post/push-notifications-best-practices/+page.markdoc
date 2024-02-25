@@ -19,19 +19,19 @@ They are essential for delivering real-time updates and alerts, enhancing the ov
 Before we dive right into the best practices of sending a push notification, let us learn about the different types and the purpose they serve:
 
 - **Standard push notifications**: These are the basic form of push notifications, often used for general purposes such as updates, news, or alerts. They typically include a message and can sometimes have a call to action.
-- **Rich push notifications**: These notifications are enhanced with media like images, videos, or sound. Rich push notifications are more engaging and can be used for marketing campaigns, feature highlights, or just to provide a more immersive user experience.
-- **Interactive push notifications**: These notifications allow users to interact directly from the notification itself without opening the app. Actions can include replying to a message, liking a post, or even snoozing an alarm.
+- **Rich push notifications**: These notifications are enhanced with media like images, videos, or sound. Rich push notifications are more engaging and can be used for marketing campaigns, feature highlights, or to provide a more immersive user experience.
+- **Interactive push notifications**: These notifications allow users to interact directly from the notification itself without opening the app. Actions can include replying to a message, liking a post, or snoozing an alarm.
 - **Geotargeted push notifications**: Triggered when a user enters or leaves a specific geographic location. These are particularly useful for retail apps, offering special deals when a user is near a store, or for travel apps providing location-specific information.
 - **Segmented notifications**: These are targeted to specific segments of your user base based on factors like user behavior, preferences, or demographics. This segmentation ensures that users receive relevant and personalized content.
 - **Behavioral notifications**: Triggered by specific user actions within the app, like abandoning a shopping cart or completing a level in a game. These notifications are personalized based on the user's behavior.
-- **Transactional notifications**: Used for sending information about transactions that a user has performed, such as purchase confirmations, shipping updates, or banking alerts.
-- **Reminder notifications**: Sent to remind users about an upcoming event or an incomplete task, or to re-engage users who haven’t used the app for a specific period.
+- **Transactional notifications**: Used for sending information about transactions a user has performed, such as purchase confirmations, shipping updates, or banking alerts.
+- **Reminder notifications**: Sent to remind users about an upcoming event or an incomplete task or to re-engage users who haven’t used the app for a specific period.
 - **Silent notifications**: These do not alert the user or appear on the device's lock screen. Instead, they quietly deliver data to the app, which can trigger an app update or content refresh.
 - **Persistent notifications**: These remain on the user's screen until they are acted upon and are typically used for critical alerts that require immediate attention.
 
 # Best practices for sending push notifications
 
-[Helplama](https://helpdesk.helplama.com/what-do-consumers-think-about-push-notifications/) discovered that sending 2-5 push notification per week results in a 43% of the app users disabling push notifications. On the other hand, sending 6-10 push notifications per week leads to 30% of users dropping off the app entirely.
+[Helplama](https://helpdesk.helplama.com/what-do-consumers-think-about-push-notifications/) discovered that sending 2-5 push notifications per week results in 43% of the app users disabling push notifications. On the other hand, sending 6-10 push notifications per week leads to 30% of users dropping off the app entirely.
 
 The content of the messages plays a crucial role. Here are some best practices to retain users:
 
