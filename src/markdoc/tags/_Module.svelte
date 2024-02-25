@@ -14,5 +14,6 @@
     export { default as Arrow_Link } from './Arrow_Link.svelte';
     export { default as Count_Section } from './Count_Section.svelte';
     export { default as Count_Title } from './Count_Title.svelte';
-    export { Accordion } from '$lib/components/Accordion';
+    export { default as Accordion } from './Accordion.svelte';
+    export { default as Accordion_Item } from './Accordion_Item.svelte';
 </script>
