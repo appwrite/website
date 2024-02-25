@@ -3,7 +3,7 @@ layout: post
 title: "Introducing more runtimes to the Appwrite ecosystem: Bun and Dart 3.3"
 description: Fast, faster, fastest. These two incredibly fast runtimes go hand in hand with Appwrite, and we're excited to see what can be done when combined.
 date: 2024-03-01
-cover: /images/blog/bun-and-dart.png
+cover: /images/blog/announcing-bun-and-dart/bun-and-dart.png
 timeToRead: 6
 author: vincent-ge
 category: engineering
@@ -38,7 +38,7 @@ Receiver: null
 Tried calling: type
 ```
 
-## Try the new runtimes
+# Try the new runtimes
 
 Try the new runtimes on Appwrite Cloud with zero lines of new code using function templates. Appwrite will clone a template repository to your GitHub profile and set up automatic deployments so you can start building with these runtimes immediately.
 
