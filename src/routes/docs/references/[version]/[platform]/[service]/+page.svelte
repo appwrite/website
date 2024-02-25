@@ -27,10 +27,10 @@
         AccordionContent,
         AccordionItem
     } from '$lib/components/Accordion';
-    import Request from '$lib/components/Accordion/Content/Request.svelte';
-    import Response from '$lib/components/Accordion/Content/Response.svelte';
     import Image from '$markdoc/nodes/Image.svelte';
-    import Table from '$lib/components/Accordion/Content/Table.svelte';
+    import Request from './(components)/Request.svelte';
+    import Response from './(components)/Response.svelte';
+    import Table from './(components)/Table.svelte';
 
     export let data;
 
