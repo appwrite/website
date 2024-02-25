@@ -1,6 +1,6 @@
 <script lang="ts">
     export let open: boolean = false;
-    export let title: string = '';
+    export let title: string;
 </script>
 
 <li class="collapsible-item">
@@ -29,6 +29,6 @@
     .collapsible-content {
         margin-block-start: 0;
         padding-block-end: 1rem;
-        gap: 16px;
+        gap: 4px;
     }
 </style>
