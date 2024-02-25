@@ -382,7 +382,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/products/auth"
+                                href="/docs/products/auth"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -412,7 +412,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/products/functions"
+                                href="/docs/products/functions"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -443,7 +443,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/products/database"
+                                href="/docs/products/database"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -473,7 +473,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/products/storage"
+                                href="/docs/products/storage"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -504,7 +504,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/products/realtime"
+                                href="/docs/products/realtime"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
