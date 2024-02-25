@@ -22,10 +22,8 @@
     import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
     import { clickOutside } from '$lib/actions/clickOutside.js';
-    import Image from '$markdoc/nodes/Image.svelte';
     import { Accordion, AccordionItem } from '$lib/components/Accordion';
     import Request from './(components)/Request.svelte';
-    import Table from './(components)/Table.svelte';
     import Response from './(components)/Response.svelte';
 
     export let data;
