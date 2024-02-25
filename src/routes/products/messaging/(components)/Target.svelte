@@ -188,7 +188,86 @@
 </script>
 
 <Step title="Step 2: Target">
-    <div class="wrapper" bind:this={wrapper}>
+    <div class="users-modal">
+        <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
+        <Accordion>
+            <ul class="accordion-items">
+                {#each users as user, i}
+                    {@const selectedDevices = user.devices.filter((d) => d.checked).length}
+                    {@const allSelected = selectedDevices === user.devices.length}
+                    <li>
+                        <AccordionItem index={i}>
+                            <div class="trigger" slot="trigger">
+                                <Checkbox
+                                    id={`user-${i}`}
+                                    checked={allSelected
+                                        ? true
+                                        : selectedDevices > 0
+                                        ? 'indeterminate'
+                                        : false}
+                                    onCheckedChange={({ next }) => {
+                                        const newUsers = structuredClone(users).map((u, j) => {
+                                            if (i === j) {
+                                                if (next === true) {
+                                                    u.devices.forEach((d) => (d.checked = true));
+                                                } else if (!next) {
+                                                    u.devices.forEach((d) => (d.checked = false));
+                                                }
+                                            }
+                                            return u;
+                                        });
+                                        if (!dequal(newUsers, users)) {
+                                            users = newUsers;
+                                        }
+
+                                        return next;
+                                    }}
+                                />
+                                <span class="aw-sub-body-500 aw-u-color-text-primary">
+                                    {user.name}
+                                </span>
+                                <span class="aw-caption-400">
+                                    &nbsp;({selectedDevices}/{user.devices.length} targets)
+                                </span>
+                            </div>
+
+                            <ul>
+                                {#each user.devices as device, j}
+                                    <li>
+                                        <!-- svelte-ignore a11y-label-has-associated-control -->
+                                        <Checkbox
+                                            id="device-{i}-{j}"
+                                            bind:checked={user.devices[j].checked}
+                                            --size="1rem"
+                                        />
+                                        <label for="device-{i}-{j}">
+                                            <span class="type">{device.type}</span>
+                                            <span class="aw-caption-400">{device.value}</span>
+                                        </label>
+                                    </li>
+                                {/each}
+                            </ul>
+                        </AccordionItem>
+                    </li>
+                {/each}
+            </ul>
+        </Accordion>
+        <div class="u-flex u-margin-block-start-20">
+            <span class="aw-u-color-text-tertiary" style:font-size="0.75rem">
+                Total results: {users.flatMap((u) => u.devices).length}
+            </span>
+        </div>
+
+        <hr />
+
+        <div class="u-flex u-cross-center u-main-end u-gap-16">
+            <span style="font-size: 14px; color: #6C6C71;"
+                >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
+            >
+            <button class="aw-button">Add</button>
+        </div>
+    </div>
+    <div class="wrapper is-only-desktop" bind:this={wrapper}>
         <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
             {#each lines as line, i}
                 <line
@@ -356,7 +435,7 @@
         </div>
     </div>
 
-    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16">
+    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
         <h3 class="aw-title aw-u-color-text-primary u-text-center">
             Target and group your subscribers
         </h3>
@@ -441,6 +520,13 @@
         );
         --m-border-radius: 1.5rem;
 
+        @media screen and (max-width: 1024px) {
+            position: inherit;
+            transform: none;
+            display: block;
+            margin-inline: auto;
+        }
+
         .accordion-items {
             display: flex;
             flex-direction: column;
@@ -494,6 +580,18 @@
             margin-inline: -2rem;
             border-block-end: 1px solid hsl(var(--aw-color-offset));
             margin-block: 2rem;
+        }
+    }
+
+    .target-text {
+        @media screen and (max-width: 1024px) {
+            justify-content: start;
+            align-items: start;
+            padding-block-end: var(--padding-block-end);
+
+            p {
+                text-align: start;
+            }
         }
     }
 </style>
