@@ -57,10 +57,10 @@ With Messaging, you can deliver messages to groups of users through topics or ad
 You can address recipients of messages at three levels:
 
 - Topics, which hold a group of targets.
-- Users which holds all targets associated with their account.
+- Users, which holds all targets associated with their account.
 - Targets, which are individual emails, phone numbers, and channels.
 
-You can publish announcements and newsletters through topics, deliver user-specific promotions and alerts to all of a user's available targets, and address individual targets for location-based or real-time alerts.
+You can publish announcements and newsletters through topics, deliver user-specific promotions and alerts to all user's available targets, and address individual targets for location-based or real-time alerts.
 
 ![Creating a message from the Console](/images/blog/message-overview.png)
 
