@@ -79,6 +79,7 @@
             <span class="date">Sunday, October 1</span>
             <span class="time">9:41</span>
         </div>
+        <div class="overlay" />
 
         <div class="notification">
             <div class="header">
@@ -89,8 +90,6 @@
             <span class="title aw-caption-500">{title}</span>
             <span class="message">{message}</span>
         </div>
-
-        <div class="overlay" />
     </div>
     <div class="text">
         <h3 class="aw-title aw-u-color-text-primary">
@@ -117,12 +116,21 @@
         position: relative;
         overflow: hidden;
 
+        @media screen and (max-width: 1024px) {
+            --m-border-gradient-before: transparent;
+            aspect-ratio: unset;
+            height: 400px;
+            width: 100%;
+        }
         .inner {
             border: 8px solid #2d2d2f;
             border-radius: 18px;
             overflow: hidden;
             height: 100%;
-
+            @media screen and (max-width: 1024px) {
+                display: none;
+                border: none;
+            }
             .header {
                 display: flex;
                 justify-content: space-between;
@@ -236,6 +244,11 @@
 
             background-color: hsl(0, 0%, 100%, 0.02);
             backdrop-filter: blur(42px);
+            @media screen and (max-width: 1024px) {
+                inset-inline-start: 50%;
+                inset-block-start: 0;
+                transform: translateX(-50%);
+            }
 
             .notch {
                 position: absolute;
@@ -287,6 +300,11 @@
 
             width: 23.75rem;
             min-height: 8.75rem;
+            @media screen and (max-width: 1024px) {
+                inset-block-start: 12rem;
+                inset-inline-start: 50%;
+                transform: translateX(-50%);
+            }
 
             .header {
                 display: flex;
@@ -329,5 +347,12 @@
         max-inline-size: 33.5rem;
         inset-block-end: var(--padding-block-end);
         inset-inline-start: 5rem;
+        @media screen and (max-width: 1024px) {
+            position: relative;
+            max-inline-size: unset;
+            inset: unset;
+            padding-block-end: var(--padding-block-end);
+            max-width: 100%;
+        }
     }
 </style>
