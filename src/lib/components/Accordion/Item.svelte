@@ -1,9 +1,9 @@
-<!-- AccordionItem.svelte -->
-<script>
+<script lang="ts">
+    export let open: boolean = false;
 </script>
 
 <li class="collapsible-item">
-    <details class="collapsible-wrapper" open>
+    <details class="collapsible-wrapper" {open}>
         <slot name="trigger"/>
         <slot name="content"/>
     </details>

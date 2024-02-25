@@ -28,6 +28,10 @@
         AccordionItem,
         AccordionTrigger
     } from '$lib/components/Accordion';
+    import Request from '$lib/components/Accordion/Content/Request.svelte';
+    import Response from '$lib/components/Accordion/Content/Response.svelte';
+    import Image from '$markdoc/nodes/Image.svelte';
+    import Table from '$lib/components/Accordion/Content/Table.svelte';
 
     export let data;
 
@@ -200,45 +204,18 @@
                         </p>
                         <Accordion>
                             {#if method.parameters.length > 0}
-                                <AccordionItem>
+                                <AccordionItem open={true}>
                                     <AccordionTrigger slot="trigger">
                                         <p class="text">Request</p>
                                     </AccordionTrigger>
                                     <AccordionContent slot="content">
-                                        <div class="aw-card is-transparent u-padding-16">
-                                            <ul class="u-flex-vertical">
-                                                {#each method.parameters as parameter, i}
-                                                    {@const first = i === 0}
-                                                    <li class:u-padding-block-start-16={!first}>
-                                                        <article>
-                                                            <header
-                                                                class="u-flex u-cross-baseline u-gap-8"
-                                                            >
-                                                                <span
-                                                                    class="aw-code aw-u-color-text-primary"
-                                                                >
-                                                                    {parameter.name}
-                                                                </span>
-                                                                <span class="aw-caption-400"
-                                                                    >{parameter.type}</span
-                                                                >
-                                                                {#if parameter.required}
-                                                                    <div class="aw-tag">
-                                                                        required
-                                                                    </div>
-                                                                {/if}
-                                                            </header>
-                                                            <p
-                                                                class="aw-sub-body-400 u-margin-block-start-16"
-                                                            >
-                                                                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                                                                {@html parse(parameter.description)}
-                                                            </p>
-                                                        </article>
-                                                    </li>
-                                                {/each}
-                                            </ul>
+                                        <div>
+                                            Lorem ipsum dolor sit amet consectetur. Accumsan augue
+                                            aliquet pellentesque nullam. Maecenas cras blandit
+                                            sollicitudin ultricies. Feugiat habitasse etiam volutpat
+                                            elementum habitant.
                                         </div>
+                                        <Request {method} />
                                     </AccordionContent>
                                 </AccordionItem>
                             {/if}
@@ -247,48 +224,76 @@
                                     <p class="text">Response</p>
                                 </AccordionTrigger>
                                 <AccordionContent slot="content">
-                                    <div class="aw-card is-transparent u-padding-16">
-                                        <ul>
-                                            {#each method.responses as response}
-                                                {#if response.models}
-                                                    <li>
-                                                        <article>
-                                                            <header
-                                                                class="u-flex u-cross-baseline u-gap-8"
-                                                            >
-                                                                <span
-                                                                    class="aw-eyebrow aw-u-color-text-primary"
-                                                                >
-                                                                    {response.code}
-                                                                </span>
-                                                                <span class="aw-caption-400"
-                                                                    >application/json</span
-                                                                >
-                                                            </header>
-                                                            {#if response.models.length > 0}
-                                                                <ul
-                                                                    class="aw-sub-body-400 u-margin-block-start-16"
-                                                                >
-                                                                    {#each response.models as model}
-                                                                        <li>
-                                                                            <a
-                                                                                class="aw-link"
-                                                                                href={`/docs/references/${$page.params.version}/models/${model.id}`}
-                                                                            >
-                                                                                {model.name}
-                                                                            </a>
-                                                                        </li>
-                                                                    {/each}
-                                                                </ul>
-                                                            {/if}
-                                                        </article>
-                                                    </li>
-                                                {/if}
-                                            {/each}
-                                        </ul>
+                                    <div>
+                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
+                                        aliquet pellentesque nullam. Maecenas cras blandit
+                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
+                                        elementum habitant.
                                     </div>
+                                    <Response {method} />
                                 </AccordionContent>
                             </AccordionItem>
+
+                            <!-- These are example usages of the accordion component. This must be removed later -->
+                            <AccordionItem>
+                                <AccordionTrigger slot="trigger">
+                                    <p class="text">Image</p>
+                                </AccordionTrigger>
+                                <AccordionContent slot="content">
+                                    <div>
+                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
+                                        aliquet pellentesque nullam. Maecenas cras blandit
+                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
+                                        elementum habitant.
+                                    </div>
+                                    <Image
+                                        src="/images/docs/quick-starts/dark/add-platform.png"
+                                        alt="Hello world Image"
+                                        title="Hello World"
+                                    />
+                                </AccordionContent>
+                            </AccordionItem>
+
+                            <AccordionItem>
+                                <AccordionTrigger slot="trigger">
+                                    <p class="text">Code</p>
+                                </AccordionTrigger>
+                                <AccordionContent slot="content">
+                                    <div>
+                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
+                                        aliquet pellentesque nullam. Maecenas cras blandit
+                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
+                                        elementum habitant.
+                                    </div>
+                                    <Fence
+                                        badge={'Web'}
+                                        language={'javascript'}
+                                        content={`import { Client,  Account } from "appwrite";\n\nconst client = new Client();\n\nconst account = new Account(client);`}
+                                        process
+                                        withLineNumbers={true}
+                                    />
+                                </AccordionContent>
+                            </AccordionItem>
+
+                            <AccordionItem>
+                                <AccordionTrigger slot="trigger">
+                                    <p class="text">Table</p>
+                                </AccordionTrigger>
+                                <AccordionContent slot="content">
+                                    <div>
+                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
+                                        aliquet pellentesque nullam. Maecenas cras blandit
+                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
+                                        elementum habitant.
+                                    </div>
+                                    <Table data={[
+                                        ['Name', 'Type', 'Description'],
+                                        ['Name', 'Type', 'Description'],
+                                        ['Name', 'Type', 'Description']
+                                    ]} columns={['Name', 'Type', 'Description']}/>
+                                </AccordionContent>
+                            </AccordionItem>
+                            <!-- END -->
                         </Accordion>
                     </div>
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">

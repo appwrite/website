@@ -1,7 +1,7 @@
 <script lang="ts">
     import { parse } from '$lib/utils/markdown';
     import type { SDKMethod } from '$lib/utils/specs';
-    
+
     export let method: SDKMethod;
 </script>
 
@@ -29,3 +29,17 @@
         {/each}
     </ul>
 </div>
+
+<style>
+    ul {
+        gap: 1rem;
+    }
+
+    li:not(:first-child) {
+        border-block-start: solid 0.0625rem hsl(var(--aw-color-offset));
+    }
+
+    article :last-child {
+        margin-block-end: 0;
+    }
+</style>

@@ -1,24 +1,32 @@
-<div class="collapsible-content">
-    <Table>
-        <Thead>
+<script lang="ts">
+    import Tbody from '$markdoc/nodes/Tbody.svelte';
+    import Td from '$markdoc/nodes/Td.svelte';
+    import Th from '$markdoc/nodes/Th.svelte';
+    import Thead from '$markdoc/nodes/Thead.svelte';
+    import Tr from '$markdoc/nodes/Tr.svelte';
+    import { Table } from '$markdoc/nodes/_Module.svelte';
+
+    export let columns: string[] = [];
+    export let data: string[][] = [];
+</script>
+
+<Table>
+    <Thead>
+        <Tr>
+            {#each columns as column}
+                <Th>
+                    <span class="aw-eyebrow">{column}</span>
+                </Th>
+            {/each}
+        </Tr>
+    </Thead>
+    <Tbody>
+        {#each data as row}
             <Tr>
-                <Th>
-                    <span class="aw-eyebrow">NAME</span>
-                </Th>
-                <Th>
-                    <span class="aw-eyebrow">TYPE</span>
-                </Th>
-                <Th>
-                    <span class="aw-eyebrow">DESCRIPTION</span>
-                </Th>
+                {#each row as cell}
+                    <Td>{cell}</Td>
+                {/each}
             </Tr>
-        </Thead>
-        <Tbody>
-            <Tr>
-                <Td>Name</Td>
-                <Td>Type</Td>
-                <Td>Description</Td>
-            </Tr>
-        </Tbody>
-    </Table>
-</div>
+        {/each}
+    </Tbody>
+</Table>
