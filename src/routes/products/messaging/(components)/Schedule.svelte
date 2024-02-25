@@ -67,7 +67,7 @@
             {/each}
         </div>
 
-        <div class="time-picker">
+        <div class="time-picker is-only-desktop">
             {#each { length: 11 } as _, i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
@@ -143,6 +143,13 @@
             color: white;
 
             transition: 150ms ease;
+
+            @media screen and (max-width: 1024px) {
+                font-size: 1.5rem;
+            }
+            @media screen and (max-width: 500px) {
+                font-size: 1rem;
+            }
 
             span {
                 position: relative;
@@ -232,5 +239,9 @@
         margin-block-start: 1.5rem;
         max-width: 20rem;
         margin-inline: auto;
+
+        @media screen and (max-width: 1024px) {
+            padding-block-end: var(--padding-block-end);
+        }
     }
 </style>
