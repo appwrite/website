@@ -20,7 +20,7 @@ You can also upload files programmatically using our SDKs:
 
   const client = new Client()
       .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setProject('<PROJECT_ID>');
 
   const storage = new Storage(client);
 
@@ -43,7 +43,7 @@ You can also upload files programmatically using our SDKs:
   void main() { // Init SDK
     final client = Client()
       .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setProject('<PROJECT_ID>');
 
     final storage = Storage(client);
 
@@ -62,7 +62,7 @@ You can also upload files programmatically using our SDKs:
   suspend fun main() {
       val client = Client(applicationContext)
           .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("[PROJECT_ID]") // Your project ID
+          .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
 
@@ -80,7 +80,7 @@ You can also upload files programmatically using our SDKs:
   func main() async throws {
       let client = Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("[PROJECT_ID]")
+        .setProject("<PROJECT_ID>")
 
       let storage = Storage(client)
 
@@ -370,13 +370,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFile(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFile(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -475,13 +473,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileDownload(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileDownload(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -580,13 +576,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFilePreview(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFilePreview(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```
@@ -686,13 +680,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileView(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileView(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL        
     }
 }
 ```

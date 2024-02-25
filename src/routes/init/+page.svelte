@@ -4,7 +4,6 @@
     import EventCard from '$routes/community/EventCard.svelte';
     import ShinesSvg from './(assets)/shines.svg';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-
     import { events } from '$routes/community/+page.svelte';
     import { Animations } from './(animations)';
     import Ticket from './(components)/Ticket.svelte';
@@ -14,8 +13,13 @@
     import type { TicketVariant } from './tickets/constants';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import thumbnail from './(assets)/thumbnail-1.png';
+    import Day from './(days)/Day.svelte';
+    import Video from './(components)/Video.svelte';
+    import { fade, slide } from 'svelte/transition';
 
     const base = new Date('2024-02-26T15:00:00.000Z');
+    const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -51,6 +55,12 @@
             release: addDays(base, 4)
         }
     ] as DayType[];
+
+    function scrollIntoView(query: string) {
+        document.querySelector(query)?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 
     function shuffle<T>(array: T[]): T[] {
         let currentIndex = array.length,
@@ -157,10 +167,12 @@
         <p class="aw-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/tickets" class="aw-button">Claim your ticket</a>
-            <!-- <button class="aw-button is-secondary">
-                <div class="aw-icon-play" />
-                <span class="text">Watch the video</span>
-            </button> -->
+            {#if new Date() >= kickoff}
+                <button on:click={() => scrollIntoView('#kickoff')} class="aw-button is-secondary">
+                    <div class="aw-icon-play" />
+                    <span class="text">Watch the video</span>
+                </button>
+            {/if}
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
@@ -173,13 +185,26 @@
             {/each}
         </div>
         <hr />
-
         <div class="days">
-            <h2 class="aw-eyebrow aw-u-color-text-primary">
-                <div class="aw-dot" />
-            </h2>
-
-            <CountdownCard date={new Date('2024-02-21T15:00:00.000Z')} />
+            <Day release={kickoff}>
+                <div
+                    class="aw-card is-normal has-border-gradient kickoff"
+                    transition:fade={{ delay: 0, duration: 600 }}
+                >
+                    <h3
+                        class="aw-title aw-u-color-text-primary"
+                        id="kickoff"
+                        style:scroll-margin-top="5rem"
+                    >
+                        Init kickoff<span class="aw-u-color-text-accent">_</span>
+                    </h3>
+                    <Video
+                        --p-aspect-ratio="16/9"
+                        {thumbnail}
+                        src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
+                    />
+                </div>
+            </Day>
             {#each days as day, i}
                 <h2 class="aw-eyebrow aw-u-color-text-primary">
                     <div class="aw-dot" />
@@ -405,7 +430,7 @@
             #232325;
         padding: 0.5rem;
 
-        height: 23.25rem;
+        height: 25rem;
 
         h3 {
             padding-block-start: 1.5rem;

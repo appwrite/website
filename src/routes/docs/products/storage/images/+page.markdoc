@@ -164,24 +164,22 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFilePreview(
-                bucketId = "photos",         // bucket ID
-                fileId = "sunset.png",       // file ID
-                width = 1800,                // width, will be resized using this value.
-                height = 0,                  // height, ignored when 0
-                gravity = "center",          // crop center  
-                quality = "90",              // slight compression 
-                borderWidth = 5,             // border width
-                borderColor = "CDCA30",      // border color
-                borderRadius = 15,           // border radius
-                opacity = 1,                 // full opacity
-                rotation = 0,                // no rotation
-                background = "FFFFFF",       // background color
-                output ="jpg"                // output jpg format
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFilePreview(
+            bucketId = "photos",         // bucket ID
+            fileId = "sunset.png",       // file ID
+            width = 1800,                // width, will be resized using this value.
+            height = 0,                  // height, ignored when 0
+            gravity = "center",          // crop center  
+            quality = "90",              // slight compression 
+            borderWidth = 5,             // border width
+            borderColor = "CDCA30",      // border color
+            borderRadius = 15,           // border radius
+            opacity = 1,                 // full opacity
+            rotation = 0,                // no rotation
+            background = "FFFFFF",       // background color
+            output ="jpg"                // output jpg format
+        )
+        println(result); // Resource URL        
     }
 }
 ```
