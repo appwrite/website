@@ -1,1 +1,0 @@
-<Image src="/images/docs/quick-starts/dark/add-platform.png" alt="Hello world Image" title="Hello World" />
