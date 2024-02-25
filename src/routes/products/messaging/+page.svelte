@@ -443,7 +443,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/docs/products/database"
+                                href="/docs/products/databases"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
@@ -504,7 +504,7 @@
                         <li class="aw-u-flex-basis-378">
                             <a
                                 class="aw-card is-normal"
-                                href="/docs/products/realtime"
+                                href="/docs/apis/realtime"
                                 style="background: rgba(255, 255, 255, 0.04);"
                             >
                                 <div
