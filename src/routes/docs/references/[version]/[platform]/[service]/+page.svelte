@@ -22,15 +22,11 @@
     import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
     import { clickOutside } from '$lib/actions/clickOutside.js';
-    import {
-        Accordion,
-        AccordionContent,
-        AccordionItem
-    } from '$lib/components/Accordion';
     import Image from '$markdoc/nodes/Image.svelte';
+    import { Accordion, AccordionItem } from '$lib/components/Accordion';
     import Request from './(components)/Request.svelte';
-    import Response from './(components)/Response.svelte';
     import Table from './(components)/Table.svelte';
+    import Response from './(components)/Response.svelte';
 
     export let data;
 
@@ -203,79 +199,68 @@
                         </p>
                         <Accordion>
                             {#if method.parameters.length > 0}
-                                <AccordionItem open={true} title='Request'>
-                                    <AccordionContent>
-                                        <div>
-                                            Lorem ipsum dolor sit amet consectetur. Accumsan augue
-                                            aliquet pellentesque nullam. Maecenas cras blandit
-                                            sollicitudin ultricies. Feugiat habitasse etiam volutpat
-                                            elementum habitant.
-                                        </div>
-                                        <Request {method} />
-                                    </AccordionContent>
-                                </AccordionItem>
-                            {/if}
-                            <AccordionItem title='Response'>
-                                <AccordionContent>
+                                <AccordionItem open={true} title="Request">
                                     <div>
                                         Lorem ipsum dolor sit amet consectetur. Accumsan augue
                                         aliquet pellentesque nullam. Maecenas cras blandit
                                         sollicitudin ultricies. Feugiat habitasse etiam volutpat
                                         elementum habitant.
                                     </div>
-                                    <Response {method} />
-                                </AccordionContent>
+                                    <Request {method} />
+                                </AccordionItem>
+                            {/if}
+                            <AccordionItem title="Response">
+                                <div>
+                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
+                                    pellentesque nullam. Maecenas cras blandit sollicitudin
+                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
+                                </div>
+                                <Response {method} />
                             </AccordionItem>
 
                             <!-- These are example usages of the accordion component. This must be removed later -->
-                            <AccordionItem title='Image'>
-                                <AccordionContent>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
-                                        aliquet pellentesque nullam. Maecenas cras blandit
-                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
-                                        elementum habitant.
-                                    </div>
-                                    <Image
-                                        src="/images/docs/quick-starts/dark/add-platform.png"
-                                        alt="Hello world Image"
-                                        title="Hello World"
-                                    />
-                                </AccordionContent>
+                            <AccordionItem title="Image">
+                                <div>
+                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
+                                    pellentesque nullam. Maecenas cras blandit sollicitudin
+                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
+                                </div>
+                                <Image
+                                    src="/images/docs/quick-starts/dark/add-platform.png"
+                                    alt="Hello world Image"
+                                    title="Hello World"
+                                />
                             </AccordionItem>
 
-                            <AccordionItem title='Code'>
-                                <AccordionContent>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
-                                        aliquet pellentesque nullam. Maecenas cras blandit
-                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
-                                        elementum habitant.
-                                    </div>
-                                    <Fence
-                                        badge={'Web'}
-                                        language={'javascript'}
-                                        content={`import { Client,  Account } from "appwrite";\n\nconst client = new Client();\n\nconst account = new Account(client);`}
-                                        process
-                                        withLineNumbers={true}
-                                    />
-                                </AccordionContent>
+                            <AccordionItem title="Code">
+                                <div>
+                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
+                                    pellentesque nullam. Maecenas cras blandit sollicitudin
+                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
+                                </div>
+                                <Fence
+                                    badge={'Web'}
+                                    language={'javascript'}
+                                    content={`import { Client,  Account } from "appwrite";\n\nconst client = new Client();\n\nconst account = new Account(client);`}
+                                    process
+                                    withLineNumbers={true}
+                                />
                             </AccordionItem>
 
-                            <AccordionItem title='Table'>
-                                <AccordionContent>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur. Accumsan augue
-                                        aliquet pellentesque nullam. Maecenas cras blandit
-                                        sollicitudin ultricies. Feugiat habitasse etiam volutpat
-                                        elementum habitant.
-                                    </div>
-                                    <Table data={[
+                            <AccordionItem title="Table">
+                                <div>
+                                    Lorem ipsum dolor sit amet consectetur. Accumsan augue aliquet
+                                    pellentesque nullam. Maecenas cras blandit sollicitudin
+                                    ultricies. Feugiat habitasse etiam volutpat elementum habitant.
+                                </div>
+                                <Table
+                                    data={[
                                         ['Name', 'Type', 'Description'],
                                         ['Name', 'Type', 'Description'],
                                         ['Name', 'Type', 'Description']
-                                    ]} columns={['Name', 'Type', 'Description']}/>
-                                </AccordionContent>
+                                    ]}
+                                    columns={['Name', 'Type', 'Description']}
+                                />
                             </AccordionItem>
                             <!-- END -->
                         </Accordion>
