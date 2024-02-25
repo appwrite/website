@@ -21,7 +21,7 @@
                     platforms.
                 </p>
                 <a
-                    href="#"
+                    href="/blog/post/announcing-appwrite-messaging"
                     class="aw-link u-flex u-cross-center"
                     style:margin-block-start="1.25rem"
                 >
@@ -45,10 +45,10 @@
                     style="position: absolute; inset-block-end: 1rem; inset-inline-start: 1rem; gap: 0.25rem;"
                 >
                     <h4 class="aw-label aw-u-color-text-primary">Release video</h4>
-                    <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                    <span class="aw-link u-flex u-cross-center" style:opacity="0.64">
                         <span class="text">Watch</span>
                         <span class="aw-icon-arrow-right" />
-                    </a>
+                    </span>
                 </div>
             </Video>
         </div>
@@ -60,7 +60,7 @@
             <h3 class="aw-label aw-u-color-text-primary" style="max-width: 18.75rem">
                 How tools like Twilio can simplify messaging for developers
             </h3>
-            <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+            <a href="/blog/post/simplify-messaging-twilio" class="aw-link u-flex u-cross-center" style:opacity="0.64">
                 <span class="text">Article</span>
                 <span class="aw-icon-arrow-right" />
             </a>
@@ -74,7 +74,7 @@
             <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
                 Best practices for sending push notifications
             </h3>
-            <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+            <a href="/blog/post/push-notifications-best-practices" class="aw-link u-flex u-cross-center" style:opacity="0.64">
                 <span class="text">Enter</span>
                 <span class="aw-icon-arrow-right" />
             </a>
