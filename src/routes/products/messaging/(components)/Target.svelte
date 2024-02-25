@@ -587,6 +587,7 @@
         @media screen and (max-width: 1024px) {
             justify-content: start;
             align-items: start;
+            margin-block-start: 2rem;
             padding-block-end: var(--padding-block-end);
 
             p {
