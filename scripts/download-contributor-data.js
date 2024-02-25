@@ -74,8 +74,6 @@ async function fetchContributors(apiUrl) {
 }
 
 async function main() {
-    // const repositories = await fetchRepositories();
-
     const contributors = new Set();
 
     for (const repo of ['appwrite/appwrite', 'appwrite/console', 'appwrite/sdk-generator']) {
