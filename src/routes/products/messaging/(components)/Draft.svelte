@@ -56,6 +56,7 @@
                     <label class="aw-u-color-text-primary" for="title">Title</label>
                     <input
                         class="aw-input-text"
+                        style="max-width: 80%"
                         type="text"
                         id="title"
                         name="title"
@@ -65,6 +66,7 @@
                     <label class="aw-u-color-text-primary" for="message">Message</label>
                     <textarea
                         class="aw-input-text"
+                        style="max-width: 80%"
                         id="message"
                         name="message"
                         bind:value={message}
@@ -229,7 +231,7 @@
             height: 700px;
 
             position: absolute;
-            inset-inline-end: 10%;
+            inset-inline-end: 6%;
             inset-block-end: 0;
 
             background-color: hsl(0, 0%, 100%, 0.02);

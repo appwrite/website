@@ -5,14 +5,86 @@
     import { Fence } from '$markdoc/nodes/_Module.svelte';
     import { MultiCode } from '$markdoc/tags/_Module.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { setContext } from 'svelte';
     import Draft from './(components)/Draft.svelte';
     import Schedule from './(components)/Schedule.svelte';
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
+    import { writable } from 'svelte/store';
+    import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    const sendMessageCode = [
+        {
+            language: 'js',
+            content: `import { Messaging, MessageType, ID } from 'node-appwrite';
+
+const messaging = Messaging(client);
+
+const messageId = ID.unique();
+const subject = 'New Workout';
+const content = "<h1>New Workout</h1><p>There's a new workout!</p>";
+const topics = [TOPIC_ID];
+const users = [];
+const targets = [];
+const cc = undefined;
+const bcc = undefined;
+const status = MessageType.Processing; // Send now
+const isHtml = true;
+const scheduledAt = undefined;
+
+messaging.createEmail(
+  messageId,
+  subject,
+  content,
+  topics,
+  users,
+  targets,
+  cc,
+  bcc,
+  status,
+  isHtml,
+  scheduledAt
+);
+            `
+        },
+        {
+            language: 'python',
+            content: `import { Messaging, MessageType, ID } from 'node-appwrite';
+
+const messaging = Messaging(client);
+
+const messageId = ID.unique();
+const subject = 'New Workout';
+const content = "<h1>New Workout</h1><p>There's a new workout!</p>";
+const topics = [TOPIC_ID];
+const users = [];
+const targets = [];
+const cc = undefined;
+const bcc = undefined;
+const status = MessageType.Processing; // Send now
+const isHtml = true;
+const scheduledAt = undefined;
+
+messaging.createEmail(
+  messageId,
+  subject,
+  content,
+  topics,
+  users,
+  targets,
+  cc,
+  bcc,
+  status,
+  isHtml,
+  scheduledAt
+);
+            `
+        }
+    ];
 </script>
 
 <svelte:head>
@@ -303,69 +375,16 @@
                                 Subscribe to receive all messages related to that topic.
                             </p>
 
-                            <Fence
-                                language="js"
-                                content={`import { Account, Messaging, ID } from 'appwrite';`}
-                                process
-                            />
+                            <div class="u-margin-block-start-16">
+                                <MultiCodeContextless data={sendMessageCode} />
+                            </div>
                         </div>
                         <div class="u-flex-vertical u-gap-16">
                             <h3 class="aw-label aw-u-color-text-primary">Send a message</h3>
                             <p class="aw-description">Send a message to all targets on a topic.</p>
-                            <section
-                                class="theme-dark aw-code-snippet u-margin-block-start-24"
-                                aria-label="code-snippet panel"
-                            >
-                                <header class="aw-code-snippet-header">
-                                    <div class="aw-code-snippet-header-start">
-                                        <div class="u-flex u-gap-16">
-                                            <div class="aw-interactive-tag">
-                                                <span class="text">Web</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="aw-code-snippet-header-end">
-                                        <ul class="buttons-list u-flex u-gap-8">
-                                            <li
-                                                class="buttons-list-item u-flex u-cross-child-scenter"
-                                            >
-                                                <div class="aw-select">
-                                                    <select>
-                                                        <option value="js">JavaScript</option>
-                                                        <option value="php">PHP</option>
-                                                        <option value="python">Python</option>
-                                                        <option value="ruby">Ruby</option>
-                                                        <option value="deno">Deno</option>
-                                                        <option value="dart">Dart</option>
-                                                        <option value="kotlin">Kotlin</option>
-                                                        <option value="swift">Swift</option>
-                                                        <option value="csharp">C#</option>
-                                                    </select>
-                                                    <span
-                                                        class="icon-cheveron-down"
-                                                        aria-hidden="true"
-                                                    />
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="buttons-list-item aw-u-padding-inline-start-20"
-                                            >
-                                                <button
-                                                    class="aw-icon-button"
-                                                    aria-label="copy code from code-snippet"
-                                                >
-                                                    <span class="aw-icon-copy" aria-hidden="true" />
-                                                </button>
-                                                <!--<Tooltip>-->
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </header>
-                                <div class="aw-code-snippet-content" style="background:none">
-                                    [CODE]
-                                </div>
-                            </section>
-                            <!-- <MultiCode /> -->
+                            <div class="u-margin-block-start-16">
+                                <MultiCodeContextless data={sendMessageCode} />
+                            </div>
                         </div>
                     </div>
                 </div>
