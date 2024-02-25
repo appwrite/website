@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <summary class="collapsible-button">
     <span class="text"><slot /></span>
     <div class="icon aw-u-color-text-primary">
