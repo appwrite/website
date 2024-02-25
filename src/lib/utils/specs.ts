@@ -1,7 +1,7 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
 
-type SDKMethod = {
+export type SDKMethod = {
     'rate-limit': number;
     'rate-time': number;
     'rate-key': string;
