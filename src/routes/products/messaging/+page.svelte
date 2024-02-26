@@ -93,10 +93,10 @@ try await messaging.createSubscriber(
             content: `import { Messaging, ID } from "node-appwrite"
 
 const messaging = Messaging(client);
-await messaging.createEmail(
+await messaging.createPush(
     ID.unique(),           // Message ID
-    'Updates',             // Email subject
-    'Hello, world!',       // Email content
+    'Updates',             // Email title
+    'Hello, world!',       // Email body
     ['my-mailing-list'],   // Topic IDs
 );`
         },
@@ -106,10 +106,10 @@ await messaging.createEmail(
             content: `import { Messaging, ID } from "https://deno.land/x/appwrite/mod.ts";
 
 const messaging = new Messaging(client);
-await messaging.createEmail(
+await messaging.createPush(
     ID.unique(),           // Message ID
-    'Updates',             // Email subject
-    'Hello, world!',       // Email content
+    'Updates',             // Email title
+    'Hello, world!',       // Email body
     ['my-mailing-list'],   // Topic IDs
 );`
         },
@@ -120,7 +120,7 @@ await messaging.createEmail(
 using Appwrite.ID;
 
 var messaging = new Messaging(client);
-await messaging.createEmail(
+await messaging.createPush(
     messageId: ID.unique(),
     subject: "Updates",
     content: "Hello, world!",
@@ -134,7 +134,7 @@ await messaging.createEmail(
 import io.appwrite.ID
 
 val messaging = Messaging(client)
-messaging.createEmail(
+messaging.createPush(
     messageId = ID.unique(),
     subject = "Updates",
     content = "Hello, world!",
@@ -147,7 +147,7 @@ messaging.createEmail(
             content: `import Appwrite
 
 let messaging = Messaging(client)
-try await messaging.createEmail(
+try await messaging.createPush(
     messageId: ID.unique(),
     subject: "Updates",
     content: "Hello, world!",
@@ -160,7 +160,7 @@ try await messaging.createEmail(
             content: `import 'package:appwrite/appwrite.dart';
 
 final messaging = Messaging(client);
-await messaging.createEmail(
+await messaging.createPush(
     messageId: ID.unique(),
     subject: "Updates",
     content: "Hello, world!",
@@ -176,7 +176,7 @@ use Appwrite\Services\Messaging;
 use Appwrite\ID;
 
 $messaging = new Messaging(client);
-$messaging->createEmail(
+$messaging->createPush(
     messageId: ID::unique(),
     subject: 'Updates',
     content: 'Hello, world!',
@@ -206,7 +206,7 @@ use Appwrite\Services\Messaging;
 use Appwrite\ID;
 
 $messaging = new Messaging(client);
-$messaging->createEmail(
+$messaging->createPush(
     messageId: ID::unique(),
     subject: 'Updates',
     content: 'Hello, world!',
