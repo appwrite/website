@@ -19,7 +19,7 @@
     import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
 
-    let base = new Date('2024-02-26T14:00:00.000Z');
+    const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
@@ -180,7 +180,6 @@
     </div>
 
     <div class="aw-container">
-        <button class="aw-button" on:click={() => base = new Date}>fast forward</button>
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i} />
