@@ -95,7 +95,7 @@
                     thumbnail={thumbnailProduct}
                     --p-aspect-ratio="16/9"
                     --p-border-radius="0.75rem"
-                    src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
+                    src="https://www.youtube-nocookie.com/embed/QdDgPeuBZ1I?si=YDlxtt3nYe_FZnql&controls=0"
                 />
             </button>
         </VideoWrapper>
