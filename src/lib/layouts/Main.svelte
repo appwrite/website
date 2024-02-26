@@ -174,7 +174,7 @@
             </button>
         </div>
     </section>
-    {#if $page.route.id !== '/init'}
+    {#if !$page.route.id?.startsWith('/init')}
         <div class="aw-top-banner-2 is-special-padding">
             <a href="/init" class="u-block aw-top-banner-2-wrapper">
                 <div class="u-flex u-main-space-between u-cross-center u-gap-16">

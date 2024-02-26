@@ -19,7 +19,7 @@
     import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
 
-    let base = new Date('2024-02-26T15:00:00.000Z');
+    let base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
