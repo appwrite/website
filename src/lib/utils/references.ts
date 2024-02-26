@@ -20,7 +20,7 @@ export enum Service {
     Locale = 'locale',
     Storage = 'storage',
     Teams = 'teams',
-    Users = 'users'
+    Users = 'users',
 }
 
 export enum Platform {
@@ -68,7 +68,7 @@ export const platformMap: Record<Language | string, string> = {
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
-    jsx: 'React',	
+    jsx: 'React',
     tsx: 'React',
     typescript: 'TypeScript',
     dart: 'Dart',
@@ -112,7 +112,7 @@ export const serviceMap: Record<Service, string> = {
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users'
+    [Service.Users]: 'Users',
 };
 
 export const preferredVersion = writable<Version | null>(
