@@ -53,25 +53,26 @@ The content of the messages plays a crucial role. Here are some best practices t
 
 The newly released Appwrite Messaging substantially simplifies your process of sending out push notifications to your application’s users. We have added simple-to-use adapters for Firebase Cloud Messaging (FCM) and Apple Push Notification Service (APNS) to let you send push notifications to let you send push notifications to both Android and iOS users. 
 
-```swift
-import Appwrite
+```js
+const sdk = require('node-appwrite');
 
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+// Init SDK
+const client = new sdk.Client();
 
-let messaging = Messaging(client)
+const messaging = new sdk.Messaging(client);
 
-let provider = try await messaging.updateAPNSProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",             
-  enabled: xfalse,            
-  authKey: "[AUTH_KEY]",      
-  authKeyId: "[AUTH_KEY_ID]", 
-  teamId: "[TEAM_ID]",        
-  bundleId: "[BUNDLE_ID]"     
-)
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('5df5acd0d48c2')                    // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
+;
+
+const message = await messaging.createPush(
+    '[MESSAGE_ID]',                 // messageId
+    'Init_ Day 0',                  // title
+    'Appwrite Messaging is here!',  // body
+    ['[TOPIC_ID]'],                 // topics (optional)
+);
 ```
 
 # Resources
