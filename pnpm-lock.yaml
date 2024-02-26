@@ -65,7 +65,7 @@ devDependencies:
     specifier: ^2.0.3
     version: 2.0.3(@sveltejs/kit@1.30.0)
   '@sveltejs/enhanced-img':
-    specifier: ^0.1.2
+    specifier: ^0.1.8
     version: 0.1.8(svelte@4.2.10)
   '@sveltejs/kit':
     specifier: 1.30.0

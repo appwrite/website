@@ -182,7 +182,11 @@
     <div class="aw-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
-                <DayCard {day} number={i} />
+                <DayCard {day} number={i}>
+                    {#if i === 0}
+                        <Animations.Messaging />
+                    {/if}
+                </DayCard>
             {/each}
         </div>
         <hr />
