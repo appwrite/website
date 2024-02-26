@@ -16,9 +16,9 @@
     import thumbnail from './(assets)/thumbnail-1.png';
     import Day from './(days)/Day.svelte';
     import Video from './(components)/Video.svelte';
-    import { fade, slide } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
 
-    const base = new Date('2024-02-26T15:00:00.000Z');
+    const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
