@@ -25,7 +25,7 @@ The provider will be saved to your project, but not enabled until you complete i
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Apple developer account to connect your Appwrite project with your
+In the **Configure** step, you will need to provide details from your Apple developer account to connect your Appwrite project with your
 Apple developer account.
 
 You will need to provide the following information from the **Apple Developer Member Center**.
