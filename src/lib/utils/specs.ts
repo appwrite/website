@@ -302,7 +302,6 @@ export async function getService(
             'rate-key': operation['x-appwrite']['rate-key']
         });
     }
-    console.log(data);
     return data;
 }
 
