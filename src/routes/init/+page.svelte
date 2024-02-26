@@ -207,12 +207,13 @@
                 </div>
             </Day>
             {#each days as day, i}
+                {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
                 {#if i === 0}
-                    <Day1 release={day.release} />
+                    <Day1 {date} release={day.release} />
                 {:else}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">
                         <div class="aw-dot" />
-                        DAY {i} - {toReleaseDate(day.release)}
+                        {date}
                         <span class="aw-u-color-text-accent">_</span>
                     </h2>
                     <CountdownCard date={day.release} />
