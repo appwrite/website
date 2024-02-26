@@ -55,20 +55,15 @@ const messaging = new sdk.Messaging(client);
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
 ;
 
-const promise = messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId
-        '[NAME]',                                // name
-        '[ROLES]'                                // permission roles for who can subscribe
+const topic = messaging.createTopic(
+        '[TOPIC_ID]',     // topicId
+        '[NAME]',         // name
+        '[ROLES]'         // permission roles for who can subscribe
     );
 
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -84,17 +79,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId   
-        '[NAME]'                                 // name   
-        '[ROLES]'                                // permission roles for who can subscribe
+const topic = messaging.createTopic(
+        '[TOPIC_ID]',     // topicId
+        '[NAME]',         // name
+        '[ROLES]'         // permission roles for who can subscribe
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -107,12 +96,12 @@ $client = new Client();
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('5df5acd0d48c2')                 // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    ->setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createTopic( 
+$topic = $messaging->createTopic( 
     topicId: '[TOPIC_ID]', 
     name: '[NAME]',
     subscribe: '[ROLES]'  // permission roles for who can subscribe
@@ -128,12 +117,12 @@ client = Client()
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
 )
 
 messaging = Messaging(client)
 
-result = messaging.create_topic( 
+topic = messaging.create_topic( 
     topic_id = '[TOPIC_ID]', 
     name = '[NAME]',
     subscribe = '[ROLES]'  # permission roles for who can subscribe
@@ -147,17 +136,17 @@ include Appwrite
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
 
 messaging = Messaging.new(client)
 
-response = messaging.create_topic(
+topic = messaging.create_topic(
     topic_id: '[TOPIC_ID]', 
     name: '[NAME]',
     subscribe: '[ROLES]'  # permission roles for who can subscribe
 )
 
-puts response.inspect
+puts topic.inspect
 ```
 ```csharp
 using Appwrite;
@@ -166,12 +155,12 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("5df5acd0d48c2")                 // Your project ID
+    .SetKey("919c2d18fb5d4...a2ae413da83346ad2");                 // Your secret API key
 
 var messaging = new Messaging(client);
 
-Topic result = await messaging.CreateTopic(
+Topic topic = await messaging.CreateTopic(
     topicId: "[TOPIC_ID]",
     name: "[NAME]",
     subscribe: "[ROLES]")  // permission roles for who can subscribe
@@ -186,7 +175,7 @@ void main() {                                    // Init SDK
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
   ;
 
   Future result = messaging.createTopic(
@@ -210,8 +199,8 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2");                 // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -219,13 +208,13 @@ messaging.createTopic(
     "[TOPIC_ID]",       // topicId
     "[NAME]"            // name
     "[ROLES]"           // permission roles for who can subscribe
-    new CoroutineCallback<>((result, error) -> {
+    new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
 
-        System.out.println(result);
+        System.out.println(topic);
     })
 );
 ```
@@ -245,13 +234,13 @@ messaging.createTopic(
     "[TOPIC_ID]",                          // topicId
     "[NAME]"                               // name
     "[ROLES]"                              // permission roles for who can subscribe
-    new CoroutineCallback<>((result, error) -> {
+    new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
 
-        System.out.println(result);
+        System.out.println(topic);
     })
 );
 ```

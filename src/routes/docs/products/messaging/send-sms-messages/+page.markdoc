@@ -55,153 +55,198 @@ You can also implement forms in your app to collect contact information and add 
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...')                     // Your secret JSON Web Token
+    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    .setProject('5df5acd0d48c2')                  // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2');                  // Your secret API key
 
-const messaging = new sdk.Messaging(client);
+const users = new sdk.Users(client);
 
-const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+const response = await users.createTarget(
+    '<USER_ID>',                     // userId
+    '<TARGET_ID>',                   // targetId
+    sdk.MessagingProviderType.Email, // providerType
+    '<IDENTIFIER>',                  // identifier
+    '<PROVIDER_ID>',                 // providerId (optional)
+    '<NAME>'                         // name (optional)
 );
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
+    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('5df5acd0d48c2')                    // Your project ID
+    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
 
-const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+const users = new sdk.Users(client);
+
+const response = await users.createTarget(
+    '<USER_ID>',                     // userId
+    '<TARGET_ID>',                   // targetId
+    sdk.MessagingProviderType.Email, // providerType
+    '<IDENTIFIER>',                  // identifier
+    '<PROVIDER_ID>',                 // providerId (optional)
+    '<NAME>'                         // name (optional)
 );
 ```
 ```php
 <?php
 
 use Appwrite\Client;
-use Appwrite\Services\Messaging;
+use Appwrite\Services\Users;
+use Appwrite\Enums\MessagingProviderType;
 
 $client = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
     ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
+    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
 
-$messaging = new Messaging($client);
+$users = new Users($client);
 
-$result = $messaging->createSubscriber(
-    topicId: '[TOPIC_ID]',
-    subscriberId: '[SUBSCRIBER_ID]',
-    targetId: '[TARGET_ID]'
+$result = $users->createTarget(
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: MessagingProviderType::EMAIL(),
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',    // optional
+    name: '<NAME>'                  // optional
 );
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.messaging import Messaging
+from appwrite.enums import MessagingProviderType
 
 client = Client()
 client.set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_jwt('eyJhbVCJ9.eyJ...')                  # Your secret JSON Web Token
+client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
-messaging = Messaging(client)
+users = Users(client)
 
-subscriber = messaging.create_subscriber(
-    topic_id = '[TOPIC_ID]',
-    subscriber_id = '[SUBSCRIBER_ID]',
-    target_id = '[TARGET_ID]'
+result = users.create_target(
+    user_id = '<USER_ID>',
+    target_id = '<TARGET_ID>',
+    provider_type = MessagingProviderType.EMAIL,
+    identifier = '<IDENTIFIER>',
+    provider_id = '<PROVIDER_ID>', # optional
+    name = '<NAME>' # optional
 )
 ```
 ```ruby
 require 'appwrite'
 
 include Appwrite
+include Appwrite::Enums
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
-    .set_project('5df5acd0d48c2')                  # Your project ID
-    .set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
+    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
+    .set_project('5df5acd0d48c2')                   # Your project ID
+    .set_key('919c2d18fb5d4...a2ae413da83346ad2')   # Your secret API key
 
-messaging = Messaging.new(client)
+users = Users.new(client)
 
-subscriber = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]',
-    subscriber_id: '[SUBSCRIBER_ID]',
-    target_id: '[TARGET_ID]'
+response = users.create_target(
+    user_id: '<USER_ID>',
+    target_id: '<TARGET_ID>',
+    provider_type: MessagingProviderType::EMAIL,
+    identifier: '<IDENTIFIER>',
+    provider_id: '<PROVIDER_ID>',   # optional
+    name: '<NAME>'                  # optional
 )
+
+puts response.inspect
 ```
 ```csharp
 using Appwrite;
 using Appwrite.Services;
 using Appwrite.Models;
+using Appwrite.Enums;
 
 Client client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
     .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
+    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-Messaging messaging = new Messaging(client);
+Users users = new Users(client);
 
-Subscriber subscriber = await messaging.CreateSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]");
+Target result = await users.CreateTarget(
+    userId: "<USER_ID>",
+    targetId: "<TARGET_ID>",
+    providerType: MessagingProviderType.Email,
+    identifier: "<IDENTIFIER>",
+    providerId: "<PROVIDER_ID>",  // optional
+    name: "<NAME>"                // optional
+);
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Client client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
+  .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+  .setProject('5df5acd0d48c2')                  // Your project ID
+  .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
 
-Messaging messaging = Messaging(client);
+Users users = Users(client);
 
-Subscriber subsriber = await messaging.createSubscriber(
-    topicId: '[TOPIC_ID]',
-    subscriberId: '[SUBSCRIBER_ID]',
-    targetId: '[TARGET_ID]',
+Future result = users.createTarget(
+  userId: '<USER_ID>',
+  targetId: '<TARGET_ID>',
+  providerType:  MessagingProviderType.email,
+  identifier: '<IDENTIFIER>',
+  providerId: '<PROVIDER_ID>',  // (optional)
+  name: '<NAME>',               // (optional)
 );
+
+result.then((response) {
+  print(response);
+}).catchError((error) {
+  print(error.response);
+});
+
 ```
 ```kotlin
-import io.appwrite.Client;
-import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Messaging;
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Users
+import io.appwrite.enums.MessagingProviderType
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...")                   // Your secret JSON Web Token
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-val messaging = Messaging(client)
+val users = Users(client)
 
-val subscriber = messaging.createSubscriber(
-    topicId = "[TOPIC_ID]",
-    subscriberId = "[SUBSCRIBER_ID]",
-    targetId = "[TARGET_ID]"
+val response = users.createTarget(
+    userId = "<USER_ID>",
+    targetId = "<TARGET_ID>",
+    providerType =  MessagingProviderType.EMAIL,
+    identifier = "<IDENTIFIER>",
+    providerId = "<PROVIDER_ID>",   // optional
+    name = "<NAME>"                 // optional
 )
+
 ```
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Messaging;
+import io.appwrite.services.Users;
+import io.appwrite.enums.MessagingProviderType;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
     .setProject("5df5acd0d48c2")                  // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-Messaging messaging = new Messaging(client);
+Users users = new Users(client);
 
-messaging.createSubscriber(
-    "[TOPIC_ID]",         // topicId
-    "[SUBSCRIBER_ID]",    // subscriberId
-    "[TARGET_ID]",        // targetId
+users.createTarget(
+    "<USER_ID>",                    // userId
+    "<TARGET_ID>",                  // targetId
+    MessagingProviderType.EMAIL,    // providerType
+    "<IDENTIFIER>",                 // identifier
+    "<PROVIDER_ID>",                // providerId (optional)
+    "<NAME>",                       // name (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -214,18 +259,22 @@ messaging.createSubscriber(
 ```
 ```swift
 import Appwrite
+import AppwriteEnums
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...")                   // Your secret JSON Web Token
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-let messaging = Messaging(client)
+let users = Users(client)
 
-let subscriber = try await messaging.createSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]"
+let target = try await users.createTarget(
+    userId: "<USER_ID>",
+    targetId: "<TARGET_ID>",
+    providerType: .email,
+    identifier: "<IDENTIFIER>",
+    providerId: "<PROVIDER_ID>", // optional
+    name: "<NAME>"               // optional
 )
 ```
 {% /multicode %}
