@@ -18,7 +18,7 @@ You must configure these services before you can send your first push notificati
 {% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
 Configure APNs for push notification to Apple devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="icon-firebase" %}
+{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="aw-icon-firebase" %}
 Configure FCM for push notification to Android and Apple devices.
 {% /cards_item %}
 {% /cards %}
