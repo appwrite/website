@@ -64,7 +64,7 @@ final client = Client()
 final account = Account(client);
 
 // Go to OAuth provider login page
-await account.createOAuth2Session(provider: OAuthProvider.github);  
+await account.createOAuth2Session(provider: OAuthProvider.github);
 ```
 
 User will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.

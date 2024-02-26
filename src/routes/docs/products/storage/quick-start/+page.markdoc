@@ -222,7 +222,7 @@ class MainActivity : AppCompatActivity() {
             bucketId = "[BUCKET_ID]",
             fileId = "[FILE_ID]"
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```

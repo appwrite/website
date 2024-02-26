@@ -142,7 +142,7 @@ subscription.stream.listen((response) {
     print(response);
 })
 ```
-    
+
 ```swift
 import Appwrite
 import AppwriteModels
@@ -343,7 +343,7 @@ The payload from the subscription will contain following properties:
 ---
 * timestamp
 * string
-* The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server 
+* The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server
 ---
 * payload
 * object
@@ -505,9 +505,9 @@ While the Realtime API offers robust capabilities, there are currently some limi
 
 ## Subscription changes {% #subscription-changes %}
 
-The SDK creates a single WebSocket connection for all subscribed channels. 
-Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one. 
-Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily 
+The SDK creates a single WebSocket connection for all subscribed channels.
+Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one.
+Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily
 built up several times by multiple components' life cycles.
 
 ## Server SDKs {% #server-sdks %}
