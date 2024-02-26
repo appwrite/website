@@ -10,7 +10,7 @@ Appwrite provides utilities to manipulate images for previewing images in your a
 
 Appwrite Storage's [preview endpoint](/docs/references/cloud/client-web/storage#getFilePreview) let you manipulate resolution, add borders and the border-radius, add background-color, set the opacity for the image, and get the image in the appropriate output format.
 
-You can manipulate images resolution to display appropriately on responsive websites. You can also adjust the image border, background color, and border-radius to match the theming of your application. 
+You can manipulate images resolution to display appropriately on responsive websites. You can also adjust the image border, background color, and border-radius to match the theming of your application.
 The Appwrite Storage also allows you to change the format and compression of your images for network transfer optimization and to help you speed your application. You can do all that without caring about how the image was originally uploaded.
 
 {% info title="Caching" %}
@@ -56,9 +56,9 @@ const result = storage.getFilePreview(
     'sunset.png',       // file ID
     1800,               // width, will be resized using this value.
     0,                  // height, ignored when 0
-    'center',           // crop center  
+    'center',           // crop center
     '90',               // slight compression
-    5,                  // border width    
+    5,                  // border width
     'CDCA30',           // border color
     15,                 // border radius
     1,                  // full opacity
@@ -86,8 +86,8 @@ void main() { // Init SDK
     fileId: 'sunset.png',       // file ID
     width: 1800,                // width, will be resized using this value.
     height: 0,                  // height, ignored when 0
-    gravity: 'center',          // crop center  
-    quality: '90',              // slight compression 
+    gravity: 'center',          // crop center
+    quality: '90',              // slight compression
     borderWidth: 5,             // border width
     borderColor: 'CDCA30',      // border color
     borderRadius: 15,           // border radius
@@ -131,8 +131,8 @@ func main() async throws {
             fileId: "sunset.png",       // file ID
             width: 1800,                // width, will be resized using this value.
             height: 0,                  // height, ignored when 0
-            gravity: "center",          // crop center  
-            quality: "90",              // slight compression 
+            gravity: "center",          // crop center
+            quality: "90",              // slight compression
             borderWidth: 5,             // border width
             borderColor: "CDCA30",      // border color
             borderRadius: 15,           // border radius
@@ -169,8 +169,8 @@ class MainActivity : AppCompatActivity() {
             fileId = "sunset.png",       // file ID
             width = 1800,                // width, will be resized using this value.
             height = 0,                  // height, ignored when 0
-            gravity = "center",          // crop center  
-            quality = "90",              // slight compression 
+            gravity = "center",          // crop center
+            quality = "90",              // slight compression
             borderWidth = 5,             // border width
             borderColor = "CDCA30",      // border color
             borderRadius = 15,           // border radius
@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity() {
             background = "FFFFFF",       // background color
             output ="jpg"                // output jpg format
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```
