@@ -70,7 +70,7 @@ const message = await messaging.createPush(
     '[MESSAGE_ID]',                 // messageId
     'Init_ Day 0',                  // title
     'Appwrite Messaging is here!',  // body
-    ['[TOPIC_ID]'],                 // topics (optional)
+    ['init-day-0'],                 // topic IDs
 );
 ```
 
