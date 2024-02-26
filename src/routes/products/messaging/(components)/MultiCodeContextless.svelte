@@ -7,11 +7,15 @@
     import { Tooltip } from '$lib/components';
 
     export let selected: Language = 'js';
-    export let data: { language: string; content: string }[] = [];
+    export let data: { language: string; content: string; platform?: string }[] = [];
+    export let width: number | null = null;
+    export let height: number | null = null;
 
     $: snippets = writable(new Set(data.map((d) => d.language)));
 
     $: content = data.find((d) => d.language === selected)?.content ?? '';
+
+    $: platform = data.find((d) => d.language === selected)?.platform ?? '';
 
     snippets?.subscribe((n) => {
         if (selected === null && n.size > 0) {
@@ -36,11 +40,19 @@
     $: result = getCodeHtml({ content, language: selected ?? 'sh', withLineNumbers: true });
 </script>
 
-<section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
+<section
+    class="theme-dark aw-code-snippet"
+    aria-label="code-snippet panel"
+    style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
+        height ? height / 16 + 'rem' : 'inherit'
+    }`}
+>
     <header class="aw-code-snippet-header">
         <div class="aw-code-snippet-header-start">
             <div class="u-flex u-gap-16">
-                <!-- <div class="aw-tag"><span class="text">Default</span></div> -->
+                {#if platform}
+                    <div class="aw-tag"><span class="text">{platform}</span></div>
+                {/if}
             </div>
         </div>
         <div class="aw-code-snippet-header-end">
@@ -71,7 +83,10 @@
             </ul>
         </div>
     </header>
-    <div class="aw-code-snippet-content">
+    <div
+        class="aw-code-snippet-content"
+        style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
+    >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html result}
     </div>

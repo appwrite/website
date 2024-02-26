@@ -13,72 +13,220 @@
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    const sendMessageCode = [
+    const codeTopic = [
         {
             language: 'js',
-            content: `import { Messaging, MessageType, ID } from 'node-appwrite';
+            content: `import { Account, Messaging, ID } from "appwrite"
+
+// Fetch target ID
+const account = new Account(client)
+const user = await account.get()
+const targetId = user.targets[0].$id
+
+// Subscribe to a topic
+const messaging = new Messaging(client)
+await messaging.createSubscriber(
+    "my_mailing_list",   // Topic ID
+    ID.unique(),         // Subscription ID
+    targetId,            // Target ID
+)`
+        },
+        {
+            language: 'dart',
+            content: `import 'package:appwrite/appwrite.dart';
+
+// Fetch target ID
+final account = Account(client);
+final user = await account.get();
+final targetId = user.targets[0].$id;
+
+// Subscribe to a topic
+final messaging = Messaging(client);
+await messaging.createSubscriber(
+    topicId: 'my-mailing-list',
+    subscriberId: ID.unique(),
+    targetId: targetId
+);`
+        },
+        {
+            language: 'kotlin',
+            content: `import io.appwrite.services.Account
+import io.appwrite.services.Messaging
+import io.appwrite.ID
+
+// Fetch target ID
+val account = Account(client)
+val user = account.get()
+val targetId = user.targets[0].id
+
+// Subscribe to a topic
+val messaging = Messaging(client)
+messaging.createSubscriber(
+    topicId = "my-mailing-list",
+    subscriberId = ID.unique(),
+    targetId = targetId
+)`
+        },
+        {
+            language: 'swift',
+            content: `import Appwrite
+
+// Fetch target ID
+let account = Account(client)
+let user = try await account.get()
+let targetId = user.targets[0].id
+
+// Subscribe to a topic
+let messaging = Messaging(client)
+try await messaging.createSubscriber(
+    topicId: "my-mailing-list",
+    subscriberId: ID.unique(),
+    targetId: targetId
+)`
+        }
+    ];
+
+    const codeMessage = [
+        {
+            language: 'js',
+            platform: 'Node.js',
+            content: `import { Messaging, ID } from "node-appwrite"
 
 const messaging = Messaging(client);
+await messaging.createEmail(
+    ID.unique(),           // Message ID
+    'Updates',             // Email subject
+    'Hello, world!',       // Email content
+    ['my-mailing-list'],   // Topic IDs
+);`
+        },
+        {
+            language: 'ts',
+            platform: 'Deno',
+            content: `import { Messaging, ID } from "https://deno.land/x/appwrite/mod.ts";
 
-const messageId = ID.unique();
-const subject = 'New Workout';
-const content = "<h1>New Workout</h1><p>There's a new workout!</p>";
-const topics = [TOPIC_ID];
-const users = [];
-const targets = [];
-const cc = undefined;
-const bcc = undefined;
-const status = MessageType.Processing; // Send now
-const isHtml = true;
-const scheduledAt = undefined;
+const messaging = new Messaging(client);
+await messaging.createEmail(
+    ID.unique(),           // Message ID
+    'Updates',             // Email subject
+    'Hello, world!',       // Email content
+    ['my-mailing-list'],   // Topic IDs
+);`
+        },
+        {
+            language: 'cs',
+            platform: '.NET',
+            content: `using Appwrite.Services.Messaging;
+using Appwrite.ID;
 
+var messaging = new Messaging(client);
+await messaging.createEmail(
+    messageId: ID.unique(),
+    subject: "Updates",
+    content: "Hello, world!",
+    topics: ["my-mailing-list"],
+);`
+        },
+        {
+            language: 'kotlin',
+            platform: 'Kotlin',
+            content: `import io.appwrite.services.Messaging
+import io.appwrite.ID
+
+val messaging = Messaging(client)
 messaging.createEmail(
-  messageId,
-  subject,
-  content,
-  topics,
-  users,
-  targets,
-  cc,
-  bcc,
-  status,
-  isHtml,
-  scheduledAt
-);
-            `
+    messageId = ID.unique(),
+    subject = "Updates",
+    content = "Hello, world!",
+    topics: listOf("my-mailing-list"),
+)`
+        },
+        {
+            language: 'swift',
+            platform: 'Swift',
+            content: `import Appwrite
+
+let messaging = Messaging(client)
+try await messaging.createEmail(
+    messageId: ID.unique(),
+    subject: "Updates",
+    content: "Hello, world!",
+    topics: ["my-mailing-list"]
+)`
+        },
+        {
+            language: 'php',
+            platform: 'PHP',
+            content: `import 'package:appwrite/appwrite.dart';
+
+final messaging = Messaging(client);
+await messaging.createEmail(
+    messageId: ID.unique(),
+    subject: "Updates",
+    content: "Hello, world!",
+    topics: ["my-mailing-list"],
+);`
+        },
+        {
+            language: 'dart',
+            platform: 'Dart',
+            content: `<?php
+
+use Appwrite\Services\Messaging;
+use Appwrite\ID;
+
+$messaging = new Messaging(client);
+$messaging->createEmail(
+    messageId: ID::unique(),
+    subject: 'Updates',
+    content: 'Hello, world!',
+    topics: ['my-mailing-list']
+);`
         },
         {
             language: 'python',
-            content: `import { Messaging, MessageType, ID } from 'node-appwrite';
+            platform: 'Python',
+            content: `from appwrite.services.messaging import Messaging
+from appwrite.id import ID
 
-const messaging = Messaging(client);
+messaging = Messaging(client)
+messaging.create_email(
+    message_id = ID.unique(),
+    subject = "Updates",
+    content = "Hello, world!",
+    topics = ["my-mailing-list"]
+)`
+        },
+        {
+            language: 'dart',
+            platform: 'Dart',
+            content: `<?php
 
-const messageId = ID.unique();
-const subject = 'New Workout';
-const content = "<h1>New Workout</h1><p>There's a new workout!</p>";
-const topics = [TOPIC_ID];
-const users = [];
-const targets = [];
-const cc = undefined;
-const bcc = undefined;
-const status = MessageType.Processing; // Send now
-const isHtml = true;
-const scheduledAt = undefined;
+use Appwrite\Services\Messaging;
+use Appwrite\ID;
 
-messaging.createEmail(
-  messageId,
-  subject,
-  content,
-  topics,
-  users,
-  targets,
-  cc,
-  bcc,
-  status,
-  isHtml,
-  scheduledAt
-);
-            `
+$messaging = new Messaging(client);
+$messaging->createEmail(
+    messageId: ID::unique(),
+    subject: 'Updates',
+    content: 'Hello, world!',
+    topics: ['my-mailing-list']
+);`
+        },
+        {
+            language: 'ruby',
+            platform: 'Ruby',
+            content: `require 'appwrite'
+
+include Appwrite
+
+messaging = Messaging.new(client)
+messaging.create_email(
+    message_id: ID.unique(),
+    subject: 'Updates',
+    content: 'Hello, world!',
+    topics: ['my-mailing-list']
+)`
         }
     ];
 </script>
@@ -153,9 +301,9 @@ messaging.createEmail(
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
                     <section class="aw-hero is-align-start">
-                        <span class="aw-badges aw-eyebrow">PRIVACY & SECURITY_</span>
+                        <span class="aw-badges aw-eyebrow">capabilities_</span>
                         <h2 class="aw-display aw-u-color-text-primary u-max-width-700">
-                            All of your messagesin one place
+                            All of your messages in one place
                         </h2>
                     </section>
                     <div class="u-overflow-hidden aw-u-margin-block-start-80">
@@ -209,7 +357,7 @@ messaging.createEmail(
                                     <li>
                                         <a class="aw-interactive-tag" href="/">
                                             <span class="aw-icon-sendgrid" aria-hidden="true" />
-                                            <span class="text">Sendgrid</span>
+                                            <span class="text">SendGrid</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -353,8 +501,8 @@ messaging.createEmail(
         </div>
 
         <div
-            class="aw-big-padding-section-level-1 u-position-relative u-z-index-1"
-            style="background-color:hsl(var(--aw-color-greyscale-900))"
+            class="u-position-relative u-z-index-1"
+            style="background-color:hsl(var(--aw-color-greyscale-900)); padding-block-start: 40px"
         >
             <div class="aw-big-padding-section-level-2">
                 <div class="aw-container">
@@ -371,15 +519,15 @@ messaging.createEmail(
                                 Subscribe to receive all messages related to that topic.
                             </p>
 
-                            <div class="u-margin-block-start-16">
-                                <MultiCodeContextless data={sendMessageCode} />
+                            <div class="u-margin-block-start-16" style="margin-block-end: 94px">
+                                <MultiCodeContextless data={codeTopic} width={552} height={450} />
                             </div>
                         </div>
                         <div class="u-flex-vertical u-gap-16">
                             <h3 class="aw-label aw-u-color-text-primary">Send a message</h3>
                             <p class="aw-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16">
-                                <MultiCodeContextless data={sendMessageCode} />
+                                <MultiCodeContextless data={codeMessage} width={552} height={450} />
                             </div>
                         </div>
                     </div>
@@ -387,176 +535,158 @@ messaging.createEmail(
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-80">
-                    <h4 class="aw-label u-text-center aw-u-color-text-primary">
-                        Keep exploring our products
-                    </h4>
-                    <ul class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-32">
-                        <li class="aw-u-flex-basis-378">
-                            <a
-                                class="aw-card is-normal"
-                                href="/docs/products/auth"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                            >
-                                <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
-                                >
-                                    <div class="u-flex u-cross-center u-gap-8">
-                                        <img
-                                            src="/images/icons/illustrated/dark/auth.png"
-                                            alt="auth"
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">
-                                            Auth
-                                        </h4>
-                                        <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <p class="aw-sub-body-400">
-                                        Build secure authentication and manage your users.
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <a
-                                class="aw-card is-normal"
-                                href="/docs/products/functions"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                            >
-                                <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
-                                >
-                                    <div class="u-flex u-cross-center u-gap-8">
-                                        <img
-                                            src="/images/icons/illustrated/dark/functions.png"
-                                            alt="functions"
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">
-                                            Functions
-                                        </h4>
-                                        <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <p class="aw-sub-body-400">
-                                        Scale big and unlock limitless potential with Appwrite
-                                        functions.
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <a
-                                class="aw-card is-normal"
-                                href="/docs/products/databases"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                            >
-                                <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
-                                >
-                                    <div class="u-flex u-cross-center u-gap-8">
-                                        <img
-                                            src="/images/icons/illustrated/dark/databases.png"
-                                            alt=""
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">
-                                            Databases
-                                        </h4>
-                                        <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <p class="aw-sub-body-400">
-                                        Store and query structured data, ensuring scalable storage.
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <a
-                                class="aw-card is-normal"
-                                href="/docs/products/storage"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                            >
-                                <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
-                                >
-                                    <div class="u-flex u-cross-center u-gap-8">
-                                        <img
-                                            src="/images/icons/illustrated/dark/storage.png"
-                                            alt="storage"
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">
-                                            Storage
-                                        </h4>
-                                        <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <p class="aw-sub-body-400">
-                                        Manage your files' project, using convenient APIs and
-                                        utilities.
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="aw-u-flex-basis-378">
-                            <a
-                                class="aw-card is-normal"
-                                href="/docs/apis/realtime"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                            >
-                                <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
-                                >
-                                    <div class="u-flex u-cross-center u-gap-8">
-                                        <img
-                                            src="/images/icons/illustrated/dark/realtime.png"
-                                            alt="realtime"
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <h4 class="aw-main-body-400 aw-u-color-text-primary">
-                                            Realtime
-                                        </h4>
-                                        <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <p class="aw-sub-body-400">
-                                        Utilize realtime information from all Appwrite services.
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-            <div
-                class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="aw-container">
-                    <PreFooter />
-                    <FooterNav />
-                    <MainFooter />
-                </div>
+        <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-80">
+            <h4 class="aw-label u-text-center aw-u-color-text-primary">
+                Keep exploring our products
+            </h4>
+            <ul class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-32">
+                <li class="aw-u-flex-basis-378">
+                    <a
+                        class="aw-card is-normal"
+                        href="/docs/products/auth"
+                        style="background: rgba(255, 255, 255, 0.04);"
+                    >
+                        <div
+                            class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                        >
+                            <div class="u-flex u-cross-center u-gap-8">
+                                <img
+                                    src="/images/icons/illustrated/dark/auth.png"
+                                    alt="auth"
+                                    width="32"
+                                    height="32"
+                                />
+                                <h4 class="aw-main-body-400 aw-u-color-text-primary">Auth</h4>
+                                <span
+                                    class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p class="aw-sub-body-400">
+                                Build secure authentication and manage your users.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="aw-u-flex-basis-378">
+                    <a
+                        class="aw-card is-normal"
+                        href="/docs/products/functions"
+                        style="background: rgba(255, 255, 255, 0.04);"
+                    >
+                        <div
+                            class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                        >
+                            <div class="u-flex u-cross-center u-gap-8">
+                                <img
+                                    src="/images/icons/illustrated/dark/functions.png"
+                                    alt="functions"
+                                    width="32"
+                                    height="32"
+                                />
+                                <h4 class="aw-main-body-400 aw-u-color-text-primary">Functions</h4>
+                                <span
+                                    class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p class="aw-sub-body-400">
+                                Scale big and unlock limitless potential with Appwrite functions.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="aw-u-flex-basis-378">
+                    <a
+                        class="aw-card is-normal"
+                        href="/docs/products/databases"
+                        style="background: rgba(255, 255, 255, 0.04);"
+                    >
+                        <div
+                            class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                        >
+                            <div class="u-flex u-cross-center u-gap-8">
+                                <img
+                                    src="/images/icons/illustrated/dark/databases.png"
+                                    alt=""
+                                    width="32"
+                                    height="32"
+                                />
+                                <h4 class="aw-main-body-400 aw-u-color-text-primary">Databases</h4>
+                                <span
+                                    class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p class="aw-sub-body-400">
+                                Store and query structured data, ensuring scalable storage.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="aw-u-flex-basis-378">
+                    <a
+                        class="aw-card is-normal"
+                        href="/docs/products/storage"
+                        style="background: rgba(255, 255, 255, 0.04);"
+                    >
+                        <div
+                            class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                        >
+                            <div class="u-flex u-cross-center u-gap-8">
+                                <img
+                                    src="/images/icons/illustrated/dark/storage.png"
+                                    alt="storage"
+                                    width="32"
+                                    height="32"
+                                />
+                                <h4 class="aw-main-body-400 aw-u-color-text-primary">Storage</h4>
+                                <span
+                                    class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p class="aw-sub-body-400">
+                                Manage your files' project, using convenient APIs and utilities.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="aw-u-flex-basis-378">
+                    <a
+                        class="aw-card is-normal"
+                        href="/docs/apis/realtime"
+                        style="background: rgba(255, 255, 255, 0.04);"
+                    >
+                        <div
+                            class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                        >
+                            <div class="u-flex u-cross-center u-gap-8">
+                                <img
+                                    src="/images/icons/illustrated/dark/realtime.png"
+                                    alt="realtime"
+                                    width="32"
+                                    height="32"
+                                />
+                                <h4 class="aw-main-body-400 aw-u-color-text-primary">Realtime</h4>
+                                <span
+                                    class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p class="aw-sub-body-400">
+                                Utilize realtime information from all Appwrite services.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <div class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative">
+            <div class="aw-container">
+                <PreFooter />
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div></Main
