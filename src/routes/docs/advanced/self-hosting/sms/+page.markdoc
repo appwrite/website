@@ -6,6 +6,12 @@ description: Set up SMS services for your self-hosted Appwrite instance. Discove
 
 Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
 
+{% info title="Setting up Appwrite Messaging?" %}
+This page describes how to setup messaging for your self-hosted Appwrite instance to send one-time passwords during phone login.
+
+If you are looking to send custom messages for promotions, reminders, and other purposes, view the [documentation for Appwrite Messaging](/docs/products/messaging) documentation.
+{% /info %}
+
 # SMS providers {% #sms-providers %}
 
 Appwrite supports a growing list of SMS providers that you can choose from. Choose one from the list below and set up an account.
