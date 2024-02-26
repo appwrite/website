@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Carousel, Spline } from '$lib/components';
+    import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -69,7 +69,10 @@
         <enhanced:img src="./blur-1.png" alt="" />
     </div>
 
-    <main class="aw-main-section u-position-relative aw-u-overflow-hidden-break1-to-break3" id="main">
+    <main
+        class="aw-main-section u-position-relative aw-u-overflow-hidden-break1-to-break3"
+        id="main"
+    >
         <div class="u-position-absolute aw-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
@@ -105,24 +108,22 @@
                 <span class="aw-sub-body-500">Explore all technologies</span>
             </a>
             <div class="u-position-absolute aw-is-not-mobile spline-wrapper">
-                <Spline url="/images/animations/dark-scene.splinecode" width={660} height={660}>
-                    <img
-                        class="u-only-dark"
-                        src="/images/animations/tech-dark-transparent.png"
-                        width="660"
-                        height="660"
-                        alt=""
-                        style="position: absolute;"
-                    />
-                    <img
-                        class="u-only-light"
-                        src="/images/animations/tech-light-transparent.png"
-                        width="660"
-                        height="660"
-                        alt=""
-                        style="position: absolute;"
-                    />
-                </Spline>
+                <img
+                    class="u-only-dark"
+                    src="/images/animations/tech-dark-transparent.png"
+                    width="660"
+                    height="660"
+                    alt=""
+                    style="position: absolute;"
+                />
+                <img
+                    class="u-only-light"
+                    src="/images/animations/tech-light-transparent.png"
+                    width="660"
+                    height="660"
+                    alt=""
+                    style="position: absolute;"
+                />
             </div>
             <div class="bg-overlay" />
         </section>
@@ -433,16 +434,15 @@
 </Docs>
 
 <style lang="scss">
-
     .e-hero-docs {
-      @media (min-width:1280px) {
-        margin-block-start:5rem;
-      }
+        @media (min-width: 1280px) {
+            margin-block-start: 5rem;
+        }
     }
     .aw-main-section {
         max-inline-size: unset;
         margin-inline: unset;
-        @media (min-width:1280px) {
+        @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
     }
