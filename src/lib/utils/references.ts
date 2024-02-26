@@ -113,7 +113,6 @@ export const serviceMap: Record<Service, string> = {
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',
-    [Service.Messaging]: 'Messaging'
 };
 
 export const preferredVersion = writable<Version | null>(
