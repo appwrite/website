@@ -16,7 +16,7 @@ import { Client } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 // Subscribe to files channel
 client.subscribe('files', response => {
@@ -32,7 +32,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
 
@@ -53,7 +53,7 @@ import AppwriteModels
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
 
@@ -72,7 +72,7 @@ import io.appwrite.services.Realtime
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
 
@@ -118,7 +118,7 @@ import { Client } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 client.subscribe('account', response => {
     // Callback will be executed on all account events.
@@ -131,7 +131,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
 
@@ -142,14 +142,14 @@ subscription.stream.listen((response) {
     print(response);
 })
 ```
-    
+
 ```swift
 import Appwrite
 import AppwriteModels
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
 
@@ -165,7 +165,7 @@ import io.appwrite.services.Realtime
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
 
@@ -189,7 +189,7 @@ import { Client } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 client.subscribe(['collections.A.documents.A', 'files'], response => {
     // Callback will be executed on changes for documents A and all files.
@@ -202,7 +202,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
 
@@ -220,7 +220,7 @@ import AppwriteModels
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
 
@@ -236,7 +236,7 @@ import io.appwrite.services.Realtime
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
 realtime.subscribe("databases.A.collections.A.documents.A", "files") {
@@ -257,7 +257,7 @@ import { Client } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 const unsubscribe = client.subscribe('files', response => {
     // Callback will be executed on changes for all files.
@@ -273,7 +273,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('[PROJECT_ID]');
+    .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
 
@@ -309,7 +309,7 @@ import io.appwrite.services.Realtime
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("[PROJECT_ID]")
+    .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
 
@@ -343,7 +343,7 @@ The payload from the subscription will contain following properties:
 ---
 * timestamp
 * string
-* The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server 
+* The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server
 ---
 * payload
 * object
@@ -505,9 +505,9 @@ While the Realtime API offers robust capabilities, there are currently some limi
 
 ## Subscription changes {% #subscription-changes %}
 
-The SDK creates a single WebSocket connection for all subscribed channels. 
-Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one. 
-Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily 
+The SDK creates a single WebSocket connection for all subscribed channels.
+Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one.
+Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily
 built up several times by multiple components' life cycles.
 
 ## Server SDKs {% #server-sdks %}
