@@ -11,6 +11,7 @@ Before you can deliver messages, you must connect to a messaging provider.
 {% section #add-provider step=1 title="Add provider" %}
 
 To add FCM as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+
 {% only_dark %}
 ![Add a FCM provider](/images/docs/messaging/providers/fcm/dark/provider.png)
 {% /only_dark %}
@@ -36,7 +37,12 @@ If FCM is disabled, click the three-dots menu and open the link. On the followin
 
 Head to **Project settings** > **Service accounts** > **Generate new private key**. 
 
-{% only_dark %} ![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) {% /only_dark %} {% only_light %} ![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) {% /only_light %}
+{% only_dark %} 
+![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) 
+{% /only_dark %} 
+{% only_light %} 
+![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) 
+{% /only_light %}
 
 After all the relevant details are provided, you can enable the provider.
 {% /section %}
