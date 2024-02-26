@@ -2,7 +2,6 @@
     import OpenSource from '$lib/animations/OpenSource.svelte';
     import Products from '$lib/animations/Products/Products.svelte';
     import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
-    import { Spline } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
     import { Main } from '$lib/layouts';
@@ -468,20 +467,13 @@
                 style:z-index="-1"
                 style:left="calc(50% - 384px + 350px)"
             >
-                <Spline
-                    url="/images/animations/dark-scene.splinecode"
-                    loading="eager"
-                    width={768}
-                    height={768}
-                >
-                    <img
-                        src="/images/animations/tech-dark.png"
-                        width="768"
-                        height="768"
-                        alt=""
-                        style="position: absolute; display: block;"
-                    />
-                </Spline>
+                <img
+                    src="/images/animations/tech-dark.png"
+                    width="768"
+                    height="768"
+                    alt=""
+                    style="position: absolute; display: block;"
+                />
             </div>
             <div class="aw-big-padding-section-level-2 is-margin-replace-padding">
                 <div class="aw-container u-position-relative">
@@ -513,9 +505,7 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <Spline loading="eager" url="/images/animations/lines.splinecode">
-                            <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
-                        </Spline>
+                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
                     </div>
                 </div>
                 <div class="aw-container u-position-relative">
