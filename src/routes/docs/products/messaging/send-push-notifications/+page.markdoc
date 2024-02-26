@@ -475,10 +475,12 @@ Messaging.messaging().autoInitEnabled = true
 {% section #send-message step=4 title="Send message" %}
 You can send messages in both the Appwrite Console and programmatically using the Appwrite Server SDK.
 
-{% info title="APNs environment" %}
-Appwrite sends push notifications to the APNs production environment by default.
-This means, your development builds on XCode will not receive push notifications.
-To test push notifications, click your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > uncheck **Automatically manage signing**.
+{% info title="Sandbox" %}
+If you enabled **Sandbox** on your APNs provider, Appwrite will send push notifications to the development APNs environment.
+This requires you to use a **Development profile** in XCode. 
+
+If XCode is not default to a development profile,
+click your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > uncheck **Automatically manage signing**.
 Then manually select a **Provisioning profile** that is a **Distribution profile**.
 {% /info %}
 

@@ -48,7 +48,7 @@ During development, you can add targets to existing accounts by navigating to **
 ![Add a target](/images/docs/messaging/targets/add-targets.png)
 {% /only_light %}
 
-You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
 
 {% multicode %}
 ```js
@@ -92,9 +92,9 @@ client
 ;
 
 const promise = messaging.createSubscriber(
-        '[TOPIC_ID]',                                      // topicId   
-        '[SUBSCRIBER_ID]',                                 // subscriberId   
-        '[TARGET_ID]'                                      // targetId   
+        '[TOPIC_ID]',                                      // topicId
+        '[SUBSCRIBER_ID]',                                 // subscriberId
+        '[TARGET_ID]'                                      // targetId
     );
 
 promise.then(function (response) {
@@ -119,9 +119,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSubscriber( 
-    topicId: '[TOPIC_ID]', 
-    subscriberId: '[SUBSCRIBER_ID]', 
+$result = $messaging->createSubscriber(
+    topicId: '[TOPIC_ID]',
+    subscriberId: '[SUBSCRIBER_ID]',
     targetId: '[TARGET_ID]'
 );
 ```
@@ -139,9 +139,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_subscriber( 
-    topic_id = '[TOPIC_ID]', 
-    subscriber_id = '[SUBSCRIBER_ID]', 
+result = messaging.create_subscriber(
+    topic_id = '[TOPIC_ID]',
+    subscriber_id = '[SUBSCRIBER_ID]',
     target_id = '[TARGET_ID]'
 )
 ```
@@ -158,8 +158,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]', 
-    subscriber_id: '[SUBSCRIBER_ID]', 
+    topic_id: '[TOPIC_ID]',
+    subscriber_id: '[SUBSCRIBER_ID]',
     target_id: '[TARGET_ID]'
 )
 
@@ -333,8 +333,8 @@ client
 ;
 
 const promise = messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId   
-        '[NAME]'                                 // name   
+        '[TOPIC_ID]',                            // topicId
+        '[NAME]'                                 // name
     );
 
 promise.then(function (response) {
@@ -359,8 +359,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
+$result = $messaging->createTopic(
+    topicId: '[TOPIC_ID]',
     name: '[NAME]'
 );
 ```
@@ -378,8 +378,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
+result = messaging.create_topic(
+    topic_id = '[TOPIC_ID]',
     name = '[NAME]'
 )
 ```
@@ -396,7 +396,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
+    topic_id: '[TOPIC_ID]',
     name: '[NAME]'
 )
 
@@ -512,7 +512,7 @@ let topic = try await messaging.createTopic(
 {% /multicode %}
 
 # Send SMS messages {% #send-sms %}
-You can send SMS messages using a Server SDK. 
+You can send SMS messages using a Server SDK.
 To send an SMS messages immediately, you can call the `createSMS` endpoint with `status` set to `'processing'` and `schedule` left empty.
 
 {% multicode %}
@@ -561,8 +561,8 @@ client
 ;
 
 const promise = messaging.createSMS(
-        '[MESSAGE_ID]',                                // messageId   
-        '[CONTENT]',                                   // content   
+        '[MESSAGE_ID]',                                // messageId
+        '[CONTENT]',                                   // content
         [],                                            // topics (optional)
         [],                                            // users (optional)
         [],                                            // targets (optional)
@@ -592,9 +592,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS( 
-    messageId: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+$result = $messaging->createSMS(
+    messageId: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                        // optional
     users: [],                                         // optional
     targets: [],                                       // optional
@@ -616,9 +616,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_sms( 
-    message_id = '[MESSAGE_ID]', 
-    content = '[CONTENT]', 
+result = messaging.create_sms(
+    message_id = '[MESSAGE_ID]',
+    content = '[CONTENT]',
     topics = [],                                       # optional
     users = [],                                        # optional
     targets = [],                                      # optional
@@ -639,8 +639,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                        # optional
     users: [],                                         # optional
     targets: [],                                       # optional
@@ -664,11 +664,11 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                        // optional    
-    users: new List<string> {}                         // optional    
-    targets: new List<string> {}                       // optional    
-    status: "processing"                               // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                        // optional
+    users: new List<string> {}                         // optional
+    targets: new List<string> {}                       // optional
+    status: "processing"                               // optional
     scheduledAt: "");                                  // optional
 ```
 ```dart
@@ -832,8 +832,8 @@ client
 ;
 
 const promise = messaging.createSMS(
-        '[MESSAGE_ID]',                           // messageId   
-        '[CONTENT]',                              // content   
+        '[MESSAGE_ID]',                           // messageId
+        '[CONTENT]',                              // content
         [],                                       // topics (optional)
         [],                                       // users (optional)
         [],                                       // targets (optional)
@@ -863,9 +863,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS( 
-    messageId: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+$result = $messaging->createSMS(
+    messageId: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -887,9 +887,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_sms( 
-    message_id = '[MESSAGE_ID]', 
-    content = '[CONTENT]', 
+result = messaging.create_sms(
+    message_id = '[MESSAGE_ID]',
+    content = '[CONTENT]',
     topics = [],                                  # optional
     users = [],                                   # optional
     targets = [],                                 # optional
@@ -910,8 +910,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -935,11 +935,11 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    status: "scheduled"                           // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    status: "scheduled"                           // optional
     scheduledAt: "2025-02-13T22:01:00+0000");     // optional
 ```
 ```dart
