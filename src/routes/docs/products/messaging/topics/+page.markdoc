@@ -60,7 +60,8 @@ client
 
 const promise = messaging.createTopic(
         '[TOPIC_ID]',                            // topicId
-        '[NAME]'                                 // name
+        '[NAME]',                                // name
+        '[ROLES]'                                // permission roles for who can subscribe
     );
 
 promise.then(function (response) {
@@ -86,6 +87,7 @@ client
 const promise = messaging.createTopic(
         '[TOPIC_ID]',                            // topicId   
         '[NAME]'                                 // name   
+        '[ROLES]'                                // permission roles for who can subscribe
     );
 
 promise.then(function (response) {
@@ -112,7 +114,9 @@ $messaging = new Messaging($client);
 
 $result = $messaging->createTopic( 
     topicId: '[TOPIC_ID]', 
-    name: '[NAME]'
+    name: '[NAME]',
+    subscribe: '[ROLES]'  // permission roles for who can subscribe
+
 );
 ```
 ```python
@@ -131,7 +135,8 @@ messaging = Messaging(client)
 
 result = messaging.create_topic( 
     topic_id = '[TOPIC_ID]', 
-    name = '[NAME]'
+    name = '[NAME]',
+    subscribe = '[ROLES]'  # permission roles for who can subscribe
 )
 ```
 ```ruby
@@ -148,7 +153,8 @@ messaging = Messaging.new(client)
 
 response = messaging.create_topic(
     topic_id: '[TOPIC_ID]', 
-    name: '[NAME]'
+    name: '[NAME]',
+    subscribe: '[ROLES]'  # permission roles for who can subscribe
 )
 
 puts response.inspect
@@ -167,7 +173,8 @@ var messaging = new Messaging(client);
 
 Topic result = await messaging.CreateTopic(
     topicId: "[TOPIC_ID]",
-    name: "[NAME]");
+    name: "[NAME]",
+    subscribe: "[ROLES]")  // permission roles for who can subscribe
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -185,6 +192,7 @@ void main() {                                    // Init SDK
   Future result = messaging.createTopic(
     topicId: '[TOPIC_ID]',
     name: '[NAME]',
+    subscribe: '[ROLES]' // permission roles for who can subscribe
   );
 
   result
@@ -208,8 +216,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                                 // topicId
-    "[NAME]"                                      // name
+    "[TOPIC_ID]",       // topicId
+    "[NAME]"            // name
+    "[ROLES]"           // permission roles for who can subscribe
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -233,8 +242,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                                 // topicId
-    "[NAME]"                                      // name
+    "[TOPIC_ID]",                          // topicId
+    "[NAME]"                               // name
+    "[ROLES]"                              // permission roles for who can subscribe
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -257,12 +267,21 @@ let messaging = Messaging(client)
 
 let topic = try await messaging.createTopic(
   topicId: "[TOPIC_ID]",
-  name: "[NAME]"
+  name: "[NAME]",
+  subscribe: "[ROLES]" // permission roles for who can subscribe
 )
 ```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
+
+# Permissions {% #permissions %}
+Before you can subscribe to a topic, a user needs the appropriate permission.
+You can set permission by navigating to **Messaging** > **Topics** > select a topic to configure > **Subscription access**.
+
+{% arrow_link href="/docs/advanced/platform/permissions#permission-roles" %}
+Learn more about permission roles
+{% /arrow_link %}
 
 # Subscribe targets to a topic {% #subscribe-targets-to-topics %}
 {% tabs %}
