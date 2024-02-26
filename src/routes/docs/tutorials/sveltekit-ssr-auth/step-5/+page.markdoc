@@ -8,7 +8,7 @@ step: 5
 We can now implement our sign in page. Create a `+page.svelte` file in the `src/routes/signin` directory:
 
 ```svelte
-<!-- src/routes/sigin/+page.svelte -->
+<!-- src/routes/signin/+page.svelte -->
 <form method="post">
 	<input id="email" placeholder="Email" type="email" />
 	<input id="password" placeholder="Password" type="password" />
