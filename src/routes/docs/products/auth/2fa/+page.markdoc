@@ -10,7 +10,7 @@ Appwrite Authentication lets you easily implement 2FA in your apps, letting you 
 
 {% info title="Looking for 2FA on your Console account?" %}
 This page covers 2FA for your app's end-users.
-If you are looking for 2FA on your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/mfa).
+If you are looking for 2FA on your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/2fa).
 {% /info %}
 
 Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
@@ -139,7 +139,7 @@ val session = account.createEmailPasswordSession(
 ```
 {% /multicode %}
 {% /section %}
-{% section #check-for-2fa step=3 title="Check for multi-factor" %}
+{% section #check-for-2fa step=3 title="Check for two-factor" %}
 Upon successful login in the first authentication step, check the status of the login by calling `account.get()`.
 If more than one factors are required, you will the error `user_more_factors_required`. Redirect the user in your app to
 perform the MFA challenge.
