@@ -1,0 +1,36 @@
+---
+layout: article
+title: Two-factor Authentication
+description: Appwrite helps you secure your developer accounts with 2FA (two-factor authentication).
+---
+Two-factor authentication (2FA) adds multiple layers of authentication to your Appwrite account,
+which means a malicious actor cannot gain access to your accounts, even if one of the factors is compromised.
+Appwrite currently supports 2FA using TOTP (Time-based One-Time Password) with an authenticator app.
+More factors of authentication will be added in the future.
+
+{% info title="Looking to add 2FA to your app?" %}
+This page covers 2FA for your Appwrite Console account.
+If you're looking to add 2FA to your app, follow the [Two-factor authentication journey](/docs/products/auth/2fa).
+{% /info %}
+
+# Enable 2FA {% #enable-2fa %}
+To enable 2FA on your Appwrite account, navigate to your Appwrite Console > your account menu on the top right > **Your account** > **Two-factor authentication**.
+
+{% only_dark %}
+![Two-factor authentication settings](/images/docs/advanced/security/dark/2fa.png)
+{% /only_dark %}
+{% only_light %}
+![Two-factor authentication settings](/images/docs/advanced/security/2fa.png)
+{% /only_light %}
+
+Toggle **Two-factor authentication** to enable 2FA for your account, then click **Add authentication factor**.
+
+{% only_dark %}
+![Two-factor authentication modal](/images/docs/advanced/security/dark/2fa-modal.png)
+{% /only_dark %}
+{% only_light %}
+![Two-factor authentication modal](/images/docs/advanced/security/2fa-modal.png)
+{% /only_light %}
+
+Scan the QR code with your authenticator app, then enter the code from your authenticator app to verify the setup.
+Make sure to save the recovery codes in a safe place, as they are the only way to access your account if you lose access to your authenticator app.
