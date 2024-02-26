@@ -435,12 +435,15 @@
         </div>
     </div>
 
-    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
+    <div
+        class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text"
+        style="text-wrap: balance"
+    >
         <h3 class="aw-title aw-u-color-text-primary u-text-center">
             Target and group your subscribers
         </h3>
         <p class="aw-description u-text-center" style:max-inline-size="580px">
-            Customize your message recipients to ensure your communication hits the mark.
+            Segment your users based on topics using list subscriptions to send focused messages.
         </p>
     </div>
 </Step>
