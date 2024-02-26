@@ -22,13 +22,13 @@ The provider will be saved to your project, but not enabled until you complete i
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your SMTP dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details from your SMTP dashboard to connect your Appwrite project.
 
 You will need to provide the following information from your **SMTP dashboard**.
 
 {% table %}
 * Field name
-*
+* Description
 ---
 * Host
 * The server address of the SMTP provider.
