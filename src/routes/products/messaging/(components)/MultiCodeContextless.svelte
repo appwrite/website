@@ -4,7 +4,7 @@
     import { writable, type Writable } from 'svelte/store';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Tooltip } from '$lib/components';
+    import { Select, Tooltip } from '$lib/components';
 
     export let selected: Language = 'js';
     export let data: { language: string; content: string; platform?: string }[] = [];
@@ -38,6 +38,10 @@
     }
 
     $: result = getCodeHtml({ content, language: selected ?? 'sh', withLineNumbers: true });
+    $: options = Array.from($snippets).map((language) => ({
+        value: language,
+        label: platformMap[language]
+    }));
 </script>
 
 <section
@@ -58,14 +62,7 @@
         <div class="aw-code-snippet-header-end">
             <ul class="buttons-list u-flex u-gap-8">
                 <li class="buttons-list-item u-flex u-cross-child-scenter">
-                    <div class="aw-select">
-                        <select bind:value={selected}>
-                            {#each Array.from($snippets) as language}
-                                <option value={language}>{platformMap[language]}</option>
-                            {/each}
-                        </select>
-                        <span class="icon-cheveron-down" aria-hidden="true" />
-                    </div>
+                    <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item aw-u-padding-inline-start-20">
                     <Tooltip>
