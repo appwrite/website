@@ -84,9 +84,13 @@
 
 <style lang="scss">
     .wrapper {
-        display: flex;
-        justify-content: space-around;
+        // display: flex;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 5rem;
         align-items: center;
+        justify-content: center;
+        margin-block-start: 3.5rem;
     }
 
     .blur {
@@ -195,6 +199,7 @@
 
     .time-picker {
         user-select: none;
+        position: relative;
 
         > div {
             display: grid;
@@ -226,6 +231,37 @@
                 font-size: 44px;
                 color: white;
             }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset-inline-start: 0;
+            height: 50%;
+            width: 100%;
+            inset-block-start: 0;
+            inset-block-end: 50%;
+            background: linear-gradient(
+                to bottom,
+                hsl(270, 4%, 10%, 0) 0%,
+                hsl(270, 4%, 10%, 0) 10%,
+                hsl(270, 4%, 10%, 1)
+            );
+            transform: rotate(180deg);
+            z-index: 10;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            inset-block-start: 50%;
+            background: linear-gradient(
+                to bottom,
+                hsl(270, 4%, 10%, 0) 0%,
+                hsl(270, 4%, 10%, 0) 10%,
+                hsl(270, 4%, 10%, 1)
+            );
+            z-index: 10;
         }
     }
 

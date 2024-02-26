@@ -120,7 +120,7 @@ messaging.createEmail(
                     </h1>
                     <p class="aw-description u-margin-block-start-20">
                         Set up messaging within minutes and send push notifications, emails, and SMS
-                        directly from the Appwrite Console.
+                        directly to your users.
                     </p>
                     <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
                         <a class="aw-button" href="https://cloud.appwrite.io" target="_blank"
@@ -129,7 +129,7 @@ messaging.createEmail(
                         <a
                             class="aw-button is-secondary"
                             href="https://appwrite.io/docs/products/messaging"
-                            target="_blank">Read the docs</a
+                            target="_blank">Documentation</a
                         >
                     </div>
                 </div>
