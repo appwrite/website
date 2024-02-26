@@ -90,7 +90,7 @@
         gap: 5rem;
         align-items: center;
         justify-content: center;
-        margin-block-start: 3.5rem;
+        margin-block-start: 4.5rem;
     }
 
     .blur {
@@ -117,7 +117,7 @@
             hsl(0, 0%, 100%, 0.07),
             hsl(0, 0%, 100%, 0)
         );
-        width: 36.25rem;
+        width: 30rem;
 
         background: hsl(240, 6%, 12%, 0.64);
         backdrop-filter: blur(30px);
@@ -141,16 +141,13 @@
         [role='gridcell'] button {
             aspect-ratio: 1;
             width: 100%;
-            font-size: 2rem;
+            font-size: 1.5rem;
             position: relative;
 
             color: white;
 
             transition: 150ms ease;
 
-            @media screen and (max-width: 1024px) {
-                font-size: 1.5rem;
-            }
             @media screen and (max-width: 500px) {
                 font-size: 1rem;
             }
@@ -171,7 +168,7 @@
             &::before {
                 content: '';
                 position: absolute;
-                inset: 0.625rem;
+                inset: 0.725rem;
 
                 background: linear-gradient(
                     to bottom right,
@@ -179,7 +176,7 @@
                     hsl(178, 54%, 69%) 30%,
                     hsl(178, 54%, 69%, 0.62)
                 );
-                border-radius: 1.25rem;
+                border-radius: 1rem;
 
                 opacity: 0;
                 transform: scale(0.95);
@@ -208,27 +205,27 @@
             color: hsl(0, 0%, 100%, 0.5);
 
             &:is(:nth-child(1), :nth-last-child(1)) {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             &:is(:nth-child(2), :nth-last-child(2)) {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             &:is(:nth-child(3), :nth-last-child(3)) {
-                font-size: 24px;
+                font-size: 16px;
             }
 
             &:is(:nth-child(4), :nth-last-child(4)) {
-                font-size: 32px;
+                font-size: 24px;
             }
 
             &:is(:nth-child(5), :nth-last-child(5)) {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             &:nth-child(6) {
-                font-size: 44px;
+                font-size: 38px;
                 color: white;
             }
         }
@@ -267,7 +264,7 @@
 
     h3 {
         text-align: center;
-        margin-block-start: 5.5rem;
+        margin-block-start: 4.5rem;
     }
 
     h3 + p {

@@ -188,7 +188,7 @@
 </script>
 
 <Step title="Step 2: Target">
-    <div class="users-modal">
+    <div class="users-modal is-only-mobile">
         <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
         <Accordion>
             <ul class="accordion-items">
