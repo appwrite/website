@@ -31,6 +31,10 @@
 </div>
 
 <style>
+    .aw-card {
+        margin-block-end: 2rem;
+    }
+
     ul {
         gap: 1rem;
     }
