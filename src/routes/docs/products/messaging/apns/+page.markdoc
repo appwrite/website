@@ -29,33 +29,31 @@ Apple developer account.
 
 You will need to provide the following information from the **Apple Developer Member Center**.
 
-{% table %}
-* Field name
-* 
----
-* Team ID
-* 
-    Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
-    {% only_dark %} ![Team ID](/images/docs/messaging/providers/apns/dark/team-id.png) {% /only_dark %} {% only_light %} ![Team ID](/images/docs/messaging/providers/apns/team-id.png) {% /only_light %}
----
-* Bundle ID
-* 
-    Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
-    {% only_dark %} ![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) {% /only_dark %} {% only_light %} ![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) {% /only_light %}
----
-* Authentication key ID
-* 
-    Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
-    {% only_dark %} ![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) {% /only_dark %} {% only_light %} ![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) {% /only_light %}
----
-* Authentication key (.p8 file)
-* 
-    Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
-    {% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) {% /only_light %}
----
-* Sandbox
-* Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers to environments, **Development** (sandbox) and **Production**. Development builds on XCode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
-{% /table %}
+{% accordion %}
+{% accordion_item title="Team ID" %}
+Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
+
+{% only_dark %} ![Team ID](/images/docs/messaging/providers/apns/dark/team-id.png) {% /only_dark %} {% only_light %} ![Team ID](/images/docs/messaging/providers/apns/team-id.png) {% /only_light %}
+{% /accordion_item %}
+{% accordion_item title="Bundle ID" %}
+Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
+
+{% only_dark %} ![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) {% /only_dark %} {% only_light %} ![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) {% /only_light %}
+{% /accordion_item %}
+{% accordion_item title="Authentication key ID" %}
+Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
+
+{% only_dark %} ![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) {% /only_dark %} {% only_light %} ![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) {% /only_light %}
+{% /accordion_item %}
+{% accordion_item title="Authentication key (.p8 file)" %}
+Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
+
+{% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) {% /only_light %}
+{% /accordion_item %}
+{% accordion_item title="Sandbox" %}
+Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers to environments, **Development** (sandbox) and **Production**. Development builds on XCode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
+{% /accordion_item %}
+{% /accordion %}
 
 After adding the following details, click **Save and continue** to enable the provider.
 {% /section %}

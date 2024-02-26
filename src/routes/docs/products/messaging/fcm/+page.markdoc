@@ -34,18 +34,11 @@ Head to Firebase console -> Settings -> Project settings -> Cloud Messaging.
 If FCM is disabled, click the three-dots menu and open the link. On the following page, click **Enable** (it might take a few minutes for the action to complete).
 {% /info %}
 
-{% table %}
-* Field name
-* 
----
-* Server key (.json file)
-* 
-    Head to **Project settings** > **Service accounts** > **Generate new private key**. 
-    
-    {% only_dark %} ![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) {% /only_dark %} {% only_light %} ![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) {% /only_light %}
-{% /table %}
+Head to **Project settings** > **Service accounts** > **Generate new private key**. 
 
-After adding the following details, click **Save and continue** to enable the provider.
+{% only_dark %} ![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) {% /only_dark %} {% only_light %} ![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) {% /only_light %}
+
+After all the relevant details are provided, you can enable the provider.
 {% /section %}
 
 {% section #configure-app step=3 title="Configure app" %}

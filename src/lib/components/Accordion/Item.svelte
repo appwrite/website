@@ -23,12 +23,13 @@
     }
 
     .collapsible-button {
-        padding-block: 1rem;
+        padding-block-start: 1rem;
+        padding-block-end: 1rem;
     }
 
     .collapsible-content {
         margin-block-start: 0;
-        padding-block-end: 1rem;
+        padding-block-end: 0;
         gap: 4px;
     }
 </style>
