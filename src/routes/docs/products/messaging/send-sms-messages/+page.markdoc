@@ -54,54 +54,32 @@ You can also implement forms in your app to collect contact information and add 
 ```js
 const sdk = require('node-appwrite');
 
-// Init SDK
-const client = new sdk.Client();
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('5df5acd0d48c2')                    // Your project ID
+    .setJWT('eyJhbVCJ9.eyJ...')                     // Your secret JSON Web Token
 
 const messaging = new sdk.Messaging(client);
 
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                           // Your project ID
-    .setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') // Your secret JSON Web Token
-;
-
-const promise = messaging.createSubscriber(
-        '[TOPIC_ID]',                                      // topicId
-        '[SUBSCRIBER_ID]',                                 // subscriberId
-        '[TARGET_ID]'                                      // targetId
-    );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const subscriber = await messaging.createSubscriber(
+    '[TOPIC_ID]',         // topicId
+    '[SUBSCRIBER_ID]',    // subscriberId
+    '[TARGET_ID]'         // targetId
+);
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
-// Init SDK
-let client = new sdk.Client();
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    .setProject('5df5acd0d48c2')                  // Your project ID
+    .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
 
-let messaging = new sdk.Messaging(client);
-
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                           // Your project ID
-    .setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') // Your secret JSON Web Token
-;
-
-const promise = messaging.createSubscriber(
-        '[TOPIC_ID]',                                      // topicId
-        '[SUBSCRIBER_ID]',                                 // subscriberId
-        '[TARGET_ID]'                                      // targetId
-    );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const subscriber = await messaging.createSubscriber(
+    '[TOPIC_ID]',         // topicId
+    '[SUBSCRIBER_ID]',    // subscriberId
+    '[TARGET_ID]'         // targetId
+);
 ```
 ```php
 <?php
@@ -109,13 +87,11 @@ promise.then(function (response) {
 use Appwrite\Client;
 use Appwrite\Services\Messaging;
 
-$client = new Client();
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    ->setProject('5df5acd0d48c2')                  // Your project ID
+    ->setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
 
-$client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                           // Your project ID
-    ->setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') // Your secret JSON Web Token
-;
 
 $messaging = new Messaging($client);
 
@@ -130,16 +106,13 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-
-(client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                           # Your project ID
-  .set_jwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') # Your secret JSON Web Token
-)
+client.set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project('5df5acd0d48c2')                 # Your project ID
+client.set_jwt('eyJhbVCJ9.eyJ...')                  # Your secret JSON Web Token
 
 messaging = Messaging(client)
 
-result = messaging.create_subscriber(
+subscriber = messaging.create_subscriber(
     topic_id = '[TOPIC_ID]',
     subscriber_id = '[SUBSCRIBER_ID]',
     target_id = '[TARGET_ID]'
@@ -151,33 +124,31 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                           # Your project ID
-    .set_jwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') # Your secret JSON Web Token
+    .set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
+    .set_project('5df5acd0d48c2')                  # Your project ID
+    .set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
 
 messaging = Messaging.new(client)
 
-response = messaging.create_subscriber(
+subscriber = messaging.create_subscriber(
     topic_id: '[TOPIC_ID]',
     subscriber_id: '[SUBSCRIBER_ID]',
     target_id: '[TARGET_ID]'
 )
-
-puts response.inspect
 ```
 ```csharp
 using Appwrite;
 using Appwrite.Services;
 using Appwrite.Models;
 
-var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                            // Your project ID
-    .SetJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ..."); // Your secret JSON Web Token
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .SetProject("5df5acd0d48c2")                  // Your project ID
+    .SetJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
 
-var messaging = new Messaging(client);
+Messaging messaging = new Messaging(client);
 
-Subscriber result = await messaging.CreateSubscriber(
+Subscriber subscriber = await messaging.CreateSubscriber(
     topicId: "[TOPIC_ID]",
     subscriberId: "[SUBSCRIBER_ID]",
     targetId: "[TARGET_ID]");
@@ -185,55 +156,36 @@ Subscriber result = await messaging.CreateSubscriber(
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
-void main() {                                              // Init SDK
-  Client client = Client();
-  Messaging messaging = Messaging(client);
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    .setProject('5df5acd0d48c2')                  // Your project ID
+    .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
 
-  client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                           // Your project ID
-    .setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') // Your secret JSON Web Token
-  ;
+Messaging messaging = Messaging(client);
 
-  Future result = messaging.createSubscriber(
+Subscriber subsriber = await messaging.createSubscriber(
     topicId: '[TOPIC_ID]',
     subscriberId: '[SUBSCRIBER_ID]',
     targetId: '[TARGET_ID]',
-  );
-
-  result
-    .then((response) {
-      print(response);
-    }).catchError((error) {
-      print(error.response);
-  });
-}
+);
 ```
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
-Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                            // Your project ID
-    .setJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ..."); // Your secret JSON Web Token
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setJWT("eyJhbVCJ9.eyJ...")                   // Your secret JSON Web Token
 
-Messaging messaging = new Messaging(client);
+val messaging = Messaging(client)
 
-messaging.createSubscriber(
-    "[TOPIC_ID]",                                           // topicId
-    "[SUBSCRIBER_ID]",                                      // subscriberId
-    "[TARGET_ID]"                                           // targetId
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-
-        System.out.println(result);
-    })
-);
+val subscriber = messaging.createSubscriber(
+    topicId = "[TOPIC_ID]",
+    subscriberId = "[SUBSCRIBER_ID]",
+    targetId = "[TARGET_ID]"
+)
 ```
 ```java
 import io.appwrite.Client;
@@ -241,16 +193,16 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                            // Your project ID
-    .setJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ..."); // Your secret JSON Web Token
+    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
 
 Messaging messaging = new Messaging(client);
 
 messaging.createSubscriber(
-    "[TOPIC_ID]",                                           // topicId
-    "[SUBSCRIBER_ID]",                                      // subscriberId
-    "[TARGET_ID]"                                           // targetId
+    "[TOPIC_ID]",         // topicId
+    "[SUBSCRIBER_ID]",    // subscriberId
+    "[TARGET_ID]",        // targetId
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -265,16 +217,16 @@ messaging.createSubscriber(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                           // Your project ID
-    .setJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...") // Your secret JSON Web Token
+    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setJWT("eyJhbVCJ9.eyJ...")                   // Your secret JSON Web Token
 
 let messaging = Messaging(client)
 
 let subscriber = try await messaging.createSubscriber(
-  topicId: "[TOPIC_ID]",
-  subscriberId: "[SUBSCRIBER_ID]",
-  targetId: "[TARGET_ID]"
+    topicId: "[TOPIC_ID]",
+    subscriberId: "[SUBSCRIBER_ID]",
+    targetId: "[TARGET_ID]"
 )
 ```
 {% /multicode %}
@@ -513,7 +465,7 @@ let topic = try await messaging.createTopic(
 
 # Send SMS messages {% #send-sms %}
 You can send SMS messages using a Server SDK.
-To send an SMS messages immediately, you can call the `createSMS` endpoint with `status` set to `'processing'` and `schedule` left empty.
+To send an SMS messages immediately, you can call the `createSMS` endpoint without passing either the `draft` or `scheduledAt` parameters.
 
 {% multicode %}
 ```js
@@ -536,7 +488,7 @@ const promise = messaging.createSMS(
         [],                                            // topics (optional)
         [],                                            // users (optional)
         [],                                            // targets (optional)
-        'processing',                                  // status (optional)
+        false,                                             // draft (optional)
         ''                                             // scheduledAt (optional)
     );
 
@@ -566,7 +518,7 @@ const promise = messaging.createSMS(
         [],                                            // topics (optional)
         [],                                            // users (optional)
         [],                                            // targets (optional)
-        'processing',                                  // status (optional)
+        false,                                             // draft (optional)
         ''                                             // scheduledAt (optional)
     );
 
@@ -598,7 +550,7 @@ $result = $messaging->createSMS(
     topics: [],                                        // optional
     users: [],                                         // optional
     targets: [],                                       // optional
-    status: 'processing',                              // optional
+    draft: false,                                      // optional
     scheduledAt: ''                                    // optional
 );
 ```
