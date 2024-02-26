@@ -223,11 +223,10 @@ export async function getService(
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
-    const tag = api.tags?.find((n) => n.name === service);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: tag?.name as Service,
+            name: service as Service,
             description: await getDescription(service)
         },
         methods: []
