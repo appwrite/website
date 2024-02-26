@@ -61,10 +61,10 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const response = await users.createTarget(
+const target = await users.createTarget(
     '<USER_ID>',                     // userId
     '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
+    sdk.MessagingProviderType.Phone, // providerType
     '<IDENTIFIER>',                  // identifier
     '<PROVIDER_ID>',                 // providerId (optional)
     '<NAME>'                         // name (optional)
@@ -80,10 +80,10 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const response = await users.createTarget(
+const target = await users.createTarget(
     '<USER_ID>',                     // userId
     '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
+    sdk.MessagingProviderType.Phone, // providerType
     '<IDENTIFIER>',                  // identifier
     '<PROVIDER_ID>',                 // providerId (optional)
     '<NAME>'                         // name (optional)
@@ -103,7 +103,7 @@ $client = (new Client())
 
 $users = new Users($client);
 
-$result = $users->createTarget(
+$target = $users->createTarget(
     userId: '<USER_ID>',
     targetId: '<TARGET_ID>',
     providerType: MessagingProviderType::EMAIL(),
@@ -123,10 +123,10 @@ client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 users = Users(client)
 
-result = users.create_target(
+target = users.create_target(
     user_id = '<USER_ID>',
     target_id = '<TARGET_ID>',
-    provider_type = MessagingProviderType.EMAIL,
+    provider_type = MessagingProviderType.PHONE,
     identifier = '<IDENTIFIER>',
     provider_id = '<PROVIDER_ID>', # optional
     name = '<NAME>' # optional
@@ -145,7 +145,7 @@ client = Client.new
 
 users = Users.new(client)
 
-response = users.create_target(
+target = users.create_target(
     user_id: '<USER_ID>',
     target_id: '<TARGET_ID>',
     provider_type: MessagingProviderType::EMAIL,
@@ -154,7 +154,7 @@ response = users.create_target(
     name: '<NAME>'                  # optional
 )
 
-puts response.inspect
+puts target.inspect
 ```
 ```csharp
 using Appwrite;
@@ -169,10 +169,10 @@ Client client = new Client()
 
 Users users = new Users(client);
 
-Target result = await users.CreateTarget(
+Target target = await users.CreateTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>",
-    providerType: MessagingProviderType.Email,
+    providerType: MessagingProviderType.Phone,
     identifier: "<IDENTIFIER>",
     providerId: "<PROVIDER_ID>",  // optional
     name: "<NAME>"                // optional
@@ -188,16 +188,16 @@ Client client = Client()
 
 Users users = Users(client);
 
-Future result = users.createTarget(
+Future target = users.createTarget(
   userId: '<USER_ID>',
   targetId: '<TARGET_ID>',
-  providerType:  MessagingProviderType.email,
+  providerType:  MessagingProviderType.phone,
   identifier: '<IDENTIFIER>',
   providerId: '<PROVIDER_ID>',  // (optional)
   name: '<NAME>',               // (optional)
 );
 
-result.then((response) {
+target.then((response) {
   print(response);
 }).catchError((error) {
   print(error.response);
@@ -217,10 +217,10 @@ val client = Client()
 
 val users = Users(client)
 
-val response = users.createTarget(
+val target = users.createTarget(
     userId = "<USER_ID>",
     targetId = "<TARGET_ID>",
-    providerType =  MessagingProviderType.EMAIL,
+    providerType =  MessagingProviderType.PHONE,
     identifier = "<IDENTIFIER>",
     providerId = "<PROVIDER_ID>",   // optional
     name = "<NAME>"                 // optional
@@ -243,17 +243,17 @@ Users users = new Users(client);
 users.createTarget(
     "<USER_ID>",                    // userId
     "<TARGET_ID>",                  // targetId
-    MessagingProviderType.EMAIL,    // providerType
+    MessagingProviderType.PHONE,    // providerType
     "<IDENTIFIER>",                 // identifier
     "<PROVIDER_ID>",                // providerId (optional)
     "<NAME>",                       // name (optional)
-    new CoroutineCallback<>((result, error) -> {
+    new CoroutineCallback<>((target, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
 
-        System.out.println(result);
+        System.out.println(target);
     })
 );
 ```
@@ -271,7 +271,7 @@ let users = Users(client)
 let target = try await users.createTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>",
-    providerType: .email,
+    providerType: .phone,
     identifier: "<IDENTIFIER>",
     providerId: "<PROVIDER_ID>", // optional
     name: "<NAME>"               // optional
