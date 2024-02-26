@@ -18,13 +18,13 @@ You can also use Appwrite Messaging to implement security checks and custom auth
 
 Explore what you can build with Appwrite Messaging. 
 {% cards %}
-{% cards_item href="/docs/products/messaging/send-email-messages" title="Emails" %}
-Send newsletters, invoices, promitions and other emails.
+{% cards_item href="/docs/products/messaging/send-email-messages" title="Emails" icon="icon-mail" %}
+Send newsletters, invoices, promotions and other emails.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/send-sms-messages" title="SMS messages" %}
+{% cards_item href="/docs/products/messaging/send-sms-messages" title="SMS messages" icon="icon-annotation" %}
 Send SMS messages straight to your user's phone.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" %}
+{% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" icon="icon-device-mobile" %}
 Send push notifications to your user's devices.
 {% /cards_item %}
 {% /cards %}
