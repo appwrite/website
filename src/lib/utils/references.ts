@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import type { Language } from './code';
 import { browser } from '$app/environment';
 
-const allVersions = ['1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
+const allVersions = ['1.5.x', '1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
 
 export type Version = (typeof allVersions)[number];
 
@@ -15,11 +15,12 @@ export enum Service {
     Avatars = 'avatars',
     Databases = 'databases',
     Functions = 'functions',
+    Messaging = 'messaging',
     Health = 'health',
     Locale = 'locale',
     Storage = 'storage',
     Teams = 'teams',
-    Users = 'users'
+    Users = 'users',
 }
 
 export enum Platform {
@@ -67,7 +68,7 @@ export const platformMap: Record<Language | string, string> = {
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
-    jsx: 'React',	
+    jsx: 'React',
     tsx: 'React',
     typescript: 'TypeScript',
     dart: 'Dart',
@@ -106,11 +107,12 @@ export const serviceMap: Record<Service, string> = {
     [Service.Avatars]: 'Avatars',
     [Service.Databases]: 'Databases',
     [Service.Functions]: 'Functions',
+    [Service.Messaging]: 'Messaging',
     [Service.Health]: 'Health',
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users'
+    [Service.Users]: 'Users',
 };
 
 export const preferredVersion = writable<Version | null>(

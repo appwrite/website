@@ -17,6 +17,7 @@
     import Day from './(days)/Day.svelte';
     import Video from './(components)/Video.svelte';
     import { fade } from 'svelte/transition';
+    import Day1 from './(days)/Day1.svelte';
 
     const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
@@ -35,7 +36,7 @@
 
     $: days = [
         {
-            title: 'XXX',
+            title: 'Messaging',
             release: base
         },
         {
@@ -206,14 +207,16 @@
                 </div>
             </Day>
             {#each days as day, i}
-                <h2 class="aw-eyebrow aw-u-color-text-primary">
-                    <div class="aw-dot" />
-                    DAY {i} - {toReleaseDate(day.release)}<span class="aw-u-color-text-accent"
-                        >_</span
-                    >
-                </h2>
-
-                <CountdownCard date={day.release} />
+                {#if i === 0}
+                    <Day1 release={day.release} />
+                {:else}
+                    <h2 class="aw-eyebrow aw-u-color-text-primary">
+                        <div class="aw-dot" />
+                        DAY {i} - {toReleaseDate(day.release)}
+                        <span class="aw-u-color-text-accent">_</span>
+                    </h2>
+                    <CountdownCard date={day.release} />
+                {/if}
             {/each}
         </div>
     </div>

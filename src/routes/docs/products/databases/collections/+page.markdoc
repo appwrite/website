@@ -3,10 +3,10 @@ layout: article
 title: Collections
 description: Organize your data with Appwrite Collections. Explore how to create and configure collections to store and structure your data effectively.
 ---
-Appwrite uses collections as containers of documents. Each collection contains many documents identical in structure. 
-The terms collections and documents are used because the Appwrite JSON REST API resembles the API of a traditional NoSQL database. 
+Appwrite uses collections as containers of documents. Each collection contains many documents identical in structure.
+The terms collections and documents are used because the Appwrite JSON REST API resembles the API of a traditional NoSQL database.
 
-That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions. 
+That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions.
 
 # Create collection {% #create-collection %}
 You can create collections using the Appwrite Console or a [Server SDK](/docs/sdks#server).
@@ -35,7 +35,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.createCollection('[DATABASE_ID]', '[COLLECTION_ID]', '[NAME]');
+const promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
 
 promise.then(function (response) {
     console.log(response);
@@ -58,7 +58,7 @@ client
 ;
 
 
-let promise = databases.createCollection('[DATABASE_ID]', '[COLLECTION_ID]', '[NAME]');
+let promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
 
 promise.then(function (response) {
     console.log(response);
@@ -82,7 +82,7 @@ $client
 
 $databases = new Databases($client);
 
-$result = $databases->createCollection('[DATABASE_ID]', '[COLLECTION_ID]', '[NAME]');
+$result = $databases->createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
 ```
 ```python
 from appwrite.client import Client
@@ -98,7 +98,7 @@ client = Client()
 
 databases = Databases(client)
 
-result = databases.create_collection('[DATABASE_ID]', '[COLLECTION_ID]', '[NAME]')
+result = databases.create_collection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]')
 ```
 ```ruby
 require 'Appwrite'
@@ -112,7 +112,7 @@ client = Client.new
 
 databases = Databases.new(client)
 
-response = databases.create_collection(database_id: '[DATABASE_ID]', collection_id: '[COLLECTION_ID]', name: '[NAME]')
+response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '[COLLECTION_ID]', name: '[NAME]')
 
 puts response.inspect
 ```
@@ -129,8 +129,8 @@ var client = new Client()
 var databases = new Databases(client);
 
 Collection result = await databases.CreateCollection(
-    databaseId: "[DATABASE_ID]",
-    collectionId: "[COLLECTION_ID]",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     name: "[NAME]");
 ```
 ```dart
@@ -147,7 +147,7 @@ void main() { // Init SDK
   ;
 
   Future result = databases.createCollection(
-    databaseId: '[DATABASE_ID]',
+    databaseId: '<DATABASE_ID>',
     collectionId: '[COLLECTION_ID]',
     name: '[NAME]',
   );
@@ -172,8 +172,8 @@ val client = Client(context)
 val databases = Databases(client)
 
 val response = databases.createCollection(
-    databaseId = "[DATABASE_ID]",
-    collectionId = "[COLLECTION_ID]",
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
     name = "[NAME]",
 )
 ```
@@ -190,8 +190,8 @@ Client client = new Client()
 Databases databases = new Databases(client);
 
 databases.createCollection(
-    "[DATABASE_ID]",
-    "[COLLECTION_ID]",
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
     "[NAME]",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -214,8 +214,8 @@ let client = Client()
 let databases = Databases(client)
 
 let collection = try await databases.createCollection(
-    databaseId: "[DATABASE_ID]",
-    collectionId: "[COLLECTION_ID]",
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
     name: "[NAME]"
 )
 ```
@@ -227,7 +227,7 @@ You can also configure **permissions** in the `createCollection` method, learn m
 
 # Permissions {% #permissions %}
 Appwrite uses permissions to control data access.
-For security, only users that are granted permissions can access a resource. 
+For security, only users that are granted permissions can access a resource.
 This helps prevent accidental data leaks by forcing you to make more concious decisions around permissions.
 
 By default, Appwrite doesn't grant permissions to any users when a new collection is created.
@@ -237,8 +237,8 @@ This means users can't create new documents or read, update, and delete existing
 
 # Attributes {% #attributes %}
 All documents in a collection follow the same structure.
-Attributes are used to define the structure of your documents and help the Appwrite's API validate your users' input. 
-Add your first attribute by clicking the **Add attribute** button. 
+Attributes are used to define the structure of your documents and help the Appwrite's API validate your users' input.
+Add your first attribute by clicking the **Add attribute** button.
 
 You can choose between the following types.
 
@@ -255,14 +255,14 @@ You can choose between the following types.
 | `url`        | URL attribute.                                                   |
 | `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases) |
 
-If an attribute must be populated in all documents, set it as `required`. 
-If not, you may optionally set a default value. 
+If an attribute must be populated in all documents, set it as `required`.
+If not, you may optionally set a default value.
 Additionally, decide if the attribute should be a single value or an array of values.
 
 # Indexes {% #indexes %}
 
-Databases use indexes to quickly locate data without having to search through every document for matches. 
-To ensure the best performance, Appwrite recommends an index for every attribute queried. 
+Databases use indexes to quickly locate data without having to search through every document for matches.
+To ensure the best performance, Appwrite recommends an index for every attribute queried.
 If you plan to query multiple attributes in a single query, creating an index with **all** queried attributes will yield optimal performance.
 
 The following indexes are currently supported:
@@ -273,4 +273,4 @@ The following indexes are currently supported:
 | `unique`   | Unique Index to disallow duplicates.                                                                          |
 | `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/queries#query-class).     |
 
-You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server). 
+You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).
