@@ -234,7 +234,7 @@ export async function getService(
     };
 
     const examples = getExamples(version);
-    
+
     if (!examples) {
         return data;
     }
@@ -302,7 +302,7 @@ export async function getService(
             'rate-key': operation['x-appwrite']['rate-key']
         });
     }
-    console.log(data);
+
     return data;
 }
 

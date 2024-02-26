@@ -44,7 +44,7 @@ $client
 $users = new Users($client);
 
 $result = $users->updateLabels(
-    '<USER_ID>', 
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 ```
@@ -61,7 +61,7 @@ client = Client()
   .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('<API_KEY>')                     # Your secret API key
 )
- 
+
 users = Users(client)
 
 result = users.update_labels(
@@ -184,5 +184,5 @@ This would correspond with the permissions below.
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
-Learn more about permissions 
+Learn more about permissions
 {% /arrow_link %}

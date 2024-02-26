@@ -5,7 +5,7 @@ description: Learn about Appwrite messages, the different types of messages, wha
 back: /docs
 ---
 
-Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite 
+Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite
 as a **message** is displayed in the **Messages** tab.
 
 {% only_dark %}
@@ -55,12 +55,12 @@ There are three types of messages
 * Description
 ---
 * Push notifications
-* Push notifications are alerts that show up on a user device's notification center. 
+* Push notifications are alerts that show up on a user device's notification center.
 This can be used to deliver messages to the user whether their application is open or not.
 ---
 * Emails
-* Emails let you deliver rich content to a users' inbox. 
-Appwrite allows you to send customized HTML email messages so you can include links, styling, and more. 
+* Emails let you deliver rich content to a users' inbox.
+Appwrite allows you to send customized HTML email messages so you can include links, styling, and more.
 ---
 * SMS
 * SMS messages let you deliver text messages to your user's phone.
@@ -68,7 +68,7 @@ This helps you reach your user, even when their device do not have internet acce
 {% /table %}
 
 # Messages lifecycle {% #messages-lifecycle %}
-All messages begin as `draft`. 
+All messages begin as `draft`.
 If the message is sent immediately, its status is set to `processing`.
 If the message is scheduled to be sent later, its status is set to `scheduled`, then to `processing` at schedule time.
 After attempted delivery, it is marked as `sent` or `failed` depending on if the message was successfully delivered.
@@ -179,19 +179,19 @@ Here are the different components that make up a message.
 * required
 * The main content of the email. This can be plain text or HTML, depending on the `html` flag.
 ---
-* `cc` 
+* `cc`
 * optional
 * An array of target IDs to be included in the carbon copy (CC) field. These recipients can see each other's email addresses.
 ---
-* `bcc` 
-* optional 
+* `bcc`
+* optional
 * An array of target IDs to be included in the blind carbon copy (BCC) field. These recipients cannot see each other's email addresses.
 ---
-* `html` 
+* `html`
 * optional
 * A boolean indicating whether the `content` is in HTML format. This allows for rich text, links, and styling in the email content.
 ---
-* `status` 
+* `status`
 * optional
 * The status of the email, which can be draft, scheduled, processing (default). Processing means the email is sent immediately.
 ---
@@ -280,9 +280,9 @@ client
 ;
 
 const promise = messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId   
-        '[TITLE]',                               // title   
-        '[BODY]',                                // body   
+        '[MESSAGE_ID]',                          // messageId
+        '[TITLE]',                               // title
+        '[BODY]',                                // body
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -319,10 +319,10 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createPush( 
-    messageId: '[MESSAGE_ID]', 
-    title: '[TITLE]', 
-    body: '[BODY]', 
+$result = $messaging->createPush(
+    messageId: '[MESSAGE_ID]',
+    title: '[TITLE]',
+    body: '[BODY]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -351,10 +351,10 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_push( 
-    message_id = '[MESSAGE_ID]', 
-    title = '[TITLE]', 
-    body = '[BODY]', 
+result = messaging.create_push(
+    message_id = '[MESSAGE_ID]',
+    title = '[TITLE]',
+    body = '[BODY]',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -382,9 +382,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_push(
-    message_id: '[MESSAGE_ID]', 
-    title: '[TITLE]', 
-    body: '[BODY]', 
+    message_id: '[MESSAGE_ID]',
+    title: '[TITLE]',
+    body: '[BODY]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -416,18 +416,18 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    data: [object]                                // optional    
-    action: "[ACTION]"                            // optional    
-    icon: "[ICON]"                                // optional    
-    sound: "[SOUND]"                              // optional    
-    color: "[COLOR]"                              // optional    
-    tag: "[TAG]"                                  // optional    
-    badge: "[BADGE]"                              // optional    
-    status: "draft"                               // optional    
+    body: "[BODY]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    data: [object]                                // optional
+    action: "[ACTION]"                            // optional
+    icon: "[ICON]"                                // optional
+    sound: "[SOUND]"                              // optional
+    color: "[COLOR]"                              // optional
+    tag: "[TAG]"                                  // optional
+    badge: "[BADGE]"                              // optional
+    status: "draft"                               // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
@@ -631,9 +631,9 @@ client
 ;
 
 const promise = messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId   
-        '[SUBJECT]',                             // subject   
-        '[CONTENT]',                             // content   
+        '[MESSAGE_ID]',                          // messageId
+        '[SUBJECT]',                             // subject
+        '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -666,10 +666,10 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createEmail( 
-    messageId: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+$result = $messaging->createEmail(
+    messageId: '[MESSAGE_ID]',
+    subject: '[SUBJECT]',
+    content: '[CONTENT]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -694,10 +694,10 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_email( 
-    message_id = '[MESSAGE_ID]', 
-    subject = '[SUBJECT]', 
-    content = '[CONTENT]', 
+result = messaging.create_email(
+    message_id = '[MESSAGE_ID]',
+    subject = '[SUBJECT]',
+    content = '[CONTENT]',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -721,9 +721,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_email(
-    message_id: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    subject: '[SUBJECT]',
+    content: '[CONTENT]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -751,14 +751,14 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreateEmail(
     messageId: "[MESSAGE_ID]",
     subject: "[SUBJECT]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    cc: new List<string> {}                       // optional    
-    bcc: new List<string> {}                      // optional    
-    status: "draft"                               // optional    
-    html: false                                   // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    cc: new List<string> {}                       // optional
+    bcc: new List<string> {}                      // optional
+    status: "draft"                               // optional
+    html: false                                   // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
@@ -942,8 +942,8 @@ client
 ;
 
 const promise = messaging.createSMS(
-        '[MESSAGE_ID]',                          // messageId   
-        '[CONTENT]',                             // content   
+        '[MESSAGE_ID]',                          // messageId
+        '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -973,9 +973,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS( 
-    messageId: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+$result = $messaging->createSMS(
+    messageId: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -997,9 +997,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_sms( 
-    message_id = '[MESSAGE_ID]', 
-    content = '[CONTENT]', 
+result = messaging.create_sms(
+    message_id = '[MESSAGE_ID]',
+    content = '[CONTENT]',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -1020,8 +1020,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -1045,11 +1045,11 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    status: "draft"                               // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    status: "draft"                               // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
