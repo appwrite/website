@@ -4,6 +4,7 @@
     import MessagePng from '../(assets)/message.png?enhanced';
     import GmailPng from '../(assets)/gmail.png?enhanced';
     import AndroidSvg from '../(assets)/android.svg';
+    import IphoneSvg from '../(assets)/iphone.svg';
     import { onMount } from 'svelte';
     import { inView } from 'motion';
     import { sleep } from '$lib/animations';
@@ -61,35 +62,9 @@
 
 <Step title="Step 4 - Send">
     <div class="wrapper" bind:this={wrapper}>
-        <div class="phone">
-            <div class="inner">
-                <div class="notch" />
-                <span class="date">Sunday, October 1</span>
-                <span class="time">9:41</span>
+        <img src={IphoneSvg} alt="" class="phonesvg" />
+        <div class="img-overlay" />
 
-                <div class="notifications">
-                    {#each notifications as notification (notification.title)}
-                        <div
-                            class="notification"
-                            data-no-radius={notification.noRadius ? '' : undefined}
-                            transition:fly={{ x: -4 }}
-                        >
-                            <enhanced:img src={notification.icon} alt="" class="icon" />
-                            <div>
-                                <span class="title">{notification.title}</span>
-                                <p class="description">
-                                    {notification.description}
-                                </p>
-                            </div>
-                            <span class="time">{notification.time}</span>
-                        </div>
-                    {/each}
-                </div>
-
-                <enhanced:img src="../(assets)/blur-left.png" alt="" class="blur-left" />
-                <enhanced:img src="../(assets)/blur-right.png" alt="" class="blur-right" />
-            </div>
-        </div>
         <div class="android">
             <img src={AndroidSvg} alt="" class="android" />
             <h3 class="aw-title aw-u-color-text-primary">Communicate across multiple channels</h3>
@@ -124,6 +99,27 @@
         }
     }
 
+    .phonesvg {
+        width: 24.375rem;
+        height: 49rem;
+        margin-inline-start: 15rem;
+        z-index: 10;
+    }
+    .img-overlay {
+        height: 50%;
+        width: 100%;
+        z-index: 10;
+        position: absolute;
+        inset: 0;
+        inset-block-start: 50%;
+        inset-block-end: -1rem;
+        background: linear-gradient(
+            to bottom,
+            hsl(270, 4%, 10%, 0) 0%,
+            hsl(270, 4%, 10%, 0.4) 10%,
+            hsl(270, 4%, 10%, 1)
+        );
+    }
     .phone {
         @include border-gradient;
         --m-border-radius: 3.75rem;
