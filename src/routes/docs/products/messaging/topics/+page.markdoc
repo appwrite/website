@@ -22,7 +22,7 @@ Learn more about targets
 
 # Organizing topics {% #organizing-topics %}
 A topic should have semantic meaning.
-For example, a topic can represent a group of customers that receing a common announcemennt or publishing public updates.
+For example, a topic can represent a group of customers that receiving a common announcemennt or publishing public updates.
 It's important to keep privacy in mind when using topics.
 Prefer sending private information like chat messages by addressing individual targets attached to a user.
 
@@ -286,7 +286,7 @@ Learn more about permission roles
 # Subscribe targets to a topic {% #subscribe-targets-to-topics %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
-During development, you can subscribe targests to a topic for testing right in the Appwrite console.
+During development, you can subscribe targets to a topic for testing right in the Appwrite console.
 {% only_dark %}
 ![Add a topic](/images/docs/messaging/topics/dark/add-subscriber.png)
 {% /only_dark %}

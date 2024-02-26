@@ -102,7 +102,7 @@
 			items: [
 				{
 					label: 'API reference',
-					href: '#'
+					href: '/docs/references/1.5.x/client-web/messaging'
 				},
 			]
 		},
