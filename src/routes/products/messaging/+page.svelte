@@ -298,7 +298,7 @@ messaging.create_email(
         <div
             class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light aw-u-padding-block-end-0"
         >
-            <div class="aw-big-padding-section-level-2">
+            <div class="aw-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="aw-container">
                     <section class="aw-hero is-align-start">
                         <span class="aw-badges aw-eyebrow">capabilities_</span>
@@ -322,13 +322,19 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/fcm"
+                                        >
                                             <span class="aw-icon-firebase" aria-hidden="true" />
                                             <span class="text">FCM</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/apns"
+                                        >
                                             <span class="aw-icon-apple" aria-hidden="true" />
                                             <span class="text">APNS</span>
                                         </a>
@@ -349,13 +355,19 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/mailgun"
+                                        >
                                             <span class="aw-icon-mailgun" aria-hidden="true" />
                                             <span class="text">Mailgun</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/sendgrid"
+                                        >
                                             <span class="aw-icon-sendgrid" aria-hidden="true" />
                                             <span class="text">SendGrid</span>
                                         </a>
@@ -375,21 +387,27 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/twilio"
+                                        >
                                             <span class="icon-twilio" aria-hidden="true" />
                                             <span class="text">Twilio</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs/products/messaging/vonage"
+                                        >
                                             <span class="icon-vonage" aria-hidden="true" />
                                             <span class="text">Vonage</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <span class="aw-tag">
                                             <span class="text">+3</span>
-                                        </a>
+                                        </span>
                                     </li>
                                 </ul>
                             </li>
@@ -409,7 +427,7 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <a class="aw-interactive-tag" href="/docs">
                                             <span
                                                 class="aw-icon-appwrite u-small aw-u-margin-inline-end-4"
                                                 aria-hidden="true"
@@ -435,22 +453,22 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <span class="aw-interactive-tag">
                                             <span class="icon-slack" aria-hidden="true" />
                                             <span class="text">Slack</span>
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <span class="aw-interactive-tag">
                                             <span class="icon-discord" aria-hidden="true" />
                                             <span class="text">Discord</span>
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a class="aw-interactive-tag" href="/">
+                                        <span class="aw-interactive-tag">
                                             <span class="icon-whatsapp" aria-hidden="true" />
                                             <span class="text">WhatsApp</span>
-                                        </a>
+                                        </span>
                                     </li>
                                 </ul>
                             </li>
@@ -458,7 +476,7 @@ messaging.create_email(
                     </div>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative u-z-index-1 theme-light">
+            <!-- <div class="aw-big-padding-section-level-2 u-position-relative u-z-index-1 theme-light">
                 <div class="aw-container u-position-relative">
                     <img
                         class="u-position-absolute u-z-index-1 is-not-mobile"
@@ -497,7 +515,7 @@ messaging.create_email(
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div
