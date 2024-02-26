@@ -27,7 +27,7 @@ const user = useUserSession();
       <!-- Email and logout button if logged in user -->
       <div
         class="main-header-end u-margin-inline-end-16"
-        v-if="user.current.value"      
+        v-if="user.current.value"
         >
         <p>{{ user.current.providerUid }}</p>
         <button class="button" type="button" @click="user.logout()">

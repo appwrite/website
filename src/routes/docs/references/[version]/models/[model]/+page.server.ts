@@ -2,16 +2,6 @@ import { getApi, getIdFromReference, getSchema, type AppwriteSchemaObject } from
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
-// export const entries: EntryGenerator = () => {
-// 	return ['cloud', ...(versions as string[])].flatMap((version) => {
-// 		return platforms.flatMap((platform) => {
-// 			return services.map((service) => {
-// 				return { service, version, platform };
-// 			});
-// 		});
-// 	});
-// };
-
 type Model = {
     title: string;
     properties: Array<{
@@ -24,7 +14,7 @@ type Model = {
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-    const version = params.version === 'cloud' ? '1.5.x' : params.version;
+    const version = params.version === 'cloud' ? '1.4.x' : params.version;
     const api = await getApi(version, 'console-web');
     const schema = getSchema(params.model, api);
     const props = Object.entries(schema.properties ?? {});

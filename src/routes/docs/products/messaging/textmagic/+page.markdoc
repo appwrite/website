@@ -5,7 +5,7 @@ description: Send SMS messages to your Appwrite users using TextMagic and Appwri
 back: /docs/
 ---
 
-TextMagic lets you send customized SMS messages to your users. 
+TextMagic lets you send customized SMS messages to your users.
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
@@ -19,7 +19,7 @@ To add TextMagic as a provider, navigate to **Messaging** > **Providers** > {% i
 ![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **TextMagic** > click **Save and continue**. 
+Give your provider a name > choose **TextMagic** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
@@ -46,7 +46,7 @@ After adding the following details, click **Save and continue** to enable the pr
 {% /section %}
 
 {% section #test-provider step=3 title="Test provider" %}
-Before sending your first message, 
+Before sending your first message,
 make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -111,8 +111,8 @@ client
 ;
 
 const promise = messaging.createSMS(
-        '[MESSAGE_ID]',                          // messageId   
-        '[CONTENT]',                             // content   
+        '[MESSAGE_ID]',                          // messageId
+        '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -142,9 +142,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS( 
-    messageId: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+$result = $messaging->createSMS(
+    messageId: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -166,9 +166,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_sms( 
-    message_id = '[MESSAGE_ID]', 
-    content = '[CONTENT]', 
+result = messaging.create_sms(
+    message_id = '[MESSAGE_ID]',
+    content = '[CONTENT]',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -189,8 +189,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    content: '[CONTENT]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -214,11 +214,11 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    status: "draft"                               // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    status: "draft"                               // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
@@ -342,7 +342,7 @@ You can follow the [Send SMS messages](/docs/products/messaging/send-sms-message
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
-You can update or delete a provider in the Appwrite Console. 
+You can update or delete a provider in the Appwrite Console.
 
 Navigate to **Messaging** > **Providers** > click your provider.
 In the settings, you can update a provider's configuration or delete the provider.
@@ -395,7 +395,7 @@ client
 ;
 
 const promise = messaging.updateTextmagicProvider(
-        '[PROVIDER_ID]',                         // providerId   
+        '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         '[USERNAME]',                            // username (optional)
@@ -425,8 +425,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateTextmagicProvider( 
-    providerId: '[PROVIDER_ID]', 
+$result = $messaging->updateTextmagicProvider(
+    providerId: '[PROVIDER_ID]',
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
     username: '[USERNAME]',                       // optional
@@ -448,8 +448,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_textmagic_provider( 
-    provider_id = '[PROVIDER_ID]', 
+result = messaging.update_textmagic_provider(
+    provider_id = '[PROVIDER_ID]',
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
     username = '[USERNAME]',                    # optional
@@ -470,7 +470,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_textmagic_provider(
-    provider_id: '[PROVIDER_ID]', 
+    provider_id: '[PROVIDER_ID]',
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
     username: '[USERNAME]',                       # optional
@@ -493,11 +493,11 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateTextmagicProvider(
-    providerId: "[PROVIDER_ID]"    
-    name: "[NAME]"                                // optional    
-    enabled: false                                // optional    
-    username: "[USERNAME]"                        // optional    
-    apiKey: "[API_KEY]"                           // optional    
+    providerId: "[PROVIDER_ID]"
+    name: "[NAME]"                                // optional
+    enabled: false                                // optional
+    username: "[USERNAME]"                        // optional
+    apiKey: "[API_KEY]"                           // optional
     from: "[FROM]");                              // optional
 ```
 ```dart

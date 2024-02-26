@@ -17,7 +17,7 @@ To add a custom SMTP server as a provider, navigate to **Messaging** > **Provide
 ![Add a SMTP provider](/images/docs/messaging/providers/smtp/add-smtp.png)
 {% /only_light %}
 
-Give your provider a name > choose **SMTP** > click **Save and continue**. 
+Give your provider a name > choose **SMTP** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
@@ -68,7 +68,7 @@ After adding the following details, click **Save and continue** to enable the pr
 {% /section %}
 
 {% section #test-provider step=3 title="Test provider" %}
-Before sending your first message, 
+Before sending your first message,
 make sure you've configured [a topic](/docs/products/messaging/topics) and [a target](/docs/products/messaging/targets) to send messages to.
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -298,7 +298,7 @@ You can follow the [Send email messages](/docs/products/messaging/send-push-noti
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
-You can update or delete a provider in the Appwrite Console. 
+You can update or delete a provider in the Appwrite Console.
 
 Navigate to **Messaging** > **Providers** > click your provider.
 In the settings, you can update a provider's configuration or delete the provider.
@@ -324,11 +324,11 @@ client
 // update provider
 messaging.updateSendgridProvider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>',  
-    '<API_KEY>', 
-    '<DOMAIN>', 
+    '<PROVIDER_NAME>',
+    '<API_KEY>',
+    '<DOMAIN>',
     '<IS_EU_REGION?>',
-    '<SENDER_NAME>', 
+    '<SENDER_NAME>',
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
     '<REPLY_TO_EMAIL>',
@@ -358,11 +358,11 @@ let messaging = new sdk.Messaging(client);
 // update provider
 messaging.updateSendgridProvider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>',  
-    '<API_KEY>', 
-    '<DOMAIN>', 
+    '<PROVIDER_NAME>',
+    '<API_KEY>',
+    '<DOMAIN>',
     '<IS_EU_REGION?>',
-    '<SENDER_NAME>', 
+    '<SENDER_NAME>',
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
     '<REPLY_TO_EMAIL>',
@@ -399,11 +399,11 @@ $messaging = new Messaging($client);
 
 $result = $messaging->updateSendgridProvider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>', 
-    '<API_KEY>', 
-    '<DOMAIN>', 
+    '<PROVIDER_NAME>',
+    '<API_KEY>',
+    '<DOMAIN>',
     '<IS_EU_REGION?>',
-    '<SENDER_NAME>', 
+    '<SENDER_NAME>',
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
     '<REPLY_TO_EMAIL>',
@@ -425,11 +425,11 @@ messaging = Messaging(client)
 
 result = messaging.update_sendgrid_provider(
     '<PROVIDER_ID>',
-    '<PROVIDER_NAME>',  
+    '<PROVIDER_NAME>',
     '<API_KEY>',
-    '<DOMAIN>', 
+    '<DOMAIN>',
     '<IS_EU_REGION?>',
-    '<SENDER_NAME>', 
+    '<SENDER_NAME>',
     '<SENDER_EMAIL>',
     '<REPLY_TO_NAME>',
     '<REPLY_TO_EMAIL>',
@@ -450,11 +450,11 @@ messaging = Messaging.new(client)
 
 response = messaging.update_sendgrid_provider(
     provider_id: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>",  
-    api_key: "<API_KEY>", 
+    name: "<PROVIDER_NAME>",
+    api_key: "<API_KEY>",
     domain: "<DOMAIN>",
     isEuRegion: "<IS_EU_REGION?>",
-    from_name: "<SENDER_NAME>", 
+    from_name: "<SENDER_NAME>",
     from_email: "<SENDER_EMAIL>",
     reply_to_name: "<REPLY_TO_NAME>",
     reply_to_email: "<REPLY_TO_EMAIL>",
@@ -478,11 +478,11 @@ var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateSendgridProvider(
     providerId: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>",  
-    apiKey: "<API_KEY>", 
-    domain: "<DOMAIN>", 
+    name: "<PROVIDER_NAME>",
+    apiKey: "<API_KEY>",
+    domain: "<DOMAIN>",
     isEuRegion: "<IS_EU_REGION?>",
-    fromName: "<SENDER_NAME>", 
+    fromName: "<SENDER_NAME>",
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
     replyToEmail: "<REPLY_TO_EMAIL>",
@@ -504,11 +504,11 @@ void main() { // Init SDK
 
   Future result = messaging.updateSendgridProvider(
     providerId: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>",  
-    apiKey: "<API_KEY>", 
-    domain: "<DOMAIN>", 
+    name: "<PROVIDER_NAME>",
+    apiKey: "<API_KEY>",
+    domain: "<DOMAIN>",
     isEuRegion: "<IS_EU_REGION?>",
-    fromName: "<SENDER_NAME>", 
+    fromName: "<SENDER_NAME>",
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
     replyToEmail: "<REPLY_TO_EMAIL>",
@@ -537,11 +537,11 @@ val messaging = Messaging(client)
 
 val response = messaging.updateSendgridProvider(
     providerId = "<PROVIDER_ID>",
-    name = "<PROVIDER_NAME>",  
-    apiKey = "<API_KEY>", 
-    domain = "<DOMAIN>", 
+    name = "<PROVIDER_NAME>",
+    apiKey = "<API_KEY>",
+    domain = "<DOMAIN>",
     isEuRegion = "<IS_EU_REGION?>",
-    fromName = "<SENDER_NAME>", 
+    fromName = "<SENDER_NAME>",
     fromEmail = "<SENDER_EMAIL>",
     replyToName = "<REPLY_TO_NAME>",
     replyToEmail = "<REPLY_TO_EMAIL>",
@@ -563,11 +563,11 @@ Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
     "<PROVIDER_ID>",
-    "<PROVIDER_NAME>",  
-    "<API_KEY>", 
-    "<DOMAIN>", 
+    "<PROVIDER_NAME>",
+    "<API_KEY>",
+    "<DOMAIN>",
     "<IS_EU_REGION?>",
-    "<SENDER_NAME>", 
+    "<SENDER_NAME>",
     "<SENDER_EMAIL>",
     "<REPLY_TO_NAME>",
     "<REPLY_TO_EMAIL>",
@@ -594,11 +594,11 @@ let messaging = Messaging(client)
 
 let provider = try await messaging.updateSendgridProvider(
     providerId: "<PROVIDER_ID>",
-    name: "<PROVIDER_NAME>", 
-    apiKey: "<API_KEY>", 
-    domain: "<DOMAIN>", 
-    isEuRegion: "<IS_EU_REGION?>", 
-    fromName: "<SENDER_NAME>", 
+    name: "<PROVIDER_NAME>",
+    apiKey: "<API_KEY>",
+    domain: "<DOMAIN>",
+    isEuRegion: "<IS_EU_REGION?>",
+    fromName: "<SENDER_NAME>",
     fromEmail: "<SENDER_EMAIL>",
     replyToName: "<REPLY_TO_NAME>",
     replyToEmail: "<REPLY_TO_EMAIL>",

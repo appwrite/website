@@ -20,7 +20,7 @@ To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon i
 ![Add a FCM provider](/images/docs/messaging/providers/apns/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **APNS** > click **Save and continue**. 
+Give your provider a name > choose **APNS** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
@@ -39,31 +39,31 @@ Head to **Apple Developer Member Center** > **Membership details** > **Team ID**
 {% accordion_item title="Bundle ID" %}
 Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**
 
-{% only_dark %} 
-![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png) 
-{% /only_dark %} 
-{% only_light %} 
-![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png) 
+{% only_dark %}
+![Bundle ID](/images/docs/messaging/providers/apns/dark/bundle-id.png)
+{% /only_dark %}
+{% only_light %}
+![Bundle ID](/images/docs/messaging/providers/apns/bundle-id.png)
 {% /only_light %}
 {% /accordion_item %}
 {% accordion_item title="Authentication key ID" %}
 Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. The key needs **Apple Push Notification Service** enabled.
 
-{% only_dark %} 
-![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png) 
-{% /only_dark %} 
-{% only_light %} 
-![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png) 
+{% only_dark %}
+![Authentication Key ID](/images/docs/messaging/providers/apns/dark/key-id.png)
+{% /only_dark %}
+{% only_light %}
+![Authentication Key ID](/images/docs/messaging/providers/apns/key-id.png)
 {% /only_light %}
 {% /accordion_item %}
 {% accordion_item title="Authentication key (.p8 file)" %}
 Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. The key needs **Apple Push Notification Service** enabled.
 
-{% only_dark %} 
-![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png) 
-{% /only_dark %} 
-    {% only_light %} 
-![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png) 
+{% only_dark %}
+![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png)
+{% /only_dark %}
+    {% only_light %}
+![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png)
 {% /only_light %}
 {% /accordion_item %}
 {% accordion_item title="Sandbox" %}
@@ -77,11 +77,11 @@ After adding the following details, click **Save and continue** to enable the pr
 Some additional configuration is required to enable push notifications in your iOS app.
 Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 
-{% only_dark %} 
-![Enable PN on Xcode](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.png) 
-{% /only_dark %} 
-{% only_light %} 
-![Enable PN on Xcode](/images/docs/messaging/providers/apns/xcode-enable-pn.png) 
+{% only_dark %}
+![Enable PN on Xcode](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.png)
+{% /only_dark %}
+{% only_light %}
+![Enable PN on Xcode](/images/docs/messaging/providers/apns/xcode-enable-pn.png)
 {% /only_light %}
 {% /section %}
 {% section #test-provider step=4 title="Test provider" %}
@@ -91,7 +91,7 @@ Push notification requires special handling on the client side. Follow the [Send
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
-You can update or delete a provider in the Appwrite Console. 
+You can update or delete a provider in the Appwrite Console.
 
 Navigate to **Messaging** > **Providers** > click your provider.
 In the settings, you can update a provider's configuration or delete the provider.
@@ -147,7 +147,7 @@ client
 ;
 
 const promise = messaging.updateAPNSProvider(
-        '[PROVIDER_ID]',                         // providerId   
+        '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         '[AUTH_KEY]',                            // authKey (optional)
@@ -178,8 +178,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateAPNSProvider( 
-    providerId: '[PROVIDER_ID]', 
+$result = $messaging->updateAPNSProvider(
+    providerId: '[PROVIDER_ID]',
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
     authKey: '[AUTH_KEY]',                        // optional
@@ -202,8 +202,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_apns_provider( 
-    provider_id = '[PROVIDER_ID]', 
+result = messaging.update_apns_provider(
+    provider_id = '[PROVIDER_ID]',
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
     auth_key = '[AUTH_KEY]',                    # optional
@@ -225,7 +225,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_apns_provider(
-    provider_id: '[PROVIDER_ID]', 
+    provider_id: '[PROVIDER_ID]',
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
     auth_key: '[AUTH_KEY]',                       # optional
@@ -249,12 +249,12 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateAPNSProvider(
-    providerId: "[PROVIDER_ID]"    
-    name: "[NAME]"                                // optional    
-    enabled: false                                // optional    
-    authKey: "[AUTH_KEY]"                         // optional    
-    authKeyId: "[AUTH_KEY_ID]"                    // optional    
-    teamId: "[TEAM_ID]"                           // optional    
+    providerId: "[PROVIDER_ID]"
+    name: "[NAME]"                                // optional
+    enabled: false                                // optional
+    authKey: "[AUTH_KEY]"                         // optional
+    authKeyId: "[AUTH_KEY_ID]"                    // optional
+    teamId: "[TEAM_ID]"                           // optional
     bundleId: "[BUNDLE_ID]");                     // optional
 ```
 ```dart

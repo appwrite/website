@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Topics 
+title: Topics
 description: Allow groups of users to subscribe to a common topic and receive the same notifications.
 ---
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
@@ -13,7 +13,7 @@ In Appwrite Messaging, you can use topics to deliver messages to groups of users
 {% /only_light %}
 
 # Topics and targets {% #topics-and-targets %}
-A user can have multiple targets, such as emails, phone numbers, and devices with your app installed. 
+A user can have multiple targets, such as emails, phone numbers, and devices with your app installed.
 These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
 
 {% arrow_link href="/docs/products/messaging/targets" %}
@@ -23,14 +23,14 @@ Learn more about targets
 # Organizing topics {% #organizing-topics %}
 A topic should have semantic meaning.
 For example, a topic can represent a group of customers that receing a common announcemennt or publishing public updates.
-It's important to keep privacy in mind when using topics. 
+It's important to keep privacy in mind when using topics.
 Prefer sending private information like chat messages by addressing individual targets attached to a user.
 
-Topics are optimized for delivering the same message to large groups of users. 
+Topics are optimized for delivering the same message to large groups of users.
 If you need to deliver messages to **all devices of the same user**, you can find a user's targets by calling `account.get()`.
 
 # Create a topic {% #create-a-topic %}
-You can create topics 
+You can create topics
 {% tabs %}
 {% tabsitem #console title="Console" %}
 {% only_dark %}
@@ -85,8 +85,8 @@ client
 ;
 
 const promise = messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId   
-        '[NAME]'                                 // name   
+        '[TOPIC_ID]',                            // topicId
+        '[NAME]'                                 // name
         '[ROLES]'                                // permission roles for who can subscribe
     );
 
@@ -112,8 +112,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
+$result = $messaging->createTopic(
+    topicId: '[TOPIC_ID]',
     name: '[NAME]',
     subscribe: '[ROLES]'  // permission roles for who can subscribe
 
@@ -133,8 +133,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
+result = messaging.create_topic(
+    topic_id = '[TOPIC_ID]',
     name = '[NAME]',
     subscribe = '[ROLES]'  # permission roles for who can subscribe
 )
@@ -152,7 +152,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
+    topic_id: '[TOPIC_ID]',
     name: '[NAME]',
     subscribe: '[ROLES]'  # permission roles for who can subscribe
 )
@@ -341,9 +341,9 @@ client
 ;
 
 const promise = messaging.createSubscriber(
-        '[TOPIC_ID]',                                      // topicId   
-        '[SUBSCRIBER_ID]',                                 // subscriberId   
-        '[TARGET_ID]'                                      // targetId   
+        '[TOPIC_ID]',                                      // topicId
+        '[SUBSCRIBER_ID]',                                 // subscriberId
+        '[TARGET_ID]'                                      // targetId
     );
 
 promise.then(function (response) {
@@ -368,9 +368,9 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSubscriber( 
-    topicId: '[TOPIC_ID]', 
-    subscriberId: '[SUBSCRIBER_ID]', 
+$result = $messaging->createSubscriber(
+    topicId: '[TOPIC_ID]',
+    subscriberId: '[SUBSCRIBER_ID]',
     targetId: '[TARGET_ID]'
 );
 ```
@@ -388,9 +388,9 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_subscriber( 
-    topic_id = '[TOPIC_ID]', 
-    subscriber_id = '[SUBSCRIBER_ID]', 
+result = messaging.create_subscriber(
+    topic_id = '[TOPIC_ID]',
+    subscriber_id = '[SUBSCRIBER_ID]',
     target_id = '[TARGET_ID]'
 )
 ```
@@ -407,8 +407,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]', 
-    subscriber_id: '[SUBSCRIBER_ID]', 
+    topic_id: '[TOPIC_ID]',
+    subscriber_id: '[SUBSCRIBER_ID]',
     target_id: '[TARGET_ID]'
 )
 
