@@ -17,12 +17,18 @@
         angular: 'icon-angular',
         svelte: 'icon-svelte',
         sveltekit: 'icon-svelte',
+        'sveltekit ssr': 'icon-svelte',
         android: 'icon-android',
         apple: 'icon-apple',
         flutter: 'icon-flutter',
         nuxt: 'icon-nuxt',
+        'nuxt ssr': 'icon-nuxt',
         stripe: 'icon-stripe',
-        refine: 'aw-icon-refine'
+        refine: 'aw-icon-refine',
+        'next.js': 'icon-nextjs',
+        'next.js ssr': 'icon-nextjs',
+        astro: 'icon-astro',
+        'astro ssr': 'icon-astro'
     };
 
     const getIcon = (tutorial: MappedTutorial) => {

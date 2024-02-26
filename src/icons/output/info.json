@@ -269,28 +269,34 @@
     "className": "aw-icon-system",
     "unicode": "&#59949;"
   },
-  "twitter": {
+  "textmagic": {
     "encodedCode": "\\ea2e",
     "prefix": "aw-icon",
-    "className": "aw-icon-twitter",
+    "className": "aw-icon-textmagic",
     "unicode": "&#59950;"
   },
-  "vue": {
+  "twitter": {
     "encodedCode": "\\ea2f",
     "prefix": "aw-icon",
-    "className": "aw-icon-vue",
+    "className": "aw-icon-twitter",
     "unicode": "&#59951;"
   },
-  "x": {
+  "vue": {
     "encodedCode": "\\ea30",
     "prefix": "aw-icon",
-    "className": "aw-icon-x",
+    "className": "aw-icon-vue",
     "unicode": "&#59952;"
   },
-  "youtube": {
+  "x": {
     "encodedCode": "\\ea31",
     "prefix": "aw-icon",
-    "className": "aw-icon-youtube",
+    "className": "aw-icon-x",
     "unicode": "&#59953;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea32",
+    "prefix": "aw-icon",
+    "className": "aw-icon-youtube",
+    "unicode": "&#59954;"
   }
 }

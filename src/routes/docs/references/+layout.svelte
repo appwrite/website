@@ -17,6 +17,11 @@
                     label: 'Overview',
                     href: '/docs/references',
                     icon: 'icon-view-grid'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/references/quick-start',
+                    icon: 'icon-play'
                 }
             ]
         },
@@ -52,6 +57,11 @@
                     label: 'Functions',
                     icon: 'icon-lightning-bolt',
                     href: `${prefix}/functions`
+                },
+                {
+                    label: 'Messaging',
+                    icon: 'icon-send',
+                    href: `${prefix}/messaging`
                 },
                 {
                     label: 'Localization',
