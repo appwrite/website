@@ -34,7 +34,7 @@ Here's a high-level overview of the authentication flow:
 
 # Initialize clients {% #initialize-clients %}
 {% info title="Server SDK required" %}
-Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Client SDK. 
+Server-side rendering requires a [Server SDK](/docs/sdks#server) instead of a Client SDK.
 {% /info %}
 In SSR, your server-side application will be making authentication requests to Appwrite and passing session cookies to your client-side app on the browser.
 
@@ -47,7 +47,7 @@ Admin clients should only be used if you need to perform admin actions that bypa
 or [unauthenticated requests that bypass rate limits](#rate-limits).
 {% /info %}
 
-To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). 
+To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key).
 The API key should have the following scope in order to perform authentication:
 
 | Category  {% width=120 %} | Required scopes    | Purpose |
@@ -80,7 +80,7 @@ It is important to use an API key, as this will allow your server requests to by
 
 ## Session client {% #session-client %}
 
-The session client will be used to make requests to Appwrite on behalf of the end-user. 
+The session client will be used to make requests to Appwrite on behalf of the end-user.
 It will be initialized with the session, usually stored within a cookie.
 
 You should create a new client for each request and **never** share the client between requests.
@@ -113,7 +113,7 @@ if ($session) {
 
 The most straightforward type of session to integrate is email/password.
 
-Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session. 
+Create an endpoint using your server's framework of choice that accepts a username and password, and then makes a request to Appwrite to create a session.
 Once you have a session object, you can store it in a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
 
 Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
@@ -182,12 +182,12 @@ try {
 ```
 {% /multicode %}
 
-We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS, 
+We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS,
 and is not accessible to JavaScript. This will prevent XSS attacks.
 
 # Making authenticated requests {% #making-authenticated-requests %}
 
-Once a user has a session cookie, which will be set by the browser when it receives the `/login` endpoint's response, they can use it to make authenticated requests to your server. 
+Once a user has a session cookie, which will be set by the browser when it receives the `/login` endpoint's response, they can use it to make authenticated requests to your server.
 
 To enable this, you will need to read the cookie value from the request, and then pass it to the Appwrite client, using the `setSession` helper.
 When the browser makes a request to your domain's endpoints, it will automatically include session cookies.
@@ -279,7 +279,7 @@ There are two ways to make unauthenticated requests:
 * Cannot be later turned into a full session.
 {% /table %}
 
-You can create a guest session using the `createAnonymousSession` method. 
+You can create a guest session using the `createAnonymousSession` method.
 This will create a session for unauthenticated users, and each user will have their own rate limit.
 
 {% multicode %}

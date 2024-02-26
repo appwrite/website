@@ -121,8 +121,8 @@ You can also upload files programmatically using our SDKs:
 {% /multicode %}
 
 # Large files {% #large-files %}
-When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
-If you're using an Appwrite SDK, this is handled automatically. 
+When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance.
+If you're using an Appwrite SDK, this is handled automatically.
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 # InputFile {% #input-file %}
@@ -209,7 +209,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.from_path(path)`                | Used to upload files from a provided path.                  |
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
-{% /tabsitem %} 
+{% /tabsitem %}
 
 {% tabsitem #ruby title="Ruby" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
@@ -374,7 +374,7 @@ class MainActivity : AppCompatActivity() {
             bucketId = "[BUCKET_ID]",
             fileId = "[FILE_ID]"
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```
@@ -477,7 +477,7 @@ class MainActivity : AppCompatActivity() {
             bucketId = "[BUCKET_ID]",
             fileId = "[FILE_ID]"
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```
@@ -580,7 +580,7 @@ class MainActivity : AppCompatActivity() {
             bucketId = "[BUCKET_ID]",
             fileId = "[FILE_ID]"
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```
@@ -684,7 +684,7 @@ class MainActivity : AppCompatActivity() {
             bucketId = "[BUCKET_ID]",
             fileId = "[FILE_ID]"
         )
-        println(result); // Resource URL        
+        println(result); // Resource URL
     }
 }
 ```

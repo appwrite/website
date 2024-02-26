@@ -9,7 +9,7 @@ When 2FA is enabled, a malicious actor needs to compromise multiple authenticati
 Appwrite Authentication lets you easily implement 2FA in your apps, letting you build more securely and quickly.
 
 {% info title="Looking for 2FA on your Console account?" %}
-This page covers 2FA for your app's end-users. 
+This page covers 2FA for your app's end-users.
 If you are looking for 2FA on your Appwrite Console account, please refer to the [Console 2FA page](/docs/advanced/security/mfa).
 {% /info %}
 
@@ -274,7 +274,7 @@ const challenge = await account.createChallenge(
     );
 
 // Save the challenge ID to complete the challenge later
-const challengeId = challenge.$id; 
+const challengeId = challenge.$id;
 ```
 
 ```dart
@@ -321,7 +321,7 @@ const challenge = await account.createChallenge(
     );
 
 // Save the challenge ID to complete the challenge later
-const challengeId = challenge.$id; 
+const challengeId = challenge.$id;
 ```
 
 ```dart
@@ -358,7 +358,7 @@ val challengeId = response.id
 {% /tabsitem %}
 
 {% tabsitem #totp title="TOTP" %}
-Appwrite supports TOTP (Time-based One-Time Password) as a second factor. 
+Appwrite supports TOTP (Time-based One-Time Password) as a second factor.
 This requires the user to have a TOTP authenticator app installed on their device.
 To setup a TOTP authenticator, you can use the `account.addAuthenticator()` method.
 
@@ -458,7 +458,7 @@ val QRCode = avatars.getQR(uri)
 {% /multicode %}
 
 If the user's unable to scan QR codes, you can display the `secret` to the user.
-After adding the authenticator, you should also prompt the user to save their `backups`. 
+After adding the authenticator, you should also prompt the user to save their `backups`.
 These backup code are the only way to recover access to their account if they lose access to their TOTP authenticator app.
 
 Lastly, you can initialize the TOTP challenge.
@@ -469,7 +469,7 @@ const challenge = await account.createChallenge(
     );
 
 // Save the challenge ID to complete the challenge later
-const challengeId = challenge.$id; 
+const challengeId = challenge.$id;
 ```
 
 ```dart
