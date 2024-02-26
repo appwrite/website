@@ -9,9 +9,10 @@
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
 
     export let release: Date;
+    export let date: string;
 </script>
 
-<Day day="Day 1 - Monday, Feb 12" {release}>
+<Day day={date} {release}>
     <div class="mosaic">
         <a
             href="/blog/post/announcing-appwrite-messaging"
