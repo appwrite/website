@@ -59,9 +59,11 @@ Push notifications require configuration on both the Appwrite platform and your 
 1. Register and download your `google-services.json` config file.
 1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
 1. Create a new key, note down the key ID and download your key.
-1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.{% only_dark %}![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.png){% /only_dark %}{% only_light %}![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.png){% /only_light %}
+1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
+
+{% only_dark %}![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.png){% /only_dark %}{% only_light %}![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.png){% /only_light %}
 {% /tabsitem %}
 
 {% tabsitem #fcm-android title="Android with FCM" %}
