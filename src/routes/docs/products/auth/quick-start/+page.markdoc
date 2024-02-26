@@ -3,7 +3,7 @@ layout: article
 title: Start with Authentication
 description: Effortlessly add authentication to your apps - simple signup & login in just minutes with Appwrite Authentication
 ---
-You can get up and running with Appwrite Authentication in minutes. 
+You can get up and running with Appwrite Authentication in minutes.
 Adding signup and login is as simple as this.
 
 # Sign up {% #sign-up %}
@@ -20,7 +20,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create('[USER_ID]', 'email@example.com', '');
+const promise = account.create(ID.unique(), 'email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -28,7 +28,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart 
+```dart
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -89,7 +89,7 @@ mutation {
 
 # Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) route.
+After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/server-nodejs/account#createEmailPasswordSession) endpoint.
 
 {% multicode %}
 ```js
@@ -101,7 +101,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailSession('email@example.com', 'password');
+const promise = account.createEmailPasswordSession('email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -119,7 +119,7 @@ final client = Client()
 
 final account = Account(client);
 
-final session = await account.createEmailSession(
+final session = await account.createEmailPasswordSession(
     email: 'email@example.com',
     password: 'password'
 );
@@ -135,7 +135,7 @@ val client = Client()
 
 val account = Account(client)
 
-val session = account.createEmailSession(
+val session = account.createEmailPasswordSession(
     email = "email@example.com",
     password = "password"
 )
@@ -150,7 +150,7 @@ let client = Client()
 
 let account = Account(client)
 
-let session = try await account.createEmailSession(
+let session = try await account.createEmailPasswordSession(
     email: "email@example.com",
     password: "password"
 )
@@ -158,7 +158,7 @@ let session = try await account.createEmailSession(
 
 ```graphql
 mutation {
-    accountCreateEmailSession(email: "email@example.com", password: "password") {
+    accountCreateEmailPasswordSession(email: "email@example.com", password: "password") {
         _id
         userId
         provider
@@ -169,11 +169,12 @@ mutation {
 {% /multicode %}
 
 # More ways to authenticate {% #more-ways-to-authenticate %}
-You can signup and login a user with an account create through 
-[email password](/docs/products/auth/email-password),
-[phone (SMS)](/docs/products/auth/phone-sms),
-[Anonymous](/docs/products/auth/anonymous)
-[magic URL](/docs/products/auth/magic-url), and
-[OAuth 2](/docs/products/auth/oauth2)
-authentication. 
+You can signup and login a user with an account created through
+[Email and password](/docs/products/auth/email-password),
+[OAuth2](/docs/products/auth/oauth2),
+[Magic URL](/docs/products/auth/magic-url),
+[Email OTP](/docs/products/auth/email-otp),
+[Phone (SMS)](/docs/products/auth/phone-sms),
+and [Anonymous](/docs/products/auth/anonymous) authentications.
 
+You can also use [Custom token](/docs/products/auth/custom-token) to implement your own authentication flow, or integrate with any external provider.

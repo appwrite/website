@@ -4,16 +4,16 @@
     export let release: Date;
     export let day: string | undefined = undefined;
 
-    let today = new Date();
+    let now = new Date();
     let interval = setInterval(() => {
         if (hasReleased) {
             clearInterval(interval);
             return;
         }
-        today = new Date();
+        now = new Date();
     }, 1000);
 
-    $: hasReleased = today >= release;
+    $: hasReleased = now >= release;
 </script>
 
 <h2 class="aw-eyebrow aw-u-color-text-primary">
