@@ -26,7 +26,7 @@ const targetId = user.targets[0].$id
 // Subscribe to a topic
 const messaging = new Messaging(client)
 await messaging.createSubscriber(
-    "my_mailing_list",   // Topic ID
+    ['news', 'sport'],   // Topic ID
     ID.unique(),         // Subscription ID
     targetId,            // Target ID
 )`
@@ -43,7 +43,7 @@ final targetId = user.targets[0].$id;
 // Subscribe to a topic
 final messaging = Messaging(client);
 await messaging.createSubscriber(
-    topicId: 'my-mailing-list',
+    topicId: 'news',
     subscriberId: ID.unique(),
     targetId: targetId
 );`
@@ -62,7 +62,7 @@ val targetId = user.targets[0].id
 // Subscribe to a topic
 val messaging = Messaging(client)
 messaging.createSubscriber(
-    topicId = "my-mailing-list",
+    topicId = "news",
     subscriberId = ID.unique(),
     targetId = targetId
 )`
@@ -79,7 +79,7 @@ let targetId = user.targets[0].id
 // Subscribe to a topic
 let messaging = Messaging(client)
 try await messaging.createSubscriber(
-    topicId: "my-mailing-list",
+    topicId: "news",
     subscriberId: ID.unique(),
     targetId: targetId
 )`
@@ -95,9 +95,9 @@ try await messaging.createSubscriber(
 const messaging = Messaging(client);
 await messaging.createPush(
     ID.unique(),           // Message ID
-    'Updates',             // Email title
-    'Hello, world!',       // Email body
-    ['my-mailing-list'],   // Topic IDs
+    'Breaking update',     // Push title
+    'Hello, world!',       // Push body
+    ['news', sport],       // Topic IDs
 );`
         },
         {
@@ -108,9 +108,9 @@ await messaging.createPush(
 const messaging = new Messaging(client);
 await messaging.createPush(
     ID.unique(),           // Message ID
-    'Updates',             // Email title
-    'Hello, world!',       // Email body
-    ['my-mailing-list'],   // Topic IDs
+    'Breaking update',     // Push title
+    'Hello, world!',       // Push body
+    ['news', sport],       // Topic IDs
 );`
         },
         {
@@ -122,9 +122,9 @@ using Appwrite.ID;
 var messaging = new Messaging(client);
 await messaging.createPush(
     messageId: ID.unique(),
-    subject: "Updates",
+    subject: "Breaking update",
     content: "Hello, world!",
-    topics: ["my-mailing-list"],
+    topics: ['news', sport'],
 );`
         },
         {
@@ -136,9 +136,9 @@ import io.appwrite.ID
 val messaging = Messaging(client)
 messaging.createPush(
     messageId = ID.unique(),
-    subject = "Updates",
+    subject = "Breaking update",
     content = "Hello, world!",
-    topics: listOf("my-mailing-list"),
+    topics: listOf('news'),
 )`
         },
         {
@@ -149,9 +149,9 @@ messaging.createPush(
 let messaging = Messaging(client)
 try await messaging.createPush(
     messageId: ID.unique(),
-    subject: "Updates",
+    subject: "Breaking update",
     content: "Hello, world!",
-    topics: ["my-mailing-list"]
+    topics: ["news", "sport"]
 )`
         },
         {
@@ -162,9 +162,9 @@ try await messaging.createPush(
 final messaging = Messaging(client);
 await messaging.createPush(
     messageId: ID.unique(),
-    subject: "Updates",
+    subject: "Breaking update",
     content: "Hello, world!",
-    topics: ["my-mailing-list"],
+    topics: ["news", "sport"],
 );`
         },
         {
@@ -178,9 +178,9 @@ use Appwrite\ID;
 $messaging = new Messaging(client);
 $messaging->createPush(
     messageId: ID::unique(),
-    subject: 'Updates',
+    subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['my-mailing-list']
+    topics: ['news', sport]
 );`
         },
         {
@@ -192,9 +192,9 @@ from appwrite.id import ID
 messaging = Messaging(client)
 messaging.create_email(
     message_id = ID.unique(),
-    subject = "Updates",
+    subject = "Breaking update",
     content = "Hello, world!",
-    topics = ["my-mailing-list"]
+    topics = ["news", "sport"]
 )`
         },
         {
@@ -208,9 +208,9 @@ use Appwrite\ID;
 $messaging = new Messaging(client);
 $messaging->createPush(
     messageId: ID::unique(),
-    subject: 'Updates',
+    subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['my-mailing-list']
+    topics: ['news', sport]
 );`
         },
         {
@@ -223,9 +223,9 @@ include Appwrite
 messaging = Messaging.new(client)
 messaging.create_email(
     message_id: ID.unique(),
-    subject: 'Updates',
+    subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['my-mailing-list']
+    topics: ['news', sport]
 )`
         }
     ];

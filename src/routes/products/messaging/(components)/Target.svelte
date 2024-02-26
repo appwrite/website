@@ -435,10 +435,7 @@
         </div>
     </div>
 
-    <div
-        class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text"
-        style="text-wrap: balance"
-    >
+    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
         <h3 class="aw-title aw-u-color-text-primary u-text-center">
             Target and group your subscribers
         </h3>
@@ -587,12 +584,13 @@
     }
 
     .target-text {
+        text-wrap: balance;
         @media screen and (max-width: 1024px) {
             justify-content: start;
             align-items: start;
             margin-block-start: 2rem;
             padding-block-end: var(--padding-block-end);
-
+            text-wrap: inherit;
             p {
                 text-align: start;
             }

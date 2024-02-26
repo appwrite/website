@@ -265,6 +265,9 @@
     h3 {
         text-align: center;
         margin-block-start: 4.5rem;
+        @media screen and (max-width: 1024px) {
+            text-align: left;
+        }
     }
 
     h3 + p {
@@ -275,6 +278,9 @@
 
         @media screen and (max-width: 1024px) {
             padding-block-end: var(--padding-block-end);
+            text-align: left;
+            margin-inline: 0;
+            max-width: 100%;
         }
     }
 </style>
