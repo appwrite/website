@@ -18,6 +18,8 @@
     import Video from './(components)/Video.svelte';
     import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
+    import ConsoleImage from './(assets)/console.png';
+    import SwagsImage from './(assets)/swag.png';
 
     const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
@@ -263,7 +265,7 @@
             </div>
 
             <div class="aw-card is-normal has-border-gradient">
-                <enhanced:img class="swag" src="./(assets)/swag.png" alt="" />
+                <img class="swag" src={SwagsImage} alt="" />
             </div>
         </div>
 
@@ -293,7 +295,7 @@
                 <a href="https://cloud.appwrite.io" class="aw-button">Get started</a>
             </div>
 
-            <enhanced:img class="console" src="./(assets)/console.png" alt="" />
+            <img class="console" src={ConsoleImage} alt="" />
         </div>
     </div>
 
