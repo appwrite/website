@@ -67,7 +67,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2');   // Your secret API key
 
 const message = await messaging.createPush(
-    '[MESSAGE_ID]',                 // messageId
+    sdk.ID.unique(),                // messageId
     'Init_ Day 0',                  // title
     'Appwrite Messaging is here!',  // body
     ['init-day-0'],                 // topic IDs
