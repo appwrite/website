@@ -2,16 +2,6 @@ import { getApi, getIdFromReference, getSchema, type AppwriteSchemaObject } from
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
-// export const entries: EntryGenerator = () => {
-// 	return ['cloud', ...(versions as string[])].flatMap((version) => {
-// 		return platforms.flatMap((platform) => {
-// 			return services.map((service) => {
-// 				return { service, version, platform };
-// 			});
-// 		});
-// 	});
-// };
-
 type Model = {
     title: string;
     properties: Array<{
