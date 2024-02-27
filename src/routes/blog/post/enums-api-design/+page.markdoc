@@ -42,7 +42,7 @@ Implementing enums in API design can significantly enhance clarity and robustnes
 - **Expose enums in API documentation**: Make sure that your API documentation clearly indicates where and how enums are used. This inclusion helps developers quickly understand what values are expected.
 - **Test enum implementations thoroughly**: Include enums in your testing strategy to ensure they behave as expected under various scenarios and that any errors are handled accordingly.
 
-## **Common pitfalls of using enums and how to avoid them**
+# **Common pitfalls of using enums and how to avoid them**
 
 Enums, while beneficial, can lead to several pitfalls if not used judiciously in API design. Here are some common issues and strategies to avoid them:
 
@@ -70,7 +70,7 @@ Enums, while beneficial, can lead to several pitfalls if not used judiciously in
 
 By being aware of these pitfalls and employing strategies to avoid them, you can effectively leverage enums in your API design, enhancing clarity and maintainability while avoiding common issues.
 
-## **How Appwrite is leveraging enums**
+# **How Appwrite is leveraging enums**
 
 With the latest release of Appwrite, we have taken steps to improve type safety within our SDKs by leveraging enums. We have replaced all magic literals, such as constants needed for OAuth adapters, with enums to simplify the developer experience and make it less error-prone for all those who are building with Appwrite. This change exemplifies our commitment to robust and user-friendly API design.
 
@@ -88,11 +88,11 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 Read our product announcement to learn more.
 
-## Resources
+# Resources
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- Docs
+- [Docs](https://appwrite.io/docs)
 - [Discord](https://appwrite.io/discord)
 - [Blog](https://appwrite.io/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
