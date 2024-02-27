@@ -223,18 +223,17 @@ export async function getService(
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
-    const tag = api.tags?.find((n) => n.name === service);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: tag?.name as Service,
+            name: service as Service,
             description: await getDescription(service)
         },
         methods: []
     };
 
     const examples = getExamples(version);
-    
+
     if (!examples) {
         return data;
     }
@@ -302,7 +301,7 @@ export async function getService(
             'rate-key': operation['x-appwrite']['rate-key']
         });
     }
-    console.log(data);
+
     return data;
 }
 

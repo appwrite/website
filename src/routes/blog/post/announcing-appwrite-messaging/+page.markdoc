@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Messaging: Push, Email and SMS directly from your Appwrite backend"
-description: 
+description:
 date: 2024-02-26
 cover: /images/blog/messaging-announcement.png
 timeToRead: 6
@@ -22,33 +22,48 @@ Timely and personalized messages delivered to the users’ devices and inboxes h
 
 As mentioned, Messaging covers three communication channels under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers to deliver you messages. See this table to get an overview of what message types you can send with each provider.
 
-{% table %}
-* Message Type {% width=180 %}
-* Provider
----
-* Push Notifications {% rowspan=2 %}
-* {% icon icon="apple" size="l" /%} APNs (Apple)
----
-* {% icon icon="fcm" size="l" /%} FCM (Google)
----
-* Email {% rowspan=3 %}
-*  {% icon icon="mailgun" size="l" /%} Mailgun
----
-*  {% icon icon="sendgrid" size="l" /%} Sendgrid
----
-*  {% icon icon="mail" size="l" /%} SMTP (Generic)
----
-* SMS {% rowspan=5 %}
-*  {% icon icon="twilio" size="l" /%} Twilio
----
-*  {% icon icon="msg91" size="l" /%} MSG91
----
-*  {% icon icon="telesign" size="l" /%} Telesign
----
-*  {% icon icon="textmagic" size="l" /%} TextMagic
----
-*  {% icon icon="vonage" size="l" /%} Vonage
-{% /table %}
+
+## Push Notifications
+{% cards %}
+{% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
+Use APNs for push notification to Apple devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="aw-icon-firebase" %}
+Use FCM for push notification to Android and Apple devices.
+{% /cards_item %}
+{% /cards %}
+
+## Email
+{% cards %}
+{% cards_item href="/docs/products/messaging/mailgun" title="Mailgun" icon="aw-icon-mailgun" %}
+Use Mailgun to send emails
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/sendgrid" title="Sendgrid" icon="aw-icon-sendgrid" %}
+Use Sendgrid to send emails
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/smtp" title="SMTP" icon="icon-mail" %}
+Use SMTP to send emails
+{% /cards_item %}
+{% /cards %}
+
+## SMS
+{% cards %}
+{% cards_item href="/docs/products/messaging/twilio" title="Twilio" icon="icon-twilio" %}
+Use Twilio for SMS notifications to mobile devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/msg91" title="MSG91" icon="icon-msg91" %}
+Use MSG91 for SMS notifications to mobile devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/telesign" title="Telesign" icon="icon-telesign" %}
+Use Telesign for SMS notifications to mobile devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="aw-icon-textmagic" %}
+Use TextMagic for SMS notifications to mobile devices.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/vonage" title="Vonage" icon="icon-vonage" %}
+Use Vonage for SMS notifications to mobile devices.
+{% /cards_item %}
+{% /cards %}
 
 # Message your existing users
 

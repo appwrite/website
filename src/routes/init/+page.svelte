@@ -16,9 +16,12 @@
     import thumbnail from './(assets)/thumbnail-1.png';
     import Day from './(days)/Day.svelte';
     import Video from './(components)/Video.svelte';
-    import { fade, slide } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
+    import Day1 from './(days)/Day1.svelte';
+    import ConsoleImage from './(assets)/console.png';
+    import SwagsImage from './(assets)/swag.png';
 
-    const base = new Date('2024-02-26T15:00:00.000Z');
+    const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
     function addDays(date: Date, days: number): Date {
@@ -35,7 +38,7 @@
 
     $: days = [
         {
-            title: 'XXX',
+            title: 'Messaging',
             release: base
         },
         {
@@ -181,7 +184,11 @@
     <div class="aw-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
-                <DayCard {day} number={i} />
+                <DayCard {day} number={i}>
+                    {#if i === 0}
+                        <Animations.Messaging />
+                    {/if}
+                </DayCard>
             {/each}
         </div>
         <hr />
@@ -206,14 +213,17 @@
                 </div>
             </Day>
             {#each days as day, i}
-                <h2 class="aw-eyebrow aw-u-color-text-primary">
-                    <div class="aw-dot" />
-                    DAY {i} - {toReleaseDate(day.release)}<span class="aw-u-color-text-accent"
-                        >_</span
-                    >
-                </h2>
-
-                <CountdownCard date={day.release} />
+                {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
+                {#if i === 0}
+                    <Day1 {date} release={day.release} />
+                {:else}
+                    <h2 class="aw-eyebrow aw-u-color-text-primary">
+                        <div class="aw-dot" />
+                        {date}
+                        <span class="aw-u-color-text-accent">_</span>
+                    </h2>
+                    <CountdownCard date={day.release} />
+                {/if}
             {/each}
         </div>
     </div>
@@ -255,7 +265,7 @@
             </div>
 
             <div class="aw-card is-normal has-border-gradient">
-                <enhanced:img class="swag" src="./(assets)/swag.png" alt="" />
+                <img class="swag" src={SwagsImage} alt="" />
             </div>
         </div>
 
@@ -285,7 +295,7 @@
                 <a href="https://cloud.appwrite.io" class="aw-button">Get started</a>
             </div>
 
-            <enhanced:img class="console" src="./(assets)/console.png" alt="" />
+            <img class="console" src={ConsoleImage} alt="" />
         </div>
     </div>
 

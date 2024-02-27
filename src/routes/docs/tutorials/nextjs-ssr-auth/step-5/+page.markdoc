@@ -8,7 +8,7 @@ step: 5
 We can now implement our sign in page. Create a `+page.jsx` file in the `src/app/signin` directory:
 
 ```jsx
-// src/app/sigin/+page.jsx
+// src/app/signin/+page.jsx
 
 import {
   createSessionClient,
@@ -48,7 +48,7 @@ export default async function SignInPage() {
 This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Next.js form actions we create the `signInWithEmail` function in the same file:
 
 ```jsx
-// src/app/sigin/+page.jsx
+// src/app/signin/+page.jsx
 
 // previous imports ...
 

@@ -8,7 +8,7 @@ You can send custom email messages to your app's users using Appwrite Messaging 
 This guide takes you through the implementation path of adding email messaging to your app.
 
 # Add a provider {% #add-a-provider %}
-Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgird](/docs/products/messaging/sendgrid/) as 
+Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgird](/docs/products/messaging/sendgrid/) as
 SMTP providers. You must configure one of them as a provider.
 {% only_dark %}
 ![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
@@ -551,8 +551,8 @@ client
 ;
 
 const promise = messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId   
-        '[NAME]'                                 // name   
+        '[TOPIC_ID]',                            // topicId
+        '[NAME]'                                 // name
     );
 
 promise.then(function (response) {
@@ -577,8 +577,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
+$result = $messaging->createTopic(
+    topicId: '[TOPIC_ID]',
     name: '[NAME]'
 );
 ```
@@ -596,8 +596,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
+result = messaging.create_topic(
+    topic_id = '[TOPIC_ID]',
     name = '[NAME]'
 )
 ```
@@ -614,7 +614,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
+    topic_id: '[TOPIC_ID]',
     name: '[NAME]'
 )
 
@@ -782,9 +782,9 @@ client
 ;
 
 const promise = messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId   
-        '[SUBJECT]',                             // subject   
-        '[CONTENT]',                             // content   
+        '[MESSAGE_ID]',                          // messageId
+        '[SUBJECT]',                             // subject
+        '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -817,10 +817,10 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createEmail( 
-    messageId: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+$result = $messaging->createEmail(
+    messageId: '[MESSAGE_ID]',
+    subject: '[SUBJECT]',
+    content: '[CONTENT]',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -845,10 +845,10 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.create_email( 
-    message_id = '[MESSAGE_ID]', 
-    subject = '[SUBJECT]', 
-    content = '[CONTENT]', 
+result = messaging.create_email(
+    message_id = '[MESSAGE_ID]',
+    subject = '[SUBJECT]',
+    content = '[CONTENT]',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -872,9 +872,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_email(
-    message_id: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+    message_id: '[MESSAGE_ID]',
+    subject: '[SUBJECT]',
+    content: '[CONTENT]',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
