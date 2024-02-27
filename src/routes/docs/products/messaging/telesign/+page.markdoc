@@ -86,7 +86,7 @@ const promise = messaging.createSMS(
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
 
@@ -116,7 +116,7 @@ const promise = messaging.createSMS(
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
 
@@ -148,7 +148,7 @@ $result = $messaging->createSMS(
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
-    status: 'draft',                              // optional
+    draft: true,                                  // optional
     scheduledAt: ''                               // optional
 );
 ```
@@ -172,7 +172,7 @@ result = messaging.create_sms(
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
-    status = 'draft',                           # optional
+    draft = True,                               # optional
     scheduled_at = ''                           # optional
 )
 ```
@@ -194,7 +194,7 @@ response = messaging.create_sms(
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
-    status: 'draft',                              # optional
+    draft: true,                                  # optional
     scheduled_at: ''                              # optional
 )
 
@@ -218,7 +218,7 @@ Message result = await messaging.CreateSMS(
     topics: new List<string> {}                   // optional    
     users: new List<string> {}                    // optional    
     targets: new List<string> {}                  // optional    
-    status: "draft"                               // optional    
+    draft: true                                   // optional    
     scheduledAt: "");                             // optional
 ```
 ```dart
@@ -240,7 +240,7 @@ void main() {                                    // Init SDK
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
-    status: 'draft',                             // optional
+    draft: true,                                 // optional
     scheduledAt: '',                             // optional
   );
 
@@ -270,7 +270,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -300,7 +300,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -328,7 +328,7 @@ let message = try await messaging.createSMS(
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
-  status: "draft",                               // optional
+  draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
 ```
