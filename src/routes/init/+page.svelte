@@ -22,12 +22,8 @@
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
 
-    let base = new Date('2024-02-26T14:00:00.000Z');
+    const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
-
-    function fastForward() {
-        base = addDays(base, -1);
-    }
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -181,7 +177,6 @@
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
             </button>
-            <button class="aw-button" on:click={fastForward}>fast forward</button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
