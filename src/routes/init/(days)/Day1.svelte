@@ -4,14 +4,15 @@
     import Video from '../(components)/Video.svelte';
     import thumbnail from '../(assets)/thumbnail-messaging.png';
     import thumbnailProduct from '../(assets)/thumbnail-messaging-product.png';
-    import twillio from '../(assets)/messaging-1.svg';
+    import twillio from '../(assets)/messaging-1.png';
     import { Animations } from '../(animations)';
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
 
     export let release: Date;
+    export let date: string;
 </script>
 
-<Day day="Day 1 - Monday, Feb 12" {release}>
+<Day day={date} {release}>
     <div class="mosaic">
         <a
             href="/blog/post/announcing-appwrite-messaging"
@@ -57,7 +58,7 @@
             <img
                 src={twillio}
                 alt="Twilio"
-                style="position: absolute; inset-block-start: 0; inset-inline-end: -9rem;"
+                style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
             />
         </a>
         <a
@@ -69,7 +70,7 @@
                 Best practices for sending push notifications
             </h3>
             <div class="aw-card-link u-flex u-cross-center">
-                <span class="text">Enter</span>
+                <span class="text">Article</span>
                 <span class="aw-icon-arrow-right" />
             </div>
             <div>
@@ -132,7 +133,7 @@
             <div style="padding: 0.75rem;">
                 <h3 class="aw-label aw-u-color-text-primary">Event: Welcome to Init</h3>
                 <div class="aw-card-link u-flex u-cross-center">
-                    <span class="text">Enter</span>
+                    <span class="text">Join</span>
                     <span class="aw-icon-arrow-right" />
                 </div>
             </div>

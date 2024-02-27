@@ -10,7 +10,7 @@ To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, a
 To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
 
 ```svelte
-<!-- src/routes/sigin/+page.svelte -->
+<!-- src/routes/signin/+page.svelte -->
 
 <!-- ... existing sign in form -->
 
