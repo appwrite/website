@@ -8,9 +8,6 @@
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
     import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
-    import BlurLeft from './(assets)/blur-left.png';
-    import BlurRight from './(assets)/blur-right.png';
-    import Phone from './(assets)/phone.png';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -254,8 +251,8 @@ messaging.create_email(
 <Main>
     <div class="aw-big-padding-section u-overflow-hidden">
         <div class="hero">
-            <enhanced:img src={BlurLeft} alt="" class="blur-left" />
-            <enhanced:img src={BlurRight} alt="" class="blur-right" />
+            <enhanced:img src="./(assets)/blur-left.png" alt="" class="blur-left" />
+            <enhanced:img src="./(assets)/blur-right.png" alt="" class="blur-right" />
 
             <div class="aw-container">
                 <div>
@@ -286,7 +283,7 @@ messaging.create_email(
                 </div>
 
                 <div class="phone-wrapper">
-                    <enhanced:img class="phone" src={Phone} alt="" />
+                    <enhanced:img class="phone" src="./(assets)/phone.png" alt="" />
                 </div>
             </div>
         </div>
