@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "From passwords to protection: implementing 2FA in your applications"
+title: "From passwords to protection: Implementing 2FA in your applications"
 description: Understand the importance and process of integrating 2FA into their applications, enhancing security, and protecting user data effectively.
 date: 2024-02-28
 cover: /images/blog/password-protection-2fa.png
@@ -74,10 +74,10 @@ With the release of Appwrite 1.5, we have introduced the ability to implement 2F
 
 # Resources
 
-Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- [Docs](/docs/products/auth/mfa)
-- [Discord](/discord)
-- [Blog](/blog)
+- [Docs](https://appwrite.io/docs/products/auth/2fa)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
