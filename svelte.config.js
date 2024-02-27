@@ -40,7 +40,7 @@ const config = {
     kit: {
         adapter: nodeAdapter(),
         version: {
-			name: execSync('git rev-parse HEAD').toString().trim()
+			name: process.env.VERSION || undefined
 		},
         files: {
             hooks: {
