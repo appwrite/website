@@ -5,19 +5,19 @@ description: Unlock advanced user management - Appwrite's Account API for seamle
 ---
 
 Appwrite Account API is used for user signup and login in client applications.
-Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. 
+Users can be organized into teams and be given labels, so they can be given different permissions and access different resources.
 Each user's account can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
 {% partial file="account-vs-user.md" /%}
 
 # Signup and login {% #signup-login %}
 
-You can signup and login a user with an account created through 
-[Email and password](/docs/products/auth/email-password), 
-[OAuth2](/docs/products/auth/oauth2), 
-[Magic URL](/docs/products/auth/magic-url), 
-[Email OTP](/docs/products/auth/email-otp), 
-[Phone (SMS)](/docs/products/auth/phone-sms), 
+You can signup and login a user with an account created through
+[Email and password](/docs/products/auth/email-password),
+[OAuth2](/docs/products/auth/oauth2),
+[Magic URL](/docs/products/auth/magic-url),
+[Email OTP](/docs/products/auth/email-otp),
+[Phone (SMS)](/docs/products/auth/phone-sms),
 and [Anonymous](/docs/products/auth/anonymous) authentications.
 
 You can also use [Custom token](/docs/products/auth/custom-token) to implement your own authentication flow, or integrate with any external provider.
@@ -74,7 +74,7 @@ val account = Account(client)
 
 val user = account.updatePrefs(
     prefs = mapOf(
-        "darkTheme" to true, 
+        "darkTheme" to true,
         "language" to "en"
     )
 )
@@ -90,7 +90,7 @@ let account = Account(client)
 
 let user = try await account.updatePrefs(
     prefs: [
-        "darkTheme": true, 
+        "darkTheme": true,
         "language": "en"
     ]
 )
@@ -113,7 +113,7 @@ mutation {
 After a user's preferences are updated, they can be retrieved using the [Get preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
-```js 
+```js
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -177,7 +177,7 @@ query {
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
 individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
- 
+
 | Description                                 | Role                               |
 | ------------------------------------------- | ------------------------------------------- |
 | Verified users   | `Role.users('verified')`|

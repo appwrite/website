@@ -19,29 +19,29 @@ To add FCM as a provider, navigate to **Messaging** > **Providers** > {% icon ic
 ![Add a FCM provider](/images/docs/messaging/providers/fcm/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **FCM** > click **Save and continue**. 
+Give your provider a name > choose **FCM** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Firebase console to connect your Appwrite project.
+In the **Configure** step, you will need to provide details from your Firebase console to connect your Appwrite project.
 
 You will need to provide the following information from the **Firebase console**.
 
 {% info title="Enable FCM" %}
 FCM must be enabled on your Firebase project.
 
-Head to Firebase console -> Settings -> Project settings -> Cloud Messaging. 
+Head to Firebase console -> Settings -> Project settings -> Cloud Messaging.
 If FCM is disabled, click the three-dots menu and open the link. On the following page, click **Enable** (it might take a few minutes for the action to complete).
 {% /info %}
 
-Head to **Project settings** > **Service accounts** > **Generate new private key**. 
+Head to **Project settings** > **Service accounts** > **Generate new private key**.
 
-{% only_dark %} 
-![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png) 
-{% /only_dark %} 
-{% only_light %} 
-![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png) 
+{% only_dark %}
+![FCM admin key](/images/docs/messaging/providers/fcm/dark/admin-key.png)
+{% /only_dark %}
+{% only_light %}
+![FCM admin key](/images/docs/messaging/providers/fcm/admin-key.png)
 {% /only_light %}
 
 After all the relevant details are provided, you can enable the provider.
@@ -88,7 +88,7 @@ Push notification requires special handling on the client side. Follow the [Send
 {% section #manage-provider step=4 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
-You can update or delete a provider in the Appwrite Console. 
+You can update or delete a provider in the Appwrite Console.
 
 Navigate to **Messaging** > **Providers** > click your provider.
 In the settings, you can update a provider's configuration or delete the provider.
@@ -141,7 +141,7 @@ client
 ;
 
 const promise = messaging.updateFCMProvider(
-        '[PROVIDER_ID]',                         // providerId   
+        '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
@@ -169,8 +169,8 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateFCMProvider( 
-    providerId: '[PROVIDER_ID]', 
+$result = $messaging->updateFCMProvider(
+    providerId: '[PROVIDER_ID]',
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
     serviceAccountJSON: []                        // optional
@@ -190,8 +190,8 @@ client = Client()
 
 messaging = Messaging(client)
 
-result = messaging.update_fcm_provider( 
-    provider_id = '[PROVIDER_ID]', 
+result = messaging.update_fcm_provider(
+    provider_id = '[PROVIDER_ID]',
     name = '[NAME]',                            # optional
     enabled = False,                            # optional
     service_account_json = {}                   # optional
@@ -210,7 +210,7 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_fcm_provider(
-    provider_id: '[PROVIDER_ID]', 
+    provider_id: '[PROVIDER_ID]',
     name: '[NAME]',                               # optional
     enabled: false,                               # optional
     service_account_json: {}                      # optional
@@ -231,9 +231,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateFCMProvider(
-    providerId: "[PROVIDER_ID]"    
-    name: "[NAME]"                                // optional    
-    enabled: false                                // optional    
+    providerId: "[PROVIDER_ID]"
+    name: "[NAME]"                                // optional
+    enabled: false                                // optional
     serviceAccountJSON: [object]);                // optional
 ```
 ```dart

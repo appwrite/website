@@ -48,7 +48,7 @@ export default async function HomePage() {
         </li>
       </ul>
 
-      <form action={signOut} method="post">
+      <form action={signOut}>
         <button type="submit">Log out</button>
       </form>
     </>
