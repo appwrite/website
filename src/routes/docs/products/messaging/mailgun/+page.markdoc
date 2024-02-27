@@ -23,7 +23,7 @@ The provider will be saved to your project, but not enabled until you complete i
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details form your Mailgun dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details from your Mailgun dashboard to connect your Appwrite project.
 
 
 {% only_dark %}

@@ -10,7 +10,7 @@ To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, a
 To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
 
 ```js
-<!-- src/pages/sigin.astro -->
+<!-- src/pages/signin.astro -->
 
 <!-- ... existing sign in form -->
 
