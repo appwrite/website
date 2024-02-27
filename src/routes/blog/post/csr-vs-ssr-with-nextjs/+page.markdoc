@@ -50,7 +50,7 @@ For this purpose, we rely on Appwrite’s server SDKs; for NextJS apps, we use o
 
 ## **Admin and Session clients**
 
-The first step of understanding how we initialize the client in SSR apps. In this scenario, we need to create two types of Appwrite clients.: 
+The first step of understanding how we initialize the client in SSR apps. In this scenario, we need to create two types of Appwrite clients: 
 
 - Admin client: performs admin requests using an API key
 - Session client: performs authenticated requests on behalf of a user.
