@@ -198,7 +198,7 @@
                             </svg>
                             <h6 class="aw-sub-body-500 aw-u-color-text-accent-click" style="line-height:15px">has started</h6>
                         </div>
-                        <p class="aw-caption-500">Day 0 - Messaging announced</p>
+                        <p class="aw-caption-500">Day 1 - SSR support announced</p>
                     </div>
                     <div class="u-flex-vertical u-gap-2">
                         <div class="aw-link u-flex u-cross-center">
