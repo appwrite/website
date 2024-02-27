@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing Enums SDK support: Enhanced dev experience
+title: Introducing Enums SDK support, enhanced dev experience
 description: A new feature that will reduce friction and improve your experience.
 date: 2024-02-28
 cover: /images/blog/enums-announcement.png
@@ -9,15 +9,15 @@ author: jake-barnby
 category: engineering
 featured: false
 ---
-We are excited to announce a significant enhancement to the development experience across all Appwrite client and server-side SDKs: Enums SDK Support. 
+We are excited to announce a significant enhancement to the development experience across all Appwrite client and server-side SDKs, Enums SDK Support. 
 
 This enhancement is designed to streamline the development process, improve code quality, and facilitate seamless integration with Appwrite's backend services.
 
-## What are Enums?
+# What are Enums?
 
 Enums, or enumerations, are a powerful programming construct that enables developers to define a set of named constants. These constants make code more readable and less error-prone by providing meaningful names for values rather than using numbers or strings directly. Enums are widely used for representing a set of possible values for a variable, making code easier to understand, maintain, and debug.
 
-## Introducing Enums SDK support in Appwrite
+# Introducing Enums SDK support in Appwrite
 
 Currently, when you want to use an endpoint with a predefined set of allowed values, you must look up the exact value in the documentation. This can be time-consuming and error-prone. 
 
@@ -39,13 +39,13 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 This new feature will improve the experience of building with Appwrite and lower the barrier for new developers to start. As always, we aim to make life easier, not harder, and we look forward to your feedback. 
 
-## Resources
+# Resources
 
-Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- Docs
-- [Discord](/discord)
-- [Blog](/blog)
+- [Docs](https://appwrite.io/docs)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
 
