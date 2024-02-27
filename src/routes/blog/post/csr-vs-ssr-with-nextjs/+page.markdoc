@@ -38,15 +38,15 @@ When it comes to implementing authentication in Next.js, Appwrite supports diffe
 With single page applications (SPAs) that are rendered on the client-side, the Appwrite web SDK handles the session for us, so we never need to manually access it. After creating a user session with `account.createEmailPasswordSession` (or any other authentication method Appwrite offers), we can directly retrieve the current user with `account.get()` and process any other authentication checks or move forward to our main app.
 
 ```jsx
-account.createEmailPasswordSession('[email]', '[password]');
-const user = await account.get();
+account.createEmailPasswordSession('[email]', '[password]')
+const user = await account.get()
 ```
 
 ## SSR authentication pattern
 
 With SSR apps, we need a way to access the session secret after creation to set a session cookie on the server and then return to the client's browser (the Web SDK cannot achieve this by default). Therefore, with SSR, we must manually handle how we set the session after creation and retrieve it on subsequent requests.
 
-For this purpose, we rely on Appwrite's server SDKs; for Next.js apps, we use our Node.js SDK. The first step of this process is installing the `node-appwrite` NPM package.
+For this purpose, we rely on Appwrite's server SDKs for Next.js apps, we use our Node.js SDK. The first step of this process is installing the `node-appwrite` NPM package.
 
 ## Admin and Session clients
 
@@ -63,7 +63,7 @@ The admin client must be set with an API key that has the necessary scopes in or
 const adminClient = new Client()
   .setEndpoint('https://cloud.appwrite.io/v1')
   .setProject('<PROJECT_ID>')
-  .setKey('<API_KEY>');
+  .setKey('<API_KEY>')
 ```
 
 We set this session in the response cookies of a server action or an API route (we'll use the latter for our examples).
@@ -71,19 +71,16 @@ We set this session in the response cookies of a server action or an API route (
 ```jsx
 import { cookies } from 'next/headers'
 
-export async function POST(request){
-	
-	//initiate an admin client and account here
-	//...
-	
-	const { email, password } = await request.json()
-	const session = await account.createEmailPasswordSession(email, password)
-	
-	cookies().set('session', session.secret, {
-	    ...
-	})
-	
-	return Response.json({'msg': 'Session created!'})
+export async function POST(request) {
+    // initiate an admin client and account here
+    // ...
+
+    const { email, password } = await request.json()
+    const session = await account.createEmailPasswordSession(email, password)
+
+    cookies().set('my-session-cookie', session.secret)
+
+    return Response.redirect('/api/user')
 }
 ```
 
@@ -93,28 +90,28 @@ The session client accepts the generated session secret and sets it using the `c
 
 ```jsx
 const sessionClient = new Client()
-	.setEndpoint('https://cloud.appwrite.io/v1')
-	.setProject('<PROJECT_ID>');
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
 ```
 
 We use the session secret to authenticate a user from an API route. This can also be done at the page component level. 
 
 ```jsx
 export async function GET(request){
-	// initiate a session client and account here
-	
-	const session = request.cookies.get('session');
-	
-	if (session) {
-	  client.setSession(session.value);
-	}
-	
-	try {
-    	const user = await account.get();
-    	return Response.json({ 'user': user });
-	} catch(error){
-    	return Response.json(error);
-	}
+    // initiate a session client and account here
+    // ...
+
+    const session = request.cookies.get('my-session-cookie')
+    if (session) {
+        client.setSession(session.value)
+    }
+    
+    try {
+        const user = await account.get()
+        return Response.json(user)
+    } catch(error){
+        return Response.json(error)
+    }
 }
 ```
 
