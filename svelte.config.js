@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
+import { execSync } from 'child_process';
 import nodeAdapter from '@sveltejs/adapter-node';
 
 function absolute(path) {
@@ -38,6 +39,9 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
+        version: {
+			name: execSync('git rev-parse HEAD').toString().trim()
+		},
         files: {
             hooks: {
                 server: isVercel ? undefined : './src/hooks/server.ts'
