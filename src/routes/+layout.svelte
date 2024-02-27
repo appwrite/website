@@ -81,11 +81,11 @@
         });
     });
 
-   	beforeNavigate(({ willUnload, to }) => {
-		if ($updated && !willUnload && to?.url) {
-			location.href = to.url.href;
-		}
-	});
+    beforeNavigate(({ willUnload, to }) => {
+        if ($updated && !willUnload && to?.url) {
+            location.href = to.url.href;
+        }
+    });
 
     $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
     $: if (browser && $loggedIn) {
