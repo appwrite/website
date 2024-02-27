@@ -38,6 +38,9 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
+        version: {
+            pollInterval: 60 * 1000,
+        },
         files: {
             hooks: {
                 server: isVercel ? undefined : './src/hooks/server.ts'
