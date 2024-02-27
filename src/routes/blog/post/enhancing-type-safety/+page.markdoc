@@ -50,7 +50,7 @@ With that said, it is necessary to avoid the following pitfalls when you’re wo
 - **Meaningful string representations**: In most languages, enums are backed by integers by default. If you intend to use enums for purposes such as logging, UI, etc., ensure they have clear and consistent string representations.
 - **Proper documentation**: Clearly document each enum’s purpose and expected use for better maintainability and clarity if not implicitly understood.
 
-# How e**nums improve code maintainability**
+# How enums improve code maintainability
 
 Code maintainability is extremely important for any piece of software, which is impacted by how readable the code is. There are several ways in which enums significantly enhance code readability:
 
@@ -79,7 +79,7 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 To learn more, check out our product announcement.
 
-## Resources
+# Resources
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
