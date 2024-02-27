@@ -269,7 +269,7 @@ let target = try await users.createTarget(
 )
 ```
 {% /multicode %}
-
+{% multicode %}
 ```js
 const sdk = require('node-appwrite');
 
@@ -731,7 +731,7 @@ let topic = try await messaging.createTopic(
 
 # Send emails {% #send-emails %}
 You can send emails using a Server SDK. 
-To send an email immediately, you can call the `createEmail` endpoint with `status` set to `'processing'` and `schedule` left empty.
+To send an email immediately, you can call the `createEmail` endpoint with `schedule` left empty.
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
@@ -756,7 +756,7 @@ const promise = messaging.createEmail(
         [],                                      // targets (optional)
         [],                                      // cc (optional)
         [],                                      // bcc (optional)
-        'processing',                            // status (optional)
+        false,                                   // draft (optional)
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -790,7 +790,7 @@ const promise = messaging.createEmail(
         [],                                      // targets (optional)
         [],                                      // cc (optional)
         [],                                      // bcc (optional)
-        'processing',                            // status (optional)
+        false,                                   // draft (optional)
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -826,7 +826,7 @@ $result = $messaging->createEmail(
     targets: [],                                  // optional
     cc: [],                                       // optional
     bcc: [],                                      // optional
-    status: 'processing',                         // optional
+    draft: false,                                 // optional
     html: false,                                  // optional
     scheduledAt: ''                               // optional
 );
@@ -854,7 +854,7 @@ result = messaging.create_email(
     targets = [],                               # optional
     cc = [],                                    # optional
     bcc = [],                                   # optional
-    status = 'processing',                      # optional
+    draft = False,                              # optional
     html = False,                               # optional
     scheduled_at = ''                           # optional
 )
@@ -880,7 +880,7 @@ response = messaging.create_email(
     targets: [],                                  # optional
     cc: [],                                       # optional
     bcc: [],                                      # optional
-    status: 'processing',                         # optional
+    draft: false,                                 # optional
     html: false,                                  # optional
     scheduled_at: ''                              # optional
 )
@@ -908,7 +908,7 @@ Message result = await messaging.CreateEmail(
     targets: new List<string> {}                  // optional    
     cc: new List<string> {}                       // optional    
     bcc: new List<string> {}                      // optional    
-    status: "processing"                          // optional    
+    draft: false                                  // optional    
     html: false                                   // optional    
     scheduledAt: "");                             // optional
 ```
@@ -934,7 +934,7 @@ void main() {                                    // Init SDK
     targets: [],                                 // optional
     cc: [],                                      // optional
     bcc: [],                                     // optional
-    status: 'processing',                        // optional
+    draft: false,                                // optional
     html: false,                                 // optional
     scheduledAt: '',                             // optional
   );
@@ -968,7 +968,7 @@ messaging.createEmail(
     listOf(),                                     // targets (optional)
     listOf(),                                     // cc (optional)
     listOf(),                                     // bcc (optional)
-    "processing",                                 // status (optional)
+    false,                                        // draft (optional)
     false,                                        // html (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -987,24 +987,24 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
     .setProject("5df5acd0d48c2")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                               // messageId
-    "[SUBJECT]",                                  // subject
-    "[CONTENT]",                                  // content
-    listOf(),                                     // topics (optional)
-    listOf(),                                     // users (optional)
-    listOf(),                                     // targets (optional)
-    listOf(),                                     // cc (optional)
-    listOf(),                                     // bcc (optional)
-    "processing",                                 // status (optional)
-    false,                                        // html (optional)
-    ""                                            // scheduledAt (optional)
+    "[MESSAGE_ID]",   // messageId
+    "[SUBJECT]",      // subject
+    "[CONTENT]",      // content
+    listOf(),         // topics (optional)
+    listOf(),         // users (optional)
+    listOf(),         // targets (optional)
+    listOf(),         // cc (optional)
+    listOf(),         // bcc (optional)
+    false,            // draft (optional)
+    false,            // html (optional)
+    ""                // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -1034,7 +1034,7 @@ let message = try await messaging.createEmail(
   targets: [],                                   // optional
   cc: [],                                        // optional
   bcc: [],                                       // optional
-  status: "processing",                          // optional
+  draft: false,                                  // optional
   html: xfalse,                                  // optional
   scheduledAt: ""                                // optional
 )
@@ -1055,22 +1055,22 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                       // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')       // Your secret API key
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
 const promise = messaging.createEmail(
-        '[MESSAGE_ID]',                                // messageId
-        '[SUBJECT]',                                   // subject
-        '[CONTENT]',                                   // content
-        [],                                            // topics (optional)
-        [],                                            // users (optional)
-        [],                                            // targets (optional)
-        [],                                            // cc (optional)
-        [],                                            // bcc (optional)
-        'scheduled',                                   // status (optional)
-        false,                                         // html (optional)
-        '2025-02-13T22:01:00+0000'                     // scheduledAt (optional)
+        '[MESSAGE_ID]',            // messageId
+        '[SUBJECT]',               // subject
+        '[CONTENT]',               // content
+        [],                        // topics (optional)
+        [],                        // users (optional)
+        [],                        // targets (optional)
+        [],                        // cc (optional)
+        [],                        // bcc (optional)
+        false,                     // draft (optional)
+        false,                     // html (optional)
+        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
     );
 
 promise.then(function (response) {
@@ -1089,22 +1089,22 @@ let messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                       // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')       // Your secret API key
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
 const promise = messaging.createEmail(
-        '[MESSAGE_ID]',                                // messageId   
-        '[SUBJECT]',                                   // subject   
-        '[CONTENT]',                                   // content   
-        [],                                            // topics (optional)
-        [],                                            // users (optional)
-        [],                                            // targets (optional)
-        [],                                            // cc (optional)
-        [],                                            // bcc (optional)
-        'scheduled',                                   // status (optional)
-        false,                                         // html (optional)
-        '2025-02-13T22:01:00+0000'                     // scheduledAt (optional)
+        '[MESSAGE_ID]',            // messageId
+        '[SUBJECT]',               // subject
+        '[CONTENT]',               // content
+        [],                        // topics (optional)
+        [],                        // users (optional)
+        [],                        // targets (optional)
+        [],                        // cc (optional)
+        [],                        // bcc (optional)
+        false,                     // draft (optional)
+        false,                     // html (optional)
+        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
     );
 
 promise.then(function (response) {
@@ -1122,9 +1122,9 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                      // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2')      // Your secret API key
+    ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    ->setProject('5df5acd0d48c2')                  // Your project ID
+    ->setKey('919c2d18fb5d4...a2ae413da83346ad2')  // Your secret API key
 ;
 
 $messaging = new Messaging($client);
@@ -1133,14 +1133,14 @@ $result = $messaging->createEmail(
     messageId: '[MESSAGE_ID]', 
     subject: '[SUBJECT]', 
     content: '[CONTENT]', 
-    topics: [],                                        // optional
-    users: [],                                         // optional
-    targets: [],                                       // optional
-    cc: [],                                            // optional
-    bcc: [],                                           // optional
-    status: 'scheduled',                               // optional
-    html: false,                                       // optional
-    scheduledAt: '2025-02-13T22:01:00+0000']// optional//
+    topics: [],       // optional
+    users: [],        // optional
+    targets: [],      // optional
+    cc: [],           // optional
+    bcc: [],          // optional
+    draft: false,     // optional
+    html: false,      // optional
+    scheduledAt: '2025-02-13T22:01:00+0000'
 );
 ```
 ```python
@@ -1151,8 +1151,8 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                        # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2')        # Your secret API key
+  .set_project('5df5acd0d48c2')                 # Your project ID
+  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
 messaging = Messaging(client)
@@ -1161,14 +1161,14 @@ result = messaging.create_email(
     message_id = '[MESSAGE_ID]', 
     subject = '[SUBJECT]', 
     content = '[CONTENT]', 
-    topics = [],                                       # optional
-    users = [],                                        # optional
-    targets = [],                                      # optional
-    cc = [],                                           # optional
-    bcc = [],                                          # optional
-    status = 'scheduled',                              # optional
-    html = False,                                      # optional
-    scheduled_at = '2025-02-13T22:01:00+0000'          # optional
+    topics = [],                # optional
+    users = [],                 # optional
+    targets = [],               # optional
+    cc = [],                    # optional
+    bcc = [],                   # optional
+    draft = False,              # optional
+    html = False,               # optional
+    scheduled_at = '2025-02-13T22:01:00+0000'
 )
 ```
 ```ruby
@@ -1178,8 +1178,8 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                      # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2')      # Your secret API key
+    .set_project('5df5acd0d48c2')                 # Your project ID
+    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 messaging = Messaging.new(client)
 
@@ -1187,14 +1187,14 @@ response = messaging.create_email(
     message_id: '[MESSAGE_ID]', 
     subject: '[SUBJECT]', 
     content: '[CONTENT]', 
-    topics: [],                                        # optional
-    users: [],                                         # optional
-    targets: [],                                       # optional
-    cc: [],                                            # optional
-    bcc: [],                                           # optional
-    status: 'scheduled',                               # optional
-    html: false,                                       # optional
-    scheduled_at: '2025-02-13T22:01:00+0000'           # optional
+    topics: [],        # optional
+    users: [],         # optional
+    targets: [],       # optional
+    cc: [],            # optional
+    bcc: [],           # optional
+    draft: false,      # optional
+    html: false,       # optional
+    scheduled_at: '2025-02-13T22:01:00+0000'    
 )
 
 puts response.inspect
@@ -1206,8 +1206,8 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                       // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2");      // Your secret API key
+    .SetProject("5df5acd0d48c2")                 // Your project ID
+    .SetKey("919c2d18fb5d4...a2ae413da83346ad2");// Your secret API key
 
 var messaging = new Messaging(client);
 
@@ -1215,14 +1215,14 @@ Message result = await messaging.CreateEmail(
     messageId: "[MESSAGE_ID]",
     subject: "[SUBJECT]",
     content: "[CONTENT]"    
-    topics: new List<string> {}                        // optional    
-    users: new List<string> {}                         // optional    
-    targets: new List<string> {}                       // optional    
-    cc: new List<string> {}                            // optional    
-    bcc: new List<string> {}                           // optional    
-    status: "scheduled"                                // optional    
-    html: false                                        // optional    
-    scheduledAt: "2025-02-13T22:01:00+0000");          // optional
+    topics: new List<string> {}    // optional    
+    users: new List<string> {}     // optional    
+    targets: new List<string> {}   // optional    
+    cc: new List<string> {}        // optional    
+    bcc: new List<string> {}       // optional    
+    draft: false                   // optional    
+    html: false                    // optional    
+    scheduledAt: "2025-02-13T22:01:00+0000");     // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -1233,22 +1233,22 @@ void main() {                                          // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                       // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')       // Your secret API key
+    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
   Future result = messaging.createEmail(
     messageId: '[MESSAGE_ID]',
     subject: '[SUBJECT]',
     content: '[CONTENT]',
-    topics: [],                                        // optional
-    users: [],                                         // optional
-    targets: [],                                       // optional
-    cc: [],                                            // optional
-    bcc: [],                                           // optional
-    status: 'scheduled',                               // optional
-    html: false,                                       // optional
-    scheduledAt: '2025-02-13T22:01:00+0000',           // optional
+    topics: [],         // optional
+    users: [],          // optional
+    targets: [],        // optional
+    cc: [],             // optional
+    bcc: [],            // optional
+    draft: false,       // optional
+    html: false,        // optional
+    scheduledAt: '2025-02-13T22:01:00+0000',     
   );
 
   result
@@ -1272,17 +1272,17 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                                    // messageId
-    "[SUBJECT]",                                       // subject
-    "[CONTENT]",                                       // content
-    listOf(),                                          // topics (optional)
-    listOf(),                                          // users (optional)
-    listOf(),                                          // targets (optional)
-    listOf(),                                          // cc (optional)
-    listOf(),                                          // bcc (optional)
-    "scheduled",                                       // status (optional)
-    false,                                             // html (optional)
-    "2025-02-13T22:01:00+0000"                         // scheduledAt (optional)
+    "[MESSAGE_ID]",  // messageId
+    "[SUBJECT]",     // subject
+    "[CONTENT]",     // content
+    listOf(),        // topics (optional)
+    listOf(),        // users (optional)
+    listOf(),        // targets (optional)
+    listOf(),        // cc (optional)
+    listOf(),        // bcc (optional)
+    false,           // draft (optional)
+    false,           // html (optional)
+    "2025-02-13T22:01:00+0000"      // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -1300,23 +1300,23 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                       // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2");      // Your secret API key
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2");// Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                                    // messageId
-    "[SUBJECT]",                                       // subject
-    "[CONTENT]",                                       // content
-    listOf(),                                          // topics (optional)
-    listOf(),                                          // users (optional)
-    listOf(),                                          // targets (optional)
-    listOf(),                                          // cc (optional)
-    listOf(),                                          // bcc (optional)
-    "scheduled",                                       // status (optional)
-    false,                                             // html (optional)
-    "2025-02-13T22:01:00+0000"                         // scheduledAt (optional)
+    "[MESSAGE_ID]",    // messageId
+    "[SUBJECT]",       // subject
+    "[CONTENT]",       // content
+    listOf(),          // topics (optional)
+    listOf(),          // users (optional)
+    listOf(),          // targets (optional)
+    listOf(),          // cc (optional)
+    listOf(),          // bcc (optional)
+    false,             // draft (optional)
+    false,             // html (optional)
+    "2025-02-13T22:01:00+0000"                         
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -1332,8 +1332,8 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                       // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2")       // Your secret API key
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)
 
@@ -1341,14 +1341,14 @@ let message = try await messaging.createEmail(
   messageId: "[MESSAGE_ID]",
   subject: "[SUBJECT]",
   content: "[CONTENT]",
-  topics: [],                                          // optional
-  users: [],                                           // optional
-  targets: [],                                         // optional
-  cc: [],                                              // optional
-  bcc: [],                                             // optional
-  status: "scheduled",                                 // optional
-  html: xfalse,                                        // optional
-  scheduledAt: "2025-02-13T22:01:00+0000"              // optional
+  topics: [],           // optional
+  users: [],            // optional
+  targets: [],          // optional
+  cc: [],               // optional
+  bcc: [],              // optional
+  draft: false,         // optional
+  html: xfalse,         // optional
+  scheduledAt: "2025-02-13T22:01:00+0000"   
 )
 ```
 {% /multicode %}
