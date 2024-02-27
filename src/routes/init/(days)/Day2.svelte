@@ -100,16 +100,16 @@
             </button>
         </VideoWrapper>
         <a
-                    href="/docs/products/auth/server-side-rendering"
-                    class="aw-card is-normal has-border-gradient"
-                    style="padding: 1.25rem"
-                >
-                    <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
-                    <div class="aw-card-link u-flex u-cross-center">
-                        <span class="text">Learn more</span>
-                        <span class="aw-icon-arrow-right" />
-                    </div>
-                </a>
+            href="/docs/products/auth/server-side-rendering"
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 1.25rem"
+        >
+            <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
+            <div class="aw-card-link u-flex u-cross-center">
+                <span class="text">Learn more</span>
+                <span class="aw-icon-arrow-right" />
+            </div>
+        </a>
     </div>
 </Day>
 
@@ -184,6 +184,11 @@
         > :nth-child(4) {
             grid-column: 1 / 10;
             grid-row: 3 / 4;
+
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         > :nth-child(5) {
@@ -193,7 +198,6 @@
             @media screen and (max-width: 1023px) {
                 display: flex;
                 flex-direction: column;
-                // gap: 1rem;
             }
         }
 
