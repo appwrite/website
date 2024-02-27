@@ -18,11 +18,16 @@
     import Video from './(components)/Video.svelte';
     import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
+    import Day2 from './(days)/Day2.svelte';
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
 
-    const base = new Date('2024-02-26T14:00:00.000Z');
+    let base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
+
+    function fastForward() {
+        base = addDays(base, -1);
+    }
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -39,11 +44,13 @@
     $: days = [
         {
             title: 'Messaging',
-            release: base
+            release: base,
+            animation: Animations.Messaging
         },
         {
-            title: 'XXX',
-            release: addDays(base, 1)
+            title: 'SSR',
+            release: addDays(base, 1),
+            animation: Animations.SSR
         },
         {
             title: 'XXX',
@@ -170,23 +177,21 @@
         <p class="aw-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/tickets" class="aw-button">Claim your ticket</a>
-            {#if new Date() >= kickoff}
-                <button on:click={() => scrollIntoView('#kickoff')} class="aw-button is-secondary">
-                    <div class="aw-icon-play" />
-                    <span class="text">Watch the video</span>
-                </button>
-            {/if}
+            <button on:click={() => scrollIntoView('#kickoff')} class="aw-button is-secondary">
+                <div class="aw-icon-play" />
+                <span class="text">Watch the video</span>
+            </button>
+            <button class="aw-button" on:click={fastForward}>fast forward</button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
     </div>
-
     <div class="aw-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i}>
-                    {#if i === 0}
-                        <Animations.Messaging />
+                    {#if day.animation}
+                        <svelte:component this={day.animation} />
                     {/if}
                 </DayCard>
             {/each}
@@ -216,6 +221,8 @@
                 {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
                 {#if i === 0}
                     <Day1 {date} release={day.release} />
+                {:else if i === 1}
+                    <Day2 {date} release={day.release} />
                 {:else}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">
                         <div class="aw-dot" />
