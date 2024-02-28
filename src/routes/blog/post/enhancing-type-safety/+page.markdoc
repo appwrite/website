@@ -22,7 +22,7 @@ Enums play a crucial role in type safety by restricting the values a variable or
 
 # How enums improve software quality
 
-There are a number of benefits that using enums brings:
+There are several benefits that using enums brings:
 
 - **Type safety**: Enums provide type safety, ensuring that only valid values can be used. Since the acceptable values are well-defined, the code becomes less prone to errors.
 - **Improved code clarity**: Enums make code more readable and understandable since they represent the logical grouping as well as the intended object explicitly.
@@ -76,8 +76,6 @@ const account = new Account(client);
 
 account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
 ```
-
-To learn more, check out our product announcement.
 
 # Resources
 
