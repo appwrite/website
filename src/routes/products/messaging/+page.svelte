@@ -251,8 +251,8 @@ messaging.create_email(
 <Main>
     <div class="aw-big-padding-section u-overflow-hidden">
         <div class="hero">
-            <enhanced:img src="./(assets)/blur-left.png" alt="" class="blur-left" />
-            <enhanced:img src="./(assets)/blur-right.png" alt="" class="blur-right" />
+            <img src="/images/products/messaging/blur-left.png" alt="" class="blur-left" />
+            <img src="/images/products/messaging/blur-right.png" alt="" class="blur-right" />
 
             <div class="aw-container">
                 <div>
@@ -283,7 +283,7 @@ messaging.create_email(
                 </div>
 
                 <div class="phone-wrapper">
-                    <enhanced:img class="phone" src="./(assets)/phone.png" alt="" />
+                    <img class="phone" src="/images/products/messaging/phone.png" alt="" />
                 </div>
             </div>
         </div>
