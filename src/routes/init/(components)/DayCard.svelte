@@ -1,7 +1,10 @@
 <script lang="ts" context="module">
+    import type { SvelteComponent } from 'svelte';
+
     export type DayType = {
         title: string;
         release: Date;
+        animation?: typeof SvelteComponent
     };
 </script>
 

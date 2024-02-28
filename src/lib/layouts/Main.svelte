@@ -174,7 +174,7 @@
             </button>
         </div>
     </section>
-    {#if $page.route.id !== '/init'}
+    {#if !$page.route.id?.startsWith('/init')}
         <div class="aw-top-banner-2 is-special-padding">
             <a href="/init" class="u-block aw-top-banner-2-wrapper">
                 <div class="u-flex u-main-space-between u-cross-center u-gap-16">
@@ -196,13 +196,13 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <h6 class="aw-sub-body-500 aw-u-color-text-accent-click" style="line-height:15px">is coming</h6>
+                            <h6 class="aw-sub-body-500 aw-u-color-text-accent-click" style="line-height:15px">has started</h6>
                         </div>
-                        <p class="aw-caption-500">The start of something new</p>
+                        <p class="aw-caption-500">Day 1 - SSR support announced</p>
                     </div>
                     <div class="u-flex-vertical u-gap-2">
                         <div class="aw-link u-flex u-cross-center">
-                            <span class="aw-sub-body-400">Register now</span>
+                            <span class="aw-sub-body-400">Go to Init</span>
                             <span class="aw-icon-arrow-right" aria-hidden="true"></span>
                         </div>
                     </div>

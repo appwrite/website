@@ -15,8 +15,8 @@ dependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/repo':
-    specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0
+    specifier: github:appwrite/appwrite#feat-rc-sdks
+    version: github.com/appwrite/appwrite/cd554aa17f2405338bb2e9259abfb77509f4216d
   '@resvg/resvg-js':
     specifier: ^2.6.0
     version: 2.6.0
@@ -65,7 +65,7 @@ devDependencies:
     specifier: ^2.0.3
     version: 2.0.3(@sveltejs/kit@1.30.0)
   '@sveltejs/enhanced-img':
-    specifier: ^0.1.2
+    specifier: ^0.1.8
     version: 0.1.8(svelte@4.2.10)
   '@sveltejs/kit':
     specifier: 1.30.0
@@ -6545,8 +6545,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/cbf1085850354c6d16296e764e9c64abea067be0:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/cbf1085850354c6d16296e764e9c64abea067be0}
+  github.com/appwrite/appwrite/cd554aa17f2405338bb2e9259abfb77509f4216d:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/cd554aa17f2405338bb2e9259abfb77509f4216d}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: false
