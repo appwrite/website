@@ -81,7 +81,7 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs)
+- [Docs](https://appwrite.io/docs/sdks#enums)
 - [Discord](https://appwrite.io/discord)
 - [Blog](https://appwrite.io/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
