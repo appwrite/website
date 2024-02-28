@@ -147,7 +147,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/ai/audio-processing" class="aw-card is-normal">
+                        <a href="/docs/products/ai/audio-processing" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
@@ -173,7 +173,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/ai/video-processing" class="aw-card is-normal">
+                        <a href="/docs/products/ai/video-processing" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
