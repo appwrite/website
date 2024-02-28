@@ -136,6 +136,10 @@
             $layoutState.showSearch = false;
         }
     }
+
+    function getRelevantSubtitle(hit: Hit): string {
+        return hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6 ?? null;
+    }
 </script>
 
 <svelte:window on:keydown={handleKeypress} />
@@ -190,6 +194,7 @@
                         <h6 class="aw-eyebrow">{results.length} results found</h6>
                         <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
                             {#each results as hit, i (hit.uid)}
+                                {@const relevantHit = getRelevantSubtitle(hit)}
                                 <li>
                                     <a
                                         data-hit={i}
@@ -203,10 +208,11 @@
                                     >
                                         <div class="aw-u-trim-1">
                                             <span class="aw-u-color-text-secondary">{hit.h1}</span>
-                                            {#if hit.h2}
+                                            {#if relevantHit}
                                                 <span class="aw-u-color-text-secondary"> / </span>
-                                                <span class="aw-u-color-text-primary">{hit.h2}</span
-                                                >
+                                                <span class="aw-u-color-text-primary">
+                                                    {relevantHit}
+                                                </span>
                                             {/if}
                                         </div>
                                         {#if hit.p}
