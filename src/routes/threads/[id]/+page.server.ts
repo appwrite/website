@@ -1,16 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getRelatedThreads, getThread, getThreadMessages, iterateAllThreads } from '../helpers.js';
-
-export const prerender = 'auto';
-
-export const entries = async () => {
-    const ids = [];
-    for await (const thread of iterateAllThreads(100)) {
-        ids.push({ id: thread.$id });
-    }
-
-    return ids;
-};
+import { getRelatedThreads, getThread, getThreadMessages } from '../helpers.js';
 
 export const load = async ({ params }) => {
     const id = params.id;

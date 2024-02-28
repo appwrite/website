@@ -131,7 +131,7 @@ class Appwrite {
         _ email: String,
         _ password: String
     ) async throws -> Session {
-        try await account.createEmailSession(
+        try await account.createEmailPasswordSession(
             email: email,
             password: password
         )
