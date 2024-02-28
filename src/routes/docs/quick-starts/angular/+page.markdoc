@@ -144,7 +144,7 @@ export class AppComponent {
   name: string = '';
 
   async login(email: string, password: string) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailSession(email, password);
     this.loggedInUser = await account.get();
   }
 
