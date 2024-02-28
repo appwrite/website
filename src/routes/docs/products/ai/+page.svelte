@@ -12,13 +12,13 @@
 
     const tutorials: CodeCardProps[] = [
         {
-            href: '/docs/products/ai/image-recognition/tutorials',
+            href: '/docs/products/ai/tutorials/image-classification',
             cover: '/images/tutorials/react.png',
             title: 'Image Recognition Tutorial',
             description: 'Label entire images with ease using Hugging Face'
         },
         {
-            href: '/docs/products/ai/natural-language/tutorials',
+            href: '/docs/products/ai/tutorials/object-detection',
             cover: '/images/tutorials/svelte.png',
             title: 'Object Detection Tutorial',
             description: 'Annotate and label objects within an Image'
@@ -96,7 +96,7 @@
             <div class="u-margin-block-start-24">
                 <ul class="aw-grid-row-4 aw-grid-row-4-m-1">
                     <li>
-                        <a href="/docs/ai/computer-vision" class="aw-card is-normal">
+                        <a href="/docs/products/ai/computer-vision" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
@@ -122,7 +122,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/ai/natural-language" class="aw-card is-normal">
+                        <a href="/docs/products/ai/natural-language" class="aw-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
