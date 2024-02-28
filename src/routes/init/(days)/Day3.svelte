@@ -13,7 +13,7 @@
 
 <Day day={date} {release}>
     <div class="mosaic">
-        <a href="/blog/post/introducing-enums-sdk-support" class="aw-card is-normal has-border-gradient" style:padding="0">
+        <a href="/blog/post/introducing-enum-sdk-support" class="aw-card is-normal has-border-gradient" style:padding="0">
             <div style:padding="2rem" style:padding-block-end="0">
                 <h3 class="aw-label aw-u-color-text-primary">Enum SDK support</h3>
                 <p style:margin-block-start="0.625rem">
