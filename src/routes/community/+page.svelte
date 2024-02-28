@@ -34,9 +34,9 @@
             },
             date: 'February 28th, 2024',
             location: 'Discord',
-            title: 'Guest speaker: Jessica Temporal',
+            title: 'Guest speaker: Francesco Ciulla',
             description:
-                'Join us on day two of Init together with developer advocate Jessica Temporal.',
+                'Join us on day two of Init together with developer advocate Francesco Ciulla.',
             buttonText: 'View event'
         },
         {

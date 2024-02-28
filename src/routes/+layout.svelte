@@ -46,10 +46,11 @@
     import '$scss/index.scss';
 
     import { browser, dev } from '$app/environment';
-    import { navigating, page } from '$app/stores';
+    import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { derived, writable } from 'svelte/store';
     import { loggedIn } from '$lib/utils/console';
+    import { beforeNavigate } from '$app/navigation';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -78,6 +79,12 @@
                 applyTheme('dark');
             }
         });
+    });
+
+    beforeNavigate(({ willUnload, to }) => {
+        if ($updated && !willUnload && to?.url) {
+            location.href = to.url.href;
+        }
     });
 
     $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));

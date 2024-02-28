@@ -4,7 +4,7 @@
     export type DayType = {
         title: string;
         release: Date;
-        component?: typeof SvelteComponent
+        animation?: typeof SvelteComponent
     };
 </script>
 
