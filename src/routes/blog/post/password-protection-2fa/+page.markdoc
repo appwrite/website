@@ -66,7 +66,7 @@ Effective implementation of 2FA enhances security measures for applications, pro
 
 # Implementing 2FA in your apps with Appwrite
 
-With the release of Appwrite 1.5, we have introduced the ability to implement 2FA via Appwrite Authentication. Currently, we offer three methods for implementing the second factor:
+With the release of Appwrite 1.5, we have introduced the ability to implement [2FA](https://appwrite.io/docs/products/auth/2fa) via Appwrite Authentication. Currently, we offer three methods for implementing the second factor:
 
 - **Authenticator Apps (TOTP):** Use common authenticator apps like Google Authenticator or Twilio Authy for authentication.
 - **Emails:** A verified email can be used for authentication, providing a 6-digit code to the user.

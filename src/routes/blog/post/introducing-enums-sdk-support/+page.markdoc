@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing Enums SDK support: Enhanced dev experience across SDKs"
+title: "Introducing Enum SDK support: Enhanced dev experience across SDKs"
 description: A new feature that will reduce friction and improve your experience.
 date: 2024-02-28
 cover: /images/blog/enums-announcement.png
@@ -17,7 +17,7 @@ This enhancement is designed to streamline the development process, improve code
 
 Enums, or enumerations, are a powerful programming construct that enables developers to define a set of named constants. These constants make code more readable and less error-prone by providing meaningful names for values rather than using numbers or strings directly. Enums are widely used for representing a set of possible values for a variable, making code easier to understand, maintain, and debug.
 
-# Introducing Enums SDK support in Appwrite
+# Introducing Enum SDK support in Appwrite
 
 Currently, when you want to use an endpoint with a predefined set of allowed values, you must look up the exact value in the documentation. This can be time-consuming and error-prone. 
 
@@ -25,8 +25,8 @@ This new feature, however, ensures you can use more readable and self-documentin
 
 Bringing along benefits such as massively reducing friction when using routes that have predefined parameters. One of the most common examples of SDK Enums is OAuth providers. To log in with Apple, you must pass the `apple` string as the provider. With enums, you'll be able to pass `OAuthProvider.Apple` instead.
 
-```jsx
-import { Client, Account } from "appwrite";
+```js
+import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')

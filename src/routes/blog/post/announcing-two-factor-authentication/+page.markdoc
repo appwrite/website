@@ -35,7 +35,7 @@ Currently, Appwrite offers three methods for implementing the second factor:
 
 One great aspect of Appwrite 2FA is that it can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth. You can implement 2FA in your application via the following several steps. 
 
-## Step 1: Enabling 2FA on an account
+## Step 1: Enable 2FA on an account
 
 To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling `account.updateMFA()`.
 
@@ -72,18 +72,16 @@ const user = await account.createEmailPasswordSession(
 Upon successful login in the first authentication step, check the status of the login by calling `account.get()`. If you receive the error `user_more_factors_required`, redirect to perform the second factor.
 
 ```js
-const user = account.get()
-  .then((response) => {
-    console.log(response); // Success
-  })
-  .catch((error) => {
-    console.log(error); // Failure
-    if (error.type === `user_more_factors_required`) {
+try {
+  const response = await account.get();
+} catch (error) {
+  if (error.type === `user_more_factors_required`){
       // redirect to perform 2FA
-    } else {
+  }
+  else {
       // handle other errors
-    }
-  });
+  }
+}
 ```
 
 ## Step 3: Check enabled factors
@@ -100,9 +98,9 @@ The returned object will be formatted as follows:
 
 ```js
 {
-    totp: true, // time-based one-time password
-    email: false, // email
-    phone: true // phone
+  totp: true, // time-based one-time password
+  email: false, // email
+  phone: true // phone
 }
 ```
 
@@ -114,6 +112,9 @@ Based on the enabled providers, you can initialize the additional auth step. Cal
 const challenge = await account.createChallenge(
   'phone'                       // factor
 );
+
+// Save the challenge ID to complete the challenge later
+const challengeId = challenge.$id;
 ```
 
 ## Step 5: Complete challenge
