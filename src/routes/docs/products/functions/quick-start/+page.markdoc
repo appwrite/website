@@ -47,25 +47,19 @@ The easiest way to execute your first function is to use the Appwrite Console.
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
 {% cards %}
-{% cards_item href="/docs/products/functions/development" title="Develop" %}
-Learn how to parse request, build responses, and log to Console in Appwrite Functions.
+{% cards_item href="/docs/products/functions/templates" title="Template" %}
+Get a template function up and running with a single click.
 {% /cards_item %}
-{% cards_item href="/docs/products/functions/development#response" title="Response" %}
-Learn about function response types, like text, json, html, redirect, and empty responses.
+{% cards_item href="/docs/products/functions/develop" title="Develop" %}
+Learn about developing your own Appwrite Function.
 {% /cards_item %}
-{% cards_item href="/docs/products/functions/deployment" title="Deploy" %}
+{% cards_item href="/docs/products/functions/deploy" title="Deploy" %}
 Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads.
 {% /cards_item %}
-{% cards_item href="/docs/products/functions/execution" title="Execute" %}
-Appwrite Functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.
+{% cards_item href="/docs/products/functions/execute" title="Execute" %}
+Explore the different ways an Appwrite Function can be executed.
 {% /cards_item %}
-{% cards_item href="/docs/products/functions/execution#domains" title="Domains" %}
-Each Appwrite Function can be executed through HTTP requests against a unique domain. Learn about domains.
-{% /cards_item %}
-{% cards_item href="/docs/products/functions/runtimes" title="Runtime" %}
-Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.
-{% /cards_item %}
-{% cards_item href="/docs/products/functions/examples" title="Examples" %}
-Enjoy learning from examples? Take a look at these example functions.
+{% cards_item href="/docs/products/functions/runtimes" title="Runtimes" %}
+Write Appwrite Functions in your favorite language.
 {% /cards_item %}
 {% /cards %}
