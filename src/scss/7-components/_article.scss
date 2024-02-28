@@ -19,7 +19,7 @@
       &-sub-body-400  { margin-block:pxToRem(16); }
       &-sub-body-500  { margin-block-end:pxToRem(4); }
       &-main-body-500 { margin-block-end:pxToRem(8); }
-      &-description   { margin-block-start:pxToRem(4); margin-block-end:pxToRem(4); }
+      &-description   { margin-block-end:pxToRem(16); }
       &-label         { margin-block-end:pxToRem(16); }
       &-paragraph-md  { margin-block-end:pxToRem(32); }
       &-link          { margin-block-end:0 !important; }

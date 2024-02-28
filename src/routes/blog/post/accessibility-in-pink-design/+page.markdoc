@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How Pink Design helped us improve web accessibility in our products.
-description: 
+description:
 date: 2022-11-14
 cover: /images/pages/homepage/dashboard.png
 timeToRead: 3
@@ -51,12 +51,12 @@ Browsers have a default font size that users can change via the browser setting.
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint 
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com'); 
+const promise = account.createVerification('https://example.com');
 
 promise.then(function (response) {
     console.log(response);

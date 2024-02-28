@@ -1317,7 +1317,7 @@ export default async ({ req, res, log, error }) => {
 
     try {
         await databases.createDocument(
-            '[DATABASE_ID]',
+            '<DATABASE_ID>',
             '[COLLECTION_ID]',
             ID.unique(),
             {}
@@ -1350,7 +1350,7 @@ return function ($context) {
 
     try {
         $databases->createDocument(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             documentId: ID::unique(),
             data: []
@@ -1382,8 +1382,8 @@ def main(context):
 
     try:
         databases.create_document(
-            database_id="[DATABASE_ID]",
-            collection_id="[COLLECTION_ID]",
+            database_id="<DATABASE_ID>",
+            collection_id="<COLLECTION_ID>",
             document_id=ID.unique(),
             data={}
         )
@@ -1408,7 +1408,7 @@ def main(context)
 
     begin
         databases.create_document(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             documentId: ID.unique(),
             data: {}
@@ -1434,8 +1434,8 @@ export default function ({req, res, error}: any){
     
     try {
         databases.createDocument(
-            "[DATABASE_ID]",
-            "[COLLECTION_ID]",
+            "<DATABASE_ID>",
+            "<COLLECTION_ID>",
             ID.unique(),
             {}
         );
@@ -1462,7 +1462,7 @@ Future<dynamic> main(final context) async {
     
     try {
         await databases.createDocument(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             documentId: ID.unique(),
             data: {}
@@ -1490,8 +1490,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 
     do {
         try await databases.createDocument(
-            databaseId: "[DATABASE_ID]", 
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>", 
+            collectionId: "<COLLECTION_ID>",
             documentId: ID.unique(),
             data: [:]
         )
@@ -1523,8 +1523,8 @@ namespace DotNetRuntime
     
             try {
                 await databases.CreateDocument(
-                    databaseId: "[DATABASE_ID]",
-                    collectionId: "[COLLECTION_ID]",
+                    databaseId: "<DATABASE_ID>",
+                    collectionId: "<COLLECTION_ID>",
                     documentId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
@@ -1558,8 +1558,8 @@ class Main {
 
         try {
             databases.createDocument(
-                databaseId = "[DATABASE_ID]",
-                collectionId = "[COLLECTION_ID]",
+                databaseId = "<DATABASE_ID>",
+                collectionId = "<COLLECTION_ID>",
                 documentId = ID.unique()
                 data = mapOf()
             )
@@ -1591,8 +1591,8 @@ public class Main {
 
         try {
             databases.createDocument(
-                "[DATABASE_ID]",
-                "[COLLECTION_ID]",
+                "<DATABASE_ID>",
+                "<COLLECTION_ID>",
                 ID.unique(),
                 new HashMap<>()
             );
@@ -1634,7 +1634,7 @@ export default async ({ req, res, log }) => {
 
     try {
         await databases.createDocument(
-            '[DATABASE_ID]',
+            '<DATABASE_ID>',
             '[COLLECTION_ID]',
             ID.unique(),
             {}
@@ -1672,7 +1672,7 @@ return function ($context) {
 
     try {
         $databases->createDocument(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             documentId: ID::unique(),
             data: []
@@ -1708,8 +1708,8 @@ def main(context):
 
     try:
         databases.create_document(
-            database_id="[DATABASE_ID]",
-            collection_id="[COLLECTION_ID]",
+            database_id="<DATABASE_ID>",
+            collection_id="<COLLECTION_ID>",
             document_id=ID.unique(),
             data={}
         )
@@ -1738,7 +1738,7 @@ def main(context)
     databases = Appwrite::Databases.new(client)
 
     begin
-        databases.create_document('[DATABASE_ID]', '[COLLECTION_ID]', Appwrite::ID.unique(), {})
+        databases.create_document('<DATABASE_ID>', '[COLLECTION_ID]', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
         context.error("Failed to create document: " + e.message)
         return context.response.send("Failed to create document")
@@ -1765,8 +1765,8 @@ export default function ({req, res, error}: any){
     
     try {
         databases.createDocument(
-            "[DATABASE_ID]",
-            "[COLLECTION_ID]",
+            "<DATABASE_ID>",
+            "<COLLECTION_ID>",
             ID.unique(),
             {}
         );
@@ -1798,7 +1798,7 @@ Future<dynamic> main(final context) async {
     
     try {
         await databases.createDocument(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             documentId: ID.unique(),
             data: {}
@@ -1831,8 +1831,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 
     do {
         try await databases.createDocument(
-            databaseId: "[DATABASE_ID]",
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
             documentId: ID.unique()
             data: [:]
         )
@@ -1869,8 +1869,8 @@ namespace DotNetRuntime
 
             try {
                 await databases.CreateDocument(
-                    databaseId: "[DATABASE_ID]",
-                    collectionId: "[COLLECTION_ID]",
+                    databaseId: "<DATABASE_ID>",
+                    collectionId: "<COLLECTION_ID>",
                     documentId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
@@ -1909,8 +1909,8 @@ class Main {
 
         try {
             databases.createDocument(
-                databaseId = "[DATABASE_ID]",
-                collectionId = "[COLLECTION_ID]",
+                databaseId = "<DATABASE_ID>",
+                collectionId = "<COLLECTION_ID>",
                 documentId = ID.unique(),
                 data = mapOf()
             )
@@ -1947,8 +1947,8 @@ public class Main {
 
         try {
             databases.createDocument(
-                "[DATABASE_ID]",
-                "[COLLECTION_ID]",
+                "<DATABASE_ID>",
+                "<COLLECTION_ID>",
                 ID.unique(),
                 new HashMap<>()
             );

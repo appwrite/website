@@ -68,6 +68,6 @@ Configure custom domains and customize communication templates.
 Add a custom domain for your Appwrite APIs.
 {% /cards_item %}
 {% cards_item href="/docs/advanced/platform/message-templates" title="Message templates" %}
-Create custom branding and messages when you communicate with users..
+Create custom branding and messages when you communicate with users.
 {% /cards_item %}
 {% /cards %}

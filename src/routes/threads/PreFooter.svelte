@@ -1,12 +1,12 @@
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
+    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg aw-u-z-index-1-negative" />
     <div class="aw-container">
         <h2 class="aw-display aw-u-color-text-primary">Need support?</h2>
         <div class="cards">
             <div class="cardy">
                 <h3 class="aw-label aw-u-color-text-primary">Join our Discord</h3>
                 <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
-                    Get community support by joining our Discord server
+                    Get community support by joining our Discord server.
                 </p>
                 <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
                     <span class="aw-icon-discord" />
@@ -16,7 +16,7 @@
             <div class="cardy">
                 <h3 class="aw-label aw-u-color-text-primary">Get premium support</h3>
                 <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
-                    Become a pro user and get email support from our team
+                    Join Appwrite Pro and get email support from our team.
                 </p>
                 <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/pricing">
                     <span class="text">Learn more</span>

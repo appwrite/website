@@ -115,7 +115,7 @@ Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier**
 
 The Appwrite SDK uses `ASWebAuthenticationSession` on macOS 10.15+ to allow OAuth authentication. You have to change your macOS **Deployment Target** in XCode to be macOS >= 10.15 to be able to build your app for macOS.
 
-In order to capture the Appwrite OAuth 2 callback url, the following URL scheme needs to added to your `Info.plist`.
+In order to capture the Appwrite OAuth2 callback url, the following URL scheme needs to added to your `Info.plist`.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -182,42 +182,39 @@ import 'package:appwrite/models.dart' as models;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Client client = Client();
-  client = Client()
+  Client client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("650209298acac4ee1bb6");
+      .setProject("<YOUR_PROJECT_ID>");
   Account account = Account(client);
 
-  runApp(MyApp(
-    account: account,
+  runApp(MaterialApp(
+    home: MyApp(account: account),
   ));
+}
+class MyApp extends StatefulWidget {
+  final Account account;
+
+  MyApp({required this.account});
+
+  @override
+  MyAppState createState() {
+    return MyAppState();
+  }
 }
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 Then, append the following widgets to `lib/main.dart` create your login page.
-import 'package:appwrite/appwrite.dart';
 
 ```dart
-class MyForm extends StatefulWidget {
-  final Account account;
-
-  MyForm({required this.account});
-
-  @override
-  MyFormState createState() {
-    return MyFormState();
-  }
-}
-
-class MyFormState extends State<MyForm> {
+class MyAppState extends State<MyApp> {
   models.User? loggedInUser;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
 
   Future<void> login(String email, String password) async {
-    await widget.account.createEmailSession(email: email, password: password);
+    await widget.account.createEmailPasswordSession(email: email, password: password);
     final user = await widget.account.get();
     setState(() {
       loggedInUser = user;
@@ -239,49 +236,60 @@ class MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(loggedInUser != null
-            ? 'Logged in as ${loggedInUser!.name}'
-            : 'Not logged in'),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: emailController,
-          decoration: InputDecoration(labelText: 'Email'),
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(loggedInUser != null
+                ? 'Logged in as ${loggedInUser!.name}'
+                : 'Not logged in'),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    login(emailController.text, passwordController.text);
+                  },
+                  child: Text('Login'),
+                ),
+                SizedBox(width: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    register(emailController.text, passwordController.text,
+                        nameController.text);
+                  },
+                  child: Text('Register'),
+                ),
+                SizedBox(width: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    logout();
+                  },
+                  child: Text('Logout'),
+                ),
+              ],
+            ),
+          ],
         ),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: passwordController,
-          decoration: InputDecoration(labelText: 'Password'),
-          obscureText: true,
-        ),
-        SizedBox(height: 16.0),
-        TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Name'),
-        ),
-        SizedBox(height: 16.0),
-        ElevatedButton(
-          onPressed: () {
-            login(emailController.text, passwordController.text);
-          },
-          child: Text('Login'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            register(emailController.text, passwordController.text,
-                nameController.text);
-          },
-          child: Text('Register'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            logout();
-          },
-          child: Text('Logout'),
-        ),
-      ],
+      ),
     );
   }
 }

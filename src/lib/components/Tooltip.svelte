@@ -6,6 +6,7 @@
     export let placement: NonNullable<FloatingConfig>['placement'] = 'top';
     export let disabled = false;
     export let closeOnPointerDown = false;
+    export let disableHoverableContent = false;
 
     const {
         elements: { trigger, content, arrow },
@@ -16,7 +17,8 @@
         },
         openDelay: 0,
         closeOnPointerDown,
-        forceVisible: true
+        forceVisible: true,
+        disableHoverableContent
     });
 
     $: flyParams = (function getFlyParams() {
