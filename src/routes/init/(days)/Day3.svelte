@@ -2,7 +2,7 @@
     import enumPng from '../(assets)/enum.png';
     import twoFa from '../(assets)/2fa.png';
     import thumbnail from '../(assets)/thumbnail-2fa.png';
-    import thumbnailProduct from '../(assets)/thumbnail-2fa-product.png';
+    import thumbnailEvent from '../(assets)/thumbnail-2fa-event.png';
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
     import Day from './Day.svelte';
     import Video from '../(components)/Video.svelte';
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <img
-                src="/images/community/events/init-2.png"
+                src={thumbnailEvent}
                 alt=""
                 style="aspect-ratio: 268/110; border-radius: 0.75rem; object-fit: cover;"
             />
