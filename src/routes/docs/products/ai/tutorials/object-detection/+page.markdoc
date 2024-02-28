@@ -1,0 +1,10 @@
+---
+layout: article
+title: Object Recognition with Hugging Face
+description: Build object recognition powered apps with Appwrite and learn how to use Hugging Face's image classification models.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/computer-vision
+---
+
+Learn how to setup your first object recognition powered app with Appwrite and Hugging Face.

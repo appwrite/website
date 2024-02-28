@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Carousel, Spline } from '$lib/components';
-    import Technologies from '$lib/components/Technologies.svelte';
+    import { Carousel } from '$lib/components';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -14,7 +13,7 @@
         {
             href: '/docs/products/ai/tutorials/image-classification',
             cover: '/images/tutorials/react.png',
-            title: 'Image Recognition Tutorial',
+            title: 'Image Classification Tutorial',
             description: 'Label entire images with ease using Hugging Face'
         },
         {
@@ -45,7 +44,7 @@
 
 <div>
     <div class="u-position-absolute u-inset-inline-end-0 aw-u-opacity-40-mobile" style="">
-        <enhanced:img src="./blur-1.png" alt="" />
+        <enhanced:img src="./../../blur-1.png" alt="" />
     </div>
 
     <main
@@ -60,7 +59,7 @@
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 aw-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <enhanced:img src="./blur-2.png" alt="" />
+            <enhanced:img src="./../../blur-2.png" alt="" />
         </div>
 
         <section class="aw-hero is-align-start u-position-relative e-hero-docs">

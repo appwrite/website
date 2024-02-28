@@ -42,8 +42,8 @@
             label: 'Tutorials',
             items: [
                 {
-                    label: 'Image Recognition',
-                    href: '/docs/products/ai/tutorials/image-recognition'
+                    label: 'Image Classification',
+                    href: '/docs/products/ai/tutorials/image-classification'
                 },
                 {
                     label: 'Object Detection',
