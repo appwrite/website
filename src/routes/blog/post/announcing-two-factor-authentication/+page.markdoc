@@ -46,8 +46,8 @@ import { Client, Account } from "appwrite";
 const client = new Client();
 
 client
-  .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-  .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -64,8 +64,8 @@ Begin your login flow with the default authentication method used by your app (f
 
 ```js
 const user = await account.createEmailPasswordSession(
-  'email@example.com',         // email
-  'password'                   // password
+    'email@example.com',         // email
+    'password'                     // password
 );
 ```
 
@@ -73,14 +73,14 @@ Upon successful login in the first authentication step, check the status of the 
 
 ```js
 try {
-  const response = await account.get();
+    const response = await account.get();
 } catch (error) {
-  if (error.type === `user_more_factors_required`){
-      // redirect to perform 2FA
-  }
-  else {
-      // handle other errors
-  }
+    if (error.type === `user_more_factors_required`){
+        // redirect to perform 2FA
+    }
+    else {
+        // handle other errors
+    }
 }
 ```
 
@@ -98,9 +98,9 @@ The returned object will be formatted as follows:
 
 ```js
 {
-  totp: true, // time-based one-time password
-  email: false, // email
-  phone: true // phone
+    totp: true, // time-based one-time password
+    email: false, // email
+    phone: true // phone
 }
 ```
 
@@ -110,7 +110,7 @@ Based on the enabled providers, you can initialize the additional auth step. Cal
 
 ```js
 const challenge = await account.createChallenge(
-  'phone'                       // factor
+    'phone'                       // factor
 );
 
 // Save the challenge ID to complete the challenge later
@@ -123,8 +123,8 @@ Once the user receives the challenge code, you can pass the code back to Appwrit
 
 ```js
 const challenge = await account.updateChallenge(
-  '<CHALLENGE_ID>',            // challengeId
-  '<OTP>'                      // otp
+    '<CHALLENGE_ID>',            // challengeId
+    '<OTP>'                      // otp
 );
 ```
 
