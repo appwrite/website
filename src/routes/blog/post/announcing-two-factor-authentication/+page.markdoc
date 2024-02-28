@@ -35,7 +35,7 @@ Currently, Appwrite offers three methods for implementing the second factor:
 
 One great aspect of Appwrite 2FA is that it can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth. You can implement 2FA in your application via the following several steps. 
 
-## Step 1: Enabling MFA on an account
+## Step 1: Enabling 2FA on an account
 
 To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling `account.updateMFA()`.
 
