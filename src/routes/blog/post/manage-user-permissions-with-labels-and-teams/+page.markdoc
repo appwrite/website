@@ -99,6 +99,7 @@ Server SDK - Yes
 
 Client SDK - Yes
 
+
 ```javascript
 import { Client, Teams } from "appwrite";
 
@@ -106,7 +107,7 @@ const client = //...
 
 const Teams = new Teams(client);
 
-const promise = Teams.create('[Team_ID]', '[NAME]');
+const promise = Teams.create('<TEAM_ID>', '[NAME]');
 ```
 
 ## Labels
@@ -115,6 +116,7 @@ Server SDK - Yes
 
 Client SDK - No
 
+
 ```javascript
 const sdk = require('node-appwrite');
 
@@ -122,7 +124,7 @@ const client = //...
 
 const users = new sdk.Users(client);
 
-const promise = users.updateLabels('[USER_ID]', ['subscriber']);
+const promise = users.updateLabels('<USER_ID>', ['subscriber']);
 ```
 
 ### Resources

@@ -36,7 +36,7 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-container" style="padding-block-end: 0;">
+    <div class="aw-container aw-u-padding-block-end-0">
         <div class="header">
             <div>
                 <a class="aw-link is-secondary u-cross-baseline" href="/threads">
@@ -58,8 +58,8 @@
             </div>
             <div class="buttons">
                 <a
-                    class="aw-button"
-                    href={discordLink}
+                        class="aw-button"
+                        href={discordLink}
                 >
                     <span class="aw-icon-discord" />
                     <span class="text">View on Discord</span>
@@ -73,13 +73,10 @@
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
                         {#if isFirst}
-                            <div class="aw-inline-info" style:margin-block-start="1.5rem">
-                                <span
-                                    class="aw-sub-body-500 aw-u-color-text-primary"
-                                    style:display="block"
-                                >
+                            <div class="aw-inline-info aw-u-margin-block-start-24">
+                                <div class="aw-sub-body-500 aw-u-color-text-primary">
                                     TL;DR
-                                </span>
+                                </div>
                                 {data.tldr}
                             </div>
                         {/if}

@@ -3,7 +3,6 @@ import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt('commonmark');
 export function parse(content: string): string {
     const tokens = md.parse(content, null);
-
     return md.renderer.render(
         transform_tokens(tokens),
         {
@@ -26,7 +25,7 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
                 const href = token.attrGet('href');
                 if (href?.startsWith('http')) {
                     if (!href.startsWith('https://appwrite.io')) {
-						token.attrPush(['rel', 'noopener noreferrer']);
+                        token.attrPush(['rel', 'noopener noreferrer']);
                         token.attrPush(['target', '_blank']);
                     }
                 }

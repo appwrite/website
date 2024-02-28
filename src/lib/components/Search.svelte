@@ -169,6 +169,7 @@
             bind:value
             placeholder="Search in docs"
             style="border-end-start-radius:0; border-end-end-radius:0;"
+            style:inline-size="100%"
             use:melt={$input}
             bind:this={inputEl}
             data-hit="-1"

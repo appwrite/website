@@ -50,6 +50,10 @@
 					href: '/docs/advanced/security/encryption'
 				},
 				{
+					label: 'Two-Factor authentication',
+					href: '/docs/advanced/security/2fa'
+				},
+				{
 					label: 'HTTPS',
 					href: '/docs/advanced/security/https'
 				},
