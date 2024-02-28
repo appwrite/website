@@ -38,8 +38,7 @@
 </script>
 
 <script lang="ts">
-    import Search from '$lib/components/Search.svelte';
-
+    import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { GITHUB_STARS } from '$lib/constants';
@@ -100,8 +99,8 @@
             </a>
         </div>
         <div class="aw-mobile-header-end">
-            <a href="https://cloud.appwrite.io/console" class="aw-button aw-is-only-desktop">
-                <span class="aw-sub-body-500">Go to console</span>
+            <a href="https://cloud.appwrite.io" class="aw-button aw-is-only-desktop">
+                <span class="aw-sub-body-500">Go to Console</span>
             </a>
             <button class="aw-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
                 {#if $layoutState.showSidenav}
@@ -172,9 +171,7 @@
                         <span class="text">Star on GitHub</span>
                         <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                     </a>
-                    <a href="https://cloud.appwrite.io/console" class="aw-button">
-                        <span class="aw-sub-body-500">Go to console</span>
-                    </a>
+                    <IsLoggedIn />
                 </div>
             </div>
         </div>

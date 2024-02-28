@@ -5,7 +5,7 @@ import {
     PUBLIC_APPWRITE_FN_TLDR_ID
 } from '$env/static/public';
 import { databases, functions } from '$lib/appwrite';
-import { Query } from 'appwrite';
+import { Query } from '@appwrite.io/console';
 import type { DiscordMessage, DiscordThread } from './types';
 
 type Ranked<T> = {
@@ -112,7 +112,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads() {
+export async function* iterateAllThreads(total: number|undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {
@@ -131,5 +131,9 @@ export async function* iterateAllThreads() {
         }
 
         offset += limit;
+
+        if (total !== undefined && offset >= total) {
+            break;
+        }
     }
 }
