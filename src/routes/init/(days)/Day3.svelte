@@ -13,7 +13,11 @@
 
 <Day day={date} {release}>
     <div class="mosaic">
-        <a href="/blog/post/introducing-enum-sdk-support" class="aw-card is-normal has-border-gradient" style:padding="0">
+        <a
+            href="/blog/post/introducing-enum-sdk-support"
+            class="aw-card is-normal has-border-gradient"
+            style:padding="0"
+        >
             <div style:padding="2rem" style:padding-block-end="0">
                 <h3 class="aw-label aw-u-color-text-primary">Enum SDK support</h3>
                 <p style:margin-block-start="0.625rem">
@@ -28,7 +32,11 @@
             <img src={enumPng} alt="" />
             <div class="circle" />
         </a>
-        <a href="/blog/post/announcing-two-factor-authentication" class="aw-card is-normal has-border-gradient" style:padding="0">
+        <a
+            href="/blog/post/announcing-two-factor-authentication"
+            class="aw-card is-normal has-border-gradient"
+            style:padding="0"
+        >
             <div style:padding="2rem" style:padding-block-end="0">
                 <h3 class="aw-label aw-u-color-text-primary">Two-factor authentication</h3>
                 <p style:margin-block-start="0.625rem">
@@ -77,18 +85,31 @@
                         <span class="aw-icon-arrow-right" />
                     </div>
                 </div>
-                <Video src="https://www.youtube-nocookie.com/embed/hpdUXOFay4M?si=TPO8CistphsTOCas&amp;controls=0" {thumbnail} --p-aspect-ratio="268/110" --p-border-radius="0.75rem" />
+                <Video
+                    src="https://www.youtube-nocookie.com/embed/hpdUXOFay4M?si=TPO8CistphsTOCas&amp;controls=0"
+                    {thumbnail}
+                    --p-aspect-ratio="268/110"
+                    --p-border-radius="0.75rem"
+                />
             </button>
         </VideoWrapper>
 
-        <a href="/docs/sdks#enums" class="aw-card is-normal has-border-gradient" style="padding: 1.25rem">
+        <a
+            href="/docs/sdks#enums"
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 1.25rem"
+        >
             <h3 class="aw-label aw-u-color-text-primary">Enum Documentation</h3>
             <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="aw-icon-arrow-right" />
             </div>
         </a>
-        <a href="/docs/products/auth/2fa" class="aw-card is-normal has-border-gradient" style="padding: 1.25rem">
+        <a
+            href="/docs/products/auth/2fa"
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 1.25rem"
+        >
             <h3 class="aw-label aw-u-color-text-primary">2FA Documentation</h3>
             <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
@@ -151,11 +172,21 @@
         > :nth-child(3) {
             grid-column: 1 / 13;
             grid-row: 2;
+
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         > :nth-child(4) {
             grid-column: 13 / 25;
             grid-row: 2;
+
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         > :nth-child(5) {
