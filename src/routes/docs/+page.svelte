@@ -434,6 +434,8 @@
 </Docs>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .e-hero-docs {
         @media (min-width: 1280px) {
             margin-block-start: 5rem;
@@ -453,7 +455,7 @@
     }
 
     .tech-hero {
-        @include border-block-gradient;
+        @include gradients.border-block-gradient;
 
         --m-border-size: 1px;
         --m-border-gradient-before: linear-gradient(
