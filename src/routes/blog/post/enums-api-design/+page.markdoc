@@ -30,7 +30,7 @@ The use of enumerations, or enums, in API design offers several significant adva
 - **Improved debugging and maintenance**: With enums, debugging becomes more straightforward as the range of values is limited and well-defined. This clarity makes it easier to trace issues related to data values. It also simplifies maintenance, as the use of specific values is more structured and predictable.
 - **Compatibility with API documentation tools**: Enums are often well-supported by API documentation tools and specifications like Swagger or OpenAPI. This compatibility makes it easier to generate clear and detailed API documentation, enhancing the developer experience.
 
-# **Best practices for implementing enums in API design**
+# Best practices for implementing enums in API design
 
 Implementing enums in API design can significantly enhance clarity and robustness. However, to fully reap their benefits, it’s essential to follow certain best practices:
 
