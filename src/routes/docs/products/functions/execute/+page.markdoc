@@ -12,34 +12,35 @@ Executions can be invoked through the Appwrite SDK and visiting its REST endpoin
 Here are all the different ways to consume your Appwrite Functions.
 
 # Domains {% #domains %}
-
+You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
 1. In the Appwrite Console's sidebar, click **Functions**.
-1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains.
+1. Under **Execute access**, set the access to `Any` so that anyone can execute the function. You will use [JWTs](/docs/products/auth/jwt) to authenticate users.
+1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains. [Learn about adding a custom domain](/docs/products/functions/deployment#domains).
 
 ```bash
 https://64d4d22db370ae41a32e.appwrite.global
 ```
 
-[Learn about adding a custom domain](/docs/products/functions/deployment#domains).
-
-# REST API  {% #rest %}
-
 When requests are made to this domain, whether through a browser or through an HTTP requests,
 the request information like request URL, request headers, and request body will be passed to the function.
-This unlocks ability for Appwrite Function to become a full-blown API server on its own. It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 ```bash
 curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 -H "X-Custom-Header: 123" \
+-H "x-appwrite-user-jwt: <YOUR_JWT_KEY>" \
 -H "Content-Type: application/json" \
 -d '{"data":"this is json data"}'
 ```
 
+Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
+[Learn more about JWTs](/docs/products/auth/jwt).
+
+This unlocks ability for Appwrite Function to become a full-blown API server on its own. 
+It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
+
 # SDK {% #sdk %}
 
-You can invoke your Appwrite Functions directly from the Appwrite SDKs.
-
-[Learn more about using the Appwrite SDKs](/docs/sdks)
+You can invoke your Appwrite Functions directly from the [Appwrite SDKs](/docs/sdks).
 
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
@@ -58,7 +59,7 @@ try {
     const execution = await functions.createExecution(
         '[FUNCTION_ID]',
         JSON.stringify({ 'foo': 'bar' }),
-        false,
+        false, // if the function should be executed asynchronously
         '/',
         'GET',
         { 'X-Custom-Header': '123' }
@@ -160,7 +161,7 @@ import { Client, Functions } from 'node-appwrite';
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
-    .setKey('[API_KEY]');
+    .setKey('<API_KEY>');
 
 const functions = new Functions(client);
 
@@ -168,7 +169,7 @@ try {
     const execution = await functions.createExecution(
         '[FUNCTION_ID]',
         JSON.stringify({ 'foo': 'bar' }),
-        false,
+        false, // if the function should be executed asynchronously
         '/',
         'GET',
         { 'X-Custom-Header': '123' }
@@ -189,7 +190,7 @@ $client = new Client();
 $client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
-    .setKey('[API_KEY]');
+    .setKey('<API_KEY>');
 
 $functions = new Functions($client);
 
@@ -220,7 +221,7 @@ client = Client()
 (client
     .set_endpoint('https://cloud.appwrite.io/v1')
     .set_project('<PROJECT_ID>')
-    .set_key('[API_KEY]')
+    .set_key('<API_KEY>')
 )
 
 functions = Functions(client)
@@ -248,7 +249,7 @@ include Appwrite
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1')
     .set_project('<PROJECT_ID>')
-    .set_key('[API_KEY]')
+    .set_key('<API_KEY>')
 
 functions = Functions.new(client)
 
@@ -273,7 +274,7 @@ import { Client, Functions } from "https://deno.land/x/appwrite/mod.ts";
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
-    .setKey('[API_KEY]');
+    .setKey('<API_KEY>');
 
 const functions = new Functions(client);
 
@@ -298,7 +299,7 @@ import 'dart:convert';
 final client = Client();
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
-    .setKey('[API_KEY]');
+    .setKey('<API_KEY>');
 
 final functions = Functions(client);
 
@@ -327,7 +328,7 @@ import Foundation
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
-    .setKey("[API_KEY]")
+    .setKey("<API_KEY>")
 
 let functions = Functions(client)
 
@@ -357,7 +358,7 @@ using System.Text.Json;
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>")
-    .SetKey("[API_KEY]");
+    .SetKey("<API_KEY>");
 
 var functions = new Functions(client);
 
@@ -391,7 +392,7 @@ import com.google.gson.Gson
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
-    .setKey("[API_KEY]")
+    .setKey("<API_KEY>")
 
 val functions = Functions(client)
 
@@ -421,7 +422,7 @@ import com.google.gson.Gson;
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
-    .setKey("[API_KEY]");
+    .setKey("<API_KEY>");
 
 Functions functions = new Functions(client);
 
@@ -473,6 +474,28 @@ Changes in Appwrite emit events. You can configure Functions to be executed in r
 3. Under the **Settings** tab, navigate to **Events**.
 4. Add one or multiple events as triggers for the function.
 5. Be careful to avoid selecting events that can be caused by the function itself. This can cause the function to trigger its own execution, resulting in infinite recursions.
+
+In these executions, the event that triggered the function will be passed as the header `x-appwrite-event` to the function.
+The `request.body` parameter will contain the event data. [Learn more about events](/docs/advanced/platform/events).
+
+You can use one of the following events.
+{% accordion %}
+{% accordion_item title="Authentication" %}
+{% partial file="auth-events.md" /%}
+{% /accordion_item %}
+{% accordion_item title="Databases" %}
+{% partial file="databases-events.md" /%}
+{% /accordion_item %}
+{% accordion_item title="Storage" %}
+{% partial file="storage-events.md" /%}
+{% /accordion_item %}
+{% accordion_item title="Functions" %}
+{% partial file="functions-events.md" /%}
+{% /accordion_item %}
+{% accordion_item title="Messaging" %}
+{% partial file="messaging-events.md" /%}
+{% /accordion_item %}
+{% /accordion %}
 
 # Schedule {% #schedule %}
 
