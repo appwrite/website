@@ -68,8 +68,9 @@
             animation: Animations.Enum
         },
         {
-            title: 'XXX',
-            release: addDays(base, 3)
+            title: 'Operators',
+            release: addDays(base, 3),
+            animation: Animations.Operators
         },
         {
             title: 'XXX',
