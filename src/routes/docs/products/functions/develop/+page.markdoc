@@ -1105,7 +1105,7 @@ If your function is using an Appwrite SDK with an API key, this API key needs to
 | `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
 | `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
 
-{% arrow_link href="/docs/products/functions/functions" %}
+{% arrow_link href="/docs/products/functions/environment" %}
 Learn to add variables to you function
 {% /arrow_link %}
 
