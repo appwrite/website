@@ -15,6 +15,7 @@
     import Day1 from './(days)/Day1.svelte';
     import Day2 from './(days)/Day2.svelte';
     import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
     import Ticket0 from './(assets)/mock/ticket-0.png';
@@ -31,8 +32,12 @@
     import Ticket11 from './(assets)/mock/ticket-11.png';
     import Ticket12 from './(assets)/mock/ticket-12.png';
 
-    const base = new Date('2024-02-26T14:00:00.000Z');
+    let base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
+
+    function fastForward() {
+        base = addDays(base, -1);
+    }
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -156,6 +161,7 @@
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
             </button>
+            <button on:click={fastForward} class="aw-button">fast forward</button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
@@ -199,6 +205,8 @@
                     <Day2 {date} release={day.release} />
                 {:else if i === 2}
                     <Day3 {date} release={day.release} />
+                {:else if i === 3}
+                    <Day4 {date} release={day.release} />
                 {:else}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">
                         <div class="aw-dot" />
@@ -252,7 +260,7 @@
             </div>
         </div>
 
-        <div class="tickets">
+        <div class="tickets aw-u-hide-mobile">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 10 } as _}
                 <img
