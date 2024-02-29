@@ -39,7 +39,7 @@
             style="padding: 0.5rem; --p-aspect-ratio: 0;"
         >
             <Video
-                src="https://www.youtube-nocookie.com/embed/IMgl9f_iht4?si=2tpXRe_WXN7-3YzU&amp;controls=0"
+                src="https://www.youtube-nocookie.com/embed/73flN6mZqAs?si=3hUI26G9DDVDzJG4&amp;controls=0"
                 {thumbnail}
             />
         </div>
