@@ -4,7 +4,12 @@ title: Tokens
 description: What are tokens and how to use them in Appwrite
 ---
 
-Tokens are short-lived secrets created by an that can be exchanged for session by a [Client SDK](/docs/sdks#client) to log in users.
+Tokens are short-lived secrets created by an [Appwrite Server SDK](/docs/sdks#server) that can be exchanged for session by a [Client SDK](/docs/sdks#client) to log in users.
+Some auth methods like [Magic URL login](/docs/products/auth/magic-url), 
+[Email OTP login](/docs/products/auth/email-otp), or [Phone (SMS) login](/docs/products/auth/phone-sms) already generate tokens.
+
+You can also create custom tokens using the [Create token](/docs/products/auth/custom-token) 
+endpoint of the [Users API](/docs/products/auth/users). This can be used to implement **custom authentication flows**.
 
 Tokens are created with the following properties:
 
@@ -18,20 +23,16 @@ Tokens are created with the following properties:
 
 Many Appwrite authentication methods use a token-base flow to authenticate users. For token-based authentication methods, there are two high level steps to authenticate a user:
 
-# Create a token {% #create-a-token %}
+# Token login {% #token-login %}
+You can find different usage of tokens in the Appwrite.
 
-First, create a token for the user.
-
-Methods that create tokens include [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp), [Phone (SMS) login](/docs/products/auth/phone-sms), and [Custom token](/docs/products/auth/custom-token/#create-custom-token).
-
-These methods transfer the token `userId` and `secret` to the client, via a URL, email, SMS, or other method. The client then uses the token to create a session.
-
-Custom tokens can be created using the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users).
-
-# Create a session using the token {% #create-session-using-token %}
-
-After the token is created, the client uses the token to create a session. The session is then used to authenticate the user for subsequent requests.
-
-To create a session, the client sends the token to the server using the [Create session](/docs/references/cloud/server-nodejs/account#createSession) endpoint of the [Account API](/docs/products/auth/users). The server then returns a session object.
-
-When the session is successfully created, the session is stored in a persistent manner and you can now do requests as authorized user from the application.
+{% cards %}
+{% cards_item href="/docs/product/auth/custom-token" title="Custom token login" %}
+{% /cards_item %}
+{% cards_item href="/docs/product/auth/email-otp" title="Email OTP login" %}
+{% /cards_item %}
+{% cards_item href="/docs/products/auth/magic-url" title="Email magic URL" %}
+{% /cards_item %}
+{% cards_item href="/docs/products/auth/phone-sms" title="Phone (SMS) OTP" %}
+{% /cards_item %}
+{% /cards %}
