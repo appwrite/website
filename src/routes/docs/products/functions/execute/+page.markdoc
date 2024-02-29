@@ -15,7 +15,7 @@ Here are all the different ways to consume your Appwrite Functions.
 You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
 1. In the Appwrite Console's sidebar, click **Functions**.
 1. Under **Execute access**, set the access to `Any` so that anyone can execute the function. You will use [JWTs](/docs/products/auth/jwt) to authenticate users.
-1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains. [Learn about adding a custom domain](/docs/products/functions/deployment#domains).
+1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains. [Learn about adding a custom domain](/docs/products/functions/domains).
 
 ```bash
 https://64d4d22db370ae41a32e.appwrite.global

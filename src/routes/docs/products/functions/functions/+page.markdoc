@@ -7,9 +7,9 @@ description: Learn what an Appwrite Function can do for you and how to create a 
 Each Appwrite Function is a piece of developer defined code that can be executed on demand.
 When you create a new Appwrite Function, you select a name, ID, and [runtime language](/docs/products/functions/runtimes).
 
-Each time a function's code is updated, a [deployment](/docs/products/functions/deployments) is created, which is like a version of a function.
+Each time a function's code is updated, a [deployment](/docs/products/functions/deploy) is created, which is like a version of a function.
 Each function has a single active deployment, which is the version of code that's executed when it's called.
-You can update the Appwrite Function's code by creating new [deployments](/docs/products/functions/deployments). 
+You can update the Appwrite Function's code by creating new [deployments](/docs/products/functions/deploy). 
 You can also switch between different deployments by activating them.
 
 # Create function {% #create-function %}
@@ -112,11 +112,11 @@ This change requires your function to be redeployed to take effect.
 {% /info %}
 
 The **Entrypoint** refers to the file imported and executed by the function executor. 
-It must export a [valid function entrypoint function](/docs/products/functions/develop#entry).
-It's recommended you use one of the [starter function templates](/docs/products/functions/develop#templates) and edit from there.
+It must export a [valid function entrypoint function](/docs/products/functions/develop#entrypoint).
+It's recommended you use one of the [starter function templates](/docs/products/functions/templates) and edit from there.
 
 Under **Build settings**, you can update your build commands. 
-These are terminal commands that will be executed in the [runtime containers]() in the [build step]() of the deployment process.
+These are terminal commands that will be executed in the runtime containers in the build step of the deployment process.
 
 ## Git integration {% #git-integration %}
 You can update the entrypoint file and build settings of your function by navigating to your function > **Settings** > **Configuration**.
@@ -175,7 +175,7 @@ You can also configure global variables that apply to all your functions in the 
 This change requires your function to be redeployed to take effect.
 {% /info %}
 
-You can access environment variables inside functions using your [runtime language's system methods](/docs/products/functions/develop#function-variables).
+You can access environment variables inside functions using your [runtime language's system methods](/docs/products/functions/develop#environment-variables).
 
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.

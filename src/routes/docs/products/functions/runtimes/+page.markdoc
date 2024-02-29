@@ -4,7 +4,7 @@ title: Runtimes
 description: Choose the right runtime environment for your serverless functions in Appwrite. Explore available runtimes, dependencies, and runtime-specific considerations.
 ---
 
-Appwrite Functions supports an extensive list of runtimes to meet your unique tech preferences. Not all runtimes are available on Appwrite Cloud yet. Check the [Cloud Support](#cloud-support) list to know which ones are available on Appwrite Cloud.
+Appwrite Functions supports an extensive list of runtimes to meet your unique tech preferences. Not all runtimes are available on Appwrite Cloud yet. Check the list below to know which ones are available on Appwrite Cloud.
 
 # Available runtimes {% #available-runtimes %}
 Below is a list of available Functions runtimes. The Appwrite team continually adds support for new runtimes.
