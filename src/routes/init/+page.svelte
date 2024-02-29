@@ -32,12 +32,8 @@
     import Ticket11 from './(assets)/mock/ticket-11.png';
     import Ticket12 from './(assets)/mock/ticket-12.png';
 
-    let base = new Date('2024-02-26T14:00:00.000Z');
+    const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
-
-    function fastForward() {
-        base = addDays(base, -1);
-    }
 
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -162,7 +158,6 @@
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
             </button>
-            <button on:click={fastForward} class="aw-button">fast forward</button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />

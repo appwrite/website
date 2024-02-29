@@ -56,7 +56,7 @@
                     Event: Logic
                 </h3>
                 <div class="aw-card-link u-flex u-cross-center">
-                    <span class="text">Watch</span>
+                    <span class="text">Join</span>
                     <span class="aw-icon-arrow-right" />
                 </div>
             </div>
