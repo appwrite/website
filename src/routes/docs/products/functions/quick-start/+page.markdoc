@@ -27,7 +27,7 @@ You can find the code used by the starter template in your newly created Git rep
 Each push to your Git repo will trigger a new deployment.
 
 ## Execute {% #execute %} 
-You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execution).
+You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execute).
 The easiest way to execute your first function is to use the Appwrite Console.
 
 {% only_dark %}

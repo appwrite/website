@@ -88,10 +88,10 @@ Throughout the life cycle of a deployment, it could have the following status.
 * A deployment is built, but is not activated. `ready` deployments can be activated to replace the current active deployment.
 ---
 * `building`
-* A deployment is being built. Check the [build log](#build-log) for more detailed logs.
+* A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
 ---
 * `failed`
-* A deployment was not successful. Check the [build log](#build-log) for detailed logs for debugging.
+* A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
 {% /table %}
 
 # Update deployment {% #update-deployment %}

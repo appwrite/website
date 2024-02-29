@@ -5,7 +5,7 @@ description: Understand serverless function execution in Appwrite. Explore how t
 ---
 
 Each time an Appwrite Function runs, an **execution** is created.
-Each execution has a unique ID. If [you enable execution logs](docs/products/functions/functions#execution-logs) in your function,
+Each execution has a unique ID. If [you enable execution logs](/docs/products/functions/functions#execution-logs) in your function,
 you can find function executions logged in the **Executions** tab.
 
 # Execution table {% #execution-table %}
