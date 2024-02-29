@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing new Database operators: or & contains query methods"
-description: What is a database without queries? Not a lot. That's why we’re happy to announce a new set of query methods, array contains, string contains, and OR operators. 
+description: What is a database without queries? Not a lot. That's why we’re happy to announce a new set of query methods, array contains, string contains, and OR operators to Appwrite Databases. 
 date: 2024-02-28
 cover: /images/blog/db-operators-overview.png
 timeToRead: 5
@@ -10,7 +10,7 @@ category: product
 featured: false
 ---
 
-We’re excited to announce the addition of two new query methods,  `or` and `contains`. In this release, we aimed to add more flexibility by adding array element matches, partial text matches, as well as logical OR queries. 
+We've added two new query methods, `or` and `contains`, to Appwrite Databases. By adding array element matches, partial text matches, as well as logical OR queries, we allow for more flexibility in managing your data.
 
 These two query methods have been highly requested by the Appwrite community, and we’re excited to show you how to use them, so let’s jump in and take a look! 
 
