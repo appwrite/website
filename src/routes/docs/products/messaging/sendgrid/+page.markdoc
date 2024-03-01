@@ -96,13 +96,7 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -119,13 +113,7 @@ client
 ;
 
 
-let promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```php
 <?php
@@ -316,7 +304,7 @@ client
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
-const promise = messaging.updateMailgunProvider(
+const provider = await messaging.updateMailgunProvider(
         '[PROVIDER_ID]',             // providerId
         '[NAME]',                    // name (optional)
         '[API_KEY]',                 // apiKey (optional)
@@ -328,12 +316,6 @@ const promise = messaging.updateMailgunProvider(
         '[REPLY_TO_NAME]',           // replyToName (optional)
         '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -349,7 +331,7 @@ client
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
-const promise = messaging.updateMailgunProvider(
+const provider = await messaging.updateMailgunProvider(
         '[PROVIDER_ID]',             // providerId
         '[NAME]',                    // name (optional)
         '[API_KEY]',                 // apiKey (optional)
@@ -361,12 +343,6 @@ const promise = messaging.updateMailgunProvider(
         '[REPLY_TO_NAME]',           // replyToName (optional)
         '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php

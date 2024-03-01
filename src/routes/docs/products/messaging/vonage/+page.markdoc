@@ -81,7 +81,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -90,12 +90,6 @@ const promise = messaging.createSMS(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -111,7 +105,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -120,12 +114,6 @@ const promise = messaging.createSMS(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -366,7 +354,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateVonageProvider(
+const provider = await messaging.updateVonageProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -374,12 +362,6 @@ const promise = messaging.updateVonageProvider(
         '[API_SECRET]',                          // apiSecret (optional)
         '[FROM]'                                 // from (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -395,7 +377,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateVonageProvider(
+const provider = await messaging.updateVonageProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -403,12 +385,6 @@ const promise = messaging.updateVonageProvider(
         '[API_SECRET]',                          // apiSecret (optional)
         '[FROM]'                                 // from (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php

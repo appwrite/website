@@ -113,18 +113,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateFCMProvider(
+const provider = await messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -140,18 +134,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateFCMProvider(
+const provider = await messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
