@@ -186,6 +186,8 @@ Message result = await messaging.CreateEmail(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() { // Init SDK
   Client client = Client();
@@ -453,6 +455,8 @@ Provider result = await messaging.UpdateMailgunProvider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                         // Init SDK
   Client client = Client();
