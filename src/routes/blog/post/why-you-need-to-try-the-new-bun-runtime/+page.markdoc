@@ -10,7 +10,7 @@ category: product
 featured: false
 ---
 
-When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions]([https://appwrite.io/docs/products/functions).
+When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions](https://appwrite.io/docs/products/functions).
 
 We loved the idea of Bun, because it’s more than just another Node runtime but a whole set of tools. Bun does everything from dependency management to testing and beyond with consistent DX and light-speed performance. This idea of being simple, reducing distractions, and giving developers all the tools in one place to just build stuff resonated with Appwrite’s product philosophy. 
 
