@@ -10,7 +10,7 @@ category: product
 featured: false
 ---
 
-Dart 3 runtimes are now available on Appwrite Cloud. Among the many cool features introduced in Dart 3, sound null safety standout as an important change for Appwrite Functions.
+Dart 3 runtimes are now available on Appwrite Cloud. Among the many cool features introduced in Dart 3, sound null safety stands out as an important change for Appwrite Functions.
 
 Sound null safety means you can expect to know when a variable is not null. More importantly, it helps you make sure you properly handle potential null values by warning you at compile time.
 
@@ -26,7 +26,7 @@ Tried calling: type
 
 # The setup
 
-Let’s take an example function that takes a JSON object that’s expected in the request to document which people showed up at an event, when they came, and when they left.
+Let’s take an example function that takes a JSON object that’s expected in the request to document which people showed up at an event when they came, and when they left.
 
 The JSON would look like this under ideal situations.
 
@@ -176,11 +176,11 @@ class Profile {
 }
 ```
 
-Notice that `final String name` and `final String age` are declared as class variables that cannot be null, but `final Stay ?stay`  is explicitly stated to be nullable. This is why the constructor of `Profile({required this.name, required this.age, this.stay})` specifies that name and age are required. If you tried to pass null, or a nullable value into these required params without providing non-null defaults, the compiler will complain.
+Notice that `final String name` and `final String age` are declared as class variables that cannot be null, but `final Stay ?stay`  is explicitly stated to be nullable. This is why the constructor of `Profile({required this.name, required this.age, this.stay})` specifies that name and age are required. If you try to pass null, or a nullable value into these required params without providing non-null defaults, the compiler will complain.
 
 When constructing a `Profile` class from a JSON, we also did some null handling. We access members using `json?[]` syntax, which checks if `json` is null before attempting access, preventing null pointer exceptions. Since stay is nullable, we check if stay exists in the `json` passed in, and if not, we default to null. Later when accessing member `stay`, we’ll be reminded to handle this properly.
 
-In `Stay` there’s are similar concepts applied.
+In `Stay` there are similar concepts applied.
 
 ```dart
 class Stay {
@@ -207,7 +207,7 @@ context.log("Arrived at: ${profile.stay?.arrivedAt}");
 context.log("Left at: ${profile.stay?.leftAt}");
 ```
 
-Notice how we can safely access `name` and `age`, but we need to check if stay is null. If we decide to access `arrivedAt` or `leftAt` to split the date string, for example, we’ll also be warned to handle null values here, since these are also nullable.
+Notice how we can safely access `name` and `age`, but we must check if stay is null. If we decide to access `arrivedAt` or `leftAt` to split the date string, for example, we’ll also be warned to handle null values here since these are also nullable.
 
 ```dart
 context.log("Arrived at: ${profile.stay?.arrivedAt?.split('T')[0] ?? 'unknown'}");
@@ -270,7 +270,7 @@ Future<dynamic> main(final context) async {
 }
 ```
 
-Which will gracefully handle, even malformed JSONs like the one we showed above and still output to the best of it’s ability.
+Which will gracefully handle even malformed JSONs like the one we showed above and still output to the best of its ability.
 
 ```dart
 Here are the people that showed up!
@@ -286,6 +286,16 @@ Left at: 2022-01-01
 
 # Wrapping up
 
-Dart 3 with sound null-safety will save you from hours of debugging when tracking down null-value related errors at runtime. Forcing your to be conscious of handling null values brings these null-value caused errors from runtime to compile time. Having compiler errors is always a better time than errors in your precious production functions.
+Dart 3 with sound null-safety will save you from hours of debugging when tracking down null-value related errors at runtime. Forcing you to be conscious of handling null values brings these null-value caused errors from runtime to compile time. Having compiler errors is always a better time than errors in your precious production functions.
 
-If you’re still on Dart 2.x, I strongly recommend you to migrate to Dart 3 to benefit from safety. Dart’s documentation has a [migration guide](https://dart.dev/null-safety#migrate) to help you simply the process.
+If you’re still on Dart 2.x, I strongly recommend you migrate to Dart 3 to benefit from safety. Dart’s documentation has a [migration guide](https://dart.dev/null-safety#migrate) to help you simply the process.
+
+# Resources
+
+Visit our documentation to learn more about Dart, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
