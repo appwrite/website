@@ -75,7 +75,7 @@ Again, in the context of an Appwrite Function, the build time you can save is pr
 
 **Typescript** build time
 
-![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/bun-buildtime.png)
+![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/ts-buildtime.png)
 
 # Implements standard Web APIs
 
