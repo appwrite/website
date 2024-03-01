@@ -462,7 +462,7 @@
     }
 
     .events {
-        margin-block-start: 10rem;
+        margin-block-start: 5rem;
         padding-block: 5rem;
 
         border-block: 1px solid hsl(var(--aw-color-offset));
