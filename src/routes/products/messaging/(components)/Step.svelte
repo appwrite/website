@@ -1,8 +1,9 @@
 <script lang="ts">
     export let title: string;
+    export let hideLine = false;
 </script>
 
-<div class="step">
+<div class="step" data-hideline={hideLine}>
     <div class="aw-dot" />
     <h2 class="aw-eyebrow aw-u-color-text-primary step-title">{title}</h2>
     <div class="u-margin-block-start-32 step-content">
@@ -20,6 +21,7 @@
             padding: unset;
             border: none;
         }
+
         .aw-dot {
             position: absolute;
             inset-inline-start: calc(calc(var(--p-dot-size) / 2) * -1);
@@ -33,5 +35,8 @@
                 width: 100vw;
             }
         }
+    }
+    .step[data-hideline='true'] {
+        border-inline-start: 1px solid transparent;
     }
 </style>
