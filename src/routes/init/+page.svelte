@@ -33,9 +33,12 @@
     import Ticket11 from './(assets)/mock/ticket-11.png';
     import Ticket12 from './(assets)/mock/ticket-12.png';
 
-    const base = new Date('2024-02-25T14:00:00.000Z');
+    let base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
 
+    function ff() {
+        base = addDays(base, -1);
+    }
     function addDays(date: Date, days: number): Date {
         return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
     }
@@ -70,7 +73,7 @@
             animation: Animations.Operators
         },
         {
-            title: 'Integrations',
+            title: 'New runtimes',
             release: addDays(base, 4),
             animation: Animations.Integrations
         }
@@ -160,6 +163,7 @@
                 <div class="aw-icon-play" />
                 <span class="text">Watch the video</span>
             </button>
+            <button class="aw-button" on:click={ff}>fast forward</button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />

@@ -1,7 +1,6 @@
 <script lang="ts">
     import illustration from '../(assets)/integrations.png';
-    import thumbnail from '../(assets)/thumbnail-1.png';
-    import VideoWrapper from '../(components)/Video.svelte';
+    import thumbnail from '../(assets)/thumbnail-runtimes-event.png';
     import Day from './Day.svelte';
 
     export let release: Date;
@@ -10,46 +9,58 @@
 
 <Day day={date} {release}>
     <div class="mosaic">
-        <div class="aw-card is-normal has-border-gradient" style:padding="0">
+        <a
+            href="/blog/post/announcing-more-and-updated-runtimes"
+            class="aw-card is-normal has-border-gradient"
+            style:padding="0"
+        >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="aw-label aw-u-color-text-primary">Bun + Dart integrations</h3>
+                <h3 class="aw-label aw-u-color-text-primary">Updated runtimes</h3>
                 <p style:margin-block-start="0.625rem">
-                    The latest versions of Bun and Dart were added to our Cloud runtime ecosystem.
+                    The latest versions of Bun, Dart, Deno, PHP, Ruby, Kotlin, Java, Swift, and Node
+                    were added to our Cloud runtime ecosystem.
                 </p>
-                <a
-                    href="#"
-                    class="aw-link u-flex u-cross-center"
-                    style:margin-block-start="1.25rem"
-                >
+                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
                     <span class="aw-icon-arrow-right" />
-                </a>
+                </div>
             </div>
             <img src={illustration} alt="" />
             <div class="circle" />
-        </div>
-        <div class="aw-card is-normal has-border-gradient" style="padding: 1.25rem">
+        </a>
+        <a
+            href="/docs/products/functions/runtimes#available-runtimes"
+            class="aw-card is-normal has-border-gradient"
+            style="padding: 1.25rem"
+        >
             <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
-            <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+            <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="aw-icon-arrow-right" />
-            </a>
-        </div>
+            </div>
+        </a>
 
-        <div
+        <a
+            href="https://discord.com/events/564160730845151244/1209117535723851776"
+            rel="noopener noreferrer"
             class="aw-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
                 <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
-                    Event title
+                    Closing party
                 </h3>
-                <a href="#" class="aw-link u-flex u-cross-center" style:opacity="0.64">
+                <div class="aw-card-link u-flex u-cross-center">
                     <span class="text">Watch</span>
                     <span class="aw-icon-arrow-right" />
-                </a>
+                </div>
             </div>
-        </div>
+            <img
+                src={thumbnail}
+                alt=""
+                style="aspect-ratio: 268 / 208; border-radius: 0.75rem; object-fit: cover;"
+            />
+        </a>
     </div>
 </Day>
 
@@ -88,7 +99,7 @@
                 filter: blur(200px);
 
                 position: absolute;
-                inset-block-end: #{-$size / 2};
+                inset-block-end: calc(-1 * $size / 2);
                 inset-inline-start: 50%;
                 translate: -50%;
                 z-index: 1;
@@ -106,7 +117,6 @@
 
             @media screen and (max-width: 1023px) {
                 display: flex;
-                flex-direction: column;
                 // gap: 1rem;
             }
         }
@@ -120,6 +130,18 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .aw-card {
+            .aw-card-link {
+                color: var(--aw-color-primary);
+            }
+
+            &:hover {
+                .aw-card-link {
+                    color: hsl(var(--aw-color-accent-darker));
+                }
+            }
         }
     }
 </style>
