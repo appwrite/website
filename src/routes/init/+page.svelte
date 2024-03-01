@@ -16,6 +16,7 @@
     import Day2 from './(days)/Day2.svelte';
     import Day3 from './(days)/Day3.svelte';
     import Day4 from './(days)/Day4.svelte';
+    import Day5 from './(days)/Day5.svelte';
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
     import Ticket0 from './(assets)/mock/ticket-0.png';
@@ -69,8 +70,9 @@
             animation: Animations.Operators
         },
         {
-            title: 'XXX',
-            release: addDays(base, 4)
+            title: 'New runtimes',
+            release: addDays(base, 4),
+            animation: Animations.Integrations
         }
     ] as DayType[];
 
@@ -203,6 +205,8 @@
                     <Day3 {date} release={day.release} />
                 {:else if i === 3}
                     <Day4 {date} release={day.release} />
+                {:else if i === 4}
+                    <Day5 {date} release={day.release} />
                 {:else}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">
                         <div class="aw-dot" />
