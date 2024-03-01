@@ -10,9 +10,9 @@ category: product
 featured: false
 ---
 
-When Bun announced their 1.0 release marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions]([https://appwrite.io/docs/products/functions](https://appwrite.io/docs/products/functions)).
+When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions]([https://appwrite.io/docs/products/functions).
 
-We loved the idea of Bun, because it’s more than just another Node runtime, but a whole set of tools. Bun does everything from dependency management to testing and beyond with consistent DX and light-speed performance. This idea of being simple, reducing distractions, and giving developers all the tools in one place to just build stuff resonated with Appwrite’s product philosophy. 
+We loved the idea of Bun, because it’s more than just another Node runtime but a whole set of tools. Bun does everything from dependency management to testing and beyond with consistent DX and light-speed performance. This idea of being simple, reducing distractions, and giving developers all the tools in one place to just build stuff resonated with Appwrite’s product philosophy. 
 
 Here’s a small selection of cool features that make it particularly useful as an Appwrite Function runtime.
 
@@ -67,7 +67,7 @@ This is really important to Appwrite Function developers during development beca
 
 You don’t need to run `tsc` to transpile Typescript using Bun. This is convenient, saves time, and avoids a messy `dist/` folder. It just works.
 
-Again, in the context of an Appwrite Function, the build time you can save is pretty significant. Here’s the deploy times for a simple typescript [Starter Function](https://github.com/appwrite/templates/) template in Bun and Node.js
+Again, in the context of an Appwrite Function, the build time you can save is pretty significant. Here are the deploy times for a simple typescript [Starter Function](https://github.com/appwrite/templates) template in Bun and Node.js
 
 **Bun** build time
 
@@ -259,7 +259,7 @@ You can try your first Bun, Node.js, or Deno function on Appwrite Cloud without 
 
 # Resources
 
-Visit our documentation to learn more about the runtimes, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+Visit our documentation to learn more about the Bun, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
 - [Docs](https://appwrite.io/docs/products/functions/runtimes)
 - [Discord](https://appwrite.io/discord)
