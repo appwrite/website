@@ -256,3 +256,13 @@ There’s a lot to love about [Bun](https://bun.sh/), and we only explored a few
 If you’re curious, you can also try Bun in an Appwrite Function by creating your first [Appwrite Cloud](https://cloud.appwrite.io/) project. The free Starter plan gives you access to three Functions, which lets you compare and contrast Node.js, Deno, and Bun in identical containerized environments.
 
 You can try your first Bun, Node.js, or Deno function on Appwrite Cloud without writing a single line of code through Appwrite Function templates. Appwrite will clone template functions to your GitHub profile and set up automatic deployments so you can start building immediately.
+
+# Resources
+
+Visit our documentation to learn more about the runtimes, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
