@@ -25,7 +25,7 @@ Dart is one of Appwrite’s [fastest runtimes](https://dev.to/appwrite/take-your
 
 For Dart developers, Dart 3 introduces many exciting features like records for structured data, patterns, more verbose OOP concepts, and more. For Appwrite Functions developers, however, sound null safety is a stand-out.
 
-Sound null safety means unless you specify a variable can be null, it will **never be null.** At compile time, not accessing nullable values safely or assigning potentially null values to non-nullable variables will throw errors.
+Sound null safety means unless you specify a variable can be null, it will **never be null**. At compile time, not accessing nullable values safely or assigning potentially null values to non-nullable variables will throw errors.
 
 This means you’ll see fewer runtime errors in your Appwrite Functions, especially when Appwrite Functions often integrate with third-party APIs you don’t control or receive user input.
 
