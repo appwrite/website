@@ -179,7 +179,7 @@ Client client = Client()
 
 Users users = Users(client);
 
-Future target = users.createTarget(
+final target = await users.createTarget(
   userId: '<USER_ID>',
   targetId: '<TARGET_ID>',
   providerType:  MessagingProviderType.email,
@@ -187,12 +187,6 @@ Future target = users.createTarget(
   providerId: '<PROVIDER_ID>',  // (optional)
   name: '<NAME>',               // (optional)
 );
-
-target.then((response) {
-  print(response);
-}).catchError((error) {
-  print(error.response);
-});
 
 ```
 ```kotlin
