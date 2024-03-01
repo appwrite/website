@@ -180,6 +180,8 @@ Target target = await users.CreateTarget(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
   .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
@@ -392,6 +394,8 @@ Topic topic = await messaging.CreateTopic(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
@@ -601,6 +605,8 @@ Message message = await messaging.CreateSMS(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 Client client = Client();
     .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
@@ -828,6 +834,8 @@ Message message = await messaging.CreateSMS(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 Client client = Client();
     .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
