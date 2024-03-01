@@ -394,7 +394,7 @@ Client client = Client()
 
 Messaging messaging = Messaging(client);
 
-Topic topic = messaging.createTopic(
+Topic topic = await messaging.createTopic(
     topicId: '[TOPIC_ID]',
     name: '[NAME]',
 );
