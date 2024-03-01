@@ -631,7 +631,7 @@ val client = Client()
 
 val messaging = Messaging(client)
 
-val message = messaging.createSMS(
+val message - await messaging.createSMS(
     messageId = "[MESSAGE_ID]",
     content = "[CONTENT]",
     topics = listOf(),
@@ -858,7 +858,7 @@ val client = Client()
 
 val messaging = Messaging(client)
 
-val message = messaging.createSMS(
+val message - await messaging.createSMS(
     messageId = "[MESSAGE_ID]",
     content = "[CONTENT]",
     topics = listOf(),

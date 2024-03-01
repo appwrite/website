@@ -525,16 +525,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createTopic(
+const topic = await messaging.createTopic(
         '[TOPIC_ID]',                            // topicId
         '[NAME]'                                 // name
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -550,16 +544,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createTopic(
+const topic = await messaging.createTopic(
         '[TOPIC_ID]',                            // topicId
         '[NAME]'                                 // name
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -747,7 +735,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -760,12 +748,6 @@ const promise = messaging.createEmail(
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -781,7 +763,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -794,12 +776,6 @@ const promise = messaging.createEmail(
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -1059,7 +1035,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',            // messageId
         '[SUBJECT]',               // subject
         '[CONTENT]',               // content
@@ -1072,12 +1048,6 @@ const promise = messaging.createEmail(
         false,                     // html (optional)
         '2025-02-13T22:01:00+0000' // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -1093,7 +1063,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',            // messageId
         '[SUBJECT]',               // subject
         '[CONTENT]',               // content
@@ -1106,12 +1076,6 @@ const promise = messaging.createEmail(
         false,                     // html (optional)
         '2025-02-13T22:01:00+0000' // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php

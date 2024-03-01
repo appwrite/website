@@ -68,8 +68,7 @@ This helps you reach your user, even when their device do not have internet acce
 {% /table %}
 
 # Messages lifecycle {% #messages-lifecycle %}
-All messages begin as `draft`. 
-If the message is currently being sent, the status is `processing`.
+Messages can begin as a `draft`, or proceed directly to `processing` if it's sent immediately.
 If the message is scheduled to be sent later, its status is set to `scheduled`, then to `processing` at schedule time.
 After attempted delivery, it is marked as `sent` or `failed` depending on if the message was successfully delivered.
 {% only_dark %}
@@ -241,7 +240,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createPush(
+const message = await messaging.createPush(
         '[MESSAGE_ID]',                          // messageId
         '[TITLE]',                               // title
         '[BODY]',                                // body
@@ -258,12 +257,6 @@ const promise = messaging.createPush(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -279,7 +272,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createPush(
+const message = await messaging.createPush(
         '[MESSAGE_ID]',                          // messageId
         '[TITLE]',                               // title
         '[BODY]',                                // body
@@ -296,12 +289,6 @@ const promise = messaging.createPush(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -596,7 +583,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -609,12 +596,6 @@ const promise = messaging.createEmail(
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -630,7 +611,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -643,12 +624,6 @@ const promise = messaging.createEmail(
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -911,7 +886,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -920,12 +895,6 @@ const promise = messaging.createSMS(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -941,7 +910,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -950,12 +919,6 @@ const promise = messaging.createSMS(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
