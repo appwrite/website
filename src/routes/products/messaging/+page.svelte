@@ -97,7 +97,7 @@ await messaging.createPush(
     ID.unique(),           // Message ID
     'Breaking update',     // Push title
     'Hello, world!',       // Push body
-    ['news', sport],       // Topic IDs
+    ['news', 'sport'],       // Topic IDs
 );`
         },
         {
@@ -110,7 +110,7 @@ await messaging.createPush(
     ID.unique(),           // Message ID
     'Breaking update',     // Push title
     'Hello, world!',       // Push body
-    ['news', sport],       // Topic IDs
+    ['news', 'sport'],       // Topic IDs
 );`
         },
         {
@@ -124,7 +124,7 @@ await messaging.createPush(
     messageId: ID.unique(),
     subject: "Breaking update",
     content: "Hello, world!",
-    topics: ['news', sport'],
+    topics: ['news', 'sport'],
 );`
         },
         {
@@ -180,7 +180,7 @@ $messaging->createPush(
     messageId: ID::unique(),
     subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['news', sport]
+    topics: ['news', 'sport']
 );`
         },
         {
@@ -210,7 +210,7 @@ $messaging->createPush(
     messageId: ID::unique(),
     subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['news', sport]
+    topics: ['news', 'sport']
 );`
         },
         {
@@ -225,7 +225,7 @@ messaging.create_email(
     message_id: ID.unique(),
     subject: 'Breaking update',
     content: 'Hello, world!',
-    topics: ['news', sport]
+    topics: ['news', 'sport']
 )`
         }
     ];
@@ -325,6 +325,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/fcm"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="aw-icon-firebase" aria-hidden="true" />
                                             <span class="text">FCM</span>
@@ -334,6 +336,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/apns"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="aw-icon-apple" aria-hidden="true" />
                                             <span class="text">APNS</span>
@@ -358,6 +362,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="aw-icon-mailgun" aria-hidden="true" />
                                             <span class="text">Mailgun</span>
@@ -367,6 +373,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="aw-icon-sendgrid" aria-hidden="true" />
                                             <span class="text">SendGrid</span>
@@ -390,6 +398,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/twilio"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-twilio" aria-hidden="true" />
                                             <span class="text">Twilio</span>
@@ -399,6 +409,8 @@ messaging.create_email(
                                         <a
                                             class="aw-interactive-tag"
                                             href="/docs/products/messaging/vonage"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-vonage" aria-hidden="true" />
                                             <span class="text">Vonage</span>
@@ -427,7 +439,12 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a class="aw-interactive-tag" href="/docs">
+                                        <a
+                                            class="aw-interactive-tag"
+                                            href="/docs"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <span
                                                 class="aw-icon-appwrite u-small aw-u-margin-inline-end-4"
                                                 aria-hidden="true"
@@ -453,19 +470,19 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <span class="aw-interactive-tag">
+                                        <span class="aw-interactive-tag" data-readonly>
                                             <span class="icon-slack" aria-hidden="true" />
                                             <span class="text">Slack</span>
                                         </span>
                                     </li>
                                     <li>
-                                        <span class="aw-interactive-tag">
+                                        <span class="aw-interactive-tag" data-readonly>
                                             <span class="icon-discord" aria-hidden="true" />
                                             <span class="text">Discord</span>
                                         </span>
                                     </li>
                                     <li>
-                                        <span class="aw-interactive-tag">
+                                        <span class="aw-interactive-tag" data-readonly>
                                             <span class="icon-whatsapp" aria-hidden="true" />
                                             <span class="text">WhatsApp</span>
                                         </span>
@@ -530,22 +547,24 @@ messaging.create_email(
                             Start today with your preferred technologies
                         </h2>
                     </div>
-                    <div class="aw-grid-1-1-opt-2 aw-u-gap-64 aw-u-margin-block-start-64">
-                        <div class="u-flex-vertical u-gap-16">
+                    <div
+                        class="aw-grid-1-1-opt-2 aw-u-gap-64 aw-u-margin-block-start-64 code-snippets"
+                    >
+                        <div class="u-flex-vertical u-gap-8">
                             <h3 class="aw-label aw-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="aw-description">
                                 Subscribe to receive all messages related to that topic.
                             </p>
 
                             <div class="u-margin-block-start-16" style="margin-block-end: 94px">
-                                <MultiCodeContextless data={codeTopic} width={552} height={450} />
+                                <MultiCodeContextless data={codeTopic} height={450} />
                             </div>
                         </div>
-                        <div class="u-flex-vertical u-gap-16">
+                        <div class="u-flex-vertical u-gap-8">
                             <h3 class="aw-label aw-u-color-text-primary">Send a message</h3>
                             <p class="aw-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16">
-                                <MultiCodeContextless data={codeMessage} width={552} height={450} />
+                                <MultiCodeContextless data={codeMessage} height={450} />
                             </div>
                         </div>
                     </div>
@@ -563,6 +582,8 @@ messaging.create_email(
                         class="aw-card is-normal"
                         href="/docs/products/auth"
                         style="background: rgba(255, 255, 255, 0.04);"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <div
                             class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
@@ -590,6 +611,8 @@ messaging.create_email(
                     <a
                         class="aw-card is-normal"
                         href="/docs/products/functions"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style="background: rgba(255, 255, 255, 0.04);"
                     >
                         <div
@@ -618,6 +641,8 @@ messaging.create_email(
                     <a
                         class="aw-card is-normal"
                         href="/docs/products/databases"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style="background: rgba(255, 255, 255, 0.04);"
                     >
                         <div
@@ -646,6 +671,8 @@ messaging.create_email(
                     <a
                         class="aw-card is-normal"
                         href="/docs/products/storage"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style="background: rgba(255, 255, 255, 0.04);"
                     >
                         <div
@@ -674,6 +701,8 @@ messaging.create_email(
                     <a
                         class="aw-card is-normal"
                         href="/docs/apis/realtime"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style="background: rgba(255, 255, 255, 0.04);"
                     >
                         <div
@@ -816,5 +845,28 @@ messaging.create_email(
         padding-block-start: 5rem;
 
         --padding-block-end: 7.5rem;
+    }
+
+    .code-snippets {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            inset-inline-start: 50%;
+            inset-block-end: 2.9rem;
+            transform: translateX(-50%);
+            width: 1px;
+            background: hsl(var(--aw-color-offset));
+            z-index: -1;
+            @media screen and (max-width: 1024px) {
+                display: none;
+            }
+        }
+    }
+
+    .aw-interactive-tag[data-readonly] {
+        cursor: not-allowed;
+        pointer-events: none;
     }
 </style>
