@@ -72,7 +72,7 @@
     .mosaic {
         display: grid;
         grid-template-columns: repeat(24, 1fr);
-        grid-template-rows: repeat(2, 224px) 60px;
+        grid-template-rows: repeat(2, 224px);
         gap: 2rem;
 
         min-height: 660px;
