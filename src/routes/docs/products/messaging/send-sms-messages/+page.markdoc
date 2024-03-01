@@ -188,7 +188,7 @@ Client client = Client()
 
 Users users = Users(client);
 
-Future target = users.createTarget(
+Target target = await users.createTarget(
   userId: '<USER_ID>',
   targetId: '<TARGET_ID>',
   providerType:  MessagingProviderType.phone,
@@ -196,12 +196,6 @@ Future target = users.createTarget(
   providerId: '<PROVIDER_ID>',  // (optional)
   name: '<NAME>',               // (optional)
 );
-
-target.then((response) {
-  print(response);
-}).catchError((error) {
-  print(error.response);
-});
 
 ```
 ```kotlin
