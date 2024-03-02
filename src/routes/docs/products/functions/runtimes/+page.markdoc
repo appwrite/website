@@ -22,6 +22,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `node-18.0`
 `node-19.0`
 `node-20.0`
+`node-21.0`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="bun" size="l" /%}
@@ -34,6 +35,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 * `deno-1.21`
 `deno-1.24`
 `deno-1.35`
+`deno-1.4`
 * x86
 ---
 * {% icon icon="python" size="l" /%}
@@ -53,6 +55,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `dart-2.18`
 `dart-3.0`
 `dart-3.1`
+`dart-3.3`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="php" size="l" /%}
@@ -60,6 +63,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 * `php-8.0`
 `php-8.1`
 `php-8.2`
+`php-8.3`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="ruby" size="l" /%}
@@ -67,6 +71,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 * `ruby-3.0`
 `ruby-3.1`
 `ruby-3.2`
+`ruby-3.3`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="dotnet" size="l" /%}
@@ -82,18 +87,22 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `java-11.0`
 `java-17.0`
 `java-18.0`
+`java-20.0`
+`java-21.0`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="swift" size="l" /%}
 * [Swift](https://hub.docker.com/r/openruntimes/swift/tags)
 * `swift-5.5`
 `swift-5.8`
+`swift-5.9`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="kotlin" size="l" /%}
 * [Kotlin](https://hub.docker.com/r/openruntimes/kotlin/tags)
 * `kotlin-1.6`
 `kotlin-1.8`
+`kotlin-1.9`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="cpp" size="l" /%}
@@ -108,10 +117,11 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 
 While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As we continue to improve our Cloud offering, we will add support for more runtimes. Until then, these are the runtimes that you can use on Appwrite Cloud:
 
+- `bun-1.0`
 - `node-16.0`
 - `node-18.0`
 - `php-8.0`
 - `ruby-3.0`
 - `python-3.9`
-- `python-3.12`
 - `dart-2.17`
+- `dart-3.1`
