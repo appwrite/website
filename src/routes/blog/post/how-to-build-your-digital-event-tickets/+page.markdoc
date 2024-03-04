@@ -1,12 +1,12 @@
 ---
 layout: post
-title: A recap of Init. The Appwrite community at its best
-description: We had such a great week and we look forward to the next Init, but for now we look back and enjoy all the fun we had.
+title: How to build your digital event tickets
+description: Did you enjoy the Init tickets? In this blog we share how you can create your own.
 date: 2024-03-04
-cover: /images/blog/the-recap.png
+cover: /images/blog/tickets-cover.png
 timeToRead: 12
 author: laura-du-ry
-category: OSS
+category: engineering
 ---
 
 Do you remember the Appwrite [Cloud cards](https://dev.to/appwrite/how-we-implemented-the-card-animation-in-appwrite-cloud-public-beta-4npb)? They were an absolute hit and filled our entire timeline for days. For Init, we wanted to create a new card, or better yet, a ticket to celebrate in style. So, we created three types of tickets that are unique to you with the help of your GitHub contributions and the tribe customization. 
