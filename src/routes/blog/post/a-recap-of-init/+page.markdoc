@@ -3,7 +3,7 @@ layout: post
 title: A recap of Init. The Appwrite community at its best
 description: We had such a great week and we look forward to the next Init, but for now we look back and enjoy all the fun we had.
 date: 2024-03-04
-cover: /images/blog/the-recap.png
+cover: /images/blog/a-recap-of-init/the-recap.png
 timeToRead: 12
 author: laura-du-ry
 category: OSS
@@ -17,47 +17,39 @@ In this blog, we will recap on what happened during Init and highlight some of o
 
 For months, we have been working on creating all of the elements that make Init come alive. We spent many hours creating and planning the tickets, the website, the videos, the swags, Discord sessions, and all other content. 
 
-We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a sneak peak of behind-the-scenes footage of the team working on the Init announcement videos.
+We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a [sneak peak of behind-the-scenes footage](https://www.youtube.com/shorts/B9figMEeBlc) of the team working on the Init announcement videos.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/shorts/B9figMEeBlc" title="Behind the scene" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![behind the scenes](/images/blog/a-recap-of-init/init1.png)
 
-![behind the scenes](/images/blog/init1.png)
+![behind the scenes](/images/blog/a-recap-of-init/init2.png)
 
-![behind the scenes](/images/blog/init2.png)
+![behind the scenes](/images/blog/a-recap-of-init/init3.png)
 
-![behind the scenes](/images/blog/init3.png)
-
-![behind the scenes](/images/blog/init4.png)
+![behind the scenes](/images/blog/a-recap-of-init/init4.png)
 
 ## The fun begins
 
 And then, finally, we got to [announce Init](https://appwrite.io/blog/post/announcing-init) to all of you and have you join in the fun and create your tickets.
 
-![Init begins](/images/blog/init5.png)
+![Init begins](/images/blog/a-recap-of-init/init5.png)
 
-
-Many of you asked us, but what is Init? Dennis explains.
-
-
-<iframe width="560" height="315" src="https://youtube.com/embed/shorts/Brex4HwiKqU" title="What is Init" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+Many of you asked us, but what is Init? [Dennis explains](https://www.youtube.com/shorts/Brex4HwiKqU).
 
 Of course we understood we needed some more explaining to do, about what Init actually is. So, we prepared an announcement video, which was the most exciting part of the pre-campaign. This was a first for Appwrite, and we loved sharing this moment with you.
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=5NtrYks2dqE" title="Init announcement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+{% youtube src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-1.png" /%}
 
 Of course, we designed Init swag for you to win and The Appwriter. Didn’t win an Appwriter? No worries, it will be coming to the [Appwrite Store](https://appwrite.store/) soon.
 
-![Appwrite Init giveaway](/images/blog/init6.png)
+![Appwrite Init giveaway](/images/blog/a-recap-of-init/init6.png)
 
 ## Special guest line up
 
 But what would Init be without special guests? We invited friends and creators of Appwrite to join us during a Discord session each day to come geek out with us and join in the celebration. The lineup speaks for itself.
 
-![Special guest line up](/images/blog/init7.png)
+![Special guest line up](/images/blog/a-recap-of-init/init7.png)
 
-![Reactions to announcing the line ups](/images/blog/init8.png)
+![Reactions to announcing the line ups](/images/blog/a-recap-of-init/init8.png)
 
 # Init begins
 
@@ -67,21 +59,19 @@ After a week of pre fun it finally was time to make our first announcement. This
 
 On day 0 of Init, we brought you Messaging, a massive announcement as this was a product many of you have requested as it is a requirement for many applications, being able to communicate with your users. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/w-izHSKXqtU" title="Day 0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
+{% youtube src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-messaging.png" /%}
 
 The reactions are what we hoped for and made day 0 of Init a great start to the week.
 
-![Reactions to Messaging](/images/blog/init9.png)
+![Reactions to Messaging](/images/blog/a-recap-of-init/init9.png)
 
-![Reactions to Messaging](/images/blog/init10.png)
+![Reactions to Messaging](/images/blog/a-recap-of-init/init10.png)
 
 ### Discord session
 
 We kicked off the first Discord session with Appwrite Hero and Vonage dev advocate [Diana Pham](https://twitter.com/dianasoyster) to talk about Messaging. As always, the community around Appwrite showed up in mass and made it a great hour of fun and learning! 
 
-![Discord session turn out](/images/blog/init11.png)
+![Discord session turn out](/images/blog/a-recap-of-init/init11.png)
 
 ### Content list
 
@@ -93,20 +83,19 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 
 On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering) 
 
-{% youtube video_id="https://www.youtube.com/watch?v=jeL4cSovOBA" %}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v=jeL4cSovOBA" title="Day 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% youtube src="https://www.youtube-nocookie.com/embed/jeL4cSovOBA?si=0tMDecmUucWOYASg" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-ssr.png" /%}
 
 This improvement was more than welcome.
 
-![Welcome SSR](/images/blog/init12.png)
+![Welcome SSR](/images/blog/a-recap-of-init/init12.png)
 
 ### Fund and knowledge
 
 For day 1 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to come and join us on stage to talk about SSR.
 
-![Hitesh having fun](/images/blog/init13.png)
+![Hitesh having fun](/images/blog/a-recap-of-init/init13.png)
 
-![Community fun](/images/blog/init14.png)
+![Community fun](/images/blog/a-recap-of-init/init14.png)
 
 ### Content list
 
@@ -118,21 +107,21 @@ For day 1 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to com
 
 Day 2 of Init was all about safety and the dev experience. Two-factor authentication and Enum SDK support were announced.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hpdUXOFay4M" title="Day 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% youtube src="https://www.youtube-nocookie.com/embed/hpdUXOFay4M?si=TPO8CistphsTOCas" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-2fa.png" /%}
 
 As Eddie mentioned, with just a few lines of code you can now add 2FA to your apps.
 
-![Eddie responding to 2FA](/images/blog/init15.png)
+![Eddie responding to 2FA](/images/blog/a-recap-of-init/init15.png)
 
 With Enum SDK support we make our commitment to improving your developer experience valid.
 
-![James loving Enums](/images/blog/init16.png)
+![James loving Enums](/images/blog/a-recap-of-init/init16.png)
 
 ### Last minute guest
 
 We got a curve ball thrown at us on day 2 of Init, as our guest for the day had to cancel. But luckily we had [Francesco Ciulli](https://twitter.com/FrancescoCiull4) from daily.dev join us last minute to save the day. 
 
-![Francesco joining us last minute](/images/blog/init17.png)
+![Francesco joining us last minute](/images/blog/a-recap-of-init/init17.png)
 
 ### Content list
 
@@ -147,13 +136,13 @@ We got a curve ball thrown at us on day 2 of Init, as our guest for the day had 
 
 What is a database without queries? Not a lot! The introduction of new Database operators for Appwrite Databases makes all the difference and gives you more control and flexibility when writing queries.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/73flN6mZqAs" title="Day 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% youtube src="https://www.youtube-nocookie.com/embed/73flN6mZqAs?si=3hUI26G9DDVDzJG4" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-db.png" /%}
 
-![Community highlight](/images/blog/init18.png)
+![Community highlight](/images/blog/a-recap-of-init/init18.png)
 
 For day 3 of Init, we had [Danny Thompson](https://twitter.com/DThompsonDev) join us. Not only did he have great horror SQL stories, he also shared some helpful insights. Soon, we will share the videos of each Discord session.
 
-![Danny joining us](/images/blog/init19.png)
+![Danny joining us](/images/blog/a-recap-of-init/init19.png)
 
 ### Content list
 
@@ -165,11 +154,11 @@ For day 3 of Init, we had [Danny Thompson](https://twitter.com/DThompsonDev) joi
 
 The last day of Init was a proper celebration. We started off with our last announcement: [New and updated runtimes.](https://appwrite.io/blog/post/announcing-more-and-updated-runtimes) But the highlight of the day was the closing party we held on Discord with our friend from open-sauced, [Nick Taylor](https://twitter.com/nickytonline). 
 
-![Fun with Nick during the closing party](/images/blog/init20.png)
+![Fun with Nick during the closing party](/images/blog/a-recap-of-init/init20.png)
 
 The closing party got an extra special touch with five giveaways to celebrate. And if you ever wondered who holds the power of the giveaway, according to Francesco it’s Aditya.
 
-![Aditya the giveaway man](/images/blog/init21.png)
+![Aditya the giveaway man](/images/blog/a-recap-of-init/init21.png)
 
 ### Content list
 

@@ -77,6 +77,8 @@ Our website is developed with SvelteKit, which is a full-stack framework. TL;DR,
 
 We then can generate a matrix that representes the contribution chart. Each array of the matrix will represent a week, and each item of said array will contain the contribution level for that particular day.
 
+
+```ts
 const res = await fetch(`https://github.com/${gh_user}`);
 
 const html = await res.text();
@@ -100,9 +102,11 @@ for (let c = 0; c < maxCols; c++) {
 
     matrix[c] = matrix[c].reverse();
 }
+```
 
 However, this operation is expensive! It's best if we don't have to always fetch it on each and every access to it. So we save it to Appwrite Cloud. By using a number array attribute and converting the matrix to a flat array, this is what our final code will look like.
 
+```ts
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { appwriteInit } from '$lib/appwrite/init';
 import parse from 'node-html-parser';
@@ -135,11 +139,13 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
 
     return matrix;
 }
+```
 
 With this, requests will be much faster. But we still care about the initial load, right? First impressions are everything.
 
 So, we adopted a smart strategy. When requesting the ticket, instead of waiting for all the data to load (the ticket data + the contributions) before rendering the page, we stream the contribution data. This is what our load function looks like:
 
+```ts
 import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$routes/init/helpers';
 import { redirect } from '@sveltejs/kit';
 
@@ -160,9 +166,11 @@ export const load = async () => {
         }
     };
 };
+```
 
 Then, with SvelteKit, we can show the contributions as soon as they're ready. 
 
+```svelte
 {#await contributions then c}
     {#if c && show_contributions}
         <div
@@ -180,6 +188,7 @@ Then, with SvelteKit, we can show the contributions as soon as they're ready.
         </div>
     {/if}
 {/await}
+```
 
 This means that users can see the ticket without waiting for all data to load but still see the chart seamlessly added to the ticket.
 
