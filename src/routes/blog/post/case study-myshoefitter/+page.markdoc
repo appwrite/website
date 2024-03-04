@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "mySHOEFITTER: Solving 75% of online shoe order returns"
-description: Learn how mySHOEFITTER has used Appwrite Cloud and AI to enable over 12,000 customers to accurately get their shoe size within an accuracy of 2 mm, solving a massive supply chain problem in the shoe industry.
+description: Learn how mySHOEFITTER utilized Appwrite Cloud and AI to enable over 12,000 customers to get their shoe size within an accuracy of 2 mm, solving a massive supply chain problem in the shoe industry.
 date: 2024-03-04
 cover: /images/blog/case-study-myshoefitter.png
 timeToRead: 5
