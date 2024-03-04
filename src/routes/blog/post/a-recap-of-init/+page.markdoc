@@ -19,7 +19,8 @@ For months, we have been working on creating all of the elements that make Init 
 
 We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a sneak peak of behind-the-scenes footage of the team working on the Init announcement videos.
 
-https://www.youtube.com/shorts/B9figMEeBlc
+{% youtube video_id="https://www.youtube.com/shorts/B9figMEeBlc" %}
+
 
 ![behind the scenes](/images/blog/init1.png)
 
@@ -35,13 +36,16 @@ And then, finally, we got to [announce Init](https://appwrite.io/blog/post/annou
 
 ![Init begins](/images/blog/init5.png)
 
+
 Many of you asked us, but what is Init? Dennis explains.
 
-https://youtube.com/shorts/Brex4HwiKqU?feature=shared
+
+{% youtube video_id="https://youtube.com/shorts/Brex4HwiKqU?feature=shared" %}
 
 Of course we understood we needed some more explaining to do, about what Init actually is. So, we prepared an announcement video, which was the most exciting part of the pre-campaign. This was a first for Appwrite, and we loved sharing this moment with you.
 
-https://www.youtube.com/watch?v=5NtrYks2dqE
+
+{% youtube video_id="https://www.youtube.com/watch?v=5NtrYks2dqE" %}
 
 Of course, we designed Init swag for you to win and The Appwriter. Didn’t win an Appwriter? No worries, it will be coming to the [Appwrite Store](https://appwrite.store/) soon.
 
@@ -62,8 +66,6 @@ After a week of pre fun it finally was time to make our first announcement. This
 ### The first of many
 
 On day 0 of Init, we brought you Messaging, a massive announcement as this was a product many of you have requested as it is a requirement for many applications, being able to communicate with your users. 
-
-<iframe width="560" height="315" src="https://youtu.be/w-izHSKXqtU" title="Init recap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 {% youtube video_id="https://youtu.be/w-izHSKXqtU" %}
 
@@ -90,7 +92,7 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 
 On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering) 
 
-https://www.youtube.com/watch?v=jeL4cSovOBA
+{% youtube video_id="https://www.youtube.com/watch?v=jeL4cSovOBA" %}
 
 This improvement was more than welcome.
 
@@ -114,7 +116,7 @@ For day 2 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to com
 
 Day 2 of Init was all about safety and the dev experience. Two-factor authentication and Enum SDK support were announced.
 
-https://youtu.be/hpdUXOFay4M
+{% youtube video_id="https://youtu.be/hpdUXOFay4M" %}
 
 As Eddie mentioned, with just a few lines of code you can now add 2FA to your apps.
 
@@ -143,7 +145,7 @@ We got a curve ball thrown at us on day 2 of Init, as our guest for the day had 
 
 What is a database with out queries? Not a lot! The introduction of new Database operators for Appwrite Databases makes all the difference and gives you more control and flexibility when writing queries.
 
-https://youtu.be/73flN6mZqAs
+{% youtube video_id="https://youtu.be/73flN6mZqAs" %}
 
 ![Community highlight](/images/blog/init18.png)
 
