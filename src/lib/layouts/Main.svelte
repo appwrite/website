@@ -196,9 +196,9 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <h6 class="aw-sub-body-500 aw-u-color-text-accent-click" style="line-height:15px">join us for Day 2</h6>
+                            <h6 class="aw-sub-body-500 aw-u-color-text-accent-click" style="line-height:15px">join us for Day 4</h6>
                         </div>
-                        <p class="aw-caption-500">2FA and Enums announced</p>
+                        <p class="aw-caption-500">New and updated runtimes announced</p>
                     </div>
                     <div class="u-flex-vertical u-gap-2">
                         <div class="aw-link u-flex u-cross-center">
