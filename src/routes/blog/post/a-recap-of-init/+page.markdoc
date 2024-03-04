@@ -11,7 +11,7 @@ category: OSS
 
 Init has come to an end, and we’re happy how all of you showed up and made it an amazing week filled with product announcements, events, content, celebrations, a release, and most of all, community fun!
 
-In this blog, we will recap on what happened during Init and highlight some of our favorite moments, and comments, and share the all the content for each day. Let’s dive in.
+In this blog, we will recap on what happened during Init and highlight some of our favorite moments and comments, and share all the content for each day. Let’s dive in.
 
 # Announcing the start of something new
 
@@ -19,8 +19,7 @@ For months, we have been working on creating all of the elements that make Init 
 
 We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a sneak peak of behind-the-scenes footage of the team working on the Init announcement videos.
 
-{% youtube video_id="https://www.youtube.com/shorts/B9figMEeBlc" %}
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/shorts/B9figMEeBlc" title="Behind the scene" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ![behind the scenes](/images/blog/init1.png)
 
@@ -40,12 +39,13 @@ And then, finally, we got to [announce Init](https://appwrite.io/blog/post/annou
 Many of you asked us, but what is Init? Dennis explains.
 
 
-{% youtube video_id="https://youtube.com/shorts/Brex4HwiKqU?feature=shared" %}
+<iframe width="560" height="315" src="https://youtube.com/embed/shorts/Brex4HwiKqU" title="What is Init" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 Of course we understood we needed some more explaining to do, about what Init actually is. So, we prepared an announcement video, which was the most exciting part of the pre-campaign. This was a first for Appwrite, and we loved sharing this moment with you.
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=5NtrYks2dqE" title="Init announcement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-{% youtube video_id="https://www.youtube.com/watch?v=5NtrYks2dqE" %}
 
 Of course, we designed Init swag for you to win and The Appwriter. Didn’t win an Appwriter? No worries, it will be coming to the [Appwrite Store](https://appwrite.store/) soon.
 
@@ -67,7 +67,8 @@ After a week of pre fun it finally was time to make our first announcement. This
 
 On day 0 of Init, we brought you Messaging, a massive announcement as this was a product many of you have requested as it is a requirement for many applications, being able to communicate with your users. 
 
-{% youtube video_id="https://youtu.be/w-izHSKXqtU" %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w-izHSKXqtU" title="Day 0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 The reactions are what we hoped for and made day 0 of Init a great start to the week.
@@ -93,6 +94,7 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering) 
 
 {% youtube video_id="https://www.youtube.com/watch?v=jeL4cSovOBA" %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v=jeL4cSovOBA" title="Day 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 This improvement was more than welcome.
 
@@ -100,7 +102,7 @@ This improvement was more than welcome.
 
 ### Fund and knowledge
 
-For day 2 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to come and join us on stage to talk about SSR.
+For day 1 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to come and join us on stage to talk about SSR.
 
 ![Hitesh having fun](/images/blog/init13.png)
 
@@ -116,7 +118,7 @@ For day 2 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to com
 
 Day 2 of Init was all about safety and the dev experience. Two-factor authentication and Enum SDK support were announced.
 
-{% youtube video_id="https://youtu.be/hpdUXOFay4M" %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hpdUXOFay4M" title="Day 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 As Eddie mentioned, with just a few lines of code you can now add 2FA to your apps.
 
@@ -143,13 +145,13 @@ We got a curve ball thrown at us on day 2 of Init, as our guest for the day had 
 
 ## More querying!
 
-What is a database with out queries? Not a lot! The introduction of new Database operators for Appwrite Databases makes all the difference and gives you more control and flexibility when writing queries.
+What is a database without queries? Not a lot! The introduction of new Database operators for Appwrite Databases makes all the difference and gives you more control and flexibility when writing queries.
 
-{% youtube video_id="https://youtu.be/73flN6mZqAs" %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/73flN6mZqAs" title="Day 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ![Community highlight](/images/blog/init18.png)
 
-For day 3 of Init we had [Danny Thompson](https://twitter.com/DThompsonDev) join us. Not only did he have great horror SQL stories, he also shared some help insights. Soon we will share the videos of each Discord session.
+For day 3 of Init, we had [Danny Thompson](https://twitter.com/DThompsonDev) join us. Not only did he have great horror SQL stories, he also shared some helpful insights. Soon, we will share the videos of each Discord session.
 
 ![Danny joining us](/images/blog/init19.png)
 
