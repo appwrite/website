@@ -167,12 +167,14 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .frame {
         position: relative;
     }
 
     .component {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 17.36px;
         --m-border-gradient-before: linear-gradient(
             180deg,

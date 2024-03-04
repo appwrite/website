@@ -127,6 +127,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .component {
         background-color: transparent;
 
@@ -151,7 +153,7 @@
     }
 
     .rectangle {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 11.17px;
 
         width: 441px;
@@ -192,7 +194,7 @@
     }
 
     .operators {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 11.17px;
 
         position: absolute;
@@ -206,7 +208,7 @@
         opacity: 0;
 
         span {
-            @include border-gradient;
+            @include gradients.border-gradient;
             --m-border-radius: 8px;
             background: rgba(255, 255, 255, 0.04);
             width: 58px;
