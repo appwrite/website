@@ -3,6 +3,6 @@ import { isLoggedIn } from '../helpers.js';
 
 export const load = async () => {
     if (await isLoggedIn()) {
-        throw redirect(307, '/init/tickets/customize');
+        redirect(307, '/init/tickets/customize');
     }
 };
