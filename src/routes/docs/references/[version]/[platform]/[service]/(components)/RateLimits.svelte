@@ -90,3 +90,9 @@
         </div>
     </div>
 </div>
+
+<style>
+    .aw-card {
+        margin-block-end: 2rem;
+    }
+</style>
