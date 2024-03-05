@@ -25,6 +25,7 @@
     import { Accordion, AccordionItem } from '$lib/components/Accordion';
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
+    import RateLimits from './(components)/RateLimits.svelte';
 
     export let data;
 
@@ -199,6 +200,11 @@
                             {#if method.parameters.length > 0}
                                 <AccordionItem open={true} title="Request">
                                     <Request {method} />
+                                </AccordionItem>
+                            {/if}
+                            {#if method['rate-key']?.length > 0}
+                                <AccordionItem title="Rate limits">
+                                    <RateLimits {method} />
                                 </AccordionItem>
                             {/if}
                             <AccordionItem title="Response">

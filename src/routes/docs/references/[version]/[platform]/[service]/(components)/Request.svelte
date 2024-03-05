@@ -30,53 +30,6 @@
     </ul>
 </div>
 
-<div class="aw-card is-normal u-padding-16">
-    <div class="u-flex-vertical u-gap-24">
-        <div class="u-flex-vertical u-gap-16">
-            <p class="aw-sub-body-400">
-                This endpoint is rate limited. You can only make a limited number of request to his endpoint within a specific time frame.
-            </p>
-            <p class="aw-sub-body-400">
-                The limit is applied for each unique limit key.
-            </p>
-        </div>
-        <div class="aw-table-wrapper">
-            <div class="aw-table-scroll is-remove-outer-styles">
-                <table class="aw-table">
-                    <thead class="aw-table-header">
-                        <tr class="aw-table-row">
-                            <th class="aw-table-head-col">
-                                <div class="aw-eyebrow aw-u-color-text-primary">column 1</div>
-                            </th>
-                            <th class="aw-table-head-col">
-                                <div class="aw-eyebrow aw-u-color-text-primary">column 2</div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="aw-table-body">
-                        <tr class="aw-table-row">
-                            <td class="aw-table-col">a</td>
-                            <td class="aw-table-col">b</td>
-                        </tr>
-                        <tr class="aw-table-row">
-                            <td class="aw-table-col">a</td>
-                            <td class="aw-table-col">b</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="">
-            <a href="/" class="u-link aw-u-color-text-primary">
-                <span>Learn more about rate limits</span>
-                <span class="aw-icon-arrow-right" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-
 <style>
     .aw-card {
         margin-block-end: 2rem;

@@ -4,7 +4,7 @@ import { Platform, type Service } from './references';
 export type SDKMethod = {
     'rate-limit': number;
     'rate-time': number;
-    'rate-key': string;
+    'rate-key': string | string[];
     id: string;
     title: string;
     description: string;
@@ -175,8 +175,8 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 const specs = import.meta.glob(
     '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
     {
-       query: '?raw',
-       import: 'default'
+        query: '?raw',
+        import: 'default'
     }
 );
 async function getSpec(version: string, platform: string) {
