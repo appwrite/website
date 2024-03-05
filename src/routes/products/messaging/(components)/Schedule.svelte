@@ -110,7 +110,7 @@
     }
 
     .calendar {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 1.5rem;
         --m-border-gradient-before: linear-gradient(
             to bottom,
@@ -180,7 +180,9 @@
 
                 opacity: 0;
                 transform: scale(0.95);
-                transition: opacity 150ms ease, transform 150ms ease;
+                transition:
+                    opacity 150ms ease,
+                    transform 150ms ease;
             }
 
             &[data-selected] {
