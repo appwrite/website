@@ -27,6 +27,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         padding-block: 7.5rem;
         overflow: hidden;
@@ -46,7 +48,7 @@
     }
 
     .cardy {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.16) 0%,

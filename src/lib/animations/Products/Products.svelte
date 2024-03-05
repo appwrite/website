@@ -351,6 +351,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     #products {
         min-height: 500vh;
         height: 5000px;
@@ -520,7 +522,7 @@
     }
 
     .phone {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-size: 1px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
@@ -630,7 +632,7 @@
     }
 
     .controls {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
