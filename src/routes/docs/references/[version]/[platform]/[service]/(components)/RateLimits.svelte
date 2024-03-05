@@ -74,7 +74,7 @@
                         {:else if typeof rateKeys === 'string'}
                             <tr class="aw-table-row">
                                 <td class="aw-table-col">{Math.floor(rateTime / 60)} minutes</td>
-                                <td class="aw-table-col">{rateLimit || 10} requests</td>
+                                <td class="aw-table-col">{rateLimit} requests</td>
                                 <td class="aw-table-col">{parseKeys(rateKeys)}</td>
                             </tr>
                         {/if}
