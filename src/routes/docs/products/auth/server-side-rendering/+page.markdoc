@@ -108,7 +108,6 @@ if ($session) {
 ```
 {% /multicode %}
 
-
 # Creating email/password sessions {% #creating-sessions %}
 
 The most straightforward type of session to integrate is email/password.
@@ -454,3 +453,17 @@ try {
 {% /multicode %}
 
 Now the cookie is set, it will be passed to the server with subsequent requests, and you can use it to make authenticated requests to the Appwrite API on behalf of the end-user.
+
+# Tutorials {% #tutorials %}
+If you'd like to see SSR authentication implemented in a full auth example, see these tutorials.
+
+{% cards %}
+{% cards_item href="/docs/tutorials/nextjs-ssr-auth" title="Next.js SSR" icon="icon-nextjs"%}
+{% /cards_item %}
+{% cards_item href="/docs/tutorials/sveltekit-ssr-auth" title="SvelteKit SSR" icon="icon-svelte" %}
+{% /cards_item %}
+{% cards_item href="/docs/tutorials/nuxt-ssr-auth" title="Nuxt SSR" icon="icon-nuxt" %}
+{% /cards_item %}
+{% cards_item href="/docs/tutorials/astro-ssr-auth" title="Astro SSR" icon="icon-astro" %}
+{% /cards_item %}
+{% /cards %}

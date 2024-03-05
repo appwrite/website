@@ -4,7 +4,7 @@ import { redirect } from '@sveltejs/kit';
 export const load = async () => {
     const loggedIn = await isLoggedIn();
     if (!loggedIn) {
-        throw redirect(307, '/init/tickets');
+        redirect(307, '/init/tickets');
     }
 
     const user = await getUser();
