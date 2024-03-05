@@ -202,14 +202,14 @@
                                     <Request {method} />
                                 </AccordionItem>
                             {/if}
+                            <AccordionItem title="Response">
+                                <Response {method} />
+                            </AccordionItem>
                             {#if method['rate-key']?.length > 0}
                                 <AccordionItem title="Rate limits">
                                     <RateLimits {method} />
                                 </AccordionItem>
                             {/if}
-                            <AccordionItem title="Response">
-                                <Response {method} />
-                            </AccordionItem>
                         </Accordion>
                     </div>
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
