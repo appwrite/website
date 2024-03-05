@@ -83,6 +83,8 @@
 </Step>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         // display: flex;
         display: grid;

@@ -27,6 +27,8 @@
 </button>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     button {
         @include gradients.border-gradient;
         --p-size: var(--size, 1.25rem);

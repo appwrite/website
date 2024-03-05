@@ -103,6 +103,8 @@
 </Step>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .console {
         @include gradients.border-gradient;
         --m-border-radius: 18px;
