@@ -50,6 +50,14 @@
     --p-table-row-bg-odd-color: 0 0 0 / 0;
     --p-table-row-bg-even-color: 0 0 0 / 0;
     border-block-end:solid pxToRem(1) hsl(var(--p-table-border-color));
+
+    .#{$p}-table {
+      &-row                     {  }
+      &-head-col                { padding-block-start:pxToRem(8); padding-block-end:pxToRem(16); }
+      &-col                     { padding-block:pxToRem(16); }
+      &-head-col:first-child    { padding-inline-start:0; }
+      &-col:first-child         { padding-inline-start:0; }
+    }
   }
 }
 
