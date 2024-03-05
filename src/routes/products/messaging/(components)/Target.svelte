@@ -446,6 +446,8 @@
 </Step>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         position: relative;
         overflow: hidden;
