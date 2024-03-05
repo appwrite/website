@@ -28,7 +28,7 @@
 
 <style lang="scss">
     button {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --p-size: var(--size, 1.25rem);
         --m-border-radius: calc(var(--p-size) / 4);
         --m-border-gradient-before: linear-gradient(

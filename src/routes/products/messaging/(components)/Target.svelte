@@ -203,8 +203,8 @@
                                     checked={allSelected
                                         ? true
                                         : selectedDevices > 0
-                                        ? 'indeterminate'
-                                        : false}
+                                          ? 'indeterminate'
+                                          : false}
                                     onCheckedChange={({ next }) => {
                                         const newUsers = structuredClone(users).map((u, j) => {
                                             if (i === j) {
@@ -365,8 +365,8 @@
                                         checked={allSelected
                                             ? true
                                             : selectedDevices > 0
-                                            ? 'indeterminate'
-                                            : false}
+                                              ? 'indeterminate'
+                                              : false}
                                         onCheckedChange={({ next }) => {
                                             const newUsers = structuredClone(users).map((u, j) => {
                                                 if (i === j) {
@@ -477,7 +477,7 @@
         }
 
         foreignObject span {
-            @include border-gradient;
+            @include gradients.border-gradient;
             --m-border-radius: 0.5rem;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
@@ -500,7 +500,7 @@
     }
 
     .users-modal {
-        @include border-gradient;
+        @include gradients.border-gradient;
 
         position: absolute;
         inset-block-start: 5rem;

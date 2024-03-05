@@ -104,7 +104,7 @@
 
 <style lang="scss">
     .console {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 18px;
         --m-border-gradient-before: linear-gradient(
             to bottom,
@@ -228,7 +228,7 @@
         }
 
         .phone {
-            @include border-gradient;
+            @include gradients.border-gradient;
             --m-border-radius: 60px 60px 0 0;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
@@ -282,7 +282,7 @@
         }
 
         .notification {
-            @include border-gradient;
+            @include gradients.border-gradient;
             --m-border-radius: 20px;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
