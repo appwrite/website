@@ -11,8 +11,8 @@
         if (inDocs) return '';
         if (inChangelog) return 'aw-paragraph-lg';
         if (inPolicy) return '';
-        return 'aw-paragraph-lg';
+        return 'aw-paragraph-md';
     })();
 </script>
 
-<li><p class={classes}><slot /></p></li>
+<li><p><slot /></p></li>

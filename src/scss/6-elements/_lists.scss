@@ -24,10 +24,10 @@
   counter-reset: numeric-list;
   li::before { color:hsl(var(--aw-color-accent-click)); padding-inline-end:pxToRem(12); }
   li {
-    display:flex;
+    display:flex; align-items:baseline;
     &::before {
       counter-increment: numeric-list;
-      content:counter(numeric-list); align-self:start;
+      content:counter(numeric-list);
     }
   }
   .#{$p}-numeric-list {
