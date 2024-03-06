@@ -207,7 +207,7 @@
                             </AccordionItem>
                             {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
                                 <AccordionItem title="Rate limits">
-                                    <RateLimits {method} />
+                                    <RateLimits {method} {platformType} />
                                 </AccordionItem>
                             {/if}
                         </Accordion>
