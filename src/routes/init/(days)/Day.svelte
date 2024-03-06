@@ -16,10 +16,10 @@
     $: hasReleased = now >= release;
 </script>
 
-<h2 class="aw-eyebrow aw-u-color-text-primary">
-    <div class="aw-dot" />
+<h2 class="web-eyebrow web-u-color-text-primary">
+    <div class="web-dot" />
     {#if day !== undefined}
-        {day}<span class="aw-u-color-text-accent">_</span>
+        {day}<span class="web-u-color-text-accent">_</span>
     {/if}
 </h2>
 

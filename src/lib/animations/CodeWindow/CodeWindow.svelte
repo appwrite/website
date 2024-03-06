@@ -27,7 +27,7 @@
 		display: flex;
 		flex-direction: column;
 
-		background-color: hsl(var(--aw-color-card));
+		background-color: hsl(var(--web-color-card));
 		border-radius: var(--p-radius);
 		--m-border-radius: var(--p-radius);
 		--m-border-gradient-before: linear-gradient(

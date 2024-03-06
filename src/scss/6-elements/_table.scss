@@ -3,16 +3,16 @@
 .#{$p}-table {
   /* color variable mixins */
   @mixin light-mode {
-    --p-table-header-bg-color:    var(--aw-color-white);
-    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-25);
-    --p-table-row-bg-even-color:  var(--aw-color-white);
-    --p-table-border-color:       var(--aw-color-greyscale-50);
+    --p-table-header-bg-color:    var(--web-color-white);
+    --p-table-row-bg-odd-color:   var(--web-color-greyscale-25);
+    --p-table-row-bg-even-color:  var(--web-color-white);
+    --p-table-border-color:       var(--web-color-greyscale-50);
   }
   @mixin dark-mode {
-    --p-table-header-bg-color:    var(--aw-color-greyscale-850);
-    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-900);
-    --p-table-row-bg-even-color:  var(--aw-color-greyscale-850);
-    --p-table-border-color:       var(--aw-color-greyscale-800);
+    --p-table-header-bg-color:    var(--web-color-greyscale-850);
+    --p-table-row-bg-odd-color:   var(--web-color-greyscale-900);
+    --p-table-row-bg-even-color:  var(--web-color-greyscale-850);
+    --p-table-border-color:       var(--web-color-greyscale-800);
   }
 
   table-layout: fixed;
@@ -49,7 +49,7 @@
 .#{$p}-table-line {
   inline-size:100%;
   &-row {
-    border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    border-block-end:solid pxToRem(1) hsl(var(--web-color-smooth));
   }
   &-cell {
     &:nth-child(n + 2) { padding-inline-start:pxToRem(24); }
