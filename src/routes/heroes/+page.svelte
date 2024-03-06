@@ -108,13 +108,13 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container hero aw-u-padding-block-end-0">
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container hero web-u-padding-block-end-0">
                     <div>
-                        <h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-                        <p class="aw-main-body-500 u-margin-block-start-20">
+                        <h1 class="web-display web-u-color-text-primary">Appwrite Heroes</h1>
+                        <p class="web-main-body-500 u-margin-block-start-20">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -123,7 +123,7 @@
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="aw-button is-secondary u-margin-block-start-32"
+                            class="web-button is-secondary u-margin-block-start-32"
                         >
                             <span class="text">Become a Hero</span>
                         </a>
@@ -134,13 +134,13 @@
                 </section>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <div class="aw-hero aw-u-max-width-800 about">
-                        <h2 class="aw-title aw-u-color-text-primary">About Appwrite Heroes</h2>
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container">
+                    <div class="web-hero web-u-max-width-800 about">
+                        <h2 class="web-title web-u-color-text-primary">About Appwrite Heroes</h2>
                         <div>
-                            <p class="aw-sub-body-500">
+                            <p class="web-sub-body-500">
                                 The Appwrite Heroes program is an exclusive group of developers who
                                 are experts in Appwrite and dedicated to creating valuable content
                                 to assist other developers in achieving success. Appwrite Heroes
@@ -164,32 +164,32 @@
         </div>
 
         <div
-            class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light"
+            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
         >
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-hero">
-                        <div class="aw-display aw-u-clr-primary">Meet our Heroes</div>
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-hero">
+                        <div class="web-display web-u-clr-primary">Meet our Heroes</div>
                     </div>
-                    <ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
                         {#each heroCards as heroCardProps}
                             <HeroCard {...heroCardProps} />
                         {/each}
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2 aw-u-overflow-hidden">
+            <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                         {#each { length: 5 } as _, i}
                             <li>
                                 <div
-                                    class="aw-card is-white carousel-img"
+                                    class="web-card is-white carousel-img"
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="u-block aw-u-border-radius-12"
+                                        class="u-block web-u-border-radius-12"
                                         src="/images/heroes/photos/{i + 1}.png"
                                         alt=""
                                     />
@@ -199,91 +199,91 @@
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <section class="aw-hero is-align-start">
-                        <h2 class="aw-display aw-u-color-text-primary u-max-width-700">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <section class="web-hero is-align-start">
+                        <h2 class="web-display web-u-color-text-primary u-max-width-700">
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
-                    <div class="u-overflow-hidden aw-u-margin-block-start-80">
-                        <ul class="aw-info-boxes aw-sub-body-500">
-                            <li class="aw-info-boxes-item">
+                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                        <ul class="web-info-boxes web-sub-body-500">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/discussion.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Channel access</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Channel access</h3>
+                                <p class="web-info-boxes-content">
                                     Access to internal channel with Appwrite’s Engineering and
                                     DevRel teams.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/community.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">In-person gatherings</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">In-person gatherings</h3>
+                                <p class="web-info-boxes-content">
                                     Top contributors get invited to an in-person gathering with the
                                     Appwrite team.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/verified.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Digital badge</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Digital badge</h3>
+                                <p class="web-info-boxes-content">
                                     Exclusive digital badge to share on Discord and LinkedIn.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/travel.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Travel</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Travel</h3>
+                                <p class="web-info-boxes-content">
                                     Travel paid for top contributors (case-by-case) to attend dev
                                     conferences.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/labs.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">
+                                <h3 class="web-info-boxes-title">
                                     <span>Beta-test</span>
                                 </h3>
-                                <p class="aw-info-boxes-content">
+                                <p class="web-info-boxes-content">
                                     Opportunity to beta-test Appwrite releases.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/unlock.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">
+                                <h3 class="web-info-boxes-title">
                                     <span>Roadmap access</span>
                                 </h3>
-                                <p class="aw-info-boxes-content">
+                                <p class="web-info-boxes-content">
                                     Special access to a more in-depth roadmap.
                                 </p>
                             </li>
@@ -293,18 +293,18 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
+        <div class="web-big-padding-section-level-1 u-position-relative footer-wrapper">
             <enhanced:img
                 src="./bg-pre.png"
                 alt=""
                 class="u-position-absolute"
                 style:inset-block-start="0"
             />
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
-                    <div class="aw-hero aw-u-max-width-800">
-                        <h5 class="aw-display aw-u-color-text-primary">Become a Hero</h5>
-                        <p class="aw-description aw-u-color-text-primary" style="opacity:0.64">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
+                    <div class="web-hero web-u-max-width-800">
+                        <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
+                        <p class="web-description web-u-color-text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
                             now to join our hero program! Applications are open every three months.
                         </p>
@@ -312,14 +312,14 @@
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20"
+                            class="web-button is-transparent is-full-width-mobile web-u-cross-child-center u-margin-block-start-20"
                         >
                             Become a Hero
                         </a>
                     </div>
                 </div>
-                <div class="aw-big-padding-section-level-2 u-position-relative">
-                    <div class="aw-container u-position-relative">
+                <div class="web-big-padding-section-level-2 u-position-relative">
+                    <div class="web-container u-position-relative">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>
@@ -472,19 +472,19 @@
         overflow: hidden;
 
         @media (max-width: 1024px) {
-            .aw-hero {
+            .web-hero {
                 padding-block-start: 5rem;
             }
         }
 
-        .aw-hero {
+        .web-hero {
             gap: 0;
 
-            .aw-description {
+            .web-description {
                 margin-block-start: 1.25rem;
             }
 
-            .aw-button {
+            .web-button {
                 margin-block-start: 1.5rem;
             }
         }

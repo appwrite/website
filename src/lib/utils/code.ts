@@ -119,7 +119,7 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre><code class="aw-code language-${language} ${
+    return `<pre><code class="web-code language-${language} ${
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };
