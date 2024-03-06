@@ -21,6 +21,7 @@ newsletter, and other communication channels.
 
 # Support  {% #support %}
 Appwrite commits to the continued support of our software with extended support policies for security related fixes for older versions of Appwrite.
+Supported versions will continue to receive bug fixes and security updates. Extended security support versions will only receive security updates.
 {% table %}
 * Releases {% width=100 %}
 * Current Version 
@@ -67,17 +68,28 @@ We provide early notice to developers and slowly introduce breaking changes to l
 
 When you self-host Appwrite, we also follow the Semantic Versioning (semver) protocol for versioning our releases. This means that we assign version numbers using a three-part system: major, minor, and patch. The major version changes when we make significant changes to our API or product, which may require significant changes to developers' apps. The minor version changes when we add new features or functionality that do not significantly impact developers' existing apps. Finally, the patch version changes when we make bug fixes or minor improvements.
 
-All the self-hosted versions of Appwrite `>=1.x.x` continue to have support and backward compatibility with the Appwrite API and SDKs. In case a new version of the products has been released and you decide to update, you should expect your applications to continue working properly without any action from your side.
+All the self-hosted versions of Appwrite `>=1.x.x` continue to have support and backward compatibility with the Appwrite API and SDKs, until `2.x.x`. 
+In case a new minor or patch version of the products has been released and you decide to update, you should expect your applications to continue working properly without any action from your side.
 
-Once we release a version of the product and you decide to upgrade, do look in the changelog to understand if your version requires migration of data from your previous setup. This is usually required when we make adjustments to the under the hood data structure for supporting new features and improving maintainability. If this is the case, you could use our built-in migration tool for helping you to upgrade your self-hosted Appwrite version.
+Once we release a version of the product and you decide to upgrade, do look in the changelog to understand if your version requires migration of data from your previous setup. 
+This is usually required when we make adjustments to the under the hood data structure for supporting new features and improving maintainability. 
+If this is the case, you could use our built-in migration tool for helping you to upgrade your self-hosted Appwrite version.
+
+{% arrow_link href="/docs/advanced/self-hosting/update" %}
+Learn more about updating self-hosted Appwrite
+{% /arrow_link %}
+
 
 # Runtime versioning {% #runtime-versioning %}
 
 Appwrite runtimes are built around a combination of operating system, programming language, and software libraries that are subject to maintenance and security updates.
+Appwrite will support and maintain runtimes as a package, which covers the specific combination of operating system, programming language, and software libraries.
 
-Appwrite will support the latest stable versions of our serverless runtime environments for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. You can review the list of supported runtimes on Appwrite.
+Appwrite will support the latest stable versions of our serverless runtime environments for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. 
+You can review the list of supported runtimes on Appwrite.
 
-In most cases, the end-of-life date of a language version or operating system is known well in advance. The links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.
+In most cases, the end-of-life date of a language version or operating system is known well in advance. T
+he links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.
 
 {% table %}
 * Language
