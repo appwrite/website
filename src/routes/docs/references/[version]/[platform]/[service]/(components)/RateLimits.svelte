@@ -48,7 +48,7 @@
             {:else }
                 <p class="aw-sub-body-400">
                     This endpoint is not limited when using Server SDKs with API keys. If you are using SSR 
-                    with setSession, these rate limits will still apply.
+                    with <code>setSession</code>, these rate limits will still apply.
                     <a href="/docs/products/auth/server-side-rendering#rate-limits" class="u-link aw-u-color-text-primary">
                         Learn more about SSR rate limits.
                     </a>
