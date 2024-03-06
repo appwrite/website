@@ -2,6 +2,7 @@
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
+    export let platformType: String;
 
     const rateKeys = method['rate-key'];
     const rateTime = method['rate-time'];
@@ -39,10 +40,20 @@
 <div class="aw-card is-normal u-padding-16">
     <div class="u-flex-vertical u-gap-24">
         <div class="u-flex-vertical u-gap-16">
-            <p class="aw-sub-body-400">
-                This endpoint is rate limited. You can only make a limited number of request to his
-                endpoint within a specific time frame.
-            </p>
+            {#if platformType === 'CLIENT'}
+                <p class="aw-sub-body-400">
+                    This endpoint is rate limited. You can only make a limited number of request to his
+                    endpoint within a specific time frame.
+                </p>
+            {:else }
+                <p class="aw-sub-body-400">
+                    This endpoint is not limited when using Server SDKs with API keys. If you are using SSR 
+                    with setSession, these rate limits will still apply.
+                    <a href="/docs/products/auth/server-side-rendering#rate-limits" class="u-link aw-u-color-text-primary">
+                        Learn more about SSR rate limits.
+                    </a>
+                </p>
+            {/if}
             <p class="aw-sub-body-400">The limit is applied for each unique limit key.</p>
         </div>
         <div class="aw-table-wrapper">
