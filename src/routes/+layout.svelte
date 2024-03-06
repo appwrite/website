@@ -42,7 +42,7 @@
 </script>
 
 <script lang="ts">
-    import '$icons/output/TEMP/web-icon.css';
+    import '$icons/output/web-icon.css';
     import '$scss/index.scss';
 
     import { browser, dev } from '$app/environment';
