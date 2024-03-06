@@ -205,7 +205,7 @@
                             <AccordionItem title="Response">
                                 <Response {method} />
                             </AccordionItem>
-                            {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
+                            {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0 && platformType === 'CLIENT'}
                                 <AccordionItem title="Rate limits">
                                     <RateLimits {method} />
                                 </AccordionItem>
