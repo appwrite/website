@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Building the giveaways app for Init Discord events
-description: How we used Appwrite and SvelteKit to develop a custom roulette-style giveaway web application
-date: 2024-03-05
+title: Building the giveaway app for Init Discord sessions
+description: How we used Appwrite and SvelteKit to develop a custom roulette-style giveaway web application.
+date: 2024-03-06
 cover: /images/blog/building-init-giveaway-app/cover.png
 timeToRead: 7
 author: aditya-oberai
