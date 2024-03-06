@@ -2,7 +2,7 @@
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
-    export let platformType: String;
+    export let platformType: string;
 
     const rateKeys = method['rate-key'];
     const rateTime = method['rate-time'];
