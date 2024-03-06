@@ -17,10 +17,10 @@
         'email' = 'EMAIL'
     }
 
-    function hasMultipleKeys(keys: string | string[]) {
+    function hasMultipleKeys(keys: string | string[]): keys is string[] {
         if (Array.isArray(keys)) {
-            return keys;
-        }
+            return true;
+        } else return false;
     }
 
     function parseKeys(keys: string) {
