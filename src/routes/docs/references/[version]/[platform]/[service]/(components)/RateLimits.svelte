@@ -54,10 +54,10 @@
                                 <div class="aw-eyebrow aw-u-color-text-primary">Time frame</div>
                             </th>
                             <th class="aw-table-head-col">
-                                <div class="aw-eyebrow aw-u-color-text-primary">Limit</div>
+                                <div class="aw-eyebrow aw-u-color-text-primary">Attempts</div>
                             </th>
                             <th class="aw-table-head-col">
-                                <div class="aw-eyebrow aw-u-color-text-primary">Limit key</div>
+                                <div class="aw-eyebrow aw-u-color-text-primary">Key</div>
                             </th>
                         </tr>
                     </thead>
@@ -90,3 +90,9 @@
         </div>
     </div>
 </div>
+
+<style>
+    .aw-card {
+        margin-block-end: 2rem;
+    }
+</style>
