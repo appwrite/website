@@ -12,10 +12,6 @@
             answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="aw-link is-inline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="aw-link is-inline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
         },
         {
-            question: 'Does Appwrite have a trial period?',
-            answer: 'Yes, we offer a 14-day trial period for you to explore Appwrite Pro. After the 14-day trial, you can either continue using Pro plan or downgrade to a Starter plan.'
-        },
-        {
             question: 'What payment methods does Appwrite support?',
             answer: 'Appwrite currently supports <a class="aw-link is-inline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="aw-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
         },
