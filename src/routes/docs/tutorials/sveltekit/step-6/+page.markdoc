@@ -49,9 +49,9 @@ export async function getIdeas() {
 	);
 }
 
-export async function addIdea(userId, title, description) {
+export async function addIdea(userid, title, description) {
 	await databases.createDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, ID.unique(), {
-		userId,
+		userid,
 		title,
 		description
 	});
