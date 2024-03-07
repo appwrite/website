@@ -64,7 +64,8 @@ Supported versions will continue to receive bug fixes and security updates. Exte
 {% /table %}
 # API versions {% #api-versions %}
 
-We are committed to providing developers with a stable and reliable API. Appwrite API versions don’t change very often but are reserved for breaking changes.
+We are committed to providing developers with a stable and reliable API. 
+Appwrite API versions don’t change very often but are reserved for breaking changes.
 
 Currently, the latest stable version of the Appwrite API is `/v1`. 
 We use this prefix in all our API endpoint paths to allow API versioning. 
@@ -73,8 +74,9 @@ Any Appwrite version regardless of its version, is committed to **maintain backw
 We will provide standard maintenance support for the last 3 API versions. 
 Once a version is no longer in this maintenance period, we will continue to provide support for security fixes for an additional ten years. 
 Based on usage, we may decide to extend support for a specific version.
-
 Self-hosted versions of Appwrite will received continued support for the latest major version of Appwrite.
+
+If you need **extended support** for older versions of Appwrite, [contact us](https://appwrite.io/contact-us) for more information.
 
 # SDK versioning {% #sdk-verversioningsions %}
 
@@ -150,3 +152,4 @@ The links below give end-of-life schedules for each language that Appwrite suppo
 * Alpine
 * [https://www.alpinelinux.org](https://www.alpinelinux.org)
 {% /table %}
+
