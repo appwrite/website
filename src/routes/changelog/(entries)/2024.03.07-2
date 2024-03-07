@@ -5,7 +5,7 @@ date: 2024-03-07
 cover: /images/changelog/2024-03-07-2.png
 ---
 
-Find them in [references documentation]( https://appwrite.io/docs/references).
+Find them in [references documentation](https://appwrite.io/docs/references).
 
 {% arrow_link href="/docs/advanced/platform/rate-limits" %}
 Learn about Rate limits
