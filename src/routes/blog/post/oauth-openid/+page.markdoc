@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Understanding OAuth and OpenID Connect
-description: How do OAuth and OpenID Connect work and how they are beneficial for application security
+description: How OAuth and OpenID Connect work and why they are beneficial for application security.
 date: 2024-03-07
 cover: /images/blog/oauth-openid.png
 timeToRead: 6

@@ -9,7 +9,7 @@ author: aditya-oberai
 category: functions
 ---
 
-One of the coolest things about Appwrite Functions is that you can now consume them as own REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This opened up a lot of potential ideas, one of which is sharing your resume when applying for a new job. 
+One of the coolest things about Appwrite Functions is that you can now consume them as REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This has opened up a lot of potential use-cases, one of which is how you can host and share your online resume through an Appwrite Function when applying for a new job. 
 
 Therefore, in this blog, we will leverage one of Appwrite’s newest functions runtimes, Bun, to create a function that delivers an HTML-based resume.
 
