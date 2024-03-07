@@ -19,6 +19,20 @@ and we make every effort to ensure that our releases are thoroughly tested and s
 In rare cases where there are significant delays or changes to our release schedule, we will notify through our website, Discord server, 
 newsletter, and other communication channels.
 
+# Scope  {% #scope %}
+Appwrite will provide two phases of continued support for older versions of Appwrite.
+
+{% table %}
+* Phase {% width=100 %}
+* Scope
+---
+* Support
+* Receive continued bug fixes and security updates.
+---
+* Extended security support
+* Receives only security updates.
+{% /table %}
+
 # Support  {% #support %}
 Appwrite commits to the continued support of our software with extended support policies for security related fixes for older versions of Appwrite.
 {% table %}
@@ -39,7 +53,7 @@ Appwrite commits to the continued support of our software with extended support 
 ---
 * Self-hosted
 * `1.5.x`
-* `>=1.x.0`
+* Latest major version (`>= 1.x.x`)
 * 10 years
 ---
 * Runtimes
@@ -51,9 +65,15 @@ Appwrite commits to the continued support of our software with extended support 
 
 We are committed to providing developers with a stable and reliable API. Appwrite API versions don’t change very often but are reserved for breaking changes.
 
-Currently, the latest stable version of the Appwrite API is `/v1`. We use this prefix in all our API endpoint paths to allow API versioning. Any Appwrite version regardless of its version, is committed to maintain backward compatibility for each version of the API you decided to use as long as this API version is still under maintenance support.
+Currently, the latest stable version of the Appwrite API is `/v1`. 
+We use this prefix in all our API endpoint paths to allow API versioning. 
+Any Appwrite version regardless of its version, is committed to **maintain backward compatibility** for each version of the API you decided to use as long as this API version is still under maintenance support.
 
-We will provide standard maintenance support for the last 3 API versions. Once a version is no longer in this maintenance period, we will continue to provide support for security fixes for an additional ten years. Based on usage, we may decide to extend support for a specific version.
+We will provide standard maintenance support for the last 3 API versions. 
+Once a version is no longer in this maintenance period, we will continue to provide support for security fixes for an additional ten years. 
+Based on usage, we may decide to extend support for a specific version.
+
+Self-hosted versions of Appwrite will received continued support for the latest major version of Appwrite.
 
 # SDK versioning {% #sdk-verversioningsions %}
 
@@ -67,7 +87,8 @@ We provide early notice to developers and slowly introduce breaking changes to l
 
 When you self-host Appwrite, we also follow the Semantic Versioning (semver) protocol for versioning our releases. This means that we assign version numbers using a three-part system: major, minor, and patch. The major version changes when we make significant changes to our API or product, which may require significant changes to developers' apps. The minor version changes when we add new features or functionality that do not significantly impact developers' existing apps. Finally, the patch version changes when we make bug fixes or minor improvements.
 
-All the self-hosted versions of Appwrite `>=1.x.x` continue to have support and backward compatibility with the Appwrite API and SDKs. In case a new version of the products has been released and you decide to update, you should expect your applications to continue working properly without any action from your side.
+All the self-hosted versions of Appwrite `>=1.x.x` continue to have support and backward compatibility with the Appwrite API and SDKs within each major version. 
+In case a new version of the products has been released and you decide to update, you should expect your applications to continue working properly without any action from your side.
 
 Once we release a version of the product and you decide to upgrade, do look in the changelog to understand if your version requires migration of data from your previous setup. This is usually required when we make adjustments to the under the hood data structure for supporting new features and improving maintainability. If this is the case, you could use our built-in migration tool for helping you to upgrade your self-hosted Appwrite version.
 
@@ -77,7 +98,7 @@ Appwrite runtimes are built around a combination of operating system, programmin
 
 Appwrite will support the latest stable versions of our serverless runtime environments for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. You can review the list of supported runtimes on Appwrite.
 
-In most cases, the end-of-life date of a language version or operating system is known well in advance. The links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.
+In most cases, the end-of-life date of a language version or operating system is known well in advance. The links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.  
 
 {% table %}
 * Language
