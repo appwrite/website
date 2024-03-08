@@ -15,7 +15,7 @@ In this blog, we will recap on what happened during Init and highlight some of o
 
 # Announcing the start of something new
 
-For months, we have been working on creating all of the elements that make Init come alive. We spent many hours creating and planning the tickets, the website, the videos, the swags, Discord sessions, and all other content. 
+For months, we have been working on creating all of the elements that make Init come alive. We spent many hours creating and planning the tickets, the website, the videos, the swags, Discord sessions, and all other content.
 
 We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a [sneak peak of behind-the-scenes footage](https://www.youtube.com/shorts/B9figMEeBlc) of the team working on the Init announcement videos.
 
@@ -57,7 +57,7 @@ After a week of pre fun it finally was time to make our first announcement. This
 
 ### The first of many
 
-On day 0 of Init, we brought you Messaging, a massive announcement as this was a product many of you have requested as it is a requirement for many applications, being able to communicate with your users. 
+On day 0 of Init, we brought you Messaging, a massive announcement as this was a product many of you have requested as it is a requirement for many applications, being able to communicate with your users.
 
 {% youtube src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-messaging.png" /%}
 
@@ -69,7 +69,7 @@ The reactions are what we hoped for and made day 0 of Init a great start to the 
 
 ### Discord session
 
-We kicked off the first Discord session with Appwrite Hero and Vonage dev advocate [Diana Pham](https://twitter.com/dianasoyster) to talk about Messaging. As always, the community around Appwrite showed up in mass and made it a great hour of fun and learning! 
+We kicked off the first Discord session with Appwrite Hero and Vonage dev advocate [Diana Pham](https://twitter.com/dianasoyster) to talk about Messaging. As always, the community around Appwrite showed up in mass and made it a great hour of fun and learning!
 
 ![Discord session turn out](/images/blog/a-recap-of-init/init11.png)
 
@@ -81,7 +81,7 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 
 ## Another day
 
-On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering) 
+On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering)
 
 {% youtube src="https://www.youtube-nocookie.com/embed/jeL4cSovOBA?si=0tMDecmUucWOYASg" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-ssr.png" /%}
 
@@ -119,7 +119,7 @@ With Enum SDK support we make our commitment to improving your developer experie
 
 ### Last minute guest
 
-We got a curve ball thrown at us on day 2 of Init, as our guest for the day had to cancel. But luckily we had [Francesco Ciulli](https://twitter.com/FrancescoCiull4) from daily.dev join us last minute to save the day. 
+We got a curve ball thrown at us on day 2 of Init, as our guest for the day had to cancel. But luckily we had [Francesco Ciulli](https://twitter.com/FrancescoCiull4) from daily.dev join us last minute to save the day.
 
 ![Francesco joining us last minute](/images/blog/a-recap-of-init/init17.png)
 
@@ -152,7 +152,7 @@ For day 3 of Init, we had [Danny Thompson](https://twitter.com/DThompsonDev) joi
 
 ## The end and the beginning
 
-The last day of Init was a proper celebration. We started off with our last announcement: [New and updated runtimes.](https://appwrite.io/blog/post/announcing-more-and-updated-runtimes) But the highlight of the day was the closing party we held on Discord with our friend from open-sauced, [Nick Taylor](https://twitter.com/nickytonline). 
+The last day of Init was a proper celebration. We started off with our last announcement: [New and updated runtimes.](/blog/post/announcing-more-and-updated-runtimes) But the highlight of the day was the closing party we held on Discord with our friend from open-sauced, [Nick Taylor](https://twitter.com/nickytonline).
 
 ![Fun with Nick during the closing party](/images/blog/a-recap-of-init/init20.png)
 
@@ -168,6 +168,6 @@ The closing party got an extra special touch with five giveaways to celebrate. A
 
 # Thank you all for joining
 
-Init is the start of something new and we hope we have inspired you to get started on your next project. 
+Init is the start of something new and we hope we have inspired you to get started on your next project.
 
 We hope to see you at the next Init! Do you have ideas on how to make it better? Share your feedback with us by filling out [this Typeform](https://t.co/OEaBMMGblT).
