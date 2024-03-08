@@ -46,7 +46,7 @@ You can invoke your Appwrite Functions directly from the Appwrite SDKs.
 
 {% multicode %}
 ```js
-import { Client, Functions } from 'appwrite';  
+import { Client, Functions } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -155,7 +155,7 @@ do {
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
 ```js
-import { Client, Functions } from 'node-appwrite';  
+import { Client, Functions } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -246,9 +246,9 @@ require 'json'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') 
-    .set_project('<PROJECT_ID>') 
-    .set_key('[API_KEY]') 
+    .set_endpoint('https://cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('[API_KEY]')
 
 functions = Functions.new(client)
 
@@ -271,7 +271,7 @@ end
 import { Client, Functions } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') 
+    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('[API_KEY]');
 
@@ -451,8 +451,8 @@ functions.createExecution(
 {% /tabs %}
 
 ## Console {% #console %}
-Another easy way to test a function is directly in the Appwrite Console. 
-You test a function by hitting the **Execute now** button, which will display with modal below. 
+Another easy way to test a function is directly in the Appwrite Console.
+You test a function by hitting the **Execute now** button, which will display with modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 

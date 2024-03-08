@@ -11,7 +11,7 @@ category: design, brand
 
 You’ve seen this exact conversation in support threads if you're active in any developer community.
 
-"Have you read the docs?" 
+"Have you read the docs?"
 
 "No"
 
@@ -19,7 +19,7 @@ You’ve seen this exact conversation in support threads if you're active in any
 
 "Yes"
 
-It’s convenient to just blame the developer for *not reading carefully*, but it’s also an opportunity to improve your developer experience. 
+It’s convenient to just blame the developer for *not reading carefully*, but it’s also an opportunity to improve your developer experience.
 Over the past year, we’ve noticed conversations like this in Appwrite communities. We took it as an opportunity to grow.
 
 "Why don’t they read the docs?" We wanted to find out.
@@ -28,34 +28,34 @@ Over the past year, we’ve noticed conversations like this in Appwrite communit
 
 The Appwrite team has always valued documentation as a core part of the product. After all, most adoption begins at the documentation. The old documentation was minimalistic and to the point and reflects our product philosophy. You can skim through it in one sitting and learn how to start building with Appwrite.
 
-The old Appwrite docs are good but designed for a different audience and a different product. As Appwrite’s capabilities grow, so does the amount of documentation. 
-More features simply need more words to explain, and the single-side navigation becomes more bloated with more information than we ever intended. 
+The old Appwrite docs are good but designed for a different audience and a different product. As Appwrite’s capabilities grow, so does the amount of documentation.
+More features simply need more words to explain, and the single-side navigation becomes more bloated with more information than we ever intended.
 
-Appwrite also gained popularity. While Appwrite’s early adopters are experienced open-source tinkerers who are comfortable operating with less guidance and enjoy the old documentation’s brevity, the growing number of learners and students need more help. You can expect experienced developers to understand the purpose of a tool intuitively, but learners need to know how and when to use Appwrite. 
+Appwrite also gained popularity. While Appwrite’s early adopters are experienced open-source tinkerers who are comfortable operating with less guidance and enjoy the old documentation’s brevity, the growing number of learners and students need more help. You can expect experienced developers to understand the purpose of a tool intuitively, but learners need to know how and when to use Appwrite.
 
 Put simply, Appwrite’s documentation has to adapt to the changing needs of Appwrite’s growing capabilities and evolving audience.
 
 # Getting feedback
 
-We view the Appwrite documentation as a product. 
-So when we notice problems, we apply the same product design processes to address them. 
+We view the Appwrite documentation as a product.
+So when we notice problems, we apply the same product design processes to address them.
 The Appwrite documentation needed an upgrade to adapt to Appwrite developers’ evolving needs.
 
-Unlike many other projects, we already know what the problems are. 
-We receive feedback from the "State of Appwrite" surveys, the Appwrite [Discord community](https://appwrite.io/discord), 
-issues on the [docs repo](https://github.com/appwrite/docs), Office Hours questions, developer interviews, UX research activities, 
+Unlike many other projects, we already know what the problems are.
+We receive feedback from the "State of Appwrite" surveys, the Appwrite [Discord community](https://appwrite.io/discord),
+issues on the [docs repo](https://github.com/appwrite/docs), Office Hours questions, developer interviews, UX research activities,
 [this discussion](https://github.com/appwrite/appwrite/discussions/5692), and more. The open-source community’s feedback gave us a head start.
 
 # Planning the changes
 
-First, we laid out the requirements for the new documentation. 
-We identified key friction points: lack of a search bar, insufficient navigation depth to abstract complex concepts, 
+First, we laid out the requirements for the new documentation.
+We identified key friction points: lack of a search bar, insufficient navigation depth to abstract complex concepts,
 difficult for the community to contribute, and incomplete coverage of the discover, evaluate, learn, build, and scale stages of a typical developer journey.
 
-Then, we looked at other docs sites for inspiration. 
-We liked various aspects of [Stripe](https://stripe.com/docs), [React](https://react.dev/learn), [Vue](https://vuejs.org/guide/essentials/reactivity-fundamentals.html), 
+Then, we looked at other docs sites for inspiration.
+We liked various aspects of [Stripe](https://stripe.com/docs), [React](https://react.dev/learn), [Vue](https://vuejs.org/guide/essentials/reactivity-fundamentals.html),
 and [Datadog](https://docs.datadoghq.com/) docs, which inspired our design process.
-We notice how their approach to documentation avoids or generates friction points. 
+We notice how their approach to documentation avoids or generates friction points.
 We took what we liked, and left out what didn’t work for us.
 
 We also attend conferences like DevRelCon and Refactor DX to learn about the latest trends in developer experience, technical writing, and accessibility to evaluate our design's strengths and shortcomings.
@@ -69,8 +69,8 @@ Appwrite’s new documentation has a navigation flow that aims to follow this jo
 
 ![Overview of Appwrite's new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/overview.png)
 
-Developers loved the simplicity of the old Appwrite documentation, and we didn’t want to lose that part of our identity. 
-Each deep dive section still begins with the same one-page quick start, which may be enough information for veterans. 
+Developers loved the simplicity of the old Appwrite documentation, and we didn’t want to lose that part of our identity.
+Each deep dive section still begins with the same one-page quick start, which may be enough information for veterans.
 More comprehensive documentation and suggested usage are available, but further down the navigation.
 
 ![Quick start in the Authentication docs page](/images/blog/dont-blame-the-readers-write-the-docs-they-need/quickstart.png)

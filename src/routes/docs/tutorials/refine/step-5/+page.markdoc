@@ -67,7 +67,7 @@ With built-in support for Appwrite in Refine, you only need to pass your Appwrit
 
 
 {% info title="Note" %}
-The [@refinedev/appwrite](https://www.npmjs.com/package/@refinedev/appwrite) package supports [Live/Realtime Provider](https://refine.dev/docs/api-reference/core/providers/live-provider/) natively.
+The [@refinedev/appwrite](https://www.npmjs.com/package/@refinedev/appwrite) package supports [Live/Realtime Provider](https://refine.dev/docs/api-reference/core/live-provider/) natively.
 {% /info %}
 
 

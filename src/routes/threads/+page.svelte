@@ -8,7 +8,6 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
-    import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
@@ -66,10 +65,10 @@
     };
 
     const tags = [
-        'Web', 
-        'Flutter', 
-        'GraphQL', 
-        'Cloud', 
+        'Web',
+        'Flutter',
+        'GraphQL',
+        'Cloud',
         'Self Hosted'
     ];
 
@@ -88,15 +87,6 @@
         'General',
         'REST API'
     ];
-    const _selectedTags = queryParam<string[]>('tags', {
-        encode(tags) {
-            return tags.join(',');
-        },
-        decode(tags) {
-            return tags?.split(',') ?? [];
-        },
-        defaultValue: []
-    });
 
     let selectedTags: string[] = [];
 
