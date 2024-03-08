@@ -236,7 +236,7 @@ messaging.create_email(
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -572,35 +572,39 @@ messaging.create_email(
             </div>
         </div>
 
-        <section class="aw-big-padding-section-level-1 aw-u-sep-block-start aw-u-padding-block-start-80">
+        <section
+            class="aw-big-padding-section-level-1 aw-u-sep-block-start aw-u-padding-block-start-80"
+        >
             <div class="aw-container">
                 <h4 class="aw-label u-text-center aw-u-color-text-primary">
                     Keep exploring our products
                 </h4>
-                <ul class="u-grid u-gap-32 u-margin-block-start-32"
-                    style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))">
+                <ul
+                    class="u-grid u-gap-32 u-margin-block-start-32"
+                    style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
+                >
                     <li class="aw-u-flex-basis-378">
                         <a
-                                class="aw-card is-normal"
-                                href="/docs/products/auth"
-                                style="background: rgba(255, 255, 255, 0.04);"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            class="aw-card is-normal"
+                            href="/docs/products/auth"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                                class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
                             >
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
-                                            src="/images/icons/illustrated/dark/auth.png"
-                                            alt="auth"
-                                            width="32"
-                                            height="32"
+                                        src="/images/icons/illustrated/dark/auth.png"
+                                        alt="auth"
+                                        width="32"
+                                        height="32"
                                     />
                                     <h4 class="aw-main-body-400 aw-u-color-text-primary">Auth</h4>
                                     <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
+                                        class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                        aria-hidden="true"
                                     />
                                 </div>
                                 <p class="aw-sub-body-400">
@@ -611,56 +615,61 @@ messaging.create_email(
                     </li>
                     <li class="aw-u-flex-basis-378">
                         <a
-                                class="aw-card is-normal"
-                                href="/docs/products/functions"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="background: rgba(255, 255, 255, 0.04);"
+                            class="aw-card is-normal"
+                            href="/docs/products/functions"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                                class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
                             >
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
-                                            src="/images/icons/illustrated/dark/functions.png"
-                                            alt="functions"
-                                            width="32"
-                                            height="32"
+                                        src="/images/icons/illustrated/dark/functions.png"
+                                        alt="functions"
+                                        width="32"
+                                        height="32"
                                     />
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Functions</h4>
+                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">
+                                        Functions
+                                    </h4>
                                     <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
+                                        class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                        aria-hidden="true"
                                     />
                                 </div>
                                 <p class="aw-sub-body-400">
-                                    Scale big and unlock limitless potential with Appwrite functions.
+                                    Scale big and unlock limitless potential with Appwrite
+                                    functions.
                                 </p>
                             </div>
                         </a>
                     </li>
                     <li class="aw-u-flex-basis-378">
                         <a
-                                class="aw-card is-normal"
-                                href="/docs/products/databases"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="background: rgba(255, 255, 255, 0.04);"
+                            class="aw-card is-normal"
+                            href="/docs/products/databases"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                                class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
                             >
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
-                                            src="/images/icons/illustrated/dark/databases.png"
-                                            alt=""
-                                            width="32"
-                                            height="32"
+                                        src="/images/icons/illustrated/dark/databases.png"
+                                        alt=""
+                                        width="32"
+                                        height="32"
                                     />
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Databases</h4>
+                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">
+                                        Databases
+                                    </h4>
                                     <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
+                                        class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                        aria-hidden="true"
                                     />
                                 </div>
                                 <p class="aw-sub-body-400">
@@ -671,26 +680,28 @@ messaging.create_email(
                     </li>
                     <li class="aw-u-flex-basis-378">
                         <a
-                                class="aw-card is-normal"
-                                href="/docs/products/storage"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="background: rgba(255, 255, 255, 0.04);"
+                            class="aw-card is-normal"
+                            href="/docs/products/storage"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                                class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
                             >
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
-                                            src="/images/icons/illustrated/dark/storage.png"
-                                            alt="storage"
-                                            width="32"
-                                            height="32"
+                                        src="/images/icons/illustrated/dark/storage.png"
+                                        alt="storage"
+                                        width="32"
+                                        height="32"
                                     />
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Storage</h4>
+                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">
+                                        Storage
+                                    </h4>
                                     <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
+                                        class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                        aria-hidden="true"
                                     />
                                 </div>
                                 <p class="aw-sub-body-400">
@@ -701,26 +712,28 @@ messaging.create_email(
                     </li>
                     <li class="aw-u-flex-basis-378">
                         <a
-                                class="aw-card is-normal"
-                                href="/docs/apis/realtime"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="background: rgba(255, 255, 255, 0.04);"
+                            class="aw-card is-normal"
+                            href="/docs/apis/realtime"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                    class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
+                                class="u-flex-vertical u-gap-8 aw-u-padding-inline-8 aw-u-padding-block-end-8"
                             >
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
-                                            src="/images/icons/illustrated/dark/realtime.png"
-                                            alt="realtime"
-                                            width="32"
-                                            height="32"
+                                        src="/images/icons/illustrated/dark/realtime.png"
+                                        alt="realtime"
+                                        width="32"
+                                        height="32"
                                     />
-                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">Realtime</h4>
+                                    <h4 class="aw-main-body-400 aw-u-color-text-primary">
+                                        Realtime
+                                    </h4>
                                     <span
-                                            class="aw-icon-arrow-right u-margin-inline-start-auto"
-                                            aria-hidden="true"
+                                        class="aw-icon-arrow-right u-margin-inline-start-auto"
+                                        aria-hidden="true"
                                     />
                                 </div>
                                 <p class="aw-sub-body-400">
