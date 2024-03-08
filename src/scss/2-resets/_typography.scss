@@ -22,6 +22,6 @@ body {
 }
 
 ::selection {
-	color: hsl(var(--aw-color-black)); -webkit-text-fill-color: hsl(var(--aw-color-black));
-	background-color: hsl(var(--aw-color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
+	color: hsl(var(--web-color-black)); -webkit-text-fill-color: hsl(var(--web-color-black));
+	background-color: hsl(var(--web-color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
 }
