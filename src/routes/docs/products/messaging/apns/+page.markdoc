@@ -88,7 +88,7 @@ Add push notification capability to your app by clicking your root-level app in 
 Push notification requires special handling on the client side. Follow the [Send push notification](/docs/products/messaging/send-push-notifications) flow to test your provider.
 {% /section %}
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
 You can update or delete a provider in the Appwrite Console.
@@ -116,7 +116,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateAPNSProvider(
+const provider = await messaging.updateAPNSProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -125,12 +125,6 @@ const promise = messaging.updateAPNSProvider(
         '[TEAM_ID]',                             // teamId (optional)
         '[BUNDLE_ID]'                            // bundleId (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -146,7 +140,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateAPNSProvider(
+const provider = await messaging.updateAPNSProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -155,12 +149,6 @@ const promise = messaging.updateAPNSProvider(
         '[TEAM_ID]',                             // teamId (optional)
         '[BUNDLE_ID]'                            // bundleId (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -259,6 +247,8 @@ Provider result = await messaging.UpdateAPNSProvider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();

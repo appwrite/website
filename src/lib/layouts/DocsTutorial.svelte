@@ -21,9 +21,7 @@
         <header class="web-article-header">
             <div class="web-article-header-start u-flex-vertical web-u-cross-start">
                 <button
-                    class="
-						web-button is-text web-is-only-mobile
-						web-u-padding-block-0 web-u-padding-inline-start-0 web-u-padding-inline-end-12"
+                    class="web-icon-button web-is-only-mobile"
                     aria-label="previous page"
                 >
                     <span class="icon-cheveron-left" aria-hidden="true" />
