@@ -8,6 +8,12 @@ back: /docs/quick-starts
 ---
 
 Learn how to setup your first React project powered by Appwrite.
+
+{% info title="React Native" %}
+Looking to start with React Native? 
+Follow the [React Native quickstart](/docs/quick-starts/react-native) to build apps for iOS, Android, and other native platforms.
+{% /info %}
+
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
