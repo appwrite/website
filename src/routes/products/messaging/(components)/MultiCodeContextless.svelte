@@ -59,11 +59,11 @@
             </div>
         </div>
         <div class="aw-code-snippet-header-end">
-            <ul class="buttons-list u-flex u-gap-8">
+            <ul class="buttons-list u-flex u-gap-12">
                 <li class="buttons-list-item u-flex u-cross-child-scenter">
                     <Select bind:value={selected} bind:options />
                 </li>
-                <li class="buttons-list-item aw-u-padding-inline-start-20">
+                <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
                             on:click={handleCopy}

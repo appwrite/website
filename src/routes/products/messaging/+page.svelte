@@ -553,7 +553,7 @@ messaging.create_email(
                         <div class="u-flex-vertical u-gap-8">
                             <h3 class="aw-label aw-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="aw-description">
-                                Subscribe to receive all messages related to that topic.
+                                Subscribe to receive all messages related to a topic.
                             </p>
 
                             <div class="u-margin-block-start-16" style="margin-block-end: 94px">
