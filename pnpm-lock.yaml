@@ -25,6 +25,9 @@ devDependencies:
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
+  '@internationalized/date':
+    specifier: 3.5.0
+    version: 3.5.0
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.3)(svelte@4.2.12)
