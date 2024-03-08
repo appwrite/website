@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with React Native
-description: Build React Native apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+description: Build React Native apps on iOS, Android, and other native platforms with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 difficulty: beginner
 readtime: 10
 back: /docs/quick-starts
@@ -9,8 +9,13 @@ back: /docs/quick-starts
 
 Learn how to setup your first React Native project powered by Appwrite.
 
+{% info title="React for web" %}
+Looking to start with React for web? 
+Follow the [React quickstart](/docs/quick-starts/react) and [React tutorial](/docs/tutorials/react/step-1) flows.
+{% /info %}
+
 {% section #step-1 step=1 title="Create React Native project" %}
-Create a React Native project.
+Create a React Native project using [npx](https://www.npmjs.com/package/npx).
 
 ```sh
 npx react-native@latest init my_app && cd my_app
@@ -48,7 +53,9 @@ Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier**
 {% tabsitem #android title="Android" %}
 Add your app's **name** and **package name**, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
 
-
+{% arrow_link href="https://developer.android.com/build/configure-app-module" %}
+Learn more about Android app module
+{% /arrow_link %}
 {% /tabsitem %}
 
 {% /tabs %}
@@ -64,7 +71,7 @@ Install the Appwrite SDK for React Native and required dependencies.
 npm install react-native-appwrite react-native-fs react-native-url-polyfill --save
 ```
 
-On iOS, don't forget to install cocoapod dependencies.
+On iOS, you will need to install cocoapod dependencies.
 
 ```sh
 cd iOS && pod install && cd ..
@@ -107,15 +114,14 @@ function App(): React.JSX.Element {
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject('<YOUR_PROJECT_ID>')
         .setPlatform('<YOUR_PLATFORM>');
+
     account = new Account(client);
-  
   }
-  //...
 }
 ```
 {% /section %}
 {% section #step-5 step=5 title="Make first request" %}
-With Client and Account service initialized, you can now make your first requests to Appwrite.
+With `Client` and `Account` service initialized, you can now make your first requests to Appwrite.
 
 ```js
 let createUser = async () => {
@@ -124,9 +130,12 @@ let createUser = async () => {
 }
 ```
 
-
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
 Run your project with `npm run ios` or `npm run android`.
+
+{% arrow_link href="https://github.com/appwrite/playground-for-react-native" %}
+React Native playground
+{% /arrow_link %}
 {% /section %}
