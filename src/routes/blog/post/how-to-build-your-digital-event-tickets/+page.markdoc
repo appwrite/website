@@ -9,13 +9,13 @@ author: laura-du-ry
 category: engineering
 ---
 
-Do you remember the Appwrite [Cloud cards](https://dev.to/appwrite/how-we-implemented-the-card-animation-in-appwrite-cloud-public-beta-4npb)? They were an absolute hit and filled our entire timeline for days. For Init, we wanted to create a new card, or better yet, a ticket to celebrate in style. So, we created three types of tickets that are unique to you with the help of your GitHub contributions and the tribe customization. 
+Do you remember the Appwrite [Cloud cards](https://dev.to/appwrite/how-we-implemented-the-card-animation-in-appwrite-cloud-public-beta-4npb)? They were an absolute hit and filled our entire timeline for days. For Init, we wanted to create a new card, or better yet, a ticket to celebrate in style. So, we created three types of tickets that are unique to you with the help of your GitHub contributions and the tribe customization.
 
 As always, we want to share our learning so you can create your own tickets with GitHub OAuth and grid integration.
 
 # Ticket design inspiration
 
-Let’s start with the inspiration for the tickets. A few team members went to GitHub Universe in November 2023 and received a unique, customizable event badge with a grid on the side. These physical [event tickets](https://twitter.com/didier_lopes/status/1724925458762936817) inspired our very own Init tickets that would convey the feeling of a real ticket to an event. 
+Let’s start with the inspiration for the tickets. A few team members went to GitHub Universe in November 2023 and received a unique, customizable event badge with a grid on the side. These physical [event tickets](https://twitter.com/didier_lopes/status/1724925458762936817) inspired our very own Init tickets that would convey the feeling of a real ticket to an event.
 
 We took this idea, made it our own, and created three different types of tickets that would celebrate Init. The different types are categorized into:
 
@@ -53,7 +53,7 @@ An essential part of the ticket is that we wanted to emphasize the importance of
 
 As you can see on each side of the ticket, a grid resembles your unique GitHub contributions over the past year, just like on your GitHub profile. You can choose to add the grid with a toggle, but to do so, you need to connect your GitHub account.
 
-Now, in case you would like to know how you can do this, we asked the engineer in charge, [Thomas G Lopez](https://github.com/TGlide), to explain the process.
+Now, in case you would like to know how you can do this, we asked the engineer in charge, [Thomas G Lopes](https://github.com/TGlide), to explain the process.
 
 ## Associating your GitHub account with your ticket
 
@@ -67,16 +67,15 @@ By following our [documentation on OAuth](https://appwrite.io/docs/products/auth
 
 Now that the association part is done, it’s time to integrate the more interesting part, the GitHub contributions grid.
 
-There are two ways to achieve this. The first one, is using the GraphQL API. [This article](https://medium.com/@yuichkun/how-to-retrieve-contribution-graph-data-from-the-github-api-dc3a151b4af) was initially used as a source of inspiration when implementing this feature. However, with this data, you only get the number of contributions but not the actual chart. 
+There are two ways to achieve this. The first one, is using the GraphQL API. [This article](https://medium.com/@yuichkun/how-to-retrieve-contribution-graph-data-from-the-github-api-dc3a151b4af) was initially used as a source of inspiration when implementing this feature. However, with this data, you only get the number of contributions but not the actual chart.
 
-In GitHub's chart, each square can have a level from 0 to 4, where each level is brighter than the other, indicating more contributions. We need a way to convert those numbers of contributions to levels, but unfortunately, that algorithm is not exposed by GitHub. 
+In GitHub's chart, each square can have a level from 0 to 4, where each level is brighter than the other, indicating more contributions. We need a way to convert those numbers of contributions to levels, but unfortunately, that algorithm is not exposed by GitHub.
 
 We wanted the contribution chart to be as close to reality as possible. So, we arrived at our second solution: getting the chart from the source!
 
-Our website is developed with SvelteKit, which is a full-stack framework. TL;DR, we have control over both the server and the client. So, when someone requests their ticket, we can make the server directly access your GitHub profile page and read the chart! We used a library called `node-html-parser` to deal with the HTML data. 
+Our website is developed with SvelteKit, which is a full-stack framework. TL;DR, we have control over both the server and the client. So, when someone requests their ticket, we can make the server directly access your GitHub profile page and read the chart! We used a library called `node-html-parser` to deal with the HTML data.
 
 We then can generate a matrix that representes the contribution chart. Each array of the matrix will represent a week, and each item of said array will contain the contribution level for that particular day.
-
 
 ```ts
 const res = await fetch(`https://github.com/${gh_user}`);
@@ -168,7 +167,7 @@ export const load = async () => {
 };
 ```
 
-Then, with SvelteKit, we can show the contributions as soon as they're ready. 
+Then, with SvelteKit, we can show the contributions as soon as they're ready.
 
 ```svelte
 {#await contributions then c}
