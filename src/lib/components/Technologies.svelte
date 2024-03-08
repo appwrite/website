@@ -19,6 +19,11 @@
             image: `/images/platforms/${$themeInUse}/react.svg`
         },
         {
+            name: 'React Native',
+            href: '/docs/quick-starts/react-native',
+            image: `/images/platforms/${$themeInUse}/react.svg`
+        },
+        {
             name: 'Svelte',
             href: '/docs/quick-starts/sveltekit',
             image: `/images/platforms/${$themeInUse}/svelte.svg`
