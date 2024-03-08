@@ -1,7 +1,6 @@
 <script lang="ts">
     import { platformMap } from '$lib/utils/references';
-    import { getContext, setContext } from 'svelte';
-    import { writable, type Writable } from 'svelte/store';
+    import { writable } from 'svelte/store';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { Select, Tooltip } from '$lib/components';
