@@ -85,7 +85,7 @@ Push notification requires special handling on the client side. Follow the [Send
 {% /section %}
 
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
 You can update or delete a provider in the Appwrite Console.
