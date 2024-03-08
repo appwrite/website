@@ -1,12 +1,40 @@
 <script lang="ts">
     import { MainFooter } from '$lib/components';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { themeInUse } from '$routes/+layout.svelte';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+
+    export let data;
+
+    type MappedTutorial = (typeof data.tutorials)[number];
+
+    const iconMap: Record<string, string> = {
+        react: 'icon-react',
+        vue: 'aw-icon-vue',
+        angular: 'icon-angular',
+        svelte: 'icon-svelte',
+        sveltekit: 'icon-svelte',
+        'sveltekit ssr': 'icon-svelte',
+        android: 'icon-android',
+        apple: 'icon-apple',
+        flutter: 'icon-flutter',
+        nuxt: 'icon-nuxt',
+        'nuxt ssr': 'icon-nuxt',
+        stripe: 'icon-stripe',
+        refine: 'aw-icon-refine',
+        'next.js': 'icon-nextjs',
+        'next.js ssr': 'icon-nextjs',
+        astro: 'icon-astro',
+        'astro ssr': 'icon-astro'
+    };
+
+    const getIcon = (tutorial: MappedTutorial) => {
+        if (!tutorial.framework) return ''; // TODO: Default icon
+        return iconMap[tutorial.framework.toLowerCase()];
+    };
 </script>
 
 <svelte:head>
@@ -26,84 +54,78 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<main class="aw-main-section">
+<main class="aw-main-section" id="main">
     <article class="aw-article">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
                 <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="aw-title">Platforms</h1>
+                    <h1 class="aw-title">Tutorials</h1>
                 </div>
             </div>
             <div class="aw-article-header-end" />
         </header>
         <div class="aw-article-content aw-u-gap-80">
-            <section class="u-flex-vertical u-gap-24">
-                <h2 class="aw-eyebrow">Client</h2>
-                <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
-                    <li class="is-mobile-col-span-2">
-                        <a href="/docs/tutorials/react" class="aw-card is-normal">
-                            <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-react aw-u-font-size-24" aria-hidden="true" />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">React</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">
-                                Learn Appwrite Auth, Databases, and more with React.
-                            </p>
-                        </a>
-                    </li>
-                    <li class="is-mobile-col-span-2">
-                        <a href="/docs/tutorials/vue" class="aw-card is-normal">
-                            <header class="u-flex u-cross-center u-gap-4">
-                                <img src="/images/platforms/{$themeInUse}/vue.svg" alt='' />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">Vue</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">
-                                Learn Appwrite Auth, Databases, and more with Vue.
-                            </p>
-                        </a>
-                    </li>
-                    <li class="is-mobile-col-span-2">
-                        <a href="/docs/tutorials/sveltekit" class="aw-card is-normal">
-                            <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-svelte aw-u-font-size-24" aria-hidden="true" />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">SvelteKit</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">
-                                Learn Appwrite Auth, Databases, and more with SvelteKit.
-                            </p>
-                        </a>
-                    </li>
-                    <li class="is-mobile-col-span-2">
-                        <article class="aw-card is-full-color">
-                            <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-flutter aw-u-font-size-24" aria-hidden="true" />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">Flutter</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">Coming soon...</p>
-                        </article>
-                    </li>
-                    <li class="is-mobile-col-span-2">
-                        <article class="aw-card is-full-color">
-                            <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-apple aw-u-font-size-24" aria-hidden="true" />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">Apple</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">Coming soon...</p>
-                        </article>
-                    </li>
-                    <li class="is-mobile-col-span-2">
-                        <article class="aw-card is-full-color">
-                            <header class="u-flex u-cross-baseline u-gap-4">
-                                <span class="icon-android aw-u-font-size-24" aria-hidden="true" />
-                                <h4 class="aw-sub-body-500 aw-u-color-text-primary">Android</h4>
-                            </header>
-                            <p class="aw-sub-body-400 u-margin-block-start-4">Coming soon...</p>
-                        </article>
-                    </li>
-                </ul>
-            </section>
+            {#each data.tutorials as category}
+                <section class="u-flex-vertical u-gap-24">
+                    <h2 class="aw-eyebrow">{category.title}</h2>
+                    <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
+                        {#each category.tutorials as tutorial}
+                            <li>
+                                {#if tutorial.draft === true}
+                                    <a
+                                        href={tutorial.href}
+                                        class="aw-card is-normal draft"
+                                        aria-disabled="true"
+                                        tabindex="-1"
+                                    >
+                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                            <span
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
+                                                aria-hidden="true"
+                                            />
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                                {tutorial.framework}
+                                            </h3>
+                                            <span class="badge aw-caption-400">Coming Soon</span>
+                                        </header>
+                                    </a>
+                                {:else}
+                                    <a href={tutorial.href} class="aw-card is-normal">
+                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                            <span
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
+                                                aria-hidden="true"
+                                            />
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
+                                                {tutorial.framework}
+                                            </h3>
+                                        </header>
+                                        <p class="aw-sub-body-400 u-margin-block-start-4">
+                                            {tutorial.title}
+                                        </p>
+                                    </a>
+                                {/if}
+                            </li>
+                        {/each}
+                    </ul>
+                </section>
+            {/each}
         </div>
     </article>
 
     <MainFooter variant="docs" />
 </main>
+
+<style lang="scss">
+    .badge {
+        border-radius: 0.25rem;
+        background: rgba(253, 54, 110, 0.24);
+        padding: 0.0625rem 0.375rem;
+        margin-inline-start: 0.25rem;
+    }
+
+    .draft {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+</style>

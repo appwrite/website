@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Deploy a PDF generation service in minutes with Appwrite functions
-description: Learn how to deploy PDF generation service in minutes with Appwrite functions.
+title: Deploy a PDF generation service in minutes with Appwrite Functions
+description: Learn how to deploy PDF generation service in minutes with Appwrite Functions.
 date: 2023-11-14
 cover: /images/blog/pdf-generation/pdf.png
 timeToRead: 5
@@ -46,7 +46,7 @@ If you’d like to let people download the invoice from your web app, you can do
 </a>
 ```
 
-📱 On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.
+On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.
 
 The next step is extend the template to show real invoice data. Here’s a high-level overview of what’s required:
 

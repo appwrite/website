@@ -18,6 +18,20 @@ export const createScrollInfo = () => {
     let lastDirChange = 0;
 
     onMount(() => {
+        const handleInitialAnchor = () => {
+            if (window.location.hash) {
+                const anchorElement = document.querySelector(window.location.hash);
+                if (anchorElement) {
+                    return window.pageYOffset + anchorElement.getBoundingClientRect().top;
+                }
+            }
+            return 0;
+        };
+
+        const initialTop = handleInitialAnchor();
+        scrollInfo.set({ direction: 'down', top: initialTop, deltaDirChange: 0 });
+        lastDirChange = initialTop;
+
         const handleScroll = () => {
             scrollInfo.update((p) => {
                 const top = window.scrollY;

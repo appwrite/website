@@ -15,6 +15,7 @@
         showSearch: false,
         currentVariant: null
     });
+
     export function toggleReferences() {
         layoutState.update((state) => ({
             ...state,
@@ -23,19 +24,24 @@
         }));
     }
     export function toggleSidenav() {
-        layoutState.update((state) => ({
-            ...state,
-            showReferences: false,
-            showSidenav: !state.showSidenav
-        }));
+        layoutState.update((state) => {
+            return {
+                ...state,
+                showReferences: false,
+                showSidenav: !state.showSidenav
+            };
+        });
     }
+
+    const CTX_KEY = Symbol('docs');
+    export const isInDocs = () => getContext<boolean>(CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
-    import Search from '$lib/components/Search.svelte';
-
-    import { setContext } from 'svelte';
+    import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
+    import { getContext, setContext } from 'svelte';
+    import { GITHUB_STARS } from '$lib/constants';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -56,9 +62,21 @@
             showSidenav: false
         }));
     });
+    setContext(CTX_KEY, true);
 
-    setContext('isDocs', true);
+    const handleKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
+            e.preventDefault();
+            layoutState.update((state) => ({
+                ...state,
+                showReferences: false,
+                showSidenav: false
+            }));
+        }
+    };
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="u-position-relative">
     <section class="aw-mobile-header is-transparent">
@@ -81,11 +99,15 @@
             </a>
         </div>
         <div class="aw-mobile-header-end">
-            <a href="https://cloud.appwrite.io/console" class="aw-button aw-is-only-desktop">
-                <span class="aw-sub-body-500">Go to console</span>
+            <a href="https://cloud.appwrite.io" class="aw-button aw-is-only-desktop">
+                <span class="aw-sub-body-500">Go to Console</span>
             </a>
-            <button on:click={toggleSidenav} class="aw-button is-text" aria-label="open navigation">
-                <span class="aw-icon-hamburger-menu" />
+            <button class="aw-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+                {#if $layoutState.showSidenav}
+                    <span aria-hidden="true" class="aw-icon-close" />
+                {:else}
+                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                {/if}
             </button>
         </div>
     </section>
@@ -111,7 +133,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav">
+                <nav class="aw-main-header-nav" aria-label="Top">
                     <ul class="aw-main-header-nav-list">
                         <li class="aw-main-header-nav-item">
                             <a class="aw-link" href="/docs">Docs</a>
@@ -147,18 +169,9 @@
                     >
                         <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="aw-inline-tag aw-sub-body-400">37.9K</span>
+                        <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                     </a>
-                    <a href="https://cloud.appwrite.io/console" class="aw-button">
-                        <span class="aw-sub-body-500">Go to console</span>
-                    </a>
-                    <button
-                        on:click={toggleSidenav}
-                        class="aw-button is-text aw-is-not-desktop"
-                        aria-label="open navigation"
-                    >
-                        <span class="aw-icon-hamburger-menu" />
-                    </button>
+                    <IsLoggedIn />
                 </div>
             </div>
         </div>

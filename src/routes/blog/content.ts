@@ -42,6 +42,7 @@ export const posts = Object.entries(postsGlob)
         const { frontmatter } = postList as {
             frontmatter: PostsData;
         };
+
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const postName = slug.slice(slug.lastIndexOf('/') + 1);
 

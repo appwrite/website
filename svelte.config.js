@@ -1,19 +1,9 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import { preprocessMeltUI } from '@melt-ui/pp';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
-import sequence from 'svelte-sequential-preprocessor';
-import staticAdapter from '@sveltejs/adapter-static';
 import nodeAdapter from '@sveltejs/adapter-node';
-
-function absoulute(path) {
-    return join(dirname(fileURLToPath(import.meta.url)), path);
-}
-
-const isVercel = process.env.VERCEL === '1';
-
-const adapter = isVercel ? staticAdapter() : nodeAdapter();
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -23,27 +13,27 @@ const config = {
         vitePreprocess(),
         markdoc({
             generateSchema: true,
-            nodes: absoulute('./src/markdoc/nodes/_Module.svelte'),
-            tags: absoulute('./src/markdoc/tags/_Module.svelte'),
-            partials: absoulute('./src/partials'),
+            nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
+            tags: absolute('./src/markdoc/tags/_Module.svelte'),
+            partials: absolute('./src/partials'),
             layouts: {
-                default: absoulute('./src/markdoc/layouts/Article.svelte'),
-                article: absoulute('./src/markdoc/layouts/Article.svelte'),
-                tutorial: absoulute('./src/markdoc/layouts/Tutorial.svelte'),
-                post: absoulute('./src/markdoc/layouts/Post.svelte'),
-                author: absoulute('./src/markdoc/layouts/Author.svelte'),
-                category: absoulute('./src/markdoc/layouts/Category.svelte')
+                default: absolute('./src/markdoc/layouts/Article.svelte'),
+                article: absolute('./src/markdoc/layouts/Article.svelte'),
+                tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
+                post: absolute('./src/markdoc/layouts/Post.svelte'),
+                author: absolute('./src/markdoc/layouts/Author.svelte'),
+                category: absolute('./src/markdoc/layouts/Category.svelte'),
+                policy: absolute('./src/markdoc/layouts/Policy.svelte'),
+                changelog: absolute('./src/markdoc/layouts/Changelog.svelte')
             }
         }),
         preprocessMeltUI()
     ]),
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
-        adapter,
-        files: {
-            hooks: {
-                server: isVercel ? undefined : './src/hooks/server.ts'
-            }
+        adapter: nodeAdapter(),
+        version: {
+            pollInterval: 60 * 1000
         },
         alias: {
             $routes: './src/routes',
@@ -51,7 +41,29 @@ const config = {
             $icons: './src/icons',
             $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
+        },
+        prerender: {
+            concurrency: 32,
+            /**
+             * @type {import('@sveltejs/kit').PrerenderMissingIdHandler}
+             */
+            handleMissingId: ({ path, message }) => {
+                if (path.startsWith('/docs/references/')) {
+                    console.warn(message);
+                    return;
+                }
+                throw new Error(message);
+            }
         }
     }
 };
+
 export default config;
+
+/**
+ * @param {string} path
+ * @returns {string}
+ */
+function absolute(path) {
+    return join(dirname(fileURLToPath(import.meta.url)), path);
+}

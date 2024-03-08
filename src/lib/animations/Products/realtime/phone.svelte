@@ -305,6 +305,8 @@
 </div>
 
 <style lang="scss">
+	@use '$scss/abstract/mixins/border-gradient' as gradients;
+
 	// Utilities
 	.flow {
 		display: flex;
@@ -594,7 +596,7 @@
 	}
 
 	.graph-box {
-		@include border-gradient;
+		@include gradients.border-gradient;
 		--m-border-gradient-before: linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 0.12) 0%,

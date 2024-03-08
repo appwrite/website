@@ -33,7 +33,6 @@
         preventScroll,
         positioning: {
             sameWidth: true,
-            fitViewport: true,
             placement
         },
         forceVisible: true,
@@ -45,7 +44,9 @@
             dispatch('change', next?.value);
 
             return next;
-        }
+        },
+        portal: null,
+        scrollAlignment: 'center'
     });
 
     $: selectedOption = options.find((o) => o.value === value);
@@ -91,7 +92,7 @@
         {/if}
         <span>{$selectedLabel}</span>
     </div>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </button>
 
 {#if $open}
@@ -146,14 +147,14 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                {#each options as option}
+                {#each group.options as option}
                     <option value={option.value} selected={option.value === value}>
                         {option.label}
                     </option>
                 {/each}
             {:else}
                 <optgroup label={isDefault ? undefined : group.label}>
-                    {#each options as option}
+                    {#each group.options as option}
                         <option value={option.value} selected={option.value === value}>
                             {option.label}
                         </option>
@@ -162,7 +163,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-down" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </div>
 
 <style lang="scss">
