@@ -102,13 +102,7 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+cconst message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -124,13 +118,7 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-let promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```php
 <?php
@@ -203,6 +191,8 @@ Message result = await messaging.CreateEmail(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() { // Init SDK
   Client client = Client();
@@ -491,6 +481,8 @@ Provider result = await messaging.UpdateSendgridProvider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() { // Init SDK
   Client client = Client();
