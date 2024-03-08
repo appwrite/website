@@ -27,9 +27,9 @@ Many Appwrite authentication methods use a token-base flow to authenticate users
 You can find different usage of tokens in the Appwrite.
 
 {% cards %}
-{% cards_item href="/docs/product/auth/custom-token" title="Custom token login" %}
+{% cards_item href="/docs/products/auth/custom-token" title="Custom token login" %}
 {% /cards_item %}
-{% cards_item href="/docs/product/auth/email-otp" title="Email OTP login" %}
+{% cards_item href="/docs/products/auth/email-otp" title="Email OTP login" %}
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/magic-url" title="Email magic URL" %}
 {% /cards_item %}
