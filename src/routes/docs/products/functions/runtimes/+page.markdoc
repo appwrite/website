@@ -25,7 +25,7 @@ Below is a list of available Functions runtimes. The Appwrite team continually a
 `node-21.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% icon icon="bun" size="l" /%}
+* {% icon icon="bun-sh" size="l" /%}
 * [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
 * `bun-1.0`
 * x86 / arm64
