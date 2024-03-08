@@ -68,8 +68,7 @@ This helps you reach your user, even when their device do not have internet acce
 {% /table %}
 
 # Messages lifecycle {% #messages-lifecycle %}
-All messages begin as `draft`.
-If the message is sent immediately, its status is set to `processing`.
+Messages can begin as a `draft`, or proceed directly to `processing` if it's sent immediately.
 If the message is scheduled to be sent later, its status is set to `scheduled`, then to `processing` at schedule time.
 After attempted delivery, it is marked as `sent` or `failed` depending on if the message was successfully delivered.
 {% only_dark %}
@@ -154,13 +153,13 @@ Here are the different components that make up a message.
 * optional
 * Sets the number to display next to the app's icon, indicating the number of notifications or updates. Setting to 0 removes any existing badge. This is for Apple devices only.
 ---
-* `status`
+* `draft`
 * optional
-* The status of the push notification, which can be `draft`, `scheduled`, or `processing` (default). `Processing` means the notification is sent immediately.
+* If the message is a draft, can be `true` or `false`.
 ---
 * `scheduledAt`
 * optional
-* An ISO date time string specifying when the push notification should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+* An ISO date time string specifying when the push notification should be sent.
 {% /table %}
 
 {% /tabsitem %}
@@ -191,13 +190,13 @@ Here are the different components that make up a message.
 * optional
 * A boolean indicating whether the `content` is in HTML format. This allows for rich text, links, and styling in the email content.
 ---
-* `status`
+* `draft`
 * optional
-* The status of the email, which can be draft, scheduled, processing (default). Processing means the email is sent immediately.
+* If the message is a draft, can be `true` or `false`.
 ---
 * `scheduledAt`
 * optional
-* An ISO date time string specifying when the email should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+* An ISO date time string specifying when the email should be sent.
 {% /table %}
 
 {% /tabsitem %}
@@ -211,13 +210,13 @@ Here are the different components that make up a message.
 * required
 * The main content of the SMS. This should be concise and clear, as SMS messages have character limits.
 ---
-* `status`
+* `draft`
 * optional
-* The status of the SMS message, which can be `draft`, `scheduled`, or `processing` (default). `Processing` means the SMS is sent immediately.
+* If the message is a draft, can be `true` or `false`.
 ---
 * `scheduledAt`
 * optional
-* An ISO date time string specifying when the SMS should be sent. This parameter must be set if the status is `scheduled` and must represent a future time.
+* An ISO date time string specifying when the SMS should be sent.
 {% /table %}
 {% /tabsitem %}
 {% /tabs %}
@@ -241,7 +240,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createPush(
+const message = await messaging.createPush(
         '[MESSAGE_ID]',                          // messageId
         '[TITLE]',                               // title
         '[BODY]',                                // body
@@ -255,15 +254,9 @@ const promise = messaging.createPush(
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
         '[BADGE]',                               // badge (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -279,7 +272,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createPush(
+const message = await messaging.createPush(
         '[MESSAGE_ID]',                          // messageId
         '[TITLE]',                               // title
         '[BODY]',                                // body
@@ -293,15 +286,9 @@ const promise = messaging.createPush(
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
         '[BADGE]',                               // badge (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -333,7 +320,7 @@ $result = $messaging->createPush(
     color: '[COLOR]',                             // optional
     tag: '[TAG]',                                 // optional
     badge: '[BADGE]',                             // optional
-    status: 'draft',                              // optional
+    draft: true,                                  // optional
     scheduledAt: ''                               // optional
 );
 ```
@@ -365,7 +352,7 @@ result = messaging.create_push(
     color = '[COLOR]',                          # optional
     tag = '[TAG]',                              # optional
     badge = '[BADGE]',                          # optional
-    status = 'draft',                           # optional
+    draft = True,                               # optional
     scheduled_at = ''                           # optional
 )
 ```
@@ -395,7 +382,7 @@ response = messaging.create_push(
     color: '[COLOR]',                             # optional
     tag: '[TAG]',                                 # optional
     badge: '[BADGE]',                             # optional
-    status: 'draft',                              # optional
+    draft: true,                                  # optional
     scheduled_at: ''                              # optional
 )
 
@@ -416,22 +403,24 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"
-    topics: new List<string> {}                   // optional
-    users: new List<string> {}                    // optional
-    targets: new List<string> {}                  // optional
-    data: [object]                                // optional
-    action: "[ACTION]"                            // optional
-    icon: "[ICON]"                                // optional
-    sound: "[SOUND]"                              // optional
-    color: "[COLOR]"                              // optional
-    tag: "[TAG]"                                  // optional
-    badge: "[BADGE]"                              // optional
-    status: "draft"                               // optional
+    body: "[BODY]"    
+    topics: new List<string> {}                   // optional    
+    users: new List<string> {}                    // optional    
+    targets: new List<string> {}                  // optional    
+    data: [object]                                // optional    
+    action: "[ACTION]"                            // optional    
+    icon: "[ICON]"                                // optional    
+    sound: "[SOUND]"                              // optional    
+    color: "[COLOR]"                              // optional    
+    tag: "[TAG]"                                  // optional    
+    badge: "[BADGE]"                              // optional    
+    draft: true                                   // optional    
     scheduledAt: "");                             // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
@@ -457,7 +446,7 @@ void main() {                                    // Init SDK
     color: '[COLOR]',                            // optional
     tag: '[TAG]',                                // optional
     badge: '[BADGE]',                            // optional
-    status: 'draft',                             // optional
+    draft: true,                                 // optional
     scheduledAt: '',                             // optional
   );
 
@@ -495,7 +484,7 @@ messaging.createPush(
     "[COLOR]",                                    // color (optional)
     "[TAG]",                                      // tag (optional)
     "[BADGE]",                                    // badge (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -533,7 +522,7 @@ messaging.createPush(
     "[COLOR]",                                    // color (optional)
     "[TAG]",                                      // tag (optional)
     "[BADGE]",                                    // badge (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -569,7 +558,7 @@ let message = try await messaging.createPush(
   color: "[COLOR]",                              // optional
   tag: "[TAG]",                                  // optional
   badge: "[BADGE]",                              // optional
-  status: "draft",                               // optional
+  draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
 ```
@@ -596,7 +585,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -605,16 +594,10 @@ const promise = messaging.createEmail(
         [],                                      // targets (optional)
         [],                                      // cc (optional)
         [],                                      // bcc (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -630,7 +613,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createEmail(
+const message - await messaging.createEmail(
         '[MESSAGE_ID]',                          // messageId
         '[SUBJECT]',                             // subject
         '[CONTENT]',                             // content
@@ -639,16 +622,10 @@ const promise = messaging.createEmail(
         [],                                      // targets (optional)
         [],                                      // cc (optional)
         [],                                      // bcc (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         false,                                   // html (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -675,7 +652,7 @@ $result = $messaging->createEmail(
     targets: [],                                  // optional
     cc: [],                                       // optional
     bcc: [],                                      // optional
-    status: 'draft',                              // optional
+    draft: true,                                  // optional
     html: false,                                  // optional
     scheduledAt: ''                               // optional
 );
@@ -703,7 +680,7 @@ result = messaging.create_email(
     targets = [],                               # optional
     cc = [],                                    # optional
     bcc = [],                                   # optional
-    status = 'draft',                           # optional
+    draft = True,                               # optional
     html = False,                               # optional
     scheduled_at = ''                           # optional
 )
@@ -729,7 +706,7 @@ response = messaging.create_email(
     targets: [],                                  # optional
     cc: [],                                       # optional
     bcc: [],                                      # optional
-    status: 'draft',                              # optional
+    draft: true,                                  # optional
     html: false,                                  # optional
     scheduled_at: ''                              # optional
 )
@@ -751,18 +728,20 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreateEmail(
     messageId: "[MESSAGE_ID]",
     subject: "[SUBJECT]",
-    content: "[CONTENT]"
-    topics: new List<string> {}                   // optional
-    users: new List<string> {}                    // optional
-    targets: new List<string> {}                  // optional
-    cc: new List<string> {}                       // optional
-    bcc: new List<string> {}                      // optional
-    status: "draft"                               // optional
-    html: false                                   // optional
+    content: "[CONTENT]"    
+    topics: new List<string> {}                   // optional    
+    users: new List<string> {}                    // optional    
+    targets: new List<string> {}                  // optional    
+    cc: new List<string> {}                       // optional    
+    bcc: new List<string> {}                      // optional    
+    draft: true                                   // optional    
+    html: false                                   // optional    
     scheduledAt: "");                             // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
@@ -783,7 +762,7 @@ void main() {                                    // Init SDK
     targets: [],                                 // optional
     cc: [],                                      // optional
     bcc: [],                                     // optional
-    status: 'draft',                             // optional
+    draft: true,                                 // optional
     html: false,                                 // optional
     scheduledAt: '',                             // optional
   );
@@ -817,7 +796,7 @@ messaging.createEmail(
     listOf(),                                     // targets (optional)
     listOf(),                                     // cc (optional)
     listOf(),                                     // bcc (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     false,                                        // html (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -851,7 +830,7 @@ messaging.createEmail(
     listOf(),                                     // targets (optional)
     listOf(),                                     // cc (optional)
     listOf(),                                     // bcc (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     false,                                        // html (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -883,7 +862,7 @@ let message = try await messaging.createEmail(
   targets: [],                                   // optional
   cc: [],                                        // optional
   bcc: [],                                       // optional
-  status: "draft",                               // optional
+  draft: true,                                   // optional
   html: xfalse,                                  // optional
   scheduledAt: ""                                // optional
 )
@@ -911,21 +890,15 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -941,21 +914,15 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -979,7 +946,7 @@ $result = $messaging->createSMS(
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
-    status: 'draft',                              // optional
+    draft: true,                                  // optional
     scheduledAt: ''                               // optional
 );
 ```
@@ -1003,7 +970,7 @@ result = messaging.create_sms(
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
-    status = 'draft',                           # optional
+    draft = True,                               # optional
     scheduled_at = ''                           # optional
 )
 ```
@@ -1025,7 +992,7 @@ response = messaging.create_sms(
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
-    status: 'draft',                              # optional
+    draft: true,                                  # optional
     scheduled_at: ''                              # optional
 )
 
@@ -1045,15 +1012,17 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"
-    topics: new List<string> {}                   // optional
-    users: new List<string> {}                    // optional
-    targets: new List<string> {}                  // optional
-    status: "draft"                               // optional
+    content: "[CONTENT]"    
+    topics: new List<string> {}                   // optional    
+    users: new List<string> {}                    // optional    
+    targets: new List<string> {}                  // optional    
+    draft: true                                   // optional    
     scheduledAt: "");                             // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
@@ -1071,7 +1040,7 @@ void main() {                                    // Init SDK
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
-    status: 'draft',                             // optional
+    draft: true,                                 // optional
     scheduledAt: '',                             // optional
   );
 
@@ -1101,7 +1070,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -1131,7 +1100,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -1159,7 +1128,7 @@ let message = try await messaging.createSMS(
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
-  status: "draft",                               // optional
+  draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
 ```

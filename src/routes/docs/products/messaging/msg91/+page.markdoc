@@ -81,21 +81,15 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -111,21 +105,15 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.createSMS(
+const message = await messaging.createSMS(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
-        'draft',                                 // status (optional)
+        true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -149,7 +137,7 @@ $result = $messaging->createSMS(
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
-    status: 'draft',                              // optional
+    draft: true,                                  // optional
     scheduledAt: ''                               // optional
 );
 ```
@@ -173,7 +161,7 @@ result = messaging.create_sms(
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
-    status = 'draft',                           # optional
+    draft = True,                               # optional
     scheduled_at = ''                           # optional
 )
 ```
@@ -195,7 +183,7 @@ response = messaging.create_sms(
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
-    status: 'draft',                              # optional
+    draft: true,                                  # optional
     scheduled_at: ''                              # optional
 )
 
@@ -215,15 +203,17 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"
-    topics: new List<string> {}                   // optional
-    users: new List<string> {}                    // optional
-    targets: new List<string> {}                  // optional
-    status: "draft"                               // optional
+    content: "[CONTENT]"    
+    topics: new List<string> {}                   // optional    
+    users: new List<string> {}                    // optional    
+    targets: new List<string> {}                  // optional    
+    draft: true                                   // optional    
     scheduledAt: "");                             // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
@@ -241,7 +231,7 @@ void main() {                                    // Init SDK
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
-    status: 'draft',                             // optional
+    draft: true,                                 // optional
     scheduledAt: '',                             // optional
   );
 
@@ -271,7 +261,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -301,7 +291,7 @@ messaging.createSMS(
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
-    "draft",                                      // status (optional)
+    true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -329,7 +319,7 @@ let message = try await messaging.createSMS(
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
-  status: "draft",                               // optional
+  draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
 ```
@@ -367,7 +357,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateMsg91Provider(
+const message = await messaging.updateMsg91Provider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -375,12 +365,6 @@ const promise = messaging.updateMsg91Provider(
         '[AUTH_KEY]',                            // authKey (optional)
         '[FROM]'                                 // from (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -396,7 +380,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateMsg91Provider(
+const message = await messaging.updateMsg91Provider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -404,12 +388,6 @@ const promise = messaging.updateMsg91Provider(
         '[AUTH_KEY]',                            // authKey (optional)
         '[FROM]'                                 // from (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -504,6 +482,8 @@ Provider result = await messaging.UpdateMsg91Provider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
