@@ -201,6 +201,6 @@ Thomas explained the cool part of how we managed to make your ticket truly uniqu
 
 You can find the entire source code for the tickets on [GitHub](https://github.com/appwrite/console/blob/cloud-1.1.x/src/routes/card/Card.svelte) to create your digital event tickets. In May, we created a [showcase site](https://appwrite-card-snippets.vercel.app/popup) for the Cloud cards on how to add a pop, rotation, and glare to the cards. We advise you to check it out to make your tickets all the more magical.
 
-Although Init is over, you can still get yourself a ticket at https://appwrite.io/init/ticket
+Although Init is over, you can still get yourself a ticket at [appwrite.io/init/tickets](/init/tickets)
 
 [Join us on Discord](http://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!
