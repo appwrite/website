@@ -35,8 +35,8 @@ Each message displays with the following information.
 * Type
 * Type of message, either `Push`, `Email`, and `SMS`.
 ---
-* Draft
-* If the message is a draft or ready to be sent. Can be `true` or `false`.
+* Status
+* Indicates the status of the message, can be one of `draft`, `scheduled`, `processing`, `failed`, `success`.
 ---
 * Scheduled at
 * Indicates the scheduled delivery time of the message.
