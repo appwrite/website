@@ -1,0 +1,132 @@
+---
+layout: article
+title: Start with React Native
+description: Build React Native apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+difficulty: beginner
+readtime: 10
+back: /docs/quick-starts
+---
+
+Learn how to setup your first React Native project powered by Appwrite.
+
+{% section #step-1 step=1 title="Create React Native project" %}
+Create a React Native project.
+
+```sh
+npx react-native@latest init my_app && cd my_app
+```
+{% /section %}
+
+{% section #step-2 step=2 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+Then, under **Add a platform**, add a **Android app** or a **Apple app**.
+
+{% tabs %}
+{% tabsitem #ios title="iOS" %}
+
+Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+{% /tabsitem %}
+
+{% tabsitem #android title="Android" %}
+Add your app's **name** and **package name**, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
+
+
+{% /tabsitem %}
+
+{% /tabs %}
+
+You can skip optional steps.
+
+{% /section %}
+
+{% section #step-3 step=3 title="Install Appwrite" %}
+Install the Appwrite SDK for React Native and required dependencies.
+
+```sh
+npm install react-native-appwrite react-native-fs react-native-url-polyfill --save
+```
+
+On iOS, don't forget to install cocoapod dependencies.
+
+```sh
+cd iOS && pod install && cd ..
+```
+
+{% /section %}
+
+{% section #step-4 step=4 title="Import Appwrite" %}
+Find your project's ID in the **Settings** page. 
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Open `index.js` and import `react-native-url-polyfill`.
+
+```js
+import 'react-native-url-polyfill/auto'
+```
+
+Open `App.tsx` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_PLATFORM>` with your application id or package name.
+
+This imports and initializes Appwrite.
+
+```js
+import { Client, Account, ID } from 'react-native-appwrite';
+
+let client: Client;
+let account: Account;
+
+function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  let setupAppwrite = async () => {
+    client = new Client();
+    client
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('<YOUR_PROJECT_ID>')
+        .setPlatform('<YOUR_PLATFORM>');
+    account = new Account(client);
+  
+  }
+  //...
+}
+```
+{% /section %}
+{% section #step-5 step=5 title="Make first request" %}
+With Client and Account service initialized, you can now make your first requests to Appwrite.
+
+```js
+let createUser = async () => {
+    let user = await account.create(ID.unique(), 'example@email.com', 'strongPassword', 'Example user');
+    console.log(user);
+}
+```
+
+
+{% /section %}
+
+{% section #step-6 step=6 title="All set" %}
+Run your project with `npm run ios` or `npm run android`.
+{% /section %}
