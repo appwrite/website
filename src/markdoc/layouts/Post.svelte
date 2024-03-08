@@ -1,10 +1,13 @@
 <script lang="ts">
+    import { Media } from '$lib/UI';
+    import { scroll } from '$lib/animations';
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
-    import { getContext } from 'svelte';
-    import type { CategoryData, AuthorData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { formatDate } from '$lib/utils/date';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
+    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { getContext } from 'svelte';
 
     export let title: string;
     export let description: string;
@@ -27,6 +30,8 @@
             cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
         );
     }
+
+    let readPercentage = 0;
 </script>
 
 <svelte:head>
@@ -47,22 +52,29 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
+    <div
+        class="aw-big-padding-section"
+        use:scroll
+        on:aw-scroll={(e) => {
+            readPercentage = e.detail.percentage;
+        }}
+    >
         <div class="aw-big-padding-section">
             <div class="aw-big-padding-section-level-1">
                 <div class="aw-big-padding-section-level-2">
                     <div class="aw-container" style="--container-size:42.5rem">
                         <article class="aw-main-article">
                             <header class="aw-main-article-header">
-                                <a class="aw-link aw-u-color-text-secondary" href="/blog">
+                                <a
+                                    class="aw-link is-secondary aw-u-color-text-secondary u-cross-baseline"
+                                    href="/blog"
+                                >
                                     <span class="aw-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
                                 <ul class="aw-metadata aw-caption-400">
                                     <li>
-                                        <time datetime={date}
-                                            >{new Date(date).toLocaleDateString()}</time
-                                        >
+                                        <time datetime={date}>{formatDate(date)}</time>
                                     </li>
                                     {#if timeToRead}
                                         <li>{timeToRead} min</li>
@@ -142,7 +154,7 @@
                             </header>
                             {#if cover}
                                 <div class="aw-media-container">
-                                    <img class="u-block" src={cover} alt="" />
+                                    <Media class="u-block" src={cover} />
                                 </div>
                             {/if}
 
@@ -187,15 +199,25 @@
                 </section>
             </div>
         </div>
-    </div>
-
-    <div
-        class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-    >
-        <div class="aw-container">
-            <Newsletter />
-            <FooterNav />
-            <MainFooter />
+        <div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+            <div class="aw-container">
+                <Newsletter />
+                <FooterNav />
+                <MainFooter />
+            </div>
         </div>
     </div>
 </Main>
+
+<div class="progress-bar" style:--percentage="{readPercentage * 100}%" />
+
+<style lang="scss">
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        height: 2px;
+        width: var(--percentage);
+        background: hsl(var(--aw-color-accent));
+        z-index: 10000;
+    }
+</style>

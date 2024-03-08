@@ -12,13 +12,13 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>')                 // Your project ID
+    .setKey('<API_KEY>');                    // Your secret API key
 
 const users = new sdk.Users(client);
 
 const promise = users.updateLabels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 
@@ -38,13 +38,13 @@ $client = new Client();
 
 $client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>')                 // Your project ID
+    .setKey('<API_KEY>');                    // Your secret API key
 
 $users = new Users($client);
 
 $result = $users->updateLabels(
-    '[USER_ID]', 
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 ```
@@ -58,14 +58,14 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('98fd4...a2ad2')                     # Your secret API key
+  .set_project('<PROJECT_ID>')                 # Your project ID
+  .set_key('<API_KEY>')                     # Your secret API key
 )
- 
+
 users = Users(client)
 
 result = users.update_labels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 ```
@@ -76,13 +76,13 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('98fd4...a2ad2')                     # Your secret API key
+    .set_project('<PROJECT_ID>')                 # Your project ID
+    .set_key('<API_KEY>')                     # Your secret API key
 
 users = Users.new(client)
 
 response = users.update_labels(
-    user_id: '[USER_ID]',
+    user_id: '<USER_ID>',
     labels: [ 'subscriber' ]
 );
 ```
@@ -92,13 +92,13 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new sdk.Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>')                 // Your project ID
+    .setKey('<API_KEY>');                    // Your secret API key
 
 let users = new sdk.Users(client);
 
 const promise = users.updateLabels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 
@@ -113,13 +113,13 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>')                 // Your project ID
+    .setKey('<API_KEY>');                    // Your secret API key
 
 final users = Users(client);
 
 final result = await users.updateLabels(
-    userId: '[USER_ID]',
+    userId: '<USER_ID>',
     labels: [ 'subscriber' ],
 );
 ```
@@ -130,13 +130,13 @@ import io.appwrite.services.Users
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("98fd4...a2ad2")                     // Your secret API key
+    .setProject("<PROJECT_ID>")                 // Your project ID
+    .setKey("<API_KEY>")                     // Your secret API key
 
 val users = Users(client)
 
 val response = users.updateLabels(
-    userId = "[USER_ID]",
+    userId = "<USER_ID>",
     labels = [ 'subscriber' ]
 );
 ```
@@ -146,13 +146,13 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("98fd4...a2ad2")                     // Your secret API key
+    .setProject("<PROJECT_ID>")                 // Your project ID
+    .setKey("<API_KEY>")                     // Your secret API key
 
 let users = Users(client)
 
 let response = try await users.updateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```
@@ -162,13 +162,13 @@ using Appwrite;
 
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                 // Your project ID
-    .SetKey("98fd4...a2ad2");                    // Your secret API key
+    .SetProject("<PROJECT_ID>")                 // Your project ID
+    .SetKey("<API_KEY>");                    // Your secret API key
 
 var users = new Users(client);
 
 var response = await users.UpdateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```
@@ -183,4 +183,6 @@ This would correspond with the permissions below.
 | Delete | `Permissions.delete(Role.label('subscriber'))` |
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
-[Learn more about permissions {% icon icon="cheveron-right" /%}](/docs/advanced/platform/permissions)
+{% arrow_link href="/docs/advanced/platform/permissions" %}
+Learn more about permissions
+{% /arrow_link %}

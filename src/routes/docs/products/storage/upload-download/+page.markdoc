@@ -20,7 +20,7 @@ You can also upload files programmatically using our SDKs:
 
   const client = new Client()
       .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setProject('<PROJECT_ID>');
 
   const storage = new Storage(client);
 
@@ -43,7 +43,7 @@ You can also upload files programmatically using our SDKs:
   void main() { // Init SDK
     final client = Client()
       .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setProject('<PROJECT_ID>');
 
     final storage = Storage(client);
 
@@ -62,7 +62,7 @@ You can also upload files programmatically using our SDKs:
   suspend fun main() {
       val client = Client(applicationContext)
           .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("[PROJECT_ID]") // Your project ID
+          .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
 
@@ -80,7 +80,7 @@ You can also upload files programmatically using our SDKs:
   func main() async throws {
       let client = Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("[PROJECT_ID]")
+        .setProject("<PROJECT_ID>")
 
       let storage = Storage(client)
 
@@ -121,8 +121,8 @@ You can also upload files programmatically using our SDKs:
 {% /multicode %}
 
 # Large files {% #large-files %}
-When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
-If you're using an Appwrite SDK, this is handled automatically. 
+When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance.
+If you're using an Appwrite SDK, this is handled automatically.
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 # InputFile {% #input-file %}
@@ -209,7 +209,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.from_path(path)`                | Used to upload files from a provided path.                  |
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
-{% /tabsitem %} 
+{% /tabsitem %}
 
 {% tabsitem #ruby title="Ruby" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
@@ -370,13 +370,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFile(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFile(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL
     }
 }
 ```
@@ -475,122 +473,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileDownload(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
-    }
-}
-```
-{% /multicode %}
-
-# Get File {% #get-file %}
-To get a file, use the `getFile` method.
-
-{% multicode %}
-```js
-import { Client, Storage } from "appwrite";
-
-const client = new Client();
-
-const storage = new Storage(client);
-
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-;
-
-const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
-
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
-```
-```dart
-import 'package:appwrite/appwrite.dart';
-
-void main() { // Init SDK
-  Client client = Client();
-  Storage storage = Storage(client);
-
-  client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-  ;
-  // downloading file
-  Future result = storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
-  ).then((bytes) {
-    final file = File('path_to_file/filename.ext');
-    file.writeAsBytesSync(bytes)
-  }).catchError((error) {
-      print(error.response);
-  })
-}
-
-//displaying image preview
-FutureBuilder(
-  future: storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
-  ), //works for both public file and private file, for private files you need to be logged in
-  builder: (context, snapshot) {
-    return snapshot.hasData && snapshot.data != null
-      ? Image.memory(
-          snapshot.data,
+        val result = storage.getFileDownload(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
         )
-      : CircularProgressIndicator();
-  },
-);
-```
-```swift
-import Appwrite
-
-func main() async throws {
-    let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
-    let storage = Storage(client)
-    let byteBuffer = try await storage.getFile(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
-    )
-
-    print(String(describing: byteBuffer)
-}
-```
-```kotlin
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import io.appwrite.Client
-import io.appwrite.services.Storage
-
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
-
-        val storage = Storage(client)
-
-        GlobalScope.launch {
-            val result = storage.getFile(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        println(result); // Resource URL
     }
 }
 ```
@@ -689,13 +576,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFilePreview(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFilePreview(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL
     }
 }
 ```
@@ -795,13 +680,11 @@ class MainActivity : AppCompatActivity() {
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileView(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileView(
+            bucketId = "[BUCKET_ID]",
+            fileId = "[FILE_ID]"
+        )
+        println(result); // Resource URL
     }
 }
 ```

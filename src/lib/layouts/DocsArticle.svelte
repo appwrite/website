@@ -20,10 +20,10 @@
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
-    export let date: string;
+    export let date: string | undefined = undefined;
 </script>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
@@ -129,7 +129,7 @@
             position: absolute;
             content: '';
             top: 0;
-            left: -1.5rem;
+            left: -1.8rem;
             height: 100%;
             width: 2px;
             background-color: hsl(var(--p-references-menu-link-color-text));

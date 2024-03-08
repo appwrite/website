@@ -47,8 +47,7 @@
 <Main>
     <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
         <div
-            class="u-position-absolute"
-            style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
+            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 aw-u-pointer-events-none"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,10 +108,12 @@
                     {#if avatar}
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
-                    <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
-                    {#if role}
-                        <div class="aw-label u-margin-block-start-8">{role}</div>
-                    {/if}
+                    <div>
+                        <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
+                        {#if role}
+                            <div class="aw-label u-margin-block-start-8">{role}</div>
+                        {/if}
+                    </div>
                     {#if bio}
                         <p class="aw-author-section-info aw-description">
                             {bio}

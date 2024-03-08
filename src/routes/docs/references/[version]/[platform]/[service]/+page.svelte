@@ -21,6 +21,11 @@
     import { writable } from 'svelte/store';
     import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
+    import { clickOutside } from '$lib/actions/clickOutside.js';
+    import { Accordion, AccordionItem } from '$lib/components/Accordion';
+    import Request from './(components)/Request.svelte';
+    import Response from './(components)/Response.svelte';
+    import RateLimits from './(components)/RateLimits.svelte';
 
     export let data;
 
@@ -88,9 +93,16 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    {#if $page.params.version !== 'cloud'}
+        <link
+            rel="canonical"
+            href={`https://appwrite.io/docs/references/cloud/${$page.params.platform}/${$page.params.service}`}
+        />
+    {/if}
 </svelte:head>
 
-<main class="u-contents">
+<main class="u-contents" id="main">
     <article class="aw-article u-contents">
         <header class="aw-article-header">
             <div class="aw-article-header-start">
@@ -144,12 +156,24 @@
                 </div>
             </div>
         </header>
-        <div class="aw-article-content">
+        <div class="aw-article-content" style:gap="6rem">
             <section class="aw-article-content-grid-6-4">
                 <div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
+                <div
+                    class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
+                >
+                    <Fence
+                        language="text"
+                        badge="Base URL"
+                        content="https://cloud.appwrite.io/v1"
+                        process
+                        withLineNumbers={false}
+                    />
+                </div>
+
                 {#if data.methods.length === 0}
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
                         <div class="aw-inline-info">
@@ -172,124 +196,21 @@
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html parse(method.description)}
                         </p>
-                        <ul
-                            class="collapsible u-width-full-line"
-                            style="--p-toggle-border-color: var(--aw-color-border);"
-                        >
+                        <Accordion>
                             {#if method.parameters.length > 0}
-                                <li class="collapsible-item">
-                                    <details class="collapsible-wrapper" open>
-                                        <summary class="collapsible-button">
-                                            <span class="text">Request</span>
-                                            <div class="icon aw-u-color-text-primary">
-                                                <span
-                                                    class="icon-cheveron-down"
-                                                    aria-hidden="true"
-                                                />
-                                            </div>
-                                        </summary>
-                                        <div class="collapsible-content">
-                                            <div
-                                                class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                            >
-                                                <ul class="u-flex-vertical">
-                                                    {#each method.parameters as parameter, i}
-                                                        {@const first = i === 0}
-                                                        <li
-                                                            class:u-sep-block-start={!first}
-                                                            class:u-padding-block-start-16={!first}
-                                                            class="u-margin-block-start-16"
-                                                        >
-                                                            <article>
-                                                                <header
-                                                                    class="u-flex u-cross-baseline u-gap-8"
-                                                                >
-                                                                    <span
-                                                                        class="aw-eyebrow aw-u-color-text-primary"
-                                                                    >
-                                                                        {parameter.name}
-                                                                    </span>
-                                                                    <span class="aw-caption-400"
-                                                                        >{parameter.type}</span
-                                                                    >
-                                                                    {#if parameter.required}
-                                                                        <div class="aw-tag">
-                                                                            required
-                                                                        </div>
-                                                                    {/if}
-                                                                </header>
-                                                                <p
-                                                                    class="aw-sub-body-400 u-margin-block-start-16"
-                                                                >
-                                                                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                                                                    {@html parse(
-                                                                        parameter.description
-                                                                    )}
-                                                                </p>
-                                                            </article>
-                                                        </li>
-                                                    {/each}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </details>
-                                </li>
+                                <AccordionItem open={true} title="Request">
+                                    <Request {method} />
+                                </AccordionItem>
                             {/if}
-                            <li class="collapsible-item">
-                                <details class="collapsible-wrapper">
-                                    <summary class="collapsible-button">
-                                        <span class="text">Response</span>
-                                        <div class="icon aw-u-color-text-primary">
-                                            <span class="icon-cheveron-down" aria-hidden="true" />
-                                        </div>
-                                    </summary>
-                                    <div class="collapsible-content">
-                                        <div
-                                            class="aw-card is-transparent u-padding-16 u-margin-block-start-16"
-                                        >
-                                            <ul>
-                                                {#each method.responses as response}
-                                                    {#if response.models}
-                                                        <li>
-                                                            <article>
-                                                                <header
-                                                                    class="u-flex u-cross-baseline u-gap-8"
-                                                                >
-                                                                    <span
-                                                                        class="aw-eyebrow aw-u-color-text-primary"
-                                                                    >
-                                                                        {response.code}
-                                                                    </span>
-                                                                    <span class="aw-caption-400"
-                                                                        >application/json</span
-                                                                    >
-                                                                </header>
-                                                                {#if response.models.length > 0}
-                                                                    <ul
-                                                                        class="aw-sub-body-400 u-margin-block-start-16"
-                                                                    >
-                                                                        {#each response.models as model}
-                                                                            <li>
-                                                                                <a
-                                                                                    class="aw-link"
-                                                                                    href={`/docs/references/${$page.params.version}/models/${model.id}`}
-                                                                                >
-                                                                                    {model.name}
-                                                                                </a>
-                                                                            </li>
-                                                                        {/each}
-                                                                    </ul>
-                                                                {/if}
-                                                            </article>
-                                                        </li>
-                                                    {/if}
-                                                {/each}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </details>
-                            </li>
-                        </ul>
+                            <AccordionItem title="Response">
+                                <Response {method} />
+                            </AccordionItem>
+                            {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
+                                <AccordionItem title="Rate limits">
+                                    <RateLimits {method} {platformType} />
+                                </AccordionItem>
+                            {/if}
+                        </Accordion>
                     </div>
                     <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
                         <div class="u-contents theme-dark">
@@ -298,18 +219,32 @@
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
                             >
                                 <Fence
-                                    language={platform}
-                                    content={method.demo}
+                                    language="text"
+                                    badge="Endpoint"
+                                    content="{method.method.toUpperCase()} {method.url}"
+                                    toCopy={method.url}
                                     process
                                     withLineNumbers={false}
                                 />
+                                <div class="u-margin-block-start-24">
+                                    <Fence
+                                        language={platform}
+                                        content={method.demo}
+                                        process
+                                        withLineNumbers={false}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
             {/each}
         </div>
-        <aside class="aw-references-menu" class:is-open={$layoutState.showReferences}>
+        <aside
+            class="aw-references-menu"
+            class:is-open={$layoutState.showReferences}
+            use:clickOutside={() => ($layoutState.showReferences = false)}
+        >
             {#if data.methods.length > 0}
                 <button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
                     <span class="icon-menu-alt-4" aria-hidden="true" />

@@ -9,8 +9,8 @@ x-update-config: &x-update-config
   update_config:
     order: stop-first
     failure_action: rollback
-    parallelism: 2
-    delay: 5s
+    parallelism: 1
+    delay: 10s
   rollback_config:
     failure_action: pause
     monitor: 5s
@@ -49,29 +49,40 @@ services:
     networks:
       - cloud
     deploy:
-      replicas: 1
+      replicas: 3
       <<: *x-update-config
       placement:
+        max_replicas_per_node: 1
         constraints:
           - node.role == manager
+        preferences:
+          - spread: node.role == worker
 
   server:
     image: ghcr.io/appwrite/website:$_APP_VERSION
     <<: *x-logging
     networks:
       - cloud
+    environment:
+      - PUBLIC_APPWRITE_PROJECT_INIT_ID
+      - PUBLIC_APPWRITE_PROJECT_ID
+      - PUBLIC_APPWRITE_DB_MAIN_ID
+      - PUBLIC_APPWRITE_COL_THREADS_ID
+      - PUBLIC_APPWRITE_COL_MESSAGES_ID
+      - PUBLIC_APPWRITE_FN_TLDR_ID
     deploy:
       <<: *x-update-config
       mode: replicated
-      replicas: 5
+      replicas: 8
       placement:
         max_replicas_per_node: 2
         constraints:
           - node.role == worker
-        preferences: 
+        preferences:
           - spread: node.role == worker
       labels:
         - traefik.enable=true
+        - traefik.docker.lbswarm=true
         - traefik.constraint-label-stack=appwrite
         - traefik.http.services.appwrite_api.loadbalancer.server.port=3000
         #http
@@ -94,7 +105,7 @@ services:
     environment:
       - TIME_BETWEEN_RUNS=3600
       - UNUSED_TIME=6h
-  
+
   sematext-agent:
     image: sematext/agent:latest
     environment:

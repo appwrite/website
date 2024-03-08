@@ -25,7 +25,7 @@
   }
   
   
-  .icon-cheveron-down {
+  [class*='icon-cheveron-'] {
     position:absolute; inset-block:0; inset-inline-end:pxToRem(8);
     display:grid; place-content:center; pointer-events:none;
   }

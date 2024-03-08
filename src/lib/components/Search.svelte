@@ -71,25 +71,25 @@
         {
             uid: 'recommended-references-account',
             url: '/docs/references/cloud/client-web/databases',
-            h1: 'References',
+            h1: 'API reference',
             h2: 'Databases'
         },
         {
             uid: 'recommended-references-teans',
             url: '/docs/references/cloud/client-web/teams',
-            h1: 'References',
+            h1: 'API reference',
             h2: 'Teams'
         },
         {
             uid: 'recommended-references-databases',
             url: '/docs/references/cloud/client-web/databases',
-            h1: 'References',
+            h1: 'API reference',
             h2: 'Databases'
         },
         {
             uid: 'recommended-references-storage',
             url: '/docs/references/cloud/client-web/storage',
-            h1: 'References',
+            h1: 'API reference',
             h2: 'Storage'
         }
     ];
@@ -136,6 +136,10 @@
             $layoutState.showSearch = false;
         }
     }
+
+    function getRelevantSubtitle(hit: Hit): string {
+        return hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6 ?? null;
+    }
 </script>
 
 <svelte:window on:keydown={handleKeypress} />
@@ -169,6 +173,7 @@
             bind:value
             placeholder="Search in docs"
             style="border-end-start-radius:0; border-end-end-radius:0;"
+            style:inline-size="100%"
             use:melt={$input}
             bind:this={inputEl}
             data-hit="-1"
@@ -189,6 +194,7 @@
                         <h6 class="aw-eyebrow">{results.length} results found</h6>
                         <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
                             {#each results as hit, i (hit.uid)}
+                                {@const relevantSubtitle = getRelevantSubtitle(hit)}
                                 <li>
                                     <a
                                         data-hit={i}
@@ -202,10 +208,11 @@
                                     >
                                         <div class="aw-u-trim-1">
                                             <span class="aw-u-color-text-secondary">{hit.h1}</span>
-                                            {#if hit.h2}
+                                            {#if relevantSubtitle}
                                                 <span class="aw-u-color-text-secondary"> / </span>
-                                                <span class="aw-u-color-text-primary">{hit.h2}</span
-                                                >
+                                                <span class="aw-u-color-text-primary">
+                                                    {relevantSubtitle}
+                                                </span>
                                             {/if}
                                         </div>
                                         {#if hit.p}

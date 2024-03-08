@@ -1,6 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
-    import { currentTheme, themeInUse } from '$routes/+layout.svelte';
+    import { themeInUse } from '$routes/+layout.svelte';
 
     $: platforms = [
         {
@@ -38,6 +38,11 @@
             href: '/docs/quick-starts/angular',
             image: `/images/platforms/${$themeInUse}/angular.svg`
         },
+         {
+            name: 'Refine',
+            href: '/docs/quick-starts/refine',
+            image: `/images/platforms/${$themeInUse}/refine.svg`
+        },
         {
             name: 'Apple',
             href: '/docs/quick-starts/apple',
@@ -47,7 +52,8 @@
             name: 'Android',
             href: '/docs/quick-starts/android',
             image: `/images/platforms/${$themeInUse}/android.svg`
-        }
+        },
+       
     ] as Array<{
         name: string;
         href: string;
@@ -59,8 +65,8 @@
     {#each platforms as platform}
         <Tooltip>
             <li>
-                <a href={platform.href} class="aw-box-icon has-border-gradient">
-                    <img src={platform.image} alt="{platform.name} Logo" width="32" height="32" />
+                <a href={platform.href} class="aw-icon-button aw-box-icon has-border-gradient">
+                    <img src={platform.image} alt="{platform.name} quick start" width="32" height="32" />
                 </a>
             </li>
             <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
