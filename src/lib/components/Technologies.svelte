@@ -53,11 +53,6 @@
             href: '/docs/quick-starts/android',
             image: `/images/platforms/${$themeInUse}/android.svg`
         },
-        {
-            name: 'React Native',
-            href: '/docs/quick-starts/react-native',
-            image: `/images/platforms/${$themeInUse}/react.svg`
-        },
        
     ] as Array<{
         name: string;
