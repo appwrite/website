@@ -12,7 +12,7 @@ We can now implement our sign up page. Create a `+page.svelte` file in the `src/
 <form method="post">
 	<input id="email" placeholder="Email" type="email" />
 	<input id="password" placeholder="Password" type="password" />
-	<button type="submit">Sign in</button>
+	<button type="submit">Sign up</button>
 </form>
 ```
 

@@ -14,9 +14,9 @@ To redirect, add a button to our sign up page that redirects the user to the OAu
 
 <!-- ... existing sign up form -->
 
-<form action="/oauth2" method="post">
+<form action="/oauth" method="post">
   <input type="hidden" name="provider" value="github" />
-  <button type="submit">Sign in with GitHub</button>
+  <button type="submit">Sign up with GitHub</button>
 </form>
 ```
 
@@ -43,7 +43,7 @@ export const POST = async ({ redirect, url }) => {
 };
 ```
 
-The `createOAuth2Token` method returns a URL to the OAuth provider. After authentication the OAuth provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
+The `createOAuth2Token` method returns a URL to the OAuth provider. After authentication the OAuth provider redirects the user back to the `/oauth` route with the `userId` and `secret` URL query parameters.
 
 Create a new `GET` route to handle the callback and create a session for the user.
 
