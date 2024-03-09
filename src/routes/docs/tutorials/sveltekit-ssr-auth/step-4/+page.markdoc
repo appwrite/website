@@ -13,12 +13,12 @@ Create a new file in the `src/hooks` directory called `server.js`:
 import { createSessionClient } from '$lib/server/appwrite';
 
 export async function handle({ event, resolve }) {
-	// Use our helper function to create the Appwrite client.
-	const { account } = createSessionClient(event);
-
-	// Let's store the current logged in user in locals,
-	// for easy access in our other routes.
 	try {
+		// Use our helper function to create the Appwrite client.
+		const { account } = createSessionClient(event);
+
+		// Store the current logged in user in locals,
+		// for easy access in our other routes.
 		event.locals.user = await account.get();
 	} catch {}
 
@@ -57,8 +57,8 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ locals }) {
 	// Access our user from locals.
 	if (!locals.user) {
-		// If no user is logged in, redirect to the sign in page.
-		throw redirect(301, '/signin');
+		// If no user is logged in, redirect to the sign up page.
+		throw redirect(301, '/signup');
 	}
 
 	// If the user is logged in, redirect to the account page.
@@ -66,4 +66,4 @@ export async function load({ locals }) {
 }
 ```
 
-When a user visits the home page, they will be redirected to the sign in page if they are not logged in, or to the account page if they are logged in.
+When a user visits the home page, they will be redirected to the sign up page if they are not logged in, or to the account page if they are logged in.

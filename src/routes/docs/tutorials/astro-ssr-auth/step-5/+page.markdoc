@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Create sign in page
+title: Create sign up page
 description: Add authentication to a Astro project using Appwrite.
 step: 5
 ---
 
-We can now implement our sign in page. Create a `signin.astro` file in the `src/pages` directory:
+We can now implement our sign up page. Create a `signin.astro` file in the `src/pages` directory:
 
 ```js
 ---

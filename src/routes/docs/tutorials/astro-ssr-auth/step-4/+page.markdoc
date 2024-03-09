@@ -8,6 +8,7 @@ step: 4
 Astro middleware are functions that run on the server before a page is displayed to the user. Astro locals are a way to store data that is specific to the current request. We can use these features to store the user's account data, so that it is available to all pages.
 
 Create a new file in the `src/server` directory called `middleware.js`:
+
 ```js
 // src/server/middleware.js
 import { defineMiddleware } from "astro:middleware";
@@ -40,7 +41,7 @@ declare namespace App {
 
 interface ImportMetaEnv {
   readonly PUBLIC_APPWRITE_ENDPOINT: string;
-  readonly PUBLIC_APPWRITE_PROJECT_ID: string;
+  readonly PUBLIC_APPWRITE_PROJECT: string;
   readonly APPWRITE_KEY: string;
 }
 
@@ -58,8 +59,8 @@ if (user) {
   return Astro.redirect("/account");
 }
 
-return Astro.redirect("/signin");
+return Astro.redirect("/signup");
 ---
 ```
 
-When a user visits the home page, they will be redirected to the sign in page if they are not logged in, or to the account page if they are logged in.
+When a user visits the home page, they will be redirected to the sign up page if they are not logged in, or to the account page if they are logged in.
