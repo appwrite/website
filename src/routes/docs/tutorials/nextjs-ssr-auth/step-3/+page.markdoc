@@ -60,7 +60,7 @@ Doing so could create security vulnerabilities.
 
 For example, your `.env` might look something similar to this.
 
-```text
+```env
 NEXT_APPWRITE_KEY=<YOUR_API_KEY>
 NEXT_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 NEXT_PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
@@ -75,7 +75,7 @@ You can get the values for these variables from the Appwrite console.
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write accounts and sessions.
+The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to create new sessions.
 
 For this tutorial you'll need an API key with the following scopes:
 
