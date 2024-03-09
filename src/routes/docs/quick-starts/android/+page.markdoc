@@ -112,7 +112,7 @@ object Appwrite {
         email: String,
         password: String,
     ): Session {
-        return account.createEmailSession(
+        return account.createEmailPasswordSession(
             email,
             password,
         )

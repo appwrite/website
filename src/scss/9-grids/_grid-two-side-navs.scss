@@ -36,6 +36,7 @@
     }
     .#{$p}-article-header { gap:0; }
     .#{$p}-references-menu { display:none!important; }
+    .#{$p}-main-footer      {  margin-inline:0; }
   }
 
   @media #{$break2} {

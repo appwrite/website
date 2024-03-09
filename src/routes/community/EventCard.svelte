@@ -10,12 +10,11 @@
         title: string;
         description: string;
         buttonText: string;
+        headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
     };
 </script>
 
 <script lang="ts">
-    import { onMount } from 'svelte';
-
     type $$Props = EventCardProps;
 
     export let href: $$Props['href'];
@@ -25,10 +24,8 @@
     export let title: $$Props['title'];
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
-
-    onMount(() => {
-        // any logic that needs to run when the component is mounted
-    });
+    export let headingLevel: $$Props['headingLevel'] = 5;
+    $: headingTag = `h${headingLevel}`;
 </script>
 
 <a class="aw-grid-articles-item" {href} target="_blank" rel="noopener noreferrer">
@@ -46,9 +43,12 @@
                 <span class="">{location}</span>
             </li>
         </ul>
-        <h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
+        <svelte:element
+            this={headingTag}
+            class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4"
+        >
             {title}
-        </h5>
+        </svelte:element>
         <p class="aw-sub-body-500">
             {description}
         </p>
