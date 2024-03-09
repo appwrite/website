@@ -1,0 +1,217 @@
+---
+layout: article
+title: Start with Kotlin
+description: Learn to get started with server integrations with Appwrite Kotlin SDK.
+difficulty: beginner
+readtime: 5
+back: /docs/quick-starts
+---
+Learn how to setup your first Kotlin project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+{% info title="Server SDK" %}
+This tutorial is for the Kotlin Server SDK, meant for server and backend applications.
+If you're trying to build a client-side app, like an Android app,
+follow the [Start with Android guide](https://appwrite.io/docs/quick-starts/android).
+{% /info %}
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+{% only_dark %}
+![Server integrations](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Server integrations](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+{% /section %}
+{% section #step-2 step=2 title="Create Kotlin project" %}
+Create a Kotlin application by opening **IntelliJ IDEA** > **New Project** and create a **Kotlin** application.
+This quick start will use **Gradle** as the build system, with the Kotlin DSL. You can follow with Maven or IntelliJ if you're more comfortable.
+
+Follow the wizard and open your new project. 
+
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+Open your `build.gradle.kts` file and implement the following dependency.
+
+```groovy
+dependencies {
+    ... other dependencies
+    implementation("io.appwrite:sdk-for-kotlin:4.1.0")
+}
+```
+
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Open the file `Main.kt` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Databases
+import io.appwrite.models.Database
+import io.appwrite.models.Collection
+import kotlinx.coroutines.coroutineScope
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+```
+
+{% /section %}
+{% section #step-5 step=5 title="Initialize database" %}
+
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
+
+```kotlin
+val databases = Databases(client)
+
+var todoDatabase: Database? = null
+var todoCollection: Collection? = null
+
+suspend fun prepareDatabase() {
+    todoDatabase = databases.create(ID.unique(), "TodosDB")
+    todoCollection = databases.createCollection(todoDatabase?.id!!, ID.unique(), "Todos")
+
+    databases.createStringAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "title",
+        size = 255,
+        required = true
+    )
+
+    databases.createStringAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "description",
+        size = 255,
+        required = false,
+        default = "This is a test description."
+    )
+
+    databases.createBooleanAttribute(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        key = "isComplete",
+        required = true
+    )
+}
+```
+
+{% /section %}
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
+```kotlin
+suspend fun seedDatabase() {
+    val testTodo1 = mapOf(
+        "title" to "Buy apples",
+        "description" to "At least 2KGs",
+        "isComplete" to true
+    )
+
+    val testTodo2 = mapOf(
+        "title" to "Wash the apples",
+        "isComplete" to true
+    )
+
+    val testTodo3 = mapOf(
+        "title" to "Cut the apples",
+        "description" to "Don't forget to pack them in a box",
+        "isComplete" to false
+    )
+
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo1
+    )
+
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo2
+    )
+
+    databases.createDocument(
+        databaseId = todoDatabase?.id!!,
+        collectionId = todoCollection?.id!!,
+        documentId = ID.unique(),
+        data = testTodo3
+    )
+}
+```
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data.
+
+```kotlin
+suspend fun getTodos() {
+    val todos = databases.listDocuments(todoDatabase?.id!!, todoCollection?.id!!)
+    for (todo in todos.documents) {
+        println(
+            """
+            Title: ${todo.data["title"]}
+            Description: ${todo.data["description"]}
+            Is Todo Complete: ${todo.data["isComplete"]}
+            """.trimIndent()
+        )
+    }
+}
+
+suspend fun main() = coroutineScope {
+    prepareDatabase()
+    seedDatabase()
+    getTodos()
+}
+```
+
+{% /section %}
+
+{% section #step-8 step=8 title="All set" %}
+
+Run your project with IntelliJ and view the response in your console.
+
+{% /section %}

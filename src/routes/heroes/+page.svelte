@@ -23,17 +23,6 @@
             avatar: 'images/heroes/avatars/diana.png'
         },
         {
-            name: 'Stephen Simon',
-            role: 'Community Director',
-            bio: "Stephen Simon leads one of the world's largest developer communities and has been instrumental in\
-						developing and implementing strategies to foster a sense of belonging and connection among community members.\
-						He also currently works on React and Azure.",
-            github: 'https://github.com/codewithsimon',
-            twitter: 'https://twitter.com/codewithsimon',
-            linkedin: 'https://www.linkedin.com/in/codewithsimon',
-            avatar: 'images/heroes/avatars/stephen.png'
-        },
-        {
             name: 'Lucas Audart',
             role: 'Web Consultant',
             bio: 'Lucas is a web consultant at Zenika who specializes in front-end technologies and has spoken about\
@@ -74,13 +63,22 @@
             avatar: 'images/heroes/avatars/mickael.png'
         },
         {
-            name: 'Emilia',
-            role: 'Software Engineer',
-            bio: "Emilia is a current student who actively focuses on system administration and coding. She likes working with Docker, Linux, Svelte, and Go, is currently exploring Envoy proxy, Crowdsec, Kubernetes, and Rust, and happens to be one of the most active contributors in Appwrite's Discord community.",
-            github: 'https://github.com/Emiliaaah',
-            twitter: 'https://twitter.com/CodingEmilia',
-            linkedin: 'https://www.linkedin.com/in/emilia-van-der-ploeg',
-            avatar: 'images/heroes/avatars/emilia.png'
+            name: 'Jason Torres',
+            role: 'Freelance Community Manager',
+            bio: "Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.",
+            github: 'https://github.com/jasonetorres',
+            twitter: 'https://twitter.com/tasonjorres',
+            linkedin: 'https://www.linkedin.com/in/thejasontorres',
+            avatar: 'images/heroes/avatars/jason.png'
+        },
+        {
+            name: 'Nishant Jain',
+            role: 'Frontend Developer',
+            bio: "Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.",
+            github: 'https://github.com/Nishantjain10',
+            twitter: 'https://twitter.com/devnishant10',
+            linkedin: 'https://www.linkedin.com/in/nishantj2002/',
+            avatar: 'images/heroes/avatars/nishant.png'
         }
     ];
 
@@ -332,6 +330,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .hero {
         display: grid;
         grid-template-columns: 30.0625rem minmax(0, 1fr);
@@ -440,7 +440,7 @@
             } /* items */
 
             .carousel-img {
-                @include border-gradient;
+                @include gradients.border-gradient;
                 --m-border-gradient-before: linear-gradient(
                     135.1deg,
                     #ffffff 10.1%,

@@ -3,6 +3,8 @@
     import ThemeSelect from './ThemeSelect.svelte';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
+
+    const year = new Date().getFullYear()
 </script>
 
 {#if variant === 'homepage'}
@@ -22,7 +24,7 @@
                 </li>
             {/each}
         </ul>
-        <div>Copyright © 2023 Appwrite</div>
+        <div>Copyright © {year} Appwrite</div>
     </footer>
 {:else if variant === 'docs'}
     <footer
@@ -61,7 +63,7 @@
 				</li> -->
             </ul>
             <div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
-                Copyright © 2023 Appwrite
+                Copyright © {year} Appwrite
             </div>
         </div>
     </footer>

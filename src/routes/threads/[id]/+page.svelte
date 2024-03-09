@@ -36,7 +36,7 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-container" style="padding-block-end: 0;">
+    <div class="aw-container aw-u-padding-block-end-0">
         <div class="header">
             <div>
                 <a class="aw-link is-secondary u-cross-baseline" href="/threads">
@@ -57,10 +57,7 @@
                 </ul>
             </div>
             <div class="buttons">
-                <a
-                    class="aw-button"
-                    href={discordLink}
-                >
+                <a class="aw-button" href={discordLink}>
                     <span class="aw-icon-discord" />
                     <span class="text">View on Discord</span>
                 </a>
@@ -73,13 +70,8 @@
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
                         {#if isFirst}
-                            <div class="aw-inline-info" style:margin-block-start="1.5rem">
-                                <span
-                                    class="aw-sub-body-500 aw-u-color-text-primary"
-                                    style:display="block"
-                                >
-                                    TL;DR
-                                </span>
+                            <div class="aw-inline-info aw-u-margin-block-start-24">
+                                <div class="aw-sub-body-500 aw-u-color-text-primary">TL;DR</div>
                                 {data.tldr}
                             </div>
                         {/if}
@@ -90,10 +82,7 @@
                     <p class="aw-sub-body-500 u-margin-block-start-16">
                         Reply to this thread by joining our Discord
                     </p>
-                    <a
-                        class="aw-button u-margin-block-start-24"
-                        href={discordLink}
-                    >
+                    <a class="aw-button u-margin-block-start-24" href={discordLink}>
                         <span class="aw-icon-discord" />
                         <span class="text">Reply on Discord</span>
                     </a>
@@ -135,6 +124,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/variables/devices';
+
     .header {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -237,7 +228,7 @@
         }
     }
 
-    @media #{$break1} {
+    @media #{devices.$break1} {
         .header {
             gap: 2rem;
             grid-template-columns: 1fr;

@@ -15,9 +15,7 @@
     &-image { border-radius:pxToRem(8); max-inline-size:100%; }
   }
 
-  &.is-scroll {
-    overflow-x:scroll;
-  }
+  &.is-scroll { overflow-x:scroll; }
 
   #{$theme-dark} & {
     --p-articles-item-bg-color: var(--aw-color-greyscale-850) / 0.94;
