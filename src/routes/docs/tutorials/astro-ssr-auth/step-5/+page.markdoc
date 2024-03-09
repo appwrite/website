@@ -17,7 +17,7 @@ if (user) {
 <form method="POST">
   <input id="email" name="email" placeholder="Email" type="email" />
   <input id="password" name="email" placeholder="Password" type="password" />
-  <button class="button is-full-width" type="submit"> Sign in</button>
+  <button class="button is-full-width" type="submit"> Sign up</button>
 </form>
 ```
 

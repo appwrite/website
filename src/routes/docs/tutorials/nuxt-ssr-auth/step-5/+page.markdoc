@@ -18,7 +18,7 @@ We can now implement our sign up page. Create a `signin.vue` file in the `pages`
       placeholder="Password"
       type="password"
     />
-    <button type="submit">Sign in</button>
+    <button type="submit">Sign up</button>
   </form>
 </template>
 ```

@@ -14,8 +14,8 @@ To redirect, add a button to our sign up page that redirects the user to the OAu
 
 <!-- ... existing sign up form -->
 
-<form action="/oauth2" method="post">
-  <button type="submit">Sign in with GitHub</button>
+<form action="/oauth" method="post">
+  <button type="submit">Sign up with GitHub</button>
 </form>
 ```
 
@@ -39,7 +39,7 @@ export const actions = {
 
         const redirectURL = account.createOAuth2Token(
             OAuthProvider.Github, 
-            `${event.url.origin}/oauth2`,
+            `${event.url.origin}/oauth`,
             `${event.url.origin}/signup`
         );
 
@@ -48,12 +48,12 @@ export const actions = {
 };
 ```
 
-The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
+The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth` route with the `userId` and `secret` URL query parameters.
 
-Handle the callback and create a session for the user. Create a new server route at `src/routes/oauth2/+server.js`:
+Handle the callback and create a session for the user. Create a new server route at `src/routes/oauth/+server.js`:
 
 ```js
-// src/routes/oauth2/+server.js
+// src/routes/oauth/+server.js
 
 import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite';
 

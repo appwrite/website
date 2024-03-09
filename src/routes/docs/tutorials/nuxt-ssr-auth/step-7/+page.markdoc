@@ -14,16 +14,16 @@ To redirect, add a button to our sign up page that redirects the user to the OAu
 
 <!-- ... existing sign up form -->
 
-<form action="/api/oauth2" method="post">
+<form action="/api/oauth" method="post">
   <input type="hidden" name="provider" value="github" />
-  <button type="submit">Sign in with GitHub</button>
+  <button type="submit">Sign up with GitHub</button>
 </form>
 ```
 
 Add a new server route to handle the redirect.
 
 ```js
-// server/routes/api/oauth2.post.js
+// server/routes/api/oauth.post.js
 import { createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
   const redirectUrl = await account.createOAuth2Token(
     "github", // OAuth provider
-    `${config.public.appwriteEndpoint}/api/oauth2`, // Success URL: redirect back to the /oauth2 route
+    `${config.public.appwriteEndpoint}/api/oauth`, // Success URL: redirect back to the /oauth route
     `${config.public.appwriteEndpoint}/signup`      // Failure URL: redirect to the sign up page
   );
 
@@ -41,12 +41,12 @@ export default defineEventHandler(async (event) => {
 });
 ```
 
-The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
+The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth` route with the `userId` and `secret` URL query parameters.
 
-Handle the callback and create a session for the user. Create a new server route at `server/routes/api/oauth2.get.js`.
+Handle the callback and create a session for the user. Create a new server route at `server/routes/api/oauth.get.js`.
 
 ```js
-// server/routes/api/oauth2.post.js
+// server/routes/api/oauth.post.js
 import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {

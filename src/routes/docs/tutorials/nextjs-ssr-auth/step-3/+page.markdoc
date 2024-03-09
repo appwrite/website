@@ -51,7 +51,7 @@ export async function createAdminClient() {
 As part of the function, set the current user's session if they are logged in. This is done by accessing the session cookie from the request and calling the `setSession(session)` with the cookie value.
 
 {% info title="Appwrite client security" %}
-Notice that `createAppwriteClient` returns **a new instance** of the Appwrite Client.
+Notice that `createAdminClient` and `createSessionClient` returns **a new instance** of the Appwrite Client.
 When using Appwrite in server-integrations, it's important to **never share a `Client` instance** between two requests.
 Doing so could create security vulnerabilities.
 {% /info %}
