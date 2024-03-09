@@ -4,7 +4,7 @@
     import IphoneSvg from '../(assets)/iphone.svg';
 </script>
 
-<Step title="Step 4 - Send" hideLine>
+<Step title="Step 4: Send" hideLine>
     <div class="wrapper">
         <img src={IphoneSvg} alt="" class="phone" />
         <div class="img-overlay" />
