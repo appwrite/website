@@ -550,20 +550,20 @@ messaging.create_email(
                     <div
                         class="aw-grid-1-1-opt-2 aw-u-gap-64 aw-u-margin-block-start-64 code-snippets"
                     >
-                        <div class="u-flex-vertical u-gap-8">
+                        <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="aw-label aw-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="aw-description">
                                 Subscribe to receive all messages related to a topic.
                             </p>
 
-                            <div class="u-margin-block-start-16" style="margin-block-end: 94px">
+                            <div class="u-margin-block-start-16 u-min-width-0" style="margin-block-end: 94px">
                                 <MultiCodeContextless data={codeTopic} height={450} />
                             </div>
                         </div>
-                        <div class="u-flex-vertical u-gap-8">
+                        <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="aw-label aw-u-color-text-primary">Send a message</h3>
                             <p class="aw-description">Send a message to all targets on a topic.</p>
-                            <div class="u-margin-block-start-16">
+                            <div class="u-margin-block-start-16 u-min-width-0">
                                 <MultiCodeContextless data={codeMessage} height={450} />
                             </div>
                         </div>
