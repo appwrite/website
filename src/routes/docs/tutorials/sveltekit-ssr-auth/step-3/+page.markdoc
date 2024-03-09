@@ -13,7 +13,7 @@ Create a function to build services you need in a file like `src/lib/server/appw
 As part of the function, set the current user's session if they are logged in. This is done by accessing the session cookie from the request and calling the `setSession(session)` with the cookie value.
 
 {% info title="Appwrite client security" %}
-Notice that `createAdminClient` and `createSessionClient` returns **a new instance** of the Appwrite Client.
+Notice that `createAdminClient` and `createSessionClient` return **a new instance** of the Appwrite Client.
 When using Appwrite in server-integrations, it's important to **never share a `Client` instance** between two requests.
 Doing so could create security vulnerabilities.
 {% /info %}
@@ -64,7 +64,7 @@ export function createSessionClient(event) {
 
 For example, your `.env` might look something similar to this.
 
-```text
+```env
 APPWRITE_KEY=<YOUR_API_KEY>
 PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
@@ -81,7 +81,7 @@ You can get the values for these variables from the Appwrite console.
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write accounts and sessions.
+The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to create new sessions.
 
 For this tutorial you'll need an API key with the following scopes:
 
