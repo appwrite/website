@@ -61,7 +61,6 @@ const languages = {
     cs: csharp,
     css: css,
     groovy: groovy,
-    svelte: xml,
     ini: ini,
     env: ini
 } as const satisfies Record<string, LanguageFn>;
