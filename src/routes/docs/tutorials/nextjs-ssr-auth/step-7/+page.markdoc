@@ -7,7 +7,7 @@ step: 7
 
 # Enable OAuth provider {% #enable-oauth-provider %}
 
-To enable the GitHub OAuth2 provider, navigate to your Appwrite Console > Auth > Settings > OAuth2 Providers > GitHub
+To enable the GitHub OAuth provider, navigate to your Appwrite Console > Auth > Settings > OAuth2 Providers > GitHub
 
 To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider. 
 

@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Create sign in page
+title: Create sign up page
 description: Add authentication to a SvelteKit project using Appwrite.
 step: 5
 ---
 
-We can now implement our sign in page. Create a `+page.svelte` file in the `src/routes/signin` directory:
+We can now implement our sign up page. Create a `+page.svelte` file in the `src/routes/signup` directory:
 
 ```svelte
-<!-- src/routes/signin/+page.svelte -->
+<!-- src/routes/signup/+page.svelte -->
 <form method="post">
 	<input id="email" placeholder="Email" type="email" />
 	<input id="password" placeholder="Password" type="password" />
