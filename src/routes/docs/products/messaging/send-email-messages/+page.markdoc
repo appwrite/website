@@ -18,7 +18,7 @@ SMTP providers. You must configure one of them as a provider.
 {% /only_light %}
 To add a new provider navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**
 and follow the wizard. You can find more details about configuring in the provider guides for
-[Mailgun](/docs/products/messaging/mailgun#configure-provider) and [Sendgird](/docs/products/messaging/sendgrid#configure-provider).
+[Mailgun](/docs/products/messaging/mailgun#configure-provider) and [Sendgrid](/docs/products/messaging/sendgrid#configure-provider).
 
 # Add targets {% #add-targets %}
 In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
@@ -1015,7 +1015,7 @@ let message = try await messaging.createEmail(
 
 
 # Schedule emails {% #schedule-emails %}
-To send an scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
+To send a scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
