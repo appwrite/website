@@ -41,9 +41,12 @@
     }
   }
   &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
-  &-col      { padding-block:pxToRem(19); padding-inline:pxToRem(12); }
+  &-col      {
+    padding-block:pxToRem(19); padding-inline:pxToRem(12);
+    img { max-inline-size:none; max-block-size:none; }
+    }
 
-  /* state of table with-remove outer style */
+    /* state of table with-remove outer style */
   &-scroll:where(.is-remove-outer-styles) {
     border-width:0;
     --p-table-header-bg-color: 0 0 0 / 0;

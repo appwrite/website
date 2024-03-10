@@ -15,7 +15,6 @@ To redirect, add a button to our sign in page that redirects the user to the OAu
 <!-- ... existing sign in form -->
 
 <form action="/oauth2" method="post">
-  <input type="hidden" name="provider" value="github" />
   <button type="submit">Sign in with GitHub</button>
 </form>
 ```
@@ -39,7 +38,7 @@ export const actions = {
         const { account } = createAdminClient();
 
         const redirectURL = account.createOAuth2Token(
-            OAuthProvider.GitHub, 
+            OAuthProvider.Github, 
             `${event.url.origin}/oauth2`,
             `${event.url.origin}/signin`
         );
