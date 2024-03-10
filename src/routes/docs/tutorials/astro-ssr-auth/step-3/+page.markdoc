@@ -13,13 +13,14 @@ Create a function to build services you need in a file like `src/server/appwrite
 As part of the function, set the current user's session if they are logged in. This is done by accessing the session cookie from the request and calling the `setSession(session)` with the cookie value.
 
 {% info title="Appwrite client security" %}
-Notice that `createAppwriteClient` returns **a new instance** of the Appwrite Client.
+Notice that `createAdminClient` and `createSessionClient` returns **a new instance** of the Appwrite Client.
 When using Appwrite in server-integrations, it's important to **never share a `Client` instance** between two requests.
 Doing so could create security vulnerabilities.
 {% /info %}
 
 ```js
 // src/server/appwrite.js
+
 import { Client, Account } from "node-appwrite";
 
 // The name of your cookie that will store the session
@@ -29,7 +30,7 @@ export const SESSION_COOKIE = "my-custom-session";
 export function createAdminClient() {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT)
     .setKey(import.meta.env.APPWRITE_KEY); // Set the API key here!
 
   // Return the services you need
@@ -44,14 +45,16 @@ export function createAdminClient() {
 export function createSessionClient(request) {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT);
 
   // Get the session cookie from the request and set the session
   const cookies = parseCookies(request.headers.get("cookie") ?? "");
   const session = cookies.get(SESSION_COOKIE);
-  if (session) {
-    client.setSession(session);
+  if (!session) {
+    throw new Error("Session cookie not found");
   }
+
+  client.setSession(session);
 
   // Return the services you need
   return {
@@ -72,9 +75,15 @@ function parseCookies(cookies) {
 }
 ```
 
-`import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
+`import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
 
-You can get the values for these variables from the Appwrite console.
+For example, your `.env` might look something similar to this.
+
+```env
+APPWRITE_KEY=<YOUR_API_KEY>
+PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
+```
 
 The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use.
 You can get the values for these variables from the Appwrite console.
@@ -87,7 +96,7 @@ You can get the values for these variables from the Appwrite console.
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write accounts and sessions.
+The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to create new sessions.
 
 For this tutorial you'll need an API key with the following scopes:
 
@@ -103,10 +112,3 @@ For this tutorial you'll need an API key with the following scopes:
 ![Server integrations](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
 
-For example, your `.env` might look something similar to this.
-
-```text
-APPWRITE_KEY=<YOUR_API_KEY>
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
-PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
-```
