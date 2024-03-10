@@ -268,6 +268,9 @@ ID.custom()
 {% /tabsitem %}
 {% /tabs %}
 
+Appwrite generates unique IDs that are both **random** and **ordered**. 
+Appwrite IDs combine a timestamp based on microseconds and a random UID string, formatted as `<timestamp_hex><uid_hex>`.
+
 ## Enums {% #enums %}
 Appwrite has enumeration classes for predefined strings used different parameters used for the Appwrite APIs.
 
