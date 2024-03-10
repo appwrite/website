@@ -19,7 +19,7 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
         }
         switch (token.type) {
             case 'paragraph_open':
-                token.attrPush(['class', 'aw-paragraph']);
+                token.attrPush(['class', 'web-paragraph']);
                 break;
             case 'link_open': {
                 const href = token.attrGet('href');
@@ -29,7 +29,7 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
                         token.attrPush(['target', '_blank']);
                     }
                 }
-                token.attrPush(['class', 'aw-link']);
+                token.attrPush(['class', 'web-link']);
                 break;
             }
         }

@@ -33,39 +33,39 @@
 <Main>
     <div class="hero">
         <div class="desktop-left">
-            <h1 class="aw-display">
+            <h1 class="web-display">
                 <span style:font-weight="500">
-                    <span class="aw-u-color-text-primary">init</span><span
-                        class="aw-u-color-text-accent">_</span
+                    <span class="web-u-color-text-primary">init</span><span
+                        class="web-u-color-text-accent">_</span
                     >
                 </span>
                 launches on February 26th
             </h1>
 
             <div class="info">
-                <p class="aw-label aw-u-color-text-primary">
+                <p class="web-label web-u-color-text-primary">
                     Register today and claim your Init ticket
                 </p>
                 <button
-                    class="aw-button is-full-width u-margin-block-start-16"
+                    class="web-button is-full-width u-margin-block-start-16"
                     on:click={loginGithub}
                 >
-                    <div class="aw-icon-github" />
+                    <div class="web-icon-github" />
                     <span class="text">Register with GitHub account</span>
                 </button>
                 <a
                     href="https://cloud.appwrite.io/login?forceRedirect={$page.url
                         .origin}/init/tickets"
-                    class="aw-button is-full-width is-secondary u-margin-block-start-8"
+                    class="web-button is-full-width is-secondary u-margin-block-start-8"
                 >
-                    <div class="aw-icon-appwrite aw-u-color-text-primary" />
+                    <div class="web-icon-appwrite web-u-color-text-primary" />
                     <span class="text">Register with Appwrite account</span>
                 </a>
                 <p class="u-margin-block-start-16">
-                    By registering, you agree to our <a href="/terms" class="aw-link is-inline"
+                    By registering, you agree to our <a href="/terms" class="web-link is-inline"
                         >Terms and Conditions</a
                     >
-                    and <a href="/privacy" class="aw-link is-inline">Privacy Policy</a>
+                    and <a href="/privacy" class="web-link is-inline">Privacy Policy</a>
                 </p>
             </div>
         </div>
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div class="aw-container">
+    <div class="web-container">
         <FooterNav />
         <MainFooter />
     </div>
