@@ -41,24 +41,24 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="aw-display">
-                    Join <span class="aw-u-color-text-primary" style:font-weight="500">
-                        init<span class="aw-u-color-text-accent">_</span>
+                <h1 class="web-display">
+                    Join <span class="web-u-color-text-primary" style:font-weight="500">
+                        init<span class="web-u-color-text-accent">_</span>
                     </span><br />26 Feb - 1 March
                 </h1>
             </div>
 
             <div class="info">
-                <p class="aw-label u-margin-block-start-16">
+                <p class="web-label u-margin-block-start-16">
                     Register today and claim your Init ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
-                    <a class="aw-button" href="/init/tickets">
+                    <a class="web-button" href="/init/tickets">
                         <span class="text">Get my Init ticket</span>
                     </a>
-                    <button class="aw-button is-secondary" on:click={copy}>
+                    <button class="web-button is-secondary" on:click={copy}>
                         <span
-                            class="aw-icon-{$copied ? 'check' : 'copy'} aw-u-color-text-primary"
+                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
                         />
 
                         <span class="text">Copy ticket URL</span>
@@ -74,7 +74,7 @@
         </TicketPreview>
     </div>
 
-    <div class="aw-container">
+    <div class="web-container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -99,7 +99,7 @@
                     gap: 0.5rem;
                     margin-block-start: 1rem;
 
-                    .aw-button {
+                    .web-button {
                         inline-size: 100%;
                     }
                 }
@@ -108,7 +108,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        .aw-container {
+        .web-container {
             padding-block-start: 0;
 
             :global(nav) {

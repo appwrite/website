@@ -19,13 +19,13 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="aw-eyebrow">NAME</span>
+                        <span class="web-eyebrow">NAME</span>
                     </Th>
                     <Th>
-                        <span class="aw-eyebrow">TYPE</span>
+                        <span class="web-eyebrow">TYPE</span>
                     </Th>
                     <Th>
-                        <span class="aw-eyebrow">DESCRIPTION</span>
+                        <span class="web-eyebrow">DESCRIPTION</span>
                     </Th>
                 </Tr>
             </Thead>
