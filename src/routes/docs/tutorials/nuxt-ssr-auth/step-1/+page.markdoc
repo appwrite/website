@@ -4,6 +4,7 @@ title: Server-side authentication with Nuxt
 description: Add SSR authentication to your Nuxt app with Appwrite
 step: 1
 difficulty: beginner
+draft: true
 readtime: 20
 framework: Nuxt SSR
 category: Auth 
