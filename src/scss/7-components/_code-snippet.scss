@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 .#{$p}-code-snippet {
-  --p-code-snippet-border-color: var(--aw-color-greyscale-800);
-  --p-code-snippet-bg-color: var(--aw-color-greyscale-850);
-  --p-code-snippet-header-bg-color: var(--aw-color-greyscale-800);
+  --p-code-snippet-border-color: var(--web-color-greyscale-800);
+  --p-code-snippet-bg-color: var(--web-color-greyscale-850);
+  --p-code-snippet-header-bg-color: var(--web-color-greyscale-800);
 
   &-header {
     display:flex; justify-content:space-between; align-items: center; gap:pxToRem(16); padding:pxToRem(8);
@@ -19,5 +19,5 @@
     code { white-space:pre; }
   }
 
-  .buttons-list-item:nth-child(n+2)::before { background-color:hsl(var(--aw-color-greyscale-750)); }
+  .buttons-list-item:nth-child(n+2)::before { background-color:hsl(var(--web-color-greyscale-750)); }
 }
