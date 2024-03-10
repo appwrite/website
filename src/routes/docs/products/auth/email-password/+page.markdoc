@@ -32,7 +32,7 @@ Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), 
 
 # Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/client-web/account#createEmailPasswordSession) endpoint.
+After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/server-nodejs/account#createEmailPasswordSession) endpoint.
 
 ```js
 import { Client, Account } from "appwrite";

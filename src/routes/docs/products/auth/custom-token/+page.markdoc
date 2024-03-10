@@ -10,7 +10,7 @@ Custom token allows you to use [Server SDK](/docs/sdks#server) to generate token
 
 # Create custom token {% #create-custom-token %}
 
-Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-node/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
+Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 {% multicode %}
 ```js
@@ -158,7 +158,7 @@ If the client doesn't know the user's ID during authentication, we recommend to 
 
 # Login {% #login %}
 
-Once the client receives a token secret, we can use it to authenticate the user in the application. Use the [Client SDK's](/docs/sdks#client) [Create session endpoint](/docs/references/cloud/client-web/account#createSession) to exchange the token secret for a valid session, which logs the user.
+Once the client receives a token secret, we can use it to authenticate the user in the application. Use the [Client SDK's](/docs/sdks#client) [Create session endpoint](/docs/references/cloud/server-nodejs/account#createSession) to exchange the token secret for a valid session, which logs the user.
 
 {% multicode %}
 

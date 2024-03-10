@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Initialize SDK
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 3
 ---
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint. 
@@ -12,58 +12,87 @@ Create a function to build services you need in a file like `src/lib/server/appw
 As part of the function, set the current user's session if they are logged in. This is done by accessing the session cookie from the request and calling the `setSession(session)` with the cookie value.
 
 {% info title="Appwrite client security" %}
-We recommend creating a new instance of the Appwrite client for each request. This ensures that the client is not shared between requests and that the session is not shared between users.
+Notice that `createAppwriteClient` returns **a new instance** of the Appwrite Client.
+When using Appwrite in server-integrations, it's important to **never share a `Client` instance** between two requests.
+Doing so could create security vulnerabilities.
 {% /info %}
 
 ```js
 // src/lib/server/appwrite.js
 import { Client, Account } from 'node-appwrite';
 import { APPWRITE_KEY } from '$env/static/private';
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
+import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT } from '$env/static/public';
 
 export const SESSION_COOKIE = 'my-custom-session';
 
-export function createAppwriteClient(event) {
-	// Build the Appwrite client
-	const client = new Client()
-		.setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
-		.setProject(PUBLIC_APPWRITE_PROJECT_ID);
+export function createAdminClient() {
+    const client = new Client()
+        .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
+        .setProject(PUBLIC_APPWRITE_PROJECT)
+        .setKey(APPWRITE_KEY); // Set the Appwrite API key!
 
-	// Set the API key for the client
-	client.setKey(APPWRITE_KEY);
+    // Return the services we want to use.
+    return {
+        get account() {
+            return new Account(client);
+        }
+    };
+}
 
-	// Extract our custom domain's session cookie from the request
-	const session = event.cookies.get(SESSION_COOKIE);
-	if (session) client.setSession(session);
+export function createSessionClient(event) {
+    const client = new Client()
+        .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
+        .setProject(PUBLIC_APPWRITE_PROJECT);
 
-	// Return the services we want to use.
-  // This allows us to use syntax like:
-  // import { createAppwriteClient } from '$lib/server/appwrite';
-  //
-  // const { account } = createAppwriteClient(event);
-  // const user = await account.get();
-	return {
-		get account() {
-			return new Account(client);
-		}
-	};
+    // Extract our custom domain's session cookie from the request
+    const session = event.cookies.get(SESSION_COOKIE);
+    if (!session) {
+        throw new Error("No user session");
+    }
+
+    client.setSession(session);
+
+    // Return the services we want to use.
+    return {
+        get account() {
+            return new Account(client);
+        }
+    };
 }
 ```
 
-`APPWRITE_KEY`, `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
+# Environment variables {% #environment-variables %}
 
-You can get the values for these variables from the Appwrite console. The `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are the endpoint and project ID for your Appwrite project. 
+`APPWRITE_KEY`, `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
 
 For example, your `.env` might look something similar to this.
 
 ```text
-APPWRITE_KEY=<YOUR_APPWRITE_KEY>
+APPWRITE_KEY=<YOUR_API_KEY>
 PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
-PUBLIC_APPWRITE_PROJECT_ID=<YOUR_APPWRITE_PROJECT_ID>
+PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
 ```
 
+The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. 
+You can get the values for these variables from the Appwrite console. 
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to read and write accounts and sessions.
+
 For this tutorial you'll need an API key with the following scopes:
-- `accounts.read`
-- `accounts.write`
-- `sessions.read`
-- `sessions.write`
+
+| Category  {% width=120 %} | Required scopes    | Purpose |
+|-----------|---------------------|---------|
+| Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
+
+{% only_dark %}
+![Server integrations](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Server integrations](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}

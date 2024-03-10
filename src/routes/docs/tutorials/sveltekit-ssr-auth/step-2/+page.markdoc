@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create project
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 2
 ---
 
@@ -30,23 +30,23 @@ create-svelte version 3.2.0
 ◇  Add type checking with TypeScript?
 │  Yes, using JavaScript with JSDoc comments
 │
-◇  Select additional options (use arrow keys/space bar)
-│  Add ESLint for code linting
+◇  Select additional options
+│  None
 │
 └  Your project is ready!
 ```
 
-After the prompt is finished, you can head over to the newly create project.
+After the prompt is finished, you can head over to the newly created project.
 
 ```sh
 cd my-svelte-project
 npm install
 ```
 
-# Adding `node-appwrite` to Your Svelte App
+# Install Appwrite {% #install-appwrite %}
 
 Appwrite provides a Node SDK that can be used in your Svelte apps. You can use Appwrite by installing the Node SDK as an NPM package. 
-The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/svelte-auth).
+The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/sveltekit-csr-auth).
 
 ```sh
 npm install node-appwrite
