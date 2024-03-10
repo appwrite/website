@@ -23,7 +23,11 @@ if (user) {
 </form>
 ```
 
-This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Astro form actions, add an `if (Astro.request.method === "POST")` statement to the server-side javascript.
+This is an HTML form with an email and password input. 
+When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. 
+To use Astro form actions, add an `if (Astro.request.method === "POST")` statement to the server-side javascript.
+
+In the same file, implement the following.
 
 ```js
 ---
