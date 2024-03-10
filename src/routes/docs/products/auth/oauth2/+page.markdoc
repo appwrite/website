@@ -36,7 +36,7 @@ const client = new Client()
 const account = new Account(client);
 
 // Go to OAuth provider login page
-account.createOAuth2Session(OAuthProvider.GitHub, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
+account.createOAuth2Session(OAuthProvider.Github, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
 ```
 
 Users will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
