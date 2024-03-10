@@ -39,3 +39,11 @@ Appwrite provides a Node SDK that can be used in your Astro apps. You can use Ap
 ```sh
 npm install node-appwrite
 ```
+
+# Add Node adapter to Astro {% #add-node-to-astro %}
+
+To use Astro as an SSR framework, you need to add the Node adapter to your project. Run the following command:
+
+```sh
+npx astro add node
+```
