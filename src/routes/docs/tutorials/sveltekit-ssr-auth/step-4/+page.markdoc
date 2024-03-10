@@ -30,6 +30,8 @@ export async function handle({ event, resolve }) {
 To ensure the `locals` object is typed correctly, we can add a type definition for it in the `env.d.ts` file:
 
 ```ts
+// env.d.ts
+
 import type { Models } from "node-appwrite";
 
 // See https://kit.svelte.dev/docs/types#app
@@ -48,9 +50,12 @@ declare global {
 export {};
 ```
 
-Now, use the `locals` object in the home page to redirect based on the user's login status. Create a new file in the `src/routes` directory called `+page.server.js`:
+Now, use the `locals` object in the home page to redirect based on the user's login status. 
+Create a new file in the `src/routes` directory called `+page.server.js`:
 
 ```js
+// src/routes/+page.server.js
+
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ locals }) {

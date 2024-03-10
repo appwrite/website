@@ -24,7 +24,7 @@ Add a new server route to handle the redirect.
 ```js
 // src/routes/signup/+page.server.js
 
-import { SESSION_COOKIE, createAdminClient } from "$lib/server/appwrite.js";
+import { SESSION_COOKIE, createAdminClient, createSessionClient } from "$lib/server/appwrite.js";
 import { redirect } from "@sveltejs/kit";
 import { ID, OAuthProvider } from "node-appwrite";
 
