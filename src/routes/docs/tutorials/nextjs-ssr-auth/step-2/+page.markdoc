@@ -27,7 +27,7 @@ Would you like to customize the default import alias (@/*)? No
 What import alias would you like configured? [Enter]
 ```
 
-After the prompt is finished, you can head over to the newly create project.
+After the prompt is finished, you can head over to the newly created project.
 
 ```sh
 cd my-app

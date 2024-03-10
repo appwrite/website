@@ -29,7 +29,7 @@ export const SESSION_COOKIE = "my-custom-session";
 export function createAdminClient() {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT)
     .setKey(import.meta.env.APPWRITE_KEY); // Set the API key here!
 
   // Return the services you need
@@ -44,7 +44,7 @@ export function createAdminClient() {
 export function createSessionClient(request) {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT);
 
   // Get the session cookie from the request and set the session
   const cookies = parseCookies(request.headers.get("cookie") ?? "");
@@ -72,7 +72,7 @@ function parseCookies(cookies) {
 }
 ```
 
-`import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
+`import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
 
 You can get the values for these variables from the Appwrite console.
 

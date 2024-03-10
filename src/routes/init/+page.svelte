@@ -15,6 +15,8 @@
     import Day1 from './(days)/Day1.svelte';
     import Day2 from './(days)/Day2.svelte';
     import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
+    import Day5 from './(days)/Day5.svelte';
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
     import Ticket0 from './(assets)/mock/ticket-0.png';
@@ -63,12 +65,14 @@
             animation: Animations.Enum
         },
         {
-            title: 'XXX',
-            release: addDays(base, 3)
+            title: 'Operators',
+            release: addDays(base, 3),
+            animation: Animations.Operators
         },
         {
-            title: 'XXX',
-            release: addDays(base, 4)
+            title: 'New runtimes',
+            release: addDays(base, 4),
+            animation: Animations.Integrations
         }
     ] as DayType[];
 
@@ -199,6 +203,10 @@
                     <Day2 {date} release={day.release} />
                 {:else if i === 2}
                     <Day3 {date} release={day.release} />
+                {:else if i === 3}
+                    <Day4 {date} release={day.release} />
+                {:else if i === 4}
+                    <Day5 {date} release={day.release} />
                 {:else}
                     <h2 class="aw-eyebrow aw-u-color-text-primary">
                         <div class="aw-dot" />
@@ -252,7 +260,7 @@
             </div>
         </div>
 
-        <div class="tickets">
+        <div class="tickets aw-u-hide-mobile">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 10 } as _}
                 <img
@@ -454,7 +462,7 @@
     }
 
     .events {
-        margin-block-start: 10rem;
+        margin-block-start: 5rem;
         padding-block: 5rem;
 
         border-block: 1px solid hsl(var(--aw-color-offset));
