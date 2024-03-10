@@ -12,7 +12,7 @@ Optionally, add a custom database ID.
 {% section #create-collection step=2 title="Create collection" %}
 Create a collection and name it `My books`. Optionally, add a custom collection ID.
 
-Navigate to **Attributes** and create attributes by clicking **Create attribute** and select **String**. 
+Navigate to **Attributes** and create attributes by clicking **Create attribute** and select **String**.
 Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
 
 Navigate to **Settings** > **Permissions** and add a new role **Any**.
@@ -23,9 +23,9 @@ Check the **CREATE** and **READ** permissions, so anyone can create and read doc
 {% section #create-documents step=3 title="Create documents" %}
 To create a document use the `createDocument` method.
 
-In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example. 
+In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example.
 
-Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`. 
+Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`.
 Then, in the `My books` collection, copy the collection ID, and replace `<COLLECTION_ID>`.
 
 {% multicode %}
@@ -177,7 +177,7 @@ void main() async {
 
     try {
         final documents = await databases.listDocuments(
-            databaseId: '[DATABASE_ID]',
+            databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             queries: [
                 Query.equal('title', 'Hamlet')
@@ -202,8 +202,8 @@ suspend fun main() {
 
     try {
         val documents = databases.listDocuments(
-            databaseId = "[DATABASE_ID]",
-            collectionId = "[COLLECTION_ID]",
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", "Hamlet")
             )
@@ -226,8 +226,8 @@ func main() async throws{
 
     do {
         let documents = try await databases.listDocuments(
-            databaseId: "[DATABASE_ID]",
-            collectionId: "[COLLECTION_ID]",
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", "Hamlet")
             ]

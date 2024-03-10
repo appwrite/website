@@ -1,16 +1,9 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import { preprocessMeltUI } from '@melt-ui/pp';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
-import sequence from 'svelte-sequential-preprocessor';
 import nodeAdapter from '@sveltejs/adapter-node';
-
-function absolute(path) {
-    return join(dirname(fileURLToPath(import.meta.url)), path);
-}
-
-const isVercel = process.env.VERCEL === '1';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -39,10 +32,8 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
-        files: {
-            hooks: {
-                server: isVercel ? undefined : './src/hooks/server.ts'
-            }
+        version: {
+            pollInterval: 60 * 1000
         },
         alias: {
             $routes: './src/routes',
@@ -52,8 +43,27 @@ const config = {
             $markdoc: './src/markdoc'
         },
         prerender: {
-            concurrency: 32
+            concurrency: 32,
+            /**
+             * @type {import('@sveltejs/kit').PrerenderMissingIdHandler}
+             */
+            handleMissingId: ({ path, message }) => {
+                if (path.startsWith('/docs/references/')) {
+                    console.warn(message);
+                    return;
+                }
+                throw new Error(message);
+            }
         }
     }
 };
+
 export default config;
+
+/**
+ * @param {string} path
+ * @returns {string}
+ */
+function absolute(path) {
+    return join(dirname(fileURLToPath(import.meta.url)), path);
+}

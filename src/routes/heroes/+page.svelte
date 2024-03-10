@@ -330,6 +330,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .hero {
         display: grid;
         grid-template-columns: 30.0625rem minmax(0, 1fr);
@@ -438,7 +440,7 @@
             } /* items */
 
             .carousel-img {
-                @include border-gradient;
+                @include gradients.border-gradient;
                 --m-border-gradient-before: linear-gradient(
                     135.1deg,
                     #ffffff 10.1%,

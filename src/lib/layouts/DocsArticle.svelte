@@ -30,9 +30,7 @@
                 {#if back}
                     <a
                         href={back}
-                        class="
-                        aw-button is-text aw-is-only-mobile
-                        aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
+                        class="aw-icon-button aw-is-only-mobile"
                         aria-label="previous page"
                     >
                         <span class="icon-cheveron-left" aria-hidden="true" />
