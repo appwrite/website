@@ -22,7 +22,7 @@ the prompt will be something similar to this.
 ● Yes
 ```
 
-After the prompt is finished, you can head over to the newly create project.
+After the prompt is finished, you can head over to the newly created project.
 
 ```sh
 cd my-nuxt-project

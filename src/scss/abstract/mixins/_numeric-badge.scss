@@ -3,16 +3,18 @@
 
 @mixin numeric-badge {
   --p-numeric-badge-text-color: var(--aw-color-pink-500);
+  --p-numeric-badge-bg-color: calc(var(--aw-color-pink-hue) - 1) 68% 85%;
 
   color: hsl(var(--p-numeric-badge-text-color));
+  background:hsl(var(--p-numeric-badge-bg-color));
 
   display:grid; place-content:center; user-select:none;
   min-inline-size:pxToRem(24); block-size:pxToRem(24); padding-inline:pxToRem(6);
-  background:hsl(var(--aw-color-pink-500) / 0.08);
   border:pxToRem(1) solid hsl(var(--aw-color-pink-500) / 0.32); border-radius:pxToRem(6);
   font-size:pxToRem(14);
 
   #{$theme-dark} & {
     --p-numeric-badge-text-color: var(--aw-color-greyscale-100);
+    --p-numeric-badge-bg-color: calc(var(--aw-color-pink-hue) - 9) 22% 14%;
   }
 }
