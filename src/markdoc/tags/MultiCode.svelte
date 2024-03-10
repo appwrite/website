@@ -44,17 +44,17 @@
 	}
 </script>
 
-<section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
-	<header class="aw-code-snippet-header">
-		<div class="aw-code-snippet-header-start">
+<section class="theme-dark web-code-snippet" aria-label="code-snippet panel">
+	<header class="web-code-snippet-header">
+		<div class="web-code-snippet-header-start">
 			<div class="u-flex u-gap-16">
-				<!-- <div class="aw-tag"><span class="text">Default</span></div> -->
+				<!-- <div class="web-tag"><span class="text">Default</span></div> -->
 			</div>
 		</div>
-		<div class="aw-code-snippet-header-end">
+		<div class="web-code-snippet-header-end">
 			<ul class="buttons-list u-flex u-gap-8">
 				<li class="buttons-list-item u-flex u-cross-child-scenter">
-					<div class="aw-select">
+					<div class="web-select">
 						<select bind:value={$selected}>
 							{#each Array.from($snippets) as language}
 								<option value={language}>{platformMap[language]}</option>
@@ -63,13 +63,13 @@
 						<span class="icon-cheveron-down" aria-hidden="true" />
 					</div>
 				</li>
-				<li class="buttons-list-item aw-u-padding-inline-start-20">
+				<li class="buttons-list-item web-u-padding-inline-start-20">
 					<Tooltip>
 						<button
 							on:click={handleCopy}
-							class="aw-icon-button"
+							class="web-icon-button"
 							aria-label="copy code from code-snippet"
-							><span class="aw-icon-copy" aria-hidden="true" /></button
+							><span class="web-icon-copy" aria-hidden="true" /></button
 						>
 						<svelte:fragment slot="tooltip">
 							{copyText}
@@ -79,5 +79,5 @@
 			</ul>
 		</div>
 	</header>
-	<div class="aw-code-snippet-content"><slot /></div>
+	<div class="web-code-snippet-content"><slot /></div>
 </section>

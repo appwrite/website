@@ -1,10 +1,10 @@
 @use '../../abstract' as *;
 .#{$p}-label {
-  --p-font-family: var(--aw-font-family-aeonik-pro);
-  --p-font-size: var(--aw-font-size-xl);
-  --p-line-height: var(--aw-line-height-md);
-  --p-letter-spacing: var(--aw-letter-spacing-none);
-  --p-font-weight: var(--aw-font-weight-regular);
+  --p-font-family: var(--web-font-family-aeonik-pro);
+  --p-font-size: var(--web-font-size-xl);
+  --p-line-height: var(--web-line-height-md);
+  --p-letter-spacing: var(--web-letter-spacing-none);
+  --p-font-weight: var(--web-font-weight-regular);
 
   font-family: var(--p-font-family);
   font-size: var(--p-font-size);

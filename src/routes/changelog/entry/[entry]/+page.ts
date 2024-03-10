@@ -18,7 +18,7 @@ export const load = async ({ params }) => {
     });
 
     if (!entry) {
-        throw error(404, 'Not found');
+        error(404, 'Not found');
     }
 
     return {

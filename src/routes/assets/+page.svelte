@@ -54,33 +54,32 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="u-position-absolute web-u-pointer-events-none">
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
     <TocRoot activeType="highest">
-        <div class="aw-container">
-            <div class="aw-grid-120-1fr-auto">
-                <header class="aw-grid-120-1fr-auto-header">
-                    <h1 class="aw-title aw-u-color-text-primary">Brand assets</h1>
+        <div class="web-container">
+            <div class="web-grid-120-1fr-auto">
+                <header class="web-grid-120-1fr-auto-header">
+                    <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
                     <button
-                        class="u-flex u-width-full-line aw-u-padding-block-20
-                        aw-u-color-text-primary aw-is-only-mobile
-                       aw-u-margin-inline-32-negative u-margin-block-start-24 aw-u-sep-block"
-                        style="inline-size:100vw"
+                        class="u-flex u-width-full-line web-u-padding-block-20
+                        web-u-color-text-primary web-is-only-mobile
+                       web-u-margin-inline-32-negative u-margin-block-start-24 web-u-sep-block u-width-full-line"
                     >
                         <span
-                            class="aw-container u-flex u-width-full-line u-main-space-between u-cross-center"
+                            class="web-container u-flex u-width-full-line u-main-space-between u-cross-center"
                         >
-                            <span class="aw-description">Table of contents</span>
+                            <span class="web-description">Table of contents</span>
                             <span class="icon-menu-alt-4" aria-hidden="true" />
                         </span>
                     </button>
                 </header>
                 <TocNav />
-                <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
-                    <div class="aw-content">
+                <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
+                    <div class="web-content">
                         <section>
                             <p>
                                 Resources for presenting the Appwrite brand to maintain consistency
@@ -88,16 +87,16 @@
                                 various platforms and materials.
                             </p>
 
-                            <a href="/assets.zip" download class="aw-button u-cross-child-start">
-                                <span class="aw-icon-download" aria-hidden="true" />
+                            <a href="/assets.zip" download class="web-button u-cross-child-start">
+                                <span class="web-icon-download" aria-hidden="true" />
                                 <span>Download assets</span>
                             </a>
                         </section>
 
                         <section id={getSectionId(Section.NAMING)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex web-u-flex-vertical u-gap-8">
                                 <h2
-                                    class="aw-title aw-u-color-text-primary"
+                                    class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.NAMING)}
                                 >
@@ -112,9 +111,9 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOTYPE)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex web-u-flex-vertical u-gap-8">
                                 <h2
-                                    class="aw-title aw-u-color-text-primary"
+                                    class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOTYPE)}
                                 >
@@ -128,8 +127,8 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-100)); block-size:20rem;"
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    web-u-bg-color-neutral-100 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/white.svg"
@@ -137,23 +136,23 @@
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logotype/white.svg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logotype/white.png"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -162,8 +161,8 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/black.svg"
@@ -171,23 +170,23 @@
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logotype/black.svg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logotype/black.png"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -197,8 +196,8 @@
                                 </div>
                             </div>
                             <section>
-                                <div class="u-flex u-flex-vertical u-gap-8">
-                                    <h3 class="aw-label aw-u-color-text-primary">
+                                <div class="u-flex web-u-flex-vertical u-gap-8">
+                                    <h3 class="web-label web-u-color-text-primary">
                                         Co-branding logotypes
                                     </h3>
                                     <p>
@@ -207,8 +206,8 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16
+                                                web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/co-brand.svg"
@@ -220,9 +219,9 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOMARK)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex web-u-flex-vertical u-gap-8">
                                 <h3
-                                    class="aw-title aw-u-color-text-primary"
+                                    class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOMARK)}
                                 >
@@ -237,8 +236,8 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-100)); block-size:20rem;"
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    web-u-bg-color-neutral-100 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -246,23 +245,23 @@
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -271,8 +270,8 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch aw-u-flex-basis-300 u-flex u-main-center u-cross-center aw-u-border-radius-8 aw-u-padding-inline-64"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -280,23 +279,23 @@
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -306,8 +305,8 @@
                                 </div>
                             </div>
                             <section id="">
-                                <div class="u-flex u-flex-vertical u-gap-8">
-                                    <h3 class="aw-label aw-u-color-text-primary">
+                                <div class="u-flex web-u-flex-vertical u-gap-8">
+                                    <h3 class="web-label web-u-color-text-primary">
                                         Co-branding lockups
                                     </h3>
                                     <p>
@@ -316,8 +315,8 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 aw-u-border-radius-8 u-padding-inline-16"
-                                        style="background-color:hsl(var(--aw-color-greyscale-800)); block-size:20rem;"
+                                        class="u-flex u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16
+                                                web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/co-brand.svg"
@@ -330,7 +329,7 @@
 
                         <section id={getSectionId(Section.COLORS)}>
                             <h2
-                                class="aw-title aw-u-color-text-primary"
+                                class="web-title web-u-color-text-primary"
                                 use:visible={{ top: 48 }}
                                 on:visible={handleVisibility(Section.COLORS)}
                             >
@@ -338,37 +337,34 @@
                             </h2>
                             <div class="u-flex u-flex-wrap u-gap-32">
                                 <div
-                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
-                                aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-900)); background-color:#EDEDF0; 
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center u-gap-8
+                                web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-900 web-u-bg-color-neutral-50
+                                web-u-media-ratio-1-1 web-u-min-block-size-160"
                                 >
-                                    <h3 class="aw-label">Light Grey</h3>
-                                    <p class="aw-caption-400">#EDEDF0</p>
+                                    <h3 class="web-label">Light Grey</h3>
+                                    <p class="web-caption-400">#EDEDF0</p>
                                     <div class="buttons | theme-light">
                                         <Copy toCopy="#EDEDF0" />
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | aw-u-sep u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center
-                                u-gap-8 aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-50)); background-color:#19191D;
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center
+                                u-gap-8 web-u-border-radius-8 u-padding-inline-24 web-u-media-ratio-1-1 web-u-min-block-size-160
+                                web-u-text-color-neutral-50 web-u-bg-color-neutral-900"
                                 >
-                                    <h3 class="aw-label">Dark Grey</h3>
-                                    <p class="aw-caption-400">#19191D</p>
+                                    <h3 class="web-label">Dark Grey</h3>
+                                    <p class="web-caption-400">#19191D</p>
                                     <div class="buttons">
                                         <Copy toCopy="#19191D" />
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | u-stretch aw-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
-                                aw-u-border-radius-8 u-padding-inline-24"
-                                    style="color:hsl(var(--aw-color-greyscale-50)); background-color:#FD366E;
-                                aspect-ratio: 1/1; min-block-size: 10rem;"
+                                    class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center u-gap-8
+                                web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-50 web-u-bg-color-primary-500
+                                web-u-aspect-ratio-1-1 web-u-min-block-size-160"
                                 >
-                                    <h3 class="aw-label">Appwrite Pink</h3>
-                                    <p class="aw-caption-400">#FD366E</p>
+                                    <h3 class="web-label">Appwrite Pink</h3>
+                                    <p class="web-caption-400">#FD366E</p>
                                     <div class="buttons">
                                         <Copy toCopy="#FD366E" />
                                     </div>
@@ -377,9 +373,9 @@
                         </section>
 
                         <section id={getSectionId(Section.VISUALS)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex web-u-flex-vertical u-gap-8">
                                 <h2
-                                    class="aw-title aw-u-color-text-primary"
+                                    class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.VISUALS)}
                                 >
@@ -389,32 +385,32 @@
                                     Use these product visuals to enhance your articles,
                                     presentations, and content related to Appwrite.
                                 </p>
-                                <div class="aw-grid-1-1-opt-2 u-gap-32 u-margin-block-start-12">
+                                <div class="web-grid-1-1-opt-2 u-gap-32 u-margin-block-start-12">
                                     <div class="media-wrapper">
                                         <img
-                                            class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line"
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
                                             src="/assets/visuals/dashboard.png"
                                             alt="Dashboard"
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/visuals/dashboard.jpg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href={'/assets/visuals/dashboard.png'}
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -423,29 +419,29 @@
                                     </div>
                                     <div class="media-wrapper">
                                         <img
-                                            class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line"
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
                                             src="/assets/visuals/auth.png"
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/visuals/auth.jpg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href={'/assets/visuals/auth.png'}
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -454,29 +450,29 @@
                                     </div>
                                     <div class="media-wrapper">
                                         <img
-                                            class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line"
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
                                             src="/assets/visuals/databases.png"
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/visuals/databases.jpg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href={'/assets/visuals/databases.png'}
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -486,29 +482,29 @@
 
                                     <div class="media-wrapper">
                                         <img
-                                            class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line"
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
                                             src="/assets/visuals/storage.png"
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/visuals/storage.jpg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href={'/assets/visuals/storage.png'}
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -518,29 +514,29 @@
 
                                     <div class="media-wrapper">
                                         <img
-                                            class="aw-u-border-radius-8 aw-u-media-ratio-16-9 u-width-full-line"
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
                                             src="/assets/visuals/functions.png"
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons">
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href="/assets/visuals/functions.jpg"
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
                                             </a>
                                             <a
-                                                class="aw-button is-secondary"
+                                                class="web-button is-secondary"
                                                 href={'/assets/visuals/functions.png'}
                                                 download
                                             >
                                                 <span
-                                                    class="aw-icon-download"
+                                                    class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
@@ -552,9 +548,9 @@
                         </section>
 
                         <section id={getSectionId(Section.CONTACT)}>
-                            <div class="u-flex u-flex-vertical u-gap-8">
+                            <div class="u-flex web-u-flex-vertical u-gap-8">
                                 <h2
-                                    class="aw-title aw-u-color-text-primary"
+                                    class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.CONTACT)}
                                 >
@@ -564,7 +560,7 @@
                                     Should you require further assistance or have specific needs
                                     beyond what's presented on this page, please don't hesitate to
                                     <a
-                                        class="aw-link"
+                                        class="web-link"
                                         href="/contact-us"
                                         target="_blank"
                                         rel="noopener noreferrer">contact us</a

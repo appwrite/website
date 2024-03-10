@@ -1,9 +1,16 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import Article from '$markdoc/layouts/Article.svelte';
     import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
 
     export let data;
 </script>
+
+<svelte:head>
+  {#if $page.params.version !== 'cloud'}
+      <link rel="canonical" href={`https://appwrite.io/docs/references/cloud/models/${$page.params.model}`} />
+  {/if}
+</svelte:head>
 
 <Article title={data.model.title} description="">
     <article>
@@ -12,13 +19,13 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="aw-eyebrow">NAME</span>
+                        <span class="web-eyebrow">NAME</span>
                     </Th>
                     <Th>
-                        <span class="aw-eyebrow">TYPE</span>
+                        <span class="web-eyebrow">TYPE</span>
                     </Th>
                     <Th>
-                        <span class="aw-eyebrow">DESCRIPTION</span>
+                        <span class="web-eyebrow">DESCRIPTION</span>
                     </Th>
                 </Tr>
             </Thead>

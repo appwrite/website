@@ -7,7 +7,7 @@ description: Seamless sign in with Email OTP authentication in Appwrite. Learn h
 Email OTP (one-time password) authentication lets users create accounts using their email address and log in using a 6 digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url), but can provide better user experience in some scenarios.
 
 {% info title="Email OTP vs Magic URL" %}
-Email OTP sends an email with a 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox. 
+Email OTP sends an email with a 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox.
 Both allow passwordless login flows with different advantages.
 
 | Benefits of Email OTP                                              | Downsides of Email OTP                   |
@@ -179,7 +179,7 @@ let session = try await account.createSession(
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "[SECRET]") {
         _id
         userId
         provider
@@ -209,8 +209,8 @@ const client = new Client()
 const account = new Account(client);
 
 const promise = account.createEmailToken(
-        ID.unique(), 
-        'email@example.com', 
+        ID.unique(),
+        'email@example.com',
         true
     );
 

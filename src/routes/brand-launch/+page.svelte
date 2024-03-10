@@ -2,7 +2,7 @@
     import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute aw-is-only-mobile u-inset-inline-0">
+<div class="u-position-absolute web-is-only-mobile u-inset-inline-0">
     <svg
         class="u-width-full-line"
         xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
     style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);"
 >
     <div
-        class="u-position-absolute u-inset-inline-start-0 aw-u-inset-block-start-100 aw-is-not-mobile"
+        class="u-position-absolute u-inset-inline-start-0 web-u-inset-block-start-100 web-is-not-mobile"
     >
         <img
             src="/images/pages/brand-lunch/left-side-top-brand.png"
@@ -50,7 +50,7 @@
         />
     </div>
     <div
-        class="u-position-absolute u-inset-inline-end-0 aw-u-inset-block-start-100 aw-is-not-mobile"
+        class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-100 web-is-not-mobile"
     >
         <img
             src="/images/pages/brand-lunch/right-side-top-brand.png"
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<div class="u-position-absolute u-width-full-line aw-is-not-mobile">
+<div class="u-position-absolute u-width-full-line web-is-not-mobile">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1728"
@@ -95,41 +95,40 @@
 </div>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-container u-position-relative">
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-1">
+            <div class="web-container u-position-relative">
                 <div
-                    class="aw-big-padding-section-level-2 aw-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto aw-u-margin-block-0"
+                    class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto web-u-margin-block-0"
                     style="block-size:calc(100vh - 6.375rem)"
                 >
-                    <div class="aw-hero aw-u-gap-20">
-                        <h1 class="aw-headline aw-u-color-text-primary">Brand new Appwrite</h1>
-                        <p class="aw-description aw-u-color-text-primary aw-u-opacity-64">
+                    <div class="web-hero web-u-gap-20">
+                        <h1 class="web-headline web-u-color-text-primary">Brand new Appwrite</h1>
+                        <p class="web-description web-u-color-text-primary web-u-opacity-64">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                             diam augue. Praesent sagittis eget ipsum vitae eleifend.
                         </p>
                     </div>
                 </div>
 
-                <div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
-                    <div class="u-stretch u-flex aw-u-flex-vertical-mobile">
+                <div class="web-big-padding-section-level-2 web-u-sep-block-start">
+                    <div class="u-stretch u-flex web-u-flex-vertical-mobile">
                         <div
-                            class="aw-hero is-align-start aw-u-max-width-480 aw-u-padding-block-start-48"
+                            class="web-hero is-align-start web-u-max-width-480 web-u-padding-block-start-48"
                         >
-                            <h2 class="aw-title aw-u-color-text-primary">
+                            <h2 class="web-title web-u-color-text-primary">
                                 All the tools that developers need
                             </h2>
-                            <p class="aw-main-body-500">
+                            <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue. Praesent sagittis eget ipsum vitae eleifend.
                             </p>
                         </div>
                         <div
-                            class="u-stretch u-flex aw-u-margin-inline-auto-mobile aw-u-margin-block-start-40-mobile"
+                            class="u-stretch u-flex web-u-margin-inline-auto-mobile web-u-margin-block-start-40-mobile"
                         >
                             <img
-                                style="margin-block-start:-0.5rem"
-                                class="u-margin-inline-start-auto u-width-full-line u-max-width-500"
+                                class="web-u-margin-block-start-8-negative u-margin-inline-start-auto u-width-full-line u-max-width-500"
                                 src="/images/pages/brand-lunch/box.png"
                                 alt=""
                             />
@@ -137,11 +136,11 @@
                     </div>
                 </div>
 
-                <div class="aw-big-padding-section-level-2 aw-u-sep-block-start">
-                    <div class="aw-grid-1-1-opt-2">
-                        <div class="aw-hero is-align-start aw-u-padding-block-start-40">
-                            <h2 class="aw-title aw-u-color-text-primary">Eliminating complexity</h2>
-                            <p class="aw-main-body-500">
+                <div class="web-big-padding-section-level-2 web-u-sep-block-start">
+                    <div class="web-grid-1-1-opt-2">
+                        <div class="web-hero is-align-start web-u-padding-block-start-40">
+                            <h2 class="web-title web-u-color-text-primary">Eliminating complexity</h2>
+                            <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue.
                             </p>
@@ -154,13 +153,13 @@
                             </div>
                         </div>
                         <div
-                            class="aw-hero is-align-start
-						aw-u-padding-block-start-40 aw-u-sep-inline-start-not-break1 aw-u-padding-inline-start-48-not-break1"
+                            class="web-hero is-align-start
+						web-u-padding-block-start-40 web-u-sep-inline-start-not-break1 web-u-padding-inline-start-48-not-break1"
                         >
-                            <h2 class="aw-title aw-u-color-text-primary">
+                            <h2 class="web-title web-u-color-text-primary">
                                 Allowing you to innovate without limits
                             </h2>
-                            <p class="aw-main-body-500">
+                            <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue. Praesent sagittis eget ipsum vitae eleifend.
                             </p>
@@ -177,17 +176,16 @@
             </div>
         </div>
         <div
-            class="aw-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
+            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
         >
             <div class="u-position-absolute u-inset-inline-start-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
                     viewBox="0 0 698 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.3" filter="url(#filter0_f_3260_125165)">
                         <ellipse
@@ -323,13 +321,12 @@
             </div>
             <div class="u-position-absolute u-inset-inline-end-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
                     viewBox="0 0 874 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.4" filter="url(#filter0_f_3260_125160)">
                         <path
@@ -459,11 +456,11 @@
                     </defs>
                 </svg>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
-                    <div class="aw-hero">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
+                    <div class="web-hero">
                         <p
-                            class="aw-headline aw-u-color-text-primary aw-u-max-width-610 u-margin-inline-auto"
+                            class="web-headline web-u-color-text-primary web-u-max-width-610 u-margin-inline-auto"
                         >
                             Build like a team of hundreds
                         </p>
@@ -472,17 +469,16 @@
             </div>
         </div>
         <div
-            class="aw-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
+            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
         >
             <div class="u-position-absolute u-inset-inline-start-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
                     viewBox="0 0 698 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.3" filter="url(#filter0_f_3260_125165)">
                         <ellipse
@@ -618,13 +614,12 @@
             </div>
             <div class="u-position-absolute u-inset-inline-end-0">
                 <svg
-                    class="aw-u-opacity-40-mobile"
+                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
                     viewBox="0 0 874 900"
                     fill="none"
-                    style="max-inline-size:100%; max-block-size:100%;"
                 >
                     <g opacity="0.4" filter="url(#filter0_f_3260_125160)">
                         <path
@@ -754,8 +749,8 @@
                     </defs>
                 </svg>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
                     <div class="u-flex u-main-center u-cross-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -817,7 +812,7 @@
             </div>
         </div>
         <div
-            class="aw-big-padding-section-level-1 aw-white-section theme-light
+            class="web-big-padding-section-level-1 web-white-section theme-light
         u-position-relative u-padding-0 u-overflow-hidden"
         >
             <div class="u-position-absolute u-inset-inline-end-0">
@@ -1088,10 +1083,10 @@
                     </defs>
                 </svg>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
                     <div
-                        class="u-full-screen-height u-flex-vertical aw-u-gap-80 u-main-center u-cross-center"
+                        class="u-full-screen-height u-flex-vertical web-u-gap-80 u-main-center u-cross-center"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1148,7 +1143,7 @@
                                 fill="#FD366E"
                             />
                         </svg>
-                        <div class="u-flex aw-u-flex-vertical-mobile u-cross-center u-gap-32">
+                        <div class="u-flex web-u-flex-vertical-mobile u-cross-center u-gap-32">
                             <div class="u-flex-vertical u-cross-center u-gap-12">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1164,7 +1159,7 @@
                                         fill="#C3C3C6"
                                     />
                                 </svg>
-                                <div class="aw-caption-400">Our global community</div>
+                                <div class="web-caption-400">Our global community</div>
                             </div>
                             <div>+</div>
                             <div class="u-flex-vertical u-cross-center u-gap-12">
@@ -1197,32 +1192,32 @@
                                         fill="#C3C3C6"
                                     />
                                 </svg>
-                                <div class="aw-caption-400">With a passion for coding</div>
+                                <div class="web-caption-400">With a passion for coding</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
                     <img
                         src="/images/brand/new-brand-grid-mobile.png"
                         alt="brand visual stuff"
-                        class="aw-is-only-mobile"
+                        class="web-is-only-mobile"
                         width="100%"
                     />
                     <img
                         src="/images/brand/new-brand-grid-desktop.png"
                         alt="brand visual stuff"
-                        class="aw-is-not-mobile"
+                        class="web-is-not-mobile"
                         width="100%"
                     />
                 </div>
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative u-padding-0">
+        <div class="web-big-padding-section-level-1 u-position-relative u-padding-0">
             <div class="u-position-absolute u-inset-inline-start-0 u-width-full-line">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1581,27 +1576,27 @@
                     </defs>
                 </svg>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
-                    <div class="aw-grid-1-1-opt-2 u-gap-32 u-main-space-between">
-                        <div class="aw-hero is-align-start aw-u-max-width-480">
-                            <h4 class="aw-title aw-u-color-text-primary">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
+                    <div class="web-grid-1-1-opt-2 u-gap-32 u-main-space-between">
+                        <div class="web-hero is-align-start web-u-max-width-480">
+                            <h4 class="web-title web-u-color-text-primary">
                                 Be a part of #Teamof100
                             </h4>
                             <p
-                                class="aw-main-body-500 u-margin-block-start-4 aw-u-color-text-primary aw-u-opacity-64"
+                                class="web-main-body-500 u-margin-block-start-4 web-u-color-text-primary web-u-opacity-64"
                             >
                                 Join our rebrand celebration by sharing #teamof100 in your socials
                                 for a chance to win brand-new Appwrite swag.
                             </p>
                             <button
-                                class="aw-button is-transparent u-margin-block-start-16 is-full-width-mobile"
+                                class="web-button is-transparent u-margin-block-start-16 is-full-width-mobile"
                             >
-                                <span class="aw-icon-star" aria-hidden="true" />
+                                <span class="web-icon-star" aria-hidden="true" />
                                 <span>Share</span>
                             </button>
                         </div>
-                        <div class="aw-media-container u-flex-basis-250 u-stretch">
+                        <div class="web-media-container u-flex-basis-250 u-stretch">
                             <img
                                 src="/images/brand/t-shirts.png"
                                 alt="brand visual stuff"

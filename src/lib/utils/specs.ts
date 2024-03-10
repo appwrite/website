@@ -1,7 +1,10 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
 
-type SDKMethod = {
+export type SDKMethod = {
+    'rate-limit': number;
+    'rate-time': number;
+    'rate-key': string | string[];
     id: string;
     title: string;
     description: string;
@@ -52,27 +55,38 @@ function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
             return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.0.x':
             return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.1.x':
             return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.2.x':
             return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.3.x':
             return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.4.x':
             return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
+            });
+        case '1.5.x':
+            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
             });
     }
 }
@@ -161,7 +175,8 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 const specs = import.meta.glob(
     '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
     {
-        as: 'raw'
+        query: '?raw',
+        import: 'default'
     }
 );
 async function getSpec(version: string, platform: string) {
@@ -182,7 +197,8 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
 const descriptions = import.meta.glob(
     '/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
     {
-        as: 'raw'
+        query: '?raw',
+        import: 'default'
     }
 );
 
@@ -216,11 +232,10 @@ export async function getService(
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
-    const tag = api.tags?.find((n) => n.name === service);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: tag?.name as Service,
+            name: service as Service,
             description: await getDescription(service)
         },
         methods: []
@@ -289,7 +304,10 @@ export async function getService(
             parameters: parameters ?? [],
             responses: responses ?? [],
             method,
-            url
+            url,
+            'rate-limit': operation['x-appwrite']['rate-limit'],
+            'rate-time': operation['x-appwrite']['rate-time'],
+            'rate-key': operation['x-appwrite']['rate-key']
         });
     }
 

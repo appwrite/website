@@ -10,12 +10,11 @@
         title: string;
         description: string;
         buttonText: string;
+        headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
     };
 </script>
 
 <script lang="ts">
-    import { onMount } from 'svelte';
-
     type $$Props = EventCardProps;
 
     export let href: $$Props['href'];
@@ -25,38 +24,39 @@
     export let title: $$Props['title'];
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
-
-    onMount(() => {
-        // any logic that needs to run when the component is mounted
-    });
+    export let headingLevel: $$Props['headingLevel'] = 5;
+    $: headingTag = `h${headingLevel}`;
 </script>
 
-<a class="aw-grid-articles-item" {href} target="_blank" rel="noopener noreferrer">
-    <div class="aw-grid-articles-item-image">
-        <img src={cover.src} alt={cover.alt} class="aw-u-media-ratio-16-9" />
+<a class="web-grid-articles-item" {href} target="_blank" rel="noopener noreferrer">
+    <div class="web-grid-articles-item-image">
+        <img src={cover.src} alt={cover.alt} class="web-u-media-ratio-16-9" />
     </div>
-    <div class="aw-grid-articles-item-content is-no-gap">
-        <ul class="u-flex u-flex-wrap aw-u-list-inline-dot-sep">
+    <div class="web-grid-articles-item-content is-no-gap">
+        <ul class="u-flex u-flex-wrap web-u-list-inline-dot-sep">
             <li class="u-flex u-cross-baseline u-gap-4">
-                <span class="aw-icon-calendar aw-u-color-text-tertiary" aria-hidden="true" />
+                <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
                 <time class="">{date}</time>
             </li>
             <li class="u-flex u-cross-baseline u-gap-4">
-                <span class="aw-icon-location aw-u-color-text-tertiary" aria-hidden="true" />
+                <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
                 <span class="">{location}</span>
             </li>
         </ul>
-        <h5 class="aw-sub-body-500 aw-u-color-text-primary u-margin-block-start-4">
+        <svelte:element
+            this={headingTag}
+            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-4"
+        >
             {title}
-        </h5>
-        <p class="aw-sub-body-500">
+        </svelte:element>
+        <p class="web-sub-body-500">
             {description}
         </p>
         <div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 mbs-auto">
-            <button class="aw-button is-secondary">
+            <button class="web-button is-secondary">
                 <span>{buttonText}</span>
             </button>
-            <!-- <button class="aw-button is-text">
+            <!-- <button class="web-button is-text">
         <span>Add to calendar</span>
       </button> -->
         </div>
@@ -68,7 +68,7 @@
         margin-block-start: auto;
     }
 
-    .aw-grid-articles-item-content {
+    .web-grid-articles-item-content {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
