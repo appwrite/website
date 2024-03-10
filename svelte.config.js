@@ -1,15 +1,9 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import nodeAdapter from '@sveltejs/adapter-node';
-
-function absolute(path) {
-    return join(dirname(fileURLToPath(import.meta.url)), path);
-}
-
-const isVercel = process.env.VERCEL === '1';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -39,12 +33,7 @@ const config = {
     kit: {
         adapter: nodeAdapter(),
         version: {
-            pollInterval: 60 * 1000,
-        },
-        files: {
-            hooks: {
-                server: isVercel ? undefined : './src/hooks/server.ts'
-            }
+            pollInterval: 60 * 1000
         },
         alias: {
             $routes: './src/routes',
@@ -68,4 +57,13 @@ const config = {
         }
     }
 };
+
 export default config;
+
+/**
+ * @param {string} path
+ * @returns {string}
+ */
+function absolute(path) {
+    return join(dirname(fileURLToPath(import.meta.url)), path);
+}

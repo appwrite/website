@@ -17,7 +17,7 @@ export const load = async ({ depends, params }) => {
   depends(CHANGELOG_DEPENDENCY);
   
   if (params.page === '1') {
-    throw redirect(302, '/changelog');
+    redirect(302, '/changelog');
   }
 
   const page = parseInt(params.page || '1', 10);

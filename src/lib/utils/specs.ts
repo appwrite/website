@@ -4,7 +4,7 @@ import { Platform, type Service } from './references';
 export type SDKMethod = {
     'rate-limit': number;
     'rate-time': number;
-    'rate-key': string;
+    'rate-key': string | string[];
     id: string;
     title: string;
     description: string;
@@ -55,31 +55,38 @@ function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
             return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.0.x':
             return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.1.x':
             return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.2.x':
             return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.3.x':
             return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.4.x':
             return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.5.x':
             return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
     }
 }
@@ -168,7 +175,8 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 const specs = import.meta.glob(
     '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
     {
-        as: 'raw'
+        query: '?raw',
+        import: 'default'
     }
 );
 async function getSpec(version: string, platform: string) {
@@ -189,7 +197,8 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
 const descriptions = import.meta.glob(
     '/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
     {
-        as: 'raw'
+        query: '?raw',
+        import: 'default'
     }
 );
 
