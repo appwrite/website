@@ -2,8 +2,13 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <defs>
+<<<<<<< HEAD:src/icons/output/aw-icon.svg
   <font id="aw-icon" horiz-adv-x="1058.8235294117646">
     <font-face font-family="aw-icon"
+=======
+  <font id="web-icon" horiz-adv-x="1041.6666666666665">
+    <font-face font-family="web-icon"
+>>>>>>> 549424e6e2c321f7ad35f7d72db458956f07f4df:src/icons/output/web-icon.svg
       units-per-em="1000" ascent="800"
       descent="200" />
     <missing-glyph horiz-adv-x="0" />

@@ -44,21 +44,21 @@
 </script>
 
 <section
-    class="theme-dark aw-code-snippet"
+    class="theme-dark web-code-snippet"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'
     }`}
 >
-    <header class="aw-code-snippet-header">
-        <div class="aw-code-snippet-header-start">
+    <header class="web-code-snippet-header">
+        <div class="web-code-snippet-header-start">
             <div class="u-flex u-gap-16">
                 {#if platform}
-                    <div class="aw-tag"><span class="text">{platform}</span></div>
+                    <div class="web-tag"><span class="text">{platform}</span></div>
                 {/if}
             </div>
         </div>
-        <div class="aw-code-snippet-header-end">
+        <div class="web-code-snippet-header-end">
             <ul class="buttons-list u-flex u-gap-12">
                 <li class="buttons-list-item u-flex u-cross-child-scenter">
                     <Select bind:value={selected} bind:options />
@@ -67,9 +67,9 @@
                     <Tooltip>
                         <button
                             on:click={handleCopy}
-                            class="aw-icon-button"
+                            class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="aw-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true" /></button
                         >
                         <svelte:fragment slot="tooltip">
                             {copyText}
@@ -80,7 +80,7 @@
         </div>
     </header>
     <div
-        class="aw-code-snippet-content"
+        class="web-code-snippet-content"
         style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
     >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->

@@ -169,10 +169,10 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section u-overflow-hidden">
-        <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+    <div class="web-big-padding-section u-overflow-hidden">
+        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
             <div
-                class="u-position-absolute aw-u-z-index-1-negative aw-u-hide-mobile"
+                class="u-position-absolute web-u-z-index-1-negative web-u-hide-mobile"
                 style:inline-size="704px"
                 style:block-size="670px"
                 style:left="calc((50% - 704px / 2) + 18rem)"
@@ -180,14 +180,14 @@
             >
                 <img src="/images/community/sphere.png" alt="" />
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-padding-block-end-0 u-position-relative">
-                    <div class="aw-hero is-align-start aw-u-max-width-580">
-                        <h1 class="aw-display aw-u-color-text-primary">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container web-u-padding-block-end-0 u-position-relative">
+                    <div class="web-hero is-align-start web-u-max-width-580">
+                        <h1 class="web-display web-u-color-text-primary">
                             Built by a community of 800+ contributors
                         </h1>
                         <div>
-                            <p class="aw-description">
+                            <p class="web-description">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
@@ -197,7 +197,7 @@
                                     href="/discord"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-button is-full-width-mobile"
+                                    class="web-button is-full-width-mobile"
                                 >
                                     <span class="text">Join our Discord</span>
                                 </a>
@@ -205,11 +205,11 @@
                                     href="https://github.com/appwrite/appwrite/stargazers"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-button is-secondary is-full-width-mobile"
+                                    class="web-button is-secondary is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="aw-icon-star" />
+                                    <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span
+                                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span
                                     >
                                 </a>
                             </div>
@@ -217,9 +217,9 @@
                     </div>
                 </section>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container">
+                    <ul class="web-grid-row-4 web-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
                         {#each metrics as props}
                             <li>
                                 <MetricCard {...props} />
@@ -230,7 +230,7 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative">
+        <div class="web-big-padding-section-level-1 u-position-relative">
             <div class="absolute-container">
                 <div class="green-gradient" />
                 <div class="pink-gradient" />
@@ -250,14 +250,14 @@
                 />
             </div>
 
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container u-position-relative">
-                    <div class="aw-hero is-mobile-center aw-u-gap-20 aw-u-max-width-900">
-                        <h1 class="aw-headline aw-u-color-text-primary">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container u-position-relative">
+                    <div class="web-hero is-mobile-center web-u-gap-20 web-u-max-width-900">
+                        <h1 class="web-headline web-u-color-text-primary">
                             The power of open source benefits us all
                         </h1>
                         <div>
-                            <p class="aw-description">
+                            <p class="web-description">
                                 See contributors of Appwrite since 2019 and discover how you can
                                 start contributing.
                             </p>
@@ -268,7 +268,7 @@
                                     href="https://github.com/appwrite/appwrite/graphs/contributors"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-button is-secondary is-full-width-mobile"
+                                    class="web-button is-secondary is-full-width-mobile"
                                 >
                                     <span>View all contributors</span>
                                 </a>
@@ -279,13 +279,13 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-hero is-align-start">
-                        <h2 class="aw-display aw-u-color-text-primary">Get involved</h2>
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-hero is-align-start">
+                        <h2 class="web-display web-u-color-text-primary">Get involved</h2>
                         <div>
-                            <p class="aw-description">
+                            <p class="web-description">
                                 With every contribution, Appwrite gets better for all of us. Start
                                 contributing today.
                             </p>
@@ -293,58 +293,58 @@
                     </div>
 
                     <div
-                        class="aw-card is-normal u-margin-block-start-32"
+                        class="web-card is-normal u-margin-block-start-32"
                         style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
                     >
                         <div
-                            class="u-flex aw-u-flex-direction-column-mobile
-									aw-u-gap-96 aw-u-row-gap-48"
+                            class="u-flex web-u-flex-direction-column-mobile
+									web-u-gap-96 web-u-row-gap-48"
                         >
                             <div>
-                                <h3 class="aw-label aw-u-color-text-primary">
+                                <h3 class="web-label web-u-color-text-primary">
                                     Check our Open Issues
                                 </h3>
-                                <p class="aw-main-body-500 u-margin-block-start-4">
+                                <p class="web-main-body-500 u-margin-block-start-4">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <a
                                     href="https://github.com/appwrite/appwrite/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-button is-secondary u-margin-block-start-32"
+                                    class="web-button is-secondary u-margin-block-start-32"
                                 >
-                                    <span class="aw-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true" />
                                     <span class="">View all Open Issues</span>
                                 </a>
                             </div>
                             <div class="u-stretch">
-                                <table class="aw-table-line">
-                                    <thead class="aw-table-line-head">
-                                        <tr class="aw-table-line-row">
+                                <table class="web-table-line">
+                                    <thead class="web-table-line-head">
+                                        <tr class="web-table-line-row">
                                             <th
-                                                class="aw-table-line-cell aw-u-color-text-primary u-un-break-text"
+                                                class="web-table-line-cell web-u-color-text-primary u-un-break-text"
                                                 >Issue #</th
                                             >
-                                            <th class="aw-table-line-cell aw-u-color-text-primary"
+                                            <th class="web-table-line-cell web-u-color-text-primary"
                                                 >Title</th
                                             >
                                         </tr>
                                     </thead>
-                                    <tbody class="aw-table-line-body">
+                                    <tbody class="web-table-line-body">
                                         {#each data.issues as issue}
-                                            <tr class="aw-table-line-row">
-                                                <td class="aw-table-line-cell u-un-break-text">
-                                                    <span class="aw-caption-400"
+                                            <tr class="web-table-line-row">
+                                                <td class="web-table-line-cell u-un-break-text">
+                                                    <span class="web-caption-400"
                                                         >#{issue.number}</span
                                                     >
                                                 </td>
-                                                <td class="aw-table-line-cell">
+                                                <td class="web-table-line-cell">
                                                     <div>
                                                         <a
                                                             href={issue.url}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            class="aw-link aw-sub-body-500"
+                                                            class="web-link web-sub-body-500"
                                                         >
                                                             {issue.title}
                                                         </a>
@@ -355,7 +355,7 @@
                                                     >
                                                         {#each issue.tags as tag}
                                                             <li>
-                                                                <div class="aw-tag">{tag}</div>
+                                                                <div class="web-tag">{tag}</div>
                                                             </li>
                                                         {/each}
                                                     </ul>
@@ -369,81 +369,81 @@
                     </div>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <h4 class="aw-label aw-u-color-text-primary">Other ways to help</h4>
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container">
+                    <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
                     <ul
-                        class="grid-box u-gap-32 aw-u-gap-20-mobile u-margin-block-start-20"
+                        class="grid-box u-gap-32 web-u-gap-20-mobile u-margin-block-start-20"
                         style="--grid-item-size:15rem"
                     >
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Create content
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Help others discover Appwrite with videos and blogs.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Present at meetups
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Share your experience and represent Appwrite in public.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Report bugs
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Find bugs and submit PRs to fix them.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Submit new ideas
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Suggest features, integrations, or SDKs for our roadmap.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Improve documentation
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Find improvements in our docs and improve accessibility.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="aw-card is-normal has-border-gradient u-flex-vertical aw-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
                             >
-                                <div class="aw-sub-body-500 aw-u-color-text-primary">
+                                <div class="web-sub-body-500 web-u-color-text-primary">
                                     Helping others
                                 </div>
-                                <div class="aw-sub-body-400">
+                                <div class="web-sub-body-400">
                                     Support developers with their projects and contributions.
                                 </div>
                             </div>
@@ -451,11 +451,11 @@
                     </ul>
                 </section>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container aw-u-sep-block-start aw-u-padding-block-start-64">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container web-u-sep-block-start web-u-padding-block-start-64">
                     <Carousel size="big">
                         <svelte:fragment slot="header">
-                            <h4 class="aw-label aw-u-color-text-primary">Upcoming Events</h4>
+                            <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
                         </svelte:fragment>
                         {#each events as event}
                             <li>
@@ -476,13 +476,13 @@
         </div>
 
         <div
-            class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light"
+            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
         >
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-hero is-center">
-                        <h2 class="aw-display aw-u-color-text-primary">Inspire and get inspired</h2>
-                        <p class="aw-description aw-u-margin-block-start-0">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-hero is-center">
+                        <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
+                        <p class="web-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
@@ -490,12 +490,12 @@
                             href="https://builtwith.appwrite.io"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="aw-button is-secondary aw-u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span>View all projects</span>
                         </a>
                     </div>
-                    <ul class="aw-grid-3-desktop-1-mobile aw-u-margin-block-start-64">
+                    <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
                         {#each projects as project}
                             <li>
                                 <ProjectCard {...project} />
@@ -505,35 +505,35 @@
                 </div>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-1 aw-white-section theme-light">
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-grid-15-25-desktop aw-u-row-gap-48 aw-u-column-gap-96">
-                        <div class="aw-hero is-align-start aw-u-max-width-380">
-                            <div class="aw-display aw-u-color-text-primary">
+        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96">
+                        <div class="web-hero is-align-start web-u-max-width-380">
+                            <div class="web-display web-u-color-text-primary">
                                 Visit the community
                             </div>
-                            <p class="aw-description">
+                            <p class="web-description">
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
-                        <ul class="aw-multi-columns-1" style:--p-col-gap="-1rem">
+                        <ul class="web-multi-columns-1" style:--p-col-gap="-1rem">
                             <li>
                                 <a
                                     href="/discord"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem;rotate: 6deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
-                                            class="icon-discord aw-u-font-size-40"
+                                            class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Discord"
                                         />
                                     </div>
-                                    <div class="aw-title u-margin-block-start-auto">
+                                    <div class="web-title u-margin-block-start-auto">
                                         17K+ members
                                     </div>
                                 </a>
@@ -543,17 +543,17 @@
                                     href="https://twitter.com/intent/follow?screen_name=appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: 2deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
-                                            class="aw-icon-x aw-u-font-size-40"
+                                            class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="X"
                                         />
                                     </div>
-                                    <div class="aw-title u-margin-block-start-auto">
+                                    <div class="web-title u-margin-block-start-auto">
                                         128K+ followers
                                     </div>
                                 </a>
@@ -563,17 +563,17 @@
                                     href="https://github.com/appwrite/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: -10deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
-                                            class="icon-github aw-u-font-size-40"
+                                            class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="GitHub"
                                         />
                                     </div>
-                                    <div class="aw-title u-margin-block-start-auto">
+                                    <div class="web-title u-margin-block-start-auto">
                                         38K+ stargazers
                                     </div>
                                 </a>
@@ -583,17 +583,17 @@
                                     href="https://www.youtube.com/c/appwrite?sub_confirmation=1"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: -6deg"
                                 >
                                     <div class="u-flex-vertical u-main-space-between u-gap-32">
                                         <span
-                                            class="icon-youtube aw-u-font-size-40"
+                                            class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Youtube"
                                         />
                                     </div>
-                                    <div class="aw-title u-margin-block-start-auto">
+                                    <div class="web-title u-margin-block-start-auto">
                                         4K+ subscribers
                                     </div>
                                 </a>
@@ -603,20 +603,20 @@
                 </div>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-grid-1-1-opt-2 u-gap-32">
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-grid-1-1-opt-2 u-gap-32">
                         <div class="">
                             <div
-                                class="aw-u-max-inline-size-none-mobile"
-                                class:aw-u-max-width-380={!submitted}
+                                class="web-u-max-inline-size-none-mobile"
+                                class:web-u-max-width-380={!submitted}
                             >
-                                <section class="u-flex-vertical aw-u-gap-20">
-                                    <h1 class="aw-title aw-u-color-text-primary">
+                                <section class="u-flex-vertical web-u-gap-20">
+                                    <h1 class="web-title web-u-color-text-primary">
                                         Appwrite insights
                                     </h1>
-                                    <p class="aw-description aw-u-padding-block-end-40">
+                                    <p class="web-description web-u-padding-block-end-40">
                                         Sign up to our company blog and get the latest insights from
                                         Appwrite. Learn more about engineering, product design,
                                         building community, and tips & tricks for using Appwrite.
@@ -667,7 +667,7 @@
                                 <div class="u-flex u-flex-vertical u-gap-4">
                                     <label for="name">Your name</label>
                                     <input
-                                        class="aw-input-text"
+                                        class="web-input-text"
                                         type="text"
                                         placeholder="Enter your name"
                                         id="name"
@@ -679,7 +679,7 @@
                                 <div class="u-flex u-flex-vertical u-gap-4">
                                     <label for="email">Your email</label>
                                     <input
-                                        class="aw-input-text"
+                                        class="web-input-text"
                                         type="email"
                                         placeholder="Enter your email"
                                         required
@@ -688,7 +688,7 @@
                                         bind:value={email}
                                     />
                                 </div>
-                                <button type="submit" class="aw-button" disabled={submitting}
+                                <button type="submit" class="web-button" disabled={submitting}
                                     >Sign up</button
                                 >
                                 {#if error}
@@ -703,9 +703,9 @@
             </div>
 
             <div
-                class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
-                <div class="aw-container">
+                <div class="web-container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />
@@ -753,13 +753,13 @@
         bottom: -300px;
     }
 
-    .aw-multi-columns-1 {
-        .aw-card {
-            border: 1px solid hsl(var(--aw-color-offset));
+    .web-multi-columns-1 {
+        .web-card {
+            border: 1px solid hsl(var(--web-color-offset));
         }
         @media (max-width: 1235px) {
             --p-col-gap: 2rem !important;
-            .aw-card {
+            .web-card {
                 rotate: none !important;
             }
         }

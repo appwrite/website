@@ -22,29 +22,29 @@
     <div class="wrapper">
         <div class="calendar" use:melt={$calendar}>
             <header>
-                <button class="aw-icon-button" use:melt={$prevButton}>
-                    <div class="aw-icon-chevron-left" />
+                <button class="web-icon-button" use:melt={$prevButton}>
+                    <div class="web-icon-chevron-left" />
                 </button>
                 <div class="u-flex u-gap-16 u-cross-center">
-                    <div class="aw-label aw-u-color-text-primary" use:melt={$heading}>
+                    <div class="web-label web-u-color-text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
                     <button
-                        class="aw-button is-secondary"
+                        class="web-button is-secondary"
                         on:click={() => value.set(curr)}
                         style="height: min-content; padding-block: 0 !important;"
                     >
                         Today
                     </button>
                 </div>
-                <button class="aw-icon-button" use:melt={$nextButton}>
-                    <div class="aw-icon-chevron-right" />
+                <button class="web-icon-button" use:melt={$nextButton}>
+                    <div class="web-icon-chevron-right" />
                 </button>
             </header>
             {#each $months as month}
                 <div class="grid" use:melt={$grid}>
                     {#each weekdays as day}
-                        <span class="aw-eyebrow">
+                        <span class="web-eyebrow">
                             {day}
                         </span>
                     {/each}
@@ -78,8 +78,8 @@
         </div>
     </div>
 
-    <h3 class="aw-title aw-u-color-text-primary">Schedule your messages</h3>
-    <p class="aw-description">Send messages immediately or schedule them for future delivery.</p>
+    <h3 class="web-title web-u-color-text-primary">Schedule your messages</h3>
+    <p class="web-description">Send messages immediately or schedule them for future delivery.</p>
 </Step>
 
 <style lang="scss">

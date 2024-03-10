@@ -11,8 +11,8 @@
 
         <div class="android">
             <img src={AndroidSvg} alt="" class="android" />
-            <h3 class="aw-title aw-u-color-text-primary">Communicate across multiple channels</h3>
-            <p class="aw-description">
+            <h3 class="web-title web-u-color-text-primary">Communicate across multiple channels</h3>
+            <p class="web-description">
                 Pick one or more channels for you to deliver your message to your user.
             </p>
         </div>

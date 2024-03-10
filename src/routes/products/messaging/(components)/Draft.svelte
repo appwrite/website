@@ -38,8 +38,8 @@
     >
         <div class="inner">
             <div class="header">
-                <h3 class="aw-sub-body-500">Push notification</h3>
-                <div class="aw-icon-close" />
+                <h3 class="web-sub-body-500">Push notification</h3>
+                <div class="web-icon-close" />
             </div>
             <div class="griddy">
                 <div class="sidebar">
@@ -50,12 +50,12 @@
                     </ul>
                 </div>
                 <div class="content">
-                    <h4 class="aw-label aw-u-color-text-primary">Message</h4>
+                    <h4 class="web-label web-u-color-text-primary">Message</h4>
                     <hr />
 
-                    <label class="aw-u-color-text-primary" for="title">Title</label>
+                    <label class="web-u-color-text-primary" for="title">Title</label>
                     <input
-                        class="aw-input-text"
+                        class="web-input-text"
                         style="max-width: 80%"
                         type="text"
                         id="title"
@@ -63,9 +63,9 @@
                         bind:value={title}
                         maxlength="48"
                     />
-                    <label class="aw-u-color-text-primary" for="message">Message</label>
+                    <label class="web-u-color-text-primary" for="message">Message</label>
                     <textarea
-                        class="aw-input-text"
+                        class="web-input-text"
                         style="max-width: 80%"
                         id="message"
                         name="message"
@@ -87,15 +87,15 @@
                 <span>APPWRITE</span>
                 <span>now</span>
             </div>
-            <span class="title aw-caption-500">{title}</span>
+            <span class="title web-caption-500">{title}</span>
             <span class="message">{message}</span>
         </div>
     </div>
     <div class="text">
-        <h3 class="aw-title aw-u-color-text-primary">
+        <h3 class="web-title web-u-color-text-primary">
             Draft and preview your message before delivering it
         </h3>
-        <p class="aw-description u-margin-block-start-24">
+        <p class="web-description u-margin-block-start-24">
             See a preview of your crafted messages on the Console before sending them to your
             audience.
         </p>
@@ -140,7 +140,7 @@
                 padding-inline: 2.5rem;
                 padding-block: 20px;
                 background: hsl(240, 6%, 10%);
-                border-block-end: 1px solid hsl(var(--aw-color-offset));
+                border-block-end: 1px solid hsl(var(--web-color-offset));
                 color: white;
             }
 
@@ -184,7 +184,7 @@
                                 inset-block-end: -40px;
                                 height: 32px;
                                 width: 1px;
-                                border-inline-end: 1px solid hsl(var(--aw-color-offset));
+                                border-inline-end: 1px solid hsl(var(--web-color-offset));
                             }
 
                             &:first-child {
@@ -203,7 +203,7 @@
                     padding: 2.5rem 2rem;
 
                     hr {
-                        border-block-end: 1px solid hsl(var(--aw-color-offset));
+                        border-block-end: 1px solid hsl(var(--web-color-offset));
                         margin-block: 2rem;
                     }
 
@@ -314,7 +314,7 @@
                 gap: 0.375rem;
 
                 [class*='icon'] {
-                    color: hsl(var(--aw-color-accent));
+                    color: hsl(var(--web-color-accent));
                 }
 
                 span:not(:last-child) {
@@ -330,14 +330,14 @@
             .title {
                 display: block;
                 margin-block-start: 0.5rem;
-                color: hsl(var(--aw-color-primary));
+                color: hsl(var(--web-color-primary));
                 overflow-wrap: break-word;
             }
 
             .message {
                 display: block;
                 margin-block-start: 0.25rem;
-                color: hsl(var(--aw-color-text-secondary));
+                color: hsl(var(--web-color-text-secondary));
                 font-size: 0.875rem;
                 overflow-wrap: break-word;
             }

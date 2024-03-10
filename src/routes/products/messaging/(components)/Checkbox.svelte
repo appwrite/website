@@ -20,9 +20,9 @@
 
 <button {id} use:melt={$root} on:click|stopPropagation>
     {#if $isIndeterminate}
-        <div class="aw-icon-minus" />
+        <div class="web-icon-minus" />
     {:else if $isChecked}
-        <div class="aw-icon-check" />
+        <div class="web-icon-check" />
     {/if}
 </button>
 
@@ -56,11 +56,11 @@
         }
 
         &:not([data-state='unchecked']) {
-            background-color: hsl(var(--aw-color-accent));
+            background-color: hsl(var(--web-color-accent));
         }
 
-        > [class^='aw-icon-'] {
-            color: hsl(var(--aw-color-primary));
+        > [class^='web-icon-'] {
+            color: hsl(var(--web-color-primary));
             position: absolute;
             inset-block-start: 50%;
             inset-inline-start: 50%;
