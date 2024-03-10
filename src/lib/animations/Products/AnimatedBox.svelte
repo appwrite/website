@@ -23,7 +23,7 @@
 			rgba(255, 255, 255, 0) 125.11%
 		);
 		border-radius: var(--m-border-radius);
-		background: hsl(var(--aw-color-card));
+		background: hsl(var(--web-color-card));
 		backdrop-filter: blur(8px);
 
 		padding: 0.5rem;
