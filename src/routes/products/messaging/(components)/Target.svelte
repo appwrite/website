@@ -189,7 +189,7 @@
 
 <Step title="Step 2: Target">
     <div class="users-modal is-only-mobile">
-        <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
+        <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
         <Accordion>
             <ul class="accordion-items">
                 {#each users as user, i}
@@ -223,10 +223,10 @@
                                         return next;
                                     }}
                                 />
-                                <span class="aw-sub-body-500 aw-u-color-text-primary">
+                                <span class="web-sub-body-500 web-u-color-text-primary">
                                     {user.name}
                                 </span>
-                                <span class="aw-caption-400">
+                                <span class="web-caption-400">
                                     &nbsp;({selectedDevices}/{user.devices.length} targets)
                                 </span>
                             </div>
@@ -242,7 +242,7 @@
                                         />
                                         <label for="device-{i}-{j}">
                                             <span class="type">{device.type}</span>
-                                            <span class="aw-caption-400">{device.value}</span>
+                                            <span class="web-caption-400">{device.value}</span>
                                         </label>
                                     </li>
                                 {/each}
@@ -253,7 +253,7 @@
             </ul>
         </Accordion>
         <div class="u-flex u-margin-block-start-20">
-            <span class="aw-u-color-text-tertiary" style:font-size="0.75rem">
+            <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
                 Total results: {users.flatMap((u) => u.devices).length}
             </span>
         </div>
@@ -264,7 +264,7 @@
             <span style="font-size: 14px; color: #6C6C71;"
                 >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
             >
-            <button class="aw-button">Add</button>
+            <button class="web-button">Add</button>
         </div>
     </div>
     <div class="wrapper is-only-desktop" bind:this={wrapper}>
@@ -305,7 +305,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="aw-eyebrow aw-u-color-text-primary" data-active={$selected[i]}>
+                    <span class="web-eyebrow web-u-color-text-primary" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -351,7 +351,7 @@
         </svg>
 
         <div class="users-modal">
-            <h3 class="aw-label aw-u-color-text-primary">Select subscribers</h3>
+            <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
             <Accordion>
                 <ul class="accordion-items">
                     {#each users as user, i}
@@ -389,10 +389,10 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="aw-sub-body-500 aw-u-color-text-primary">
+                                    <span class="web-sub-body-500 web-u-color-text-primary">
                                         {user.name}
                                     </span>
-                                    <span class="aw-caption-400">
+                                    <span class="web-caption-400">
                                         &nbsp;({selectedDevices}/{user.devices.length} targets)
                                     </span>
                                 </div>
@@ -408,7 +408,7 @@
                                             />
                                             <label for="device-{i}-{j}">
                                                 <span class="type">{device.type}</span>
-                                                <span class="aw-caption-400">{device.value}</span>
+                                                <span class="web-caption-400">{device.value}</span>
                                             </label>
                                         </li>
                                     {/each}
@@ -419,7 +419,7 @@
                 </ul>
             </Accordion>
             <div class="u-flex u-margin-block-start-20">
-                <span class="aw-u-color-text-tertiary" style:font-size="0.75rem">
+                <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
                     Total results: {users.flatMap((u) => u.devices).length}
                 </span>
             </div>
@@ -430,16 +430,16 @@
                 <span style="font-size: 14px; color: #6C6C71;"
                     >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
                 >
-                <button class="aw-button">Add</button>
+                <button class="web-button">Add</button>
             </div>
         </div>
     </div>
 
     <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
-        <h3 class="aw-title aw-u-color-text-primary u-text-center">
+        <h3 class="web-title web-u-color-text-primary u-text-center">
             Target and group your subscribers
         </h3>
-        <p class="aw-description u-text-center" style:max-inline-size="580px">
+        <p class="web-description u-text-center" style:max-inline-size="580px">
             Segment your users based on topics using list subscriptions to send focused messages.
         </p>
     </div>
@@ -537,10 +537,10 @@
             user-select: none;
 
             > li {
-                border-block-start: 1px solid hsl(var(--aw-color-offset));
+                border-block-start: 1px solid hsl(var(--web-color-offset));
 
                 &:last-child {
-                    border-block-end: 1px solid hsl(var(--aw-color-offset));
+                    border-block-end: 1px solid hsl(var(--web-color-offset));
                 }
 
                 .trigger {
@@ -568,7 +568,7 @@
                         gap: 0.5rem;
 
                         .type {
-                            background: hsl(var(--aw-color-smooth));
+                            background: hsl(var(--web-color-smooth));
                             border-radius: 0.25rem;
                             font-size: 0.75rem;
                             padding-inline: 0.375rem;
@@ -580,7 +580,7 @@
 
         hr {
             margin-inline: -2rem;
-            border-block-end: 1px solid hsl(var(--aw-color-offset));
+            border-block-end: 1px solid hsl(var(--web-color-offset));
             margin-block: 2rem;
         }
     }

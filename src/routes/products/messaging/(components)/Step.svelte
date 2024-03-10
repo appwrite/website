@@ -4,8 +4,8 @@
 </script>
 
 <div class="step" data-hideline={hideLine}>
-    <div class="aw-dot" />
-    <h2 class="aw-eyebrow aw-u-color-text-primary step-title">{title}</h2>
+    <div class="web-dot" />
+    <h2 class="web-eyebrow web-u-color-text-primary step-title">{title}</h2>
     <div class="u-margin-block-start-32 step-content">
         <slot />
     </div>
@@ -13,7 +13,7 @@
 
 <style lang="scss">
     .step {
-        border-inline-start: 1px solid hsl(var(--aw-color-offset));
+        border-inline-start: 1px solid hsl(var(--web-color-offset));
         padding-inline-start: 2rem;
         padding-block-end: var(--padding-block-end);
         position: relative;
@@ -22,7 +22,7 @@
             border: none;
         }
 
-        .aw-dot {
+        .web-dot {
             position: absolute;
             inset-inline-start: calc(calc(var(--p-dot-size) / 2) * -1);
             @media screen and (max-width: 1024px) {

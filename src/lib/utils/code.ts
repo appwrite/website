@@ -25,6 +25,7 @@ import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
 import groovy from 'highlight.js/lib/languages/groovy';
+import ini from 'highlight.js/lib/languages/ini';
 import { Platform } from './references';
 
 const languages = {
@@ -60,7 +61,8 @@ const languages = {
     cs: csharp,
     css: css,
     groovy: groovy,
-    svelte: xml
+    ini: ini,
+    env: ini
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
@@ -119,7 +121,7 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre><code class="aw-code language-${language} ${
+    return `<pre><code class="web-code language-${language} ${
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };

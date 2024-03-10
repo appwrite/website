@@ -78,7 +78,7 @@
 				{
 					label: 'REST',
 					href: '/docs/apis/rest',
-					icon: 'aw-icon-rest'
+					icon: 'web-icon-rest'
 				},
 				{
 					label: 'GraphQL',
@@ -99,7 +99,7 @@
 				{
 					label: 'Command Center',
 					href: '/docs/tooling/command-center',
-					icon: 'aw-icon-command'
+					icon: 'web-icon-command'
 				},
 				{
 					label: 'Assistant',
@@ -114,7 +114,7 @@
 				{
 					label: 'Platform',
 					href: '/docs/advanced/platform',
-					icon: 'aw-icon-platform',
+					icon: 'web-icon-platform',
 					isParent: true
 				},
 				{
