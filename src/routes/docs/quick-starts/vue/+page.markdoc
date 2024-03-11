@@ -44,7 +44,7 @@ npm init vue@latest my-app && cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@13.0.2
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
