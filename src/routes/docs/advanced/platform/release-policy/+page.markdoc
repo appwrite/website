@@ -83,7 +83,8 @@ If you need **extended support** for older versions of Appwrite, [contact us](ht
 
 For our different SDKs, we follow the Semantic Versioning (semver) protocol to assign versions to our releases. This means that we assign version numbers using a three-part system: major, minor, and patch. The major version changes when we make significant changes to our API or product, which may require significant changes to developers' code. The minor version changes when we add new features or functionality that do not significantly impact developers' systems. Finally, the patch version changes when we make bug fixes or minor improvements.
 
-All Appwrite SDKs will have backward compatibility with the Appwrite APIs. In case a new version of the API or product has been released, you should expect your applications to continue working properly without any action from your side. Once we release a major version of the SDK and you decide to upgrade, do look in the changelog of the relevant SDK to understand what changes have been made and what adjustments are required.
+All Appwrite SDKs will have backward compatibility with the Appwrite APIs. In case a new version of the API or product has been released, you should expect your applications to continue working properly without any action from your side. 
+Once we release a major version of the SDK and you decide to upgrade, look in the [changelog of the relevant SDK on GitHub](https://appwrite.io/docs/sdks) to understand what changes have been made and what adjustments are required.
 
 We provide early notice to developers and slowly introduce breaking changes to let developers adjust their application at a reasonable pace. 
 We will also continue to support the last five major versions of each SDK to provide developers with more flexibility and time to adjust their apps to take advantage of new features.
