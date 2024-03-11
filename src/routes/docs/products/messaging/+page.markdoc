@@ -5,6 +5,11 @@ description: Send push notifications, text, or emails to users or groups of user
 back: /docs
 ---
 
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.13`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
+
 Appwrite Messaging helps you communicate with your users through push notifications, emails, and SMS text messages.
 Sending personalized communication for marketing, updates, and realtime alerts can increase user engagement and retention.
 You can also use Appwrite Messaging to implement security checks and custom authentication flows.

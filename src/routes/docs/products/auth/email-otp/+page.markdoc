@@ -3,6 +3,10 @@ layout: article
 title: Email OTP
 description: Seamless sign in with Email OTP authentication in Appwrite. Learn how to provide simple and secure passwordless user accounts.
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.13`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 Email OTP (one-time password) authentication lets users create accounts using their email address and log in using a 6 digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url), but can provide better user experience in some scenarios.
 

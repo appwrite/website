@@ -4,11 +4,11 @@ title: Teams
 description: Master team management in the Appwrite Cloud. Explore team-related functions, permissions, and more.
 ---
 
-Teams are a good way to allow users to share access to resources.
-For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access.
+Teams are a good way to allow users to share access to resources. 
+For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access. 
 You can further give special rights to parts of a team using team roles.
 
-The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user is ever removed from the team, they'll lose access again.
+The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again. 
 
 # Create team {% #create %}
 For example, we can create a team called `teachers` with roles `maths`, `sciences`, `arts`, and `literature`.
@@ -25,7 +25,7 @@ const teams = new Teams(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>') // Your project ID
+    .setProject('5df5acd0d48c2') // Your project ID
 ;
 
 const promise = teams.create(
@@ -49,7 +49,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>') // Your project ID
+    .setProject('5df5acd0d48c2') // Your project ID
   ;
   Future result = teams.create(
     teamId: 'teachers',
@@ -70,7 +70,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("5df5acd0d48c2") // Your project ID
 
 let teams = Teams(client)
 
@@ -86,7 +86,7 @@ import io.appwrite.services.Teams
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("5df5acd0d48c2") // Your project ID
 
 val teams = Teams(client)
 
@@ -113,11 +113,11 @@ const teams = new Teams(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>') // Your project ID
+    .setProject('5df5acd0d48c2') // Your project ID
 ;
 
 const promise = teams.createMembership(
-    'teachers',
+    'teachers', 
     ["maths"],
     "david@example.com"
     );
@@ -137,7 +137,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>') // Your project ID
+    .setProject('5df5acd0d48c2') // Your project ID
   ;
   Future result = teams.createMembership(
     teamId: 'teachers',
@@ -158,7 +158,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("5df5acd0d48c2") // Your project ID
 
 let teams = Teams(client)
 
@@ -174,7 +174,7 @@ import io.appwrite.services.Teams
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("5df5acd0d48c2") // Your project ID
 
 val teams = Teams(client)
 
@@ -191,7 +191,7 @@ val response = teams.createMembership(
 
 You can grant permissions to all members of a team using the `Role.team(<TEAM_ID>)` role or
 individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])` role.
-
+ 
 | Description                                 | Role                               |
 | ------------------------------------------- | ------------------------------------------- |
 | All members   | `Role.team(<TEAM_ID>)`|
@@ -199,5 +199,5 @@ individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>
 
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
-Learn more about permissions
+Learn more about permissions 
 {% /arrow_link %}
