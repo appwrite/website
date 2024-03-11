@@ -4,7 +4,7 @@ title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
 {% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.13`.
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
 This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
 {% /info %}
 
