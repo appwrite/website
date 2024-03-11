@@ -115,8 +115,10 @@ You can review the [list of supported runtimes](/docs/products/functions/runtime
 In most cases, the end-of-life date of a language version or operating system is known well in advance. 
 The links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.  
 
+## Runtimes language {% #runtime-languages %}
+
 {% table %}
-* Language
+* Language {% width=150 %}
 * LTS policy
 ---
 * Node.js
@@ -153,8 +155,9 @@ The links below give end-of-life schedules for each language that Appwrite suppo
 * [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
 {% /table %}
 
+## Runtimes OS {% #runtime-os %}
 {% table %}
-* OS
+* OS {% width=150 %}
 * LTS policy
 ---
 * Alpine
