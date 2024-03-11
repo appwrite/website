@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Magic URL login
-description: Add magic URL to your authentication in Appwrite. Explore the convenience of passwordless login and email-based authentication using magic links."
+description: Add magic URL to your authentication in Appwrite. Explore the convenience of passwordless login and email-based authentication using magic links.
 ---
 
 Magic URL is a password-less way to authenticate users. When a user logs in by providing their email, they will receive an email with a "magic" link that contains a secret used to log in the user. The user can simply click the link to be logged in.

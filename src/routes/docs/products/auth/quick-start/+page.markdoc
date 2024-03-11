@@ -3,7 +3,7 @@ layout: article
 title: Start with Authentication
 description: Effortlessly add authentication to your apps - simple signup & login in just minutes with Appwrite Authentication
 ---
-You can get up and running with Appwrite Authentication in minutes. 
+You can get up and running with Appwrite Authentication in minutes.
 Adding signup and login is as simple as this.
 
 # Sign up {% #sign-up %}
@@ -28,7 +28,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart 
+```dart
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -89,7 +89,7 @@ mutation {
 
 # Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) route.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) method.
 
 {% multicode %}
 ```js

@@ -39,13 +39,13 @@
                 },
                 {
                     title: 'Vue.js',
-                    icon: 'aw-icon-vue',
+                    icon: 'web-icon-vue',
                     image: '/images/blog/placeholder.png',
                     href: 'vue'
                 },
                 {
                     title: 'Nuxt',
-                    icon: 'aw-icon-nuxt',
+                    icon: 'web-icon-nuxt',
                     image: '/images/blog/placeholder.png',
                     href: 'nuxt'
                 },
@@ -57,7 +57,7 @@
                 },
                 {
                     title: 'Refine',
-                    icon: 'aw-icon-refine',
+                    icon: 'web-icon-refine',
                     image: '/images/blog/placeholder.png',
                     href: 'refine'
                 },
