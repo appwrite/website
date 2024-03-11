@@ -115,7 +115,7 @@ Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier**
 
 The Appwrite SDK uses `ASWebAuthenticationSession` on macOS 10.15+ to allow OAuth authentication. You have to change your macOS **Deployment Target** in XCode to be macOS >= 10.15 to be able to build your app for macOS.
 
-In order to capture the Appwrite OAuth2 callback url, the following URL scheme needs to added to your `Info.plist`.
+In order to capture the Appwrite OAuth 2 callback url, the following URL scheme needs to added to your `Info.plist`.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -158,7 +158,7 @@ You can skip optional steps.
 Install the Appwrite SDK for Flutter.
 
 ```sh
-flutter pub add appwrite
+flutter pub add appwrite:11.0.1
 ```
 
 {% /section %}
@@ -214,7 +214,7 @@ class MyAppState extends State<MyApp> {
   final TextEditingController nameController = TextEditingController();
 
   Future<void> login(String email, String password) async {
-    await widget.account.createEmailPasswordSession(email: email, password: password);
+    await widget.account.createEmailSession(email: email, password: password);
     final user = await widget.account.get();
     setState(() {
       loggedInUser = user;
