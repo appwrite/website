@@ -64,7 +64,7 @@ import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -168,7 +168,6 @@ async function seedDatabase(): Promise<void> {
         ID.unique(),
         testTodo1
     );
-    
     await databases.createDocument(
         todoDatabase.$id,
         todoCollection.$id,
