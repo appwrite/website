@@ -39,7 +39,7 @@ export const actions = {
       `${event.url.origin}/signup`
     );
 
-    throw redirect(301, redirectUrl);
+    redirect(301, redirectUrl);
   },
 };
 
