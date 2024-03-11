@@ -62,11 +62,11 @@ export async function load({ locals }) {
   // Access our user from locals.
   if (!locals.user) {
     // If no user is logged in, redirect to the sign up page.
-    throw redirect(301, '/signup');
+    redirect(301, '/signup');
   }
   
   // If the user is logged in, redirect to the account page.
-  throw redirect(301, '/account');
+  redirect(301, '/account');
 }
 ```
 
