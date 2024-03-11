@@ -16,7 +16,7 @@ We work to release a new minor version of the product every quarter, which will 
 We prioritize the timely release of patch versions with bug fixes and security updates on top of these feature releases, 
 and we make every effort to ensure that our releases are thoroughly tested and stable before they are made available to developers. 
 
-In rare cases where there are significant delays or changes to our release schedule, we will notify through our website, Discord server, 
+In rare cases where there are significant delays or changes to our release schedule, we will notify through our website's [changelog](https://appwrite.io/changelog), [Discord](https://appwrite.io/discord), 
 newsletter, and other communication channels.
 
 # Scope  {% #scope %}
@@ -54,7 +54,7 @@ Supported versions will continue to receive bug fixes and security updates. Exte
 ---
 * Self-hosted
 * `1.5.x`
-* Latest major version (`>= 1.x.x`)
+* Latest major version `>= 1.x.x`
 * 10 years
 ---
 * Runtimes
