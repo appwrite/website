@@ -143,7 +143,6 @@ After creating an OAuth 2 session, you can fetch the session to get information 
 
 {% multicode %}
 ```js
-// Web SDK
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -159,7 +158,6 @@ console.log(session.providerAccessToken);
 ```
 
 ```dart
-// Flutter SDK
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -179,7 +177,6 @@ print(session.providerAccessToken);
 ```
 
 ```kotlin
-// Android SDK
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -200,7 +197,6 @@ print(session.providerAccessToken);
 ```
 
 ```swift
-// Apple SDK
 import Appwrite
 
 let client = Client()

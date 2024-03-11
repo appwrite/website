@@ -105,36 +105,35 @@ interface Todo {
 
 async function prepareDatabase(): Promise<void> {
     todoDatabase = await databases.create(
-        ID.unique(), 
+        ID.unique(),
         'TodosDB'
     );
 
     todoCollection = await databases.createCollection(
-        todoDatabase.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        ID.unique(),
         'Todos'
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'title', 
-        255, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'title',
+        255,
         true
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'description', 
-        255, false, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'description',
+        255, false,
         'This is a test description'
     );
-    
     await databases.createBooleanAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'isComplete', 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'isComplete',
         true
     );
 }
@@ -164,23 +163,22 @@ async function seedDatabase(): Promise<void> {
     };
 
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo1
     );
     
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo2
     );
-    
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo3
     );
 }
@@ -195,7 +193,7 @@ Run the functions to by calling `runAllTasks();`.
 ```ts
 async function getTodos(): Promise<void> {
     const todos = await databases.listDocuments(
-        todoDatabase.$id, 
+        todoDatabase.$id,
         todoCollection.$id
     );
 
@@ -205,7 +203,7 @@ async function getTodos(): Promise<void> {
 }
 
 async function runAllTasks(): Promise<void> {
-    await prepareDatabase();    
+    await prepareDatabase();
     await seedDatabase();
     await getTodos();
 }

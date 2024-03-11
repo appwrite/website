@@ -103,7 +103,6 @@ const user = useUserSession();
     <IdeasList />
   </div>
 </template>
-  
 <style>
 article.box {
   background-color: hsl(var(--color-neutral-0));

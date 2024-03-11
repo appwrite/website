@@ -184,5 +184,5 @@ This would correspond with the permissions below.
 | Create | `Permissions.create(Role.label('subscriber'))` |
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
-Learn more about permissions 
+Learn more about permissions
 {% /arrow_link %}
