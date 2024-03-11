@@ -109,8 +109,8 @@ Learn more about updating self-hosted Appwrite
 [Appwrite Function runtimes](/docs/products/functions/runtimes) are built around a combination of operating system, programming language, and software libraries that are subject to maintenance and security updates.
 Appwrite will support and maintain runtimes as a package, which covers the specific combination of operating system, programming language, and software libraries.
 
-Appwrite will support the latest stable versions of our serverless runtime environments for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. 
-You can review the list of supported runtimes on Appwrite.
+Appwrite will support the latest stable versions of our [Appwrite Function runtime environment](/docs/products/functions/runtimes) for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. 
+You can review the [list of supported runtimes]((/docs/products/functions/runtimes)) on Appwrite.
 
 In most cases, the end-of-life date of a language version or operating system is known well in advance. 
 The links below give end-of-life schedules for each language that Appwrite supports as a managed runtime.  
