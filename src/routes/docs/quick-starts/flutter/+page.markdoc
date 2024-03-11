@@ -158,7 +158,7 @@ You can skip optional steps.
 Install the Appwrite SDK for Flutter.
 
 ```sh
-flutter pub add appwrite
+flutter pub add appwrite:11.0.1
 ```
 
 {% /section %}
