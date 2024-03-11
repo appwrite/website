@@ -106,7 +106,7 @@ Learn more about updating self-hosted Appwrite
 
 # Runtime versioning {% #runtime-versioning %}
 
-Appwrite runtimes are built around a combination of operating system, programming language, and software libraries that are subject to maintenance and security updates.
+[Appwrite Function runtimes](/docs/products/functions/runtimes) are built around a combination of operating system, programming language, and software libraries that are subject to maintenance and security updates.
 Appwrite will support and maintain runtimes as a package, which covers the specific combination of operating system, programming language, and software libraries.
 
 Appwrite will support the latest stable versions of our serverless runtime environments for a minimum of 24 months after its initial release as long as security updates for components of the specific runtime are still provided. 
