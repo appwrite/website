@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create login page
-description: Add authentication to a SvelteKit project using Appwrite.
+description: Add Authentication to a SvelteKit project using Appwrite.
 step: 5
 ---
 
@@ -52,7 +52,7 @@ Now we just need to create a form to let the user input sign in data.
 		}
 
 		try {
-			await appwrite.account.createEmailPasswordSession(email, password);
+			await appwrite.account.createEmailSession(email, password);
 			await invalidateAll();
 		} catch (e) {
 			formError = /** @type {import('appwrite').AppwriteException} */ (e).message;

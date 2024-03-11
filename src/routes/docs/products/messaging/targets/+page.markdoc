@@ -3,6 +3,10 @@ layout: article
 title: Targets 
 description: Manage avenues of communication by targetting user's device, email, or phone number in your notification and messages.
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.13`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 Targets are different ways a user can be reached.
 For example, a user might have two emails, a phone number as well as a phone and a tablet with your app installed.
