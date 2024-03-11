@@ -41,6 +41,12 @@ Client libraries for integrating with Appwrite to build client-based application
 * Android SDK `4.0.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
 * 
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
+* React Native SDK `0.1.0`
+* [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
+* `beta`
 {% /table %}
 
 # Server {% #server %}
@@ -261,6 +267,9 @@ ID.custom()
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
+
+Appwrite generates unique IDs that are both **random** and **ordered**. 
+Appwrite IDs combine a timestamp prefix based on microseconds and a random UID string, formatted as `<timestamp_hex><uid_hex>`.
 
 ## Enums {% #enums %}
 Appwrite has enumeration classes for predefined strings used different parameters used for the Appwrite APIs.

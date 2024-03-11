@@ -11,7 +11,7 @@
     };
 </script>
 
-<button class="aw-button is-secondary" on:click={copyToClipboard}>
-    <span class="aw-icon-{copied ? 'check' : 'copy'}" aria-label={copied ? 'Copied' : 'Copy'} />
+<button class="web-button is-secondary" on:click={copyToClipboard}>
+    <span class="web-icon-{copied ? 'check' : 'copy'}" aria-label={copied ? 'Copied' : 'Copy'} />
     <span>Copy</span>
 </button>

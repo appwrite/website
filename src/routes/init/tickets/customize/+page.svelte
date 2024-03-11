@@ -78,13 +78,13 @@
     <div class="hero">
         {#if customizing}
             <div style:margin-block-start="0.625rem">
-                <button class="aw-link is-secondary u-cross-center" on:click={goBack}>
-                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                <button class="web-link is-secondary u-cross-center" on:click={goBack}>
+                    <span class="web-icon-chevron-left" aria-hidden="true" />
 
                     <span>Back</span>
                 </button>
-                <h1 class="aw-title aw-u-color-text-primary" style:margin-block-start="1.5rem">
-                    Customize ticket<span class="aw-u-color-text-accent">_</span>
+                <h1 class="web-title web-u-color-text-primary" style:margin-block-start="1.5rem">
+                    Customize ticket<span class="web-u-color-text-accent">_</span>
                 </h1>
 
                 <div class="desktop">
@@ -94,13 +94,13 @@
         {:else}
             <div class="desktop-left">
                 <div class="header">
-                    <h1 class="aw-title aw-u-color-text-primary">
+                    <h1 class="web-title web-u-color-text-primary">
                         Thank you for registering for
                         <span style:font-weight="500">
-                            init<span class="aw-u-color-text-accent">_</span>
+                            init<span class="web-u-color-text-accent">_</span>
                         </span>
                     </h1>
-                    <p class="aw-label u-margin-block-start-16">
+                    <p class="web-label u-margin-block-start-16">
                         You have received ticket #{id?.toString().padStart(6, '0')}
                     </p>
                 </div>
@@ -108,24 +108,24 @@
                 <div class="info">
                     <button
                         on:click={() => (customizing = true)}
-                        class="aw-button is-full-width u-margin-block-start-32"
+                        class="web-button is-full-width u-margin-block-start-32"
                     >
                         <span class="text">Customize ticket</span>
                     </button>
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                        <button class="aw-button is-full-width is-secondary" on:click={copy}>
+                        <button class="web-button is-full-width is-secondary" on:click={copy}>
                             <div
-                                class="aw-icon-{$copied ? 'check' : 'copy'} aw-u-color-text-primary"
+                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>
                         <a
-                            class="aw-button is-full-width is-secondary"
+                            class="web-button is-full-width is-secondary"
                             href="https://twitter.com/intent/tweet?text={twitterText}"
                             target="_blank"
                         >
-                            <div class="aw-icon-x aw-u-color-text-primary" />
+                            <div class="web-icon-x web-u-color-text-primary" />
                             <span class="text">Share your ticket</span>
                         </a>
                     </div>
@@ -147,7 +147,7 @@
         </TicketPreview>
     </div>
 
-    <div class="aw-container">
+    <div class="web-container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -156,8 +156,8 @@
         <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
             <button on:click={() => (drawerOpen = !drawerOpen)}>
                 <div class="inner">
-                    <span class="aw-label aw-u-color-text-primary">Ticket Editor</span>
-                    <span class="aw-icon-chevron-down" />
+                    <span class="web-label web-u-color-text-primary">Ticket Editor</span>
+                    <span class="web-icon-chevron-down" />
                 </div>
             </button>
             {#if drawerOpen}
@@ -213,20 +213,20 @@
             position: sticky;
             bottom: 0;
             padding-block: 0;
-            background-color: hsl(var(--aw-color-background));
+            background-color: hsl(var(--web-color-background));
             backdrop-filter: blur(40px);
             z-index: 9999999;
 
             max-height: 100vh;
             overflow-y: auto;
 
-            [class^='aw-icon-'] {
+            [class^='web-icon-'] {
                 transition: var(--transition);
                 transform: rotate(180deg);
             }
 
             &[data-state='open'] {
-                [class^='aw-icon-'] {
+                [class^='web-icon-'] {
                     transform: rotate(0deg);
                 }
             }
@@ -253,7 +253,7 @@
             }
 
             hr {
-                border-block-start: 1px solid hsl(var(--aw-color-smooth));
+                border-block-start: 1px solid hsl(var(--web-color-smooth));
             }
 
             > .form-wrapper {
@@ -267,7 +267,7 @@
             }
         }
 
-        .aw-container {
+        .web-container {
             padding-block-start: 0;
 
             :global(nav) {

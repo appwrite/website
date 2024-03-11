@@ -189,9 +189,9 @@
     {/if}
     <div class="ticket" data-variant={variant} use:mouse style={styles}>
         <img src={bg} alt="" class="bg" />
-        <p class="aw-title aw-u-color-text-primary">{name?.trim() || '-'}</p>
+        <p class="web-title web-u-color-text-primary">{name?.trim() || '-'}</p>
         {#if gh_user}
-            <p class="aw-label">@{gh_user}</p>
+            <p class="web-label">@{gh_user}</p>
         {/if}
         <div class="bottom-left">
             <img src={Logo} alt="init_" />
@@ -412,13 +412,13 @@
         z-index: -1;
     }
 
-    .aw-title {
+    .web-title {
         font-size: adjusted(2.5);
         line-height: #{math.div(44, 40)}em;
         overflow-wrap: break-word;
     }
 
-    .aw-label {
+    .web-label {
         font-size: adjusted(1.5);
         line-height: #{math.div(28, 24)}em;
         margin-block-start: adjusted(0.25);
@@ -438,8 +438,8 @@
         }
 
         span {
-            font-family: var(--aw-font-family-aeonik-fono);
-            color: hsl(var(--aw-color-primary));
+            font-family: var(--web-font-family-aeonik-fono);
+            color: hsl(var(--web-color-primary));
             font-size: adjusted(0.875);
             font-style: normal;
             font-weight: 400;
@@ -456,7 +456,7 @@
 
         span {
             color: rgba(255, 255, 255, 0.5);
-            font-family: var(--aw-font-family-aeonik-fono);
+            font-family: var(--web-font-family-aeonik-fono);
             font-size: adjusted(0.875);
             font-style: normal;
             font-weight: 400;
@@ -520,7 +520,7 @@
                     forwards;
 
                 &[data-level] {
-                    --bg-color: var(--aw-color-accent);
+                    --bg-color: var(--web-color-accent);
 
                     [data-variant='rainbow'] & {
                         --bg-color: 0 0% 90%;
