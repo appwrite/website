@@ -98,7 +98,7 @@ In case a new version of the product has been released and you decide to update,
 
 Once we release a version of the product and you decide to upgrade, look in the changelog to understand if your version requires migration of data from your previous setup. 
 This is usually required when we make adjustments to the under the hood data structure for supporting new features and improving maintainability. 
-If this is the case, you could use our built-in migration tool for helping you to upgrade your self-hosted Appwrite version.
+If this is the case, you could use our [built-in migration tool](/docs/advanced/self-hosting/update#running-the-migration) for helping you to upgrade your self-hosted Appwrite version.
 
 {% arrow_link href="/docs/advanced/self-hosting/update" %}
 Learn more about updating self-hosted Appwrite
