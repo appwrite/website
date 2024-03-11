@@ -168,7 +168,6 @@ async function seedDatabase(): Promise<void> {
         ID.unique(),
         testTodo1
     );
-    
     await databases.createDocument(
         todoDatabase.$id,
         todoCollection.$id,
