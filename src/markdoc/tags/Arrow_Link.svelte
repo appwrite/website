@@ -12,8 +12,8 @@
     const inDocs = isInDocs();
 
     $: classes = (() => {
-        if (inDocs) return 'aw-link aw-paragraph-md';
-        if (inChangelog) return 'aw-link aw-paragraph-lg';
+        if (inDocs) return 'web-link web-paragraph-md';
+        if (inChangelog) return 'web-link web-paragraph-lg';
         return '';
     })();
 </script>

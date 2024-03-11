@@ -15,18 +15,18 @@
     <div class="mosaic">
         <a
             href="/blog/post/introducing-enum-sdk-support"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="aw-label aw-u-color-text-primary">Enum SDK support</h3>
+                <h3 class="web-label web-u-color-text-primary">Enum SDK support</h3>
                 <p style:margin-block-start="0.625rem">
                     A new feature that enhances the experience across all Appwrite client and
                     server-side SDKs.
                 </p>
-                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="aw-icon-arrow-right" />
+                    <span class="web-icon-arrow-right" />
                 </div>
             </div>
             <img src={enumPng} alt="" />
@@ -34,17 +34,17 @@
         </a>
         <a
             href="/blog/post/announcing-two-factor-authentication"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="aw-label aw-u-color-text-primary">Two-factor authentication</h3>
+                <h3 class="web-label web-u-color-text-primary">Two-factor authentication</h3>
                 <p style:margin-block-start="0.625rem">
                     Add an additional layer of protection to your end users accounts with 2FA.
                 </p>
-                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="aw-icon-arrow-right" />
+                    <span class="web-icon-arrow-right" />
                 </div>
             </div>
             <img src={twoFa} alt="" />
@@ -54,14 +54,14 @@
             href="https://discord.com/events/564160730845151244/1209117412247609354"
             target="_blank"
             rel="noreferrer noopener"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="aw-label aw-u-color-text-primary">Event: Safety</h3>
-                <div class="aw-card-link u-flex u-cross-center">
+                <h3 class="web-label web-u-color-text-primary">Event: Safety</h3>
+                <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="aw-icon-arrow-right" />
+                    <span class="web-icon-arrow-right" />
                 </div>
             </div>
             <img
@@ -73,16 +73,16 @@
         <VideoWrapper let:openVideo>
             <button
                 on:click={openVideo}
-                class="aw-card is-normal has-border-gradient u-overflow-hidden"
+                class="web-card is-normal has-border-gradient u-overflow-hidden"
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
+                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
                         Release video
                     </h3>
-                    <div class="aw-card-link u-flex u-cross-center">
+                    <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="aw-icon-arrow-right" />
+                        <span class="web-icon-arrow-right" />
                     </div>
                 </div>
                 <Video
@@ -96,24 +96,24 @@
 
         <a
             href="/docs/sdks#enums"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="aw-label aw-u-color-text-primary">Enum Documentation</h3>
-            <div class="aw-card-link u-flex u-cross-center">
+            <h3 class="web-label web-u-color-text-primary">Enum Documentation</h3>
+            <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="aw-icon-arrow-right" />
+                <span class="web-icon-arrow-right" />
             </div>
         </a>
         <a
             href="/docs/products/auth/2fa"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="aw-label aw-u-color-text-primary">2FA Documentation</h3>
-            <div class="aw-card-link u-flex u-cross-center">
+            <h3 class="web-label web-u-color-text-primary">2FA Documentation</h3>
+            <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="aw-icon-arrow-right" />
+                <span class="web-icon-arrow-right" />
             </div>
         </a>
     </div>
@@ -158,7 +158,7 @@
                 $size: 200px;
                 width: $size;
                 height: $size;
-                background: hsl(var(--aw-color-accent));
+                background: hsl(var(--web-color-accent));
                 filter: blur(200px);
 
                 position: absolute;
@@ -210,14 +210,14 @@
             gap: 1rem;
         }
 
-        .aw-card {
-            .aw-card-link {
-                color: var(--aw-color-primary);
+        .web-card {
+            .web-card-link {
+                color: var(--web-color-primary);
             }
 
             &:hover {
-                .aw-card-link {
-                    color: hsl(var(--aw-color-accent-darker));
+                .web-card-link {
+                    color: hsl(var(--web-color-accent-darker));
                 }
             }
         }

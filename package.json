@@ -28,7 +28,7 @@
         "@appwrite.io/console": "^0.4.2",
         "@appwrite.io/pink": "0.1.0-next.9",
         "@appwrite.io/pink-icons": "0.1.0-next.9",
-        "@appwrite.io/repo": "github:appwrite/appwrite#feat-rc-sdks",
+        "@appwrite.io/repo": "github:appwrite/appwrite#main",
         "@melt-ui/pp": "^0.3.0",
         "@melt-ui/svelte": "^0.74.3",
         "@playwright/test": "^1.42.0",

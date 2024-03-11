@@ -11,18 +11,18 @@
     <div class="mosaic">
         <a
             href="/blog/post/announcing-more-and-updated-runtimes"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="aw-label aw-u-color-text-primary">Updated runtimes</h3>
+                <h3 class="web-label web-u-color-text-primary">Updated runtimes</h3>
                 <p style:margin-block-start="0.625rem">
                     The latest versions of Bun, Dart, Deno, PHP, Ruby, Kotlin, Java, Swift, and Node
                     were added to our Cloud runtime ecosystem.
                 </p>
-                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="aw-icon-arrow-right" />
+                    <span class="web-icon-arrow-right" />
                 </div>
             </div>
             <img src={illustration} alt="" />
@@ -30,29 +30,29 @@
         </a>
         <a
             href="/docs/products/functions/runtimes#available-runtimes"
-            class="aw-card is-normal has-border-gradient"
+            class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
-            <div class="aw-card-link u-flex u-cross-center">
+            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
+            <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="aw-icon-arrow-right" />
+                <span class="web-icon-arrow-right" />
             </div>
         </a>
 
         <a
             href="https://discord.com/events/564160730845151244/1209117535723851776"
             rel="noopener noreferrer"
-            class="aw-card is-normal has-border-gradient u-overflow-hidden"
+            class="web-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
                     Closing party
                 </h3>
-                <div class="aw-card-link u-flex u-cross-center">
+                <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Watch</span>
-                    <span class="aw-icon-arrow-right" />
+                    <span class="web-icon-arrow-right" />
                 </div>
             </div>
             <img
@@ -95,7 +95,7 @@
                 $size: 200px;
                 width: $size;
                 height: $size;
-                background: hsl(var(--aw-color-accent));
+                background: hsl(var(--web-color-accent));
                 filter: blur(200px);
 
                 position: absolute;
@@ -132,14 +132,14 @@
             gap: 1rem;
         }
 
-        .aw-card {
-            .aw-card-link {
-                color: var(--aw-color-primary);
+        .web-card {
+            .web-card-link {
+                color: var(--web-color-primary);
             }
 
             &:hover {
-                .aw-card-link {
-                    color: hsl(var(--aw-color-accent-darker));
+                .web-card-link {
+                    color: hsl(var(--web-color-accent-darker));
                 }
             }
         }
