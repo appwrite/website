@@ -9,7 +9,7 @@ To upgrade your Appwrite server from an older version, you should use the Appwri
 As of version 0.14, Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To upgrade Appwrite, make sure your Docker installation is updated to support Composer V2.
 
 {% info title="A note about migration" %}
-At present, we support migrations only to the **immediately higher versions**, i.e from `0.6.x` to `0.7.x` and `0.7.x` to `0.8.x` and so on. 
+At present, we support migrations only to the **immediately higher versions**, i.e from `0.6.x` to `0.7.x` and `0.7.x` to `0.8.x` and so on.
 
 So if you're trying to migrate from `0.6.0` to `0.8.2`, you will first need to migrate to `0.7.x` and then to `0.8.2`.
 
@@ -35,7 +35,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.3
 ```
 
 ## CMD
@@ -45,7 +45,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.3
 ```
 
 ## PowerShell
@@ -55,10 +55,10 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.3
 ```
 
-This will pull the `docker-compose.yml` file for the new version and perform the installation. 
+This will pull the `docker-compose.yml` file for the new version and perform the installation.
 Once the setup completes, verify that you have the latest version of Appwrite.
 
 ```sh
