@@ -285,8 +285,8 @@ image gravity, image format, relationship types, SMTP encryption, Function runti
 messaging provider type, compression algorithms, execution methods, and country flags.
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
-{% multicode %}
 You can discover the available enums in each SDK at the source.
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
@@ -312,11 +312,11 @@ You can discover the available enums in each SDK at the source.
 * Android SDK `4.0.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android/tree/dev/library/src/main/java/io/appwrite/enums)
 {% /table %}
-{% /multicode %}
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
-{% multicode %}
+You can discover the available enums in each SDK at the source.
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
@@ -367,7 +367,6 @@ You can discover the available enums in each SDK at the source.
 * Swift SDK `4.0.0`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
 {% /table %}
-{% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
 
