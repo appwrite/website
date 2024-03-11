@@ -7,7 +7,7 @@ We value the trust of developers in Appwrite as the backbone of their applicatio
 Our release policy is designed to provide developers with a reliable and consistent experience when using Appwrite. 
 We are committed to providing support for our API, SDKs, and product versions for a reasonable length of time, 
 and we follow industry-standard versioning protocols. 
-Appwrite will prioritize security updates and will release new versions immediately to fix any security vulnerabilities.
+Appwrite will prioritize security updates and will release new versions as soon as possible to fix any security vulnerabilities.
 
 # Schedule {% #schedule %}
 
