@@ -51,6 +51,14 @@ export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
     'x-example': string;
 };
 
+export interface Property {
+        name: string;
+        items?: {
+            type?: string;
+            oneOf?: OpenAPIV3.ReferenceObject[];
+        } & OpenAPIV3.ReferenceObject;
+} 
+
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
@@ -334,4 +342,76 @@ export function resolveReference(
         return schema;
     }
     throw new Error("Schema doesn't exist");
+}
+
+export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<{}>): Object => {
+
+    const properties = Object.keys(schema.properties ?? {}).map((key) =>{
+        const name = key;
+        const fields = schema.properties?.[key]; 
+        return {
+            name,
+            ...fields
+        }
+    });
+
+    const example = properties.reduce((carry, currentValue) => {
+        const property = currentValue as Property;
+        
+        if (property.type === 'array') {
+            // If it's an array type containing primatives
+            if (property.items?.type){
+                return {
+                    ...carry,
+                    [property.name]: [{
+                        ...carry,
+                        [property.name]: property['x-example']
+                    }]
+                }
+            }
+
+            if (property.items && 'anyOf' in property.items) {
+                // default to first child type if multiple available
+                const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
+                const schema = getSchema(getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject), api)
+                
+                return {
+                    ...carry,
+                    [property.name]: generateExample(schema, api)
+                };
+            }
+
+            // if an array of objects without child types
+            const schema = getSchema(getIdFromReference(property.items as OpenAPIV3.ReferenceObject), api);
+            return {
+                ...carry,
+                [property.name]: [generateExample(schema, api)]
+            }
+        }
+
+        // If it's an object type, but not in an array.
+        if (property.type === 'object') {
+            if (property.items?.oneOf){
+                // default to first child type if multiple available
+                const schema = getSchema(getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject), api);
+                return {
+                    ...carry,
+                    [property.name]: generateExample(schema, api)
+                }
+            }
+
+            // object without child types
+            const schema = getSchema(getIdFromReference(property.items as OpenAPIV3.ReferenceObject), api);
+            return {
+                ...carry,
+                [property.name]: [generateExample(schema, api)]
+            }
+        }
+
+        return {
+            ...carry,
+            [property.name]: property['x-example']
+        }
+    }, {});
+    return example;
 }
