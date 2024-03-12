@@ -1,4 +1,4 @@
-import { getApi, getIdFromReference, getSchema, type AppwriteSchemaObject, generateExample, type Property } from '$lib/utils/specs';
+import { getApi, getSchema, type AppwriteSchemaObject, generateExample, type Property } from '$lib/utils/specs';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
