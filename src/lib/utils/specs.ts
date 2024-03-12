@@ -169,8 +169,7 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     if (schema) {
         return schema;
     }
-    throw new Error("Schema doesn't exist");
-}
+    throw new Error(`Schema doesn't exist for id: ${id}`);}
 
 const specs = import.meta.glob(
     '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
