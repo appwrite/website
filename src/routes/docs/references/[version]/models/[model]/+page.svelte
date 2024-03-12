@@ -35,7 +35,12 @@
                     <Tr>
                         <Td>{property.name}</Td>
                         <Td>{property.type}</Td>
-                        <Td>{@html parse(property.description)}</Td>
+                        <Td>
+                            {property.description} 
+                            {#if property.relatedModels}
+                                Can be one of: {@html parse(property.relatedModels)}
+                            {/if}
+                        </Td>                   
                     </Tr>
                 {/each}
             </Tbody>
