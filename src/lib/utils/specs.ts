@@ -357,16 +357,14 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
 
     const example = properties.reduce((carry, currentValue) => {
         const property = currentValue as AppwriteSchemaObject & Property;
-        console.log(property);
         if (property.type === 'array') {
             // If it's an array type containing primatives
             if (property.items?.type){
+                console.log(property.items?.type)
+                console.log(property)
                 return {
                     ...carry,
-                    [property.name]: [{
-                        ...carry,
-                        [property.name]: property['x-example']
-                    }]
+                    [property.name]: property['x-example']
                 }
             }
 
@@ -408,6 +406,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 }
             }
         }
+        console.log(property)
 
         return {
             ...carry,
