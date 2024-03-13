@@ -95,9 +95,10 @@
                         </h1>
                         <div class="u-cross-child-end">
                             <p class="web-description">
-                                Appwrite's open-source platform lets you add Auth, DBs, Functions
-                                and Storage to your product and build any application at any scale,
-                                own your data, and use your preferred coding languages and tools.
+                                Appwrite's open-source platform lets you add Auth, DBs, Functions,
+                                Storage, and Messaging to your product and build any application 
+				at any scale, own your data, and use your preferred coding 
+				languages and tools.
                             </p>
                             <a
                                 href="https://cloud.appwrite.io"
