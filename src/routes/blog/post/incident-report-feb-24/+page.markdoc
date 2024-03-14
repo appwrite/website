@@ -1,0 +1,43 @@
+---
+layout: post
+title: February 2024 Incident summary
+description: Appwrite is working towards a completely privacy-friendly and open-source growth stack. We are committed to putting developers first and building a company that values your personal data. We want to treat you as we want to be treated by any vendors we use.
+date: 2024-03-15
+cover: /images/blog/privacy.png
+timeToRead: 9
+author: christy-jacob
+category: GDPR
+---
+
+### February 2024 Incident Summary
+
+---
+
+#### **High Memory Usage During Scheduled Backups**
+- **Date:** February 1, 2024
+- **Duration:** 4 hours and 6 minutes
+- **Incident:** High memory usage during scheduled backups of managed database impacted all critical cloud components like Databases, API, Functions, etc., affecting API performance for all users on cloud.
+- **Summary:** An alert was triggered due to high memory usage in one of the database clusters, leading to unresponsive behavior and affecting API and other cloud components. The database was temporarily disconnected, and after a necessary restart, it was reconnected, mitigating the issue.
+- **Resolution:** The problematic database was removed from the connection string for a restart to free up memory, then added back and redeployed.
+
+#### **Database Restart Incident**
+- **Date:** February 12, 2024
+- **Duration:** 1 hour and 34 minutes
+- **Incident:** Database restart of database_db_fra1_self_hosted_2_0 affected projects on that database.
+- **Summary:** An unexpected database restart was triggered manually by an engineer, affecting all APIs for projects on the specific database. The restart was due to high memory usage and a misunderstanding of time zones for scheduled maintenance.
+- **Resolution:** Communication was maintained with affected users until the restart completed, and measures were taken to prevent similar incidents.
+
+#### **Repeated Gateway Timeouts in Traefik Containers**
+- **Dates:** February 13, 14, 15, 21, & 24, 2024
+- **Incidents:** Repeated incidents of gateway timeouts were detected following routine cloud deployments, affecting users trying to access Appwrite Cloud through the API and console.
+- **Summary:** The incidents across these dates were identified to have a common root cause related to a specific configuration (--serversTransport.maxIdleConnsPerHost=-1) introduced to Traefik, which led to routing issues post-deployment.
+- **Resolution:** Temporary fixes involved restarting the Appwrite service to ensure service availability, with the root cause being addressed by reverting the change on February 25, 2024.
+
+#### **Executor Crash and Bad Webhook**
+- **Date:** February 19, 2024
+- **Duration:** 27 minutes
+- **Incident:** An executor crash combined with a faulty webhook led to API timeouts and failed function executions.
+- **Summary:** The crash and the webhook issue caused increased latency and triggered monitors due to the high function load. Immediate action involved restarting the API and executor to recover.
+- **Resolution:** The problematic webhook was removed, and systems were restarted to ensure continued execution of pending jobs.
+
+---
