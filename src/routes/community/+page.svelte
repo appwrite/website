@@ -114,7 +114,7 @@
     ];
 
     const metrics = [
-        { metric: '39K+', description: 'GitHub Stars' },
+        { metric: '40K+', description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
         { metric: '18K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
