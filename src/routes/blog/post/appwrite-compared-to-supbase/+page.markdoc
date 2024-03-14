@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Appwrite vs Supabase: a comparison of Backend-as-a-Service platforms"
-description: Get a comprehensive comparison between Appwrite and Supabase to decice what platform to use for your projects backend.
+description: Get a comprehensive comparison between Appwrite and Supabase to decide what platform to use for your project's backend.
 date: 2024-01-03
 cover: /images/blog/appwrite-supabase.png
 timeToRead: 7
@@ -29,13 +29,13 @@ When looking into a BaaS solution, it is good to understand how the products and
 
 Authentication is the process of verifying a user's identity to ensure that only the appropriate individuals have access to their private data. Different authentication methods include email and passwords, passwordless login via emails and phone numbers, or applications that offer single sign-on (SSO) capabilities. It is usually the initial step in application development for developers. BaaS platforms simplify this process by offering SDKs and APIs.
 
-*Similarities***:**
+*Similarities:*
 
 - Both offer robust authentication capabilities, including user registration, login, and passwordless login options.
 - They both support various authentication methods, such as email and password, social logins (Google, Facebook, etc.), and device authentication.
 - Role-based access control (RBAC) is available to manage user permissions and restrict access to resources.
 
-*Differences***:**
+*Differences:*
 
 - Appwrite provides more granular user management features, such as user groups, metadata, and custom claims.
 - Supabase offers integration with LDAP and SAML for enterprise environments.
@@ -46,7 +46,7 @@ A database is an organized collection of information stored in a way that allows
 
 Both Appwrite and Supbase provide databases that can be used depending on the needs of your project.
 
-*Similarities***:**
+*Similarities:*
 
 - Both provide a user-friendly database interface for creating and managing tables, indexes, and relationships.
 - They both support relational databases.
@@ -56,18 +56,18 @@ Both Appwrite and Supbase provide databases that can be used depending on the ne
 
 - Appwrite offers an abstraction layer above MariaDB as part of its API, offering a simpler developer experience for data consumption and user permissions management.
 - Appwrite offers simple-to-use offset and cursor pagination out-of-the-box to developers.
-- Supabase's PostgreSQL database is more suited for complex relational data queries and joins, however, it increases the learning curve substantially.
+- Supabase's PostgreSQL database is more suited for complex relational data queries and joins. However, it substantially increases the learning curve.
 
 ## Storage
 
 Storage allows you to manage files in your project. It can store images, videos, documents, and other project files. Storage can be a crucial requirement for any application that operates on binary data (e.g., social media platforms), and here's what Appwrite and Supbase have to offer:
 
-*Similarities***:**
+*Similarities:*
 
 - Both provide object storage for storing and managing files, images, and other binary data.
 - Access control is available to manage files and restrict access.
 
-*Differences***:**
+*Differences:*
 
 - Appwrite offers file previews and thumbnails to enhance user experience, as well as an image manipulation API in the free tier.
 - Supabase supports storing files in different storage tiers.
@@ -112,19 +112,19 @@ Messaging allows you to implement communications in your application. You can us
 
 *Differences:*
 
-- Appwrite Messaging features 10 different providers to leverage major communications providers for SMSes, emails, and push notifications. It offers user segregation, message scheduling, and message previews as well. Supabase offers none of these.
+- Appwrite Messaging features ten different providers to leverage major communications providers for SMS, email, and push notifications. It offers user segregation, message scheduling, and message previews as well. Supabase offers none of these.
 
 ## Support
 
-Any developer-first product, regardless of how good and simple it may be, will need a system for support in case its consumers face any issues. Both Appwrite and Supabase have developed support offerings to ensure their consumers are able to share feedback and get the necessary help. 
+Any developer-first product, regardless of how good and simple it may be, will need a system for support in case its consumers face any issues. Both Appwrite and Supabase have developed support offerings to ensure their consumers can share feedback and get the necessary help. 
 
-*Similarities***:**
+*Similarities*:
 
 - Both Appwrite and Supabase offer comprehensive documentation and community forums for self-help.
 - They both provide paid support plans for priority email assistance.
 - They both have active open-source communities where users can collaborate and share knowledge.
 
-*Differences***:**
+*Differences*:
 
 - The Appwrite community is very active and provides fast and comprehensive support.
 - Supabase provides a higher tier of support for a higher price.
