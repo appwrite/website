@@ -15,10 +15,6 @@
 					label: 'Overview',
 					href: '/docs/advanced/platform'
 				},
-				{
-					label: 'Release policy',
-					href: '/docs/advanced/platform/release-policy'
-				},
 			]
 		},
 		{
@@ -97,6 +93,15 @@
 				},
 			]
 		},
+		{
+			label: 'Policy',
+			items: [
+				{
+					label: 'Release policy',
+					href: '/docs/advanced/platform/release-policy'
+				},
+			]
+		}
 	];
 </script>
 
