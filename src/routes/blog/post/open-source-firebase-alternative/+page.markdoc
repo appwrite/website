@@ -84,7 +84,7 @@ Functions are "self-contained" modules of code that accomplish a specific task. 
 - Functions in both platforms are event-driven, executing in response to specific events, such as HTTP requests, database changes, or authentication events.
 - Both provide automatic scaling. They handle increasing loads by scaling the functions up or down as required.
 
-Differences:
+*Differences:*
 
 - Appwrite offers easy and quick deployment of [functions using Git](https://appwrite.io/docs/products/functions/deployment#git), has ready-to-use templates, and supports a large number of runtimes.
 - Firebase offers additional event triggers for different Google Cloud services.
