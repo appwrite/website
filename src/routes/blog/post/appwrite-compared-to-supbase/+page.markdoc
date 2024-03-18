@@ -141,7 +141,7 @@ Here’s a table that compares both Appwrite and Supabase:
 | API | Focus on APIs | Supports APIs  |
 | Serverless functions runtimes | 10+ languages supported | Only 1 language supported |
 | Self-hosting / Cloud | Self-hosting and Cloud available | Self-hosting and Cloud available |
-| Supported programming languages | Supports SDKs in 10 languages (JavaScript, Python, PHP, Kotlin, Dart https://appwrite.io/docs/sdks.) | Supports SDKs in 6 languages |
+| Supported programming languages | Supports [SDKs](https://appwrite.io/docs/sdks) in 10 languages JavaScript, Python, PHP, Kotlin, Dart | Supports SDKs in 6 languages |
 | Pausing of projects | Free projects are not paused ever | Free projects are paused after 1 week of inactivity |
 | Functions marketplace | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | No functions marketplace |
 | Permissions | A simple-to-use permissions system that is consistent across all Appwrite products | Complex permissions system that needs knowledge of SQL to get started |
