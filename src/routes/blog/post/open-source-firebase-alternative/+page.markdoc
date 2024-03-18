@@ -128,8 +128,8 @@ Here’s a table that compares both Appwrite and Firebase:
 | Feature | Appwrite | Firebase |
 | --- | --- | --- |
 | Deployment | Self-hosted or cloud-hosted | Cloud-hosted only |
-| Free plans | Yes, Starter plan | Yes, Spark plan
-| Paid plans | Yes, Pro plan - $15 per month per member| Yes, Blaze plan - Pay-as-you-go uses |
+| Free plan | Yes, Starter plan | Yes, Spark plan |
+| Paid plan | Yes, Pro plan - $15 per month per member| Yes, Blaze plan - Pay-as-you-go |
 | Open source | Yes | No |
 | Customization | Highly customizable | Less customizable |
 | Support | Community and email | Community, Support Portal, and help center |
