@@ -8,7 +8,7 @@ Appwrite was designed from the ground up with self-hosting in mind. You can inst
 
 # System requirements {% #system-requirements %}
 
-Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
+Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **4GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
 
 Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
 
