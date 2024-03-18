@@ -104,7 +104,7 @@ Real-time, by definition, means "without significant delay.” You can use it to
 - Appwrite's real-time system is built on top of our events, which means that any new product/features will automatically support real-time.
 - Firebase's real-time system is more optimized for performance and scalability in large-scale applications.
 
-## **Messaging**
+## Messaging
 
 Messaging allows you to implement communications in your application. You can use this to send information and updates directly to users through various methods, such as push notifications, SMSes, and emails. Both Appwrite and Firebase provide certain features to implement messaging in your applications.
 
