@@ -75,7 +75,7 @@ Storage allows you to manage files in your project. It can store images, videos,
 
 Functions are "self-contained" modules of code that accomplish a specific task. BaaS platforms make it easier for you to extend the business logic by using functions with code snippets.
 
-Similarities:
+*Similarities:*
 
 - Both Appwrite and Firebase provide serverless computing solutions for executing code in the cloud.
 - Both Appwrite and Firebase provide extensions to build apps easily.
