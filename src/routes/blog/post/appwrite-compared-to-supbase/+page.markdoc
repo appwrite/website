@@ -52,7 +52,7 @@ Both Appwrite and Supbase provide databases that can be used depending on the ne
 - They both support relational databases.
 - Schema migrations are available to manage database changes in a structured manner.
 
-*Differences***:**
+*Differences:*
 
 - Appwrite offers an abstraction layer above MariaDB as part of its API, offering a simpler developer experience for data consumption and user permissions management.
 - Appwrite offers simple-to-use offset and cursor pagination out-of-the-box to developers.
