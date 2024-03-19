@@ -9,7 +9,7 @@ author: aditya-oberai
 category: product
 ---
 
-On March 6th, 2024, PlanetScale announced their plan to sunset their free tier, impacting developers and their projects worldwide. Many devs are now forced to migrate away and find a new database solution. As an open-source backend-as-a-service platform, Appwrite can be the solution to finding a PlanetScale alternative. In this article, we compare PlanetScale Databases to Appwrite Databases so you can understand whether Appwrite’s free tier Databases are a feasible option.
+On March 6th, 2024, PlanetScale announced their plan to sunset their free tier, impacting developers and their projects worldwide. Many devs are now forced to migrate away and find a new database solution. As an open-source backend-as-a-service platform, Appwrite can be the solution to finding a PlanetScale alternative. In this article, we compare PlanetScale Databases to Appwrite Databases so you can understand whether Appwrite’s free-tier Databases are a feasible option.
 
 # How Appwrite can help
 
@@ -28,11 +28,11 @@ Appwrite is a backend-as-a-service platform that offers a variety of products to
 
 [Signing up for Appwrite Cloud](https://cloud.appwrite.io/register) or self-hosting it on your server doesn't just give you access to one of these, but all of these.
 
-Let’s now delve further into some of our developer experience and more database-oriented benefits.
+Let’s delve further into some of our developer experience and more database-oriented benefits.
 
 ## API-first approach
 
-A major difference that Appwrite has from other database-as-a-service offerings like PlanetScale is that instead of directly querying the underlying database, we offer APIs to interact with the product. 
+A major difference that Appwrite has from other database-as-a-service offerings like PlanetScale is that instead of directly querying the underlying database, we offer APIs to interact with the product.
 
 This approach offers several advantages:
 
@@ -51,7 +51,29 @@ To decrease the friction in building for all developers and complement our API-f
 - **Consistency and reliability**: SDKs and the CLI ensure that applications use Appwrite’s API correctly and efficiently while retaining type safety, reducing the risk of errors.
 - **Enhanced productivity:** By automating and simplifying tasks, SDKs and CLI help developers accomplish more in less time, boosting productivity. They make integrating Appwrite’s features, test applications, and deploy updates easier.
 
-This way, any developer transitioning to Appwrite can get started with our stack quickly and with ease.
+This way, any developer transitioning to Appwrite can get started with our stack quickly and easily.
+
+## Self-hosting Appwrite
+
+Since Appwrite is open-source, we have simplified the process to self-host it. This has several benefits:
+
+- **Control**: You gain complete authority over your server environment and configurations.
+- **Privacy and security**: You can keep all data in-house for enhanced security and compliance with data protection laws.
+- **Cost efficiency**: You might potentially lower expenses over time by optimizing resources and avoiding third-party fees.
+- **Reduced latency:** Hosting closer to your clients may help improve application performance.
+- **Avoid vendor lock-in**: You're not tied to the services, pricing, and terms of a specific cloud provider.
+
+Currently, Appwrite uses Docker Compose to deliver all the necessary services and components necessary for the platform. We provide a single installation command to set up an Appwrite instance on any system with Docker.
+
+```bash
+docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.5.3
+```
+
+We have a dedicated [self-hosting guide](https://appwrite.io/docs/advanced/self-hosting) in our docs for more info.
 
 ## Managed databases on Appwrite Cloud
 
@@ -67,7 +89,7 @@ One of the biggest advantages of Appwrite Cloud is that these benefits are not j
 
 ## Pricing plans
 
-With Appwrite, we have mindfully designed our pricing plans to be accessible to most developers. Right now, we offer two [pricing plans on Appwrite Cloud](https://appwrite.io/pricing).
+With Appwrite Cloud, we have mindfully designed our pricing plans to be accessible to most developers. Right now, we offer two [pricing plans on Appwrite Cloud](https://appwrite.io/pricing).
 
 - **Starter plan**
     - A free tier for every developer working on a side project or SaaS product that can thrive on our starter plan limits.
@@ -88,12 +110,10 @@ For databases, here are the differences between both plans:
 | Reads & Writes | Unlimited | Unlimited |
 | Dedicated databases | No | Yes |
 
-Additionally, Appwrite can also be self-hosted on any system that supports Docker. We have a dedicated [self-hosting guide](https://appwrite.io/docs/advanced/self-hosting) in our docs for more info.
-
-You can also take a look at PlanetScale [pricing](https://planetscale.com/pricing) to understand how Appwrite compares.
+You can also look at PlanetScale [pricing](https://planetscale.com/pricing) to understand how Appwrite compares.
 
 # Moving forward
 
-There is no denying that PlanetScale has done a fantastic job developing a scalable and robust database offering. They are a massive inspiration in the database space and the larger developer tooling ecosystem. That being said, there are gaps in the developer community that PlanetScale chooses not to prioritize due to their business growth plans, which we can help with. Free users have formed an influential part of the Appwrite community and have made a difference not just as consumers but also as builders, public speakers, contributors, etc., who have constantly criticized and shared feedback, added ideas and suggestions and made Appwrite a much better platform. We hope we will see more such developers give us a shot in the days to come.
+There is no denying that PlanetScale has done a fantastic job developing a scalable and robust database offering. They are a massive inspiration in the database space and the larger developer tooling ecosystem. That being said, there are gaps in the developer community that PlanetScale chooses not to prioritize due to their business growth plans, which we can help with. Free users have formed an influential part of the Appwrite community and have made a difference not just as consumers but also as builders, public speakers, contributors, etc., who have constantly criticized and shared feedback, added ideas and suggestions, and made Appwrite a much better platform. We hope we will see more such developers give us a shot in the days to come.
 
 Learn more about Appwrite by visiting our [docs](https://appwrite.io/docs) and joining our [Discord community](https://appwrite.io/discord).
