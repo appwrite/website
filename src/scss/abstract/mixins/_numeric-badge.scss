@@ -7,12 +7,11 @@
   --p-numeric-badge-border-color: calc(var(--web-color-pink-hue) - 1) 90% 84%;
 
   color: hsl(var(--p-numeric-badge-text-color));
-  background:hsl(var(--p-numeric-badge-bg-color));
+  background: hsl(var(--p-numeric-badge-bg-color));
+  border:pxToRem(1) solid hsl(var(--p-numeric-badge-border-color));
 
-  display:grid; place-content:center; user-select:none;
-  min-inline-size:pxToRem(24); block-size:pxToRem(24); padding-inline:pxToRem(6);
-  border:pxToRem(1) solid hsl(var(--p-numeric-badge-border-color)); border-radius:pxToRem(6);
-  font-size:pxToRem(14);
+  display:grid; place-content:center; user-select:none; min-inline-size:pxToRem(24); block-size:pxToRem(24);
+  padding-inline:pxToRem(6); border-radius:pxToRem(6); font-size:pxToRem(14);
 
   #{$theme-dark} & {
     --p-numeric-badge-text-color: var(--web-color-greyscale-100);
