@@ -15,7 +15,7 @@ This article will give you a rundown of Appwrite and Supabase to understand the 
 
 # Appwrite
 
-In 2019, [Appwrite](https://appwrite.io/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides a wide range of features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to implement custom backend logic and build applications tailored to your needs. 
+In 2019, [Appwrite](https://appwrite.io/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides a wide range of features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to implement custom backend logic and build applications tailored to your needs.
 
 # Supabase
 
@@ -116,7 +116,7 @@ Messaging allows you to implement communications in your application. You can us
 
 ## Support
 
-Any developer-first product, regardless of how good and simple it may be, will need a system for support in case its consumers face any issues. Both Appwrite and Supabase have developed support offerings to ensure their consumers can share feedback and get the necessary help. 
+Any developer-first product, regardless of how good and simple it may be, will need a system for support in case its consumers face any issues. Both Appwrite and Supabase have developed support offerings to ensure their consumers can share feedback and get the necessary help.
 
 *Similarities*:
 
@@ -131,7 +131,7 @@ Any developer-first product, regardless of how good and simple it may be, will n
 
 # Conclusion
 
-While Appwrite and Supabase are great Backend-as-a-Service (BaaS) offerings that support numerous SDKs, they differ in engineering approaches. The choice between Appwrite and Supabase hinges on your needs and preferences. 
+While Appwrite and Supabase are great Backend-as-a-Service (BaaS) offerings that support numerous SDKs, they differ in engineering approaches. The choice between Appwrite and Supabase hinges on your needs and preferences.
 
 Here’s a table that compares both Appwrite and Supabase:
 

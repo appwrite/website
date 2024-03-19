@@ -15,7 +15,7 @@ In this article, we will give you a rundown of Appwrite and Firebase to understa
 
 # Appwrite - Open Source backend platform
 
-In 2019, [Appwrite](https://appwrite.io/) started as an open source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. 
+In 2019, [Appwrite](https://appwrite.io/) started as an open source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs.
 
 # Firebase - Google-owned BaaS
 
@@ -91,7 +91,7 @@ Functions are "self-contained" modules of code that accomplish a specific task. 
 
 ## Realtime
 
-Real-time, by definition, means "without significant delay.” You can use it to get constant updates on any activities that occur within the application you are building. This can be applied in various ways, such as a chat application. While real-time features can be complex to build, you can use Appwrite and Firebase to achieve this with much less hassle. 
+Real-time, by definition, means "without significant delay.” You can use it to get constant updates on any activities that occur within the application you are building. This can be applied in various ways, such as a chat application. While real-time features can be complex to build, you can use Appwrite and Firebase to achieve this with much less hassle.
 
 *Similarities:*
 
@@ -121,7 +121,7 @@ Messaging allows you to implement communications in your application. You can us
 
 # Conclusion
 
-While both Appwrite and Firebase are great Backend-as-a-Service (BaaS) offerings that support numerous SDKs and integrations, they differ in terms of capabilities and pricing. The choice between Appwrite and Firebase hinges on the specific needs of a project. Appwrite stands out with its open source nature, self-hosting capabilities, pricing affordability, and emphasis on privacy. The community is very welcoming and is praised for it. Firebase's strength lies in its comprehensive ecosystem, Google support, and maturity. 
+While both Appwrite and Firebase are great Backend-as-a-Service (BaaS) offerings that support numerous SDKs and integrations, they differ in terms of capabilities and pricing. The choice between Appwrite and Firebase hinges on the specific needs of a project. Appwrite stands out with its open source nature, self-hosting capabilities, pricing affordability, and emphasis on privacy. The community is very welcoming and is praised for it. Firebase's strength lies in its comprehensive ecosystem, Google support, and maturity.
 
 Here’s a table that compares both Appwrite and Firebase:
 
