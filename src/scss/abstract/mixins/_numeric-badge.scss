@@ -8,7 +8,7 @@
 
   color: hsl(var(--p-numeric-badge-text-color));
   background: hsl(var(--p-numeric-badge-bg-color));
-  border:pxToRem(1) solid hsl(var(--p-numeric-badge-border-color));
+  border: pxToRem(1) solid hsl(var(--p-numeric-badge-border-color));
 
   display:grid; place-content:center; min-inline-size:pxToRem(24); block-size:pxToRem(24);
   padding-inline:pxToRem(6); border-radius:pxToRem(6); font-size:pxToRem(14); user-select:none;
