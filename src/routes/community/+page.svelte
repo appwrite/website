@@ -9,7 +9,8 @@
             date: 'February 26th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Diana Pham',
-            description: 'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+            description:
+                'Join day zero of Init together with Vonage developer advocate Diana Pham.',
             buttonText: 'View event'
         },
         {
@@ -21,7 +22,8 @@
             date: 'February 27th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Hitesh Choudhary',
-            description: 'Join us on day one of Init together with engineer and creator Hitesh Choudhary.',
+            description:
+                'Join us on day one of Init together with engineer and creator Hitesh Choudhary.',
             buttonText: 'View event'
         },
         {
@@ -33,7 +35,8 @@
             date: 'February 28th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Francesco Ciulla',
-            description: 'Join us on day two of Init together with developer advocate Francesco Ciulla.',
+            description:
+                'Join us on day two of Init together with developer advocate Francesco Ciulla.',
             buttonText: 'View event'
         },
         {
@@ -45,7 +48,8 @@
             date: 'February 29th, 2024',
             location: 'Discord',
             title: 'Guest speaker: Danny Thompson',
-            description: 'Join us on day three of Init together with engineer and creator Danny Thompson.',
+            description:
+                'Join us on day three of Init together with engineer and creator Danny Thompson.',
             buttonText: 'View event'
         },
         {
@@ -114,7 +118,7 @@
     ];
 
     const metrics = [
-        { metric: '39K+', description: 'GitHub Stars' },
+        { metric: GITHUB_STARS, description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
         { metric: '18K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
@@ -205,7 +209,8 @@
                                 >
                                     <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span
+                                    <span class="web-inline-tag web-sub-body-400"
+                                        >{GITHUB_STARS}</span
                                     >
                                 </a>
                             </div>
@@ -477,7 +482,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center">
-                        <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
+                        <h2 class="web-display web-u-color-text-primary">
+                            Inspire and get inspired
+                        </h2>
                         <p class="web-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
@@ -570,7 +577,7 @@
                                         />
                                     </div>
                                     <div class="web-title u-margin-block-start-auto">
-                                        38K+ stargazers
+                                        {GITHUB_STARS}+ stargazers
                                     </div>
                                 </a>
                             </li>
