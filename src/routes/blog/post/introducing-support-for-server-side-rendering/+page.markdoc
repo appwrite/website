@@ -34,7 +34,7 @@ npm install node-appwrite
 
 ## Create sessions server-side
 
-To solve this issue, all existing server SDK methods that create a session now return a `secret` attribute. The following methods are:
+To solve this issue, all existing server SDK methods that create a session now return a `secret` attribute. The following methods are: 
 
 - `account.createEmailPasswordSession(email, password)`
 - `account.createAnonymousSession()`
@@ -50,9 +50,9 @@ console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
 
 ## Using session secrets
 
-With a session cookie set, we can now authenticate users and protect routes.
+With a session cookie set, we can now authenticate users and protect routes. 
 
-When using the Appwrite SDK, you can use the new `setSession` method to authenticate a user for any request.
+When using the Appwrite SDK, you can use the new `setSession` method to authenticate a user for any request. 
 
 ```jsx
 client.setSession(session.secret)
@@ -65,7 +65,7 @@ It’s important to note that the client instance should be re-created for every
 
 ## Admin and Session Clients
 
-With the new authentication patterns for SSR, you’ll need to create two different types of instances of an Appwrite client when initializing the SDK. An admin client for performing admin request, and a session client for performing authenticated request on behalf of an end user.
+With the new authentication patterns for SSR, you’ll need to create two different types of instances of an Appwrite client when initializing the SDK. An admin client for performing admin request, and a session client for performing authenticated request on behalf of an end user.  
 
 ### Admin Client
 
@@ -82,7 +82,7 @@ const adminClient = new Client()
 
 ### Session Client
 
-A session client will allow us to make requests as an authenticated end-user with the `setSession` helper method.
+A session client will allow us to make requests as an authenticated end-user with the `setSession` helper method. 
 
 ```jsx
 const sessionClient = new Client()
@@ -118,7 +118,7 @@ import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 export function createAdminClient() => {
     const client = new Client()
         .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
-        .setProject(process.env.PUBLIC_APPWRITE_PROJECT)
+        .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
         .setKey(process.env.APPWRITE_API_KEY)
 
     return {
@@ -131,7 +131,7 @@ export function createAdminClient() => {
 export function  createSessionClient(headers) {
     const client = new Client()
         .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
-        .setProject(process.env.PUBLIC_APPWRITE_PROJECT)
+        .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
 
     const cookies = parseCookie(headers.get('cookie') ?? '')
     const session = cookies.get('my-session-cookie') ?? ''
@@ -149,7 +149,7 @@ export function  createSessionClient(headers) {
 
 ### **Creating a session**
 
-Now, in the `/signin` route, we can use the admin client to generate a session and set a cookie.
+Now, in the `/signin` route, we can use the admin client to generate a session and set a cookie. 
 
 ```jsx
 import { createAdminClient } from "@/lib/appwrite"
@@ -175,7 +175,7 @@ export async function POST(request){
 
 ### Authenticating requests
 
-With a session set, we can now use the session client to authenticate a user and return the user object. This session client can now be used on all requests that require an authenticated user.
+With a session set, we can now use the session client to authenticate a user and return the user object. This session client can now be used on all requests that require an authenticated user. 
 
 ```jsx
 import { createSessionClient } from "@/lib/appwrite"
@@ -194,7 +194,7 @@ export async function GET(request){
 
 # Resources
 
-Visit our documentation to learn more about SSR, join us on Discord to be part of the discussion, visit our blog and YouTube channel to learn more, or visit our GitHub repository to see our source code.
+Visit our documentation to learn more about SSR, join us on Discord to be part of the discussion, visit our blog and YouTube channel to learn more, or visit our GitHub repository to see our source code. 
 
 - [Docs](https://appwrite.io/docs/products/auth/server-side-rendering)
 - [Discord](https://appwrite.io/discord)
@@ -202,6 +202,6 @@ Visit our documentation to learn more about SSR, join us on Discord to be part o
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub repository](https://github.com/appwrite/appwrite)
 
-SSR will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.
+SSR will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024. 
 
 [Go back to Init](http://appwrite.io/init)

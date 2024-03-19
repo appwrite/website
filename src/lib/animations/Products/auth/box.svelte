@@ -44,8 +44,8 @@
 
 <div class="pseudo-table">
 	<div class="header">
-		<span class="web-eyebrow">Name</span>
-		<span class="web-eyebrow">Identifier</span>
+		<span class="aw-eyebrow">Name</span>
+		<span class="aw-eyebrow">Identifier</span>
 	</div>
 	{#each authData as user (user.id)}
 		<div

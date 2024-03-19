@@ -193,7 +193,7 @@
 <div
     id="products"
     use:scroll
-    on:web-scroll={({ detail }) => {
+    on:aw-scroll={({ detail }) => {
         scrollInfo = detail;
     }}
 >
@@ -208,18 +208,18 @@
                 in:fly={{ duration: 250, delay: 250, y: -300 }}
             >
                 {#if scrollInfo.percentage > -0.1}
-                    <span class="web-badges web-eyebrow" transition:slide={{ axis: 'x' }}
+                    <span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}
                         >Products_</span
                     >
 
                     <h2
-                        class="web-display web-u-color-text-primary"
+                        class="aw-display aw-u-color-text-primary"
                         transition:fly={{ y: 16, delay: 250 }}
                     >
                         Your backend, minus the hassle
                     </h2>
                     <p
-                        class="web-description web-u-max-width-700 u-margin-inline-auto"
+                        class="aw-description aw-u-max-width-700 u-margin-inline-auto"
                         transition:fly={{
                             y: 16,
                             delay: 400
@@ -255,11 +255,11 @@
                                             width="32"
                                             height="32"
                                         />
-                                        <span class="web-label">{copy.title}</span>
+                                        <span class="aw-label">{copy.title}</span>
                                     </h3>
                                     {#if isActive}
                                         <div transition:slide>
-                                            <h4 class="web-title">{copy.subtitle}</h4>
+                                            <h4 class="aw-title">{copy.subtitle}</h4>
                                             <p>
                                                 {copy.description}
                                             </p>
@@ -351,8 +351,6 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
     #products {
         min-height: 500vh;
         height: 5000px;
@@ -458,7 +456,7 @@
 
                     &[data-active] {
                         h3 {
-                            color: hsl(var(--web-color-primary));
+                            color: hsl(var(--aw-color-primary));
                             margin-block-end: 0.75rem;
                         }
                     }
@@ -469,13 +467,13 @@
                     align-items: center;
                     gap: 0.75rem;
 
-                    .web-label {
+                    .aw-label {
                         margin-block-start: 0.25rem;
                     }
                 }
 
                 h4 {
-                    color: hsl(var(--web-color-primary));
+                    color: hsl(var(--aw-color-primary));
                 }
 
                 p {
@@ -522,7 +520,7 @@
     }
 
     .phone {
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-size: 1px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
@@ -591,7 +589,7 @@
         }
 
         :global(.header) {
-            border-bottom: 1px solid hsl(var(--web-color-greyscale-700));
+            border-bottom: 1px solid hsl(var(--aw-color-greyscale-700));
             color: var(--greyscale-400, #adadb1);
 
             text-transform: uppercase;
@@ -611,8 +609,8 @@
         }
 
         :global(.avatar) {
-            background-color: hsl(var(--web-color-greyscale-700));
-            border-color: hsl(var(--web-color-greyscale-700));
+            background-color: hsl(var(--aw-color-greyscale-700));
+            border-color: hsl(var(--aw-color-greyscale-700));
         }
 
         :global(.truncated) {
@@ -632,7 +630,7 @@
     }
 
     .controls {
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,

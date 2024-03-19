@@ -3,10 +3,7 @@ layout: article
 title: 2-Factor authentication
 description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
+
 Two-factor authentication (2FA) greatly increases the security of your apps by adding additional layers of protection.
 When 2FA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite Authentication lets you easily implement 2FA in your apps, letting you build more securely and quickly.

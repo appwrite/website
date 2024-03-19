@@ -15,6 +15,6 @@ export const load = async ({ params }) => {
             messages
         };
     } catch (e) {
-        error(404, 'Thread not found');
+        throw error(404, 'Thread not found');
     }
 };

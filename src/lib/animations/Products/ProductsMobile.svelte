@@ -5,13 +5,13 @@
 
 <div class="outside">
     <div class="wrapper">
-        <span class="web-badges web-eyebrow">Products_</span>
+        <span class="aw-badges aw-eyebrow">Products_</span>
 
-        <h2 class="web-display web-u-color-text-primary u-margin-block-start-16">
+        <h2 class="aw-display aw-u-color-text-primary u-margin-block-start-16">
             Your backend, minus the hassle
         </h2>
 
-        <p class="web-description u-margin-block-start-16">
+        <p class="aw-description u-margin-block-start-16">
             Build secure and scalable applications with less code. Add authentication, databases,
             storage, and more using Appwrite's development platform.
         </p>
@@ -25,10 +25,10 @@
                     <div class="info">
                         <h3>
                             <img src={info.icon.active} alt="" />
-                            <span class="web-label web-u-color-text-primary">{info.title}</span>
+                            <span class="aw-label aw-u-color-text-primary">{info.title}</span>
                         </h3>
 
-                        <h4 class="web-title">{info.subtitle}</h4>
+                        <h4 class="aw-title">{info.subtitle}</h4>
                         <p>
                             {info.description}
                         </p>
@@ -109,13 +109,13 @@
                 align-items: center;
                 gap: 0.75rem;
 
-                .web-label {
+                .aw-label {
                     margin-block-start: 0.25rem;
                 }
             }
 
             h4 {
-                color: hsl(var(--web-color-primary));
+                color: hsl(var(--aw-color-primary));
                 margin-block-start: 0.75rem;
             }
 
@@ -159,7 +159,7 @@
         }
 
         hr {
-            border: 1px solid hsl(var(--web-color-smooth));
+            border: 1px solid hsl(var(--aw-color-smooth));
             margin-inline: calc(var(--padding-inline) * -1);
         }
     }

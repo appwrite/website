@@ -7,9 +7,9 @@
     export let loop: boolean = false;
 </script>
 
-<div class="web-media">
+<div class="aw-media">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video {src} class="web-u-media-ratio-16-9 u-width-full-line" controls {autoplay} {loop}>
+    <video {src} class="aw-u-media-ratio-16-9 u-width-full-line" controls {autoplay} {loop}>
         <source {src} {type} />
     </video>
 </div>

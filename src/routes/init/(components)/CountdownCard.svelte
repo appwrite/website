@@ -7,26 +7,26 @@
     const { days, hours, minutes, seconds } = createCountdown(date);
 </script>
 
-<div class="web-card is-normal web-u-color-text-primary">
+<div class="aw-card is-normal aw-u-color-text-primary">
     <img src="/images/icons/gradients/lock.svg" alt="Lock" />
     {#if $days > 1}
-        <p class="web-title">
+        <p class="aw-title">
             {$days}
-            {$days > 1 ? 'days' : 'day'}<span class="web-u-color-text-accent">_</span>
+            {$days > 1 ? 'days' : 'day'}<span class="aw-u-color-text-accent">_</span>
         </p>
     {:else}
-        <div class="web-title">
+        <div class="aw-title">
             <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
                 value={$seconds}
-            /><span class="web-u-color-text-accent">_</span>
+            /><span class="aw-u-color-text-accent">_</span>
         </div>
     {/if}
 
-    <p class="web-sub-body-500">Countdown to next announcement</p>
+    <p class="aw-sub-body-500">Countdown to next announcement</p>
 </div>
 
 <style lang="scss">
-    .web-card {
+    .aw-card {
         height: 25rem;
 
         display: flex;
@@ -35,11 +35,11 @@
         align-items: center;
     }
 
-    .web-title {
+    .aw-title {
         margin-block-start: 0.75rem;
     }
 
-    .web-sub-body-500 {
+    .aw-sub-body-500 {
         margin-block-start: 0.5rem;
     }
 </style>

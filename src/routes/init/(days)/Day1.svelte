@@ -16,25 +16,25 @@
     <div class="mosaic">
         <a
             href="/blog/post/announcing-appwrite-messaging"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Messaging</h3>
+                <h3 class="aw-label aw-u-color-text-primary">Messaging</h3>
                 <p style:margin-block-start="0.625rem">
                     Introducing multimedia messaging service to communicate to your users across
                     platforms.
                 </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="aw-icon-arrow-right" />
                 </div>
             </div>
             <img src={illustration} alt="" />
             <div class="circle" />
         </a>
         <div
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 0.5rem; --p-aspect-ratio: 0;"
         >
             <Video
@@ -45,15 +45,15 @@
 
         <a
             href="/blog/post/simplify-messaging-twilio"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
+            class="aw-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+            <h3 class="aw-label aw-u-color-text-primary" style="max-width: 18.75rem">
                 How tools like Twilio can simplify messaging for developers
             </h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </div>
             <img
                 src={twillio}
@@ -63,15 +63,15 @@
         </a>
         <a
             href="/blog/post/push-notifications-best-practices"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
+            class="aw-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 20px"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
+            <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
                 Best practices for sending push notifications
             </h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </div>
             <div>
                 <Animations.Messaging />
@@ -80,16 +80,16 @@
         <VideoWrapper let:openVideo>
             <button
                 on:click={openVideo}
-                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                class="aw-card is-normal has-border-gradient u-overflow-hidden"
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
+                    <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
                         Product tour
                     </h3>
-                    <div class="web-card-link u-flex u-cross-center">
+                    <div class="aw-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
+                        <span class="aw-icon-arrow-right" />
                     </div>
                 </div>
                 <Video
@@ -103,38 +103,38 @@
 
         <a
             href="/docs/products/messaging"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
-            <span class="web-card-link u-flex u-cross-center">
+            <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
+            <span class="aw-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </span>
         </a>
         <a
             href="/init/tickets"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Win swag</h3>
-            <span class="web-card-link u-flex u-cross-center">
+            <h3 class="aw-label aw-u-color-text-primary">Win swag</h3>
+            <span class="aw-card-link u-flex u-cross-center">
                 <span class="text">Enter giveaway</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </span>
         </a>
         <a
             href="https://discord.com/events/564160730845151244/1209117134417035365"
             target="_blank"
             rel="noreferrer noopener"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Welcome to Init</h3>
-                <div class="web-card-link u-flex u-cross-center">
+                <h3 class="aw-label aw-u-color-text-primary">Event: Welcome to Init</h3>
+                <div class="aw-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="aw-icon-arrow-right" />
                 </div>
             </div>
             <img
@@ -176,7 +176,7 @@
                 $size: 200px;
                 width: $size;
                 height: $size;
-                background: hsl(var(--web-color-accent));
+                background: hsl(var(--aw-color-accent));
                 filter: blur(200px);
 
                 position: absolute;
@@ -260,14 +260,14 @@
             gap: 1rem;
         }
 
-        .web-card {
-            .web-card-link {
-                color: var(--web-color-primary);
+        .aw-card {
+            .aw-card-link {
+                color: var(--aw-color-primary);
             }
 
             &:hover {
-                .web-card-link {
-                    color: hsl(var(--web-color-accent-darker));
+                .aw-card-link {
+                    color: hsl(var(--aw-color-accent-darker));
                 }
             }
         }

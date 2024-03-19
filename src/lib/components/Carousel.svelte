@@ -46,27 +46,27 @@
         <slot name="header" />
         <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
             <button
-                class="web-icon-button"
+                class="aw-icon-button"
                 aria-label="Move carousel backward"
                 disabled={isStart}
                 on:click={() => prev()}
             >
-                <span class="web-icon-arrow-left" aria-hidden="true" />
+                <span class="aw-icon-arrow-left" aria-hidden="true" />
             </button>
             <button
-                class="web-icon-button"
+                class="aw-icon-button"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
                 on:click={() => next()}
             >
-                <span class="web-icon-arrow-right" aria-hidden="true" />
+                <span class="aw-icon-arrow-right" aria-hidden="true" />
             </button>
         </div>
     </div>
 
     <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
         <ul
-            class="web-grid-articles u-margin-block-start-32 carousel"
+            class="aw-grid-articles u-margin-block-start-32 carousel"
             class:is-medium={size === 'medium'}
             class:is-big={size === 'big'}
             style:gap="{gap}px"
@@ -97,7 +97,7 @@
             left: 0;
             background: linear-gradient(
                 to right,
-                hsl(var(--web-color-background-docs)),
+                hsl(var(--aw-color-background-docs)),
                 transparent
             );
         }
@@ -108,7 +108,7 @@
 
         &::after {
             right: 0;
-            background: linear-gradient(to left, hsl(var(--web-color-background-docs)), transparent);
+            background: linear-gradient(to left, hsl(var(--aw-color-background-docs)), transparent);
         }
 
         &[data-state='end']::after {

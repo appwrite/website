@@ -1,16 +1,16 @@
 ---
 layout: tutorial
-title: Create sign up page
+title: Create sign in page
 description: Add authentication to a Nuxt project using Appwrite.
 step: 5
 ---
 
-We can now implement our sign up page. Create a `signin.vue` file in the `pages` directory.
+We can now implement our sign in page. Create a `signin.vue` file in the `pages` directory.
 
 ```vue
-<!-- pages/signup.vue -->
+<!-- pages/signin.vue -->
 <template>
-  <form method="post" action="/api/signup">
+  <form method="post" action="/api/signin">
     <input id="email" name="email" placeholder="Email" type="email" />
     <input
       id="password"
@@ -18,7 +18,7 @@ We can now implement our sign up page. Create a `signin.vue` file in the `pages`
       placeholder="Password"
       type="password"
     />
-    <button type="submit">Sign up</button>
+    <button type="submit">Sign in</button>
   </form>
 </template>
 ```
@@ -26,7 +26,7 @@ We can now implement our sign up page. Create a `signin.vue` file in the `pages`
 This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Nuxt form actions we create a `signin.post.js` file in the `server/api` directory:
 
 ```javascript
-// server/api/signup.post.js
+// server/api/signin.post.js
 import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {

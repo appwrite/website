@@ -36,7 +36,7 @@ You can skip optional steps.
 {% section #step-2 step=2 title="Create project" %}
 You can install the Appwrite Web SDK using a package manager.
 ```sh
-npm install appwrite@13.0.2
+npm install appwrite
 ```
 
 You can also add the Appwrite Web SDK using CDN with a script tag.

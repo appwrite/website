@@ -17,16 +17,18 @@
 </script>
 
 <main class="u-contents" id="main">
-    <article class="web-article u-contents">
-        <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+    <article class="aw-article u-contents">
+        <header class="aw-article-header">
+            <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
                 <button
-                    class="web-icon-button web-is-only-mobile"
+                    class="
+						aw-button is-text aw-is-only-mobile
+						aw-u-padding-block-0 aw-u-padding-inline-start-0 aw-u-padding-inline-end-12"
                     aria-label="previous page"
                 >
                     <span class="icon-cheveron-left" aria-hidden="true" />
                 </button>
-                <ul class="web-metadata web-caption-400">
+                <ul class="aw-metadata aw-caption-400">
                     <slot name="metadata" />
                 </ul>
                 <div class="u-position-relative u-flex u-cross-center">
@@ -34,29 +36,29 @@
                         <a
                             href={back}
                             class="
-						web-button is-text is-only-icon web-u-cross-center web-u-size-40
-						u-position-absolute u-inset-inline-start-0 web-u-translate-x-negative"
+						aw-button is-text is-only-icon aw-u-cross-center aw-u-size-40
+						u-position-absolute u-inset-inline-start-0 aw-u-translate-x-negative"
                             aria-label="previous page"
                         >
                             <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                class="icon-cheveron-left aw-u-font-size-24 aw-u-color-text-primary aw-is-not-mobile"
                                 aria-hidden="true"
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="aw-title">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="aw-article-header-end" />
         </header>
-        <div class="web-article-content">
+        <div class="aw-article-content">
             <slot />
             <div class="u-flex u-main-space-between">
                 {#if prevStep}
-                    <a href={prevStep.href} class="web-button is-text">
+                    <a href={prevStep.href} class="aw-button is-text">
                         <span class="icon-cheveron-left" aria-hidden="true" />
-                        <span class="web-sub-body-500">
-                            Step {prevStep.step}<span class="web-is-not-mobile"
+                        <span class="aw-sub-body-500">
+                            Step {prevStep.step}<span class="aw-is-not-mobile"
                                 >: {prevStep.title}</span
                             >
                         </span>
@@ -65,11 +67,11 @@
                 {#if nextStep}
                     <a
                         href={nextStep.href}
-                        class="web-button is-secondary"
+                        class="aw-button is-secondary"
                         style:margin-left={prevStep ? undefined : 'auto'}
                     >
-                        <span class="web-sub-body-500">
-                            Step {nextStep.step}<span class="web-is-not-mobile"
+                        <span class="aw-sub-body-500">
+                            Step {nextStep.step}<span class="aw-is-not-mobile"
                                 >: {nextStep.title}</span
                             >
                         </span>
@@ -80,54 +82,54 @@
 
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
-            <div class="web-references-menu-content">
+        <aside class="aw-references-menu aw-u-padding-inline-start-24">
+            <div class="aw-references-menu-content">
                 <div class="u-flex u-main-space-between u-cross-center u-gap-16">
-                    <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>
+                    <h5 class="aw-references-menu-title aw-eyebrow">Tutorial Steps</h5>
                 </div>
-                <ol class="web-references-menu-list">
+                <ol class="aw-references-menu-list">
                     {#each tutorials as tutorial}
                         {@const isCurrentStep = currentStep === tutorial.step}
-                        <li class="web-references-menu-item">
+                        <li class="aw-references-menu-item">
                             <a
                                 href={tutorial.href}
-                                class="web-references-menu-link"
+                                class="aw-references-menu-link"
                                 class:tutorial-scroll-indicator={isCurrentStep && !toc.length}
                                 class:is-selected={isCurrentStep}
                             >
-                                <span class="web-numeric-badge">{tutorial.step}</span>
-                                <span class="web-caption-400">{tutorial.title}</span>
+                                <span class="aw-numeric-badge">{tutorial.step}</span>
+                                <span class="aw-caption-400">{tutorial.title}</span>
                             </a>
                             {#if isCurrentStep}
                                 {#each toc as parent}
                                     <ol
-                                        class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+                                        class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                     >
-                                        <li class="web-references-menu-item">
+                                        <li class="aw-references-menu-item">
                                             <a
                                                 href={parent.href}
-                                                class="web-references-menu-link is-inner"
+                                                class="aw-references-menu-link is-inner"
                                                 class:tutorial-scroll-indicator={parent.selected}
                                                 class:is-selected={parent.selected}
                                             >
                                                 {#if parent?.step}
-                                                    <span class="web-numeric-badge"
+                                                    <span class="aw-numeric-badge"
                                                         >{parent.step}</span
                                                     >
                                                 {/if}
-                                                <span class="web-caption-400">{parent.title}</span>
+                                                <span class="aw-caption-400">{parent.title}</span>
                                             </a>
                                             {#if parent.children}
                                                 <ol
-                                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+                                                    class="aw-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                                 >
                                                     {#each parent.children as child}
-                                                        <li class="web-references-menu-item">
+                                                        <li class="aw-references-menu-item">
                                                             <a
                                                                 href={child.href}
-                                                                class="web-references-menu-link"
+                                                                class="aw-references-menu-link"
                                                             >
-                                                                <span class="web-caption-400"
+                                                                <span class="aw-caption-400"
                                                                     >{child.title}</span
                                                                 >
                                                             </a>
@@ -143,9 +145,9 @@
                     {/each}
                 </ol>
                 <div class="u-sep-block-start u-padding-block-start-20">
-                    <button class="web-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
-                        <span class="web-icon-arrow-up" aria-hidden="true" />
-                        <span class="web-caption-400">Back to top</span>
+                    <button class="aw-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
+                        <span class="aw-icon-arrow-up" aria-hidden="true" />
+                        <span class="aw-caption-400">Back to top</span>
                     </button>
                 </div>
             </div>

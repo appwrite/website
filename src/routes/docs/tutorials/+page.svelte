@@ -13,7 +13,7 @@
 
     const iconMap: Record<string, string> = {
         react: 'icon-react',
-        vue: 'web-icon-vue',
+        vue: 'aw-icon-vue',
         angular: 'icon-angular',
         svelte: 'icon-svelte',
         sveltekit: 'icon-svelte',
@@ -24,7 +24,7 @@
         nuxt: 'icon-nuxt',
         'nuxt ssr': 'icon-nuxt',
         stripe: 'icon-stripe',
-        refine: 'web-icon-refine',
+        refine: 'aw-icon-refine',
         'next.js': 'icon-nextjs',
         'next.js ssr': 'icon-nextjs',
         astro: 'icon-astro',
@@ -54,53 +54,53 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<main class="web-main-section" id="main">
-    <article class="web-article">
-        <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+<main class="aw-main-section" id="main">
+    <article class="aw-article">
+        <header class="aw-article-header">
+            <div class="aw-article-header-start u-flex-vertical aw-u-cross-start">
                 <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="web-title">Tutorials</h1>
+                    <h1 class="aw-title">Tutorials</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="aw-article-header-end" />
         </header>
-        <div class="web-article-content web-u-gap-80">
+        <div class="aw-article-content aw-u-gap-80">
             {#each data.tutorials as category}
                 <section class="u-flex-vertical u-gap-24">
-                    <h2 class="web-eyebrow">{category.title}</h2>
-                    <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
+                    <h2 class="aw-eyebrow">{category.title}</h2>
+                    <ul class="aw-grid-row-4 aw-grid-row-4-mobile-2">
                         {#each category.tutorials as tutorial}
                             <li>
                                 {#if tutorial.draft === true}
                                     <a
                                         href={tutorial.href}
-                                        class="web-card is-normal draft"
+                                        class="aw-card is-normal draft"
                                         aria-disabled="true"
                                         tabindex="-1"
                                     >
                                         <header class="u-flex u-cross-baseline u-gap-4">
                                             <span
-                                                class="{getIcon(tutorial)} web-u-font-size-24"
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
                                                 aria-hidden="true"
                                             />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
                                                 {tutorial.framework}
                                             </h3>
-                                            <span class="badge web-caption-400">Coming Soon</span>
+                                            <span class="badge aw-caption-400">Coming Soon</span>
                                         </header>
                                     </a>
                                 {:else}
-                                    <a href={tutorial.href} class="web-card is-normal">
+                                    <a href={tutorial.href} class="aw-card is-normal">
                                         <header class="u-flex u-cross-baseline u-gap-4">
                                             <span
-                                                class="{getIcon(tutorial)} web-u-font-size-24"
+                                                class="{getIcon(tutorial)} aw-u-font-size-24"
                                                 aria-hidden="true"
                                             />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            <h3 class="aw-sub-body-500 aw-u-color-text-primary">
                                                 {tutorial.framework}
                                             </h3>
                                         </header>
-                                        <p class="web-sub-body-400 u-margin-block-start-4">
+                                        <p class="aw-sub-body-400 u-margin-block-start-4">
                                             {tutorial.title}
                                         </p>
                                     </a>

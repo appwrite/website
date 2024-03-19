@@ -80,9 +80,9 @@
 </script>
 
 <button
-    class="web-select is-colored"
+    class="aw-select is-colored"
     {id}
-    class:web-is-not-mobile={nativeMobile}
+    class:aw-is-not-mobile={nativeMobile}
     use:melt={$trigger}
     aria-label="Select theme"
 >
@@ -97,8 +97,8 @@
 
 {#if $open}
     <div
-        class="web-select-menu"
-        class:web-is-not-mobile={nativeMobile}
+        class="aw-select-menu"
+        class:aw-is-not-mobile={nativeMobile}
         style:z-index={10000}
         use:melt={$menu}
         transition:fly={flyParams}
@@ -108,7 +108,7 @@
             {#if isDefault}
                 <div class="u-flex u-flex-vertical u-gap-2">
                     {#each group.options as option}
-                        <button class="web-select-option" use:melt={$optionEl(option)}>
+                        <button class="aw-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
@@ -117,13 +117,13 @@
                     {/each}
                 </div>
             {:else}
-                <div class="web-select-group" use:melt={$groupEl(group.label)}>
-                    <span class="web-select-group-label" use:melt={$groupLabel(group.label)}>
+                <div class="aw-select-group" use:melt={$groupEl(group.label)}>
+                    <span class="aw-select-group-label" use:melt={$groupLabel(group.label)}>
                         {group.label}
                     </span>
 
                     {#each group.options as option}
-                        <button class="web-select-option" use:melt={$optionEl(option)}>
+                        <button class="aw-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
@@ -137,7 +137,7 @@
 {/if}
 
 <div
-    class="web-select is-colored web-is-only-mobile web-u-inline-width-100-percent-mobile-break1"
+    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
@@ -167,7 +167,7 @@
 </div>
 
 <style lang="scss">
-    .web-select {
+    .aw-select {
         min-width: var(--min-width, var(--p-select-min-width));
     }
 </style>

@@ -43,7 +43,7 @@ npm create svelte@next my-app && cd my-app && npm install
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@13.0.2
+npm install appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -80,7 +80,7 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     let loggedInUser = null;
 
     async function login(email, password) {
-        await account.createEmailSession(email, password);
+        await account.createEmailPasswordSession(email, password);
         loggedInUser = await account.get();
     }
 

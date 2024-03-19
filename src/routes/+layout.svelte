@@ -42,7 +42,7 @@
 </script>
 
 <script lang="ts">
-    import '$icons/output/web-icon.css';
+    import '$icons/output/aw-icon.css';
     import '$scss/index.scss';
 
     import { browser, dev } from '$app/environment';
@@ -114,8 +114,8 @@
         z-index: 9999;
 
         display: block;
-        background-color: hsl(var(--web-color-mint-500));
-        color: hsl(var(--web-color-black));
+        background-color: hsl(var(--aw-color-mint-500));
+        color: hsl(var(--aw-color-black));
         text-decoration: underline;
         opacity: 0;
 

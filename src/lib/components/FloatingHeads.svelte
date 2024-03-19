@@ -23,7 +23,7 @@
     export let images: Array<string>;
 </script>
 
-<div class="u-position-absolute web-u-hide-mobile root">
+<div class="u-position-absolute aw-u-hide-mobile root">
     {#each headPositions as [size, top, left], i}
         {@const image = clamp(0, images.length - 1, i % images.length)}
         <FloatingHead

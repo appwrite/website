@@ -13,8 +13,8 @@
 
 <svelte:element
     this={ordered ? 'ol' : 'ul'}
-    class:web-numeric-list={ordered}
-    class:web-pink-dots={!ordered}
+    class:aw-numeric-list={ordered}
+    class:aw-pink-dots={!ordered}
     class:in-policy={inPolicy}
     class:in-changelog={inChangelog}><slot /></svelte:element
 >

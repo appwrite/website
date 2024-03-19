@@ -107,8 +107,8 @@ export const scroll: Action<
     HTMLElement,
     undefined,
     {
-        'on:web-scroll': (e: CustomEvent<ScrollInfo>) => void;
-        'on:web-resize': (e: CustomEvent<ScrollInfo>) => void;
+        'on:aw-scroll': (e: CustomEvent<ScrollInfo>) => void;
+        'on:aw-resize': (e: CustomEvent<ScrollInfo>) => void;
     }
 > = (node) => {
     function getScrollInfo(): ScrollInfo {
@@ -128,7 +128,7 @@ export const scroll: Action<
         };
     }
 
-    const createHandler = (eventName: 'web-scroll' | 'web-resize') => {
+    const createHandler = (eventName: 'aw-scroll' | 'aw-resize') => {
         return () => {
             node.dispatchEvent(
                 new CustomEvent<ScrollInfo>(eventName, {
@@ -138,8 +138,8 @@ export const scroll: Action<
         };
     };
 
-    const handleScroll = createHandler('web-scroll');
-    const handleResize = createHandler('web-resize');
+    const handleScroll = createHandler('aw-scroll');
+    const handleResize = createHandler('aw-resize');
 
     handleScroll();
     handleResize();

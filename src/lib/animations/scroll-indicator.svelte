@@ -30,7 +30,7 @@
     style:--y={`${y}px`}
     style:--percentage={`${easedPercentage * 100}%`}
 >
-    <div class="web-dot" />
+    <div class="aw-dot" />
 </div>
 
 <style lang="scss">
@@ -42,14 +42,14 @@
         height: 100%;
         background: linear-gradient(
             to bottom,
-            hsl(var(--web-color-accent)) 0%,
-            hsl(var(--web-color-greyscale-700)) var(--percentage),
-            hsl(var(--web-color-greyscale-700)) 100%
+            hsl(var(--aw-color-accent)) 0%,
+            hsl(var(--aw-color-greyscale-700)) var(--percentage),
+            hsl(var(--aw-color-greyscale-700)) 100%
         );
         border-radius: 100%;
     }
 
-    .web-dot {
+    .aw-dot {
         position: absolute;
         left: 50%;
         translate: -50% var(--y, 0);

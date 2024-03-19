@@ -78,8 +78,6 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
     .component {
         width: 297px;
         height: 204.97px;
@@ -101,7 +99,7 @@
         box-shadow: 0px 2.247819185256958px 4.495638370513916px rgba(0, 0, 0, 0.02);
         backdrop-filter: blur(22.31px);
 
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-radius: 12px;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -230,7 +228,7 @@
     }
 
     .icon-wrapper {
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-radius: 1000px;
         --m-border-gradient-before: linear-gradient(
             -45deg,

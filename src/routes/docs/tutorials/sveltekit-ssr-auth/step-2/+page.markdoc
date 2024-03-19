@@ -30,13 +30,13 @@ create-svelte version 3.2.0
 ◇  Add type checking with TypeScript?
 │  Yes, using JavaScript with JSDoc comments
 │
-◇  Select additional options
-│  None
+◇  Select additional options (use arrow keys/space bar)
+│  Add ESLint for code linting
 │
 └  Your project is ready!
 ```
 
-After the prompt is finished, you can head over to the newly created project.
+After the prompt is finished, you can head over to the newly create project.
 
 ```sh
 cd my-svelte-project

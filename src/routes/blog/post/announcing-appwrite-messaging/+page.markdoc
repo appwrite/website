@@ -28,17 +28,17 @@ As mentioned, Messaging covers three communication channels under one unified AP
 {% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
 Use APNs for push notification to Apple devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="web-icon-firebase" %}
+{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="aw-icon-firebase" %}
 Use FCM for push notification to Android and Apple devices.
 {% /cards_item %}
 {% /cards %}
 
 ## Email
 {% cards %}
-{% cards_item href="/docs/products/messaging/mailgun" title="Mailgun" icon="web-icon-mailgun" %}
+{% cards_item href="/docs/products/messaging/mailgun" title="Mailgun" icon="aw-icon-mailgun" %}
 Use Mailgun to send emails
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/sendgrid" title="Sendgrid" icon="web-icon-sendgrid" %}
+{% cards_item href="/docs/products/messaging/sendgrid" title="Sendgrid" icon="aw-icon-sendgrid" %}
 Use Sendgrid to send emails
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/smtp" title="SMTP" icon="icon-mail" %}
@@ -57,7 +57,7 @@ Use MSG91 for SMS notifications to mobile devices.
 {% cards_item href="/docs/products/messaging/telesign" title="Telesign" icon="icon-telesign" %}
 Use Telesign for SMS notifications to mobile devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="web-icon-textmagic" %}
+{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="aw-icon-textmagic" %}
 Use TextMagic for SMS notifications to mobile devices.
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/vonage" title="Vonage" icon="icon-vonage" %}

@@ -1,3 +1,3 @@
-<tr class="web-table-row">
+<tr class="aw-table-row">
 	<slot />
 </tr>

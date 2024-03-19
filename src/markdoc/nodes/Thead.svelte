@@ -1,3 +1,3 @@
-<thead class="web-table-header">
+<thead class="aw-table-header">
     <slot />
 </thead>

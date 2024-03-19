@@ -4,10 +4,6 @@ title: SMTP
 description: Send emails to your Appwrite users using SMTP and Appwrite Messaging.
 back: /docs/
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
 
 If you wish to use a third-party SMTP provider that Appwrite doesn't yet support or host your own SMTP
 server, you can setup a custom SMTP provider for your project.
@@ -106,7 +102,13 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-cconst message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -122,7 +124,13 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+let promise = messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```php
 <?php
@@ -195,8 +203,6 @@ Message result = await messaging.CreateEmail(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/enums.dart';
-import 'package:dart_appwrite/models.dart';
 
 void main() { // Init SDK
   Client client = Client();
@@ -485,8 +491,6 @@ Provider result = await messaging.UpdateSendgridProvider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/enums.dart';
-import 'package:dart_appwrite/models.dart';
 
 void main() { // Init SDK
   Client client = Client();

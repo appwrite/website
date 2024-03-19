@@ -1,29 +1,29 @@
 ---
 layout: tutorial
-title: OAuth authentication with SSR
+title: OAuth2 authentication with SSR
 description: Add authentication to a Nuxt project using Appwrite.
 step: 7
 ---
 
-To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider.
+To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, and then handle the callback from the OAuth2 provider.
 
-To redirect, add a button to our sign up page that redirects the user to the OAuth provider.
+To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
 
 ```vue
-<!-- pages/signup.vue -->
+<!-- pages/signin.vue -->
 
-<!-- ... existing sign up form -->
+<!-- ... existing sign in form -->
 
-<form action="/api/oauth" method="post">
+<form action="/api/oauth2" method="post">
   <input type="hidden" name="provider" value="github" />
-  <button type="submit">Sign up with GitHub</button>
+  <button type="submit">Sign in with GitHub</button>
 </form>
 ```
 
 Add a new server route to handle the redirect.
 
 ```js
-// server/routes/api/oauth.post.js
+// server/routes/api/oauth2.post.js
 import { createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
@@ -31,29 +31,29 @@ export default defineEventHandler(async (event) => {
   const { account } = createAdminClient();
 
   const redirectUrl = await account.createOAuth2Token(
-    "github", // OAuth provider
-    `${config.public.appwriteEndpoint}/api/oauth`, // Success URL: redirect back to the /oauth route
-    `${config.public.appwriteEndpoint}/signup`      // Failure URL: redirect to the sign up page
+    "github", // OAuth2 provider
+    `${config.public.appwriteEndpoint}/api/oauth2`, // Success URL: redirect back to the /oauth2 route
+    `${config.public.appwriteEndpoint}/signin`      // Failure URL: redirect to the sign in page
   );
 
-  // Redirect the user to the OAuth provider authorization page
+  // Redirect the user to the OAuth2 provider authorization page
   await sendRedirect(event, redirectUrl);
 });
 ```
 
-The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth` route with the `userId` and `secret` URL query parameters.
+The `createOAuth2Token` method redirects the user to the OAuth2 provider, and then the OAuth2 provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
 
-Handle the callback and create a session for the user. Create a new server route at `server/routes/api/oauth.get.js`.
+Handle the callback and create a session for the user. Create a new server route at `server/routes/api/oauth2.get.js`.
 
 ```js
-// server/routes/api/oauth.post.js
+// server/routes/api/oauth2.post.js
 import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
   // Extract the userId and secret from the URL query parameters
   const { userId, secret } = getQuery(event);
   if (!userId || !secret) {
-    return sendRedirect(event, "/signup");
+    return sendRedirect(event, "/signin");
   }
 
   // Create the Appwrite client

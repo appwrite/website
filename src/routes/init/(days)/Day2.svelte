@@ -15,25 +15,25 @@
     <div class="mosaic">
         <a
             href="/blog/post/introducing-support-for-server-side-rendering"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Server-side rendering</h3>
+                <h3 class="aw-label aw-u-color-text-primary">Server-side rendering</h3>
                 <p style:margin-block-start="0.625rem">
                     We introduce improved support for server-side rendering in Appwrite
                     Authentication.
                 </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="aw-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="aw-icon-arrow-right" />
                 </div>
             </div>
             <img src={illustration} alt="" />
             <div class="circle" />
         </a>
         <div
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 0.5rem; --p-aspect-ratio: 0;"
         >
             <Video
@@ -44,13 +44,13 @@
 
         <a
             href="/blog/post/csr-vs-ssr-with-nextjs"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
+            class="aw-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <h3 class="aw-label aw-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
+            <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </div>
             <div>
                 <Animations.SSR />
@@ -60,14 +60,14 @@
             href="https://discord.com/events/564160730845151244/1209117245859569754"
             target="_blank"
             rel="noreferrer noopener"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Speed</h3>
-                <div class="web-card-link u-flex u-cross-center">
+                <h3 class="aw-label aw-u-color-text-primary">Event: Speed</h3>
+                <div class="aw-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="aw-icon-arrow-right" />
                 </div>
             </div>
             <img
@@ -79,16 +79,16 @@
         <VideoWrapper let:openVideo>
             <button
                 on:click={openVideo}
-                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                class="aw-card is-normal has-border-gradient u-overflow-hidden"
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
+                    <h3 class="aw-label aw-u-color-text-primary" style="max-width: 300px">
                         Product tour
                     </h3>
-                    <div class="web-card-link u-flex u-cross-center">
+                    <div class="aw-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
+                        <span class="aw-icon-arrow-right" />
                     </div>
                 </div>
                 <Video
@@ -101,13 +101,13 @@
         </VideoWrapper>
         <a
             href="/docs/products/auth/server-side-rendering"
-            class="web-card is-normal has-border-gradient"
+            class="aw-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <h3 class="aw-label aw-u-color-text-primary">Documentation</h3>
+            <div class="aw-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <span class="aw-icon-arrow-right" />
             </div>
         </a>
     </div>
@@ -144,7 +144,7 @@
                 $size: 200px;
                 width: $size;
                 height: $size;
-                background: hsl(var(--web-color-accent));
+                background: hsl(var(--aw-color-accent));
                 filter: blur(200px);
 
                 position: absolute;
@@ -216,14 +216,14 @@
             gap: 1rem;
         }
 
-        .web-card {
-            .web-card-link {
-                color: var(--web-color-primary);
+        .aw-card {
+            .aw-card-link {
+                color: var(--aw-color-primary);
             }
 
             &:hover {
-                .web-card-link {
-                    color: hsl(var(--web-color-accent-darker));
+                .aw-card-link {
+                    color: hsl(var(--aw-color-accent-darker));
                 }
             }
         }

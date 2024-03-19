@@ -6,10 +6,10 @@
 	export let title: string;
 </script>
 
-<section class="web-article-content-section is-with-line">
-	<section class="web-article-content-sub-section">
-		<header class="web-article-content-header">
-			<span class="web-numeric-badge">{step}</span>
+<section class="aw-article-content-section is-with-line">
+	<section class="aw-article-content-sub-section">
+		<header class="aw-article-content-header">
+			<span class="aw-numeric-badge">{step}</span>
 			<Heading level={2} {id} {step}>
 				{title}
 			</Heading>

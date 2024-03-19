@@ -29,11 +29,11 @@
 </svelte:head>
 
 <Main>
-	<div class="web-container">
-		<div class="web-grid-120-1fr-auto" />
+	<div class="aw-container">
+		<div class="aw-grid-120-1fr-auto" />
 
-		<header class="web-grid-120-1fr-auto-header">
-			<h1 class="web-title web-u-color-text-primary">Support</h1>
+		<header class="aw-grid-120-1fr-auto-header">
+			<h1 class="aw-title aw-u-color-text-primary">Support</h1>
 		</header>
 
 		<FooterNav />

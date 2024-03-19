@@ -12,7 +12,7 @@
 <style lang="scss">
     .ticket-preview {
         --p-border-radius: 1rem;
-        border: 1px solid hsl(var(--web-color-subtle));
+        border: 1px solid hsl(var(--aw-color-subtle));
         border-radius: var(--p-border-radius);
 
         position: relative;

@@ -27,12 +27,12 @@
 </script>
 
 <Main>
-	<div class="web-big-padding-section">
-		<div class="web-big-padding-section-level-2">
-			<div class="web-container">
-				<div class="web-hero" style="--hero-gap:1.25rem;">
-					<span class="web-badges web-eyebrow">verification</span>
-					<h1 class="web-headline web-u-color-text-primary">
+	<div class="aw-big-padding-section">
+		<div class="aw-big-padding-section-level-2">
+			<div class="aw-container">
+				<div class="aw-hero" style="--hero-gap:1.25rem;">
+					<span class="aw-badges aw-eyebrow">verification</span>
+					<h1 class="aw-headline aw-u-color-text-primary">
 						{#if error}
 							Error
 						{:else}
@@ -40,21 +40,21 @@
 						{/if}
 					</h1>
 
-					<p class="web-description">
+					<p class="aw-description">
 						{#if error}
 							Something went wrong, please try again later.
 						{:else}
 							Your email has been verified successfully.
 						{/if}
 					</p>
-					<a href="/" class="web-button is-secondary u-cross-child-center u-margin-block-start-12">
+					<a href="/" class="aw-button is-secondary u-cross-child-center u-margin-block-start-12">
 						<span>Back to homepage</span>
 					</a>
 				</div>
 			</div>
 		</div>
-		<div class="web-big-padding-section-level-2 u-position-relative">
-			<div class="web-container">
+		<div class="aw-big-padding-section-level-2 u-position-relative">
+			<div class="aw-container">
 				<FooterNav />
 				<MainFooter />
 			</div>

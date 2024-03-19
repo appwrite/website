@@ -22,12 +22,12 @@
 {#if inTable}
     <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
 {:else}
-    <div class="web-media main">
-        <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 u-width-full-line" />
+    <div class="aw-media main">
+        <img {src} {alt} {title} loading="lazy" class="aw-u-media-ratio-16-9 u-width-full-line" />
 
         <div class="abs">
             <Tooltip closeOnPointerDown>
-                <button class="web-button is-secondary" use:melt={$trigger}>
+                <button class="aw-button is-secondary" use:melt={$trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true" />
                 </button>
                 <svelte:fragment slot="tooltip">Expand</svelte:fragment>
@@ -40,7 +40,7 @@
             <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
 
             <img
-                class="web-media content"
+                class="aw-media content"
                 use:melt={$content}
                 {src}
                 {alt}
@@ -53,10 +53,10 @@
 {/if}
 
 <style lang="scss">
-    .web-button {
+    .aw-button {
         padding: 0.6rem !important;
         [class*='icon'] {
-            color: hsl(var(--web-color-primary)) !important;
+            color: hsl(var(--aw-color-primary)) !important;
         }
     }
 

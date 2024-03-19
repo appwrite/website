@@ -46,7 +46,7 @@
 <div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
     <label for="name">Your name</label>
     <input
-        class="web-input-text"
+        class="aw-input-text"
         type="text"
         placeholder="Enter your name"
         id="name"
@@ -75,16 +75,16 @@
 <hr />
 
 {#if ticket.gh_user}
-    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
+    <div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
-        <span class="web-sub-body-500">GitHub account connected</span>
+        <span class="aw-sub-body-500">GitHub account connected</span>
     </div>
 
     <div
         class="u-flex u-cross-center u-main-between"
         style="margin-block-start: 0.25rem; gap: 1.25rem"
     >
-        <p class="web-sub-body-500">
+        <p class="aw-sub-body-500">
             Your ticket has been updated to show your unique GitHub contribution pattern.
         </p>
         <Switch bind:checked={showGitHub} />
@@ -92,27 +92,27 @@
 
     {#if dev}
         <button
-            class="web-button is-full-width is-secondary u-margin-block-start-24"
+            class="aw-button is-full-width is-secondary u-margin-block-start-24"
             on:click={async () => {
                 await appwriteInit.account.deleteSession('current');
                 goto('/init/tickets');
             }}
             disabled={!browser}
         >
-            <div class="web-icon-github web-u-color-text-primary" />
+            <div class="aw-icon-github aw-u-color-text-primary" />
             <span class="text">(DEBUG) Log-out of GitHub</span>
         </button>
     {/if}
 {:else}
-    <h2 class="web-sub-body-500 web-u-color-text-primary">Integrate your GitHub account</h2>
-    <p class="web-sub-body-500" style:margin-block-start="0.25rem">
+    <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your GitHub account</h2>
+    <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
         Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
     <button
-        class="web-button is-full-width is-secondary u-margin-block-start-24"
+        class="aw-button is-full-width is-secondary u-margin-block-start-24"
         on:click={loginGithub}
     >
-        <div class="web-icon-github web-u-color-text-primary" />
+        <div class="aw-icon-github aw-u-color-text-primary" />
         <span class="text">Log in to GitHub account</span>
     </button>
 {/if}
@@ -120,31 +120,31 @@
 <hr />
 
 {#if ticket.aw_email}
-    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
+    <div class="u-flex u-cross-center u-gap-8 aw-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
-        <span class="web-sub-body-500">Appwrite account connected</span>
+        <span class="aw-sub-body-500">Appwrite account connected</span>
     </div>
 
-    <p class="web-sub-body-500" style="margin-block-start: 0.25rem;">
+    <p class="aw-sub-body-500" style="margin-block-start: 0.25rem;">
         Your ticket has been upgraded.
     </p>
 {:else}
-    <h2 class="web-sub-body-500 web-u-color-text-primary">Integrate your Appwrite account</h2>
-    <p class="web-sub-body-500" style:margin-block-start="0.25rem">
+    <h2 class="aw-sub-body-500 aw-u-color-text-primary">Integrate your Appwrite account</h2>
+    <p class="aw-sub-body-500" style:margin-block-start="0.25rem">
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
         href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/tickets"
-        class="web-button is-full-width is-secondary u-margin-block-start-24"
+        class="aw-button is-full-width is-secondary u-margin-block-start-24"
     >
-        <div class="web-icon-appwrite web-u-color-text-primary" />
+        <div class="aw-icon-appwrite aw-u-color-text-primary" />
         <span class="text">Log in to Appwrite account</span>
     </a>
 {/if}
 <hr />
 
-<h2 class="web-sub-body-500 web-u-color-text-primary">Add your tribe</h2>
-<p class="web-sub-body-500" style:margin-block-start="0.25rem">
+<h2 class="aw-sub-body-500 aw-u-color-text-primary">Add your tribe</h2>
+<p class="aw-sub-body-500" style:margin-block-start="0.25rem">
     Customize your Init ticket with your technology.
 </p>
 <div class="tribes">
@@ -162,7 +162,7 @@
 <style lang="scss">
     hr {
         margin-block: 2rem;
-        border-block-end: 1px solid hsl(var(--web-color-offset));
+        border-block-end: 1px solid hsl(var(--aw-color-offset));
     }
 
     .tribes {

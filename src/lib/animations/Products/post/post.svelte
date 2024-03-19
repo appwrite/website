@@ -93,8 +93,6 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
 	// Utilities
 	.f-eyebrow {
 		color: #adadb0;
@@ -161,7 +159,7 @@
 
 	// Components
 	.gradient-box {
-		@include gradients.border-gradient;
+		@include border-gradient;
 		--m-border-gradient-before: linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 0.12) 0%,

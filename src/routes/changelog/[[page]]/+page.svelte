@@ -43,15 +43,15 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container wrapper">
-                    <h1 class="web-display web-u-color-text-primary">Changelog</h1>
+    <div class="aw-big-padding-section">
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container wrapper">
+                    <h1 class="aw-display aw-u-color-text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}
                             <li>
-                                <div class="web-dot" />
+                                <div class="aw-dot" />
                                 <ChangelogEntry {entry}>
                                     <svelte:component this={entry.component} />
                                 </ChangelogEntry>
@@ -60,14 +60,14 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}>Load more</button>
+                        <button class="aw-button is-secondary" on:click={loadMore}>Load more</button>
                     {/if}
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+        <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />
@@ -101,8 +101,8 @@
             content: '';
             background: linear-gradient(
                 to bottom,
-                hsl(var(--web-color-greyscale-700)) 0%,
-                hsl(var(--web-color-greyscale-700)) 95%,
+                hsl(var(--aw-color-greyscale-700)) 0%,
+                hsl(var(--aw-color-greyscale-700)) 95%,
                 transparent 100%
             );
 
@@ -116,7 +116,7 @@
         li {
             position: relative;
 
-            .web-dot {
+            .aw-dot {
                 position: absolute;
                 inset-inline-start: calc(var(--padding-is) * -1);
                 translate: -50% var(--dot-offset);

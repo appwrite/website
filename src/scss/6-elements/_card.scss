@@ -6,14 +6,14 @@
 
   &.is-normal {
     --p-card-bg-color: var(--p-card-bg-color-default);
-    --p-card-bg-color-default: var(--web-color-card);
+    --p-card-bg-color-default: var(--aw-color-card);
 
     --p-card-border-color: var(--p-card-border-color-default);
-    --p-card-border-color-default: var(--web-color-offset);
+    --p-card-border-color-default: var(--aw-color-offset);
 
     --p-card-shadow-color: var(--p-card-shadow-color-default);
-    --p-card-shadow-color-default: var(--web-color-black) / 0;
-    --p-card-shadow-color-focus-visible: var(--web-color-black) / 0.06;
+    --p-card-shadow-color-default: var(--aw-color-black) / 0;
+    --p-card-shadow-color-focus-visible: var(--aw-color-black) / 0.06;
 
     --card-padding: #{pxToRem(16)};
 
@@ -38,9 +38,9 @@
     }
 
     #{$theme-dark} & {
-      --p-card-border-color-default: var(--web-color-white) / 0.10;
+      --p-card-border-color-default: var(--aw-color-white) / 0.10;
 
-      --p-card-shadow-color-focus-visible: var(--web-color-white) / 0.06;
+      --p-card-shadow-color-focus-visible: var(--aw-color-white) / 0.06;
     }
   }
   &.is-white {
@@ -60,25 +60,25 @@
     backdrop-filter:blur(pxToRem(100));
     &-pink {
       background: linear-gradient(180deg, rgba(253, 54, 110, 0.04) 61.28%, rgba(253, 54, 110, 0.00) 100%);
-      border-color:hsl(var(--web-color-pink-500) / 0.5);
+      border-color:hsl(var(--aw-color-pink-500) / 0.5);
     }
   }
   &.is-full-color {
-    --card-bg-color: var(--web-color-white);
+    --card-bg-color: var(--aw-color-white);
     padding: var(--p-card-padding, #{pxToRem(20)});
      border-radius:pxToRem(16);
     background-color:hsl(var(--card-bg-color) / 0.9);
-    border:solid pxToRem(1) hsl(var(--web-color-subtle));
+    border:solid pxToRem(1) hsl(var(--aw-color-subtle));
 
     -webkit-backdrop-filter:blur(pxToRem(8));
     backdrop-filter:blur(pxToRem(8));
 
     #{$theme-dark} & {
-      --card-bg-color: var(--web-color-greyscale-850);
+      --card-bg-color: var(--aw-color-greyscale-850);
     }
 
     #{$theme-light} & {
-      --card-bg-color: var(--web-color-white);
+      --card-bg-color: var(--aw-color-white);
     }
   }
 

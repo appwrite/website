@@ -10,18 +10,18 @@
 </script>
 
 <DropdownMenu let:open let:menu let:trigger>
-    <button class="web-btn-tag" use:melt={trigger}>
+    <button class="aw-btn-tag" use:melt={trigger}>
         <span class="text">More</span>
-        <span class="web-icon-chevron-down web-u-font-size-16" />
+        <span class="aw-icon-chevron-down aw-u-font-size-16" />
     </button>
 
     {#if open}
         <div 
-          class="menu-wrapper web-card is-normal menu has-border-gradient u-z-index-1"
+          class="menu-wrapper aw-card is-normal menu has-border-gradient u-z-index-1"
           use:melt={menu}
           transition:fly={{ y: 8, duration: 250 }}
         >
-          <ul class="web-sub-body-400"
+          <ul class="aw-sub-body-400"
           >
               {#each tags as tag}
                   {@const checked = selectedTags?.includes(tag)}
@@ -35,7 +35,7 @@
                       >
                           <div class="checkbox">
                               {#if checked}
-                                  <span class="web-icon-check" />
+                                  <span class="aw-icon-check" />
                               {/if}
                           </div>
                           {tag}
@@ -79,7 +79,7 @@
 
         &:hover {
             cursor: pointer;
-            background-color: hsl(var(--web-color-offset));
+            background-color: hsl(var(--aw-color-offset));
         }
     }
 
@@ -105,8 +105,8 @@
         }
 
         :global([data-state='checked']) & {
-            background-color: hsl(var(--web-color-primary));
-            border-color: hsl(var(--web-color-primary));
+            background-color: hsl(var(--aw-color-primary));
+            border-color: hsl(var(--aw-color-primary));
         }
     }
 </style>

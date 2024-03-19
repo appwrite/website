@@ -140,11 +140,11 @@
 <div
     id="open-source"
     use:scroll
-    on:web-scroll={({ detail }) => {
+    on:aw-scroll={({ detail }) => {
         const { percentage } = detail;
         scrollHandler(percentage);
     }}
-    on:web-resize={({ detail }) => {
+    on:aw-resize={({ detail }) => {
         scrollHandler.reset();
         const { percentage } = detail;
 
@@ -152,84 +152,84 @@
     }}
 >
     <div class="sticky-wrapper">
-        <h3 class="web-display web-u-color-text-primary">Powered by Open Source</h3>
+        <h3 class="aw-display aw-u-color-text-primary">Powered by Open Source</h3>
 
         <div class="cards-wrapper">
             <a
                 href="/discord"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-discord"
             >
                 <div class="u-flex-vertical u-main-space-between u-gap-32">
                     <span
-                        class="web-icon-discord web-u-font-size-40"
+                        class="aw-icon-discord aw-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Discord"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">17k+ Discord Members</div>
+                <div class="aw-title u-margin-block-start-auto">17k+ Discord Members</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-github"
                 href="https://github.com/appwrite/appwrite"
             >
                 <div class="u-flex-vertical u-main-space-between u-gap-32">
                     <span
-                        class="web-icon-github web-u-font-size-40"
+                        class="aw-icon-github aw-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">38k+ GitHub Stars</div>
+                <div class="aw-title u-margin-block-start-auto">38k+ GitHub Stars</div>
             </a>
 
             <a
                 href="https://twitter.com/appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-twitter"
             >
                 <div class="u-flex-vertical u-main-space-between u-gap-32">
                     <span
-                        class="web-icon-x web-u-font-size-40"
+                        class="aw-icon-x aw-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Twitter"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">128k+ Twitter Followers</div>
+                <div class="aw-title u-margin-block-start-auto">128k+ Twitter Followers</div>
             </a>
 
             <a
                 href="https://www.youtube.com/@Appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-youtube"
             >
                 <div class="u-flex-vertical u-main-space-between u-gap-32">
                     <span
-                        class="web-icon-youtube web-u-font-size-40"
+                        class="aw-icon-youtube aw-u-font-size-40"
                         aria-hidden="true"
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">4k+ Youtube Subscribers</div>
+                <div class="aw-title u-margin-block-start-auto">4k+ Youtube Subscribers</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="aw-card is-white aw-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-commits"
                 href="https://github.com/appwrite/appwrite"
             >
                 <div class="u-flex-vertical u-main-space-between u-gap-32">
                     <span
-                        class="web-icon-github web-u-font-size-40"
+                        class="aw-icon-github aw-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">18k+ Code Commits</div>
+                <div class="aw-title u-margin-block-start-auto">18k+ Code Commits</div>
             </a>
         </div>
     </div>
@@ -265,8 +265,8 @@
         &::after {
             background: linear-gradient(
                 to top,
-                hsl(var(--web-color-background)) 0%,
-                hsl(var(--web-color-background) / 0) 5%
+                hsl(var(--aw-color-background)) 0%,
+                hsl(var(--aw-color-background) / 0) 5%
             );
             position: absolute;
             inset: 0;

@@ -21,21 +21,21 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="web-eyebrow web-u-color-text-primary"
-            >Day {number}<span class="web-u-color-text-accent">_</span></span
+        <span class="aw-eyebrow aw-u-color-text-primary"
+            >Day {number}<span class="aw-u-color-text-accent">_</span></span
         >
-        <h2 class="web-label web-u-color-text-primary">{day.title}</h2>
+        <h2 class="aw-label aw-u-color-text-primary">{day.title}</h2>
         <div class="slot-wrapper">
             <slot />
         </div>
     </div>
 {:else}
     <div class="release">
-        <span class="web-eyebrow web-u-color-text-primary"
-            >Day {number}<span class="web-u-color-text-accent">_</span></span
+        <span class="aw-eyebrow aw-u-color-text-primary"
+            >Day {number}<span class="aw-u-color-text-accent">_</span></span
         >
         <div class="bottom">
-            <div class="countdown web-title">
+            <div class="countdown aw-title">
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
@@ -44,17 +44,15 @@
                     />
                 {/if}
             </div>
-            <a href="/init/tickets" class="web-button is-secondary">Register</a>
+            <a href="/init/tickets" class="aw-button is-secondary">Register</a>
         </div>
     </div>
 {/if}
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
     .day,
     .release {
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -66,7 +64,7 @@
         flex-direction: column;
         position: relative;
 
-        background: hsl(var(--web-color-card));
+        background: hsl(var(--aw-color-card));
         overflow: hidden;
 
         height: 7.5rem;
@@ -85,8 +83,8 @@
         /* .circle {
             content: '';
             background: radial-gradient(
-                hsl(var(--web-color-accent)) 0%,
-                hsl(var(--web-color-accent) / 0) 70%
+                hsl(var(--aw-color-accent)) 0%,
+                hsl(var(--aw-color-accent) / 0) 70%
             );
             opacity: 0.24;
 
@@ -122,7 +120,7 @@
             align-items: center;
         }
         .countdown {
-            color: hsl(var(--web-color-primary));
+            color: hsl(var(--aw-color-primary));
         }
     }
 </style>

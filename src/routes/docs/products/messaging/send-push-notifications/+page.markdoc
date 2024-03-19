@@ -3,10 +3,6 @@ layout: article
 title: Send push notification
 description: Send push notification to your users using Appwrite Messaging.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
 
 You can send, schedule, and manage push notifications to your apps using Appwrite Messaging.
 Push notifications can be used to deliver new message notifications, app updates, promotional offers,
@@ -22,7 +18,7 @@ You must configure these services before you can send your first push notificati
 {% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
 Configure APNs for push notification to Apple devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="web-icon-firebase" %}
+{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="aw-icon-firebase" %}
 Configure FCM for push notification to Android and Apple devices.
 {% /cards_item %}
 {% /cards %}
@@ -520,7 +516,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
 
-const messaging = await messaging.createPush(
+const promise = messaging.createPush(
         '[MESSAGE_ID]', // messageId
         '[TITLE]',      // title
         '[BODY]',       // body
@@ -534,9 +530,15 @@ const messaging = await messaging.createPush(
         '[COLOR]',      // color (optional)
         '[TAG]',        // tag (optional)
         '[BADGE]',      // badge (optional)
-        false,          // draft (optional)
+        'draft',        // status (optional)
         ''              // scheduledAt (optional)
     );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -552,7 +554,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
 
-const messaging = await messaging.createPush(
+const promise = messaging.createPush(
         '[MESSAGE_ID]', // messageId
         '[TITLE]',      // title
         '[BODY]',       // body
@@ -566,9 +568,15 @@ const messaging = await messaging.createPush(
         '[COLOR]',      // color (optional)
         '[TAG]',        // tag (optional)
         '[BADGE]',      // badge (optional)
-        false,          // draft (optional)
+        'draft',        // status (optional)
         ''              // scheduledAt (optional)
     );
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```php
 <?php
@@ -600,7 +608,7 @@ $result = $messaging->createPush(
     color: '[COLOR]',   // optional
     tag: '[TAG]',       // optional
     badge: '[BADGE]',   // optional
-    draft: false,       // optional
+    status: 'draft',    // optional
     scheduledAt: ''     // optional
 );
 ```
@@ -632,7 +640,7 @@ result = messaging.create_push(
     color = '[COLOR]',  # optional
     tag = '[TAG]',      # optional
     badge = '[BADGE]',  # optional
-    draft = False,      # optional
+    status = 'draft',   # optional
     scheduled_at = ''   # optional
 )
 ```
@@ -662,7 +670,7 @@ response = messaging.create_push(
     color: '[COLOR]',   # optional
     tag: '[TAG]',       # optional
     badge: '[BADGE]',   # optional
-    draft: false,       # optional
+    status: 'draft',    # optional
     scheduled_at: ''    # optional
 )
 
@@ -683,24 +691,22 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}     // optional    
-    users: new List<string> {}      // optional    
-    targets: new List<string> {}    // optional    
-    data: [object]      // optional    
-    action: "[ACTION]"  // optional    
-    icon: "[ICON]"      // optional    
-    sound: "[SOUND]"    // optional    
-    color: "[COLOR]"    // optional    
-    tag: "[TAG]"        // optional    
-    badge: "[BADGE]"    // optional    
-    draft: false        // optional    
+    body: "[BODY]"
+    topics: new List<string> {}     // optional
+    users: new List<string> {}      // optional
+    targets: new List<string> {}    // optional
+    data: [object]      // optional
+    action: "[ACTION]"  // optional
+    icon: "[ICON]"      // optional
+    sound: "[SOUND]"    // optional
+    color: "[COLOR]"    // optional
+    tag: "[TAG]"        // optional
+    badge: "[BADGE]"    // optional
+    status: "draft"     // optional
     scheduledAt: "");   // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/enums.dart';
-import 'package:dart_appwrite/models.dart';
 
 void main() {   // Init SDK
   Client client = Client();
@@ -726,7 +732,7 @@ void main() {   // Init SDK
     color: '[COLOR]',   // optional
     tag: '[TAG]',       // optional
     badge: '[BADGE]',   // optional
-    draft: false,       // optional
+    status: 'draft',    // optional
     scheduledAt: '',    // optional
   );
 
@@ -763,7 +769,7 @@ val response = messaging.createPush(
     color = "[COLOR]",          // optional
     tag = "[TAG]",              // optional
     badge = "[BADGE]",          // optional
-    draft = false,              // optional
+    status = "draft",           // optional
     scheduledAt = ""            // optional
 )
 ```
@@ -793,7 +799,7 @@ messaging.createPush(
     "[COLOR]",           // color (optional)
     "[TAG]",             // tag (optional)
     "[BADGE]",           // badge (optional)
-    false,               // draft (optional)
+    "draft",             // status (optional)
     ""                   // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -829,7 +835,7 @@ let message = try await messaging.createPush(
   color: "[COLOR]",   // optional
   tag: "[TAG]",       // optional
   badge: "[BADGE]",   // optional
-  draft: false,       // optional
+  status: "draft",    // optional
   scheduledAt: ""     // optional
 )
 ```

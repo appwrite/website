@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Authentication with SvelteKit
-description: Add Authentication to a SvelteKit project using Appwrite.
+title: Client-side authentication with SvelteKit
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 1
 difficulty: beginner
 readtime: 20

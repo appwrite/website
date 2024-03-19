@@ -2,7 +2,7 @@
     export let classes = '';
 </script>
 
-<a href="https://cloud.appwrite.io" class={`web-button ${classes}`}>
+<a href="https://cloud.appwrite.io" class={`aw-button ${classes}`}>
     <span class="logged-in"><slot name="isLoggedIn">Go to Console</slot></span>
     <span class="not-logged-in"><slot name="isNotLoggedIn">Get started</slot></span>
 </a>

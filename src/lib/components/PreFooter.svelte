@@ -1,61 +1,61 @@
 <script lang="ts">
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
+<img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
 
-<div class="web-grid-1-1 u-gap-32 web-u-row-gap-80 u-position-relative">
-    <section class="web-hero u-flex web-u-row-gap-32 u-main-center u-cross-center">
-        <h2 class="web-display u-max-width-500 web-u-text-align-center web-u-color-text-primary">
+<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
+    <section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
+        <h2 class="aw-display u-max-width-500 aw-u-text-align-center aw-u-color-text-primary">
             Start building today
         </h2>
         <a
             href="https://cloud.appwrite.io"
-            class="web-button is-transparent web-u-cross-child-center"
+            class="aw-button is-transparent aw-u-cross-child-center"
         >
             <span class="text">Get started</span>
         </a>
     </section>
     <section
-        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-u-margin-inline-auto-mobile web-u-inline-width-100-percent-mobile"
+        class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
     >
-        <header class="web-strip-plans-header">
-            <div class="web-strip-plans-header-wrapper web-u-row-gap-24">
-                <h3 class="web-title web-u-color-text-primary">Our plans</h3>
+        <header class="aw-strip-plans-header">
+            <div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
+                <h3 class="aw-title aw-u-color-text-primary">Our plans</h3>
             </div>
         </header>
 
-        <ul class="web-strip-plans">
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Starter</h4>
-                        <div class="web-title web-u-color-text-primary">$0</div>
-                        <div class="info web-caption-500" />
+        <ul class="aw-strip-plans">
+            <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                <div class="aw-strip-plans-item-wrapper">
+                    <div class="aw-strip-plans-plan">
+                        <h4 class="title aw-description">Starter</h4>
+                        <div class="aw-title aw-u-color-text-primary">$0</div>
+                        <div class="info aw-caption-500" />
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="aw-strip-plans-info aw-caption-500">
                         For personal hobby projects and students.
                     </p>
                     <a
                         href="https://cloud.appwrite.io/register"
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        class="aw-button is-secondary is-full-width-mobile aw-u-cross-child-end"
                     >
                         <span class="text">Get started</span>
                     </a>
                 </div>
             </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Pro</h4>
-                        <div class="web-title web-u-color-text-primary">$15</div>
-                        <div class="info web-caption-500">per member/month</div>
+            <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                <div class="aw-strip-plans-item-wrapper">
+                    <div class="aw-strip-plans-plan">
+                        <h4 class="title aw-description">Pro</h4>
+                        <div class="aw-title aw-u-color-text-primary">$15</div>
+                        <div class="info aw-caption-500">per member/month</div>
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="aw-strip-plans-info aw-caption-500">
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
                         href="https://cloud.appwrite.io/console?type=createPro"
-                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -63,18 +63,18 @@
                     </a>
                 </div>
             </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Scale</h4>
-                        <div class="web-title web-u-color-text-primary">$685</div>
-                        <div class="info web-caption-500">per org/month</div>
+            <li class="aw-strip-plans-item aw-strip-plans-container-query">
+                <div class="aw-strip-plans-item-wrapper">
+                    <div class="aw-strip-plans-plan">
+                        <h4 class="title aw-description">Scale</h4>
+                        <div class="aw-title aw-u-color-text-primary">$685</div>
+                        <div class="info aw-caption-500">per org/month</div>
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="aw-strip-plans-info aw-caption-500">
                         For pro developers and production projects that need the ability to scale.
                     </p>
                     <button
-                        class="web-button is-full-width-mobile is-secondary web-u-cross-child-end"
+                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
                         disabled
                     >
                         <span class="text">Coming soon</span>
@@ -86,7 +86,7 @@
 </div>
 
 <style lang="scss">
-    .web-pre-footer-bg {
+    .aw-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
         left: clamp(300px, 50vw, 50%);

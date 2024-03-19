@@ -9,12 +9,12 @@
 
 	const navigation: NavTree = [
 		{
-			label: 'Platform',
+			label: 'Getting started',
 			items: [
 				{
 					label: 'Overview',
 					href: '/docs/advanced/platform'
-				},
+				}
 			]
 		},
 		{
@@ -93,15 +93,6 @@
 				},
 			]
 		},
-		{
-			label: 'Policy',
-			items: [
-				{
-					label: 'Release policy',
-					href: '/docs/advanced/platform/release-policy'
-				},
-			]
-		}
 	];
 </script>
 

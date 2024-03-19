@@ -5,7 +5,7 @@ description: Add authentication to a Nuxt project using Appwrite.
 step: 6
 ---
 
-Now the end-user is able to sign up, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `pages` directory called `account.vue` and add the following code:
+Now the end-user is able to sign in, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `pages` directory called `account.vue` and add the following code:
 
 ```vue
 <!-- pages/account.vue -->
@@ -44,6 +44,6 @@ export default defineEventHandler(async (event) => {
   await account.deleteSession("current");
   deleteCookie(event, SESSION_COOKIE);
 
-  await sendRedirect(event, "/signup");
+  await sendRedirect(event, "/signin");
 });
 ```

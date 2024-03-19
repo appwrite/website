@@ -3,26 +3,26 @@
 .#{$p}-icon-button {
   /* light-mode is the default */
   @mixin light-mode() {
-    --p-icon-button-font-color-default: var(--web-color-primary);
-    --p-icon-button-font-color-hover: var(--web-color-accent-click);
-    --p-icon-button-font-color-active: var(--web-color-accent-click);
-    --p-icon-button-font-color-focus: var(--web-color-greyscale-900);
+    --p-icon-button-font-color-default: var(--aw-color-primary);
+    --p-icon-button-font-color-hover: var(--aw-color-accent-click);
+    --p-icon-button-font-color-active: var(--aw-color-accent-click);
+    --p-icon-button-font-color-focus: var(--aw-color-greyscale-900);
 
-    --p-icon-button-bg-color-default: var(--web-color-smooth);
-    --p-icon-button-bg-color-hover: var(--web-color-offset);
-    --p-icon-button-bg-color-active: var(--web-color-smooth);
-    --p-icon-button-bg-color-focus: var(--web-color-offset);
+    --p-icon-button-bg-color-default: var(--aw-color-smooth);
+    --p-icon-button-bg-color-hover: var(--aw-color-offset);
+    --p-icon-button-bg-color-active: var(--aw-color-smooth);
+    --p-icon-button-bg-color-focus: var(--aw-color-offset);
 
     --p-icon-button-border-color-default: transparent;
-    --p-icon-button-border-color-focus: var(--web-color-pink-500);
+    --p-icon-button-border-color-focus: var(--aw-color-pink-500);
 
     --p-icon-button-shadow-color-default: transparent;
-    --p-icon-button-shadow-color-focus: var(--web-color-pink-500);
+    --p-icon-button-shadow-color-focus: var(--aw-color-pink-500);
   }
   @mixin dark-mode() {
-    --p-icon-button-font-color-focus: var(--web-color-greyscale-50);
-    --p-icon-button-border-color-focus: var(--web-color-greyscale-100);
-    --p-icon-button-shadow-color-focus: var(--web-color-white);
+    --p-icon-button-font-color-focus: var(--aw-color-greyscale-50);
+    --p-icon-button-border-color-focus: var(--aw-color-greyscale-100);
+    --p-icon-button-shadow-color-focus: var(--aw-color-white);
   }
   --p-icon-button-font-color: var(--p-icon-button-font-color-default);
   --p-icon-button-bg-color: var(--p-icon-button-bg-color-default);

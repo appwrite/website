@@ -15,6 +15,6 @@
 	});
 </script>
 
-<div class="web-u-sep-block-start u-padding-block-start-16" {...$content(id)} use:content>
+<div class="aw-u-sep-block-start u-padding-block-start-16" {...$content(id)} use:content>
 	<slot />
 </div>

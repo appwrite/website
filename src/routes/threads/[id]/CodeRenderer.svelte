@@ -58,28 +58,28 @@
         {@html result}
     {/if}
 {:else}
-    <section class="theme-dark web-code-snippet" aria-label="code-snippet panel">
-        <header class="web-code-snippet-header">
-            <div class="web-code-snippet-header-start">
+    <section class="theme-dark aw-code-snippet" aria-label="code-snippet panel">
+        <header class="aw-code-snippet-header">
+            <div class="aw-code-snippet-header-start">
                 {#if platformMap[language]}
                     <div class="u-flex u-gap-16">
-                        <div class="web-tag"><span class="text">{platformMap[language]}</span></div>
+                        <div class="aw-tag"><span class="text">{platformMap[language]}</span></div>
                     </div>
                 {/if}
             </div>
-            <div class="web-code-snippet-header-end">
+            <div class="aw-code-snippet-header-end">
                 <ul class="buttons-list u-flex u-gap-8">
-                    <li class="buttons-list-item web-u-padding-inline-start-20">
+                    <li class="buttons-list-item aw-u-padding-inline-start-20">
                         <Tooltip>
                             <button
                                 slot="asChild"
                                 let:trigger
                                 use:melt={trigger}
                                 on:click={handleCopy}
-                                class="web-icon-button"
+                                class="aw-icon-button"
                                 aria-label="copy code from code-snippet"
                             >
-                                <span class="web-icon-copy" aria-hidden="true" />
+                                <span class="aw-icon-copy" aria-hidden="true" />
                             </button>
                             <svelte:fragment slot="tooltip">
                                 {copyText}
@@ -89,7 +89,7 @@
                 </ul>
             </div>
         </header>
-        <div class="web-code-snippet-content">
+        <div class="aw-code-snippet-content">
             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             {@html result}
         </div>
@@ -100,7 +100,7 @@
     button {
         position: relative;
 
-        .web-icon-copy {
+        .aw-icon-copy {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -108,12 +108,12 @@
         }
     }
 
-    .web-code-snippet {
+    .aw-code-snippet {
         margin-block-end: 1rem;
         margin-top: 1rem;
     }
 
-    .web-code-snippet-content {
+    .aw-code-snippet-content {
         max-height: 600px;
         overflow-y: auto;
     }

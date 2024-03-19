@@ -47,9 +47,9 @@
     export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
-        default: 'web-grid-side-nav web-container u-padding-inline-0',
-        expanded: 'web-grid-huge-navs',
-        'two-side-navs': 'web-grid-two-side-navs'
+        default: 'aw-grid-side-nav aw-container u-padding-inline-0',
+        expanded: 'aw-grid-huge-navs',
+        'two-side-navs': 'aw-grid-two-side-navs'
     };
 
     $: variantClass = variantClasses[variant];
@@ -79,18 +79,18 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="u-position-relative">
-    <section class="web-mobile-header is-transparent">
-        <div class="web-mobile-header-start">
+    <section class="aw-mobile-header is-transparent">
+        <div class="aw-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
-                    class="web-logo u-only-dark"
+                    class="aw-logo u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo u-only-light"
+                    class="aw-logo u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -98,78 +98,78 @@
                 />
             </a>
         </div>
-        <div class="web-mobile-header-end">
-            <a href="https://cloud.appwrite.io" class="web-button web-is-only-desktop">
-                <span class="web-sub-body-500">Go to Console</span>
+        <div class="aw-mobile-header-end">
+            <a href="https://cloud.appwrite.io" class="aw-button aw-is-only-desktop">
+                <span class="aw-sub-body-500">Go to Console</span>
             </a>
-            <button class="web-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+            <button class="aw-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
                 {#if $layoutState.showSidenav}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <span aria-hidden="true" class="aw-icon-close" />
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
                 {/if}
             </button>
         </div>
     </section>
     <header
-        class="web-main-header {isReferences ? 'is-reference' : 'is-docs'}"
+        class="aw-main-header {isReferences ? 'is-reference' : 'is-docs'}"
         class:is-transparent={variant !== 'expanded'}
     >
-        <div class="web-main-header-wrapper">
-            <div class="web-main-header-start u-stretch">
+        <div class="aw-main-header-wrapper">
+            <div class="aw-main-header-start u-stretch">
                 <a href="/" aria-label="homepage">
                     <img
-                        class="web-logo u-only-dark"
+                        class="aw-logo u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo u-only-light"
+                        class="aw-logo u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                 </a>
-                <nav class="web-main-header-nav" aria-label="Top">
-                    <ul class="web-main-header-nav-list">
-                        <li class="web-main-header-nav-item">
-                            <a class="web-link" href="/docs">Docs</a>
+                <nav class="aw-main-header-nav" aria-label="Top">
+                    <ul class="aw-main-header-nav-list">
+                        <li class="aw-main-header-nav-item">
+                            <a class="aw-link" href="/docs">Docs</a>
                         </li>
                     </ul>
                 </nav>
-                <div class="u-flex u-stretch web-u-margin-inline-start-48">
+                <div class="u-flex u-stretch aw-u-margin-inline-start-48">
                     <button
-                        class="web-input-button web-u-flex-basis-400"
+                        class="aw-input-button aw-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
                     >
-                        <span class="web-icon-search" aria-hidden="true" />
+                        <span class="aw-icon-search" aria-hidden="true" />
                         <span class="text">Search in docs</span>
 
                         <div class="u-flex u-gap-4 u-margin-inline-start-auto">
                             {#if isMac()}
-                                <span class="web-kbd" aria-label="command">⌘</span>
+                                <span class="aw-kbd" aria-label="command">⌘</span>
                             {:else}
-                                <span class="web-kbd" aria-label="control">Ctrl</span>
+                                <span class="aw-kbd" aria-label="control">Ctrl</span>
                             {/if}
-                            <span class="web-kbd">K</span>
+                            <span class="aw-kbd">K</span>
                         </div>
                     </button>
                 </div>
             </div>
-            <div class="web-main-header-end">
+            <div class="aw-main-header-end">
                 <div class="u-flex u-gap-8">
                     <a
                         href="https://github.com/appwrite/appwrite/stargazers"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="web-button is-text"
+                        class="aw-button is-text"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
+                        <span class="aw-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                        <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
                     </a>
                     <IsLoggedIn />
                 </div>

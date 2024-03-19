@@ -14,11 +14,7 @@ If you're a Next.js developer, the examples in this guide show you how Appwrite 
 
 # Before you start {% #before-you-start %}
 
-Before following this tutorial, have the following prepared:
-
-- A recent version of [Node.js](https://nodejs.org/en/download/) installed on your system.
-- A basic knowledge of Next.js and React.
-
+Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Next.js and Appwrite.
 
 If you're inspired and wish to follow along, make sure you've followed [Start with React](https://appwrite.io/docs/quick-starts/react) first.
 Clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/main/nextjs) examples and follow along with the source code.

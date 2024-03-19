@@ -41,8 +41,6 @@
 <VideoDialog {src} {dialog} />
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
     .wrapper {
         position: relative;
         overflow: hidden;
@@ -62,7 +60,7 @@
     }
 
     .play {
-        @include gradients.border-gradient;
+        @include border-gradient;
         --m-border-radius: 100%;
         --m-border-gradient-before: linear-gradient(
             180deg,

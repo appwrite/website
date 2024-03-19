@@ -29,7 +29,7 @@
     <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
 
     <div
-        class="web-media content"
+        class="aw-media content"
         use:melt={$content}
         transition:scale={{ duration: 250, start: 0.95 }}
     >

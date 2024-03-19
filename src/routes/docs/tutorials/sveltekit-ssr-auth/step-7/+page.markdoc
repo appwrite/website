@@ -1,85 +1,83 @@
 ---
 layout: tutorial
-title: OAuth authentication with SSR
+title: OAuth2 authentication with SSR
 description: Add authentication to a SvelteKit project using Appwrite.
 step: 7
 ---
 
-To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider.
+To support the OAuth2 flow, we first redirect the user to the OAuth2 provider, and then handle the callback from the OAuth2 provider.
 
-To redirect, add a button to our sign up page that redirects the user to the OAuth provider.
+To redirect, add a button to our sign in page that redirects the user to the OAuth2 provider.
 
 ```svelte
-<!-- src/routes/signup/+page.svelte -->
+<!-- src/routes/signin/+page.svelte -->
 
-<!-- ... existing sign up form -->
+<!-- ... existing sign in form -->
 
-<form action="?/oauth" method="post">
-  <button type="submit">Sign up with GitHub</button>
+<form action="/oauth2" method="post">
+  <input type="hidden" name="provider" value="github" />
+  <button type="submit">Sign in with GitHub</button>
 </form>
 ```
 
 Add a new server route to handle the redirect.
 
 ```js
-// src/routes/signup/+page.server.js
+// src/routes/signin/+page.server.js
 
-import { SESSION_COOKIE, createAdminClient, createSessionClient } from "$lib/server/appwrite.js";
-import { redirect } from "@sveltejs/kit";
-import { ID, OAuthProvider } from "node-appwrite";
+// ... existing imports
+
+
+import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite';
+import { redirect } from '@sveltejs/kit';
+import { OAuthProvider } from 'node-appwrite';
 
 export const actions = {
-  // ... existing email sign up action
-  oauth: async (event) => {
-    const { account } = createAdminClient();
+    // ... existing actions
 
-    const redirectUrl = await account.createOAuth2Token(
-      OAuthProvider.Github,
-      `${event.url.origin}/oauth`,
-      `${event.url.origin}/signup`
-    );
+    oauth2: async (event) => {
+        const { account } = createAdminClient();
 
-    redirect(301, redirectUrl);
-  },
+        const redirectURL = account.createOAuth2Token(
+            OAuthProvider.GitHub, 
+            `${event.url.origin}/oauth2`,
+            `${event.url.origin}/signin`
+        );
+
+        throw redirect(url);
+    }
 };
-
 ```
 
-The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/oauth` route with the `userId` and `secret` URL query parameters.
+The `createOAuth2Token` method redirects the user to the OAuth2 provider, and then the OAuth2 provider redirects the user back to the `/oauth2` route with the `userId` and `secret` URL query parameters.
 
-Handle the callback and create a session for the user. Create a new server route at `src/routes/oauth/+server.js`:
+Handle the callback and create a session for the user. Create a new server route at `src/routes/oauth2/+server.js`:
 
 ```js
-// src/routes/oauth/+server.js
+// src/routes/oauth2/+server.js
 
-import { SESSION_COOKIE, createAdminClient } from "$lib/server/appwrite";
+import { SESSION_COOKIE, createAdminClient } from '$lib/server/appwrite';
 
 export async function GET(event) {
-  // We should have a `userId` and `secret` query parameters in the URL
-  const userId = event.url.searchParams.get("userId");
-  const secret = event.url.searchParams.get("secret");
+	// We should have a `userId` and `secret` query parameters in the URL
+	const userId = event.url.searchParams.get('userId') as string;
+	const secret = event.url.searchParams.get('secret') as string;
 
-  if (!userId || !secret) {
-    return new Response("Missing `userId` or `secret` query parameters", {
-      status: 400,
-    });
-  }
+	// Exchange the token `userId` and `secret` for a session
+	const { account } = createAdminClient();
+	const session = await account.createSession(userId, secret);
 
-  // Exchange the token `userId` and `secret` for a session
-  const { account } = createAdminClient();
-  const session = await account.createSession(userId, secret);
+	// Redirect to the account page, and set the session cookie
+	const headers = new Headers({
+		location: '/account',
+		'set-cookie': event.cookies.serialize(SESSION_COOKIE, session.secret, {
+			sameSite: 'strict',
+			expires: new Date(session.expire),
+			secure: true,
+			path: '/'
+		})
+	});
 
-  // Redirect to the account page, and set the session cookie
-  const headers = new Headers({
-    location: "/account",
-    "set-cookie": event.cookies.serialize(SESSION_COOKIE, session.secret, {
-      sameSite: "strict",
-      expires: new Date(session.expire),
-      secure: true,
-      path: "/",
-    }),
-  });
-
-  return new Response(null, { status: 302, headers });
+	return new Response(null, { status: 302, headers });
 }
 ```

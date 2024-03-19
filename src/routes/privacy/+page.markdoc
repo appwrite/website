@@ -74,7 +74,6 @@ What personal data we collect, why we collect it, and how it is used
 * Specific personal data we collect
 * - Full name
   - Email address
-  - Phone number
   - IP address
   - Country
   - User-agent (info about the browser)
@@ -83,7 +82,7 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * The purpose of data collection
 * - To be able to create an account
-  - To be able to log in using two-factor authentication
+  - To be able to log in
   - To be able to enjoy features available to registered users
   - To collect Informative reason for the administrator.
   - To better project development (identify reported problem)
@@ -95,11 +94,9 @@ What personal data we collect, why we collect it, and how it is used
 * Consent
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Orbit
-  - MSG91 (India only)
-  - Twilio
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Mailgun
   - Orbit
   - Hubspot
@@ -136,7 +133,7 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest (e.g. to allow you to purchase Appwrite's swag products)
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Shopify
   - Printful
   - Paypal
@@ -164,9 +161,15 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest (e.g. send you more information about Appwrite)
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Mailgun
   - Orbit
+  - MSG91 (India only)
+  - Twilio
+  - Telesign
+  - Textmagic
+  - Vonage
+  - Sendgrid
 ---
 * Consequences of not providing the personal data
 * - Cannot add you to our mailing list
@@ -198,7 +201,7 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest (e.g. process your job application)
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Homerun
   - LinkedIn Premium
 ---
@@ -229,7 +232,7 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest (e.g. respond to a query sent by you)
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - HelpScout
   - Docusign (for DPAs)
   - Typeform
@@ -263,7 +266,7 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest (e.g. process your fund application)
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - GitHub
   - OpenCollective
   - Linear
@@ -294,7 +297,7 @@ What personal data we collect, why we collect it, and how it is used
 * Depending on the context, legitimate interest (B2B marketing), pre-contractual discussions or consent
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Hubspot
 ---
 * Consequences of not providing the personal data
@@ -321,7 +324,7 @@ What personal data we collect, why we collect it, and how it is used
 * Depending on the context, legitimate interest (B2B marketing), pre-contractual discussions or consent
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
+* 3rd party platforms such as for the following purposes:
   - Social media platforms (e.g. Facebook, GitHub, Twitter, LinkedIn, Discord)
 ---
 * Consequences of not providing the personal data

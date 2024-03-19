@@ -31,8 +31,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+    <div class="aw-big-padding-section" style:overflow-x="hidden">
+        <div class="aw-big-padding-section-level-1 u-position-relative">
             <div
                     class="u-position-absolute"
                     style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -90,44 +90,44 @@
                 </svg>
             </div>
 
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
-                    <h1 class="web-display web-u-color-text-primary">Blog</h1>
+            <div class="aw-big-padding-section-level-2 u-position-relative">
+                <div class="aw-container">
+                    <h1 class="aw-display aw-u-color-text-primary">Blog</h1>
                     {#if featured}
                         {@const author = data.authors.find((author) => author.slug === featured.author)}
-                        <article class="web-feature-article u-margin-block-start-48">
-                            <a href={featured.href} class="web-feature-article-image">
-                                <img src={featured.cover} class="web-image-ratio-4/3" alt="cover" />
+                        <article class="aw-feature-article u-margin-block-start-48">
+                            <a href={featured.href} class="aw-feature-article-image">
+                                <img src={featured.cover} class="aw-image-ratio-4/3" alt="cover" />
                             </a>
-                            <div class="web-feature-article-content">
-                                <header class="web-feature-article-header">
-                                    <ul class="web-metadata web-caption-400 web-is-only-mobile">
+                            <div class="aw-feature-article-content">
+                                <header class="aw-feature-article-header">
+                                    <ul class="aw-metadata aw-caption-400 aw-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="web-title web-u-color-text-primary">
+                                        <h2 class="aw-title aw-u-color-text-primary">
                                             {featured.title}
                                         </h2>
                                     </a>
                                 </header>
-                                <p class="web-sub-body-400">
+                                <p class="aw-sub-body-400">
                                     {featured.description}
                                 </p>
-                                <div class="web-author">
+                                <div class="aw-author">
                                     <div class="u-flex u-cross-center u-gap-8">
                                         <img
-                                                class="web-author-image"
+                                                class="aw-author-image"
                                                 src={author?.avatar}
                                                 width="24"
                                                 height="24"
                                                 alt=""
                                         />
-                                        <div class="web-author-info">
-                                            <a href={author?.href} class="web-sub-body-400 web-link"
+                                        <div class="aw-author-info">
+                                            <a href={author?.href} class="aw-sub-body-400 aw-link"
                                             >{author?.name}</a
                                             >
-                                            <p class="web-caption-400 u-hide">{author?.bio}</p>
-                                            <ul class="web-metadata web-caption-400 web-is-not-mobile">
+                                            <p class="aw-caption-400 u-hide">{author?.bio}</p>
+                                            <ul class="aw-metadata aw-caption-400 aw-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
                                         </div>
@@ -136,30 +136,30 @@
                                         <li>
                                             <a
                                                     href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
+                                                    class="aw-icon-button"
                                                     aria-label="Author twitter"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                             >
-                                                <span class="web-icon-x" aria-hidden="true" />
+                                                <span class="aw-icon-x" aria-hidden="true" />
                                             </a>
                                         </li>
                                         <li>
                                             <a
                                                     href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
+                                                    class="aw-icon-button"
                                                     aria-label="Author LinkedIn"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                             >
-                                                <span class="web-icon-linkedin" aria-hidden="true" />
+                                                <span class="aw-icon-linkedin" aria-hidden="true" />
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <a
                                         href={featured.href}
-                                        class="web-button is-secondary u-margin-block-start-auto"
+                                        class="aw-button is-secondary u-margin-block-start-auto"
                                 >
                                     <span>Read article</span>
                                 </a>
@@ -169,13 +169,13 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <h2 class="web-title web-u-color-text-primary">Articles</h2>
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
+                    <h2 class="aw-title aw-u-color-text-primary">Articles</h2>
 
                     <div class="u-margin-block-start-48">
-                        <ul class="web-grid-articles">
+                        <ul class="aw-grid-articles">
                             {#each data.posts as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
@@ -196,8 +196,8 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+            <div class="aw-big-padding-section-level-2">
+                <div class="aw-container">
                     <FooterNav />
                     <MainFooter />
                 </div>

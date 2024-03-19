@@ -7,17 +7,17 @@
         {
             value: 'dark',
             label: 'Dark',
-            icon: 'web-icon-dark'
+            icon: 'aw-icon-dark'
         },
         {
             value: 'light',
             label: 'Light',
-            icon: 'web-icon-light'
+            icon: 'aw-icon-light'
         },
         {
             value: 'system',
             label: 'System',
-            icon: 'web-icon-system'
+            icon: 'aw-icon-system'
         }
     ];
 </script>

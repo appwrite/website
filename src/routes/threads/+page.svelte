@@ -8,6 +8,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
+    import { queryParam } from 'sveltekit-search-params';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
@@ -65,10 +66,10 @@
     };
 
     const tags = [
-        'Web',
-        'Flutter',
-        'GraphQL',
-        'Cloud',
+        'Web', 
+        'Flutter', 
+        'GraphQL', 
+        'Cloud', 
         'Self Hosted'
     ];
 
@@ -87,6 +88,15 @@
         'General',
         'REST API'
     ];
+    const _selectedTags = queryParam<string[]>('tags', {
+        encode(tags) {
+            return tags.join(',');
+        },
+        decode(tags) {
+            return tags?.split(',') ?? [];
+        },
+        defaultValue: []
+    });
 
     let selectedTags: string[] = [];
 
@@ -120,8 +130,8 @@
 <Main>
 
     <div class="w-big-padding-section">
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden web-u-margin-block-0 web-u-sep-block-end">
+        <div class="aw-big-padding-section-level-1">
+            <div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden aw-u-margin-block-0 aw-u-sep-block-end">
                 <div
                         class="u-position-absolute"
                         style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"
@@ -135,19 +145,19 @@
                     <enhanced:img src="./(assets)/bg-green.svg" alt="" />
                 </div>
 
-                <div class="web-container">
-                    <h1 class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40">Threads</h1>
+                <div class="aw-container">
+                    <h1 class="aw-display aw-u-color-text-primary aw-u-margin-block-80 aw-u-padding-block-end-40">Threads</h1>
                 </div>
 
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-start-24">
-                <div class="web-container">
+            <div class="aw-big-padding-section-level-2 aw-u-margin-block-start-24">
+                <div class="aw-container">
                     <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
                         <ul class="u-flex u-flex-wrap u-gap-8">
                             {#each tags as tag}
                                 <li class="u-flex u-cross-center">
                                     <button
-                                            class="web-btn-tag"
+                                            class="aw-btn-tag"
                                             class:is-selected={selectedTags?.includes(tag)}
                                             on:click={() => toggleTag(tag)}
                                     >
@@ -160,15 +170,15 @@
                             </li>
                         </ul>
                         <div
-                                class="web-input-text-search-wrapper u-width-full-line u-max-width-350 web-u-max-inline-size-none-mobile u-margin-inline-start-auto"
+                                class="aw-input-text-search-wrapper u-width-full-line u-max-width-350 aw-u-max-inline-size-none-mobile u-margin-inline-start-auto"
                         >
                 <span
-                        class="web-icon-search u-z-index-5"
+                        class="aw-icon-search u-z-index-5"
                         aria-hidden="true"
                         style="inset-block-start:0.9rem"
                 />
                             <input
-                                    class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                                    class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1"
                                     type="text"
                                     id="search"
                                     placeholder="Search for threads"
@@ -180,7 +190,7 @@
                     </div>
 
                     {#if threads.length}
-                        <h2 class="u-margin-block-start-16 web-u-color-text-primary" aria-live="polite">
+                        <h2 class="u-margin-block-start-16 aw-u-color-text-primary" aria-live="polite">
                             Found {query.length ? threads.length : '5000+'} results.
                         </h2>
                     {/if}
@@ -189,11 +199,11 @@
                         {#each threads as thread (thread.$id)}
                             <ThreadCard {thread} {query} />
                         {:else}
-                            <div class="web-card is-normal has-border-gradient empty-card">
+                            <div class="aw-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
-                                <span class="web-main-body-500">No support threads found</span>
+                                <span class="aw-main-body-500">No support threads found</span>
                                 <button
-                                        class="web-button"
+                                        class="aw-button"
                                         on:click={() => {
                             query = '';
                             handleSearch('');
@@ -204,11 +214,11 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-end-0">
+            <div class="aw-big-padding-section-level-2 aw-u-margin-block-end-0">
                 <PreFooter />
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-start-100-negative">
-                <div class="web-container">
+            <div class="aw-big-padding-section-level-2 aw-u-margin-block-start-100-negative">
+                <div class="aw-container">
                     <FooterNav />
                     <MainFooter />
                 </div>
@@ -230,7 +240,7 @@
 
         span {
             display: block;
-            color: hsl(var(--web-color-primary));
+            color: hsl(var(--aw-color-primary));
             text-align: center;
         }
 

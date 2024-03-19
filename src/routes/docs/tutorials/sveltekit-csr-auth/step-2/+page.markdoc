@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Create project
-description: Add Authentication to a SvelteKit project using Appwrite.
+description: Add authentication to a SvelteKit project using Appwrite.
 step: 2
 ---
 
@@ -36,7 +36,7 @@ create-svelte version 3.2.0
 └  Your project is ready!
 ```
 
-After the prompt is finished, you can head over to the newly created project.
+After the prompt is finished, you can head over to the newly create project.
 
 ```sh
 cd my-svelte-project
@@ -48,5 +48,5 @@ npm install
 Appwrite provides a Web SDK that can be used in your Svelte apps. You can use Appwrite by installing the Web SDK as an NPM package.
 
 ```sh
-npm install appwrite@13.0.2
+npm install appwrite
 ```
