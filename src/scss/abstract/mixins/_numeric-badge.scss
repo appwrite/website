@@ -1,6 +1,6 @@
 @use '../../abstract/functions/pxToRem' as *;
 @use '../../abstract/variables/common' as *;
-/* 343 */
+
 @mixin numeric-badge {
   --p-numeric-badge-text-color: var(--web-color-pink-500);
   --p-numeric-badge-bg-color: calc(var(--web-color-pink-hue) - 5) 62% 95%;
