@@ -10,7 +10,7 @@ If you need to act on behalf of users through an Appwrite Function or your own b
 
 {% partial file="account-vs-user.md" /%}
 
-The [Users API](/docs/references/cloud/client-web/users) can be used to create users, import and export users, update user info, get user audit logs, and remove users.
+The users API can be used to create users, import users, update user info, get user audit logs, and remove users.
 
 {% arrow_link href="/docs/references/cloud/server-nodejs/users" %}
 Learn more in the Users API references 

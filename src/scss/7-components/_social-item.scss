@@ -2,7 +2,7 @@
 
 .#{$p}-social-item {
   &-icon {
-    color:hsl(var(--aw-color-greyscale-300));
+    color:hsl(var(--web-color-greyscale-300));
     &::before { font-size:pxToRem(32); }
   }
 }

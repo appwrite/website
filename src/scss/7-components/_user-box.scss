@@ -5,6 +5,6 @@
   font-size:pxToRem(18); line-height:pxToRem(24);
 
   &-image    { grid-row:span 2; display:block; inline-size:pxToRem(48); block-size:pxToRem(48); border-radius:50%; }
-  &-name     { color:hsl(var(--aw-color-greyscale-700)); }
-  &-username { color:hsl(var(--aw-color-greyscale-600)); }
+  &-name     { color:hsl(var(--web-color-greyscale-700)); }
+  &-username { color:hsl(var(--web-color-greyscale-600)); }
 }

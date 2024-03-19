@@ -114,6 +114,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         position: relative;
     }
@@ -172,7 +174,7 @@
         backdrop-filter: blur(15.53px);
         -webkit-backdrop-filter: blur(15.53px);
 
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 12px;
         --m-border-gradient-before: linear-gradient(
             180deg,

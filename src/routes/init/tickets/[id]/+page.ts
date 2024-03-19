@@ -15,6 +15,6 @@ export const load = async ({ params, fetch }) => {
             }
         };
     } catch (e) {
-        throw error(404, 'Ticket not found');
+        error(404, 'Ticket not found');
     }
 };

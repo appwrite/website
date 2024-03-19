@@ -25,6 +25,7 @@
     import { Accordion, AccordionItem } from '$lib/components/Accordion';
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
+    import RateLimits from './(components)/RateLimits.svelte';
 
     export let data;
 
@@ -102,16 +103,16 @@
 </svelte:head>
 
 <main class="u-contents" id="main">
-    <article class="aw-article u-contents">
-        <header class="aw-article-header">
-            <div class="aw-article-header-start">
-                <h1 class="aw-title">{serviceName}</h1>
-                <div class="aw-inline-code">{platformType}</div>
+    <article class="web-article u-contents">
+        <header class="web-article-header">
+            <div class="web-article-header-start">
+                <h1 class="web-title">{serviceName}</h1>
+                <div class="web-inline-code">{platformType}</div>
             </div>
-            <div class="aw-article-header-end">
-                <div class="u-flex u-gap-24 aw-u-flex-vertical-mobile aw-u-color-text-primary">
+            <div class="web-article-header-end">
+                <div class="u-flex u-gap-24 web-u-flex-vertical-mobile web-u-color-text-primary">
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small aw-is-not-mobile" for="platform">Platform</label>
+                        <label class="u-small web-is-not-mobile" for="platform">Platform</label>
                         <Select
                             --min-width="10rem"
                             id="platform"
@@ -137,7 +138,7 @@
                         />
                     </div>
                     <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small aw-is-not-mobile" for="version">Version</label>
+                        <label class="u-small web-is-not-mobile" for="version">Version</label>
 
                         <Select
                             nativeMobile
@@ -155,14 +156,14 @@
                 </div>
             </div>
         </header>
-        <div class="aw-article-content" style:gap="6rem">
-            <section class="aw-article-content-grid-6-4">
-                <div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+        <div class="web-article-content" style:gap="6rem">
+            <section class="web-article-content-grid-6-4">
+                <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
                 <div
-                    class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
+                    class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
                 >
                     <Fence
                         language="text"
@@ -174,10 +175,10 @@
                 </div>
 
                 {#if data.methods.length === 0}
-                    <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
-                        <div class="aw-inline-info">
+                    <div class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+                        <div class="web-inline-info">
                             <span class="icon-info" aria-hidden="true" />
-                            <h5 class="aw-sub-body-500 aw-u-color-text-primary">
+                            <h5 class="web-sub-body-500 web-u-color-text-primary">
                                 No endpoint found for this version and platform
                             </h5>
                             Please switch to a newer version or different platform.
@@ -186,12 +187,12 @@
                 {/if}
             </section>
             {#each data.methods as method (method.id)}
-                <section class="aw-article-content-grid-6-4">
-                    <div class="aw-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
-                        <header class="aw-article-content-header">
+                <section class="web-article-content-grid-6-4">
+                    <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+                        <header class="web-article-content-header">
                             <Heading id={method.id} level={2} inReferences>{method.title}</Heading>
                         </header>
-                        <p class="aw-sub-body-400">
+                        <p class="web-sub-body-400">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html parse(method.description)}
                         </p>
@@ -204,9 +205,14 @@
                             <AccordionItem title="Response">
                                 <Response {method} />
                             </AccordionItem>
+                            {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
+                                <AccordionItem title="Rate limits">
+                                    <RateLimits {method} {platformType} />
+                                </AccordionItem>
+                            {/if}
                         </Accordion>
                     </div>
-                    <div class="aw-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+                    <div class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
                         <div class="u-contents theme-dark">
                             <div
                                 class="u-position-sticky"
@@ -235,41 +241,41 @@
             {/each}
         </div>
         <aside
-            class="aw-references-menu"
+            class="web-references-menu"
             class:is-open={$layoutState.showReferences}
             use:clickOutside={() => ($layoutState.showReferences = false)}
         >
             {#if data.methods.length > 0}
-                <button class="aw-icon-button" id="refOpen" on:click={toggleReferences}>
+                <button class="web-icon-button" id="refOpen" on:click={toggleReferences}>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
                 </button>
-                <div class="aw-references-menu-content">
+                <div class="web-references-menu-content">
                     <div
-                        class="aw-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24"
+                        class="web-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24"
                     >
-                        <h5 class="aw-references-menu-title aw-eyebrow">On This Page</h5>
-                        <button class="aw-icon-button" id="refClose" on:click={toggleReferences}>
+                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
+                        <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
                             <span class="icon-x" aria-hidden="true" />
                         </button>
                     </div>
-                    <ul class="aw-references-menu-list">
+                    <ul class="web-references-menu-list">
                         {#each data.methods as method}
-                            <li class="aw-references-menu-item">
+                            <li class="web-references-menu-item">
                                 <a
                                     href={`#${method.id}`}
-                                    class="aw-references-menu-link aw-caption-400"
+                                    class="web-references-menu-link web-caption-400"
                                     class:is-selected={method.id === selected}>{method.title}</a
                                 >
                             </li>
                         {/each}
                     </ul>
-                    <div class="u-sep-block-start aw-u-padding-block-20">
+                    <div class="u-sep-block-start web-u-padding-block-20">
                         <button
-                            class="aw-link u-inline-flex u-cross-center u-gap-8"
+                            class="web-link u-inline-flex u-cross-center u-gap-8"
                             use:scrollToTop
                         >
-                            <span class="aw-icon-arrow-up" aria-hidden="true" />
-                            <span class="aw-caption-400">Back to top</span>
+                            <span class="web-icon-arrow-up" aria-hidden="true" />
+                            <span class="web-caption-400">Back to top</span>
                         </button>
                     </div>
                 </div>
@@ -280,7 +286,7 @@
 <MainFooter variant="docs" />
 
 <style lang="scss">
-    .aw-inline-code {
+    .web-inline-code {
         translate: 0 0.125rem;
     }
 </style>

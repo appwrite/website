@@ -1,113 +1,113 @@
 @use '../abstract' as *;
 :root {
   @mixin color-light {
-    --aw-color-background: var(--aw-color-greyscale-50);
-    --aw-color-background-docs: var(--aw-color-greyscale-25);
-    --aw-color-primary: var(--aw-color-greyscale-900);
-    --aw-color-secondary: var(--aw-color-greyscale-700);
-    --aw-color-tertiary: var(--aw-color-greyscale-600);
-    --aw-color-accent: var(--aw-color-pink-500);
-    --aw-color-accent-darker: var(--aw-color-pink-600);
-    --aw-color-accent-click: var(--aw-color-pink-500);
-    --aw-color-card: var(--aw-color-white) / 0.9;
-    --aw-color-smooth: var(--aw-color-greyscale-900) / 0.04;
-    --aw-color-subtle: var(--aw-color-greyscale-50);
-    --aw-color-offset: var(--aw-color-black) / 0.08;
+    --web-color-background: var(--web-color-greyscale-50);
+    --web-color-background-docs: var(--web-color-greyscale-25);
+    --web-color-primary: var(--web-color-greyscale-900);
+    --web-color-secondary: var(--web-color-greyscale-700);
+    --web-color-tertiary: var(--web-color-greyscale-600);
+    --web-color-accent: var(--web-color-pink-500);
+    --web-color-accent-darker: var(--web-color-pink-600);
+    --web-color-accent-click: var(--web-color-pink-500);
+    --web-color-card: var(--web-color-white) / 0.9;
+    --web-color-smooth: var(--web-color-greyscale-900) / 0.04;
+    --web-color-subtle: var(--web-color-greyscale-50);
+    --web-color-offset: var(--web-color-black) / 0.08;
 
-    --aw-color-border: var(--aw-color-greyscale-50);
+    --web-color-border: var(--web-color-greyscale-50);
   }
 
   @mixin color-dark {
-    --aw-color-background: var(--aw-color-greyscale-900);
-    --aw-color-background-docs: var(--aw-color-greyscale-900);
-    --aw-color-primary: var(--aw-color-greyscale-100);
-    --aw-color-secondary: var(--aw-color-greyscale-300);
-    --aw-color-tertiary: var(--aw-color-greyscale-600);
-    --aw-color-accent: var(--aw-color-pink-500);
-    --aw-color-accent-darker: var(--aw-color-pink-600);
-    --aw-color-accent-click: var(--aw-color-greyscale-50);
-    --aw-color-card: var(--aw-color-greyscale-850) / 0.9;
-    --aw-color-smooth: var(--aw-color-white) / 0.06;
-    --aw-color-subtle: var(--aw-color-greyscale-850);
-    --aw-color-offset: var(--aw-color-white) / 0.1;
+    --web-color-background: var(--web-color-greyscale-900);
+    --web-color-background-docs: var(--web-color-greyscale-900);
+    --web-color-primary: var(--web-color-greyscale-100);
+    --web-color-secondary: var(--web-color-greyscale-300);
+    --web-color-tertiary: var(--web-color-greyscale-600);
+    --web-color-accent: var(--web-color-pink-500);
+    --web-color-accent-darker: var(--web-color-pink-600);
+    --web-color-accent-click: var(--web-color-greyscale-50);
+    --web-color-card: var(--web-color-greyscale-850) / 0.9;
+    --web-color-smooth: var(--web-color-white) / 0.06;
+    --web-color-subtle: var(--web-color-greyscale-850);
+    --web-color-offset: var(--web-color-white) / 0.1;
 
     /* call other color variable */
-    --aw-color-border: var(--aw-color-subtle);
+    --web-color-border: var(--web-color-subtle);
   }
   
   /* pink */
-  --aw-color-pink-hue: 343;
-  --aw-color-pink-200: var(--aw-color-pink-hue) 98% 84%;
-  --aw-color-pink-500: var(--aw-color-pink-hue) 98% 60%; /* #FD366E */
-  --aw-color-pink-600: var(--aw-color-pink-hue) 65% 48%;
-  --aw-color-pink-700: var(--aw-color-pink-hue) 65% 36%;
+  --web-color-pink-hue: 343;
+  --web-color-pink-200: var(--web-color-pink-hue) 98% 84%;
+  --web-color-pink-500: var(--web-color-pink-hue) 98% 60%; /* #FD366E */
+  --web-color-pink-600: var(--web-color-pink-hue) 65% 48%;
+  --web-color-pink-700: var(--web-color-pink-hue) 65% 36%;
 
   /* red */
-  --aw-color-red-hue: 3;
-  --aw-color-red-200: calc(var(--aw-color-red-hue) - 2) 100% 92%;
-  --aw-color-red-500: var(--aw-color-red-hue) 100% 61%;
-  --aw-color-red-700: calc(var(--aw-color-red-hue) - 3) 82%  39%;
+  --web-color-red-hue: 3;
+  --web-color-red-200: calc(var(--web-color-red-hue) - 2) 100% 92%;
+  --web-color-red-500: var(--web-color-red-hue) 100% 61%;
+  --web-color-red-700: calc(var(--web-color-red-hue) - 3) 82%  39%;
 
   /* orange */
-  --aw-color-orange-hue: 18;
-  --aw-color-orange-200: var(--aw-color-orange-hue) 100% 88%;
-  --aw-color-orange-500: var(--aw-color-orange-hue) 99%  70%;
-  --aw-color-orange-700: var(--aw-color-orange-hue) 42%  42%;
+  --web-color-orange-hue: 18;
+  --web-color-orange-200: var(--web-color-orange-hue) 100% 88%;
+  --web-color-orange-500: var(--web-color-orange-hue) 99%  70%;
+  --web-color-orange-700: var(--web-color-orange-hue) 42%  42%;
 
   /* mint */
-  --aw-color-mint-hue: 177;
-  --aw-color-mint-200: var(--aw-color-mint-hue) 56%  88%;
-  --aw-color-mint-500: calc(var(--aw-color-mint-hue) + 1) 54%  69%;
-  --aw-color-mint-700: calc(var(--aw-color-mint-hue) + 2) 24%  41%;
+  --web-color-mint-hue: 177;
+  --web-color-mint-200: var(--web-color-mint-hue) 56%  88%;
+  --web-color-mint-500: calc(var(--web-color-mint-hue) + 1) 54%  69%;
+  --web-color-mint-700: calc(var(--web-color-mint-hue) + 2) 24%  41%;
 
   /* purple */
-  --aw-color-purple-hue: 249;
-  --aw-color-purple-200: var(--aw-color-purple-hue) 100%  88%;
-  --aw-color-purple-500: calc(var(--aw-color-purple-hue) - 1) 99%  70%;
-  --aw-color-purple-700: calc(var(--aw-color-purple-hue) - 1) 42%  42%;
+  --web-color-purple-hue: 249;
+  --web-color-purple-200: var(--web-color-purple-hue) 100%  88%;
+  --web-color-purple-500: calc(var(--web-color-purple-hue) - 1) 99%  70%;
+  --web-color-purple-700: calc(var(--web-color-purple-hue) - 1) 42%  42%;
 
   /* yellow */
-  --aw-color-yellow-hue: 42;
-  --aw-color-yellow-200: var(--aw-color-yellow-hue) 100%  88%;
-  --aw-color-yellow-500: var(--aw-color-yellow-hue)  99%  70%;
-  --aw-color-yellow-700: calc(var(--aw-color-yellow-hue) + 1) 42%  42%;
+  --web-color-yellow-hue: 42;
+  --web-color-yellow-200: var(--web-color-yellow-hue) 100%  88%;
+  --web-color-yellow-500: var(--web-color-yellow-hue)  99%  70%;
+  --web-color-yellow-700: calc(var(--web-color-yellow-hue) + 1) 42%  42%;
 
   /* blue */
-  --aw-color-blue-hue: 217;
-  --aw-color-blue-200: var(--aw-color-blue-hue) 100%  88%;
-  --aw-color-blue-500: calc(var(--aw-color-blue-hue) - 1) 99%  70%;
-  --aw-color-blue-700: calc(var(--aw-color-blue-hue) - 1) 42%  42%;
+  --web-color-blue-hue: 217;
+  --web-color-blue-200: var(--web-color-blue-hue) 100%  88%;
+  --web-color-blue-500: calc(var(--web-color-blue-hue) - 1) 99%  70%;
+  --web-color-blue-700: calc(var(--web-color-blue-hue) - 1) 42%  42%;
 
   /* secondary */
-  --aw-color-secondary-hue: 351;
-  --aw-color-secondary-100: var(--aw-color-secondary-hue) 99% 66%; /* #FE536D */
+  --web-color-secondary-hue: 351;
+  --web-color-secondary-100: var(--web-color-secondary-hue) 99% 66%; /* #FE536D */
 
   /* greyscale */
-  --aw-color-white:    0 0% 100%;
-  --aw-color-greyscale-25:   240 11% 98%;
-  --aw-color-greyscale-50:   240 11% 94%;
-  --aw-color-greyscale-100:   240 6% 90%;
-  --aw-color-greyscale-200:   240 4% 85%;
-  --aw-color-greyscale-250:   240 3% 77%;
-  --aw-color-greyscale-300:   240 2% 68%;
-  --aw-color-greyscale-400:   240 2% 60%;
-  --aw-color-greyscale-500:   240 2% 52%;
-  --aw-color-greyscale-600:   240 2% 43%;
-  --aw-color-greyscale-700:   240 3% 35%;   /* #56565C */
-  --aw-color-greyscale-750:   240 4% 26%;
-  --aw-color-greyscale-800:   240 4% 18%;
-  --aw-color-greyscale-850:   240 3% 14%;
-  --aw-color-greyscale-900:   240 5.7% 10.4%;
-  --aw-color-black:  0 0% 0%;
+  --web-color-white:    0 0% 100%;
+  --web-color-greyscale-25:   240 11% 98%;
+  --web-color-greyscale-50:   240 11% 94%;
+  --web-color-greyscale-100:   240 6% 90%;
+  --web-color-greyscale-200:   240 4% 85%;
+  --web-color-greyscale-250:   240 3% 77%;
+  --web-color-greyscale-300:   240 2% 68%;
+  --web-color-greyscale-400:   240 2% 60%;
+  --web-color-greyscale-500:   240 2% 52%;
+  --web-color-greyscale-600:   240 2% 43%;
+  --web-color-greyscale-700:   240 3% 35%;   /* #56565C */
+  --web-color-greyscale-750:   240 4% 26%;
+  --web-color-greyscale-800:   240 4% 18%;
+  --web-color-greyscale-850:   240 3% 14%;
+  --web-color-greyscale-900:   240 5.7% 10.4%;
+  --web-color-black:  0 0% 0%;
 
   @include color-light; /* default */
   #{$theme-light} { @include color-light; }
   #{$theme-dark} { @include color-dark; }
 }
 
-.#{$p}-u-color-text-primary { color:hsl(var(--aw-color-primary))!important; }
-.#{$p}-u-color-text-secondary { color:hsl(var(--aw-color-secondary))!important; }
-.#{$p}-u-color-text-tertiary { color:hsl(var(--aw-color-tertiary))!important; }
-.#{$p}-u-color-text-accent { -webkit-text-fill-color: hsl(var(--aw-color-accent))!important; color:hsl(var(--aw-color-accent))!important; }
-.#{$p}-u-color-text-accent-darker { color:hsl(var(--aw-color-accent-darker))!important; }
-.#{$p}-u-color-text-accent-click { color:hsl(var(--aw-color-accent-click))!important; }
+.#{$p}-u-color-text-primary { color:hsl(var(--web-color-primary))!important; }
+.#{$p}-u-color-text-secondary { color:hsl(var(--web-color-secondary))!important; }
+.#{$p}-u-color-text-tertiary { color:hsl(var(--web-color-tertiary))!important; }
+.#{$p}-u-color-text-accent { -webkit-text-fill-color: hsl(var(--web-color-accent))!important; color:hsl(var(--web-color-accent))!important; }
+.#{$p}-u-color-text-accent-darker { color:hsl(var(--web-color-accent-darker))!important; }
+.#{$p}-u-color-text-accent-click { color:hsl(var(--web-color-accent-click))!important; }

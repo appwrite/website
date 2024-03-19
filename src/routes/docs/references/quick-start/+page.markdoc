@@ -333,10 +333,10 @@ Get started with Appwrite and Next.js
 {% cards_item href="/docs/quick-starts/react" title="React" icon="icon-react" %}
 Get started with Appwrite and React
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/vue" title="Vue.js" icon="aw-icon-vue" %}
+{% cards_item href="/docs/quick-starts/vue" title="Vue.js" icon="web-icon-vue" %}
 Get started with Appwrite and Vue.js
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/nuxt" title="Nuxt" icon="aw-icon-nuxt" %}
+{% cards_item href="/docs/quick-starts/nuxt" title="Nuxt" icon="web-icon-nuxt" %}
 Get started with Appwrite and Nuxt
 {% /cards_item %}
 {% cards_item href="/docs/quick-starts/sveltekit" title="SvelteKit" icon="icon-svelte" %}
