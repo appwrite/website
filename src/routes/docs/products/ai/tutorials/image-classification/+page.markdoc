@@ -7,7 +7,8 @@ readtime: 3
 back: /docs/products/ai/computer-vision
 ---
 
-Learn how to setup your first image classification powered app with Appwrite and Hugging Face.
+Learn to to setup your first function utilizing image classification with Appwrite and Hugging Face.
+
 {% section #step-1 step=1 title="Create a new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 

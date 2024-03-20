@@ -39,7 +39,7 @@
             ]
         },
         {
-            label: 'Tutorials',
+            label: 'Computer Vision',
             items: [
                 {
                     label: 'Image Classification',
@@ -49,6 +49,35 @@
                     label: 'Object Detection',
                     href: '/docs/products/ai/tutorials/object-detection'
                 }
+            ]
+        },
+        {
+            label: 'Integrations',
+            items: [
+              {
+                label: 'Perplexity',
+                href: '/docs/products/ai/integrations/perplexity'
+              },
+              {
+                label: 'Replicate',
+                href: '/docs/products/ai/integrations/replicate'
+              },
+              {
+                label: 'OpenAI',
+                href: '/docs/products/ai/integrations/openai'
+              },
+              {
+                label: 'Pinecone',
+                href: '/docs/products/ai/integrations/pinecone'
+              },
+              {
+                label: 'Llama Index',
+                href: '/docs/products/ai/integrations/llama-index'
+              },
+              {
+                label: 'Langchain',
+                href: '/docs/products/ai/integrations/langchain'
+              }
             ]
         }
     ];
