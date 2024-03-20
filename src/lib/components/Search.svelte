@@ -200,7 +200,7 @@
                                         data-hit={i}
                                         href={createHref(hit)}
                                         class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent
-                                            web-u-padding-block-8 web-padding-inline-12 web-u-cross-start u-max-width-100-percent"
+                                            u-padding-block-8 web-u-cross-start u-max-width-100-percent"
                                         use:melt={$option({
                                             value: hit,
                                             label: hit.title ?? i.toString()
