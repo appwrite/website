@@ -11,34 +11,13 @@
   }
 }
 
-//.#{$p}-u-flex-vertical                {display:flex!important; flex-direction:column!important; }
 .#{$p}-u-flex-vertical-mobile         { @media #{$break1} { flex-direction:column!important; }  }
 .#{$p}-u-flex-vertical-reverse-mobile { @media #{$break1} { flex-direction:column-reverse!important; }  }
 
-
-//.#{$p}-u-padding-20                 { padding:pxToRem(20); }
-//.#{$p}-u-padding-inline-start-0     { padding-inline-start:0!important; }
-//.#{$p}-u-padding-inline-start-20    { padding-inline-start:pxToRem(20)!important; }
-//.#{$p}-u-padding-inline-start-24    { padding-inline-start:pxToRem(24)!important; }
-//.#{$p}-u-padding-inline-end-12      { padding-inline-end:12px!important; }
-//.#{$p}-u-padding-block-0            { padding-block:0!important; }
-//.#{$p}-u-padding-block-4            { padding-block:pxToRem(4)!important; }
-//.#{$p}-u-padding-block-20            { padding-block:pxToRem(20)!important; }
-//.#{$p}-u-padding-block-start-32     { padding-block-start:pxToRem(32)!important; }
-//.#{$p}-u-padding-block-start-40     { padding-block-start:pxToRem(40)!important; }
-//.#{$p}-u-padding-block-start-48     { padding-block-start:pxToRem(48)!important; }
-//.#{$p}-u-padding-block-start-64     { padding-block-start:pxToRem(64)!important; }
-//.#{$p}-u-padding-block-start-80     { padding-block-start:pxToRem(80)!important; }
-//.#{$p}-u-padding-block-end-0        { padding-block-end:0; }
-//.#{$p}-u-padding-block-end-40       { padding-block-end:pxToRem(40); }
-//.#{$p}-u-padding-block-end-56       { padding-block-end:pxToRem(56); }
 .#{$p}-u-padding-block-end-d-160-m-80 {
   @media #{$break1} { padding-block-end:pxToRem(80); }
   @media #{$break2open} { padding-block-end:pxToRem(160); }
 }
-
-//.#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
-//.#{$p}-u-padding-inline-16          { padding-inline:pxToRem(16); }
 .#{$p}-u-padding-inline-start-48-not-break1 { @media #{$break2open} { padding-inline-start:pxToRem(48); } }
 
 .#{$p}-u-margin-inline-auto-mobile { @media #{$break1}{ margin-inline:auto;} }
@@ -46,17 +25,9 @@
 .#{$p}-u-margin-inline-20-negative  { margin-inline:pxToRem(-20); }
 .#{$p}-u-margin-inline-32-negative  { margin-inline:pxToRem(-32); }
 
-//.#{$p}-u-margin-block-0             { margin-block:0; }
-//.#{$p}-u-margin-block-80            { margin-block:pxToRem(80); }
 .#{$p}-u-margin-block-start-8-negative { margin-block-start:pxToRem(-8)!important; }
-//.#{$p}-u-margin-block-start-0       { margin-block-start:0!important; }
-//.#{$p}-u-margin-block-start-24      { margin-block-start:pxToRem(24); }
-//.#{$p}-u-margin-block-start-40      { margin-block-start:pxToRem(40); }
 .#{$p}-u-margin-block-start-40-mobile { @media #{$break1} {margin-block-start:pxToRem(40);} }
 .#{$p}-u-margin-block-start-100-negative { margin-block-start:pxToRem(-100); }
-
-//.#{$p}-u-margin-block-end-0       { margin-block-end:0!important; }
-
 
 .#{$p}-u-sep                        { border:solid pxToRem(1) hsl(var(--web-color-smooth));}
 .#{$p}-u-sep-block                  { border-block:solid pxToRem(1) hsl(var(--web-color-smooth));}
@@ -110,18 +81,7 @@
   @media #{$break1} { margin-block:pxToRem(80)!important; }
   @media #{$break2open} { margin-block:pxToRem(120)!important; }
 }
-//.#{$p}-u-margin-block-start-2       { margin-block-start:pxToRem(2); }
 .#{$p}-u-margin-block-start-6       { margin-block-start:pxToRem(6); }
-//.#{$p}-u-margin-block-start-48      { margin-block-start:pxToRem(48); }
-//.#{$p}-u-margin-block-start-64      { margin-block-start:pxToRem(64); }
-//.#{$p}-u-margin-block-start-80      { margin-block-start:pxToRem(80); }
-//.#{$p}-u-margin-block-start-88      { margin-block-start:pxToRem(88); }
-//.#{$p}-u-margin-block-start-160     { margin-block-start:pxToRem(160)!important; }
-
-//.#{$p}-u-margin-block-end-24        { margin-block-end:pxToRem(24); }
-//.#{$p}-u-margin-block-end-32        { margin-block-end:pxToRem(32); }
-
-.#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }
 
 .#{$p}-u-text-color-primary-500     { color:hsl(var(--web-color-pink-500));   }
 .#{$p}-u-text-color-secondary-100   { color:hsl(var(--web-color-secondary-100)); }

@@ -140,7 +140,7 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="u-flex u-stretch web-u-margin-inline-start-48">
+                <div class="u-flex u-stretch u-margin-inline-start-48">
                     <button
                         class="web-input-button web-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
