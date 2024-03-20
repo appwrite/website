@@ -72,7 +72,7 @@
             </div>
             <div class="web-code-snippet-header-end">
                 <ul class="buttons-list u-flex u-gap-8">
-                    <li class="buttons-list-item web-u-padding-inline-start-20">
+                    <li class="buttons-list-item u-padding-inline-start-20">
                         <Tooltip>
                             <button
                                 slot="asChild"
