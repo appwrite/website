@@ -121,7 +121,7 @@
 
     <div class="w-big-padding-section">
         <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden web-u-margin-block-0 web-u-sep-block-end">
+            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden u-margin-block-0 web-u-sep-block-end">
                 <div
                         class="u-position-absolute"
                         style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"

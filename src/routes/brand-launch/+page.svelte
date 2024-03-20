@@ -99,7 +99,7 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-container u-position-relative">
                 <div
-                    class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto web-u-margin-block-0"
+                    class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto u-margin-block-0"
                     style="block-size:calc(100vh - 6.375rem)"
                 >
                     <div class="web-hero web-u-gap-20">
