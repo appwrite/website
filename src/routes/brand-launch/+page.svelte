@@ -1086,7 +1086,7 @@
             <div class="web-big-padding-section-level-2 u-position-relative">
                 <div class="web-container">
                     <div
-                        class="u-full-screen-height u-flex-vertical web-u-gap-80 u-main-center u-cross-center"
+                        class="u-full-screen-height u-flex-vertical u-gap-80 u-main-center u-cross-center"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

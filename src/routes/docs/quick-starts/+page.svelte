@@ -186,7 +186,7 @@
             </div>
             <div class="web-article-header-end" />
         </header>
-        <div class="web-article-content web-u-gap-80">
+        <div class="web-article-content u-gap-80">
             {#each quickStarts as category}
                 <section class="u-flex-vertical u-gap-24">
                     <h2 class="web-eyebrow">{category.title}</h2>
