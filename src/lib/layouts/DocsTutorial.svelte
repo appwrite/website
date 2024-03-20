@@ -80,7 +80,7 @@
 
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
+        <aside class="web-references-menu u-padding-inline-start-24">
             <div class="web-references-menu-content">
                 <div class="u-flex u-main-space-between u-cross-center u-gap-16">
                     <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>

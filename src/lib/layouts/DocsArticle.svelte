@@ -63,7 +63,7 @@
             <slot />
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
+        <aside class="web-references-menu u-padding-inline-start-24">
             <div class="web-references-menu-content">
                 {#if toc && toc.length > 0}
                     <div class="u-flex u-main-space-between u-cross-center u-gap-16">
