@@ -6,9 +6,7 @@
 .#{$p}-u-opacity-90                 { opacity:0.9!important;  }
 
 .#{$p}-u-overflow-hidden-break1-to-break3 {
-  @media #{$break1}, #{$break2}, #{$break3} {
-    overflow:hidden;
-  }
+  @media #{$break1}, #{$break2}, #{$break3} { overflow:hidden; }
 }
 
 .#{$p}-u-flex-vertical-mobile         { @media #{$break1} { flex-direction:column!important; }  }
@@ -54,7 +52,7 @@
 .#{$p}-u-max-height-300             { max-block-size:pxToRem(300); }
 .#{$p}-u-max-height-100-percent     { max-block-size:100%; }
 
-.#{$p}-u-trim-1           { @include trim(1); }
+.#{$p}-u-trim-1                  { @include trim(1); }
 .#{$p}-u-line-height-1-2         { line-height:1.2!important; }
 .#{$p}-u-line-height-2           { line-height:2!important; }
 
@@ -151,7 +149,7 @@
   }
 }
 
-.web-u-mobile-divider {
+.#{$p}-u-mobile-divider {
   &::after {
     content:""; display:block; block-size:pxToRem(1); padding-block-end:40px;
     inline-size:100vw; position:absolute; inset-inline-start:calc(calc(100vw - 100cqw)/2 * -1 + pxToRem(8)); inset-block-start:100%; border-block-end: solid 1px hsl(var(--web-color-smooth));
@@ -159,7 +157,6 @@
 }
 
 .#{$p}-u-filter-blur-8  { -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); background-color:hsl(var(--web-color-greyscale-50) / 0.7);}
-
 
 /* only light / only dark */
 .#{$p}-u-only-light,
@@ -219,34 +216,11 @@
   &-content { margin-block-start:pxToRem(-8); }
 }
 
-.#{$p}-u-flip-x {
-  transform:scaleX(-1);
-}
-
-.#{$p}-u-flip-y {
-  transform:scaleY(-1);
-}
-
-.#{$p}-u-inline-block {
-  display:inline-block;
-}
-
-.#{$p}-u-uppercase{
-  text-transform:uppercase;
-}
-
-.#{$p}-u-capitalize {
-  text-transform:capitalize;
-}
-
-.#{$p}-u-rotate-180 {
-  transform:rotateZ(180deg);
-}
-
-.#{$p}-u-transition {
-  transition:var(--transition);
-}
-
-.#{$p}-u-flex-1 {
-  flex: 1; 
-}
+.#{$p}-u-flip-x { transform:scaleX(-1); }
+.#{$p}-u-flip-y { transform:scaleY(-1); }
+.#{$p}-u-inline-block { display:inline-block; }
+.#{$p}-u-uppercase { text-transform:uppercase;}
+.#{$p}-u-capitalize { text-transform:capitalize; }
+.#{$p}-u-rotate-180 { transform:rotateZ(180deg); }
+.#{$p}-u-transition { transition:var(--transition); }
+.#{$p}-u-flex-1 { flex:1; }
