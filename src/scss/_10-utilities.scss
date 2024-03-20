@@ -121,8 +121,6 @@
 .#{$p}-u-text-align-center { text-align:center!important; }
 .#{$p}-u-mobile-align-text-center { @media #{$break1} { text-align:center!important;} }
 
-.#{$p}-u-padding-block-8   { padding-block:pxToRem(8)!important; }
-
 .#{$p}-u-inset-block-start-100 { inset-block-start:pxToRem(160); }
 
 
