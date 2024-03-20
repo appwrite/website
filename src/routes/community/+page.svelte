@@ -448,7 +448,7 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-sep-block-start web-u-padding-block-start-64">
+                <section class="web-container web-u-sep-block-start u-padding-block-start-64">
                     <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>

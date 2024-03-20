@@ -132,7 +132,7 @@
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
-                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">
+                    <ul class="web-grid-3c-4c-6c is-for-logos u-padding-block-start-80">
                         <li>
                             <img
                                 src="/images/logos/trusted-by/apple.svg"
