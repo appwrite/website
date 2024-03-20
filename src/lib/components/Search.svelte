@@ -246,7 +246,7 @@
                                     value: hit,
                                     label: hit.title ?? i.toString()
                                 })}
-                                class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent web-u-padding-block-4 web-u-cross-start"
+                                class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent u-padding-block-4 web-u-cross-start"
                             >
                                 <div class="web-u-trim-1">
                                     <span class="web-u-color-text-secondary">{hit.h1}</span>
