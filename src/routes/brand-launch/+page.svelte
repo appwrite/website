@@ -138,7 +138,7 @@
 
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
                     <div class="web-grid-1-1-opt-2">
-                        <div class="web-hero is-align-start web-u-padding-block-start-40">
+                        <div class="web-hero is-align-start u-padding-block-start-40">
                             <h2 class="web-title web-u-color-text-primary">Eliminating complexity</h2>
                             <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
@@ -154,7 +154,7 @@
                         </div>
                         <div
                             class="web-hero is-align-start
-						web-u-padding-block-start-40 web-u-sep-inline-start-not-break1 web-u-padding-inline-start-48-not-break1"
+						u-padding-block-start-40 web-u-sep-inline-start-not-break1 web-u-padding-inline-start-48-not-break1"
                         >
                             <h2 class="web-title web-u-color-text-primary">
                                 Allowing you to innovate without limits

@@ -101,7 +101,7 @@
                                     </section>
                                 {/if}
                                 <section
-                                    class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    class="u-flex-vertical u-gap-12 u-padding-block-start-40 web-u-sep-block-start"
                                 >
                                     <h2 class="web-label web-u-color-text-primary">Follow us</h2>
                                     <ul class="u-flex u-gap-8">
@@ -121,7 +121,7 @@
                                     </ul>
                                 </section>
                                 <div
-                                    class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    class="web-is-only-mobile web-u-margin-block-start-40 u-padding-block-start-40 web-u-sep-block-start"
                                 />
                             </div>
                         </div>
