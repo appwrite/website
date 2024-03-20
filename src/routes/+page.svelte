@@ -112,7 +112,7 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <section
-                    class="web-container web-u-padding-block-0"
+                    class="web-container u-padding-block-0"
                     style="--container-size:78.75rem"
                 >
                     <div class="web-media-container">
