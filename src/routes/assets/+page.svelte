@@ -65,7 +65,7 @@
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
                     <button
-                        class="u-flex u-width-full-line web-u-padding-block-20
+                        class="u-flex u-width-full-line u-padding-block-20
                         web-u-color-text-primary web-is-only-mobile
                        web-u-margin-inline-32-negative u-margin-block-start-24 web-u-sep-block u-width-full-line"
                     >

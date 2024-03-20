@@ -269,7 +269,7 @@
                             </li>
                         {/each}
                     </ul>
-                    <div class="u-sep-block-start web-u-padding-block-20">
+                    <div class="u-sep-block-start u-padding-block-20">
                         <button
                             class="web-link u-inline-flex u-cross-center u-gap-8"
                             use:scrollToTop
