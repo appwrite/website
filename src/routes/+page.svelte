@@ -77,7 +77,7 @@
                 <section class="web-container u-padding-block-end-0">
                     <a
                         href="/blog/post/everything-new-with-appwrite-1.5"
-                        class="web-hero-banner-button web-u-margin-block-end-24"
+                        class="web-hero-banner-button u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
