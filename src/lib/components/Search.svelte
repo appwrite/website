@@ -157,7 +157,7 @@
     on:click={handleExit}
 >
     <div
-        class="web-input-text-search-wrapper web-u-max-width-680 web-u-margin-inline-20 u-width-full-line"
+        class="web-input-text-search-wrapper web-u-max-width-680 u-margin-inline-20 u-width-full-line"
     >
         <span
             class="web-icon-search u-z-index-5"
