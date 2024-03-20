@@ -41,7 +41,7 @@
     <div class="web-big-padding-section u-position-relative">
         <div class="web-big-padding-section-level-1 u-position-relative">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-                <section class="web-container web-u-padding-block-end-0">
+                <section class="web-container u-padding-block-end-0">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"

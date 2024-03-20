@@ -111,7 +111,7 @@
     <div class="web-big-padding-section">
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero web-u-padding-block-end-0">
+                <section class="web-container hero u-padding-block-end-0">
                     <div>
                         <h1 class="web-display web-u-color-text-primary">Appwrite Heroes</h1>
                         <p class="web-main-body-500 u-margin-block-start-20">

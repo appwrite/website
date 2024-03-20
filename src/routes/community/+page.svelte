@@ -177,7 +177,7 @@
                 <img src="/images/community/sphere.png" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-padding-block-end-0 u-position-relative">
+                <section class="web-container u-padding-block-end-0 u-position-relative">
                     <div class="web-hero is-align-start web-u-max-width-580">
                         <h1 class="web-display web-u-color-text-primary">
                             Built by a community of 800+ contributors

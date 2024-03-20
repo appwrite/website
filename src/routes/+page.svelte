@@ -74,7 +74,7 @@
     <div class="web-big-padding-section">
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-padding-block-end-0">
+                <section class="web-container u-padding-block-end-0">
                     <a
                         href="/blog/post/everything-new-with-appwrite-1.5"
                         class="web-hero-banner-button web-u-margin-block-end-24"
