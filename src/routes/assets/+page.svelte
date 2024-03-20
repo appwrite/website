@@ -94,7 +94,7 @@
                         </section>
 
                         <section id={getSectionId(Section.NAMING)}>
-                            <div class="u-flex web-u-flex-vertical u-gap-8">
+                            <div class="u-flex u-flex-vertical u-gap-8">
                                 <h2
                                     class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -111,7 +111,7 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOTYPE)}>
-                            <div class="u-flex web-u-flex-vertical u-gap-8">
+                            <div class="u-flex u-flex-vertical u-gap-8">
                                 <h2
                                     class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
                             <section>
-                                <div class="u-flex web-u-flex-vertical u-gap-8">
+                                <div class="u-flex u-flex-vertical u-gap-8">
                                     <h3 class="web-label web-u-color-text-primary">
                                         Co-branding logotypes
                                     </h3>
@@ -219,7 +219,7 @@
                         </section>
 
                         <section id={getSectionId(Section.LOGOMARK)}>
-                            <div class="u-flex web-u-flex-vertical u-gap-8">
+                            <div class="u-flex u-flex-vertical u-gap-8">
                                 <h3
                                     class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -305,7 +305,7 @@
                                 </div>
                             </div>
                             <section id="">
-                                <div class="u-flex web-u-flex-vertical u-gap-8">
+                                <div class="u-flex u-flex-vertical u-gap-8">
                                     <h3 class="web-label web-u-color-text-primary">
                                         Co-branding lockups
                                     </h3>
@@ -337,7 +337,7 @@
                             </h2>
                             <div class="u-flex u-flex-wrap u-gap-32">
                                 <div
-                                    class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center u-gap-8
+                                    class="media-wrapper | u-stretch web-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
                                 web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-900 web-u-bg-color-neutral-50
                                 web-u-media-ratio-1-1 web-u-min-block-size-160"
                                 >
@@ -348,7 +348,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center
+                                    class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 u-flex-vertical u-main-center
                                 u-gap-8 web-u-border-radius-8 u-padding-inline-24 web-u-media-ratio-1-1 web-u-min-block-size-160
                                 web-u-text-color-neutral-50 web-u-bg-color-neutral-900"
                                 >
@@ -359,7 +359,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center u-gap-8
+                                    class="media-wrapper | u-stretch web-u-flex-basis-200 u-flex-vertical u-main-center u-gap-8
                                 web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-50 web-u-bg-color-primary-500
                                 web-u-aspect-ratio-1-1 web-u-min-block-size-160"
                                 >
@@ -373,7 +373,7 @@
                         </section>
 
                         <section id={getSectionId(Section.VISUALS)}>
-                            <div class="u-flex web-u-flex-vertical u-gap-8">
+                            <div class="u-flex u-flex-vertical u-gap-8">
                                 <h2
                                     class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}
@@ -548,7 +548,7 @@
                         </section>
 
                         <section id={getSectionId(Section.CONTACT)}>
-                            <div class="u-flex web-u-flex-vertical u-gap-8">
+                            <div class="u-flex u-flex-vertical u-gap-8">
                                 <h2
                                     class="web-title web-u-color-text-primary"
                                     use:visible={{ top: 48 }}

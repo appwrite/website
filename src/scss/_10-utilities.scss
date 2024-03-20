@@ -11,7 +11,7 @@
   }
 }
 
-.#{$p}-u-flex-vertical                {display:flex!important; flex-direction:column!important; }
+//.#{$p}-u-flex-vertical                {display:flex!important; flex-direction:column!important; }
 .#{$p}-u-flex-vertical-mobile         { @media #{$break1} { flex-direction:column!important; }  }
 .#{$p}-u-flex-vertical-reverse-mobile { @media #{$break1} { flex-direction:column-reverse!important; }  }
 
