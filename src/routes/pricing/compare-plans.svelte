@@ -333,7 +333,7 @@
                     </header>
 
                     <div
-                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                        class="web-is-only-mobile u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
                         style:--inset-block-start="2rem"
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>

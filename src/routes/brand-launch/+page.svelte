@@ -114,7 +114,7 @@
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
                     <div class="u-stretch u-flex web-u-flex-vertical-mobile">
                         <div
-                            class="web-hero is-align-start web-u-max-width-480 web-u-padding-block-start-48"
+                            class="web-hero is-align-start web-u-max-width-480 u-padding-block-start-48"
                         >
                             <h2 class="web-title web-u-color-text-primary">
                                 All the tools that developers need
