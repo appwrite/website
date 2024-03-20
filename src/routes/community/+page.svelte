@@ -504,7 +504,7 @@
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-15-25-desktop u-row-gap-48 web-u-column-gap-96">
+                    <div class="web-grid-15-25-desktop u-row-gap-48 u-column-gap-96">
                         <div class="web-hero is-align-start web-u-max-width-380">
                             <div class="web-display web-u-color-text-primary">
                                 Visit the community

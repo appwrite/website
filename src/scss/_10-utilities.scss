@@ -117,8 +117,6 @@
 .#{$p}-u-gap-6          { gap:pxToRem(6); }
 .#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
 
-.#{$p}-u-column-gap-96 { column-gap:pxToRem(96)!important;  }
-
 .#{$p}-u-text-align-start { text-align:start!important; }
 .#{$p}-u-text-align-center { text-align:center!important; }
 .#{$p}-u-mobile-align-text-center { @media #{$break1} { text-align:center!important;} }
