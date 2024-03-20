@@ -291,7 +291,7 @@
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
                     </div>
-                    <ul class="web-investor-cards web-u-margin-block-start-64">
+                    <ul class="web-investor-cards u-margin-block-start-64">
                         <li>
                             <a
                                 href="https://www.bvp.com/"

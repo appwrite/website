@@ -491,7 +491,7 @@
                             <span>View all projects</span>
                         </a>
                     </div>
-                    <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
+                    <ul class="web-grid-3-desktop-1-mobile u-margin-block-start-64">
                         {#each projects as project}
                             <li>
                                 <ProjectCard {...project} />
