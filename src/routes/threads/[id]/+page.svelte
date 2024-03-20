@@ -70,7 +70,7 @@
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
                         {#if isFirst}
-                            <div class="web-inline-info web-u-margin-block-start-24">
+                            <div class="web-inline-info u-margin-block-start-24">
                                 <div class="web-sub-body-500 web-u-color-text-primary">TL;DR</div>
                                 {data.tldr}
                             </div>

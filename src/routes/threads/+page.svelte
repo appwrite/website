@@ -140,7 +140,7 @@
                 </div>
 
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-start-24">
+            <div class="web-big-padding-section-level-2 u-margin-block-start-24">
                 <div class="web-container">
                     <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
                         <ul class="u-flex u-flex-wrap u-gap-8">
