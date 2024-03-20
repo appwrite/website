@@ -19,7 +19,7 @@
         class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-u-margin-inline-auto-mobile web-u-inline-width-100-percent-mobile"
     >
         <header class="web-strip-plans-header">
-            <div class="web-strip-plans-header-wrapper web-u-row-gap-24">
+            <div class="web-strip-plans-header-wrapper u-row-gap-24">
                 <h3 class="web-title web-u-color-text-primary">Our plans</h3>
             </div>
         </header>
