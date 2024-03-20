@@ -203,7 +203,7 @@
                         </ul>
                     </div>
 
-                    <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">
+                    <ul class="web-grid-1-1-opt-2 u-gap-32 u-margin-block-start-80 ">
                         <li>
                             <article
                                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"

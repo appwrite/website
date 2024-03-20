@@ -263,7 +263,7 @@
                             Migrations. With built-in security and privacy for peace of mind.
                         </p>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                    <div class="u-overflow-hidden u-margin-block-start-80 ">
                         <ul class="web-info-boxes web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
@@ -368,7 +368,7 @@
                             Loved by developers like you
                         </div>
                     </div>
-                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1 u-margin-block-start-80 ">
                         <li>
                             <DeveloperCard
                                 name="Terry Lennon"
