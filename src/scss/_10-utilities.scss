@@ -117,7 +117,7 @@
 .#{$p}-u-gap-6          { gap:pxToRem(6); }
 //.#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
 .#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
-.#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
+//.#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }
 .#{$p}-u-gap-96        { gap:pxToRem(96);  }
 .#{$p}-u-row-gap-24   { row-gap: pxToRem(24)!important; }
