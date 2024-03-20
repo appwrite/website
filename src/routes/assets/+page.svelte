@@ -127,7 +127,7 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 u-padding-inline-64
                                     web-u-bg-color-neutral-100 web-u-block-size-320"
                                     >
                                         <img
@@ -161,7 +161,7 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 u-padding-inline-64
                                     web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
@@ -236,7 +236,7 @@
                                 <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
                                     <div
                                         class="media-wrapper | theme-light |
-                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 u-padding-inline-64
                                     web-u-bg-color-neutral-100 web-u-block-size-320"
                                     >
                                         <img
@@ -270,7 +270,7 @@
                                     </div>
                                     <div
                                         class="media-wrapper | theme-dark |
-                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
+                                    u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 u-padding-inline-64
                                     web-u-bg-color-neutral-800 web-u-block-size-320"
                                     >
                                         <img
