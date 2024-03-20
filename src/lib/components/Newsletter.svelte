@@ -85,7 +85,7 @@
 				<div class="web-grid-1-1-opt-2 u-gap-32">
 					<div class="">
 						<div class="web-u-max-inline-size-none-mobile" class:web-u-max-width-380={!submitted}>
-							<section class="u-flex-vertical web-u-gap-20">
+							<section class="u-flex-vertical u-gap-20">
 								<h1 class="web-title web-u-color-text-primary">Subscribe to our newsletter</h1>
 								<p class="web-description u-padding-block-end-40">
 									Sign up to our company blog and get the latest insights from Appwrite. Learn more

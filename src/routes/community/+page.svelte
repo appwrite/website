@@ -248,7 +248,7 @@
 
             <div class="web-big-padding-section-level-2">
                 <div class="web-container u-position-relative">
-                    <div class="web-hero is-mobile-center web-u-gap-20 web-u-max-width-900">
+                    <div class="web-hero is-mobile-center u-gap-20 web-u-max-width-900">
                         <h1 class="web-headline web-u-color-text-primary">
                             The power of open source benefits us all
                         </h1>
@@ -608,7 +608,7 @@
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
-                                <section class="u-flex-vertical web-u-gap-20">
+                                <section class="u-flex-vertical u-gap-20">
                                     <h1 class="web-title web-u-color-text-primary">
                                         Appwrite insights
                                     </h1>

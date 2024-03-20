@@ -115,7 +115,7 @@
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
 .#{$p}-u-gap-6          { gap:pxToRem(6); }
-.#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
+//.#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
 .#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
 .#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }

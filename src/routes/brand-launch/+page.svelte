@@ -102,7 +102,7 @@
                     class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto u-margin-block-0"
                     style="block-size:calc(100vh - 6.375rem)"
                 >
-                    <div class="web-hero web-u-gap-20">
+                    <div class="web-hero u-gap-20">
                         <h1 class="web-headline web-u-color-text-primary">Brand new Appwrite</h1>
                         <p class="web-description web-u-color-text-primary web-u-opacity-64">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
