@@ -40,7 +40,7 @@
     style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);"
 >
     <div
-        class="u-position-absolute u-inset-inline-start-0 web-u-inset-block-start-100 web-is-not-mobile"
+        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-160 web-is-not-mobile"
     >
         <img
             src="/images/pages/brand-lunch/left-side-top-brand.png"
@@ -50,7 +50,7 @@
         />
     </div>
     <div
-        class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-100 web-is-not-mobile"
+        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-160 web-is-not-mobile"
     >
         <img
             src="/images/pages/brand-lunch/right-side-top-brand.png"
