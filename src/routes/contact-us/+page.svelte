@@ -84,7 +84,7 @@
                                         </p>
                                         <a
                                             href="/"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
+                                            class="web-button is-secondary u-margin-block-end-32"
                                         >
                                             <span>Back to homepage</span>
                                         </a>
