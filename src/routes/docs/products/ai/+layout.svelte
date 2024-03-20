@@ -31,10 +31,6 @@
                 {
                     label: 'Audio Processing',
                     href: '/docs/products/ai/audio-processing'
-                },
-                {
-                    label: 'Video Processing',
-                    href: '/docs/products/ai/video-processing'
                 }
             ]
         },
