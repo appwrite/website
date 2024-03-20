@@ -204,7 +204,7 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-end-0">
+            <div class="web-big-padding-section-level-2 u-margin-block-end-0">
                 <PreFooter />
             </div>
             <div class="web-big-padding-section-level-2 web-u-margin-block-start-100-negative">

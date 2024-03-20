@@ -55,7 +55,7 @@
 .#{$p}-u-margin-block-start-40-mobile { @media #{$break1} {margin-block-start:pxToRem(40);} }
 .#{$p}-u-margin-block-start-100-negative { margin-block-start:pxToRem(-100); }
 
-.#{$p}-u-margin-block-end-0       { margin-block-end:0!important; }
+//.#{$p}-u-margin-block-end-0       { margin-block-end:0!important; }
 
 
 .#{$p}-u-sep                        { border:solid pxToRem(1) hsl(var(--web-color-smooth));}
