@@ -37,8 +37,8 @@
   @media #{$break2open} { padding-block-end:pxToRem(160); }
 }
 
-.#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
-.#{$p}-u-padding-inline-16          { padding-inline:pxToRem(16); }
+//.#{$p}-u-padding-inline-8           { padding-inline:pxToRem(8); }
+//.#{$p}-u-padding-inline-16          { padding-inline:pxToRem(16); }
 .#{$p}-u-padding-inline-start-48-not-break1 { @media #{$break2open} { padding-inline-start:pxToRem(48); } }
 
 .#{$p}-u-margin-inline-auto-mobile { @media #{$break1}{ margin-inline:auto;} }

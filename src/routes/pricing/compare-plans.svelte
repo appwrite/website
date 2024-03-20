@@ -333,7 +333,7 @@
                     </header>
 
                     <div
-                        class="web-is-only-mobile u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                        class="web-is-only-mobile u-padding-block-start-48 u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
                         style:--inset-block-start="2rem"
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
@@ -351,7 +351,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
