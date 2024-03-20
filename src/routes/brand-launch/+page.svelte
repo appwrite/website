@@ -125,7 +125,7 @@
                             </p>
                         </div>
                         <div
-                            class="u-stretch u-flex web-u-margin-inline-auto-mobile web-u-margin-block-start-40-mobile"
+                            class="u-stretch u-flex web-u-margin-inline-auto-mobile u-margin-block-start-40-mobile"
                         >
                             <img
                                 class="web-u-margin-block-start-8-negative u-margin-inline-start-auto u-width-full-line u-max-width-500"

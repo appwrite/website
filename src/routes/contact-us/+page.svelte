@@ -121,7 +121,7 @@
                                     </ul>
                                 </section>
                                 <div
-                                    class="web-is-only-mobile web-u-margin-block-start-40 u-padding-block-start-40 web-u-sep-block-start"
+                                    class="web-is-only-mobile u-margin-block-start-40 u-padding-block-start-40 web-u-sep-block-start"
                                 />
                             </div>
                         </div>

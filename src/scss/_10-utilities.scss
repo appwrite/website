@@ -51,7 +51,7 @@
 .#{$p}-u-margin-block-start-8-negative { margin-block-start:pxToRem(-8)!important; }
 //.#{$p}-u-margin-block-start-0       { margin-block-start:0!important; }
 //.#{$p}-u-margin-block-start-24      { margin-block-start:pxToRem(24); }
-.#{$p}-u-margin-block-start-40      { margin-block-start:pxToRem(40); }
+//.#{$p}-u-margin-block-start-40      { margin-block-start:pxToRem(40); }
 .#{$p}-u-margin-block-start-40-mobile { @media #{$break1} {margin-block-start:pxToRem(40);} }
 .#{$p}-u-margin-block-start-100-negative { margin-block-start:pxToRem(-100); }
 
