@@ -478,7 +478,7 @@
                 <div class="web-container">
                     <div class="web-hero is-center">
                         <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
-                        <p class="web-description web-u-margin-block-start-0">
+                        <p class="web-description u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
