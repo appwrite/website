@@ -294,7 +294,7 @@
                     >
                         <div
                             class="u-flex web-u-flex-direction-column-mobile
-									web-u-gap-96 web-u-row-gap-48"
+									u-gap-96 web-u-row-gap-48"
                         >
                             <div>
                                 <h3 class="web-label web-u-color-text-primary">
