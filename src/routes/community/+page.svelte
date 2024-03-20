@@ -612,7 +612,7 @@
                                     <h1 class="web-title web-u-color-text-primary">
                                         Appwrite insights
                                     </h1>
-                                    <p class="web-description web-u-padding-block-end-40">
+                                    <p class="web-description u-padding-block-end-40">
                                         Sign up to our company blog and get the latest insights from
                                         Appwrite. Learn more about engineering, product design,
                                         building community, and tips & tricks for using Appwrite.

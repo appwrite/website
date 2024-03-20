@@ -136,7 +136,7 @@
                 </div>
 
                 <div class="web-container">
-                    <h1 class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40">Threads</h1>
+                    <h1 class="web-display web-u-color-text-primary web-u-margin-block-80 u-padding-block-end-40">Threads</h1>
                 </div>
 
             </div>

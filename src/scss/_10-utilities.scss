@@ -30,7 +30,7 @@
 //.#{$p}-u-padding-block-start-64     { padding-block-start:pxToRem(64)!important; }
 //.#{$p}-u-padding-block-start-80     { padding-block-start:pxToRem(80)!important; }
 //.#{$p}-u-padding-block-end-0        { padding-block-end:0; }
-.#{$p}-u-padding-block-end-40       { padding-block-end:pxToRem(40); }
+//.#{$p}-u-padding-block-end-40       { padding-block-end:pxToRem(40); }
 .#{$p}-u-padding-block-end-56       { padding-block-end:pxToRem(56); }
 .#{$p}-u-padding-block-end-d-160-m-80 {
   @media #{$break1} { padding-block-end:pxToRem(80); }

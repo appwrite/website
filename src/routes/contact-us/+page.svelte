@@ -94,7 +94,7 @@
                                         <h1 class="web-display web-u-color-text-primary">
                                             Contact Us
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="web-description u-padding-block-end-40">
                                             We'd love your input: questions, feature requests, bugs
                                             or compliments.
                                         </p>
