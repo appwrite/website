@@ -38,7 +38,9 @@
                 email,
                 firstName,
                 subject,
-                message
+                company,
+                companyURL,
+                companyCrunchBaseURL
             })
         });
         if (response.status >= 400) {
@@ -784,6 +786,11 @@
 
 <style lang="scss">
   @use '$scss/abstract/mixins/border-gradient' as gradients;
+  .web-u-flip-mobile {
+    @media (max-width:1279px) {
+      flex-direction:column-reverse;
+    }
+  }
   .web-pre-footer-bg {
     position: absolute;
     top: clamp(300px, 50vw, 50%);
