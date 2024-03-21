@@ -451,7 +451,7 @@
                             <li class="web-timeline-content-item">
                                 <div class="web-grid-1-1 web-u-flip-mobile"
                                      style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-                                    <div>[image]</div>
+                                    <div>[image]11</div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Scalable architecture
@@ -498,7 +498,7 @@
                                 <div class="web-grid-1-1 web-u-flip-mobile"
                                      style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
                                     <div>
-                                        [image]
+                                        [image]33
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
