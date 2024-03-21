@@ -509,6 +509,66 @@
                 </div>
             </div>
 
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <h2
+                            class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
+                    >
+                        Startups building with Appwrite
+                    </h2>
+                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/apple.svg"
+                                    alt="Apple"
+                                    width="42"
+                                    height="48"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/oracle.svg"
+                                    alt="ORACLE"
+                                    width="136"
+                                    height="17"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/tiktok.svg"
+                                    alt="TikTok"
+                                    width="133"
+                                    height="32"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/intel.svg"
+                                    alt="intel"
+                                    width="76"
+                                    height="30"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/ibm.svg"
+                                    alt="IBM"
+                                    width="74"
+                                    height="30"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                    src="/images/logos/trusted-by/american-airlines.svg"
+                                    alt="American Airlines"
+                                    width="147"
+                                    height="24"
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
 		</div>
 
 
