@@ -8,6 +8,13 @@
     const title = 'Company' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    const infiniteScroll = (node: HTMLElement) => {
+        if (window.matchMedia('prefers-reduced-motion').matches) return;
+        const content = node.querySelector('.inner') as HTMLElement;
+        content.innerHTML += content?.innerHTML;
+        node.dataset.animated = 'true';
+    };
 </script>
 
 <svelte:head>
@@ -480,16 +487,29 @@
 						</div>
 					</div>
 				</div>
-            <div class="web-container">
-                <div class="web-hero is-center">
-                    <h2 class="web-display web-u-color-text-primary">Our Story</h2>
-                    <p class="web-description">
-                        What once started as a passion project is now a beloved and awarded product that helps developers world wide to achieve more/unleash creativity and innovation.
-                    </p>
+
+            <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
+                <h4 class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto">Focus on building your product</h4>
+                <div class="scroll-carousel" use:infiniteScroll>
+                    <ul class="inner u-gap-32">
+                        <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+                        {#each { length: 5 } as _, i}
+                            <li>
+                                <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64" style="inline-size:23.625rem">
+                                    <p class="aw-sub-body-500">There's no struggling with writing backend code and working with databases, as that's already taken care of.</p>
+                                    <div class="web-user-box">
+                                        <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                        <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
+                                        <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                    </div>
+                                </div>
+                            </li>
+                        {/each}
+                    </ul>
                 </div>
             </div>
-		</div>
 
+		</div>
 
 
 
@@ -497,7 +517,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero web-u-max-width-800">
-                        <h4 class="web-display web-u-color-text-primary">Backed by top investors</h4>
+                        <h4 class="web-title web-u-color-text-primary">Startups building with Appwrite</h4>
                         <p class="web-description web-u-max-width-480 u-margin-inline-auto">
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
@@ -803,6 +823,7 @@
 </Main>
 
 <style lang="scss">
+  @use '$scss/abstract/mixins/border-gradient' as gradients;
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
@@ -812,5 +833,56 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+    }
+
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 1rem));
+      }
+    }
+    .scroll-carousel {
+      display: flex;
+      width: 100%;
+      overflow: auto;
+
+      .inner {
+        padding-inline: 4rem;
+
+        display: flex;
+        gap: 2rem;
+        flex-shrink: 0;
+
+        > * {
+          flex-shrink: 0;
+          scroll-snap-align: start;
+        } /* items */
+
+        .carousel-img {
+          @include gradients.border-gradient;
+          --m-border-gradient-before: linear-gradient(
+                          135.1deg,
+                          #ffffff 10.1%,
+                          rgba(255, 255, 255, 0.2) 52.69%,
+                          rgba(255, 255, 255, 0.5) 120.69%
+          );
+          --m-border-radius: 1.25rem;
+          background: linear-gradient(
+                          155deg,
+                          rgba(255, 255, 255, 0.35) 1.16%,
+                          rgba(255, 255, 255, 0.35) 84.17%
+          );
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+        }
+      }
+    }
+    :global([data-animated]).scroll-carousel {
+      overflow: hidden;
+
+      .inner {
+        padding-inline: 0;
+        animation: scroll 40s linear infinite;
+      }
     }
 </style>
