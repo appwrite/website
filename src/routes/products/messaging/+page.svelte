@@ -283,7 +283,7 @@ messaging.create_email(
                 </div>
 
                 <div class="phone-wrapper">
-                    <img class="phone" src="/images/products/messaging/phone.png" alt="" />
+                    <img class="phone"  src="/images/products/messaging/phone.png" alt="" />
                 </div>
             </div>
         </div>
@@ -781,7 +781,7 @@ messaging.create_email(
                 gap: 3rem;
                 justify-content: center;
                 align-items: center;
-                width: 100%;
+                //width: 100%;
             }
 
             .phone-wrapper {
@@ -887,5 +887,9 @@ messaging.create_email(
     .web-interactive-tag[data-readonly] {
         cursor: not-allowed;
         pointer-events: none;
+    }
+
+    @media (min-width:1024px) and (max-width:1279px) {
+      .hero { padding-block-start:0; }
     }
 </style>

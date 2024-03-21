@@ -93,6 +93,7 @@
         align-items: center;
         justify-content: center;
         margin-block-start: 4.5rem;
+        @media (max-width:700px) { grid-template-columns: auto; }
     }
 
     .blur {
@@ -123,6 +124,7 @@
 
         background: hsl(240, 6%, 12%, 0.64);
         backdrop-filter: blur(30px);
+        @media (max-width:768px) { margin-inline:auto; }
     }
 
     header {

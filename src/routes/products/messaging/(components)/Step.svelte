@@ -32,7 +32,7 @@
 
         &-content {
             @media screen and (max-width: 1024px) {
-                width: 100vw;
+                width: calc(100vw - 40px);
             }
         }
     }
