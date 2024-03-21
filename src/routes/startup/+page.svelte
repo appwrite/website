@@ -87,17 +87,8 @@
             </div>
         </div>
 
-        <!-- <div class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light">
-			<div class="web-big-padding-section-level-2">
-				<div class="web-container">
-					<div class="web-hero is-center">
-						<h2 class="web-display web-u-color-text-primary">Our Story</h2>
-						<p class="web-description">
-							What once started as a passion project is now a beloved and awarded product that helps developers world wide to achieve more/unleash creativity and innovation.
-						</p>
-					</div>
-				</div>
-				<div class="web-big-padding-section-level-2">
+        <div class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light">
+            <div class="web-big-padding-section-level-2">
 					<div class="web-container">
 						<div class="web-timeline-content">
 							<ol class="web-timeline-content-list">
@@ -105,17 +96,21 @@
 									<div class="web-timeline-content-item-top web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="u-flex-vertical u-gap-16">
-											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
-												A passion project called Appwrite
+                                                Ship faster
 											</h3>
-											<p class="web-main-body-400">
-												Appwrite's first ever pull request was submitted in August 2019 by CEO and Founder Eldad A. Fux. Just one month later, September 2019, Appwrite officially launched. Soon the community started contributing by the hundreds pushing the product to new heights.
+											<p class="web-main-body-500">
+                                                Utilizing Appwrite as your backend, you significantly cut down the time and resources spent on building a backend infrastructure from scratch. This means you can get to quicker iterations and faster time-to-market, directly addressing the challenge of finding product-market fit sooner.
 											</p>
 										</div>
 										<div >
-											<div class="web-media">
-												<img  src="https://pink.appwrite.io/articles/announcement.png" alt="" loading="lazy">
+											<div class="web-card is-white u-flex-vertical web-u-gap-20">
+												<p class="aw-sub-body-500">The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.</p>
+                                                <div class="web-user-box">
+                                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                                    <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
+                                                    <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                                </div>
 											</div>
 										</div>
 
@@ -263,8 +258,19 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div> -->
+            <div class="web-container">
+                <div class="web-hero is-center">
+                    <h2 class="web-display web-u-color-text-primary">Our Story</h2>
+                    <p class="web-description">
+                        What once started as a passion project is now a beloved and awarded product that helps developers world wide to achieve more/unleash creativity and innovation.
+                    </p>
+                </div>
+            </div>
+		</div>
+
+
+
+
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
