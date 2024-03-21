@@ -251,8 +251,8 @@ messaging.create_email(
 <Main>
     <div class="web-big-padding-section u-overflow-hidden">
         <div class="hero">
-            <img src="/images/products/messaging/blur-left.png" alt="" class="blur-left" />
-            <img src="/images/products/messaging/blur-right.png" alt="" class="blur-right" />
+            <img src="/images/products/messaging/blur-left.png" alt="" class="blur-left web-u-hide-2800" />
+            <img src="/images/products/messaging/blur-right.png" alt="" class="blur-right web-u-hide-2800" />
 
             <div class="web-container">
                 <div>
@@ -766,6 +766,7 @@ messaging.create_email(
         margin-block-start: -5rem;
         padding-block-start: 5rem;
 
+
         .web-container {
             display: grid;
             // grid-template-columns: 580px 700px;
@@ -891,5 +892,11 @@ messaging.create_email(
 
     @media (min-width:1024px) {
       .hero { padding-block-start:0; }
+    }
+    @media (max-width:1023px) {
+      .hero .web-container { max-width:750px; }
+    }
+    @media (min-width:2800px) {
+      .web-u-hide-2800 { display:none; }
     }
 </style>
