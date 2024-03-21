@@ -4,7 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import {socials} from "$lib/constants";
+    //import {socials} from "$lib/constants";
 
     const title = 'Startup' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
