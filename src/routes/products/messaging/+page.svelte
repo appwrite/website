@@ -889,7 +889,7 @@ messaging.create_email(
         pointer-events: none;
     }
 
-    @media (min-width:1024px) and (max-width:1279px) {
+    @media (min-width:1024px) {
       .hero { padding-block-start:0; }
     }
 </style>
