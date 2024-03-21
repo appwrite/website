@@ -100,22 +100,22 @@
             </div>
             <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
-                    <ul class="u-flex web-u-gap-80">
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
+                    <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
                             <img src="/images/icons/gradients/backend.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">Get access to Appwrite’s Pro plan and build your entire backend with Appwrite. </p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
                             <img src="/images/icons/gradients/cloud-credit.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">Get $20,000 cloud credits to build with Appwrite Pro for 12 months and reduce risk at an early stage.</p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
                             <img src="/images/icons/gradients/support.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Dedicated support</h2>
@@ -157,7 +157,8 @@
 									</div>
 								</li>
                                 <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1202" height="429" viewBox="0 0 1202 429" fill="none">
+                                    <svg class="u-max-width-100-percent"
+                                            xmlns="http://www.w3.org/2000/svg" width="1202" height="429" viewBox="0 0 1202 429" fill="none">
                                         <rect x="0.5" y="0.5" width="1201" height="427" rx="16.5" stroke="#19191C" stroke-opacity="0.04"/>
                                         <rect x="1" y="1" width="1200" height="426" rx="16" fill="white" fill-opacity="0.48"/>
                                         <g clip-path="url(#clip0_343_6103)">
