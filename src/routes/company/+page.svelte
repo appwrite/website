@@ -499,7 +499,6 @@
                                         [image]
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
-                                        <span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
                                         </h3>
