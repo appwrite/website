@@ -100,7 +100,7 @@
             </div>
             <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
-                    <ul class="u-flex u-gap-80">
+                    <ul class="u-flex web-u-gap-80">
                         <li class="u-flex-vertical u-cross-center u-gap-16">
                             <img src="/images/icons/gradients/backend.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
