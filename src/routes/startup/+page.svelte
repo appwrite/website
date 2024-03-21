@@ -58,9 +58,7 @@
                     </div>
                 </section>
             </div>
-        </div>
-        <div class="web-big-padding-section-level-1 u-position-relative">
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
                     <ul class="u-flex u-gap-80">
                         <li class="u-flex-vertical u-cross-center u-gap-16">
