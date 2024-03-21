@@ -4,6 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import {socials} from "$lib/constants";
 
     const title = 'Company' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -15,6 +16,38 @@
         content.innerHTML += content?.innerHTML;
         node.dataset.animated = 'true';
     };
+
+
+    let email = '';
+    let firstName = '';
+    let subject = '';
+    let company = '';
+    let companyURL = '';
+    let companyCrunchBaseURL ='';
+    let error: string | undefined;
+    let submitted = false;
+
+    async function handleSubmit() {
+        error = undefined;
+        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                firstName,
+                subject,
+                message
+            })
+        });
+        if (response.status >= 400) {
+            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+            return;
+        }
+
+        submitted = true;
+    }
 </script>
 
 <svelte:head>
@@ -577,27 +610,170 @@
             <div
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
-                <img
-                    src="/images/bgs/pre-footer.png"
-                    alt=""
-                    class="web-pre-footer-bg"
-                    style="z-index:-1"
+                <enhanced:img
+                        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
+                        src="./bg-left.png"
+                        alt=""
+                />
+                <enhanced:img
+                        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+                        src="./bg-right.png"
+                        alt=""
                 />
                 <div class="web-container">
-                    <div class="web-hero web-u-max-width-380">
-                        <h3 class="web-display web-u-color-text-primary">Join the team</h3>
-                        <p class="web-u-color-text-primary web-u-opacity-64">
-                            Find your next career at Appwrite and join a team of remote workers.
-                        </p>
-                        <a
-                            href="https://appwrite.careers"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="web-button is-transparent u-cross-child-center u-margin-block-start-16"
-                        >
-                            <span>Careers</span>
-                        </a>
+
+
+                    <div class="web-big-padding-section-level-2">
+                        <div class="web-container">
+                            <div class="web-grid-1-1-opt-2 u-gap-32">
+                                <div>
+                                    <div
+                                            class="web-u-max-inline-size-none-mobile"
+                                            class:web-u-max-width-380={!submitted}
+                                    >
+                                        {#if submitted}
+                                            <section class="u-flex-vertical web-u-gap-20">
+                                                <h1 class="web-display web-u-color-text-primary">
+                                                    Thank you for your message
+                                                </h1>
+                                                <p class="web-description web-u-padding-block-end-32">
+                                                    Your message has been sent successfully. We appreciate
+                                                    your feedback, our team will try to get back to you as
+                                                    soon as possible.
+                                                </p>
+                                                <a
+                                                        href="/"
+                                                        class="web-button is-secondary web-u-margin-block-end-32"
+                                                >
+                                                    <span>Back to homepage</span>
+                                                </a>
+                                            </section>
+                                        {:else}
+                                            <section class="u-flex-vertical web-u-gap-20">
+                                                <h4 class="web-title web-u-color-text-primary">
+                                                    Join the Appwrite Startups program
+                                                </h4>
+                                                <p class="web-description web-u-padding-block-end-40">
+                                                    We support VC backed tech startups that have been established within the last decade with:
+                                                </p>
+                                            </section>
+                                        {/if}
+                                        <div
+                                                class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                        />
+                                    </div>
+                                </div>
+                                {#if !submitted}
+                                    <form
+                                            method="post"
+                                            on:submit|preventDefault={handleSubmit}
+                                            class="u-flex-vertical u-gap-16"
+                                    >
+                                        <div class="u-flex u-main-end">
+                                            <ul
+                                                    class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                            >
+                                                <li class="web-form-item u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Name</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="text"
+                                                            placeholder="Name"
+                                                            aria-label="Name"
+                                                            bind:value={firstName}
+                                                    />
+                                                </li>
+                                                <li class="web-form-item u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Email address</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="email"
+                                                            placeholder="Your email address"
+                                                            aria-label="Email address"
+                                                            bind:value={email}
+                                                    />
+                                                </li>
+                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Subject</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="text"
+                                                            name="subject"
+                                                            placeholder="Ex: Appwrite Startups program"
+                                                            aria-label="Subject"
+                                                            bind:value={subject}
+                                                    />
+                                                </li>
+                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Company name</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="text"
+                                                            name="company"
+                                                            placeholder="Your company name"
+                                                            aria-label="Company name"
+                                                            bind:value={company}
+                                                    />
+                                                </li>
+                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Company URL</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="text"
+                                                            name="company-url"
+                                                            placeholder="Your company website"
+                                                            aria-label="Company URL"
+                                                            bind:value={companyURL}
+                                                    />
+                                                </li>
+                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                    <div class="u-block">Crunchbase URLL</div>
+                                                    <input
+                                                            required
+                                                            class="web-input-text"
+                                                            type="text"
+                                                            name="company-url"
+                                                            placeholder="Your Crunchbase URL"
+                                                            aria-label="Crunchbase URL"
+                                                            bind:value={companyCrunchBaseURL}
+                                                    />
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div
+                                                class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                        >
+                                            <p class="web-caption-400 web-u-max-width-380">
+                                                {#if error}
+                                                    {error}
+                                                {/if}
+                                            </p>
+                                            <!-- <p class="web-caption-400 web-u-max-width-380">
+                                                This form is protected by reCAPTCHA, and the Google <a
+                                                    class="web-link"
+                                                    href="/privacy"
+                                                    target="_blank" rel="noopener noreferrer">Privacy Policy</a
+                                                >
+                                                and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+                                            </p> -->
+                                            <button
+                                                    type="submit"
+                                                    class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                            >
+                                                <span>Get Started</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                {/if}
+                            </div>
+                        </div>
                     </div>
+
                     <FooterNav />
                     <MainFooter />
                 </div>
