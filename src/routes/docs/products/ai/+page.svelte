@@ -12,7 +12,6 @@
         ComputerVision = 'Computer Vision',
         NaturalLanguage = 'Natural Language',
         AudioProcessing = 'Audio Processing',
-        VideoProcessing = 'Video Processing'
     }
 
     type Tutorial = {
@@ -97,6 +96,36 @@
                 dark: '/images/icons/illustrated/dark/auth.png',
                 light: '/images/icons/illustrated/light/auth.png'
             }
+        },
+        {
+          title: 'Speech To Text',
+          description: 'Speech Recognition',
+          href: '/docs/products/ai/tutorials/speech-recognition',
+          field: Field.AudioProcessing,
+          covers: {
+              dark: '/images/icons/illustrated/dark/auth.png',
+              light: '/images/icons/illustrated/light/auth.png'
+          }
+        },
+        {
+          title: 'Text To Speech',
+          description: 'Convert text to speech',
+          href: '/docs/products/ai/tutorials/text-to-speech',
+          field: Field.AudioProcessing,
+          covers: {
+              dark: '/images/icons/illustrated/dark/auth.png',
+              light: '/images/icons/illustrated/light/auth.png'
+          }
+        },
+        {
+          title: 'Music Generation',
+          description: 'Generate music from text',
+          href: '/docs/products/ai/tutorials/music-generation',
+          field: Field.AudioProcessing,
+          covers: {
+              dark: '/images/icons/illustrated/dark/auth.png',
+              light: '/images/icons/illustrated/light/auth.png'
+          }
         }
     ];
 </script>

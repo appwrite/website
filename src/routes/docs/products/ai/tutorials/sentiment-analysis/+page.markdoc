@@ -1,0 +1,10 @@
+---
+layout: article
+title: Sentiment Analysis with Hugging Face
+description: Implement sentiment analysis into your app with Appwrite and hugging face.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/natural-language
+---
+
+Learn to to setup your first function utilizing sentiment analysis with Appwrite and Hugging Face.

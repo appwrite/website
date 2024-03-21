@@ -1,0 +1,10 @@
+---
+layout: article
+title: Music Generation with Hugging Face
+description: Implement Music Generation into your app with Appwrite and hugging face.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/audio-processing
+---
+
+Learn to to setup your first function utilizing music generation with Appwrite and Hugging Face.
