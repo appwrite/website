@@ -160,7 +160,7 @@
 								</li>
                                 <li>
                                     <svg
-                                            class="web-u-drop-shadow"
+                                            class="web-u-drop-shadow u-max-width-100-percent"
                                             xmlns="http://www.w3.org/2000/svg" width="1202" height="429" viewBox="0 0 1202 429" fill="none">
                                         <rect x="0.5" y="0.5" width="1201" height="427" rx="16.5" stroke="#19191C" stroke-opacity="0.04"/>
                                         <rect x="1" y="1" width="1200" height="426" rx="16" fill="#EDEDF0"/>
@@ -1690,5 +1690,7 @@
     .web-u-drop-shadow {
       filter: drop-shadow(5px 5px 10px #00000011);
     }
+
+    svg { max-inline-size:100%; }
 
 </style>
