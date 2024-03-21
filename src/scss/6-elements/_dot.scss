@@ -2,7 +2,8 @@
 
 
 .#{$p}-dot {
-  border-radius: 16px;
+  --p-dot-size: 1rem;
+  border-radius: var(--p-dot-size);
   border: 0.5px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(
       138deg,
@@ -11,8 +12,8 @@
   );
   backdrop-filter: blur(100px);
 
-  width: 16px;
-  height: 16px;
+  width: var(--p-dot-size);
+  height: var(--p-dot-size);
 
   
   &::after {

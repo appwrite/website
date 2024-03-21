@@ -22,6 +22,7 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
+    import { loggedIn } from '$lib/utils/console';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -102,7 +103,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
+            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',
@@ -178,7 +179,6 @@
         class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-
         <div class="web-top-banner">
             <div class="web-top-banner-content web-u-color-text-primary">
                 <a href="/discord" target="_blank" rel="noopener noreferrer">

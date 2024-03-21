@@ -1,5 +1,7 @@
 @use "abstract" as *;
 
+.#{$p}-u-text-wrap-balance { text-wrap:balance; }
+
 .#{$p}-u-hide-mobile  { @media #{$break1}{ display:none!important; } }
 .#{$p}-u-opacity-40-mobile { @media #{$break1}{ opacity:0.4; } }
 .#{$p}-u-opacity-64                 { opacity:0.64!important; }
@@ -30,6 +32,7 @@
 .#{$p}-u-padding-block-start-64     { padding-block-start:pxToRem(64)!important; }
 .#{$p}-u-padding-block-start-80     { padding-block-start:pxToRem(80)!important; }
 .#{$p}-u-padding-block-end-0        { padding-block-end:0; }
+.#{$p}-u-padding-block-end-8        { padding-block-end:pxToRem(8); }
 .#{$p}-u-padding-block-end-40       { padding-block-end:pxToRem(40); }
 .#{$p}-u-padding-block-end-56       { padding-block-end:pxToRem(56); }
 .#{$p}-u-padding-block-end-d-160-m-80 {
@@ -98,6 +101,7 @@
 .#{$p}-u-max-inline-width-584-mobile{ @media #{$break1}, #{$break2} { max-inline-size:pxToRem(584);} }
 .#{$p}-u-margin-inline-20           { margin-inline:pxToRem(20); }
 .#{$p}-u-margin-inline-auto-mobile  { @media #{$break1}, #{$break2} { margin-inline:auto; } }
+.#{$p}-u-margin-inline-end-4        { margin-inline-end:pxToRem(4); }
 
 .#{$p}-u-margin-block-32-mobile     { @media #{$break1} { margin-block:pxToRem(32);} }
 .#{$p}-u-margin-block-40-not-mobile { @media #{$break2open} { margin-block:pxToRem(40);} }
@@ -151,6 +155,7 @@
 .#{$p}-u-flex-direction-column-mobile { @media #{$break1} { flex-direction:column; } }
 .#{$p}-u-flex-basis-200             { flex-basis:pxToRem(200); }
 .#{$p}-u-flex-basis-300             { flex-basis:pxToRem(300); }
+.#{$p}-u-flex-basis-378             { flex-basis:pxToRem(378); }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
@@ -158,6 +163,7 @@
 .#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
 .#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
 .#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
+.#{$p}-u-gap-64        { gap:pxToRem(64)!important;  }
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }
 .#{$p}-u-gap-96        { gap:pxToRem(96);  }
 .#{$p}-u-row-gap-24   { row-gap: pxToRem(24)!important; }

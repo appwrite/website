@@ -25,6 +25,9 @@ devDependencies:
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
+  '@internationalized/date':
+    specifier: 3.5.0
+    version: 3.5.0
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.3)(svelte@4.2.12)
@@ -64,6 +67,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^7.1.0
     version: 7.1.0(eslint@8.57.0)(typescript@5.3.3)
+  appwrite:
+    specifier: ^13.0.1
+    version: 13.0.2
   dequal:
     specifier: ^2.0.3
     version: 2.0.3
@@ -667,8 +673,8 @@ packages:
     dev: true
     optional: true
 
-  /@internationalized/date@3.5.2:
-    resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
+  /@internationalized/date@3.5.0:
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
     dependencies:
       '@swc/helpers': 0.5.6
     dev: true
@@ -1132,7 +1138,7 @@ packages:
     dependencies:
       '@floating-ui/core': 1.6.0
       '@floating-ui/dom': 1.6.3
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.6
@@ -2088,6 +2094,15 @@ packages:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
+    dev: true
+
+  /appwrite@13.0.2:
+    resolution: {integrity: sha512-ISkUXO8pojDWGx5XqknCwwikgAQye4Ni4FL+Ns8Hg42rXeyehLlmvHGjFOmpS+odT6nsWYUaXzVjV4SZuDorog==}
+    dependencies:
+      cross-fetch: 3.1.5
+      isomorphic-form-data: 2.0.0
+    transitivePeerDependencies:
+      - encoding
     dev: true
 
   /aproba@2.0.0:

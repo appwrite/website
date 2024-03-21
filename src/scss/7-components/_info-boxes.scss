@@ -25,6 +25,12 @@
     margin-block-start:pxToRem(16); color:hsl(var(--web-color-primary));
   }
   &-content { margin-block-start:pxToRem(4); color:hsl(var(--web-color-secondary)); }
+
+  &:where(.is-desktop-max-out-3) {
+    @media #{$break2open} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
   @media (max-width: 450px) {
     grid-template-columns: repeat(auto-fill, minmax(pxToRem(146), 1fr));
   }
