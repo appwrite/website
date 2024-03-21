@@ -101,21 +101,21 @@
             <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
                     <ul class="u-flex web-u-gap-80">
-                        <li class="u-flex-vertical u-cross-center u-gap-16">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
                             <img src="/images/icons/gradients/backend.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">Get access to Appwrite’s Pro plan and build your entire backend with Appwrite. </p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
                             <img src="/images/icons/gradients/cloud-credit.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">Get $20,000 cloud credits to build with Appwrite Pro for 12 months and reduce risk at an early stage.</p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16">
+                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch">
                             <img src="/images/icons/gradients/support.svg" width="40" height="40" alt="">
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Dedicated support</h2>
