@@ -38,7 +38,9 @@
                 email,
                 firstName,
                 subject,
-                message
+                company,
+                companyURL,
+                companyCrunchBaseURL
             })
         });
         if (response.status >= 400) {
@@ -447,9 +449,9 @@
                                     </svg>
                                 </li>
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="web-grid-1-1 web-u-flip-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-                                        <div>[image]</div>
+                                        <div>[image]111</div>
 										<div class="u-flex-vertical u-gap-16">
 											<h3 class="web-title web-u-color-text-primary">
                                                 Scalable architecture
@@ -488,15 +490,15 @@
                                             </div>
                                         </div>
                                         <div>
-                                            [img]
+                                            [image]222
                                         </div>
                                     </div>
                                 </li>
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="web-grid-1-1 web-u-flip-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
                                         <div>
-                                            [image]
+                                            [image]333
                                         </div>
 										<div class="u-flex-vertical u-gap-16">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
@@ -785,6 +787,14 @@
 
 <style lang="scss">
   @use '$scss/abstract/mixins/border-gradient' as gradients;
+
+    .web-u-flip-mobile {
+      @media (max-width:1279px) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
