@@ -159,7 +159,7 @@
 									</div>
 								</li>
                                 <li>
-                                    <svg class="u-max-width-100-percent"
+                                    <svg class="u-max-width-100-percent web-u-drop-shadow"
                                             xmlns="http://www.w3.org/2000/svg" width="1202" height="429" viewBox="0 0 1202 429" fill="none">
                                         <rect x="0.5" y="0.5" width="1201" height="427" rx="16.5" stroke="#19191C" stroke-opacity="0.04"/>
                                         <rect x="1" y="1" width="1200" height="426" rx="16" fill="white" fill-opacity="0.48"/>
@@ -855,5 +855,9 @@
         padding-inline: 0;
         animation: scroll 40s linear infinite;
       }
+    }
+
+    .web-u-drop-shadow {
+      filter: drop-shadow(5px 5px 10px #00000033);
     }
 </style>
