@@ -44,12 +44,6 @@
             cover: '/images/tutorials/vue.png',
             title: 'Audio Processing',
             description: 'Analyze and generate audio'
-        },
-        {
-            href: '/docs/products/ai/video-proessing',
-            cover: '/images/tutorials/vue.png',
-            title: 'Video Processing',
-            description: 'Analyze and generate video'
         }
     ];
 
