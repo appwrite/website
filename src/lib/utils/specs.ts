@@ -373,7 +373,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 
                 return {
                     ...carry,
-                    [property.name]: generateExample(schema, api)
+                    [property.name]: [generateExample(schema, api)]
                 };
             }
 
