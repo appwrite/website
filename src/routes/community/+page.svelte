@@ -570,7 +570,7 @@
                                         />
                                     </div>
                                     <div class="web-title u-margin-block-start-auto">
-                                        38K+ stargazers
+                                        {GITHUB_STARS}+ stargazers
                                     </div>
                                 </a>
                             </li>
