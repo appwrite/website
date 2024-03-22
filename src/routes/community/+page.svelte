@@ -3,7 +3,7 @@
         {
             href: 'https://discord.com/events/564160730845151244/1218597329024843837',
             cover: {
-                src: '/images/community/events/21march-office-hours.png',
+                src: '/images/community/events/28march-office-hours.png',
                 alt: ''
             },
             date: 'March 28th, 2024',
