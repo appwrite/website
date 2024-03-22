@@ -3,7 +3,7 @@ layout: post
 title: How Appwrite Databases can replace your PlanetScale database
 description: Compare PlanetScale Databases to Appwrite Databases so you can understand whether Appwrite is a viable alternative to PlanetScale's free-tier.
 date: 2024-03-10
-cover: /images/blog/appwrite-planetscale.png
+cover: /images/blog/planetscale-databases-alternative/cover.png
 timeToRead: 7
 author: aditya-oberai
 category: product
