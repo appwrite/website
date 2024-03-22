@@ -6,7 +6,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import {socials} from "$lib/constants";
 
-    const title = 'Company' + TITLE_SUFFIX;
+    const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
