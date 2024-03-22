@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Firebase: An open source alternative for Firebase"
 description: Get a comprehensive comparison between Appwrite and Firebase to decide what platform to use for your project's backend. And learn how Appwrite's open source nature allows you total control of your project's data.
 date: 2024-02-03
-cover: /images/blog/appwrite-firebase.png
+cover: /images/blog/open-source-firebase-alternative/cover.png
 timeToRead: 7
 author: aditya-oberai
 category: product
@@ -13,7 +13,7 @@ If you are looking to build a mobile app, website, tool, or any other applicatio
 
 Appwrite and Firebase are both solid options to choose as the Backend-as-a-Service (BaaS) for your app. However, their feature sets can vary substantially. In this article, we will give you a rundown of Appwrite and Firebase to understand how each provider will fit your specific needs.
 
-# Appwrite - Open Source backend platform
+# Appwrite - Open-source backend platform
 
 In 2019, [Appwrite](https://appwrite.io/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
 
