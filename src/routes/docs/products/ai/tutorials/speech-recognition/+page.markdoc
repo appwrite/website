@@ -1,0 +1,10 @@
+---
+layout: article
+title: Speech Recognition with Hugging Face
+description: Implement Speech Recognition into your app with Appwrite and hugging face.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/audio-processing
+---
+
+Learn to to setup your first function utilizing speech recognition with Appwrite and Hugging Face.

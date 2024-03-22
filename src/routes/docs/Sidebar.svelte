@@ -65,6 +65,12 @@
 					icon: 'icon-folder',
 					isParent: true
 				},
+				{
+				  label: 'AI',
+                  href: '/docs/products/ai',
+                  icon: 'icon-globe',
+                  isParent: true
+				}
 			]
 		},
 		{

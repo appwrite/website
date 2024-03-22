@@ -1,0 +1,10 @@
+---
+layout: article
+title: Language Translation with Hugging Face
+description: Implement language translation into your app with Appwrite and hugging face.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/natural-language
+---
+
+Learn to to setup your first function utilizing language translation with Appwrite and Hugging Face.
