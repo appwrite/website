@@ -360,8 +360,6 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
         if (property.type === 'array') {
             // If it's an array type containing primatives
             if (property.items?.type){
-                console.log(property.items?.type)
-                console.log(property)
                 return {
                     ...carry,
                     [property.name]: property['x-example']
@@ -406,7 +404,6 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 }
             }
         }
-        console.log(property)
 
         return {
             ...carry,
