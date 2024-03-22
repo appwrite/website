@@ -114,7 +114,7 @@
     ];
 
     const metrics = [
-        { metric: '39K+', description: 'GitHub Stars' },
+        { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
         { metric: '18K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
@@ -570,7 +570,7 @@
                                         />
                                     </div>
                                     <div class="web-title u-margin-block-start-auto">
-                                        38K+ stargazers
+                                        {GITHUB_STARS}+ stargazers
                                     </div>
                                 </a>
                             </li>
