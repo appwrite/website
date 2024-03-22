@@ -1,0 +1,10 @@
+---
+layout: article
+title: Image Segmentation with Hugging Face
+description: Build image segmentation powered apps with Appwrite and learn how to use Hugging Face's image segmentation models.
+difficulty: beginner
+readtime: 3
+back: /docs/products/ai/computer-vision
+---
+
+Learn to to setup your first function utilizing image segmentation with Appwrite and Hugging Face.
