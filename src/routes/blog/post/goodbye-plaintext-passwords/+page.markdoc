@@ -3,7 +3,7 @@ layout: post
 title: "Rethinking password security: say goodbye to plaintext passwords"
 description: Understanding what passwordless authentication is and how it is a game-changer for both user experience and security.
 date: 2024-03-22
-cover: /images/blog/goodbye-plaintext-passwords.png
+cover: /images/blog/goodbye-plaintext-passwords/cover.png
 timeToRead: 6
 author: aditya-oberai
 category: authentication

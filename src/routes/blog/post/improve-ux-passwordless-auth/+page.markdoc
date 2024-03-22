@@ -3,7 +3,7 @@ layout: post
 title: Improving user experience with passwordless authentication
 description: Understanding what passwordless authentication is and how it is a game-changer for both user experience and security.
 date: 2024-03-18
-cover: /images/blog/improve-ux-passwordless-auth.png
+cover: /images/blog/improve-ux-passwordless-auth/cover.png
 timeToRead: 6
 author: aditya-oberai
 category: authentication

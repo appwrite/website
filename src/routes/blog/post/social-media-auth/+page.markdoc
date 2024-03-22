@@ -3,7 +3,7 @@ layout: post
 title: "Social media authentication: convenience vs privacy"
 description: Let's discuss the pros and cons of social media authentication and the delicate balance of convenience and privacy surrounding it.
 date: 2024-03-18
-cover: /images/blog/social-media-auth.png
+cover: /images/blog/social-media-auth/cover.png
 timeToRead: 5
 author: aditya-oberai
 category: authentication
