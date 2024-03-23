@@ -13,4 +13,310 @@ Integrating Perplexity into your Appwrite project is simple. This tutorial will 
 - An Appwrite Project
 - Perplexity API Key (Documentation on how to sign-up is [here](https://docs.perplexity.ai/docs/getting-started))
 
-## Setting up our function
+{% section #step-1 step=1 title="Create new function" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+{% only_light %}
+![Create function screen](/images/docs/functions/template.png)
+{% /only_light %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+2. Click **Create function**.
+3. Under **Connect Git repository**, select your provider.
+4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+5. In the **Variables** step, tick the box to **Generate API key on completion**.
+6. Follow the step-by-step wizard and create the function.
+{% /section %}
+
+{% section #step-2 step=2 title="Add OpenAI SDK" %}
+Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+
+Once you have the repository open, you can install the OpenAI SDK by running the following command in your terminal:
+
+```bash
+npm install openai
+```
+
+The reason we are installing the OpenAI SDK for Perplexity is because Perplexity's API is OpenAI Compatible.
+{% /section %}
+
+{% section #step-3 step=3 title="Create utility functions" %}
+For our example, our function will be able to take both `GET` and `POST` requests.
+
+For the `GET` request we will return a static HTML page we'll write later that will use AlpineJS to make a `POST` request to our function and the `POST` request will return the Perplexity response.
+
+To begin with we will write the code to return the static HTML page, to do this we'll create a new `src/utils.js` file with the following code:
+
+```js
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const staticFolder = path.join(__dirname, '../static');
+
+/**
+ * Returns the contents of a file in the static folder
+ * @param {string} fileName
+ * @returns {string} Contents of static/{fileName}
+ */
+export function getStaticFile(fileName) {
+  return fs.readFileSync(path.join(staticFolder, fileName)).toString();
+}
+```
+
+By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in other parts of our function if we extend on top of this.
+
+While we're at it, we're also going to create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+
+```js
+/**
+ * Throws an error if any of the keys are missing from the object
+ * @param {*} obj
+ * @param {string[]} keys
+ * @throws {Error}
+ */
+export function throwIfMissing(obj, keys) {
+  const missing = [];
+  for (let key of keys) {
+    if (!(key in obj) || !obj[key]) {
+      missing.push(key);
+    }
+  }
+  if (missing.length > 0) {
+    throw new Error(`Missing required fields: ${missing.join(', ')}`);
+  }
+}
+```
+
+{% /section %}
+
+{% section #step-4 step=4 title="Create HTML File" %}
+Next, we'll create the static HTML file that we'll return. First we're going to create some HTML Boilerplate in `static/index.html`:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perplexity Demo</title>
+  </head>
+  <body></body>
+</html>
+```
+
+To keep this tutorial simple, we're going to use [AlpineJS](https://alpinejs.dev/) as our JS Framework of choice.
+To do this we're going to a new script tag to our html file's head tag:
+
+```html
+<script src="//unpkg.com/alpinejs" defer></script>
+```
+
+Finally to provide some styling we're going to add use [Pink Design](https://pink.appwrite.io), our CSS Framework. Feel free to use any CSS Framework you like though.
+
+Add the following link tags to your HTML file's head tag:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+```
+
+This completes the boilerplate for our HTML file, we'll continue to add the rest of the HTML and AlpineJS code in the next steps.
+{% /section %}
+
+{% section #step-5 step=5 title="Serving HTML" %}
+Now that we have our HTML file, we need to serve it from our function. To do this we'll add the following code to our `main.js` file:
+
+```js
+import { getStaticFile, throwIfMissing } from './utils.js';
+
+export default async ({ req, res, error }) => {
+  throwIfMissing(process.env, ['PERPLEXITY_API_KEY']);
+
+  if (req.method === 'GET') {
+    return res.send(getStaticFile('index.html'), 200, {
+      'Content-Type': 'text/html; charset=utf-8',
+    });
+  }
+};
+```
+
+Notice we also added a check to ensure that the `PERPLEXITY_API_KEY` environment variable is set. This is the API key we'll use to authenticate with the Perplexity API.
+{% /section %}
+
+{% section #step-6 step=6 title="Use the Perplexity API" %}
+Now that we have our HTML file being served, we can begin to add the code that will talk to the perplexity API.
+
+First, we're going to import the OpenAI SDK at the top of our `main.js` file:
+
+```js
+import { OpenAI } from 'openai';
+```
+
+Next after we serve the HTML we're going to add code to validate the body of the request and initialise the OpenAI SDK with the Perplexity API key:
+```js
+const model = process.env['PERPLEXITY_MODEL'] || 'mistral-7b-instruct';
+
+try {
+  throwIfMissing(req.body, ['prompt']);
+} catch (err) {
+  return res.json({ ok: false, error: err.message }, 400);
+}
+
+const openai = new OpenAI({
+  apiKey: process.env.PERPLEXITY_API_KEY,
+  baseURL: 'https://api.perplexity.ai',
+});
+```
+This code also allows us to modify what model we use by setting the `PERPLEXITY_MODEL` environment variable.
+
+Finally, we're going to add the code to make the request to the Perplexity API and return the response:
+
+```js
+try {
+  const response = await openai.chat.completions.create({
+    model: model,
+    max_tokens: parseInt(process.env.PERPLEXITY_MAX_TOKENS ?? '512'),
+    messages: [{ role: 'user', content: req.body.prompt }],
+    stream: false,
+  });
+  const completion = response.choices[0].message?.content;
+  return res.json({ ok: true, completion }, 200);
+} catch (err) {
+  error(err);
+  return res.json({ ok: false, error: 'Failed to query model.' }, 500);
+}
+```
+
+This code will send our prompt to the perplexity chat completions API and return the response to the user,
+additionally it'll also catch any errors we could encounter and reports them for easy debugging.
+{% /section %}
+
+{% section #step-7 step=7 title="Making our page interactive" %}
+Now we have a working API that can talk to the Perplexity API, we can begin to add the code to make our page interactive.
+
+First we're going to add a new script tag to our head tag that will handle our HTTP Request:
+
+```html
+<script>
+  async function onSubmit(prompt) {
+    const response = await fetch('/', {
+      method: 'POST',
+      body: JSON.stringify({ prompt }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const json = await response.json();
+
+    if (!json.ok || json.error) {
+      alert(json.error);
+    }
+
+    return json.completion;
+  }
+</script>
+```
+This will send a POST request to our function with the prompt as the body and return the completion.
+
+First we're going to add a header to our page using Pink Design, add the following inside your `<body>` tags:
+
+```html
+<main class="main-content">
+  <div class="top-cover u-padding-block-end-56">
+    <div class="container">
+      <div
+        class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
+      >
+        <h1 class="heading-level-1">Perplexity Demo</h1>
+        <code class="u-un-break-text"></code>
+      </div>
+      <p
+        class="body-text-1 u-normal u-margin-block-start-8"
+        style="max-width: 50rem"
+      >
+        Use this page to test your implementation with Perplexity. Enter
+        text and receive the model output as a response.
+      </p>
+    </div>
+  </div>
+</main>
+```
+
+After this we're going to add the actual form that will allow us to make requests to our API, within the `<main>` tag and after the existing `<div>` add the following:
+
+```html
+<div class="container u-margin-block-start-negative-56"
+  x-data="{ prompt: '', answer: '', loading: false }">
+  <div class="card u-flex u-gap-24 u-flex-vertical">
+    <div class="u-flex u-cross-center u-gap-8">
+      <div
+        class="input-text-wrapper is-with-end-button u-width-full-line"
+      >
+        <input x-model="prompt" type="search" placeholder="Question" />
+        <div class="icon-search" aria-hidden="true"></div>
+      </div>
+
+      <button
+        class="button"
+        x-bind:disabled="loading"
+        x-on:click="async () => { loading = true; answer = ''; try { answer = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
+      >
+        <span class="text">Submit</span>
+      </button>
+    </div>
+    <template x-if="answer">
+      <div class="u-flex u-flex-vertical u-gap-12">
+        <div class="u-flex u-flex-vertical u-gap-12 card">
+          <div class="u-flex u-gap-12">
+            <h5 class="eyebrow-heading-2">Perplexity:</h5>
+          </div>
+
+          <div style="overflow-x: hidden; line-break: anywhere">
+            <p class="u-color-text-gray" x-text="answer"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+```
+
+This code might seem quite complex if you've never used AlpineJS so we'll break it down a bit:
+
+1. `x-data="{ prompt: '', answer: '', loading: false }"` defines our state for the application.
+2. `x-model="prompt"` is a two-way binding that will bind the value of the input to the `prompt` variable which will update our state for us.
+3. `x-bind:disabled="loading"` will disable the button if the `loading` state variable is true.
+4. The `x-on:click` binds an event listener that will call the `onSubmit` function we defined earlier within `<script>` when the button is clicked. This function will set the `loading` state to true, clear the `answer` variable, and then call the `onSubmit` function. If the function fails, it will log the error to the console and set the `loading` state back to false.
+5. `x-if="answer"` will only render the completion if the `answer` variable is not empty.
+6. Finally, `x-text="answer"` will bind the text of the completion to the `answer` variable.
+
+Putting all this together gives us a nice form that will allow us to send prompts to our API and display the completion.
+{% /section %}
+
+{% section #step-8 step=8 title="Deploy the function" %}
+With the function complete, we can now deploy it to Appwrite.
+{% partial file="deploy-function.md" /%}
+{% /section %}
+
+{% section #step-9 step=9 title="Test our function" %}
+Now that our function is deployed, we can test it by visiting the function URL in our browser.
+This should show the UI we created earlier and to test it we can write a prompt and click the submit button, after a brief moment you should see the completion appear below the input.
+
+![Testing the function](/images/docs/ai/integrations/perplexity/demo.png)
+{% /section %}
+
+{% section #step-10 step=10 title="Conclusion" %}
+In this tutorial, we've created a simple web page that allows us to interact with the Perplexity API using Appwrite Functions. We've learned how to create a function that interacts with an external API, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
+
+To build on it further, you could add more features such as the ability to select the model, more styling or to make it more of a chatbot interface by utilising Appwrite's Databases to store the conversation history.
+
+We look forward to seeing what you build with Appwrite and Perplexity!
+{% /section %}
