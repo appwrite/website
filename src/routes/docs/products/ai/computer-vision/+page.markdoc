@@ -1,0 +1,46 @@
+---
+layout: article
+title: Computer Vision
+description: Learn about the basics of computer vision, the most popular tasks and applications of computer vision and how we can leverage Appwrite to build computer vision enabled applications.
+---
+
+Computer Vision is a field of Artificial Intelligence where we work towards giving machines a comprehensive understanding of visual data from a variety of sources, a few examples are: Images, Videos, Point Clouds and X-Rays and MRI's from medical devices with the goal of being able to further parse and process this information for downstream tasks
+
+# Tutorials
+
+{% cards %}
+{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" icon="icon-mail" %}
+Understand and label the contents of images
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" icon="icon-annotation" %}
+Detect and label objects in images
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" icon="icon-device-mobile" %}
+Identify the boundaries of objects within images
+{% /cards_item %}
+{% /cards %}
+
+# Convolutions and Kernels
+Imagine you have a photograph and you want to detect all the edges in this photograph, the first thing we would do is convert the image into numbers which represent how bright each pixel is, sometimes this is referred to as the Y value of an image or the luminance.
+
+Do note that even though we are focusing on edges in this example, kernels exist that can detect a wide range of features from diagonals to spirals and circles.
+
+Next, let's introduce the concept of a “kernel”, these can also be referred to as “filters”; these are small grids (that can be a square or a rectangle) with numbers in it. These numbers are not random but are instead specifically picked to detect a certain feature. For example, a filter we could use to detect edges is the sobel edge detector.
+
+![Sobel Edge Detector Kernel](/images/docs/ai/kernel.png)
+
+Now you have both the image as luminance values and this kernel you will perform the following steps:
+
+1. You will overlay the kernel over start of the image
+2. Next you will times each luminance pixel with the part of the grid it corresponds to in the kernel and then add up the sum of all these numbers
+3. Afterwards you will slide this kernel one pixel to the side performing the same operation as the previous step. Each time you perform this operation you are creating a new pixel to create a new image
+4. Once you’ve slid the kernel across the entire image and you have all these new values, you can create a new image from these values. This new image is called the “feature map” and if you use this edge kernel it will highlight all the edges in the image.
+
+There are different kernels to compute loads of different features and they aren’t always a square, sometimes they are rectangular and they can be as big or small as you want, but keep in mind that bigger kernels result in more computation.
+
+{% video src="/images/docs/ai/convolution.mp4" autoplay=true /%}
+
+Convolutions aren’t only used for things like edge detection but are extremely common in the image processing world, for tools you’ve probably used loads without even thinking about it, such as blurring images, sharpening and embossing.
+
+# Applications of Computer Vision
+Now you have a good understanding of  the fundemental tools of computer vision, you can dive into our other guides where we provide an even deeper dive into the different types of computer vision and how to implement them in your Appwrite application.
