@@ -1,0 +1,23 @@
+---
+layout: article
+title: Artifical inteligence
+description: "Learn how to implement machine learning models in your applications."
+back: /docs
+---
+
+Appwrite allows you to build powerful AI powered applications with ease, Leverage Appwrite's
+powerful functions architecture and start building the future.
+
+# Explore capabilities {% #explore-capabilities %}
+
+Detailed explanations and deep dives into how you can implement different machine techniques in your Appwrite projects.
+{% cards %}
+{% cards_image_item href="/docs/products/ai/computer-vision" title="Computer Vision" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
+Label and understand the contents of images
+{% /cards_image_item %}
+{% cards_image_item href="/docs/products/ai/computer-vision" title="Computer Vision" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
+Label and understand the contents of images
+{% /cards_image_item %}
+{% /cards %}
+
+More things...
