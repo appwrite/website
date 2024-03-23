@@ -9,13 +9,13 @@ Computer Vision is a field of Artificial Intelligence where we work towards givi
 # Tutorials
 
 {% cards %}
-{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" icon="icon-mail" %}
+{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
 Understand and label the contents of images
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" icon="icon-annotation" %}
+{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
 Detect and label objects in images
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" icon="icon-device-mobile" %}
+{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" %}
 Identify the boundaries of objects within images
 {% /cards_item %}
 {% /cards %}
