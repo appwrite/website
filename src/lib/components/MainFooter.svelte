@@ -24,7 +24,14 @@
                 </li>
             {/each}
         </ul>
-        <div>Copyright © {year} Appwrite</div>
+        <div class="u-flex u-gap-16">
+            <ul class="u-flex u-gap-8">
+                <li><a class="web-link" href="https://appwrite.io/terms">Teams</a></li>
+                <li><a class="web-link" href="https://appwrite.io/privacy">Privacy</a></li>
+                <li><a class="web-link" href="https://appwrite.io/cookies">Cookies</a></li>
+            </ul>
+            <div>Copyright © {year} Appwrite</div>
+        </div>
     </footer>
 {:else if variant === 'docs'}
     <footer

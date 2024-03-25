@@ -52,6 +52,10 @@
                     rel: 'noopener noreferrer'
                 }
             ],
+            Program: [
+                { label: 'Heroes', href: '/heroes' },
+                { label: 'Startups', href: '/startups' },
+            ],
             About: [
                 { label: 'Company', href: '/company' },
                 { label: 'Pricing', href: '/pricing' },
@@ -61,7 +65,6 @@
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
-                { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Store',
                     href: 'https://appwrite.store',
@@ -71,11 +74,11 @@
                 { label: 'Contact us', href: '/contact-us' },
                 { label: 'Assets', href: '/assets' },
             ],
-            Policies: [
-                { label: 'Terms', href: '/terms' },
-                { label: 'Privacy', href: '/privacy' },
-                { label: 'Cookies', href: '/cookies' }
-            ]
+            // Policies: [
+            //     { label: 'Terms', href: '/terms' },
+            //     { label: 'Privacy', href: '/privacy' },
+            //     { label: 'Cookies', href: '/cookies' }
+            // ]
         };
 </script>
 

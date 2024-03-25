@@ -151,6 +151,7 @@
 .#{$p}-u-flex-direction-column-mobile { @media #{$break1} { flex-direction:column; } }
 .#{$p}-u-flex-basis-200             { flex-basis:pxToRem(200); }
 .#{$p}-u-flex-basis-300             { flex-basis:pxToRem(300); }
+.#{$p}-u-flex-basis-380             { flex-basis:pxToRem(380); }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
