@@ -66,6 +66,12 @@
                     icon: 'icon-angular',
                     image: '/images/blog/placeholder.png',
                     href: 'angular'
+                },
+                {
+                    title: 'Solid',
+                    icon: 'aw-icon-solid',
+                    image: '/images/blog/placeholder.png',
+                    href: 'solid'
                 }
             ]
         },
@@ -148,7 +154,7 @@
                     icon: 'icon-swift',
                     image: '/images/blog/placeholder.png',
                     href: 'swift'
-                },
+                }
             ]
         }
     ];
