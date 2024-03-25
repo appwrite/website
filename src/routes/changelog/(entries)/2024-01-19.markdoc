@@ -1,0 +1,17 @@
+---
+layout: changelog
+title: New Ruby SDK release
+date: 2024-01-19
+cover:
+---
+
+We’ve just released a new Ruby SDK with fixes for the databases service.
+
+What's changed? 
+
+- Fix null parameters being passed to the API
+- Fix `require` in documentation
+
+View the [changes](https://github.com/appwrite/sdk-for-ruby/compare/10.1.0...10.1.1) on GitHub.
+
+
