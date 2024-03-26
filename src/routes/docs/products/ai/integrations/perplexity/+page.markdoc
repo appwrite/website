@@ -257,10 +257,14 @@ try {
     stream: false,
   });
   const completion = response.choices[0].message?.content;
-  return res.json({ ok: true, completion }, 200);
+  return res.json({
+    ok: true, completion
+  }, 200);
 } catch (err) {
   error(err);
-  return res.json({ ok: false, error: 'Failed to query model.' }, 500);
+  return res.json({
+    ok: false, error: 'Failed to query model.'
+  }, 500);
 }
 ```
 
