@@ -294,12 +294,7 @@ After this we're going to add the actual form that will allow us to make request
 
 This code might seem quite complex if you've never used AlpineJS so we'll break it down a bit:
 
-1. `x-data="{ prompt: '', answer: '', loading: false }"` defines our state for the application.
-2. `x-model="prompt"` is a two-way binding that will bind the value of the input to the `prompt` variable which will update our state for us.
-3. `x-bind:disabled="loading"` will disable the button if the `loading` state variable is true.
-4. The `x-on:click` binds an event listener that will call the `onSubmit` function we defined earlier within `<script>` when the button is clicked. This function will set the `loading` state to true, clear the `answer` variable, and then call the `onSubmit` function. If the function fails, it will log the error to the console and set the `loading` state back to false.
-5. `x-if="answer"` will only render the completion if the `answer` variable is not empty.
-6. Finally, `x-text="answer"` will bind the text of the completion to the `answer` variable.
+This form submits your question to the Appwrite Function through a POST request. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page.
 
 Putting all this together gives us a nice form that will allow us to send prompts to our API and display the completion.
 {% /section %}
