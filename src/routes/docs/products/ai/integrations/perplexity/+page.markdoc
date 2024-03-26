@@ -311,7 +311,7 @@ Write a prompt and click the submit button, after a brief moment you should see 
 ![Testing the function](/images/docs/ai/integrations/perplexity/demo.png)
 {% /section %}
 
-{% section #step-10 step=10 title="Conclusion" %}
+{% section #step-10 step=10 title="Next steps" %}
 In this tutorial, we've created a simple web page that allows us to interact with the Perplexity API using Appwrite Functions. We've learned how to create a function that interacts with an external API, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
 
 To build on it further, you could add more features such as the ability to select the model, more styling or to make it more of a chatbot interface by utilising Appwrite's Databases to store the conversation history.
