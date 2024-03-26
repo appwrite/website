@@ -67,8 +67,8 @@
                 href: '/docs/products/ai/integrations/pinecone'
               },
               {
-                label: 'Llama Index',
-                href: '/docs/products/ai/integrations/llama-index'
+                label: 'ElevenLabs',
+                href: '/docs/products/ai/integrations/elevenlabs'
               },
               {
                 label: 'Langchain',
