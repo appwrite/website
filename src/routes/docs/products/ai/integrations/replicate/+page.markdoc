@@ -11,7 +11,7 @@ Integrating Replicate into your Appwrite project is simple. This tutorial will g
 
 # Prerequisites {% #prerequisites %}
 - An Appwrite Project
-- [A Replicate API Key](https://replicate.com/docs/reference/http#authentication)
+- A [Replicate API Key](https://replicate.com/docs/reference/http#authentication)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -226,8 +226,8 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
 All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
 {% /section %}
 
-{% section #step-6 step=6 title="Use the Replicate API" %}
-Now that we have our HTML file being served, we can begin to add the code that will talk to the replicate API.
+{% section #step-6 step=6 title="Handle POST Request" %}
+Now that we're serving a basic HTML page, we can add methods necessary to integrate with Replicate's API.
 
 First, we're going to import the Replicate SDK at the top of our `main.js` file:
 
@@ -326,7 +326,7 @@ This should show the UI we created earlier and to test it we can write a prompt 
 ![Testing the function](/images/docs/ai/integrations/replicate/demo.png)
 {% /section %}
 
-{% section #step-8 step=8 title="Conclusion" %}
+{% section #step-8 step=8 title="Next Steps" %}
 In this tutorial, we've created a simple web page that allows us to interact with the Replicate API using Appwrite Functions. We've learned how to create a function that interacts with an external API, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
 
 To build on it further, you could add more features such as the ability to select the model, more styling or to make it more of a chatbot interface by utilising Appwrite's Databases to store the conversation history.
