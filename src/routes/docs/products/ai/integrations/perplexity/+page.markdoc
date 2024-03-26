@@ -11,7 +11,7 @@ Integrating Perplexity into your Appwrite project is simple. This tutorial will 
 
 ## Prerequisites
 - An Appwrite Project
-- Perplexity API Key (Documentation on how to sign-up is [here](https://docs.perplexity.ai/docs/getting-started))
+- A [Perplexity API Key](https://docs.perplexity.ai/docs/getting-started)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -40,15 +40,16 @@ Once you have the repository open, you can install the OpenAI SDK by running the
 npm install openai
 ```
 
-The reason we are installing the OpenAI SDK for Perplexity is because Perplexity's API is OpenAI Compatible.
+Perplexity's API is OpenAI compatible, so we can use the OpenAI SDK to interact with Perplexity.
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility functions" %}
 For our example, our function will be able to take both `GET` and `POST` requests.
 
-For the `GET` request we will return a static HTML page we'll write later that will use AlpineJS to make a `POST` request to our function and the `POST` request will return the Perplexity response.
+The function will return a web page on `GET` requests and return a response from Perplexity on `POST` requests.
 
-To begin with we will write the code to return the static HTML page, to do this we'll create a new `src/utils.js` file with the following code:
+To begin with we will write the code to return the static HTML page.
+Create a new `src/utils.js` file with the following code:
 
 ```js
 import path from 'path';
@@ -60,26 +61,26 @@ const __dirname = path.dirname(__filename);
 const staticFolder = path.join(__dirname, '../static');
 
 /**
- * Returns the contents of a file in the static folder
- * @param {string} fileName
- * @returns {string} Contents of static/{fileName}
- */
+* Returns the contents of a file in the static folder
+* @param {string} fileName
+* @returns {string} Contents of static/{fileName}
+*/
 export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
 
-By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in other parts of our function if we extend on top of this.
+By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in the future.
 
-While we're at it, we're also going to create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+Then, create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
 
 ```js
 /**
- * Throws an error if any of the keys are missing from the object
- * @param {*} obj
- * @param {string[]} keys
- * @throws {Error}
- */
+* Throws an error if any of the keys are missing from the object
+* @param {*} obj
+* @param {string[]} keys
+* @throws {Error}
+*/
 export function throwIfMissing(obj, keys) {
   const missing = [];
   for (let key of keys) {
@@ -96,7 +97,8 @@ export function throwIfMissing(obj, keys) {
 {% /section %}
 
 {% section #step-4 step=4 title="Create HTML File" %}
-Next, we'll create the static HTML file that we'll return. First we're going to create some HTML Boilerplate in `static/index.html`:
+Next, we'll create the static HTML file that we'll return. 
+First, create some HTML boilerplate in `static/index.html`:
 
 ```html
 <!doctype html>
@@ -111,14 +113,15 @@ Next, we'll create the static HTML file that we'll return. First we're going to 
 </html>
 ```
 
-To keep this tutorial simple, we're going to use [AlpineJS](https://alpinejs.dev/) as our JS Framework of choice.
+To keep this tutorial simple, we're going to use [AlpineJS](https://alpinejs.dev/), a lightweight framework as our JS Framework of choice.
 To do this we're going to a new script tag to our html file's head tag:
 
 ```html
 <script src="//unpkg.com/alpinejs" defer></script>
 ```
 
-Finally to provide some styling we're going to add use [Pink Design](https://pink.appwrite.io), our CSS Framework. Feel free to use any CSS Framework you like though.
+Finally to provide some styling we're going to add use [Pink Design](https://pink.appwrite.io), Appwrite's CSS Framework. 
+Feel free to use any styling libraries you prefer.
 
 Add the following link tags to your HTML file's head tag:
 
@@ -130,7 +133,7 @@ Add the following link tags to your HTML file's head tag:
 This completes the boilerplate for our HTML file, we'll continue to add the rest of the HTML and AlpineJS code in the next steps.
 {% /section %}
 
-{% section #step-5 step=5 title="Serving HTML" %}
+{% section #step-5 step=5 title="Serve HTML" %}
 Now that we have our HTML file, we need to serve it from our function. To do this we'll add the following code to our `main.js` file:
 
 ```js
@@ -151,7 +154,7 @@ Notice we also added a check to ensure that the `PERPLEXITY_API_KEY` environment
 {% /section %}
 
 {% section #step-6 step=6 title="Use the Perplexity API" %}
-Now that we have our HTML file being served, we can begin to add the code that will talk to the perplexity API.
+Now that we're serving a basic HTML page, we can add methods necessary to integrate with Perplexity's API.
 
 First, we're going to import the OpenAI SDK at the top of our `main.js` file:
 
@@ -159,7 +162,7 @@ First, we're going to import the OpenAI SDK at the top of our `main.js` file:
 import { OpenAI } from 'openai';
 ```
 
-Next after we serve the HTML we're going to add code to validate the body of the request and initialise the OpenAI SDK with the Perplexity API key:
+Next, add code to validate the body of the request and initialise the OpenAI SDK with the Perplexity API key:
 ```js
 const model = process.env['PERPLEXITY_MODEL'] || 'mistral-7b-instruct';
 
@@ -308,7 +311,7 @@ With the function complete, we can now deploy it to Appwrite.
 
 {% section #step-9 step=9 title="Test our function" %}
 Now that our function is deployed, we can test it by visiting the function URL in our browser.
-This should show the UI we created earlier and to test it we can write a prompt and click the submit button, after a brief moment you should see the completion appear below the input.
+Write a prompt and click the submit button, after a brief moment you should see the completion appear below the input.
 
 ![Testing the function](/images/docs/ai/integrations/perplexity/demo.png)
 {% /section %}
