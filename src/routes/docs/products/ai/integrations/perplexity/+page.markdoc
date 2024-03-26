@@ -233,7 +233,10 @@ const model = process.env['PERPLEXITY_MODEL'] || 'mistral-7b-instruct';
 try {
   throwIfMissing(req.body, ['prompt']);
 } catch (err) {
-  return res.json({ ok: false, error: err.message }, 400);
+  return res.json({
+    ok: false,
+    error: err.message
+  }, 400);
 }
 
 const openai = new OpenAI({
