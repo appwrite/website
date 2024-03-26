@@ -292,7 +292,6 @@ After this we're going to add the actual form that will allow us to make request
 </div>
 ```
 
-This code might seem quite complex if you've never used AlpineJS so we'll break it down a bit:
 
 This form submits your question to the Appwrite Function through a POST request. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page.
 
