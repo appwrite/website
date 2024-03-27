@@ -12,10 +12,10 @@ powerful functions architecture and start building the future.
 
 Detailed explanations and deep dives into how you can implement different machine techniques in your Appwrite projects.
 {% cards %}
-{% cards_image_item href="/docs/products/ai/computer-vision" title="Computer Vision" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
+{% cards_image_item href="/docs/products/ai/computer-vision" title="Computer vision" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
 Label and understand the contents of images
 {% /cards_image_item %}
-{% cards_image_item href="/docs/products/ai/natural-language" title="Natural Language" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
+{% cards_image_item href="/docs/products/ai/natural-language" title="Natural language" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
 Understand and generate human language
 {% /cards_image_item %}
 {% cards_image_item href="/docs/products/ai/audio-processing" title="Audio processing" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
