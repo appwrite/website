@@ -116,7 +116,7 @@ Here's a complete list of all configurable options in `appwrite.json`:
 | `ignore` | array of strings | Files from your source code that should be ignored when creating a deployment. |
 | `execute` | array of strings | Grants execute permissions to users. [Learn more about role strings](/docs/apis/rest#permissions). |
 | `events` | array of strings | Events that trigger the function to execute. [Learn more about events](/docs/advanced/platform/events). |
-| `schedule` | string | Execute schedule for the function. [Learn more about scheduled executions](/docs/products/functions/execution#schedule). |
+| `schedule` | string | Execute schedule for the function. [Learn more about scheduled executions](/docs/products/functions/execute#schedule). |
 | `timeout` | int | Execution timeout of the function in seconds, with a maximum configurable limit of 900 seconds. |
 | `variables` | JSON object | Variables provided to the function on execution stored as a key-value JSON object. |
 

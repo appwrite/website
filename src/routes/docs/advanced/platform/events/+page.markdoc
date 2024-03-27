@@ -10,18 +10,27 @@ You can subscribe to these events with Appwrite [Functions](/docs/products/funct
 
 You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID.
 You can also filter for events of specific actions like create, update, or delete.
+
+
 You can find a list of events for Storage, Databases, Functions, and Authentication services below.
 
-
+{% accordion %}
+{% accordion_item title="Authentication" %}
 {% partial file="auth-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Databases" %}
 {% partial file="databases-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Storage" %}
 {% partial file="storage-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Functions" %}
 {% partial file="functions-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Messaging" %}
 {% partial file="messaging-events.md" /%}
+{% /accordion_item %}
+{% /accordion %}
 
 # Known limitations {% #known-limitations %}
 

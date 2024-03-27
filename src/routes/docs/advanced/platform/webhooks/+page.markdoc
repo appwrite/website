@@ -43,14 +43,22 @@ Appwrite has events that fire when a resource changes.
 These events cover all Appwrite resources and can reflect create, update, and delete actions.
 You can specify one or many events to subscribe to with webhooks.
 
+{% accordion %}
+{% accordion_item title="Authentication events" %}
 {% partial file="auth-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Databases events" %}
 {% partial file="databases-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Storage events" %}
 {% partial file="storage-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Functions events" %}
 {% partial file="functions-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Messaging events" %}
 {% partial file="messaging-events.md" /%}
+{% /accordion_item %}
+{% /accordion %}
 
 [Learn more about events](/docs/advanced/platform/api-keys)
