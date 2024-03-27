@@ -1,24 +1,24 @@
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg aw-u-z-index-1-negative" />
-    <div class="aw-container">
-        <h2 class="aw-display aw-u-color-text-primary">Need support?</h2>
+    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg web-u-z-index-1-negative" />
+    <div class="web-container">
+        <h2 class="web-display web-u-color-text-primary">Need support?</h2>
         <div class="cards">
             <div class="cardy">
-                <h3 class="aw-label aw-u-color-text-primary">Join our Discord</h3>
-                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
+                <h3 class="web-label web-u-color-text-primary">Join our Discord</h3>
+                <p class="web-main-body-400 u-margin-block-start-16 web-u-color-text-primary">
                     Get community support by joining our Discord server.
                 </p>
-                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
-                    <span class="aw-icon-discord" />
+                <a class="web-button u-margin-block-start-24" href="https://appwrite.io/discord">
+                    <span class="web-icon-discord" />
                     <span class="text">Join Discord</span>
                 </a>
             </div>
             <div class="cardy">
-                <h3 class="aw-label aw-u-color-text-primary">Get premium support</h3>
-                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
+                <h3 class="web-label web-u-color-text-primary">Get premium support</h3>
+                <p class="web-main-body-400 u-margin-block-start-16 web-u-color-text-primary">
                     Join Appwrite Pro and get email support from our team.
                 </p>
-                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/pricing">
+                <a class="web-button u-margin-block-start-24" href="https://appwrite.io/pricing">
                     <span class="text">Learn more</span>
                 </a>
             </div>
@@ -27,6 +27,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         padding-block: 7.5rem;
         overflow: hidden;
@@ -46,7 +48,7 @@
     }
 
     .cardy {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.16) 0%,
@@ -59,7 +61,7 @@
         padding: 1.5rem;
     }
 
-    .aw-pre-footer-bg {
+    .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
         left: clamp(300px, 50vw, 50%);

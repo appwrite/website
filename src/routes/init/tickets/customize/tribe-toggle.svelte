@@ -22,7 +22,7 @@
 
 <Tooltip disableHoverableContent>
     <button
-        class="aw-icon-button aw-box-icon has-border-gradient"
+        class="web-icon-button web-box-icon has-border-gradient"
         use:melt={$root}
         on:m-click|preventDefault={onClick}
         disabled={!browser}
@@ -41,7 +41,7 @@
         place-items: center;
 
         &:not(:hover):not(:active) {
-            background: hsl(var(--aw-color-card));
+            background: hsl(var(--web-color-card));
         }
     }
 

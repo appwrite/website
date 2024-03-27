@@ -63,7 +63,7 @@
 {/if}
 
 {#if $open && !disabled}
-    <div use:melt={$content} class="aw-tooltip aw-sub-body-400" transition:fly={flyParams}>
+    <div use:melt={$content} class="web-tooltip web-sub-body-400" transition:fly={flyParams}>
         <div use:melt={$arrow} />
         <slot name="tooltip" />
     </div>

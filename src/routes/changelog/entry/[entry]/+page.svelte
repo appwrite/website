@@ -36,38 +36,38 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container wrapper" style="--container-size:42.5rem">
-                    <article class="aw-main-article">
-                        <header class="aw-main-article-header">
-                            <a class="aw-link aw-u-color-text-secondary u-cross-baseline" href="/changelog">
-                                <span class="aw-icon-chevron-left" aria-hidden="true" />
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container wrapper" style="--container-size:42.5rem">
+                    <article class="web-main-article">
+                        <header class="web-main-article-header">
+                            <a class="web-link web-u-color-text-secondary u-cross-baseline" href="/changelog">
+                                <span class="web-icon-chevron-left" aria-hidden="true" />
                                 <span>Back to Changelog</span>
                             </a>
-                            <ul class="aw-metadata aw-caption-400">
+                            <ul class="web-metadata web-caption-400">
                                 <li>
                                     <time datetime={data.date}>{formatDate(data.date)}</time>
                                 </li>
                             </ul>
-                            <h1 class="aw-title aw-u-color-text-primary">{data.title}</h1>
+                            <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
                         </header>
                         {#if data.cover}
-                            <div class="aw-media-container">
+                            <div class="web-media-container">
                                 <img class="u-block" src={data.cover} alt="" />
                             </div>
                         {/if}
 
-                        <div class="aw-article-content u-margin-block-start-32">
+                        <div class="web-article-content u-margin-block-start-32">
                             <svelte:component this={data.component} />
                         </div>
                     </article>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-                <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container">
+            <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+                <div class="web-big-padding-section-level-2">
+                    <div class="web-container">
                         <PreFooter />
                         <FooterNav />
                         <MainFooter />

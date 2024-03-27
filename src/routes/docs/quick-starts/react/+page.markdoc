@@ -44,7 +44,7 @@ npm create vite@latest my-app -- --template react && cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@13.0.2
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -85,7 +85,7 @@ const App = () => {
   const [name, setName] = useState('');
 
   async function login(email, password) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailSession(email, password);
     setLoggedInUser(await account.get());
   }
 

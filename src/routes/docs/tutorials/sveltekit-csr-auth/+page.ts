@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
-export function load() {
-    throw redirect(303, '/docs/tutorials/sveltekit-csr-auth/step-1');
-}
+export const load: PageLoad = async () => {
+    redirect(303, '/docs/tutorials/sveltekit-csr-auth/step-1');
+};

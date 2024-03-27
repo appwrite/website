@@ -14,6 +14,9 @@
     import { fade } from 'svelte/transition';
     import Day1 from './(days)/Day1.svelte';
     import Day2 from './(days)/Day2.svelte';
+    import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
+    import Day5 from './(days)/Day5.svelte';
     import ConsoleImage from './(assets)/console.png';
     import SwagsImage from './(assets)/swag.png';
     import Ticket0 from './(assets)/mock/ticket-0.png';
@@ -57,16 +60,19 @@
             animation: Animations.SSR
         },
         {
-            title: 'XXX',
-            release: addDays(base, 2)
+            title: 'Enum and 2FA',
+            release: addDays(base, 2),
+            animation: Animations.Enum
         },
         {
-            title: 'XXX',
-            release: addDays(base, 3)
+            title: 'Operators',
+            release: addDays(base, 3),
+            animation: Animations.Operators
         },
         {
-            title: 'XXX',
-            release: addDays(base, 4)
+            title: 'New runtimes',
+            release: addDays(base, 4),
+            animation: Animations.Integrations
         }
     ] as DayType[];
 
@@ -147,18 +153,18 @@
             <span class="sr-only">Init</span>
             <Animations.Logo />
         </h1>
-        <p class="aw-description">The start of something new.</p>
+        <p class="web-description">The start of something new.</p>
         <div class="buttons">
-            <a href="/init/tickets" class="aw-button">Claim your ticket</a>
-            <button on:click={() => scrollIntoView('#kickoff')} class="aw-button is-secondary">
-                <div class="aw-icon-play" />
+            <a href="/init/tickets" class="web-button">Claim your ticket</a>
+            <button on:click={() => scrollIntoView('#kickoff')} class="web-button is-secondary">
+                <div class="web-icon-play" />
                 <span class="text">Watch the video</span>
             </button>
         </div>
 
         <img class="shines" src={ShinesSvg} alt="" />
     </div>
-    <div class="aw-container">
+    <div class="web-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i}>
@@ -172,15 +178,15 @@
         <div class="days">
             <Day release={kickoff}>
                 <div
-                    class="aw-card is-normal has-border-gradient kickoff"
+                    class="web-card is-normal has-border-gradient kickoff"
                     transition:fade={{ delay: 0, duration: 600 }}
                 >
                     <h3
-                        class="aw-title aw-u-color-text-primary"
+                        class="web-title web-u-color-text-primary"
                         id="kickoff"
                         style:scroll-margin-top="5rem"
                     >
-                        Init kickoff<span class="aw-u-color-text-accent">_</span>
+                        Init kickoff<span class="web-u-color-text-accent">_</span>
                     </h3>
                     <Video
                         --p-aspect-ratio="16/9"
@@ -195,11 +201,17 @@
                     <Day1 {date} release={day.release} />
                 {:else if i === 1}
                     <Day2 {date} release={day.release} />
+                {:else if i === 2}
+                    <Day3 {date} release={day.release} />
+                {:else if i === 3}
+                    <Day4 {date} release={day.release} />
+                {:else if i === 4}
+                    <Day5 {date} release={day.release} />
                 {:else}
-                    <h2 class="aw-eyebrow aw-u-color-text-primary">
-                        <div class="aw-dot" />
+                    <h2 class="web-eyebrow web-u-color-text-primary">
+                        <div class="web-dot" />
                         {date}
-                        <span class="aw-u-color-text-accent">_</span>
+                        <span class="web-u-color-text-accent">_</span>
                     </h2>
                     <CountdownCard date={day.release} />
                 {/if}
@@ -208,10 +220,10 @@
     </div>
 
     <div class="events">
-        <div class="aw-container">
+        <div class="web-container">
             <Carousel size="big">
                 <svelte:fragment slot="header">
-                    <h2 class="aw-label aw-u-color-text-primary">Upcoming Events</h2>
+                    <h2 class="web-label web-u-color-text-primary">Upcoming Events</h2>
                 </svelte:fragment>
                 {#each events as event}
                     <li>
@@ -232,53 +244,65 @@
     </div>
 
     <div class="tickets-preview">
-        <div class="aw-container">
+        <div class="web-container">
             <div>
-                <h2 class="aw-label aw-u-color-text-primary">
+                <h2 class="web-label web-u-color-text-primary">
                     Get a ticket and enter our special Init giveaway
                 </h2>
-                <p class="aw-sub-body-500">
+                <p class="web-sub-body-500">
                     Create, customize, and share your Init ticket to enter our general giveaway.
                 </p>
-                <a href="/init/tickets" class="aw-button is-secondary">Claim your ticket</a>
+                <a href="/init/tickets" class="web-button is-secondary">Claim your ticket</a>
             </div>
 
-            <div class="aw-card is-normal has-border-gradient">
+            <div class="web-card is-normal has-border-gradient">
                 <img class="swag" src={SwagsImage} alt="" />
             </div>
         </div>
 
-        <div class="tickets">
+        <div class="tickets web-u-hide-mobile">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 10 } as _}
-                <img src={getRandomTicket()} style:width="14rem" style:object-fit="cover" style:object-position="top" alt="Appwrite Init Ticket" />
+                <img
+                    src={getRandomTicket()}
+                    style:width="14rem"
+                    style:object-fit="cover"
+                    style:object-position="top"
+                    alt="Appwrite Init Ticket"
+                />
             {/each}
         </div>
         <div class="tickets">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 9 } as _}
-                <img src={getRandomTicket()} style:width="14rem" style:object-fit="cover" style:object-position="top" alt="Appwrite Init Ticket" />
+                <img
+                    src={getRandomTicket()}
+                    style:width="14rem"
+                    style:object-fit="cover"
+                    style:object-position="top"
+                    alt="Appwrite Init Ticket"
+                />
             {/each}
         </div>
     </div>
 
     <div class="pre-footer">
-        <div class="aw-container">
+        <div class="web-container">
             <div class="text">
-                <h2 class="aw-label aw-u-color-text-primary">Start building with Appwrite</h2>
-                <p class="aw-main-body-500">
+                <h2 class="web-label web-u-color-text-primary">Start building with Appwrite</h2>
+                <p class="web-main-body-500">
                     Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
                     your product and build any application at any scale, own your data, and use your
                     preferred coding languages and tools.
                 </p>
-                <a href="https://cloud.appwrite.io" class="aw-button">Get started</a>
+                <a href="https://cloud.appwrite.io" class="web-button">Get started</a>
             </div>
 
             <img class="console" src={ConsoleImage} alt="" />
         </div>
     </div>
 
-    <div class="aw-container">
+    <div class="web-container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -331,7 +355,7 @@
                 flex-direction: column;
                 align-items: center;
 
-                .aw-button {
+                .web-button {
                     width: 300px;
                 }
             }
@@ -349,7 +373,7 @@
     }
 
     hr {
-        border-block-start: 1px solid hsl(var(--aw-color-offset));
+        border-block-start: 1px solid hsl(var(--web-color-offset));
     }
 
     .day-cards {
@@ -381,9 +405,9 @@
 
             background: linear-gradient(
                 to bottom,
-                hsl(var(--aw-color-accent)) 0%,
-                hsl(var(--aw-color-subtle)) 10%,
-                hsl(var(--aw-color-subtle)) 90%,
+                hsl(var(--web-color-accent)) 0%,
+                hsl(var(--web-color-subtle)) 10%,
+                hsl(var(--web-color-subtle)) 90%,
                 transparent 100%
             );
         }
@@ -396,7 +420,7 @@
                 margin-block-start: 5rem;
             }
 
-            :global(.aw-dot) {
+            :global(.web-dot) {
                 position: absolute;
                 left: -40px;
                 top: 50%;
@@ -438,12 +462,12 @@
     }
 
     .events {
-        margin-block-start: 10rem;
+        margin-block-start: 5rem;
         padding-block: 5rem;
 
-        border-block: 1px solid hsl(var(--aw-color-offset));
+        border-block: 1px solid hsl(var(--web-color-offset));
 
-        .aw-container {
+        .web-container {
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -456,12 +480,12 @@
 
     .tickets-preview {
         background: linear-gradient(to bottom, hsl(0, 0%, 0%, 0.32), transparent);
-        border-block-end: 1px solid hsl(var(--aw-color-offset));
+        border-block-end: 1px solid hsl(var(--web-color-offset));
         padding-block-start: 5rem;
         padding-block-end: 0rem;
         overflow: hidden;
 
-        .aw-container {
+        .web-container {
             display: flex;
             justify-content: space-between;
 
@@ -470,7 +494,7 @@
                 text-wrap: balance;
             }
 
-            .aw-card {
+            .web-card {
                 width: 480px;
                 height: 200px;
                 padding: 8px;
@@ -492,12 +516,12 @@
                     align-items: center;
                     text-align: center;
 
-                    .aw-button {
+                    .web-button {
                         width: 100%;
                     }
                 }
 
-                .aw-card {
+                .web-card {
                     width: 100%;
                     height: 200px;
                 }
@@ -539,7 +563,7 @@
         padding-block-end: 0;
         overflow: hidden;
 
-        .aw-container {
+        .web-container {
             position: relative;
             height: 43.75rem;
 
@@ -597,11 +621,11 @@
         }
     }
 
-    .pre-footer :global(+ .aw-container) {
+    .pre-footer :global(+ .web-container) {
         padding-block-start: 0;
     }
 
-    .pre-footer :global(+ .aw-container nav) {
+    .pre-footer :global(+ .web-container nav) {
         margin-block-start: 0;
     }
 </style>
