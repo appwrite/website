@@ -61,6 +61,19 @@
             ]
         },
         {
+          label: 'Audio Processing',
+          items: [
+              {
+                  label: 'Speech recognition',
+                  href: '/docs/products/ai/tutorials/speech-recognition'
+              },
+              {
+                  label: 'Text to Speech',
+                  href: '/docs/products/ai/tutorials/text-to-speech'
+              }
+          ]
+        },
+        {
             label: 'Integrations',
             items: [
                 {
@@ -80,8 +93,8 @@
                     href: '/docs/products/ai/integrations/pinecone'
                 },
                 {
-                    label: 'Llama Index',
-                    href: '/docs/products/ai/integrations/llama-index'
+                    label: 'ElevenLabs',
+                    href: '/docs/products/ai/integrations/elevenlabs'
                 },
                 {
                     label: 'Langchain',
