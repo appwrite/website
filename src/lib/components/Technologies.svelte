@@ -61,11 +61,11 @@
     }>;
 </script>
 
-<ul class="u-flex u-flex-wrap u-gap-16 aw-u-margin-block-32-mobile aw-u-margin-block-40-not-mobile">
+<ul class="u-flex u-flex-wrap u-gap-16 web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile">
     {#each platforms as platform}
         <Tooltip>
             <li>
-                <a href={platform.href} class="aw-icon-button aw-box-icon has-border-gradient">
+                <a href={platform.href} class="web-icon-button web-box-icon has-border-gradient">
                     <img src={platform.image} alt="{platform.name} quick start" width="32" height="32" />
                 </a>
             </li>

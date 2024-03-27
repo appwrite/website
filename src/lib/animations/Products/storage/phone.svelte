@@ -28,7 +28,7 @@
 	</div>
 
 	<button class="add-btn">
-		<span class="aw-icon-plus" />
+		<span class="web-icon-plus" />
 	</button>
 
 	<div class="overlay" id="overlay-{$elId}">
@@ -85,14 +85,14 @@
 
 			[class*='icon-'] {
 				font-size: 1.25rem;
-				color: hsl(var(--aw-color-greyscale-500));
+				color: hsl(var(--web-color-greyscale-500));
 			}
 		}
 
 		.date {
 			margin-block-start: 3rem;
 
-			color: hsl(var(--aw-color-greyscale-600));
+			color: hsl(var(--web-color-greyscale-600));
 			font-family: Inter;
 			font-size: 0.75rem;
 			font-style: normal;
@@ -113,8 +113,8 @@
 				gap: 0.75rem;
 
 				border-radius: 0.5rem;
-				border: 1px solid hsl(var(--aw-color-greyscale-50));
-				background: hsl(var(--aw-color-white));
+				border: 1px solid hsl(var(--web-color-greyscale-50));
+				background: hsl(var(--web-color-white));
 				color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
 
 				padding-block: 0.55rem;

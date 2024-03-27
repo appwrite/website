@@ -7,7 +7,7 @@
     position:relative; inline-size:pxToRem(16); margin-block:pxToRem(12); flex-shrink:0;
     &::before {
       content:""; display:block; inline-size:pxToRem(2); block-size:100%; margin-inline:auto;
-      background-color:hsl(var(--aw-color-greyscale-700));
+      background-color:hsl(var(--web-color-greyscale-700));
     }
     &-button {
       position:absolute; inset-block-start:var(--p-location); margin-block-start:pxToRem(-8);
@@ -15,7 +15,7 @@
     }
   }
   &-list { display:flex; flex-direction:column; gap:pxToRem(20); }
-  .is-selected { color:hsl(var(--aw-color-primary)); }
+  .is-selected { color:hsl(var(--web-color-primary)); }
   @media #{$break1} {}
   @media #{$break2open} {
     position:sticky; inset-block-start: pxToRem(110);

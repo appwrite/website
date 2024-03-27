@@ -4,6 +4,10 @@ title: Firebase Cloud Messaging
 description: Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
 back: /docs/
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 Firebase Cloud Messaging (FCM) lets you send push notifications to your iOS, Android, and web apps through Appwrite Messaging.
 Before you can deliver messages, you must connect to a messaging provider.
@@ -85,7 +89,7 @@ Push notification requires special handling on the client side. Follow the [Send
 {% /section %}
 
 
-{% section #manage-provider step=4 title="Manage provider" %}
+{% section #manage-provider step=5 title="Manage provider" %}
 {% tabs %}
 {% tabsitem #console title="Console" %}
 You can update or delete a provider in the Appwrite Console.
@@ -113,18 +117,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateFCMProvider(
+const provider = await messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -140,18 +138,12 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = messaging.updateFCMProvider(
+const provider = await messaging.updateFCMProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
 ```
 ```php
 <?php
@@ -238,6 +230,8 @@ Provider result = await messaging.UpdateFCMProvider(
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart';
+import 'package:dart_appwrite/models.dart';
 
 void main() {                                    // Init SDK
   Client client = Client();
