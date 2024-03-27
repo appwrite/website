@@ -45,7 +45,7 @@
     }}
     aria-label="Side"
 >
-    <div class="web-side-nav-wrapper">
+    <div class="web-side-nav-wrapper" style="padding-left:0;">
         <button
             class="web-input-text web-is-not-desktop"
             on:click={() => ($layoutState.showSearch = true)}
@@ -53,7 +53,7 @@
             <span class="web-icon-search" />
             <span class="text">Search in docs</span>
         </button>
-        <div class="web-side-nav-scroll">
+        <div class="web-side-nav-scroll" style="padding-left:0;">
             {#if parent}
                 <section class="web-side-nav-wrapper-parent">
                     <a href={parent.href} aria-label="go back">

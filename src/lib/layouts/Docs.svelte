@@ -78,7 +78,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="u-position-relative">
+<div class="u-position-relative" style="overflow-x:hidden">
     <section class="web-mobile-header is-transparent">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
