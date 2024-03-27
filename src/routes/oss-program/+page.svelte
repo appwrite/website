@@ -5,6 +5,7 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import Dropzone from '$lib/components/Dropzone.svelte';
 
     let email = '';
     let firstName = '';
@@ -198,7 +199,7 @@
                                             />
                                         </li>
                                         <li class="web-form-item is-column-span-2">
-                                            <button class="web-input-text u-width-full-line" type="button">
+                                            <Dropzone>
                                                 <div class="u-flex-vertical u-gap-12 u-width-full-line">
                                                     <div class="web-u-opacity-64">OSS license</div>
                                                     <div class="u-flex-vertical u-cross-center u-gap-12">
@@ -208,7 +209,7 @@
                                                         <div class="web-u-opacity-64">Click to upload or drag and drop</div>
                                                     </div>
                                                 </div>
-                                            </button>
+                                              </Dropzone>
                                         </li>
                                         <li class="web-form-item is-column-span-2">
                                             <textarea
