@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Text to Speech with Hugging Face
-description: Implement Text to Speech into your app with Appwrite and hugging face.
+title: Text to speech with Hugging Face
+description: Implement text to speech into your app with Appwrite and Hugging Face.
 difficulty: beginner
 readtime: 3
 back: /docs/products/ai/audio-processing

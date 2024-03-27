@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Image Segmentation with Hugging Face
+title: Image segmentation with Hugging Face
 description: Build image segmentation powered apps with Appwrite and learn how to use Hugging Face's image segmentation models.
 difficulty: beginner
 readtime: 3

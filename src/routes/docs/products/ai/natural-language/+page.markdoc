@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Natural Language Processing
+title: Natural language processing
 description: Learn about the basics of natural language processing, the most popular tasks and applications of natural language processing and how we can leverage Appwrite to build natural language processing enabled applications.
 ---
 
-Natural Language Processing (NLP) is a fascinating intersection of computer science, artificial intelligence, and linguistics. It's about teaching computers to understand, interpret, and generate human language (Jones et al., 2018). Translating languages, answering questions, or helping find information, NLP is at the heart of many technologies we use every day.
+Natural language processing (NLP) is a fascinating intersection of computer science, artificial intelligence, and linguistics. It's about teaching computers to understand, interpret, and generate human language (Jones et al., 2018). Translating languages, answering questions, or helping find information, NLP is at the heart of many technologies we use every day.
 
 # Tutorials
 
@@ -21,19 +21,19 @@ Translate text from one language to another
 
 As NLP has progressed, so have its applications, becoming increasingly powerful. The most common uses of NLP include:
 
-# Text Classification
+# Text classification
 
 This involves sorting text into categories, such as sorting emails into "spam" or "not spam,". Another useful case is analyzing social media posts to gauge public sentiment towards a topic.
 
-# Machine Translation
+# Language translation
 
-Thanks to advances in NLP, machines can now translate text from one language to another with increasing accuracy, capturing nuances and idioms that were challenging. See this in action with the “Translate with Huggingface” function template.
+Thanks to advances in NLP, machines can now translate text from one language to another with increasing accuracy, capturing nuances and idioms that were challenging. See this in action with the “Translate with Hugging Face” function template.
 
 # Summarization
 
 Distilling long articles or reports into concise summaries, preserving key information and insights. This is particularly useful for understanding large volumes of text. Check out the “Summarise blog articles” function template.
 
-# Question Answering & Text Generation
+# Question answering & text generation
 
 Systems that can generate coherent and relevant text across various genres, from creative writing to technical articles. The “Prompt with ChatGPT” function template illustrates text generation with Appwrite functions.
 NLP is an evolving field, with ongoing research and development pushing the boundaries of what's possible. Appwrite offers a robust platform for building and deploying NLP-powered applications. It's easier than ever to incorporate sophisticated language processing capabilities into your projects.

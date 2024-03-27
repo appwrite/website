@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Image Classification with Hugging Face
+title: Image classification with Hunace
 description: Build image classification powered apps with Appwrite and learn how to use Hugging Face's image classification models.
 difficulty: beginner
 readtime: 3
@@ -166,7 +166,7 @@ At the top of the `src/index.js` file, add:
 import { HfInference } from '@huggingface/inference';
 ```
 
-Next we're going to use the hugging face SDK and classify the image, for this task we can use various models that you can find [on hugging face.](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending) For this example we'll be using the
+Next we're going to use the Hugging Face SDK and classify the image, for this task we can use various models that you can find [on Hugging Face.](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending) For this example we'll be using the
 `microsoft/resnet-50` model.
 
 ```js

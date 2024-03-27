@@ -21,59 +21,72 @@
             label: 'Concepts',
             items: [
                 {
-                    label: 'Computer Vision',
+                    label: 'Computer vision',
                     href: '/docs/products/ai/computer-vision'
                 },
                 {
-                    label: 'Natural Language Processing',
+                    label: 'Natural language processing',
                     href: '/docs/products/ai/natural-language'
                 },
                 {
-                    label: 'Audio Processing',
+                    label: 'Audio processing',
                     href: '/docs/products/ai/audio-processing'
                 }
             ]
         },
         {
-            label: 'Computer Vision',
+            label: 'Computer vision',
             items: [
                 {
-                    label: 'Image Classification',
+                    label: 'Image classification',
                     href: '/docs/products/ai/tutorials/image-classification'
                 },
                 {
-                    label: 'Object Detection',
+                    label: 'Object detection',
                     href: '/docs/products/ai/tutorials/object-detection'
+                }
+            ]
+        },
+        {
+            label: 'Natural language processing',
+            items: [
+                {
+                    label: 'Text generation',
+                    href: '/docs/products/ai/tutorials/text-generation'
+                },
+                {
+                    label: 'Language translation',
+                    href: '/docs/products/ai/tutorials/language-translation'
                 }
             ]
         },
         {
             label: 'Integrations',
             items: [
-              {
-                label: 'Perplexity',
-                href: '/docs/products/ai/integrations/perplexity'
-              },
-              {
-                label: 'Replicate',
-                href: '/docs/products/ai/integrations/replicate'
-              },
-              {
-                label: 'OpenAI',
-                href: '/docs/products/ai/integrations/openai'
-              },
-              {
-                label: 'Pinecone',
-                href: '/docs/products/ai/integrations/pinecone'
-              },
-              {
-                label: 'Llama Index',
-                href: '/docs/products/ai/integrations/llama-index'
-              },
-              {
-                label: 'Langchain',
-                href: '/docs/products/ai/integrations/langchain'
-              }
+                {
+                    label: 'Perplexity',
+                    href: '/docs/products/ai/integrations/perplexity'
+                },
+                {
+                    label: 'Replicate',
+                    href: '/docs/products/ai/integrations/replicate'
+                },
+                {
+                    label: 'OpenAI',
+                    href: '/docs/products/ai/integrations/openai'
+                },
+                {
+                    label: 'Pinecone',
+                    href: '/docs/products/ai/integrations/pinecone'
+                },
+                {
+                    label: 'Llama Index',
+                    href: '/docs/products/ai/integrations/llama-index'
+                },
+                {
+                    label: 'Langchain',
+                    href: '/docs/products/ai/integrations/langchain'
+                }
             ]
         }
     ];
