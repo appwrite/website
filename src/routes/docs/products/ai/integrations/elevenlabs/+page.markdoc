@@ -11,7 +11,7 @@ ElevenLabs is an text to speech tool that can generate natural sounding audio fr
 
 Integrating ElevenLabs into your Appwrite project is simple. This tutorial will guide you through the process of setting up the ElevenLabs API and integrating it into your Appwrite project.
 
-## Prerequisites
+# Prerequisites {% #prerequisites %}
 - An Appwrite Project
 - An ElevenLabs API Key
 
@@ -71,7 +71,7 @@ export function getStaticFile(fileName) {
 
 By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in other parts of our function if we extend on top of this.
 
-While we're at it, we're also going to create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+ Then, create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
 
 ```js
 /**
@@ -118,8 +118,8 @@ export default async ({ req, res, error }) => {
 Notice we also added a check to ensure that the `ELEVENLABS_API_KEY`, `APPWRITE_API_KEY` and `APPWRITE_BUCKET_ID` environment variables is set.
 {% /section %}
 
-{% section #step-5 step=5 title="Create static page" %}
-Now we need to create the static HTML page that our function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+{% section #step-5 step=5 title="Create web page" %}
+Now we need to create a HTML web page that our function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
@@ -252,7 +252,7 @@ try {
 }
 ```
 
-Finally, we're going to add the code to make the request to the ElevenLabs API and return the response:
+Finally, we're going to make a request to the ElevenLabs API and return the response:
 
 ```js
 let body = {
@@ -281,7 +281,7 @@ if (resp.status !== 200) {
 }
 ```
 
-This code will send our prompt to the the ElevenLabs API and return the audio into a blob,
+This code will send our prompt to the the ElevenLabs API and return the audio as a blob,
 additionally it'll also catch any errors we could encounter and reports them for easy debugging.
 {% /section %}
 
@@ -300,7 +300,7 @@ let file = await storage.createFile(
 );
 ```
 
-So we can instantly show it to the user, we're going to calculate the download URL and return it in the response:
+To show it to the user, we're going to parse the download URL from Appwrite and return it in the response:
 
 ```js
 const url = `${endpoint}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files/${file.$id}/view?project=${process.env.APPWRITE_FUNCTION_PROJECT_ID}`;
@@ -318,7 +318,7 @@ This should show the UI we created earlier and to test it we can write a prompt 
 ![Testing the function](/images/docs/ai/integrations/elevenlabs/demo.png)
 {% /section %}
 
-{% section #step-9 step=9 title="Next Steps" %}
+{% section #step-9 step=9 title="Next steps" %}
 In this tutorial, we've created a simple web page that allows us to interact with the ElevenLabs API using Appwrite Functions. We've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
 
 We look forward to seeing what you build with Appwrite and ElevenLabs!
