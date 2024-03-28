@@ -1,10 +1,455 @@
 ---
 layout: article
-title: Text to speech with Hugging Face
-description: Implement text to speech into your app with Appwrite and Hugging Face.
-difficulty: beginner
-readtime: 3
-back: /docs/products/ai/audio-processing
+title: Text to Speech with Hugging Face
+description: Learn how to integrate Hugging Face into your Appwrite project for text to speech processing.
+difficulty: intermediate
+readtime: 15
+back: /docs/products/ai/natural-language
 ---
 
-Learn to to setup your first function utilizing text to speech with Appwrite and Hugging Face.
+Hugging Face is a platform that hosts ML models for all types of applications, including text to speech.
+This example uses the "ESPnet2 TTS pretrained model" from Hugging Face to convert text to speech, but the same concept can be applied to other models.
+
+# Prerequisites {% #prerequisites %}
+
+- An Appwrite project
+- A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+
+{% section #step-1 step=1 title="Create new function" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create function screen](/images/docs/functions/template.png)
+{% /only_light %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
+{% /section %}
+
+{% section #step-2 step=2 title="Add Fetch" %}
+Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+
+Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current NodeJS 18 Runtime,
+we're going to install the `node-fetch` package.
+We're also going to install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+
+```bash
+npm install node-fetch node-appwrite
+```
+{% /section %}
+
+{% section #step-3 step=3 title="Create utility functions" %}
+Before we build our main function, create some utility functions that we'll use later.
+Create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+
+```js
+/**
+ * Throws an error if any of the keys are missing from the object
+ * @param {*} obj
+ * @param {string[]} keys
+ * @throws {Error}
+ */
+export function throwIfMissing(obj, keys) {
+  const missing = [];
+  for (let key of keys) {
+    if (!(key in obj) || !obj[key]) {
+      missing.push(key);
+    }
+  }
+  if (missing.length > 0) {
+    throw new Error(`Missing required fields: ${missing.join(', ')}`);
+  }
+}
+```
+{% /section %}
+
+{% section #step-4 step=4 title="Create a Appwrite Service" %}
+The function will interact with Appwrite to store the generated audio files and the text-to-speech data.
+To make this easier, create a service class that will handle all the Appwrite interactions. 
+
+Create a file called `src/appwrite.js` and implement the following class:
+
+```js
+import { Client, Databases, ID, InputFile, Storage } from 'node-appwrite';
+
+class AppwriteService {
+  constructor() {
+  }
+
+  async createFile(bucketId, fileId, file) {
+  }
+
+  async updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    documentId,
+    fileId,
+    text
+  ) {
+  }
+
+  async getFile(bucketId, fileId) {
+  }
+
+  async doesAIDataExist(databaseId, collectionId) {
+  }
+
+  async doesBucketExist(bucketId) {
+  }
+
+  async setupAIDatabase(databaseId, collectionId) {
+  }
+
+  async setupAIBucket(bucketId) {
+  }
+}
+
+export default AppwriteService;
+```
+
+{% accordion %}
+{% accordion_item title="constructor()" %}
+This constructor initializes the Appwrite client and sets up the database and storage services.
+
+```js
+/**
+  */
+  constructor() {
+    const client = new Client();
+    client
+      .setEndpoint(
+        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+      )
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
+
+    this.databases = new Databases(client);
+    this.storage = new Storage(client);
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="createFile()" %}
+This method uploads a file to Appwrite Storage.
+```js
+/**
+  * @param {string} bucketId
+  * @param {string} fileId
+  * @param {Blob} file
+  */
+  async createFile(bucketId, fileId, file)
+  {
+    let parsedFile = await InputFile.fromBlob(file, 'audio.flac')
+
+    return await this.storage.createFile(
+      bucketId,
+      fileId,
+      parsedFile
+    )
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="updateOrCreateTTSEntry()" %}
+This method updates or creates a document in the Appwrite database depending on if the entry already exists.
+```js
+/**
+  * @param {string} databaseId - The ID of the database.
+  * @param {string} collectionId - The ID of the collection.
+  * @param {string} documentId - The ID of the document.
+  * @param {string} fileId - The ID of the file.
+  * @param {string} text - The text to be processed.
+  */
+  async updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    documentId,
+    fileId,
+    text
+  )
+  {
+    const data = {
+      text,
+      tts: fileId,
+    };
+
+    if (documentId === ID.unique()) {
+      return await this.databases.createDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        data
+      );
+    }
+
+    try {
+      return await this.databases.updateDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        data
+      );
+    } catch (err) {
+      if (err.code === 404) {
+        return await this.databases.createDocument(
+          databaseId,
+          collectionId,
+          documentId,
+          data
+        );
+      } else {
+        throw err;
+      }
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="getFile()" %}
+This method retrieves a file from Appwrite Storage.
+```js
+/**
+  * @param {string} bucketId
+  * @param {string} fileId
+  * @returns {Promise<Buffer>}
+  */
+  async getFile(bucketId, fileId) {
+    return await this.storage.getFileDownload(bucketId, fileId);
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="doesAIDataExist()" %}
+```js
+/**
+  * @param {string} databaseId
+  * @param {string} collectionId
+  * @returns {Promise<boolean>}
+  */
+  async doesAIDataExist(databaseId, collectionId) {
+    try {
+      await this.databases.get(databaseId);
+      await this.databases.getCollection(databaseId, collectionId);
+      return true;
+    } catch (err) {
+      if (err.code === 404) return false;
+      throw err;
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="doesBucketExist()" %}
+This method checks if a bucket exists in Appwrite Storage.
+```js
+  /**
+  * @param {string} bucketId
+  * @returns {Promise<boolean>}
+  */
+  async doesBucketExist(bucketId) {
+    try {
+      await this.storage.getBucket(bucketId);
+      return true;
+    } catch (err) {
+      if (err.code === 404) return false;
+      throw err;
+    }
+  }
+  ```
+{% /accordion_item %}
+
+{% accordion_item title="setupAIDatabase" %}
+This method sets up a database in Appwrite.
+```js
+ /**
+  * @param {string} databaseId
+  * @param {string} collectionId
+  * @returns {Promise<void>}
+  */
+  async setupAIDatabase(databaseId, collectionId) {
+    try {
+      await this.databases.create(databaseId, 'AI Database');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createCollection(databaseId, collectionId, 'TTS');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createStringAttribute(
+        databaseId,
+        collectionId,
+        'text',
+        4028,
+        true
+      );
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createStringAttribute(
+        databaseId,
+        collectionId,
+        'tts',
+        1024,
+        false
+      );
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="setupAIBucket()" %}
+This method sets up a bucket in Appwrite Storage.
+```js
+ /**
+  * @param {string} bucketId
+  */
+  async setupAIBucket(bucketId) {
+    try {
+      await this.storage.createBucket(bucketId, 'AI');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+  }
+```
+{% /accordion_item %} 
+{% /accordion %}
+{% /section %}
+
+{% section #step-5 step=5 title="Run setup" %}
+To interact with Appwrite, we need to set up some buckets and database collections.
+These methods will help us setup the database and storage bucket, check if the data exists, and upload files to Appwrite Storage.
+
+Create a file called `src/setup.js` and implement the following class:
+
+```js
+import AppwriteService from './appwrite.js';
+import { throwIfMissing } from './utils.js';
+import 'dotenv/config';
+
+async function setup() {
+  throwIfMissing(process.env, ['APPWRITE_API_KEY', 'APPWRITE_FUNCTION_PROJECT_ID']);
+
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
+
+  console.log('Executing setup script...');
+
+  const appwrite = new AppwriteService();
+
+  if (await appwrite.doesAIDataExist(databaseId, collectionId)) {
+    console.log(`Database exists.`);
+  } else {
+    await appwrite.setupAIDatabase(databaseId, collectionId);
+    console.log(`Database created.`);
+  }
+
+  if (await appwrite.doesBucketExist(bucketId)) {
+    console.log(`Bucket exists.`);
+  } else {
+    await appwrite.setupAIBucket(bucketId);
+    console.log(`Bucket created.`);
+  }
+}
+
+setup();
+```
+
+Run this script once before deploying the function to set up the required Appwrite resources.
+{% /section %}
+
+{% section #step-6 step=6 title="Integrate with Hugging Face" %}
+
+
+```js
+import fetch from 'node-fetch';
+import { throwIfMissing } from './utils.js';
+import AppwriteService from './appwrite.js';
+import { ID } from 'node-appwrite';
+
+export default async ({ req, res, log, error }) => {
+  throwIfMissing(process.env, ['HUGGING_FACE_API_KEY', 'APPWRITE_API_KEY', 'APPWRITE_FUNCTION_PROJECT_ID']);
+
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
+
+  if (req.method !== 'POST') {
+    return res.send('Method Not Allowed', 405);
+  }
+
+  const appwrite = new AppwriteService();
+
+  const data = req.body;
+
+  if (!data.text) {
+    return res.send('Bad Request', 400);
+  }
+
+  const response = await fetch(
+    'https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits',
+    {
+      headers: {
+        Authorization: 'Bearer ' + process.env.HUGGING_FACE_API_KEY,
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        inputs: data.text,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    error(await response.text());
+    return res.send('Internal Server Error', 500);
+  }
+
+  const result = await response.blob();
+
+  let file;
+  try {
+    file = await appwrite.createFile(bucketId, ID.unique(), result);
+  } catch (err) {
+    error(err);
+    return res.send('Internal Server Error', 500);
+  }
+
+  let document;
+  try {
+    document = await appwrite.updateOrCreateTTSEntry(
+      databaseId,
+      collectionId,
+      data.$id ?? ID.unique(),
+      file.$id,
+      data.text
+    );
+  } catch (err) {
+    error(err);
+    return res.send('Internal Server Error', 500);
+  }
+
+  log('Document ' + document.$id + ' processed');
+  return res.json({
+    $id: document.$id,
+    tts: file.$id,
+  });
+};
+```
+{% /section %}
