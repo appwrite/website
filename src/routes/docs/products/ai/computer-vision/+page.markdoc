@@ -1,0 +1,24 @@
+---
+layout: article
+title: Computer Vision
+description: Learn about the basics of computer vision, the most popular tasks and applications of computer vision and how we can leverage Appwrite to build computer vision enabled applications.
+---
+
+Computer Vision is a field of Artificial Intelligence where we work towards giving machines a comprehensive understanding of visual data from a variety of sources, a few examples are: Images, Videos, Point Clouds and X-Rays and MRI's from medical devices with the goal of being able to further parse and process this information for downstream tasks
+
+# Tutorials
+
+{% cards %}
+{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
+Understand and label the contents of images
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
+Detect and label objects in images
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" %}
+Identify the boundaries of objects within images
+{% /cards_item %}
+{% /cards %}
+
+# Applications of computer vision
+Now you have a good understanding of the fundemental tools of computer vision, you can dive into our other guides where we provide an even deeper dive into the different types of computer vision and how to implement them in your Appwrite application.

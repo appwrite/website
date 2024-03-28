@@ -3,7 +3,6 @@ layout: article
 title: Authentication
 description: Explore Appwrite's powerful authentication solutions. Learn how to implement secure user authentication, manage user identities, and enhance your application's security."
 back: /docs
-date: 2023-09-28
 ---
 
 Appwrite Authentication delivers more than just user sign up and log in.
