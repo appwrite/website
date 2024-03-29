@@ -15,10 +15,4 @@ Understand and label the contents of images
 {% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
 Detect and label objects in images
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" %}
-Identify the boundaries of objects within images
-{% /cards_item %}
 {% /cards %}
-
-# Applications of computer vision
-Now you have a good understanding of the fundemental tools of computer vision, you can dive into our other guides where we provide an even deeper dive into the different types of computer vision and how to implement them in your Appwrite application.

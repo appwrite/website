@@ -84,13 +84,13 @@ class AppwriteService {
   }
 
   async createRecognitionEntry(
-    databaseId, 
-    collectionId, 
-    audioId, 
+    databaseId,
+    collectionId,
+    audioId,
     speech
   ){
   }
-  
+
   async getFile(bucketId, fileId) {
   }
 
@@ -401,5 +401,15 @@ stores the generated text transcript in Appwrite Databases and returns the trans
 {% /section %}
 
 {% section #step-7 step=7 title="Test the function" %}
-@bradley please complete this
+Finally, we can test our function by uploading an audio file the Appwrite Storage.
+
+Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
+After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
+
+{% only_dark %}
+![Speech Recognition Test](/images/docs/ai/tutorials/speech-recognition/dark/result.png)
+{% /only_dark %}
+{% only_light %}
+![Speech Recognition Test](/images/docs/ai/tutorials/speech-recognition/result.png)
+{% /only_light %}
 {% /section %}

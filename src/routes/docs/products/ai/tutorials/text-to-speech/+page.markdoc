@@ -73,7 +73,7 @@ export function throwIfMissing(obj, keys) {
 
 {% section #step-4 step=4 title="Create a Appwrite Service" %}
 The function will interact with Appwrite to store the generated audio files and the text-to-speech data.
-To make this easier, create a service class that will handle all the Appwrite interactions. 
+To make this easier, create a service class that will handle all the Appwrite interactions.
 
 Create a file called `src/appwrite.js` and implement the following class:
 
@@ -328,7 +328,7 @@ This method sets up a bucket in Appwrite Storage.
     }
   }
 ```
-{% /accordion_item %} 
+{% /accordion_item %}
 {% /accordion %}
 {% /section %}
 
@@ -459,5 +459,15 @@ stores the generated audio file in Appwrite Storage, and creates a document in t
 {% /section %}
 
 {% section #step-7 step=7 title="Test the function" %}
-@bradley please complete this
+Finally, we can test our function by uploading an audio file the Appwrite Storage.
+
+Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
+After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
+
+{% only_dark %}
+![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/dark/result.png)
+{% /only_dark %}
+{% only_light %}
+![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/result.png)
+{% /only_light %}
 {% /section %}

@@ -12,28 +12,7 @@ Natural language processing (NLP) is a fascinating intersection of computer scie
 {% cards_item href="/docs/products/ai/tutorials/text-generation" title="Text generation" %}
 Generate text from a prompt
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Language translation" %}
+{% cards_item href="/docs/products/ai/tutorials/language-translation" title="Language translation" %}
 Translate text from one language to another
 {% /cards_item %}
 {% /cards %}
-
-# Applications of NLP
-
-As NLP has progressed, so have its applications, becoming increasingly powerful. The most common uses of NLP include:
-
-# Text classification
-
-This involves sorting text into categories, such as sorting emails into "spam" or "not spam,". Another useful case is analyzing social media posts to gauge public sentiment towards a topic.
-
-# Language translation
-
-Thanks to advances in NLP, machines can now translate text from one language to another with increasing accuracy, capturing nuances and idioms that were challenging. See this in action with the “Translate with Hugging Face” function template.
-
-# Summarization
-
-Distilling long articles or reports into concise summaries, preserving key information and insights. This is particularly useful for understanding large volumes of text. Check out the “Summarise blog articles” function template.
-
-# Question answering & text generation
-
-Systems that can generate coherent and relevant text across various genres, from creative writing to technical articles. The “Prompt with ChatGPT” function template illustrates text generation with Appwrite functions.
-NLP is an evolving field, with ongoing research and development pushing the boundaries of what's possible. Appwrite offers a robust platform for building and deploying NLP-powered applications. It's easier than ever to incorporate sophisticated language processing capabilities into your projects.
