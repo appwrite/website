@@ -72,6 +72,13 @@ In case of errors with any command, you can get more information about what went
 appwrite users list --verbose
 ```
 
+# JSON {% #json %}
+By default, output is rendered in a tabular format. To format the output as JSON, use the `--json` flag.
+
+```sh
+appwrite users list --json
+```
+
 # Examples {% #examples %}
 
 ## Create user {% #create-user %}
