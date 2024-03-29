@@ -117,7 +117,7 @@ A check is also included to ensure that the `ELEVENLABS_API_KEY`, `APPWRITE_API_
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Now create a HTML web page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+Now create a HTML web page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
