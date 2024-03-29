@@ -284,7 +284,7 @@ This code will send the prompt to the ElevenLabs API and return the audio as a b
 additionally it'll also catch any errors we could encounter and reports them for easy debugging.
 {% /section %}
 
-{% section #step-7 step=7 title="Storing Audio in Appwrite Storage" %}
+{% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
 
 Now you can store the audio file in Appwrite Storage for easy retrieval later:
 
