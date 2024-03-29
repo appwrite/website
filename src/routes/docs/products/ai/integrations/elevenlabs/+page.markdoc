@@ -34,21 +34,20 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /section %}
 
 {% section #step-2 step=2 title="Add Fetch" %}
-Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+Once your function is created, navigate to the freshly created repository and clone it to your local machine.
 
-Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current NodeJS 18 Runtime, we're going to install the `node-fetch` package.
-We're also going to install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+Install the `node-fetch` package to make requests to the ElevenLabs API and `node-appwrite` package to upload the generated audio files to Appwrite Storage.
 ```bash
 npm install node-fetch node-appwrite
 ```
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility functions" %}
-For our example, our function will be able to take both `GET` and `POST` requests.
+For this example, the function will be able to take both `GET` and `POST` requests.
 
-For the `GET` request we will return a static HTML page we'll write later that will use AlpineJS to make a `POST` request to our function and the `POST` request will return the ElevenLabs audio stored in Appwrite Storage.
+For the `GET` request you will return a static HTML page that will make a `POST` request to the function that will generate the audio file and store it in Appwrite Storage while returning the URL.
 
-To begin with we will write the code to return the static HTML page, to do this we'll create a new `src/utils.js` file with the following code:
+To begin with write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
 
 ```js
 import path from 'path';
@@ -69,9 +68,9 @@ export function getStaticFile(fileName) {
 }
 ```
 
-By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in other parts of our function if we extend on top of this.
+By separating the `getStaticFile()` function into a `utils.js` file, You can easily reuse this function in other parts of the function if you extend on top of this.
 
-While we're at it, we're also going to create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+Create a `throwIfMissing()` function in the same file which you'll use later to validate body and environment variables:
 
 ```js
 /**
@@ -95,7 +94,7 @@ export function throwIfMissing(obj, keys) {
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
-We're going to write our `GET` request handler in the `src/main.js` file. This handler will return a static HTML page we'll create later.
+First you will write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
 
 ```js
 import { getStaticFile, throwIfMissing } from './utils.js';
@@ -115,18 +114,18 @@ export default async ({ req, res, error }) => {
 };
 ```
 
-Notice we also added a check to ensure that the `ELEVENLABS_API_KEY`, `APPWRITE_API_KEY` and `APPWRITE_BUCKET_ID` environment variables is set.
+A check is also included to ensure that the `ELEVENLABS_API_KEY`, `APPWRITE_API_KEY` and `APPWRITE_BUCKET_ID` environment variables is set.
 {% /section %}
 
 {% section #step-5 step=5 title="Create static page" %}
-Now we need to create the static HTML page that our function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+Next ccreate the static HTML page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
 </html>
 ```
 
-Within the `<html>` tag, we're going to add a `<head>` tag that will define our style and scripts.
+Within the `<html>` tag, Add a `<head>` tag that will define the style and scripts.
 ```html
 <head>
   <meta charset="UTF-8" />
@@ -161,7 +160,7 @@ Within the `<html>` tag, we're going to add a `<head>` tag that will define our 
 </head>
 ```
 
-And after the `</head>` tag we're going to add our `<body>` which will contain the actual form:
+And after the `</head>` tag add this `<body>` which will contain the actual form:
 
 ```html
 <body>
@@ -223,20 +222,20 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
 </body>
 ```
 
-All of this together will render a form that will submit your text to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call ElevenLabs's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
+All of this together will render a form that will submit your text to the Appwrite function through a POST request which you'll create next. The Appwrite function will call ElevenLabs's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Now that we're serving a basic HTML page, we can add methods necessary to integrate with the ElevenLabs API.
+Now after serving the HTML page, add methods necessary to integrate with the ElevenLabs API:
 
-First, we're going to import Fetch at the top of our `main.js` file and a bunch of Appwrite helper functions:
+First, import Fetch at the top of the `main.js` file and add bunch of Appwrite helper functions:
 
 ```js
 import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
 import fetch from "node-fetch";
 ```
 
-Next after we serve the HTML, we're going to add code to validate the body of the request and initialise the Appwrite SDK:
+Next add code to validate the body of the request and initialise the Appwrite SDK:
 ```js
 const endpoint = process.env.APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1"
 
@@ -252,7 +251,7 @@ try {
 }
 ```
 
-Finally, we're going to add the code to make the request to the ElevenLabs API and return the response:
+Finally, add the code to make the request to the ElevenLabs API and return the response:
 
 ```js
 let body = {
@@ -281,13 +280,13 @@ if (resp.status !== 200) {
 }
 ```
 
-This code will send our prompt to the the ElevenLabs API and return the audio into a blob,
-additionally it'll also catch any errors we could encounter and reports them for easy debugging.
+This code will send the prompt to the the ElevenLabs API and return the audio as a blob,
+additionally it'll also catch any errors that you could encounter and reports them for easy debugging.
 {% /section %}
 
 {% section #step-7 step=7 title="Storing Audio in Appwrite Storage" %}
 
-Now we have our audio file, we can store it in Appwrite Storage for easy retrieval later:
+Now you can store the audio file in Appwrite Storage for easy retrieval later:
 
 ```js
 const storage = new Storage(client);
@@ -300,7 +299,7 @@ let file = await storage.createFile(
 );
 ```
 
-So we can instantly show it to the user, we're going to calculate the download URL and return it in the response:
+So you can instantly show it to the user, calculate the download URL and return it in the response:
 
 ```js
 const url = `${endpoint}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files/${file.$id}/view?project=${process.env.APPWRITE_FUNCTION_PROJECT_ID}`;
@@ -308,18 +307,18 @@ const url = `${endpoint}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files
 return res.json({ ok: true, response: url });
 ```
 
-This should finish up our function, we can now deploy it to Appwrite by pushing to the git repository we created earlier.
+This should finish up the function, Deploy it to Appwrite by pushing to the git repository created earlier.
 {% /section %}
 
-{% section #step-8 step=8 title="Test our function" %}
-Now that our function is deployed, we can test it by visiting the function URL in our browser.
-This should show the UI we created earlier and to test it we can write a prompt and click the submit button, after a brief moment you should see the audio appear below the input.
+{% section #step-8 step=8 title="Test the function" %}
+Now that the function is deployed, test it by visiting the function URL in your browser.
+This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the audio appear below the input.
 
 ![Testing the function](/images/docs/ai/integrations/elevenlabs/demo.png)
 {% /section %}
 
 {% section #step-9 step=9 title="Next Steps" %}
-In this tutorial, we've created a simple web page that allows us to interact with the ElevenLabs API using Appwrite Functions. We've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
+In this tutorial, you've created a simple web page that allows you to interact with the ElevenLabs API using Appwrite Functions. You've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
 
 We look forward to seeing what you build with Appwrite and ElevenLabs!
 {% /section %}
