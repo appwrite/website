@@ -9,7 +9,7 @@ Other than commands to create and deploy databases, collections, functions, team
 Commands follows the following general syntax:
 
 ```sh
-appwrite [COMMAND] --[OPTIONS]
+appwrite [COMMAND] [OPTIONS]
 ```
 
 # List {% #list %}
