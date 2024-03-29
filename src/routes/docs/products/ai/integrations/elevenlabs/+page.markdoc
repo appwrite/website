@@ -316,7 +316,3 @@ This should show the UI created earlier and to test it, write a prompt and click
 
 ![Testing the function](/images/docs/ai/integrations/elevenlabs/demo.png)
 {% /section %}
-
-{% section #step-9 step=9 title="Next steps" %}
-In this tutorial, you've created a simple web page that allows you to interact with the ElevenLabs API using Appwrite Functions. You've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
-{% /section %}
