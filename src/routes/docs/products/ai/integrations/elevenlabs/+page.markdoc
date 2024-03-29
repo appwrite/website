@@ -117,7 +117,7 @@ A check is also included to ensure that the `ELEVENLABS_API_KEY`, `APPWRITE_API_
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Now create a HTML web page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+Now create a HTML web page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -284,7 +284,7 @@ This code will send the prompt to the ElevenLabs API and return the audio as a b
 additionally it'll also catch any errors we could encounter and reports them for easy debugging.
 {% /section %}
 
-{% section #step-7 step=7 title="Storing Audio in Appwrite Storage" %}
+{% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
 
 Now you can store the audio file in Appwrite Storage for easy retrieval later:
 
