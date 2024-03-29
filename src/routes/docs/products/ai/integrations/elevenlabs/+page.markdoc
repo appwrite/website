@@ -69,7 +69,7 @@ export function getStaticFile(fileName) {
 }
 ```
 
-Create a `throwIfMissing()` function in the same file which you'll use later to validate body and environment variables:
+Similarly, create a `throwIfMissing()` function in the same file that will be used later to validate environment variables and the body.
 
 ```js
 /**
@@ -319,6 +319,4 @@ This should show the UI created earlier and to test it, write a prompt and click
 
 {% section #step-9 step=9 title="Next steps" %}
 In this tutorial, you've created a simple web page that allows you to interact with the ElevenLabs API using Appwrite Functions. You've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
-
-We look forward to seeing what you build with Appwrite and ElevenLabs!
 {% /section %}
