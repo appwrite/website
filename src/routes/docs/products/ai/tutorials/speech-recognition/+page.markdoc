@@ -7,4 +7,399 @@ readtime: 3
 back: /docs/products/ai/audio-processing
 ---
 
-Learn to to setup your first function utilizing speech recognition with Appwrite and Hugging Face.
+Hugging Face is a platform that hosts ML models for all types of applications, including for speech recognition.
+This example uses the `openai/whisper-large-v3` from Hugging Face to perform speech recognition.
+
+# Prerequisites {% #prerequisites %}
+
+- An Appwrite project
+- A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+
+{% section #step-1 step=1 title="Create new function" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create function screen](/images/docs/functions/template.png)
+{% /only_light %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
+{% /section %}
+
+{% section #step-2 step=2 title="Install Hugging Face SDK" %}
+Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+
+First, install the Hugging Face SDK to interact with their speech recognition model.
+Then, install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+
+```bash
+npm install @huggingface/inference node-appwrite
+```
+{% /section %}
+
+{% section #step-3 step=3 title="Create utility functions" %}
+Before we build our main function, create some utility functions that we'll use later.
+Create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
+
+```js
+/**
+ * Throws an error if any of the keys are missing from the object
+ * @param {*} obj
+ * @param {string[]} keys
+ * @throws {Error}
+ */
+export function throwIfMissing(obj, keys) {
+  const missing = [];
+  for (let key of keys) {
+    if (!(key in obj) || !obj[key]) {
+      missing.push(key);
+    }
+  }
+  if (missing.length > 0) {
+    throw new Error(`Missing required fields: ${missing.join(', ')}`);
+  }
+}
+```
+{% /section %}
+
+{% section #step-4 step=4 title="Create a Appwrite Service" %}
+The function will interact with Appwrite to store the original audio and generated text transcript.
+To make this easier, create a service class that will handle all the Appwrite interactions.
+
+Create a file called `src/appwrite.js` and implement the following class:
+
+```js
+import { Client, Databases, ID, Storage } from 'node-appwrite';
+
+class AppwriteService {
+  constructor() {
+  }
+
+  async createRecognitionEntry(
+    databaseId, 
+    collectionId, 
+    audioId, 
+    speech
+  ){
+  }
+  
+  async getFile(bucketId, fileId) {
+  }
+
+  async doesAIDataExist(databaseId, collectionId) {
+  }
+
+  async doesBucketExist(bucketId) {
+  }
+
+  async setupAIDatabase(databaseId, collectionId) {
+  }
+
+  async setupAIBucket(bucketId) {
+  }
+}
+
+export default AppwriteService;
+```
+
+{% accordion %}
+{% accordion_item title="constructor()" %}
+The constructor initializes the Appwrite client and the database and storage services.
+```js
+constructor() {
+    const client = new Client();
+    client
+      .setEndpoint(
+        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+      )
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
+
+    this.databases = new Databases(client);
+    this.storage = new Storage(client);
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="createRecognitionEntry()" %}
+This method creates a document in the Appwrite database with the audio and speech recognition text.
+```js
+  /**
+  * @param {string} databaseId
+  * @param {string} collectionId
+  * @param {string} audioId
+  * @param {object} labels
+  * @returns {Promise<void>}
+  */
+  async createRecognitionEntry(databaseId, collectionId, audioId, speech)
+  {
+    await this.databases.createDocument(
+      databaseId,
+      collectionId,
+      ID.unique(),
+      {
+        audio: audioId,
+        speech: speech,
+      }
+    );
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="getFile()" %}
+This method retrieves a file from Appwrite Storage.
+```js
+/**
+  * @param {string} bucketId
+  * @param {string} fileId
+  * @returns {Promise<Buffer>}
+  */
+  async getFile(bucketId, fileId) {
+    return await this.storage.getFileDownload(bucketId, fileId);
+  }
+
+```
+{% /accordion_item %}
+
+{% accordion_item title="doesAIDataExist()" %}
+This method checks if a database and collection exist in Appwrite.
+```js
+/**
+  * @param {string} databaseId
+  * @param {string} collectionId
+  * @returns {Promise<boolean>}
+  */
+  async doesAIDataExist(databaseId, collectionId) {
+    try {
+      await this.databases.get(databaseId);
+      await this.databases.getCollection(databaseId, collectionId);
+      return true;
+    } catch (err) {
+      if (err.code === 404) return false;
+      throw err;
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="setupAIDatabase()" %}
+This method sets up the required database and collection in Appwrite.
+```js
+/**
+  * @param {string} databaseId
+  * @param {string} collectionId
+  * @returns {Promise<void>}
+  */
+  async setupAIDatabase(databaseId, collectionId) {
+    try {
+      await this.databases.create(databaseId, 'AI Database');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createCollection(databaseId, collectionId, 'Speech Recognition');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createStringAttribute(
+        databaseId,
+        collectionId,
+        'audio',
+        64,
+        true
+      );
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+
+    try {
+      await this.databases.createStringAttribute(
+        databaseId,
+        collectionId,
+        'speech',
+        10000,
+        false
+      );
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="doesBucketExist()" %}
+This method checks if a bucket exists in Appwrite Storage.
+
+```js
+  /**
+  * @param {string} bucketId
+  * @returns {Promise<boolean>}
+  */
+  async doesBucketExist(bucketId) {
+    try {
+      await this.storage.getBucket(bucketId);
+      return true;
+    } catch (err) {
+      if (err.code === 404) return false;
+      throw err;
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="setupAIBucket" %}
+This method sets up the required bucket in Appwrite Storage.
+```js
+ async setupAIBucket(bucketId) {
+    try {
+      await this.storage.createBucket(bucketId, 'AI');
+    } catch (err) {
+      if (err.code !== 409) throw err;
+    }
+  }
+```
+{% /accordion_item %}
+{% /accordion %}
+{% /section %}
+
+{% section #step-5 step=5 title="Run setup" %}
+To interact with Appwrite, we need to set up some buckets and database collections.
+These methods will help us setup the database and storage bucket, check if the data exists, and upload files to Appwrite Storage.
+
+Create a file called `src/setup.js` and implement the following class:
+
+```js
+import AppwriteService from './appwrite.js';
+import { throwIfMissing } from './utils.js';
+import 'dotenv/config';
+
+async function setup() {
+  throwIfMissing(process.env, ['APPWRITE_API_KEY']);
+
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'speech_recognition';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'speech_recognition';
+
+  console.log('Executing setup script...');
+
+  const appwrite = new AppwriteService();
+
+  if (await appwrite.doesAIDataExist(databaseId, collectionId)) {
+    console.log(`Database exists.`);
+  } else {
+    await appwrite.setupAIDatabase(databaseId, collectionId);
+    console.log(`Database created.`);
+  }
+
+  if (await appwrite.doesBucketExist(bucketId)) {
+    console.log(`Bucket exists.`);
+  } else {
+    await appwrite.setupAIBucket(bucketId);
+    console.log(`Bucket created.`);
+  }
+}
+
+setup();
+```
+
+Run this script once before deploying the function to set up the required Appwrite resources.
+{% /section %}
+
+{% section #step-6 step=6 title="Integrate with Hugging Face" %}
+In `src/main.js` implement the following function to convert speech to a text transcript using the Hugging Face API.
+
+```js
+import { HfInference } from '@huggingface/inference';
+import { throwIfMissing } from './utils.js';
+import AppwriteService from './appwrite.js';
+
+export default async ({ req, res, log, error }) => {
+  throwIfMissing(process.env, [
+    'HUGGING_FACE_API_KEY',
+    'APPWRITE_API_KEY',
+  ]);
+
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'speech_recognition';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'speech_recognition';
+
+  if (req.method !== 'POST') {
+    return res.send('Method Not Allowed', 405);
+  }
+
+  let fileId = req.body.$id || req.body.fileId;
+
+  if (!fileId) {
+    error('Missing fileId');
+    return res.send('Bad Request', 400);
+  }
+
+  if (
+    req.body.bucketId &&
+    req.body.bucketId != bucketId
+  ) {
+    error('Invalid bucketId');
+    return res.send('Bad Request', 400);
+  }
+
+  const appwrite = new AppwriteService();
+
+  let file;
+  try {
+    file = await appwrite.getFile(bucketId, fileId);
+  } catch (err) {
+    if (err.code === 404) {
+      error(err);
+      return res.send('File Not Found', 404);
+    }
+
+    error(err);
+    return res.send('Bad Request', 400);
+  }
+
+  const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
+
+  let result;
+  try {
+    result = await hf.automaticSpeechRecognition({
+      data: file,
+      model: 'openai/whisper-large-v3',
+    });
+  } catch (err) {
+    error(err);
+    return res.send('Internal Server Error', 500);
+  }
+
+  try {
+    await appwrite.createRecognitionEntry(databaseId, collectionId, fileId, result.text);
+  } catch (err) {
+    error(err);
+    return res.send('Internal Server Error', 500);
+  }
+
+  log('Audio ' + fileId + ' recognised', result.text);
+  return res.json({
+    text: result.text,
+  });
+};
+```
+
+This Appwrite Function checks if the required environment variables are set, then load the original audio from Appwrite Storage.
+The function processes the audio file using the Hugging Face API,
+stores the generated text transcript in Appwrite Databases and returns the transcript text.
+{% /section %}
+
+{% section #step-7 step=7 title="Test the function" %}
+@bradley please complete this
+{% /section %}
