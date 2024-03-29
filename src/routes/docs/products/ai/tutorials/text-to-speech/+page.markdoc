@@ -377,6 +377,7 @@ Run this script once before deploying the function to set up the required Appwri
 
 {% section #step-6 step=6 title="Integrate with Hugging Face" %}
 
+in `src/main.js` implement the following function to convert text to speech using the Hugging Face API.
 
 ```js
 import fetch from 'node-fetch';
@@ -452,4 +453,11 @@ export default async ({ req, res, log, error }) => {
   });
 };
 ```
+
+This Appwrite Function checks if the required environment variables are set, then processes the text using the Hugging Face API,
+stores the generated audio file in Appwrite Storage, and creates a document in the Appwrite database of the original text.
+{% /section %}
+
+{% section #step-7 step=7 title="Test the function" %}
+@bradley please complete this
 {% /section %}
