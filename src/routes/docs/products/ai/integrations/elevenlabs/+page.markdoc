@@ -69,8 +69,6 @@ export function getStaticFile(fileName) {
 }
 ```
 
-By separating the `getStaticFile()` function into a `utils.js` file, You can easily reuse this function in other parts of the function if you extend on top of this.
-
 Create a `throwIfMissing()` function in the same file which you'll use later to validate body and environment variables:
 
 ```js
