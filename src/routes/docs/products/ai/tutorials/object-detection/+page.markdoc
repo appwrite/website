@@ -272,7 +272,7 @@ After a few seconds, you should see an execution appear in the function's execut
 ![Object Detection Test](/images/docs/ai/tutorials/object-detection/result.png)
 {% /only_light %}
 {% /section %}
-{% section #step-12 step=12 title="Next Steps" %}
+{% section #step-12 step=12 title="Next steps" %}
 Congratulations! You've successfully created an object detection function using Appwrite and Hugging Face.
 
 From here you can expand on this project by adding more models or creating a front-end to upload images.
