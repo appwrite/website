@@ -153,6 +153,6 @@ Congratulations! You've successfully created a language translation function usi
 
 From here you can expand on this project by adding more models or creating a front-end to upload images.
 We look forward to seeing what you build with this project! Full source code for this project can be found on
-[GitHub](https://github.com/appwrite/templates/tree/main/node/language-translation)
+[GitHub](https://github.com/appwrite/templates/tree/main/node/language-translation-with-huggingface)
 
 {% /section %}
