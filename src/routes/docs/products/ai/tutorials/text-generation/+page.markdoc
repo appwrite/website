@@ -3,8 +3,147 @@ layout: article
 title: Text generation with Hugging Face
 description: Implement text generation into your app with Appwrite and Hugging Face.
 difficulty: beginner
-readtime: 3
+readtime: 15
 back: /docs/products/ai/natural-language
 ---
 
 Learn to to setup your first function utilizing text generation with Appwrite and Hugging Face.
+
+{% section #step-1 step=1 title="Create new function" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+{% only_light %}
+![Create function screen](/images/docs/functions/template.png)
+{% /only_light %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+2. Click **Create function**.
+3. Under **Connect Git repository**, select your provider.
+4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+5. In the **Variables** step, tick the box to **Generate API key on completion**.
+6. Follow the step-by-step wizard and create the function.
+{% /section %}
+
+{% section #step-2 step=2 title="Add Hugging Face SDK" %}
+Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+
+Once you have the repository open, you can install the Hugging Face Inference SDK by running the following command in your terminal:
+
+```bash
+npm install @huggingface/inference
+```
+{% /section %}
+
+
+{% section #step-3 step=3 title="Parse payload body" %}
+With the SDK Installed, we can begin to write the code that will accept a JSON body.
+
+Open up your `src/main.js` file and replace the function body with the following code:
+
+```js
+export default async ({ req, res }) => {
+  if (!process.env.HUGGINGFACE_ACCESS_TOKEN) {
+    return res.json({
+        ok: false,
+        error: 'Hugging Face access token is required'
+    });
+  }
+
+  if (req.method !== 'POST') {
+    return res.json({
+        ok: false,
+        error: 'Method not allowed'
+    }, 405);
+  }
+
+  if (!req.body.prompt || typeof req.body.prompt !== 'string') {
+    return res.json({
+        ok: false,
+        error: '`prompt` json parameter is required'
+    }, 400);
+  }
+}
+```
+
+Breaking down this code, we perform the following:
+1. Check if the Hugging Face access token is set - if not we return an error.
+2. Check if the request method is POST - if not we return a `405 - Method not allowed` status code.
+3. Check if the `sourceText` parameter is set and is a string - if not we return a `400 - Bad Request` status code.
+
+{% /section %}
+
+{% section #step-4 step=4 title="Make a request to Hugging Face"  %}
+
+Add the following import at the top of your `src/main.js` file:
+
+```js
+import { HfInference } from '@huggingface/inference';
+```
+
+In your function body, add the following code after the parameter checks:
+
+```js
+
+export default async ({ req, res }) => {
+    // ... existing parameter checks
+
+    const hf = new HfInference(process.env.HUGGINGFACE_ACCESS_TOKEN);
+
+    try {
+        const completion = await hf.textGeneration({
+            model: 'mistralai/Mistral-7B-Instruct-v0.2',
+            inputs: req.body.prompt,
+            max_new_tokens: req.body.max_new_tokens || 200,
+        });
+
+        return res.json({ ok: true, completion }, 200);
+    } catch (err) {
+        return res.json({ ok: false, error: 'Failed to query model.' }, 500);
+    }
+}
+```
+
+Breaking down this code, we perform the following:
+1. Create a new instance of the Hugging Face Inference SDK.
+2. Make a request to the Hugging Face text generation endpoint with the `mistralai/Mistral-7B-Instruct-v0.2` model.
+3. Return the translation result to the user.
+
+{% /section %}
+
+{% section #step-5 step=5 title="Deploy the function" %}
+With the function complete, we can now deploy it to Appwrite.
+{% partial file="deploy-function.md" /%}
+{% /section %}
+
+{% section #step-6 step=6 title="Test the function" %}
+Finally, we can test our function by sending a POST request to the function's endpoint with a JSON body containing the `prompt` parameter.
+
+Navigate to your function in the Appwrite Console and click on **Execute now**. In the modal that appears, enter the following JSON body:
+
+```json
+{
+    "prompt": "Write a story about a dragon",
+}
+```
+
+Click **Execute** and you should see a response similar to the following:
+
+```json
+{
+    "ok": true,
+    "completion": "Once upon a time, in a land far away, there was a dragon... [truncated]"
+}
+```
+
+{% /section %}
+{% section #step-12 step=12 title="Next Steps" %}
+Congratulations! You've successfully created a text generation function using Appwrite and Hugging Face.
+
+From here you can expand on this project by adding more models or creating a front-end to upload images.
+We look forward to seeing what you build with this project! Full source code for this project can be found on
+[GitHub](https://github.com/appwrite/templates/tree/main/node/text-generation-with-huggingface).
+
+{% /section %}
