@@ -35,7 +35,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /section %}
 
 {% section #step-2 step=2 title="Add Fetch" %}
-Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+Once the function is created, clone the function and open it in your development environment.
 
 Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current NodeJS 18 Runtime,
 we're going to install the `node-fetch` package.
