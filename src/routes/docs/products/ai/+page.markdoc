@@ -15,7 +15,7 @@ Detailed explanations and deep dives into how you can implement different machin
 {% cards_image_item href="/docs/products/ai/computer-vision" title="Computer vision" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
 Label and understand the contents of images
 {% /cards_image_item %}
-{% cards_image_item href="/docs/products/ai/natural-language" title="Natural language" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
+{% cards_image_item href="/docs/products/ai/natural-language" title="Natural language processing" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
 Understand and generate human language
 {% /cards_image_item %}
 {% cards_image_item href="/docs/products/ai/audio-processing" title="Audio processing" light="/images/icons/illustrated/dark/auth.png" dark="/images/icons/illustrated/dark/auth.png" %}
@@ -33,9 +33,6 @@ Understand and label the contents of images
 {% /cards_item %}
 {% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
 Detect and label objects in images
-{% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/image-segmentation" title="Image segmentation" %}
-Identify the boundaries of objects within images
 {% /cards_item %}
 {% /cards %}
 
@@ -56,8 +53,5 @@ Process speech audio into text
 {% /cards_item %}
 {% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
 Convert text into speech
-{% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
-Generate music from text
 {% /cards_item %}
 {% /cards %}
