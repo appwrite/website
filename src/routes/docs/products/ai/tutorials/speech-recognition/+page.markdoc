@@ -37,8 +37,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% section #step-2 step=2 title="Install Hugging Face SDK" %}
 Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
 
-First, install the Hugging Face SDK to interact with their speech recognition model.
-Then, install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+Install the Hugging Face SDK and the Node Appwrite SDK package so we can upload the generated audio file to Appwrite Storage.
 
 ```bash
 npm install @huggingface/inference node-appwrite

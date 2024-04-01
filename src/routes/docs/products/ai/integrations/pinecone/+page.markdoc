@@ -121,7 +121,7 @@ Breaking down the code:
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Now create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -214,9 +214,9 @@ This will render a form that will submit your search query to the function and d
 {% /section %}
 
 {% section #step-6 step=6 title="Setup SDKs" %}
-Now after serving the HTML page, add methods necessary to integrate with the OpenAI and Pinecone APIs
+Add methods necessary to integrate with the OpenAI and Pinecone APIs
 
-First, import `openai` and `@pinecone-database/pinecone` at the top of the `main.js` file:
+Import `openai` and `@pinecone-database/pinecone` at the top of the `main.js` file:
 
 ```js
 import { Pinecone } from '@pinecone-database/pinecone';
