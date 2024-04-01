@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Speech Recognition with Hugging Face
+title: Speech recognition with Hugging Face
 description: Implement speech recognition into your app with Appwrite and Hugging Face.
 difficulty: intermediate
 readtime: 15
@@ -63,7 +63,7 @@ export function throwIfMissing(obj, keys) {
 ```
 {% /section %}
 
-{% section #step-4 step=4 title="Create a Appwrite Service" %}
+{% section #step-4 step=4 title="Create an Appwrite service" %}
 The function will interact with Appwrite to store the original audio and generated text transcript.
 To make this easier, create a service class that will handle all the Appwrite interactions.
 
@@ -176,7 +176,7 @@ async setupAIDatabase(databaseId, collectionId) {
   }
 
   try {
-    await this.databases.createCollection(databaseId, collectionId, 'Speech Recognition');
+    await this.databases.createCollection(databaseId, collectionId, 'Speech recognition');
   } catch (err) {
     if (err.code !== 409) throw err;
   }
@@ -373,9 +373,9 @@ Navigate to the Appwrite Console and click on **Storage** in the left sidebar, t
 After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
 
 {% only_dark %}
-![Speech Recognition Test](/images/docs/ai/tutorials/speech-recognition/dark/result.png)
+![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/dark/result.png)
 {% /only_dark %}
 {% only_light %}
-![Speech Recognition Test](/images/docs/ai/tutorials/speech-recognition/result.png)
+![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/result.png)
 {% /only_light %}
 {% /section %}
