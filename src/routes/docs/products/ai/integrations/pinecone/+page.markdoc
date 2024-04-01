@@ -39,7 +39,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /section %}
 
 {% section #step-2 step=2 title="Add Pinecone SDK" %}
-Once your function is created, navigate to the freshly created repository and clone it to your local machine.
+Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `@pinecone-database/pinecone` package to simplify the process of interacting with the Pinecone API.
 

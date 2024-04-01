@@ -35,7 +35,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /section %}
 
 {% section #step-2 step=2 title="Install Hugging Face SDK" %}
-Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+Once the function is created, clone the function and open it in your development environment.
 
 Install the Hugging Face SDK and the Node Appwrite SDK package so we can upload the generated audio file to Appwrite Storage.
 

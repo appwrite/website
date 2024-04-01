@@ -28,7 +28,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /section %}
 
 {% section #step-2 step=2 title="Adding the Hugging Face SDK" %}
-Once your function is created, navigate to the freshly created repository and either clone it to your local machine or launch a GitHub Codespace.
+Once the function is created, clone the function and open it in your development environment.
 
 Once you have the repository open, you can install the Hugging Face Inference SDK by running the following command in your terminal:
 
