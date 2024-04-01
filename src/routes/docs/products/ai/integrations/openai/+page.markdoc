@@ -33,7 +33,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add Fetch" %}
+{% section #step-2 step=2 title="Add OpenAI SDK" %}
 Once your function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `openai` package to simplify the process of interacting with the OpenAI API.
@@ -67,7 +67,7 @@ export function getStaticFile(fileName) {
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
-First you will write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
+Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
 
 ```js
 import { getStaticFile, throwIfMissing } from './utils.js';
@@ -97,7 +97,7 @@ Breaking down the code:
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Now create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -206,15 +206,15 @@ All of this together will render a form that will submit your text to the Appwri
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Now after serving the HTML page, add methods necessary to integrate with the OpenAI AI.
+Add methods necessary to integrate with the OpenAI API.
 
-First, import `openai` at the top of the `main.js` file and add bunch of Appwrite helper functions:
+Import `openai` at the top of the `main.js` file.
 
 ```js
 import { OpenAIApi, Configuration } from 'openai';
 ```
 
-Next add code to validate the body of the request and initialise the Appwrite SDK:
+Add code to validate the body of the request and initialize the Appwrite SDK:
 ```js
 const client = new Client()
   .setEndpoint(process.env.APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1")

@@ -108,7 +108,7 @@ This function will serve the HTML File but will also throw an error if the `REPL
 {% /section %}
 
 {% section #step-5 step=5 title="Create static page" %}
-Now we need to create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
@@ -218,13 +218,13 @@ All of this together will render a form that will submit your question to the Ap
 {% section #step-6 step=6 title="Handle POST Request" %}
 Now that we're serving a basic HTML page, we can add methods necessary to integrate with Replicate's API.
 
-First, we're going to import the Replicate SDK at the top of our `main.js` file:
+Import the Replicate SDK at the top of our `main.js` file:
 
 ```js
 import Replicate from "replicate";
 ```
 
-Next after we serve the HTML we're going to add code to validate the body of the request, define our models and initialise the Replicate SDK:
+Next after we serve the HTML we're going to add code to validate the body of the request, define our models and initialize the Replicate SDK:
 ```js
 const models = {
   'audio': 'meta/musicgen:b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38',

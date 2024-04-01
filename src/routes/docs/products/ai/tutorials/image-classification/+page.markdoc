@@ -126,7 +126,7 @@ export default AppwriteService;
 
 This code creates a new `AppwriteService` class that initializes the Appwrite client and provides a method to download a file from the Appwrite Storage.
 
-Now, we can import the class into the `src/index.js` file, at the top of the file, add the following line:
+Import the class into the `src/index.js` file, at the top of the file, add the following line:
 ```js
 import AppwriteService from './appwrite.js';
 ```

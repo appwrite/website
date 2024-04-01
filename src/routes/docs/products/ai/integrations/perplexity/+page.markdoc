@@ -109,7 +109,7 @@ Notice we also added a check to ensure that the `PERPLEXITY_API_KEY` environment
 {% /section %}
 
 {% section #step-5 step=5 title="Create static page" %}
-Now we need to create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
@@ -218,13 +218,13 @@ All of this together will render a form that will submit your question to the Ap
 {% section #step-6 step=6 title="Handle POST Request" %}
 Now that we're serving a basic HTML page, we can add methods necessary to integrate with Perplexity's API.
 
-First, we're going to import the OpenAI SDK at the top of our `main.js` file:
+Import the OpenAI SDK at the top of our `main.js` file:
 
 ```js
 import { OpenAI } from 'openai';
 ```
 
-Next, add code to validate the body of the request and initialise the OpenAI SDK with the Perplexity API key:
+Next, add code to validate the body of the request and initialize the OpenAI SDK with the Perplexity API key:
 ```js
 const model = process.env['PERPLEXITY_MODEL'] || 'mistral-7b-instruct';
 

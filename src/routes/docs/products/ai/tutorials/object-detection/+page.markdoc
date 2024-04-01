@@ -126,7 +126,7 @@ export default AppwriteService;
 
 This code creates a new `AppwriteService` class that initializes the Appwrite client and provides a method to download a file from the Appwrite Storage.
 
-Now, we can import the class into the `src/index.js` file, at the top of the file, add the following line:
+Import the class into the `src/index.js` file, at the top of the file, add the following line:
 ```js
 import AppwriteService from './appwrite.js';
 ```
@@ -180,7 +180,7 @@ Before we can save our detection result to the Appwrite Database, we need to cre
 Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create Database** button, you can call this database anything you like, for this example we'll call it `AI`.
 Once you've created the database, click on the **Create Collection** button and create a new collection, once again you can call it anything you want but for this example we'll call it `Image Labels`.
 
-Now we have a collection we're going to add two string attributes to it, `image` and `labels`. The `image` attribute will store the ID of the image we're detecting objects in and the `labels` attribute will store the detection result.
+Add two string attributes to our collection, `image` and `labels`. The `image` attribute will store the ID of the image we're detecting objects in and the `labels` attribute will store the detection result.
 Both of these attributes should be `required` with `image` having the size of `256` and `labels` having the size of around `4096`.
 
 {% only_dark %}
