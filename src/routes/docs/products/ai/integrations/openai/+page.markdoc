@@ -2,7 +2,7 @@
 layout: article
 title: Integrating OpenAI and Appwrite
 description: Learn how to integrate OpenAI into your Appwrite project.
-difficulty: beginner
+difficulty: intermediate
 readtime: 15
 back: /docs/products/ai/computer-vision
 ---
