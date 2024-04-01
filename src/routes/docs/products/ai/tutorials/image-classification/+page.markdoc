@@ -86,7 +86,7 @@ Breaking down this code, we perform the following:
 {% /section %}
 
 {% section #step-4 step=4 title="Create Storage bucket"  %}
-In order for this function to work, you will need to create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
+In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
 ![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
@@ -158,7 +158,7 @@ This code will download the file from the Appwrite Storage and return a `404 - F
 
 {% /section %}
 
-{% section #step-6 step=6 title="Classify Image" %}
+{% section #step-6 step=6 title="Classify image" %}
 With the image downloaded, we can now use the Hugging Face Inference SDK to classify the image.
 
 At the top of the `src/index.js` file, add:

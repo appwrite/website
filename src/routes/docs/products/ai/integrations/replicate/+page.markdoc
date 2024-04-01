@@ -44,7 +44,7 @@ npm install replicate
 {% section #step-3 step=3 title="Create utility functions" %}
 For our example, our function will be able to take both `GET` and `POST` requests.
 
-For the `GET` request we will return a static HTML page which we'll write later that will use AlpineJS to make a `POST` request to our function.
+For the `GET` request, return a static HTML page which we'll write later that will use AlpineJS to make a `POST` request to our function.
 Meanwhile, our `POST` request will use the Replicate SDK to make a request to the Replicate API.
 
 To begin with we will write the code to return the static HTML page, to do this we'll create a new `src/utils.js` file with the following code:
