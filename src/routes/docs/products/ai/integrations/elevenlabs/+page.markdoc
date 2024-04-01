@@ -217,7 +217,7 @@ All of this together will render a form that will submit your text to the Appwri
 {% section #step-6 step=6 title="Handle POST Request" %}
 Add methods necessary to integrate with the ElevenLabs API:
 
-Import `fetch` at the top of the `main.js` file and add bunch of Appwrite helper functions:
+Import `fetch`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file
 
 ```js
 import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
@@ -226,24 +226,20 @@ import fetch from "node-fetch";
 
 Next add code to validate the body of the request and initialize the Appwrite SDK:
 ```js
-const endpoint = process.env.APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1"
-
 const client = new Client()
-  .setEndpoint()
+  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
   .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
   .setKey(process.env.APPWRITE_API_KEY);
 
-try {
-  throwIfMissing(req.body, ["text"]);
-} catch (err) {
-  return res.json({ ok: false, error: err.message }, 400);
+if (!req.body.text || typeof req.body.text !== "string") {
+  return res.json({ ok: false, error: "Missing required field `text`" }, 400);
 }
 ```
 
 Finally, Make a request to the ElevenLabs API and return the response:
 
 ```js
-let body = {
+const body = {
   accent: req.body.accent || "british",
   accent_strength: 1.0,
   age: req.body.age || "young",

@@ -174,11 +174,11 @@ const result = await hf.imageClassification({
 ```
 {% /section %}
 
-{% section #step-7 step=7 title="Create Database" %}
+{% section #step-7 step=7 title="Create database" %}
 Before we can save our classification result to the Appwrite Database, we need to create a new database and collection in the Appwrite Console.
 
-Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create Database** button, you can call this database anything you like, for this example we'll call it `AI`.
-Once you've created the database, click on the **Create Collection** button and create a new collection, once again you can call it anything you want but for this example we'll call it `Image Labels`.
+Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, you can call this database anything you like, for this example we'll call it `AI`.
+Once you've created the database, click on the **Create collection** button and create a new collection, once again you can call it anything you want but for this example we'll call it `Image Labels`.
 
 Now we have a collection we're going to add two string attributes to it, `image` and `labels`. The `image` attribute will store the ID of the image we're classifying and the `labels` attribute will store the classification result.
 Both of these attributes should be `required` with `image` having the size of `256` and `labels` having the size of around `4096`.
