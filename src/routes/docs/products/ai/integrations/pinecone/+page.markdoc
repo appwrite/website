@@ -2,7 +2,7 @@
 layout: article
 title: Integrating Pinecone and Appwrite
 description: Learn how to integrate Pinecone into your Appwrite project.
-difficulty: beginner
+difficulty: intermediate
 readtime: 15
 back: /docs/products/ai/computer-vision
 ---
