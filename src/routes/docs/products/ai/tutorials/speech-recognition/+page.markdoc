@@ -50,12 +50,6 @@ Before we build our main function, create some utility functions that we'll use 
 Create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
 
 ```js
-/**
- * Throws an error if any of the keys are missing from the object
- * @param {*} obj
- * @param {string[]} keys
- * @throws {Error}
- */
 export function throwIfMissing(obj, keys) {
   const missing = [];
   for (let key of keys) {
@@ -132,13 +126,6 @@ constructor() {
 {% accordion_item title="createRecognitionEntry()" %}
 This method creates a document in the Appwrite database with the audio and speech recognition text.
 ```js
-  /**
-  * @param {string} databaseId
-  * @param {string} collectionId
-  * @param {string} audioId
-  * @param {object} labels
-  * @returns {Promise<void>}
-  */
   async createRecognitionEntry(databaseId, collectionId, audioId, speech)
   {
     await this.databases.createDocument(
@@ -157,84 +144,68 @@ This method creates a document in the Appwrite database with the audio and speec
 {% accordion_item title="getFile()" %}
 This method retrieves a file from Appwrite Storage.
 ```js
-/**
-  * @param {string} bucketId
-  * @param {string} fileId
-  * @returns {Promise<Buffer>}
-  */
-  async getFile(bucketId, fileId) {
-    return await this.storage.getFileDownload(bucketId, fileId);
-  }
-
+async getFile(bucketId, fileId) {
+  return await this.storage.getFileDownload(bucketId, fileId);
+}
 ```
 {% /accordion_item %}
 
 {% accordion_item title="doesAIDataExist()" %}
 This method checks if a database and collection exist in Appwrite.
 ```js
-/**
-  * @param {string} databaseId
-  * @param {string} collectionId
-  * @returns {Promise<boolean>}
-  */
-  async doesAIDataExist(databaseId, collectionId) {
-    try {
-      await this.databases.get(databaseId);
-      await this.databases.getCollection(databaseId, collectionId);
-      return true;
-    } catch (err) {
-      if (err.code === 404) return false;
-      throw err;
-    }
+async doesAIDataExist(databaseId, collectionId) {
+  try {
+    await this.databases.get(databaseId);
+    await this.databases.getCollection(databaseId, collectionId);
+    return true;
+  } catch (err) {
+    if (err.code === 404) return false;
+    throw err;
   }
+}
 ```
 {% /accordion_item %}
 
 {% accordion_item title="setupAIDatabase()" %}
 This method sets up the required database and collection in Appwrite.
 ```js
-/**
-  * @param {string} databaseId
-  * @param {string} collectionId
-  * @returns {Promise<void>}
-  */
-  async setupAIDatabase(databaseId, collectionId) {
-    try {
-      await this.databases.create(databaseId, 'AI Database');
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createCollection(databaseId, collectionId, 'Speech Recognition');
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createStringAttribute(
-        databaseId,
-        collectionId,
-        'audio',
-        64,
-        true
-      );
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createStringAttribute(
-        databaseId,
-        collectionId,
-        'speech',
-        10000,
-        false
-      );
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
+async setupAIDatabase(databaseId, collectionId) {
+  try {
+    await this.databases.create(databaseId, 'AI Database');
+  } catch (err) {
+    if (err.code !== 409) throw err;
   }
+
+  try {
+    await this.databases.createCollection(databaseId, collectionId, 'Speech Recognition');
+  } catch (err) {
+    if (err.code !== 409) throw err;
+  }
+
+  try {
+    await this.databases.createStringAttribute(
+      databaseId,
+      collectionId,
+      'audio',
+      64,
+      true
+    );
+  } catch (err) {
+    if (err.code !== 409) throw err;
+  }
+
+  try {
+    await this.databases.createStringAttribute(
+      databaseId,
+      collectionId,
+      'speech',
+      10000,
+      false
+    );
+  } catch (err) {
+    if (err.code !== 409) throw err;
+  }
+}
 ```
 {% /accordion_item %}
 
@@ -242,19 +213,15 @@ This method sets up the required database and collection in Appwrite.
 This method checks if a bucket exists in Appwrite Storage.
 
 ```js
-  /**
-  * @param {string} bucketId
-  * @returns {Promise<boolean>}
-  */
-  async doesBucketExist(bucketId) {
-    try {
-      await this.storage.getBucket(bucketId);
-      return true;
-    } catch (err) {
-      if (err.code === 404) return false;
-      throw err;
-    }
+async doesBucketExist(bucketId) {
+  try {
+    await this.storage.getBucket(bucketId);
+    return true;
+  } catch (err) {
+    if (err.code === 404) return false;
+    throw err;
   }
+}
 ```
 {% /accordion_item %}
 

@@ -51,12 +51,6 @@ Before we build our main function, create some utility functions that we'll use 
 Create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
 
 ```js
-/**
- * Throws an error if any of the keys are missing from the object
- * @param {*} obj
- * @param {string[]} keys
- * @throws {Error}
- */
 export function throwIfMissing(obj, keys) {
   const missing = [];
   for (let key of keys) {
@@ -120,8 +114,6 @@ export default AppwriteService;
 This constructor initializes the Appwrite client and sets up the database and storage services.
 
 ```js
-/**
-  */
   constructor() {
     const client = new Client();
     client
@@ -140,11 +132,6 @@ This constructor initializes the Appwrite client and sets up the database and st
 {% accordion_item title="createFile()" %}
 This method uploads a file to Appwrite Storage.
 ```js
-/**
-  * @param {string} bucketId
-  * @param {string} fileId
-  * @param {Blob} file
-  */
   async createFile(bucketId, fileId, file)
   {
     let parsedFile = await InputFile.fromBlob(file, 'audio.flac')
@@ -161,13 +148,6 @@ This method uploads a file to Appwrite Storage.
 {% accordion_item title="updateOrCreateTTSEntry()" %}
 This method updates or creates a document in the Appwrite database depending on if the entry already exists.
 ```js
-/**
-  * @param {string} databaseId - The ID of the database.
-  * @param {string} collectionId - The ID of the collection.
-  * @param {string} documentId - The ID of the document.
-  * @param {string} fileId - The ID of the file.
-  * @param {string} text - The text to be processed.
-  */
   async updateOrCreateTTSEntry(
     databaseId,
     collectionId,
@@ -216,11 +196,6 @@ This method updates or creates a document in the Appwrite database depending on 
 {% accordion_item title="getFile()" %}
 This method retrieves a file from Appwrite Storage.
 ```js
-/**
-  * @param {string} bucketId
-  * @param {string} fileId
-  * @returns {Promise<Buffer>}
-  */
   async getFile(bucketId, fileId) {
     return await this.storage.getFileDownload(bucketId, fileId);
   }
@@ -229,11 +204,6 @@ This method retrieves a file from Appwrite Storage.
 
 {% accordion_item title="doesAIDataExist()" %}
 ```js
-/**
-  * @param {string} databaseId
-  * @param {string} collectionId
-  * @returns {Promise<boolean>}
-  */
   async doesAIDataExist(databaseId, collectionId) {
     try {
       await this.databases.get(databaseId);
@@ -250,10 +220,6 @@ This method retrieves a file from Appwrite Storage.
 {% accordion_item title="doesBucketExist()" %}
 This method checks if a bucket exists in Appwrite Storage.
 ```js
-  /**
-  * @param {string} bucketId
-  * @returns {Promise<boolean>}
-  */
   async doesBucketExist(bucketId) {
     try {
       await this.storage.getBucket(bucketId);
@@ -269,11 +235,6 @@ This method checks if a bucket exists in Appwrite Storage.
 {% accordion_item title="setupAIDatabase" %}
 This method sets up a database in Appwrite.
 ```js
- /**
-  * @param {string} databaseId
-  * @param {string} collectionId
-  * @returns {Promise<void>}
-  */
   async setupAIDatabase(databaseId, collectionId) {
     try {
       await this.databases.create(databaseId, 'AI Database');
@@ -317,9 +278,6 @@ This method sets up a database in Appwrite.
 {% accordion_item title="setupAIBucket()" %}
 This method sets up a bucket in Appwrite Storage.
 ```js
- /**
-  * @param {string} bucketId
-  */
   async setupAIBucket(bucketId) {
     try {
       await this.storage.createBucket(bucketId, 'AI');

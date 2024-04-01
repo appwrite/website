@@ -61,17 +61,17 @@
             ]
         },
         {
-          label: 'Audio Processing',
-          items: [
-              {
-                  label: 'Speech recognition',
-                  href: '/docs/products/ai/tutorials/speech-recognition'
-              },
-              {
-                  label: 'Text to Speech',
-                  href: '/docs/products/ai/tutorials/text-to-speech'
-              }
-          ]
+            label: 'Audio processing',
+            items: [
+                {
+                    label: 'Speech recognition',
+                    href: '/docs/products/ai/tutorials/speech-recognition'
+                },
+                {
+                    label: 'Text to speech',
+                    href: '/docs/products/ai/tutorials/text-to-speech'
+                }
+            ]
         },
         {
             label: 'Integrations',
@@ -97,7 +97,7 @@
                     href: '/docs/products/ai/integrations/elevenlabs'
                 },
                 {
-                    label: 'Langchain',
+                    label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
                 }
             ]

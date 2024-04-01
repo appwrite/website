@@ -116,11 +116,6 @@ class AppwriteService {
     this.storage = new Storage(client);
   }
 
-  /**
-  * @param {string} bucketId
-  * @param {string} fileId
-  * @returns {Promise<Buffer>}
-  */
   async getFile(bucketId, fileId) {
     return await this.storage.getFileDownload(bucketId, fileId);
   }
@@ -201,13 +196,6 @@ With the image classified, we can now save the result to the Appwrite Database.
 
 To begin with we're going to add a new function to the `appwrite.js` file we created earlier which will create these records in the database.
 ```js
-/**
-* @param {string} databaseId
-* @param {string} collectionId
-* @param {string} imageId
-* @param {object} labels
-* @returns {Promise<void>}
-*/
 async createImageLabels(databaseId, collectionId, imageId, labels)
 {
   await this.databases.createDocument(
