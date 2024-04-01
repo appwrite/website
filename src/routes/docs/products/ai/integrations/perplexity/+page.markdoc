@@ -239,16 +239,14 @@ Next, add code to validate the body of the request and initialise the OpenAI SDK
 ```js
 const model = process.env['PERPLEXITY_MODEL'] || 'mistral-7b-instruct';
 
-try {
-  throwIfMissing(req.body, ['prompt']);
-} catch (err) {
+if (!req.body.prompt) {
   return res.json({
     ok: false,
-    error: err.message
+    error: 'Missing required fields: prompt'
   }, 400);
 }
 
-const openai = new OpenAI({
+const perplexity = new OpenAI({
   apiKey: process.env.PERPLEXITY_API_KEY,
   baseURL: 'https://api.perplexity.ai',
 });
@@ -259,7 +257,7 @@ Finally, we're going to add the code to make the request to the Perplexity API a
 
 ```js
 try {
-  const response = await openai.chat.completions.create({
+  const response = await perplexity.chat.completions.create({
     model: model,
     max_tokens: parseInt(process.env.PERPLEXITY_MAX_TOKENS ?? '512'),
     messages: [{ role: 'user', content: req.body.prompt }],
