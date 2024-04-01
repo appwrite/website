@@ -3,7 +3,7 @@ layout: article
 title: Speech Recognition with Hugging Face
 description: Implement speech recognition into your app with Appwrite and Hugging Face.
 difficulty: intermediate
-readtime: 3
+readtime: 15
 back: /docs/products/ai/audio-processing
 ---
 
