@@ -7,7 +7,13 @@ readtime: 15
 back: /docs/products/ai/computer-vision
 ---
 
-Learn to to setup your first function utilizing object detection with Appwrite and Hugging Face.
+Learn to setup an Appwrite Function utilizing object detection with Hugging Face.
+
+# Prerequisites {% #prerequisites %}
+
+- An Appwrite project
+- A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+
 
 {% section #step-1 step=1 title="Create a new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
