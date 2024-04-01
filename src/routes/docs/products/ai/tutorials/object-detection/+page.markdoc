@@ -177,17 +177,17 @@ const result = await hf.objectDetection({
 {% section #step-7 step=7 title="Setting up our database" %}
 Before we can save our detection result to the Appwrite Database, we need to create a new database and collection in the Appwrite Console.
 
-Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create Database** button, you can call this database anything you like, for this example we'll call it `AI`.
-Once you've created the database, click on the **Create Collection** button and create a new collection, once again you can call it anything you want but for this example we'll call it `Image Labels`.
+Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, you can call this database anything you like, for this example we'll call it `AI`.
+Once you've created the database, click on the **Create collection** button and create a new collection, once again you can call it anything you want but for this example we'll call it `Image Labels`.
 
 Add two string attributes to our collection, `image` and `labels`. The `image` attribute will store the ID of the image we're detecting objects in and the `labels` attribute will store the detection result.
 Both of these attributes should be `required` with `image` having the size of `256` and `labels` having the size of around `4096`.
 
 {% only_dark %}
-![Object Detection Database](/images/docs/ai/tutorials/object-detection/dark/database.png)
+![Object detection database](/images/docs/ai/tutorials/object-detection/dark/database.png)
 {% /only_dark %}
 {% only_light %}
-![Object Detection Database](/images/docs/ai/tutorials/object-detection/database.png)
+![Object detection database](/images/docs/ai/tutorials/object-detection/database.png)
 {% /only_light %}
 
 {% /section %}
@@ -231,7 +231,7 @@ With the function complete, we can now deploy it to Appwrite.
 {% partial file="deploy-function.md" /%}
 {% /section %}
 
-{% section #step-10 step=10 title="Configuring Events" %}
+{% section #step-10 step=10 title="Configuring events" %}
 To test our function we're going to attach it directly to our Storage bucket using events.
 
 Navigate to your function in the Appwrite Console and visit it's **settings** tab,
@@ -241,10 +241,10 @@ At the bottom of the dialog within the text input, click on the pen icon and ent
 Making sure to replace `[Bucket ID]` with the ID of the bucket you created earlier.
 
 {% only_dark %}
-![Object Detection Event](/images/docs/ai/tutorials/object-detection/dark/event.png)
+![Object detection event](/images/docs/ai/tutorials/object-detection/dark/event.png)
 {% /only_dark %}
 {% only_light %}
-![Object Detection Event](/images/docs/ai/tutorials/object-detection/event.png)
+![Object detection event](/images/docs/ai/tutorials/object-detection/event.png)
 {% /only_light %}
 {% /section %}
 {% section #step-11 step=11 title="Testing the function" %}
@@ -254,10 +254,10 @@ Navigate to the Appwrite Console and click on **Storage** in the left sidebar, t
 After a few seconds, you should see an execution appear in the function's execution logs and the object detection result should be saved to the Appwrite Database.
 
 {% only_dark %}
-![Object Detection Test](/images/docs/ai/tutorials/object-detection/dark/result.png)
+![Object detection test](/images/docs/ai/tutorials/object-detection/dark/result.png)
 {% /only_dark %}
 {% only_light %}
-![Object Detection Test](/images/docs/ai/tutorials/object-detection/result.png)
+![Object detection test](/images/docs/ai/tutorials/object-detection/result.png)
 {% /only_light %}
 {% /section %}
 {% section #step-12 step=12 title="Next steps" %}
