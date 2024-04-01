@@ -65,7 +65,7 @@ export function throwIfMissing(obj, keys) {
 ```
 {% /section %}
 
-{% section #step-4 step=4 title="Create a Appwrite Service" %}
+{% section #step-4 step=4 title="Create an Appwrite service" %}
 The function will interact with Appwrite to store the generated audio files and the text-to-speech data.
 To make this easier, create a service class that will handle all the Appwrite interactions.
 

@@ -261,8 +261,6 @@ After a few seconds, you should see an execution appear in the function's execut
 {% /only_light %}
 {% /section %}
 {% section #step-12 step=12 title="Next steps" %}
-Congratulations! You've successfully created an object detection function using Appwrite and Hugging Face.
-
 From here you can expand on this project by adding more models or creating a front-end to upload images.
 We look forward to seeing what you build with this project! Full source code for this project can be found on
 [GitHub](https://github.com/appwrite/templates/tree/main/node/object-detection-with-huggingface).
