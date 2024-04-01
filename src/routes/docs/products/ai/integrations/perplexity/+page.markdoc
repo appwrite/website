@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Integrating Perplexity into Appwrite
+title: Integrating Perplexity and Appwrite
 description: Learn how to integrate the Perplexity API into your Appwrite project.
 difficulty: intermediate
 readtime: 15
@@ -60,11 +60,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const staticFolder = path.join(__dirname, '../static');
 
-/**
-* Returns the contents of a file in the static folder
-* @param {string} fileName
-* @returns {string} Contents of static/{fileName}
-*/
 export function getStaticFile(fileName) {
   return fs.readFileSync(
     path.join(staticFolder, fileName)
@@ -77,12 +72,6 @@ By separating the `getStaticFile()` function into a `utils.js` file, we can easi
 Then, create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
 
 ```js
-/**
-* Throws an error if any of the keys are missing from the object
-* @param {*} obj
-* @param {string[]} keys
-* @throws {Error}
-*/
 export function throwIfMissing(obj, keys) {
   const missing = [];
   for (let key of keys) {
