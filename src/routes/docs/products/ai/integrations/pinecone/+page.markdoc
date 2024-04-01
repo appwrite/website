@@ -15,8 +15,8 @@ Inside an Appwrite Function, we'll create a method to that indexes an Appwrite c
 
 - An Appwrite project
 - An Appwrite collection
-- An OpenAI API key
-- A Pinecone API key
+- An [OpenAI API key](https://platform.openai.com/account/api-keys)
+- A [Pinecone API key](https://docs.pinecone.io/guides/getting-started/quickstart#2-get-your-api-key)
 - A Pinecone index
 
 {% section #step-1 step=1 title="Create new function" %}

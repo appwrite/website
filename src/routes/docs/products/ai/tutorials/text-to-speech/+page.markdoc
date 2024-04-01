@@ -34,7 +34,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add Fetch" %}
+{% section #step-2 step=2 title="Add fetch" %}
 Once the function is created, clone the function and open it in your development environment.
 
 Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current Node.js v18 Runtime,
