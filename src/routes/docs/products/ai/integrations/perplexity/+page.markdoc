@@ -108,8 +108,8 @@ export default async ({ req, res, error }) => {
 Notice we also added a check to ensure that the `PERPLEXITY_API_KEY` environment variable is set. This is the API key we'll use to authenticate with the Perplexity API.
 {% /section %}
 
-{% section #step-5 step=5 title="Create Static Page" %}
-Now we need to create the static HTML page that our function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+{% section #step-5 step=5 title="Create static page" %}
+Now we need to create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
