@@ -7,4 +7,4 @@ readtime: 15
 back: /docs/products/ai/audio-processing
 ---
 
-Learn to to setup your first function utilizing music generation with Appwrite and Hugging Face.
+Learn to setup an Appwrite Function utilizing music generation with Hugging Face.

@@ -7,7 +7,7 @@ readtime: 15
 back: /docs/products/ai/natural-language
 ---
 
-Learn to to setup your first function utilizing text generation with Appwrite and Hugging Face.
+Learn to setup an Appwrite Function utilizing text generation with Hugging Face.
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.

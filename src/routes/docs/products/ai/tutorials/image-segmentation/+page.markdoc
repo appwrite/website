@@ -7,4 +7,4 @@ readtime: 15
 back: /docs/products/ai/computer-vision
 ---
 
-Learn to to setup your first function utilizing image segmentation with Appwrite and Hugging Face.
+Learn to setup an Appwrite Function utilizing image segmentation with Hugging Face.
