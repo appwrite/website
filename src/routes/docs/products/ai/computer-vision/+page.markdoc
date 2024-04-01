@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Computer Vision
+title: Computer vision
 description: Learn about the basics of computer vision, the most popular tasks and applications of computer vision and how we can leverage Appwrite to build computer vision enabled applications.
 ---
 
-Computer Vision is a field of Artificial Intelligence where we work towards giving machines a comprehensive understanding of visual data from a variety of sources, a few examples are: Images, Videos, Point Clouds and X-Rays and MRI's from medical devices with the goal of being able to further parse and process this information for downstream tasks
+Computer vision is a field of Artificial Intelligence where we work towards giving machines a comprehensive understanding of visual data from a variety of sources, a few examples are: Images, Videos, Point Clouds and X-Rays and MRI's from medical devices with the goal of being able to further parse and process this information for downstream tasks
 
 # Tutorials
 
