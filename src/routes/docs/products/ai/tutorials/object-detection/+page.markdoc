@@ -87,7 +87,7 @@ Breaking down this code, we perform the following:
 {% /section %}
 
 {% section #step-4 step=4 title="Setting up your Appwrite Storage bucket"  %}
-In order for this function to work, you will need to create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
+In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
 ![Create bucket on console](/images/docs/storage/dark/create-bucket.png)

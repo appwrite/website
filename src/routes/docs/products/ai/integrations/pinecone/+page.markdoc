@@ -83,7 +83,7 @@ export function throwIfMissing(obj, keys) {
 }
 ```
 
-We will use these utility functions in the next steps.
+These utility functions will be used in the next steps.
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}

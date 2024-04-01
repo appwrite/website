@@ -45,7 +45,7 @@ npm install openai
 {% section #step-3 step=3 title="Create utility functions" %}
 For this example, the function will be able to take both `GET` and `POST` requests.
 
-For the `GET` request you will return a static HTML page that will have a form to submit text to the API.
+For the `GET` request, return a static HTML page that will have a form to submit text to the API.
 Meanwhile the `POST` request will send the text to the OpenAI API and return the generated text.
 
 Write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
