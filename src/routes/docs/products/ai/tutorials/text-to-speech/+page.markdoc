@@ -27,11 +27,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-1. Click **Create function**.
-1. Under **Connect Git repository**, select your provider.
-1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, tick the box to **Generate API key on completion**.
-1. Follow the step-by-step wizard and create the function.
+2. Click **Create function**.
+3. Under **Connect Git repository**, select your provider.
+4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+5. In the **Variables** step, tick the box to **Generate API key on completion**.
+6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add Fetch" %}
