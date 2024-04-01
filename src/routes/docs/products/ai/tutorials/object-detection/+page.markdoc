@@ -3,7 +3,7 @@ layout: article
 title: Object detection with Hugging Face
 description: Build object recognition powered apps with Appwrite and learn how to use Hugging Face's image classification models.
 difficulty: intermediate
-readtime: 3
+readtime: 15
 back: /docs/products/ai/computer-vision
 ---
 
