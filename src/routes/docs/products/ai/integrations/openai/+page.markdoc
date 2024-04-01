@@ -97,7 +97,7 @@ Breaking down the code:
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Now create a HTML web page that the function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some HTML boilerplate:
+Now create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>

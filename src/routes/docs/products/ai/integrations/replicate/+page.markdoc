@@ -107,8 +107,8 @@ export default async ({ req, res, error }) => {
 This function will serve the HTML File but will also throw an error if the `REPLICATE_API_KEY` environment variable is missing.
 {% /section %}
 
-{% section #step-5 step=5 title="Create Static Page" %}
-Now we need to create the static HTML page that our function will serve. Create a new `static` folder in the root of your project and add an `index.html` with some html boilerplate:
+{% section #step-5 step=5 title="Create static page" %}
+Now we need to create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 ```html
 <!doctype html>
 <html lang="en">
