@@ -101,7 +101,7 @@ Note down the bucket ID so we can add it as an environment variable later.
 {% /section %}
 
 {% section #step-5 step=5 title="Downloading the image using Appwrite Storage" %}
-With the payload parsed, we can now download the image from the Appwrite Storage.
+With the payload parsed, you can now download the image from the Appwrite Storage.
 
 In the interest of keeping the codebase clean, we'll split all Appwrite related code into a separate file. Create a new file called `appwrite.js` in the `src` directory and add the following code:
 
