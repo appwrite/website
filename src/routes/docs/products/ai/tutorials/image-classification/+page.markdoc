@@ -100,7 +100,7 @@ Use the default configuration for the bucket. Make sure to note down the bucket 
 {% /section %}
 
 {% section #step-5 step=5 title="Downloading image" %}
-With the payload parsed, we can now download the image from the Appwrite Storage.
+With the payload parsed, we can now download the image from Appwrite Storage.
 
 In the interest of keeping the codebase clean, we'll split all Appwrite related code into a separate file. Create a new file called `appwrite.js` in the `src` directory and add the following code:
 
