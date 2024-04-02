@@ -101,8 +101,6 @@ Select a new runtime and click **Update**.
 This change requires your function to be redeployed to take effect.
 {% /info %}
 
-When you update a function's runtime, you may need to update code of your function to make it compatible with the new runtime.
-
 ## Build configuration {% #build-configuration %}
 You can update the entrypoint file and build settings of your function by navigating to your function > 
 **Settings** > **Configuration**. 

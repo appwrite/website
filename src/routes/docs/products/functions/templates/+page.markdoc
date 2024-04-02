@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Templates
-description: Learn about Appwrite Functions' templates that let you jump start function development to extend your Appwrite APIs.
+description: "Learn about Appwrite Functions' templates that let you jump start function development to extend your Appwrite APIs."
 ---
 Appwrite provides a variety of Function Templates to help you jump start your function development.
 You can use Appwrite Function Templates as examples or boilerplates to add new functionality to your Appwrite project.

@@ -59,8 +59,12 @@
 					href: '/docs/products/functions/develop'
 				},
 				{
-					label: 'Deploy',
-					href: '/docs/products/functions/deploy'
+					label: 'Deploy from Git',
+					href: '/docs/products/functions/deploy-from-git'
+				},
+				{
+					label: 'Deploy manually',
+					href: '/docs/products/functions/deploy-manually'
 				},
 				{
 					label: 'Execute',

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Development
+title: Develop Appwrite Functions
 description: Master serverless function development with Appwrite. Learn how to write and test functions locally, debug code, and optimize for efficient execution.
 ---
 
@@ -217,8 +217,8 @@ Future main(final context) async {
   //
   // final client = Client()
   //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  //    .setKey(process.env.APPWRITE_API_KEY);
+  //    .setProject(Platform.environment["APPWRITE_FUNCTION_PROJECT_ID"])
+  //    .setKey(Platform.environment["APPWRITE_API_KEY"]);
 
   // You can log messages to the console
   context.log('Hello, Logs!');
@@ -1105,7 +1105,7 @@ If your function is using an Appwrite SDK with an API key, this API key needs to
 | `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
 | `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
 
-{% arrow_link href="/docs/products/functions/environment" %}
+{% arrow_link href="/docs/products/functions/functions#environment-variables" %}
 Learn to add variables to you function
 {% /arrow_link %}
 
@@ -1205,6 +1205,14 @@ namespace runtime {
 {% /multicode %}
 
 # Dependencies {% #dependencies %} 
+To install your dependencies before your function is built, 
+you should add the relevant install command to the top your function's **Build setting** > **Commands**.
+You can find this setting under **Functions** > your function > **Settings** > **Configuration** > **Build settings**.
+
+Make sure to include dependency files like `package.json`, `composer.json`, `requirements.txt`, etc. in your function's configured [root directory](/docs/products/functions/deploy-from-git#root-directory).
+Do not include the dependency folders like `node_modules`, `vendor`, etc. in your function's root directory.
+The dependencies installed for your local OS may not work in the executor environments
+
 Your function's dependencies should be managed by the package manager of each language. 
 By default, we include the following package managers in each runtime.
 
@@ -1286,9 +1294,6 @@ By default, we include the following package managers in each runtime.
 * None
 * N/A
 {% /table %}
-
-
-To install your dependencies before your function is built, you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 
 # Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
