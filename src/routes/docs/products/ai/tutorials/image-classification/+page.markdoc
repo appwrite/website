@@ -166,7 +166,7 @@ At the top of the `src/index.js` file, add:
 import { HfInference } from '@huggingface/inference';
 ```
 
-Next we're going to use the Hugging Face SDK and classify the image, for this task we can use various models that you can find [on Hugging Face.](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending) For this example we'll be using the
+Use the Hugging Face SDK and classify the image, for this task we can use various models that you can find [on Hugging Face.](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending) This example uses the
 `microsoft/resnet-50` model.
 
 ```js
