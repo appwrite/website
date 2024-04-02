@@ -232,7 +232,7 @@ return res.json(result);
 ```
 {% /section %}
 {% section #step-9 step=9 title="Deploy the function" %}
-With the function complete, we can now deploy it to Appwrite.
+With the function complete, deploy it to Appwrite.
 {% partial file="deploy-function.md" /%}
 {% /section %}
 
