@@ -180,7 +180,8 @@
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
-                                {#if author}
+                                {@const draft = post.draft}
+                                {#if author && !draft}
                                     <Article
                                             title={post.title}
                                             href={post.href}
