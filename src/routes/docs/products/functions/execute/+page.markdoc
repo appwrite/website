@@ -46,7 +46,7 @@ You can invoke your Appwrite Functions directly from the [Appwrite SDKs](/docs/s
 {% tabsitem #client title="Client SDKs" %}
 
 {% multicode %}
-```web
+```js
 import { Client, Functions } from "appwrite";
 
 const client = new Client();
