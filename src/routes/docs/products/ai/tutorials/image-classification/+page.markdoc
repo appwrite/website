@@ -216,7 +216,7 @@ async createImageLabels(databaseId, collectionId, imageId, labels)
 ```
 This abstraction keeps our codebase clean and makes it easier to test and maintain.
 
-Next, using the function we just added we can save the classification result to the Appwrite Database. We'll also add some logging and error handling to make sure everything is working as expected.
+To the new function, save the classification result to Appwrite Databases and add some logging.
 
 Add the following code:
 ```js
