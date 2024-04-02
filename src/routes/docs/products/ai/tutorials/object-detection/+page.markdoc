@@ -46,7 +46,7 @@ npm install @huggingface/inference
 
 {% section #step-3 step=3 title="Parsing the payload body" %}
 With the SDK Installed, we can begin to write the code that will parse the body.
-The function we are writing today can serve two purposes: it can recieve a body via direct execution or it can be called via a file create event.
+The function we are writing today can be executed in two ways, it can be executed directly or triggered by a file create event.
 
 Open up your `src/index.js` file and replace the function body with the following code:
 
