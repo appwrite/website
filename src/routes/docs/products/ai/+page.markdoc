@@ -2,7 +2,6 @@
 layout: article
 title: Artifical intelligence
 description: "Learn how to implement machine learning models in your applications."
-back: /docs
 ---
 
 Appwrite allows you to build powerful AI powered applications with ease, Leverage Appwrite's
@@ -26,7 +25,7 @@ Process and generate audio data
 # Show me some code {% #show-me-some-code %}
 If you learn best from code examples, follow one of our tutorials.
 
-## Computer vision
+### Computer vision
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
 Understand and label the contents of images
@@ -36,7 +35,7 @@ Detect and label objects in images
 {% /cards_item %}
 {% /cards %}
 
-## Natural language
+### Natural language
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/text-generation" title="Text generation" %}
 Generate human-like text
@@ -46,7 +45,7 @@ Translate text between languages
 {% /cards_item %}
 {% /cards %}
 
-## Audio processing
+### Audio processing
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/speech-recognition" title="Speech recognition" %}
 Process speech audio into text
