@@ -96,7 +96,7 @@ In order for this function to work, create a new bucket in the Appwrite Storage.
 ![Create bucket on console](/images/docs/storage/create-bucket.png)
 {% /only_light %}
 
-Leave most of the options as default and set any name you like. Make sure to note down the bucket ID so we can add it as an environment variable later.
+Note down the bucket ID so we can add it as an environment variable later.
 
 {% /section %}
 
