@@ -4,17 +4,20 @@
     import { getContext, hasContext } from 'svelte';
     import { isInTable } from './Table.svelte';
     import { isInDocs } from '$lib/layouts/Docs.svelte';
+    import { isInAccordion } from '$markdoc/tags/Accordion_Item.svelte';
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
     const inDocs = isInDocs();
     const inPolicy = isInPolicy();
     const inChangelog = isInChangelog();
     const inTable = isInTable();
+    const inAccordion = isInAccordion();
 
     let className = '';
     export { className as class };
 
     $: classes = (() => {
+        if (inAccordion) return 'web-paragraph-md in-accordion';
         if (inDocs) return 'web-paragraph-md';
         if (inPolicy) return 'web-paragraph-md in-policy';
         if (inTable) return 'web-paragraph-md';
@@ -41,5 +44,9 @@
     .in-changelog {
         margin-block-end: 1rem !important;
         font-weight: 400;
+    }
+
+    .in-accordion {
+        margin-block-end: 1rem;
     }
 </style>

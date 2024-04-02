@@ -6,7 +6,7 @@
 <li class="collapsible-item">
     <details class="collapsible-wrapper" {open}>
         <summary class="collapsible-button">
-            <span class="text">{title}</span>
+            <span class="text web-sub-body-500 web-u-color-text-primary">{title}</span>
             <div class="icon web-u-color-text-primary">
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
