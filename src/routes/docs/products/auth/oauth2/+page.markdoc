@@ -142,7 +142,7 @@ After authenticating a user through their OAuth 2 provider, you can fetch their 
 After creating an OAuth 2 session, you can fetch the session to get information about the provider.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -157,7 +157,7 @@ console.log(session.providerUid);
 console.log(session.providerAccessToken);
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -175,8 +175,25 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2") // Your project ID
+
+let account = Account(client)
+
+let session = try await account.getSession(
+    sessionId: "[SESSION_ID]"
+)
+
+// Provider information
+print(session.provider);
+print(session.providerUid);
+print(session.providerAccessToken);
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -188,25 +205,6 @@ val account = Account(client)
 
 val response = account.getSession(
     sessionId = "[SESSION_ID]"
-)
-
-// Provider information
-print(session.provider);
-print(session.providerUid);
-print(session.providerAccessToken);
-```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-
-let account = Account(client)
-
-let session = try await account.getSession(
-    sessionId: "[SESSION_ID]"
 )
 
 // Provider information
@@ -233,8 +231,7 @@ You can use the `providerAccessToken` to make requests to your OAuth 2 provider.
 OAuth 2 sessions expire to protect from security risks. OAuth 2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint when ever your user visits your app.
 
 {% multicode %}
-```js
-// Web
+```client-web
 const promise = account.updateSession('[SESSION_ID]');
 
 promise.then(function (response) {
@@ -243,8 +240,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
-// Flutter
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -257,8 +253,20 @@ final result = await account.updateSession(
     sessionId: '[SESSION_ID]'
 );
 ```
-```kotlin
-// Android
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2") // Your project ID
+
+let account = Account(client)
+
+let session = try await account.updateSession(
+    sessionId: "[SESSION_ID]"
+);
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -270,20 +278,6 @@ val account = Account(client)
 
 val response = account.updateSession(
     sessionId = "[SESSION_ID]"
-);
-```
-```swift
-// Apple
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-
-let account = Account(client)
-
-let session = try await account.updateSession(
-    sessionId: "[SESSION_ID]"
 );
 ```
 

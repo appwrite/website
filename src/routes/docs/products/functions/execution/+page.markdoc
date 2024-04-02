@@ -45,7 +45,7 @@ You can invoke your Appwrite Functions directly from the Appwrite SDKs.
 {% tabsitem #client title="Client SDKs" %}
 
 {% multicode %}
-```js
+```client-web
 import { Client, Functions } from 'appwrite';
 
 const client = new Client()
@@ -69,7 +69,7 @@ try {
 }
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 import 'dart:convert';
 
@@ -96,7 +96,33 @@ try {
 }
 ```
 
-```kotlin
+```client-apple
+import Appwrite
+import Foundation
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let functions = Functions(client)
+
+do {
+    let execution = try await functions.createExecution(
+        functionId: "[FUNCTION_ID]",
+        data: JSONSerialization.jsonObject(with: ["foo": "bar"], options: [])!,
+        path: "/",
+        method: "GET",
+        headers: [
+            "X-Custom-Header": "123"
+        ]
+    )
+    print(execution.toMap())
+} catch {
+    print(error.localizedDescription)
+}
+```
+
+```client-android-kotlin
 import io.appwrite.Client;
 import io.appwrite.services.Functions;
 import com.google.gson.Gson;
@@ -123,38 +149,12 @@ try {
     e.printStackTrace()
 }
 ```
-
-```swift
-import Appwrite
-import Foundation
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-
-let functions = Functions(client)
-
-do {
-    let execution = try await functions.createExecution(
-        functionId: "[FUNCTION_ID]",
-        data: JSONSerialization.jsonObject(with: ["foo": "bar"], options: [])!,
-        path: "/",
-        method: "GET",
-        headers: [
-            "X-Custom-Header": "123"
-        ]
-    )
-    print(execution.toMap())
-} catch {
-    print(error.localizedDescription)
-}
-```
 {% /multicode %}
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Functions } from 'node-appwrite';
 
 const client = new Client()
