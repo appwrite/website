@@ -197,7 +197,7 @@ Both of these attributes should be `required` with `image` having the size of `2
 
 {% /section %}
 {% section #step-8 step=8 title="Save result" %}
-With the image classified, we can now save the result to the Appwrite Database.
+With the image classified, we can now save the result to the Appwrite Databases.
 
 To begin with we're going to add a new function to the `appwrite.js` file we created earlier which will create these records in the database.
 ```js
