@@ -103,7 +103,7 @@ Note down the bucket ID so we can add it as an environment variable later.
 {% section #step-5 step=5 title="Downloading the image using Appwrite Storage" %}
 With the payload parsed, you can now download the image from the Appwrite Storage.
 
-In the interest of keeping the codebase clean, we'll split all Appwrite related code into a separate file. Create a new file called `appwrite.js` in the `src` directory and add the following code:
+Create a new file in the `src` directory called `appwrite.js` and add the following code:
 
 ```js
 import { Client, Databases, ID, Storage } from 'node-appwrite';
@@ -137,7 +137,7 @@ Import the class into the `src/index.js` file, at the top of the file, add the f
 import AppwriteService from './appwrite.js';
 ```
 
-Then, we can use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check add the following code:
+Then, we can use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check within `main.js` add the following code:
 
 ```js
   const appwrite = new AppwriteService();
