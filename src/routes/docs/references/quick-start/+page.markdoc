@@ -90,7 +90,7 @@ and other metadata for Appwrite to properly parse your request.
 Client apps need to be configured with endpoint and project ID,
 so the Appwrite SDK knows which endpoint and project to connect to.
 {% multicode %}
-```js
+```client-web
 import { Client } from "appwrite";
 
 const client = new Client();
@@ -100,7 +100,7 @@ client
     .setProject('<YOUR_PROJECT_ID>')                // Your project ID
 ;
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 Client client = Client();
@@ -110,19 +110,19 @@ client
     .setProject('<YOUR_PROJECT_ID>')                // Your project ID
 ;
 ```
-```kotlin
-import io.appwrite.Client
-
-val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                // Your project ID
-```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+```
+```client-android-kotlin
+import io.appwrite.Client
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>")                // Your project ID
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -132,7 +132,7 @@ Server apps need to be configured with endpoint, project ID, and an API key
 so the Appwrite SDK knows which endpoint and project to connect to, as well as have credentials to perform admin actions.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -258,7 +258,7 @@ The API key should have the following scope in order to perform authentication:
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% multicode %}
-```js
+```client-nodejs
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
@@ -289,7 +289,7 @@ It will be initialized with the session, usually stored within a cookie.
 You should create a new client for each request and **never** share the client between requests.
 
 {% multicode %}
-```js
+```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>');            // Your project ID

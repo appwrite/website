@@ -67,7 +67,7 @@ The following examples are using the [Appwrite Web SDK](https://github.com/appwr
 
 In the following example, we are creating a document that can be read by anyone, edited by writers or admins, and deleted by administrators or a user with the user ID `user:5c1f88b42259e`.
 
-```js
+```client-web
 import { Client, Databases, Permission, Role } from "appwrite";
 
 const client = new Client()
@@ -100,7 +100,7 @@ promise.then(function (response) {
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 
-```js
+```client-web
 import { Client, Databases, Permission, Role } from "appwrite";
 
 const client = new Client()

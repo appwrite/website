@@ -55,7 +55,7 @@ During development, you can add targets to existing accounts by navigating to **
 You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
@@ -293,7 +293,7 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 
 You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
@@ -471,7 +471,7 @@ You can send SMS messages using a Server SDK.
 To send an SMS messages immediately, you can call the `createSMS` endpoint without passing either the `draft` or `scheduledAt` parameters.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -700,7 +700,7 @@ let message = try await messaging.createSMS(
 # Schedule SMS message {% #schedule-sms %}
 To send an scheduled SMS message, you can call the `createSMS` endpoint with `scheduledAt` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

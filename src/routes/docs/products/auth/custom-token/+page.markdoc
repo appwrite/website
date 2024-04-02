@@ -16,7 +16,7 @@ Custom token allows you to use [Server SDK](/docs/sdks#server) to generate token
 Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Users } from "node-appwrite";
 
 const client = new Client()
@@ -165,7 +165,7 @@ Once the client receives a token secret, we can use it to authenticate the user 
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -180,7 +180,7 @@ const session = await account.createSession(
 );
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -194,8 +194,22 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+let account = Account(client);
+
+let session = try await account.createSession(
+    userId: "[USER_ID]",
+    secret: "[SECRET]"
+);
+```
+
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -208,21 +222,6 @@ val account = Account(client);
 val session = account.createSession(
     userId = "[USER_ID]",
     secret = "[SECRET]"
-);
-```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
-
-let account = Account(client);
-
-let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
 );
 ```
 

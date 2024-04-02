@@ -46,7 +46,7 @@ During development, you can add targets to existing accounts by navigating to **
 
 You can also implement forms in your app to collect contact information and add it as a target with the [createTarget](/docs/references/cloud/server-nodejs/users#createTarget) endpoint.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
@@ -283,7 +283,7 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 
 You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -495,7 +495,7 @@ let topic = try await messaging.createTopic(
 You can send emails using a Server SDK. 
 To send an email immediately, you can call the `createEmail` endpoint with `schedule` left empty.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -797,7 +797,7 @@ let message = try await messaging.createEmail(
 # Schedule emails {% #schedule-emails %}
 To send a scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

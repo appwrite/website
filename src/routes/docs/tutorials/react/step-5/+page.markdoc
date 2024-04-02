@@ -11,7 +11,7 @@ In our app we want to have a navigation bar that is always visible. We will add 
 
 Update the App componenent in `src/App.jsx`:
 
-```js
+```client-web
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider, useUser } from "./lib/context/user";
