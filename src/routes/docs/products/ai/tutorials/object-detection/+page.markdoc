@@ -82,7 +82,7 @@ Breaking down this code, we perform the following:
 1. Set the default values for the `databaseId`, `collectionId`, and `bucketId` to the values we will use in the Appwrite Console.
 2. Check if the request method is `POST`, if it is not, we return a `405 - Method not allowed` status code.
 3. Check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad Request` status code.
-4. We check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad Request` status code.
+4.  Check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad Request` status code.
 
 {% /section %}
 
