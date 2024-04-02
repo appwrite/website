@@ -73,7 +73,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```flutter
+```dart
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -101,7 +101,7 @@ void main() { // Init SDK
   });
 }
 ```
-```apple
+```swift
 import Appwrite
 
 let client = Client()
