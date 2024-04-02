@@ -258,7 +258,7 @@ The API key should have the following scope in order to perform authentication:
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% multicode %}
-```client-nodejs
+```server-nodejs
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
