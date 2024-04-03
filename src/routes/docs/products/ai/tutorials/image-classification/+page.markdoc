@@ -44,10 +44,9 @@ npm install @huggingface/inference
 
 
 {% section #step-3 step=3 title="Parse payload body" %}
-After installing the SDK, write the code that will parse the body.
-The function will support two purposes: it can recieve a body via direct execution or it can be called via a file create event.
+After installing the SDK, write the code that will accept a JSON body. The function will support two purposes: it can recieve a body via direct execution or it can be called via a file create event.
 
-Open up your `src/index.js` file and replace the function body with the following code:
+Open up your `src/main.js` file and replace the function body with the following code:
 
 ```js
 export default async ({ req, res, log, error }) => {
