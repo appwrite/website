@@ -51,17 +51,16 @@ Open up your `src/index.js` file and replace the function body with the followin
 
 ```js
 export default async ({ req, res, log, error }) => {
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
-
   if (req.method !== 'POST') {
     return res.send('Method not allowed', 405);
   }
 
-  // Allows using direct execution or file create event
-  let fileId = req.body.$id || req.body.imageId;
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
 
+  // Allows using direct execution or file create event
+  const fileId = req.body.$id || req.body.imageId;
   if (!fileId) {
     error('Missing fileId');
     return res.send('Bad request', 400);
@@ -77,16 +76,12 @@ export default async ({ req, res, log, error }) => {
 }
 ```
 
-Breaking down this code, we perform the following:
-1. Set the default values for the `databaseId`, `collectionId`, and `bucketId` to the values we will use in the Appwrite Console.
-2. Check if the request method is `POST`, if it is not, we return a `405 - Method not allowed` status code.
-3. Check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad Request` status code.
-4. Check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad Request` status code.
+This code will parse the body of the request and check if the request is a POST request. It will then check if the request contains the required fields and if the bucket ID matches the one we set in the environment variables.
 
 {% /section %}
 
 {% section #step-4 step=4 title="Setting up your Appwrite Storage bucket"  %}
-In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
+Create a new bucket in the Appwrite Storage. Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then the **Create Bucket** button.
 
 {% only_dark %}
 ![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
