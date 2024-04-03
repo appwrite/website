@@ -40,7 +40,7 @@ If you need to update your Git configuration, navigate to **Functions** > your f
 
 ## Entry point {% #entry-point %}
 The entry point is the code file contains the exported function that will be executed when the function is called.
-This entry point has a specific format that must be followed. You can find examples using a [starter template](/docs/products/functions/template)
+This entry point has a specific format that must be followed. You can find examples using a [starter template](/docs/products/functions/templates)
 or following the [developing functions docs](/docs/products/functions/develop).
 
 ## Root directory {% #root-directory %}

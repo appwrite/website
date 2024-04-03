@@ -157,7 +157,7 @@
     },
     {
         "link": "/docs/products/functions/deployment",
-        "redirect": "/docs/products/functions/deploy"
+        "redirect": "/docs/products/functions/deploy-from-git"
     },
     {
         "link": "/docs/products/functions/execution",
@@ -169,7 +169,7 @@
     },
     {
         "link": "/docs/functions-deploy",
-        "redirect": "/docs/products/functions/deploy"
+        "redirect": "/docs/products/functions/deploy-from-git"
     },
     {
         "link": "/docs/functions-execute",
