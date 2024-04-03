@@ -234,27 +234,59 @@ The functions checks the request method, and then initializes the OpenAI and Pin
 
 {% /section %}
 
-{% section #step-7 step=7 title="Handle search requests" %}
+{% section #step-7 step=7 title="Handle prompt requests" %}
 
-To handle the search requests, add the following code to the end of the request handler in the `main.js` file:
+First add the following imports from LangChain:
 
 ```js
-if (req.path === '/search') {
-    const queryEmbedding = await openai.embeddings.create({
-        model: 'text-embedding-ada-002',
-        input: req.body.prompt,
-    });
+import { formatDocumentsAsString } from 'langchain/util/document';
+import { ChatOpenAI } from '@langchain/openai';
+import { PineconeStore } from '@langchain/pinecone';
+import { PromptTemplate } from '@langchain/core/prompts';
+import {
+  RunnableSequence,
+  RunnablePassthrough,
+} from '@langchain/core/runnables';
+import { StringOutputParser } from '@langchain/core/output_parsers';
+```
 
-    const searchResults = await pineconeIndex.query({
-        vector: queryEmbedding.data[0].embedding,
-        topK: 5,
-    });
+To handle the prompt requests, add the following code to the end of the request handler in the `main.js` file:
 
-    return res.json(searchResults);
+```js
+if (req.path === '/prompt') {
+  if (!req.body.prompt || typeof req.body.prompt !== 'string') {
+    return res.json(
+      { ok: false, error: 'Missing required field `prompt`' },
+      400
+    );
+  }
+
+  const vectorStore = await PineconeStore.fromExistingIndex(
+    new OpenAIEmbeddings(),
+    { pineconeIndex }
+  );
+
+  const prompt = PromptTemplate.fromTemplate(
+    `Answer the question based with following context:{context}\nQuestion: {question}`
+  );
+
+  const chain = RunnableSequence.from([
+    {
+      context: vectorStore.asRetriever().pipe(formatDocumentsAsString),
+      question: new RunnablePassthrough(),
+    },
+    prompt,
+    new ChatOpenAI(),
+    new StringOutputParser(),
+  ]);
+
+  const result = await chain.invoke(req.body.prompt);
+
+  return res.json({ ok: true, completion: result }, 200);
 }
 ```
 
-For all requests to `/search` function sends the search query to the OpenAI API to get the embedding. Then it sends the embedding to the Pinecone index to get the search results.
+<!--- TODO add explainer --->
 
 {% /section %}
 
@@ -263,80 +295,87 @@ For all requests to `/search` function sends the search query to the OpenAI API 
 The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
-export
+import { Client, Databases, Query } from 'node-appwrite';
 
+export default class AppwriteService {
+  constructor() {
+    const client = new Client();
+    client
+      .setEndpoint(
+        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+      )
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
 
-const client = new Client()
-  .setEndpoint(
-    process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-  )
-  .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  .setKey(process.env.APPWRITE_API_KEY);
+    this.databases = new Databases(client);
+  }
 
-const databases = new Databases(client);
+  async getAllDocuments(databaseId, collectionId) {
+    const cumulative = [];
+
+    let cursor = null;
+    do {
+      const queries = [Query.limit(100)];
+
+      if (cursor) {
+        queries.push(Query.cursorAfter(cursor));
+      }
+
+      const { documents } = await this.databases.listDocuments(
+        databaseId,
+        collectionId,
+        queries
+      );
+
+      if (documents.length === 0) {
+        break;
+      }
+
+      cursor = documents[documents.length - 1].$id;
+
+      cumulative.push(...documents);
+    } while (cursor);
+
+    return cumulative;
+  }
+}
 ```
 
-Now the Appwrite client is initialized to interact with the Appwrite API. 
-Add the following code to the end of the request handler in the `main.js` file:
+The service provides a method to iterate the documents contained within an entire collection, fetching the limit of 100 documents per request.
 
 ```js
-let cursor = null;
-do {
-  const queries = [Query.limit(100)];
+const appwrite = new AppwriteService();
 
-  if (cursor) {
-    queries.push(Query.cursorAfter(cursor));
-  }
+const appwriteDocuments = await appwrite.getAllDocuments(
+  process.env.APPWRITE_DATABASE_ID,
+  process.env.APPWRITE_COLLECTION_ID
+);
 
-  const { documents } = await databases.listDocuments(
-    process.env.APPWRITE_DATABASE_ID,
-    process.env.APPWRITE_COLLECTION_ID,
-    queries
-  );
-
-  if (documents.length === 0) {
-    log(`No more documents found.`);
-    break;
-  }
-
-  cursor = documents[documents.length - 1].$id;
-
-  const embeddings = await Promise.all(
-    documents.map(async (document) => {
-      const record = await openai.embeddings.create({
-        model: 'text-embedding-ada-002',
-        input: JSON.stringify(document),
-      });
-      return {
-        id: document.$id,
-        values: record.data[0].embedding,
-        metadata: document,
-      };
+const documents = appwriteDocuments.map(
+  (document) =>
+    new Document({
+      metadata: { id: document.$id },
+      pageContent: Object.entries(document)
+        .filter(([key, _]) => !key.startsWith('$'))
+        .map(([key, value]) => `${key}: ${value}`)
+        .join('\n'),
     })
-  );
+);
 
-  await index.upsert(embeddings);
+await PineconeStore.fromDocuments(documents, new OpenAIEmbeddings(), {
+  pineconeIndex,
+  maxConcurrency: 5,
+});
 
-  log(`Synced ${documents.length} documents.`);
-} while (cursor);
-
-log('Sync finished.');
-
-return res.send('Sync finished.', 200);
 ```
 
-Breaking down the code:
-1. The function initializes the Appwrite client to interact with the Appwrite API.
-2. The function retrieves all documents from the Appwrite collection.
-3. The function sends each document to the OpenAI API to get the embedding.
-4. The function sends the embeddings to the Pinecone index.
-5. The function logs the number of documents synced.
+Within our function handler, the service is instantiated and used to create an array of LangChain documents. LangChain documents can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
 
 {% /section %}
 
 {% section #step-8 step=8 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
-This should show the UI created earlier and to test it, write a search query and click the submit button. After a brief moment you should see the matched results.
+This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the matched results.
 
 <!--- TODO add screenshots --->
 {% /section %}
