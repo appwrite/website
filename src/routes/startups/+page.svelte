@@ -50,6 +50,66 @@
 
         submitted = true;
     }
+
+    const testimonial = (name:string, handle:string, text:string, image:string) => {
+        return {
+          name, 
+          handle, 
+          text, 
+          image: `/images/testimonials/${image}.png`
+        }
+    }
+
+    const mariusBolik = testimonial(
+      'Marius Bolik',
+      'CTO // mySHOEFITTER',
+      'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
+      'marius_bolik'
+    );
+
+    const souvikSarkar = testimonial(
+      'Souvik Sarkar',
+      '@Jeet_2003',
+      'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications.',
+      'souvik_sarkar'
+    );
+
+    const ryanOconner = testimonial(
+      'Ryan O\'Conner',
+      'Founder // K-Collect',
+      'There\'s no struggling with writing backend code and working with databases, as that\'s already taken care of.',
+      'ryan_oconner'
+    );
+
+    const testimonials = [
+      souvikSarkar,
+      ryanOconner,
+      testimonial(
+        'Gilbert Gonzalez',
+        '@ggsotillo',
+        'We reduced 80% time-to-market of our apps using Appwrite.',
+        'gilbert_gonzalez',
+      ),
+      testimonial(
+        'Eddie Jaoude',
+        '@eddiejaoude',
+        'It is great you are delivering an awesome product that is Open Source as well as having a great community!',
+        'eddie_jaoude'
+      ),
+      testimonial(
+        'Diego Ferreyra',
+        '@diego_ferreyra1',
+        'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
+        'diego_ferreyra'
+      ),
+      testimonial(
+        'Alejandro Morales',
+        '@alexparton',
+        'I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can\'t be more in love with it.',
+        'alejandro_morales'
+      ),
+      mariusBolik,
+    ]
 </script>
 
 <svelte:head>
@@ -719,11 +779,11 @@
                                                 Appwrite's scalable architecture ensures you can build your product with growth in mind. Whether you're just testing the waters or ready to scale up rapidly, our infrastructure seamlessly adjusts to your needs, easing the transition through different stages of your business growth.
 											</p>
                                             <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">There's no struggling with writing backend code and working with databases, as that's already taken care of.</p>
+                                                <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                                 <div class="web-user-box">
-                                                    <img class="web-user-box-image" src="/images/community/avatars/myshoefitter.png" alt="Avatar of Kap.ts">
-                                                    <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
-                                                    <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                                    <img class="web-user-box-image" src={ryanOconner.image} alt={`Avatar of ${ryanOconner.name}`}>
+                                                    <div class="web-user-box-name web-sub-body-500">{ryanOconner.name}</div>
+                                                    <div class="web-user-box-username web-sub-body-400">{ryanOconner.handle}</div>
                                                 </div>
                                             </div>
 										</div>
@@ -1132,11 +1192,11 @@
                                                 </svg>
                                             </div>
                                             <div class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.</p>
+                                                <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                                                 <div class="web-user-box">
-                                                    <img class="web-user-box-image" src="/images/community/avatars/myshoefitter.png" alt="Avatar of Kap.ts">
-                                                    <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
-                                                    <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                                    <img class="web-user-box-image" src={souvikSarkar.image} alt={`Avatar of ${souvikSarkar.name}`}>
+                                                    <div class="web-user-box-name web-sub-body-500">{souvikSarkar.name}</div>
+                                                    <div class="web-user-box-username web-sub-body-400">{souvikSarkar.handle}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1409,11 +1469,11 @@
                                                 Join a growing community of developers and founders who use Appwrite to build their products. Gain access to a wealth of knowledge, support, and shared experiences to help navigate the challenges of startup growth.
 											</p>
                                             <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">There's no struggling with writing backend code and working with databases, as that's already taken care of.</p>
+                                                <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                                 <div class="web-user-box">
-                                                    <img class="web-user-box-image" src="/images/community/avatars/myshoefitter.png" alt="Avatar of Kap.ts">
-                                                    <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
-                                                    <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                                    <img class="web-user-box-image" src={mariusBolik.image} alt={`avatar of ${mariusBolik.name}`}>
+                                                    <div class="web-user-box-name web-sub-body-500">{mariusBolik.name}</div>
+                                                    <div class="web-user-box-username web-sub-body-400">{mariusBolik.handle}</div>
                                                 </div>
                                             </div>
 										</div>
@@ -1429,14 +1489,14 @@
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner u-gap-32">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-                        {#each { length: 5 } as _, i}
+                        {#each testimonials as t}
                             <li>
                                 <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64" style="inline-size:23.625rem">
-                                    <p class="aw-sub-body-500">There's no struggling with writing backend code and working with databases, as that's already taken care of.</p>
+                                    <p class="aw-sub-body-500">{t.text}</p>
                                     <div class="web-user-box">
-                                        <img class="web-user-box-image" src="/images/community/avatars/myshoefitter.png" alt="Avatar of Kap.ts">
-                                        <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
-                                        <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
+                                        <img class="web-user-box-image" src={t.image} alt="Avatar of Kap.ts">
+                                        <div class="web-user-box-name web-sub-body-500">{t.name}</div>
+                                        <div class="web-user-box-username web-sub-body-400">{t.handle}</div>
                                     </div>
                                 </div>
                             </li>
@@ -1446,7 +1506,7 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="web-container" style="display:none">
                     <h2
                             class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
                     >
