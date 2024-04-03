@@ -4,7 +4,6 @@ title: Text generation with Hugging Face
 description: Implement text generation into your app with Appwrite and Hugging Face.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/natural-language
 ---
 
 Learn to setup an Appwrite Function utilizing text generation with Hugging Face.
