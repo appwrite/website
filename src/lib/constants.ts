@@ -1,4 +1,4 @@
-export const GITHUB_STARS = '39.5K';
+export const GITHUB_STARS = '40K';
 export const BANNER_KEY = 'discord-banner-01'; // Change key to force banner to show again
 
 /**

@@ -4,6 +4,10 @@ title: TextMagic
 description: Send SMS messages to your Appwrite users using TextMagic and Appwrite Messaging.
 back: /docs/
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 TextMagic lets you send customized SMS messages to your users.
 These SMS messages can be sent immediately or scheduled.

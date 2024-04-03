@@ -4,6 +4,10 @@ title: Messages
 description: Learn about Appwrite messages, the different types of messages, what can be sent in different message types.
 back: /docs
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite
 as a **message** is displayed in the **Messages** tab.

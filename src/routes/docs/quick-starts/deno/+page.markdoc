@@ -55,7 +55,7 @@ Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your f
 
 ```
 // import all as sdk
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "https://deno.land/x/appwrite@9.1.0/mod.ts";
 
 // import only what you need
 import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
@@ -130,7 +130,6 @@ async function prepareDatabase(): Promise<void> {
         255, false,
         'This is a test description'
     );
-
     await databases.createBooleanAttribute(
         todoDatabase.$id,
         todoCollection.$id,
@@ -169,14 +168,12 @@ async function seedDatabase(): Promise<void> {
         ID.unique(),
         testTodo1
     );
-
     await databases.createDocument(
         todoDatabase.$id,
         todoCollection.$id,
         ID.unique(),
         testTodo2
     );
-
     await databases.createDocument(
         todoDatabase.$id,
         todoCollection.$id,
