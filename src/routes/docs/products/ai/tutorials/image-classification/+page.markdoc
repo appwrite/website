@@ -181,8 +181,12 @@ Before saving the classification result to Appwrite Databases, create a new data
 Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, you can call this database anything you like, for this example call it `AI`.
 Once you've created the database, click on the **Create collection** button and create a new collection, once again you can call it anything you want but for this example call it `Image Labels`.
 
-Now we have a collection we're going to add two string attributes to it, `image` and `labels`. The `image` attribute will store the ID of the image you're classifying and the `labels` attribute will store the classification result.
-Both of these attributes should be `required` with `image` having the size of `256` and `labels` having the size of around `4096`.
+Next, create the following schema for the collection:
+
+| Attribute | Type | Size | Required |
+| --- | --- | --- | --- |
+| image | String | 256 | Yes |
+| labels | String | 4096 | Yes |
 
 {% only_dark %}
 ![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
