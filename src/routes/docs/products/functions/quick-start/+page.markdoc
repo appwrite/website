@@ -53,8 +53,8 @@ Get a template function up and running with a single click.
 {% cards_item href="/docs/products/functions/develop" title="Develop" %}
 Learn about developing your own Appwrite Function.
 {% /cards_item %}
-{% cards_item href="/docs/products/functions/deploy" title="Deploy" %}
-Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads.
+{% cards_item href="/docs/products/functions/deploy-from-git" title="Deploy" %}
+Learn to deploy Appwrite Functions from Git.
 {% /cards_item %}
 {% cards_item href="/docs/products/functions/execute" title="Execute" %}
 Explore the different ways an Appwrite Function can be executed.
