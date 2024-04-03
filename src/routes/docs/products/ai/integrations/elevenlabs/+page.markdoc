@@ -236,7 +236,7 @@ if (!req.body.text || typeof req.body.text !== "string") {
 }
 ```
 
-Finally, Make a request to the ElevenLabs API and return the response:
+Send a request to the ElevenLabs API and return the response:
 
 ```js
 const body = {

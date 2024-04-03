@@ -242,7 +242,7 @@ const perplexity = new OpenAI({
 ```
 This code also allows us to modify what model we use by setting the `PERPLEXITY_MODEL` environment variable.
 
-Finally, we're going to add the code to make the request to the Perplexity API and return the response:
+Send the request to the Perplexity API and return the response:
 
 ```js
 try {
