@@ -1,67 +1,42 @@
 <script lang="ts" context="module">
     export const events: EventCardProps[] = [
         {
-            href: 'https://discord.com/events/564160730845151244/1209117134417035365',
+            href: 'https://discord.com/events/564160730845151244/1218597329024843837',
             cover: {
-                src: '/images/community/events/init-0.png',
+                src: '/images/community/events/28march-office-hours.png',
                 alt: ''
             },
-            date: 'February 26th, 2024',
+            date: 'March 28th, 2024',
             location: 'Discord',
-            title: 'Guest speaker: Diana Pham',
+            title: 'Office Hours: Ask me anything!',
             description:
-                'Join day zero of Init together with Vonage developer advocate Diana Pham.',
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1209117245859569754',
+            href: 'https://discord.com/events/564160730845151244/1218597959017431192',
             cover: {
-                src: '/images/community/events/init-1.png',
+                src: '/images/community/events/4april-office-hours.png',
                 alt: ''
             },
-            date: 'February 27th, 2024',
+            date: 'April 4th, 2024',
             location: 'Discord',
-            title: 'Guest speaker: Hitesh Choudhary',
+            title: 'Office Hours: Ask me anything!',
             description:
-                'Join us on day one of Init together with engineer and creator Hitesh Choudhary.',
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1209117412247609354',
+            href: 'https://discord.com/events/564160730845151244/1218598369363230872',
             cover: {
-                src: '/images/community/events/init-2.png',
+                src: '/images/community/events/11april-office-hours.png',
                 alt: ''
             },
-            date: 'February 28th, 2024',
+            date: 'April 11th, 2024',
             location: 'Discord',
-            title: 'Guest speaker: Francesco Ciulla',
+            title: 'Office Hours: Ask me anything!',
             description:
-                'Join us on day two of Init together with developer advocate Francesco Ciulla.',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://discord.com/events/564160730845151244/1209117457294295121',
-            cover: {
-                src: '/images/community/events/init-3.png',
-                alt: ''
-            },
-            date: 'February 29th, 2024',
-            location: 'Discord',
-            title: 'Guest speaker: Danny Thompson',
-            description:
-                'Join us on day three of Init together with engineer and creator Danny Thompson.',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://discord.com/events/564160730845151244/1209117535723851776',
-            cover: {
-                src: '/images/community/events/init-4.png',
-                alt: ''
-            },
-            date: 'March 1st, 2024',
-            location: 'Discord',
-            title: 'Guest speaker: Nick Taylor',
-            description: 'Join us on day four of Init together with Nick Taylor.',
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         }
     ];
@@ -118,7 +93,7 @@
     ];
 
     const metrics = [
-        { metric: '39K+', description: 'GitHub Stars' },
+        { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
         { metric: '18K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
@@ -209,7 +184,8 @@
                                 >
                                     <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span
+                                    <span class="web-inline-tag web-sub-body-400"
+                                        >{GITHUB_STARS}</span
                                     >
                                 </a>
                             </div>
@@ -481,7 +457,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center">
-                        <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
+                        <h2 class="web-display web-u-color-text-primary">
+                            Inspire and get inspired
+                        </h2>
                         <p class="web-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
@@ -574,7 +552,7 @@
                                         />
                                     </div>
                                     <div class="web-title u-margin-block-start-auto">
-                                        38K+ stargazers
+                                        {GITHUB_STARS}+ stargazers
                                     </div>
                                 </a>
                             </li>

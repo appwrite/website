@@ -3,6 +3,10 @@ layout: article
 title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 You can send custom sms messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding sms messaging to your app.
