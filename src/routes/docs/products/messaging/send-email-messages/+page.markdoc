@@ -12,7 +12,7 @@ You can send custom email messages to your app's users using Appwrite Messaging 
 This guide takes you through the implementation path of adding email messaging to your app.
 
 # Add a provider {% #add-a-provider %}
-Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgird](/docs/products/messaging/sendgrid/) as
+Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgrid](/docs/products/messaging/sendgrid/) as
 SMTP providers. You must configure one of them as a provider.
 {% only_dark %}
 ![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
