@@ -79,10 +79,10 @@ export default async ({ req, res, log, error }) => {
 ```
 
 Breaking down this code, we perform the following:
-1. We set the default values for the `databaseId`, `collectionId`, and `bucketId` to the values we will use in the Appwrite Console.
-2. We check if the request method is `POST`, if it is not, we return a `405 - Method not allowed` status code.
-3. We check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad request` status code.
-4. We check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad request` status code.
+1. Set the default values for the `databaseId`, `collectionId`, and `bucketId` to the values we will use in the Appwrite Console.
+2. Check if the request method is `POST`, if it is not, we return a `405 - Method not allowed` status code.
+3. Check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad Request` status code.
+4. Check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad Request` status code.
 
 {% /section %}
 
@@ -96,14 +96,14 @@ In order for this function to work, create a new bucket in the Appwrite Storage.
 ![Create bucket on console](/images/docs/storage/create-bucket.png)
 {% /only_light %}
 
-Leave most of the options as default and set any name you like. Make sure to note down the bucket ID so we can add it as an environment variable later.
+Note down the bucket ID so we can add it as an environment variable later.
 
 {% /section %}
 
 {% section #step-5 step=5 title="Downloading the image using Appwrite Storage" %}
-With the payload parsed, we can now download the image from the Appwrite Storage.
+With the payload parsed, you can now download the image from the Appwrite Storage.
 
-In the interest of keeping the codebase clean, we'll split all Appwrite related code into a separate file. Create a new file called `appwrite.js` in the `src` directory and add the following code:
+Create a new file in the `src` directory called `appwrite.js` and add the following code:
 
 ```js
 import { Client, Databases, ID, Storage } from 'node-appwrite';
@@ -137,7 +137,7 @@ Import the class into the `src/index.js` file, at the top of the file, add the f
 import AppwriteService from './appwrite.js';
 ```
 
-Then, we can use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check add the following code:
+Then, we can use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check within `main.js` add the following code:
 
 ```js
   const appwrite = new AppwriteService();
