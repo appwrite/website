@@ -3,12 +3,11 @@ layout: post
 title: Ensuring security amidst the XZ Utils backdoor concern
 description:
 date: 2024-04-02
-cover: /images/blog/enhancing-type-safety.png
+cover: /images/blog/ensuring-security-amidst-xz-concern/cover.png
 timeToRead: 7
 author: jake-barnby
 category: engineering
 featured: false
-draft: true
 ---
 
 In the light of recent unsettling revelations regarding a backdoor discovered in the widely-used XZ Utils, 
