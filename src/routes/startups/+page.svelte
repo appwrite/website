@@ -4,7 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import {socials} from "$lib/constants";
+    import { socials } from '$lib/constants';
 
     import SubSectionOne from './SubSection1_illu.svelte';
     import SubSectionTwo from './SubSection2_illu.svelte';
@@ -23,13 +23,12 @@
         node.dataset.animated = 'true';
     };
 
-
     let email = '';
     let firstName = '';
     let subject = '';
     let company = '';
     let companyURL = '';
-    let companyCrunchBaseURL ='';
+    let companyCrunchBaseURL = '';
     let error: string | undefined;
     let submitted = false;
 
@@ -57,65 +56,65 @@
         submitted = true;
     }
 
-    const testimonial = (name:string, handle:string, text:string, image:string) => {
+    const testimonial = (name: string, handle: string, text: string, image: string) => {
         return {
-          name, 
-          handle, 
-          text, 
-          image: `/images/testimonials/${image}.png`
-        }
-    }
+            name,
+            handle,
+            text,
+            image: `/images/testimonials/${image}.png`
+        };
+    };
 
     const mariusBolik = testimonial(
-      'Marius Bolik',
-      'CTO // mySHOEFITTER',
-      'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
-      'marius_bolik'
+        'Marius Bolik',
+        'CTO // mySHOEFITTER',
+        'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
+        'marius_bolik'
     );
 
     const souvikSarkar = testimonial(
-      'Souvik Sarkar',
-      '@Jeet_2003',
-      'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications.',
-      'souvik_sarkar'
+        'Souvik Sarkar',
+        '@Jeet_2003',
+        'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications.',
+        'souvik_sarkar'
     );
 
     const ryanOconner = testimonial(
-      'Ryan O\'Conner',
-      'Founder // K-Collect',
-      'There\'s no struggling with writing backend code and working with databases, as that\'s already taken care of.',
-      'ryan_oconner'
+        "Ryan O'Conner",
+        'Founder // K-Collect',
+        "There's no struggling with writing backend code and working with databases, as that's already taken care of.",
+        'ryan_oconner'
     );
 
     const testimonials = [
-      souvikSarkar,
-      ryanOconner,
-      testimonial(
-        'Gilbert Gonzalez',
-        '@ggsotillo',
-        'We reduced 80% time-to-market of our apps using Appwrite.',
-        'gilbert_gonzalez',
-      ),
-      testimonial(
-        'Eddie Jaoude',
-        '@eddiejaoude',
-        'It is great you are delivering an awesome product that is Open Source as well as having a great community!',
-        'eddie_jaoude'
-      ),
-      testimonial(
-        'Diego Ferreyra',
-        '@diego_ferreyra1',
-        'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
-        'diego_ferreyra'
-      ),
-      testimonial(
-        'Alejandro Morales',
-        '@alexparton',
-        'I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can\'t be more in love with it.',
-        'alejandro_morales'
-      ),
-      mariusBolik,
-    ]
+        souvikSarkar,
+        ryanOconner,
+        testimonial(
+            'Gilbert Gonzalez',
+            '@ggsotillo',
+            'We reduced 80% time-to-market of our apps using Appwrite.',
+            'gilbert_gonzalez'
+        ),
+        testimonial(
+            'Eddie Jaoude',
+            '@eddiejaoude',
+            'It is great you are delivering an awesome product that is Open Source as well as having a great community!',
+            'eddie_jaoude'
+        ),
+        testimonial(
+            'Diego Ferreyra',
+            '@diego_ferreyra1',
+            'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
+            'diego_ferreyra'
+        ),
+        testimonial(
+            'Alejandro Morales',
+            '@alexparton',
+            "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
+            'alejandro_morales'
+        ),
+        mariusBolik
+    ];
 </script>
 
 <svelte:head>
@@ -158,7 +157,9 @@
                             Build your startup with Appwrite
                         </h1>
                         <p class="web-description">
-                            The Appwrite Startups Program supports your startup with a complete backend for you to build your products. Eligible startups receive Appwrite Cloud Pro for 12 months.
+                            The Appwrite Startups Program supports your startup with a complete
+                            backend for you to build your products. Eligible startups receive
+                            Appwrite Cloud Pro for 12 months.
                         </p>
                         <button class="web-button u-margin-inline-auto u-margin-block-start-12">
                             Apply now
@@ -169,25 +170,57 @@
             <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
                     <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80">
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
-                            <img src="/images/icons/gradients/backend.svg" width="48" height="48" alt="">
+                        <li
+                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                        >
+                            <img
+                                src="/images/icons/gradients/backend.svg"
+                                width="48"
+                                height="48"
+                                alt=""
+                            />
                             <div class="u-flex-vertical u-gap-16 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
-                                <p class="web-main-body-500">Get access to Appwrite’s Pro plan and build your entire backend with Appwrite. </p>
+                                <p class="web-main-body-500">
+                                    Get access to Appwrite’s Pro plan and build your entire backend
+                                    with Appwrite.
+                                </p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
-                            <img src="/images/icons/gradients/cloud-credit.svg" width="48" height="48" alt="">
+                        <li
+                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                        >
+                            <img
+                                src="/images/icons/gradients/cloud-credit.svg"
+                                width="48"
+                                height="48"
+                                alt=""
+                            />
                             <div class="u-flex-vertical u-gap-16 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
-                                <p class="web-main-body-500">Get Appwrite Cloud Pro for 12 months and reduce risk at an early stage.</p>
+                                <p class="web-main-body-500">
+                                    Get Appwrite Cloud Pro for 12 months and reduce risk at an early
+                                    stage.
+                                </p>
                             </div>
                         </li>
-                        <li class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto">
-                            <img src="/images/icons/gradients/support.svg" width="48" height="48" alt="">
+                        <li
+                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                        >
+                            <img
+                                src="/images/icons/gradients/support.svg"
+                                width="48"
+                                height="48"
+                                alt=""
+                            />
                             <div class="u-flex-vertical u-gap-16 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Dedicated support</h2>
-                                <p class="web-main-body-500">Get community support and dedicated email support from the Appwrite team.</p>
+                                <h2 class="web-label web-u-color-text-primary">
+                                    Dedicated support
+                                </h2>
+                                <p class="web-main-body-500">
+                                    Get community support and dedicated email support from the
+                                    Appwrite team.
+                                </p>
                             </div>
                         </li>
                     </ul>
@@ -195,134 +228,216 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light">
+        <div
+            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
+        >
             <div class="web-big-padding-section-level-2">
-					<div class="web-container" >
-						<div class="web-timeline-content">
-							<ol class="web-timeline-content-list">
-								<li class="web-timeline-content-item">
-									<div class="web-timeline-content-item-top web-grid-1-1"
-										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
-											<h3 class="web-title web-u-color-text-primary">
-                                                Ship faster
-											</h3>
-											<p class="web-main-body-500">
-                                                Utilizing Appwrite as your backend, you significantly cut down the time and resources spent on building a backend infrastructure from scratch. This means you can get to quicker iterations and faster time-to-market, directly addressing the challenge of finding product-market fit sooner.
-											</p>
-										</div>
-										<div>
-											<div class="web-card is-white u-flex-vertical web-u-gap-20">
-												<p class="aw-sub-body-500">The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.</p>
-                                                <div class="web-user-box">
-                                                    <img class="web-user-box-image" src="/images/community/avatars/myshoefitter.png" alt="Avatar of Kap.ts">
-                                                    <div class="web-user-box-name web-sub-body-500">Marius Bolik</div>
-                                                    <div class="web-user-box-username web-sub-body-400">CTO // mySHOEFITTER</div>
-                                                </div>
-											</div>
-										</div>
-
-									</div>
-								</li>
-                                <li>
-                                  <svelte:component this={SubSectionOne} />
-                                </li>
-								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
-										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;">
-                                        <div class="web-is-only-desktop">
-                                          <svelte:component this={SubSectionTwo} />
-                                        </div>
-										<div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
-											<h3 class="web-title web-u-color-text-primary">
-                                                Scalable architecture
-											</h3>
-											<p class="aw-main-body-500">
-                                                Appwrite's scalable architecture ensures you can build your product with growth in mind. Whether you're just testing the waters or ready to scale up rapidly, our infrastructure seamlessly adjusts to your needs, easing the transition through different stages of your business growth.
-											</p>
-                                            <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">{ryanOconner.text}</p>
-                                                <div class="web-user-box">
-                                                    <img class="web-user-box-image" src={ryanOconner.image} alt={`Avatar of ${ryanOconner.name}`}>
-                                                    <div class="web-user-box-name web-sub-body-500">{ryanOconner.name}</div>
-                                                    <div class="web-user-box-username web-sub-body-400">{ryanOconner.handle}</div>
-                                                </div>
-                                            </div>
-										</div>
-                                        <div class="web-is-not-desktop u-flex">
-                                          <svelte:component this={SubSectionTwo} />
-                                        </div>
-									</div>
-								</li>
-                                <li class="web-timeline-content-item">
-                                    <div class="web-timeline-content-item-top web-grid-1-1"
-                                         style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;">
-                                        <div class="u-flex-vertical u-gap-16">
-                                            <h3 class="web-title web-u-color-text-primary">
-                                                Built-in security and compliance
-                                            </h3>
-                                            <p class="web-main-body-500">
-                                                Appwrite comes with built-in security features like authentication, database security, and more, reducing the time and effort you need to spend on securing your application.
+                <div class="web-container">
+                    <div class="web-timeline-content">
+                        <ol class="web-timeline-content-list">
+                            <li class="web-timeline-content-item">
+                                <div
+                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
+                                >
+                                    <div class="u-flex-vertical u-gap-16">
+                                        <h3 class="web-title web-u-color-text-primary">
+                                            Ship faster
+                                        </h3>
+                                        <p class="web-main-body-500">
+                                            Utilizing Appwrite as your backend, you significantly
+                                            cut down the time and resources spent on building a
+                                            backend infrastructure from scratch. This means you can
+                                            get to quicker iterations and faster time-to-market,
+                                            directly addressing the challenge of finding
+                                            product-market fit sooner.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="web-card is-white u-flex-vertical web-u-gap-20">
+                                            <p class="aw-sub-body-500">
+                                                The integrated user authentication and the ease of
+                                                creating data structures have undoubtedly saved us
+                                                several weeks' worth of time.
                                             </p>
-                                            <div class="web-is-not-desktop u-flex u-position-relative">
-                                              <svelte:component this={SubSectionThree} />
-                                            </div>
-                                            <div class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">{souvikSarkar.text}</p>
-                                                <div class="web-user-box">
-                                                    <img class="web-user-box-image" src={souvikSarkar.image} alt={`Avatar of ${souvikSarkar.name}`}>
-                                                    <div class="web-user-box-name web-sub-body-500">{souvikSarkar.name}</div>
-                                                    <div class="web-user-box-username web-sub-body-400">{souvikSarkar.handle}</div>
+                                            <div class="web-user-box">
+                                                <img
+                                                    class="web-user-box-image"
+                                                    src="/images/community/avatars/myshoefitter.png"
+                                                    alt="Avatar of Kap.ts"
+                                                />
+                                                <div class="web-user-box-name web-sub-body-500">
+                                                    Marius Bolik
+                                                </div>
+                                                <div class="web-user-box-username web-sub-body-400">
+                                                    CTO // mySHOEFITTER
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="web-is-only-desktop u-position-relative">
-                                          <svelte:component this={SubSectionThree} />
                                         </div>
                                     </div>
-                                </li>
-								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
-										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-                                        <div class="web-is-only-desktop" style="margin-top:-70px;">
-                                          <svelte:component this={SubSectionFour} />  
-                                        </div>
-										<div class="u-flex-vertical u-gap-16">
-											<h3 class="web-title web-u-color-text-primary">
-                                                Power of open source community
-											</h3>
-											<p class="aw -main-body-400">
-                                                Join a growing community of developers and founders who use Appwrite to build their products. Gain access to a wealth of knowledge, support, and shared experiences to help navigate the challenges of startup growth.
-											</p>
-                                            <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64">
-                                                <p class="aw-sub-body-500">{mariusBolik.text}</p>
-                                                <div class="web-user-box">
-                                                    <img class="web-user-box-image" src={mariusBolik.image} alt={`avatar of ${mariusBolik.name}`}>
-                                                    <div class="web-user-box-name web-sub-body-500">{mariusBolik.name}</div>
-                                                    <div class="web-user-box-username web-sub-body-400">{mariusBolik.handle}</div>
+                                </div>
+                            </li>
+                            <li>
+                                <svelte:component this={SubSectionOne} />
+                            </li>
+                            <li class="web-timeline-content-item">
+                                <div
+                                    class="web-grid-1-1"
+                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
+                                >
+                                    <div class="web-is-only-desktop">
+                                        <svelte:component this={SubSectionTwo} />
+                                    </div>
+                                    <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
+                                        <h3 class="web-title web-u-color-text-primary">
+                                            Scalable architecture
+                                        </h3>
+                                        <p class="aw-main-body-500">
+                                            Appwrite's scalable architecture ensures you can build
+                                            your product with growth in mind. Whether you're just
+                                            testing the waters or ready to scale up rapidly, our
+                                            infrastructure seamlessly adjusts to your needs, easing
+                                            the transition through different stages of your business
+                                            growth.
+                                        </p>
+                                        <div
+                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                        >
+                                            <p class="aw-sub-body-500">{ryanOconner.text}</p>
+                                            <div class="web-user-box">
+                                                <img
+                                                    class="web-user-box-image"
+                                                    src={ryanOconner.image}
+                                                    alt={`Avatar of ${ryanOconner.name}`}
+                                                />
+                                                <div class="web-user-box-name web-sub-body-500">
+                                                    {ryanOconner.name}
+                                                </div>
+                                                <div class="web-user-box-username web-sub-body-400">
+                                                    {ryanOconner.handle}
                                                 </div>
                                             </div>
-										</div>
-									</div>
-								</li>
-							</ol>
-						</div>
-					</div>
-				</div>
+                                        </div>
+                                    </div>
+                                    <div class="web-is-not-desktop u-flex">
+                                        <svelte:component this={SubSectionTwo} />
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="web-timeline-content-item">
+                                <div
+                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
+                                >
+                                    <div class="u-flex-vertical u-gap-16">
+                                        <h3 class="web-title web-u-color-text-primary">
+                                            Built-in security and compliance
+                                        </h3>
+                                        <p class="web-main-body-500">
+                                            Appwrite comes with built-in security features like
+                                            authentication, database security, and more, reducing
+                                            the time and effort you need to spend on securing your
+                                            application.
+                                        </p>
+                                        <div class="web-is-not-desktop u-flex u-position-relative">
+                                            <svelte:component this={SubSectionThree} />
+                                        </div>
+                                        <div
+                                            class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64"
+                                        >
+                                            <p class="aw-sub-body-500">{souvikSarkar.text}</p>
+                                            <div class="web-user-box">
+                                                <img
+                                                    class="web-user-box-image"
+                                                    src={souvikSarkar.image}
+                                                    alt={`Avatar of ${souvikSarkar.name}`}
+                                                />
+                                                <div class="web-user-box-name web-sub-body-500">
+                                                    {souvikSarkar.name}
+                                                </div>
+                                                <div class="web-user-box-username web-sub-body-400">
+                                                    {souvikSarkar.handle}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="web-is-only-desktop u-position-relative">
+                                        <svelte:component this={SubSectionThree} />
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="web-timeline-content-item">
+                                <div
+                                    class="web-grid-1-1"
+                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
+                                >
+                                    <div class="web-is-only-desktop" style="margin-top:-70px;">
+                                        <svelte:component this={SubSectionFour} />
+                                    </div>
+                                    <div class="u-flex-vertical u-gap-16">
+                                        <h3 class="web-title web-u-color-text-primary">
+                                            Power of open source community
+                                        </h3>
+                                        <p class="aw -main-body-400">
+                                            Join a growing community of developers and founders who
+                                            use Appwrite to build their products. Gain access to a
+                                            wealth of knowledge, support, and shared experiences to
+                                            help navigate the challenges of startup growth.
+                                        </p>
+                                        <div
+                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                        >
+                                            <p class="aw-sub-body-500">{mariusBolik.text}</p>
+                                            <div class="web-user-box">
+                                                <img
+                                                    class="web-user-box-image"
+                                                    src={mariusBolik.image}
+                                                    alt={`avatar of ${mariusBolik.name}`}
+                                                />
+                                                <div class="web-user-box-name web-sub-body-500">
+                                                    {mariusBolik.name}
+                                                </div>
+                                                <div class="web-user-box-username web-sub-body-400">
+                                                    {mariusBolik.handle}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
 
             <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
-                <h4 class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto">Focus on building your product</h4>
+                <h4
+                    class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
+                >
+                    Focus on building your product
+                </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner u-gap-32">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                         {#each testimonials as t}
                             <li>
-                                <div class="web-card is-white web-u-gap-20 web-u-margin-block-start-64" style="inline-size:23.625rem">
+                                <div
+                                    class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                    style="inline-size:23.625rem"
+                                >
                                     <p class="aw-sub-body-500">{t.text}</p>
                                     <div class="web-user-box">
-                                        <img class="web-user-box-image" src={t.image} alt="Avatar of Kap.ts">
-                                        <div class="web-user-box-name web-sub-body-500">{t.name}</div>
-                                        <div class="web-user-box-username web-sub-body-400">{t.handle}</div>
+                                        <img
+                                            class="web-user-box-image"
+                                            src={t.image}
+                                            alt="Avatar of Kap.ts"
+                                        />
+                                        <div class="web-user-box-name web-sub-body-500">
+                                            {t.name}
+                                        </div>
+                                        <div class="web-user-box-username web-sub-body-400">
+                                            {t.handle}
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -334,105 +449,102 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container" style="display:none">
                     <h2
-                            class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
+                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
                     >
                         Startups building with Appwrite
                     </h2>
                     <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/apple.svg"
-                                    alt="Apple"
-                                    width="42"
-                                    height="48"
+                                src="/images/logos/trusted-by/apple.svg"
+                                alt="Apple"
+                                width="42"
+                                height="48"
                             />
                         </li>
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/oracle.svg"
-                                    alt="ORACLE"
-                                    width="136"
-                                    height="17"
+                                src="/images/logos/trusted-by/oracle.svg"
+                                alt="ORACLE"
+                                width="136"
+                                height="17"
                             />
                         </li>
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/tiktok.svg"
-                                    alt="TikTok"
-                                    width="133"
-                                    height="32"
+                                src="/images/logos/trusted-by/tiktok.svg"
+                                alt="TikTok"
+                                width="133"
+                                height="32"
                             />
                         </li>
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/intel.svg"
-                                    alt="intel"
-                                    width="76"
-                                    height="30"
+                                src="/images/logos/trusted-by/intel.svg"
+                                alt="intel"
+                                width="76"
+                                height="30"
                             />
                         </li>
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/ibm.svg"
-                                    alt="IBM"
-                                    width="74"
-                                    height="30"
+                                src="/images/logos/trusted-by/ibm.svg"
+                                alt="IBM"
+                                width="74"
+                                height="30"
                             />
                         </li>
                         <li>
                             <img
-                                    src="/images/logos/trusted-by/american-airlines.svg"
-                                    alt="American Airlines"
-                                    width="147"
-                                    height="24"
+                                src="/images/logos/trusted-by/american-airlines.svg"
+                                alt="American Airlines"
+                                width="147"
+                                height="24"
                             />
                         </li>
                     </ul>
                 </div>
             </div>
-
-		</div>
-
-
+        </div>
 
         <div class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
             <div
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
                 <enhanced:img
-                        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
-                        src="./bg-left.png"
-                        alt=""
+                    class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
+                    src="./bg-left.png"
+                    alt=""
                 />
                 <enhanced:img
-                        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-                        src="./bg-right.png"
-                        alt=""
+                    class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+                    src="./bg-right.png"
+                    alt=""
                 />
                 <div class="web-container">
-
-
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container">
                             <div class="web-grid-1-1-opt-2 u-gap-32">
                                 <div>
                                     <div
-                                            class="web-u-max-inline-size-none-mobile"
-                                            class:web-u-max-width-380={!submitted}
+                                        class="web-u-max-inline-size-none-mobile"
+                                        class:web-u-max-width-380={!submitted}
                                     >
                                         {#if submitted}
                                             <section class="u-flex-vertical web-u-gap-20">
                                                 <h1 class="web-display web-u-color-text-primary">
                                                     Thank you for your message
                                                 </h1>
-                                                <p class="web-description web-u-padding-block-end-32">
-                                                    Your message has been sent successfully. We appreciate
-                                                    your feedback, our team will try to get back to you as
-                                                    soon as possible.
+                                                <p
+                                                    class="web-description web-u-padding-block-end-32"
+                                                >
+                                                    Your message has been sent successfully. We
+                                                    appreciate your feedback, our team will try to
+                                                    get back to you as soon as possible.
                                                 </p>
                                                 <a
-                                                        href="/"
-                                                        class="web-button is-secondary web-u-margin-block-end-32"
+                                                    href="/"
+                                                    class="web-button is-secondary web-u-margin-block-end-32"
                                                 >
                                                     <span>Back to homepage</span>
                                                 </a>
@@ -442,100 +554,111 @@
                                                 <h4 class="web-title web-u-color-text-primary">
                                                     Join the Appwrite Startups program
                                                 </h4>
-                                                <p class="web-description web-u-padding-block-end-40">
-                                                    We support VC backed tech startups that have been established within the last decade with:
+                                                <p
+                                                    class="web-description web-u-padding-block-end-40"
+                                                >
+                                                    We support VC backed tech startups that have
+                                                    been established within the last decade with:
                                                 </p>
                                             </section>
                                         {/if}
                                         <div
-                                                class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                            class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
                                         />
                                     </div>
                                 </div>
                                 {#if !submitted}
                                     <form
-                                            method="post"
-                                            on:submit|preventDefault={handleSubmit}
-                                            class="u-flex-vertical u-gap-16"
+                                        method="post"
+                                        on:submit|preventDefault={handleSubmit}
+                                        class="u-flex-vertical u-gap-16"
                                     >
                                         <div class="u-flex u-main-end">
                                             <ul
-                                                    class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                                class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <div class="u-block">Name</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="text"
-                                                            placeholder="Name"
-                                                            aria-label="Name"
-                                                            bind:value={firstName}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        placeholder="Name"
+                                                        aria-label="Name"
+                                                        bind:value={firstName}
                                                     />
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <div class="u-block">Email address</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="email"
-                                                            placeholder="Your email address"
-                                                            aria-label="Email address"
-                                                            bind:value={email}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="email"
+                                                        placeholder="Your email address"
+                                                        aria-label="Email address"
+                                                        bind:value={email}
                                                     />
                                                 </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
                                                     <div class="u-block">Subject</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="text"
-                                                            name="subject"
-                                                            placeholder="Ex: Appwrite Startups program"
-                                                            aria-label="Subject"
-                                                            bind:value={subject}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        name="subject"
+                                                        placeholder="Ex: Appwrite Startups program"
+                                                        aria-label="Subject"
+                                                        bind:value={subject}
                                                     />
                                                 </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
                                                     <div class="u-block">Company name</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="text"
-                                                            name="company"
-                                                            placeholder="Your company name"
-                                                            aria-label="Company name"
-                                                            bind:value={company}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        name="company"
+                                                        placeholder="Your company name"
+                                                        aria-label="Company name"
+                                                        bind:value={company}
                                                     />
                                                 </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
                                                     <div class="u-block">Company URL</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="text"
-                                                            name="company-url"
-                                                            placeholder="Your company website"
-                                                            aria-label="Company URL"
-                                                            bind:value={companyURL}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        name="company-url"
+                                                        placeholder="Your company website"
+                                                        aria-label="Company URL"
+                                                        bind:value={companyURL}
                                                     />
                                                 </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
                                                     <div class="u-block">Crunchbase URL</div>
                                                     <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="text"
-                                                            name="company-url"
-                                                            placeholder="Your Crunchbase URL"
-                                                            aria-label="Crunchbase URL"
-                                                            bind:value={companyCrunchBaseURL}
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        name="company-url"
+                                                        placeholder="Your Crunchbase URL"
+                                                        aria-label="Crunchbase URL"
+                                                        bind:value={companyCrunchBaseURL}
                                                     />
                                                 </li>
                                             </ul>
                                         </div>
                                         <div
-                                                class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                            class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                         >
                                             <p class="web-caption-400 web-u-max-width-380">
                                                 {#if error}
@@ -551,8 +674,8 @@
                                                 and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
                                             </p> -->
                                             <button
-                                                    type="submit"
-                                                    class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                                type="submit"
+                                                class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
                                             >
                                                 <span>Get Started</span>
                                             </button>
@@ -572,7 +695,7 @@
 </Main>
 
 <style lang="scss">
-  @use '$scss/abstract/mixins/border-gradient' as gradients;
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .web-pre-footer-bg {
         position: absolute;
@@ -585,61 +708,61 @@
         max-block-size: unset;
     }
 
-
     @keyframes scroll {
-      to {
-        transform: translate(calc(-50% - 1rem));
-      }
+        to {
+            transform: translate(calc(-50% - 1rem));
+        }
     }
     .scroll-carousel {
-      display: flex;
-      width: 100%;
-      overflow: auto;
-
-      .inner {
-        padding-inline: 4rem;
-
         display: flex;
-        gap: 2rem;
-        flex-shrink: 0;
+        width: 100%;
+        overflow: auto;
 
-        > * {
-          flex-shrink: 0;
-          scroll-snap-align: start;
-        } /* items */
+        .inner {
+            padding-inline: 4rem;
 
-        .carousel-img {
-          @include gradients.border-gradient;
-          --m-border-gradient-before: linear-gradient(
-                          135.1deg,
-                          #ffffff 10.1%,
-                          rgba(255, 255, 255, 0.2) 52.69%,
-                          rgba(255, 255, 255, 0.5) 120.69%
-          );
-          --m-border-radius: 1.25rem;
-          background: linear-gradient(
-                          155deg,
-                          rgba(255, 255, 255, 0.35) 1.16%,
-                          rgba(255, 255, 255, 0.35) 84.17%
-          );
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            gap: 2rem;
+            flex-shrink: 0;
+
+            > * {
+                flex-shrink: 0;
+                scroll-snap-align: start;
+            } /* items */
+
+            .carousel-img {
+                @include gradients.border-gradient;
+                --m-border-gradient-before: linear-gradient(
+                    135.1deg,
+                    #ffffff 10.1%,
+                    rgba(255, 255, 255, 0.2) 52.69%,
+                    rgba(255, 255, 255, 0.5) 120.69%
+                );
+                --m-border-radius: 1.25rem;
+                background: linear-gradient(
+                    155deg,
+                    rgba(255, 255, 255, 0.35) 1.16%,
+                    rgba(255, 255, 255, 0.35) 84.17%
+                );
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+            }
         }
-      }
     }
     :global([data-animated]).scroll-carousel {
-      overflow: hidden;
+        overflow: hidden;
 
-      .inner {
-        padding-inline: 0;
-        animation: scroll 40s linear infinite;
-      }
+        .inner {
+            padding-inline: 0;
+            animation: scroll 40s linear infinite;
+        }
     }
 
     .web-u-drop-shadow {
-      filter: drop-shadow(5px 5px 10px #00000011);
+        filter: drop-shadow(5px 5px 10px #00000011);
     }
 
-    svg { max-inline-size:100%; }
-
+    svg {
+        max-inline-size: 100%;
+    }
 </style>
