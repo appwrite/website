@@ -36,7 +36,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% section #step-2 step=2 title="Adding the Hugging Face SDK" %}
 Once the function is created, clone the function and open it in your development environment.
 
-Once you have the repository open, you can install the Hugging Face Inference SDK by running the following command in your terminal:
+Once you have the repository open, you can install the Hugging Face inference SDK by running the following command in your terminal:
 
 ```bash
 npm install @huggingface/inference
@@ -44,9 +44,9 @@ npm install @huggingface/inference
 {% /section %}
 
 
-{% section #step-3 step=3 title="Parsing the payload body" %}
-With the SDK Installed, we can begin to write the code that will parse the body.
-The function we are writing today can serve two purposes: it can recieve a body via direct execution or it can be called via a file create event.
+{% section #step-3 step=3 title="Parsing the body" %}
+After installing the SDK, write the code that will parse the body of the request.
+The function will support two purposes: it can recieve a body via direct execution or it can be called via a file create event.
 
 Open up your `src/index.js` file and replace the function body with the following code:
 
@@ -57,7 +57,7 @@ export default async ({ req, res, log, error }) => {
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
 
   if (req.method !== 'POST') {
-    return res.send('Method Not Allowed', 405);
+    return res.send('Method not allowed', 405);
   }
 
   // Allows using direct execution or file create event
@@ -65,7 +65,7 @@ export default async ({ req, res, log, error }) => {
 
   if (!fileId) {
     error('Missing fileId');
-    return res.send('Bad Request', 400);
+    return res.send('Bad request', 400);
   }
 
   if (
@@ -73,7 +73,7 @@ export default async ({ req, res, log, error }) => {
     req.body.bucketId != bucketId
   ) {
     error('Invalid bucketId');
-    return res.send('Bad Request', 400);
+    return res.send('Bad request', 400);
   }
 }
 ```
@@ -81,8 +81,8 @@ export default async ({ req, res, log, error }) => {
 Breaking down this code, we perform the following:
 1. We set the default values for the `databaseId`, `collectionId`, and `bucketId` to the values we will use in the Appwrite Console.
 2. We check if the request method is `POST`, if it is not, we return a `405 - Method not allowed` status code.
-3. We check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad Request` status code.
-4. We check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad Request` status code.
+3. We check if the `fileId` is present in the request body, if it is not, we return a `400 - Bad request` status code.
+4. We check if the `bucketId` is present in the request body and if it is not the same as the one we set in the environment variables, we return a `400 - Bad request` status code.
 
 {% /section %}
 
@@ -152,15 +152,15 @@ Then, we can use the `AppwriteService` class to download the image from the Appw
     }
 
     error(err);
-    return res.send('Bad Request', 400);
+    return res.send('Bad request', 400);
   }
 ```
-This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad Request` status code if an error occurs.
+This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 
 {% /section %}
 
 {% section #step-6 step=6 title="Detecting objects in the image" %}
-With the image downloaded, we can now use the Hugging Face Inference SDK to classify the image.
+With the image downloaded, we can now use the Hugging Face inference SDK to classify the image.
 
 At the top of the `src/index.js` file, add:
 ```js
@@ -254,7 +254,7 @@ Making sure to replace `[Bucket ID]` with the ID of the bucket you created earli
 {% /only_light %}
 {% /section %}
 {% section #step-11 step=11 title="Testing the function" %}
-Finally, we can test our function by uploading an image to the Appwrite Storage.
+Test our function by uploading an image to the Appwrite Storage.
 
 Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
 After a few seconds, you should see an execution appear in the function's execution logs and the object detection result should be saved to the Appwrite Database.

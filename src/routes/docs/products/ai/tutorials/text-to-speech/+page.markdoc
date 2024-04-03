@@ -344,14 +344,18 @@ import AppwriteService from './appwrite.js';
 import { ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-  throwIfMissing(process.env, ['HUGGING_FACE_API_KEY', 'APPWRITE_API_KEY', 'APPWRITE_FUNCTION_PROJECT_ID']);
+  throwIfMissing(process.env, [
+    'HUGGING_FACE_API_KEY', 
+    'APPWRITE_API_KEY', 
+    'APPWRITE_FUNCTION_PROJECT_ID'
+  ]);
 
   const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
 
   if (req.method !== 'POST') {
-    return res.send('Method Not Allowed', 405);
+    return res.send('Method not allowed', 405);
   }
 
   const appwrite = new AppwriteService();
@@ -359,7 +363,7 @@ export default async ({ req, res, log, error }) => {
   const data = req.body;
 
   if (!data.text) {
-    return res.send('Bad Request', 400);
+    return res.send('Bad request', 400);
   }
 
   const response = await fetch(
@@ -417,7 +421,7 @@ stores the generated audio file in Appwrite Storage, and creates a document in t
 {% /section %}
 
 {% section #step-7 step=7 title="Test the function" %}
-Finally, we can test our function by uploading an audio file the Appwrite Storage.
+Test our function by uploading an audio file the Appwrite Storage.
 
 Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
 After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
