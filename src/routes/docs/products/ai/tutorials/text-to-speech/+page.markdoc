@@ -4,7 +4,6 @@ title: Text to Speech with Hugging Face
 description: Learn how to integrate Hugging Face into your Appwrite project for text to speech processing.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/natural-language
 ---
 
 Hugging Face is a platform that hosts ML models for all types of applications, including text to speech.
@@ -345,8 +344,8 @@ import { ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
   throwIfMissing(process.env, [
-    'HUGGING_FACE_API_KEY', 
-    'APPWRITE_API_KEY', 
+    'HUGGING_FACE_API_KEY',
+    'APPWRITE_API_KEY',
     'APPWRITE_FUNCTION_PROJECT_ID'
   ]);
 

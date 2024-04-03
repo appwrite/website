@@ -4,7 +4,6 @@ title: Speech recognition with Hugging Face
 description: Implement speech recognition into your app with Appwrite and Hugging Face.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/audio-processing
 ---
 
 Hugging Face is a platform that hosts ML models for all types of applications, including for speech recognition.
