@@ -43,7 +43,7 @@ npm install @huggingface/inference
 
 
 {% section #step-3 step=3 title="Parse payload body" %}
-After installing the SDK, write the code that will accept a JSON body.
+After installing the SDK, write the code that will accept a validate the request body.
 
 Open up your `src/main.js` file and replace the function body with the following code:
 
@@ -52,30 +52,18 @@ export default async ({ req, res }) => {
   if (!process.env.HUGGINGFACE_ACCESS_TOKEN) {
     return res.json({
         ok: false,
-        error: 'Hugging Face access token is required'
+        error: 'HUGGINGFACE_ACCESS_TOKEN is not set',
     });
-  }
-
-  if (req.method !== 'POST') {
-    return res.json({
-        ok: false,
-        error: 'Method not allowed'
-    }, 405);
   }
 
   if (!req.body.source || typeof req.body.source !== 'string') {
     return res.json({
         ok: false,
-        error: '`source` json parameter is required'
+        error: 'Missing requrired field `source`',
     }, 400);
   }
 }
 ```
-
-Breaking down this code, we perform the following:
-1. Check if the Hugging Face access token is set - if not we return an error.
-2. Check if the request method is POST - if not we return a `405 - Method not allowed` status code.
-3. Check if the `sourceText` parameter is set and is a string - if not we return a `400 - Bad request` status code.
 
 {% /section %}
 
@@ -94,6 +82,13 @@ In your function body, add the following code after the parameter checks:
 export default async ({ req, res }) => {
     // ... existing parameter checks
 
+    if (req.method !== 'POST') {
+        return res.json({
+            ok: false,
+            error: 'Method not allowed'
+        }, 405);
+    }
+
     const hf = new HfInference(process.env.HUGGINGFACE_ACCESS_TOKEN);
 
     try {
@@ -105,7 +100,6 @@ export default async ({ req, res }) => {
                 tgt_lang: 'fr_XX', // French locale
             }
         });
-
         return res.json({
             ok: true,
             output: translation.translation_text
@@ -119,10 +113,7 @@ export default async ({ req, res }) => {
 }
 ```
 
-Breaking down this code, we perform the following:
-1. Create a new instance of the Hugging Face inference SDK.
-2. Make a request to the Hugging Face translation endpoint using the `facebook/mbart-large-50-many-to-many-mmt` model.
-3. Return the translation result to the user.
+First, ensure the function is called with method `POST`. Then, make a request to the Hugging Face API to translate the `source` text from English to French. You can change the `src_lang` and `tgt_lang` parameters to any language supported by the model you choose.
 
 {% /section %}
 

@@ -215,27 +215,20 @@ import { Pinecone } from '@pinecone-database/pinecone';
 import { OpenAI } from 'openai';
 ```
 
-Add code to initialize the Pinecone and OpenAI clients at the end of request handler in the `main.js` file:
+Add the following code at the end of request handler in the `main.js` file:
 
 ```js
 if (req.method !== 'POST') {
   return res.json({ ok: false, error: 'Method not allowed' }, 405);
 }
 
-const pinecone = new Pinecone({
-    apiKey: process.env.PINECONE_API_KEY,
-});
-const index = pinecone.index(process.env.PINECONE_INDEX_ID);
+const openai = new OpenAI();
 
-const openai = new OpenAI({
-    piKey: process.env.OPENAI_API_KEY,
-});
+const pinecone = new Pinecone();
+const pineconeIndex = pinecone.index(process.env.PINECONE_INDEX_ID);
 ```
 
-Breaking down the code:
-1. The `Pinecone` class is initialized to interact with the Pinecone API.
-2. The index is retrieved from Pinecone using the `PINECONE_INDEX_ID` environment variable.
-3. The `OpenAI` class is intiialized to interact with the OpenAI API.
+The functions checks the request method, and then initializes the OpenAI and Pinecone SDKs.
 
 {% /section %}
 
@@ -250,7 +243,7 @@ if (req.path === '/search') {
         input: req.body.prompt,
     });
 
-    const searchResults = await index.query({
+    const searchResults = await pineconeIndex.query({
         vector: queryEmbedding.data[0].embedding,
         topK: 5,
     });
@@ -259,87 +252,93 @@ if (req.path === '/search') {
 }
 ```
 
-Breaking down the code:
-1. The function sends the prompt to the OpenAI API to get the embedding.
-2. The embedding vector is sent to Pinecone to search for the top 5 most similiar vectors.
-3. The function returns the search results.
+For all requests with the path `/search`, the function sends the search query to the OpenAI API to get the embedding. The function then queries the Pinecone index with the embedding and returns the results.
 
 {% /section %}
 
 {% section #step-8 step=8 title="Handle indexing requests" %}
 
-Before search requests can be handled, the Appwrite collection needs to be indexed into the Pinecone index. Add the following code to the end of the request handler in the `main.js` file:
+The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
-const client = new Client()
-  .setEndpoint(
-    process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-  )
-  .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  .setKey(process.env.APPWRITE_API_KEY);
+import { Client, Databases, Query } from 'node-appwrite';
 
-const databases = new Databases(client);
+export default class AppwriteService {
+  constructor() {
+    const client = new Client();
+    client
+      .setEndpoint(
+        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+      )
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
+
+    this.databases = new Databases(client);
+  }
+
+  async getAllDocuments(databaseId, collectionId) {
+    const cumulative = [];
+
+    let cursor = null;
+    do {
+      const queries = [Query.limit(100)];
+
+      if (cursor) {
+        queries.push(Query.cursorAfter(cursor));
+      }
+
+      const { documents } = await this.databases.listDocuments(
+        databaseId,
+        collectionId,
+        queries
+      );
+
+      if (documents.length === 0) {
+        break;
+      }
+
+      cursor = documents[documents.length - 1].$id;
+
+      cumulative.push(...documents);
+    } while (cursor);
+
+    return cumulative;
+  }
+}
 ```
 
-Now the Appwrite client is initialized to interact with the Appwrite API. 
-Add the following code to the end of the request handler in the `main.js` file:
+The service provides a method to iterate the documents contained within an entire collection, fetching the limit of 100 documents per request.
 
 ```js
-let cursor = null;
-do {
-  const queries = [Query.limit(100)];
+const appwrite = new AppwriteService();
 
-  if (cursor) {
-    queries.push(Query.cursorAfter(cursor));
-  }
+const documents = await appwrite.getAllDocuments(
+  process.env.APPWRITE_DATABASE_ID,
+  process.env.APPWRITE_COLLECTION_ID
+);
 
-  const { documents } = await databases.listDocuments(
-    process.env.APPWRITE_DATABASE_ID,
-    process.env.APPWRITE_COLLECTION_ID,
-    queries
-  );
+const embeddings = await Promise.all(
+  documents.map(async (document) => {
+    const record = await openai.embeddings.create({
+      model: 'text-embedding-ada-002',
+      input: JSON.stringify(document),
+    });
+    return {
+      id: document.$id,
+      values: record.data[0].embedding,
+      metadata: document,
+    };
+  })
+);
 
-  if (documents.length === 0) {
-    log(`No more documents found.`);
-    break;
-  }
-
-  cursor = documents[documents.length - 1].$id;
-
-  const embeddings = await Promise.all(
-    documents.map(async (document) => {
-      const record = await openai.embeddings.create({
-        model: 'text-embedding-ada-002',
-        input: JSON.stringify(document),
-      });
-      return {
-        id: document.$id,
-        values: record.data[0].embedding,
-        metadata: document,
-      };
-    })
-  );
-
-  await index.upsert(embeddings);
-
-  log(`Synced ${documents.length} documents.`);
-} while (cursor);
-
-log('Sync finished.');
-
-return res.send('Sync finished.', 200);
+await pineconeIndex.upsert(embeddings);
 ```
 
-Breaking down the code:
-1. The function initializes the Appwrite client to interact with the Appwrite API.
-2. The function retrieves all documents from the Appwrite collection.
-3. The function sends each document to the OpenAI API to get the embedding.
-4. The function sends the embeddings to the Pinecone index.
-5. The function logs the number of documents synced.
+The code fetches all documents from the Appwrite collection, then sends each document to the OpenAI API to get the embedding. The embeddings are then uploaded to the Pinecone index.
 
 {% /section %}
 
-{% section #step-8 step=8 title="Test the function" %}
+{% section #step-9 step=9 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a search query and click the submit button. After a brief moment you should see the matched results.
 
