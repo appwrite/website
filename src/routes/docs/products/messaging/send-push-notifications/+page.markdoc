@@ -397,16 +397,19 @@ Before your app can receive push notifications, you need to request the user for
 Appwrite provides a utility to help request permissions to display notificaitons.
 
 ```swift
-OS.requestPermission(
-    application,
-    OSPermission.notifications,
-    onGranted: {
-        // Handle on permission granted
-    },
-    onDenied: {
-        // Handle on permission denied
+func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) async -> Bool {
+        // ... other setup logic
+        let center = UNUserNotificationCenter.current()
+
+        do {
+            try await center.requestAuthorization(options: [.alert, .sound, .badge])
+        } catch {
+            // Handle the error here.
+        }
     }
-)
 ```
 
 {% /tabsitem %}
@@ -431,16 +434,19 @@ Before your app can receive push notifications, you need to request the user for
 Appwrite provides a utility to help request permissions to display notificaitons.
 
 ```swift
-OS.requestPermission(
-    application,
-    OSPermission.notifications,
-    onGranted: {
-        // Handle on permission granted
-    },
-    onDenied: {
-        // Handle on permission denied
+func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) async -> Bool {
+        // ... other setup logic
+        let center = UNUserNotificationCenter.current()
+
+        do {
+            try await center.requestAuthorization(options: [.alert, .sound, .badge])
+        } catch {
+            // Handle the error here.
+        }
     }
-)
 ```
 
 When an FCM registration token is generated, the library uploads the identifier and configuration data to Firebase.
