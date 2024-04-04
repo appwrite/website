@@ -46,8 +46,6 @@ To change your dev environment, edit your server `_APP_ENV` environment variable
 
 ```yaml
 ...
-    - influxdb
-    - telegraf
 environment:
     - _APP_ENV=development
     - _APP_OPENSSL_KEY_V1=your-secret-key

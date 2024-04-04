@@ -69,15 +69,6 @@ Appwrite uses MariaDB to persist database data. The DB env vars are used to allo
 | `_APP_DB_PASS`         | MariaDB server user password. Default value is: `password`.                                      |
 | `_APP_DB_ROOT_PASS`    | MariaDB server root password. Default value is: `rootsecretpassword`.                           |
 
-# InfluxDB {% #influxdb %}
-Appwrite uses an InfluxDB server for managing time-series data and server stats. The InfluxDB env vars are used to allow Appwrite server to connect to the InfluxDB container.
-
-| Name                  | Description                                                                                     |
-|-----------------------|-------------------------------------------------------------------------------------------------|
-| `_APP_INFLUXDB_HOST`  | InfluxDB server host name address. Default value is: `influxdb`.                                |
-| `_APP_INFLUXDB_PORT`  | InfluxDB server TCP port. Default value is: `8086`.                                             |
-
-
 # StatsD {% #statsd %}
 
 Appwrite uses a StatsD server for aggregating and sending stats data over a fast UDP connection. The StatsD env vars are used to allow Appwrite server to connect to the StatsD container.
