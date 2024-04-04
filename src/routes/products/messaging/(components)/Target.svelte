@@ -188,87 +188,12 @@
 </script>
 
 <Step title="Step 2: Target">
-    <div class="users-modal is-only-mobile">
-        <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
-        <Accordion>
-            <ul class="accordion-items">
-                {#each users as user, i}
-                    {@const selectedDevices = user.devices.filter((d) => d.checked).length}
-                    {@const allSelected = selectedDevices === user.devices.length}
-                    <li>
-                        <AccordionItem index={i}>
-                            <div class="trigger" slot="trigger">
-                                <Checkbox
-                                    id={`user-${i}`}
-                                    checked={allSelected
-                                        ? true
-                                        : selectedDevices > 0
-                                          ? 'indeterminate'
-                                          : false}
-                                    onCheckedChange={({ next }) => {
-                                        const newUsers = structuredClone(users).map((u, j) => {
-                                            if (i === j) {
-                                                if (next === true) {
-                                                    u.devices.forEach((d) => (d.checked = true));
-                                                } else if (!next) {
-                                                    u.devices.forEach((d) => (d.checked = false));
-                                                }
-                                            }
-                                            return u;
-                                        });
-                                        if (!dequal(newUsers, users)) {
-                                            users = newUsers;
-                                        }
-
-                                        return next;
-                                    }}
-                                />
-                                <span class="web-sub-body-500 web-u-color-text-primary">
-                                    {user.name}
-                                </span>
-                                <span class="web-caption-400">
-                                    &nbsp;({selectedDevices}/{user.devices.length} targets)
-                                </span>
-                            </div>
-
-                            <ul>
-                                {#each user.devices as device, j}
-                                    <li>
-                                        <!-- svelte-ignore a11y-label-has-associated-control -->
-                                        <Checkbox
-                                            id="device-{i}-{j}"
-                                            bind:checked={user.devices[j].checked}
-                                            --size="1rem"
-                                        />
-                                        <label for="device-{i}-{j}">
-                                            <span class="type">{device.type}</span>
-                                            <span class="web-caption-400">{device.value}</span>
-                                        </label>
-                                    </li>
-                                {/each}
-                            </ul>
-                        </AccordionItem>
-                    </li>
-                {/each}
-            </ul>
-        </Accordion>
-        <div class="u-flex u-margin-block-start-20">
-            <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
-                Total results: {users.flatMap((u) => u.devices).length}
-            </span>
-        </div>
-
-        <hr />
-
-        <div class="u-flex u-cross-center u-main-end u-gap-16">
-            <span style="font-size: 14px; color: #6C6C71;"
-                >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
-            >
-            <button class="web-button">Add</button>
-        </div>
-    </div>
-    <div class="wrapper is-not-mobile" bind:this={wrapper}>
-        <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
+    <div class="wrapper" bind:this={wrapper}>
+        <svg
+            class="is-not-mobile"
+            viewBox="0 0 {width} {height}"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             {#each lines as line, i}
                 <line
                     x1={devices[line.from].circlePos[0]}
@@ -465,6 +390,9 @@
             );
             pointer-events: none;
         }
+        @media screen and (max-width: 769px) {
+            overflow: visible;
+        }
     }
 
     svg {
@@ -523,12 +451,17 @@
         --m-border-radius: 1.5rem;
 
         @media screen and (max-width: 769px) {
-            position: inherit;
+            position: relative;
             transform: none;
+            inset-block-start: unset;
+            inset-inline-start: unset;
             display: block;
             margin-inline: auto;
             inline-size: 100%;
             max-inline-size: 30rem;
+            z-index: -1;
+            max-block-size: 28rem;
+            overflow: hidden;
         }
 
         .accordion-items {
@@ -590,6 +523,7 @@
     .target-text {
         text-wrap: balance;
         @media screen and (max-width: 1024px) {
+            z-index: 1;
             justify-content: start;
             align-items: start;
             margin-block-start: 2rem;
