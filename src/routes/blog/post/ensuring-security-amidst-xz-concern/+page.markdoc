@@ -1,14 +1,13 @@
 ---
 layout: post
 title: Ensuring security amidst the XZ Utils backdoor concern
-description:
+description: Learn about Appwrite's response to XZ Utils backdoor concerns and how to safeguard your Appwrite projects.
 date: 2024-04-02
-cover: /images/blog/enhancing-type-safety.png
+cover: /images/blog/ensuring-security-amidst-xz-concern/cover.png
 timeToRead: 7
 author: jake-barnby
 category: engineering
 featured: false
-draft: true
 ---
 
 In the light of recent unsettling revelations regarding a backdoor discovered in the widely-used XZ Utils, 
@@ -45,4 +44,5 @@ so you can build applications with peace of mind.
 The team will continue to monitor the situation closely, take necessary actions to mitigate any potential risks,
 and communicate any updates transparently to the community.
 
-For any further queries or concerns, feel free to reach out. We're here to support you every step of the way.
+For any further questions or concerns, please reach out through [email](https://appwrite.io/contact-us) or on [Discord](https://appwrite.io/discord).
+We're here to support you every step of the way.

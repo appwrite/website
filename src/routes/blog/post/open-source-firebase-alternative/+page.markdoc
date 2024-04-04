@@ -87,7 +87,7 @@ Functions are "self-contained" modules of code that accomplish a specific task. 
 
 *Differences:*
 
-- Appwrite offers easy and quick deployment of [functions using Git](https://appwrite.io/docs/products/functions/deployment#git), has ready-to-use templates, and supports a large number of runtimes.
+- Appwrite offers easy and quick deployment of [functions using Git](https://appwrite.io/docs/products/functions/deploy-from-git), has ready-to-use templates, and supports a large number of runtimes.
 - Appwrite supports [function runtimes across over 10 different languages](https://appwrite.io/docs/products/functions/runtimes), including Dart, Bun, Kotlin, and Swift, whereas Firebase only supports JavaScript, TypeScript, and Python.
 - Firebase offers additional event triggers for different Google Cloud services.
 
