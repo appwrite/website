@@ -267,7 +267,7 @@
             <button class="web-button">Add</button>
         </div>
     </div>
-    <div class="wrapper is-only-desktop" bind:this={wrapper}>
+    <div class="wrapper is-not-mobile" bind:this={wrapper}>
         <svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">
             {#each lines as line, i}
                 <line
@@ -522,11 +522,13 @@
         );
         --m-border-radius: 1.5rem;
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 769px) {
             position: inherit;
             transform: none;
             display: block;
             margin-inline: auto;
+            inline-size: 100%;
+            max-inline-size: 30rem;
         }
 
         .accordion-items {
@@ -593,6 +595,7 @@
             margin-block-start: 2rem;
             padding-block-end: var(--padding-block-end);
             text-wrap: inherit;
+            h3,
             p {
                 text-align: start;
             }
