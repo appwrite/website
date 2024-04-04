@@ -152,7 +152,7 @@ const client = new Client()
 const databases = new Databases(client);
 
 let promise = databases.listDocuments(
-    "<DATABASE_ID>"
+    "<DATABASE_ID>",
     "<COLLECTION_ID>",
     [
         Query.equal('title', 'Hamlet')
