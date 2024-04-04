@@ -24,7 +24,7 @@ Here are the steps to implement MFA in your application.
 
 {% section #display-recover-code step=1 title="Display recovery codes" %}
 
-Initialize your Appwrite SDK's `Client` and `Account`.
+Initialize your Appwrite SDK's `Client`, `Account`, and `Avatars`.
 
 {% multicode %}
 ```client-web
@@ -81,7 +81,7 @@ val avatars = Avatars(client)
 {% /multicode %}
 
 Before enabling MFA, you should display recovery codes to the user.
-The codes are single use passwords the user can use to access their account if they lose access to their MFA email, phone, or authenticator.
+The codes are single use passwords the user can use to access their account if they lose access to their MFA email, phone, or authenticator app.
 
 The code will look like this, display them to the user and remind them to save the codes in a secure place.
 
@@ -117,8 +117,8 @@ result.then((response) {
 ```
 
 ```client-apple
-let mfaRecoveryCodes = try await account.createMfaRecoveryCodes()
-print(mfaRecoveryCodes.recoveryCodes)
+let response = try await account.createMfaRecoveryCodes()
+print(response.recoveryCodes)
 ```
 
 ```client-android-kotlin
@@ -149,9 +149,9 @@ First, set your user's email if they haven't already.
 {% multicode %}
 ```client-web
 const response = await account.updateEmail(
-        'email@example.com',  // email
-        'password' // password
-    );
+    'email@example.com',  // email
+    'password' // password
+);
 ```
 ```client-flutter
 Future result = account.updateEmail(
@@ -166,7 +166,7 @@ result.then((response) {
 });
 ```
 ```client-apple
-let user = try await account.updateEmail(
+let response = try await account.updateEmail(
   email: "email@example.com",
   password: "password"
 )
@@ -180,9 +180,7 @@ val response = account.updateEmail(
 ```client-android-java
 account.updateEmail(
     "email@example.com", // email
-
-    "password" // password
-
+    "password", // password
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -202,8 +200,8 @@ with a link with the query parameter `userId` and `secret`.
 {% multicode %}
 ```client-web
 const res = await account.createVerification(
-        'https://example.com/verify-email' // url
-    );
+    'https://example.com/verify-email' // url
+);
 ```
 ```client-flutter
 Future result = account.createVerification(
@@ -218,7 +216,7 @@ result.then((response) {
 
 ```
 ```client-apple
-let token = try await account.createVerification(
+let response = try await account.createVerification(
   url: "https://example.com/verify-email"
 )
 ```
@@ -229,8 +227,7 @@ val response = account.createVerification(
 ```
 ```client-android-java
 account.createVerification(
-    "https://example.com/verify-email" // url
-
+    "https://example.com/verify-email", // url
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -251,9 +248,9 @@ Finally, verify the email by calling `account.updateVerification()` with `userId
 {% multicode %}
 ```client-web
 const response = await account.updateVerification(
-        '<USER_ID>',  // userId
-        '<SECRET>' // secret
-    );
+    '<USER_ID>',  // userId
+    '<SECRET>', // secret
+);
 ```
 ```client-flutter
 Future result = account.updateVerification(
@@ -268,7 +265,7 @@ result.then((response) {
 });
 ```
 ```client-apple
-let token = try await account.updateVerification(
+let response = try await account.updateVerification(
   userId: "<USER_ID>",
   secret: "<SECRET>"
 )
@@ -282,9 +279,7 @@ val response = account.updateVerification(
 ```client-android-java
 account.updateVerification(
     "<USER_ID>", // userId
-
-    "<SECRET>" // secret
-
+    "<SECRET>", // secret
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -304,13 +299,10 @@ First, set your user's phone number if they haven't already.
 
 {% multicode %}
 ```client-web
-
-
 const response = await account.updatePhone(
-        '+12065550100',  // phone
-        'password' // password
-    );
-```
+    '+12065550100',  // phone
+    'password' // password
+);
 ```client-flutter
 Future result = account.updatePhone(
     phone: '+12065550100',
@@ -324,7 +316,7 @@ result.then((response) {
 });
 ```
 ```client-apple
-let user = try await account.updatePhone(
+let response = try await account.updatePhone(
   phone: "+12065550100",
   password: "password"
 )
@@ -338,9 +330,7 @@ val response = account.updatePhone(
 ```client-android-java
 account.updatePhone(
     "+12065550100", // phone
-
-    "password" // password
-
+    "password", // password
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -356,10 +346,7 @@ account.updatePhone(
 Then, initiate verification for the phone number by calling `account.createPhoneVerification()`.
 {% multicode %}
 ```client-web
-
-
 const response = await account.createPhoneVerification();
-```
 ```client-flutter
 Future result = account.createPhoneVerification();
 
@@ -371,7 +358,7 @@ result
 });
 ```
 ```client-apple
-let token = try await account.createPhoneVerification()
+let response = try await account.createPhoneVerification()
 ```
 ```client-android-kotlin
 val response = account.createPhoneVerification()
@@ -391,13 +378,10 @@ account.createPhoneVerification(new CoroutineCallback<>((result, error) -> {
 After the user receives the verification code, they can verify their phone number by calling `account.updatePhoneVerification()`.
 {% multicode %}
 ```client-web
-
-
 const response = await account.updatePhoneVerification(
-        '<USER_ID>',  // userId
-        '<SECRET>' // secret
-    );
-```
+    '<USER_ID>',  // userId
+    '<SECRET>' // secret
+);
 ```client-flutter
 Future result = account.updatePhoneVerification(
     userId: '<USER_ID>',
@@ -411,7 +395,7 @@ result.then((response) {
     });
 ```
 ```client-apple
-let token = try await account.updatePhoneVerification(
+let response = try await account.updatePhoneVerification(
   userId: "<USER_ID>",
   secret: "<SECRET>"
 )
@@ -425,9 +409,7 @@ val response = account.updatePhoneVerification(
 ```client-android-java
 account.updatePhoneVerification(
     "<USER_ID>", // userId
-
-    "<SECRET>" // secret
-
+    "<SECRET>", // secret
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -448,9 +430,8 @@ First, add a TOTP authenticator to the user's account by calling `account.addAut
 {% multicode %}
 ```client-web
 const { secret, uri } = await account.createMfaAuthenticator(
-        'totp' // type
-    );
-```
+    'totp' // type
+);
 ```client-flutter
 Future result = account.createMfaAuthenticator(
     type: 'totp',
@@ -464,11 +445,11 @@ result.then((response) {
 });
 ```
 ```client-apple
-let mfaType = try await account.createMfaAuthenticator(
+let response = try await account.createMfaAuthenticator(
   type: "totp"
 )
-print(mfaType.secret)
-print(mfaType.uri)
+print(response.secret)
+print(response.uri)
 ```
 ```client-android-kotlin
 val response = account.createMfaAuthenticator(
@@ -479,8 +460,7 @@ println(response.uri)
 ```
 ```client-android-java
 account.createMfaAuthenticator(
-    "totp" // type
-
+    "totp", // type
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -501,15 +481,16 @@ You can generate a QR code for the user to scan by calling `avatars.getQR()`.
 {% multicode %}
 ```client-web
 const result = await avatars.getQR(
-        authenticatorUrl,  // text
-        1,  // size (optional)
-        0,  // margin (optional)
-        false // download (optional)
-    );
+    authenticatorUrl,  // text
+    1,  // size (optional)
+    0,  // margin (optional)
+    false // download (optional)
+);
 
 console.log(result); // Resource URL
 ```
 ```client-flutter
+// download QR code image
 Future result = avatars.getQR(
     text: authenticatorUrl,
     size: 1, // optional
@@ -522,7 +503,7 @@ Future result = avatars.getQR(
     print(error.response);
 });
 
-// displaying image preview
+// display QR code image
 FutureBuilder(
     future: avatars.getQR(
         text: authenticatorUrl,
@@ -548,8 +529,6 @@ let byteBuffer = try await avatars.getQR(
 )
 ```
 ```client-android-kotlin
-val avatars = Avatars(client)
-
 val result = avatars.getQR(
     text = authenticatorUrl,
     size = 1, // optional
@@ -562,7 +541,7 @@ avatars.getQR(
     authenticatorUrl, // text
     1, // size (optional)
     0, // margin (optional)
-    false // download (optional)
+    false, // download (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -583,9 +562,9 @@ verify the authenticator by calling `account.verifyMfaAuthenticator()`.
 {% multicode %}
 ```client-web
 const promise = account.updateMfaAuthenticator(
-        'totp',  // type
-        '<OTP>' // otp
-    );
+    'totp',  // type
+    '<OTP>' // otp
+);
 ```
 ```client-flutter
   Future result = account.updateMfaAuthenticator(
@@ -600,7 +579,7 @@ const promise = account.updateMfaAuthenticator(
   });
 ```
 ```client-apple
-let user = try await account.updateMfaAuthenticator(
+let response = try await account.updateMfaAuthenticator(
   type: "totp",
   otp: "<OTP>"
 )
@@ -614,8 +593,7 @@ val response = account.updateMfaAuthenticator(
 ```client-android-java
 account.updateMfaAuthenticator(
     "totp", // type
-    "<OTP>" // otp
-
+    "<OTP>", // otp
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -656,7 +634,7 @@ result.then((response) {
 ```
 
 ```client-apple
-let user = try await account.updateMFA(
+let response = try await account.updateMFA(
   mfa: xtrue
 )
 ```
