@@ -33,7 +33,7 @@ import { Client, Account, Avatars } from "appwrite";
 const client = new Client();
 
 const account = new Account(client);
-const account = new Avatars(client);
+const avatars = new Avatars(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
