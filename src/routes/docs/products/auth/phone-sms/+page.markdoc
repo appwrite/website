@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Phone (SMS) login
-description: Enhance security with phone and SMS authentication in Appwrite. Discover how to add two-factor authentication via SMS, verify phone numbers, and protect user accounts.
+description: Enhance security with phone and SMS authentication in Appwrite. Discover how to add multi-factor authentication via SMS, verify phone numbers, and protect user accounts.
 ---
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
