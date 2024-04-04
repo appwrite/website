@@ -32,6 +32,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Messaging', href: '/docs/products/messaging' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -69,7 +70,7 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' },
+                { label: 'Assets', href: '/assets' }
             ],
             Policies: [
                 { label: 'Terms', href: '/terms' },
