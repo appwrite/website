@@ -422,23 +422,8 @@ First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
     <!-- ... rest of your manifest -->
 ```
 
-Then, request permissions to display push notifications in your app.
-Appwrite provides a utility to help request permissions.
-```kotlin
-OS.requestPermission(
-    this,                                   // Context
-    Manifest.permission.POST_NOTIFICATIONS, // Permission requested
-    onGranted = {
-        println("Permission granted")       // When permission is granted
-    },
-    onDenied = {
-        println("Permission denied")        // When permission is denied
-    },
-    onShowRationale = {
-        println("Should show rationale")    // Explain why this permission is needed.
-    }
-)
-```
+Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting) 
+from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 {% /tabsitem %}
 
 {% tabsitem #apple-fcm title="FCM for Apple" %}
