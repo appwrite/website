@@ -287,6 +287,7 @@
                                 <div class="trigger" slot="trigger">
                                     <Checkbox
                                         id={`user-${i}`}
+                                        ariaLabel={user.name}
                                         checked={allSelected
                                             ? true
                                             : selectedDevices > 0
@@ -327,6 +328,7 @@
                                         <li>
                                             <!-- svelte-ignore a11y-label-has-associated-control -->
                                             <Checkbox
+                                                ariaLabel={device.value}
                                                 id="device-{i}-{j}"
                                                 bind:checked={user.devices[j].checked}
                                                 --size="1rem"
