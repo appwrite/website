@@ -152,16 +152,28 @@
         "redirect": "/docs/products/auth/security"
     },
     {
+        "link": "/docs/products/functions/development",
+        "redirect": "/docs/products/functions/develop"
+    },
+    {
+        "link": "/docs/products/functions/deployment",
+        "redirect": "/docs/products/functions/deploy-from-git"
+    },
+    {
+        "link": "/docs/products/functions/execution",
+        "redirect": "/docs/products/functions/execute"
+    },
+    {
         "link": "/docs/functions-develop",
-        "redirect": "/docs/products/functions/development"
+        "redirect": "/docs/products/functions/develop"
     },
     {
         "link": "/docs/functions-deploy",
-        "redirect": "/docs/products/functions/deployment"
+        "redirect": "/docs/products/functions/deploy-from-git"
     },
     {
         "link": "/docs/functions-execute",
-        "redirect": "/docs/products/functions/execution"
+        "redirect": "/docs/products/functions/execute"
     },
     {
         "link": "/docs/functions-runtimes",
@@ -169,7 +181,7 @@
     },
     {
         "link": "/docs/functions-examples",
-        "redirect": "/docs/products/functions/examples"
+        "redirect": "/docs/products/functions"
     },
     {
         "link": "/docs/migrations",
