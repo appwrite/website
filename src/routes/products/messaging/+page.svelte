@@ -251,8 +251,16 @@ messaging.create_email(
 <Main>
     <div class="web-big-padding-section u-overflow-hidden">
         <div class="hero">
-            <img src="/images/products/messaging/blur-left.png" alt="" class="blur-left web-u-hide-2800" />
-            <img src="/images/products/messaging/blur-right.png" alt="" class="blur-right web-u-hide-2800" />
+            <img
+                src="/images/products/messaging/blur-left.png"
+                alt=""
+                class="blur-left web-u-hide-2800"
+            />
+            <img
+                src="/images/products/messaging/blur-right.png"
+                alt=""
+                class="blur-right web-u-hide-2800"
+            />
 
             <div class="web-container">
                 <div>
@@ -283,7 +291,7 @@ messaging.create_email(
                 </div>
 
                 <div class="phone-wrapper">
-                    <img class="phone"  src="/images/products/messaging/phone.png" alt="" />
+                    <img class="phone" src="/images/products/messaging/phone.png" alt="" />
                 </div>
             </div>
         </div>
@@ -664,7 +672,7 @@ messaging.create_email(
                                     <img
                                         src="/images/icons/illustrated/dark/databases.png"
                                         alt=""
-                                        width="32"
+                                        width="37"
                                         height="32"
                                     />
                                     <h4 class="web-main-body-400 web-u-color-text-primary">
@@ -765,7 +773,6 @@ messaging.create_email(
         border-block-end: 1px solid hsl(var(--web-color-offset));
         margin-block-start: -5rem;
         padding-block-start: 5rem;
-
 
         .web-container {
             display: grid;
@@ -890,13 +897,19 @@ messaging.create_email(
         pointer-events: none;
     }
 
-    @media (min-width:1024px) {
-      .hero { padding-block-start:0; }
+    @media (min-width: 1024px) {
+        .hero {
+            padding-block-start: 0;
+        }
     }
-    @media (max-width:1023px) {
-      .hero .web-container { max-width:750px; }
+    @media (max-width: 1023px) {
+        .hero .web-container {
+            max-width: 750px;
+        }
     }
-    @media (min-width:2800px) {
-      .web-u-hide-2800 { display:none; }
+    @media (min-width: 2800px) {
+        .web-u-hide-2800 {
+            display: none;
+        }
     }
 </style>

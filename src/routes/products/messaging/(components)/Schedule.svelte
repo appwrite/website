@@ -41,6 +41,7 @@
                     <div class="web-icon-chevron-right" />
                 </button>
             </header>
+
             {#each $months as month}
                 <div class="grid" use:melt={$grid}>
                     {#each weekdays as day}
@@ -52,7 +53,7 @@
                     {#each month.weeks as weekDates}
                         {#each weekDates as date}
                             <div
-                                role="gridcell"
+                                data-role="gridcell"
                                 aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}
                             >
                                 <button use:melt={$cell(date, month.value)}>
@@ -93,7 +94,9 @@
         align-items: center;
         justify-content: center;
         margin-block-start: 4.5rem;
-        @media (max-width:700px) { grid-template-columns: auto; }
+        @media (max-width: 700px) {
+            grid-template-columns: auto;
+        }
     }
 
     .blur {
@@ -124,7 +127,9 @@
 
         background: hsl(240, 6%, 12%, 0.64);
         backdrop-filter: blur(30px);
-        @media (max-width:768px) { margin-inline:auto; }
+        @media (max-width: 768px) {
+            margin-inline: auto;
+        }
     }
 
     header {
@@ -142,7 +147,7 @@
 
         text-align: center;
 
-        [role='gridcell'] button {
+        [data-role='gridcell'] button {
             aspect-ratio: 1;
             width: 100%;
             font-size: 1.5rem;

@@ -4,6 +4,7 @@
     export let checked: NonNullable<CreateCheckboxProps['defaultChecked']> = false;
     export let onCheckedChange: CreateCheckboxProps['onCheckedChange'] = undefined;
     export let id: string;
+    export let ariaLabel: string;
 
     const {
         elements: { root },
@@ -18,7 +19,7 @@
     $: sync.checked(checked, (v) => (checked = v));
 </script>
 
-<button {id} use:melt={$root} on:click|stopPropagation>
+<button {id} use:melt={$root} aria-label={ariaLabel} on:click|stopPropagation>
     {#if $isIndeterminate}
         <div class="web-icon-minus" />
     {:else if $isChecked}
