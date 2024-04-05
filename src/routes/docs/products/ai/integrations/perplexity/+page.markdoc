@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Integrating Perplexity and Appwrite
+title: Integrating Perplexity
 description: Learn how to integrate the Perplexity API into your Appwrite project.
 difficulty: intermediate
 readtime: 15
@@ -10,6 +10,7 @@ back: /docs/products/ai/computer-vision
 Integrating Perplexity into your Appwrite project is simple. This tutorial will guide you through the process of setting up the Perplexity API and integrating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
+
 - An Appwrite Project
 - A [Perplexity API Key](https://docs.perplexity.ai/docs/getting-started)
 
@@ -19,19 +20,20 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add OpenAI SDK" %}
+{% section #step-2 step=2 title="Add dependency" %}
 Once the function is created, clone the function and open it in your development environment.
 
 Once you have the repository open, you can install the OpenAI SDK by running the following command in your terminal:
@@ -43,7 +45,7 @@ npm install openai
 Perplexity's API is OpenAI compatible, so we can use the OpenAI SDK to interact with Perplexity.
 {% /section %}
 
-{% section #step-3 step=3 title="Create utility functions" %}
+{% section #step-3 step=3 title="Create utility function" %}
 For our example, our function will be able to take both `GET` and `POST` requests.
 
 The function will return a web page on `GET` requests and return a response from Perplexity on `POST` requests.
@@ -61,42 +63,18 @@ const __dirname = path.dirname(__filename);
 const staticFolder = path.join(__dirname, '../static');
 
 export function getStaticFile(fileName) {
-  return fs.readFileSync(
-    path.join(staticFolder, fileName)
-  ).toString();
+  return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
-By separating the `getStaticFile()` function into a `utils.js` file, we can easily reuse this function in the future.
-
-Then, create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
-
-```js
-export function throwIfMissing(obj, keys) {
-  const missing = [];
-  for (let key of keys) {
-    if (!(key in obj) || !obj[key]) {
-      missing.push(key);
-    }
-  }
-  if (missing.length > 0) {
-    let missingVars = missing.join(', ');
-    throw new Error(`Missing required fields: ${missingVars}`);
-  }
-}
-```
-
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
 We're going to write our `GET` request handler in the `src/main.js` file. This handler will return a static HTML page we'll create later.
 
 ```js
-import { getStaticFile, throwIfMissing } from './utils.js';
+import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
-  throwIfMissing(process.env, ['PERPLEXITY_API_KEY']);
-
   if (req.method === 'GET') {
     return res.send(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
@@ -105,11 +83,11 @@ export default async ({ req, res, error }) => {
 };
 ```
 
-Notice we also added a check to ensure that the `PERPLEXITY_API_KEY` environment variable is set. This is the API key we'll use to authenticate with the Perplexity API.
 {% /section %}
 
 {% section #step-5 step=5 title="Create static page" %}
 Create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -117,6 +95,7 @@ Create the static HTML page that our function will serve. Create a new file at `
 ```
 
 Within the `<html>` tag, we're going to add a `<head>` tag that will define our style and scripts.
+
 ```html
 <head>
   <meta charset="UTF-8" />
@@ -212,6 +191,7 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
   </main>
 </body>
 ```
+
 All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page.
 {% /section %}
 
@@ -225,6 +205,7 @@ import { OpenAI } from 'openai';
 ```
 
 Next, add code to validate the body of the request and initialize the OpenAI SDK with the Perplexity API key:
+
 ```js
 if (!req.body.prompt) {
   return res.json({
@@ -238,6 +219,7 @@ const perplexity = new OpenAI({
   baseURL: 'https://api.perplexity.ai',
 });
 ```
+
 This code also allows us to modify what model we use by setting the `PERPLEXITY_MODEL` environment variable.
 
 Send the request to the Perplexity API and return the response:
@@ -251,14 +233,9 @@ try {
     stream: false,
   });
   const completion = response.choices[0].message?.content;
-  return res.json({
-    ok: true, completion
-  }, 200);
+  return res.json({ ok: true, completion }, 200);
 } catch (err) {
-  error(err);
-  return res.json({
-    ok: false, error: 'Failed to query model.'
-  }, 500);
+  return res.json({ ok: false, error: 'Failed to query model.' }, 500);
 }
 ```
 
@@ -273,12 +250,4 @@ Now that our function is deployed, we can test it by visiting the function URL i
 Write a prompt and click the submit button, after a brief moment you should see the completion appear below the input.
 
 ![Testing the function](/images/docs/ai/integrations/perplexity/demo.png)
-{% /section %}
-
-{% section #step-8 step=8 title="Next steps" %}
-In this tutorial, we've created a simple web page that allows us to interact with the Perplexity API using Appwrite Functions. We've learned how to create a function that interacts with an external API, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
-
-To build on it further, you could add more features such as the ability to select the model, more styling or to make it more of a chatbot interface by utilising Appwrite's Databases to store the conversation history.
-
-We look forward to seeing what you build with Appwrite and Perplexity!
 {% /section %}

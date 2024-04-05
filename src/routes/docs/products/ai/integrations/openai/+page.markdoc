@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Integrating OpenAI and Appwrite
+title: Integrating OpenAI
 description: Learn how to integrate OpenAI into your Appwrite project.
 difficulty: intermediate
 readtime: 15
@@ -33,7 +33,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add OpenAI SDK" %}
+{% section #step-2 step=2 title="Add dependency" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `openai` package to simplify the process of interacting with the OpenAI API.
@@ -42,7 +42,7 @@ npm install openai
 ```
 {% /section %}
 
-{% section #step-3 step=3 title="Create utility functions" %}
+{% section #step-3 step=3 title="Create utility function" %}
 For this example, the function will be able to take both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page that will have a form to submit text to the API.
@@ -70,13 +70,9 @@ export function getStaticFile(fileName) {
 Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
 
 ```js
-import { getStaticFile, throwIfMissing } from './utils.js';
+import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
-  if (!process.env.OPENAI_API_KEY) {
-    return res.json({ ok: false, error: 'OpenAI API key not set' }, 500);
-  }
-
   if (req.method === 'GET') {
     return res.send(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
@@ -85,7 +81,7 @@ export default async ({ req, res, error }) => {
 };
 ```
 
-The code throws an error if the OpenAI API key is not set, then checks the request method. If the method is `GET`, it returns the static HTML page.
+If the method is `GET`, it returns the static HTML page.
 
 {% /section %}
 
@@ -207,10 +203,6 @@ import { OpenAIApi, Configuration } from 'openai';
 
 Add code to validate the body of the request and initialize the Appwrite SDK:
 ```js
-if (req.method !== 'POST') {
-  return res.json({ ok: false, error: 'Method not allowed' }, 405);
-}
-
 const client = new Client()
   .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
   .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)

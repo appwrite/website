@@ -14,4 +14,7 @@ music streaming services and for noise reduction in online calls.
 {% cards_item href="/docs/products/ai/tutorials/speech-recognition" title="Speech recognition" %}
 Recognize and transcribe spoken language into text
 {% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
+Convert written text into spoken language
+{% /cards_item %}
 {% /cards %}

@@ -33,34 +33,15 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add fetch" %}
+{% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, clone the function and open it in your development environment.
 
-Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current Node.js v18 Runtime,
-we're going to install the `node-fetch` package.
+Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current Node.js 16 Runtime,
+we're going to install the `undici` package.
 We're also going to install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
 
 ```bash
-npm install node-fetch node-appwrite
-```
-{% /section %}
-
-{% section #step-3 step=3 title="Create utility functions" %}
-Before we build our main function, create some utility functions that we'll use later.
-Create a `throwIfMissing()` function in the same file which we'll use later to validate body and environment variables:
-
-```js
-export function throwIfMissing(obj, keys) {
-  const missing = [];
-  for (let key of keys) {
-    if (!(key in obj) || !obj[key]) {
-      missing.push(key);
-    }
-  }
-  if (missing.length > 0) {
-    throw new Error(`Missing required fields: ${missing.join(', ')}`);
-  }
-}
+npm install undici node-appwrite
 ```
 {% /section %}
 
@@ -297,12 +278,9 @@ Create a file called `src/setup.js` and implement the following class:
 
 ```js
 import AppwriteService from './appwrite.js';
-import { throwIfMissing } from './utils.js';
 import 'dotenv/config';
 
 async function setup() {
-  throwIfMissing(process.env, ['APPWRITE_API_KEY', 'APPWRITE_FUNCTION_PROJECT_ID']);
-
   const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
@@ -337,18 +315,11 @@ Run this script once before deploying the function to set up the required Appwri
 in `src/main.js` implement the following function to convert text to speech using the Hugging Face API.
 
 ```js
-import fetch from 'node-fetch';
-import { throwIfMissing } from './utils.js';
+import { fetch } from 'undici';
 import AppwriteService from './appwrite.js';
 import { ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-  throwIfMissing(process.env, [
-    'HUGGING_FACE_API_KEY',
-    'APPWRITE_API_KEY',
-    'APPWRITE_FUNCTION_PROJECT_ID'
-  ]);
-
   const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
@@ -379,39 +350,23 @@ export default async ({ req, res, log, error }) => {
   );
 
   if (!response.ok) {
-    error(await response.text());
-    return res.send('Internal Server Error', 500);
+    return res.send('Internal server error', 500);
   }
 
   const result = await response.blob();
 
-  let file;
-  try {
-    file = await appwrite.createFile(bucketId, ID.unique(), result);
-  } catch (err) {
-    error(err);
-    return res.send('Internal Server Error', 500);
-  }
+  const file = await appwrite.createFile(bucketId, ID.unique(), result);
 
-  let document;
-  try {
-    document = await appwrite.updateOrCreateTTSEntry(
-      databaseId,
-      collectionId,
-      data.$id ?? ID.unique(),
-      file.$id,
-      data.text
-    );
-  } catch (err) {
-    error(err);
-    return res.send('Internal Server Error', 500);
-  }
+  const document = await appwrite.updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    data.$id ?? ID.unique(),
+    file.$id,
+    data.text
+  );
 
   log('Document ' + document.$id + ' processed');
-  return res.json({
-    $id: document.$id,
-    tts: file.$id,
-  });
+  return res.json({ $id: document.$id, tts: file.$id });
 };
 ```
 
