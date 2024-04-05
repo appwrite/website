@@ -132,7 +132,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `node-20.0`
 * x86 / arm64 / armv7 / armv8
 ---
-* {% icon icon="bun" size="l" /%}
+* {% icon icon="bun-sh" size="l" /%}
 * [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
 * `bun-1.0`
 * x86 / arm64
@@ -172,14 +172,3 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 {% /table %}
 {% /tabsitem %}
 {% /tabs %}
-# Cloud support {% #cloud-support %}
-
-While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As we continue to improve our Cloud offering, we will add support for more runtimes. Until then, these are the runtimes that you can use on Appwrite Cloud:
-
-- `node-16.0`
-- `node-18.0`
-- `php-8.0`
-- `ruby-3.0`
-- `python-3.9`
-- `python-3.12`
-- `dart-2.17`
