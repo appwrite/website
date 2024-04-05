@@ -238,7 +238,5 @@ try {
 {% section #step-8 step=8 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the generated text from the OpenAI API.
-
-<!--- TODO add screenshots --->
 {% /section %}
 

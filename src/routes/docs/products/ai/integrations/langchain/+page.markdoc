@@ -342,6 +342,4 @@ Within our function handler, the service is instantiated and used to create an a
 {% section #step-9 step=9 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the matched results.
-
-<!--- TODO add screenshots --->
 {% /section %}
