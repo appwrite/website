@@ -32,13 +32,13 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add dependency" %}
+{% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, clone the function and open it in your development environment.
 
 Once you have the repository open, you can install the Hugging Face inference SDK by running the following command in your terminal:
 
 ```bash
-npm install @huggingface/inference
+npm install @huggingface/inference node-appwrite
 ```
 {% /section %}
 
