@@ -35,6 +35,8 @@ Now that we have a basic understanding of email OTP authentication, let’s lear
 
 Email OTP authentication is not yet released on Cloud, which is on `Appwrite 1.4.x`. This is a feature available in `Appwrite 1.5.x` and will be available on Appwrite Cloud later. In the meantime, you can use it by [self-hosting Appwrite](https://appwrite.io/docs/advanced/self-hosting) on your system or an external VM/VPS.
 
+You can self host Appwrite using the following Docker command:
+
 ```bash
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
