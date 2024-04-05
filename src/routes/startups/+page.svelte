@@ -10,7 +10,7 @@
     import SubSectionTwo from './SubSection2_illu.svelte';
     import SubSectionThree from './SubSection3_illu.svelte';
     import SubSectionFour from './SubSection4_illu_v2b.svelte';
-    
+
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -134,11 +134,11 @@
 </svelte:head>
 
 <Main>
-  <enhanced:img
-      class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-      src="./Hero-BG.svg"
-      alt=""
-  />
+    <enhanced:img
+        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+        src="./Hero-BG.svg"
+        alt=""
+    />
     <enhanced:img
         class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
         src="./bg-left.png"
@@ -279,13 +279,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                     </div>
-
                                 </div>
-                                
-                                <div class="web-is-only-desktop" style="margin-top: 80px; margin-left: -60px">
-                                  <svelte:component this={SubSectionOne} />
+
+                                <div
+                                    class="web-is-only-desktop"
+                                    style="margin-top: 80px; margin-left: -60px"
+                                >
+                                    <svelte:component this={SubSectionOne} />
                                 </div>
                             </li>
                             <!-- <li class="web-timeline-content-item" style="border: 1px solid red;">
@@ -378,11 +379,11 @@
                                 </div>
                             </li>
                             <li class="web-timeline-content-item" style="margin-top:200px">
-                              <div
-                                  class="web-timeline-content-item-top web-grid-1-1"
-                                  style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
-                              >
-                                  <div class="web-is-only-desktop" style="margin-top:-70px;">
+                                <div
+                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
+                                >
+                                    <div class="web-is-only-desktop" style="margin-top:-70px;">
                                         <svelte:component this={SubSectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
@@ -421,7 +422,10 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2 web-u-overflow-hidden" style="margin-top: 200px">
+            <div
+                class="web-big-padding-section-level-2 web-u-overflow-hidden"
+                style="margin-top: 200px"
+            >
                 <h4
                     class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
                 >
@@ -573,33 +577,35 @@
                                                     been established within the last decade with:
                                                 </p>
 
-                                                <div style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center">
-                                                  <enhanced:img
-                                                    class=""
-                                                    style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                    src="./check_bullet.svg"
-                                                    alt=""
-                                                  />
-                                                
-                                                  <p class="web-description" style="flex: 1;">
-                                                    Appwrite Cloud Pro for 12 months
-                                                  </p>
+                                                <div
+                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                >
+                                                    <enhanced:img
+                                                        class=""
+                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        src="./check_bullet.svg"
+                                                        alt=""
+                                                    />
+
+                                                    <p class="web-description" style="flex: 1;">
+                                                        Appwrite Cloud Pro for 12 months
+                                                    </p>
                                                 </div>
 
-                                                
-                                                <div style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center">
-                                                  <enhanced:img
-                                                    class=""
-                                                    style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                    src="./check_bullet2.svg"
-                                                    alt=""
-                                                  />
-                                                
-                                                  <p class="web-description" style="flex: 1;">
-                                                    Premium email support as part of Pro
-                                                  </p>
-                                                </div>
+                                                <div
+                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                >
+                                                    <enhanced:img
+                                                        class=""
+                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        src="./check_bullet2.svg"
+                                                        alt=""
+                                                    />
 
+                                                    <p class="web-description" style="flex: 1;">
+                                                        Premium email support as part of Pro
+                                                    </p>
+                                                </div>
                                             </section>
                                         {/if}
                                         <div
