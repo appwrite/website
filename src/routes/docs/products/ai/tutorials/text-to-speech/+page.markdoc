@@ -26,11 +26,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -72,18 +72,6 @@ class AppwriteService {
 
   async getFile(bucketId, fileId) {
   }
-
-  async doesAIDataExist(databaseId, collectionId) {
-  }
-
-  async doesBucketExist(bucketId) {
-  }
-
-  async setupAIDatabase(databaseId, collectionId) {
-  }
-
-  async setupAIBucket(bucketId) {
-  }
 }
 
 export default AppwriteService;
@@ -111,9 +99,9 @@ This constructor initializes the Appwrite client and sets up the database and st
 
 {% accordion_item title="createFile()" %}
 This method uploads a file to Appwrite Storage.
+
 ```js
-  async createFile(bucketId, fileId, file)
-  {
+  async createFile(bucketId, fileId, file) {
     let parsedFile = await InputFile.fromBlob(file, 'audio.flac')
 
     return await this.storage.createFile(
@@ -127,6 +115,7 @@ This method uploads a file to Appwrite Storage.
 
 {% accordion_item title="updateOrCreateTTSEntry()" %}
 This method updates or creates a document in the Appwrite database depending on if the entry already exists.
+
 ```js
   async updateOrCreateTTSEntry(
     databaseId,
@@ -134,8 +123,7 @@ This method updates or creates a document in the Appwrite database depending on 
     documentId,
     fileId,
     text
-  )
-  {
+  ) {
     const data = {
       text,
       tts: fileId,
@@ -175,143 +163,45 @@ This method updates or creates a document in the Appwrite database depending on 
 
 {% accordion_item title="getFile()" %}
 This method retrieves a file from Appwrite Storage.
+
 ```js
   async getFile(bucketId, fileId) {
     return await this.storage.getFileDownload(bucketId, fileId);
   }
 ```
 {% /accordion_item %}
-
-{% accordion_item title="doesAIDataExist()" %}
-```js
-  async doesAIDataExist(databaseId, collectionId) {
-    try {
-      await this.databases.get(databaseId);
-      await this.databases.getCollection(databaseId, collectionId);
-      return true;
-    } catch (err) {
-      if (err.code === 404) return false;
-      throw err;
-    }
-  }
-```
-{% /accordion_item %}
-
-{% accordion_item title="doesBucketExist()" %}
-This method checks if a bucket exists in Appwrite Storage.
-```js
-  async doesBucketExist(bucketId) {
-    try {
-      await this.storage.getBucket(bucketId);
-      return true;
-    } catch (err) {
-      if (err.code === 404) return false;
-      throw err;
-    }
-  }
-  ```
-{% /accordion_item %}
-
-{% accordion_item title="setupAIDatabase" %}
-This method sets up a database in Appwrite.
-```js
-  async setupAIDatabase(databaseId, collectionId) {
-    try {
-      await this.databases.create(databaseId, 'AI Database');
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createCollection(databaseId, collectionId, 'TTS');
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createStringAttribute(
-        databaseId,
-        collectionId,
-        'text',
-        4028,
-        true
-      );
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-
-    try {
-      await this.databases.createStringAttribute(
-        databaseId,
-        collectionId,
-        'tts',
-        1024,
-        false
-      );
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-  }
-```
-{% /accordion_item %}
-
-{% accordion_item title="setupAIBucket()" %}
-This method sets up a bucket in Appwrite Storage.
-```js
-  async setupAIBucket(bucketId) {
-    try {
-      await this.storage.createBucket(bucketId, 'AI');
-    } catch (err) {
-      if (err.code !== 409) throw err;
-    }
-  }
-```
-{% /accordion_item %}
 {% /accordion %}
 {% /section %}
 
-{% section #step-5 step=5 title="Run setup" %}
-To interact with Appwrite, we need to set up some buckets and database collections.
-These methods will help us setup the database and storage bucket, check if the data exists, and upload files to Appwrite Storage.
+{% section #step-5 step=5 title="Create Storage bucket" %}
+In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
-Create a file called `src/setup.js` and implement the following class:
+{% only_dark %}
+![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+{% /only_dark %}
 
-```js
-import AppwriteService from './appwrite.js';
-import 'dotenv/config';
+{% only_light %}
+![Create bucket on console](/images/docs/storage/create-bucket.png)
+{% /only_light %}
 
-async function setup() {
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
-
-  console.log('Executing setup script...');
-
-  const appwrite = new AppwriteService();
-
-  if (await appwrite.doesAIDataExist(databaseId, collectionId)) {
-    console.log(`Database exists.`);
-  } else {
-    await appwrite.setupAIDatabase(databaseId, collectionId);
-    console.log(`Database created.`);
-  }
-
-  if (await appwrite.doesBucketExist(bucketId)) {
-    console.log(`Bucket exists.`);
-  } else {
-    await appwrite.setupAIBucket(bucketId);
-    console.log(`Bucket created.`);
-  }
-}
-
-setup();
-```
-
-Run this script once before deploying the function to set up the required Appwrite resources.
+Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
 {% /section %}
 
-{% section #step-6 step=6 title="Integrate with Hugging Face" %}
+{% section #step-6 step=6 title="Create Appwrite collection" %}
+Before saving the classification result to Appwrite Databases, create a new database and collection in the Appwrite Console.
 
+Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, and name it, for example `AI`.
+Once you've created the database, click on the **Create collection** button and create a new collection, and name it, for example `Text to Speech`.
+
+Next, create the following schema for the collection:
+
+| Attribute | Type      | Size      | Required  | Array     |
+| --------- | --------- | --------- | --------- | --------- |
+| text      | string    | 1024      | true      | false     |
+| tts       | string    | 4028      | true      | false     |
+{% /section %}
+
+{% section #step-7 step=7 title="Integrate with Hugging Face" %}
 in `src/main.js` implement the following function to convert text to speech using the Hugging Face API.
 
 ```js
@@ -370,7 +260,7 @@ This Appwrite Function checks if the required environment variables are set, the
 stores the generated audio file in Appwrite Storage, and creates a document in the Appwrite database of the original text.
 {% /section %}
 
-{% section #step-7 step=7 title="Test the function" %}
+{% section #step-8 step=8 title="Test the function" %}
 Test our function by uploading an audio file the Appwrite Storage.
 
 Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
@@ -379,6 +269,7 @@ After a few seconds, you should see an execution appear in the function's execut
 {% only_dark %}
 ![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/dark/result.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/result.png)
 {% /only_light %}

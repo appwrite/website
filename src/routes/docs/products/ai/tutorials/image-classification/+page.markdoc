@@ -85,7 +85,29 @@ Use the default configuration for the bucket. Make sure to note down the bucket 
 
 {% /section %}
 
-{% section #step-5 step=5 title="Downloading image" %}
+{% section #step-6 step=6 title="Create Appwrite collection" %}
+Before saving the classification result to Appwrite Databases, create a new database and collection in the Appwrite Console.
+
+Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, and name it, for example `AI`.
+Once you've created the database, click on the **Create collection** button and create a new collection, and name it, for example `Image Labels`.
+
+Next, create the following schema for the collection:
+
+| Attribute | Type | Size | Required | Array |
+| --- | --- | --- | --- | --- |
+| image | String | 256 | Yes | No |
+| labels | String | 256 | Yes | Yes |
+
+{% only_dark %}
+![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
+{% /only_dark %}
+{% only_light %}
+![Image Classification Database](/images/docs/ai/tutorials/image-classification/database.png)
+{% /only_light %}
+
+{% /section %}
+
+{% section #step-7 step=7 title="Downloading image" %}
 With the payload parsed, now you can download the image from Appwrite Storage.
 
 Create a new file called `appwrite.js` in the `src` directory and add the following code:
@@ -133,7 +155,7 @@ This code will download the file from the Appwrite Storage and return a `404 - F
 
 {% /section %}
 
-{% section #step-6 step=6 title="Classify image" %}
+{% section #step-8 step=8 title="Integrate with Huggingface" %}
 With the image downloaded, use the Hugging Face inference SDK to classify the image.
 
 At the top of the `src/index.js` file, add:
@@ -154,28 +176,8 @@ const result = await hf.imageClassification({
 ```
 {% /section %}
 
-{% section #step-7 step=7 title="Create database" %}
-Before saving the classification result to Appwrite Databases, create a new database and collection in the Appwrite Console.
 
-Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, you can call this database anything you like, for this example call it `AI`.
-Once you've created the database, click on the **Create collection** button and create a new collection, once again you can call it anything you want but for this example call it `Image Labels`.
-
-Next, create the following schema for the collection:
-
-| Attribute | Type | Size | Required | Array |
-| --- | --- | --- | --- | --- |
-| image | String | 256 | Yes | No |
-| labels | String | 256 | Yes | Yes |
-
-{% only_dark %}
-![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
-{% /only_dark %}
-{% only_light %}
-![Image Classification Database](/images/docs/ai/tutorials/image-classification/database.png)
-{% /only_light %}
-
-{% /section %}
-{% section #step-8 step=8 title="Save result" %}
+{% section #step-9 step=9 title="Save result" %}
 With the image classified, save the result to the Appwrite Databases.
 
 To begin, add a new function to the `appwrite.js` file created earlier which will add these records in the database.
@@ -205,7 +207,7 @@ return res.json(result);
 ```
 {% /section %}
 
-{% section #step-9 step=9 title="Configure events" %}
+{% section #step-10 step=10 title="Configure events" %}
 To test the function attach it directly to the Storage bucket using events.
 
 Navigate to your function in the Appwrite Console, under **Settings** > **Events**, click on the **Add Event** button.

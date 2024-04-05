@@ -71,22 +71,29 @@ Convolutions aren't only used for things like edge detection but are extremely c
 {% video src="/images/blog/state-of-computer-vision/convolution.mp4" /%}
 
 # Applications of Computer Vision
+
 Now you have a good understanding of both the history and fundamentals of computer vision, you can dive into our other guides where we provide an even deeper dive into the different types of computer vision and how to implement them in your Appwrite application.
 
 {% cards %}
-{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
+{% cards_item
+   href="/docs/products/ai/tutorials/image-classification"
+   title="Image classification" %}
 Understand and label the contents of images
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
+
+{% cards_item
+   href="/docs/products/ai/tutorials/object-detection"
+   title="Object detection" %}
 Detect and label objects in images
 {% /cards_item %}
 {% /cards %}
 
 # Sources
+
 1. [https://www.statista.com/outlook/tmo/artificial-intelligence/computer-vision/worldwide](https://www.statista.com/outlook/tmo/artificial-intelligence/computer-vision/worldwide)
-2. [A Brief History of Computer Vision (and CNNs) - Hackernoon](https://hackernoon.com/a-brief-history-of-computer-vision-and-convolutional-neural-networks-8fe8aacc79f)
-3. [https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf)
-4. [http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation...](http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation_into_the_Human_Representation_and_Processing_of_Visual_Information.chapter1.pdf)
-5. [https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf](https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf)
-6. [http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf](http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf)
-7. [http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf](http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
+1. [A Brief History of Computer Vision (and CNNs) - Hackernoon](https://hackernoon.com/a-brief-history-of-computer-vision-and-convolutional-neural-networks-8fe8aacc79f)
+1. [https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf)
+1. [http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation...](http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation_into_the_Human_Representation_and_Processing_of_Visual_Information.chapter1.pdf)
+1. [https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf](https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf)
+1. [http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf](http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf)
+1. [http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf](http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
