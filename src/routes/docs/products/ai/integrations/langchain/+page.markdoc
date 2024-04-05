@@ -252,7 +252,7 @@ if (req.path === '/prompt') {
 }
 ```
 
-<!--- TODO add explainer --->
+This code will handle the prompt requests by creating a LangChain sequence that will format the documents as strings, prompt the user for a question, and then use the OpenAI API to generate a response. The response is then parsed and returned to the user.
 
 {% /section %}
 
