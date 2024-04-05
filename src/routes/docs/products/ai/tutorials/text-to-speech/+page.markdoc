@@ -324,10 +324,6 @@ export default async ({ req, res, log, error }) => {
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
 
-  if (req.method !== 'POST') {
-    return res.send('Method not allowed', 405);
-  }
-
   const appwrite = new AppwriteService();
 
   const data = req.body;

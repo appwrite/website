@@ -191,10 +191,6 @@ import { OpenAI } from 'openai';
 Add the following code at the end of request handler in the `main.js` file:
 
 ```js
-if (req.method !== 'POST') {
-  return res.json({ ok: false, error: 'Method not allowed' }, 405);
-}
-
 const openai = new OpenAI();
 
 const pinecone = new Pinecone();
