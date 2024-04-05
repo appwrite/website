@@ -9,9 +9,8 @@
     import SubSectionOne from './SubSection1_illu.svelte';
     import SubSectionTwo from './SubSection2_illu.svelte';
     import SubSectionThree from './SubSection3_illu.svelte';
-    import SubSectionFour from './SubSection4_illu.svelte';
-    import SubSection4Illu from './SubSection4_illu.svelte';
-
+    import SubSectionFour from './SubSection4_illu_v2b.svelte';
+    
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -135,6 +134,11 @@
 </svelte:head>
 
 <Main>
+  <enhanced:img
+      class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+      src="./Hero-BG.svg"
+      alt=""
+  />
     <enhanced:img
         class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
         src="./bg-left.png"
@@ -145,7 +149,7 @@
         src="./bg-right.png"
         alt=""
     />
-    <div class="web-big-padding-section u-position-relative">
+    <div class="web-big-padding-section u-position-relative" style="overflow:hidden">
         <div class="web-big-padding-section-level-1 u-position-relative">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
                 <section class="web-container web-u-padding-block-end-0">
@@ -156,7 +160,7 @@
                         <h1 class="web-headline web-u-color-text-primary">
                             Build your startup with Appwrite
                         </h1>
-                        <p class="web-description">
+                        <p class="web-description" style="padding: 0 104px">
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
@@ -167,6 +171,7 @@
                     </div>
                 </section>
             </div>
+
             <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
                 <section class="web-container">
                     <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80">
@@ -235,7 +240,7 @@
                 <div class="web-container">
                     <div class="web-timeline-content">
                         <ol class="web-timeline-content-list">
-                            <li class="web-timeline-content-item">
+                            <li>
                                 <div
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
@@ -274,12 +279,18 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>
+
+                                </div>
+                                
+                                <div class="web-is-only-desktop" style="margin-top: 80px; margin-left: -60px">
+                                  <svelte:component this={SubSectionOne} />
                                 </div>
                             </li>
-                            <li>
+                            <!-- <li class="web-timeline-content-item" style="border: 1px solid red;">
                                 <svelte:component this={SubSectionOne} />
-                            </li>
+                            </li> -->
                             <li class="web-timeline-content-item">
                                 <div
                                     class="web-grid-1-1"
@@ -292,7 +303,7 @@
                                         <h3 class="web-title web-u-color-text-primary">
                                             Scalable architecture
                                         </h3>
-                                        <p class="aw-main-body-500">
+                                        <p class="web-main-body-500">
                                             Appwrite's scalable architecture ensures you can build
                                             your product with growth in mind. Whether you're just
                                             testing the waters or ready to scale up rapidly, our
@@ -366,19 +377,19 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="web-timeline-content-item">
-                                <div
-                                    class="web-grid-1-1"
-                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
-                                >
-                                    <div class="web-is-only-desktop" style="margin-top:-70px;">
+                            <li class="web-timeline-content-item" style="margin-top:200px">
+                              <div
+                                  class="web-timeline-content-item-top web-grid-1-1"
+                                  style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
+                              >
+                                  <div class="web-is-only-desktop" style="margin-top:-70px;">
                                         <svelte:component this={SubSectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="aw -main-body-400">
+                                        <p class="web-main-body-400">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
@@ -410,7 +421,7 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
+            <div class="web-big-padding-section-level-2 web-u-overflow-hidden" style="margin-top: 200px">
                 <h4
                     class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
                 >
@@ -446,7 +457,7 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2" style="display:none">
                 <div class="web-container" style="display:none">
                     <h2
                         class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
@@ -513,15 +524,16 @@
             >
                 <enhanced:img
                     class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
-                    src="./bg-left.png"
+                    src="./Blob_Green.svg"
                     alt=""
                 />
                 <enhanced:img
                     class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-                    src="./bg-right.png"
+                    src="./Blob_Pink.svg"
+                    style="height: 100%"
                     alt=""
                 />
-                <div class="web-container">
+                <div class="web-container" style="position: relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container">
                             <div class="web-grid-1-1-opt-2 u-gap-32">
@@ -560,6 +572,34 @@
                                                     We support VC backed tech startups that have
                                                     been established within the last decade with:
                                                 </p>
+
+                                                <div style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center">
+                                                  <enhanced:img
+                                                    class=""
+                                                    style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                    src="./check_bullet.svg"
+                                                    alt=""
+                                                  />
+                                                
+                                                  <p class="web-description" style="flex: 1;">
+                                                    Appwrite Cloud Pro for 12 months
+                                                  </p>
+                                                </div>
+
+                                                
+                                                <div style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center">
+                                                  <enhanced:img
+                                                    class=""
+                                                    style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                    src="./check_bullet2.svg"
+                                                    alt=""
+                                                  />
+                                                
+                                                  <p class="web-description" style="flex: 1;">
+                                                    Premium email support as part of Pro
+                                                  </p>
+                                                </div>
+
                                             </section>
                                         {/if}
                                         <div
@@ -578,12 +618,12 @@
                                                 class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Name</div>
+                                                    <div class="u-block">Full name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        placeholder="Name"
+                                                        placeholder="Full name"
                                                         aria-label="Name"
                                                         bind:value={firstName}
                                                     />
@@ -597,20 +637,6 @@
                                                         placeholder="Your email address"
                                                         aria-label="Email address"
                                                         bind:value={email}
-                                                    />
-                                                </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
-                                                    <div class="u-block">Subject</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        name="subject"
-                                                        placeholder="Ex: Appwrite Startups program"
-                                                        aria-label="Subject"
-                                                        bind:value={subject}
                                                     />
                                                 </li>
                                                 <li
@@ -677,7 +703,7 @@
                                                 type="submit"
                                                 class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
                                             >
-                                                <span>Get Started</span>
+                                                <span>Apply</span>
                                             </button>
                                         </div>
                                     </form>
