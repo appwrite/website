@@ -214,11 +214,7 @@ export default async ({ req, res, log, error }) => {
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
 
-  const appwrite = new AppwriteService();
-
-  const data = req.body;
-
-  if (!data.text) {
+  if (!req.body.text) {
     return res.send('Bad request', 400);
   }
 
@@ -230,7 +226,7 @@ export default async ({ req, res, log, error }) => {
       },
       method: 'POST',
       body: JSON.stringify({
-        inputs: data.text,
+        inputs: req.body.text,
       }),
     }
   );
@@ -239,16 +235,18 @@ export default async ({ req, res, log, error }) => {
     return res.send('Internal server error', 500);
   }
 
-  const result = await response.blob();
+  const blob = await response.blob();
 
-  const file = await appwrite.createFile(bucketId, ID.unique(), result);
+  const appwrite = new AppwriteService();
+
+  const file = await appwrite.createFile(bucketId, ID.unique(), blob);
 
   const document = await appwrite.updateOrCreateTTSEntry(
     databaseId,
     collectionId,
-    data.$id ?? ID.unique(),
+    req.body.$id ?? ID.unique(),
     file.$id,
-    data.text
+    req.body.text
   );
 
   log('Document ' + document.$id + ' processed');
