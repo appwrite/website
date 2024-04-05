@@ -11,8 +11,9 @@ The OpenAI API is a powerful tool that can be used to generate text, images, and
 We'll create a simple function that takes a text prompt and generates a completion using OpenAI's GPT-3 model. Then, using Appwrite functions we'll create a user interface that allows users to input text and see the generated completion.
 
 # Prerequisites {% #prerequisites %}
+
 - An Appwrite Project
-- An OpenAI API Key
+- An [OpenAI API Key](https://platform.openai.com/account/api-keys)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -20,22 +21,24 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `OPENAI_API_KEY`, generate it [here](https://platform.openai.com/account/api-keys).
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependency" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `openai` package to simplify the process of interacting with the OpenAI API.
+
 ```bash
 npm install openai
 ```
@@ -62,7 +65,6 @@ export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
@@ -81,7 +83,6 @@ export default async ({ req, res, error }) => {
 ```
 
 If the method is `GET`, it returns the static HTML page.
-
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
@@ -201,6 +202,7 @@ import { OpenAIApi, Configuration } from 'openai';
 ```
 
 Add code to validate the body of the request and initialize the Appwrite SDK:
+
 ```js
 const client = new Client()
   .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
@@ -239,4 +241,3 @@ try {
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the generated text from the OpenAI API.
 {% /section %}
-

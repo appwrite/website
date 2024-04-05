@@ -6,7 +6,6 @@ difficulty: intermediate
 readtime: 15
 ---
 
-
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite project
@@ -27,11 +26,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `PINECONE_API_KEY`, generate it [here](https://docs.pinecone.io/guides/getting-started/quickstart#2-get-your-api-key). Add the `OPENAI_API_KEY`, generate it [here](https://platform.openai.com/account/api-keys).For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -174,7 +173,6 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
 ```
 
 This will render a form that will submit your search query to the function and display the results.
-
 {% /section %}
 
 {% section #step-6 step=6 title="Setup SDKs" %}
@@ -197,11 +195,9 @@ const pineconeIndex = pinecone.index(process.env.PINECONE_INDEX_ID);
 ```
 
 The functions checks the request method, and then initializes the OpenAI and Pinecone SDKs.
-
 {% /section %}
 
 {% section #step-7 step=7 title="Handle prompt requests" %}
-
 First add the following imports from LangChain:
 
 ```js
@@ -253,11 +249,9 @@ if (req.path === '/prompt') {
 ```
 
 This code will handle the prompt requests by creating a LangChain sequence that will format the documents as strings, prompt the user for a question, and then use the OpenAI API to generate a response. The response is then parsed and returned to the user.
-
 {% /section %}
 
 {% section #step-8 step=8 title="Handle index requests" %}
-
 The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
@@ -336,7 +330,6 @@ await PineconeStore.fromDocuments(documents, new OpenAIEmbeddings(), {
 ```
 
 Within our function handler, the service is instantiated and used to create an array of LangChain documents. LangChain documents can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
-
 {% /section %}
 
 {% section #step-9 step=9 title="Test the function" %}

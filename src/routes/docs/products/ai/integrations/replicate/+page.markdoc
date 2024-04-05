@@ -9,6 +9,7 @@ readtime: 15
 Integrating Replicate into your Appwrite project is simple. This tutorial will guide you through the process of setting up the Replicate API and integrating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
+
 - An Appwrite Project
 - A [Replicate API Key](https://replicate.com/docs/reference/http#authentication)
 
@@ -18,16 +19,17 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `REPLICATE_API_KEY`, generate it [here](https://replicate.com/docs/reference/http#authentication).
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependency" %}
@@ -61,7 +63,6 @@ export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
@@ -82,6 +83,7 @@ export default async ({ req, res, error }) => {
 
 {% section #step-5 step=5 title="Create static page" %}
 Create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -89,6 +91,7 @@ Create the static HTML page that our function will serve. Create a new file at `
 ```
 
 Within the `<html>` tag, we're going to add a `<head>` tag that will define our style and scripts.
+
 ```html
 <head>
   <meta charset="UTF-8" />
@@ -185,6 +188,7 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
   </main>
 </body>
 ```
+
 All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
 {% /section %}
 
@@ -198,6 +202,7 @@ import Replicate from "replicate";
 ```
 
 Next after we serve the HTML we're going to add code to validate the body of the request, define our models and initialize the Replicate SDK:
+
 ```js
 const models = {
   'audio': 'meta/musicgen:b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38',
@@ -211,6 +216,7 @@ if (req.body.type !== 'audio' && req.body.type !== 'text' && req.body.type !== '
 
 const replicate = new Replicate();
 ```
+
 In this example we're going to be using meta's musicgen and llama2 70b models for music and text generation while using Stability AI's SDXL model for image generation. You can find more models on the [Replicate explore page](https://replicate.com/explore).
 
 Next we're going to add some per model configurations:
@@ -246,9 +252,11 @@ switch (req.body.type) {
   break;
 };
 ```
+
 This allows us to individually configure each of the models we're using, feel free to play with this configuration to get the best results for your use case.
 
 Finally with our request built we can call the replicate API and generate a prediction:
+
 ```js
 let response;
 

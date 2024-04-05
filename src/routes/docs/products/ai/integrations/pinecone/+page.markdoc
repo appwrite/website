@@ -30,11 +30,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `PINECONE_API_KEY`, generate it [here](https://docs.pinecone.io/guides/getting-started/quickstart#2-get-your-api-key). Add the `OPENAI_API_KEY`, generate it [here](https://platform.openai.com/account/api-keys).For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -65,7 +65,6 @@ export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
@@ -175,7 +174,6 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
 ```
 
 This will render a form that will submit your search query to the function and display the results.
-
 {% /section %}
 
 {% section #step-6 step=6 title="Setup SDKs" %}
@@ -198,11 +196,9 @@ const pineconeIndex = pinecone.index(process.env.PINECONE_INDEX_ID);
 ```
 
 The functions checks the request method, and then initializes the OpenAI and Pinecone SDKs.
-
 {% /section %}
 
 {% section #step-7 step=7 title="Handle search requests" %}
-
 To handle the search requests, add the following code to the end of the request handler in the `main.js` file:
 
 ```js
@@ -222,11 +218,9 @@ if (req.path === '/search') {
 ```
 
 For all requests with the path `/search`, the function sends the search query to the OpenAI API to get the embedding. The function then queries the Pinecone index with the embedding and returns the results.
-
 {% /section %}
 
 {% section #step-8 step=8 title="Handle indexing requests" %}
-
 The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
@@ -304,7 +298,6 @@ await pineconeIndex.upsert(embeddings);
 ```
 
 The code fetches all documents from the Appwrite collection, then sends each document to the OpenAI API to get the embedding. The embeddings are then uploaded to the Pinecone index.
-
 {% /section %}
 
 {% section #step-9 step=9 title="Test the function" %}
