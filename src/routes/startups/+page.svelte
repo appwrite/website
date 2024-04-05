@@ -283,15 +283,22 @@
                                 </div>
 
                                 <div
-                                    class="web-is-only-desktop"
+                                    class="is-only-desktop"
                                     style="margin-top: 80px; margin-left: -60px"
                                 >
                                     <svelte:component this={SubSectionOne} />
                                 </div>
+
+                                <div
+                                    class="is-not-desktop"
+                                    style="min-width: 800px; padding-top: 80px;"
+                                >
+                                    <enhanced:img
+                                    alt=""
+                                    src="./SubSection1_illu.svg"
+                                    />
+                                </div>
                             </li>
-                            <!-- <li class="web-timeline-content-item" style="border: 1px solid red;">
-                                <svelte:component this={SubSectionOne} />
-                            </li> -->
                             <li class="web-timeline-content-item">
                                 <div
                                     class="web-grid-1-1"
@@ -331,10 +338,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="web-is-not-desktop u-flex">
-                                        <svelte:component this={SubSectionTwo} />
-                                    </div>
                                 </div>
+                                <div class="web-is-not-desktop u-flex" style="margin-top:-200px">
+                                  <svelte:component this={SubSectionTwo} />
+                              </div>
+
                             </li>
                             <li class="web-timeline-content-item">
                                 <div
@@ -351,9 +359,6 @@
                                             the time and effort you need to spend on securing your
                                             application.
                                         </p>
-                                        <div class="web-is-not-desktop u-flex u-position-relative">
-                                            <svelte:component this={SubSectionThree} />
-                                        </div>
                                         <div
                                             class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64"
                                         >
@@ -373,8 +378,13 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="web-is-not-desktop u-position-relative" style="margin-bottom: -180px">
+                                      <enhanced:img src="./SubSection3_illu.svg" alt="" />
+                                    </div>
+
                                     <div class="web-is-only-desktop u-position-relative">
-                                        <svelte:component this={SubSectionThree} />
+                                      <svelte:component this={SubSectionThree} />
                                     </div>
                                 </div>
                             </li>
