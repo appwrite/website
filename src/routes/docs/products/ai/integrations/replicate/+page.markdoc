@@ -4,7 +4,6 @@ title: Integrating Replicate
 description: Learn how to integrate Replicate into your Appwrite project.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/computer-vision
 ---
 
 Integrating Replicate into your Appwrite project is simple. This tutorial will guide you through the process of setting up the Replicate API and integrating it into your Appwrite project.

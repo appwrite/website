@@ -4,7 +4,6 @@ title: Integrating Pinecone
 description: Learn how to integrate Pinecone into your Appwrite project.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/computer-vision
 ---
 
 Pinecone is a vector database that allows you to store and query high-dimensional vectors. It is a great tool for building recommendation systems, search engines, and more. In this tutorial, we'll show you how to integrate Pinecone into your Appwrite project.
