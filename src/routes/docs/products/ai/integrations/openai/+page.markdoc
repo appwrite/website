@@ -34,7 +34,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add dependency" %}
+{% section #step-2 step=2 title="Add OpenAI SDK" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `openai` package to simplify the process of interacting with the OpenAI API.
