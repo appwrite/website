@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Integrating LangChain and Appwrite
+title: Integrating LangChain
 description: Learn how to integrate LangChain into your Appwrite project.
 difficulty: intermediate
 readtime: 15
@@ -35,13 +35,13 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add Pinecone SDK" %}
+{% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
-Install the `@pinecone-database/pinecone` package to simplify the process of interacting with the Pinecone API.
+Add the following dependencies to the `package.json` file:
 
 ```bash
-npm install @pinecone-database/pinecone
+npm install @pinecone-database/pinecone openai @langchain/core @langchain/openai @langchain/pinecone langchain
 ```
 {% /section %}
 
@@ -66,48 +66,19 @@ export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
-Add the following utility function to the `src/utils.js` file to check if all required fields are present in an object:
-
-```js
-export function throwIfMissing(obj, keys) {
-  const missing = [];
-  for (let key of keys) {
-    if (!(key in obj) || !obj[key]) {
-      missing.push(key);
-    }
-  }
-  if (missing.length > 0) {
-    throw new Error(`Missing required fields: ${missing.join(', ')}`);
-  }
-}
-```
-
-These utility functions will be used in the next steps.
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
 Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
 
 ```js
-import { getStaticFile, throwIfMissing } from './utils.js';
+import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
-  throwIfMissing(process.env, [
-    'APPWRITE_API_KEY',
-    'APPWRITE_DATABASE_ID',
-    'APPWRITE_COLLECTION_ID',
-    'PINECONE_API_KEY',
-    'PINECONE_INDEX_ID',
-    'OPENAI_API_KEY',
-  ]);
-
   if (req.method === 'GET') {
     const html = getStaticFile('index.html');
     return res.send(html, 200, { 'Content-Type': 'text/html; charset=utf-8' });
   }
-
-
 };
 ```
 
@@ -373,7 +344,7 @@ Within our function handler, the service is instantiated and used to create an a
 
 {% /section %}
 
-{% section #step-8 step=8 title="Test the function" %}
+{% section #step-9 step=9 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the matched results.
 

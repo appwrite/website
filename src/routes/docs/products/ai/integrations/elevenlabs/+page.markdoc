@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Integrating ElevenLabs and Appwrite
+title: Integrating ElevenLabs
 description: Learn how to integrate ElevenLabs into your Appwrite project.
 difficulty: intermediate
 readtime: 15
@@ -33,12 +33,12 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Add fetch" %}
+{% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
-Install the `node-fetch` package to make requests to the ElevenLabs API and `node-appwrite` package to upload the generated audio files to Appwrite Storage.
+Install the `undici` package to make requests to the ElevenLabs API and `node-appwrite` package to upload the generated audio files to Appwrite Storage.
 ```bash
-npm install node-fetch node-appwrite
+npm install undici node-appwrite
 ```
 {% /section %}
 
@@ -63,37 +63,15 @@ export function getStaticFile(fileName) {
   return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
-
-Similarly, create a `throwIfMissing()` function in the same file that will be used later to validate environment variables and the body.
-
-```js
-export function throwIfMissing(obj, keys) {
-  const missing = [];
-  for (let key of keys) {
-    if (!(key in obj) || !obj[key]) {
-      missing.push(key);
-    }
-  }
-  if (missing.length > 0) {
-    throw new Error(`Missing required fields: ${missing.join(', ')}`);
-  }
-}
-```
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
 Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you'll create later.
 
 ```js
-import { getStaticFile, throwIfMissing } from './utils.js';
+import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
-  throwIfMissing(process.env, [
-    "ELEVENLABS_API_KEY",
-    "APPWRITE_API_KEY",
-    "APPWRITE_BUCKET_ID",
-  ]);
-
   if (req.method === 'GET') {
     return res.send(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
@@ -221,7 +199,7 @@ Import `fetch`, and the required features from the Appwrite Node.js SDK at the t
 
 ```js
 import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
-import fetch from "node-fetch";
+import { fetch } from "undici";
 ```
 
 Next add code to validate the body of the request and initialize the Appwrite SDK:
@@ -260,7 +238,6 @@ const response = await fetch(
 );
 
 if (response.status !== 200) {
-  error(await response.text());
   return res.json({ ok: false, error: "Failed to generate audio" }, 500);
 }
 ```
@@ -300,8 +277,4 @@ Now that the function is deployed, test it by visiting the function URL in your 
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the audio appear below the input.
 
 ![Testing the function](/images/docs/ai/integrations/elevenlabs/demo.png)
-{% /section %}
-
-{% section #step-9 step=9 title="Next steps" %}
-In this tutorial, you've created a simple web page that allows you to interact with the ElevenLabs API using Appwrite Functions. You've learned how to create a function that interacts with an external API, upload audio to storage, how to deploy it to Appwrite, and how to create an interactive web page that uses the function.
 {% /section %}

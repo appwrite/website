@@ -32,7 +32,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
-{% section #step-2 step=2 title="Adding the Hugging Face SDK" %}
+{% section #step-2 step=2 title="Add dependency" %}
 Once the function is created, clone the function and open it in your development environment.
 
 Once you have the repository open, you can install the Hugging Face inference SDK by running the following command in your terminal:
@@ -45,16 +45,12 @@ npm install @huggingface/inference
 
 {% section #step-3 step=3 title="Parsing the body" %}
 After installing the SDK, write the code that will parse the body of the request.
-The function will support two purposes: it can recieve a body via direct execution or it can be called via a file create event.
+The function will serve two purposes: it can recieve a body via direct execution or it can be called via a file create event.
 
 Open up your `src/index.js` file and replace the function body with the following code:
 
 ```js
 export default async ({ req, res, log, error }) => {
-  if (req.method !== 'POST') {
-    return res.send('Method not allowed', 405);
-  }
-
   const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
   const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
@@ -62,7 +58,6 @@ export default async ({ req, res, log, error }) => {
   // Allows using direct execution or file create event
   const fileId = req.body.$id || req.body.imageId;
   if (!fileId) {
-    error('Missing fileId');
     return res.send('Bad request', 400);
   }
 
@@ -70,7 +65,6 @@ export default async ({ req, res, log, error }) => {
     req.body.bucketId &&
     req.body.bucketId != bucketId
   ) {
-    error('Invalid bucketId');
     return res.send('Bad request', 400);
   }
 }
@@ -136,18 +130,7 @@ Then, we can use the `AppwriteService` class to download the image from the Appw
 ```js
   const appwrite = new AppwriteService();
 
-  let file;
-  try {
-    file = await appwrite.getFile(bucketId, fileId);
-  } catch (err) {
-    if (err.code === 404) {
-      error(err);
-      return res.send('File Not Found', 404);
-    }
-
-    error(err);
-    return res.send('Bad request', 400);
-  }
+  const file = await appwrite.getFile(bucketId, fileId);
 ```
 This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 
@@ -215,12 +198,7 @@ Next, using the function we just added we can save the object detection result t
 
 Add the following code:
 ```js
-try {
-  await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
-} catch (err) {
-  error(err);
-  return res.send('Internal Server Error', 500);
-}
+await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
 
 log('Image ' + fileId + ' detected', result);
 return res.json(result);
@@ -259,9 +237,4 @@ After a few seconds, you should see an execution appear in the function's execut
 {% only_light %}
 ![Object detection test](/images/docs/ai/tutorials/object-detection/result.png)
 {% /only_light %}
-{% /section %}
-{% section #step-12 step=12 title="Next steps" %}
-From here you can expand on this project by adding more models or creating a front-end to upload images.
-We look forward to seeing what you build with this project! Full source code for this project can be found on
-[GitHub](https://github.com/appwrite/templates/tree/main/node/object-detection-with-huggingface).
 {% /section %}
