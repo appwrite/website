@@ -4,7 +4,6 @@ title: Integrating ElevenLabs
 description: Learn how to integrate ElevenLabs into your Appwrite project.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/audio-processing
 ---
 
 ElevenLabs is an text to speech tool that can generate natural sounding audio from text. It's an excellent tool for dubbing content, creating audiobooks, or even for accessibility purposes.

@@ -4,7 +4,6 @@ title: Integrating Perplexity
 description: Learn how to integrate the Perplexity API into your Appwrite project.
 difficulty: intermediate
 readtime: 15
-back: /docs/products/ai/computer-vision
 ---
 
 Integrating Perplexity into your Appwrite project is simple. This tutorial will guide you through the process of setting up the Perplexity API and integrating it into your Appwrite project.
