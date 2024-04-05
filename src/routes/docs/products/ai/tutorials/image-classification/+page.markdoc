@@ -19,16 +19,17 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -40,7 +41,6 @@ Once you have the repository open, you can install the Appwrite NodK and the Hug
 npm install @huggingface/inference node-appwrites
 ```
 {% /section %}
-
 
 {% section #step-3 step=3 title="Parse payload body" %}
 After installing the SDK, write the code that will accept a JSON body. The function will serve two purposes: it can recieve a body via direct execution or it can be called via a file create event.
@@ -68,21 +68,20 @@ export default async ({ req, res, log, error }) => {
   }
 }
 ```
-
 {% /section %}
 
-{% section #step-4 step=4 title="Create Storage bucket"  %}
+{% section #step-4 step=4 title="Create Storage bucket" %}
 In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
 ![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create bucket on console](/images/docs/storage/create-bucket.png)
 {% /only_light %}
 
 Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
-
 {% /section %}
 
 {% section #step-6 step=6 title="Create Appwrite collection" %}
@@ -93,18 +92,18 @@ Once you've created the database, click on the **Create collection** button and 
 
 Next, create the following schema for the collection:
 
-| Attribute | Type | Size | Required | Array |
-| --- | --- | --- | --- | --- |
-| image | String | 256 | Yes | No |
-| labels | String | 256 | Yes | Yes |
+| Attribute | Type      | Size      | Required  | Array     |
+| --------- | --------- | --------- | --------- | --------- |
+| image     | String    | 256       | Yes       | No        |
+| labels    | String    | 256       | Yes       | Yes       |
 
 {% only_dark %}
 ![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Image Classification Database](/images/docs/ai/tutorials/image-classification/database.png)
 {% /only_light %}
-
 {% /section %}
 
 {% section #step-7 step=7 title="Downloading image" %}
@@ -140,6 +139,7 @@ export default AppwriteService;
 This code creates a new `AppwriteService` class that initializes the Appwrite client and provides a method to download a file from the Appwrite Storage.
 
 Import the class into the `src/index.js` file, at the top of the file, add the following line:
+
 ```js
 import AppwriteService from './appwrite.js';
 ```
@@ -151,14 +151,15 @@ Then, use the `AppwriteService` class to download the image from the Appwrite St
 
   file = await appwrite.getFile(bucketId, fileId);
 ```
-This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 
+This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 {% /section %}
 
 {% section #step-8 step=8 title="Integrate with Huggingface" %}
 With the image downloaded, use the Hugging Face inference SDK to classify the image.
 
 At the top of the `src/index.js` file, add:
+
 ```js
 import { HfInference } from '@huggingface/inference';
 ```
@@ -176,11 +177,11 @@ const result = await hf.imageClassification({
 ```
 {% /section %}
 
-
 {% section #step-9 step=9 title="Save result" %}
 With the image classified, save the result to the Appwrite Databases.
 
 To begin, add a new function to the `appwrite.js` file created earlier which will add these records in the database.
+
 ```js
 async createImageLabels(databaseId, collectionId, imageId, labels)
 {
@@ -199,6 +200,7 @@ async createImageLabels(databaseId, collectionId, imageId, labels)
 In the `main.js` file, save the result to the Appwrite Database.
 
 Add the following code:
+
 ```js
 await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
 
@@ -218,12 +220,13 @@ Making sure to replace `[Bucket ID]` with the ID of the bucket you created earli
 {% only_dark %}
 ![Image Classification Event](/images/docs/ai/tutorials/image-classification/dark/event.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Image Classification Event](/images/docs/ai/tutorials/image-classification/event.png)
 {% /only_light %}
 {% /section %}
-{% section #step-10 step=10 title="Test the function" %}
 
+{% section #step-10 step=10 title="Test the function" %}
 Commit the changes to the repository and deploy the function.
 
 Test the function by uploading an image to the Appwrite Storage.
@@ -234,6 +237,7 @@ After a few seconds, you should see an execution appear in the function's execut
 {% only_dark %}
 ![Image Classification Test](/images/docs/ai/tutorials/image-classification/dark/result.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Image Classification Test](/images/docs/ai/tutorials/image-classification/result.png)
 {% /only_light %}

@@ -28,7 +28,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. Click **Create function**.
 1. Under **Connect Git repository**, select your provider.
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, tick the box to **Generate API key on completion**.
+1. In the **Variables** step, add the `PERPLEXITY_API_KEY`, generate it [here](https://docs.perplexity.ai/docs/getting-started).
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 

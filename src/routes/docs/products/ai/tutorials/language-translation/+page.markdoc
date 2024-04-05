@@ -19,16 +19,17 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependency" %}
@@ -40,7 +41,6 @@ Once you have the repository open, you can install the Hugging Face inference SD
 npm install @huggingface/inference
 ```
 {% /section %}
-
 
 {% section #step-3 step=3 title="Parse payload body" %}
 After installing the SDK, write the code that will accept a validate the request body.
@@ -57,11 +57,9 @@ export default async ({ req, res }) => {
   }
 }
 ```
-
 {% /section %}
 
-{% section #step-4 step=4 title="Make a request to Hugging Face"  %}
-
+{% section #step-4 step=4 title="Make a request to Hugging Face" %}
 Add the following import at the top of your `src/main.js` file:
 
 ```js
@@ -100,7 +98,6 @@ export default async ({ req, res }) => {
 ```
 
 First, ensure the function is called with method `POST`. Then, make a request to the Hugging Face API to translate the `source` text from English to French. You can change the `src_lang` and `tgt_lang` parameters to any language supported by the model you choose.
-
 {% /section %}
 
 {% section #step-5 step=5 title="Test the function" %}
@@ -122,5 +119,4 @@ Click **Execute** and you should see a response similar to the following:
     "output": "Bonjour, comment ça va?"
 }
 ```
-
 {% /section %}

@@ -13,23 +13,23 @@ Learn to setup an Appwrite Function utilizing object detection with Hugging Face
 - An Appwrite project
 - A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
-
 {% section #step-1 step=1 title="Create a new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependency" %}
@@ -41,7 +41,6 @@ Once you have the repository open, you can install the Hugging Face inference SD
 npm install @huggingface/inference
 ```
 {% /section %}
-
 
 {% section #step-3 step=3 title="Parsing the body" %}
 After installing the SDK, write the code that will parse the body of the request.
@@ -71,24 +70,26 @@ export default async ({ req, res, log, error }) => {
 ```
 
 This code will parse the body of the request and check if the request is a POST request. It will then check if the request contains the required fields and if the bucket ID matches the one we set in the environment variables.
-
 {% /section %}
 
-{% section #step-4 step=4 title="Setting up your Appwrite Storage bucket"  %}
+{% section #step-4 step=4 title="Setting up your Appwrite Storage bucket" %}
 Create a new bucket in the Appwrite Storage. Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then the **Create Bucket** button.
 
 {% only_dark %}
 ![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create bucket on console](/images/docs/storage/create-bucket.png)
 {% /only_light %}
 
 Note down the bucket ID so we can add it as an environment variable later.
-
 {% /section %}
 
-{% section #step-5 step=5 title="Downloading the image using Appwrite Storage" %}
+{% section
+   #step-5
+   step=5
+   title="Downloading the image using Appwrite Storage" %}
 With the payload parsed, you can now download the image from the Appwrite Storage.
 
 Create a new file in the `src` directory called `appwrite.js` and add the following code:
@@ -121,6 +122,7 @@ export default AppwriteService;
 This code creates a new `AppwriteService` class that initializes the Appwrite client and provides a method to download a file from the Appwrite Storage.
 
 Import the class into the `src/index.js` file, at the top of the file, add the following line:
+
 ```js
 import AppwriteService from './appwrite.js';
 ```
@@ -132,14 +134,15 @@ Then, we can use the `AppwriteService` class to download the image from the Appw
 
   const file = await appwrite.getFile(bucketId, fileId);
 ```
-This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 
+This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
 {% /section %}
 
 {% section #step-6 step=6 title="Detecting objects in the image" %}
 With the image downloaded, we can now use the Hugging Face inference SDK to classify the image.
 
 At the top of the `src/index.js` file, add:
+
 ```js
 import { HfInference } from '@huggingface/inference';
 ```
@@ -169,15 +172,17 @@ Both of these attributes should be `required` with `image` having the size of `2
 {% only_dark %}
 ![Object detection database](/images/docs/ai/tutorials/object-detection/dark/database.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Object detection database](/images/docs/ai/tutorials/object-detection/database.png)
 {% /only_light %}
-
 {% /section %}
+
 {% section #step-8 step=8 title="Saving the object detection result" %}
 With the image classified, we can now save the result to the Appwrite Database.
 
 To begin with we're going to add a new function to the `appwrite.js` file we created earlier which will create these records in the database.
+
 ```js
 async createImageLabels(databaseId, collectionId, imageId, labels)
 {
@@ -192,11 +197,13 @@ async createImageLabels(databaseId, collectionId, imageId, labels)
   );
 }
 ```
+
 This abstraction keeps our codebase clean and makes it easier to test and maintain.
 
 Next, using the function we just added we can save the object detection result to the Appwrite Database. We'll also add some logging and error handling to make sure everything is working as expected.
 
 Add the following code:
+
 ```js
 await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
 
@@ -217,10 +224,12 @@ Making sure to replace `[Bucket ID]` with the ID of the bucket you created earli
 {% only_dark %}
 ![Object detection event](/images/docs/ai/tutorials/object-detection/dark/event.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Object detection event](/images/docs/ai/tutorials/object-detection/event.png)
 {% /only_light %}
 {% /section %}
+
 {% section #step-10 step=10 title="Testing the function" %}
 Test our function by uploading an image to the Appwrite Storage.
 
@@ -230,6 +239,7 @@ After a few seconds, you should see an execution appear in the function's execut
 {% only_dark %}
 ![Object detection test](/images/docs/ai/tutorials/object-detection/dark/result.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Object detection test](/images/docs/ai/tutorials/object-detection/result.png)
 {% /only_light %}

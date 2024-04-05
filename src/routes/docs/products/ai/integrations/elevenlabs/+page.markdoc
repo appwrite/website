@@ -11,8 +11,9 @@ ElevenLabs is an text to speech tool that can generate natural sounding audio fr
 Integrating ElevenLabs into your Appwrite project is simple. This tutorial will guide you through the process of setting up the ElevenLabs API and integrating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
+
 - An Appwrite Project
-- An ElevenLabs API Key
+- An [ElevenLabs API Key](https://elevenlabs.io/)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -20,22 +21,24 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
 {% /only_dark %}
+
 {% only_light %}
 ![Create function screen](/images/docs/functions/template.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `ELEVENLABS_API_KEY`, generate it [here](https://elevenlabs.io/). For thee `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
 Install the `undici` package to make requests to the ElevenLabs API and `node-appwrite` package to upload the generated audio files to Appwrite Storage.
+
 ```bash
 npm install undici node-appwrite
 ```
@@ -92,6 +95,7 @@ Create a HTML web page that the function will serve. Create a new file at `stati
 ```
 
 Within the `<html>` tag, Add a `<head>` tag that will define the style and scripts.
+
 ```html
 <head>
   <meta charset="UTF-8" />
@@ -202,6 +206,7 @@ import { fetch } from "undici";
 ```
 
 Next add code to validate the body of the request and initialize the Appwrite SDK:
+
 ```js
 const client = new Client()
   .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
@@ -246,7 +251,6 @@ additionally it'll also catch any errors we could encounter and reports them for
 {% /section %}
 
 {% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
-
 Store the audio file in Appwrite Storage for easy retrieval later:
 
 ```js
