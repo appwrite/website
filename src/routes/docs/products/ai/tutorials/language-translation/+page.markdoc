@@ -49,13 +49,6 @@ Open up your `src/main.js` file and replace the function body with the following
 
 ```js
 export default async ({ req, res }) => {
-  if (!process.env.HUGGINGFACE_ACCESS_TOKEN) {
-    return res.json({
-        ok: false,
-        error: 'HUGGINGFACE_ACCESS_TOKEN is not set',
-    });
-  }
-
   if (!req.body.source || typeof req.body.source !== 'string') {
     return res.json({
         ok: false,
@@ -81,14 +74,7 @@ In your function body, add the following code after the parameter checks:
 
 export default async ({ req, res }) => {
     // ... existing parameter checks
-
-    if (req.method !== 'POST') {
-        return res.json({
-            ok: false,
-            error: 'Method not allowed'
-        }, 405);
-    }
-
+    
     const hf = new HfInference(process.env.HUGGINGFACE_ACCESS_TOKEN);
 
     try {
