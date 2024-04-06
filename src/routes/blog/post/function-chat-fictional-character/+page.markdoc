@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Chat with your favorite fictional character using OpenAI and Appwrite Functions
-description: Learn how you can use Appwrite Functions and OpenAI to chat with popular characters such as Batman
+description: Learn how you can use Appwrite Functions and OpenAI to chat with popular characters such as Batman.
 date: 2024-04-04
 cover: /images/blog/function-chat-fictional-character/cover.png
 timeToRead: 6
