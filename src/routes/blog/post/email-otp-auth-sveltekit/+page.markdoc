@@ -9,9 +9,9 @@ author: aditya-oberai
 category: authentication
 ---
 
-To discover a balance between security and user convenience, one growing trend we have seen recently is the implementation of passwordless authentication. Today, both small and large companies are transitioning to using passwordless authentication methods over traditional password-based ones, such as Expensify (whose transition was also covered in a Forbes [article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023. Appwrite has always maintained support for both types of authentication, featuring phone-based OTPs (one-time passwords) and magic URLs in our list of authentication methods.
+To discover a balance between security and user convenience, one growing trend we have seen recently is the implementation of passwordless authentication. Today, both small and large companies are transitioning to using passwordless authentication methods over traditional password-based ones, such as Expensify (whose transition was also covered in a Forbes [article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023). Appwrite has always maintained support for both types of authentication, featuring phone-based OTPs (one-time passwords) and magic URLs in our list of authentication methods.
 
-With the recent Appwrite 1.5 release, we added a new passwordless authentication method: email OTPs. In this blog, you’ll let’s learn how email OTP authentication works and how you can implement it in a SvelteKit application.
+With the recent Appwrite 1.5 release, we added a new passwordless authentication method: email OTPs. In this blog, you’ll learn how email OTP authentication works and how you can implement it in a SvelteKit application.
 
 # What is email OTP authentication?
 
@@ -35,7 +35,7 @@ Now that we have a basic understanding of email OTP authentication, let’s lear
 
 Email OTP authentication is not yet released on Cloud, which is on `Appwrite 1.4.x`. This is a feature available in `Appwrite 1.5.x` and will be available on Appwrite Cloud later. In the meantime, you can use it by [self-hosting Appwrite](https://appwrite.io/docs/advanced/self-hosting) on your system or an external VM/VPS.
 
-You can self host Appwrite using the following Docker command:
+You can self-host Appwrite using the following Docker command:
 
 ```bash
 docker run -it --rm \
