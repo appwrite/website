@@ -153,7 +153,7 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
 
     async function createOtp(e) {
         e.preventDefault();
-				const formData = new FormData(e.target);
+        const formData = new FormData(e.target);
         token = await user.createOtp(formData.get('email'));
         securityPhrase = `Security phrase: ${token.phrase}`;
         alert("OTP sent to email");
@@ -161,7 +161,7 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
 
     async function verifyOtp(e) {
         e.preventDefault();
-				const formData = new FormData(e.target);
+        const formData = new FormData(e.target);
         const response = await user.verifyOtp(token.userId, formData.get('otp'));
         alert("OTP verified");
     }
