@@ -29,9 +29,8 @@ Coming soon
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/hippa" title="HIPPA" %}
-Coming soon.
+Appwrite is HIPPA compliant. Learn about how Appwrite's measures to protect PHI.
 {% /cards_item %}
-
 {% /cards %}
 
 # Measures {% #measures %}
