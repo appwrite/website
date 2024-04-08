@@ -50,7 +50,7 @@ export function IdeasProvider(props) {
       ID.unique(),
       idea
     );
-    setIdeas((ideas) => [response.$id, ...ideas].slice(0, 10));
+    setIdeas((ideas) => [response, ...ideas].slice(0, 10));
   }
 
   async function remove(id) {
