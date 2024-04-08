@@ -3,19 +3,19 @@ layout: post
 title: Introducing Appwrite's React Native SDK in open beta
 description: A new SDK that allows for more mobile develoeprs to benefit from Appwrite's powerfull tools.
 date: 2024-04-09
-cover: /images/blog/react-native.png
+cover: /images/blog/introducing-appwrite-react-native-sdk/react-native.png
 timeToRead: 4
 author: vincent-ge
 category: product
 ---
 
-If you’re a mobile developer who doesn’t (want to) use Flutter, we have great news for you. Appwrite now has a React Native SDK in open beta. This will allow more mobile developers to benefit from Appwrite, giving everything you need to build your mobile applications backend, without the hassle of building it yourself.
+If you're a mobile developer who doesn't (want to) use Flutter, we have great news for you. Appwrite now has a React Native SDK in open beta. This will allow more mobile developers to benefit from Appwrite, giving everything you need to build your mobile applications backend, without the hassle of building it yourself.
 
-## A brief history of React Native
+# A brief history of React Native
 
 [React Native](https://reactnative.dev/) has been a game-changer since its inception. Launched by Facebook in 2015, it emerged from the need to unify the development stacks for iOS and Android platforms, enabling a single codebase for both. Its importance to the developer community is monumental, offering rapid development, native capabilities, and using one code base for both iOS and Android platforms. With over 2,000 contributors on [GitHub](https://github.com/facebook/react-native) and used by thousands of apps worldwide, React Native has significantly contributed to the mobile development landscape by making app development more accessible, efficient, and scalable.
 
-## Appwrite and React Native
+# Appwrite and React Native
 
 The addition of the SDK to Appwrite is great news for React Native mobile developers. Appwrite's commitment to providing a secure, scalable backend, combined with React Native's efficiency and native capabilities, creates a strong toolkit for building mobile applications. This integration means developers can now enjoy the best of both worlds: Appwrite's [ready-to-use APIs](https://appwrite.io/docs/references) for Authentication, Database, Storage, Messaging, Realtime, and more, alongside React Native's seamless developer experience and native feel.
 
@@ -25,15 +25,15 @@ Why is this good news for the [React Native community](https://www.reddit.com/r/
 
 As the SDK is released in open beta we will be working together with the React Native community to improve the SDK. We invite all developers to use the SDK and share feedback to help us make it more stable in the next few months.
 
-## Building mobile apps
+# Building mobile apps
 
 What can you build with Appwrite and React Native? Basically, anything you can think of from social media platforms and e-commerce apps to productivity tools and interactive games. Appwrite even supports push notifications for your mobile app with [Messaging](https://appwrite.io/docs/products/messaging/send-push-notifications). 
 
-We’ve created a playground on [GitHub](https://github.com/appwrite/playground-for-react-native) where we will add simple ideas for getting started with Appwrite and React Native. You can also find inspiration from other Appwrite projects on [builtwithappwrite.io](http://builtwithappwrite.io) to see how other mobile developers have used Appwrite as their backend.
+We've created a playground on [GitHub](https://github.com/appwrite/playground-for-react-native) where we will add simple ideas for getting started with Appwrite and React Native. You can also find inspiration from other Appwrite projects on [builtwithappwrite.io](http://builtwithappwrite.io) to see how other mobile developers have used Appwrite as their backend.
 
 If you are used to working with [Firebase and React Native](https://stackshare.io/react-native-firebase/alternatives), but have been looking for an open source alternative, Appwrite is now a solid choice.
 
-## Getting started with Appwrite and React Native
+# Getting started with Appwrite and React Native
 
 Diving into Appwrite's React Native SDK is easy. Here's how to get started:
 
@@ -42,9 +42,9 @@ Diving into Appwrite's React Native SDK is easy. Here's how to get started:
 3. **Explore the Documentation**: Familiarize yourself with the SDK's documentation. It's packed with tutorials, examples, and API references designed to get you up to speed in no time.
 4. **Start Building**: With everything in place, you're ready to start building your app. The React Native SDK is designed to be intuitive, allowing you to implement features like authentication, database operations, and file storage with ease.
 
-Read the [quick start](http://appwrite.io/docs/quick-starts/react-native) to get started or find a [tutorial](http://appwrite.io/docs/tutorials/react-native/step-1) to build an ideas tracker with React Native.
+Read the [quick start](https://appwrite.io/docs/quick-starts/react-native) to get started or find a [tutorial](https://appwrite.io/docs/tutorials/react-native/step-1) to build an ideas tracker with React Native.
 
-## Resources
+# Resources
 
 Visit our documentation to learn more about our SDKs, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
