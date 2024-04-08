@@ -27,6 +27,7 @@ export async function load() {
                 .replace('/+page.markdoc', '')
                 .replace('/step-1', '');
             const tutorialName = slug.slice(slug.lastIndexOf('/') + 1);
+
             return {
                 title: frontmatter.title,
                 framework: frontmatter.framework,
