@@ -293,10 +293,7 @@
                                     class="is-not-desktop"
                                     style="min-width: 800px; padding-top: 80px;"
                                 >
-                                    <enhanced:img
-                                    alt=""
-                                    src="./SubSection1_illu.svg"
-                                    />
+                                    <enhanced:img alt="" src="./SubSection1_illu.svg" />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -340,9 +337,8 @@
                                     </div>
                                 </div>
                                 <div class="web-is-not-desktop u-flex" style="margin-top:-200px">
-                                  <svelte:component this={SubSectionTwo} />
-                              </div>
-
+                                    <svelte:component this={SubSectionTwo} />
+                                </div>
                             </li>
                             <li class="web-timeline-content-item">
                                 <div
@@ -379,12 +375,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="web-is-not-desktop u-position-relative" style="margin-bottom: -180px">
-                                      <enhanced:img src="./SubSection3_illu.svg" alt="" />
+                                    <div
+                                        class="web-is-not-desktop u-position-relative"
+                                        style="margin-bottom: -180px"
+                                    >
+                                        <enhanced:img src="./SubSection3_illu.svg" alt="" />
                                     </div>
 
                                     <div class="web-is-only-desktop u-position-relative">
-                                      <svelte:component this={SubSectionThree} />
+                                        <svelte:component this={SubSectionThree} />
                                     </div>
                                 </div>
                             </li>
