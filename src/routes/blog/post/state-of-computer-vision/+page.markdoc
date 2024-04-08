@@ -17,7 +17,7 @@ Computer vision is a field of artificial intelligence where we work towards givi
 
 From rotating and scaling your images to applying your Snapchat and Instagram filters, the applications of computer vision are many fold! Computer vision technology has revolutionized many industries with it being used in the medical industry to diagnose the onset of cancer, tumors and other life threatening diseases, to the agriculture industry that uses the technology to identify weeds in their vast amount of crops, while the manufacturing sector uses it to identify faults in products before they ever come close to a customer's hands. All these new and exciting uses for the technology has resulted in the young computer vision industry to be predicted to be worth over $50bn by 2030[1].
 
-The purpose of this blog post is to give you a good understanding of the fundamentals of computer vision, the most popular tasks and applications of computer vision and how we can leverage Appwrite to build computer vision enabled applications.
+The purpose of this post is to give you a good understanding of the fundamentals of computer vision, the most popular tasks and applications of computer vision and how we can leverage Appwrite to build computer vision enabled applications.
 
 # A (not so) brief history of computer vision
 
