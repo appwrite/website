@@ -87,7 +87,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .wrapper {
-        // display: flex;
         display: grid;
         grid-template-columns: auto auto;
         gap: 5rem;
@@ -95,7 +94,8 @@
         justify-content: center;
         margin-block-start: 4.5rem;
         @media (max-width: 700px) {
-            grid-template-columns: auto;
+            display: flex;
+            justify-content: center;
         }
     }
 
@@ -129,6 +129,11 @@
         backdrop-filter: blur(30px);
         @media (max-width: 768px) {
             margin-inline: auto;
+            max-width: 30rem;
+        }
+        @media (max-width: 500px) {
+            margin-inline: auto;
+            max-width: 20rem;
         }
     }
 
