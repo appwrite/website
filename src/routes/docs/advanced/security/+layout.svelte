@@ -29,7 +29,7 @@
 					href: '/docs/advanced/security/soc2'
 				},
 				{
-					label: 'HIPPA (Coming soon)',
+					label: 'HIPPA',
 					href: '/docs/advanced/security/hippa'
 				},
 				{
