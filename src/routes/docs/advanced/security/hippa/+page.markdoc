@@ -23,3 +23,6 @@ ensuring confidentiality both at rest and during transmission.
 requiring authentication and authorization through multi-factor authentication (MFA). 
 
 Appwrite safeguards personal information to the same extent it protects its own, complying with relevant privacy laws and regulations in the jurisdictions where its services are offered. 
+
+Please note that while Appwrite Cloud serves as a HIPAA-compliant platform to handle data, 
+it is the responsibility of developers to ensure that their application is also compliant with HIPAA regulations.
