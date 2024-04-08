@@ -12,6 +12,7 @@
     type MappedTutorial = (typeof data.tutorials)[number];
 
     const iconMap: Record<string, string> = {
+        'react native': 'icon-react',
         react: 'icon-react',
         vue: 'web-icon-vue',
         angular: 'icon-angular',
