@@ -26,9 +26,9 @@
         </ul>
         <div class="u-flex u-gap-16">
             <ul class="u-flex u-gap-8">
-                <li><a class="web-link" href="https://appwrite.io/terms">Teams</a></li>
-                <li><a class="web-link" href="https://appwrite.io/privacy">Privacy</a></li>
-                <li><a class="web-link" href="https://appwrite.io/cookies">Cookies</a></li>
+                <li><a class="web-link" href="/terms">Terms</a></li>
+                <li><a class="web-link" href="/privacy">Privacy</a></li>
+                <li><a class="web-link" href="/cookies">Cookies</a></li>
             </ul>
             <div>Copyright © {year} Appwrite</div>
         </div>

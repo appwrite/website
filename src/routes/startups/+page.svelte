@@ -160,7 +160,7 @@
                         <h1 class="web-headline web-u-color-text-primary">
                             Build your startup with Appwrite
                         </h1>
-                        <p class="web-description" style="padding: 0 104px">
+                        <p class="web-description web-u-max-width-640 u-margin-inline-auto u-padding-inline-32">
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
