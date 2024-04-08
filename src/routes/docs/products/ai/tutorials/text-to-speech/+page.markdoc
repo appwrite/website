@@ -1,0 +1,274 @@
+---
+layout: article
+title: Text to Speech with Hugging Face
+description: Learn how to integrate Hugging Face into your Appwrite project for text to speech processing.
+difficulty: intermediate
+readtime: 15
+---
+
+Hugging Face is a platform that hosts ML models for all types of applications, including text to speech.
+This example uses the "ESPnet2 TTS pretrained model" from Hugging Face to convert text to speech, but the same concept can be applied to other models.
+
+# Prerequisites {% #prerequisites %}
+
+- An Appwrite project
+- A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+
+{% section #step-1 step=1 title="Create new function" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+
+{% only_dark %}
+![Create function screen](/images/docs/functions/dark/template.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create function screen](/images/docs/functions/template.png)
+{% /only_light %}
+
+1. In the Appwrite Console's sidebar, click **Functions**.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
+1. Follow the step-by-step wizard and create the function.
+{% /section %}
+
+{% section #step-2 step=2 title="Add dependencies" %}
+Once the function is created, clone the function and open it in your development environment.
+
+Since we're going to be making requests to the ElevenLabs API and fetch isn't included in the current Node.js 16 Runtime,
+we're going to install the `undici` package.
+We're also going to install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+
+```bash
+npm install undici node-appwrite
+```
+{% /section %}
+
+{% section #step-4 step=4 title="Create an Appwrite service" %}
+The function will interact with Appwrite to store the generated audio files and the text-to-speech data.
+To make this easier, create a service class that will handle all the Appwrite interactions.
+
+Create a file called `src/appwrite.js` and implement the following class:
+
+```js
+import { Client, Databases, ID, InputFile, Storage } from 'node-appwrite';
+
+class AppwriteService {
+  constructor() {
+  }
+
+  async createFile(bucketId, fileId, file) {
+  }
+
+  async updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    documentId,
+    fileId,
+    text
+  ) {
+  }
+
+  async getFile(bucketId, fileId) {
+  }
+}
+
+export default AppwriteService;
+```
+
+{% accordion %}
+{% accordion_item title="constructor()" %}
+This constructor initializes the Appwrite client and sets up the database and storage services.
+
+```js
+  constructor() {
+    const client = new Client();
+    client
+      .setEndpoint(
+        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+      )
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+      .setKey(process.env.APPWRITE_API_KEY);
+
+    this.databases = new Databases(client);
+    this.storage = new Storage(client);
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="createFile()" %}
+This method uploads a file to Appwrite Storage.
+
+```js
+  async createFile(bucketId, fileId, file) {
+    let parsedFile = await InputFile.fromBlob(file, 'audio.flac')
+
+    return await this.storage.createFile(
+      bucketId,
+      fileId,
+      parsedFile
+    )
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="updateOrCreateTTSEntry()" %}
+This method updates or creates a document in the Appwrite database depending on if the entry already exists.
+
+```js
+  async updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    documentId,
+    fileId,
+    text
+  ) {
+    const data = {
+      text,
+      tts: fileId,
+    };
+
+    if (documentId === ID.unique()) {
+      return await this.databases.createDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        data
+      );
+    }
+
+    try {
+      return await this.databases.updateDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        data
+      );
+    } catch (err) {
+      if (err.code === 404) {
+        return await this.databases.createDocument(
+          databaseId,
+          collectionId,
+          documentId,
+          data
+        );
+      } else {
+        throw err;
+      }
+    }
+  }
+```
+{% /accordion_item %}
+
+{% accordion_item title="getFile()" %}
+This method retrieves a file from Appwrite Storage.
+
+```js
+  async getFile(bucketId, fileId) {
+    return await this.storage.getFileDownload(bucketId, fileId);
+  }
+```
+{% /accordion_item %}
+{% /accordion %}
+{% /section %}
+
+{% section #step-5 step=5 title="Create Storage bucket" %}
+In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
+
+{% only_dark %}
+![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create bucket on console](/images/docs/storage/create-bucket.png)
+{% /only_light %}
+
+Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
+{% /section %}
+
+{% section #step-6 step=6 title="Create Appwrite collection" %}
+Before saving the classification result to Appwrite Databases, create a new database and collection in the Appwrite Console.
+
+Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, and name it, for example `AI`.
+Once you've created the database, click on the **Create collection** button and create a new collection, and name it, for example `Text to Speech`.
+
+Next, create the following schema for the collection:
+
+| Attribute | Type      | Size      | Required  | Array     |
+| --------- | --------- | --------- | --------- | --------- |
+| text      | string    | 1024      | true      | false     |
+| tts       | string    | 4028      | true      | false     |
+{% /section %}
+
+{% section #step-7 step=7 title="Integrate with Hugging Face" %}
+in `src/main.js` implement the following function to convert text to speech using the Hugging Face API.
+
+```js
+import { fetch } from 'undici';
+import AppwriteService from './appwrite.js';
+import { ID } from 'node-appwrite';
+
+export default async ({ req, res, log, error }) => {
+  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'text_to_speech';
+  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'text_to_speech';
+
+  if (!req.body.text) {
+    return res.send('Bad request', 400);
+  }
+
+  const response = await fetch(
+    'https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits',
+    {
+      headers: {
+        Authorization: 'Bearer ' + process.env.HUGGING_FACE_API_KEY,
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        inputs: req.body.text,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    return res.send('Internal server error', 500);
+  }
+
+  const blob = await response.blob();
+
+  const appwrite = new AppwriteService();
+
+  const file = await appwrite.createFile(bucketId, ID.unique(), blob);
+
+  const document = await appwrite.updateOrCreateTTSEntry(
+    databaseId,
+    collectionId,
+    req.body.$id ?? ID.unique(),
+    file.$id,
+    req.body.text
+  );
+
+  log('Document ' + document.$id + ' processed');
+  return res.json({ $id: document.$id, tts: file.$id });
+};
+```
+
+This Appwrite Function checks if the required environment variables are set, then processes the text using the Hugging Face API,
+stores the generated audio file in Appwrite Storage, and creates a document in the Appwrite database of the original text.
+{% /section %}
+
+{% section #step-8 step=8 title="Test the function" %}
+Test our function by uploading an audio file the Appwrite Storage.
+
+Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then click on the **Upload File** button and upload an image.
+After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
+
+{% only_dark %}
+![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/dark/result.png)
+{% /only_dark %}
+
+{% only_light %}
+![Text to Speech Test](/images/docs/ai/tutorials/text-to-speech/result.png)
+{% /only_light %}
+{% /section %}

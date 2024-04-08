@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Development
+title: Develop Appwrite Functions
 description: Master serverless function development with Appwrite. Learn how to write and test functions locally, debug code, and optimize for efficient execution.
 ---
 
@@ -12,11 +12,14 @@ There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
 1. The function is invoked.
-2. Appwrite passes in request information like headers, body or path through the `context.req` object.
-3. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
-4. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
+1. The active [deployment](/docs/products/functions/deployments)'s executor will handle the request.
+1. The Executor passes in request information like headers, body or path through the `context.req` object of your exported function.
+1. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
+1. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
 
+## Entrypoint {% #entrypoint %}
 You'll find all of these steps in a simple function like this.
+Notice the exported entry point that the executor will call.
 
 {% multicode %}
 ```server-nodejs
@@ -926,7 +929,7 @@ namespace runtime {
 ```
 {% /multicode %}
 
-To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/deployment#domains) of your function.
+To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/domains) of your function.
 
 | Type     | Query Param     | Example                                                     |
 |----------|-----------------|-------------------------------------------------------------|
@@ -1088,7 +1091,6 @@ You can access these logs through the following steps.
 
 # Accessing environment variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
-Environmental variables can be global, or function-specific.
 
 {% info title="Appwrite API keys" %}
 If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
@@ -1103,22 +1105,9 @@ If your function is using an Appwrite SDK with an API key, this API key needs to
 | `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
 | `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
 
-## Function-level environment variables {% #function-variables %} 
-Function-level environment variables will only be accessible in the function they belong to. 
-Function-level environment variables will override project-level variables when they have conflicting names.
-
-1. In Appwrite Console, navigate to **Functions**.
-2. Click to open a function you wish to add variables to.
-3. Under the **Settings** tab, navigate to **Environment variables**.
-4. Create an environment variable by clicking **Create variable**, using the **Editor**, or import new variables through a `.env` file.
-
-## Project-level variables {% #project-variables %} 
-Project-level variables are accessible to all Appwrite Functions in your project. 
-Function-level environment variables will override project-level variables when they have conflicting names.
-
-In the Appwrite Console, navigate to your project's **Settings** page.
-Navigate to **Global variables** section.
-Create an environment variable by clicking **Create variable**, using the **Editor**, or import new variables through a `.env` file.
+{% arrow_link href="/docs/products/functions/functions#environment-variables" %}
+Learn to add variables to you function
+{% /arrow_link %}
 
 You can access the environment variables through the systems library of each language.
 
@@ -1216,6 +1205,14 @@ namespace runtime {
 {% /multicode %}
 
 # Dependencies {% #dependencies %} 
+To install your dependencies before your function is built, 
+you should add the relevant install command to the top your function's **Build setting** > **Commands**.
+You can find this setting under **Functions** > your function > **Settings** > **Configuration** > **Build settings**.
+
+Make sure to include dependency files like `package.json`, `composer.json`, `requirements.txt`, etc. in your function's configured [root directory](/docs/products/functions/deploy-from-git#root-directory).
+Do not include the dependency folders like `node_modules`, `vendor`, etc. in your function's root directory.
+The dependencies installed for your local OS may not work in the executor environments
+
 Your function's dependencies should be managed by the package manager of each language. 
 By default, we include the following package managers in each runtime.
 
@@ -1297,9 +1294,6 @@ By default, we include the following package managers in each runtime.
 * None
 * N/A
 {% /table %}
-
-
-To install your dependencies before your function is built, you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 
 # Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
@@ -1977,7 +1971,7 @@ public class Main {
 ```
 {% /multicode %}
 
-# Code splitting {% #code-splitting %}
+# Code structure {% #code-structure %}
 
 As your functions grow, you may find yourself needing to split your code into multiple files. This helps you keep your codebase maintainable and easy to read. Here's how you can accomplish code splitting.
 
@@ -2184,20 +2178,3 @@ public class Main {
 ```
 {% /tabsitem %}
 {% /tabs %}
-
-# Upgrade {% #upgrade %}
-
-Appwrite Functions received major updates in Appwrite version 1.4. 
-Your old function from 1.3 will continue to work, but it can't be updated directly to a 1.4 function.
-You need to create a new function following 1.4 syntax. 
-After you've created your new function, point your application code to the new function and delete the old function.
-
-Here's a checklist of things you need to know.
-
-1. The parameter passed into functions has changed. `req` and `res` has been replaced by `context`, which contains new logger methods. [Learn about context](/docs/products/functions/development#context-object).
-2. To improve privacy and logging reliability, we provide new `context.log()` and `context.error()` functions. You can no longer use native logging methods. [Learn about logging](/docs/products/functions/development#logging).
-3. The old way of `req.variables` has been deprecated. You can now access variables passed into each function as environment variables. [Learn about environment variables](/docs/products/functions/development#environment-variables).
-4. The `req` object has been updated to use terminology consistent with typical HTTP concepts. You'll now find familiar concepts like headers, body, HTTP methods, and others. [Learn about request](/docs/products/functions/development#request).
-5. The response object has been updated. You can now specify headers, as well as use new methods like return redirects or empty responses. [Learn about response](/docs/products/functions/development#response).
-6. Now, you must return a response such as return `context.res.send("")`. This prevents confusing errors when functions are terminated prematurely before a response is sent. [Learn about response](/docs/products/functions/development#response).
-7. Some variables about how a function was triggered are now found in the context.req object as headers.
