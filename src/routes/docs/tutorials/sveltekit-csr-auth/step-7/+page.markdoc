@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: All set
-description: Add authentication to a SvelteKit project using Appwrite.
+description: Add Authentication to a SvelteKit project using Appwrite.
 step: 7
 ---
 If you want to see these authentication concepts applied in a more robust manner, you can see them in action in this [demo app](https://github.com/appwrite/getting-started-projects/tree/main/svelte/auth).

@@ -18,7 +18,7 @@ When you build backend APIs to extend Appwrite's functionality, these APIs shoul
 
 [JSON Web Tokens](https://jwt.io/introduction) (JWTs) are a secure means to transfer information or claims between two parties. JWTs act like temporary copies of the user's ID card that allow Appwrite's Server SDKs to access information on behalf of a user.
 
-You need to create a session using the [Client SDKs](/docs/sdks#client) **before** generating a JWT. The JWT will be a stateless proof of claim for the identity of the authenticated user and expire after 15 minutes or when the session is deleted.
+You need to create a session using the Client SDKs **before** generating a JWT. The JWT will be a stateless proof of claim for the identity of the authenticated user and expire after 15 minutes or when the session is deleted.
 
 You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 
@@ -374,7 +374,7 @@ const { Client } = require('node-appwrite');
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('<API_KEY>');                    // Your secret API key
+    .setKey('98fd4...a2ad2');                    // Your secret API key
 
 const databases = new sdk.Databases(client);
 
@@ -391,7 +391,7 @@ use Appwrite\Client;
 $client = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>')                  // Your project ID
-    ->setKey('<API_KEY>');                    // Your secret API key
+    ->setKey('98fd4...a2ad2');                    // Your secret API key
 
 $databases = new Databases($client);
 
@@ -409,7 +409,7 @@ client = Client()
 (client
     .set_endpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .set_project('<PROJECT_ID>')                  // Your project ID
-    .set_key('<API_KEY>')                     // Your secret API key
+    .set_key('98fd4...a2ad2')                     // Your secret API key
 )
 
 databases = Databases(client)
@@ -428,7 +428,7 @@ include Appwrite
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>')                  # Your project ID
-    .set_key('<API_KEY>')                     # Your secret API key
+    .set_key('98fd4...a2ad2')                     # Your secret API key
 
 databases = Databases.new(client)
 
@@ -444,7 +444,7 @@ import { Client } from "https://deno.land/x/appwrite/mod.ts";
 let client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('<API_KEY>');                    // Your secret API key
+    .setKey('98fd4...a2ad2');                    // Your secret API key
 
 let databases = new sdk.Databases(client);
 
@@ -460,7 +460,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('<API_KEY>');                    // Your secret API key
+    .setKey('98fd4...a2ad2');                    // Your secret API key
 
 final databases = Databases(client);
 
@@ -476,7 +476,7 @@ import io.appwrite.Client
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('<API_KEY>');                    // Your secret API key
+    .setKey('98fd4...a2ad2');                    // Your secret API key
 
 val databases = Databases(client)
 
@@ -492,7 +492,7 @@ import Appwrite
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('<API_KEY>');                    // Your secret API key
+    .setKey('98fd4...a2ad2');                    // Your secret API key
 
 let databases = Databases(client)
 
@@ -510,7 +510,7 @@ using Appwrite.Models;
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<PROJECT_ID>")                  // Your project ID
-    .SetKey('<API_KEY>');                    // Your secret API key
+    .SetKey('98fd4...a2ad2');                    // Your secret API key
 
 var databases = new Databases(client);
 
