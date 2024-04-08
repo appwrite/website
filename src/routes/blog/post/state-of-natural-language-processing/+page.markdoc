@@ -1,7 +1,7 @@
 ---
 layout: post
 title: State of natural language processing
-description: Get up to speed on the latest trends in natural language processing and how they are shaping the future of the industry.
+description: The latest trends in natural language processing and how they are shaping the future.
 date: 2024-03-27
 cover: /images/blog/state-of-natural-language-processing/cover.png
 timeToRead: 15
@@ -153,5 +153,5 @@ At Appwrite, we're really excited about the future of NLP. With our [new cloud f
 
 # References
 
-1. [https://arxiv.org/abs/1301.3781](Efficient Estimation of Word Representations in Vector Space. Proceedings of the International Conference on Learning Representations. Mikolov, T., Sutskever, I., Chen, K., Corrado, G.S., & Dean, J. (2013).)
-2. [https://arxiv.org/abs/1706.03762](Attention is All You Need. Advances in Neural Information Processing Systems. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł., & Polosukhin, I. (2017).)
+1. [Efficient Estimation of Word Representations in Vector Space. Proceedings of the International Conference on Learning Representations. Mikolov et al. 2013](https://arxiv.org/abs/1301.3781)
+2. [Attention is All You Need. Advances in Neural Information Processing Systems. Vaswani et al. 2017](https://arxiv.org/abs/1706.03762)
