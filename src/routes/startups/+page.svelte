@@ -166,9 +166,9 @@
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
                         </p>
-                        <button class="web-button u-margin-inline-auto u-margin-block-start-12">
+                        <a href="#form" class="web-button u-margin-inline-auto u-margin-block-start-12">
                             Apply now
-                        </button>
+                        </a>
                     </div>
                 </section>
             </div>
@@ -532,7 +532,7 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
+        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
             <div
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
