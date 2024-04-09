@@ -379,12 +379,12 @@
                                     <div
                                         class="web-is-not-desktop u-position-relative"
                                     >
-                                        <enhanced:img src="./SubSection3_illu_v3.png" alt="" style="width:500px; height:auto;" />
+                                        <enhanced:img src="./SubSection3_illu_v4.png" alt="" style="width:500px; height:auto;" />
                                     </div>
 
                                     <div class="web-is-only-desktop u-position-relative u-overflow-hidden">
                                         <div>
-                                            <enhanced:img src="./SubSection3_illu_v3.png" alt="" style="width:500px; height:auto;" />
+                                            <enhanced:img src="./SubSection3_illu_v4.png" alt="" style="width:500px; height:auto;" />
                                         </div>
                                     </div>
                                 </div>
