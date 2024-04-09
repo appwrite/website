@@ -337,7 +337,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="web-is-not-desktop u-flex" style="margin-top:-200px">
+                                <div class="web-is-not-desktop u-flex">
                                     <svelte:component this={SubSectionTwo} />
                                 </div>
                             </li>
@@ -357,7 +357,7 @@
                                             application.
                                         </p>
                                         <div
-                                            class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64"
+                                            class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                                             <div class="web-user-box">
@@ -399,14 +399,14 @@
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="web-main-body-400">
+                                        <p class="web-main-body-500">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
                                             help navigate the challenges of startup growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -446,7 +446,7 @@
                         {#each testimonials as t}
                             <li>
                                 <div
-                                    class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                    class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-48-mobile"
                                     style="inline-size:23.625rem"
                                 >
                                     <p class="aw-sub-body-500">{t.text}</p>
@@ -546,10 +546,10 @@
                     style="height: 100%"
                     alt=""
                 />
-                <div class="web-container" style="position: relative">
+                <div class="" style="position: relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container">
-                            <div class="web-grid-1-1-opt-2 u-gap-32">
+                            <div class="web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0">
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
@@ -727,9 +727,10 @@
                             </div>
                         </div>
                     </div>
-
-                    <FooterNav />
-                    <MainFooter />
+                    <div class="web-container">
+                        <FooterNav />
+                        <MainFooter />
+                    </div>
                 </div>
             </div>
         </div>
@@ -817,6 +818,8 @@
       .e-u-margin-block-end-80-mobile { margin-block-end:5rem; }
       .e-u-margin-block-start-80-mobile  { margin-block-start:5rem; }
       .e-u-margin-block-start-16-mobile { margin-block-start:1rem; }
+      .e-u-margin-block-start-48-mobile { margin-block-start:3rem; }
+      .e-u-row-gap-0 { row-gap:0; }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {

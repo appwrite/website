@@ -1,7 +1,5 @@
 <svg
     class="web-u-drop-shadow u-margin-inline-auto"
-    width="632"
-    height="576"
     viewBox="0 0 632 576"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
