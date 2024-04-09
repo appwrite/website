@@ -3,7 +3,7 @@ layout: post
 title: Introducing Appwrite's React Native SDK in open beta
 description: A new SDK that allows for more mobile develoeprs to benefit from Appwrite's powerfull tools.
 date: 2024-04-09
-cover: /images/blog/introducing-appwrite-react-native-sdk/react-native.png
+cover: /images/blog/react-native.png
 timeToRead: 4
 author: vincent-ge
 category: product
