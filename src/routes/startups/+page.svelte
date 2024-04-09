@@ -221,10 +221,10 @@
                             />
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">
-                                    Dedicated support
+                                    Premium support
                                 </h2>
                                 <p class="web-main-body-500">
-                                    Get community support and dedicated email support from the
+                                    Get community support and premium email support from the
                                     Appwrite team.
                                 </p>
                             </div>
