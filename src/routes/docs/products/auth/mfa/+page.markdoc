@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Multi Factor authentication
+title: Multi-factor authentication
 description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
 ---
 
@@ -1048,7 +1048,6 @@ val challengeId = response.id
 Then complete the challenge by calling `account.updateMfaChallenge()` with the challenge ID and the recovery code.
 
 {% multicode %}
-{% multicode %}
 ```client-web
 const response = await account.updateMfaChallenge(
     '<CHALLENGE_ID>', // challengeId
@@ -1082,6 +1081,5 @@ let result = try await account.updateMfaChallenge(
   otp: "<RECOVERY_CODE>"
 )
 ```
-{% /multicode %}
 {% /multicode %}
 {% /section %}
