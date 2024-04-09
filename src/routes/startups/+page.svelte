@@ -534,34 +534,38 @@
             <div
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
-                <enhanced:img
-                    class="u-position-absolute web-u-max-height-100-percent u-max-width-100-percent u-bg-right-side-mobile"
-                    style="inset-inline-end:-600px; inset-block-start:0px;"
-                    src="./Blob_Green.svg"
-                    alt=""
-                />
-                <enhanced:img
-                    class="u-position-absolute web-u-max-height-100-percent u-max-width-100-percent u-bg-left-side-mobile"
-                    style="inset-inline-start:-800px; inset-block-start:-300px"
-                    src="./Blob_Pink.svg"
-                    alt=""
-                />
-
-
-<!--                <enhanced:img-->
-<!--                        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"-->
-<!--                        src="./bg-left.png"-->
-<!--                        alt=""-->
-<!--                />-->
-<!--                <enhanced:img-->
-<!--                        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"-->
-<!--                        src="./bg-right.png"-->
-<!--                        alt=""-->
-<!--                />-->
-
                 <div class="" style="position: relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="web-container">
+                        <div class="web-container u-position-relative">
+
+
+                            <enhanced:img
+                                    class="u-position-absolute is-only-desktop"
+                                    style="inset-inline-end:-600px; inset-block-start:0px; max-width:none; max-height:none;"
+                                    src="./Blob_Green.svg"
+                                    alt=""
+                            />
+                            <enhanced:img
+                                    class="u-position-absolute is-only-desktop"
+                                    style="inset-inline-start:-1000px; inset-block-start:-300px; max-width:none; max-height:none;"
+                                    src="./Blob_Pink.svg"
+                                    alt=""
+                            />
+
+                            <enhanced:img
+                                    class="u-position-absolute is-only-mobile"
+                                    style="inset-inline-end:-600px; inset-block-start:0px; max-width:none; max-height:none;"
+                                    src="./Blob_Green-mobile.svg"
+                                    alt=""
+                            />
+                            <enhanced:img
+                                    class="u-position-absolute is-only-mobile"
+                                    style="inset-inline-start:-1000px; inset-block-start:-300px; max-width:none; max-height:none;"
+                                    src="./Blob_Pink-mobile.svg"
+                                    alt=""
+                            />
+
+
                             <div class="web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0">
                                 <div>
                                     <div
@@ -840,7 +844,7 @@
       .e-bg-right-mobile { width:300px; height:auto; inset-inline-end:0; /*transform:translateX(50px);*/ inset-block-start:100px; opacity:0.4; }
       .u-bg-left-side-mobile  {
         inset-inline-start:0!important;
-        transform: translateX(-339px);
+        transform: translateX(-330px);
         width: 501px !important;
         inset-block-start: 0px !important;
         max-block-size: none;
