@@ -392,7 +392,7 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="web-is-only-desktop" style="margin-top:-20px;">
+                                    <div class="e-u-order-1-mobile e-u-margin-inline-auto-mobile" style="margin-top:-20px;">
                                         <svelte:component this={SubSectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
@@ -432,8 +432,7 @@
             </div>
 
             <div
-                class="web-big-padding-section-level-2 web-u-overflow-hidden"
-                style="margin-top: 200px"
+                class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-u-margin-block-start-128-mobile"
             >
                 <h4
                     class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
@@ -820,6 +819,9 @@
       .e-u-margin-block-start-16-mobile { margin-block-start:1rem; }
       .e-u-margin-block-start-48-mobile { margin-block-start:3rem; }
       .e-u-row-gap-0 { row-gap:0; }
+      .e-u-order-1-mobile { order:1; }
+      .e-u-margin-inline-auto-mobile { margin-inline:auto; }
+      .e-u-margin-block-start-128-mobile { margin-block-start:8rem; }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {
@@ -827,5 +829,6 @@
         .e-u-margin-block-128-desktop { margin-block:8rem; }
         .e-u-padding-inline-32-desktop { padding-inline:2rem; }
         .e-margin-top-desktop-200 { margin-block-start:12.5rem; }
+        .e-u-margin-block-start-200-desktop  { margin-block-start:12.5rem; }
     }
 </style>
