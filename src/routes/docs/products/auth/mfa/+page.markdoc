@@ -25,6 +25,7 @@ Here are the steps to implement MFA in your application.
 {% section #display-recover-code step=1 title="Display recovery codes" %}
 
 Initialize your Appwrite SDK's `Client`, `Account`, and `Avatars`.
+You'll use Avatars API to generate a QR code for the TOTP authenticator app, you can skip this import if you're not using TOTP.
 
 {% multicode %}
 ```client-web
@@ -81,11 +82,12 @@ val avatars = Avatars(client)
 {% /multicode %}
 
 Before enabling MFA, you should display recovery codes to the user.
-The codes are single use passwords the user can use to access their account if they lose access to their MFA email, phone, or authenticator app.
+The codes are single use passwords the user can use to access their account if they lose access to their MFA email, 
+phone, or authenticator app. These codes can **only be generated once**, warn the users to save them.
 
 The code will look like this, display them to the user and remind them to save the codes in a secure place.
 
-```client-webon
+```json
 {
     "recoveryCodes": [
         "b654562828",
@@ -97,7 +99,7 @@ The code will look like this, display them to the user and remind them to save t
     ]
 }
 ```
-
+These codes can be used to complete the [Complete challenge](#complete-challenge) step if the user loses access to their MFA factors.
 Generate the recovery codes by calling `account.createMfaRecoveryCodes()`.
 
 {% multicode %}
@@ -482,7 +484,7 @@ You can generate a QR code for the user to scan by calling `avatars.getQR()`.
 ```client-web
 const result = await avatars.getQR(
     authenticatorUrl,  // text
-    1,  // size (optional)
+    800,  // size (optional)
     0,  // margin (optional)
     false // download (optional)
 );
@@ -493,7 +495,7 @@ console.log(result); // Resource URL
 // download QR code image
 Future result = avatars.getQR(
     text: authenticatorUrl,
-    size: 1, // optional
+    size: 800, // optional
     margin: 0, // optional
     download: false, // optional
 ).then((bytes) {
@@ -507,7 +509,7 @@ Future result = avatars.getQR(
 FutureBuilder(
     future: avatars.getQR(
         text: authenticatorUrl,
-        size: 1, // optional
+        size: 800, // optional
         margin: 0, // optional
         download: false, // optional
     ), // works for both public file and private file, for private files you need to be logged in
@@ -523,7 +525,7 @@ FutureBuilder(
 ```client-apple
 let byteBuffer = try await avatars.getQR(
   text: authenticatorUrl,
-  size: 1, // optional
+  size: 800, // optional
   margin: 0, // optional
   download: xfalse // optional
 )
@@ -531,7 +533,7 @@ let byteBuffer = try await avatars.getQR(
 ```client-android-kotlin
 val result = avatars.getQR(
     text = authenticatorUrl,
-    size = 1, // optional
+    size = 800, // optional
     margin = 0, // optional
     download = false // optional
 )
@@ -539,7 +541,7 @@ val result = avatars.getQR(
 ```client-android-java
 avatars.getQR(
     authenticatorUrl, // text
-    1, // size (optional)
+    800, // size (optional)
     0, // margin (optional)
     false, // download (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -653,9 +655,9 @@ Begin your login flow with the default authentication method used by your app, f
 {% multicode %}
 ```client-web
 const session = await account.createEmailPasswordSession(
-        'email@example.com', // email
-        'password' // password
-    );
+    'email@example.com', // email
+    'password' // password
+);
 ```
 
 ```client-flutter
@@ -672,7 +674,7 @@ result.then((response) {
 ```
 
 ```client-apple
-let session = try await account.createEmailPasswordSession(
+let response = try await account.createEmailPasswordSession(
   email: "email@example.com",
   password: "password"
 )
@@ -741,7 +743,7 @@ result.then((response) {
 
 ```client-apple
 do {
-    let user = try await account.get()
+    let response = try await account.get()
 } catch let error as AppwriteException {
     print(error.message)
     if error.type == "user_more_factors_required" {
@@ -798,7 +800,7 @@ result.then((response) {
 ```
 
 ```client-apple
-let mfaFactors = try await account.listMfaFactors()
+let response = try await account.listMfaFactors()
 // redirect based on factors returned.
 ```
 
@@ -822,8 +824,8 @@ Note that this is only valid as a second factor if the user did not initialize t
 {% multicode %}
 ```client-web
 const challenge = await account.createMfaChallenge(
-        'email'  // factor
-    );
+    'email'  // factor
+);
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -844,11 +846,11 @@ result.then((response) {
 ```
 
 ```client-apple
-let mfaChallenge = try await account.createMfaChallenge(
+let response = try await account.createMfaChallenge(
   factor: "email"
 )
 // Save the challenge ID to complete the challenge later
-let challengeId = mfaChallenge.id
+let challengeId = response.id
 ```
 
 ```client-android-kotlin
@@ -868,8 +870,8 @@ You cannot use this method if the user initialized their login with phone OTP.
 {% multicode %}
 ```client-web
 const challenge = await account.createMfaChallenge(
-        'phone' // factor
-    );
+    'phone' // factor
+);
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -890,11 +892,11 @@ result.then((response) {
 ```
 
 ```client-apple
-let mfaChallenge = try await account.createMfaChallenge(
+let response = try await account.createMfaChallenge(
   factor: "phone"
 )
 // Save the challenge ID to complete the challenge later
-let challengeId = mfaChallenge.id
+let challengeId = response.id
 ```
 
 ```client-android-kotlin
@@ -914,8 +916,8 @@ Initiate a challenge for users to complete using an authenticator app.
 {% multicode %}
 ```client-web
 const challenge = await account.createMfaChallenge(
-        'totp' // factor
-    );
+    'totp' // factor
+);
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -936,11 +938,11 @@ result.then((response) {
 ```
 
 ```client-apple
-let mfaChallenge = try await account.createMfaChallenge(
+let response = try await account.createMfaChallenge(
   factor: "totp"
 )
 // Save the challenge ID to complete the challenge later
-let challengeId = mfaChallenge.id
+let challengeId = response.id
 ```
 
 ```client-android-kotlin
@@ -961,9 +963,9 @@ Once the user receives the challenge code, you can pass the code back to Appwrit
 {% multicode %}
 ```client-web
 const response = await account.updateMfaChallenge(
-        '<CHALLENGE_ID>', // challengeId
-        '<OTP>' // otp
-    );
+    '<CHALLENGE_ID>', // challengeId
+    '<OTP>' // otp
+);
 ```
 
 ```client-flutter
@@ -992,5 +994,94 @@ let result = try await account.updateMfaChallenge(
   otp: "<OTP>"
 )
 ```
+{% /multicode %}
+
+After completing the challenge, the user is now authenticated and all requests will be authorized. 
+You can confirm this by running `account.get()` 
+{% /section %}
+
+{% section #recovery step=9 title="Recovery" %}
+In case your user needs to recover their account, they can use the recovery codes generated in the first step with the 
+recovery code factor. Initialize the challenge by calling `account.createMfaChallenge()` with the factor `recoverycode`.
+
+{% multicode %}
+```client-web
+const challenge = await account.createMfaChallenge(
+    'recoverycode' // factor
+);
+
+// Save the challenge ID to complete the challenge later
+const challengeId = challenge.$id;
+```
+
+```client-flutter
+Future result = account.createMfaChallenge(
+factor: 'recoverycode',
+);
+
+result.then((response) {
+    print(response);
+    // Save the challenge ID to complete the challenge later
+    var challengeId = response.$id;
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```client-apple
+let response = try await account.createMfaChallenge(
+  factor: "recoverycode"
+)
+// Save the challenge ID to complete the challenge later
+let challengeId = response.id
+```
+
+```client-android-kotlin
+val response = account.createMfaChallenge(
+    factor = "recoverycode"
+)
+// Save the challenge ID to complete the challenge later
+val challengeId = response.id
+```
+{% /multicode %}
+
+Then complete the challenge by calling `account.updateMfaChallenge()` with the challenge ID and the recovery code.
+
+{% multicode %}
+{% multicode %}
+```client-web
+const response = await account.updateMfaChallenge(
+    '<CHALLENGE_ID>', // challengeId
+    '<RECOVERY_CODE>' // otp
+);
+```
+
+```client-flutter
+Future result = account.updateMfaChallenge(
+    challengeId: '<CHALLENGE_ID>',
+    otp: '<RECOVERY_CODE>',
+);
+
+result.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```client-apple
+val response = account.updateMfaChallenge(
+    challengeId = "<CHALLENGE_ID>",
+    otp = "<RECOVERY_CODE>"
+)
+```
+
+```client-android-kotlin
+let result = try await account.updateMfaChallenge(
+  challengeId: "<CHALLENGE_ID>",
+  otp: "<RECOVERY_CODE>"
+)
+```
+{% /multicode %}
 {% /multicode %}
 {% /section %}
