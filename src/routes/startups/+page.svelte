@@ -137,6 +137,7 @@
     <enhanced:img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
         src="./Hero-BG.svg"
+        style="display:block; margin-inline:auto; inset:0;"
         alt=""
     />
     <enhanced:img
@@ -151,7 +152,7 @@
     />
     <div class="web-big-padding-section u-position-relative" style="overflow:hidden">
         <div class="web-big-padding-section-level-1 u-position-relative">
-            <div class="web-big-padding-section-level-2" style:margin-block="8rem">
+            <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
                 <section class="web-container web-u-padding-block-end-0">
                     <div
                         class="web-hero"
@@ -160,7 +161,7 @@
                         <h1 class="web-headline web-u-color-text-primary">
                             Build your startup with Appwrite
                         </h1>
-                        <p class="web-description web-u-max-width-640 u-margin-inline-auto u-padding-inline-32">
+                        <p class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop">
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
@@ -172,9 +173,9 @@
                 </section>
             </div>
 
-            <div class="web-big-padding-section-level-2 web-u-padding-block-start-80">
+            <div class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile">
                 <section class="web-container">
-                    <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80">
+                    <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile">
                         <li
                             class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
                         >
@@ -184,7 +185,7 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-16 u-text-center">
+                            <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
                                     Get access to Appwrite’s Pro plan and build your entire backend
@@ -201,7 +202,7 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-16 u-text-center">
+                            <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
                                     Get Appwrite Cloud Pro for 12 months and reduce risk at an early
@@ -218,7 +219,7 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-16 u-text-center">
+                            <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">
                                     Dedicated support
                                 </h2>
@@ -236,7 +237,7 @@
         <div
             class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
         >
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 e-u-margin-block-start-80-mobile">
                 <div class="web-container">
                     <div class="web-timeline-content">
                         <ol class="web-timeline-content-list">
@@ -284,7 +285,7 @@
 
                                 <div
                                     class="is-only-desktop"
-                                    style="margin-top: 80px; margin-left: -60px"
+                                    style="margin-top: 80px; margin-left: -50px"
                                 >
                                     <svelte:component this={SubSectionOne} />
                                 </div>
@@ -345,7 +346,7 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16">
+                                    <div class="u-flex-vertical u-gap-16 web-u-max-width-480">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Built-in security and compliance
                                         </h3>
@@ -377,7 +378,6 @@
 
                                     <div
                                         class="web-is-not-desktop u-position-relative"
-                                        style="margin-bottom: -180px"
                                     >
                                         <enhanced:img src="./SubSection3_illu.svg" alt="" />
                                     </div>
@@ -387,7 +387,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="web-timeline-content-item" style="margin-top:200px">
+                            <li class="web-timeline-content-item e-margin-top-desktop-200">
                                 <div
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
@@ -737,6 +737,7 @@
 
 <style lang="scss">
     @use '$scss/abstract/mixins/border-gradient' as gradients;
+    @use '$scss/abstract/variables/devices' as *;
 
     .web-pre-footer-bg {
         position: absolute;
@@ -805,5 +806,21 @@
 
     svg {
         max-inline-size: 100%;
+    }
+
+    @media #{$break1}, #{$break2} {
+      .web-grid-1-1 { display:flex; flex-direction:column; gap:32px; }
+      .web-hero .web-description { margin-block-start:0; }
+      .e-u-padding-block-start-48-mobile { padding-block-start:3rem; }
+      .e-u-gap-64-mobile { gap:4rem; }
+      .e-u-margin-block-end-80-mobile { margin-block-end:5rem; }
+      .e-u-margin-block-start-80-mobile  { margin-block-start:5rem; }
+    }
+    /* from 1280px and bugger */
+    @media #{$break3open} {
+        .e-u-padding-block-start-80-desktop { padding-block-start:5rem; }
+        .e-u-margin-block-128-desktop { margin-block:8rem; }
+        .e-u-padding-inline-32-desktop { padding-inline:2rem; }
+        .e-margin-top-desktop-200 { margin-block-start:12.5rem; }
     }
 </style>
