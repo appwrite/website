@@ -292,7 +292,7 @@
 
                                 <div
                                     class="is-not-desktop"
-                                    style="min-width: 800px; padding-top: 80px;"
+                                    style="min-width: 700px; padding-top: 48px; margin-inline-start:-32px;"
                                 >
                                     <enhanced:img alt="" src="./SubSection1_illu.svg" />
                                 </div>
@@ -318,7 +318,7 @@
                                             growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64"
+                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -387,12 +387,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="web-timeline-content-item e-margin-top-desktop-200">
+                            <li class="web-timeline-content-item">
                                 <div
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="web-is-only-desktop" style="margin-top:-70px;">
+                                    <div class="web-is-only-desktop" style="margin-top:-20px;">
                                         <svelte:component this={SubSectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
@@ -580,40 +580,41 @@
                                                     Join the Appwrite Startups program
                                                 </h4>
                                                 <p
-                                                    class="web-description web-u-padding-block-end-40"
+                                                    class="web-description"
                                                 >
                                                     We support VC backed tech startups that have
                                                     been established within the last decade with:
                                                 </p>
 
-                                                <div
-                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
-                                                >
-                                                    <enhanced:img
-                                                        class=""
-                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check_bullet.svg"
-                                                        alt=""
-                                                    />
+                                                <div class="u-flex-vertical u-gap-12">
+                                                    <div
+                                                            style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                    >
+                                                        <enhanced:img
+                                                                class=""
+                                                                style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                                src="./check_bullet.svg"
+                                                                alt=""
+                                                        />
 
-                                                    <p class="web-description" style="flex: 1;">
-                                                        Appwrite Cloud Pro for 12 months
-                                                    </p>
-                                                </div>
+                                                        <p class="web-description" style="flex: 1;">
+                                                            Appwrite Cloud Pro for 12 months
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                            style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                    >
+                                                        <enhanced:img
+                                                                class=""
+                                                                style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                                src="./check_bullet2.svg"
+                                                                alt=""
+                                                        />
 
-                                                <div
-                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
-                                                >
-                                                    <enhanced:img
-                                                        class=""
-                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check_bullet2.svg"
-                                                        alt=""
-                                                    />
-
-                                                    <p class="web-description" style="flex: 1;">
-                                                        Premium email support as part of Pro
-                                                    </p>
+                                                        <p class="web-description" style="flex: 1;">
+                                                            Premium email support as part of Pro
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </section>
                                         {/if}
@@ -815,6 +816,7 @@
       .e-u-gap-64-mobile { gap:4rem; }
       .e-u-margin-block-end-80-mobile { margin-block-end:5rem; }
       .e-u-margin-block-start-80-mobile  { margin-block-start:5rem; }
+      .e-u-margin-block-start-16-mobile { margin-block-start:1rem; }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {
