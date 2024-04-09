@@ -74,7 +74,7 @@
             quickStarts: [
                 {
                     title: 'React Native',
-                    icon: 'icon-react',
+                    icon: 'icon-react-native',
                     image: '/images/blog/placeholder.png',
                     href: 'react-native'
                 },

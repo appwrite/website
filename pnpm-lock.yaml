@@ -20,8 +20,8 @@ devDependencies:
     specifier: 0.1.0-next.9
     version: 0.1.0-next.9
   '@appwrite.io/pink-icons':
-    specifier: 0.1.0-next.9
-    version: 0.1.0-next.9
+    specifier: 0.9.0
+    version: 0.9.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
@@ -169,6 +169,10 @@ packages:
 
   /@appwrite.io/pink-icons@0.1.0-next.9:
     resolution: {integrity: sha512-6t4Pqt/xugjpJQyaMx1u/7Gt9CkW5iItDAgUKcIMm84E4NbDJq8ZdAhhvctGQQppKUgHDPi+6x1XveUUd7tdbg==}
+    dev: true
+
+  /@appwrite.io/pink-icons@0.9.0:
+    resolution: {integrity: sha512-Y088XXzm08pHh8NKIhaZfQyZr+XkgVWUlQqmu8r1eeK4hKcQXqohGOm61gYwoDI8XA7ysi4s5FeVQVLRnZAcEw==}
     dev: true
 
   /@appwrite.io/pink@0.1.0-next.9:
