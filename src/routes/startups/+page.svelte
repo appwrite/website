@@ -141,12 +141,12 @@
         alt=""
     />
     <enhanced:img
-        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
+        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
         src="./bg-left.png"
         alt=""
     />
     <enhanced:img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
         src="./bg-right.png"
         alt=""
     />
@@ -822,6 +822,8 @@
       .e-u-order-1-mobile { order:1; }
       .e-u-margin-inline-auto-mobile { margin-inline:auto; }
       .e-u-margin-block-start-128-mobile { margin-block-start:8rem; }
+      .e-bg-left-mobile { width:300px; height:auto; inset-inline-start:-50px; inset-block-start:50px; }
+      .e-bg-right-mobile { width:300px; height:auto; inset-inline-end:-50px; inset-block-start:100px; }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {
