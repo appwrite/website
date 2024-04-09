@@ -535,16 +535,30 @@
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
                 <enhanced:img
-                    class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
+                    class="u-position-absolute web-u-max-height-100-percent u-max-width-100-percent u-bg-right-side-mobile"
+                    style="inset-inline-end:-600px; inset-block-start:0px;"
                     src="./Blob_Green.svg"
                     alt=""
                 />
                 <enhanced:img
-                    class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+                    class="u-position-absolute web-u-max-height-100-percent u-max-width-100-percent u-bg-left-side-mobile"
+                    style="inset-inline-start:-800px; inset-block-start:-300px"
                     src="./Blob_Pink.svg"
-                    style="height: 100%"
                     alt=""
                 />
+
+
+<!--                <enhanced:img-->
+<!--                        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"-->
+<!--                        src="./bg-left.png"-->
+<!--                        alt=""-->
+<!--                />-->
+<!--                <enhanced:img-->
+<!--                        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"-->
+<!--                        src="./bg-right.png"-->
+<!--                        alt=""-->
+<!--                />-->
+
                 <div class="" style="position: relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container">
@@ -822,8 +836,24 @@
       .e-u-order-1-mobile { order:1; }
       .e-u-margin-inline-auto-mobile { margin-inline:auto; }
       .e-u-margin-block-start-128-mobile { margin-block-start:8rem; }
-      .e-bg-left-mobile { width:300px; height:auto; inset-inline-start:-50px; inset-block-start:50px; }
-      .e-bg-right-mobile { width:300px; height:auto; inset-inline-end:-50px; inset-block-start:100px; }
+      .e-bg-left-mobile { width:300px; height:auto; inset-inline-start:0; /*transform:translateX(-50px);*/ inset-block-start:50px; opacity:0.4; }
+      .e-bg-right-mobile { width:300px; height:auto; inset-inline-end:0; /*transform:translateX(50px);*/ inset-block-start:100px; opacity:0.4; }
+      .u-bg-left-side-mobile  {
+        inset-inline-start:0!important;
+        transform: translateX(-339px);
+        width: 501px !important;
+        inset-block-start: 0px !important;
+        max-block-size: none;
+        max-inline-size: none;
+      }
+      .u-bg-right-side-mobile {
+        inset-inline-end: 0 !important;
+        transform: translateX(339px);
+        width: 501px !important;
+        inset-block-start: 0px !important;
+        max-block-size: none;
+        max-inline-size: none;
+      }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {
