@@ -541,13 +541,13 @@
 
                             <enhanced:img
                                     class="u-position-absolute is-only-desktop"
-                                    style="inset-inline-end:-600px; inset-block-start:0px; max-width:none; max-height:none;"
+                                    style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
                                     src="./Blob_Green.svg"
                                     alt=""
                             />
                             <enhanced:img
                                     class="u-position-absolute is-only-desktop"
-                                    style="inset-inline-start:-1000px; inset-block-start:-300px; max-width:none; max-height:none;"
+                                    style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
                                     src="./Blob_Pink.svg"
                                     alt=""
                             />
