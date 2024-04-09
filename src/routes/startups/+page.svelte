@@ -379,11 +379,13 @@
                                     <div
                                         class="web-is-not-desktop u-position-relative"
                                     >
-                                        <enhanced:img src="./SubSection3_illu.svg" alt="" />
+                                        <enhanced:img src="./SubSection3_illu_v3.png" alt="" style="width:500px; height:auto;" />
                                     </div>
 
                                     <div class="web-is-only-desktop u-position-relative u-overflow-hidden">
-                                        <div style="transform:translateX(60px)"><svelte:component this={SubSectionThree} /></div>
+                                        <div>
+                                            <enhanced:img src="./SubSection3_illu_v3.png" alt="" style="width:500px; height:auto;" />
+                                        </div>
                                     </div>
                                 </div>
                             </li>
