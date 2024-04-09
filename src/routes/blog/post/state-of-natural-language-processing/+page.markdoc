@@ -145,11 +145,20 @@ Here's a simplified view of how an LLM processes text:
 3. **Transformer Layers**: Process the embeddings using transformer layers that capture complex relationships between words. Training these layers requires massive amounts of data and computational power.
 4. **Output**: Generate predictions, generate text, or perform other NLP tasks.
 
-# Conclusion
-
 We've explored the fascinating world of Natural Language Processing, from its beginnings to the state-of-the-art large language models that are transforming the way we interact with technology. We've seen how techniques like tokenization, word embeddings, and neural networks come together to create models that can understand, generate, and manipulate human language with remarkable accuracy.
 
-At Appwrite, we're really excited about the future of NLP. With our [new cloud function runtime](TODO: link python runtime) and [example AI integrations](/docs/products/ai), we're making it easier than ever to build intelligent applications that can understand and communicate with users in natural language.
+# Applications of NLP
+
+At Appwrite, we're really excited about the future of NLP. With our new cloud function runtime and example AI function templates, we're making it easier than ever to build intelligent applications that can understand and communicate with users in natural language.
+
+{% cards %}
+{% cards_item href="/docs/products/ai/tutorials/text-generation" title="Text generation" %}
+Generate human-like text
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/language-translation" title="Language translation" %}
+Translate text between languages
+{% /cards_item %}
+{% /cards %}
 
 # References
 
