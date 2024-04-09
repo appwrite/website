@@ -1,8 +1,6 @@
 <svg
         class="u-position-absolute u-inset-0"
         xmlns="http://www.w3.org/2000/svg"
-        width="584"
-        height="528"
         viewBox="0 0 747 600"
         fill="none"
 >

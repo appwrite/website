@@ -382,8 +382,8 @@
                                         <enhanced:img src="./SubSection3_illu.svg" alt="" />
                                     </div>
 
-                                    <div class="web-is-only-desktop u-position-relative">
-                                        <svelte:component this={SubSectionThree} />
+                                    <div class="web-is-only-desktop u-position-relative u-overflow-hidden">
+                                        <div style="transform:translateX(60px)"><svelte:component this={SubSectionThree} /></div>
                                     </div>
                                 </div>
                             </li>
