@@ -73,6 +73,12 @@
             title: 'Mobile and native',
             quickStarts: [
                 {
+                    title: 'React Native',
+                    icon: 'icon-react',
+                    image: '/images/blog/placeholder.png',
+                    href: 'react-native'
+                },
+                {
                     title: 'Flutter',
                     icon: 'icon-flutter',
                     image: '/images/blog/placeholder.png',
