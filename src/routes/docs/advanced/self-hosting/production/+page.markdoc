@@ -68,7 +68,7 @@ Backups are highly recommended for any production environment. Currently, there 
 1. Create a script to back up `.env` and `docker-compose.yml`, which holds secrets and server configuration information.
 
 {% info title="Docker volume backups" %}
-Do not back up any stateful container using a docker volume backup, such as databases, or Redis containers. This can result in corruption and **permanent data loss**.
+Do not back up any stateful container using a docker volume backup, such as databases or Redis containers. This can result in corruption and **permanent data loss**.
 {% /info %}
 
 # Errors {% #errors %}
