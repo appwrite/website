@@ -41,7 +41,7 @@ Each Appwrite instance is composed of many containers, each with its unique job.
 
 If you decide to set up a load balancer to scale a container, make sure **all** communication are routed through the load balancer and not directly to the replicated containers. You can configure communicating between Appwrite containers using Docker environment variables.
 
-Three Appwrite containers are stateful. The MariaDB, and Redis containers are used for storing data, cache and pub/sub messaging, and usage stats, respectively. To scale these containers, set up a standard cluster (same as you would with any other app using these technologies) according to your needs and performance.
+Two Appwrite containers are stateful. The MariaDB and Redis containers are used for storing data, cache and pub/sub messaging, and usage stats, respectively. To scale these containers, set up a standard cluster (same as you would with any other app using these technologies) according to your needs and performance.
 
 # Rate limits {% #rate-limits %}
 
