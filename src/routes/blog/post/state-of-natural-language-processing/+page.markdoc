@@ -32,7 +32,7 @@ ELIZA's responses aren't perfect, but they demonstrate the basic principle of pa
 
 By the end of the 20th century, the use of statistical methods began to change NLP. Instead of using fixed rules, these methods allowed computers to learn from data. This was a big step forward and set the stage for the use of machine learning in NLP. The 2000s saw further advancements with algorithms that could learn from vast amounts of data, leading to significant improvements in tasks like language translation and speech recognition.
 
-The development of neural networks, especially word embeddings like Word2Vec[1], marked another leap forward. These techniques allowed for more nuanced understanding of language by representing words in a space where the distance between words captured their semantic similarity. 
+The development of neural networks, especially word embeddings like [Word2Vec](https://arxiv.org/abs/1301.3781), marked another leap forward. These techniques allowed for more nuanced understanding of language by representing words in a space where the distance between words captured their semantic similarity. 
 
 Picture a simple 2D word embedding space:
 
@@ -54,7 +54,7 @@ Picture a simple 2D word embedding space:
 
 In this space, similar words like "cat" and "dog" are closer together, while unrelated words like "car" and "bike" are farther apart. This is a simplified view, but it illustrates how word embeddings capture semantic relationships.
 
-The introduction of transformer models in 2017, such as BERT and GPT, using attention mechanisms [2], was another major milestone. These models could handle long pieces of text more effectively, leading to better performance on a wide range of NLP tasks.
+The introduction of transformer models in 2017, such as BERT and GPT, using [attention mechanisms](https://arxiv.org/abs/1706.03762), was another major milestone. These models could handle long pieces of text more effectively, leading to better performance on a wide range of NLP tasks.
 
 # Traditional NLP models and embeddings
 
@@ -159,8 +159,3 @@ Generate human-like text
 Translate text between languages
 {% /cards_item %}
 {% /cards %}
-
-# References
-
-1. [Efficient Estimation of Word Representations in Vector Space. Proceedings of the International Conference on Learning Representations. Mikolov et al. 2013](https://arxiv.org/abs/1301.3781)
-2. [Attention is All You Need. Advances in Neural Information Processing Systems. Vaswani et al. 2017](https://arxiv.org/abs/1706.03762)
