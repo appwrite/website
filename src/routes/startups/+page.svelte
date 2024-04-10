@@ -568,7 +568,7 @@
                             />
 
 
-                            <div class="web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0">
+                            <div class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0">
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
