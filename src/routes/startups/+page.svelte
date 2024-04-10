@@ -27,7 +27,7 @@
     let subject = '';
     let company = '';
     let companyURL = '';
-    let companyCrunchBaseURL = '';
+    //let companyCrunchBaseURL = '';
     let error: string | undefined;
     let submitted = false;
 
@@ -43,8 +43,8 @@
                 firstName,
                 subject,
                 company,
-                companyURL,
-                companyCrunchBaseURL
+                companyURL
+                //companyCrunchBaseURL
             })
         });
         if (response.status >= 400) {
@@ -702,20 +702,20 @@
                                                         bind:value={companyURL}
                                                     />
                                                 </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
-                                                    <div class="u-block">Crunchbase URL</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        name="company-url"
-                                                        placeholder="Your Crunchbase URL"
-                                                        aria-label="Crunchbase URL"
-                                                        bind:value={companyCrunchBaseURL}
-                                                    />
-                                                </li>
+<!--                                                <li-->
+<!--                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"-->
+<!--                                                >-->
+<!--                                                    <div class="u-block">Crunchbase URL</div>-->
+<!--                                                    <input-->
+<!--                                                        required-->
+<!--                                                        class="web-input-text"-->
+<!--                                                        type="text"-->
+<!--                                                        name="company-url"-->
+<!--                                                        placeholder="Your Crunchbase URL"-->
+<!--                                                        aria-label="Crunchbase URL"-->
+<!--                                                        bind:value={companyCrunchBaseURL}-->
+<!--                                                    />-->
+<!--                                                </li>-->
                                             </ul>
                                         </div>
                                         <div
