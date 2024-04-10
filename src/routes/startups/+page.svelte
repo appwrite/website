@@ -691,7 +691,7 @@
                                                 <li
                                                     class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
                                                 >
-                                                    <div class="u-block">Company URL</div>
+                                                    <div class="u-block">Company website</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
