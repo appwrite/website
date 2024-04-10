@@ -486,12 +486,12 @@
         .bg-overlay {
             position: absolute;
 
-            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 10%, #ffffff);
+            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 400px, #ffffff);
 
             top: 0;
             right: 10rem;
             translate: 100%;
-            width: 25rem;
+            width: 100rem;
             height: 100%;
             content: '';
             z-index: 9999;
@@ -505,6 +505,6 @@
     }
 
     :global(.theme-dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
+        background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>
