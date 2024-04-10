@@ -27,10 +27,10 @@
         <div class="e-main-footer">
             <div>Copyright © {year} Appwrite</div>
 
-            <div class="status is-complete">
+            <a href="/" class="status is-complete">
                 <span class="status-icon" aria-hidden="true"></span>
                 <span class="web-u-color-text-primary">All systems operational</span>
-            </div>
+            </a>
 
             <ul class="u-flex u-gap-16">
                 <li><a class="web-link" href="/terms">Terms</a></li>
