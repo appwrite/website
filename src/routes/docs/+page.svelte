@@ -65,9 +65,6 @@
 
 <Docs variant="default">
     <Sidebar />
-    <div class="u-position-absolute u-inset-inline-end-0 web-u-opacity-40-mobile" style="">
-        <enhanced:img src="./blur-1.png" alt="" />
-    </div>
 
     <main
         class="web-main-section u-position-relative web-u-overflow-hidden-break1-to-break3"
