@@ -24,13 +24,19 @@
                 </li>
             {/each}
         </ul>
-        <div class="u-flex u-gap-16">
-            <ul class="u-flex u-gap-8">
+        <div class="e-main-footer">
+            <div>Copyright © {year} Appwrite</div>
+
+            <div class="status is-complete">
+                <span class="status-icon" aria-hidden="true"></span>
+                <span class="web-u-color-text-primary">All systems operational</span>
+            </div>
+
+            <ul class="u-flex u-gap-16">
                 <li><a class="web-link" href="/terms">Terms</a></li>
                 <li><a class="web-link" href="/privacy">Privacy</a></li>
                 <li><a class="web-link" href="/cookies">Cookies</a></li>
             </ul>
-            <div>Copyright © {year} Appwrite</div>
         </div>
     </footer>
 {:else if variant === 'docs'}
@@ -77,7 +83,23 @@
 {/if}
 
 <style lang="scss">
+  @use '$scss/abstract/variables/devices' as *;
   .web-icon-button {
     display: grid;
+  }
+
+  .e-main-footer {
+    display: flex;
+    @media #{$break1} {
+        flex-direction: column;
+      > * {
+        padding-block:1rem;
+        &:not(:first-child) { border-block-start:solid 0.0625rem hsl(var(--web-color-border)); }
+      }
+    }
+    @media #{$break2open} {
+      display: flex;
+      gap: 2rem;
+    }
   }
 </style>

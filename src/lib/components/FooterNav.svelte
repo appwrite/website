@@ -44,13 +44,13 @@
                     href: 'https://github.com/appwrite',
                     target: '_blank',
                     rel: 'noopener noreferrer'
-                },
-                {
-                    label: 'Status',
-                    href: 'https://appwrite.online',
-                    target: '_blank',
-                    rel: 'noopener noreferrer'
                 }
+                // {
+                //     label: 'Status',
+                //     href: 'https://appwrite.online',
+                //     target: '_blank',
+                //     rel: 'noopener noreferrer'
+                // }
             ],
             Program: [
                 { label: 'Heroes', href: '/heroes' },
