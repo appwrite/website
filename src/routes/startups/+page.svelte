@@ -669,7 +669,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="email"
-                                                        placeholder="Your email address"
+                                                        placeholder="Email address"
                                                         aria-label="Email address"
                                                         bind:value={email}
                                                     />
@@ -683,7 +683,7 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company"
-                                                        placeholder="Your company name"
+                                                        placeholder="Company name"
                                                         aria-label="Company name"
                                                         bind:value={company}
                                                     />
@@ -697,7 +697,7 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company-url"
-                                                        placeholder="Your company website"
+                                                        placeholder="Company website"
                                                         aria-label="Company URL"
                                                         bind:value={companyURL}
                                                     />
@@ -711,7 +711,7 @@
 <!--                                                        class="web-input-text"-->
 <!--                                                        type="text"-->
 <!--                                                        name="company-url"-->
-<!--                                                        placeholder="Your Crunchbase URL"-->
+<!--                                                        placeholder="Crunchbase URL"-->
 <!--                                                        aria-label="Crunchbase URL"-->
 <!--                                                        bind:value={companyCrunchBaseURL}-->
 <!--                                                    />-->
