@@ -274,6 +274,14 @@ Appwrite Queries are escaped JSON strings, which look like this.
 "{\"method\":\"equal\",\"attribute\":\"name\",\"values\":[\"John\"]}"
 ```
 
+Query strings are passed to Appwrite using the `queries` parameter. 
+You can attach multiple query strings by including the array parameter multiple times in the query string: `queries[]="..."&queries[]="..."`
+
+For example, the unescaped query string might look like this.
+```text
+?queries[0]={"method":"equal","attribute":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
+```
+
 The JSON has a general format like this.
 
 ```json
@@ -333,7 +341,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 Some Appwrite query methods, like `and` and `or`, allow you to nest queries. 
 When using Appwrite without an SDK, you can template your own JSON strings.
 
-In these cases, `attribute` is emtpy and `values` is an array of queries.
+In these cases, `attribute` is empty and `values` is an array of queries.
 
 ```json
 {
