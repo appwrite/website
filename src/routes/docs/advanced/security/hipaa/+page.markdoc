@@ -1,0 +1,28 @@
+---
+layout: article
+title: HIPAA
+description: Learn about Appwrite Cloud's measures to achieve HIPAA compliance.
+---
+
+Appwrite is compliant with HIPAA (Health Insurance Portability and Accountability Act) regulations.
+HIPAA is an important regulation that protects patients' health data from being disclosed without consent or knowledge.
+
+If you're building apps that handle information that is considered [PHI (Personal Health Information)](https://privacyruleandresearch.nih.gov/pr_07.asp)
+for an U.S. user base, data must be stored in a HIPAA-compliant environment.
+
+To attain HIPAA compliance, we've taken extensive measures, ensuring that our practices align with the highest data protection standards. 
+We have implemented robust measures to safeguard personal information, updating our policies, procedures, and infrastructure to meet the strict requirements of HIPAA regulations.
+
+- A strict data backup schedule.
+- An extended business continuity plan.
+- Data retention rights for individuals as outlined in our [Privacy Policy](https://appwrite.io/privacy).
+- Intrusion detection and penetration testing.
+- Encryption of data transmitted between Appwrite and users using transport layer security (TLS) and HTTP strict Transport Security, 
+ensuring confidentiality both at rest and during transmission.
+- Access to environments containing customer data is strictly controlled, 
+requiring authentication and authorization through multi-factor authentication (MFA). 
+
+Appwrite safeguards personal information to the same extent it protects its own, complying with relevant privacy laws and regulations in the jurisdictions where its services are offered. 
+
+Please note that while Appwrite Cloud serves as a HIPAA-compliant platform to handle data, 
+it is the responsibility of developers to ensure that their application is also compliant with HIPAA regulations.
