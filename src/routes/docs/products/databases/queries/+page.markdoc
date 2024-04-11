@@ -15,7 +15,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -44,7 +44,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query::select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
 | `Query::or([Query::lessThan("size", 5), Query::greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query::and([Query::lessThan("size", 5), Query::greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query::and([Query::lessThan("size", 10), Query::greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query::equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query::notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
 | `Query::lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
@@ -72,7 +72,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
 | `Query.or([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.and([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.less_than("size", 10), Query.greater_than("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.not_equal("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
 | `Query.less_than("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
@@ -100,7 +100,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
 | `Query.or([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.and([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.less_than("size", 10), Query.greater_than("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.not_equal("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
 | `Query.less_than("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
@@ -127,7 +127,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -155,7 +155,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -183,7 +183,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -211,7 +211,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -239,7 +239,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
@@ -267,7 +267,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | Example                 | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
+| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
 | `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
 | `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
