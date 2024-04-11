@@ -350,7 +350,6 @@
                                 />
                                 <h3 class="web-info-boxes-title">
                                     <span>HIPAA</span>
-                                    <span class="web-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="web-info-boxes-content">
                                     Protect sensitive user health data.
