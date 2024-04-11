@@ -601,7 +601,7 @@
                                                 <p
                                                     class="web-description"
                                                 >
-                                                    We support VC backed tech startups that have
+                                                    We support VC backed startups that have
                                                     been established within the last decade with:
                                                 </p>
 
