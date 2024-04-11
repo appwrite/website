@@ -749,9 +749,9 @@
                             <!-- END before submit -->
                             <!-- after submit -->
                             <div
-                                    class="u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                                    class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
                             >
-                                <h6 class="web-label u-flex u-main-center u-cross-center u-gap-8">
+                                <h6 class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1">
                                     <img  class="u-flex-shrink-0" src="/images/icons/colored/check.svg" alt="">
                                     <span class="web-u-color-text-primary">Thank you for your submission</span>
                                 </h6>
@@ -874,6 +874,11 @@
         inset-block-start: 0px !important;
         max-block-size: none;
         max-inline-size: none;
+      }
+    }
+    @media #{$break1} {
+      .e-mobile-fix-1 {
+        display:block;
       }
     }
     /* from 1280px and bugger */
