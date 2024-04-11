@@ -4,11 +4,9 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { socials } from '$lib/constants';
 
     import SubSectionOne from './SubSection1_illu.svelte';
     import SubSectionTwo from './SubSection2_illu.svelte';
-    import SubSectionThree from './SubSection3_illu.svelte';
     import SubSectionFour from './SubSection4_illu_v2b.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
@@ -22,33 +20,45 @@
         node.dataset.animated = 'true';
     };
 
-    let email = '';
-    let firstName = '';
-    let subject = '';
-    let company = '';
-    let companyURL = '';
-    //let companyCrunchBaseURL = '';
+    let personName: string;
+    let personEmail: string;
+    let subject: string;
+    let companyName: string;
+    let companyUrl: string;
+    let crunchbaseUrl: string;
+
     let error: string | undefined;
     let submitted = false;
+    let submitting = false;
 
     async function handleSubmit() {
         error = undefined;
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        submitting = true;
+
+        const response = await fetch('https://growth.appwrite.io/v1/conversations/startups', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email,
-                firstName,
+                personName,
+                personEmail,
                 subject,
-                company,
-                companyURL
-                //companyCrunchBaseURL
+                companyName,
+                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
+                crunchbaseUrl: crunchbaseUrl.startsWith('http')
+                    ? crunchbaseUrl
+                    : `https://${crunchbaseUrl}`
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
-            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+            error =
+                response.status >= 500
+                    ? 'Internal server Error.'
+                    : 'Error submitting form. Please contact support.';
             return;
         }
 
@@ -161,19 +171,26 @@
                         <h1 class="web-headline web-u-color-text-primary">
                             Build your startup with Appwrite
                         </h1>
-                        <p class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop">
+                        <p
+                            class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop"
+                        >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
                         </p>
-                        <a href="#form" class="web-button u-margin-inline-auto u-margin-block-start-12">
+                        <a
+                            href="#form"
+                            class="web-button u-margin-inline-auto u-margin-block-start-12"
+                        >
                             Apply now
                         </a>
                     </div>
                 </section>
             </div>
 
-            <div class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile">
+            <div
+                class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
+            >
                 <section class="web-container">
                     <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile">
                         <li
@@ -220,9 +237,7 @@
                                 alt=""
                             />
                             <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">
-                                    Premium support
-                                </h2>
+                                <h2 class="web-label web-u-color-text-primary">Premium support</h2>
                                 <p class="web-main-body-500">
                                     Get community support and premium email support from the
                                     Appwrite team.
@@ -376,15 +391,23 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="web-is-not-desktop u-position-relative"
-                                    >
-                                        <enhanced:img src="./SubSection3_illu_v4.png" alt="" style="width:500px; height:auto;" />
+                                    <div class="web-is-not-desktop u-position-relative">
+                                        <enhanced:img
+                                            src="./SubSection3_illu_v4.png"
+                                            alt=""
+                                            style="width:500px; height:auto;"
+                                        />
                                     </div>
 
-                                    <div class="web-is-only-desktop u-position-relative u-overflow-hidden">
+                                    <div
+                                        class="web-is-only-desktop u-position-relative u-overflow-hidden"
+                                    >
                                         <div>
-                                            <enhanced:img src="./SubSection3_illu_v4.png" alt="" style="width:500px; height:auto;" />
+                                            <enhanced:img
+                                                src="./SubSection3_illu_v4.png"
+                                                alt=""
+                                                style="width:500px; height:auto;"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -394,7 +417,10 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="e-u-order-1-mobile e-u-margin-inline-auto-mobile" style="margin-top:-20px;">
+                                    <div
+                                        class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
+                                        style="margin-top:-20px;"
+                                    >
                                         <svelte:component this={SubSectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
@@ -539,112 +565,112 @@
                 <div class="" style="position: relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container u-position-relative">
-
-
                             <enhanced:img
-                                    class="u-position-absolute is-only-desktop"
-                                    style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                                    src="./Blob_Green.svg"
-                                    alt=""
+                                class="u-position-absolute is-only-desktop"
+                                style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
+                                src="./Blob_Green.svg"
+                                alt=""
                             />
                             <enhanced:img
-                                    class="u-position-absolute is-only-desktop"
-                                    style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                    src="./Blob_Pink.svg"
-                                    alt=""
+                                class="u-position-absolute is-only-desktop"
+                                style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
+                                src="./Blob_Pink.svg"
+                                alt=""
                             />
 
                             <enhanced:img
-                                    class="u-position-absolute is-only-mobile"
-                                    style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                                    src="./Blob_Green_mobile.svg"
-                                    alt=""
+                                class="u-position-absolute is-only-mobile"
+                                style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
+                                src="./Blob_Green_mobile.svg"
+                                alt=""
                             />
                             <enhanced:img
-                                    class="u-position-absolute is-only-mobile"
-                                    style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                    src="./Blob_Pink_mobile.svg"
-                                    alt=""
+                                class="u-position-absolute is-only-mobile"
+                                style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
+                                src="./Blob_Pink_mobile.svg"
+                                alt=""
                             />
 
                             <!-- before submit -->
                             <div
-                                    class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
+                                class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
                             >
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
                                         class:web-u-max-width-380={!submitted}
                                     >
-                                        {#if submitted}
-                                            <section class="u-flex-vertical web-u-gap-20">
-                                                <h1 class="web-display web-u-color-text-primary">
-                                                    Thank you for your message
-                                                </h1>
-                                                <p
-                                                    class="web-description web-u-padding-block-end-32"
-                                                >
-                                                    Your message has been sent successfully. We
-                                                    appreciate your feedback, our team will try to
-                                                    get back to you as soon as possible.
-                                                </p>
-                                                <a
-                                                    href="/"
-                                                    class="web-button is-secondary web-u-margin-block-end-32"
-                                                >
-                                                    <span>Back to homepage</span>
-                                                </a>
-                                            </section>
-                                        {:else}
-                                            <section class="u-flex-vertical web-u-gap-20">
-                                                <h4 class="web-title web-u-color-text-primary">
-                                                    Join the Appwrite Startups program
-                                                </h4>
-                                                <p
-                                                    class="web-description"
-                                                >
-                                                    We support VC backed startups that have
-                                                    been established within the last decade with:
-                                                </p>
+                                        <section class="u-flex-vertical web-u-gap-20">
+                                            <h4 class="web-title web-u-color-text-primary">
+                                                Join the Appwrite Startups program
+                                            </h4>
+                                            <p class="web-description">
+                                                We support VC backed startups that have been
+                                                established within the last decade with:
+                                            </p>
 
-                                                <div class="u-flex-vertical u-gap-12">
-                                                    <div
-                                                            style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
-                                                    >
-                                                        <enhanced:img
-                                                                class=""
-                                                                style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                                src="./check_bullet.svg"
-                                                                alt=""
-                                                        />
+                                            <div class="u-flex-vertical u-gap-12">
+                                                <div
+                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                >
+                                                    <enhanced:img
+                                                        class=""
+                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        src="./check_bullet.svg"
+                                                        alt=""
+                                                    />
 
-                                                        <p class="web-description" style="flex: 1;">
-                                                            Appwrite Cloud Pro for 12 months
-                                                        </p>
-                                                    </div>
-                                                    <div
-                                                            style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
-                                                    >
-                                                        <enhanced:img
-                                                                class=""
-                                                                style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                                src="./check_bullet2.svg"
-                                                                alt=""
-                                                        />
-
-                                                        <p class="web-description" style="flex: 1;">
-                                                            Premium email support as part of Pro
-                                                        </p>
-                                                    </div>
+                                                    <p class="web-description" style="flex: 1;">
+                                                        Appwrite Cloud Pro for 12 months
+                                                    </p>
                                                 </div>
-                                            </section>
-                                        {/if}
+                                                <div
+                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                >
+                                                    <enhanced:img
+                                                        class=""
+                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        src="./check_bullet2.svg"
+                                                        alt=""
+                                                    />
+
+                                                    <p class="web-description" style="flex: 1;">
+                                                        Premium email support as part of Pro
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
                                         />
                                     </div>
                                 </div>
-                                {#if !submitted}
+                                {#if submitted}
+                                    <div
+                                        class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                                    >
+                                        <h6
+                                            class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
+                                        >
+                                            <img
+                                                class="u-flex-shrink-0"
+                                                src="/images/icons/colored/check.svg"
+                                                alt=""
+                                            />
+                                            <span class="web-u-color-text-primary"
+                                                >Thank you for your submission</span
+                                            >
+                                        </h6>
+                                        <p class="web-main-body-400">
+                                            Our team will review your application and get back to
+                                            you soon.
+                                        </p>
+                                        <button
+                                            class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
+                                            >Back to form</button
+                                        >
+                                    </div>
+                                {:else}
                                     <form
                                         method="post"
                                         on:submit|preventDefault={handleSubmit}
@@ -655,14 +681,14 @@
                                                 class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Full name</div>
+                                                    <div class="u-block">Name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        placeholder="Full name"
+                                                        placeholder="Your name"
                                                         aria-label="Name"
-                                                        bind:value={firstName}
+                                                        bind:value={personName}
                                                     />
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
@@ -671,9 +697,22 @@
                                                         required
                                                         class="web-input-text"
                                                         type="email"
-                                                        placeholder="Email address"
+                                                        placeholder="Your email address"
                                                         aria-label="Email address"
-                                                        bind:value={email}
+                                                        bind:value={personEmail}
+                                                    />
+                                                </li>
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
+                                                    <div class="u-block">Subject</div>
+                                                    <input
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        placeholder="Ex: Appwrite Startups Program"
+                                                        aria-label="Subject"
+                                                        bind:value={subject}
                                                     />
                                                 </li>
                                                 <li
@@ -685,9 +724,9 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company"
-                                                        placeholder="Company name"
+                                                        placeholder="Your company name"
                                                         aria-label="Company name"
-                                                        bind:value={company}
+                                                        bind:value={companyName}
                                                     />
                                                 </li>
                                                 <li
@@ -699,46 +738,58 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company-url"
-                                                        placeholder="Company website"
+                                                        placeholder="Your company website"
                                                         aria-label="Company URL"
-                                                        bind:value={companyURL}
+                                                        bind:value={companyUrl}
                                                     />
                                                 </li>
-<!--                                                <li-->
-<!--                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"-->
-<!--                                                >-->
-<!--                                                    <div class="u-block">Crunchbase URL</div>-->
-<!--                                                    <input-->
-<!--                                                        required-->
-<!--                                                        class="web-input-text"-->
-<!--                                                        type="text"-->
-<!--                                                        name="company-url"-->
-<!--                                                        placeholder="Crunchbase URL"-->
-<!--                                                        aria-label="Crunchbase URL"-->
-<!--                                                        bind:value={companyCrunchBaseURL}-->
-<!--                                                    />-->
-<!--                                                </li>-->
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
+                                                    <div class="u-block">Crunchbase URL</div>
+                                                    <input
+                                                        required
+                                                        class="web-input-text"
+                                                        type="text"
+                                                        name="company-url"
+                                                        placeholder="Your Crunchbase URL"
+                                                        aria-label="Crunchbase URL"
+                                                        bind:value={crunchbaseUrl}
+                                                    />
+                                                </li>
                                             </ul>
                                         </div>
+                                        {#if error}
+                                            <div
+                                                class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                            >
+                                                <p class="web-caption-400 web-u-max-width-380">
+                                                    {error}
+                                                </p>
+                                            </div>
+                                        {/if}
                                         <div
                                             class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                         >
                                             <p class="web-caption-400 web-u-max-width-380">
-                                                {#if error}
-                                                    {error}
-                                                {/if}
-                                            </p>
-                                            <!-- <p class="web-caption-400 web-u-max-width-380">
                                                 This form is protected by reCAPTCHA, and the Google <a
                                                     class="web-link"
                                                     href="/privacy"
-                                                    target="_blank" rel="noopener noreferrer">Privacy Policy</a
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">Privacy Policy</a
                                                 >
-                                                and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
-                                            </p> -->
+                                                and
+                                                <a
+                                                    class="web-link"
+                                                    href="/terms"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">Terms of Service</a
+                                                > apply.
+                                            </p>
                                             <button
                                                 type="submit"
                                                 class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                                disabled={submitting}
                                             >
                                                 <span>Apply</span>
                                             </button>
@@ -746,19 +797,6 @@
                                     </form>
                                 {/if}
                             </div>
-                            <!-- END before submit -->
-                            <!-- after submit -->
-                            <div
-                                    class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
-                            >
-                                <h6 class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1">
-                                    <img  class="u-flex-shrink-0" src="/images/icons/colored/check.svg" alt="">
-                                    <span class="web-u-color-text-primary">Thank you for your submission</span>
-                                </h6>
-                                <p class="web-main-body-400">Our team will review your application and get back to you soon.</p>
-                                <button class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16">Back to form</button>
-                            </div>
-                            <!-- END after submit -->
                         </div>
                     </div>
                     <div class="web-container">
@@ -845,48 +883,96 @@
     }
 
     @media #{$break1}, #{$break2} {
-      .web-grid-1-1 { display:flex; flex-direction:column; gap:32px; }
-      .web-hero .web-description { margin-block-start:0; }
-      .e-u-padding-block-start-48-mobile { padding-block-start:3rem; }
-      .e-u-gap-64-mobile { gap:4rem; }
-      .e-u-margin-block-end-80-mobile { margin-block-end:5rem; }
-      .e-u-margin-block-start-80-mobile  { margin-block-start:5rem; }
-      .e-u-margin-block-start-16-mobile { margin-block-start:1rem; }
-      .e-u-margin-block-start-48-mobile { margin-block-start:3rem; }
-      .e-u-row-gap-0 { row-gap:0; }
-      .e-u-order-1-mobile { order:1; }
-      .e-u-margin-inline-auto-mobile { margin-inline:auto; }
-      .e-u-margin-block-start-128-mobile { margin-block-start:8rem; }
-      .e-bg-left-mobile { width:300px; height:auto; inset-inline-start:0; /*transform:translateX(-50px);*/ inset-block-start:50px; opacity:0.4; }
-      .e-bg-right-mobile { width:300px; height:auto; inset-inline-end:0; /*transform:translateX(50px);*/ inset-block-start:100px; opacity:0.4; }
-      .u-bg-left-side-mobile  {
-        inset-inline-start:0!important;
-        transform: translateX(-330px);
-        width: 501px !important;
-        inset-block-start: 0px !important;
-        max-block-size: none;
-        max-inline-size: none;
-      }
-      .u-bg-right-side-mobile {
-        inset-inline-end: 0 !important;
-        transform: translateX(339px);
-        width: 501px !important;
-        inset-block-start: 0px !important;
-        max-block-size: none;
-        max-inline-size: none;
-      }
+        .web-grid-1-1 {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .web-hero .web-description {
+            margin-block-start: 0;
+        }
+        .e-u-padding-block-start-48-mobile {
+            padding-block-start: 3rem;
+        }
+        .e-u-gap-64-mobile {
+            gap: 4rem;
+        }
+        .e-u-margin-block-end-80-mobile {
+            margin-block-end: 5rem;
+        }
+        .e-u-margin-block-start-80-mobile {
+            margin-block-start: 5rem;
+        }
+        .e-u-margin-block-start-16-mobile {
+            margin-block-start: 1rem;
+        }
+        .e-u-margin-block-start-48-mobile {
+            margin-block-start: 3rem;
+        }
+        .e-u-row-gap-0 {
+            row-gap: 0;
+        }
+        .e-u-order-1-mobile {
+            order: 1;
+        }
+        .e-u-margin-inline-auto-mobile {
+            margin-inline: auto;
+        }
+        .e-u-margin-block-start-128-mobile {
+            margin-block-start: 8rem;
+        }
+        .e-bg-left-mobile {
+            width: 300px;
+            height: auto;
+            inset-inline-start: 0; /*transform:translateX(-50px);*/
+            inset-block-start: 50px;
+            opacity: 0.4;
+        }
+        .e-bg-right-mobile {
+            width: 300px;
+            height: auto;
+            inset-inline-end: 0; /*transform:translateX(50px);*/
+            inset-block-start: 100px;
+            opacity: 0.4;
+        }
+        .u-bg-left-side-mobile {
+            inset-inline-start: 0 !important;
+            transform: translateX(-330px);
+            width: 501px !important;
+            inset-block-start: 0px !important;
+            max-block-size: none;
+            max-inline-size: none;
+        }
+        .u-bg-right-side-mobile {
+            inset-inline-end: 0 !important;
+            transform: translateX(339px);
+            width: 501px !important;
+            inset-block-start: 0px !important;
+            max-block-size: none;
+            max-inline-size: none;
+        }
     }
     @media #{$break1} {
-      .e-mobile-fix-1 {
-        display:block;
-      }
+        .e-mobile-fix-1 {
+            display: block;
+        }
     }
     /* from 1280px and bugger */
     @media #{$break3open} {
-        .e-u-padding-block-start-80-desktop { padding-block-start:5rem; }
-        .e-u-margin-block-128-desktop { margin-block:8rem; }
-        .e-u-padding-inline-32-desktop { padding-inline:2rem; }
-        .e-margin-top-desktop-200 { margin-block-start:12.5rem; }
-        .e-u-margin-block-start-200-desktop  { margin-block-start:12.5rem; }
+        .e-u-padding-block-start-80-desktop {
+            padding-block-start: 5rem;
+        }
+        .e-u-margin-block-128-desktop {
+            margin-block: 8rem;
+        }
+        .e-u-padding-inline-32-desktop {
+            padding-inline: 2rem;
+        }
+        .e-margin-top-desktop-200 {
+            margin-block-start: 12.5rem;
+        }
+        .e-u-margin-block-start-200-desktop {
+            margin-block-start: 12.5rem;
+        }
     }
 </style>
