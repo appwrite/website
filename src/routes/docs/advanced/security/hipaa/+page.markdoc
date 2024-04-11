@@ -1,11 +1,11 @@
 ---
 layout: article
-title: HIPPA
-description: Learn about Appwrite Cloud's measures to achieve HIPPA compliance.
+title: HIPAA
+description: Learn about Appwrite Cloud's measures to achieve HIPAA compliance.
 ---
 
-Appwrite is compliant with HIPPA (Health Insurance Portability and Accountability Act) regulations.
-HIPPA is an important regulation that protects patients' health data from being disclosed without consent or knowledge.
+Appwrite is compliant with HIPAA (Health Insurance Portability and Accountability Act) regulations.
+HIPAA is an important regulation that protects patients' health data from being disclosed without consent or knowledge.
 
 If you're building apps that handle information that is considered [PHI (Personal Health Information)](https://privacyruleandresearch.nih.gov/pr_07.asp)
 for an U.S. user base, data must be stored in a HIPAA-compliant environment.
