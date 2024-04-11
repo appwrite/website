@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Appwrite is now HIPAA compliant
-description: This is another step towards building a platform that developers from all industries.
+Description: This is another step towards building a platform for developers from all industries.
 date: 2024-04-11
 cover: /images/blog/hipaa.png
 timeToRead: 4
@@ -17,7 +17,7 @@ If you’re familiar with Appwrite, you will know that data security is a top pr
 
 ## Measures taken to comply
 
-To attain HIPAA compliance, we’ve undergone audits and implemented measures to safeguard personal information, updating our policies, procedures, and infrastructure to meet the strict requirements of HIPAA regulations
+To attain HIPAA compliance, we’ve undergone audits and implemented measures to safeguard personal information, updating our policies, procedures, and infrastructure to meet the strict requirements of HIPAA regulations.
 
 So what did we do to comply? We’ve set measures and controls to maintain security, availability, processing integrity, and confidentiality, including:
 
