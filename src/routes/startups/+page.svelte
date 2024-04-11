@@ -567,8 +567,10 @@
                                     alt=""
                             />
 
-
-                            <div class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0">
+                            <!-- before submit -->
+                            <div
+                                    class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
+                            >
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
@@ -744,6 +746,19 @@
                                     </form>
                                 {/if}
                             </div>
+                            <!-- END before submit -->
+                            <!-- after submit -->
+                            <div
+                                    class="u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                            >
+                                <h6 class="web-label u-flex u-main-center u-cross-center u-gap-8">
+                                    <img  class="u-flex-shrink-0" src="/images/icons/colored/check.svg" alt="">
+                                    <span class="web-u-color-text-primary">Thank you for your submission</span>
+                                </h6>
+                                <p class="web-main-body-400">Our team will review your application and get back to you soon.</p>
+                                <button class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16">Back to form</button>
+                            </div>
+                            <!-- END after submit -->
                         </div>
                     </div>
                     <div class="web-container">
