@@ -25,7 +25,6 @@
     let subject: string;
     let companyName: string;
     let companyUrl: string;
-    let crunchbaseUrl: string;
 
     let error: string | undefined;
     let submitted = false;
@@ -45,10 +44,7 @@
                 personEmail,
                 subject,
                 companyName,
-                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
-                crunchbaseUrl: crunchbaseUrl.startsWith('http')
-                    ? crunchbaseUrl
-                    : `https://${crunchbaseUrl}`
+                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
             })
         });
 
@@ -741,20 +737,6 @@
                                                         placeholder="Company website"
                                                         aria-label="Company website"
                                                         bind:value={companyUrl}
-                                                    />
-                                                </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
-                                                    <div class="u-block">Crunchbase URL</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        name="crunchbase-url"
-                                                        placeholder="Crunchbase URL"
-                                                        aria-label="Crunchbase URL"
-                                                        bind:value={crunchbaseUrl}
                                                     />
                                                 </li>
                                             </ul>
