@@ -9,9 +9,9 @@
 
     $: classes = (() => {
         if (inDocs) return '';
-        if (inChangelog) return 'aw-paragraph-lg';
+        if (inChangelog) return 'web-paragraph-lg';
         if (inPolicy) return '';
-        return 'aw-paragraph-lg';
+        return 'web-paragraph-lg';
     })();
 </script>
 

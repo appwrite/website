@@ -150,24 +150,24 @@
     class="wrapper u-position-fixed u-padding-0 u-inset-0 u-flex u-main-center u-cross-center"
     data-visible={open ? true : undefined}
     style:z-index="100"
-    style:background="hsl(var(--aw-color-black) / 0.3)"
+    style:background="hsl(var(--web-color-black) / 0.3)"
     style:backdrop-filter="blur(15px)"
     style:-webkit-backdrop-filter="blur(15px)"
     bind:this={container}
     on:click={handleExit}
 >
     <div
-        class="aw-input-text-search-wrapper aw-u-max-width-680 aw-u-margin-inline-20 u-width-full-line"
+        class="web-input-text-search-wrapper web-u-max-width-680 web-u-margin-inline-20 u-width-full-line"
     >
         <span
-            class="aw-icon-search u-z-index-5"
+            class="web-icon-search u-z-index-5"
             aria-hidden="true"
             style="inset-block-start:0.9rem"
         />
         <div id="searchbox" />
 
         <input
-            class="aw-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+            class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
             type="text"
             id="search"
             bind:value
@@ -184,14 +184,14 @@
             }}
         />
         <div
-            class="aw-card is-normal u-flex-vertical u-gap-24"
+            class="web-card is-normal u-flex-vertical u-gap-24"
             use:melt={$menu}
             style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
             {#if value}
                 <section>
                     {#if results.length > 0}
-                        <h6 class="aw-eyebrow">{results.length} results found</h6>
+                        <h6 class="web-eyebrow">{results.length} results found</h6>
                         <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
                             {#each results as hit, i (hit.uid)}
                                 {@const relevantSubtitle = getRelevantSubtitle(hit)}
@@ -199,25 +199,25 @@
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent
-                                            aw-u-padding-block-8 aw-padding-inline-12 aw-u-cross-start u-max-width-100-percent"
+                                        class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent
+                                            web-u-padding-block-8 web-padding-inline-12 web-u-cross-start u-max-width-100-percent"
                                         use:melt={$option({
                                             value: hit,
                                             label: hit.title ?? i.toString()
                                         })}
                                     >
-                                        <div class="aw-u-trim-1">
-                                            <span class="aw-u-color-text-secondary">{hit.h1}</span>
+                                        <div class="web-u-trim-1">
+                                            <span class="web-u-color-text-secondary">{hit.h1}</span>
                                             {#if relevantSubtitle}
-                                                <span class="aw-u-color-text-secondary"> / </span>
-                                                <span class="aw-u-color-text-primary">
+                                                <span class="web-u-color-text-secondary"> / </span>
+                                                <span class="web-u-color-text-primary">
                                                     {relevantSubtitle}
                                                 </span>
                                             {/if}
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="u-inline aw-u-color-text-secondary aw-u-trim-1"
+                                                class="u-inline web-u-color-text-secondary web-u-trim-1"
                                             >
                                                 {hit.p}
                                             </div>
@@ -227,14 +227,14 @@
                             {/each}
                         </ul>
                     {:else}
-                        <p class="aw-caption-400">
+                        <p class="web-caption-400">
                             No results found for <span class="u-bold">{value}</span>
                         </p>
                     {/if}
                 </section>
             {/if}
             <section>
-                <h6 class="aw-eyebrow">Recommended</h6>
+                <h6 class="web-eyebrow">Recommended</h6>
                 <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
                     {#each recommended as hit, i (hit.uid)}
                         {@const index = i + (results.length ? results.length : 0)}
@@ -246,13 +246,13 @@
                                     value: hit,
                                     label: hit.title ?? i.toString()
                                 })}
-                                class="aw-button aw-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent aw-u-padding-block-4 aw-u-cross-start"
+                                class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent web-u-padding-block-4 web-u-cross-start"
                             >
-                                <div class="aw-u-trim-1">
-                                    <span class="aw-u-color-text-secondary">{hit.h1}</span>
+                                <div class="web-u-trim-1">
+                                    <span class="web-u-color-text-secondary">{hit.h1}</span>
                                     {#if hit.h2}
-                                        <span class="aw-u-color-text-secondary"> / </span>
-                                        <span class="aw-u-color-text-primary">{hit.h2}</span>
+                                        <span class="web-u-color-text-secondary"> / </span>
+                                        <span class="web-u-color-text-primary">{hit.h2}</span>
                                     {/if}
                                 </div>
                             </a>
@@ -276,11 +276,11 @@
         pointer-events: auto;
     }
 
-    a.aw-button {
+    a.web-button {
         scroll-margin-block: 1rem;
     }
 
-    .aw-card {
+    .web-card {
         margin-block-start: -0.0625rem;
         max-block-size: min(18.75rem, calc(100vh - 5.5rem));
         border-block-start-width: 0;

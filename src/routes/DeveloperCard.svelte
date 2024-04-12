@@ -5,17 +5,17 @@
 	export let avatarSrc: string;
 </script>
 
-<div class="aw-card is-white">
-	<div class="aw-social-item u-flex-vertical u-gap-24">
+<div class="web-card is-white">
+	<div class="web-social-item u-flex-vertical u-gap-24">
 		<div class="u-flex u-gap-16 u-main-space-between">
-			<div class="aw-user-box">
-				<img class="aw-user-box-image" src={avatarSrc} alt="Avatar of {name}" />
-				<div class="aw-user-box-name aw-sub-body-500">{name}</div>
-				<div class="aw-user-box-username aw-sub-body-400">{tag}</div>
+			<div class="web-user-box">
+				<img class="web-user-box-image" src={avatarSrc} alt="Avatar of {name}" />
+				<div class="web-user-box-name web-sub-body-500">{name}</div>
+				<div class="web-user-box-username web-sub-body-400">{tag}</div>
 			</div>
-			<span class="aw-social-item-icon aw-icon-{icon}" aria-label={icon} aria-hidden="true" />
+			<span class="web-social-item-icon web-icon-{icon}" aria-label={icon} aria-hidden="true" />
 		</div>
-		<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
+		<p class="web-sub-body-500 web-u-text-color-neutral-700">
 			<slot />
 		</p>
 	</div>

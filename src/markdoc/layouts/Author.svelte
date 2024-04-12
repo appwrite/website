@@ -45,9 +45,9 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+    <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
         <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 aw-u-pointer-events-none"
+            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 web-u-pointer-events-none"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,20 +102,20 @@
             </svg>
         </div>
 
-        <div class="aw-big-padding-section-level-2 u-position-relative">
-            <div class="aw-container">
-                <div class="aw-author-section u-block">
+        <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-container">
+                <div class="web-author-section u-block">
                     {#if avatar}
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
                     <div>
-                        <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
+                        <h1 class="web-title web-u-color-text-primary">{name}</h1>
                         {#if role}
-                            <div class="aw-label u-margin-block-start-8">{role}</div>
+                            <div class="web-label u-margin-block-start-8">{role}</div>
                         {/if}
                     </div>
                     {#if bio}
-                        <p class="aw-author-section-info aw-description">
+                        <p class="web-author-section-info web-description">
                             {bio}
                         </p>
                     {/if}
@@ -124,12 +124,12 @@
                             <li>
                                 <a
                                     href={github}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author GitHub"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -137,12 +137,12 @@
                             <li>
                                 <a
                                     href={twitter}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author twitter"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-x" aria-hidden="true" />
+                                    <span class="web-icon-x" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -150,12 +150,12 @@
                             <li>
                                 <a
                                     href={linkedin}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author LinkedIn"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-linkedin" aria-hidden="true" />
+                                    <span class="web-icon-linkedin" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -165,13 +165,13 @@
         </div>
     </div>
 
-    <div class="aw-big-padding-section-level-1">
-        <div class="aw-big-padding-section-level-2">
-            <div class="aw-container">
-                <h2 class="aw-title aw-u-color-text-primary">Articles</h2>
+    <div class="web-big-padding-section-level-1">
+        <div class="web-big-padding-section-level-2">
+            <div class="web-container">
+                <h2 class="web-title web-u-color-text-primary">Articles</h2>
 
-                <!-- <div class="aw-is-only-mobile u-margin-block-start-32">
-					<label class="u-block aw-select is-colored" for="articles">
+                <!-- <div class="web-is-only-mobile u-margin-block-start-32">
+					<label class="u-block web-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
 							<option>News</option>
@@ -182,18 +182,18 @@
 						<span class="icon-cheveron-down" aria-hidden="true" />
 					</label>
 				</div> -->
-                <!--<div class="aw-is-not-mobile">
+                <!--<div class="web-is-not-mobile">
 					<div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-24">
 						<ul
-							class="aw-secondary-tabs is-transparent"
+							class="web-secondary-tabs is-transparent"
 							role="tablist"
 							aria-orientation="horizontal"
 							data-orientation="horizontal"
 							data-melt-tabs-list=""
 						>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line is-selected"
+									class="web-secondary-tabs-button u-width-full-line is-selected"
 									type="button"
 									role="tab"
 									data-state="active"
@@ -202,12 +202,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Latest</span>
+									<span class="web-main-body-500">Latest</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button u-width-full-line"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -216,12 +216,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">News</span>
+									<span class="web-main-body-500">News</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button u-width-full-line"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -230,12 +230,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Insights</span>
+									<span class="web-main-body-500">Insights</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button u-width-full-line"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -244,12 +244,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Tutorials</span>
+									<span class="web-main-body-500">Tutorials</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button u-width-full-line"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -258,19 +258,19 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Changelog</span>
+									<span class="web-main-body-500">Changelog</span>
 								</button>
 							</li>
 						</ul> -->
-                <!-- <div class="aw-input-text-search-wrapper">
+                <!-- <div class="web-input-text-search-wrapper">
 							<span class="icon-search" aria-hidden="true" />
-							<input class="aw-input-text aw-u-block-size-48" type="search" placeholder="Search" />
+							<input class="web-input-text web-u-block-size-48" type="search" placeholder="Search" />
 						</div> 
 					</div>
 				</div>-->
 
                 <div class="u-margin-block-start-48">
-                    <ul class="aw-grid-articles">
+                    <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.author === author?.slug) as post}
                             <Article
                                 title={post.title}
@@ -287,9 +287,9 @@
             </div>
         </div>
         <div
-            class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+            class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
         >
-            <div class="aw-container">
+            <div class="web-container">
                 <FooterNav />
                 <MainFooter />
             </div>

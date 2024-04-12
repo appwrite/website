@@ -15,14 +15,18 @@
     const links: Record<string, { label: string; href: string; target?: string; rel?: string }[]> =
         {
             'Quick starts': [
-                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
+                { label: 'Web', href: '/docs/quick-starts/web' },
                 { label: 'Next.js', href: '/docs/quick-starts/nextjs' },
+                { label: 'React', href: '/docs/quick-starts/react' },
                 { label: 'Vue.js', href: '/docs/quick-starts/vue' },
+                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
                 { label: 'SvelteKit', href: '/docs/quick-starts/sveltekit' },
+                { label: 'Refine', href: '/docs/quick-starts/refine' },
+                { label: 'Angular', href: '/docs/quick-starts/angular' },
+                { label: 'React Native', href: '/docs/quick-starts/react-native' },
+                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
                 { label: 'Apple', href: '/docs/quick-starts/apple' },
                 { label: 'Android', href: '/docs/quick-starts/android' },
-                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
-                { label: 'Angular', href: '/docs/quick-starts/angular' },
                 { label: 'Qwik', href: '/docs/quick-starts/qwik' },
                 { label: 'Astro', href: '/docs/quick-starts/astro' }
             ],
@@ -30,6 +34,7 @@
                 { label: 'Auth', href: '/docs/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
+                { label: 'Messaging', href: '/docs/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
             ],
@@ -81,50 +86,50 @@
 
 <nav
     aria-label="Footer"
-    class="aw-footer-nav u-margin-block-start-100 u-position-relative"
-    class:aw-u-sep-block-start={!noBorder}
+    class="web-footer-nav u-margin-block-start-100 u-position-relative"
+    class:web-u-sep-block-start={!noBorder}
 >
-    <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
-    <ul class="aw-footer-nav-main-list" use:melt={$root}>
+    <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
+    <ul class="web-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
-            <li class="aw-footer-nav-main-item aw-is-not-mobile">
-                <h2 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">
+            <li class="web-footer-nav-main-item web-is-not-mobile">
+                <h2 class="web-footer-nav-main-title web-is-not-mobile web-caption-500 web-eyebrow">
                     {title}
                 </h2>
-                <ul class="aw-footer-nav-secondary-list aw-sub-body-400">
+                <ul class="web-footer-nav-secondary-list web-sub-body-400">
                     {#each items as { href, label, target, rel }}
                         <li>
-                            <a class="aw-link" {href} {target} {rel}>{label}</a>
+                            <a class="web-link" {href} {target} {rel}>{label}</a>
                         </li>
                     {/each}
                 </ul>
             </li>
             <li
-                class="aw-footer-nav-main-item aw-is-only-mobile"
+                class="web-footer-nav-main-item web-is-only-mobile"
                 use:melt={$item({ value: title })}
             >
                 <h5 use:melt={$heading({ level: 5 })}>
                     <button
-                        class="aw-footer-nav-button aw-is-only-mobile"
+                        class="web-footer-nav-button web-is-only-mobile"
                         use:melt={$trigger({ value: title })}
                     >
-                        <span class="aw-caption-500 aw-eyebrow">{title}</span>
+                        <span class="web-caption-500 web-eyebrow">{title}</span>
                         <span
-                            class="aw-icon-chevron-down aw-u-transition"
-                            class:aw-u-rotate-180={$isSelected(title)}
+                            class="web-icon-chevron-down web-u-transition"
+                            class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
                         />
                     </button>
                 </h5>
                 {#if $isSelected(title)}
                     <ul
-                        class="aw-footer-nav-secondary-list aw-sub-body-400"
+                        class="web-footer-nav-secondary-list web-sub-body-400"
                         use:melt={$content({ value: title })}
                         transition:slide={{ duration: 250 }}
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="aw-link" {href} {target} {rel}>{label}</a>
+                                <a class="web-link" {href} {target} {rel}>{label}</a>
                             </li>
                         {/each}
                     </ul>

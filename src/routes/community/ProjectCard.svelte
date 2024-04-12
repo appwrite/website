@@ -19,14 +19,14 @@
     export let href: $$Props['href'];
 </script>
 <a
-    class="aw-card is-white aw-u-flex-vertical u-gap-8"
+    class="web-card is-white web-u-flex-vertical u-gap-8"
     style="--card-padding: 0.5rem;"
     {href}
     target="_blank"
     rel="noopener noreferrer"
 >
     <div class="u-padding-12">
-        <h3 class="aw-main-body-500 aw-u-color-text-primary">{title}</h3>
+        <h3 class="web-main-body-500 web-u-color-text-primary">{title}</h3>
         <p class="u-trim-2">
             {description}
         </p>
@@ -37,7 +37,7 @@
 </a>
 
 <style lang="scss">
-    .aw-card {
+    .web-card {
         &:hover {
             img {
                 transform: scale(1.025);
