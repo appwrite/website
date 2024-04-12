@@ -1,10 +1,10 @@
 @use '../../abstract' as *;
 .#{$p}-eyebrow {
-  --p-font-family: var(--aw-font-family-aeonik-fono);
-  --p-font-size: var(--aw-font-size-micro);
-  --p-line-height: var(--aw-line-height-tiny);
-  --p-letter-spacing: var(--aw-letter-spacing-loose);
-  --p-font-weight: var(--aw-font-weight-regular);
+  --p-font-family: var(--web-font-family-aeonik-fono);
+  --p-font-size: var(--web-font-size-micro);
+  --p-line-height: var(--web-line-height-tiny);
+  --p-letter-spacing: var(--web-letter-spacing-loose);
+  --p-font-weight: var(--web-font-weight-regular);
 
   font-family: var(--p-font-family);
   font-size: var(--p-font-size);

@@ -66,8 +66,8 @@ export const scroll: Action<
   HTMLElement,
   undefined,
   {
-    "on:aw-scroll": (e: CustomEvent<ScrollInfo>) => void;
-    "on:aw-resize": (e: CustomEvent<ScrollInfo>) => void;
+    "on:web-scroll": (e: CustomEvent<ScrollInfo>) => void;
+    "on:web-resize": (e: CustomEvent<ScrollInfo>) => void;
   }
 > = (node) => {
   function getScrollInfo(): ScrollInfo {
@@ -87,7 +87,7 @@ export const scroll: Action<
     };
   }
 
-  const createHandler = (eventName: "aw-scroll" | "aw-resize") => {
+  const createHandler = (eventName: "web-scroll" | "web-resize") => {
     return () => {
       node.dispatchEvent(
         new CustomEvent<ScrollInfo>(eventName, {
@@ -97,8 +97,8 @@ export const scroll: Action<
     };
   };
 
-  const handleScroll = createHandler("aw-scroll");
-  const handleResize = createHandler("aw-resize");
+  const handleScroll = createHandler("web-scroll");
+  const handleResize = createHandler("web-resize");
 
   handleScroll();
   handleResize();
@@ -122,7 +122,7 @@ You'll notice however, that this is not **just** a regular function. It's a [Sve
 In practice, what this means is, given this syntax:
 
 ```html
-<div id="products" use:scroll on:aw-scroll={(e) => scrollInfo = e.detail}>
+<div id="products" use:scroll on:web-scroll={(e) => scrollInfo = e.detail}>
 	<!-- ... -->
 </div>
 ```
@@ -164,7 +164,7 @@ The video above showcases both Motion and Svelte transitions in action. The tabl
 		{#each objectKeys($state.controls).filter((p) => $state.controls[p]) as provider (provider)}
 			<button class="oauth" transition:fade={{ duration: 100 }} animate:flip={{ duration: 250 }}>
 			<div class="inner">
-				<span class="aw-icon-{provider.toLowerCase()}" />
+				<span class="web-icon-{provider.toLowerCase()}" />
 				<span>{provider}</span>
 			</div>
 			</button>

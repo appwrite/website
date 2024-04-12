@@ -8,13 +8,13 @@
 
 <div class="pseudo-table">
 	<div class="header">
-		<span class="aw-eyebrow">Document ID</span>
-		<span class="aw-eyebrow">Task</span>
+		<span class="web-eyebrow">Document ID</span>
+		<span class="web-eyebrow">Task</span>
 	</div>
 	{#each $state.tasks.slice(0, $state.tableSlice) as task (task.id)}
 		<div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
 			<div class="copy-button">
-				<span class="aw-icon-copy" />
+				<span class="web-icon-copy" />
 				<span>{task.id}</span>
 			</div>
 			<span class="truncated">{task.title}</span>
@@ -36,7 +36,7 @@
 
 		[class*='icon-'] {
 			font-size: 1.25rem;
-			color: hsl(var(--aw-color-greyscale-600));
+			color: hsl(var(--web-color-greyscale-600));
 		}
 
 		span:not([class*='icon-']) {

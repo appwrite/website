@@ -54,7 +54,7 @@ cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@13.0.2
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -82,7 +82,7 @@ export { ID } from 'appwrite';
 ```
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
-First, add imports for the `FormsModule` from Angular to handle the login form.
+First, add imports for the `FormsModule` from Angular to handle the login form..
 
 ```ts
 import { FormsModule } from '@angular/forms';
@@ -144,7 +144,7 @@ export class AppComponent {
   name: string = '';
 
   async login(email: string, password: string) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailSession(email, password);
     this.loggedInUser = await account.get();
   }
 

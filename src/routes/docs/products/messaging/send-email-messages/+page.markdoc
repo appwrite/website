@@ -3,12 +3,16 @@ layout: article
 title: Send email messages
 description: Send email messages to your users using Appwrite Messaging.
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 You can send custom email messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding email messaging to your app.
 
 # Add a provider {% #add-a-provider %}
-Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgird](/docs/products/messaging/sendgrid/) as
+Appwrite supports [Mailgun](/docs/products/messaging/mailgun/) and [Sendgrid](/docs/products/messaging/sendgrid/) as
 SMTP providers. You must configure one of them as a provider.
 {% only_dark %}
 ![Add a SMTP provider](/images/docs/messaging/providers/mailgun/dark/add-mailgun.png)
@@ -18,7 +22,7 @@ SMTP providers. You must configure one of them as a provider.
 {% /only_light %}
 To add a new provider navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**
 and follow the wizard. You can find more details about configuring in the provider guides for
-[Mailgun](/docs/products/messaging/mailgun#configure-provider) and [Sendgird](/docs/products/messaging/sendgrid#configure-provider).
+[Mailgun](/docs/products/messaging/mailgun#configure-provider) and [Sendgrid](/docs/products/messaging/sendgrid#configure-provider).
 
 # Add targets {% #add-targets %}
 In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
@@ -259,230 +263,6 @@ let target = try await users.createTarget(
     userId: "<USER_ID>",
     targetId: "<TARGET_ID>",
     providerType: .email,
-    identifier: "<IDENTIFIER>",
-    providerId: "<PROVIDER_ID>", // optional
-    name: "<NAME>"               // optional
-)
-```
-{% /multicode %}
-{% multicode %}
-```js
-const sdk = require('node-appwrite');
-
-const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2');                  // Your secret API key
-
-const users = new sdk.Users(client);
-
-const response = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Phone, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
-);
-```
-```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
-
-const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
-
-const users = new sdk.Users(client);
-
-const response = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Phone, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
-);
-```
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Users;
-use Appwrite\Enums\MessagingProviderType;
-
-$client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
-
-$users = new Users($client);
-
-$result = $users->createTarget(
-    userId: '<USER_ID>',
-    targetId: '<TARGET_ID>',
-    providerType: MessagingProviderType::PHONE(),
-    identifier: '<IDENTIFIER>',
-    providerId: '<PROVIDER_ID>',    // optional
-    name: '<NAME>'                  // optional
-);
-```
-```python
-from appwrite.client import Client
-from appwrite.enums import MessagingProviderType
-
-client = Client()
-client.set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
-
-users = Users(client)
-
-result = users.create_target(
-    user_id = '<USER_ID>',
-    target_id = '<TARGET_ID>',
-    provider_type = MessagingProviderType.PHONE,
-    identifier = '<IDENTIFIER>',
-    provider_id = '<PROVIDER_ID>', # optional
-    name = '<NAME>' # optional
-)
-```
-```ruby
-require 'appwrite'
-
-include Appwrite
-include Appwrite::Enums
-
-client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
-    .set_project('5df5acd0d48c2')                   # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2')   # Your secret API key
-
-users = Users.new(client)
-
-response = users.create_target(
-    user_id: '<USER_ID>',
-    target_id: '<TARGET_ID>',
-    provider_type: MessagingProviderType::EMAIL,
-    identifier: '<IDENTIFIER>',
-    provider_id: '<PROVIDER_ID>',   # optional
-    name: '<NAME>'                  # optional
-)
-
-puts response.inspect
-```
-```csharp
-using Appwrite;
-using Appwrite.Services;
-using Appwrite.Models;
-using Appwrite.Enums;
-
-Client client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
-
-Users users = new Users(client);
-
-Target result = await users.CreateTarget(
-    userId: "<USER_ID>",
-    targetId: "<TARGET_ID>",
-    providerType: MessagingProviderType.PHONE,
-    identifier: "<IDENTIFIER>",
-    providerId: "<PROVIDER_ID>",  // optional
-    name: "<NAME>"                // optional
-);
-```
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/enums.dart';
-import 'package:dart_appwrite/models.dart';
-
-Client client = Client()
-  .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-  .setProject('5df5acd0d48c2')                  // Your project ID
-  .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
-
-Users users = Users(client);
-
-Target result = await users.createTarget(
-  userId: '<USER_ID>',
-  targetId: '<TARGET_ID>',
-  providerType:  MessagingProviderType.PHONE,
-  identifier: '<IDENTIFIER>',
-  providerId: '<PROVIDER_ID>',  // (optional)
-  name: '<NAME>',               // (optional)
-);
-
-```
-```kotlin
-import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
-import io.appwrite.services.Users
-import io.appwrite.enums.MessagingProviderType
-
-val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
-
-val users = Users(client)
-
-val response = users.createTarget(
-    userId = "<USER_ID>",
-    targetId = "<TARGET_ID>",
-    providerType =  MessagingProviderType.PHONE,
-    identifier = "<IDENTIFIER>",
-    providerId = "<PROVIDER_ID>",   // optional
-    name = "<NAME>"                 // optional
-)
-
-```
-```java
-import io.appwrite.Client;
-import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Users;
-import io.appwrite.enums.MessagingProviderType;
-
-Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
-
-Users users = new Users(client);
-
-users.createTarget(
-    "<USER_ID>",                    // userId
-    "<TARGET_ID>",                  // targetId
-    MessagingProviderType.PHONE,    // providerType
-    "<IDENTIFIER>",                 // identifier
-    "<PROVIDER_ID>",                // providerId (optional)
-    "<NAME>",                       // name (optional)
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-
-        System.out.println(result);
-    })
-);
-```
-```swift
-import Appwrite
-import AppwriteEnums
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
-
-let users = Users(client)
-
-let target = try await users.createTarget(
-    userId: "<USER_ID>",
-    targetId: "<TARGET_ID>",
-    providerType: .phone,
     identifier: "<IDENTIFIER>",
     providerId: "<PROVIDER_ID>", // optional
     name: "<NAME>"               // optional
@@ -1015,7 +795,7 @@ let message = try await messaging.createEmail(
 
 
 # Schedule emails {% #schedule-emails %}
-To send an scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
+To send a scheduled email, you can call the `createEmail` endpoint with `status` set to `'scheduled'` and `schedule` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');

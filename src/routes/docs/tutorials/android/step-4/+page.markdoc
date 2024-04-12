@@ -34,7 +34,7 @@ class AccountService(client: Client) {
 
     suspend fun login(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.createEmailPasswordSession(email, password)
+            account.createEmailSession(email, password)
             getLoggedIn()
         } catch (e: AppwriteException) {
             null
