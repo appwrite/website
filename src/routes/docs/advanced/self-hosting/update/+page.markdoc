@@ -35,7 +35,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.5.3
+    appwrite/appwrite:1.5.4
 ```
 
 ## CMD
@@ -45,7 +45,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.5.3
+    appwrite/appwrite:1.5.4
 ```
 
 ## PowerShell
@@ -55,7 +55,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.5.3
+    appwrite/appwrite:1.5.4
 ```
 
 This will pull the `docker-compose.yml` file for the new version and perform the installation.

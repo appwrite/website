@@ -174,7 +174,7 @@ try {
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
-        'maxAge' => $session['expire'],
+        'expires' => strtotime($session['expire']),
         'path' => '/',
     ]);
 
@@ -445,7 +445,7 @@ try {
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
-        'maxAge' => $session['expire'],
+        'expires' => strtotime($session['expire']),
         'path' => '/',
     ]);
 

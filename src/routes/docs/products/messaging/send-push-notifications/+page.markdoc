@@ -396,19 +396,8 @@ Appwrite provides an `OS` class to help simplify the process to handle permissio
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-```swift
-OS.requestPermission(
-    application,
-    OSPermission.notifications,
-    onGranted: {
-        // Handle on permission granted
-    },
-    onDenied: {
-        // Handle on permission denied
-    }
-)
-```
-
+You can learn more about requesting permissions from the 
+[Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 {% /tabsitem %}
 
 {% tabsitem #android-fcm title="FCM for Android" %}
@@ -422,41 +411,16 @@ First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
     <!-- ... rest of your manifest -->
 ```
 
-Then, request permissions to display push notifications in your app.
-Appwrite provides a utility to help request permissions.
-```kotlin
-OS.requestPermission(
-    this,                                   // Context
-    Manifest.permission.POST_NOTIFICATIONS, // Permission requested
-    onGranted = {
-        println("Permission granted")       // When permission is granted
-    },
-    onDenied = {
-        println("Permission denied")        // When permission is denied
-    },
-    onShowRationale = {
-        println("Should show rationale")    // Explain why this permission is needed.
-    }
-)
-```
+Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting) 
+from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 {% /tabsitem %}
 
 {% tabsitem #apple-fcm title="FCM for Apple" %}
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-```swift
-OS.requestPermission(
-    application,
-    OSPermission.notifications,
-    onGranted: {
-        // Handle on permission granted
-    },
-    onDenied: {
-        // Handle on permission denied
-    }
-)
-```
+You can learn more about requesting permissions from the 
+[Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 
 When an FCM registration token is generated, the library uploads the identifier and configuration data to Firebase.
 If you wish to give your users the ability to explicitly opt out of sending data to Firebase,
