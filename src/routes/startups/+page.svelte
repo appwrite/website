@@ -681,13 +681,13 @@
                                                 class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Name</div>
+                                                    <div class="u-block">Full name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        placeholder="Your name"
-                                                        aria-label="Name"
+                                                        placeholder="Full name"
+                                                        aria-label="Full name"
                                                         bind:value={personName}
                                                     />
                                                 </li>
@@ -697,7 +697,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="email"
-                                                        placeholder="Your email address"
+                                                        placeholder="Email address"
                                                         aria-label="Email address"
                                                         bind:value={personEmail}
                                                     />
@@ -724,7 +724,7 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company"
-                                                        placeholder="Your company name"
+                                                        placeholder="Company name"
                                                         aria-label="Company name"
                                                         bind:value={companyName}
                                                     />
@@ -737,9 +737,9 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        name="company-url"
-                                                        placeholder="Your company website"
-                                                        aria-label="Company URL"
+                                                        name="company-website"
+                                                        placeholder="Company website"
+                                                        aria-label="Company website"
                                                         bind:value={companyUrl}
                                                     />
                                                 </li>
@@ -751,8 +751,8 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        name="company-url"
-                                                        placeholder="Your Crunchbase URL"
+                                                        name="crunchbase-url"
+                                                        placeholder="Crunchbase URL"
                                                         aria-label="Crunchbase URL"
                                                         bind:value={crunchbaseUrl}
                                                     />
