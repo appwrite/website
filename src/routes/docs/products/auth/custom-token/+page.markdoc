@@ -161,7 +161,7 @@ If the client doesn't know the user's ID during authentication, we recommend to 
 
 # Login {% #login %}
 
-Once the client receives a token secret, we can use it to authenticate the user in the application. Use the [Client SDK's](/docs/sdks#client) [Create session endpoint](/docs/references/cloud/server-nodejs/account#createSession) to exchange the token secret for a valid session, which logs the user.
+Once the client receives a token secret, we can use it to authenticate the user in the application. Use the [Client SDK's](/docs/sdks#client) [Create session endpoint](/docs/references/1.5.x/server-nodejs/account#createSession) to exchange the token secret for a valid session, which logs the user.
 
 {% multicode %}
 
