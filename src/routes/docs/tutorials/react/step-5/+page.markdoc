@@ -9,9 +9,9 @@ In our app we want to have a navigation bar that is always visible. We will add 
 - a logout button if the user is logged in.
 - a login button if the user is not logged in.
 
-Update the App componenent in `src/App.jsx`:
+Update the App component in `src/App.jsx`:
 
-```js
+```client-web
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider, useUser } from "./lib/context/user";

@@ -76,13 +76,13 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/everything-new-with-appwrite-1.5"
+                        href="/blog/post/introducing-appwrite-react-native-sdk"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400">Everything new in Appwrite 1.5</span>
+                        <span class="web-caption-400">Introducing Appwrite's React Native SDK</span>
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="web-hero is-horizontal">
@@ -95,10 +95,10 @@
                         </h1>
                         <div class="u-cross-child-end">
                             <p class="web-description">
-                                Appwrite's open-source platform lets you add Auth, DBs, Functions,
-                                Storage, and Messaging to your product and build any application 
-				at any scale, own your data, and use your preferred coding 
-				languages and tools.
+                                Build your entire backend within minutes and scale effortlessly 
+				using Appwrite's open-source platform. Add Authentication, 
+				Databases, Functions, Storage, and Messaging to your projects
+                                using the frameworks and languages of your choice.
                             </p>
                             <a
                                 href="https://cloud.appwrite.io"
@@ -350,7 +350,6 @@
                                 />
                                 <h3 class="web-info-boxes-title">
                                     <span>HIPAA</span>
-                                    <span class="web-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="web-info-boxes-content">
                                     Protect sensitive user health data.

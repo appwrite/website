@@ -84,7 +84,7 @@ export { account, appwriteClient, storage };
 
 Replace the code in `src/App.tsx` with the following.
 
-```js
+```client-web
 import { Authenticated, Refine } from '@refinedev/core';
 import { dataProvider, liveProvider } from '@refinedev/appwrite';
 import {
