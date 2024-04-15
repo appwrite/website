@@ -7,7 +7,7 @@ description: Organize your users and grant custom permissions for subscriptions 
 Labels are a good way to categorize a user to grant them access to resources. For example, a `subscriber` label can be added to a user once they've purchased a subscription.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
