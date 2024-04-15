@@ -15,14 +15,18 @@
     const links: Record<string, { label: string; href: string; target?: string; rel?: string }[]> =
         {
             'Quick starts': [
-                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
+                { label: 'Web', href: '/docs/quick-starts/web' },
                 { label: 'Next.js', href: '/docs/quick-starts/nextjs' },
+                { label: 'React', href: '/docs/quick-starts/react' },
                 { label: 'Vue.js', href: '/docs/quick-starts/vue' },
+                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
                 { label: 'SvelteKit', href: '/docs/quick-starts/sveltekit' },
+                { label: 'Refine', href: '/docs/quick-starts/refine' },
+                { label: 'Angular', href: '/docs/quick-starts/angular' },
+                { label: 'React Native', href: '/docs/quick-starts/react-native' },
+                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
                 { label: 'Apple', href: '/docs/quick-starts/apple' },
                 { label: 'Android', href: '/docs/quick-starts/android' },
-                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
-                { label: 'Angular', href: '/docs/quick-starts/angular' },
                 { label: 'Qwik', href: '/docs/quick-starts/qwik' },
                 { label: 'Astro', href: '/docs/quick-starts/astro' }
             ],
@@ -30,6 +34,7 @@
                 { label: 'Auth', href: '/docs/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
+                { label: 'Messaging', href: '/docs/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
             ],

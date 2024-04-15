@@ -29,8 +29,8 @@
 					href: '/docs/advanced/security/soc2'
 				},
 				{
-					label: 'HIPPA (Coming soon)',
-					href: '/docs/advanced/security/hippa'
+					label: 'HIPAA',
+					href: '/docs/advanced/security/hipaa'
 				},
 				{
 					label: 'PCI',

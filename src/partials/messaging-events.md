@@ -1,18 +1,74 @@
-## Messaging events {% #messaging-events %}
-
-| Name                            | Payload                                                   | Description                                                  |
-| ------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------ |
-| `providers.*`                   | [Provider Object](/docs/references/1.5.x/models/provider) | This event triggers on any providers event.                  |
-| `providers.*.create`            | [Provider Object](/docs/references/1.5.x/models/provider) | This event triggers when a provider is created.              |
-| `providers.*.delete`            | [Provider Object](/docs/references/1.5.x/models/provider) | This event triggers when a provider is deleted.              |
-| `providers.*.update`            | [Provider Object](/docs/references/1.5.x/models/provider) | This event triggers when a provider is updated.              |
-| `topics.*`                      | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers on any topic event.                      |
-| `topics.*.create`               | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers when a topic is created.                 |
-| `topics.*.delete`               | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers when a topic is deleted.                 |
-| `topics.*.update`               | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers when a topic is updated.                 |
-| `topics.*.subscribers.*.create` | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers when a subscriber to a topic is created. |
-| `topics.*.subscribers.*.delete` | [Topic Object](/docs/references/1.5.x/models/topic)       | This event triggers when a subscriber to a topic is deleted. |
-| `messages.*`                    | [Message Object](/docs/references/1.5.x/models/message)   | This event triggers on any message event.                    |
-| `messages.*.create`             | [Message Object](/docs/references/1.5.x/models/message)   | This event triggers when a message is created.               |
-| `messages.*.delete`             | [Message Object](/docs/references/1.5.x/models/message)   | This event triggers when a message is deleted.               |
-| `messages.*.update`             | [Message Object](/docs/references/1.5.x/models/message)   | This event triggers when a message is updated.               |
+{% table %}
+* Name
+* Description
+---
+* `providers.*`
+* 
+    This event triggers on any providers event.
+    Returns [Provider Object](/docs/references/1.5.x/models/provider)
+---
+* `providers.*.create`
+* 
+    This event triggers when a provider is created.
+    Returns [Provider Object](/docs/references/1.5.x/models/provider)
+---
+* `providers.*.delete`
+* 
+    This event triggers when a provider is deleted.
+    Returns [Provider Object](/docs/references/1.5.x/models/provider)
+---
+* `providers.*.update`
+* 
+    This event triggers when a provider is updated.
+    Returns [Provider Object](/docs/references/1.5.x/models/provider)
+---
+* `topics.*`
+* 
+    This event triggers on any topic event.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `topics.*.create`
+* 
+    This event triggers when a topic is created.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `topics.*.delete`
+* 
+    This event triggers when a topic is deleted.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `topics.*.update`
+* 
+    This event triggers when a topic is updated.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `topics.*.subscribers.*.create`
+* 
+    This event triggers when a subscriber to a topic is created.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `topics.*.subscribers.*.delete`
+* 
+    This event triggers when a subscriber to a topic is deleted.
+    Returns [Topic Object](/docs/references/1.5.x/models/topic)
+---
+* `messages.*`
+* 
+    This event triggers on any message event.
+    Returns [Message Object](/docs/references/1.5.x/models/message)
+---
+* `messages.*.create`
+* 
+    This event triggers when a message is created.
+    Returns [Message Object](/docs/references/1.5.x/models/message)
+---
+* `messages.*.delete`
+* 
+    This event triggers when a message is deleted.
+    Returns [Message Object](/docs/references/1.5.x/models/message)
+---
+* `messages.*.update`
+* 
+    This event triggers when a message is updated.
+    Returns [Message Object](/docs/references/1.5.x/models/message)
+{% /table %}
