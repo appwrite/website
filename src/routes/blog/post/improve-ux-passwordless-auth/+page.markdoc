@@ -69,7 +69,7 @@ Magic URL authentication is a two-step process in Appwrite.
 
 First, we initialize the login process by sending an email with the magic URL. If the email has never been used, a new account is also generated.
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -99,7 +99,7 @@ Email OTP authentication is a two-step process in Appwrite.
 
 First, we initialize the login process by sending an email. If the email has never been used, a new account is also generated.
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -134,7 +134,7 @@ Phone authentication is a two-step process in Appwrite.
 
 First, we initialize the login process by sending an SMS. If the phone number has never been used, a new account is also generated.
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()

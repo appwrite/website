@@ -27,7 +27,7 @@ the 2FA is enforced.
 
 Initialize your Appwrite SDK's `Client` and `Account`.
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -39,7 +39,7 @@ client
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() {                        // Init SDK
@@ -53,7 +53,7 @@ void main() {                        // Init SDK
 }
 ```
 
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -63,7 +63,7 @@ let client = Client()
 let account = Account(client)
 ```
 
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
