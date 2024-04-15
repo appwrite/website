@@ -31,7 +31,7 @@
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -54,7 +54,7 @@
             ],
             Program: [
                 { label: 'Heroes', href: '/heroes' },
-                { label: 'Startups', href: '/startups' },
+                { label: 'Startups', href: '/startups' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -72,13 +72,8 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' },
-            ],
-            // Policies: [
-            //     { label: 'Terms', href: '/terms' },
-            //     { label: 'Privacy', href: '/privacy' },
-            //     { label: 'Cookies', href: '/cookies' }
-            // ]
+                { label: 'Assets', href: '/assets' }
+            ]
         };
 </script>
 

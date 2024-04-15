@@ -142,7 +142,7 @@
 <Main>
     <enhanced:img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-        src="./Hero-BG.svg"
+        src="./bg-hero.svg"
         style="display:block; margin-inline:auto; inset:0;"
         alt=""
     />
@@ -564,26 +564,25 @@
                             <enhanced:img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                                src="./Blob_Green.svg"
+                                src="./blob-green.svg"
                                 alt=""
                             />
                             <enhanced:img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                src="./Blob_Pink.svg"
+                                src="./blob-pink.svg"
                                 alt=""
                             />
-
                             <enhanced:img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                                src="./Blob_Green_mobile.svg"
+                                src="./blob-green-mobile.svg"
                                 alt=""
                             />
                             <enhanced:img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                src="./Blob_Pink_mobile.svg"
+                                src="./blob-pink-mobile.svg"
                                 alt=""
                             />
 
@@ -612,7 +611,7 @@
                                                     <enhanced:img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check_bullet.svg"
+                                                        src="./check-bullet.svg"
                                                         alt=""
                                                     />
 
@@ -626,7 +625,7 @@
                                                     <enhanced:img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check_bullet2.svg"
+                                                        src="./check-bullet-2.svg"
                                                         alt=""
                                                     />
 
