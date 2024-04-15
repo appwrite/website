@@ -1,4 +1,4 @@
-import { getApi, getSchema, type AppwriteSchemaObject, generateExample, type Property } from '$lib/utils/specs';
+import { getApi, getSchema, type AppwriteSchemaObject, generateExample, type Property, ModelType } from '$lib/utils/specs';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
@@ -95,9 +95,11 @@ export const load: PageServerLoad = async ({ params }) => {
     };
 
     const example = generateExample(schema, api);
+    const graphqlExample = generateExample(schema, api, ModelType.GRAPHQL);
 
     return {
         model,
-        example
+        example,
+        graphqlExample
     };
 };
