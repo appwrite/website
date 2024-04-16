@@ -1,4 +1,19 @@
 <script lang="ts">
+    import SubsectionOne from './(assets)/SubSection1.svg';
+    import SubsectionTwo from './(assets)/SubSection2.svg';
+    import SubsectionThree from './(assets)/SubSection3.png';
+    import SubsectionFour from './(assets)/SubSection4.svg';
+
+    import BackgroundHero from './(assets)/bg-hero.svg';
+    import BackgroundLeft from './(assets)/bg-left.png';
+    import BackgroundRight from './(assets)/bg-right.png';
+    import BlobGreen from './(assets)/blob-green.svg';
+    import BlobPink from './(assets)/blob-pink.svg';
+    import BlobGreenMobile from './(assets)/blob-green-mobile.svg';
+    import BlobPinkMobile from './(assets)/blob-pink-mobile.svg';
+
+    import CheckBullet from './(assets)/check-bullet.svg';
+    import CheckBullet2 from './(assets)/check-bullet-2.svg';
     import { Main } from '$lib/layouts';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
@@ -136,20 +151,20 @@
 </svelte:head>
 
 <Main>
-    <enhanced:img
+    <img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-        src="./(assets)/bg-hero.svg"
+        src={BackgroundHero}
         style="display:block; margin-inline:auto; inset:0;"
         alt=""
     />
-    <enhanced:img
+    <img
         class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
-        src="./(assets)/bg-left.png"
+        src={BackgroundLeft}
         alt=""
     />
-    <enhanced:img
+    <img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
-        src="./(assets)/bg-right.png"
+        src={BackgroundRight}
         alt=""
     />
     <div class="web-big-padding-section u-position-relative" style="overflow:hidden">
@@ -294,14 +309,14 @@
                                     class="is-only-desktop"
                                     style="margin-top: 80px; margin-left: -50px"
                                 >
-                                    <enhanced:img alt="" src="./(assets)/SubSection1.svg" />
+                                    <img alt="" src={SubsectionOne} />
                                 </div>
 
                                 <div
                                     class="is-not-desktop"
                                     style="min-width: 700px; padding-top: 48px; margin-inline-start:-32px;"
                                 >
-                                    <enhanced:img alt="" src="./(assets)/SubSection1.svg" />
+                                    <img alt="" src={SubsectionOne} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -310,7 +325,7 @@
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
                                 >
                                     <div class="web-is-only-desktop">
-                                        <enhanced:img alt="" src="./(assets)/SubSection2.svg" />
+                                        <img alt="" src={SubsectionTwo} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -345,7 +360,7 @@
                                     </div>
                                 </div>
                                 <div class="web-is-not-desktop u-flex">
-                                    <enhanced:img alt="" src="./(assets)/SubSection2.svg" />
+                                    <img alt="" src={SubsectionTwo} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -384,19 +399,15 @@
                                     </div>
 
                                     <div class="web-is-not-desktop u-position-relative">
-                                        <enhanced:img
-                                            src="./(assets)/SubSection3.png"
-                                            alt=""
-                                            style="height:auto;"
-                                        />
+                                        <img src={SubsectionThree} alt="" style="height:auto;" />
                                     </div>
 
                                     <div
                                         class="web-is-only-desktop u-position-relative u-overflow-hidden"
                                     >
                                         <div>
-                                            <enhanced:img
-                                                src="./(assets)/SubSection3.png"
+                                            <img
+                                                src={SubsectionThree}
                                                 alt=""
                                                 style="width:500px; height:auto;"
                                             />
@@ -413,7 +424,7 @@
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
                                         style="margin-top:-20px;"
                                     >
-                                        <enhanced:img alt="" src="./(assets)/SubSection4.svg" />
+                                        <img alt="" src={SubsectionFour} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -557,28 +568,28 @@
                 <div class="" style="position: relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container u-position-relative">
-                            <enhanced:img
+                            <img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                                src="./(assets)/blob-green.svg"
+                                src={BlobGreen}
                                 alt=""
                             />
-                            <enhanced:img
+                            <img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                src="./(assets)/blob-pink.svg"
+                                src={BlobPink}
                                 alt=""
                             />
-                            <enhanced:img
+                            <img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                                src="./(assets)/blob-green-mobile.svg"
+                                src={BlobGreenMobile}
                                 alt=""
                             />
-                            <enhanced:img
+                            <img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                src="./(assets)/blob-pink-mobile.svg"
+                                src={BlobPinkMobile}
                                 alt=""
                             />
 
@@ -604,10 +615,10 @@
                                                 <div
                                                     style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
                                                 >
-                                                    <enhanced:img
+                                                    <img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./(assets)/check-bullet.svg"
+                                                        src={CheckBullet}
                                                         alt=""
                                                     />
 
@@ -618,10 +629,10 @@
                                                 <div
                                                     style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
                                                 >
-                                                    <enhanced:img
+                                                    <img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./(assets)/check-bullet-2.svg"
+                                                        src={CheckBullet2}
                                                         alt=""
                                                     />
 
