@@ -357,7 +357,7 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16 web-u-max-width-480">
+                                    <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Built-in security and compliance
                                         </h3>
@@ -391,7 +391,7 @@
                                         <enhanced:img
                                             src="./SubSection3_illu_v4.png"
                                             alt=""
-                                            style="width:500px; height:auto;"
+                                            style="height:auto;"
                                         />
                                     </div>
 
