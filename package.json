@@ -20,6 +20,7 @@
         "test:integration": "playwright test",
         "test:unit": "vitest"
     },
+    "packageManager": "pnpm@8.15.6",
     "dependencies": {
         "compression": "^1.7.4",
         "express": "^4.18.2"
