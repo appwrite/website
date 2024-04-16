@@ -217,6 +217,10 @@
                     </p>
                     <a href="/" class="web-button is-secondary u-margin-inline-auto u-margin-block-start-16">Learn more</a>
                 </div>
+                <div class="web-container u-flex u-margin-block-start-64 is-only-desktop">
+                    <img src="/images/pages/storage/bucket-modal.png" width="708" alt="" />
+                    <img src="/images/pages/storage/permission-modal.png" width="708" alt="" class="u-margin-block-start-56 u-margin-inline-start-negative-64" />
+                </div>
             </div>
         </div>
 
