@@ -360,7 +360,7 @@
                                     </div>
                                 </div>
                                 <div class="web-is-not-desktop u-flex">
-                                    <img alt="" src={SubsectionTwo} />
+                                    <img class="u-block u-max-width-450 u-margin-inline-auto" alt="" src={SubsectionTwo} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -399,7 +399,7 @@
                                     </div>
 
                                     <div class="web-is-not-desktop u-position-relative">
-                                        <img src={SubsectionThree} alt="" style="height:auto;" />
+                                        <img class="u-block u-max-width-450 u-margin-inline-auto" src={SubsectionThree} alt="" style="height:auto;" />
                                     </div>
 
                                     <div
