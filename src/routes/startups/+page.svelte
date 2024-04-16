@@ -5,9 +5,9 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
-    import SubSectionOne from './SubSection1_illu.svelte';
-    import SubSectionTwo from './SubSection2_illu.svelte';
-    import SubSectionFour from './SubSection4_illu_v2b.svelte';
+    import SubSectionOne from './SubSection1.svelte';
+    import SubSectionTwo from './SubSection2.svelte';
+    import SubSectionFour from './SubSection4.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -305,7 +305,7 @@
                                     class="is-not-desktop"
                                     style="min-width: 700px; padding-top: 48px; margin-inline-start:-32px;"
                                 >
-                                    <enhanced:img alt="" src="./SubSection1_illu.svg" />
+                                    <enhanced:img alt="" src="./SubSection1.svg" />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -389,7 +389,7 @@
 
                                     <div class="web-is-not-desktop u-position-relative">
                                         <enhanced:img
-                                            src="./SubSection3_illu_v4.png"
+                                            src="./SubSection3.png"
                                             alt=""
                                             style="height:auto;"
                                         />
@@ -400,7 +400,7 @@
                                     >
                                         <div>
                                             <enhanced:img
-                                                src="./SubSection3_illu_v4.png"
+                                                src="./SubSection3.png"
                                                 alt=""
                                                 style="width:500px; height:auto;"
                                             />
