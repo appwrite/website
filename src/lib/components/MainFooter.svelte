@@ -8,7 +8,7 @@
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer u-position-relative u-margin-block-start-48">
+    <footer class="web-main-footer u-position-relative">
         <ul class="u-flex u-gap-8">
             {#each socials as social}
                 <li>
