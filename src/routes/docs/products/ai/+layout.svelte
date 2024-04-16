@@ -99,6 +99,10 @@
                 {
                     label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
+                },
+                {
+                  label: 'LMNT',
+                  href: '/docs/products/ai/integrations/lmnt'
                 }
             ]
         }
