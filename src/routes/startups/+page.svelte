@@ -5,10 +5,6 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
-    import SubSectionOne from './SubSection1.svelte';
-    import SubSectionTwo from './SubSection2.svelte';
-    import SubSectionFour from './SubSection4.svelte';
-
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -142,18 +138,18 @@
 <Main>
     <enhanced:img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-        src="./bg-hero.svg"
+        src="./(assets)/bg-hero.svg"
         style="display:block; margin-inline:auto; inset:0;"
         alt=""
     />
     <enhanced:img
         class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
-        src="./bg-left.png"
+        src="./(assets)/bg-left.png"
         alt=""
     />
     <enhanced:img
         class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
-        src="./bg-right.png"
+        src="./(assets)/bg-right.png"
         alt=""
     />
     <div class="web-big-padding-section u-position-relative" style="overflow:hidden">
@@ -298,14 +294,14 @@
                                     class="is-only-desktop"
                                     style="margin-top: 80px; margin-left: -50px"
                                 >
-                                    <svelte:component this={SubSectionOne} />
+                                    <enhanced:img alt="" src="./(assets)/SubSection1.svg" />
                                 </div>
 
                                 <div
                                     class="is-not-desktop"
                                     style="min-width: 700px; padding-top: 48px; margin-inline-start:-32px;"
                                 >
-                                    <enhanced:img alt="" src="./SubSection1.svg" />
+                                    <enhanced:img alt="" src="./(assets)/SubSection1.svg" />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -314,7 +310,7 @@
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
                                 >
                                     <div class="web-is-only-desktop">
-                                        <svelte:component this={SubSectionTwo} />
+                                        <enhanced:img alt="" src="./(assets)/SubSection2.svg" />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -349,7 +345,7 @@
                                     </div>
                                 </div>
                                 <div class="web-is-not-desktop u-flex">
-                                    <svelte:component this={SubSectionTwo} />
+                                    <enhanced:img alt="" src="./(assets)/SubSection2.svg" />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -389,7 +385,7 @@
 
                                     <div class="web-is-not-desktop u-position-relative">
                                         <enhanced:img
-                                            src="./SubSection3.png"
+                                            src="./(assets)/SubSection3.png"
                                             alt=""
                                             style="height:auto;"
                                         />
@@ -400,7 +396,7 @@
                                     >
                                         <div>
                                             <enhanced:img
-                                                src="./SubSection3.png"
+                                                src="./(assets)/SubSection3.png"
                                                 alt=""
                                                 style="width:500px; height:auto;"
                                             />
@@ -417,7 +413,7 @@
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
                                         style="margin-top:-20px;"
                                     >
-                                        <svelte:component this={SubSectionFour} />
+                                        <enhanced:img alt="" src="./(assets)/SubSection4.svg" />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -564,25 +560,25 @@
                             <enhanced:img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                                src="./blob-green.svg"
+                                src="./(assets)/blob-green.svg"
                                 alt=""
                             />
                             <enhanced:img
                                 class="u-position-absolute is-only-desktop"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                src="./blob-pink.svg"
+                                src="./(assets)/blob-pink.svg"
                                 alt=""
                             />
                             <enhanced:img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                                src="./blob-green-mobile.svg"
+                                src="./(assets)/blob-green-mobile.svg"
                                 alt=""
                             />
                             <enhanced:img
                                 class="u-position-absolute is-only-mobile"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                src="./blob-pink-mobile.svg"
+                                src="./(assets)/blob-pink-mobile.svg"
                                 alt=""
                             />
 
@@ -611,7 +607,7 @@
                                                     <enhanced:img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check-bullet.svg"
+                                                        src="./(assets)/check-bullet.svg"
                                                         alt=""
                                                     />
 
@@ -625,7 +621,7 @@
                                                     <enhanced:img
                                                         class=""
                                                         style="width: 20px; height: 20px; margin: 2px 12px 0 0"
-                                                        src="./check-bullet-2.svg"
+                                                        src="./(assets)/check-bullet-2.svg"
                                                         alt=""
                                                     />
 
