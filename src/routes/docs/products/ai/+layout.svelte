@@ -99,6 +99,10 @@
                 {
                     label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
+                },
+                {
+                  label: 'Together AI',
+                  href: '/docs/products/ai/integrations/togetherai'
                 }
             ]
         }
