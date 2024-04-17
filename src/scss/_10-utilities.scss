@@ -123,6 +123,7 @@
 .#{$p}-u-margin-block-end-32        { margin-block-end:pxToRem(32); }
 
 .#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }
+.#{$p}-u-margin-inline-end-12       { margin-inline-end:pxToRem(12); }
 
 .#{$p}-u-text-color-primary-500     { color:hsl(var(--web-color-pink-500));   }
 .#{$p}-u-text-color-secondary-100   { color:hsl(var(--web-color-secondary-100)); }

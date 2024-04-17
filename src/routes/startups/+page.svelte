@@ -152,9 +152,8 @@
 
 <Main>
     <img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+        class="u-block u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 u-margin-inline-auto u-inset-0"
         src={BackgroundHero}
-        style="display:block; margin-inline:auto; inset:0;"
         alt=""
     />
     <img
@@ -167,7 +166,7 @@
         src={BackgroundRight}
         alt=""
     />
-    <div class="web-big-padding-section u-position-relative" style="overflow:hidden">
+    <div class="web-big-padding-section u-position-relative u-overflow-hidden">
         <div class="web-big-padding-section-level-1 u-position-relative">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
                 <section class="web-container web-u-padding-block-end-0">
@@ -307,14 +306,14 @@
 
                                 <div
                                     class="is-only-desktop"
-                                    style="margin-top: 80px; margin-left: -50px"
+                                    style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
                                     <img alt="" src={SubsectionOne} />
                                 </div>
 
                                 <div
                                     class="is-not-desktop"
-                                    style="min-width: 700px; padding-top: 48px; margin-inline-start:-32px;"
+                                    style="min-inline-size: 700px; padding-block-start: 48px; margin-inline-start:-32px;"
                                 >
                                     <img alt="" src={SubsectionOne} />
                                 </div>
@@ -422,7 +421,7 @@
                                 >
                                     <div
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
-                                        style="margin-top:-20px;"
+                                        style="margin-block-start:-20px;"
                                     >
                                         <img alt="" src={SubsectionFour} />
                                     </div>
@@ -500,72 +499,72 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2" style="display:none">
-                <div class="web-container" style="display:none">
-                    <h2
-                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
-                    >
-                        Startups building with Appwrite
-                    </h2>
-                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/apple.svg"
-                                alt="Apple"
-                                width="42"
-                                height="48"
-                            />
-                        </li>
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/oracle.svg"
-                                alt="ORACLE"
-                                width="136"
-                                height="17"
-                            />
-                        </li>
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/tiktok.svg"
-                                alt="TikTok"
-                                width="133"
-                                height="32"
-                            />
-                        </li>
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/intel.svg"
-                                alt="intel"
-                                width="76"
-                                height="30"
-                            />
-                        </li>
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/ibm.svg"
-                                alt="IBM"
-                                width="74"
-                                height="30"
-                            />
-                        </li>
-                        <li>
-                            <img
-                                src="/images/logos/trusted-by/american-airlines.svg"
-                                alt="American Airlines"
-                                width="147"
-                                height="24"
-                            />
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<!--            <div class="web-big-padding-section-level-2" style="display:none">-->
+<!--                <div class="web-container" style="display:none">-->
+<!--                    <h2-->
+<!--                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"-->
+<!--                    >-->
+<!--                        Startups building with Appwrite-->
+<!--                    </h2>-->
+<!--                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/apple.svg"-->
+<!--                                alt="Apple"-->
+<!--                                width="42"-->
+<!--                                height="48"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/oracle.svg"-->
+<!--                                alt="ORACLE"-->
+<!--                                width="136"-->
+<!--                                height="17"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/tiktok.svg"-->
+<!--                                alt="TikTok"-->
+<!--                                width="133"-->
+<!--                                height="32"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/intel.svg"-->
+<!--                                alt="intel"-->
+<!--                                width="76"-->
+<!--                                height="30"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/ibm.svg"-->
+<!--                                alt="IBM"-->
+<!--                                width="74"-->
+<!--                                height="30"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <img-->
+<!--                                src="/images/logos/trusted-by/american-airlines.svg"-->
+<!--                                alt="American Airlines"-->
+<!--                                width="147"-->
+<!--                                height="24"-->
+<!--                            />-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
             <div
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
-                <div class="" style="position: relative">
+                <div class="u-position-relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="web-container u-position-relative">
                             <img
@@ -612,31 +611,30 @@
                                             </p>
 
                                             <div class="u-flex-vertical u-gap-12">
-                                                <div
-                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
-                                                >
+                                                <div class="u-flex u-cross-start">
                                                     <img
-                                                        class=""
-                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        class="u-margin-block-start-2 web-u-margin-inline-end-12 u-flex-shrink-0"
+                                                        width="20"
+                                                        height="20"
                                                         src={CheckBullet}
                                                         alt=""
                                                     />
 
-                                                    <p class="web-description" style="flex: 1;">
+                                                    <p class="web-description">
                                                         Appwrite Cloud Pro for 12 months
                                                     </p>
                                                 </div>
-                                                <div
-                                                    style="display:flex; flex-direction: row; align-items: flex-start; justify-content: center"
+                                                <div class="u-flex u-cross-start"
                                                 >
                                                     <img
-                                                        class=""
-                                                        style="width: 20px; height: 20px; margin: 2px 12px 0 0"
+                                                        class="u-margin-block-start-2 web-u-margin-inline-end-12 u-flex-shrink-0"
+                                                        width="20"
+                                                        height="20"
                                                         src={CheckBullet2}
                                                         alt=""
                                                     />
 
-                                                    <p class="web-description" style="flex: 1;">
+                                                    <p class="web-description">
                                                         Premium email support as part of Pro
                                                     </p>
                                                 </div>
