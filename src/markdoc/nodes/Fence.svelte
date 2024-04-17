@@ -16,7 +16,12 @@
     export let badge: string | null = null;
 
     const insideMultiCode = hasContext('multi-code');
+    const hasHighlightedLines = hasContext('highlighted-lines');
+
+
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
+    const highlightedLines = hasHighlightedLines ? getContext<Array<number>>('highlighted-lines') : [];
+    console.log(highlightedLines);
 
     enum CopyStatus {
         Copy = 'Copy',
@@ -49,7 +54,7 @@
     }
 
     $: result = process
-        ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers })
+        ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers, highlightedLines: highlightedLines})
         : content;
 
     $: badgeValue = badge ?? platformMap[language];
@@ -98,3 +103,9 @@
         </div>
     </section>
 {/if}
+
+<style>
+    span.line.highlighted {
+        background-color: #f0f0f0;
+    }
+</style>

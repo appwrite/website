@@ -18,4 +18,5 @@
     export { default as Accordion } from './Accordion.svelte';
     export { default as Accordion_Item } from './Accordion_Item.svelte';
     export { default as Youtube } from './Youtube.svelte';
+    export { default as HighlightLines } from './HighlightLines.svelte';
 </script>

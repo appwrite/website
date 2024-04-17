@@ -105,6 +105,7 @@ type Args = {
     content: string;
     language?: Language;
     withLineNumbers?: boolean;
+    highlightedLines: Array<number>;
 };
 
 export const getCodeHtml = (args: Args) => {
@@ -116,8 +117,10 @@ export const getCodeHtml = (args: Args) => {
         lines.pop();
     }
 
-    const final = lines.reduce((carry, line) => {
-        carry += `<span class="line">${line}</span>\n`;
+    const final = lines.reduce((carry, line, lineNum) => {
+        console.log(args.highlightedLines);
+        console.log(lineNum);
+        carry += `<span class="line ${args.highlightedLines.includes(lineNum + 1) ? 'highlighted' : ''}">${line}</span>\n`;
         return carry;
     }, '');
 
