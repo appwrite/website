@@ -1,8 +1,8 @@
 <script lang="ts">
-    import SubsectionOne from './(assets)/SubSection1.svg';
-    import SubsectionTwo from './(assets)/SubSection2.svg';
-    import SubsectionThree from './(assets)/SubSection3.png';
-    import SubsectionFour from './(assets)/SubSection4.svg';
+    import ProjectTimeline from './(assets)/project-timeline.svg';
+    import UsageGraphs from './(assets)/usage-graphs.svg';
+    import SecurityOptions from './(assets)/security-options.png';
+    import SupportConversation from './(assets)/support-conversation.svg';
 
     import BackgroundHero from './(assets)/bg-hero.svg';
     import BackgroundLeft from './(assets)/bg-left.png';
@@ -308,14 +308,14 @@
                                     class="is-only-desktop"
                                     style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
-                                    <img alt="" src={SubsectionOne} />
+                                    <img alt="" src={ProjectTimeline} />
                                 </div>
 
                                 <div
                                     class="is-not-desktop"
                                     style="min-inline-size: 700px; padding-block-start: 48px; margin-inline-start:-32px;"
                                 >
-                                    <img alt="" src={SubsectionOne} />
+                                    <img alt="" src={ProjectTimeline} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -324,7 +324,7 @@
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
                                 >
                                     <div class="web-is-only-desktop">
-                                        <img alt="" src={SubsectionTwo} />
+                                        <img alt="" src={UsageGraphs} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -359,7 +359,11 @@
                                     </div>
                                 </div>
                                 <div class="web-is-not-desktop u-flex">
-                                    <img class="u-block u-max-width-450 u-margin-inline-auto" alt="" src={SubsectionTwo} />
+                                    <img
+                                        class="u-block u-max-width-450 u-margin-inline-auto"
+                                        alt=""
+                                        src={UsageGraphs}
+                                    />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -398,7 +402,12 @@
                                     </div>
 
                                     <div class="web-is-not-desktop u-position-relative">
-                                        <img class="u-block u-max-width-450 u-margin-inline-auto" src={SubsectionThree} alt="" style="height:auto;" />
+                                        <img
+                                            class="u-block u-max-width-450 u-margin-inline-auto"
+                                            src={SecurityOptions}
+                                            alt=""
+                                            style="height:auto;"
+                                        />
                                     </div>
 
                                     <div
@@ -406,7 +415,7 @@
                                     >
                                         <div>
                                             <img
-                                                src={SubsectionThree}
+                                                src={SecurityOptions}
                                                 alt=""
                                                 style="width:500px; height:auto;"
                                             />
@@ -423,7 +432,7 @@
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
                                         style="margin-block-start:-20px;"
                                     >
-                                        <img alt="" src={SubsectionFour} />
+                                        <img alt="" src={SupportConversation} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -499,65 +508,65 @@
                 </div>
             </div>
 
-<!--            <div class="web-big-padding-section-level-2" style="display:none">-->
-<!--                <div class="web-container" style="display:none">-->
-<!--                    <h2-->
-<!--                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"-->
-<!--                    >-->
-<!--                        Startups building with Appwrite-->
-<!--                    </h2>-->
-<!--                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/apple.svg"-->
-<!--                                alt="Apple"-->
-<!--                                width="42"-->
-<!--                                height="48"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/oracle.svg"-->
-<!--                                alt="ORACLE"-->
-<!--                                width="136"-->
-<!--                                height="17"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/tiktok.svg"-->
-<!--                                alt="TikTok"-->
-<!--                                width="133"-->
-<!--                                height="32"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/intel.svg"-->
-<!--                                alt="intel"-->
-<!--                                width="76"-->
-<!--                                height="30"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/ibm.svg"-->
-<!--                                alt="IBM"-->
-<!--                                width="74"-->
-<!--                                height="30"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img-->
-<!--                                src="/images/logos/trusted-by/american-airlines.svg"-->
-<!--                                alt="American Airlines"-->
-<!--                                width="147"-->
-<!--                                height="24"-->
-<!--                            />-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="web-big-padding-section-level-2" style="display:none">-->
+            <!--                <div class="web-container" style="display:none">-->
+            <!--                    <h2-->
+            <!--                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"-->
+            <!--                    >-->
+            <!--                        Startups building with Appwrite-->
+            <!--                    </h2>-->
+            <!--                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/apple.svg"-->
+            <!--                                alt="Apple"-->
+            <!--                                width="42"-->
+            <!--                                height="48"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/oracle.svg"-->
+            <!--                                alt="ORACLE"-->
+            <!--                                width="136"-->
+            <!--                                height="17"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/tiktok.svg"-->
+            <!--                                alt="TikTok"-->
+            <!--                                width="133"-->
+            <!--                                height="32"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/intel.svg"-->
+            <!--                                alt="intel"-->
+            <!--                                width="76"-->
+            <!--                                height="30"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/ibm.svg"-->
+            <!--                                alt="IBM"-->
+            <!--                                width="74"-->
+            <!--                                height="30"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <img-->
+            <!--                                src="/images/logos/trusted-by/american-airlines.svg"-->
+            <!--                                alt="American Airlines"-->
+            <!--                                width="147"-->
+            <!--                                height="24"-->
+            <!--                            />-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
 
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
@@ -624,8 +633,7 @@
                                                         Appwrite Cloud Pro for 12 months
                                                     </p>
                                                 </div>
-                                                <div class="u-flex u-cross-start"
-                                                >
+                                                <div class="u-flex u-cross-start">
                                                     <img
                                                         class="u-margin-block-start-2 web-u-margin-inline-end-12 u-flex-shrink-0"
                                                         width="20"
