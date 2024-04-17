@@ -67,7 +67,7 @@ final account = Account(client);
 await account.createOAuth2Session(
     provider: 'OAuthProvider.github',
     scopes: ['repo', 'user']
-    );
+);
 ```
 {% /tabsitem %}
 
