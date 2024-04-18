@@ -73,7 +73,7 @@
 
     let setCookie = (name, value) => {
         document.cookie =
-            name + '=' + (value || '') + '; path=/; Secure; Domain=.gitpod.io; SameSite=Lax';
+            name + '=' + (value || '') + '; path=/; Secure; Domain=.appwrite.io; SameSite=Lax';
     };
 
     onMount(() => {
