@@ -335,7 +335,6 @@
                                 />
                                 <h3 class="web-info-boxes-title">
                                     <span>SOC-2</span>
-                                    <span class="web-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="web-info-boxes-content">
                                     Ensure the highest level of security and privacy protection.
