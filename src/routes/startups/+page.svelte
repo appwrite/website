@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ProjectTimeline from './(assets)/project-timeline.svg';
+    import ProjectTimeline from './(assets)/project-timeline.avif';
     import UsageGraphs from './(assets)/usage-graphs.svg';
     import SecurityOptions from './(assets)/security-options.png';
     import SupportConversation from './(assets)/support-conversation.avif';
