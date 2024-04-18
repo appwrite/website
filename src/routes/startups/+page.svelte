@@ -2,7 +2,7 @@
     import ProjectTimeline from './(assets)/project-timeline.svg';
     import UsageGraphs from './(assets)/usage-graphs.svg';
     import SecurityOptions from './(assets)/security-options.png';
-    import SupportConversation from './(assets)/support-conversation.png';
+    import SupportConversation from './(assets)/support-conversation.avif';
 
     import BackgroundHero from './(assets)/bg-hero.svg';
     import BackgroundLeft from './(assets)/bg-left.png';
