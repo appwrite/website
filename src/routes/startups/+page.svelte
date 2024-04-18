@@ -620,28 +620,14 @@
                                             </p>
 
                                             <div class="u-flex-vertical u-gap-12">
-                                                <div class="u-flex u-cross-start">
-                                                    <img
-                                                        class="u-margin-block-start-2 web-u-margin-inline-end-12 u-flex-shrink-0"
-                                                        width="20"
-                                                        height="20"
-                                                        src={CheckBullet}
-                                                        alt=""
-                                                    />
-
+                                                <div class="u-flex u-gap-16">
+                                                    <div class="web-check-bullet u-margin-block-start-4"></div>
                                                     <p class="web-description">
                                                         Appwrite Cloud Pro for 12 months
                                                     </p>
                                                 </div>
-                                                <div class="u-flex u-cross-start">
-                                                    <img
-                                                        class="u-margin-block-start-2 web-u-margin-inline-end-12 u-flex-shrink-0"
-                                                        width="20"
-                                                        height="20"
-                                                        src={CheckBullet2}
-                                                        alt=""
-                                                    />
-
+                                                <div class="u-flex u-gap-16">
+                                                    <div class="web-check-bullet u-margin-block-start-4"></div>
                                                     <p class="web-description">
                                                         Premium email support as part of Pro
                                                     </p>
