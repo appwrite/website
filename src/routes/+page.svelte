@@ -82,7 +82,7 @@
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400">Introducing Appwrite's React Native SDK</span>
+                        <span class="web-caption-400 web-u-trim-1">Introducing Appwrite's React Native SDK</span>
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="web-hero is-horizontal">
