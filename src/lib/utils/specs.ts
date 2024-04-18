@@ -60,8 +60,8 @@ export interface Property {
 } 
 
 export enum ModelType {
-    REST = 'rest',
-    GRAPHQL = 'graphql'
+    REST = 'REST',
+    GRAPHQL = 'GraphQL'
 }
 
 function getExamples(version: string) {
@@ -362,7 +362,19 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
 
     const example = properties.reduce((carry, currentValue) => {
         const property = currentValue as AppwriteSchemaObject & Property;
-        const propertyName = modelType === ModelType.REST ? property.name : property.name.replace('$', '_');
+        let propertyName;
+        switch (modelType) {
+            case ModelType.REST:
+            propertyName = property.name;
+            break;
+            case ModelType.GRAPHQL:
+            propertyName = property.name.replace('$', '_');
+            break;
+            default:
+            propertyName = property.name;
+            break;
+        }
+
         if (property.type === 'array') {
             // If it's an array type containing primatives
             if (property.items?.type){
