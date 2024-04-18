@@ -1,7 +1,7 @@
 <script lang="ts">
     import ProjectTimeline from './(assets)/project-timeline.avif';
     import UsageGraphs from './(assets)/usage-graphs.avif';
-    import SecurityOptions from './(assets)/security-options.png';
+    import SecurityOptions from './(assets)/security-options.avif';
     import SupportConversation from './(assets)/support-conversation.avif';
 
     import BackgroundHero from './(assets)/bg-hero.svg';
