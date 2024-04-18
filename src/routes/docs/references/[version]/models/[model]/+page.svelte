@@ -52,22 +52,16 @@
         </Table>
         <Heading id="example" level={2}>Example</Heading>
         <Tabs>
-            <TabsItem id="rest" title="REST">
+            {#each data.examples as example}
+            <TabsItem id={example.type.toLowerCase()} title={example.type}>
                 <Fence
-                    content={JSON.stringify(data.example, null, 4)}
-                    language="json"
-                    process
-                    withLineNumbers
+                content={JSON.stringify(example.example, null, 4)}
+                language="json"
+                process
+                withLineNumbers
                 />
             </TabsItem>
-            <TabsItem id="graphql" title="GraphQL">
-                <Fence
-                    content={JSON.stringify(data.graphqlExample, null, 4)}
-                    language="json"
-                    process
-                    withLineNumbers
-                />
-            </TabsItem>
+            {/each}
         </Tabs>
     </article>
 </Article>
