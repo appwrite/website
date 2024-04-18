@@ -29,7 +29,7 @@ This is the parent directory where you will find the appwrite directory, inside 
 # Installing the next version {% #install-next-version %}
 
 {% info title="Parent directory naming" %}
-If you have a different parent directory name (such as `docker` rather than `appwrite`), use the `--no-start=true` flag at the end of the `docker run` command, and then start the Docker Compose stack manually to avoid conflicts.
+Your Appwrite installation's parent directory name is expected to be `appwrite`. Changing the directory name will result in a miss-matched docker project names.
 {% /info %}
 
 ## Unix
