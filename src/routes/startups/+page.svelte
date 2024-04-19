@@ -623,7 +623,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        placeholder="Full name"
+                                                        placeholder="Enter full name"
                                                         aria-label="Full name"
                                                         bind:value={personName}
                                                     />
@@ -634,7 +634,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="email"
-                                                        placeholder="Email address"
+                                                        placeholder="Enter email address"
                                                         aria-label="Email address"
                                                         bind:value={personEmail}
                                                     />
@@ -648,7 +648,7 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company"
-                                                        placeholder="Company name"
+                                                        placeholder="Enter company name"
                                                         aria-label="Company name"
                                                         bind:value={companyName}
                                                     />
@@ -662,44 +662,24 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company-website"
-                                                        placeholder="Company website"
+                                                        placeholder="Enter company website"
                                                         aria-label="Company website"
                                                         bind:value={companyUrl}
                                                     />
                                                 </li>
                                             </ul>
                                         </div>
-                                        {#if error}
-                                            <div
-                                                class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
-                                            >
-                                                <p class="web-caption-400 web-u-max-width-380">
-                                                    {error}
-                                                </p>
-                                            </div>
-                                        {/if}
                                         <div
                                             class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                         >
                                             <p class="web-caption-400 web-u-max-width-380">
-                                                This form is protected by reCAPTCHA, and the Google <a
-                                                    class="web-link"
-                                                    href="/privacy"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer">Privacy Policy</a
-                                                >
-                                                and
-                                                <a
-                                                    class="web-link"
-                                                    href="/terms"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer">Terms of Service</a
-                                                > apply.
+                                                {#if error}
+                                                    {error}
+                                                {/if}
                                             </p>
                                             <button
                                                 type="submit"
                                                 class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
-                                                disabled={submitting}
                                             >
                                                 <span>Apply</span>
                                             </button>
