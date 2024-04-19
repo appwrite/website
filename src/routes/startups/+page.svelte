@@ -31,7 +31,6 @@
 
     let personName: string;
     let personEmail: string;
-    let subject: string;
     let companyName: string;
     let companyUrl: string;
 
@@ -51,7 +50,6 @@
             body: JSON.stringify({
                 personName,
                 personEmail,
-                subject,
                 companyName,
                 companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
             })
@@ -639,19 +637,6 @@
                                                         placeholder="Email address"
                                                         aria-label="Email address"
                                                         bind:value={personEmail}
-                                                    />
-                                                </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
-                                                    <div class="u-block">Subject</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        placeholder="Ex: Appwrite Startups Program"
-                                                        aria-label="Subject"
-                                                        bind:value={subject}
                                                     />
                                                 </li>
                                                 <li
