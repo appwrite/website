@@ -1,4 +1,4 @@
-import { getApi, getSchema, type AppwriteSchemaObject, generateExample, type Property } from '$lib/utils/specs';
+import { getApi, getSchema, type AppwriteSchemaObject, generateExample, type Property, ModelType } from '$lib/utils/specs';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
@@ -12,6 +12,11 @@ type Model = {
         relatedModels?: string;
     }>;
 };
+
+type Example = {
+    type: ModelType;
+    example: string;
+}
 
 export const load: PageServerLoad = async ({ params }) => {
     const version = params.version === 'cloud' ? '1.4.x' : params.version;
@@ -38,8 +43,8 @@ export const load: PageServerLoad = async ({ params }) => {
                             item => (
                                 (item as OpenAPIV3.ReferenceObject).$ref as string
                             )
-                            .split('/')
-                            .pop()
+                                .split('/')
+                                .pop()
                         );
                     }
 
@@ -51,7 +56,7 @@ export const load: PageServerLoad = async ({ params }) => {
                             const schema = getSchema(item as string, api);
                             const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
                             return modelLink;
-                          }).join(', ') ?? ''
+                        }).join(', ') ?? ''
                     };
                 }
                 case 'object': {
@@ -69,8 +74,8 @@ export const load: PageServerLoad = async ({ params }) => {
                             item => (
                                 item.$ref as string
                             )
-                            .split('/')
-                            .pop()
+                                .split('/')
+                                .pop()
                         );
                     }
                     return {
@@ -81,7 +86,7 @@ export const load: PageServerLoad = async ({ params }) => {
                             const schema = getSchema(item as string, api);
                             const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
                             return modelLink;
-                          }).join(', ') ?? '',
+                        }).join(', ') ?? '',
                     };
                 }
                 default:
@@ -94,10 +99,17 @@ export const load: PageServerLoad = async ({ params }) => {
         })
     };
 
-    const example = generateExample(schema, api);
+
+    const examples = [];
+    for (const type of Object.values(ModelType)) {
+        examples.push({
+            type,
+            example: generateExample(schema, api, type)
+        });
+    }
 
     return {
         model,
-        example
+        examples
     };
 };
