@@ -8,7 +8,6 @@
   }
   &-item {
     display:flex; flex-direction:column; gap:pxToRem(180); row-gap:pxToRem(64);
-    &-top {}
     &-bottom {
       @media #{$break1} { display:none; }
     }
