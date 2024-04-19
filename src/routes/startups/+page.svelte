@@ -12,8 +12,6 @@
     import BlobGreenMobile from './(assets)/blob-green-mobile.svg';
     import BlobPinkMobile from './(assets)/blob-pink-mobile.svg';
 
-    import CheckBullet from './(assets)/check-bullet.svg';
-    import CheckBullet2 from './(assets)/check-bullet-2.svg';
     import { Main } from '$lib/layouts';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
@@ -85,21 +83,21 @@
         'Marius Bolik',
         'CTO // mySHOEFITTER',
         'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
-        'marius_bolik'
+        'marius-bolik'
     );
 
     const souvikSarkar = testimonial(
         'Souvik Sarkar',
         '@Jeet_2003',
         'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications.',
-        'souvik_sarkar'
+        'souvik-sarkar'
     );
 
     const ryanOconner = testimonial(
         "Ryan O'Conner",
         'Founder // K-Collect',
         "There's no struggling with writing backend code and working with databases, as that's already taken care of.",
-        'ryan_oconner'
+        'ryan-oconner'
     );
 
     const testimonials = [
@@ -109,25 +107,25 @@
             'Gilbert Gonzalez',
             '@ggsotillo',
             'We reduced 80% time-to-market of our apps using Appwrite.',
-            'gilbert_gonzalez'
+            'gilbert-gonzalez'
         ),
         testimonial(
             'Eddie Jaoude',
             '@eddiejaoude',
             'It is great you are delivering an awesome product that is Open Source as well as having a great community!',
-            'eddie_jaoude'
+            'eddie-jaoude'
         ),
         testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
             'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
-            'diego_ferreyra'
+            'diego-ferreyra'
         ),
         testimonial(
             'Alejandro Morales',
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
-            'alejandro_morales'
+            'alejandro-morales'
         ),
         mariusBolik
     ];
@@ -480,7 +478,6 @@
                 </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner u-gap-32">
-                        <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                         {#each testimonials as t}
                             <li>
                                 <div
@@ -507,66 +504,6 @@
                     </ul>
                 </div>
             </div>
-
-            <!--            <div class="web-big-padding-section-level-2" style="display:none">-->
-            <!--                <div class="web-container" style="display:none">-->
-            <!--                    <h2-->
-            <!--                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"-->
-            <!--                    >-->
-            <!--                        Startups building with Appwrite-->
-            <!--                    </h2>-->
-            <!--                    <ul class="web-grid-3c-4c-6c is-for-logos web-u-padding-block-start-80">-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/apple.svg"-->
-            <!--                                alt="Apple"-->
-            <!--                                width="42"-->
-            <!--                                height="48"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/oracle.svg"-->
-            <!--                                alt="ORACLE"-->
-            <!--                                width="136"-->
-            <!--                                height="17"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/tiktok.svg"-->
-            <!--                                alt="TikTok"-->
-            <!--                                width="133"-->
-            <!--                                height="32"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/intel.svg"-->
-            <!--                                alt="intel"-->
-            <!--                                width="76"-->
-            <!--                                height="30"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/ibm.svg"-->
-            <!--                                alt="IBM"-->
-            <!--                                width="74"-->
-            <!--                                height="30"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <img-->
-            <!--                                src="/images/logos/trusted-by/american-airlines.svg"-->
-            <!--                                alt="American Airlines"-->
-            <!--                                width="147"-->
-            <!--                                height="24"-->
-            <!--                            />-->
-            <!--                        </li>-->
-            <!--                    </ul>-->
-            <!--                </div>-->
-            <!--            </div>-->
         </div>
 
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
@@ -621,13 +558,17 @@
 
                                             <div class="u-flex-vertical u-gap-12">
                                                 <div class="u-flex u-gap-16">
-                                                    <div class="web-check-bullet u-margin-block-start-4"></div>
+                                                    <div
+                                                        class="web-check-bullet u-margin-block-start-4"
+                                                    ></div>
                                                     <p class="web-description">
                                                         Appwrite Cloud Pro for 12 months
                                                     </p>
                                                 </div>
                                                 <div class="u-flex u-gap-16">
-                                                    <div class="web-check-bullet u-margin-block-start-4"></div>
+                                                    <div
+                                                        class="web-check-bullet u-margin-block-start-4"
+                                                    ></div>
                                                     <p class="web-description">
                                                         Premium email support as part of Pro
                                                     </p>
