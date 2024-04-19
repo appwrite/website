@@ -321,7 +321,7 @@
                                     class="web-grid-1-1"
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
                                 >
-                                    <div class="web-is-only-desktop">
+                                    <div class="web-is-not-mobile">
                                         <img alt="" src={UsageGraphs} />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
@@ -356,7 +356,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="web-is-not-desktop u-flex">
+                                <div class="web-is-only-mobile u-flex">
                                     <img
                                         class="u-block u-max-width-450 u-margin-inline-auto"
                                         alt=""
@@ -430,7 +430,11 @@
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile"
                                         style="margin-block-start:-20px;"
                                     >
-                                        <img alt="" src={SupportConversation} />
+                                        <img
+                                            alt=""
+                                            class="u-block u-max-width-500 u-margin-inline-auto"
+                                            src={SupportConversation}
+                                        />
                                     </div>
                                     <div class="u-flex-vertical u-gap-16">
                                         <h3 class="web-title web-u-color-text-primary">
@@ -803,7 +807,7 @@
         max-inline-size: 100%;
     }
 
-    @media #{$break1}, #{$break2} {
+    @media #{$break1} {
         .web-grid-1-1 {
             display: flex;
             flex-direction: column;
@@ -878,6 +882,15 @@
             display: block;
         }
     }
+
+    @media #{$break2open} {
+        .web-grid-1-1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--grid-1-1-gap, 2.5rem);
+        }
+    }
+
     /* from 1280px and bugger */
     @media #{$break3open} {
         .e-u-padding-block-start-80-desktop {
