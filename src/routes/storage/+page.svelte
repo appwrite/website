@@ -188,7 +188,11 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
-                            <div></div>
+                            <div class="web-media" style="border-radius:1.5rem">
+                                <div class="web-card is-white">
+
+                                </div>
+                            </div>
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.04;"></div>
                         <div class="u-flex-vertical u-gap-32">
