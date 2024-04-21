@@ -152,6 +152,7 @@
 .#{$p}-u-flex-basis-200             { flex-basis:pxToRem(200); }
 .#{$p}-u-flex-basis-300             { flex-basis:pxToRem(300); }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
+.#{$p}-u-flex-sep                  { flex-basis:pxToRem(1); background-color:hsl(var(--web-color-border)); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
 .#{$p}-u-gap-6          { gap:pxToRem(6); }
