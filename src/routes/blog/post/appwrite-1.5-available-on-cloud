@@ -1,0 +1,300 @@
+---
+layout: post
+title: Appwrite 1.5 is now available on Cloud
+description: This release has been anticipated by the community and we're happy we can share the release of Appwrite 1.5 to Cloud.
+date: 2024-04-22
+cover: /images/blog/cloud15.png
+timeToRead: 8
+author: eldad-fux
+category: product
+featured: true
+---
+
+After announcing many new products and features during [Init](https://appwrite.io/init) as part of the 1.5 release, we saw great excitement within the community to get started with the newly presented Appwrite 1.5. Although already available on self-hosted, the new Appwrite products and features were yet to be released to Cloud. Today, we are excited to say the wait is finally over as we announce the release of Appwrite 1.5 to the Cloud.
+
+To refresh your mind, here is an overview of all products and features released to Cloud and how you can get started.
+
+## Messaging
+
+With just a few lines of backend code, you can now set up a full-functioning messaging service for your application that covers three significant communication channels under one unified API using Cloud. You can send SMS, email, and push notifications through popular third-party providers like [Twilio](https://appwrite.io/blog/post/simplify-messaging-twilio), APNS, Firebase Cloud Messaging, Vonage, Sendgrid, and Mailgun. 
+
+### Highlights:
+
+- Unified platform for SMS, email, and push notifications.
+- Integration with leading third-party messaging services.
+- Simplified backend code for messaging services.
+- A fully functional Messaging Console for organizing messages, recipients, and providers.
+
+### Emails
+
+With Appwrite Messaging you can send custom email messages to your app's users. Appwrite supports [Mailgun](https://appwrite.io/docs/products/messaging/mailgun/) and [Sendgrid](https://appwrite.io/docs/products/messaging/sendgrid/) as SMTP providers. You must configure one of them as a provider before you can get started.
+
+Once you have finished the setup, you can send emails using a Server SDK. To send an email immediately, you can call the `createEmail` endpoint with the schedule left empty.
+
+Here is what this would look like using Swift.
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+
+let messaging = Messaging(client)
+
+let message = try await messaging.createEmail(
+  messageId: "[MESSAGE_ID]",
+  subject: "[SUBJECT]",
+  content: "[CONTENT]",
+  topics: [],                                    // optional
+  users: [],                                     // optional
+  targets: [],                                   // optional
+  cc: [],                                        // optional
+  bcc: [],                                       // optional
+  draft: false,                                  // optional
+  html: xfalse,                                  // optional
+  scheduledAt: ""                                // optional
+)
+```
+
+Learn how to get started with [email in our documentation](https://appwrite.io/docs/products/messaging/send-email-messages).
+
+### SMS
+
+To send SMS messages to you users you will need to add SMPT provider. Appwrite supports [Twilio](https://appwrite.io/docs/products/messaging/twilio/), [MSG91](https://appwrite.io/docs/products/messaging/msg91/), [Telesign](https://appwrite.io/docs/products/messaging/telesign/), [TextMagic](https://appwrite.io/docs/products/messaging/textmagic/), and [Vonage](https://appwrite.io/docs/products/messaging/vonage/).
+
+You can send SMS messages using a Server SDK. To send SMS messages immediately, you can call the `createSMS` endpoint without passing either the draft or `scheduled` parameters.
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2")  // Your secret API key
+
+let messaging = Messaging(client)
+
+let message = try await messaging.createSMS(
+    messageId: "[MESSAGE_ID]",
+    content: "[CONTENT]",
+    topics: [],                  // optional
+    users: [],                   // optional
+    targets: [],                 // optional
+    draft: false,                // optional
+    scheduledAt: ""              // optional
+)
+```
+
+Learn how to get started with [SMS in our documentation](https://appwrite.io/docs/products/messaging/send-sms-messages).
+
+### Push notifications
+
+If you’re building a mobile app, note that push notifications must be sent through third-party providers, like Apple Push Notification service and Firebase Cloud Messaging. The push notification APIs for Apple and Android devices can only be accessed through these services.
+
+You must configure these services before you can send your first push notification.
+
+To send with APNS, you must first register for remote notifications in your app delegate's application using the (_:didFinishLaunchingWithOptions:) method. 
+
+```swift
+func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+) -> Bool {
+    // Register for remote notifications
+    UNUserNotificationCenter.current().delegate = self
+
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: { granted, error in
+            DispatchQueue.main.async {
+                if granted {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
+    )
+
+    return true
+}
+```
+
+Learn how to set up push notifications for both Apple and Android in our docs.
+
+![Screenshot 2024-04-18 at 08.47.56.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf760f55-c352-4759-b494-006b8b294dbb/f8708c5e-4bd0-41c9-ac98-75a07faa3887/Screenshot_2024-04-18_at_08.47.56.png)
+
+Read the [Messaging announcement](https://appwrite.io/blog/post/announcing-appwrite-messaging) for a full overview of capabilities.
+
+## Improved support for Server-Side Rendering (SSR)
+
+Appwrite Cloud 1.5 brings enhanced support for SSR authentication patterns, optimizing the platform for use with frameworks like [NextJS](https://appwrite.io/docs/tutorials/nextjs-ssr-auth/step-1), [SvelteKit](https://appwrite.io/docs/tutorials/sveltekit-ssr-auth/step-1), and [Nuxt](https://appwrite.io/docs/tutorials/nuxt-ssr-auth/step-1). This update introduces official methods for generating and accessing sessions server-side, allowing for seamless session cookies management and authorized requests, thus bridging the gap between client and server-side rendering.
+
+### Highlights:
+
+- Enhanced SSR authentication support.
+- Improved session management for SSR frameworks.
+- Official methods for session generation and access.
+
+The big change is that Appwrite now allows you to generate and access sessions server side to set session cookies and use these sessions to authorize future requests.
+
+```tsx
+const session = account.createEmailPasswordSession(email, password)
+console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
+```
+
+Using the new `setSession` method, we can now retrieve a session secret from our cookies and authorize users to perform authenticated request to our server.
+
+```tsx
+client.setSession(session.secret)
+const currentUser = await account.get()
+```
+
+Read the [SSR announcement](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering) to get a full overview of capabilities or visit our documentation to get started.
+
+## Two-Factor Authentication (2FA)
+
+Security takes a front seat with the addition of Two-Factor Authentication (2FA). This new feature enables an additional layer of security by requiring a second form of authentication. You can easily implement 2FA using Appwrite's straightforward methods for challenge creation and solution, offering users the option to authenticate via phone, email, or TOTP with authenticator apps.
+
+### Highlights:
+
+- Enhanced security with Two-Factor Authentication.
+- Easy implementation of 2FA challenges.
+- Support for multiple authentication methods, including phone, email, and TOTP.
+- Can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth.
+
+### Enabling 2FA
+
+To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling account.updateMFA().
+
+```web
+import { Client, Account } from "appwrite";
+
+// Init SDK
+const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const account = new Account(client);
+
+// Include any account creation/management steps
+
+const mfa = await account.updateMFA(true); // Enables 2FA
+```
+
+Read the [2FA announcement](https://appwrite.io/blog/post/announcing-two-factor-authentication) for a full overview of capabilities, or visit our [documentation](https://appwrite.io/docs/products/auth/mfa) to get started.
+
+## New Database operators
+
+New Database operators `contains` and `or`, providing greater control and flexibility for database queries. These operators allow for partial text matches, array element matching, and logical OR queries, significantly enhancing the capability to handle complex data retrieval and manipulation tasks.
+
+### Highlights:
+
+- New `contains` and `or` database operators.
+- Enhanced query flexibility and control.
+- Support for complex data retrieval and manipulation.
+
+### Adding operators
+
+The contains operator is a great addition to the existing text search operators such as startsWith & endsWith, and can be used in combination with these two.
+
+```jsx
+db.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+	  [
+	    Query.contains('content', ['happy', 'love']),
+	  ]
+   )
+```
+
+To use the OR operator pass Query.or([...]) to the queries array and provide at least two queries within the nested array.
+
+```jsx
+db.listDocuments(
+	 '<DATABASE_ID>',
+	 '<COLLECTION_ID>',
+        [
+        Query.or([
+            Query.contains('name','ivy'),
+            Query.greaterThan('age',30)
+            ])
+        ]
+  )
+```
+
+Read the [Database operators announcement](https://appwrite.io/blog/post/introducing-new-database-operators) for a full overview of capabilities, or visit our [documentation](https://appwrite.io/docs/products/databases/queries) to get started.
+
+## Runtimes and Enum SDK Support
+
+The new and updated runtimes on the Appwrite ecosystem, are now also on Cloud, as well as Enum SDK support. The runtimes ensure a broader compatibility and more options for development environments.  
+
+Whereas Enum SDK support expands the versatility and usability of Appwrite's SDKs across different programming scenarios.
+
+### Highlights:
+
+- Updated and new runtimes for broader compatibility.
+- Enum support improves type safety and code readability.
+
+### Enums and OAuth
+
+One of the most common examples of SDK Enums is OAuth providers. To log in with Apple, you must pass the Apple string as the provider. With enums, you'll be able to pass OAuthProvider.Apple instead.
+
+```web
+import { Client, Account, OAuthProvider } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const account = new Account(client);
+
+account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
+
+```
+
+Read the [Runtimes](https://appwrite.io/blog/post/announcing-more-and-updated-runtimes) and [Enum SDK support](https://appwrite.io/blog/post/introducing-enum-sdk-support) announcements for a full overview of capabilities, and visit our [Enum](https://appwrite.io/docs/sdks#enums) or [runtime](https://appwrite.io/docs/products/functions/runtimes) documentation to get started.
+
+## Custom token login
+
+One feature that was not announced during Init but was recently released is custom token login. Tokens are short-lived secrets created by an [Appwrite Server SDK](https://appwrite.io/docs/sdks#server) that can be exchanged for a session by a [Client SDK](https://appwrite.io/docs/sdks#client) to log in users. You may already be familiar with tokens if you checked out [Magic URL login](https://appwrite.io/docs/products/auth/magic-url), [Email OTP login](https://appwrite.io/docs/products/auth/email-otp), or [Phone (SMS) login](https://appwrite.io/docs/products/auth/phone-sms).
+
+Custom token allows you to use a [Server SDK](https://appwrite.io/docs/sdks#server) to generate tokens for your own auth implementations. This allows you to code your own authentication methods using Appwrite Functions or your own backend. You could implement username and password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to  integrate Appwrite with external authentication providers such as Auth0, TypingDNA, or any provider trusted by your users.
+
+### Creating your custom token
+
+Once you have prepared your own login flow in an Appwrite Function or a server integration, you can use the [Create token](https://appwrite.io/docs/references/1.5.x/server-nodejs/users#createToken) endpoint of the [Users API](https://appwrite.io/docs/products/auth/users) to generate a token. 
+
+```swift
+// Server-side code
+let users = Users(client)
+
+let token = try await users.createToken("[USER_ID]")
+let secret = token.secret
+```
+
+Then, pass this token to the client through email, magic links, texts, or other methods so they can login on their client app.
+
+```swift
+// Client-side code
+let account = Account(client);
+
+let session = try await account.createSession(
+    userId: "[USER_ID]",
+    secret: "[SECRET]");
+```
+
+Visit our [documentation](https://appwrite.io/docs/products/auth/custom-token) to learn more.
+
+## Get started with Appwrite 1.5 on Cloud
+
+This release brings you more flexibility, security, and safety when building with the Cloud. With the introduction of Messaging, we deliver a highly requested product and fulfill developer needs. As we continue to evolve Appwrite, we strive to deliver the best backend for your product, no matter your needs. We thank you for your support and look forward to building the future together.
+
+To get started, visit our documentation, YouTube channel, or get support on Discord.
+
+- [Documentation](https://appwrite.io/docs/products/auth/server-side-rendering)
+- [Discord](https://appwrite.io/discord)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
