@@ -17,36 +17,6 @@
 
     export let data;
 
-    const projects: ProjectCardProps[] = [
-        {
-            title: 'Auth UI',
-            description: 'Appwrite-powered authentication screens generator for any application.',
-            image: {
-                src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/64803bb4f34eb4b05ee3/preview?width=800&output=webp&project=builtWithAppwrite',
-                alt: 'Auth UI: Fully customizable login flow for your applications'
-            },
-            href: 'https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/'
-        },
-        {
-            title: 'Glitch',
-            description: 'Appwrite-powered collaboration Tool for streamlined team communication.',
-            image: {
-                src: '/images/community/projects/glitch.png',
-                alt: 'A screenshot of the Glitch dashboard. There\'s a sidebar, and a headline that reads: "Welcome to Glitch, powered by Appwrite"'
-            },
-            href: 'https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/'
-        },
-        {
-            title: 'uCanEarn',
-            description:
-                'Appwrite-powered platform where you can sell your digital products online.',
-            image: {
-                src: '/images/community/projects/ucanearn.png',
-                alt: "A screenshot of uCanEarn's website"
-            },
-            href: 'https://builtwith.appwrite.io/projects/648606ad9cd179190b28/'
-        }
-    ];
 
     const metrics = [
         { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
@@ -203,13 +173,6 @@
                             <span>Learn more</span>
                         </a>
                     </div>
-                    <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
-                        {#each projects as project}
-                            <li>
-                                <ProjectCard {...project} />
-                            </li>
-                        {/each}
-                    </ul>
                 </div>
             </div>
 
@@ -217,21 +180,25 @@
                 <div class="web-container">
                     <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
                         <div>
-                            <h3 class="web-main-body-500 web-u-color-text-primary">
-                                File management dashboard
-                            </h3>
-                            <p class="web-main-body-500">
-                                Visualize and search for files with different view options and manipulate multiple at the same time.
-                            </p>
+                            <div class="web-u-flex-vertical web-u-gap-2">
+                                <h3 class="web-main-body-500 web-u-color-text-primary">
+                                    File management dashboard
+                                </h3>
+                                <p class="web-main-body-500">
+                                    Visualize and search for files with different view options and manipulate multiple at the same time.
+                                </p>
+                            </div>
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.1;"></div>
                         <div>
-                            <h3 class="web-main-body-500 web-u-color-text-primary">
-                                Extensive settings options
-                            </h3>
-                            <p class="web-main-body-500">
-                                Manage security, permissions, compression, and more with straightforward Bucket settings.
-                            </p>
+                            <div class="web-u-flex-vertical web-u-gap-2">
+                                <h3 class="web-main-body-500 web-u-color-text-primary">
+                                    Extensive settings options
+                                </h3>
+                                <p class="web-main-body-500">
+                                    Manage security, permissions, compression, and more with straightforward Bucket settings.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
