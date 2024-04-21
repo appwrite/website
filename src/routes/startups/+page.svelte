@@ -459,7 +459,7 @@
                                                             </div>
                                                             <div class="web-user-box-content web-caption-400 web-u-color-text-primary">
                                                                 Hey Louis! Is this the message you get
-                                                                <a href="/blog/post/cors-error" target="_blank">`Access blocked by CORS policy`</a>?
+                                                                <a class="web-link is-pink" href="/blog/post/cors-error" target="_blank">`Access blocked by CORS policy`</a>?
                                                             </div>
                                                         </div>
                                                     </div>
@@ -486,7 +486,7 @@
                                                             </div>
                                                             <div class="web-user-box-content web-caption-400 web-u-color-text-primary">
                                                                 You should be able to debug this with a few steps. Just follow this blog:
-                                                                <a href="/blog/post/cors-error" target="_blank">/blog/post/cors-error</a>.
+                                                                <a class="web-link is-pink" href="/blog/post/cors-error" target="_blank">/blog/post/cors-error</a>.
                                                                 Let me know if this helps 🙂
                                                             </div>
                                                         </div>
