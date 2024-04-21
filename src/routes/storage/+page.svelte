@@ -179,7 +179,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
-                        <div>
+                        <div class="u-flex-vertical u-gap-32">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     File management dashboard
@@ -188,9 +188,10 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
+                            <div></div>
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.1;"></div>
-                        <div>
+                        <div class="u-flex-vertical u-gap-32">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     Extensive settings options
@@ -198,6 +199,50 @@
                                 <p class="web-main-body-500">
                                     Manage security, permissions, compression, and more with straightforward Bucket settings.
                                 </p>
+                            </div>
+                            <div class="web-card is-white">
+                                <div class="u-flex-vertical u-gap-16">
+                                    <div class="-u-flex-vertical">
+                                        <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>
+                                        <p class="web-caption-500">Set the maximum file size (in bytes) allowed in the bucket.</p>
+                                    </div>
+                                    <div class="u-flex u-gap-8">
+                                        <div class="form-item u-stretch">
+                                            <label class="label" for="input1" style="--p-label-text-color: var(--color-neutral-80);">Size</label>
+                                            <input id="input1" class="input-text e-pink-input-light" placeholder="300">
+                                        </div>
+                                        <div class="form-item">
+                                            <label class="label" for="input2" style="--p-label-text-color: var(--color-neutral-80);">Unit</label>
+                                            <div class="select e-pink-input-light">
+                                                <select id="input2" class="e-pink-input-light" style="inline-size:5.5rem">
+                                                    <option>MB</option>
+                                                    <option>GB</option>
+                                                </select>
+                                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="web-card is-white">
+                                <div class="u-flex-vertical u-gap-16">
+                                    <div class="-u-flex-vertical">
+                                        <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>
+                                        <p class="web-caption-500">For files larger than 20MB, compression will be skipped even if it's enabled.</p>
+                                    </div>
+                                    <div class="u-flex u-gap-8">
+                                        <div class="form-item u-stretch">
+                                            <label class="label" for="input3" style="--p-label-text-color: var(--color-neutral-80);">Compression algorithm</label>
+                                            <div class="select e-pink-input-light">
+                                                <select id="input3" class="e-pink-input-light">
+                                                    <option>Gzip</option>
+                                                    <option>RAR</option>
+                                                </select>
+                                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -416,6 +461,29 @@
 </Main>
 
 <style lang="scss">
+  .e-pink-input-light {
+    --p-text-color-default: var(--color-neutral-60);
+    --p-bg-color-default: var(--color-neutral-0);
+    --p-border-color-default: var(--color-neutral-15);
+
+    --p-text-color-hover: var(--p-text-color-default);
+    --p-bg-color-hover: var(--p-bg-color-default);
+    --p-border-color-hover: var(--color-neutral-20);
+
+    --p-text-color-focus: var(--p-text-color-default);
+    --p-bg-color-focus: var(--p-bg-color-default);
+    --p-border-color-focus: var(--color-neutral-20);
+
+    --p-text-color-readonly: var(--color-neutral-20);
+    --p-bg-color-readonly: var(--color-neutral-5);
+    --p-border-color-readonly: var(--p-border-color-default);
+
+    --p-text-color-disabled: var(--color-neutral-20);
+    --p-bg-color-disabled: var(--color-neutral-0);
+    --p-border-color-disabled: var(--p-border-color-default);
+  }
+
+
     .hero {
     display: grid;
     grid-template-columns: 30.0625rem minmax(0, 1fr);
