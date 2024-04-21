@@ -155,6 +155,7 @@
 .#{$p}-u-flex-sep                  { flex-basis:pxToRem(1); background-color:hsl(var(--web-color-border)); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
+.#{$p}-u-gap-2          { gap:pxToRem(2); }
 .#{$p}-u-gap-6          { gap:pxToRem(6); }
 .#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
 .#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
