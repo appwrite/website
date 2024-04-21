@@ -288,6 +288,8 @@
                                                     class="web-user-box-image"
                                                     src="/images/community/avatars/myshoefitter.png"
                                                     alt="Avatar of Kap.ts"
+                                                    width="48"
+                                                    height="48"
                                                 />
                                                 <div class="web-user-box-name web-sub-body-500">
                                                     Marius Bolik
@@ -343,6 +345,8 @@
                                                     class="web-user-box-image"
                                                     src={ryanOconner.image}
                                                     alt={`Avatar of ${ryanOconner.name}`}
+                                                    width="48"
+                                                    height="48"
                                                 />
                                                 <div class="web-user-box-name web-sub-body-500">
                                                     {ryanOconner.name}
@@ -386,6 +390,8 @@
                                                     class="web-user-box-image"
                                                     src={souvikSarkar.image}
                                                     alt={`Avatar of ${souvikSarkar.name}`}
+                                                    width="48"
+                                                    height="48"
                                                 />
                                                 <div class="web-user-box-name web-sub-body-500">
                                                     {souvikSarkar.name}
@@ -453,6 +459,8 @@
                                                     class="web-user-box-image"
                                                     src={mariusBolik.image}
                                                     alt={`avatar of ${mariusBolik.name}`}
+                                                    width="48"
+                                                    height="48"
                                                 />
                                                 <div class="web-user-box-name web-sub-body-500">
                                                     {mariusBolik.name}
@@ -492,6 +500,8 @@
                                             class="web-user-box-image"
                                             src={t.image}
                                             alt="Avatar of Kap.ts"
+                                            width="48"
+                                            height="48"
                                         />
                                         <div class="web-user-box-name web-sub-body-500">
                                             {t.name}
