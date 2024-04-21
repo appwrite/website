@@ -306,7 +306,7 @@
                                     class="is-only-desktop"
                                     style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
-                                    <img alt="" src={ProjectTimeline} />
+                                    <img alt="" src={ProjectTimeline} width="1250" />
                                 </div>
 
                                 <div
