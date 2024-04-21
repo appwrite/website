@@ -1,44 +1,3 @@
-<script lang="ts" context="module">
-    export const events: EventCardProps[] = [
-        {
-            href: 'https://discord.com/events/564160730845151244/1218597329024843837',
-            cover: {
-                src: '/images/community/events/28march-office-hours.png',
-                alt: ''
-            },
-            date: 'March 28th, 2024',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://discord.com/events/564160730845151244/1218597959017431192',
-            cover: {
-                src: '/images/community/events/4april-office-hours.png',
-                alt: ''
-            },
-            date: 'April 4th, 2024',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
-        },
-        {
-            href: 'https://discord.com/events/564160730845151244/1218598369363230872',
-            cover: {
-                src: '/images/community/events/11april-office-hours.png',
-                alt: ''
-            },
-            date: 'April 11th, 2024',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
-        }
-    ];
-</script>
-
 <script lang="ts">
     import { Carousel } from '$lib/components';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
@@ -224,212 +183,16 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <div class="web-hero is-align-start">
-                        <h2 class="web-display web-u-color-text-primary">Get involved</h2>
-                        <div>
-                            <p class="web-description">
-                                With every contribution, Appwrite gets better for all of us. Start
-                                contributing today.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="web-card is-normal u-margin-block-start-32"
-                        style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
-                    >
-                        <div
-                            class="u-flex web-u-flex-direction-column-mobile
-									web-u-gap-96 web-u-row-gap-48"
-                        >
-                            <div>
-                                <h3 class="web-label web-u-color-text-primary">
-                                    Check our Open Issues
-                                </h3>
-                                <p class="web-main-body-500 u-margin-block-start-4">
-                                    Anyone can join and help Appwrite become better.
-                                </p>
-                                <a
-                                    href="https://github.com/appwrite/appwrite/issues"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="web-button is-secondary u-margin-block-start-32"
-                                >
-                                    <span class="web-icon-github" aria-hidden="true" />
-                                    <span class="">View all Open Issues</span>
-                                </a>
-                            </div>
-                            <div class="u-stretch">
-                                <table class="web-table-line">
-                                    <thead class="web-table-line-head">
-                                        <tr class="web-table-line-row">
-                                            <th
-                                                class="web-table-line-cell web-u-color-text-primary u-un-break-text"
-                                                >Issue #</th
-                                            >
-                                            <th class="web-table-line-cell web-u-color-text-primary"
-                                                >Title</th
-                                            >
-                                        </tr>
-                                    </thead>
-                                    <tbody class="web-table-line-body">
-                                        {#each data.issues as issue}
-                                            <tr class="web-table-line-row">
-                                                <td class="web-table-line-cell u-un-break-text">
-                                                    <span class="web-caption-400"
-                                                        >#{issue.number}</span
-                                                    >
-                                                </td>
-                                                <td class="web-table-line-cell">
-                                                    <div>
-                                                        <a
-                                                            href={issue.url}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            class="web-link web-sub-body-500"
-                                                        >
-                                                            {issue.title}
-                                                        </a>
-                                                        <span>({issue.repository})</span>
-                                                    </div>
-                                                    <ul
-                                                        class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                    >
-                                                        {#each issue.tags as tag}
-                                                            <li>
-                                                                <div class="web-tag">{tag}</div>
-                                                            </li>
-                                                        {/each}
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        {/each}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="web-big-padding-section-level-2">
-                <section class="web-container">
-                    <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
-                    <ul
-                        class="grid-box u-gap-32 web-u-gap-20-mobile u-margin-block-start-20"
-                        style="--grid-item-size:15rem"
-                    >
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Create content
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Help others discover Appwrite with videos and blogs.
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Present at meetups
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Share your experience and represent Appwrite in public.
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Report bugs
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Find bugs and submit PRs to fix them.
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Submit new ideas
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Suggest features, integrations, or SDKs for our roadmap.
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Improve documentation
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Find improvements in our docs and improve accessibility.
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
-                            >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
-                                    Helping others
-                                </div>
-                                <div class="web-sub-body-400">
-                                    Support developers with their projects and contributions.
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-            <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-sep-block-start web-u-padding-block-start-64">
-                    <Carousel size="big">
-                        <svelte:fragment slot="header">
-                            <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
-                        </svelte:fragment>
-                        {#each events as event}
-                            <li>
-                                <EventCard
-                                    href={event.href}
-                                    cover={event.cover}
-                                    date={event.date}
-                                    location={event.location}
-                                    title={event.title}
-                                    description={event.description}
-                                    buttonText={event.buttonText}
-                                />
-                            </li>
-                        {/each}
-                    </Carousel>
-                </section>
-            </div>
-        </div>
-
         <div
             class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
         >
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-hero is-center">
-                        <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
-                        <p class="web-description web-u-margin-block-start-0">
-                            Visit our showcase website built with Appwrite to find inspiration for
-                            your projects or to showcase what you have built.
+                    <div class="web-hero is-center web-u-max-width-380">
+                        <span class="web-badges web-eyebrow">Dashboard_</span>
+                        <h2 class="web-title web-u-color-text-primary">Easily manage your storage infrastructure</h2>
+                        <p class="aw-main-body-500 web-u-margin-block-start-0">
+                            Organize your buckets and files with ease in your dashboard, as well as manage security, permissions, compression, and more.
                         </p>
                         <a
                             href="https://builtwith.appwrite.io"
@@ -437,7 +200,7 @@
                             rel="noopener noreferrer"
                             class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
                         >
-                            <span>View all projects</span>
+                            <span>Learn more</span>
                         </a>
                     </div>
                     <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
@@ -449,6 +212,31 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
+                        <div>
+                            <h3 class="web-main-body-500 web-u-color-text-primary">
+                                File management dashboard
+                            </h3>
+                            <p class="web-main-body-500">
+                                Visualize and search for files with different view options and manipulate multiple at the same time.
+                            </p>
+                        </div>
+                        <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.1;"></div>
+                        <div>
+                            <h3 class="web-main-body-500 web-u-color-text-primary">
+                                Extensive settings options
+                            </h3>
+                            <p class="web-main-body-500">
+                                Manage security, permissions, compression, and more with straightforward Bucket settings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
