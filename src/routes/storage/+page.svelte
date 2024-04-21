@@ -190,7 +190,7 @@
                             </div>
                             <div></div>
                         </div>
-                        <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.1;"></div>
+                        <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.04;"></div>
                         <div class="u-flex-vertical u-gap-32">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
@@ -239,6 +239,45 @@
                                                     <option>RAR</option>
                                                 </select>
                                                 <span class="icon-cheveron-down" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="web-card is-white">
+                                <div class="u-flex-vertical u-gap-16">
+                                    <div class="-u-flex-vertical">
+                                        <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>
+                                        <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>
+                                    </div>
+                                    <div class="u-flex u-gap-8">
+                                        <div class="form-item u-stretch">
+                                            <label class="label" for="input3" style="--p-label-text-color: var(--color-neutral-80);">Allowed file extensions</label>
+                                            <div class="input-text-wrapper">
+                                                <div class="tags-input e-pink-input-light">
+                                                    <div class="tags">
+                                                        <ul class="tags-list">
+                                                            <li class="tags-item">
+                                                                <div class="input-tag" style="--p-bg-color:var(--color-neutral-15);--p-text-color: var(--color-neutral-60);">
+                                                                    <span class="tag-text">jpg</span>
+                                                                    <button type="button" class="input-tag-delete-button" aria-label="delete jpg tag">
+                                                                        <span class="icon-x" aria-hidden="true"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <input id="read" placeholder="Allowed file extensions (mp4, jpg, pdf, etc.)" type="text" class="tags-input-text e-pink-input-light">
+                                                </div>
+                                                <div class="u-flex u-gap-12 u-margin-block-start-8">
+                                                    <button type="button" class="tag is-selected e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> jpg </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> png </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> svg </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> gif </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> html </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> pdf </button>
+                                                    <button type="button" class="tag e-pink-tag-light"><span class="icon-plus" aria-hidden="true"></span> mp4 </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -481,6 +520,48 @@
     --p-text-color-disabled: var(--color-neutral-20);
     --p-bg-color-disabled: var(--color-neutral-0);
     --p-border-color-disabled: var(--p-border-color-default);
+  }
+  .e-pink-tag-light {
+    --p-tag-text-color-default:  var(--color-neutral-70);
+    --p-tag-bg-color-default:    var(--color-neutral-10);
+    --p-tag-border-color-default:var(--p-tag-bg-color-default);
+
+    --p-tag-text-color-success:  var(--color-success-120);
+    --p-tag-bg-color-success:    var(--color-success-10);
+    --p-tag-border-color-success:var(--p-tag-bg-color-success);
+
+    --p-tag-text-color-warning:  var(--color-warning-120);
+    --p-tag-bg-color-warning:    var(--color-warning-10);
+    --p-tag-border-color-warning:var(--p-tag-bg-color-warning);
+
+    --p-tag-text-color-danger:   var(--color-danger-120);
+    --p-tag-bg-color-danger:     var(--color-danger-10);
+    --p-tag-border-color-danger: var(--p-tag-bg-color-danger);
+
+    --p-tag-text-color-info:     var(--color-information-120);
+    --p-tag-bg-color-info:       var(--color-information-10);
+    --p-tag-border-color-info:   var(--p-tag-bg-color-info);
+
+    /* clickable states */
+    --p-tag-text-color-clickable:var(--color-neutral-60);
+    --p-tag-bg-color-clickable:  var(--color-neutral-5);
+    --p-tag-border-color-clickable:var(--color-neutral-10);
+
+    --p-tag-text-color-hover:    var(--color-neutral-70);
+    --p-tag-bg-color-hover:      var(--color-neutral-10);
+    --p-tag-border-color-hover:  var(--p-tag-bg-color-hover);
+
+    --p-tag-text-color-active:   var(--color-neutral-70);
+    --p-tag-bg-color-active:     var(--color-neutral-15);
+    --p-tag-border-color-active: var(--p-tag-bg-color-active);
+
+    --p-tag-text-color-selected:   var(--p-tag-text-color-clickable);
+    --p-tag-bg-color-selected:     var(--p-tag-bg-color-clickable);
+    --p-tag-border-color-selected: var(--color-neutral-50);
+
+    --p-tag-text-color-disabled:   var(--color-neutral-20);
+    --p-tag-bg-color-disabled:     var(--color-neutral-5);
+    --p-tag-border-color-disabled: var(--color-neutral-10);
   }
 
 
