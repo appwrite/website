@@ -175,7 +175,7 @@ Security takes a front seat with the addition of Two-Factor Authentication (2FA)
 
 To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling account.updateMFA().
 
-```web
+```jsx
 import { Client, Account } from "appwrite";
 
 // Init SDK
@@ -250,7 +250,7 @@ Whereas Enum SDK support expands the versatility and usability of Appwrite's SDK
 
 One of the most common examples of SDK Enums is OAuth providers. To log in with Apple, you must pass the Apple string as the provider. With enums, you'll be able to pass OAuthProvider.Apple instead.
 
-```web
+```jsx
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
