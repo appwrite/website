@@ -576,7 +576,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="u-flex-vertical u-gap-16 web-u-max-width-480 u-margin-inline-start-auto web-u-margin-inline-auto-mobile"
+                                        class="u-flex-vertical u-gap-16 u-margin-inline-start-auto web-u-margin-inline-auto-mobile"
                                     >
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
