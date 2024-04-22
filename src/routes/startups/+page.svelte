@@ -69,6 +69,15 @@
         submitted = true;
     }
 
+    function resetForm() {
+        personName = '';
+        personEmail = '';
+        companyName = '';
+        companyUrl = '';
+        error = undefined;
+        submitted = false;
+    }
+
     const testimonial = (name: string, handle: string, text: string, image: string) => {
         return {
             name,
@@ -751,6 +760,7 @@
                                             you soon.
                                         </p>
                                         <button
+                                            on:click={resetForm}
                                             class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
                                             >Back to form</button
                                         >
