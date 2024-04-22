@@ -435,31 +435,73 @@
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile u-width-full-line web-u-max-width-580"
                                         style="margin-block: auto;"
                                     >
-                                        <div class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile">
+                                        <div
+                                            class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
+                                        >
                                             <ul class="web-chat-list">
                                                 <li class="web-chat-item is-user-a">
                                                     <div class="web-chat-message">
                                                         <div class="web-user-box">
-                                                            <img class="web-user-box-image" src="/images/community/avatars/6.avif" height="40" width="40" alt="Avatar of Teri">
-                                                            <div class="web-user-box-name u-flex u-gap-8">
-                                                                <span class="web-sub-body-500">User 1234</span>
-                                                                <time class="web-caption-400 web-u-color-text-tertiary">8:32 AM</time>
+                                                            <img
+                                                                class="web-user-box-image"
+                                                                src="/images/community/avatars/6.avif"
+                                                                height="40"
+                                                                width="40"
+                                                                alt="Avatar of Teri"
+                                                            />
+                                                            <div
+                                                                class="web-user-box-name u-flex u-gap-8"
+                                                            >
+                                                                <span class="web-sub-body-500"
+                                                                    >Louis Baker</span
+                                                                >
+                                                                <time
+                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    >8:32 AM</time
+                                                                >
                                                             </div>
-                                                            <div class="web-user-box-content web-caption-400 web-u-color-text-primary">Hello devs! I am getting a CORS error when sending a request to the backend. Can you help me?</div>
+                                                            <div
+                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                            >
+                                                                Hello devs! I am getting a CORS
+                                                                error when sending a request to the
+                                                                backend. Can you help me?
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="web-chat-item is-user-b">
                                                     <div class="web-chat-message">
                                                         <div class="web-user-box">
-                                                            <img class="web-user-box-image" src="/images/avatars/steven.avif" width="48" height="48" alt="Avatar of Teri">
-                                                            <div class="web-user-box-name u-flex u-gap-8">
-                                                                <span class="web-sub-body-500">Steven</span>
-                                                                <time class="web-caption-400 web-u-color-text-tertiary">8:38 AM</time>
+                                                            <img
+                                                                class="web-user-box-image"
+                                                                src="/images/avatars/steven.avif"
+                                                                width="48"
+                                                                height="48"
+                                                                alt="Avatar of Teri"
+                                                            />
+                                                            <div
+                                                                class="web-user-box-name u-flex u-gap-8"
+                                                            >
+                                                                <span class="web-sub-body-500"
+                                                                    >Steven</span
+                                                                >
+                                                                <time
+                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    >8:38 AM</time
+                                                                >
                                                             </div>
-                                                            <div class="web-user-box-content web-caption-400 web-u-color-text-primary">
-                                                                Hey Louis! Is this the message you get
-                                                                <a class="web-link is-pink" href="/blog/post/cors-error" target="_blank">`Access blocked by CORS policy`</a>?
+                                                            <div
+                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                            >
+                                                                Hey Louis! Is this the message you
+                                                                get
+                                                                <a
+                                                                    class="web-link is-pink"
+                                                                    href="/blog/post/cors-error"
+                                                                    target="_blank"
+                                                                    >`Access blocked by CORS policy`</a
+                                                                >?
                                                             </div>
                                                         </div>
                                                     </div>
@@ -467,27 +509,65 @@
                                                 <li class="web-chat-item is-user-a">
                                                     <div class="web-chat-message">
                                                         <div class="web-user-box">
-                                                            <img class="web-user-box-image" src="/images/community/avatars/6.avif" height="40" width="40" alt="Avatar of Teri">
-                                                            <div class="web-user-box-name u-flex u-gap-8">
-                                                                <span class="web-sub-body-500">User1234</span>
-                                                                <time class="web-caption-400 web-u-color-text-tertiary">9:05 AM</time>
+                                                            <img
+                                                                class="web-user-box-image"
+                                                                src="/images/community/avatars/6.avif"
+                                                                height="40"
+                                                                width="40"
+                                                                alt="Avatar of Teri"
+                                                            />
+                                                            <div
+                                                                class="web-user-box-name u-flex u-gap-8"
+                                                            >
+                                                                <span class="web-sub-body-500"
+                                                                    >Louis Baker</span
+                                                                >
+                                                                <time
+                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    >9:05 AM</time
+                                                                >
                                                             </div>
-                                                            <div class="web-user-box-content web-caption-400 web-u-color-text-primary">Yes!</div>
+                                                            <div
+                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                            >
+                                                                Yes!
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="web-chat-item is-user-b">
                                                     <div class="web-chat-message">
                                                         <div class="web-user-box">
-                                                            <img class="web-user-box-image" src="/images/avatars/steven.avif" width="48" height="48" alt="Avatar of Teri">
-                                                            <div class="web-user-box-name u-flex u-gap-8">
-                                                                <span class="web-sub-body-500">Steven</span>
-                                                                <time class="web-caption-400 web-u-color-text-tertiary">8:38 AM</time>
+                                                            <img
+                                                                class="web-user-box-image"
+                                                                src="/images/avatars/steven.avif"
+                                                                width="48"
+                                                                height="48"
+                                                                alt="Avatar of Teri"
+                                                            />
+                                                            <div
+                                                                class="web-user-box-name u-flex u-gap-8"
+                                                            >
+                                                                <span class="web-sub-body-500"
+                                                                    >Steven</span
+                                                                >
+                                                                <time
+                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    >8:38 AM</time
+                                                                >
                                                             </div>
-                                                            <div class="web-user-box-content web-caption-400 web-u-color-text-primary">
-                                                                You should be able to debug this with a few steps. Just follow this blog:
-                                                                <a class="web-link is-pink" href="/blog/post/cors-error" target="_blank">/blog/post/cors-error</a>.
-                                                                Let me know if this helps 🙂
+                                                            <div
+                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                            >
+                                                                You should be able to debug this
+                                                                with a few steps. Just follow this
+                                                                blog:
+                                                                <a
+                                                                    class="web-link is-pink"
+                                                                    href="/blog/post/cors-error"
+                                                                    target="_blank"
+                                                                    >/blog/post/cors-error</a
+                                                                >. Let me know if this helps 🙂
                                                             </div>
                                                         </div>
                                                     </div>
@@ -495,7 +575,9 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="u-flex-vertical u-gap-16 web-u-max-width-480 u-margin-inline-start-auto web-u-margin-inline-auto-mobile">
+                                    <div
+                                        class="u-flex-vertical u-gap-16 web-u-max-width-480 u-margin-inline-start-auto web-u-margin-inline-auto-mobile"
+                                    >
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
                                         </h3>
