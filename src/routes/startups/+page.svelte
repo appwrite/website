@@ -17,6 +17,8 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -41,7 +43,7 @@
         error = undefined;
         submitting = true;
 
-        const response = await fetch('https://growth.appwrite.io/v1/conversations/startups', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/startups`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
