@@ -999,7 +999,6 @@
         .web-grid-1-1 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--grid-1-1-gap, 2.5rem);
         }
     }
 
