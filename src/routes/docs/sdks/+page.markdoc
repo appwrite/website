@@ -20,7 +20,7 @@ Client libraries for integrating with Appwrite to build client-based application
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `13.0.0`
+* Web SDK `13.0.1`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
 * 
 ---
@@ -97,13 +97,13 @@ Server libraries for integrating with Appwrite to build server side integrations
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
-* Deno SDK `9.0.0`
+* Deno SDK `9.1.0`
 * [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `4.0.0`
+* Kotlin SDK `4.1.0`
 * [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
 * 
 ---
@@ -146,7 +146,7 @@ Note that **ID.unique()** does not generate unique IDs locally, but asks the App
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 // Generate a unique ID
@@ -154,7 +154,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 // Generate a unique ID
@@ -162,7 +162,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```swift
+```client-apple
 import Appwrite
 
 // Generate a unique ID
@@ -170,7 +170,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.ID
 
 // Generate a unique ID
@@ -183,7 +183,7 @@ ID.custom()
 
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Generate a unique ID
@@ -274,14 +274,19 @@ Appwrite IDs combine a timestamp prefix based on microseconds and a random UID s
 ## Enums {% #enums %}
 Appwrite has enumeration classes for predefined strings used different parameters used for the Appwrite APIs.
 
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
+
 These enums are available for authenticator type, name, OAuth provider, 
 password hash types, browsers, authentication factors, index types, credit cards, 
 image gravity, image format, relationship types, SMTP encryption, Function runtime, 
 messaging provider type, compression algorithms, execution methods, and country flags.
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
-{% multicode %}
 You can discover the available enums in each SDK at the source.
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
@@ -289,12 +294,12 @@ You can discover the available enums in each SDK at the source.
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `13.0.0`
+* Web SDK `13.0.1`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web/tree/dev/src/enums)
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
-* Flutter SDK `11.0.0`
+* Flutter SDK `11.0.1`
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter/tree/dev/lib/src/enums)
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
@@ -307,11 +312,11 @@ You can discover the available enums in each SDK at the source.
 * Android SDK `4.0.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android/tree/dev/library/src/main/java/io/appwrite/enums)
 {% /table %}
-{% /multicode %}
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
-{% multicode %}
+You can discover the available enums in each SDK at the source.
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Platform
@@ -324,7 +329,7 @@ You can discover the available enums in each SDK at the source.
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `10.0.0`
+* Dart SDK `10.1.1`
 * [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart/blob/dev/lib/enums.dart)
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
@@ -362,7 +367,6 @@ You can discover the available enums in each SDK at the source.
 * Swift SDK `4.0.0`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
 {% /table %}
-{% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
 

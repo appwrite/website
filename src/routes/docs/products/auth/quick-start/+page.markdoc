@@ -11,7 +11,7 @@ Adding signup and login is as simple as this.
 You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account using email and password.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -20,7 +20,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create(ID.unique(), 'email@example.com', 'password');
+const promise = account.create('[USER_ID]', 'email@example.com', '');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -28,7 +28,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -43,7 +43,22 @@ final user = await account.create(
     password: 'password',
 );
 ```
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
+
+let account = Account(client)
+
+let user = try await account.create(
+    userId: ID.unique(),
+    email: "email@example.com",
+    password: "password"
+)
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.ID
@@ -60,21 +75,6 @@ val user = account.create(
     password = "password"
 )
 ```
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
-
-let account = Account(client)
-
-let user = try await account.create(
-    userId: ID.unique(),
-    email: "email@example.com",
-    password: "password"
-)
-```
 ```graphql
 
 mutation {
@@ -89,10 +89,10 @@ mutation {
 
 # Login {% #login %}
 
-After you've created your account, users can be logged in using the [Create Email Password Session](/docs/references/cloud/server-nodejs/account#createEmailPasswordSession) endpoint.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -101,7 +101,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailPasswordSession('email@example.com', 'password');
+const promise = account.createEmailSession('email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -110,7 +110,7 @@ promise.then(function (response) {
 });
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -119,13 +119,28 @@ final client = Client()
 
 final account = Account(client);
 
-final session = await account.createEmailPasswordSession(
+final session = await account.createEmailSession(
     email: 'email@example.com',
     password: 'password'
 );
 ```
 
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let session = try await account.createEmailSession(
+    email: "email@example.com",
+    password: "password"
+)
+```
+
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -135,30 +150,15 @@ val client = Client()
 
 val account = Account(client)
 
-val session = account.createEmailPasswordSession(
+val session = account.createEmailSession(
     email = "email@example.com",
     password = "password"
 )
 ```
 
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-let account = Account(client)
-
-let session = try await account.createEmailPasswordSession(
-    email: "email@example.com",
-    password: "password"
-)
-```
-
 ```graphql
 mutation {
-    accountCreateEmailPasswordSession(email: "email@example.com", password: "password") {
+    accountCreateEmailSession(email: "email@example.com", password: "password") {
         _id
         userId
         provider
@@ -169,12 +169,11 @@ mutation {
 {% /multicode %}
 
 # More ways to authenticate {% #more-ways-to-authenticate %}
-You can signup and login a user with an account created through
-[Email and password](/docs/products/auth/email-password),
-[OAuth2](/docs/products/auth/oauth2),
-[Magic URL](/docs/products/auth/magic-url),
-[Email OTP](/docs/products/auth/email-otp),
-[Phone (SMS)](/docs/products/auth/phone-sms),
-and [Anonymous](/docs/products/auth/anonymous) authentications.
+You can signup and login a user with an account create through 
+[email password](/docs/products/auth/email-password),
+[phone (SMS)](/docs/products/auth/phone-sms),
+[Anonymous](/docs/products/auth/anonymous)
+[magic URL](/docs/products/auth/magic-url), and
+[OAuth 2](/docs/products/auth/oauth2)
+authentication. 
 
-You can also use [Custom token](/docs/products/auth/custom-token) to implement your own authentication flow, or integrate with any external provider.

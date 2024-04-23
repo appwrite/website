@@ -29,8 +29,8 @@
 					href: '/docs/advanced/security/soc2'
 				},
 				{
-					label: 'HIPPA (Coming soon)',
-					href: '/docs/advanced/security/hippa'
+					label: 'HIPAA',
+					href: '/docs/advanced/security/hipaa'
 				},
 				{
 					label: 'PCI',
@@ -50,8 +50,8 @@
 					href: '/docs/advanced/security/encryption'
 				},
 				{
-					label: 'Two-Factor authentication',
-					href: '/docs/advanced/security/2fa'
+					label: 'Multi-Factor authentication',
+					href: '/docs/advanced/security/mfa'
 				},
 				{
 					label: 'HTTPS',
