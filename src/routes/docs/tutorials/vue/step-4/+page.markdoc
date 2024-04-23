@@ -12,7 +12,7 @@ We'll create a store to share the user's data between components.
 
 Create a new file `src/lib/stores/user.js` and add the following code to it.
 
-```js
+```client-web
 import { ID } from "appwrite";
 import { account } from "../appwrite";
 import { reactive } from "vue";

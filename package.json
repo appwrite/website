@@ -20,14 +20,15 @@
         "test:integration": "playwright test",
         "test:unit": "vitest"
     },
+    "packageManager": "pnpm@8.15.6",
     "dependencies": {
         "compression": "^1.7.4",
         "express": "^4.18.2"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.4.2",
-        "@appwrite.io/pink": "0.1.0-next.9",
-        "@appwrite.io/pink-icons": "0.1.0-next.9",
+        "@appwrite.io/pink": "0.9.0",
+        "@appwrite.io/pink-icons": "0.9.0",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
         "@melt-ui/pp": "^0.3.0",
         "@melt-ui/svelte": "^0.74.3",
