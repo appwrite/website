@@ -64,7 +64,7 @@ Find your project's ID in the **Settings** page.
 
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
-```js
+```client-web
 import { Client, Account } from 'appwrite';
 
 export const client = new Client();
@@ -81,7 +81,7 @@ export { ID } from 'appwrite';
 {% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `src/App.jsx`.
 
-```js
+```client-web
 import { createSignal } from 'solid-js'
 import { account, ID } from './lib/appwrite';
 
