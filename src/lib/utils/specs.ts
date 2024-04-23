@@ -202,9 +202,6 @@ async function getSpec(version: string, platform: string) {
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const raw = await getSpec(version, platform);
-    if (typeof raw !== 'string') {
-        throw new Error('Invalid API spec');
-    }
     const api = JSON.parse(raw);
 
     return api;
@@ -226,9 +223,6 @@ export async function getDescription(service: string): Promise<string> {
     }
 
     const description = descriptions[target]();
-    if (typeof description !== 'string') {
-        throw new Error('Invalid service description');
-    }
 
     return description;
 }
@@ -318,14 +312,10 @@ export async function getService(
         if (!(path in examples)) {
             continue;
         }
-        const demo = await examples[path]();
-        if (typeof demo !== 'string') {
-            continue;
-        }
 
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo,
+            demo: await examples[path](),
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
