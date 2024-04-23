@@ -3,6 +3,10 @@ layout: article
 title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
+{% info title="Unreleased on Cloud" %}
+This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
+This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
+{% /info %}
 
 You can send custom sms messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding sms messaging to your app.
@@ -48,10 +52,10 @@ During development, you can add targets to existing accounts by navigating to **
 ![Add a target](/images/docs/messaging/targets/add-targets.png)
 {% /only_light %}
 
-You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/1.5.x/server-nodejs/messaging#createSubscriber) endpoint.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
@@ -287,9 +291,9 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 ![Add a target](/images/docs/messaging/topics/create-topics.png)
 {% /only_light %}
 
-You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).
+You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/1.5.x/server-nodejs/messaging#createTopic).
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
@@ -467,7 +471,7 @@ You can send SMS messages using a Server SDK.
 To send an SMS messages immediately, you can call the `createSMS` endpoint without passing either the `draft` or `scheduledAt` parameters.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -696,7 +700,7 @@ let message = try await messaging.createSMS(
 # Schedule SMS message {% #schedule-sms %}
 To send an scheduled SMS message, you can call the `createSMS` endpoint with `scheduledAt` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

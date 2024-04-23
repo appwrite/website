@@ -15,7 +15,7 @@
     padding-inline: clamp(1.25rem,4vw,120rem); /* Thomas calculation */
   }
   &.is-docs {
-    .#{$p}-main-header-wrapper { max-inline-size:var(--container-size-large);  }
+    .#{$p}-main-header-wrapper { max-inline-size:86.875rem;  }
   }
   &.is-reference {
     .#{$p}-main-header-wrapper { max-inline-size:var(--container-size-huge); }

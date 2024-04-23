@@ -79,6 +79,12 @@
             title: 'Mobile and native',
             quickStarts: [
                 {
+                    title: 'React Native',
+                    icon: 'icon-react-native',
+                    image: '/images/blog/placeholder.png',
+                    href: 'react-native'
+                },
+                {
                     title: 'Flutter',
                     icon: 'icon-flutter',
                     image: '/images/blog/placeholder.png',
@@ -95,13 +101,7 @@
                     icon: 'icon-android',
                     image: '/images/blog/placeholder.png',
                     href: 'android'
-                },
-                {
-                    title: 'React Native',
-                    icon: 'icon-react',
-                    image: '/images/blog/placeholder.png',
-                    href: 'react-native'
-                },
+                }
             ]
         },
         {
@@ -187,6 +187,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
+
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
@@ -225,7 +226,6 @@
             {/each}
         </div>
     </article>
-
     <MainFooter variant="docs" />
 </main>
 
