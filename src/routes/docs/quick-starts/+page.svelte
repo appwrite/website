@@ -69,7 +69,7 @@
                 },
                 {
                     title: 'Solid',
-                    icon: 'aw-icon-solid',
+                    icon: 'icon-solidjs',
                     image: '/images/blog/placeholder.png',
                     href: 'solid'
                 }
