@@ -821,7 +821,7 @@
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company-website"
-                                                        placeholder="company.com"
+                                                        placeholder="https://company.com"
                                                         aria-label="Company website"
                                                         bind:value={companyUrl}
                                                     />
