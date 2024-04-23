@@ -17,11 +17,11 @@ devDependencies:
     specifier: ^0.4.2
     version: 0.4.2
   '@appwrite.io/pink':
-    specifier: 0.9.0
-    version: 0.9.0
+    specifier: '0.16'
+    version: 0.16.0
   '@appwrite.io/pink-icons':
-    specifier: 0.9.0
-    version: 0.9.0
+    specifier: '0.16'
+    version: 0.16.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
@@ -167,14 +167,14 @@ packages:
       - encoding
     dev: true
 
-  /@appwrite.io/pink-icons@0.9.0:
-    resolution: {integrity: sha512-Y088XXzm08pHh8NKIhaZfQyZr+XkgVWUlQqmu8r1eeK4hKcQXqohGOm61gYwoDI8XA7ysi4s5FeVQVLRnZAcEw==}
+  /@appwrite.io/pink-icons@0.16.0:
+    resolution: {integrity: sha512-tWaG5lFXnKzbFbGf4SlxoFYj2yH7kQDejFq+UHdfzBrqteSfZpxIxdNmKHIea1ztcmsat4y+R0ZbVX9iOv+oPw==}
     dev: true
 
-  /@appwrite.io/pink@0.9.0:
-    resolution: {integrity: sha512-koit0ZuUINO5YlAbxA+QzDY7Tp3/YUiOVLOl/lEalhW6CQk8jMkFxO73pzIHf7nuBG/F1rFCLSG9qI8K5Qs1+g==}
+  /@appwrite.io/pink@0.16.0:
+    resolution: {integrity: sha512-KprOd+36I0w6PC0x6NJclvyJNpCsjAPcrCHL3QixSX0dZ66wqFE6NitF/KiVVCxbuBaNgjrm7oQ0hr7dt1Sm5Q==}
     dependencies:
-      '@appwrite.io/pink-icons': 0.9.0
+      '@appwrite.io/pink-icons': 0.16.0
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.2
     dev: true
