@@ -38,6 +38,11 @@
     let submitted = false;
     let submitting = false;
 
+    function scrollToForm() {
+        const form = document.getElementById('form');
+        form.scrollIntoView({ behavior: 'smooth' });
+    }
+
     async function handleSubmit() {
         error = undefined;
         submitting = true;
@@ -180,12 +185,11 @@
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Pro for 12 months.
                         </p>
-                        <a
-                            href="#form"
-                            class="web-button u-margin-inline-auto u-margin-block-start-12"
-                        >
+                        <button
+                            on:click={scrollToForm}
+                            class="web-button u-margin-inline-auto u-margin-block-start-12">
                             Apply now
-                        </a>
+                        </button>
                     </div>
                 </section>
             </div>

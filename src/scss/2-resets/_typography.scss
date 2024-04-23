@@ -1,5 +1,4 @@
 @use '../abstract' as *;
-html { scroll-behavior:smooth; }
 body {
 	--p-body-text-color: var(--web-color-secondary);
 	--p-body-bg-color: var(--web-color-background-docs);
