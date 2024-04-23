@@ -28,7 +28,8 @@
                 { label: 'Apple', href: '/docs/quick-starts/apple' },
                 { label: 'Android', href: '/docs/quick-starts/android' },
                 { label: 'Qwik', href: '/docs/quick-starts/qwik' },
-                { label: 'Astro', href: '/docs/quick-starts/astro' }
+                { label: 'Astro', href: '/docs/quick-starts/astro' },
+                { label: 'Solid', href: '/docs/quick-starts/solid' }
             ],
             Products: [
                 { label: 'Auth', href: '/docs/products/auth' },
