@@ -60,19 +60,15 @@
         document.body.classList.add(className);
     }
 
+    // Format source array to count source occurrences
     let format = (arr) => {
-        const counts = {}; // Object to store the counts
+        const counts = {};
 
-        // Loop through each item in the array
         arr.forEach((item) => {
-            // Increment the count for each key in the object
-            counts[item] = (counts[item] || 0) + 1;
+            const key = item.split(';')[0];
+            counts[key] = (counts[key] || 0) + 1;
         });
-
-        // Convert counts object into the required string format array
-        const formattedArray = Object.entries(counts).map(([key, value]) => `${key},${value}`);
-
-        return formattedArray;
+        return Object.entries(counts).map(([key, count]) => `${key};${count}`);
     };
 
     onMount(() => {
