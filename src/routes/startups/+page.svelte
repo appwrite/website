@@ -197,7 +197,8 @@
                         </p>
                         <button
                             on:click={scrollToForm}
-                            class="web-button u-margin-inline-auto u-margin-block-start-12">
+                            class="web-button u-margin-inline-auto u-margin-block-start-12"
+                        >
                             Apply now
                         </button>
                     </div>
@@ -372,7 +373,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="web-is-only-mobile u-flex">
+                                <div class="web-is-only-mobile">
                                     <img
                                         class="u-block u-max-width-450 u-margin-inline-auto"
                                         alt=""
@@ -777,7 +778,7 @@
                                     >
                                         <div class="u-flex u-main-end">
                                             <ul
-                                                class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                                class="web-form-list u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <div class="u-block">Full name</div>
@@ -785,7 +786,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
-                                                        placeholder="Enter full name"
+                                                        placeholder="Walter O'Brien"
                                                         aria-label="Full name"
                                                         bind:value={personName}
                                                     />
@@ -796,35 +797,31 @@
                                                         required
                                                         class="web-input-text"
                                                         type="email"
-                                                        placeholder="Enter email address"
+                                                        placeholder="walter@company.com"
                                                         aria-label="Email address"
                                                         bind:value={personEmail}
                                                     />
                                                 </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
+                                                <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <div class="u-block">Company name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company"
-                                                        placeholder="Enter company name"
+                                                        placeholder="Company Inc."
                                                         aria-label="Company name"
                                                         bind:value={companyName}
                                                     />
                                                 </li>
-                                                <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
-                                                >
+                                                <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <div class="u-block">Company website</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
                                                         type="text"
                                                         name="company-website"
-                                                        placeholder="Enter company website"
+                                                        placeholder="https://company.com"
                                                         aria-label="Company website"
                                                         bind:value={companyUrl}
                                                     />
