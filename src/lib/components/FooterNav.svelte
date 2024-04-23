@@ -36,7 +36,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Messaging', href: '/docs/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -57,6 +57,10 @@
                     rel: 'noopener noreferrer'
                 }
             ],
+            Program: [
+                { label: 'Heroes', href: '/heroes' },
+                { label: 'Startups', href: '/startups' }
+            ],
             About: [
                 { label: 'Company', href: '/company' },
                 { label: 'Pricing', href: '/pricing' },
@@ -66,7 +70,6 @@
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
-                { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Store',
                     href: 'https://appwrite.store',
@@ -74,12 +77,7 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' },
-            ],
-            Policies: [
-                { label: 'Terms', href: '/terms' },
-                { label: 'Privacy', href: '/privacy' },
-                { label: 'Cookies', href: '/cookies' }
+                { label: 'Assets', href: '/assets' }
             ]
         };
 </script>
