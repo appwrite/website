@@ -41,7 +41,7 @@
 
     function scrollToForm() {
         const form = document.getElementById('form');
-        form.scrollIntoView({ behavior: 'smooth' });
+        form?.scrollIntoView({ behavior: 'smooth' });
     }
 
     async function handleSubmit() {
@@ -863,18 +863,7 @@
 
 <style lang="scss">
     @use '$scss/abstract/mixins/border-gradient' as gradients;
-    @use '$scss/abstract/variables/devices' as *;
-
-    .web-pre-footer-bg {
-        position: absolute;
-        top: clamp(300px, 50vw, 50%);
-        left: clamp(300px, 50vw, 50%);
-        transform: translate(-50%, -70%);
-        width: clamp(1200px, 200vw, 3000px);
-        height: auto;
-        max-inline-size: unset;
-        max-block-size: unset;
-    }
+    @use '$scss/abstract/variables/devices' as devices;
 
     @keyframes scroll {
         to {
@@ -897,24 +886,6 @@
                 flex-shrink: 0;
                 scroll-snap-align: start;
             } /* items */
-
-            .carousel-img {
-                @include gradients.border-gradient;
-                --m-border-gradient-before: linear-gradient(
-                    135.1deg,
-                    #ffffff 10.1%,
-                    rgba(255, 255, 255, 0.2) 52.69%,
-                    rgba(255, 255, 255, 0.5) 120.69%
-                );
-                --m-border-radius: 1.25rem;
-                background: linear-gradient(
-                    155deg,
-                    rgba(255, 255, 255, 0.35) 1.16%,
-                    rgba(255, 255, 255, 0.35) 84.17%
-                );
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-            }
         }
     }
     :global([data-animated]).scroll-carousel {
@@ -926,15 +897,7 @@
         }
     }
 
-    .web-u-drop-shadow {
-        filter: drop-shadow(5px 5px 10px #00000011);
-    }
-
-    svg {
-        max-inline-size: 100%;
-    }
-
-    @media #{$break1} {
+    @media #{devices.$break1} {
         .web-grid-1-1 {
             display: flex;
             flex-direction: column;
@@ -987,30 +950,14 @@
             inset-block-start: 100px;
             opacity: 0.4;
         }
-        .u-bg-left-side-mobile {
-            inset-inline-start: 0 !important;
-            transform: translateX(-330px);
-            width: 501px !important;
-            inset-block-start: 0px !important;
-            max-block-size: none;
-            max-inline-size: none;
-        }
-        .u-bg-right-side-mobile {
-            inset-inline-end: 0 !important;
-            transform: translateX(339px);
-            width: 501px !important;
-            inset-block-start: 0px !important;
-            max-block-size: none;
-            max-inline-size: none;
-        }
     }
-    @media #{$break1} {
+    @media #{devices.$break1} {
         .e-mobile-fix-1 {
             display: block;
         }
     }
 
-    @media #{$break2open} {
+    @media #{devices.$break2open} {
         .web-grid-1-1 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1018,7 +965,7 @@
     }
 
     /* from 1280px and bugger */
-    @media #{$break3open} {
+    @media #{devices.$break3open} {
         .e-u-padding-block-start-80-desktop {
             padding-block-start: 5rem;
         }
@@ -1027,9 +974,6 @@
         }
         .e-u-padding-inline-32-desktop {
             padding-inline: 2rem;
-        }
-        .e-margin-top-desktop-200 {
-            margin-block-start: 12.5rem;
         }
         .e-u-margin-block-start-200-desktop {
             margin-block-start: 12.5rem;

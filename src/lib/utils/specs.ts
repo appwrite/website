@@ -57,7 +57,7 @@ export interface Property {
             type?: string;
             oneOf?: OpenAPIV3.ReferenceObject[];
         } & OpenAPIV3.ReferenceObject;
-} 
+}
 
 export enum ModelType {
     REST = 'REST',
@@ -202,7 +202,11 @@ async function getSpec(version: string, platform: string) {
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const raw = await getSpec(version, platform);
+    if (typeof raw !== 'string') {
+        throw new Error('Invalid API spec');
+    }
     const api = JSON.parse(raw);
+
     return api;
 }
 
@@ -220,7 +224,13 @@ export async function getDescription(service: string): Promise<string> {
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
-    return descriptions[target]();
+
+    const description = descriptions[target]();
+    if (typeof description !== 'string') {
+        throw new Error('Invalid service description');
+    }
+
+    return description;
 }
 
 export async function getService(
@@ -308,9 +318,14 @@ export async function getService(
         if (!(path in examples)) {
             continue;
         }
+        const demo = await examples[path]();
+        if (typeof demo !== 'string') {
+            continue;
+        }
+
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: await examples[path](),
+            demo,
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -353,7 +368,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
 
     const properties = Object.keys(schema.properties ?? {}).map((key) =>{
         const name = key;
-        const fields = schema.properties?.[key]; 
+        const fields = schema.properties?.[key];
         return {
             name,
             ...fields
@@ -388,7 +403,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 // default to first child type if multiple available
                 const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
                 const schema = getSchema(getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject), api)
-                
+
                 return {
                     ...carry,
                     [propertyName]: [generateExample(schema, api, modelType)]
