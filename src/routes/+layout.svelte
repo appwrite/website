@@ -51,6 +51,7 @@
     import { derived, writable } from 'svelte/store';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
+    import Cookies from 'js-cookie';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -59,26 +60,9 @@
         document.body.classList.add(className);
     }
 
-    let getCookie = (name) => {
-        let nameEQ = name + '=';
-        let ca = document.cookie.split(';');
-        console.log(ca);
-        for (var i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    };
-
-    let setCookie = (name, value) => {
-        document.cookie =
-            name + '=' + (value || '') + '; path=/; Secure; Domain=.appwrite.io; SameSite=Lax';
-    };
-
     onMount(() => {
         if (browser) {
-            const source = getCookie('source');
+            const source = Cookies.get('source');
             let sources = source ? decodeURIComponent(source).split(',') : [];
             console.log(sources);
 
@@ -95,8 +79,7 @@
             if (utm_campaign) sources.push(`utm_campaign=${utm_campaign}`);
 
             sources = [...new Set(sources)];
-            const encodedSources = encodeURIComponent(sources.join(','));
-            setCookie('source', encodedSources);
+            Cookies.set('source', sources);
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
