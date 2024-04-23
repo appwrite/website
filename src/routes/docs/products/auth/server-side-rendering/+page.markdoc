@@ -59,7 +59,7 @@ The API key should have the following scope in order to perform authentication:
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% multicode %}
-```js
+```server-nodejs
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
@@ -90,7 +90,7 @@ It will be initialized with the session, usually stored within a cookie.
 You should create a new client for each request and **never** share the client between requests.
 
 {% multicode %}
-```js
+```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>');            // Your project ID
@@ -122,7 +122,7 @@ Once you have a session object, you can store it in a cookie. This will allow yo
 Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
 Here's an example with Express and PHP, but the same concepts apply to all most frameworks.
 {% multicode %}
-```js
+```server-nodejs
 import express from 'express';
 
 // Initialize admin client here
@@ -174,7 +174,7 @@ try {
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
-        'maxAge' => $session['expire'],
+        'expires' => strtotime($session['expire']),
         'path' => '/',
     ]);
 
@@ -197,7 +197,7 @@ When the browser makes a request to your domain's endpoints, it will automatical
 
 {% multicode %}
 
-```js
+```server-nodejs
 // Initialize the session client here
 
 app.get('/user', async (req, res) => {
@@ -286,7 +286,7 @@ You can create a guest session using the `createAnonymousSession` method.
 This will create a session for unauthenticated users, and each user will have their own rate limit.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -331,7 +331,7 @@ $result = $account->createAnonymousSession();
 Appwrite sessions record some information about the client. To set this information in a server-side context use the `setForwardedUserAgent` to set the end-user's user agent. While optional, these can be useful for debugging and security purposes.
 
 {% multicode %}
-```js
+```server-nodejs
 client.setForwardedUserAgent(req.headers['user-agent']);
 ```
 ```php
@@ -347,7 +347,7 @@ Server-side OAuth2 authentication requires two server endpoints:
 Create an initial endpoint that redirects the user to the OAuth2 provider's authentication page using Appwrite's `createOAuth2Token` method. After authenticating with the provider, the user will be redirected to the `success` URL with `userId` and `secret` URL parameters.
 
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Account, OAuthProvider } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
@@ -393,8 +393,7 @@ header('Location' . $redirectUrl);
 Next, create a success callback endpoint that receives the `userId` and `secret` URL parameters, and then calls `createSession` on the server side. This endpoint returns a session object, which you can store in a cookie.
 
 {% multicode %}
-```js
-
+```server-nodejs
 app.get('/oauth/success', async (req, res) => {
     const account = new Account(adminClient);
 
@@ -445,7 +444,7 @@ try {
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
-        'maxAge' => $session['expire'],
+        'expires' => strtotime($session['expire']),
         'path' => '/',
     ]);
 
