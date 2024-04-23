@@ -60,6 +60,21 @@
         document.body.classList.add(className);
     }
 
+    let format = (arr) => {
+        const counts = {}; // Object to store the counts
+
+        // Loop through each item in the array
+        arr.forEach((item) => {
+            // Increment the count for each key in the object
+            counts[item] = (counts[item] || 0) + 1;
+        });
+
+        // Convert counts object into the required string format array
+        const formattedArray = Object.entries(counts).map(([key, value]) => `${key},${value}`);
+
+        return formattedArray;
+    };
+
     onMount(() => {
         if (browser) {
             const source = Cookies.get('source');
@@ -80,7 +95,7 @@
             if (utm_campaign) sources.push(`utm_campaign=${utm_campaign}`);
             if (referrer) sources.push(`referrer=${referrer}`);
 
-            sources = [...new Set(sources)];
+            sources = format(sources);
             Cookies.set('source', sources, { domain: '.appwrite.io' });
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
