@@ -6,6 +6,8 @@ difficulty: intermediate
 readtime: 15
 ---
 
+Together AI is a AI as a Service provider thats powered by an industry leading inference engine providing fast and cheap inference, the platform can generate both text and images using leading open source models such as LLaMA 3 and Stable Diffusion.
+
 Integrating Together AI into your Appwrite project is simple. This tutorial will guide you through the process of setting up the Together AI API and integrating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
