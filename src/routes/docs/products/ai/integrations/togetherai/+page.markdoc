@@ -43,12 +43,12 @@ npm install undici
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility function" %}
-For our example, our function will be able to take both `GET` and `POST` requests.
+For this example, the function will be able to take both `GET` and `POST` requests.
 
-For the `GET` request, return a static HTML page which we'll write later that will use AlpineJS to make a `POST` request to our function.
-Meanwhile, our `POST` request will use the Together AI SDK to make a request to the Together AI API.
+For the `GET` request, return a static HTML page which you will write later that will use AlpineJS to make a `POST` request to the function.
+Meanwhile, the `POST` request will use the Together AI SDK to make a request to the Together AI API.
 
-To begin with we will write the code to return the static HTML page, to do this we'll create a new `src/utils.js` file with the following code:
+To begin you'll with write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
 
 ```js
 import path from 'path';
@@ -66,7 +66,7 @@ export function getStaticFile(fileName) {
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
-We're going to write our `GET` request handler in the `src/main.js` file. This handler will return a static HTML page we'll create later.
+Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page you will create later.
 
 ```js
 import { getStaticFile } from './utils.js';
@@ -82,7 +82,7 @@ export default async ({ req, res, error }) => {
 {% /section %}
 
 {% section #step-5 step=5 title="Create static page" %}
-Create the static HTML page that our function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create the static HTML page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -90,7 +90,7 @@ Create the static HTML page that our function will serve. Create a new file at `
 </html>
 ```
 
-Within the `<html>` tag, we're going to add a `<head>` tag that will define our style and scripts.
+Within the `<html>` tag, add a `<head>` tag that will define the style and scripts.
 
 ```html
 <head>
@@ -126,7 +126,7 @@ Within the `<html>` tag, we're going to add a `<head>` tag that will define our 
 </head>
 ```
 
-And after the `</head>` tag we're going to add our `<body>` which will contain the actual form:
+And after the `</head>` tag add a `<body>` which will contain the actual form:
 
 ```html
 <body>
@@ -189,7 +189,7 @@ All of this together will render a form that will submit your question to the Ap
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Now that we're serving a basic HTML page, we can add methods necessary to integrate with Together AI's API.
+Now that you're serving a basic HTML page, add methods necessary to integrate with Together AI's API.
 
 Import `fetch` from undici and the Appwrite SDK
 
@@ -198,7 +198,7 @@ import { fetch } from 'undici'
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 ```
 
-Next after we serve the HTML we're going to add code to validate the body of the request, define our models:
+Next after you serve the HTML add code to validate the body of the request and define the models:
 
 ```js
 const models = {
@@ -215,9 +215,9 @@ if (req.body.type !== 'text' && req.body.type !== 'image') {
 }
 ```
 
-In this example we're going to be using Mistral's Mixtral 8x7B for the text generation and StabilityAI's Stable Diffusion XL for image generation. You can find more models on the [Together AI's docs](https://docs.together.ai/docs/inference-models).
+In this example you're going to be using Mistral's Mixtral 8x7B for the text generation and StabilityAI's Stable Diffusion XL for image generation. You can find more models on the [Together AI's docs](https://docs.together.ai/docs/inference-models).
 
-Next we're going to add some per model configurations:
+Next add some per model configurations:
 
 ```js
 let request = {
@@ -256,9 +256,9 @@ switch (req.body.type) {
 };
 ```
 
-This allows us to individually configure each of the models we're using, feel free to play with this configuration to get the best results for your use case.
+This allows you to individually configure each of the models you're using, feel free to play with this configuration to get the best results for your use case.
 
-Finally with our request built we can call the Together AI API and generate a prediction:
+Finally with the request built you can call the Together AI API and generate a prediction:
 
 ```js
 let response;
@@ -310,14 +310,14 @@ return res.json({ ok: true, type: req.body.type, response: resJson.choices[0].me
 ```
 
 This code sends the prompt to the Together AI API and returns the response to the user.
-The function also uploads any images generated to a bucket and returns the URL to the user. 
-Any errors encountered during the process are caught and reported for easy debugging. 
+The function also uploads any images generated to a bucket and returns the URL to the user.
+Any errors encountered during the process are caught and reported for easy debugging.
 
 The function can now be deployed to Appwrite by simply pushing the changes to your repository.
 {% /section %}
 
-{% section #step-7 step=7 title="Test our function" %}
-Now that the function is deployed, test it by visiting the function URL in your browser. 
+{% section #step-7 step=7 title="Test the function" %}
+Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the matched results.
 
 ![Testing the function](/images/docs/ai/integrations/together/demo.png)
