@@ -318,7 +318,7 @@ With our function now complete, you can deploy it to Appwrite by simply pushing 
 
 {% section #step-7 step=7 title="Test our function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser. 
-This should show the UI we created earlier and to test it we can write a prompt and click the submit button, after a brief moment you should see the completion appear below the input.
+This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the matched results.
 
 ![Testing the function](/images/docs/ai/integrations/together/demo.png)
 {% /section %}
