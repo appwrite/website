@@ -310,7 +310,7 @@ return res.json({ ok: true, type: req.body.type, response: resJson.choices[0].me
 ```
 
 This code will send our prompt to the Together AI API and return the response to the user,
-there is also extra code to automatically upload any images generated to the a bucket and return the URL to the user,
+The function also uploads any images generated to a bucket and returns the URL to the user. 
 additionally it'll also catch any errors we could encounter and reports them for easy debugging.
 
 With our function now complete, you can deploy it to Appwrite by simply pushing the change to your repository.
