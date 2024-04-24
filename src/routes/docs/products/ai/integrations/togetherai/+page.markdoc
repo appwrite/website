@@ -309,7 +309,7 @@ if (req.body.type === 'image') {
 return res.json({ ok: true, type: req.body.type, response: resJson.choices[0].message.content}, 200);
 ```
 
-This code will send our prompt to the Together AI API and return the response to the user,
+This code sends the prompt to the Together AI API and returns the response to the user.
 The function also uploads any images generated to a bucket and returns the URL to the user. 
 additionally it'll also catch any errors we could encounter and reports them for easy debugging.
 
