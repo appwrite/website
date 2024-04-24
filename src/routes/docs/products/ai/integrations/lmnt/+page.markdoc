@@ -27,11 +27,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-1. Click **Create function**.
-1. Under **Connect Git repository**, select your provider.
-1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, add the `LMNT_API_KEY`, generate it [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
-1. Follow the step-by-step wizard and create the function.
+2. Click **Create function**.
+3. Under **Connect Git repository**, select your provider.
+4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+5. In the **Variables** step, add the `LMNT_API_KEY`, generate it [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+6. Follow the step-by-step wizard and create the function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -196,7 +196,7 @@ All of this together will render a form that will submit your text to the Appwri
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Add methods necessary to integrate with the LMNT API:
+Next you'll add the methods necessary to integrate with the LMNT API.
 
 Import the `Speech` class from `lmnt-node`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file
 
