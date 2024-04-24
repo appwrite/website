@@ -82,7 +82,10 @@
                 const source = Cookies.get('source');
                 let sources = source ? decodeURIComponent(source).split(',') : [];
                 sources.push(currentSource);
-                Cookies.set('source', sources, { domain: '.appwrite.io' });
+                if(sources.length > 50) {
+                    sources.shift();
+                }
+                Cookies.set('source', sources, { domain: '.gitpod.io' });
             }
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
