@@ -12,7 +12,7 @@ We'll use context and a custom hook to manage our user's data.
 
 Create a new file `src/lib/context/user.jsx` and add the following code to it.
 
-```js
+```client-web
 import { ID } from "appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
@@ -70,7 +70,7 @@ First, wrap the `main` element with the `UserProvider` component.
 
 Update `src/App.jsx` to the following code.
 
-```js
+```client-web
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
 
@@ -93,7 +93,7 @@ Then, optionally render the `Login` component if the path is `/login`, otherwise
 
 Update `src/App.jsx` to the following code.
 
-```js
+```client-web
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
@@ -132,7 +132,7 @@ Finally, we are able to create the login page. Users will be able to login or re
 
 Create a new file `src/pages/Login.jsx` and add the following code to it.
 
-```js
+```client-web
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 
