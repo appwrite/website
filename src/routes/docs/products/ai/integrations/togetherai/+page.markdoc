@@ -46,7 +46,7 @@ npm install undici
 For this example, the function will be able to take both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page which you will write later that will use AlpineJS to make a `POST` request to the function.
-Meanwhile, the `POST` request will use the Together AI SDK to make a request to the Together AI API.
+Meanwhile, the `POST` request will use fetch to make a request to the Together AI API.
 
 To begin you'll with write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
 
