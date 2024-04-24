@@ -59,7 +59,7 @@ Find your project's ID in the **Settings** page.
 
 Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
 
-```js
+```client-web
 import { Client, Account} from 'appwrite';
 
 export const client = new Client();

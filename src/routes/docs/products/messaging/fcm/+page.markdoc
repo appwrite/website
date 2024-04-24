@@ -103,7 +103,7 @@ To update or delete providers programmatically, use an [Appwrite Server SDK](/do
 
 {% multicode %}
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

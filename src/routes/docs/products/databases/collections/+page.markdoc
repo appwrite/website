@@ -21,7 +21,7 @@ You can also create collections programmatically using a [Server SDK](/docs/sdks
 
 {% multicode %}
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
