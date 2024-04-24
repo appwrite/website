@@ -35,7 +35,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% section #step-2 step=2 title="Add Undici" %}
 Once the function is created, clone the function and open it in your development environment.
 
-Now you have the repository open, we're going to install `undici` to interact with Together AI's API.
+Once inside the cloned function, install `undici` ( an HTTP client ) to interact with Together AI's API.
 
 ```
 npm install undici
