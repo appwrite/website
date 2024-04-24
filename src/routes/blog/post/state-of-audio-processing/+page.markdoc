@@ -121,10 +121,10 @@ For music composition, OpenAI's MuseNet and Jukebox models are state of the art.
 Appwrite provides a platform to build your own audio processing applications. With our AI function templates and tutorials, you can quickly get started with voice recognition, music generation, and more.
 
 {% cards %}
-{% cards_item href="/docs/products/ai/tutorials/voice-recognition" title="Voice recongition" %}
+{% cards_item href="/docs/products/ai/tutorials/speech-recognition" title="Speech recongition" %}
 Efficiently convert speech to text
 {% /cards_item %}
-{% cards_item href="/docs/products/ai/tutorials/Music-generation" title="Music generation" %}
+{% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
 Generate music from a text prompt
 {% /cards_item %}
 {% /cards %}
