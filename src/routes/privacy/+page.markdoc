@@ -27,24 +27,6 @@ This Privacy Policy can be updated from time to time, and therefore, we ask you 
 
 What personal data we collect, why we collect it, and how it is used
 
-#### When you browse or visit our console
-
-{% table %}
----
-* Specific personal data we collect
-* Cookies
----
-* The purpose of data collection
-* Usage analytics and statistics, improving quality of service
----
-* Legal basis (GDPR only, if applicable)
-* - Consent
-  - Legitimate interest
----
-* Third parties with whom we share your personal data
-* For more information, please read our cookies policy [io Appwrite Cookies Policy](https://appwrite.io/cookies)
-{% /table %}
-
 #### When you purchase our cloud plan
 
 {% table %}
@@ -104,10 +86,11 @@ What personal data we collect, why we collect it, and how it is used
   - Mailgun
   - Orbit
   - Userlist
+  - Attio
 ---
 * Consequences of not providing the Personal Data
 * - Cannot create an account
-  - Cannot log in
+  - Cannot log in using two-factor authentication
   - Cannot enjoy features available to registered users
   - Cannot collect Informative reason for the administrator.
   - Cannot better your project development (identify reported problem)
