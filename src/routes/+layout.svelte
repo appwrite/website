@@ -85,7 +85,7 @@
                 if(sources.length > 50) {
                     sources.shift();
                 }
-                Cookies.set('source', sources, { domain: '.gitpod.io' });
+                Cookies.set('source', sources, { domain: '.appwrite.io' });
             }
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
