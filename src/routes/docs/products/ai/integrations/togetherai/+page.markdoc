@@ -313,7 +313,7 @@ This code sends the prompt to the Together AI API and returns the response to th
 The function also uploads any images generated to a bucket and returns the URL to the user. 
 Any errors encountered during the process are caught and reported for easy debugging. 
 
-With our function now complete, you can deploy it to Appwrite by simply pushing the change to your repository.
+The function can now be deployed to Appwrite by simply pushing the changes to your repository.
 {% /section %}
 
 {% section #step-7 step=7 title="Test our function" %}
