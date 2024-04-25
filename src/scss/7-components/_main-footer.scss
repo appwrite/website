@@ -6,7 +6,7 @@
   font-size:var(--web-font-size-tiny); color:hsl(var(--web-color-secondary));
 
   &-links {
-      display:flex; gap:pxToRem(16);
+    display:flex; gap:pxToRem(16);
     @media #{$break1}, #{$break2} { flex-direction:column; }
     @media #{$break3open} { align-items:center; }
   }
