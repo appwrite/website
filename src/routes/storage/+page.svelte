@@ -183,13 +183,34 @@
                             </div>
                             <div class="web-media" style="border-radius:1.5rem">
                                 <section class="web-card e-console-card is-white u-padding-0">
-                                    <header class="e-header-console u-flex u-gap-16 u-padding-24">
-                                        <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>
-                                        <div class="tag u-cross-child-end">
-                                            <code class="web-u-font-size-10">65f935a927c927931b68</code>
+                                    <header class="e-header-console u-padding-block-end-0 u-flex-vertical u-gap-16">
+                                        <div class=" u-flex u-gap-16">
+                                            <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>
+                                            <div class="tag u-cross-child-end">
+                                                <code class="web-u-font-size-10">65f935a927c927931b68</code>
+                                            </div>
+                                        </div>
+                                        <div class="tabs">
+                                            <ul class="tabs-list scroll-shadow-horizontal">
+                                                <li class="tabs-item">
+                                                    <a class="tabs-button is-selected" href="" tabindex="0" role="tab">
+                                                        <span class="text">Files </span>
+                                                    </a>
+                                                </li>
+                                                <li class="tabs-item">
+                                                    <a class="tabs-button" href="" tabindex="-1" role="tab">
+                                                        <span class="text">Usage </span>
+                                                    </a>
+                                                </li>
+                                                <li class="tabs-item">
+                                                    <a class="tabs-button" href="" tabindex="-1" role="tab">
+                                                        <span class="text">Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </header>
-                                    <div class="e-console-card-content u-padding-block-start-16 u-padding-inline-start-24">
+                                    <div class="e-console-card-content u-flex-vertical u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">
                                         <div class="u-flex u-gap-8">
                                             <div
                                                     class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"
@@ -206,7 +227,93 @@
                                                 <span class="inline-tag">4</span>
                                             </button>
                                         </div>
-                                        [CONTEN]
+                                        <div>
+                                            <div class="table" role="table" data-private="" style="">
+                                                <div class="table-thead" role="rowheader">
+                                                    <div class="table-row" role="row">
+                                                        <div style="" class="table-thead-col" role="columnheader">
+                                                            <span class="eyebrow-heading-3">Filename</span>
+                                                        </div>
+                                                        <div style="--p-col-width: 140;" class="table-thead-col is-only-desktop" role="columnheader">
+                                                            <span class="eyebrow-heading-3">ID</span>
+                                                        </div>
+                                                        <div style="--p-col-width: 100;" class="table-thead-col is-only-desktop" role="columnheader">
+                                                            <span class="eyebrow-heading-3">Type</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-tbody" role="rowgroup">
+                                                    <div class="table-row" role="row">
+                                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
+                                                                <span class="text u-trim">CiutatVella.mp4</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                            <div class="tag u-cross-child-end">
+                                                                <code class="web-u-font-size-12">637a4...936e2</code>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                                            <span class="text u-trim"><span>video/mp4</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-row" role="row">
+                                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
+                                                                <span class="text u-trim">Eixample.mp4</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                            <div class="tag u-cross-child-end">
+                                                                <code class="web-u-font-size-12">637a4...936e2</code>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                                            <span class="text u-trim"><span>video/mp4</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-row" role="row">
+                                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
+                                                                <span class="text u-trim">SantsMontjuïc.mp4</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                            <div class="tag u-cross-child-end">
+                                                                <code class="web-u-font-size-12">637a4...936e2</code>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                                            <span class="text u-trim"><span>video/mp4</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-row" role="row">
+                                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-4.png" title="Barceloneta.mp4" alt="Barceloneta.mp4" style="--size: 2rem; background-color: transparent;">
+                                                                <span class="text u-trim">Barceloneta.mp4</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                            <div class="tag u-cross-child-end">
+                                                                <code class="web-u-font-size-12">637a4...936e2</code>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                                            <span class="text u-trim"><span>video/mp4</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
                             </div>
@@ -524,8 +631,32 @@
   /* light mode */
   .e-console-card {
     &-content {  background-color:hsl(var(--color-neutral-5)); border-radius:0 0 16px 16px;  }
+    .tag { box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none; }
   }
-  .e-header-console {background-color:#fff; border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));  }
+  .e-header-console { padding:1.5rem; background-color:#fff; border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));  }
+  .tabs {
+    --p-tabs-text-color:            var(--p-tabs-text-color-default);
+    --p-tabs-text-color-default:    var(--color-neutral-50);
+    --p-tabs-text-color-hover:      var(--color-neutral-80);
+    --p-tabs-text-color-active:     var(--color-neutral-80);
+    --p-tabs-text-color-selected:   var(--color-neutral-80);
+
+    --p-tabs-bg-color:              var(--p-tabs-bg-defalut);
+    --p-tabs-bg-defalut:            var(--transparent);
+    --p-tabs-bg-color-hover:        var(--color-neutral-10);
+
+    --p-tabs-outline-color:          var(--p-tabs-outline-color-default);
+    --p-tabs-outline-color-default:  var(--transparent);
+    --p-tabs-outline-color-focus:    var(--color-neutral-1000) / 0.16;
+
+    --p-tabs-border-color:          var(--p-tabs-border-color-default);
+    --p-tabs-border-color-default:  var(--transparent);
+    --p-tabs-border-color-selected: var(--color-neutral-80);
+
+    --tabs-shadow-color:       var(--color-neutral-0);
+    --tabs-button-arrow-color: var(--color-neutral-80);
+
+  }
   .button {
     /* Light Theme */
     --p-text-color-default: var(--color-neutral-60);
@@ -548,13 +679,22 @@
     --p-tag-text-color-default:  var(--color-neutral-70);
     --p-tag-bg-color-default:    var(--web-color-offset);
     --p-tag-border-color-default:var(--web-color-offset);
-    box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none;
   }
+
   .inline-tag {
     --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-60));
     --p-inline-tag-bg-color-default:    var(--color-neutral-10);
   }
   .heading-level-5 { --p-heading-text-color:var(--color-neutral-80); }
+  .table {
+    --p-table-bg-color: var(--color-neutral-0);
+    --p-table-bg-color-focus: var(--color-neutral-5);
+    //--p-table-bg-even-row-color: var(--color-neutral-0);
+    --p-table-border-color: var(--color-neutral-10);
+    --p-tbody-color-text: var(--color-neutral-60);
+    box-shadow: none;
+    border-radius: 16px 0 16px 0;
+  }
 
   .e-pink-input-light {
     --p-text-color-default: var(--color-neutral-60);
