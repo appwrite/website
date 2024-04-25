@@ -6,12 +6,14 @@ difficulty: intermediate
 readtime: 15
 ---
 
-Integrating fal.ai into your Appwrite project is simple. This tutorial will guide you through the process of setting up the fal.ai API and integrating it into your Appwrite project.
+fal.ai is an AI inference platform with popular models such as Stable Diffusion XL, ControlNet, Whisper available as ready-to-use APIs so that you can easily integrate them into your applications.
+
+This tutorial will guide you through the process of setting up the fal.ai API to generate an image using the SDXL model and integrating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite Project
-- A [fal.ai API Key](https://replicate.com/docs/reference/http#authentication)
+- A [fal.ai API Key](https://fal.ai/docs/authentication/key-based)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
