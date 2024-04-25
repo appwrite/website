@@ -45,7 +45,7 @@ npm install @fal-ai/serverless-client
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility function" %}
-For our example, our function will be able to take both `GET` and `POST` requests.
+In this example, the function will be able to accept both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page which we'll write later that will use AlpineJS to make a `POST` request to our function.
 Meanwhile, our `POST` request will use the fal.ai SDK to make a request to the fal.ai API.
