@@ -420,97 +420,22 @@
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96">
+                    <div class="web-grid-1-1">
                         <div class="web-hero is-align-start web-u-max-width-380">
-                            <div class="web-display web-u-color-text-primary">
-                                Visit the community
-                            </div>
-                            <p class="web-description">
-                                Discover Appwrite's community across platforms and join the fun.
+                            <span class="web-badges web-eyebrow">APIs_</span>
+                            <h2 class="web-title web-u-color-text-primary">What you can do with Storage APIs</h2>
+                            <p class="aw-main-body-500 web-u-margin-block-start-0">
+                                Appwrite's Storage APIs allow you to create and update your files, apply image transformations, and more.
                             </p>
+                            <a
+                                    href="/docs"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="web-button u-margin-block-start-16"
+                            >
+                                <span>View docs</span>
+                            </a>
                         </div>
-                        <ul class="web-multi-columns-1" style:--p-col-gap="-1rem">
-                            <li>
-                                <a
-                                    href="/discord"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem;rotate: 6deg"
-                                >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
-                                        <span
-                                            class="icon-discord web-u-font-size-40"
-                                            aria-hidden="true"
-                                            aria-label="Discord"
-                                        />
-                                    </div>
-                                    <div class="web-title u-margin-block-start-auto">
-                                        17K+ members
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://twitter.com/intent/follow?screen_name=appwrite"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem; rotate: 2deg"
-                                >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
-                                        <span
-                                            class="web-icon-x web-u-font-size-40"
-                                            aria-hidden="true"
-                                            aria-label="X"
-                                        />
-                                    </div>
-                                    <div class="web-title u-margin-block-start-auto">
-                                        128K+ followers
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://github.com/appwrite/appwrite"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem; rotate: -10deg"
-                                >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
-                                        <span
-                                            class="icon-github web-u-font-size-40"
-                                            aria-hidden="true"
-                                            aria-label="GitHub"
-                                        />
-                                    </div>
-                                    <div class="web-title u-margin-block-start-auto">
-                                        {GITHUB_STARS}+ stargazers
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.youtube.com/c/appwrite?sub_confirmation=1"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
-                                    style="--card-padding:2rem; rotate: -6deg"
-                                >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
-                                        <span
-                                            class="icon-youtube web-u-font-size-40"
-                                            aria-hidden="true"
-                                            aria-label="Youtube"
-                                        />
-                                    </div>
-                                    <div class="web-title u-margin-block-start-auto">
-                                        4K+ subscribers
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
