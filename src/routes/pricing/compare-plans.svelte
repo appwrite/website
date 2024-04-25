@@ -187,7 +187,8 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Start trial',
+                    // pro: 'Start trial',
+                    pro: 'Start building',
                     scale: 'Coming soon'
                 }
             ]
@@ -401,7 +402,8 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-sub-body-500">Start trial</span>
+                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                    <span class="web-sub-body-500">Start building</span>
                                 </a>
                             </div>
                         </div>
