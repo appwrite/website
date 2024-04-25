@@ -1,19 +1,12 @@
 <script lang="ts">
-    import { Carousel } from '$lib/components';
-    import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import MetricCard from '$lib/components/MetricCard.svelte';
     import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import type { EventCardProps } from './EventCard.svelte';
-    import EventCard from './EventCard.svelte';
-    import type { ProjectCardProps } from './ProjectCard.svelte';
-    import ProjectCard from './ProjectCard.svelte';
 
     export let data;
 
@@ -189,9 +182,15 @@
                                 </p>
                             </div>
                             <div class="web-media" style="border-radius:1.5rem">
-                                <div class="web-card is-white">
-
-                                </div>
+                                <section class="web-card e-console-card is-white u-padding-0">
+                                    <header class="e-header-console u-flex u-gap-16 u-padding-24">
+                                        <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>
+                                        <div class="tag u-cross-child-end">
+                                            <code class="web-u-font-size-10">65f935a927c927931b68</code>
+                                        </div>
+                                    </header>
+                                    <div class="e-console-card-content u-padding-block-start-16 u-padding-inline-start-24">[CONTEN]</div>
+                                </section>
                             </div>
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.04;"></div>
@@ -504,6 +503,19 @@
 </Main>
 
 <style lang="scss">
+  /* light mode */
+  .e-console-card {
+    &-content {  background-color:hsl(var(--color-neutral-5)); border-radius:0 0 16px 16px;  }
+  }
+  .e-header-console {background-color:#fff; border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));  }
+  .tag {
+    --p-tag-text-color-default:  var(--color-neutral-70);
+    --p-tag-bg-color-default:    var(--web-color-offset);
+    --p-tag-border-color-default:var(--web-color-offset);
+    box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none;
+  }
+  .heading-level-5 { --p-heading-text-color:var(--color-neutral-80); }
+
   .e-pink-input-light {
     --p-text-color-default: var(--color-neutral-60);
     --p-bg-color-default: var(--color-neutral-0);
