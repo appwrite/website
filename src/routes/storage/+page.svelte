@@ -194,19 +194,19 @@
                                         <div class="tabs">
                                             <ul class="tabs-list scroll-shadow-horizontal">
                                                 <li class="tabs-item">
-                                                    <a class="tabs-button is-selected" href="" tabindex="0" role="tab">
+                                                    <button class="tabs-button is-selected" tabindex="0" role="tab">
                                                         <span class="text">Files </span>
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li class="tabs-item">
-                                                    <a class="tabs-button" href="" tabindex="-1" role="tab">
+                                                    <button class="tabs-button" tabindex="-1" role="tab">
                                                         <span class="text">Usage </span>
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li class="tabs-item">
-                                                    <a class="tabs-button" href="" tabindex="-1" role="tab">
+                                                    <button class="tabs-button" tabindex="-1" role="tab">
                                                         <span class="text">Settings</span>
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -523,6 +523,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-hero is-center web-u-max-width-800">
+                        <h2 class="web-display web-u-color-text-primary">Easily manage your storage infrastructure</h2>
+                        <p class="aw-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto">
+                            Appwrite is a 100% open source project, giving you the flexibility and support you need to get your project started.
+                        </p>
+                        <a
+                                href=""
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
+                        >
+                            <span>Join the community</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
