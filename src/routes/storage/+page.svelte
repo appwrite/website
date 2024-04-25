@@ -328,7 +328,7 @@
                                     Manage security, permissions, compression, and more with straightforward Bucket settings.
                                 </p>
                             </div>
-                            <div class="web-card is-white">
+                            <div class="web-card is-white u-padding-20">
                                 <div class="u-flex-vertical u-gap-16">
                                     <div class="-u-flex-vertical">
                                         <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>
@@ -352,7 +352,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="web-card is-white">
+                            <div class="web-card is-white u-padding-20">
                                 <div class="u-flex-vertical u-gap-16">
                                     <div class="-u-flex-vertical">
                                         <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>
@@ -372,7 +372,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="web-card is-white">
+                            <div class="web-card is-white u-padding-20">
                                 <div class="u-flex-vertical u-gap-16">
                                     <div class="-u-flex-vertical">
                                         <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>
