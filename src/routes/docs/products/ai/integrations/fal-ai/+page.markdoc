@@ -174,7 +174,7 @@ And after the `</head>` tag, add our `<body>` tag with the following content:
 </body>
 ```
 
-All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call fal.ai's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
+All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will invoke fal.ai's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
