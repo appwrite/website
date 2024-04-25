@@ -148,7 +148,7 @@
         </div>
 
         <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
+                class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
         >
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
@@ -159,10 +159,10 @@
                             Organize your buckets and files with ease in your dashboard, as well as manage security, permissions, compression, and more.
                         </p>
                         <a
-                            href="https://builtwith.appwrite.io"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
+                                href="https://builtwith.appwrite.io"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span>Learn more</span>
                         </a>
@@ -543,6 +543,50 @@
                     </div>
                 </div>
             </div>
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container web-u-max-width-993">
+                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                        <ul class="web-info-boxes items-centered web-sub-body-500">
+                            <li class="web-info-boxes-item">
+                                <img
+                                        src="/images/icons/gradients/self-hosted.svg"
+                                        width="40"
+                                        height="40"
+                                        alt=""
+                                />
+                                <h3 class="web-info-boxes-title u-main-center">SJoin the community and share knowledge</h3>
+                                <p class="web-info-boxes-content">
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </li>
+                            <li class="web-info-boxes-item">
+                                <img
+                                        src="/images/icons/gradients/self-hosted.svg"
+                                        width="40"
+                                        height="40"
+                                        alt=""
+                                />
+                                <h3 class="web-info-boxes-title u-main-center">Self-host or go Cloud</h3>
+                                <p class="web-info-boxes-content">
+                                    Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.
+                                </p>
+                            </li>
+                            <li class="web-info-boxes-item">
+                                <img
+                                        src="/images/icons/gradients/lock.svg"
+                                        width="40"
+                                        height="40"
+                                        alt=""
+                                />
+                                <h3 class="web-info-boxes-title u-main-center">No vendor lock-in</h3>
+                                <p class="web-info-boxes-content">
+                                    Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -552,8 +596,8 @@
                     <div class="web-grid-1-1-opt-2 u-gap-32">
                         <div class="">
                             <div
-                                class="web-u-max-inline-size-none-mobile"
-                                class:web-u-max-width-380={!submitted}
+                                    class="web-u-max-inline-size-none-mobile"
+                                    class:web-u-max-width-380={!submitted}
                             >
                                 <section class="u-flex-vertical web-u-gap-20">
                                     <h1 class="web-title web-u-color-text-primary">
@@ -570,30 +614,30 @@
                         {#if submitted}
                             <div class="u-flex u-gap-8 u-cross-center">
                                 <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 18 18"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <circle
-                                        cx="9"
-                                        cy="9"
-                                        r="8"
-                                        fill="#FD366E"
-                                        fill-opacity="0.08"
-                                        stroke="#FD366E"
-                                        stroke-opacity="0.32"
-                                        stroke-width="1.2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                            cx="9"
+                                            cy="9"
+                                            r="8"
+                                            fill="#FD366E"
+                                            fill-opacity="0.08"
+                                            stroke="#FD366E"
+                                            stroke-opacity="0.32"
+                                            stroke-width="1.2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
                                     />
                                     <path
-                                        d="M5.25 10.5L7.75 12.5L12.75 6"
-                                        stroke="#E4E4E7"
-                                        stroke-width="1.2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                            d="M5.25 10.5L7.75 12.5L12.75 6"
+                                            stroke="#E4E4E7"
+                                            stroke-width="1.2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
                                     />
                                 </svg>
 
@@ -603,36 +647,36 @@
                             </div>
                         {:else}
                             <form
-                                method="post"
-                                on:submit|preventDefault={submit}
-                                class="u-flex-vertical u-gap-16"
+                                    method="post"
+                                    on:submit|preventDefault={submit}
+                                    class="u-flex-vertical u-gap-16"
                             >
                                 <div class="u-flex u-flex-vertical u-gap-4">
                                     <label for="name">Your name</label>
                                     <input
-                                        class="web-input-text"
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        id="name"
-                                        name="name"
-                                        required
-                                        bind:value={name}
+                                            class="web-input-text"
+                                            type="text"
+                                            placeholder="Enter your name"
+                                            id="name"
+                                            name="name"
+                                            required
+                                            bind:value={name}
                                     />
                                 </div>
                                 <div class="u-flex u-flex-vertical u-gap-4">
                                     <label for="email">Your email</label>
                                     <input
-                                        class="web-input-text"
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        required
-                                        id="email"
-                                        name="email"
-                                        bind:value={email}
+                                            class="web-input-text"
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            required
+                                            id="email"
+                                            name="email"
+                                            bind:value={email}
                                     />
                                 </div>
                                 <button type="submit" class="web-button" disabled={submitting}
-                                    >Sign up</button
+                                >Sign up</button
                                 >
                                 {#if error}
                                     <span class="text">
@@ -646,7 +690,7 @@
             </div>
 
             <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+                    class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
                 <div class="web-container">
                     <PreFooter />
@@ -770,7 +814,7 @@
   }
 
 
-    .hero {
+  .hero {
     display: grid;
     grid-template-columns: 30.0625rem minmax(0, 1fr);
     gap: 5vw;
@@ -810,93 +854,94 @@
       }
     }
   }
-    .hero-flipped {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 30.0625rem;
-      gap: 5vw;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+  .hero-flipped {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30.0625rem;
+    gap: 5vw;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 
-      @media (max-width: 1023px) {
-        display: block;
+    @media (max-width: 1023px) {
+      display: block;
 
-        overflow: hidden;
-        gap: 2rem;
+      overflow: hidden;
+      gap: 2rem;
 
-        > :first-child {
-          max-width: 40rem;
-          margin-inline: auto;
-        }
+      > :first-child {
+        max-width: 40rem;
+        margin-inline: auto;
+      }
 
-        > :nth-child(2) {
-          scale: 1;
-          width: 100%;
-          height: 24rem;
-          position: relative;
+      > :nth-child(2) {
+        scale: 1;
+        width: 100%;
+        height: 24rem;
+        position: relative;
 
-          img {
-            position: absolute;
-            display: block;
-            width: 40rem;
+        img {
+          position: absolute;
+          display: block;
+          width: 40rem;
 
-            left: 50%;
-            top: 50%;
-            transform: translate(-30%, -50%);
+          left: 50%;
+          top: 50%;
+          transform: translate(-30%, -50%);
 
-            max-block-size: unset;
-            max-inline-size: unset;
-          }
+          max-block-size: unset;
+          max-inline-size: unset;
         }
       }
     }
+  }
 
-    .absolute-container {
-        position: absolute;
-        width: 1720px;
-        min-height: 100%;
-        pointer-events: none;
-        left: 50%;
-        transform: translateX(-50%);
+  .absolute-container {
+    position: absolute;
+    width: 1720px;
+    min-height: 100%;
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pink-gradient {
+    width: 842px;
+    height: 719px;
+    flex-shrink: 0;
+
+    border-radius: 842px;
+    opacity: 0.4;
+    background: radial-gradient(50% 46.73% at 50% 53.27%, #fe9567 28.17%, #fd366e 59.38%);
+    filter: blur(150px);
+
+    position: absolute;
+    right: -250px;
+    top: 00px;
+  }
+
+  .green-gradient {
+    border-radius: 771px;
+    opacity: 0.3;
+    background: radial-gradient(49.55% 43.54% at 47% 50.69%, #e7f8f7 0%, #85dbd8 100%);
+    filter: blur(150px);
+    width: 571px;
+    height: 771px;
+    position: absolute;
+
+    left: -200px;
+    bottom: -300px;
+  }
+
+  .web-multi-columns-1 {
+    .web-card {
+      border: 1px solid hsl(var(--web-color-offset));
     }
-
-    .pink-gradient {
-        width: 842px;
-        height: 719px;
-        flex-shrink: 0;
-
-        border-radius: 842px;
-        opacity: 0.4;
-        background: radial-gradient(50% 46.73% at 50% 53.27%, #fe9567 28.17%, #fd366e 59.38%);
-        filter: blur(150px);
-
-        position: absolute;
-        right: -250px;
-        top: 00px;
+    @media (max-width: 1235px) {
+      --p-col-gap: 2rem !important;
+      .web-card {
+        rotate: none !important;
+      }
     }
-
-    .green-gradient {
-        border-radius: 771px;
-        opacity: 0.3;
-        background: radial-gradient(49.55% 43.54% at 47% 50.69%, #e7f8f7 0%, #85dbd8 100%);
-        filter: blur(150px);
-        width: 571px;
-        height: 771px;
-        position: absolute;
-
-        left: -200px;
-        bottom: -300px;
-    }
-
-    .web-multi-columns-1 {
-        .web-card {
-            border: 1px solid hsl(var(--web-color-offset));
-        }
-        @media (max-width: 1235px) {
-            --p-col-gap: 2rem !important;
-            .web-card {
-                rotate: none !important;
-            }
-        }
-    }
+  }
 </style>
+
