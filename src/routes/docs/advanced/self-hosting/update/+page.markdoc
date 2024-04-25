@@ -28,6 +28,10 @@ This is the parent directory where you will find the appwrite directory, inside 
 
 # Installing the next version {% #install-next-version %}
 
+{% info title="Parent directory naming" %}
+Your Appwrite installation's parent directory name is expected to be `appwrite`. Changing the directory name will result in a miss-matched docker project names.
+{% /info %}
+
 ## Unix
 
 ```sh
