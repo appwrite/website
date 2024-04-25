@@ -196,7 +196,7 @@
                                         <li class="web-form-item is-column-span-2">
                                             <input
                                                 class="web-input-text"
-                                                type="url"
+                                                type="text"
                                                 placeholder="OSS license"
                                                 aria-label="OSS license"
                                                 bind:value={license}
