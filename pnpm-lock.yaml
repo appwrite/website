@@ -24,7 +24,7 @@ devDependencies:
     version: 0.16.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
+    version: github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.3)(svelte@4.2.12)
@@ -6707,8 +6707,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f}
+  github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c7bdcda59371f2b4db92a45ef0f7ba430a150792}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: true
