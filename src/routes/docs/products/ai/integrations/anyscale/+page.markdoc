@@ -8,7 +8,7 @@ readtime: 15
 
 The Anyscale API is a powerful tool that can be used to generate text using the leading open source models. This tutorial will guide you through the process of setting up the Anyscale API and integrating it into your Appwrite project.
 
-We'll create a simple function that takes a text prompt and generates a completion using Mistral's Mixtral 8x7B model. Then, using Appwrite functions we'll create a user interface that allows users to input text and see the generated completion.
+You'll create a simple function that takes a text prompt and generates a completion using Mistral's Mixtral 8x7B model. Then, using Appwrite functions you'll create a user interface that allows users to input text and see the generated completion.
 
 # Prerequisites {% #prerequisites %}
 
