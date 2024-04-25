@@ -189,7 +189,25 @@
                                             <code class="web-u-font-size-10">65f935a927c927931b68</code>
                                         </div>
                                     </header>
-                                    <div class="e-console-card-content u-padding-block-start-16 u-padding-inline-start-24">[CONTEN]</div>
+                                    <div class="e-console-card-content u-padding-block-start-16 u-padding-inline-start-24">
+                                        <div class="u-flex u-gap-8">
+                                            <div
+                                                    class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"
+                                                    style="--amount-of-buttons:1"
+                                            >
+                                                <input class="input-text e-pink-input-light" type="search" placeholder="Search" />
+                                                <div class="icon-search" aria-hidden="true"></div>
+                                            </div>
+                                            <button class="button is-secondary" aria-label="filter" style="padding:10px 12px">
+                                                <span class="icon-filter" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="button is-secondary" type="button" style="padding:12px">
+                                                <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>
+                                                <span class="inline-tag">4</span>
+                                            </button>
+                                        </div>
+                                        [CONTEN]
+                                    </div>
                                 </section>
                             </div>
                         </div>
@@ -508,11 +526,33 @@
     &-content {  background-color:hsl(var(--color-neutral-5)); border-radius:0 0 16px 16px;  }
   }
   .e-header-console {background-color:#fff; border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));  }
+  .button {
+    /* Light Theme */
+    --p-text-color-default: var(--color-neutral-60);
+    --p-button-color-default: var(--color-neutral-5);
+    --p-border-color-default: var(--color-neutral-15);
+
+    --p-text-color-hover: var(--p-text-color-default);
+    --p-button-color-hover: var(--color-neutral-10);
+    --p-border-color-hover: var(--p-border-color-default);
+
+    --p-text-color-focus: var(--p-text-color-default);
+    --p-button-color-focus: var(--p-button-color-default);
+    --p-border-color-focus: var(--transparent);
+
+    --p-text-color-active: var(--color-neutral-90);
+    --p-button-color-active: var(--color-neutral-15);
+    --p-border-color-active: var(--color-neutral-15);
+  }
   .tag {
     --p-tag-text-color-default:  var(--color-neutral-70);
     --p-tag-bg-color-default:    var(--web-color-offset);
     --p-tag-border-color-default:var(--web-color-offset);
     box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none;
+  }
+  .inline-tag {
+    --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-60));
+    --p-inline-tag-bg-color-default:    var(--color-neutral-10);
   }
   .heading-level-5 { --p-heading-text-color:var(--color-neutral-80); }
 
