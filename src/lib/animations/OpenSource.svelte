@@ -184,7 +184,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">38k+ GitHub Stars</div>
+                <div class="web-title u-margin-block-start-auto">41k+ GitHub Stars</div>
             </a>
 
             <a
@@ -214,7 +214,7 @@
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">4k+ Youtube Subscribers</div>
+                <div class="web-title u-margin-block-start-auto">6k+ Youtube Subscribers</div>
             </a>
 
             <a
@@ -229,7 +229,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">18k+ Code Commits</div>
+                <div class="web-title u-margin-block-start-auto">20k+ Code Commits</div>
             </a>
         </div>
     </div>
