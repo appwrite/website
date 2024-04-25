@@ -30,7 +30,7 @@ export const getAllChangelogEntries = async () => {
     });
 };
 
-export const CHANGELOG_DEPENDENCY = 'changelog';
+export const CHANGELOG_DEPENDENCY = 'dependency:changelog';
 
 export const CHANGELOG_KEY = 'changelog';
 
