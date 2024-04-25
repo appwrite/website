@@ -207,7 +207,7 @@ try {
 }
 ```
 
-Find more models on the [fal.ai documentation](https://fal.ai/models).
+Additional models can be found in the [fal.ai model catalogue](https://fal.ai/models).
 
 With the function now complete, deploy it to Appwrite by simply pushing the changes to your repository.
 {% /section %}
