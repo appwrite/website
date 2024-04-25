@@ -7,6 +7,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import DeveloperCard from "$routes/DeveloperCard.svelte";
 
     export let data;
 
@@ -483,6 +484,42 @@
                             </section>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+                        <li class="u-flex-vertical web-u-gap-20">
+                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                                <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
+                                <div class="web-user-box">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
+                                    <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="u-flex-vertical web-u-gap-20">
+                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                                <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
+                                <div class="web-user-box">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
+                                    <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="u-flex-vertical web-u-gap-20">
+                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                                <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
+                                <div class="web-user-box">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
+                                    <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
