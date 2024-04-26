@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   '@appwrite.io/console':
-    specifier: ^0.4.2
-    version: 0.4.2
+    specifier: ^0.6.1
+    version: 0.6.1
   '@appwrite.io/pink':
     specifier: '0.16'
     version: 0.16.0
@@ -158,8 +158,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.23
     dev: true
 
-  /@appwrite.io/console@0.4.2:
-    resolution: {integrity: sha512-WUltkC5q7RIK7TDCb+qTXq2cPtBek9k98Ilqcn8Lv3rN5ZuK0x33AwcpTAEPD0DE9phWXmvoV1a8H5PGMcGKew==}
+  /@appwrite.io/console@0.6.1:
+    resolution: {integrity: sha512-XlyitzDGmuBzJLBtFuZzL9vS4ZgAWzxuvWrILc7LwdNh2oklzhbJ8BTO8/CAxjxOwR6UOLKjXdoQnqOMqR66Yw==}
     dependencies:
       cross-fetch: 3.1.5
       isomorphic-form-data: 2.0.0
