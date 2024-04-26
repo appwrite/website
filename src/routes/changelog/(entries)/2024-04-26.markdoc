@@ -43,4 +43,9 @@ You can update by following the upgrade docs.
 
 Note that upgrading from 1.5.x -> 1.5.5 requires running migration. For a detailed view of changes, visit the full release notes.
 
-Please remember to back up and run migration!
+Please remember to back up and run migration.
+
+{% arrow_link href="https://github.com/appwrite/appwrite/releases/tag/1.5.5" %}
+View the changelog on GitHub
+{% /arrow_link %}
+
