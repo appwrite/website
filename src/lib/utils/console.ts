@@ -5,8 +5,7 @@ import { Query, type Models } from '@appwrite.io/console';
 
 const client = new Client();
 
-// client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
-client.setEndpoint('https://8080-appwritelabs-cloud-dwzia3g7000.ws-us110.gitpod.io/v1').setProject('console');
+client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
 
 const account = new Account(client);
 const teams = new Teams(client);
