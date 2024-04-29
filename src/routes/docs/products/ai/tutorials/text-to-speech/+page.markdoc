@@ -36,9 +36,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, clone the function and open it in your development environment.
 
-Since we're going to be making requests to the HuggingFace API and fetch isn't included in Node.js 16, so we're going to install the `undici` package.
-
-Install the `node-appwrite` package so we can upload the generated audio file to Appwrite Storage.
+Install the `undici` package (global `fetch` is not available in Node.js 16) to make requests to the Hugging Face API.
+Install the `node-appwrite` package, to simplify uploading the generated audio file to Appwrite Storage.
 
 ```bash
 npm install undici node-appwrite
