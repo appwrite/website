@@ -131,16 +131,16 @@ Within the `<html>` tag, add a `<head>` tag with the necessary meta tags, styles
 And after the `</head>` tag, add our `<body>` tag with the following content:
 
 ```html
-<body>
+<body class="theme-dark">
   <main class="main-content">
     <div class="top-cover u-padding-block-end-56">
       <div class="container">
         <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
-          <h1 class="heading-level-1">fal.ai Demo</h1>
+          <h1 class="heading-level-1">fal.ai demo</h1>
           <code class="u-un-break-text"></code>
         </div>
         <p class="body-text-1 u-normal u-margin-block-start-8" style="max-width: 50rem">
-          Use this page to test your implementation with FAL. Enter
+          Use this page to test your implementation with fal.ai. Enter
           text and receive the model output as a response.
         </p>
       </div>
@@ -164,7 +164,7 @@ And after the `</head>` tag, add our `<body>` tag with the following content:
               <div class="u-flex u-gap-12">
                 <h5 class="eyebrow-heading-2">Result:</h5>
               </div>
-              <img class="u-max-width-400" x-bind:src="result.src" alt="FAL output" />
+              <img class="u-max-width-400" x-bind:src="result.src" alt="fal.ai output" />
             </div>
           </div>
         </template>
@@ -187,32 +187,31 @@ Import the fal.ai SDK at the top of the `main.js` file:
 import * as fal from '@fal-ai/serverless-client';
 ```
 
-After handling the `GET` requests, initialize the fal.ai SDK:
+Handle the `POST` requests to the function. Initialize the fal.ai SDK at the end of the handler function:
 
 ```js
 fal.config({ credentials: process.env.FAL_API_KEY });
 ```
 
-Next, make the request to generate an image using the SDXL model:
+Make the request to generate an image using the SDXL model, and return the result:
+
 ```js
-try {
-  const result = await fal.subscribe('fal-ai/fast-sdxl', {
-    input: {
-      prompt: req.body.prompt,
-    },
-  });
-  return res.json({ ok: true, src: result.images[0].url });
-} catch (e) {
-  error(e);
-  return res.json({ ok: false, error: 'Failed to generate image' }, 500);
-}
+const result = await fal.subscribe('fal-ai/fast-sdxl', {
+  input: {
+    prompt: req.body.prompt,
+  },
+});
+return res.json({ ok: true, src: result.images[0].url });
 ```
 
-Additional models can be found in the [fal.ai model catalogue](https://fal.ai/models).
+With the function complete, deploy it to Appwrite by pushing the changes to your repository.
 
-With the function now complete, deploy it to Appwrite by simply pushing the changes to your repository.
+Additional models can be found in the [fal.ai model catalogue](https://fal.ai/models). 
+
 {% /section %}
 
 {% section #step-7 step=7 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in a browser. The UI created earlier will be visible. To test it, write a prompt and click the submit button, after a brief the completion should appear below the input.
+
+![Testing the function](/images/docs/ai/integrations/fal-ai/demo.png)
 {% /section %}
