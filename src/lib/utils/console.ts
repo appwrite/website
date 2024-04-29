@@ -16,13 +16,23 @@ enum BillingPlan {
     SCALE = 'tier-2'
 }
 
+type Source = {
+    $id: string,
+    fingerprint: string,
+    referrer: string,
+    ref: string,
+    utmSource: string,
+    utmCampaign: string,
+    utmMedium: string,
+}
+
 export async function createSource(
-    ref: string|null,
-    referrer: string|null,
-    utmSource: string|null,
-    utmCampaign: string|null,
-    utmMedium: string|null,
-): Promise<any> {
+    ref: string | null,
+    referrer: string | null,
+    utmSource: string | null,
+    utmCampaign: string | null,
+    utmMedium: string | null,
+): Promise<Source> {
     const path = `/console/sources`;
     const params = {
         ref,
@@ -63,7 +73,7 @@ export function getAppwriteUser(): Promise<AppwriteUser | null> {
     return account
         .get()
         .then((res) => res)
-        .catch(() =>  null);
+        .catch(() => null);
 }
 
 function createAppwriteUser() {
