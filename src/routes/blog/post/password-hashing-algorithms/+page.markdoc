@@ -74,7 +74,7 @@ PBKDF2 is a widely-used password hashing algorithm that iteratively applies a ps
 
 Appwrite Authentication also leverages password hashing algorithms to allow developers to secure their users’ passwords via password hashing algorithms. Appwrite uses the `Argon2id` algorithm to hash the password when a user creates an account from a client-side application. Appwrite’s SDKs offer a simple abstraction for the Appwrite Accounts API to let developers implement this, like the following example:
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()

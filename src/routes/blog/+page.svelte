@@ -132,30 +132,6 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
-                                        <li>
-                                            <a
-                                                    href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
-                                                    aria-label="Author twitter"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                            >
-                                                <span class="web-icon-x" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                    href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
-                                                    aria-label="Author LinkedIn"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                            >
-                                                <span class="web-icon-linkedin" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <a
                                         href={featured.href}
