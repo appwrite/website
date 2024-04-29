@@ -3,11 +3,6 @@ layout: article
 title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 You can send custom sms messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding sms messaging to your app.
 
@@ -52,7 +47,7 @@ During development, you can add targets to existing accounts by navigating to **
 ![Add a target](/images/docs/messaging/targets/add-targets.png)
 {% /only_light %}
 
-You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/1.5.x/server-nodejs/messaging#createSubscriber) endpoint.
+You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
 
 {% multicode %}
 ```server-nodejs
@@ -291,7 +286,7 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 ![Add a target](/images/docs/messaging/topics/create-topics.png)
 {% /only_light %}
 
-You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/1.5.x/server-nodejs/messaging#createTopic).
+You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).
 {% multicode %}
 ```server-nodejs
 const sdk = require('node-appwrite');
