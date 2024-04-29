@@ -16,30 +16,20 @@ enum BillingPlan {
     SCALE = 'tier-2'
 }
 
-type Source = {
-    $id: string,
-    fingerprint: string,
-    referrer: string,
-    ref: string,
-    utmSource: string,
-    utmCampaign: string,
-    utmMedium: string,
-}
-
 export async function createSource(
     ref: string | null,
     referrer: string | null,
     utmSource: string | null,
     utmCampaign: string | null,
-    utmMedium: string | null,
-): Promise<Source> {
+    utmMedium: string | null
+): Promise<any> {
     const path = `/console/sources`;
     const params = {
         ref,
         referrer,
         utmSource,
         utmCampaign,
-        utmMedium,
+        utmMedium
     };
 
     const uri = new URL(client.config.endpoint + path);
