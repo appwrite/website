@@ -16,7 +16,7 @@ For example, we can create a team called `teachers` with roles `maths`, `science
 The creator of the team is also granted the `owner` role. **Only those with the `owner` role can invite and remove members**.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Teams } from "appwrite";
 
 const client = new Client();
@@ -40,7 +40,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -65,7 +65,7 @@ void main() { // Init SDK
   });
 }
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -104,7 +104,7 @@ val response = teams.create(
 You can invite members to a team by creating team memberships. For example, inviting "David" a math teacher, to the teachers team.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Teams } from "appwrite";
 
 const client = new Client();
@@ -128,7 +128,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -153,7 +153,7 @@ void main() { // Init SDK
   });
 }
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()

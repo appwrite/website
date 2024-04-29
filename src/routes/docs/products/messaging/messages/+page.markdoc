@@ -226,11 +226,9 @@ Here are the different components that make up a message.
 {% /tabs %}
 
 # Sending a message {% #create-a-message %}
-You can create a message with a Server SDK.
-
-You can send a push notification like this.
+You can create a message with a Server SDK. You can send a push notification like this.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -575,7 +573,7 @@ Learn more about sending a push notification
 You can send an email like this.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -880,7 +878,7 @@ Learn more about sending an email
 You can send an SMS message like this.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

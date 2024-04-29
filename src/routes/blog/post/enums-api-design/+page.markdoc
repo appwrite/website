@@ -74,7 +74,7 @@ By being aware of these pitfalls and employing strategies to avoid them, you can
 
 With the latest release of Appwrite, we have taken steps to improve type safety within our SDKs by leveraging enums. We have replaced all magic literals, such as constants needed for OAuth adapters, with enums to simplify the developer experience and make it less error-prone for all those who are building with Appwrite. This change exemplifies our commitment to robust and user-friendly API design.
 
-```js
+```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
