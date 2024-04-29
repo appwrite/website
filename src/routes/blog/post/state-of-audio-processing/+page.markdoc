@@ -61,6 +61,8 @@ plt.show()
 
 This code makes a simple sound wave, applies a Fourier transform to it, and plots the amount of each frequency present in the sound.
 
+![Fourier transform plot](/images/blog/state-of-audio-processing/fourier.png)
+
 ## Deep neural networks
 
 Deep neural networks (DNNs) are a way to make computers learn to recognize patterns in data, like recognizing different instruments in a piece of music. They work by passing the data through several layers that gradually pick out more and more complex features.
@@ -112,9 +114,9 @@ One of the best ASR systems is DeepSpeech, developed by Mozilla. It uses a deep 
 
 Generative AI models can create new sounds and music by learning patterns from existing audio data. This opens up exciting possibilities for music creation, sound design, and personalized audio content.
 
-WaveNet, developed by DeepMind in 2016, was a breakthrough in audio generation. It can generate realistic speech and musical sounds by predicting the next sample in an audio waveform based on the samples that came before it. Google's Tacotron 2 built upon WaveNet to create high-quality synthetic speech that's nearly indistinguishable from human speech.
+[WaveNet, developed by DeepMind in 2016](https://arxiv.org/abs/1609.03499), was a breakthrough in audio generation. It can generate realistic speech and musical sounds by predicting the next sample in an audio waveform based on the samples that came before it. [Google's Tacotron 2](https://arxiv.org/abs/1712.05884) built upon WaveNet to create high-quality synthetic speech that's nearly indistinguishable from human speech.
 
-For music composition, OpenAI's MuseNet and Jukebox models are state of the art. MuseNet can generate 4-minute musical compositions with 10 different instruments, while Jukebox can generate music in the style of popular genres and artists. These models demonstrate the potential for AI to be a powerful tool for musicians and composers.
+For music composition, [OpenAI's MuseNet](https://openai.com/blog/musenet) and [Jukebox](https://arxiv.org/abs/2005.00341) models are important developments. MuseNet can generate 4-minute musical compositions with 10 different instruments, while Jukebox can generate music in the style of popular genres and artists. These models demonstrate the potential for AI to be a powerful tool for musicians and composers.
 
 # Get started with audio processing in Appwrite
 
