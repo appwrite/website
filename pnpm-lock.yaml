@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   '@appwrite.io/console':
-    specifier: ^0.4.2
-    version: 0.4.2
+    specifier: ^0.6.1
+    version: 0.6.1
   '@appwrite.io/pink':
     specifier: '0.16'
     version: 0.16.0
@@ -24,7 +24,7 @@ devDependencies:
     version: 0.16.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f
+    version: github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.3)(svelte@4.2.12)
@@ -158,8 +158,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.23
     dev: true
 
-  /@appwrite.io/console@0.4.2:
-    resolution: {integrity: sha512-WUltkC5q7RIK7TDCb+qTXq2cPtBek9k98Ilqcn8Lv3rN5ZuK0x33AwcpTAEPD0DE9phWXmvoV1a8H5PGMcGKew==}
+  /@appwrite.io/console@0.6.1:
+    resolution: {integrity: sha512-XlyitzDGmuBzJLBtFuZzL9vS4ZgAWzxuvWrILc7LwdNh2oklzhbJ8BTO8/CAxjxOwR6UOLKjXdoQnqOMqR66Yw==}
     dependencies:
       cross-fetch: 3.1.5
       isomorphic-form-data: 2.0.0
@@ -6707,8 +6707,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/e868ae60c6db9d0dcbc5ce27a0ca609a7ceada7f}
+  github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c7bdcda59371f2b4db92a45ef0f7ba430a150792}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: true
