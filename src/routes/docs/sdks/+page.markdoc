@@ -146,7 +146,7 @@ Note that **ID.unique()** does not generate unique IDs locally, but asks the App
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 // Generate a unique ID
@@ -154,7 +154,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 // Generate a unique ID
@@ -162,7 +162,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```swift
+```client-apple
 import Appwrite
 
 // Generate a unique ID
@@ -170,7 +170,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.ID
 
 // Generate a unique ID
@@ -183,7 +183,7 @@ ID.custom()
 
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Generate a unique ID
