@@ -59,7 +59,7 @@
         document.body.classList.add(className);
     }
 
-    onMount(async () => {
+    onMount(() => {
         const urlParams = $page.url.searchParams;
         const ref = urlParams.get('ref');
         const utmSource = urlParams.get('utm_source');
@@ -71,17 +71,13 @@
             referrer = null;
         }
         if (ref || referrer || utmSource || utmCampaign || utmMedium) {
-            try {
-                await createSource(
-                    ref,
-                    referrer,
-                    utmSource,
-                    utmCampaign,
-                    utmMedium
-                );
-            } catch (e) {
-                // ignore error
-            }
+            createSource(
+                ref,
+                referrer,
+                utmSource,
+                utmCampaign,
+                utmMedium
+            );
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
