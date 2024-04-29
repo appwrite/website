@@ -49,9 +49,8 @@
     import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { derived, writable } from 'svelte/store';
-    import { loggedIn } from '$lib/utils/console';
+    import { createSource, loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
-    import Cookies from 'js-cookie';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -60,32 +59,27 @@
         document.body.classList.add(className);
     }
 
-    onMount(() => {
+    onMount(async () => {
         if (browser) {
-            let currentSources = [];
             const urlParams = $page.url.searchParams;
             const ref = urlParams.get('ref');
-            const utm_source = urlParams.get('utm_source');
-            const utm_medium = urlParams.get('utm_medium');
-            const utm_campaign = urlParams.get('utm_campaign');
-            const referrer = document.referrer;
+            const utmSource = urlParams.get('utm_source');
+            const utmMedium = urlParams.get('utm_medium');
+            const utmCampaign = urlParams.get('utm_campaign');
+            const referrer = document.referrer.length ? document.referrer : null;
 
-            // Aggregate and display sources from URL parameters
-            if (ref) currentSources.push(`ref=${ref}`);
-            if (utm_source) currentSources.push(`utm_source=${utm_source}`);
-            if (utm_medium) currentSources.push(`utm_medium=${utm_medium}`);
-            if (utm_campaign) currentSources.push(`utm_campaign=${utm_campaign}`);
-            if (referrer) currentSources.push(`referrer=${referrer}`);
-
-            if (currentSources.length) {
-                let currentSource = currentSources.join(';');
-                const source = Cookies.get('source');
-                let sources = source ? decodeURIComponent(source).split(',') : [];
-                sources.push(currentSource);
-                if(sources.length > 50) {
-                    sources.shift();
+            if (ref || referrer || utmSource || utmCampaign || utmMedium) {
+                try {
+                    await createSource(
+                        ref,
+                        referrer,
+                        utmSource,
+                        utmCampaign,
+                        utmMedium
+                    );
+                } catch (e) {
+                    // ignore error
                 }
-                Cookies.set('source', sources, { domain: '.appwrite.io' });
             }
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
