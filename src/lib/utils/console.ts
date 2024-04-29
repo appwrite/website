@@ -5,7 +5,8 @@ import { Query, type Models } from '@appwrite.io/console';
 
 const client = new Client();
 
-client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
+// client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
+client.setEndpoint('https://8080-appwritelabs-cloud-dwzia3g7000.ws-us110.gitpod.io/v1').setProject('console');
 
 const account = new Account(client);
 const teams = new Teams(client);
@@ -14,6 +15,33 @@ enum BillingPlan {
     STARTER = 'tier-0',
     PRO = 'tier-1',
     SCALE = 'tier-2'
+}
+
+export async function createSource(
+    ref: string|null,
+    referrer: string|null,
+    utmSource: string|null,
+    utmCampaign: string|null,
+    utmMedium: string|null,
+): Promise<any> {
+    const path = `/console/sources`;
+    const params = {
+        ref,
+        referrer,
+        utmSource,
+        utmCampaign,
+        utmMedium,
+    };
+
+    const uri = new URL(client.config.endpoint + path);
+    return await client.call(
+        'POST',
+        uri,
+        {
+            'content-type': 'application/json'
+        },
+        params
+    );
 }
 
 export async function isProUser() {
