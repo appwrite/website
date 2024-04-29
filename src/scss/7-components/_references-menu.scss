@@ -24,7 +24,16 @@
       overflow-y:auto;
     }
   }
-  &-item { padding-inline:pxToRem(-4); }
+  &-item {
+    position:relative; padding-inline:pxToRem(-4);
+    &:has(.is-selected) {
+      &::before {
+        position:absolute; inset-block-start:0; inset-inline-start:pxToRem(-21); content: '';
+        block-size:100%; inline-size:pxToRem(1); background-color: hsl(var(--p-references-menu-link-color-text));
+        @media  #{$break2}, #{$break3}, #{$break4} { inset-inline-start:pxToRem(-28); }
+      }
+    }
+  }
   &-link {
     display:flex; gap:pxToRem(8);
     color:hsl(var(--p-references-menu-link-color-text));

@@ -26,7 +26,7 @@ Create a new collection with the following attributes:
 Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a store hold our ideas.
 Create a new file `src/lib/stores/ideas.js` and add the following code to it.
 
-```js
+```client-web
 import { ID, Query } from "appwrite";
 import { databases } from "../appwrite";
 import { reactive } from "vue";

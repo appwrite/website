@@ -73,7 +73,6 @@
                         {#each toc as parent (parent.href)}
                             <li
                                 class="web-references-menu-item"
-                                class:article-scroll-indicator={parent.selected}
                             >
                                 <a
                                     href={parent.href}
@@ -119,18 +118,3 @@
         </aside>
     </article>
 </main>
-
-<style lang="scss">
-    .article-scroll-indicator {
-        position: relative;
-        &::before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: -1.8rem;
-            height: 100%;
-            width: 2px;
-            background-color: hsl(var(--p-references-menu-link-color-text));
-        }
-    }
-</style>

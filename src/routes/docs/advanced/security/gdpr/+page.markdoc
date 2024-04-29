@@ -9,7 +9,7 @@ GDPR is a EU regulation that concerns data privacy and security in the European 
 
 By attesting that Appwrite is GDPR compliant, we have done the following:
 - Appwrite users will retain access to their personal information including the right to correct and to delete it.
-- Impose the same rules upon the organization’s sub-processors who assist in providing Appwrite’s services as described in the Terms of Service (“ToS”). 
+- Impose the same rules upon the organization's sub-processors who assist in providing Appwrite's services as described in the Terms of Service (“ToS”). 
 - Appwrite will notify users promptly about policy changes and/or data breaches.
 
 You can learn more in our [Privacy policy](https://appwrite.io/privacy) and [Cookie policy](https://appwrite.io/cookies). 
