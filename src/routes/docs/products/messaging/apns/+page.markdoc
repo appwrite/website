@@ -71,7 +71,7 @@ Head to **Apple Developer Member Center** > **Program resources** > **Certificat
 {% /only_light %}
 {% /accordion_item %}
 {% accordion_item title="Sandbox" %}
-Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers to environments, **Development** (sandbox) and **Production**. Development builds on XCode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
+Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers to environments, **Development** (sandbox) and **Production**. Development builds on Xcode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
 {% /accordion_item %}
 {% /accordion %}
 
@@ -79,7 +79,7 @@ After adding the following details, click **Save and continue** to enable the pr
 {% /section %}
 {% section #configure-app step=3 title="Configure app" %}
 Some additional configuration is required to enable push notifications in your iOS app.
-Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
+Add push notification capability to your app by clicking your root-level app in Xcode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 
 {% only_dark %}
 ![Enable PN on Xcode](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.png)

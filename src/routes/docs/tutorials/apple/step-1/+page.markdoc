@@ -1,18 +1,27 @@
 ---
 layout: tutorial
-title: Coming soon
+title: Build an ideas tracker with Apple
 description: Learn to build an Apple app with no backend code using an Appwrite backend.
 framework: Apple
 category: Mobile and native
 step: 1
-draft: true
 ---
 
-Improve the docs, add this guide.
+**Idea tracker**: an app to track all the side project ideas that you'll be able to build with Appwrite.
+In this tutorial, you will build Idea tracker with Appwrite and Apple
 
-We still don't have this guide in place, but we do have some great news. 
-The Appwrite docs, just like Appwrite, is completely open sourced.
-This means, anyone can help improve them and add new guides and tutorials. 
+You can reference the [Idea Trackers demo repo](https://github.com/appwrite/demos-for-apple/tree/main/IdeasTracker) for the final code.
 
-If you see this page, **we're actively looking for contributions to this page**.
-Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
+# Concepts {% #concepts %}
+This tutorial will introduce the following concepts:
+
+1. Setting up your first project
+2. Authentication 
+3. Databases and collections
+4. Queries and pagination
+
+
+# Prerequisites {% #prerequisites %}
+1. Basic knowledge of SwiftUI and Apple development.
+2. Have [Xcode](https://developer.apple.com/xcode/) installed on your computer.
+3. Some basic understanding of MVVM (Model-View-ViewModel) patterns.

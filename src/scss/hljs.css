@@ -167,7 +167,6 @@ code.line-numbers .line:before {
     font-weight: bold;
 }
 
-.highlighted {
+.highlighted .line{
     background-color: rgba(240, 240, 240, 0.1);
-    width: 100%;
 }

@@ -1,0 +1,33 @@
+---
+layout: tutorial
+title: Create app
+description: Create an Apple SwiftUI app project using Appwrite.
+step: 2
+---
+
+# Create SwiftUI project {% #create-swift-ui %}
+
+Open Xcode and click **Create a new Xcode project**.
+
+Choose your desired project template, for example **iOS App**,  and click **Next**.
+
+Now enter your app **product name** as `Ideas Tracker` and **bundle identifier** as `example.IdeasTracker` and click **Next**. 
+You will need both of these values later when you create your project in the Appwrite console.
+
+Choose a directory for your project in and click **Create** to create your project.
+
+# Add dependencies {% #add-dependencies %}
+
+To add the Appwrite SDK for Apple as a dependency, open the **File** menu and click **Add Packages**.
+
+In the **Package URL** search box, enter https://github.com/appwrite/sdk-for-apple. 
+
+Once the SDK is found, use `5.0.0` as version, select **Up to Next Major Version** as your **Dependency Rule** and click **Add Package**.
+
+When dependency resolution is complete, click **Add Package** again to add the SDK package to your target.
+
+# Using the simulator {% #using-the-simulator %}
+
+You can use the iOS simulator to run your app. 
+If you don't have simulators installed or need to add new simulators, 
+follow [Apple's developer documentation](https://developer.apple.com/documentation/safari-developer-tools/adding-additional-simulators).

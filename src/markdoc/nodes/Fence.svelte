@@ -26,7 +26,8 @@
     }
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
-        await copy(toCopy ?? content);
+        const escapedContent = (toCopy ?? content).replace(/{%\s*(\w+)\s*%}/, '').replace(/{%\s*\/(\w+)\s*%}/, '');
+        await copy(escapedContent);
 
         copyText = CopyStatus.Copied;
         setTimeout(() => {

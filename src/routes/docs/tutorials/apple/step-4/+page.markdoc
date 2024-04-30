@@ -1,0 +1,144 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add Appwrite authentication to you Apple app.
+step: 4
+---
+You can use the Appwrite Authentication to create a simple login page.
+
+# Authentication methods {% #authentication-methods %}
+Appwrite provides email and password authentication out of the box.
+To implement register, login, and get user methods, add the following to 
+[Services/Appwrite.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/Service/Appwrite.swift).
+
+```client-apple
+import Foundation
+import Appwrite
+import AppwriteModels
+import JSONCodable
+
+class Appwrite: ObservableObject {
+    static let shared = Appwrite()
+
+    var client: Client
+    var account: Account
+
+    public init() {
+        self.client = Client()
+            .setEndpoint("https://cloud.appwrite.io/v1")
+            .setProject("<YOUR_PROJECT_ID>")
+        
+        self.account = Account(client)
+        self.databases = Databases(client)
+    }
+
+    {% highlighted %}
+    public func getUser() async throws -> User<[String: AnyCodable]> {
+        return try await account.get()
+    }
+    
+    public func login(
+        email: String,
+        password: String
+    )  async throws -> User<[String: AnyCodable]> {
+        _ = try await account.createEmailSession(
+            email: email,
+            password: password
+        )
+        return try await account.get()
+    }
+    
+    public func register(
+        email: String,
+        password: String
+    ) async throws -> User<[String: AnyCodable]> {
+        _ = try await account.create(
+            userId: ID.unique(),
+            email: email,
+            password: password
+        )
+        return try await self.login(
+            email: email,
+            password: password
+        )
+    }
+    {% /highlighted %}
+}
+```
+
+We will use these methods in our ViewModels to interact with Appwrite.
+
+# Login ViewModel {% #login-view %}
+
+Create a new file called 
+[LoginViewModel.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/ViewModel/LoginViewModel.swift) 
+and add the following code.
+
+```client-apple
+import Foundation
+
+class LoginViewModel: ObservableObject {
+    @Published var userId: String
+    private var appwriteService: Appwrite
+    
+    init() {
+        self.userId = ""
+        self.appwriteService = Appwrite.shared
+    }
+    
+    public func checkLoggedIn() async -> Bool {
+        let user = try? await self.appwriteService.getUser()
+        await MainActor.run {
+            self.userId = user?.id ?? "";
+        }
+        return self.userId != ""
+    }
+    
+    public func login(
+        email: String,
+        password: String
+    ) async throws {
+        let user = try await self.appwriteService.login(
+            email: email,
+            password: password
+        )
+        await MainActor.run {
+            self.userId = user.id
+        }
+    }
+    
+    @MainActor public func register(
+        email: String,
+        password: String
+    ) async throws {
+        let user = try await self.appwriteService.register(
+            email: email,
+            password: password
+        )
+        self.userId = user.id
+    }
+}
+```
+
+The `login` and `register` methods call the Appwrite service to authenticate the user.
+The `checkLoggedIn` method checks if the user is already logged in by calling the `getUser` method.
+We **expect the method to throw** if the user isn't logged in.
+
+```client-apple
+...
+    {% highlighted %}
+        self.appwriteService = Appwrite.shared
+    }
+    
+    public func checkLoggedIn() async -> Bool {
+        let user = try? await self.appwriteService.getUser()
+        await MainActor.run {
+            self.userId = user?.id ?? "";
+        }
+        return self.userId != ""
+    }
+    public func login(
+        email: String,
+    {% /highlighted %}
+...
+```

@@ -63,13 +63,13 @@ In production, Appwrite allows you to set multiple [custom-domains](/docs/advanc
 
 {% tabsitem #ios title="iOS" %}
 
-Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
+Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in Xcode.
 
 The Appwrite SDK uses `ASWebAuthenticationSession` on iOS 12+ and `SFAuthenticationSession` on iOS 11 to allow OAuth authentication. 
 You have to change your iOS Deployment Target in Xcode to be iOS >= 11 to be able to build your app on an emulator or a real device.
 
-1. In **XCode**, open `Runner.xcworkspace` in your app's iOS folder.
-2. To view your app's settings, select the Runner project in the XCode project navigator. Then, in the main view sidebar, select the **Runner target**.
+1. In **Xcode**, open `Runner.xcworkspace` in your app's iOS folder.
+2. To view your app's settings, select the Runner project in the Xcode project navigator. Then, in the main view sidebar, select the **Runner target**.
 3. Select the **General** tab.
 4. In **Deployment Info** > **Target**, select iOS 11.0 or above
 {% /tabsitem %}
@@ -111,9 +111,9 @@ You should get the application ID needed to add in the received error message.
 
 {% tabsitem #macos title="macOS" %}
 
-Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
+Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in Xcode.
 
-The Appwrite SDK uses `ASWebAuthenticationSession` on macOS 10.15+ to allow OAuth authentication. You have to change your macOS **Deployment Target** in XCode to be macOS >= 10.15 to be able to build your app for macOS.
+The Appwrite SDK uses `ASWebAuthenticationSession` on macOS 10.15+ to allow OAuth authentication. You have to change your macOS **Deployment Target** in Xcode to be macOS >= 10.15 to be able to build your app for macOS.
 
 In order to capture the Appwrite OAuth 2 callback url, the following URL scheme needs to added to your `Info.plist`.
 
