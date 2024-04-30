@@ -166,3 +166,8 @@ code.line-numbers .line:before {
 .hljs-strong {
     font-weight: bold;
 }
+
+.highlighted {
+    background-color: rgba(240, 240, 240, 0.1);
+    width: 100%;
+}

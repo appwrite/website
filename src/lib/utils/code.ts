@@ -105,7 +105,6 @@ type Args = {
     content: string;
     language?: Language;
     withLineNumbers?: boolean;
-    highlightedLines: Array<number>;
 };
 
 export const getCodeHtml = (args: Args) => {
@@ -118,13 +117,18 @@ export const getCodeHtml = (args: Args) => {
     }
 
     const final = lines.reduce((carry, line, lineNum) => {
-        console.log(args.highlightedLines);
-        console.log(lineNum);
-        carry += `<span class="line ${args.highlightedLines.includes(lineNum + 1) ? 'highlighted' : ''}">${line}</span>\n`;
+        if (line === '{% highlightlines %}') {
+            carry += '<div class="highlighted">';
+        }
+        else if (line === '{% /highlightlines %}') {
+            carry += '</div>';
+        }
+        else {
+            carry += `<span class="line">${line}</span>\n`;
+        }
         return carry;
     }, '');
 
-    return `<pre><code class="web-code language-${language} ${
-        withLineNumbers ? 'line-numbers' : ''
-    }">${final}</code></pre>`;
+    return `<pre><code class="web-code language-${language} ${withLineNumbers ? 'line-numbers' : ''
+        }">${final}</code></pre>`;
 };

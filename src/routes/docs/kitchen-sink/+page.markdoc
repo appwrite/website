@@ -4,9 +4,9 @@ title: SDKs
 description: Get started with Appwrite SDKs and learn how to use them to add authentication, user management, file storage, and more to your apps.
 ---
 
-{% highlightlines lines="1, 3, 5" %}
 ```js 
+{% highlightlines %}
 const line1;
 const line2;
-```
 {% /highlightlines %}
+```
