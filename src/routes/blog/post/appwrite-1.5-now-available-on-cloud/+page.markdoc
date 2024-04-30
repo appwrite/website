@@ -227,15 +227,12 @@ db.listDocuments(
 
 Read the [Database operators announcement](https://appwrite.io/blog/post/introducing-new-database-operators) for a full overview of capabilities, or visit our [documentation](https://appwrite.io/docs/products/databases/queries) to get started.
 
-# Runtimes and Enum SDK Support
+# Enum SDK Support
 
-The new and updated runtimes on the Appwrite ecosystem, are now also on Cloud, as well as Enum SDK support. The runtimes ensure a broader compatibility and more options for development environments.  
-
-Whereas Enum SDK support expands the versatility and usability of Appwrite's SDKs across different programming scenarios.
+Enum SDK support expands the versatility and usability of Appwrite's SDKs across different programming scenarios.
 
 ## Highlights
 
-- Updated and new runtimes for broader compatibility.
 - Enum support improves type safety and code readability.
 
 ## Enums and OAuth
@@ -254,7 +251,7 @@ const account = new Account(client);
 account.createOAuth2Session(OAuthProvider.Apple);
 ```
 
-Read the [Runtimes](https://appwrite.io/blog/post/announcing-more-and-updated-runtimes) and [Enum SDK support](https://appwrite.io/blog/post/introducing-enum-sdk-support) announcements for a full overview of capabilities, and visit our [Enum](https://appwrite.io/docs/sdks#enums) or [runtime](https://appwrite.io/docs/products/functions/runtimes) documentation to get started.
+Read the [Enum SDK support](https://appwrite.io/blog/post/introducing-enum-sdk-support) announcements for a full overview of capabilities, and visit our [Enum](https://appwrite.io/docs/sdks#enums) documentation to get started.
 
 # Custom token login
 
