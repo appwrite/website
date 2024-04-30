@@ -16,34 +16,34 @@ Add authentication to your app in 5 minutes
 Appwrite supports a variety of authentication methods to fit every app and every niche. Explore Appwrite's authentication flows.
 
 {% cards %}
-{% cards_item href="docs/products/auth/email-password" title="Email and password" %}
+{% cards_item href="/docs/products/auth/email-password" title="Email and password" %}
 Email and password login with just a few lines of code secured with state of the art Argon2 hasing.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/phone-sms" title="Phone (SMS)" %}
+{% cards_item href="/docs/products/auth/phone-sms" title="Phone (SMS)" %}
 Log in users with out a password using their phone number and SMS verification.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/magic-url" title="Magic URL" %}
+{% cards_item href="/docs/products/auth/magic-url" title="Magic URL" %}
 Passwordless login with a magic link sent to the user's email.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/email-otp" title="Email OTP" %}
+{% cards_item href="/docs/products/auth/email-otp" title="Email OTP" %}
 Generate a time-based single-use password sent to the user's email.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/oauth2" title="OAuth 2" %}
+{% cards_item href="/docs/products/auth/oauth2" title="OAuth 2" %}
 Authenticate users with existing accounts from GitHub, Google, Facebook, and 30+ other providers.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/anonymous" title="Anonymous" %}
+{% cards_item href="/docs/products/auth/anonymous" title="Anonymous" %}
 Create guest sessions for visitors and convert to full accounts when they're ready.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/jwt" title="JWT" %}
+{% cards_item href="/docs/products/auth/jwt" title="JWT" %}
 Deligate access for a user through passing JWT tokens.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/server-side-rendering" title="Server-side rendering (SSR)" %}
+{% cards_item href="/docs/products/auth/server-side-rendering" title="Server-side rendering (SSR)" %}
 Authenticate users in server-side rendered applications.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/custom-token" title="Custom Token" %}
+{% cards_item href="/docs/products/auth/custom-token" title="Custom Token" %}
 Implement custom authentication methods like biometric and passkey login by generating custom tokens.
 {% /cards_item %}
-{% cards_item href="docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
+{% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
 Implementing MFA to add extra layers of security to your app.
 {% /cards_item %}
 {% /cards %}
