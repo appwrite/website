@@ -99,6 +99,10 @@
                 {
                     label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
+                },
+                {
+                    label: 'fal.ai',
+                    href: '/docs/products/ai/integrations/fal-ai'
                 }
             ]
         }
