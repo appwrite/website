@@ -11,34 +11,33 @@ Appwrite supports multiple protocols for accessing the server, including [REST](
 Appwrite's REST APIs expect certain headers to be included with each request:
 
 {% table %}
-* Header
-* 
-* Description
+- Header
+- 
+- Description
 ---
-* X-Appwrite-Project: [PROJECT-ID]
-* required
-* The ID of your Appwrite project
+- X-Appwrite-Project: [PROJECT-ID]
+- required
+- The ID of your Appwrite project
 ---
-* Content-Type: application/json
-* required
-* Content type of the HTTP request. Would usually be `application/json`.
+- Content-Type: application/json
+- required
+- Content type of the HTTP request. Would usually be `application/json`.
 ---
-* X-Appwrite-Key: [API-KEY]
-* optional
-* API key used for server authentication. Your API key is a secret, **do not** use it in client applications.
+- X-Appwrite-Key: [API-KEY]
+- optional
+- API key used for server authentication. Your API key is a secret, **do not** use it in client applications.
 ---
-* X-Appwrite-JWT: [TOKEN]
-* optional
-* Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/jwt) method.
+- X-Appwrite-JWT: [TOKEN]
+- optional
+- Token used for JWT authentication, tokens can be generated using the [Create JWT](/docs/products/auth/jwt) method.
 ---
-* X-Appwrite-Response-Format: [VERSION-NUMBER]
-* optional
-* Version number used for backward compatibility. The response will be formatted to be compatible with the provided version number. This helps Appwrite SDKs keep backward compatibility with Appwrite server API version.
+- X-Appwrite-Response-Format: [VERSION-NUMBER]
+- optional
+- Version number used for backward compatibility. The response will be formatted to be compatible with the provided version number. This helps Appwrite SDKs keep backward compatibility with Appwrite server API version.
 ---
-* X-Fallback-Cookies: [FALLBACK-COOKIES]
-* optional
-* Fallback cookies used in scenarios where browsers do not allow third-party cookies. Often used when there is no Custom Domain set for your Appwrite API.
----
+- X-Fallback-Cookies: [FALLBACK-COOKIES]
+- optional
+- Fallback cookies used in scenarios where browsers do not allow third-party cookies. Often used when there is no Custom Domain set for your Appwrite API.
 {% /table %}
 
 # Authentication {% #authentication %}
@@ -109,59 +108,57 @@ Appwrite implements resumable, chunked uploads for files larger than 5MB. Chunke
 Upload endpoints in Appwrite, such as [Create File] (/docs/references/cloud/client-web/storage#createFile) and [Create Deployment] (/docs/references/cloud/server-nodejs/functions#createDeployment), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
 
 {% table %}
-* Header
-* 
-* Description
+- Header
+- 
+- Description
 ---
-* X-Appwrite-Project: [PROJECT-ID]
-* required
-* The ID of your Appwrite project
+- X-Appwrite-Project: [PROJECT-ID]
+- required
+- The ID of your Appwrite project
 ---
-* Content-Type: multipart/form-data; boundary=[FORM-BOUNDARY]
-* required
-* Contains the content type of the HTTP request and provides a [boundary](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) that is used to parse the form data.
+- Content-Type: multipart/form-data; boundary=[FORM-BOUNDARY]
+- required
+- Contains the content type of the HTTP request and provides a [boundary](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) that is used to parse the form data.
 ---
-* Content-Range: bytes [BYTE-RANGE]
-* required
-* Contains information about which bytes are being transmitted in this chunk, with the format `[FIRST-BYTE]-[LAST-BYTE]/[TOTAL-BYTES]`.
+- Content-Range: bytes [BYTE-RANGE]
+- required
+- Contains information about which bytes are being transmitted in this chunk, with the format `[FIRST-BYTE]-[LAST-BYTE]/[TOTAL-BYTES]`.
 ---
-* X-Appwrite-ID: [FILE-ID]
-* required
-* Contains ID of the file this chunk belongs to.
+- X-Appwrite-ID: [FILE-ID]
+- required
+- Contains ID of the file this chunk belongs to.
 ---
-* X-Appwrite-Key: [API-KEY]
-* optional
-* API key used for server authentication. Your API key is a secret, **do not** use it in client applications.
-
+- X-Appwrite-Key: [API-KEY]
+- optional
+- API key used for server authentication. Your API key is a secret, **do not** use it in client applications.
 {% /table %}
 
 The multipart form data is structured as follows:
 
 {% table %}
-* Key
-* 
-* Value
-* File Name
-* Description
+- Key
+- 
+- Value
+- File Name
+- Description
 ---
-* fileId
-* optional
-* [FILE-ID]
-* N/A
-* Contains the file ID of the new file. Only used by file chunks following the first chunk uploaded.
+- fileId
+- optional
+- [FILE-ID]
+- N/A
+- Contains the file ID of the new file. Only used by file chunks following the first chunk uploaded.
 ---
-* file
-* required
-* [CHUNK-DATA]
-* [FILE-NAME]
-* Contains file chunk data.
+- file
+- required
+- [CHUNK-DATA]
+- [FILE-NAME]
+- Contains file chunk data.
 ---
-* permissions
-* required
-* [PERMISSION ARRAY]
-* N/A
-* Contains an array of permission strings about who can access the new file.
-
+- permissions
+- required
+- [PERMISSION ARRAY]
+- N/A
+- Contains an array of permission strings about who can access the new file.
 {% /table %}
 
 While cURL and fetch are great tools to explore other REST endpoints, it's impractical to use for chunked file uploads because you need to split files into chunks.
@@ -204,24 +201,23 @@ Some use cases do not allow custom headers, such as embedding images from Appwri
 Appwrite SDKs have helpers to generate permission string formats, but when using Appwrite without SDKs, you'd need to create the strings yourself.
 
 {% table %}
-* Query method
-* API string
+- Query method
+- API string
 ---
-* `Permission.read()`
-* `read("[PERMISSION_ROLE]")`
+- `Permission.read()`
+- `read("[PERMISSION_ROLE]")`
 ---
-* `Permission.create()`
-* `read("[PERMISSION_ROLE]")`
+- `Permission.create()`
+- `read("[PERMISSION_ROLE]")`
 ---
-* `Permission.update()`
-* `update("[PERMISSION_ROLE]")`
+- `Permission.update()`
+- `update("[PERMISSION_ROLE]")`
 ---
-* `Permission.delete()`
-* `delete("[PERMISSION_ROLE]")`
+- `Permission.delete()`
+- `delete("[PERMISSION_ROLE]")`
 ---
-* `Permission.write()`
-* `write("[PERMISSION_ROLE]")`
----
+- `Permission.write()`
+- `write("[PERMISSION_ROLE]")`
 {% /table %}
 
 ## Roles {% #roles %}
@@ -229,36 +225,35 @@ Appwrite SDKs have helpers to generate permission string formats, but when using
 Appwrite SDKs have helpers to generate roles string formats, but when using Appwrite without SDKs, you'd need to create the strings yourself.
 
 {% table %}
-* Role method
-* API string
+- Role method
+- API string
 ---
-* `Role.any()`
-* `any`
+- `Role.any()`
+- `any`
 ---
-* `Role.guests()`
-* `guests`
+- `Role.guests()`
+- `guests`
 ---
-* `Role.users()`
-* `users`
+- `Role.users()`
+- `users`
 ---
-* `Role.users([STATUS])`
-* `users/[STATUS]`
+- `Role.users([STATUS])`
+- `users/[STATUS]`
 ---
-* `Role.user([USER_ID])`
-* `user:[USER_ID]`
+- `Role.user([USER_ID])`
+- `user:[USER_ID]`
 ---
-* `Role.user([USER_ID], [STATUS])`
-* `user:[USER_ID]/[STATUS]`
+- `Role.user([USER_ID], [STATUS])`
+- `user:[USER_ID]/[STATUS]`
 ---
-* `Role.team([TEAM_ID])`
-* `team:[TEAM_ID]`
+- `Role.team([TEAM_ID])`
+- `team:[TEAM_ID]`
 ---
-* `Role.team([TEAM_ID], [ROLE])`
-* `team:[TEAM_ID]/[ROLE]`
+- `Role.team([TEAM_ID], [ROLE])`
+- `team:[TEAM_ID]/[ROLE]`
 ---
-* `Role.member([MEMBERSHIP_ID])`
-* `member:[MEMBERSHIP_ID]`
----
+- `Role.member([MEMBERSHIP_ID])`
+- `member:[MEMBERSHIP_ID]`
 {% /table %}
 
 # Unique ID {% #unique-id %}
@@ -267,77 +262,104 @@ Appwrite's SDKs have a helper `ID.unique()` to generate unique IDs. When using A
 
 # Queries {% #queries %}
 
-Appwrite's SDKs provide a `Query` class to generate query strings. When using Appwrite without an SDK, you can template your own strings with the format below.
+Appwrite's SDKs provide a `Query` class to generate JSON query strings.
+When using Appwrite without an SDK, you can template your own JSON strings.
+You can discover the query methods available in the [Queries page.](/docs/products/databases/queries)
 
-Query strings are passed to Appwrite using the `queries` parameter. You can attach multiple query strings by including the array parameter multiple times in the query string: `queries[]="..."&queries[]="..."`
+## Query string format  {% #queries-string-format %}
 
-{% table %}
-* Query method
-* API string
----
-* select
-* `select([attribute])`
----
-* equal
-* `equal("attribute", [value])`
----
-* notEqual
-* `notEqual("attribute", [value])`
----
-* lessThan
-* `lessThan("attribute", [value])`
----
-* lessThanEqual
-* `lessThanEqual("attribute", [value])`
----
-* greaterThan
-* `greaterThan("attribute", [value])`
----
-* greaterThanEqual
-* `greaterThanEqual("attribute", [value])`
----
-* between
-* `between("attribute", lowerBound, upperBound)`
----
-* isNull
-* `isNull("attribute")`
----
-* isNotNull
-* `isNotNull("attribute")`
----
-* startsWith
-* `startsWith("attribute", [value])`
----
-* endsWith
-* `endsWith("attribute", [value])`
----
-* search
-* `search("attribute", [value])`
----
-* orderDesc
-* `orderDesc("attribute")`
----
-* orderAsc
-* `orderAsc("attribute")`
----
-* cursorAfter
-* `cursorAfter("documentId")`
----
-* cursorBefore
-* `cursorBefore("documentId")`
----
-* limit
-* `limit(0)`
----
-* offset
-* `offset(0)`
----
-{% /table %}
+Appwrite Queries are escaped JSON strings, which look like this.
+
+```json
+"{\"method\":\"equal\",\"attribute\":\"name\",\"values\":[\"John\"]}"
+```
+
+Query strings are passed to Appwrite using the `queries` parameter. 
+You can attach multiple query strings by including the array parameter multiple times in the query string: `queries[]="..."&queries[]="..."`
+
+For example, the unescaped query string might look like this.
+```text
+?queries[0]={"method":"equal","attribute":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
+```
+
+The JSON has a general format like this.
+
+```json
+{
+  "method": "<QUERY_METHOD>",
+  "attribute": "<ATTRIBUTE>",
+  "values": [
+    <VALUE1>,
+    <VALUE2>,
+    ...
+  ]
+}
+```
 
 {% info title="Best practice" %}
-When using greater than, greater than or equal to, less than, or less than or equal to, it is not recommended to pass in multiple values. While the API will accept multiple values and return results with **or logic**, it's best practice to pass in only one value for performance reasons.
+When using greater than, greater than or equal to, less than, or less than or equal to, it is not recommended to pass in multiple values.
+While the API will accept multiple values and return results with **or logic**, it's best practice to pass in only one value for performance reasons.
 {% /info %}
 
+For example, to query for all documents with the name "John" or "Jane", the query string would look like this.
+
+```json
+{
+  "method": "equal",
+  "attribute": "name",
+  "values": [
+    "John",
+    "Jane"
+  ]
+}
+```
+
+Here are some more examples of the JSON query format. 
+When in doubt, you can use the Appwrite SDKs to generate the query strings for you.
+
+```json
+{
+  "method": "isNull",
+  "attribute": "name"
+}
+{
+  "method": "select",
+  "values": ["name", "age", "email"]
+}
+{
+  "method": "between",
+  "attribute": "age",
+  "values": [18, 30]
+}
+{
+  "method": "cursorAfter",
+  "values": ["documentId"]
+}
+```
+
+## Query nesting {% #query-nesting %}
+Some Appwrite query methods, like `and` and `or`, allow you to nest queries. 
+When using Appwrite without an SDK, you can template your own JSON strings.
+
+In these cases, `attribute` is empty and `values` is an array of queries.
+
+```json
+{
+  "method": "and",
+  "values": [
+    {
+      "method": "equal",
+      "attribute": "name",
+      "values": ["John"]
+    },
+    {
+      "method": "between",
+      "attribute": "age",
+      "values": [20, 30]
+    }
+  ]
+}
+```
 
 # Rate limits {% #rate-limits %}
 
