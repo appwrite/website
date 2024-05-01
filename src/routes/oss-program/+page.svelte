@@ -144,70 +144,83 @@
                                     <ul
                                         class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                     >
-                                        <li class="web-form-item">
+                                        <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <div class="u-block">Full name</div>
                                             <input
                                                 required
                                                 class="web-input-text"
                                                 type="text"
-                                                placeholder="Name"
-                                                aria-label="Name"
+                                                placeholder="Walter O'Brien"
+                                                aria-label="Full name"
                                                 bind:value={personName}
                                             />
                                         </li>
-                                        <li class="web-form-item">
+                                        <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <div class="u-block">Email address</div>
                                             <input
                                                 required
                                                 class="web-input-text"
                                                 type="email"
-                                                placeholder="Email address"
+                                                placeholder="walter@company.com"
                                                 aria-label="Email address"
                                                 bind:value={personEmail}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li
+                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                        >
+                                            <div class="u-block">Project or company name</div>
                                             <input
                                                 required
                                                 class="web-input-text"
                                                 type="text"
-                                                placeholder="Project or company name"
+                                                placeholder="My app"
                                                 aria-label="Project or company name"
                                                 bind:value={projectName}
                                             />
                                         </li>
-                                        <li class="web-form-item">
+                                        <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <div class="u-block">GitHub URL</div>
                                             <input
                                                 required
                                                 class="web-input-text"
                                                 type="url"
-                                                placeholder="GitHub URL"
+                                                placeholder="https://github.com/myapp"
                                                 aria-label="GitHub URL"
                                                 bind:value={githubUrl}
                                             />
                                         </li>
-                                        <li class="web-form-item">
+                                        <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <div class="u-block">Website URL</div>
                                             <input
                                                 class="web-input-text"
                                                 type="url"
-                                                placeholder="Website URL"
+                                                placeholder="https://myapp.com"
                                                 aria-label="Website URL"
                                                 bind:value={websiteUrl}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li
+                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                        >
+                                            <div class="u-block">OSS license</div>
                                             <input
                                                 class="web-input-text"
                                                 type="text"
-                                                placeholder="OSS license"
+                                                placeholder="MIT"
                                                 aria-label="OSS license"
                                                 bind:value={license}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li
+                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                        >
+                                            <div class="u-block">Message</div>
                                             <textarea
                                                 required
                                                 name="message"
                                                 class="web-input-text"
-                                                placeholder="Your message"
+                                                placeholder="Hey, I'm interested in joining the OSS program!"
                                                 aria-label="Message"
                                                 bind:value={message}
                                             />
