@@ -207,7 +207,7 @@
                                             <input
                                                 class="web-input-text"
                                                 type="text"
-                                                placeholder="MIT"
+                                                placeholder="MIT, Apache..."
                                                 aria-label="OSS license"
                                                 bind:value={license}
                                             />
@@ -220,7 +220,7 @@
                                                 required
                                                 name="message"
                                                 class="web-input-text"
-                                                placeholder="Hey, I'm interested in joining the OSS program!"
+                                                placeholder="Type your message..."
                                                 aria-label="Message"
                                                 bind:value={message}
                                             />
