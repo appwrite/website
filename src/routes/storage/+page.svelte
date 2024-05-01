@@ -593,99 +593,113 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
-                        <div class="">
-                            <div
-                                    class="web-u-max-inline-size-none-mobile"
-                                    class:web-u-max-width-380={!submitted}
-                            >
-                                <section class="u-flex-vertical web-u-gap-20">
-                                    <h1 class="web-title web-u-color-text-primary">
-                                        Appwrite insights
-                                    </h1>
-                                    <p class="web-description web-u-padding-block-end-40">
-                                        Sign up to our company blog and get the latest insights from
-                                        Appwrite. Learn more about engineering, product design,
-                                        building community, and tips & tricks for using Appwrite.
-                                    </p>
-                                </section>
-                            </div>
-                        </div>
-                        {#if submitted}
-                            <div class="u-flex u-gap-8 u-cross-center">
-                                <svg
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 18 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <circle
-                                            cx="9"
-                                            cy="9"
-                                            r="8"
-                                            fill="#FD366E"
-                                            fill-opacity="0.08"
-                                            stroke="#FD366E"
-                                            stroke-opacity="0.32"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                    <ul class="web-grid-3-desktop-1-mobile">
+                        <li>
+                            <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                                <div class="u-flex u-cross-center u-gap-8">
+                                    <img
+                                            src="/images/icons/illustrated/dark/auth.png"
+                                            alt=""
+                                            class=""
+                                            width="48"
+                                            height="48"
                                     />
-                                    <path
-                                            d="M5.25 10.5L7.75 12.5L12.75 6"
-                                            stroke="#E4E4E7"
-                                            stroke-width="1.2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                    />
-                                </svg>
-
-                                <span class="text">
-                                    Thank you for subscribing! An email has been sent to your inbox.
-                                </span>
-                            </div>
-                        {:else}
-                            <form
-                                    method="post"
-                                    on:submit|preventDefault={submit}
-                                    class="u-flex-vertical u-gap-16"
-                            >
-                                <div class="u-flex u-flex-vertical u-gap-4">
-                                    <label for="name">Your name</label>
-                                    <input
-                                            class="web-input-text"
-                                            type="text"
-                                            placeholder="Enter your name"
-                                            id="name"
-                                            name="name"
-                                            required
-                                            bind:value={name}
-                                    />
+                                    <h4
+                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                    >
+                                        Auth
+                                    </h4>
                                 </div>
-                                <div class="u-flex u-flex-vertical u-gap-4">
-                                    <label for="email">Your email</label>
-                                    <input
-                                            class="web-input-text"
-                                            type="email"
-                                            placeholder="Enter your email"
-                                            required
-                                            id="email"
-                                            name="email"
-                                            bind:value={email}
+                                <p class="web-sub-body-400 u-margin-block-start-4">
+                                    Build secure authentication and manage your users.
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/products/functions" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                                <div class="u-flex u-cross-center u-gap-8">
+                                    <img
+                                            src="/images/icons/illustrated/dark/functions.png"
+                                            alt=""
+                                            class=""
+                                            width="48"
+                                            height="48"
                                     />
+                                    <h4
+                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                    >
+                                        Functions
+                                    </h4>
                                 </div>
-                                <button type="submit" class="web-button" disabled={submitting}
-                                >Sign up</button
-                                >
-                                {#if error}
-                                    <span class="text">
-                                        Something went wrong. Please try again later.
-                                    </span>
-                                {/if}
-                            </form>
-                        {/if}
-                    </div>
+                                <p class="web-sub-body-400 u-margin-block-start-4">
+                                    Scale big and unlock limitless potential with Appwrite functions.
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/products/databases" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                                <div class="u-flex u-cross-center u-gap-8">
+                                    <img
+                                            src="/images/icons/illustrated/dark/databases.png"
+                                            alt=""
+                                            class=""
+                                            width="48"
+                                            height="48"
+                                    />
+                                    <h4
+                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                    >
+                                        Databases
+                                    </h4>
+                                </div>
+                                <p class="web-sub-body-400 u-margin-block-start-4">
+                                    Store and query structured data, ensuring scalable storage.
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/products/messaging" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                                <div class="u-flex u-cross-center u-gap-8">
+                                    <img
+                                            src="/images/icons/illustrated/dark/messaging.png"
+                                            alt=""
+                                            class=""
+                                            width="48"
+                                            height="48"
+                                    />
+                                    <h4
+                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                    >
+                                        Messaging
+                                    </h4>
+                                </div>
+                                <p class="web-sub-body-400 u-margin-block-start-4">
+                                    Manage your files’ project, using convenient APIs and utilities.
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/apis/realtime" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                                <div class="u-flex u-cross-center u-gap-8">
+                                    <img
+                                            src="/images/icons/illustrated/dark/realtime.png"
+                                            alt=""
+                                            class=""
+                                            width="48"
+                                            height="48"
+                                    />
+                                    <h4
+                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                    >
+                                        Realtime
+                                    </h4>
+                                </div>
+                                <p class="web-sub-body-400 u-margin-block-start-4">
+                                    Utilize realtime information from all Appwrite services.
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
