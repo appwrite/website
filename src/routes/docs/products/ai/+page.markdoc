@@ -54,6 +54,6 @@ Process speech audio into text
 Convert text into speech
 {% /cards_item %}
 {% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
-Generate music
+Generate music from a text prompt
 {% /cards_item %}
 {% /cards %}
