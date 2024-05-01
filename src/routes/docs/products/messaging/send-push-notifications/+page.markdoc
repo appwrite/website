@@ -3,11 +3,6 @@ layout: article
 title: Send push notification
 description: Send push notification to your users using Appwrite Messaging.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 You can send, schedule, and manage push notifications to your apps using Appwrite Messaging.
 Push notifications can be used to deliver new message notifications, app updates, promotional offers,
 and other messages straight to your user's devices.
