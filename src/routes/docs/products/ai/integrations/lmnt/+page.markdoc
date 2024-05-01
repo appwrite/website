@@ -228,7 +228,7 @@ const response = await lmnt.synthesize(req.body.text, 'lily', { format: 'mp3' })
 ```
 
 This code will send the prompt to the LMNT API and return the audio as a blob,
-additionally it'll also catch any errors we could encounter and reports them for easy debugging.
+additionally it'll also catch any errors you could encounter and reports them for easy debugging.
 {% /section %}
 
 {% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
