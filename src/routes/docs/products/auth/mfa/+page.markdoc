@@ -4,11 +4,6 @@ title: Multi-factor authentication
 description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
 ---
 
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Multi-factor authentication (MFA) greatly increases the security of your apps by adding additional layers of protection.
 When MFA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite Authentication lets you easily implement MFA in your apps, letting you build more securely and quickly.
