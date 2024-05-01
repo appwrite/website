@@ -7,6 +7,13 @@ category: Mobile and native
 step: 1
 ---
 
+{% only_dark %}
+![Idea Tracker app](/images/docs/tutorials/apple/dark/ideasTracker.png)
+{% /only_dark %}
+{% only_light %}
+![Idea Tracker app](/images/docs/tutorials/apple/ideasTracker.png)
+{% /only_light %}
+
 **Idea tracker**: an app to track all the side project ideas that you'll be able to build with Appwrite.
 In this tutorial, you will build Idea tracker with Appwrite and Apple
 

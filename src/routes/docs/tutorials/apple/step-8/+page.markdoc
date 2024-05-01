@@ -1,0 +1,17 @@
+---
+layout: tutorial
+title: Next steps
+description: View your Apple project powered by Appwrite authentication and databases.
+step: 8
+---
+
+# Test your project {% #test-project %}
+
+{% only_dark %}
+![Idea Tracker app](/images/docs/tutorials/apple/dark/ideasTracker.png)
+{% /only_dark %}
+{% only_light %}
+![Idea Tracker app](/images/docs/tutorials/apple/ideasTracker.png)
+{% /only_light %}
+
+You can now run your project and test it on your Apple device or emulator.

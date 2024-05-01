@@ -22,6 +22,7 @@ class Appwrite: ObservableObject {
 
     var client: Client
     var account: Account
+    var databases: Databases
 
     public init() {
         self.client = Client()
@@ -41,7 +42,7 @@ class Appwrite: ObservableObject {
         email: String,
         password: String
     )  async throws -> User<[String: AnyCodable]> {
-        _ = try await account.createEmailSession(
+        _ = try await account.createEmailPasswordSession(
             email: email,
             password: password
         )
@@ -68,7 +69,7 @@ class Appwrite: ObservableObject {
 
 We will use these methods in our ViewModels to interact with Appwrite.
 
-# Login ViewModel {% #login-view %}
+# Login view-model {% #login-view-model %}
 
 Create a new file called 
 [LoginViewModel.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/ViewModel/LoginViewModel.swift) 
@@ -120,16 +121,14 @@ class LoginViewModel: ObservableObject {
 }
 ```
 
-The `login` and `register` methods call the Appwrite service to authenticate the user.
 The `checkLoggedIn` method checks if the user is already logged in by calling the `getUser` method.
 We **expect the method to throw** if the user isn't logged in.
 
 ```client-apple
 ...
-    {% highlighted %}
         self.appwriteService = Appwrite.shared
     }
-    
+    {% highlighted %}
     public func checkLoggedIn() async -> Bool {
         let user = try? await self.appwriteService.getUser()
         await MainActor.run {
@@ -137,8 +136,152 @@ We **expect the method to throw** if the user isn't logged in.
         }
         return self.userId != ""
     }
+    {% /highlighted %}
     public func login(
         email: String,
-    {% /highlighted %}
 ...
+```
+
+The `login` and `register` methods call the Appwrite service to authenticate the user.
+
+# Login view {% #login-view %}
+
+Using this new view-model, we can create a new view to handle the login and registration process.
+Create a new file called [View/LoginView.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/View/LoginView.swift).
+
+```client-apple
+import Foundation
+import SwiftUI
+
+struct LoginView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var isRegister: Bool = false
+    @State private var error: String = ""
+    @FocusState private var focusedTextField: FormTextField?
+    @EnvironmentObject private var loginViewModel: LoginViewModel
+    @EnvironmentObject private var router: Router
+    
+    enum FormTextField {
+        case email, password
+    }
+    
+    {% highlighted %}
+    private func handleRegister() async {
+        do {
+            try await loginViewModel.register(
+                email: email,
+                password: password
+            )
+        }
+        catch {
+            print(error)
+            self.error=error.localizedDescription
+            // add your error handling here
+        }
+    }
+    
+    private func handleLogin() async {
+        do {
+            try await loginViewModel.login(
+                email: email,
+                password: password)
+            // We'll add the redirect later 
+            // router.pushReplacement(.ideas)
+        }
+        catch {
+            print(error)
+            self.error=error.localizedDescription
+            // add your error handling here
+        }
+    }
+    {% /highlighted %}
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Form {
+                    Section {
+                        TextField("Email", text: $email)
+                            .focused($focusedTextField, equals: .email)
+                            .onSubmit { focusedTextField = .password }
+                            .submitLabel(.next)
+                        
+                        SecureField("Password", text: $password)
+                            .focused($focusedTextField, equals: .password)
+                            .onSubmit { focusedTextField = nil }
+                            .submitLabel(.continue)
+                        
+                        if (!error.isEmpty){
+                            Text(error)
+                                .font(.footnote)
+                                .foregroundColor(Color.red)
+                        }
+                    }
+                    
+                    Button(action: {
+                        Task {
+                            if isRegister {
+                                await handleRegister()
+                            } else {
+                                await handleLogin()
+                            }
+                        }
+                    }, label: {
+                        Text(isRegister ? "Register" : "Login")
+                    })
+                    
+                }
+                
+                Button(isRegister ? 
+                       "Already have an account? Log in" :
+                        "Don't have an account? Register"
+                ) {
+                    isRegister.toggle()
+                }
+            }
+            .navigationTitle(isRegister ? "Create Account" : "Login")
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+}
+```
+
+This is a simple form that allows the user to enter their email and password.
+Notice the highlighted lines which call the `login` and `register` methods from the view model.
+
+# Displaying the form {% #login-view %}
+
+First, create a splash screen to display on launch for the app to check if the user is already logged in.
+This will help us determine if the user is already logged in and redirect them to the ideas page.
+Create a file called [View/SplashView.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/View/SplashView.swift)
+
+```client-apple
+import Foundation
+import SwiftUI
+
+struct SplashView: View {
+    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var loginViewModel: LoginViewModel
+    
+    var body: some View {
+        NavigationStack(path: $router.routes) {
+            VStack {
+                Text("Welcome to Ideas Tracker")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+            }.task {
+                {% highlighted %}
+                let isLoggedIn = await self.loginViewModel.checkLoggedIn();
+
+                if !isLoggedIn {
+                    router.pushReplacement(.login)
+                }
+                {% /highlighted %}
+            }
+            .navigationDestination(for: Route.self, destination: { $0 })
+        }
+    }
+}
 ```

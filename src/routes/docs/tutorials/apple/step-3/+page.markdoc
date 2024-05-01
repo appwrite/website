@@ -55,6 +55,7 @@ class Appwrite: ObservableObject {
 
     var client: Client
     var account: Account
+    var databases: Databases
 
     public init() {
         self.client = Client()
