@@ -119,7 +119,7 @@
                             {bio}
                         </p>
                     {/if}
-                    <ul class="u-flex u-main-center u-gap-8">
+                    <ul class="u-flex u-main-center u-gap-8 u-margin-block-start-16">
                         {#if github}
                             <li>
                                 <a

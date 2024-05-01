@@ -70,6 +70,10 @@
                 {
                     label: 'Text to speech',
                     href: '/docs/products/ai/tutorials/text-to-speech'
+                },
+                {
+                    label: 'Music generation',
+                    href: '/docs/products/ai/tutorials/music-generation'
                 }
             ]
         },
@@ -99,6 +103,10 @@
                 {
                     label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
+                },
+                {
+                    label: 'fal.ai',
+                    href: '/docs/products/ai/integrations/fal-ai'
                 }
             ]
         }

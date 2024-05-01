@@ -12,7 +12,7 @@ Based on the user's login status, you'll redirect them to the login page or the 
 Create a new file `views/Home.jsx` and add the following stub code to it.
 We'll update this page later to display the ideas posted by other users and allow the user to post their ideas.
 
-```js
+```client-react-native
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useUser } from '../contexts/UserContext';
@@ -37,7 +37,7 @@ To handle basic routing, you can use the `react-navigation` library.
 This router also consumes the `UserContext` to determine if the user is logged in or not to redirect the user automatically.
 
 Create a file `lib/Router.jsx` and add the following code to it.  
-```js
+```client-react-native
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../views/Login';
 import HomeScreen from '../views/Home';
@@ -72,7 +72,7 @@ export function Router() {
 
 We'll display this router in the `App.js` file.
 
-```js
+```client-react-native
 
 import { StyleSheet, Text, View } from 'react-native';
 import { UserProvider } from './contexts/UserContext';

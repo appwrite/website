@@ -4,11 +4,6 @@ title: Sendgrid
 description: Send emails to your Appwrite users using Sendgrid and Appwrite Messaging.
 back: /docs/
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Sendgrid lets you send customized email messages to your users.
 These emails can be sent immediately or scheduled.
 You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
