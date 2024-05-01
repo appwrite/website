@@ -88,7 +88,7 @@ Open `App.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with
 
 This imports and initializes Appwrite and defines some basic authentication methods.
 
-```ts
+```client-react-native
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Client, Account, ID } from 'react-native-appwrite';
@@ -137,7 +137,7 @@ With `Client` and `Account` service initialized, you can now use them to make yo
 
 Add the following components to your `App.js` file to create a simple login form.
 
-```ts
+```client-react-native
 <View style={styles.root}>
     <Text>
     {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
@@ -192,7 +192,7 @@ Add the following components to your `App.js` file to create a simple login form
 
 You can also add some simple styling to your app by adding the following styles to your `App.js` file.
 
-```ts
+```client-react-native
 const styles = StyleSheet.create({
   root: {
     marginTop: 40, 
