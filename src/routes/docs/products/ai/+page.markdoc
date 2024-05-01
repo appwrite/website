@@ -53,4 +53,7 @@ Process speech audio into text
 {% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
 Convert text into speech
 {% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
+Generate music
+{% /cards_item %}
 {% /cards %}

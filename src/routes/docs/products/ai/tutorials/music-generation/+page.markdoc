@@ -106,7 +106,7 @@ export default async ({ req, res, error }) => {
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'generated_music';
 
   const response = await fetch(
-    `${HUGGINGFACE_API}/models/facebook/musicgen-large`,
+    `${HUGGINGFACE_API}/models/facebook/musicgen-small`,
     {
       headers: {
         Authorization: `Bearer ${process.env.HUGGINGFACE_ACCESS_TOKEN}`,
