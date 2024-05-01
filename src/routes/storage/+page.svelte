@@ -528,7 +528,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center web-u-max-width-800">
-                        <h2 class="web-display web-u-color-text-primary">Easily manage your storage infrastructure</h2>
+                        <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
                         <p class="aw-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto">
                             Appwrite is a 100% open source project, giving you the flexibility and support you need to get your project started.
                         </p>
@@ -549,7 +549,7 @@
                         <ul class="web-info-boxes items-centered web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
-                                        src="/images/icons/gradients/self-hosted.svg"
+                                        src="/images/icons/gradients/community.svg"
                                         width="40"
                                         height="40"
                                         alt=""
