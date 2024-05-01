@@ -153,7 +153,7 @@ Click **Execute** and you should see a response similar to the following:
 }
 ```
 
-Use the fileId to download the generated audio file from the Appwrite Storage. Here's an example of music generated from the prompt above:
+Use the `fileId` to download the generated audio file from the Appwrite Storage. Here's an example of music generated from the prompt above:
 
 ![Audio of generated music](/audio/docs/ai/tutorials/music-generation/generated-music.wav)
 {% /section %}
