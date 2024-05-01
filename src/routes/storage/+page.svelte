@@ -605,7 +605,7 @@
                                             height="48"
                                     />
                                     <h4
-                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                            class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Auth
                                     </h4>
@@ -626,7 +626,7 @@
                                             height="48"
                                     />
                                     <h4
-                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                            class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Functions
                                     </h4>
@@ -647,7 +647,7 @@
                                             height="48"
                                     />
                                     <h4
-                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                            class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Databases
                                     </h4>
@@ -668,7 +668,7 @@
                                             height="48"
                                     />
                                     <h4
-                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                            class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Messaging
                                     </h4>
@@ -689,7 +689,7 @@
                                             height="48"
                                     />
                                     <h4
-                                            class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
+                                            class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Realtime
                                     </h4>
