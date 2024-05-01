@@ -70,6 +70,10 @@
                 {
                     label: 'Text to speech',
                     href: '/docs/products/ai/tutorials/text-to-speech'
+                },
+                {
+                    label: 'Music generation',
+                    href: '/docs/products/ai/tutorials/music-generation'
                 }
             ]
         },
