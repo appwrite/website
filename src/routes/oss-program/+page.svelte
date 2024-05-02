@@ -5,6 +5,7 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import GradientBackground from './bg.png';
 
     let personName = '';
     let personEmail = '';
@@ -67,7 +68,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <enhanced:img src="./bg.png" alt="" />
+    <img src={GradientBackground} alt="" />
 </div>
 
 <Main>
