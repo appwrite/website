@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Appwrite achieves SOC 2 Type 1 compliance
-description: Learn more about what this means and the steps we undertake to keep you data safe.
+description: Learn more about what this means and the steps we undertake to keep your data safe.
 date: 2024-05-02
 cover: /images/blog/soc2.png
 timeToRead: 4
@@ -24,7 +24,7 @@ The main focus of SOC 2 Type 1 is to evaluate how a company’s controls align w
 4. **Confidentiality**: Information designated as confidential is protected as committed or agreed.
 5. **Privacy**: Personal information is collected, used, retained, disclosed, and disposed of in conformity with the commitments in the entity’s privacy notice.
 
-# And why should you care?
+# Why should you care?
 
 If you’re using Appwrite to build your products, you should be excited about our compliance with SOC 2 Type 1. As a cloud provider that stores data, we have to be very sure about the safety of not only our users but also your users.
 
