@@ -6,9 +6,9 @@ difficulty: intermediate
 readtime: 15
 ---
 
-LMNT is an text to speech tool that can generate natural sounding audio from text. It's an excellent tool for dubbing content, creating audiobooks, or even for accessibility purposes.
+LMNT is a text-to-speech tool that can generate natural-sounding audio from text. It's an excellent tool for dubbing content, creating audiobooks, or even for accessibility.
 
-Integrating LMNT into your Appwrite project is simple. This tutorial will guide you through the process of setting up the LMNT API and integrating it into your Appwrite project.
+Integrating LMNT into your Appwrite project is simple. This tutorial will guide you through setting up the LMNT API and incorporating it into your Appwrite project.
 
 # Prerequisites {% #prerequisites %}
 
@@ -16,7 +16,7 @@ Integrating LMNT into your Appwrite project is simple. This tutorial will guide 
 - An [LMNT API Key](https://www.lmnt.com/)
 
 {% section #step-1 step=1 title="Create new function" %}
-Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Functions** in the left sidebar and click the **Create Function** button.
 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
@@ -31,11 +31,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 3. Under **Connect Git repository**, select your provider.
 4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 5. In the **Variables** step, add the `LMNT_API_KEY`, generate it [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the function.
+6. Follow the step-by-step wizard and create the Function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
-Once the function is created, navigate to the freshly created repository and clone it to your local machine.
+Once the Function is created, please navigate to the freshly created repository and clone it to your local machine.
 
 Install the `lmnt-node` package to make requests to the LMNT API and `node-appwrite` package to upload the generated audio files to Appwrite Storage.
 
@@ -45,12 +45,12 @@ npm install lmnt-node node-appwrite
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility functions" %}
-For this example, the function will be able to take both `GET` and `POST` requests.
+For this example, the Function can take both `GET` and `POST` requests.
 
-For the `GET` request, return a static HTML page that will have a form to submit text to the API.
-Meanwhile the `POST` request will send the text to the LMNT API and return the generated audio file.
+For the `GET` request, return a static HTML page with a form to submit text to the API.
+Meanwhile, the `POST` request will send the text to the LMNT API and return the generated audio file.
 
-To begin with write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
+To begin with, write the code to return the static HTML page. To do this, create a new `src/utils.js` file with the following code:
 
 ```js
 import path from 'path';
@@ -82,11 +82,11 @@ export default async ({ req, res, error }) => {
 };
 ```
 
-A check is also included to ensure that the `LMNT_API_KEY`, `APPWRITE_API_KEY` and `APPWRITE_BUCKET_ID` environment variables is set.
+A check is also included to ensure that the `LMNT_API_KEY`, `APPWRITE_API_KEY` and `APPWRITE_BUCKET_ID` environment variables are set.
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create an HTML web page that the Function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -192,20 +192,20 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
 </body>
 ```
 
-All of this together will render a form that will submit your text to the Appwrite function through a POST request which you'll create next. The Appwrite function will call LMNT's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
+All of this together will render a form that will submit your text to the Appwrite Function through a POST request, which you'll create next. The Appwrite function will call LMNT's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Next you'll add the methods necessary to integrate with the LMNT API.
+Next, you'll add the methods necessary to integrate with the LMNT API.
 
-Import the `Speech` class from `lmnt-node`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file
+Import the `Speech` class from `lmnt-node`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file.
 
 ```js
 import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
 import Speech from 'lmnt-node';
 ```
 
-Next add code to validate the body of the request and initialize the Appwrite SDK:
+Next, add code to validate the body of the request and initialize the Appwrite SDK:
 
 ```js
 const endpoint = process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1";
@@ -227,8 +227,8 @@ const lmnt = new Speech(process.env.LMNT_API_KEY);
 const response = await lmnt.synthesize(req.body.text, 'lily', { format: 'mp3' });
 ```
 
-This code will send the prompt to the LMNT API and return the audio as a blob,
-additionally it'll also catch any errors you could encounter and reports them for easy debugging.
+This code will send the prompt to the LMNT API and return the audio as a blob.
+Additionally, it'll catch any errors you could encounter and report them for easy debugging.
 {% /section %}
 
 {% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
@@ -253,12 +253,12 @@ const url = `${endpoint}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files
 return res.json({ ok: true, response: url });
 ```
 
-This should finish up the function, Deploy it to Appwrite by pushing to the git repository created earlier.
+This should finish up the Function. Deploy it to Appwrite by pushing it to the git repository created earlier.
 {% /section %}
 
 {% section #step-8 step=8 title="Test the function" %}
-Now that the function is deployed, test it by visiting the function URL in your browser.
-This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the audio appear below the input.
+Now that the Function is deployed test it by visiting the function URL in your browser.
+This should show the UI created earlier. To test it, write a prompt and click the submit button. After a brief moment, you should see the audio below the input.
 
 ![Testing the function](/images/docs/ai/integrations/lmnt/demo.png)
 {% /section %}
