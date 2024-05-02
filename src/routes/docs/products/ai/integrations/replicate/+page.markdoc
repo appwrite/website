@@ -189,7 +189,7 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
 </body>
 ```
 
-All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call Perplexity's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
+All of this together will render a form that will submit your question to the Appwrite Function through a POST request which we'll create next. The Appwrite Function will call Replicate's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
