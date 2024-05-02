@@ -105,9 +105,217 @@
                     </p>
                     <a href="/" class="web-button is-secondary u-margin-inline-auto u-margin-block-start-16">Learn more</a>
                 </div>
-                <div class="web-container u-flex u-margin-block-start-64 is-only-desktop">
-                    <img src="/images/pages/storage/bucket-modal.png" width="708" alt="" />
-                    <img src="/images/pages/storage/permission-modal.png" width="708" alt="" class="u-margin-block-start-56 u-margin-inline-start-negative-64" />
+                <div class="web-container u-flex u-cross-start u-margin-block-start-64 is-only-desktop">
+                    <div class="web-media-container u-flex-vertical" style="flex-basis:586px; border-radius:1.5rem">
+                        <section class="web-card e-console-card is-dark u-padding-0 u-flex-vertical u-stretch">
+                            <header class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16">
+                                <div class=" u-flex u-gap-16">
+                                    <h4 class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1">
+                                        My Bucket
+                                    </h4>
+                                    <div class="tag u-cross-child-end web-u-color-text-secondary">
+                                        <code class="web-u-font-size-10">637a40ba7a703e3936e2</code>
+                                    </div>
+                                </div>
+                                <div class="tabs">
+                                    <ul class="tabs-list scroll-shadow-horizontal">
+                                        <li class="tabs-item">
+                                            <button class="tabs-button" tabindex="-1" role="tab">
+                                                <span class="text">Files</span>
+                                            </button>
+                                        </li>
+                                        <li class="tabs-item">
+                                            <button class="tabs-button" tabindex="-1" role="tab">
+                                                <span class="text">Usage</span>
+                                            </button>
+                                        </li>
+                                        <li class="tabs-item">
+                                            <button class="tabs-button" tabindex="-1" role="tab">
+                                                <span class="text">Settings</span>
+                                            </button>
+                                        </li>
+                                        <li class="tabs-item">
+                                            <button class="tabs-button is-selected" tabindex="0" role="tab">
+                                                <span class="text">Security</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </header>
+                            <div
+                                    class="e-console-card-content u-flex-vertical u-gap-16 u-padding-24 u-stretch"
+                                    style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), var(--background, #19191C);"
+                            >
+                                <div class="web-card is-normal">
+                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                        <input type="checkbox" class="switch" checked />
+                                        <div class="u-flex-vertical">
+                                            <h5 class="web-caption-500 web-u-color-text-primary">Enable encryption</h5>
+                                            <p class="web-caption-500">Files larger than 20MB will not be encrypted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="web-card is-normal">
+                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                        <input type="checkbox" class="switch" checked />
+                                        <div class="u-flex-vertical">
+                                            <h5 class="web-caption-500 web-u-color-text-primary">Strip metadata</h5>
+                                            <p class="web-caption-500">Remove metadata for all files uploaded to the bucket.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="web-card is-normal">
+                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                        <input type="checkbox" class="switch" checked />
+                                        <div class="u-flex-vertical">
+                                            <h5 class="web-caption-500 web-u-color-text-primary">Permissions</h5>
+                                            <p class="web-caption-500">Choose who can access the files in the bucket.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="web-card is-normal">
+                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                        <input type="checkbox" class="switch" />
+                                        <div class="u-flex-vertical">
+                                            <h5 class="web-caption-500 web-u-color-text-primary">File level permissions</h5>
+                                            <p class="web-caption-500">Enable to set permissions at the File level.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start"
+                         style="flex-basis:602px; border-radius:1.5rem; background:rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px);
+                                margin-block-start:60px; margin-inline-start:-80px">
+                        <h4
+                                class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-padding-24 u-sep-block-end"
+                                style="border-radius:0"
+                        >
+                            Permissions
+                        </h4>
+                        <div class="u-padding-inline-20">
+                            <table class="table is-remove-outer-styles u-sep-block-start">
+                                <thead class="table-thead">
+                                    <tr class="table-row">
+                                        <th class="table-thead-col" style="--p-col-width:150">
+                                            <div class="web-eyebrow">Role</div>
+                                        </th>
+                                        <th class="table-thead-col">
+                                            <div class="web-eyebrow">Create</div>
+                                        </th>
+                                        <th class="table-thead-col">
+                                            <div class="web-eyebrow">Read</div>
+                                        </th>
+                                        <th class="table-thead-col">
+                                            <div class="web-eyebrow">Update</div>
+                                        </th>
+                                        <th class="table-thead-col">
+                                            <div class="web-eyebrow">Delete</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-tbody">
+                                    <tr class="table-row">
+                                        <td class="table-col">
+                                            <div class="web-u-color-text-primary web-u-font-size-14">Any</div>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role any create">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role any read" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role any update">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role any delete">
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-col">
+                                            <div class="web-u-color-text-primary web-u-font-size-14">Guests</div>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role guests create" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role guests read">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role guests update">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role guests delete">
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-col">
+                                            <div class="web-u-color-text-primary web-u-font-size-14">Users</div>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role users create" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role users read" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role users update" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role users delete" checked>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-col">
+                                            <div class="web-u-color-text-primary web-u-font-size-14">user:62f8b5b</div>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62f8b5b create" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62f8b5b read">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62f8b5b update">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62f8b5b delete">
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-col">
+                                            <div class="web-u-color-text-primary web-u-font-size-14">user:62e1544</div>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62e1544 create" checked>
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62e1544 read">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62e1544 update">
+                                        </td>
+                                        <td class="table-col">
+                                            <input type="checkbox" aria-label="role user:62e1544 delete">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button
+                                    class="web-button is-small is-text u-margin-block-16"
+                                    style="block-size: 2rem"
+                            >
+                                <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
+                                <span class="text">Add role</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--<img src="/images/pages/storage/bucket-modal.png" width="708" alt="" />-->
+                    <!--<img src="/images/pages/storage/permission-modal.png" width="708" alt="" class="u-margin-block-start-56 u-margin-inline-start-negative-64" />-->
                 </div>
             </div>
         </div>
@@ -149,14 +357,14 @@
                             </div>
                             <div class="web-media" style="border-radius:1.5rem">
                                 <section class="web-card e-console-card is-white u-padding-0">
-                                    <header class="e-header-console u-padding-block-end-0 u-flex-vertical u-gap-16">
+                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">
                                         <div class=" u-flex u-gap-16">
                                             <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>
                                             <div class="tag u-cross-child-end">
                                                 <code class="web-u-font-size-10">65f935a927c927931b68</code>
                                             </div>
                                         </div>
-                                        <div class="tabs">
+                                        <div class="tabs is-light">
                                             <ul class="tabs-list scroll-shadow-horizontal">
                                                 <li class="tabs-item">
                                                     <button class="tabs-button is-selected" tabindex="0" role="tab">
@@ -682,13 +890,35 @@
 </Main>
 
 <style lang="scss">
-  /* light mode */
+    input[type="checkbox"] {
+      --p-icon-color-default: var(--web-color-greyscale-100);
+      --p-bg-color-default: var(--web-color-greyscale-750);
+      --p-border-color-default: var(--web-color-greyscale-750);
+      --p-bg-color-checked: var(--web-color-accent);
+      --p-border-color-checked: var(--web-color-accent);
+      --p-bg-color-hover-checked: var(--web-color-accent);
+      --p-border-color-hover-checked: var(--web-color-accent);
+      --p-bg-color-active-checked: var(--web-color-accent);
+      --p-border-color-active-checked: var(--web-color-accent);
+    }
+    .table {
+      --p-table-border-color: var(--web-color-offset) !important;
+      :where(.table-thead-col) { padding-block:1.33rem; }
+      :where(.table-col) { padding-block:.66rem; }
+    }
   .e-console-card {
-    &-content {  background-color:hsl(var(--color-neutral-5)); border-radius:0 0 16px 16px;  }
+    &-content {  border-radius:0 0 16px 16px;  }
     .tag { box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none; }
+    &.is-light {
+      .e-console-card { background-color:hsl(var(--color-neutral-5)); }
+    }
   }
-  .e-header-console { padding:1.5rem; background-color:#fff; border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));  }
-  .tabs {
+  .e-header-console {
+    padding:1.5rem;  border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));
+    &.is-light { background-color:#fff;}
+    &.is-dark { background-color:hsl(var(--color-neutral-1000) / 0.1); }
+  }
+  .tabs.is-light {
     --p-tabs-text-color:            var(--p-tabs-text-color-default);
     --p-tabs-text-color-default:    var(--color-neutral-50);
     --p-tabs-text-color-hover:      var(--color-neutral-80);
@@ -753,6 +983,12 @@
     --p-tag-text-color-disabled:   var(--color-neutral-20);
     --p-tag-bg-color-disabled:     var(--color-neutral-5);
     --p-tag-border-color-disabled: var(--color-neutral-10);
+  }
+  .switch {
+    --p-bg-color: var(--color-neutral-1000);
+    &:where(:checked) {
+      --p-bg-color: var(--web-color-accent);
+    }
   }
 
   .inline-tag {
