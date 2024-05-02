@@ -105,7 +105,7 @@
                     </p>
                     <a href="/" class="web-button is-secondary u-margin-inline-auto u-margin-block-start-16">Learn more</a>
                 </div>
-                <div class="web-container u-flex u-cross-start u-margin-block-start-64 is-only-desktop">
+                <div class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64 is-only-desktop">
                     <div class="web-media-container u-flex-vertical" style="flex-basis:586px; border-radius:1.5rem">
                         <section class="web-card e-console-card is-dark u-padding-0 u-flex-vertical u-stretch">
                             <header class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16">
