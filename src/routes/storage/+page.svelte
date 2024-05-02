@@ -1122,7 +1122,7 @@
     }
   }
   .e-bg-image-pattern-bottom {
-    background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1600px;
+    background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1500px;
     @media (max-width: 1198px) {
       //background-position: center bottom -100px;
       background-size:1350px;
