@@ -3,7 +3,7 @@ layout: post
 title: Building cross platform applications with React Native
 description: With the launch of our new React Native SDK in open beta we want to take a deeper dive into cross platform development and when you should use it.
 date: 2024-05-05
-cover: /images/blog/react-native-cross.png
+cover: /images/blog/react-nativecross.png
 timeToRead: 9
 author: damodar-lohani
 category: engineering
