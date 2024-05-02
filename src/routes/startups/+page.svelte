@@ -448,7 +448,6 @@
                                 >
                                     <div
                                         class="e-u-order-1-mobile e-u-margin-inline-auto-mobile u-width-full-line web-u-max-width-580"
-                                        style="margin-block: auto;"
                                     >
                                         <div
                                             class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
