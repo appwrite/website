@@ -75,6 +75,7 @@
 .#{$p}-u-max-width-580              { max-inline-size:pxToRem(580); }
 .#{$p}-u-max-width-600              { max-inline-size:pxToRem(600); }
 .#{$p}-u-max-width-610              { max-inline-size:pxToRem(610); }
+.#{$p}-u-max-width-640              { max-inline-size:pxToRem(640); }
 .#{$p}-u-max-width-680              { max-inline-size:pxToRem(680); }
 .#{$p}-u-max-width-700              { max-inline-size:pxToRem(700); }
 .#{$p}-u-max-width-800              { max-inline-size:pxToRem(800); }
@@ -122,6 +123,7 @@
 .#{$p}-u-margin-block-end-32        { margin-block-end:pxToRem(32); }
 
 .#{$p}-u-margin-inline-start-48     { margin-inline-start:pxToRem(48); }
+.#{$p}-u-margin-inline-end-12       { margin-inline-end:pxToRem(12); }
 
 .#{$p}-u-text-color-primary-500     { color:hsl(var(--web-color-pink-500));   }
 .#{$p}-u-text-color-secondary-100   { color:hsl(var(--web-color-secondary-100)); }
@@ -151,6 +153,7 @@
 .#{$p}-u-flex-direction-column-mobile { @media #{$break1} { flex-direction:column; } }
 .#{$p}-u-flex-basis-200             { flex-basis:pxToRem(200); }
 .#{$p}-u-flex-basis-300             { flex-basis:pxToRem(300); }
+.#{$p}-u-flex-basis-380             { flex-basis:pxToRem(380); }
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 

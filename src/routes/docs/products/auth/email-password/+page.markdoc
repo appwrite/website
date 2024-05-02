@@ -10,7 +10,7 @@ Email and password login is the most commonly used authentication method. Appwri
 
 You can use the Appwrite Client SDKs to create an account using email and password.
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -36,7 +36,7 @@ After an account is created, it can be verified through the account create verif
 
 First, send a verification email. Specify a redirect URL which users will be redirected to. The verification secrets will be appended as query parameters to the redirect URL. In this example, the redirect URL is `https://example.com/verify`.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -58,7 +58,7 @@ Next, implement the verification page in your app. This page will parse the secr
 
 Since the secrets are passed in through url params, it will be easiest to perform this step in the browser.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -84,7 +84,7 @@ promise.then(function (response) {
 
 After you've created your account, users can be logged in using the Create Email Session route.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -108,7 +108,7 @@ If a user forgets their password, they can initiate a password recovery flow to 
 
 Only redirect URLs to domains added as a platform on your Appwrite Console will be accepted. URLs not added as a platform are rejected to protect against redirect attacks.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -126,7 +126,7 @@ promise.then(function (response) {
 
 After receiving an email with the secret attached to the redirect link, submit a request to the Create Password Recovery (confirmation) endpoint to complete the recovery flow. The verification link sent to the user's email address is valid for 1 hour.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()

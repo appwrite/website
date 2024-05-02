@@ -25,7 +25,7 @@ This new feature, however, ensures you can use more readable and self-documentin
 
 Bringing along benefits such as massively reducing friction when using routes that have predefined parameters. One of the most common examples of SDK Enums is OAuth providers. To log in with Apple, you must pass the `apple` string as the provider. With enums, you'll be able to pass `OAuthProvider.Apple` instead.
 
-```js
+```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
