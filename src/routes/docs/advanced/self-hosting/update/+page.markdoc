@@ -28,6 +28,10 @@ This is the parent directory where you will find the appwrite directory, inside 
 
 # Installing the next version {% #install-next-version %}
 
+{% info title="Parent directory naming" %}
+Your Appwrite installation's parent directory name is expected to be `appwrite`. Changing the directory name will result in a miss-matched docker project names.
+{% /info %}
+
 ## Unix
 
 ```sh
@@ -35,7 +39,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.5.4
+    appwrite/appwrite:1.5.5
 ```
 
 ## CMD
@@ -45,7 +49,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.5.4
+    appwrite/appwrite:1.5.5
 ```
 
 ## PowerShell
@@ -55,7 +59,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.5.4
+    appwrite/appwrite:1.5.5
 ```
 
 This will pull the `docker-compose.yml` file for the new version and perform the installation.
