@@ -6,9 +6,9 @@ difficulty: intermediate
 readtime: 15
 ---
 
-The Anyscale API is a powerful tool that can be used to generate text using the leading open source models. This tutorial will guide you through the process of setting up the Anyscale API and integrating it into your Appwrite project.
+The Anyscale API is a powerful tool for generating text using the leading open-source models. This tutorial will guide you through setting up the Anyscale API and integrating it into your Appwrite project.
 
-You'll create a simple function that takes a text prompt and generates a completion using Mistral's Mixtral 8x7B model. Then, using Appwrite functions you'll create a user interface that allows users to input text and see the generated completion.
+You'll create a simple function that takes a text prompt and generates a completion using Mistral's Mixtral 8x7B model. Then, using Appwrite functions, you'll make a user interface that allows users to input text and see the generated completion.
 
 # Prerequisites {% #prerequisites %}
 
@@ -16,7 +16,7 @@ You'll create a simple function that takes a text prompt and generates a complet
 - An [Anyscale API Key](https://app.endpoints.anyscale.com/credentials)
 
 {% section #step-1 step=1 title="Create new function" %}
-Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
+Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Functions** in the left sidebar and click the **Create Function** button.
 
 {% only_dark %}
 ![Create function screen](/images/docs/functions/dark/template.png)
@@ -37,7 +37,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 {% section #step-2 step=2 title="Add OpenAI SDK" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
 
-Install the `openai` package to simplify the process of interacting with the AnyScale API as it is an OpenAI compatible API.
+Install the `openai` package to simplify interacting with the AnyScale API, as it is an OpenAI-compatible API.
 
 ```bash
 npm install openai
@@ -45,12 +45,12 @@ npm install openai
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility function" %}
-For this example, the function will be able to take both `GET` and `POST` requests.
+For this example, the function can take both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page that will have a form to submit text to the API.
-Meanwhile the `POST` request will send the text to the AnyScale API and return the generated text.
+Meanwhile, the `POST` request will send the text to the AnyScale API and return the generated text.
 
-Write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
+Write the code to return the static HTML page. To do this, create a new `src/utils.js` file with the following code:
 
 ```js
 import path from 'path';
@@ -86,7 +86,7 @@ If the method is `GET`, it returns the static HTML page.
 {% /section %}
 
 {% section #step-5 step=5 title="Create web page" %}
-Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
+Create an HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
 <!doctype html>
@@ -125,7 +125,7 @@ Create a HTML web page that the function will serve. Create a new file at `stati
 </html>
 ```
 
-The code above includes a script that will handle the form submission and a script tag that includes the Alpine.js library. This library will be used to handle the form submission.
+The code above includes a script that will handle the form submission and a script tag that includes of the Alpine.js library. This library will be used to handle the submission of the form.
 
 After the `</head>` tag add a `<body>` containing the visible form:
 
@@ -189,7 +189,7 @@ After the `</head>` tag add a `<body>` containing the visible form:
 </body>
 ```
 
-The form will allows users to submit your text to the Appwrite function through a POST request. The Appwrite function will call the Anyscale API, and return the response to the user.
+The form will allow users to submit text to the Appwrite function through a POST request. The Appwrite function will call the Anyscale API and return the response to the user.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST request" %}
@@ -236,8 +236,8 @@ try {
 {% /section %}
 
 {% section #step-8 step=8 title="Test the function" %}
-Now that the function is deployed, test it by visiting the function URL in your browser.
-This should show the UI created earlier and to test it, write a prompt and click the submit button. After a brief moment you should see the generated text from the Anyscale API.
+Now that the function is deployed test it by visiting the function URL in your browser.
+This should show the UI created earlier. To test it, write a prompt and click the submit button. After a brief moment, you should see the text generated by the Anyscale API.
 
 ![Testing the function](/images/docs/ai/integrations/anyscale/demo.png)
 {% /section %}
