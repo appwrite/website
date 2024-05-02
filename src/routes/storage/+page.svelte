@@ -55,7 +55,10 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start">
+        <div
+                class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start"
+                style="background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1600px"
+        >
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
