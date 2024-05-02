@@ -1,45 +1,10 @@
 <script lang="ts">
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
-    import { GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import DeveloperCard from "$routes/DeveloperCard.svelte";
-
-    export let data;
-
-
-    const metrics = [
-        { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
-        { metric: '3K+', description: 'Pull Requests' },
-        { metric: '18K+', description: 'Commits' },
-        { metric: '3K+', description: 'Issues' },
-        { metric: '600+', description: 'Open Issues' },
-        { metric: '2.5K+', description: 'Closed Issues' },
-        { metric: '3.5K+', description: 'Forks' },
-        { metric: '800+', description: 'Contributors' }
-    ];
-
-    let name = '';
-    let email = '';
-    let submitted = false;
-    let error: string | undefined;
-    let submitting = false;
-
-    async function submit() {
-        submitting = true;
-        error = undefined;
-        const response = await newsletter(name, email);
-        submitting = false;
-        if (response.status >= 400) {
-            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
-            return;
-        }
-        submitted = true;
-    }
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -533,7 +498,7 @@
                             Appwrite is a 100% open source project, giving you the flexibility and support you need to get your project started.
                         </p>
                         <a
-                                href=""
+                                href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
@@ -907,43 +872,6 @@
         }
       }
     }
-  }
-
-  .absolute-container {
-    position: absolute;
-    width: 1720px;
-    min-height: 100%;
-    pointer-events: none;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .pink-gradient {
-    width: 842px;
-    height: 719px;
-    flex-shrink: 0;
-
-    border-radius: 842px;
-    opacity: 0.4;
-    background: radial-gradient(50% 46.73% at 50% 53.27%, #fe9567 28.17%, #fd366e 59.38%);
-    filter: blur(150px);
-
-    position: absolute;
-    right: -250px;
-    top: 00px;
-  }
-
-  .green-gradient {
-    border-radius: 771px;
-    opacity: 0.3;
-    background: radial-gradient(49.55% 43.54% at 47% 50.69%, #e7f8f7 0%, #85dbd8 100%);
-    filter: blur(150px);
-    width: 571px;
-    height: 771px;
-    position: absolute;
-
-    left: -200px;
-    bottom: -300px;
   }
 
   .web-multi-columns-1 {
