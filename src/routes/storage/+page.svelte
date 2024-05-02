@@ -55,10 +55,7 @@
                 </section>
             </div>
         </div>
-        <div
-                class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start"
-                style="background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1600px"
-        >
+        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start e-bg-image-pattern-bottom">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
@@ -108,8 +105,8 @@
                     </p>
                     <a href="/" class="web-button is-secondary u-margin-inline-auto u-margin-block-start-16">Learn more</a>
                 </div>
-                <div class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64 is-only-desktop">
-                    <div class="web-media-container u-flex-vertical" style="flex-basis:586px; border-radius:1.5rem">
+                <div class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64">
+                    <div class="web-media-container u-flex-vertical u-max-width-100-percent" style="flex-basis:586px; border-radius:1.5rem">
                         <section class="web-card e-console-card is-dark u-padding-0 u-flex-vertical u-stretch">
                             <header class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16">
                                 <div class=" u-flex u-gap-16">
@@ -189,7 +186,7 @@
                         </section>
                     </div>
 
-                    <div class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start"
+                    <div class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start is-only-desktop"
                          style="flex-basis:602px; border-radius:1.5rem; background:rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px);
                                 margin-block-start:60px; margin-inline-start:-80px">
                         <h4
@@ -1122,6 +1119,13 @@
       .web-card {
         rotate: none !important;
       }
+    }
+  }
+  .e-bg-image-pattern-bottom {
+    background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1600px;
+    @media (max-width: 1198px) {
+      //background-position: center bottom -100px;
+      background-size:1350px;
     }
   }
 </style>
