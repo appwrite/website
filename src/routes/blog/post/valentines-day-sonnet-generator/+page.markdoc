@@ -160,7 +160,7 @@ The original function provided through this template used OpenAI’s GPT-3.5-Tur
 
 After that is done, we need to visit the `src/main.js` file and replace the existing code with the following:
 
-```js
+```client-web
 import { OpenAI } from 'openai';
 import { getStaticFile, throwIfMissing } from './utils.js';
 

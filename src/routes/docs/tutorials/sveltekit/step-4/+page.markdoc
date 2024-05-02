@@ -12,7 +12,7 @@ We'll use a store to keep track of our user's data.
 
 Create a new file `src/lib/user.js` and add the following code to it.
 
-```js
+```client-web
 import { writable } from 'svelte/store';
 import { ID } from 'appwrite';
 import { goto } from '$app/navigation';

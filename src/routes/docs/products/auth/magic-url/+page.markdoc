@@ -11,7 +11,7 @@ Magic URL is a password-less way to authenticate users. When a user logs in by p
 Initialize the log in process with the [Create Magic URL Session](/docs/references/cloud/client-web/account#createMagicURLSession) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -52,7 +52,7 @@ After receiving your secret from an email, you can create a session.
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -67,7 +67,6 @@ const userId = urlParams.get('userId');
 
 const user = await account.updateMagicURLSession(userId, secret);
 ```
-
 ```graphql
 mutation {
     accountUpdateMagicURLSession(

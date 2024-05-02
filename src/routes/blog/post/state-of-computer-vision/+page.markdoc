@@ -8,7 +8,6 @@ timeToRead: 15
 author: bradley-schofield
 category: product
 featured: false
-draft: true
 ---
 
 # Introduction
@@ -90,10 +89,10 @@ Detect and label objects in images
 
 # Sources
 
-1. [https://www.statista.com/outlook/tmo/artificial-intelligence/computer-vision/worldwide](https://www.statista.com/outlook/tmo/artificial-intelligence/computer-vision/worldwide)
+1. [Computer Vision Metrics - Statista](https://www.statista.com/outlook/tmo/artificial-intelligence/computer-vision/worldwide)
 1. [A Brief History of Computer Vision (and CNNs) - Hackernoon](https://hackernoon.com/a-brief-history-of-computer-vision-and-convolutional-neural-networks-8fe8aacc79f)
-1. [https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf)
-1. [http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation...](http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation_into_the_Human_Representation_and_Processing_of_Visual_Information.chapter1.pdf)
-1. [https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf](https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf)
-1. [http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf](http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf)
-1. [http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf](http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
+1. [Project MAC's Vision Memo - MIT](https://dspace.mit.edu/bitstream/handle/1721.1/6125/AIM-100.pdf)
+1. [Computional Vision Investigation - David Marr](http://mechanism.ucsd.edu/teaching/f18/David_Marr_Vision_A_Computational_Investigation_into_the_Human_Representation_and_Processing_of_Visual_Information.chapter1.pdf)
+1. [Neocognitron - Kunihiko Fukushima](https://www.cs.princeton.edu/courses/archive/spr08/cos598B/Readings/Fukushima1980.pdf)
+1. [Backpropagation Paper - Yann LeCun and other researchers](http://yann.lecun.org/exdb/publis/pdf/lecun-89e.pdf)
+1. [Backpropagation Applied to CNNs Paper - Yann LeCun and other researchers](http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)

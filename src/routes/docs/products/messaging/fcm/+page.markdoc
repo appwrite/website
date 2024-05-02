@@ -4,11 +4,6 @@ title: Firebase Cloud Messaging
 description: Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
 back: /docs/
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Firebase Cloud Messaging (FCM) lets you send push notifications to your iOS, Android, and web apps through Appwrite Messaging.
 Before you can deliver messages, you must connect to a messaging provider.
 
@@ -103,7 +98,7 @@ To update or delete providers programmatically, use an [Appwrite Server SDK](/do
 
 {% multicode %}
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

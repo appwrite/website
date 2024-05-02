@@ -39,7 +39,7 @@ Below you can find all the different parameters offered by the preview endpoint 
 # Examples {% #examples %}
 Here are some examples using [Client SDKs](/docs/sdks#client).
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -69,7 +69,7 @@ const result = storage.getFilePreview(
 
 console.log(result.href);
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -118,7 +118,7 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
@@ -145,7 +145,7 @@ func main() async throws {
     print(String(describing: byteBuffer)
 }
 ```
-```kotlin
+```client-android-java
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope

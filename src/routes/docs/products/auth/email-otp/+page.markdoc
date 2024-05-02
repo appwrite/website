@@ -3,10 +3,6 @@ layout: article
 title: Email OTP
 description: Seamless sign in with Email OTP authentication in Appwrite. Learn how to provide simple and secure passwordless user accounts.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
 
 Email OTP (one-time password) authentication lets users create accounts using their email address and log in using a 6 digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url), but can provide better user experience in some scenarios.
 
@@ -30,7 +26,7 @@ Send an an email to initiate the authentication process. A **new account** will 
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -47,7 +43,7 @@ const sessionToken = await account.createEmailToken(
 const userId = sessionToken.userId;
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -63,8 +59,24 @@ final sessionToken = await account.createEmailToken(
 
 final userId = sessionToken.userId;
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+let account = Account(client);
+
+let sessionToken = try await account.createEmailToken(
+    userId: ID.unique(),
+    email: "email@example.com"
+);
+
+let userId = sessionToken.userId;
+```
+
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.ID
@@ -82,24 +94,6 @@ val sessionToken = account.createEmailToken(
 
 val userId = sessionToken.userId;
 ```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
-
-let account = Account(client);
-
-let sessionToken = try await account.createEmailToken(
-    userId: ID.unique(),
-    email: "email@example.com"
-);
-
-let userId = sessionToken.userId;
-```
-
 ```graphql
 mutation {
     accountCreateEmailToken(userId: "unique()", email: "email@example.com") {
@@ -119,7 +113,7 @@ After initiating the email OTP authentication process, the returned user ID and 
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -134,7 +128,7 @@ const session = await account.createSession(
 );
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -148,8 +142,21 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+let account = Account(client);
+
+let session = try await account.createSession(
+    userId: userId,
+    secret: "[SECRET]"
+);
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.ID
@@ -163,21 +170,6 @@ val account = Account(client);
 val session = account.createSession(
     userId = userId,
     secret = "[SECRET]"
-);
-```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
-
-let account = Account(client);
-
-let session = try await account.createSession(
-    userId: userId,
-    secret: "[SECRET]"
 );
 ```
 
@@ -203,7 +195,7 @@ A security phrase is a randomly generated phrase provided on the login page, as 
 By default, security phrases are disabled. To enable a security phrase in Email OTP, enable it in first step of the authentication flow.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
