@@ -198,10 +198,9 @@ import { fetch } from 'undici'
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 ```
 
-Add code to validate the request body and define the models also within `src/main.js`:
+Add the following code to the end of the request handler in the main.js file to validate the request body and define the models:
 
 ```js
-// Code for GET request handler
 const models = {
   'text': 'mistralai/Mixtral-8x7B-Instruct-v0.1',
   'image': 'stabilityai/stable-diffusion-xl-base-1.0'
