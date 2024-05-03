@@ -97,7 +97,7 @@
                         {@const author = data.authors.find((author) => author.slug === featured.author)}
                         <article class="web-feature-article u-margin-block-start-48">
                             <a href={featured.href} class="web-feature-article-image">
-                                <img src={featured.cover} class="web-image-ratio-4/3" alt="cover" />
+                                <img src={featured.cover} class="web-image-ratio-4/3" loading="lazy" alt="cover" />
                             </a>
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
@@ -118,9 +118,10 @@
                                         <img
                                                 class="web-author-image"
                                                 src={author?.avatar}
+                                                alt={author?.name}
+                                                loading="lazy"
                                                 width="24"
                                                 height="24"
-                                                alt=""
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="web-sub-body-400 web-link"
@@ -132,30 +133,6 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-hide">
-                                        <li>
-                                            <a
-                                                    href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
-                                                    aria-label="Author twitter"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                            >
-                                                <span class="web-icon-x" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                    href="https://twitter.com/appwrite"
-                                                    class="web-icon-button"
-                                                    aria-label="Author LinkedIn"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                            >
-                                                <span class="web-icon-linkedin" aria-hidden="true" />
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <a
                                         href={featured.href}
