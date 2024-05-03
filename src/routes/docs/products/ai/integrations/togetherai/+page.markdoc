@@ -45,7 +45,7 @@ npm install undici
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility function" %}
-For this example, the function can take both `GET` and `POST` requests.
+For this example, the function will be able to handle both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page that you will write later, and that will use AlpineJS to make a `POST` request to the function.
 Meanwhile, the `POST` request will use fetch to make a request to the Together AI API.
