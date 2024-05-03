@@ -13,6 +13,7 @@ You'll create a simple function that takes a text prompt and generates a complet
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite Project
+- An Appwrite Bucket
 - An [Anyscale API Key](https://app.endpoints.anyscale.com/credentials)
 
 {% section #step-1 step=1 title="Create new function" %}
@@ -30,7 +31,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Fu
 1. Click **Create function**.
 1. Under **Connect Git repository**, select your provider.
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, add the `ANYSCALE_API_KEY`, generate it [here](https://app.endpoints.anyscale.com/credentials).
+1. In the **Variables** step, add `APPWRITE_API_KEY`, `APPWRITE_BUCKET_ID` and `ANYSCALE_API_KEY`. Generate your AnyScale key [here](https://app.endpoints.anyscale.com/credentials).
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
