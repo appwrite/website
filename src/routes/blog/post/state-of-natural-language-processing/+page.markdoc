@@ -15,9 +15,9 @@ Natural Language Processing (NLP) is a field that combines computer science, art
 
 # A (not so) brief history of NLP
 
-The history of Natural Language Processing (NLP) began in the 1950s with attempts to automate language translation. These early experiments, such as the Georgetown experiment, showed promise but also highlighted the complexity of human language. 
+The history of Natural Language Processing (NLP) began in the 1950s with attempts to automate language translation. These early experiments, such as the [Georgetown experiment](https://en.wikipedia.org/wiki/Georgetown-IBM_experiment) in 1954, showed promise but also highlighted the complexity of human language. 
 
-Fast forward to 1966, and we have ELIZA, a program that simulated conversation by matching patterns in user input. ELIZA showed that machines could interact in a way that mimics human conversation, much like modern chatbots.
+Fast forward to 1966, and we have [ELIZA](https://web.stanford.edu/class/cs124/p36-weizenabaum.pdf), a program that simulated conversation by matching patterns in user input. ELIZA showed that machines could interact in a way that mimics human conversation, much like modern chatbots.
 
 Here's an example of what a chat with ELIZA might look like:
 
@@ -62,34 +62,34 @@ Before diving into the intricacies of LLMs, let's take a step back and look at s
 
 ## Naive Bayes classifiers
 
-Consider building a spam email detector. You could use a Naive Bayes classifier, which learns from examples of spam and non-spam emails to predict whether a new email is spam. 
+Consider building a spam email detector. You could use a [Naive Bayes classifier](https://www.ibm.com/topics/naive-bayes), which learns from examples of spam and non-spam emails to predict whether a new email is spam. 
 
 Here's a simple analogy: 
-- Spam words (e.g., "free", "winner", "viagra") are like red flags 🚩
-- Non-spam words (e.g., "meeting", "project", "dinner") are like green flags 🚩
+- Common spam words (e.g., "free", "winner", "viagra") are red flags.
+- Non-spam words (e.g., "meeting", "project", "dinner") indicate a safe email.
 
-The Naive Bayes classifier counts the red and green flags in an email and makes a prediction based on which color dominates. It's a straightforward yet effective approach for many text classification tasks.
+The Naive Bayes classifier counts red flags, and safe words in an email and makes a prediction. It's a straightforward yet effective approach for many text classification tasks.
 
 ## Bag of Words (BoW) and TF-IDF
 
-Next up, we have the Bag of Words (BoW) model. Think of it like a grocery bag filled with words from a document. The BoW model cares about which words are present and how many times they appear, but it doesn't care about the order.
+Next up, we have the [Bag of Words (BoW) model](https://www.ibm.com/topics/bag-of-words). The BoW model cares about which words are present and how many times they appear, but it doesn't care about the order.
 
 ```
 Document: "The quick brown fox jumps over the lazy dog"
 BoW: {"the": 2, "quick": 1, "brown": 1, "fox": 1, "jumps": 1, "over": 1, "lazy": 1, "dog": 1}
 ```
 
-TF-IDF (Term Frequency-Inverse Document Frequency) takes this a step further by considering how important a word is in a document compared to the entire corpus. It's like giving more weight to the unique items in your grocery bag.
+[TF-IDF](https://www.ibm.com/topics/bag-of-words#:~:text=polysemous%20words.8-,TF%2DIDF,-With%20standard%20bag) (Term Frequency-Inverse Document Frequency) takes this a step further by considering how important a word is in a document compared to the entire corpus.
 
 ## From rule-based to machine learning approaches
 
 The shift from rule-based systems to machine learning marked a turning point in NLP. Here are a few key developments:
 
-**Long Short-Term Memory (LSTM) Networks**: LSTMs are like the elephants of the neural network world - they have a long memory and can remember important information over long sequences of text.
+1. **Long Short-Term Memory (LSTM) Networks**: LSTMs are like the elephants of the neural network world - they have a long memory and can remember important information over long sequences of text.
 
-**Transformers and the Attention Mechanism**: Transformers are the superheroes of NLP. They can process text in parallel (like reading multiple books at once) and use attention to focus on the most important parts (like highlighting key passages).
+2. **Transformers and the Attention Mechanism**: Transformers are the superheroes of NLP. They can process text in parallel (like reading multiple books at once) and use attention to focus on the most important parts (like highlighting key passages).
 
-**Advanced Embeddings (BERT and GloVe)**: These embeddings are like high-resolution maps of language. They capture fine-grained relationships between words and adapt to different contexts, helping models navigate the complex landscape of human language.
+3. **Advanced Embeddings (BERT and GloVe)**: These embeddings are like high-resolution maps of language. They capture fine-grained relationships between words and adapt to different contexts, helping models navigate the complex landscape of human language.
 
 # Large Language Models (LLMs)
 
@@ -111,8 +111,6 @@ Input Layer (Tweet text) -> Hidden Layer 1 (Processes text features) -> Hidden L
 
 Before a neural network can process text, it needs to break it down into smaller, digestible pieces called tokens. This process is known as tokenization.
 
-Think of tokenization as chopping up a sentence into its basic building blocks:
-
 ```
 Sentence: "Appwrite is awesome!"
 Tokens: ["Appwrite", "is", "awesome", "!"]
@@ -122,9 +120,9 @@ Advanced tokenizers can even split words into subwords, which helps the model un
 
 ## Word Embeddings
 
-Word embeddings are like a secret language that neural networks use to understand text. They transform words into high-dimensional vectors that capture their meaning and relationships.
+Word embeddings are a way to represent words as numerical vectors. The representation captures the meaning and relationships between words, allowing the model to understand language more effectively.
 
-Picture a magical dictionary where each word is represented by a list of numbers:
+Picture a dictionary where each word is represented by a list of numbers:
 
 ```
 "apple" -> [0.1, 0.5, -0.3, 0.2, ...]
@@ -136,9 +134,9 @@ Words with similar meanings (like "apple" and "banana") will have similar vector
 
 ## Putting it all together
 
-LLMs combine tokenization, word embeddings, and advanced neural network architectures like transformers and self-attention to achieve state-of-the-art performance on a wide range of NLP tasks.
+Popular large language models like LLAMA and GPT-4 combine tokenization, word embeddings, and advanced neural network architectures like transformers and self-attention to achieve state-of-the-art performance on a wide range of NLP tasks.
 
-Here's a simplified view of how an LLM processes text:
+Here's a simplified overview of how these models work:
 
 1. **Tokenization**: Break the text into tokens.
 2. **Embeddings**: Convert each token into a high-dimensional vector.
@@ -149,7 +147,7 @@ We've explored the fascinating world of Natural Language Processing, from its be
 
 # Applications of NLP
 
-At Appwrite, we're really excited about the future of NLP. With our new cloud function runtime and example AI function templates, we're making it easier than ever to build intelligent applications that can understand and communicate with users in natural language.
+At Appwrite, we're really excited about the future of NLP. With our new cloud function runtime and example AI function templates, we're making it easier than ever to build intelligent applications that can understand and communicate with your users in natural language.
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/text-generation" title="Text generation" %}
