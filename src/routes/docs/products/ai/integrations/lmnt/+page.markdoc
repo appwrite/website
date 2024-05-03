@@ -205,9 +205,10 @@ import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite"
 import Speech from 'lmnt-node';
 ```
 
-Next, add code to validate the body of the request and initialize the Appwrite SDK:
+Next, add code to validate the body of the request and initialize the Appwrite SDK also within `main.js`:
 
 ```js
+// Following the GET Request Handler
 const endpoint = process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1";
 
 const client = new Client()
@@ -220,7 +221,7 @@ if (!req.body.text || typeof req.body.text !== "string") {
 }
 ```
 
-Send a request to the LMNT API and return the response:
+Next, following the previous code, send a request to the LMNT API and return the response:
 
 ```js
 const lmnt = new Speech(process.env.LMNT_API_KEY);
