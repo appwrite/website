@@ -198,7 +198,7 @@ import { fetch } from 'undici'
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 ```
 
-Next, after you serve the HTML, add code to validate the body of the request and define the models:
+Add code to validate the request body and define the models:
 
 ```js
 const models = {
@@ -215,7 +215,7 @@ if (req.body.type !== 'text' && req.body.type !== 'image') {
 }
 ```
 
-In this example, you will use Mistral's Mixtral 8x7B for text generation and StabilityAI's Stable Diffusion XL for image generation. You can find more models on the [Together AI's docs](https://docs.together.ai/docs/inference-models).
+In this example, you will use Mistral's `Mixtral 8x7B` for text generation and StabilityAI's `Stable Diffusion XL` for image generation. You can find more models on [Together AI's docs](https://docs.together.ai/docs/inference-models).
 
 Next, add some per-model configurations:
 
@@ -256,9 +256,7 @@ switch (req.body.type) {
 };
 ```
 
-This allows you to configure each of the models you use individually. Feel free to play with this configuration to get the best results for your use case.
-
-Finally, with the request built, you can call the Together AI API and generate a prediction:
+This allows you to configure each of the models you use individually. Feel free to play with this configuration to get the best results for your use case. Finally, with the request built, you can call the Together AI API and generate a prediction:
 
 ```js
 let response;
