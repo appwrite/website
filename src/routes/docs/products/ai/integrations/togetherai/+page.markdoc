@@ -187,7 +187,7 @@ And after the `</head>` tag add a `<body>` which will contain the actual form:
 </body>
 ```
 
-Together, this will render a form to submit your question to the Appwrite Function through a POST request, which you'll create next. The Appwrite Function will call Together AI's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
+Together, this will render a form to submit a query to the Appwrite Function through a `POST` request. The Appwrite Function invokes Together AI's API and returns the response, which will be displayed on the page using different conditional statements depending on the output media type.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
