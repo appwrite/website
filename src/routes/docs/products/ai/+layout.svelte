@@ -105,6 +105,10 @@
                     href: '/docs/products/ai/integrations/langchain'
                 },
                 {
+                  label: 'Together AI',
+                  href: '/docs/products/ai/integrations/togetherai'
+                },
+                {
                     label: 'fal.ai',
                     href: '/docs/products/ai/integrations/fal-ai'
                 }
