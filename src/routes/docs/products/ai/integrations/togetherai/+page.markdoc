@@ -50,7 +50,7 @@ For this example, the function will be able to handle both `GET` and `POST` requ
 For the `GET` request, return a static HTML landing page, that will use AlpineJS to make a `POST` request to our function.
 Meanwhile, the `POST` request will use fetch to make a request to the Together AI API.
 
-First, you'll write the code to return the static HTML page. To do this, create a new `src/utils.js` file with the following code:
+In preparation for the `GET` request handler, create a new `src/utils.js` file with some utility functions:
 
 ```js
 import path from 'path';
