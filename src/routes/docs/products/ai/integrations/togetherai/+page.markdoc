@@ -13,6 +13,7 @@ Integrating Together AI into your Appwrite project is simple. This tutorial will
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite Project
+- An Appwrite Bucket
 - A [Together AI API Key](https://docs.together.ai/reference/authentication-1)
 
 {% section #step-1 step=1 title="Create new function" %}
