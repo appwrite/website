@@ -75,6 +75,13 @@ Write the `GET` request handler in the `src/main.js` file. This handler will ret
 import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
+  throwIfMissing(process.env, [
+    "LMNT_API_KEY",
+    "APPWRITE_API_KEY",
+    "APPWRITE_BUCKET_ID",
+    "APPWRITE_FUNCTION_PROJECT_ID"
+  ]);
+
   if (req.method === 'GET') {
     return res.send(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
