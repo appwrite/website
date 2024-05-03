@@ -191,9 +191,7 @@ Together, this will render a form to submit a query to the Appwrite Function thr
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Now that you're serving a basic HTML page add methods necessary to integrate with Together AI's API.
-
-Import `fetch` from undici and the Appwrite SDK
+Now that you're serving a basic HTML page add methods necessary to integrate with Together AI's API. Import `fetch` from `undici` and the Appwrite SDK at the top of `src/main.js`.
 
 ```js
 import { fetch } from 'undici'
