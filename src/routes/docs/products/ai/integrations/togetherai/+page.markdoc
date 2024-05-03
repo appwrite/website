@@ -30,7 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click, on **F
 1. Click **Create function**.
 1. Under **Connect Git repository**, select your provider.
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, add the `TOGETHER_API_KEY`, generate it [here](https://api.together.xyz/settings/api-keys).
+1. In the **Variables** step, add `APPWRITE_API_KEY`, `APPWRITE_BUCKET_ID` and `TOGETHER_API_KEY`. You can generate your together key [here](https://api.together.xyz/settings/api-keys).
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
