@@ -30,7 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Fu
 2. Click **Create function**.
 3. Under **Connect Git repository**, select your provider.
 4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, add the `LMNT_API_KEY`, generate it [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+5. In the **Variables** step, add `APPWRITE_BUCKET_ID`, `LMNT_API_KEY`. Generate your LMNT Key [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
 6. Follow the step-by-step wizard and create the Function.
 {% /section %}
 
