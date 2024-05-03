@@ -4,11 +4,6 @@ title: Messages
 description: Learn about Appwrite messages, the different types of messages, what can be sent in different message types.
 back: /docs
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite
 as a **message** is displayed in the **Messages** tab.
 
@@ -226,11 +221,9 @@ Here are the different components that make up a message.
 {% /tabs %}
 
 # Sending a message {% #create-a-message %}
-You can create a message with a Server SDK.
-
-You can send a push notification like this.
+You can create a message with a Server SDK. You can send a push notification like this.
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -575,7 +568,7 @@ Learn more about sending a push notification
 You can send an email like this.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -880,7 +873,7 @@ Learn more about sending an email
 You can send an SMS message like this.
 
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

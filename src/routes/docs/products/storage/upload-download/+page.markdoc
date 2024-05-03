@@ -55,7 +55,7 @@ You can also upload files programmatically using our SDKs:
   }
   ```
 
-  ```kotlin
+  ```client-android-kotlin
   import io.appwrite.Client
   import io.appwrite.services.Storage
 
@@ -74,7 +74,7 @@ You can also upload files programmatically using our SDKs:
   }
   ```
 
-  ```swift
+  ```client-apple
   import Appwrite
 
   func main() async throws {
@@ -277,7 +277,7 @@ The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 To get a metadata about a.file, use the `getFile` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -297,7 +297,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -335,7 +335,7 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
@@ -351,7 +351,7 @@ func main() async throws {
     print(String(describing: byteBuffer)
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -384,7 +384,7 @@ class MainActivity : AppCompatActivity() {
 To download a file, use the `getFileDownload` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -400,7 +400,7 @@ const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -438,7 +438,7 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
@@ -451,10 +451,10 @@ func main() async throws {
         fileId: "[FILE_ID]"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -487,7 +487,7 @@ class MainActivity : AppCompatActivity() {
 To get a file preview image , use the `getFilePreview` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -503,7 +503,7 @@ const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -541,7 +541,7 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
@@ -554,10 +554,10 @@ func main() async throws {
         fileId: "[FILE_ID]"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -591,7 +591,7 @@ class MainActivity : AppCompatActivity() {
 To view a file, use the `getFileView` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -607,7 +607,7 @@ const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -645,7 +645,7 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
@@ -658,10 +658,10 @@ func main() async throws {
         fileId: "[FILE_ID]"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
