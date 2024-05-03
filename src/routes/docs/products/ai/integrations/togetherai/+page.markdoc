@@ -198,7 +198,7 @@ import { fetch } from 'undici'
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 ```
 
-Add the following code to the end of the request handler in the main.js file to validate the request body and define the models:
+To handle the `POST` request, add the following code to the end of the request handler in the `src/main.js` file to validate the request body and define the models:
 
 ```js
 const models = {
