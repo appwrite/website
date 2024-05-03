@@ -104,6 +104,7 @@ pre {
 
 code.line-numbers .line {
     counter-increment: line;
+    padding-right: 0.5rem;
 }
 
 code.line-numbers .line:before {
@@ -165,8 +166,4 @@ code.line-numbers .line:before {
 
 .hljs-strong {
     font-weight: bold;
-}
-
-.highlighted .line{
-    background-color: rgba(240, 240, 240, 0.1);
 }

@@ -123,10 +123,10 @@ export const getCodeHtml = (args: Args) => {
         const openTag = line.match(/{%\s*?(\w+)\s*%}/);
         const closeTag = line.match(/{%\s*\/?(\w+)\s*%}/)
         if (openTag && openTag[1] === HighlightTags.highlighted) {
-            highlightedLines.set(index, `<div class="${openTag[0]}">`);
+            highlightedLines.set(index, `<span class="${openTag[1]}">`);
         }
         else if (closeTag && closeTag[1] === HighlightTags.highlighted) {
-            highlightedLines.set(index, `</div>`);
+            highlightedLines.set(index, `</span>`);
         }
         return line;
     });
@@ -146,6 +146,6 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre><code class="web-code language-${language} ${withLineNumbers ? 'line-numbers' : ''
+    return `<pre><code class="web-code web-u-inline-block language-${language} ${withLineNumbers ? 'line-numbers' : ''
         }">${final}</code></pre>`;
 };
