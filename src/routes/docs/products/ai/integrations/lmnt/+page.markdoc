@@ -13,6 +13,7 @@ Integrating LMNT into your Appwrite project is simple. This tutorial will guide 
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite Project
+- An Appwrite Bucket
 - An [LMNT API Key](https://www.lmnt.com/)
 
 {% section #step-1 step=1 title="Create new function" %}
@@ -205,10 +206,9 @@ import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite"
 import Speech from 'lmnt-node';
 ```
 
-Next, add code to validate the body of the request and initialize the Appwrite SDK also within `main.js`:
+Next, add code to validate the body of the request and initialize the Appwrite SDK also within `main.js` following the previously added GET handler:
 
 ```js
-// Following the GET Request Handler
 const endpoint = process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1";
 
 const client = new Client()
