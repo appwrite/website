@@ -68,7 +68,7 @@ export function getStaticFile(fileName) {
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
-Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page, which you will create later.
+Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page, which will be created in the next section.
 
 ```js
 import { getStaticFile } from './utils.js';
