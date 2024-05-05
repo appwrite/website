@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="u-position-relative">
-                        <section class="web-card is-transparent web-u-max-width-480" style="--card-padding:0.5rem;">
+                        <section class="web-card is-transparent web-u-max-width-480 u-position-relative u-z-index-0" style="--card-padding:0.5rem;">
                             <header class="u-flex u-gap-16 u-main-space-between u-padding-block-8 u-padding-inline-16">
                                 <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary">Photos</h5>
                                 <button class="button is-secondary" style="height:2rem">
@@ -124,11 +124,22 @@
                                 </div>
                             </div>
                         </section>
-                        <section class="web-media-container u-width-fit-content u-position-absolute web-u-inset-block-start-100 u-inset-inline-end-0">
+                        <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 u-inset-inline-end-0">
                             <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
                         </section>
+                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem;">
+                            <header class="web-code-console-header u-flex web-u-gap-6">
+                                    <span class="web-code-console-button is-red"></span>
+                                    <span class="web-code-console-button is-yellow"></span>
+                                    <span class="web-code-console-button is-green"></span>
+                            </header>
+                            <div class="web-code-console-content">
+                                [CODE WILL BE HERE]
+                            </div>
 
-                        <img src="/images/pages/storage/product-shot.png" width="708" alt="" />
+                        </section>
+
+                        <!--<img src="/images/pages/storage/product-shot.png" width="708" alt="" />-->
                     </div>
                 </section>
             </div>
