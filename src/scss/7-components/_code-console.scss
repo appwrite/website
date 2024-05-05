@@ -1,8 +1,9 @@
 @use '../abstract' as *;
 .#{$p}-code-console {
+  background: rgba(35, 35, 37, 0.94); backdrop-filter: blur(9.430656433105469px);
   &-header { padding-block-start:pxToRem(8); padding-block-end:pxToRem(12); padding-inline:pxToRem(8); }
   &-content {
-    background:linear-gradient(129deg, hsl(var(--web-color-black) / 0.48) 22.38%, hsl(var(--web-color-black) / 0.00) 136.5%);
+    background:hsl(var(--web-color-greyscale-900));
     padding:pxToRem(20); border-radius:pxToRem(12);
   }
   &-button {

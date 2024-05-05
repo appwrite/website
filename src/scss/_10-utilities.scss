@@ -190,7 +190,8 @@
 .#{$p}-u-inset-block-end-6-negative { inset-block-end:pxToRem(-6); }
 
 .#{$p}-u-inset-inline-start-6-negative { inset-inline-start:pxToRem(-6); }
-.#{$p}-u-inset-inline-end-6-negative { inset-inline-end:pxToRem(-6); }
+.#{$p}-u-inset-inline-end-6-negative { inset-inline-end:pxToRem(-6);     }
+.#{$p}-u-inset-block-start-40-negative { inset-block-start:pxToRem(-40); }
 
 
 .#{$p}-u-cross-child-start  { align-self:start!important;  }

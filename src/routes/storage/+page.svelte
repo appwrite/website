@@ -133,7 +133,7 @@
                                     <span class="web-code-console-button is-yellow"></span>
                                     <span class="web-code-console-button is-green"></span>
                             </header>
-                            <div class="web-code-console-content">
+                            <div class="web-code-console-content" style="min-block-size:166px">
                                 [CODE WILL BE HERE]
                             </div>
 
@@ -144,7 +144,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start e-bg-image-pattern-bottom">
+        <div class="web-big-padding-section-level-1 u-position-relative">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
@@ -161,7 +161,10 @@
                         </div>
                     </div>
                     <div>
-                        <div class="u-position-relative l-box-image-1">
+                        <section class="web-media-container u-width-fit-content u-position-relative u-z-index-0">
+                            <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
+                        </section>
+                        <div class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-40-negative u-z-index-1 l-box-image-1">
                             <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
                                  class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative"
                                  alt="">
@@ -179,10 +182,23 @@
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
                         </div>
-                        <img src="/images/pages/storage/product-shot-2.png" width="708" alt="" />
+                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5" style="--card-padding:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;">
+                            <header class="web-code-console-header u-flex web-u-gap-6">
+                                <span class="web-code-console-button is-red"></span>
+                                <span class="web-code-console-button is-yellow"></span>
+                                <span class="web-code-console-button is-green"></span>
+                            </header>
+                            <div class="web-code-console-content" style="min-block-size:260px">
+                                [CODE WILL BE HERE]
+                            </div>
+
+                        </section>
+                        <!--<img src="/images/pages/storage/product-shot-2.png" width="708" alt="" />-->
                     </div>
                 </section>
             </div>
+        </div>
+        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start e-bg-image-pattern-bottom">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero-flipped web-u-padding-block-end-0">
                     <div>
@@ -203,7 +219,6 @@
                     </div>
                 </section>
             </div>
-
             <div class="web-big-padding-section-level-2">
                 <div class="web-hero" style="--hero-max-inline-size:24rem; --hero-gap:1rem;">
                     <h1 class="web-title web-u-color-text-primary">Protect your files and set permissions</h1>
