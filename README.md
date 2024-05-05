@@ -3,6 +3,9 @@
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
+[![GitHub](https://img.shields.io/github/followers/appwrite?label=GitHub&style=social)](https://github.com/appwrite)
+[![YouTube Channel](https://img.shields.io/youtube/channel/subscribers/UCyGmL7X3LeQaYxzjH9N7WwA?label=YouTube&style=social)](https://www.youtube.com/@Appwrite)
+
 
 ![Cover banner](/../../../.github/blob/main/profile/images/banner.png)
 
