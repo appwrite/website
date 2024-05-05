@@ -34,7 +34,11 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
-                        <h1 class="web-display web-u-color-text-primary">
+                        <div class="u-flex u-cross-center u-gap-8 u-line-height-1">
+                            <img src="/images/icons/illustrated/dark/storage.png" alt="">
+                            <span class="web-eyebrow web-u-color-text-accent-click">Storage<span class="web-u-text-color-primary-500">_</span></span>
+                        </div>
+                        <h1 class="web-display web-u-color-text-primary u-margin-block-start-20">
                             Robust and secure storage infrastructure
                         </h1>
                         <p class="web-main-body-500 u-margin-block-start-20">
