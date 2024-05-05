@@ -129,9 +129,9 @@
                         </section>
                         <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;">
                             <header class="web-code-console-header u-flex web-u-gap-6">
-                                    <span class="web-code-console-button is-red"></span>
-                                    <span class="web-code-console-button is-yellow"></span>
-                                    <span class="web-code-console-button is-green"></span>
+                                <span class="web-code-console-button is-red"></span>
+                                <span class="web-code-console-button is-yellow"></span>
+                                <span class="web-code-console-button is-green"></span>
                             </header>
                             <div class="web-code-console-content" style="min-block-size:166px">
                                 [CODE WILL BE HERE]
@@ -320,110 +320,110 @@
                         <div class="u-padding-inline-20">
                             <table class="table is-remove-outer-styles u-sep-block-start">
                                 <thead class="table-thead">
-                                    <tr class="table-row">
-                                        <th class="table-thead-col" style="--p-col-width:150">
-                                            <div class="web-eyebrow">Role</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Create</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Read</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Update</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Delete</div>
-                                        </th>
-                                    </tr>
+                                <tr class="table-row">
+                                    <th class="table-thead-col" style="--p-col-width:150">
+                                        <div class="web-eyebrow">Role</div>
+                                    </th>
+                                    <th class="table-thead-col">
+                                        <div class="web-eyebrow">Create</div>
+                                    </th>
+                                    <th class="table-thead-col">
+                                        <div class="web-eyebrow">Read</div>
+                                    </th>
+                                    <th class="table-thead-col">
+                                        <div class="web-eyebrow">Update</div>
+                                    </th>
+                                    <th class="table-thead-col">
+                                        <div class="web-eyebrow">Delete</div>
+                                    </th>
+                                </tr>
                                 </thead>
                                 <tbody class="table-tbody">
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary web-u-font-size-14">Any</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any create">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any read" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any update">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any delete">
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary web-u-font-size-14">Guests</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role guests create" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role guests read">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role guests update">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role guests delete">
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary web-u-font-size-14">Users</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role users create" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role users read" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role users update" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role users delete" checked>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary web-u-font-size-14">user:62f8b5b</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62f8b5b create" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62f8b5b read">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62f8b5b update">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62f8b5b delete">
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary web-u-font-size-14">user:62e1544</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62e1544 create" checked>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62e1544 read">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62e1544 update">
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role user:62e1544 delete">
-                                        </td>
-                                    </tr>
+                                <tr class="table-row">
+                                    <td class="table-col">
+                                        <div class="web-u-color-text-primary web-u-font-size-14">Any</div>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role any create">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role any read" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role any update">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role any delete">
+                                    </td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-col">
+                                        <div class="web-u-color-text-primary web-u-font-size-14">Guests</div>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role guests create" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role guests read">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role guests update">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role guests delete">
+                                    </td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-col">
+                                        <div class="web-u-color-text-primary web-u-font-size-14">Users</div>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role users create" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role users read" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role users update" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role users delete" checked>
+                                    </td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-col">
+                                        <div class="web-u-color-text-primary web-u-font-size-14">user:62f8b5b</div>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62f8b5b create" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62f8b5b read">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62f8b5b update">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62f8b5b delete">
+                                    </td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-col">
+                                        <div class="web-u-color-text-primary web-u-font-size-14">user:62e1544</div>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62e1544 create" checked>
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62e1544 read">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62e1544 update">
+                                    </td>
+                                    <td class="table-col">
+                                        <input type="checkbox" aria-label="role user:62e1544 delete">
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                             <button
@@ -1012,31 +1012,31 @@
 </Main>
 
 <style lang="scss">
-    input[type="checkbox"] {
-      --p-icon-color-default: var(--web-color-greyscale-100);
-      --p-bg-color-default: var(--web-color-greyscale-750);
-      --p-border-color-default: var(--web-color-greyscale-750);
-      --p-bg-color-checked: var(--web-color-accent);
-      --p-border-color-checked: var(--web-color-accent);
-      --p-bg-color-hover-checked: var(--web-color-accent);
-      --p-border-color-hover-checked: var(--web-color-accent);
-      --p-bg-color-active-checked: var(--web-color-accent);
-      --p-border-color-active-checked: var(--web-color-accent);
+  input[type="checkbox"] {
+    --p-icon-color-default: var(--web-color-greyscale-100);
+    --p-bg-color-default: var(--web-color-greyscale-750);
+    --p-border-color-default: var(--web-color-greyscale-750);
+    --p-bg-color-checked: var(--web-color-accent);
+    --p-border-color-checked: var(--web-color-accent);
+    --p-bg-color-hover-checked: var(--web-color-accent);
+    --p-border-color-hover-checked: var(--web-color-accent);
+    --p-bg-color-active-checked: var(--web-color-accent);
+    --p-border-color-active-checked: var(--web-color-accent);
+  }
+  .table {
+    --p-table-border-color: var(--web-color-offset) !important;
+    :where(.table-thead-col) { padding-block:1.33rem; }
+    :where(.table-col) { padding-block:.66rem; }
+    &.is-light {
+      --p-table-bg-color: var(--color-neutral-0);
+      --p-table-bg-color-focus: var(--color-neutral-5);
+      //--p-table-bg-even-row-color: var(--color-neutral-0);
+      --p-table-border-color: var(--color-neutral-10);
+      --p-tbody-color-text: var(--color-neutral-60);
+      box-shadow: none;
+      border-radius: 16px 0 16px 0;
     }
-    .table {
-      --p-table-border-color: var(--web-color-offset) !important;
-      :where(.table-thead-col) { padding-block:1.33rem; }
-      :where(.table-col) { padding-block:.66rem; }
-      &.is-light {
-        --p-table-bg-color: var(--color-neutral-0);
-        --p-table-bg-color-focus: var(--color-neutral-5);
-        //--p-table-bg-even-row-color: var(--color-neutral-0);
-        --p-table-border-color: var(--color-neutral-10);
-        --p-tbody-color-text: var(--color-neutral-60);
-        box-shadow: none;
-        border-radius: 16px 0 16px 0;
-      }
-    }
+  }
   .e-console-card {
     &-content {  border-radius:0 0 16px 16px;  }
     .tag { box-sizing:content-box; block-size:15px; padding:2.46px 8.45px; border:none; }
