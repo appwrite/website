@@ -160,11 +160,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="u-position-relative">
-                        <section class="web-media-container u-width-fit-content u-position-relative u-z-index-0">
+                    <div class="u-position-relative l-media-2">
+                        <section class="web-media-container u-width-fit-content u-position-relative u-z-index-0 l-media-2-1">
                             <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
                         </section>
-                        <div class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-40-negative u-z-index-1 l-box-image-1">
+                        <div class="u-z-index-1 l-box-image-1 l-media-2-2">
                             <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
                                  class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative"
                                  alt="">
@@ -182,7 +182,7 @@
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
                         </div>
-                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;">
+                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5 l-media-2-3" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;">
                             <header class="web-code-console-header u-flex web-u-gap-6">
                                 <span class="web-code-console-button is-red"></span>
                                 <span class="web-code-console-button is-yellow"></span>
@@ -1166,7 +1166,7 @@
     @media (max-width: 1023px) {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 3rem;
 
       > :first-child {
         max-inline-size: 40rem;
@@ -1187,7 +1187,7 @@
       flex-direction: column;
 
       overflow: hidden;
-      gap: 2rem;
+      gap: 3rem;
 
       > :first-child {
         max-width: 40rem;
@@ -1223,5 +1223,23 @@
     }
   }
   .l-media-1 { inline-size:100%; max-inline-size:645px; margin-inline:auto;}
+  .l-media-2 {
+    @media (max-width: 1023px) {
+      inline-size:100%;
+      &-1 { display:none!important; }
+      &-2 {
+        position:relative; margin-inline:auto; inline-size:342px;
+      }
+      &-3 {
+        position:static!important;
+        margin-block-start:0!important;
+        margin-inline:auto!important;
+        margin-block-start:-60px!important;
+      }
+    }
+    @media (min-width: 1024px) {
+      &-2 { position:absolute;  inset-inline-end:0; inset-block-start: -2.5rem; }
+    }
+  }
 </style>
 
