@@ -186,6 +186,12 @@
 .#{$p}-u-inset-block-start-160 { inset-block-start:pxToRem(160); }
 .#{$p}-u-inset-inline-end-150-negative { inset-inline-end:pxToRem(-150); }
 
+.#{$p}-u-inset-block-start-6-negative { inset-block-start:pxToRem(-6); }
+.#{$p}-u-inset-block-end-6-negative { inset-block-end:pxToRem(-6); }
+
+.#{$p}-u-inset-inline-start-6-negative { inset-inline-start:pxToRem(-6); }
+.#{$p}-u-inset-inline-end-6-negative { inset-inline-end:pxToRem(-6); }
+
 
 .#{$p}-u-cross-child-start  { align-self:start!important;  }
 .#{$p}-u-cross-child-center { align-self:center!important;  }

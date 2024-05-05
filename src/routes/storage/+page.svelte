@@ -161,6 +161,24 @@
                         </div>
                     </div>
                     <div>
+                        <div class="u-position-relative l-box-image-1">
+                            <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
+                                 class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative"
+                                 alt="">
+                            <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
+                                 class="u-position-absolute web-u-inset-inline-end-6-negative web-u-inset-block-start-6-negative" alt="">
+                            <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
+                                 class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-end-6-negative"
+                                 alt="">
+                            <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
+                                 class="u-position-absolute web-u-inset-inline-end-6-negative web-u-inset-block-end-6-negative"
+                                 alt="">
+
+                            <img src="/images/pages/homepage/dashboard.png"
+                                 alt=""
+                                 style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
+                            >
+                        </div>
                         <img src="/images/pages/storage/product-shot-2.png" width="708" alt="" />
                     </div>
                 </section>
@@ -1118,6 +1136,8 @@
     --p-bg-color-disabled: var(--color-neutral-0);
     --p-border-color-disabled: var(--p-border-color-default);
   }
+
+  .l-box-image-1 { inline-size:427px; padding:0.5rem; border:solid 1px #85DBD8; }
 
 
   .hero {
