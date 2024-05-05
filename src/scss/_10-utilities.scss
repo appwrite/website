@@ -182,7 +182,9 @@
 
 .#{$p}-u-padding-block-8   { padding-block:pxToRem(8)!important; }
 
-.#{$p}-u-inset-block-start-100 { inset-block-start:pxToRem(160); }
+.#{$p}-u-inset-block-start-100 { inset-block-start:pxToRem(100); }
+.#{$p}-u-inset-block-start-160 { inset-block-start:pxToRem(160); }
+.#{$p}-u-inset-inline-end-150-negative { inset-inline-end:pxToRem(-150); }
 
 
 .#{$p}-u-cross-child-start  { align-self:start!important;  }
