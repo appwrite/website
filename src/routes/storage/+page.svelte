@@ -49,7 +49,85 @@
                             </a>
                         </div>
                     </div>
-                    <div>
+                    <div class="u-position-relative">
+                        <section class="web-card is-transparent web-u-max-width-480" style="--card-padding:0.5rem;">
+                            <header class="u-flex u-gap-16 u-main-space-between u-padding-block-8 u-padding-inline-16">
+                                <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary">Photos</h5>
+                                <button class="button is-secondary" style="height:2rem">
+                                    <span class="icon-plus" aria-hidden="true"></span>
+                                    <span class="text">Create File</span>
+                                </button>
+                            </header>
+                            <div class="table" role="table">
+                                <div class="table-thead web-u-font-size-12" role="rowheader">
+                                    <div class="table-row" role="row">
+                                        <div style="" class="table-thead-col" role="columnheader">
+                                            <span class="eyebrow-heading">Filename</span>
+                                        </div>
+                                        <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
+                                            <span class="eyebrow-heading">Type</span>
+                                        </div>
+                                        <div style="--p-col-width: 70;" class="table-thead-col" role="columnheader">
+                                            <span class="eyebrow-heading">Size</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-tbody web-u-font-size-14" role="rowgroup">
+                                    <div class="table-row" role="row">
+                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
+                                                <span class="text u-trim">CiutatVella.mp4</span>
+                                            </div>
+                                        </div>
+                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                            <span class="text u-trim">
+                                                <span>image/png</span>
+                                            </span>
+                                        </div>
+                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                            120K
+                                        </div>
+                                    </div>
+                                    <div class="table-row" role="row">
+                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
+                                                <span class="text u-trim">Eixample.mp4</span>
+                                            </div>
+                                        </div>
+                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                            <span class="text u-trim">
+                                                <span>image/jpg</span>
+                                            </span>
+                                        </div>
+                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                            145K
+                                        </div>
+                                    </div>
+                                    <div class="table-row" role="row">
+                                        <div style="" class="table-col " data-title="Name" role="cell">
+                                            <div class="u-flex u-gap-12 u-cross-center">
+                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
+                                                <span class="text u-trim">SantsMontjuïc.mp4</span>
+                                            </div>
+                                        </div>
+                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                            <span class="text u-trim">
+                                                <span>image/webp</span>
+                                            </span>
+                                        </div>
+                                        <div class="table-col" data-title="Size" role="cell" data-private="">
+                                            85K
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="web-media-container u-width-fit-content u-position-absolute web-u-inset-block-start-100 u-inset-inline-end-0">
+                            <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
+                        </section>
+
                         <img src="/images/pages/storage/product-shot.png" width="708" alt="" />
                     </div>
                 </section>
@@ -393,25 +471,25 @@
                                                 <input class="input-text e-pink-input-light" type="search" placeholder="Search" />
                                                 <div class="icon-search" aria-hidden="true"></div>
                                             </div>
-                                            <button class="button is-secondary" aria-label="filter" style="padding:10px 12px">
+                                            <button class="button is-secondary is-light" aria-label="filter" style="padding:10px 12px">
                                                 <span class="icon-filter" aria-hidden="true"></span>
                                             </button>
-                                            <button class="button is-secondary" type="button" style="padding:12px">
+                                            <button class="button is-secondary is-light" type="button" style="padding:12px">
                                                 <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>
                                                 <span class="inline-tag">4</span>
                                             </button>
                                         </div>
                                         <div>
-                                            <div class="table" role="table" data-private="" style="">
+                                            <div class="table is-light" role="table" data-private="" style="">
                                                 <div class="table-thead" role="rowheader">
                                                     <div class="table-row" role="row">
                                                         <div style="" class="table-thead-col" role="columnheader">
                                                             <span class="eyebrow-heading-3">Filename</span>
                                                         </div>
-                                                        <div style="--p-col-width: 140;" class="table-thead-col is-only-desktop" role="columnheader">
+                                                        <div style="--p-col-width: 140;" class="table-thead-col" role="columnheader">
                                                             <span class="eyebrow-heading-3">ID</span>
                                                         </div>
-                                                        <div style="--p-col-width: 100;" class="table-thead-col is-only-desktop" role="columnheader">
+                                                        <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
                                                             <span class="eyebrow-heading-3">Type</span>
                                                         </div>
                                                     </div>
@@ -905,6 +983,15 @@
       --p-table-border-color: var(--web-color-offset) !important;
       :where(.table-thead-col) { padding-block:1.33rem; }
       :where(.table-col) { padding-block:.66rem; }
+      &.is-light {
+        --p-table-bg-color: var(--color-neutral-0);
+        --p-table-bg-color-focus: var(--color-neutral-5);
+        //--p-table-bg-even-row-color: var(--color-neutral-0);
+        --p-table-border-color: var(--color-neutral-10);
+        --p-tbody-color-text: var(--color-neutral-60);
+        box-shadow: none;
+        border-radius: 16px 0 16px 0;
+      }
     }
   .e-console-card {
     &-content {  border-radius:0 0 16px 16px;  }
@@ -942,22 +1029,24 @@
 
   }
   .button {
-    /* Light Theme */
-    --p-text-color-default: var(--color-neutral-60);
-    --p-button-color-default: var(--color-neutral-5);
-    --p-border-color-default: var(--color-neutral-15);
+    &.is-light {
+      /* Light Theme */
+      --p-text-color-default: var(--color-neutral-60);
+      --p-button-color-default: var(--color-neutral-5);
+      --p-border-color-default: var(--color-neutral-15);
 
-    --p-text-color-hover: var(--p-text-color-default);
-    --p-button-color-hover: var(--color-neutral-10);
-    --p-border-color-hover: var(--p-border-color-default);
+      --p-text-color-hover: var(--p-text-color-default);
+      --p-button-color-hover: var(--color-neutral-10);
+      --p-border-color-hover: var(--p-border-color-default);
 
-    --p-text-color-focus: var(--p-text-color-default);
-    --p-button-color-focus: var(--p-button-color-default);
-    --p-border-color-focus: var(--transparent);
+      --p-text-color-focus: var(--p-text-color-default);
+      --p-button-color-focus: var(--p-button-color-default);
+      --p-border-color-focus: var(--transparent);
 
-    --p-text-color-active: var(--color-neutral-90);
-    --p-button-color-active: var(--color-neutral-15);
-    --p-border-color-active: var(--color-neutral-15);
+      --p-text-color-active: var(--color-neutral-90);
+      --p-button-color-active: var(--color-neutral-15);
+      --p-border-color-active: var(--color-neutral-15);
+    }
   }
   .tag {
     --p-tag-text-color-default:  var(--color-neutral-70);
@@ -996,15 +1085,6 @@
     --p-inline-tag-bg-color-default:    var(--color-neutral-10);
   }
   .heading-level-5 { --p-heading-text-color:var(--color-neutral-80); }
-  .table {
-    --p-table-bg-color: var(--color-neutral-0);
-    --p-table-bg-color-focus: var(--color-neutral-5);
-    //--p-table-bg-even-row-color: var(--color-neutral-0);
-    --p-table-border-color: var(--color-neutral-10);
-    --p-tbody-color-text: var(--color-neutral-60);
-    box-shadow: none;
-    border-radius: 16px 0 16px 0;
-  }
 
   .e-pink-input-light {
     --p-text-color-default: var(--color-neutral-60);
