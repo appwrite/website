@@ -49,8 +49,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="u-position-relative">
-                        <section class="web-card is-transparent web-u-max-width-480 u-position-relative u-z-index-0" style="--card-padding:0.5rem;">
+                    <div class="u-position-relative l-media-1">
+                        <section class="web-card is-transparent web-u-max-width-480 u-position-relative u-z-index-0" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
                             <header class="u-flex u-gap-16 u-main-space-between u-padding-block-8 u-padding-inline-16">
                                 <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary">Photos</h5>
                                 <button class="button is-secondary" style="height:2rem">
@@ -124,10 +124,10 @@
                                 </div>
                             </div>
                         </section>
-                        <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 u-inset-inline-end-0">
+                        <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 web-u-inset-inline-end-32-negative">
                             <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
                         </section>
-                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem;">
+                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;">
                             <header class="web-code-console-header u-flex web-u-gap-6">
                                     <span class="web-code-console-button is-red"></span>
                                     <span class="web-code-console-button is-yellow"></span>
@@ -144,7 +144,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
@@ -160,7 +160,7 @@
                             </a>
                         </div>
                     </div>
-                    <div>
+                    <div class="u-position-relative">
                         <section class="web-media-container u-width-fit-content u-position-relative u-z-index-0">
                             <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
                         </section>
@@ -182,7 +182,7 @@
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
                         </div>
-                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5" style="--card-padding:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;">
+                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;">
                             <header class="web-code-console-header u-flex web-u-gap-6">
                                 <span class="web-code-console-button is-red"></span>
                                 <span class="web-code-console-button is-yellow"></span>
@@ -198,7 +198,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start e-bg-image-pattern-bottom">
+        <div class="web-big-padding-section-level-1 u-position-relative e-bg-image-pattern-bottom">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero-flipped web-u-padding-block-end-0">
                     <div>
@@ -890,7 +890,7 @@
                 <div class="web-container">
                     <ul class="web-grid-3-desktop-1-mobile">
                         <li>
-                            <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                            <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
                                             src="/images/icons/illustrated/dark/auth.png"
@@ -911,7 +911,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/docs/products/functions" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                            <a href="/docs/products/functions" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
                                             src="/images/icons/illustrated/dark/functions.png"
@@ -932,7 +932,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/docs/products/databases" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                            <a href="/docs/products/databases" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
                                             src="/images/icons/illustrated/dark/databases.png"
@@ -953,7 +953,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/docs/products/messaging" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                            <a href="/docs/products/messaging" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;--card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
                                             src="/images/icons/illustrated/dark/messaging.png"
@@ -974,7 +974,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/docs/apis/realtime" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem;">
+                            <a href="/docs/apis/realtime" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
                                     <img
                                             src="/images/icons/illustrated/dark/realtime.png"
@@ -1164,34 +1164,13 @@
     position: relative;
 
     @media (max-width: 1023px) {
-      display: block;
-
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
 
       > :first-child {
-        max-width: 40rem;
+        max-inline-size: 40rem;
         margin-inline: auto;
-      }
-
-      > :nth-child(2) {
-        scale: 1;
-        width: 100%;
-        height: 24rem;
-        position: relative;
-
-        img {
-          position: absolute;
-          display: block;
-          width: 40rem;
-
-          left: 50%;
-          top: 50%;
-          transform: translate(-30%, -50%);
-
-          max-block-size: unset;
-          max-inline-size: unset;
-        }
       }
     }
   }
@@ -1204,7 +1183,8 @@
     position: relative;
 
     @media (max-width: 1023px) {
-      display: block;
+      display: flex;
+      flex-direction: column;
 
       overflow: hidden;
       gap: 2rem;
@@ -1220,18 +1200,6 @@
         height: 24rem;
         position: relative;
 
-        img {
-          position: absolute;
-          display: block;
-          width: 40rem;
-
-          left: 50%;
-          top: 50%;
-          transform: translate(-30%, -50%);
-
-          max-block-size: unset;
-          max-inline-size: unset;
-        }
       }
     }
   }
@@ -1254,5 +1222,6 @@
       background-size:1350px;
     }
   }
+  .l-media-1 { inline-size:100%; max-inline-size:645px; margin-inline:auto;}
 </style>
 
