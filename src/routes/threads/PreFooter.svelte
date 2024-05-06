@@ -70,5 +70,6 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+      filter: blur(30px);
     }
 </style>
