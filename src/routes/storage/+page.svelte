@@ -204,7 +204,7 @@
         </div>
         <div class="web-big-padding-section-level-1 u-position-relative e-bg-image-pattern-bottom">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero-flipped web-u-padding-block-end-0">
+                <section class="web-container hero-flipped web-u-padding-block-end-0 is-not-mobile">
                     <div>
                         <img src="/images/pages/storage/product-shot-3.png" width="708" alt="" />
                     </div>
@@ -679,7 +679,7 @@
                                         <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>
                                     </div>
                                     <div class="u-flex u-gap-8">
-                                        <div class="form-item u-stretch">
+                                        <div class="form-item u-stretch u-max-width-100-percent">
                                             <label class="label" for="input3" style="--p-label-text-color: var(--color-neutral-80);">Allowed file extensions</label>
                                             <div class="input-text-wrapper">
                                                 <div class="tags-input e-pink-input-light">
@@ -697,7 +697,7 @@
                                                     </div>
                                                     <input id="read" placeholder="Allowed file extensions (mp4, jpg, pdf, etc.)" type="text" class="tags-input-text e-pink-input-light">
                                                 </div>
-                                                <div class="u-flex u-gap-12 u-margin-block-start-8">
+                                                <div class="u-flex u-gap-12 u-margin-block-start-8 u-overflow-x-auto" style="inline-size:calc(100% + 18px)">
                                                     <button type="button" class="tag is-selected"><span class="icon-plus" aria-hidden="true"></span> jpg </button>
                                                     <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> png </button>
                                                     <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> svg </button>
@@ -720,7 +720,7 @@
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-1-1">
+                    <div class="web-grid-1-1 u-row-gap-64">
                         <div class="web-hero is-align-start web-u-max-width-380">
                             <span class="web-badges web-eyebrow">APIs_</span>
                             <h2 class="web-title web-u-color-text-primary">What you can do with Storage APIs</h2>
@@ -731,7 +731,7 @@
                                     href="/docs"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button u-margin-block-start-16"
+                                    class="web-button is-full-width-mobile u-margin-block-start-16"
                             >
                                 <span>View docs</span>
                             </a>
@@ -835,7 +835,7 @@
                                 href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
+                                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span>Join the community</span>
                         </a>
@@ -845,7 +845,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container web-u-max-width-993">
                     <div class="u-overflow-hidden web-u-margin-block-start-80">
-                        <ul class="web-info-boxes items-centered web-sub-body-500">
+                        <ul class="web-info-boxes is-one-inline-mobile items-centered web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
                                         src="/images/icons/gradients/community.svg"
@@ -853,7 +853,7 @@
                                         height="40"
                                         alt=""
                                 />
-                                <h3 class="web-info-boxes-title u-main-center">SJoin the community and share knowledge</h3>
+                                <h3 class="web-info-boxes-title u-main-center">Join the community and share knowledge</h3>
                                 <p class="web-info-boxes-content">
                                     Lorem ipsum dolor sit amet.
                                 </p>
