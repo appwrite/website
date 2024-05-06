@@ -30,8 +30,8 @@
 
 <Main>
     <div class="web-big-padding-section u-overflow-hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-            <div class="web-big-padding-section-level-2">
+        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden l-bgs-section-1">
+            <div class="web-big-padding-section-level-2 u-position-relative">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
                         <div class="u-flex u-cross-center u-gap-8 u-line-height-1">
@@ -1244,6 +1244,16 @@
     @media (min-width: 1024px) {
       &-2 { position:absolute;  inset-inline-end:0; inset-block-start: -2.5rem; }
     }
+  }
+  .l-bgs-section-1::before {
+    content:""; display:block;
+    position:absolute; inset:0;
+    background-image:url("/images/pages/storage/bg-section-1-left.png"),
+                    url("/images/pages/storage/bg-section-1-right.png");
+    background-repeat: no-repeat;
+    background-position: left bottom, top right;
+    background-size: 50% 50%;
+    filter: blur(30px);
   }
 </style>
 
