@@ -148,7 +148,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start">
+        <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start l-bgs-section-2">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
@@ -1253,6 +1253,15 @@
     background-repeat: no-repeat;
     background-position: left bottom, top right;
     background-size: 50% 50%;
+    filter: blur(30px);
+  }
+  .l-bgs-section-2::before {
+    content:""; display:block;
+    position:absolute; inset:0;
+    background-image: url("/images/pages/storage/bg-section-2-right.png");
+    background-repeat: no-repeat;
+    background-position: top 160px right 0;
+    background-size: 300px 640px;
     filter: blur(30px);
   }
 </style>
