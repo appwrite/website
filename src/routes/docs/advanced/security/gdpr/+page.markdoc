@@ -1,14 +1,14 @@
 ---
 layout: article
 title: GDPR
-description: The safeguarding of your and your users' data is taken seriously at Appwrite. Learn about Appwrite's measures and compliance with European General Data Protection Regulation (GDPR).
+description: The safeguarding of your and your users' data is taken seriously at Appwrite. Learn about Appwrite's measures and compliance with the European General Data Protection Regulation (GDPR).
 ---
 
 Appwrite is compliant with the European General Data Protection Regulation (GDPR). 
-GDPR is a EU regulation that concerns data privacy and security in the European Union and the European Economic Area.
+GDPR is an EU regulation that concerns data privacy and security in the European Union and the European Economic Area.
 
-By attesting that Appwrite is GDPR compliant, we have done the following:
-- Appwrite users will retain access to their personal information including the right to correct and to delete it.
+By attesting that Appwrite is GDPR compliant, we have done the following.
+- Appwrite users will retain access to their personal information including the right to correct and delete it.
 - Impose the same rules upon the organization's sub-processors who assist in providing Appwrite's services as described in the Terms of Service (“ToS”). 
 - Appwrite will notify users promptly about policy changes and/or data breaches.
 
@@ -26,7 +26,7 @@ Appwrite has also implemented the following security measures to achieve technic
 A DPA, or Data Processing Agreement, is a contract between a data controller and data processor concerning the rights and obligations
 of both parties when processing personal data.
 
-This agreement describes how Appwrite and sub-processors handles, secure, transfers data, as well as outline rights and obligations of both Appwrite and 
+This agreement describes how Appwrite and sub-processors handle, secure, and transfer data, as well as outline rights and obligations of both Appwrite and 
 you or your company when personal data is processed. 
 
 You can find and sign a DPA in your organization's **Settings** > **Download DPA document**.
