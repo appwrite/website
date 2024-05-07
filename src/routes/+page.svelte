@@ -76,13 +76,13 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/introducing-appwrite-react-native-sdk"
+                        href="/blog/post/appwrite-1.5-now-available-on-cloud"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1">Introducing Appwrite's React Native SDK</span>
+                        <span class="web-caption-400 web-u-trim-1">Appwrite 1.5 is now available on Cloud</span>
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="web-hero is-horizontal">
@@ -335,7 +335,6 @@
                                 />
                                 <h3 class="web-info-boxes-title">
                                     <span>SOC-2</span>
-                                    <span class="web-inline-tag is-pink">Coming Soon</span>
                                 </h3>
                                 <p class="web-info-boxes-content">
                                     Ensure the highest level of security and privacy protection.
