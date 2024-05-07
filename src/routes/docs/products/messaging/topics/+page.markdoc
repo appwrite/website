@@ -44,7 +44,7 @@ Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic*
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -291,7 +291,7 @@ If you can't find the targets you'd like to add, see the [targets page](/docs/pr
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()

@@ -9,7 +9,7 @@ In our app we want to have a navigation bar that is always visible. Use the `use
 - a logout button if the user is logged in.
 - a login button if the user is not logged in.
 
-Update the App componenent in `src/App.vue`:
+Update the App component in `src/App.vue`:
 
 ```vue
 <script setup>

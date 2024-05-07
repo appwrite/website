@@ -5,7 +5,7 @@
     export let thumbnail: string;    
 </script>
 
-<div class="aw-media">
+<div class="web-media">
     <!-- svelte-ignore a11y-media-has-caption -->
     <Video
         {thumbnail}

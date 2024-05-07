@@ -30,7 +30,10 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute u-overflow-hidden aw-location-for-mobile" style="pointer-events:none; inline-size:100%;">
+<div
+    class="u-position-absolute u-overflow-hidden web-location-for-mobile"
+    style="pointer-events:none; inline-size:100%;"
+>
     <enhanced:img
         src={BG}
         alt=""
@@ -39,13 +42,13 @@
 </div>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1 theme-dark">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <div class="aw-hero">
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-1 theme-dark">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container">
+                    <div class="web-hero">
                         <h1
-                            class="aw-display aw-u-max-width-700 aw-u-cross-child-center aw-u-opacity-90 aw-u-mobile-align-text-center"
+                            class="web-display web-u-max-width-700 web-u-cross-child-center web-u-opacity-90 web-u-mobile-align-text-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
@@ -54,36 +57,36 @@
                     </div>
                 </section>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <div class="aw-pricing-cards">
-                        <ul class="aw-pricing-cards-list">
+            <div class="web-big-padding-section-level-2">
+                <section class="web-container">
+                    <div class="web-pricing-cards">
+                        <ul class="web-pricing-cards-list">
                             <li>
                                 <article
-                                    class="aw-card is-transparent has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
                                     style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
-                                    <div class="aw-pricing-cards-item">
-                                        <header class="aw-pricing-cards-header">
-                                            <h2 id="starter" class="aw-label">Starter</h2>
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="starter" class="web-label">Starter</h2>
                                             <div
-                                                class="aw-title aw-u-color-text-primary u-margin-block-start-8"
+                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
                                                 $0
                                             </div>
                                             <div class="u-margin-block-start-4">&nbsp;</div>
-                                            <p class="aw-main-body-500 u-margin-block-start-16">
+                                            <p class="web-main-body-500 u-margin-block-start-16">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/register"
-                                                class="aw-button is-secondary is-full-width u-margin-block-start-32"
+                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
                                             >
-                                                <span class="aw-sub-body-500">Start building</span>
+                                                <span class="web-sub-body-500">Start building</span>
                                             </a>
                                         </header>
-                                        <div class="aw-pricing-cards-content">
-                                            <ul class="aw-checked-list-circle">
+                                        <div class="web-pricing-cards-content">
+                                            <ul class="web-checked-list-circle">
                                                 <li>
                                                     <span>Unlimited projects (never paused)</span>
                                                 </li>
@@ -109,34 +112,35 @@
                             </li>
                             <li>
                                 <article
-                                    class="aw-card is-transparent is-transparent-pink has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent is-transparent-pink has-border-gradient u-height-100-percent"
                                 >
-                                    <div class="aw-pricing-cards-item">
-                                        <header class="aw-pricing-cards-header">
-                                            <h2 id="pro" class="aw-label">Pro</h2>
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="pro" class="web-label">Pro</h2>
                                             <div
-                                                class="aw-title aw-u-color-text-primary u-margin-block-start-8"
+                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
                                                 $15
                                             </div>
                                             <div class="u-margin-block-start-4">
                                                 per member/month
                                             </div>
-                                            <p class="aw-main-body-500 u-margin-block-start-16">
+                                            <p class="web-main-body-500 u-margin-block-start-16">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=createPro"
-                                                class="aw-button is-full-width u-margin-block-start-32"
+                                                class="web-button is-full-width u-margin-block-start-32"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <span class="aw-sub-body-500">Start trial</span>
+                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                                <span class="web-sub-body-500">Start building</span>
                                             </a>
                                         </header>
-                                        <div class="aw-pricing-cards-content">
-                                            <ul class="aw-checked-list-circle">
+                                        <div class="web-pricing-cards-content">
+                                            <ul class="web-checked-list-circle">
                                                 <li>
                                                     <span>Unlimited projects (never paused)</span>
                                                 </li>
@@ -159,34 +163,34 @@
                             </li>
                             <li>
                                 <article
-                                    class="aw-card is-transparent has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
                                     style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
-                                    <div class="aw-pricing-cards-item">
-                                        <header class="aw-pricing-cards-header">
-                                            <h2 id="scale" class="aw-label">Scale</h2>
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="scale" class="web-label">Scale</h2>
                                             <div
-                                                class="aw-title aw-u-color-text-primary u-margin-block-start-8"
+                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
                                                 $685
                                             </div>
                                             <div class="u-margin-block-start-4">
                                                 per organization/month
                                             </div>
-                                            <p class="aw-main-body-500 u-margin-block-start-16">
+                                            <p class="web-main-body-500 u-margin-block-start-16">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
                                             <button
-                                                class="aw-button is-secondary is-full-width u-margin-block-start-32"
+                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
                                                 disabled
                                             >
-                                                <span class="aw-sub-body-500">Coming soon</span>
+                                                <span class="web-sub-body-500">Coming soon</span>
                                             </button>
                                         </header>
-                                        <div class="aw-pricing-cards-content">
+                                        <div class="web-pricing-cards-content">
                                             <p>Everything in Pro and:</p>
-                                            <ul class="aw-checked-list-circle">
+                                            <ul class="web-checked-list-circle">
                                                 <li><span>5TB bandwidth</span></li>
                                                 <li><span>500GB storage</span></li>
                                                 <li><span>10M executions</span></li>
@@ -203,20 +207,20 @@
                         </ul>
                     </div>
 
-                    <ul class="aw-grid-1-1-opt-2 u-gap-32 aw-u-margin-block-start-80">
+                    <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">
                         <li>
                             <article
-                                class="aw-card is-transparent has-border-gradient u-min-height-100-percent"
+                                class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
                                     <h3
                                         id="enterprises"
-                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                        class="web-main-body-500 web-u-color-text-primary"
                                     >
                                         Enterprises
                                     </h3>
-                                    <div class="aw-inline-tag is-pink">Coming Soon</div>
+                                    <div class="web-inline-tag is-pink">Coming Soon</div>
                                 </header>
                                 <p class="u-margin-block-start-8">
                                     Large scale projects seeking greater performance, collaboration
@@ -224,7 +228,7 @@
                                 </p>
                                 <a
                                     href="/contact-us"
-                                    class="aw-button is-secondary u-margin-block-start-32"
+                                    class="web-button is-secondary u-margin-block-start-32"
                                 >
                                     <span>Contact us</span>
                                 </a>
@@ -232,24 +236,24 @@
                         </li>
                         <li>
                             <article
-                                class="aw-card is-transparent has-border-gradient u-min-height-100-percent"
+                                class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="u-flex u-gap-12">
                                     <h3
                                         id="open-source-teams"
-                                        class="aw-main-body-500 aw-u-color-text-primary"
+                                        class="web-main-body-500 web-u-color-text-primary"
                                     >
                                         Open-source teams
                                     </h3>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    We support OSS maintainers with a free Pro Plan. Read our announcement blog
-                                    to find out more.
+                                    We support OSS maintainers with a free Pro Plan. Read our
+                                    announcement blog to find out more.
                                 </p>
                                 <a
                                     href="/docs/advanced/platform/oss"
-                                    class="aw-button is-secondary u-margin-block-start-32"
+                                    class="web-button is-secondary u-margin-block-start-32"
                                 >
                                     <span>Learn more</span>
                                 </a>
@@ -262,20 +266,20 @@
         <ComparePlans />
 
         <div
-            class="aw-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden"
+            class="web-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden"
         >
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container u-position-relative" style:z-index="10">
-                    <section class="aw-grid-4-6">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container u-position-relative" style:z-index="10">
+                    <section class="web-grid-4-6">
                         <header>
-                            <div class="aw-display aw-u-color-text-primary">FAQ</div>
+                            <div class="web-display web-u-color-text-primary">FAQ</div>
                         </header>
                         <Faq />
                     </section>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <div class="web-container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />
@@ -285,9 +289,10 @@
     </div>
 </Main>
 
-
 <style lang="scss">
-  @media (min-width:360px) and (max-width:550px) {
-    .aw-location-for-mobile { inset-block-start:90px; }
-  }
+    @media (min-width: 360px) and (max-width: 550px) {
+        .web-location-for-mobile {
+            inset-block-start: 90px;
+        }
+    }
 </style>

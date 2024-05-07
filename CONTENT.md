@@ -228,3 +228,14 @@ Get started with Appwrite and Nuxt
 Get started with Appwrite and SvelteKit
 {% /cards_item %}
 {% /cards %}
+
+#### Accordions
+
+{% accordion %}
+{% accordion_item title="Team ID" %}
+
+{% /accordion_item %}
+{% accordion_item title="Bundle ID" %}
+
+{% /accordion_item %}
+{% /accordion %}

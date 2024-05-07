@@ -3,7 +3,6 @@ layout: article
 title: Targets 
 description: Manage avenues of communication by targetting user's device, email, or phone number in your notification and messages.
 ---
-
 Targets are different ways a user can be reached.
 For example, a user might have two emails, a phone number as well as a phone and a tablet with your app installed.
 This means, the user has five different targets that you can deliver messages to.

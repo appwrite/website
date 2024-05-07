@@ -10,10 +10,10 @@ Anonymous sessions allow you to implement **guest** users. Guest users let you s
 
 # Create anonymous session {% #createSession %}
 
-Create an anonymous session with [Create Anonymous Session](/docs/references/cloud/client-web/account#createAnonymousSession) endpoint.
+Create an anonymous session with [Create Anonymous Session](/docs/references/cloud/client-web/account#createAnonymousSession) method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -30,7 +30,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -41,7 +41,18 @@ final account = Account(client);
 
 final user = await account.createAnonymousSession();
 ```
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let user = try await account.createAnonymousSession()
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -52,17 +63,6 @@ val client = Client()
 val account = Account(client)
 
 val user = account.createAnonymousSession()
-```
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-let account = Account(client)
-
-let user = try await account.createAnonymousSession()
 ```
 ```graphql
 mutation {
@@ -78,7 +78,7 @@ mutation {
 
 # Attaching an account {% #attach-account %}
 
-Anonymous users cannot sign back in. If the session expires, they move to another computer, or they clear their browser data, they won't be able to log in again. Remember to prompt the user to claim an account to not lose their data.
+Anonymous users cannot sign back in. If the session expires, they move to another computer, or they clear their browser data, they won't be able to log in again. Remember to prompt the user to create an account to not lose their data.
 
 Create an account with any of these methods to transition from an anonymous session to a user account session.
 

@@ -1,32 +1,38 @@
 ---
 layout: article
-title: OAuth2 login
+title: OAuth 2 login
 description: Integrate OAuth2 authentication seamlessly with Appwrite. Learn how to connect your application with third-party OAuth2 providers for secure user login and access.
 ---
 
 OAuth authentication allows users to log in using accounts from other popular services. This can be convenient for users because they can start using your app without creating a new account. It can also be more secure, because the user has one less password that could become vulnerable.
 
-When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth2 provider to complete the authentication step, and finally, the user is redirected back to your application.
+When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
 
-# Configure OAuth2 login {% #configure %}
+# Configure OAuth 2 login {% #configure %}
 
-Before using OAuth2 login, you need to enable and configure an OAuth2 provider.
+Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
 
 1. Navigate to your Appwrite project.
 2. Navigate to **Auth** > **Settings**.
 3. Find and open the OAuth provider.
-4. In the OAuth2 settings modal, use the toggle to enable the provider.
-5. Create and OAuth2 app on the provider's developer platform.
+4. In the OAuth 2 settings modal, use the toggle to enable the provider.
+5. Create and OAuth 2 app on the provider's developer platform.
 6. Copy information from your OAuth2 provider's developer platform to fill the **OAuth2 Settings** modal in the Appwrite Console.
-7. Configure redirect URL in your OAuth2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
+7. Configure redirect URL in your OAuth 2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
 
-# Initialize OAuth2 login {% #init %}
+# Initialize OAuth 2 login {% #init %}
 
-To initialize the OAuth2 login process, use the [Create OAuth2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) endpoint.
+To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
+
+OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider. 
+The requested scopes describe which resources a session can access.
+
+You can pass the scopes to request through the `scopes` parameter when creating a session.
+The scope is provider-specific and can be found in the provider's documentation.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
-```js
+```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
@@ -36,26 +42,19 @@ const client = new Client()
 const account = new Account(client);
 
 // Go to OAuth provider login page
-account.createOAuth2Session(OAuthProvider.GitHub, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
+account.createOAuth2Session(
+    OAuthProvider.Github, // provider
+    'https://example.com/success', // redirect here on success
+    'https://example.com/failed', // redirect here on failure
+    ['repo', 'user'] // scopes (optional)
+);
 ```
-
-Users will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
-
-In your web application, you need to finish OAuth authentication using [Create session](/docs/references/cloud/client-web/account#createSession) endpoint. Both user ID and token secret will be provided to you in the URL params.
-
-```js
-const urlParams = new URLSearchParams(window.location.search);
-const secret = urlParams.get('secret');
-const userId = urlParams.get('userId');
-
-await account.createSession(userId, secret);
-```
-
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -64,46 +63,11 @@ final client = Client()
 final account = Account(client);
 
 // Go to OAuth provider login page
-await account.createOAuth2Session(provider: OAuthProvider.github);
+await account.createOAuth2Session(
+    provider: 'OAuthProvider.github',
+    scopes: ['repo', 'user']
+);
 ```
-
-User will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
-
-You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
-{% /tabsitem %}
-
-{% tabsitem #android title="Android" %}
-For Android, add the following activity inside the `<application>` tag in your AndroidManifest.xml. Replace `<PROJECT_ID>` with your actual Appwrite project ID.
-
-```xml
-<!-- Add this inside the `<application>` tag, along side the existing `<activity>` tags -->
-<activity android:name="io.appwrite.views.CallbackActivity" android:exported="true">
-  <intent-filter android:label="android_web_auth">
-    <action android:name="android.intent.action.VIEW" />
-    <category android:name="android.intent.category.DEFAULT" />
-    <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="appwrite-callback-<PROJECT_ID>" />
-  </intent-filter>
-</activity>
-```
-```kotlin
-import io.appwrite.Client
-import io.appwrite.services.Account
-
-val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-val account = Account(client)
-
-// Go to OAuth provider login page
-account.createOAuth2Session(provider = "github")
-```
-
-User will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
-
-You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
-
 {% /tabsitem %}
 
 {% tabsitem #apple title="Apple" %}
@@ -126,7 +90,7 @@ For Apple, add the following URL scheme to your `Info.plist`.
 ```
 If you're using UIKit, you'll also need to add a hook to your `SceneDelegate.swift` file to ensure cookies work correctly.
 
-```swift
+```client-apple
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     guard let url = URLContexts.first?.url,
         url.absoluteString.contains("appwrite-callback") else {
@@ -136,8 +100,9 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 }
 ```
 
-```swift
+```client-apple
 import Appwrite
+import AppwriteEnums
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
@@ -146,24 +111,60 @@ let client = Client()
 let account = Account(client)
 
 // Go to OAuth provider login page
-try await account.createOAuth2Session(provider: "amazon")
+try await account.createOAuth2Session(
+    provider: .github,
+    scopes: ['repo', 'user']
+)
 ```
+{% /tabsitem %}
 
-User will be redirected to the OAuth2 provider's login page to log in. Once complete, your user will be redirected back to your app.
+{% tabsitem #android title="Android" %}
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. 
+Replace `<PROJECT_ID>` with your actual Appwrite project ID.
 
-You can optionally configure `success` or `failure` redirect links for having custom logic for handling those scenarios.
+```xml
+<!-- Add this inside the `<application>` tag, along side the existing `<activity>` tags -->
+<activity android:name="io.appwrite.views.CallbackActivity" android:exported="true">
+  <intent-filter android:label="android_web_auth">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="appwrite-callback-<PROJECT_ID>" />
+  </intent-filter>
+</activity>
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+import io.appwrite.enums.OAuthProvider
 
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+// Go to OAuth provider login page
+account.createOAuth2Session(
+    provider = OAuthProvider.GITHUB,
+    scopes = listOf('repo', 'user')
+)
+```
 {% /tabsitem %}
 {% /tabs %}
 
-# OAuth2 profile {% #profile %}
+You'll be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
 
-After authenticating a user through their OAuth2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth2 provider and make API calls to the provider.
+You can optionally configure `success` or `failure` redirect links on web to handle success and failure scenarios.
 
-After creating an OAuth2 session, you can fetch the session to get information about the provider.
+# OAuth 2 profile {% #profile %}
+
+After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
+
+After creating an OAuth 2 session, you can fetch the session to get information about the provider.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -178,7 +179,7 @@ console.log(session.providerUid);
 console.log(session.providerAccessToken);
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -196,8 +197,25 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2") // Your project ID
+
+let account = Account(client)
+
+let session = try await account.getSession(
+    sessionId: "[SESSION_ID]"
+)
+
+// Provider information
+print(session.provider);
+print(session.providerUid);
+print(session.providerAccessToken);
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -216,45 +234,32 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-
-let account = Account(client)
-
-let session = try await account.getSession(
-    sessionId: "[SESSION_ID]"
-)
-
-// Provider information
-print(session.provider);
-print(session.providerUid);
-print(session.providerAccessToken);
-```
 {% /multicode %}
 
 
-An OAuth2 [session](/docs/references/cloud/models/session) will have the following attributes.
+An OAuth 2 [session](/docs/references/cloud/models/session) will have the following attributes.
 
 | Property                   | Description                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------- |
 | provider                   | The OAuth2 Provider.                                                                                       |
-| providerUid                | User ID from the OAuth2 Provider.                                                                         |
-| providerAccessToken        | Access token from the OAuth2 provider. Use this to **make requests to the OAuth2 provider** to fetch personal data. |
+| providerUid                | User ID from the OAuth 2 Provider.                                                                         |
+| providerAccessToken        | Access token from the OAuth 2 provider. Use this to **make requests to the OAuth 2 provider** to fetch personal data. |
 | providerAccessTokenExpiry  | Check this value to know if an access token is about to expire.                                            |
 
-You can use the `providerAccessToken` to make requests to your OAuth2 provider. Refer to the docs for the OAuth2 provider you're using to learn about making API calls with the access token.
+You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
 
-# Refreshing OAuth2 tokens {% #refreshing-tokens %}
+# Refresh tokens {% #refresh-tokens %}
 
-OAuth2 sessions expire to protect from security risks. OAuth2 sessions should be refreshed periodically, so access tokens don't expire. Check value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. Refreshing before every request might cause rate limit problems. You can do this by calling the [Update session](/docs/references/cloud/client-web/account#updateSession) endpoint right before token expiry, or before first request after expiry.
+OAuth 2 sessions expire to protect from security risks. 
+This means the OAuth 2 session with a provider may expire, even when an Appwrite session remains active.
+OAuth 2 sessions should be refreshed periodically so access tokens don't expire. 
+
+Check the value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. 
+You can refresh the provider session by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint whenever your user visits your app.
+Avoid refreshing before every request, which might cause rate limit problems. 
 
 {% multicode %}
-```js
+```client-web
 const promise = account.updateSession('[SESSION_ID]');
 
 promise.then(function (response) {
@@ -263,7 +268,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -276,7 +281,20 @@ final result = await account.updateSession(
     sessionId: '[SESSION_ID]'
 );
 ```
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("5df5acd0d48c2") // Your project ID
+
+let account = Account(client)
+
+let session = try await account.updateSession(
+    sessionId: "[SESSION_ID]"
+);
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -290,22 +308,9 @@ val response = account.updateSession(
     sessionId = "[SESSION_ID]"
 );
 ```
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-
-let account = Account(client)
-
-let session = try await account.updateSession(
-    sessionId: "[SESSION_ID]"
-);
-```
 
 {% /multicode %}
 
 {% info title="GraphQL" %}
-OAuth2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
+OAuth 2 is not available through the GraphQL API. You can use the REST API or any Client SDK instead.
 {% /info %}

@@ -66,27 +66,27 @@
 
 <Main omitMainId>
     <TocRoot>
-        <div class="aw-container">
-            <div class="aw-grid-120-1fr-auto">
-                <header class="aw-grid-120-1fr-auto-header">
-                    <h1 class="aw-title aw-u-color-text-primary">{title}</h1>
+        <div class="web-container">
+            <div class="web-grid-120-1fr-auto">
+                <header class="web-grid-120-1fr-auto-header">
+                    <h1 class="web-title web-u-color-text-primary">{title}</h1>
                 </header>
                 <button
                     class="toc-btn u-position-sticky u-flex u-width-full-line u-main-space-between u-cross-center
-                aw-u-padding-20 aw-u-margin-inline-20-negative aw-u-color-text-primary aw-is-only-mobile
-                u-margin-block-start-24 aw-u-sep-block aw-u-filter-blur-8"
+                web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile
+                u-margin-block-start-24 web-u-sep-block web-u-filter-blur-8"
                     style:--inset-block-start="4.5rem"
                     style:inline-size="100vw"
                     style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
                     style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
                     on:click={() => (showToc = !showToc)}
                 >
-                    <span class="aw-description">Table of contents</span>
+                    <span class="web-description">Table of contents</span>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
                 </button>
                 <TocNav />
-                <main class="aw-grid-120-1fr-auto-main /aw-is-mobile-closed" id="main">
-                    <div class="aw-content is-count-headers" class:aw-is-mobile-closed={showToc}>
+                <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
+                    <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc}>
                         <!-- svelte-ignore a11y-hidden -->
                         <h2 aria-hidden="true">Introduction</h2>
                         <slot />
