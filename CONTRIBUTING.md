@@ -137,3 +137,86 @@ It should contain all the pages and headings with in them, maintainers may reque
     ...
 ...
 ```
+
+### Content splitting
+Split content to make them easier to read. Split long sentences and long paragraphs such that key concepts can be obtained even when skimming through only first few words of paragraphs.
+
+Split content such that each piece makes sense without reading dependents or explicitly link pre-requisit material. 
+
+## Documentation structure
+The Appwrite docs is split into sections, each with its intended purpose and content.
+
+Appwrite's navigation increases in complexity from top down. We expect users to view links later in navigation later in their development journey.
+
+Introduction Section:
+- [Homes](https://appwrite.io/docs)
+- [Quick start](https://appwrite.io/docs/quick-start)
+- [Tutorial](https://appwrite.io/docs/tutorial)
+- [SDKs](https://appwrite.io/docs/sdks)
+- [API references](https://appwrite.io/docs/references)
+
+Products section:
+- [Auth](https://appwrite.io/docs/products/auth)
+- [Databases](https://appwrite.io/docs/products/databases)
+- [Functions](https://appwrite.io/docs/products/functions)
+- [Storage](https://appwrite.io/docs/products/storage)
+- [Messaging](https://appwrite.io/docs/products/messaging)
+- [AI](https://appwrite.io/docs/products/ai)
+
+APIs section:
+- [GraphQL](https://appwrite.io/docs/apis/graphql)
+- [REST](https://appwrite.io/docs/apis/rest)
+- [Realtime](https://appwrite.io/docs/apis/realtime)
+
+Tooling section:
+- [Command Line](https://appwrite.io/docs/command-line)
+- [Command center](https://appwrite.io/docs/tooling/command-center)
+- [Assistant](https://appwrite.io/docs/tooling/assistant)
+
+Advanced section:
+- [Platform](https://appwrite.io/docs/advanced/platform)
+- [Migrations](https://appwrite.io/docs/advanced/migrations)
+- [Self-hosting](https://appwrite.io/docs/advanced/self-hosting)
+- [Security](https://appwrite.io/docs/advanced/security)
+
+Here's the intended purpose and structure of each section.
+
+### Introduction
+This section is focused on introducing what Appwrite is and giving examples to the user to understand both how to get started and how to perform canned tasks.
+Documentation here is focused on a **single flow** which means a single platform/framework + Appwrite.
+Content here is not specific to a specific product, but usually covers multiple Appwrite products.
+
+- If your tutorial can be followed in about 15 minutes and fits on one page, write it under quick start
+- If you're writing a long piece of documentation that integrates Appwrite with another technology, with lots of details that's opinionated or isn't relevant for all use cases, write it under tutorial. This is similar to "cook book" at other organizations.
+- If you have information like helpers and methods that are only on SDKs but not the API, they go under SDK
+- API references are generated from source from the appwrite/appwrite repo
+
+### Products
+Each page covers an Appwrite product. These pages describe the expected behavior of the product and are **unopinionated** and **technology-agnostic**.
+Code examples should cover **all available SDKs**.
+
+Each product page has three main sections
+- Introduction
+    - Overview - Describes at a high level, why you might need this product
+    - Quick start - Shows the most basic and quickest example to make something happen with a product. Keep it really short.
+- Concept
+    - These pages usually align with sections shown in the product in the Appwrite Console.
+    - Focused on describing concepts a user should know, but not actions you might take.
+    - Cover all the details
+- Journeys
+    - These pages focus on common actions and work flows
+    - Detailed examples that span many concepts
+    - Like cookbook at other organizations' documentation.
+
+### APIs section
+Describes consuming APIs, which are a little more advanced, like using REST API directly or GraphQL directly.
+
+### Tooling section
+Describes tools that help you work with Appwrite, but are usually non-essential and not end-user facing.
+
+### Advanced section
+For information that's not used commonly during the development cycle.
+- Platform: covers concepts that apply to the entire Appwrite Cloud platform, like API keys, rate limits, etc.
+- Migrations: covers migrations feature of Appwrite that helps you move data around.
+- Security: purely information about measures Appwrite use to ensure security of the platform and data.
+- Self-hosting: The Appwrite self-hosted platform is meant to behave identically to Cloud after being configured corrrectly. This section focuses on how to configure Appwrite self-hosted such that it behaves like Cloud.
