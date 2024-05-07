@@ -12,24 +12,22 @@ Each user's account can also have their own preference object, which you can use
 
 # Signup and login {% #signup-login %}
 
-You can signup and login a user with an account created through
-[Email and password](/docs/products/auth/email-password),
-[OAuth2](/docs/products/auth/oauth2),
-[Magic URL](/docs/products/auth/magic-url),
-[Email OTP](/docs/products/auth/email-otp),
-[Phone (SMS)](/docs/products/auth/phone-sms),
-and [Anonymous](/docs/products/auth/anonymous) authentications.
-
-You can also use [Custom token](/docs/products/auth/custom-token) to implement your own authentication flow, or integrate with any external provider.
+You can signup and login a user with an account create through 
+[email password](/docs/products/auth/email-password),
+[phone (SMS)](/docs/products/auth/phone-sms),
+[Anonymous](/docs/products/auth/anonymous),
+[magic URL](/docs/products/auth/magic-url), and
+[OAuth 2](/docs/products/auth/oauth2)
+authentication.
 
 # Preferences {% #preferences %}
 
-You can store user preferences on a user's account using Appwrite's [Update preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -46,7 +44,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -62,7 +60,23 @@ final user = await account.updatePrefs(
     }
 );
 ```
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let user = try await account.updatePrefs(
+    prefs: [
+        "darkTheme": true,
+        "language": "en"
+    ]
+)
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -77,22 +91,6 @@ val user = account.updatePrefs(
         "darkTheme" to true,
         "language" to "en"
     )
-)
-```
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-let account = Account(client)
-
-let user = try await account.updatePrefs(
-    prefs: [
-        "darkTheme": true,
-        "language": "en"
-    ]
 )
 ```
 ```graphql
@@ -110,10 +108,10 @@ mutation {
 ```
 {% /multicode %}
 
-After a user's preferences are updated, they can be retrieved using the [Get preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
+After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -130,7 +128,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -141,7 +139,7 @@ final account = Account(client);
 
 final prefs = await account.getPrefs();
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -153,7 +151,7 @@ val account = Account(client)
 
 val prefs = account.getPrefs()
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -177,7 +175,6 @@ query {
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
 individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
-
 | Description                                 | Role                               |
 | ------------------------------------------- | ------------------------------------------- |
 | Verified users   | `Role.users('verified')`|

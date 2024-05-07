@@ -53,26 +53,26 @@
 
 <Main>
     <div
-        class="aw-big-padding-section"
+        class="web-big-padding-section"
         use:scroll
-        on:aw-scroll={(e) => {
+        on:web-scroll={(e) => {
             readPercentage = e.detail.percentage;
         }}
     >
-        <div class="aw-big-padding-section">
-            <div class="aw-big-padding-section-level-1">
-                <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container" style="--container-size:42.5rem">
-                        <article class="aw-main-article">
-                            <header class="aw-main-article-header">
+        <div class="web-big-padding-section">
+            <div class="web-big-padding-section-level-1">
+                <div class="web-big-padding-section-level-2">
+                    <div class="web-container" style="--container-size:42.5rem">
+                        <article class="web-main-article">
+                            <header class="web-main-article-header">
                                 <a
-                                    class="aw-link is-secondary aw-u-color-text-secondary u-cross-baseline"
+                                    class="web-link is-secondary web-u-color-text-secondary u-cross-baseline"
                                     href="/blog"
                                 >
-                                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                                    <span class="web-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
-                                <ul class="aw-metadata aw-caption-400">
+                                <ul class="web-metadata web-caption-400">
                                     <li>
                                         <time datetime={date}>{formatDate(date)}</time>
                                     </li>
@@ -80,32 +80,33 @@
                                         <li>{timeToRead} min</li>
                                     {/if}
                                 </ul>
-                                <h1 class="aw-title aw-u-color-text-primary">{title}</h1>
+                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
                                 {#if description}
-                                    <p class="aw-description u-margin-block-start-8">
+                                    <p class="web-description u-margin-block-start-8">
                                         {description}
                                     </p>
                                 {/if}
                                 {#if authorData}
-                                    <div class="aw-author u-margin-block-start-16">
+                                    <div class="web-author u-margin-block-start-16">
                                         <a
                                             href={authorData.href}
                                             class="u-flex u-cross-center u-gap-8"
                                         >
                                             {#if authorData.avatar}
                                                 <img
-                                                    class="aw-author-image"
+                                                    class="web-author-image"
                                                     src={authorData.avatar}
+                                                    alt={authorData.name}
+                                                    loading="lazy"
                                                     width="44"
                                                     height="44"
-                                                    alt=""
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
-                                                <h4 class="aw-sub-body-400 aw-u-color-text-primary">
+                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
                                                     {authorData.name}
                                                 </h4>
-                                                <p class="aw-caption-400">{authorData.role}</p>
+                                                <p class="web-caption-400">{authorData.role}</p>
                                             </div>
                                         </a>
                                         <!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
@@ -113,12 +114,12 @@
 												<li>
 													<a
 														href={authorData.twitter}
-														class="aw-icon-button"
+														class="web-icon-button"
 														aria-label="Author twitter"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
-														<span class="aw-icon-x" aria-hidden="true" />
+														<span class="web-icon-x" aria-hidden="true" />
 													</a>
 												</li>
 											{/if}
@@ -126,12 +127,12 @@
 												<li>
 													<a
 														href={authorData.linkedin}
-														class="aw-icon-button"
+														class="web-icon-button"
 														aria-label="Author LinkedIn"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
-														<span class="aw-icon-linkedin" aria-hidden="true" />
+														<span class="web-icon-linkedin" aria-hidden="true" />
 													</a>
 												</li>
 											{/if}
@@ -139,12 +140,12 @@
 												<li>
 													<a
 														href={authorData.github}
-														class="aw-icon-button"
+														class="web-icon-button"
 														aria-label="Author GitHub"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
-														<span class="aw-icon-github" aria-hidden="true" />
+														<span class="web-icon-github" aria-hidden="true" />
 													</a>
 												</li>
 											{/if}
@@ -153,19 +154,19 @@
                                 {/if}
                             </header>
                             {#if cover}
-                                <div class="aw-media-container">
+                                <div class="web-media-container">
                                     <Media class="u-block" src={cover} />
                                 </div>
                             {/if}
 
-                            <div class="aw-article-content u-margin-block-start-32">
+                            <div class="web-article-content u-margin-block-start-32">
                                 <slot />
                             </div>
                         </article>
                         <!-- {#if categories?.length}
 							<div class="u-flex u-gap-16">
 								{#each categories as cat}
-									<a href={cat.href} class="aw-tag">{cat.name}</a>
+									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
 							</div>
 						{/if} -->
@@ -175,12 +176,12 @@
         </div>
     </div>
 
-    <div class="aw-big-padding-section-level-1 aw-u-sep-block-start">
-        <div class="aw-big-padding-section-level-2">
-            <div class="aw-container">
-                <h3 class="aw-label aw-u-color-text-primary">Read next</h3>
+    <div class="web-big-padding-section-level-1 web-u-sep-block-start">
+        <div class="web-big-padding-section-level-2">
+            <div class="web-container">
+                <h3 class="web-label web-u-color-text-primary">Read next</h3>
                 <section class="u-margin-block-start-32">
-                    <ul class="aw-grid-articles">
+                    <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
                             {@const author = authors.find((a) => a.slug === post.author)}
                             {#if author}
@@ -199,8 +200,8 @@
                 </section>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-            <div class="aw-container">
+        <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+            <div class="web-container">
                 <Newsletter />
                 <FooterNav />
                 <MainFooter />
@@ -217,7 +218,7 @@
         top: 0;
         height: 2px;
         width: var(--percentage);
-        background: hsl(var(--aw-color-accent));
+        background: hsl(var(--web-color-accent));
         z-index: 10000;
     }
 </style>

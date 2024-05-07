@@ -21,21 +21,21 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="aw-eyebrow aw-u-color-text-primary"
-            >Day {number}<span class="aw-u-color-text-accent">_</span></span
+        <span class="web-eyebrow web-u-color-text-primary"
+            >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
-        <h2 class="aw-label aw-u-color-text-primary">{day.title}</h2>
+        <h2 class="web-label web-u-color-text-primary">{day.title}</h2>
         <div class="slot-wrapper">
             <slot />
         </div>
     </div>
 {:else}
     <div class="release">
-        <span class="aw-eyebrow aw-u-color-text-primary"
-            >Day {number}<span class="aw-u-color-text-accent">_</span></span
+        <span class="web-eyebrow web-u-color-text-primary"
+            >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
         <div class="bottom">
-            <div class="countdown aw-title">
+            <div class="countdown web-title">
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
@@ -44,7 +44,7 @@
                     />
                 {/if}
             </div>
-            <a href="/init/tickets" class="aw-button is-secondary">Register</a>
+            <a href="/init/tickets" class="web-button is-secondary">Register</a>
         </div>
     </div>
 {/if}
@@ -66,7 +66,7 @@
         flex-direction: column;
         position: relative;
 
-        background: hsl(var(--aw-color-card));
+        background: hsl(var(--web-color-card));
         overflow: hidden;
 
         height: 7.5rem;
@@ -85,8 +85,8 @@
         /* .circle {
             content: '';
             background: radial-gradient(
-                hsl(var(--aw-color-accent)) 0%,
-                hsl(var(--aw-color-accent) / 0) 70%
+                hsl(var(--web-color-accent)) 0%,
+                hsl(var(--web-color-accent) / 0) 70%
             );
             opacity: 0.24;
 
@@ -122,7 +122,7 @@
             align-items: center;
         }
         .countdown {
-            color: hsl(var(--aw-color-primary));
+            color: hsl(var(--web-color-primary));
         }
     }
 </style>

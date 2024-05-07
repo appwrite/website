@@ -8,7 +8,7 @@ Appwrite was designed from the ground up with self-hosting in mind. You can inst
 
 # System requirements {% #system-requirements %}
 
-Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
+Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **2 CPU cores** and **4GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
 
 Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
 
@@ -35,18 +35,18 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.5
 ```
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
-## CMD 
+## CMD
 ```cmd
 docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.5
 ```
 ## Powershell
 ```powershell
@@ -54,7 +54,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.5.1
+    appwrite/appwrite:1.5.5
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -64,7 +64,7 @@ docker run -it --rm `
 In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
 
 Choose from one of the providers below:
- 
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Provider

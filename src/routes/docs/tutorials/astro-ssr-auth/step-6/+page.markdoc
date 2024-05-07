@@ -5,7 +5,7 @@ description: Add authentication to a Astro project using Appwrite.
 step: 6
 ---
 
-Now the end-user is able to sign in, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `src/pages` directory called `account.astro` and add the following code:
+Now the end-user is able to sign up, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `src/pages` directory called `account.astro` and add the following code:
 
 ```js
 ---
@@ -14,7 +14,7 @@ import { SESSION_COOKIE, createSessionClient } from "../server/appwrite";
 // Redirect the user if not signed in
 const { user } = Astro.locals;
 if (!user) {
-  return Astro.redirect("/signin");
+  return Astro.redirect("/signup");
 }
 
 // Handle form action
@@ -28,8 +28,8 @@ if (Astro.request.method === "POST") {
   // Delete the session cookie
   Astro.cookies.delete(SESSION_COOKIE);
 
-  // Redirect the user to sign in page
-  return Astro.redirect("/signin");
+  // Redirect the user to sign up page
+  return Astro.redirect("/signup");
 }
 ---
 <ul>

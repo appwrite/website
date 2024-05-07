@@ -7,7 +7,7 @@
     <details class="collapsible-wrapper" {open}>
         <summary class="collapsible-button">
             <span class="text">{title}</span>
-            <div class="icon aw-u-color-text-primary">
+            <div class="icon web-u-color-text-primary">
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
         </summary>
@@ -19,7 +19,7 @@
 
 <style>
     .collapsible-item {
-        border-block-end: 0.0625rem solid hsl(var(--aw-color-offset));
+        border-block-end: 0.0625rem solid hsl(var(--web-color-offset));
     }
 
     .collapsible-button {

@@ -61,7 +61,7 @@
 			</div>
 			<div class="row">
 				<div class="search">
-					<span class="aw-icon-search" />
+					<span class="web-icon-search" />
 					<span class="text"> Search </span>
 				</div>
 				<div class="flow gap-8">
@@ -392,7 +392,7 @@
 	}
 
 	hr {
-		border-bottom: 1px solid hsl(var(--aw-color-greyscale-50));
+		border-bottom: 1px solid hsl(var(--web-color-greyscale-50));
 		margin-block: 1rem;
 	}
 
@@ -405,7 +405,7 @@
 		align-self: stretch;
 
 		border-radius: 0.625rem;
-		border: 1px dashed hsl(var(--aw-color-greyscale-50));
+		border: 1px dashed hsl(var(--web-color-greyscale-50));
 		color: #56565c;
 
 		.text {

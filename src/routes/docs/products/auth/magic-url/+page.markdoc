@@ -4,26 +4,14 @@ title: Magic URL login
 description: Add magic URL to your authentication in Appwrite. Explore the convenience of passwordless login and email-based authentication using magic links.
 ---
 
-Magic URL is a password-less way to authenticate users. When a user logs in by providing their email, they will receive an email with a "magic" link that contains a secret used to log in the user. The user can simply click the link to be logged in. This method is similar to [Email OTP login](/docs/products/auth/email-otp), but can provide quicker sign-in in some scenarios.
-
-{% info title="Magic URL vs Email OTP" %}
-Magic URL delivers a clickable button or a link to user's inbox, while Email OTP sends email with 6 digit code that user needs to enter into the app.
-Both allow passwordless login flows with different advantages.
-
-| Benefits of Magic URL                                          | Downsides of Magic URL                                                                                                      |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| Doesn't expire too quickly while remaining secure              | Requires user to be signed into email inbox on the device                                                                   |
-| Doesn't require many inputs, only 1 click                      | Disturbs application flow with a redirect                                                                                   |
-|                                                                | Requires deep linking when developing PWA or mobile apps                                                                    |
-
-{% /info %}
+Magic URL is a password-less way to authenticate users. When a user logs in by providing their email, they will receive an email with a "magic" link that contains a secret used to log in the user. The user can simply click the link to be logged in.
 
 # Send email {% #init %}
 
-Initialize the log in process with the [Create Magic URL Token](/docs/references/cloud/client-web/account#createMagicURLToken) endpoint. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
+Initialize the log in process with the [Create Magic URL Session](/docs/references/cloud/client-web/account#createMagicURLSession) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -32,7 +20,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createMagicURLToken(ID.unique(), 'email@example.com');
+const promise = account.createMagicURLSession(ID.unique(), 'email@example.com');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -43,7 +31,7 @@ promise.then(function (response) {
 
 ```graphql
 mutation {
-    accountCreateMagicURLToken(
+    accountCreateMagicURLSession(
         userId: "ID.unique()",
         email: "email@example.com"
     ) {
@@ -64,7 +52,7 @@ After receiving your secret from an email, you can create a session.
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -77,12 +65,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
-const user = await account.createSession(userId, secret);
+const user = await account.updateMagicURLSession(userId, secret);
 ```
-
 ```graphql
 mutation {
-    accountCreateSession(
+    accountUpdateMagicURLSession(
         userId: "unique()",
         secret: "[SECRET]"
     ) {
@@ -95,50 +82,3 @@ mutation {
 }
 ```
 {% /multicode %}
-
-# Security phrase {% #security-phrase %}
-
-A security phrase is a randomly generated phrase provided on the login page, as well as inside Magic URL login email. Users must match the phrase on the login page with the phrase provided inside the email. Security phrases offer protection for various types of phishing and man-in-the-middle attacks.
-
-By default, security phrases are disabled. To enable a security phrase in Magic URL, enable it in first step of the authentication flow.
-
-
-{% multicode %}
-```js
-import { Client, Account, ID } from "appwrite";
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
-
-const account = new Account(client);
-
-const promise = account.createMagicURLToken(ID.unique(), 'email@example.com', true);
-
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
-```
-
-```graphql
-mutation {
-    accountCreateMagicURLToken(
-        userId: "ID.unique()",
-        email: "email@example.com",
-        phrase: true
-    ) {
-        _id
-        _createdAt
-        userId
-        secret
-        expire
-        phrase
-    }
-}
-```
-
-{% /multicode %}
-
-By enabling security phrase feature, you will recieve `phrase` in the response. You need to display this phrase to the user, and we recommend informing user what this phrase is and how to check it. When security phrase is enabled, email will also include a new section providing user with the security phrase.

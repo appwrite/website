@@ -119,7 +119,7 @@
 
 			[class*='icon-'] {
 				font-size: 1.25rem;
-				color: hsl(var(--aw-color-greyscale-500));
+				color: hsl(var(--web-color-greyscale-500));
 			}
 		}
 
