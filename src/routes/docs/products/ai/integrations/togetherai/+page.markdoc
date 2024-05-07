@@ -13,6 +13,7 @@ Integrating Together AI into your Appwrite project is simple. This tutorial will
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite Project
+- An Appwrite Bucket
 - A [Together AI API Key](https://docs.together.ai/reference/authentication-1)
 
 {% section #step-1 step=1 title="Create new function" %}
@@ -30,7 +31,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click, on **F
 1. Click **Create function**.
 1. Under **Connect Git repository**, select your provider.
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-1. In the **Variables** step, add the `TOGETHER_API_KEY`, generate it [here](https://api.together.xyz/settings/api-keys).
+1. In the **Variables** step, add `APPWRITE_API_KEY`, `APPWRITE_BUCKET_ID` and `TOGETHER_API_KEY`. You can generate your together key [here](https://api.together.xyz/settings/api-keys).
 1. Follow the step-by-step wizard and create the function.
 {% /section %}
 
@@ -45,12 +46,12 @@ npm install undici
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility function" %}
-For this example, the function can take both `GET` and `POST` requests.
+For this example, the function will be able to handle both `GET` and `POST` requests.
 
-For the `GET` request, return a static HTML page that you will write later, and that will use AlpineJS to make a `POST` request to the function.
+For the `GET` request, return a static HTML landing page, that will use AlpineJS to make a `POST` request to our function.
 Meanwhile, the `POST` request will use fetch to make a request to the Together AI API.
 
-First, you'll write the code to return the static HTML page. To do this, create a new `src/utils.js` file with the following code:
+In preparation for the `GET` request handler, create a new `src/utils.js` file with some utility functions:
 
 ```js
 import path from 'path';
@@ -68,7 +69,7 @@ export function getStaticFile(fileName) {
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
-Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page, which you will create later.
+Write the `GET` request handler in the `src/main.js` file. This handler will return a static HTML page, which will be created in the next section.
 
 ```js
 import { getStaticFile } from './utils.js';
@@ -187,20 +188,18 @@ And after the `</head>` tag add a `<body>` which will contain the actual form:
 </body>
 ```
 
-Together, this will render a form to submit your question to the Appwrite Function through a POST request, which you'll create next. The Appwrite Function will call Together AI's API and return the response, which will be displayed on your page using different conditional statements depending on the output media type.
+Together, this will render a form to submit a query to the Appwrite Function through a `POST` request. The Appwrite Function invokes Together AI's API and returns the response, which will be displayed on the page using different conditional statements depending on the output media type.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
-Now that you're serving a basic HTML page add methods necessary to integrate with Together AI's API.
-
-Import `fetch` from undici and the Appwrite SDK
+Now that you're serving a basic HTML page add methods necessary to integrate with Together AI's API. Import `fetch` from `undici` and the Appwrite SDK at the top of `src/main.js`.
 
 ```js
 import { fetch } from 'undici'
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 ```
 
-Next, after you serve the HTML, add code to validate the body of the request and define the models:
+To handle the `POST` request, add the following code to the end of the request handler in the `src/main.js` file to validate the request body and define the models:
 
 ```js
 const models = {
@@ -217,9 +216,9 @@ if (req.body.type !== 'text' && req.body.type !== 'image') {
 }
 ```
 
-In this example, you will use Mistral's Mixtral 8x7B for text generation and StabilityAI's Stable Diffusion XL for image generation. You can find more models on the [Together AI's docs](https://docs.together.ai/docs/inference-models).
+In this example, you will use Mistral's `Mixtral 8x7B` for text generation and StabilityAI's `Stable Diffusion XL` for image generation. You can find more models on [Together AI's docs](https://docs.together.ai/docs/inference-models).
 
-Next, add some per-model configurations:
+Next, following the previous code dd some per-model configurations:
 
 ```js
 let request = {
@@ -258,9 +257,7 @@ switch (req.body.type) {
 };
 ```
 
-This allows you to configure each of the models you use individually. Feel free to play with this configuration to get the best results for your use case.
-
-Finally, with the request built, you can call the Together AI API and generate a prediction:
+This allows you to configure each of the models you use individually. Feel free to play with this configuration to get the best results for your use case. Finally, with the request built, you can call the Together AI API and generate a prediction:
 
 ```js
 let response;

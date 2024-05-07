@@ -99,10 +99,10 @@
                                 <span class="web-caption-400">{tutorial.title}</span>
                             </a>
                             {#if isCurrentStep}
-                                {#each toc as parent}
-                                    <ol
+                                <ol
                                         class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                                    >
+                                >
+                                {#each toc as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -136,8 +136,8 @@
                                                 </ol>
                                             {/if}
                                         </li>
-                                    </ol>
                                 {/each}
+                                </ol>
                             {/if}
                         </li>
                     {/each}
@@ -153,23 +153,4 @@
     </article>
 </main>
 
-<style lang="scss">
-    .tutorial-scroll-indicator {
-        position: relative;
-        &::before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: -1.75rem;
-            height: 100%;
-            width: 1px;
-            background-color: hsl(var(--p-references-menu-link-color-text));
-        }
 
-        &.is-inner {
-            &::before {
-                left: -4rem;
-            }
-        }
-    }
-</style>
