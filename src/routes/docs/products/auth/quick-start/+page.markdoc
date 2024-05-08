@@ -239,6 +239,9 @@ Before routing to a page, you can check if the user is logged in and redirect th
 {% tabs %}
 {% tabsitem #react-router title="React router" %}
 You can use [React router loaders](https://reactrouter.com/en/main/route/loader) to check if the user is logged in before rendering a route.
+
+You can find a similar example in this [YouTube video](https://youtu.be/pyfwQUc5Ssk).
+
 ```client-web 
 import * as React from "react";
 import {
