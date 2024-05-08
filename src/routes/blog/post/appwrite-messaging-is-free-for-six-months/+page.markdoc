@@ -36,17 +36,15 @@ During the coming months, we will contact many of you to ask for feedback on Mes
 
 The release of Messaging is just the beginning. We will add many new features to the product to make it the best messaging service and ensure you get everything you need to deliver a great messaging experience to your end users. 
 
-Some features we will be adding: the ability to send test messages, push URL, advanced targeting, and in depth usage stats.
+Some features we will be adding: the ability to send test messages, add variables to your messages, advanced targeting, and in depth usage stats.
 
-We will also add more providers and adopters and invite you to contribute with your requests. Visit our [community page](https://appwrite.io/community) to learn more about contributing or add your issues directly to [GitHub](https://github.com/appwrite/appwrite/issues).
+We will add more providers and invite you to contribute with your own pull requests. Visit our [community page](https://appwrite.io/community) to learn more about contributing or add your issues directly to [GitHub](https://github.com/appwrite/appwrite).
 
 ## A complete backend for your projects
 
 ![Tweet about Messaging](/images/blogs/tweet-hitesh.png)
 
-The goal has always been to create a complete and comprehensive development platform, and clearly, this is a product that many of you have looked out for. This makes us an even stronger contender for replacing Firebase projects as an open source provider. We’re excited to bring Messaging to Cloud and to offer the service for free for the next six months while in open beta.
-
-We invite you to contribute and share your feature requests. Visit our [community page](https://appwrite.io/community) to learn more about contributing or add your issues directly to [GitHub](https://github.com/appwrite/appwrite/issues).
+We’re excited to bring Messaging to Cloud and to offer the service for free for the next six months while in open beta. Adding Messaging makes Appwrite an even more complete backend for your projects, and we look forward to adding more functionality soon.
 
 Learn more about Messaging in our resources:
 
