@@ -53,7 +53,7 @@ def scan_receipt(filename):
 
 The response comes back as a set of XML-like tags, we can use Regex to extract the relevant information from the model response.
 
-``` python
+```python
 import re
 
 def parse_receipt(text):
