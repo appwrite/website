@@ -3,7 +3,7 @@ layout: post
 title: Streamline receipt scanning with Appwrite Cloud
 description: Learn how to extract information from receipts with Appwrite Cloud and Appwrite Functions.
 date: 2024-05-01
-cover: /images/blog/cloud-beta.png
+cover: /images/blog/receipt-scan.png
 timeToRead: 15
 author: vincent-ge
 category: functions
@@ -11,14 +11,14 @@ category: functions
 I downloaded a personal finance app a few weeks ago to help me track my expenses.
 I uninstalled that app about five minutes later.
 
-All it took to for me to lost interest was the giant form I had to fill out to add a receipt.
+All it took to lose interest was the giant form I had to fill out to add a receipt.
 
 With over [30+ apps installed on a typical user's phone](https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/average-number-of-apps-on-smartphones/)
 on average, fighting for engagement and retention is tougher than ever.
 Users are sensitive to friction, with a reported 50% of users [opting for new online merchants just for lowered friction](https://www.pwc.co.uk/industries/documents/frictionless-retail-the-future-of-shopping.pdf)
 and Shoppify reporting [low-friction payment methods and flows can lead to >50% increase in conversion](https://web-assets.bcg.com/e4/0c/a1acfc2a4e52a029cb37c6fe83ba/bcg-leading-online-shoppers-to-the-finish-line-june-2023.pdf).
 
-No one has time to fill giant forms.
+No one has time to fill out giant forms.
 To help you and your users avoid filling out giant forms, we're going to build a simple receipt processing endpoint with Appwrite
 that will extract the total amount from a receipt image using a Hugging Face model.
 
@@ -29,7 +29,7 @@ to extract data from a receipt image. Make sure you also have a **Hugging Face A
 
 # Scanning receipts 
 We're going to use the [Hugging Face Donut Receipts Extract model](https://huggingface.co/AdamCodd/donut-receipts-extract) to 
-extract relevant information form the receipt image.
+extract relevant information from the receipt image.
 
 Hugging Face's API makes this pretty simple. We'll send a POST request to the model's endpoint with the image data, and it will return the extracted information.
 
@@ -273,4 +273,14 @@ Another option is to trigger the function with a webhook when a new file is uplo
 
 The function will already have the file ID in the request body, you'll just need to store the returned data in a collection
 instead of returning it as a response.
+
+# Resources
+
+Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
+
+- [Docs](https://appwrite.io/docs/products/ai)
+- [Discord](https://appwrite.io/discord)
+- [Blog](https://appwrite.io/blog)
+- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+- [GitHub](https://github.com/appwrite/appwrite)
 
