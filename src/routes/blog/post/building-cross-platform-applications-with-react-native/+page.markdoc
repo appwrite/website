@@ -48,7 +48,7 @@ Finally, when the application needs to handle native device-specific functionali
 
 ## Try React Native for your next project
 
-There are many great cross-platform framework technologies, like [Flutter](https://appwrite.io/docs/quick-starts/flutter) .NET MAUI, IONIC, and more. Each cross-platform frameworks have their advantages and disadvantages and we are not here to say one is better. Which framework to choose depends on one’s preference, previous knowledge and skill set, project requirements, and more. But to celebrate the release of the [Appwrite React Native SDK](https://github.com/appwrite/sdk-for-react-native) in open beta, we want to share a few points that make React Native an attractive choice.
+There are many great cross-platform framework technologies, like [Flutter](https://appwrite.io/docs/quick-starts/flutter), .NET MAUI, Ionic, and more. Each cross-platform frameworks have their advantages and disadvantages and we are not here to say one is better. Which framework to choose depends on one’s preference, previous knowledge and skill set, project requirements, and more. But to celebrate the release of the [Appwrite React Native SDK](https://github.com/appwrite/sdk-for-react-native) in open beta, we want to share a few points that make React Native an attractive choice.
 
 - Learn once, write anywhere: If you already know JavaScript and React, you can easily learn and start using React Native. So, this is already an attractive choice for JavaScript developers, and it might be the one framework with the easiest learning curve
 - Native performance: React native communicates with native platform components directly, which leads to a responsive user experience close to native performance
