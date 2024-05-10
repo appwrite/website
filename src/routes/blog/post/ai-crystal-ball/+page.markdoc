@@ -61,7 +61,7 @@ To implement GitHub OAuth, we must visit the **Auth** page on the Appwrite proje
 
 We must create a database with the ID `crystalball` and two collections with the IDs `githubData` and `destiny` in the Appwrite project with the following details:
 
-- The `githubData` collection
+#### The `githubData` collection
 
 Create the collection and add the following attributes:
 
@@ -77,7 +77,8 @@ Visit the collection settings, enable **Document security,** and set the followi
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
 | Users | Yes | - | - | - |
-- The `destiny` collection
+
+#### The `destiny` collection
 
 Create the collection and add the following attributes:
 
@@ -535,7 +536,7 @@ export const db = {**
 
 After that, we will create a new directory `./src/routes/destiny/[slug]` and add the following
 
-- A `+page.server.js` file
+#### A `+page.server.js` file
 
 Since this page has no reactive logic, we will render this page on the server side and send it to the user. We will also get our destiny via a `load` function here:
 
@@ -554,7 +555,7 @@ export async function load({ params }) {
 }
 ```
 
-- A `+page.svelte` file
+#### A `+page.svelte` file
 
 We will render our page using the pre-fetched destiny here:
 
