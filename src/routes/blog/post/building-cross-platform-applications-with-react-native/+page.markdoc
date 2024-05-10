@@ -79,7 +79,6 @@ Once Appwrite is up and running, install the React Native SDK in your project. T
 
 ```bash
 npx expo install react-native-appwrite react-native-url-polyfill
-)
 ```
 
 ### Step 3: Explore the Documentation
