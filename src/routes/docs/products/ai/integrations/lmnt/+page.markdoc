@@ -228,7 +228,7 @@ if (!req.body.text || typeof req.body.text !== "string") {
 }
 ```
 
-Next, following the previous code, send a request to the LMNT API and return the response:
+Next, send a request to the LMNT API and store the response:
 
 ```js
 const lmnt = new Speech(process.env.LMNT_API_KEY);
