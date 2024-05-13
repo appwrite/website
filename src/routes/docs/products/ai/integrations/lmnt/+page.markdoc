@@ -200,7 +200,7 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
 </body>
 ```
 
-All of this together will render a form that will submit your text to the Appwrite Function through a POST request, which you'll create next. The Appwrite function will call LMNT's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
+All of this together will render a form that will submit your text to the Appwrite Function through a `POST` request. The Appwrite function will then call LMNT's API, upload the audio to Appwrite Storage and return the URL, which will be displayed on your page.
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST Request" %}
