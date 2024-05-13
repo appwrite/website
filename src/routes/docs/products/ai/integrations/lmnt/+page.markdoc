@@ -235,8 +235,8 @@ const lmnt = new Speech(process.env.LMNT_API_KEY);
 const response = await lmnt.synthesize(req.body.text, 'lily', { format: 'mp3' });
 ```
 
-This code will send the prompt to the LMNT API and return the audio as a blob.
-Additionally, it'll catch any errors you could encounter and report them for easy debugging.
+This code will send the prompt to the LMNT API and return the audio as a blob. Additionally, any errors will be caught and reported for easy debugging.
+
 {% /section %}
 
 {% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}
