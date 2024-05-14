@@ -59,13 +59,12 @@ Over the coming months, we will roll out more AI features to make building AI pr
 Another advanced AI use case in the field of Natural Language Processing is the ability to use vector databases to store and process embeddings. 
 
 > Embeddings are numerical representations of words, sentences etc., and vector databases are optimized to store and perform similarity searches on the embeddings.
-> 
 
 Adding a vector database will be another important milestone for making Appwrite even more AI compatible.
 
 ### AI marketplace
 
-We will add an AI marketplace to encourage more open source collaboration on AI models and improve discoverability. The marketplace will allow you to build and share popular open-source and custom models. You ****can also host and sell your own custom models on the marketplace. 
+We will add an AI marketplace to encourage more open source collaboration on AI models and improve discoverability. The marketplace will allow you to build and share popular open-source and custom models. You can also host and sell your own custom models on the marketplace. 
 
 ## Building the future
 
