@@ -9,13 +9,13 @@ author: christy-jacob
 category: AI
 featured: true
 ---
-The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it’s no surprise that many of you are looking to build AI powered applications. But that’s easier said than done, as building AI powered applications can be tricky. We don’t want it to be. That’s why we’re happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.
+The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it's no surprise that many of you are looking to build AI powered applications. But that's easier said than done, as building AI powered applications can be tricky. We don't want it to be. That's why we're happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.
 
 - New knowledge base for AI
 - New third party AI integration tutorials
 - New AI powered Function templates
 
-Let’s examine the integrations, Function templates, and what’s still to come.
+Let's examine the integrations, Function templates, and what's still to come.
 
 ## AI use cases and documentation
 
@@ -25,7 +25,7 @@ To make your life easier, we have added technical guides to our documentation co
 
 ## AI integrations
 
-We’ve also added support for many AI tools so you can integrate them into your projects. You will find step-by-step tutorials for each integration in our documentation. So far, we have added integrations and tutorials for:
+We've also added support for many AI tools so you can integrate them into your projects. You will find step-by-step tutorials for each integration in our documentation. So far, we have added integrations and tutorials for:
 
 - [Pinecone](https://appwrite.io/docs/products/ai/integrations/pinecone)
 - [OpenAI](https://appwrite.io/docs/products/ai/integrations/openai)
@@ -48,7 +48,7 @@ Find the full overview on your console under the `Templates` tab in `Fuctions`. 
 
 ![Appwrite console with AI template functions](/images/blog/ai-function-templates.png)
 
-You can also find the full list of templates on [GitHub](https://github.com/appwrite/templates) and see what’s to come. 
+You can also find the full list of templates on [GitHub](https://github.com/appwrite/templates) and see what's to come. 
 
 ## Building more AI features
 
