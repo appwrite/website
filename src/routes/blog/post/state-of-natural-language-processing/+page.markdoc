@@ -8,7 +8,6 @@ timeToRead: 15
 author: luke-silver
 category: product
 featured: false
-draft: true
 ---
 
 Natural Language Processing (NLP) is a field that combines computer science, artificial intelligence, and linguistics to enable computers to understand, interpret, and generate human language. From chatbots to language translation, NLP powers many of the intelligent features we use every day. In this post, we'll explore the history of NLP and dive into the key concepts behind large language models (LLMs).
