@@ -37,7 +37,7 @@ We’ve also added support for many AI tools so you can integrate them into your
 - [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
 - Anyscale
 
-## AI-powered Functions templates
+## AI powered Function templates
 
 Function templates are pre-built Appwrite [Function](https://appwrite.io/docs/products/functions) that can be integrated into your Appwrite project with just a few clicks. With templates, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure. 
 
