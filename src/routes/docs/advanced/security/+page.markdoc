@@ -5,7 +5,7 @@ description: Learn how Appwrite keeps your project, users, and data secure throu
 ---
 
 Appwrite helps you build secure apps by applying various security and compliance measures. 
-Appwrite is compliant with [GDPR](/docs/advanced/security/gdpr) and [HIPAA](/docs/advanced/security/hipaa) while actively working toward [SOC 2](/docs/advanced/security/soc2) compliance.
+Appwrite is compliant with [GDPR](/docs/advanced/security/gdpr), [HIPAA](/docs/advanced/security/hipaa), and [SOC 2](/docs/advanced/security/soc2).
 
 Appwrite also employs [enhanced password protection and encryption](/docs/products/auth/security), [rate limits](/docs/advanced/security/abuse-protection), 
 [robust permission systems](/docs/advanced/platform/permissions), and [HTTPS/TLS](/docs/advanced/security/tls) to protect you and your users' data.
@@ -25,11 +25,11 @@ Appwrite uses Stripe to handle payment and payment information securely. Learn a
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/soc2" title="SOC 2" %}
-Coming soon
+Appwrite is SOC2 Type I compliant. Learn about Appwrite's measures to meet SOC 2 standards.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/hipaa" title="HIPAA" %}
-Appwrite is HIPAA compliant. Learn about how Appwrite's measures to protect personal health information.
+Appwrite is HIPAA compliant. Learn about Appwrite's measures to protect personal health information.
 {% /cards_item %}
 {% /cards %}
 

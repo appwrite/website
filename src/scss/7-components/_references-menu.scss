@@ -33,6 +33,10 @@
         @media  #{$break2}, #{$break3}, #{$break4} { inset-inline-start:pxToRem(-28); }
       }
     }
+    &:has(.web-references-menu-list)::before { display:none!important; }
+    .web-references-menu-list {
+      ::before { inset-inline-start:pxToRem(-64)}
+    }
   }
   &-link {
     display:flex; gap:pxToRem(8);
