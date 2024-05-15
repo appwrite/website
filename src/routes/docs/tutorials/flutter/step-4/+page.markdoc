@@ -1,0 +1,160 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add Appwrite authentication to you Flutter app.
+step: 4
+---
+
+# Creating an account provider {% #creating-an-account-provider %}
+Since we are going to be using the Appwrite SDK to authenticate users, 
+we need to create a service that will handle the authentication logic and store authentication state.
+
+Create a new file `ideas_tracker/lib/providers/account.dart` and add the following code to it.
+
+```client-flutter
+import 'package:flutter/material.dart';
+import 'package:appwrite/appwrite.dart' show Client, ID;
+import 'package:appwrite/appwrite.dart' as Appwrite;
+import 'package:appwrite/models.dart' show User;
+import 'package:idea_tracker/api/client.dart';
+
+class Account extends ChangeNotifier {
+  final Appwrite.Account _account = AppwriteClient.account;
+
+  bool get isAuthenticated => _user != null;
+
+  User? _user;
+  User? get user => _user;
+
+  Future<void> init() async {
+    try {
+      _user = await _account.get();
+      
+      notifyListeners();
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<void> authenticate({required String email, required String password}) async {
+    try {
+      await _account.createEmailPasswordSession(email: email, password: password);
+      
+      await init();
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+  
+  Future<void> register({required String email, required String password}) async {
+    try {
+      await _account.create(
+        userId: ID.unique(),
+        email: email,
+        password: password
+      );
+
+      await authenticate(email: email, password: password);
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+}
+```
+
+This provider will handle the authentication logic and store the user's authentication state. 
+You'll later pass this provider to the screens that require authentication.
+
+# Login screen {% #login-screen %}
+
+Using this provider, we can now create a screen to login or register a user.
+The screen will call the provider's `authenticate` and `register` methods to authenticate or register a user.
+
+Create a new file `ideas_tracker/lib/screens/login.dart` and add the following code to it.
+
+```client-flutter
+import 'package:flutter/material.dart';
+import 'package:idea_tracker/providers/account.dart';
+import 'package:provider/provider.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center( // Wrap the Container with Center widget
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 400), // Set the max width here
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Login or register',
+                  style: TextStyle(fontSize: 24),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: _emailController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _passwordController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
+                  ),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    ElevatedButton(
+                      child: const Text('Login'),
+                      onPressed: () {
+                        {% highlighted %}
+                        Provider.of<Account>(context, listen: false).authenticate(
+                            email: _emailController.text,
+                            password: _passwordController.text);
+                        {% /highlighted %}
+                      },
+                    ),
+                    ElevatedButton(
+                      child: const Text('Register'),
+                      onPressed: () {
+                        {% highlighted %}
+                        Provider.of<Account>(context, listen: false).register(
+                            email: _emailController.text,
+                            password: _passwordController.text);
+                        {% /highlighted %}
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
