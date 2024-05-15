@@ -16,6 +16,33 @@ enum BillingPlan {
     SCALE = 'tier-2'
 }
 
+export async function createSource(
+    ref: string | null,
+    referrer: string | null,
+    utmSource: string | null,
+    utmCampaign: string | null,
+    utmMedium: string | null
+): Promise<any> {
+    const path = `/console/sources`;
+    const params = {
+        ref,
+        referrer,
+        utmSource,
+        utmCampaign,
+        utmMedium
+    };
+
+    const uri = new URL(client.config.endpoint + path);
+    return await client.call(
+        'POST',
+        uri,
+        {
+            'content-type': 'application/json'
+        },
+        params
+    );
+}
+
 export async function isProUser() {
     try {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
@@ -36,7 +63,7 @@ export function getAppwriteUser(): Promise<AppwriteUser | null> {
     return account
         .get()
         .then((res) => res)
-        .catch(() =>  null);
+        .catch(() => null);
 }
 
 function createAppwriteUser() {
