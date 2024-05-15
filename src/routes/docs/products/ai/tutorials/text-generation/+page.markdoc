@@ -57,8 +57,6 @@ export default async ({ req, res }) => {
   }
 }
 ```
-
-The
 {% /section %}
 
 {% section #step-4 step=4 title="Make a request to Hugging Face" %}

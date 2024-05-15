@@ -42,6 +42,7 @@
             Learn: [
                 { label: 'Docs', href: '/docs' },
                 { label: 'Community', href: '/community' },
+                { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
