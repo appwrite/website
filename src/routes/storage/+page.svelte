@@ -791,9 +791,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1">
                         <li class="u-flex-vertical web-u-gap-20">
                             <div class="web-card is-white u-flex-vertical u-gap-20">
                                 <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
@@ -851,7 +854,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container web-u-max-width-993">
                     <div class="u-overflow-hidden web-u-margin-block-start-80">
-                        <ul class="web-info-boxes is-one-inline-mobile items-centered web-sub-body-500">
+                        <ul class="web-info-boxes is-one-inline-mobile items-centered web-sub-body-500 u-margin-inline-start-0">
                             <li class="web-info-boxes-item">
                                 <img
                                         src="/images/icons/gradients/community.svg"
