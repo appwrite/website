@@ -32,9 +32,7 @@ Image classification is a process used in machine learning and artificial intell
 - Image Classification - Classify images using the Hugging Face inference API.
 
 {% cards %}
-{% cards_item
-   href="/docs/products/ai/tutorials/image-classification"
-   title="Image classification" %}
+{% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
 Understand and label the contents of images
 {% /cards_item %}
 {% /cards %}
@@ -52,9 +50,7 @@ Object detection is a technology used in computer vision that not only categoriz
 - Object Detection - Detect objects in images using the Hugging Face inference API.
 
 {% cards %}
-{% cards_item
-   href="/docs/products/ai/tutorials/object-detection"
-   title="Object detection" %}
+{% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
 Detect and label objects in images
 {% /cards_item %}
 {% /cards %}
@@ -171,7 +167,7 @@ As we have covered in this blog, we have added a lot of great templates for you 
 - [LangChain](https://appwrite.io/docs/products/ai/integrations/langchain)
 - [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
 
-![Image of Appwrite Console](images/blog/function-templates-overview.png)
+![Image of Appwrite Console](/images/blog/function-templates-overview.png)
 
 Please also take a look at these two blogs to learn more about using Function templates in your projects:
 
