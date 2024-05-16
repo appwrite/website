@@ -147,6 +147,10 @@ Music generation with artificial intelligence (AI) involves using machine learni
 2. **Music Production**: AI assists artists by generating music samples, beats, or entire compositions. Musicians can modify these AI-generated elements or use them to inspire new works. This technology is particularly helpful for artists with limited access to professional studios or expensive equipment.
 3. **Copyright-free Music Generation**: AI can generate original compositions that do not require licensing fees for creators who need copyright-free music for videos, podcasts, or other media.
 
+**Function templates added to the Console:**
+
+- Music generation - Generate music from a text prompt using the Hugging Face inference API.
+
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
 Efficiently convert text to music
