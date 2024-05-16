@@ -27,9 +27,11 @@ Image classification is a process used in machine learning and artificial intell
 2. **Autonomous vehicles**: Self-driving cars use image classification to understand their surroundings. Cameras capture images that the system classifies in real-time to identify road signs, pedestrians, other vehicles, and various obstacles to navigate safely.
 3. **Retail**: Image classification can automate inventory management by identifying products on shelves. It's also used in visual search systems, allowing customers to search for products by uploading images instead of using text-based queries.
 
-**Function templates added to the Console:**
+### Function templates added to the Console:
 
 - Image Classification - Classify images using the Hugging Face inference API.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/image-classification" title="Image classification" %}
@@ -45,9 +47,11 @@ Object detection is a technology used in computer vision that not only categoriz
 2. **Face recognition**: In security and surveillance, object detection is used for facial recognition systems. These systems identify and verify individuals by detecting faces in images or video streams, useful in law enforcement, secure facility access, and authentication systems.
 3. **Retail**: In retail, object detection is used for customer behavior analysis, stock management, and theft prevention. Cameras can detect when items are picked from shelves, track customer movements, and identify actions that might indicate suspicious behavior.
 
-**Function templates added to the Console:**
+### Function templates added to the Console
 
 - Object Detection - Detect objects in images using the Hugging Face inference API.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/object-detection" title="Object detection" %}
@@ -67,12 +71,14 @@ Text generation, facilitated by technologies like artificial neural networks, sp
 2. **Coding and development**: AI-driven text generation aids developers by suggesting code completions, generating documentation, and even writing code snippets based on descriptions of functionality.
 3. **Creative writing**: AI can assist in generating creative text for stories, poetry, scripts, and even music compositions, providing a new tool for artists and writers to explore creative ideas.
 
-**Function templates added to the Console:**
+### Function templates added to the Console
 
 - Text Generation - Generate text using the Hugging Face inference API.
 - Chat - Create a chatbot using the Perplexity AI API.
-- Chat - with Anyscale
 - Prompt ChatGPT - Ask questions and let OpenAI GPT-3.5-turbo answer.
+- RAG with LangChain - Generate text using a LangChain RAG model.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/text-generation" title="Text generation" %}
@@ -88,10 +94,12 @@ Language translation, particularly when facilitated by advanced artificial intel
 2. **Education and learning**: Translation tools help students and educators access a broader range of educational materials and resources. They allow people to learn languages independently or access courses and content that are not available in their native language.
 3. **Travel and tourism**: Translation apps and devices are indispensable for travelers, helping them navigate foreign environments, read signs and menus, communicate with locals, and understand cultural nuances.
 
-**Function templates added to the Console:**
+### Function templates added to the Console
 
 - Analyze - Automate moderation by getting the toxicity of messages.
 - Language Translation - Translate text using the Hugging Face inference API.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/language-translation" title="Language translation" %}
@@ -111,15 +119,17 @@ Speech recognition technology, which converts spoken language into text, is a vi
 2. **Accessibility**: Speech recognition significantly enhances accessibility for individuals with disabilities. It allows people who have difficulty using conventional input devices (like keyboards and mice) to interact with computers and mobile devices using their voice.
 3. **Customer service**: Many companies employ speech recognition in their customer service operations, using voice-driven interfaces to handle customer inquiries, automate responses, and route calls to appropriate departments without human intervention.
 
+### Function templates added to the Console
+
+- Speech Recognition - Transcribe audio to text using the Hugging Face inference API.
+
+### Tutorial
+
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/speech-recognition" title="Speech recongition" %}
 Efficiently convert speech to text
 {% /cards_item %}
 {% /cards %}
-
-**Function templates added to the Console:**
-
-- Speech Recognition - Transcribe audio to text using the Hugging Face inference API.
 
 ### Text to speech
 
@@ -129,9 +139,13 @@ Text-to-speech (TTS) technology converts written text into spoken words, and the
 2. **Telecommunications**: Companies use TTS for automated telephony systems, which help in delivering information to callers and guiding them through menu options without human intervention.
 3. **Media**: TTS technology is used in news reading apps and websites, where it can read articles to users, making content consumption possible even while multitasking.
 
-**Function templates added to the Console:**
+### Function templates added to the Console
 
 - Text to Speech - Convert text to speech using the Hugging Face inference API.
+- Speak with ElevenLabs - Convert text to speech using the ElevenLabs API.
+- Speak with LMNT - Convert text to speech using the LMNT API.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
@@ -147,9 +161,11 @@ Music generation with artificial intelligence (AI) involves using machine learni
 2. **Music Production**: AI assists artists by generating music samples, beats, or entire compositions. Musicians can modify these AI-generated elements or use them to inspire new works. This technology is particularly helpful for artists with limited access to professional studios or expensive equipment.
 3. **Copyright-free Music Generation**: AI can generate original compositions that do not require licensing fees for creators who need copyright-free music for videos, podcasts, or other media.
 
-**Function templates added to the Console:**
+### Function templates added to the Console
 
 - Music generation - Generate music from a text prompt using the Hugging Face inference API.
+
+### Tutorial
 
 {% cards %}
 {% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
@@ -173,7 +189,14 @@ As we have covered in this blog, we have added a lot of great templates for you 
 
 ![Image of Appwrite Console](/images/blog/function-templates-overview.png)
 
-Please also take a look at these two blogs to learn more about using Function templates in your projects:
+We've also added more AI Function templates for more use cases than discussed above:
+- Sync with Pinecone - Sync your Appwrite database with Pinecone's vector database.
+- Generate with fal.ai - Generate images using fal.ai's API.
+- Censor with Redact - Censor sensitive information from a provided text string using Redact API by Pangea.
+- Analyze with PerspectiveAPI - Automate moderation by getting toxicity of messages.
+- Generate with Replicate - Generate text, audio and images using Replicate's API.
+
+Take a look at these two blogs to learn more about using Function templates in your projects:
 
 - [Streamline receipt scanning with Appwrite Cloud](https://appwrite.io/blog/post/scan-receipts-with-appwrite-functions)
 - [Build an intelligent chatbot with ChatGPT and Appwrite Functions](https://appwrite.io/blog/post/function-template-prompt-chatgpt)
