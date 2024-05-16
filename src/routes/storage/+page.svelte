@@ -472,7 +472,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
-                        <div class="u-flex-vertical u-gap-32">
+                        <div class="u-flex-vertical u-gap-32 u-stretch">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     File management dashboard
@@ -481,145 +481,146 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
-                            <div class="web-media" style="border-radius:1.5rem">
-                                <section class="web-card e-console-card is-white u-padding-0">
-                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">
-                                        <div class=" u-flex u-gap-16">
-                                            <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>
-                                            <div class="tag u-cross-child-end">
-                                                <code class="web-u-font-size-10">65f935a927c927931b68</code>
-                                            </div>
-                                        </div>
-                                        <div class="tabs is-light">
-                                            <ul class="tabs-list scroll-shadow-horizontal">
-                                                <li class="tabs-item">
-                                                    <button class="tabs-button is-selected" tabindex="0" role="tab">
-                                                        <span class="text">Files </span>
-                                                    </button>
-                                                </li>
-                                                <li class="tabs-item">
-                                                    <button class="tabs-button" tabindex="-1" role="tab">
-                                                        <span class="text">Usage </span>
-                                                    </button>
-                                                </li>
-                                                <li class="tabs-item">
-                                                    <button class="tabs-button" tabindex="-1" role="tab">
-                                                        <span class="text">Settings</span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </header>
-                                    <div class="e-console-card-content u-flex-vertical u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">
-                                        <div class="u-flex u-gap-8">
-                                            <div
-                                                    class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"
-                                                    style="--amount-of-buttons:1"
-                                            >
-                                                <input class="input-text e-pink-input-light" type="search" placeholder="Search" />
-                                                <div class="icon-search" aria-hidden="true"></div>
-                                            </div>
-                                            <button class="button is-secondary is-light" aria-label="filter" style="padding:10px 12px">
-                                                <span class="icon-filter" aria-hidden="true"></span>
-                                            </button>
-                                            <button class="button is-secondary is-light" type="button" style="padding:12px">
-                                                <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>
-                                                <span class="inline-tag">4</span>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <div class="table is-light" role="table" data-private="" style="">
-                                                <div class="table-thead" role="rowheader">
-                                                    <div class="table-row" role="row">
-                                                        <div style="" class="table-thead-col" role="columnheader">
-                                                            <span class="eyebrow-heading-3">Filename</span>
-                                                        </div>
-                                                        <div style="--p-col-width: 140;" class="table-thead-col" role="columnheader">
-                                                            <span class="eyebrow-heading-3">ID</span>
-                                                        </div>
-                                                        <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
-                                                            <span class="eyebrow-heading-3">Type</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="table-tbody" role="rowgroup">
-                                                    <div class="table-row" role="row">
-                                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
-                                                                <span class="text u-trim">CiutatVella.mp4</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                            <div class="tag u-cross-child-end">
-                                                                <code class="web-u-font-size-12">637a4...936e2</code>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
-                                                            <span class="text u-trim"><span>video/mp4</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-row" role="row">
-                                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
-                                                                <span class="text u-trim">Eixample.mp4</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                            <div class="tag u-cross-child-end">
-                                                                <code class="web-u-font-size-12">637a4...936e2</code>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
-                                                            <span class="text u-trim"><span>video/mp4</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-row" role="row">
-                                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
-                                                                <span class="text u-trim">SantsMontjuïc.mp4</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                            <div class="tag u-cross-child-end">
-                                                                <code class="web-u-font-size-12">637a4...936e2</code>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
-                                                            <span class="text u-trim"><span>video/mp4</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-row" role="row">
-                                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-4.png" title="Barceloneta.mp4" alt="Barceloneta.mp4" style="--size: 2rem; background-color: transparent;">
-                                                                <span class="text u-trim">Barceloneta.mp4</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                            <div class="tag u-cross-child-end">
-                                                                <code class="web-u-font-size-12">637a4...936e2</code>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-col" data-title="Type" role="cell" data-private="">
-                                                            <span class="text u-trim"><span>video/mp4</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                            <img src="/images/pages/storage/console-illustration.png" alt="">
+<!--                            <div class="web-media" style="border-radius:1.5rem">-->
+<!--                                <section class="web-card e-console-card is-white u-padding-0">-->
+<!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
+<!--                                        <div class=" u-flex u-gap-16">-->
+<!--                                            <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>-->
+<!--                                            <div class="tag u-cross-child-end">-->
+<!--                                                <code class="web-u-font-size-10">65f935a927c927931b68</code>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="tabs is-light">-->
+<!--                                            <ul class="tabs-list scroll-shadow-horizontal">-->
+<!--                                                <li class="tabs-item">-->
+<!--                                                    <button class="tabs-button is-selected" tabindex="0" role="tab">-->
+<!--                                                        <span class="text">Files </span>-->
+<!--                                                    </button>-->
+<!--                                                </li>-->
+<!--                                                <li class="tabs-item">-->
+<!--                                                    <button class="tabs-button" tabindex="-1" role="tab">-->
+<!--                                                        <span class="text">Usage </span>-->
+<!--                                                    </button>-->
+<!--                                                </li>-->
+<!--                                                <li class="tabs-item">-->
+<!--                                                    <button class="tabs-button" tabindex="-1" role="tab">-->
+<!--                                                        <span class="text">Settings</span>-->
+<!--                                                    </button>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                    </header>-->
+<!--                                    <div class="e-console-card-content u-flex-vertical u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">-->
+<!--                                        <div class="u-flex u-gap-8">-->
+<!--                                            <div-->
+<!--                                                    class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"-->
+<!--                                                    style="&#45;&#45;amount-of-buttons:1"-->
+<!--                                            >-->
+<!--                                                <input class="input-text e-pink-input-light" type="search" placeholder="Search" />-->
+<!--                                                <div class="icon-search" aria-hidden="true"></div>-->
+<!--                                            </div>-->
+<!--                                            <button class="button is-secondary is-light" aria-label="filter" style="padding:10px 12px">-->
+<!--                                                <span class="icon-filter" aria-hidden="true"></span>-->
+<!--                                            </button>-->
+<!--                                            <button class="button is-secondary is-light" type="button" style="padding:12px">-->
+<!--                                                <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>-->
+<!--                                                <span class="inline-tag">4</span>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        <div>-->
+<!--                                            <div class="table is-light" role="table" data-private="" style="">-->
+<!--                                                <div class="table-thead" role="rowheader">-->
+<!--                                                    <div class="table-row" role="row">-->
+<!--                                                        <div style="" class="table-thead-col" role="columnheader">-->
+<!--                                                            <span class="eyebrow-heading-3">Filename</span>-->
+<!--                                                        </div>-->
+<!--                                                        <div style="&#45;&#45;p-col-width: 140;" class="table-thead-col" role="columnheader">-->
+<!--                                                            <span class="eyebrow-heading-3">ID</span>-->
+<!--                                                        </div>-->
+<!--                                                        <div style="&#45;&#45;p-col-width: 100;" class="table-thead-col" role="columnheader">-->
+<!--                                                            <span class="eyebrow-heading-3">Type</span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="table-tbody" role="rowgroup">-->
+<!--                                                    <div class="table-row" role="row">-->
+<!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                                <span class="text u-trim">CiutatVella.mp4</span>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                            <div class="tag u-cross-child-end">-->
+<!--                                                                <code class="web-u-font-size-12">637a4...936e2</code>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                                            <span class="text u-trim"><span>video/mp4</span>-->
+<!--                                                            </span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="table-row" role="row">-->
+<!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                                <span class="text u-trim">Eixample.mp4</span>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                            <div class="tag u-cross-child-end">-->
+<!--                                                                <code class="web-u-font-size-12">637a4...936e2</code>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                                            <span class="text u-trim"><span>video/mp4</span>-->
+<!--                                                            </span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="table-row" role="row">-->
+<!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                                <span class="text u-trim">SantsMontjuïc.mp4</span>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                            <div class="tag u-cross-child-end">-->
+<!--                                                                <code class="web-u-font-size-12">637a4...936e2</code>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                                            <span class="text u-trim"><span>video/mp4</span>-->
+<!--                                                            </span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="table-row" role="row">-->
+<!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-4.png" title="Barceloneta.mp4" alt="Barceloneta.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                                <span class="text u-trim">Barceloneta.mp4</span>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                            <div class="tag u-cross-child-end">-->
+<!--                                                                <code class="web-u-font-size-12">637a4...936e2</code>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                                            <span class="text u-trim"><span>video/mp4</span>-->
+<!--                                                            </span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </section>-->
+<!--                            </div>-->
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.04;"></div>
-                        <div class="u-flex-vertical u-gap-32">
+                        <div class="u-flex-vertical u-gap-32 u-stretch">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     Extensive settings options
@@ -628,89 +629,94 @@
                                     Manage security, permissions, compression, and more with straightforward Bucket settings.
                                 </p>
                             </div>
-                            <div class="web-card is-white u-padding-20">
-                                <div class="u-flex-vertical u-gap-16">
-                                    <div class="-u-flex-vertical">
-                                        <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>
-                                        <p class="web-caption-500">Set the maximum file size (in bytes) allowed in the bucket.</p>
-                                    </div>
-                                    <div class="u-flex u-gap-8">
-                                        <div class="form-item u-stretch">
-                                            <label class="label" for="input1" style="--p-label-text-color: var(--color-neutral-80);">Size</label>
-                                            <input id="input1" class="input-text e-pink-input-light" placeholder="300">
-                                        </div>
-                                        <div class="form-item">
-                                            <label class="label" for="input2" style="--p-label-text-color: var(--color-neutral-80);">Unit</label>
-                                            <div class="select e-pink-input-light">
-                                                <select id="input2" class="e-pink-input-light" style="inline-size:5.5rem">
-                                                    <option>MB</option>
-                                                    <option>GB</option>
-                                                </select>
-                                                <span class="icon-cheveron-down" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div>
+                                <img src="/images/pages/storage/settings.png" alt="">
                             </div>
-                            <div class="web-card is-white u-padding-20">
-                                <div class="u-flex-vertical u-gap-16">
-                                    <div class="-u-flex-vertical">
-                                        <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>
-                                        <p class="web-caption-500">For files larger than 20MB, compression will be skipped even if it's enabled.</p>
-                                    </div>
-                                    <div class="u-flex u-gap-8">
-                                        <div class="form-item u-stretch">
-                                            <label class="label" for="input3" style="--p-label-text-color: var(--color-neutral-80);">Compression algorithm</label>
-                                            <div class="select e-pink-input-light">
-                                                <select id="input3" class="e-pink-input-light">
-                                                    <option>Gzip</option>
-                                                    <option>RAR</option>
-                                                </select>
-                                                <span class="icon-cheveron-down" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="web-card is-white u-padding-20">
-                                <div class="u-flex-vertical u-gap-16">
-                                    <div class="-u-flex-vertical">
-                                        <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>
-                                        <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>
-                                    </div>
-                                    <div class="u-flex u-gap-8">
-                                        <div class="form-item u-stretch u-max-width-100-percent">
-                                            <label class="label" for="input3" style="--p-label-text-color: var(--color-neutral-80);">Allowed file extensions</label>
-                                            <div class="input-text-wrapper">
-                                                <div class="tags-input e-pink-input-light">
-                                                    <div class="tags">
-                                                        <ul class="tags-list">
-                                                            <li class="tags-item">
-                                                                <div class="input-tag" style="--p-bg-color:var(--color-neutral-15);--p-text-color: var(--color-neutral-60);">
-                                                                    <span class="tag-text">jpg</span>
-                                                                    <button type="button" class="input-tag-delete-button" aria-label="delete jpg tag">
-                                                                        <span class="icon-x" aria-hidden="true"></span>
-                                                                    </button>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <input id="read" placeholder="Allowed file extensions (mp4, jpg, pdf, etc.)" type="text" class="tags-input-text e-pink-input-light">
-                                                </div>
-                                                <div class="u-flex u-gap-12 u-margin-block-start-8 u-overflow-x-auto" style="inline-size:calc(100% + 18px)">
-                                                    <button type="button" class="tag is-selected"><span class="icon-plus" aria-hidden="true"></span> jpg </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> png </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> svg </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> gif </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> html </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> pdf </button>
-                                                    <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> mp4 </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div>-->
+<!--                                <div class="web-card is-white u-padding-20">-->
+<!--                                    <div class="u-flex-vertical u-gap-16">-->
+<!--                                        <div class="-u-flex-vertical">-->
+<!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>-->
+<!--                                            <p class="web-caption-500">Set the maximum file size (in bytes) allowed in the bucket.</p>-->
+<!--                                        </div>-->
+<!--                                        <div class="u-flex u-gap-8">-->
+<!--                                            <div class="form-item u-stretch">-->
+<!--                                                <label class="label" for="input1" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Size</label>-->
+<!--                                                <input id="input1" class="input-text e-pink-input-light" placeholder="300">-->
+<!--                                            </div>-->
+<!--                                            <div class="form-item">-->
+<!--                                                <label class="label" for="input2" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Unit</label>-->
+<!--                                                <div class="select e-pink-input-light">-->
+<!--                                                    <select id="input2" class="e-pink-input-light" style="inline-size:5.5rem">-->
+<!--                                                        <option>MB</option>-->
+<!--                                                        <option>GB</option>-->
+<!--                                                    </select>-->
+<!--                                                    <span class="icon-cheveron-down" aria-hidden="true"></span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="web-card is-white u-padding-20">-->
+<!--                                    <div class="u-flex-vertical u-gap-16">-->
+<!--                                        <div class="-u-flex-vertical">-->
+<!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>-->
+<!--                                            <p class="web-caption-500">For files larger than 20MB, compression will be skipped even if it's enabled.</p>-->
+<!--                                        </div>-->
+<!--                                        <div class="u-flex u-gap-8">-->
+<!--                                            <div class="form-item u-stretch">-->
+<!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Compression algorithm</label>-->
+<!--                                                <div class="select e-pink-input-light">-->
+<!--                                                    <select id="input3" class="e-pink-input-light">-->
+<!--                                                        <option>Gzip</option>-->
+<!--                                                        <option>RAR</option>-->
+<!--                                                    </select>-->
+<!--                                                    <span class="icon-cheveron-down" aria-hidden="true"></span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="web-card is-white u-padding-20">-->
+<!--                                    <div class="u-flex-vertical u-gap-16">-->
+<!--                                        <div class="-u-flex-vertical">-->
+<!--                                            <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>-->
+<!--                                            <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>-->
+<!--                                        </div>-->
+<!--                                        <div class="u-flex u-gap-8">-->
+<!--                                            <div class="form-item u-stretch u-max-width-100-percent">-->
+<!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Allowed file extensions</label>-->
+<!--                                                <div class="input-text-wrapper">-->
+<!--                                                    <div class="tags-input e-pink-input-light">-->
+<!--                                                        <div class="tags">-->
+<!--                                                            <ul class="tags-list">-->
+<!--                                                                <li class="tags-item">-->
+<!--                                                                    <div class="input-tag" style="&#45;&#45;p-bg-color:var(&#45;&#45;color-neutral-15);&#45;&#45;p-text-color: var(&#45;&#45;color-neutral-60);">-->
+<!--                                                                        <span class="tag-text">jpg</span>-->
+<!--                                                                        <button type="button" class="input-tag-delete-button" aria-label="delete jpg tag">-->
+<!--                                                                            <span class="icon-x" aria-hidden="true"></span>-->
+<!--                                                                        </button>-->
+<!--                                                                    </div>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                        <input id="read" placeholder="Allowed file extensions (mp4, jpg, pdf, etc.)" type="text" class="tags-input-text e-pink-input-light">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="u-flex u-gap-12 u-margin-block-start-8 u-overflow-x-auto" style="inline-size:calc(100% + 18px)">-->
+<!--                                                        <button type="button" class="tag is-selected"><span class="icon-plus" aria-hidden="true"></span> jpg </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> png </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> svg </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> gif </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> html </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> pdf </button>-->
+<!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> mp4 </button>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div> -->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
