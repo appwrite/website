@@ -912,14 +912,15 @@
                                             src="/images/icons/illustrated/dark/auth.png"
                                             alt=""
                                             class=""
-                                            width="48"
-                                            height="48"
+                                            width="32"
+                                            height="32"
                                     />
                                     <h4
                                             class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Auth
                                     </h4>
+                                    <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
                                 </div>
                                 <p class="web-sub-body-400 u-margin-block-start-4">
                                     Build secure authentication and manage your users.
@@ -933,14 +934,15 @@
                                             src="/images/icons/illustrated/dark/functions.png"
                                             alt=""
                                             class=""
-                                            width="48"
-                                            height="48"
+                                            width="32"
+                                            height="32"
                                     />
                                     <h4
                                             class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Functions
                                     </h4>
+                                    <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
                                 </div>
                                 <p class="web-sub-body-400 u-margin-block-start-4">
                                     Scale big and unlock limitless potential with Appwrite functions.
@@ -954,14 +956,15 @@
                                             src="/images/icons/illustrated/dark/databases.png"
                                             alt=""
                                             class=""
-                                            width="48"
-                                            height="48"
+                                            width="32"
+                                            height="32"
                                     />
                                     <h4
                                             class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Databases
                                     </h4>
+                                    <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
                                 </div>
                                 <p class="web-sub-body-400 u-margin-block-start-4">
                                     Store and query structured data, ensuring scalable storage.
@@ -975,14 +978,15 @@
                                             src="/images/icons/illustrated/dark/messaging.png"
                                             alt=""
                                             class=""
-                                            width="48"
-                                            height="48"
+                                            width="32"
+                                            height="32"
                                     />
                                     <h4
                                             class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Messaging
                                     </h4>
+                                    <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
                                 </div>
                                 <p class="web-sub-body-400 u-margin-block-start-4">
                                     Manage your files’ project, using convenient APIs and utilities.
@@ -996,14 +1000,15 @@
                                             src="/images/icons/illustrated/dark/realtime.png"
                                             alt=""
                                             class=""
-                                            width="48"
-                                            height="48"
+                                            width="32"
+                                            height="32"
                                     />
                                     <h4
                                             class="web-main-body-400 web-u-color-text-primary"
                                     >
                                         Realtime
                                     </h4>
+                                    <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
                                 </div>
                                 <p class="web-sub-body-400 u-margin-block-start-4">
                                     Utilize realtime information from all Appwrite services.
