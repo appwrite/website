@@ -901,7 +901,10 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <ul class="web-grid-3-desktop-1-mobile">
+                    <h5 class="web-label web-u-color-text-primary u-text-center">
+                        Keep exploring our products
+                    </h5>
+                    <ul class="web-grid-3-desktop-1-mobile u-margin-block-start-32">
                         <li>
                             <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
