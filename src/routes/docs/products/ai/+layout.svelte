@@ -105,6 +105,10 @@
                     href: '/docs/products/ai/integrations/langchain'
                 },
                 {
+                  label: 'LMNT',
+                  href: '/docs/products/ai/integrations/lmnt'
+                },
+                {
                   label: 'Together AI',
                   href: '/docs/products/ai/integrations/togetherai'
                 },
