@@ -135,9 +135,22 @@ Appwrite's documentation uses extended markdown syntax. You can find all of the 
 ### Screenshots
 
 - When contributing upload original screenshots. The Appwrite design team will edit the screenshot to be consistent with other screenshots in the docs.
+- Screenshots must be 16:9
 - Screnshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
 - Use generic and sensible organization, project, and resource names. Avoid names like `test`, `demo`, or `sdlkfj`.
 - All screenshot should be take from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
+- Screenshots are stored in the `/images/docs/` folder, in a parent folder that is consistent with the path of the docs that reference the image.
+- All screenshots must be both dark and light mode, with `/path/` holding the lightmode version and `/path/dark/` holding the dark mode version.
+- Screenshots should be uploaded as un-edited original. Request help from the Appwrite design team to help you edit and refine your photos according to our guidelines.
+
+```md
+{% only_dark %}
+![Project settings screen](/images/docs/platform/dark/create-api-key.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/platform/create-api-key.png)
+{% /only_light %}
+```
 
 ### Content consistency
 
@@ -183,10 +196,49 @@ Split content such that each piece makes sense without reading dependents or exp
 - [ ] Create new concept and journey pages for new features
 - [ ] Update docs for breaking changes
 
-### Documenting a new product
+### Documenting a new API
 
-TODO
+- Add a new .md file describing the new API here: <https://github.com/appwrite/appwrite/tree/main/docs/references>
+- Add descriptions for methods and parameters in the controller code: <https://github.com/appwrite/appwrite/tree/main/app/controllers/api>
+- Check new response models have meaningful descriptions
 
-### Documenting a new SDK
+### Adding a new quickstart
 
-TODO
+- Copy a quick start from the [src/routes/docs/quick-starts](src/routes/docs/quick-starts) folder.
+- Add a new entry and logo to [src/routes/docs/quick-starts/+page.svelte](src/routes/docs/quick-starts/+page.svelte)
+- If you need a new logo, contact the Appwrite team to add one to Pink design.
+- Update the content of your tutorial. Remember to update the front matter!
+- Try to be consistent in both the quickstart's content and format when compared to existing quick starts
+- Add the quick start to the footer and front page of Appwrite
+- Use sections for steps on your page
+
+### Adding a new tutorial
+
+- Copy a tutorial from the [src/routes/docs/tutorials](src/routes/docs/tutorials) folder.
+- Update the `+page.ts`'s redirect, for example, the Android tutorial has this: [src/routes/docs/tutorials/android/+page.ts](src/routes/docs/tutorials/android/+page.ts)
+- Update [src/routes/docs/tutorials/+page.svelte](src/routes/docs/tutorials/+page.svelte) and add your new tutorial
+- Update [src/routes/docs/tutorials/android/+layout.ts](src/routes/docs/tutorials/android/+layout.ts) and add your new tutorial
+- Add the content of your tutorial. Keep pages short, separated by a different distinct feature for each step.
+- If you need a new logo, contact the Appwrite team to add one to Pink design.
+- Add the tutorial to the footer and front page of Appwrite
+
+## Language and diction
+
+### Headings
+
+Prefer simple nouns and root form verbs.
+
+✅ Create screen (root verb, noun)
+✅ Authentication (noun)
+❌ Authenticating (present participle verb)
+❌ Create a new screen (too wordy)
+
+Try your best to stick to simple headings, if it's not possible, don't worry and write a full heading if need be.
+
+### Links
+
+Avoid unclear [links](https://www.youtube.com/watch?v=dQw4w9WgXcQ) such as learn more [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+Readers will be unsure where a link may take them. Those using a screen reader will find it especially difficult.
+
+✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
+❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
