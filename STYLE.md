@@ -2,6 +2,24 @@
 
 Read this document carefully before making PRs to the Appwrite Website repo.
 
+## What goes in docs?
+
+The Appwrite documentation is meant to provide general guidance that's:
+
+- Unopinionated
+- Focused on the correct use of Appwrite product
+- Includes examples for all relevant and applicable SDKs
+- Agnostic to the user's implementation and stack.
+
+Examples of things not fit for docs, and better as a blog or video:
+
+- General programming advice
+- Opinionated implementation patterns like MVVM, factory methods, etc.
+- Examples that only include a select subset of Appwrite SDKs.
+- Examples that do not work for all developers using Appwrite, but specific to Appwrite + technology.
+
+Note that the tutorials and blogs available on the Appwrite blog and docs are meant for these types of information.
+
 ## Documentation structure
 
 The Appwrite docs is split into sections, each with its intended purpose and content.
@@ -242,3 +260,64 @@ Readers will be unsure where a link may take them. Those using a screen reader w
 
 ✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
 ❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+### Sentences
+
+Use a directive that's straight to the point when providing an action a developer must perform.
+The action and verb always comes first, the explanation after.
+
+✅ Create a new database.
+✅ Update a document so its permissions include your new users.
+❌ To allow access, update your permissions.
+❌ You can create a new database for each tenant.
+❌ Creating a new bucket lets you set different permissions for images uploaded by users.
+
+The action always comes first and is in the beginning of the sentence, which makes important steps easier to follow.
+
+If a step is more of a suggestion or is optional, you can intentially use another form to make it easier for users
+to skip and scan a document.
+
+### Paragraphs
+
+Like sentences, important information always comes first.
+This makes it easier to scan through the page.
+
+✅ Clear, important information such as actions come first
+> Store secrets as environment variables in vaults by navigating to **settings** > **security** > **vault**. Your secrets should never be shared. You must ensure data privacy, sharing secrets can compromise security during development.
+
+❌ Unclear, important information is in the middle of the paragraph
+> Security is important in development. That's why you should take care to protect secrets. Secrets should be safely stored as a environment variable in a vault. You can find vaults under **settings** > **security** > **vault**. Don't share this with anyone!
+
+If there are multiple important actions or pieces of information, **break up the paragraph**.
+Even if your paragraph is just one or two sentences, shorter paragraphs are easier to scan.
+
+### Diction
+
+If you're unsure about which word to use to describe a concept, you shuold look for precedence in the following order.
+
+1. Appwrite docs
+2. Appwrite Console
+3. Appwrite API specs
+4. Existing blogs
+5. Follow other products when possible.
+6. If all other avenues are explored, propose a new term. Clearly outline in your PR and come to agreement with the Appwrite team.
+
+### Page structure
+
+Quick starts, tutorials, product docs, and other pages should stick very close to existing examples.
+This applies to tone, structure, and content. Unless no exisitng examples of a page type exist,
+or a page needs to be sufficiently different from existing pages, follow exisitng examples.
+
+If you are proposing a new type of page, discuss an outline in your PR and ask for the Appwrite team's review.
+
+## Code snippets
+
+For quick starts and tutorials, a developer must be able to follow code examples from beginning to end
+easily, and the code example is expected to be runnabel and complete.
+
+This means, you need to include imports, dependencies, and all parts needed to arrive at a functional example.
+
+For concept and journey product pages, still try your best to have complete examples, unless:
+
+1. The example will become opinionated. We avoid opinionated implementation and choices in product pages. Keep them in blogs, quick starts, and tutorials.
+2. The example cannot be given in a complete form cleanly, for example many of the Messaging services's examples cannot be given in complete form because the boiler plate and set up is complex and documented in Android/Swift documentation.
