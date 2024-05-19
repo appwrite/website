@@ -54,96 +54,97 @@
                         </div>
                     </div>
                     <div class="u-position-relative l-media-1">
-                        <section class="web-card is-transparent web-u-max-width-480 u-position-relative u-z-index-0" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
-                            <header class="u-flex u-gap-16 u-main-space-between u-padding-block-8 u-padding-inline-16">
-                                <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary">Photos</h5>
-                                <button class="button is-secondary" style="height:2rem">
-                                    <span class="icon-plus" aria-hidden="true"></span>
-                                    <span class="text">Create File</span>
-                                </button>
-                            </header>
-                            <div class="table" role="table">
-                                <div class="table-thead web-u-font-size-12" role="rowheader">
-                                    <div class="table-row" role="row">
-                                        <div style="" class="table-thead-col" role="columnheader">
-                                            <span class="eyebrow-heading">Filename</span>
-                                        </div>
-                                        <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
-                                            <span class="eyebrow-heading">Type</span>
-                                        </div>
-                                        <div style="--p-col-width: 70;" class="table-thead-col" role="columnheader">
-                                            <span class="eyebrow-heading">Size</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-tbody web-u-font-size-14" role="rowgroup">
-                                    <div class="table-row" role="row">
-                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
-                                                <span class="text u-trim">CiutatVella.mp4</span>
+                        <div class="is web-is-not-mobile">
+                            <section class="web-card is-normal web-u-max-width-480 u-position-relative u-z-index-0 l-card-photos" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
+                                <header class="u-flex u-gap-16 u-main-space-between u-cross-center u-padding-block-8 u-padding-inline-16 l-card-photos-header">
+                                    <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary l-image-header">Photos</h5>
+                                    <button class="button is-secondary l-image-button" style="height:2rem">
+                                        <span class="icon-plus" aria-hidden="true"></span>
+                                        <span class="text">Create File</span>
+                                    </button>
+                                </header>
+                                <div class="table l-dark-table" role="table">
+                                    <div class="table-thead web-u-font-size-12" role="rowheader">
+                                        <div class="table-row" role="row">
+                                            <div style="" class="table-thead-col" role="columnheader">
+                                                <span class="eyebrow-heading">Filename</span>
+                                            </div>
+                                            <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
+                                                <span class="eyebrow-heading">Type</span>
+                                            </div>
+                                            <div style="--p-col-width: 70;" class="table-thead-col" role="columnheader">
+                                                <span class="eyebrow-heading">Size</span>
                                             </div>
                                         </div>
-                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                    </div>
+                                    <div class="table-tbody web-u-font-size-14" role="rowgroup">
+                                        <div class="table-row" role="row">
+                                            <div style="" class="table-col " data-title="Name" role="cell">
+                                                <div class="u-flex u-gap-12 u-cross-center">
+                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
+                                                    <span class="text u-trim">CiutatVella.mp4</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-col" data-title="Type" role="cell" data-private="">
                                             <span class="text u-trim">
                                                 <span>image/png</span>
                                             </span>
-                                        </div>
-                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                            120K
-                                        </div>
-                                    </div>
-                                    <div class="table-row" role="row">
-                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
-                                                <span class="text u-trim">Eixample.mp4</span>
+                                            </div>
+                                            <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                120K
                                             </div>
                                         </div>
-                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                        <div class="table-row" role="row">
+                                            <div style="" class="table-col " data-title="Name" role="cell">
+                                                <div class="u-flex u-gap-12 u-cross-center">
+                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
+                                                    <span class="text u-trim">Eixample.mp4</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-col" data-title="Type" role="cell" data-private="">
                                             <span class="text u-trim">
                                                 <span>image/jpg</span>
                                             </span>
-                                        </div>
-                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                            145K
-                                        </div>
-                                    </div>
-                                    <div class="table-row" role="row">
-                                        <div style="" class="table-col " data-title="Name" role="cell">
-                                            <div class="u-flex u-gap-12 u-cross-center">
-                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
-                                                <span class="text u-trim">SantsMontjuïc.mp4</span>
+                                            </div>
+                                            <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                145K
                                             </div>
                                         </div>
-                                        <div class="table-col" data-title="Type" role="cell" data-private="">
+                                        <div class="table-row" role="row">
+                                            <div style="" class="table-col " data-title="Name" role="cell">
+                                                <div class="u-flex u-gap-12 u-cross-center">
+                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
+                                                    <span class="text u-trim">SantsMontjuïc.mp4</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-col" data-title="Type" role="cell" data-private="">
                                             <span class="text u-trim">
                                                 <span>image/webp</span>
                                             </span>
-                                        </div>
-                                        <div class="table-col" data-title="Size" role="cell" data-private="">
-                                            85K
+                                            </div>
+                                            <div class="table-col" data-title="Size" role="cell" data-private="">
+                                                85K
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 web-u-inset-inline-end-32-negative">
-                            <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
-                        </section>
-                        <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;">
-                            <header class="web-code-console-header u-flex web-u-gap-6">
-                                <span class="web-code-console-button is-red"></span>
-                                <span class="web-code-console-button is-yellow"></span>
-                                <span class="web-code-console-button is-green"></span>
-                            </header>
-                            <div class="web-code-console-content" style="min-block-size:166px">
-                                [CODE WILL BE HERE]
-                            </div>
+                            </section>
+                            <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 web-u-inset-inline-end-32-negative l-frame-parrot">
+                                <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
+                            </section>
+                            <section class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5" style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;">
+                                <header class="web-code-console-header u-flex web-u-gap-6">
+                                    <span class="web-code-console-button is-red"></span>
+                                    <span class="web-code-console-button is-yellow"></span>
+                                    <span class="web-code-console-button is-green"></span>
+                                </header>
+                                <div class="web-code-console-content" style="min-block-size:166px">
+                                    [CODE WILL BE HERE]
+                                </div>
 
-                        </section>
-
-                        <!--<img src="/images/pages/storage/product-shot.png" width="708" alt="" />-->
+                            </section>
+                        </div>
+                        <img src="/images/pages/storage/product-shot.png" class="u-width-full-line web-is-only-mobile" alt="" />
                     </div>
                 </section>
             </div>
@@ -1244,7 +1245,16 @@
       background-size:1350px;
     }
   }
-  .l-media-1 { inline-size:100%; max-inline-size:645px; margin-inline:auto;}
+  .l-media-1 {
+    inline-size:100%; max-inline-size:645px; margin-inline:auto;
+    @media (max-width:1023.9px) {
+      > img {
+        margin-inline: -20px;
+        inline-size: 100vw;
+        max-inline-size: none;
+      }
+    }
+  }
   .l-media-2 {
     @media (max-width: 1023px) {
       inline-size:100%;
@@ -1281,6 +1291,21 @@
     background-position: top 160px right 0;
     background-size: 300px 640px;
     filter: blur(30px);
+  }
+
+  .l-dark-table {
+    color:hsl(var(--web-color-greyscale-400));
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(30px);
+    .table-thead-col { padding-block:16px; }
+    .table-col { padding-block:8px; }
+    .table-tbody { color:hsl(var(--web-color-greyscale-400)); }
+    .table-row { border-block-start-width:0; }
+    img { inline-size:40px; block-size:40px; border-radius:12px; border-width:0; }
+    @media (max-width:600px) {
+
+    }
   }
 </style>
 
