@@ -182,6 +182,7 @@
                                  alt="">
 
                             <img src="/images/pages/storage/mountain.avif"
+                                 class="u-block"
                                  alt=""
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
