@@ -166,7 +166,7 @@
                     </div>
                     <div class="u-position-relative l-media-2">
                         <section class="web-media-container u-width-fit-content u-position-relative u-z-index-0 l-media-2-1">
-                            <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
+                            <img src="images/pages/storage/exploring-the-world.png" alt="mountain photo" width="326" height="320">
                         </section>
                         <div class="u-z-index-1 l-box-image-1 l-media-2-2">
                             <img src="/images/pages/storage/corner-circle.svg" width="12" height="12"
@@ -181,7 +181,7 @@
                                  class="u-position-absolute web-u-inset-inline-end-6-negative web-u-inset-block-end-6-negative"
                                  alt="">
 
-                            <img src="/images/pages/homepage/dashboard.png"
+                            <img src="/images/pages/storage/mountain.avif"
                                  alt=""
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
