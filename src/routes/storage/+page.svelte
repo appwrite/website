@@ -630,7 +630,7 @@
                                 </p>
                             </div>
                             <div>
-                                <img src="/images/pages/storage/settings.png" alt="">
+                                <img class="l-drop-shadow" src="/images/pages/storage/settings.png" alt="">
                             </div>
 <!--                            <div>-->
 <!--                                <div class="web-card is-white u-padding-20">-->
@@ -1174,7 +1174,7 @@
   }
 
   .l-box-image-1 { inline-size:427px; padding:0.5rem; border:solid 1px #85DBD8; }
-
+  .l-drop-shadow { filter: drop-shadow(0 16px 32px rgb(55 59 77 / 0.04)); }
 
   .hero {
     display: grid;
