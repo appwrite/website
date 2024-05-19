@@ -485,7 +485,7 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
-                            <img src="/images/pages/storage/console-illustration.png" alt="" width="568" height="536" loading="lazy">
+                            <img class="u-height-auto" src="/images/pages/storage/console-illustration.png" alt="" width="568" height="536" loading="lazy">
                             <!--                            <div class="web-media" style="border-radius:1.5rem">-->
                             <!--                                <section class="web-card e-console-card is-white u-padding-0">-->
                             <!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
@@ -634,7 +634,7 @@
                                 </p>
                             </div>
                             <div>
-                                <img class="l-drop-shadow" src="/images/pages/storage/settings.png" alt="" width="568" height="536" loading="lazy">
+                                <img class="l-drop-shadow u-height-auto" src="/images/pages/storage/settings.png" alt="" width="568" height="536" loading="lazy">
                             </div>
                             <!--                            <div>-->
                             <!--                                <div class="web-card is-white u-padding-20">-->
