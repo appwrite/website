@@ -35,7 +35,7 @@
                 <section class="web-container hero web-u-padding-block-end-0">
                     <div>
                         <div class="u-flex u-cross-center u-gap-8 u-line-height-1">
-                            <img src="/images/icons/illustrated/dark/storage.png" alt="">
+                            <img src="/images/icons/illustrated/dark/storage.png" alt="" width="48" height="48">
                             <span class="web-eyebrow web-u-color-text-accent-click">Storage<span class="web-u-text-color-primary-500">_</span></span>
                         </div>
                         <h1 class="web-display web-u-color-text-primary u-margin-block-start-20">
@@ -144,7 +144,7 @@
 
                             </section>
                         </div>
-                        <img src="/images/pages/storage/product-shot.png" class="l-is-mobile" alt="" />
+                        <img src="/images/pages/storage/product-shot.png" class="l-is-mobile" alt="" width="100%" />
                     </div>
                 </section>
             </div>
@@ -185,6 +185,8 @@
                             <img src="/images/pages/storage/mountain.avif"
                                  class="u-block"
                                  alt=""
+                                 width="409"
+                                 height="294"
                                  style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
                             >
                         </div>
@@ -483,7 +485,7 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
-                            <img src="/images/pages/storage/console-illustration.png" alt="">
+                            <img src="/images/pages/storage/console-illustration.png" alt="" width="568" height="536">
                             <!--                            <div class="web-media" style="border-radius:1.5rem">-->
                             <!--                                <section class="web-card e-console-card is-white u-padding-0">-->
                             <!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
@@ -632,7 +634,7 @@
                                 </p>
                             </div>
                             <div>
-                                <img class="l-drop-shadow" src="/images/pages/storage/settings.png" alt="">
+                                <img class="l-drop-shadow" src="/images/pages/storage/settings.png" alt="" width="568" height="536">
                             </div>
                             <!--                            <div>-->
                             <!--                                <div class="web-card is-white u-padding-20">-->
@@ -803,7 +805,7 @@
                             <div class="web-card is-white u-flex-vertical u-gap-20">
                                 <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
                                 <div class="web-user-box">
-                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts" height="48" width="48">
                                     <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
                                     <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
                                 </div>
@@ -813,7 +815,7 @@
                             <div class="web-card is-white u-flex-vertical u-gap-20">
                                 <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
                                 <div class="web-user-box">
-                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts" height="48" width="48">
                                     <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
                                     <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
                                 </div>
@@ -823,7 +825,7 @@
                             <div class="web-card is-white u-flex-vertical u-gap-20">
                                 <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices lacus.</q>
                                 <div class="web-user-box">
-                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts">
+                                    <img class="web-user-box-image" src="/images/community/avatars/kap.png" alt="Avatar of Kap.ts" height="48" width="48">
                                     <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
                                     <div class="web-user-box-username web-sub-body-400">@Kaperskyguru</div>
                                 </div>
