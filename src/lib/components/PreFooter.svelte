@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
+<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" loading="lazy" style="z-index:-1" />
 
 <div class="web-grid-1-1 u-gap-32 web-u-row-gap-80 u-position-relative">
     <section class="web-hero u-flex web-u-row-gap-32 u-main-center u-cross-center">
