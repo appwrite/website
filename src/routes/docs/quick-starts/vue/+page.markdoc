@@ -107,7 +107,7 @@ const password = ref('');
 const name = ref('');
 
 const login = async (email, password) => {
-  await account.createEmailSession(email, password);
+  await account.createEmailPasswordSession(email, password);
   loggedInUser.value = await account.get();
 };
 
