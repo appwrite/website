@@ -458,7 +458,7 @@
                     <div class="web-hero is-center web-u-max-width-380">
                         <span class="web-badges web-eyebrow">Dashboard_</span>
                         <h2 class="web-title web-u-color-text-primary">Easily manage your storage infrastructure</h2>
-                        <p class="aw-main-body-500 web-u-margin-block-start-0">
+                        <p class="web-main-body-500 web-u-margin-block-start-0">
                             Organize your buckets and files with ease in your dashboard, as well as manage security, permissions, compression, and more.
                         </p>
                         <a
@@ -734,7 +734,7 @@
                         <div class="web-hero is-align-start web-u-max-width-380">
                             <span class="web-badges web-eyebrow">APIs_</span>
                             <h2 class="web-title web-u-color-text-primary">What you can do with Storage APIs</h2>
-                            <p class="aw-main-body-500 web-u-margin-block-start-0">
+                            <p class="web-main-body-500 web-u-margin-block-start-0">
                                 Appwrite's Storage APIs allow you to create and update your files, apply image transformations, and more.
                             </p>
                             <a
@@ -841,7 +841,7 @@
                 <div class="web-container">
                     <div class="web-hero is-center web-u-max-width-800">
                         <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
-                        <p class="aw-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto">
+                        <p class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto">
                             Appwrite is a 100% open source project, giving you the flexibility and support you need to get your project started.
                         </p>
                         <a
