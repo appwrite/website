@@ -33,7 +33,7 @@
         <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden l-bgs-section-1">
             <div class="web-big-padding-section-level-2 u-position-relative">
                 <section class="web-container hero web-u-padding-block-end-0">
-                    <div>
+                    <div class="web-u-max-width-580 u-margin-inline-auto">
                         <div class="u-flex u-cross-center u-gap-8 u-line-height-1">
                             <img src="/images/icons/illustrated/dark/storage.png" alt="" width="48" height="48">
                             <span class="web-eyebrow web-u-color-text-accent-click">Storage<span class="web-u-text-color-primary-500">_</span></span>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="u-position-relative l-media-1">
                         <div class="l-is-desktop">
-                            <section class="web-card is-normal web-u-max-width-480 u-position-relative u-z-index-0 l-card-photos" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
+                            <section class="web-card is-normal web-u-max-width-580 u-position-relative u-z-index-0 l-card-photos" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
                                 <header class="u-flex u-gap-16 u-main-space-between u-cross-center u-padding-block-8 u-padding-inline-16 l-card-photos-header">
                                     <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary l-image-header">Photos</h5>
                                     <button class="button is-secondary l-image-button" style="height:2rem">
@@ -152,7 +152,7 @@
         <div class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start l-bgs-section-2">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero web-u-padding-block-end-0">
-                    <div>
+                    <div class="web-u-max-width-580 u-margin-inline-auto">
                         <h2 class="web-title web-u-color-text-primary">
                             Preview media files however you want
                         </h2>
@@ -208,11 +208,11 @@
         </div>
         <div class="web-big-padding-section-level-1 u-position-relative e-bg-image-pattern-bottom">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero-flipped web-u-padding-block-end-0 is-not-mobile">
-                    <div>
+                <section class="web-container hero-flipped web-u-padding-block-end-0">
+                    <div class="web-is-only-desktop">
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
-                    <div>
+                    <div class="web-u-max-width-580 u-margin-inline-auto">
                         <h2 class="web-title web-u-color-text-primary">
                             Optimized for small and large files
                         </h2>
@@ -224,6 +224,9 @@
                                 <span class="text">Learn more</span>
                             </a>
                         </div>
+                    </div>
+                    <div class="web-is-only-mobile">
+                        <img src="/images/pages/storage/product-shot-3.png" width="100%" alt="" class="u-block web-u-max-width-580 u-margin-inline-auto" />
                     </div>
                 </section>
             </div>
@@ -477,7 +480,7 @@
                 <div class="web-container">
                     <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
                         <div class="u-flex-vertical u-gap-32 u-stretch">
-                            <div class="web-u-flex-vertical web-u-gap-2">
+                            <div class="web-u-flex-vertical web-u-gap-2 web-u-max-width-580 u-margin-inline-auto">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     File management dashboard
                                 </h3>
@@ -485,7 +488,7 @@
                                     Visualize and search for files with different view options and manipulate multiple at the same time.
                                 </p>
                             </div>
-                            <img class="u-height-auto" src="/images/pages/storage/console-illustration.png" alt="" width="568" height="536" loading="lazy">
+                            <img class="u-height-auto web-u-max-width-580 u-margin-inline-auto" src="/images/pages/storage/console-illustration.png" alt="" width="568" height="536" loading="lazy">
                             <!--                            <div class="web-media" style="border-radius:1.5rem">-->
                             <!--                                <section class="web-card e-console-card is-white u-padding-0">-->
                             <!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
@@ -624,7 +627,7 @@
                             <!--                            </div>-->
                         </div>
                         <div class="web-u-flex-sep" style="--web-color-border: 240 5.7% 10.4% / 0.04;"></div>
-                        <div class="u-flex-vertical u-gap-32 u-stretch">
+                        <div class="u-flex-vertical u-gap-32 u-stretch web-u-max-width-580 u-margin-inline-auto">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     Extensive settings options
@@ -731,10 +734,10 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-grid-1-1 u-row-gap-64">
-                        <div class="web-hero is-align-start web-u-max-width-380">
+                        <div class="web-hero is-align-start web-u-max-width-580 web-u-margin-inline-auto-mobile">
                             <span class="web-badges web-eyebrow">APIs_</span>
-                            <h2 class="web-title web-u-color-text-primary">What you can do with Storage APIs</h2>
-                            <p class="web-main-body-500 web-u-margin-block-start-0">
+                            <h2 class="web-title web-u-color-text-primary web-u-max-width-380">What you can do with Storage APIs</h2>
+                            <p class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-380">
                                 Appwrite's Storage APIs allow you to create and update your files, apply image transformations, and more.
                             </p>
                             <a
@@ -839,7 +842,7 @@
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-hero is-center web-u-max-width-800">
+                    <div class="web-hero is-center web-u-max-width-580 u-margin-inline-auto">
                         <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
                         <p class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto">
                             Appwrite is a 100% open source project, giving you the flexibility and support you need to get your project started.
@@ -908,7 +911,7 @@
                     <h5 class="web-label web-u-color-text-primary u-text-center">
                         Keep exploring our products
                     </h5>
-                    <ul class="web-grid-3-desktop-1-mobile u-margin-block-start-32">
+                    <ul class="u-margin-block-start-32 u-gap-32" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
                         <li>
                             <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
@@ -1222,7 +1225,7 @@
       > :nth-child(2) {
         scale: 1;
         width: 100%;
-        height: 24rem;
+        //height: 24rem;
         position: relative;
 
       }
@@ -1318,5 +1321,3 @@
     }
   }
 </style>
-
-
