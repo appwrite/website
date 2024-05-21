@@ -63,6 +63,16 @@ You agree not to disclose your password to any third party. You must notify us i
 
 The Service and its original content (excluding Content provided by users), features, and functionality are and will remain the exclusive property of Appwrite and its licensors. The Service is protected by copyright, trademark, and other laws of both Israel and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Appwrite.
 
+# Prohibited Use of the SMS Messages Service
+
+You agree not to use the Service for the sending of unsolicited or spam SMS messages. This includes but is not limited to the prohibition of 
+- using the Service in connection with any content, product, or service the recipient has not explicitly requested.
+- sending SMS messages through the Service unless you have obtained prior express consent from the recipients, as required by applicable law.
+
+Failure to adhere to these prohibitions and/or any applicable law relating to the use of such SMS Service can result in immediate termination of your account and further legal action. You shall comply with any and all applicable laws and regulations. 
+
+Furthermore, you agree to indemnify and hold harmless Appwrite, its affiliates, directors, employees, and agents against any claims, proceedings, damages, liabilities, fines, or costs arising from your misuse of the SMS services, which includes, but is not limited to the sending of unsolicited SMS messages, your failure to secure the necessary consents from recipients or not adhering to applicable laws and regulations in relevant jurisdictions.
+
 # Links To Other Web Sites
 
 Our Service may contain links to third-party web sites or services that are not owned or controlled by Appwrite.

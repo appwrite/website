@@ -51,7 +51,7 @@ bundle init
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Ruby Appwrite SDK. Make sure to lock your SDK to version `10.1.2` to avoid breaking changes.
+Install the Ruby Appwrite SDK. Make sure to lock your SDK to version `10.0.0` to avoid breaking changes.
 
 ```sh
 bundle add appwrite 

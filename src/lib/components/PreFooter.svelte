@@ -59,7 +59,8 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span class="text">Start trial</span>
+                        <!-- <span class="text">Start trial</span> -->
+                        <span class="text">Start building</span>
                     </a>
                 </div>
             </li>

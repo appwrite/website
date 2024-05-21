@@ -68,9 +68,10 @@ const languages = {
 const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ClientWeb]: 'js',
     [Platform.ClientFlutter]: 'dart',
+    [Platform.ClientApple]: 'swift',
     [Platform.ClientAndroidJava]: 'java',
     [Platform.ClientAndroidKotlin]: 'kotlin',
-    [Platform.ClientApple]: 'swift',
+    [Platform.ClientReactNative]: 'js',
     [Platform.ClientGraphql]: 'graphql',
     [Platform.ClientRest]: 'http',
     [Platform.ServerDart]: 'dart',

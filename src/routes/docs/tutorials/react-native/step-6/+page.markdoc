@@ -45,7 +45,7 @@ Now that you have a collection to hold ideas, we can read and write to it from o
 Like you did with the user data, we will create a React context to hold our ideas.
 Create a new file `contexts/IdeasContext.jsx` and add the following code to it.
 
-```js
+```client-react-native
 import { ID, Permission, Role, Query } from "react-native-appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../lib/appwrite";
@@ -108,7 +108,7 @@ This permission ensures that only the user who created the idea can modify it.
 
 Remeber to add the `IdeasProvider` to your `App.js` file.
 
-```js
+```client-react-native
 
 import { StyleSheet, Text, View } from 'react-native';
 import { UserProvider } from './contexts/UserContext';

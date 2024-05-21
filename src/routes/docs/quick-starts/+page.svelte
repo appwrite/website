@@ -66,6 +66,12 @@
                     icon: 'icon-angular',
                     image: '/images/blog/placeholder.png',
                     href: 'angular'
+                },
+                {
+                    title: 'Solid',
+                    icon: 'icon-solidjs',
+                    image: '/images/blog/placeholder.png',
+                    href: 'solid'
                 }
             ]
         },
@@ -74,7 +80,7 @@
             quickStarts: [
                 {
                     title: 'React Native',
-                    icon: 'icon-react',
+                    icon: 'icon-react-native',
                     image: '/images/blog/placeholder.png',
                     href: 'react-native'
                 },
@@ -154,7 +160,7 @@
                     icon: 'icon-swift',
                     image: '/images/blog/placeholder.png',
                     href: 'swift'
-                },
+                }
             ]
         }
     ];

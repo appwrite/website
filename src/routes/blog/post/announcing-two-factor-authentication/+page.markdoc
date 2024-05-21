@@ -39,7 +39,7 @@ One great aspect of Appwrite 2FA is that it can be used in conjunction with any 
 
 To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling `account.updateMFA()`.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 // Init SDK

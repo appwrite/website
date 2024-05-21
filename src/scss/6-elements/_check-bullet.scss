@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+
+.#{$p}-check-bullet {
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  inline-size:pxToRem(18); block-size:pxToRem(18);
+  background-color:hsl(var(--web-color-pink-500) / 0.08);
+  border:solid pxToRem(1) hsl(var(--web-color-pink-500) / 0.32); border-radius:50%;
+  &::before {
+    /* 'v' icon */
+    content:""; display:block; inline-size:pxToRem(10); block-size:pxToRem(10);
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEwIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xLjI1IDUuNUwzLjc1IDcuNUw4Ljc1IDEiIHN0cm9rZT0iI0U0RTRFNyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
+    background-repeat:no-repeat; background-position:center center;
+  }
+}

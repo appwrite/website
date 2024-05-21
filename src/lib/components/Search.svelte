@@ -217,7 +217,7 @@
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="u-inline web-u-color-text-secondary web-u-trim-1"
+                                                class="web-u-color-text-secondary web-u-trim-1"
                                             >
                                                 {hit.p}
                                             </div>
