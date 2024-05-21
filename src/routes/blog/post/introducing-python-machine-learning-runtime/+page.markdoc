@@ -91,7 +91,7 @@ Find the full source code in our [GitHub repository](https://github.com/open-run
 
 ## Best practices
 
-The Python ML runtime is in *beta.* We plan to iterate in response to developer demand and needs. For now, the runtime is that it is CPU-only. Here are some tips and tricks to help you overcome this limitation:
+The Python ML runtime is in *beta.* We plan to iterate in response to developer demand and needs. For now, the runtime is CPU-only. Here are some tips and tricks to help you overcome this limitation:
 
 ### Smaller models & Tensorflow Lite
 
