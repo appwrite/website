@@ -47,7 +47,7 @@ It is possible to enhance accessibility through development as well. In collabor
 
 Browsers have a default font size that users can change via the browser setting. A pixel is an absolute unit for fixed sizes and spaces that ignores browser settings. This means that if we are using pixels and a user (with or without vision impairment) changes the font size in their browser settings, their setting won't affect our product. That being said, pixels should not cause any problems if the user zooms in, but we make no assumptions about users' preferences. This is why we decided to define the font size in REM, which is a relative unit.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()

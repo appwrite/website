@@ -3,20 +3,17 @@ layout: article
 title: Custom token login
 description: Limitless authentication flow in Appwrite. Find out how to implement custom authentication flow or connect to 3rd party authentication providers.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.13`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
+
 Tokens are short-lived secrets created by an [Appwrite Server SDK](/docs/sdks#server) that can be exchanged for session by a [Client SDK](/docs/sdks#client) to log in users. You may already be familiar with tokens if you checked out [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp) or [Phone (SMS) login](/docs/products/auth/phone-sms).
 
 Custom token allows you to use [Server SDK](/docs/sdks#server) to generate tokens for your own implementations. This allows you to code your own authentication methods using Appwrite Functions or your own backend. You could implement username and password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to skip authentication which is useful when you integrate Appwrite with external authenticaion providers such as Auth0, TypingDNA, or any provider trusted by your users.
 
 # Create custom token {% #create-custom-token %}
 
-Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/1.5.x/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
+Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Users } from "node-appwrite";
 
 const client = new Client()
@@ -165,7 +162,7 @@ Once the client receives a token secret, we can use it to authenticate the user 
 
 {% multicode %}
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -180,7 +177,7 @@ const session = await account.createSession(
 );
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -194,8 +191,22 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+```client-apple
+import Appwrite
 
-```kotlin
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+let account = Account(client);
+
+let session = try await account.createSession(
+    userId: "[USER_ID]",
+    secret: "[SECRET]"
+);
+```
+
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -208,21 +219,6 @@ val account = Account(client);
 val session = account.createSession(
     userId = "[USER_ID]",
     secret = "[SECRET]"
-);
-```
-
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
-
-let account = Account(client);
-
-let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
 );
 ```
 

@@ -53,7 +53,7 @@ The content of the messages plays a crucial role. Here are some best practices t
 
 The newly released Appwrite Messaging substantially simplifies your process of sending out push notifications to your application’s users. We have added simple-to-use adapters for Firebase Cloud Messaging (FCM) and Apple Push Notification Service (APNS) to let you send push notifications to let you send push notifications to both Android and iOS users. 
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

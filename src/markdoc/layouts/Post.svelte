@@ -96,9 +96,10 @@
                                                 <img
                                                     class="web-author-image"
                                                     src={authorData.avatar}
+                                                    alt={authorData.name}
+                                                    loading="lazy"
                                                     width="44"
                                                     height="44"
-                                                    alt=""
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
@@ -116,7 +117,7 @@
 														class="web-icon-button"
 														aria-label="Author twitter"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
 														<span class="web-icon-x" aria-hidden="true" />
 													</a>
@@ -129,7 +130,7 @@
 														class="web-icon-button"
 														aria-label="Author LinkedIn"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
 														<span class="web-icon-linkedin" aria-hidden="true" />
 													</a>
@@ -142,7 +143,7 @@
 														class="web-icon-button"
 														aria-label="Author GitHub"
 														target="_blank" rel="noopener noreferrer"
-														
+
 													>
 														<span class="web-icon-github" aria-hidden="true" />
 													</a>

@@ -30,7 +30,10 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute u-overflow-hidden web-location-for-mobile" style="pointer-events:none; inline-size:100%;">
+<div
+    class="u-position-absolute u-overflow-hidden web-location-for-mobile"
+    style="pointer-events:none; inline-size:100%;"
+>
     <enhanced:img
         src={BG}
         alt=""
@@ -132,7 +135,8 @@
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <span class="web-sub-body-500">Start trial</span>
+                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                                <span class="web-sub-body-500">Start building</span>
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -244,8 +248,8 @@
                                     </h3>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    We support OSS maintainers with a free Pro Plan. Read our announcement blog
-                                    to find out more.
+                                    We support OSS maintainers with a free Pro Plan. Read our
+                                    announcement blog to find out more.
                                 </p>
                                 <a
                                     href="/docs/advanced/platform/oss"
@@ -285,9 +289,10 @@
     </div>
 </Main>
 
-
 <style lang="scss">
-  @media (min-width:360px) and (max-width:550px) {
-    .web-location-for-mobile { inset-block-start:90px; }
-  }
+    @media (min-width: 360px) and (max-width: 550px) {
+        .web-location-for-mobile {
+            inset-block-start: 90px;
+        }
+    }
 </style>

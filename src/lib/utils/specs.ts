@@ -57,7 +57,12 @@ export interface Property {
             type?: string;
             oneOf?: OpenAPIV3.ReferenceObject[];
         } & OpenAPIV3.ReferenceObject;
-} 
+}
+
+export enum ModelType {
+    REST = 'REST',
+    GRAPHQL = 'GraphQL'
+}
 
 function getExamples(version: string) {
     switch (version) {
@@ -198,6 +203,7 @@ async function getSpec(version: string, platform: string) {
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const raw = await getSpec(version, platform);
     const api = JSON.parse(raw);
+
     return api;
 }
 
@@ -215,7 +221,10 @@ export async function getDescription(service: string): Promise<string> {
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
-    return descriptions[target]();
+
+    const description = descriptions[target]();
+
+    return description;
 }
 
 export async function getService(
@@ -303,6 +312,7 @@ export async function getService(
         if (!(path in examples)) {
             continue;
         }
+
         data.methods.push({
             id: operation['x-appwrite'].method,
             demo: await examples[path](),
@@ -344,11 +354,11 @@ export function resolveReference(
     throw new Error("Schema doesn't exist");
 }
 
-export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<{}>): Object => {
+export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<{}>, modelType: ModelType = ModelType.REST): Object => {
 
     const properties = Object.keys(schema.properties ?? {}).map((key) =>{
         const name = key;
-        const fields = schema.properties?.[key]; 
+        const fields = schema.properties?.[key];
         return {
             name,
             ...fields
@@ -357,12 +367,25 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
 
     const example = properties.reduce((carry, currentValue) => {
         const property = currentValue as AppwriteSchemaObject & Property;
+        let propertyName;
+        switch (modelType) {
+            case ModelType.REST:
+            propertyName = property.name;
+            break;
+            case ModelType.GRAPHQL:
+            propertyName = property.name.replace('$', '_');
+            break;
+            default:
+            propertyName = property.name;
+            break;
+        }
+
         if (property.type === 'array') {
             // If it's an array type containing primatives
             if (property.items?.type){
                 return {
                     ...carry,
-                    [property.name]: property['x-example']
+                    [propertyName]: property['x-example']
                 }
             }
 
@@ -370,10 +393,10 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 // default to first child type if multiple available
                 const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
                 const schema = getSchema(getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject), api)
-                
+
                 return {
                     ...carry,
-                    [property.name]: [generateExample(schema, api)]
+                    [propertyName]: [generateExample(schema, api, modelType)]
                 };
             }
 
@@ -381,7 +404,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
             const schema = getSchema(getIdFromReference(property.items as OpenAPIV3.ReferenceObject), api);
             return {
                 ...carry,
-                [property.name]: [generateExample(schema, api)]
+                [propertyName]: [generateExample(schema, api, modelType)]
             }
         }
 
@@ -392,7 +415,7 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 const schema = getSchema(getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject), api);
                 return {
                     ...carry,
-                    [property.name]: generateExample(schema, api)
+                    [propertyName]: generateExample(schema, api, modelType)
                 }
             }
 
@@ -400,14 +423,14 @@ export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.D
                 const schema = getSchema(getIdFromReference(property.items), api);
                 return {
                     ...carry,
-                    [property.name]: generateExample(schema, api)
+                    [propertyName]: generateExample(schema, api, modelType)
                 }
             }
         }
 
         return {
             ...carry,
-            [property.name]: property['x-example']
+            [propertyName]: property['x-example']
         }
     }, {});
     return example;

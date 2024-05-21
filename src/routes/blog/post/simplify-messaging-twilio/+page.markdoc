@@ -70,7 +70,7 @@ Here's an overview of the Twilio Programmable Messaging:
 
 As a part of our latest release, Appwrite 1.5, we have launched a new product, Messaging, that helps developers implement communication services within their applications. As a part of the SMS offering within Messaging, we have added an adapter to integrate Twilio Programmable Messaging with Appwrite. Once you have access to your account SID, auth token, and phone number from Twilio, you will be able to send messages to your users with just a few lines of code.
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK

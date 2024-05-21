@@ -3,11 +3,6 @@ layout: article
 title: Topics
 description: Allow groups of users to subscribe to a common topic and receive the same notifications.
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
 
 {% only_dark %}
@@ -49,7 +44,7 @@ Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic*
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -296,7 +291,7 @@ If you can't find the targets you'd like to add, see the [targets page](/docs/pr
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()

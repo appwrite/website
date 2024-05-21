@@ -9,7 +9,7 @@ Using the `useIdeas` hook we can now display the ideas on the page. We will also
 
 Overwrite the contents of `src/pages/Home.jsx` with the following:
 
-```js
+```client-web
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { useIdeas } from "../lib/context/ideas";

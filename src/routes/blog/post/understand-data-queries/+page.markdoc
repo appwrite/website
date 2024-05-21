@@ -73,7 +73,7 @@ One of the data retrieval APIs the Appwrite Database offers is a list documents 
 - `OR` operation: This operator allows nesting queries in an OR condition.
 - `CONTAINS` operation: The contains operator allows filtering by values that are contained in an array.
 
-```js
+```client-web
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()

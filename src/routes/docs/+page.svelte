@@ -65,9 +65,6 @@
 
 <Docs variant="default">
     <Sidebar />
-    <div class="u-position-absolute u-inset-inline-end-0 web-u-opacity-40-mobile" style="">
-        <enhanced:img src="./blur-1.png" alt="" />
-    </div>
 
     <main
         class="web-main-section u-position-relative web-u-overflow-hidden-break1-to-break3"
@@ -486,12 +483,12 @@
         .bg-overlay {
             position: absolute;
 
-            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 10%, #ffffff);
+            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 400px, #ffffff);
 
             top: 0;
             right: 10rem;
             translate: 100%;
-            width: 25rem;
+            width: 100rem;
             height: 100%;
             content: '';
             z-index: 9999;
@@ -505,6 +502,6 @@
     }
 
     :global(.theme-dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c00 10%, #19191c);
+        background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>
