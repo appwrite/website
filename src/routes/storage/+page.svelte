@@ -44,11 +44,11 @@
                         <p class="web-main-body-500 u-margin-block-start-20">
                             Securely store files with advanced compression, encryption and image transformations.
                         </p>
-                        <div class="u-flex u-gap-8 u-margin-block-start-32">
-                            <a href="/" class="web-button">
-                                <span class="text">Become a Hero</span>
+                        <div class="u-flex u-gap-8 web-u-flex-vertical-mobile u-margin-block-start-32">
+                            <a href="/" class="web-button is-full-width-mobile">
+                                <span class="text">Get started</span>
                             </a>
-                            <a href="/" class="web-button is-secondary">
+                            <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Read the docs</span>
                             </a>
                         </div>
@@ -160,7 +160,7 @@
                             Appwrite Storage's preview endpoint lets you manipulate image previews while also managing different formats and compression algorithms.
                         </p>
                         <div class="u-flex u-gap-8 u-margin-block-start-32">
-                            <a href="/" class="web-button is-secondary">
+                            <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
                         </div>
@@ -210,7 +210,7 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container hero-flipped web-u-padding-block-end-0 is-not-mobile">
                     <div>
-                        <img src="/images/pages/storage/product-shot-3.png" width="708" alt="" />
+                        <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
                     <div>
                         <h2 class="web-title web-u-color-text-primary">
@@ -220,7 +220,7 @@
                             Appwrite offers chunked uploads for large files and several compression options for optimized upload times.
                         </p>
                         <div class="u-flex u-gap-8 u-margin-block-start-32">
-                            <a href="/" class="web-button is-secondary">
+                            <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
                         </div>
@@ -233,7 +233,7 @@
                     <p class="web-main-body-500 web-u-max-width-380 u-margin-inline-auto">
                         Set up file encryption and granular user permissions in your storage infrastructure
                     </p>
-                    <a href="/" class="web-button is-secondary u-margin-inline-auto u-margin-block-start-16">Learn more</a>
+                    <a href="/" class="web-button is-secondary is-full-width-mobile u-margin-inline-auto u-margin-block-start-16">Learn more</a>
                 </div>
                 <div class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64">
                     <div class="web-media-container u-flex-vertical u-max-width-100-percent" style="flex-basis:586px; border-radius:1.5rem">
@@ -321,7 +321,7 @@
                                 margin-block-start:60px; margin-inline-start:-80px">
                         <h4
                                 class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-padding-24 u-sep-block-end"
-                                style="border-radius:0"
+                                style="border-radius:0; --color-border: var(--web-color-offset);"
                         >
                             Permissions
                         </h4>
@@ -465,7 +465,7 @@
                                 href="https://builtwith.appwrite.io"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
+                                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span>Learn more</span>
                         </a>
