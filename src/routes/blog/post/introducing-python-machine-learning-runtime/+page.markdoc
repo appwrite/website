@@ -106,7 +106,7 @@ Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. The
 
 ## Training vs inference
 
-The Python ML runtime is optimized for inference tasks. Training models on the runtime is not recommended as it can be slow and resource-intensive. We recommend training your models on a local machine or a cloud-based GPU instance and then deploying the trained model to the Python ML runtime for inference.
+The Python ML runtime is more suitable for inference tasks. Training models on the runtime is not recommended as it can be slow and resource-intensive due to it being CPU only during the beta. We recommend training your models on a local machine or a cloud-based GPU instance and then deploying the trained model to the Python ML runtime for inference.
 
 If you have training that does not require intensive GPU resources, you can train your models during the build step of the function and then deploy the trained model to the runtime. This will allow you to run inference tasks without the need for repeated training.
 
