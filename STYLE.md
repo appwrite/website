@@ -174,7 +174,7 @@ Appwrite's documentation uses extended markdown syntax. You can find all of the 
 
 If you're contributing a **new piece of content**, always follow the closest example as an outline. For example, a new web quick start should use one of the existing web quick starts as example, with the same content and pages.
 
-If you can't find a similar piece of content as example, the Appwrite team will request an ourline from you.
+If you can't find a similar piece of content as example, the Appwrite team will request an outline from you.
 
 It should contain all the pages and headings with in them, maintainers may request clarification on headings.
 
@@ -313,11 +313,11 @@ If you are proposing a new type of page, discuss an outline in your PR and ask f
 ## Code snippets
 
 For quick starts and tutorials, a developer must be able to follow code examples from beginning to end
-easily, and the code example is expected to be runnabel and complete.
+easily, and the code example is expected to be runnable and complete.
 
 This means, you need to include imports, dependencies, and all parts needed to arrive at a functional example.
 
 For concept and journey product pages, still try your best to have complete examples, unless:
 
 1. The example will become opinionated. We avoid opinionated implementation and choices in product pages. Keep them in blogs, quick starts, and tutorials.
-2. The example cannot be given in a complete form cleanly, for example many of the Messaging services's examples cannot be given in complete form because the boiler plate and set up is complex and documented in Android/Swift documentation.
+2. The example cannot be given in a complete form cleanly. For example, many of the Messaging services's examples cannot be given in complete form because the boiler plate and set up is complex and documented in Android/Swift documentation.
