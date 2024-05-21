@@ -22,7 +22,7 @@ Python's simplicity and it's rich ecosystem of data science libraries have made 
 
 ## Why build a new runtime
 
-Appwrite's Python runtime has been one of our most popular runtimes to date. However, it had one major limitation when it comes to machine learning use cases. The image was built on an Alpine Docker image. We chose Alpine because it's images offer a minimal and clean distribution of Linux. The current Python runtime has a compressed [size of under 22MB!](https://hub.docker.com/layers/openruntimes/python/v3-3.9/images/sha256-f6d89b6d2f570b8176af767fddc0b268ebeb8a9532243410e03cb60f9d9780b3?context=explore) Unfortunately, Alpine doesn't support installing machine learning libraries like `numpy` and `Tensorflow` due to the absence of some core libraries and build tools.
+Appwrite's Python runtime has been one of the most popular Function runtimes. However, it has a limitation with machine learning use cases. The image was built on an Alpine Docker image. We chose Alpine because it's images offer a minimal and clean distribution of Linux. The current Python runtime has a compressed [size of under 22MB!](https://hub.docker.com/layers/openruntimes/python/v3-3.9/images/sha256-f6d89b6d2f570b8176af767fddc0b268ebeb8a9532243410e03cb60f9d9780b3?context=explore) Unfortunately, Alpine doesn't support installing machine learning libraries like `numpy` and `Tensorflow` due to the absence of some core libraries and build tools.
 
 We decided to build a new runtime image to overcome this limitation and at the same time benefit from all the hardware-specific optimisations required for running models at scale. The Python ML runtime will allow you to install all the libraries and tools required for Machine Learning with ease. While we procure and build a world class GPU infrastructure for training, fine-tuning and inference, we'd like to bring to your notice that the Python ML runtime is currently CPU-only during the Beta. We understand this can be a challenge for certain use cases, however we have some actionable tips and tricks to overcome these limitations in the interim.
 
@@ -91,18 +91,21 @@ Find the full source code in our [GitHub repository](https://github.com/open-run
 
 ## Best practices
 
-The Python ML runtime is in *beta.* We plan to iterate in response to developer demand and needs. For now, the runtime is CPU-only. Here are some tips and tricks to help you overcome this limitation:
+The Python ML runtime is in *beta*. We plan to iterate in response to developer demand and needs. For now, the runtime is CPU-only. Here are some tips and tricks to help you overcome this limitation:
 
 ### Smaller models & Tensorflow Lite
 
 Smaller models are faster to load and execute. Avoid using large models that require a lot of memory and CPU resources.
 
-Tensorflow Lite models are optimized for mobile and edge devices. They are smaller in size and can be run on CPUs. You can convert your Tensorflow models to Tensorflow Lite models using the [Tensorflow Lite Converter](https://www.tensorflow.org/lite/convert).
+Tensorflow Lite models are optimized for mobile and edge devices. They are smaller in size and can be run on the CPU. A typical tensorflow model can be 10x smaller when converted to a Tensorflow Lite model, with only a small loss in accuracy. You can convert your Tensorflow models to Tensorflow Lite models using the [Tensorflow Lite Converter](https://www.tensorflow.org/lite/convert).
 
 ### Async executions
 
-Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. Therefore, it is recommended to use asynchronous function executions for long running tasks. This will allow you to run multiple tasks concurrently and make the most of the CPU resources available. Create an asynchronous execution using the `async` parameter in the [createExecution endpoint]
-(https://appwrite.io/docs/references/cloud/client-web/functions#createExecution)..
+Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. Therefore, it is recommended to use asynchronous function executions for long running tasks. This will allow you to run multiple tasks concurrently, set your own timeout period and make the most of the compute resources available. Create an asynchronous execution using the `async` parameter in the [createExecution endpoint](https://appwrite.io/docs/references/cloud/client-web/functions#createExecution).
+
+If you see `FUNCTION_SYCHRONOUS_TIMEOUT` errors when executing your function, navigate to your **Function settings** and try increasing your timeout period to a larger number such 50 seconds or more.
+
+![Settings timeout](/images/blog/introducing-python-machine-learning-runtime/settings-timeout.png)
 
 ## Training vs inference
 
@@ -112,6 +115,6 @@ If you have training that does not require intensive GPU resources, you can trai
 
 ## Third-party integrations
 
-You can use cloud AI services such as Google Cloud AI Platform, AWS SageMaker, or Azure Machine Learning to train your models and then deploy them to the Python ML runtime for inference. This will allow you to take advantage of the GPU resources available on these platforms for training and then run inference tasks on the Python ML runtime.
+You can use third-party AI services with Appwrite Functions. Perplexity, Replicate and OpenAI offer powerful APIs that can be used to train and run models on their infrastructure.
 
-Not sure what to build? Find our new [AI guides](https://appwrite.io/docs/products/ai) for inspiration and ideas on how to get started with AI on Appwrite.
+We've built a range of example functions and technical guides in our [AI documention](https://appwrite.io/docs/products/ai).
