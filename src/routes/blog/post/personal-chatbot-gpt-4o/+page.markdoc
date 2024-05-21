@@ -9,7 +9,7 @@ author: aditya-oberai
 category: functions
 ---
 
-Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI’s fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot. 
+Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot. 
 
 Therefore, in this blog, we will learn how to use Appwrite Functions and the OpenAI GPT-4o API to build a personal chatbot.
 
@@ -30,13 +30,13 @@ Now that we have our OpenAI API Key, let's prepare the function on [Appwrite](ht
 Once the function is ready, we must visit the Settings tab on the Function page and add the following environment variables:
 
 - `OPENAI_API_KEY`: API Key from our OpenAI account
-- `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we’ll set this as `512`)
+- `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we'll set this as `512`)
 
-Once that is done, visit the function’s GitHub repository and clone the project.
+Once that is done, visit the function's GitHub repository and clone the project.
 
 ## Developing the project
 
-Once your function’s GitHub repository is ready, clone it to your local device and enter the directory. You will notice a directory structure as follows:
+Once your function's GitHub repository is ready, clone it to your local device and enter the directory. You will notice a directory structure as follows:
 
 ```
 .
@@ -255,7 +255,7 @@ At this point, our project directory structure should look as follows:
 
 ### Testing the function
 
-Once you’ve completed all the aforementioned steps, you can push the code to our GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
+Once you've completed all the aforementioned steps, you can push the code to our GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
 
 ![Appwrite Function deployments](/images/blog/personal-chatbot-gpt-4o/deployment.png)
 
