@@ -81,11 +81,6 @@
                 },
                 { label: 'Contact us', href: '/contact-us' },
                 { label: 'Assets', href: '/assets' }
-            ],
-            Policies: [
-                { label: 'Terms', href: '/terms' },
-                { label: 'Privacy', href: '/privacy' },
-                { label: 'Cookies', href: '/cookies' }
             ]
         };
 </script>
