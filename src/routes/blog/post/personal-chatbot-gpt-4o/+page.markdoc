@@ -19,7 +19,7 @@ To use the OpenAI GPT-4o API, we must first create an API key on their platform.
 
 ![Create an OpenAI API Key](/images/blog/personal-chatbot-gpt-4o/openai.png)
 
-> Note: To use the GPT-4o API, your account must be upgraded to the Usage tier 1 (you must purchase at least $5 worth of credits). To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
+> Note: To use the GPT-4o API, your account must be upgraded to Usage tier 1 (you must purchase at least $5 worth of credits). To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 
 ## Initializing the Appwrite Function
 
