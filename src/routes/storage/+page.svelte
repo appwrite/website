@@ -798,10 +798,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 u-position-relative l-bgs-purple">
                 <div class="web-container">
                     <ul class="web-multi-columns-1">
                         <li class="u-flex-vertical web-u-gap-20">
@@ -837,9 +834,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center web-u-max-width-580 u-margin-inline-auto">
@@ -1075,7 +1069,7 @@
   .e-header-console {
     padding:1.5rem;  border-radius:16px 16px 0 0; border-block-end:solid 1px hsl(var(--web-color-border));
     &.is-light { background-color:#fff;}
-    &.is-dark { background-color:hsl(var(--color-neutral-1000) / 0.1); }
+    &.is-dark { background-color:#27272a; }
   }
   .tabs.is-light {
     --p-tabs-text-color:            var(--p-tabs-text-color-default);
@@ -1304,6 +1298,16 @@
     background-position: top 160px right 0;
     background-size: 300px 640px;
     filter: blur(30px);
+  }
+
+  .l-bgs-purple::before {
+    content:""; display:block;
+    position: absolute; inset-inline-start:-150px; inset-block-start:-150px;
+    background-image: url("/images/pages/storage/purple-gradient.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    inline-size:517px; block-size:542px;
+    //filter: blur(30px);
   }
 
   .l-dark-table {
