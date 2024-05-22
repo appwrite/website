@@ -115,6 +115,6 @@ If you have training that does not require intensive GPU resources, you can trai
 
 ## Third-party integrations
 
-You can use third-party AI services with Appwrite Functions. Perplexity, Replicate and OpenAI offer powerful APIs that can be used to train and run models on their infrastructure.
+For all other use-cases, you can use third-party AI services with Appwrite Functions. Perplexity, Replicate and OpenAI offer powerful APIs that can be used to train and run models on their infrastructure.
 
 We've built a range of example functions and technical guides in our [AI documention](https://appwrite.io/docs/products/ai).
