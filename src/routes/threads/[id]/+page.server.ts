@@ -3,7 +3,6 @@ import { getRelatedThreads, getThread, getThreadMessages } from '../helpers.js';
 
 export const load = async ({ params }) => {
     const id = params.id;
-    console.log('rendering page with id', id)
 
     try {
         const thread = await getThread(id);
