@@ -55,80 +55,81 @@
                     </div>
                     <div class="u-position-relative l-media-1">
                         <div class="l-is-desktop">
-                            <section class="web-card is-normal web-u-max-width-580 u-position-relative u-z-index-0 l-card-photos" style="--card-padding:0.5rem;--card-padding-mobile:0.5rem;">
-                                <header class="u-flex u-gap-16 u-main-space-between u-cross-center u-padding-block-8 u-padding-inline-16 l-card-photos-header">
-                                    <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary l-image-header">Photos</h5>
-                                    <button class="button is-secondary l-image-button" style="height:2rem">
-                                        <span class="icon-plus" aria-hidden="true"></span>
-                                        <span class="text">Create File</span>
-                                    </button>
-                                </header>
-                                <div class="table l-dark-table" role="table">
-                                    <div class="table-thead web-u-font-size-12" role="rowheader">
-                                        <div class="table-row" role="row">
-                                            <div style="" class="table-thead-col" role="columnheader">
-                                                <span class="eyebrow-heading">Filename</span>
-                                            </div>
-                                            <div style="--p-col-width: 100;" class="table-thead-col" role="columnheader">
-                                                <span class="eyebrow-heading">Type</span>
-                                            </div>
-                                            <div style="--p-col-width: 70;" class="table-thead-col" role="columnheader">
-                                                <span class="eyebrow-heading">Size</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="table-tbody" role="rowgroup">
-                                        <div class="table-row" role="row">
-                                            <div style="" class="table-col " data-title="Name" role="cell">
-                                                <div class="u-flex u-gap-12 u-cross-center">
-                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="--size: 2rem; background-color: transparent;">
-                                                    <span class="text u-trim">CiutatVella.mp4</span>
-                                                </div>
-                                            </div>
-                                            <div class="table-col" data-title="Type" role="cell" data-private="">
-                                            <span class="text u-trim">
-                                                <span>image/png</span>
-                                            </span>
-                                            </div>
-                                            <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                120K
-                                            </div>
-                                        </div>
-                                        <div class="table-row" role="row">
-                                            <div style="" class="table-col " data-title="Name" role="cell">
-                                                <div class="u-flex u-gap-12 u-cross-center">
-                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="--size: 2rem; background-color: transparent;">
-                                                    <span class="text u-trim">Eixample.mp4</span>
-                                                </div>
-                                            </div>
-                                            <div class="table-col" data-title="Type" role="cell" data-private="">
-                                            <span class="text u-trim">
-                                                <span>image/jpg</span>
-                                            </span>
-                                            </div>
-                                            <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                145K
-                                            </div>
-                                        </div>
-                                        <div class="table-row" role="row">
-                                            <div style="" class="table-col " data-title="Name" role="cell">
-                                                <div class="u-flex u-gap-12 u-cross-center">
-                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="--size: 2rem; background-color: transparent;">
-                                                    <span class="text u-trim">SantsMontjuïc.mp4</span>
-                                                </div>
-                                            </div>
-                                            <div class="table-col" data-title="Type" role="cell" data-private="">
-                                            <span class="text u-trim">
-                                                <span>image/webp</span>
-                                            </span>
-                                            </div>
-                                            <div class="table-col" data-title="Size" role="cell" data-private="">
-                                                85K
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+<!--                            <section class="web-card is-normal web-u-max-width-580 u-position-relative u-z-index-0 l-card-photos" style="&#45;&#45;card-padding:0.5rem;&#45;&#45;card-padding-mobile:0.5rem;">-->
+<!--                                <header class="u-flex u-gap-16 u-main-space-between u-cross-center u-padding-block-8 u-padding-inline-16 l-card-photos-header">-->
+<!--                                    <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary l-image-header">Photos</h5>-->
+<!--                                    <button class="button is-secondary l-image-button" style="height:2rem">-->
+<!--                                        <span class="icon-plus" aria-hidden="true"></span>-->
+<!--                                        <span class="text">Create File</span>-->
+<!--                                    </button>-->
+<!--                                </header>-->
+<!--                                <div class="table l-dark-table" role="table">-->
+<!--                                    <div class="table-thead web-u-font-size-12" role="rowheader">-->
+<!--                                        <div class="table-row" role="row">-->
+<!--                                            <div style="" class="table-thead-col" role="columnheader">-->
+<!--                                                <span class="eyebrow-heading">Filename</span>-->
+<!--                                            </div>-->
+<!--                                            <div style="&#45;&#45;p-col-width: 100;" class="table-thead-col" role="columnheader">-->
+<!--                                                <span class="eyebrow-heading">Type</span>-->
+<!--                                            </div>-->
+<!--                                            <div style="&#45;&#45;p-col-width: 70;" class="table-thead-col" role="columnheader">-->
+<!--                                                <span class="eyebrow-heading">Size</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="table-tbody" role="rowgroup">-->
+<!--                                        <div class="table-row" role="row">-->
+<!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                    <span class="text u-trim">CiutatVella.mp4</span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                            <span class="text u-trim">-->
+<!--                                                <span>image/png</span>-->
+<!--                                            </span>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                120K-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="table-row" role="row">-->
+<!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                    <span class="text u-trim">Eixample.mp4</span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                            <span class="text u-trim">-->
+<!--                                                <span>image/jpg</span>-->
+<!--                                            </span>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                145K-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="table-row" role="row">-->
+<!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
+<!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
+<!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
+<!--                                                    <span class="text u-trim">SantsMontjuïc.mp4</span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
+<!--                                            <span class="text u-trim">-->
+<!--                                                <span>image/webp</span>-->
+<!--                                            </span>-->
+<!--                                            </div>-->
+<!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
+<!--                                                85K-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </section>-->
+                            <img src="/images/pages/storage/photos.png" alt="" width="486" height="308">
                             <section class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 web-u-inset-inline-end-32-negative l-frame-parrot">
                                 <img src="images/pages/storage/green-parrots.avif" alt="two green parrots" width="326" height="320">
                             </section>
