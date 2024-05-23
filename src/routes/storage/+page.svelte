@@ -77,7 +77,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="table-tbody web-u-font-size-14" role="rowgroup">
+                                    <div class="table-tbody" role="rowgroup">
                                         <div class="table-row" role="row">
                                             <div style="" class="table-col " data-title="Name" role="cell">
                                                 <div class="u-flex u-gap-12 u-cross-center">
@@ -231,19 +231,21 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-hero" style="--hero-max-inline-size:24rem; --hero-gap:1rem;">
-                    <h1 class="web-title web-u-color-text-primary">Protect your files and set permissions</h1>
-                    <p class="web-main-body-500 web-u-max-width-380 u-margin-inline-auto">
-                        Set up file encryption and granular user permissions in your storage infrastructure
-                    </p>
-                    <a href="/" class="web-button is-secondary is-full-width-mobile u-margin-inline-auto u-margin-block-start-16">Learn more</a>
+                <div class="web-container">
+                    <div class="web-hero" style="--hero-max-inline-size:24rem; --hero-gap:1rem;">
+                        <h1 class="web-title web-u-color-text-primary">Protect your files and set permissions</h1>
+                        <p class="web-main-body-500 web-u-max-width-380 u-margin-inline-auto">
+                            Set up file encryption and granular user permissions in your storage infrastructure
+                        </p>
+                        <a href="/" class="web-button is-secondary is-full-width-mobile u-margin-inline-auto u-margin-block-start-16">Learn more</a>
+                    </div>
                 </div>
                 <div class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64">
-                    <div class="web-media-container u-flex-vertical u-max-width-100-percent" style="flex-basis:586px; border-radius:1.5rem">
+                    <div class="web-media-container u-flex-vertical u-max-width-100-percent is-only-desktop" style="flex-basis:586px; border-radius:1.5rem">
                         <section class="web-card e-console-card is-dark u-padding-0 u-flex-vertical u-stretch">
                             <header class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16">
                                 <div class=" u-flex u-gap-16">
-                                    <h4 class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1">
+                                    <h4 class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1" style="font-family: var(--web-font-family-aeonik-pro);">
                                         My Bucket
                                     </h4>
                                     <div class="tag u-cross-child-end web-u-color-text-secondary">
@@ -319,16 +321,16 @@
                         </section>
                     </div>
 
-                    <div class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start is-only-desktop"
+                    <div class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start l-permission-card"
                          style="flex-basis:602px; border-radius:1.5rem; background:rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px);
                                 margin-block-start:60px; margin-inline-start:-80px">
                         <h4
-                                class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-padding-24 u-sep-block-end"
+                                class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-sep-block-end"
                                 style="border-radius:0; --color-border: var(--web-color-offset);"
                         >
                             Permissions
                         </h4>
-                        <div class="u-padding-inline-20">
+                        <div class="l-permission-table-wrapper">
                             <table class="table is-remove-outer-styles u-sep-block-start">
                                 <thead class="table-thead">
                                 <tr class="table-row">
@@ -352,7 +354,7 @@
                                 <tbody class="table-tbody">
                                 <tr class="table-row">
                                     <td class="table-col">
-                                        <div class="web-u-color-text-primary web-u-font-size-14">Any</div>
+                                        <div class="web-u-color-text-primary">Any</div>
                                     </td>
                                     <td class="table-col">
                                         <input type="checkbox" aria-label="role any create">
@@ -369,7 +371,7 @@
                                 </tr>
                                 <tr class="table-row">
                                     <td class="table-col">
-                                        <div class="web-u-color-text-primary web-u-font-size-14">Guests</div>
+                                        <div class="web-u-color-text-primary">Guests</div>
                                     </td>
                                     <td class="table-col">
                                         <input type="checkbox" aria-label="role guests create" checked>
@@ -386,7 +388,7 @@
                                 </tr>
                                 <tr class="table-row">
                                     <td class="table-col">
-                                        <div class="web-u-color-text-primary web-u-font-size-14">Users</div>
+                                        <div class="web-u-color-text-primary">Users</div>
                                     </td>
                                     <td class="table-col">
                                         <input type="checkbox" aria-label="role users create" checked>
@@ -403,7 +405,7 @@
                                 </tr>
                                 <tr class="table-row">
                                     <td class="table-col">
-                                        <div class="web-u-color-text-primary web-u-font-size-14">user:62f8b5b</div>
+                                        <div class="web-u-color-text-primary">user:62f8b5b</div>
                                     </td>
                                     <td class="table-col">
                                         <input type="checkbox" aria-label="role user:62f8b5b create" checked>
@@ -420,7 +422,7 @@
                                 </tr>
                                 <tr class="table-row">
                                     <td class="table-col">
-                                        <div class="web-u-color-text-primary web-u-font-size-14">user:62e1544</div>
+                                        <div class="web-u-color-text-primary">user:62e1544</div>
                                     </td>
                                     <td class="table-col">
                                         <input type="checkbox" aria-label="role user:62e1544 create" checked>
@@ -437,10 +439,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <button
-                                    class="web-button is-small is-text u-margin-block-16"
-                                    style="block-size: 2rem"
-                            >
+                            <button class="web-button is-small is-text">
                                 <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
                                 <span class="text">Add role</span>
                             </button>
@@ -750,7 +749,7 @@
                             </a>
                         </div>
                         <div class="u-flex-vertical web-u-gap-20">
-                            <div class="u-flex u-gap-8">
+                            <div class="u-flex u-flex-wrap u-gap-8">
                                 <button class="tag is-selected">
                                     List files
                                 </button>
@@ -905,7 +904,7 @@
                     <h5 class="web-label web-u-color-text-primary u-text-center">
                         Keep exploring our products
                     </h5>
-                    <ul class="u-margin-block-start-32 u-gap-32" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
+                    <ul class="u-margin-block-start-32 l-grid-1">
                         <li>
                             <a href="/docs/products/auth" class="web-card is-transparent u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
                                 <div class="u-flex u-cross-center u-gap-8">
@@ -1320,8 +1319,32 @@
     .table-tbody { color:hsl(var(--web-color-greyscale-400)); }
     .table-row { border-block-start-width:0; }
     img { inline-size:40px; block-size:40px; border-radius:12px; border-width:0; }
+  }
+  .l-permission-card {
+    .table *{ font-size:14px;}
+    .heading-level-5 { padding:24px;}
+    .l-permission-table-wrapper { padding-inline:20px;}
+    .web-button { block-size:32px; padding-inline-start:0; margin-block:12px;}
     @media (max-width:600px) {
-
+      margin-inline-start:0!important;
+      .heading-level-5 { padding:12px 16px; line-height:1.3; }
+      .table *{ font-size:10px;}
+      .table-thead-col:first-child { inline-size:80px!important;}
+      .l-permission-table-wrapper { padding-inline:12px;}
+      .table-thead-col, .table-col { padding-block:12px; }
+      .table-col { block-size:18px; }
+      .web-button { block-size:18px; line-height:18px; padding-block:4px; padding-inline-end:6px; margin-block:0; margin-block-end:4px; font-size:12px;  }
+      input[type="checkbox"] {
+        inline-size:14px; block-size:14px;
+        &::before { font-size:10px; }
+      }
     }
+  }
+  .l-grid-1 {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:2rem;
+    @media (max-width:600px) { gap:1.25rem; }
+
   }
 </style>
