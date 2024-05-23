@@ -313,7 +313,7 @@ return res.json(embedding);
 
 If needed for your use-case, you can disable automatic embedding generation from Upstash, and use any AI model of your choice. You can use the [query Upstash Vector](https://github.com/appwrite/templates/tree/main/node/query-upstash-vector) Appwrite Function template as a reference for your implementation.
 
-![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/upstash.png)
+![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.png)
 
 ## **Next steps**
 
