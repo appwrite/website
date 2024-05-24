@@ -1,0 +1,53 @@
+---
+layout: article
+title: Command line interface (CLI)
+description: "Learn how to use Appwrite all-in-one CLI solution, for local development, CI/CD pipelines and SDK methods"
+back: /docs
+---
+
+The [Appwrite CLI](https://github.com/appwrite/sdk-for-cli) is a multipurpose command-line application that allows you to execute your **daily tasks**, use to it as a **server-side SDK** and run in it in a non-interactive manner.
+
+## Daily tasks {% #daily-tasks %}
+Use Appwrite CLI to perform daily tasks using your terminal in an interactive way.
+
+You can use Appwrite CLI to create and manage projects, collections, functions, buckets, teams and message-topics.
+
+Need a new function? Just run `appwrite init function`, Appwrite CLI will now walk you through the all processes.
+## Server side SDK {% #server-side-sdk %}
+Appwrite CLI contains all of Appwrite [server-side](/docs/references#client-vs-server) SDK functions.
+
+For example, you'll create a new user in the Node SDK as such:
+```js
+const result = await users.create(
+    '<USER_ID>', 
+    'email@example.com', 
+    '+12065550100', 
+    '<SECRET_PASSWORD>', 
+    '<NAME>' 
+);
+```
+
+In the CLI it would be like so:
+```sh
+appwrite users create \
+ --userId '<USER_ID>' \     
+ --email 'email@example.com' \     
+ --phone '+12065550100' \     
+ --password '<SECRET_PASSWORD>' \
+ --name '<NAME>' \         
+```
+
+## Non-interactive {% #non-interactive %}
+
+Use is in a non-interactive manner for CI/CD pipelines and automate your Appwrite experience.
+
+Whatever is user creation, collection migration, or even function deployments Appwrite CLI will do it for you.
+
+{% cards %}
+{% cards_item href="/docs/tooling/command-line/non-interactive" title="Non-Interactive" %}
+How to use Appwrite in a non-integrative way.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/command-line/ci-cd" title="CI/CD" %}
+Learn how to create a CI/CD pipeline in GitHub action using Appwrite CLI.
+{% /cards_item %}
+{% /cards %}

@@ -98,7 +98,7 @@
             items: [
                 {
                     label: 'Command Line',
-                    href: '/docs/tooling/command-line/installation',
+                    href: '/docs/tooling/command-line',
                     icon: 'icon-terminal',
                     isParent: true
                 },
