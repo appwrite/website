@@ -26,7 +26,11 @@ Alternatively, you might be building a project on top of data you already have i
 
 ## Neon - Serverless Postgres
 
-Neon provides a managed Postgres database, which is famously known for its SQL syntax and ability to store structured data. For most databases, it’s beneficial for data to be structured. Structure gives data predictability and reliability, which is key to any production-ready application. SQL databases are also preferred when relations between data play a big role in preventing data duplication and ease of updating the data in one place. Postgres specifically allows you to add extensions to store and queue geospatial or vector efficiently.
+Neon provides a managed Postgres database, which is famously known for its SQL syntax and ability to store structured data.
+
+For most databases, it’s beneficial for data to be structured. Structure gives data predictability and reliability, which is key to any production-ready application.
+
+SQL databases are also preferred when relations between data play a big role in preventing data duplication and ease of updating the data in one place. Postgres specifically allows you to add extensions to store and queue geospatial or vector efficiently.
 
 To integrate with Neon, you can set up an Appwrite function and prepare a Postgres client.
 
@@ -84,7 +88,11 @@ You can find an entire example in our [query Neon Postgres](https://github.com/a
 
 ## MongoDB Atlas
 
-Atlas, a managed cloud platform by the MongoDB team, is a cloud provider of MongoDB clusters. MongoDB database is well-known for its JSON document structure. This approach allows you to store unstructured data optimally, with a huge improvement boost to write operations. For instance, usage stats or sales history could be stored in MongoDB and later processed to gain more insights into app analytics. While MongoDB shines the most in storing unstructured data, nowadays, it provides all the capabilities developers expect from a relational database. If you don’t like SQL queries, MongoDB is a great choice.
+Atlas, a managed cloud platform by the MongoDB team, is a cloud provider of MongoDB clusters.
+
+MongoDB database is well-known for its JSON document structure. This approach allows you to store unstructured data optimally, with a huge improvement boost to write operations. For instance, usage stats or sales history could be stored in MongoDB and later processed to gain more insights into app analytics.
+
+While MongoDB shines the most in storing unstructured data, nowadays, it provides all the capabilities developers expect from a relational database. If you don’t like SQL queries, MongoDB is a great choice.
 
 With Mongo, integration becomes simpler, since you don’t need to define structure of collections or documents. After preparing a client, you can directly start writing and querying data.
 
@@ -137,7 +145,9 @@ A better-structured example can be found in the [query Mongo Atlas](https://gith
 
 ## Redis Labs
 
-Redis is a widely used key-value database, most often serving as a cache layer in front of another database. It’s faster than the database behind it since Redis stores data in memory. While the cache is a typical use case for Redis, it can be used for much more since it can also store data persistently to drive. Its key-value approach gives very fast read and write operations, with the latest Redis version also supporting query abilities. Other use cases for Redis include pub/sub, atomic counters, distributed locks, or message queues.
+Redis is a widely used key-value database, most often serving as a cache layer in front of another database. It’s faster than the database behind it since Redis stores data in memory.
+
+While the cache is a typical use case for Redis, it can be used for much more since it can also store data persistently to drive. Its key-value approach gives very fast read and write operations, with the latest Redis version also supporting query abilities. Other use cases for Redis include pub/sub, atomic counters, distributed locks, or message queues.
 
 You can start integrating with Redis Labs by creating and connecting a client.
 
@@ -194,7 +204,11 @@ A working example can be found in our [query Redis Labs](https://github.com/appw
 
 ## Neo4j AuraDB
 
-AuraDB is a cloud offering of Neo4j, the leading graph database. Using Cypher, a graph query language, Neo4j allows you to store data with attention to their relations. Non-relational data can live in the Neo4j database but it’s a very rare use case. Usually, every node is connected to another node, creating a large net of relations. Graph database gives benefits similar to relational databases, but to a much larger extend. Compared to databases like Postgres, Neo4j is much more focused on relations and encourages a large chain of relations. With relations between all data, features such as recommendation feed or friend discoverability become effortless.
+AuraDB is a cloud offering of Neo4j, the leading graph database. Using Cypher, a graph query language, Neo4j allows you to store data with attention to their relations. Non-relational data can live in the Neo4j database but it’s a very rare use case.
+
+Usually, every node is connected to another node, creating a large net of relations. Graph database gives benefits similar to relational databases, but to a much larger extend.
+
+Compared to databases like Postgres, Neo4j is much more focused on relations and encourages a large chain of relations. With relations between all data, features such as recommendation feed or friend discoverability become effortless.
 
 To use Neo4j with Appwrite Functions, you can create a function and connect using the Neo4j driver.
 
@@ -263,7 +277,9 @@ You can look at the entire example put together in the [query Neo4j AuraDB](http
 
 ## Upstash Vector
 
-Upstash is a data platform that offers services such as Redis, Kafka, or QStash, but most importantly, a vector database. Vector database stores multi-dimensional numeric representations of your data (embeddings) in an index, allowing you to find similarities between them quickly. There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a purposeful model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer.
+Upstash is a data platform that offers services such as Redis, Kafka, or QStash, but most importantly, a vector database. Vector database stores multi-dimensional numeric representations of your data (embeddings) in an index, allowing you to find similarities between them quickly.
+
+There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a purposeful model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer.
 
 Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can prepare Appwrite Function that connects to Upstash, and inserts your first data.
 
