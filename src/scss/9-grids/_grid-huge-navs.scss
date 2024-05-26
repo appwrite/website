@@ -156,7 +156,7 @@
       }
     }
   }
-  /* work around spacing issue on huse screen between 1920px to 1984px */
+  /* work around spacing issue on huge screen between 1920px to 1984px */
   @media (min-width: 1920px) And (max-width:1940.9px){  .web-article-header { padding-inline-end:32px; }  }
   @media (min-width: 1941px) And (max-width:1960.9px){  .web-article-header { padding-inline-end:20px; }  }
   @media (min-width: 1961px) And (max-width:1983.9px){  .web-article-header { padding-inline-end:10px; }  }
