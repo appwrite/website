@@ -13,8 +13,7 @@
 
     $: progress = Math.max(...$activeHeadingIdxs) / ($headingsTree.length - 1);
 </script>
-
-<aside class="web-grid-120-1fr-auto-side" class:web-is-mobile-closed={!showToc}>
+<aside class="web-grid-120-1fr-auto-side" class:web-is-mobile-closed={showToc}>
     <div class="web-page-steps">
         <div class="web-page-steps-location web-is-not-mobile" style="--location:{progress * 100}%;">
             <span class="web-page-steps-location-button">

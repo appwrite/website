@@ -72,7 +72,7 @@
                     <h1 class="web-title web-u-color-text-primary">{title}</h1>
                 </header>
                 <button
-                    class="toc-btn u-position-sticky u-flex u-width-full-line u-main-space-between u-cross-center
+                    class="toc-btn u-position-sticky u-main-space-between u-cross-center
                 web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile
                 u-margin-block-start-24 web-u-sep-block web-u-filter-blur-8"
                     style:--inset-block-start="4.5rem"
@@ -106,6 +106,7 @@
     }
 
     .toc-btn {
+        display: flex;
         transition: translate 0.3s ease;
     }
 </style>
