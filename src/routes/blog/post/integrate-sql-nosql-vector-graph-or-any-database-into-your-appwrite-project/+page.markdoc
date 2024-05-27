@@ -22,7 +22,7 @@ For such database needs, you can use Appwrite Database directly. It comes includ
 
 For more specific use cases, different databases may offer more features and better performance. For example, a search query in the Appwrite Database is perfect for a search input, but if primary feature of your product is searching, you could look for a robust search engine. Database with dedication towards searching could offer mistake tolerance, synonym awareness, or result personalization.
 
-Alternatively, you might be building a project on top of data you already have in an external database. Your team may be very experienced with self-hosting a database, or your client may require the use of a specific database. There are wide variety of reasons why a separate database might be a right choice for your project. We are well aware of those situations, and Appwrite was build with that in mind. It’s deeply embedded in our philosophy to meet developers where they are and allow them to work with any tools or technologies that they need and love.
+Alternatively, you might be building a project on top of data you already have in an external database. Your team may be very experienced with self-hosting a database, or your client may require the use of a specific database. There are wide variety of reasons why a separate database might be a right choice for your project. We are well aware of those situations, and Appwrite was built with that in mind. It’s deeply embedded in our philosophy to meet developers where they are and allow them to work with any tools or technologies that they need and love.
 
 ## Neon - Serverless Postgres
 
@@ -94,7 +94,7 @@ MongoDB database is well-known for its JSON document structure. This approach al
 
 While MongoDB shines the most in storing unstructured data, nowadays, it provides all the capabilities developers expect from a relational database. If you don’t like SQL queries, MongoDB is a great choice.
 
-With Mongo, integration becomes simpler, since you don’t need to define structure of collections or documents. After preparing a client, you can directly start writing and querying data.
+With MongoDB, integration becomes simpler, since you don’t need to define structure of collections or documents. After preparing a client, you can directly start writing and querying data.
 
 ```jsx
 import { MongoClient, ServerApiVersion } from 'mongodb';
@@ -143,13 +143,13 @@ A better-structured example can be found in the [query Mongo Atlas](https://gith
 
 ![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.png)
 
-## Redis Labs
+## Redis
 
 Redis is a widely used key-value database, most often serving as a cache layer in front of another database. It’s faster than the underlying database since Redis stores data in memory.
 
 While the cache is a typical use case for Redis, it can be used for much more since it can also store data persistently to disk. Its key-value approach renders very fast read and write operations, with the latest Redis version also supporting querying capabilities. Other use cases for Redis include pub/sub, atomic counters, distributed locks, and message queues.
 
-You can start integrating with Redis Labs by creating and connecting a client.
+You can start integrating with Redis by creating and connecting a client.
 
 ```jsx
 import { createClient } from 'redis';
@@ -279,7 +279,7 @@ You can look at the entire example put together in the [query Neo4j AuraDB](http
 
 Upstash is a data platform that offers services such as Redis, Kafka, or QStash, but most importantly, a vector database. Vector database stores multi-dimensional numeric representations of your data (embeddings) in an index, allowing you to find similarities between them quickly.
 
-There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a purposeful model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer.
+There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a AI model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer. 
 
 Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can create an Appwrite Function that connects to Upstash, and inserts your data.
 
