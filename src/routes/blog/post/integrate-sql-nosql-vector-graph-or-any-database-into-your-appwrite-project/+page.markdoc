@@ -18,11 +18,11 @@ Databases allow you to store and query your application’s information persiste
 
 Most applications don’t include complex database logic, at least not at the beginning. Typically, applications start with basic features that bring value to some customers and gradually improve their features to provide value to a wider range of users.
 
-For such generic database needs, you can use Appwrite Database directly. It comes included in your Appwrite project, so no additional setup is needed to connect to it. Appwrite Databases include the most common database features such as filtering, sorting, pagination, and more. It’s best to use Appwrite Databases as your main database for an Appwrite project since it’s inside Appwrite’s ecosystem and easily integrates with Appwrite Auth permissions.
+For such database needs, you can use Appwrite Database directly. It comes included in your Appwrite project, so no additional setup is needed to connect to it. Appwrite Databases include the most commonly needed database features such as filtering, sorting, pagination, and more. It’s best to use Appwrite Databases as your main database for an Appwrite project since it’s inside Appwrite’s ecosystem and easily integrates with Appwrite Auth permissions.
 
-For more specific use cases, different databases will offer more features and better performance. For example, a search query in the Appwrite Database is perfect for simple search input, but if your product builds on the ability to search, you should look for a database with a robust search engine. Such a database can offer even more search features, like mistake tolerance, synonym awareness, or result personalization.
+For more specific use cases, different databases may offer more features and better performance. For example, a search query in the Appwrite Database is perfect for a search input, but if primary feature of your product is searching, you could look for a robust search engine. Database with dedication towards searching could offer mistake tolerance, synonym awareness, or result personalization.
 
-Alternatively, you might be building a project on top of data you already have in an external database. Your team may be very experienced with self-hosting a database, or your client may require the use of a specific database. There are many reasons why a separate database is the right choice for your situation. We are well aware of those situations and aim to help you integrate with a database of your choice. It’s deeply embedded in our philosophy to meet developers where they are and allow them to work with any tools or technologies that they need and love.
+Alternatively, you might be building a project on top of data you already have in an external database. Your team may be very experienced with self-hosting a database, or your client may require the use of a specific database. There are wide variety of reasons why a separate database might be a right choice for your project. We are well aware of those situations, and Appwrite was build with that in mind. It’s deeply embedded in our philosophy to meet developers where they are and allow them to work with any tools or technologies that they need and love.
 
 ## Neon - Serverless Postgres
 
@@ -198,7 +198,7 @@ const warehouses = await client.hGetAll(`warehouses:${hash}`);
 return res.json(warehouses);
 ```
 
-A working example can be found in our [query Redis Labs](https://github.com/appwrite/templates/tree/main/node/query-redis-labs) function template.
+A working example can be found in our [query Redis Labs](https://github.com/appwrite/templates/tree/main/node/query-redis-labs) function template or in your Appwrite Console.
 
 ![Redis Labs Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/redis.png)
 
@@ -271,7 +271,7 @@ const graph = await client.executeQuery(
 return res.json(graph);
 ```
 
-You can look at the entire example put together in the [query Neo4j AuraDB](https://github.com/appwrite/templates/tree/main/node/query-neo4j-auradb) template.
+You can look at the entire example put together in the [query Neo4j AuraDB](https://github.com/appwrite/templates/tree/main/node/query-neo4j-auradb) template or in your Functions Marketplace in Appwrite Console.
 
 ![Neon4j AuraDB Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neo4j.png)
 
@@ -327,7 +327,7 @@ const embedding = await client.query({
 return res.json(embedding);
 ```
 
-If needed for your use-case, you can disable automatic embedding generation from Upstash, and use any AI model of your choice. You can use the [query Upstash Vector](https://github.com/appwrite/templates/tree/main/node/query-upstash-vector) Appwrite Function template as a reference for your implementation.
+If needed for your use-case, you can disable automatic embedding generation from Upstash, and use any AI model of your choice. You can use the [query Upstash Vector](https://github.com/appwrite/templates/tree/main/node/query-upstash-vector) Appwrite Function template as a reference for your implementation. Additionally, you can find this example in Appwrite Console when setting up a new function.
 
 ![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.png)
 
