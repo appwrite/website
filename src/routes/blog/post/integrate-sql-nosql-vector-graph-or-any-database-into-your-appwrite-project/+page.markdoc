@@ -12,7 +12,7 @@ featured: false
 
 # Integrate any database type into your Appwrite project
 
-Databases allow you to store and query your application’s information persistently. Storing is usually straightforward, but querying data optimally is a major challenge for applications at any scale. Instead of simply saying `it depends`, we prepared a list of Cloud database providers and explained tier unique features and examples in which they shine. For each database, we also provide an Appwrite Function that allows you to integrate the database into your Appwrite project.
+Databases allow you to store and query your application’s information persistently. Storing is usually straightforward, but querying data optimally is a major challenge for applications at any scale. Instead of simply saying `it depends`, we have prepared a list of Cloud database providers, explained their unique features, and shared examples where they shine. For each database, we also provide an Appwrite Function that allows you to integrate the database into your Appwrite project.
 
 ## Appwrite Database
 
@@ -30,7 +30,7 @@ Neon provides a managed Postgres database, which is famously known for its SQL s
 
 For most databases, it’s beneficial for data to be structured. Structure gives data predictability and reliability, which is key to any production-ready application.
 
-SQL databases are also preferred when relations between data play a big role in preventing data duplication and ease of updating the data in one place. Postgres specifically allows you to add extensions to store and queue geospatial or vector efficiently.
+SQL databases are also preferred when relations between data play a big role in preventing data duplication and ease of updating the data in one place. Postgres specifically allows you to add extensions to store and query geospatial and vector data efficiently.
 
 To integrate with Neon, you can set up an Appwrite function and prepare a Postgres client.
 
@@ -82,7 +82,7 @@ const warehouses = await client`SELECT * FROM warehouses LIMIT ${limit} OFFSET $
 return res.json(warehouses);
 ```
 
-You can find an entire example in our [query Neon Postgres](https://github.com/appwrite/templates/tree/main/node/query-neon-postgres) function template.
+You can find an entire example in our [query Neon Postgres](https://github.com/appwrite/templates/tree/main/node/query-neon-postgres) function template, which is also available on your Appwrite Console in the Functions Marketplace.
 
 ![Neon Postgres Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neon.png)
 
@@ -139,15 +139,15 @@ export default async ({ req, res, log, error }) => {
 };
 ```
 
-A better-structured example can be found in the [query Mongo Atlas](https://github.com/appwrite/templates/tree/main/node/query-mongo-atlas) function template.
+A better-structured example can be found in the [query Mongo Atlas](https://github.com/appwrite/templates/tree/main/node/query-mongo-atlas) function template and also on your Appwrite Console.
 
 ![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.png)
 
 ## Redis Labs
 
-Redis is a widely used key-value database, most often serving as a cache layer in front of another database. It’s faster than the database behind it since Redis stores data in memory.
+Redis is a widely used key-value database, most often serving as a cache layer in front of another database. It’s faster than the underlying database since Redis stores data in memory.
 
-While the cache is a typical use case for Redis, it can be used for much more since it can also store data persistently to drive. Its key-value approach gives very fast read and write operations, with the latest Redis version also supporting query abilities. Other use cases for Redis include pub/sub, atomic counters, distributed locks, or message queues.
+While the cache is a typical use case for Redis, it can be used for much more since it can also store data persistently to disk. Its key-value approach renders very fast read and write operations, with the latest Redis version also supporting querying capabilities. Other use cases for Redis include pub/sub, atomic counters, distributed locks, and message queues.
 
 You can start integrating with Redis Labs by creating and connecting a client.
 
@@ -206,7 +206,7 @@ A working example can be found in our [query Redis Labs](https://github.com/appw
 
 AuraDB is a cloud offering of Neo4j, the leading graph database. Using Cypher, a graph query language, Neo4j allows you to store data with attention to their relations. Non-relational data can live in the Neo4j database but it’s a very rare use case.
 
-Usually, every node is connected to another node, creating a large net of relations. Graph database gives benefits similar to relational databases, but to a much larger extend.
+Usually, every node is connected to another node, creating a large net of relations. Graph database gives benefits similar to relational databases, but to a much larger extent.
 
 Compared to databases like Postgres, Neo4j is much more focused on relations and encourages a large chain of relations. With relations between all data, features such as recommendation feed or friend discoverability become effortless.
 
@@ -228,7 +228,7 @@ export default async ({ req, res, log, error }) => {
 }
 ```
 
-Next, you can insert data as notes with relations between them. You can use `MERGE` clause to ensure node is re-used instead of creating duplicates.
+Next, you can insert data as nodes with relations between them. You can use `MERGE` clause to ensure a node is re-used instead of creating duplicates.
 
 ```jsx
 // Insert data
@@ -281,7 +281,7 @@ Upstash is a data platform that offers services such as Redis, Kafka, or QStash,
 
 There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a purposeful model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer.
 
-Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can prepare Appwrite Function that connects to Upstash, and inserts your first data.
+Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can create an Appwrite Function that connects to Upstash, and inserts your data.
 
 ```jsx
 import { Index } from "@upstash/vector"
@@ -314,7 +314,7 @@ export default async ({ req, res, log, error }) => {
 }
 ```
 
-After inserting data, Upstash takes a few seconds to generate embedding and store it in the database. Once the index is ready, you can query your database and look for similar data.
+After inserting data, Upstash takes a few seconds to generate embeddings and store it in the database. Once the index is ready, you can query your database and look for similar products.
 
 ```jsx
 const embedding = await client.query({
