@@ -518,7 +518,7 @@ import { Client, Databases, Query, ID } from 'node-appwrite';
 import querystring from 'node:querystring';
 
 const html = `<!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
@@ -571,7 +571,7 @@ from urllib.parse import parse_qs
 import os
 
 html = '''<!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
@@ -625,7 +625,7 @@ use Appwrite\Exception;
 use Appwrite\Services\Databases;
 
 $html = '<!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
@@ -676,7 +676,7 @@ return function ($context) {
 require "appwrite"
 
 html = '''<!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
@@ -728,7 +728,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future main(final context) async {
     final html = '''<!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>

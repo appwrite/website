@@ -90,7 +90,7 @@ Create an HTML web page that the function will serve. Create a new file at `stat
 
 ```html
 <!doctype html>
-  <html lang="en">
+  <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

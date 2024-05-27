@@ -90,7 +90,7 @@ Create a HTML web page that the function will serve. Create a new file at `stati
 
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 </html>
 ```
 

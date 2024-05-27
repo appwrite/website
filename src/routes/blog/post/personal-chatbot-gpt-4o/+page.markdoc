@@ -53,7 +53,7 @@ To get our chatbot up and running, we must first develop a UI you can interact w
 
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
