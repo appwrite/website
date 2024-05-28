@@ -12,6 +12,45 @@ Commands follows the following general syntax:
 appwrite [COMMAND] [OPTIONS]
 ```
 
+When using any of the Server SDK methods, the syntax would be like so: 
+```sh
+appwrite [API] [METHOD] [PARAMETERS]
+```
+For example, to execute the [Create User](/docs/references/cloud/server-nodejs/users#create) function, run:
+{% tabs %}
+{% tabsitem #unix title="Unix" %}
+```sh
+appwrite users create \
+  --userId "USER_ID" \
+  --email "email@example.com" \
+  --phone "+12065550100" \
+  --password "password" \
+  --name "NAME"
+```
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+## CMD
+```cmd
+appwrite users create ^
+  --userId "USER_ID" ^
+  --email "email@example.com" ^
+  --phone "+12065550100" ^
+  --password "password" ^
+  --name "NAME"
+```
+## Powershell
+```powershell
+appwrite users create `
+  --userId "USER_ID" `
+  --email "email@example.com" `
+  --phone "+12065550100" `
+  --password "password" `
+  --name "NAME"
+```
+{% /tabsitem %}
+{% /tabs %}
+
 # List {% #list %}
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
@@ -23,14 +62,20 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `login`
 * The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
 ---
+* `whoami`
+* The whoami command gives you basic information about the current login account.
+---
 * `client`
 * The client command allows you to configure your CLI.
 ---
 * `init`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
+* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, messaging-topics and buckets.
 ---
-* `deploy`
-* The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
+* `push`
+* The push command provides a convenient wrapper for pushing your project, databases, collections, functions, teams, messaging-topics and buckets.
+---
+* `pull`
+* The pull command provides a convenient wrapper for pulling your project, databases, collections, functions, teams, messaging-topics and buckets.
 ---
 * `logout`
 * The logout command allows you to logout from the CLI.
@@ -79,17 +124,39 @@ By default, output is rendered in a tabular format. To format the output as JSON
 appwrite users list --json
 ```
 
-# Examples {% #examples %}
 
-## Create user {% #create-user %}
-
-To create a new user in your project, you can use the create command.
+# Force {% #force %}
+By default, when pushing or pulling resources, Appwrite CLI asks you to confirm in a destructive use case. Use the `--force` flag to verify all questions.
 
 ```sh
-appwrite users create --userId "unique()" \
-    --email hello@appwrite.io \
-    --password very_strong_password
+appwrite push collections --force
 ```
+# All {% #all %}
+By default, when pushing or pulling resources, Appwrite CLI would ask you to select specific resources. Use the `--all` flag to select all available options.
+
+```sh
+appwrite pull functions --all
+```
+# Error reporting {% #report %}
+If you encounter errors with any command, you can use the --report flag to generate a GitHub reporting link.
+
+```sh
+appwrite login --report
+```
+
+# View on console {% #console-flow %}
+Many resources support the option to view them in the console. Use the `--console` flag to get a direct link to the console, and add the optional `--open` flag to automatically open it in the default browser.
+
+```sh
+appwrite databases getDocument \ 
+  --databaseId DATABASE_ID \
+  --collectionId COLLECTION_ID \
+  --documentId DOCUMENT_ID \
+  --console --open
+```
+
+
+# Examples {% #examples %}
 
 ## List users {% #list-users %}
 

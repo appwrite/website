@@ -69,6 +69,11 @@ Before you can use the CLI, you need to login to your Appwrite account using
 ```sh
 appwrite login
 ```
+In case of a self-hosted instance, add the `--self-hosted` flag
+```sh
+appwrite login --self-hosted
+```
+You can log in to multiple accounts or change the **current** account by simply running the command again.
 
 You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
 

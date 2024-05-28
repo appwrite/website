@@ -69,18 +69,23 @@ Remember to specify the build commands for your function to install dependencies
 You can create functions using the CLI, without needing to access the Console.
 Before you can deploy with the Appwrite CLI, make sure you've [initialized the CLI.](/docs/tooling/command-line/installation)
 
-To deploy with the Appwrite CLI, your function must be added to your `appwrite.json` config file. 
-Use the `appwrite init function` method to create a starter function, then paste in your function code.
+To deploy with the Appwrite CLI, your function must be added to your `appwrite.json` config file.
+
+You can pull an existing functions
+```bash
+appwrite pull functions
+```
+Or use the `appwrite init function` method to create a function, then paste in your function code.
 
 ```bash
 appwrite init function
 ```
 
 The init command will initialize a folder with a starter function code.
-To deploy the generated code, add dependencies, and deploy the function using the following command:
+To push the generated code, add dependencies, and deploy the function using the following command:
 
 ```bash
-appwrite deploy function
+appwrite push functions
 ```
 {% /tabsitem %}
 {% /tabs %}

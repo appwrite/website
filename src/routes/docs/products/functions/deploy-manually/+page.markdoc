@@ -17,16 +17,21 @@ Before you can deploy with the Appwrite CLI, make sure you've [installed and ini
 {% /info %}
 
 To deploy with the Appwrite CLI, your function must be added to `appwrite.json`. 
-Use the `appwrite init function` method to create a starter function, then paste in your function code.
+You can pull an existing functions
+```bash
+appwrite pull functions
+```
+
+Or you can use the `appwrite init function` method to create a function, then paste in your function code.
 
 ```bash
 appwrite init function
 ```
 
-Edit the generated code, add dependencies, and deploy the function using the following command:
+Edit the generated code, add dependencies, and push the function using the following command:
 
 ```bash
-appwrite deploy function
+appwrite push functions
 ```
 
 ## Overwrite warning {% #overwrite-warning %} 
