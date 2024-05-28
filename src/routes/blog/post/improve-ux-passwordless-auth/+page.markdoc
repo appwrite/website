@@ -143,18 +143,18 @@ final client = Client()
 
 final account = Account(client);
 
-final sessionToken = await account.createPhoneSession(
+final token = await account.createPhoneToken(
     userId: ID.unique(),
     phone: '+14255550123'
 );
 
-final userId = sessionToken.userId;
+final userId = token.userId;
 ```
 
 After receiving the secret (6-digit number) in the SMS, you can use it along with the returned user ID to confirm the user.
 
 ```dart
-final session = await account.updatePhoneSession(
+final session = await account.createSession(
     userId: userId,
     secret: '[SECRET]'
 );
