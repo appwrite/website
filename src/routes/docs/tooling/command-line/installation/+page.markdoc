@@ -124,6 +124,11 @@ appwrite client --reset // Resets your CLI configuration
 appwrite client --debug // Prints your current configuration
 ```
 
+# Upgrade {% #upgrade %}
+
+To upgrade Appwrite CLI, use the same method you used during the installation process.
+
+
 # Uninstall {% #uninstall %}
 
 If you installed Appwrite CLI using NPM, you can use the following command to uninstall it.
