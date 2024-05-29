@@ -39,7 +39,7 @@ Once the function is created, navigate to the freshly created repository and clo
 
 Add the necessary dependencies in the `requirements.txt` file:
 
-```plaintext
+```
 tensorflow
 numpy
 ```
