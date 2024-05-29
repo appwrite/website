@@ -5,7 +5,7 @@ date: 2024-05-29
 cover:
 ---
 
-Appwrite 1.5.7 is released with fixes for Databases, Functions, MFA and Console.
+Appwrite 1.5.7 is released with fixes for Databases, Functions and Console.
 
 Fixes:
 - Fix database exception wrapping
