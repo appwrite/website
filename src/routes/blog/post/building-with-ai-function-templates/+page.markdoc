@@ -9,9 +9,7 @@ author: aditya-oberai
 category: product
 ---
 
-It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. 
-
-However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications. 
+It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications. 
 
 So, what did we add? This blog provides an overview of all the concepts we’ve added, tutorials, templates, and the integrations we support.
 
