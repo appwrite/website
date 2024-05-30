@@ -143,16 +143,25 @@ When using the `appwrite pull` command, the CLI will update the `appwrite.json` 
 
 Here's a complete list of all configurable options in `appwrite.json`:
 
-| Option        | Type                      | Description                                        |
-|---------------|---------------------------|----------------------------------------------------|
-| `projectId`   | string                    | ID of your Appwrite Project.                       |
-| `projectName` | string                    | Name of your Appwrite Project.                     |
-| `functions`   | array of functions        | Configuration of functions in your project.        |
-| `databases`   | array of databases        | Configuration of databases in your project.        |
-| `collections` | array of collections      | Configuration of collections in your project.      |
-| `teams`       | array of teams            | Configuration of teams in your project.            |
-| `buckets`     | array of buckets          | Configuration of teams in your project.            |
-| `topics`      | array of messaging topics | Configuration of messaging topics in your project. |
+| Option            | Type                      | Description                                                                 |
+|-------------------|---------------------------|-----------------------------------------------------------------------------|
+| `projectId`       | string                    | ID of your Appwrite Project.                                                |
+| `projectName`     | string                    | Name of your Appwrite Project.                                              |
+| `projectSettings` | object                    | Object contains your Appwrite services, auth methods and security settings. |
+| `functions`       | array of functions        | Configuration of functions in your project.                                 |
+| `databases`       | array of databases        | Configuration of databases in your project.                                 |
+| `collections`     | array of collections      | Configuration of collections in your project.                               |
+| `teams`           | array of teams            | Configuration of teams in your project.                                     |
+| `buckets`         | array of buckets          | Configuration of teams in your project.                                     |
+| `topics`          | array of messaging topics | Configuration of messaging topics in your project.                          |
+
+### Project settings {% #project-settings %}
+
+| Option          | Type   | Description                                                                                                                                                                                                                                            |
+|-----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `services`      | object | [API Services](/docs/references#api) enabled status, such as `account`, `database`, `functions`, which can be set to `true` or `false`.                                                                                                                |
+| `auth.methods`  | object | [Authentication methods](/docs/products/auth#auth-methods) enabled status, such as `email-password`, `jwt`, `phone`, which can be set to `true` or `false`.                                                                                            |
+| `auth.security` | object | Authentication [security settings](/docs/products/auth/security), including `duration`, `limit`, `sessionsLimit`, and `passwordHistory` with numeric values. And, `passwordDictionary` and `personalDataCheck`, which can be set to `true` or `false`. |
 
 ### Function options {% #function-options %}
 
