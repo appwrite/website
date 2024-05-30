@@ -3,7 +3,7 @@ layout: post
 title: Building with Appwrite AI Function templates
 description: Get an overview of Appwrite AI Function templates and what you can build.
 date: 2024-05-16
-cover: /images/blog/function-templates.png
+cover: /images/blog/building-with-ai-function-templates/function-templates.png
 timeToRead: 7
 author: aditya-oberai
 category: product
@@ -185,7 +185,7 @@ As we have covered in this blog, we have added a lot of great templates for you 
 - [LangChain](https://appwrite.io/docs/products/ai/integrations/langchain)
 - [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
 
-![Image of Appwrite Console](/images/blog/function-templates-overview.png)
+![Image of Appwrite Console](/images/blog/building-with-ai-function-templates/function-templates-overview.png)
 
 We've also added more AI Function templates for more use cases than discussed above:
 - Sync with Pinecone - Sync your Appwrite database with Pinecone's vector database.
