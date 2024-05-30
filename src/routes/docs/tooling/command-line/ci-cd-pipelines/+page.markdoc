@@ -1,0 +1,96 @@
+---
+layout: article
+title: CI/CD pipelines
+description: Automate your Appwrite workflow using GitHub actions
+---
+
+In this guide will go to learn how to automate **database migration** and **creating development environment** using GitHub Actions.
+
+# Database Migration {% #database-migrations %}
+
+We can use Appwrite CLI to automate collection attributes changes, adding, recreating and deleting, the attributes changes process as follows:
+
+* New attribute will be added
+* Removed attribute will get deleted
+* In case of attribute fields changes like `size`, `type` and other destructive changes, Appwrite CLI will recreate the attribute causing lose of all existing data.
+
+**Note**: when changing the attribute key, for example, from `firstName` to `first_name`, Appwrite CLI will delete the old key and recreate it using the new key.
+
+Here, the GitHub Action will run the following steps when publishing new release:
+
+* Clones the repo
+* Adds Node, as Appwrite CLI uses Node
+* Login using secrets
+* Pushes all available collections with the `--force` flag to confirm all changes
+
+```yaml
+name: Database Migrations
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: Login
+        run: npx appwrite login --email ${{ secrets.EMAIL }} --password ${{ secrets.PASSWORD }}
+      - name: Migrate collections
+        run: npx appwrite push collections --all --force
+```
+
+# Creating dev environment {% #creating-dev-environment %}
+
+It's useful to be able to clone production Appwrite resources to a dev environment for safe testing.
+
+The following GitHub action will be triggered manually asking you to provide the project name and then:
+
+* Clones the repo
+* Adds Node
+* Login using secrets
+* Pulls all up-to-date resources from production environment
+* Generates ID composed of current timestamp + project name
+* Create a new project with Appwrite CLI server SDK using the generated ID, inputted name and Organization ID 
+* Updates the `appwrite.json` values to match the newly created one using `sed`
+* Pushes all resources to the new project with the `--force` flag to confirm all changes
+
+```yaml
+name: Creating test env
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Test env project name"
+        required: true
+
+jobs:
+  updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: Login
+        run: npx appwrite login --email "${{ secrets.EMAIL }}" --password "${{ secrets.PASSWORD }}"
+      - name: Pull all resources
+        run: npx appwrite pull all --all --force
+      - name: Create a new project
+        run: |
+          id="$(date +%s)${{ github.event.inputs.project_name }}"
+          npx appwrite projects create --projectId "$id" --name "${{ github.event.inputs.project_name }}" --teamId "${{ secrets.ORGANIZATION }}"
+          sed -E -i "s#\"projectId\": \"(\S+)\"#\"projectId\": \"$id\"#" appwrite.json
+          sed -E -i "s#\"projectName\": \"(\S+)\"#\"projectName\": \"${{ github.event.inputs.project_name }}\"#" appwrite.json
+      - name: Push all resources
+        run: npx appwrite push all --all --force
+```
+
+With just one-click, you're able to clone your entire production environment to a new one, available for testing.
+
+**Note**: The `appwrite push` and `appwrite pull` commands ,am the resources and the resource data. For example, pulling collections won't pull and collections documents.   

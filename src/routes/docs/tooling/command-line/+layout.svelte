@@ -26,6 +26,10 @@
 				{
 					label: 'Non interactive',
 					href: '/docs/tooling/command-line/non-interactive'
+				},
+				{
+					label: 'CI/CD pipelines',
+					href: '/docs/tooling/command-line/ci-cd-pipelines'
 				}
 			]
 		}
