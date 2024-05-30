@@ -81,9 +81,9 @@ mutation {
     }
 }
 ```
+
 ```client-react-native
 import { Client, Account, ID } from "appwrite";
-
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
@@ -97,37 +97,36 @@ const user await = account.create(
 );
 ```
 {% /multicode %}
-
 {% /section %}
 
 {% section #login step=2 title="Login" %}
 
-After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailSession) method.
+After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailPasswordSession) method.
 
 {% multicode %}
 ```client-web
-const session = await account.createEmailSession(
+const session = await account.createEmailPasswordSession(
     email, 
     password
 );
 ```
 
 ```client-flutter
-final session = await account.createEmailSession(
+final session = await account.createEmailPasswordSession(
     email: 'email@example.com',
     password: 'password'
 );
 ```
 
 ```client-apple
-let session = try await account.createEmailSession(
+let session = try await account.createEmailPasswordSession(
     email: "email@example.com",
     password: "password"
 )
 ```
 
 ```client-android-kotlin
-val session = account.createEmailSession(
+val session = account.createEmailPasswordSession(
     email = "email@example.com",
     password = "password"
 )
@@ -135,7 +134,7 @@ val session = account.createEmailSession(
 
 ```graphql
 mutation {
-    accountCreateEmailSession(email: "email@example.com", password: "password") {
+    accountcreateEmailPasswordSession(email: "email@example.com", password: "password") {
         _id
         userId
         provider
@@ -145,7 +144,7 @@ mutation {
 ```
 
 ```client-react-native
-const session = await account.createEmailSession(
+const session = await account.createEmailPasswordSession(
     email, 
     password
 );
