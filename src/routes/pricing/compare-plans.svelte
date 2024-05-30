@@ -382,7 +382,7 @@
                             <div
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
-                                <h4 class="web-label web-u-color-text-primary">Starter</h4>
+                                <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
                                     class="web-button is-secondary"
