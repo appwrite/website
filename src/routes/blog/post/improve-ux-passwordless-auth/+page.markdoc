@@ -78,7 +78,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.createMagicURLSession(ID.unique(), 'email@example.com', '<APP_URL>');
+const user = await account.createMagicURLToken(ID.unique(), 'email@example.com', '<APP_URL>');
 ```
 
 After receiving the secret from an email, you can create a session for the user.
@@ -88,7 +88,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
-const user = await account.updateMagicURLSession(userId, secret);
+const user = await account.createSession(userId, secret);
 ```
 
 {% /tabsitem %}
@@ -143,18 +143,18 @@ final client = Client()
 
 final account = Account(client);
 
-final sessionToken = await account.createPhoneSession(
+final token = await account.createPhoneToken(
     userId: ID.unique(),
     phone: '+14255550123'
 );
 
-final userId = sessionToken.userId;
+final userId = token.userId;
 ```
 
 After receiving the secret (6-digit number) in the SMS, you can use it along with the returned user ID to confirm the user.
 
 ```dart
-final session = await account.updatePhoneSession(
+final session = await account.createSession(
     userId: userId,
     secret: '[SECRET]'
 );
