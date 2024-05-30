@@ -93,4 +93,4 @@ jobs:
 
 With just one-click, you're able to clone your entire production environment to a new one, available for testing.
 
-**Note**: The `appwrite push` and `appwrite pull` commands ,am the resources and the resource data. For example, pulling collections won't pull and collections documents.   
+**Note**: The `appwrite push` and `appwrite pull` commands accesses the resources and not the resource data. For example, pulling collections won't pull the collections documents.   
