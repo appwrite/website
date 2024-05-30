@@ -9,7 +9,7 @@ author: aditya-oberai
 category: product
 ---
 
-If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite. 
+If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite.
 
 Appwrite and Firebase are both solid options to choose as the Backend-as-a-Service (BaaS) for your app. However, their feature sets can vary substantially. In this article, we will give you a rundown of Appwrite and Firebase to understand how each provider will fit your specific needs.
 
@@ -126,15 +126,15 @@ While both Appwrite and Firebase are great Backend-as-a-Service offerings that s
 
 Here’s a table that compares both Appwrite and Firebase:
 
-| Feature | Appwrite | Firebase |
-| --- | --- | --- |
-| Deployment | Self-hosted or cloud-hosted | Cloud-hosted only |
-| Free plan | Yes, Starter plan | Yes, Spark plan |
-| Paid plan | Yes, Pro plan - $15 per month per member and addons | Yes, Blaze plan - Pay-as-you-go |
-| Open source | Yes | No |
-| Support | Community and email | Community, Support Portal, and help center |
-| Functions marketplace | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | Has an extensions hub featuring pre-built functions ready to deploy. |
-| Messaging providers | 10 providers covering SMS, email, and push notifications | No external providers, but offers the infrastructure for FCM and In-App Messaging |
+| Feature                                                                                                                                    | Appwrite                                                                                                                                   | Firebase                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Deployment                                                                                                                                 | Self-hosted or cloud-hosted                                                                                                                | Cloud-hosted only                                                                                                                          |
+| Free plan                                                                                                                                  | Yes, Free plan                                                                                                                             | Yes, Spark plan                                                                                                                            |
+| Paid plan                                                                                                                                  | Yes, Pro plan - $15 per month per member and addons                                                                                        | Yes, Blaze plan - Pay-as-you-go                                                                                                            |
+| Open source                                                                                                                                | Yes                                                                                                                                        | No                                                                                                                                         |
+| Support                                                                                                                                    | Community and email                                                                                                                        | Community, Support Portal, and help center                                                                                                 |
+| Functions marketplace                                                                                                                      | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | Has an extensions hub featuring pre-built functions ready to deploy.                                                                       |
+| Messaging providers                                                                                                                        | 10 providers covering SMS, email, and push notifications                                                                                   | No external providers, but offers the infrastructure for FCM and In-App Messaging                                                          |
 
 # Resources
 
