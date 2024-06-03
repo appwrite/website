@@ -28,6 +28,7 @@
       cursor:pointer;
       box-shadow: 0 0 0 pxToRem(5) hsl(var(--p-card-shadow-color));
       transition:var(--transition);
+
       &:where(:hover, :active, :focus):not(#{$disabled}) {
         --p-card-bg-color: var(--p-card-bg-color-hover);
       }
