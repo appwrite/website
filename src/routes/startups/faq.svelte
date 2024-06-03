@@ -8,49 +8,50 @@
         answer: string;
     }[] = [
         {
-            question: 'Can I self-host Appwrite for free?',
-            answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="web-link is-inline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="web-link is-inline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
-        },
-        // {
-        //     question: 'Does Appwrite have a trial period?',
-        //     answer: 'Yes, we offer a 14-day trial period for you to explore Appwrite Pro. After the 14-day trial, you can either continue using Pro plan or downgrade to a Free plan.'
-        // },
-        {
-            question: 'What payment methods does Appwrite support?',
-            answer: 'Appwrite currently supports <a class="web-link is-inline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
+            question: 'How do I apply?',
+            answer: 'Please fill out the form at the bottom of this page. We need your full name, email, company name, and website.'
         },
         {
-            question: 'What happens if I reach a resource limit in my Pro plan?',
-            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link is-inline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link is-inline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            question: 'What happens after I apply?',
+            answer: 'Once you submit the form, our team will evaluate your application. If successful, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
         },
         {
-            question: 'What happens if I reach a resource limit in my Free plan?',
-            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            question: 'I am already a Pro user. Can I apply?',
+            answer: 'We only accept new paying customers. This means that if you currently have a Pro account or had one previously, you’re not eligible for the program.'
         },
         {
-            question: 'Why does Appwrite ask for payment verification for up to $150?',
-            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used or your budget cap. If you need higher limits, <a class="web-link is-inline" href="mailto:billing@appwrite.io">contact us</a>.'
+            question: 'Who is eligible to apply?',
+            answer: 'We’re supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don’t meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup.'
         },
         {
-            question: 'How can I join the OSS program?',
-            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="web-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
+            question: 'What are the limits of the Pro plan??',
+            answer: 'The Appwrite Pro plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Pro plan limits.'
         },
         {
-            question: 'I have a Free plan account. How do I upgrade to a paid plan?',
-            answer: 'If you want to upgrade to a paid plan, you can do so in your Appwrite dashboard, select your organization, and change your plan in the <b>Billing</b> section.'
+            question: 'What happens if we scale overnight?',
+            answer: `Appwrite has the resources to handle large amounts of traffic, ensuring stability and room for scale for your application. We can also offer increased support and on-call help during your launch.`
         },
         {
-            question: 'How can I apply credits to my organization?',
-            answer: 'Go to the Appwrite Console and select the organization you wish to add credits to. In your organization overview, you can switch to the billing tab. Here, you need to go to the bottom of the page, where you will find the ability to add credits, as well as see the status of your credits. Credits are only relevant to Pro organizations since Free organizations are 100% free.'
+            question: 'What’s included in the Appwrite for Startups program?',
+            answer: 'Startups joining the program get access to everything Appwrite Pro offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
-            question: 'Where can I find an overview of my organization usage stats?',
-            answer: "Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab where you can find an overview of all your project's usage stats."
+            question: 'What kind of support do we get?',
+            answer: 'When building with Appwrite, you have access to one of the most active communities that can help you when you have questions. As part of the Startup program, we also provide you with a private Discord channel where you get access to our support team, and you will have a dedicated program manager for non-technical questions.'
         },
         {
             question:
-                'Where can I find information about my invoices and other billing information?',
-            answer: 'Go to the Appwrite Console and use the drop-down menu in the top right corner to navigate to your organization overview by clicking on your organization. This will bring you to your overview, where you can select the billing tab. Here you will find your overview, payment history and methods, billing address, set a budget cap, and add your credits.'
+                'What if we need more resources than what is offered in the Startups program?',
+            answer: 'If you need more resources than Appwrite Pro, we can discuss your needs and create a more tailored and custom plan.'
+        },
+        {
+            question:
+                'I am already using another backend as a service provider. How do I migrate to Appwrite?',
+            answer: 'We have a migration tool to help you transition from other platforms. If you need additional assistance, we are here to help.'
+        },
+        {
+            question: 'What happens after the 12 months run out?',
+            answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
         }
     ];
 
