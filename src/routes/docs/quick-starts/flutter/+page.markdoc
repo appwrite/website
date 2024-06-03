@@ -214,7 +214,7 @@ class MyAppState extends State<MyApp> {
   final TextEditingController nameController = TextEditingController();
 
   Future<void> login(String email, String password) async {
-    await widget.account.createEmailSession(email: email, password: password);
+    await widget.account.createEmailPasswordSession(email: email, password: password);
     final user = await widget.account.get();
     setState(() {
       loggedInUser = user;
