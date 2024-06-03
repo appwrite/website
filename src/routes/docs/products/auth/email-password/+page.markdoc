@@ -93,7 +93,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailSession('email@example.com', 'password');
+const promise = account.createEmailPasswordSession('email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success

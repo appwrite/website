@@ -716,8 +716,9 @@
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="web-description">
-                                                We support VC backed startups that have been
-                                                established within the last decade with:
+                                                We support VC backed or revenue generating 
+                                                startups that have been established within
+                                                the last decade with:
                                             </p>
 
                                             <div class="u-flex-vertical u-gap-12">
