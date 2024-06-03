@@ -18,6 +18,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import Faq from './faq.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -845,6 +846,16 @@
                                     </form>
                                 {/if}
                             </div>
+                        </div>
+                    </div>
+                    <div class="web-big-padding-section-level-2 u-position-relative">
+                        <div class="web-container u-position-relative" style:z-index="10">
+                            <section class="web-grid-4-6">
+                                <header>
+                                    <div class="web-display web-u-color-text-primary">FAQ</div>
+                                </header>
+                                <Faq />
+                            </section>
                         </div>
                     </div>
                     <div class="web-container">
