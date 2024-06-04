@@ -8,7 +8,7 @@ timeToRead: 10
 author: vincent-ge
 category: migration
 ---
-If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options, we can give you a jump start with Appwrite Migrations. 
+If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options, we can give you a jump start with Appwrite Migrations.
 
 ![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.png)
 
@@ -45,7 +45,7 @@ Migrations will run in the background, get a cup of tea or coffee, and return in
 
 ## Wrapping up the move
 
-After your migration is completed, you’ll need to do a few more things to wrap up your move to Appwrite. 
+After your migration is completed, you’ll need to do a few more things to wrap up your move to Appwrite.
 
 First, you register your existing web, mobile, and native apps as platforms. Follow one of these [quick starts](/docs/quick-starts) to learn how.
 
@@ -55,4 +55,4 @@ Finally, learn about [Appwrite Functions](/docs/products/functions/quick-start) 
 
 ## Join the discussion
 
-We’re always having a blast on [Discord](/discord). With members in the community from all over the world, you’ll always find someone to support and share your Appwrite journey.
+We’re always having a blast on [Discord](https://appwrite.io/discord). With members in the community from all over the world, you’ll always find someone to support and share your Appwrite journey.
