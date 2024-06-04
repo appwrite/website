@@ -327,7 +327,7 @@
                                 margin-block-start:60px; margin-inline-start:-80px">
                         <h4
                                 class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-sep-block-end"
-                                style="border-radius:0; --color-border: var(--web-color-offset);"
+                                style="border-radius:0; --color-border: var(--web-color-offset); font-family: var(--web-font-family-aeonik-pro);"
                         >
                             Permissions
                         </h4>
@@ -750,7 +750,9 @@
                             </a>
                         </div>
                         <div class="u-flex-vertical web-u-gap-20">
-                            <div class="u-flex u-flex-wrap u-gap-8">
+                            <div
+                                    class="u-flex u-min-width-0 u-max-width-100-percent u-gap-8 u-overflow-x-auto"
+                                    style="inline-size:calc(100vw - 40px)!important;">
                                 <button class="tag is-selected">
                                     List files
                                 </button>
@@ -1239,6 +1241,9 @@
   }
   .e-bg-image-pattern-bottom {
     background:url('/images/pages/storage/pattern-1.png') no-repeat center bottom; background-size:1500px;
+    @media (max-width: 650px) {
+      background-position: center bottom -50%;
+    }
     @media (max-width: 1198px) {
       //background-position: center bottom -100px;
       background-size:1350px;
@@ -1326,7 +1331,7 @@
     .heading-level-5 { padding:24px;}
     .l-permission-table-wrapper { padding-inline:20px;}
     .web-button { block-size:32px; padding-inline-start:0; margin-block:12px;}
-    @media (max-width:600px) {
+    @media (max-width:764px) {
       margin-inline-start:0!important;
       .heading-level-5 { padding:12px 16px; line-height:1.3; }
       .table *{ font-size:10px;}
