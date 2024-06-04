@@ -9,7 +9,7 @@ author: damodar-lohani
 category: engineering
 ---
 
-Android, iOS, macOS, Linux, Windows, and the Web. Different platforms with different codebases. As a developer, you might have faced the challenge of building one application for multiple platforms. Considering the challenge of mastering all of the skills to build an application that performs well cross-platform, it’s no wonder we have seen the rise of cross platform frameworks such as React Native and Flutter. Frameworks that allow you to create applications that operate seamlessly across multiple operating systems from a single codebase. Saving time, cutting costs, and targeting a larger user base. 
+Android, iOS, macOS, Linux, Windows, and the Web. Different platforms with different codebases. As a developer, you might have faced the challenge of building one application for multiple platforms. Considering the challenge of mastering all of the skills to build an application that performs well cross-platform, it’s no wonder we have seen the rise of cross platform frameworks such as React Native and Flutter. Frameworks that allow you to create applications that operate seamlessly across multiple operating systems from a single codebase. Saving time, cutting costs, and targeting a larger user base.
 
 # Why cross platform?
 
@@ -48,7 +48,7 @@ Finally, when the application needs to handle native device-specific functionali
 
 # Try React Native for your next project
 
-There are many great cross-platform framework technologies, like [Flutter](https://appwrite.io/docs/quick-starts/flutter), .NET MAUI, Ionic, and more. Each cross-platform frameworks have their advantages and disadvantages and we are not here to say one is better. Which framework to choose depends on one’s preference, previous knowledge and skill set, project requirements, and more. But to celebrate the release of the [Appwrite React Native SDK](https://github.com/appwrite/sdk-for-react-native) in open beta, we want to share a few points that make React Native an attractive choice.
+There are many great cross-platform framework technologies, like [Flutter](/docs/quick-starts/flutter), .NET MAUI, Ionic, and more. Each cross-platform frameworks have their advantages and disadvantages and we are not here to say one is better. Which framework to choose depends on one’s preference, previous knowledge and skill set, project requirements, and more. But to celebrate the release of the [Appwrite React Native SDK](https://github.com/appwrite/sdk-for-react-native) in open beta, we want to share a few points that make React Native an attractive choice.
 
 - Learn once, write anywhere: If you already know JavaScript and React, you can easily learn and start using React Native. So, this is already an attractive choice for JavaScript developers, and it might be the one framework with the easiest learning curve
 - Native performance: React native communicates with native platform components directly, which leads to a responsive user experience close to native performance
@@ -58,13 +58,13 @@ There are many great cross-platform framework technologies, like [Flutter](https
 
 # Get started with React Native and Appwrite
 
-React Native allows you to create applications that run on multiple operating systems from a single codebase, whereas Appwrite provides you with a full-functioning backend with just a few lines of code. This means that you can build a full functioning app, targetting users across iOS, Android, Mac OS, Linux, Windows, and the Web, and cut down your development time tremendously. 
+React Native allows you to create applications that run on multiple operating systems from a single codebase, whereas Appwrite provides you with a full-functioning backend with just a few lines of code. This means that you can build a full functioning app, targetting users across iOS, Android, Mac OS, Linux, Windows, and the Web, and cut down your development time tremendously.
 
 To get started, follow these steps.
 
 ## Step 1: Set up Appwrite
 
-First, you must set up an Appwrite project. To do so, you must either [create an Appwrite Cloud account](https://cloud.appwrite.io) or [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) on your system.
+First, you must set up an Appwrite project. To do so, you must either [create an Appwrite Cloud account](https://cloud.appwrite.io) or [self-host Appwrite](/docs/advanced/self-hosting) on your system.
 
 ![Get started with React Native](/images/blog/overview-react-native.png)
 
@@ -83,7 +83,7 @@ npx expo install react-native-appwrite react-native-url-polyfill
 
 ## Step 3: Explore the Documentation
 
-Familiarize yourself with [Appwrite's documentation](https://appwrite.io/docs). It's packed with tutorials, examples, and API references designed to get you up to speed in no time.
+Familiarize yourself with [Appwrite's documentation](/docs). It's packed with tutorials, examples, and API references designed to get you up to speed in no time.
 
 ## Step 4: Start Building
 
@@ -98,7 +98,7 @@ client
     .setEndpoint('http://cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('455x34dfkj') // Your project ID
     .setPlatform('com.example.myappwriteapp'); // Your application ID or bundle ID
-    
+
 const account = new Account(client);
 
 // Register a user
@@ -116,8 +116,8 @@ Read the [quick start](http://appwrite.io/docs/quick-starts/react-native) to get
 
 Visit our documentation to learn more about our SDKs, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- [Docs](https://appwrite.io/docs/sdks)
+- [Docs](/docs/sdks)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
