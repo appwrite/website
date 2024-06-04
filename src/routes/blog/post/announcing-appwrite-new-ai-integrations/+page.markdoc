@@ -19,7 +19,7 @@ Let's examine the integrations, Function templates, and what's still to come.
 
 ## AI use cases and documentation
 
-To make your life easier, we have added technical guides to our documentation covering [computer vision](https://appwrite.io/blog/post/state-of-computer-vision), [natural language processing](https://appwrite.io/blog/post/state-of-natural-language-processing), and [audio processing](https://appwrite.io/blog/post/state-of-audio-processing). These advanced tutorials explain how to use [AI and Appwrite](https://appwrite.io/docs/products/ai) in your projects. 
+To make your life easier, we have added technical guides to our documentation covering [computer vision](https://appwrite.io/blog/post/state-of-computer-vision), [natural language processing](https://appwrite.io/blog/post/state-of-natural-language-processing), and [audio processing](https://appwrite.io/blog/post/state-of-audio-processing). These advanced tutorials explain how to use [AI and Appwrite](https://appwrite.io/docs/products/ai) in your projects.
 
 ![AI docs](/images/blog/ai-docs.png)
 
@@ -40,7 +40,7 @@ We've also added support for many AI tools so you can integrate them into your p
 
 ## AI powered Function templates
 
-Function templates are pre-built Appwrite [Function](https://appwrite.io/docs/products/functions) that can be integrated into your Appwrite project with just a few clicks. With templates, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure. 
+Function templates are pre-built Appwrite [Function](https://appwrite.io/docs/products/functions) that can be integrated into your Appwrite project with just a few clicks. With templates, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
 
 We have templates for your favorite AI tools, like OpenAI, LangChain, HuggingFace, and many more, covering many use cases, such as building an [intelligent chatbot](https://appwrite.io/blog/post/function-template-prompt-chatgpt) using OpenAI.
 
@@ -48,7 +48,7 @@ Find the full overview on your console under the `Templates` tab in `Fuctions`. 
 
 ![Appwrite console with AI template functions](/images/blog/ai-function-templates.png)
 
-You can also find the full list of templates on [GitHub](https://github.com/appwrite/templates) and see what's to come. 
+You can also find the full list of templates on [GitHub](https://github.com/appwrite/templates) and see what's to come.
 
 ## Building more AI features
 
@@ -56,7 +56,7 @@ Over the coming months, we will roll out more AI features to make building AI pr
 
 ### Vector database
 
-Another advanced AI use case in the field of Natural Language Processing is the ability to use vector databases to store and process embeddings. 
+Another advanced AI use case in the field of Natural Language Processing is the ability to use vector databases to store and process embeddings.
 
 > Embeddings are numerical representations of words, sentences etc., and vector databases are optimized to store and perform similarity searches on the embeddings.
 
@@ -64,8 +64,8 @@ Adding a vector database will be another important milestone for making Appwrite
 
 ### AI marketplace
 
-We will add an AI marketplace to encourage more open source collaboration on AI models and improve discoverability. The marketplace will allow you to build and share popular open-source and custom models. You can also host and sell your own custom models on the marketplace. 
+We will add an AI marketplace to encourage more open source collaboration on AI models and improve discoverability. The marketplace will allow you to build and share popular open-source and custom models. You can also host and sell your own custom models on the marketplace.
 
 ## Building the future
 
-The future of Appwrite is exciting, and we look forward to continuing to build exciting new features. Join us on [Discord](http://appwrite.io/discord) to participate in the discussion and have fun. For Appwrite and AI-powered projects, visit [builtwith.appwrite.io](https://apwr.dev/yAtAG8j).
+The future of Appwrite is exciting, and we look forward to continuing to build exciting new features. Join us on [Discord](https://appwrite.io/discord) to participate in the discussion and have fun. For Appwrite and AI-powered projects, visit [builtwith.appwrite.io](https://apwr.dev/yAtAG8j).

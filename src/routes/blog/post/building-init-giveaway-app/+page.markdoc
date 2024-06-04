@@ -74,7 +74,7 @@ Lastly, we added **collection-level permissions** to allow anyone to read data (
 Looking at the two primary features, there were three primary challenges we needed to solve to develop this app. To build this app, we used SvelteKit, a framework to build web applications using JavaScript. There are some prerequisites, however, that must be completed before building out the features themselves.
 
 > Note: The code snippets will focus only on the application logic. All CSS and styling-related information will be accessible in the final project repository at the end of the blog.
-> 
+>
 
 ### Prerequisites
 
@@ -384,4 +384,4 @@ The giveaway roulette app was used over 450 times by 230+ different users across
 
 You can find the application’s complete source code at this [GitHub Repo](https://github.com/adityaoberai/InitGiveawayRoulette).
 
-[Join us on Discord](http://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!
+[Join us on Discord](https://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!
