@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg web-u-z-index-1-negative" />
+    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg web-u-z-index-1-negative" loading="lazy"  />
     <div class="web-container">
         <h2 class="web-display web-u-color-text-primary">Need support?</h2>
         <div class="cards">
@@ -70,5 +70,6 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+       filter: blur(100px);
     }
 </style>
