@@ -749,10 +749,10 @@
                                 <span>View docs</span>
                             </a>
                         </div>
-                        <div class="u-flex-vertical web-u-gap-20">
+                        <div class="u-flex-vertical web-u-gap-20 u-min-width-0 u-max-width-100-percent">
                             <div
-                                    class="u-flex u-min-width-0 u-max-width-100-percent u-gap-8 u-overflow-x-auto"
-                                    style="inline-size:calc(100vw - 40px)!important;">
+                                    class="l-scroll-in-mobile u-flex u-min-width-0 u-gap-8 u-overflow-x-auto"
+                                    style="">
                                 <button class="tag is-selected">
                                     List files
                                 </button>
@@ -1352,5 +1352,10 @@
     gap:2rem;
     @media (max-width:600px) { gap:1.25rem; }
 
+  }
+  .l-scroll-in-mobile {
+    @media (max-width:600px) {
+      inline-size:calc(100vw - 20px)!important;
+    }
   }
 </style>
