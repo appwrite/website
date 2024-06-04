@@ -102,7 +102,7 @@ You can find all the official release announcements and documentation for each d
 - [Product tour](https://youtu.be/OWRju8ZZuQ8) - 2FA
 - [Announcement article](/blog/post/announcing-two-factor-authentication) - 2FA
 - [Announcement article - Enum SDK support](/blog/post/introducing-enum-sdk-support)
-- [Docs - 2FA](/docs/products/auth/2fa)
+- [Docs - 2FA](/docs/products/auth/mfa)
 - [Docs - Enum SDK support](/docs/sdks#enums)
 
 ### Day 3:  Database Operators
