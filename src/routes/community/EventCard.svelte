@@ -25,6 +25,12 @@
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
+    const hasPast: boolean = (new Date()) > (new Date(date));
+    const dateString: string = new Date(date).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
     $: headingTag = `h${headingLevel}`;
 </script>
 
@@ -36,7 +42,7 @@
         <ul class="u-flex u-flex-wrap web-u-list-inline-dot-sep">
             <li class="u-flex u-cross-baseline u-gap-4">
                 <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
-                <time class="">{date}</time>
+                <time class="">{dateString}</time>
             </li>
             <li class="u-flex u-cross-baseline u-gap-4">
                 <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
@@ -53,12 +59,9 @@
             {description}
         </p>
         <div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 mbs-auto">
-            <button class="web-button is-secondary">
+            <button class="web-button is-secondary" disabled={hasPast}>
                 <span>{buttonText}</span>
             </button>
-            <!-- <button class="web-button is-text">
-        <span>Add to calendar</span>
-      </button> -->
         </div>
     </div>
 </a>
