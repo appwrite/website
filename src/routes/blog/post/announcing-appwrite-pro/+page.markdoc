@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing: Appwrite Pro"
-description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence. 
+description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence.
 date: 2023-12-20
 cover: /images/blog/announcing-appwrite-pro/header.png
 timeToRead: 5
@@ -10,7 +10,7 @@ category: cloud
 featured: false
 ---
 
-After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud, Appwrite Pro. A new product offering that allows you to build with more confidence. 
+After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud, Appwrite Pro. A new product offering that allows you to build with more confidence.
 
 While Appwrite Cloud is still in beta, Appwrite Pro is a new chapter we write together. Pro will help us add more features and capabilities to Appwrite, making app development more accessible and enjoyable for developers like you.
 
@@ -68,9 +68,9 @@ With 300GB bandwidth and 200K monthly active users in the Pro plan, we ensure yo
 
 ## Databases, Buckets & Storage
 
-Another essential addition to your projects is having an unlimited number of databases, allowing you to tailor and optimize your data management. You can manage different data types and patterns, separate concerns, have stricter data governance and security and optimize performance. All are very necessary for more complex and demanding software applications. 
+Another essential addition to your projects is having an unlimited number of databases, allowing you to tailor and optimize your data management. You can manage different data types and patterns, separate concerns, have stricter data governance and security and optimize performance. All are very necessary for more complex and demanding software applications.
 
-Again, you’re allowed unlimited buckets. This provides several benefits, including improved organization, scalability, modularity, data redundancy, storage cost management, and data governance. With a starting point of 150GB storage, you can grow your projects instantly without reaching high costs, allowing you to grow in production at a low cost. 
+Again, you’re allowed unlimited buckets. This provides several benefits, including improved organization, scalability, modularity, data redundancy, storage cost management, and data governance. With a starting point of 150GB storage, you can grow your projects instantly without reaching high costs, allowing you to grow in production at a low cost.
 
 ## Functions & Executions
 
@@ -78,7 +78,7 @@ Having unlimited functions is a must-have for many, as it is the holy grail for 
 
 ## Customization
 
-For a production product, you need more control of your brand, as well as the flexibility to add to your plan as it evolves. Within the Pro plan, it is possible to remove Appwrite branding from emails, have custom SMTP, and get resource add-ons to fit your needs. 
+For a production product, you need more control of your brand, as well as the flexibility to add to your plan as it evolves. Within the Pro plan, it is possible to remove Appwrite branding from emails, have custom SMTP, and get resource add-ons to fit your needs.
 
 ## Premium support
 
@@ -110,7 +110,7 @@ We appreciate the support and feedback from early Cloud adopters. These options 
 
 Open-source software forms the foundation of modern software technologies. As lovers and builders of open-source software, we understand and appreciate the difficulty of building in the open. We’re fortunate to have the opportunity to build open-source software sustainably, and we can’t wait to give back.
 
-Like our previous initiatives, such as the OSS Fund, Appwrite Cloud will also support open-source developers. OSS maintainers can use Appwrite to build and maintain their projects on the Appwrite Pro plan for free. Please reach out on our [contact page](https://apwr.dev/OSSplan) to enquire about this plan. As always, Appwrite also remains open-sourced and free to [self-host](https://appwrite.io/docs/advanced/self-hosting). 
+Like our previous initiatives, such as the OSS Fund, Appwrite Cloud will also support open-source developers. OSS maintainers can use Appwrite to build and maintain their projects on the Appwrite Pro plan for free. Please reach out on our [contact page](https://apwr.dev/OSSplan) to enquire about this plan. As always, Appwrite also remains open-sourced and free to [self-host](https://appwrite.io/docs/advanced/self-hosting).
 
 Appwrite Pro is just the start. We will continue developing our product offering to match your growing needs and capabilities and are excited to see your projects succeed with Appwrite Cloud. While you benefit from everything Appwrite Pro has to offer, you also become advocates in our mission to make software development accessible and enjoyable for all.
 
@@ -126,4 +126,4 @@ In case you need help upgrading, transferring your projects, or have billing and
 
 - [FAQ on pricing page](https://apwr.dev/pricingFAQ)
 - [Project migration](https://appwrite.io/docs/advanced/migrations/cloud)
-- [Discord support](http://appwrite.io/discord)
+- [Discord support](https://appwrite.io/discord)

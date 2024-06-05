@@ -24,7 +24,7 @@ devDependencies:
     version: 0.16.0
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
-    version: github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792
+    version: github.com/appwrite/appwrite/7da997b5cdeacb6137b586cef35d8a1e58725f80
   '@internationalized/date':
     specifier: 3.5.0
     version: 3.5.0
@@ -6710,8 +6710,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/appwrite/appwrite/c7bdcda59371f2b4db92a45ef0f7ba430a150792:
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/c7bdcda59371f2b4db92a45ef0f7ba430a150792}
+  github.com/appwrite/appwrite/7da997b5cdeacb6137b586cef35d8a1e58725f80:
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/7da997b5cdeacb6137b586cef35d8a1e58725f80}
     name: '@appwrite.io/repo'
     version: 0.0.0
     dev: true
