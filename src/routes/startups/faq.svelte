@@ -24,7 +24,7 @@
             answer: 'We’re supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don’t meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup.'
         },
         {
-            question: 'What are the limits of the Pro plan??',
+            question: 'What are the limits of the Pro plan?',
             answer: 'The Appwrite Pro plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Pro plan limits.'
         },
         {
