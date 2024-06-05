@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Leveraging backend as a service tools to scale faster
-description: Discover what thousands of developers already know, and learn how a BaaS platform can benefit you. 
+description: Discover what thousands of developers already know, and learn how a BaaS platform can benefit you.
 date: 2023-09-27
 cover: /images/blog/baas.png
 timeToRead: 6
@@ -22,7 +22,7 @@ We believe in most cases there is an easier way, which is where the idea of "Bac
 
 A backend as a service is a third party service that lets you develop the backend part of your application without building things from scratch. It's about NOT reinventing the wheel for every app you launch.
 
-Each BaaS platform has its own set of tools and features, so let's use  [Appwrite](https://appwrite.io/)  as an example of offerings you may see. A service like Appwrite provides you with a console from which you can manage your entire backend. From your console's dashboard you'll have the ability to create and manage services such as:
+Each BaaS platform has its own set of tools and features, so let's use  [Appwrite](/)  as an example of offerings you may see. A service like Appwrite provides you with a console from which you can manage your entire backend. From your console's dashboard you'll have the ability to create and manage services such as:
 
 -   A Database
 -   Authentication & User Management

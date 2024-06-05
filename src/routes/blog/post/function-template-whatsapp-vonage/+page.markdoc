@@ -57,6 +57,6 @@ We’ve covered the basics, and now it’s your time to shine! With a few change
 
 For more information about Appwrite and Appwrite Functions:
 
-- [Appwrite Function Docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+- [Appwrite Function Docs](/docs/functions): These documents provide more information on how to use Appwrite Functions.
 - [Functions Announcement](https://dev.to/appwrite/serverless-your-way-unleashing-appwrite-functions-true-potential-2l4f): Read the full announcement on Functions 1.4.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

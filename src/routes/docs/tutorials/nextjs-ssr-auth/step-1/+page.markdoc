@@ -9,7 +9,7 @@ framework: Next.js SSR
 category: Auth
 ---
 
-Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
+Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box.
 If you're a Next.js developer, the examples in this guide show you how Appwrite can help you add authentication to Next.js apps faster.
 
 # Before you start {% #before-you-start %}
@@ -20,5 +20,5 @@ Before following this tutorial, have the following prepared:
 - A basic knowledge of Next.js and React.
 
 
-If you're inspired and wish to follow along, make sure you've followed [Start with React](https://appwrite.io/docs/quick-starts/react) first.
+If you're inspired and wish to follow along, make sure you've followed [Start with React](/docs/quick-starts/react) first.
 Clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/main/nextjs) examples and follow along with the source code.

@@ -30,7 +30,7 @@ We did everything in-house, which brought some challenges as we had to learn on 
 
 ## The fun begins
 
-And then, finally, we got to [announce Init](https://appwrite.io/blog/post/announcing-init) to all of you and have you join in the fun and create your tickets.
+And then, finally, we got to [announce Init](/blog/post/announcing-init) to all of you and have you join in the fun and create your tickets.
 
 ![Init begins](/images/blog/a-recap-of-init/init5.png)
 
@@ -76,13 +76,13 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 
 ### Content list
 
-- [Best practices for sending push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
-- [How tools like Twilio can simplify messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
+- [Best practices for sending push notifications](/blog/post/push-notifications-best-practices)
+- [How tools like Twilio can simplify messaging for developers](/blog/post/simplify-messaging-twilio)
 - [Product tour video](https://www.youtube.com/watch?v=QdDgPeuBZ1I)
 
 ## Another day
 
-On day 1 we continued our same flow and announced Improved support for [server-side rendering.](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering)
+On day 1 we continued our same flow and announced Improved support for [server-side rendering.](/blog/post/introducing-support-for-server-side-rendering)
 
 {% youtube src="https://www.youtube-nocookie.com/embed/jeL4cSovOBA?si=0tMDecmUucWOYASg" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-ssr.png" /%}
 
@@ -100,9 +100,9 @@ For day 1 we invited [Hitesh Choudhary](https://twitter.com/Hiteshdotcom) to com
 
 ### Content list
 
-- [SSR vs CSR with Next.js](https://appwrite.io/blog/post/csr-vs-ssr-with-nextjs)
+- [SSR vs CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs)
 - [Product tour](https://youtu.be/7LN05c-ov_0)
-- [Announcement SSR](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering)
+- [Announcement SSR](/blog/post/introducing-support-for-server-side-rendering)
 
 ## Safety first
 
@@ -127,11 +127,11 @@ We got a curve ball thrown at us on day 2 of Init, as our guest for the day had 
 ### Content list
 
 - [Product tour 2FA](https://youtu.be/OWRju8ZZuQ8)
-- [Announcement 2FA](https://appwrite.io/blog/post/announcing-two-factor-authentication)
-- [From passwords to protection: Implementing 2FA in your applications](https://appwrite.io/blog/post/password-protection-2fa)
-- [Announcement Enum SDK support](https://appwrite.io/blog/post/introducing-enum-sdk-support)
-- [Effective use of enums in API design](https://appwrite.io/blog/post/enums-api-design)
-- [Enhancing type safety in software development with enums](https://appwrite.io/blog/post/enhancing-type-safety)
+- [Announcement 2FA](/blog/post/announcing-two-factor-authentication)
+- [From passwords to protection: Implementing 2FA in your applications](/blog/post/password-protection-2fa)
+- [Announcement Enum SDK support](/blog/post/introducing-enum-sdk-support)
+- [Effective use of enums in API design](/blog/post/enums-api-design)
+- [Enhancing type safety in software development with enums](/blog/post/enhancing-type-safety)
 
 ## More querying!
 
@@ -147,9 +147,9 @@ For day 3 of Init, we had [Danny Thompson](https://twitter.com/DThompsonDev) joi
 
 ### Content list
 
-- [Database operators announcement](https://appwrite.io/blog/post/introducing-new-database-operators)
+- [Database operators announcement](/blog/post/introducing-new-database-operators)
 - [Product tour video](https://youtu.be/IMgl9f_iht4)
-- [Understanding data queries in database management](https://appwrite.io/blog/post/understand-data-queries)
+- [Understanding data queries in database management](/blog/post/understand-data-queries)
 
 ## The end and the beginning
 
@@ -163,9 +163,9 @@ The closing party got an extra special touch with five giveaways to celebrate. A
 
 ### Content list
 
-- [New runtimes announcement](https://appwrite.io/blog/post/introducing-enum-sdk-support)
-- [Sound null-safety for your Dart functions](https://appwrite.io/blog/post/sound-null-safety-for-your-dart-functions)
-- [Why you need to try the new Bun function runtime](https://appwrite.io/blog/post/why-you-need-to-try-the-new-bun-runtime)
+- [New runtimes announcement](/blog/post/introducing-enum-sdk-support)
+- [Sound null-safety for your Dart functions](/blog/post/sound-null-safety-for-your-dart-functions)
+- [Why you need to try the new Bun function runtime](/blog/post/why-you-need-to-try-the-new-bun-runtime)
 
 # Thank you all for joining
 

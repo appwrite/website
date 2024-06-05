@@ -206,7 +206,7 @@ Once you’ve completed all the aforementioned steps, you can push the code to t
 
 ![Function deployments](/images/blog/valentines-day-sonnet-generator/deployments.png)
 
-You can then go ahead and test your function by opening the function domain in your browser. 
+You can then go ahead and test your function by opening the function domain in your browser.
 
 # Next steps
 
@@ -218,5 +218,5 @@ If you liked this project or want to investigate the full project code, visit th
 
 For more information about Appwrite Functions, visit the following resources:
 
-- [Appwrite Function Docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+- [Appwrite Function Docs](/docs/functions): These documents provide more information on how to use Appwrite Functions.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

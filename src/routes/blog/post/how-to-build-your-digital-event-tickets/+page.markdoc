@@ -59,7 +59,7 @@ Now, in case you would like to know how you can do this, we asked the engineer i
 
 First, you need to associate your GitHub account with your Init ticket. Therefore, we need to create an authentication flow on our website. Fortunately, with Appwrite Cloud, it was quite easy to do so.
 
-By following our [documentation on OAuth](https://appwrite.io/docs/products/auth/oauth2), and creating an OAuth GitHub App, we're quickly able to create a login flow for Appwrite Init. When logging in for the first time, a new ticket is instantiated and saved to Appwrite Cloud.
+By following our [documentation on OAuth](/docs/products/auth/oauth2), and creating an OAuth GitHub App, we're quickly able to create a login flow for Appwrite Init. When logging in for the first time, a new ticket is instantiated and saved to Appwrite Cloud.
 
 ![Init celebration ticket](/images/blog/tickets-blog2.png)
 

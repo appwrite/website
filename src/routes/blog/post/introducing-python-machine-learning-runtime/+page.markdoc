@@ -12,7 +12,7 @@ featured: false
 
 # Introducing Python ML
 
-If you're looking to build AI powered applications, you've probably considered using Python. And in case you haven't, it's probably time you did. We at Appwrite have thought about it, and our conclusion is simple. To improve the experience of building AI powered apps with Appwrite, a new runtime needs to emerge to cater to AI specific needs. 
+If you're looking to build AI powered applications, you've probably considered using Python. And in case you haven't, it's probably time you did. We at Appwrite have thought about it, and our conclusion is simple. To improve the experience of building AI powered apps with Appwrite, a new runtime needs to emerge to cater to AI specific needs.
 
 We're excited to present Appwrite's newest Function runtime, **Python ML.** The new runtime has been tailored and optimised for machine learning use cases, saving you a lot of hassle and time, making building AI powered applications a whole lot easier.
 
@@ -30,7 +30,7 @@ We decided to build a new runtime image to overcome this limitation and at the s
 
 1. Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
     ![Create Function](/images/blog/introducing-python-machine-learning-runtime/create-function.png)
-2. To get started with the new runtime, navigate to your Appwrite console and select `Python (ML) 3.11` when creating a new function. 
+2. To get started with the new runtime, navigate to your Appwrite console and select `Python (ML) 3.11` when creating a new function.
 3. Follow the step-by-step wizard and create the function.
 
 Here's an example function that trains a simple neural network on the MNIST dataset using TensorFlow and TensorFlow Datasets:
@@ -101,7 +101,7 @@ Tensorflow Lite models are optimized for mobile and edge devices. They are small
 
 ### Async executions
 
-Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. Therefore, it is recommended to use asynchronous function executions for long running tasks. This will allow you to run multiple tasks concurrently, set your own timeout period and make the most of the compute resources available. Create an asynchronous execution using the `async` parameter in the [createExecution endpoint](https://appwrite.io/docs/references/cloud/client-web/functions#createExecution).
+Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. Therefore, it is recommended to use asynchronous function executions for long running tasks. This will allow you to run multiple tasks concurrently, set your own timeout period and make the most of the compute resources available. Create an asynchronous execution using the `async` parameter in the [createExecution endpoint](/docs/references/cloud/client-web/functions#createExecution).
 
 If you see `FUNCTION_SYCHRONOUS_TIMEOUT` errors when executing your function, navigate to your **Function settings** and try increasing your timeout period to a larger number such 50 seconds or more.
 
@@ -117,4 +117,4 @@ If you have training that does not require intensive GPU resources, you can trai
 
 For all other use-cases, you can use third-party AI services with Appwrite Functions. Perplexity, Replicate and OpenAI offer powerful APIs that can be used to train and run models on their infrastructure.
 
-We've built a range of example functions and technical guides in our [AI documention](https://appwrite.io/docs/products/ai).
+We've built a range of example functions and technical guides in our [AI documention](/docs/products/ai).

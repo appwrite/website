@@ -9,7 +9,7 @@ author: aditya-oberai
 category: functions
 ---
 
-Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot. 
+Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot.
 
 Therefore, in this blog, we will learn how to use Appwrite Functions and the OpenAI GPT-4o API to build a personal chatbot.
 
@@ -147,7 +147,7 @@ To get our chatbot up and running, we must first develop a UI you can interact w
 
 ### Preparing our utility functions
 
-To simplify the function logic, we create additional utility functions to 
+To simplify the function logic, we create additional utility functions to
 
 - return the contents of a file in the static folder as a string (to send our UI to the client browser)
 - throw an error if any of the keys are missing from the object (to check for missing environment variables)
@@ -271,5 +271,5 @@ And with that, you have successfully deployed your personal chatbot powered by G
 
 Additionally, if you would like to learn more about Appwrite Functions, here are some resources:
 
-- [Appwrite Functions docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+- [Appwrite Functions docs](/docs/functions): These documents provide more information on how to use Appwrite Functions.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

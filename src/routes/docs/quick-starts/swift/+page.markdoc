@@ -10,8 +10,8 @@ Learn how to setup your first Swift project powered by Appwrite.
 
 {% info title="Server SDK" %}
 This tutorial is for the Swift Server SDK, meant for server and backend applications.
-If you're trying to build a client-side app, like an iOS, macOS, watchOS or tvOS app, 
-follow the [Start with Apple guide](https://appwrite.io/docs/quick-starts/apple).
+If you're trying to build a client-side app, like an iOS, macOS, watchOS or tvOS app,
+follow the [Start with Apple guide](/docs/quick-starts/apple).
 {% /info %}
 
 {% section #step-1 step=1 title="Create project" %}
@@ -61,14 +61,14 @@ Follow the wizard and open your new project.
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Swift Appwrite SDK by going to **File** > **Add Packages...** and search for the repo url 
+Install the Swift Appwrite SDK by going to **File** > **Add Packages...** and search for the repo url
 `https://github.com/appwrite/sdk-for-swift` and select `sdk-for-swift`.
 Specify version as `5.0.1` with rule **Up to Next Major Version**.
 
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -129,7 +129,7 @@ func prepareDatabase() async -> (Database?, Collection?) {
         key: "isComplete",
         xrequired: true
     )
-    
+
     return (todoDatabase, todoCollection)
 }
 ```
@@ -159,13 +159,13 @@ func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        documentId: ID.unique(),
         data: testTodo1
     )
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        documentId: ID.unique(),
         data: testTodo2
     )
     try? await databases.createDocument(

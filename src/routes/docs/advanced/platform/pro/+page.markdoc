@@ -6,15 +6,15 @@ description: Understand Appwrite's different pricing plans, behaviors, billing c
 
 Appwrite Cloud's Pro plan is designed for professional developers or development teams that need to build applications at scale.
 When applications outgrows Appwrite's Starter plan organizations can switch to Pro plan to continue growing its apps.
-You can learn more about Pro plan on the [pricing page](https://appwrite.io/pricing).
+You can learn more about Pro plan on the [pricing page](/pricing).
 
 # Create a Pro plan organization {% #create-a-pro-plan-organizations %}
 
 Appwrite's plans are applied to an entire organization.
-Get started with a Pro plan organization by visiting the [pricing page](https://appwrite.io/pricing) and click **Start building**
+Get started with a Pro plan organization by visiting the [pricing page](/pricing) and click **Start building**
 or create a new organization from the Appwrite Console and select **Pro plan**.
 
-<!-- ## Trial 
+<!-- ## Trial
 Every Appwrite Pro plan organization starts with a **14 day free trial**.
 The first billing period will start after the trial ends. -->{% #trial %}
 
@@ -25,7 +25,7 @@ Under the **Billing** tab, you can click **Change plan** to update your organiza
 
 # Resource limits {% #resource-limits %}
 
-Each plan in Appwrite Cloud has a set of resource limits. You can find the details of these resource limits in the in the [pricing page](https://appwrite.io/pricing).
+Each plan in Appwrite Cloud has a set of resource limits. You can find the details of these resource limits in the in the [pricing page](/pricing).
 
 Additional resources are automatically purchased when your orgnization goes over the resource limits to continue scaling until the budget cap is reached.
 Each resource limit is applied per billing period and resets at the beginning of each billing period.

@@ -7,7 +7,7 @@ description: Secure your self-hosted Appwrite instance with TLS certificates. Le
 Appwrite uses Let's Encrypt to auto-generate TLS certificates for your Appwrite instance to ensure your API traffic is appropriately encrypted. For Appwrite to properly generate certificates, a few conditions need to be met.
 
 1. You need to use a public-facing domain with a known TLD pointing to your Appwrite instance.
-2. Your `_APP_ENV` [environment variable](https://appwrite.io/docs/environment-variables) should be set for production mode. The default Appwrite setup comes with this predefined setting, so you should be OK unless you change it.
+2. Your `_APP_ENV` [environment variable](/docs/environment-variables) should be set for production mode. The default Appwrite setup comes with this predefined setting, so you should be OK unless you change it.
 3. You need to ensure you have a valid email address set on `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS`. The default setup comes with `certs@appwrite.io` as the default value. While this address will work, it's recommended to change it to your own email.
 4. Currently, Appwrite is using the [ACME](https://letsencrypt.org/docs/client-options/) HTTP challenge to issue an TLS certificate. This forces us to generate certificates for port 443 when the challenge itself is performed on port 80. At this point, other ports will not work. To overcome this limit, you can set Appwrite on a separate sub-domain or use your own certificate or proxy server in front of Appwrite.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Share your resume using Appwrite Functions
-description: How you can create a resume using HTML and use a Bun Appwrite Function to share it with the world. 
+description: How you can create a resume using HTML and use a Bun Appwrite Function to share it with the world.
 date: 2024-03-07
 cover: /images/blog/bun-function-resume/cover.png
 timeToRead: 7
@@ -9,7 +9,7 @@ author: aditya-oberai
 category: functions
 ---
 
-One of the coolest things about Appwrite Functions is that you can now consume them as REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This has opened up a lot of potential use-cases, one of which is how you can host and share your online resume through an Appwrite Function when applying for a new job. 
+One of the coolest things about Appwrite Functions is that you can now consume them as REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This has opened up a lot of potential use-cases, one of which is how you can host and share your online resume through an Appwrite Function when applying for a new job.
 
 Therefore, in this blog, we will leverage one of Appwrite’s newest functions runtimes, Bun, to create a function that delivers an HTML-based resume.
 
@@ -162,7 +162,7 @@ Now that our HTML resume and utility function are ready, we can develop our fina
 import { getStaticFile } from './utils.js';
 
 export default async ({ req, res }) => {
-  
+
   if (req.method === 'GET' && req.path === '/') {
     return res.send(getStaticFile('resume.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
@@ -193,7 +193,7 @@ Once you’ve completed all the aforementioned steps, you can push the code to o
 
 ![Function deployment](/images/blog/bun-function-resume/deployment.png)
 
-You can then go ahead and test your function by opening the function domain in your browser. 
+You can then go ahead and test your function by opening the function domain in your browser.
 
 Here is what an example of this looks like: [apwr.dev/bun-functions-resume-demo](https://apwr.dev/bun-functions-resume-demo)
 
@@ -203,6 +203,6 @@ And with that, you have successfully deployed your resume using Appwrite Functio
 
 Additionally, if you would like to learn more about Appwrite Functions, here are some resources:
 
-- [Appwrite Functions docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
-- [Bun functions announcements](https://appwrite.io/blog/post/why-you-need-to-try-the-new-bun-runtime): Read the full announcement about our Bun functions runtime.
+- [Appwrite Functions docs](/docs/functions): These documents provide more information on how to use Appwrite Functions.
+- [Bun functions announcements](/blog/post/why-you-need-to-try-the-new-bun-runtime): Read the full announcement about our Bun functions runtime.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

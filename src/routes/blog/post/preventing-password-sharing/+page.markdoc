@@ -41,7 +41,7 @@ To prevent password sharing and enhance security, several tools and technologies
 
 ## 1. Authentication systems
 
-- **Multi-factor authentication (MFA)**: Tools like Duo Security, Authy, and Google Authenticator add an extra layer of security by requiring additional verification beyond just a password. We at Appwrite have also recently announced our own 2FA solution for consumers of our Authentication product, which you can read about in our [product announcement](https://appwrite.io/blog/post/announcing-two-factor-authentication).
+- **Multi-factor authentication (MFA)**: Tools like Duo Security, Authy, and Google Authenticator add an extra layer of security by requiring additional verification beyond just a password. We at Appwrite have also recently announced our own 2FA solution for consumers of our Authentication product, which you can read about in our [product announcement](/blog/post/announcing-two-factor-authentication).
 - **Single Sign-On (SSO) providers**: Solutions like Okta, Azure Active Directory, and OneLogin allow users to access multiple applications with a single set of credentials, reducing the temptation to share passwords.
 
 ## 2. Passwordless authentication technologies

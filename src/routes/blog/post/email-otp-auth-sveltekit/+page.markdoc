@@ -15,7 +15,7 @@ With the recent Appwrite 1.5 release, we added a new passwordless authentication
 
 # What is email OTP authentication?
 
-[Email OTP authentication](https://appwrite.io/docs/products/auth/email-otp) lets users create accounts using their email address and sign in using a 6-digit code delivered to their email inbox. This method is similar to [Magic URL login](https://appwrite.io/docs/products/auth/magic-url) but can provide a better user experience in some scenarios.
+[Email OTP authentication](/docs/products/auth/email-otp) lets users create accounts using their email address and sign in using a 6-digit code delivered to their email inbox. This method is similar to [Magic URL login](/docs/products/auth/magic-url) but can provide a better user experience in some scenarios.
 
 ## Email OTP vs magic URL
 
@@ -33,7 +33,7 @@ Now that we have a basic understanding of email OTP authentication, let’s lear
 
 ## Set up Appwrite 1.5
 
-You can use email OTP authentication either by [registering on Appwrite Cloud](https://cloud.appwrite.io/) or [self-hosting Appwrite](https://appwrite.io/docs/advanced/self-hosting) on your system or an external VM/VPS.
+You can use email OTP authentication either by [registering on Appwrite Cloud](https://cloud.appwrite.io/) or [self-hosting Appwrite](/docs/advanced/self-hosting) on your system or an external VM/VPS.
 
 You can self-host Appwrite using the following Docker command:
 
@@ -45,7 +45,7 @@ docker run -it --rm \
     appwrite/appwrite:1.5.7
 ```
 
-Once that is done, [set up email delivery](https://appwrite.io/docs/advanced/self-hosting/email) on your self-hosted Appwrite instance. This can be done by visiting your `appwrite` directory and updating the `.env` file in a similar manner as follows:
+Once that is done, [set up email delivery](/docs/advanced/self-hosting/email) on your self-hosted Appwrite instance. This can be done by visiting your `appwrite` directory and updating the `.env` file in a similar manner as follows:
 
 ```
 _APP_SMTP_HOST=smtp.sendgrid.net
@@ -176,7 +176,7 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
                 <button class="button" type="submit">Submit</button>
             </form>
         </div>
-        
+
         <div id="otp">
             <h2>Enter OTP</h2>
             <form on:submit={verifyOtp}>
@@ -199,5 +199,5 @@ And with that, our demo application is ready. If you liked this project or want 
 
 For more information about Appwrite Authentication, visit the following resources:
 
-- [Appwrite Authentication Docs](https://appwrite.io/docs/products/auth): These docs provide more information on how to use the different methods offered under Appwrite Authentication.
+- [Appwrite Authentication Docs](/docs/products/auth): These docs provide more information on how to use the different methods offered under Appwrite Authentication.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

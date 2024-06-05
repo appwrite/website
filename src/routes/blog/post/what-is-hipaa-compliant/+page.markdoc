@@ -57,12 +57,12 @@ Start with a solid understanding of HIPAA's requirements. Resources are availabl
 - **Implement strong security measures**
 Use encryption for data at rest and in transit, ensure proper authentication mechanisms are in place, and regularly update and patch systems.
 - **Consider HIPAA early on**
-Integrate HIPAA considerations into the design phase of your development process. It’s easier to build compliance into your application from the start than to retrofit it later.    
+Integrate HIPAA considerations into the design phase of your development process. It’s easier to build compliance into your application from the start than to retrofit it later.
 - **Invest in a HIPAA compliant tech stack**
-Investigate what platforms and tools ad here to HIPAA compliancy and reassure they meet both your tech and compliancy requirements.    
+Investigate what platforms and tools ad here to HIPAA compliancy and reassure they meet both your tech and compliancy requirements.
 
 ## Caring for your users
 
 HIPAA might seem daunting at first glance, but it’s fundamentally about protecting individuals' health information. We have the power to build applications that not only innovate healthcare but also safeguard the very personal information people entrust to them. Understanding and implementing HIPAA regulations is not just a legal requirement; it's a critical component of ethical software development in the healthcare domain. So, the next time you come across HIPAA in your development journey, remember it’s more than just compliance—it’s about caring for the data privacy and security of your users.
 
-Looking for a HIPAA compliant backend provider? Looking to replace Firebase? Appwrite can be your solution. Take a look at our [documentation](https://appwrite.io/docs/advanced/security) to learn more about our security.
+Looking for a HIPAA compliant backend provider? Looking to replace Firebase? Appwrite can be your solution. Take a look at our [documentation](/docs/advanced/security) to learn more about our security.

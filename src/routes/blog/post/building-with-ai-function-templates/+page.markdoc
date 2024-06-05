@@ -9,13 +9,13 @@ author: aditya-oberai
 category: product
 ---
 
-It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications. 
+It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications.
 
 So, what did we add? This blog provides an overview of all the concepts we’ve added, tutorials, templates, and the integrations we support.
 
 # Computer vision
 
-[Computer vision](https://appwrite.io/blog/post/state-of-computer-vision) is a field of AI aiming to provide machines with a comprehensive understanding of visual data from a variety of sources. Two sub techniques we added support for are image classification and object detection. Both techniques are widely used in our day to day lives, let’s take a look.
+[Computer vision](/blog/post/state-of-computer-vision) is a field of AI aiming to provide machines with a comprehensive understanding of visual data from a variety of sources. Two sub techniques we added support for are image classification and object detection. Both techniques are widely used in our day to day lives, let’s take a look.
 
 ## Image classification
 
@@ -59,7 +59,7 @@ Detect and label objects in images
 
 # Natural language processing
 
-[Natural language processing](https://appwrite.io/blog/post/state-of-natural-language-processing) (NLP) is a fascinating intersection of computer science, artificial intelligence, and linguistics. It's about teaching computers to understand, interpret, and generate human language. Translating languages, answering questions, or helping find information, NLP is at the heart of many technologies we use every day. Two techniques that Appwrite Function templates support are text generation and language translation.
+[Natural language processing](/blog/post/state-of-natural-language-processing) (NLP) is a fascinating intersection of computer science, artificial intelligence, and linguistics. It's about teaching computers to understand, interpret, and generate human language. Translating languages, answering questions, or helping find information, NLP is at the heart of many technologies we use every day. Two techniques that Appwrite Function templates support are text generation and language translation.
 
 ## Text generation
 
@@ -107,7 +107,7 @@ Translate text between languages
 
 # Audio processing
 
-[Audio processing](https://appwrite.io/blog/post/state-of-audio-processing) is a field of machine learning that allows machines to understand, analyze, and manipulate various audio signals. The applications are vast and varied, from speech recognition to music generation and noise reduction. It's used in many everyday tools you use, including voice assistants, music streaming services, and for noise reduction in online calls. We’ve added support for speech to recognition, text-to-speech, and even music generation.
+[Audio processing](/blog/post/state-of-audio-processing) is a field of machine learning that allows machines to understand, analyze, and manipulate various audio signals. The applications are vast and varied, from speech recognition to music generation and noise reduction. It's used in many everyday tools you use, including voice assistants, music streaming services, and for noise reduction in online calls. We’ve added support for speech to recognition, text-to-speech, and even music generation.
 
 ## Speech to recognition
 
@@ -175,15 +175,15 @@ Efficiently convert text to music
 
 As we have covered in this blog, we have added a lot of great templates for you to get started on your AI journey. Including support for AI integrations:
 
-- [Pinecone](https://appwrite.io/docs/products/ai/integrations/pinecone)
-- [OpenAI](https://appwrite.io/docs/products/ai/integrations/openai)
-- [Hugging Face](https://appwrite.io/docs/products/ai/tutorials/image-classification)
-- [ElevenLabs](https://appwrite.io/docs/products/ai/integrations/elevenlabs)
-- [Perplexity](https://appwrite.io/docs/products/ai/integrations/perplexity)
-- [Replicate](https://appwrite.io/docs/products/ai/integrations/replicate)
-- [fal.ai](https://appwrite.io/docs/products/ai/integrations/fal-ai)
-- [LangChain](https://appwrite.io/docs/products/ai/integrations/langchain)
-- [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
+- [Pinecone](/docs/products/ai/integrations/pinecone)
+- [OpenAI](/docs/products/ai/integrations/openai)
+- [Hugging Face](/docs/products/ai/tutorials/image-classification)
+- [ElevenLabs](/docs/products/ai/integrations/elevenlabs)
+- [Perplexity](/docs/products/ai/integrations/perplexity)
+- [Replicate](/docs/products/ai/integrations/replicate)
+- [fal.ai](/docs/products/ai/integrations/fal-ai)
+- [LangChain](/docs/products/ai/integrations/langchain)
+- [Together AI](/docs/products/ai/integrations/togetherai)
 
 ![Image of Appwrite Console](/images/blog/building-with-ai-function-templates/function-templates-overview.png)
 
@@ -196,7 +196,7 @@ We've also added more AI Function templates for more use cases than discussed ab
 
 Take a look at these two blogs to learn more about using Function templates in your projects:
 
-- [Streamline receipt scanning with Appwrite Cloud](https://appwrite.io/blog/post/scan-receipts-with-appwrite-functions)
-- [Build an intelligent chatbot with ChatGPT and Appwrite Functions](https://appwrite.io/blog/post/function-template-prompt-chatgpt)
+- [Streamline receipt scanning with Appwrite Cloud](/blog/post/scan-receipts-with-appwrite-functions)
+- [Build an intelligent chatbot with ChatGPT and Appwrite Functions](/blog/post/function-template-prompt-chatgpt)
 
 We will continue to add more AI tutorials, integrations, blogs, videos, and Function templates. You can also contribute by adding your own pull requests to the [repository](https://github.com/appwrite/templates).

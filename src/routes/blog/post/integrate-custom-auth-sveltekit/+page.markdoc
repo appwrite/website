@@ -16,7 +16,7 @@ Therefore, in this blog, we will learn about Appwrite’s custom token authentic
 
 # What is custom token authentication?
 
-Custom token authentication allows you to use one of Appwrite’s [Server SDKs](https://appwrite.io/docs/sdks#server) to generate tokens, short-lived secrets that can be exchanged for a session by a [Client SDK](https://appwrite.io/docs/sdks#client) to log in users. This allows you to code your own authentication methods using Appwrite Functions or your own server-side APIs. This can be beneficial in a number of scenarios, such as:
+Custom token authentication allows you to use one of Appwrite’s [Server SDKs](/docs/sdks#server) to generate tokens, short-lived secrets that can be exchanged for a session by a [Client SDK](/docs/sdks#client) to log in users. This allows you to code your own authentication methods using Appwrite Functions or your own server-side APIs. This can be beneficial in a number of scenarios, such as:
 
 1. **Legacy system integration**: Integrate with old systems using unique authentication methods without major changes.
 2. **Custom security needs**: Implement special security features like hardware tokens or voice recognition.
@@ -97,7 +97,7 @@ const users = new Users(client);
 
 /**
  * Returns user if user exists in Appwrite, if not creates a new user
- * 
+ *
  * @param {string} email
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
@@ -112,14 +112,14 @@ async function getUser(email) {
     } catch (err) {
         console.error(err);
     }
-    
+
 }
 
 /**
  * Logic for authentication
- * 
- * @param {string} email 
- * @param {string} password 
+ *
+ * @param {string} email
+ * @param {string} password
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function authLogic(email, password) {
@@ -294,5 +294,5 @@ And with that, our demo project to try custom token authentication in Appwrite i
 
 Additionally, if you would like to learn more about Appwrite Auth, here are some resources:
 
-- [Appwrite Auth docs](https://appwrite.io/docs/products/auth): These documents provide more information on how to use Appwrite Auth.
+- [Appwrite Auth docs](/docs/products/auth): These documents provide more information on how to use Appwrite Auth.
 - [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

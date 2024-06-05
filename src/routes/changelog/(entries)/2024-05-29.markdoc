@@ -82,7 +82,7 @@ Miscellaneous:
 - Feat: improve header demo values
 - Feat: add warning header
 
-You can update by following the [upgrade docs](https://appwrite.io/docs/advanced/self-hosting/update).
+You can update by following the [upgrade docs](/docs/advanced/self-hosting/update).
 
 {% arrow_link href="https://github.com/appwrite/appwrite/releases/tag/1.5.7" %}
 View the changelog on GitHub
