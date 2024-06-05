@@ -119,8 +119,8 @@ devDependencies:
     specifier: ^3.6.5
     version: 3.6.5(postcss@8.4.35)(sass@1.71.1)(svelte@4.2.12)
   svelte-markdoc-preprocess:
-    specifier: ^1.2.1
-    version: 1.2.1
+    specifier: ^2.0.0
+    version: 2.0.0
   svelte-markdown:
     specifier: ^0.4.1
     version: 0.4.1(svelte@4.2.12)
@@ -5907,8 +5907,8 @@ packages:
       svelte: 4.2.12
     dev: true
 
-  /svelte-markdoc-preprocess@1.2.1:
-    resolution: {integrity: sha512-xeD8q84kICWJ4sZeZIeMCeSH4paqpIS1w7BlfJ5n3f9frLtfrLQrOxHnTA3oDrac/tEbH+plLWiS3ZUXwqanXw==}
+  /svelte-markdoc-preprocess@2.0.0:
+    resolution: {integrity: sha512-3a5U8Sj0JXmIIvVL4jRsYEGBtFKXJ65/p5wGIn0RKc7L1beuES/57tzKR/FDa20bRScOrbgCbMTX9mb5726rOg==}
     dependencies:
       '@markdoc/markdoc': 0.4.0
       html-escaper: 3.0.3
