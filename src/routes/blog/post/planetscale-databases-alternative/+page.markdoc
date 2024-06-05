@@ -73,7 +73,7 @@ docker run -it --rm \
     appwrite/appwrite:1.5.7
 ```
 
-We have a dedicated [self-hosting guide](https://appwrite.io/docs/advanced/self-hosting) in our docs for more info.
+We have a dedicated [self-hosting guide](/docs/advanced/self-hosting) in our docs for more info.
 
 ## Managed databases on Appwrite Cloud
 
@@ -89,7 +89,7 @@ One of the biggest advantages of Appwrite Cloud is that these benefits are not j
 
 ## Pricing plans
 
-With Appwrite Cloud, we have mindfully designed our pricing plans to be accessible to most developers. Right now, we offer two [pricing plans on Appwrite Cloud](https://appwrite.io/pricing).
+With Appwrite Cloud, we have mindfully designed our pricing plans to be accessible to most developers. Right now, we offer two [pricing plans on Appwrite Cloud](/pricing).
 
 - **Starter plan**
     - A free tier for every developer working on a side project or SaaS product that can thrive on our starter plan limits.
@@ -116,4 +116,4 @@ You can also look at PlanetScale [pricing](https://planetscale.com/pricing) to u
 
 There is no denying that PlanetScale has done a fantastic job developing a scalable and robust database offering. They are a massive inspiration in the database space and the larger developer tooling ecosystem. That being said, there are gaps in the developer community that PlanetScale chooses not to prioritize due to their business growth plans, which we can help with. Free users have formed an influential part of the Appwrite community and have made a difference not just as consumers but also as builders, public speakers, contributors, etc., who have constantly criticized and shared feedback, added ideas and suggestions, and made Appwrite a much better platform. We hope we will see more such developers give us a shot in the days to come.
 
-Learn more about Appwrite by visiting our [docs](https://appwrite.io/docs) and joining our [Discord community](https://appwrite.io/discord).
+Learn more about Appwrite by visiting our [docs](/docs) and joining our [Discord community](https://appwrite.io/discord).
