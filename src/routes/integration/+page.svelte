@@ -43,11 +43,31 @@
 	<div>
 		<div class="web-container">
 			<div class="l-integrations-grid">
-				<aside>
-					<label class="web-input-button web-u-flex-basis-400">
-						<span class="web-icon-search" aria-hidden="true"></span>
-						<input class="text" placeholder="Search" />
-					</label>
+				<aside class="u-flex-vertical u-gap-32">
+					<section>
+						<label class="web-input-button web-u-flex-basis-400">
+							<span class="web-icon-search" aria-hidden="true"></span>
+							<input class="text" placeholder="Search" />
+						</label>
+					</section>
+					<section class="u-flex-vertical">
+						<section class="u-flex-vertical u-gap-16">
+							<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Platform</h2>
+							<ul class="u-flex u-flex-wrap u-gap-8">
+								<li>
+									<button class="tag is-selected">Cloud</button>
+								</li>
+								<li>
+									<button class="tag">Self-hosted</button>
+								</li>
+							</ul>
+						</section>
+						<div class="web-u-sep-block-start u-margin-block-24"></div>
+						<section class="u-flex-vertical u-gap-16">
+							<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Categories</h2>
+							<ul></ul>
+						</section>
+					</section>
 				</aside>
 				<div></div>
 			</div>
