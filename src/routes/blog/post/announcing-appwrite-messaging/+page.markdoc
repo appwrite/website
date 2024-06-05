@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Announcing Messaging: Push, Email and SMS directly from your Appwrite backend
+title: "Announcing Messaging: Push, Email and SMS directly from your Appwrite backend"
 description: Appwrite is excited to announce Messaging, a new product that simplifies user communication for developers. With Messaging, you can send emails, SMS, and push notifications through a unified API, all within your Appwrite project.
 date: 2024-02-26
 cover: /images/blog/messaging-announcement.png
