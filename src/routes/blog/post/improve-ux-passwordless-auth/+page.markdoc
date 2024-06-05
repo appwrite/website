@@ -60,7 +60,7 @@ While the benefits are substantial, passwordless authentication isn't without it
 
 # Implementing passwordless authentication using Appwrite
 
-Appwrite Authentication also features three commonly used passwordless authentication methods: [**magic links**](https://appwrite.io/docs/products/auth/magic-url), [**email OTPs**](https://appwrite.io/docs/products/auth/email-otp), and [**phone authentication**](https://appwrite.io/docs/products/auth/phone-sms), which can be integrated into applications seamlessly with Appwrite’s client-side SDKs. This approach not only enhances security but also significantly improves the user experience by simplifying and streamlining the login process.
+Appwrite Authentication also features three commonly used passwordless authentication methods: [**magic links**](/docs/products/auth/magic-url), [**email OTPs**](/docs/products/auth/email-otp), and [**phone authentication**](/docs/products/auth/phone-sms), which can be integrated into applications seamlessly with Appwrite’s client-side SDKs. This approach not only enhances security but also significantly improves the user experience by simplifying and streamlining the login process.
 
 {% tabs %}
 {% tabsitem #magicurl title="Magic URLs" %}
@@ -165,4 +165,4 @@ final session = await account.createSession(
 
 Passwordless authentication stands at the forefront of a new era in digital security and user experience. My recommendation to all is to embrace the future – say goodbye to passwords and hello to a more secure, convenient digital experience.
 
-Learn more about Appwrite Authentication from our [docs](https://appwrite.io/docs/products/auth) and join our [Discord community](https://appwrite.io/discord) to interact with fellow developers using the same.
+Learn more about Appwrite Authentication from our [docs](/docs/products/auth) and join our [Discord community](https://appwrite.io/discord) to interact with fellow developers using the same.
