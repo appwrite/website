@@ -19,7 +19,7 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
         }
         switch (token.type) {
             case 'paragraph_open':
-                token.attrPush(['class', 'web-sub-body-400']);
+                token.attrPush(['class', 'web-paragraph']);
                 break;
             case 'link_open': {
                 const href = token.attrGet('href');
