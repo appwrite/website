@@ -504,7 +504,7 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
+                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" loading="lazy"  />
                     </div>
                 </div>
                 <div class="web-container u-position-relative">
