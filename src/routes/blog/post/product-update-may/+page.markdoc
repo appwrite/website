@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Appwrite product update May
-description: Get an overview of everything announced and community updates.
+description: An overview of the past month.
 date: 2024-06-05
 cover: /images/blog/product-update-may/may-cover.png
 timeToRead: 7
@@ -11,7 +11,7 @@ category: product
 
 # AI announcement
 
-This month, we rolled out many AI updates as we work to make Appwrite the ultimate platform for developers. Here’s what we’ve added so far:
+This month, we rolled out many AI updates as we worked to make Appwrite the ultimate platform for developers. Here’s what we’ve added so far:
 
 - New knowledge base for AI
 - New third-party AI integration tutorials
@@ -32,19 +32,13 @@ The newest Appwrite AI [Function](https://appwrite.io/docs/products/functions) t
 
 [Learn how to build an intelligent chatbot using OpenAI in this blog.](https://appwrite.io/blog/post/function-template-prompt-chatgpt)
 
-## Integrate any database type into your Appwrite project
+# Integrate any database type into your Appwrite project
 
 With databases, the answer is often "it depends," but we've got you covered. We created a list of top cloud database providers and highlighted their unique features and strengths. As a bonus, we've provided Appwrite Functions to integrate each database into your project.
 
 [Learn how to integrate SQL, noSQL, Vector, Graph, and more into your project.](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) 
 
-## Get started with Appwrite + React - Fullstack App
-
-Build a full-stack app with Appwrite backend and React front-end with the help of Dennis Ivy.
-
-https://www.youtube.com/watch?v=_JDeJgsU-bI
-
-## Open Source Community Recognitions
+# Open Source Community Recognitions
 
 This month we are excited to feature **Appwrite Migrator** by Matthew Parker aka Pingu as a part of our Monthly Community Recognitions.
 
@@ -54,26 +48,23 @@ PinguApps.AppwriteMigrator is a .NET CLI tool that enables a code-first approach
 
 If you'd like to participate in next month's Community Recognitions, [join our Discord server](https://appwrite.io/discord) to showcase your project.
 
----
-
-## More engineering resources
+# More engineering resources
 
 - [Watch](https://www.youtube.com/watch?v=dHo7lvpU6gs): Set up an online store using Lemon Squeezy
 - [Watch](https://www.youtube.com/watch?v=_YMw268j2IU): Express.JS like routing lets you create REST APIs with Appwrite Functions
 - [Read](https://appwrite.io/blog/post/building-cross-platform-applications-with-react-native): Building cross platform applications with React Native
 - [Read](https://appwrite.io/blog/post/scan-receipts-with-appwrite-functions): Streamline receipt scanning with Appwrite Cloud
 - [Read](https://appwrite.io/blog/post/state-of-computer-vision): State of computer vision
+- [Read](https://appwrite.io/blog/post/integrate-custom-auth-sveltekit): Integrate any external authentication solution into your Appwrite project
 
-## Open source and community updates
+# Open source and community updates
 
 - [Repository:](https://github.com/zachhandley/AppwriteUtils) Two distinct packages designed to enhance your experience with Appwrite by Zach Handley
 - [Repository:](https://github.com/SafakOrg/ozteksms-appwrite-function) Oztek SMS API for Appwrite Functions by SafakB
 - [Read:](https://appwrite.io/blog/post/case-study-open-mind) Data dilemma and cost efficiency solved: Open Mind's journey to scalable education
 - [Read:](https://appwrite.io/blog/post/case-study-langx) Building the future of language learning for over 5000 users worldwide with LangX
 
----
-
-## Appwrite Changelog
+# Appwrite Changelog
 
 - [Messaging is free for the next six months](https://appwrite.io/blog/post/appwrite-messaging-is-free-for-six-months)
 - Introducing Appwrite’s Roadmap for more transparency
@@ -81,10 +72,5 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 - [1.5.7 released](https://appwrite.io/changelog/entry/2024-05-29)
 - [Appwrite Startups program](https://appwrite.io/blog/post/announcing-appwrite-startups-program) - Join the program
 
----
-
-## What's to come
-
-This is what you can expect from us in the coming weeks:
 
 Follow us on socials and check our [Changelog](https://appwrite.io/changelog) regularly, as we will release more information in the coming weeks.
