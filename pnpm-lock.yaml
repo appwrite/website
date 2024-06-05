@@ -25,6 +25,9 @@ devDependencies:
   '@appwrite.io/repo':
     specifier: github:appwrite/appwrite#main
     version: github.com/appwrite/appwrite/7da997b5cdeacb6137b586cef35d8a1e58725f80
+  '@internationalized/date':
+    specifier: 3.5.0
+    version: 3.5.0
   '@melt-ui/pp':
     specifier: ^0.3.0
     version: 0.3.0(@melt-ui/svelte@0.74.3)(svelte@4.2.12)
@@ -116,8 +119,8 @@ devDependencies:
     specifier: ^3.6.5
     version: 3.6.5(postcss@8.4.35)(sass@1.71.1)(svelte@4.2.12)
   svelte-markdoc-preprocess:
-    specifier: ^1.2.1
-    version: 1.2.1
+    specifier: ^2.0.0
+    version: 2.0.0
   svelte-markdown:
     specifier: ^0.4.1
     version: 0.4.1(svelte@4.2.12)
@@ -667,8 +670,8 @@ packages:
     dev: true
     optional: true
 
-  /@internationalized/date@3.5.2:
-    resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
+  /@internationalized/date@3.5.0:
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
     dependencies:
       '@swc/helpers': 0.5.6
     dev: true
@@ -1132,7 +1135,7 @@ packages:
     dependencies:
       '@floating-ui/core': 1.6.0
       '@floating-ui/dom': 1.6.3
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.6
@@ -5904,8 +5907,8 @@ packages:
       svelte: 4.2.12
     dev: true
 
-  /svelte-markdoc-preprocess@1.2.1:
-    resolution: {integrity: sha512-xeD8q84kICWJ4sZeZIeMCeSH4paqpIS1w7BlfJ5n3f9frLtfrLQrOxHnTA3oDrac/tEbH+plLWiS3ZUXwqanXw==}
+  /svelte-markdoc-preprocess@2.0.0:
+    resolution: {integrity: sha512-3a5U8Sj0JXmIIvVL4jRsYEGBtFKXJ65/p5wGIn0RKc7L1beuES/57tzKR/FDa20bRScOrbgCbMTX9mb5726rOg==}
     dependencies:
       '@markdoc/markdoc': 0.4.0
       html-escaper: 3.0.3

@@ -14,7 +14,7 @@ With digital security taking more and more importance in our day-to-day lives, r
 
 # Understanding 2FA
 
-2FA adds an extra layer of security to the traditional login process by requiring users to provide two different types of information before gaining access to an account. This method significantly enhances security by combining something the user knows (like a password) with something the user has (such as a mobile device for receiving SMS codes or an authenticator app) or is (biometrics, for example). 
+2FA adds an extra layer of security to the traditional login process by requiring users to provide two different types of information before gaining access to an account. This method significantly enhances security by combining something the user knows (like a password) with something the user has (such as a mobile device for receiving SMS codes or an authenticator app) or is (biometrics, for example).
 
 The vulnerabilities of single-factor authentication, primarily consisting of password-only systems, lie in their susceptibility to phishing, social engineering, and brute force attacks. 2FA addresses these vulnerabilities by making unauthorized access considerably more challenging for attackers.
 
@@ -66,7 +66,7 @@ Effective implementation of 2FA enhances security measures for applications, pro
 
 # Implementing 2FA in your apps with Appwrite
 
-With the release of Appwrite 1.5, we have introduced the ability to implement [2FA](https://appwrite.io/docs/products/auth/2fa) via Appwrite Authentication. Currently, we offer three methods for implementing the second factor:
+With the release of Appwrite 1.5, we have introduced the ability to implement [2FA](/docs/products/auth/mfa) via Appwrite Authentication. Currently, we offer three methods for implementing the second factor:
 
 - **Authenticator Apps (TOTP):** Use common authenticator apps like Google Authenticator or Twilio Authy for authentication.
 - **Emails:** A verified email can be used for authentication, providing a 6-digit code to the user.
@@ -76,8 +76,8 @@ With the release of Appwrite 1.5, we have introduced the ability to implement [2
 
 Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- [Docs](https://appwrite.io/docs/products/auth/2fa)
+- [Docs](/docs/products/auth/mfa)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

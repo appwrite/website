@@ -168,7 +168,7 @@ export default async ({ req, res, log, error }) => {
         port: 14714
       }
     });
- 
+
     await client.connect();
   }
 
@@ -279,7 +279,7 @@ You can look at the entire example put together in the [query Neo4j AuraDB](http
 
 Upstash is a data platform that offers services such as Redis, Kafka, or QStash, but most importantly, a vector database. Vector database stores multi-dimensional numeric representations of your data (embeddings) in an index, allowing you to find similarities between them quickly.
 
-There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a AI model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer. 
+There are AI models to generate embeddings from text, music, or images, which is the main purpose of vector databases. Using a AI model such as a large language model (LLM), you could create a vector database of your product names. Later, a visitor may be looking for a flower pot, but thanks to the vector database, your website can now recommend watering cans and fertilizer.
 
 Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can create an Appwrite Function that connects to Upstash, and inserts your data.
 
@@ -335,6 +335,6 @@ If needed for your use-case, you can disable automatic embedding generation from
 
 Your database journey doesn’t end here. There are other databases you might already love, or look forward to trying in your next project. Thanks to nature of Appwrite Functions, your imagination is the limit. We look forward showcasing more databases and how you can integrate them with Appwrite.
 
-If you want to share your favorite database with us, or need help integrating with your database, I invite you to [Join our Discord](http://appwrite.io/discord) community. 
+If you want to share your favorite database with us, or need help integrating with your database, I invite you to [Join our Discord](https://appwrite.io/discord) community.
 
 Lastly, if you are feeling inspired, you can contribute to templates you have read about. In our [Appwrite Functions templates](https://github.com/appwrite/templates) repository, we implemented integrations in Node.JS, but developers use a dozen other languages. We would love to see issues and pull requests converting the function into other languages.

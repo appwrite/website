@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing: Appwrite Pro"
-description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence. 
+description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence.
 date: 2023-12-20
 cover: /images/blog/announcing-appwrite-pro/header.png
 timeToRead: 5
@@ -124,4 +124,4 @@ In case you need help upgrading, transferring your projects, or have billing and
 
 - [FAQ on pricing page](https://apwr.dev/pricingFAQ)
 - [Project migration](https://appwrite.io/docs/advanced/migrations/cloud)
-- [Discord support](http://appwrite.io/discord)
+- [Discord support](https://appwrite.io/discord)
