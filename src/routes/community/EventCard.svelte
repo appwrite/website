@@ -25,14 +25,13 @@
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
-    $: headingTag = `h${headingLevel}`;
-    let hasPast: boolean = (new Date()) > (new Date(date));
-    console.log(hasPast);
-    let dateString: string = new Date(date).toLocaleDateString('en-US', {
+    const hasPast: boolean = (new Date()) > (new Date(date));
+    const dateString: string = new Date(date).toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',
         year: 'numeric',
     });
+    $: headingTag = `h${headingLevel}`;
 </script>
 
 <a class="web-grid-articles-item" {href} target="_blank" rel="noopener noreferrer">
