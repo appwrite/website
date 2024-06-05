@@ -65,7 +65,17 @@
 						<div class="web-u-sep-block-start u-margin-block-24"></div>
 						<section class="u-flex-vertical u-gap-16">
 							<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Categories</h2>
-							<ul></ul>
+							<ul class="u-flex-vertical u-gap-16">
+								<li>
+									<a class="web-link is-pink" href="#ai">AI</a>
+								</li>
+								<li>
+									<a class="web-link" href="#auth">Auth</a>
+								</li>
+								<li>
+									<a class="web-link" href="#databases">Databases</a>
+								</li>
+							</ul>
 						</section>
 					</section>
 				</aside>
