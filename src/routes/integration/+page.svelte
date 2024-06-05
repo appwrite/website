@@ -79,7 +79,23 @@
 						</section>
 					</section>
 				</aside>
-				<div></div>
+				<section>
+					<div>
+						<section class="u-flex-vertical u-gap-32">
+							<header class="u-flex-vertical u-gap-4">
+								<h2 class="web-label web-u-color-text-primary">Featured</h2>
+								<p class="web-description">Top recommended integrations</p>
+							</header>
+							<div>
+								<ul class="l-feature-grid">
+									<li class="l-feature-grid-main-item">
+										<a class="web-overlay-item" href="/"></a>
+									</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 		</div>
 	</div>
