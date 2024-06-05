@@ -76,13 +76,13 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/appwrite-1.5-now-available-on-cloud"
+                        href="/blog/post/announcing-appwrite-new-ai-integrations"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1">Appwrite 1.5 is now available on Cloud</span>
+                        <span class="web-caption-400 web-u-trim-1">Announcing new AI Appwrite Integrations</span>
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="web-hero is-horizontal">
@@ -504,7 +504,7 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" />
+                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" loading="lazy"  />
                     </div>
                 </div>
                 <div class="web-container u-position-relative">

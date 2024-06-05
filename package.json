@@ -43,6 +43,7 @@
         "@types/morgan": "^1.9.9",
         "@typescript-eslint/eslint-plugin": "^7.1.0",
         "@typescript-eslint/parser": "^7.1.0",
+        "@internationalized/date": "3.5.0",
         "dequal": "^2.0.3",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^8.10.0",

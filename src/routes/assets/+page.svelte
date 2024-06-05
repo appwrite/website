@@ -543,6 +543,37 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <div class="media-wrapper">
+                                        <img
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                                            src="/assets/visuals/messaging.png"
+                                            alt="Appwrite Messaging"
+                                        />
+                                        <div class="buttons">
+                                            <a
+                                                class="web-button is-secondary"
+                                                href="/assets/visuals/messaging.jpg"
+                                                download
+                                            >
+                                                <span
+                                                    class="web-icon-download"
+                                                    aria-label="download"
+                                                />
+                                                <span>JPG</span>
+                                            </a>
+                                            <a
+                                                class="web-button is-secondary"
+                                                href={'/assets/visuals/messaging.png'}
+                                                download
+                                            >
+                                                <span
+                                                    class="web-icon-download"
+                                                    aria-label="download"
+                                                />
+                                                <span>PNG</span>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>

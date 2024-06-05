@@ -105,6 +105,14 @@
                     href: '/docs/products/ai/integrations/langchain'
                 },
                 {
+                    label: 'Anyscale',
+                    href: '/docs/products/ai/integrations/anyscale'
+                },
+                {
+                  label: 'LMNT',
+                  href: '/docs/products/ai/integrations/lmnt'
+                },
+                {
                   label: 'Together AI',
                   href: '/docs/products/ai/integrations/togetherai'
                 },

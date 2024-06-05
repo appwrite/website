@@ -158,7 +158,7 @@
         </header>
         <div class="web-article-content" style:gap="6rem">
             <section class="web-article-content-grid-6-4">
-                <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+                <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-8">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
@@ -192,10 +192,10 @@
                         <header class="web-article-content-header">
                             <Heading id={method.id} level={2} inReferences>{method.title}</Heading>
                         </header>
-                        <p class="web-sub-body-400">
+                        <div class="u-flex-vertical u-gap-8">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html parse(method.description)}
-                        </p>
+                        </div>
                         <Accordion>
                             {#if method.parameters.length > 0}
                                 <AccordionItem open={true} title="Request">
