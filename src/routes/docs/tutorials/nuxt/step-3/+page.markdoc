@@ -46,8 +46,8 @@ Your project id is located in the **Settings** page in the Appwrite console.
 Add a `.env` file to the root directory and add the following code to it, replacing `YOUR_PROJECT_ID` with your project id.
 
 ```
-VITE_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
-VITE_APPWRITE_PROJECT="YOUR_PROJECT_ID"
+VITE_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+VITE_APPWRITE_PROJECT=YOUR_PROJECT_ID
 ```
 
 # Initialize Appwrite SDK {% #init-sdk %}

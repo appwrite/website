@@ -13,7 +13,7 @@ We remain dedicated to maintaining the highest information security standards fo
 Although we go beyond just meeting the requirements, Appwrite still commits to conform to the most stringent security standards
 like [GDPR](https://appwrite.io/docs/advanced/security/gdpr), [HIPAA](https://appwrite.io/docs/advanced/security/hipaa), and [PCI](https://appwrite.io/docs/advanced/security/pci) to ensure the safety of your data.
 
-Today we are excited to add to Appwrite's list of security standards compliance and announce that Appwrite has achieved SOC 2 Type 1 compliance (System and Organization Controls). 
+Today, we are excited to add to Appwrite's list of security standards compliance and announce that Appwrite has achieved SOC 2 Type 1 compliance (System and Organization Controls). 
 
 # What is SOC 2 Type 1?
 
@@ -54,4 +54,4 @@ Outlined below are some of the key measures Appwrite implements to uphold the se
 - Appwrite oversees vendor management processes to ensure the security of third-party vendors and service providers who may access systems or data.
 - Ongoing training and awareness initiatives are conducted to equip employees with the necessary knowledge and skills to uphold best practices in safeguarding systems and data.
 
-Looking for a SOC 2 type 1 compliant backend provider? Or looking to replace Firebase? Appwrite can be your solution. Take a look at our [documentation](https://appwrite.io/docs/advanced/security) to learn more about our security.
+Looking for a SOC 2 Type 1 compliant backend provider? Or looking to replace Firebase? Appwrite can be your solution. Take a look at our [documentation](https://appwrite.io/docs/advanced/security) to learn more about our security.
