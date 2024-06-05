@@ -38,7 +38,7 @@
                 { label: 'Messaging', href: '/docs/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Messaging', href: '/docs/products/messaging' }
+                { label: 'Messaging', href: '/products/messaging' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
