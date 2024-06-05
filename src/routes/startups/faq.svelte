@@ -13,7 +13,7 @@
         },
         {
             question: 'What happens after I apply?',
-            answer: 'Once you submit the form, our team will evaluate your application. If successful, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
+            answer: 'Once you submit the form, our team will evaluate your application. If selected, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
         },
         {
             question: 'I am already a Pro user. Can I apply?',
