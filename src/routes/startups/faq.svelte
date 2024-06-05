@@ -17,11 +17,11 @@
         },
         {
             question: 'I am already a Pro user. Can I apply?',
-            answer: 'We only accept new paying customers. This means that if you currently have a Pro account or had one previously, you’re not eligible for the program.'
+            answer: "We only accept new paying customers. This means that if you currently have a Pro account or had one previously, you're not eligible for the program."
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'We’re supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don’t meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup.'
+            answer: "We're supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don't meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup."
         },
         {
             question: 'What are the limits of the Pro plan?',
@@ -32,7 +32,7 @@
             answer: `Appwrite has the resources to handle large amounts of traffic, ensuring stability and room for scale for your application. We can also offer increased support and on-call help during your launch.`
         },
         {
-            question: 'What’s included in the Appwrite for Startups program?',
+            question: "What's included in the Appwrite for Startups program?",
             answer: 'Startups joining the program get access to everything Appwrite Pro offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
@@ -47,7 +47,7 @@
         {
             question:
                 'I am already using another backend as a service provider. How do I migrate to Appwrite?',
-            answer: 'We have a migration tool to help you transition from other platforms. If you need additional assistance, we are here to help.'
+            answer: 'We have a <a class="web-link is-inline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
         },
         {
             question: 'What happens after the 12 months run out?',
