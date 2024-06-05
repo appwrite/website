@@ -6,7 +6,7 @@
                 src: '/images/community/events/28march-office-hours.png',
                 alt: ''
             },
-            date: 'March 28th, 2024',
+            date: '2024-03-28',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -19,7 +19,7 @@
                 src: '/images/community/events/4april-office-hours.png',
                 alt: ''
             },
-            date: 'April 4th, 2024',
+            date: '2024-04-04',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -32,7 +32,7 @@
                 src: '/images/community/events/11april-office-hours.png',
                 alt: ''
             },
-            date: 'April 11th, 2024',
+            date: '2024-04-11',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
