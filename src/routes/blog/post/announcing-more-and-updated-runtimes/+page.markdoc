@@ -15,7 +15,7 @@ We’re excited to have updated versions so you can build with your preferred te
 
 # Bun, blazing fast and built for web
 
-[Bun](https://bun.sh/) is an amazingly fast runtime, dependency manager, test runner, and web server for JavaScript with unique features that make it a perfect fit for Appwrite Functions. Bun is fast, like really fast. The runtime performance, dependency manager, and test runners are noticeably faster than its many Node.js counterparts. This is a topic well discussed in [benchmarks](https://medium.com/deno-the-complete-reference/is-bun-really-much-faster-than-node-js-e5b15942a8e8). 
+[Bun](https://bun.sh/) is an amazingly fast runtime, dependency manager, test runner, and web server for JavaScript with unique features that make it a perfect fit for Appwrite Functions. Bun is fast, like really fast. The runtime performance, dependency manager, and test runners are noticeably faster than its many Node.js counterparts. This is a topic well discussed in [benchmarks](https://medium.com/deno-the-complete-reference/is-bun-really-much-faster-than-node-js-e5b15942a8e8).
 
 Bun also boasts a robust standard library. It enables TypeScript and JSX out of the box without a build step, implements standard Web APIs like `fetch()`, and comes with a built-in test runner. All this reduces build times and dependencies needed. Our Bun 1.0.29 runtime brings improved compatibility with the NPM ecosystem and countless bug fixes.
 
@@ -41,7 +41,7 @@ Ruby 3.3 brings some noteworthy upgrades to the table. First off, there’s YJIT
 
 # Updated runtimes for Appwrite
 
-For better dependency compatibility and to reduce vulnerabilities, we've also updated many other runtimes with new versions: 
+For better dependency compatibility and to reduce vulnerabilities, we've also updated many other runtimes with new versions:
 
 - Node 21
 - Deno 1.40
@@ -59,8 +59,8 @@ Try the new runtimes on Appwrite with zero lines of new code using function temp
 
 Visit our documentation to learn more about the runtimes, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Docs](/docs/products/functions/runtimes)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
