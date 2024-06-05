@@ -29,9 +29,9 @@
 </svelte:head>
 
 <Main>
-	<header class="">
+	<header class="web-u-sep-block-end">
 		<div class="web-container">
-			<div class="l-integrations u-flex-vertical u-main-center u-gap-20 web-u-max-width-680">
+			<div class="l-integrations-hero u-flex-vertical u-main-center u-gap-20 web-u-max-width-680">
 				<div class="web-eyebrow web-u-color-text-primary">
 					INTEGRATIONS<span class="web-u-color-text-accent">_</span>
 				</div>
@@ -40,6 +40,19 @@
 			</div>
 		</div>
 	</header>
+	<div>
+		<div class="web-container">
+			<div class="l-integrations-grid">
+				<aside>
+					<label class="web-input-button web-u-flex-basis-400">
+						<span class="web-icon-search" aria-hidden="true"></span>
+						<input class="text" placeholder="Search" />
+					</label>
+				</aside>
+				<div></div>
+			</div>
+		</div>
+	</div>
 
 	<div class="web-container">
 		<FooterNav />
@@ -49,7 +62,17 @@
 
 <style lang="scss">
 	@use '$scss/abstract' as *;
-	.l-integrations {
+	.l-integrations-grid {
+		@media #{$break1} {}
+		@media #{$break2open} {
+			display: grid;
+			gap: pxToRem(68);
+			grid-template-columns: pxToRem(240) 1fr;
+			min-block-size: pxToRem(628);
+			padding-block-start: pxToRem(60);
+		}
+	}
+	.l-integrations-hero {
 		@media #{$break1} {}
 		@media #{$break2open} {
 			min-block-size: pxToRem(628);
