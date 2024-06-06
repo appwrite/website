@@ -1,5 +1,4 @@
-# Use an official Node runtime as a parent image
-FROM node:20-bullseye
+FROM node:20-bullseye as build
 
 ARG PUBLIC_APPWRITE_COL_MESSAGES_ID
 ENV PUBLIC_APPWRITE_COL_MESSAGES_ID ${PUBLIC_APPWRITE_COL_MESSAGES_ID}
@@ -43,15 +42,29 @@ COPY . .
 # Remove the node_modules folder to avoid wrong binaries
 RUN rm -rf node_modules
 
-# Install fontconfig
-COPY ./local-fonts /usr/share/fonts
-RUN apt-get update; apt-get install -y fontconfig
-RUN fc-cache -f -v
-
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=8192 pnpm run build
 
+FROM node:20-bullseye as final
+
+WORKDIR /app
+
+# Install fontconfig
+COPY ./local-fonts /usr/share/fonts
+RUN apt-get update && \
+    apt-get install -y fontconfig && \
+    apt-get autoremove --purge && \
+    rm -rf /var/lib/apt/lists/*
+RUN fc-cache -f -v
+
+COPY --from=build /app/package.json package.json
+COPY --from=build /app/pnpm-lock.yaml pnpm-lock.yaml
+COPY --from=build /app/build/ build
+COPY --from=build /app/server/ server
+
+RUN corepack enable
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
 
 EXPOSE 3000
 CMD [ "node", "server/main.js"]
