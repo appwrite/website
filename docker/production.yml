@@ -87,9 +87,9 @@ services:
         - traefik.enable=true
         - traefik.docker.lbswarm=true
         - traefik.constraint-label-stack=appwrite
-        - traefik.http.middlewares.homepage_compress.compress=true
-        - traefik.http.routers.homepage.middlewares=homepage_compress
+        - traefik.http.routers.appwrite_api.middlewares=homepage_compress
         - traefik.http.services.appwrite_api.loadbalancer.server.port=3000
+        - traefik.http.middlewares.homepage_compress.compress=true
         #http
         - traefik.http.routers.appwrite.entrypoints=web
         - traefik.http.routers.appwrite.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
