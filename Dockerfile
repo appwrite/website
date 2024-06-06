@@ -66,5 +66,4 @@ COPY --from=build /app/server/ server
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
 
-EXPOSE 3000
 CMD [ "node", "server/main.js"]
