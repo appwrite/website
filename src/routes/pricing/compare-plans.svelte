@@ -146,8 +146,8 @@
                 {
                     title: 'Additional users',
                     free: '-',
-                    pro: '0.03$ per user',
-                    scale: '0.03$ per user'
+                    pro: '$0.003 per user',
+                    scale: '$0.003 per user'
                 },
                 {
                     title: 'Teams',
