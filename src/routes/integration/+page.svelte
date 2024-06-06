@@ -40,416 +40,418 @@
 			</div>
 		</div>
 	</header>
-	<div>
-		<div class="web-container">
-			<div class="l-integrations-grid">
-				<aside class="u-flex-vertical u-gap-32">
+	<div class="web-big-padding-section-level-1">
+		<div class="web-big-padding-section-level-2">
+			<div class="web-container">
+				<div class="l-integrations-grid">
+					<aside class="u-flex-vertical u-gap-32">
+						<section>
+							<label class="web-input-button web-u-flex-basis-400">
+								<span class="web-icon-search" aria-hidden="true"></span>
+								<input class="text" placeholder="Search" />
+							</label>
+						</section>
+						<section class="u-flex-vertical">
+							<section class="u-flex-vertical u-gap-16">
+								<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Platform</h2>
+								<ul class="u-flex u-flex-wrap u-gap-8">
+									<li>
+										<button class="tag is-selected">Cloud</button>
+									</li>
+									<li>
+										<button class="tag">Self-hosted</button>
+									</li>
+								</ul>
+							</section>
+							<div class="web-u-sep-block-start u-margin-block-24"></div>
+							<section class="u-flex-vertical u-gap-16">
+								<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Categories</h2>
+								<ul class="u-flex-vertical u-gap-16">
+									<li>
+										<a class="web-link is-pink" href="#ai">AI</a>
+									</li>
+									<li>
+										<a class="web-link" href="#auth">Auth</a>
+									</li>
+									<li>
+										<a class="web-link" href="#databases">Databases</a>
+									</li>
+								</ul>
+							</section>
+						</section>
+					</aside>
 					<section>
-						<label class="web-input-button web-u-flex-basis-400">
-							<span class="web-icon-search" aria-hidden="true"></span>
-							<input class="text" placeholder="Search" />
-						</label>
+						<div class="u-flex-vertical u-gap-80">
+							<section class="u-flex-vertical u-gap-32">
+								<header class="u-flex-vertical u-gap-4">
+									<h2 class="web-label web-u-color-text-primary">Featured</h2>
+									<p class="web-description">Top recommended integrations</p>
+								</header>
+								<div>
+									<ul class="web-feature-grid">
+										<li class="web-feature-grid-item is-two-columns-desktop-only">
+											<a class="web-overlay-item" href="/">
+												<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
+												<div class="web-user-box u-column-gap-8 u-row-gap-0">
+													<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
+													<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
+														<span class="web-u-color-text-primary">Souvik Sarkar</span>
+														<span class="web-inline-tag is-pink">New</span>
+													</div>
+													<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
+												</div>
+											</a>
+										</li>
+										<li class="web-feature-grid-item">
+											<a class="web-overlay-item" href="/">
+												<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
+												<div class="web-user-box u-column-gap-8 u-row-gap-0">
+													<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
+													<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
+														<span class="web-u-color-text-primary">Souvik Sarkar</span>
+														<span class="web-inline-tag is-pink">New</span>
+													</div>
+													<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
+												</div>
+											</a>
+										</li>
+										<li class="web-feature-grid-item">
+											<a class="web-overlay-item" href="/">
+												<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
+												<div class="web-user-box u-column-gap-8 u-row-gap-0">
+													<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
+													<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
+														<span class="web-u-color-text-primary">Souvik Sarkar</span>
+														<span class="web-inline-tag is-pink">New</span>
+													</div>
+													<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
+												</div>
+											</a>
+										</li>
+										<li class="web-feature-grid-item">
+											<a class="web-overlay-item" href="/">
+												<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
+												<div class="web-user-box u-column-gap-8 u-row-gap-0">
+													<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
+													<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
+														<span class="web-u-color-text-primary">Souvik Sarkar</span>
+														<span class="web-inline-tag is-pink">New</span>
+													</div>
+													<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
+												</div>
+											</a>
+										</li>
+										<li class="web-feature-grid-item">
+											<a class="web-overlay-item" href="/">
+												<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
+												<div class="web-user-box u-column-gap-8 u-row-gap-0">
+													<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
+													<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
+														<span class="web-u-color-text-primary">Souvik Sarkar</span>
+														<span class="web-inline-tag is-pink">New</span>
+													</div>
+													<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</section>
+
+							<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="ai">
+								<header class="u-flex-vertical u-gap-4">
+									<h2 class="web-label web-u-color-text-primary">AI</h2>
+									<p class="web-description">Artificial intelligence tools</p>
+								</header>
+								<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
+									<ul class="l-grid-1">
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+									</ul>
+									<a href="#ai" class="l-float-button web-button is-text">
+										<span>Show more</span>
+									</a>
+								</div>
+							</section>
+
+							<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="auto">
+								<header class="u-flex-vertical u-gap-4">
+									<h2 class="web-label web-u-color-text-primary">Auth</h2>
+									<p class="web-description">Authentication and security</p>
+								</header>
+								<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
+									<ul class="l-grid-1">
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+									</ul>
+									<a href="#auto" class="l-float-button web-button is-text">
+										<span>Show more</span>
+									</a>
+								</div>
+							</section>
+
+							<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="databases">
+								<header class="u-flex-vertical u-gap-4">
+									<h2 class="web-label web-u-color-text-primary">Databases</h2>
+									<p class="web-description">Data storage solutions</p>
+								</header>
+								<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
+									<ul class="l-grid-1">
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+										<li>
+											<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
+												<div class="u-flex u-cross-center u-gap-8">
+													<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
+													<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
+													<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
+												</div>
+												<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											</a>
+										</li>
+									</ul>
+									<a href="#databases" class="l-float-button web-button is-text">
+										<span>Show more</span>
+									</a>
+								</div>
+							</section>
+						</div>
 					</section>
-					<section class="u-flex-vertical">
-						<section class="u-flex-vertical u-gap-16">
-							<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Platform</h2>
-							<ul class="u-flex u-flex-wrap u-gap-8">
-								<li>
-									<button class="tag is-selected">Cloud</button>
-								</li>
-								<li>
-									<button class="tag">Self-hosted</button>
-								</li>
-							</ul>
-						</section>
-						<div class="web-u-sep-block-start u-margin-block-24"></div>
-						<section class="u-flex-vertical u-gap-16">
-							<h2 class="web-side-nav-header web-eyebrow u-un-break-text">Categories</h2>
-							<ul class="u-flex-vertical u-gap-16">
-								<li>
-									<a class="web-link is-pink" href="#ai">AI</a>
-								</li>
-								<li>
-									<a class="web-link" href="#auth">Auth</a>
-								</li>
-								<li>
-									<a class="web-link" href="#databases">Databases</a>
-								</li>
-							</ul>
-						</section>
-					</section>
-				</aside>
-				<section>
-					<div class="u-flex-vertical u-gap-80">
-						<section class="u-flex-vertical u-gap-32">
-							<header class="u-flex-vertical u-gap-4">
-								<h2 class="web-label web-u-color-text-primary">Featured</h2>
-								<p class="web-description">Top recommended integrations</p>
-							</header>
-							<div>
-								<ul class="web-feature-grid">
-									<li class="web-feature-grid-item is-two-columns-desktop-only">
-										<a class="web-overlay-item" href="/">
-											<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-											<div class="web-user-box u-column-gap-8 u-row-gap-0">
-												<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-												<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-													<span class="web-u-color-text-primary">Souvik Sarkar</span>
-													<span class="web-inline-tag is-pink">New</span>
-												</div>
-												<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-											</div>
-										</a>
-									</li>
-									<li class="web-feature-grid-item">
-										<a class="web-overlay-item" href="/">
-											<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-											<div class="web-user-box u-column-gap-8 u-row-gap-0">
-												<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-												<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-													<span class="web-u-color-text-primary">Souvik Sarkar</span>
-													<span class="web-inline-tag is-pink">New</span>
-												</div>
-												<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-											</div>
-										</a>
-									</li>
-									<li class="web-feature-grid-item">
-										<a class="web-overlay-item" href="/">
-											<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-											<div class="web-user-box u-column-gap-8 u-row-gap-0">
-												<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-												<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-													<span class="web-u-color-text-primary">Souvik Sarkar</span>
-													<span class="web-inline-tag is-pink">New</span>
-												</div>
-												<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-											</div>
-										</a>
-									</li>
-									<li class="web-feature-grid-item">
-										<a class="web-overlay-item" href="/">
-											<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-											<div class="web-user-box u-column-gap-8 u-row-gap-0">
-												<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-												<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-													<span class="web-u-color-text-primary">Souvik Sarkar</span>
-													<span class="web-inline-tag is-pink">New</span>
-												</div>
-												<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-											</div>
-										</a>
-									</li>
-									<li class="web-feature-grid-item">
-										<a class="web-overlay-item" href="/">
-											<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-											<div class="web-user-box u-column-gap-8 u-row-gap-0">
-												<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-												<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-													<span class="web-u-color-text-primary">Souvik Sarkar</span>
-													<span class="web-inline-tag is-pink">New</span>
-												</div>
-												<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</section>
-
-						<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="ai">
-							<header class="u-flex-vertical u-gap-4">
-								<h2 class="web-label web-u-color-text-primary">AI</h2>
-								<p class="web-description">Artificial intelligence tools</p>
-							</header>
-							<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
-								<ul class="l-grid-1">
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-								</ul>
-								<a href="#ai" class="l-float-button web-button is-text">
-									<span>Show more</span>
-								</a>
-							</div>
-						</section>
-
-						<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="auto">
-							<header class="u-flex-vertical u-gap-4">
-								<h2 class="web-label web-u-color-text-primary">Auth</h2>
-								<p class="web-description">Authentication and security</p>
-							</header>
-							<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
-								<ul class="l-grid-1">
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-								</ul>
-								<a href="#auto" class="l-float-button web-button is-text">
-									<span>Show more</span>
-								</a>
-							</div>
-						</section>
-
-						<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="databases">
-							<header class="u-flex-vertical u-gap-4">
-								<h2 class="web-label web-u-color-text-primary">Databases</h2>
-								<p class="web-description">Data storage solutions</p>
-							</header>
-							<div class="l-max-size-list-cards u-flex-vertical u-gap-32">
-								<ul class="l-grid-1">
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-									<li>
-										<a href="/docs/products/auth" class="web-card is-normal u-height-100-percent" style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;">
-											<div class="u-flex u-cross-center u-gap-8">
-												<img class="web-user-box-image is-32px" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="32" height="32">
-												<h4 class="web-main-body-400 web-u-color-text-primary">Lorem Ipsum</h4>
-												<span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"></span>
-											</div>
-											<p class="web-sub-body-400 u-margin-block-start-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</a>
-									</li>
-								</ul>
-								<a href="#databases" class="l-float-button web-button is-text">
-									<span>Show more</span>
-								</a>
-							</div>
-						</section>
-					</div>
-				</section>
+				</div>
 			</div>
 		</div>
 	</div>
