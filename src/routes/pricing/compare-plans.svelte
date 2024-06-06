@@ -251,8 +251,8 @@
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
-                    pro: '0.05$ per 1,000',
-                    scale: '0.05$ per 1,000'
+                    pro: '$0.005 per connection',
+                    scale: '$0.005 per connection'
                 },
                 {
                     title: 'Messages',
