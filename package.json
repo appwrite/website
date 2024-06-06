@@ -22,14 +22,14 @@
     },
     "packageManager": "pnpm@8.15.6",
     "dependencies": {
-        "h3": "^1.11.1"
+        "compression": "^1.7.4",
+        "express": "^4.18.2"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.1",
         "@appwrite.io/pink": "0.16",
         "@appwrite.io/pink-icons": "0.16",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
-        "@internationalized/date": "3.5.0",
         "@melt-ui/pp": "^0.3.0",
         "@melt-ui/svelte": "^0.74.3",
         "@playwright/test": "^1.42.0",
@@ -43,6 +43,7 @@
         "@types/morgan": "^1.9.9",
         "@typescript-eslint/eslint-plugin": "^7.1.0",
         "@typescript-eslint/parser": "^7.1.0",
+        "@internationalized/date": "3.5.0",
         "dequal": "^2.0.3",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^8.10.0",
