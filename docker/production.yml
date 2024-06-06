@@ -40,6 +40,9 @@ services:
       - --certificatesresolvers.myresolver.acme.email=$_APP_SYSTEM_SECURITY_EMAIL_ADDRESS
       - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/${_APP_DOMAIN}.json
       - --accesslog=true
+    labels:
+      - traefik.http.routers.traefik.middlewares=traefik-compress
+      - traefik.http.middlewares.traefik-compress.compress=true
     ports:
       - 80:80
       - 443:443
@@ -84,6 +87,8 @@ services:
         - traefik.enable=true
         - traefik.docker.lbswarm=true
         - traefik.constraint-label-stack=appwrite
+        - traefik.http.middlewares.homepage_compress.compress=true
+        - traefik.http.routers.homepage.middlewares=homepage_compress
         - traefik.http.services.appwrite_api.loadbalancer.server.port=3000
         #http
         - traefik.http.routers.appwrite.entrypoints=web
