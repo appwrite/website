@@ -34,8 +34,8 @@
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '0.40$ per GB',
-                    scale: '0.40% per GB'
+                    pro: '$0.4 per GB',
+                    scale: '$0.4 per GB'
                 },
                 {
                     title: 'Storage',
