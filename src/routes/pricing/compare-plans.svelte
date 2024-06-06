@@ -46,8 +46,8 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '0.30$ per GB',
-                    scale: '0.30$ per GB'
+                    pro: '$0.03 per GB',
+                    scale: '$0.03 per GB'
                 },
                 {
                     title: 'Compute',
