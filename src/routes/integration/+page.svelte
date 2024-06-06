@@ -157,7 +157,7 @@
 							</div>
 						</section>
 
-						<section class="u-flex-vertical u-gap-32">
+						<section class="u-flex-vertical u-gap-32" id="ai" tabindex="0">
 							<header class="u-flex-vertical u-gap-4">
 								<h2 class="web-label web-u-color-text-primary">AI</h2>
 								<p class="web-description">Artificial intelligence tools</p>
@@ -218,7 +218,7 @@
 							</div>
 						</section>
 
-						<section class="u-flex-vertical u-gap-32">
+						<section class="u-flex-vertical u-gap-32" id="auto" tabindex="0">
 							<header class="u-flex-vertical u-gap-4">
 								<h2 class="web-label web-u-color-text-primary">Auth</h2>
 								<p class="web-description">Authentication and security</p>
@@ -326,6 +326,9 @@
 										</a>
 									</li>
 								</ul>
+								<a href="#auto" class="l-float-button web-button is-text">
+									<span>Show more</span>
+								</a>
 							</div>
 						</section>
 					</div>
@@ -342,11 +345,27 @@
 
 <style lang="scss">
 	@use '$scss/abstract' as *;
-
+	.l-float-button { display:none; }
 	/* more tha 9 items */
-	.l-max-size-more-than-9:has(>ul>li:nth-child(10)) {
-		&::before { content: "aaa"; background:red; }
+	.l-max-size-more-than-9 {
+		&:has(>ul>li:nth-child(10)) {
+			position:relative; max-block-size:pxToRem(460); overflow:hidden;
+			&::before {
+				position:absolute; inset:0;
+				content:""; display:block;
+				background: linear-gradient(180deg, rgba(25, 25, 28, 0.00) 0%, rgba(25, 25, 28, 0.92) 90%, #19191C 100%);;
+			}
+			.l-float-button {
+				position: absolute; inset-inline:0; inset-block-end:pxToRem(20); margin-inline:auto;
+				display:flex;
+			}
+		}
 	}
+	//*:target { background-color:red; }
+	//*:target .l-max-size-more-than-9 {
+	//	overflow:visible; max-block-size:none;
+	//	&::before { display:none; }
+	//}
 
 	.l-grid-1 {
 		display: grid;
