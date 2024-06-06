@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   traefik:
     image: traefik:2.9
@@ -10,14 +12,11 @@ services:
       - --entrypoints.websecure.address=:443
       - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`homepage`)
       - --accesslog=true
-    labels:
-      - traefik.http.routers.traefik.middlewares=traefik-compress
-      - traefik.http.middlewares.traefik-compress.compress=true
     ports:
       - 80:80
       - 8080:8080
     volumes:
-      # - /letsencrypt:/letsencrypt
+      - /letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - homepage
@@ -26,13 +25,6 @@ services:
     image: homepage-dev
     build:
       context: .
-      args:
-          - PUBLIC_APPWRITE_PROJECT_INIT_ID=$PUBLIC_APPWRITE_PROJECT_INIT_ID
-          - PUBLIC_APPWRITE_PROJECT_ID=$PUBLIC_APPWRITE_PROJECT_ID
-          - PUBLIC_APPWRITE_DB_MAIN_ID=$PUBLIC_APPWRITE_DB_MAIN_ID
-          - PUBLIC_APPWRITE_COL_THREADS_ID=$PUBLIC_APPWRITE_COL_THREADS_ID
-          - PUBLIC_APPWRITE_COL_MESSAGES_ID=$PUBLIC_APPWRITE_COL_MESSAGES_ID
-          - PUBLIC_APPWRITE_FN_TLDR_ID=$PUBLIC_APPWRITE_FN_TLDR_ID
     restart: always
     networks:
       - homepage
@@ -40,8 +32,6 @@ services:
       - traefik.enable=true
       - traefik.constraint-label-stack=homepage
       - traefik.docker.network=homepage
-      - traefik.http.middlewares.homepage_compress.compress=true
-      - traefik.http.routers.homepage.middlewares=homepage_compress
       - traefik.http.services.homepage.loadbalancer.server.port=3000
       #http
       - traefik.http.routers.homepage.entrypoints=web
@@ -52,6 +42,6 @@ services:
       - traefik.http.routers.homepage_secure.rule=PathPrefix(`/`)
       - traefik.http.routers.homepage_secure.service=homepage
       - traefik.http.routers.homepage_secure.tls=true
-
+  
 networks:
   homepage:
