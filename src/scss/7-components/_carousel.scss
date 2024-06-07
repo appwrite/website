@@ -1,0 +1,29 @@
+@use '../abstract' as *;
+
+.#{$p}-carousel {
+  position: relative;
+  &::before {
+    content:""; display:block;
+    position:absolute; z-index:1; inset:0; inset-inline:pxToRem(-200);
+    background: linear-gradient(90deg, rgba(23, 23, 26, 1) 0%, rgba(23, 23, 26, 0.88) 9.65%, rgba(23, 23, 26, 0) 25%, rgba(23, 23, 26, 0) 50%, rgba(23, 23, 26, 0) 75%, rgba(23, 23, 26, 0.88) 89.28%, rgba(23, 23, 26, 1) 100%);
+  }
+  &-list {
+    position:relative;
+    display: flex;
+    align-items: center;
+    gap: pxToRem(32);
+  }
+  &-item {
+    img { border-radius:var(--border-radius-medium); transition:var(--transition); }
+  }
+
+  @media #{$break1} {}
+  @media #{$break2open} {
+    &-item {
+      img { min-inline-size:pxToRem(472); }
+      &.is-main {
+        img { min-inline-size:pxToRem(584); }
+      }
+    }
+  }
+}
