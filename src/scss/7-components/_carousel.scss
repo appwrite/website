@@ -2,6 +2,8 @@
 
 .#{$p}-carousel {
   position:relative;
+  container-name: carouse;
+  container-type: inline-size;
   &-overflow { display:flex; align-items:center; inline-size:100%; }
   &::before {
     content:""; display:block;
@@ -25,11 +27,28 @@
     display:flex; justify-content:center; align-items:center; inline-size:pxToRem(40); block-size:pxToRem(40);
     border-radius:var(--border-radius-circular); flex-shrink:0;
     background:hsl(var(--web-color-white) / 0.15); color:hsl(var(--web-color-white));
-    &-start { position:absolute; z-index:2; inset-block-start:50%; inset-inline-start:pxToRem(200); }
-    &-end   { position:absolute; z-index:2; inset-block-start:50%; inset-inline-end:pxToRem(200); }
+    &-start { position:absolute; z-index:2; inset-block-start:50%; inset-inline-start:calc( calc(100% - #{pxToRem(584)}) / 2 - #{pxToRem(100)} ); }
+    &-end   { position:absolute; z-index:2; inset-block-start:50%; inset-inline-end:calc( calc(100% - #{pxToRem(584)}) / 2 - #{pxToRem(100)} ); }
   }
-
-  @media #{$break1} {}
+  @media #{$break1} {
+    &-button { display:none; }
+  }
+  @media (max-width:767.9px) {
+    &-item {
+      img { min-inline-size:100%; }
+      &.is-main {
+        img { min-inline-size:100%; }
+      }
+    }
+  }
+  @media (min-width:768px) and (max-width:1023.9px) {
+    &-item {
+      img { min-inline-size:pxToRem(394); }
+      &.is-main {
+        img { min-inline-size:pxToRem(470); }
+      }
+    }
+  }
   @media #{$break2open} {
     &-item {
       img { min-inline-size:pxToRem(472); }
