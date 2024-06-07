@@ -19,7 +19,7 @@
     &::-webkit-scrollbar { display:none; } /* Safari and Chrome */
   }
   &-item {
-    scroll-snap-align:center;
+    scroll-snap-align:center; scroll-snap-stop:always;
     img {
       display:block; inline-size:100%; border:solid pxToRem(2) hsl(var(--web-color-smooth));
       border-radius:var(--border-radius-medium); transition:var(--transition);
