@@ -32,23 +32,39 @@
 	<header class="web-u-sep-block-end" style="background-color:rgba(23, 23, 26, 1);">
 		<div class="web-container">
 			<div class="web-carousel">
-				<ul class="web-carousel-list">
-					<li class="web-carousel-item">
-						<div>
-							<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
-						</div>
-					</li>
-					<li class="web-carousel-item is-main">
-						<div>
-							<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="584">
-						</div>
-					</li>
-					<li class="web-carousel-item">
-						<div>
-							<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
-						</div>
-					</li>
-				</ul>
+				<button class="web-carousel-button web-carousel-button-start">
+					<span class="web-icon-arrow-left" aria-hidden="true"></span>
+				</button>
+				<button class="web-carousel-button web-carousel-button-end">
+					<span class="web-icon-arrow-right" aria-hidden="true"></span>
+				</button>
+				<div class="web-carousel-overflow">
+					<ul class="web-carousel-list">
+						<li class="web-carousel-item is-empty">
+							<div>
+							</div>
+						</li>
+						<li class="web-carousel-item">
+							<div>
+								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
+							</div>
+						</li>
+						<li class="web-carousel-item is-main">
+							<div>
+								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="584">
+							</div>
+						</li>
+						<li class="web-carousel-item">
+							<div>
+								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
+							</div>
+						</li>
+						<li class="web-carousel-item is-empty">
+							<div>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</header>
