@@ -106,9 +106,10 @@
 	@use '$scss/abstract' as *;
 	.web-carousel {
 		display:flex; justify-content:center;
-		@media #{$break1} {}
+		@media (max-width:767.9px) { min-block-size: pxToRem(370); }
+		@media (min-width:768px) and (max-width:1023.9px) { min-block-size: pxToRem(495); }
 		@media #{$break2open} {
-			min-block-size: pxToRem(628);
+			min-block-size: pxToRem(548);
 		}
 	}
 	.web-pre-footer-bg {
