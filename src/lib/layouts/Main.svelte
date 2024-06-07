@@ -178,7 +178,6 @@
         class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-
         <div class="web-top-banner">
             <div class="web-top-banner-content web-u-color-text-primary">
                 <a href="/discord" target="_blank" rel="noopener noreferrer">

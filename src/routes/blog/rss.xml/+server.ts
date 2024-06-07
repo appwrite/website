@@ -10,14 +10,18 @@ export const GET: RequestHandler = () => {
     <title>Appwrite</title>
     <link>https://appwrite.io</link>
     <description>Appwrite is an open-source platform for building applications at any scale, using your preferred programming languages and tools.</description>
-    ${posts.map((post) => `<item>
+    ${posts
+        .map(
+            (post) => `<item>
         <title>${post.title}</title>
         <pubDate>${post.date.toUTCString()}</pubDate>
         <link>https://appwrite.io${post.href}</link>
         <guid>https://appwrite.io${post.href}</guid>
         <description>${post.description}</description>
     </item>
-    `).join('')}
+    `
+        )
+        .join('')}
   </channel>
 </rss>`;
 

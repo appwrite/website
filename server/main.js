@@ -1,6 +1,6 @@
 import express from 'express';
-import compression from 'compression'
-import { sitemap } from './sitemap.js'
+import compression from 'compression';
+import { sitemap } from './sitemap.js';
 import { handler } from '../build/handler.js';
 
 async function main() {

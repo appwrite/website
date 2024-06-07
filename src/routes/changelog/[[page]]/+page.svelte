@@ -60,7 +60,9 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}>Load more</button>
+                        <button class="web-button is-secondary" on:click={loadMore}
+                            >Load more</button
+                        >
                     {/if}
                 </div>
             </div>

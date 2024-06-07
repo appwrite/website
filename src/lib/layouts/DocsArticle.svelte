@@ -71,9 +71,7 @@
                     </div>
                     <ol class="web-references-menu-list">
                         {#each toc as parent (parent.href)}
-                            <li
-                                class="web-references-menu-item"
-                            >
+                            <li class="web-references-menu-item">
                                 <a
                                     href={parent.href}
                                     class="web-references-menu-link"
@@ -94,7 +92,8 @@
                                                     href={child.href}
                                                     class="web-references-menu-link"
                                                 >
-                                                    <span class="web-caption-400">{child.title}</span
+                                                    <span class="web-caption-400"
+                                                        >{child.title}</span
                                                     >
                                                 </a>
                                             </li>

@@ -15,6 +15,7 @@ Create a new file `src/lib/context/user.jsx` and add the following code to it.
 ```client-web
 import { ID } from "appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
+import { goto } from '$app/navigation';
 import { account } from "../appwrite";
 
 const UserContext = createContext();
@@ -27,8 +28,9 @@ export function UserProvider(props) {
   const [user, setUser] = useState(null);
 
   async function login(email, password) {
-    const loggedIn = await account.createEmailPasswordSession(email, password);
+    const loggedIn = await account.createEmailPasswordSession(ID.unique(), email, password);
     setUser(loggedIn);
+    goto('/'); // Redirect to home page after login
   }
 
   async function logout() {
@@ -97,6 +99,7 @@ Update `src/App.jsx` to the following code.
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
+import { IdeasProvider } from "./lib/context/ideas";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -104,7 +107,9 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <main>{isLoginPage ? <Login /> : <Home />}</main>
+        <IdeasContext.Provider>
+          <main>{isLoginPage ? <Login /> : <Home />}</main>
+        </IdeasContext.Provider>
       </UserProvider>
     </div>
   );

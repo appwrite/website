@@ -49,9 +49,9 @@ Create ordered (numbered) and unordered (bulleted) lists using 1., \*, or -.
 **Unordered List**:
 
 ```md
-- Apple
-- Banana
-- Cherry
+-   Apple
+-   Banana
+-   Cherry
 ```
 
 #### Links

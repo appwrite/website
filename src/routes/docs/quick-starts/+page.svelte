@@ -187,7 +187,6 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
