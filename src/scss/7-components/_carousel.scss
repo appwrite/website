@@ -12,6 +12,9 @@
   &-list {
     position:relative; display:flex; align-items:center; gap:pxToRem(32);
     overflow-x:auto; scroll-snap-type:x mandatory;
+    /* hide scroll */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar { display:none; } /* Safari and Chrome */
   }
   &-item {
     scroll-snap-align:center; min-inline-size:pxToRem(472);
