@@ -31,37 +31,52 @@
 <Main>
 	<header class="web-u-sep-block-end" style="background-color:rgba(23, 23, 26, 1);">
 		<div class="web-container">
-			<div class="web-carousel">
-				<button class="web-carousel-button web-carousel-button-start">
-					<span class="web-icon-arrow-left" aria-hidden="true"></span>
-				</button>
-				<button class="web-carousel-button web-carousel-button-end">
-					<span class="web-icon-arrow-right" aria-hidden="true"></span>
-				</button>
-				<div class="web-carousel-overflow">
-					<ul class="web-carousel-list">
-						<li class="web-carousel-item is-empty">
-							<div>
-							</div>
+			<div class="web-carousel-wrapper">
+				<div class="web-carousel">
+					<button class="web-carousel-button web-carousel-button-start">
+						<span class="web-icon-arrow-left" aria-hidden="true"></span>
+					</button>
+					<button class="web-carousel-button web-carousel-button-end">
+						<span class="web-icon-arrow-right" aria-hidden="true"></span>
+					</button>
+					<div class="web-carousel-overflow">
+						<ul class="web-carousel-list">
+							<li class="web-carousel-item is-empty">
+								<div>
+								</div>
+							</li>
+							<li class="web-carousel-item">
+								<div>
+									<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
+								</div>
+							</li>
+							<li class="web-carousel-item is-main">
+								<div>
+									<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="584">
+								</div>
+							</li>
+							<li class="web-carousel-item">
+								<div>
+									<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
+								</div>
+							</li>
+							<li class="web-carousel-item is-empty">
+								<div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="web-carousel-bullets">
+					<ul class="web-carousel-bullets-list">
+						<li class="web-carousel-bullets-item">
+							<button class="web-carousel-bullets-button is-selected" aria-label="selected gallery first item"></button>
 						</li>
-						<li class="web-carousel-item">
-							<div>
-								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
-							</div>
+						<li class="web-carousel-bullets-item">
+							<button class="web-carousel-bullets-button" aria-label="gallery second item"></button>
 						</li>
-						<li class="web-carousel-item is-main">
-							<div>
-								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="584">
-							</div>
-						</li>
-						<li class="web-carousel-item">
-							<div>
-								<img src="/images/blog/ai-announcement.png" class="web-u-media-ratio-16-9" alt="cover" width="472">
-							</div>
-						</li>
-						<li class="web-carousel-item is-empty">
-							<div>
-							</div>
+						<li class="web-carousel-bullets-item">
+							<button class="web-carousel-bullets-button" aria-label="gallery third item"></button>
 						</li>
 					</ul>
 				</div>
@@ -104,8 +119,8 @@
 
 <style lang="scss">
 	@use '$scss/abstract' as *;
-	.web-carousel {
-		display:flex; justify-content:center;
+	.web-carousel-wrapper {
+		display:flex; flex-direction:column; justify-content:center;
 		@media (max-width:767.9px) { min-block-size: pxToRem(370); }
 		@media (min-width:768px) and (max-width:1023.9px) { min-block-size: pxToRem(495); }
 		@media #{$break2open} {
