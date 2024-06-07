@@ -530,12 +530,13 @@
 		gap: pxToRem(32);
 	}
 	.l-integrations-grid {
-		@media #{$break1} {}
+		@media (max-width:767.9px) { min-block-size: pxToRem(370); }
+		@media (min-width:768px) and (max-width:1023.9px) { min-block-size: pxToRem(495); }
 		@media #{$break2open} {
 			display: grid;
 			gap: pxToRem(68);
 			grid-template-columns: pxToRem(240) 1fr;
-			min-block-size: pxToRem(628);
+			min-block-size: pxToRem(548);
 			padding-block-start: pxToRem(60);
 		}
 	}
