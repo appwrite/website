@@ -66,7 +66,7 @@ Head to **Apple Developer Member Center** > **Program resources** > **Certificat
 {% /only_light %}
 {% /accordion_item %}
 {% accordion_item title="Sandbox" %}
-Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers to environments, **Development** (sandbox) and **Production**. Development builds on XCode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
+Enable sandbox mode for testing on apps signed with development provisioning profiles. APNs offers two environments, **Development** (sandbox) and **Production**. Development builds on XCode signed with a development provisioning profile will use the development environment. Production builds signed with a production provisioning profile will use the production environment.
 {% /accordion_item %}
 {% /accordion %}
 
