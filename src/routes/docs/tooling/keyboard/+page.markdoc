@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Keyboard
-description: Using the keyboard with the optimized Appwrite Console for both efficiency and accessibility, and introducing The Appwriter.
+description: How to use the keyboard with the optimized Appwrite Console for both efficiency and accessibility, and introducing The Appwriter.
 ---
 
 The Appwrite SDK console is optimized with the keyboard using shortcut keys to enable accessibility.  Using shortcut keys access websites without the mouse. 
