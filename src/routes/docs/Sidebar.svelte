@@ -111,6 +111,11 @@
                     label: 'Assistant',
                     href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
+                },
+                {
+                    label: 'Keyboard',
+                    href: '/docs/tooling/keyboard',
+                    icon: 'icon-sparkles'
                 }
             ]
         },

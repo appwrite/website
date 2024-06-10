@@ -1,0 +1,41 @@
+---
+layout: article
+title: Keyboard
+description: Appwrite's approach to keyboard accessibility, how to use the keyboard, and how to use the Appwriter.
+---
+
+The Appwrite SDK console is optimized with the keyboard using shortcut keys to enable accessibility.  Using shortcut keys access websites without the mouse. 
+
+|Keys|Action|
+|---|---|
+|`Ctrl` + `K` or `⌘` + `K`| access command center|
+|`ENTER`|execute command center command|
+|`Up Arrow`|scroll up the page|
+|`Down Arrow`|scroll down the page|
+
+# Shortcuts
+
+Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite's SDK console.  Using the first letter from the call to action and the resource/product/service/page, Appwrite's keyboard shortcuts follow this pattern.  For example, the shortcut `G` then `S` goes to storage, but if you want to go to settings, the shortcut is `G` then `E` because `G` then `S` is already taken, so the next letter of settings is used.
+
+|Shortcut|Action|
+|----|----|
+|Go to Auth|`G` then `A`|
+|Go to Storage|`G` then `S`|
+|Go to Databases|`G` then `D`|
+|Go to Functions|`G` then `F`|
+|Go to Projects|`G` then `P`|
+|Go to Overview|`G` then `O`|
+|Go to Settings|`G` then `E`|
+|Go to Messaging|`G` then `M`|
+
+# The Appwriter
+
+{% only_dark %}
+![Using Appwrite Assistant's AI features](/images/docs/keyboard/dark/appwriter.png)
+{% /only_dark %}
+
+{% only_light %}
+![Using Appwrite Assistant's AI features](/images/docs/keyboard/appwriter.png)
+{% /only_light %}
+
+The resource/product/service/page for shortcuts use the visual icons in Appwrite's website and SDK console.  For example, the shortcut for going to databases is `G` then `D`, and the icon on the keyboard matches the icon in Appwrite Databases.
