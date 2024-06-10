@@ -187,8 +187,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    // pro: 'Start trial',
-                    pro: 'Start building',
+                    pro: 'Coming Soon',
                     scale: 'Coming soon'
                 }
             ]
