@@ -31,11 +31,11 @@ Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite
 # The Appwriter
 
 {% only_dark %}
-![Using Appwrite Assistant's AI features](/images/docs/keyboard/dark/appwriter.png)
+![The Appwriter](/images/docs/keyboard/dark/appwriter.png)
 {% /only_dark %}
 
 {% only_light %}
-![Using Appwrite Assistant's AI features](/images/docs/keyboard/appwriter.png)
+![The Appwriter](/images/docs/keyboard/appwriter.png)
 {% /only_light %}
 
 The resource/product/service/page for shortcuts use the visual icons in Appwrite's website and SDK console.  For example, the shortcut for going to databases is `G` then `D`, and the icon on the keyboard matches the icon in Appwrite Databases.
