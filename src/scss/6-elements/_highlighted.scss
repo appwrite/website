@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+.#{$p}-highlighted {
+  background-color: hsl( var(--web-color-greyscale-700) / 0.25 );
+  border-radius: var(--border-radius-xsmall);
+  display: block;
+  margin-right: pxToRem(8);
+}

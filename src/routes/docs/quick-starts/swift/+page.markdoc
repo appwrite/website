@@ -53,7 +53,7 @@ Other scopes are optional.
 
 {% /section %}
 {% section #step-2 step=2 title="Create Swift project" %}
-Create a Swift CLI application by opening **XCode** > **Create a new XCode project**
+Create a Swift CLI application by opening **Xcode** > **Create a new Xcode project**
 > **macOS** > **Command Line Tool**.
 
 Follow the wizard and open your new project.
@@ -207,6 +207,6 @@ await getTodos(todoDatabase: todoDatabase, todoCollection: todoCollection)
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with XCode and see the results in the console.
+Run your project with Xcode and see the results in the console.
 
 {% /section %}
