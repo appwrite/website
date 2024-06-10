@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Keyboard
-description: Appwrite's approach to keyboard accessibility, how to use the keyboard, and how to use the Appwriter.
+description: Using the keyboard with the optimized Appwrite Console for both efficiency and accessibility, and introducing The Appwriter.
 ---
 
 The Appwrite SDK console is optimized with the keyboard using shortcut keys to enable accessibility.  Using shortcut keys access websites without the mouse. 
@@ -10,8 +10,6 @@ The Appwrite SDK console is optimized with the keyboard using shortcut keys to e
 |---|---|
 |`Ctrl` + `K` or `⌘` + `K`| access command center|
 |`ENTER`|execute command center command|
-|`Up Arrow`|scroll up the page|
-|`Down Arrow`|scroll down the page|
 
 # Shortcuts
 
@@ -38,4 +36,4 @@ Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite
 ![The Appwriter](/images/docs/keyboard/appwriter.png)
 {% /only_light %}
 
-The resource/product/service/page for shortcuts use the visual icons in Appwrite's website and SDK console.  For example, the shortcut for going to databases is `G` then `D`, and the icon on the keyboard matches the icon in Appwrite Databases.
+In the Appwriter, Appwrite icons are used from the Appwrite Console and Appwrite's Docs to make it easier to memorize Appwrite keyboard shortcuts.  For example, the shortcut for going to databases is `G` then `D`, and the icon on the keyboard matches the icon in Appwrite Databases.
