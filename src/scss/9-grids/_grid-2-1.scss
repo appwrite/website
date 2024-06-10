@@ -4,14 +4,14 @@
   --p-grid-2-1-gap: var(--grid-2-1-gap, 0);
   gap: var(--p-grid-2-1-gap);
 
-  @media #{$break1} {
+  @media (max-width: 850.9px) {
     display: flex;
     flex-direction: column;
   }
-  @media #{$break2open} {
+  @media (min-width: 851px) {
     --p-grid-1-1-gap-desktop: var(--grid-2-1-gap, 0);
     display: grid;
     gap: var(--p-grid-2-1-gap-desktop);
-    grid-template-columns: minmax(pxToRem(537), 2fr) minmax(pxToRem(293), 1fr);
+    grid-template-columns: 2fr 1fr;
   }
 }
