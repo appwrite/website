@@ -1,23 +1,23 @@
 ---
 layout: article
 title: Keyboard
-description: Learn to efficiently and effectively navigate and access the Appwrite Console   with your keyboard or the Appwriter that is embedded with shortcuts.
+description: Learn to efficiently and effectively navigate and access the Appwrite Console with your keyboard or the Appwriter that is embedded with shortcuts.
 ---
 
 The Appwrite Console is optimized with the keyboard using shortcut keys to enable accessibility, significantly enhancing the developer's efficiency without the interruption of having to use your mouse. This also benefits developers who rely solely on using keyboards, where their productiveness benefits from the keyboard's ease of use, quick and seamless execution of important actions, and the consistent nature of the keyboard shortcut keys.
 
-# Accessibility
+# Accessibility  {% #accessibility %}
 
 We are committed to making our platform accessible to all developers by following the AA standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels).
 Following these standards ensures our platform is usable by people with disabilities like visual, auditory, physical, speech, cognitive, language, learning, and neurological.
 Having good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantees the creation of an inclusive environment and allows users to perform their tasks efficiently.
 We ensure that our dashboard not only complies with legal requirements but also promotes a positive developer experience for everyone by adhering to these guidelines.
 
-# Shortcuts
+# Shortcuts {% #shortcuts %}
 
 Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite's SDK console.  Using the first letter from the call to action and the resource/product/service/page, Appwrite's keyboard shortcuts follow this pattern.  For example, the shortcut `G` then `S` goes to storage, but if you want to go to settings, the shortcut is `G` then `E` because `G` then `S` is already taken, so the next letter of settings is used.
 
-## Global shortcuts 
+## Global shortcuts {% #global-shortcuts %}
 |Shortcut|Action|
 |----|----|
 |Go to Settings|`G` then `E`|
@@ -27,7 +27,7 @@ Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite
 |Create Organization|`C` then `O`|
 |Ask the AI|`A` then `I`|
 
-## Project shortcuts
+## Project shortcuts {% #project-shortcuts %}
 
 |Shortcut|Action|
 |----|----|
@@ -39,7 +39,7 @@ Only in the Appwrite SDK console use these keyboard shortcuts to access Appwrite
 |Go to Overview|`G` then `O`|
 |Go to Messaging|`G` then `M`|
 
-# The Appwriter
+# The Appwriter {% #the-appwriter %}
 
 {% only_dark %}
 ![The Appwriter](/images/docs/keyboard/dark/appwriter.png)
