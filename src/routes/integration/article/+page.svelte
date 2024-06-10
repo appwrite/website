@@ -92,11 +92,10 @@
 	<div class="web-big-padding-section-level-1">
 		<div class="web-big-padding-section-level-2">
 			<div class="web-container">
-				<article class="u-flex-vertical u-row-gap-56">
-					<div class="web-grid-2-1"
-						 style="--grid-2-1-gap:2.5rem; --p-grid-2-1-gap-desktop:6rem">
+				<article class="u-flex-vertical web-u-gap-60-not-mobile  web-u-gap-40-mobile">
+					<div class="web-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
 						<header class="u-contents">
-							<div class="u-flex u-cross-start u-gap-20 web-u-max-width-680">
+							<div class="web-grid-area-header u-flex u-cross-start u-gap-20">
 								<img class="web-author-image" src="/images/avatars/christy.png" alt="Christy Jacob" loading="lazy" width="40" height="40">
 								<div class="u-flex u-cross-center u-flex-wrap u-gap-16">
 									<h1 class="web-title web-u-color-text-primary">Lorem ipsum</h1>
@@ -108,7 +107,7 @@
 									</a>
 								</div>
 							</div>
-							<div class="l-side-column">
+							<div class="web-grid-area-buttons l-side-column">
 								<button class="web-button is-secondary u-stretch is-full-width-mobile">
 									<span>Source code</span>
 								</button>
@@ -118,13 +117,13 @@
 							</div>
 						</header>
 						<div class="u-contents">
-							<div class="web-article web-u-max-width-680">
+							<div class="web-grid-area-content web-article">
 								<div class="web-article-content">
 									<p class="web-paragraph-md">The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it's no surprise that many of you are looking to build AI powered applications. But that's easier said than done, as building AI powered applications can be tricky. We don't want it to be. That's why we're happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.</p>
 									<p class="web-paragraph-md">Lorem ipsum dolor sit amet consectetur. Neque id vel eros sed ipsum. Nisi fames euismod egestas morbi massa eget. At viverra nibh semper arcu in. Convallis etiam dui elit mauris mattis netus sit. Auctor dolor porttitor viverra eget egestas sem auctor suspendisse. Massa phasellus condimentum nam ac quis quis duis risus. Ac ut aliquet tortor donec erat ac. Enim a eros sit purus et lacinia. Faucibus nibh donec auctor mattis enim. Elementum quam sed auctor lacus tincidunt velit semper dui. Dolor commodo consectetur mollis morbi metus arcu at.</p>
 								</div>
 							</div>
-							<div>
+							<div class="web-grid-area-side">
 								<dl class="u-flex-vertical u-gap-20">
 									<div class="u-flex u-main-space-between u-gap-8">
 										<dt>Developed by</dt>
@@ -255,13 +254,8 @@
 	}
 	.l-side-column {
 		display:flex; gap: pxToRem(16);
-		@media (max-width: 850.9px) {
+		@media #{$break1} {
 			flex-direction:column;
-		}
-		@media (min-width: 851px) {
-			max-inline-size: pxToRem(380);
-			margin-inline-start: auto;
-			inline-size: 100%;
 		}
 	}
 </style>
