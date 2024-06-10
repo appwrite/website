@@ -1,17 +1,19 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-2-1 {
-  --p-grid-2-1-gap: var(--grid-2-1-gap, 0);
-  gap: var(--p-grid-2-1-gap);
-
-  @media (max-width: 850.9px) {
+  @media #{$break1} {
     display: flex;
     flex-direction: column;
   }
-  @media (min-width: 851px) {
-    --p-grid-1-1-gap-desktop: var(--grid-2-1-gap, 0);
+  @media #{$break2open} {
     display: grid;
-    gap: var(--p-grid-2-1-gap-desktop);
-    grid-template-columns: 2fr 1fr;
+    gap: pxToRem(32);
+    grid-template-columns: 7fr 1fr 4fr;
+    grid-template-areas:  "header  . buttons"
+                          "content . side";
+    .web-grid-area-header  { grid-area:header; }
+    .web-grid-area-buttons { grid-area:buttons; }
+    .web-grid-area-content { grid-area:content; }
+    .web-grid-area-side    { grid-area:side;    }
   }
 }
