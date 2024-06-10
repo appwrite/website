@@ -9,7 +9,7 @@ framework: SvelteKit
 category: Web
 ---
 
-**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+**Idea tracker**: **Idea tracker**: an app to track all the side project ideas that you'll be able to build with Appwrite.
 In this tutorial, you will build Idea tracker with Appwrite and SvelteKit.
 
 {% only_dark %}

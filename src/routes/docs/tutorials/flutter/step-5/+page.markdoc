@@ -1,0 +1,62 @@
+---
+layout: tutorial
+title: Add MainActivity
+description: Add navigation to your Flutter application.
+step: 5
+---
+
+# Conditional routing {% #conditional-routing %}
+Now that we have a login screen, we need to conditionally route users to the login screen if they are not authenticated.
+
+In `main.dart`, we will use the `FutureBuilder` widget to check if the user is authenticated.
+We'll also use `context.watch<Account>().isAuthenticated` to monitor if the user is authenticated.
+Once the user is authenticated, we'll navigate to the `IdeasScreen`.
+
+```client-flutter
+import 'package:flutter/material.dart';
+import 'package:idea_tracker/providers/account.dart';
+import 'package:idea_tracker/providers/ideas.dart';
+import 'package:idea_tracker/screens/Ideas.dart';
+import 'package:idea_tracker/screens/login.dart';
+import 'package:provider/provider.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<Account>(create: (context) => Account()),
+    ChangeNotifierProvider<Ideas>(create: (context) => Ideas()),
+  ], child: const App()));
+}
+
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Idea Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: FutureBuilder(
+          future: context.read<Account>().init(),
+          builder: (context, snapshot) => context.watch<Account>().isAuthenticated
+              ? const IdeasScreen() // This will be implemented later.
+              : const LoginScreen(),
+        ));
+  }
+}
+
+If you implement a placeholder for the `IdeasScreen` widget, you can see the login screen when you run the app.

@@ -104,6 +104,7 @@ pre {
 
 code.line-numbers .line {
     counter-increment: line;
+    padding-right: 0.5rem;
 }
 
 code.line-numbers .line:before {

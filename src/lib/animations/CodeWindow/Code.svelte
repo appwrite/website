@@ -4,6 +4,7 @@
 	import { getCodeHtml } from '$lib/utils/code';
 
 	export let content: string;
+
 	$: codeHtml = getCodeHtml({ content, language: 'js' });
 </script>
 

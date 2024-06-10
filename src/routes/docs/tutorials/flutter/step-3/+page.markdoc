@@ -1,23 +1,11 @@
 ---
-layout: article
-title: Start with Flutter
-description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
-difficulty: beginner
-readtime: 10
-back: /docs/quick-starts
+layout: tutorial
+title: Set up Appwrite
+description: Initialize Appwrite in your Flutter project.
+step: 3
 ---
+# Create project {% #create-project %}
 
-Learn how to setup your first Flutter project powered by Appwrite.
-
-{% section #step-1 step=1 title="Create Flutter project" %}
-Create a Flutter project.
-
-```sh
-flutter create my_app && cd my_app
-```
-{% /section %}
-
-{% section #step-2 step=2 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 {% only_dark %}
@@ -152,150 +140,38 @@ If you cannot find the correct package name, run the application in Windows, and
 
 You can skip optional steps.
 
-{% /section %}
+# Initialize the Appwrite Client {% #initialize-appwrite-client %}
+Create a new file `ideas_tracker/lib/api/client.dart` and add the following code:
 
-{% section #step-3 step=3 title="Install Appwrite" %}
-Install the Appwrite SDK for Flutter.
-
-```sh
-flutter pub add appwrite:12.0.3
-```
-
-{% /section %}
-
-{% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
-
-{% only_dark %}
-![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
-{% /only_dark %}
-{% only_light %}
-![Project settings screen](/images/docs/quick-starts/project-id.png)
-{% /only_light %}
-Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
-This imports and initializes Appwrite.
-
-```dart
-import 'package:flutter/material.dart';
+```client-flutter
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart' as models;
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Client client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("<YOUR_PROJECT_ID>");
-  Account account = Account(client);
+/* 
+AppwriteClient is a singleton class 
+that provides access to the Appwrite SDK 
+*/
+class AppwriteClient {
+  Client get _client {
+    Client client = Client();
 
-  runApp(MaterialApp(
-    home: MyApp(account: account),
-  ));
-}
-class MyApp extends StatefulWidget {
-  final Account account;
+    client
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('YOUR_PROJECT_ID');
 
-  MyApp({required this.account});
-
-  @override
-  MyAppState createState() {
-    return MyAppState();
-  }
-}
-```
-{% /section %}
-{% section #step-5 step=5 title="Create a login page" %}
-Then, append the following widgets to `lib/main.dart` create your login page.
-
-```dart
-class MyAppState extends State<MyApp> {
-  models.User? loggedInUser;
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
-
-  Future<void> login(String email, String password) async {
-    await widget.account.createEmailPasswordSession(email: email, password: password);
-    final user = await widget.account.get();
-    setState(() {
-      loggedInUser = user;
-    });
+    return client;
   }
 
-  Future<void> register(String email, String password, String name) async {
-    await widget.account.create(
-        userId: ID.unique(), email: email, password: password, name: name);
-    await login(email, password);
-  }
+  static Account get account => Account(_instance._client);
+  static Databases get databases => Databases(_instance._client);
 
-  Future<void> logout() async {
-    await widget.account.deleteSession(sessionId: 'current');
-    setState(() {
-      loggedInUser = null;
-    });
-  }
+  static final AppwriteClient _instance = AppwriteClient._internal();
+  AppwriteClient._internal();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(loggedInUser != null
-                ? 'Logged in as ${loggedInUser!.name}'
-                : 'Not logged in'),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
-            ),
-            SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    login(emailController.text, passwordController.text);
-                  },
-                  child: Text('Login'),
-                ),
-                SizedBox(width: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    register(emailController.text, passwordController.text,
-                        nameController.text);
-                  },
-                  child: Text('Register'),
-                ),
-                SizedBox(width: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    logout();
-                  },
-                  child: Text('Logout'),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  factory AppwriteClient() => _instance;
 }
 ```
-{% /section %}
 
-{% section #step-6 step=6 title="All set" %}
-Run your project with `flutter run` and select a browser, platform, or emulator to run your project.
-{% /section %}
+Replace `YOUR_PROJECT_ID` with your project ID. You can find your project ID in the Appwrite Console.
+
+This class is a singleton that provides access to the Appwrite SDK.
+It initializes the SDK with your project ID and provides access to the `Account` and `Databases` services.

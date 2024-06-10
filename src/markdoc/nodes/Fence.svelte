@@ -16,6 +16,8 @@
     export let badge: string | null = null;
 
     const insideMultiCode = hasContext('multi-code');
+
+
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
     enum CopyStatus {
@@ -24,7 +26,8 @@
     }
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
-        await copy(toCopy ?? content);
+        const escapedContent = (toCopy ?? content).replace(/{%\s*(\w+)\s*%}/g, '').replace(/{%\s*\/(\w+)\s*%}/g, '');
+        await copy(escapedContent);
 
         copyText = CopyStatus.Copied;
         setTimeout(() => {
@@ -49,7 +52,7 @@
     }
 
     $: result = process
-        ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers })
+        ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers})
         : content;
 
     $: badgeValue = badge ?? platformMap[language];

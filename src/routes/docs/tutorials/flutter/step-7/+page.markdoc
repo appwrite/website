@@ -1,0 +1,141 @@
+---
+layout: tutorial
+title: Create ideas screen
+description: Add pagination and ordering to you Flutter application powered by Appwrite Databases.
+step: 7
+---
+
+Using the `IdeasProvider`, we can build a screen to submit and view ideas.
+Overwrite the contents of `ui/screens/IdeasScreen.kt` with the following code.
+
+```client-flutter
+import 'package:appwrite/appwrite.dart' show ID;
+import 'package:flutter/material.dart';
+import 'package:idea_tracker/providers/account.dart';
+import 'package:idea_tracker/providers/ideas.dart';
+import 'package:provider/provider.dart';
+
+class IdeasScreen extends StatefulWidget {
+  const IdeasScreen({Key? key});
+
+  @override
+  State<IdeasScreen>  createState() => _IdeasScreenState();
+}
+
+class _IdeasScreenState extends State<IdeasScreen> {
+  List<Idea> ideas = [];
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    {% highlighted %}
+    ideas = Provider.of<Ideas>(context, listen: true).ideas;
+    {% /highlighted %}
+    return Material(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            if (Provider.of<Account>(context, listen: false).user != null)
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    const Text(
+                      'Submit Idea',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      controller: titleController,
+                      decoration: const InputDecoration(
+                        hintText: 'Title',
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      controller: descriptionController,
+                      decoration: const InputDecoration(
+                        hintText: 'Description',
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        {% highlighted %}
+                        Provider.of<Ideas>(context, listen: false).add(Idea(
+                          id: ID.unique(),
+                          userId: Provider.of<Account>(context, listen: false)
+                                  .user
+                                  ?.$id ??
+                              '',
+                          title: titleController.text,
+                          description: descriptionController.text,
+                        ));
+                        titleController.clear();
+                        descriptionController.clear();
+                        {% /highlighted %}
+                      },
+                      child: const Text('Submit'),
+                    ),
+                  ],
+                ),
+              )
+            else
+              Container( // Show a message if the user is not logged in, add a login button here
+                padding: const EdgeInsets.all(16),
+                child: const Text('Please login to submit an idea.'),
+              ),
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  const Text(
+                    'Latest Ideas',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 16),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount:
+                        ideas.length,
+                    itemBuilder: (context, index) {
+                      final idea =
+                          ideas[index];
+                      return Card(
+                        child: ListTile(
+                          title: Text(idea.title),
+                          subtitle: Text(idea.description),
+                          {% highlighted %}
+                          trailing: Provider.of<Account>(context, listen: false)
+                                      .isAuthenticated &&
+                                  Provider.of<Account>(context, listen: false)
+                                          .user
+                                          ?.$id ==
+                                      idea.userId
+                              ? IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () {
+                                    Provider.of<Ideas>(context, listen: false)
+                                        .remove(idea);
+                                  },
+                                )
+                              : null,
+                          {% /highlighted %}
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+We have added a `ListView.builder` to display the list of ideas.
+ We have also added a delete button to each idea **if the user is authenticated and the idea belongs to the user**.

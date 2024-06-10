@@ -1,0 +1,142 @@
+---
+layout: tutorial
+title: Add database
+description: Add databases and queries to store user data in you Flutter application.
+step: 6
+---
+
+# Create collection {% #create-collection %}
+
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
+
+Create a new collection with the following attributes:
+
+| Attribute   | Type   | Required | Size     |
+|-------------|--------|----------|----------|
+| userId      | String | Yes      | 200      |
+| title       | String | Yes      | 200      |
+| description | String | No       | 500      |
+
+{% only_dark %}
+![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
+
+# Add and remove methods {% #add-add-remove-methods %}
+
+Now that you have a collection to hold ideas, we can read and write to it from our app.
+Create a new file `ideas_tracker/lib/providers/ideas.dart` and add the following code to it. 
+
+This provider stores a list of ideas and provides methods to add and remove ideas from the collection.
+Ideas also extends `ChangeNotifier` so that it can notify listeners when the list of ideas changes.
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+import 'package:flutter/material.dart';
+import 'package:appwrite/models.dart' show DocumentList;
+import 'package:idea_tracker/api/client.dart';
+
+class Idea{
+  final String id;
+  final String userId;
+  final String title;
+  final String description;
+
+  Idea({
+    required this.id,
+    required this.userId,
+    required this.title,
+    required this.description,
+  });
+}
+
+class Ideas extends ChangeNotifier {
+  final Databases _databases = AppwriteClient.databases;
+  final String databaseId = 'default';
+  final String collectionId = 'ideas-tracker';
+
+  List<Idea> ideas = [];
+
+  Ideas() {
+    list();
+  }
+
+
+  Future<void> add(Idea idea) async {
+    try {
+      await _databases.createDocument(
+        databaseId: databaseId,
+        collectionId: collectionId,
+        documentId: ID.unique(),
+        data: {
+          'userId': idea.userId,
+          'title': idea.title,
+          'description': idea.description
+        }
+      );
+      ideas.insert(0, idea);
+      notifyListeners();
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<void> remove(Idea idea) async {
+    try {
+      await _databases.deleteDocument(
+        databaseId: databaseId,
+        collectionId: collectionId,
+        documentId: idea.id,
+      );
+      ideas.remove(idea);
+      notifyListeners();
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<void> list() async {
+    try {
+      final DocumentList response = await _databases.listDocuments(
+        databaseId: databaseId,
+        collectionId: collectionId,
+        queries: [
+          Query.orderDesc("\$createdAt"),
+        ]
+      );
+
+      final List<Idea> newIdeas = response.documents.map<Idea>((idea) {
+        return Idea(
+          id: idea.$id,
+          userId: idea.data['userId'] as String,
+          title: idea.data['title'] as String,
+          description: idea.data['description'] as String,
+        );
+      }).toList();
+
+      ideas.addAll(newIdeas);
+      notifyListeners();
+
+    } catch(e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+}
+```
+The Ideas screen will consume this provider to display the list of ideas and add or remove ideas from the collection.

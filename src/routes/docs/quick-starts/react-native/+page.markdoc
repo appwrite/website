@@ -41,7 +41,7 @@ Then, under **Add a platform**, add a **Android app** or a **Apple app**.
 
 {% tabs %}
 {% tabsitem #ios title="iOS" %}
-Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
+Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in Xcode.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)

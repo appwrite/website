@@ -1,0 +1,205 @@
+---
+layout: tutorial
+title: Add database
+description: Add databases and queries to store user data in you Apple application.
+step: 6
+---
+
+# Create collection {% #create-collection %}
+
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+{% /only_dark %}
+
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+{% /only_light %}
+
+Create a new collection with the following attributes:
+
+| Attribute   | Type   | Required | Size     |
+|-------------|--------|----------|----------|
+| userId      | String | Yes      | 200      |
+| title       | String | Yes      | 200      |
+| description | String | No       | 500      |
+
+{% only_dark %}
+![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
+
+# Add the Ideas model{% #add-ideas-model %}
+
+Now that you've added your collection, you need to represent the data in your application. 
+Create a new file [Model/Idea.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/Model/Idea.swift) and add the following code.
+
+```client-apple
+import Foundation
+
+struct Idea: Codable {
+    init(userId: String, title: String, description: String) {
+        self.userId = userId
+        self.title = title
+        self.description = description
+    }
+    var userId: String
+    var title: String
+    var description: String
+}
+
+struct IdeaItem: Identifiable {
+    init(id: String, idea: Idea) {
+        self.id = id
+        self.idea = idea
+    }
+    var id: String
+    var idea: Idea
+}
+```
+
+The `Idea` struct represents the documents in the collection.
+The `IdeaItem` struct extends `Identifiable` used to display the data in the UI.
+
+# Add methods to the Appwrite service{% #add-methods-to-the-appwrite-service %}
+Add methods to the Appwrite service to perform basic CRUD operations on the collection.
+Add the following methods to the [Service/Appwrite.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/Service/Appwrite.swift).
+The new methods highlighted are `listIdeas`, `removeIdea`, and `addIdea`.
+```client-apple
+...
+    public init() {
+        self.client = Client()
+            .setEndpoint("https://cloud.appwrite.io/v1")
+            .setProject("<YOUR_PROJECT_ID>")
+        
+        self.account = Account(client)
+        self.databases = Databases(client)
+    }
+    
+    {% highlighted %}
+    public func listIdeas() async throws ->
+    DocumentList<Idea> {
+        return try await self.databases.listDocuments<Idea>(
+            databaseId: self.databaseId,
+            collectionId: self.collectionId,
+            queries: [
+                Query.orderDesc("$createdAt"),
+                Query.limit(10)
+            ],
+            nestedType: Idea.self
+        )
+    }
+    
+    public func removeIdea(id: String) async throws {
+        _ = try await self.databases.deleteDocument(
+            databaseId: self.databaseId,
+            collectionId: self.collectionId,
+            documentId: id
+        )
+    }
+    
+    public func addIdea(title: String, description: String, userId: String) async throws -> Document<Idea> {
+        return try await self.databases.createDocument<Idea>(
+            databaseId: self.databaseId,
+            collectionId: self.collectionId,
+            documentId: ID.unique(),
+            data: Idea(
+                userId: userId, 
+                title: title,
+                description: description
+            ),
+            permissions: [Permission.write(Role.user(userId))],
+            nestedType: Idea.self
+        )
+    }
+    {% /highlighted %}
+
+    public func getUser() async throws -> User<[String: AnyCodable]> {
+        return try await account.get()
+    }
+...
+```
+
+# Add the Ideas view model{% #add-ideas-view-model %}
+Like the login view model, create a new file [ViewModel/IdeasViewModel.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/ViewModel/IdeasViewModel.swift)
+to manage the data for the Ideas view.
+
+This view model uses the `listIdeas`, `removeIdea`, and `addIdea` methods to interact with Appwrite, which are highlighted below.
+```client-apple
+import Foundation
+
+class IdeasViewModel: ObservableObject {
+    @Published var ideaItems: [IdeaItem]
+    private var appwriteService: Appwrite
+    
+    init() {
+        self.ideaItems = []
+        self.appwriteService = Appwrite.shared
+    }
+    
+    public func loadIdeas() async {
+        do {
+            {% highlighted %}
+            let response = try await self.appwriteService.listIdeas()
+            {% /highlighted %}   
+            // Mapping and updating on the main thread
+            await MainActor.run {
+                self.ideaItems = response.documents.map { document in
+                    IdeaItem(
+                        id: document.id,
+                        idea: Idea(
+                            userId: document.data.userId,
+                            title: document.data.title,
+                            description: document.data.description
+                        )
+                    )
+                }
+            }
+        }
+        catch {
+            print("Could not load ideas")
+        }
+    }
+    
+    public func removeIdea(id: String) async {
+        do {
+            {% highlighted %}
+            let _ = try await self.appwriteService.removeIdea(id: id)
+            {% /highlighted %}
+            ideaItems.removeAll { $0.id == id }
+        }
+        catch {
+            print("Could not remove idea")
+        }
+    }
+    
+    public func addIdea(title: String, description: String, userId: String) async {
+        do {
+            {% highlighted %}
+            let idea = try await self.appwriteService.addIdea(
+                title: title,
+                description: description,
+                userId: userId
+            )
+            {% /highlighted %}
+            await MainActor.run {
+                ideaItems.insert(
+                    IdeaItem(id: idea.id, idea: idea.data),
+                    at: 0
+                )
+            }
+        }
+        catch {
+            print("Could not add idea")
+        }
+        
+    }
+}
+
+

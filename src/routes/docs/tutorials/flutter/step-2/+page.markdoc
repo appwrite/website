@@ -1,0 +1,26 @@
+---
+layout: tutorial
+title: Create app
+description: Create a Flutter app project using Appwrite.
+step: 2
+---
+
+Create a Flutter project.
+
+```sh
+flutter create ideas_tracker && cd ideas_tracker
+```
+
+# Dependencies {% #dependencies %}
+
+Then, add the Appwrite Flutter SDK to your project.
+
+```sh
+flutter pub add appwrite:12.0.3
+```
+
+We'll also need the `provider` package to manage the state of our app.
+
+```sh
+flutter pub add provider:6.1.2
+```

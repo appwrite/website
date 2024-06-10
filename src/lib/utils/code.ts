@@ -108,8 +108,31 @@ type Args = {
     withLineNumbers?: boolean;
 };
 
+enum HighlightTags {
+    highlighted = 'highlighted',
+    added = 'added',
+    removed = 'removed'
+}
+
+
 export const getCodeHtml = (args: Args) => {
     const { content, language, withLineNumbers } = args;
+
+    // check for highlighted lines and wrap with a div
+    let highlightedLines: Map<number, string> = new Map();
+    content.split(/\n/g).forEach((line, index) => {
+        const openTag = line.match(/{%\s*?(\w+)\s*%}/);
+        const closeTag = line.match(/{%\s*\/?(\w+)\s*%}/)
+        if (openTag && openTag[1] === HighlightTags.highlighted) {
+            highlightedLines.set(index, `<span class="${openTag[1]}">`);
+        }
+        else if (closeTag && closeTag[1] === HighlightTags.highlighted) {
+            highlightedLines.set(index, `</span>`);
+        }
+        return line;
+    });
+
+
     const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
     const lines = res.split(/\n/g);
 
@@ -117,12 +140,13 @@ export const getCodeHtml = (args: Args) => {
         lines.pop();
     }
 
-    const final = lines.reduce((carry, line) => {
-        carry += `<span class="line">${line}</span>\n`;
+    const final = lines.reduce((carry, line, lineNum) => {
+        // if there's a highlighted line we need to 
+        carry += highlightedLines.get(lineNum) ?? `<span class="line">${line}</span>\n`;
+
         return carry;
     }, '');
 
-    return `<pre><code class="web-code language-${language} ${
-        withLineNumbers ? 'line-numbers' : ''
-    }">${final}</code></pre>`;
+    return `<pre><code class="web-code web-u-inline-block language-${language} ${withLineNumbers ? 'line-numbers' : ''
+        }">${final}</code></pre>`;
 };

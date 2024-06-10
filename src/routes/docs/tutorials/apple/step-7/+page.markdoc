@@ -1,0 +1,213 @@
+---
+layout: tutorial
+title: Create ideas page
+description: Add pagination and ordering to you Apple application powered by Appwrite Databases.
+step: 7
+---
+
+Using your Ideas view model, you can now create a page that lists all the ideas. 
+
+# Create the Ideas view {% #create-ideas-view %}
+Create a new file called [/View/IdeasView.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/View/IdeasView.swift) 
+folder. Add the following code to the file, notice the highlighted code, which binds to the Ideas view model and lists the ideas.
+
+```client-apple
+import SwiftUI
+import AppwriteModels
+
+struct IdeasView: View {
+    @StateObject var ideasViewModel: IdeasViewModel
+    @EnvironmentObject private var loginViewModel: LoginViewModel
+    @State private var title: String = ""
+    @State private var description: String = ""
+    @FocusState private var focusedTextField: FormTextField?
+    
+    init() {
+        self.title = ""
+        self.description = ""
+        let ideasViewModel = IdeasViewModel()
+        _ideasViewModel = StateObject(wrappedValue: ideasViewModel)
+
+    }
+    
+    enum FormTextField {
+        case title, description
+    }
+    
+    var body: some View {
+        VStack (alignment: .leading, spacing: 0) {
+            Text("Add Ideas")
+                .font(.title2)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .padding(10)
+            Form {
+                Section {
+                    TextField("Title", text: $title)
+                        .onSubmit { focusedTextField = .description }
+                        .submitLabel(.next)
+                    
+                    TextField("Description",
+                              text: $description,
+                              axis: .vertical
+                    )
+                    .onSubmit { focusedTextField = nil }
+                    .submitLabel(.continue)
+                    HStack{
+                        Spacer()
+                        Button(
+                            "Add Idea",
+                            action: {
+                                Task {
+                                    await self.ideasViewModel.addIdea(
+                                        title: self.title,
+                                        description: self.description,
+                                        userId: self.loginViewModel.userId
+                                    )
+                                    title = ""
+                                    description = ""
+                                }
+                            }
+                        ).buttonStyle(.borderedProminent)
+                    }
+                }
+            }.frame(height: 200)
+            
+            {% highlighted %}
+            List {
+                Section (header: Text("Ideas")) {
+                    ForEach(self.ideasViewModel.ideaItems) { item in
+                        HStack (alignment: .center, spacing: 10) {
+                            VStack(alignment: .leading) {
+                                Text(item.idea.title)
+                                    .font(.headline)
+                                    .padding(.bottom, 1)
+                                
+                                Text(item.idea.description)
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Button(
+                                "Remove",
+                                action: {
+                                    Task{
+                                        await self.ideasViewModel
+                                            .removeIdea(
+                                                id: item.id
+                                            )
+                                    }
+                                }
+                            )
+                            .disabled(loginViewModel.userId != item.idea.userId)
+                            .buttonStyle(.borderedProminent)
+                        }
+                    }
+                }
+            }
+            {% /highlighted %}
+            
+        }
+        .task {
+            await self.ideasViewModel.loadIdeas()
+        }
+    }
+}
+```
+
+# Add the Ideas view to navigation {% #add-ideas-view-to-navigation %}
+
+Add the Ideas view to the router in the [Navigation/Router.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/Navigation/Router.swift)
+file.
+
+```client-apple
+import Foundation
+import SwiftUI
+
+enum Route {
+    {% highlighted %}
+    case ideas
+    {% /highlighted %}
+    case login
+}
+
+extension Route: View {
+    var body: some View {
+        switch self {
+        {% highlighted %}
+        case .ideas:
+            IdeasView()
+        {% /highlighted %}
+        case .login:
+            LoginView()
+        }
+    }
+}
+
+extension Route: Hashable {
+    static func == (lhs: Route, rhs: Route) -> Bool {
+        return lhs.compareString == rhs.compareString
+    }
+
+    var compareString: String {
+        switch self {
+        {% highlighted %}
+        case .ideas:
+            return "ideas"
+        {% /highlighted %}
+        case .login:
+            return "login"
+        }
+    }
+}
+
+// ... rest of router
+```
+
+# Add redirects {% #add-redirects %}
+Add a redirect after login to the Ideas view. Open the [View/LoginView.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/View/LoginView.swift).
+
+```client-apple
+private func handleLogin() async {
+    do {
+        try await loginViewModel.login(
+            email: email,
+            password: password)
+        router.pushReplacement(.ideas)
+    }
+    catch {
+        print(error)
+        self.error=error.localizedDescription
+        // add your error handling here
+    }
+}
+```
+
+Finally, you need to add a redirect to the Ideas view from the splash screen. 
+Open the [View/SplashView.swift](https://github.com/appwrite/demos-for-apple/blob/main/IdeasTracker/IdeasTracker/View/SplashView.swift)
+file and add the following code.
+
+```client-apple
+...
+    var body: some View {
+        NavigationStack(path: $router.routes) {
+            VStack {
+                Text("Welcome to Ideas Tracker")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+            }.task {
+                let isLoggedIn = await self.loginViewModel.checkLoggedIn();
+
+                if !isLoggedIn {
+                    router.pushReplacement(.login)
+                {% highlighted %}
+                } else {
+                    router.pushReplacement(.ideas)
+                }
+                {% /highlighted %}
+            }
+            .navigationDestination(for: Route.self, destination: { $0 })
+
+        }
+    }
+...
+```
