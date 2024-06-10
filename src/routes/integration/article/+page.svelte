@@ -93,9 +93,9 @@
 		<div class="web-big-padding-section-level-2">
 			<div class="web-container">
 				<article class="u-flex-vertical web-u-gap-60-not-mobile  web-u-gap-40-mobile">
-					<div class="web-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
+					<div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
 						<header class="u-contents">
-							<div class="web-grid-area-header u-flex u-cross-start u-gap-20">
+							<div class="l-grid-area-header u-flex u-cross-start u-gap-20">
 								<img class="web-author-image" src="/images/avatars/christy.png" alt="Christy Jacob" loading="lazy" width="40" height="40">
 								<div class="u-flex u-cross-center u-flex-wrap u-gap-16">
 									<h1 class="web-title web-u-color-text-primary">Lorem ipsum</h1>
@@ -107,7 +107,7 @@
 									</a>
 								</div>
 							</div>
-							<div class="web-grid-area-buttons l-side-column">
+							<div class="l-grid-area-buttons l-side-column">
 								<button class="web-button is-secondary u-stretch is-full-width-mobile">
 									<span>Source code</span>
 								</button>
@@ -117,13 +117,13 @@
 							</div>
 						</header>
 						<div class="u-contents">
-							<div class="web-grid-area-content web-article">
+							<div class="l-grid-area-content web-article">
 								<div class="web-article-content">
 									<p class="web-paragraph-md">The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it's no surprise that many of you are looking to build AI powered applications. But that's easier said than done, as building AI powered applications can be tricky. We don't want it to be. That's why we're happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.</p>
 									<p class="web-paragraph-md">Lorem ipsum dolor sit amet consectetur. Neque id vel eros sed ipsum. Nisi fames euismod egestas morbi massa eget. At viverra nibh semper arcu in. Convallis etiam dui elit mauris mattis netus sit. Auctor dolor porttitor viverra eget egestas sem auctor suspendisse. Massa phasellus condimentum nam ac quis quis duis risus. Ac ut aliquet tortor donec erat ac. Enim a eros sit purus et lacinia. Faucibus nibh donec auctor mattis enim. Elementum quam sed auctor lacus tincidunt velit semper dui. Dolor commodo consectetur mollis morbi metus arcu at.</p>
 								</div>
 							</div>
-							<div class="web-grid-area-side">
+							<div class="l-grid-area-side">
 								<dl class="u-flex-vertical u-gap-20">
 									<div class="u-flex u-main-space-between u-gap-8">
 										<dt>Developed by</dt>
@@ -237,25 +237,28 @@
 		}
 	}
 
-	.l-grid-1 {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-		gap: pxToRem(32);
-	}
-	.l-integrations-grid {
-		@media #{$break1} {}
-		@media #{$break2open} {
-			display: grid;
-			gap: pxToRem(68);
-			grid-template-columns: pxToRem(240) 1fr;
-			min-block-size: pxToRem(628);
-			padding-block-start: pxToRem(60);
-		}
-	}
 	.l-side-column {
 		display:flex; gap: pxToRem(16);
 		@media #{$break1} {
 			flex-direction:column;
+		}
+	}
+
+	.l-grid-2-1 {
+		@media #{$break1} {
+			display: flex;
+			flex-direction: column;
+		}
+		@media #{$break2open} {
+			display: grid;
+			gap: pxToRem(32);
+			grid-template-columns: 7fr 1fr 4fr;
+			grid-template-areas:  "header  . buttons"
+                          "content . side";
+			.l-grid-area-header  { grid-area:header; }
+			.l-grid-area-buttons { grid-area:buttons; }
+			.l-grid-area-content { grid-area:content; }
+			.l-grid-area-side    { grid-area:side;    }
 		}
 	}
 </style>
