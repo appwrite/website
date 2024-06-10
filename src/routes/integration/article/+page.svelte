@@ -29,7 +29,7 @@
 </svelte:head>
 
 <Main>
-	<header class="web-u-sep-block-end u-padding-block-end-0" style="background-color:rgba(23, 23, 26, 1);">
+	<div class="web-u-sep-block-end u-padding-block-end-0" style="background-color:rgba(23, 23, 26, 1);">
 		<div class="web-container">
 			<div class="web-integrations-top-section">
 				<div class="web-carousel-wrapper">
@@ -88,11 +88,84 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</div>
 	<div class="web-big-padding-section-level-1">
 		<div class="web-big-padding-section-level-2">
 			<div class="web-container">
+				<article class="u-flex-vertical u-row-gap-56">
+					<header
+							class="web-grid-2-1"
+							style="--grid-2-1-gap:2.5rem; --p-grid-2-1-gap-desktop:6rem"
+					>
+						<div class="u-flex u-gap-20 web-u-max-width-680">
+							<img class="web-author-image" src="/images/avatars/christy.png" alt="Christy Jacob" loading="lazy" width="40" height="40">
+							<div class="u-flex u-cross-center u-gap-16">
+								<h1 class="web-title web-u-color-text-primary">Lorem ipsum</h1>
+								<a href="/blog/post/announcing-appwrite-new-ai-integrations" class="web-hero-banner-button">
+									<span class="web-icon-star" aria-hidden="true"></span>
+									<span class="web-caption-500">New</span>
+									<div class="web-hero-banner-button-sep"></div>
+									<span class="web-caption-400 web-u-trim-1">Developed by Appwrite</span>
+								</a>
+							</div>
+						</div>
+						<div class="l-side-column">
+							<button class="web-button is-secondary u-stretch is-full-width-mobile">
+								<span>Source code</span>
+							</button>
+							<button class="web-button u-stretch is-full-width-mobile">
+								<span>Deploy</span>
+							</button>
+						</div>
+					</header>
+					<div class="web-grid-2-1">
+						<div class="web-article web-u-max-width-680">
+							<div class="web-article-content">
+								<p class="web-paragraph-md">The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it's no surprise that many of you are looking to build AI powered applications. But that's easier said than done, as building AI powered applications can be tricky. We don't want it to be. That's why we're happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.</p>
+								<p class="web-paragraph-md">Lorem ipsum dolor sit amet consectetur. Neque id vel eros sed ipsum. Nisi fames euismod egestas morbi massa eget. At viverra nibh semper arcu in. Convallis etiam dui elit mauris mattis netus sit. Auctor dolor porttitor viverra eget egestas sem auctor suspendisse. Massa phasellus condimentum nam ac quis quis duis risus. Ac ut aliquet tortor donec erat ac. Enim a eros sit purus et lacinia. Faucibus nibh donec auctor mattis enim. Elementum quam sed auctor lacus tincidunt velit semper dui. Dolor commodo consectetur mollis morbi metus arcu at.</p>
+							</div>
+						</div>
+						<div>
+							<dl class="u-flex-vertical u-gap-20">
+								<div class="u-flex u-main-space-between u-gap-8">
+									<dt>Developed by</dt>
+									<dd class="web-u-color-text-primary">Appwrite</dd>
+								</div>
+								<div class="web-u-sep-block-end"></div>
+								<div class="u-flex u-main-space-between u-gap-8">
+									<dt>Partner</dt>
+									<dd><div class="web-inline-tag">Verified</div></dd>
+								</div>
+								<div class="web-u-sep-block-end"></div>
+								<div class="u-flex u-main-space-between u-gap-8">
+									<dt>Category</dt>
+									<dd class="web-u-color-text-primary">Category</dd>
+								</div>
+								<div class="web-u-sep-block-end"></div>
+								<div class="u-flex u-main-space-between u-gap-8">
+									<dt>Website</dt>
+									<dd>
+										<a class="web-link" href="/">
+											<span>appwrite.io</span>
+											<span class="web-icon-ext-link" aria-hidden="true"></span>
+										</a>
+									</dd>
+								</div>
+								<div class="web-u-sep-block-end"></div>
+								<div class="u-flex u-main-space-between u-gap-8">
+									<dt>Documentation</dt>
+									<dd>
+										<a class="web-link" href="/">
+											<span>Read</span>
+											<span class="web-icon-ext-link" aria-hidden="true"></span>
+										</a>
+									</dd>
+								</div>
+							</dl>
 
+						</div>
+					</div>
+				</article>
 			</div>
 		</div>
 	</div>
@@ -178,6 +251,17 @@
 			grid-template-columns: pxToRem(240) 1fr;
 			min-block-size: pxToRem(628);
 			padding-block-start: pxToRem(60);
+		}
+	}
+	.l-side-column {
+		display:flex; gap: pxToRem(16);
+		@media #{$break1} {
+			flex-direction:column;
+		}
+		@media #{$break2open} {
+			max-inline-size: pxToRem(380);
+			margin-inline-start: auto;
+			inline-size: 100%;
 		}
 	}
 </style>
