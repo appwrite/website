@@ -660,6 +660,10 @@
         "redirect": "/docs/advanced/self-hosting"
     },
     {
+        "link": "/keyboard",
+        "redirect": "/docs/tooling/keyboard"
+    },
+    {
         "link": "/careers",
         "redirect": "https://appwrite.careers"
     },

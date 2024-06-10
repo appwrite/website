@@ -122,7 +122,7 @@ To enable a runtime, add it to the `_APP_FUNCTIONS_RUNTIMES` environment variabl
 The example below would enable Dart 2.15, .NET 6.0, and Java 18 runtimes.
 
 ```bash
-_APP_FUNCTIONS_RUNTIMES=dart-2.15, dotnet-6.0, java-18.0
+_APP_FUNCTIONS_RUNTIMES=dart-2.15, dotnet-6.0, java-18.
 ```
 
 You can find a full list of supported runtimes on the [environment variables page](/docs/advanced/self-hosting/environment-variables).
