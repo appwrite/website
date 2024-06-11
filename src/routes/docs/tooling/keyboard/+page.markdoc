@@ -14,7 +14,7 @@ Good contrast between text and backgrounds, resizable text without loss of conte
 
 # Shortcuts {% #shortcuts %}
 
-You can only use these keyboard shortcuts in the Appwrite Console. Appwrite's keyboard shortcuts follow the following pattern: use the first letters from the call to action and the resource, product, service, or page you're targeting.  For example, using the shortcut `G,` then `S` goes to storage, but the shortcut `G` then `E` is if you want to go to settings, because `G` then `S` is already taken; therefore, the shortcut will use the following letter of settings will be used for this shortcut. The shortcut keys use this pattern through the consistency and predictability of the shortcuts.
+You can only use these keyboard shortcuts in the Appwrite Console. Appwrite's keyboard shortcuts follow the following pattern: use the first letters from the call to action and the resource, product, service, or page you're targeting.  For example, using the shortcut `G,` then `S` goes to storage, but the shortcut `G` then `E` is if you want to go to settings, because `G` then `S` is already taken, so the following letter of settings will be used for this shortcut. This pattern is used to make usage of shortcuts consistent and predictable.
 
 ## Global shortcuts {% #global-shortcuts %}
 
