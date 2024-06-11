@@ -115,7 +115,7 @@
                 {
                     label: 'Keyboard',
                     href: '/docs/tooling/keyboard',
-                    icon: 'icon-sparkles'
+                    icon: 'icon-text'
                 }
             ]
         },
