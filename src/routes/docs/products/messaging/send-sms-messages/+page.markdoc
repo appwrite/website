@@ -10,7 +10,7 @@ This guide takes you through the implementation path of adding sms messaging to 
 Appwrite supports [Twilio](/docs/products/messaging/twilio/),
 [MSG91](/docs/products/messaging/msg91/),
 [Telesign](/docs/products/messaging/telesign/),
-[TextMagic](/docs/products/messaging/textmagic/),
+[Textmagic](/docs/products/messaging/textmagic/),
 and [Vonage](/docs/products/messaging/vonage/)
 as SMS providers. You must configure one of them as a provider.
 {% only_dark %}
@@ -24,7 +24,7 @@ and follow the wizard. You can find more details about configuring in the provid
 [Twilio](/docs/products/messaging/twilio/),
 [MSG91](/docs/products/messaging/msg91/),
 [Telesign](/docs/products/messaging/telesign/),
-[TextMagic](/docs/products/messaging/textmagic/),
+[Textmagic](/docs/products/messaging/textmagic/),
 and [Vonage](/docs/products/messaging/vonage/).
 
 # Add targets {% #add-targets %}
