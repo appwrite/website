@@ -174,7 +174,7 @@ struct ContentView: View {
             )
             Button(
                 action: { Task {
-                    try await Appwrite.onRegister(
+                    try await appwrite.onRegister(
                         viewModel.email,
                         viewModel.password
                     )
@@ -185,7 +185,7 @@ struct ContentView: View {
             )
             Button(
                 action: { Task {
-                    try! await Appwrite.onLogin(
+                    try! await appwrite.onLogin(
                         viewModel.email,
                         viewModel.password
                     )
