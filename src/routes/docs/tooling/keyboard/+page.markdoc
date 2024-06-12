@@ -14,11 +14,11 @@ Good contrast between text and backgrounds, resizable text without loss of conte
 
 # Shortcuts {% #shortcuts %}
 
-You can only use these keyboard shortcuts in the Appwrite Console. Appwrite's keyboard shortcuts follow the following pattern: use the first letters from the call to action and the resource, product, service, or page you're targeting.  For example, using the shortcut `G,` then `S` goes to storage, but the shortcut `G` then `E` is if you want to go to settings, because `G` then `S` is already taken, so the following letter of settings will be used for this shortcut. This pattern is used to make usage of shortcuts consistent and predictable.
+The Appwrite Console supports keyboard shortcuts that make it easier to navigate and perform common actions quicker. The shortcuts use the following pattern: use the first letter from the call to action followed by the resource, product, service, or page you're targeting.  For example, the shortcut keys `G` + `S` navigates to the project's Storage screen. Similarly, the shortcut `G` + `F` navigates to the project's Functions screen. However, there are some exceptions. The shortcut `G` + `E` navigates to project Settings, because `G` + `S` is in use for Storage. This pattern is used to make usage of shortcuts consistent and predictable.
 
 ## Global shortcuts {% #global-shortcuts %}
 
-Developers can utilize global shortcuts anywhere in the Appwrite Console, allowing instant access to these features, whether on their account page or creating an organization page.
+Developers can also utilize global shortcuts anywhere in the Appwrite Console, allowing instant access to these features from any page on the Console.
 
 |PC (Windows / Linux)|macOS|Action|
 |----|----|----|
@@ -34,7 +34,7 @@ Developers can utilize global shortcuts anywhere in the Appwrite Console, allowi
 
 ## Project shortcuts {% #project-shortcuts %}
 
-Once they create a project, developers can utilize project shortcuts. These shortcuts allow them to access the project's database, storage, messaging, auth, settings, and overview.
+Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, and overview pages.
 
 |Shortcut|Action|
 |----|----|
