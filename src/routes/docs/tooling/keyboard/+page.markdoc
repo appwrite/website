@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Keyboard
-description: Learn to efficiently and effectively navigate and access the Appwrite Console with your keyboard or the Appwriter embedded with shortcuts.
+description: Learn to navigate the Appwrite Console efficiently and effectively with your keyboard or the custom Appwriter mechanical keyboard
 ---
 
-The Appwrite Console is optimized for using a keyboard using shortcut keys, significantly enhancing the developer's efficiency without interruption from using the mouse. These shortcut keys also benefit developers relying solely on keyboards, guaranteeing an inclusive and accessible platform. We improve developers' productivity by using the keyboard's ease of use, quick and seamless execution of essential actions, and the consistency of the shortcut key.
+The Appwrite Console was designed with a keyboard first approach. Keyboard navigation along with shortcuts provide an effective and efficient way to navigate the console and perform common actions rather quickly without the need to reach out for the mouse. These shortcuts also benefit developers relying solely on keyboards, guaranteeing an inclusive and accessible experience. Developer experience is greatly improved by virtue of the keyboard's ease of use, quick and seamless execution of essential actions and the consistency of shortcut keys.
 
 # Accessibility  {% #accessibility %}
 
@@ -30,7 +30,7 @@ Developers can also utilize global shortcuts anywhere in the Appwrite Console, a
 |Set theme to light|`T` then `L`|
 |Set theme to dark|`T` then `D`|
 |Set theme to dark|`T` then `A`|
-|Ask the AI|`A` then `I`|
+|Open Appwrite Assistant|`A` then `I`|
 
 ## Project shortcuts {% #project-shortcuts %}
 
