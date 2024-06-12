@@ -18,6 +18,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * Versions
 * Architectures
 ---
+* {% icon icon="python" size="l" /%}
+* [Python ML](https://hub.docker.com/r/openruntimes/python-ml)
+* `python-ML-3.11`
+* x86 / arm64
+---
 * {% icon icon="node_js" size="l" /%}
 * [Node.js](https://hub.docker.com/r/openruntimes/node/tags)
 * `node-14.5`
