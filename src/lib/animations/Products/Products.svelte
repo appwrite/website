@@ -12,7 +12,7 @@
     }
 
     /* Products infos */
-    const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
+    const products = ['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime', 'post'] as const;
     type Product = (typeof products)[number];
 
     type ProductInfo = {
@@ -76,6 +76,23 @@
                 'Custom domain support'
             ],
             shot: FunctionsShot
+        },
+        messaging: {
+            icon: {
+                active: './images/icons/illustrated/dark/storage.png',
+                inactive: './images/icons/illustrated/dark/storage-transparent.png'
+            },
+            title: 'Messaging',
+            subtitle: 'Communicate with your users',
+            description:
+                'Set up a full-functioning messaging service for your application that covers multiple channels under one unified platform.',
+            features: [
+                'Draft and preview your messages before delivery',
+                'Segment your users for specific targeting',
+                'Send push notifications, emails, and SMS',
+                'Supports real-time and location-based messaging'
+            ],
+            shot: StorageShot
         },
         storage: {
             icon: {
@@ -342,7 +359,7 @@
                     </div>
                 </div>
 
-                {#if !['auth', 'databases', 'storage', 'functions', 'realtime'].includes(anyify(active.product))}
+                {#if !['auth', 'databases', 'storage', 'functions', 'messaging','realtime'].includes(anyify(active.product))}
                     <Post />
                 {/if}
             </div>
