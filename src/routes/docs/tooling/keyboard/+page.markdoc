@@ -8,9 +8,9 @@ The Appwrite Console is optimized for using a keyboard using shortcut keys, sign
 
 # Accessibility  {% #accessibility %}
 
-We are committed to making Appwrite's platform accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that Appwrite's platform is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
+We are committed to making the Appwrite Console accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that the Console is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
 
-Good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantee an inclusive environment and allow developers to perform their tasks efficiently. Adhering to these guidelines ensures that Appwrite's dashboard complies with legal requirements and promotes a positive developer experience for everyone.
+Good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantee an inclusive environment and allow developers to perform their tasks efficiently. Adhering to these guidelines ensures that the Appwrite Console complies with legal requirements and promotes a positive developer experience for everyone.
 
 # Shortcuts {% #shortcuts %}
 
@@ -60,7 +60,7 @@ Once they create a project, developers can utilize project shortcuts. These shor
 
 The Appwriter is an exclusive keyboard custom-designed by the Appwrite team. It is optimized to improve developer productivity and is specially tuned to use with the Appwrite Console.
 
-The Appwriter assigns Appwrite icons from the Appwrite Console and Docs to specific keys, making memorizing keyboard shortcuts easier. For example, `G` then `D` is the shortcut for going to databases, and the icon on the keyboard matches the icon in Appwrite Databases.
+The Appwriter uses icons from the Appwrite Console and Docs on specific keys, making memorizing keyboard shortcuts easier. For example, `G` then `D` is the shortcut for navigating to your project's databases, and the icon on the `D` key matches the icon for Appwrite Databases.
 
 ## Specifications
 
