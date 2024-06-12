@@ -449,6 +449,7 @@
     .bg-blur {
         inset-inline-end: -300px;
         inset-block-start: -100px;
+        pointer-events: none;
     }
 
     .tech-hero {
