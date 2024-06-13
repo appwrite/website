@@ -29,8 +29,15 @@
 </svelte:head>
 
 <Main>
-	<header class="web-u-sep-block-end u-padding-block-end-0">
-		<div class="web-container">
+	<header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
+		<div class="web-container u-position-relative">
+			<img
+					src="/images/pages/integration/integration-bg-top-1.png"
+					alt=""
+					width="983"
+					height="985"
+					class="l-bg-1 u-position-absolute web-is-not-mobile"
+			>
 			<div class="web-integrations-top-section">
 				<div class="l-integrations-hero u-flex-vertical u-main-center u-gap-20 web-u-max-width-680">
 					<div class="web-eyebrow web-u-color-text-primary">
@@ -543,5 +550,11 @@
 		@media #{$break1} {}
 		@media #{$break2open} {
 		}
+	}
+	.l-bg-1 {
+		max-inline-size:none;
+		max-block-size:none;
+		inset-block-end:-600px;
+		inset-inline-start:-600px;
 	}
 </style>
