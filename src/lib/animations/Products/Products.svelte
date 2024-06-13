@@ -146,9 +146,12 @@
     import { Storage, storageController } from './storage';
     import { Functions, functionsController } from './functions';
     import { Realtime, realtimeController } from './realtime';
+    import { Messaging as MessagingAnimation, messagingController } from './messaging'
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
+    import Messaging from '$routes/init/(animations)/Messaging.svelte';
+    import Code from '../CodeWindow/Code.svelte';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -187,6 +190,7 @@
         databases: databasesController,
         storage: storageController,
         functions: functionsController,
+        messaging: messagingController,
         realtime: realtimeController,
         post: postController
     };
@@ -305,6 +309,8 @@
                                         Tasks
                                     {:else if active.product === 'storage'}
                                         Files
+                                    {:else if active.product === 'messaging'}
+                                        Messages
                                     {:else if active.product === 'functions'}
                                         <!-- oblivion -->
                                     {:else if active.product === 'realtime'}
@@ -315,6 +321,8 @@
 
                             {#if active.product === 'auth'}
                                 <Auth.Box />
+                            {:else if active.product === 'messaging'}
+                                <MessagingAnimation.Box />
                             {:else if active.product === 'databases'}
                                 <Databases.Box />
                             {:else if active.product === 'storage'}
@@ -333,6 +341,8 @@
                                 <Storage.Code />
                             {:else if active.product === 'functions'}
                                 <Functions.Code />
+                            {:else if active.product === 'messaging'}
+                                <MessagingAnimation.Code />
                             {/if}
                         </CodeWindow>
                     </div>
@@ -352,6 +362,8 @@
                             <Databases.Phone />
                         {:else if active.product === 'storage'}
                             <Storage.Phone />
+                        {:else if active.product === 'messaging'}
+                            <MessagingAnimation.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
                         {:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
