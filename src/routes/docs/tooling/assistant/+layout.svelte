@@ -16,7 +16,7 @@
                     href: '/docs/tooling/assistant/assistant'
                 },
                 {
-                    label: 'Commands',
+                    label: 'Appwriter',
                     href: '/docs/tooling/assistant/appwriter'
                 }
             ]
