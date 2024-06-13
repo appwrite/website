@@ -4,6 +4,7 @@
     import FunctionsShot from './(assets)/fn-shot.png?enhanced';
     import StorageShot from './(assets)/storage-shot.png?enhanced';
     import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
+    import MessagingShot from './(assets)/messaging-shot.png?enhanced'
 
     export const elId = writable(0);
 
@@ -79,8 +80,8 @@
         },
         messaging: {
             icon: {
-                active: './images/icons/illustrated/dark/storage.png',
-                inactive: './images/icons/illustrated/dark/storage-transparent.png'
+                active: './images/icons/illustrated/dark/messaging.png',
+                inactive: './images/icons/illustrated/dark/messaging-transparent.png'
             },
             title: 'Messaging',
             subtitle: 'Communicate with your users',
@@ -92,7 +93,7 @@
                 'Send push notifications, emails, and SMS',
                 'Supports real-time and location-based messaging'
             ],
-            shot: StorageShot
+            shot: MessagingShot
         },
         storage: {
             icon: {
@@ -402,7 +403,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 100vh;
+        height: 60vh;
 
         > .main-text {
             position: absolute;
@@ -413,7 +414,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 15rem;
+            min-height: 5rem;
             text-align: center;
 
             h2 {
