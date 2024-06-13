@@ -333,8 +333,8 @@
 		scroll-margin-top: pxToRem(120);
 	}
 	.l-max-size-list-cards {
-		&:where(:has(>ul>li:nth-child(10))) {
-			position:relative; max-block-size:pxToRem(460); overflow:hidden;
+		@mixin hide-items {
+			position:relative; overflow:hidden;
 			&::before {
 				position:absolute; inset:0;
 				content:""; display:block;
@@ -344,6 +344,19 @@
 			.l-float-button {
 				position: absolute; inset-inline:0; inset-block-end:pxToRem(20); margin-inline:auto;
 				display:flex;
+			}
+		}
+		&:where(:has(>ul>li:nth-child(10))) {
+			@media #{$break2open} {
+				max-block-size:pxToRem(460);
+				@include hide-items();
+			}
+		}
+
+		&:where(:has(>ul>li:nth-child(7))) {
+			@media #{$break1} {
+				max-block-size:pxToRem(920);
+				@include hide-items();
 			}
 		}
 	}
