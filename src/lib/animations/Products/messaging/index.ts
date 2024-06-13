@@ -15,12 +15,14 @@ type Task = {
 type Message = {
     id: string;
     type: string;
+    icon: string;
 };
 
 type State = {
     tasks: Task[];
     messages: Message[];
     tableSlice: number;
+    submit: 'loading' | 'success';
 };
 
 const state = createResettable<State>({
@@ -33,11 +35,18 @@ const state = createResettable<State>({
     ],
     messages: [
         {
-            id: '3397fecdedb13397fecdedb1',
-            type: 'Push'
+            id: '...3397fecdedb1',
+            type: 'Push',
+            icon: './images/icons/illustrated/dark/push.png'
+        },
+        {
+            id: '...2224gabjger4',
+            type: 'Email',
+            icon: './images/icons/illustrated/dark/email.png'
         }
     ],
-    tableSlice: 1
+    tableSlice: 2,
+    submit: 'loading'
 });
 
 const execute = async () => {
@@ -63,13 +72,6 @@ const execute = async () => {
                 title: 'Create wireframes',
                 checked: false
             }
-        ],
-        messages: [
-            ...p.messages,
-            {
-                id: '3397fecdedb13397fecdedb2',
-                type: 'Email'
-            }
         ]
     }));
     await sleep(250);
@@ -90,13 +92,6 @@ const execute = async () => {
                 title: 'Create visual design',
                 checked: false
             }
-        ],
-        messages: [
-            ...p.messages,
-            {
-                id: '3397fecdedb13397fecdedb3',
-                type: 'SMS'
-            }
         ]
     }));
 
@@ -105,6 +100,27 @@ const execute = async () => {
     update((p) => ({
         ...p,
         tableSlice: p.tableSlice + 1
+    }));
+
+    await sleep(250);
+
+    update((p) => ({
+        ...p,
+        submit: 'success'
+    }));
+
+    await sleep(250);
+
+    update((p) => ({
+        ...p,
+        messages: [
+            ...p.messages,
+            {
+                id: '...5689fdoerre2',
+                type: 'Push',
+                icon: './images/icons/illustrated/dark/push.png'
+            }
+        ]
     }));
 };
 
