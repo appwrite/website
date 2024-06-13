@@ -309,10 +309,10 @@
                                         Tasks
                                     {:else if active.product === 'storage'}
                                         Files
-                                    {:else if active.product === 'messaging'}
-                                        Messages
                                     {:else if active.product === 'functions'}
                                         <!-- oblivion -->
+                                    {:else if active.product === 'messaging'}
+                                        Messages
                                     {:else if active.product === 'realtime'}
                                         Realtime
                                     {/if}

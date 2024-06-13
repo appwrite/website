@@ -17,7 +17,17 @@
 				<span class="web-icon-copy" />
 				<span>{task.id}</span>
 			</div>
+			<div class="icon-button">
+				<div class="icon">
+				<img
+                	src={task.icon}
+                    alt=""
+                    width="16"
+                    height="16"
+                />
+			</div>
 			<span class="truncated">{task.type}</span>
+		</div>
 		</div>
 	{/each}
 </div>
@@ -51,4 +61,35 @@
 			text-overflow: ellipsis;
 		}
 	}
+
+	.icon-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+
+		.icon {
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		background: rgba(255, 255, 255, 0.04);
+		backdrop-filter: blur(2.6666667461395264px);
+		border-radius: 100%;
+		height: 2rem;
+		width: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+		span:not([class*='icon-']) {
+			color: var(--greyscale-400, #adadb1);
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.25rem; /* 142.857% */
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
 </style>
