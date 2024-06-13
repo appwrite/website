@@ -4,13 +4,7 @@ title: Keyboard Shortcuts
 description: Learn to navigate the Appwrite Console efficiently and effectively with your keyboard
 ---
 
-The Appwrite Console was designed with a keyboard first approach. Keyboard navigation along with shortcuts provide an effective and efficient way to navigate the console and perform common actions rather quickly without the need to reach out for the mouse. These shortcuts also benefit developers relying solely on keyboards, guaranteeing an inclusive and accessible experience. Developer experience is greatly improved by virtue of the keyboard's ease of use, quick and seamless execution of essential actions and the consistency of shortcut keys.
-
-# Accessibility  {% #accessibility %}
-
-We are committed to making the Appwrite Console accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that the Console is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
-
-Good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantee an inclusive environment and allow developers to perform their tasks efficiently. Adhering to these guidelines ensures that the Appwrite Console complies with legal requirements and promotes a positive developer experience for everyone.
+The Appwrite Console was designed with a keyboard first approach. Developer experience is greatly improved by virtue of the keyboard's ease of use, quick and seamless execution of essential actions and the consistency of shortcut keys to traverse the Appwrite Console.
 
 # Shortcuts {% #shortcuts %}
 
@@ -47,3 +41,9 @@ Within the context of a project, developers can utilize project shortcuts. These
 |Go to Messaging|`G` then `M`|
 |Go to Settings|`G` then `E`|
 |Create Organization|`C` then `O`|
+
+# Accessibility  {% #accessibility %}
+
+We are committed to making the Appwrite Console accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that the Console is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
+
+Good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantee an inclusive environment and allow developers to perform their tasks efficiently. Adhering to these guidelines ensures that the Appwrite Console complies with legal requirements and promotes a positive developer experience for everyone.
