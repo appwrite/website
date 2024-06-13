@@ -109,7 +109,7 @@
                 },
                 {
                     label: 'Assistant',
-                    href: '/docs/tooling/assistant',
+                    href: '/docs/tooling/assistant/assistant',
                     icon: 'icon-sparkles'
                 },
                 {
