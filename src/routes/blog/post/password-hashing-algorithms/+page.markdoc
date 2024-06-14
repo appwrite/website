@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Demystifying password hashing algorithms
-description: What are password hashing algorithms and how they help secure user credentials in your application.
+description: Learn password hashing algorithms and how they help secure user credentials in your application.
 date: 2023-10-20
 cover: /images/blog/password-hashing-algorithms.png
 timeToRead: 7
