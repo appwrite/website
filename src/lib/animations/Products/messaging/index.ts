@@ -16,6 +16,7 @@ type Message = {
     id: string;
     type: string;
     icon: string;
+    status: 'sending' | 'sent';
 };
 
 type State = {
@@ -37,12 +38,14 @@ const state = createResettable<State>({
         {
             id: '...3397fecdedb1',
             type: 'SMS',
-            icon: './images/icons/illustrated/dark/push.png'
+            icon: './images/icons/illustrated/dark/push.png',
+            status: 'sent'
         },
         {
             id: '...2224gabjger4',
             type: 'Email',
-            icon: './images/icons/illustrated/dark/email.png'
+            icon: './images/icons/illustrated/dark/email.png',
+            status: 'sent'
         }
     ],
     tableSlice: 2,
@@ -57,8 +60,8 @@ const execute = async () => {
 
     await Promise.all([
         safeAnimate(phone, { x: 365, y: 0, width: '275px' }, { duration: 0.5 })?.finished,
-        safeAnimate(box, { x: 50, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
-        safeAnimate(code, { x: 80, y: 275, opacity: 1 }, { duration: 0.5 })?.finished
+        safeAnimate(code, { x: 80, y: 300, opacity: 1, zIndex: 100 }, { duration: 0.5 })?.finished,
+        safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5, delay: 1 })?.finished
     ]);
 
     await sleep(250);
@@ -106,21 +109,23 @@ const execute = async () => {
 
     update((p) => ({
         ...p,
-        submit: 'success'
-    }));
-
-    await sleep(250);
-
-    update((p) => ({
-        ...p,
         messages: [
             ...p.messages,
             {
                 id: '...5689fdoerre2',
                 type: 'Push',
-                icon: './images/icons/illustrated/dark/push.png'
+                icon: './images/icons/illustrated/dark/push.png',
+                status: 'sending'
             }
         ]
+    }));
+
+    await sleep(1000);
+
+    update((p) => ({
+        ...p,
+        submit: 'success',
+        messages: p.messages.map((m) => (m.id === '...5689fdoerre2' ? { ...m, status: 'sent' } : m))
     }));
 };
 

@@ -158,8 +158,6 @@
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
-    import Messaging from '$routes/init/(animations)/Messaging.svelte';
-    import Code from '../CodeWindow/Code.svelte';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -228,9 +226,9 @@
     }}
 >
     <div class="sticky-wrapper">
-        <div class="debug">
+        <!-- <div class="debug">
             <pre>{scrollInfo.percentage}</pre>
-        </div>
+        </div> -->
         {#if scrollInfo.percentage < 0.075}
             <div
                 class="main-text"

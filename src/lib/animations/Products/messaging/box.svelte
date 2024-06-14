@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { slide } from 'svelte/transition';
+    import { fade, slide } from 'svelte/transition';
     import { messagingController } from '.';
     import { flip } from '$lib/utils/flip';
 
@@ -9,7 +9,8 @@
 <div class="pseudo-table">
     <div class="header">
         <span class="web-eyebrow">Message ID</span>
-        <span class="web-eyebrow">Message Type</span>
+        <span class="web-eyebrow">Type</span>
+        <span class="web-eyebrow">Status</span>
     </div>
     {#each $state.messages.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
@@ -23,11 +24,25 @@
                 </div>
                 <span class="truncated">{task.type}</span>
             </div>
+
+            <div class="status-indicator">
+                {#if task.status === 'sending'}
+                    <div class="loader is-small" in:fade />
+                {:else}
+                    <span class="web-icon-check" />
+                {/if}
+            </div>
         </div>
     {/each}
 </div>
 
 <style lang="scss">
+    .header,
+    .row {
+        grid-template-columns: 7rem 1fr 1fr !important;
+        gap: 1.5rem 3rem;
+    }
+
     .copy-button {
         display: flex;
         padding: 0.25rem 0.5rem;
@@ -85,6 +100,17 @@
 
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+    }
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        [class*='icon-'] {
+            font-size: 1.25rem;
+            color: hsl(var(--web-color-greyscale-600));
         }
     }
 </style>
