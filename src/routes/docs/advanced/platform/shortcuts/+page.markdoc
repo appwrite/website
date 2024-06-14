@@ -26,6 +26,7 @@ Developers can also utilize global shortcuts anywhere in the Appwrite Console, a
 |Set theme to dark|`T` then `A`|
 |Open Appwrite Assistant|`A` then `I`|
 
+> Pro TipThe Command Center can be triggered from any screen to get quick access to hints and shortcuts. 
 ## Project shortcuts {% #project-shortcuts %}
 
 Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, and overview pages.
