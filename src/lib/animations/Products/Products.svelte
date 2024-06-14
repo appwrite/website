@@ -4,7 +4,7 @@
     import FunctionsShot from './(assets)/fn-shot.png?enhanced';
     import StorageShot from './(assets)/storage-shot.png?enhanced';
     import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
-    import MessagingShot from './(assets)/messaging-shot.png?enhanced'
+    import MessagingShot from './(assets)/messaging-shot.png?enhanced';
 
     export const elId = writable(0);
 
@@ -13,7 +13,15 @@
     }
 
     /* Products infos */
-    const products = ['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime', 'post'] as const;
+    const products = [
+        'auth',
+        'databases',
+        'storage',
+        'functions',
+        'messaging',
+        'realtime',
+        'post'
+    ] as const;
     type Product = (typeof products)[number];
 
     type ProductInfo = {
@@ -146,7 +154,7 @@
     import { Storage, storageController } from './storage';
     import { Functions, functionsController } from './functions';
     import { Realtime, realtimeController } from './realtime';
-    import { Messaging as MessagingAnimation, messagingController } from './messaging'
+    import { Messaging as MessagingAnimation, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
@@ -220,9 +228,9 @@
     }}
 >
     <div class="sticky-wrapper">
-        <!-- <div class="debug">
-			<pre>{scrollInfo.percentage}</pre>
-		</div> -->
+        <div class="debug">
+            <pre>{scrollInfo.percentage}</pre>
+        </div>
         {#if scrollInfo.percentage < 0.075}
             <div
                 class="main-text"
@@ -366,13 +374,13 @@
                             <MessagingAnimation.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
+                        {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(anyify(active.product))}
                             <Realtime.Phone />
                         {/if}
                     </div>
                 </div>
 
-                {#if !['auth', 'databases', 'storage', 'functions', 'messaging','realtime'].includes(anyify(active.product))}
+                {#if !['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime'].includes(anyify(active.product))}
                     <Post />
                 {/if}
             </div>
@@ -677,9 +685,13 @@
         opacity: 0;
 
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-            -8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-            -33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+        box-shadow:
+            0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+            -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+            -8px 15px 17px 0px rgba(0, 0, 0, 0.05),
+            -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+            -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
+            -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
     }
 </style>
