@@ -36,7 +36,7 @@ const state = createResettable<State>({
     messages: [
         {
             id: '...3397fecdedb1',
-            type: 'Push',
+            type: 'SMS',
             icon: './images/icons/illustrated/dark/push.png'
         },
         {
@@ -56,9 +56,9 @@ const execute = async () => {
     const { update } = state.reset();
 
     await Promise.all([
-        safeAnimate(phone, { x: 390, y: 0 }, { duration: 0.5 })?.finished,
-        safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
-        safeAnimate(code, { x: 80, y: 320, opacity: 1 }, { duration: 0.5 })?.finished
+        safeAnimate(phone, { x: 365, y: 0, width: '275px' }, { duration: 0.5 })?.finished,
+        safeAnimate(box, { x: 50, y: 32, opacity: 1 }, { duration: 0.5 })?.finished,
+        safeAnimate(code, { x: 80, y: 275, opacity: 1 }, { duration: 0.5 })?.finished
     ]);
 
     await sleep(250);
