@@ -104,7 +104,7 @@
                 },
                 {
                     label: 'Command Center',
-                    href: '/docs/tooling/command-center',
+                    href: '/docs/tooling/command-center/command-center',
                     icon: 'web-icon-command'
                 },
                 {
