@@ -5,9 +5,7 @@
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
-    import BlobGreen from "$routes/startups/(assets)/blob-green.svg";
     import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    import BlobGreenMobile from "$routes/startups/(assets)/blob-green-mobile.svg";
     import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
 
     let email = '';
@@ -73,19 +71,6 @@
             >
                 <div class="u-position-relative">
                         <div class="web-container u-position-relative">
-                            <img
-                                    class="u-position-absolute is-only-desktop"
-                                    style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                    src={BlobPink}
-                                    alt=""
-                            />
-                            <img
-                                    class="u-position-absolute is-only-mobile"
-                                    style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                    src={BlobPinkMobile}
-                                    alt=""
-                            />
-
                             <!-- before submit -->
                             <div
                                     class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
@@ -96,36 +81,15 @@
                                             class:web-u-max-width-380={!submitted}
                                     >
                                         <section class="u-flex-vertical web-u-gap-20">
-                                            <h4 class="web-title web-u-color-text-primary">
-                                                Join the Appwrite Startups program
+                                            <h4 class="web-display web-u-color-text-primary">
+                                                Become a partner
                                             </h4>
                                             <p class="web-description">
-                                                We support VC backed or revenue generating
-                                                startups that have been established within
-                                                the last decade with:
+                                                Apply to the Partners Program by filling out this form. Our team will reach out to you to confirm your application was accepted.
                                             </p>
-
-                                            <div class="u-flex-vertical u-gap-12">
-                                                <div class="u-flex u-gap-16">
-                                                    <div
-                                                            class="web-check-bullet u-margin-block-start-4"
-                                                    ></div>
-                                                    <p class="web-description">
-                                                        Appwrite Cloud Pro for 12 months
-                                                    </p>
-                                                </div>
-                                                <div class="u-flex u-gap-16">
-                                                    <div
-                                                            class="web-check-bullet u-margin-block-start-4"
-                                                    ></div>
-                                                    <p class="web-description">
-                                                        Premium email support as part of Pro
-                                                    </p>
-                                                </div>
-                                            </div>
                                         </section>
                                         <section
-                                                class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
+                                                class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
                                         >
                                             <h2 class="web-label web-u-color-text-primary">Follow us</h2>
                                             <ul class="u-flex u-gap-8">
@@ -162,17 +126,16 @@
                                                     alt=""
                                             />
                                             <span class="web-u-color-text-primary"
-                                            >Thank you for your submission</span
+                                            >Thank you for applying</span
                                             >
                                         </h6>
                                         <p class="web-main-body-400">
-                                            Our team will review your application and get back to
-                                            you soon.
+                                            Your application has been sent successfully. Our team will try to get back to you as soon as possible.
                                         </p>
                                         <button
                                                 on:click={resetForm}
                                                 class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
-                                        >Back to form</button
+                                        >Back to Integrations</button
                                         >
                                     </div>
                                 {:else}
