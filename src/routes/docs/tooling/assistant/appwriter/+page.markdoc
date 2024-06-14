@@ -12,7 +12,7 @@ description: Learn about the custom Appwriter mechanical keyboard and its specif
 ![The Appwriter](/images/docs/keyboard/appwriter.png)
 {% /only_light %}
 
-The Appwriter is an exclusive keyboard custom-designed by the Appwrite team. It is optimized to improve developer productivity and is specially tuned to use with the Appwrite Console.
+The Appwriter is an exclusive mechanical keyboard custom-designed by the Appwrite team. It is optimized to improve developer productivity and is specially tuned to use with the Appwrite Console.
 
 The Appwriter uses icons from the Appwrite Console and Docs on specific keys, making memorizing keyboard shortcuts easier. For example, `G` then `D` is the shortcut for navigating to your project's databases, and the icon on the `D` key matches the icon for Appwrite Databases.
 
