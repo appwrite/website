@@ -3,7 +3,9 @@ import { posts } from '../content';
 
 export const prerender = true;
 
-function encodeText(str: string): string {
+function encodeText(str: string | null): string {
+    if (str === null) return '';
+
     return str.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
