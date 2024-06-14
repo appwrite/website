@@ -149,36 +149,38 @@
                                                     class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <div class="u-block">Name of representative</div>
+                                                        <label class="u-block" for="name">Name of representative</label>
                                                         <input
                                                                 required
                                                                 class="web-input-text"
                                                                 type="text"
                                                                 placeholder="Enter name"
+                                                                id="name"
                                                         />
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <div class="u-block">Work email address</div>
+                                                        <label class="u-block" for="workEmail">Work email address</label>
                                                         <input
                                                                 required
                                                                 class="web-input-text"
                                                                 type="email"
                                                                 placeholder="Enter email"
+                                                                id="workEmail"
                                                         />
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <div class="u-block">Company name</div>
+                                                        <label class="u-block" for="companyName">Company name</label>
                                                         <input
                                                                 required
                                                                 class="web-input-text"
                                                                 type="text"
-                                                                name="company"
                                                                 placeholder="Enter company name"
+                                                                id="companyName"
                                                         />
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company size</div>
-                                                    <select class="web-input-text">
+                                                    <label class="u-block" for="companySize">Company size</label>
+                                                    <select class="web-input-text" id="companySize">
                                                         <option>Select size</option>
                                                         <option>1-10</option>
                                                         <option>11-100</option>
@@ -187,17 +189,18 @@
                                                     </select>
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company website</div>
+                                                    <label class="u-block" for="companyWebsite">Company website</label>
                                                     <input
                                                             required
                                                             class="web-input-text"
                                                             type="url"
                                                             placeholder="http://company.com"
+                                                            id="companyWebsite"
                                                     />
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Have you already created an integration with Appwrite?</div>
-                                                    <select class="web-input-text">
+                                                    <label class="u-block" for="integration">Have you already created an integration with Appwrite?</label>
+                                                    <select class="web-input-text" id="integration">
                                                         <option>Select</option>
                                                         <option>1-10</option>
                                                         <option>11-100</option>
@@ -206,22 +209,22 @@
                                                     </select>
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Link to the product/company's brand assets</div>
+                                                    <label class="u-block" for="productUrl">Link to the product/company's brand assets</label>
                                                     <input
                                                             required
                                                             class="web-input-text"
                                                             type="url"
-                                                            name="company-website"
                                                             placeholder="Enter url"
+                                                            id="productUrl"
                                                     />
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Any other details you'd like to share with us?</div>
+                                                    <label class="u-block" for="details">Any other details you'd like to share with us?</label>
                                                     <textarea
                                                             required
                                                             class="web-input-text"
-                                                            name="company-website"
                                                             placeholder="Enter your message"
+                                                            id="details"
                                                     ></textarea>
                                                 </li>
                                             </ul>
