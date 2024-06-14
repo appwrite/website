@@ -154,7 +154,7 @@
     import { Storage, storageController } from './storage';
     import { Functions, functionsController } from './functions';
     import { Realtime, realtimeController } from './realtime';
-    import { Messaging as MessagingAnimation, messagingController } from './messaging';
+    import { Messaging, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
@@ -328,7 +328,7 @@
                             {#if active.product === 'auth'}
                                 <Auth.Box />
                             {:else if active.product === 'messaging'}
-                                <MessagingAnimation.Box />
+                                <Messaging.Box />
                             {:else if active.product === 'databases'}
                                 <Databases.Box />
                             {:else if active.product === 'storage'}
@@ -348,7 +348,7 @@
                             {:else if active.product === 'functions'}
                                 <Functions.Code />
                             {:else if active.product === 'messaging'}
-                                <MessagingAnimation.Code />
+                                <Messaging.Code />
                             {/if}
                         </CodeWindow>
                     </div>
@@ -369,7 +369,7 @@
                         {:else if active.product === 'storage'}
                             <Storage.Phone />
                         {:else if active.product === 'messaging'}
-                            <MessagingAnimation.Phone />
+                            <Messaging.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
                         {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(anyify(active.product))}
@@ -391,7 +391,7 @@
 
     #products {
         min-height: 500vh;
-        height: 5000px;
+        height: fit-content;
         position: relative;
 
         --debug-bg: transparent;
@@ -568,7 +568,7 @@
         );
 
         background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(8px);
+        //backdrop-filter: blur(8px);
         padding: 0.5rem;
 
         width: 275px;

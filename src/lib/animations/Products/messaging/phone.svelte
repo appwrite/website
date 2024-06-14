@@ -53,10 +53,11 @@
         gap: 0.75rem;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 10;
+        z-index: 1000;
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(8px);
+        box-shadow: 3px -8px 32px 0px rgba(0, 0, 0, 0.24);
 
         .icon {
             height: 38px;
@@ -76,7 +77,7 @@
                 font-size: 0.75rem;
                 font-style: normal;
                 font-weight: 600;
-                line-height: 1.375rem; /* 137.5% */
+                line-height: 1rem; /* 137.5% */
                 letter-spacing: -0.014rem;
             }
 
@@ -86,7 +87,7 @@
                 font-size: 0.75rem;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 1.375rem; /* 137.5% */
+                line-height: 1rem; /* 137.5% */
                 letter-spacing: -0.014rem;
             }
         }
@@ -96,7 +97,7 @@
             font-size: 0.75rem;
             font-style: normal;
             font-weight: 400;
-            line-height: 1.375rem; /* 137.5% */
+            line-height: 1rem; /* 137.5% */
             letter-spacing: -0.014rem;
         }
     }

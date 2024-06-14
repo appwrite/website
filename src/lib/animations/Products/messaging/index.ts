@@ -38,7 +38,7 @@ const state = createResettable<State>({
         {
             id: '...3397fecdedb1',
             type: 'SMS',
-            icon: './images/icons/illustrated/dark/push.png',
+            icon: './images/icons/illustrated/dark/sms.png',
             status: 'sent'
         },
         {
@@ -120,7 +120,7 @@ const execute = async () => {
         ]
     }));
 
-    await sleep(1000);
+    await sleep(1250);
 
     update((p) => ({
         ...p,
