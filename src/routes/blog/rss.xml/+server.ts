@@ -3,7 +3,7 @@ import { posts } from '../content';
 
 export const prerender = true;
 
-function encodeTitle(str: string): string {
+function encodeText(str: string): string {
     return str.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
@@ -24,11 +24,11 @@ export const GET: RequestHandler = () => {
     <atom:link href="https://appwrite.io/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Appwrite is an open-source platform for building applications at any scale, using your preferred programming languages and tools.</description>
     ${posts.map((post) => `<item>
-        <title>${encodeTitle(post.title)}</title>
+        <title>${encodeText(post.title)}</title>
         <pubDate>${post.date.toUTCString()}</pubDate>
         <link>${encodeUrl(post.href)}</link>
         <guid>${encodeUrl(post.href)}</guid>
-        <description>${post.description}</description>
+        <description>${encodeText(post.description)}</description>
     </item>
     `).join('')}
   </channel>
