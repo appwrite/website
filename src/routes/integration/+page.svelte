@@ -232,7 +232,7 @@
 									</div>
 								</section>
 
-								<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="auto">
+								<section class="l-max-size-list-cards-section u-flex-vertical u-gap-32" id="auth">
 									<header class="u-flex-vertical u-gap-4">
 										<h2 class="web-label web-u-color-text-primary">Auth</h2>
 										<p class="web-description">Authentication and security</p>
