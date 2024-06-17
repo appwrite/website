@@ -180,13 +180,17 @@
                                                 </li>
                                                 <li class="web-form-item u-flex-vertical u-gap-4">
                                                     <label class="u-block" for="companySize">Company size</label>
-                                                    <select class="web-input-text" id="companySize">
-                                                        <option>Select size</option>
-                                                        <option>1-10</option>
-                                                        <option>11-100</option>
-                                                        <option>101-1000</option>
-                                                        <option>1000+</option>
-                                                    </select>
+
+                                                    <div class="u-position-relative">
+                                                        <select class="web-input-text" id="companySize">
+                                                            <option>Select size</option>
+                                                            <option>1-10</option>
+                                                            <option>11-100</option>
+                                                            <option>101-1000</option>
+                                                            <option>1000+</option>
+                                                        </select>
+                                                        <span class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none" aria-hidden="true"></span>
+                                                    </div>
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
                                                     <label class="u-block" for="companyWebsite">Company website</label>
@@ -200,13 +204,16 @@
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
                                                     <label class="u-block" for="integration">Have you already created an integration with Appwrite?</label>
-                                                    <select class="web-input-text" id="integration">
-                                                        <option>Select</option>
-                                                        <option>1-10</option>
-                                                        <option>11-100</option>
-                                                        <option>101-1000</option>
-                                                        <option>1000+</option>
-                                                    </select>
+                                                    <div class="u-position-relative">
+                                                        <select class="web-input-text" id="integration">
+                                                            <option>Select</option>
+                                                            <option>1-10</option>
+                                                            <option>11-100</option>
+                                                            <option>101-1000</option>
+                                                            <option>1000+</option>
+                                                        </select>
+                                                        <span class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none" aria-hidden="true"></span>
+                                                    </div>
                                                 </li>
                                                 <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
                                                     <label class="u-block" for="productUrl">Link to the product/company's brand assets</label>
