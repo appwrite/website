@@ -38,6 +38,20 @@
 					height="985"
 					class="l-bg-1 u-position-absolute web-is-not-mobile"
 			>
+			<img
+					src="/images/pages/integration/net-desktop.png"
+					alt=""
+					width="895"
+					height="560"
+					class="l-bg-2 u-position-absolute web-is-not-mobile"
+			>
+			<img
+					src="/images/pages/integration/net-desktop.png"
+					alt=""
+					width="360"
+					height="560"
+					class="l-bg-2 u-position-absolute web-is-only-mobile"
+			>
 			<div class="web-integrations-top-section">
 				<div class="l-integrations-hero u-flex-vertical u-main-center u-gap-20 web-u-max-width-680">
 					<div class="web-eyebrow web-u-color-text-primary">
@@ -543,5 +557,9 @@
 		max-block-size:none;
 		inset-block-end:-600px;
 		inset-inline-start:-600px;
+	}
+	.l-bg-2 {
+		inset-block-start:0;
+		inset-inline-start:0;
 	}
 </style>
