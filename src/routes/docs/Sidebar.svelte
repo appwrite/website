@@ -104,13 +104,18 @@
                 },
                 {
                     label: 'Command Center',
-                    href: '/docs/tooling/command-center/command-center',
+                    href: '/docs/tooling/command-center',
                     icon: 'web-icon-command'
                 },
                 {
                     label: 'Assistant',
-                    href: '/docs/tooling/assistant/assistant',
+                    href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
+                },
+                {
+                    label: "The Appwriter",
+                    href: '/docs/tooling/appwriter',
+                    icon: 'icon-text'
                 }
             ]
         },
