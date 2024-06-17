@@ -150,19 +150,6 @@
 													</div>
 												</a>
 											</li>
-											<li class="web-feature-grid-item">
-												<a class="web-overlay-item" href="/">
-													<img src="/images/blog/ai-announcement.png" alt="" class="u-block web-u-media-ratio-16-9 web-u-media-cover">
-													<div class="web-user-box u-column-gap-8 u-row-gap-0">
-														<img class="web-user-box-image" src="/images/community/avatars/souvik.png" alt="Avatar of Souvik Sarkar" width="40" height="40">
-														<div class="web-user-box-name web-main-body-500 u-flex u-gap-8">
-															<span class="web-u-color-text-primary">Souvik Sarkar</span>
-															<span class="web-inline-tag is-pink">New</span>
-														</div>
-														<div class="web-user-box-username web-caption-400 web-u-color-text-secondary">@Jeet_2003</div>
-													</div>
-												</a>
-											</li>
 										</ul>
 									</div>
 								</section>
