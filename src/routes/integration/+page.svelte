@@ -340,7 +340,7 @@
 												</a>
 											</li>
 										</ul>
-										<a href="#auto" class="l-float-button web-button is-text">
+										<a href="#auth" class="l-float-button web-button is-text">
 											<span>Show more</span>
 										</a>
 									</div>
