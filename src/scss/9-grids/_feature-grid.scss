@@ -2,17 +2,8 @@
 
 .#{$p}-feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax( #{pxToRem(270)}, 1fr) );
+  grid-template-columns: repeat(2, 1fr);
   gap: pxToRem(32);
-  @media #{$break4open} {
-    .is-two-columns-desktop-only {
-      grid-column:span 2;
-      + * {
-        > a {
-          block-size: 100%;
-          > img { aspect-ratio: initial!important; block-size:100%; }
-        }
-      }
-    }
-  }
+  @media (max-width:767.9px) { grid-template-columns: 1fr; }
+  @media (min-width:768px) { grid-template-columns: repeat(2, 1fr); }
 }
