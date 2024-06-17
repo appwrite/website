@@ -1,23 +1,18 @@
 ---
 layout: article
-title: Keyboard Shortcuts
+title: Keyboard shortcuts
 description: Learn to navigate the Appwrite Console efficiently and effectively with your keyboard
 ---
 
-The Appwrite Console was designed with a keyboard first approach. Developer experience is greatly improved by virtue of the keyboard's ease of use, quick and seamless execution of essential actions and the consistency of shortcut keys to traverse the Appwrite Console.
+The Appwrite Console was designed with a keyboard first approach. The Appwrite Console supports keyboard shortcuts that make it easier to navigate and perform actions quicker.
 
 # Shortcuts {% #shortcuts %}
 
-The Appwrite Console supports keyboard shortcuts that make it easier to navigate and perform common actions quicker. The shortcuts use the following pattern: use the first letter from the call to action followed by the resource, product, service, or page you're targeting.  For example, the shortcut keys `G` + `S` navigates to the project's Storage screen. Similarly, the shortcut `G` + `F` navigates to the project's Functions screen. However, there are some exceptions. The shortcut `G` + `E` navigates to project Settings, because `G` + `S` is in use for Storage. This pattern is used to make usage of shortcuts consistent and predictable.
+The Appwrite Console supports keyboard shortcuts that make it easier to navigate and perform common actions quicker. The shortcuts use the following pattern: use the first letter from the call to action followed by the resource, product, service, or page you're targeting.  For example, the shortcut keys `G` + `S` navigates to the project's Storage screen. Similarly, the shortcut `G` + `F` navigates to the project's Functions screen. However, when there's a conflict with a shortcut key, the following letter is used. For example, since S is already used for Storage, the shortcut for Settings is E. This pattern is used to make usage of shortcuts consistent and predictable.
 
 ## Global shortcuts {% #global-shortcuts %}
 
 Developers can also utilize global shortcuts anywhere in the Appwrite Console, allowing instant access to these features from any page on the Console.
-
-|PC (Windows / Linux)|macOS|Action|
-|----|----|----|
-|`Ctrl` + `K`|`⌘` + `K`|Access Command Center|
-
 
 |Shortcut|Action|
 |----|----|
@@ -26,22 +21,30 @@ Developers can also utilize global shortcuts anywhere in the Appwrite Console, a
 |Set theme to dark|`T` then `A`|
 |Open Appwrite Assistant|`A` then `I`|
 
-> Pro TipThe Command Center can be triggered from any screen to get quick access to hints and shortcuts. 
+## Command center
+
+|PC (Windows / Linux)|macOS|Action|
+|----|----|----|
+|`Ctrl` + `K`|`⌘` + `K`|Access Command Center|
+
+All the Appwrite shortcuts can be found in the [command center](https://appwrite.io/docs/tooling/command-center).
+Use the command center to search for commands or the current page's content.
+
 ## Project shortcuts {% #project-shortcuts %}
 
 Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, and overview pages.
 
 |Shortcut|Action|
 |----|----|
-|Go to Auth|`G` then `A`|
-|Go to Storage|`G` then `S`|
-|Go to Databases|`G` then `D`|
-|Go to Functions|`G` then `F`|
-|Go to Projects|`G` then `P`|
-|Go to Overview|`G` then `O`|
-|Go to Messaging|`G` then `M`|
-|Go to Settings|`G` then `E`|
-|Create Organization|`C` then `O`|
+|Go to auth|`G` then `A`|
+|Go to storage|`G` then `S`|
+|Go to databases|`G` then `D`|
+|Go to functions|`G` then `F`|
+|Go to projects|`G` then `P`|
+|Go to overview|`G` then `O`|
+|Go to messaging|`G` then `M`|
+|Go to settings|`G` then `E`|
+|Create organization|`C` then `O`|
 
 # Accessibility  {% #accessibility %}
 
