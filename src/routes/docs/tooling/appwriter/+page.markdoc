@@ -1,0 +1,41 @@
+---
+layout: article
+title: The Appwriter
+description: Learn about the custom Appwriter mechanical keyboard and its specifications
+---
+
+{% only_dark %}
+![The Appwriter](/images/docs/keyboard/dark/appwriter.png)
+{% /only_dark %}
+
+{% only_light %}
+![The Appwriter](/images/docs/keyboard/appwriter.png)
+{% /only_light %}
+
+The Appwriter is an exclusive mechanical keyboard custom-designed by the Appwrite team. It is optimized to improve developer productivity and is specially tuned to use with the Appwrite Console.
+
+The Appwriter uses icons from the Appwrite Console and Docs on specific keys, making memorizing keyboard shortcuts easier. For example, `G` then `D` is the shortcut for navigating to your project's databases, and the icon on the `D` key matches the icon for Appwrite Databases.
+
+## Specifications
+
+The box includes the Appwriter keyboard, a USB-C data/charging cable, a 2-in-1 keycap and switch puller, extra PC layout keycaps, and an information card with a QR code. The keyboard comes with Mac layout keys pre-installed for MacOS which can also be swapped with the included PC keycaps.
+
+|Specification|Details|
+|----|----|
+|Battery|3000mAh Rechargeable battery|
+|Design|75% Compact design keyboard|
+|Keycaps|84 Custom dye sublimated PBT keycaps|
+|Switches|Gateron g pro yellow pre-lubed switches|
+|Connections|Tri-mode connectivity (2.4Ghz wireless / bluetooth / wired USB-C)|
+|Case|Noise dampening case-foam|
+|RGB Backlight|16 Million colors & multiple lighting effects|
+|Switch Support|Hot-swappable switches with 3 & 5 pin|
+|N-Key|N-key rollover|
+
+Press `Fn + Home` to change the RGB backlight effect and cycle through all the lights.
+
+## How to get the Appwriter
+
+The Appwriter is currently exclusive to Appwrite events and giveaways. 
+To get your hands on an Appwriter, look out for events & giveaways on our social media: [Discord](https://appwrite.io/discord), [Github](https://github.com/appwrite/appwrite), [X](https://x.com/appwrite), and [YouTube](https://www.youtube.com/c/appwrite). 
+Later this year, the Appwriter will be available for purchase in the [Appwrite Store](https://appwrite.store/).
