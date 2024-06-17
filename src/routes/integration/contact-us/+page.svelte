@@ -5,8 +5,8 @@
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
-    import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
+    //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
+    //import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
 
     let email = '';
     let firstName = '';
@@ -133,7 +133,7 @@
                                             Your application has been sent successfully. Our team will try to get back to you as soon as possible.
                                         </p>
                                         <button
-                                                on:click={resetForm}
+                                               type="reset"
                                                 class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
                                         >Back to Integrations</button
                                         >
