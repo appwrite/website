@@ -27,6 +27,9 @@ importers:
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#main
         version: https://codeload.github.com/appwrite/appwrite/tar.gz/7da997b5cdeacb6137b586cef35d8a1e58725f80
+      '@internationalized/date':
+        specifier: 3.5.0
+        version: 3.5.0
       '@melt-ui/pp':
         specifier: ^0.3.0
         version: 0.3.0(@melt-ui/svelte@0.74.3(svelte@4.2.12))(svelte@4.2.12)
@@ -117,12 +120,9 @@ importers:
       svelte-check:
         specifier: ^3.6.5
         version: 3.6.5(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.71.1)(svelte@4.2.12)
-      svelte-fuse:
-        specifier: ^0.0.1
-        version: 0.0.1(svelte@4.2.12)
       svelte-markdoc-preprocess:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^2.0.0
+        version: 2.0.0
       svelte-markdown:
         specifier: ^0.4.1
         version: 0.4.1(svelte@4.2.12)
@@ -470,8 +470,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@internationalized/date@3.5.2':
-    resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
+  '@internationalized/date@3.5.0':
+    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1906,10 +1906,6 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
-  fuse.js@6.6.2:
-    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
-    engines: {node: '>=10'}
-
   gauge@4.0.4:
     resolution: {integrity: sha512-f9m+BEN5jkg6a0fZjleidjN51VE1X+mPFQ2DJ0uv1V39oCLCbsGe6yjbBnp7eK7z/+GAon99a3nHuqbuuthyPg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
@@ -3247,19 +3243,14 @@ packages:
       svelte:
         optional: true
 
-  svelte-fuse@0.0.1:
-    resolution: {integrity: sha512-F9hC3NMlJhYgtI0dEQsGHEQkv2/6eeAZvYgiMpTKIZJYIdFovWdcZpxIeRs5Zn3wSgDeWue+fiHfc+pTiRi4tA==}
-    peerDependencies:
-      svelte: ^4.0.0
-
   svelte-hmr@0.15.3:
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
 
-  svelte-markdoc-preprocess@1.2.1:
-    resolution: {integrity: sha512-xeD8q84kICWJ4sZeZIeMCeSH4paqpIS1w7BlfJ5n3f9frLtfrLQrOxHnTA3oDrac/tEbH+plLWiS3ZUXwqanXw==}
+  svelte-markdoc-preprocess@2.0.0:
+    resolution: {integrity: sha512-3a5U8Sj0JXmIIvVL4jRsYEGBtFKXJ65/p5wGIn0RKc7L1beuES/57tzKR/FDa20bRScOrbgCbMTX9mb5726rOg==}
 
   svelte-markdown@0.4.1:
     resolution: {integrity: sha512-pOlLY6EruKJaWI9my/2bKX8PdTeP5CM0s4VMmwmC2prlOkjAf+AOmTM4wW/l19Y6WZ87YmP8+ZCJCCwBChWjYw==}
@@ -3930,7 +3921,7 @@ snapshots:
   '@img/sharp-win32-x64@0.33.2':
     optional: true
 
-  '@internationalized/date@3.5.2':
+  '@internationalized/date@3.5.0':
     dependencies:
       '@swc/helpers': 0.5.6
 
@@ -4220,7 +4211,7 @@ snapshots:
     dependencies:
       '@floating-ui/core': 1.6.0
       '@floating-ui/dom': 1.6.3
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.6
@@ -5639,8 +5630,6 @@ snapshots:
     optional: true
 
   function-bind@1.1.2: {}
-
-  fuse.js@6.6.2: {}
 
   gauge@4.0.4:
     dependencies:
@@ -7075,16 +7064,11 @@ snapshots:
     optionalDependencies:
       svelte: 4.2.12
 
-  svelte-fuse@0.0.1(svelte@4.2.12):
-    dependencies:
-      fuse.js: 6.6.2
-      svelte: 4.2.12
-
   svelte-hmr@0.15.3(svelte@4.2.12):
     dependencies:
       svelte: 4.2.12
 
-  svelte-markdoc-preprocess@1.2.1:
+  svelte-markdoc-preprocess@2.0.0:
     dependencies:
       '@markdoc/markdoc': 0.4.0
       html-escaper: 3.0.3

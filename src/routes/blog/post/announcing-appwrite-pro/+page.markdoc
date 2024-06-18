@@ -16,51 +16,49 @@ While Appwrite Cloud is still in beta, Appwrite Pro is a new chapter we write to
 
 # Appwrite Pro resources & support
 
-Previously, all Appwrite Cloud developers used the Starter plan with unrestricted resources. This changes with Pro. Depending on your needs, you can choose between two different plans for your organization(s):
+Previously, all Appwrite Cloud developers used the Free plan with unrestricted resources. This changes with Pro. Depending on your needs, you can choose between two different plans for your organization(s):
 
-- Starter: a free plan that provides an easy starting point for budding projects
+- Free: a free plan that provides an easy starting point for budding projects
 - Pro: a paid plan that offers more resources and premium support
 
 As we explained in depth in our [Pricing announcement](https://appwrite.io/blog/post/announcing-pricing), our pricing plans are based on a set of guiding principles we created, which we call the “Value Framework.” It guided us through determining the resources in a Pro plan and a fair price. It focuses on delivering the maximum value for you without compromising on the affordability and accessibility of our products and services.
 
-Pro gives you much more room and flexibility to build, scale, and maintain your apps compared to the Starter plan. Here is a snapshot of the differences in resources and support for Appwrite Starter and Appwrite Pro. You can find the complete overview on our [pricing page](https://appwrite.io/pricing#:~:text=Contact%20us-,Compare%20plans,-Discover%20our%20plans).
+Pro gives you much more room and flexibility to build, scale, and maintain your apps compared to the Free plan. Here is a snapshot of the differences in resources and support for Appwrite's Free and Pro plans. You can find the complete overview on our [pricing page](https://appwrite.io/pricing#:~:text=Contact%20us-,Compare%20plans,-Discover%20our%20plans).
 
 {% table %}
-* Appwrite Starter
-* Appwrite Pro
+- Appwrite Free
+- Appwrite Pro
 ---
-* **Free**
-* **$15 per member per month**
+- **Free**
+- **$15 per member per month**
 ---
-* Unlimited projects (never paused)
-* Unlimited projects (never paused)
+- Unlimited projects (never paused)
+- Unlimited projects (never paused)
 ---
-* 10GB bandwidth
-* 300GB bandwidth
+- 10GB bandwidth
+- 300GB bandwidth
 ---
-* 2GB storage
-* 150GB storage
+- 2GB storage
+- 150GB storage
 ---
-* 750K executions
-* 3.5M executions
+- 750K executions
+- 3.5M executions
 ---
-* 75K monthly active users
-* 200K monthly active users
+- 75K monthly active users
+- 200K monthly active users
 ---
-* Community support
-* Email support
+- Community support
+- Email support
 ---
-* Non-removable Appwrite branding
-* Removable Appwrite branding
+- Non-removable Appwrite branding
+- Removable Appwrite branding
 ---
-* No add-on resources
-* Add-on resources
+- No add-on resources
+- Add-on resources
 ---
-* 1 Database, 3 Buckets, 5 Functions per project
-* Unlimited Databases, Buckets, and Functions
----
+- 1 Database, 3 Buckets, 5 Functions per project
+- Unlimited Databases, Buckets, and Functions
 {% /table %}
-
 
 ## Authentication, Bandwidth & Monthly active users
 
@@ -98,7 +96,7 @@ Beta developers are fundamental to the success of Appwrite Cloud today, and we a
 
 ## Existing organizations and projects
 
-Early adopters of Appwrite Cloud may already have a large number of organizations and projects. With the release of Appwrite Pro, each Appwrite Cloud account will have access to only one free Starter organization. Additional projects will be paused. You can find an overview of your project’s resources on the Appwrite Console. To help you make a smooth transition, you can take one of the following options.
+Early adopters of Appwrite Cloud may already have a large number of organizations and projects. With the release of Appwrite Pro, each Appwrite Cloud account will have access to only one free organization. Additional projects will be paused. You can find an overview of your project’s resources on the Appwrite Console. To help you make a smooth transition, you can take one of the following options.
 
 - Upgrade additional organizations to the Pro plan using your early adopters’ credit.
 - Move your projects using the **Transfer project** feature in your project’s settings.

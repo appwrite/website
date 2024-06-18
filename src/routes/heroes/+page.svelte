@@ -191,6 +191,7 @@
                                     <img
                                         class="u-block web-u-border-radius-12"
                                         src="/images/heroes/photos/{i + 1}.png"
+                                        loading="lazy"
                                         alt=""
                                     />
                                 </div>

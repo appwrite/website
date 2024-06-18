@@ -25,9 +25,11 @@ Then, [clone the respository](https://docs.github.com/en/repositories/creating-a
 Alternatively, you can develop the website repo in your browser using [Code Spaces](https://github.com/features/codespaces) or [GitPod](https://www.gitpod.io/#https://github.com/appwrite/website).
 
 ## Development
+
 The Appwrite website uses [PNPM](https://pnpm.io). Start by following their [installation](https://pnpm.io/installation) documentation.
 
 Once you've cloned the Appwrite website repo, running the following command to install dependencies:
+
 ```sh
 pnpm i
 ```
@@ -58,11 +60,11 @@ doc-548-submit-a-pull-request-section-to-contribution-guide
 
 When `TYPE` can be:
 
--   **feat** - is a new feature
--   **doc** - documentation only changes
--   **cicd** - changes related to CI/CD system
--   **fix** - a bug fix
--   **refactor** - code change that neither fixes a bug nor adds a feature
+- **feat** - is a new feature
+- **doc** - documentation only changes
+- **cicd** - changes related to CI/CD system
+- **fix** - a bug fix
+- **refactor** - code change that neither fixes a bug nor adds a feature
 
 **All PRs must include a commit message with a description of the changes made!**
 
@@ -71,20 +73,20 @@ Start by forking the project and use the `git clone` command to download the rep
 1. Before creating a new branch, pull the changes from upstream to make sure your default branch is up to date.
 
 ```
-$ git pull
+git pull
 ```
 
 2. Create a new branch from the default branch. For example `doc-548-submit-a-pull-request-section-to-contribution-guide`
 
 ```
-$ git checkout -b [name_of_your_new_branch]
+git checkout -b [name_of_your_new_branch]
 ```
 
 3. Work - commit - repeat ( be sure to be in your branch )
 4. Push changes to GitHub
 
 ```
-$ git push origin [name_of_your_new_branch]
+git push origin [name_of_your_new_branch]
 ```
 
 6. Submit your changes for review. If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
@@ -97,43 +99,5 @@ $ git push origin [name_of_your_new_branch]
 10. After approval, your PR will be merged.
 
 ## Documentation style
-For consistency the Appwrite documentation follows a strict set of style guidelines, so no matter who is writing the documentation, 
-the tone and voice remains consistent.
 
-### Headings
-- All titles, headings, buttons, and labels should be written in **sentence case**. If you're not sure what sentence case should look like, check [APA's style guide](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case) or check with ChatGPT and other LLMs which reliably converts titles to sentence case.
-- All headings in a docs page begin with `# Heading` then `## Heading` and `### Heading`. Internally, they're converted to H2 to H4 tags.
-- All headings should have an ID label, for example `# Cool heading {% #cool-heading %}` the `#cool-heading` ID will be used to generate the table of contents and add links to the heading.
-- Prefer verbs over gerunds, for example, say "Create documents" not "Creating documents".
-
-### Extended Markdoc components
-
-Appwrite's documentation uses extended markdown syntax. You can find all of the available partials types in the [CONTENT.md file](./CONTENT.md).
-
-### Screenshots
-- When contributing upload original screenshots. The Appwrite design team will edit the screenshot to be consistent with other screenshots in the docs.
-- Screnshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
-- Use generic and sensible organization, project, and resource names. Avoid names like `test`, `demo`, or `sdlkfj`.
-- All screenshot should be take from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
-
-### Content consistency
-If you're contributing a **new piece of content**, always follow the closest example as an outline. For example, a new web quick start should use one of the existing web quick starts as example, with the same content and pages.
-
-If you can't find a similar piece of content as example, the Appwrite team will request an ourline from you. 
-
-It should contain all the pages and headings with in them, maintainers may request clarification on headings.
-```md
-# page 1
-    ## heading a
-    ## heading b
-    ...
-# page 2
-    ## heading a
-    ## heading b
-    ...
-# page 3
-    ## heading a
-    ## heading b
-    ...
-...
-```
+When contributing to the Appwrite docs, follow the guide in [STYLE.md](./STYLE.md).
