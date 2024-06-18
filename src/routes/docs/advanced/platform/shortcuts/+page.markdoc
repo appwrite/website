@@ -14,7 +14,7 @@ The Appwrite Console supports keyboard shortcuts that make it easier to navigate
 
 Developers can also utilize global shortcuts anywhere in the Appwrite Console, allowing instant access to these features from any page on the Console.
 
-|Shortcut|Action|
+|Action|Shortcut|
 |----|----|
 |Set theme to light|`T` then `L`|
 |Set theme to dark|`T` then `D`|
@@ -32,9 +32,10 @@ Use the command center to search for commands or the current page's content.
 
 ## Project shortcuts {% #project-shortcuts %}
 
-Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, and overview pages.
+Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. 
+These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, overview pages, and the shortcuts make the Console more accessible.
 
-|Shortcut|Action|
+|Action|Shortcut|
 |----|----|
 |Go to auth|`G` then `A`|
 |Go to storage|`G` then `S`|
@@ -48,6 +49,6 @@ Within the context of a project, developers can utilize project shortcuts. These
 
 # Accessibility  {% #accessibility %}
 
-We are committed to making the Appwrite Console accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that the Console is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
+Using keyboard shortcuts and other methods, we are committed to making the Appwrite Console accessible to all developers by following the AA-level standards of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels). Following these standards ensures that the Console is usable by people with visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. 
 
 Good contrast between text and backgrounds, resizable text without loss of content or functionality, and navigable interfaces via keyboard and screen readers guarantee an inclusive environment and allow developers to perform their tasks efficiently. Adhering to these guidelines ensures that the Appwrite Console complies with legal requirements and promotes a positive developer experience for everyone.
