@@ -1,0 +1,195 @@
+[
+    {
+        "category": "AI",
+        "description": "Artificial intelligence tools",
+        "items": [
+            {
+                "title": "TensorFlow",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "PyTorch",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Keras",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "featured": true,
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Auth",
+        "description": "Authentication and security",
+        "items": [
+            {
+                "title": "TensorFlow",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "PyTorch",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Keras",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Databases",
+        "description": "Data storage solutions",
+        "items": [
+            {
+                "title": "TensorFlow",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "PyTorch",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Keras",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "TensorFlow",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "PyTorch",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Keras",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "TensorFlow",
+                "description": "An open-source machine learning framework",
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "PyTorch",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Keras",
+                "description": "An open-source machine learning framework",
+                "featured": true,
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    }
+]
