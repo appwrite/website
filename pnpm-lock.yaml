@@ -120,6 +120,9 @@ importers:
       svelte-check:
         specifier: ^3.6.5
         version: 3.6.5(postcss-load-config@3.1.4(postcss@8.4.35))(postcss@8.4.35)(sass@1.71.1)(svelte@4.2.12)
+      svelte-fuse:
+        specifier: ^0.0.1
+        version: 0.0.1(svelte@4.2.12)
       svelte-markdoc-preprocess:
         specifier: ^2.0.0
         version: 2.0.0
@@ -1906,6 +1909,10 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
+  fuse.js@6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+
   gauge@4.0.4:
     resolution: {integrity: sha512-f9m+BEN5jkg6a0fZjleidjN51VE1X+mPFQ2DJ0uv1V39oCLCbsGe6yjbBnp7eK7z/+GAon99a3nHuqbuuthyPg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
@@ -3242,6 +3249,11 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
+
+  svelte-fuse@0.0.1:
+    resolution: {integrity: sha512-F9hC3NMlJhYgtI0dEQsGHEQkv2/6eeAZvYgiMpTKIZJYIdFovWdcZpxIeRs5Zn3wSgDeWue+fiHfc+pTiRi4tA==}
+    peerDependencies:
+      svelte: ^4.0.0
 
   svelte-hmr@0.15.3:
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
@@ -5631,6 +5643,8 @@ snapshots:
 
   function-bind@1.1.2: {}
 
+  fuse.js@6.6.2: {}
+
   gauge@4.0.4:
     dependencies:
       aproba: 2.0.0
@@ -7062,6 +7076,11 @@ snapshots:
       postcss: 8.4.35
       postcss-scss: 4.0.9(postcss@8.4.35)
     optionalDependencies:
+      svelte: 4.2.12
+
+  svelte-fuse@0.0.1(svelte@4.2.12):
+    dependencies:
+      fuse.js: 6.6.2
       svelte: 4.2.12
 
   svelte-hmr@0.15.3(svelte@4.2.12):
