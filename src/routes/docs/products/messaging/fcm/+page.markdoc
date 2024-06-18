@@ -61,7 +61,7 @@ Some additional configuration is required to enable push notifications in your m
 ```xml
 <service android:name="<YOUR_NOTIFICATION_HANDLER_SERVICE>" android:exported="false">
     <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        <action/>
     </intent-filter>
 </service>
 ```
