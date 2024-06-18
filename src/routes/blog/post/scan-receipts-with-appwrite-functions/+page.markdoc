@@ -122,12 +122,9 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
-    # client = (
-    #     Client()
-    #     .set_endpoint("https://cloud.appwrite.io/v1")
-    #     .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #     .set_key(os.environ["APPWRITE_API_KEY"])
-    # )
+    # client = Client()
+    # // Only need to set key, the rest "just works"
+    # client.set_key(req.headers.get('x-appwrite-key')) // Header is automatically there
 
     # You can log messages to the console
     context.log("Hello, Logs!")
@@ -169,12 +166,10 @@ def main(context):
     BUCKET_ID = os.environ['BUCKET_ID']
     headers = {"Authorization": HF_API_KEY}
 
-    client = (
-        Client()
-        .set_endpoint("https://cloud.appwrite.io/v1")
-        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(os.environ["APPWRITE_API_KEY"])
-    )
+    # client = Client()
+    # // Only need to set key, the rest "just works"
+    # client.set_key(req.headers.get('x-appwrite-key')) // Header is automatically there
+  
     storage = Storage(client)
 
     # ... rest of the code
@@ -283,4 +278,3 @@ Visit our documentation to learn more about Appwrite, join us on Discord to be p
 - [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
-
