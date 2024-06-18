@@ -119,7 +119,6 @@
                                     Categories
                                 </h2>
                                 <ul class="u-flex-vertical u-gap-16">
-                                    <!-- TODO: Add active link color - `is-pink` -->
                                     {#each categories as category}
                                         <li>
                                             <a class="web-link" href={`#${category.toLowerCase()}`}

@@ -4,8 +4,8 @@
         "description": "Artificial intelligence tools",
         "items": [
             {
-                "title": "TensorFlow",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "image": "/images/blog/ai-announcement.png",
                 "new": true,
@@ -17,8 +17,8 @@
                 }
             },
             {
-                "title": "PyTorch",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "new": true,
                 "author": {
@@ -28,8 +28,8 @@
                 }
             },
             {
-                "title": "Keras",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "featured": true,
                 "image": "/images/blog/ai-announcement.png",
@@ -46,8 +46,8 @@
         "description": "Authentication and security",
         "items": [
             {
-                "title": "TensorFlow",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "new": true,
                 "author": {
@@ -57,8 +57,8 @@
                 }
             },
             {
-                "title": "PyTorch",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
@@ -70,8 +70,8 @@
                 }
             },
             {
-                "title": "Keras",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -86,8 +86,8 @@
         "description": "Data storage solutions",
         "items": [
             {
-                "title": "TensorFlow",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -96,8 +96,8 @@
                 }
             },
             {
-                "title": "PyTorch",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
@@ -109,8 +109,8 @@
                 }
             },
             {
-                "title": "Keras",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
@@ -121,8 +121,8 @@
                 }
             },
             {
-                "title": "TensorFlow",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -131,8 +131,8 @@
                 }
             },
             {
-                "title": "PyTorch",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
@@ -144,8 +144,8 @@
                 }
             },
             {
-                "title": "Keras",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
@@ -156,8 +156,8 @@
                 }
             },
             {
-                "title": "TensorFlow",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -166,8 +166,8 @@
                 }
             },
             {
-                "title": "PyTorch",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "image": "/images/blog/ai-announcement.png",
                 "url": "/docs/products/auth",
@@ -179,8 +179,8 @@
                 }
             },
             {
-                "title": "Keras",
-                "description": "An open-source machine learning framework",
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "image": "/images/blog/ai-announcement.png",
                 "url": "/docs/products/auth",
