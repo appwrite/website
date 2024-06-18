@@ -27,7 +27,7 @@
   &-content { margin-block-start:pxToRem(4); color:hsl(var(--web-color-secondary)); }
 
   &:where(.is-desktop-max-out-3) {
-    @media #{$break2open} {
+    @media #{$break3open} {
       grid-template-columns: repeat(3, 1fr);
     }
   }

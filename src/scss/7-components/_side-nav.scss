@@ -85,7 +85,7 @@
   }
 
   &-mobile-footer-buttons { display:none; }
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     &-open { overflow:hidden; }
     &-wrapper { padding-inline:0; }
     &-mobile-footer-buttons {

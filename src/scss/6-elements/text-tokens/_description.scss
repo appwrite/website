@@ -13,7 +13,7 @@
   font-weight: var(--p-font-weight);
   color: hsl(var(--web-color-secondary));
 
-  @media #{$break2open} {
+  @media #{$break3open} {
     --p-font-size: var(--web-font-size-large);
     --p-line-height: var(--web-line-height-md);
   }

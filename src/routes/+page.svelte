@@ -516,7 +516,7 @@
                             </h2>
                         </section>
                         <ul
-                            class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
+                            class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1-and-break-2 web-u-margin-block-start-48"
                         >
                             <li class="web-big-list-info-item">
                                 <div class="web-headline web-u-color-text-primary">90K</div>

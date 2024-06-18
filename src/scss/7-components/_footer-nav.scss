@@ -15,7 +15,7 @@
     &-item {}
   }
 
-  @media #{$break1} {
+  @media #{$break1}, #{$break2} {
     flex-direction:column; gap:pxToRem(40);
     &-main {
       &-list { display:flex; flex-direction:column; gap:pxToRem(12); flex-basis:0; }

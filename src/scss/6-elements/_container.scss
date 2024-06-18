@@ -6,7 +6,7 @@
   max-inline-size: var(--p-container-size);
   padding-inline: pxToRem(32);
   margin-inline: auto;
-  @media #{$break1} { padding-inline: pxToRem(20); }
+  @media #{$break1}, #{$break2} { padding-inline: pxToRem(20); }
 }
 
 
@@ -21,11 +21,11 @@
   grid-template-columns: minmax(0, 1fr);
 
   &-level-1 {
-    @media #{$break1} {
+    @media #{$break1}, #{$break2} {
       padding-block:pxToRem(0);
       &:first-child { padding-block-start:pxToRem(0); }
     }
-    @media #{$break2open} {
+    @media #{$break3open} {
       padding-block:pxToRem(40);
       &:first-child { padding-block-start:pxToRem(0); }
     }
@@ -36,13 +36,13 @@
   }
   &-level-2 {
     /* level 2 */
-    @media #{$break1} { margin-block:pxToRem(48); }
-    @media #{$break2open} { margin-block:pxToRem(120); }
+    @media #{$break1}, #{$break2} { margin-block:pxToRem(48); }
+    @media #{$break3open} { margin-block:pxToRem(120); }
 
     &.is-margin-replace-padding {
       margin-block:0;
-      @media #{$break1} { padding-block:pxToRem(48); }
-      @media #{$break2open} { padding-block:pxToRem(120); }
+      @media #{$break1}, #{$break2} { padding-block:pxToRem(48); }
+      @media #{$break3open} { padding-block:pxToRem(120); }
     }
   }
 

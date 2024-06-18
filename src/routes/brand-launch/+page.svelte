@@ -154,7 +154,7 @@
                         </div>
                         <div
                             class="web-hero is-align-start
-						web-u-padding-block-start-40 web-u-sep-inline-start-not-break1 web-u-padding-inline-start-48-not-break1"
+						web-u-padding-block-start-40 web-u-sep-inline-start-not-break1-and-break2 web-u-padding-inline-start-48-not-break1"
                         >
                             <h2 class="web-title web-u-color-text-primary">
                                 Allowing you to innovate without limits

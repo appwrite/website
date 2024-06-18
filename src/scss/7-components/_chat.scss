@@ -18,7 +18,7 @@
       content:""; display:block; inline-size:pxToRem(21); block-size:pxToRem(15); background-color:inherit;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
     }
-    @media #{$break1} {
+    @media #{$break1}, #{$break2} {
       
     }
   }
