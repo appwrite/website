@@ -5,7 +5,7 @@ description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 ---
 # Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.  Adding user's permissions allows authorized users to view, create and delete documents.
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas. To authorize users to view, create, and delete documents, set the collection's permissions for the user's needs.
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
