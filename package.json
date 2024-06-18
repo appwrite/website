@@ -23,8 +23,7 @@
     "packageManager": "pnpm@8.15.6",
     "dependencies": {
         "compression": "^1.7.4",
-        "express": "^4.18.2",
-        "fuse.js": "^7.0.0"
+        "express": "^4.18.2"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.1",
@@ -61,6 +60,7 @@
         "sharp": "^0.33.2",
         "svelte": "^4.2.12",
         "svelte-check": "^3.6.5",
+        "svelte-fuse": "^0.0.1",
         "svelte-markdoc-preprocess": "^1.2.1",
         "svelte-markdown": "^0.4.1",
         "svgtofont": "^4.1.2",

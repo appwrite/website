@@ -2,18 +2,23 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import integrations from '$lib/data/integrations.json';
+    import integrations from '../../integrations.json';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
+    import SvelteFuse from 'svelte-fuse';
+    import type { ResultType } from 'svelte-fuse';
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
+    // search functionality
+    type Integration = (typeof integrations)[number]['items'][number];
+
     const categories = integrations.map((integration) => integration.category);
 
     const getFeaturedIntegrations = () => {
-        const featuredIntegrations: Array<(typeof integrations)[number]['items'][number]> = [];
+        const featuredIntegrations: Array<Integration> = [];
 
         integrations.forEach((integration) => {
             integration.items.forEach((item) => {
@@ -27,6 +32,18 @@
     };
 
     const featuredIntegrations = getFeaturedIntegrations();
+
+    let fuseOptions = {
+        keys: [
+            'category',
+            'integrations.name',
+            'integrations.description',
+            'integrations.author.name'
+        ]
+    };
+
+    let query = '';
+    let result: ResultType<(typeof integrations)[number]> = [];
 </script>
 
 <svelte:head>
@@ -96,7 +113,7 @@
                         <section>
                             <label class="web-input-button web-u-flex-basis-400">
                                 <span class="web-icon-search" aria-hidden="true"></span>
-                                <input class="text" placeholder="Search" />
+                                <input class="text" placeholder="Search" bind:value={query} />
                             </label>
                         </section>
                         <section class="u-flex-vertical">
@@ -130,6 +147,9 @@
                             </section>
                         </section>
                     </aside>
+
+                    <SvelteFuse list={integrations} options={fuseOptions} bind:query bind:result />
+
                     <section>
                         <div class="u-flex-vertical u-gap-80">
                             <section class="u-flex-vertical u-gap-32">
@@ -137,6 +157,7 @@
                                     <h2 class="web-label web-u-color-text-primary">Featured</h2>
                                     <p class="web-description">Top recommended integrations</p>
                                 </header>
+
                                 <div>
                                     <ul class="web-feature-grid">
                                         {#each featuredIntegrations as item}
@@ -184,7 +205,7 @@
                                 </div>
                             </section>
 
-                            {#each integrations as integration}
+                            {#each result.length ? result.map((d) => d.item) : integrations as integration (integration.category)}
                                 <section
                                     class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                     id={integration.category.toLowerCase()}
