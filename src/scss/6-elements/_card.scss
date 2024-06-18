@@ -41,6 +41,7 @@
 
     #{$theme-dark} & {
       --p-card-border-color-default: var(--web-color-white) / 0.10;
+      --p-card-shadow-color-focus-visible: var(--web-color-white) / 0.06;
     }
   }
   &.is-white {

@@ -68,7 +68,7 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="web-label">Starter</h2>
+                                            <h2 id="starter" class="web-label">Free</h2>
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >

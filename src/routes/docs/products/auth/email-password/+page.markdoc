@@ -149,4 +149,4 @@ promise.then(function (response) {
 
 # Security {% #security %}
 
-Appwrite's security first mindset goes beyond a securely implemented of authentication API. You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place.
+Appwrite's security first mindset goes beyond a securely implemented authentication API. You can enable features like password dictionary, password history, and disallow personal data in passwords to encourage users to pick better passwords. By enabling these features, you protect user data and teach better password choices, which helps make the internet a safer place.

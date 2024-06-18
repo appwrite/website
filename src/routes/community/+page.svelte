@@ -6,10 +6,11 @@
                 src: '/images/community/events/28march-office-hours.png',
                 alt: ''
             },
-            date: 'March 28th, 2024',
+            date: '2024-03-28',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
+            description:
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         },
         {
@@ -18,10 +19,11 @@
                 src: '/images/community/events/4april-office-hours.png',
                 alt: ''
             },
-            date: 'April 4th, 2024',
+            date: '2024-04-04',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
+            description:
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         },
         {
@@ -30,10 +32,11 @@
                 src: '/images/community/events/11april-office-hours.png',
                 alt: ''
             },
-            date: 'April 11th, 2024',
+            date: '2024-04-11',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
-            description: 'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
+            description:
+                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
             buttonText: 'View event'
         }
     ];
@@ -181,7 +184,8 @@
                                 >
                                     <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span
+                                    <span class="web-inline-tag web-sub-body-400"
+                                        >{GITHUB_STARS}</span
                                     >
                                 </a>
                             </div>
@@ -453,7 +457,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center">
-                        <h2 class="web-display web-u-color-text-primary">Inspire and get inspired</h2>
+                        <h2 class="web-display web-u-color-text-primary">
+                            Inspire and get inspired
+                        </h2>
                         <p class="web-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
