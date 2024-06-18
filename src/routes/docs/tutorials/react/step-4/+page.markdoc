@@ -16,6 +16,7 @@ Create a new file `src/lib/context/user.jsx` and add the following code to it.
 import { ID } from "appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
+import { goto } from "$app/navigation";
 
 const UserContext = createContext();
 
@@ -29,7 +30,7 @@ export function UserProvider(props) {
   async function login(email, password) {
     const loggedIn = await account.createEmailPasswordSession(email, password);
     setUser(loggedIn);
-    navigateTo("/");
+    goTo("/");
   }
 
   async function logout() {
@@ -67,14 +68,13 @@ Now, we can use the `useUser` hook to access the user's data from any component.
 
 # Basic routing  {% #basic-routing %}
 
-First, wrap the `main` element with the `UserProvider` and `IdeaProvider` component.
+First, wrap the `main` element with the `UserProvider` component.
 
 Update `src/App.jsx` to the following code.
 
 ```client-web
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
-import { IdeaProvider } from "./lib/context/ideas";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -82,9 +82,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <IdeaProvider>
           <main>Home page</main>
-        </IdeaProvider>
       </UserProvider>
     </div>
   );
@@ -101,7 +99,6 @@ Update `src/App.jsx` to the following code.
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
-import { IdeaProvider } from "./lib/context/ideas";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -109,9 +106,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <IdeaProvider>
           <main>{isLoginPage ? <Login /> : <Home />}</main>
-        </IdeaProvider>
       </UserProvider>
     </div>
   );
