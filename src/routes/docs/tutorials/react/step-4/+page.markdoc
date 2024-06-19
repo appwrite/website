@@ -16,7 +16,6 @@ Create a new file `src/lib/context/user.jsx` and add the following code to it.
 import { ID } from "appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../appwrite";
-import { goto } from "$app/navigation";
 
 const UserContext = createContext();
 
@@ -30,7 +29,7 @@ export function UserProvider(props) {
   async function login(email, password) {
     const loggedIn = await account.createEmailPasswordSession(email, password);
     setUser(loggedIn);
-    goTo("/");
+    window.location.replace("/"); // you can use different redirect method for your application
   }
 
   async function logout() {
@@ -82,7 +81,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-          <main>Home page</main>
+        <main>Home page</main>
       </UserProvider>
     </div>
   );
@@ -106,7 +105,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-          <main>{isLoginPage ? <Login /> : <Home />}</main>
+        <main>{isLoginPage ? <Login /> : <Home />}</main>
       </UserProvider>
     </div>
   );

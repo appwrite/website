@@ -5,7 +5,7 @@ description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 ---
 # Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas. To authorize users to view, create, and delete documents, set the collection's permissions for the user's needs.
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas. 
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
@@ -14,12 +14,29 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 ![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
 {% /only_light %}
 
+## Attributes
+
 Create a new collection with the following attributes:
 | Field       | Type   | Required | Size   |
 |-------------|--------|----------|--------|
 | userId      | String | Yes      |  50    |
 | title       | String | Yes      |  25    |
 | description | String | No       |  100   |
+
+# Configure permissions {% #configure-permissions %}
+{% only_dark %}
+![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create** by checking those boxes.
+These permissions apply to all documents in your new collection.
+
+Finally, enable **Document security** to allow further permissions to be set at the document level.
+Remember to click the **Update** button to apply your changes.
 
 # Ideas context {% #ideas-context %}
 
