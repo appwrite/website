@@ -18,7 +18,12 @@ The Appwriter uses icons from the Appwrite Console and Docs on specific keys, ma
 
 # What's in the box {% #whats-in-the-box %}
 
-The box includes the Appwriter keyboard, a USB-C data/charging cable, a 2-in-1 keycap and switch puller, extra PC layout keycaps, and an information card with a QR code. The keyboard comes with Mac layout keys pre-installed for macOS which can also be swapped with the included PC keycaps.
+- Appwriter keyboard
+- a USB-C data/charging cable
+- a 2-in-1 keycap and switch puller
+- extra PC layout keycaps
+- an information card with a QR code. 
+- comes with Mac layout keys pre-installed for macOS (can be swapped with the included PC keycaps)
 
 # Specifications {% #specifications %}
 
@@ -34,7 +39,7 @@ The box includes the Appwriter keyboard, a USB-C data/charging cable, a 2-in-1 k
 |Switch support|Hot-swappable switches with 3 & 5 pin|
 |Rollover|N-key rollover|
 
-# Appwriter backlight {% #appwriter-backlight %}
+# How to change the backlight {% #how-to-change-the-backlight %}
 
 Press `Fn + Home` to change the RGB backlight effect and cycle through all the lights.
 
