@@ -14,12 +14,13 @@ The Appwrite Console supports keyboard shortcuts that make it easier to navigate
 
 Developers can also utilize global shortcuts anywhere in the Appwrite Console, allowing instant access to these features from any page on the Console.
 
-|Action|Shortcut|
+|Shortcut|Action|
 |----|----|
-|Set theme to light|`T` then `L`|
-|Set theme to dark|`T` then `D`|
-|Set theme to dark|`T` then `A`|
-|Open Appwrite Assistant|`A` then `I`|
+|`T` then `L`|Set theme to light|
+|`T` then `D`|Set theme to dark|
+|`T` then `A`|Set theme to dark|
+|`A` then `I`|Open Appwrite Assistant|
+|`C` then `O`|Create organization|
 
 ## Command center
 
@@ -35,17 +36,31 @@ Use the command center to search for commands or the current page's content.
 Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. 
 These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, overview pages, and the shortcuts make the Console more accessible.
 
-|Action|Shortcut|
+|Shortcut|Action|
 |----|----|
-|Go to auth|`G` then `A`|
-|Go to storage|`G` then `S`|
-|Go to databases|`G` then `D`|
-|Go to functions|`G` then `F`|
-|Go to projects|`G` then `P`|
-|Go to overview|`G` then `O`|
-|Go to messaging|`G` then `M`|
-|Go to settings|`G` then `E`|
-|Create organization|`C` then `O`|
+|`G` then `P`|Go to projects|
+|`G` then `O`|Go to overview|
+|`G` then `A`|Go to auth|
+|`G` then `D`|Go to databases|
+|`G` then `F`|Go to functions|
+|`G` then `M`|Go to messaging|
+|`G` then `S`|Go to storage|
+|`G` then `E`|Go to settings|
+
+# Primary Actions
+
+Each screen on the console has a concept of a primary action. For example, in the Functions screen, the primary action would be creating a function, in the Databases screen, it would be creating a database and so on. The primary actions are usually triggered using the `C` key as seen in the table below.
+
+|Shortcut|Action|
+|----|----|
+|`C` then `P`|Create project|
+|`C` then `U`|Create user|
+|`C` then `A`|Create database|
+|`C` then `C`|Create collection|
+|`C` then `D`|Create document|
+|`C` then `T`|Create attribute|
+|`C` then `F`|Create function|
+|`C` then `S`|Create storage|
 
 # Accessibility  {% #accessibility %}
 
