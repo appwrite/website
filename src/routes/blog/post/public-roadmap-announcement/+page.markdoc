@@ -27,7 +27,7 @@ We understand that knowing when new features and fixes will be available is impo
 # How to use the roadmap
 
 ## Accessing the roadmap
-You can access our public roadmap on GitHub. The roadmap is organized into different projects for each release, with issues or pull requests assigned to specific versions to indicate when we plan to complete the changes. For example, you can check out the changes planned for version 1.5.8 to see what’s coming up next.
+You can access our [public roadmap on GitHub](https://github.com/orgs/appwrite/projects). The roadmap is organized into different projects for each release, with issues or pull requests assigned to specific versions to indicate when we plan to complete the changes. For example, you can check out the changes planned for version 1.5.8 to see what’s coming up next.
 
 ## Reporting bugs and requesting features
 To report a bug or request a new feature, simply create an issue on our GitHub repository. When submitting an issue, please provide as much detail as possible, including steps to reproduce bugs and the specific needs for feature requests. This information helps our team to understand and prioritize the issue effectively.
