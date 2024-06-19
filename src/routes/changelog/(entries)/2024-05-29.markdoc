@@ -29,7 +29,7 @@ Fixes:
 - Fix file size default limit
 - Fix: Python failing builds
 - Fix shared project delete
-- Fix TextMagic class name
+- Fix Textmagic class name
 - Prevent functions domain and subdomain to be added as custom domain
 - Fix don't publish max users exceed
 - Fix invalid cache document id
