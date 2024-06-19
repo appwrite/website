@@ -33,7 +33,7 @@ Use the command center to search for commands or the current page's content.
 ## Project shortcuts {% #project-shortcuts %}
 
 Within the context of a project, developers can utilize project shortcuts. These shortcuts are automatically enabled once a project is selected on the Console. 
-These shortcuts allow quick access to the project's database, storage, messaging, auth, settings, overview pages, and the shortcuts make the Console more accessible.
+These shortcuts allow quick access to the project's pages making it easier and faster to navigate the Console more.
 
 |Action|Shortcut|
 |----|----|
