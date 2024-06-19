@@ -28,6 +28,17 @@
                 }
             },
             {
+                "title": "Specific Search",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
