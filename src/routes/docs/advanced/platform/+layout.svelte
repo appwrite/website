@@ -16,7 +16,7 @@
                     href: '/docs/advanced/platform'
                 },
                 {
-                    label: 'Keyboard Shortcuts',
+                    label: 'Shortcuts',
                     href: '/docs/advanced/platform/shortcuts'
                 }
             ]

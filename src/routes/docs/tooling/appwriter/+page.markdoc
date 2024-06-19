@@ -16,9 +16,9 @@ The Appwriter is an exclusive mechanical keyboard custom-designed by the Appwrit
 
 The Appwriter uses icons from the Appwrite Console and Docs on specific keys, making memorizing keyboard shortcuts easier. For example, `G` then `D` is the shortcut for navigating to your project's databases, and the icon on the `D` key matches the icon for Appwrite Databases.
 
-## Specifications {% #specifications %}
-
 The box includes the Appwriter keyboard, a USB-C data/charging cable, a 2-in-1 keycap and switch puller, extra PC layout keycaps, and an information card with a QR code. The keyboard comes with Mac layout keys pre-installed for macOS which can also be swapped with the included PC keycaps.
+
+## Specifications {% #specifications %}
 
 |Specification|Details|
 |----|----|
@@ -31,6 +31,8 @@ The box includes the Appwriter keyboard, a USB-C data/charging cable, a 2-in-1 k
 |RGB Backlight|16 Million colors & multiple lighting effects|
 |Switch Support|Hot-swappable switches with 3 & 5 pin|
 |Rollover|N-key rollover|
+
+## Appwriter backlight {% #how-to-get-the-appwriter %}
 
 Press `Fn + Home` to change the RGB backlight effect and cycle through all the lights.
 
