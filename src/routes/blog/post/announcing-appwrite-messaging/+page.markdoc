@@ -57,7 +57,7 @@ Use MSG91 for SMS notifications to mobile devices.
 {% cards_item href="/docs/products/messaging/telesign" title="Telesign" icon="icon-telesign" %}
 Use Telesign for SMS notifications to mobile devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="web-icon-textmagic" %}
+{% cards_item href="/docs/products/messaging/textmagic" title="Textmagic" icon="web-icon-textmagic" %}
 Use Textmagic for SMS notifications to mobile devices.
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/vonage" title="Vonage" icon="icon-vonage" %}
