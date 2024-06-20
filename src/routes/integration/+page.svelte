@@ -467,12 +467,6 @@
         }
     }
 
-    :where(:target) {
-        .category {
-            color: pink;
-        }
-    }
-
     .l-grid-1 {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
