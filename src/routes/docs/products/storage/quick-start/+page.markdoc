@@ -119,7 +119,27 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
   --cec8e8123c05ba25--
   ```
+  ```client-react-native
+  import { Client, Storage, ID } from "appwrite";
 
+  const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+  const storage = new Storage(client);
+
+  const promise = await storage.create(
+    '[BUCKET_ID]',
+    ID.unique(), 
+    document.getElementById('uploader').files[0]
+  );
+
+  promise.then(function (response) {
+      console.log(response); // Success
+  }, function (error) {
+      console.log(error); // Failure
+  });
+  ```
 {% /multicode %}
 
 
@@ -223,5 +243,21 @@ class MainActivity : AppCompatActivity() {
         println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage, ID } from "appwrite";
+
+const client = new Client();
+
+const storage = new Storage(client);
+
+client
+  .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+  .setProject('5df5acd0d48c2') // Your project ID
+;
+
+const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
+
+console.log(result); // Resource URL
 ```
 {% /multicode %}
