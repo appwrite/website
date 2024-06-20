@@ -7,6 +7,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import SvelteFuse from '$lib/integrations/SvelteFuse.svelte';
     import type { ResultType } from '$lib/integrations';
+    import { writable } from 'svelte/store';
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -43,9 +44,16 @@
         keys: ['title'],
         threshold: 0.3
     };
-    let query = '';
 
     let result: ResultType<(typeof list)[number]> = [];
+
+    // search term
+    let hasQuery: boolean;
+    let query = writable('');
+
+    $: query.subscribe((value) => {
+        hasQuery = value.length > 0;
+    });
 </script>
 
 <svelte:head>
@@ -112,11 +120,11 @@
         <div class="web-big-padding-section-level-2">
             <div class="web-container">
                 <div class="l-integrations-grid">
-                    <aside class="u-flex-vertical u-gap-32">
+                    <aside class="u-flex-vertical u-gap-32 sidebar">
                         <section>
                             <label class="web-input-button web-u-flex-basis-400">
                                 <span class="web-icon-search" aria-hidden="true"></span>
-                                <input class="text" placeholder="Search" bind:value={query} />
+                                <input class="text" placeholder="Search" bind:value={$query} />
                             </label>
                         </section>
                         <section class="u-flex-vertical">
@@ -151,11 +159,11 @@
                         </section>
                     </aside>
 
-                    <SvelteFuse {list} options={fuseOptions} bind:query bind:result />
+                    <SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
 
                     <section>
                         <div class="u-flex-vertical u-gap-80">
-                            {#if query.length}
+                            {#if hasQuery}
                                 <section
                                     class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                 >
@@ -165,7 +173,7 @@
                                         </h2>
                                         <p class="web-description">
                                             {result.length > 0 ? result.length : 'No'} results found
-                                            for "{query}"
+                                            for "{$query}"
                                         </p>
                                     </header>
                                     <div class="l-max-size-list-cards u-flex-vertical u-gap-32">
@@ -367,6 +375,11 @@
 
 <style lang="scss">
     @use '$scss/abstract' as *;
+
+    .sidebar {
+        position: sticky;
+        top: 100px;
+    }
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
@@ -433,6 +446,7 @@
         gap: pxToRem(32);
     }
     .l-integrations-grid {
+        position: relative;
         @media #{$break2open} {
             display: grid;
             gap: pxToRem(68);
