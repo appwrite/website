@@ -70,10 +70,9 @@
     // categories
     const categories = integrations.map((integration) => integration.category);
     let categoryState = writable('');
-    let activeCategory: string;
 
     $: categoryState.subscribe((value) => {
-        activeCategory = value;
+        categoryState.set(value);
     });
 </script>
 
@@ -180,7 +179,7 @@
                                             <a
                                                 class="web-link"
                                                 class:is-pink={category.toLowerCase() ===
-                                                    activeCategory}
+                                                    $categoryState}
                                                 href={`#${category.toLowerCase()}`}>{category}</a
                                             >
                                         </li>
