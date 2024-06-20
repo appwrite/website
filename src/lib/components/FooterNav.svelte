@@ -35,10 +35,9 @@
                 { label: 'Auth', href: '/docs/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
-                { label: 'Messaging', href: '/docs/products/messaging' },
+                { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Messaging', href: '/products/messaging' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
