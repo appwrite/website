@@ -155,63 +155,19 @@
 
                     <section>
                         <div class="u-flex-vertical u-gap-80">
-                            <section class="u-flex-vertical u-gap-32">
-                                <header class="u-flex-vertical u-gap-4">
-                                    <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                    <p class="web-description">Top recommended integrations</p>
-                                </header>
-
-                                <div>
-                                    <ul class="web-feature-grid">
-                                        {#each featuredIntegrations as item}
-                                            <li
-                                                class="web-feature-grid-item is-two-columns-desktop-only"
-                                            >
-                                                <a class="web-overlay-item" href={item.url}>
-                                                    <img
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        class="u-block web-u-media-ratio-16-9 web-u-media-cover"
-                                                    />
-                                                    <div
-                                                        class="web-user-box u-column-gap-8 u-row-gap-0"
-                                                    >
-                                                        <img
-                                                            class="web-user-box-image"
-                                                            src={item.author.avatar}
-                                                            alt={`Avatar for ${item.author.name}`}
-                                                            width="40"
-                                                            height="40"
-                                                        />
-                                                        <div
-                                                            class="web-user-box-name web-main-body-500 u-flex u-gap-8"
-                                                        >
-                                                            <span class="web-u-color-text-primary"
-                                                                >{item.author.name}</span
-                                                            >
-                                                            {#if item.new}
-                                                                <span class="web-inline-tag is-pink"
-                                                                    >New</span
-                                                                >
-                                                            {/if}
-                                                        </div>
-                                                        <div
-                                                            class="web-user-box-username web-caption-400 web-u-color-text-secondary"
-                                                        >
-                                                            {item.author.username}
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        {/each}
-                                    </ul>
-                                </div>
-                            </section>
-
-                            {#if result.length}
+                            {#if query.length}
                                 <section
                                     class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                 >
+                                    <header class="u-flex-vertical u-gap-4">
+                                        <h2 class="web-label web-u-color-text-primary">
+                                            Search results
+                                        </h2>
+                                        <p class="web-description">
+                                            {result.length > 0 ? result.length : 'No'} results found
+                                            for "{query}"
+                                        </p>
+                                    </header>
                                     <div class="l-max-size-list-cards u-flex-vertical u-gap-32">
                                         <ul class="l-grid-1">
                                             {#each result.map((d) => d.item) as item}
@@ -251,6 +207,60 @@
                                     </div>
                                 </section>
                             {:else}
+                                <section class="u-flex-vertical u-gap-32">
+                                    <header class="u-flex-vertical u-gap-4">
+                                        <h2 class="web-label web-u-color-text-primary">Featured</h2>
+                                        <p class="web-description">Top recommended integrations</p>
+                                    </header>
+
+                                    <div>
+                                        <ul class="web-feature-grid">
+                                            {#each featuredIntegrations as item}
+                                                <li
+                                                    class="web-feature-grid-item is-two-columns-desktop-only"
+                                                >
+                                                    <a class="web-overlay-item" href={item.url}>
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.title}
+                                                            class="u-block web-u-media-ratio-16-9 web-u-media-cover"
+                                                        />
+                                                        <div
+                                                            class="web-user-box u-column-gap-8 u-row-gap-0"
+                                                        >
+                                                            <img
+                                                                class="web-user-box-image"
+                                                                src={item.author.avatar}
+                                                                alt={`Avatar for ${item.author.name}`}
+                                                                width="40"
+                                                                height="40"
+                                                            />
+                                                            <div
+                                                                class="web-user-box-name web-main-body-500 u-flex u-gap-8"
+                                                            >
+                                                                <span
+                                                                    class="web-u-color-text-primary"
+                                                                    >{item.author.name}</span
+                                                                >
+                                                                {#if item.new}
+                                                                    <span
+                                                                        class="web-inline-tag is-pink"
+                                                                        >New</span
+                                                                    >
+                                                                {/if}
+                                                            </div>
+                                                            <div
+                                                                class="web-user-box-username web-caption-400 web-u-color-text-secondary"
+                                                            >
+                                                                {item.author.username}
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            {/each}
+                                        </ul>
+                                    </div>
+                                </section>
                                 {#each integrations as integration (integration.category)}
                                     <section
                                         class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
