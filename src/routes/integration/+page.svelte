@@ -174,11 +174,13 @@
                                 <ul class="u-flex-vertical u-gap-16" class:disabled={hasQuery}>
                                     {#each categories as category}
                                         <li>
-                                            <a
+                                            <button
                                                 class="web-link"
                                                 class:is-pink={category.toLowerCase() ===
                                                     $categoryState}
-                                                href={`#${category.toLowerCase()}`}>{category}</a
+                                                on:click={() =>
+                                                    categoryState.set(category.toLowerCase())}
+                                                >{category}</button
                                             >
                                         </li>
                                     {/each}
