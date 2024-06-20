@@ -73,6 +73,8 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
+<!-- binding for fuse -->
+<SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
         <div class="web-container u-position-relative">
@@ -132,7 +134,7 @@
                                 <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
                                     Platform
                                 </h2>
-                                <ul class="u-flex u-flex-wrap u-gap-8">
+                                <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
                                     <li>
                                         <button class="tag is-selected">Cloud</button>
                                     </li>
@@ -146,7 +148,7 @@
                                 <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
                                     Categories
                                 </h2>
-                                <ul class="u-flex-vertical u-gap-16">
+                                <ul class="u-flex-vertical u-gap-16" class:disabled={hasQuery}>
                                     {#each categories as category}
                                         <li>
                                             <a class="web-link" href={`#${category.toLowerCase()}`}
@@ -158,8 +160,6 @@
                             </section>
                         </section>
                     </aside>
-
-                    <SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
 
                     <section>
                         <div class="u-flex-vertical u-gap-80">
@@ -376,6 +376,12 @@
 <style lang="scss">
     @use '$scss/abstract' as *;
 
+    .disabled {
+        & > li {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+    }
     .sidebar {
         position: sticky;
         top: 100px;
@@ -446,7 +452,9 @@
         gap: pxToRem(32);
     }
     .l-integrations-grid {
+        overflow-y: scroll;
         position: relative;
+        min-height: 100vh;
         @media #{$break2open} {
             display: grid;
             gap: pxToRem(68);
