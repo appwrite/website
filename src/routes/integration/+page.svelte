@@ -155,12 +155,11 @@
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
                                     {#each platforms as ptfm}
                                         <li>
-                                            <a
+                                            <button
                                                 class="tag"
                                                 class:is-selected={platform === ptfm}
                                                 class:active-tag={platform === ptfm}
-                                                href={`#${ptfm.toLowerCase()}`}
-                                                on:click={() => setPlatform(ptfm)}>{ptfm}</a
+                                                on:click={() => setPlatform(ptfm)}>{ptfm}</button
                                             >
                                         </li>
                                     {/each}
