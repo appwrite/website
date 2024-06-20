@@ -8,21 +8,18 @@
     import SvelteFuse from '$lib/integrations/SvelteFuse.svelte';
     import type { ResultType } from '$lib/integrations';
     import { writable } from 'svelte/store';
+    import { autoHash } from '$lib/actions/autoHash';
+    import { page } from '$app/stores';
+
+    console.log($page.params);
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    // search functionality
+    // integration data
     type Integrations = (typeof integrations)[number];
     type Integration = Integrations['items'][number];
-
-    const list = integrations.reduce(
-        (acc, category) => acc.concat(category.items),
-        [] as Integration[]
-    );
-
-    const categories = integrations.map((integration) => integration.category);
 
     const getFeaturedIntegrations = () => {
         const featuredIntegrations: Array<Integration> = [];
@@ -40,14 +37,20 @@
 
     const featuredIntegrations = getFeaturedIntegrations();
 
+    // search functionality
     let fuseOptions = {
         keys: ['title'],
         threshold: 0.3
     };
 
+    // flatten the integrations into a single array for search
+    const list = integrations.reduce(
+        (acc, category) => acc.concat(category.items),
+        [] as Integration[]
+    );
+
     let result: ResultType<(typeof list)[number]> = [];
 
-    // search term
     let hasQuery: boolean;
     let query = writable('');
 
@@ -55,13 +58,23 @@
         hasQuery = value.length > 0;
     });
 
-    // platform filtering
-    type Platform = 'cloud' | 'self-hosted' | null;
+    // platform filters
+    const platforms = ['Cloud', 'Self-hosted'] as const;
+    type Platform = (typeof platforms)[number] | null;
     let platform: Platform = null;
 
     const setPlatform = (value: Platform) => {
         platform = value;
     };
+
+    // categories
+    const categories = integrations.map((integration) => integration.category);
+    let categoryState = writable('');
+    let activeCategory: string;
+
+    $: categoryState.subscribe((value) => {
+        activeCategory = value;
+    });
 </script>
 
 <svelte:head>
@@ -143,21 +156,17 @@
                                     Platform
                                 </h2>
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
-                                    <li>
-                                        <a
-                                            class="tag is-selected"
-                                            href="#cloud"
-                                            on:click={() => setPlatform('cloud')}>Cloud</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="tag"
-                                            href="#self-hosted"
-                                            on:click={() => setPlatform('self-hosted')}
-                                            >Self-hosted</a
-                                        >
-                                    </li>
+                                    {#each platforms as ptfm}
+                                        <li>
+                                            <a
+                                                class="tag"
+                                                class:is-selected={platform === ptfm}
+                                                class:active-tag={platform === ptfm}
+                                                href={`#${ptfm.toLowerCase()}`}
+                                                on:click={() => setPlatform(ptfm)}>{ptfm}</a
+                                            >
+                                        </li>
+                                    {/each}
                                 </ul>
                             </section>
                             <div class="web-u-sep-block-start u-margin-block-24"></div>
@@ -168,8 +177,11 @@
                                 <ul class="u-flex-vertical u-gap-16" class:disabled={hasQuery}>
                                     {#each categories as category}
                                         <li>
-                                            <a class="web-link" href={`#${category.toLowerCase()}`}
-                                                >{category}</a
+                                            <a
+                                                class="web-link"
+                                                class:is-pink={category.toLowerCase() ===
+                                                    activeCategory}
+                                                href={`#${category.toLowerCase()}`}>{category}</a
                                             >
                                         </li>
                                     {/each}
@@ -286,13 +298,16 @@
                                         </ul>
                                     </div>
                                 </section>
-                                <div id={`${platform?.toLowerCase()}`} />
+
+                                <div id={platform?.toLowerCase()} />
                                 {#each integrations.map((integration) => {
                                     return { ...integration, items: platform ? integration.items.filter((item) => item.platform?.toLowerCase() === platform?.toLowerCase()) : integration.items };
                                 }) as integration (integration.category)}
                                     <section
                                         class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                         id={integration.category.toLowerCase()}
+                                        use:autoHash={() =>
+                                            categoryState.set(integration.category.toLowerCase())}
                                     >
                                         <header class="u-flex-vertical u-gap-4">
                                             <h2 class="web-label web-u-color-text-primary">
@@ -456,6 +471,12 @@
         }
     }
 
+    :where(:target) {
+        .category {
+            color: pink;
+        }
+    }
+
     .l-grid-1 {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -474,6 +495,11 @@
             position: sticky;
             top: 50px;
             height: 500px;
+
+            .active-tag {
+                background-color: #fff;
+                color: #000;
+            }
         }
 
         @media #{$break2open} {
