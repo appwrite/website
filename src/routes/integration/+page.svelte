@@ -286,6 +286,7 @@
                                         </ul>
                                     </div>
                                 </section>
+                                <div id={`${platform?.toLowerCase()}`} />
                                 {#each integrations.map((integration) => {
                                     return { ...integration, items: platform ? integration.items.filter((item) => item.platform?.toLowerCase() === platform?.toLowerCase()) : integration.items };
                                 }) as integration (integration.category)}
