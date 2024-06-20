@@ -11,8 +11,6 @@
     import { autoHash } from '$lib/actions/autoHash';
     import { page } from '$app/stores';
 
-    console.log($page.params);
-
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -298,7 +296,6 @@
                                     </div>
                                 </section>
 
-                                <div id={platform?.toLowerCase()} />
                                 {#each integrations.map((integration) => {
                                     return { ...integration, items: platform ? integration.items.filter((item) => item.platform?.toLowerCase() === platform?.toLowerCase()) : integration.items };
                                 }) as integration (integration.category)}
