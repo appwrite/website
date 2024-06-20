@@ -376,16 +376,6 @@
 <style lang="scss">
     @use '$scss/abstract' as *;
 
-    .disabled {
-        & > li {
-            pointer-events: none;
-            opacity: 0.4;
-        }
-    }
-    .sidebar {
-        position: sticky;
-        top: 100px;
-    }
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
@@ -452,9 +442,20 @@
         gap: pxToRem(32);
     }
     .l-integrations-grid {
-        overflow-y: scroll;
         position: relative;
-        min-height: 100vh;
+
+        .disabled {
+            & > li {
+                pointer-events: none;
+                opacity: 0.4;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 50px;
+            height: 500px;
+        }
+
         @media #{$break2open} {
             display: grid;
             gap: pxToRem(68);
