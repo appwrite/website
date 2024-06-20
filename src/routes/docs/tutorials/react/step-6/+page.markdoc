@@ -35,9 +35,6 @@ Navigate to the **Settings** tab of your collection, add the role **Any** and ch
 Next, add a **Users** role and give them access to **Create** by checking those boxes.
 These permissions apply to all documents in your new collection.
 
-Finally, enable **Document security** to allow further permissions to be set at the document level.
-Remember to click the **Update** button to apply your changes.
-
 # Ideas context {% #ideas-context %}
 
 Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a React context to hold our ideas.
