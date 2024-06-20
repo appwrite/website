@@ -14,12 +14,11 @@
   font-size: var(--web-font-size-micro);
   line-height: var(--web-line-height-tiny);
 
-  #{$theme-dark} & {
-    --p-tag-bg-color: var(--web-color-greyscale-750);
-  }
-
   #{$theme-light} & {
     --p-tag-bg-color: var(--web-color-greyscale-100);
+  }
+  #{$theme-dark} & {
+    --p-tag-bg-color: var(--web-color-greyscale-750);
   }
 }
 
