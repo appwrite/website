@@ -5,8 +5,8 @@
     import integrations from '../../integrations.json';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import SvelteFuse from 'svelte-fuse';
-    import type { ResultType } from 'svelte-fuse';
+    import SvelteFuse from '$lib/integrations/SvelteFuse.svelte';
+    import type { ResultType } from '$lib/integrations';
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -15,6 +15,11 @@
     // search functionality
     type Integrations = (typeof integrations)[number];
     type Integration = Integrations['items'][number];
+
+    const list = integrations.reduce(
+        (acc, category) => acc.concat(category.items),
+        [] as Integration[]
+    );
 
     const categories = integrations.map((integration) => integration.category);
 
@@ -35,10 +40,12 @@
     const featuredIntegrations = getFeaturedIntegrations();
 
     let fuseOptions = {
-        keys: ['items.title']
+        keys: ['title'],
+        threshold: 0.3
     };
     let query = '';
-    let result: ResultType<Integrations> = [];
+
+    let result: ResultType<(typeof list)[number]> = [];
 </script>
 
 <svelte:head>
@@ -144,81 +151,70 @@
                         </section>
                     </aside>
 
-                    <SvelteFuse list={integrations} options={fuseOptions} bind:query bind:result />
+                    <SvelteFuse {list} options={fuseOptions} bind:query bind:result />
 
                     <section>
                         <div class="u-flex-vertical u-gap-80">
-                            {#if !result.length}
-                                <section class="u-flex-vertical u-gap-32">
-                                    <header class="u-flex-vertical u-gap-4">
-                                        <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommended integrations</p>
-                                    </header>
+                            <section class="u-flex-vertical u-gap-32">
+                                <header class="u-flex-vertical u-gap-4">
+                                    <h2 class="web-label web-u-color-text-primary">Featured</h2>
+                                    <p class="web-description">Top recommended integrations</p>
+                                </header>
 
-                                    <div>
-                                        <ul class="web-feature-grid">
-                                            {#each featuredIntegrations as item}
-                                                <li
-                                                    class="web-feature-grid-item is-two-columns-desktop-only"
-                                                >
-                                                    <a class="web-overlay-item" href={item.url}>
+                                <div>
+                                    <ul class="web-feature-grid">
+                                        {#each featuredIntegrations as item}
+                                            <li
+                                                class="web-feature-grid-item is-two-columns-desktop-only"
+                                            >
+                                                <a class="web-overlay-item" href={item.url}>
+                                                    <img
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        class="u-block web-u-media-ratio-16-9 web-u-media-cover"
+                                                    />
+                                                    <div
+                                                        class="web-user-box u-column-gap-8 u-row-gap-0"
+                                                    >
                                                         <img
-                                                            src={item.image}
-                                                            alt={item.title}
-                                                            class="u-block web-u-media-ratio-16-9 web-u-media-cover"
+                                                            class="web-user-box-image"
+                                                            src={item.author.avatar}
+                                                            alt={`Avatar for ${item.author.name}`}
+                                                            width="40"
+                                                            height="40"
                                                         />
                                                         <div
-                                                            class="web-user-box u-column-gap-8 u-row-gap-0"
+                                                            class="web-user-box-name web-main-body-500 u-flex u-gap-8"
                                                         >
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src={item.author.avatar}
-                                                                alt={`Avatar for ${item.author.name}`}
-                                                                width="40"
-                                                                height="40"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name web-main-body-500 u-flex u-gap-8"
+                                                            <span class="web-u-color-text-primary"
+                                                                >{item.author.name}</span
                                                             >
-                                                                <span
-                                                                    class="web-u-color-text-primary"
-                                                                    >{item.author.name}</span
+                                                            {#if item.new}
+                                                                <span class="web-inline-tag is-pink"
+                                                                    >New</span
                                                                 >
-                                                                {#if item.new}
-                                                                    <span
-                                                                        class="web-inline-tag is-pink"
-                                                                        >New</span
-                                                                    >
-                                                                {/if}
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-username web-caption-400 web-u-color-text-secondary"
-                                                            >
-                                                                {item.author.username}
-                                                            </div>
+                                                            {/if}
                                                         </div>
-                                                    </a>
-                                                </li>
-                                            {/each}
-                                        </ul>
-                                    </div>
-                                </section>
-                            {/if}
+                                                        <div
+                                                            class="web-user-box-username web-caption-400 web-u-color-text-secondary"
+                                                        >
+                                                            {item.author.username}
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {/each}
+                                    </ul>
+                                </div>
+                            </section>
 
-                            {#each result.length ? result.map((d) => d.item) : integrations as integration (integration.category)}
+                            {#if result.length}
                                 <section
                                     class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
-                                    id={integration.category.toLowerCase()}
                                 >
-                                    <header class="u-flex-vertical u-gap-4">
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            {integration.category}
-                                        </h2>
-                                        <p class="web-description">{integration.description}</p>
-                                    </header>
                                     <div class="l-max-size-list-cards u-flex-vertical u-gap-32">
                                         <ul class="l-grid-1">
-                                            {#each integration.items as item (item.title)}
+                                            {#each result.map((d) => d.item) as item}
                                                 <li>
                                                     <a
                                                         href={item.url}
@@ -252,15 +248,68 @@
                                                 </li>
                                             {/each}
                                         </ul>
-                                        <a
-                                            href={`#${integration.category.toLowerCase()}`}
-                                            class="l-float-button web-button is-text"
-                                        >
-                                            <span>Show more</span>
-                                        </a>
                                     </div>
                                 </section>
-                            {/each}
+                            {:else}
+                                {#each integrations as integration (integration.category)}
+                                    <section
+                                        class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
+                                        id={integration.category.toLowerCase()}
+                                    >
+                                        <header class="u-flex-vertical u-gap-4">
+                                            <h2 class="web-label web-u-color-text-primary">
+                                                {integration.category}
+                                            </h2>
+                                            <p class="web-description">{integration.description}</p>
+                                        </header>
+                                        <div class="l-max-size-list-cards u-flex-vertical u-gap-32">
+                                            <ul class="l-grid-1">
+                                                {#each integration.items as item, index (`${item.title}-${index}`)}
+                                                    <li>
+                                                        <a
+                                                            href={item.url}
+                                                            class="web-card is-normal u-height-100-percent"
+                                                            style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
+                                                        >
+                                                            <div
+                                                                class="u-flex u-cross-center u-gap-8"
+                                                            >
+                                                                <img
+                                                                    class="web-user-box-image is-32px"
+                                                                    src={item.author.avatar}
+                                                                    alt={item.author.name}
+                                                                    width="32"
+                                                                    height="32"
+                                                                />
+                                                                <h4
+                                                                    class="web-main-body-400 web-u-color-text-primary"
+                                                                >
+                                                                    {item.title}
+                                                                </h4>
+                                                                <span
+                                                                    class="icon-arrow-right u-margin-inline-start-auto"
+                                                                    aria-hidden="true"
+                                                                ></span>
+                                                            </div>
+                                                            <p
+                                                                class="web-sub-body-400 u-margin-block-start-4"
+                                                            >
+                                                                {item.description}
+                                                            </p>
+                                                        </a>
+                                                    </li>
+                                                {/each}
+                                            </ul>
+                                            <a
+                                                href={`#${integration.category.toLowerCase()}`}
+                                                class="l-float-button web-button is-text"
+                                            >
+                                                <span>Show more</span>
+                                            </a>
+                                        </div>
+                                    </section>
+                                {/each}
+                            {/if}
                         </div>
                     </section>
                 </div>
