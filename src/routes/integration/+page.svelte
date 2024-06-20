@@ -54,6 +54,14 @@
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
     });
+
+    // platform filtering
+    type Platform = 'cloud' | 'self-hosted' | null;
+    let platform: Platform = null;
+
+    const setPlatform = (value: Platform) => {
+        platform = value;
+    };
 </script>
 
 <svelte:head>
@@ -136,10 +144,19 @@
                                 </h2>
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
                                     <li>
-                                        <button class="tag is-selected">Cloud</button>
+                                        <a
+                                            class="tag is-selected"
+                                            href="#cloud"
+                                            on:click={() => setPlatform('cloud')}>Cloud</a
+                                        >
                                     </li>
                                     <li>
-                                        <button class="tag">Self-hosted</button>
+                                        <a
+                                            class="tag"
+                                            href="#self-hosted"
+                                            on:click={() => setPlatform('self-hosted')}
+                                            >Self-hosted</a
+                                        >
                                     </li>
                                 </ul>
                             </section>
@@ -269,7 +286,9 @@
                                         </ul>
                                     </div>
                                 </section>
-                                {#each integrations as integration (integration.category)}
+                                {#each integrations.map((integration) => {
+                                    return { ...integration, items: platform ? integration.items.filter((item) => item.platform?.toLowerCase() === platform?.toLowerCase()) : integration.items };
+                                }) as integration (integration.category)}
                                     <section
                                         class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                         id={integration.category.toLowerCase()}
