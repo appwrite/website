@@ -58,8 +58,8 @@
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
-<Main>
-    <TocRoot activeType="highest">
+<Main omitMainId>
+    <TocRoot>
         <div class="web-container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
@@ -124,7 +124,9 @@
                                     identity. Refrain from altering our logo and preferably use our
                                     logo on a neutral background.
                                 </p>
-                                <div class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12">
+                                <div
+                                    class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12"
+                                >
                                     <div
                                         class="media-wrapper | theme-light |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
@@ -233,7 +235,9 @@
                                     situations where space constraints make it challenging to
                                     showcase the complete logotype.
                                 </p>
-                                <div class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12">
+                                <div
+                                    class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12"
+                                >
                                     <div
                                         class="media-wrapper | theme-light |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
