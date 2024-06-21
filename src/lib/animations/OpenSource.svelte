@@ -122,7 +122,7 @@
     }
 
     const animScale: Scale = [0, animations.length - 1];
-    const percentScale: Scale = [0.1, 0.9];
+    const percentScale: Scale = [0.02, 0.9];
     const scrollHandler = createScrollHandler(
         animations.map(({ mobile, desktop }, i) => {
             return {
@@ -238,18 +238,18 @@
 
 <style lang="scss">
     #open-source {
-        min-height: 1500px;
-        height: 250vh;
+        min-height: 900px;
+        height: 100vh;
         position: relative;
         @media (min-width: 1024px) {
-            height: 150vh;
+            height: 100vh;
         }
     }
 
     .sticky-wrapper {
         position: sticky;
-        top: -15vh;
-        overflow: hidden;
+        top: -25vh;
+        //overflow: hidden;
 
         display: flex;
         flex-direction: column;
@@ -259,7 +259,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 130vh;
+        height: 70vh;
 
         text-align: center;
 
@@ -286,7 +286,7 @@
 
             .cards-wrapper {
                 position: absolute;
-                height: 100vh;
+                height: 70vh;
                 width: clamp(1024px, 90vw, 1440px);
                 top: 0;
                 left: 50%;

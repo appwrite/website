@@ -139,7 +139,9 @@
         remaning: Infinity
     };
 
-    const animScale: Scale = [0.075, 1];
+    const scrollPercentageToTriggerAnimation = 0.018;
+
+    const animScale: Scale = [scrollPercentageToTriggerAnimation, 1];
     const productsScales = products.map((_, idx) => {
         const diff = animScale[1] - animScale[0];
         const step = diff / products.length;
@@ -199,9 +201,9 @@
 >
     <div class="sticky-wrapper">
         <!-- <div class="debug">
-			<pre>{scrollInfo.percentage}</pre>
-		</div> -->
-        {#if scrollInfo.percentage < 0.075}
+            <pre>{scrollInfo.percentage}</pre>
+        </div> -->
+        {#if scrollInfo.percentage < scrollPercentageToTriggerAnimation}
             <div
                 class="main-text"
                 out:fly={{ duration: 250, y: -300 }}
@@ -235,7 +237,9 @@
                 class="products"
                 out:fly={{ duration: 250, y: 300 }}
                 in:fly={{ duration: 500, delay: 250, y: 300 }}
-                data-active={scrollInfo.percentage > 0.075 ? '' : undefined}
+                data-active={scrollInfo.percentage > scrollPercentageToTriggerAnimation
+                    ? ''
+                    : undefined}
             >
                 <div class="text" id="pd-{$elId}">
                     <ScrollIndicator
@@ -389,7 +393,7 @@
 
         > .main-text {
             position: absolute;
-            top: 50%;
+            top: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
 
@@ -647,9 +651,13 @@
         opacity: 0;
 
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-            -8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-            -33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+        box-shadow:
+            0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+            -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+            -8px 15px 17px 0px rgba(0, 0, 0, 0.05),
+            -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+            -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
+            -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
     }
 </style>
