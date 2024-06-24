@@ -235,7 +235,7 @@ class MessagingService : FirebaseMessagingService() {
 
 In your `AndroidManifest.xml`, register this new service.
 ```xml
-<service android:exported="false">
+<service android:name="<YOUR_NOTIFICATION_HANDLER_SERVICE>" android:exported="false">
     <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
     </intent-filter>
