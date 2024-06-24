@@ -19,6 +19,9 @@ export default defineConfig({
             includePublic: true
         })
     ],
+    build: {
+        reportCompressedSize: false
+    },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
     }
