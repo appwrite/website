@@ -1,4 +1,4 @@
-# Contributing
+# Contributings
 
 We would ❤️ you to contribute to the Appwrite website and help make it better! We want contributing to Appwrite to be fun, enjoyable, and educational for anyone and everyone. This document will walk you through the steps to complete your first contribution.
 
